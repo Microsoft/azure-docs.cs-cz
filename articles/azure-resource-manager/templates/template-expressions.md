@@ -2,19 +2,21 @@
 title: Syntaxe a výrazy šablon
 description: Popisuje deklarativní syntaxi JSON pro šablony Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 09/03/2019
-ms.openlocfilehash: b7682ba10c30290e5935bc2dd17e2a83852d92f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/10/2020
+ms.openlocfilehash: 42649d4b04b03de32b82335fce68401192de75a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484191"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120595"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntaxe a výrazy v šablonách Azure Resource Manager
 
-Základní syntaxí šablony je JSON. Můžete však použít výrazy k rozšiřování hodnot JSON dostupných v rámci šablony.  Výrazy začínají a končí závorkami `[` a `]` v uvedeném pořadí. Hodnota výrazu se vyhodnocuje po nasazení šablony. Výraz může vrátit řetězec, celé číslo, logickou hodnotu, pole nebo objekt.
+Základní syntaxí šablony je JSON. Můžete však použít výrazy k rozšiřování hodnot JSON dostupných v rámci šablony.  Výrazy začínají a končí hranatými závorkami: `[` a `]`, v uvedeném pořadí. Hodnota výrazu je vyhodnocena při nasazení šablony. Výraz může vracet řetězec, celé číslo, logickou hodnotu, pole nebo objekt.
 
 Výraz šablony nemůže být delší než 24 576 znaků.
+
+Výrazy podporují JSON (null) a vlastnosti podporují hodnotu literálu null. V obou případech šablony Správce prostředků považují za, jako by vlastnost nebyla přítomna.
 
 ## <a name="use-functions"></a>Použití funkcí
 

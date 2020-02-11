@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 2/20/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 3c88b8cb40660327d2a4c28cc80b7ebd5956b189
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d0ab828a2574914c511042a16704c4b553960b84
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467255"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119668"
 ---
 1. Spusťte Eclipse.
 
@@ -19,7 +19,7 @@ ms.locfileid: "73467255"
 
 1. Za chvíli se zobrazí hlavní okno prostředí Eclipse IDE. Pokud je k dispozici, zavřete **úvodní** obrazovku.
 
-1. Vytvořte nový projekt tak, že na řádku nabídek Eclipse vyberete **File** (Soubor)  >  **New** (Nový)  >  **Project** (Projekt).
+1. Vytvořte nový projekt tak, že na řádku nabídek Eclipse vyberete **File** (Soubor)  > **New** (Nový)  > **Project** (Projekt).
 
 1. Zobrazí se dialogové okno **Nový projekt**. Vyberte **Java Project** (Projekt Javy) a vyberte **Next** (Další).
 
@@ -31,7 +31,7 @@ ms.locfileid: "73467255"
 
 1. Pokud se zobrazí okno **Open Associated Perspective?** (Otevřít související perspektivu?), vyberte **Open Perspective** (Otevřít perspektivu).
 
-1. V **průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt **quickstart**. V místní nabídce zvolte **Configure** (Konfigurovat)  >  **Convert to Maven Project** (Převést na projekt Maven).
+1. V **průzkumníku balíčků** klikněte pravým tlačítkem myši na projekt **quickstart**. V místní nabídce zvolte **Configure** (Konfigurovat)  > **Convert to Maven Project** (Převést na projekt Maven).
 
    ![Snímek obrazovky s průzkumníkem balíčků](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "73467255"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * Přidejte také prvek `dependencies` se sadou Speech SDK verze 1.7.0 jako závislost:
+   * Přidejte také prvek `dependencies` se sadou Speech SDK verze 1.9.0 jako závislost:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

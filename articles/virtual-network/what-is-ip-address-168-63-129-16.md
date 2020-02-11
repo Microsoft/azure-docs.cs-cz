@@ -1,5 +1,5 @@
 ---
-title: Co je IP adresa 168.63.129.16? | Dokumenty Microsoft
+title: Co je IP adresa 168.63.129.16? | Microsoft Docs
 description: Přečtěte si o 168.63.129.16 IP adres a o tom, jak funguje s vašimi prostředky.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 287f881fb17dd84357f540ee562e21c66c11ab95
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196671"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114359"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Co je IP adresa 168.63.129.16?
 
@@ -34,10 +34,11 @@ IP adresa 168.63.129.16 je virtuální veřejná IP adresa, která se používá
 
 ## <a name="scope-of-ip-address-1686312916"></a>Rozsah IP adres 168.63.129.16
 
-Veřejná IP adresa 168.63.129.16 se používá ve všech oblastech a v národních cloudech. Tato speciální veřejná IP adresa je vlastněná Microsoftem a nebude se měnit. Povoluje se výchozí pravidlo skupiny zabezpečení sítě. Tuto IP adresu doporučujeme povolit v jakýchkoli místních zásadách brány firewall v příchozím i odchozím směru. Komunikace mezi touto zvláštní IP adresou a prostředky je bezpečná, protože z této IP adresy může zdroj zprávy vytvořit jenom interní platforma Azure. Pokud je tato adresa zablokovaná, může dojít k neočekávanému chování v nejrůznějších scénářích.
-Aby bylo možné komunikovat s WireServer: 80, 443 a 32526, musí být otevřeny alespoň následující porty.
+Veřejná IP adresa 168.63.129.16 se používá ve všech oblastech a v národních cloudech. Tato speciální veřejná IP adresa je vlastněná Microsoftem a nebude se měnit. Tuto IP adresu doporučujeme v jakýchkoli místních zásadách brány firewall (ve virtuálním počítači) Povolte (odchozí směr). Komunikace mezi touto zvláštní IP adresou a prostředky je bezpečná, protože z této IP adresy může zdroj zprávy vytvořit jenom interní platforma Azure. Pokud je tato adresa zablokovaná, může dojít k neočekávanému chování v nejrůznějších scénářích. 168.63.129.16 je [virtuální IP adresa uzlu hostitele](../virtual-network/security-overview.md#azure-platform-considerations) , protože nepodléhá uživatelsky definovaným trasám.
 
-Z této IP adresy pocházejí [Azure Load Balancer sondy stavu](../load-balancer/load-balancer-custom-probe-overview.md) . Pokud zablokujete tuto IP adresu, testy se nezdaří.
+- Agent virtuálního počítače vyžaduje odchozí komunikaci přes porty 80, 443, 32526 s WireServer (168.63.129.16). Ty by měly být otevřené v místní bráně firewall na virtuálním počítači. Komunikace na těchto portech s 168.63.129.16 nepodléhá nakonfigurovaným skupinám zabezpečení sítě.
+- 168.63.129.16 může virtuálnímu počítači poskytnout služby DNS. Pokud to není žádoucí, můžete tento provoz zablokovat v místní bráně firewall na virtuálním počítači. Ve výchozím nastavení se komunikace DNS neřídí nakonfigurovanými skupinami zabezpečení sítě, pokud není konkrétně cílena využití značky služby [AzurePlatformDNS](../virtual-network/service-tags-overview.md#available-service-tags) .
+- Pokud je virtuální počítač součástí fondu back-endu nástroje pro vyrovnávání zatížení, musí být komunikace [sondy stavu](../load-balancer/load-balancer-custom-probe-overview.md) povolena z 168.63.129.16. Výchozí konfigurace skupiny zabezpečení sítě má pravidlo, které tuto komunikaci povoluje. Toto pravidlo využívá značku služby [AzureLoadBalancer](../virtual-network/service-tags-overview.md#available-service-tags) . Pokud chcete tento provoz zablokovat tak, že nakonfigurujete skupinu zabezpečení sítě, bude to mít za následek selhání sond.
 
 Ve scénáři nevirtuální sítě (Classic) se sonda stavu nachází z privátní IP adresy a 168.63.129.16 se nepoužije.
 

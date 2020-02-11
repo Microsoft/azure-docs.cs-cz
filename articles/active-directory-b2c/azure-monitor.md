@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.author: marsma
 ms.subservice: B2C
-ms.date: 02/05/2020
-ms.openlocfilehash: b701449e8cfb7a379522ee6ccb93f5569bd703d8
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/10/2020
+ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046035"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121378"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C s využitím Azure Monitor
 
@@ -24,9 +24,9 @@ Pomocí Azure Monitor můžete směrovat přihlašování Azure Active Directory
 
 Události protokolu můžete směrovat do:
 
-* Účet úložiště Azure.
-* Centrum událostí Azure (a integrujte je s vašimi logickými instancemi Splunk a sumo).
-* Pracovní prostor Azure Log Analytics (pro analýzu dat, vytváření řídicích panelů a upozornění na konkrétní události).
+* Účet služby Azure [Storage](../storage/blobs/storage-blobs-introduction.md).
+* [Centrum událostí](../event-hubs/event-hubs-about.md) Azure (a integrujte je s vašimi logickými instancemi Splunk a sumo).
+* [Pracovní prostor Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) (pro analýzu dat, vytváření řídicích panelů a upozornění na konkrétní události).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -42,15 +42,15 @@ Můžete také použít [Azure Cloud Shell](https://shell.azure.com), která zah
 
 Azure AD B2C využívá [Azure Active Directory monitorování](../active-directory/reports-monitoring/overview-monitoring.md). Pokud chcete povolit *nastavení diagnostiky* v Azure Active Directory v rámci vašeho tenanta Azure AD B2C, použijte [delegovanou správu prostředků](../lighthouse/concepts/azure-delegated-resource-management.md).
 
-K nakonfigurování instance Azure Monitor v rámci tenanta, který obsahuje vaše předplatné Azure ( **zákazníka**), autorizujete uživatele v adresáři Azure AD B2C ( **poskytovatelem služeb**). Pokud chcete vytvořit autorizaci, nasadíte šablonu [Azure Resource Manager](../azure-resource-manager/index.yml) do svého tenanta služby Azure AD obsahujícího předplatné. Následující části vás provedou procesem.
+Uživatele nebo skupinu autorizujete v adresáři Azure AD B2C ( **poskytovatel služeb**), abyste nakonfigurovali instanci Azure monitor v rámci tenanta, který obsahuje vaše předplatné Azure ( **zákazníka**). Pokud chcete vytvořit autorizaci, nasadíte šablonu [Azure Resource Manager](../azure-resource-manager/index.yml) do svého tenanta služby Azure AD obsahujícího předplatné. Následující části vás provedou procesem.
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-or-choose-resource-group"></a>Vytvořit nebo zvolit skupinu prostředků
 
-V tenantovi Azure Active Directory (Azure AD), který obsahuje vaše předplatné Azure (*ne* adresář obsahující Azure AD B2C tenanta), [vytvořte skupinu prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups). Použijte následující hodnoty:
+Jedná se o skupinu prostředků, která obsahuje cílový účet úložiště Azure, centrum událostí nebo Log Analytics pracovní prostor pro příjem dat z Azure Monitor. Název skupiny prostředků určíte při nasazení šablony Azure Resource Manager.
 
-* **Předplatné**: Vyberte své předplatné Azure.
-* **Skupina prostředků**: zadejte název pro skupinu prostředků. Například *Azure-AD-B2C-monitor*.
-* **Oblast**: vyberte umístění Azure. Například *střed USA*.
+[Vytvořte skupinu prostředků](../azure-resource-manager/management/manage-resource-groups-portal.md#create-resource-groups) nebo vyberte existující v tenantovi Azure Active Directory (Azure AD), která obsahuje vaše předplatné Azure, *nikoli* adresář, který obsahuje vašeho tenanta Azure AD B2C.
+
+Tento příklad používá skupinu prostředků s názvem *Azure-AD-B2C-monitor* v oblasti *střed USA* .
 
 ## <a name="delegate-resource-management"></a>Delegovat správu prostředků
 
@@ -209,20 +209,42 @@ Po nasazení šablony a dokončení projekce prostředku počkejte několik minu
 
 ## <a name="configure-diagnostic-settings"></a>Konfigurace nastavení diagnostiky
 
-Po delegování správy prostředků a výběru předplatného budete připraveni [vytvořit nastavení diagnostiky](../active-directory/reports-monitoring/overview-monitoring.md) v Azure Portal.
+Nastavení diagnostiky definují, kam se mají odesílat protokoly a metriky prostředku. Možné cíle:
+
+- [Účet služby Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md)
+- Řešení pro [centra událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
+- [Pracovní prostor služby Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md)
+
+Pokud jste to ještě neudělali, vytvořte ve skupině prostředků, kterou jste zadali v [šabloně Azure Resource Manager](#create-an-azure-resource-manager-template), instanci vybraného cílového typu.
+
+### <a name="create-diagnostic-settings"></a>Vytvořit nastavení diagnostiky
+
+Jste připraveni [vytvořit nastavení diagnostiky](../active-directory/reports-monitoring/overview-monitoring.md) v Azure Portal.
 
 Postup konfigurace nastavení monitorování pro Azure AD B2C protokoly aktivit:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. Vyberte **Azure Active Directory**
 1. V části **monitorování**vyberte **nastavení diagnostiky**.
-1. Vyberte **+ Přidat nastavení diagnostiky**.
+1. Pokud je u prostředku k dispozici existující nastavení, zobrazí se seznam nastavení, která jsou už nakonfigurovaná. Buď vyberte možnost **Přidat nastavení diagnostiky** a přidejte nové nastavení, nebo **upravte** nastavení a upravte stávající nastavení. Každé nastavení nemůže mít více než jeden z cílových typů..
 
     ![Podokno nastavení diagnostiky v Azure Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
 
+1. Dejte nastavení název, pokud ho ještě nikdo nemá.
+1. Zaškrtněte políčko pro všechny cílové umístění pro odeslání protokolů. Vyberte **Konfigurovat** a určete jejich nastavení, jak je popsáno v následující tabulce.
+
+    | Nastavení | Popis |
+    |:---|:---|
+    | Archivovat do účtu úložiště | Název účtu úložiště |
+    | Datový proud do centra událostí | Obor názvů, ve kterém se vytvoří centrum událostí (Pokud se jedná o vaše první přihlášení ke streamování protokolů) nebo streamování do služby (Pokud už existují prostředky streamující do tohoto oboru názvů do kategorie log).
+    | Odeslat do Log Analytics | Název pracovního prostoru |
+
+1. Vyberte **AuditLogs** a **SignInLogs**.
+1. Vyberte **Save** (Uložit).
+
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o přidání a konfiguraci nastavení diagnostiky v Azure Monitor najdete v tomto kurzu v dokumentaci k Azure Monitor:
+Další informace o přidání a konfiguraci nastavení diagnostiky v Azure Monitor najdete v tématu [kurz: shromáždění a analýza protokolů prostředků z prostředku Azure](../azure-monitor/insights/monitor-azure-resource.md).
 
-[Kurz: shromáždění a analýza protokolů prostředků z prostředku Azure](/azure-monitor/learn/tutorial-resource-logs.md)
+Informace o streamování protokolů služby Azure AD do centra událostí najdete v tématu [kurz: streamování Azure Active Directory protokoly do centra událostí Azure](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md).

@@ -8,12 +8,12 @@ ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e9ef700e45acc55f476d72883107b0c5c958fa7f
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862828"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116265"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorování účtu úložiště v Azure Portal
 
@@ -25,6 +25,8 @@ Doporučujeme, abyste zkontrolovali [Azure monitor pro úložiště](../../azure
 > Existují náklady spojené s zkoumáním dat monitorování v Azure Portal. Další informace najdete v tématu [Analýza úložiště](storage-analytics.md).
 >
 > Soubory Azure aktuálně podporuje Analýza úložiště metriky, ale zatím nepodporují protokolování.
+>
+> Účty úložiště blob bloku úrovně Premium nepodporují analytické metriky úložiště, ale podporují protokolování. Protokolování můžete povolit programově prostřednictvím REST API nebo klientské knihovny. Pokud chcete zobrazit metriky s účty služby Blob Storage BLOB služby Premium Performance, zvažte použití [Azure Storage metriky v Azure monitor](storage-metrics-in-azure-monitor.md).
 >
 > Podrobný návod k používání Analýza úložiště a dalších nástrojů k identifikaci, diagnostice a odstraňování potíží souvisejících s Azure Storage najdete v tématu [monitorování, diagnostika a řešení potíží s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 >
@@ -53,7 +55,7 @@ Výchozí sada metrik se zobrazí v grafech v okně účet úložiště a také 
 Shromažďování a protokolování metrik můžete zakázat nastavením **stav** na **vypnuto**.
 
 > [!NOTE]
-> Azure Storage využívá [úložiště tabulek](storage-introduction.md#table-storage) k ukládání metrik pro váš účet úložiště a ukládá metriky v tabulkách ve vašem účtu. Další informace najdete v tématu . [Jak jsou uloženy metriky](storage-analytics-metrics.md#how-metrics-are-stored).
+> Azure Storage využívá [úložiště tabulek](storage-introduction.md#table-storage) k ukládání metrik pro váš účet úložiště a ukládá metriky v tabulkách ve vašem účtu. Další informace naleznete v části [Jak jsou uloženy metriky](storage-analytics-metrics.md#how-metrics-are-stored).
 >
 
 ## <a name="customize-metrics-charts"></a>Přizpůsobení grafů metrik

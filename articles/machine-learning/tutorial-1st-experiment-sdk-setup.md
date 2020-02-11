@@ -9,20 +9,20 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 09/25/2019
-ms.openlocfilehash: 125cde85d3caa6fd1a33045e85c5383f83a669bf
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/10/2020
+ms.openlocfilehash: 1dacc59ee0bf79128efd8920a91f3c3d54e5584a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982530"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116607"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto kurzu dokončíte kompletní kroky, abyste mohli začít se sadou Azure Machine Learning Python SDK spuštěnou v poznámkových blocích Jupyter. Tento kurz je **první částí série kurzů se dvěma částmi**a popisuje nastavení a konfiguraci prostředí Python a také vytvoření pracovního prostoru pro správu experimentů a modelů strojového učení. [**Druhá část**](tutorial-1st-experiment-sdk-train.md) sestavení na této stránce umožňuje výuku více modelů strojového učení a zavedení procesu správy modelů pomocí Azure Machine Learning studia i sady SDK.
 
-V tomto kurzu jste:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořte [pracovní prostor Azure Machine Learning](concept-workspace.md) pro použití v dalším kurzu.
@@ -32,7 +32,7 @@ V tomto kurzu jste:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
+## <a name="create-a-workspace"></a>Vytvořit pracovní prostor
 
 Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu ve službě. 
 
@@ -84,7 +84,7 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
     > [!IMPORTANT]
     > Poznámkové bloky můžete zobrazit ve složce **Samples** , ale nemůžete z nich spustit Poznámkový blok.  Pokud chcete spustit Poznámkový blok, ujistěte se, že jste v části **soubory uživatelů** otevřeli naklonované verze poznámkového bloku.
     
-1. Ve složce s **kurzy** vyberte soubor **kurz – 1st-experiment-SDK-ipynb** .
+1. V části tutorial **/vytvořit první-ml – experimenty** vyberte soubor **kurz-1. experiment-SDK-Training. ipynb** .
 
 1. Na horním panelu vyberte výpočetní instanci, kterou chcete použít ke spuštění poznámkového bloku. Tyto virtuální počítače jsou předem nakonfigurované se všemi [potřebnými ke spuštění Azure Machine Learning](concept-compute-instance.md#contents). Můžete vybrat virtuální počítač vytvořený libovolným uživatelem pracovního prostoru. 
 

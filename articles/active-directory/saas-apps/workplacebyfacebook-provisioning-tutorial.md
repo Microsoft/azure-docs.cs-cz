@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a5e92ccf1104f36b3f2b045f9922158b1f7330
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: d7d8a7881c00427023e5f174461b3d8b24d83444
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064137"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121445"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracoviště na Facebooku pro Automatické zřizování uživatelů
 
@@ -43,7 +43,9 @@ Pokud je vaše integrace na pracovišti v karanténě, bude nutné znovu dodat p
 
 https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true
 
- 
+#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Jak zjistím, jestli je moje aplikace migrována? 
+Když se vaše aplikace migruje, zobrazí se banner v autorizačním oddílu o změnách, který bude obsahovat tlačítko s modrou autorizací. 
+
 #### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>Oddíl přihlašovací údaje správce je v aplikaci šedý a nemůžu uložit. Proč?
 Pro stávající zákazníky na pracovišti jsme uzamkl oddíl přihlašovací údaje správce. Až se váš tenant migruje do nové aplikace pracovní plochy, budete moct znovu aktualizovat oddíl přihlašovacích údajů pro správu. Pokud nemůžete čekat, můžete k úpravě aplikace použít výše uvedenou adresu URL. 
 
@@ -87,7 +89,7 @@ Než nakonfigurujete a povolíte službu zřizování, musíte určit, kteří u
 
 *   Když přiřadíte uživatele k pracovišti na Facebooku, musíte vybrat platnou roli uživatele. Role výchozí přístup nefunguje pro zřizování.
 
-## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání pracoviště pomocí Facebooku z Galerie aplikací Azure AD
+## <a name="step-3-add-workplace-by-facebook-from-the-azure-ad-application-gallery"></a>Krok 3: Přidání pracoviště pomocí Facebooku z Galerie aplikací Azure AD
 
 Přidejte pracovní plochu z Galerie aplikací Azure AD na Facebooku a začněte spravovat zřizování na pracovišti pomocí Facebooku. Pokud jste dříve nastavili pracovní plochu na webu Facebook pro jednotné přihlašování (SSO), můžete použít stejnou aplikaci. Doporučuje se ale při počátečním testování integrace vytvořit samostatnou aplikaci. Další informace o přidání aplikace z Galerie [najdete tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app).
 
@@ -99,7 +101,7 @@ Služba zřizování Azure AD umožňuje obor, který se zřídí na základě p
 
 * Začněte malým. Než se pustíte do všech uživatelů, testujte je s malou sadou uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastavený na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -133,28 +135,28 @@ Služba zřizování Azure AD umožňuje obor, který se zřídí na základě p
 
    |Atribut|Typ|
    |---|---|
-   |userName|Řetězec|
-   |displayName|Řetězec|
+   |userName|String|
+   |displayName|String|
    |aktivní|Logická hodnota|
    |Název|Logická hodnota|
-   |e-mailů [typ eq "pracovní"] .value|Řetězec|
-   |name.givenName|Řetězec|
-   |name.familyName|Řetězec|
-   |název. formátovaný|Řetězec|
-   |adresy [Type EQ "Work"]. formátovaný|Řetězec|
-   |.streetAddress adresy [typ eq "pracovní"]|Řetězec|
-   |adresy [typ EQ "Work"].|Řetězec|
-   |adresy [typ EQ "Work"]. region|Řetězec|
-   |adresy [typ EQ "Work"]. Country|Řetězec|
-   |.postalCode adresy [typ eq "pracovní"]|Řetězec|
-   |adresy [Type EQ "ostatní"]. formátovaný|Řetězec|
-   |phoneNumbers [typ eq "pracovní"] .value|Řetězec|
-   |phoneNumbers [eq typ "mobilní"] .value|Řetězec|
-   |phoneNumbers [typ eq "fax"] .value|Řetězec|
-   |externalId|Řetězec|
-   |preferredLanguage|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Řetězec|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
+   |e-mailů [typ eq "pracovní"] .value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |název. formátovaný|String|
+   |adresy [Type EQ "Work"]. formátovaný|String|
+   |.streetAddress adresy [typ eq "pracovní"]|String|
+   |adresy [typ EQ "Work"].|String|
+   |adresy [typ EQ "Work"]. region|String|
+   |adresy [typ EQ "Work"]. Country|String|
+   |.postalCode adresy [typ eq "pracovní"]|String|
+   |adresy [Type EQ "ostatní"]. formátovaný|String|
+   |phoneNumbers [typ eq "pracovní"] .value|String|
+   |phoneNumbers [eq typ "mobilní"] .value|String|
+   |phoneNumbers [typ eq "fax"] .value|String|
+   |externalId|String|
+   |preferredLanguage|String|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|String|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|String|
 
 10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -182,7 +184,7 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 ## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 *  Pokud se uživateli zobrazí zpráva, že uživatel nebyl úspěšně vytvořen a existuje událost protokolu auditu s kódem "1789003", znamená to, že uživatel pochází z neověřené domény.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: d5dd1c1271c2b7100b40f6cd0f6410b3c151adc0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 66668f46595c22426984a02c489297e962d061d0
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900220"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118082"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Rychlý Start: výuka modelu pro rozpoznávání formulářů a extrakce dat formuláře pomocí REST API s Pythonem
 
@@ -25,7 +25,6 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu musíte mít:
-- Přístup k nástroji pro rozpoznávání přístupu s omezeným přístupem ve formě přístupu Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) .
 - Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
 - Sada alespoň pěti forem stejného typu. Tato data použijete ke výuku modelu. Formuláře mohou mít různé typy souborů, ale musí se jednat o stejný typ dokumentu. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage.
 
@@ -89,7 +88,7 @@ Pokud chcete pomocí dokumentů v kontejneru objektů BLOB v Azure vytvořit mod
     ```
 1. Uložte kód do souboru s příponou. py. Například *Form-Recognizer-Train.py*.
 1. Otevřete okno příkazového řádku.
-1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python form-recognizer-train.py`.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. například `python form-recognizer-train.py`.
 
 ## <a name="get-training-results"></a>Získat výsledky školení
 

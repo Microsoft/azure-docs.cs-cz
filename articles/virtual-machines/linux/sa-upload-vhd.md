@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 6d1dd8f749f6c3e991413628bd1e08baf76a02f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 378b802602576c4cf50862149f5d31d16d721be0
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458677"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115838"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Nahrání a vytvoření virtuálního počítače se systémem Linux z vlastního disku pomocí Azure CLI
 
@@ -79,7 +79,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-Cílový účet úložiště musí být stejný jako místo, kam jste nahráli virtuální disk. Je také nutné zadat nebo odpovědět na výzvu pro všechny další parametry vyžadované příkazem **AZ VM Create** , jako je například virtuální síť, veřejná IP adresa, uživatelské jméno a klíč SSH. Můžete si přečíst další informace o [dostupných parametrech správce prostředků CLI](../azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines).
+Cílový účet úložiště musí být stejný jako místo, kam jste nahráli virtuální disk. Je také nutné zadat nebo odpovědět na výzvu pro všechny další parametry vyžadované příkazem **AZ VM Create** , jako je například virtuální síť, veřejná IP adresa, uživatelské jméno a klíč SSH. Můžete si přečíst další informace o [dostupných parametrech rozhraní příkazového řádku classic správce prostředků](../azure-cli-arm-commands.md#virtual-machines).
 
 ## <a name="requirements"></a>Požadavky
 K provedení následujících kroků potřebujete:
@@ -101,7 +101,7 @@ Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [�
 
 V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů zahrnutých `myResourceGroup`, `mystorageaccount`a `mydisks`.
 
-<a id="prepimage"></a>
+<a id="prepimage"> </a>
 
 ## <a name="prepare-the-disk-to-be-uploaded"></a>Příprava disku, který se má nahrát
 Azure podporuje různé distribuce systému Linux (viz [schválené distribuce](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Následující články vás seznámí s postupem přípravy různých distribucí systému Linux, které jsou podporovány v Azure:
@@ -121,7 +121,7 @@ Další obecné tipy k přípravě imagí pro Linux pro Azure najdete také v **
 > 
 > 
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 Skupiny prostředků logicky přinášejí všechny prostředky Azure za účelem podpory vašich virtuálních počítačů, jako jsou virtuální sítě a úložiště. Další informace o skupinách prostředků najdete v tématu [Přehled skupin prostředků](../../azure-resource-manager/management/overview.md). Než nahrajete vlastní disk a vytvoříte virtuální počítače, musíte nejdřív vytvořit skupinu prostředků pomocí [AZ Group Create](/cli/azure/group).
 
 Následující příklad vytvoří skupinu prostředků `myResourceGroup` v umístění `westus`:
@@ -130,7 +130,7 @@ Následující příklad vytvoří skupinu prostředků `myResourceGroup` v umí
 az group create --name myResourceGroup --location westus
 ```
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>Vytvořit účet úložiště
 
 Vytvořte účet úložiště pro vlastní disk a virtuální počítače pomocí [AZ Storage Account Create](/cli/azure/storage/account). Všechny virtuální počítače s nespravovanými disky, které vytvoříte z vlastního disku, se musí nacházet ve stejném účtu úložiště jako tento disk. 
 
@@ -185,7 +185,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
+## <a name="create-the-vm"></a>Vytvořit virtuální počítač
 Pokud chcete vytvořit virtuální počítač s nespravovanými disky, zadejte identifikátor URI k disku (`--image`) pomocí [AZ VM Create](/cli/azure/vm). V následujícím příkladu se vytvoří virtuální počítač s názvem `myVM` pomocí dříve odeslaného virtuálního disku:
 
 Zadejte parametr `--image` pomocí [AZ VM Create](/cli/azure/vm) , který bude odkazovat na vlastní disk. Zajistěte, aby `--storage-account` odpovídaly účtu úložiště, ve kterém je uložený vlastní disk. Nemusíte používat stejný kontejner jako vlastní disk pro ukládání virtuálních počítačů. Před nahráním vlastního disku nezapomeňte vytvořit další kontejnery stejným způsobem jako v předchozích krocích.

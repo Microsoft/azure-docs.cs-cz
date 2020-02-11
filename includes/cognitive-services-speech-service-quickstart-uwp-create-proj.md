@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/19/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 64c93e5c8e139dbdcfd3faad3a9ac4328fb01972
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: d3e2fa082184ce8de7685d03803360045b89c911
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391590"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119764"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro Univerzální platforma Windows (UWP), je nutné nastavit vývojové možnosti sady Visual Studio, vytvořit projekt, vybrat cílovou architekturu, nastavit záznam zvuku a nainstalovat sadu Speech SDK.
 
@@ -43,7 +43,7 @@ Potom vytvořte projekt:
 
 1. Najděte a vyberte **prázdná aplikace (univerzální pro Windows)** . Ujistěte se, že jste vybrali C# verzi tohoto typu projektu (na rozdíl od Visual Basic).
 
-1. Kliknutím na tlačítko **Další** zobrazíte obrazovku **Konfigurovat nový projekt** . 
+1. Kliknutím na tlačítko **Další** zobrazíte obrazovku **Konfigurovat nový projekt** .
 
    ![Konfigurace nového projektu – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
 
@@ -104,4 +104,4 @@ Nakonec nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/n
 
 1. V dialogovém okně **Náhled změn** vyberte **OK**.
 
-1. V dialogovém okně **přijetí licence** si prohlédněte licenci a pak vyberte **Souhlasím**. Spustí se instalace balíčku. po dokončení instalace se v podokně **výstup** zobrazí zpráva podobná následujícímu textu: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.7.0' to helloworld`.
+1. V dialogovém okně **přijetí licence** si prohlédněte licenci a pak vyberte **Souhlasím**. Spustí se instalace balíčku. po dokončení instalace se v podokně **výstup** zobrazí zpráva podobná následujícímu textu: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.9.0' to helloworld`.

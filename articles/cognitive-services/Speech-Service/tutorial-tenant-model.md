@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: tutorial
-ms.date: 10/26/2019
+ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 4fec6b93ad206ae3052df5f7763f3c146b7aa680
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 54e2516211495f7f044f716c518291ca8008f92d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446789"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118923"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Kurz: vytvoření modelu tenanta (Preview)
 
@@ -37,13 +37,13 @@ V tomto kurzu se naučíte:
 
 Než budete moct nasadit model tenanta, musíte být zaregistrované ve službě modelu tenanta. Registrace se dokončila v centru pro správu Microsoft 365 a může ji udělat jenom správce Microsoft 365.
 
-1. Přihlaste se k [Centru pro správu Microsoftu 365](https://admin.microsoft.com).
+1. Přihlaste se k [centru pro správu Microsoft 365](https://admin.microsoft.com).
 
-1. V levém podokně vyberte **Nastavení**, vyberte **aplikace**a pak vyberte **Azure Speech Services**.
+1. V levém podokně vyberte **Nastavení**, v nabídce vnořené vyberte **Nastavení** a pak v hlavním okně vyberte **Azure Speech Services** .
 
    ![Podokno "& doplňky" Services](media/tenant-language-model/tenant-language-model-enrollment.png)
 
-1. Zaškrtněte políčko pro **Povolení jazykových modelů v rámci organizace** a pak vyberte **Uložit změny**. 
+1. Zaškrtněte políčko pro **Povolení jazykových modelů v rámci organizace** a pak vyberte **Uložit změny**.
 
    ![Podokno služby Azure Speech Services](media/tenant-language-model/tenant-language-model-enrollment-2.png)
 
@@ -55,14 +55,14 @@ Postup vypnutí instance modelu tenanta:
 
 Pokud chcete model tenanta použít se sadou Speech SDK, potřebujete prostředek pro rozpoznávání řeči a jeho přidružený klíč předplatného.
 
-1. Přihlaste se na web [Azure Portal](https://aka.ms/azureportal).
+1. Přihlaste se k webu [Portál Azure](https://aka.ms/azureportal).
 1. Vyberte **vytvořit prostředek**.
 1. Do **vyhledávacího** pole zadejte **Speech**.
 1. V seznamu výsledků vyberte **řeč**a pak vyberte **vytvořit**.
 1. Pokud chcete vytvořit prostředek, postupujte podle pokynů na obrazovce. Ujistěte se, že:
    * **Umístění** je nastaveno na hodnotu **eastus** nebo **westus**.
    * **Cenová úroveň** je nastavená na **S0**.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
    Po několika minutách se prostředek vytvoří. Klíč předplatného je k dispozici v části **Přehled** pro váš prostředek.
 
@@ -83,7 +83,7 @@ Až správce povolí model tenanta pro vaši organizaci, můžete vytvořit jazy
    > * [Klíč zákazníka](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
    > * [Vládní organizace pro Office 365](https://www.microsoft.com/microsoft-365/government)
 
-1. Vyberte **Přihlásit**. 
+1. Zvolte **Přihlásit**.
 
    Až bude model tenanta připravený, obdržíte e-mailovou zprávu s potvrzením s dalšími pokyny.
 

@@ -3,17 +3,17 @@ title: C#kurz vytvoření první aplikace
 titleSuffix: Azure Cognitive Search
 description: Naučte se, jak vytvořit C# svou první aplikaci pro hledání krok za krokem. Kurz poskytuje odkaz na funkční aplikaci na GitHubu a kompletní proces sestavení zcela nové aplikace. Přečtěte si o základních součástech Azure Kognitivní hledání.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: fc3d9d52ca6eb3d35138323908c73eb0d09cf519
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2b4f67fc448d98239947fd764d4926f1d590c5e2
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112235"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121588"
 ---
 # <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C#kurz: Vytvoření první aplikace – Azure Kognitivní hledání
 

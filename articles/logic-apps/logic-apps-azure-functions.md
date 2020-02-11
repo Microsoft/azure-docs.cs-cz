@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453468"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116916"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Volání služby Azure Functions z Azure Logic Apps
 
@@ -200,11 +200,11 @@ Pokud chcete aktivovat aplikaci logiky z funkce Azure Functions, musí aplikace 
 
 K ověření přístupu k prostředkům v jiných klientech Azure Active Directory (Azure AD), aniž byste se museli přihlašovat a poskytovat přihlašovací údaje nebo tajné kódy, může vaše aplikace logiky používat [spravovanou identitu](../active-directory/managed-identities-azure-resources/overview.md) (dřív označovanou jako identita spravované služby nebo MSI). Azure tuto identitu spravuje za vás a pomáhá zabezpečit vaše přihlašovací údaje, protože nemusíte zadávat ani otáčet tajné klíče. Přečtěte si další informace o [službách Azure, které podporují spravované identity pro ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Pokud nastavíte aplikaci logiky tak, aby používala spravovanou identitu přiřazenou systémem, může Azure Functions ve vaší aplikaci logiky použít stejnou identitu pro ověřování také. Další informace o podpoře ověřování pro službu Azure Functions v Logic Apps najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+Pokud nastavíte aplikaci logiky tak, aby používala identitu přiřazenou systémem, nebo ručně vytvořenou identitu uživatele, funkce Azure ve vaší aplikaci logiky může stejnou identitu použít i pro ověřování. Další informace o podpoře ověřování pro službu Azure Functions v Logic Apps najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
-Pokud chcete nastavit a používat identitu přiřazenou systémem pomocí funkce, postupujte takto:
+Pokud chcete nastavit a používat spravovanou identitu s vaší funkcí, postupujte podle těchto kroků:
 
-1. Povolte identitu přiřazenou systémem v aplikaci logiky a nastavte přístup identity k cílovému prostředku. Informace najdete [v tématu ověření přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps](../logic-apps/create-managed-service-identity.md).
+1. Povolte spravovanou identitu ve vaší aplikaci logiky a nastavte přístup identity k cílovému prostředku. Informace najdete [v tématu ověření přístupu k prostředkům Azure pomocí spravovaných identit v Azure Logic Apps](../logic-apps/create-managed-service-identity.md).
 
 1. Pomocí následujících kroků povolte ověřování v aplikaci Azure Function a Function App:
 
@@ -215,7 +215,7 @@ Pokud chcete nastavit a používat identitu přiřazenou systémem pomocí funkc
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>Nastavení anonymního ověřování ve vaší funkci
 
-Pokud chcete používat identitu vaší aplikace logiky ve funkci Azure Functions, nastavte úroveň ověřování funkce na anonymní. V opačném případě vaše aplikace logiky vyvolá chybu "důvodu chybného požadavku".
+Pokud chcete ve funkci Azure Functions používat spravovanou identitu vaší aplikace logiky, nastavte úroveň ověřování funkce na anonymní. V opačném případě vaše aplikace logiky vyvolá chybu "důvodu chybného požadavku".
 
 1. V [Azure Portal](https://portal.azure.com)Najděte aplikaci Function App a vyberte ji. Tyto kroky jako ukázkovou aplikaci funkcí používají "FabrikamFunctionApp".
 

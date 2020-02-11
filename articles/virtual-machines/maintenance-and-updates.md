@@ -1,22 +1,18 @@
 ---
-title: Údržba a aktualizace pro virtuální počítače v Azure | Microsoft Docs
+title: Údržba a aktualizace
 description: Přehled údržby a aktualizací pro virtuální počítače běžící v Azure.
-services: virtual-machines
-documentationcenter: ''
 author: shants123
-editor: ''
-tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
-ms.openlocfilehash: 45dba8de8ef735bdb9df102ac367e6a1653bf481
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: eaf7616b3bd69828829342b4dca9247c009d3475
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807081"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121860"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Údržba virtuálních počítačů v Azure
 

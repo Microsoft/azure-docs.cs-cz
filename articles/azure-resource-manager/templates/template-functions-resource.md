@@ -2,13 +2,13 @@
 title: Funkce šablon – prostředky
 description: Popisuje funkce pro použití v šabloně Azure Resource Manageru k načtení hodnoty o prostředcích.
 ms.topic: conceptual
-ms.date: 01/20/2020
-ms.openlocfilehash: cfcc9ff3af33fe9de813d8a31b7d102f00725ce4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 02/10/2020
+ms.openlocfilehash: cc8976b714549f7442e22b341b34e81d717c8742
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048805"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120541"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Prostředek funkce pro šablony Azure Resource Manageru
 
@@ -38,10 +38,10 @@ Vrátí ID prostředku pro [prostředek rozšíření](../management/extension-r
 
 | Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceId |Ano |řetězec |ID prostředku prostředku, na který se prostředek rozšíření používá |
-| resourceType |Ano |řetězec |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
-| resourceName1 |Ano |řetězec |Název prostředku. |
-| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+| resourceId |Ano |string |ID prostředku prostředku, na který se prostředek rozšíření používá |
+| resourceType |Ano |string |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
+| resourceName1 |Ano |string |Název prostředku. |
+| resourceName2 |Ne |string |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
@@ -118,9 +118,9 @@ Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementa
 
 | Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceName nebo resourceIdentifier |Ano |řetězec |Jedinečný identifikátor prostředku. |
-| apiVersion |Ano |řetězec |Verze rozhraní API prostředku běhový stav. Obvykle ve formátu **yyyy-MM-DD**. |
-| functionValues |Ne |object | Objekt, který obsahuje hodnoty pro funkci. Tento objekt Poskytněte jenom pro funkce, které podporují příjem objektu s hodnotami parametrů, jako je například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. |
+| resourceName nebo resourceIdentifier |Ano |string |Jedinečný identifikátor prostředku. |
+| apiVersion |Ano |string |Verze rozhraní API prostředku běhový stav. Obvykle ve formátu **yyyy-MM-DD**. |
+| functionValues |Ne |objekt | Objekt, který obsahuje hodnoty pro funkci. Tento objekt Poskytněte jenom pro funkce, které podporují příjem objektu s hodnotami parametrů, jako je například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. |
 
 ### <a name="valid-uses"></a>Platná použití
 
@@ -218,9 +218,9 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. ServiceBus/obory názvů/Queues/autorizačních pravidel | [klíče listkey](/rest/api/servicebus/queues/listkeys) |
 | Microsoft. ServiceBus/obory názvů/témata/autorizačních pravidel | [klíče listkey](/rest/api/servicebus/topics/listkeys) |
 | Microsoft. SignalRService/Signaler | [klíče listkey](/rest/api/signalr/signalr/listkeys) |
-| Microsoft.Storage/storageAccounts. | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
-| Microsoft.Storage/storageAccounts. | [klíče listkey](/rest/api/storagerp/storageaccounts/listkeys) |
-| Microsoft.Storage/storageAccounts. | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
+| Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
+| Microsoft.Storage/storageAccounts | [klíče listkey](/rest/api/storagerp/storageaccounts/listkeys) |
+| Microsoft.Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
 | Microsoft. StorSimple/manažeři/zařízení | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
 | Microsoft. StorSimple/manažeři/zařízení | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
 | Microsoft. StorSimple/– manažeři | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
@@ -354,7 +354,7 @@ Chcete-li získat token SAS, předejte objekt pro čas vypršení platnosti. Ča
 }
 ```
 
-## <a name="providers"></a>Zprostředkovatelé
+## <a name="providers"></a>zprostředkovatelé
 
 ```json
 providers(providerNamespace, [resourceType])
@@ -366,8 +366,8 @@ Vrátí informace o zprostředkovateli prostředků a její podporované typy pr
 
 | Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Ano |řetězec |Namespace poskytovatele |
-| resourceType |Ne |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
+| providerNamespace |Ano |string |Namespace poskytovatele |
+| resourceType |Ne |string |Typ prostředku v rámci zadaného oboru názvů. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -443,9 +443,9 @@ Vrátí objekt představující stav prostředků modulu runtime.
 
 | Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceName nebo resourceIdentifier |Ano |řetězec |Název nebo identifikátor prostředku. Při odkazování na prostředek v aktuální šablony, zadejte pouze název prostředku jako parametr. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
-| apiVersion |Ne |řetězec |Verze rozhraní API zadaný prostředek. Zahrnout tento parametr, pokud prostředek není zřízený v rámci stejné šablony. Obvykle ve formátu **yyyy-MM-DD**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
-| "Úplné" |Ne |řetězec |Hodnota, která určuje, jestli se má vrátit objekt úplné prostředku. Pokud nezadáte `'Full'`, vrátí se pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID prostředku a umístění. |
+| resourceName nebo resourceIdentifier |Ano |string |Název nebo identifikátor prostředku. Při odkazování na prostředek v aktuální šablony, zadejte pouze název prostředku jako parametr. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
+| apiVersion |Ne |string |Verze rozhraní API zadaný prostředek. Zahrnout tento parametr, pokud prostředek není zřízený v rámci stejné šablony. Obvykle ve formátu **yyyy-MM-DD**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
+| "Úplné" |Ne |string |Hodnota, která určuje, jestli se má vrátit objekt úplné prostředku. Pokud nezadáte `'Full'`, vrátí se pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID prostředku a umístění. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -666,7 +666,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 }
 ```
 
-## <a name="resourcegroup"></a>Skupina prostředků
+## <a name="resourcegroup"></a>resourceGroup
 
 ```json
 resourceGroup()
@@ -752,23 +752,23 @@ V předchozím příkladu vrátí objekt v následujícím formátu:
 resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Vrací jedinečný identifikátor prostředku. Tuto funkci použít, když název prostředku je nejednoznačný nebo není zřízené v rámci stejné šablony.
+Vrací jedinečný identifikátor prostředku. Tuto funkci použít, když název prostředku je nejednoznačný nebo není zřízené v rámci stejné šablony. Formát vráceného identifikátoru se liší v závislosti na tom, jestli se nasazení stane v oboru skupiny prostředků, předplatného, skupiny pro správu nebo tenanta.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Ne |řetězec (ve formátu identifikátoru GUID) |Výchozí hodnota je aktuálním předplatném. Tuto hodnotu zadejte, když budete chtít načíst prostředek v jiném předplatném. |
-| resourceGroupName |Ne |řetězec |Výchozí hodnota je aktuální skupinu prostředků. Tuto hodnotu zadejte, když budete chtít načíst prostředek v jiné skupině prostředků. |
-| resourceType |Ano |řetězec |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
-| resourceName1 |Ano |řetězec |Název prostředku. |
-| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+| resourceGroupName |Ne |string |Výchozí hodnota je aktuální skupinu prostředků. Tuto hodnotu zadejte, když budete chtít načíst prostředek v jiné skupině prostředků. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků. |
+| resourceType |Ano |string |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
+| resourceName1 |Ano |string |Název prostředku. |
+| resourceName2 |Ne |string |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
 ### <a name="return-value"></a>Návratová hodnota
 
-ID prostředku se vrátí v následujícím formátu:
+Když je šablona nasazená v oboru skupiny prostředků, vrátí se ID prostředku v následujícím formátu:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -778,6 +778,12 @@ Při použití v [nasazení na úrovni předplatného](deploy-to-subscription.md
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+Při použití v [nasazení na úrovni skupiny pro správu](deploy-to-management-group.md) nebo nasazení na úrovni TENANTA se ID prostředku vrátí v následujícím formátu:
+
+```json
+/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
 Chcete-li získat ID v jiných formátech, přečtěte si:
@@ -892,10 +898,10 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| sameRGOutput | Řetězec | /subscriptions/{Current-Sub-ID}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | Řetězec | /subscriptions/{Current-Sub-ID}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | Řetězec | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | Řetězec | /subscriptions/{Current-Sub-ID}/resourceGroups/examplegroup/providers/Microsoft.SQL/Servers/servername/Databases/databaseName |
+| sameRGOutput | String | /subscriptions/{Current-Sub-ID}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | String | /subscriptions/{Current-Sub-ID}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | String | /subscriptions/{Current-Sub-ID}/resourceGroups/examplegroup/providers/Microsoft.SQL/Servers/servername/Databases/databaseName |
 
 ## <a name="subscription"></a>předplatné
 
@@ -953,9 +959,9 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni předplatn
 | Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Ne |řetězec (ve formátu GUID) |Výchozí hodnota je aktuálním předplatném. Tuto hodnotu zadejte, když budete chtít načíst prostředek v jiném předplatném. |
-| resourceType |Ano |řetězec |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
-| resourceName1 |Ano |řetězec |Název prostředku. |
-| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+| resourceType |Ano |string |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
+| resourceName1 |Ano |string |Název prostředku. |
+| resourceName2 |Ne |string |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
@@ -1036,9 +1042,9 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni tenanta.
 
 | Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceType |Ano |řetězec |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
-| resourceName1 |Ano |řetězec |Název prostředku. |
-| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+| resourceType |Ano |string |Typ prostředku včetně obor názvů zprostředkovatele prostředků. |
+| resourceName1 |Ano |string |Název prostředku. |
+| resourceName2 |Ne |string |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 

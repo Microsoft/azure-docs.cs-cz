@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: be4646631a63a82458a975683f949a2a00398aaf
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 745d7335f70fb082ced16341742e3eb77a34f563
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703231"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120464"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Rychlý start: Získání tokenu a volání rozhraní API Microsoft Graph z desktopové aplikace Windows
 
@@ -38,7 +38,7 @@ V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Wi
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte si aplikaci
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
@@ -49,8 +49,8 @@ V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Wi
 >      - V části **Podporované typy účtu** vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft (například Skype, Xbox, Outlook.com)** .
 >      - Výběrem možnosti **Registrovat** aplikaci vytvořte.
 > 1. V seznamu stránek pro aplikaci vyberte **Ověřování**.
-> 1. V části **identifikátory URI pro přesměrování** | **Doporučené identifikátory URI pro přesměrování pro veřejné klienty (mobilní zařízení, stolní počítače)** , ověřte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-> 1. Vyberte **Uložit**.
+> 1. V části **identifikátory URI přesměrování** | **Doporučené identifikátory URI pro přesměrování pro veřejné klienty (mobilní počítače)** použijte **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+> 1. Vyberte **Save** (Uložit).
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Krok 1: Nakonfigurujte si aplikaci na portálu Azure Portal
@@ -65,7 +65,7 @@ V tomto rychlém startu se dozvíte, jak napsat desktopovou aplikaci .NET pro Wi
 
 [Stažení projektu sady Visual Studio](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip) ([zobrazení projektu na GitHubu](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/))
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Nakonfigurujte si projekt sady Visual Studio
+#### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
 1. Otevřete projekt v sadě Visual Studio.
@@ -113,6 +113,7 @@ Potom inicializujte knihovnu MSAL pomocí následujícího kódu:
 ```csharp
 public static IPublicClientApplication PublicClientApp;
 PublicClientApplicationBuilder.Create(ClientId)
+                .WithRedirectUri("https://login.microsoftonline.com/common/oauth2/nativeclient")
                 .WithAuthority(AzureCloudInstance.AzurePublic, Tenant)
                 .Build();
 ```
@@ -129,7 +130,7 @@ Knihovna MSAL používá k získání tokenů dvě metody: `AcquireTokenInteract
 
 Některé situace vyžadují, aby uživatelé mohli komunikovat s koncovým bodem Microsoft Identity Platform prostřednictvím místního okna a ověřit své přihlašovací údaje nebo udělit souhlas. Možné příklady:
 
-- Při prvním přihlášení uživatele k aplikaci
+- Při prvním přihlášení k aplikaci
 - Když je potřeba, aby uživatelé znovu zadali svoje přihlašovací údaje, protože vypršela platnost hesla
 - Když vaše aplikace žádá o přístup k prostředku, ke kterému musí dát uživatel souhlas
 - Když je nutné dvoufaktorové ověřování
@@ -145,7 +146,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-Nechcete vyžadovat, aby uživatel ověřoval přihlašovací údaje pokaždé, když potřebuje přístup k prostředku. Ve většině případů budete chtít tokeny pořizovat a obnovovat bez nutnosti zásahu uživatele. Po počáteční metodě `AcquireTokenInteractive` můžete použít metodu `AcquireTokenSilent` a získat tokeny pro přístup k chráněným prostředkům:
+Nechcete vyžadovat, aby uživatel ověřoval přihlašovací údaje pokaždé, když potřebuje přístup k prostředku. Ve většině případů budete chtít tokeny pořizovat a obnovovat bez nutnosti zásahu uživatele. Po počáteční metodě `AcquireTokenSilent` můžete použít metodu `AcquireTokenInteractive` a získat tokeny pro přístup k chráněným prostředkům:
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();

@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 99f4d8d854334b047caf36406f21890cde7eda16
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 02/10/2020
+ms.openlocfilehash: 0bfaef72be23f148c01e02e910b11128cec1659e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77082958"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116704"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Vytváření Azure Machine Learning datových sad
 
@@ -109,11 +109,11 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Zachované|Pclass|Název|Sex|Věk|SibSp|Parch|Vel|Vozov|Posádk|Nastoupilo
+| |PassengerId|Zachované|Pclass|Název|Sex|Stáří|SibSp|Parch|Vel|Vozov|Posádk|Nastoupilo
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
-0|1|False|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
-1|2|True|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female (žena)|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
-2|3|True|3|Heikkinen, chybíš. Laina|female (žena)|26,0|0|0|STON/O2. 3101282|7,9250||S
+0|1|Nepravda|3|Braund, Mr. Owen Harris|male (muž)|22,0|1|0|A/5 21171|7,2500||S
+1|2|True|1|Cumings, paní Jan Bradley (Florencie Briggs th...|female|38,0|1|0|POČÍTAČ 17599|71,2833|C85|C
+2|3|True|3|Heikkinen, chybíš. Laina|female|26,0|0|0|STON/O2. 3101282|7,9250||S
 
 Pro čtení z Azure SQL Database použijte metodu [`from_sql_query()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-sql-query-query--validate-true--set-column-types-none-) třídy `TabularDatasetFactory`.
 
@@ -172,7 +172,9 @@ Vytvoření datové sady v studiu:
 1. V části **assets (prostředky** ) v levém podokně vyberte datové **sady** . 
 1. Vyberte **vytvořit datovou sadu** a zvolte zdroj datové sady. Tento zdroj může být místní soubory, úložiště dat nebo veřejné adresy URL.
 1. Vyberte **tabulkové** nebo **soubor** pro typ datové sady.
-1. Výběrem možnosti **Další** si můžete prohlédnout formuláře **nastavení a náhled**, **schéma** a **potvrdit podrobnosti** . jsou inteligentně vyplněny na základě typu souboru. Pomocí těchto formulářů můžete kontrolovat vaše výběry a dále konfigurovat datovou sadu před vytvořením.  
+1. Výběrem **Další** otevřete formulář **úložiště dat a výběr souboru** . V tomto formuláři můžete vybrat, kde má být datová sada po vytvoření, a také vybrat datové soubory, které se mají použít pro datovou sadu. 
+1. Výběrem možnosti **Další** naplníte formuláře **nastavení a náhled** a **schéma** . jsou inteligentně vyplněné na základě typu souboru a můžete ještě před vytvořením těchto formulářů nakonfigurovat datovou sadu. 
+1. Kliknutím na tlačítko **Další** zkontrolujte formulář **potvrdit podrobnosti** . Projděte si výběr a vytvořte pro datovou sadu volitelný datový profil. Přečtěte si další informace o [profilování dat](how-to-create-portal-experiments.md#profile). 
 1. Vytvoření datové sady dokončíte výběrem **vytvořit** .
 
 ## <a name="register-datasets"></a>Registrace datových sad

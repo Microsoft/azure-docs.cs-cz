@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 572d8c4b59622156e8b3aca4565bbc206367f6d4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5ca153f0d52b65aa1ee56d5757381f1f31c7eeb5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514851"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120824"
 ---
 # <a name="api-management-authentication-policies"></a>API Management zásady ověřování
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -40,7 +40,7 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 <authentication-basic username="username" password="password" />
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```xml
 <authentication-basic username="testuser" password="testpassword" />
@@ -48,16 +48,16 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 ### <a name="elements"></a>Elementy
 
-|Name (Název)|Popis|Požaduje se|
+|Název|Popis|Požadováno|
 |----------|-----------------|--------------|
 |ověřování – základní|Kořenový element.|Ano|
 
 ### <a name="attributes"></a>Atributy
 
-|Name (Název)|Popis|Požaduje se|Výchozí|
+|Název|Popis|Požadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
-|uživatelské jméno|Určuje uživatelské jméno základního přihlašovacího údaje.|Ano|Nevztahuje se|
-|heslo|Určuje heslo základního přihlašovacího údaje.|Ano|Nevztahuje se|
+|uživatelské jméno|Určuje uživatelské jméno základního přihlašovacího údaje.|Ano|NEUŽÍVÁ SE.|
+|heslo|Určuje heslo základního přihlašovacího údaje.|Ano|NEUŽÍVÁ SE.|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
@@ -88,16 +88,16 @@ V tomto ukázkovém klientském certifikátu je identifikován název prostředk
 
 ### <a name="elements"></a>Elementy  
   
-|Name (Název)|Popis|Požaduje se|  
+|Název|Popis|Požadováno|  
 |----------|-----------------|--------------|  
 |ověřování – certifikát|Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name (Název)|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požadováno|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|kryptografický|Kryptografický otisk pro klientský certifikát|Musí být přítomen buď `thumbprint`, nebo `certificate-id`.|Nevztahuje se|  
-|ID certifikátu|Název prostředku certifikátu.|Musí být přítomen buď `thumbprint`, nebo `certificate-id`.|Nevztahuje se|  
+|thumbprint|Kryptografický otisk pro klientský certifikát|Musí být přítomen buď `thumbprint`, nebo `certificate-id`.|NEUŽÍVÁ SE.|  
+|ID certifikátu|Název prostředku certifikátu.|Musí být přítomen buď `thumbprint`, nebo `certificate-id`.|NEUŽÍVÁ SE.|  
   
 ### <a name="usage"></a>Využití  
  Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.  
@@ -115,7 +115,7 @@ V tomto ukázkovém klientském certifikátu je identifikován název prostředk
 <authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
 ```  
   
-### <a name="example"></a>Příklad:  
+### <a name="example"></a>Příklad  
 #### <a name="use-managed-identity-to-authenticate-with-a-backend-service"></a>Použití spravované identity k ověřování pomocí back-end služby
 ```xml  
 <authentication-managed-identity resource="https://graph.windows.net"/> 
@@ -147,16 +147,16 @@ V tomto ukázkovém klientském certifikátu je identifikován název prostředk
 
 ### <a name="elements"></a>Elementy  
   
-|Name (Název)|Popis|Požaduje se|  
+|Název|Popis|Požadováno|  
 |----------|-----------------|--------------|  
 |ověřování – spravovaná identita |Kořenový element.|Ano|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Name (Název)|Popis|Požaduje se|Výchozí|  
+|Název|Popis|Požadováno|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|Partner|řetezce. Identifikátor URI ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Ano|Nevztahuje se|  
-|výstup-token-proměnná-Name|řetezce. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string`. |Ne|Nevztahuje se|  
+|prostředek|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Ano|NEUŽÍVÁ SE.|  
+|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string`. |Ne|NEUŽÍVÁ SE.|  
 |ignorovat – chyba|Datového. Pokud se nastaví na `true`, kanál zásad se bude dál spouštět i v případě, že se nezíská přístupový token.|Ne|false|  
   
 ### <a name="usage"></a>Využití  

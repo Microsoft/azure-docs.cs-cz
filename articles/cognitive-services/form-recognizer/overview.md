@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 91ea2b68828ac54d4128a90550e9c60e065b719d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d78f3cc4f2b12b2d9f45878a0c1b91263112689
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75379421"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118540"
 ---
 # <a name="what-is-form-recognizer"></a>Co je služba Rozpoznávání formulářů?
 
@@ -51,17 +51,9 @@ Nástroj pro rozpoznávání formulářů obsahuje také model pro čtení prode
 
 Nástroj pro rozpoznávání formulářů také může extrahovat textovou a tabulkovou strukturu (čísla řádků a sloupců přidružených k tomuto textu) pomocí optického rozpoznávání znaků (OCR) s vysokým rozlišením. 
 
-## <a name="where-do-i-start"></a>Kde mám začít?
+## <a name="get-started"></a>Začínáme
 
-**Krok 1:** Požádat o přístup:
-
-Nástroj pro rozpoznávání formulářů je k dispozici ve verzi Preview s omezeným přístupem. Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) . Formulář požaduje informace o vás, vaší společnosti a scénáři, ve kterém budete používat nástroj pro rozpoznávání formulářů.
-
-**Krok 2:** Vytvořte prostředek pro rozpoznávání formulářů v Azure Portal:
-
-Pokud jste udělili přístup k používání nástroje pro rozpoznávání formulářů, obdržíte uvítací e-mail s několika odkazy a prostředky. Pomocí odkazu Azure Portal v této zprávě otevřete Azure Portal a vytvořte prostředek pro rozpoznávání formulářů.
-
-**Krok 3:** Extrakce dat z formulářů:
+Pomocí rychlého startu můžete začít extrahovat data z formulářů. Při učení technologie doporučujeme používat bezplatnou službu. Mějte na paměti, že počet bezplatných stránek je omezený na 500 za měsíc.
 
 * Vlastní analýza modelu na vaše formuláře
   * Výuka bez popisků
@@ -76,13 +68,11 @@ Pokud jste udělili přístup k používání nástroje pro rozpoznávání form
 * Rozložení – extrakce textu a struktury tabulky z formulářů
   * [Rychlý Start: extrakce dat rozložení pomocí Pythonu](quickstarts/python-layout.md)
 
-Při učení technologie doporučujeme používat bezplatnou službu. Mějte na paměti, že počet bezplatných stránek je omezený na 500 za měsíc.
-
-**Krok 4:** Zkontrolujte rozhraní REST API:
+### <a name="review-the-rest-apis"></a>Kontrola rozhraní REST API
 
 Pomocí následujících rozhraní API můžete vyškolit modely a extrahovat strukturovaná data z formulářů.
 
-|Name (Název) |Popis |
+|Název |Popis |
 |---|---|
 | **Vlastní model výuky**| Vytvořte nový model pro analýzu formulářů s použitím pěti forem stejného typu. Nastavte parametr _useLabelFile_ na `true` pro výuku pomocí ručně označených dat. |
 | **Analyzovat formulář** |Analyzujte jeden dokument předaný jako datový proud pro extrakci textu, párů klíč/hodnota a tabulek z formuláře pomocí vlastního modelu.  |

@@ -5,15 +5,15 @@ services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 11/21/2019
+ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: b9f434f2d3c06d3db0bfda7c5853cc835ff64035
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047767"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77123242"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generování souboru žádosti o podepsání certifikátu
 
@@ -26,10 +26,9 @@ Vygenerujte soubor žádosti o podepsání certifikátu (CSR), který Apple pou�
 1. Vyberte možnost **přístup do řetězce klíčů**, rozbalte **Pomocníka s certifikátem**a pak vyberte **požádat o certifikát od certifikační autority**.
 
     ![Použití nástroje Keychain Access k vyžádání nového certifikátu](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-request-cert-from-ca.png)
-    
-> [!NOTE]
-> OS X standardně vybere první položku v kategorii, kterou jste vybrali v nástroji pro přístup k řetězci klíčů. To může být problematické, pokud jste v části **certifikáty** a společnost **Apple celosvětově Developer Relations certifikační autorita** *není první* položkou v seznamu. Než si vyžádáte certifikát, ujistěte se, že jste v části **certifikáty** , a pak vyberte **Apple pro vývojáře. certifikační autorita**.
 
+   > [!NOTE]
+   > Ve výchozím nastavení přístup k řetězci klíčů vybere první položku v seznamu. To může být problém, pokud jste v kategorii **certifikáty** a pokud je **certifikační autorita pro vývojáře od společnosti Apple celosvětová** , nejedná se o první položku v seznamu. Ujistěte se, že máte neklíčovou položku, a před vygenerováním CSR (žádost o podepsání certifikátu) je vybraná možnost klíč **certifikační autority Apple celosvětově Developer Relations** .
 
 1. Vyberte svou **e-mailovou adresu uživatele**, zadejte hodnotu pro **běžný název** , ujistěte se, že jste zadali možnost **uloženo na disk**a pak vyberte **pokračovat**. Ponechte **e-mailovou adresu CA** prázdnou, protože není potřeba.
 

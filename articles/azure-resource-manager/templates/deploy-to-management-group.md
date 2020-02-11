@@ -2,13 +2,13 @@
 title: Nasazení prostředků do skupiny pro správu
 description: V této části najdete popis postupu nasazení prostředků v oboru skupiny pro správu v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 4ba4f4d2e95c0b878e9f402fa84139ac5b351e3c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 02/10/2020
+ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121909"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117035"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Vytváření prostředků na úrovni skupiny pro správu
 
@@ -63,8 +63,20 @@ V případě nasazení skupin pro správu existují při používání funkcí �
 
 * Funkce [Resource ()](template-functions-resource.md#resourcegroup) **není podporována.**
 * Funkce [Subscription ()](template-functions-resource.md#subscription) **není podporována.**
-* Funkce [ResourceID ()](template-functions-resource.md#resourceid) je podporována. Použijte ho k získání ID prostředku pro prostředky, které se používají v nasazeních na úrovni skupiny pro správu. Můžete například získat ID prostředku pro definici zásady s `resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))`. Vrátí ID prostředku ve formátu `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`.
 * Funkce [Reference ()](template-functions-resource.md#reference) a [list ()](template-functions-resource.md#list) jsou podporovány.
+* Funkce [ResourceID ()](template-functions-resource.md#resourceid) je podporována. Použijte ho k získání ID prostředku pro prostředky, které se používají v nasazeních na úrovni skupiny pro správu. Nezadávejte hodnotu parametru skupiny prostředků.
+
+  Pokud například chcete získat ID prostředku pro definici zásady, použijte:
+  
+  ```json
+  resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
+  ```
+  
+  ID vráceného prostředku má následující formát:
+  
+  ```json
+  /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
 
 ## <a name="create-policies"></a>Vytvoření zásad
 
@@ -136,9 +148,13 @@ Následující příklad přiřadí existující definici zásady ke skupině pr
 }
 ```
 
+## <a name="template-sample"></a>Ukázka šablony
+
+* Vytvořte skupinu prostředků, zásadu a přiřazení zásad.  Podívejte se [sem](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
+
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o přiřazování rolí najdete v tématu [Správa přístupu k prostředkům Azure pomocí šablon RBAC a Azure Resource Manager](../../role-based-access-control/role-assignments-template.md).
 * Příklad nasazení nastavení pracovního prostoru pro Azure Security Center najdete v tématu [deployASCwithWorkspaceSettings. JSON](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json).
-* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](template-syntax.md). 
+* Další informace o vytváření šablon Azure Resource Manager najdete v tématu [vytváření šablon](template-syntax.md).
 * Seznam dostupných funkcí v šabloně najdete v tématu [funkce šablon](template-functions.md).

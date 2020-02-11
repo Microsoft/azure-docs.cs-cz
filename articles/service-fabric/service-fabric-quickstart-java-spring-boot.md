@@ -6,73 +6,56 @@ ms.topic: quickstart
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c12cd53b55cac48aae3d69506204c9d107e34aa6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eb96989b4a2731e78471b848d690b48352408d1c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464379"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121482"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>Rychlý Start: nasazení aplikace v jazyce Java pružiny do Azure Service Fabric
 
-V tomto rychlém startu se dozvíte, jak nasadit aplikaci v jazyce Java pružiny do Azure Service Fabric. Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů. 
-
-Tento rychlý start využívá ukázku [Getting Started](https://spring.io/guides/gs/spring-boot/) z webu Spring. Pomocí známých nástrojů příkazového řádku vás tento rychlý start provede nasazením ukázky Spring Boot jako aplikace Service Fabric. Po dokončení budete mít funkční aplikaci Spring Boot Getting Started v Service Fabric.
-
-![Ukázka jarního spuštění Service Fabric](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
-
-V tomto rychlém startu se naučíte:
-
-* Nasazení aplikace Spring Boot do služby Service Fabric
-* Nasazení aplikace do místního clusteru
-* Škálovat aplikaci na více instancí napříč několika uzly.
-* Převzetí služeb při selhání vaší služby bez omezení dostupnosti
+V tomto rychlém startu nasadíte do Azure Service Fabric aplikaci Java pružiny, která využívá známé nástroje příkazového řádku v systému Linux nebo MacOS. Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu je potřeba:
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
-1. Nainstalovat sadu Service Fabric SDK a rozhraní příkazového řádku (CLI) Service Fabric
+- [Prostředí Java](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development) a [Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
+- [Service Fabric & SDK Service Fabric rozhraní příkazového řádku (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+- [Git](https://git-scm.com/downloads)
 
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
-    
-    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#installation-methods)
+#### <a name="macostabmacos"></a>[MacOS](#tab/macos)
 
-1. [Nainstalovat Git](https://git-scm.com/).
-1. Nainstalovat Yeoman
+- [Prostředí Java a Yeoman](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
+- [Service Fabric & SDK Service Fabric rozhraní příkazového řádku (CLI)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli#cli-mac)
+- [Git](https://git-scm.com/downloads)
 
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-
-    b. [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-yeoman-generators-for-containers-and-guest-executables)
-1. Nastavit prostředí Java
-
-    a. [Mac](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-your-application-on-your-mac-by-using-yeoman)
-    
-    b.  [Linux](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux#set-up-java-development)
+--- 
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
-V okně terminálu naklonujte spuštěním následujícího příkazu ukázkovou aplikaci Spring Boot Getting Started do místního počítače.
+V okně terminálu pomocí následujícího příkazu naklonujte ukázkovou aplikaci pro pružinové spouštění [Začínáme](https://github.com/spring-guides/gs-spring-boot) do místního počítače.
 
 ```bash
 git clone https://github.com/spring-guides/gs-spring-boot.git
 ```
 
 ## <a name="build-the-spring-boot-application"></a>Sestavení aplikace Spring Boot 
-1. V adresáři `gs-spring-boot/complete` spusťte následující příkaz, který sestaví aplikaci. 
+V adresáři *GS-jaře-Boot/Complete* spusťte následující příkaz, který sestaví aplikaci. 
 
-    ```bash
-    ./gradlew build
-    ``` 
+```bash
+./gradlew build
+``` 
 
 ## <a name="package-the-spring-boot-application"></a>Zabalení aplikace Spring Boot 
-1. Uvnitř adresáře `gs-spring-boot` ve vašem klonu spusťte příkaz `yo azuresfguest`. 
+1. Ve svém klonu v adresáři *GS-pružina Boot* spusťte příkaz `yo azuresfguest`. 
 
 1. Pro jednotlivé výzvy zadejte následující informace.
 
     ![Yeoman položky spouštěcího spouštění](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
 
-1. Ve složce `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` vytvořte soubor nazvaný `entryPoint.sh`. Do souboru `entryPoint.sh` přidejte následující kód. 
+1. Ve složce *SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/Code* vytvořte soubor s názvem *EntryPoint.sh*. Do souboru *EntryPoint.sh* přidejte následující kód. 
 
     ```bash
     #!/bin/bash
@@ -91,7 +74,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
        </Resources>
     ```
 
-    Soubor **ServiceManifest.xml** teď vypadá takto: 
+    Soubor *ServiceManifest.xml* teď vypadá takto: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -136,17 +119,17 @@ V této fázi jste vytvořili aplikaci Service Fabric pro ukázku Spring Boot Ge
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster
     ```
 
-    Spuštění místního clusteru nějakou dobu trvá. Pokud chcete potvrdit, že je cluster plně funkční, přejděte do Service Fabric Exploreru na adrese **http://localhost:19080** . Pět uzlů v pořádku značí, že je místní cluster zprovozněný. 
+    Spuštění místního clusteru nějakou dobu trvá. Pokud chcete potvrdit, že je cluster plně zapnutý, přejděte k Service Fabric Explorer v `http://localhost:19080`. Pět uzlů v pořádku značí, že je místní cluster zprovozněný. 
     
     ![Service Fabric Explorer zobrazuje uzly v pořádku](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-healthy-nodes.png)
 
-1. Otevřít `gs-spring-boot/SpringServiceFabric` složky.
+1. Otevřete složku *GS-pružina Boot/SpringServiceFabric* .
 1. Spusťte následující příkaz pro připojení k místnímu clusteru.
 
     ```bash
     sfctl cluster select --endpoint http://localhost:19080
     ```
-1. Spusťte skript `install.sh`.
+1. Spusťte skript *install.sh* .
 
     ```bash
     ./install.sh
@@ -157,6 +140,8 @@ V této fázi jste vytvořili aplikaci Service Fabric pro ukázku Spring Boot Ge
     ![Ukázka jarního spuštění Service Fabric](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 Teď máte přístup k aplikaci Spring Boot, která je nasazená do clusteru Service Fabric.
+
+Další informace najdete na stránce s ukázkami jarního spuštění [Začínáme](https://spring.io/guides/gs/spring-boot/) na jaře.
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Škálování aplikací a služeb v clusteru
 
@@ -210,8 +195,8 @@ Jako ukázku převzetí služeb při selhání simulujeme restartování uzlu po
 V tomto rychlém startu jste se naučili:
 
 * Nasazení aplikace Spring Boot do služby Service Fabric
-* Nasazení aplikace do místního clusteru
-* Škálovat aplikaci na více instancí napříč několika uzly.
+* Nasadit aplikaci do místního clusteru.
+* Škálování aplikace na více instancí napříč několika uzly
 * Převzetí služeb při selhání vaší služby bez omezení dostupnosti
 
 Další informace o práci s aplikacemi v Javě v Service Fabric najdete v kurzu věnovaném aplikacím v Javě.

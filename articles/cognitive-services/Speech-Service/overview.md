@@ -3,19 +3,19 @@ title: Co je služba Speech?
 titleSuffix: Azure Cognitive Services
 description: Služba rozpoznávání řeči je sjednocení převodu řeči na text, převod textu na řeč a rozpoznávání řeči do jednoho předplatného Azure. Pomocí sady Speech SDK, zařízení Speech SDK nebo rozhraní REST API můžete do svých aplikací, nástrojů a zařízení přidat řeč.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 11/05/2019
-ms.author: erhopf
-ms.openlocfilehash: df0ce5efefe86ed3b7e2e8ccf5a2bd9011e168e6
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 7ddfae430e6aa4ec9549e40c937e5edcfd927f6d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261428"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119924"
 ---
 # <a name="what-is-the-speech-service"></a>Co je služba Speech?
 
@@ -26,35 +26,17 @@ Služba rozpoznávání řeči je sjednocení převodu řeči na text, převod t
 
 Tyto funkce tvoří službu pro rozpoznávání řeči. Pomocí odkazů v této tabulce se dozvíte víc o běžných případech použití pro jednotlivé funkce nebo o Projděte si referenční informace k rozhraní API.
 
-| Služba | Funkce | Popis | SDK | REST |
+| Service | Funkce | Popis | Sada SDK | REST |
 | ------- | ------- | ----------- | --- | ---- |
-| [Speech-to-Text](speech-to-text.md) | Převod řeči na text | Převod řeči na text transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Použití převodu řeči na text s [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) k odvození záměrů uživatele z přepisu řeči a fungování hlasových příkazů. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Převod řeči na text](speech-to-text.md) | Převod řeči na text | Převod řeči na text transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Použití převodu řeči na text s [Language Understanding (Luis)](https://docs.microsoft.com/azure/cognitive-services/luis/) k odvození záměrů uživatele z přepisu řeči a fungování hlasových příkazů. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Přepis Batch](batch-transcription.md) | Batch přepis umožňuje provádět přepis velkých objemů dat z převodu řeči na text. Jedná se o službu založenou na REST, která používá stejný koncový bod jako přizpůsobení a Správa modelů. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
 | | [Konverzace s více zařízeními](multi-device-conversation.md) | Připojení více zařízení nebo klientů v rámci konverzace pro odesílání hlasových a textových zpráv s jednoduchou podporou pro přepis a překlady| Ano | Ne |
 | | [Přepis konverzace](conversation-transcription-service.md) | Umožňuje rozpoznávání řeči v reálném čase, identifikaci mluvčího a diarization. Je ideální pro zdlouhavého přepisování schůzky na osobu s možností odlišit reproduktory. | Ano | Ne |
 | | [Vytváření modelů Custom Speech](#customize-your-speech-experience) | Pokud používáte převod řeči na text pro rozpoznávání a přepis v jedinečném prostředí, můžete vytvořit a vyškolit vlastní modely akustického, jazyka a výslovnosti pro řešení hluku nebo slovníku specifického pro konkrétní obor. | Ne | [Ano](https://westus.cris.ai/swagger/ui/index) |
-| [Text-to-Speech](text-to-speech.md) | Převod textu na řeč | Převod textu na řeč převede vstupní text na syntetizované rozpoznávání řeči pomocí [jazyka SSML (Speech syntézy)](speech-synthesis-markup.md). Vyberte si ze standardních hlasů a hlasy neuronové (viz [Podpora jazyků](language-support.md)). | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Převod textu na řeč](text-to-speech.md) | Převod textu na řeč | Převod textu na řeč převede vstupní text na syntetizované rozpoznávání řeči pomocí [jazyka SSML (Speech syntézy)](speech-synthesis-markup.md). Vyberte si ze standardních hlasů a hlasy neuronové (viz [Podpora jazyků](language-support.md)). | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Vytváření vlastních hlasů](#customize-your-speech-experience) | Vytvářejte vlastní hlasová písma, která jsou jedinečná pro vaši značku nebo produkt. | Ne | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Překlad řeči](speech-translation.md) | Překlad řeči | Překlad řeči umožňuje překlady řeči v reálném čase pro aplikace, nástroje a zařízení v reálném čase. Použijte tuto službu pro překlad řeči a převod řeči na text. | [Ano](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Ne |
 | [Asistenti hlasu](voice-assistants.md) | Hlasoví asistenti | Hlasové asistenti, kteří používají službu pro rozpoznávání řeči, umožňují vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku. Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a implementací pomocníka, která používá kanál s přímým přístupem na platformě bot nebo integrované vlastní příkazy (Preview) pro dokončení úkolu. | [Ano](voice-assistants.md) | Ne |
-
-## <a name="news-and-updates"></a>Novinky a aktualizace
-
-Zjistěte, co je nového ve službě Speech.
-
-- Listopad 2019
-  - Přidali jsme dva nové styly mluveného slova, [`newscast`](speech-synthesis-markup.md#adjust-speaking-styles) a [`customerservice`](speech-synthesis-markup.md#adjust-speaking-styles) pro `en-US-JessaNeural` hlas.
-- Září 2019
-  - Vydaná sada Speech SDK 1.7.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v [poznámkách k verzi](releasenotes.md).
-- Srpen 2019
-  - **Nový kurz**: [hlas povolte robotovi pomocí sady Speech SDK, C# ](tutorial-voice-enable-your-bot-speech-sdk.md)
-  - Byl přidán nový styl mluveného slova [`chat`](speech-synthesis-markup.md#adjust-speaking-styles)pro `en-US-JessaNeural` hlas.
-- Červen 2019
-  - Vydaná sada Speech SDK 1.6.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v [poznámkách k verzi](releasenotes.md).
-- Květen 2019 – dokumentace je nyní k dispozici pro [přepis konverzace](conversation-transcription-service.md), [přepisy centra volání](call-center-transcription.md)a [hlasové asistenty](voice-assistants.md).
-- Květen 2019
-  - Vydaná sada Speech SDK 1.5.1. Úplný seznam aktualizací, vylepšení a známých problémů najdete v [poznámkách k verzi](releasenotes.md).
-  - Vydaná sada Speech SDK 1.5.0. Úplný seznam aktualizací, vylepšení a známých problémů najdete v [poznámkách k verzi](releasenotes.md).
 
 ## <a name="try-the-speech-service"></a>Vyzkoušejte službu pro rozpoznávání řeči
 
@@ -90,8 +72,8 @@ Služba Speech funguje dobře s integrovanými modely, ale možná budete chtít
 
 | Speech Service | Platforma | Popis |
 | -------------- | -------- | ----------- |
-| Řeč na text | [Custom Speech](https://aka.ms/customspeech) | Modely rozpoznávání řeči můžete přizpůsobit vašim potřebám a dostupným datům. Překonání bariér při rozpoznání řeči, jako jsou mluvený styl, slovník a šum na pozadí |
-| Text na řeč | [Vlastní hlas](https://aka.ms/customvoice) | Vytvořte si rozpoznatelný jedinečný hlas vašich aplikací pro převod textu na řeč pomocí vašich dostupných dat o hlasu. Hlasové výstupy můžete ještě více ladit úpravou sady hlasových parametrů. |
+| Řeč na text | [Custom Speech](https://aka.ms/customspeech) | Modely rozpoznávání řeči můžete přizpůsobit vašim potřebám a dostupným datům. Překonání překážek rozpoznávání řeči, například mluveného stylu, slovníku a hluku na pozadí. |
+| Převod textu na řeč | [Vlastní hlas](https://aka.ms/customvoice) | Vytvořte si rozpoznatelný jedinečný hlas vašich aplikací pro převod textu na řeč pomocí vašich dostupných dat o hlasu. Hlasové výstupy můžete ještě více ladit úpravou sady hlasových parametrů. |
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 

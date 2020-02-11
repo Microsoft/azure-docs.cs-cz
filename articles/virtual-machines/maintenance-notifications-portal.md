@@ -1,20 +1,18 @@
 ---
-title: Použití portálu k oznámením údržby pro virtuální počítače Azure
+title: Použití portálu pro oznámení o údržbě
 description: Zobrazení oznámení o údržbě pro virtuální počítače běžící v Azure a spuštění samoobslužné údržby pomocí portálu.
-services: virtual-machines
 author: shants123
-tags: azure-service-management,azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 759fbc5ba3c5eaa78fec1045bcf41969108d39b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 46fcc825ac49f0181ac74e9c3e2deaea577f3329
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535818"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77115739"
 ---
 # <a name="handling-planned-maintenance-notifications-using-the-portal"></a>Zpracování oznámení o plánované údržbě pomocí portálu
 
@@ -24,7 +22,7 @@ Po naplánování naplánovaných vln [údržby](maintenance-notifications.md) m
 
 Můžete použít Azure Portal a vyhledat virtuální počítače s naplánovanou údržbou.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 
 2. V levém navigačním panelu klikněte na **Virtual Machines**.
 
@@ -36,7 +34,7 @@ Můžete použít Azure Portal a vyhledat virtuální počítače s naplánovano
       
       | Hodnota | Popis |
       |-------|-------------|
-      | Začít teď | Virtuální počítač je v okně samoobslužné údržby, které umožňuje zahájit údržbu sami. Níže najdete informace o tom, jak na VIRTUÁLNÍm počítači spustit údržbu. | 
+      | Spustit hned | Virtuální počítač je v okně samoobslužné údržby, které umožňuje zahájit údržbu sami. Níže najdete informace o tom, jak na VIRTUÁLNÍm počítači spustit údržbu. | 
       | Naplánované | Pro virtuální počítač je naplánovaná údržba, ale bez možnosti, abyste ji zahájili vy. Okno údržby můžete zjistit tak, že v tomto zobrazení vyberete okno naplánované údržby nebo kliknutím na virtuální počítač. | 
       | Již Aktualizováno | Váš virtuální počítač už je aktualizovaný a v tuto chvíli se nevyžaduje žádná další akce. | 
       | Opakovat později | Zahájili jste údržbu bez úspěchu. Možnost samoobslužná údržba bude možné používat později. | 

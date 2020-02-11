@@ -3,20 +3,20 @@ title: 'Rychlý Start: syntetizace řeči na službu pro rozpoznávání řeči 
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu použijete sadu Speech SDK k převodu textu na syntetizované rozpoznávání řeči a přehrání výstupu na mluvčíi.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.author: erhopf
+ms.date: 02/10/2020
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 9f91d4b0c390b2014dfd88c94b89374d3ea67324
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 95cf6ea645e4a9a769e95692e1116ec2f1ac8c61
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818261"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119405"
 ---
 # <a name="quickstart-synthesize-speech-to-a-speaker"></a>Rychlý Start: syntetizace řeči na mluvčím
 

@@ -15,12 +15,12 @@ ms.date: 01/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b2a49528ca3c2b55c02f3bda89b3722ee8fef535
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 04a3af7c85a361878e37cf3ee210e8a5c9f3cd30
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264250"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121972"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -50,7 +50,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | [Role čtecího modulu služby API Management](#api-management-service-reader-role) | Přístup ke službě a rozhraním API jen pro čtení | 71522526-b88f-4d52-b57f-d31fc3546d0d |
 > | [Vlastník dat konfigurace aplikace](#app-configuration-data-owner) | Umožňuje úplný přístup k datům konfigurace aplikace. | 5ae67dd6-50cb-40e7-96ff-dc2bfa4b606b |
 > | [Čtečka dat konfigurace aplikace](#app-configuration-data-reader) | Povoluje přístup pro čtení k datům konfigurace aplikace. | 516239f1-63e1-4d78-a4de-a74fb236a071 |
-> | [Application Insights Component Contributor](#application-insights-component-contributor) | Může spravovat součásti Application Insights. | ae349356-3a1b-4a5e-921d-050484c6347e |
+> | [Přispěvatel Application Insights komponent](#application-insights-component-contributor) | Může spravovat součásti Application Insights. | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Poskytuje uživateli oprávnění k zobrazení a stažení snímků ladění shromážděných pomocí Snapshot Debugger Application Insights. Všimněte si, že tato oprávnění nejsou zahrnutá v rolích [vlastník](#owner) nebo [Přispěvatel](#contributor) . | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [Operátor úlohy služby Automation](#automation-job-operator) | Vytvářejte a spravujte úlohy pomocí runbooků Automation. | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | [Operátor automatizace](#automation-operator) | Operátory automatizace můžou spouštět, zastavovat, pozastavovat a obnovovat úlohy. | d3881f73-407a-4167-8283-e981cbba0404 |
@@ -76,7 +76,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | [Operátor zálohování](#backup-operator) | Umožňuje správu zálohovacích služeb s výjimkou odebrání zálohování, vytváření trezoru a poskytování přístupu jiným uživatelům. | 00c29273-979b-4161-815c-10b084fb9324 |
 > | [Čtečka zálohování](#backup-reader) | Může zobrazovat služby zálohování, ale nemůže provádět změny. | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | [Čtenář fakturace](#billing-reader) | Povolí přístup pro čtení k fakturačním údajům. | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
-> | [BizTalk Contributor](#biztalk-contributor) | Umožňuje spravovat BizTalk Services, ale ne přístup k nim. | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
+> | [Přispěvatel BizTalk](#biztalk-contributor) | Umožňuje spravovat BizTalk Services, ale ne přístup k nim. | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | [Přístup ke členskému uzlu blockchain (Preview)](#blockchain-member-node-access-preview) | Umožňuje přístup k blockchain členským uzlům. | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | [Přispěvatel podrobného plánu](#blueprint-contributor) | Může spravovat definice podrobného plánu, ale nepřiřazovat je. | 41077137-e803-4205-871c-5a86e6a753b4 |
 > | [Operátor podrobného plánu](#blueprint-operator) | Může přiřadit existující publikované modrotisky, ale nemůže vytvářet nové plány. Poznámka: Tato akce funguje pouze v případě, že je přiřazení provedeno pomocí uživatelem přiřazené spravované identity. | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
@@ -152,9 +152,9 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | [Vlastník dat objektu BLOB služby Storage](#storage-blob-data-owner) | Poskytuje úplný přístup k Azure Storage kontejnerů a dat objektů blob, včetně přiřazování řízení přístupu k POSIX. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | [Čtečka dat objektů BLOB úložiště](#storage-blob-data-reader) | Čtení a výpis Azure Storage kontejnerů a objektů BLOB. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [Delegování objektu BLOB úložiště](#storage-blob-delegator) | Získejte klíč pro delegování uživatelů, který se pak dá použít k vytvoření sdíleného přístupového podpisu pro kontejner nebo objekt blob, který je podepsaný pomocí přihlašovacích údajů Azure AD. Další informace najdete v tématu [Vytvoření SAS pro delegování uživatelů](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas). | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
-> | [Přispěvatel sdílené složky SMB pro data souborů úložiště](#storage-file-data-smb-share-contributor) | Umožňuje čtení, zápis a odstraňování přístupu v Azure Storage sdílených složkách přes SMB. | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
-> | [Data souboru úložiště – Přispěvatel sdílené složky SMB se zvýšenými oprávněními](#storage-file-data-smb-share-elevated-contributor) | Umožňuje číst, zapisovat, odstraňovat a upravovat přístup k souborům NTFS v Azure Storage sdílených složkách přes SMB. | a7264617-510b-434b-a828-9731dc254ea7 |
-> | [Čtečka sdílené složky SMB pro data souborů úložiště](#storage-file-data-smb-share-reader) | Povolí přístup pro čtení ke sdílené složce Azure přes SMB. | aba4ae5f-2193-4029-9191-0cb91df5e314 |
+> | [Přispěvatel sdílené složky SMB pro data souborů úložiště](#storage-file-data-smb-share-contributor) | Umožňuje čtení, zápis a odstraňování přístupu k souborům nebo adresářům ve sdílených složkách Azure. Tato role nemá na souborových serverech se systémem Windows žádný předdefinovaný ekvivalent. | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
+> | [Data souboru úložiště – Přispěvatel sdílené složky SMB se zvýšenými oprávněními](#storage-file-data-smb-share-elevated-contributor) | Umožňuje číst, zapisovat, odstraňovat a upravovat seznamy ACL pro soubory nebo adresáře ve sdílených složkách Azure. Tato role je ekvivalentem seznamu ACL sdílené složky pro změnu na souborových serverech systému Windows. | a7264617-510b-434b-a828-9731dc254ea7 |
+> | [Čtečka sdílené složky SMB pro data souborů úložiště](#storage-file-data-smb-share-reader) | Umožňuje přístup pro čtení souborů nebo adresářů ve sdílených složkách Azure. Tato role je ekvivalentem seznamu ACL pro sdílení souborů na souborových serverech systému Windows. | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | [Přispěvatel dat fronty úložiště](#storage-queue-data-contributor) | Čtení, zápis a odstraňování front Azure Storage a zpráv fronty. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | [Procesor zpráv s daty ve frontě úložiště](#storage-queue-data-message-processor) | Prohlížet, načítat a odstraňovat zprávy z Azure Storage fronty. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | [Odesílatel zprávy s daty ve frontě úložiště](#storage-queue-data-message-sender) | Přidejte zprávy do fronty Azure Storage. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
@@ -195,7 +195,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotActions** |  |
 > | Microsoft. Authorization/*/DELETE | Odstranění rolí, přiřazení zásad, definic zásad a sad zásad |
 > | Microsoft.Authorization/*/Write | Vytváření rolí, přiřazení rolí, přiřazování zásad, definic zásad a definic sad zásad |
-> | Microsoft. Authorization/elevateAccess/Action | Udělit volajícímu přístup Správce uživatelských přístupů v oboru tenanta |
+> | Microsoft. Authorization/elevateAccess/Action | Udělí volajícímu přístup správce přístupu v oboru tenanta. |
 > | Microsoft. detail/blueprintAssignments/Write | Vytvořit nebo aktualizovat jakékoli přiřazení podrobného plánu |
 > | Microsoft. detail/blueprintAssignments/DELETE | Odstranit všechna přiřazení podrobného plánu |
 > | **Akce dataactions** |  |
@@ -294,7 +294,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
+## <a name="acrquarantinewriter"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -331,7 +331,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="api-management-service-operator-role"></a>Role Operátor služby API Management
+## <a name="api-management-service-operator-role"></a>Role operátora služby API Management
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -483,7 +483,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="automation-operator"></a>Operátor služby Automation
+## <a name="automation-operator"></a>Operátor automatizace
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -933,7 +933,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="backup-operator"></a>Operátor zálohování
+## <a name="backup-operator"></a>Operátor záloh
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1304,7 +1304,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **Akce** |  |
 > | Microsoft. Authorization/*/Read | Oprávnění ke čtení |
 > | Microsoft.ClassicCompute/domainNames/* | Vytváření a správa názvů klasických výpočetních domén |
-> | Microsoft. ClassicCompute/virtualMachines/* | Vytváření a správu virtuálních počítačů |
+> | Microsoft. ClassicCompute/virtualMachines/* | Vytváření a správa virtuálních počítačů |
 > | Microsoft.ClassicNetwork/networkSecurityGroups/join/action |  |
 > | Microsoft.ClassicNetwork/reservedIps/link/action | Propojení rezervované IP adresy |
 > | Microsoft.ClassicNetwork/reservedIps/read | Načte rezervované IP adresy. |
@@ -2482,7 +2482,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/switchprotection/Action | Přepnout kontejner ochrany |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/Action | Testovací převzetí služeb při selhání |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/Action | Vyčištění testovacího převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Převzetí služeb při selhání |
+> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Při selhání |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Aktualizovat službu mobility |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Přečíst všechna mapování kontejnerů ochrany |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/Read | Číst všechny poskytovatele Recovery Services |
@@ -2915,7 +2915,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje čtení, zápis a odstraňování přístupu v Azure Storage sdílených složkách přes SMB. |
+> | **Popis** | Umožňuje čtení, zápis a odstraňování přístupu k souborům nebo adresářům ve sdílených složkách Azure. Tato role nemá na souborových serverech se systémem Windows žádný předdefinovaný ekvivalent. |
 > | **ID** | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
 > | **Akce** |  |
 > | *nTato* |  |
@@ -2932,7 +2932,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje číst, zapisovat, odstraňovat a upravovat přístup k souborům NTFS v Azure Storage sdílených složkách přes SMB. |
+> | **Popis** | Umožňuje číst, zapisovat, odstraňovat a upravovat seznamy ACL pro soubory nebo adresáře ve sdílených složkách Azure. Tato role je ekvivalentem seznamu ACL sdílené složky pro změnu na souborových serverech systému Windows. |
 > | **ID** | a7264617-510b-434b-a828-9731dc254ea7 |
 > | **Akce** |  |
 > | *nTato* |  |
@@ -2950,7 +2950,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Povolí přístup pro čtení ke sdílené složce Azure přes SMB. |
+> | **Popis** | Umožňuje přístup pro čtení souborů nebo adresářů ve sdílených složkách Azure. Tato role je ekvivalentem seznamu ACL pro sdílení souborů na souborových serverech systému Windows. |
 > | **ID** | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | **Akce** |  |
 > | *nTato* |  |
@@ -3064,7 +3064,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="user-access-administrator"></a>Správce přístupu uživatelů
+## <a name="user-access-administrator"></a>Správce uživatelského přístupu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -3101,7 +3101,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="virtual-machine-contributor"></a>Přispěvatel virtuálních počítačů
+## <a name="virtual-machine-contributor"></a>Přispěvatel virtuálního počítače
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -3111,8 +3111,8 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. Authorization/*/Read | Oprávnění ke čtení |
 > | Microsoft.Compute/availabilitySets/* | Vytváření a Správa skupin dostupnosti výpočtů |
 > | Microsoft. COMPUTE/umístění/* | Vytváření a Správa výpočetních míst |
-> | Microsoft. COMPUTE/virtualMachines/* | Vytváření a správu virtuálních počítačů |
-> | Microsoft.Compute/virtualMachineScaleSets/* | Vytváření a správu škálovacích sad virtuálních počítačů |
+> | Microsoft. COMPUTE/virtualMachines/* | Vytváření a správa virtuálních počítačů |
+> | Microsoft.Compute/virtualMachineScaleSets/* | Vytváření a správa virtuálních počítačů Scale Sets |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Vytváření a Správa pravidel výstrah pro přehledy |
 > | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Připojí se ke fondu back-end adres služby Application Gateway. Nelze upozorňovat. |

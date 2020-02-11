@@ -2,19 +2,19 @@
 title: 'Rychlý Start: vytvoření indexu vyhledávání v Pythonu pomocí rozhraní REST API'
 titleSuffix: Azure Cognitive Search
 description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Pythonu, poznámkových bloků Jupyter a REST API Azure Kognitivní hledání.
-author: heidisteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 11/04/2019
-ms.openlocfilehash: c663fae47de1e161314aa3bf2fdb9966ae80d3c6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/10/2020
+ms.openlocfilehash: 15a3801a7ea99d6d799bcd8adf340b03f36bc196
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792264"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121620"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Pythonu pomocí poznámkových bloků Jupyter
 
@@ -30,7 +30,7 @@ Vytvářejte Jupyter Poznámkový blok, který vytváří, načítá a odesílá
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 
@@ -44,7 +44,7 @@ Volání REST vyžadují pro každý požadavek adresu URL služby a přístupov
 
 1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V části **nastavení**  > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+1. V části **nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
 ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
@@ -275,7 +275,7 @@ V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [vyhledávacích dok
 
 1. Spusťte jednotlivé kroky. Výsledky by měly vypadat podobně jako v následujícím výstupu. 
 
-    ![Prohledání indexu](media/search-get-started-python/search-index.png "Prohledat index")
+    ![Prohledání indexu](media/search-get-started-python/search-index.png "Prohledání indexu")
 
 1. Vyzkoušejte si několik dalších příkladů dotazů, které vám pomohou s syntaxí. `searchstring` můžete nahradit následujícími příklady a pak znovu spustit požadavek hledání. 
 

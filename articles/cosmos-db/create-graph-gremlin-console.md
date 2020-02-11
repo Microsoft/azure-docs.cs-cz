@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: b873cdc65ed483836dc4c3cf9904a8fab1d2f09f
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 78dfbabdcddaafefe77711e8f7b0ea1028f15c58
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665176"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117907"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Rychlý Start: vytvoření, dotazování a procházení databáze Azure Cosmos DB graphu pomocí konzoly Gremlin
 
@@ -25,7 +25,7 @@ ms.locfileid: "75665176"
 > * [PHP](create-graph-php.md)
 >  
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB. 
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos. 
 
 V tomto rychlém startu se dozvíte, jak vytvořit Azure Cosmos DB účet [rozhraní API Gremlin](graph-introduction.md) , databázi a graf (kontejner) pomocí Azure Portal a pak použít [konzolu Gremlin](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) z [Apache TinkerPop](https://tinkerpop.apache.org) pro práci s daty rozhraní API Gremlin. V tomto kurzu se naučíte vytvářet vrcholy a okraje a zadávat k nim dotazy, a to aktualizací vlastnosti vrcholu, a dále zadávat dotazy pro vrcholy, procházet graf a vyřadit konkrétní vrchol.
 
@@ -49,14 +49,14 @@ Musíte si také nainstalovat [konzolu Gremlin](https://tinkerpop.apache.org/dow
 
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
-## <a id="ConnectAppService"></a>Připojení ke službě aplikace
+## <a id="ConnectAppService"></a>Připojení ke službě App Service/Graph
 1. Než začnete používat konzolu Gremlin, vytvořte nebo upravte v adresáři `apache-tinkerpop-gremlin-console-3.2.5/conf` konfigurační soubor remote-secure.yaml.
 2. Podle následující tabulky vyplňte konfigurace *Hostitel*, *Port*, *Uživatelské jméno*, *Heslo*, *Fond připojení* a *Serializátor*:
 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
     hostitelé|[*název účtu*. **Gremlin**. Cosmos.Azure.com]|Viz následující snímek obrazovky. Jedná se o hodnotu **GREMLIN URI** na stránce Přehled Azure Portal v hranatých závorkách a na konci: 443/odebrané. Poznámka: Nezapomeňte použít hodnotu Gremlin a **ne** identifikátor URI, který končí na [*account-Name*. Documents.Azure.com], což by pravděpodobně způsobilo, že "hostitel při pokusu o spuštění dotazů Gremlin na dotazech neodpověděl včas". 
-    port|443|Nastavte na hodnotu 443.
+    Port|443|Nastavte na hodnotu 443.
     uživatelské jméno|*Vaše uživatelské jméno*|Prostředek ve formátu `/dbs/<db>/colls/<coll>`, kde `<db>` je název vaší databáze a `<coll>` je název vaší kolekce.
     heslo|*Váš primární klíč*| Viz druhý snímek obrazovky níže. Toto je váš primární klíč, který můžete získat ze stránky Klíče na webu Azure Portal v poli Primární klíč. Pomocí tlačítka pro kopírování na levé straně pole hodnotu zkopírujte.
     fond připojení|{enableSsl: true}|Nastavení fondu připojení pro protokol SSL.
@@ -92,7 +92,7 @@ Nezapomeňte zabalit parametr hodnota hostitelů do závorek [].
    > [!NOTE]
    > Pokud jste nespustili příkaz `:remote console`, ale chcete přesměrovat všechny příkazy konzoly na vzdálený server, zadejte před příkaz předponu `:>`. Příklad spuštěného příkazu: `:> g.V().count()`. Předpona je součástí příkazu. Při používání konzoly Gremlin s Azure Cosmos DB je to důležité. Pokud tuto předponu vynecháte, dáte konzole pokyn, aby příkaz spustila lokálně – často s grafem v paměti. Použitím předpony `:>` dáváte konzole pokyn ke spuštění vzdáleného příkazu. V tomto případě ve službě Azure Cosmos DB (v emulátoru místního hostitele nebo v instanci Azure).
 
-Výborně! Nastavení se nám podařilo dokončit a teď můžete spouštět některé příkazy konzoly.
+Skvěle! Nastavení se nám podařilo dokončit a teď můžete spouštět některé příkazy konzoly.
 
 Vyzkoušejme jednoduchý příkaz count(). Zadejte do příkazového řádku konzoly následující:
 

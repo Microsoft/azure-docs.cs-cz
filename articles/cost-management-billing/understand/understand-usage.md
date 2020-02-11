@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
 ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76290134"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Vysvětlení termínů v souboru s využitím a poplatky Azure
@@ -40,71 +40,71 @@ Soubor CSV s využitím a poplatky můžete otevřít v Microsoft Excelu nebo v 
 Následující tabulka popisuje důležité termíny používané v nejnovější verzi souboru s využitím a poplatky Azure.
 Seznam zahrnuje účty s průběžnými platbami (PAYG), smlouvu Enterprise (EA) a smlouvu se zákazníkem Microsoftu (MCA).
 
-Doba účinnosti | Typ účtu | Popis
+Označení | Typ účtu | Popis
 --- | --- | ---
 AccountName | EA, PAYG | Zobrazovaný název účtu registrace EA nebo fakturačního účtu PAYG.
 AccountOwnerId<sup>1</sup> | EA, PAYG | Jedinečný identifikátor pro účet registrace EA nebo fakturační účet PAYG.
-AdditionalInfo | Všechno | Metadata konkrétních služeb. Například typ image u virtuálního počítače.
-BillingAccountId<sup>1</sup> | Všechno | Jedinečný identifikátor kořenového fakturačního účtu.
-BillingAccountName | Všechno | Název fakturačního účtu.
-BillingCurrency | Všechno | Měna přidružená k fakturačnímu účtu.
+AdditionalInfo | Vše | Metadata konkrétních služeb. Například typ image u virtuálního počítače.
+BillingAccountId<sup>1</sup> | Vše | Jedinečný identifikátor kořenového fakturačního účtu.
+BillingAccountName | Vše | Název fakturačního účtu.
+BillingCurrency | Vše | Měna přidružená k fakturačnímu účtu.
 BillingPeriod | EA, PAYG | Fakturační období poplatku.
-BillingPeriodEndDate | Všechno | Koncové datum fakturačního období.
-BillingPeriodStartDate | Všechno | Počáteční datum fakturačního období.
-BillingProfileId<sup>1</sup> | Všechno | Jedinečný identifikátor registrace EA, předplatného PAYG, fakturačního profilu MCA nebo konsolidovaného účtu AWS.
-BillingProfileName | Všechno | Název registrace EA, předplatného PAYG, fakturačního profilu MCA nebo konsolidovaného účtu AWS.
-ChargeType | Všechno | Označuje, jestli poplatek představuje využití (**Usage**), nákup (**Purchase**) nebo refundaci (**Refund**).
-ConsumedService | Všechno | Název služby, ke které je poplatek přidružen.
+BillingPeriodEndDate | Vše | Koncové datum fakturačního období.
+BillingPeriodStartDate | Vše | Počáteční datum fakturačního období.
+BillingProfileId<sup>1</sup> | Vše | Jedinečný identifikátor registrace EA, předplatného PAYG, fakturačního profilu MCA nebo konsolidovaného účtu AWS.
+BillingProfileName | Vše | Název registrace EA, předplatného PAYG, fakturačního profilu MCA nebo konsolidovaného účtu AWS.
+ChargeType | Vše | Označuje, jestli poplatek představuje využití (**Usage**), nákup (**Purchase**) nebo refundaci (**Refund**).
+ConsumedService | Vše | Název služby, ke které je poplatek přidružen.
 CostCenter<sup>1</sup> | EA, MCA | Nákladové středisko definované pro předplatné pro sledování nákladů (k dispozici pouze v otevřených fakturačních obdobích pro účty MCA).
 Náklady | EA, PAYG | Viz CostInBillingCurrency.
 CostInBillingCurrency | MCA | Náklady na poplatek ve fakturační měně před kredity nebo daněmi.
 CostInPricingCurrency | MCA | Náklady na poplatek v měně pro ceny před kredity nebo daněmi.
 Měna | EA, PAYG | Viz BillingCurrency.
-Date<sup>1</sup> | Všechno | Datum využití nebo nákupu poplatku.
-EffectivePrice | Všechno | Smíšená jednotková cena pro období. Smíšené ceny jsou průměrem všech výkyvů v jednotkové ceně, jako je například odstupňované vrstvení, které snižuje cenu při nárůstu množství v průběhu času.
+Date<sup>1</sup> | Vše | Datum využití nebo nákupu poplatku.
+EffectivePrice | Vše | Smíšená jednotková cena pro období. Smíšené ceny jsou průměrem všech výkyvů v jednotkové ceně, jako je například odstupňované vrstvení, které snižuje cenu při nárůstu množství v průběhu času.
 ExchangeRateDate | MCA | Datum stanovení směnného kurzu.
 ExchangeRatePricingToBilling | MCA | Směnný kurz používaný k převodu nákladů v měně pro ceny na fakturační měnu.
-Frequency | Všechno | Určuje, jestli se očekává opakování poplatku. Poplatky se můžou účtovat jednorázově (**OneTime**), opakovat se na měsíční, nebo roční bázi (**Recurring**), nebo vycházet z využití (**UsageBased**).
+Frequency | Vše | Určuje, jestli se očekává opakování poplatku. Poplatky se můžou účtovat jednorázově (**OneTime**), opakovat se na měsíční, nebo roční bázi (**Recurring**), nebo vycházet z využití (**UsageBased**).
 InvoiceId | PAYG, MCA | Jedinečné ID dokumentu uvedené v souboru PDF faktury.
 InvoiceSection | MCA | Viz InvoiceSectionName.
 InvoiceSectionId<sup>1</sup> | EA, MCA | Jedinečný identifikátor oddílu pro fakturaci EA nebo MCA.
 InvoiceSectionName | EA, MCA | Název oddílu pro fakturaci EA nebo MCA.
-IsAzureCreditEligible | Všechno | Určuje, jestli má poplatek nárok na platby za použití kreditů Azure (hodnoty: true, false).
+IsAzureCreditEligible | Vše | Udává, jestli se může poplatek platit z kreditů Azure (hodnoty: True, False).
 Umístění | MCA | Umístění datacentra, ve kterém prostředek běží.
-MeterCategory | Všechno | Název klasifikační kategorie měřiče. Například *Cloud Services* a *sítě*.
-MeterId<sup>1</sup> | Všechno | Jedinečný identifikátor měřiče.
-MeterName | Všechno | Název měřiče.
-MeterRegion | Všechno | Název umístění datacentra pro služby s cenami založenými na umístění. Viz Location.
-MeterSubCategory | Všechno | Název kategorie dílčí klasifikace měřiče.
-OfferId<sup>1</sup> | Všechno | Název zakoupené nabídky.
+MeterCategory | Vše | Název klasifikační kategorie měřiče. Například *Cloud Services* a *sítě*.
+MeterId<sup>1</sup> | Vše | Jedinečný identifikátor měřiče.
+MeterName | Vše | Název měřiče.
+MeterRegion | Vše | Název umístění datacentra pro služby s cenami založenými na umístění. Viz Location.
+MeterSubCategory | Vše | Název kategorie dílčí klasifikace měřiče.
+OfferId<sup>1</sup> | Vše | Název zakoupené nabídky.
 PartNumber<sup>1</sup> | EA, PAYG | Identifikátor používaný k získání cen konkrétního měřiče.
 PlanName | EA, PAYG | Název plánu Marketplace.
 PreviousInvoiceId | MCA | Odkaz na původní fakturu, pokud tato řádková položka představuje refundaci.
 PricingCurrency | MCA | Měna použitá při hodnocení na základě sjednaných cen.
-Produkt | Všechno | Název produktu
+Produkt | Vše | Název produktu
 ProductId<sup>1</sup> | MCA | Jedinečný identifikátor pro produkt.
-ProductOrderId | Všechno | Jedinečný identifikátor objednávky produktu.
-ProductOrderName | Všechno | Jedinečný název objednávky produktu.
-Název vydavatele | Všechno | Název vydavatele služeb z Marketplace.
-PublisherType | Všechno | Typ vydavatele (hodnoty: **Azure**, **AWS**, **Marketplace**)
-Množství | Všechno | Počet zakoupených nebo spotřebovaných jednotek.
+ProductOrderId | Vše | Jedinečný identifikátor objednávky produktu.
+ProductOrderName | Vše | Jedinečný název objednávky produktu.
+Název vydavatele | Vše | Název vydavatele služeb z Marketplace.
+PublisherType | Vše | Typ vydavatele (hodnoty: **Azure**, **AWS**, **Marketplace**).
+Množství | Vše | Počet zakoupených nebo spotřebovaných jednotek.
 ReservationId | EA, MCA | Jedinečný identifikátor zakoupené instance rezervace.
 ReservationName | EA, MCA | Název zakoupené instance rezervace.
-ResourceGroup | Všechno | Název [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), ve které se prostředek nachází. Nepřijdete o všechny poplatky z prostředků nasazených do skupin prostředků. Poplatky, které nemají skupinu prostředků, se zobrazí jako null/prázdné, **jiné**nebo **nepoužitelné**.
-ResourceId<sup>1</sup> | Všechno | Jedinečný identifikátor prostředku [Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources).
-ResourceLocation | Všechno | Umístění datacentra, ve kterém prostředek běží. Viz Location.
-ResourceName | EA, PAYG | Název prostředku. Z nasazených prostředků nepřijdete o všechny poplatky. Poplatky, které nemají typ prostředku, se zobrazí jako null/prázdné, **jiné**nebo **nepoužitelné**.
-ResourceType | MCA | Typ instance prostředku. Z nasazených prostředků nepřijdete o všechny poplatky. Poplatky, které nemají typ prostředku, se zobrazí jako null/prázdné, **jiné**nebo **nepoužitelné**.
+ResourceGroup | Vše | Název [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), ve které se prostředek nachází. Ne všechny poplatky pocházejí z prostředků nasazených ve skupinách prostředků. Poplatky, které nemají skupinu prostředků, se zobrazí jako null/prázdné, **Ostatní** nebo **Nelze použít**.
+ResourceId<sup>1</sup> | Vše | Jedinečný identifikátor prostředku [Azure Resource Manageru](https://docs.microsoft.com/rest/api/resources/resources).
+ResourceLocation | Vše | Umístění datacentra, ve kterém prostředek běží. Viz Location.
+ResourceName | EA, PAYG | Název prostředku. Ne všechny poplatky pocházejí z nasazených prostředků. Poplatky, které nemají typ prostředku, se zobrazí jako null/prázdné, **Ostatní** nebo **Nelze použít**.
+ResourceType | MCA | Typ instance prostředku. Ne všechny poplatky pocházejí z nasazených prostředků. Poplatky, které nemají typ prostředku, se zobrazí jako null/prázdné, **Ostatní** nebo **Nelze použít**.
 ServiceFamily | MCA | Řada služeb, do které služba patří.
-ServiceInfo1 | Všechno | Metadata konkrétních služeb.
-ServiceInfo2 | Všechno | Starší pole s volitelnými metadaty konkrétní služby.
+ServiceInfo1 | Vše | Metadata konkrétních služeb.
+ServiceInfo2 | Vše | Starší pole s volitelnými metadaty konkrétní služby.
 ServicePeriodEndDate | MCA | Koncové datum období hodnocení, které má nastavené a uzamčené ceny za využívanou nebo zakoupenou službu.
 ServicePeriodStartDate | MCA | Počáteční datum období hodnocení, které má nastavené a uzamčené ceny za využívanou nebo zakoupenou službu.
-SubscriptionId<sup>1</sup> | Všechno | Jedinečný identifikátor předplatného Azure.
-SubscriptionName | Všechno | Název předplatného Azure.
-Tags<sup>1</sup> | Všechno | Značky přiřazené k prostředku. Nezahrnuje značky skupiny prostředků. Dá se použít k seskupení nebo distribuci nákladů pro interní vrácení peněz. Další informace najdete v článku o [uspořádání prostředků Azure pomocí značek](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
-Doba účinnosti | Všechno | Zobrazí období platnosti nabídky. Například: v případě rezervovaných instancí se jako výraz zobrazí 12 měsíců. Pro jednorázové nákupy nebo opakované nákupy je obdobím 1 měsíc (SaaS, podpora Marketplace). Toto neplatí pro využití Azure.
-UnitOfMeasure | Všechno | Měrná jednotka pro fakturaci služby. Například služby výpočetních prostředků se účtují po hodinách
+SubscriptionId<sup>1</sup> | Vše | Jedinečný identifikátor předplatného Azure.
+SubscriptionName | Vše | Název předplatného Azure.
+Tags<sup>1</sup> | Vše | Značky přiřazené k prostředku. Nezahrnuje značky skupiny prostředků. Dá se použít k seskupení nebo distribuci nákladů pro interní vrácení peněz. Další informace najdete v článku o [uspořádání prostředků Azure pomocí značek](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/).
+Označení | Vše | Zobrazí období platnosti nabídky. Příklad: V případě rezervovaných instancí se jako období zobrazuje 12 měsíců. Pro jednorázové nákupy nebo opakované nákupy je obdobím 1 měsíc (SaaS, podpora Marketplace). Toto neplatí pro využití Azure.
+UnitOfMeasure | Vše | Měrná jednotka pro fakturaci služby. Například výpočetní služby se účtují po hodinách.
 UnitPrice | EA, PAYG | Cena za jednotku pro poplatek.
 
 _<sup>**1**</sup> Pole použitá k vytvoření jedinečného ID pro jeden záznam nákladů_.
@@ -118,9 +118,9 @@ Následující tabulka mapuje termíny používané ve starších rozhraních AP
 Starý termín | Nový termín
 --- | ---
 ConsumedQuantity | Množství
-IncludedQuantity | Nevztahuje se
+IncludedQuantity | –
 InstanceId | ResourceId
-Sazba | EffectivePrice
+Sazba | EffectivePrice (Platná cena)
 Jednotka | UnitOfMeasure
 UsageDate | Datum
 UsageEnd | Datum
@@ -131,11 +131,11 @@ UsageStart | Datum
 
 Pokud chcete získat další podrobné informace o využití a poplatcích, přečtěte si článek vysvětlující fakturu [s průběžnými platbami](review-individual-bill.md) nebo fakturu [pro smlouvu se zákazníkem Microsoftu](review-customer-agreement-bill.md).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás.
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Zobrazení a stažení faktury za Microsoft Azure](download-azure-invoice.md)
-- [Zobrazení a stažení využití a poplatků za Microsoft Azure](download-azure-daily-usage.md)
+- [Zobrazení a stažení informací o využití a poplatcích Microsoft Azure](download-azure-daily-usage.md)

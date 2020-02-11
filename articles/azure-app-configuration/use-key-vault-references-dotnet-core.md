@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b35c23e6dd88af01391bf7f01a7e736a1a744fff
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4e896c5fa6f8656be29eed7eb8d4e8854a94ecfa
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714431"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116616"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Kurz: použití odkazů Key Vault v aplikaci ASP.NET Core
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 > * Vytvořte konfigurační klíč aplikace, který odkazuje na hodnotu uloženou v Key Vault.
 > * Přístup k hodnotě tohoto klíče z ASP.NET Core webové aplikace.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s tímto kurzem, nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 
@@ -82,7 +82,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidat odkaz Key Vault do konfigurace aplikace
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**.
 
@@ -172,7 +172,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     using Azure.Identity;
     ```
 
-1. Aktualizujte metodu `CreateWebHostBuilder`, aby používala konfiguraci aplikace, voláním metody `config.AddAzureAppConfiguration`. Zahrňte parametr `UseAzureKeyVault`, který bude předávat nové `KeyVaultClient` odkaz na Key Vault.
+1. Aktualizujte metodu `CreateWebHostBuilder`, aby používala konfiguraci aplikace, voláním metody `config.AddAzureAppConfiguration`. Zahrňte možnost `ConfigureKeyVault` a předejte do Key Vault správné přihlašovací údaje.
 
     #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -217,7 +217,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
             .UseStartup<Startup>());
     ```
 
-1. Po inicializaci připojení ke konfiguraci aplikace jste předali `KeyVaultClient` odkaz na metodu `UseAzureKeyVault`. Po inicializaci můžete přistupovat k hodnotám Key Vault odkazů stejným způsobem jako při přístupu k hodnotám běžných konfiguračních klíčů aplikací.
+1. Po inicializaci připojení k konfiguraci aplikace nastavíte připojení k Key Vault voláním metody `ConfigureKeyVault`. Po inicializaci můžete přistupovat k hodnotám Key Vault odkazů stejným způsobem jako při přístupu k hodnotám běžných konfiguračních klíčů aplikací.
 
     Chcete-li zobrazit tento proces v akci, otevřete *index. cshtml* v **zobrazeních** > **domovské** složce. Nahraďte jeho obsah následujícím kódem:
 

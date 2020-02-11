@@ -3,17 +3,17 @@ title: 'Rychlý Start: Vytvoření vyhledávací služby na portálu'
 titleSuffix: Azure Cognitive Search
 description: V tomto rychlém startu na portálu se dozvíte, jak nastavit prostředek služby Azure Kognitivní hledání v Azure Portal. Vyberte skupiny prostředků, oblasti a SKU nebo cenovou úroveň.
 manager: nitinme
-author: HeidiSteen
-ms.author: heidist
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: ec794f66866f9773f8b7c0fc57b644d8a13d697a
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 02/10/2020
+ms.openlocfilehash: bd4798ba4faa1808ecafb6d09eee09ba734c293d
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534563"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121699"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání na portálu
 
@@ -33,7 +33,7 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 
 ## <a name="find-azure-cognitive-search"></a>Najít Kognitivní hledání Azure
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 2. V levém horním rohu klikněte na symbol plus (+ vytvořit prostředek).
 3. Pomocí panelu hledání vyhledejte "Azure Kognitivní hledání" nebo přejděte k prostředku přes **Web** > **Azure kognitivní hledání**.
 

@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b24ad492f622fa9a3e494c7ead724fb3980f6668
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066847"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121363"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -86,6 +86,8 @@ Filtry oborů lze použít k definování pravidel založených na atributech, k
 ### <a name="b2b-guest-users"></a>Uživatelé B2B (host)
 
 Je možné použít službu Azure AD Provisioning Service ke zřízení uživatelů B2B (nebo hostů) ve službě Azure AD a SaaS aplikace. Aby se však uživatelé B2B přihlásili k aplikaci SaaS pomocí služby Azure AD, musí mít aplikace SaaS možnost jednotného přihlašování založené na SAML nakonfigurovanou určitým způsobem. Další informace o tom, jak nakonfigurovat aplikace SaaS tak, aby podporovaly přihlášení uživatelů B2B, najdete v tématu [Konfigurace aplikací SaaS pro spolupráci B2B](../b2b/configure-saas-apps.md).
+
+Všimněte si, že userPrincipalName pro uživatele typu Host je často uložen jako "alias # EXT #@domain.com". Pokud je hodnota userPrincipalName obsažena v mapování atributů jako zdrojový atribut, #EXT # je odstraněn z třídy userPrincipalName. Pokud požadujete, aby byla k dispozici #EXT #, nahraďte atribut userPrincipalName parametrem originalUserPrincipalName jako zdrojový atribut. 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Cykly zřizování: počáteční a přírůstkové
 

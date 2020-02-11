@@ -1,6 +1,6 @@
 ---
-title: Migrace úložiště účtů, předplatných pro vaši službu Správce zařízení StorSimple | Dokumentace Microsoftu
-description: Zjistěte, jak migrovat předplatnými, účty úložiště pro vaše service8000 Správce zařízení StorSimple.
+title: Migrace StorSimple Device Manager účtů úložiště, předplatných
+description: Naučte se migrovat předplatná, účty úložiště pro službu StorSimple Device Manager.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,37 +14,37 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 3cce18fa1890fc9e518294e294cc43e0e55065aa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8759de162227e8504360e64673ca9295c12cd13a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631528"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121884"
 ---
-# <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Migrovat předplatná a účty úložiště přidružené služby Správce zařízení StorSimple
+# <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>Migrace předplatných a účtů úložiště přidružených ke službě StorSimple Device Manager Service
 
-Budete muset přesunout služby StorSimple na nový registrace nebo do nového předplatného. Tyto scénáře migrace jsou buď změny účtu nebo datového centra. V následující tabulce použijte k pochopení, které tyto scénáře jsou podporovány, včetně podrobné kroky pro přesun.
+Možná budete muset přesunout službu StorSimple k nové registraci nebo k novému předplatnému. Tyto scénáře migrace jsou buď změny účtu nebo změny datového centra. Následující tabulka vám pomůže pochopit, které z těchto scénářů jsou podporované, včetně podrobných kroků k přesunutí.
 
 ## <a name="account-changes"></a>Změny účtu
 
-| Lze je přesunout...| Podporováno| Výpadek| Azure procesu podpory| Přístup|
+| Můžete přesunout...| Podporuje se| Výpadek| Proces podpory Azure| Přístup|
 |-----|-----|-----|-----|-----|
-| Celý předplatné (zahrnuje účty služby a úložiště StorSimple) a další registraci? | Ano       | Ne       | **Registrace přenosu**<br>Použití:<li>Při nákupu nových závazků Azure v rámci nové smlouvy.</li><li>Chcete provést migraci všech účtů a předplatných ze staré registrace na nový. To zahrnuje všechny služby Azure v rámci původní předplatného.</li> | **Krok 1: Otevřete lístek podpory operace Azure Enterprise.**<li>Přejděte do [ (Nastavení)https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) (Integrace a služby).</li><li> Vyberte **Správa registrace** a pak vyberte **přenést z jednoho registrace do nové registrace**.<br>**Krok 2: Zadejte požadované informace**<br>Zahrnout:<li>číslo registrace zdroje</li><li> určení registrační číslo</li><li>Datum účinnosti přenosu|
-| Služby StorSimple z existujícího účtu a novou registraci?    | Ano       | Ne       | **Převod účtu**<br>Použití:<li>Pokud nechcete, aby plně zaregistrované přenosu.</li><li>Chcete přesunout specifické účty a novou registraci.</li>| **Krok 1: Otevřete lístek podpory operace Azure Enterprise.**<li>Přejděte do [ (Nastavení)https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) (Integrace a služby).</li><li>Vyberte **Správa registrace** a pak vyberte **přenést do nové registrace účtu EA**.<br>**Krok 2: Zadejte požadované informace**<br>Zahrnout:<li>číslo registrace zdroje</li><li> určení registrační číslo</li><li>Datum účinnosti přenosu|
-| Služby StorSimple z jednoho předplatného do jiného předplatného?      | Ne        |    Ano         | Žádný proces ručního nastavení|<li>Migrace dat mimo zařízení StorSimple.</li><li>Proveďte obnovení do výrobního nastavení zařízení, tím se odstraní všechna místní data na zařízení.</li><li>Registrace zařízení pomocí nového předplatného a služby Správce zařízení StorSimple.</li><li>Migrace dat zpět do zařízení.|
-|Je možné převést vlastnictví předplatného Azure do jiného adresáře? | Ano       | Ne       | Přiřazení existujícího předplatného do adresáře služby Azure AD | Přečtěte si [k přiřazení existujícího předplatného do adresáře služby Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md). Správné zobrazení všech komponent může trvat až 10 minut.|
-| Zařízení StorSimple z jedné služby Správce zařízení StorSimple do jiné služby v jiné oblasti?      | Ne        | Ano            | Žádný proces ručního nastavení |Stejné jako výše.|
-| Účet úložiště nové předplatné nebo skupinu prostředků?     | Ano        | Ne             |Přesunout na jiné předplatné nebo skupinu prostředků účtu úložiště |Po přesunutí přístupové klíče účtu úložiště jsou aktualizovány, uživatel bude muset nakonfigurovat přístupových klíčů pro účet migrované úložiště ve službě Správce zařízení StorSimple ručně.|
-| Klasický účet úložiště do účtu úložiště Azure Resource Manageru      | Ano        | Ne             |Migrace z modelu classic na Azure Resource Manager |<li>Podrobné pokyny o tom, jak migrovat účet úložiště z modelu classic na Azure Resource Manager, přejděte na [migrace účtu klasického úložiště](../virtual-machines/windows/migration-classic-resource-manager-ps.md#step-62-migrate-a-storage-account).</li><li> Pokud přístupové klíče účtu úložiště se aktualizují po migraci, uživatel bude třeba synchronizovat přístupových klíčů pro účet úložiště migrované prostřednictvím služby Správce zařízení StorSimple. Je to z toho zařízení StorSimple dál normálně fungovat a budou moct vrstvení primární/zálohování dat do Azure. Podrobné pokyny pro synchronizaci klíčů přístup, přejděte na [pracovního postupu otočení](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts).</li><li> V případě řešení StorSimple Cloud Appliance Pokud je migrovat klasický účet úložiště, ale základní virtuální počítač stále zůstává v modelu classic, zařízení by měl fungovat správně. Pokud základní virtuální počítač pro cloudové zařízení je migrován, nebudou fungovat funkce deaktivace a odstranění.</li><li> Musíte vytvořit nové řešení StorSimple Cloud Appliance na webu Azure Portal a převzetí služeb při selhání ze starší cloud Appliance. Nelze vytvořit řešení StorSimple Cloud Appliance v novém portálu Azure portal pomocí účtu klasického úložiště, musí mít účet úložiště Azure Resource Manageru. Další informace najdete v části [nasadit a spravovat řešení StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).</li>|
+| Celé předplatné (zahrnuje službu StorSimple a účty úložiště) k jiné registraci? | Ano       | Ne       | **Přenos registrace**<br>Použije<li>Když si koupíte nový závazek Azure v rámci nové smlouvy.</li><li>Chcete migrovat všechny účty a předplatné z původního zápisu na nový. To zahrnuje všechny služby Azure v rámci starého předplatného.</li> | **Krok 1: Otevřete lístek podpory Azure Enterprise Operations.**<li>Přejděte do [ (Nastavení)https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) (Integrace a služby).</li><li> Vyberte **Správa** registrací a pak vyberte **přenos z jednoho zápisu na nový zápis**.<br>**Krok 2: zadejte požadované informace.**<br>Připojit<li>zdrojové číslo registrace</li><li> cílové číslo registrace</li><li>přenést datum účinnosti|
+| Služba StorSimple z existujícího účtu k nové registraci?    | Ano       | Ne       | **Přenos účtů**<br>Použije<li>Pokud nechcete provést úplný přenos zápisu.</li><li>Chcete pouze přesunout konkrétní účty do nové registrace.</li>| **Krok 1: Otevřete lístek podpory Azure Enterprise Operations.**<li>Přejděte do [ (Nastavení)https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) (Integrace a služby).</li><li>Vyberte **Správa** registrací a pak vyberte **přenést účet EA do nové registrace**.<br>**Krok 2: zadejte požadované informace.**<br>Připojit<li>zdrojové číslo registrace</li><li> cílové číslo registrace</li><li>přenést datum účinnosti|
+| Služba StorSimple z jednoho předplatného do jiného předplatného?      | Ne        |    Ano         | Žádný, ruční proces|<li>Migrujte data mimo zařízení StorSimple.</li><li>Provede obnovení továrního nastavení zařízení. tím se odstraní všechna místní data v zařízení.</li><li>Zaregistrujte zařízení s novým předplatným služby StorSimple Device Manager.</li><li>Migrujte data zpátky do zařízení.|
+|Můžu přenášet vlastnictví předplatného Azure do jiného adresáře? | Ano       | Ne       | Přidružit existující předplatné k adresáři služby Azure AD | Projděte si téma [přidružení existujícího předplatného k adresáři služby Azure AD](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md). Správné zobrazení všech komponent může trvat až 10 minut.|
+| StorSimple zařízení z jedné služby StorSimple Device Manager do jiné služby v jiné oblasti?      | Ne        | Ano            | Žádný, ruční proces |Stejné jako výše.|
+| Účet úložiště do nového předplatného nebo skupiny prostředků?     | Ano        | Ne             |Přesunout účet úložiště do jiného předplatného nebo skupiny prostředků |Pokud se po přesunutí aktualizují přístupové klíče účtu úložiště, bude uživatel muset ručně nakonfigurovat přístupové klíče pro migrovaný účet úložiště prostřednictvím služby StorSimple Device Manager.|
+| Klasický účet úložiště pro účet úložiště Azure Resource Manager      | Ano        | Ne             |Migrace z modelu Classic na Azure Resource Manager |<li>Podrobné pokyny, jak migrovat účet úložiště z klasického na Azure Resource Manager, najdete v článku [migrace klasického účtu úložiště](../virtual-machines/windows/migration-classic-resource-manager-ps.md#step-62-migrate-a-storage-account).</li><li> Pokud po migraci dojde k aktualizaci přístupových klíčů účtu úložiště, bude muset uživatel synchronizovat přístupové klíče pro migrovaný účet úložiště prostřednictvím služby StorSimple Device Manager. K tomu je potřeba zajistit, aby zařízení StorSimple nadále fungovala normálně a byla schopná vrstvy primárních a zálohovaných dat do Azure. Podrobné pokyny týkající se synchronizace přístupových klíčů najdete v tématu [pracovní postup rotace](storsimple-8000-manage-storage-accounts.md#key-rotation-of-storage-accounts).</li><li> Pokud se v případě StorSimple Cloud Appliance migruje klasický účet úložiště, ale základní virtuální počítač zůstane v klasickém nasazení, zařízení by mělo správně fungovat. Pokud se migruje základní virtuální počítač pro cloudové zařízení, funkce deaktivace a odstranění nebudou fungovat.</li><li> Musíte vytvořit nová StorSimple cloudová zařízení v Azure Portal a pak převzít služby při selhání ze staršího cloudového zařízení. V novém Azure Portal nemůžete vytvořit StorSimple Cloud Appliance pomocí klasického účtu úložiště, musí mít účet úložiště Azure Resource Manager. Další informace najdete na webu [nasazení a správa StorSimple Cloud Appliance](storsimple-8000-cloud-appliance-u2.md).</li>|
 
 ## <a name="datacenter-changes"></a>Změny datového centra
 
-| Lze je přesunout...| Podporováno|Výpadek| Azure procesu podpory| Přístup|
+| Můžete přesunout...| Podporuje se|Výpadek| Proces podpory Azure| Přístup|
 |-----|-----|-----|-----|-----|
-| Služby StorSimple do jiného z jednoho datového centra Azure? | Ne | Ano |Žádný proces ručního nastavení  |<li>Migrace dat mimo zařízení StorSimple.</li><li>Proveďte obnovení do výrobního nastavení zařízení, tím se odstraní všechna místní data na zařízení.</li><li>Zařízení zaregistrujte nové předplatné k nové službě Správce zařízení StorSimple.</li><li>Migrace dat zpět do zařízení.|
-| Účet úložiště z jednoho datového centra Azure do jiného? | Ne |Ano  |Žádný proces ručního nastavení  | Stejné jako výše.|
+| Službu StorSimple z jednoho datacentra Azure do jiného? | Ne | Ano |Žádný, ruční proces  |<li>Migrujte data mimo zařízení StorSimple.</li><li>Provede obnovení továrního nastavení zařízení. tím se odstraní všechna místní data v zařízení.</li><li>Zaregistrujte zařízení k novému předplatnému novou službu StorSimple Device Manager.</li><li>Migrujte data zpátky do zařízení.|
+| Účet úložiště z jednoho datacentra Azure do jiného? | Ne |Ano  |Žádný, ruční proces  | Stejné jako výše.|
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Nasazení služby Správce zařízení StorSimple](storsimple-8000-manage-service.md)
-* [Nasazení zařízení StorSimple řady 8000 na webu Azure portal](storsimple-8000-deployment-walkthrough-u2.md)
+* [Nasadit službu StorSimple Device Manager](storsimple-8000-manage-service.md)
+* [Nasazení zařízení řady StorSimple 8000 v Azure Portal](storsimple-8000-deployment-walkthrough-u2.md)

@@ -3,19 +3,19 @@ title: Rozpoznávání záměrů z řeči pomocí sady Speech SDKC#
 titleSuffix: Azure Cognitive Services
 description: V této příručce se dozvíte, jak rozpoznávat záměry pomocí sady Speech SDK pro C#.
 services: cognitive-services
-author: wolfma61
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/28/2019
-ms.author: wolfma
-ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 5d3c77c307739f9014010a592aa496a1cc83b333
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805888"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120040"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Jak rozpoznávat záměry z rozpoznávání řeči pomocí sady Speech SDK proC#
 
@@ -35,7 +35,7 @@ V této příručce použijete sadu Speech SDK k vytvoření C# konzolové aplik
 > - Rozpoznávat řeč ze souboru
 > - Používat asynchronní událostmi řízené průběžné rozpoznávání
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s touto příručkou, ujistěte se, že máte následující položky:
 
@@ -91,12 +91,15 @@ Dále přidáte kód do projektu.
 
    [!code-csharp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/csharp/sharedcontent/console/intent_recognition_samples.cs#toplevel)]
 
-1. Do poskytnuté `Main()` metody přidejte následující kód:
+1. Nahraďte poskytnutou `Main()` metodu s následujícím asynchronním ekvivalentem:
 
    ```csharp
-   RecognizeIntentAsync().Wait();
-   Console.WriteLine("Please press Enter to continue.");
-   Console.ReadLine();
+   public static async Task Main()
+   {
+       await RecognizeIntentAsync();
+       Console.WriteLine("Please press Enter to continue.");
+       Console.ReadLine();
+   }
    ```
 
 1. Vytvořte prázdnou asynchronní metodu `RecognizeIntentAsync()`, jak je znázorněno zde:
@@ -173,7 +176,7 @@ Aplikace neanalyzuje výsledek JSON. V okně konzoly se zobrazí pouze text JSON
 
 ## <a name="specify-recognition-language"></a>Specifikace jazyka rozpoznávání
 
-Ve výchozím nastavení rozpoznává služba LUIS záměry v americké angličtině (`en-us`). Když přiřadíte kód národního prostředí vlastnosti `SpeechRecognitionLanguage` konfigurace řeči, můžete záměry rozpoznávat v jiných jazycích. Přidejte například `config.SpeechRecognitionLanguage = "de-de";` do naší aplikace před vytvořením nástroje pro rozpoznávání, který rozpozná záměry v němčině. Další informace najdete v tématu [podporované jazyky](language-support.md#speech-to-text).
+Ve výchozím nastavení rozpoznává služba LUIS záměry v americké angličtině (`en-us`). Když přiřadíte kód národního prostředí vlastnosti `SpeechRecognitionLanguage` konfigurace řeči, můžete záměry rozpoznávat v jiných jazycích. Přidejte například `config.SpeechRecognitionLanguage = "de-de";` do naší aplikace před vytvořením nástroje pro rozpoznávání, který rozpozná záměry v němčině. Další informace najdete v tématu [Podpora jazyků Luis](../LUIS/luis-language-support.md#languages-supported).
 
 ## <a name="continuous-recognition-from-a-file"></a>Průběžné rozpoznávání ze souboru
 

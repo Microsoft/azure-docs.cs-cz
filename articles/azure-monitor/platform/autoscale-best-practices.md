@@ -4,14 +4,14 @@ description: Automatické škálování vzorů v Azure pro Web Apps, škálován
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: d9f04e0af4349f6b149619f13dac8ca2f59b560e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a05cf87e660cc6c388ea2055bb174c47b99da4a3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396999"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117110"
 ---
-# <a name="best-practices-for-autoscale"></a>Doporučené postupy pro automatické škálování
+# <a name="best-practices-for-autoscale"></a>Osvědčené postupy pro automatické škálování
 Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)a [API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 ## <a name="autoscale-concepts"></a>Koncepty automatického škálování
@@ -113,7 +113,7 @@ Podobně když se automatické škálování přepne zpátky na výchozí profil
 
 ### <a name="considerations-for-scaling-when-multiple-rules-are-configured-in-a-profile"></a>Předpoklady pro škálování při konfiguraci více pravidel v profilu
 
-V některých případech může být nutné nastavit více pravidel v profilu. Následující pravidla automatického škálování jsou používána službami, když je nastaveno více pravidel.
+V některých případech může být nutné nastavit více pravidel v profilu. Následující pravidla automatického škálování používá modul automatického škálování, když je nastaveno více pravidel.
 
 Při *horizontálním*navýšení kapacity se automatické škálování spustí, pokud je splněno nějaké pravidlo.
 Při *horizontálním*navýšení kapacity vyžaduje automatické škálování splnění všech pravidel.
@@ -133,12 +133,12 @@ Pak dojde k následujícímu:
 Na druhou stranu platí, že pokud je procesor 25% a paměť je 51% automatické škálování **se neškáluje** . Aby bylo možné škálovat, musí být procesor o velikosti 29% až 49%.
 
 ### <a name="always-select-a-safe-default-instance-count"></a>Vždy vybrat bezpečný výchozí počet instancí
-Výchozí počet instancí je důležité: automatické škálování škáluje službu na tento počet, když nejsou dostupné metriky. Proto vyberte výchozí počet instancí, který bude pro vaše úlohy bezpečný.
+Výchozí počet instancí je důležitý, protože funkce automatického škálování škáluje vaši službu na tento počet, když nejsou dostupné metriky. Proto vyberte výchozí počet instancí, který bude pro vaše úlohy bezpečný.
 
 ### <a name="configure-autoscale-notifications"></a>Konfigurace oznámení automatického škálování
 Automatické škálování bude odesílat do protokolu aktivit, pokud dojde k některé z následujících podmínek:
 
-* Automatické škálování řeší operaci škálování.
+* Automatické škálování vydá operaci škálování.
 * Služba automatického škálování úspěšně dokončí akci škálování.
 * Služba automatického škálování nemůže provést akci škálování.
 * Metriky nejsou k dispozici pro službu automatického škálování, aby bylo možné provést rozhodnutí o škálování.

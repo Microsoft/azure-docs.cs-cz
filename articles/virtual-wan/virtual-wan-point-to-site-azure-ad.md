@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: alzam
-ms.openlocfilehash: cad502dc759a4d481f3071a8a27ddeca79fbc18c
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: b3508c4c8da5b4987fb5f38cf3bf701f2dda1097
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108297"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122027"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>Kurz: vytvoření připojení VPN uživatele pomocí Azure Virtual WAN
 
@@ -123,7 +123,7 @@ Pomocí profilu sítě VPN nakonfigurujte své klienty.
 
 ## <a name="configure-user-vpn-clients"></a>Konfigurace klientů VPN uživatelů
 
-Abyste se mohli připojit, je potřeba stáhnout klienta Azure VPN (Preview) a importovat profil klienta VPN, který jste stáhli v předchozích krocích v každém počítači, který se chce připojit k virtuální síti.
+Abyste se mohli připojit, je potřeba stáhnout klienta Azure VPN a importovat profil klienta VPN, který jste stáhli v předchozích krocích v každém počítači, který se chce připojit k virtuální síti.
 
 > [!NOTE]
 > Ověřování Azure AD se podporuje jenom pro připojení OpenVPN® protokolu.
@@ -131,7 +131,7 @@ Abyste se mohli připojit, je potřeba stáhnout klienta Azure VPN (Preview) a i
 
 #### <a name="to-download-the-azure-vpn-client"></a>Stažení klienta Azure VPN
 
-Pomocí tohoto [odkazu](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) si stáhněte klienta Azure VPN (Preview).
+Pomocí tohoto [odkazu](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) si stáhněte klienta Azure VPN.
 
 #### <a name="import"></a>Import profilu klienta
 
@@ -159,11 +159,11 @@ Pomocí tohoto [odkazu](https://www.microsoft.com/p/azure-vpn-client-preview/9np
 
 1. Vyberte tři tečky (...) vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat**.
 
-    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
+    ![odstranit](./media/virtual-wan-point-to-site-azure-ad/delete/delete1.jpg)
 
 2. Vyberte **Odebrat** a odstraňte.
 
-    ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
+    ![odstranit](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
 #### <a name="diagnose"></a>Diagnostika problémů s připojením
 

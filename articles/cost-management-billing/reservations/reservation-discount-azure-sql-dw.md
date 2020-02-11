@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: banders
 ms.openlocfilehash: 24a673dc7949d5ce05aa1a701cc8b939a766fd99
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "76313922"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Principy uplatňování slev za rezervace u služby Azure SQL Data Warehouse
@@ -31,13 +31,13 @@ V případě datových skladů, které nejsou spuštěné celou hodinu, se rezer
 
 Následující příklady ukazují, jak se uplatňuje sleva za rezervovanou kapacitu SQL Data Warehouse v závislosti na druhu nasazení.
 
-- **Příklad 1**: zakoupíte 5 jednotek 100 cDWU rezervovaných kapacit. Na hodinu spustíte instanci SQL Data Warehouse DW1500c. V takovém případě naměřené využití odpovídá 15 jednotkám využití 100 cDWU. Sleva za rezervaci se uplatní na 5 jednotek, které jste využili. Zbývajících 10 využitých jednotek využití 100 cDWU se vám bude účtovat podle tarifů průběžných plateb. Jinými slovy, částečné pokrytí je možné pro více rezervací.
+- **Příklad 1:** Zakoupíte 5 jednotek rezervované kapacity 100 cDWU. Na hodinu spustíte instanci SQL Data Warehouse DW1500c. V takovém případě naměřené využití odpovídá 15 jednotkám využití 100 cDWU. Sleva za rezervaci se uplatní na 5 jednotek, které jste využili. Zbývajících 10 využitých jednotek využití 100 cDWU se vám bude účtovat podle tarifů průběžných plateb. Jinak řečeno, pro více rezervací je možné částečné krytí.
 
-- **Příklad 2**: zakoupíte 5 jednotek 100 cDWU rezervovaných kapacit. Na hodinu spustíte dvě instance SQL Data Warehouse DW100c. V takovém případě se naměří dvě události využití 1 jednotky využití 100 cDWU. Slevy za rezervovanou kapacitu se uplatní u obou událostí využití. Zbývající 3 jednotky rezervované kapacity 100 cDWU zůstanou nevyužité a nepřevedou se do budoucna. Jinými slovy, jedna rezervace může odpovídat více instancím SQL Data Warehouse.
+- **Příklad 2:** Zakoupíte 5 jednotek rezervované kapacity 100 cDWU. Na hodinu spustíte dvě instance SQL Data Warehouse DW100c. V takovém případě se naměří dvě události využití 1 jednotky využití 100 cDWU. Slevy za rezervovanou kapacitu se uplatní u obou událostí využití. Zbývající 3 jednotky rezervované kapacity 100 cDWU zůstanou nevyužité a nepřevedou se do budoucna. Jinak řečeno, jedna rezervace se může spárovat s více instancemi SQL Data Warehouse.
 
-- **Příklad 3**: zakoupíte 1 jednotku 100 cDWU rezervovanou kapacitu. Spustíte dvě instance SQL Data Warehouse DW100c. Obě jsou spuštěné 30 minut. V takovém případě se slevy za rezervovanou kapacitu uplatní u obou událostí využití. Podle tarifů průběžných plateb se neúčtuje žádné využití.
+- **Příklad 3:** Zakoupíte 1 jednotku rezervované kapacity 100 cDWU. Spustíte dvě instance SQL Data Warehouse DW100c. Obě jsou spuštěné 30 minut. V takovém případě se slevy za rezervovanou kapacitu uplatní u obou událostí využití. Podle tarifů průběžných plateb se neúčtuje žádné využití.
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoct? Kontaktujte nás
+## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 
 - Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 

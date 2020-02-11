@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 25c51067f713b5d713684e5d267c133c21b17c93
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ecb42d200eb8808f6bfa4cfb91e98909e350038b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978522"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118616"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Kurz: Vytvoření aplikace pro překlad pomocí WPF
 
 V tomto kurzu sestavíte aplikaci [Windows Presentation Foundation (WPF)](https://docs.microsoft.com/visualstudio/designers/getting-started-with-wpf?view=vs-2019) , která používá Azure Cognitive Services pro překlad textu, rozpoznávání jazyka a kontrolu pravopisu s použitím jediného klíče předplatného. Konkrétně vaše aplikace bude volat rozhraní API z Translator Text a [Kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/).
 
-Co je WPF (Windows Presentation Foundation)? Jedná se o architekturu uživatelského rozhraní, která vytváří klientské aplikace pro stolní počítače. Vývojová platforma WPF podporuje širokou škálu funkcí pro vývoj aplikací, včetně modelu aplikace, prostředků, ovládacích prvků, grafiky, rozložení, datových vazeb, dokumentů a zabezpečení. Je to podmnožina .NET Framework, takže pokud jste dříve vytvořili aplikace s .NET Framework pomocí ASP.NET nebo model Windows Forms, je vhodné seznámit se s programováním v prostředí. WPF používá jazyk XAML (Extensible App Markup Language) k poskytnutí deklarativního modelu pro programování aplikací, který si projdeme v nadcházejících částech.
+Co je WPF? Jedná se o architekturu uživatelského rozhraní, která vytváří klientské aplikace pro stolní počítače. Vývojová platforma WPF podporuje širokou škálu funkcí pro vývoj aplikací, včetně modelu aplikace, prostředků, ovládacích prvků, grafiky, rozložení, datových vazeb, dokumentů a zabezpečení. Je to podmnožina .NET Framework, takže pokud jste dříve vytvořili aplikace s .NET Framework pomocí ASP.NET nebo model Windows Forms, je vhodné seznámit se s programováním v prostředí. WPF používá jazyk XAML (Extensible App Markup Language) k poskytnutí deklarativního modelu pro programování aplikací, který si projdeme v nadcházejících částech.
 
 V tomto kurzu se naučíte:
 
@@ -37,14 +37,14 @@ V tomto kurzu se naučíte:
 
 Tento seznam obsahuje Cognitive Services používané v tomto kurzu. Postupujte podle odkazu a procházejte Reference k rozhraní API pro jednotlivé funkce.
 
-| Služba | Funkce | Popis |
+| Service | Funkce | Popis |
 |---------|---------|-------------|
 | Translator Text | [Získat jazyky](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | Načte Úplný seznam podporovaných jazyků pro překlad textu. |
-| Translator Text | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Přeloží text na více než 60 jazyků. |
-| Translator Text | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Rozpoznávání jazyka vstupního textu. Zahrnuje hodnocení spolehlivosti pro detekci. |
+| Translator Text | [Posunut](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | Přeloží text na více než 60 jazyků. |
+| Translator Text | [Soustavy](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | Rozpoznávání jazyka vstupního textu. Zahrnuje hodnocení spolehlivosti pro detekci. |
 | Kontrola pravopisu Bingu | [Kontrola pravopisu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | Opravte chyby pravopisu, aby se zlepšila přesnost překladu. |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budeme pokračovat, budete potřebovat následující:
 
@@ -83,9 +83,9 @@ Pojďme do našeho projektu přidat sestavení k serializaci a deserializaci obj
    ![přidat odkazy na sestavení](media/add-assemblies-2019.png)
 1. Vyberte následující odkazy pro váš projekt:
    * [System. Runtime. Serialization](https://docs.microsoft.com/dotnet/api/system.runtime.serialization)
-   * [System.Web](https://docs.microsoft.com/dotnet/api/system.web)
+   * [System. Web](https://docs.microsoft.com/dotnet/api/system.web)
    * System.Web.Extensions
-   * [System.Windows](https://docs.microsoft.com/dotnet/api/system.windows)
+   * [System. Windows](https://docs.microsoft.com/dotnet/api/system.windows)
 1. Po přidání těchto odkazů do projektu můžete kliknutím na tlačítko **OK** zavřít **Správce odkazů**.
 
 > [!NOTE]
@@ -114,14 +114,14 @@ Pojďme se podívat na to, co vytváříme.
 
 Uživatelské rozhraní zahrnuje tyto komponenty:
 
-| Name (Název) | Typ | Popis |
+| Název | Typ | Popis |
 |------|------|-------------|
-| `FromLanguageComboBox` | ComboBox | Zobrazí seznam jazyků, které Microsoft Translator podporuje pro překlad textu. Uživatel vybere jazyk, ze kterého překládá. |
-| `ToLanguageComboBox` | ComboBox | Zobrazí stejný seznam jazyků jako `FromComboBox`, ale používá se k výběru jazyka, do kterého se uživatel překládá. |
+| `FromLanguageComboBox` | Polích | Zobrazí seznam jazyků, které Microsoft Translator podporuje pro překlad textu. Uživatel vybere jazyk, ze kterého překládá. |
+| `ToLanguageComboBox` | Polích | Zobrazí stejný seznam jazyků jako `FromComboBox`, ale používá se k výběru jazyka, do kterého se uživatel překládá. |
 | `TextToTranslate` | TextBox | Umožňuje uživateli zadat text, který se má přeložit. |
 | `TranslateButton` | Tlačítko | Pomocí tohoto tlačítka můžete překládat text. |
-| `TranslatedTextLabel` | Štítek | Zobrazí překlad. |
-| `DetectedLanguageLabel` | Štítek | Zobrazí zjištěný jazyk textu, který se má přeložit (`TextToTranslate`). |
+| `TranslatedTextLabel` | Popisek | Zobrazí překlad. |
+| `DetectedLanguageLabel` | Popisek | Zobrazí zjištěný jazyk textu, který se má přeložit (`TextToTranslate`). |
 
 > [!NOTE]
 > Tento formulář vytváříme pomocí zdrojového kódu XAML, ale můžete vytvořit formulář pomocí editoru v aplikaci Visual Studio.

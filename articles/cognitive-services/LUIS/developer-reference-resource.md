@@ -1,25 +1,18 @@
 ---
 title: Prostředky pro vývojáře – Language Understanding
-titleSuffix: Azure Cognitive Services
-description: Vývojáři mají rozhraní REST API i sady SDK pro Language Understanding.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 01/22/2020
-ms.author: diberry
-ms.openlocfilehash: 2f351ac570080c83e78697bbca94340bb96cbcf7
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+description: Sady SDK, rozhraní REST API a CLI vám pomůžou vyvíjet aplikace Language Understanding (LUIS) ve vašem programovacím jazyce. Spravujte své prostředky Azure a LUIS předpovědi.
+ms.topic: reference
+ms.date: 02/09/2020
+ms.openlocfilehash: ed869b7022e43b8ecf8c1f05bb3c6f0919076818
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716135"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119977"
 ---
-# <a name="developer-resources-for-language-understanding"></a>Materiály pro vývojáře pro Language Understanding
+# <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Materiály pro vývojáře sady SDK, REST a CLI pro Language Understanding (LUIS)
 
-Vývojáři můžou použít rozhraní REST API i sady SDK pro Language Understanding.
+Sady SDK, rozhraní REST API a CLI vám pomůžou vyvíjet aplikace Language Understanding (LUIS) ve vašem programovacím jazyce. Spravujte své prostředky Azure a LUIS předpovědi. 
 
 ## <a name="azure-resource-management"></a>Správa prostředků Azure
 
@@ -31,11 +24,17 @@ Vyhledejte referenční dokumentaci na základě nástroje:
 
 * [Azure RM PowerShell](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services)
 
+
 ## <a name="language-understanding-authoring-and-prediction-requests"></a>Language Understanding žádosti o vytváření a předpovědi
 
-Služba Language Understanding je k dispozici z prostředku Azure, který potřebujete vytvořit. Existují dva prostředky: vytváření a předpovědi prostředků koncového bodu. Oba tyto prostředky umožňují řízení prostředků LUIS.
+Služba Language Understanding je k dispozici z prostředku Azure, který potřebujete vytvořit. Existují dva prostředky:
+
+* K vytváření, úpravám, školení a publikování můžete použít prostředek pro **vytváření obsahu** .
+* K odeslání textu uživatele a získání předpovědi použijte **předpověď** pro modul runtime.
 
 Přečtěte si o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
+
+Pomocí [Cognitive Services ukázkový kód](https://github.com/Azure-Samples/cognitive-services-quickstart-code) se naučíte a používat nejběžnější úlohy.
 
 ### <a name="rest-apis"></a>Rozhraní REST API
 
@@ -48,7 +47,7 @@ Rozhraní API pro vytváření obsahu a předpovědi jsou dostupná z rozhraní 
 
 ### <a name="language-based-sdks"></a>Sady SDK založené na jazyce
 
-|Jazyk |Referenční dokumentace|Balíček|Ukázky|Rychlé starty|
+|Jazyk |Referenční dokumentace|Balíček|Ukázky|Šablony Rychlý start|
 |--|--|--|--|--|
 |C#|[Vytváření obsahu](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Předpověď](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[Vytváření balíčků NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[Předpověď NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Ukázky sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Vytvoření a Správa aplikace](sdk-authoring.md?pivots=programming-language-csharp)<br>[Koncový bod prediktivního dotazování](sdk-query-prediction-endpoint.md)|
 |Přejít|[Vytváření a předpověď](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[Sada SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Vytváření obsahu](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Předpověď](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[Vytváření a předpověď pomocí REST](luis-get-started-get-intent-from-rest.md)|
@@ -57,7 +56,7 @@ Rozhraní API pro vytváření obsahu a předpovědi jsou dostupná z rozhraní 
 |Python|[Vytváření a předpověď](sdk-authoring.md?pivots=programming-language-python)|[PIP](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Vytváření obsahu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Vytváření obsahu](sdk-authoring.md?pivots=programming-language-python)<br>[Předpověď pomocí REST](luis-get-started-get-intent-from-rest.md)
 
 
-### <a name="containers"></a>Containers
+### <a name="containers"></a>Kontejnery
 
 Language Understanding (LUIS) poskytuje [kontejner](luis-container-howto.md) pro poskytování místních a obsažených verzí vaší aplikace.
 
@@ -77,7 +76,7 @@ Robot Framework nabízí [několik nástrojů](https://github.com/microsoft/botb
 * [Luis CLI](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUIS) – vytvoření a správa aplikací Luis.AI
 * [Odesílání](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)– Správa nadřazených a podřízených aplikací
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) – automaticky generuje záložní C#třídy/TypeScript pro Luis a entity.
-* [Emulátor bot](https://github.com/Microsoft/BotFramework-Emulator/releases) – desktopová aplikace umožňující vývojářům robotům testovat a ladit roboty sestavené pomocí sady robot Framework SDK
+* [Emulátor rozhraní robot](https://github.com/Microsoft/BotFramework-Emulator/releases) – desktopová aplikace umožňující vývojářům robotům testovat a ladit roboty sestavené pomocí sady robot Framework SDK
 
 
 ## <a name="next-steps"></a>Další kroky

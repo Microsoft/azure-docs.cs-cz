@@ -3,18 +3,21 @@ title: Postup zakázání funkcí v Azure Functions
 description: Naučte se, jak zakázat a povolit funkce v Azure Functions.
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: bffb3136c77074ecd50e839fd7c73144ad910967
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: fb8edf635856078655b8640ba0e1723fdd5e8a5a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970971"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116145"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Postup zakázání funkcí v Azure Functions
 
 Tento článek vysvětluje, jak zakázat funkci v Azure Functions. Pro *vypnutí* funkce znamená, že modul runtime bude ignorovat automatickou aktivační událost, která je definována pro funkci. To umožňuje zabránit spuštění konkrétní funkce bez zastavení celé aplikace Function App.
 
 Doporučený způsob, jak funkci zakázat, je použití nastavení aplikace ve formátu `AzureWebJobs.<FUNCTION_NAME>.Disabled`. Toto nastavení aplikace můžete vytvořit a upravit mnoha různými způsoby, včetně použití [Azure CLI](/cli/azure/) a karty **Správa** vaší funkce v [Azure Portal](https://portal.azure.com). 
+
+> [!NOTE]  
+> Když zakážete funkci aktivovanou protokolem HTTP pomocí metod popsaných v tomto článku, koncový bod může být dostupný i při spuštění na místním počítači.  
 
 ## <a name="use-the-azure-cli"></a>Použití Azure CLI
 

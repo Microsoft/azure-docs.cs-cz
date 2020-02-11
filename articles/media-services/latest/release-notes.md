@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: b3d5e1f814a8eb083ab01623051f1b5b3723a9f1
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: e5bf99e2ea84f41054ff57d08882bfa8ab4d6be5
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049630"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114220"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -35,14 +35,33 @@ Abyste mohli používat aktuální pomocí nejnovější vývoj, tento článek 
 > Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte [REST API](https://aka.ms/ams-v3-rest-sdk), CLI nebo jednu z podporovaných sad SDK.
 
 Další informace najdete v tématu [pokyny k migraci pro přesun z Media Services V2 na V3](migrate-from-v2-to-v3.md#known-issues).
-
+ 
 ## <a name="january-2020"></a>Leden 2020
 
 ### <a name="improvements-in-media-processors"></a>Vylepšení v procesorech médií
 
 - Vylepšená podpora prokládaných zdrojů v analýze videa – takový obsah je teď před odesláním do odvozených modulů nesprávně prokládaný.
 - Když vygenerujete miniatury s využitím "nejlepšího" režimu, kodér nyní vyhledává rámec 30 sekund, aby vybral rámeček, který není monochromatický.
- 
+
+### <a name="azure-government-cloud-updates"></a>Azure Government aktualizace cloudu
+
+Media Services GA'ed v následujících Azure Government oblastech: *USGov Arizona* a *USGov Texas*.
+
+## <a name="december-2019"></a>Prosinec 2019
+
+Přidala se podpora CDN pro *vyplněné hlavičky předběžného* načítání a pomoci pro živé streamování a streamování videa na vyžádání; k dispozici pro zákazníky, kteří mají přímý kontrakt s Akamai CDN. Počátek – pomoc CDN – funkce předběžného načítání zahrnuje následující výměny hlaviček protokolu HTTP mezi Akamai CDN a Azure Media Servicesm počátkem:
+
+|Hlavička protokolu HTTP|Hodnoty|Odesílatel|Příjemce|Účel|
+| ---- | ---- | ---- | ---- | ----- |
+|CDN – počátek – pomoc – předběžné načtení – povoleno | 1 (výchozí) nebo 0 |CDN|Počátek|K označení CDN je povolené předběžné načtení|
+|CDN – počátek-asistence – předběžné načtení-cesta| Příklad: <br/>Fragmenty (video = 1400000000, Format = MPD-Time-CMAF)|Počátek|CDN|Zadání cesty předběžného načtení do sítě CDN|
+|CDN – počátek-asistence – předběžné načtení – požadavek|1 (požadavek na předběžné načtení) nebo 0 (pravidelný požadavek)|CDN|Počátek|Pro indikaci, že žádost z CDN je předběžné načtení|
+
+Pokud se chcete podívat na část výměny hlaviček v akci, můžete vyzkoušet následující postup:
+
+1. Použijte metodu post nebo kudrlinkou k vystavení žádosti o Media Services původu zvukového nebo obrazového segmentu nebo fragmentu videa. Ujistěte se, že jste v žádosti přidali hlavičku CDN-počátek-asistenci-pomoc-předběžné načtení – povoleno: 1.
+2. V odpovědi byste měli vidět hlavičku CDN-Origin-Assist-předběžného umístění s relativní cestou jako hodnotou.
+
 ## <a name="november-2019"></a>Listopad 2019
 
 ### <a name="live-transcription-preview"></a>Živý přepis Preview

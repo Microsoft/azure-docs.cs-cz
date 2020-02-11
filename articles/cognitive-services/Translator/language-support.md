@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 12/02/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ec8d389c99ad96e59bf49d4345855fa44d6c7aa
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ec5c1295f883bb37ad5f016bc3346c134863e6bd
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902000"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118809"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Podpora jazyků a oblastí pro Translator Text API
 
@@ -42,87 +42,87 @@ Translator Text API podporuje překlady textu na text v následujících jazycí
 
 |Jazyk|  Kód jazyka|  V3 API|
 |:-----|:-----:|:-----|
-|Afrikánština| `af`|   Neurální|
-|arabština|    `ar`    |   Neurální|
-|Bengálština|    `bn`    |   Neurální|
-|Bosenština (latinka)|   `bs`    |   Neurální|
-|Bulharština| `bg`    |   Neurální|
+|Afrikánština| `af`|   Neuronové|
+|Arabština|    `ar`    |   Neuronové|
+|Bengálština|    `bn`    |   Neuronové|
+|Bosenština (latinka)|   `bs`    |   Neuronové|
+|Bulharština| `bg`    |   Neuronové|
 |Kantonština (tradiční)|   `yue`|  Ložený|
 |Katalánština|   `ca`    |   Ložený|
-|Zjednodušená čínština|    `zh-Hans`|Neurální|
-|Tradiční čínština|   `zh-Hant`       |Neurální|
-|Chorvatština|  `hr`    |Neurální|
-|Čeština| `cs`    |   Neurální|
-|dánština|    `da`        |Neurální|
-|Holandština| `nl`|   Neurální|
-|Angličtina|   `en`    |   Neurální|
-|Estonština|  `et`    |   Neurální|
+|Zjednodušená čínština|    `zh-Hans`|Neuronové|
+|Tradiční čínština|   `zh-Hant`       |Neuronové|
+|Chorvatština|  `hr`    |Neuronové|
+|Čeština| `cs`    |   Neuronové|
+|dánština|    `da`        |Neuronové|
+|Nizozemština| `nl`|   Neuronové|
+|angličtina|   `en`    |   Neuronové|
+|Estonština|  `et`    |   Neuronové|
 |Vládní|    `fj`    |   Ložený|
 |Filipínština|  `fil`   |   Ložený|
-|Finština|   `fi`    |   Neurální|
-|Francouzština|    `fr`    |   Neurální|
-|Němčina|    `de`    |   Neurální|
-|Řečtina| `el`    |   Neurální|
+|Finština|   `fi`    |   Neuronové|
+|Francouzština|    `fr`    |   Neuronové|
+|Němčina|    `de`    |   Neuronové|
+|Řečtina| `el`    |   Neuronové|
 |Haitská kreolština|    `ht`        |Ložený|
-|Hebrejština |`he`   |Neurální
-|Hindština| `hi`    |   Neurální|
+|Hebrejština |`he`   |Neuronové
+|Hindština| `hi`    |   Neuronové|
 |Hmong Daw| `mww`   |   Ložený|
-|Maďarština| `hu`    |   Neurální|
-|Islandština| `is`    |   Neurální|
+|Maďarština| `hu`    |   Neuronové|
+|Islandština| `is`    |   Neuronové|
 |Indonéština|    `id`    |   Ložený|
-|Irština | `ga`| Neurální
-|italština|   `it`    |   Neurální|
-|Japonština|  `ja`    |   Neurální|
-|Kannadština|`kn`| Neurální
+|Irština | `ga`| Neuronové
+|Italština|   `it`    |   Neuronové|
+|Japonština|  `ja`    |   Neuronové|
+|Kannada|`kn`| Neuronové
 |Svahilština| `sw`    |   Ložený|
 |Klingon|   `tlh`   |   Ložený|
 |Klingon (plqaD)|   `tlh-Qaak`  |   Ložený|
-|Korejština |`ko`   |   Neurální|
-|Lotyština|   `lv`    |   Neurální|
-|Litevština|    `lt`    |   Neurální|
+|Korejština |`ko`   |   Neuronové|
+|Lotyština|   `lv`    |   Neuronové|
+|Litevština|    `lt`    |   Neuronové|
 |Malgašský|  `mg`    |   Ložený|
 |Malajština| `ms`        |Ložený|
-|Malajálamština| `ml` | Neurální
+|Malajálamština| `ml` | Neuronové
 |Maltština|   `mt`    |   Ložený|
-|Maorština| `mi`  | Neurální|
-|norština| `nb`    |   Neurální|
-|Perština|   `fa`    |   Neurální|
-|polština|    `pl`    |   Neurální|
-|Portugalština (Brazílie)|   `pt-br` |   Neurální|
-|Portugalština (Portugalsko)| `pt-pt` | Neurální
-|Paňdžábština|`pa`|Neurální
+|Maorština| `mi`  | Neuronové|
+|norština| `nb`    |   Neuronové|
+|Perština|   `fa`    |   Neuronové|
+|Polština|    `pl`    |   Neuronové|
+|Portugalština (Brazílie)|   `pt-br` |   Neuronové|
+|Portugalština (Portugalsko)| `pt-pt` | Neuronové
+|Paňdžábština|`pa`|Neuronové
 |Queretaro Otomi|   `otq`   |   Ložený|
-|Rumunština|  `ro`    |   Neurální|
-|ruština|   `ru`    |   Neurální|
+|Rumunština|  `ro`    |   Neuronové|
+|Ruština|   `ru`    |   Neuronové|
 |Samoan|    `sm`    |   Ložený|
 |Srbština (cyrilice)|    `sr-Cyrl`|  Ložený|
-|Srbština (latinka)|   `sr-Latn`       |Ložený|
-|Slovenština|    `sk`    |   Neurální|
-|Slovinština| `sl`    |   Neurální|
-|Španělština|   `es`    |   Neurální|
-|švédština|   `sv`    |Neurální|
+|Srbština (Latina)|   `sr-Latn`       |Ložený|
+|Slovenština|    `sk`    |   Neuronové|
+|Slovinština| `sl`    |   Neuronové|
+|Španělština|   `es`    |   Neuronové|
+|švédština|   `sv`    |Neuronové|
 |Tahitian|  `ty`    |Ložený|
-|Tamilština| `ta`    |   Neurální|
-|Telugština|    `te`    |   Neurální|
-|Thajština|  `th`    |   Neurální|
+|Tamilština| `ta`    |   Neuronové|
+|Telugština|    `te`    |   Neuronové|
+|Thajština|  `th`    |   Neuronové|
 |Tonžská|    `to`    |   Ložený|
-|turečtina|   `tr`        |Neurální|
-|Ukrajinština| `uk`    |   Neurální|
+|Turečtina|   `tr`        |Neuronové|
+|Ukrajinština| `uk`    |   Neuronové|
 |Urdština|  `ur`    |   Ložený|
-|Vietnamština|    `vi`    |   Neurální|
-|Velština| `cy`    |   Neurální|
+|Vietnamština|    `vi`    |   Neuronové|
+|Velština| `cy`    |   Neuronové|
 |Yucatec Maya|  `yua`   |   Ložený|
 
 > [!NOTE]
 > Kód jazyka `pt` bude ve výchozím nastavení `pt-br`, portugalština (Brazílie).
 
-## <a name="transliteration"></a>Transkripce
+## <a name="transliteration"></a>Transkripci
 
 Metoda přepisu podporuje následující jazyky. V "do/z", "<-->" označuje, že jazyk lze přepřepisovat z nebo na některý z uvedených skriptů. "-->" Označuje, že jazyk lze přepřepisovat pouze z jednoho skriptu na druhý.
 
 | Jazyk    | Kód jazyka | Skript | Do/z | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| arabština | `ar` | Arabské `Arab` | <--> | `Latn` latinky |
+| Arabština | `ar` | Arabské `Arab` | <--> | `Latn` latinky |
 |Bengálština  | `bn` | Bengálský `Beng` | <--> | `Latn` latinky |
 | Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | `Latn` latinky |
 | Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština `Hans`| <--> | Tradiční čínština `Hant`|
@@ -132,13 +132,13 @@ Metoda přepisu podporuje následující jazyky. V "do/z", "<-->" označuje, že
 | Hebrejština | `he` | Hebrejská `Hebr` | <--> | `Latn` latinky |
 | Hindština | `hi` | `Deva` Dévanágarí | <--> | `Latn` latinky |
 | Japonština | `ja` | Japonské `Jpan` | <--> | `Latn` latinky |
-| Kannadština | `kn` | Kannada `Knda` | --> | `Latn` latinky |
+| Kannada | `kn` | Kannadské `Knda` | --> | `Latn` latinky |
 | Malajálamština | `ml` | Malajalámština `Mlym` | --> | `Latn` latinky |
 | Maráthština | `mr` | `Deva` Dévanágarí | --> | `Latn` latinky |
-| Oriya | `or` | Oriya `Orya` | <--> | `Latn` latinky |
-| Paňdžábština | `pa` | Gurmukhi `Guru`  | <--> | `Latn` latinky  |
+| Oriya | `or` | Uríské `Orya` | <--> | `Latn` latinky |
+| Paňdžábština | `pa` | Gurmukhí `Guru`  | <--> | `Latn` latinky  |
 | Srbština (cyrilice) | `sr-Cyrl` | `Cyrl` v cyrilici  | --> | `Latn` latinky |
-| Srbština (latinka) | `sr-Latn` | `Latn` latinky | --> | `Cyrl` v cyrilici|
+| Srbština (Latina) | `sr-Latn` | `Latn` latinky | --> | `Cyrl` v cyrilici|
 | Tamilština | `ta` | Kanadské `Taml` | --> | `Latn` latinky |
 | Telugština | `te` | Telugské `Telu` | --> | `Latn` latinky |
 | Thajština | `th` | Thajské `Thai` | <--> | `Latn` latinky |
@@ -150,7 +150,7 @@ Slovník podporuje následující jazyky pro nebo z angličtiny pomocí vyhledá
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|
 | Afrikánština      | `af`          |
-| arabština       | `ar`          |
+| Arabština       | `ar`          |
 | Bengálština      | `bn`          |
 | Bosenština (latinka)      | `bs`          |
 | Bulharština      | `bg`          |
@@ -159,7 +159,7 @@ Slovník podporuje následující jazyky pro nebo z angličtiny pomocí vyhledá
 | Chorvatština      | `hr`          |
 | Čeština      | `cs`          |
 | dánština      | `da`          |
-| Holandština      | `nl`          |
+| Nizozemština      | `nl`          |
 | Estonština      | `et`          |
 | Finština      | `fi`          |
 | Francouzština      | `fr`          |
@@ -172,7 +172,7 @@ Slovník podporuje následující jazyky pro nebo z angličtiny pomocí vyhledá
 | Maďarština      | `hu`          |
 | Islandština    | `is`  |
 | Indonéština      | `id`          |
-| italština      | `it`          |
+| Italština      | `it`          |
 | Japonština      | `ja`          |
 | Svahilština      | `sw`          |
 | Klingon      | `tlh`          |
@@ -183,24 +183,24 @@ Slovník podporuje následující jazyky pro nebo z angličtiny pomocí vyhledá
 | Maltština      | `mt`          |
 | norština      | `nb`          |
 | Perština      | `fa`          |
-| polština      | `pl`          |
+| Polština      | `pl`          |
 | Portugalština (Brazílie)     | `pt-br`          |
 | Rumunština      | `ro`          |
-| ruština      | `ru`          |
-| Srbština (latinka)      | `sr-Latn`          |
+| Ruština      | `ru`          |
+| Srbština (Latina)      | `sr-Latn`          |
 | Slovenština     | `sk`          |
 | Slovinština      | `sl`          |
 | Španělština      | `es`          |
 | švédština      | `sv`          |
 | Tamilština      | `ta`          |
 | Thajština      | `th`          |
-| turečtina      | `tr`          |
+| Turečtina      | `tr`          |
 | Ukrajinština      | `uk`          |
 | Urdština      | `ur`          |
 | Vietnamština      | `vi`          |
 | Velština      | `cy`          |
 
-## <a name="detect"></a>Zjišťování
+## <a name="detect"></a>Detekujte
 
 Translator Text API detekuje všechny jazyky, které jsou k dispozici pro překlad a převod.
 
@@ -217,7 +217,7 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|
-| arabština       | `ar`          |
+| Arabština       | `ar`          |
 | Bengálština      | `bn`          |
 | Bosenština (latinka)      | `bs`          |
 | Bulharština      | `bg`          |
@@ -226,8 +226,8 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Chorvatština      | `hr`          |
 | Čeština      | `cs`          |
 | dánština      | `da`          |
-| Holandština      | `nl`          |
-| Angličtina    | `en`     |
+| Nizozemština      | `nl`          |
+| angličtina    | `en`     |
 | Estonština      | `et`          |
 | Finština      | `fi`          |
 | Francouzština      | `fr`          |
@@ -239,7 +239,7 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Islandština | `is` |
 | Indonéština|   `id`    |
 | Irština | `ga`  |
-| italština      | `it`          |
+| Italština      | `it`          |
 | Japonština      | `ja`          |
 | Svahilština|    `sw`    |
 | Korejština      | `ko`          |
@@ -249,18 +249,18 @@ Následující jazyky jsou k dispozici pro přizpůsobení nebo z angličtiny po
 | Maorština| `mi`  |
 | norština      | `nb`          |
 | Perština      | `fa`          |
-| polština      | `pl`          |
+| Polština      | `pl`          |
 | Portugalština (Brazílie) | `pt-br` |
 | Rumunština      | `ro`          |
-| ruština      | `ru`          |
+| Ruština      | `ru`          |
 | Samoan|   `sm`    |
-| Srbština (latinka)      | `sr-Latn`          |
+| Srbština (Latina)      | `sr-Latn`          |
 | Slovenština     | `sk`          |
 | Slovinština      | `sl`          |
 | Španělština      | `es`          |
 | švédština      | `sv`          |
 | Thajština      | `th`          |
-| turečtina      | `tr`          |
+| Turečtina      | `tr`          |
 | Ukrajinština      | `uk`          |
 | Vietnamština      | `vi`          |
 | Velština | `cy` |

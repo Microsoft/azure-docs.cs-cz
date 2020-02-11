@@ -3,18 +3,18 @@ title: Připojit k serveru IBM MQ
 description: Posílání a načítání zpráv pomocí Azure nebo místního serveru IBM MQ a Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: valrobb
-ms.author: valthom
-ms.reviewer: chrishou, logicappspm
+author: ChristopherHouser
+ms.author: chrishou
+ms.reviewer: valthom, logicappspm
 ms.topic: article
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: ef9e91b526055ece58ce283572deb98cff951653
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 489f53a4f4c1c0d5bd782f42a9daf73217234793
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789572"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118048"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Připojení k serveru IBM MQ z Azure Logic Apps
 
@@ -28,7 +28,7 @@ Konektor IBM MQ zahrnuje tyto akce, ale neposkytuje žádné triggery:
 - Příjem dávky zpráv a odstranění zpráv ze serveru IBM MQ
 - Odeslat jednu zprávu na server IBM MQ
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud používáte místní server MQ, [nainstalujte místní bránu dat](../logic-apps/logic-apps-gateway-install.md) na server v rámci vaší sítě. Server, na kterém je nainstalovaná místní brána dat, musí mít nainstalovanou .NET Framework 4,6, aby mohl konektor MQ fungovat. Pro místní bránu dat musíte také vytvořit prostředek v Azure. Další informace najdete v tématu [nastavení připojení pro bránu dat](../logic-apps/logic-apps-gateway-connection.md).
 
@@ -36,8 +36,8 @@ Konektor IBM MQ zahrnuje tyto akce, ale neposkytuje žádné triggery:
 
 * Oficiálně podporované verze IBM WebSphere MQ:
 
-  * MQ 7,5
-  * MQ 8,0
+  * MQ 7.5
+  * MQ 8.0
   * MQ 9,0
 
 * Aplikace logiky, do které chcete přidat akci MQ. Tato aplikace logiky musí používat stejné umístění jako místní připojení brány dat a musí mít Trigger, který spouští váš pracovní postup. 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: 06a247c9e65ce386034a50650e46994bbbe9074a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e4f27e582e6b920e9de068fe2c3270af19ad8a17
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152166"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122421"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Příklad: Vytvoření vlastní dovednosti pomocí Pythonu
 
@@ -57,7 +57,7 @@ Tento příklad používá funkci Azure k předvedení konceptu hostování webo
 
 Visual Studio Code vytvoří projekt aplikace funkcí v novém pracovním prostoru. Tento projekt obsahuje konfigurační soubory [host.json](../azure-functions/functions-host-json.md) a [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) a navíc všechny soubory projektu pro konkrétní jazyk. 
 
-Ve složce **zřetězení** projektu Function App se vytvoří také nová funkce AKTIVovaná protokolem HTTP. V takovém případě bude k dispozici soubor s názvem "\__init__. py" s tímto obsahem:
+Ve složce **zřetězení** projektu Function App se vytvoří také nová funkce AKTIVovaná protokolem HTTP. V takovém případě bude k dispozici soubor s názvem "\_\_init__. py" s tímto obsahem:
 
 ```py
 import logging

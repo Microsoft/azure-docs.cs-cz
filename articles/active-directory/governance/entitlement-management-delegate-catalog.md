@@ -16,16 +16,18 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f71007b886d3cc25a7cf9dc23d784144ed4e1fbd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 51e37ad006da5042291614c773f242b5a1f3be97
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174374"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120192"
 ---
 # <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Delegování zásad správného řízení přístupu tvůrcům katalogu v Azure AD – Správa nároků
 
-Chcete-li delegovat na uživatele, kteří nejsou správci, aby mohli vytvářet své vlastní katalogy, můžete tyto uživatele přidat do role tvůrce katalogu na základě správy nároků služby Azure AD. Můžete přidat jednotlivé uživatele nebo můžete přidat skupinu, jejíž členové pak mohou vytvářet katalogy.
+Katalog je kontejner prostředků a přístup k balíčkům. Katalog můžete vytvořit v případě, že chcete seskupit související prostředky a přistupovat k balíčkům. Ve výchozím nastavení může globální správce nebo Správce uživatelů [vytvořit katalog](entitlement-management-catalog-create.md)a může přidat další uživatele jako vlastníky katalogu.
+
+Chcete-li delegovat na uživatele, kteří nejsou správci, aby mohli vytvářet své vlastní katalogy, můžete tyto uživatele přidat do role tvůrce katalogu na základě správy nároků služby Azure AD. Můžete přidat jednotlivé uživatele nebo můžete přidat skupinu, jejíž členové pak mohou vytvářet katalogy.  Po vytvoření katalogu pak můžou přidat prostředky, které vlastní, do svého katalogu.
 
 ## <a name="as-an-it-administrator-delegate-to-a-catalog-creator"></a>Jako správce IT delegovat na tvůrce katalogu
 
@@ -37,7 +39,7 @@ Pomocí těchto kroků přiřaďte uživatele k roli tvůrce katalogu.
 
 1. V levé nabídce v části **Správa nároků** klikněte na **Nastavení**.
 
-1. Klikněte na **Upravit**.
+1. Klikněte na tlačítko**Upravit**.
 
     ![Nastavení pro přidání tvůrců katalogu](./media/entitlement-management-delegate-catalog/settings-delegate.png)
 
@@ -45,7 +47,7 @@ Pomocí těchto kroků přiřaďte uživatele k roli tvůrce katalogu.
 
 1. Klikněte na **Vybrat**.
 
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 ## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>Umožnění přístupu k Azure Portal delegovaným rolím
 

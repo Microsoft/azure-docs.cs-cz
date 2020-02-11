@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d71d9c7e6570e562fe4c692ede1d07b70c923cb6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773085"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118271"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Kurz: použití nástroje pro rozpoznávání formulářů s Azure Logic Apps k analýze faktur
 
@@ -34,10 +34,6 @@ V tomto kurzu se dozvíte, co tento kurz popisuje:
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
-
-## <a name="request-access-for-form-recognizer"></a>Požádat o přístup pro rozpoznávání formulářů
-
-Nástroj pro rozpoznávání formulářů je k dispozici ve verzi Preview s omezeným přístupem. Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) . Po schválení žádosti týmem týmu Azure Cognitive Services obdržíte e-mail s pokyny pro přístup ke službě.
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>Pochopení faktury k analýze
 
@@ -85,7 +81,7 @@ Pomocí těchto kroků nastavte pracovní postup.
    |----------|-------|-------------|
    | **Název** | <*Logic-App-name*> | Název aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`), kulaté závorky (`(`, `)`) a tečky (`.`). Tento příklad používá "moji-First-Logic-App". |
    | **Předplatné** | <*název_předplatného_Azure*> | Název vašeho předplatného Azure |
-   | **Skupina prostředků** | <*Azure-resource-group-name*> | Název [skupiny prostředků Azure](./../../azure-resource-manager/management/overview.md) , která slouží k uspořádání souvisejících prostředků. V tomto příkladu se používá "My-First-LA-RG". |
+   | **Skupina prostředků** | <*Azure-Resource-Group-name*> | Název [skupiny prostředků Azure](./../../azure-resource-manager/management/overview.md) , která slouží k uspořádání souvisejících prostředků. V tomto příkladu se používá "My-First-LA-RG". |
    | **Umístění** | <*Azure – oblast*> | Oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
@@ -131,7 +127,7 @@ Předtím, než budete moci použít službu pro rozpoznávání formulářů k 
     > [!div class="mx-imgBorder"]
     > ![název připojení pro nástroj pro rozpoznávání formulářů](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
 
-    Klikněte na **Vytvořit**.
+    Klikněte na možnost **Vytvořit**.
 
 1. V dialogovém okně **vlakový model** pro **zdroj**zadejte adresu URL kontejneru, do kterého jste nahráli ukázková data.
 

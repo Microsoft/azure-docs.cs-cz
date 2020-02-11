@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
-ms.date: 04/11/2018
+ms.date: 02/10/2020
 ms.author: robinsh
-ms.openlocfilehash: d26ccd47ada4f1f1fd87f315e05f822bb2463114
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b71b86c14c55c312ef420a4d8517140fdded4072
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976175"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122162"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Předpověď počasí pomocí dat ze senzorů ze služby IoT Hub v Azure Machine Learning
 
@@ -49,24 +49,77 @@ Naučíte se, jak pomocí Azure Machine Learning provádět předpověď počas�
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Nasazení modelu předpovědi počasí jako webové služby
 
+V této části získáte model předpovědi počasí z knihovny Azure AI Library. Pak přidáte modul R-Script do modelu pro vyčištění dat o teplotě a vlhkosti. Nakonec model nasadíte jako prediktivní webovou službu.
+
+### <a name="get-the-weather-prediction-model"></a>Získání modelu předpovědi počasí
+
+V této části získáte model předpovědi počasí z Azure AI Gallery a otevřete ho v Azure Machine Learning Studio (Classic).
+
 1. Přejít na [stránku modelu předpovědi počasí](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
-1. Klikněte na **otevřít v studiu** v Microsoft Azure Machine Learning Studio (Classic).
-   ![otevřít stránku modelu předpovědi počasí v Cortana Intelligence Gallery](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
-1. Kliknutím na tlačítko **Spustit** ověříte kroky v modelu. Dokončení tohoto kroku může trvat 2 minuty.
-   ![otevřít model předpovědi počasí v Azure Machine Learning Studio (Classic)](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. Klikněte na **nastavit webovou službu** > **prediktivní webovou službu**.
-   ![nasadit model předpovědi počasí v Azure Machine Learning Studio (Classic)](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
-1. V diagramu přetáhněte **Vstupní modul webové služby** někam do blízkosti modulu určení **skóre modelu** .
-1. Připojte modul **vstupu webové služby** k modulu **skóre modelu** .
-   ![propojit dva moduly v Azure Machine Learning Studio (Classic)](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+
+   ![Otevřete stránku model předpovědi počasí v Azure AI Gallery](media/iot-hub-weather-forecast-machine-learning/weather-prediction-model-in-azure-ai-gallery.png)
+
+1. Kliknutím na **otevřít v Studio (Classic)** otevřete model v Microsoft Azure Machine Learning Studio (Classic).
+
+   ![Otevření modelu předpovědi počasí v Azure Machine Learning Studio (Classic)](media/iot-hub-weather-forecast-machine-learning/open-ml-studio.png)
+
+### <a name="add-an-r-script-module-to-clean-temperature-and-humidity-data"></a>Přidejte modul R-Script pro čistou teplotu a data vlhkosti.
+
+Aby se model choval správně, musí být data o teplotě a vlhkosti převoditelná na číselná data. V této části přidáte modul R-Script do modelu předpovědi počasí, který odebere všechny řádky, které mají hodnoty dat pro teplotu nebo vlhkost, které nelze převést na číselné hodnoty.
+
+1. Na levé straně okna Azure Machine Learning Studio klikněte na šipku a rozbalte panel nástroje. Do vyhledávacího pole zadejte "Execute". Vyberte modul **spuštění skriptu jazyka R** .
+
+   ![Vyberte možnost spustit modul skriptu jazyka R.](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
+
+1. Přetáhněte modul **spuštění skriptu jazyka r** poblíž modulu **Vyčištění chybějících dat** a stávajícího modulu **skriptu pro spuštění r** v diagramu. Odstraňte připojení mezi **čistými chybějícími daty** a moduly **spuštění skriptu R** a pak připojte vstupy a výstupy nového modulu, jak je znázorněno na obrázku.
+
+   ![Přidat modul spuštění skriptu R](media/iot-hub-weather-forecast-machine-learning/add-r-script-module.png)
+
+1. Výběrem nového modulu **skriptu jazyka R** otevřete jeho okno vlastností. Zkopírujte a vložte následující kód do pole **skriptu jazyka R** .
+
+   ```r
+   # Map 1-based optional input ports to variables
+   data <- maml.mapInputPort(1) # class: data.frame
+
+   data$temperature <- as.numeric(as.character(data$temperature))
+   data$humidity <- as.numeric(as.character(data$humidity))
+
+   completedata <- data[complete.cases(data), ]
+
+   maml.mapOutputPort('completedata')
+
+   ```
+
+   Až budete hotovi, okno Vlastnosti by mělo vypadat podobně jako v následujícím příkladu:
+
+   ![Přidat kód pro spuštění modulu R Script](media/iot-hub-weather-forecast-machine-learning/add-code-to-module.png)
+
+### <a name="deploy-predictive-web-service"></a>Nasazení prediktivní webové služby
+
+V této části ověříte model, nastavíte prediktivní webovou službu založenou na modelu a pak nasadíte webovou službu.
+
+1. Kliknutím na tlačítko **Spustit** ověříte kroky v modelu. Dokončení tohoto kroku může trvat několik minut.
+
+   ![Spusťte experiment a ověřte postup.](media/iot-hub-weather-forecast-machine-learning/run-experiment.png)
+
+1. Klikněte na **nastavit webovou službu** > **prediktivní webovou službu**. Otevře se diagram prediktivního experimentu.
+
+   ![Nasazení modelu předpovědi počasí v Azure Machine Learning Studio (Classic)](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
+
+1. V diagramu prediktivního experimentu odstraňte spojení mezi **vstupním modulem webové služby** a **datovou sadou počasí** v horní části. Pak přetáhněte **Vstupní modul webové služby** někam do blízkosti modulu určení **skóre modelu** a připojte ho, jak je znázorněno níže:
+
+   ![Propojení dvou modulů v Azure Machine Learning Studio (klasické)](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+
 1. Kliknutím na tlačítko **Spustit** ověříte kroky v modelu.
+
 1. Kliknutím na **nasadit webovou službu** nasaďte model jako webovou službu.
+
 1. Na řídicím panelu modelu stáhněte **sešit aplikace Excel 2010 nebo starší** pro **požadavek nebo odpověď**.
 
    > [!Note]
    > Je nutné stáhnout **sešit aplikace Excel 2010 nebo starší** , i když v počítači používáte novější verzi aplikace Excel.
 
-   ![Stažení Excelu pro koncový bod odpovědi na žádost](media/iot-hub-weather-forecast-machine-learning/5_download-endpoint-app-excel-for-request-response.png)
+   ![Stažení Excelu pro koncový bod odpovědi na žádost](media/iot-hub-weather-forecast-machine-learning/download-workbook.png)
 
 1. Otevřete excelový sešit, poznamenejte si **adresu URL webové služby** a **přístupový klíč**.
 
@@ -89,7 +142,7 @@ Naučíte se, jak pomocí Azure Machine Learning provádět předpověď počas�
 
    ![Vytvoření úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
@@ -105,7 +158,7 @@ Naučíte se, jak pomocí Azure Machine Learning provádět předpověď počas�
 
    ![Přidání vstupu do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
@@ -124,7 +177,7 @@ Naučíte se, jak pomocí Azure Machine Learning provádět předpověď počas�
 
    ![Přidání výstupu do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Přidání funkce do úlohy Stream Analytics pro volání webové služby, kterou jste nasadili
 
@@ -143,7 +196,7 @@ Naučíte se, jak pomocí Azure Machine Learning provádět předpověď počas�
 
    ![Přidání funkce do úlohy Stream Analytics v Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>Konfigurace dotazu pro úlohu Stream Analytics
 
@@ -163,7 +216,7 @@ Naučíte se, jak pomocí Azure Machine Learning provádět předpověď počas�
 
    Nahraďte `[YourOutputAlias]` názvem aliasu pro výstup.
 
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
@@ -180,9 +233,9 @@ Spusťte klientskou aplikaci, která začne shromažďovat a odesílat data o te
 1. Přihlaste se ke svému účtu Azure.
 1. Vyberte své předplatné.
 1. Klikněte na své předplatné > **účty úložiště** > svého účtu úložiště > **kontejnery objektů BLOB** > vašem kontejneru.
-1. Otevřete soubor. csv a zobrazte výsledek. Poslední sloupec zaznamená šanci na deště.
+1. Pokud chcete zobrazit výsledek, Stáhněte si soubor. csv. Poslední sloupec zaznamená šanci na deště.
 
-   ![Získat výsledek předpovědi počasí s Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/12_get-weather-forecast-result-azure-machine-learning.png)
+   ![Získat výsledek předpovědi počasí s Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
 ## <a name="summary"></a>Souhrn
 

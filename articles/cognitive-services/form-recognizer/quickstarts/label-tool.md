@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 158faaba1525e162c40c44179f30f7c3cea83b38
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8ab673c1a268f5ab663e8f423dd9b60cdfde14ab
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025907"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118370"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -25,12 +25,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu musíte mít:
-- Přístup k nástroji pro rozpoznávání přístupu s omezeným přístupem ve formě přístupu Chcete-li získat přístup k verzi Preview, vyplňte a odešlete [formulář žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess). Obdržíte e-mail s odkazem na vytvoření prostředku pro rozpoznávání formulářů.
+
 - Sada alespoň šest forem stejného typu. Tato data použijete ke školení modelu a testování formuláře. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage.
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Nastavení nástroje pro označování ukázek
 
-Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. Pro nastavení kontejneru Docker použijte následující postup. Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).
+Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. Pro nastavení kontejneru Docker použijte následující postup. Informace o úvodu k Docker a kontejneru najdete v tématu [Přehled Docker](https://docs.docker.com/engine/docker-overview/).
 1. Nejdřív nainstalujte Docker na hostitelském počítači. Hostitelský počítač může být místní počítač ([Windows](https://docs.docker.com/docker-for-windows/), [MacOS](https://docs.docker.com/docker-for-mac/)nebo [Linux](https://docs.docker.com/install/)). Nebo můžete použít hostující službu Docker v Azure, jako je například [Služba Azure Kubernetes](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)nebo cluster Kubernetes [nasazený do Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910). Hostitelský počítač musí splňovat následující požadavky na hardware:
 
     | Kontejner | Minimální | Doporučené|

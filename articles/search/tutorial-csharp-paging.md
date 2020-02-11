@@ -3,17 +3,17 @@ title: C#kurz pro stránkování výsledků hledání
 titleSuffix: Azure Cognitive Search
 description: Tento kurz znázorňuje stránkování výsledků hledání. Sestaví se v existujícím projektu hotelů s tlačítky pro stránkování pomocí prvního, následujícího, předchozího, posledního a číslovaného tlačítka. Druhý stránkovací systém používá nekonečné posouvání, aktivované přesunutím svislého posuvníku na jeho dolní limit.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/10/2020
+ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113765"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121520"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C#kurz: stránkování výsledků hledání – Azure Kognitivní hledání
 

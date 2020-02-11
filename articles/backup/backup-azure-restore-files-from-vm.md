@@ -3,12 +3,12 @@ title: Obnovení souborů a složek ze zálohy virtuálního počítače Azure
 description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu obnovení virtuálního počítače Azure.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 86a46e606e9425cf4951817ca3afa23fe57dae52
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294078"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114322"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -56,6 +56,8 @@ Chcete-li obnovit soubory nebo složky z bodu obnovení, přejděte na virtuáln
 7. Z umístění pro stahování (obvykle složky Stažené soubory) klikněte pravým tlačítkem na spustitelný soubor nebo skript a spusťte ho s přihlašovacími údaji správce. Po zobrazení výzvy zadejte heslo nebo vložte heslo z paměti a stiskněte klávesu **ENTER**. Po zadání platného hesla se skript připojí k bodu obnovení.
 
     ![Nabídka obnovení souborů](./media/backup-azure-restore-files-from-vm/executable-output.png)
+
+8. Pro počítače se systémem Linux se vygeneruje skript Pythonu. Jeden potřebuje stáhnout skript a zkopírovat ho na relevantní/kompatibilní server Linux. Možná budete muset změnit oprávnění, aby je bylo možné spustit s ```chmod +x <python file name>```. Pak spusťte soubor Pythonu s ```./<python file name>```.
 
 V části [požadavky na přístup](#access-requirements) se ujistěte, že se skript úspěšně spouští.
 
@@ -153,7 +155,7 @@ mount [RAID Disk Path] [/mountpath]
 
 Pokud je v disku RAID nakonfigurovaný jiný LVM, použijte předchozí postup pro oddíly LVM, ale místo názvu disku RAID použijte název svazku.
 
-## <a name="system-requirements"></a>Požadavky na systém
+## <a name="system-requirements"></a>Systémové požadavky
 
 ### <a name="for-windows-os"></a>OPERAČNÍ systém Windows
 
@@ -161,11 +163,11 @@ V následující tabulce je uvedena kompatibilita mezi operačním systémem ser
 
 |Serverový operační systém | Kompatibilní klientský operační systém  |
 | --------------- | ---- |
-| Windows Server 2019    | Windows 10 |
-| Windows Server 2016    | Windows 10 |
+| Windows Server 2019    | Windows 10 |
+| Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
+| Windows Server 2008 R2 | Windows 7   |
 
 ### <a name="for-linux-os"></a>Pro Linux OS
 
@@ -188,10 +190,10 @@ V systému Linux musí operační systém počítače používaného k obnovení
 
 Skript také vyžaduje, aby byly součásti Python a bash spouštěny a bezpečně připojeny k bodu obnovení.
 
-|Součást | Verze  |
+|Komponenta | Version  |
 | --------------- | ---- |
 | bash | 4 a vyšší |
-| Python | 2.6.6 a vyšší  |
+| python | 2.6.6 a vyšší  |
 | TLS | 1,2 by měla být podporovaná.  |
 
 ## <a name="access-requirements"></a>Požadavky na přístup
@@ -247,7 +249,7 @@ Vzhledem k tomu, že proces obnovy souborů připojí všechny disky ze zálohy,
 - Pokaždé, když uživatel stáhne skript, Azure Backup zahájí proces přípravy bodu obnovení ke stažení. U velkých disků bude tento proces trvat značnou dobu. Pokud dojde k následným nárůstům požadavků, cílová Příprava přejde ke stažení spirály. Proto se doporučuje stáhnout skript z portálu/PowerShell/CLI, počkat po 20-30 minut (Heuristická) a pak ji spustit. V tuto chvíli se očekává, že cíl bude připravený pro připojení ze skriptu.
 - Po obnovení souboru se vraťte na portál a klikněte na **Odpojit disky** pro body obnovení, ve kterých jste nedokázali připojit svazky. V podstatě tento krok vyčistí všechny existující procesy a relace a zvýší pravděpodobnost obnovení.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud máte při obnovování souborů z virtuálních počítačů problémy, další informace najdete v následující tabulce.
 

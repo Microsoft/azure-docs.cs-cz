@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888137"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118021"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Odeslání odchozích volání do koncových bodů HTTP nebo HTTPS pomocí Azure Logic Apps
 
@@ -40,7 +40,7 @@ Konektor HTTP podporuje na základě schopnosti cílového koncového bodu proto
 
 Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu URL pro koncový bod a vrátí odpověď.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com). Otevřete prázdnou aplikaci logiky v návrháři aplikace logiky.
 
 1. V části **Vybrat akci**do vyhledávacího pole zadejte "http" jako filtr. V seznamu **triggery** vyberte Trigger **http** .
 
@@ -50,9 +50,12 @@ Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu U
 
 1. Zadejte hodnoty pro [parametry triggeru protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger) , které chcete zahrnout do volání cílového koncového bodu. Nastavte opakování pro to, jak často chcete, aby aktivační událost kontrolovala cílový koncový bod.
 
-   Pokud vyberete jiný typ ověřování než **žádné**, nastavení ověřování se liší v závislosti na vašem výběru. Další informace najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
-
    ![Zadejte parametry triggeru protokolu HTTP.](./media/connectors-native-http/http-trigger-parameters.png)
+
+   Pokud vyberete jiný typ ověřování než **žádné**, nastavení ověřování se liší v závislosti na vašem výběru. Další informace o typech ověřování dostupných pro protokol HTTP najdete v těchto tématech:
+
+   * [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [Ověření přístupu k prostředkům pomocí spravovaných identit](../logic-apps/create-managed-service-identity.md)
 
 1. Chcete-li přidat další dostupné parametry, otevřete seznam **Přidat nový parametr** a vyberte požadované parametry.
 
@@ -64,7 +67,7 @@ Tato integrovaná aktivační událost provede volání HTTP na zadanou adresu U
 
 Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový bod a vrátí odpověď.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com). Otevřete aplikaci logiky v návrháři aplikace logiky.
 
    V tomto příkladu se jako první krok používá Trigger HTTP.
 
@@ -80,9 +83,12 @@ Tato Vestavěná akce provede volání HTTP na zadanou adresu URL pro koncový b
 
 1. Zadejte hodnoty [parametrů akce protokolu HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) , které chcete zahrnout do cílového koncového bodu.
 
-   Pokud vyberete jiný typ ověřování než **žádné**, nastavení ověřování se liší v závislosti na vašem výběru. Další informace najdete v tématu [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
-
    ![Zadejte parametry akce HTTP.](./media/connectors-native-http/http-action-parameters.png)
+
+   Pokud vyberete jiný typ ověřování než **žádné**, nastavení ověřování se liší v závislosti na vašem výběru. Další informace o typech ověřování dostupných pro protokol HTTP najdete v těchto tématech:
+
+   * [Přidání ověřování do odchozích volání](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+   * [Ověření přístupu k prostředkům pomocí spravovaných identit](../logic-apps/create-managed-service-identity.md)
 
 1. Chcete-li přidat další dostupné parametry, otevřete seznam **Přidat nový parametr** a vyberte požadované parametry.
 
@@ -147,12 +153,12 @@ Zde jsou další informace o výstupech z triggeru nebo akce HTTP, které vrací
 
 | Název vlastnosti | Typ | Popis |
 |---------------|------|-------------|
-| záhlaví | object | Hlavičky z požadavku |
-| text | object | JSON – objekt | Objekt s obsahem textu z požadavku |
-| stavový kód | int | Stavový kód z požadavku |
+| záhlaví | objekt | Hlavičky z požadavku |
+| těles | objekt | JSON – objekt | Objekt s obsahem textu z požadavku |
+| Stavový kód | int | Stavový kód z požadavku |
 |||
 
-| Kód stavu | Popis |
+| Stavový kód | Popis |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Přijato |

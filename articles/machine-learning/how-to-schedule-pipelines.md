@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: 1766b536043d8c404addb1877aa3ef9b57344ef4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722250"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116761"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Plánování kanálů strojového učení pomocí sady Azure Machine Learning SDK pro Python
 
 V tomto článku se dozvíte, jak programově naplánovat spuštění kanálu v Azure. Můžete zvolit vytvoření plánu na základě uplynulého času nebo změny systému souborů. Plány založené na čase se dají využít k zajištění běžné úlohy, jako je monitorování pro posun dat. Plány založené na změnách lze použít k reakci na nepředvídatelné nebo nepředvídatelné změny, například na nahrávání nových dat nebo při úpravách starých dat. Po získání informací o tom, jak vytvořit plány, se dozvíte, jak je načíst a deaktivovat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -55,6 +55,13 @@ pipeline_id = "aaaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
 ## <a name="create-a-schedule"></a>Vytvoření plánu
 
 Pro opakované spuštění kanálu vytvoříte plán. `Schedule` přidruží kanál, experiment a Trigger. Trigger může být buď`ScheduleRecurrence`, který popisuje čekání mezi běhy nebo cestou úložiště dat, která určuje adresář, ve kterém se mají sledovat změny. V obou případech budete potřebovat identifikátor kanálu a název experimentu, ve kterém chcete plán vytvořit.
+
+V horní části souboru Pythonu importujte `Schedule` a `ScheduleRecurrence` třídy:
+
+```python
+
+from azureml.pipeline.core.schedule import ScheduleRecurrence, Schedule
+```
 
 ### <a name="create-a-time-based-schedule"></a>Vytvoření plánu založeného na čase
 
@@ -141,3 +148,4 @@ Další informace naleznete v tématu:
 
 * Další informace o [kanálech](concept-ml-pipelines.md)
 * Další informace o [prozkoumání Azure Machine Learning pomocí Jupyter](samples-notebooks.md)
+

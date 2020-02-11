@@ -1,73 +1,78 @@
 ---
-title: Azure Monitor pro poskytovatele služeb | Microsoft Docs
-description: Azure Monitor může pomáhat poskytovatelům spravovaných služeb (účastníci programu MSP), velkým podnikům, nezávislým dodavatelům softwaru (ISV) a poskytovatelům hostitelských služeb spravovat a monitorovat servery v místní nebo cloudové infrastruktuře zákazníka.
+title: Protokoly Azure Monitor pro poskytovatele služeb | Microsoft Docs
+description: Protokoly Azure Monitor můžou pomáhat poskytovatelům spravovaných služeb (účastníci programu MSP), velkým podnikům, nezávislým dodavatelům softwaru a poskytovatelům hostitelských služeb spravovat a monitorovat servery v místní nebo cloudové infrastruktuře zákazníka.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
-ms.date: 08/06/2019
-ms.openlocfilehash: b0f25d01421edd329b03d8f2b7e1aafaa2ba67d5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 02/03/2020
+ms.openlocfilehash: 1b5c181569ea569ecc4808284683501cb20f7bf5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932066"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117057"
 ---
-# <a name="azure-monitor-for-service-providers"></a>Azure Monitor pro poskytovatele služeb
-Log Analytics pracovní prostory v Azure Monitor mohou pomáhat poskytovatelům spravovaných služeb (účastníci programu MSP), velkým společnostem, nezávislým výrobcům softwaru a poskytovatelům hostitelských služeb spravovat a monitorovat servery v místní nebo cloudové infrastruktuře zákazníka. 
+# <a name="azure-monitor-logs-for-service-providers"></a>Protokoly Azure Monitor pro poskytovatele služeb
 
-Velké podniky sdílí spoustu podobností s poskytovateli služeb, zejména v případě, že existuje centralizovaný tým IT, který je zodpovědný za jeho správu v mnoha různých obchodních jednotkách. Pro zjednodušení tento dokument používá *poskytovatele služeb* , ale stejné funkce jsou dostupné i pro podniky a další zákazníky.
+Log Analytics pracovní prostory v Azure Monitor mohou pomáhat poskytovatelům spravovaných služeb (účastníci programu MSP), velkým společnostem, nezávislým výrobcům softwaru a poskytovatelům hostitelských služeb spravovat a monitorovat servery v místní nebo cloudové infrastruktuře zákazníka.
 
-Pro partnery a poskytovatele služeb, kteří jsou součástí programu [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) , je Log Analytics v Azure monitor jedna ze služeb Azure dostupných v [předplatných Azure CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview). 
+Velké podniky řada podobností s poskytovateli služeb, zejména v případě, že na centralizovaný tým IT, který zodpovídá za správu IT pro mnoho různých organizačních jednotek. Pro zjednodušení tento dokument používá *poskytovatele služeb* , ale stejné funkce jsou dostupné i pro podniky a další zákazníky.
+
+Pro partnery a poskytovatele služeb, kteří jsou součástí programu [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) , je Log Analytics v Azure monitor jedna ze služeb Azure dostupných v předplatných Azure CSP.
+
+Log Analytics v Azure Monitor může také používat poskytovatel služeb, který spravuje prostředky zákazníka prostřednictvím funkce správy delegovaných prostředků Azure v [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview).
 
 ## <a name="architectures-for-service-providers"></a>Architektury pro poskytovatele služeb
 
-Log Analytics pracovní prostory poskytují metodu pro správce k řízení toku a izolaci dat [protokolu](data-platform-logs.md) a k vytvoření architektury, která řeší konkrétní obchodní potřeby. [Tento článek](design-logs-deployment.md) popisuje předpoklady pro návrh, nasazení a migraci pro pracovní prostor a článek [Správa přístupu](manage-access.md) popisuje, jak používat a spravovat oprávnění pro data protokolu. Poskytovatelé služeb mají další požadavky.
+Log Analytics pracovní prostory poskytují metodu pro správce k řízení toku a izolaci dat [protokolu](data-platform-logs.md) a k vytvoření architektury, která řeší konkrétní obchodní potřeby. [Tento článek](design-logs-deployment.md) popisuje předpoklady pro návrh, nasazení a migraci pro pracovní prostor a článek [Správa přístupu](manage-access.md) popisuje, jak používat a spravovat oprávnění pro data protokolu. Poskytovatelé služeb mají další aspekty.
 
-Existují tři možné architektury pro poskytovatele služeb týkající se Log Analyticsch pracovních prostorů:
+Existují tři možné architektury pro poskytovatele služeb týkající se pracovních prostorů Log Analytics:
 
-### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. distribuované protokoly se ukládají v pracovních prostorech nacházejících se v tenantovi zákazníka. 
+### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. distribuované protokoly se ukládají v pracovních prostorech nacházejících se v tenantovi zákazníka.
 
-V této architektuře je pracovní prostor nasazený v tenantovi zákazníka, který se používá pro všechny protokoly daného zákazníka. Správcům poskytovatele služeb je udělen přístup k tomuto pracovnímu prostoru pomocí [Azure Active Directory uživatelů typu Host (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b). Správci poskytovatele služeb budou muset přejít na svůj adresář zákazníka v Azure Portal, aby mohli získat přístup k těmto pracovním prostorům.
+V této architektuře pracovního prostoru se nasadí do tenanta zákazníka, který se používá pro všechny protokoly daného zákazníka.
 
-Výhody této architektury:
-* Zákazník může spravovat přístup k protokolům pomocí vlastního [přístupu založeného na rolích](https://docs.microsoft.com/azure/role-based-access-control/overview).
-* Každý zákazník může mít různá nastavení pro svůj pracovní prostor, jako je například uchovávání a capping dat.
-* Izolace mezi zákazníky za zákonné a dodržování předpisů.
-* Poplatky za každý pracovní prostor se zavádějí do předplatného zákazníka.
-* Protokoly je možné shromažďovat ze všech typů prostředků, nikoli jenom pomocí agenta. Například protokoly auditu Azure.
+Existují dva způsoby, jak můžou správci poskytovatele služeb získat přístup k pracovnímu prostoru Log Analytics v tenantovi zákazníka:
 
-Nevýhody této architektury jsou:
-* Poskytovatel služeb je těžší spravovat velký počet zákaznických klientů najednou.
-* Správce poskytovatele služeb musí být zřízen v adresáři zákazníka.
-* Poskytovatel služby nemůže analyzovat data napříč svými zákazníky.
+- Zákazník může přidat jednotlivé uživatele od poskytovatele služeb jako [Azure Active Directory uživatelů typu Host (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b). Správci poskytovatele služeb se budou muset přihlásit ke všem adresářům zákazníka v Azure Portal, aby měli přístup k těmto pracovním prostorům. To také vyžaduje, aby zákazníci mohli spravovat individuální přístup pro každého správce služby Service Provider.
+- Pro zajištění větší škálovatelnosti a flexibility můžou poskytovatelé služeb využít možnost [správy delegovaných prostředků Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management) ve [službě Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview) pro přístup k tenantovi zákazníka. Pomocí této metody jsou správci poskytovatele služeb zahrnuti do skupiny uživatelů Azure AD v tenantovi poskytovatele služeb a tato skupina má přístup k této skupině během procesu připojování pro každého zákazníka. Tito správci pak můžou přístup k pracovním prostorům každého zákazníka z vlastního tenanta poskytovatele služeb, ale nemusí se přihlašovat jednotlivě k tenantovi jednotlivých zákazníků. Přístup k prostředkům pracovních prostorů Log Analytics vašich zákazníků tímto způsobem omezuje práci na straně zákazníka a usnadňuje shromažďování a analýzu dat napříč několika zákazníky spravovanými stejným poskytovatelem služeb prostřednictvím nástrojů, jako jsou například [sešity Azure monitor](https://docs.microsoft.com/azure//azure-monitor/platform/workbooks-overview). Další informace najdete v tématu [monitorování zákaznických prostředků ve velkém měřítku](https://docs.microsoft.com/azure/lighthouse/how-to/monitor-at-scale).
+
+Mezi výhody distribuované architektury patří:
+
+* Zákazník může ověřit konkrétní úrovně oprávnění prostřednictvím [delegované správy prostředků Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management)nebo může spravovat přístup k protokolům pomocí vlastního [přístupu založeného na rolích](https://docs.microsoft.com/azure/role-based-access-control/overview).
+* Protokoly je možné shromažďovat ze všech typů prostředků, nikoli jenom z dat virtuálních počítačů založených na agentech. Například protokolů auditu Azure.
+* Každý zákazník může mít různá nastavení pro jejich pracovní prostor, jako jsou uchovávání a malá a velká data.
+* Izolace mezi zákazníky pro regulační a dodržování předpisů.
+* Poplatek za každý pracovní prostor se začne do předplatného zákazníka.
+
+Mezi nevýhody distribuované architektury patří:
+
+* Centralizované vizualizace a analýza dat napříč klienty zákazníka pomocí nástrojů, jako jsou Azure Monitor sešity, můžou mít za následek pomalejší prostředí, zejména při analýze dat napříč více než 50 + pracovními prostory.
+* Pokud se zákazníkům pro správu delegovaných prostředků Azure nepřipojíte, musí se správci poskytovatele služeb zřídit v adresáři zákazníka a pro poskytovatele služeb je těžší spravovat velký počet zákaznických klientů najednou.
 
 ### <a name="2-central---logs-are-stored-in-a-workspace-located-in-the-service-provider-tenant"></a>2. centrální protokoly se ukládají v pracovním prostoru umístěném v tenantovi poskytovatele služeb.
 
-V této architektuře se protokoly neukládají v klientech zákazníka, ale jenom v centrálním umístění v rámci jednoho z předplatných poskytovatele služeb. Agenti, kteří jsou nainstalováni na virtuálních počítačích zákazníka, jsou nakonfigurováni tak, aby odesílali své protokoly do tohoto pracovního prostoru pomocí ID a tajného klíče pracovního prostoru.
+V této architektuře protokoly nejsou uložené v tenantech zákazníka, ale pouze v centrálním umístění v rámci jednoho předplatného poskytovatele služeb. Agenty, které jsou nainstalovány na virtuálních počítačích zákazníků jsou nakonfigurovány k odeslání protokolů s jejich tento pracovní prostor pomocí ID a tajný klíč.
 
-Výhody této architektury:
-* Můžete snadno spravovat velký počet zákazníků a integrovat je do různých systémů back-endu.
+Výhody centralizované architektury jsou:
 
-* Poskytovatel služeb má plné vlastnictví přes protokoly a různé artefakty, jako jsou funkce a uložené dotazy.
+* Je snadné ke správě velkého počtu zákazníků a integrovat je do různých systémů back-endu.
+* Poskytovatel služeb má úplné vlastnictví přes protokoly a různých artefaktů, jako je například funkce a uložené dotazy.
+* Poskytovatel služeb můžete provádět analýzy na všech svých zákazníků.
 
-* Poskytovatel služeb může provádět analýzy napříč všemi svými zákazníky.
+Nevýhody centralizované architektury jsou:
 
-Nevýhody této architektury jsou:
-* Tato architektura se vztahuje jenom na data virtuálních počítačů založená na agentech. nepokrývá PaaS, SaaS a zdroje dat prostředků infrastruktury Azure.
-
-* Oddělení dat mezi zákazníky může být obtížné, když se sloučí do jednoho pracovního prostoru. Jedinou dobrým způsobem, jak to udělat, je použít plně kvalifikovaný název domény (FQDN) počítače nebo ID předplatného Azure. 
-
-* Všechna data všech zákazníků budou uložena ve stejné oblasti s jednou fakturou a stejným nastavením pro uchování a nastavení konfigurace.
-
-* Služby Azure Fabric a PaaS Services, například Azure Diagnostics a protokoly auditu Azure, vyžadují, aby byl pracovní prostor ve stejném tenantovi jako prostředek, a proto nemůže protokoly odesílat do centrálního pracovního prostoru.
-
-* Všichni agenti virtuálních počítačů ze všech zákazníků budou ověřeni do centrálního pracovního prostoru pomocí stejného ID a klíče pracovního prostoru. Neexistuje žádná metoda pro blokování protokolů od určitého zákazníka bez přerušení dalších zákazníků.
+* Tuto architekturu je možné použít pouze data virtuálního počítače založené na agentovi, nebudeme se zabývat PaaS, SaaS a Azure zdroje dat prostředků infrastruktury.
+* Může být obtížné oddělit data mezi zákazníky, když jsou sloučeny do jednoho pracovního prostoru. Je jediným dobrým metodu počítače plně kvalifikovaný název domény (FQDN) nebo prostřednictvím předplatného Azure ID. 
+* Všechna data ze všech zákazníků budou uloženy ve stejné oblasti pomocí faktury a stejné nastavení uchování a konfigurace.
+* Prostředky infrastruktury Azure a PaaS služby, například Azure Diagnostics a protokoly auditování Azure vyžaduje pracovní prostor a být ve stejném tenantovi jako prostředek, proto, že aby nemohli odesílat protokoly do centrální pracovního prostoru.
+* Všichni agenti virtuálních počítačů ze všech zákazníků budou ověřeni do centrálního pracovního prostoru pomocí stejného ID a klíče pracovního prostoru. Neexistuje žádná metoda blokování protokoly z konkrétního zákazníka, aniž by to ovlivnilo ostatní zákazníci.
 
 ### <a name="3-hybrid---logs-are-stored-in-workspace-located-in-the-customers-tenant-and-some-of-them-are-pulled-to-a-central-location"></a>3. hybridní protokoly jsou uložené v pracovním prostoru umístěném v tenantovi zákazníka a některé z nich se najdou do centrálního umístění.
 
-Třetí architektura je kombinací obou možností. Vychází z první distribuované architektury, kde jsou protokoly místní pro každého zákazníka, ale používají nějaký mechanismus k vytvoření centrálního úložiště protokolů. Část protokolů se načte do centrálního umístění pro vytváření sestav a analýzy. Tato část může být malým počtem datových typů nebo souhrnem aktivity, jako jsou denní statistiky.
+Třetí architektura poměr mezi těmito dvěma možnostmi. Je založen na první distribuovaná architektura, ve kterém jsou místní pro každého zákazníka protokoly, ale pomocí některé mechanismus, chcete-li vytvořit centrální úložiště protokolů. Část protokoly načítána do centrálního umístění pro generování sestav a analýzy. Tuto část může být malý počet datových typů nebo Souhrn aktivity, jako je například denní statistiky.
 
 Existují dvě možnosti implementace protokolů v centrálním umístění:
 
@@ -85,4 +90,4 @@ Existují dvě možnosti implementace protokolů v centrálním umístění:
 
 * Generování souhrnných sestav pomocí [Power BI](../../azure-monitor/platform/powerbi.md)
 
-* Kontrola procesu [konfigurace Log Analytics a Power BI pro monitorování více zákazníků CSP](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)
+* Zaveďte zákazníky do [správy delegovaných prostředků Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).

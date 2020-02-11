@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 1/05/2020
-ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 2/10/2020
+ms.openlocfilehash: 6d87d3373711d12df3f2cced26ef35ae951ad41e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768666"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116190"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 
@@ -242,7 +242,7 @@ Vzhledem k tomu, že každá instance je izolovaná ve své vlastní virtuální
 Skupinu převzetí služeb při selhání můžete vytvořit mezi spravovanými instancemi ve dvou různých předplatných. Pokud používáte rozhraní PowerShell API, můžete to udělat zadáním parametru `PartnerSubscriptionId` pro sekundární instanci. Při použití REST API může mít každé ID instance obsažené v parametru `properties.managedInstancePairs` vlastní subscriptionID.
   
 > [!IMPORTANT]
-> Azure Portal nepodporuje skupiny převzetí služeb při selhání v různých předplatných.
+> Azure Portal nepodporuje vytváření skupin převzetí služeb při selhání v různých předplatných. Pro existující skupiny převzetí služeb při selhání v různých předplatných nebo skupinách prostředků se převzetí služeb při selhání nedá iniciovat ručně prostřednictvím portálu z primární instance. Místo toho ji inicializujte z instance geografické sekundární instance.
 
 ### <a name="managing-failover-to-secondary-instance"></a>Správa převzetí služeb při selhání do sekundární instance
 
@@ -400,7 +400,7 @@ Jak už bylo popsáno dříve, skupiny automatického převzetí služeb při se
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Odebere skupinu převzetí služeb při selhání ze serveru. |
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Načte konfiguraci skupiny převzetí služeb při selhání. |
 | [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Upraví konfiguraci skupiny převzetí služeb při selhání. |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server. |
+| [Switch – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Aktivuje převzetí služeb při selhání skupiny převzetí služeb při selhání na sekundární server. |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Přidá jednu nebo více databází do skupiny převzetí služeb při selhání.|
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Správa skupin převzetí služeb při selhání SQL Database se spravovanými instancemi

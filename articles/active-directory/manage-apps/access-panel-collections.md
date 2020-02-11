@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1ed80ad87d81c2ec1bdfe50e9cd4556f141507b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c91b9ffc9e3487e492c91cb0f5825d0b725f9410
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907471"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120098"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Vytváření kolekcí na portálu moje aplikace
 
@@ -30,7 +30,7 @@ Uživatelé můžou pomocí portálu moje aplikace zobrazit a spustit cloudové 
 > [!NOTE]
 > Tento článek popisuje, jak může správce povolit a vytvořit kolekce. Informace o tom, jak používat portál a kolekce moje aplikace, najdete v tématu věnovaném [přístupu a používání kolekcí](https://docs.microsoft.com/azure/active-directory/user-help/my-applications-portal-workspaces).
 
-## <a name="enable-my-apps-preview-features"></a>Povolit funkce verze Preview pro moje aplikace
+## <a name="enable-the-latest-my-apps-features"></a>Povolit funkce nejnovější moje aplikace
 
 1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako správce uživatele nebo globální správce.
 
@@ -39,8 +39,8 @@ Uživatelé můžou pomocí portálu moje aplikace zobrazit a spustit cloudové 
 3. V části **náhledy uživatelských funkcí**vyberte **Spravovat nastavení uživatelské funkce Náhled**.
 
 4. V části **Uživatelé můžou používat funkce verze Preview pro moje aplikace**, vyberte jednu z následujících možností:
-   * **Vybráno** – povolí funkce ve verzi Preview pro konkrétní skupinu. Pomocí možnosti **Vybrat skupinu** vyberte skupinu, pro kterou chcete povolit funkce ve verzi Preview.  
-   * **All** – povolí funkce ve verzi Preview pro všechny uživatele.
+   * **Vybráno** – povolí funkce pro určitou skupinu. Pomocí možnosti **Vybrat skupinu** vyberte skupinu, pro kterou chcete povolit funkce.  
+   * **All** – povolí funkce pro všechny uživatele.
 
 > [!NOTE]
 > K otevření portálu moje aplikace můžou uživatelé použít odkaz `https://myapps.microsoft.com` nebo vlastní odkaz pro vaši organizaci, jako je například `https://myapps.microsoft.com/contoso.com`. Po povolení prostředí nové moje aplikace se v horní části stránky Moje aplikace zobrazí nápis **aktualizované moje prostředí moje aplikace** a uživatelé si **můžou vybrat, že si budou** moct zobrazit nové prostředí. Pokud chcete přestat používat nové prostředí, uživatelé můžou v horní části stránky vybrat **Ano** v nápisu **opustit nové prostředí** .
@@ -74,7 +74,7 @@ Chcete-li vytvořit kolekci, musíte mít licenci Azure AD Premium P1 nebo P2.
 11. Vyberte **zkontrolovat + vytvořit**. Zobrazí se vlastnosti nové kolekce.
 
 
-## <a name="view-audit-logs"></a>Zobrazení protokolů auditování
+## <a name="view-audit-logs"></a>Zobrazení protokolů auditu
 
 Protokoly auditu zaznamenávají operace kolekcí moje aplikace, včetně akcí vytváření kolekcí koncových uživatelů. Z mých aplikací se generují tyto události:
 

@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 864cccc4629140754a326823cbaebd7ad8933d3d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8c6b7b4d64b3a4f504cc9aef275b3d48cd62a3d8
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75765065"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116844"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -79,7 +79,7 @@ Chcete-li vytvořit datovou sadu z dat, která již byla uložena v úložišti 
     * Přidejte do cesty znak "/* *", chcete-li zahrnout všechny soubory do podsložek vybrané cesty.
     * Připojíte * */* . * a zahrnete všechna data v aktuálním kontejneru a jejích podsložkách.
 1. Zadejte popis pro datovou sadu.
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 1. Potvrďte podrobnosti. Výběrem **zpět** upravíte nastavení nebo **vytvořte** datovou sadu.
 
 ### <a name="create-a-dataset-from-uploaded-data"></a>Vytvoření datové sady z nahraných dat
@@ -92,7 +92,7 @@ Přímé nahrání dat:
 1. *Volitelné:* Vyberte **Upřesnit nastavení** a přizpůsobte úložiště dat, kontejner a cestu k datům.
 1. Vyberte **Procházet** a vyberte místní soubory, které se mají nahrát.
 1. Zadejte popis datové sady.
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 1. Potvrďte podrobnosti. Výběrem **zpět** upravíte nastavení nebo **vytvořte** datovou sadu.
 
 Data se nahrají do výchozího úložiště objektů BLOB (workspaceblobstore) pracovního prostoru Machine Learning.
@@ -125,7 +125,7 @@ V případě ohraničujících polí patří mezi důležité otázky:
 
 ## <a name="initialize-the-labeling-project"></a>Inicializovat projekt značení
 
-Po inicializaci projektu značení jsou některé aspekty projektu neměnné. Nemůžete změnit typ nebo datovou sadu úlohy. *Můžete* změnit popisky a adresu URL pro popis úlohy. Před vytvořením projektu pečlivě zkontrolujte nastavení. Po odeslání projektu se vrátíte na domovskou stránku s **popisem** , která zobrazí projekt jako **inicializovaný**. Tato stránka se automaticky neaktualizuje. Takže po pozastavení ručně aktualizujte stránku, aby se zobrazil stav projektu jako **vytvořený**.
+Po inicializaci projektu značení jsou některé aspekty projektu neměnné. Nemůžete změnit typ nebo datovou sadu úlohy. *Můžete* změnit popisky a adresu URL pro popis úlohy. Před vytvořením projektu pečlivě zkontrolujte nastavení. Po odeslání projektu se vrátíte na domovskou stránku s **popisem dat** , která zobrazí projekt jako **inicializovaný**. Tato stránka se automaticky neaktualizuje. Takže po pozastavení ručně aktualizujte stránku, aby se zobrazil stav projektu jako **vytvořený**.
 
 ## <a name="manage-teams-and-people"></a>Správa týmů a lidí
 
@@ -139,7 +139,7 @@ Pokud chcete týmu poslat e-mail, vyberte tým, na kterém se zobrazí stránka 
 
 ## <a name="run-and-monitor-the-project"></a>Spuštění a sledování projektu
 
-Po inicializaci projektu ho Azure spustí. Vyberte projekt na hlavní stránce s **popisem** , abyste přešli na **Podrobnosti o projektu**. Karta **řídicí panel** zobrazuje průběh úlohy označování.
+Po inicializaci projektu ho Azure spustí. Vyberte projekt na stránce hlavní **popisky dat** , abyste přešli na **Podrobnosti projektu**. Karta **řídicí panel** zobrazuje průběh úlohy označování.
 
 Na kartě **data** můžete zobrazit datovou sadu a zkontrolovat data s popisky. Pokud se zobrazí nesprávně označená data, vyberte je a zvolte **odmítnout**. tím se odeberou popisky a data se převedou zpátky do fronty bez označení.
 
@@ -148,6 +148,24 @@ Použijte kartu **tým** k přiřazení nebo zrušení přiřazení týmů k pro
 Chcete-li pozastavit nebo restartovat projekt, vyberte tlačítko **pozastavit**/**Start** . Data můžete označovat pouze v případě, že projekt běží.
 
 Data můžete označit přímo ze stránky **Project Details (podrobnosti projektu** ), a to tak, že vyberete **Data popisku**.
+
+## <a name="add-labels-to-a-project"></a>Přidání popisků do projektu
+
+Během procesu označování se můžete setkat s tím, že pro klasifikaci imagí jsou potřeba další popisky.  Například můžete chtít přidat popisek "Neznámý" nebo "jiný", který označuje matoucí obrázky.
+
+Pomocí těchto kroků můžete přidat jeden nebo více štítků do projektu:
+
+1. Vyberte projekt na hlavní stránce pro **popisky dat** .
+1. V horní části stránky vyberte **pozastavit** a zastavte jmenovky od jejich aktivity.
+1. Vyberte kartu **Podrobnosti** .
+1. V seznamu na levé straně vyberte **třídy popisků**.
+1. V horní části seznamu vyberte **+ Přidat popisky** ![přidat popisek](media/how-to-create-labeling-projects/add-label.png)
+1. Ve formuláři přidejte nový popisek a vyberte způsob, jak pokračovat.  Vzhledem k tomu, že jste změnili dostupné popisky pro obrázek, zvolíte způsob, jakým se mají již označená data zacházet:
+    * Začněte znovu a odeberte všechny existující popisky.  Tuto možnost vyberte, pokud chcete vymazat všechny existující popisky, aby bylo možné použít úplnou sadu k označení všech imagí.
+    * Začněte znovu a zachová všechny existující popisky.  Tuto možnost vyberte, pokud chcete všechna data označit jako neoznačená, ale existující popisky ponechejte jako výchozí značku pro obrázky, které byly označeny.
+    * Pokračujte a zachováte všechny existující popisky. Tuto možnost vyberte, pokud chcete zachovat všechna data, která jsou už označená, a začít používat nový popisek pro data, která ještě nejsou klasifikovaná.
+1. Upravte stránku s pokyny podle potřeby pro nové popisky.
+1. Až přidáte všechny nové popisky, v horní části stránky vyberte **začít** a restartujte projekt.  
 
 ## <a name="export-the-labels"></a>Exportovat popisky
 

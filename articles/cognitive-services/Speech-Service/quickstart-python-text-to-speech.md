@@ -1,34 +1,32 @@
 ---
-title: 'Rychlý Start: převod textu na řeč, Python-Speech Service'
+title: Převod textu na řeč, Python-Speech Service
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte jak převést převod textu na řeč pomocí Pythonu a rozhraní REST API pro převod textu na řeč. Ukázkový text v tomto průvodci strukturovaná jako jazyk pro značky syntézu řeči (SSML). To umožňuje zvolit hlasu a jazyk odpovědi řeči.
+description: V tomto článku se dozvíte, jak převést převod textu na řeč pomocí Pythonu a REST API převodu textu na řeč. Ukázkový text v tomto průvodci strukturovaná jako jazyk pro značky syntézu řeči (SSML). To umožňuje zvolit hlasu a jazyk odpovědi řeči.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: erhopf
-ms.openlocfilehash: 639120b283775bcdb5fe4316d78c538c9db9cf4a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.topic: how-to
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 63e6a2a47265eae08a653f3eadaf6bad86dd0635
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975903"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119711"
 ---
-# <a name="quickstart-convert-text-to-speech-using-python"></a>Rychlý start: Převod převod textu na řeč pomocí Pythonu
+# <a name="convert-text-to-speech-using-python"></a>Převod textu na řeč pomocí Pythonu
 
-V tomto rychlém startu se dozvíte jak převést převod textu na řeč pomocí Pythonu a převod textu na řeč rozhraní REST API. Text požadavku v této příručce má strukturu [řeči syntézu Markup Language (SSML)](speech-synthesis-markup.md), která umožňuje výběr hlasu a jazyk odpovědi.
+V tomto článku se dozvíte, jak převést převod textu na řeč pomocí Pythonu a REST API převodu textu na řeč. Text žádosti v této příručce je strukturovaný jako [SSML (Speech syntézy Language)](speech-synthesis-markup.md), který umožňuje zvolit hlas a jazyk odpovědi.
 
-Tento rychlý Start vyžaduje [účet Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby řeči. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](get-started.md).
+Tento článek vyžaduje [účet Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby řeči. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](get-started.md).
 
-## <a name="prerequisites"></a>Předpoklady
-
-K tomuto rychlému startu potřebujete:
+## <a name="prerequisites"></a>Požadavky
 
 * Python 2.7.x nebo 3.x
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download), nebo vašem oblíbeném textovém editoru
+* [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download)nebo váš oblíbený textový editor
 * Klíč předplatného Azure pro službu pro rozpoznávání řeči
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
@@ -69,15 +67,15 @@ class TextToSpeech(object):
         self.access_token = None
 ```
 
-`subscription_key` Je jedinečný klíč z portálu Azure portal. `tts` se zobrazí výzva k zadání textu, který bude převeden do mluvené řeči. Tento vstup je řetězcový literál, znaky se nemusí být uvozeny řídicími znaky. Nakonec `timestr` získá aktuální čas, který použijeme název souboru.
+`subscription_key` je jedinečný klíč z Azure Portal. `tts` vyzve uživatele k zadání textu, který bude převeden na řeč. Tento vstup je řetězcový literál, znaky se nemusí být uvozeny řídicími znaky. Nakonec `timestr` získá aktuální čas, který použijeme k pojmenování souboru.
 
 ## <a name="get-an-access-token"></a>Získání přístupového tokenu
 
 Převod textu na řeč rozhraní REST API vyžaduje přístupového tokenu pro ověřování. Chcete-li získat přístupový token, je potřeba systému exchange. Tato ukázka vyměňuje klíč předplatného služby Speech pro přístupový token pomocí `issueToken`ho koncového bodu.
 
-V této ukázce se předpokládá, že vaše předplatné služby Speech je v oblasti Západní USA. Pokud používáte jiné oblasti, aktualizujte hodnotu pro `fetch_token_url`. Úplný seznam najdete v tématu [oblastech](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+V této ukázce se předpokládá, že vaše předplatné služby Speech je v oblasti Západní USA. Pokud používáte jinou oblast, aktualizujte hodnotu pro `fetch_token_url`. Úplný seznam najdete v tématu [oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
-Zkopírujte tento kód do `TextToSpeech` třídy:
+Zkopírujte tento kód do třídy `TextToSpeech`:
 
 ```python
 def get_token(self):
@@ -94,19 +92,19 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>Vytvořit žádost a uložit odpověď
 
-Tady budete vytvářet žádosti a uložení odpovědi řeči. Nejprve je nutné nastavit `base_url` a `path`. Tento příklad předpokládá, že používáte koncový bod západní USA. Pokud váš prostředek je registrován v jiné oblasti, ujistěte se, že aktualizujete `base_url`. Další informace najdete v tématu [oblasti služby Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Tady budete vytvářet žádosti a uložení odpovědi řeči. Nejdřív je potřeba nastavit `base_url` a `path`. Tento příklad předpokládá, že používáte koncový bod západní USA. Pokud je prostředek zaregistrován v jiné oblasti, nezapomeňte aktualizovat `base_url`. Další informace najdete v tématu [oblasti služby Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
-Dále je třeba přidat povinné hlavičky pro dané žádosti. Ujistěte se, že aktualizujete `User-Agent` názvem prostředku (nachází se na webu Azure Portal) a nastavte `X-Microsoft-OutputFormat` na preferovaný zvuku. Úplný seznam formátech výstupu najdete v tématu [zvuk výstupy](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+Dále je třeba přidat povinné hlavičky pro dané žádosti. Ujistěte se, že aktualizujete `User-Agent` s názvem vašeho prostředku (umístěný v Azure Portal) a nastavíte `X-Microsoft-OutputFormat` na váš preferovaný zvukový výstup. Úplný seznam výstupních formátů najdete v tématu [zvukové výstupy](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
-Potom vytvořte datovou část požadavku pomocí řeči syntézu Markup Language (SSML). Tato ukázka definuje strukturu a používá `tts` vstup jste vytvořili dříve.
+Potom vytvořte datovou část požadavku pomocí řeči syntézu Markup Language (SSML). Tato ukázka definuje strukturu a používá vstup `tts`, který jste vytvořili dříve.
 
 >[!NOTE]
-> Tento příklad používá `Guy24KRUS` hlasového písma. Pro úplný seznam Microsoft poskytuje hlasy/jazyky, naleznete v tématu [jazykovou podporu](language-support.md).
-> Pokud vás zajímá vytváření jedinečné, rozpoznat hlas pro hodnotu značky, přečtěte si téma [vytváření vlastního hlasového písma](how-to-customize-voice-font.md).
+> Tato ukázka používá písmo `Guy24KRUS` hlas. Úplný seznam hlasů/jazyků poskytovaných společností Microsoft najdete v tématu [Podpora jazyků](language-support.md).
+> Pokud vás zajímá vytváření jedinečného a rozpoznatelného hlasu pro vaši značku, přečtěte si téma [vytváření vlastních hlasových písem](how-to-customize-voice-font.md).
 
 A konečně provede požadavek do služby. Pokud je žádost úspěšná a se vrátí stavový kód 200 kódu, odpověď řeči je zapsána do souboru časovým razítkem.
 
-Zkopírujte tento kód do `TextToSpeech` třídy:
+Zkopírujte tento kód do třídy `TextToSpeech`:
 
 ```python
 def save_audio(self):
@@ -170,9 +168,9 @@ Ujistěte se, že zdrojový kód ukázkové aplikace, jako jsou klíče předpla
 > [!div class="nextstepaction"]
 > [Prozkoumejte ukázky Pythonu na GitHubu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Referenční informace k rozhraní API pro převod textu na řeč](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
 * [Převod textu na řeč pomocí Pythonu a sady Speech SDK](quickstarts/speech-to-text-from-microphone.md)
-* [Vytvoření vlastního hlasového písma](how-to-customize-voice-font.md)
-* [Záznam hlasu ukázky vytvořte vlastní hlasové](record-custom-voice-samples.md)
+* [Vytváření vlastních hlasových písem](how-to-customize-voice-font.md)
+* [Záznam ukázek hlasu pro vytvoření vlastního hlasu](record-custom-voice-samples.md)

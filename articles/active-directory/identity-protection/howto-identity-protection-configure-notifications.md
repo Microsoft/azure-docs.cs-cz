@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 0d770336099611d69fa9e44d04fff4dd37696707
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382159"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120127"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Oznámení Azure Active Directory Identity Protection
 
@@ -26,6 +26,9 @@ Azure AD Identity Protection posílá dva typy automatických e-mailů s oznáme
 - Týdenní e-mail pro výtah
 
 Tento článek poskytuje přehled e-mailů s oznámením.
+
+>[!NOTE]
+>E-mailová oznámení jsou dostupná jenom ve veřejném cloudu a nejsou v současnosti dostupná v cloudu pro státní správu USA.
 
 ## <a name="users-at-risk-detected-email"></a>E-mail zjištěných uživatelů v nebezpečí
 

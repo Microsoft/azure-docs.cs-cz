@@ -10,18 +10,18 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ceee257cd09589fc953c2b32e978a35433b0a49b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7a5967f52a187fe289c6fb1ca72af2d5fd17f010
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75371815"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121925"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Udělení omezeného přístupu k prostředkům Azure Storage pomocí sdílených přístupových podpisů (SAS)
 
 Sdílený přístupový podpis (SAS) poskytuje zabezpečený delegovaný přístup k prostředkům ve vašem účtu úložiště, aniž by došlo k narušení zabezpečení vašich dat. U SAS máte podrobnější kontrolu nad tím, jak má klient přístup k datům. Můžete řídit, k jakým prostředkům má klient přístup, jaká oprávnění jsou na těchto prostředcích a jak dlouho je SAS platné, mezi další parametry.
 
-## <a name="types-of-shared-access-signatures"></a>Typy sdílených přístupových podpisů
+## <a name="types-of-shared-access-signatures"></a>Typy podpisů sdíleného přístupu
 
 Azure Storage podporuje tři typy podpisů sdíleného přístupu:
 
@@ -76,13 +76,13 @@ Tady je příklad identifikátoru URI SAS služby, který ukazuje identifikátor
 
 Použijte SAS, pokud chcete zajistit zabezpečený přístup k prostředkům ve vašem účtu úložiště pro libovolného klienta, který v opačném případě nemá oprávnění k těmto prostředkům.
 
-Běžným scénářem, kdy je užitečný SAS, je služba, kde uživatelé čtou a zapisují vlastní data do svého účtu úložiště. Ve scénáři, kde účet úložiště ukládá data uživatelů, existují dva typické modely návrhu:
+Běžným scénářem, kdy je užitečný SAS, je služba, kde uživatelé čtou a zapisují vlastní data do svého účtu úložiště. Ve scénáři, kdy účet úložiště ukládá uživatelská data, existují dva typické vzory návrhu:
 
-1. Klienti nahrávají a stahují data přes front-endovou proxy službu, která provádí ověřování. Tato služba front-end proxy je výhodou pro povolení ověřování obchodních pravidel, ale pro velké objemy dat nebo velké objemy transakcí může být vytvoření služby, která se dá škálovat podle požadavků, náročné nebo obtížné.
+1. Klienti odesílají a stahují data prostřednictvím front-endové proxy služby, která provádí ověřování. Tato služba front-end proxy je výhodou pro povolení ověřování obchodních pravidel, ale pro velké objemy dat nebo velké objemy transakcí může být vytvoření služby, která se dá škálovat podle požadavků, náročné nebo obtížné.
 
    ![Diagram scénářů: front-end proxy služba](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
-1. Zjednodušená služba podle potřeby ověří klienta a potom vygeneruje sdílený přístupový podpis. Jakmile klientská aplikace obdrží SAS, může získat přístup k prostředkům účtu úložiště přímo s oprávněními definovanými SAS a intervalem povoleným SAS. Sdílený přístupový podpis snižuje potřebu směrování všech dat přes front-endovou proxy službu.
+1. Odlehčená služba ověřuje klienta podle potřeby a pak vygeneruje SAS. Jakmile klientská aplikace obdrží SAS, může získat přístup k prostředkům účtu úložiště přímo s oprávněními definovanými SAS a intervalem povoleným SAS. SAS snižuje nutnost směrování všech dat prostřednictvím služby front-end proxy.
 
    ![Diagram scénáře: služba poskytovatele SAS](./media/storage-sas-overview/sas-storage-provider-service.png)
 
@@ -110,6 +110,7 @@ Následující doporučení pro použití sdílených přístupových podpisů p
 - **Využijte dobu vypršení platnosti služby SAS SAS nebo účtu SAS účtu ad hoc.** Tímto způsobem platí, že i když dojde k ohrožení zabezpečení SAS, je platná pouze po krátkou dobu. Tento postup je zvlášť důležitý, pokud nemůžete odkazovat na zásadu uloženého přístupu. Doba vypršení platnosti také omezuje množství dat, která lze zapsat do objektu blob, omezením času, který je k dispozici pro nahrání.
 - **Klienti v případě potřeby automaticky Obnovují SAS.** Klienti by měli obnovit správný čas před vypršením platnosti, aby bylo možné pokusy o opakování, pokud služba poskytující SAS není dostupná. Pokud se má vaše SAS použít pro malý počet okamžitých, krátkodobých operací, které se mají dokončit v rámci období vypršení platnosti, může to být zbytečné, protože se neočekává obnovení SAS. Pokud ale máte klienta, který provádí zpracování požadavků prostřednictvím SAS, pak se možnost vypršení platnosti stane hrát. Klíčovým aspektem je vyrovnávání nutnosti, aby SAS bylo krátkodobé (jak bylo uvedeno dříve), aby se zajistilo, že klient požaduje prodloužení na začátku. (aby nedocházelo k přerušení, protože platnost SAS vypršela před úspěšným obnovením).
 - **Čas spuštění SAS buďte opatrní.** Pokud jste **teď**nastavili čas zahájení pro SAS, a to kvůli posunu hodin (rozdílů v aktuálním čase podle různých počítačů), můžou se chyby při prvních několika minutách považovat za občasné. V části Obecné nastavte čas spuštění aspoň 15 minut v minulosti. Nebo ji vůbec nenastavte, což zajistí, že bude platit okamžitě ve všech případech. To samé platí i pro čas vypršení platnosti, ale mějte na paměti, že v obou směrech každé žádosti můžete obdržet až 15 minut hodinového zkosení. Pro klienty, kteří používají verzi REST starší než 2012-02-12, je maximální doba trvání SAS, která neodkazuje na zásadu uloženého přístupu 1 hodina, a všechny zásady, které nastavují delší dobu, než se nezdaří.
+- **Buďte opatrní ve formátu data a času SAS.** Pokud nastavíte čas zahájení nebo vypršení platnosti pro SAS, pro některé nástroje (například pro nástroj příkazového řádku AzCopy) potřebujete, aby byl formát DateTime "+% Y-% m-% dT% H:%M:% SZ", konkrétně včetně sekund, aby fungoval s použitím tokenu SAS.  
 - **Být specifické pro prostředek, který má být k dispozici.** Osvědčeným postupem zabezpečení je poskytnout uživateli minimální požadovaná oprávnění. Pokud uživatel potřebuje k jedné entitě oprávnění ke čtení, přidělte jim přístup pro čtení k této jedné entitě, a ne přístup pro čtení, zápis a odstranění u všech entit. To také pomáhá snížit škody, pokud dojde k ohrožení zabezpečení SAS, protože SAS má méně energie jako útočník.
 - **Seznamte se s tím, že se Váš účet bude účtovat podle veškerého využití, včetně SAS.** Pokud zadáte přístup pro zápis do objektu blob, uživatel se může rozhodnout nahrát objekt BLOB 200 GB. Pokud jste jim udělili oprávnění ke čtení, můžou si ho stáhnout desetkrát, což za vás bude mít 2 TB za cenu. Znovu poskytněte omezená oprávnění, která pomáhají zmírnit potenciální akce uživatelů se zlými úmysly. Používejte krátkodobé SAS k omezení této hrozby (ale zaměříte se tak na konci času).
 - **Ověří data zapsaná pomocí SAS.** Když klientská aplikace zapisuje data do svého účtu úložiště, mějte na paměti, že k těmto datům mohou nastat problémy. Pokud vaše aplikace vyžaduje, aby byla data ověřena nebo autorizována před tím, než je připravena k použití, měli byste toto ověření provést po zápisu dat a předtím, než je aplikace používá. Tento postup také chrání před poškozenými nebo škodlivými daty zapsanými na váš účet, a to buď uživatelem, který ho správně získal, nebo uživatelem, který zneužití nevráceného SAS.

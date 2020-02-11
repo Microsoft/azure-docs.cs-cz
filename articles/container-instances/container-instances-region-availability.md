@@ -2,18 +2,18 @@
 title: Dostupnost prostředků podle oblasti
 description: Dostupnost výpočetních a paměťových prostředků pro službu Azure Container Instances v různých oblastech Azure.
 ms.topic: article
-ms.date: 12/17/2019
+ms.date: 01/31/2020
 ms.author: danlep
-ms.openlocfilehash: 9de5b08eed3aa10015813cbb4724ef4e947005fb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3f64a13331658c1360c9d54f6f57a68c2c91fc6f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888001"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117815"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
-Tento článek podrobně popisuje dostupnost Azure Container Instances výpočetních a paměťových prostředků v oblastech Azure. 
+Tento článek podrobně popisuje dostupnost Azure Container Instances výpočetních, paměťových a úložných prostředků v oblastech Azure a v cílovém operačním systému. 
 
 Zobrazené hodnoty jsou maximální počet dostupných prostředků na jedno nasazení [skupiny kontejnerů](container-instances-container-groups.md). Hodnoty jsou aktuální v době publikace. 
 
@@ -26,23 +26,23 @@ Informace o kvótách a dalších omezeních v nasazeních najdete v tématu [kv
 
 Pro skupiny kontejnerů se systémem Linux a [podporovanými](container-instances-faq.md#what-windows-base-os-images-are-supported) kontejnery Windows Server 2016 jsou k dispozici následující oblasti a prostředky.
 
-| Oblasti | OS | Maximální počet procesorů | Maximální velikost paměti (GB) |
-| -------- | -- | :---: | :-----------: |
-| Brazílie – jih, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní Evropa, Západní USA, Západní USA 2 | Linux | 4 | 16 |
-| Austrálie – východ, Japonsko – východ | Linux | 2 | 8 |
-| Středoseverní USA | Linux | 2 | 3,5 |
-| Brazílie – jih, Japonsko – východ, Západní Evropa | Windows | 4 | 16 |
-| USA – východ, USA – západ | Windows | 4 | 14 |
-| Austrálie – východ, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA 2, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní USA 2 | Windows | 2 | 3,5 |
+| Oblasti | OS | Maximální počet procesorů | Maximální velikost paměti (GB) | Úložiště (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| Brazílie – jih, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní Evropa, Západní USA, Západní USA 2 | Linux | 4 | 16 | 50 |
+| Austrálie – východ, Japonsko – východ | Linux | 2 | 8 | 50 |
+| Střed USA – sever | Linux | 2 | 3,5 | 50 |
+| Brazílie – jih, Japonsko – východ, Západní Evropa | Windows | 4 | 16 | 20 |
+| Východní USA Západní USA | Windows | 4 | 14 | 20 |
+| Austrálie – východ, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA 2, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní USA 2 | Windows | 2 | 3,5 | 20 |
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Dostupnost – Windows Server 2019 LTSC, 1809 nasazení (Preview)
 
 Následující oblasti a prostředky jsou k dispozici pro skupiny kontejnerů s kontejnery založenými na Windows serveru 2019 (Preview).
 
-| Oblasti | OS | Maximální počet procesorů | Maximální velikost paměti (GB) |
-| -------- | -- | :---: | :-----------: |
-| Austrálie – východ, Brazílie – jih, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Japonsko – východ, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní Evropa | Windows | 4 | 16 |
-| Východní USA 2 Západní USA 2 | Windows | 2 | 3,5 |
+| Oblasti | OS | Maximální počet procesorů | Maximální velikost paměti (GB) | Úložiště (GB) |
+| -------- | -- | :---: | :-----------: | :---: |
+| Austrálie – východ, Brazílie – jih, Kanada – střed, Střed Indie, Střed USA, Východní Asie, Východní USA, Japonsko – východ, Střed USA – sever, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Západní Evropa | Windows | 4 | 16 | 20 |
+| Východní USA 2 Západní USA 2 | Windows | 2 | 3,5 | 20 |
 
 
 ## <a name="availability---virtual-network-deployment"></a>Dostupnost – nasazení virtuální sítě

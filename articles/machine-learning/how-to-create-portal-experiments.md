@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/04/2020
-ms.openlocfilehash: 620aab2d2104c9e08de6e7ea47511ff45a482ec4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: a2bf15c8778a6ff549284b1053cf0978d182b802
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046118"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116901"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Vytvářejte, Zkoumejte a nasaďte automatizované experimenty strojového učení pomocí Azure Machine Learning studia
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -60,7 +60,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
 
     1. Poskytněte datovou sadu jedinečný název a zadejte volitelný popis. 
 
-    1. Vyberte **Další**a nahrajte ho do výchozího kontejneru úložiště, který se automaticky vytvoří v pracovním prostoru, nebo zvolte kontejner úložiště, který chcete pro experiment použít. 
+    1. Výběrem **Další** otevřete **formulář úložiště dat a výběr souboru**. V tomto formuláři vyberte, kam chcete datovou sadu nahrát; výchozí kontejner úložiště, který se automaticky vytvoří s vaším pracovním prostorem, nebo vyberte kontejner úložiště, který chcete pro experiment použít. 
 
     1. Zkontrolujte správnost formuláře **nastavení a náhled** . Formulář se inteligentně vyplní podle typu souboru. 
 
@@ -78,7 +78,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
             
         Vyberte **Další.**
 
-    1. Formulář **potvrdit podrobnosti** je souhrn informací, které byly dříve vyplněny ve formulářích **základní informace** a **nastavení a náhled** . Máte také možnost profilovat datovou sadu pomocí výpočetní služby s povoleným profilací. Přečtěte si další informace o [profilování dat](#profile).
+    1. Formulář **potvrdit podrobnosti** je souhrn informací, které byly dříve vyplněny ve formulářích **základní informace** a **nastavení a náhled** . Máte také možnost vytvořit datový profil pro datovou sadu pomocí výpočetní služby s povoleným profilací. Přečtěte si další informace o [profilování dat](#profile).
 
         Vyberte **Další**.
 1. Jakmile se zobrazí, vyberte nově vytvořenou datovou sadu. Můžete si také zobrazit náhled datové sady a vzorových statistik. 
@@ -122,7 +122,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
     Vysvětlete nejlepší model | Pokud chcete zobrazit vysvětlení doporučeného nejlepšího modelu, vyberte možnost povolit nebo zakázat.
     Blokovaný algoritmus| Vyberte algoritmy, které chcete vyloučit z úlohy školení.
     Výstupní kritérium| Při splnění kteréhokoli z těchto kritérií se školicí úloha zastaví. <br> *Čas úlohy školení (hodiny)* : dobu, po kterou je možné spustit úlohu školení. <br> *Prahová hodnota skóre metriky*: minimální skóre metriky pro všechny kanály. Tím zajistíte, že pokud máte definovanou cílovou metriku, která má být dostupná, nebudete věnovat více času školicím úlohám, než je potřeba.
-    Ověření| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. [Další informace o vzájemném ověřování](how-to-configure-auto-train.md).
+    Ověřování| Vyberte jednu z možností vzájemného ověření, kterou chcete použít v úloze školení. [Další informace o vzájemném ověřování](how-to-configure-auto-train.md).
     Souběžnost| *Maximální počet souběžných iterací*: maximální počet kanálů (iterací), které se mají testovat v úloze školení. Úloha nebude spouštět více než zadaný počet iterací.
 
 1. Volitelné Zobrazit nastavení featurization: Pokud se rozhodnete povolit **Automatické featurization** ve formuláři **Další nastavení konfigurace** , v tomto formuláři budete určovat, které sloupce mají tyto featurizationsy provádět, a vybrat, která statistická hodnota se má použít pro imputace chybějících hodnot.
@@ -142,9 +142,9 @@ Funkce| Název sloupce, který je sumarizován.
 Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
 Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
 Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.
-Minimum| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (např. logické hodnoty), se zobrazí prázdné položky.
-Maximum| Maximální hodnota sloupce 
-Count| Celkový počet chybějících a nechybějících položek ve sloupci
+Min.| Minimální hodnota sloupce Pro funkce, jejichž typ nemá základní řazení (např. logické hodnoty), se zobrazí prázdné položky.
+Max.| Maximální hodnota sloupce 
+Počet| Celkový počet chybějících a nechybějících položek ve sloupci
 Počet nechybějících| Počet položek ve sloupci, které nebyly nalezeny. Prázdné řetězce a chyby jsou považovány za hodnoty, takže nebudou přispívat k "nechybějícímu počtu".
 Quantiles| Přibližné hodnoty na jednotlivých Quantile, které poskytují smysl distribuce dat.
 střední hodnotu| Aritmetický průměr nebo průměr sloupce

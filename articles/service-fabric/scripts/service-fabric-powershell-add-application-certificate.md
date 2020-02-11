@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 069ad55136101c0b57c9faee95578f816b5efef4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 61c22a3949008d61bbe3472f601d2d0dd597a0ac
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614872"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114337"
 ---
 # <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Přidání certifikátu aplikace do clusteru Service Fabric
 
@@ -63,7 +63,7 @@ $content = [System.Convert]::ToBase64String($contentbytes)
 $SecretValue = ConvertTo-SecureString -String $content -AsPlainText -Force
 
 # Upload the certificate to the key vault as a secret
-$Secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $CertName -SecretValue $SecretValue
+$Secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $CertName -SecretValue $SecretValue
 
 ```
 
@@ -95,14 +95,14 @@ Update-AzVmss -ResourceGroupName $ResourceGroupName -VirtualMachineScaleSet $VMS
 
 Tento skript používá následující příkazy: Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/New-AzKeyVaultCertificatePolicy) | Vytvoří zásadu v paměti, která představuje certifikát. |
 | [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/Add-AzKeyVaultCertificate)| Nasadí zásadu pro Key Vault |
 | [New-AzVmssVaultCertificateConfig](/powershell/module/az.compute/New-AzVmssVaultCertificateConfig) | Vytvoří konfiguraci v paměti, která představuje certifikát ve virtuálním počítači. |
 | [Get-AzVmss](/powershell/module/az.compute/Get-AzVmss) |  |
 | [Add-AzVmssSecret](/powershell/module/az.compute/Add-AzVmssSecret) | Přidá certifikát do definice v paměti sady škálování virtuálního počítače. |
-| [Update-AzVmss](/powershell/module/az.compute/Update-AzVmss) | Nasadí novou definici sady škálování virtuálních počítačů. |
+| [Update – AzVmss](/powershell/module/az.compute/Update-AzVmss) | Nasadí novou definici sady škálování virtuálních počítačů. |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -3,8 +3,8 @@ title: Migrace klasických prostředků na Azure Resource Manager – přehled
 description: Tento článek vás provede migrací prostředků, které jsou podporované platformou, z klasických na Azure Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/10/2017
-ms.author: kasing
-ms.openlocfilehash: 4852f719f48947ad3b7b94a9419e6b1bab3bda2b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 4693129c17ae6149f4dd620ff38326b726af2f4b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033265"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122466"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Migrace prostředků IaaS podporovaných platformou z klasických na Azure Resource Manager
 [!INCLUDE [virtual-machines-common-migration-faq](../../../includes/virtual-machines-common-classic-resource-manager-migration-overview.md)]

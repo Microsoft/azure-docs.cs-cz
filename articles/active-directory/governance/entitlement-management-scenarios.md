@@ -16,18 +16,18 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d780e6e11d2c067261f6862e1678ef5de0aaa9bb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f40ed05391c36f820940d5351373ecd8f9492b17
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422508"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120140"
 ---
 # <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Běžné scénáře správy nároků ve službě Azure AD
 
 Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro vaši organizaci. Pokud však teprve začínáte, je vhodné porozumět běžným scénářům správců, vlastníkům katalogu, správcům balíčků, schvalovatelům a žadatelům.
 
-## <a name="delegate"></a>Delegate
+## <a name="delegate"></a>Dostával
 
 ### <a name="administrator-delegate-management-of-resources"></a>Správce: delegování správy prostředků
 
@@ -61,7 +61,7 @@ Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro va
 
 1. [Přihlášení k portálu pro přístup](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
 1. Najít balíček pro přístup
-1. [Žádost o přístup](entitlement-management-request-access.md#request-an-access-package)
+1. [Požádat o přístup](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Schvalovatel: schválení žádostí na prostředky
 
@@ -94,7 +94,7 @@ Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro va
 
 1. Najít odkaz na balíček přístupu, který jste dostali od svého kontaktu
 1. [Přihlášení k portálu pro přístup](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
-1. [Žádost o přístup](entitlement-management-request-access.md#request-an-access-package)
+1. [Požádat o přístup](entitlement-management-request-access.md#request-an-access-package)
 
 ### <a name="approver-approve-requests-to-resources"></a>Schvalovatel: schválení žádostí na prostředky
 
@@ -150,6 +150,10 @@ Existuje několik způsobů, jak můžete nakonfigurovat správu nároků pro va
 
 1. [Zobrazit balíčky pro přístup pro uživatele](entitlement-management-reports.md#view-access-packages-for-a-user)
 1. [Zobrazení přiřazení prostředků pro uživatele](entitlement-management-reports.md#view-resource-assignments-for-a-user)
+
+## <a name="programmatic-administration"></a>Programová správa
+
+Pomocí Microsoft Graph můžete také spravovat balíčky přístupu, katalogy, zásady, požadavky a přiřazení.  Uživatel v příslušné roli s aplikací, která má oprávnění delegovaný `EntitlementManagement.ReadWrite.All`, může volat [rozhraní API pro správu oprávnění](https://docs.microsoft.com/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Další kroky
 

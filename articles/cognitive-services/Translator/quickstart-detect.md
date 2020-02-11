@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 5164ed71b2a513b8d82bee1108964f2f44f710ac
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7b417839b4561343e481a940b08e732918d35677
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975784"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118858"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language"></a>Rychlý Start: použití Translator Text API k detekci jazyka textu
 
@@ -54,7 +54,7 @@ K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services]
 
 ::: zone-end
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Překlad textu](quickstart-translate.md)
 * [Transliterace textu](quickstart-transliterate.md)

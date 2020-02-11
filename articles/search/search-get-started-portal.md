@@ -2,18 +2,18 @@
 title: Vytvoření indexu vyhledávání v Azure Portal
 titleSuffix: Azure Cognitive Search
 description: V tomto rychlém startu na portálu se dozvíte, jak pomocí Průvodce importem dat vytvořit, načíst a zadat dotaz na první index vyhledávání v Azure Kognitivní hledání.
-author: HeidiSteen
+author: tchristiani
 manager: nitinme
-ms.author: heidist
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ae0e5b53d735b95ce1c3d2f9275456e41319242
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 02/10/2020
+ms.openlocfilehash: 6a3bbdae0d3fa898621c1c805388252beb891ecf
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901007"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121674"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ Pokud jsou nástroje příliš omezené, můžete zvážit [Úvod do programová
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
@@ -106,7 +106,7 @@ Kliknutím na **Odeslat** vytvořte a souběžně spusťte indexer.
 
   ![Indexer hotelů](media/search-get-started-portal/hotels-indexer.png)
 
-## <a name="monitor-progress"></a>Sledování průběhu
+## <a name="monitor-progress"></a>Průběh monitorování
 
 Průvodce by vás měl přenést do seznamu indexerů, kde můžete monitorovat průběh. V případě samoobslužné navigace přejděte na stránku Přehled a klikněte na **indexery**.
 
@@ -260,7 +260,7 @@ Zjistili jste také, jak na portálu najít indexy, indexery a zdroje dat. Pomoc
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás stojí peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
+Pokud pracujete ve vlastním předplatném, je vhodné na konci projektu zjistit, zda stále potřebujete prostředky, které jste vytvořili. Prostředky, které se na něm zbývá, můžou mít náklady na peníze. Prostředky můžete odstranit jednotlivě nebo odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
 
 Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 

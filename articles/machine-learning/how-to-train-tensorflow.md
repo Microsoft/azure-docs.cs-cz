@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: c68206eda008b93220fdde8f2666c0495499bdef
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a1c3e1948d53a168ce9a3e99cd932fa04e2fafc4
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311372"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114386"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Vytvářejte TensorFlow model hloubkového učení ve velkém měřítku pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -162,7 +162,7 @@ est = TensorFlow(source_directory=script_folder,
 ```
 
 > [!TIP]
-> Do třídy Estimator Tensorflow se přidala podpora pro **Tensorflow 2,0** . Další informace najdete v tomto [blogovém příspěvku](https://azure.microsoft.com/blog/tensorflow-2-0-on-azure-fine-tuning-bert-for-question-tagging/).
+> Do třídy Estimator Tensorflow se přidala podpora pro **Tensorflow 2,0** . Další informace najdete v [blogovém příspěvku](https://azure.microsoft.com/blog/tensorflow-2-0-on-azure-fine-tuning-bert-for-question-tagging/) .
 
 Další informace o přizpůsobení prostředí Pythonu najdete v tématu [vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md). 
 
@@ -247,7 +247,7 @@ estimator= TensorFlow(source_directory=project_folder,
 
 ### <a name="parameter-server"></a>Server parametrů
 
-Můžete také spustit [nativní distribuované TensorFlow](https://www.tensorflow.org/deploy/distributed), model serveru parametr, který používá. V této metodě trénování napříč clusterem parametr serverů a pracovních procesů. Zaměstnanci vypočítat přechody během cvičení, zatímco parametr servery agregovat přechody.
+Můžete také spustit [nativní distribuované TensorFlow](https://www.tensorflow.org/deploy/distributed), které používají model serveru parametrů. V této metodě trénování napříč clusterem parametr serverů a pracovních procesů. Zaměstnanci vypočítat přechody během cvičení, zatímco parametr servery agregovat přechody.
 
 Chcete-li použít metodu serveru parametrů, zadejte objekt [`TensorflowConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?view=azure-ml-py) pro parametr `distributed_training` v konstruktoru TensorFlow.
 
@@ -258,7 +258,7 @@ distributed_training = TensorflowConfiguration()
 distributed_training.worker_count = 2
 
 # Tensorflow constructor
-estimator= TensorFlow(source_directory=project_folder,
+tf_est= TensorFlow(source_directory=project_folder,
                       compute_target=compute_target,
                       script_params=script_params,
                       entry_script='script.py',
@@ -276,7 +276,7 @@ run = exp.submit(tf_est)
 
 Pro [`tf.train.ClusterSpec`](https://www.tensorflow.org/api_docs/python/tf/train/ClusterSpec)budete potřebovat taky síťové adresy a porty clusteru, takže Azure Machine Learning pro vás nastaví proměnnou prostředí `TF_CONFIG`.
 
-`TF_CONFIG` Proměnná prostředí je řetězec formátu JSON. Tady je příklad proměnné pro parametr serveru:
+Proměnná prostředí `TF_CONFIG` je řetězec JSON. Tady je příklad proměnné pro parametr serveru:
 
 ```JSON
 TF_CONFIG='{
@@ -323,6 +323,6 @@ service = Model.deploy(ws, "tensorflow-web-service", [model])
 
 V tomto článku jste si naučili a zaregistrovali model TensorFlow a seznámili jste se s možnostmi nasazení. Další informace o Azure Machine Learning najdete v těchto článcích.
 
-* [Sledovat spustit metriky během cvičení](how-to-track-experiments.md)
-* [Vyladění hyperparameters](how-to-tune-hyperparameters.md)
+* [Sledovat metriky spuštění během školení](how-to-track-experiments.md)
+* [Ladit parametry](how-to-tune-hyperparameters.md)
 * [Referenční architektura distribuovaného školení pro hloubkové učení v Azure](/azure/architecture/reference-architectures/ai/training-deep-learning)

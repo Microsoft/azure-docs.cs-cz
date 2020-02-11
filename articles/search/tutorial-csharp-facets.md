@@ -3,17 +3,17 @@ title: C#kurz použití omezujících vlastností k usnadnění navigace
 titleSuffix: Azure Cognitive Search
 description: Tento kurz sestaví projekt "stránkování výsledků hledání – Azure Kognitivní hledání" pro přidání navigace omezující vlastnosti. Zjistěte, jak lze pomocí omezující vlastnosti snadno zúžit hledání.
 manager: nitinme
-author: PeterTurcan
-ms.author: v-pettur
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 9f0d716e9077b2d9702f26b1afe92d9e4faf4a77
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/10/2020
+ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794106"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121568"
 ---
 # <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C#kurz: použití omezujících vlastností k podpoře navigace – Azure Kognitivní hledání
 
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Nastavení vlastností modelu jako _tváře_
 > * Přidání navigační vlastnosti do aplikace
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu je potřeba provést následující:
 

@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24e82abd2c95bcbfdde843a6636a809bb3aeb70c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5895ed256fa5f0337b74d9dbe14c4074dad4b522
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422647"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120238"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Vytvoření a správa katalogu prostředků v Azure AD – Správa nároků
 
@@ -51,6 +51,10 @@ Katalog je kontejner prostředků a přístup k balíčkům. Katalog můžete vy
 
 1. Kliknutím na **vytvořit** vytvořte katalog.
 
+### <a name="creating-a-catalog-programmatically"></a>Programové vytvoření katalogu
+
+Katalog můžete vytvořit také pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má oprávnění delegovaný `EntitlementManagement.ReadWrite.All`, může volat rozhraní API a vytvořit tak [accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta).
+
 ## <a name="add-resources-to-a-catalog"></a>Přidání prostředků do katalogu
 
 Aby bylo možné zahrnout prostředky do balíčku pro přístup, musí tyto prostředky existovat v katalogu. Typy prostředků, které můžete přidat, jsou skupiny, aplikace a weby SharePointu Online. Skupiny můžou být cloudové vytvořené skupiny Office 365 nebo cloudové skupiny zabezpečení Azure AD. Aplikace můžou být Azure AD podnikové aplikace, včetně aplikací SaaS a vašich vlastních aplikací, které jsou federované do Azure AD. Weby můžou být weby SharePointu Online nebo kolekce webů SharePointu Online.
@@ -76,6 +80,10 @@ Aby bylo možné zahrnout prostředky do balíčku pro přístup, musí tyto pro
 1. Po dokončení klikněte na tlačítko **Přidat**.
 
     Tyto prostředky teď můžou být zahrnuté do balíčků přístupu v katalogu.
+
+### <a name="adding-a-resource-to-a-catalog-programmatically"></a>Programové přidání prostředku do katalogu
+
+Prostředek můžete také přidat do katalogu pomocí Microsoft Graph.  Uživatel v příslušné roli nebo vlastníkovi katalogu a prostředku s aplikací, která má oprávnění delegovaný `EntitlementManagement.ReadWrite.All`, může volat rozhraní API a [vytvořit tak accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta).
 
 ## <a name="remove-resources-from-a-catalog"></a>Odebrání prostředků z katalogu
 
@@ -144,6 +152,10 @@ Katalog můžete odstranit, ale pouze v případě, že nemá žádné balíčky
 1. V **přehledu**katalogu klikněte na **Odstranit**.
 
 1. V zobrazeném okně se zprávou klikněte na **Ano**.
+
+### <a name="deleting-a-catalog-programmatically"></a>Programové odstranění katalogu
+
+Katalog můžete také odstranit pomocí Microsoft Graph.  Uživatel v příslušné roli s aplikací, která má oprávnění delegovaný `EntitlementManagement.ReadWrite.All`, může volat rozhraní API a [Odstranit accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Další kroky
 

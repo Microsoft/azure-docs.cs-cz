@@ -2,13 +2,13 @@
 title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: b11668466fe3954dc5bc90435d5dfd016ca9791c
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 02/10/2020
+ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086730"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120613"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
@@ -86,8 +86,22 @@ Pro každý název nasazení je umístění neměnné. Nasazení nelze vytvořit
 U nasazení na úrovni předplatného se při používání funkcí šablon vyskytly důležité předpoklady:
 
 * Funkce [Resource ()](template-functions-resource.md#resourcegroup) **není podporována.**
-* Funkce [ResourceID ()](template-functions-resource.md#resourceid) je podporována. Použijte ho k získání ID prostředku pro prostředky, které se používají v nasazeních na úrovni předplatného. Můžete například získat ID prostředku pro definici zásady s `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`. Nebo použijte funkci [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) k získání ID prostředku na úrovni předplatného.
 * Funkce [Reference ()](template-functions-resource.md#reference) a [list ()](template-functions-resource.md#list) jsou podporovány.
+* Funkce [ResourceID ()](template-functions-resource.md#resourceid) je podporována. Použijte ho k získání ID prostředku pro prostředky, které se používají v nasazeních na úrovni předplatného. Nezadávejte hodnotu parametru skupiny prostředků.
+
+  Pokud například chcete získat ID prostředku pro definici zásady, použijte:
+  
+  ```json
+  resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
+  ```
+  
+  ID vráceného prostředku má následující formát:
+
+  ```json
+  /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  ```
+
+  Nebo použijte funkci [subscriptionResourceId ()](template-functions-resource.md#subscriptionresourceid) k získání ID prostředku na úrovni předplatného.
 
 ## <a name="create-resource-groups"></a>Vytvoření skupin prostředků
 
@@ -98,7 +112,7 @@ Následující šablona vytvoří prázdnou skupinu prostředků.
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgName": {
       "type": "string"
@@ -126,7 +140,7 @@ Pomocí [elementu Copy](create-multiple-instances.md) se skupinami prostředků 
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgNamePrefix": {
       "type": "string"
@@ -167,7 +181,7 @@ Následující příklad vytvoří skupinu prostředků a nasadí účet úloži
 ```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-  "contentVersion": "1.0.0.1",
+  "contentVersion": "1.0.0.0",
   "parameters": {
     "rgName": {
       "type": "string"

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7e5dc9c177dbddda8bf229ec7949f53b70e616c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: acc458c59858196ea110d0ff2030ccd7f7b6fc58
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064302"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121736"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
 
@@ -308,7 +308,7 @@ V tomto kroku udělíte skupině zabezpečení oprávnění zásady zabezpečen�
 
 6. Opakujte kroky 3-5 výše pro každý z těchto zbývajících zásad zabezpečení:
 
-   | Funkce | Zásady zabezpečení domény |
+   | Operace | Zásady zabezpečení domény |
    | ---------- | ---------- |
    | Získat a umístit | Data pracovního procesu: sestavy veřejného pracovního procesu |
    | Získat a umístit | Data osob: pracovní kontaktní informace |
@@ -345,7 +345,7 @@ V tomto kroku udělíte oprávnění "zabezpečení obchodních procesů" pro da
 
 1. Do vyhledávacího pole zadejte Activate a potom klikněte na odkaz **aktivovat nedokončené změny zásad zabezpečení**.
 
-    ![Aktivovat](./media/workday-inbound-tutorial/wd_isu_16.png "Aktivovat")
+    ![Aktivovat](./media/workday-inbound-tutorial/wd_isu_16.png "Activate")
 
 1. Zahajte úkol aktivovat změny zásad zabezpečení zadáním komentáře pro účely auditování a pak klikněte na tlačítko **OK**.
 1. Dokončete úkol na další obrazovce zaškrtnutím políčka **Potvrdit**a potom klikněte na tlačítko **OK**.
@@ -472,7 +472,7 @@ V tomto kroku navážeme připojení k Workday a službě Active Directory v Azu
 
    * Klikněte na tlačítko **Testovat připojení** . Pokud je test připojení úspěšný, klikněte na tlačítko **Uložit** v horní části. Pokud se to nepovede, dvakrát Ověřte platnost přihlašovacích údajů pracovního dne a přihlašovacích údajů služby AD nakonfigurovaných v instalaci agenta.
 
-     ![portál Azure](./media/workday-inbound-tutorial/wd_1.png)
+     ![Azure Portal](./media/workday-inbound-tutorial/wd_1.png)
 
    * Po úspěšném uložení přihlašovacích údajů se v oddílu **mapování** zobrazí výchozí mapování **synchronizace pracovních procesů v místní službě Active Directory** .
 
@@ -537,7 +537,7 @@ V této části nakonfigurujete způsob, jakým budou data uživatelů z Workday
 
 1. Pokud chcete uložit mapování, klikněte na **Uložit** v horní části oddílu mapování atributů.
 
-   ![portál Azure](./media/workday-inbound-tutorial/wd_2.png)
+   ![Azure Portal](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Níže jsou uvedeny příklady mapování atributů mezi Workday a službou Active Directory s některými běžnými výrazy.
 
@@ -737,7 +737,7 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
 
 1. Na kartě **zřizování** nastavte **stav zřizování** na **zapnuto**.
 
-2. Klikněte na **Uložit**.
+2. Klikněte na možnost **Uložit**.
 
 3. Tato operace spustí počáteční synchronizaci, což může trvat proměnlivý počet hodin v závislosti na tom, kolik uživatelů je v tenantovi pracovního dne. 
 
@@ -745,7 +745,7 @@ Po dokončení konfigurace aplikace pro zřizování Workday můžete službu z�
 
 5. Po dokončení počáteční synchronizace bude na kartě **zřizování** napsána Sestava souhrnu auditu, jak je znázorněno níže.
 
-   ![portál Azure](./media/workday-inbound-tutorial/wd_3.png)
+   ![Azure Portal](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -848,7 +848,7 @@ Při návrhu nové myšlenky prosím zkontrolujte, jestli už někdo jiný navrh
 * Přejděte na **ovládací Panel** -> **odinstalace nebo změna nabídky programu** .
 * Vyhledejte verzi odpovídající položce **Microsoft Azure AD připojení zřizování agent** .
 
-  ![portál Azure](./media/workday-inbound-tutorial/pa_version.png)
+  ![Azure Portal](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Nabízí Microsoft automatické nabízení agentů zřizování?
 
@@ -984,7 +984,7 @@ Tady je postup, jak můžete zvládnout tyto požadavky pro vytváření *CN* ne
      | ----------------- | -------------------- |
      | PreferredFirstName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:First_Name/text() |
      | PreferredLastName | wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Name_Data/wd:Preferred_Name_Data/wd:Name_Detail_Data/wd:Last_Name/text() |
-     | Společnosti | /WD: Work/FORMED: Worker_Data: Organization_Data/WD: Worker_Organization_Data [/WD: Organization_Data/WD: Organization_Type_Reference: ID [@wd:type= ' Organization_Type_ID '] = ' Company ']/wd:Organization_Reference/@wd:Descriptor |
+     | Společnost | /WD: Work/FORMED: Worker_Data: Organization_Data/WD: Worker_Organization_Data [/WD: Organization_Data/WD: Organization_Type_Reference: ID [@wd:type= ' Organization_Type_ID '] = ' Company ']/wd:Organization_Reference/@wd:Descriptor |
      | SupervisoryOrganization | /WD: Work/FORMED: Worker_Data: Organization_Data/WD: Worker_Organization_Data/WD: Organization_Data [\: Organization_Type_Reference/WD: ID [@wd:type= ' Organization_Type_ID '] = ' dohledu ']/WD: Organization_Name/text () |
   
    Potvrďte u svého pracovního týmu, že výše uvedený výraz rozhraní API je platný pro vaši konfiguraci tenanta Workday. V případě potřeby je můžete upravit, jak je popsáno v části [přizpůsobení seznamu atributů uživatele Workday](#customizing-the-list-of-workday-user-attributes).
@@ -1114,7 +1114,7 @@ Když kliknete na některý ze záznamů protokolu auditu, otevře se stránka *
 
   Chcete-li zjistit záznamy protokolu zřizovacího agenta, které odpovídají této operaci importu služby AD, otevřete protokoly Windows Prohlížeč událostí a použijte příkaz **Najít...** možnost nabídky k vyhledání položek protokolu, které obsahují ID a spojovací hodnotu atributu vlastnosti (v tomto případě *21023*).
 
-  ![Vyhledávání](media/workday-inbound-tutorial/wd_event_viewer_02.png)
+  ![Najít](media/workday-inbound-tutorial/wd_event_viewer_02.png)
 
   Vyhledejte položku s *ID události = 9*, které vám poskytne filtr hledání LDAP používaný agentem k načtení účtu AD. Můžete ověřit, zda se jedná o správný vyhledávací filtr pro načtení jedinečných uživatelských záznamů.
 

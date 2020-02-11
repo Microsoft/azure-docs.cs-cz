@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: rohink
-ms.openlocfilehash: 990adf73211e96370fd06f5e322301128321e81f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 76b19cfb3c00a26d81eab81f67d8e156a520f377
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937291"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121714"
 ---
 # <a name="azure-dns-faq"></a>Nejčastější dotazy k Azure DNS
 
@@ -38,11 +38,11 @@ Azure zaručuje, že platné požadavky DNS obdrží odpověď aspoň z jednoho 
 
 Další informace najdete na stránce věnované [smlouvě SLA Azure DNS](https://azure.microsoft.com/support/legal/sla/dns).
 
-### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Co je zóna DNS? Je to to samé jako doména DNS? 
+### <a name="what-is-a-dns-zone-is-it-the-same-as-a-dns-domain"></a>Co je zóna DNS? Je stejný jako doména DNS? 
 
 Doména je jedinečný název v systému DNS (Domain Name System). Příklad: contoso.com.
 
-Zóna DNS se používá k hostování záznamů DNS pro konkrétní doménu. Například doména contoso.com může obsahovat několik záznamů DNS. Tyto záznamy můžou zahrnovat mail.contoso.com pro poštovní server a webové\.contoso.com pro web. Tyto záznamy jsou hostované v zóně DNS contoso.com.
+K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Například doména contoso.com může obsahovat několik záznamů DNS. Tyto záznamy můžou zahrnovat mail.contoso.com pro poštovní server a webové\.contoso.com pro web. Tyto záznamy jsou hostované v zóně DNS contoso.com.
 
 Název domény je *jenom název*. Zóna DNS je datový prostředek, který obsahuje záznamy DNS pro název domény. Azure DNS můžete použít k hostování zóny DNS a správě záznamů DNS pro doménu v Azure. Poskytuje taky názvové servery DNS pro zodpovězení dotazů DNS z Internetu.
 
@@ -50,7 +50,7 @@ Název domény je *jenom název*. Zóna DNS je datový prostředek, který obsah
 
 Ne nutně.
 
-Nemusíte kupovat doménu pro hostování zóny DNS v Azure DNS. Zónu DNS můžete vytvořit kdykoli a nemusíte přitom vlastnit název příslušné domény. Dotazy DNS pro tuto zónu se vyřeší pouze v případě, že jsou směrovány na Azure DNS názvové servery přiřazené k zóně.
+Nemusíte kupovat doménu pro hostování zóny DNS v Azure DNS. Zónu DNS můžete kdykoli vytvořit bez vlastnictví názvu domény. Dotazy DNS pro tuto zónu se vyřeší pouze v případě, že jsou směrovány na Azure DNS názvové servery přiřazené k zóně.
 
 Pokud chcete zónu DNS propojit s globální hierarchií DNS, musíte si koupit název domény. Pak dotazy DNS z libovolného místa na světě hledají vaši zónu DNS a odpověď se záznamy DNS.
 
@@ -149,7 +149,7 @@ Ano. Azure DNS podporuje souběžné hostování domén s jinými službami DNS.
 
 Chcete-li nastavit spoluhostování, upravte záznamy NS pro doménu tak, aby odkazovaly na názvové servery obou zprostředkovatelů. Záznamy názvového serveru (NS) určují, kteří zprostředkovatelé obdrží dotazy DNS pro doménu. Tyto záznamy NS můžete upravit v Azure DNS, v druhém poskytovateli a v nadřazené zóně. Nadřazená zóna je obvykle nakonfigurována prostřednictvím registrátora názvu domény. Další informace o delegování DNS najdete v tématu [delegování domény DNS](dns-domain-delegation.md).
 
-Také se ujistěte, že jsou mezi poskytovateli DNS synchronizovány záznamy DNS pro tuto doménu. Azure DNS v současné době nepodporuje přenosy zón DNS. Záznamy DNS se musí synchronizovat pomocí [portálu pro správu Azure DNS](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/powershell/module/az.dns), [sady SDK](dns-sdk.md), [rutin PowerShellu](dns-operations-recordsets.md)nebo [nástroje CLI](dns-operations-recordsets-cli.md).
+Také se ujistěte, že jsou mezi poskytovateli DNS synchronizovány záznamy DNS pro tuto doménu. Azure DNS v současné době nepodporuje přenosy zón DNS. Záznamy DNS se musí synchronizovat pomocí [portálu pro správu Azure DNS](dns-operations-recordsets-portal.md), [REST API](https://docs.microsoft.com/rest/api/dns/), [sady SDK](dns-sdk.md), [rutin PowerShellu](dns-operations-recordsets.md)nebo [nástroje CLI](dns-operations-recordsets-cli.md).
 
 ### <a name="do-i-have-to-delegate-my-domain-to-all-four-azure-dns-name-servers"></a>Je nutné delegovat doménu na všechny čtyři Azure DNS názvové servery?
 

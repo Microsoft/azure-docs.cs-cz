@@ -1,14 +1,14 @@
 ---
 title: Prostředí pro správu napříč tenanty
 description: Správa delegovaných prostředků v Azure umožňuje prostředí pro správu mezi klienty.
-ms.date: 01/06/2020
+ms.date: 02/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 661ada4e5d620d4977290986f5649b91363202fe
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: f5d68be1226a026f8fdfd7595cb2812ce51dfdb6
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75706984"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122040"
 ---
 # <a name="cross-tenant-management-experiences"></a>Prostředí pro správu napříč tenanty
 
@@ -52,15 +52,16 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 
 - Použití účtů Automation pro přístup k prostředkům delegovaného zákazníka a práce s nimi
 
-[Azure Backup:](../../backup/index.yml)
+[Azure Backup](../../backup/index.yml):
 
 - Zálohování a obnovení zákaznických dat v klientech zákazníků
+- Pomocí [Průzkumníka zálohování](../../backup/monitor-azure-backup-with-backup-explorer.md) si můžete zobrazit provozní informace o zálohovaných položkách (včetně prostředků Azure, které ještě nejsou nakonfigurované pro zálohování), a informace o monitorování (úlohy a výstrahy) pro delegované předplatné. Průzkumník zálohování je momentálně dostupný jenom pro data virtuálních počítačů Azure.
 
-[Azure Kubernetes Service (AKS)](../../aks/index.yml):
+[Služba Azure Kubernetes (AKS)](../../aks/index.yml):
 
 - Správa hostovaných prostředí Kubernetes a nasazení a Správa kontejnerových aplikací v rámci zákaznických tenantů
 
-[Azure Monitor](../../azure-monitor/index.yml):
+[Azure monitor](../../azure-monitor/index.yml):
 
 - Zobrazit výstrahy pro delegovaná předplatná s možností zobrazovat výstrahy napříč všemi předplatnými
 - Zobrazit podrobnosti protokolu aktivit pro delegované odběry
@@ -117,7 +118,7 @@ Většinu úkolů a služeb je možné provádět na delegovaných prostředcíc
 - Přístup k virtuálním počítačům pomocí sériové konzoly v klientech zákazníků
 - Všimněte si, že nemůžete použít Azure Active Directory pro vzdálené přihlášení k virtuálnímu počítači a nemůžete integrovat virtuální počítač s Key Vaultem pro hesla, tajné klíče a kryptografické klíče pro šifrování disků.
 
-[Azure Virtual Network](../../virtual-network/index.yml):
+[Virtual Network Azure](../../virtual-network/index.yml):
 
 - Nasazení a správa virtuálních sítí a karet virtuální síťové adaptéry (Virtual Network Interface) v rámci zákaznických tenantů
 

@@ -1,6 +1,6 @@
 ---
-title: Principy Labs Classroom – Azure Lab Services | Dokumentace Microsoftu
-description: Informace o základních konceptech služby testovacího prostředí a jak ho můžete usnadňují vytváření a správa testovacích prostředí.
+title: Koncepce Labs v učebně – Azure Lab Services | Microsoft Docs
+description: Seznamte se se základními koncepty služby Lab Service a s tím, jak usnadňují vytváření a správu cvičení.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,52 +13,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 8bbb486b0dbf1a5e25f5ee4d1f8e5e01b999a8ba
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 348340516f9332f5492c7ce60c3d164da44a008c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067382"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120892"
 ---
 # <a name="classroom-labs-concepts"></a>Koncepce testovacích prostředí v učebnách
-Následující seznam obsahuje klíčové koncepty služby testovacího prostředí a definice:
+
+Následující seznam obsahuje klíčové pojmy a definice služby testovacího prostředí:
 
 ## <a name="quota"></a>Kvóta
-Kvóta je časový limit (v hodinách), můžete nastavit učitel pro studenty použít testovací virtuální počítač. Můžete nastavit na hodnotu 0 nebo určitý počet hodin. Kvóty je nastaven na hodnotu 0, student použít virtuální počítač pouze při spuštění plánu nebo když učitel se ručně změní na virtuálním počítači pro studenta.
- 
+
+Kvóta je časový limit (v hodinách), který může učitel nastavit pro studenta k použití testovacího virtuálního počítače. Může být nastavené na 0 nebo na určitý počet hodin. Pokud je kvóta nastavená na 0, student může virtuální počítač použít jenom v případě, že je plán spuštěný, nebo když ho pro studenty ručně zapnete na virtuálním počítači.  
+
+Doba kvóty se počítá, když Student spustí virtuální počítač testovacího prostředí sami.  Pokud učitel ručně spustí virtuální počítač testovacího prostředí pro studenta, nepoužijí se pro tohoto studenta kvóty hodin.
+
 ## <a name="schedules"></a>Plány
-Plány jsou časové úseky (jednorázově nebo opakovaně), které učitel můžete vytvořit pro třídu. Všechny virtuální počítače v testovacím prostředí se automaticky spustí na začátku plánu a se zastaví na konci plán. Hodiny kvóty nejsou použity při spuštění plánu.
 
-## <a name="template-virtual-machine"></a>Šablona virtuálního počítače
-Šablona virtuálního počítače v testovacím prostředí je image základního virtuálního počítače ze které se vytvářejí všechny uživatele počítače. Tvůrce školitelé/lab nastavení šablony virtuálního počítače a konfigurovat se softwarem, které chtějí poskytnout účastníkům školení provedete testovací prostředí. Když publikujete šablonu virtuálního počítače, Azure Lab Services vytvoří nebo aktualizuje testovacího prostředí virtuálních počítačů na základě šablony virtuálního počítače. 
+Plány jsou časové sloty (jednorázové nebo opakované), které může učitel pro třídu vytvořit. Všechny virtuální počítače v testovacím prostředí se automaticky spustí na začátku plánu a na konci plánu se zastaví. Při spuštění plánu se nepoužijí kvóty hodin.
 
+## <a name="template-virtual-machine"></a>Virtuální počítač šablony
+
+Virtuální počítač šablony v testovacím prostředí je základní image virtuálního počítače, ze které se vytvářejí virtuální počítače všech uživatelů. Autoři školitel/testovacích prostředí nastavili virtuální počítač šablony a nakonfigurují ho pomocí softwaru, který chtějí poskytnout pro školení účastníků na cvičení. Když publikujete virtuální počítač šablony, Azure Lab Services vytvoří nebo aktualizuje testovací virtuální počítače založené na virtuálním počítači šablony.
 
 ## <a name="user-profiles"></a>Profily uživatelů
-Tento článek popisuje různé uživatelské profily v Azure Lab Services. 
+
+Tento článek popisuje různé uživatelské profily v Azure Lab Services.
 
 ### <a name="lab-account-owner"></a>Vlastník účtu testovacího prostředí
-Správce cloudových prostředků organizace, který je vlastníkem předplatného Azure, obvykle plní roli vlastníka účtu testovacího prostředí a má následující úkoly:   
+
+Správce cloudových prostředků organizace, který je vlastníkem předplatného Azure, obvykle plní roli vlastníka účtu testovacího prostředí a má následující úkoly:
 
 - Nastavit účet testovacího prostředí pro organizaci
 - Spravovat a konfigurovat zásady pro všechna testovací prostředí
 - Udělovat uživatelům v organizaci oprávnění vytvářet v příslušném účtu testovací prostředí
 
 ### <a name="professor"></a>Profesor
-Uživatelé jako například učitel nebo online instruktor si většinou vytváří testovací prostředí v učebnách na účtu testovacího prostředí. Pedagog má následující úkoly: 
+
+Uživatelé jako například učitel nebo online instruktor si většinou vytváří testovací prostředí v učebnách na účtu testovacího prostředí. Pedagog má následující úkoly:
 
 - Vytvořit testovacího prostředí v učebně
-- Vytvořit v testovacím prostředí virtuální počítače 
+- Vytvořit v testovacím prostředí virtuální počítače
 - Nainstalovat na virtuálních počítačích příslušný software
 - Určit, kdo má mít k testovacímu prostředí přístup
 - Poskytnout studentům odkaz pro registraci do testovacího prostředí
 
 ### <a name="student"></a>Student
+
 Student má následující úkoly:
 
-- Zaregistrovat se pomocí registračního odkazu, který obdrží od tvůrce testovacího prostředí 
-- Připojit se k virtuálnímu počítači v testovacím prostředí a používat ho k aktivitám ve vyučování a k práci na úkolech a projektech. 
+- Zaregistrovat se pomocí registračního odkazu, který obdrží od tvůrce testovacího prostředí
+- Připojit se k virtuálnímu počítači v testovacím prostředí a používat ho k aktivitám ve vyučování a k práci na úkolech a projektech.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
+
 Začněte vytvořením účtu testovacího prostředí, bez kterého není možné pomocí služby Azure Lab Services vytvořit testovací prostředí v učebnách:
 
 - [Nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md)

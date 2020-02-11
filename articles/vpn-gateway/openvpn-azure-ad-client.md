@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.author: alzam
-ms.openlocfilehash: 045d1cad130adad34d74009b34b193ce0d3d4dc9
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 3072fc3a82cfe85649cf080c9def69cc4869b7ec
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110553"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122499"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurace klienta VPN pro připojení protokolu P2S OpenVPN: ověřování Azure AD
 
@@ -82,11 +82,11 @@ Jakmile budete mít funkční profil a potřebujete ho distribuovat ostatním u�
 
 1. Vyberte tři tečky vedle profilu klienta, který chcete odstranit. Pak vyberte **Odebrat**.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete1.jpg)
+    ![odstranit](./media/openvpn-azure-ad-client/delete/delete1.jpg)
 
 2. Vyberte **Odebrat** a odstraňte.
 
-    ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
+    ![odstranit](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
 ## <a name="connection"></a>Vytvoření připojení
 
@@ -163,6 +163,24 @@ Můžete upravit stažený soubor XML profilu a přidat **\<dnssuffixes >\<dnssu
           <dnssuffix>.xyz.com</dnssuffix>
           <dnssuffix>.etc.net</dnssuffix>
     </dnssuffixes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Návody přidat vlastní trasy k klientovi VPN?
+
+Můžete upravit stažený soubor XML profilu a přidat **\<trasy >\<includeroutes >\<cílový >\<maska > \</route >\</includeroutes >\</destionation >\</mask >** značky
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <includeroutes>
+        <route>
+            <destination>x.x.x.x</destination><mask>24</mask>
+        </route>
+    </includeroutes>
     
 </clientconfig>
 </azvpnprofile>

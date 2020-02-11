@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 11/04/2019
-ms.openlocfilehash: c38347a03ddc0ef5f6c1bd3118696062db9a8254
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/10/2020
+ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533423"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116534"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: analýza prvního modelu ML
 
@@ -23,7 +23,7 @@ ms.locfileid: "75533423"
 
 Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [vytvořili pracovní prostor a zvolili vývojové prostředí](tutorial-1st-experiment-sdk-setup.md). V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se jednoduchý scikit model založený na datové sadě diabetes. Po dokončení tohoto kurzu budete mít praktické znalosti sady SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
 
-V tomto kurzu se naučíte provádět následující úlohy:
+V tomto kurzu se seznámíte s následujícími úlohami:
 
 > [!div class="checklist"]
 > * Připojte svůj pracovní prostor a vytvořte experiment.
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte provádět následující úlohy:
 
 Jediným předpokladem je spuštění první části tohoto kurzu, [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
-V této části kurzu spustíte kód v ukázkovém poznámkovém bloku Jupyter `tutorials/tutorial-1st-experiment-sdk-train.ipynb` otevřeli na konci části 1. Tento článek vás provede stejným kódem, který je v poznámkovém bloku.
+V této části kurzu spustíte kód v ukázce poznámkového bloku Jupyter */Create-First-ml-experiment/tutorial-1st-experiment-SDK-Train. ipynb* otevřený na konci části 1. Tento článek vás provede stejným kódem, který je v poznámkovém bloku.
 
 ## <a name="open-the-notebook"></a>Otevření poznámkového bloku
 
@@ -45,7 +45,7 @@ V této části kurzu spustíte kód v ukázkovém poznámkovém bloku Jupyter `
 
 
 > [!Warning]
-> Nevytvářejte *Nový* Poznámkový blok v rozhraní Jupyter. `tutorials/tutorial-1st-experiment-sdk-train.ipynb` poznámkového bloku zahrnuje **veškerý kód a data potřebná** pro účely tohoto kurzu.
+> Nevytvářejte *Nový* Poznámkový blok v rozhraní Jupyter. Kurzy poznámkového bloku */Create-First-ml-experiment/tutorial-1st-experiment-SDK-Train. ipynb* jsou včetně **veškerého kódu a dat potřebných** pro účely tohoto kurzu.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Připojit pracovní prostor a vytvořit experiment
 
@@ -87,7 +87,7 @@ y_df = x_df.pop("Y")
 X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, random_state=66)
 ```
 
-## <a name="train-a-model"></a>Trénování modelu
+## <a name="train-a-model"></a>Učení modelu
 
 Výuku jednoduchého scikit modelu se dá snadno udělat místně pro účely malého měřítka, ale při školení mnoha iterací s desítkami různých funkcí a nastaveními parametrů je snadné sledovat, které modely jste si naučili a jak vám školení. Následující vzor návrhu ukazuje, jak pomocí sady SDK snadno sledovat vaše školení v cloudu.
 
@@ -133,7 +133,7 @@ Po dokončení školení zavolejte `experiment` proměnnou, která načte odkaz 
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name (Název)</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka dokumentace</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Portal</td><td>Odkaz na dokumentaci</td></tr></table>
+<table style="width:100%"><tr><th>Název</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Portal</td><td>Odkaz na dokumentaci</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>Zobrazit výsledky školení na portálu
 
@@ -216,5 +216,5 @@ V tomto kurzu jste provedli následující úlohy:
 > * Nahraná data a školené modely scikit-učení
 > * Zobrazení výsledků školení na portálu a načítajících se modely
 
-[Nasazení modelu](tutorial-deploy-models-with-aml.md) službou Azure Machine Learning.
+[Nasaďte model](tutorial-deploy-models-with-aml.md) pomocí Azure Machine Learning.
 Naučte se vyvíjet [automatizované experimenty strojového učení](tutorial-auto-train-models.md) .

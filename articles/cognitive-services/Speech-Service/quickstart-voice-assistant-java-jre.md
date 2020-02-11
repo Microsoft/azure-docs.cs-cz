@@ -3,19 +3,19 @@ title: 'Rychlý Start: Custom hlas Assistant pro Java (Windows, Linux) – Speec
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu se naučíte používat sadu Cognitive Services Speech SDK v konzolové aplikaci Java. Dozvíte se, jak můžete připojit klientskou aplikaci k dřív vytvořenému robotu rozhraní robot Framework, který je nakonfigurovaný tak, aby používal kanál Direct line Speech a umožnil prostředí hlasového asistenta.
 services: cognitive-services
-author: bidishac
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/05/2019
-ms.author: bidishac
-ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: 45719eebb9cd74b0a5c4278e87b90978dcc3790f
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815859"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119700"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Rychlý Start: vytvoření hlasového asistenta pomocí sady Speech SDK, Java (Preview)
 
@@ -23,7 +23,7 @@ K dispozici jsou také rychlé starty pro převod [řeči na text](~/articles/co
 
 V tomto článku vytvoříte konzolovou aplikaci Java pomocí [sady Azure Cognitive Services Speech SDK](speech-sdk.md). Aplikace se připojí k dřív vytvořenému robotovi, který je nakonfigurovaný tak, aby používal kanál Direct line Speech, pošle hlasovou žádost a vrátí aktivitu odezvy na hlas (Pokud je nakonfigurovaná). Aplikace je sestavená pomocí balíčku Maven sady Speech SDK a Java IDE zatmění ve Windows, Ubuntu Linux nebo na macOS. Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K tomuto rychlému startu potřebujete:
 
@@ -67,7 +67,7 @@ Kromě toho, pokud chcete povolit protokolování, aktualizujte soubor _pom. XML
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Pokud chcete do projektu Javy přidat novou prázdnou třídu, vyberte **File** (Soubor)  >  **New** (Nový)  >  **Class** (Třída).
+1. Pokud chcete do projektu Javy přidat novou prázdnou třídu, vyberte **File** (Soubor)  > **New** (Nový)  > **Class** (Třída).
 
 1. V okně **nové třídy Java** zadejte _speechsdk. Start_ do pole **balíček** a do pole **název** zadejte _Main_ .
 
@@ -474,7 +474,7 @@ Další ukázky, například jak číst řeč ze zvukového souboru, jsou k disp
 > [!div class="nextstepaction"]
 > [Vytvoření a nasazení základního chatbota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [O hlasových asistentcích](voice-assistants.md)
 - [Získejte zdarma klíč předplatného služby Speech](get-started.md)

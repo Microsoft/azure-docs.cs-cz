@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b2be84625035bb368784f3f423d63121c29255ad
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930015"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121411"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Obsluha obsahu z Azure Storage v App Service v systému Linux
 
@@ -34,6 +34,7 @@ V této příručce se dozvíte, jak připojit Azure Storage k App Service v sys
 - Azure Storage s App Service podporuje připojování **kontejnerů souborů Azure** (čtení a zápis) a **kontejnerů objektů blob Azure** (jen pro čtení).
 - Azure Storage s App Service v důsledku omezení infrastruktury **nepodporuje** použití konfigurace **brány firewall úložiště** .
 - Azure Storage s App Service vám umožní zadat **až pět** přípojných bodů na jednu aplikaci.
+- Azure Storage připojená k aplikaci není přístupná prostřednictvím koncových bodů App Service FTP/FTPs. Použijte [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 - Azure Storage není **součástí** vaší webové aplikace a účtuje se samostatně. Přečtěte si další informace o [cenách Azure Storage](https://azure.microsoft.com/pricing/details/storage).
 
 > [!WARNING]

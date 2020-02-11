@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: db1e2d09c1a75401a8ca24859e9b2d5da9f54b72
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 1d244d7b62fcfefeec6f628f473274ae982bf4d8
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024275"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120229"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s omezeními & Azure Cloud Shell
 
@@ -28,6 +28,11 @@ Známá řešení potíží s Azure Cloud Shell zahrnují:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-troubleshooting"></a>Obecné řešení potíží
+
+### <a name="error-running-azuread-cmdlets-in-powershell"></a>Chyba při spouštění rutin AzureAD v PowerShellu
+
+- **Podrobnosti**: když v Cloud Shell spustíte rutiny AzureAD, jako je `Get-AzureADUser`, může se zobrazit chyba: `You must call the Connect-AzureAD cmdlet before calling any other cmdlets`. 
+- **Řešení**: spusťte rutinu `Connect-AzureAD`. Dřív Cloud Shell spustila tuto rutinu automaticky během spouštění PowerShellu. Pokud chcete zrychlit čas spuštění, rutina se už nespustí automaticky. Předchozí chování můžete obnovit tak, že přidáte `Connect-AzureAD` do souboru $PROFILE v PowerShellu.
 
 ### <a name="early-timeouts-in-firefox"></a>Včasné vypršení časových limitů v prohlížeči FireFox
 
@@ -117,7 +122,7 @@ Cloud Shell podporuje nejnovější verze následujících prohlížečů:
 
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-### <a name="usage-limits"></a>Limity využití
+### <a name="usage-limits"></a>Omezení využití
 
 Cloud Shell je určena pro interaktivní případy použití. V důsledku toho jsou všechny dlouho běžící neinteraktivní relace ukončeny bez upozornění.
 

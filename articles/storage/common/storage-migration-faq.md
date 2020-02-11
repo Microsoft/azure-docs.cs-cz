@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 0fa4c7fa42cbc0eceb9efd2f364a0fbcab1698e1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 1445d74e3050ffd6da7c45037df552f4bee9acf5
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975675"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116666"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Nejčastější dotazy týkající se migrace Azure Storage
 
 Tento článek obsahuje odpovědi na běžné otázky týkající se migrace Azure Storage.
 
-## <a name="faq"></a>Časté otázky
+## <a name="copy-upload-or-download"></a>Kopírování, nahrávání nebo stahování
 
 **Návody vytvořit skript pro kopírování souborů z jednoho kontejneru do druhého?**
 
@@ -40,32 +40,31 @@ Skript automatizace je navržený pro Azure Resource Manager nasazení místo ma
 
 Ne. Za tento proces se neúčtují žádné poplatky.
 
-**Návody zálohovat celý účet úložiště na jiný účet úložiště?**
+**Jak můžu stáhnout 1-2 TB dat z Azure Portal?**
 
-Neexistuje možnost zálohovat celý účet úložiště přímo. Kontejner v tomto účtu úložiště ale můžete ručně přesunout do jiného účtu pomocí AzCopy nebo Průzkumník služby Storage. Následující kroky ukazují, jak pomocí AzCopy přesunout kontejner:  
+Pomocí AzCopy si stáhněte data. Další informace najdete v tématech [přenos dat pomocí AzCopy ve Windows](storage-use-azcopy.md) a [přenos dat pomocí AzCopy v systému Linux](storage-use-azcopy-linux.md).
 
+**Jak můžu stáhnout virtuální pevný disk do místního počítače, a to jinak než pomocí možnosti stažení na portálu?**
 
-1.  Nainstalujte nástroj příkazového řádku [AzCopy](storage-use-azcopy.md) . Tento nástroj vám pomůže přesunout soubor VHD mezi účty úložiště.
+K stažení VHD můžete použít [Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/) .
 
-2.  Po instalaci AzCopy ve Windows pomocí instalačního programu otevřete okno příkazového řádku a přejděte do složky pro instalaci AzCopy na vašem počítači. Ve výchozím nastavení je nástroj AzCopy nainstalovaný na **% ProgramFiles (x86) %\Microsoft SDKs\Azure\AzCopy** nebo **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
+**Návody stahovat data do počítače se systémem Linux z účtu služby Azure Storage nebo nahrávat data z počítače se systémem Linux?**
 
-3.  Spusťte následující příkaz pro přesunutí kontejneru. Je nutné nahradit text skutečnými hodnotami.   
+Můžete použít rozhraní příkazového řádku Azure.
 
-            AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
-            /Dest:https://destaccount.blob.core.windows.net/mycontainer2
-            /SourceKey:key1 /DestKey:key2 /S
+- Stažení jednoho objektu BLOB:
 
-    - `/Source`: zadejte identifikátor URI pro zdrojový účet úložiště (až do kontejneru).  
-    - `/Dest`: zadejte identifikátor URI pro cílový účet úložiště (až do kontejneru).  
-    - `/SourceKey`: zadejte primární klíč pro zdrojový účet úložiště. Tento klíč můžete zkopírovat z Azure Portal tím, že vyberete účet úložiště.  
-    - `/DestKey`: zadejte primární klíč pro cílový účet úložiště. Tento klíč můžete zkopírovat z portálu tak, že vyberete účet úložiště.
+      azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
 
-Po spuštění tohoto příkazu se soubory kontejneru přesunou do cílového účtu úložiště.
+- Nahrát jeden objekt BLOB:
 
-> [!NOTE]
-> AzCopy CLI při kopírování z jednoho objektu blob Azure do jiného nefunguje společně s přepínačem **vzoru** .
->
-> Můžete přímo zkopírovat a upravit příkaz AzCopy a křížové kontroly, abyste se ujistili, že **vzorek** odpovídá zdroji. Také se ujistěte, že jsou použity zástupné znaky **/s** . Další informace najdete v tématu [AzCopy Parameters](storage-use-azcopy.md).
+      azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
+
+**Návody migrujete objekty BLOB z jednoho účtu úložiště do jiného?**
+
+ Můžete to provést pomocí našeho [skriptu pro migraci objektů BLOB](../scripts/storage-common-transfer-between-storage-accounts.md).
+ 
+## <a name="migration-or-backup"></a>Migrace nebo zálohování
 
 **Návody přesunout data z jednoho kontejneru úložiště do jiného?**
 
@@ -102,20 +101,6 @@ Data zkopírujte pomocí AzCopy. Další informace najdete v tématech [přenos 
 **Jak můžu přesunout data z místního prostředí do služby soubory Azure?**
 
 Přesun dat pomocí AzCopy. Další informace najdete v tématech [přenos dat pomocí AzCopy ve Windows](storage-use-azcopy.md) a [přenos dat pomocí AzCopy v systému Linux](storage-use-azcopy-linux.md).
-
-**Návody namapovat na virtuálním počítači složku kontejneru?**
-
-Použijte sdílenou složku Azure.
-
-**Návody zálohovat službu Azure File Storage?**
-
-Neexistuje žádné řešení zálohování. Soubory Azure ale také podporují asynchronní kopírování. Můžete tedy zkopírovat soubory:
-
-- Ze sdílené složky do jiné sdílené složky v rámci účtu úložiště nebo do jiného účtu úložiště.
-
-- Ze sdílené složky do kontejneru objektů BLOB v rámci účtu úložiště nebo do jiného účtu úložiště.
-
-Další informace najdete v tématu [přenos dat pomocí AzCopy ve Windows](storage-use-azcopy.md).
 
 **Návody přesunout spravované disky do jiného účtu úložiště?**
 
@@ -161,44 +146,9 @@ Postupujte následovně:
 
 Další informace o tom, jak nasadit virtuální počítač ze spravovaného disku, najdete v tématu [CreateVmFromManagedOsDisk. ps1](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/blob/master/CreateVmFromManagedOsDisk.ps1).
 
-**Jak můžu stáhnout 1-2 TB dat z Azure Portal?**
-
-Pomocí AzCopy si stáhněte data. Další informace najdete v tématech [přenos dat pomocí AzCopy ve Windows](storage-use-azcopy.md) a [přenos dat pomocí AzCopy v systému Linux](storage-use-azcopy-linux.md).
-
-**Návody změnit sekundární umístění na oblast Evropa pro účet úložiště?**
-
-Při vytváření účtu úložiště vyberete primární oblast pro daný účet. Výběr sekundární oblasti je založen na primární oblasti a nelze ji změnit. Další informace najdete v tématu [geograficky redundantní úložiště (GRS): replikace mezi různými oblastmi pro Azure Storage](storage-redundancy.md).
-
-**Kde mohu získat další informace o šifrování služby Azure Storage (SSE)?**  
-
-Viz následující články:
-
--  [Příručka zabezpečení Azure Storage](../blobs/security-recommendations.md)
-
--  [Šifrování služby Azure Storage pro neaktivní neaktivní data](storage-service-encryption.md)
-
 **Návody přesunout nebo stáhnout data z účtu úložiště?**
 
 Pomocí AzCopy si stáhněte data. Další informace najdete v tématech [přenos dat pomocí AzCopy ve Windows](storage-use-azcopy.md) a [přenos dat pomocí AzCopy v systému Linux](storage-use-azcopy-linux.md).
-
-
-**Návody šifrovat data v účtu úložiště?**
-
-Po povolení šifrování v účtu úložiště nebudou existující data zašifrovaná. Chcete-li zašifrovat existující data, je nutné ji znovu odeslat do účtu úložiště.
-
-Pomocí AzCopy zkopírujte data do jiného účtu úložiště a přemístěte data zpátky. Můžete také použít [šifrování v klidovém](storage-service-encryption.md)provozu.
-
-**Jak můžu stáhnout virtuální pevný disk do místního počítače, a to jinak než pomocí možnosti stažení na portálu?**
-
-K stažení VHD můžete použít [Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/) .
-
-**Existují nějaké předpoklady pro změnu replikace účtu úložiště z geograficky redundantního úložiště na místně redundantní úložiště?**
-
-Ne.
-
-**Návody přistupovat k redundantnímu úložišti Azure Files?**
-
-Pro přístup k redundantnímu úložišti se vyžaduje geograficky redundantní úložiště s přístupem pro čtení. Soubory Azure ale podporují jenom místně redundantní úložiště a standardní geograficky redundantní úložiště, které nepovoluje přístup jen pro čtení.
 
 **Návody přesunete z účtu Premium Storage na účet úložiště úrovně Standard?**
 
@@ -220,10 +170,74 @@ Postupujte následovně:
         /Dest:https://destaccount.blob.core.windows.net/mycontainer2
         /SourceKey:key1 /DestKey:key2 /Pattern:abc.vhd
 
-
 Dokončení operace může trvat několik hodin.
 
 Pokud se chcete ujistit, že se přenos úspěšně dokončil, prověřte cílový kontejner účtu úložiště v Azure Portal. Po zkopírování disků do standardního účtu úložiště je můžete připojit k virtuálnímu počítači jako stávající disk. Další informace najdete v tématu [Postup připojení spravovaného datového disku k virtuálnímu počítači s Windows v Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md).  
+
+**Návody přesunete z klasického účtu úložiště na účet úložiště Azure Resource Manager?**
+
+Můžete použít rutinu **Move-AzureStorageAccount** . Tato rutina má více kroků (ověření, příprava, potvrzení). Přesun můžete ověřit před tím, než ho uděláte.
+
+Pokud máte virtuální počítače, musíte před migrací dat účtu úložiště provést další kroky. Další informace najdete v tématu [migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí Azure PowerShell](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md).
+
+**Návody zálohovat celý účet úložiště na jiný účet úložiště?**
+
+Neexistuje možnost zálohovat celý účet úložiště přímo. Kontejner v tomto účtu úložiště ale můžete ručně přesunout do jiného účtu pomocí AzCopy nebo Průzkumník služby Storage. Následující kroky ukazují, jak pomocí AzCopy přesunout kontejner:  
+
+1.  Nainstalujte nástroj příkazového řádku [AzCopy](storage-use-azcopy.md) . Tento nástroj vám pomůže přesunout soubor VHD mezi účty úložiště.
+
+2.  Po instalaci AzCopy ve Windows pomocí instalačního programu otevřete okno příkazového řádku a přejděte do složky pro instalaci AzCopy na vašem počítači. Ve výchozím nastavení je AzCopy nainstalován do **% ProgramFiles (x86)% \ Microsoft SDKs\Azure\AzCopy** nebo **%ProgramFiles%\Microsoft SDKs\Azure\AzCopy**.
+
+3.  Spusťte následující příkaz pro přesunutí kontejneru. Je nutné nahradit text skutečnými hodnotami.   
+
+            AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1
+            /Dest:https://destaccount.blob.core.windows.net/mycontainer2
+            /SourceKey:key1 /DestKey:key2 /S
+
+    - `/Source`: zadejte identifikátor URI pro zdrojový účet úložiště (až do kontejneru).  
+    - `/Dest`: zadejte identifikátor URI pro cílový účet úložiště (až do kontejneru).  
+    - `/SourceKey`: zadejte primární klíč pro zdrojový účet úložiště. Tento klíč můžete zkopírovat z Azure Portal tím, že vyberete účet úložiště.  
+    - `/DestKey`: zadejte primární klíč pro cílový účet úložiště. Tento klíč můžete zkopírovat z portálu tak, že vyberete účet úložiště.
+
+Po spuštění tohoto příkazu se soubory kontejneru přesunou do cílového účtu úložiště.
+
+> [!NOTE]
+> AzCopy CLI při kopírování z jednoho objektu blob Azure do jiného nefunguje společně s přepínačem **vzoru** .
+>
+> Můžete přímo zkopírovat a upravit příkaz AzCopy a křížové kontroly, abyste se ujistili, že **vzorek** odpovídá zdroji. Také se ujistěte, že jsou použity zástupné znaky **/s** . Další informace najdete v tématu [AzCopy Parameters](storage-use-azcopy.md).
+
+**Návody zálohovat službu Azure File Storage?**
+
+Neexistuje žádné řešení zálohování. Soubory Azure ale také podporují asynchronní kopírování. Můžete tedy zkopírovat soubory:
+
+- Ze sdílené složky do jiné sdílené složky v rámci účtu úložiště nebo do jiného účtu úložiště.
+
+- Ze sdílené složky do kontejneru objektů BLOB v rámci účtu úložiště nebo do jiného účtu úložiště.
+
+Další informace najdete v tématu [přenos dat pomocí AzCopy ve Windows](storage-use-azcopy.md).
+## <a name="configuration"></a>Konfigurace
+
+**Návody změnit sekundární umístění na oblast Evropa pro účet úložiště?**
+
+Při vytváření účtu úložiště vyberete primární oblast pro daný účet. Výběr sekundární oblasti je založen na primární oblasti a nelze ji změnit. Další informace najdete v tématu [geograficky redundantní úložiště (GRS): replikace mezi různými oblastmi pro Azure Storage](storage-redundancy.md).
+
+**Kde mohu získat další informace o šifrování služby Azure Storage (SSE)?**  
+
+Viz následující články:
+
+-  [Příručka zabezpečení Azure Storage](../blobs/security-recommendations.md)
+
+-  [Šifrování služby Azure Storage pro neaktivní neaktivní data](storage-service-encryption.md)
+
+**Návody šifrovat data v účtu úložiště?**
+
+Po povolení šifrování v účtu úložiště nebudou existující data zašifrovaná. Chcete-li zašifrovat existující data, je nutné ji znovu odeslat do účtu úložiště.
+
+Pomocí AzCopy zkopírujte data do jiného účtu úložiště a přemístěte data zpátky. Můžete také použít [šifrování v klidovém](storage-service-encryption.md)provozu.
+
+**Existují nějaké předpoklady pro změnu replikace účtu úložiště z geograficky redundantního úložiště na místně redundantní úložiště?**
+
+Ne.
 
 **Návody převést na Premium Storage Azure pro sdílenou složku?**
 
@@ -234,24 +248,6 @@ Premium Storage se ve sdílené složce Azure nepovoluje.
 Musíte vytvořit cílový účet úložiště, zkopírovat data ze zdrojového účtu do cílového účtu a pak zdrojový účet odstranit. K kopírování dat můžete použít nástroj, jako je AzCopy.
 
 Pokud máte virtuální počítače, musíte před migrací dat účtu úložiště provést další kroky. Další informace najdete v tématu [migrace do Azure Premium Storage (nespravované disky)](storage-migration-to-premium-storage.md).
-
-**Návody přesunete z klasického účtu úložiště na účet úložiště Azure Resource Manager?**
-
-Můžete použít rutinu **Move-AzureStorageAccount** . Tato rutina má více kroků (ověření, příprava, potvrzení). Přesun můžete ověřit před tím, než ho uděláte.
-
-Pokud máte virtuální počítače, musíte před migrací dat účtu úložiště provést další kroky. Další informace najdete v tématu [migrace prostředků IaaS z modelu Classic na Azure Resource Manager pomocí Azure PowerShell](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md).
-
-**Návody stahovat data do počítače se systémem Linux z účtu služby Azure Storage nebo nahrávat data z počítače se systémem Linux?**
-
-Můžete použít rozhraní příkazového řádku Azure.
-
-- Stažení jednoho objektu BLOB:
-
-      azure storage blob download -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -b "<Remote File Name>" -d "<Local path where the file will be downloaded to>"
-
-- Nahrát jeden objekt BLOB:
-
-      azure storage blob upload -k "<Account Key>" -a "<Storage Account Name>" --container "<Blob Container Name>" -f "<Local File Name>"
 
 **Jak můžu ostatním lidem umožnit přístup k prostředkům úložiště?**
 
@@ -271,6 +267,21 @@ Poskytnutí přístupu k prostředkům úložiště ostatním lidem:
 
 -   Pokud jste nainstalovali 64 verzi, nachází se tady: **% ProgramFiles%\\Microsoft sdk\\Azure\\AzCopy**.
 
+**Návody použít vlastní doménu HTTPS s účtem úložiště? Například, jak se dá "https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" Zobrazit jako "https:\//www.contoso.com/images/image.gif"?**
+
+Protokol SSL se v současné době nepodporuje u účtů úložiště s vlastními doménami.
+Můžete ale použít vlastní domény bez HTTPS. Další informace najdete v tématu [Konfigurace vlastního názvu domény pro koncový bod služby Blob Storage](../blobs/storage-custom-domain-name.md).
+
+## <a name="access-to-storage"></a>Přístup k úložišti
+
+**Návody namapovat na virtuálním počítači složku kontejneru?**
+
+Použijte sdílenou složku Azure.
+
+**Návody přistupovat k redundantnímu úložišti Azure Files?**
+
+Pro přístup k redundantnímu úložišti se vyžaduje geograficky redundantní úložiště s přístupem pro čtení. Soubory Azure ale podporují jenom místně redundantní úložiště a standardní geograficky redundantní úložiště, které nepovoluje přístup jen pro čtení.
+
 **Jak se dá získat přístup k datům uloženým v sekundární oblasti pro replikovaný účet úložiště (například úložiště redundantní zóny, geograficky redundantní úložiště nebo geograficky redundantní úložiště s přístupem pro čtení)?**
 
 -   Pokud používáte redundantní úložiště zóny nebo geograficky redundantní úložiště, nemůžete získat přístup k datům ze sekundární oblasti, pokud neinicializujete převzetí služeb při selhání této oblasti. Další informace o procesu převzetí služeb při selhání najdete [v tématu obnovení po havárii a převzetí služeb při selhání účtu úložiště (Preview) v Azure Storage](storage-disaster-recovery-guidance.md).
@@ -283,21 +294,12 @@ Poskytnutí přístupu k prostředkům úložiště ostatním lidem:
 
     - **Token SAS**: pro přístup k datům z koncového bodu použijte token SAS. Další informace najdete v tématu [použití sdílených přístupových podpisů](storage-sas-overview.md).
 
-**Návody použít vlastní doménu HTTPS s účtem úložiště? Například, jak se dá "https:\//mystorageaccountname.blob.core.windows.net/images/image.gif" Zobrazit jako "https:\//www.contoso.com/images/image.gif"?**
-
-Protokol SSL se v současné době nepodporuje u účtů úložiště s vlastními doménami.
-Můžete ale použít vlastní domény bez HTTPS. Další informace najdete v tématu [Konfigurace vlastního názvu domény pro koncový bod služby Blob Storage](../blobs/storage-custom-domain-name.md).
-
 **Návody k přístupu k datům v účtu úložiště použít FTP?**
 
 Neexistuje žádný způsob, jak získat přístup k účtu úložiště přímo pomocí FTP. Můžete ale nastavit virtuální počítač Azure a pak na virtuální počítač nainstalovat server FTP. Server FTP můžete mít uložený ve sdílené složce služby soubory Azure nebo na datovém disku, který je k dispozici pro virtuální počítač.
 
 Pokud chcete jenom stahovat data, aniž byste museli používat Průzkumník služby Storage nebo podobnou aplikaci, možná budete moct použít token SAS. Další informace najdete v tématu [použití sdílených přístupových podpisů](storage-sas-overview.md).
 
-**Návody migrujete objekty BLOB z jednoho účtu úložiště do jiného?**
-
- Můžete to provést pomocí našeho [skriptu pro migraci objektů BLOB](../scripts/storage-common-transfer-between-storage-accounts.md).
-
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.

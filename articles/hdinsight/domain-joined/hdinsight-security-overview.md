@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
 ms.date: 09/23/2019
-ms.openlocfilehash: 7fadb17476c2a071de767573994bb1120b476cdf
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 0e7b2db188ef6ee7d6b80ba5da4010112008ad70
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053739"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122105"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Přehled podnikového zabezpečení ve službě Azure HDInsight
 
@@ -32,7 +32,7 @@ Hraniční zabezpečení v HDInsight se dosahuje pomocí [virtuálních sítí](
 
 Všechny clustery nasazené ve virtuální síti budou mít taky privátní koncový bod, který se přeloží na soukromou IP adresu uvnitř virtuální sítě, aby se privátní přístup HTTP k branám clusteru.
 
-### <a name="authentication"></a>Ověření
+### <a name="authentication"></a>Ověřování
 
 [Balíček zabezpečení podniku](apache-domain-joined-architecture.md) ze služby HDInsight poskytuje ověřování založené na službě Active Directory, podporu více uživatelů a řízení přístupu na základě rolí. Integrace služby Active Directory se dosahuje pomocí [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). S těmito možnostmi můžete vytvořit cluster HDInsight, který je připojený ke spravované doméně služby Active Directory. Pak můžete nakonfigurovat seznam zaměstnanců z podnikového, který se může ověřit a přihlásit ke clusteru.
 
@@ -87,9 +87,9 @@ Následující tabulka obsahuje odkazy na prostředky pro jednotlivé typy řeš
 |  | Zajistěte, aby byly [opravy operačního systému](../hdinsight-os-patching.md) v pravidelných intervalech | Zákazník |
 | Zabezpečení sítě | Konfigurace [virtuální sítě](../hdinsight-plan-virtual-network-deployment.md) |
 |  | Konfigurace [pravidel skupiny zabezpečení příchozí sítě (NSG)](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | Zákazník |
-|  | Konfigurace [omezení odchozích přenosů](../hdinsight-restrict-outbound-traffic.md) pomocí brány firewall (Preview) | Zákazník |
-| Virtualizovaná infrastruktura | Nevztahuje se | HDInsight (poskytovatel cloudu) |
-| Zabezpečení fyzické infrastruktury | Nevztahuje se | HDInsight (poskytovatel cloudu) |
+|  | Konfigurace [omezení odchozích přenosů](../hdinsight-restrict-outbound-traffic.md) pomocí brány firewall | Zákazník |
+| Virtualizovaná infrastruktura | NEUŽÍVÁ SE. | HDInsight (poskytovatel cloudu) |
+| Zabezpečení fyzické infrastruktury | NEUŽÍVÁ SE. | HDInsight (poskytovatel cloudu) |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: pafarley
-ms.openlocfilehash: ea716caf575fce1197c12f3cb3cea8348c7a04c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 476763e1cb354edb8cdc4cbbae0d3aa7017faa16
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473945"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118742"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Rychlý Start: extrakce informací o textu a rozložení pomocí REST API pro rozpoznávání formulářů v Pythonu
 
@@ -25,7 +25,6 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu musíte mít:
-- Přístup k nástroji pro rozpoznávání přístupu s omezeným přístupem ve formě přístupu Chcete-li získat přístup k verzi Preview, vyplňte a odešlete formulář [žádosti o přístup pro rozpoznávání formulářů](https://aka.ms/FormRecognizerRequestAccess) .
 - Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
 - Dokument formuláře. Můžete si stáhnout obrázek ze [vzorové datové sady](https://go.microsoft.com/fwlink/?linkid=2090451) pro tento rychlý Start.
 
@@ -76,7 +75,7 @@ Chcete-li zahájit analýzu rozložení, zavolejte rozhraní API **[analyzovat r
 
 1. Uložte kód do souboru s příponou. py. Například *Form-Recognizer-layout.py*.
 1. Otevřete okno příkazového řádku.
-1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. Například, `python form-recognizer-layout.py`.
+1. Ke spuštění ukázky na příkazovém řádku použijte příkaz `python`. například `python form-recognizer-layout.py`.
 
 Dostanete odpověď na `202 (Success)`, která obsahuje hlavičku **operace – umístění** , kterou skript vytiskne do konzoly. Tato hlavička obsahuje ID operace, pomocí které můžete zadat dotaz na stav asynchronní operace a získat výsledky. V následujícím příkladu hodnoty je řetězec po `operations/` ID operace.
 
@@ -116,7 +115,7 @@ while n_try < n_tries:
 ```
 
 1. Uložte skript.
-1. Znovu použijte příkaz `python` ke spuštění ukázky. Například, `python form-recognizer-layout.py`.
+1. Znovu použijte příkaz `python` ke spuštění ukázky. například `python form-recognizer-layout.py`.
 
 ### <a name="examine-the-response"></a>Prozkoumání odpovědi
 

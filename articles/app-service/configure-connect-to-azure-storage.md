@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 64ef4dfe81e6415f1285a74962e2123507715119
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866986"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120683"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Konfigurace služby soubory Azure v kontejneru Windows na App Service
 
@@ -38,6 +38,7 @@ Tato příručka ukazuje, jak získat přístup k Azure Storage v kontejnerech W
 - Azure Storage v kontejnerech Windows se v současné době **nepodporují** v plánech Windows App Service pro vlastní scénáře kódu.
 - Azure Storage v kontejnerech Windows **nepodporuje** použití konfigurace **brány firewall úložiště** kvůli omezením infrastruktury.
 - Azure Storage v kontejnerech Windows umožňuje zadat **až pět** přípojných bodů na jednu aplikaci.
+- Azure Storage připojená k aplikaci není přístupná prostřednictvím koncových bodů App Service FTP/FTPs. Použijte [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
 - Azure Storage se fakturuje nezávisle a **nejsou součástí** vaší webové aplikace. Přečtěte si další informace o [cenách Azure Storage](https://azure.microsoft.com/pricing/details/storage).
 
 ## <a name="link-storage-to-your-web-app-preview"></a>Připojení úložiště k webové aplikaci (Preview)

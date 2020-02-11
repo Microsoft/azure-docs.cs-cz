@@ -1,6 +1,6 @@
 ---
-title: Vytvořit žádost o podporu pro Cloudyn v Azure | Dokumentace Microsoftu
-description: Tento článek vás provede kroky potřebné k vytvoření žádosti o podporu pro Cloudyn.
+title: Vytvoření žádosti o podporu pro Cloudyn v Azure | Microsoft Docs
+description: Tento článek vás provede postupem potřebným k vytvoření žádosti o podporu pro Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -11,41 +11,41 @@ ms.service: cost-management-billing
 manager: benshy
 ms.custom: ''
 ms.openlocfilehash: 4ebb2a1f617da75aad8cea805ba793910375c47a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75989316"
 ---
-# <a name="create-a-support-request-for-cloudyn"></a>Vytvořit žádost o podporu pro Cloudyn
+# <a name="create-a-support-request-for-cloudyn"></a>Vytvoření žádosti o podporu pro Cloudyn
 
-Pokud nemůžete najít informace, které hledáte, můžete otevřít žádost o podporu. Nebo, pokud máte podezření, že problém je přerušení služby nebo chyby. Při otevření lístku podpory, ujistěte se, otevřete pro jeden problém. To pomáhá tak rychle směrovat nahlášeného problému.
+Žádost o podporu otevřete, pokud nemůžete najít informace, které hledáte. Nebo pokud se domníváte, že je problém způsoben výpadkem nebo chybou služby. Při otevírání lístku podpory zajistěte, abyste ho otevřeli pro konkrétní problém. Nahlášený problém tak rychle najde svého adresáta.
 
 ## <a name="open-a-support-ticket"></a>Otevření lístku podpory
 
-1. Přihlaste se k webu Azure portal (https://portal.azure.com).
-2. Na horním navigačním panelu klikněte na tlačítko **pomáhají**.
-3. V **pomáhají** nabídky, klikněte na tlačítko **Nápověda a podpora**.
-4. V nápovědě + podporu nabídky v rámci podpory, klikněte na tlačítko **nová žádost o podporu**.
-5. V oblasti základní informace v části typ problému vyberte **fakturace**.
-6. V rámci předplatného zvolte každé uvedené předplatné. Předplatné, které zvolíte se nepoužívá ke směrování na problém.
-7. V rámci plánu podpory, vyberte plán podpory Azure a pak klikněte na **Další**.  
-8. Oblast problému, vyberte **závažnost** úroveň sloužící k určení doby odezvy.
-9. V **typ problému** vyberte **starší verze Cloudyn**a potom vyberte **kategorie**.
-10. V **název** zadejte název, který popisuje vaši žádost.
-11. V **podrobnosti** pole, další informace o typu.
-12. Pro **kdy problém začal?** vyberte přibližné datum a čas pro a pak klikněte na tlačítko **Další**.  
-14. V **kontaktní informace** oblasti, vyberte upřednostňovanou způsob kontaktu a zadejte svoje kontaktní informace a klikněte na **vytvořit**.  
+1. Přihlaste se k webu Azure Portal (https://portal.azure.com).
+2. V horním navigačním panelu klikněte na **Nápověda**.
+3. V nabídce**Nápověda** klikněte na **Nápověda a podpora**.
+4. V nabídce Nápověda a podpora v oblasti Podpora klikněte na **Nová žádost o podporu**.
+5. V seznamu Typ problému v oblasti Základní vyberte **Fakturace**.
+6. V oblasti Předplatné vyberte některé z uvedených předplatných. Předplatné, které zvolíte, se nepoužívá ke směrování problému.
+7. V oblasti Plán podpory vyberte Plán podpory Azure a pak klikněte na **Další**.  
+8. V oblasti Problém vyberte úroveň **Závažnosti**, která pomůže určit dobu odezvy.
+9. V seznamu **Typ problému** vyberte **Cloudyn Legacy** a pak vyberte některou **Kategorii**.
+10. Do pole **Název** zadejte název, který popisuje vaši žádost.
+11. Do pole **Podrobnosti** zadejte další informace.
+12. V seznamu **Kdy problém začal?** vyberte přibližné datum a čas a pak klikněte na **Další**.  
+14. V oblasti **Kontaktní informace** vyberte upřednostňovaný způsob kontaktování, zadejte své kontaktní informace a klikněte na **Vytvořit**.  
 
-Když se vytvoří lístek podpory, přidá se do fronty podpory. Doba odezvy se liší, na základě plánu podpory a závažnost (dopad na chod firmy) problému. Další informace najdete v tématu [rozsah podpory a rychlost odezvy](https://azure.microsoft.com/support/plans/response/).
+Po vytvoření se lístek podpor přidá do fronty podpory. Doba odezvy se liší v závislosti na plánu podpory a závažnosti (obchodního dopadu) problému. Další informace najdete v článku [Rozsah a doba odezvy podpory](https://azure.microsoft.com/support/plans/response/).
 
-Pokud chcete vytvořit lístek podpory fakturace Cost Management, v části **typ problému**vyberte **Azure Cost Management**.
+Pokud chcete vytvořit lístek podpory pro fakturaci ve službě Cost Management, v oblasti **Typ problému** vyberte **Azure Cost Management**.
 
-Chcete-li zkontrolovat stav incidentu, který jste vytvořili, přečtěte si téma [všechny žádosti o podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md#all-support-requests).
+Stav incidentu, který jste zaevidovali, najdete v oblasti [Všechny žádosti o podporu](../../azure-portal/supportability/how-to-create-azure-support-request.md#all-support-requests).
 
-Pokud používáte starší verzi Cloudyn bez účtu Azure, můžete otevřít žádost o podporu na https://support.microsoft.com/oas/default.aspx?prid=16451.
+Pokud jste starším uživatelem Cloudynu bez účtu Azure, můžete žádost o podporu otevřít na adrese https://support.microsoft.com/oas/default.aspx?prid=16451.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Chcete-li další informace o Cloudyn, pokračujte [kontrola využití a nákladů](../cloudyn/tutorial-review-usage.md) kurz pro Cloudyn.
+- Pokud chcete získat další informace o Cloudynu, pokračujte kurzem o [kontrole využití a nákladů](../cloudyn/tutorial-review-usage.md) služby Cloudyn.

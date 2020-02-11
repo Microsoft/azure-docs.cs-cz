@@ -4,12 +4,12 @@ description: Vytvářejte a nasaďte kód Python bez serveru do cloudu pomocí A
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 529a992178fae5566c8e315956388c4cd4b80257
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898560"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116213"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Rychlý Start: vytvoření funkce Python aktivované protokolem HTTP v Azure
 
@@ -107,7 +107,7 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
 
 V případě potřeby můžete přeskočit, aby se [funkce spouštěla místně](#run-the-function-locally) , a prohlédnout si obsah souboru později.
 
-### <a name="__init__py"></a>\_\_init\_\_.py
+#### <a name="__init__py"></a>\_\_init\_\_. py
 
 *\_\_init\_\_. py* obsahuje `main()` funkci Pythonu, která se aktivuje podle konfigurace v *Function. JSON*.
 
@@ -140,7 +140,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 U triggeru HTTP funkce přijímá data žádosti v proměnné `req`, jak je definováno v *Function. JSON*. `req` je instance [třídy Azure. Functions. HttpRequest](/python/api/azure-functions/azure.functions.httprequest). Návratový objekt definovaný jako `$return` v *Function. JSON*je instancí [třídy Azure. Functions. HttpResponse](/python/api/azure-functions/azure.functions.httpresponse). Další informace najdete v tématu [Azure Functions triggerů http a vazeb](functions-bindings-http-webhook.md).
 
-### <a name="functionjson"></a>function.json
+#### <a name="functionjson"></a>function.json
 
 *Function. JSON* je konfigurační soubor, který definuje vstupní a výstupní `bindings` pro funkci, včetně typu triggeru. V případě potřeby můžete změnit `scriptFile` k vyvolání jiného souboru Pythonu.
 
@@ -199,7 +199,7 @@ Až budete připraveni, zastavte hostitele funkcí **stisknutím Ctrl**+**C** .
 
 ## <a name="create-supporting-azure-resources-for-your-function"></a>Vytvoření podpory prostředků Azure pro vaši funkci
 
-Pokud chcete kód funkce nasadit do Azure, musíte vytvořit tři prostředky:
+Než budete moct nasadit kód funkce do Azure, musíte vytvořit tři prostředky:
 
 - Skupina prostředků, což je logický kontejner pro související prostředky.
 - Účet Azure Storage, který uchovává stav a další informace o vašich projektech.
@@ -269,7 +269,7 @@ Functions in msdocs-azurefunctions-qs:
 
 Vzhledem k tomu, že funkce používá Trigger HTTP, vyvoláte ji pomocí požadavku HTTP na adresu URL v prohlížeči nebo pomocí nástroje, jako je například kudrlinkou. V obou instancích je parametr adresy URL `code` jedinečný klíč funkce, který autorizuje vyvolání pomocí koncového bodu funkce.
 
-# <a name="browsertabbrowser"></a>[Prohlížeč](#tab/browser)
+# <a name="browsertabbrowser"></a>[Prohlížeee](#tab/browser)
 
 Zkopírujte úplnou **adresu URL pro vyvolání** zobrazenou ve výstupu příkazu publikovat do adresního řádku prohlížeče a přidejte parametr dotazu `&name=Azure`. V prohlížeči by se měl zobrazit podobný výstup jako při spuštění funkce místně.
 

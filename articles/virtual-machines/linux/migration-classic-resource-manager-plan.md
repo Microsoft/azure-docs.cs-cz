@@ -3,8 +3,8 @@ title: Plánování migrace z modelu Classic na Azure Resource Manager
 description: Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
 services: virtual-machines-linux
 documentationcenter: ''
-author: singhkays
-manager: gwallace
+author: tanmaygore
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 78492a2c-2694-4023-a7b8-c97d3708dcb7
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 04/01/2017
-ms.author: kasing
-ms.openlocfilehash: 460db5a3c836ecb35fd6c5943c88d32516d91674
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/06/2020
+ms.author: tagore
+ms.openlocfilehash: 91af575e0326d773143fe15711694f939144974a
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969863"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122002"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
 I když Azure Resource Manager nabízí spoustu úžasnéch funkcí, je důležité naplánovat cestu k migraci, abyste měli jistotu, že bude docházet k plynulé práci. Doba útraty při plánování zajistí, že při provádění aktivit migrace dojde k problémům.
@@ -31,7 +31,7 @@ Existují čtyři obecné fáze cesty migrace:
 
 ![Fáze migrace](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plánujte
+## <a name="plan"></a>Plánování
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technické požadavky a kompromisy
 
@@ -114,11 +114,11 @@ Následující byly problémy zjištěné v řadě větších migrací. Nejedná
     >
 
   - Síťová rozhraní
-  - Nástroje pro vyrovnávání zatížení
+  - Vyrovnávání zátěže
   - Veřejné IP adresy
   - Statické veřejné IP adresy
   - Jádra
-  - Skupiny zabezpečení sítě
+  - Network Security Groups (Skupiny zabezpečení sítě)
   - Směrovací tabulky
 
     Aktuální kvóty Azure Resource Manager můžete kontrolovat pomocí následujících příkazů s nejnovější verzí Azure CLI.

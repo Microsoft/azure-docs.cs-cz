@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 771257df12ee29c2bc8d32672c8e8b7d039a96ba
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: cbcd3d27da3aff66e1dc6758af8a573666c0bbbe
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120805"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121392"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Chraňte rozhraní API pomocí OAuth 2,0 s Azure Active Directory a API Management
 
@@ -47,7 +47,7 @@ Tady je rychlý přehled kroků:
 
 Aby bylo možné chránit rozhraní API pomocí Azure AD, prvním krokem je registrace aplikace v Azure AD, která představuje rozhraní API. 
 
-1. Pro registraci aplikace použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **registrace rozhraní API**.
+1. Pro registraci aplikace použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **Registrace aplikací**.
 
 1. Vyberte **Nová registrace**. 
 
@@ -161,7 +161,7 @@ Dalším krokem je povolení autorizace uživatele OAuth 2,0 pro vaše rozhraní
 
 2. Vyberte rozhraní API, které chcete chránit. Můžete například použít `Echo API`.
 
-3. Přejděte na **nastavení**.
+3. Přejít na **Nastavení**.
 
 4. V části **zabezpečení**zvolte **OAuth 2,0**a vyberte server OAuth 2,0, který jste nakonfigurovali dříve. 
 

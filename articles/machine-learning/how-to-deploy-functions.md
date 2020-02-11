@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 321f985bd375e6fa4337e060bb15d318ea306ab4
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024910"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77116736"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Nasazení modelu Machine Learning do Azure Functions (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -30,7 +30,7 @@ Pomocí Azure Machine Learning můžete vytvářet image Docker z školicích mo
 ## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v článku o [Vytvoření pracovního prostoru](how-to-manage-workspace.md) .
-* [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * Vyškolený model strojového učení zaregistrovaný ve vašem pracovním prostoru. Pokud model nemáte, použijte [kurz k klasifikaci imagí: výukový model](tutorial-train-models-with-aml.md) pro výuku a registraci k jednomu.
 
     > [!IMPORTANT]
@@ -58,7 +58,7 @@ Před nasazením musíte definovat, co je potřeba ke spuštění modelu jako we
 
 * **Závislosti**, například pomocné skripty nebo balíčky python/conda potřebné ke spuštění skriptu vstupu nebo modelu
 
-Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Odvozená konfigurace odkazuje na vstupní skript a další závislosti.
+Tyto entity jsou zapouzdřeny do __Konfigurace odvození__. Konfigurace odvození odkazuje na skript vstupu a další závislosti.
 
 > [!IMPORTANT]
 > Při vytváření odvozených konfigurací pro použití s Azure Functions je nutné použít objekt [prostředí](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py) . Počítejte s tím, že pokud definujete vlastní prostředí, musíte přidat AzureML-Defaults s Version > = 1.0.45 jako závislost v PIP. Tento balíček obsahuje funkce potřebné pro hostování modelu jako webové služby. Následující příklad ukazuje vytvoření objektu prostředí a jeho použití s odvozenou konfigurací:
@@ -118,7 +118,7 @@ Při `show_output=True`se zobrazí výstup procesu Docker buildu. Po dokončení
 
 ## <a name="deploy-image-as-a-web-app"></a>Nasazení image jako webové aplikace
 
-1. K získání přihlašovacích údajů pro Azure Container Registry, které obsahují obrázek, použijte následující příkaz. Nahraďte `<acrinstance>` hodnotou vrácenou dříve z `package.location`: 
+1. K získání přihlašovacích údajů pro Azure Container Registry, které obsahují obrázek, použijte následující příkaz. Nahraďte `<myacr>` hodnotou vrácenou dříve z `package.location`: 
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -177,7 +177,7 @@ Při `show_output=True`se zobrazí výstup procesu Docker buildu. Po dokončení
 1. Vytvořte účet úložiště, který se použije pro úložiště triggeru objektu blob, a získejte připojovací řetězec. Nahraďte `<triggerStorage>` názvem, který chcete použít.
 
     ```azurecli-interactive
-    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    az storage account create --name <triggerStorage> --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
     az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
@@ -252,5 +252,5 @@ V tuto chvíli začne aplikace Function App načítat obrázek.
 * Naučte se konfigurovat aplikaci Functions v dokumentaci k [funkcím](/azure/azure-functions/functions-create-function-linux-custom-image) .
 * Další informace o službě BLOB Storage spouští [vazby úložiště objektů BLOB v Azure](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob).
 * [Nasaďte model do Azure App Service](how-to-deploy-app-service.md).
-* [Používání modelu ML nasadit jako webovou službu](how-to-consume-web-service.md)
+* [Využití modelu ML nasazeného jako webové služby](how-to-consume-web-service.md)
 * [Referenční materiály k rozhraní API](https://docs.microsoft.com/python/api/azureml-contrib-functions/azureml.contrib.functions?view=azure-ml-py)

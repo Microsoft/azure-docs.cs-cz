@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 6cec7c813b0723ac770da6ebd04f4d2cf26a1409
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
+ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840583"
+ms.lasthandoff: 02/10/2020
+ms.locfileid: "77114418"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -59,60 +59,60 @@ Analýza provozu prověřuje protokoly nezpracovaných toků NSG Flow a zachycuj
 
 Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
 
-* Střední Kanada
-* Středozápadní USA
+* Kanada – střed
+* Střed USA – západ
 * Východní USA
-* Východ USA 2
-* Středoseverní USA
-* Středojižní USA
-* Střední USA
+* Východní USA 2
+* Střed USA – sever
+* Střed USA – jih
+* Střed USA
 * Západní USA
 * Západní USA 2
 * Francie – střed
 * Západní Evropa
 * Severní Evropa
 * Brazílie – jih
-* Velká Británie – západ
-* Spojené království – jih
+* Spojené království – západ
+* Velká Británie – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
 * Východní Asie
 * Jihovýchodní Asie
-* Korea – střed
-* Střední Indie
-* Jižní Indie
+* Jižní Korea – střed
+* Střed Indie
+* Indie – jih
 * Japonsko – východ 
 * Japonsko – západ
-* US Gov – Virginie
+* USA (Gov) – Virginia
 * Čína – východ 2
 
 ## <a name="supported-regions-log-analytics-workspaces"></a>Podporované oblasti: Log Analytics pracovní prostory
 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
-* Střední Kanada
-* Středozápadní USA
+* Kanada – střed
+* Střed USA – západ
 * Východní USA
-* Východ USA 2
-* Středoseverní USA
-* Středojižní USA
-* Střední USA
+* Východní USA 2
+* Střed USA – sever
+* Střed USA – jih
+* Střed USA
 * Západní USA
 * Západní USA 2
-* Střední USA
+* Střed USA
 * Francie – střed
 * Západní Evropa
 * Severní Evropa
 * Brazílie – jih
-* Velká Británie – západ
-* Spojené království – jih
+* Spojené království – západ
+* Velká Británie – jih
 * Austrálie – východ
 * Austrálie – jihovýchod
 * Východní Asie
 * Jihovýchodní Asie
-* Korea – střed
-* Střední Indie
+* Jižní Korea – střed
+* Střed Indie
 * Japonsko – východ
-* US Gov – Virginie
+* USA (Gov) – Virginia
 * Čína – východ 2
 
 ## <a name="prerequisites"></a>Požadavky
@@ -151,7 +151,7 @@ K analýze provozu potřebujete existující sledovací proces sítě nebo [Povo
 
 Než povolíte protokolování toku NSG, musíte mít skupinu zabezpečení sítě, která bude protokolovat toky pro. Pokud nemáte skupinu zabezpečení sítě, přečtěte si téma [Vytvoření skupiny zabezpečení sítě](../virtual-network/manage-network-security-group.md#create-a-network-security-group) a vytvořte ji.
 
-Na levé straně Azure Portal vyberte **monitor**, potom **sledovací proces sítě**a pak vyberte **protokoly toku NSG**. Vyberte skupinu zabezpečení sítě, pro kterou chcete povolit protokol NSG flow, jak je znázorněno na následujícím obrázku:
+V Azure Portal přejít na **sledovací proces sítě**a pak vyberte **protokoly toku NSG**. Vyberte skupinu zabezpečení sítě, pro kterou chcete povolit protokol NSG flow, jak je znázorněno na následujícím obrázku:
 
 ![Výběr skupin zabezpečení sítě, který vyžaduje povolení protokolu toku NSG](./media/traffic-analytics/selection-of-nsgs-that-require-enablement-of-nsg-flow-logging.png)
 
@@ -194,7 +194,7 @@ Vyberte následující možnosti, jak je znázorněno na obrázku:
 > [!NOTE]
 >Pracovní prostor Log Analytics hostující řešení pro analýzu provozu a skupin zabezpečení sítě nemusí být ve stejné oblasti. Například můžete mít analýzu provozu v pracovním prostoru v oblasti Západní Evropa, zatímco jste si možná skupin zabezpečení sítěi Východní USA a Západní USA. Ve stejném pracovním prostoru se dá nakonfigurovat víc skupin zabezpečení sítě.
 
-8. Vyberte **Uložit**.
+8. Vyberte **Save** (Uložit).
 
     ![Výběr účtu úložiště, Log Analytics pracovního prostoru a povolení Analýza provozu](./media/traffic-analytics/ta-customprocessinginterval.png)
 

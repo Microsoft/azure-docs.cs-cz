@@ -3,19 +3,19 @@ title: 'Rychlý Start: Custom hlas Assistant, Java (Android) – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: Naučte se vytvářet aplikace hlasového asistenta v jazyce Java v Androidu pomocí sady Speech SDK
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 12/09/2019
-ms.author: travisw
-ms.openlocfilehash: 70031513d6f120e539e80d6befad4bf9320fb9c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 02/10/2020
+ms.author: dapine
+ms.openlocfilehash: d4f84bad6139210dcff3d3f3726d8b7a17d92a5b
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975954"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77119750"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Rychlý Start: vytvoření hlasového asistenta v jazyce Java v Androidu pomocí sady Speech SDK
 
@@ -28,7 +28,7 @@ Tato aplikace je sestavená pomocí balíčku sady Speech SDK Maven a Android St
 > [!NOTE]
 > Informace o sadě Speech Devices SDK a zařízení Roobo najdete v sadě [Speech Devices SDK](speech-devices-sdk.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Klíč předplatného Azure pro službu Speech Service. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com).
 - Dřív vytvořený robot nakonfigurovaný s [kanálem Direct line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
@@ -283,7 +283,7 @@ Jakmile se aplikace a její činnost spustí, klikněte na tlačítko a začnět
 > [!div class="nextstepaction"]
 > [Vytvoření a nasazení základního chatbota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 - [O hlasových asistentcích](voice-assistants.md)
 - [Získejte zdarma klíč předplatného služby Speech](get-started.md)
 - [Vlastní klíčová slova](speech-devices-sdk-create-kws.md)

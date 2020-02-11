@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 12/09/2019
+ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0075862e198ce67cc7367efe94d624ad18e6eb3b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b41b68725b6747cbada13a9acc321724b3f89d67
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984163"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77118577"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Kurz: sestavení aplikace v baňce pomocí Azure Cognitive Services
 
@@ -68,7 +68,7 @@ Pro podrobné pokyny k vytváření prostředků použijte [v Azure Portal vytvo
 > [!IMPORTANT]
 > Pro tento kurz prosím vytvořte svoje prostředky v oblasti Západní USA. Pokud používáte jinou oblast, budete muset v každém ze svých souborů Pythonu upravit základní adresu URL.
 
-## <a name="set-up-your-dev-environment"></a>Nastavení vývojového prostředí
+## <a name="set-up-your-dev-environment"></a>Vytvoření a nastavení vývojového prostředí
 
 Před vytvořením webové aplikace v baňce budete muset vytvořit pracovní adresář pro váš projekt a nainstalovat několik balíčků Pythonu.
 
@@ -103,7 +103,7 @@ Pojďme vytvořit virtuální prostředí pro naši aplikaci v baňce pomocí `v
 
 2. Příkazy pro aktivaci virtuálního prostředí se budou lišit v závislosti na vaší platformě nebo prostředí:   
 
-   | Platforma | Shell | Příkaz |
+   | Platforma | Prostředí | Příkaz |
    |----------|-------|---------|
    | macOS/Linux | bash/zsh | `source venv/bin/activate` |
    | Windows | bash | `source venv/Scripts/activate` |
@@ -138,7 +138,7 @@ Dál musíme nainstalovat baňce. Baňka zpracovává směrování pro naši web
    ```
    pip install Flask
    ```
-   Pojďme se ujistit, že se nainstalovala baňka. Spuštěním příkazu
+   Pojďme se ujistit, že se nainstalovala baňka. Spustit:
    ```
    flask --version
    ```
@@ -146,7 +146,7 @@ Dál musíme nainstalovat baňce. Baňka zpracovává směrování pro naši web
 
 2. Pokud chcete spustit aplikaci v baňce, můžete použít příkaz baňky nebo přepínač-m v Pythonu s baňkou. Než to budete moct udělat, musíte říct terminálu, se kterým má aplikace spolupracovat, a to tak, že exportuje proměnnou prostředí `FLASK_APP`:
 
-   **macOS/Linux**:
+   **MacOS/Linux**:
    ```
    export FLASK_APP=app.py
    ```
@@ -182,7 +182,7 @@ Tento kód zajišťuje, že když uživatel přejde na `http://your-web-app.com/
 
 I když tyto ukázky ilustrují, jak vykreslovat stránky HTML pro uživatele, trasy lze také použít k volání rozhraní API při stisknutí tlačítka nebo provedení libovolného počtu akcí, aniž byste museli opustit domovskou stránku. Tato akce se zobrazí v akci, když vytvoříte trasy pro syntézu překladu, mínění a řeči.
 
-### <a name="get-started"></a>Začít
+### <a name="get-started"></a>Začínáme
 
 1. Otevřete projekt v integrovaném vývojovém prostředí a pak vytvořte soubor s názvem `app.py` v kořenovém adresáři pracovního adresáře. Potom zkopírujte tento kód do `app.py` a uložte:
 
@@ -474,7 +474,7 @@ Stisknutím **kombinace kláves Ctrl + c** aplikaci ukončete a potom přejděte
 
 ## <a name="analyze-sentiment"></a>Analýza mínění
 
-[Rozhraní API pro analýzu textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) lze použít k provedení analýzy mínění, extrakci klíčových frází z textu nebo rozpoznání zdrojového jazyka. V této aplikaci použijeme analýzu mínění k určení, jestli je poskytnutý text kladný, neutrální nebo záporný. Rozhraní API vrátí číselné hodnocení v rozsahu 0 až 1. Hodnocení blížící se 1 značí pozitivní zabarvení a hodnocení blížící se 0 značí negativní zabarvení.
+[Rozhraní API pro analýzu textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) lze použít k provedení analýzy mínění, extrakci klíčových frází z textu nebo rozpoznání zdrojového jazyka. V této aplikaci použijeme analýzu mínění k určení, jestli je poskytnutý text kladný, neutrální nebo záporný. Rozhraní API vrací číselné skóre mezi 0 a 1. Skóre blížící se 1 značí pozitivní mínění a skóre blížící se 0 značí negativní mínění.
 
 V této části se chystáte několik věcí:
 

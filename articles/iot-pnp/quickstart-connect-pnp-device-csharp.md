@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b86f58a1b6b9e3a952861dbe7dbeef4dfe06a644
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 90d39635ac6302f816f39ca19cc00a39cfbbf850
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964827"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121011"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub-c"></a>Rychlý Start: připojení ukázkové aplikace IoT technologie Plug and Play ve verzi Preview do IoT HubC#()
 
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit ukázkovou aplikaci IoT techn
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto rychlého startu je potřeba na svém vývojovém počítači nainstalovat .NET Core 2,2. Tuto verzi .NET Core SDK můžete stáhnout pro více platforem od [stažení .NET Core 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2).
+K dokončení tohoto rychlého startu je potřeba na svém vývojovém počítači nainstalovat .NET Core 3,0. Tuto verzi .NET Core SDK můžete stáhnout pro více platforem od [stažení .NET Core 3,0](https://dotnet.microsoft.com/download/dotnet-core/3.0).
 
 Verzi rozhraní .NET, která je na vašem vývojovém počítači, můžete ověřit spuštěním následujícího příkazu v místním okně terminálu: 
 
@@ -72,7 +72,7 @@ Pomocí klonovaného ukázkového kódu sestavíte aplikaci, která simuluje za�
 1. Spusťte ukázkovou aplikaci pro simulaci technologie Plug and Play zařízení IoT, které odesílá telemetrii do služby IoT Hub. Ve stejném okně terminálu Sestavte potřebné balíčky a spusťte ukázkovou aplikaci pomocí následujícího příkazu:
 
     ```cmd\sh
-        dotnet run
+    dotnet run --framework=netcoreapp3.0
     ```
 
 Zobrazí se zpráva oznamující, že se zařízení úspěšně zaregistrovalo a čeká na aktualizace z cloudu. To znamená, že zařízení je nyní připraveno přijímat příkazy a aktualizace vlastností a zahájilo posílání dat telemetrie do centra. Ponechte ukázku spuštěnou při dokončení dalších kroků.
