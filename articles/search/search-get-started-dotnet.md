@@ -3,18 +3,18 @@ title: 'Rychlý Start: vytvoření indexu vyhledávání v C# používání .NET
 titleSuffix: Azure Cognitive Search
 description: V tomto C# rychlém startu se dozvíte, jak vytvořit index, načíst data a spustit dotazy pomocí sady Azure kognitivní hledání .NET SDK.
 manager: nitinme
-author: HeidiSteen
-ms.author: heidist
+author: tchristiani
+ms.author: terrychr
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: 1d8eaea4a6eded769542921851fb0c74a3c9d58b
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/10/2020
+ms.openlocfilehash: e9f43f729fc9e08054cd160b82945ee4bcd5821c
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406761"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121660"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání C# v rámci používání sady .NET SDK
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Pro tento projekt použijte verzi 9 `Microsoft.Azure.Search` balíčku NuGet a n
 
 1. V **nabídce nástroje** > **Správce balíčků NuGet**vyberte **Spravovat balíčky NuGet pro řešení...** . 
 
-1. Klikněte na **Browse** (Procházet).
+1. Klikněte na **Procházet**.
 
 1. Vyhledejte `Microsoft.Azure.Search` a vyberte verze 9.0.1 nebo novější.
 

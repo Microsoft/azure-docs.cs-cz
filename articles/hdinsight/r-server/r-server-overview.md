@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/12/2019
-ms.openlocfilehash: b04cc3a5e3a5680f7a16e890c39a4a7d83002bd7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 02/10/2020
+ms.openlocfilehash: a77771880da962298f6e80782e5f3e251f5f4641
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74321661"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77122370"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Co je služba ML Services ve službě Azure HDInsight
 
@@ -35,7 +35,7 @@ Služby ML ve službě HDInsight přináší následující výhody:
 
 ### <a name="ai-innovation-from-microsoft-and-open-source"></a>Inovace AI z Microsoftu a open source
 
-  Služba ML Services zahrnuje vysoce škálovatelnou, distribuovanou sadu algoritmů, jako jsou [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)a [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) , které můžou pracovat na velikostech dat větších než velikost fyzické paměti a spouštět na nejrůznějších platformách. distribuovaný způsob. Přečtěte si další informace o shromažďování vlastních [balíčků R](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) a [balíčků Pythonu](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) společnosti Microsoft, které jsou součástí produktu.
+  Služba ML Services zahrnuje vysoce škálovatelnou, distribuovanou sadu algoritmů, jako jsou [RevoscaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), [revoscalepy](https://docs.microsoft.com/machine-learning-server/python-reference/revoscalepy/revoscalepy-package)a [microsoftML](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/microsoftml-package) , které mohou pracovat na velikosti dat větší než velikost fyzické paměti, a provozovat širokou škálu platforem distribuovaným způsobem. Přečtěte si další informace o shromažďování vlastních [balíčků R](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) a [balíčků Pythonu](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) společnosti Microsoft, které jsou součástí produktu.
   
   Služby ML přemostění těchto inovací a příspěvků od společnosti Microsoft pocházejících z open source komunity (R, Python a AI) jsou zcela na jedné platformě na podnikové úrovni. Libovolný otevřený zdrojový balíček R nebo Python může fungovat vedle všech vlastnických inovací od Microsoftu.
 
@@ -50,6 +50,9 @@ Služby ML ve službě HDInsight přináší následující výhody:
 
   Individuals embarking on the journey of making their applications intelligent or simply wanting to learn the new world of AI and machine learning, need the right resources to help them get started. In addition to this documentation, Microsoft provides several learning resources and has engaged several training partners to help you ramp up and become productive quickly.
 --->
+
+> [!NOTE]  
+> Typ clusteru služby ML v HDInsight se podporuje jenom v HDInsight 3,6. Pro HDInsight 3,6 se naplánuje vyřazení do 31. prosince 2020.
 
 ## <a name="key-features-of-ml-services-on-hdinsight"></a>Klíčové funkce služby ML v HDInsight
 

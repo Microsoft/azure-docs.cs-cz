@@ -3,12 +3,12 @@ title: Zálohování souborů Azure pomocí PowerShellu
 description: V tomto článku se dozvíte, jak zálohovat soubory Azure pomocí služby Azure Backup a PowerShellu.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: a80589fb45937949b3612e12139ab1615bc1620d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: f85451e0da6458de34aea936836b46781f4c4a21
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086938"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77120519"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>Zálohování souborů Azure pomocí PowerShellu
 
@@ -250,9 +250,9 @@ testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 P
 
 ## <a name="important-notice---backup-item-identification-for-afs-backups"></a>Důležité upozornění – identifikace zálohových položek pro zálohy AFS
 
-Tato část popisuje změny v načtení zálohovaných položek pro zálohy AFS z verze Preview na GA.
+Tato část popisuje důležitou změnu v zálohování AFS v článku Příprava pro GA.
 
-Když zapnete zálohování pro AFS, zadá uživatel popisný název sdílené složky zákazníka jako název entity a vytvoří se zálohovaná položka. Název zálohované položky je jedinečný identifikátor vytvořený službou Azure Backup. Identifikátor obvykle zahrnuje popisný název uživatele. Ale došlo ke změně, jak služby Azure interně identifikují sdílenou složku Azure. To znamená, že jedinečný název zálohované položky pro zálohování AFS bude identifikátorem GUID a nebude mít žádný vztah k popisnému názvu zákazníka. Chcete-li znát jedinečný název každé položky, stačí spustit příkaz ```Get-AzRecoveryServicesBackupItem``` s příslušnými filtry pro backupManagementType a WorkloadType pro získání všech relevantních položek a pak sledovat pole název v vráceném objektu nebo odpovědi PS. Vždycky se doporučuje vypisovat položky a potom v odpovědi načíst jejich jedinečný název z pole název. Tuto hodnotu použijte k filtrování položek s parametrem Name. Jinak pomocí parametru FriendlyName Načtěte položku s popisným názvem nebo identifikátorem zákazníka.
+Když zapnete zálohování pro AFS, zadá uživatel popisný název sdílené složky zákazníka jako název entity a vytvoří se zálohovaná položka. Název zálohované položky je jedinečný identifikátor vytvořený službou Azure Backup. Identifikátor obvykle zahrnuje popisný název uživatele. Pokud ale chcete zpracovat důležitý scénář obnovitelného odstranění, kde se dá odstranit sdílená složka, a můžete vytvořit jinou sdílenou složku se stejným názvem, jedinečná identita sdílené složky Azure teď bude ID místo popisného názvu zákazníka. Aby bylo možné znát jedinečnou identitu a název každé položky, stačí spustit příkaz ```Get-AzRecoveryServicesBackupItem``` s příslušnými filtry pro backupManagementType a WorkloadType pro získání všech relevantních položek a pak sledovat pole název v vráceném objektu nebo odpovědi PS. Vždycky se doporučuje vypisovat položky a potom v odpovědi načíst jejich jedinečný název z pole název. Tuto hodnotu použijte k filtrování položek s parametrem Name. Jinak pomocí parametru FriendlyName Načtěte položku s popisným názvem nebo identifikátorem zákazníka.
 
 > [!WARNING]
 > Ujistěte se, že je verze PS upgradována na minimální verzi příkazu AZ. RecoveryServices 2.6.0 pro zálohy na AFS. V této verzi je filtr ' friendlyName ' k dispozici pro ```Get-AzRecoveryServicesBackupItem``` příkaz. Předejte název sdílené složky Azure do parametru friendlyName. Pokud předáte název sdílené složky Azure do parametru název, tato verze vyvolá upozornění, aby tento popisný název předával do parametru popisného názvu. Pokud nenainstalujete tuto minimální verzi, může dojít k selhání existujících skriptů. Nainstalujte minimální verzi PS pomocí následujícího příkazu.

@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení VMware v Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1b3e81653ba934b209755391f08e60ef603e645a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 19ed506228bac425ad05edee1586740e6c33f69e
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086776"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77121339"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -42,7 +42,7 @@ Kromě zjišťování počítačů Azure Migrate: posouzení serveru může zji�
 **Operační systém počítače** | Všechny verze systému Windows a Linux.
 **přihlašovací údaje pro vCenter** | Účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro Virtual Machines > operace hosta.
 **Přihlašovací údaje virtuálního počítače** | Aktuálně podporuje použití jednoho pověření pro všechny servery se systémem Windows a jedno přihlašovací údaje pro všechny servery se systémem Linux.<br/><br/> Vytvoříte uživatelský účet hosta pro virtuální počítače s Windows a běžný/normální uživatelský účet (bez přístupu sudo) pro všechny virtuální počítače se systémem Linux.
-**Nástroje VMware** | Na virtuálních počítačích, které chcete zjistit, musí být nainstalované a spuštěné nástroje VMware.
+**Nástroje VMware** | Na virtuálních počítačích, které chcete zjistit, musí být nainstalované a spuštěné nástroje VMware. <br/> Pokud je vaše verze nástrojů VMware mezi 9,10 – 10.2.0, ujistěte se, že jste ji upgradovali na rámec 10.2.0.
 **Přístup k portu** | Na hostitelích ESXi, na kterých běží virtuální počítače, které chcete zjišťovat, musí být zařízení Azure Migrate schopné připojit se k portu TCP 443.
 **Omezení** | Pro zjišťování aplikací můžete zjistit až 10000 na každé zařízení. 
 
