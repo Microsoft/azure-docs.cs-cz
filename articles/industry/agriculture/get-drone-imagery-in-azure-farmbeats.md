@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a64627028ea4ecc732924d0c9fca196204f7951d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e452cd548738e5f211899d3a6a676f883d800ce
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482553"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132048"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>Získání pomocí dronů snímků z partnerů pomocí dronů
 
@@ -38,7 +38,7 @@ Pokud chcete povolit integraci s FarmBeats, poskytněte poskytovateli zařízen�
 Postupujte následovně.
 
 1. Stáhněte si tento [skript](https://aka.ms/farmbeatspartnerscript)a extrahujte ho na místní disk. V souboru ZIP jsou dva soubory.
-2. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) a otevřete Azure Cloud Shell. Tato možnost je k dispozici na panelu nástrojů v pravém horním rohu portálu.
+2. Přihlaste se k [Azure Portal](https://portal.azure.com/) a otevřete Azure Cloud Shell. Tato možnost je k dispozici na panelu nástrojů v pravém horním rohu portálu.
 
     ![Otevřít Azure Cloud Shell na pravém horním panelu portálu](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
@@ -48,7 +48,7 @@ Postupujte následovně.
 
 4. Nahrajte dva soubory, které jste stáhli z kroku 1 v instanci Cloud Shell.
 
-    ![Nahrávání souborů](./media/get-drone-imagery-from-drone-partner/power-shell-two-1.png)
+    ![Nahrání souborů](./media/get-drone-imagery-from-drone-partner/power-shell-two-1.png)
 
 5. Přejít do adresáře, kam se nahrály soubory. Ve výchozím nastavení se odešlou do domovského adresáře pod uživatelským jménem.
 6. Spusťte tento skript:
@@ -91,4 +91,4 @@ Soubory a obrázky odeslané poskytovatelem pomocí dronů se zobrazí v oddílu
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se používat rozhraní FarmBeats DataHub [API](references-for-azure-farmbeats.md#rest-api) k získání pomocí dronů snímků.
+Naučte se používat rozhraní FarmBeats DataHub [API](rest-api-in-azure-farmbeats.md) k získání pomocí dronů snímků.

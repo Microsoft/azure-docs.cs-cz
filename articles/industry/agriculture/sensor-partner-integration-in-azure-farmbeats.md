@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ef84c5f1d1c3f3b9e7cd76d7fab327426ea6e313
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530642"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132832"
 ---
 # <a name="sensor-partner-integration"></a>Integrace partnerských řešení pro senzory
 
@@ -132,16 +132,16 @@ FarmBeats data hub má následující rozhraní API, která partnerům zařízen
   Výrobce  | Název výrobce |
   ProductCode  | Kód produktu nebo číslo modelu zařízení Například EnviroMonitor # 6800. |
   Porty  | Název portu a typ, který je digitální nebo analogový.  |
-  Name (Název)  | Název, který identifikuje prostředek. Například název modelu nebo název produktu. |
+  Název  | Název, který identifikuje prostředek. Například název modelu nebo název produktu. |
   Popis  | Poskytněte smysluplný popis modelu. |
   Vlastnosti  | Další vlastnosti od výrobce. |
-  **zařízení** |  |
+  **Zařízení** |  |
   DeviceModelId  |ID přidruženého modelu zařízení |
   HardwareId   |Jedinečné ID zařízení, například adresa MAC.  |
   ReportingInterval |Interval generování sestav v sekundách. |
   Umístění    |Zeměpisná šířka zařízení (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech). |
   ParentDeviceId | ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například pokud je uzel připojen k bráně, uzel má jako bránu parentDeviceID. |
-  Name (Název)  | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera zařízení. Pokud je název zařízení definovaný uživatelem na straně partnera zařízení, stejný uživatelsky definovaný název by měl být šířen do FarmBeats.  |
+  Název  | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera zařízení. Pokud je název zařízení definovaný uživatelem na straně partnera zařízení, stejný uživatelsky definovaný název by měl být šířen do FarmBeats.  |
   Popis  | Zadejte smysluplný popis.  |
   Vlastnosti  |Další vlastnosti od výrobce.  |
   **SensorModel** |  |
@@ -155,7 +155,7 @@ FarmBeats data hub má následující rozhraní API, která partnerům zařízen
   SensorMeasures > AggregationType  | Buď None, Average, Max, minima nebo StandardDeviation.
   Hloubka > SensorMeasures  | Hloubka senzoru v centimetrech Například měření vlhkosti 10 cm pod vozovkou.
   Popis > SensorMeasures  | Poskytněte smysluplný popis měření.
-  Name (Název)  | Název, který identifikuje prostředek. Například název modelu nebo název produktu.
+  Název  | Název, který identifikuje prostředek. Například název modelu nebo název produktu.
   Popis  | Poskytněte smysluplný popis modelu.
   Vlastnosti  | Další vlastnosti od výrobce.
   **Elektrické**  |  |
@@ -164,7 +164,7 @@ FarmBeats data hub má následující rozhraní API, která partnerům zařízen
   Umístění  | Zeměpisná šířka (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).
   Název > portu  |Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení.
   DeviceId  | ID zařízení, ke kterému je senzor připojen.
-  Name (Název)  | Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.
+  Název  | Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.
   Popis  | Zadejte smysluplný popis.
   Vlastnosti  | Další vlastnosti od výrobce.
 
@@ -345,4 +345,4 @@ Výrobci zařízení nebo partneři můžou pomocí následujícího kontrolníh
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o REST API najdete v tématu [REST API](references-for-azure-farmbeats.md#rest-api).
+Další informace o REST API najdete v tématu [REST API](rest-api-in-azure-farmbeats.md).

@@ -1,5 +1,5 @@
 ---
-title: Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure Portal
+title: Přidání nebo odebrání přiřazení rolí s RBAC a Azure Portal
 description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí řízení přístupu na základě role (RBAC) v Azure a Azure Portal.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4003e11120c13624379cf7dad9334e896cd3a7a8
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e2458b07602bca3b6f12b2f486b509c11d705461
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774737"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138350"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure Portal
 
@@ -27,7 +27,7 @@ ms.locfileid: "76774737"
 
 Pokud potřebujete přiřadit role správce v Azure Active Directory, přečtěte si téma [zobrazení a přiřazení rolí správce v Azure Active Directory](../active-directory/users-groups-roles/directory-manage-roles-portal.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5b039221f3a25bddf7953cbe8d517275f76d6f37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479056"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136346"
 ---
 # <a name="display-controls"></a>Ovládací prvky zobrazení
 
@@ -30,9 +30,9 @@ Následující obrázek znázorňuje přihlašovací stránku s vlastním uplatn
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
- V části [metadata](self-asserted-technical-profile.md#metadata) [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md)musí mít odkazované [ContentDefinition](contentdefinitions.md) `DataUri` nastavenou na stránku verze kontraktu 2.0.0 nebo vyšší. Příklad:
+ V části [metadata](self-asserted-technical-profile.md#metadata) [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md)musí mít odkazované [ContentDefinition](contentdefinitions.md) `DataUri` nastavenou na stránku verze kontraktu 2.0.0 nebo vyšší. Například:
 
 ```XML
 <ContentDefinition Id="api.selfasserted">
@@ -53,7 +53,7 @@ Element **zobrazitelné ovládací** prvky obsahuje následující atributy:
 
 Element **Zobrazit ovládací** prvek obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | InputClaims | 0:1 | **InputClaims** slouží k předvyplnění hodnoty deklarací, které se mají shromažďovat od uživatele. |
 | DisplayClaims | 0:1 | **DisplayClaims** slouží k reprezentaci deklarací, které se mají shromažďovat od uživatele. |
@@ -80,7 +80,7 @@ Každý typ ovládacího prvku zobrazení vyžaduje jinou sadu deklarací zobraz
 
 Podobně jako u **deklarací zobrazení** definovaných v [technickém profilu s vlastním uplatněním](self-asserted-technical-profile.md#display-claims)jsou deklarace zobrazení reprezentovány deklaracemi, které se mají shromáždit uživateli v rámci ovládacího prvku zobrazení. Element **ClaimType** , na který je odkazováno, musí specifikovat element **UserInputType** pro uživatelský typ vstupu, který podporuje Azure AD B2C, například `TextBox` nebo `DropdownSingleSelect`. Pokud **Akce**vyžaduje zobrazení hodnoty deklarace identity, nastavte **požadovaný** atribut na `true`, aby uživatel vynutil zadání hodnoty pro danou konkrétní deklaraci zobrazení.
 
-Pro určité typy ovládacího prvku zobrazení jsou vyžadovány určité deklarace zobrazení. Například **VerificationCode** je nutné pro zobrazení ovládacího prvku typu **VerificationControl**. Pomocí atributu **ControlClaimType** určete, který DisplayClaim je určený pro požadovanou deklaraci identity. Příklad:
+Pro určité typy ovládacího prvku zobrazení jsou vyžadovány určité deklarace zobrazení. Například **VerificationCode** je nutné pro zobrazení ovládacího prvku typu **VerificationControl**. Pomocí atributu **ControlClaimType** určete, který DisplayClaim je určený pro požadovanou deklaraci identity. Například:
 
 ```XML
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
@@ -90,7 +90,7 @@ Pro určité typy ovládacího prvku zobrazení jsou vyžadovány určité dekla
 
 **Výstupní deklarace** ovládacího prvku zobrazení nejsou odesílány dalšímu kroku orchestrace. Ukládají se dočasně jenom pro aktuální relaci ovládacího prvku zobrazení. Tyto dočasné deklarace identity lze sdílet mezi různými akcemi stejného ovládacího prvku zobrazení.
 
-Chcete-li zobrazit výstup deklarací identity na další krok orchestrace, použijte **OutputClaims** vlastního technického profilu s vlastním uplatněním, který odkazuje na tento ovládací prvek zobrazení.
+Chcete-li zobrazit výstupní deklarace identity k dalšímu kroku orchestrace, použijte **OutputClaims** vlastního technického profilu s vlastním uplatněním, který odkazuje na tento ovládací prvek zobrazení.
 
 ### <a name="display-control-actions"></a>Akce ovládacího prvku zobrazení
 
@@ -129,7 +129,7 @@ Následující příklad odešle kód v e-mailu nebo SMS na základě výběru d
 
 Na ovládací prvky zobrazení se odkazuje ve [zobrazení deklarací](self-asserted-technical-profile.md#display-claims) [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md).
 
-Příklad:
+Například:
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">

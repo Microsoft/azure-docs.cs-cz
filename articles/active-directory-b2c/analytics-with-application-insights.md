@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/12/2018
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 646e3e0d68846013d656627a4ef6ef1fb1e11e09
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 002221bc69659a3be6fee950319909c9fc63ea9c
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846767"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136329"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Sledovat chování uživatele v Azure Active Directory B2C pomocí Application Insights
 
@@ -37,7 +37,7 @@ Technický profil používá tohoto poskytovatele k definování události z Azu
 
 Application Insights může sjednotit události pomocí ID korelace pro záznam uživatelské relace. Application Insights zpřístupňuje událost a relaci během několika sekund a prezentuje mnoho nástrojů pro vizualizaci, export a analýzu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md). V tomto článku se předpokládá, že používáte Startovní sadu Custom Policy. Úvodní sada ale není povinná.
 
@@ -45,14 +45,14 @@ Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get
 
 Pokud používáte Application Insights s Azure AD B2C, stačí vytvořit prostředek a získat klíč instrumentace.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné Azure, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a vyberete adresář, který obsahuje vaše předplatné. Tento tenant není vaším klientem Azure AD B2C.
 3. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** a pak vyhledejte a vyberte **Application Insights**.
-4. Klikněte na **Vytvořit**.
+4. Klikněte na možnost **Vytvořit**.
 5. Zadejte **název** prostředku.
 6. Jako **Typ aplikace**vyberte **ASP.NET webová aplikace**.
 7. V případě **skupiny prostředků**vyberte existující skupinu nebo zadejte název nové skupiny.
-8. Klikněte na **Vytvořit**.
+8. Klikněte na možnost **Vytvořit**.
 4. Po vytvoření prostředku Application Insights otevřete ho, rozbalte **základy**a zkopírujte klíč instrumentace.
 
 ![Přehled Application Insights a klíč instrumentace](./media/analytics-with-application-insights/app-insights.png)
@@ -158,7 +158,7 @@ Přidejte profily do souboru *TrustFrameworkExtensions. XML* z úvodní sady. P�
       <InputClaims>
         <!-- Properties of an event are added through the syntax {property:NAME}, where NAME is property being added to the event. DefaultValue can be either a static value or a value that's resolved by one of the supported DefaultClaimResolvers. -->
         <InputClaim ClaimTypeReferenceId="PolicyId" PartnerClaimType="{property:Policy}" DefaultValue="{Policy:PolicyId}" />
-        <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" />
+        <InputClaim ClaimTypeReferenceId="CorrelationId" PartnerClaimType="{property:JourneyId}" DefaultValue="{Context:CorrelationId}" />
         <InputClaim ClaimTypeReferenceId="Culture" PartnerClaimType="{property:Culture}" DefaultValue="{Culture:RFC5646}" />
       </InputClaims>
     </TechnicalProfile>

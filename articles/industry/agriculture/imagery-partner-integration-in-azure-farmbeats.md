@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0c03394c48c936f9faef85e9f4933893aaa67090
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 62e5b363f8008380a61e24c0549573a30ecaeb73
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75482423"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131854"
 ---
 # <a name="imagery-partner-integration"></a>Integrace partnerských řešení pro snímky
 
@@ -40,7 +40,7 @@ K propojení FarmBeats musíte použít následující přihlašovací údaje v 
 
 Rozhraní API obsahují technickou dokumentaci k Swagger. Informace o rozhraních API a odpovídajících požadavcích nebo odpovědích naleznete v části [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
 FarmBeats používá Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD). Azure App Service poskytuje integrovanou podporu ověřování a autorizace. 
 
@@ -492,4 +492,4 @@ Po volání rozhraní/SceneFile API se vrátí adresa URL pro nahrání SAS, kte
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o REST API podrobností integrace na základě REST API najdete v tématu [](references-for-azure-farmbeats.md#rest-api).
+Další informace o REST API podrobností integrace na základě REST API najdete v tématu [](rest-api-in-azure-farmbeats.md).

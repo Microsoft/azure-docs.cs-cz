@@ -9,14 +9,14 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 5df00d68b7114cc489b0708f5c2e401c87d0be15
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: d41b0499df1a62440e8c1991e29f7963224a50d6
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314024"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138150"
 ---
-# <a name="import-your-data-into-azure-machine-learning-designer"></a>Import dat do návrháře Azure Machine Learning
+# <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Import dat do návrháře Azure Machine Learning (Preview)
 
 V tomto článku se dozvíte, jak v Návrháři importovat vlastní data, abyste mohli vytvářet vlastní řešení. Existují dva způsoby, jak můžete importovat data do návrháře: 
 
@@ -45,7 +45,7 @@ Vaše registrované datové sady lze nalézt v paletě modulu v části **datov�
 
 ![Snímek obrazovky znázorňující umístění uložených datových sad v paletě návrháře](media/how-to-designer-import-data/use-datasets-designer.png)
 
-V paletě modulu se zobrazí jakákoli [datová sada souborů](how-to-create-register-datasets.md#dataset-types) zaregistrovaná v pracovním prostoru Machine Learning. Nejste omezeni na použití datových sad vytvořených v návrháři.
+
 
 > [!NOTE]
 > Návrhář aktuálně podporuje pouze zpracování [tabelárních datových sad](how-to-create-register-datasets.md#dataset-types). Pokud chcete použít [souborové sady](how-to-create-register-datasets.md#dataset-types), použijte sadu SDK Azure Machine Learning dostupnou pro Python a R.

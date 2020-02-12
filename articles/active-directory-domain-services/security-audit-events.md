@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 42ab32e80ef0a1a7f3c02d8a8eedbb8ab13c4b88
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979927"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132255"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Povolit audity zabezpečení pro Azure Active Directory Domain Services
 
-Audity zabezpečení služby Azure Active Directory Domain Services (Azure služba AD DS) umožňují zacílit události zabezpečení Azure streamu na cílené prostředky. Mezi tyto prostředky patří Azure Storage, pracovní prostory Azure Log Analytics nebo centrum událostí Azure. Po povolení událostí auditu zabezpečení pošle Azure služba AD DS všechny auditované události pro vybranou kategorii do cílového prostředku. Události můžete archivovat do služby Azure Storage a streamovat události do softwaru SIEM (Security Information and Event Management) (nebo ekvivalentní) pomocí Azure Event Hubs nebo vlastní analýzy a používat pracovní prostory Azure Log Analytics z Azure Portal.
+Audity zabezpečení služby Azure Active Directory Domain Services (Azure služba AD DS) umožňují zacílit události zabezpečení Azure streamu na cílené prostředky. Mezi tyto prostředky patří Azure Storage, pracovní prostory Azure Log Analytics nebo centrum událostí Azure. Po povolení událostí auditu zabezpečení pošle Azure služba AD DS všechny auditované události pro vybranou kategorii do cílového prostředku.
+
+Události můžete archivovat do služby Azure Storage a streamovat události do softwaru SIEM (Security Information and Event Management) (nebo ekvivalentní) pomocí Azure Event Hubs nebo vlastní analýzy a používat pracovní prostory Azure Log Analytics z Azure Portal.
 
 > [!IMPORTANT]
 > Audity zabezpečení Azure služba AD DS jsou dostupné jenom pro instance založené na Azure Resource Manager. Informace o migraci najdete v tématu [migrace Azure služba AD DS z modelu klasických virtuálních sítí na správce prostředků][migrate-azure-adds].
@@ -41,7 +43,7 @@ K dispozici jsou následující kategorie událostí auditu:
 |Přístup k objektu| Audity se pokouší o přístup k určitým objektům nebo typům objektů v síti nebo počítači. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat vygenerované aplikace](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-generated)</li><li>[Auditovat certifikační služby](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-certification-services)</li><li>[Auditovat podrobnou sdílenou složku](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-detailed-file-share)</li><li>[Auditovat sdílenou složku](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-share)</li><li>[Auditovat systém souborů](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-file-system)</li><li>[Auditovat připojení platformy pro filtrování](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-connection)</li><li>[Auditovat vyřazení paketů platformy filtrování](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-packet-drop)</li><li>[Manipulace s popisovačem auditu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-handle-manipulation)</li><li>[Auditovat objekt jádra](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kernel-object)</li><li>[Auditovat jiné události přístupu k objektu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-object-access-events)</li><li>[Audit registru](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-registry)</li><li>[Audit vyměnitelného úložiště](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-removable-storage)</li><li>[Audit SAM](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sam)</li><li>[Auditovat přípravu zásad centrálního přístupu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-central-access-policy-staging)</li></ul>|
 |Změna zásad|Audituje změny v důležitých zásadách zabezpečení v místním systému nebo v síti. Zásady jsou většinou zřízené správci, aby lépe zabezpečily síťové prostředky. Sledování změn nebo pokusů o změnu těchto zásad může být důležitým aspektem správy zabezpečení sítě. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat změnu zásad auditu](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-audit-policy-change)</li><li>[Auditovat změnu zásad ověřování](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authentication-policy-change)</li><li>[Auditovat změnu zásad autorizace](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-authorization-policy-change)</li><li>[Auditovat změny zásad platformy pro filtrování](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-filtering-platform-policy-change)</li><li>[Auditovat změnu zásad na úrovni pravidel MPSSVC](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-mpssvc-rule-level-policy-change)</li><li>[Auditovat jiné změny zásad](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-policy-change-events)</li></ul>|
 |Použití oprávnění| Audituje použití určitých oprávnění v jednom nebo více systémech. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat používání necitlivých oprávnění](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-non-sensitive-privilege-use)</li><li>[Auditovat použití citlivých oprávnění](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-sensitive-privilege-use)</li><li>[Auditovat události použití jiných oprávnění](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-privilege-use-events)</li></ul>|
-|Systém| Audituje změny na úrovni systému na počítač, který není zahrnutý v jiných kategoriích a který má možné dopady na zabezpečení. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat ovladač IPsec](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[Auditovat jiné systémové události](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[Auditovat změnu stavu zabezpečení](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[Auditovat rozšíření systému zabezpečení](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[Auditovat integritu systému](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
+|Systémový| Audituje změny na úrovni systému na počítač, který není zahrnutý v jiných kategoriích a který má možné dopady na zabezpečení. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat ovladač IPsec](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-ipsec-driver)</li><li>[Auditovat jiné systémové události](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-system-events)</li><li>[Auditovat změnu stavu zabezpečení](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-state-change)</li><li>[Auditovat rozšíření systému zabezpečení](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-system-extension)</li><li>[Auditovat integritu systému](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-system-integrity)</li></ul>|
 
 ## <a name="event-ids-per-category"></a>ID událostí na kategorii
 
@@ -51,35 +53,35 @@ K dispozici jsou následující kategorie událostí auditu:
 |:---|:---|
 |Zabezpečení přihlášení k účtu|4767, 4774, 4775, 4776, 4777|
 |Zabezpečení správy účtů|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781, 4782, 4793, 4798, 4799, 5376, 5377,|
-|Zabezpečení sledování podrobností|Žádné|
+|Zabezpečení sledování podrobností|Žádná|
 |Zabezpečení přístupu DS|5136, 5137, 5138, 5139, 5141|
 |Zabezpečení při odhlašování|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Zabezpečení přístupu k objektům|Žádné|
+|Zabezpečení přístupu k objektům|Žádná|
 |Zabezpečení změny zásad|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
 |Zabezpečení použití oprávnění|4985|
 |Zabezpečení systému|4612, 4621|
 
 ## <a name="security-audit-destinations"></a>Cíle auditu zabezpečení
 
-Jako cílový prostředek pro audity zabezpečení Azure služba AD DS můžete použít libovolnou kombinaci Azure Storage, Azure Event Hubs nebo pracovních prostorů Azure Log Analytics. Azure Storage můžete použít k archivaci událostí auditu zabezpečení, ale pracovní prostor Azure Log Analytics k analýze a hlášení informací v krátkodobém období.
+Jako cílový prostředek pro audity zabezpečení Azure služba AD DS můžete použít Azure Storage, Azure Event Hubs nebo Azure Log Analytics pracovní prostory. Tyto cíle lze kombinovat. Můžete například použít Azure Storage pro archivaci událostí auditu zabezpečení, ale pracovní prostor Azure Log Analytics k analýze a hlášení informací v krátkodobém období.
 
 Následující tabulka obsahuje přehled scénářů pro každý typ cílového prostředku.
 
 > [!IMPORTANT]
-> Než povolíte Azure AD Domain Services audity zabezpečení, je potřeba vytvořit cílový prostředek. Tyto prostředky můžete vytvořit pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure.
+> Než povolíte audity zabezpečení Azure služba AD DS, je potřeba vytvořit cílový prostředek. Tyto prostředky můžete vytvořit pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure.
 
 | Cílový prostředek | Scénář |
 |:---|:---|
-|Azure Storage| Tento cíl by měl být použit v případě, že vaše primární potřeba ukládá události auditu zabezpečení pro účely archivace. Pro účely archivace lze použít jiné cíle, ale tyto cíle poskytují možnosti nad rámec hlavní potřeby archivace. Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte nejdřív Azure Storage účet](../storage/common/storage-account-create.md).|
-|Azure Event Hubs| Tento cíl by měl být použit v případě, že je potřeba, aby se události auditu zabezpečení sdílely pomocí dalšího softwaru, jako je například software pro analýzu dat & nebo software pro správu událostí (SIEM). Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte centrum událostí pomocí Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
-|Pracovní prostor Azure Log Analytics| Tento cíl by měl být použit, pokud je vaše primární potřeba analyzovat a kontrolovat zabezpečené audity přímo z Azure Portal. Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte v Azure Portal pracovní prostor Log Analytics.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
+|Azure Storage| Tento cíl by měl být použit v případě, že vaše primární potřeba ukládá události auditu zabezpečení pro účely archivace. Pro účely archivace lze použít jiné cíle, ale tyto cíle poskytují možnosti nad rámec hlavní potřeby archivace. <br /><br />Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte nejdřív Azure Storage účet](../storage/common/storage-account-create.md).|
+|Azure Event Hubs| Tento cíl by měl být použit v případě, že je potřeba, aby se události auditu zabezpečení sdílely pomocí dalšího softwaru, jako je například software pro analýzu dat & nebo software pro správu událostí (SIEM).<br /><br />Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte centrum událostí pomocí Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)|
+|Pracovní prostor Azure Log Analytics| Tento cíl by měl být použit, pokud je vaše primární potřeba analyzovat a kontrolovat zabezpečené audity přímo z Azure Portal.<br /><br />Než povolíte události auditu zabezpečení Azure služba AD DS, [vytvořte v Azure Portal pracovní prostor Log Analytics.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)|
 
 ## <a name="enable-security-audit-events-using-the-azure-portal"></a>Povolit události auditu zabezpečení pomocí Azure Portal
 
 Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí Azure Portal, proveďte následující kroky.
 
 > [!IMPORTANT]
-> Audity zabezpečení Azure služba AD DS nejsou zpětně. Nemůžete načíst události z minulosti nebo pro opětovné přehrání událostí z minulosti. Azure služba AD DS může posílat jenom události, ke kterým dojde po jeho povolení.
+> Audity zabezpečení Azure služba AD DS nejsou zpětně. Nemůžete načíst nebo přehrát události z minulosti. Azure služba AD DS může posílat jenom události, ke kterým dojde po povolení auditů zabezpečení.
 
 1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 1. V horní části Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Vyberte spravovanou doménu, například *aadds.contoso.com*.
@@ -94,7 +96,7 @@ Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí 
 
     ![Povolit požadovaný cíl a typ událostí auditu, které se mají zachytit](./media/security-audit-events/diagnostic-settings-page.png)
 
-    * **Úložiště Azure**
+    * **Azure Storage**
         * Vyberte možnost **archivovat do účtu úložiště**a pak zvolte **Konfigurovat**.
         * Vyberte **předplatné** a **účet úložiště** , který chcete použít k archivaci událostí auditu zabezpečení.
         * Až budete připraveni, klikněte na **tlačítko OK**.
@@ -116,7 +118,7 @@ Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí 
 Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí Azure PowerShell, proveďte následující kroky. V případě potřeby nejdřív [nainstalujte modul Azure PowerShell a připojte se k předplatnému Azure](/powershell/azure/install-az-ps).
 
 > [!IMPORTANT]
-> Audity zabezpečení Azure služba AD DS nejsou zpětně. Nemůžete načíst události z minulosti nebo pro opětovné přehrání událostí z minulosti. Azure služba AD DS může posílat jenom události, ke kterým dojde po jeho povolení.
+> Audity zabezpečení Azure služba AD DS nejsou zpětně. Nemůžete načíst nebo přehrát události z minulosti. Azure služba AD DS může posílat jenom události, ke kterým dojde po povolení auditů zabezpečení.
 
 1. K ověření předplatného Azure použijte rutinu [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) . Po zobrazení výzvy zadejte své přihlašovací údaje k účtu.
 
@@ -175,7 +177,7 @@ V protokolu analytické pracovní prostory můžete zobrazit a analyzovat událo
 * [Dokumentace ke službě Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
 * [Začínáme s Log Analytics v Azure Monitor](../azure-monitor/log-query/get-started-portal.md)
 * [Začínáme s dotazy protokolu v Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-* [Vytváření a sdílení řídicích panelů s daty Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md)
+* [Vytváření a sdílení řídicích panelů Log Analytics dat](../azure-monitor/learn/tutorial-logs-dashboards.md)
 
 Pomocí následujících ukázkových dotazů můžete začít s analýzou událostí auditu zabezpečení z Azure služba AD DS.
 
@@ -191,11 +193,11 @@ AADDomainServicesAccountManagement
 
 ### <a name="sample-query-2"></a>Vzorový dotaz 2
 
-Zobrazit všechny události uzamčení účtu (*4740*) od 26. června 2019 v 9:00 a od 1. července 2019 o půlnoci seřazené vzestupně podle data a času:
+Zobrazit všechny události uzamčení účtu (*4740*) mezi 3. února 2020 v 9:00 a 10. února 2019 o půlnoci seřazený vzestupně podle data a času:
 
 ```Kusto
 AADDomainServicesAccountManagement
-| where TimeGenerated >= datetime(2019-06-26 09:00) and TimeGenerated <= datetime(2019-07-01)
+| where TimeGenerated >= datetime(2020-02-03 09:00) and TimeGenerated <= datetime(2020-02-10)
 | where OperationName has "4740"
 | sort by TimeGenerated asc
 ```

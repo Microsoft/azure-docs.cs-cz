@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 489f4a527a5afaf1bab5e2065137a5011d45baa6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474439"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132283"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Běžné případy použití a scénáře pro Azure Active Directory Domain Services
 
@@ -65,7 +65,7 @@ Následující pokyny k nasazení se vztahují na tento příklad případu pou�
 
 Podobně jako v předchozím ukázkovém scénáři předpokládáme, že Contoso má místní obchodní aplikaci (LOB), která byla vyvinuta skoro před desetiletí. Tato aplikace je v adresáři a byla navržena tak, aby používala protokol LDAP ke čtení informací nebo atributů uživatelů z služba AD DS. Aplikace nemění atributy nebo jinak zapisuje do adresáře.
 
-Společnost Contoso chce migrovat tuto aplikaci do Azure a vyřadit místní hardware o splatnosti, který aktuálně hostuje tuto aplikaci. Aplikaci nelze přepsat, aby používala moderní rozhraní API adresářů, například Graph API Azure AD založené na REST. Možnost přezvednutí a posunutí je žádoucí, kde aplikace může být migrována do provozu v cloudu bez úpravy kódu nebo přepisu aplikace.
+Společnost Contoso chce migrovat tuto aplikaci do Azure a vyřadit místní hardware o splatnosti, který aktuálně hostuje tuto aplikaci. Aplikaci nelze přepsat, aby používala moderní rozhraní API adresářů, jako je Microsoft Graph rozhraní API na bázi REST. Možnost přezvednutí a posunutí je žádoucí, kde aplikace může být migrována do provozu v cloudu bez úpravy kódu nebo přepisu aplikace.
 
 Pro pomoc s tímto scénářem Azure služba AD DS umožňuje aplikacím provádět čtení LDAP proti spravované doméně, aby získala informace o atributech, které potřebuje. Aplikaci není nutné přepsána, takže převedené a posunutí do Azure umožňuje uživatelům pokračovat v používání aplikace bez toho, aby se při spuštění spouštěla změna.
 

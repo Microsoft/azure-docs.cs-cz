@@ -1,5 +1,5 @@
 ---
-title: Role klasického správce předplatného, role Azure RBAC a role správce Azure AD | Microsoft Docs
+title: Role správců pro klasický odběr, role Azure RBAC a role Azure AD
 description: Tento článek popisuje různé role v Azure – role klasického správce předplatného, role řízení přístupu na základě role (RBAC) Azure a role správce služby Azure AD (Azure Active Directory).
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1d0966737964c44fc4a6778cdb811a4ecc732ffc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 08c14135ba17df4de446de5625352c8cffdc60a1
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979314"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138080"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Role klasického správce předplatného, role Azure RBAC a role správce Azure AD
 
@@ -42,7 +42,7 @@ Následující diagram představuje souhrnné zobrazení toho, jak spolu souvise
 
 Správce účtu, správce služeb a spolusprávce jsou tři role klasického správce předplatného v Azure. Klasičtí správci předplatného mají úplný přístup k předplatnému Azure. Mohou spravovat prostředky pomocí portálu Azure Portal, rozhraní API Azure Resource Manageru a rozhraní API modelu nasazení Classic. Účet, který slouží k registraci v Azure, je automaticky nastaven jako účet správce účtu a správce služeb. Potom je možné přidat další spolusprávce. Správce služeb a spolusprávci mají stejný přístup jako uživatelé s přiřazenou rolí vlastníka (role Azure RBAC) v oboru předplatného. Následující tabulka popisuje rozdíly mezi třemi rolemi klasického správce předplatného.
 
-| Klasický správce předplatného | škálování | Oprávnění | Poznámky |
+| Klasický správce předplatného | Omezení | Oprávnění | Poznámky: |
 | --- | --- | --- | --- |
 | Správce účtu | 1 na účet Azure | <ul><li>Přístup do [Centra účtů Azure](https://account.azure.com/Subscriptions)</li><li>Správa všech předplatných v účtu</li><li>Vytváření nových předplatných</li><li>Rušení předplatných</li><li>Změna fakturace předplatného</li><li>Změna správce služeb</li></ul> | Koncepčně se jedná o vlastníka fakturace předplatného.<br>Správce účtu nemá přístup k webu Azure Portal. |
 | Správce služeb | 1 na předplatné Azure | <ul><li>Správa služeb na portálu [Azure Portal](https://portal.azure.com)</li><li>Zrušení předplatného</li><li>Přiřazení role spolusprávce uživatelům</li></ul> | Ve výchozím nastavení u nového předplatného je správce účtu současně i správcem služeb.<br>Správce služeb má stejný přístup jako uživatel, který má přidělenu roli vlastníka v oboru předplatného.<br>Správce služeb má úplný přístup k webu Azure Portal. |
@@ -72,7 +72,7 @@ Každé předplatné je přidruženo k adresáři služby Azure AD. Pokud chcete
 
 Azure RBAC je systém autorizace založený na [Azure Resource Manageru](../azure-resource-manager/management/overview.md), který poskytuje podrobnou správu přístupu k prostředkům Azure, jako jsou výpočetní služby a úložiště. Azure RBAC zahrnuje více než 70 předdefinovaných rolí. Existují čtyři základní role RBAC. První tři se vztahují ke všem typům prostředků:
 
-| Role Azure RBAC | Oprávnění | Poznámky |
+| Role Azure RBAC | Oprávnění | Poznámky: |
 | --- | --- | --- |
 | [Vlastník](built-in-roles.md#owner) | <ul><li>Úplný přístup ke všem prostředkům</li><li>Delegování přístupu na jiné uživatele</li></ul> | Správce služeb a spolusprávci mají přiřazenu roli vlastníka v oboru předplatného.<br>Platí pro všechny typy prostředků. |
 | [Přispěvatel](built-in-roles.md#contributor) | <ul><li>Vytváření a správa všech typů prostředků Azure</li><li>Nemůže udělovat přístup ostatním</li></ul> | Platí pro všechny typy prostředků. |
@@ -93,11 +93,11 @@ Po kliknutí na kartu **role** se zobrazí seznam předdefinovaných a vlastníc
 
 Další informace najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC a Azure Portal](role-assignments-portal.md).
 
-## <a name="azure-ad-administrator-roles"></a>Role správce Azure AD
+## <a name="azure-ad-administrator-roles"></a>role správce Azure AD
 
 Role správce Azure AD slouží ke správě prostředků Azure AD v adresáři, například k vytváření nebo úpravě uživatelů, přiřazení administrativních rolí dalším uživatelům, resetování hesel uživatelů, správě uživatelských licencí a správě domén. Následující tabulka popisuje několik důležitějších rolí správce Azure AD.
 
-| Role správce Azure AD | Oprávnění | Poznámky |
+| Role správce Azure AD | Oprávnění | Poznámky: |
 | --- | --- | --- |
 | [Globální správce](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) | <ul><li>Správa přístupu ke všem administrativním funkcím v Azure Active Directory i službám federovaným do Azure Active Directory</li><li>Přiřazení rolí správce dalším uživatelům</li><li>Resetování hesel uživatelů a všech ostatních správců</li></ul> | Osoba, která se zaregistruje v tenantovi Azure Active Directory, se stává globálním správcem. |
 | [Správce uživatelů](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>Vytváření a správa všech aspektů uživatelů a skupin</li><li>Správa lístků podpory</li><li>Monitorování stavu služby</li><li>Změna hesel pro uživatele, správce helpdesku a další správce uživatelů</li></ul> |  |
@@ -111,7 +111,7 @@ Na portálu Azure Portal najdete seznam rolí správce Azure AD v okně **Role a
 
 Na obecné úrovni role Azure RBAC řídí oprávnění ke správě prostředků Azure a role správce Azure AD řídí oprávnění ke správě prostředků Azure Active Directory. Následující tabulka obsahuje přehled některých rozdílů.
 
-| Role Azure RBAC | Role správce Azure AD |
+| Role Azure RBAC | role správce Azure AD |
 | --- | --- |
 | Správa přístupu k prostředkům Azure | Správa přístupu k prostředkům Azure Active Directory |
 | Podpora vlastních rolí | Podpora vlastních rolí |

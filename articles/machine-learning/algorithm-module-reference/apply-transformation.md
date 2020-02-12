@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: a48ce60dca9f4221e364d53567f5b53719deb18c
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 443b021b266a202775e94e44acac3a91a2b70617
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314517"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137579"
 ---
 # <a name="apply-transformation-module"></a>Použít modul transformace
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete upravit vstupní datovou sadu založenou na dříve vypočítané transformaci.  
   
@@ -32,9 +32,9 @@ Azure Machine Learning poskytuje podporu pro vytváření a následné použití
 
 ## <a name="how-to-use-apply-transformation"></a>Použití funkce použít transformaci  
   
-1. Přidejte do svého kanálu modul **použít transformaci** . Tento modul můžete najít v části **Machine Learning**v kategorii **skóre** . 
+1. Přidejte do svého kanálu modul **použít transformaci** . Tento modul najdete v kategorii **vyhodnocení & modelu** hodnocení. 
   
-2. Vyhledejte existující transformaci, která se použije jako vstup.  Dříve uložené transformace lze nalézt ve skupině **transformes** v levém navigačním podokně.  
+2. Vyhledejte existující transformaci, která se použije jako vstup. Dříve uložené transformace lze nalézt ve skupině **Moje datové sady** **v části datové sady v** levém stromu modulu.  
   
    
   

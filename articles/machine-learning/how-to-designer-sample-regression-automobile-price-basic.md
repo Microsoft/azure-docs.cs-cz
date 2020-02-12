@@ -9,13 +9,13 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 12/25/2019
-ms.openlocfilehash: 6f4fe941cc44211f9f5d5e77b11043257b43a8ea
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/11/2020
+ms.openlocfilehash: 58adbc7607b0b32e79123b701c37f55ce7cc1d2e
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963284"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138119"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Předpověď cen automobilů pomocí Azure Machine Learning designeru pomocí regrese
 
@@ -38,7 +38,7 @@ Tady je poslední dokončený Graf kanálu. Tento článek představuje racioná
 
 ![Graf kanálu](./media/how-to-designer-sample-regression-automobile-price-basic/overall-graph.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [aml-ui-prereq](../../includes/aml-ui-prereq.md)]
 
@@ -61,7 +61,7 @@ Použijte modul **Výběr sloupců v datové sadě** k vyloučení normalizovan�
 
 Problémy strojového učení se liší. Mezi běžné úkoly strojového učení patří klasifikace, clusteringu, regrese a systémy doporučení, z nichž každá může vyžadovat jiný algoritmus. Vaše volba algoritmu často závisí na požadavcích případu použití. Po výběru algoritmu je třeba vyladit jeho parametry a naučit se model lépe přesný. Pak je potřeba vyhodnotit všechny modely na základě metrik, jako je přesnost, intelligibility a efektivita.
 
-Vzhledem k tomu, že cílem této ukázky je předpovědět ceny automobilu a protože sloupec popisku (price) obsahuje skutečná čísla, je regresní model dobrou volbou. Vzhledem k tomu, že počet funkcí je relativně malý (méně než 100) a tyto funkce nejsou zhuštěné, je pravděpodobně nelineární hranice rozhodnutí. Proto používáme pro tento kanál **regresi rozhodovací doménové struktury** .
+Vzhledem k tomu, že cílem této ukázky je předpovědět ceny automobilu a protože sloupec popisku (price) je souvislých dat, může být regresní model dobrou volbou. Pro tento kanál používáme **lineární regresi** .
 
 Použijte modul **rozdělit data** k náhodnému rozdělení vstupních dat tak, aby datová sada školení obsahovala 70% původních dat a testovací datová sada obsahuje 30% původních dat.
 

@@ -9,8 +9,8 @@
   items:
     - name: Povolení samoobslužného resetování hesel
       href: tutorial-enable-sspr.md
-    - name: Povolení MFA pro aplikace
-      href: tutorial-mfa-applications.md
+    - name: Povolení služby Azure Multi-Factor Authentication
+      href: tutorial-enable-azure-mfa.md
     - name: Povolení místní integrace SSPR
       href: tutorial-enable-writeback.md
     - name: Integrace ochrany identit Azure

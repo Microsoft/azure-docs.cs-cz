@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3243aa4c68e1cd6030986dc44cca47a555dc5356
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 40749a80d99782a1ea84b27e68376ea2870e8eb7
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087152"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138008"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
@@ -172,7 +172,7 @@ Pokud se při čtení dat v clusteru Azure Databricks zobrazí chyba `FailToSend
 * Přidejte `azureml-dataprep` verze 1.1.8 nebo novější.
 * Přidejte `pyarrow` verze 0,11 nebo vyšší.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Azure Portal
 
 Pokud přejdete přímo na váš pracovní prostor z sdílet odkaz ze sady SDK nebo na portálu zobrazit, nebudete moct zobrazit stránka s přehledem normální s informace o předplatném v rozšíření. Nebudete také moci přepnout do jiného pracovního prostoru. Pokud potřebujete zobrazit jiný pracovní prostor, alternativní řešení je přejít přímo na [Azure Machine Learning Studio](https://ml.azure.com) a vyhledat název pracovního prostoru.
 
@@ -312,3 +312,8 @@ Odstraňte popisek kliknutím na křížek vedle něj.
 Experimenty se dají archivovat pomocí metody [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) nebo experimentovat v zobrazení na kartách klienta Azure Machine Learning Studio. Tato akce skryje experiment ze seznamu dotazy a zobrazení, ale neodstraní ho.
 
 Trvalé odstranění individuálních experimentů nebo spuštění není aktuálně podporováno. Další informace o odstraňování prostředků pracovního prostoru najdete v tématu [Export nebo odstranění dat pracovního prostoru služby Machine Learning](how-to-export-delete-data.md).
+
+## <a name="moving-the-workspace"></a>Přesun pracovního prostoru
+
+> [!WARNING]
+> Přesunutím pracovního prostoru Azure Machine Learning do jiného předplatného nebo přesunutím vlastnícího předplatného na nového tenanta se nepodporuje. V takovém případě může dojít k chybám.

@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/01/2019
+ms.date: 10/02/2019
 ms.author: juliako
-ms.openlocfilehash: 5b5956094da497cfbb72608587b2e0389ceec8fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3520b7d6b0fd67fdbff3e1dd78d038f36ad5f0af
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427134"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133420"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přesun z Media Services V2 na V3
 
@@ -115,7 +115,7 @@ V následující tabulce jsou uvedeny rozdíly v kódu mezi v2 a v3 pro běžné
 * Aktuálně nemůžete spravovat prostředky v3 pomocí webu Azure Portal. Použijte [REST API](https://aka.ms/ams-v3-rest-sdk), CLI nebo jednu z podporovaných sad SDK.
 * Ve svém účtu musíte zřídit rezervované jednotky médií (MRUs), aby bylo možné řídit souběžnost a výkon vašich úloh, zejména ty, které zahrnují analýzu videa nebo zvuku. Další informace najdete v článku o [škálování zpracování médií](../previous/media-services-scale-media-processing-overview.md). MRUs můžete spravovat pomocí [CLI 2,0 pro Media Services V3](media-reserved-units-cli-how-to.md), pomocí [Azure Portal](../previous/media-services-portal-scale-media-processing.md)nebo pomocí [rozhraní API v2](../previous/media-services-dotnet-encoding-units.md). Musíte zřídit MRUs, ať už používáte rozhraní API Media Services v2 nebo V3.
 * Entity Media Services vytvořené s rozhraním API V3 se nedají spravovat pomocí rozhraní API v2.  
-* Nedoporučujeme spravovat entity, které byly vytvořené pomocí rozhraní API v2 prostřednictvím rozhraní V3 API. Následují příklady rozdílů, které vytvářejí nekompatibilní entity ve dvou verzích:   
+* Ne všechny entity v rozhraní v2 API se automaticky zobrazují v rozhraní V3 API.  Následují příklady entit v těchto dvou verzích, které jsou nekompatibilní:  
     * Úlohy a úlohy vytvořené v v2 se v v3 nezobrazují, protože nejsou přidružené k transformaci. Doporučení je přepnuto na transformace v3 a úlohy. Během přepínání bude existovat poměrně krátká doba nutná ke sledování úloh inlety v2.
     * Kanály a programy vytvořené pomocí v2 (které jsou namapované na živé události a živé výstupy ve verzi V3) nemůžou dál spravovat pomocí v3. Doporučení je přepnout na hodnotu v3 živé události a živé výstupy na pohodlném zastavení kanálu.<br/>V současné době nemůžete migrovat nepřetržitě běžící kanály.  
 

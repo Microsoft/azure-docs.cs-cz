@@ -1,5 +1,5 @@
 ---
-title: Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a REST API
+title: Přidání nebo odebrání přiřazení rolí s RBAC a REST API
 description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí řízení přístupu na základě role (RBAC) v Azure a REST API.
 services: active-directory
 documentationcenter: na
@@ -15,24 +15,24 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3c7b7dac649548b8b21cc13761009c11609c8904
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ae6fce5ab962637fe477ade75cf81b6ac237bdd2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981035"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138314"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a REST API
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] tomto článku se dozvíte, jak přiřadit role pomocí REST API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
 - oprávnění `Microsoft.Authorization/roleAssignments/write` a `Microsoft.Authorization/roleAssignments/delete`, jako je například správce nebo [vlastník](built-in-roles.md#owner) [přístupu uživatele](built-in-roles.md#user-access-administrator)
 
-## <a name="add-a-role-assignment"></a>Přidat přiřazení role
+## <a name="add-a-role-assignment"></a>Přidání přiřazení role
 
 Pokud chcete udělit přístup, přidejte přiřazení role ve RBAC. K přidání přiřazení role použijte [přiřazení rolí – vytvořit](/rest/api/authorization/roleassignments/create) REST API a zadejte objekt zabezpečení, definici role a obor. Chcete-li volat toto rozhraní API, je nutné mít přístup k operaci `Microsoft.Authorization/roleAssignments/write`. Z předdefinovaných rolí má přístup k této operaci udělen pouze [vlastník](built-in-roles.md#owner) a [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator) .
 

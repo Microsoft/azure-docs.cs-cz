@@ -4,49 +4,47 @@ description: V tomto kurzu nakonfigurujete virtuální počítač Azure se syst�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a9f9c6ebd55752ea5a3400da8d42b6c6487277df
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: ab3ed567d34c6284959f7875bb121ced4770d65e
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514642"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133323"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Kurz: konfigurace zařízení IoT Edge
 
 > [!NOTE]
 > Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
 
-V tomto článku nakonfigurujeme virtuální počítač Azure se systémem Linux, aby se jednalo o Azure IoT Edge zařízení, které funguje jako transparentní brána. Transparentní konfigurace brány umožňuje zařízením připojit se k Azure IoT Hub prostřednictvím brány bez vědomí, že brána existuje. Zároveň uživatel, který pracuje se zařízeními v IoT Hub, neví o zařízení zprostředkující brány. V konečném případě používáme transparentní bránu k přidání Edge Analytics do našeho systému přidáním modulů IoT Edge do brány.
+V tomto článku nakonfigurujeme virtuální počítač Azure se systémem Linux, aby se jednalo o IoT Edge zařízení, které funguje jako transparentní brána. Transparentní konfigurace brány umožňuje zařízením připojit se k Azure IoT Hub prostřednictvím brány bez vědomí, že brána existuje. Současně uživatel, který pracuje se zařízeními v Azure IoT Hub, neví, že zařízení zprostředkující brány je v provozu. Nakonec přidáme do našeho systému Edge Analytics tak, že do transparentní brány přidáte IoT Edge moduly.
 
 Kroky v tomto článku jsou obvykle prováděny vývojářem cloudu.
 
-## <a name="generate-certificates"></a>Generování certifikátů
+## <a name="create-certificates"></a>Vytvoření certifikátů
 
-Aby zařízení fungovalo jako brána, musí být schopné bezpečně se připojit k zařízením pro příjem dat. Azure IoT Edge umožňuje používat infrastrukturu veřejných klíčů (PKI) nastavení zabezpečeného připojení mezi zařízeními. V tomto případě jsme se umožní příjem dat zařízení pro připojení k zařízení IoT Edge sloužit jako transparentní brána. Aby bylo možné zajistit přiměřené zabezpečení, musí zařízení pro příjem dat potvrdit identitu zařízení IoT Edge. Další informace o tom, jak IoT Edge zařízení používají certifikáty, najdete v tématu [Azure IoT Edge informace o využití certifikátu](iot-edge-certs.md).
+Aby zařízení fungovalo jako brána, musí být schopné bezpečně se připojit k zařízením pro příjem dat. Azure IoT Edge umožňuje používat infrastrukturu veřejných klíčů (PKI) nastavení zabezpečeného připojení mezi zařízeními. V tomto případě umožníme zařízení IoT pro příjem připojení k IoT Edgemu zařízení, které funguje jako transparentní brána. Aby bylo možné zajistit přiměřené zabezpečení, musí zařízení pro příjem dat potvrdit identitu zařízení IoT Edge. Další informace o tom, jak IoT Edge zařízení používají certifikáty, najdete v tématu [Azure IoT Edge informace o využití certifikátu](iot-edge-certs.md).
 
-V této části vytvoříme certifikáty podepsané svým držitelem pomocí Image Docker, kterou následně sestavíme a spustíte. Rozhodli jste se použít k dokončení tohoto kroku image Docker, která významně snižuje počet kroků potřebných k vytvoření certifikátů na vývojovém počítači s Windows. Podívejte se na téma [Vytvoření ukázkových certifikátů, ve kterém můžete testovat IoT Edge funkce zařízení](how-to-create-test-certificates.md) a pochopit, co jsme s imagí Docker provedli.
+V této části vytvoříme certifikáty podepsané svým držitelem pomocí Image Docker, kterou následně sestavíme a spustíte. Rozhodli jste se použít k dokončení tohoto kroku image Docker, protože významně snižuje počet kroků potřebných k vytvoření certifikátů na vývojovém počítači s Windows. Podívejte se na téma [Vytvoření ukázkových certifikátů, ve kterém můžete testovat IoT Edge funkce zařízení](how-to-create-test-certificates.md) a pochopit, co jsme s imagí Docker provedli.
 
-1. Přihlaste se ke svému vývojovému virtuálnímu počítači.
+1. Přihlaste se ke svému vývojářskému VIRTUÁLNÍmu počítači.
 
-2. Otevřete příkazový řádek a spuštěním následujícího příkazu vytvořte adresář na virtuálním počítači.
+2. Vytvořte novou složku s cestou a názvem `c:\edgeCertificates`.
 
-    ```cmd
-    mkdir c:\edgeCertificates
-    ```
-
-3. Spusťte **Docker for Windows** v nabídce Start systému Windows.
+3. Pokud ještě není spuštěný, spusťte **Docker for Windows** v nabídce Start systému Windows.
 
 4. Otevřete Visual Studio Code.
 
 5. Vyberte **soubor** > **Otevřít složku...** a zvolte **C:\\source\\IoTEdgeAndMlSample\\CreateCertificates**.
 
-6. Klikněte pravým tlačítkem na souboru Dockerfile a vyberte **sestavit image**.
+6. V podokně Průzkumník klikněte pravým tlačítkem na **souboru Dockerfile** a vyberte **sestavit image**.
 
 7. V dialogu přijměte výchozí hodnotu pro název obrázku a značku: **createcertificates: nejnovější**.
+
+    ![Vytvoření certifikátů v Visual Studio Code](media/tutorial-machine-learning-edge-05-configure-edge-device/create-certificates.png)
 
 8. Počkejte na dokončení sestavení.
 
@@ -65,11 +63,11 @@ V této části vytvoříme certifikáty podepsané svým držitelem pomocí Ima
 
 12. Po dokončení kontejneru vyhledejte v jazyce c následující soubory **:\\edgeCertificates**:
 
-    * c:\\edgeCertificates\\certs\\azure-iot-test-only.root.ca.cert.pem
+    * c:\\edgeCertificates\\ch certifikátů\\Azure-IoT-test-Only. root. ca. CERT. pem
     * c:\\edgeCertificates\\ch certifikátů\\New-Edge-Device-full-Chain. CERT. pem
-    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pem
-    * c:\\edgeCertificates\\certs\\new-edge-device.cert.pfx
-    * c:\\edgeCertificates\\private\\new-edge-device.key.pem
+    * c:\\edgeCertificates\\ch certifikátů\\New-Edge-Device. CERT. pem
+    * c:\\edgeCertificates\\ch certifikátů\\New-Edge-Device. CERT. pfx
+    * c:\\edgeCertificates\\Private\\New-Edge-Device. Key. pem
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Nahrání certifikátů do Azure Key Vault
 
@@ -95,17 +93,17 @@ K bezpečnému uložení certifikátů a jejich zpřístupnění z více zaříz
 
 ## <a name="create-iot-edge-device"></a>Vytvoření zařízení IoT Edge
 
-Pokud chcete zařízení Azure IoT Edge připojit ke službě IoT Hub, nejdřív v centru vytvoříme identitu pro zařízení. Připojovací řetězec přijímáme z identity zařízení v cloudu a používá ho ke konfiguraci modulu runtime na našem IoT Edgem zařízení. Jakmile je zařízení nakonfigurované a připojuje se k rozbočovači, můžeme nasadit moduly a odesílat zprávy. Konfiguraci fyzického IoT Edge zařízení můžeme změnit také tak, že změníte konfiguraci odpovídající identity zařízení ve službě IoT Hub.
+Pokud chcete zařízení Azure IoT Edge připojit ke službě IoT Hub, nejdřív v centru vytvoříme identitu pro zařízení. Připojovací řetězec přijímáme z identity zařízení v cloudu a používá ho ke konfiguraci modulu runtime na našem IoT Edgem zařízení. Jakmile se nakonfigurované zařízení připojí k centru, můžeme nasadit moduly a poslat zprávy. Konfiguraci fyzického IoT Edge zařízení můžeme také změnit změnou odpovídající identity zařízení ve službě IoT Hub.
 
 V tomto kurzu vytvoříme novou identitu zařízení pomocí Visual Studio Code. Tyto kroky můžete provést také pomocí [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)nebo rozhraní příkazového [řádku Azure CLI](how-to-register-device.md#register-with-the-azure-cli).
 
 1. Na svém vývojovém počítači otevřete Visual Studio Code.
 
-2. V zobrazení Průzkumník Visual Studio Code otevřete rámec **zařízení Azure IoT Hub** .
+2. Rozbalte rámec **Azure IoT Hub** v zobrazení Průzkumník Visual Studio Code.
 
 3. Klikněte na tři tečky a vyberte **vytvořit IoT Edge zařízení**.
 
-4. Dejte zařízení název. Pro usnadnění práce používáme **aaTurbofanEdgeDevice** , takže seřadí před všemi klientskými zařízeními, která jsme vytvořili dřív prostřednictvím zařízení, aby odesílala testovací data.
+4. Dejte zařízení název. Pro usnadnění práce používáme název **aaTurbofanEdgeDevice** , takže se seřadí na začátek seznamu zařízení.
 
 5. Nové zařízení se zobrazí v seznamu zařízení.
 
@@ -125,9 +123,9 @@ Pro použití image z webu Marketplace ve skriptovém nasazení musíme pro Imag
 
 1. Na panelu hledání zadejte a vyberte **Marketplace**.
 
-1. Na panelu hledání zadejte a vyberte **Azure IoT Edge v Ubuntu**.
+1. Na panelu hledání na webu Marketplace zadejte a vyberte **Azure IoT Edge v Ubuntu**.
 
-1. Vyberte, který **chcete nasadit programově?** Hypertextový odkaz Začínáme.
+1. Vyberte **hypertextový odkaz Začínáme,** který chcete nasadit programově.
 
 1. Klikněte na tlačítko **Povolit** a pak na **Uložit**.
 
@@ -192,7 +190,9 @@ V následujících částech se konfiguruje virtuální počítač Azure, který
 
 ## <a name="download-key-vault-certificates"></a>Stažení Key Vault certifikátů
 
-Dříve v tomto článku jsme nahráli certifikáty, které Key Vault, aby byly k dispozici pro naše IoT Edge zařízení a naše listová zařízení, což je zařízení pro příjem dat, které používá IoT Edge zařízení jako bránu ke komunikaci s IoT Hub. Později v tomto kurzu budeme pracovat se listovým zařízením. V této části si stáhněte certifikáty do zařízení IoT Edge.
+Dříve v tomto článku jsme nahráli certifikáty, které Key Vault, aby byly k dispozici pro naše IoT Edge zařízení a naše listová zařízení. Listové zařízení je zařízení, které používá IoT Edge zařízení jako brána ke komunikaci s IoT Hub.
+
+Později v tomto kurzu budeme pracovat se listovým zařízením. V této části si stáhněte certifikáty do zařízení IoT Edge.
 
 1. Z relace SSH na virtuálním počítači se systémem Linux se přihlaste k Azure pomocí Azure CLI.
 
@@ -227,7 +227,7 @@ Dříve v tomto článku jsme nahráli certifikáty, které Key Vault, aby byly 
 
 ## <a name="update-the-iot-edge-device-configuration"></a>Aktualizace konfigurace zařízení IoT Edge
 
-Modul runtime IoT Edge používá soubor/etc/iotedge/config.yaml k uchování jeho konfigurace. V tomto souboru musíme aktualizovat tři části informací:
+IoT Edge runtime používá soubor `/etc/iotedge/config.yaml` k uchování jeho konfigurace. V tomto souboru musíme aktualizovat tři části informací:
 
 * **Připojovací řetězec zařízení**: připojovací řetězec z identity tohoto zařízení v IoT Hub
 * **Certifikáty:** certifikáty, které se mají použít pro připojení s podřízenými zařízeními.
@@ -296,7 +296,9 @@ V dalším kroku aktualizujeme certifikáty a název hostitele přímým úpravo
 
 ## <a name="next-steps"></a>Další kroky
 
-Právě jsme dokončili konfiguraci virtuálního počítače Azure jako Azure IoT Edge transparentní brány. Začali jsme vygenerováním testovacích certifikátů, které jsme nahráli do Azure Key Vault. V dalším kroku jsme k nasazení virtuálního počítače s imagí "Ubuntu Server 16,04 LTS Azure IoT Edge + runtime" z webu Azure Marketplace použili skript a šablonu Správce prostředků. Skript převzal další krok při instalaci rozhraní příkazového řádku Azure CLI ([instalace Azure CLI pomocí apt](https://docs.microsoft.com/cli/azure/install-azure-cli-apt)). Když je virtuální počítač spuštěný a spuštěný, připojili jsme se přes SSH, který jste přihlásili k Azure, stáhli certifikáty z Key Vault a provedli jsme několik aktualizací konfigurace IoT Edge běhu prostřednictvím aktualizace souboru config. yaml. Další informace o použití IoT Edge jako brány najdete v tématu [jak se dá zařízení IoT Edge použít jako brána](iot-edge-as-gateway.md). Další informace o tom, jak nakonfigurovat zařízení IoT Edge jako transparentní bránu, najdete v tématu [Konfigurace zařízení IoT Edge, aby fungovalo jako transparentní brána](how-to-create-transparent-gateway.md).
+Právě jsme dokončili konfiguraci virtuálního počítače Azure jako Azure IoT Edge transparentní brány. Začali jsme vygenerováním testovacích certifikátů, které jsme nahráli do Azure Key Vault. Dále jsme použili skript a šablonu Správce prostředků k nasazení virtuálního počítače s imagí "Ubuntu Server 16,04 LTS Azure IoT Edge + runtime" z Azure Marketplace. Když je virtuální počítač spuštěný a spuštěný přes SSH, přihlásili jsme se k Azure a stáhli jsme certifikáty z Key Vault. Provedli jsme několik aktualizací konfigurace modulu runtime IoT Edge aktualizací souboru config. yaml.
+
+Další informace najdete v tématu [jak se dá zařízení IoT Edge použít jako brána](iot-edge-as-gateway.md) a jak [nakonfigurovat zařízení IoT Edge, aby fungovalo jako transparentní brána](how-to-create-transparent-gateway.md).
 
 Pokračujte dalším článkem a Sestavujte IoT Edge moduly.
 

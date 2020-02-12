@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: afda502bcd89423ecdd008c0297c85dd8a5b61fb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b0ef6030b1b460d118a255ede3c46719616fe3b0
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989837"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133841"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux ve službě Azure na základě vlastních předplatných zlatých imagí
 
@@ -177,7 +177,7 @@ Pomocí [Azure Disk Encryption](../../linux/disk-encryption-overview.md)je možn
 
 Azure Disk Encryption se u [vlastních imagí Red Hat](/linux/redhat-create-upload-vhd)nepodporuje. Další požadavky a požadavky na ADE jsou popsány v [Azure Disk Encryption pro virtuální počítače se systémem Linux](../../linux/disk-encryption-overview.md#additional-vm-requirements).
 
-Kroky pro použití Azure Disk Encryption jsou k dispozici ve [scénářích Azure Disk Encryption na virtuálních počítačích s Linux a v](../../linux/disk-encryption-linux.md) souvisejících článcích.  
+Kroky pro použití Azure Disk Encryption jsou k dispozici ve [scénářích Azure Disk Encryption na virtuálních počítačích s Linux a v](../../linux/disk-encryption-linux.md) souvisejících článcích.
 
 ## <a name="additional-information"></a>Další informace
 
@@ -186,7 +186,7 @@ Kroky pro použití Azure Disk Encryption jsou k dispozici ve [scénářích Azu
     ```
     "Offer with PublisherId: redhat, OfferId: rhel-byos, PlanId: rhel-lvm75 is private and can not be purchased by subscriptionId: GUID"
     ```
-    
+
     V takovém případě kontaktujte Microsoft nebo Red Hat, abyste povolili vaše předplatné.
 
 - Pokud upravíte snímek z image RHEL BYOS a pokusíte se o publikování této vlastní image do [Galerie sdílených imagí](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries), je nutné zadat informace o plánu, který odpovídá původnímu zdroji snímku. Příkaz může vypadat například takto:

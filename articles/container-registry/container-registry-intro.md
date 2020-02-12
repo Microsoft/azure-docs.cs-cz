@@ -3,15 +3,15 @@ title: Spravované Registry kontejnerů
 description: Úvod do služby Azure Container Registry poskytující cloudové, spravované, privátní registry Dockeru.
 author: stevelas
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 863b93497505443b79f41f580150a4dbf790a6f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1992a2a63d16a955d136459f5dbaece7df815c71
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445719"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132034"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
 
@@ -41,7 +41,7 @@ Azure poskytuje nástroje, včetně rozhraní příkazového řádku Azure, Azur
 * **Zabezpečení a přístup** – Přihlaste se k registru pomocí rozhraní příkazového řádku Azure CLI nebo standardního příkazu `docker login`. Azure Container Registry přenáší image kontejneru přes protokol HTTPS a podporuje TLS k zabezpečení připojení klientů. 
 
   > [!IMPORTANT]
-  > Od 13. ledna 2020 bude Azure Container Registry vyžadovat, aby všechna zabezpečená připojení ze serverů a aplikací používala protokol TLS 1,2. Bude vyřazena podpora TLS 1,0 a 1,1.
+  > Od 13. ledna 2020 bude Azure Container Registry vyžadovat, aby všechna zabezpečená připojení ze serverů a aplikací používala protokol TLS 1,2. Povolte TLS 1,2 pomocí libovolného nedávného klienta Docker (verze 18.03.0 nebo novější). Bude vyřazena podpora TLS 1,0 a 1,1. 
 
   Přístup k registru kontejnerů [ovládáte](container-registry-authentication.md) pomocí identity Azure, [instančního objektu](../active-directory/develop/app-objects-and-service-principals.md), který je Azure Active Directory zálohovaný, nebo zadaného účtu správce. Použijte řízení přístupu na základě role (RBAC) k přiřazení uživatelů nebo systémů jemně odstupňovaná oprávnění k registru.
 

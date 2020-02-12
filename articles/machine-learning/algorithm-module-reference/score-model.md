@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 27838aae1d829598bed44a6c16f7a1d38a95b727
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314092"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138179"
 ---
 # <a name="score-model-module"></a>Modul Určení skóre modelu
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete vygenerovat předpovědi s využitím trained nebo regresního modelu.
 
@@ -44,7 +44,7 @@ Skóre nebo předpokládaná hodnota může být v mnoha různých formátech v 
 
 - U modelů klasifikace [model skóre](./score-model.md) zapisuje předpokládanou hodnotu pro třídu a také pravděpodobnost předpovězené hodnoty.
 - Pro regresní modely generuje [model skóre](./score-model.md) pouze předpovězenou číselnou hodnotu.
-- V případě modelů klasifikace obrázků může být skóre třída objektu v obrázku nebo logická hodnota, která označuje, zda byla nalezena konkrétní funkce.
+
 
 ## <a name="publish-scores-as-a-web-service"></a>Publikování skóre jako webové služby
 

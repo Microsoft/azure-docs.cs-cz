@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/23/2020
+ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 2c28375ce7252e93340f395b97224d292940ce65
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e50d0772eaf706772aa89418a1ad25bf406945b5
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719173"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134116"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -33,12 +33,16 @@ V tomto kurzu provedete následující akce:
 > * Poslat e-mail pozvánky studentům
 
 ## <a name="prerequisites"></a>Předpoklady
-Pokud chcete nastavit prostředí učebny v účtu testovacího prostředí, musíte být členem jedné z těchto rolí v účtu testovacího prostředí: vlastník, autor testovacího prostředí nebo přispěvatele. Účet, který jste použili k vytvoření účtu testovacího prostředí, je automaticky přidán do role vlastníka.
+V tomto kurzu nastavíte testovací prostředí s virtuálními počítači pro vaši třídu. Pokud chcete nastavit prostředí učebny v účtu testovacího prostředí, musíte být členem jedné z těchto rolí v účtu testovacího prostředí: vlastník, autor testovacího prostředí nebo přispěvatele. Účet, který jste použili k vytvoření účtu testovacího prostředí, je automaticky přidán do role vlastníka. K vytvoření testovacího prostředí učebny můžete použít uživatelský účet, který jste použili k vytvoření účtu testovacího prostředí. 
 
-Vlastník testovacího prostředí může přidat další uživatele do role **testovacího prostředí** . Například vlastník testovacího prostředí přidá profesory do role tvůrce testovacího prostředí. Pak profesory vytvořit Labs s virtuálními počítači pro své třídy. Studenti používají registrační odkaz, který obdrží z profesory k registraci do testovacího prostředí. Jakmile jsou zaregistrované, můžou pomocí virtuálních počítačů v laboratoři provádět pracovní a domácí práci. Podrobné pokyny pro přidání uživatelů do role testovacího prostředí najdete v tématu [Přidání uživatele do role testovacího prostředí](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+Toto je typický pracovní postup při použití Azure Lab Services:
 
+1. Tvůrce účtu testovacího prostředí přidá další uživatele do role **testovacího prostředí** . Například tvůrce nebo správce účtu testovacího prostředí přidá profesory do role **testovacího prostředí** , aby mohli vytvářet Labs pro své třídy. 
+2. Pak profesory vytvořit Labs s virtuálními počítači pro své třídy a odeslat registrační odkazy studentům ve třídě. 
+3. Studenti používají registrační odkaz, který obdrží z profesory k registraci do testovacího prostředí. Jakmile jsou zaregistrované, můžou pomocí virtuálních počítačů v laboratoři provádět pracovní a domácí práci. 
 
 ## <a name="create-a-classroom-lab"></a>Vytvoření testovacího prostředí v učebně
+V tomto kroku vytvoříte testovací prostředí pro třídu v Azure. 
 
 1. Přejděte na [web Azure Lab Services](https://labs.azure.com). Všimněte si, že aplikace Internet Explorer 11 ještě není podporována. 
 2. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft. 
@@ -49,81 +53,55 @@ Vlastník testovacího prostředí může přidat další uživatele do role **t
     1. Zadejte **název** testovacího prostředí a vyberte **Další**.  
 
         ![Vytvoření testovacího prostředí v učebně](../media/tutorial-setup-classroom-lab/new-lab-window.png)
-
-        Pokud vyberete image pro Linux, zobrazí se vám možnost Povolit pro ni připojení ke vzdálené ploše. Podrobnosti najdete v tématu [Povolení připojení ke vzdálené ploše pro Linux](how-to-enable-remote-desktop-linux.md).
     2. Na stránce **přihlašovací údaje virtuálního počítače** zadejte výchozí přihlašovací údaje pro všechny virtuální počítače v testovacím prostředí. Zadejte **jméno** a **heslo** pro uživatele a pak vyberte **Další**.  
 
         ![Nové okno testovacího prostředí](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
         > [!IMPORTANT]
         > Uživatelské jméno a heslo si poznamenejte. Znovu se už nezobrazí.
-    3. Na stránce **zásady testovacího prostředí** zadejte počet hodin přidělený každému uživateli (**kvótu pro každého uživatele**) mimo naplánovaný čas pro testovací prostředí a pak vyberte **Dokončit**. 
+    3. Na stránce **zásady testovacího prostředí** vyberte **Dokončit**. 
 
         ![Kvóta pro každého uživatele](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
-5. Měla by se zobrazit následující obrazovka, která zobrazuje stav vytvoření virtuálního počítače šablony. Vytvoření šablony v testovacím prostředí může trvat až 20 minut. 
+5. Měla by se zobrazit následující obrazovka, která zobrazuje stav vytvoření virtuálního počítače šablony. Tato operace trvá až 20 minut. 
 
     ![Stav vytvoření virtuálního počítače šablony](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
 8. Na stránce **Šablona** proveďte následující kroky: tyto kroky jsou pro kurz **volitelné** .
 
-    2. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. Pokud se jedná o virtuální počítač šablony pro Linux, můžete zvolit, jestli se chcete připojit pomocí protokolu SSH nebo RDP (Pokud je povolený protokol RDP).
-    1. Pokud chcete resetovat heslo pro tento virtuální počítač, vyberte **resetovat heslo** . 
-    1. Nainstalujte a nakonfigurujte na virtuálním počítači šablony požadovaný software. 
-    1. **Zastavte** virtuální počítač.  
-    1. Zadejte **popis** šablony.
-10. Na stránce **Šablona** vyberte **publikovat** na panelu nástrojů. 
+    1. Vyberte **Connect** (Připojit) a připojte se k virtuálnímu počítači šablony. Pokud se jedná o virtuální počítač šablony pro Linux, můžete zvolit, jestli se chcete připojit pomocí protokolu SSH nebo RDP (Pokud je povolený protokol RDP).
+    3. Nainstalujte a nakonfigurujte software vyžadovaný pro vaši třídu na virtuálním počítači šablony. 
+    4. **Zastavte** virtuální počítač šablony.  
+
+## <a name="publish-the-template-vm"></a>Publikování šablony virtuálního počítače
+V tomto kroku publikujete virtuální počítač šablony. Proces publikování vytváří testovací virtuální počítače, které jsou v podstatě kopie virtuálního počítače šablony. 
+
+1. Na stránce **Šablona** vyberte **publikovat** na panelu nástrojů. 
 
     ![Tlačítko publikovat šablonu](../media/tutorial-setup-classroom-lab/template-page-publish-button.png)
 
     > [!WARNING]
     > Publikování nejde vrátit zpět. 
-8. Na stránce **publikovat šablonu** zadejte počet virtuálních počítačů, které chcete v testovacím prostředí vytvořit, a pak vyberte **publikovat**. 
+2. Na stránce **publikovat šablonu** zadejte počet virtuálních počítačů, které chcete v testovacím prostředí vytvořit, a pak vyberte **publikovat**. 
 
     ![Šablona publikování – počet virtuálních počítačů](../media/tutorial-setup-classroom-lab/publish-template-number-vms.png)
-11. Na stránce se zobrazí **stav publikování** šablony. Tento proces může trvat až hodinu. 
+3. Na stránce se zobrazí **stav publikování** šablony. Tento proces může trvat až hodinu. 
 
     ![Publikování šablony – průběh](../media/tutorial-setup-classroom-lab/publish-template-progress.png)
-4. Přepněte na stránku **fondu virtuálních počítačů** výběrem možnosti virtuální počítače v nabídce vlevo nebo výběrem dlaždice virtuální počítače. Ověřte, že se zobrazují virtuální počítače, které jsou v **nepřiřazeném** stavu. Tyto virtuální počítače ještě nejsou přiřazené ke studentům. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Virtuální počítače můžete spustit na této stránce nebo jejich spuštění můžete nechat na studentech. 
+4. Počkejte, než se publikování dokončí, a pak přepněte na stránku **fondu virtuálních počítačů** tak, že v nabídce vlevo vyberete **virtuální počítače** nebo dlaždici **virtuální počítače** . Ověřte, že se zobrazují virtuální počítače, které jsou v **nepřiřazeném** stavu. Tyto virtuální počítače ještě nejsou přiřazené ke studentům. Měly by být ve stavu **Stopped** (Zastaveno). Na této stránce můžete spustit studentský virtuální počítač, připojit se k němu, zastavit ho a odstranit ho. Virtuální počítače můžete spustit na této stránce nebo jejich spuštění můžete nechat na studentech. 
 
-    ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)
+    ![Virtuální počítače v zastaveném stavu](../media/tutorial-setup-classroom-lab/virtual-machines-stopped.png)   
 
-    Na této stránce provedete následující úlohy (u tohoto kurzu tento postup neprovádějte). Tyto kroky jsou pouze pro vaše informace.): 
-    
-    1. Pokud chcete změnit kapacitu testovacího prostředí (počet virtuálních počítačů v testovacím prostředí), vyberte na panelu nástrojů možnost **kapacita testovacího prostředí** .
-    2. Chcete-li spustit všechny virtuální počítače najednou, vyberte možnost **Spustit vše** na panelu nástrojů. 
-    3. Pokud chcete spustit konkrétní virtuální počítač, vyberte ve **stavu**šipku dolů a pak vyberte **Spustit**. Virtuální počítač můžete spustit také tak, že vyberete virtuální počítač v prvním sloupci a pak výběrem možnosti **Spustit** na panelu nástrojů.
-
-    Další informace o vytváření a správě šablon a nastavení a správě virtuálních počítačů studenta najdete v následujících článcích: 
-    
-    - [Vytváření a Správa šablon testovacího prostředí učebny](how-to-create-manage-template.md)
-    - [Nastavení a Správa fondu virtuálních počítačů](how-to-set-virtual-machine-passwords.md)
-
-## <a name="add-users-to-the-lab"></a>Přidat uživatele do testovacího prostředí
-
-1. V nabídce vlevo vyberte **Uživatelé** . Ve výchozím nastavení je povolená možnost **omezit přístup** . Pokud je toto nastavení zapnuté, nemůže se uživatel zaregistrovat v testovacím prostředí, i když uživatel nemá odkaz na registraci, pokud se uživatel nezobrazuje v seznamu uživatelů. Pomocí registračního odkazu, který odešlete, se můžou v testovacím prostředí zaregistrovat jenom uživatelé v seznamu. V tomto postupu přidáte uživatele do seznamu. Alternativně můžete vypnout možnost **omezit přístup**, která umožňuje uživatelům registraci v testovacím prostředí, pokud mají odkaz na registraci. 
-2. Na panelu nástrojů vyberte **Přidat uživatele** a pak vyberte **Přidat e-mailové adresy**. 
-
-    ![Tlačítko Přidat uživatele](../media/how-to-configure-student-usage/add-users-button.png)
-1. Na stránce **Přidat uživatele** zadejte e-mailové adresy uživatelů na samostatných řádcích nebo na jeden řádek oddělený středníky. 
-
-    ![Přidat e-mailové adresy uživatele](../media/how-to-configure-student-usage/add-users-email-addresses.png)
-4. Vyberte **Save** (Uložit). V seznamu se zobrazí e-mailové adresy uživatelů a jejich stavů (registrovaných nebo ne). 
-
-    ![Seznam uživatelů](../media/how-to-configure-student-usage/users-list-new.png)
-
-    Po registraci do testovacího prostředí se v seznamu zobrazí jména uživatelů. 
-    
 ## <a name="set-a-schedule-for-the-lab"></a>Nastavte plán pro testovací prostředí.
-Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální počítače v testovacím prostředí automaticky spustily nebo zastavily v určitých časech. Kvóta uživatele, kterou jste zadali dříve, je další čas přiřazený každému uživateli mimo tento naplánovaný čas. 
+Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální počítače v testovacím prostředí automaticky spustily nebo zastavily v určitých časech. Kvóta uživatele (výchozí: 10 hodin), kterou jste zadali dříve, je další čas přiřazený každému uživateli mimo tento naplánovaný čas. 
 
 1. Přepněte na stránku **plány** a na panelu nástrojů vyberte **Přidat naplánovanou událost** . 
 
     ![Tlačítko Přidat plán na stránce plány](../media/how-to-create-schedules/add-schedule-button.png)
 2. Na stránce **Přidat naplánovanou událost** proveďte následující kroky:
     1. Potvrďte, že **Standard** je vybraný jako **Typ události**.  
-    2. Zadejte **počáteční datum** pro třídu. 
-    4. Zadejte **čas spuštění** , ve kterém chcete virtuální počítače spustit.
-    5. Zadejte **čas ukončení** , ve kterém mají být virtuální počítače vypnuté. 
-    6. Zadejte **časové pásmo** pro dobu zahájení a ukončení, kterou jste zadali. 
+    2. Vyberte **počáteční datum** pro třídu. 
+    4. Vyberte **čas spuštění** , ve kterém chcete virtuální počítače spustit.
+    5. Vyberte **dobu** , po kterou mají být virtuální počítače vypnuté. 
+    6. Vyberte **časové pásmo** pro dobu zahájení a ukončení, kterou jste zadali. 
 3. Na stejné stránce **Přidat naplánovanou událost** vyberte aktuální plán v části **Opakovat** .  
 
     ![Tlačítko Přidat plán na stránce plány](../media/how-to-create-schedules/select-current-schedule.png)
@@ -145,12 +123,28 @@ Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální 
 
     Další informace o vytváření a správě plánů pro třídu naleznete v tématu [Create and Manage Schedule for učeben Labs](how-to-create-schedules.md).
 
-## <a name="send-invitation-emails-to-students"></a>Posílání e-mailů pozvánky studentům
+
+## <a name="add-users-to-the-lab"></a>Přidat uživatele do testovacího prostředí
+
+1. V nabídce vlevo vyberte **Uživatelé** . Ve výchozím nastavení je povolená možnost **omezit přístup** . Pokud je toto nastavení zapnuté, nemůže se uživatel zaregistrovat v testovacím prostředí, i když uživatel nemá odkaz na registraci, pokud se uživatel nezobrazuje v seznamu uživatelů. Pomocí registračního odkazu, který odešlete, se můžou v testovacím prostředí zaregistrovat jenom uživatelé v seznamu. V tomto postupu přidáte uživatele do seznamu. Alternativně můžete vypnout možnost **omezit přístup**, která umožňuje uživatelům registraci v testovacím prostředí, pokud mají odkaz na registraci. 
+2. Na panelu nástrojů vyberte **Přidat uživatele** a pak vyberte **Přidat podle e-mailové adresy**. 
+
+    ![Tlačítko Přidat uživatele](../media/how-to-configure-student-usage/add-users-button.png)
+1. Na stránce **Přidat uživatele** zadejte e-mailové adresy uživatelů na samostatných řádcích nebo na jeden řádek oddělený středníky. 
+
+    ![Přidat e-mailové adresy uživatele](../media/how-to-configure-student-usage/add-users-email-addresses.png)
+4. Vyberte **Save** (Uložit). V seznamu se zobrazí e-mailové adresy uživatelů a jejich stavů (registrovaných nebo ne). 
+
+    ![Seznam uživatelů](../media/how-to-configure-student-usage/users-list-new.png)
+
+    Po registraci do testovacího prostředí se v seznamu zobrazí jména uživatelů. 
+    
+
+## <a name="send-invitation-emails-to-users"></a>Posílání e-mailů pozvánky uživatelům
 
 1. Pokud na stránce již nejste, přepněte do zobrazení **Uživatelé** a na panelu nástrojů vyberte **pozvat vše** . 
 
     ![Vybrat studenty](../media/tutorial-setup-classroom-lab/invite-all-button.png)
-
 1. Na stránce **Odeslat pozvánku podle e-mailu** zadejte volitelnou zprávu a pak vyberte **Odeslat**. E-mail automaticky obsahuje odkaz na registraci. Tuto registrační odkaz můžete získat tak, že vyberete **... (tři tečky)** na panelu nástrojů a na **odkaz pro registraci**. 
 
     ![Poslat odkaz na registraci e-mailem](../media/tutorial-setup-classroom-lab/send-email.png)
@@ -159,7 +153,7 @@ Vytvořte naplánovanou událost pro testovací prostředí, aby se virtuální 
     Další informace o tom, jak přidat studenty do třídy a jak spravovat jejich použití v testovacím prostředí, najdete v tématu [jak nakonfigurovat využití studenta](how-to-configure-student-usage.md).
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste vytvořili testovací prostředí v učebně a nakonfigurovali ho. Pokud chcete získat informace o tom, jak může student přistupovat k virtuálnímu počítači v testovacím prostředí pomocí odkazu pro registraci, přejděte na další kurz:
+V tomto kurzu jste vytvořili testovací prostředí pro třídu v Azure. Pokud chcete získat informace o tom, jak může student přistupovat k virtuálnímu počítači v testovacím prostředí pomocí odkazu pro registraci, přejděte na další kurz:
 
 > [!div class="nextstepaction"]
 > [Připojení k virtuálnímu počítači v testovacím prostředí v učebně](tutorial-connect-virtual-machine-classroom-lab.md)

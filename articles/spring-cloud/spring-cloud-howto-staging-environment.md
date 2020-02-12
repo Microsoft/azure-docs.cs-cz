@@ -4,20 +4,20 @@ description: Naučte se používat nasazování s modrou zelenou službou Azure 
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 4adeb5593f86bdf3f8a4ea5f844c31a8314e0f15
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 5612a514ed89f73453f3751b34263b0beeea1c59
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276922"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138146"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Nastavení přípravného prostředí v Azure jaře cloudu
 
-Tento článek popisuje, jak nastavit pracovní nasazení pomocí modelu nasazení Blue-zelený ve jarním cloudu Azure. Také se dozvíte, jak umístit toto pracovní nasazení do produkčního prostředí beze změny produkčního nasazení přímo.
+Tento článek popisuje, jak nastavit pracovní nasazení pomocí modelu nasazení Blue-zelený ve jarním cloudu Azure. Modré/zelené nasazení je vzor průběžného doručování Azure DevOps, který spoléhá na zachování živé stávající (modré) verze, zatímco probíhá nasazení nové (zelené) verze. V tomto článku se dozvíte, jak umístit toto pracovní nasazení do produkčního prostředí beze změny produkčního nasazení přímo.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste už nasadili aplikaci PiggyMetrics z našeho [kurzu o spuštění aplikace pro jarní Cloud v Azure](spring-cloud-quickstart-launch-app-portal.md). PiggyMetrics zahrnuje tři aplikace: "brána", "Account-Service" a "auth-Service".  
 

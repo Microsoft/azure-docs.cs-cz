@@ -8,16 +8,16 @@ ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: ead9dab61e0cb60505aed9db43c61eb73a0e22a9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: af0c72f0bc5dd8f3a3cbae7b82b1ac56447cbb08
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760194"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133297"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Obnovení odstraněných řídicích panelů v Azure Portal
 
-Pokud odstraníte _publikovaný_ řídicí panel v Azure Portal, můžete tento řídicí panel obnovit do 14 dnů od odstranění. Pokud řídicí panel není publikovaný, nemůžete ho obnovit a musíte ho znovu sestavit. Další informace o publikování řídicího panelu najdete v tématu [publikování řídicího](azure-portal-dashboard-share-access.md#publish-dashboard)panelu. Pomocí těchto kroků obnovíte publikovaný řídicí panel:
+Pokud se nacházíte ve veřejném cloudu Azure a odstraníte _publikovaný_ řídicí panel v Azure Portal, můžete tento řídicí panel obnovit do 14 dnů od odstranění. Pokud se nacházíte v cloudu pro státní správu Azure nebo pokud řídicí panel není publikovaný, nemůžete ho obnovit a musíte ho znovu sestavit. Další informace o publikování řídicího panelu najdete v tématu [publikování řídicího](azure-portal-dashboard-share-access.md#publish-dashboard)panelu. Pomocí těchto kroků obnovíte publikovaný řídicí panel:
 
 1. V nabídce Azure Portal vyberte **skupiny prostředků**a pak vyberte skupinu prostředků, do které jste řídicí panel publikovali (ve výchozím nastavení se jmenuje **řídicí panely**).
 

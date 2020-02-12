@@ -1,5 +1,5 @@
 ---
-title: Správa přístupu ke správě Azure pomocí podmíněného přístupu v Azure Active Directory
+title: Správa přístupu ke správě Azure pomocí podmíněného přístupu v Azure AD
 description: Přečtěte si o použití podmíněného přístupu ve službě Azure AD ke správě přístupu ke správě Azure.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/15/2019
 ms.author: rolyon
 ms.reviewer: skwan
-ms.openlocfilehash: e4b7ce0701349cae3ef501213d0f822ee8d150d0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f3341f1c30a1581b8507652c322c00581e3972aa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142838"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137411"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Správa přístupu ke správě Azure pomocí podmíněného přístupu
 
@@ -37,10 +37,10 @@ Pokud chcete vytvořit zásadu pro správu Azure, při výběru aplikace, pro kt
 
 Zásada, kterou vytvoříte, se vztahuje na všechny koncové body správy Azure, včetně následujících:
 
-- portál Azure
+- Azure Portal
 - Poskytovatel Azure Resource Manager
 - Rozhraní API pro správu klasických služeb
-- Azure PowerShell
+- Azure Powershell
 - Portál pro správu předplatných sady Visual Studio
 - Azure DevOps
 - Portál Azure Data Factory

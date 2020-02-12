@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: sample
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 11/04/2019
-ms.openlocfilehash: 4d22fd39eae5d5cf207d6d44819f0ce7ab2eceb5
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/11/2020
+ms.openlocfilehash: f15f50e372d0bfe58018b16ebfa5d5d85644ae1a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963237"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137786"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Sestavte klasifikátor pro předpověď kategorie společnost pomocí návrháře Azure Machine Learning.
 
@@ -63,7 +63,7 @@ Pro některé společnosti se nepovedlo najít články, takže počet záznamů
 
 ## <a name="pre-process-the-text-data"></a>Předběžné zpracování textových dat
 
-K Předzpracování textových dat používáme modul **textu předzpracování** , včetně rozpoznávání vět, vět tokenizovat a tak dále. Všechny podporované možnosti najdete v článku [**předzpracování textu**](algorithm-module-reference/preprocess-text.md) . Po předběžném zpracování dat TEX používáme modul **rozdělit data** k náhodnému rozdělení vstupních dat, aby datová sada školení obsahovala 50% původních dat a testovací datová sada obsahuje 50% původních dat.
+K Předzpracování textových dat používáme modul **textu předzpracování** , včetně rozpoznávání vět, vět tokenizovat a tak dále. Všechny podporované možnosti najdete v článku [**předzpracování textu**](algorithm-module-reference/preprocess-text.md) . Po předběžném zpracování textových dat používáme modul **rozdělit data** k náhodnému rozdělení vstupních dat, aby datová sada školení obsahovala 50% původních dat a testovací datová sada obsahuje 50% původních dat.
 
 ## <a name="feature-engineering"></a>Strojírenství funkcí
 V této ukázce použijeme dvě metody, které provádí strojírenství funkcí.
@@ -79,7 +79,7 @@ V ukázkovém kanálu nastavíme počet bitů hash na hodnotu 14 a nastavíte po
 
 N-gram je souvislá sekvence n podmínek z dané sekvence textu. N-gram velikosti 1 se označuje jako unigram; n-gram velikosti 2 je bigram; n-gram velikosti 3 je Hiragana. N-gramům větších velikostí se někdy říká hodnota n, například "4 gramy", "pět-gram" atd.
 
-V modulu [**textu jsme použili funkci pro extrakci N-gramů**](algorithm-module-reference/extract-n-gram-features-from-text.md)jako jiné řešení pro strojírenství funkcí. Tento modul nejprve extrahuje sadu n-gramů, kromě n-gramů, počet dokumentů, ve kterých se každý n-gram zobrazí v textu, počítá (DF). V této ukázce se k výpočtu hodnot funkcí používá metrika TF-IDF. Pak převede nestrukturovaná textová data na numerické funkce, které mají stejnou délku, kde každá funkce představuje TF-IDF n-gram v instanci text.
+V modulu [**textu jsme použili funkci pro extrakci N-gramů**](algorithm-module-reference/extract-n-gram-features-from-text.md) jako jiné řešení pro strojírenství funkcí. Tento modul nejprve extrahuje sadu n-gramů, kromě n-gramů, počet dokumentů, ve kterých se každý n-gram zobrazí v textu, počítá (DF). V této ukázce se k výpočtu hodnot funkcí používá metrika TF-IDF. Pak převede nestrukturovaná textová data na numerické funkce, které mají stejnou délku, kde každá funkce představuje TF-IDF n-gram v instanci text.
 
 Po převodu textových dat na číselné vektory funkce se k odebrání textových dat z datové sady použije modul **výběrového sloupce** . 
 

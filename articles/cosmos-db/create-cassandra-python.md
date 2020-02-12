@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Rozhraní Cassandra API s využitím Pythonu – Azure Cosmos DB'
+title: 'Rychlý start: Rozhraní API Cassandra s využitím Pythonu – Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní API pro Apache Cassandra služby Azure Cosmos DB k vytvoření aplikace profilu pomocí Pythonu.
 author: SnehaGunda
 ms.author: sngun
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 5d5715e21b0560f4433e557f52b7fcf204e2046b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0b432653c452b6763e746f61b86e881c9cee62cc
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60891853"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134676"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí Python SDK a Azure Cosmos DB
+# <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Rychlý Start: Vytvoření aplikace Cassandra pomocí sady Python SDK a Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -24,18 +24,14 @@ ms.locfileid: "60891853"
 > * [Python](create-cassandra-python.md)
 >  
 
-Tento rychlý start ukazuje, jak pomocí Pythonu a rozhraní Azure Cosmos DB [Cassandra API](cassandra-introduction.md) sestavit aplikaci profilu naklonováním příkladu z GitHubu. Tento rychlý start také ukazuje, jak pomocí webového portálu Azure Portal vytvořit účet Azure Cosmos DB.
+V tomto rychlém startu vytvoříte účet Azure Cosmos DB rozhraní API Cassandra a pomocí aplikace Python Cassandra, která je klonována z GitHubu, vytvoříte databázi Cassandra a kontejner. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat databáze dokumentů, párů klíč-hodnota a grafů, které tak můžou využívat výhody možnosti globální distribuce a horizontálního škálování v jádru služby Azure Cosmos DB.
+## <a name="prerequisites"></a>Předpoklady
 
-## <a name="prerequisites"></a>Požadavky
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativně můžete [vyzkoušet službu Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
-
-Kromě toho je potřeba toto:
-* [Python](https://www.python.org/downloads/) verze v2.7.14
-* [Git](https://git-scm.com/)
-* [Ovladač Python pro Apache Cassandra](https://github.com/datastax/python-driver)
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure.
+- [Python 2.7.14 + nebo 3.4 +](https://www.python.org/downloads/).
+- [Git](https://git-scm.com/downloads)
+- [Ovladač Python pro Apache Cassandra](https://github.com/datastax/python-driver)
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -45,7 +41,7 @@ Než budete moct vytvořit databázi dokumentů, je potřeba pomocí služby Azu
 
 ## <a name="clone-the-sample-application"></a>Klonování ukázkové aplikace
 
-Teď naklonujeme aplikaci rozhraní Cassandra API z Githubu, nastavíme připojovací řetězec a spustíme ji. Uvidíte, jak snadno se pracuje s daty prostřednictvím kódu programu. 
+Nyní naklonujte rozhraní API Cassandra aplikaci z GitHubu, nastavíme připojovací řetězec a spustíme ji. Uvidíte, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
 1. Otevřete příkazový řádek. Vytvořte novou složku s názvem `git-samples`. Pak zavřete příkazový řádek.
 
@@ -67,7 +63,7 @@ Teď naklonujeme aplikaci rozhraní Cassandra API z Githubu, nastavíme připojo
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Všechny fragmenty kódu pocházejí ze souboru pyquickstart.py. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
+Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Všechny fragmenty kódu jsou pořízeny ze souboru *pyquickstart.py* . Jinak můžete přeskočit přímo k části [Aktualizace připojovacího řetězce](#update-your-connection-string). 
 
 * Hodnoty uživatelského jména a hesla se nastaví pomocí stránky připojovacího řetězce na webu Azure Portal. Cesta `path\to\cert` představuje cestu k certifikátu X509. 
 
@@ -134,15 +130,15 @@ Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří pr
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Připojovací řetězec umožňuje vaší aplikaci komunikovat s hostovanou databází.
+Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Připojovací řetězec umožňuje vaší aplikaci komunikovat s hostovanou databází.
 
-1. Na portálu [Azure Portal](https://portal.azure.com/) vyberte **Připojovací řetězec**. 
+1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec**. 
 
     Pomocí tlačítka ![Tlačítko pro kopírování](./media/create-cassandra-python/copy.png) na pravé straně obrazovky zkopírujte horní hodnotu KONTAKTNÍ BOD.
 
     ![Zobrazení a zkopírování přístupového uživatelského jména, hesla a kontaktního bodu na webu Azure Portal v okně připojovacího řetězce](./media/create-cassandra-python/keys.png)
 
-2. Otevřete soubor `config.py`. 
+2. Otevřete soubor *config.py* . 
 
 3. Vložte hodnotu KONTAKTNÍ BOD z portálu místo `<FILLME>` na řádku 10.
 
@@ -162,17 +158,17 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     `'password' = '2Ggkr662ifxz2Mg==`';`
 
-6. Uložte soubor config.py.
+6. Uložte soubor *config.py* .
     
 ## <a name="use-the-x509-certificate"></a>Použití certifikátu X509
 
-1. Stáhněte si certifikát Baltimore CyberTrust Root místně z [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt). Přejmenujte příponu souboru na `.cer`.
+1. Stáhněte si certifikát Baltimore CyberTrust Root místně z [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt). Přejmenujte soubor pomocí přípony souboru *. cer*.
 
    Certifikát má sériové číslo `02:00:00:b9` a otisk SHA1 `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74`.
 
-2. Otevřete `pyquickstart.py` a změňte cestu `path\to\cert` tak, aby odkazovala na váš nový certifikát.
+2. Otevřete *pyquickstart.py* a změňte `path\to\cert` tak, aby odkazovalo na nový certifikát.
 
-3. Uložte `pyquickstart.py`.
+3. Uložte *pyquickstart.py*.
 
 ## <a name="run-the-python-app"></a>Spuštění aplikace v Pythonu
 
@@ -187,7 +183,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     python -m pip install pyopenssl
     ```
 
-2. Spusťte následující příkaz a spusťte vaši aplikaci uzlu:
+2. Spuštěním následujícího příkazu spusťte aplikaci v Pythonu:
 
     ```
     python pyquickstart.py
@@ -195,7 +191,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 3. Na příkazovém řádku zkontrolujte očekávané výsledky.
 
-    Stisknutím kláves CTRL + C zastavte provádění programu a zavřete okno konzoly. 
+    Stisknutím kombinace kláves CTRL + C ukončete provádění programu a zavřete okno konzoly. 
 
     ![Zobrazení a ověření výstupu](./media/create-cassandra-python/output.png)
     
@@ -211,9 +207,9 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili vytvořit účet Azure Cosmos DB, vytvořit kontejner pomocí Průzkumníka dat a spustit aplikaci. Teď můžete do účtu Cosmos DB importovat další data. 
+V tomto rychlém startu jste zjistili, jak vytvořit účet Azure Cosmos DB pomocí rozhraní API Cassandra a spustit aplikaci v Pythonu Cassandra, která vytvoří databázi Cassandra a kontejner. Teď můžete do svého účtu Azure Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
 > [Import dat Cassandra do služby Azure Cosmos DB](cassandra-import-data.md)

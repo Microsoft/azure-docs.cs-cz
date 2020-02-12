@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 8/30/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 20bc22661f9faad1b289dbbe7200f4f83c097f0e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.openlocfilehash: 8eea568217dc5f47c45433e5fdd755682e322b2f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451225"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134052"
 ---
 # <a name="azure-serial-console"></a>Sériová konzola Azure
 
-Konzola sériového portu v Azure Portal poskytuje přístup k textové konzole pro virtuální počítače a instance sady škálování virtuálních počítačů, na kterých běží Linux nebo Windows. Toto sériové připojení umožňuje využívat sériový port ttyS0 nebo COM1 virtuálního počítače nebo instance škálovací sady virtuálních počítačů, a zajišťuje tak přístup nezávislý na stavu sítě nebo operačního systému. Ke konzole sériového přístupu se dá přistupovat jenom pomocí Azure Portal a je povolená jenom pro uživatele, kteří mají roli přístupu přispěvatel nebo vyšší, k virtuálnímu počítači nebo sadě škálování virtuálních počítačů.
+Konzola sériového portu v Azure Portal poskytuje přístup k textové konzole pro virtuální počítače a instance sady škálování virtuálních počítačů, na kterých běží Linux nebo Windows. Toto sériové připojení se připojuje k sériovému portu ttyS0 nebo COM1 virtuálního počítače nebo instance sady škálování virtuálních počítačů a poskytuje přístup nezávisle na stavu sítě nebo operačního systému. Ke konzole sériového přístupu se dá přistupovat jenom pomocí Azure Portal a je povolená jenom pro uživatele, kteří mají roli přístupu přispěvatel nebo vyšší, k virtuálnímu počítači nebo sadě škálování virtuálních počítačů.
 
 Sériová konzola funguje stejným způsobem pro virtuální počítače a instance sady škálování virtuálních počítačů. V tomto dokumentu budou všechny zmínky k virtuálním počítačům implicitně zahrnovat instance sady škálování virtuálních počítačů, pokud není uvedeno jinak.
 
@@ -34,28 +34,28 @@ Sériová konzola funguje stejným způsobem pro virtuální počítače a insta
 Pro přístup ke konzole sériového portu na virtuálním počítači nebo instanci sady škálování virtuálního počítače budete potřebovat následující:
 
 - Pro virtuální počítač musí být povolená Diagnostika spouštění.
-- Uživatelský účet, který používá ověřování heslem, musí existovat v rámci virtuálního počítače. Uživatele založené na heslech můžete vytvořit pomocí funkce [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) rozšíření pro přístup k virtuálním počítačům. Vyberte **resetovat heslo** z **podpora a řešení potíží** oddílu.
+- Uživatelský účet, který používá ověřování heslem, musí existovat v rámci virtuálního počítače. Uživatele založené na heslech můžete vytvořit pomocí funkce [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) rozšíření pro přístup k virtuálním počítačům. V části **Podpora a řešení potíží** vyberte **resetovat heslo** .
 - Účet Azure přistupující ke konzole sériového portu musí mít [roli Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) pro virtuální počítač i pro účet úložiště [diagnostiky spouštění](boot-diagnostics.md) .
 
 > [!NOTE]
-> - Klasická nasazení nejsou podporovány. Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí používat model nasazení Azure Resource Manager.
+> Klasická nasazení nejsou podporovány. Vaše virtuální počítač nebo instance sady škálování virtuálního počítače musí používat model nasazení Azure Resource Manager.
 
 ## <a name="get-started-with-the-serial-console"></a>Začínáme s konzolou sériového portu
 Konzola sériového portu pro virtuální počítače a sadu škálování virtuálního počítače je dostupná jenom prostřednictvím Azure Portal:
 
 ### <a name="serial-console-for-virtual-machines"></a>Sériová Konzola pro Virtual Machines
 Sériová Konzola pro virtuální počítače je stejně jednoduchá jako při kliknutí na **sériová konzola** v části **Podpora a řešení potíží** v Azure Portal.
-  1. Otevřete [portál Azure](https://portal.azure.com).
+  1. Otevřete web [Azure Portal](https://portal.azure.com).
 
   1. Přejděte na **všechny prostředky** a vyberte virtuální počítač. Otevře se stránka s přehledem pro virtuální počítač.
 
-  1. Přejděte dolů k položce **podpora a řešení potíží** a vyberte **konzoly sériového portu**. Nové podokno v konzole sériového portu se otevře a aktivuje připojení.
+  1. Přejděte dolů k části **Podpora a řešení potíží** a vyberte **sériová konzola**. Nové podokno v konzole sériového portu se otevře a aktivuje připojení.
 
      ![Okno sériové konzoly pro Linux](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
 ### <a name="serial-console-for-virtual-machine-scale-sets"></a>Sériová Konzola pro Virtual Machine Scale Sets
 Sériová konzola je k dispozici pro virtuální počítače, které jsou dostupné na každé instanci v rámci sady škálování. Před zobrazením tlačítka **sériová konzola** budete muset přejít na jednotlivé instance sady škálování virtuálního počítače. Pokud vaše sada škálování virtuálního počítače nemá zapnutou diagnostiku spouštění, ujistěte se, že jste aktualizovali model sady škálování virtuálních počítačů, aby se aktivovala spouštění diagnostiky, a pak upgradovat všechny instance na nový model, aby bylo možné získat přístup ke konzole sériového portu.
-  1. Otevřete [portál Azure](https://portal.azure.com).
+  1. Otevřete web [Azure Portal](https://portal.azure.com).
 
   1. Přejděte na **všechny prostředky** a vyberte sadu škálování virtuálního počítače. Otevře se stránka s přehledem pro sadu škálování virtuálního počítače.
 
@@ -66,6 +66,37 @@ Sériová konzola je k dispozici pro virtuální počítače, které jsou dostup
   1. V části **Podpora a řešení potíží** vyberte **sériová konzola**. Nové podokno v konzole sériového portu se otevře a aktivuje připojení.
 
      ![Sériová Konzola pro sadu škálování virtuálního počítače se systémem Linux](./media/virtual-machines-serial-console/vmss-start-console.gif)
+
+## <a name="serial-console-rbac-role"></a>Role RBAC konzoly sériového portu
+Jak je uvedeno výše, sériová konzola vyžaduje Přispěvatel virtuálních počítačů nebo větší přístup k vašemu virtuálnímu počítači nebo sadě škálování virtuálních počítačů. Pokud nechcete, aby se Přispěvatel virtuálních počítačů udělil uživateli, ale přesto chcete uživateli povolit přístup ke službě sériového prostředí, můžete to udělat s následující rolí:
+
+```
+{
+  "Name": "Serial Console Role",
+  "IsCustom": true,
+  "Description": "Role for Serial Console Users that provides significantly reduced access than VM Contributor",
+  "Actions": [
+      "Microsoft.Compute/virtualMachines/*/write",
+      "Microsoft.Compute/virtualMachines/*/read",
+      "Microsoft.Storage/storageAccounts/*"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/subscriptions/<subscriptionId>"
+  ]
+}
+```
+
+### <a name="to-create-and-use-the-role"></a>Vytvoření a použití role:
+*   Uložte kód JSON do známého umístění, například `~/serialconsolerole.json`.
+*   K vytvoření definice role použijte následující příkaz AZ CLI: `az role definition create --role-definition serialconsolerole.json -o=json`
+*   Pokud potřebujete roli aktualizovat, použijte následující příkaz: `az role definition update --role-definition serialconsolerole.json -o=json`
+*   Role se zobrazí v Access Control (IAM) na portálu (může trvat několik minut, než se rozšíří).
+*   Do virtuálního počítače můžete přidat uživatele a účet úložiště diagnostiky spouštění s rolí vlastní role.
+    *   Všimněte si, že uživateli musí být udělena vlastní role na virtuálním počítači *a* účet úložiště diagnostiky spouštění.
+
 
 ## <a name="advanced-uses-for-serial-console"></a>Pokročilé použití pro sériovou konzolu
 Kromě přístupu ke konzole ke svému VIRTUÁLNÍmu počítači můžete také použít konzolu sériového prostředí Azure pro následující:

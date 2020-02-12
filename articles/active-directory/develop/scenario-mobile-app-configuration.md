@@ -1,5 +1,6 @@
 ---
-title: Konfigurace mobilních aplikací, které volají webová rozhraní API – Microsoft Identity Platform | Azure
+title: Konfigurace mobilních aplikací, které volají webová rozhraní API | Azure
+titleSuffix: Microsoft identity platform
 description: Zjistěte, jak vytvořit mobilní aplikaci, která volá webová rozhraní API (konfigurace kódu aplikace).
 services: active-directory
 documentationcenter: dev-center-name
@@ -14,28 +15,28 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 61d3a7b7f06ffdb7f39f80f7f3bf19e9007945d2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: fc25f13d0b0b8a264dcd47a5fdebb0533e93fb55
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702109"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132491"
 ---
-# <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Mobilní aplikace, která volá webovou rozhraní API – konfigurace kódu
+# <a name="configure-a-mobile-app-that-calls-web-apis"></a>Konfigurace mobilní aplikace, která volá webová rozhraní API
 
-Po vytvoření aplikace se dozvíte, jak nakonfigurovat kód pomocí parametrů registrace aplikace. Mobilní aplikace mají také několik složitých specifických, která musí dělat s přizpůsobením rozhraní, které se používá k vytváření těchto aplikací.
+Po vytvoření aplikace se dozvíte, jak nakonfigurovat kód pomocí parametrů registrace aplikace. Mobilní aplikace představují některé složitosti, které souvisí s přizpůsobením do jejich prostředí pro vytváření.
 
-## <a name="msal-libraries-supporting-mobile-apps"></a>Knihovny MSAL podporující mobilní aplikace
+## <a name="find-msal-support-for-mobile-apps"></a>Najít podporu MSAL pro mobilní aplikace
 
-Knihovny Microsoftu podporující mobilní aplikace jsou:
+Následující typy Microsoft Authentication Library (MSAL) podporují mobilní aplikace.
 
-  Knihovna MSAL | Popis
-  ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | K vývoji přenosných aplikací. MSAL.NET podporované platformy pro sestavení mobilní aplikace jsou UWP, Xamarin. iOS a Xamarin. Android.
-  ![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Vývoj nativních aplikací pro iOS s cílem – C nebo SWIFT
-  ![MSAL. Svém](media/sample-v2-code/logo_android.png) <br/> MSAL. Svém | Vývoj nativních aplikací pro Android v jazyce Java pro Android
+MSAL | Popis
+------------ | ----------
+![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Slouží k vývoji přenosných aplikací. MSAL.NET podporuje následující platformy pro vytváření mobilních aplikací: Univerzální platforma Windows (UWP), Xamarin. iOS a Xamarin. Android.
+![MSAL. iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL. iOS | Slouží k vývoji nativních aplikací pro iOS pomocí objektivu-C nebo SWIFT.
+![MSAL. Svém](media/sample-v2-code/logo_android.png) <br/> MSAL. Svém | Slouží k vývoji nativních aplikací pro Android v jazyce Java pro Android.
 
-## <a name="instantiating-the-application"></a>Vytvoření instance aplikace
+## <a name="instantiate-the-application"></a>Vytvoření instance aplikace
 
 ### <a name="android"></a>Android
 
@@ -49,9 +50,7 @@ PublicClientApplication sampleApp = new PublicClientApplication(
 
 ### <a name="ios"></a>iOS
 
-Mobilní aplikace na iOS potřebují vytvořit instanci `MSALPublicClientApplication` třídy.
-
-Cíl-C:
+Mobilní aplikace na iOS potřebují vytvořit instanci `MSALPublicClientApplication` třídy. Chcete-li vytvořit instanci třídy, použijte následující kód. 
 
 ```objc
 NSError *msalError = nil;
@@ -60,32 +59,33 @@ MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig 
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
 
-Swift:
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
 if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
 ```
 
-Existují [Další vlastnosti MSALPublicClientApplicationConfig](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplicationConfig.html#/Configuration%20options) , které mohou přepsat výchozí autoritu, určit identifikátor URI pro přesměrování nebo změnit chování při ukládání tokenu MSAL. 
+[Další vlastnosti MSALPublicClientApplicationConfig](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALPublicClientApplicationConfig.html#/Configuration%20options) můžou přepsat výchozí autoritu, určit identifikátor URI pro přesměrování nebo změnit chování ukládání do mezipaměti tokenu MSAL. 
 
 ### <a name="xamarin-or-uwp"></a>Xamarin nebo UWP
 
-Následující článek vysvětluje, jak vytvořit instanci aplikace pro aplikace Xamarin. iOS, Xamarin. Android a UWP.
+V této části se dozvíte, jak vytvořit instanci aplikace pro aplikace Xamarin. iOS, Xamarin. Android a UWP.
 
-#### <a name="instantiating-the-application"></a>Vytvoření instance aplikace
+#### <a name="instantiate-the-application"></a>Vytvoření instance aplikace
 
-V Xamarin nebo UWP nejjednodušší způsob vytvoření instance aplikace je následující, kde `ClientId` identifikátor GUID vaší registrované aplikace.
+V Xamarin nebo UWP je nejjednodušší způsob, jak vytvořit instanci aplikace, pomocí následujícího kódu. V tomto kódu `ClientId` je identifikátor GUID vaší registrované aplikace.
 
 ```csharp
 var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
 
-Existují další metody*parametrů* , které nastavují nadřazený objekt uživatelského rozhraní, přepíší výchozí autority, určují název klienta a verzi (pro telemetrii), určují identifikátor URI přesměrování, určují továrnu protokolu HTTP, který se má použít (například pro zpracování proxy serverů, určení telemetrie a protokolování). Toto je téma v následujících odstavcích.
+Další metody `With<Parameter>` nastaví nadřazený objekt uživatelského rozhraní, přepíší výchozí autority, určíte název a verzi klienta pro telemetrii, určíte identifikátor URI pro přesměrování a určíte továrnu HTTP, která se má použít. Objekt pro vytváření HTTP se může použít například ke zpracování proxy serverů a k určení telemetrie a protokolování. 
 
-##### <a name="specifying-the-parent-uiwindowactivity"></a>Zadání nadřazeného uživatelského rozhraní/okna/aktivity
+Následující části obsahují další informace o vytváření instancí aplikace.
 
-V Androidu je nutné před provedením interaktivního ověřování předat nadřazenou aktivitu. V případě iOS musíte při použití zprostředkovatele předat soubor viewcontroller. Stejně jako u UWP byste mohli chtít předat nadřazenému oknu. To je možné při získání tokenu, ale je také možné zadat zpětné volání při vytvoření aplikace delegáta, který vrací UIParent.
+##### <a name="specify-the-parent-ui-window-or-activity"></a>Zadání nadřazeného uživatelského rozhraní, okna nebo aktivity
+
+V Androidu je nutné před provedením interaktivního ověřování předat nadřazenou aktivitu. Když v systému iOS používáte zprostředkovatele, musíte se `ViewController`předat. Stejně jako u UWP byste mohli chtít předat nadřazenému oknu. Po získání tokenu ho předáte. Ale při vytváření aplikace můžete také určit zpětné volání jako delegáta, který vrací `UIParent`.
 
 ```csharp
 IPublicClientApplication application = PublicClientApplicationBuilder.Create(clientId)
@@ -93,7 +93,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-V Androidu doporučujeme [použít `CurrentActivityPlugin`.](https://github.com/jamesmontemagno/CurrentActivityPlugin)  Váš kód `PublicClientApplication` Builder by pak vypadal takto:
+V Androidu doporučujeme použít [`CurrentActivityPlugin`](https://github.com/jamesmontemagno/CurrentActivityPlugin). Výsledný kód tvůrce `PublicClientApplication` vypadá jako v tomto příkladu:
 
 ```csharp
 // Requires MSAL.NET 4.2 or above
@@ -103,76 +103,81 @@ var pca = PublicClientApplicationBuilder
   .Build();
 ```
 
-##### <a name="more-app-building-parameters"></a>Další parametry sestavování aplikací
+##### <a name="find-more-app-building-parameters"></a>Najít další parametry sestavování aplikací
 
-- Seznam všech modifikátorů dostupných v `PublicClientApplicationBuilder`najdete v referenční dokumentaci [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods) .
-- Popis všech možností vystavených v `PublicClientApplicationOptions` naleznete v tématu [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)v referenční dokumentaci.
+Seznam všech metod, které jsou k dispozici na `PublicClientApplicationBuilder`, naleznete v [seznamu metod](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
 
-## <a name="xamarin-ios-specific-considerations"></a>Konkrétní předpoklady pro Xamarin iOS
+Popis všech možností, které jsou k dispozici v `PublicClientApplicationOptions`, naleznete v [referenční dokumentaci](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions).
 
-V systému Xamarin iOS je při používání MSAL.NET potřeba vzít v úvahu několik důležitých informací:
+## <a name="tasks-for-xamarin-ios"></a>Úkoly pro Xamarin iOS
 
-1. [Přepsání a implementace funkce `OpenUrl` v `AppDelegate`](msal-net-xamarin-ios-considerations.md#implement-openurl)
-1. [Povolit skupiny řetězce klíčů](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
-1. [Povolit sdílení mezipaměti tokenů](msal-net-xamarin-ios-considerations.md#enable-token-cache-sharing-across-ios-applications)
-1. [Povolit přístup k řetězci klíčů](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
+Pokud používáte MSAL.NET v Xamarin iOS, proveďte následující úkoly.
 
-Podrobnosti jsou uvedené v [informacích pro Xamarin iOS](msal-net-xamarin-ios-considerations.md)
+* [Přepsání a implementace funkce `OpenUrl` v `AppDelegate`](msal-net-xamarin-ios-considerations.md#implement-openurl)
+* [Povolit skupiny řetězce klíčů](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
+* [Povolit sdílení mezipaměti tokenů](msal-net-xamarin-ios-considerations.md#enable-token-cache-sharing-across-ios-applications)
+* [Povolit přístup k řetězci klíčů](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
 
-## <a name="msal-for-ios-and-macos-specific-considerations"></a>MSAL pro konkrétní otázky týkající se iOS a macOS
+Další informace najdete v tématu [předpoklady pro Xamarin iOS](msal-net-xamarin-ios-considerations.md).
 
-Podobné požadavky platí při použití MSAL pro iOS a macOS:
+## <a name="tasks-for-msal-for-ios-and-macos"></a>Úlohy pro MSAL pro iOS a macOS
 
-1. [Implementace `openURL`ho zpětného volání](#brokered-authentication-for-msal-for-ios-and-macos)
-2. [Povolit přístupové skupiny pro řetězce klíčů](howto-v2-keychain-objc.md)
-3. [Přizpůsobení prohlížečů a webových zobrazení](customize-webviews.md)
+Tyto úlohy jsou nezbytné při použití MSAL pro iOS a macOS:
 
-## <a name="xamarin-android-specific-considerations"></a>Konkrétní předpoklady pro Xamarin Android
+* [Implementace `openURL`ho zpětného volání](#brokered-authentication-for-msal-for-ios-and-macos)
+* [Povolit přístupové skupiny pro řetězce klíčů](howto-v2-keychain-objc.md)
+* [Přizpůsobení prohlížečů a webových zobrazení](customize-webviews.md)
 
-Tady jsou specifiky pro Xamarin Android:
+## <a name="tasks-for-xamarinandroid"></a>Úkoly pro Xamarin. Android
 
-- [Zajistěte, aby se řízení vrátilo zpátky na MSAL, jakmile skončí interaktivní část toku ověřování.](msal-net-xamarin-android-considerations.md#ensuring-control-goes-back-to-msal-once-the-interactive-portion-of-the-authentication-flow-ends)
+Pokud používáte Xamarin. Android, proveďte následující úlohy:
+
+- [Zajistěte, aby se řízení vrátilo zpátky na MSAL po ukončení interaktivní části toku ověřování.](msal-net-xamarin-android-considerations.md#ensure-that-control-returns-to-msal)
 - [Aktualizace manifestu pro Android](msal-net-xamarin-android-considerations.md#update-the-android-manifest)
 - [Použít vložené webové zobrazení (volitelné)](msal-net-xamarin-android-considerations.md#use-the-embedded-web-view-optional)
-- [Řešení potíží](msal-net-xamarin-android-considerations.md#troubleshooting)
+- [Řešení potíží podle potřeby](msal-net-xamarin-android-considerations.md#troubleshoot)
 
-Podrobnosti najdete v [informacích pro Xamarin Android](msal-net-xamarin-android-considerations.md) .
+Další informace najdete v tématu [požadavky pro Xamarin. Android](msal-net-xamarin-android-considerations.md).
 
-Nakonec existují určité informace o prohlížečích v Androidu. Jsou vysvětleny v tématu [požadavky pro Xamarin Android, které se týkají MSAL.NET](msal-net-system-browser-android-considerations.md)
+Informace o prohlížečích v Androidu najdete v tématu [předpoklady pro Xamarin. Android pro MSAL.NET](msal-net-system-browser-android-considerations.md).
 
-#### <a name="uwp-specific-considerations"></a>Konkrétní předpoklady pro UWP
+#### <a name="tasks-for-uwp"></a>Úlohy pro UWP
 
-Na UWP můžete používat podnikové sítě. Další informace o tom, jak používat knihovnu MSAL s UWP, najdete v tématu [informace o Univerzální platforma Windows specifických pro použití s MSAL.NET](msal-net-uwp-considerations.md).
+Na UWP můžete používat podnikové sítě. V následujících částech jsou vysvětleny úlohy, které byste měli provést v podnikovém scénáři.
 
-## <a name="configuring-the-application-to-use-the-broker"></a>Konfigurace aplikace pro použití zprostředkovatele
+Další informace najdete v tématu věnovaném [důležitým hledisku pro UWP pomocí MSAL.NET](msal-net-uwp-considerations.md).
 
-### <a name="why-use-brokers-in-ios-and-android-applications"></a>Proč používat zprostředkovatele v aplikacích pro iOS a Android?
+## <a name="configure-the-application-to-use-the-broker"></a>Konfigurace aplikace pro použití zprostředkovatele
 
 V zařízeních s Androidem a iOS poskytují zprostředkovatelé tyto akce:
 
-- Jednotné přihlašování (SSO), když je zařízení zaregistrované v AAD. Uživatelé se nebudou muset přihlašovat ke každé aplikaci.
-- Identifikace zařízení. Pomocí zásad podmíněného přístupu pro zařízení Azure AD povolí přístup k certifikátu zařízení vytvořenému v zařízení, když se připojil k síti na pracovišti.
-- Ověření identifikace aplikace Když aplikace volá zprostředkovatele, předá adresu URL pro přesměrování a zprostředkovatel ji ověří.
+- **Jednotné přihlašování (SSO)** : jednotné přihlašování můžete použít pro zařízení zaregistrovaná ve službě Azure Active Directory (Azure AD). Když použijete jednotné přihlašování, uživatelé se nemusí přihlašovat ke každé aplikaci.
+- **Identifikace zařízení**: Toto nastavení umožňuje zásady podmíněného přístupu, které se vztahují k zařízením Azure AD. Proces ověřování používá certifikát zařízení, který byl vytvořen v době, kdy bylo zařízení připojeno k pracovní ploše.
+- **Ověření identifikace aplikace**: když aplikace volá zprostředkovatele, PŘEDÁ adresu URL pro přesměrování. Zprostředkovatel je pak ověří.
 
 ### <a name="enable-the-broker-on-xamarin"></a>Povolení zprostředkovatele v Xamarin
 
-Chcete-li povolit jednu z těchto funkcí, použijte při volání metody `PublicClientApplicationBuilder.CreateApplication` parametr `WithBroker()`. ve výchozím nastavení je `.WithBroker()` nastaveno na hodnotu true. Postupujte podle následujících kroků pro [Xamarin. iOS](#brokered-authentication-for-xamarinios).
+Pokud chcete povolit zprostředkovatele na Xamarin, použijte při volání metody `PublicClientApplicationBuilder.CreateApplication` parametr `WithBroker()`. Ve výchozím nastavení je `.WithBroker()` nastaveno na hodnotu true. 
+
+Pokud chcete povolit zprostředkované ověřování pro Xamarin. iOS, postupujte podle kroků v [části Xamarin. iOS](#enable-brokered-authentication-for-xamarin-ios) v tomto článku.
 
 ### <a name="enable-the-broker-for-msal-for-android"></a>Povolení zprostředkovatele pro MSAL pro Android
 
-Informace o povolení zprostředkovatele v Androidu najdete v tématu věnovaném [zprostředkovateli ověřování v Androidu](brokered-auth.md) . 
+Informace o povolení zprostředkovatele v Androidu najdete v tématu zprostředkované [ověřování na Androidu](brokered-auth.md). 
 
 ### <a name="enable-the-broker-for-msal-for-ios-and-macos"></a>Povolení zprostředkovatele pro MSAL pro iOS a macOS
 
-Zprostředkované ověřování je ve výchozím nastavení povolené pro scénáře AAD v MSAL pro iOS a macOS. Podle následujících kroků nakonfigurujte aplikaci pro podporu zprostředkovaných ověřování pro [MSAL pro iOS a MacOS](#brokered-authentication-for-msal-for-ios-and-macos). Všimněte si, že některé kroky se liší od [MSAL pro Xamarin. iOS](#brokered-authentication-for-xamarinios) a [MSAL pro iOS a MacOS](#brokered-authentication-for-msal-for-ios-and-macos).
+Zprostředkované ověřování je ve výchozím nastavení povolené pro scénáře Azure AD v MSAL pro iOS a macOS. 
 
-### <a name="brokered-authentication-for-xamarinios"></a>Zprostředkované ověřování pro Xamarin. iOS
+Následující části obsahují pokyny ke konfiguraci aplikace pro podporu zprostředkovaných ověřování pro MSAL pro Xamarin. iOS nebo MSAL pro iOS a macOS. V těchto dvou sadách instrukcí se některé kroky liší.
 
-Použijte následující postup, chcete-li aplikaci Xamarin. iOS povolit komunikaci s aplikací [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) .
+### <a name="enable-brokered-authentication-for-xamarin-ios"></a>Povolit zprostředkované ověřování pro Xamarin iOS
+
+Postupujte podle kroků v této části, abyste aplikaci Xamarin. iOS mohli komunikovat s aplikací [Microsoft Authenticator](https://itunes.apple.com/us/app/microsoft-authenticator/id983156458) .
 
 #### <a name="step-1-enable-broker-support"></a>Krok 1: povolení podpory zprostředkovatele
 
-Podpora zprostředkovatele je povolená na základě`PublicClientApplication`. Ve výchozím nastavení je zakázaný. Při vytváření `PublicClientApplication` prostřednictvím `PublicClientApplicationBuilder`je nutné použít parametr `WithBroker()` (ve výchozím nastavení nastaven na hodnotu true).
+Podpora zprostředkovatele je ve výchozím nastavení zakázaná. Povolíte ji pro jednotlivé `PublicClientApplication` třídy. Při vytváření třídy `PublicClientApplication` pomocí `PublicClientApplicationBuilder`použijte parametr `WithBroker()`. Ve výchozím nastavení je parametr `WithBroker()` nastaven na hodnotu true.
 
 ```csharp
 var app = PublicClientApplicationBuilder
@@ -184,7 +189,7 @@ var app = PublicClientApplicationBuilder
 
 #### <a name="step-2-update-appdelegate-to-handle-the-callback"></a>Krok 2: aktualizace AppDelegate pro zpracování zpětného volání
 
-Když MSAL.NET volá zprostředkovatele, zprostředkovatel pak vrátí zpět do vaší aplikace prostřednictvím metody `AppDelegate.OpenUrl`. Vzhledem k tomu, že MSAL bude čekat na odpověď od služby Broker, musí vaše aplikace spolupracovat a volat MSAL.NET zpátky. Provedete to tak, že aktualizujete soubor `AppDelegate.cs`, abyste přepsali níže uvedenou metodu.
+Když MSAL.NET volá zprostředkovatele, zprostředkovatel pak zavolá zpět do vaší aplikace. Volá zpět pomocí metody `AppDelegate.OpenUrl`. Vzhledem k tomu, že MSAL čeká na odpověď od služby Broker, musí vaše aplikace spolupracovat a volat MSAL.NET zpátky. Toto chování nastavíte tak, že aktualizujete soubor `AppDelegate.cs` pro přepsání metody, jak ukazuje následující kód.
 
 ```csharp
 public override bool OpenUrl(UIApplication app, NSUrl url,
@@ -204,70 +209,73 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 }
 ```
 
-Tato metoda je vyvolána při každém spuštění aplikace a slouží jako příležitost ke zpracování odpovědi od zprostředkovatele a dokončení procesu ověřování iniciované nástrojem MSAL.NET.
+Tato metoda je vyvolána při každém spuštění aplikace. Je příležitost zpracovat odpověď od služby Broker a dokončit proces ověřování, který MSAL.NET zahájil.
 
 #### <a name="step-3-set-a-uiviewcontroller"></a>Krok 3: nastavení UIViewController ()
 
-V případě Xamarin iOS nemusíte normálně nastavovat okno objektu, ale v takovém případě budete moci odesílat a přijímat odpovědi od zprostředkovatele. Pořád v `AppDelegate.cs`nastavte soubor viewcontroller.
+Pro Xamarin iOS nemusíte normálně nastavovat okno objektu. V takovém případě byste však měli nastavit, aby bylo možné odesílat a přijímat odpovědi od zprostředkovatele. Chcete-li nastavit okno objektu, v `AppDelegate.cs`nastavíte `ViewController`.
 
-Chcete-li nastavit okno objektu, proveďte následující kroky:
+Chcete-li nastavit okno objektu, postupujte podle následujících kroků:
 
-1) V `AppDelegate.cs`nastavte `App.RootViewController` na nové `UIViewController()`. Tím se zajistí, že `UIViewController` se voláním zprostředkovatele. Pokud není správně nastavená, může se zobrazit tato chyba: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
-2) V volání AcquireTokenInteractive použijte `.WithParentActivityOrWindow(App.RootViewController)` a předejte odkaz na okno objektu, které použijete.
+1. V `AppDelegate.cs`nastavte `App.RootViewController` na nové `UIViewController()`. Toto nastavení zajišťuje, že volání služby Broker zahrnuje `UIViewController`. Pokud není správně nastavená, může se zobrazit tato chyba:
 
-**Příklad:**
+    `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker."`
 
-V `App.cs`:
-```csharp
-   public static object RootViewController { get; set; }
-```
-V `AppDelegate.cs`:
-```csharp
-   LoadApplication(new App());
-   App.RootViewController = new UIViewController();
-```
-V volání metody získání tokenu:
-```csharp
-result = await app.AcquireTokenInteractive(scopes)
-             .WithParentActivityOrWindow(App.RootViewController)
-             .ExecuteAsync();
-```
+1. Na `AcquireTokenInteractive` volání použijte `.WithParentActivityOrWindow(App.RootViewController)`. Předejte odkaz na okno objektu, které budete používat. Tady je příklad:
 
+    V `App.cs`:
+    ```csharp
+       public static object RootViewController { get; set; }
+    ```
+    V `AppDelegate.cs`:
+    ```csharp
+       LoadApplication(new App());
+       App.RootViewController = new UIViewController();
+    ```
+    Ve `AcquireToken` volání:
+    ```csharp
+    result = await app.AcquireTokenInteractive(scopes)
+                 .WithParentActivityOrWindow(App.RootViewController)
+                 .ExecuteAsync();
+    ```
+    
 #### <a name="step-4-register-a-url-scheme"></a>Krok 4: registrace schématu adresy URL
 
-MSAL.NET používá adresy URL k vyvolání zprostředkovatele a pak vrátí odpověď zprostředkovatele zpátky do vaší aplikace. Pokud chcete dokončit zpáteční cestu, musíte do souboru `Info.plist` zaregistrovat schéma URL pro vaši aplikaci.
+MSAL.NET používá adresy URL k vyvolání zprostředkovatele a pak vrátí odpověď zprostředkovatele zpátky do vaší aplikace. Pokud chcete dokončit zpáteční cestu, zaregistrujte schéma URL vaší aplikace do souboru `Info.plist`. 
 
-`CFBundleURLSchemes` předponou `msauth`. Pak na konec přidejte `CFBundleURLName`.
+Pokud chcete zaregistrovat schéma URL vaší aplikace, použijte následující postup:
 
-`$"msauth.(BundleId)"`
+1. `CFBundleURLSchemes` předpony s `msauth` 
+1. Přidejte `CFBundleURLName` do konce. Postupujte podle tohoto vzoru: 
 
-**Příklad:** 
-`msauth.com.yourcompany.xforms`
+   `$"msauth.(BundleId)"`
 
-> [!NOTE]
-> Toto schéma URL se stane součástí RedirectUri, který slouží k jednoznačné identifikaci vaší aplikace při přijímání odpovědi od zprostředkovatele.
+   Tady `BundleId` jednoznačně identifikuje vaše zařízení. Pokud je například `BundleId` `yourcompany.xforms`, vaše schéma adresy URL je `msauth.com.yourcompany.xforms`.
+    
+   > [!NOTE]
+   > Toto schéma URL se stane součástí identifikátoru URI přesměrování, který jedinečně identifikuje vaši aplikaci, když obdrží odpověď zprostředkovatele.
+    
+   ```XML
+    <key>CFBundleURLTypes</key>
+       <array>
+         <dict>
+           <key>CFBundleTypeRole</key>
+           <string>Editor</string>
+           <key>CFBundleURLName</key>
+           <string>com.yourcompany.xforms</string>
+           <key>CFBundleURLSchemes</key>
+           <array>
+             <string>msauth.com.yourcompany.xforms</string>
+           </array>
+         </dict>
+       </array>
+   ```
+    
+#### <a name="step-5-add-to-the-lsapplicationqueriesschemes-section"></a>Krok 5: přidání do oddílu LSApplicationQueriesSchemes
 
-```XML
- <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-        <key>CFBundleTypeRole</key>
-        <string>Editor</string>
-        <key>CFBundleURLName</key>
-        <string>com.yourcompany.xforms</string>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>msauth.com.yourcompany.xforms</string>
-        </array>
-      </dict>
-    </array>
-```
+MSAL používá `–canOpenURL:` ke kontrole, jestli je zprostředkovatel nainstalovaný na zařízení. V systému iOS 9 byla společnost Apple uzamčena schématy, pro které se aplikace může dotazovat.
 
-#### <a name="step-5-lsapplicationqueriesschemes"></a>Krok 5: LSApplicationQueriesSchemes
-
-MSAL používá `–canOpenURL:` ke kontrole, jestli je zprostředkovatel nainstalovaný na zařízení. V systému iOS 9 společnost Apple zablokoval, ke kterým schématům se může aplikace dotazovat.
-
-**Přidejte** **`msauthv2`** do části `LSApplicationQueriesSchemes` souboru `Info.plist`.
+Přidejte `msauthv2` do části `LSApplicationQueriesSchemes` souboru `Info.plist`, jako v následujícím příkladu kódu:
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>
@@ -278,13 +286,11 @@ MSAL používá `–canOpenURL:` ke kontrole, jestli je zprostředkovatel nainst
 
 ### <a name="brokered-authentication-for-msal-for-ios-and-macos"></a>Zprostředkované ověřování pro MSAL pro iOS a macOS
 
-Zprostředkované ověřování je ve výchozím nastavení povolené pro scénáře AAD.
+Zprostředkované ověřování je ve výchozím nastavení povolené pro scénáře Azure AD.
 
 #### <a name="step-1-update-appdelegate-to-handle-the-callback"></a>Krok 1: aktualizace AppDelegate pro zpracování zpětného volání
 
-Když MSAL pro iOS a macOS volá zprostředkovatele, zprostředkovatel pak zase volá zpět do své aplikace prostřednictvím metody `openURL`. Vzhledem k tomu, že MSAL bude čekat na odpověď od služby Broker, musí vaše aplikace spolupracovat a volat MSAL zpátky. Provedete to tak, že aktualizujete soubor `AppDelegate.m`, abyste přepsali níže uvedenou metodu.
-
-Cíl-C:
+Když MSAL pro iOS a macOS volá zprostředkovatele, zprostředkovatel volá zpět do vaší aplikace pomocí metody `openURL`. Vzhledem k tomu, že MSAL čeká na odpověď od služby Broker, musí vaše aplikace spolupracovat na zpětné volání MSAL. Tuto schopnost nastavte tak, že aktualizujete soubor `AppDelegate.m` pro přepsání metody, jak ukazuje následující příklad kódu.
 
 ```objc
 - (BOOL)application:(UIApplication *)app
@@ -295,8 +301,6 @@ Cíl-C:
                                          sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]];
 }
 ```
-
-Swift:
 
 ```swift
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -309,38 +313,48 @@ Swift:
     }
 ```
 
-Všimněte si, že pokud jste přijali UISceneDelegate pro iOS 13 +, je třeba místo toho umístit MSAL zpětné volání do `scene:openURLContexts:` UISceneDelegate (viz [Dokumentace společnosti Apple](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)). MSAL `handleMSALResponse:sourceApplication:` se musí pro každou adresu URL volat jenom jednou.
+> [!NOTE]
+> Pokud jste přijali `UISceneDelegate` v iOS 13 nebo novějším, pak místo toho umístěte zpětné volání MSAL do `scene:openURLContexts:` `UISceneDelegate`. MSAL `handleMSALResponse:sourceApplication:` se musí pro každou adresu URL volat jenom jednou.
+>
+> Další informace najdete v [dokumentaci společnosti Apple](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc).
 
 #### <a name="step-2-register-a-url-scheme"></a>Krok 2: registrace schématu adresy URL
 
-MSAL pro iOS a macOS používá adresy URL k vyvolání zprostředkovatele a pak vrátí odpověď zprostředkovatele zpátky do vaší aplikace. Pokud chcete dokončit zpáteční cestu, musíte do souboru `Info.plist` zaregistrovat schéma URL pro vaši aplikaci.
+MSAL pro iOS a macOS používá adresy URL k vyvolání zprostředkovatele a pak vrátí odpověď zprostředkovatele do vaší aplikace. Pokud chcete dokončit zpáteční cestu, zaregistrujte do souboru `Info.plist` schéma URL pro vaši aplikaci.
 
-Pomocí `msauth`zaprefixujte vlastní schéma URL. Pak na konec přidejte **identifikátor sady prostředků** .
+Postup při registraci schématu pro aplikaci: 
 
-`msauth.(BundleId)`
+1. Pomocí `msauth`zaprefixujte vlastní schéma URL. 
 
-**Příklad:** 
-`msauth.com.yourcompany.xforms`
+1. Přidejte svůj identifikátor sady prostředků na konec vašeho schématu. Postupujte podle tohoto vzoru: 
+
+   `$"msauth.(BundleId)"`
+
+   Tady `BundleId` jednoznačně identifikuje vaše zařízení. Pokud je například `BundleId` `yourcompany.xforms`, vaše schéma adresy URL je `msauth.com.yourcompany.xforms`.
+  
+   > [!NOTE]
+   > Toto schéma URL se stane součástí identifikátoru URI přesměrování, který jedinečně identifikuje vaši aplikaci, když obdrží odpověď zprostředkovatele. Ujistěte se, že identifikátor URI přesměrování ve formátu `msauth.(BundleId)://auth` je zaregistrován pro vaši aplikaci v [Azure Portal](https://portal.azure.com).
+  
+   ```XML
+   <key>CFBundleURLTypes</key>
+   <array>
+       <dict>
+           <key>CFBundleURLSchemes</key>
+           <array>
+               <string>msauth.[BUNDLE_ID]</string>
+           </array>
+       </dict>
+   </array>
+   ```
+
+#### <a name="step-3-add-lsapplicationqueriesschemes"></a>Krok 3: Přidání LSApplicationQueriesSchemes
+
+Přidejte `LSApplicationQueriesSchemes` pro povolení volání aplikace Microsoft Authenticator, pokud je nainstalovaná.
 
 > [!NOTE]
-> Toto schéma URL se stane součástí RedirectUri, který slouží k jednoznačné identifikaci vaší aplikace při přijímání odpovědi od zprostředkovatele. Ujistěte se, že RedirectUri ve formátu `msauth.(BundleId)://auth` je zaregistrován pro vaši aplikaci na webu [Azure Portal](https://portal.azure.com).
+> `msauthv3` schéma je potřeba, když se vaše aplikace zkompiluje pomocí Xcode 11 a novějších. 
 
-```XML
-<key>CFBundleURLTypes</key>
-<array>
-    <dict>
-        <key>CFBundleURLSchemes</key>
-        <array>
-            <string>msauth.[BUNDLE_ID]</string>
-        </array>
-    </dict>
-</array>
-```
-
-#### <a name="step-3-lsapplicationqueriesschemes"></a>Krok 3: LSApplicationQueriesSchemes
-
-**Přidejte `LSApplicationQueriesSchemes`** , aby bylo možné volání Microsoft Authenticator, pokud je nainstalováno.
-Všimněte si, že při kompilování aplikace s Xcode 11 a novějším je potřeba schéma "msauthv3". 
+Tady je příklad, jak přidat `LSApplicationQueriesSchemes`:
 
 ```XML 
 <key>LSApplicationQueriesSchemes</key>
@@ -352,7 +366,7 @@ Všimněte si, že při kompilování aplikace s Xcode 11 a novějším je potř
 
 ### <a name="brokered-authentication-for-xamarinandroid"></a>Zprostředkované ověřování pro Xamarin. Android
 
-MSAL.NET ještě nepodporuje zprostředkovatele pro Android.
+MSAL.NET nepodporuje zprostředkovatele pro Android.
 
 ## <a name="next-steps"></a>Další kroky
 

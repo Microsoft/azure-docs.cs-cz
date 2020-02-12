@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 76807c8ed10e30c554b6aa06ec096c830a86e36e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 5633dd7b72f4de22cd34b7d093e8ec4d9cb411f1
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571979"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137704"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>Ukončení protokolu SSL s certifikáty Key Vault
 
@@ -33,6 +33,9 @@ Application Gateway integrace s Key Vault nabízí spoustu výhod, včetně:
 - Podpora automatického obnovování certifikátů uložených v trezoru klíčů.
 
 Application Gateway aktuálně podporuje jenom certifikáty ověřované softwarem. Certifikáty ověřované modulem hardwarového zabezpečení (HSM) nejsou podporovány. Po nakonfigurování Application Gateway k používání certifikátů Key Vault jejich instance načtou certifikát z Key Vault a lokálně je nainstalují pro ukončení protokolu SSL. Instance také dotazují Key Vault ve 24hodinovém intervalu pro načtení obnovené verze certifikátu, pokud existuje. Pokud se najde aktualizovaný certifikát, automaticky se otočí certifikát SSL, který je aktuálně přidružený k naslouchacímu procesu HTTPS.
+
+> [!NOTE]
+> Azure Portal podporuje pouze certifikáty trezoru klíčů, nikoli tajné klíče. Application Gateway dál podporuje odkazování na tajné klíče z trezoru klíčů, ale jenom prostřednictvím jiných prostředků než na portálu, jako je PowerShell, CLI, API, šablony ARM atd. 
 
 ## <a name="how-integration-works"></a>Jak funguje integrace
 

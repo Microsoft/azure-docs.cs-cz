@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 46034c8392dc1720fe5e03fc5e419dba6ed20e0b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5851b294e52fdcc03dbf3b889ff32898a823f655
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314466"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137558"
 ---
 # <a name="clean-missing-data-module"></a>Modul vyčištění chybějících dat
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete odebrat, nahradit nebo odvodit chybějící hodnoty. 
 
@@ -37,11 +37,11 @@ Tento modul také výstupuje definici transformace použité k vyčištění chy
 
 ## <a name="how-to-use-clean-missing-data"></a>Jak používat čištění chybějících dat
 
-Tento modul vám umožní definovat operaci čištění. Operaci čištění můžete také uložit, abyste ji mohli později použít pro nová data. Popis postupu vytvoření a uložení procesu čištění najdete na následujících odkazech: 
+Tento modul vám umožní definovat operaci čištění. Operaci čištění můžete také uložit, abyste ji mohli později použít pro nová data. Postup vytvoření a uložení procesu čištění najdete v následujících částech: 
  
-+ Nahrazení chybějících hodnot
++ [Nahrazení chybějících hodnot](#replace-missing-values)
   
-+ Použití čisticí transformace na nová data
++ [Použití čisticí transformace na nová data](#apply-a-saved-cleaning-operation-to-new-data)
  
 > [!IMPORTANT]
 > Čisticí metoda, kterou používáte pro zpracování chybějících hodnot, může významně ovlivnit vaše výsledky. Doporučujeme experimentovat s různými metodami. Vezměte v úvahu odůvodnění použití konkrétní metody a kvality výsledků.
@@ -56,12 +56,9 @@ Pokaždé, když použijete modul [Vyčištění chybějících dat](./clean-mis
 
     Například pro kontrolu chybějících hodnot ve všech číselných sloupcích:
 
-    1. Otevřete selektor sloupců a vyberte **s pravidly**.
-    2. Pro možnost **začít s**vyberte **žádné sloupce**.
+    1. Vyberte modul **Vyčištění chybějících dat** a klikněte na tlačítko **Upravit sloupec** v pravém panelu modulu.
 
-        Můžete také začít se všemi SLOUPCI a pak vyloučit sloupce. Zpočátku se pravidla nezobrazují, pokud nejprve kliknete na **všechny sloupce**, ale můžete kliknout na **žádné sloupce** a pak znovu kliknout na **všechny sloupce** a začít se všemi sloupci a pak vyfiltrovat (vyloučit) sloupce podle názvu, datového typu nebo indexu sloupců.
-
-    3. Jako **Zahrnout**vyberte **typ sloupce** z rozevíracího seznamu a pak vyberte **číselné**nebo konkrétnější číselné typy. 
+    3. V rozevíracím seznamu **Zahrnout**vyberte **typy sloupců** a pak vyberte **Číselná**. 
   
     Jakákoli metoda čištění nebo náhrady, kterou zvolíte, musí být platná pro **všechny** sloupce ve výběru. Pokud jsou data v jakémkoli sloupci nekompatibilní se zadanou operací, modul vrátí chybu a zastaví kanál.
   
@@ -109,7 +106,7 @@ Pokaždé, když použijete modul [Vyčištění chybějících dat](./clean-mis
   
 6. **Hodnota nahrazení** možnosti je k dispozici, pokud jste vybrali možnost a **vlastní substituční hodnota**. Zadejte novou hodnotu, která se použije jako nahrazující hodnota pro všechny chybějící hodnoty ve sloupci.  
   
-    Všimněte si, že tuto možnost lze použít pouze ve sloupcích, které mají datový typ integer, Double, Boolean nebo Date. Pro sloupce data lze nahrazující hodnotu zadat také jako počet 100 – nanosekund od 1/1/0001 12:00 dop.  
+    Všimněte si, že tuto možnost lze použít pouze ve sloupcích, které mají celočíselnou hodnotu, Double, logickou hodnotu nebo řetězec.
   
 7. **Generovat sloupec indikátoru chybějící hodnoty**: tuto možnost vyberte, pokud chcete výstupem určit, zda hodnoty ve sloupci splňují kritéria pro čištění chybějících hodnot. Tato možnost je užitečná hlavně v případě, že nastavujete novou operaci čištění a chcete se ujistit, že funguje tak, jak je navržena.
   

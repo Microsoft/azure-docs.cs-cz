@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 5ac1f3e4bf629a2e12eb0461b932a5865228c79c
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/11/2020
+ms.openlocfilehash: 6dd8246d5751609e2f20ee9d5e519529752940f7
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546703"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137535"
 ---
 # <a name="cross-validate-model"></a>Křížové ověření modelu
 
@@ -62,21 +62,19 @@ V tomto scénáři provedete a otestujete model pomocí modelu vzájemného ově
 
 2. Připojte výstup jakéhokoli modelu klasifikace nebo regrese. 
 
-    Například pokud používáte **dva počítače třídy Bayes Point** pro klasifikaci, nakonfigurujte model pomocí parametrů, které chcete. Pak přetáhněte konektor z **nevýukového portu modelu** klasifikátoru na shodný port modelu křížového ověření. 
+    Například pokud používáte dva třídy pro vyhodnocení **rozhodovacího stromu** pro klasifikaci, nakonfigurujte model pomocí parametrů, které chcete. Pak přetáhněte konektor z **nevýukového portu modelu** klasifikátoru na shodný port modelu křížového ověření. 
 
     > [!TIP] 
     > Model nemusíte procházet, protože model křížového ověřování ho automaticky nastavil jako součást vyhodnocení.  
 3.  V portu **DataSet** modelu křížového ověřování připojte všechny datové sady s popiskem.  
 
-4.  V podokně **vlastnosti** modelu vzájemného ověřování vyberte možnost **Spustit selektor sloupců**. Vyberte jeden sloupec, který obsahuje popisek třídy, nebo předvídatelné hodnoty. 
+4.  V pravém panelu modelu vzájemného ověřování klikněte na **Upravit sloupec**. Vyberte jeden sloupec, který obsahuje popisek třídy, nebo předvídatelné hodnoty. 
 
 5. Nastavte hodnotu **náhodného parametru počátečního** navýšení, pokud chcete výsledky křížového ověřování opakovat v rámci souběžných běhů na stejná data.  
 
 6. Spuštění kanálu
 
 7. Popis sestav najdete v části s [výsledky](#results) .
-
-    Chcete-li získat kopii modelu pro opakované použití později, přepněte na kartu **výstupy** v pravém panelu modulu, který obsahuje algoritmus (například **počítač se dvěma třídami Bayes Point**). Pak vyberte ikonu **zaregistrovat datovou sadu** a uložte kopii trained modelu do stromu modulu.
 
 ## <a name="results"></a>Výsledky
 
@@ -90,7 +88,7 @@ Pokud chcete zobrazit výsledky, klikněte v kanálu pravým tlačítkem na modu
 
 | Nový název sloupce      | Popis                              |
 | -------------------- | ---------------------------------------- |
-| Vyhodnocené popisky        | Tento sloupec se přidá na konec datové sady. Obsahuje předpokládanou hodnotu pro každý řádek. |
+| Popisky s skóre        | Tento sloupec se přidá na konec datové sady. Obsahuje předpokládanou hodnotu pro každý řádek. |
 | Pravděpodobnost skóre | Tento sloupec se přidá na konec datové sady. Označuje odhadovanou pravděpodobnost hodnoty v **popiscích skóre**. |
 | Číslo skládání          | Určuje index přeložení založený na nule, ke kterému byly při křížovém ověření přiřazeny jednotlivé řádky dat. |
 
@@ -103,7 +101,7 @@ V této sestavě jsou skládání uvedena podle hodnoty indexu ve vzestupném po
 Pokud chcete zobrazit výsledky, klikněte v kanálu pravým tlačítkem na modul modelu křížového ověřování. Vyberte **vizualizovat výsledky vyhodnocení podle skládání**.
 
 
-|Název sloupce| Popis|
+|název sloupce| Popis|
 |----|----|
 |Číslo skládání| Identifikátor pro každé skládání. Pokud jste vytvořili pět přeložení, bude se jednat o pět podmnožin dat, očíslované od 0 do 4.
 |Počet příkladů v skládání|Počet řádků přiřazených každému skládání. Měly by být zhruba stejné. |

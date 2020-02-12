@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: df50654b8673306a6bee544d9b5fcc2cb578795d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5a1d3753dfec673338bdde67656afd9c5f413ef0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988188"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137593"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Vytváření a Správa pracovních prostorů Azure Machine Learning v Azure Portal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,7 +105,6 @@ Použijte tlačítko Odstranit v horní části pracovního prostoru, který chc
 
   ![Tlačítko Odstranit](./media/how-to-manage-workspace/delete-workspace.png)
 
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
@@ -116,9 +115,14 @@ Použijte tlačítko Odstranit v horní části pracovního prostoru, který chc
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
 
+### <a name="moving-the-workspace"></a>Přesun pracovního prostoru
+
+> [!WARNING]
+> Přesunutím pracovního prostoru Azure Machine Learning do jiného předplatného nebo přesunutím vlastnícího předplatného na nového tenanta se nepodporuje. V takovém případě může dojít k chybám.
+
 ## <a name="next-steps"></a>Další kroky
 
 Postupujte podle kurzu pro celou délku a Naučte se používat pracovní prostor k sestavování, vytváření výukových a nasazování modelů pomocí Azure Machine Learning.
 
 > [!div class="nextstepaction"]
-> [Kurz: Trénování modelů](tutorial-train-models-with-aml.md)
+> [Kurz: modely vlaků](tutorial-train-models-with-aml.md)

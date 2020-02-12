@@ -4,39 +4,29 @@ description: V tomto kurzu vytvoříte model strojového učení pomocí Azure M
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 2/10/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c0613d319c0c82fa61d75ed016d68d38dfcea8d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5f576d28d30907f3834600d0a6a5c152025cf912
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701827"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133527"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Kurz: výuka a nasazení Azure Machine Learningho modelu
 
 > [!NOTE]
 > Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
 
-V tomto článku používáme Azure Notebooks nejprve ke studiu modelu strojového učení pomocí Azure Machine Learning a pak tento model zabalíte jako image kontejneru, která se dá nasadit jako modul Azure IoT Edge. Azure Notebooks využít pracovní prostor Azure Machine Learning, což je základní blok, který se používá k experimentování, výuce a nasazování modelů strojového učení.
+V tomto článku provedeme následující úlohy:
 
-Aktivity v této části kurzu se rozdělují mezi dva poznámkové bloky.
+* Pomocí Azure Notebooks můžete naučit model strojového učení.
+* Zabalit model trained jako image kontejneru.
+* Nasaďte image kontejneru jako modul Azure IoT Edge.
 
-* **01 – turbofan\_regrese. ipynb:** Tento Poznámkový blok vás provede kroky ke výukě a publikování modelu pomocí Azure Machine Learning. V podstatě se jedná o následující kroky:
-
-  1. Stažení, příprava a prozkoumání školicích dat
-  2. Použití pracovního prostoru služby k vytvoření a spuštění experimentu machine learningu
-  3. Vyhodnocení výsledků modelu z experimentu
-  4. Publikování nejlepšího modelu do pracovního prostoru služby
-
-* **02 – turbofan\_nasazení\_modelu. ipynb:** Tento Poznámkový blok získá model vytvořený v předchozím poznámkovém bloku a použije ho k vytvoření image kontejneru, která je připravená k nasazení do zařízení Azure IoT Edge.
-
-  1. Vytvoření vyhodnocovacího skriptu pro model
-  2. Vytvoření a publikování image
-  3. Nasazení image jako webové služby ve službě Azure Container instance
-  4. Použití webové služby k ověření modelu a image funguje podle očekávání
+Azure Notebooks využít pracovní prostor Azure Machine Learning, což je základní blok, který se používá k experimentování, výuce a nasazování modelů strojového učení.
 
 Kroky v tomto článku můžou obvykle provádět odborníci přes data.
 
@@ -47,76 +37,135 @@ Používáme Azure Notebooks k hostování dvou poznámkových bloků Jupyter a 
 * **Rychlý Start:** [Vytvoření a sdílení poznámkového bloku](../notebooks/quickstart-create-share-jupyter-notebook.md)
 * **Kurz:** [Vytvoření a spuštění poznámkového bloku Jupyter pomocí Pythonu](../notebooks/tutorial-create-run-jupyter-notebook.md)
 
-Stejně jako u virtuálního počítače pro vývojáře se pomocí poznámkových bloků Azure zajišťuje konzistentní prostředí pro toto cvičení.
+Použití poznámkových bloků Azure zajišťuje konzistentní prostředí pro cvičení.
 
 > [!NOTE]
 > Po nastavení se k Azure Notebooks službě dostanete z libovolného počítače. Během instalace byste měli použít vývojový virtuální počítač, který bude mít všechny soubory, které budete potřebovat.
 
 ### <a name="create-an-azure-notebooks-account"></a>Vytvoření účtu Azure Notebooks
 
-Účty poznámkového bloku Azure jsou nezávislé na předplatných Azure. Chcete-li použít Azure Notebooks, je nutné vytvořit účet.
+Chcete-li použít Azure Notebooks, je nutné vytvořit účet. Účty poznámkového bloku Azure jsou nezávislé na předplatných Azure.
 
 1. Přejděte do [poznámkových bloků Azure](https://notebooks.azure.com).
 
-2. V pravém horním rohu stránky klikněte na **Přihlásit** .
+1. V pravém horním rohu stránky klikněte na **Přihlásit** se.
 
-3. Přihlaste se pomocí svého pracovního nebo školního účtu (Azure Active Directory) nebo svého osobního účtu (účet Microsoft).
+1. Přihlaste se pomocí svého pracovního nebo školního účtu (Azure Active Directory) nebo svého osobního účtu (účet Microsoft).
 
-4. Pokud jste Azure Notebooks ještě nepoužili, budete vyzváni k udělení přístupu pro aplikaci Azure Notebooks.
+1. Pokud jste Azure Notebooks ještě nepoužili, budete vyzváni k udělení přístupu pro aplikaci Azure Notebooks.
 
-5. Vytvořte ID uživatele pro Azure Notebooks.
+1. Vytvořte ID uživatele pro Azure Notebooks.
 
-### <a name="upload-jupyter-notebooks-files"></a>Nahrání souborů Jupyter poznámkových bloků
+### <a name="upload-jupyter-notebook-files"></a>Nahrání souborů Jupyter poznámkového bloku
 
-V tomto kroku vytvoříme nový projekt Azure Notebooks a do něj nahrajeme soubory. Konkrétně soubory, které odesíláme:
+Do nového projektu Azure Notebooks budeme nahrávat ukázkové soubory poznámkových bloků.
 
-* **01 – turbofan\_regrese. ipynb**: soubor poznámkového bloku Jupyter, který vás provede procesem stahování dat vygenerovaných ze zařízení z účtu služby Azure Storage. zkoumání a Příprava dat pro školení třídění; školení modelu; testování dat pomocí testovací datové sady nalezené v souboru Test\_FD003. txt; a nakonec uložte model klasifikátoru v pracovním prostoru služby Machine Learning.
+1. Na stránce uživatele nového účtu v horním řádku nabídek vyberte **Moje projekty** .
 
-* **02 – turbofan\_nasazení\_modelu. ipynb:** Jupyter Poznámkový blok, který vás provede procesem použití modelu klasifikátoru uloženého v pracovním prostoru služby Machine Learning k vytvoření image kontejneru. Když se image vytvoří, Poznámkový blok vás provede procesem nasazení image jako webové služby, abyste mohli ověřit, jestli funguje podle očekávání. Ověřená bitová kopie se nasadí do našeho zařízení IoT Edge v části [Vytvoření a nasazení vlastních IoT Edge modulů](tutorial-machine-learning-edge-06-custom-modules.md) v tomto kurzu.
+1. V dialogovém okně **vytvořit nový projekt** zadejte **název projektu** , který také automaticky vytvoří **ID projektu**.
 
-* **Test\_FD003. txt:** Tento soubor obsahuje data, která budeme používat jako naši sadu testů při ověřování našeho učeného třídění. Rozhodli jste se použít testovací data, která jsou k dispozici pro původní soutěž jako naši sadu testů pro jednoduchost příkladu.
+1. Ponechte **veřejné** a **soubor Readme** nezaškrtnuté, protože není potřeba, aby projekt byl veřejný nebo měl soubor Readme.
 
-* **RUL\_FD003. txt:** Tento soubor obsahuje RUL pro poslední cyklus každého zařízení v souboru Test\_FD003. txt. Podrobné vysvětlení dat najdete v **souboru Readme. txt** **a v článku** C:\\source\\IoTEdgeAndMlSample\\data\\Turbofan.
+1. Vyberte **Create** (Vytvořit).
 
-* **Utils.py:** Obsahuje sadu funkcí nástrojů Pythonu pro práci s daty. První Poznámkový blok obsahuje podrobné vysvětlení funkcí.
-
-* **Readme.MD:** Soubor Readme popisující použití poznámkových bloků.
-
-Vytvořte nový projekt a nahrajte soubory do poznámkového bloku.
-
-1. V horním řádku nabídek vyberte **Moje projekty** .
-
-1. Vyberte **+ Nový projekt**. Zadejte název a ID. Není nutné, aby projekt byl veřejný nebo měl soubor Readme.
-
-1. Vyberte **nahrát** a zvolte **z počítače**.
+1. Vyberte **nahrát** (ikona šipky nahoru) a zvolte **z počítače**.
 
 1. Vyberte možnost **zvolit soubory**.
 
-1. Přejděte na **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Vyberte všechny soubory a klikněte na **otevřít**.
+1. Přejděte na **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Vyberte všechny soubory v seznamu a klikněte na **otevřít**.
 
 1. Vyberte **nahrát** a začněte nahrávat a potom vyberte **Hotovo** po dokončení procesu.
 
+### <a name="azure-notebook-files"></a>Soubory notebooků Azure
+
+Pojďme se podívat na soubory, které jste nahráli do projektu Azure Notebooks. Aktivity v této části kurzu jsou rozloženy mezi dva soubory poznámkového bloku, které používají několik podpůrných souborů.
+
+* **01 – turbofan\_regrese. ipynb:** Tento Poznámkový blok používá pracovní prostor služby Machine Learning k vytvoření a spuštění experimentu machine learningu. Poznámkový blok v podstatě provede následující kroky:
+
+  1. Stáhne data z Azure Storage účtu, který vygenerovalo předaný svazek zařízení.
+  1. Zkoumá a připravuje data pro školení a model AD klasifikátoru.
+  1. Vyhodnoťte model z experimentu pomocí testovací datové sady (test\_FD003. txt).
+  1. Publikuje nejlepší model třídění v pracovním prostoru služby Machine Learning.
+
+* **02 – turbofan\_nasazení\_modelu. ipynb:** Tento Poznámkový blok získá model vytvořený v předchozím poznámkovém bloku a použije ho k vytvoření image kontejneru, která je připravená k nasazení do zařízení Azure IoT Edge. Poznámkový blok provede následující kroky:
+
+  1. Vytvoří skript bodování pro model.
+  1. Vytvoří Image kontejneru pomocí modelu klasifikátoru, který byl uložen v pracovním prostoru služby Machine Learning.
+  1. Nasadí Image jako webovou službu ve službě Azure Container instance.
+  1. Používá webovou službu k ověření modelu a image funguje podle očekávání. Ověřená bitová kopie se nasadí do našeho zařízení IoT Edge v části [Vytvoření a nasazení vlastních IoT Edge modulů](tutorial-machine-learning-edge-06-custom-modules.md) v tomto kurzu.
+
+* **Test\_FD003. txt:** Tento soubor obsahuje data, která budeme používat jako naši sadu testů při ověřování našeho učeného třídění. Rozhodli jsme se používat testovací data, jak je k dispozici pro původní soutěž, jako naše testovací sada pro zjednodušení.
+
+* **RUL\_FD003. txt:** Tento soubor obsahuje RUL pro poslední cyklus každého zařízení v souboru Test\_FD003. txt. Podrobné vysvětlení dat najdete v souboru Readme. txt a v článku C:\\source\\IoTEdgeAndMlSample\\data\\Turbofan.
+
+* **Utils.py:** Obsahuje sadu funkcí nástrojů Pythonu pro práci s daty. První Poznámkový blok obsahuje podrobné vysvětlení funkcí.
+
+* **Readme.MD:** Soubor Readme popisující použití poznámkových bloků.  
+
 ## <a name="run-azure-notebooks"></a>Spustit Azure Notebooks
 
-Teď, když se projekt vytvoří, spusťte Poznámkový blok **01-turbofan\_regrese ipynb** .
+Teď, když je projekt vytvořený, můžete spustit poznámkové bloky. 
 
-1. Na stránce projektu turbofan vyberte **01-turbofan\_regrese. ipynb**.
+1. Na stránce projektu vyberte **01-turbofan\_regrese. ipynb**.
 
     ![Vyberte první Poznámkový blok, který chcete spustit.](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
 
-2. Pokud se zobrazí výzva, zvolte jádro Python 3,6 z dialogového okna a vyberte **nastavit jádro**.
+1. Pokud se zobrazí výzva, zvolte jádro Python 3,6 z dialogového okna a vyberte **nastavit jádro**.
 
-3. Pokud je Poznámkový blok uvedený jako **nedůvěryhodný**, klikněte v pravém horním rohu poznámkového bloku na widget **nedůvěryhodná** . Až se dialogové okno objeví, vyberte **důvěřovat**.
+1. Pokud je Poznámkový blok uvedený jako **nedůvěryhodný**, klikněte v pravém horním rohu poznámkového bloku na widget **nedůvěryhodná** . Až se dialogové okno objeví, vyberte **důvěřovat**.
 
-4. Postupujte podle pokynů v poznámkovém bloku.
+1. V poznámkovém bloku se posuňte dolů na buňku, která následuje za pokyny pro **Nastavení globálních vlastností** a která začíná kódem `AZURE_SUBSCRIPTION_ID =` a vyplní hodnoty pro vaše předplatné Azure, nastavení a prostředky.
 
-    * `Ctrl + Enter` spustí buňku.
-    * `Shift + Enter` spustí buňku a přejde na další buňku.
-    * Když je buňka spuštěná, obsahuje hvězdičku mezi hranatými závorkami, jako je například **[\*]** . Po dokončení bude hvězdička nahrazena číslem a příslušný výstup může být uveden níže. Vzhledem k tomu, že se buňky často sestavují na práci na předchozích verzích, může běžet současně pouze jedna buňka.
+    ![Nastavení globálních vlastností v poznámkovém bloku](media/tutorial-machine-learning-edge-04-train-model/set-global-properties.png)
 
-5. Po dokončení práce s poznámkovým blokem **01-turbofan\_regrese ipynb** se vraťte na stránku projektu.
+1. Tuto buňku spustíte výběrem možnosti **Spustit** na panelu nástrojů.
 
-6. Otevřete **02-turbofan\_nasazení\_modelu. ipynb** a zopakováním kroků v této části spusťte druhý Poznámkový blok.
+    Když je buňka spuštěná, zobrazí se hvězdička mezi hranatými závorkami ([\*]). Po dokončení operace buňky je hvězdička nahrazena číslem a může se zobrazit relevantní výstup. Buňky v poznámkovém bloku se sestavují sekvenčně a v jednu chvíli může běžet jenom jedna.
+
+    Postupujte podle pokynů v poznámkovém bloku. Můžete také použít možnosti spuštění z nabídky **buňka** `Ctrl` + `Enter` ke spuštění buňky a `Shift` + `Enter` ke spuštění buňky a přechodu na další buňku.
+
+    > [!TIP]
+    > V případě konzistentních operací s buňkami nepoužívejte stejný Poznámkový blok z více karet v prohlížeči.
+
+1. Posuňte se dolů k buňce, která následuje po textu přehledu **vytvořit pracovní prostor** a tuto buňku spusťte. V výstupu buňky vyhledejte odkaz, který vám dává pokyn přihlásit se a ověřit. 
+
+    ![Výzva k přihlášení pro ověřování zařízení](media/tutorial-machine-learning-edge-04-train-model/sign-in-prompt.png)
+
+    Otevřete odkaz a zadejte zadaný kód. Tato procedura pro přihlášení ověřuje Poznámkový blok Jupyter pro přístup k prostředkům Azure pomocí rozhraní příkazového řádku Microsoft Azure pro různé platformy.  
+
+    ![Potvrzení ověření aplikace na zařízení](media/tutorial-machine-learning-edge-04-train-model/cross-platform-cli.png)
+
+1. V tomto okamžiku můžete spustit zbývající část buněk. Je optimální spouštět všechny buňky tak, aby se kód v buňkách spouštěl sekvenčně. V nabídce **buňka** vyberte **Spustit vše** . Posuňte se zpátky přes Poznámkový blok a Prohlédněte si, jak se operace s buňkami dokončily.
+
+    V části **Prozkoumat data** si můžete prohlédnout buňky v podčásti **senzory čtení a RUL** , které vykreslují scatterplots měření senzorů.
+
+    ![Scatterplots čtení snímačů](media/tutorial-machine-learning-edge-04-train-model/sensor-readings.png)
+
+1. Uložte Poznámkový blok a vraťte se na stránku projektu kliknutím na název projektu v pravém horním rohu poznámkového bloku nebo v prohlížeči zpátky.
+
+1. Otevřete **02-turbofan\_nasazení\_modelu. ipynb** a zopakováním kroků v tomto postupu spusťte druhý Poznámkový blok.
+
+1. Uložte Poznámkový blok a vraťte se na stránku projektu kliknutím na název projektu v pravém horním rohu poznámkového bloku nebo v prohlížeči zpátky.
+
+### <a name="verify-success"></a>Ověřit úspěch
+
+Chcete-li ověřit, zda byly poznámkové bloky úspěšně dokončeny, ověřte, zda bylo vytvořeno několik položek.
+
+1. Na stránce Azure Notebooks projektu vyberte možnost **Zobrazit skryté položky** tak, aby se zobrazily názvy položek začínající tečkou.
+
+1. Ověřte, že byly vytvořeny následující soubory:
+
+    | File | Popis |
+    | --- | --- |
+    | ./aml_config/.AzureML/config.JSON | Konfigurační soubor, který se používá k vytvoření pracovní prostor Azure Machine Learning. |
+    | ./aml_config/model_config. JSON | Konfigurační soubor, který budeme potřebovat k nasazení modelu v pracovním prostoru **turbofanDemo** Machine Learning v Azure. |
+    | MyENV. yml| Poskytuje informace o závislostech pro nasazený Machine Learning model.|
+
+1. Ověřte v Azure Portal, že ve vaší skupině prostředků existuje pracovní prostor služby **turboFanDemo** Machine Learning.
+
+### <a name="debugging"></a>Ladění
+
+Do poznámkového bloku můžete odkrýt příkazy Pythonu pro ladění, hlavně příkaz `print()`. Pokud vidíte proměnné nebo objekty, které nejsou definovány, spusťte buňky, kde jsou nejprve deklarovány nebo vytvořeny instance.
 
 ## <a name="next-steps"></a>Další kroky
 

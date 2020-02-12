@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 0cde8b48e7bd1d1daa8f14dcded87001fb898fa7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b5748824590f40e30af8f462d4c8ff25521cfd94
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76769219"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136090"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>Rychlý Start: Azure Key Vault Klientská knihovna pro Java
 
@@ -27,7 +27,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 
 [Referenční dokumentace k rozhraní API](https://azure.github.io/azure-sdk-for-java) [zdrojového kódu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) |  | [dokumentaci k produktu](index.yml) | [ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) verze 8 nebo vyšší
@@ -168,7 +168,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 Klientská knihovna Azure Key Vault pro jazyk Java umožňuje správu klíčů a souvisejících prostředků, jako jsou certifikáty a tajné klíče. Následující ukázka kódu vám ukáže, jak vytvořit klienta, nastavit tajný klíč, načíst tajný klíč a odstranit tajný klíč.
 
-Celá Konzolová aplikace je k dispozici na adrese https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
+Celá Konzolová aplikace je [níže](#sample-code).
 
 ## <a name="code-examples"></a>Příklady kódu
 

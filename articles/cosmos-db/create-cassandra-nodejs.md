@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: cea504393ba1735298bf04b3e9a2d55a9fa42c66
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 429b8845e49158c906c02773f654c9487ff98d1e
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117935"
+ms.locfileid: "77134763"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Rychlý Start: sestavení aplikace Cassandra pomocí sady Node. js SDK a Azure Cosmos DB
 
@@ -24,17 +24,13 @@ ms.locfileid: "77117935"
 > * [Python](create-cassandra-python.md)
 >  
 
-Tento rychlý start ukazuje, jak pomocí Node.js a rozhraní Azure Cosmos DB [Cassandra API](cassandra-introduction.md) sestavit aplikaci profilu naklonováním příkladu z GitHubu. Tento rychlý start také ukazuje, jak pomocí webového portálu Azure Portal vytvořit účet Azure Cosmos DB.
+V tomto rychlém startu vytvoříte účet Azure Cosmos DB rozhraní API Cassandra a použijete Cassandra aplikaci Node. js, která je klonována z GitHubu, a vytvoří se databáze Cassandra a kontejner. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
-Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat databáze dokumentů, párů klíč-hodnota a grafů, které tak můžou využívat výhody možnosti globální distribuce a horizontálního škálování v jádru služby Azure Cosmos DB. 
+## <a name="prerequisites"></a>Předpoklady
 
-## <a name="prerequisites"></a>Požadavky
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]Alternativně můžete [vyzkoušet službu Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
-
-Kromě toho je potřeba toto:
-* [Node.js](https://nodejs.org/en/) verze 0.10.29 nebo vyšší
-* [Git](https://git-scm.com/)
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure.
+- [Node. js 0.10.29 +](https://nodejs.org/).
+- [Git](https://www.git-scm.com/downloads)
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -66,7 +62,7 @@ Nyní naklonujte rozhraní API Cassandra aplikaci z GitHubu, nastavíme připojo
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je nepovinný. Pokud vás zajímá, jak se pomocí kódu vytvoří prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Všechny fragmenty kódu pocházejí ze souboru `uprofile.js` ve složce `C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started`. Jinak můžete přeskočit přímo k části [Aktualizace připojovacího řetězce](#update-your-connection-string). 
+Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Všechny fragmenty kódu pocházejí ze souboru `uprofile.js` ve složce `C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started`. Jinak můžete přeskočit přímo k části [Aktualizace připojovacího řetězce](#update-your-connection-string). 
 
 * Hodnoty uživatelského jména a hesla se nastaví pomocí stránky připojovacího řetězce na webu Azure Portal. Cesta `path\to\cert` představuje cestu k certifikátu X509. 
 
@@ -156,9 +152,9 @@ Tento krok je nepovinný. Pokud vás zajímá, jak se pomocí kódu vytvoří pr
 
 Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojovacím řetězci, a zkopírujte je do aplikace. Připojovací řetězec umožňuje vaší aplikaci komunikovat s hostovanou databází.
 
-1. Na portálu [Azure Portal](https://portal.azure.com/) vyberte **Připojovací řetězec**. 
+1. V Azure Cosmos DB účtu v [Azure Portal](https://portal.azure.com/)vyberte **připojovací řetězec**. 
 
-    Pomocí ![Tlačítko pro kopírování](./media/create-cassandra-nodejs/copy.png) na pravé straně obrazovky zkopírujte horní hodnotu KONTAKTNÍ BOD.
+    Pomocí tlačítka ![Tlačítko pro kopírování](./media/create-cassandra-nodejs/copy.png) na pravé straně obrazovky zkopírujte horní hodnotu KONTAKTNÍ BOD.
 
     ![Zobrazení a zkopírování hodnot KONTAKTNÍ BOD, UŽIVATELSKÉ JMÉNO a HESLO ze stránky připojovacího řetězce na webu Azure Portal](./media/create-cassandra-nodejs/keys.png)
 
@@ -204,7 +200,7 @@ Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojova
 
     ![Zobrazení a ověření výstupu](./media/create-cassandra-nodejs/output.png)
 
-    Stisknutím CTRL + C zastavte provádění programu a zavřete okno konzoly. 
+    Stisknutím kombinace kláves CTRL + C ukončete provádění programu a zavřete okno konzoly. 
 
 4. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
 
@@ -220,7 +216,7 @@ Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojova
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili vytvořit účet Azure Cosmos DB, vytvořit kontejner pomocí Průzkumníka dat a spustit aplikaci. Teď můžete do účtu Cosmos DB importovat další data. 
+V tomto rychlém startu jste zjistili, jak vytvořit účet Azure Cosmos DB pomocí rozhraní API Cassandra a spustit aplikaci Node. js Cassandra, která vytvoří databázi Cassandra a kontejner. Teď můžete do svého účtu Azure Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
 > [Import dat Cassandra do služby Azure Cosmos DB](cassandra-import-data.md)

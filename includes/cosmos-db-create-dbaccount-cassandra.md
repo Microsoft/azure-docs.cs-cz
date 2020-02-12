@@ -5,35 +5,39 @@ services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 09/14/2018
+ms.date: 01/22/2020
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 6e2b160bde17b7ccd9f65740044b1a71d573d2cf
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8f7a69b81430d964d1aade26ed179354171e4164
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175557"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134664"
 ---
 1. V novém okně prohlížeče se přihlaste k webu [Azure Portal](https://portal.azure.com/).
 
-2. Vyberte **Vytvořit prostředek** > **Databáze** > **Azure Cosmos DB**.
+2. V nabídce vlevo vyberte **vytvořit prostředek**.
+   
+   ![Vytvoření prostředku v Azure Portal](./media/cosmos-db-create-dbaccount-cassandra/create-nosql-db-databases-json-tutorial-0.png)
+   
+3. Na stránce **Nový** vyberte **databáze** > **Azure Cosmos DB**.
    
    ![Podokno databází portálu Azure Portal](./media/cosmos-db-create-dbaccount-cassandra/create-nosql-db-databases-json-tutorial-1.png)
-
-3. V **vytvořit účet služby Azure Cosmos DB** zadejte nastavení pro nový účet Azure Cosmos DB. 
+   
+3. Na stránce **vytvořit Azure Cosmos DB účet** zadejte nastavení pro nový účet Azure Cosmos DB. 
  
     Nastavení|Hodnota|Popis
     ---|---|---
     Předplatné|Vaše předplatné|Vyberte předplatné Azure, které chcete pro tento účet služby Azure Cosmos DB použít. 
-    Skupina prostředků|Vytvořit nový<br><br>Potom zadejte stejný jedinečný název, jako jste zadali v ID|Vyberte, že chcete **vytvořit novou** IP adresu. Zadejte nový název skupiny prostředků pro váš účet. Pro jednoduchost použijte stejný název jako vaše ID. 
-    Název účtu|Zadejte jedinečný název.|Zadejte jedinečný název, který identifikuje váš účet služby Azure Cosmos DB. Vzhledem k tomu, že se váš identifikátor URI vytvoří připojením řetězce *documents.azure.com* k ID, které zadáte, použijte jedinečné ID.<br><br>ID můžete použít jenom malá písmena, číslice a znak spojovníku (-). Musí být dlouhý 3 až 31 znaků.
-    Rozhraní API|Cassandra|Rozhraní API určuje typ účtu, který se má vytvořit. Azure Cosmos DB nabízí pět rozhraní API: Core(SQL) pro databáze dokumentů, Gremlin databáze grafů, MongoDB, databáze dokumentů, tabulka Azure a Cassandra. V současné době musíte vytvořit samostatný účet pro každé rozhraní API. <br><br>Vyberte **Cassandra** vzhledem k tomu, že v tomto rychlém startu vytváříte tabulku pracující s rozhraním Cassandra API. <br><br>[Další informace o rozhraní API Cassandra](../articles/cosmos-db/cassandra-introduction.md)|
-    Location|Vyberte oblast nejbližší vašim uživatelům.|Vyberte zeměpisné umístění, ve kterém chcete účet služby Azure Cosmos DB hostovat. Použijte umístění, které je vašim uživatelům nejbližší, abyste jim zajistili nejrychlejší přístup k datům.
+    Skupina prostředků|Vytvořit nový<br><br>Pak zadejte stejný název jako název účtu.|Vyberte, že chcete **vytvořit novou** IP adresu. Pak zadejte nový název skupiny prostředků pro váš účet. Pro jednoduchost použijte stejný název jako název vašeho účtu Azure Cosmos. 
+    Název účtu|Zadejte jedinečný název.|Zadejte jedinečný název, který identifikuje váš účet služby Azure Cosmos DB. Identifikátor URI vašeho účtu se *Cassandra.Cosmos.Azure.com* připojí k jedinečnému názvu účtu.<br><br>Název účtu může obsahovat jenom malá písmena, číslice a spojovníky (-) a musí mít délku 3 až 31 znaků.
+    Rozhraní API|Cassandra|Rozhraní API určuje typ účtu, který se má vytvořit. Azure Cosmos DB poskytuje pět rozhraní API: Core (SQL) pro databáze dokumentů, Gremlin pro databáze grafů, MongoDB pro databáze dokumentů, tabulku Azure a Cassandra. Pro každé rozhraní API musíte vytvořit samostatný účet. <br><br>Vyberte **Cassandra**, protože v tomto rychlém startu vytváříte tabulku, která spolupracuje s rozhraní API Cassandra. <br><br>[Další informace o rozhraní API Cassandra](../articles/cosmos-db/cassandra-introduction.md)|
+    Umístění|Vyberte oblast nejbližší vašim uživatelům.|Vyberte zeměpisné umístění, ve kterém chcete účet služby Azure Cosmos DB hostovat. Použijte umístění, které je vašim uživatelům nejbližší, abyste jim zajistili nejrychlejší přístup k datům.
 
-    Vyberte **zkontrolovat a vytvořit**. Můžete přeskočit **sítě** a **značky** oddílu. 
+    Vyberte **zkontrolovat + vytvořit**. Můžete přeskočit část **síť** a **značky** . 
 
     ![Stránka nového účtu pro službu Azure Cosmos DB](./media/cosmos-db-create-dbaccount-cassandra/azure-cosmos-db-create-new-account.png)
 
-4. Vytvoření účtu trvá několik minut. Počkejte, až se na portálu zobrazí stránka se zprávou **Blahopřejeme! Váš účet Azure Cosmos DB byl vytvořen**.
+4. Vytvoření účtu trvá několik minut. Počkejte, až se na portálu zobrazí stránka s názory na **Blahopřejeme! Váš účet Azure Cosmos DB byl vytvořen**.
 

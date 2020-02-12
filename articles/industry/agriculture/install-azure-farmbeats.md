@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 7d3c70695000ae62f374bc558d4b408733968b83
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: b7d99c3bf61de17f9cebba834234cc8ea52f30d6
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069281"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131886"
 ---
 # <a name="install-azure-farmbeats"></a>Instalace služby Azure FarmBeats
 
@@ -35,7 +35,7 @@ Při instalaci Azure FarmBeats se ve vašem předplatném Azure zřídí tyto pr
 | Plán služby App Service   | Akcelerátor & DataHub  |
 | Připojení API    |  Datahub       |
 | Azure Cache for Redis       | Datahub      |
-| Azure Cosmos DB   |  Datahub       |
+| Databáze Azure Cosmos   |  Datahub       |
 | Azure Data Factory V2       |     Akcelerátor & DataHub      |
 | Účet Azure Batch    | Datahub   |
 | Azure Key Vault |  Akcelerátor & DataHub        |
@@ -57,11 +57,11 @@ Náklady na Azure FarmBeats jsou agregované z nákladů na základní služby A
 V současné době se Azure FarmBeats podporuje ve veřejných cloudových prostředích v následujících oblastech:
 
 - Austrálie – východ
-- Střed USA
+- Střední USA
 - USA – východ
 - Východní USA 2
-- USA – západ
-- USA – západ 2
+- Západní USA
+- Západní USA 2
 - Severní Evropa
 - Západní Evropa
 - Východní Asie
@@ -71,7 +71,7 @@ V současné době se Azure FarmBeats podporuje ve veřejných cloudových prost
 
 Celá instalace Azure FarmBeats, včetně přípravy a instalace, bude trvat méně než hodinu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s vlastní instalací Azure FarmBeats, musíte provést následující kroky:
 
@@ -171,7 +171,7 @@ Uživatelé budou při prvním spuštění vyzváni k výběru předplatného a 
 1. Stažení [skriptu pro upgrade](https://aka.ms/FarmBeatsUpgradeScript)
 
     ```azurepowershell-interactive
-        wget –q https://aka.ms/FarmBeatsUpgradeScript -O ./update-farmbeats.ps1
+        wget –q https://aka.ms/FarmBeatsUpgradeScript -O ./upgrade-farmbeats.ps1
     ```
 
 2. Ve výchozím nastavení se soubor stáhne do domovského adresáře. Přejděte do adresáře.

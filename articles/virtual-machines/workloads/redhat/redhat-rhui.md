@@ -9,19 +9,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 1a63b388725823695c41339ae173c8d8e34839ef
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 2d6b6c03d7726a5a40a2eb1e6cf60c0342791c46
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941397"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133778"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure pro virtuální počítače na vyžádání Red Hat Enterprise Linuxem v Azure
- [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) umožňuje poskytovateli cloudu, jako je Azure, které zrcadlí obsahu úložiště hostované v systému Red Hat, vytvořte vlastní úložiště s týkající se Azure obsahu a ji dejte k dispozici pro virtuální počítače koncového uživatele.
+ RHUI ( [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) ) umožňuje poskytovatelům cloudu, jako je Azure, zrcadlit obsah úložiště hostovaného na Red Hat, vytvářet vlastní úložiště pomocí obsahu specifického pro Azure a zpřístupňuje je pro virtuální počítače koncových uživatelů.
 
-Image Red Hat Enterprise Linux (RHEL) průběžných plateb (PAYG) jsou předem nakonfigurovaný pro přístup k Azure RHUI. Je potřeba žádná další konfigurace. Chcete-li získat nejnovější aktualizace, spusťte `sudo yum update` po RHEL instance je připravený. Tato služba je součástí poplatky za software RHEL průběžné platby.
+Image Red Hat Enterprise Linux (RHEL) průběžných plateb (PAYG) jsou předem nakonfigurovaný pro přístup k Azure RHUI. Je potřeba žádná další konfigurace. Chcete-li získat nejnovější aktualizace, spusťte `sudo yum update` poté, co je instance RHEL připravena. Tato služba je součástí poplatky za software RHEL průběžné platby.
 
 Další informace o RHEL imagí v Azure, včetně publikování a zásad uchovávání, jsou k dispozici [zde](./redhat-images.md).
 
@@ -30,11 +30,11 @@ Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete na strán
 ## <a name="important-information-about-azure-rhui"></a>Důležité informace o Azure RHUI
 
 * Azure RHUI je infrastruktura aktualizací, která podporuje všechny virtuální počítače s PAYG RHEL vytvořené v Azure. To vám nebrání v registraci virtuálních počítačů s PAYG RHEL pomocí Správce předplatného nebo jiného zdroje aktualizací, ale pokud to uděláte s virtuálním počítačem s PAYG, výsledkem bude nepřímá fakturace. Podrobnosti najdete v následujícím bodu.
-* Přístup ke RHUI hostovaných v Azure je součástí ceny image RHEL průběžné platby. Pokud můžete zrušit registraci virtuálního počítače s průběžnými PLATBAMI RHEL od RHUI hostovaných v Azure, který není převést virtuální počítač do typu přineste si – používání vlastní licence (BYOL) virtuálního počítače. Když si zaregistrujete stejný virtuální počítač s jiný zdroj aktualizací, můžou vám být účtovány _nepřímé_ dvakrát poplatky. Vám budou účtovány poprvé poplatek za software RHEL v Azure. Vám budou účtovány podruhé pro předplatných Red Hat, které byly zakoupeny dříve. Pokud trvale potřebujete použít jinou než hostovanou infrastrukturu, než je Azure Hosted, zvažte registraci pro použití [BYOS imagí RHEL](./byos.md).
+* Přístup ke RHUI hostovaných v Azure je součástí ceny image RHEL průběžné platby. Pokud můžete zrušit registraci virtuálního počítače s průběžnými PLATBAMI RHEL od RHUI hostovaných v Azure, který není převést virtuální počítač do typu přineste si – používání vlastní licence (BYOL) virtuálního počítače. Pokud zaregistrujete stejný virtuální počítač s jiným zdrojem aktualizací, můžou se vám účtovat _nepřímé_ dvojité poplatky. Vám budou účtovány poprvé poplatek za software RHEL v Azure. Vám budou účtovány podruhé pro předplatných Red Hat, které byly zakoupeny dříve. Pokud trvale potřebujete použít jinou než hostovanou infrastrukturu, než je Azure Hosted, zvažte registraci pro použití [BYOS imagí RHEL](./byos.md).
 
 * Image RHEL SAP PAYG v Azure (RHEL pro SAP, RHEL for SAP HANA a RHEL for SAP Business Applications) se připojují k vyhrazeným kanálům RHUI, které v konkrétní verzi RHEL zůstávají jako požadavky na certifikaci SAP.
 
-* Přístup ke RHUI hostovaných v Azure je omezený na virtuální počítače v rámci [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Pokud jste připojení přes server proxy veškerý provoz virtuálního počítače přes místní síťové infrastruktury, musíte nastavit trasy definované uživatelem pro virtuální počítače s průběžnými PLATBAMI RHEL pro přístup k Azure RHUI. V takovém případě bude potřeba přidat trasy definované uživatelem pro _všechny_ IP adresy RHUI.
+* Přístup k RHUI hostovanému v Azure se omezí jenom na virtuální počítače v [rozsahu IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Pokud jste připojení přes server proxy veškerý provoz virtuálního počítače přes místní síťové infrastruktury, musíte nastavit trasy definované uživatelem pro virtuální počítače s průběžnými PLATBAMI RHEL pro přístup k Azure RHUI. V takovém případě bude potřeba přidat trasy definované uživatelem pro _všechny_ IP adresy RHUI.
 
 ## <a name="image-update-behavior"></a>Chování aktualizace obrázku
 
@@ -137,9 +137,9 @@ Spusťte následující příkaz jako kořen:
 
 ## <a name="the-ips-for-the-rhui-content-delivery-servers"></a>IP adresy serverů pro doručování obsahu RHUI
 
-RHUI je k dispozici ve všech oblastech, kde jsou k dispozici Image RHEL na vyžádání. Nyní zahrnuje všech veřejných oblastech uvedených na [řídicí panel stavu Azure](https://azure.microsoft.com/status/) stránky, Azure US Government a oblasti Microsoft Azure Germany.
+RHUI je k dispozici ve všech oblastech, kde jsou k dispozici Image RHEL na vyžádání. V současné době zahrnuje všechny veřejné oblasti uvedené na stránce [řídicího panelu stavu Azure](https://azure.microsoft.com/status/) , státní správu usa a Microsoft Azure (Německo) oblasti.
 
-Pokud používáte konfiguraci sítě pro další omezení přístupu z virtuální počítače RHEL s průběžnými PLATBAMI, ujistěte se, že následující IP adresy jsou povoleny pro `yum update` pro práci v závislosti na tom jste v prostředí:
+Pokud k dalšímu omezení přístupu z virtuálních počítačů RHEL PAYG používáte konfiguraci sítě, zajistěte, aby `yum update` fungovaly v závislosti na prostředí, ve kterém jste:
 
 
 ```
@@ -184,11 +184,11 @@ Pokud máte potíže s připojením k Azure RHUI z vašeho virtuálního počít
 
 1. Zkontrolujte konfiguraci role virtuálního počítače pro koncový bod Azure RHUI:
 
-    1. Zkontrolujte, zda `/etc/yum.repos.d/rh-cloud.repo` soubor obsahuje odkaz na `rhui-[1-3].microsoft.com` v `baseurl` z `[rhui-microsoft-azure-rhel*]` část souboru. Pokud tomu tak, že používáte nové RHUI Azure.
+    1. Ověřte, zda `/etc/yum.repos.d/rh-cloud.repo` soubor obsahuje odkaz na `rhui-[1-3].microsoft.com` v `baseurl` části `[rhui-microsoft-azure-rhel*]` souboru. Pokud tomu tak, že používáte nové RHUI Azure.
 
-    1. Pokud odkazuje na umístění s následujícím vzorem `mirrorlist.*cds[1-4].cloudapp.net`, vyžaduje se aktualizace konfigurace. Použití starého snímku virtuálního počítače a budete muset aktualizovat tak, aby odkazoval na nové RHUI Azure.
+    1. Pokud odkazuje na umístění s následujícím vzorem, `mirrorlist.*cds[1-4].cloudapp.net`je vyžadována aktualizace konfigurace. Použití starého snímku virtuálního počítače a budete muset aktualizovat tak, aby odkazoval na nové RHUI Azure.
 
-1. Přístup ke RHUI hostovaných v Azure je omezený na virtuální počítače v rámci [rozsahy IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653).
+1. Přístup k RHUI hostovanému v Azure je omezený na virtuální počítače v [rozsahu IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653).
 
 1. Pokud používáte novou konfiguraci, ověření, že virtuální počítač se připojuje z rozsahu IP adres Azure a pořád nemůžete připojit k Azure RHUI, soubor případ podpory s Microsoftem nebo Red Hat.
 
@@ -196,7 +196,7 @@ Pokud máte potíže s připojením k Azure RHUI z vašeho virtuálního počít
 
 V září 2016 jsme nasadili aktualizované RHUI Azure. V dubnu 2017 jsme vypnout staré RHUI Azure. Pokud používáte Image RHEL PAYG (nebo jejich snímky) od září 2016 nebo novější, se automaticky připojujete nové RHUI Azure. Pokud ale máte starší snímky na virtuálních počítačích, musíte ručně aktualizovat svou konfiguraci pro přístup k Azure RHUI, jak je popsáno v následující části.
 
-Nasazení nových serverů Azure RHUI se používají [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/). V Traffic Manageru jeden koncový bod (rhui 1.microsoft.cz) můžete využívat jakýkoli virtuální počítač, bez ohledu na oblast.
+Nové servery Azure RHUI se nasazují s využitím [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/). V Traffic Manageru jeden koncový bod (rhui 1.microsoft.cz) můžete využívat jakýkoli virtuální počítač, bez ohledu na oblast.
 
 ### <a name="manual-update-procedure-to-use-the-azure-rhui-servers"></a>Postup ruční aktualizace pro používání Azure RHUI serverů
 Tento postup je k dispozici pouze pro referenci. Image RHEL PAYG už máte správnou konfiguraci pro připojení k Azure RHUI. Chcete-li ručně aktualizovat konfiguraci pro používání Azure RHUI serverů, proveďte následující kroky:
@@ -212,6 +212,6 @@ Tento postup je k dispozici pouze pro referenci. Image RHEL PAYG už máte sprá
   ```
 
 ## <a name="next-steps"></a>Další kroky
-* Vytvoření virtuálního počítače s Red Hat Enterprise Linuxem z image Azure Marketplace s průběžnými PLATBAMI a použít RHUI hostovaných v Azure, přejděte [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/).
+* Pokud chcete vytvořit Red Hat Enterprise Linux virtuální počítač z image Azure Marketplace PAYG a používat Azure Hosted RHUI, pokračujte na [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/).
 * Další informace o obrázcích Red Hat v Azure najdete na [stránce s dokumentací](./redhat-images.md).
 * Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete na stránce [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata) .

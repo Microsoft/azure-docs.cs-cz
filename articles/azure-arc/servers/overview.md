@@ -10,12 +10,12 @@ keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu,
 ms.date: 02/03/2020
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: c38bc2d5d9a7e23c0bb3041a5cb3b5cd1da9adb1
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: ad24418bf3879e4ef9a0ae4833c37c051079c668
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114237"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133851"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure ARC pro servery (Preview)
 
@@ -63,7 +63,7 @@ Pro agenta připojeného počítače Azure jsou oficiálně podporované násled
 
 ### <a name="azure-subscription-and-service-limits"></a>Omezení předplatného a služeb Azure
 
-Před konfigurací počítačů pomocí Azure ARC pro servery (Preview) byste měli zkontrolovat [omezení Azure Resource Manager předplatného](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager) a [skupiny prostředků](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) pro plánování počtu počítačů, které se mají připojit.
+Před konfigurací počítačů pomocí Azure ARC pro servery (Preview) byste měli zkontrolovat [omezení Azure Resource Manager předplatného](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) a [skupiny prostředků](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) pro plánování počtu počítačů, které se mají připojit.
 
 ### <a name="networking-configuration"></a>Konfigurace sítě
 

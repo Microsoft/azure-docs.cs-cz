@@ -13,21 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
 ms.author: allensu
-ms.openlocfilehash: b37253f37043d902d33504b99401781eb1c761c5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: eac7dc3b7188131685ef630c0dc01d248e1d6a6a
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075939"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134785"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer s resetováním při nečinnosti TCP (Public Preview)
+# <a name="load-balancer-with-tcp-reset-on-idle"></a>Load Balancer s resetováním protokolu TCP po nečinnosti
 
 Pomocí [Standard Load Balancer](load-balancer-standard-overview.md) můžete pro své scénáře vytvořit předvídatelné chování aplikace tím, že pro dané pravidlo povolíte resetování protokolu TCP pro nečinnost. Výchozím chováním Load Balancer je nejenom tiché vyřazení toků při dosažení časového limitu nečinnosti toku.  Povolení této funkce způsobí, že Load Balancer odesílat obousměrné resety TCP (TCP RST Packet) na časový limit nečinnosti.  Tím se informují koncové body vaší aplikace, ke kterým vypršel časový limit připojení a které už nejsou použitelné.  Koncové body můžou v případě potřeby okamžitě vytvořit nové připojení.
 
 ![Resetování protokolu TCP Load Balancer](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
-
->[!NOTE] 
->Load Balancer s funkcí vypršení časového limitu nečinnosti protokolu TCP je k dispozici jako Public Preview v tomto okamžiku. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
 Toto výchozí chování můžete změnit a povolit odesílání resetů TCP na časový limit nečinnosti u příchozích pravidel NAT, pravidel vyrovnávání zatížení a [odchozích pravidel](https://aka.ms/lboutboundrules).  Pokud je povoleno podle pravidla, Load Balancer odešle obousměrné resetování TCP (pakety TCP RST) do koncových bodů klienta i serveru v době nečinnosti u všech vyhovujících toků.
 
@@ -73,10 +70,9 @@ K dispozici ve všech oblastech.
 
 ## <a name="limitations"></a>Omezení
 
-- Portál nelze použít ke konfiguraci nebo zobrazení resetu protokolu TCP.  Použijte šablony, rozhraní REST API, Az CLI 2.0 nebo prostředí PowerShell.
 - TCP RST se posílá pouze během připojení TCP v navázaném stavu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [Load balanceru úrovně Standard](load-balancer-standard-overview.md).
+- Přečtěte si o [Standard Load Balancer](load-balancer-standard-overview.md).
 - Přečtěte si o [odchozích pravidlech](load-balancer-outbound-rules-overview.md).

@@ -6,21 +6,21 @@ keywords: kódování; kodéry; média
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 11/18/2019
+ms.date: 02/04/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
-ms.translationtype: MT
+ms.openlocfilehash: bccdb49c22bce983fe8cb2aba1387c4b1645b62c
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186022"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132708"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Doporučené kodéry živého streamování
 
 V Azure Media Services [živá událost](https://docs.microsoft.com/rest/api/media/liveevents) (kanál) představuje kanál pro zpracování obsahu živého streamování. Živá událost přijímá živé vstupní proudy jedním ze dvou způsobů.
 
-* On-premises Live Encoder odesílá datový proud s více přenosovými rychlostmi nebo Smooth Streaming (fragmentovaný MP4) do živé události, která není povolena k provádění živého kódování pomocí Media Services. Ingestované datové proudy procházejí živými událostmi bez dalšího zpracování. Tato metoda se nazývá **předávací**. Živý kodér může poslat datový proud s jednou přenosovou rychlostí do předávacího kanálu. Tuto konfiguraci nedoporučujeme, protože neumožňuje streamování s adaptivní přenosovou rychlostí na klienta.
+* On-premises Live Encoder odesílá datový proud s více přenosovými rychlostmi nebo Smooth Streaming (fragmentovaný MP4) do živé události, která není povolena k provádění živého kódování pomocí Media Services. Ingestované datové proudy procházejí živými událostmi bez dalšího zpracování. Tato metoda se nazývá **předávací**. Pro živý kodér doporučujeme, aby odesílal datové proudy s více přenosovými rychlostmi, a nikoli datový proud s jednou přenosovou rychlostí, který umožňuje streamování s adaptivní přenosovou rychlostí na klienta.
 
   > [!NOTE]
   > Použití předávací metody je nejúčinnější způsob, jak provádět živé streamování.
@@ -29,21 +29,28 @@ V Azure Media Services [živá událost](https://docs.microsoft.com/rest/api/med
 
 Podrobné informace o živém kódování pomocí Media Services najdete v tématu [živé streamování s Media Services V3](live-streaming-overview.md).
 
+## <a name="encoder-requirements"></a>Požadavky kodéru
+
+Kodéry musí podporovat protokol TLS 1,2 při použití protokolů HTTPS nebo RTMP.
+
 ## <a name="live-encoders-that-output-rtmp"></a>Živé kodéry, které mají výstup RTMP
 
 Služba Media Services doporučuje používat jeden z následujících kodérů pro kódování v reálném čase, které mají RTMP jako výstup. Podporovaná schémata URL jsou `rtmp://` nebo `rtmps://`.
 
+Při streamování přes RTMP zkontrolujte nastavení brány firewall nebo proxy serveru, aby se zajistilo, že jsou otevřené odchozí porty TCP 1935 a 1936.<br/><br/>
+Při streamování přes RTMPS zkontrolujte nastavení brány firewall nebo proxy serveru, aby se zajistilo, že jsou otevřené odchozí porty TCP 2935 a 2936.
+
 > [!NOTE]
-> Při streamování přes RTMP zkontrolujte nastavení brány firewall nebo proxy serveru, aby se zajistilo, že jsou otevřené odchozí porty TCP 1935 a 1936.
+> Kodéry musí podporovat protokol TLS 1,2 při použití protokolů RTMP.
 
 - Adobe Flash Media Live Encoder 3.2
 - [Cambria Live 4,3](https://www.capellasystems.net/products/cambria-live/)
+- Element-Live (verze 2.14.15 a vyšší)
 - Haivision KB
 - Haivision Makito X HEVC
 - OBS Studio
 - Switcher Studio (iOS)
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Wirecast (verze 13.0.2 nebo vyšší) z důvodu požadavku TLS 1,2)
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -57,17 +64,19 @@ Služba Media Services doporučuje používat jeden z následujících kodérů 
 
 Media Services doporučuje použít jeden z následujících živých kodérů, které mají s více přenosovými rychlostmi Smooth Streaming (fragmentované MP4) jako výstup. Podporovaná schémata URL jsou `http://` nebo `https://`.
 
+> [!NOTE]
+> Kodéry musí podporovat protokol TLS 1,2 při použití protokolů HTTPS.
+
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
-- Envivio 4Caster C4 Gen III
+- Element-Live (verze 2.14.15 a vyšší z důvodu požadavku TLS 1,2)
+- Envivio 4Caster C4 Gen III 
 - Představte si Communications Selenio MCP3
 - Media Excel Hero Live a Hero 4K (UHD/HEVC)
 - [FFmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  Pokud vytváříte streamování živých událostí v několika jazycích (například jedna anglická zvuková stopa a jedna Španělská zvuková stopa), můžete toho dosáhnout pomocí Media Encoder Live kodéru nakonfigurovaného tak, aby odesílal živý kanál do předávací živé události.
-
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurace nastavení místního kodéru pro Live Encoder
 

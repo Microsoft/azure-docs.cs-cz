@@ -1,5 +1,5 @@
 ---
-title: Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure PowerShell
+title: Přidání nebo odebrání přiřazení rolí s RBAC a Azure PowerShell
 description: Přečtěte si, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí řízení přístupu na základě role (RBAC) v Azure a Azure PowerShell.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0ee996e39950d38b10f8df78fe47f7087c4a2ed1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 68a73f622dc69b70870ddc1db16edcf406b63800
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981063"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138325"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure PowerShell
 
@@ -27,7 +27,7 @@ ms.locfileid: "75981063"
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující:
 
@@ -65,7 +65,7 @@ Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
 (Get-AzADServicePrincipal -DisplayName <service_name_in_quotes>).id
 ```
 
-## <a name="add-a-role-assignment"></a>Přidat přiřazení role
+## <a name="add-a-role-assignment"></a>Přidání přiřazení role
 
 Pokud chcete udělit přístup, přidejte přiřazení role ve RBAC.
 

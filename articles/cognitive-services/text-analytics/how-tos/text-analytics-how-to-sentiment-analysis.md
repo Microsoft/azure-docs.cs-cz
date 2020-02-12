@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/17/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 214c071e0d01908e2d46c932fcf87906de834102
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644677"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137946"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Postupy: zjištění mínění pomocí rozhraní API pro analýzu textu
 
@@ -50,14 +50,7 @@ Rozhraní API pro analýzu textu nabízí dvě verze Analýza mínění-v2 a v3.
 | Mínění popisky                        |                       | ×                     |
 | Správa verzí modelů                   |                       | ×                     |
 
-#### <a name="version-2tabversion-2"></a>[Verze 2](#tab/version-2)
-
-### <a name="sentiment-scoring"></a>Bodování mínění
-
-Analyzátor mínění klasifikuje text jako převládající nebo negativní. Přiřadí skóre v rozsahu od 0 do 1. Hodnoty blížící se 0,5 představují neutrální nebo neurčité mínění. Skóre 0,5 indikuje neutralitu. Pokud řetězec nelze analyzovat pro mínění nebo nemá žádné mínění, skóre je vždy 0,5 přesně. Když například zadáte řetězec ve španělštině s kódem jazyka pro angličtinu, je skóre 0,5.
-
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Verze 3 (Public Preview)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview](#tab/version-3)
 
 ### <a name="sentiment-scoring"></a>Bodování mínění
 
@@ -85,6 +78,13 @@ Analýza mínění V3 může vracet skóre a popisky na úrovni věty a dokument
 
 Můžete najít ukázkovou C# aplikaci, která volá tuto verzi analýza mínění na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs).
 
+
+#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+
+### <a name="sentiment-scoring"></a>Bodování mínění
+
+Analyzátor mínění klasifikuje text jako převládající nebo negativní. Přiřadí skóre v rozsahu od 0 do 1. Hodnoty blížící se 0,5 představují neutrální nebo neurčité mínění. Skóre 0,5 indikuje neutralitu. Pokud řetězec nelze analyzovat pro mínění nebo nemá žádné mínění, skóre je vždy 0,5 přesně. Když například zadáte řetězec ve španělštině s kódem jazyka pro angličtinu, je skóre 0,5.
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>Odesílá se žádost o REST API. 
@@ -101,27 +101,28 @@ Velikost dokumentu musí být v rozmezí 5 120 znaků na dokumentu. Pro každou 
 
 Vytvoření žádosti POST. V následujících referenčních odkazech můžete [použít možnost post](text-analytics-how-to-call-api.md) nebo **Konzola pro testování API** k rychlému uspořádání a odeslání jednoho. 
 
-#### <a name="version-2tabversion-2"></a>[Verze 2](#tab/version-2)
-
-[Reference k Analýza mínění v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Verze 3 (Public Preview)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview](#tab/version-3)
 
 [Reference Analýza mínění V3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
 
+#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+
+[Reference k Analýza mínění v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
+
 ---
 
-Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Příklad:
-    
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Například:
 
-#### <a name="version-2tabversion-2"></a>[Verze 2](#tab/version-2)
+> [!NOTE]
+> Klíč a koncový bod pro váš Analýza textu prostředek najdete na webu Azure Portal. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**. 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Verze 3 (Public Preview)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
+
+#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
 ---
 
@@ -161,26 +162,7 @@ Analyzátor mínění klasifikuje text jako převládající nebo negativní. P�
 
 Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo uložit výstup do souboru v místním systému. Pak importujte výstup do aplikace, kterou můžete použít k řazení, vyhledávání a manipulaci s daty.
 
-#### <a name="version-2tabversion-2"></a>[Verze 2](#tab/version-2)
-
-### <a name="sentiment-analysis-v2-example-response"></a>Příklad odpovědi Analýza mínění v2
-
-Odpovědi z Analýza mínění v2 obsahují skóre mínění pro každý odeslaný dokument.
-
-```json
-{
-  "documents": [{
-    "id": "1",
-    "score": 0.98690706491470337
-  }, {
-    "id": "2",
-    "score": 0.95202046632766724
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Verze 3 (Public Preview)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview](#tab/version-3)
 
 ### <a name="sentiment-analysis-v3-example-response"></a>Příklad odpovědi Analýza mínění V3
 
@@ -255,6 +237,26 @@ Odpovědi z Analýza mínění V3 obsahují mínění popisky a skóre pro každ
     "errors": []
 }
 ```
+
+#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+
+### <a name="sentiment-analysis-v2-example-response"></a>Příklad odpovědi Analýza mínění v2
+
+Odpovědi z Analýza mínění v2 obsahují skóre mínění pro každý odeslaný dokument.
+
+```json
+{
+  "documents": [{
+    "id": "1",
+    "score": 0.98690706491470337
+  }, {
+    "id": "2",
+    "score": 0.95202046632766724
+  }],
+  "errors": []
+}
+```
+
 ---
 
 ## <a name="summary"></a>Souhrn
@@ -266,7 +268,7 @@ V tomto článku jste zjistili koncepty a pracovní postup pro analýzu míněn�
 + Požadavek POST je na `/sentiment` koncový bod pomocí přizpůsobeného [přístupového klíče a koncového bodu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který je platný pro vaše předplatné.
 + Výstup odpovědi, který se skládá z mínění skóre pro každé ID dokumentu, se může streamovat do libovolné aplikace, která přijímá JSON. Například Excel a Power BI.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Přehled rozhraní API pro analýzu textu](../overview.md)
 * [Použití klientské knihovny Analýza textu](../quickstarts/text-analytics-sdk.md)

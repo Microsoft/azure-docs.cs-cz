@@ -8,13 +8,13 @@ ms.author: daperlov
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/27/2018
-ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 02/10/2020
+ms.openlocfilehash: 2e50d226282536fa4e8c044d2ee3d91df4cfd1ee
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644694"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131468"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Data Factory.  
@@ -72,7 +72,7 @@ Pokud chcete přesunout úlohy SSIS, můžete vytvořit Data Factory a zřídit 
 ### <a name="sdks"></a>Sady SDK
 Pokud jste pokročilý uživatel a hledáte programové rozhraní, Data Factory poskytuje bohatou sadu sad SDK, které můžete použít k vytváření, správě a monitorování kanálů pomocí vašeho oblíbeného integrovaného vývojového prostředí (IDE). Podpora jazyků zahrnuje .NET, PowerShell, Python a REST.
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 Můžete monitorovat datové továrny prostřednictvím PowerShellu, sady SDK nebo nástrojů pro monitorování vizuálů v uživatelském rozhraní prohlížeče. Efektivním a efektivním způsobem můžete monitorovat a spravovat vlastní toky na vyžádání, na základě triggeru a hodiny. Zrušit stávající úlohy, Projděte si přehled o selháních, přejděte k podrobnostem a Získejte podrobné chybové zprávy a Nalaďte problémy, a to vše z jednoho podokna skla bez kontextu přepínání nebo navigace mezi obrazovkami. 
 
 ### <a name="new-features-for-ssis-in-data-factory"></a>Nové funkce pro SSIS v Data Factory
@@ -139,7 +139,7 @@ Datová sada je parametr silného typu a entita, kterou můžete znovu použít 
 
 Propojená služba je také parametr silného typu, který obsahuje informace o připojení k úložišti dat nebo výpočetnímu prostředí. Je to také entita, kterou můžete znovu použít nebo odkazovat.
 
-### <a name="control-flows"></a>Toky řízení
+### <a name="control-flows"></a>Tok řízení
 Kontrolní toky orchestrují aktivity kanálu, které zahrnují zřetězení aktivit v sekvenci, větvení, parametry, které definujete na úrovni kanálu, a argumenty, které předáte při vyvolání kanálu na vyžádání nebo z triggeru. Řídicí toky také zahrnují vlastní předávání stavů a kontejnery smyček (tj. iterátory foreach).
 
 
@@ -195,6 +195,9 @@ Použijte aktivitu kopírování pro přípravu dat z jiných konektorů a potom
 
 Místní prostředí IR je konstrukce kanálu ADF, kterou můžete použít s aktivitou kopírování k získání nebo přesunu dat do a z Prem nebo datových zdrojů a jímky založených na virtuálních počítačích. Nejprve Připravte data s kopírováním, potom toku dat pro transformaci a následným zkopírováním, pokud potřebujete přesunout tato transformovaná data zpět do úložiště on-Prem.
 
+### <a name="does-the-data-flow-compute-engine-serve-multiple-tenants"></a>Slouží výpočetní modul toku dat více tenantů?
+Clustery nejsou nikdy sdíleny. Pro každou úlohu spuštění v produkčním běhu garantujeme izolaci. V případě scénáře ladění získá jedna osoba jeden cluster a všechny ladění budou přejít do clusteru, který iniciuje tento uživatel.
+
 ## <a name="wrangling-data-flows"></a>Toky dat tahání
 
 ### <a name="what-are-the-supported-regions-for-wrangling-data-flow"></a>Jaké jsou podporované oblasti pro tok dat tahání?
@@ -202,16 +205,16 @@ Místní prostředí IR je konstrukce kanálu ADF, kterou můžete použít s ak
 Tok dat tahání se v tuto chvíli podporuje v datových továrnách vytvořených v následujících oblastech:
 
 * Austrálie – východ
-* Střední Kanada
+* Kanada – střed
 * Střed Indie
 * Střední USA
-* Východní USA
-* Východ USA 2
+* USA – východ
+* Východní USA 2
 * Japonsko – východ
 * Severní Evropa
 * Jihovýchodní Asie
 * Středojižní USA
-* Spojené království – jih
+* Velká Británie – jih
 * Středozápadní USA
 * Západní Evropa
 * Západní USA
@@ -244,7 +247,7 @@ Azure Data Factory (ADF) je spravovaná služba pro integraci dat, která umož�
 
 Tok dat tahání podporuje v SQL následující datové typy. Při použití datového typu, který není podporován, se zobrazí chyba ověřování.
 
-* short
+* dostatečná
 * double
 * real
 * float
@@ -259,7 +262,7 @@ Tok dat tahání podporuje v SQL následující datové typy. Při použití dat
 * smallint
 * tinyint
 * bigint
-* Long
+* long
 * text
 * date
 * datetime

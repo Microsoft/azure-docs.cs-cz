@@ -1,21 +1,21 @@
 ---
-title: Kurz – Příprava pružinové aplikace na nasazení v jarním cloudu Azure
-description: V tomto kurzu připravíte pro nasazení pružinovou aplikaci Java.
+title: Kurz – Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure
+description: V tomto kurzu připravíte pružinovou aplikaci Java pro nasazení do jarního cloudu Azure.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 7a879fa942046376e8cf0acc40a62039e8f3de25
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1af4bdcfc0fea319b9e5c9f39a1ade3f4492404f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064712"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137633"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure
 
-V tomto rychlém startu se dozvíte, jak připravit stávající cloudovou aplikaci Java pro nasazení do jarního cloudu Azure. Pokud jsou správně nakonfigurovány, poskytuje Azure jarní Cloud robustní služby pro monitorování, škálování a aktualizaci vaší aplikace v Java pro jarní Cloud.
+V tomto rychlém startu se dozvíte, jak připravit existující aplikaci pružiny v jazyce Java pro nasazení do jarního cloudu Azure. Pokud jsou správně nakonfigurovány, poskytuje Azure jarní Cloud robustní služby pro monitorování, škálování a aktualizaci vaší aplikace v Java pro jarní Cloud.
 
 ## <a name="java-runtime-version"></a>Běhová verze Java
 

@@ -581,8 +581,6 @@
               href: disks-benchmarks.md
         - name: Vyhledání nepřipojených disků
           href: find-unattached-disks.md
-        - name: Použití úložiště souborů
-          href: ../../storage/files/storage-files-quick-create-use-windows.md
         - name: Nejčastější dotazy k diskům
           href: faq-for-disks.md
     - name: Správa sítí

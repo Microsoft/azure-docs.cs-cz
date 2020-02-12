@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 0aa30c114153521258842fc5f1e9150053b766f4
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 21a11863bd2bc9882d4336f5c5d2bf1d7b7f49da
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332301"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133767"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Nastavení testovacího prostředí zaměřeného na obsáhlý Learning při zpracování v přirozeném jazyce pomocí Azure Lab Services
 V tomto článku se dozvíte, jak nastavit testovací prostředí zaměřené na obsáhlý Learning při zpracování přirozeného jazyka (NLP) pomocí Azure Lab Services. Zpracování přirozeného jazyka (NLP) je forma umělé Intelligence (AI), která umožňuje počítačům s překlady, rozpoznáváním řeči a dalšími možnostmi porozumění jazyku.  
@@ -32,7 +32,7 @@ Po vytvoření účtu testovacího prostředí povolte v účtu testovacího pro
 
 | Nastavení účtu testovacího prostředí | Pokyny |
 | ----------- | ------------ |  
-| Image Marketplace | Povolte Image Data Science Virtual Machine pro Linux (Ubuntu) pro použití v rámci vašeho účtu testovacího prostředí.  Pokyny najdete v následujících článcích: [určení imagí Marketplace dostupných pro tvůrce testovacích prostředí](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators). | 
+| Image Marketplace | Povolte Image Data Science Virtual Machine pro Linux (Ubuntu) pro použití v rámci vašeho účtu testovacího prostředí.  Pokyny najdete v následujících článcích: [určení imagí Marketplace dostupných pro tvůrce testovacích prostředí](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators). | 
 
 Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací prostředí a použijte následující nastavení:
 

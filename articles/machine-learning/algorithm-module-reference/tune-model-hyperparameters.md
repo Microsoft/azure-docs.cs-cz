@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: d15da0c0cb00f640d2ffc647475f66b76119f609
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 02/11/2020
+ms.openlocfilehash: 112a7f7aa61984b2ce9bd8400c629fe62db55584
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548369"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137900"
 ---
 # <a name="tune-model-hyperparameters"></a>Ladění hyperparametrů modelů
 
@@ -43,17 +43,13 @@ Tato část popisuje, jak provést základní úklid parametrů, který navlakuj
 
 2.  Připojit nevlakový model ke vstupu vlevo. 
 
-3. Nastavte možnost **vytvořit režim Trainer** na **rozsah parametrů**. Pomocí **Tvůrce rozsahu** můžete určit rozsah hodnot, které se mají použít v intervalu mazání parametrů.  
 
-    Téměř všechny moduly klasifikace a regrese podporují režim úklidu integrovaných parametrů. Pro ty, kteří nepodporují konfiguraci rozsahu parametrů, můžete testovat pouze dostupné hodnoty parametrů.
-
-    Můžete ručně nastavit hodnotu pro jeden nebo více parametrů a potom vymezit zbývající parametry. To může nějaký čas ušetřit.
 
 4.  Přidejte datovou sadu, kterou chcete použít pro školení, a připojte ji ke střednímu vstupu parametrů modelu ladění.  
 
     Pokud máte označenou datovou sadu, můžete ji připojit ke vstupnímu portu vpravo od sebe (**volitelná datová sada ověření**). To vám umožní měřit přesnost při výuce a ladění.
 
-5.  V podokně **vlastnosti** u parametrů modelu ladění vyberte hodnotu pro **režim mazání parametrů**. Tato možnost určuje, jak jsou vybrány parametry.
+5.  V pravém panelu modelových parametrů ladění vyberte hodnotu pro **režim mazání parametrů**. Tato možnost určuje, jak jsou vybrány parametry.
 
     - **Celá mřížka**: Když vyberete tuto možnost, modul se cyklicky přeskočí do mřížky předdefinovaných systémem, aby vyzkoušel různé kombinace a identifikovala nejlepší informace. Tato možnost je užitečná v případě, že nevíte, co nejlepší nastavení parametrů může být a chcete vyzkoušet všechny možné kombinace hodnot.
 
@@ -64,8 +60,6 @@ Tato část popisuje, jak provést základní úklid parametrů, který navlakuj
 7.  Vyberte počet spuštění:
 
     1. **Maximální počet spuštění na náhodném čištění**: Pokud zvolíte náhodné rozčištění, můžete určit, kolikrát by měl být model vyškolený, pomocí náhodné kombinace hodnot parametrů.
-
-    2. **Maximální počet spuštění v náhodné mřížce**: Tato možnost také určuje počet iterací v případě náhodného vzorkování hodnot parametrů, ale hodnoty nejsou vygenerované náhodně ze zadaného rozsahu. Namísto toho modul vytvoří matici všech možných kombinací hodnot parametrů. Pak provede náhodný výběr v rámci matice. Tato metoda je efektivnější a méně náchylná k regionálnímu převzorkování nebo odvzorkování.
 
 8.  Pro **hodnocení**vyberte jednu metriku, která se má použít pro řazení modelů.
 

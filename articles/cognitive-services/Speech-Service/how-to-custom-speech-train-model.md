@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0f28d984cfc29e67c3b5c3a90137ee09868b471c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806024"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137775"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Výuka modelu pro Custom Speech
 
-Výukový model pro převod řeči na text může zlepšit přesnost rozpoznávání pro základní model Microsoftu nebo vlastní model, který plánujete vytvořit. Model je vyškolený pomocí přepisů a souvisejících textů v popisku. Tyto datové sady spolu s dříve nahranými zvukovými daty se používají k upřesnění a výukovém modelu převodu řeči na text pro rozpoznávání slov, frází, zkratek, názvů a dalších podmínek pro konkrétní produkt. Čím více doménových datových sad zadáte (data související s tím, co uživatelé říkají a co očekáváte), tím přesnější bude váš model, což vede k lepšímu rozpoznávání. Mějte na paměti, že díky krmení nesouvisejících dat s vaším školením můžete snížit nebo snížit přesnost modelu.
+Školení pro model převodu řeči na text může zlepšit přesnost rozpoznávání pro základní model společnosti Microsoft. Model je vyškolený pomocí přepisů a souvisejících textů v popisku. Tyto datové sady spolu s dříve nahranými zvukovými daty se používají k upřesnění a výukovém modelu převodu řeči na text pro rozpoznávání slov, frází, zkratek, názvů a dalších podmínek pro konkrétní produkt. Čím více doménových datových sad zadáte (data související s tím, co uživatelé říkají a co očekáváte), tím přesnější bude váš model, což vede k lepšímu rozpoznávání. Mějte na paměti, že díky krmení nesouvisejících dat s vaším školením můžete snížit nebo snížit přesnost modelu.
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>Řešení problémů s přesností pomocí školení
 
 Pokud narazíte na problémy s rozpoznáváním pro váš model, může vám použití přepisů a souvisejících dat pro další školení pomoci zlepšit přesnost. Pomocí této tabulky můžete určit, kterou datovou sadu použít k vyřešení těchto problémů:
 
-| Případ použití | Data type |
+| Případ použití | Typ dat |
 | -------- | --------- |
 | Vylepšete přesnost rozpoznávání v oboru a gramatikě specifické pro konkrétní odvětví, jako je lékařské terminologie nebo IT žargonu. | Související text (věty/projevy) |
 | Definujte fonetickou a zobrazovanou formu slova nebo termínu, který má nestandardní výslovnost, například názvy produktů nebo akronymy. | Související text (výslovnost) |
@@ -34,7 +34,7 @@ Pokud narazíte na problémy s rozpoznáváním pro váš model, může vám pou
 > [!IMPORTANT]
 > Pokud jste neodeslali datovou sadu, přečtěte si téma [Příprava a testování dat](how-to-custom-speech-test-data.md). Tento dokument poskytuje pokyny pro nahrávání dat a pokyny pro vytváření vysoce kvalitních datových sad.
 
-## <a name="train-and-evaluate-a-model"></a>Trénování a vyhodnocení modelu
+## <a name="train-and-evaluate-a-model"></a>Výuka a vyhodnocení modelu
 
 Prvním krokem při výuce modelu je odeslání školicích dat. Použijte [přípravu a testování dat](how-to-custom-speech-test-data.md) pro podrobné pokyny k přípravě přepisů a souvisejících textu (projevy a výslovnosti) s lidským označením. Po nahrání školicích dat postupujte podle těchto pokynů a spusťte školení modelu:
 
@@ -62,7 +62,7 @@ Pokud se rozhodnete vyzkoušet přesnost testování, je důležité vybrat akus
 
 - [Nasazení modelu](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 - [Příprava a testování dat](how-to-custom-speech-test-data.md)
 - [Kontrola dat](how-to-custom-speech-inspect-data.md)

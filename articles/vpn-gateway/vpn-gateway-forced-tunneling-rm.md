@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: c0b32bfba61f1c6f3f00c5189f611d84069dd9da
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
-ms.translationtype: MT
+ms.openlocfilehash: 7cc74ca19d2194a7319ab1b88ab7847b04b0d895
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779667"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134571"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Konfigurace vynuceného tunelování pomocí modelu nasazení Azure Resource Manageru
 
@@ -47,9 +47,9 @@ Vynucené tunelování v Azure se konfiguruje prostřednictvím uživatelsky def
 
 * Každé podsíti virtuální sítě má integrované, směrovací tabulky systému. Systémovou tabulku směrování má následující tři skupiny tras:
   
-  * **Místní virtuální sítě trasy:** přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti.
-  * **Místní trasy:** pro Azure VPN gateway.
-  * **Výchozí trasa:** přímo k Internetu. Pakety určené k privátním IP adresám, které nejsou pokryté předchozími dvěma trasami, jsou vyřazeny.
+  * **Trasy místní virtuální sítě:** Přímo k cílovým virtuálním počítačům ve stejné virtuální síti.
+  * **Místní trasy:** K bráně Azure VPN Gateway.
+  * **Výchozí trasa:** Přímo na Internet. Pakety určené k privátním IP adresám, které nejsou pokryté předchozími dvěma trasami, jsou vyřazeny.
 * Tento postup používá uživatelem definované trasy (UDR) k vytvoření směrovací tabulky pro přidání výchozí trasy a následné přidružení směrovací tabulky k vašim virtuálním podsítím, aby bylo možné v těchto podsítích povolit vynucené tunelové propojení.
 * Vynucené tunelování musí být přidružené k virtuální síti, která má bránu sítě VPN založenou na trasách. Budete muset nastavit "výchozí web" mezi místy místní servery připojené k virtuální síti. Místní zařízení VPN musí být také nakonfigurováno s použitím 0.0.0.0/0 jako selektorů provozu. 
 * ExpressRoute se vynucené tunelování přes tento mechanismus není nakonfigurovaná, ale místo toho zajišťuje inzeruje výchozí trasu prostřednictvím relací vytvoření partnerského vztahu protokolu BGP ExpressRoute. Další informace najdete v [dokumentaci k ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
@@ -71,9 +71,9 @@ Nainstalujte nejnovější verzi rutin PowerShellu pro Azure Resource Manager. D
 
 ### <a name="to-log-in"></a>Přihlášení
 
-[!INCLUDE [To log in](../../includes/vpn-gateway-ps-login-include.md)]
+[!INCLUDE [To log in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
-## <a name="configure-forced-tunneling"></a>Konfigurace vynuceného tunelového propojení
+## <a name="configure-forced-tunneling"></a>Konfigurace vynuceného tunelování
 
 > [!NOTE]
 > Můžou se zobrazit upozornění, že typ výstupního objektu této rutiny se v budoucí verzi upraví. Jedná se o očekávané chování a tato upozornění můžete bezpečně ignorovat.

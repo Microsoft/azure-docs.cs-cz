@@ -3,13 +3,13 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 tags: billing
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: b209bc3e60f50ac363d3426d6c87f206b016d711
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
-ms.translationtype: MT
+ms.date: 02/10/2020
+ms.openlocfilehash: 0891a18c782d4d60970ccba8efa7c9bfc98f19df
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087424"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133699"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -28,8 +28,6 @@ Omezení názvů prostředků najdete v tématu [pravidla a omezení pojmenován
 ## <a name="limits-and-azure-resource-manager"></a>Omezení a Azure Resource Manager
 
 Můžete zkombinovat několik prostředků Azure do jedné skupiny prostředků Azure. Když použijete skupiny prostředků, omezení, které byly globální, se spravují na regionální úrovni s Azure Resource Manager. Další informace o skupinách prostředků Azure najdete v tématu [přehled Azure Resource Manager](overview.md).
-
-V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních při použití Azure Resource Manager. Například tabulka **omezení předplatného** a **omezení předplatného – Azure Resource Manager** tabulka. Pokud se limit vztahuje na oba scénáře, je zobrazen pouze v první tabulce. Pokud není uvedeno jinak, omezení jsou globální v rámci všech oblastí.
 
 > [!NOTE]
 > Kvóty pro prostředky ve skupinách prostředků Azure jsou pro jednotlivé oblasti dostupné pro vaše předplatné, nikoli za předplatné, jako jsou kvóty pro správu služeb. Použijte jako příklad kvóty vCPU. Pokud chcete požádat o zvýšení kvóty s podporou pro vCPU, musíte se rozhodnout, kolik vCPU chcete použít pro tyto oblasti. Pak vytvoříte konkrétní požadavek na vCPU kvóty skupiny prostředků Azure pro příslušné množství a oblasti. Pokud potřebujete použít 30 vCPU v Západní Evropa ke spuštění vaší aplikace, konkrétně si vyžádáte 30 vCPU v Západní Evropa. Vaše kvóta vCPU se nezvyšuje v žádné jiné oblasti – pouze Západní Evropa má kvótu 30 vCPU.
@@ -115,13 +113,7 @@ V následujícím seznamu omezení zobrazuje nová tabulka rozdíly v omezeních
 
 ### <a name="subscription-limits"></a>Omezení předplatného
 
-#### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>Omezení předplatného – Azure Service Management (model nasazení Classic)
-
-[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
-
-#### <a name="subscription-limits---azure-resource-manager"></a>Omezení předplatného – Azure Resource Manager
-
-Následující omezení platí při použití Azure Resource Manager a skupin prostředků Azure. Omezení, která nebyla změněna pomocí Azure Resource Manager nejsou uvedena. Tato omezení najdete v předchozí tabulce.
+Následující omezení platí při použití Azure Resource Manager a skupin prostředků Azure.
 
 Informace o Správce prostředků omezení čtení a zápisu rozhraní API najdete v tématu [omezování správce prostředků požadavků](request-limits-and-throttling.md).
 
@@ -348,7 +340,7 @@ Další informace o omezeních na podrobnější úrovni, jako je velikost dokum
 
 ### <a name="azure-monitor-limits"></a>Omezení Azure Monitor
 
-#### <a name="alerts"></a>Upozornění
+#### <a name="alerts"></a>Výstrahy
 
 [!INCLUDE [monitoring-limits](../../../includes/azure-monitor-limits-alerts.md)]
 
@@ -486,7 +478,13 @@ Omezení SQL Database najdete v tématu omezení [prostředků SQL Database pro 
 
 Omezení SQL Data Warehouse najdete v tématu [omezení prostředků SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
-## <a name="see-also"></a>Viz také:
+### <a name="classic-deployment-model-limits"></a>Omezení modelu nasazení Classic
+
+Použijete-li model nasazení Classic místo modelu nasazení Azure Resource Manager, platí následující omezení.
+
+[!INCLUDE [azure-subscription-limits](../../../includes/azure-subscription-limits.md)]
+
+## <a name="see-also"></a>Viz také
 
 * [Pochopení omezení a zvýšení počtu Azure](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Velikosti virtuálních počítačů a cloudových služeb pro Azure](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

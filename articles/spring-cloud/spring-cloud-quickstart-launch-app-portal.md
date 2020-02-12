@@ -1,23 +1,23 @@
 ---
-title: Rychlý Start – spuštění aplikace pro jarní Cloud v Azure pomocí Azure Portal
-description: V tomto rychlém startu nasadíte ukázkovou aplikaci do jarního cloudu Azure pomocí Azure Portal.
+title: Rychlý Start – spuštění stávající cloudové aplikace Azure na jaře pomocí Azure Portal
+description: V tomto rychlém startu nasadíte jarní cloudovou aplikaci do jarního cloudu Azure pomocí Azure Portal.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/4/2019
+ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: f88319319b366ec8b726d5cf6cce540008497b57
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 67ad112021c2fadb5ea93ffefcf5e58e9404e92a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278913"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137756"
 ---
-# <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění aplikace ve jarním cloudu Azure pomocí Azure Portal
+# <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění stávající cloudové aplikace Azure na jaře pomocí Azure Portal
 
-Jarní cloud Azure umožňuje snadné spouštění aplikací mikroslužeb založených na jarních cloudech v Azure.
+V tomto rychlém startu se dozvíte, jak nasadit existující jarní cloudovou aplikaci do Azure. Jarní cloud Azure umožňuje snadné spouštění aplikací mikroslužeb založených na jarních cloudech v Azure. 
 
-V tomto rychlém startu se dozvíte, jak nasadit existující jarní cloudovou aplikaci do Azure.  Vzorový kód aplikace použitý v tomto kurzu najdete v našem [úložišti ukázek GitHubu](https://github.com/Azure-Samples/PiggyMetrics). Jakmile budete hotovi, bude poskytnutá ukázková aplikace dostupná online a bude připravená ji spravovat prostřednictvím Azure Portal.
+Vzorový kód aplikace použitý v tomto kurzu najdete v našem [úložišti ukázek GitHubu](https://github.com/Azure-Samples/PiggyMetrics). Jakmile budete hotovi, bude poskytnutá ukázková aplikace dostupná online a bude připravená ji spravovat prostřednictvím Azure Portal.
 
 Po tomto rychlém startu se dozvíte, jak:
 
@@ -28,7 +28,7 @@ Po tomto rychlém startu se dozvíte, jak:
 > * Nasazení jednotlivých mikroslužeb
 > * Přiřazení veřejného koncového bodu vaší aplikaci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 >[!Note]
 > Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v našich [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo v souboru o [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) , kde se dozvíte víc.
@@ -36,7 +36,7 @@ Po tomto rychlém startu se dozvíte, jak:
 >[!TIP]
 > Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku.  Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Git, JDK, Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Další informace o Azure Cloud Shell najdete v [naší dokumentaci](../cloud-shell/overview.md) .
 
-K dokončení tohoto rychlého startu je potřeba:
+K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 1. [Nainstalovat Git](https://git-scm.com/).
 2. [Nainstalovat JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)
@@ -69,7 +69,7 @@ az extension add --name spring-cloud
 Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **přehledem** instance služby.
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=provision)
+> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=provision)
 
 
 ## <a name="set-up-your-configuration-server"></a>Nastavení konfiguračního serveru
@@ -80,12 +80,12 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 1. Nastavte **popisek** na "config".
 
-1. Výběrem možnosti **Použít** změny uložte.
+1. Pokud chcete změny uložit, vyberte **použít** .
 
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=config-server)
+> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=config-server)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Sestavování a nasazování aplikací mikroslužeb
 
@@ -129,7 +129,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 1. Dokončení nasazování aplikací trvá několik minut. Pokud chcete potvrdit, že se nasadili, vyberte v Azure Portal okno **aplikace** . Mělo by se zobrazit řádek každé ze tří aplikací.
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
+> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
 
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Přiřazení veřejného koncového bodu k bráně
 
@@ -137,7 +137,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 1. Vyberte aplikaci `gateway`, aby se zobrazila stránka s **přehledem** .
 
-1. Vyberte **přiřadit doménu** a přiřaďte k bráně veřejný koncový bod. To může trvat několik minut.
+1. Vyberte **přiřadit doménu** a přiřaďte k bráně veřejný koncový bod. Tato možnost může trvat několik minut.
 
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
@@ -146,7 +146,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=public-endpoint)
+> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Další kroky
 

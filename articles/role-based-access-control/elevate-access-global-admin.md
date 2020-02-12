@@ -1,5 +1,5 @@
 ---
-title: Zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu | Microsoft Docs
+title: Zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu
 description: V této části najdete popis postupu při zvýšení přístupu globálního správce ke správě všech předplatných a skupin pro správu v Azure Active Directory pomocí Azure Portal nebo REST API.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/03/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8b27a97d95f224513dd03293b9bd0082c5ed6d1b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1731c630cb98ac542ebcdc7aedf07f7bb63eaec0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772257"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137464"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu
 
@@ -47,7 +47,7 @@ Tento přístup se zvýšeným oprávněním byste měli odebrat, jakmile proved
 
 ![Zvýšení přístupu](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>Azure Portal
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Zvýšení přístupu pro globálního správce
 
@@ -102,7 +102,7 @@ Chcete-li odebrat přiřazení role správce přístupu uživatele v kořenovém
 
     ![Odebrání přiřazení rolí s kořenovým oborem](./media/elevate-access-global-admin/iam-root-remove.png)
 
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="azure-powershell"></a>Azure Powershell
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -180,7 +180,7 @@ Chcete-li odebrat přiřazení role správce přístupu uživatele pro sebe nebo
     az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"
     ```
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Zvýšení přístupu pro globálního správce
 

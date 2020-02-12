@@ -7,14 +7,14 @@ manager: borisb2015
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.topic: overview
-ms.date: 12/18/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 8ca249a5f6c300a39548e4e16927d7a20acae1a8
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: daba49e6861eb67fd07c6fcf618b2b2d6cdd8c89
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942328"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133811"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Úlohy Red Hat v Azure
 Úlohy Red Hat se podporují prostřednictvím nejrůznějších nabídek v Azure. Bitové kopie Red Hat Enterprise Linux (RHEL) jsou v jádru úloh RHEL, jako je například infrastruktura Red Hat Update (RHUI).
@@ -37,6 +37,11 @@ Azure nabízí také obrázky Red Hat Gold. Tyto obrázky můžou být užitečn
 
 > [!NOTE]
 > Poznámka: při dvojím účtování se účtuje dvojitá fakturace, pokud uživatel za předplatných RHEL zaplatí dvakrát. K tomu obvykle dochází v případě, že zákazník používá správce předplatného k připojení nároku na virtuální počítač s RHEL PAYG. Například zákazník, který používá předplatné (Správce předplatného) k připojení nároku na balíčky SAP na RHEL imagi PAYG, se nebude nepřímo fakturovat, protože se za RHEL-jedenkrát účtuje přes poplatek za PAYG Premium a jednou prostřednictvím jejich předplatného SAP. Nestane se tak uživatelům BYOS image.
+
+### <a name="generation-2-images"></a>Image 2. generace
+Virtuální počítače generace 2 poskytují několik novějších funkcí v porovnání s virtuálními počítači 1. generace. Podrobnosti jsou uvedeny v [dokumentaci generace 2](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2). Klíčovým rozdílem z hlediska image RHEL je, že virtuální počítače 2. generace používají rozhraní UEFI místo rozhraní firmware systému BIOS a místo hlavního spouštěcího záznamu (MBR) v době spuštění použijí tabulku oddílů GUID (GPT). To mimo jiné umožňuje i velikosti disků s operačním systémem větší než 2 TB. [Virtuální počítače řady Mv2](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#mv2-series) se navíc spouštějí jenom na imagí generace 2.
+
+Image RHEL generace 2 jsou k dispozici na webu Marketplace. Při výpisu všech imagí pomocí rozhraní příkazového řádku Azure vyhledejte "Gen2" a v procesu nasazení virtuálního počítače v části "Upřesnit" nasaďte virtuální počítač 2. generace.
 
 ## <a name="red-hat-update-infrastructure-rhui"></a>Infrastruktura aktualizace Red Hat (RHUI)
 Azure poskytuje infrastrukturu aktualizací Red Hat jenom pro virtuální počítače s PAYG RHEL. RHUI je ve skutečnosti zrcadlem červené Hat sítě CDN, ale je dostupné jenom pro virtuální počítače Azure PAYG RHEL. V závislosti na RHEL imagi, kterou jste nasadili, budete mít přístup k příslušným balíčkům. Například RHEL pro Image SAP bude mít kromě základních balíčků RHEL přístup k balíčkům SAP.

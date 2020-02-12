@@ -16,18 +16,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0a33b5bb4fc7220a9cf66f40e9805d3fde9fccef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6675d67299091325fcc3e12572a906716bf5b88d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702041"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132423"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Scénář: mobilní aplikace, která volá webová rozhraní API
 
 Naučte se, jak vytvořit mobilní aplikaci, která volá webová rozhraní API.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [Prerequisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
@@ -40,27 +40,27 @@ Vytvořte svou první mobilní aplikaci a vyzkoušejte si rychlý Start.
 >
 > [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace pro iOS](./quickstart-v2-ios.md)
 >
-> [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace Xamarin iOS & Android](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+> [Rychlý Start: získání tokenu a volání Microsoft Graph API z aplikace Xamarin iOS a Android](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
 
 ## <a name="overview"></a>Přehled
 
-Pro mobilní aplikace je nezbytné přizpůsobené a bezproblémové uživatelské prostředí.  Platforma Microsoft Identity umožňuje vývojářům v mobilních aplikacích vytvářet prostředí pro uživatele s iOS a Androidem. Vaše aplikace se může přihlašovat Azure Active Directory (Azure AD), uživatelům pro uživatele a Azure AD B2C a získat tokeny pro volání webového rozhraní API účet Microsoft vaším jménem. K implementaci těchto toků použijeme Microsoft Authentication Library (MSAL), který implementuje standardní [tok autorizačního kódu OAuth 2.0](v2-oauth2-auth-code-flow.md).
+Pro mobilní aplikace je nezbytné přizpůsobené a bezproblémové uživatelské prostředí.  Platforma Microsoft Identity umožňuje vývojářům v mobilních aplikacích vytvářet prostředí pro uživatele s iOS a Androidem. Vaše aplikace se může přihlašovat Azure Active Directory (Azure AD), uživatelům osobních účet Microsoft a Azure AD B2Cm uživatelům. Může také získat tokeny pro volání webového rozhraní API jménem. K implementaci těchto toků použijeme Microsoft Authentication Library (MSAL). MSAL implementuje oborový standardní [tok autorizačního kódu OAuth 2.0](v2-oauth2-auth-code-flow.md).
 
 ![Aplikace démonů](./media/scenarios/mobile-app.svg)
 
 Požadavky na mobilní aplikace:
 
-- **Činnost koncového uživatele je klíč**: umožňuje uživatelům zobrazit hodnotu vaší aplikace před vyžádáním přihlášení a požádat pouze o požadovaná oprávnění.
-- **Podpora všech uživatelských konfigurací**: mnoho mobilních uživatelů v rámci zásad podmíněného přístupu a dodržování předpisů zařízením. Ujistěte se, že tyto klíčové scénáře podporujete.
-- **Implementace jednotného přihlašování (SSO)** : MSAL a Microsoft Identity Platform umožňují jednoduché jednotné přihlašování prostřednictvím prohlížeče zařízení nebo Microsoft Authenticator (a portál společnosti Intune na Androidu).
+- **Činnost koncového uživatele je klíč**: umožňuje uživatelům zobrazit hodnotu vaší aplikace před tím, než se požádá o přihlášení. Vyžádá pouze požadovaná oprávnění.
+- **Podpora všech uživatelských konfigurací**: mnoho uživatelů v mobilních firmách musí splňovat zásady podmíněného přístupu a zásady dodržování předpisů zařízením. Ujistěte se, že tyto klíčové scénáře podporujete.
+- **Implementace jednotného přihlašování (SSO)** : pomocí MSAL a platformy Microsoft Identity Platform můžete povolit jednotné přihlašování prostřednictvím prohlížeče nebo Microsoft Authenticator zařízení (a portál společnosti Intune na Androidu).
 
 ## <a name="specifics"></a>Specifika
 
-Pamatujte na tyto požadavky při vytváření mobilní aplikace na platformě Microsoft identity:
+Při vytváření mobilní aplikace na platformě Microsoft identity je potřeba vzít v úvahu následující skutečnosti:
 
-- V závislosti na platformě může být nutné při prvním přihlášení uživatele vyžadovat určitou interakci s uživatelem. Například iOS vyžaduje, aby aplikace při Microsoft Authenticator prvním použití jednotného přihlašování (a Portál společnosti Intune na Androidu) zobrazily interakci s uživatelem.
-- V systémech iOS a Android může MSAL použít externí prohlížeč (který se může zobrazit v horní části vaší aplikace) pro přihlášení uživatelů. Konfiguraci můžete přizpůsobit tak, aby se místo toho používala v webviewech v aplikaci.
-- Nikdy nepoužívejte tajný klíč v mobilní aplikaci. Bude k dispozici pro všechny uživatele.
+- V závislosti na platformě může být při prvním přihlášení uživatelů vyžadovat určitou interakci s uživatelem. Například iOS vyžaduje, aby aplikace zobrazovaly interakci uživatele při prvním použití jednotného přihlašování prostřednictvím Microsoft Authenticator (a Portál společnosti Intune na Androidu).
+- V systémech iOS a Android může MSAL použít externí prohlížeč pro přihlášení uživatelů. Externí prohlížeč se může zobrazit v horní části aplikace. Konfiguraci můžete přizpůsobit tak, aby se místo toho používala v webviewech v aplikaci.
+- Nikdy nepoužívejte tajný klíč v mobilní aplikaci. V těchto aplikacích jsou tajné klíče přístupné všem uživatelům.
 
 ## <a name="next-steps"></a>Další kroky
 

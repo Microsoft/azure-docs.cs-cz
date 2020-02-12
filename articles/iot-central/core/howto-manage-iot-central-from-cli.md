@@ -5,15 +5,15 @@ services: iot-central
 ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/23/2019
+ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 8526eb50faf300892c66ac186eac25adecf62231
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: cf0414531d363ab5401e8c9574943a40ecf2d449
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019022"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137823"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Správa IoT Central z Azure CLI
 
@@ -21,7 +21,7 @@ ms.locfileid: "77019022"
 
 Místo vytváření a správy aplikací IoT Central na webu [azure IoT Central Správce aplikací](https://aka.ms/iotcentral) můžete ke správě aplikací použít [Azure CLI](/cli/azure/) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -31,7 +31,7 @@ Pokud raději spustíte Azure CLI na místním počítači, přečtěte si téma
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Pomocí příkazu [AZ iotcentral App Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) vytvořte aplikaci IoT Central ve vašem předplatném Azure. Příklad:
+Pomocí příkazu [AZ iotcentral App Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) vytvořte aplikaci IoT Central ve vašem předplatném Azure. Například:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -44,7 +44,7 @@ az group create --location "East US" \
 az iotcentral app create \
   --resource-group "MyIoTCentralResourceGroup" \
   --name "myiotcentralapp" --subdomain "mysubdomain" \
-  --sku ST1 --template "iotc-demo@1.0.0" \
+  --sku ST1 --template "iotc-pnp-preview@1.0.0" \
   --display-name "My Custom Display Name"
 ```
 
@@ -53,30 +53,14 @@ Tyto příkazy nejprve vytvoří skupinu prostředků v oblasti východní USA p
 | Parametr         | Popis |
 | ----------------- | ----------- |
 | resource-group    | Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků už musí existovat ve vašem předplatném. |
-| location          | Ve výchozím nastavení tento příkaz používá umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v oblastech **východní USA**, **západní USA**, **Severní Evropa**nebo **západní Evropa** nebo v zeměpisných oblastech **Austrálie** a **Asie a Tichomoří** . |
+| location          | Ve výchozím nastavení tento příkaz používá umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v geografických oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**nebo **USA** . |
 | jméno              | Název aplikace v Azure Portal. |
 | subdomény         | Subdoména v adrese URL aplikace V příkladu je adresa URL aplikace https://mysubdomain.azureiotcentral.com. |
-| skladové               | V současné době můžete použít buď **ST1** nebo **ST2**. Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
-| šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce: |
+| skj               | V současné době můžete použít buď **ST1** nebo **ST2**. Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
+| šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce. |
 | zobrazované jméno      | Název aplikace, jak se zobrazuje v uživatelském rozhraní. |
 
-**Šablony aplikací**
-
-| Název šablony            | Popis |
-| ------------------------ | ----------- |
-| iotc-default@1.0.0       | Vytvoří prázdnou aplikaci, kterou můžete naplnit vlastními šablonami zařízení a zařízeními.
-| iotc-pnp-preview@1.0.0   | Vytvoří prázdnou aplikaci technologie Plug and Play (Preview), která vám umožní naplnit vlastní šablony zařízení a zařízení. |
-| iotc-condition@1.0.0     | Vytvoří aplikaci s analytickou šablonou monitorování podmínek in-Store. Pomocí této šablony můžete připojit a monitorovat prostředí úložiště. |
-| iotc-consumption@1.0.0   | Vytvoří aplikaci s šablonou monitorování spotřeby vody. Pomocí této šablony můžete monitorovat a řídit tok vody. |
-| iotc-distribution@1.0.0  | Vytvoří aplikaci s šablonou digitální distribuce. Pomocí této šablony můžete zvýšit efektivitu výstupu datového skladu tím, že digitalizing klíče a akce. |
-| iotc-inventory@1.0.0     | Vytvoří aplikaci se šablonou správy inteligentního inventáře. Pomocí této šablony můžete automatizovat příjem, pohyb produktů, počítání cyklů a sledování senzorů. |
-| iotc-logistics@1.0.0     | Vytvoří aplikaci s připojenou logistickou šablonou. Pomocí této šablony můžete sledovat svou dodávku v reálném čase napříč vzduchem, vodou a půdou pomocí monitorování polohy a stavu. |
-| iotc-meter@1.0.0         | Vytvoří aplikaci se šablonou monitorování inteligentního měření. Pomocí této šablony můžete monitorovat spotřebu energie, stav sítě a identifikovat trendy pro zlepšení zákaznické podpory a správy inteligentních měřičů.  |
-| iotc-patient@1.0.0       | Vytvoří aplikaci se šablonou monitorování nepřetržitého pacienta. Tato šablona slouží k prodloužení péče o pacienty, opětovném přístupu a správě nemocí. |
-| iotc-power@1.0.0         | Vytvoří aplikaci s šablonou monitorování na panelu slunečního příplatku. Pomocí této šablony můžete monitorovat stav panelu slunečního vývoje, trendy v oblasti generování energie. |
-| iotc-quality@1.0.0       | Vytvoří aplikaci se šablonou monitorování kvality vody. Pomocí této šablony můžete digitálně monitorovat kvalitu vody.|
-| iotc-store@1.0.0         | Vytvoří aplikaci se šablonou pro rezervaci in-Store –. Pomocí této šablony můžete monitorovat a spravovat tok rezervací v rámci svého obchodu. |
-| iotc-waste@1.0.0         | Vytvoří aplikaci s propojenou šablonou správy odpadu. Tuto šablonu použijte k monitorování odpadkových přihrádek a operátorů polí dispatch. |
+[!INCLUDE [iot-central-template-list](../../../includes/iot-central-template-list.md)]
 
 ## <a name="view-your-applications"></a>Zobrazení vašich aplikací
 
@@ -94,7 +78,7 @@ az iotcentral app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Odebrání aplikace
 
-Pomocí příkazu [AZ iotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) odstraňte aplikaci IoT Central. Příklad:
+Pomocí příkazu [AZ iotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) odstraňte aplikaci IoT Central. Například:
 
 ```azurecli-interactive
 az iotcentral app delete --name myiotcentralapp \

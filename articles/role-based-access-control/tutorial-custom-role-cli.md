@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytvoření vlastní role pro prostředky Azure pomocí Azure CLI
+title: 'Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI'
 description: Začínáme s vytvářením vlastní role pro prostředky Azure pomocí Azure CLI v tomto kurzu.
 services: active-directory
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 29b0bea851466b5173711441a5a7927c796c9926
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: f1a6e72e1444a26b675379d9948217a7773c4a1c
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419598"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138252"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -51,7 +51,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít se šablonou J
 
 1. Projděte si seznam operací pro [poskytovatele prostředků Microsoft.Support](resource-provider-operations.md#microsoftsupport). Je užitečné znát operace, které máte k dispozici k vytváření oprávnění.
 
-    | Funkce | Popis |
+    | Operace | Popis |
     | --- | --- |
     | Microsoft.Support/register/action | Registruje poskytovatele prostředků podpory. |
     | Microsoft.Support/supportTickets/read | Umožňuje získat podrobnosti lístku podpory (včetně stavu, závažnosti, podrobností kontaktu a komunikací) nebo seznam lístků podpory pro všechna předplatná. |

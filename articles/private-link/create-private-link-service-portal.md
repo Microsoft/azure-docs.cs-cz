@@ -8,178 +8,177 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: 4dd27d3fb4321c2eecf222136376bfd4b49790bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f62adbaea8d6549af0137f49542ee89e7531b9ef
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027773"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136171"
 ---
-# <a name="quickstart-create-a-private-link-service-using-the-azure-portal"></a>Rychlý Start: vytvoření služby privátního propojení pomocí Azure Portal
+# <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rychlý Start: vytvoření služby privátního propojení pomocí Azure Portal
 
-Služba privátního propojení Azure je odkazem na vlastní službu, která využívá privátní propojení Azure. Služba nebo prostředek, který pracuje za Azure Load Balancer, je možné povolit pro přístup k privátním linkám. Příjemci vaší služby mají k této službě přístup soukromě ze svých vlastních virtuální sítě. V tomto rychlém startu se dozvíte, jak vytvořit službu privátního propojení pomocí Azure Portal.
+Služba privátního propojení Azure odkazuje na vaši vlastní službu, která je spravovaná pomocí privátního propojení. Přístup ke službě nebo prostředku, který funguje za Azure Load Balancer, můžete udělit privátním odkazem. Příjemci vaší služby můžou k němu přistupovat soukromě z vlastních virtuálních sítí. V tomto rychlém startu se dozvíte, jak vytvořit službu privátního propojení pomocí Azure Portal.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
-## <a name="create-an-internal-load-balancer"></a>Vytvoření interního nástroje pro vyrovnávání zatížení
+## <a name="create-an-internal-load-balancer"></a>Vytvořte interní nástroj pro vyrovnávání zatížení.
 
-Nejdřív vytvořte virtuální síť a pak interní nástroj pro vyrovnávání zatížení, který se použije ve službě Azure Private Link.
+Nejdřív vytvořte virtuální síť. Dále vytvořte interní nástroj pro vyrovnávání zatížení, který bude použit ve službě privátního propojení.
 
 ### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
-V této části vytvoříte Virtual Network a podsíť pro hostování nástroje pro vyrovnávání zatížení, který se používá pro přístup ke službě privátních odkazů.
+V této části vytvoříte virtuální síť. Také vytvoříte podsíť pro hostování nástroje pro vyrovnávání zatížení, který přistupuje ke službě privátního propojení.
 
+1. V levé horní části portálu vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
 
-1. Na straně levého horního rohu portálu, vyberte **vytvořit prostředek** > **sítě** > **virtuální síť**.
-   
-1. V **vytvořit virtuální síť** podokně, zadejte nebo vyberte tyto hodnoty:
-   
-   - **Název**: typ **MyVNet**.
-   - **Skupina prostředků**: vyberte **vytvořit nový**, zadejte **MyResourceGroupLB**a vyberte **OK**. 
-   - **Podsíť** > **název**: typ **MyBackendSubnet**.
-   
-1. Vyberte **Vytvořit**.
+1. V podokně **vytvořit virtuální síť** zadejte nebo vyberte tyto hodnoty:
+
+   - **Název**: zadejte **MyVNet**.
+   - **Zdroj dat**: vyberte **vytvořit novou**, zadejte **MyResourceGroupLB**a vyberte **OK**.
+   - **Název** > **podsítě** : zadejte **MyBackendSubnet**.
+
+1. Vyberte **Create** (Vytvořit).
 
    ![Vytvoření virtuální sítě](../load-balancer/media/tutorial-load-balancer-basic-internal-portal/2-load-balancer-virtual-network.png)
 
 ### <a name="create-a-standard-load-balancer"></a>Vytvoření standardního nástroje pro vyrovnávání zatížení
 
-Pomocí portálu vytvořte standardní interní nástroj pro vyrovnávání zatížení. Název a IP adresu, kterou vytvoříte, se automaticky nakonfiguruje jako front-endu nástroje pro vyrovnávání zatížení.
+Pomocí portálu vytvořte standardní interní nástroj pro vyrovnávání zatížení. Název a IP adresa, které zadáte, se automaticky nakonfigurují jako front-end nástroje pro vyrovnávání zatížení.
 
 1. V levém horním rohu webu Azure Portal klikněte na **Vytvořit prostředek** > **Sítě** > **Nástroj pro vyrovnávání zatížení**.
-   
-2. Na kartě **základy** na stránce **vytvořit službu Vyrovnávání zatížení** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**:
+
+1. Na kartě **základy** na stránce **vytvořit nástroj pro vyrovnávání zatížení** zadejte nebo vyberte následující informace:
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Předplatné               | Vyberte své předplatné.    |    
-    | Skupina prostředků         | V rozevíracím seznamu vyberte *MyResourceGroupLB* .|
-    | Name (Název)                   | *myLoadBalancer*                                   |
-    | Region (Oblast)         | Vyberte **Východní USA 2**.                                        |
-    | Typ          | Vyberte **interní**.                                        |
-    | Skladová položka           | Vyberte **Standard**.                          |
-    | Virtuální síť           | Vyberte *MyVNet*.                          |    
-    | Přiřazení IP adresy              | Vyberte možnost **static**.   |
-    | Privátní IP adresa|Zadejte adresu, která se nachází v adresním prostoru virtuální sítě a podsítě, například *10.3.0.7*.  |
+    | **Předplatné**               | Vyberte své předplatné.    |
+    | **Skupina prostředků**         | V poli vyberte **MyResourceGroupLB** .|
+    | **Název**                   | Zadejte **myLoadBalancer**.                                   |
+    | **Oblast**         | Vyberte **Východní USA 2**.                                        |
+    | **Typ**          | Vyberte **interní**.                                        |
+    | **SKU**           | Vyberte **Standard**.                          |
+    | **Virtuální síť**           | Vyberte **MyVNet**.                          |
+    | **Přiřazení IP adresy**              | Vyberte možnost **static**.   |
+    | **Privátní IP adresa**|Zadejte adresu, která se nachází v adresním prostoru virtuální sítě a podsítě. Příkladem je 10.3.0.7.  |
 
-3. Na kartě **Revize + vytvořit** klikněte na **vytvořit**. 
-   
+1. U zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit** .
+
+1. Na kartě **Revize + vytvořit** vyberte **vytvořit**.
 
 ### <a name="create-standard-load-balancer-resources"></a>Vytvoření prostředků standardního nástroje pro vyrovnávání zatížení
 
-V této části nakonfigurujete nastavení nástroje pro vyrovnávání zatížení pro fond back-end adres a sondu stavu a zadáte pravidla nástroje pro vyrovnávání zatížení.
+V této části nakonfigurujete nastavení nástroje pro vyrovnávání zatížení pro fond back-endových adres a sondu stavu. Také zadáte pravidla nástroje pro vyrovnávání zatížení.
 
-#### <a name="create-a-backend-pool"></a>Vytvoření fondu back-endu
+#### <a name="create-a-back-end-pool"></a>Vytvoření fondu back-endu
 
-Pro distribuci provozu do prostředků obsahuje fond back-end adres IP adresy virtuálních síťových adaptérů (nic) připojených k Load Balancer. Vytvořte fond back-end adres *myBackendPool* , který bude zahrnovat prostředky pro provoz vyrovnávání zatížení.
+Fond adres back-endu obsahuje IP adresy virtuálních síťových karet připojených k nástroji pro vyrovnávání zatížení. Tento fond vám umožní distribuovat provoz do vašich prostředků. Vytvořte fond back-endové adresy s názvem **myBackendPool** , který bude zahrnovat prostředky vyrovnávající zatížení.
 
-1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
-2. V části **Nastavení**vyberte **back-end fondy**a pak vyberte **Přidat**.
-3. Do pole název na stránce **Přidat fond back-end** serveru zadejte *myBackendPool*jako název vašeho back-end fondu a pak vyberte **Přidat**.
-
-
+1. V nabídce úplně vlevo vyberte **všechny služby** .
+1. Vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
+1. V **Nastavení** vyberte **Back-endové fondy** a potom vyberte **Přidat**.
+1. Na stránce **Přidat fond back-endu** jako název svého fondu back-end zadejte **myBackendPool** a pak vyberte **Přidat**.
 
 #### <a name="create-a-health-probe"></a>Vytvoření sondy stavu
 
-Pokud chcete, aby nástroj pro vyrovnávání zatížení mohl monitorovat stav prostředků, použijte sondu stavu. Sonda stavu dynamicky přidává nebo odebírá prostředky z rotace nástroje pro vyrovnávání zatížení na základě jejich odpovědí na kontroly stavu. 
+Použijte sondu stavu, aby nástroj pro vyrovnávání zatížení mohl monitorovat stav prostředků. Test stavu založený na reakci prostředků na kontroly stavu dynamicky přidává nebo odebírá prostředky z rotace nástroje pro vyrovnávání zatížení.
 
-**Vytvoření sondy stavu pro monitorování stavu prostředků:**
+Vytvoření sondy stavu pro monitorování stavu prostředků:
 
-1. Vyberte **všechny prostředky** v nabídce vlevo a pak vyberte **MyLoadBalancer** ze seznamu prostředků.
-   
+1. V nabídce vlevo vyberte **všechny prostředky** a v seznamu prostředků vyberte **MyLoadBalancer** .
+
 1. V **Nastavení** vyberte **Sondy stavu** a potom vyberte **Přidat**.
-   
-1. Na **přidat sondu stavu** stránky zadejte nebo vyberte následující hodnoty:
-   
-   - **Název**: typ **MyHealthProbe**.
-   - **Protokol**: rozevírací seznam a výběr **TCP**. 
-   - **Port**: typ **80**. 
-   - **Interval**: typ **15**. Interval je počet sekund mezi pokusy o testování.
-   - **Prahová hodnota špatného stavu**: typ **2**. Tato hodnota je počet chyb po sobě jdoucích sondování, ke kterým dojde před virtuální počítač považoval za poškozený.
-   
+
+1. Na stránce **Přidat sondu stavu** zadejte nebo vyberte následující hodnoty:
+
+   - **Název**: zadejte **MyHealthProbe**.
+   - **Protokol**: vyberte **TCP**.
+   - **Port**: zadejte **80**.
+   - **Interval**: zadejte **15**. Tato hodnota je počet sekund mezi pokusy o testování.
+   - **Prahová hodnota chybného stavu**: zadejte **2**. Tato hodnota představuje počet po sobě jdoucích selhání testu, ke kterým dojde předtím, než se virtuální počítač považuje za poškozený.
+
 1. Vyberte **OK**.
 
 #### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
 
-Pravidlo nástroje pro vyrovnávání zatížení definuje způsob distribuce provozu do prostředků. Pravidlo definuje konfiguraci front-end IP adresy pro příchozí provoz, back endového fondu IP pro příjem provozu a požadované zdrojových a cílových portů. 
+Pravidlo nástroje pro vyrovnávání zatížení definuje způsob distribuce provozu do prostředků. Pravidlo definuje:
 
-Pravidlo nástroje pro vyrovnávání zatížení s názvem **MyLoadBalancerRule** naslouchá na portu 80 ve front-endu **LoadBalancerFrontEnd**. Toto pravidlo automaticky odesílá síťový provoz do fondu back endových adres **MyBackendPool**, rovněž na portu 80. 
+- Konfigurace front-endové IP adresy pro příchozí provoz.
+- Fond back-end IP adres pro příjem provozu.
+- Požadované zdrojové a cílové porty.
 
-**Vytvořte pravidlo nástroje pro vyrovnávání zatížení:**
+Pravidlo nástroje pro vyrovnávání zatížení s názvem **MyLoadBalancerRule** naslouchá na portu 80 ve front-endu **LoadBalancerFrontEnd** . Pravidlo odesílá síťový provoz do fondu back-end adres **MyBackendPool** na stejném portu 80.
 
-1. Vyberte **všechny prostředky** v nabídce vlevo a pak vyberte **MyLoadBalancer** ze seznamu prostředků.
-   
+Vytvoření pravidla nástroje pro vyrovnávání zatížení:
+
+1. V nabídce vlevo vyberte **všechny prostředky** a v seznamu prostředků vyberte **MyLoadBalancer** .
+
 1. V části **Nastavení**vyberte **pravidla vyrovnávání zatížení**a pak vyberte **Přidat**.
-   
-1. Na stránce **Přidat pravidlo vyrovnávání zatížení** zadejte nebo vyberte následující hodnoty (Pokud ještě nejsou přítomny):
-   
-   - **Název**: typ **MyLoadBalancerRule**.
-   - **Front-endovou IP adresu:** typ **LoadBalancerFrontEnd** Pokud není k dispozici.
+
+1. Na stránce **Přidat pravidlo vyrovnávání zatížení** zadejte nebo vyberte následující hodnoty, pokud ještě nejsou k dispozici:
+
+   - **Název**: zadejte **MyLoadBalancerRule**.
+   - **IP adresa front-endu:** Zadejte **LoadBalancerFrontEnd**.
    - **Protokol**: vyberte **TCP**.
-   - **Port**: typ **80**.
-   - **Back-endový port**: typ **80**.
-   - **Back-endový fond**: vyberte **MyBackendPool**.
+   - **Port**: zadejte **80**.
+   - **Back-end port**: zadejte **80**.
+   - **Back-end fond**: vyberte **MyBackendPool**.
    - **Sonda stavu**: vyberte **MyHealthProbe**. 
-   
+
 1. Vyberte **OK**.
-   
+
 ## <a name="create-a-private-link-service"></a>Vytvoření služby privátního propojení
 
 V této části vytvoříte službu privátního propojení za standardním nástrojem pro vyrovnávání zatížení.
 
-1. V levém horním rohu obrazovky v Azure Portal vyberte **vytvořit prostředek** > **sítě** > **privátní Link Center (Preview)** . Můžete také vyhledat privátní odkaz prostřednictvím vyhledávání na portálu.
+1. V levé horní části stránky v Azure Portal vyberte **vytvořit prostředek** > **síti** > **soukromém centru odkazů (Preview)** . Můžete také použít vyhledávací pole na portálu k vyhledání privátního odkazu.
 
-2. V **centru privátních odkazů – přehled**, na možnost **"vystavení vlastní služby, aby se ostatní mohli připojit"** vyberte spustit.
+1. V **centru privátních odkazů – přehled** > **zveřejnění vlastní služby, aby se ostatní mohli připojit**, vyberte **Spustit**.
 
-3. V nástroji **vytvořit služby privátního propojení – základy**zadejte nebo vyberte tyto informace:
+1. V části **vytvořit základní službu privátního propojení**zadejte nebo vyberte tyto informace:
 
     | Nastavení           | Hodnota                                                                        |
     |-------------------|------------------------------------------------------------------------------|
-    | **Podrobnosti o projektu:**  |                                                                              |
-    | Předplatné      | Vyberte své předplatné.                                                     |
-    | Skupina prostředků    | Vybrat *MyResourceGroupLB*                                                     |
-    | **PODROBNOSTI INSTANCE:** |                                                                              |
-    | Name (Název)              | Zadejte *myPrivateLinkService* |
-    | Region (Oblast)            | Vyberte *východní USA 2*                                                         |
+    | Podrobnosti o projektu:  |                                                                              |
+    | **Předplatné**      | Vyberte své předplatné.                                                     |
+    | **Skupina prostředků**    | Vyberte **MyResourceGroupLB**.                                                    |
+    | Podrobnosti instance: |                                                                              |
+    | **Název**              | Zadejte **myPrivateLinkService**. |
+    | **Oblast**            | Vyberte **Východní USA 2**.                                                        |
 
-4. Vyberte **Další: odchozí nastavení**.
+1. Vyberte **Další: odchozí nastavení**.
 
-5. V **možnosti vytvořit službu privátního propojení – odchozí nastavení**zadejte nebo vyberte tyto informace:
-
+1. V části **vytvořit službu privátního propojení – odchozí nastavení**zadejte nebo vyberte tyto informace:
 
     | Nastavení                           | Hodnota                                                                           |
     |-----------------------------------|---------------------------------------------------------------------------------|
-    | Load Balancer                     | Vybrat *MyLoadBalancer*                                                           |
-    | Load Balancer IP adresa front-endu | Vyberte front-end IP adresu MyLoadBalancer.                                |
-    | Zdrojová virtuální síť NAT        | Vybrat *myVNET*                                                                   |
-    | Zdrojová podsíť NAT                 | Vybrat *myBackendSubnet*                                                          |
-    | Povolit proxy server TCP v2               | V závislosti na tom, jestli má vaše aplikace očekávanou hlavičku protokolu TCP v2, vyberte Ano/ne. |
-    | Nastavení privátní IP adresy       | Pro každou IP adresu NAT nakonfigurujte metodu přidělování a IP adresu.                  |
+    | **Load Balancer**                     | Vyberte **MyLoadBalancer**.                                                           |
+    | **Load Balancer IP adresa front-endu** | Vyberte front-end IP adresu **MyLoadBalancer**.                                |
+    | **Zdrojová virtuální síť NAT**        | Vyberte **myVNET**.                                                                   |
+    | **Zdrojová podsíť NAT**                 | Vyberte **myBackendSubnet**.                                                          |
+    | **Povolit proxy server TCP v2**               | Vyberte **Ano** nebo **ne** v závislosti na tom, jestli vaše aplikace očekává hlavičku protokolu TCP proxy v2. |
+    | **Nastavení privátní IP adresy**       | Pro každou IP adresu NAT nakonfigurujte metodu přidělování a IP adresu.                  |
 
-6. Vyberte **Další: přístup k zabezpečení**.
+1. Vyberte **Další: přístup k zabezpečení**.
 
-7. V nástroji **vytvořit privátní Link Service – přístup k zabezpečení**zadejte nebo vyberte tyto informace:
-
-    | Nastavení                                     | Hodnota                                                             |
-    |---------------------------------------------|-------------------------------------------------------------------|
-    | Viditelnost                                  | Výběr *pouze řízení přístupu na základě role*         |
+1. V části **vytvořit zabezpečení přístupu ke službě privátního propojení**vyberte možnost **viditelnost**a pak zvolte možnost **řízení přístupu na základě role**.
   
-8. Vyberte **Další: značky**a potom **Zkontrolujte + vytvořit** nebo zvolte **kartu zkontrolovat + vytvořit** v horní části stránky.
+1. Vyberte **Další: značky** > **zkontrolovat + vytvořit** nebo zvolte kartu **zkontrolovat + vytvořit** v horní části stránky.
 
-9. Zkontrolujte své údaje a vyberte **vytvořit**.
+1. Zkontrolujte své údaje a vyberte **vytvořit**.
 
-## <a name="clean-up-resources"></a>Vyčištění prostředků 
-Až budete s použitím služby privátního propojení hotovi, odstraňte skupinu prostředků, abyste mohli vyčistit prostředky používané v tomto rychlém startu:
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroupLB* a ve výsledcích hledání vyberte *myResourceGroupLB* . 
-2. Vyberte **Odstranit skupinu prostředků**. 
-3. Zadejte myResourceGroup pro **typ název skupiny prostředků** a vyberte **Odstranit**.
+Až budete s použitím služby privátního propojení hotovi, odstraňte skupinu prostředků, abyste mohli vyčistit prostředky používané v tomto rychlém startu.
+
+1. Do vyhledávacího pole v horní části portálu zadejte **myResourceGroupLB** a ve výsledcích hledání vyberte **myResourceGroupLB** .
+1. Vyberte **Odstranit skupinu prostředků**.
+1. Do pole **Zadejte název skupiny prostředků**zadejte **myResourceGroup**.
+1. Vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili interní nástroj pro vyrovnávání zatížení Azure a službu privátního propojení. Další informace o vytváření privátních koncových bodů najdete v tématu [Vytvoření privátních koncových bodů pomocí Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal).
+V tomto rychlém startu jste vytvořili interní nástroj pro vyrovnávání zatížení Azure a službu privátního propojení. Můžete se také dozvědět, jak [vytvořit privátní koncový bod pomocí Azure Portal](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal).

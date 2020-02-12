@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: f3c2b1aa8f41b382bea96b33108d23bf09850c78
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ba3e677b98406a5f126649aafc2f89fb9d20c895
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984757"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137611"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
 
@@ -28,7 +28,7 @@ Dostupné ceny a funkce závisí na tom, jestli je pro tento pracovní prostor v
 
 Taxonomie pracovního prostoru je znázorněna v následujícím diagramu:
 
-[![Taxonomie pracovního prostoru](./media/concept-workspace/azure-machine-learning-taxonomy.png)](./media/concept-workspace/azure-machine-learning-taxonomy.png#lightbox)
+[taxonomie pracovního prostoru ![](./media/concept-workspace/azure-machine-learning-taxonomy.png)](./media/concept-workspace/azure-machine-learning-taxonomy.png#lightbox)
 
 Diagram znázorňuje následující komponenty pracovního prostoru:
 
@@ -81,6 +81,9 @@ Můžete také provádět následující úlohy správy pracovního prostoru:
 > [!NOTE]
 > Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever**, **východní USA 2**, **Severní Evropa** nebo **Velká Británie – jih**s podporou pro jiné oblasti, které již brzy připravujeme.
 >Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) .
+
+> [!WARNING]
+> Přesunutím pracovního prostoru Azure Machine Learning do jiného předplatného nebo přesunutím vlastnícího předplatného na nového tenanta se nepodporuje. V takovém případě může dojít k chybám.
 
 ## <a name='create-workspace'></a>Vytvořit pracovní prostor
 

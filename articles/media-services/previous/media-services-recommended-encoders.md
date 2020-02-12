@@ -9,22 +9,31 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 4a0af9d040c801c125d04a5af72b2ea53322ccdb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 89b01a3fb066f181f5ec54b481b71feaa7a6ae08
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74886567"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131408"
 ---
 # <a name="recommended-on-premises-encoders"></a>Doporučené místní kodéry
+
 Když živé streamování s Azure Media Services, můžete určit, jak chcete, aby kanál dostal vstupní datový proud. Pokud se rozhodnete použít místní kodér s kanálem pro kódování v reálném čase, váš kodér by měl jako výstup nabízet vysoce kvalitní datový proud s jednou přenosovou rychlostí. Pokud se rozhodnete použít místní kodér s průchozím kanálem, měl by váš kodér nabízet datový proud s více přenosovými rychlostmi jako výstup se všemi požadovanými výstupními kvalitou. Další informace najdete v tématu [živé streamování s místními kodéry](media-services-live-streaming-with-onprem-encoders.md).
 
+## <a name="encoder-requirements"></a>Požadavky kodéru
+
+Kodéry musí podporovat protokol TLS 1,2 při použití protokolů HTTPS nebo RTMP.
+
+## <a name="live-encoders-that-output-rtmp"></a>Živé kodéry, které mají výstup RTMP 
+
 Azure Media Services doporučuje použít jeden z následujících živých kodérů, které mají RTMP jako výstup:
+
 - Adobe Flash Media Live Encoder 3.2
 - Haivision Makito X HEVC
 - Haivision KB
-- Telestream Wirecast 8.1+
-- Telestream Wirecast S
+- Wirecast (verze 13.0.2 nebo vyšší) z důvodu požadavku TLS 1,2)
+
+  Kodéry musí podporovat protokol TLS 1,2 při použití protokolů RTMP.
 - Teradek Slice 756
 - TriCaster 8000
 - Tricaster Mini HD-4
@@ -33,11 +42,16 @@ Azure Media Services doporučuje použít jeden z následujících živých kod�
 - xStream
 - Switcher Studio (iOS)
 
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Živé kodéry, jejichž výstupem je fragment MP4 
+
 Azure Media Services doporučuje použít jeden z následujících živých kodérů, které mají s více přenosovými rychlostmi fragmenty-MP4 (Smooth Streaming) jako výstup:
+
 - Media Excel Hero Live a Hero 4K (UHD/HEVC)
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
-- Elemental Live
+- Element-Live (verze 2.14.15 a vyšší z důvodu požadavku TLS 1,2)
+
+  Kodéry musí podporovat protokol TLS 1,2 při použití protokolů HTTPS.
 - Envivio 4Caster C4 Gen III
 - Představte si Communications Selenio MCP3
 
@@ -45,6 +59,7 @@ Azure Media Services doporučuje použít jeden z následujících živých kod�
 > Live Encoder může poslat datový proud s jednou přenosovou rychlostí do předávacího kanálu, ale tato konfigurace se nedoporučuje, protože nepovoluje streamování s adaptivní přenosovou rychlostí pro klienta.
 
 ## <a name="how-to-become-an-on-premises-encoder-partner"></a>Jak se stát místním partnerem kodéru
+
 Jako Azure Media Services v místním partnerovi kodéru Media Services propaguje svůj produkt tím, že doporučí kodér zákazníkům pro podniky. Pokud se chcete stát místním partnerem kodéru, musíte ověřit kompatibilitu místního kodéru s Media Services. Provedete to tak, že provedete následující ověření:
 
 Předávací ověřování kanálu

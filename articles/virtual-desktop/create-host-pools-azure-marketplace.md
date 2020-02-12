@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 25dd4810cf8cccab8bcbf211da4f6abbcd147056
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40659414848adb9be86b6163cf456809e9cb750f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020025"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134599"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace
 
@@ -34,7 +34,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [Portálu Azure](https://portal.azure.com).
+Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 
 ## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Spuštění nabídky Azure Marketplace pro zřízení nového fondu hostitelů
 
@@ -65,6 +65,10 @@ Tady je přehled toho, co je pro okno **základy** :
 Pro okno **Konfigurace virtuálních počítačů** :
 
 1. Buď přijměte výchozí hodnoty, nebo upravte počet a velikost virtuálních počítačů.
+    
+    >[!NOTE]
+    >Pokud se konkrétní velikost virtuálního počítače, kterou hledáte, nezobrazuje v selektoru velikosti virtuálního počítače, je to proto, že jsme ho ještě nepřipojili k nástroji Azure Marketplace. Pokud si chcete vyžádat velikost virtuálního počítače, vytvořte žádost nebo nahlaste stávající požadavek ve [fóru Windows Virtual Desktop UserVoice](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    
 2. Zadejte předponu názvů virtuálních počítačů. Pokud například zadáte název "prefix", virtuální počítače budou nazývány "prefix-0," prefix-1, "atd.
 3. Vyberte **Další: nastavení virtuálního počítače**.
 

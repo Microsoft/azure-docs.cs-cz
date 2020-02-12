@@ -1,34 +1,28 @@
 ---
 title: Co je nového – Language Understanding (LUIS)
-titleSuffix: Azure Cognitive Services
 description: Tento článek se pravidelně aktualizuje o novinky o Language Understanding API Azure Cognitive Services.
-author: diberry
-manager: nitinme
-ms.custom: experiment-luis-0519
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: diberry
-ms.openlocfilehash: e03c7489268f3ad7076481de4498c5e202f654b6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 02/11/2020
+ms.openlocfilehash: 716860b54e7d8e75984c0365cac61d14153c09ff
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280299"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137794"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co je nového v Language Understanding
 
-Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.  
+Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
-## <a name="release-notes"></a>Poznámky k verzi 
+## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="november-4-2019---ignite"></a>4\. listopadu 2019 – Ignite
 
+* Video – [pokročilé modely přirozeného Language Understanding (NLU) využívající Luis a Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
+
 * Zlepšení produktivity vývojářů
-    * Obecná dostupnost našeho [koncového bodu předpovědi V3](luis-migration-api-v3.md). 
-    * Možnost importovat a exportovat aplikace pomocí formátu. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Tím se PAVES způsob efektivního procesu CI/CD. 
+    * Obecná dostupnost našeho [koncového bodu předpovědi V3](luis-migration-api-v3.md).
+    * Možnost importovat a exportovat aplikace pomocí formátu. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)). Tím se PAVES způsob efektivního procesu CI/CD.
 * Jazykové rozšíření
     * [Arabština a Hindština](luis-language-support.md) ve verzi Public Preview.
 * Předem připravené modely
@@ -37,8 +31,8 @@ Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k ver
     * [Předem připravené entity](luis-reference-prebuilt-entities.md#italian-entity-support) v italštině – stáří, měna, dimenze, číslo a procento rozlišení se změnilo z v2.
 * Vylepšené uživatelské prostředí [portálu Preview.Luis.AI](https://preview.luis.ai) – prostředí přepracované označování, které umožňuje sestavování a ladění složitých modelů. Vyzkoušejte si kurzy portálu Preview:
     * [Jenom záměry](tutorial-intents-only.md)
-    * [Devytvořená entita získaná počítačem](tutorial-machine-learned-entity.md) 
-* Možnosti pro pokročilý jazyk – [vytváření sofistikovaných jazykových modelů](luis-concept-entity-types.md) s menší námahou 
+    * [Devytvořená entita získaná počítačem](tutorial-machine-learned-entity.md)
+* Možnosti pro pokročilý jazyk – [vytváření sofistikovaných jazykových modelů](luis-concept-entity-types.md) s menší námahou
 * Definujte funkce strojového učení na úrovni modelu a povolte použití modelů jako signálů jiným modelům, například pomocí entit jako funkcí k záměrům a jiným entitám.
 * Nové, rozšířená [omezení](luis-boundaries.md) – vyšší maximum pro seznamy frází a celkový počet frází, nový model jako omezení funkcí
 * Extrahujte informace z textu ve formátu hloubkové hierarchické struktury, aby aplikace v konverzaci byly výkonnější.
@@ -74,7 +68,7 @@ Následující funkce byly vydány na konferenci Build 2019:
 
 * [Verze Preview Průvodce migrací rozhraní V3 API](luis-migration-api-v3.md)
 * [Vylepšený řídicí panel analýzy](luis-how-to-use-dashboard.md)
-* [Vylepšené předem připravené domény](luis-reference-prebuilt-domains.md) 
+* [Vylepšené předem připravené domény](luis-reference-prebuilt-domains.md)
 * [Dynamické seznam entit](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Externí entity](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
@@ -83,6 +77,10 @@ Následující funkce byly vydány na konferenci Build 2019:
 [Rozhraní bot](https://blog.botframework.com/)
 
 ## <a name="videos"></a>Videa
+
+### <a name="2019-ignite-videos"></a>Ignite videa 2019
+
+[Pokročilé modely přirozeného Language Understanding (NLU) využívající LUIS a Azure Cognitive Services | BRK2188](https://www.youtube.com/watch?v=JdJEV2jV0_Y)
 
 ### <a name="2019-build-videos"></a>videa k sestavám 2019
 

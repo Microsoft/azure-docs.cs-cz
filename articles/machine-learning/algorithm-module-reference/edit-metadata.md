@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: 173e483710c3fa96ae542f7941f0912ed07ea2ca
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 57a211c6ffab9a960c013008410f4b52b909d360
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312191"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137512"
 ---
 # <a name="edit-metadata-module"></a>Upravit modul metadat
 
-Tento článek popisuje modul zahrnutý v Návrháři Azure Machine Learning.
+Tento článek popisuje modul zahrnutý v Návrháři Azure Machine Learning (Preview).
 
 Pomocí modulu upravit data můžete změnit metadata, která jsou přidružená ke sloupcům v datové sadě. Hodnota a datový typ datové sady se po použití modulu upravit metadata změní.
 
@@ -40,9 +40,9 @@ Typické změny metadat mohou zahrnovat:
   
 ## <a name="configure-edit-metadata"></a>Konfigurace úprav metadat
   
-1. V Azure Machine Learning přidejte do kanálu modul úprav metadat a připojte datovou sadu, kterou chcete aktualizovat. Datovou sadu můžete najít v části **transformace dat** v kategorii **manipulace** .
+1. V Návrháři Azure Machine Learning přidejte do svého kanálu modul úprav metadat a připojte datovou sadu, kterou chcete aktualizovat. Modul můžete najít v kategorii **transformace dat** .
   
-1. Vyberte možnost **Spustit selektor sloupců** a vyberte sloupec nebo sadu sloupců, se kterými chcete pracovat. Sloupce můžete zvolit jednotlivě podle názvu nebo indexu nebo můžete zvolit skupinu sloupců podle typu.  
+1. Klikněte na **Upravit sloupec** v pravém panelu modulu a vyberte sloupec nebo sadu sloupců, se kterými chcete pracovat. Sloupce můžete zvolit jednotlivě podle názvu nebo indexu nebo můžete zvolit skupinu sloupců podle typu.  
   
 1. Vyberte možnost **datového typu** , pokud pro vybrané sloupce potřebujete přiřadit jiný datový typ. Pro určité operace může být nutné změnit datový typ. Pokud má vaše zdrojová datová sada například čísla zpracovaná jako text, musíte je před použitím matematických operací změnit na číselný datový typ.
 

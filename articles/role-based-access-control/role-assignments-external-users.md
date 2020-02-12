@@ -1,5 +1,5 @@
 ---
-title: Přidání nebo odebrání přiřazení rolí pro externí uživatele typu Host pomocí Azure RBAC a Azure Portal
+title: Přidání nebo odebrání přiřazení rolí pro externí uživatele pomocí RBAC a Azure Portal
 description: Přečtěte si, jak udělit přístup k prostředkům Azure pro uživatele, kteří jsou externí pro organizaci, pomocí řízení přístupu na základě role (RBAC) na úrovni Azure.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: db43a3cce27da5f40986968b6573bfd58a1d3cb7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707883"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138385"
 ---
 # <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí pro externí uživatele typu Host pomocí Azure RBAC a Azure Portal
 
@@ -165,7 +165,7 @@ Před odebráním uživatele typu host z adresáře byste nejdřív měli odebra
 
 1. Klikněte na uživatele typu Host, kterého chcete odebrat.
 
-1. Klikněte na **Odstranit**.
+1. Klikněte na tlačítko **Odstranit**.
 
    ![Odstranit uživatele typu Host](./media/role-assignments-external-users/delete-guest-user.png)
 

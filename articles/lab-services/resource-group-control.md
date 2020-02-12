@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: b6f51dee948d9e4d9e3f8594f9f7e60fb11b7057
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 29816d158cf1428727b7ff17bcc2c347f402dedf
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647335"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134535"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Zadejte skupinu prostředků pro virtuální počítače v testovacím prostředí v Azure DevTest Labs
 
@@ -31,12 +31,12 @@ Jako vlastník testovacího prostředí můžete nakonfigurovat virtuální poč
 Pomocí této funkce můžete použít skript k zadání nové nebo existující skupiny prostředků v rámci předplatného Azure pro všechny vaše virtuální počítače v testovacím prostředí. V současné době Azure DevTest Labs tuto funkci podporuje prostřednictvím rozhraní API.
 
 > [!NOTE]
-> Všechny limity předplatného platí při vytváření cvičení v DevTest Labs. Představte si testovací prostředí jako jakýkoliv jiný prostředek v rámci vašeho předplatného. V případě skupin prostředků je limit [980 skupin prostředků v rámci předplatného](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
+> Všechny limity předplatného platí při vytváření cvičení v DevTest Labs. Představte si testovací prostředí jako jakýkoliv jiný prostředek v rámci vašeho předplatného. V případě skupin prostředků je limit [980 skupin prostředků v rámci předplatného](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits). 
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
 Pomocí těchto kroků určete skupinu prostředků pro všechny virtuální počítače vytvořené v testovacím prostředí. 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 2. V levé navigační nabídce vyberte **všechny služby** . 
 3. Ze seznamu vyberte **DevTest Labs**.
 4. V seznamu cvičení vyberte **testovací prostředí**.  
@@ -47,7 +47,7 @@ Pomocí těchto kroků určete skupinu prostředků pro všechny virtuální po�
 
     ![Vyberte skupinu prostředků pro všechny testovací virtuální počítače.](./media/resource-group-control/select-resource-group.png)
 
-## <a name="use-powershell"></a>Použití PowerShellu 
+## <a name="use-powershell"></a>Použití prostředí PowerShell 
 Následující příklad ukazuje, jak pomocí skriptu prostředí PowerShell vytvořit všechny virtuální počítače v testovacím prostředí v nové skupině prostředků.
 
 ```powershell

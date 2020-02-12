@@ -1,5 +1,5 @@
 ---
-title: Pochopení přiřazení zamítnutí pro prostředky Azure | Microsoft Docs
+title: Pochopení přiřazení zamítnutí pro prostředky Azure
 description: Přečtěte si o přiřazení zamítnutých v řízení přístupu na základě role (RBAC) pro prostředky Azure.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7ab811635ca50c3a28ecd8bdf6d0f18fad4c384f
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479364"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137382"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Pochopení přiřazení zamítnutí pro prostředky Azure
 
@@ -39,7 +39,7 @@ Přiřazení zamítnutí jsou vytvářena a spravována službou Azure za účel
 
 Přiřazení odepřít následují podobný vzor jako přiřazení rolí, ale také některé rozdíly.
 
-| Funkce | Přiřazení role | Odepřít přiřazení |
+| Schopnost | Přiřazení role | Odepřít přiřazení |
 | --- | --- | --- |
 | Udělení přístupu | :heavy_check_mark: |  |
 | Odepření přístupu |  | :heavy_check_mark: |
@@ -54,7 +54,7 @@ Přiřazení odepřít následují podobný vzor jako přiřazení rolí, ale ta
  Přiřazení zamítnutí má následující vlastnosti:
 
 > [!div class="mx-tableFixed"]
-> | Vlastnost | Požadováno | Typ | Popis |
+> | Vlastnost | Požaduje se | Typ | Popis |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | Ano | Řetězec | Zobrazovaný název přiřazení zamítnutí. Názvy musí být pro daný obor jedinečné. |
 > | `Description` | Ne | Řetězec | Popis přiřazení zamítnutí. |

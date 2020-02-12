@@ -15,36 +15,35 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 0e793a5aa7d619b0bb7a1d3efcdf665ea400c555
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
-ms.translationtype: MT
+ms.openlocfilehash: 11ee8f52a8fd4db2d052eeaeef1387b011d23050
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69016744"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77131556"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru NewTek transkodéry k odeslání živého datového proudu s jednou přenosovou rychlostí  
 > [!div class="op_single_selector"]
-> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
+> * [Transkodéry](media-services-configure-tricaster-live-encoder.md)
 > * [Aktivní element](media-services-configure-elemental-live-encoder.md)
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
-> * [FMLE](media-services-configure-fmle-live-encoder.md)
 >
 >
 
 Tento článek ukazuje, jak nakonfigurovat kodér [NewTek transkodéry](https://newtek.com/products/tricaster-40.html) Live pro odeslání datového proudu s jednou přenosovou rychlostí do kanálů AMS, které mají povolené kódování v reálném čase. Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
-Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítač s Windows. Pokud jste v systému Mac nebo Linux, pomocí webu Azure portal k vytvoření [kanály](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
+Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítač s Windows. Pokud používáte systém Mac nebo Linux, použijte Azure Portal k vytvoření [kanálů](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programů](media-services-portal-creating-live-encoder-enabled-channel.md).
 
 > [!NOTE]
 > Při použití transkodéry pro odesílání v informačním kanálu o příspěvcích do kanálů AMS, které mají povolené kódování v reálném čase, může být video/audio histogramu v živé události, pokud používáte určité funkce transkodéry, jako je rychlé rozřezání mezi informačními kanály nebo přechod na/z SLAT. Tým AMS pracuje na řešení těchto problémů, a to až do té doby, nedoporučujeme tyto funkce používat.
 >
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Vytvoření účtu Azure Media Services](media-services-portal-create-account.md)
-* Ujistěte se, je koncový bod streamování, spuštěná. Další informace najdete v tématu [spravovat koncové body streamování v účtu Media Services](media-services-portal-manage-streaming-endpoints.md)
-* Nainstalujte nejnovější verzi [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) nástroj.
+* Ujistěte se, je koncový bod streamování, spuštěná. Další informace najdete v tématu [Správa koncových bodů streamování v účtu Media Services](media-services-portal-manage-streaming-endpoints.md) .
+* Nainstalujte nejnovější verzi nástroje [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) .
 * Spusťte nástroj a připojte se ke svému účtu AMS.
 
 ## <a name="tips"></a>Tipy
@@ -55,15 +54,15 @@ Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure 
 
 ## <a name="create-a-channel"></a>Vytvoření kanálu
 
-1. Nástroj AMSE, přejděte na **Live** kartu a klikněte pravým tlačítkem v rámci oblasti kanálu. Vyberte **vytvořit kanál...** v nabídce.
+1. V nástroji AMSE přejděte na kartu **Live** a klikněte pravým tlačítkem myši v oblasti kanálu. Vyberte **vytvořit kanál...** v nabídce.
 
     ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster1.png)
 
-2. Zadejte název kanálu, do pole Popis je volitelný. V části nastavení kanálu, vyberte **standardní** pro možnost Live Encoding s protokolem vstupu, nastavte na **RTMP**. Všechna ostatní nastavení je můžete nechat.
+2. Zadejte název kanálu, do pole Popis je volitelný. V části Nastavení kanálu vyberte **Standard** pro možnost Live Encoding a vstupní protokol nastavte na **RTMP**. Všechna ostatní nastavení je můžete nechat.
 
-    Ujistěte se, že **spustit nový kanál** zaškrtnuto.
+    Ujistěte se, že je vybraná možnost **Spustit nový kanál** .
 
-3. Klikněte na tlačítko **vytvořit kanál**.
+3. Klikněte na **vytvořit kanál**.
 
    ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster2.png)
 
@@ -75,26 +74,26 @@ Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure 
 Při spuštění kanálu můžete [nakonfigurovat kodér](media-services-configure-tricaster-live-encoder.md#configure_tricaster_rtmp).
 
 > [!IMPORTANT]
-> Fakturace začíná, jakmile kanál přejde do stavu Připraveno. Další informace najdete v tématu [kanálu stavy](media-services-manage-live-encoder-enabled-channels.md#states).
+> Fakturace začíná, jakmile kanál přejde do stavu Připraveno. Další informace najdete v tématu [stavy kanálu](media-services-manage-live-encoder-enabled-channels.md#states).
 >
 >
 
-## <a name="a-idconfigure_tricaster_rtmpconfigure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>Konfigurace kodéru transkodéry NewTek
+## <a name="a-idconfigure_tricaster_rtmpconfigure-the-newtek-tricaster-encoder"></a><a id="configure_tricaster_rtmp"/>konfigurace kodéru Transkodéryu NewTek
 
 V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto oddílu popisuje jednotlivé kroky konfigurace v podrobněji.
 
 **Video**:
 
-* Kodek H. 264
-* Profilu Vysoká (úroveň 4,0)
-* Rychlostí 5000 KB/s
-* Klíč 2 sekundy (60 sekund)
-* Snímková frekvence: 30
+* Kodek: H.264
+* Profil: Vysoce (úroveň 4.0)
+* S přenosovou rychlostí: 5000 kB /
+* Klíčový snímek: 2 sekundy (60 sekund)
+* Frekvence snímků: 30
 
 **Zvuk**:
 
-* Kodek AAC (LC)
-* Rychlostí 192 KB/s
+* Kodek: AAC (LC –)
+* S přenosovou rychlostí: 192 kb /
 * Vzorkovací frekvence: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Postup konfigurace
@@ -106,7 +105,7 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
 3. Po otevření nabídky klikněte na **Nový** pod nadpisem připojení. Po zobrazení výzvy k zadání typu připojení vyberte **Adobe Flash**.
 
     ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster4.png)
-4. Klikněte na **OK**.
+4. Klikněte na tlačítko **OK**.
 5. Profil FMLE se teď dá importovat tak, že kliknete na šipku rozevíracího seznamu v části **profil streamování** a přejdete na **Procházet**.
 
     ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster5.png)
@@ -114,9 +113,9 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
 7. Vyberte ji a stiskněte **OK**.
 
     Po nahrání profilu přejděte k dalšímu kroku.
-8. Získejte vstupní adresu URL kanálu, aby ji bylo možné přiřadit ke koncovému **bodu transkodéry RTMP**.
+8. Získejte vstupní adresu URL kanálu, aby ji bylo možné přiřadit ke **koncovému bodu transkodéry RTMP**.
 
-    Přejděte zpět na nástroj AMSE a zkontrolovat stav dokončení kanálu. Jakmile stav změnil ze **počáteční** k **systémem**, vstupní adresu URL můžete získat.
+    Přejděte zpět na nástroj AMSE a zkontrolovat stav dokončení kanálu. Jakmile se stav změní z **počáteční** na **spuštěno**, můžete získat vstupní adresu URL.
 
     Když je kanál spuštěný, klikněte pravým tlačítkem myši na název kanálu, přejděte dolů na **Kopírovat vstupní adresu URL do schránky** a pak vyberte **primární vstupní adresu URL**.  
 
@@ -131,41 +130,41 @@ V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto 
      ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster11.png)
 
 > [!IMPORTANT]
-> Před kliknutím na **Stream**, můžete **musí** Ujistěte se, že kanál je připravený.
+> Než kliknete na **Stream**, **musíte** zajistit, aby byl kanál připravený.
 > Také ujistěte se, že nechcete bez vstupní příspěvek kanálu po dobu delší než 15 minut > nechat kanál ve stavu Připraveno.
 >
 >
 
 ## <a name="test-playback"></a>Přehrávání testů
 
-Přejděte na nástroj AMSE a klikněte pravým tlačítkem na kanál, který má být testována. Z nabídky, najeďte myší na **přehrávání Náhled** a vyberte **pomocí Azure Media Player**.  
+Přejděte na nástroj AMSE a klikněte pravým tlačítkem na kanál, který má být testována. V nabídce najeďte myší **na přehrávání náhledu** a vyberte možnost **s Azure Media Player**.  
 
     ![tricaster](./media/media-services-tricaster-live-encoder/media-services-tricaster8.png)
 
 Pokud datový proud se zobrazí v přehrávači, pak kodér správně nakonfigurovaný pro připojení k AMS.
 
-Pokud dojde k chybě, kanál se bude muset resetovat a nastavení kodéru se upraví. Najdete v článku [řešení potíží s](media-services-troubleshooting-live-streaming.md) článku pokyny.  
+Pokud dojde k chybě, kanál se bude muset resetovat a nastavení kodéru se upraví. Pokyny najdete v článku [věnovaném řešení potíží](media-services-troubleshooting-live-streaming.md) .  
 
 ## <a name="create-a-program"></a>Vytvoření programu
 
-1. Jakmile přehrávání kanálu je potvrzen, vytvořte program. V části **Live** kartu nástroj AMSE klikněte pravým tlačítkem v rámci oblasti program a vyberte **vytvořit nový Program**.  
+1. Jakmile přehrávání kanálu je potvrzen, vytvořte program. Na kartě **živá** v nástroji AMSE klikněte pravým tlačítkem myši v oblasti programu a vyberte možnost **vytvořit nový program**.  
 
     ![transkodéry](./media/media-services-tricaster-live-encoder/media-services-tricaster9.png)
-2. Název programu a v případě potřeby upravit **délka okna archivu** (která má výchozí hodnotu čtyři hodiny). Můžete také určit umístění úložiště nebo ponechte jako výchozí.  
-3. Zkontrolujte **spustit Program nyní** pole.
-4. Klikněte na tlačítko **vytvořit Program**.  
+2. Pojmenujte program a v případě potřeby upravte **délku okna archivu** (výchozí nastavení je 4 hodiny). Můžete také určit umístění úložiště nebo ponechte jako výchozí.  
+3. Zaškrtněte políčko **Spustit program nyní** .
+4. Klikněte na **vytvořit program**.  
 
     >[!NOTE]
     >Vytvoření programu trvá méně času než vytváření kanálů.
         
-5. Jakmile program běží, potvrďte přehrávání kliknutím pravým tlačítkem program a přejdete na **přehrávání programech** a následným výběrem **pomocí Azure Media Player**.  
-6. Až potvrdí, klikněte pravým tlačítkem na program znovu a vyberte **zkopírujte adresu URL výstup do schránky** (nebo načtení těchto informací z **programu informace a nastavení** možnost z nabídky).
+5. Po spuštění programu potvrďte přehrávání kliknutím pravým tlačítkem myši na program a přechodem k **přehrávání programu** a následným výběrem možnosti **Azure Media Player**.  
+6. Po potvrzení klikněte znovu pravým tlačítkem myši na program a vyberte možnost **Kopírovat výstupní adresu URL do schránky** (nebo z nabídky **informace o programu a nastavení** načtěte tyto informace z nabídky).
 
 Datový proud je teď připravený k součástí přehrávač nebo distribuované na cílovou skupinou pro živé zobrazení.  
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Najdete v článku [řešení potíží s](media-services-troubleshooting-live-streaming.md) článku pokyny.
+Pokyny najdete v článku [věnovaném řešení potíží](media-services-troubleshooting-live-streaming.md) .
 
 ## <a name="next-step"></a>Další krok
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: rohink
-ms.openlocfilehash: 9027b1574144e2addbc84fceb16deba9014826fe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f7778b60a5e84f5d8900b8e37bfa655a7915d403
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938395"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77136392"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Kurz: vylepšení odpovědi webu pomocí Traffic Manager
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Aby bylo možné zobrazit službu Traffic Manager v akci, vyžaduje tento kurz, abyste nasadili:
 
@@ -43,7 +43,7 @@ Aby bylo možné zobrazit službu Traffic Manager v akci, vyžaduje tento kurz, 
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ### <a name="create-websites"></a>Vytvoření webů
 
@@ -57,7 +57,7 @@ V této části vytvoříte dvě instance webů, které zajistí dva požadovan�
 V této části vytvoříte dva virtuální počítače *myIISVMEastUS* a *myIISVMWestEurope* v oblastech **východní USA** a **západní Evropa** Azure.
 
 1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** > **výpočetní** > **Windows Server 2019 Datacenter**.
-2. V **vytvoření virtuálního počítače**, zadejte nebo vyberte následující hodnoty **Základy** kartu:
+2. V části **vytvořit virtuální počítač**zadejte nebo vyberte následující hodnoty na kartě **základy** :
 
    - **Předplatné** > **skupinu prostředků**: vyberte **vytvořit novou** a potom zadejte **myResourceGroupTM1**.
    - **Podrobnosti Instance** > **název virtuálního počítače**: zadejte *myIISVMEastUS*.
@@ -67,7 +67,7 @@ V této části vytvoříte dva virtuální počítače *myIISVMEastUS* a *myIIS
    - **Pravidla portů pro příchozí** > **veřejné příchozí porty**: vyberte **Povolit vybrané porty**.
    - **Pravidla portů pro příchozí** > **vybrat příchozí porty**: v rozevíracím seznamu vyberte možnost **RDP** a **http** .
 
-3. Vyberte kartu **Správa** nebo vyberte **Další: disky**, **Další: sítě**a **Další: Správa**. V části **monitorování**, nastavte **Diagnostika spouštění** k **vypnout**.
+3. Vyberte kartu **Správa** nebo vyberte **Další: disky**, **Další: sítě**a **Další: Správa**. V části **monitorování**nastavte **diagnostiku spouštění** na **vypnuto**.
 4. Vyberte **Zkontrolovat a vytvořit**.
 5. Zkontrolujte nastavení a klikněte na **vytvořit**.  
 6. Postupujte podle kroků a vytvořte druhý virtuální počítač s názvem *myIISVMWestEurope*s názvem **skupiny prostředků** *myResourceGroupTM2*, **umístěním** *západní Evropa*a všechna ostatní nastavení stejné jako *myIISVMEastUS*.
@@ -116,7 +116,7 @@ Traffic Manager směruje provoz uživatelů na základě názvů DNS koncových 
 V této části vytvoříte virtuální počítač (*myVMEastUS* a *myVMWestEurope*) v každé oblasti Azure (**východní USA** a **západní Evropa**). Pomocí těchto virtuálních počítačů otestujete, jak Traffic Manager směruje provoz při prohlížení webu na nejbližší server služby IIS.
 
 1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** > **výpočetní** > **Windows Server 2019 Datacenter**.
-2. V **vytvoření virtuálního počítače**, zadejte nebo vyberte následující hodnoty **Základy** kartu:
+2. V části **vytvořit virtuální počítač**zadejte nebo vyberte následující hodnoty na kartě **základy** :
 
    - **Předplatné** > **skupinu prostředků**: vyberte **myResourceGroupTM1**.
    - **Podrobnosti Instance** > **název virtuálního počítače**: zadejte *myVMEastUS*.
@@ -126,7 +126,7 @@ V této části vytvoříte virtuální počítač (*myVMEastUS* a *myVMWestEuro
    - **Pravidla portů pro příchozí** > **veřejné příchozí porty**: vyberte **Povolit vybrané porty**.
    - **Pravidla portů pro příchozí** > **vybrat příchozí porty**: v rozevíracím seznamu pro stažení vyberte **RDP** .
 
-3. Vyberte kartu **Správa** nebo vyberte **Další: disky**, **Další: sítě**a **Další: Správa**. V části **monitorování**, nastavte **Diagnostika spouštění** k **vypnout**.
+3. Vyberte kartu **Správa** nebo vyberte **Další: disky**, **Další: sítě**a **Další: Správa**. V části **monitorování**nastavte **diagnostiku spouštění** na **vypnuto**.
 4. Vyberte **Zkontrolovat a vytvořit**.
 5. Zkontrolujte nastavení a klikněte na **vytvořit**.  
 6. Postupujte podle kroků a vytvořte druhý virtuální počítač s názvem *myVMWestEurope*s názvem **skupiny prostředků** *myResourceGroupTM2*, **umístěním** *západní Evropa*a všechna ostatní nastavení stejné jako *myVMEastUS*.
@@ -141,7 +141,7 @@ Vytvořte profil Traffic Manager, který směruje provoz uživatele odesláním 
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
-    | Name (Název)                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
+    | Název                   | Tento název musí být jedinečný v rámci zóny trafficmanager.net a ve výsledcích názvu DNS trafficmanager.net, který slouží k přístupu k vašemu profilu služby Traffic Manager.                                   |
     | Metoda směrování          | Vyberte metodu směrování **výkonu** .                                       |
     | Předplatné            | Vyberte své předplatné.                          |
     | Skupina prostředků          | Vyberte skupinu prostředků *myResourceGroupTM1*. |
@@ -161,7 +161,7 @@ Přidejte dva virtuální počítače, na kterých běží servery IIS – *myII
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Typ                    | Koncový bod Azure                                   |
-    | Name (Název)           | myEastUSEndpoint                                        |
+    | Název           | myEastUSEndpoint                                        |
     | Typ cílového prostředku           | Veřejná IP adresa                          |
     | Cílový prostředek          | **Zvolte veřejnou IP adresu** a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu *myIISVMEastUS-ip*. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|
     |        |           |

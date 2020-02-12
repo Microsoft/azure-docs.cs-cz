@@ -8,16 +8,16 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: cherylmc
-ms.openlocfilehash: 250ced13696d6ec34e7c434b26a2917a3c55e91d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
-ms.translationtype: MT
+ms.openlocfilehash: 58e9b4204e2d563d8e4e1af8353870880f98b065
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834632"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133605"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Vytvoření brány virtuální sítě redundantní v zóně v Zóny dostupnosti Azure
 
-V Zóny dostupnosti Azure můžete nasadit brány VPN a ExpressRoute. To přináší odolnost proti chybám, škálovatelnost a vyšší dostupnost bran virtuálních sítí. Nasazování bran v rámci Zón dostupnosti Azure fyzicky a logicky odděluje brány v rámci oblasti, přičemž zároveň chrání připojení vaší místní sítě k Azure před výpadky na úrovni zóny. Informace najdete v tématu informace [o branách virtuální sítě redundantních v zóně](about-zone-redundant-vnet-gateways.md) a [o zóny dostupnosti Azure](../availability-zones/az-overview.md).
+V Zóny dostupnosti Azure můžete nasadit brány VPN a ExpressRoute. Tím se zvýší odolnost, škálovatelnost a vyšší dostupnost bran virtuální sítě. Nasazování bran v Zóny dostupnosti Azure fyzicky a logicky odděluje brány v rámci určité oblasti a zároveň chrání vaše místní síťové připojení k Azure ze selhání na úrovni zóny. Informace najdete v tématu informace [o branách virtuální sítě redundantních v zóně](about-zone-redundant-vnet-gateways.md) a [o zóny dostupnosti Azure](../availability-zones/az-overview.md).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -37,7 +37,7 @@ Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
 
 Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
 
-[!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
+[!INCLUDE [PowerShell login](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ## <a name="variables"></a>1. deklarace proměnných
 

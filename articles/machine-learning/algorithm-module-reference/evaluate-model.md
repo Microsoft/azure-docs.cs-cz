@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 11/19/2019
-ms.openlocfilehash: a906e5f354f332cebb0656c6fc40b17c8a5016a2
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546686"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137554"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
@@ -80,10 +80,10 @@ Vzhledem k tomu, že se jedná o model clusteringu, výsledky hodnocení jsou ji
 
 Tato část popisuje metriky vracené pro konkrétní typy modelů, které jsou podporované pro použití s **vyhodnocením modelu**:
 
-+ [modely klasifikace](#bkmk_classification)
-+ [Regresní modely](#bkmk_regression)
++ [modely klasifikace](#metrics-for-classification-models)
++ [Regresní modely](#metrics-for-regression-models)
 
-###  <a name="bkmk_classification"></a>Metriky pro modely klasifikace
+### <a name="metrics-for-classification-models"></a>Metriky pro modely klasifikace
 
 Při vyhodnocování modelů klasifikace jsou hlášeny následující metriky. Pokud porovnáte modely, jsou seřazené podle metriky, kterou jste vybrali pro vyhodnocení.  
   
@@ -101,7 +101,7 @@ Při vyhodnocování modelů klasifikace jsou hlášeny následující metriky. 
   
 - Ve službě **Training Log ztrát** je jedno skóre, které představuje výhodu klasifikátoru na náhodné předpovědi. Ztráta protokolu měří nejistotu modelu tím, že se porovnávají pravděpodobnosti, že se výstupy označují na známé hodnoty (v terénu). Chcete minimalizovat ztrátu protokolu pro model jako celek.
 
-##  <a name="bkmk_regression"></a>Metriky pro regresní modely
+### <a name="metrics-for-regression-models"></a>Metriky pro regresní modely
  
 Metriky vracené pro regresní modely jsou navržené k odhadu množství chyb.  Model se považuje za správný, pokud rozdíl mezi zjištěnými a předpovězenými hodnotami je malý. Nicméně na vzor zbytků (rozdíl mezi jedním předpokládaným bodem a odpovídající skutečnou hodnotou) vám může sdělit spoustu potenciálního posunu v modelu.  
   
@@ -115,7 +115,7 @@ Metriky vracené pro regresní modely jsou navržené k odhadu množství chyb. 
   
 - **Relativní kvadratická chyba (RSE)** podobně normalizuje celkovou kvadratickou chybu předpokládaných hodnot tak, že se vydělí celkovými kvadratickými chybami skutečných hodnot.  
   
-- **Střední hodnota nula (MZOE)** označuje, zda byla předpověď správná nebo ne.  Jinými slovy: `ZeroOneLoss(x,y) = 1`, když `x!=y`; jinak `0`.
+
   
 - **Koeficient stanovitelnosti**, který se často označuje jako R<sup>2</sup>, představuje prediktivní sílu modelu jako hodnotu mezi 0 a 1. Nula znamená, že je model náhodný (vysvětluje nic); 1 znamená dokonalé přizpůsobení. Nicméně opatrnost by se měla použít při interpretaci hodnot R<sup>2</sup> , protože nízké hodnoty můžou být zcela normální a vysoké hodnoty můžou být podezřelé.
   

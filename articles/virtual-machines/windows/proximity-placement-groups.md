@@ -1,21 +1,19 @@
 ---
-title: Použití skupin umístění blízkosti pro virtuální počítače s Windows
-description: Seznamte se s vytvářením a používáním skupin umístění blízkosti pro virtuální počítače s Windows v Azure.
-services: virtual-machines-windows
-author: cynthn
-manager: gwallace
-ms.service: virtual-machines-windows
+title: 'PowerShell: použití skupin umístění blízkosti'
+description: Seznamte se s vytvářením a používáním skupin umístění blízkosti pomocí Azure PowerShell.
+services: virtual-machines
+ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 10/30/2019
+ms.date: 01/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 6d0c35737151b060dcffba8944f4a1361d36dc14
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: c1c144ac9db040bfac45ecc7838401ae09c9e2c4
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171219"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137992"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Nasazení virtuálních počítačů do skupin umístění Proximity pomocí prostředí PowerShell
 
@@ -71,12 +69,107 @@ Get-AzProximityPlacementGroup -ResourceId $ppg.Id |
     Format-Table -Property VirtualMachines -Wrap
 ```
 
+### <a name="move-an-existing-vm-into-a-proximity-placement-group"></a>Přesunout existující virtuální počítač do skupiny umístění blízkosti
+
+Existující virtuální počítač můžete také přidat do skupiny umístění blízkosti. Nejdřív musíte virtuální počítač stop\deallocate a pak aktualizovat virtuální počítač a restartovat.
+
+```azurepowershell-interactive
+$ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
+$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
+Stop-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName -ProximityPlacementGroupId $ppg.Id
+Restart-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+```
+
+### <a name="move-an-existing-vm-out-of-a-proximity-placement-group"></a>Přesunout existující virtuální počítač ze skupiny umístění do blízkosti
+
+Pokud chcete virtuální počítač odebrat ze skupiny umístění blízkosti, musíte nejdřív virtuální počítač stop\deallocate a pak ho aktualizovat a restartovat.
+
+```azurepowershell-interactive
+$ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
+$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
+Stop-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+$vm.ProximityPlacementGroupId = ""
+Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName 
+Restart-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
+```
+
+
 ## <a name="availability-sets"></a>Skupiny dostupnosti
 Ve skupině umístění blízkosti můžete také vytvořit skupinu dostupnosti. Pomocí rutiny [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) použijte stejný parametr `-ProximityPlacementGroup` k vytvoření skupiny dostupnosti a všechny virtuální počítače vytvořené ve skupině dostupnosti se vytvoří i ve stejné skupině umístění blízkosti.
+
+Pokud chcete přidat nebo odebrat existující skupinu dostupnosti do skupiny umístění blízkosti, musíte nejprve zastavit všechny virtuální počítače ve skupině dostupnosti. 
+
+### <a name="move-an-existing-availability-set-into-a-proximity-placement-group"></a>Přesunout existující skupinu dostupnosti do skupiny umístění blízkosti
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$avSetName = "myAvailabilitySet"
+$avSet = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup -Name $avSetName
+$vmIds = $avSet.VirtualMachinesReferences
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force
+    } 
+
+$ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
+Update-AzAvailabilitySet -AvailabilitySet $avSet -ProximityPlacementGroupId $ppg.Id
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName 
+    } 
+```
+
+### <a name="move-an-existing-availability-set-out-of-a-proximity-placement-group"></a>Přesunutí stávající skupiny dostupnosti mimo skupinu umístění blízkosti
+
+```azurepowershell-interactive
+$resourceGroup = "myResourceGroup"
+$avSetName = "myAvailabilitySet"
+$avSet = Get-AzAvailabilitySet -ResourceGroupName $resourceGroup -Name $avSetName
+$vmIds = $avSet.VirtualMachinesReferences
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force
+    } 
+
+$avSet.ProximityPlacementGroup = ""
+Update-AzAvailabilitySet -AvailabilitySet $avSet 
+foreach ($vmId in $vmIDs){
+    $string = $vmID.Id.Split("/")
+    $vmName = $string[8]
+    Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName 
+    } 
+```
 
 ## <a name="scale-sets"></a>Škálovací sady
 
 Ve skupině umístění blízkosti můžete také vytvořit sadu škálování. Použijte stejný parametr `-ProximityPlacementGroup` s [New-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/new-azvmss) k vytvoření sady škálování a všechny instance se vytvoří ve stejné skupině umístění blízkosti.
+
+
+Pokud chcete přidat nebo odebrat existující sadu škálování na skupinu umístění blízkosti, musíte nejprve zastavit sadu škálování. 
+
+### <a name="move-an-existing-scale-set-into-a-proximity-placement-group"></a>Přesunout existující sadu škálování do skupiny umístění blízkosti
+
+```azurepowershell-interactive
+$ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPG -Name myPPG
+$vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet
+Stop-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+Update-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName -ProximityPlacementGroupId $ppg.Id
+Restart-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+```
+
+### <a name="move-an-existing-scale-set-out-of-a-proximity-placement-group"></a>Přesune stávající škálu, která je nastavená mimo skupinu umístění blízkosti.
+
+```azurepowershell-interactive
+$vmss = Get-AzVmss -ResourceGroupName myVMSSResourceGroup -VMScaleSetName myScaleSet
+Stop-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+$vmss.ProximityPlacementGroup = ""
+Update-AzVmss -VirtualMachineScaleSet $vmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName  
+Restart-AzVmss -VMScaleSetName $vmss.Name -ResourceGroupName $vmss.ResourceGroupName
+```
 
 ## <a name="next-steps"></a>Další kroky
 

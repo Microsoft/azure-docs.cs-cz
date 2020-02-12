@@ -1,5 +1,5 @@
 ---
-title: Kurz – udělení přístupu uživatele k prostředkům Azure pomocí šablony RBAC a Správce prostředků
+title: 'Kurz: udělení přístupu uživatelů k prostředkům Azure pomocí šablony RBAC a Správce prostředků'
 description: Naučte se, jak udělit uživateli přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC) pomocí šablony Azure Resource Manager v tomto kurzu.
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: ed143f85b4372348baa1d74b4ec7a7447943a74f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74418485"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138205"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Kurz: udělení přístupu uživatele k prostředkům Azure pomocí šablony RBAC a Správce prostředků
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Chcete-li přidat a odebrat přiřazení rolí, je nutné mít následující:
 
@@ -63,7 +63,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 1. Otevřete skupinu prostředků vytvořenou v posledním postupu. Výchozí název je název projektu s připojeným **RG** .
 1. Z nabídky vlevo vyberte **Řízení přístupu (IAM)** .
 1. Vyberte **Přiřazení rolí**. 

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/31/2019
+ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 315ebfa1460f9d9bc041925cec2451f63ac5be16
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 55c7e2f30324fe7878e38f1129c63c6e0c51a75f
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580247"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134824"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Kurz: Sledování využití testovacího prostředí v Azure Lab Services
 V tomto kurzu se dozvíte, jak může autor nebo vlastník testovacího prostředí sledovat jeho využití.
@@ -32,18 +32,18 @@ V tomto kurzu provedete následující akce:
 > * Správa virtuálních počítačů studentů 
 
 
-## <a name="view-users-registered-with-the-lab"></a>Zobrazení uživatelů zaregistrovaných do testovacího prostředí
+## <a name="view-registered-users"></a>Zobrazit registrované uživatele
 
 1. Přejděte na [web Azure Lab Services](https://labs.azure.com). 
 2. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft.
 3. Na stránce **My labs** (Moje testovací prostředí) vyberte testovací prostředí, jehož využití chcete sledovat. 
-4. V levé nabídce nebo na dlaždici **Uživatelé** vyberte **Uživatelé** . Zobrazí se studenti, kteří se zaregistrovali do vašeho testovacího prostředí. Můžete vybrat **Registration link** (Odkaz pro registraci), zkopírovat odkaz a odeslat ho novým studentům, kteří se do testovacího prostředí ještě nezaregistrovali. 
+4. V levé nabídce nebo na dlaždici **Uživatelé** vyberte **Uživatelé** . Zobrazí se studenti, kteří se zaregistrovali do vašeho testovacího prostředí.  
 
     ![Registrovaní uživatelé](../media/tutorial-track-usage/registered-users.png)
 
     Další informace o přidávání a správě uživatelů pro testovací prostředí najdete v tématu [Přidání a Správa uživatelů testovacího prostředí](how-to-configure-student-usage.md).
 
-## <a name="view-the-usage-of-vms-in-the-lab"></a>Zobrazení využití virtuálních počítačů v testovacím prostředí 
+## <a name="view-the-usage-of-vms"></a>Zobrazit využití virtuálních počítačů
 
 1. V nabídce vlevo vyberte **Virtual machines** (Virtuální počítače). 
 2. Ověřte, že se zobrazí stav virtuálních počítačů a počet hodin, po které jsou virtuální počítače spuštěné. Čas, který vlastník testovacího prostředí stráví na virtuálním počítači studenta, se nepočítá s časem využití zobrazeným v posledním sloupci. 

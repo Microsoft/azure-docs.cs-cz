@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159874"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138019"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpečení nasazení PaaS
 
@@ -36,7 +36,7 @@ Tento článek poskytuje informace, které vám pomůžou:
 ## <a name="cloud-security-advantages"></a>Výhody zabezpečení cloudu
 Je důležité pochopit [rozdělení zodpovědnosti](shared-responsibility.md) mezi vámi a společností Microsoft. V místním prostředí můžete celý zásobník vlastnit, ale při přesunu do cloudu se některé zodpovědnosti přenesou do Microsoftu.
 
-Existují [výhody zabezpečení v cloudu](shared-responsibility.md#cloud security advantages). V místním prostředí organizace pravděpodobně mají nesplnění zodpovědnosti a omezené prostředky, které jsou k dispozici pro investici do zabezpečení, což vytváří prostředí, ve kterém můžou útočníci zneužít ohrožení zabezpečení ve všech vrstvách.
+Existují [výhody zabezpečení v cloudu](shared-responsibility.md#cloud-security-advantages). V místním prostředí organizace pravděpodobně mají nesplnění zodpovědnosti a omezené prostředky, které jsou k dispozici pro investici do zabezpečení, což vytváří prostředí, ve kterém můžou útočníci zneužít ohrožení zabezpečení ve všech vrstvách.
 
 Organizace můžou zlepšit detekci hrozeb a doby odezvy pomocí cloudových možností zabezpečení a cloudových funkcí poskytovatele.  Díky posunutí zodpovědností poskytovateli cloudu můžou organizace získat větší pokrytí zabezpečení, které jim umožní znovu přidělit prostředky a rozpočet zabezpečení jiným obchodním prioritám.
 
@@ -98,11 +98,11 @@ Používejte standardní ověřovací protokoly, jako je OAuth2 a Kerberos. Tyto
 
 V následující tabulce jsou uvedeny hrozby pro rozteč a jejich ukázková omezení, která používají funkce Azure. Tato zmírnění rizika nebudou v každé situaci fungovat.
 
-| Nebezpečí | Vlastnost zabezpečení | Potenciální omezení na platformě Azure |
+| Hrozba | Vlastnost zabezpečení | Potenciální omezení na platformě Azure |
 | --- | --- | --- |
-| Falšování identity | Ověření | Vyžadovat připojení HTTPS. |
-| Manipulace | Integrita | Ověřte certifikáty SSL. |
-| Popírání odpovědnosti | Neodmítnutí | Povolte [monitorování a diagnostiku](/azure/architecture/best-practices/monitoring)Azure. |
+| Falšování identity | Ověřování | Vyžadovat připojení HTTPS. |
+| Manipulaci | Integrita | Ověřte certifikáty SSL. |
+| popírání odpovědnosti | Neodmítnutí | Povolte [monitorování a diagnostiku](/azure/architecture/best-practices/monitoring)Azure. |
 | Zpřístupnění informací | Chovávat | Šifrování citlivých dat v klidovém formátu pomocí [certifikátů služby](/rest/api/appservice/certificates). |
 | Odepření služby | Dostupnost | Monitoruje metriky výkonu pro potenciální podmínky odepření služeb. Implementujte filtry připojení. |
 | Zvýšení oprávnění | Autorizace | Použijte [Privileged Identity Management](/azure/active-directory/privileged-identity-management/subscription-requirements). |
@@ -119,7 +119,7 @@ Níže jsou uvedené osvědčené postupy pro používání App Service.
 **Podrobnosti**: omezení přístupu je nezbytné pro organizace, které chtějí vyhovět zásadám zabezpečení pro přístup k datům. Pomocí RBAC můžete přiřadit oprávnění uživatelům, skupinám a aplikacím v určitém oboru. Další informace o tom, jak udělit uživatelům přístup k aplikacím, najdete v tématu [Začínáme se správou přístupu](/azure/role-based-access-control/overview).
 
 **Osvědčený postup**: Chraňte své klíče.   
-**Podrobnosti**: Azure Key Vault pomáhá chránit kryptografické klíče a tajné kódy, které využívají cloudové aplikace a služby. Pomocí Key Vault můžete šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat). Soubory PFX a hesla) pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM). Pro zvýšení ochrany můžete klíče importovat nebo generovat v modulech hardwarového zabezpečení. Další informace najdete v tématu [Azure Key Vault](/azure/key-vault/key-vault-overview) . Pomocí Key Vault můžete také spravovat certifikáty TLS s automatickým obnovením.
+**Podrobnosti**: Azure Key Vault pomáhá chránit kryptografické klíče a tajné kódy, které využívají cloudové aplikace a služby. Pomocí Key Vault můžete šifrovat klíče a tajné klíče (například ověřovací klíče, klíče účtu úložiště, šifrovací klíče dat). Soubory PFX a hesla) pomocí klíčů chráněných moduly hardwarového zabezpečení (HSM). Pro zvýšené bezpečí můžete klíče importovat nebo generovat v modulech HSM. Další informace najdete v tématu [Azure Key Vault](/azure/key-vault/key-vault-overview) . Pomocí Key Vault můžete také spravovat certifikáty TLS s automatickým obnovením.
 
 **Osvědčený postup**: omezení příchozích zdrojových IP adres.   
 **Podrobnosti**: [App Service Environment](/azure/app-service/environment/intro) má funkci Integrace virtuální sítě, která vám pomůže omezit příchozí IP adresy příchozích dat prostřednictvím skupin zabezpečení sítě. Virtuální sítě umožňují umístit prostředky Azure do sítě, ve které není Internet, směrovatelný síť, ke které budete řídit přístup. Další informace najdete v tématu [integrace aplikace do služby Azure Virtual Network](/azure/app-service/web-sites-integrate-with-vnet).

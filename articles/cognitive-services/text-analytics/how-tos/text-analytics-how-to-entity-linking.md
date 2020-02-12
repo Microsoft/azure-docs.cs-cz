@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/27/2019
+ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774144"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137971"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
 Rozhraní API pro analýzu textu umožňuje přebírá nestrukturovaný text a vrací seznam nejednoznačných entit s odkazy na Další informace na webu. Rozhraní API podporuje rozpoznávání pojmenovaných entit (NER) i propojení entit.
 
-### <a name="entity-linking"></a>Propojování entit
+### <a name="entity-linking"></a>Entity Linking
 
 Propojení entit je schopnost identifikovat a odstranit identitu entity nalezenou v textu (například určit, zda výskyt slova `Mars` odkazuje na globálním nebo římské jsou války). Tento proces vyžaduje přítomnost znalostní báze v příslušném jazyce, aby bylo možné propojit rozpoznané entity v textu. Při propojování entit se jako tato znalostní báze používá [Wikipedii](https://www.wikipedia.org/) .
 
@@ -44,46 +44,8 @@ Rozhraní API pro analýzu textu nabízí dvě verze rozpoznávání pojmenovan�
 
 Informace najdete v tématu [Podpora jazyků](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
 
-#### <a name="version-2tabversion-2"></a>[Verze 2](#tab/version-2)
 
-### <a name="entity-types"></a>Typy entit
-
-> [!NOTE]
-> Rozpoznávání pojmenovaných entit (NER) verze 2 podporuje pouze následující entity. NER v3 je ve verzi Public Preview a významně rozšiřuje počet a hloubku entit rozpoznaných v textu.   
-
-| Typ  | SubType | Příklad: |
-|:-----------   |:------------- |:---------|
-| Osoba        | Není k dispozici\*         | Jan, vyúčtování Branch     |
-| Umístění      | Není k dispozici\*         | "Redmond, Washington", "Paříž"  |
-| Organizace  | Není k dispozici\*         | "Microsoft"   |
-| Množství      | Číslo        | "6", "šest"     |
-| Množství      | Procento    | "50 %", "padesát procent"|
-| Množství      | Pořadí       | "2.", "druhý"     |
-| Množství      | Věk           | "90 den starý", "30 let starý"    |
-| Množství      | Měna      | "10,99 USD"     |
-| Množství      | Dimenze     | "10 mil", "40 cm"     |
-| Množství      | Teplota   | "32 stupňů"    |
-| Datum a čas      | Není k dispozici\*         | "4. února 2012 – 18:30"      |
-| Datum a čas      | Datum          | "2. května 2017", "2. 5. 2017"   |
-| Datum a čas      | Time          | "8:00", "8:00"  |
-| Datum a čas      | Rozsah dat     | "2. května až 5. května"    |
-| Datum a čas      | Časový rozsah     | "18:00 až 19:00"     |
-| Datum a čas      | Délka      | "1 minuta a 45 sekund"   |
-| Datum a čas      | Sada           | "každé úterý"     |
-| Adresa URL           | Není k dispozici\*         | "https:\//www.bing.com"    |
-| E-mail         | Není k dispozici\*         | support@contoso.com |
-| Telefonní číslo v USA  | Není k dispozici\*         | (Jenom telefonní čísla USA) "(312) 555-0176" |
-| IP adresa    | Není k dispozici\*         | 10.0.0.100 |
-
-\* v závislosti na vstupních a extrahovaných entitách, mohou některé entity vynechat `SubType`.  Všechny uvedené podporované typy entit jsou k dispozici pouze pro jazyky anglické, zjednodušené, francouzštiny, němčiny a španělštiny.
-
-### <a name="request-endpoints"></a>Koncové body požadavku
-
-Rozpoznávání pojmenovaných entit v2 používá jeden koncový bod pro požadavky NER a propojení entit:
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Verze 3 (Public Preview)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview](#tab/version-3)
 
 ### <a name="entity-types"></a>Typy entit
 
@@ -110,6 +72,45 @@ Propojení entit
 
 [!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
 
+#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+
+### <a name="entity-types"></a>Typy entit
+
+> [!NOTE]
+> Rozpoznávání pojmenovaných entit (NER) verze 2 podporuje pouze následující entity. NER v3 je ve verzi Public Preview a významně rozšiřuje počet a hloubku entit rozpoznaných v textu.   
+
+| Typ  | SubType | Příklad |
+|:-----------   |:------------- |:---------|
+| Person (Osoba)        | Není k dispozici\*         | Jan, vyúčtování Branch     |
+| Umístění      | Není k dispozici\*         | "Redmond, Washington", "Paříž"  |
+| Organizace  | Není k dispozici\*         | Microsoft   |
+| Množství      | Číslo        | "6", "šest"     |
+| Množství      | Procento    | "50%", "50 procent"|
+| Množství      | Řadový       | "2.", "Second"     |
+| Množství      | Věk           | "90 den starý", "30 let starý"    |
+| Množství      | Měna      | "$10,99"     |
+| Množství      | Globální     | "10 mil", "40 cm"     |
+| Množství      | Teplota   | "32 stupňů"    |
+| DateTime      | Není k dispozici\*         | "6:17:30 4. února 2012"      |
+| DateTime      | Datum          | "Květen 2, 2017", "05/02/2017"   |
+| DateTime      | Čas          | "8:00", "8:00"  |
+| DateTime      | DateRange     | "Může 2. května až 5."    |
+| DateTime      | TimeRange     | "18:00 to 19:00"     |
+| DateTime      | Doba trvání      | 1 minuta a 45 sekund   |
+| DateTime      | Nastavit           | "každé úterý"     |
+| zprostředkovatele identity           | Není k dispozici\*         | "https:\//www.bing.com"    |
+| Email         | Není k dispozici\*         | support@contoso.com |
+| Telefonní číslo v USA  | Není k dispozici\*         | (Jenom telefonní čísla USA) "(312) 555-0176" |
+| IP adresa    | Není k dispozici\*         | 10.0.0.100 |
+
+\* v závislosti na vstupních a extrahovaných entitách, mohou některé entity vynechat `SubType`.  Všechny uvedené podporované typy entit jsou k dispozici pouze pro jazyky anglické, zjednodušené, francouzštiny, němčiny a španělštiny.
+
+### <a name="request-endpoints"></a>Koncové body požadavku
+
+Rozpoznávání pojmenovaných entit v2 používá jeden koncový bod pro požadavky NER a propojení entit:
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+
 ---
 
 ## <a name="sending-a-rest-api-request"></a>Odesílá se žádost o REST API.
@@ -124,17 +125,10 @@ Každý dokument musí být pod 5 120 znaky a pro každou kolekci můžete mít 
 
 Vytvoření žádosti POST. Můžete [použít post](text-analytics-how-to-call-api.md) nebo **konzolu testování API** v následujících odkazech k rychlému uspořádání a odeslání jednoho. 
 
-[!INCLUDE [text-analytics-find-resource-information](../includes/find-azure-resource-info.md)]
+> [!NOTE]
+> Klíč a koncový bod pro váš Analýza textu prostředek najdete na webu Azure Portal. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**. 
 
-#### <a name="version-2tabversion-2"></a>[Verze 2](#tab/version-2)
-
-[Referenční informace o rozpoznávání pojmenovaných entit (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
-
-Verze 2 používá pro požadavky entity propojování a NER následující koncový bod: 
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
-#### <a name="version-3tabversion-3"></a>[Verze 3](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview](#tab/version-3)
 
 [Referenční informace o rerozpoznávání entity V3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
 
@@ -147,6 +141,14 @@ NER
 
 Propojení entit
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+
+#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+
+[Referenční informace o rozpoznávání pojmenovaných entit (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+Verze 2 používá pro požadavky entity propojování a NER následující koncový bod: 
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
 
 ---
 
@@ -180,44 +182,8 @@ Všechny žádosti POST vrátí odpověď ve formátu JSON s ID a zjištěnými 
 
 Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo můžete výstup uložit do souboru v místním systému a potom ho naimportovat do aplikace, která umožňuje řadit a vyhledávat data a pracovat s nimi.
 
-#### <a name="version-2tabversion-2"></a>[Verze 2](#tab/version-2)
 
-### <a name="example-ner-v2-response"></a>Příklad odpovědi NER v2
-```json
-{
-  "documents": [{
-    "id": "1",
-    "entities": [{
-      "name": "Seattle",
-      "matches": [{
-        "wikipediaScore": 0.15046201222847677,
-        "entityTypeScore": 0.80624294281005859,
-        "text": "Seattle",
-        "offset": 26,
-        "length": 7
-      }],
-      "wikipediaLanguage": "en",
-      "wikipediaId": "Seattle",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
-      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-      "type": "Location"
-    }, {
-      "name": "last week",
-      "matches": [{
-        "entityTypeScore": 0.8,
-        "text": "last week",
-        "offset": 34,
-        "length": 9
-      }],
-      "type": "DateTime",
-      "subType": "DateRange"
-    }]
-  }],
-  "errors": []
-}
-```
-
-#### <a name="version-3-public-previewtabversion-3"></a>[Verze 3 (Public Preview)](#tab/version-3)
+#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview)](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Příklad odpovědí V3
 
@@ -271,6 +237,43 @@ Verze 3 poskytuje samostatné koncové body pro NER a propojení entit. Odpověd
   }],
   "errors": [],
   "modelVersion": "2019-10-01"
+}
+```
+
+#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+
+### <a name="example-ner-v2-response"></a>Příklad odpovědi NER v2
+```json
+{
+  "documents": [{
+    "id": "1",
+    "entities": [{
+      "name": "Seattle",
+      "matches": [{
+        "wikipediaScore": 0.15046201222847677,
+        "entityTypeScore": 0.80624294281005859,
+        "text": "Seattle",
+        "offset": 26,
+        "length": 7
+      }],
+      "wikipediaLanguage": "en",
+      "wikipediaId": "Seattle",
+      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
+      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
+      "type": "Location"
+    }, {
+      "name": "last week",
+      "matches": [{
+        "entityTypeScore": 0.8,
+        "text": "last week",
+        "offset": 34,
+        "length": 9
+      }],
+      "type": "DateTime",
+      "subType": "DateRange"
+    }]
+  }],
+  "errors": []
 }
 ```
 

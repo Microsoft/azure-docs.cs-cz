@@ -4,12 +4,12 @@ description: Obnovení virtuálního počítače Azure z bodu obnovení pomocí 
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 23e34d65a06f5fbf3ad8ce53311862c680ddebd0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d70db384101d838b2b65707090577156daa59b9a
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77021980"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138061"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -167,6 +167,9 @@ Funkce obnovení koncového uživatele v sekundární oblasti bude podobná prim
 
 - Informace o tom, jak obnovit a vytvořit virtuální počítač, najdete v tématu [Vytvoření virtuálního počítače](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm).
 - Informace o obnovení jako disku najdete v části [obnovení disků](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks).
+
+>[!NOTE]
+>Po aktivaci obnovení a ve fázi přenosu dat nelze úlohu obnovení zrušit.
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>Monitorování úloh obnovení sekundární oblasti
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: a4a8990b3da534acb39ff87c9f7665fb3b08ef06
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 8c2ae82bae8457a1c715f160994c7a0da94193ff
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708166"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134499"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API
 
@@ -27,21 +27,14 @@ ms.locfileid: "74708166"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-V tomto rychlém startu se dozvíte, jak pomocí aplikace v jazyce Java vytvořit a spravovat databázi dokumentů z Azure Cosmos DB účtu rozhraní SQL API. Nejdřív vytvoříte Azure Cosmos DB účet rozhraní SQL API pomocí Azure Portal, vytvoříte aplikaci Java pomocí SQL Java SDK a potom do svého účtu Cosmos DB přidáte prostředky pomocí aplikace Java. Pokyny v tomto rychlém startu platí pro všechny operační systémy, které podporují Javu. Po dokončení tohoto rychlého startu budete obeznámeni s vytvářením a úpravou databází Cosmos DB, kontejnerů buď v uživatelském rozhraní, nebo programově, podle toho, co je vaše preference.
+V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhraní SQL API z Azure Portal a pomocí aplikace Java naklonované z GitHubu. Nejdřív vytvoříte Azure Cosmos DB účet rozhraní SQL API pomocí Azure Portal a pak vytvoříte aplikaci Java pomocí SQL Java SDK a potom do svého účtu Cosmos DB přidáte prostředky pomocí aplikace Java. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
-
-Dále musí být splněny všechny tyto podmínky: 
-
-* [Java Development Kit (JDK) verze 8](https://aka.ms/azure-jdks)
-    * Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
-* [Stáhněte](https://maven.apache.org/download.cgi) a [nainstalujte](https://maven.apache.org/install.html) binární archiv [Maven](https://maven.apache.org/).
-    * Na Ubuntu můžete Maven nainstalovat spuštěním příkazu `apt-get install maven`.
-* [Git](https://www.git-scm.com/)
-    * Na Ubuntu můžete Git nainstalovat spuštěním příkazu `sudo apt-get install git`.
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure. [Emulátor Azure Cosmos DB](https://aka.ms/cosmosdb-emulator) můžete použít také s identifikátorem URI `https://localhost:8081` a klíčovým `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`.
+- [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Najeďte proměnnou prostředí `JAVA_HOME` na složku, ve které je nainstalovaná JDK.
+- [Binární archiv Maven](https://maven.apache.org/download.cgi) V Ubuntu spusťte `apt-get install maven` a nainstalujte Maven.
+- [Git](https://www.git-scm.com/downloads) V Ubuntu spusťte `sudo apt-get install git` pro instalaci Gitu.
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -66,11 +59,11 @@ Než budete moci vytvořit databázi dokumentů, je potřeba pomocí služby Azu
 
 Teď přejděme k práci s kódem. Naklonujeme aplikaci SQL API z GitHubu, nastavíme připojovací řetězec a spustíme ji. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu. 
 
-1. Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace.
+Ukázkové úložiště naklonujete spuštěním následujícího příkazu. Tento příkaz vytvoří na vašem počítači kopii ukázkové aplikace.
 
-    ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
-    ```
+```bash
+git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
+```
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
@@ -100,10 +93,9 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
 
-## <a name="run-the-app"></a>Spusťte aplikaci
+## <a name="run-the-app"></a>Spuštění aplikace
 
 Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovacím řetězci, a spusťte aplikaci s použitím informací o vašem koncovém bodu. Tím aplikaci umožníte komunikovat s hostovanou databází.
-
 
 1. V okně terminálu Git přejděte pomocí příkazu `cd` do složky se vzorovým kódem.
 
@@ -143,7 +135,7 @@ Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovac�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se seznámili s postupem vytvoření účtu Azure Cosmos, databáze dokumentů a kontejneru pomocí Průzkumník dat a spuštění aplikace ke stejnému účelu prostřednictvím kódu programu. Teď můžete do svého kontejneru Azure Cosmos importovat další data. 
+V tomto rychlém startu jste se naučili, jak vytvořit Azure Cosmos DB účet rozhraní SQL API, vytvořit databázi dokumentů a kontejner pomocí Průzkumník dat a spustit aplikaci Java, která provede stejné věci programově. Teď můžete do svého účtu Azure Cosmos DB importovat další data. 
 
 > [!div class="nextstepaction"]
 > [Importování dat do služby Azure Cosmos DB](import-data.md)

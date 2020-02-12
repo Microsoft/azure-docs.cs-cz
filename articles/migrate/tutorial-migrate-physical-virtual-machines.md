@@ -4,12 +4,12 @@ description: Tento článek popisuje, jak migrovat fyzické počítače do Azure
 ms.topic: tutorial
 ms.date: 02/03/2020
 ms.custom: MVC
-ms.openlocfilehash: 3fbc94464c139add6e275890e1a1e415b2826f0d
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 908a5915cbb7f5aeb9f641da18024d5dbf497707
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069519"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134943"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrace počítačů jako fyzických serverů do Azure
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
@@ -61,9 +61,6 @@ Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 Nastavte oprávnění Azure předtím, než budete moct migrovat pomocí migrace serveru Azure Migrate.
 
 - **Vytvoření projektu**: účet Azure potřebuje oprávnění k vytvoření projektu Azure Migrate. 
-- **Zaregistrujte zařízení replikace Azure Migrate**: zařízení replikace vytvoří a zaregistruje aplikaci Azure Active Directory ve vašem účtu Azure. Delegovat oprávnění.
-- **Vytvoření Key Vault**: pro migraci počítačů vytvoří Azure Migrate ve skupině prostředků Key Vault, aby bylo možné spravovat přístupové klíče k účtu úložiště replikace v rámci vašeho předplatného. K vytvoření trezoru potřebujete oprávnění přiřazení role ve skupině prostředků, ve které se nachází Azure Migrate projekt. 
-
 
 ### <a name="assign-permissions-to-create-project"></a>Přiřadit oprávnění k vytvoření projektu
 
@@ -73,43 +70,6 @@ Nastavte oprávnění Azure předtím, než budete moct migrovat pomocí migrace
     - Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého předplatného.
     - Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte roli.
 
-### <a name="assign-permissions-to-register-the-replication-appliance"></a>Přiřazení oprávnění k registraci zařízení replikace
-
-U migrace založené na agentech můžete delegovat oprávnění k migraci Azure Migrate serveru a vytvořit a zaregistrovat aplikaci Azure AD ve svém účtu. Můžete přiřadit oprávnění pomocí jedné z následujících metod:
-
-- Tenant nebo globální správce může udělit oprávnění uživatelům v tenantovi, aby mohli vytvářet a registrovat aplikace služby Azure AD.
-- Tenant nebo globální správce může k účtu přiřadit roli vývojáře aplikace (která má oprávnění).
-
-Je potřeba poznamenat, že:
-
-- Aplikace nemají žádná jiná přístupová oprávnění k předplatnému, kromě výše popsaných výše.
-- Tato oprávnění budete potřebovat, jenom když zaregistrujete nové zařízení replikace. Po nastavení zařízení replikace můžete oprávnění odebrat. 
-
-
-#### <a name="grant-account-permissions"></a>Udělení oprávnění účtu
-
-Tenant nebo globální správce může udělit oprávnění následujícím způsobem.
-
-1. V Azure AD by měl tenant/globální správce přejít na **Azure Active Directory** > **Uživatelé** > **uživatelských nastavení**.
-2. Správce by měl nastavit **Registrace aplikací** **Ano**.
-
-    ![Oprávnění služby Azure AD](./media/tutorial-migrate-physical-virtual-machines/aad.png)
-
-> [!NOTE]
-> Toto je výchozí nastavení, které není citlivé. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
-
-#### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace 
-
-Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
-
-## <a name="assign-permissions-to-create-key-vault"></a>Přiřazení oprávnění k vytváření Key Vault
-
-Přiřaďte oprávnění přiřazení role ke skupině prostředků, ve které se Azure Migrate projekt nachází, takto:
-
-1. Ve skupině prostředků v Azure Portal vyberte **řízení přístupu (IAM)** .
-2. V části **kontrolovat přístup**Najděte příslušný účet a kliknutím na něj Zobrazte oprávnění. Potřebujete oprávnění **vlastníka** (nebo **Přispěvatel** a **Správce přístupu uživatele**).
-3. Pokud nemáte požadovaná oprávnění, požádejte je od vlastníka skupiny prostředků. 
-
 ## <a name="prepare-for-migration"></a>Příprava migrace
 
 ### <a name="check-machine-requirements-for-migration"></a>Ověřit požadavky na počítač pro migraci
@@ -117,7 +77,7 @@ Přiřaďte oprávnění přiřazení role ke skupině prostředků, ve které s
 Zajistěte, aby počítače splňovaly požadavky na migraci do Azure. 
 
 > [!NOTE]
-> Migrace na základě agenta pomocí migrace serveru Azure Migrate je založená na funkcích služby Azure Site Recovery. Některé požadavky mohou odkazovat na dokumentaci Site Recovery.
+> Migrace založená na agentech s migrací Azure Migrate serveru má stejnou architekturu replikace jako funkce zotavení po havárii agenta služby Azure Site Recovery a některé ze součástí, které používají stejný základ kódu. Některé požadavky mohou odkazovat na dokumentaci Site Recovery.
 
 1. [Ověřte](migrate-support-matrix-physical-migration.md#physical-server-requirements) požadavky na fyzický server.
 2. Ověřte nastavení virtuálního počítače. Místní počítače, které se replikují do Azure, musí splňovat [požadavky na virtuální počítače Azure](migrate-support-matrix-physical-migration.md#azure-vm-requirements).

@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 10/22/2019
-ms.openlocfilehash: c9d02490a5627ead502429ead06608b4fb621058
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+author: likebupt
+ms.author: keli19
+ms.date: 02/11/2020
+ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548403"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137925"
 ---
 # <a name="train-model-module"></a>Modul trénování modelu
 
@@ -39,7 +39,7 @@ V Azure Machine Learning je vytváření a používání modelu strojového uče
 
 3. Po dokončení školení použijte školicí model s jedním z [modulů pro vyhodnocování](./score-model.md)a předpovědi se na nová data.
 
-## <a name="how-to-use-train-model"></a>Jak používat **model výuky**  
+## <a name="how-to-use-train-model"></a>Jak používat model výuky 
   
 1.  V Azure Machine Learning nakonfigurujte model klasifikace nebo regresní model.
     
@@ -49,7 +49,7 @@ V Azure Machine Learning je vytváření a používání modelu strojového uče
 
     Datová sada školení musí obsahovat sloupec popisku. Všechny řádky bez popisků jsou ignorovány.
   
-4.  U **sloupce popisek**klikněte na **Spustit selektor sloupců**a vyberte jeden sloupec obsahující výsledky, které model může použít pro školení.
+4.  U **sloupce popisek**klikněte na **Upravit sloupec** v pravém panelu modulu a vyberte jeden sloupec obsahující výsledky, které model může použít pro školení.
   
     - Pro problémy s klasifikací musí sloupec popisku obsahovat buď hodnoty **kategorií** nebo **diskrétní** hodnoty. Některé příklady mohou být hodnocení typu Ano/bez, kód klasifikace choroby nebo název nebo skupina pro příjem.  Pokud vyberete sloupec noncategorical, modul během školení vrátí chybu.
   

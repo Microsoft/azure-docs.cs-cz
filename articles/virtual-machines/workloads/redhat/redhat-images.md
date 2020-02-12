@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/18/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 211ac68fd10cd745faf68a5efae7392345008d7b
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 5ed5d9337dd4e7acdbba25c4cb66d2690793f250
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941448"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134397"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Přehled Red Hat Enterprise Linuxch imagí
 Tento článek popisuje dostupné image Red Hat Enterprise Linux (RHEL) v Azure Marketplace společně se zásadami týkajícími se jejich pojmenování a uchovávání.
@@ -30,7 +30,7 @@ Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete na strán
 >[!NOTE]
 > Pro všechny problémy související s imagemi RHEL na webu Azure Marketplace prosím Dodejte lístek podpory společnosti Microsoft.
 
-## <a name="images-available-in-azure"></a>Obrázky dostupné v Azure
+## <a name="viewing-images-available-in-azure"></a>Zobrazení imagí dostupných v Azure
 Při hledání "Red Hat" na webu Marketplace nebo při vytváření prostředku v Azure Portal uživatelském rozhraní se zobrazí pouze podmnožina všech dostupných imagí RHEL. Úplnou sadu dostupných imagí virtuálních počítačů můžete kdykoli získat pomocí Azure CLI/PowerShellu nebo rozhraní API.
 
 Pokud chcete zobrazit úplnou sadu dostupných imagí Red Hat v Azure, spusťte následující příkaz.
@@ -39,7 +39,7 @@ Pokud chcete zobrazit úplnou sadu dostupných imagí Red Hat v Azure, spusťte 
 az vm image list --publisher RedHat --all
 ```
 
-### <a name="naming-convention"></a>Zásady vytváření názvů
+### <a name="naming-convention"></a>Konvence pojmenování
 Image virtuálních počítačů v Azure jsou seřazené podle vydavatele, nabídky, SKU a verze. Kombinace vydavatele: nabídka: SKU: verze je identifikátor URN image a jednoznačně identifikuje obrázek, který se má použít.
 
 `RedHat:RHEL:7-LVM:7.6.2018103108` například odkazuje na bitovou kopii RHEL 7,6 LVM-partition vytvořenou 31. října 2018.
@@ -60,8 +60,9 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:lat
 
 >[!NOTE]
 > Obecně platí, že porovnání verzí za účelem určení nejnovější následuje pravidla [metody CompareTo](https://msdn.microsoft.com/library/a5ts8tb6.aspx).
+Porovnání verzí tohoto obrázku je provedeno porovnáním hodnot jako objektu [verze](https://docs.microsoft.com/dotnet/api/system.version.-ctor?view=netframework-4.8) – ne jako řetězce.
 
-### <a name="rhel-6-image-types"></a>Typy imagí RHEL 6
+## <a name="rhel-6-image-types"></a>Typy imagí RHEL 6
 Pro image RHEL 6. x jsou typy obrázků následující:
 
 |Vydavatel | Nabídka | Hodnota SKU | Verze | Podrobnosti
@@ -71,7 +72,7 @@ Pro image RHEL 6. x jsou typy obrázků následující:
 |RedHat | RHEL | RHEL-SAP-APPS | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (např. 6.8.2017053118) | Jedná se o image RHEL 6,8 pro aplikace SAP. Má oprávnění k přístupu k úložištím aplikací SAP i k základním úložištím RHEL.
 |RedHat | RHEL | RHEL-SAP-HANA | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (např. 6.7.2017053121) | Toto je RHEL 6,7 pro obrázek SAP HANA. Má oprávnění k přístupu k SAP HANAm úložištím i k základním úložištím RHEL.
 
-### <a name="rhel-7-image-types"></a>RHEL 7 – typy obrázků
+## <a name="rhel-7-image-types"></a>RHEL 7 – typy obrázků
 Pro image RHEL 7. x existuje několik různých typů obrázků. V následující tabulce jsou uvedeny různé sady imagí, které nabízíme. Úplný seznam můžete zobrazit pomocí příkazu AZ CLI `az vm image list --publisher redhat --all`.
 
 >[!NOTE]
@@ -90,7 +91,7 @@ Pro image RHEL 7. x existuje několik různých typů obrázků. V následujíc�
 |RedHat | RHEL | RHEL-SAP-APPS | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (např. 7.3.2017053118) | Tyto image jsou zastaralé, protože aplikace SAP a SAP HANA úložišť byly zkombinovány do úložišť SAP. Toto jsou RHEL pro Image aplikací SAP. Mají oprávnění k přístupu k úložištím aplikací SAP i k základním úložištím RHEL.
 |RedHat | RHEL | RHEL-SAP-HANA | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (např. 7.3.2018051421) | Tyto image jsou zastaralé, protože aplikace SAP a SAP HANA úložišť byly zkombinovány do úložišť SAP. Toto jsou RHEL for SAP HANA obrázky. Mají oprávnění pro přístup k SAP HANA úložišť i k základním úložištím RHEL.
 
-### <a name="rhel-8-image-types"></a>Typy imagí RHEL 8
+## <a name="rhel-8-image-types"></a>Typy imagí RHEL 8
 Podrobnosti o typech imagí RHEL 8 jsou uvedené níže.
 
 |Vydavatel | Nabídka | Hodnota SKU | Verze | Podrobnosti
@@ -98,7 +99,9 @@ Podrobnosti o typech imagí RHEL 8 jsou uvedené níže.
 |RedHat | RHEL | 8 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (např. 8.0.20191023) | Tyto image jsou image RHEL 8,0 LVM-dělené bitové kopie připojené ke standardním úložištím Red Hat.
 |RedHat | RHEL | 8 – Gen2 | Zřetězené hodnoty vedlejší verze RHEL a datum publikování (např. 8.0.20191024) | Tyto image jsou Hyper-V Generation 2 RHEL 8,0 LVM-dělené image připojené ke standardním úložištím Red Hat. Další informace o virtuálních počítačích 2. generace v Azure [najdete tady](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
 
-## <a name="extended-update-support-eus"></a>Podpora rozšířené aktualizace (EUS)
+## <a name="rhel-longer-support-add-ons"></a>RHEL už podporuje doplňky.
+
+### <a name="extended-update-support-eus"></a>Podpora rozšířené aktualizace (EUS)
 Od dubna 2019 jsou k dispozici RHEL image, které jsou ve výchozím nastavení připojeny k úložištím rozšířené aktualizace (EUS). Další podrobnosti o RHEL EUS najdete v [dokumentaci k Red Hat](https://access.redhat.com/articles/rhel-eus).
 
 Přepínání na úložiště EUS je možné a podporuje se. Pokyny k přepnutí virtuálního počítače na EUS a další podrobnosti o datech konce životnosti EUS jsou k dispozici [zde](https://aka.ms/rhui-update#rhel-eus-and-version-locking-rhel-vms).
@@ -106,7 +109,7 @@ Přepínání na úložiště EUS je možné a podporuje se. Pokyny k přepnutí
 >[!NOTE]
 > EUS se v RHEL Extras nepodporuje. To znamená, že pokud instalujete balíček, který je obvykle dostupný z kanálu RHEL Extras, nebudete ho moct v EUS použít. Životní cyklus produktu Red Hat Extras je [zde](https://access.redhat.com/support/policy/updates/extras/)podrobně popsán.
 
-### <a name="differentiating-between-regular-and-eus-images"></a>Rozlišení mezi běžnými a EUS obrázky.
+#### <a name="differentiating-between-regular-and-eus-images"></a>Rozlišení mezi běžnými a EUS obrázky.
 Zákazníci, kteří chtějí používat image připojené k úložištím EUS, by měli použít image RHEL, která obsahuje číslo podverze RHEL v SKU.
 
 Můžete například zobrazit následující dvě dostupné image RHEL 7,4:
@@ -131,13 +134,18 @@ Dílčí verze |Příklad obrázku EUS              |Stav EUS                   
 RHEL 7,4      |RedHat: RHEL: 7.4:7.4.2019041718 | Obrázky publikované v dubnu 2019 a novějších budou ve výchozím nastavení EUS|
 RHEL 7.5      |RedHat: RHEL: 7.5:7.5.2019060305 | Obrázky publikované od června 2019 a novějších budou ve výchozím nastavení EUS |
 RHEL 7,6      |RedHat: RHEL: 7.6:7.6.2019052206 | Publikované obrázky můžou 2019 a novější EUS ve výchozím nastavení.  |
-RHEL 8.0      |Nevztahuje se                            | Není dostupný žádný EUS ze Red Hat.                               |
+RHEL 8.0      |Není k dispozici                            | Není dostupný žádný EUS ze Red Hat.                               |
 
+### <a name="update-services-for-sap-e4s"></a>Služba Update Services pro SAP (E4S)
+Nejnovější image RHEL for SAP budou připojeny ke službám Update Services for SAP Solutions Subscriptions (E4S). Další podrobnosti o E4S najdete v [dokumentaci](https://access.redhat.com/support/policy/updates/errata#Update_Services_for_SAP_Solutions)k Red Hat.
 
+#### <a name="rhel-images-with-e4s"></a>Image RHEL s E4S
+Obrázky z následujících nabídek vytvořené po prosince 2019 budou připojené k úložištím E4S.
 
+* RHEL-SAP (RHEL pro SAP)
+* RHEL-SAP-HA (RHEL for SAP s HA a Update Services)
 
-
-### <a name="other-available-offers-and-skus"></a>Další dostupné nabídky a SKU
+## <a name="other-available-offers-and-skus"></a>Další dostupné nabídky a SKU
 Úplný seznam dostupných nabídek a SKU může zahrnovat další obrázky nad rámec toho, co je uvedeno v tabulce výše, například `RedHat:rhel-ocp-marketplace:rhel74:7.4.1`. Tyto nabídky se dají použít k poskytování podpory pro konkrétní řešení na webu Marketplace nebo můžou být publikované pro účely verze Preview a testování. Můžou se kdykoli změnit nebo odebrat bez upozornění. Nepoužívejte je v případě, že jejich přítomnost není veřejně dokumentována společností Microsoft nebo Red Hat.
 
 ## <a name="publishing-policy"></a>Zásady publikování

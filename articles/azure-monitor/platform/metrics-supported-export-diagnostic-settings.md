@@ -4,16 +4,16 @@ description: Seznam metrik dostupných pro každý typ prostředku s Azure Monit
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 05/20/2019
+ms.date: 02/10/2020
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: dcf5276393400be864e738d89bc5713f5aac242b
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: fb11bf402ec671a46c191be0d8958c6a8a2c963d
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963474"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77134950"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor metriky platformy exportovatelné prostřednictvím nastavení diagnostiky
 
@@ -24,6 +24,19 @@ Metriky platformy můžete exportovat z kanálu Azure monitor do jiných umíst�
 2. Použít [REST API metriky](https://docs.microsoft.com/rest/api/monitor/metrics/list)
 
 Vzhledem k tomu, že v Azure Monitor back-endu složitými rozhraními, nejsou všechny metriky exportovatelné pomocí nastavení diagnostiky. Následující tabulka uvádí, které lze a nelze exportovat pomocí nastavení diagnostiky.
+
+## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Změna chování pro hodnoty NULL a nulové hodnoty 
+ 
+Pro metriky platforem, které se dají exportovat prostřednictvím nastavení diagnostiky, je k dispozici několik metrik, pro které Azure Monitor interpretuje 0s jako null. To způsobilo nejasnost mezi skutečnou ' 0s ' (vysílanou prostředkem) a interpretována ' 0s ' (hodnoty null). Od **1. dubna 2020** metriky platformy vyexportované prostřednictvím nastavení diagnostiky už neexportují "0s", pokud je skutečně nevygeneroval základní prostředek. Poznámka:
+
+1.  Pokud odstraníte skupinu prostředků nebo konkrétní prostředek, data metriky z ovlivněných prostředků už nebudou odesílána do nastavení diagnostiky export cílů. To znamená, že se už nebude zobrazovat v Event Hubs, účtech úložiště a Log Analytics pracovních prostorech.
+2.  Toto vylepšení bude k dispozici ve všech veřejných i privátních cloudech.
+3.  Tato změna nebude mít vliv na chování některého z následujících možností: 
+-   Protokoly prostředků platformy exportované prostřednictvím nastavení diagnostiky
+-   Vytváření grafů metrik v Průzkumník metrik
+-   Upozornění na metriky platforem
+ 
+## <a name="metrics-exportable-table"></a>Vyexportovaná tabulka s metrikami 
 
 Tabulka obsahuje následující sloupce. 
 - Exportovatelné přes nastavení diagnostiky? 
@@ -55,7 +68,7 @@ Ano | Microsoft.AnalysisServices/servers | mashup_engine_memory_metric | Paměť
 Ano | Microsoft.AnalysisServices/servers | mashup_engine_private_bytes_metric | Počet privátních bajtů modulu M | B | Průměr
 Ano | Microsoft.AnalysisServices/servers | mashup_engine_qpu_metric | QPU modulu M | Počet | Průměr
 Ano | Microsoft.AnalysisServices/servers | mashup_engine_virtual_bytes_metric | Virtuální bajty motoru M | B | Průměr
-Ano | Microsoft.AnalysisServices/servers | memory_metric | Paměť | B | Průměr
+Ano | Microsoft.AnalysisServices/servers | memory_metric | Memory (Paměť) | B | Průměr
 Ano | Microsoft.AnalysisServices/servers | memory_thrashing_metric | Thrashing paměti | Procento | Průměr
 Ano | Microsoft.AnalysisServices/servers | MemoryLimitHard | Paměť: limit paměti – pevný | B | Průměr
 Ano | Microsoft.AnalysisServices/servers | Hodnota memorylimithigh | Paměť: limit paměti – vysoká | B | Průměr
@@ -89,7 +102,7 @@ Ano | Microsoft.AnalysisServices/servers | VertiPaqPaged | Paměť: VertiPaq str
 Ano | Microsoft.AnalysisServices/servers | virtual_bytes_metric | Virtuální bajty | B | Průměr
 Ano | Microsoft.ApiManagement/service | BackendDuration | Doba trvání požadavků back-endu | Milisekundy | Průměr
 Ano | Microsoft.ApiManagement/service | Kapacita | Kapacita | Procento | Průměr
-Ano | Microsoft.ApiManagement/service | Délka | Celková doba trvání žádostí o bránu | Milisekundy | Průměr
+Ano | Microsoft.ApiManagement/service | Doba trvání | Celková doba trvání žádostí o bránu | Milisekundy | Průměr
 Ano | Microsoft.ApiManagement/service | EventHubDroppedEvents | Vyřazené události EventHub | Počet | Celkem
 Ano | Microsoft.ApiManagement/service | EventHubRejectedEvents | Odmítnuté události EventHub | Počet | Celkem
 Ano | Microsoft.ApiManagement/service | EventHubSuccessfulEvents | Úspěšné události EventHub | Počet | Celkem
@@ -100,7 +113,7 @@ Ano | Microsoft.ApiManagement/service | EventHubTotalEvents | Celkový počet ud
 Ano | Microsoft.ApiManagement/service | EventHubTotalFailedEvents | Neúspěšné události EventHub | Počet | Celkem
 Ano | Microsoft.ApiManagement/service | FailedRequests | Neúspěšné požadavky brány (zastaralé) | Počet | Celkem
 Ano | Microsoft.ApiManagement/service | OtherRequests | Jiné požadavky na bránu (zastaralé) | Počet | Celkem
-Ano | Microsoft.ApiManagement/service | Požadavky | Požadavky | Počet | Celkem
+Ano | Microsoft.ApiManagement/service | Žádosti | Žádosti | Počet | Celkem
 Ano | Microsoft.ApiManagement/service | SuccessfulRequests | Úspěšné požadavky brány (zastaralé) | Počet | Celkem
 Ano | Microsoft.ApiManagement/service | TotalRequests | Požadavky brány celkem (zastaralé) | Počet | Celkem
 Ano | Microsoft.ApiManagement/service | UnauthorizedRequests | Neautorizované žádosti o bránu (zastaralé) | Počet | Celkem
@@ -183,7 +196,7 @@ Ano | Microsoft. blockchain/blockchainMembers | ConnectionHandled | Zpracovaná 
 Ano | Microsoft. blockchain/blockchainMembers | CpuUsagePercentageInDouble | Procento využití procesoru | Procento | Maximum
 Ano | Microsoft. blockchain/blockchainMembers | IOReadBytes | Bajty čtení v/v | B | Celkem
 Ano | Microsoft. blockchain/blockchainMembers | IOWriteBytes | Bajty zápisu v/v | B | Celkem
-Ano | Microsoft. blockchain/blockchainMembers | Limitu | Omezení paměti | B | Průměr
+Ano | Microsoft. blockchain/blockchainMembers | Limitu | Limit paměti | B | Průměr
 Ano | Microsoft. blockchain/blockchainMembers | MemoryUsage | Využití paměti | B | Průměr
 Ano | Microsoft. blockchain/blockchainMembers | MemoryUsagePercentageInDouble | Procento využití paměti | Procento | Průměr
 Ano | Microsoft. blockchain/blockchainMembers | PendingTransactions | Nedokončené transakce | Počet | Průměr
@@ -248,7 +261,7 @@ Ano | Microsoft.Cache/redis | connectedclients6 | Připojení klienti (horizont�
 Ano | Microsoft.Cache/redis | connectedclients7 | Připojení klienti (horizontálních oddílů 7) | Počet | Maximum
 Ano | Microsoft.Cache/redis | connectedclients8 | Připojení klienti (horizontálních oddílů 8) | Počet | Maximum
 Ano | Microsoft.Cache/redis | connectedclients9 | Připojení klienti (horizontálních oddílů 9) | Počet | Maximum
-Ano | Microsoft.Cache/redis | chyby | chyby | Počet | Maximum
+Ano | Microsoft.Cache/redis | chyby | Chyby | Počet | Maximum
 Ano | Microsoft.Cache/redis | evictedkeys | Vyřazení klíčů | Počet | Celkem
 Ano | Microsoft.Cache/redis | evictedkeys0 | Vyřazené klíče (horizontálních oddílů 0) | Počet | Celkem
 Ano | Microsoft.Cache/redis | evictedkeys1 | Vyřazené klíče (horizontálních oddílů 1) | Počet | Celkem
@@ -293,7 +306,7 @@ Ano | Microsoft.Cache/redis | operationsPerSecond6 | Operací za sekundu (horizo
 Ano | Microsoft.Cache/redis | operationsPerSecond7 | Operací za sekundu (horizontálních oddílů 7) | Počet | Maximum
 Ano | Microsoft.Cache/redis | operationsPerSecond8 | Operací za sekundu (horizontálních oddílů 8) | Počet | Maximum
 Ano | Microsoft.Cache/redis | operationsPerSecond9 | Operací za sekundu (horizontálních oddílů 9) | Počet | Maximum
-Ano | Microsoft.Cache/redis | PercentProcessorTime | Procesor | Procento | Maximum
+Ano | Microsoft.Cache/redis | percentProcessorTime | Procesor | Procento | Maximum
 Ano | Microsoft.Cache/redis | percentProcessorTime0 | PROCESOR (horizontálních oddílů 0) | Procento | Maximum
 Ano | Microsoft.Cache/redis | percentProcessorTime1 | PROCESOR (horizontálních oddílů 1) | Procento | Maximum
 Ano | Microsoft.Cache/redis | percentProcessorTime2 | PROCESOR (horizontálních oddílů 2) | Procento | Maximum
@@ -436,11 +449,11 @@ Ano | Microsoft.CognitiveServices/accounts | BlockedCalls | Blokovaná volání 
 Ano | Microsoft.CognitiveServices/accounts | CharactersTrained | Vyškolené znaky | Počet | Celkem
 Ano | Microsoft.CognitiveServices/accounts | CharactersTranslated | Přeložené znaky | Počet | Celkem
 Ano | Microsoft.CognitiveServices/accounts | ClientErrors | Chyby klienta | Počet | Celkem
-Ano | Microsoft.CognitiveServices/accounts | DataIn | Data v | B | Celkem
+Ano | Microsoft.CognitiveServices/accounts | DataIn | Vstupní data | B | Celkem
 Ano | Microsoft.CognitiveServices/accounts | Data | Výstupní data | B | Celkem
 Ano | Microsoft.CognitiveServices/accounts | Latence | Latence | Milisekund | Průměr
 Ano | Microsoft.CognitiveServices/accounts | ServerErrors | Chyby serveru | Počet | Celkem
-Ano | Microsoft.CognitiveServices/accounts | SpeechSessionDuration | Doba trvání relace řeči | Sekund | Celkem
+Ano | Microsoft.CognitiveServices/accounts | SpeechSessionDuration | Doba trvání relace řeči | Sekundy | Celkem
 Ano | Microsoft.CognitiveServices/accounts | SuccessfulCalls | Úspěšná volání | Počet | Celkem
 Ano | Microsoft.CognitiveServices/accounts | TotalCalls | Celkový počet volání | Počet | Celkem
 Ano | Microsoft.CognitiveServices/accounts | TotalErrors | Celkový počet chyb | Počet | Celkem
@@ -596,7 +609,7 @@ Ano | Microsoft. DataFactory/továrny | ActivityFailedRuns | Neúspěšná aktiv
 Ano | Microsoft. DataFactory/továrny | ActivitySucceededRuns | Úspěšná aktivita spustí metriky | Počet | Celkem
 Ano | Microsoft. DataFactory/továrny | FactorySizeInGbUnits | Celková velikost továrny (jednotka GB) | Počet | Maximum
 Ano | Microsoft. DataFactory/továrny | IntegrationRuntimeAvailableMemory | Dostupná paměť modulu runtime integrace | B | Průměr
-Ano | Microsoft. DataFactory/továrny | IntegrationRuntimeAverageTaskPickupDelay | Doba trvání fronty prostředí Integration runtime | Sekund | Průměr
+Ano | Microsoft. DataFactory/továrny | IntegrationRuntimeAverageTaskPickupDelay | Doba trvání fronty prostředí Integration runtime | Sekundy | Průměr
 Ano | Microsoft. DataFactory/továrny | IntegrationRuntimeCpuPercentage | Využití procesoru prostředí Integration runtime | Procento | Průměr
 Ano | Microsoft. DataFactory/továrny | IntegrationRuntimeQueueLength | Délka fronty prostředí Integration runtime | Počet | Průměr
 Ano | Microsoft. DataFactory/továrny | MaxAllowedFactorySizeInGbUnits | Maximální povolená velikost továrny (jednotka GB) | Počet | Maximum
@@ -608,16 +621,16 @@ Ano | Microsoft. DataFactory/továrny | ResourceCount | Celkový počet entit | 
 Ano | Microsoft. DataFactory/továrny | TriggerCancelledRuns | Zrušené aktivační události spustí metriky | Počet | Celkem
 Ano | Microsoft. DataFactory/továrny | TriggerFailedRuns | Neúspěšná aktivační událost spustí metriky | Počet | Celkem
 Ano | Microsoft. DataFactory/továrny | TriggerSucceededRuns | Úspěšná aktivační událost spustí metriky | Počet | Celkem
-Ano | Microsoft.DataLakeAnalytics/accounts | JobAUEndedCancelled | Čas AU se zrušil. | Sekund | Celkem
-Ano | Microsoft.DataLakeAnalytics/accounts | JobAUEndedFailure | Neúspěšná doba aktualizace AU | Sekund | Celkem
-Ano | Microsoft.DataLakeAnalytics/accounts | JobAUEndedSuccess | Úspěšná doba AU | Sekund | Celkem
+Ano | Microsoft.DataLakeAnalytics/accounts | JobAUEndedCancelled | Čas AU se zrušil. | Sekundy | Celkem
+Ano | Microsoft.DataLakeAnalytics/accounts | JobAUEndedFailure | Neúspěšná doba aktualizace AU | Sekundy | Celkem
+Ano | Microsoft.DataLakeAnalytics/accounts | JobAUEndedSuccess | Úspěšná doba AU | Sekundy | Celkem
 Ano | Microsoft.DataLakeAnalytics/accounts | JobEndedCancelled | Zrušené úlohy | Počet | Celkem
 Ano | Microsoft.DataLakeAnalytics/accounts | JobEndedFailure | Neúspěšné úlohy | Počet | Celkem
 Ano | Microsoft.DataLakeAnalytics/accounts | JobEndedSuccess | Úspěšné úlohy | Počet | Celkem
 Ano | Microsoft.DataLakeStore/accounts | DataRead | Přečtená data | B | Celkem
 Ano | Microsoft.DataLakeStore/accounts | Napsáno | Zapsaná data | B | Celkem
 Ano | Microsoft.DataLakeStore/accounts | ReadRequests | Žádosti o čtení | Počet | Celkem
-Ano | Microsoft.DataLakeStore/accounts | TotalStorage | Úložiště celkem | B | Maximum
+Ano | Microsoft.DataLakeStore/accounts | TotalStorage | Celková velikost úložiště | B | Maximum
 Ano | Microsoft.DataLakeStore/accounts | WriteRequests | Požadavky na zápis | Počet | Celkem
 Ano | Microsoft.DBforMariaDB/servers | active_connections | Aktivní připojení | Počet | Průměr
 Ano | Microsoft.DBforMariaDB/servers | backup_storage_used | Využité úložiště záloh | B | Průměr
@@ -658,7 +671,7 @@ Ano | Microsoft.DBforPostgreSQL/servers | memory_percent | Procentuální hodnot
 Ano | Microsoft.DBforPostgreSQL/servers | network_bytes_egress | Síťové výstupy | B | Celkem
 Ano | Microsoft.DBforPostgreSQL/servers | network_bytes_ingress | Síťové vstupy | B | Celkem
 Ano | Microsoft.DBforPostgreSQL/servers | pg_replica_log_delay_in_bytes | Maximální prodleva napříč replikami | B | Maximum
-Ano | Microsoft.DBforPostgreSQL/servers | pg_replica_log_delay_in_seconds | Prodleva repliky | Sekund | Maximum
+Ano | Microsoft.DBforPostgreSQL/servers | pg_replica_log_delay_in_seconds | Prodleva repliky | Sekundy | Maximum
 Ano | Microsoft.DBforPostgreSQL/servers | serverlog_storage_limit | Limit úložiště protokolu serveru | B | Maximum
 Ano | Microsoft.DBforPostgreSQL/servers | serverlog_storage_percent | Procentuální hodnota úložiště protokolu serveru | Procento | Průměr
 Ano | Microsoft.DBforPostgreSQL/servers | serverlog_storage_usage | Využité úložiště protokolu serveru | B | Průměr
@@ -688,7 +701,7 @@ Ano | Microsoft.Devices/IotHubs | c2d.twin.update.failure | Neúspěšné zdvoje
 Ano | Microsoft.Devices/IotHubs | c2d.twin.update.size | Velikost dvojitě aktualizovaných aktualizací z back-endu | B | Průměr
 Ano | Microsoft.Devices/IotHubs | c2d.twin.update.success | Úspěšné zdvojené aktualizace z back-endu | Počet | Celkem
 Ano | Microsoft.Devices/IotHubs | C2DMessagesExpired | C2D zprávy prošly (Preview) | Počet | Celkem
-Ano | Microsoft.Devices/IotHubs | konfiguračních | Metriky konfigurace | Počet | Celkem
+Ano | Microsoft.Devices/IotHubs | konfigurace | Metriky konfigurace | Počet | Celkem
 Ne | Microsoft.Devices/IotHubs | connectedDeviceCount | Připojená zařízení (Preview) | Počet | Průměr
 Ano | Microsoft.Devices/IotHubs | d2c.endpoints.egress.builtIn.events | Směrování: zprávy doručené zprávám/událostem | Počet | Celkem
 Ano | Microsoft.Devices/IotHubs | d2c.endpoints.egress.eventHubs | Směrování: zprávy doručené do centra událostí | Počet | Celkem
@@ -742,7 +755,7 @@ Ano | Microsoft.Devices/IotHubs | twinQueries.success | Úspěšné zdvojené do
 Ano | Microsoft.Devices/provisioningServices | AttestationAttempts | Pokusy o ověření identity | Počet | Celkem
 Ano | Microsoft.Devices/provisioningServices | DeviceAssignments | Přiřazená zařízení | Počet | Celkem
 Ano | Microsoft.Devices/provisioningServices | RegistrationAttempts | Pokusy o registraci | Počet | Celkem
-Ne | Microsoft. DocumentDB/databaseAccounts | AvailableStorage | Dostupné úložiště | B | Celkem
+Ne | Microsoft. DocumentDB/databaseAccounts | AvailableStorage | Úložiště k dispozici | B | Celkem
 Ne | Microsoft. DocumentDB/databaseAccounts | CassandraConnectionClosures | Ukončení připojení Cassandra | Počet | Celkem
 Ne | Microsoft. DocumentDB/databaseAccounts | CassandraRequestCharges | Poplatky za žádosti Cassandra | Počet | Celkem
 Ne | Microsoft. DocumentDB/databaseAccounts | CassandraRequests | Žádosti Cassandra | Počet | Počet
@@ -867,16 +880,16 @@ Ano | Microsoft. Insights/Components | výjimky/počet | Výjimky | Počet | Po�
 Ne | Microsoft. Insights/Components | výjimky/Server | Výjimky serveru | Počet | Počet
 Ano | Microsoft. Insights/Components | pageViews/Count | Zobrazení stránek | Počet | Počet
 Ano | Microsoft. Insights/Components | pageViews/doba trvání | Doba načítání zobrazení stránky | Milisekund | Průměr
-Ano | Microsoft. Insights/Components | performanceCounters/exceptionsPerSecond | Míra výjimek | CountPerSecond | Průměr
+Ano | Microsoft. Insights/Components | performanceCounters/exceptionsPerSecond | Frekvence výjimek | CountPerSecond | Průměr
 Ano | Microsoft. Insights/Components | Čítače výkonu/memoryAvailableBytes | Dostupná paměť | B | Průměr
-Ano | Microsoft. Insights/Components | Čítače výkonu/processCpuPercentage | PROCESOR procesů | Procento | Průměr
-Ano | Microsoft. Insights/Components | performanceCounters/processIOBytesPerSecond | Rychlost zpracování v/v | BytesPerSecond | Průměr
+Ano | Microsoft. Insights/Components | Čítače výkonu/processCpuPercentage | Procesor procesu | Procento | Průměr
+Ano | Microsoft. Insights/Components | performanceCounters/processIOBytesPerSecond | Frekvence V/V procesu | BytesPerSecond | Průměr
 Ano | Microsoft. Insights/Components | Čítače výkonu/processorCpuPercentage | Čas procesoru | Procento | Průměr
 Ano | Microsoft. Insights/Components | performanceCounters/processPrivateBytes | Nesdílené bajty procesu | B | Průměr
 Ano | Microsoft. Insights/Components | Čítače výkonu/requestExecutionTime | Doba provádění požadavku HTTP | Milisekund | Průměr
 Ano | Microsoft. Insights/Components | performanceCounters/requestsInQueue | Požadavky HTTP ve frontě aplikací | Počet | Průměr
-Ano | Microsoft. Insights/Components | performanceCounters/requestsPerSecond | Rychlost požadavku HTTP | CountPerSecond | Průměr
-Ne | Microsoft. Insights/Components | požadavky/počet | Žádosti serveru | Počet | Počet
+Ano | Microsoft. Insights/Components | performanceCounters/requestsPerSecond | Četnost požadavků HTTP | CountPerSecond | Průměr
+Ne | Microsoft. Insights/Components | požadavky/počet | Požadavky serveru | Počet | Počet
 Ano | Microsoft. Insights/Components | žádosti/doba trvání | Doba odezvy serveru | Milisekund | Průměr
 Ne | Microsoft. Insights/Components | požadavky/selhání | Neúspěšné požadavky | Počet | Počet
 Ne | Microsoft. Insights/Components | žádosti/rychlost | Počet požadavků serveru | CountPerSecond | Průměr
@@ -892,7 +905,7 @@ Ano | Microsoft.Kusto/Clusters | ContinuousExportResult | Výsledek průběžné
 Ano | Microsoft.Kusto/Clusters | Procesor | Procesor | Procento | Průměr
 Ano | Microsoft.Kusto/Clusters | EventsProcessedForEventHubs | Zpracované události (pro Event/centra IoT) | Počet | Celkem
 Ano | Microsoft.Kusto/Clusters | ExportUtilization | Využití exportu | Procento | Maximum
-Ano | Microsoft.Kusto/Clusters | IngestionLatencyInSeconds | Latence příjmu (v sekundách) | Sekund | Průměr
+Ano | Microsoft.Kusto/Clusters | IngestionLatencyInSeconds | Latence příjmu (v sekundách) | Sekundy | Průměr
 Ano | Microsoft.Kusto/Clusters | IngestionResult | Výsledek ingestování | Počet | Počet
 Ano | Microsoft.Kusto/Clusters | IngestionUtilization | Využití příjmu | Procento | Průměr
 Ano | Microsoft.Kusto/Clusters | IngestionVolumeInMB | Objem příjmu (v MB) | Počet | Celkem
@@ -902,47 +915,47 @@ Ano | Microsoft.Kusto/Clusters | SteamingIngestRequestRate | Rychlost přijímá
 Ano | Microsoft.Kusto/Clusters | StreamingIngestDataRate | Přenosová rychlost ingestování datových proudů | Počet | Průměr
 Ano | Microsoft.Kusto/Clusters | StreamingIngestDuration | Doba ingestování streamování | Milisekundy | Průměr
 Ano | Microsoft.Kusto/Clusters | StreamingIngestResults | Výsledek ingestování streamování | Počet | Průměr
-Ano | Microsoft. Logic/integrationServiceEnvironments | ActionLatency | Latence akcí  | Sekund | Průměr
+Ano | Microsoft. Logic/integrationServiceEnvironments | ActionLatency | Latence akcí  | Sekundy | Průměr
 Ano | Microsoft. Logic/integrationServiceEnvironments | ActionsCompleted | Dokončené akce  | Počet | Celkem
 Ano | Microsoft. Logic/integrationServiceEnvironments | ActionsFailed | Neúspěšné akce  | Počet | Celkem
 Ano | Microsoft. Logic/integrationServiceEnvironments | ActionsSkipped | Vynechané akce  | Počet | Celkem
 Ano | Microsoft. Logic/integrationServiceEnvironments | ActionsStarted | Spuštěné akce  | Počet | Celkem
 Ano | Microsoft. Logic/integrationServiceEnvironments | ActionsSucceeded | Úspěšné akce  | Počet | Celkem
-Ano | Microsoft. Logic/integrationServiceEnvironments | ActionSuccessLatency | Latence úspěšných akcí  | Sekund | Průměr
+Ano | Microsoft. Logic/integrationServiceEnvironments | ActionSuccessLatency | Latence úspěšných akcí  | Sekundy | Průměr
 Ano | Microsoft. Logic/integrationServiceEnvironments | ActionThrottledEvents | Omezené události akcí | Počet | Celkem
 Ano | Microsoft. Logic/integrationServiceEnvironments | IntegrationServiceEnvironmentConnectorMemoryUsage | Využití paměti konektoru pro prostředí integrační služby | Procento | Průměr
 Ano | Microsoft. Logic/integrationServiceEnvironments | IntegrationServiceEnvironmentConnectorProcessorUsage | Využití procesoru konektoru pro prostředí integrační služby | Procento | Průměr
 Ano | Microsoft. Logic/integrationServiceEnvironments | IntegrationServiceEnvironmentWorkflowMemoryUsage | Využití paměti workflowu pro prostředí integrační služby | Procento | Průměr
 Ano | Microsoft. Logic/integrationServiceEnvironments | IntegrationServiceEnvironmentWorkflowProcessorUsage | Využití procesoru pracovního postupu pro prostředí integrační služby | Procento | Průměr
 Ano | Microsoft. Logic/integrationServiceEnvironments | RunFailurePercentage | Procento selhání spuštění | Procento | Celkem
-Ano | Microsoft. Logic/integrationServiceEnvironments | RunLatency | Latence spuštění | Sekund | Průměr
+Ano | Microsoft. Logic/integrationServiceEnvironments | RunLatency | Latence běhu | Sekundy | Průměr
 Ano | Microsoft. Logic/integrationServiceEnvironments | RunsCancelled | Zrušené běhy | Počet | Celkem
 Ano | Microsoft. Logic/integrationServiceEnvironments | RunsCompleted | Dokončené běhy | Počet | Celkem
-Ano | Microsoft. Logic/integrationServiceEnvironments | RunsFailed | Neúspěšná spuštění | Počet | Celkem
+Ano | Microsoft. Logic/integrationServiceEnvironments | RunsFailed | Neúspěšné běhy | Počet | Celkem
 Ano | Microsoft. Logic/integrationServiceEnvironments | RunsStarted | Spuštěné běhy | Počet | Celkem
-Ano | Microsoft. Logic/integrationServiceEnvironments | RunsSucceeded | Úspěšná spuštění | Počet | Celkem
+Ano | Microsoft. Logic/integrationServiceEnvironments | RunsSucceeded | Úspěšné běhy | Počet | Celkem
 Ano | Microsoft. Logic/integrationServiceEnvironments | RunStartThrottledEvents | Spustit omezené události | Počet | Celkem
-Ano | Microsoft. Logic/integrationServiceEnvironments | RunSuccessLatency | Latence úspěšného spuštění | Sekund | Průměr
-Ano | Microsoft. Logic/integrationServiceEnvironments | RunThrottledEvents | Události omezeného spuštění | Počet | Celkem
-Ano | Microsoft. Logic/integrationServiceEnvironments | TriggerFireLatency | Latence požáru triggeru  | Sekund | Průměr
-Ano | Microsoft. Logic/integrationServiceEnvironments | TriggerLatency | Latence triggeru  | Sekund | Průměr
-Ano | Microsoft. Logic/integrationServiceEnvironments | TriggersCompleted | Aktivační události dokončeny  | Počet | Celkem
-Ano | Microsoft. Logic/integrationServiceEnvironments | TriggersFailed | Neúspěšná triggery  | Počet | Celkem
-Ano | Microsoft. Logic/integrationServiceEnvironments | TriggersFired | Aktivační události aktivovány  | Počet | Celkem
-Ano | Microsoft. Logic/integrationServiceEnvironments | TriggersSkipped | Aktivační události přeskočeny | Počet | Celkem
-Ano | Microsoft. Logic/integrationServiceEnvironments | TriggersStarted | Spuštěné aktivační události  | Počet | Celkem
+Ano | Microsoft. Logic/integrationServiceEnvironments | RunSuccessLatency | Latence úspěšných běhů | Sekundy | Průměr
+Ano | Microsoft. Logic/integrationServiceEnvironments | RunThrottledEvents | Omezené události běhu | Počet | Celkem
+Ano | Microsoft. Logic/integrationServiceEnvironments | TriggerFireLatency | Latence při vyvolání triggeru  | Sekundy | Průměr
+Ano | Microsoft. Logic/integrationServiceEnvironments | TriggerLatency | Latence triggeru  | Sekundy | Průměr
+Ano | Microsoft. Logic/integrationServiceEnvironments | TriggersCompleted | Dokončené triggery  | Počet | Celkem
+Ano | Microsoft. Logic/integrationServiceEnvironments | TriggersFailed | Neúspěšné triggery  | Počet | Celkem
+Ano | Microsoft. Logic/integrationServiceEnvironments | TriggersFired | Vyvolané triggery  | Počet | Celkem
+Ano | Microsoft. Logic/integrationServiceEnvironments | TriggersSkipped | Vynechané triggery | Počet | Celkem
+Ano | Microsoft. Logic/integrationServiceEnvironments | TriggersStarted | Spuštěné triggery  | Počet | Celkem
 Ano | Microsoft. Logic/integrationServiceEnvironments | TriggersSucceeded | Aktivační události byly úspěšné  | Počet | Celkem
-Ano | Microsoft. Logic/integrationServiceEnvironments | TriggerSuccessLatency | Latence úspěšnosti triggeru  | Sekund | Průměr
+Ano | Microsoft. Logic/integrationServiceEnvironments | TriggerSuccessLatency | Latence úspěšného triggeru  | Sekundy | Průměr
 Ano | Microsoft. Logic/integrationServiceEnvironments | TriggerThrottledEvents | Omezené události triggeru | Počet | Celkem
-Ano | Microsoft.Logic/workflows | ActionLatency | Latence akcí  | Sekund | Průměr
+Ano | Microsoft.Logic/workflows | ActionLatency | Latence akcí  | Sekundy | Průměr
 Ano | Microsoft.Logic/workflows | ActionsCompleted | Dokončené akce  | Počet | Celkem
 Ano | Microsoft.Logic/workflows | ActionsFailed | Neúspěšné akce  | Počet | Celkem
 Ano | Microsoft.Logic/workflows | ActionsSkipped | Vynechané akce  | Počet | Celkem
 Ano | Microsoft.Logic/workflows | ActionsStarted | Spuštěné akce  | Počet | Celkem
 Ano | Microsoft.Logic/workflows | ActionsSucceeded | Úspěšné akce  | Počet | Celkem
-Ano | Microsoft.Logic/workflows | ActionSuccessLatency | Latence úspěšných akcí  | Sekund | Průměr
+Ano | Microsoft.Logic/workflows | ActionSuccessLatency | Latence úspěšných akcí  | Sekundy | Průměr
 Ano | Microsoft.Logic/workflows | ActionThrottledEvents | Omezené události akcí | Počet | Celkem
-Ano | Microsoft.Logic/workflows | BillableActionExecutions | Fakturovatelné provádění akcí | Počet | Celkem
+Ano | Microsoft.Logic/workflows | BillableActionExecutions | Fakturovatelné operace provedení akce | Počet | Celkem
 Ano | Microsoft.Logic/workflows | BillableTriggerExecutions | Fakturovatelná spuštění triggerů | Počet | Celkem
 Ano | Microsoft.Logic/workflows | BillingUsageNativeOperation | Využití fakturace pro provádění nativních operací | Počet | Celkem
 Ano | Microsoft.Logic/workflows | BillingUsageNativeOperation | Využití fakturace pro provádění nativních operací | Počet | Celkem
@@ -951,25 +964,25 @@ Ano | Microsoft.Logic/workflows | BillingUsageStandardConnector | Využití fakt
 Ano | Microsoft.Logic/workflows | BillingUsageStorageConsumption | Využití fakturace pro provádění spotřeby úložiště | Počet | Celkem
 Ano | Microsoft.Logic/workflows | BillingUsageStorageConsumption | Využití fakturace pro provádění spotřeby úložiště | Počet | Celkem
 Ano | Microsoft.Logic/workflows | RunFailurePercentage | Procento selhání spuštění | Procento | Celkem
-Ano | Microsoft.Logic/workflows | RunLatency | Latence spuštění | Sekund | Průměr
+Ano | Microsoft.Logic/workflows | RunLatency | Latence běhu | Sekundy | Průměr
 Ano | Microsoft.Logic/workflows | RunsCancelled | Zrušené běhy | Počet | Celkem
 Ano | Microsoft.Logic/workflows | RunsCompleted | Dokončené běhy | Počet | Celkem
-Ano | Microsoft.Logic/workflows | RunsFailed | Neúspěšná spuštění | Počet | Celkem
+Ano | Microsoft.Logic/workflows | RunsFailed | Neúspěšné běhy | Počet | Celkem
 Ano | Microsoft.Logic/workflows | RunsStarted | Spuštěné běhy | Počet | Celkem
-Ano | Microsoft.Logic/workflows | RunsSucceeded | Úspěšná spuštění | Počet | Celkem
+Ano | Microsoft.Logic/workflows | RunsSucceeded | Úspěšné běhy | Počet | Celkem
 Ano | Microsoft.Logic/workflows | RunStartThrottledEvents | Spustit omezené události | Počet | Celkem
-Ano | Microsoft.Logic/workflows | RunSuccessLatency | Latence úspěšného spuštění | Sekund | Průměr
-Ano | Microsoft.Logic/workflows | RunThrottledEvents | Události omezeného spuštění | Počet | Celkem
-Ano | Microsoft.Logic/workflows | TotalBillableExecutions | Fakturovatelná spuštění celkem | Počet | Celkem
-Ano | Microsoft.Logic/workflows | TriggerFireLatency | Latence požáru triggeru  | Sekund | Průměr
-Ano | Microsoft.Logic/workflows | TriggerLatency | Latence triggeru  | Sekund | Průměr
-Ano | Microsoft.Logic/workflows | TriggersCompleted | Aktivační události dokončeny  | Počet | Celkem
-Ano | Microsoft.Logic/workflows | TriggersFailed | Neúspěšná triggery  | Počet | Celkem
-Ano | Microsoft.Logic/workflows | TriggersFired | Aktivační události aktivovány  | Počet | Celkem
-Ano | Microsoft.Logic/workflows | TriggersSkipped | Aktivační události přeskočeny | Počet | Celkem
-Ano | Microsoft.Logic/workflows | TriggersStarted | Spuštěné aktivační události  | Počet | Celkem
+Ano | Microsoft.Logic/workflows | RunSuccessLatency | Latence úspěšných běhů | Sekundy | Průměr
+Ano | Microsoft.Logic/workflows | RunThrottledEvents | Omezené události běhu | Počet | Celkem
+Ano | Microsoft.Logic/workflows | TotalBillableExecutions | Fakturovatelné operace provedení celkem | Počet | Celkem
+Ano | Microsoft.Logic/workflows | TriggerFireLatency | Latence při vyvolání triggeru  | Sekundy | Průměr
+Ano | Microsoft.Logic/workflows | TriggerLatency | Latence triggeru  | Sekundy | Průměr
+Ano | Microsoft.Logic/workflows | TriggersCompleted | Dokončené triggery  | Počet | Celkem
+Ano | Microsoft.Logic/workflows | TriggersFailed | Neúspěšné triggery  | Počet | Celkem
+Ano | Microsoft.Logic/workflows | TriggersFired | Vyvolané triggery  | Počet | Celkem
+Ano | Microsoft.Logic/workflows | TriggersSkipped | Vynechané triggery | Počet | Celkem
+Ano | Microsoft.Logic/workflows | TriggersStarted | Spuštěné triggery  | Počet | Celkem
 Ano | Microsoft.Logic/workflows | TriggersSucceeded | Aktivační události byly úspěšné  | Počet | Celkem
-Ano | Microsoft.Logic/workflows | TriggerSuccessLatency | Latence úspěšnosti triggeru  | Sekund | Průměr
+Ano | Microsoft.Logic/workflows | TriggerSuccessLatency | Latence úspěšného triggeru  | Sekundy | Průměr
 Ano | Microsoft.Logic/workflows | TriggerThrottledEvents | Omezené události triggeru | Počet | Celkem
 Ano | Microsoft.MachineLearningServices/workspaces | Aktivní jádra | Aktivní jádra | Počet | Průměr
 Ano | Microsoft.MachineLearningServices/workspaces | Aktivní uzly | Aktivní uzly | Počet | Průměr
@@ -1004,7 +1017,7 @@ Ano | Microsoft. Media/MediaServices | StreamingPolicyCount | Počet zásad stre
 Ano | Microsoft. Media/MediaServices | StreamingPolicyQuota | Kvóta zásad streamování | Počet | Průměr
 Ano | Microsoft. Media/MediaServices | StreamingPolicyQuotaUsedPercentage | Procento využité kvóty zásad streamování | Procento | Průměr
 Ano | Microsoft. Media/MediaServices/starají | Výchozí přenos dat | Výchozí přenos dat | B | Celkem
-Ano | Microsoft. Media/MediaServices/starají | Požadavky | Požadavky | Počet | Celkem
+Ano | Microsoft. Media/MediaServices/starají | Žádosti | Žádosti | Počet | Celkem
 Ano | Microsoft. Media/MediaServices/starají | SuccessE2ELatency | Koncová latence úspěch | Milisekundy | Průměr
 Ano | Microsoft. Microservices4Spring/appClusters | GCPauseTotalCount | Počet pozastavení GC | Počet | Celkem
 Ano | Microsoft. Microservices4Spring/appClusters | GCPauseTotalTime | Celkový čas pozastavení GC | Milisekundy | Celkem
@@ -1222,11 +1235,11 @@ Ano | Microsoft.OperationalInsights/workspaces | Average_% času DPC | % Času D
 Ano | Microsoft.OperationalInsights/workspaces | Average_ uzlů inode% Free | % Bezplatného uzlů inode | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Average_% volného místa | % Volného místa | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Average_% volného místa | % Volného místa | Počet | Průměr
-Ano | Microsoft.OperationalInsights/workspaces | Average_% času nečinnosti | % Času nečinnosti | Počet | Průměr
+Ano | Microsoft.OperationalInsights/workspaces | Average_% času nečinnosti | % času nečinnosti | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Average_% času přerušení | % Času přerušení | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Average_% času čekání na v/v | % Času čekání na v/v | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Average_% dobrý čas | % Dobrý čas | Počet | Průměr
-Ano | Microsoft.OperationalInsights/workspaces | Average_% privilegovaného času | % Privilegovaného času | Počet | Průměr
+Ano | Microsoft.OperationalInsights/workspaces | Average_% privilegovaného času | %privilegovaného času | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Average_% času procesoru | % Času procesoru | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Average_% času procesoru | % Času procesoru | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Average_% využití uzlů inode | % Použitého uzlů inode | Počet | Průměr
@@ -1260,8 +1273,8 @@ Ano | Microsoft.OperationalInsights/workspaces | Average_Free fyzická paměť |
 Ano | Microsoft.OperationalInsights/workspaces | Average_Free mezera v stránkovacích souborech | Volné místo ve stránkovacích souborech | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Average_Free virtuální paměti | Volná virtuální paměť | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Počet bajtů Average_Logical disku za sekundu | Bajtů logického disku/s | Počet | Průměr
-Ano | Microsoft.OperationalInsights/workspaces | Average_Page čtení za sekundu | Čtení stránek/s | Počet | Průměr
-Ano | Microsoft.OperationalInsights/workspaces | Zápisy Average_Page za sekundu | Zápisy stránek/s | Počet | Průměr
+Ano | Microsoft.OperationalInsights/workspaces | Average_Page čtení za sekundu | přečtené strany/s | Počet | Průměr
+Ano | Microsoft.OperationalInsights/workspaces | Zápisy Average_Page za sekundu | zapsané strany/s | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Average_Pages/s | Stránky/s | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Average_Pct privilegovaného času | Privilegovaný čas protokolu PCT | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Čas uživatele Average_Pct | Doba uživatele v protokolu PCT | Počet | Průměr
@@ -1284,9 +1297,9 @@ Ano | Microsoft.OperationalInsights/workspaces | Average_Used paměť v MB | Vyu
 Ano | Microsoft.OperationalInsights/workspaces | Average_Users | Uživatelé | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Average_Virtual sdílená paměť | Virtuální sdílená paměť | Počet | Průměr
 Ano | Microsoft.OperationalInsights/workspaces | Událost | Událost | Počet | Průměr
-Ano | Microsoft.OperationalInsights/workspaces | Signály | Signály | Počet | Celkem
-Ano | Microsoft.OperationalInsights/workspaces | Aktualizovat | Aktualizovat | Počet | Průměr
-Ano | Microsoft.PowerBIDedicated/capacities | memory_metric | Paměť | B | Průměr
+Ano | Microsoft.OperationalInsights/workspaces | Prezenční signál | Prezenční signál | Počet | Celkem
+Ano | Microsoft.OperationalInsights/workspaces | Aktualizace | Aktualizace | Počet | Průměr
+Ano | Microsoft.PowerBIDedicated/capacities | memory_metric | Memory (Paměť) | B | Průměr
 Ano | Microsoft.PowerBIDedicated/capacities | memory_thrashing_metric | Thrashing paměti (datové sady) | Procento | Průměr
 Ano | Microsoft.PowerBIDedicated/capacities | qpu_high_utilization_metric | QPU vysoké využití | Počet | Celkem
 Ano | Microsoft.PowerBIDedicated/capacities | QueryDuration | Doba trvání dotazu (datové sady) | Milisekundy | Průměr
@@ -1304,7 +1317,7 @@ Ne | Microsoft. Relay/obory názvů | SenderConnections-ServerError | SenderConn
 Ne | Microsoft. Relay/obory názvů | SenderConnections – úspěch | SenderConnections – úspěch | Počet | Celkem
 Ne | Microsoft. Relay/obory názvů | SenderConnections-TotalRequests | SenderConnections-TotalRequests | Počet | Celkem
 Ne | Microsoft. Relay/obory názvů | SenderDisconnects | SenderDisconnects | Počet | Celkem
-Ano | Microsoft.Search/searchServices | SearchLatency | Latence hledání | Sekund | Průměr
+Ano | Microsoft.Search/searchServices | SearchLatency | Latence hledání | Sekundy | Průměr
 Ano | Microsoft.Search/searchServices | SearchQueriesPerSecond | Hledání dotazů za sekundu | CountPerSecond | Průměr
 Ano | Microsoft.Search/searchServices | ThrottledSearchQueriesPercentage | Procento omezených vyhledávacích dotazů | Procento | Průměr
 Ne | Microsoft.ServiceBus/namespaces | ActiveConnections | ActiveConnections | Počet | Celkem
@@ -1367,7 +1380,7 @@ Ano | Microsoft.Sql/servers/databases | connection_successful | Úspěšná při
 Ano | Microsoft.Sql/servers/databases | cpu_limit | Limit procesoru | Počet | Průměr
 Ano | Microsoft.Sql/servers/databases | cpu_percent | Procento CPU | Procento | Průměr
 Ano | Microsoft.Sql/servers/databases | cpu_used | Využitý procesor | Počet | Průměr
-Ano | Microsoft.Sql/servers/databases | ukončení | Zablokování | Počet | Celkem
+Ano | Microsoft.Sql/servers/databases | zablokování | Zablokování | Počet | Celkem
 Ano | Microsoft.Sql/servers/databases | dtu_consumption_percent | Procento DTU | Procento | Průměr
 Ano | Microsoft.Sql/servers/databases | dtu_limit | Limit DTU | Počet | Průměr
 Ano | Microsoft.Sql/servers/databases | dtu_used | Využité DTU | Počet | Průměr
@@ -1416,13 +1429,13 @@ Ano | Microsoft.Sql/servers/elasticPools | tempdb_log_size | Velikost souboru pr
 Ano | Microsoft.Sql/servers/elasticPools | tempdb_log_used_percent | Použit protokol tempdb v procentech | Procento | Maximum
 Ano | Microsoft.Sql/servers/elasticPools | workers_percent | Procento pracovních procesů | Procento | Průměr
 Ano | Microsoft.Sql/servers/elasticPools | xtp_storage_percent | Procentuální hodnota úložiště OLTP v paměti | Procento | Průměr
-Ano | Microsoft.Storage/storageAccounts | Dostupnost | Dostupnost | Procento | Průměr
-Ano | Microsoft.Storage/storageAccounts | Výchozí přenos dat | Výchozí přenos dat | B | Celkem
-Ano | Microsoft.Storage/storageAccounts | Příchozí přenos dat | Příchozí přenos dat | B | Celkem
-Ano | Microsoft.Storage/storageAccounts | SuccessE2ELatency | Celková latence při úspěchu | Milisekundy | Průměr
-Ano | Microsoft.Storage/storageAccounts | SuccessServerLatency | Latence serveru při úspěchu | Milisekundy | Průměr
-Ano | Microsoft.Storage/storageAccounts | Transakce | Transakce | Počet | Celkem
-Ne | Microsoft.Storage/storageAccounts | UsedCapacity | Použitá kapacita | B | Průměr
+Ano | Microsoft.Storage/storageAccounts. | Dostupnost | Dostupnost | Procento | Průměr
+Ano | Microsoft.Storage/storageAccounts. | Výchozí přenos dat | Výchozí přenos dat | B | Celkem
+Ano | Microsoft.Storage/storageAccounts. | Příchozí přenos dat | Příchozí přenos dat | B | Celkem
+Ano | Microsoft.Storage/storageAccounts. | SuccessE2ELatency | Celková latence při úspěchu | Milisekundy | Průměr
+Ano | Microsoft.Storage/storageAccounts. | SuccessServerLatency | Latence serveru při úspěchu | Milisekundy | Průměr
+Ano | Microsoft.Storage/storageAccounts. | Transakce | Transakce | Počet | Celkem
+Ne | Microsoft.Storage/storageAccounts. | UsedCapacity | Použitá kapacita | B | Průměr
 Ano | Microsoft.Storage/storageAccounts/blobServices | Dostupnost | Dostupnost | Procento | Průměr
 Ne | Microsoft.Storage/storageAccounts/blobServices | BlobCapacity | Kapacita služby Blob | B | Průměr
 Ne | Microsoft.Storage/storageAccounts/blobServices | BlobCount | Počet objektů blob | Počet | Průměr
@@ -1510,14 +1523,14 @@ Ano | Microsoft.StreamAnalytics/streamingjobs | ConversionErrors | Chyby převod
 Ano | Microsoft.StreamAnalytics/streamingjobs | DeserializationError | Chyby deserializace vstupu | Počet | Celkem
 Ano | Microsoft.StreamAnalytics/streamingjobs | DroppedOrAdjustedEvents | Události mimo pořadí | Počet | Celkem
 Ano | Microsoft.StreamAnalytics/streamingjobs | EarlyInputEvents | Události předčasného vstupu | Počet | Celkem
-Ano | Microsoft.StreamAnalytics/streamingjobs | chyby | Chyby za běhu | Počet | Celkem
+Ano | Microsoft.StreamAnalytics/streamingjobs | Chyby | Chyby za běhu | Počet | Celkem
 Ano | Microsoft.StreamAnalytics/streamingjobs | InputEventBytes | Bajty vstupních událostí | B | Celkem
 Ano | Microsoft.StreamAnalytics/streamingjobs | InputEvents | Vstupní události | Počet | Celkem
 Ano | Microsoft.StreamAnalytics/streamingjobs | InputEventsSourcesBacklogged | Vstupní události v backlogu | Počet | Maximum
 Ano | Microsoft.StreamAnalytics/streamingjobs | InputEventsSourcesPerSecond | Přijaté vstupní zdroje | Počet | Celkem
 Ano | Microsoft.StreamAnalytics/streamingjobs | LateInputEvents | Pozdní vstupní události | Počet | Celkem
 Ano | Microsoft.StreamAnalytics/streamingjobs | OutputEvents | Výstupní události | Počet | Celkem
-Ano | Microsoft.StreamAnalytics/streamingjobs | OutputWatermarkDelaySeconds | Zpoždění vodoznaku | Sekund | Maximum
+Ano | Microsoft.StreamAnalytics/streamingjobs | OutputWatermarkDelaySeconds | Zpoždění vodoznaku | Sekundy | Maximum
 Ano | Microsoft.StreamAnalytics/streamingjobs | ResourceUtilization | % využití SU | Procento | Maximum
 Ano | Microsoft. VMwareCloudSimple/virtualMachines | Bajty čtení z disku | Bajty čtení z disku | B | Celkem
 Ano | Microsoft. VMwareCloudSimple/virtualMachines | Operace čtení z disku/s | Operace čtení z disku/s | CountPerSecond | Průměr
@@ -1539,15 +1552,15 @@ Ano | Microsoft. VMwareCloudSimple/virtualMachines | NetworkOutBytesPerSecond | 
 Ano | Microsoft. VMwareCloudSimple/virtualMachines | Procento CPU | Procento CPU | Procento | Průměr
 Ano | Microsoft. VMwareCloudSimple/virtualMachines | PercentageCpuReady | Procento připraveného procesoru | Milisekundy | Celkem
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | ActiveRequests | Aktivní požadavky | Počet | Celkem
-Ano | Microsoft.Web/hostingEnvironments/multiRolePools | AverageResponseTime | Průměrná doba odezvy | Sekund | Průměr
-Ano | Microsoft.Web/hostingEnvironments/multiRolePools | BytesReceived | Data v | B | Celkem
+Ano | Microsoft.Web/hostingEnvironments/multiRolePools | AverageResponseTime | Průměrný čas odezvy | Sekundy | Průměr
+Ano | Microsoft.Web/hostingEnvironments/multiRolePools | BytesReceived | Vstupní data | B | Celkem
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | BytesSent | Výstupní data | B | Celkem
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | CpuPercentage | Procento procesoru | Procento | Průměr
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | DiskQueueLength | Délka fronty disku | Počet | Průměr
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | Http101 | Http 101 | Počet | Celkem
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | Http2xx | Http 2xx | Počet | Celkem
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | Http3xx | Http 3xx | Počet | Celkem
-Ano | Microsoft.Web/hostingEnvironments/multiRolePools | Http401 | HTTP 401 | Počet | Celkem
+Ano | Microsoft.Web/hostingEnvironments/multiRolePools | Http401 | Http 401 | Počet | Celkem
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | Http403 | HTTP 403 | Počet | Celkem
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | Http404 | HTTP 404 | Počet | Celkem
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | Http406 | Http 406 | Počet | Celkem
@@ -1557,7 +1570,7 @@ Ano | Microsoft.Web/hostingEnvironments/multiRolePools | HttpQueueLength | Délk
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | LargeAppServicePlanInstances | Zaměstnanci s velkými App Servicey plánu | Počet | Průměr
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | MediumAppServicePlanInstances | Střední App Service plánování pracovních procesů | Počet | Průměr
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | MemoryPercentage | Procento paměti | Procento | Průměr
-Ano | Microsoft.Web/hostingEnvironments/multiRolePools | Požadavky | Požadavky | Počet | Celkem
+Ano | Microsoft.Web/hostingEnvironments/multiRolePools | Žádosti | Žádosti | Počet | Celkem
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | SmallAppServicePlanInstances | Plánování pracovníků malých App Service | Počet | Průměr
 Ano | Microsoft.Web/hostingEnvironments/multiRolePools | TotalFrontEnds | Celkový počet front-endy | Počet | Průměr
 Ano | Microsoft.Web/hostingEnvironments/workerPools | CpuPercentage | Procento procesoru | Procento | Průměr
@@ -1565,7 +1578,7 @@ Ano | Microsoft.Web/hostingEnvironments/workerPools | MemoryPercentage | Procent
 Ano | Microsoft.Web/hostingEnvironments/workerPools | WorkersAvailable | Zaměstnanci, kteří jsou k dispozici | Počet | Průměr
 Ano | Microsoft.Web/hostingEnvironments/workerPools | WorkersTotal | Celkový počet pracovníků | Počet | Průměr
 Ano | Microsoft.Web/hostingEnvironments/workerPools | WorkersUsed | Využívané pracovní procesy | Počet | Průměr
-Ano | Microsoft.Web/serverfarms | BytesReceived | Data v | B | Celkem
+Ano | Microsoft.Web/serverfarms | BytesReceived | Vstupní data | B | Celkem
 Ano | Microsoft.Web/serverfarms | BytesSent | Výstupní data | B | Celkem
 Ano | Microsoft.Web/serverfarms | CpuPercentage | Procento procesoru | Procento | Průměr
 Ano | Microsoft.Web/serverfarms | DiskQueueLength | Délka fronty disku | Počet | Průměr
@@ -1582,10 +1595,10 @@ Ano | Microsoft.Web/serverfarms | TcpSynSent | Odesláno TCP syn | Počet | Prů
 Ano | Microsoft.Web/serverfarms | TcpTimeWait | Doba čekání protokolu TCP | Počet | Průměr
 Ano | Microsoft.Web/sites | AppConnections | Připojení | Počet | Průměr
 Ano | Microsoft.Web/sites | AverageMemoryWorkingSet | Průměrná pracovní sada paměti | B | Průměr
-Ano | Microsoft.Web/sites | AverageResponseTime | Průměrná doba odezvy | Sekund | Průměr
-Ano | Microsoft.Web/sites | BytesReceived | Data v | B | Celkem
+Ano | Microsoft.Web/sites | AverageResponseTime | Průměrný čas odezvy | Sekundy | Průměr
+Ano | Microsoft.Web/sites | BytesReceived | Vstupní data | B | Celkem
 Ano | Microsoft.Web/sites | BytesSent | Výstupní data | B | Celkem
-Ano | Microsoft.Web/sites | CpuTime | Čas procesoru | Sekund | Celkem
+Ano | Microsoft.Web/sites | CpuTime | Čas procesoru | Sekundy | Celkem
 Ano | Microsoft.Web/sites | CurrentAssemblies | Aktuální sestavení | Počet | Průměr
 Ano | Microsoft.Web/sites | FunctionExecutionCount | Počet spuštění funkce | Počet | Celkem
 Ano | Microsoft.Web/sites | FunctionExecutionUnits | Jednotky spuštění funkce | Počet | Celkem
@@ -1597,13 +1610,13 @@ Ano | Microsoft.Web/sites | HealthCheckStatus | Stav kontroly stavu | Počet | P
 Ano | Microsoft.Web/sites | Http101 | Http 101 | Počet | Celkem
 Ano | Microsoft.Web/sites | Http2xx | Http 2xx | Počet | Celkem
 Ano | Microsoft.Web/sites | Http3xx | Http 3xx | Počet | Celkem
-Ano | Microsoft.Web/sites | Http401 | HTTP 401 | Počet | Celkem
+Ano | Microsoft.Web/sites | Http401 | Http 401 | Počet | Celkem
 Ano | Microsoft.Web/sites | Http403 | HTTP 403 | Počet | Celkem
 Ano | Microsoft.Web/sites | Http404 | HTTP 404 | Počet | Celkem
 Ano | Microsoft.Web/sites | Http406 | Http 406 | Počet | Celkem
 Ano | Microsoft.Web/sites | Http4xx | Http 4xx | Počet | Celkem
 Ano | Microsoft.Web/sites | Http5xx | Chyby serveru http | Počet | Celkem
-Ano | Microsoft.Web/sites | HttpResponseTime | Doba odezvy | Sekund | Průměr
+Ano | Microsoft.Web/sites | HttpResponseTime | Doba odezvy | Sekundy | Průměr
 Ano | Microsoft.Web/sites | IoOtherBytesPerSecond | IO – ostatní bajty za sekundu | BytesPerSecond | Celkem
 Ano | Microsoft.Web/sites | IoOtherOperationsPerSecond | V/v – ostatní operace za sekundu | BytesPerSecond | Celkem
 Ano | Microsoft.Web/sites | IoReadBytesPerSecond | Bajty čtení v/v za sekundu | BytesPerSecond | Celkem
@@ -1612,17 +1625,17 @@ Ano | Microsoft.Web/sites | IoWriteBytesPerSecond | Vstupně-výstupní bajty z�
 Ano | Microsoft.Web/sites | IoWriteOperationsPerSecond | Vstupně-výstupní operace zápisu za sekundu | BytesPerSecond | Celkem
 Ano | Microsoft.Web/sites | MemoryWorkingSet | Pracovní sada paměti | B | Průměr
 Ano | Microsoft.Web/sites | PrivateBytes | Soukromé bajty | B | Průměr
-Ano | Microsoft.Web/sites | Požadavky | Požadavky | Počet | Celkem
+Ano | Microsoft.Web/sites | Žádosti | Žádosti | Počet | Celkem
 Ano | Microsoft.Web/sites | RequestsInApplicationQueue | Žádosti ve frontě aplikací | Počet | Průměr
 Ano | Microsoft.Web/sites | Vlákna | Počet vláken | Počet | Průměr
 Ano | Microsoft.Web/sites | TotalAppDomains | Celkový počet domén aplikace | Počet | Průměr
 Ano | Microsoft.Web/sites | TotalAppDomainsUnloaded | Celkový počet uvolněných domén aplikace | Počet | Průměr
 Ano | Microsoft.Web/sites/slots | AppConnections | Připojení | Počet | Průměr
 Ano | Microsoft.Web/sites/slots | AverageMemoryWorkingSet | Průměrná pracovní sada paměti | B | Průměr
-Ano | Microsoft.Web/sites/slots | AverageResponseTime | Průměrná doba odezvy | Sekund | Průměr
-Ano | Microsoft.Web/sites/slots | BytesReceived | Data v | B | Celkem
+Ano | Microsoft.Web/sites/slots | AverageResponseTime | Průměrný čas odezvy | Sekundy | Průměr
+Ano | Microsoft.Web/sites/slots | BytesReceived | Vstupní data | B | Celkem
 Ano | Microsoft.Web/sites/slots | BytesSent | Výstupní data | B | Celkem
-Ano | Microsoft.Web/sites/slots | CpuTime | Čas procesoru | Sekund | Celkem
+Ano | Microsoft.Web/sites/slots | CpuTime | Čas procesoru | Sekundy | Celkem
 Ano | Microsoft.Web/sites/slots | CurrentAssemblies | Aktuální sestavení | Počet | Průměr
 Ano | Microsoft.Web/sites/slots | FunctionExecutionCount | Počet spuštění funkce | Počet | Celkem
 Ano | Microsoft.Web/sites/slots | FunctionExecutionUnits | Jednotky spuštění funkce | Počet | Celkem
@@ -1634,13 +1647,13 @@ Ano | Microsoft.Web/sites/slots | HealthCheckStatus | Stav kontroly stavu | Poč
 Ano | Microsoft.Web/sites/slots | Http101 | Http 101 | Počet | Celkem
 Ano | Microsoft.Web/sites/slots | Http2xx | Http 2xx | Počet | Celkem
 Ano | Microsoft.Web/sites/slots | Http3xx | Http 3xx | Počet | Celkem
-Ano | Microsoft.Web/sites/slots | Http401 | HTTP 401 | Počet | Celkem
+Ano | Microsoft.Web/sites/slots | Http401 | Http 401 | Počet | Celkem
 Ano | Microsoft.Web/sites/slots | Http403 | HTTP 403 | Počet | Celkem
 Ano | Microsoft.Web/sites/slots | Http404 | HTTP 404 | Počet | Celkem
 Ano | Microsoft.Web/sites/slots | Http406 | Http 406 | Počet | Celkem
 Ano | Microsoft.Web/sites/slots | Http4xx | Http 4xx | Počet | Celkem
 Ano | Microsoft.Web/sites/slots | Http5xx | Chyby serveru http | Počet | Celkem
-Ano | Microsoft.Web/sites/slots | HttpResponseTime | Doba odezvy | Sekund | Průměr
+Ano | Microsoft.Web/sites/slots | HttpResponseTime | Doba odezvy | Sekundy | Průměr
 Ano | Microsoft.Web/sites/slots | IoOtherBytesPerSecond | IO – ostatní bajty za sekundu | BytesPerSecond | Celkem
 Ano | Microsoft.Web/sites/slots | IoOtherOperationsPerSecond | V/v – ostatní operace za sekundu | BytesPerSecond | Celkem
 Ano | Microsoft.Web/sites/slots | IoReadBytesPerSecond | Bajty čtení v/v za sekundu | BytesPerSecond | Celkem
@@ -1649,7 +1662,7 @@ Ano | Microsoft.Web/sites/slots | IoWriteBytesPerSecond | Vstupně-výstupní ba
 Ano | Microsoft.Web/sites/slots | IoWriteOperationsPerSecond | Vstupně-výstupní operace zápisu za sekundu | BytesPerSecond | Celkem
 Ano | Microsoft.Web/sites/slots | MemoryWorkingSet | Pracovní sada paměti | B | Průměr
 Ano | Microsoft.Web/sites/slots | PrivateBytes | Soukromé bajty | B | Průměr
-Ano | Microsoft.Web/sites/slots | Požadavky | Požadavky | Počet | Celkem
+Ano | Microsoft.Web/sites/slots | Žádosti | Žádosti | Počet | Celkem
 Ano | Microsoft.Web/sites/slots | RequestsInApplicationQueue | Žádosti ve frontě aplikací | Počet | Průměr
 Ano | Microsoft.Web/sites/slots | Vlákna | Počet vláken | Počet | Průměr
 Ano | Microsoft.Web/sites/slots | TotalAppDomains | Celkový počet domén aplikace | Počet | Průměr

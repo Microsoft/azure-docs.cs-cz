@@ -1,6 +1,6 @@
 ---
-title: Seznam zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal | Dokumentace Microsoftu
-description: Zjistěte, jak zobrazit seznam uživatelů, skupin, instančních objektů a spravovaných identit, které mají odepřený přístup ke konkrétním prostředku akce v konkrétní rozsahy pomocí webu Azure portal.
+title: Vypíše přiřazení zamítnutí pro prostředky Azure s Azure Portal.
+description: Naučte se, jak zobrazit seznam uživatelů, skupin, instančních objektů a spravovaných identit, kterým byl odepřen přístup ke konkrétním akcím prostředků Azure v určitých oborech pomocí Azure Portal.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,100 +14,100 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 21ffb1a2539a2e724a91dd3b2818270a5e573ef8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4db76e5c6191457346ca1f95678cf73843334d3b
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67127490"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77137427"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Seznam zamítnout přiřazení pro prostředky Azure pomocí webu Azure portal
+# <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Vypsat přiřazení zamítnutí pro prostředky Azure pomocí Azure Portal
 
-[Zamítnout přiřazení](deny-assignments.md) zablokuje uživatelům možnost provádět akce konkrétních prostředků Azure i v případě přiřazení role uděluje přístup. Tento článek popisuje, jak zobrazit seznam zamítnout přiřazení pomocí webu Azure portal.
+[Odmítnutí přiřazení](deny-assignments.md) zablokuje uživatelům, aby prováděli konkrétní akce prostředku Azure i v případě, že jim přiřazením role udělí přístup. Tento článek popisuje, jak vypsat přiřazení zamítnutí pomocí Azure Portal.
 
 > [!NOTE]
-> Nelze přímo vytvořit vlastní zamítnout přiřazení. Informace o tom, zakáže se vytvoří přiřazení, najdete v části [zamítnout přiřazení](deny-assignments.md).
+> Nemůžete přímo vytvořit vlastní přiřazení zamítnutí. Informace o tom, jak se vytvářejí přiřazení odepřít, najdete v tématu [zamítnutí](deny-assignments.md)přiřazení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud chcete získat informace o přiřazení odepřít, musíte mít:
+Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následující:
 
-- `Microsoft.Authorization/denyAssignments/read` oprávnění, která je obsažena ve většině [předdefinované role pro prostředky Azure](built-in-roles.md).
+- `Microsoft.Authorization/denyAssignments/read` oprávnění, které je součástí většiny [předdefinovaných rolí pro prostředky Azure](built-in-roles.md).
 
-## <a name="list-deny-assignments"></a>Seznam zamítnout přiřazení
+## <a name="list-deny-assignments"></a>Zobrazení seznamu zamítnutých přiřazení
 
-Postupujte podle těchto kroků seznamu Odepřít přiřazení v oboru předplatného nebo správu skupiny.
+Pomocí těchto kroků můžete vypsat přiřazení zamítnutí v oboru předplatného nebo skupiny pro správu.
 
-1. Na webu Azure Portal, klikněte na tlačítko **všechny služby** a potom **skupin pro správu** nebo **předplatná**.
+1. V Azure Portal klikněte na **všechny služby** a pak na **skupiny pro správu** nebo **odběry**.
 
-1. Klikněte na skupinu pro správu nebo předplatného, které chcete zobrazit seznam.
+1. Klikněte na skupinu pro správu nebo na předplatné, které chcete zobrazit.
 
-1. Klikněte na tlačítko **řízení přístupu (IAM)** .
+1. Klikněte na **Řízení přístupu (IAM)** .
 
-1. Klikněte na tlačítko **zamítnout přiřazení** kartu (nebo klikněte na tlačítko **zobrazení** tlačítka pro zobrazení odepřít dlaždici přiřazení).
+1. Klikněte na kartu **Odepřít přiřazení** (nebo klikněte na tlačítko **Zobrazit** na dlaždici zobrazit přiřazení odepřít).
 
-    Pokud jsou všechny zamítnout přiřazení v tomto oboru nebo zděděné do tohoto oboru, budou uvedené.
+    Pokud jsou v tomto oboru k dispozici nějaká přiřazení odepřít nebo zděděná do tohoto oboru, budou uvedena.
 
-    ![Řízení přístupu – odepřít kartu přiřazení](./media/deny-assignments-portal/access-control-deny-assignments.png)
+    ![Řízení přístupu – karta zamítnutí přiřazení](./media/deny-assignments-portal/access-control-deny-assignments.png)
 
-1. Chcete-li zobrazit další sloupce, klikněte na tlačítko **upravit sloupce**.
+1. Chcete-li zobrazit další sloupce, klikněte na tlačítko **Upravit sloupce**.
 
-    ![Zamítnout přiřazení – sloupce](./media/deny-assignments-portal/deny-assignments-columns.png)
-
-    |  |  |
-    | --- | --- |
-    | **Název** | Název přiřazení odepřít. |
-    | **Typ objektu zabezpečení** | Uživatele, skupiny definované v systému nebo instanční objekt služby. |
-    | **Byl odepřen**  | Název objektu zabezpečení, který je součástí přiřazení odepřít. |
-    | **ID** | Jedinečný identifikátor pro přiřazení odepřít. |
-    | **Vyloučené objekty zabezpečení** | Ať už jsou objekty zabezpečení, které jsou vyloučené z přiřazení odepřít. |
-    | **Nevztahuje se na podřízené položky** | Určuje, zda je subscopes zděděné přiřazení odepřít. |
-    | **Systému chráněné** | Určuje, zda je přiřazení odepřít spravuje Azure. V současné době vždy Ano. |
-    | **Rozsah** | Skupina pro správu, předplatné, skupinu prostředků nebo prostředek. |
-
-1. Pro žádnou z povolených položek přidat značka zaškrtnutí a pak klikněte na **OK** k zobrazení vybraných sloupcích.
-
-## <a name="list-details-about-a-deny-assignment"></a>Seznam podrobností o přiřazení Odepřít
-
-Následující postup k seznamu další podrobnosti o přiřazení odepřít.
-
-1. Otevřít **zamítnout přiřazení** podokně, jak je popsáno v předchozí části.
-
-1. Klikněte na název přiřazení odepřít otevřete **uživatelé** okno.
-
-    ![Zamítnout přiřazení – uživatelé](./media/deny-assignments-portal/deny-assignment-users.png)
-
-    **Uživatelé** okno obsahuje následující dvě části.
+    ![Odepřít přiřazení – sloupce](./media/deny-assignments-portal/deny-assignments-columns.png)
 
     |  |  |
     | --- | --- |
-    | **Zamítnout přiřazení platí pro**  | Objekty zabezpečení, pro které platí přiřazení odepřít. |
-    | **Odepřít vyloučí přiřazení** | Objekty zabezpečení, které jsou vyloučené z přiřazení odepřít. |
+    | **Název** | Název přiřazení zamítnutí. |
+    | **Typ objektu zabezpečení** | Uživatel, skupina, systémově definované skupiny nebo instanční objekt. |
+    | **Odepřen**  | Název objektu zabezpečení, který je zahrnutý v přiřazení zamítnutí. |
+    | **ID** | Jedinečný identifikátor pro přiřazení zamítnutí. |
+    | **Vyloučené objekty zabezpečení** | Zda existují objekty zabezpečení, které jsou vyloučeny z přiřazení zamítnutí. |
+    | **Neplatí pro podřízené položky** | Zda je přiřazení zamítnutí děděno do podoborů. |
+    | **Chráněno systémem** | Zda je přiřazení zamítnuto spravováno službou Azure. V současné době vždycky Ano. |
+    | **Rozsah** | Skupina pro správu, předplatné, skupina prostředků nebo prostředek. |
 
-    **Objekt zabezpečení definovaných systémem** představuje všechny uživatele, skupiny, instančních objektů a spravovaných identit v adresáři Azure AD.
+1. Přidejte značku zaškrtnutí na kteroukoli z povolených položek a potom kliknutím na tlačítko **OK** Zobrazte vybrané sloupce.
 
-1. Chcete-li zobrazit seznam oprávnění, které jsou zamítnuty, klikněte na tlačítko **odepření oprávnění**.
+## <a name="list-details-about-a-deny-assignment"></a>Vypíše podrobnosti o přiřazení zamítnutí.
 
-    ![Zamítnout přiřazení – odepření oprávnění](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
+Pomocí následujícího postupu můžete zobrazit další podrobnosti o přiřazení zamítnutí.
+
+1. Otevřete podokno **zamítnout přiřazení** , jak je popsáno v předchozí části.
+
+1. Kliknutím na název přiřazení odepřít otevřete okno **Uživatelé** .
+
+    ![Odepřít přiřazení – uživatelé](./media/deny-assignments-portal/deny-assignment-users.png)
+
+    Okno **Uživatelé** obsahuje následující dvě části.
+
+    |  |  |
+    | --- | --- |
+    | **Přiřazení zamítnutí platí pro**  | Objekty zabezpečení, na které se vztahuje přiřazení zamítnutí. |
+    | **Zakázané přiřazení – vyloučení** | Objekty zabezpečení, které jsou vyloučeny z přiřazení zamítnutí. |
+
+    **Systémově definovaný objekt zabezpečení** představuje všechny uživatele, skupiny, instanční objekty a spravované identity v adresáři Azure AD.
+
+1. Pokud chcete zobrazit seznam oprávnění, která jsou odepřená, klikněte na **Odepřít oprávnění**.
+
+    ![Zamítnutí přiřazení – Odepřená oprávnění](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
     | Typ akce | Popis |
     | --- | --- |
-    | **Akce**  | Odepřen operace správy. |
-    | **notActions** | Operace správy vyloučeny z odepřen operace správy. |
-    | **DataActions**  | Odepřen operace s daty. |
-    | **NotDataActions** | Operace s daty vyloučené z odepřen datové operace. |
+    | **Akce**  | Operace správy se zamítly. |
+    | **NotActions** | Operace správy vyloučené z operace odepřené správy |
+    | **Akce dataactions**  | Operace s daty se zamítly. |
+    | **NotDataActions** | Datové operace vyloučené z operace odepření dat |
 
-    Například je znázorněno na předchozím snímku obrazovky tady jsou platná oprávnění:
+    Pro příklad uvedený na předchozím snímku obrazovky jsou následující skutečná oprávnění:
 
-    - Veškeré součásti úložiště, které operace v rovině dat byl odepřen, s výjimkou pro výpočetní operace.
+    - Všechny operace úložiště na rovině dat jsou odepřeny s výjimkou výpočetních operací.
 
-1. Pokud chcete zobrazit vlastnosti pro přiřazení odepřít, klikněte na **vlastnosti**.
+1. Chcete-li zobrazit vlastnosti přiřazení odepřít, klikněte na tlačítko **vlastnosti**.
 
-    ![Zamítnout přiřazení – vlastnosti](./media/deny-assignments-portal/deny-assignment-properties.png)
+    ![Odepřít přiřazení – vlastnosti](./media/deny-assignments-portal/deny-assignment-properties.png)
 
-    Na **vlastnosti** okně uvidíte název přiřazení odepřít, ID, popis a obor. **Se nevztahuje na podřízené položky** přepínač označuje, zda je subscopes zděděné přiřazení odepřít. **Systému chráněného** přepínač označuje, jestli to zamítnout přiřazení spravuje Azure. V současné době je **Ano** ve všech případech.
+    V okně **vlastnosti** můžete zobrazit název, ID, popis a rozsah přiřazení zamítnutí. Přepínač **neplatí pro podřízené objekty** označuje, zda je přiřazení zamítnutí děděno do podoborů. Přepínač **chráněný systémem** označuje, jestli se toto přiřazení zamítnutí spravuje v Azure. V současné době je to u všech případů **Ano** .
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* [Vysvětlení zamítnout přiřazení pro prostředky Azure](deny-assignments.md)
-* [Seznam zamítnout přiřazení pro prostředky Azure pomocí Azure Powershellu](deny-assignments-powershell.md)
+* [Pochopení přiřazení zamítnutí pro prostředky Azure](deny-assignments.md)
+* [Vypsat přiřazení zamítnutí pro prostředky Azure pomocí Azure PowerShell](deny-assignments-powershell.md)

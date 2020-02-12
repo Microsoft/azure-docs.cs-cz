@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: f079071a88d034dfd279da8656da517b934275a3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 77e6ab588f74c8b810f211e069c1c24043155111
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982103"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132842"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Referenční architektura Azure DevTest Labs pro podniky
 Tento článek popisuje referenční architekturu, která vám může pomáhat s nasazením řešení na základě Azure DevTest Labs v podniku. Zahrnuje následující:
@@ -41,7 +41,7 @@ Toto jsou klíčové prvky referenční architektury:
     - Chcete vynutit veškerý síťový provoz v cloudovém prostředí a z něj prostřednictvím místní brány firewall pro zabezpečení/dodržování předpisů.
 - **Skupiny zabezpečení sítě**: běžný způsob, jak omezit provoz do cloudového prostředí (nebo v cloudovém prostředí) založeného na zdrojové a cílové IP adrese, je použití [skupiny zabezpečení sítě](../virtual-network/security-overview.md). Například chcete v sítích testovacího prostředí, které pocházejí z podnikové sítě, umožňovat pouze provoz.
 - **Brána vzdálené plochy**: podniky obvykle blokují odchozí připojení ke vzdálené ploše v podnikové bráně firewall. Existuje několik možností, jak povolit připojení ke cloudovém prostředí v DevTest Labs, včetně těchto:
-  - Použijte [bránu Vzdálená plocha](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)a seznam povolených statických IP adres nástroje pro vyrovnávání zatížení brány.
+  - Použijte [bránu Vzdálená plocha](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)a povolte statickou IP adresu nástroje pro vyrovnávání zatížení brány.
   - [Nasměrujte veškerý příchozí provoz protokolu RDP](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) prostřednictvím připojení ExpressRoute/site-to-Site VPN. Tato funkce je běžně zvážena v případě, že podniky naplánují nasazení DevTest Labs.
 - **Síťové služby (virtuální sítě, podsítě)** : síťová topologie [Azure](../networking/networking-overview.md) je další klíčovým prvkem v architektuře DevTest Labs. Řídí, jestli prostředky z testovacího prostředí můžou komunikovat a mít přístup k místnímu a Internetu. Náš diagram architektury zahrnuje nejběžnější způsoby, jak zákazníci používají DevTest Labs: všechny laboratoře se připojují prostřednictvím [partnerského vztahu virtuálních sítí](../virtual-network/virtual-network-peering-overview.md) pomocí [modelu](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) hvězdicové sítě pro připojení VPN typu ExpressRoute/site-to-site k místnímu umístění. DevTest Labs ale používá Azure Virtual Network přímo, takže neexistují žádná omezení způsobu nastavení síťové infrastruktury.
 - **DevTest Labs**: DevTest Labs je klíčovou součástí celkové architektury. Další informace o této službě najdete v tématu [o DevTest Labs](devtest-lab-overview.md).
@@ -50,7 +50,7 @@ Toto jsou klíčové prvky referenční architektury:
 ## <a name="scalability-considerations"></a>Aspekty zabezpečení
 I když DevTest Labs nemá předdefinované kvóty nebo limity, další prostředky Azure, které se používají při typickém provozu testovacího prostředí, mají [kvóty na úrovni předplatného](../azure-resource-manager/management/azure-subscription-service-limits.md). V typickém podnikovém nasazení tedy budete potřebovat několik předplatných Azure, které pokrývají velké nasazení DevTest Labs. K kvótám, které se v podnicích nejčastěji dosahují:
 
-- **Skupiny prostředků**: ve výchozí konfiguraci vytvoří DevTest Labs skupinu prostředků pro každý nový virtuální počítač, nebo uživatel vytvoří prostředí pomocí služby. Předplatná můžou obsahovat [až 980 skupin prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). To znamená, že se jedná o limit virtuálních počítačů a prostředí v rámci předplatného. Existují dvě další konfigurace, které byste měli zvážit:
+- **Skupiny prostředků**: ve výchozí konfiguraci vytvoří DevTest Labs skupinu prostředků pro každý nový virtuální počítač, nebo uživatel vytvoří prostředí pomocí služby. Předplatná můžou obsahovat [až 980 skupin prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits). To znamená, že se jedná o limit virtuálních počítačů a prostředí v rámci předplatného. Existují dvě další konfigurace, které byste měli zvážit:
     - **[Všechny virtuální počítače jdou do stejné skupiny prostředků](resource-group-control.md)** : i když vám tato instalace pomůže splnit omezení skupiny prostředků, ovlivňuje omezení typu prostředku podle prostředků.
     - **Použití sdílených veřejných IP adres**: všechny virtuální počítače se stejnou velikostí a oblastí jdou do stejné skupiny prostředků. Tato konfigurace je střední deska mezi kvótami skupin prostředků a kvótami typu prostředku a skupiny prostředků, pokud mají virtuální počítače povoleno mít veřejné IP adresy.
 - **Prostředky na skupinu prostředků na typ prostředku**: výchozí limit pro [prostředky na skupinu prostředků na typ prostředku je 800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits).  Když použijete *všechny virtuální počítače ve stejné konfiguraci skupiny prostředků* , uživatelé budou mít tento limit předplatného mnohem dřív, zejména v případě, že virtuální počítače mají mnoho dalších disků.
@@ -68,7 +68,7 @@ DevTest Labs má skvělé administrativní uživatelské rozhraní pro práci s 
 
 Je důležité si uvědomit, že DevTest Labs používá základní prostředky Azure, které jsou spravované stejným způsobem: sítě, disky, výpočetní prostředky a tak dále. Například Azure Policy platí pro virtuální počítače, které jsou vytvořeny v testovacím prostředí. Azure Security Center může hlásit dodržování předpisů virtuálních počítačů. A služba Azure Backup může poskytovat pravidelné zálohování pro virtuální počítače v testovacím prostředí.
 
-## <a name="security-considerations"></a>Informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 Azure DevTest Labs používá existující prostředky v Azure (výpočty, sítě a tak dále). Proto automaticky přináší výhody funkcí zabezpečení, které jsou součástí platformy. Pokud třeba chcete, aby příchozí připojení ke vzdálené ploše vycházela jenom z podnikové sítě, stačí přidat skupinu zabezpečení sítě do virtuální sítě v bráně Vzdálená plocha. Jediným dalším aspektem zabezpečení je úroveň oprávnění, která udělujete členům týmu, kteří používají cvičení na každodenní bázi. Nejběžnějšími oprávněními jsou [ *vlastník* a *uživatel*](devtest-lab-add-devtest-user.md). Další informace o těchto rolích najdete [v tématu Přidání vlastníků a uživatelů v Azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,5 +1,5 @@
 ---
-title: Přidání přiřazení rolí pomocí Azure RBAC a Azure Resource Manager šablon
+title: Přidání přiřazení rolí se šablonami RBAC a Azure Resource Manager
 description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí řízení přístupu na základě role (RBAC) Azure a šablon Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aeb4bfbc40196575e2cb812738a9ab5de991d2aa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9f817880f938f5d03024e3aacd9b84817a5ac721
+ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981022"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77138288"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Přidání přiřazení rolí pomocí Azure RBAC a Azure Resource Manager šablon
 
@@ -64,7 +64,7 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="add-a-role-assignment"></a>Přidat přiřazení role
+## <a name="add-a-role-assignment"></a>Přidání přiřazení role
 
 Pokud chcete udělit přístup, přidejte přiřazení role ve RBAC.
 
