@@ -12,7 +12,7 @@ ms.custom: seodc18
 ms.date: 03/04/2019
 ms.openlocfilehash: 4907166c392172d243d2d8bb424d9cfd3c8441b2
 ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2020
 ms.locfileid: "77150404"

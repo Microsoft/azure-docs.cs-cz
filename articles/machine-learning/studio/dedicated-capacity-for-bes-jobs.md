@@ -12,7 +12,7 @@ ms.custom: seodec18, previous-title='Dedicated capacity for batch execution serv
 ms.date: 04/19/2017
 ms.openlocfilehash: c1a7f44539d07761814f5cb3d7074c9428423154
 ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2020
 ms.locfileid: "77153532"
