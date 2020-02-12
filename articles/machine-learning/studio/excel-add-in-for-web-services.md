@@ -12,7 +12,7 @@ ms.custom: seodec18
 ms.date: 02/01/2018
 ms.openlocfilehash: f7b5ca7112a6fb79586dc66b385e8015fe10e0b0
 ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2020
 ms.locfileid: "77153447"

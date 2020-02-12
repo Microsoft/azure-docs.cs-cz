@@ -16,7 +16,7 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: 802d97e2c9b64fd9d8caeaf479af3f4aec356607
 ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2020
 ms.locfileid: "77153124"

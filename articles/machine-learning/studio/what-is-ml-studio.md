@@ -13,7 +13,7 @@ ms.topic: overview
 ms.date: 10/17/2019
 ms.openlocfilehash: 07629a17492d0c898bbd76aeeab6c84cf39b4b55
 ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2020
 ms.locfileid: "77152699"
