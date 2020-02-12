@@ -22,14 +22,14 @@ ms.locfileid: "76938316"
 **Jižní**
 * Brazílie – jih
 * Střední Kanada
-* Střední USA
-* Východ USA
-* Východ USA 2
-* Středoseverní USA
-* Středojižní USA
-* Středozápadní USA
-* Západní USA
-* Západní USA 2
+* USA – střed
+* USA – východ
+* USA – východ 2
+* USA – středosever
+* USA – středojih
+* USA – středozápad
+* USA – západ
+* USA – západ 2
 
 **Evropa**
 * Francie – střed

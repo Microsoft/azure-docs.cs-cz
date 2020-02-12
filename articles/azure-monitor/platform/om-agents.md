@@ -45,16 +45,16 @@ Než začnete, přečtěte si následující požadavky.
 * Pomocí účtu, který je členem [role přispěvatel Log Analytics](manage-access.md#manage-access-using-azure-permissions), se ověříte na Azure.
 
 * Podporované oblasti: System Center Operations Manager pro připojení k pracovnímu prostoru Log Analytics podporuje jenom následující oblasti Azure:
-    - Středozápadní USA
+    - USA – středozápad
     - Austrálie – jihovýchod
     - Západní Evropa
-    - Východní USA
+    - USA – východ
     - Jihovýchodní Asie
     - Japonsko – východ
     - Spojené království – jih
-    - Střed Indie
+    - Indie – střed
     - Střední Kanada
-    - Západní USA 2
+    - USA – západ 2
 
 >[!NOTE]
 >Nedávné změny rozhraní API Azure znemožní zákazníkům úspěšně konfigurovat integraci mezi skupinou pro správu a Azure Monitor pro první spuštění. Pro zákazníky, kteří již mají integrovanou skupinu pro správu se službou, nebudete mít vliv na to, pokud nebudete muset překonfigurovat existující připojení.  

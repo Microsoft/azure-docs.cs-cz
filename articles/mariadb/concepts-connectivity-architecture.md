@@ -37,12 +37,12 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | Brazílie – jih | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Střední Kanada |40.85.224.249  |
 | Východní Kanada | 40.86.226.166    |
-| Střední USA | 23.99.160.139, 13.67.215.62   |
+| USA – střed | 23.99.160.139, 13.67.215.62   |
 | Čína – východ 2 | 40.73.82.1  |
 | Čína – sever 2 | 40.73.50.0     |
 | Východní Asie | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     |
-| Východní USA | 40.121.158.30, 191.238.6.43  |
-| Východ USA 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
+| USA – východ | 40.121.158.30, 191.238.6.43  |
+| USA – východ 2 |40.79.84.180, 191.239.224.107, 52.177.185.181   |
 | Francie – střed | 40.79.137.0, 40.79.129.1  |
 | Německo – střed | 51.4.144.100     |
 | Německo – sever východ | 51.5.144.179  |
@@ -53,20 +53,20 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | Japonsko – západ | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | Korea – střed | 52.231.32.42   |
 | Korea – jih | 52.231.200.86    |
-| Středoseverní USA | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
+| USA – středosever | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
 | Severní Evropa | 40.113.93.91, 191.235.193.75    |
 | Jižní Afrika – sever  | 102.133.152.0    |
 | Jižní Afrika – západ | 102.133.24.0   |
-| Středojižní USA |13.66.62.124, 23.98.162.75, 20.45.120.0, 104.214.16.39   |
+| USA – středojih |13.66.62.124, 23.98.162.75, 20.45.120.0, 104.214.16.39   |
 | Jihovýchodní Asie | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | Spojené arabské emiráty – střed | 20.37.72.64  |
 | Spojené arabské emiráty – sever | 65.52.248.0    |
 | Spojené království – jih | 51.140.184.11   |
 | Velká Británie – západ | 51.141.8.11  |
-| Středozápadní USA | 13.78.145.25     |
+| USA – středozápad | 13.78.145.25     |
 | Západní Evropa | 40.68.37.158, 191.237.232.75     |
-| Západní USA | 104.42.238.205, 23.99.34.75  |
-| Západní USA 2 | 13.66.226.202  |
+| USA – západ | 104.42.238.205, 23.99.34.75  |
+| USA – západ 2 | 13.66.226.202  |
 ||||
 
 ## <a name="next-steps"></a>Další kroky

@@ -68,7 +68,7 @@ Některé pevně zakódované hodnoty v šabloně:
 
 | Vlastnost | Hodnota |
 |----------|-------|
-| Umístění | Západní USA |
+| Umístění | USA – západ |
 | Název virtuální sítě | &lt;ClusterNamePrevix > – vnet1 |
 | Předpona adresního prostoru | 10.1.0.0/16 |
 | Název podsítě | podsíť 1 |
@@ -85,7 +85,7 @@ Některé pevně zakódované hodnoty v šabloně:
 
 | Vlastnost | Hodnota |
 |----------|-------|
-| Umístění | Východní USA |
+| Umístění | USA – východ |
 | Název virtuální sítě | &lt;ClusterNamePrevix > – vnet2 |
 | Předpona adresního prostoru | 10.2.0.0/16 |
 | Název podsítě | podsíť 1 |

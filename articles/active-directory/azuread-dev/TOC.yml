@@ -1,0 +1,191 @@
+- name: Azure Active Directory pro vývojáře
+  href: index.yml
+- name: Přehled
+  href: v1-overview.md
+- name: ukázky
+  href: sample-v1-code.md
+- name: Koncepty
+  items:
+    - name: Proč aktualizovat na v2.0
+      href: azure-ad-endpoint-comparison.md
+    - name: Typy aplikací
+      items:
+        - name: Typy aplikací
+          href: app-types.md
+        - name: Jednostránková aplikace
+          href: single-page-application.md
+        - name: Webová aplikace
+          href: web-app.md
+        - name: Web API
+          href: web-api.md
+        - name: Mobilní a desktopové aplikace
+          href: native-app.md
+        - name: Proces démon nebo serverová aplikace
+          href: service-to-service.md
+    - name: Authentication
+      items:
+        - name: Základy ověřování
+          href: v1-authentication-scenarios.md
+        - name: Protokoly OAuth 2.0 a OpenID Connect
+          items:
+            - name: OpenID Connect
+              href: v1-protocols-openid-connect-code.md
+            - name: Tok implicitního udělení OAuth 2.0
+              href: v1-oauth2-implicit-grant-flow.md
+            - name: Udělení autorizačního kódu OAuth 2.0
+              href: v1-protocols-oauth-code.md
+            - name: Tok On-Behalf-Of OAuth 2.0
+              href: v1-oauth2-on-behalf-of-flow.md
+            - name: Udělení přihlašovacích údajů klienta OAuth 2.0
+              href: v1-oauth2-client-creds-grant-flow.md
+        - name: Protokol SAML 2.0
+          items:
+            - name: Jednotné přihlašování
+              href: ../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Odhlášení
+              href: ../develop/single-sign-out-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Jak Azure AD využívá protokol SAML
+              href: ../develop/active-directory-saml-protocol-reference.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: WS-Federation
+          items:
+            - name: Metadata federování
+              href: azure-ad-federation-metadata.md
+        - name: Výměna podpisových klíčů
+          href: ../develop/active-directory-signing-key-rollover.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Tokeny ID
+          href: ../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Přístupové tokeny
+          href: ../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Přihlašovací údaje ve formě certifikátu
+          href: ../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Tokeny SAML
+          href: ../develop/reference-saml-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Konfigurace aplikací
+      items:
+        - name: Aplikace a instanční objekty
+          href: ../develop/app-objects-and-service-principals.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Jak a proč se aplikace přidávají do Azure AD
+          href: ../develop/active-directory-how-applications-are-added.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Aplikace s jedním a více tenanty
+          href: ../develop/single-and-multi-tenant-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Oprávnění a souhlas
+      displayName: Scopes
+      items:
+        - name: Typy oprávnění a souhlas
+          href: v1-permissions-consent.md
+        - name: Rámec pro udělení souhlasu
+          href: ../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Prostředí udělení souhlasu pro aplikace
+          href: ../develop/application-consent-experience.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Podmíněný přístup
+      href: conditional-access-dev-guide.md
+    - name: Národní cloudy
+      href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+- name: Návody
+  items:
+    - name: Authentication
+      items:
+        - name: Konfigurace jednotného přihlašování
+          displayName: SSO
+          items:
+            - name: Povolení jednotného přihlašování v Androidu
+              href: howto-v1-enable-sso-android.md
+            - name: Povolení jednotného přihlašování v iOS
+              href: howto-v1-enable-sso-ios.md
+            - name: Ladění jednotného přihlašování založeného na SAML
+              href: howto-v1-debug-saml-sso-issues.md
+        - name: Konfigurace deklarací identity
+          items:
+            - name: Konfigurace deklarací identity rolí
+              href: ../develop/active-directory-enterprise-app-role-management.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Přizpůsobení deklarací identity – Portal
+              href: ../develop/active-directory-saml-claims-customization.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Přizpůsobení deklarací identity – PowerShell
+              href: ../develop/active-directory-claims-mapping.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Konfigurace volitelných deklarací identity
+              href: ../develop/active-directory-optional-claims.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Konfigurace životnosti tokenů
+              href: ../develop/active-directory-configurable-token-lifetimes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Osvědčené postupy zpracování chyb pro ADAL
+          href: active-directory-devhowto-adal-error-handling.md
+    - name: Konfigurace aplikací
+      items:
+        - name: Převedení aplikace pro jednoho tenanta na aplikaci pro více tenantů
+          href: ../develop/howto-convert-app-to-be-multi-tenant.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Vytvoření instančního objektu
+          items:
+            - name: Použití Azure Powershell
+              href: ../develop/howto-authenticate-service-principal-powershell.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+            - name: Pomocí webu Azure Portal
+              href: ../develop/howto-create-service-principal-portal.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Omezení aplikace na sadu uživatelů
+          href: ../develop/howto-restrict-your-app-to-a-set-of-users.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Přidání rolí aplikace ve vaší aplikaci
+          href: ../develop/howto-add-app-roles-in-azure-ad-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Pokyny pro branding
+          href: ../develop/howto-add-branding-in-azure-ad-apps.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Podmínky služby a prohlášení o ochraně osobních údajů
+          href: ../develop/howto-add-terms-of-service-privacy-statement.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Práce se sadou Visual Studio
+      items:
+        - name: Použití připojené služby Active Directory
+          href: ../develop/vs-active-directory-add-connected-service.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Začínáme s projekty .NET MVC
+          href: ../develop/vs-active-directory-dotnet-getting-started.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Co se stalo s mým projektem .NET MVC?
+          href: ../develop/vs-active-directory-dotnet-what-happened.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Začínáme s projekty WebAPI
+          href: ../develop/vs-active-directory-webapi-getting-started.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Co se stalo s mým projektem WebAPI?
+          href: ../develop/vs-active-directory-webapi-what-happened.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+        - name: Chyba během detekce ověřování
+          href: ../develop/vs-active-directory-error.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Uvedení aplikace na trh
+      items:
+        - name: Publikování na App Service
+          href: howto-get-appsource-certified.md
+        - name: Publikování v galerii aplikací Azure AD
+          href: howto-app-gallery-listing.md
+        - name: Publikování na řídicí panel prodejce Office 365
+          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
+    - name: Azure Access Control Service
+      displayName: ACS
+      items:
+        - name: Migrace ze služby Azure Access Control Service
+          href: active-directory-acs-migration.md
+        - name: Opětovná aktivace zakázaných oborů názvů služby Access Control Service
+          href: howto-reactivate-disabled-acs-namespaces.md
+    - name: Použití Graph API v Azure AD
+      href: ../develop/active-directory-graph-api-quickstart.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: AD FS pro vývojáře
+      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
+- name: Odkazy
+  items:
+    - name: Knihovny ověřování
+      displayName: ADAL
+      href: active-directory-authentication-libraries.md
+    - name: Azure AD Graph API
+      href: ../develop/active-directory-graph-api.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Manifest aplikace
+      href: ../develop/reference-app-manifest.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Kódy chyb autorizace a ověřování
+      href: ../develop/reference-aadsts-error-codes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Změny způsobující chyby
+      href: ../develop/reference-breaking-changes.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+- name: Zdroje a prostředky
+  items:
+    - name: Glosář
+      href: ../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Blog k Azure AD
+      href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
+    - name: Blog vývojářů platformy Microsoft Identity Platform
+      href: 'https://developer.microsoft.com/identity/blogs/'
+    - name: Vyzkoušejte si funkci Přihlásit se účtem Microsoft
+      href: 'https://azure.microsoft.com/develop/identity/signin/'
+    - name: Získání nápovědy
+      displayName: 'support, help options'
+      href: ../develop/developer-support-help-options.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Spravované identity pro prostředky Azure
+      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'

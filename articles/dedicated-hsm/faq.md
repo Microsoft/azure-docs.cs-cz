@@ -67,7 +67,7 @@ Vyhrazená služba HSM Azure používá SafeNet Luna Network HSM 7 (model A790).
 Od 13. března 2019 je vyhrazený modul HSM dostupný ve 14 oblastech uvedených níže. Další oblasti jsou plánovány a mohou být popsány prostřednictvím zástupce účtu společnosti Microsoft.
 
 * USA – východ
-* Východní USA 2
+* USA – východ 2
 * USA – západ
 * Střed USA – jih
 * Jihovýchodní Asie

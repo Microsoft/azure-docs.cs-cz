@@ -38,7 +38,7 @@ ms.locfileid: "75774637"
     * Vyberte své **předplatné**Azure.
     * V případě **skupiny prostředků**můžete buď zvolit existující skupinu prostředků z rozevíracího seznamu, nebo vytvořit novou skupinu kliknutím na **vytvořit novou**. V tomto příkladu vytvoříme novou skupinu prostředků.
     * **Název** odpovídá názvu prostředku a může to být cokoli, co si zvolíte.
-    * Pokud jste v předchozím kroku zvolili existující skupinu prostředků, automaticky se vybere **oblast** . Pokud se rozhodnete vytvořit novou skupinu prostředků, musíte taky zvolit oblast Azure, ve které chcete prostředek umístit. Východní USA
+    * Pokud jste v předchozím kroku zvolili existující skupinu prostředků, automaticky se vybere **oblast** . Pokud se rozhodnete vytvořit novou skupinu prostředků, musíte taky zvolit oblast Azure, ve které chcete prostředek umístit. USA – východ
 
         > [!NOTE]
         > Oblast, kde se nachází skupina prostředků, je nezávislá na umístění, kde chcete vytvořit partnerský vztah s Microsoftem. Je ale osvědčeným postupem organizovat prostředky partnerského vztahu v rámci skupin prostředků, které jsou umístěné v nejbližších oblastech Azure. Např. pro partnerské vztahy v Ashburn můžete vytvořit skupinu prostředků v *východní USA* nebo *východní USA 2*

@@ -216,7 +216,7 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejné Azure| Jižní Afrika – sever| 102.133.130.197|
 | Veřejné Azure| Kanada – střed| 52.139.20.34|
 | Veřejné Azure| Jižní Korea – jih| 40.80.232.185|
-| Veřejné Azure| Střed Indie| 13.71.49.1|
+| Veřejné Azure| Indie – střed| 13.71.49.1|
 | Veřejné Azure| USA – západ| 13.64.39.16|
 | Veřejné Azure| Austrálie – jihovýchod| 20.40.160.107|
 | Veřejné Azure| Austrálie – střed| 20.37.52.67|
@@ -227,7 +227,7 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejné Azure| Východní USA 2 EUAP| 52.253.229.253|
 | Veřejné Azure| Střed USA EUAP| 52.253.159.160|
 | Veřejné Azure| Střed USA – jih| 20.188.77.119|
-| Veřejné Azure| Východní USA 2| 20.44.72.3|
+| Veřejné Azure| USA – východ 2| 20.44.72.3|
 | Veřejné Azure| Severní Evropa| 52.142.95.35|
 | Veřejné Azure| Východní Asie| 52.139.152.27|
 | Veřejné Azure| Francie – jih| 20.39.80.2|

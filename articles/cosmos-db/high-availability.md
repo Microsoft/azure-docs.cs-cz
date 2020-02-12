@@ -83,7 +83,7 @@ Tato funkce je k dispozici v následujících oblastech Azure:
 
 - USA – východ
 
-- Východní USA 2
+- USA – východ 2
 
 - Střed USA
 

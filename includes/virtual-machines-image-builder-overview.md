@@ -36,10 +36,10 @@ Pro verzi Preview jsou tyto funkce podporované:
 ## <a name="regions"></a>Oblasti
 Služba Azure image Builder bude k dispozici pro verzi Preview v těchto oblastech. Obrázky lze distribuovat mimo tyto oblasti.
 - USA – východ
-- Východní USA 2
-- Středozápadní USA
-- Západní USA
-- Západní USA 2
+- USA – východ 2
+- USA – středozápad
+- USA – západ
+- USA – západ 2
 
 ## <a name="os-support"></a>Podpora operačního systému
 AIB bude podporovat image základního operačního systému Azure Marketplace:

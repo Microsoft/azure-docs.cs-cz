@@ -93,7 +93,7 @@ Typ ověřování | Metoda, která se má ověřit pro virtuální počítač. |
 Heslo | Heslo pro účet správce pro každý nasazený virtuální počítač. Všechny virtuální počítače mají zpočátku stejné heslo. Po zřízení můžete heslo změnit. | 12-72 znaků 
 Předplatné | Předplatné, ke kterému se má nasadit síť konsorcia |
 Skupina prostředků| Skupina prostředků, do které se má nasadit síť konsorcia | myResourceGroup
-Umístění | Oblast Azure pro skupinu prostředků. | Západní USA 2
+Umístění | Oblast Azure pro skupinu prostředků. | USA – západ 2
 
 Vyberte **OK**.
 
@@ -106,8 +106,8 @@ V části *oblasti nasazení*určete počet oblastí a umístění pro každý z
 Parametr | Popis | Příklad hodnoty
 ----------|-------------|--------------
 Počet oblastí|Počet oblastí pro nasazení sítě konsorcia| 2
-První oblast | První oblast pro nasazení sítě konsorcia | Západní USA 2
-Druhá oblast | Druhá oblast pro nasazení sítě konsorcia. Další oblasti jsou viditelné, pokud je počet oblastí 2 nebo vyšší. | Východ USA 2
+První oblast | První oblast pro nasazení sítě konsorcia | USA – západ 2
+Druhá oblast | Druhá oblast pro nasazení sítě konsorcia. Další oblasti jsou viditelné, pokud je počet oblastí 2 nebo vyšší. | USA – východ 2
 
 Vyberte **OK**.
 
@@ -162,7 +162,7 @@ Parametr | Popis | Příklad hodnoty
 ----------|-------------|--------------
 Sledování | Možnost povolení monitorování | Povolení
 Připojit k existujícím protokolům Azure Monitor | Možnost vytvoření nové instance protokolu Azure Monitor nebo připojení k existující instanci | Vytvořit nový
-Umístění | Oblast, ve které je nasazena nová instance | Východní USA
+Umístění | Oblast, ve které je nasazena nová instance | USA – východ
 Existující ID pracovního prostoru Log Analytics (připojit k existujícím protokolům Azure Monitor = připojit existující)|ID pracovního prostoru existující instance protokolu Azure Monitor||není k dispozici
 Existující primární klíč Log Analytics (Připojte se k existujícím protokolům Azure Monitor = připojit existující)|Primární klíč, který se používá pro připojení ke stávající instanci Azure Monitorch protokolů||není k dispozici
 

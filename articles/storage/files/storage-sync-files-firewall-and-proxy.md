@@ -109,29 +109,29 @@ V zájmu zajištění provozní kontinuity a zotavení po havárii (BCDR) jste p
 |--------|--------|----------------------|---------------|---------------|
 | Veřejné |Austrálie – východ | https:\//kailani-aue.one.microsoft.com | Austrálie – jihovýchod | https:\//tm-kailani-aue.one.microsoft.com |
 | Veřejné |Austrálie – jihovýchod | https:\//kailani-aus.one.microsoft.com | Austrálie – východ | https:\//tm-kailani-aus.one.microsoft.com |
-| Veřejné | Brazílie – jih | https:\//brazilsouth01.afs.azure.net | Středojižní USA | https:\//tm-brazilsouth01.afs.azure.net |
+| Veřejné | Brazílie – jih | https:\//brazilsouth01.afs.azure.net | USA – středojih | https:\//tm-brazilsouth01.afs.azure.net |
 | Veřejné | Střední Kanada | https:\//kailani-cac.one.microsoft.com | Východní Kanada | https:\//tm-kailani-cac.one.microsoft.com |
 | Veřejné | Východní Kanada | https:\//kailani-cae.one.microsoft.com | Střední Kanada | https:\//tm-kailani.cae.one.microsoft.com |
-| Veřejné | Střed Indie | https:\//kailani-cin.one.microsoft.com | Jižní Indie | https:\//tm-kailani-cin.one.microsoft.com |
-| Veřejné | Střední USA | https:\//kailani-cus.one.microsoft.com | Východ USA 2 | https:\//tm-kailani-cus.one.microsoft.com |
+| Veřejné | Indie – střed | https:\//kailani-cin.one.microsoft.com | Jižní Indie | https:\//tm-kailani-cin.one.microsoft.com |
+| Veřejné | USA – střed | https:\//kailani-cus.one.microsoft.com | USA – východ 2 | https:\//tm-kailani-cus.one.microsoft.com |
 | Veřejné | Východní Asie | https:\//kailani11.one.microsoft.com | Jihovýchodní Asie | https:\//tm-kailani11.one.microsoft.com |
-| Veřejné | Východní USA | https:\//kailani1.one.microsoft.com | Západní USA | https:\//tm-kailani1.one.microsoft.com |
-| Veřejné | Východ USA 2 | https:\//kailani-ess.one.microsoft.com | Střední USA | https:\//tm-kailani-ess.one.microsoft.com |
+| Veřejné | USA – východ | https:\//kailani1.one.microsoft.com | USA – západ | https:\//tm-kailani1.one.microsoft.com |
+| Veřejné | USA – východ 2 | https:\//kailani-ess.one.microsoft.com | USA – střed | https:\//tm-kailani-ess.one.microsoft.com |
 | Veřejné | Japonsko – východ | https:\//japaneast01.afs.azure.net | Japonsko – západ | https:\//tm-japaneast01.afs.azure.net |
 | Veřejné | Japonsko – západ | https:\//japanwest01.afs.azure.net | Japonsko – východ | https:\//tm-japanwest01.afs.azure.net |
 | Veřejné | Korea – střed | https:\//koreacentral01.afs.azure.net/ | Korea – jih | https:\//tm-koreacentral01.afs.azure.net/ |
 | Veřejné | Korea – jih | https:\//koreasouth01.afs.azure.net/ | Korea – střed | https:\//tm-koreasouth01.afs.azure.net/ |
-| Veřejné | Středoseverní USA | https:\//northcentralus01.afs.azure.net | Středojižní USA | https:\//tm-northcentralus01.afs.azure.net |
+| Veřejné | USA – středosever | https:\//northcentralus01.afs.azure.net | USA – středojih | https:\//tm-northcentralus01.afs.azure.net |
 | Veřejné | Severní Evropa | https:\//kailani7.one.microsoft.com | Západní Evropa | https:\//tm-kailani7.one.microsoft.com |
-| Veřejné | Středojižní USA | https:\//southcentralus01.afs.azure.net | Středoseverní USA | https:\//tm-southcentralus01.afs.azure.net |
-| Veřejné | Jižní Indie | https:\//kailani-sin.one.microsoft.com | Střed Indie | https:\//tm-kailani-sin.one.microsoft.com |
+| Veřejné | USA – středojih | https:\//southcentralus01.afs.azure.net | USA – středosever | https:\//tm-southcentralus01.afs.azure.net |
+| Veřejné | Jižní Indie | https:\//kailani-sin.one.microsoft.com | Indie – střed | https:\//tm-kailani-sin.one.microsoft.com |
 | Veřejné | Jihovýchodní Asie | https:\//kailani10.one.microsoft.com | Východní Asie | https:\//tm-kailani10.one.microsoft.com |
 | Veřejné | Spojené království – jih | https:\//kailani-uks.one.microsoft.com | Velká Británie – západ | https:\//tm-kailani-uks.one.microsoft.com |
 | Veřejné | Velká Británie – západ | https:\//kailani-ukw.one.microsoft.com | Spojené království – jih | https:\//tm-kailani-ukw.one.microsoft.com |
-| Veřejné | Středozápadní USA | https:\//westcentralus01.afs.azure.net | Západní USA 2 | https:\//tm-westcentralus01.afs.azure.net |
+| Veřejné | USA – středozápad | https:\//westcentralus01.afs.azure.net | USA – západ 2 | https:\//tm-westcentralus01.afs.azure.net |
 | Veřejné | Západní Evropa | https:\//kailani6.one.microsoft.com | Severní Evropa | https:\//tm-kailani6.one.microsoft.com |
-| Veřejné | Západní USA | https:\//kailani.one.microsoft.com | Východní USA | https:\//tm-kailani.one.microsoft.com |
-| Veřejné | Západní USA 2 | https:\//westus201.afs.azure.net | Středozápadní USA | https:\//tm-westus201.afs.azure.net |
+| Veřejné | USA – západ | https:\//kailani.one.microsoft.com | USA – východ | https:\//tm-kailani.one.microsoft.com |
+| Veřejné | USA – západ 2 | https:\//westus201.afs.azure.net | USA – středozápad | https:\//tm-westus201.afs.azure.net |
 | Státní správa | US Gov – Arizona | https:\//usgovarizona01.afs.azure.us | US Gov – Texas | https:\//tm-usgovarizona01.afs.azure.us |
 | Státní správa | US Gov – Texas | https:\//usgovtexas01.afs.azure.us | US Gov – Arizona | https:\//tm-usgovtexas01.afs.azure.us |
 

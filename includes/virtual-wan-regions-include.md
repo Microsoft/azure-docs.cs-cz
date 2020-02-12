@@ -21,7 +21,7 @@ Připojení VPN typu Site-to-site a virtuální architektura sítě WAN jsou k d
 
 |Geopolitická oblast | Oblasti Azure|
 |---|---|
-| Severní Amerika | Východní USA, Západní USA, Východní USA 2, Západní USA 2, Střední USA, Středojižní USA, Středoseverní USA, Středozápadní USA, Střední Kanada, Východní Kanada |
+| Severní Amerika | USA – východ, USA – západ, USA – východ 2, USA – západ 2, USA – střed, USA – středojih, USA – středosever, USA – středozápad, Kanada – střed, Kanada – východ |
 |Jižní Amerika |Brazílie – jih |
 | Evropa | Francie – střed, Francie – jih, Severní Evropa, Západní Evropa, Velká Británie – západ, Velká Británie – jih |
 | Asie | Východní Asie, Jihovýchodní Asie |

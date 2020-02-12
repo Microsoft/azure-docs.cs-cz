@@ -45,7 +45,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete |
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků, která bude hostovat data AppInsights. Můžete vytvořit novou skupinu prostředků nebo použít existující. |
-   | **Umístění** | Východ USA | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
 3. Vyberte **Vytvořit**.
 

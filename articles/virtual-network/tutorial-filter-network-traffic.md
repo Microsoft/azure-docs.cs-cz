@@ -68,7 +68,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     | Name (Název)           | myAsgWebServers                                               |
     | Předplatné   | Vyberte své předplatné.                                     |
     | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Umístění       | Východní USA                                                       |
+    | Umístění       | USA – východ                                                       |
 
 4. Zopakujte 3. krok s použitím následujících hodnot:
 
@@ -77,7 +77,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     | Name (Název)           | myAsgMgmtServers                                              |
     | Předplatné   | Vyberte své předplatné.                                     |
     | Skupina prostředků | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Umístění       | Východní USA                                                       |
+    | Umístění       | USA – východ                                                       |
 
 ## <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
@@ -90,7 +90,7 @@ Skupina zabezpečení aplikací umožňuje seskupovat servery s podobnými funkc
     |Name (Název)|myNsg|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků | Vyberte **Použít existující** a pak vyberte *myResourceGroup*.|
-    |Umístění|Východní USA|
+    |Umístění|USA – východ|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Přidružení skupiny zabezpečení sítě k podsíti
 

@@ -206,19 +206,19 @@ Tok dat tahání se v tuto chvíli podporuje v datových továrnách vytvořený
 
 * Austrálie – východ
 * Kanada – střed
-* Střed Indie
-* Střední USA
+* Indie – střed
+* USA – střed
 * USA – východ
-* Východní USA 2
+* USA – východ 2
 * Japonsko – východ
 * Severní Evropa
 * Jihovýchodní Asie
-* Středojižní USA
+* USA – středojih
 * Velká Británie – jih
-* Středozápadní USA
+* USA – středozápad
 * Západní Evropa
-* Západní USA
-* Západní USA 2
+* USA – západ
+* USA – západ 2
 
 ### <a name="what-are-the-limitations-and-constraints-with-wrangling-data-flow"></a>Jaká jsou omezení a omezení pomocí toku dat tahání?
 

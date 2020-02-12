@@ -57,7 +57,7 @@ Přihlaste se ke svému účtu Azure a vyberte své předplatné.
     ```
 
     > [!TIP]
-    > Předchozí příklad vytvoří skupinu prostředků v umístění Západní USA. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az account list-locations -o table`.
+    > Předchozí příklad vytvoří skupinu prostředků v umístění USA – západ. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az account list-locations -o table`.
     >
     >
 

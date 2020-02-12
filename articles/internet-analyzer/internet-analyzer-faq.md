@@ -66,10 +66,10 @@ Každý test, který vytvoříte v nástroji Internet Analyzer, se skládá ze d
 Během verze Preview jsou k dispozici následující předem nakonfigurované koncové body:
 * **Oblasti Azure**
     * Brazílie – jih
-    * Střed Indie
-    * Střední USA
+    * Indie – střed
+    * USA – střed
     * Východní Asie
-    * Východní USA
+    * USA – východ
     * Japonsko – západ
     * Severní Evropa
     * Jižní Afrika – sever
@@ -77,8 +77,8 @@ Během verze Preview jsou k dispozici následující předem nakonfigurované ko
     * Spojené arabské emiráty – sever
     * Spojené království – západ  
     * Západní Evropa
-    * Západní USA
-    * Západní USA 2
+    * USA – západ
+    * USA – západ 2
 * **Několik kombinací oblastí Azure**
     * Východní USA, Brazílie – jih
     * Východní USA Východní Asie

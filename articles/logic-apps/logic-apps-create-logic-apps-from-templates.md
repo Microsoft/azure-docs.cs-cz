@@ -49,7 +49,7 @@ Pokud ještě nemáte předplatné Azure, [zaregistrujte si bezplatný účet Az
    | **Název** | *název_vaší_aplikace_logiky* | Zadejte jedinečný název aplikace logiky. | 
    | **Předplatné** | *název_vašeho_předplatného_Azure* | Vyberte předplatné Azure, které chcete použít. | 
    | **Skupina prostředků** | *název_vaší_skupiny_prostředků_Azure* | Vytvořte nebo vyberte [skupinu prostředků Azure](../azure-resource-manager/management/overview.md) pro tuto aplikaci logiky a uspořádejte všechny prostředky přidružené k této aplikaci. | 
-   | **Umístění** | *oblast_vašeho_datového_centra_Azure* | Vyberte oblast datového centra pro nasazení aplikace logiky, například Západní USA. | 
+   | **Umístění** | *oblast_vašeho_datového_centra_Azure* | Vyberte oblast datového centra pro nasazení aplikace logiky, například USA – západ. | 
    | **Log Analytics** | **Vypnuto** (výchozí) nebo **zapnuto** | Pomocí [protokolů Azure monitor](../log-analytics/log-analytics-overview.md)nastavte [protokolování diagnostiky](../logic-apps/monitor-logic-apps-log-analytics.md) pro vaši aplikaci logiky. Vyžaduje, abyste již Log Analytics pracovní prostor. | 
    |||| 
 

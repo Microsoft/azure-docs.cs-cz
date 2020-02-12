@@ -98,12 +98,12 @@ Zdrojové oblasti jsou uvedené v následující tabulce. Všechny veřejné obl
 | Austrálie – východ        | Čína – sever       | Japonsko – východ         | Velká Británie – západ            |
 | Austrálie – jihovýchod   | Čína – sever 2     | Japonsko – západ         | US DoD – střed     |
 | Brazílie – jih          | Východní Asie         | Korea – střed      | Ministerstvo obrany USA – východ        |
-| Střední Kanada        | Východní USA           | Korea – jih        | US Gov – Arizona     |
-| Východní Kanada           | Východ USA 2         | Středoseverní USA   | US Gov – Texas       |
-| Střed Indie         | Východní USA 2 EUAP    | Severní Evropa       | US Gov – Virginie    |
-| Střední USA            | Francie – střed    | Středojižní USA   | Západní Indie         |
-| Střed USA EUAP       | Francie – jih      | Středozápadní USA    | Západní USA            |
-|                       |                   |                    | Západní USA 2          |
+| Střední Kanada        | USA – východ           | Korea – jih        | US Gov – Arizona     |
+| Východní Kanada           | USA – východ 2         | USA – středosever   | US Gov – Texas       |
+| Indie – střed         | Východní USA 2 EUAP    | Severní Evropa       | US Gov – Virginie    |
+| USA – střed            | Francie – střed    | USA – středojih   | Západní Indie         |
+| Střed USA EUAP       | Francie – jih      | USA – středozápad    | USA – západ            |
+|                       |                   |                    | USA – západ 2          |
 
 
 

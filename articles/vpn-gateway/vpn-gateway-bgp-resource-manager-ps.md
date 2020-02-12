@@ -7,17 +7,17 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: ba8031db3c99b3062f5f552e02c39170ccfd850b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 78147a96d6d9e92c2602b6a83cbed743cf2abf37
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860400"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152036"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Postup konfigurace protokolu BGP u bran Azure VPN Gateway pomocí PowerShellu
 Tento článek vás provede postupem povolení protokolu BGP pro připojení VPN typu Site-to-Site (S2S) a připojení typu VNet-to-VNet pomocí modelu nasazení Správce prostředků a PowerShellu.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-bgp"></a>Informace o protokolu BGP
 BGP je standardní směrovací protokol, na internetu běžně používaný k výměně informací o směrování a dostupnosti mezi dvěma nebo více sítěmi. Protokol BGP umožňuje službám Azure VPN Gateway a místním zařízením VPN, která se nazývají partnerské uzly protokolu BGP nebo sousedé BGP, výměnu „tras“ informujících obě brány o dostupnosti a dosažitelnosti předpon, které procházejí těmito bránami nebo trasami. Protokol BGP také umožňuje směrování přenosu mezi více sítěmi pomocí šíření tras, které brána s protokolem BGP zjistí od jednoho partnerského uzlu protokolu BGP, do všech dalších partnerských uzlů protokolu BGP.

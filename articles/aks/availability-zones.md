@@ -32,7 +32,7 @@ Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo nově
 Clustery AKS se teď dají vytvářet pomocí zón dostupnosti v následujících oblastech:
 
 * Střed USA
-* Východní USA 2
+* USA – východ 2
 * USA – východ
 * Francie – střed
 * Japonsko – východ

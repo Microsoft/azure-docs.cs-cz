@@ -31,21 +31,21 @@ Obrázek 1 – regionální páry Azure
 | Asie |Východní Asie |Jihovýchodní Asie |
 | Austrálie |Austrálie – východ |Austrálie – jihovýchod |
 | Austrálie |Austrálie – střed |Austrálie – střed 2 |
-| Brazílie |Brazílie – jih |Středojižní USA |
+| Brazílie |Brazílie – jih |USA – středojih |
 | Kanada |Střední Kanada |Kanada – východ |
 | Čína |Čína – sever |Čína – východ|
 | Čína |Čína – sever 2 |Čína – východ 2|
 | Evropa |Severní Evropa (Irsko) |Západní Evropa (Nizozemsko) |
 | Francie |Francie – střed|Francie – jih|
 | Německo |Německo – střed |Německo – severovýchod |
-| Indie |Střed Indie |Indie – jih |
+| Indie |Indie – střed |Indie – jih |
 | Indie |Indie – západ |Indie – jih |
 | Japonsko |Japonsko – východ |Japonsko – západ |
 | Jižní Korea |Jižní Korea – střed |Jižní Korea – jih |
-| Severní Amerika |Východ USA |Západní USA |
-| Severní Amerika |Východ USA 2 |Střední USA |
-| Severní Amerika |Středoseverní USA |Středojižní USA |
-| Severní Amerika |Západní USA 2 |Středozápadní USA 
+| Severní Amerika |USA – východ |USA – západ |
+| Severní Amerika |USA – východ 2 |USA – střed |
+| Severní Amerika |USA – středosever |USA – středojih |
+| Severní Amerika |USA – západ 2 |USA – středozápad 
 | Jižní Afrika | Jižní Afrika – sever | Jižní Afrika – západ
 | Spojené království |Spojené království – západ |Spojené království – jih |
 | Spojené arabské emiráty | Spojené arabské emiráty – sever | Spojené arabské emiráty – střed

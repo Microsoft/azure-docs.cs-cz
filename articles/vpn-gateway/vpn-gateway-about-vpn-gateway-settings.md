@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9ecea0576f7cec4e70d6e223b5412a8d8057b2ab
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d7a2040748d170b4e536df59947ea811f149d931
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894746"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148143"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informace o nastavení konfigurace VPN Gateway
 
@@ -28,7 +28,7 @@ Hodnoty v tomto článku platí pro brány VPN (brány virtuální sítě, kter�
 
 * Informace o virtuální síti WAN najdete v tématu [o virtuální síti WAN](../virtual-wan/virtual-wan-about.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="gwtype"></a>Typy bran
 
@@ -55,7 +55,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-a-gateway-sku"></a>Konfigurace SKU brány
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Pokud pomocí Azure Portal vytvoříte bránu služby Správce prostředků virtuální sítě, můžete vybrat SKU brány pomocí rozevíracího seznamu. Možnosti, které zobrazíte, odpovídají typu brány a typu VPN, který vyberete.
 
@@ -95,7 +95,7 @@ Pokud máte bránu VPN a chcete použít jinou SKU brány, vaše možnosti mají
 
 V modelu nasazení Správce prostředků Každá konfigurace vyžaduje konkrétní typ připojení brány virtuální sítě. Dostupné hodnoty prostředí PowerShell v Resource Manageru pro `-ConnectionType` jsou:
 
-* Protokol IPsec
+* IPsec
 * Vnet2Vnet
 * ExpressRoute
 * VPNClient
@@ -173,7 +173,7 @@ Další technické materiály a specifické požadavky na syntaxi při použití
 | --- | --- |
 | [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
-| Nepodporováno | [Azure CLI](/cli/azure/network/vnet-gateway)|
+| Nepodporuje se | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
 ## <a name="next-steps"></a>Další kroky
 

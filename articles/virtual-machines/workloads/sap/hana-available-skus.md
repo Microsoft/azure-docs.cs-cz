@@ -24,7 +24,7 @@ ms.locfileid: "74806639"
 
 Služba SAP HANA v Azure (velké instance) založené na revizi 3 razítka je k dispozici v několika konfiguracích v oblastech Azure v nástroji:
 
-- Západní USA
+- USA – západ
 - USA – východ
 - Austrálie – východ
 - Austrálie – jihovýchod
@@ -35,9 +35,9 @@ Služba SAP HANA v Azure (velké instance) založené na revizi 3 razítka je k 
 
 SAP HANA v Azure (velké instance) založené na razítkech revize 4 jsou k dispozici v několika konfiguracích v oblastech Azure v:
 
-- Západní USA 2
+- USA – západ 2
 - USA – východ
-- Středojižní USA
+- USA – středojih
 - Západní Evropa
 - Severní Evropa
 

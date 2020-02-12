@@ -19,11 +19,11 @@ ms.locfileid: "75426319"
 Azure Stream Analytics nabízí SQL jako dotazovací jazyk pro provádění transformací a výpočtů prostřednictvím datových proudů dat událostí. K dispozici je mnoho integrovaných funkcí, ale některé složité scénáře vyžadují větší flexibilitu. Pomocí .NET Standard uživatelem definované funkce (UDF), můžete vyvolat vašich vlastních funkcích napsané v libovolném jazyce .NET standard (C#, F#atd) pro rozšíření dotazovací jazyk Stream Analytics. Uživatelem definovanými funkcemi umožňují provádět složité matematické výpočty, vlastní modely ML s využitím ML.NET importovat a používat vlastní imputace logiku pro chybějící data. Funkce UDF pro úlohy Stream Analytics je momentálně ve verzi Preview a neměla by se používat v produkčních úlohách.
 
 Uživatelem definovaná funkce .NET pro cloudové úlohy je dostupná v:
-* Středozápadní USA
+* USA – středozápad
 * Severní Evropa
-* Východní USA
-* Západní USA
-* Východ USA 2
+* USA – východ
+* USA – západ
+* USA – východ 2
 * Západní Evropa
 
 Pokud vás zajímá použití této funkce v jakékoli jiné oblasti, můžete [požádat o přístup](https://aka.ms/ccodereqregion).

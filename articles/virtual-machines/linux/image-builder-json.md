@@ -59,11 +59,11 @@ Toto je základní formát šablony:
 
 Umístění je oblast, kde se vytvoří vlastní image. Pro náhled tvůrce imagí se podporují tyto oblasti:
 
-- Východní USA
-- Východ USA 2
-- Středozápadní USA
-- Západní USA
-- Západní USA 2
+- USA – východ
+- USA – východ 2
+- USA – středozápad
+- USA – západ
+- USA – západ 2
 
 
 ```json

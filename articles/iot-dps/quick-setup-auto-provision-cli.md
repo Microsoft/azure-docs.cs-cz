@@ -39,7 +39,7 @@ az group create --name my-sample-resource-group --location westus
 ```
 
 > [!TIP]
-> Tento příklad vytvoří skupinu prostředků v umístění Západní USA. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az account list-locations -o table`.
+> Tento příklad vytvoří skupinu prostředků v umístění USA – západ. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az account list-locations -o table`.
 >
 >
 
@@ -64,7 +64,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 ```
 
 > [!TIP]
-> Tento příklad vytvoří službu zřizování v umístění Západní USA. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` nebo na stránce [Stav Azure](https://azure.microsoft.com/status/) vyhledáním výrazu Služba Device Provisioning. V příkazech lze umístění zadat buď v jednom nebo více slovovém formátu; například: westus, Západní USA, západ USA atd. Hodnota nerozlišuje velká a malá písmena. Pokud k zadání umístění použijete víceslovný formát, uveďte hodnotu v uvozovkách, například `-- location "West US"`.
+> Tento příklad vytvoří službu zřizování v umístění USA – západ. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` nebo na stránce [Stav Azure](https://azure.microsoft.com/status/) vyhledáním výrazu Služba Device Provisioning. V příkazech lze umístění zadat buď v jednom nebo více slovovém formátu; například: westus, Západní USA, západ USA atd. Hodnota nerozlišuje velká a malá písmena. Pokud k zadání umístění použijete víceslovný formát, uveďte hodnotu v uvozovkách, například `-- location "West US"`.
 >
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>Získání připojovacího řetězce pro centrum IoT

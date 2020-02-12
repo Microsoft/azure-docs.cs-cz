@@ -101,10 +101,10 @@ Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji 
      |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
      |Skupina prostředků ProdRG|Skupina prostředků|Název|ProductionRG|Definuje název první skupiny prostředků.|
-     |Skupina prostředků ProdRG|Skupina prostředků|Umístění|Západní USA 2|Nastaví umístění první skupiny prostředků.|
+     |Skupina prostředků ProdRG|Skupina prostředků|Umístění|USA – západ 2|Nastaví umístění první skupiny prostředků.|
      |Přispěvatel|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu, kterým chcete udělit přiřazení role _přispěvatele_ v rámci první skupiny prostředků.|
      |Skupina prostředků PreProdRG|Skupina prostředků|Název|PreProductionRG|Definuje název druhé skupiny prostředků.|
-     |Skupina prostředků PreProdRG|Skupina prostředků|Umístění|Západní USA|Nastaví umístění druhé skupiny prostředků.|
+     |Skupina prostředků PreProdRG|Skupina prostředků|Umístění|USA – západ|Nastaví umístění druhé skupiny prostředků.|
      |Vlastník|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu, kterým udělíte přiřazení role _vlastníka_ v rámci druhé skupiny prostředků.|
      |Čtenáři|Přiřazení role|Uživatel nebo skupina|{ID}|Definuje uživatele nebo skupinu pro udělení přiřazení role _čtenáři_ v rámci druhé skupiny prostředků.|
 

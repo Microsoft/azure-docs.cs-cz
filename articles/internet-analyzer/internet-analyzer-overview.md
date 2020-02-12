@@ -37,8 +37,8 @@ Během období Preview jsou k dispozici následující předem nakonfigurované 
 
 * **Oblasti Azure**
     * Brazílie – jih
-    * Střed Indie
-    * Střední USA
+    * Indie – střed
+    * USA – střed
     * Východní Asie
     * USA – východ
     * Japonsko – západ
@@ -48,8 +48,8 @@ Během období Preview jsou k dispozici následující předem nakonfigurované 
     * Spojené arabské emiráty – sever
     * Velká Británie – západ  
     * Západní Evropa
-    * Západní USA 
-    * Západní USA 2
+    * USA – západ 
+    * USA – západ 2
 * **Několik kombinací oblastí Azure** 
     * Východní USA, Brazílie – jih 
     * Východní USA Východní Asie 

@@ -31,9 +31,9 @@ Rovina ovládacího prvku nebo Server API se nachází v předplatném Azure spr
 * Azure CLI verze 2.0.77 nebo novější a verze rozšíření Azure CLI AKS ve verzi Preview 0.4.18
 
 ## <a name="currently-supported-regions"></a>Aktuálně podporované oblasti
-* Západní USA
-* Západní USA 2
-* Východ USA 2
+* USA – západ
+* USA – západ 2
+* USA – východ 2
 * Střední Kanada
 * Severní Evropa
 * Západní Evropa

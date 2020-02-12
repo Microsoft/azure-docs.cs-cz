@@ -80,7 +80,7 @@ Pokud portál indikuje omezení dokumentu, služba byla buď vytvořena před 20
 + Východní Asie
 + Střední Indie
 + Japonsko – západ
-+ Středozápadní USA
++ USA – středozápad
 
 Pro služby podléhající omezením dokumentu platí následující maximální limity:
 

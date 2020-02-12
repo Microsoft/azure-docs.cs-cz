@@ -49,13 +49,13 @@ Nasazení mezipaměti HPC Azure vám může pomoci zrychlit kvantitativní výpo
 
 Mezipaměť prostředí Azure HPC je dostupná v těchto oblastech Azure:
 
-* Východní USA
-* Východ USA 2
+* USA – východ
+* USA – východ 2
 * Severní Evropa
 * Západní Evropa
 * Jihovýchodní Asie
 * Sydney
-* Západní USA 2
+* USA – západ 2
 * Jižní Korea – střed
 
 Nejnovější informace o dostupnosti najdete na [stránce produktu Azure HPC cache](https://azure.microsoft.com/services/hpc-cache) .

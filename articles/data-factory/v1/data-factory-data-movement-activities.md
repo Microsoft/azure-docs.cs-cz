@@ -95,13 +95,13 @@ Pokud jsou zdrojová i jímka úložiště dat v cloudu, Data Factory používá
 | Zeměpis cílových úložišť dat | Oblast cílového úložiště dat | Oblast, která se používá k přesunu dat |
 |:--- |:--- |:--- |
 | Spojené státy | USA – východ | USA – východ |
-| &nbsp; | Východ USA 2 | Východ USA 2 |
-| &nbsp; | Střední USA | Střední USA |
-| &nbsp; | Středoseverní USA | Středoseverní USA |
-| &nbsp; | Středojižní USA | Středojižní USA |
-| &nbsp; | Středozápadní USA | Středozápadní USA |
-| &nbsp; | Západní USA | Západní USA |
-| &nbsp; | Západní USA 2 | Západní USA 2 |
+| &nbsp; | USA – východ 2 | USA – východ 2 |
+| &nbsp; | USA – střed | USA – střed |
+| &nbsp; | USA – středosever | USA – středosever |
+| &nbsp; | USA – středojih | USA – středojih |
+| &nbsp; | USA – středozápad | USA – středozápad |
+| &nbsp; | USA – západ | USA – západ |
+| &nbsp; | USA – západ 2 | USA – západ 2 |
 | Kanada | Kanada – východ | Kanada – střed |
 | &nbsp; | Kanada – střed | Kanada – střed |
 | Brazílie | Brazílie – jih | Brazílie – jih |
@@ -113,9 +113,9 @@ Pokud jsou zdrojová i jímka úložiště dat v cloudu, Data Factory používá
 | &nbsp; | Východní Asie | Jihovýchodní Asie |
 | Austrálie | Austrálie – východ | Austrálie – východ |
 | &nbsp; | Austrálie – jihovýchod | Austrálie – jihovýchod |
-| Indie | Střed Indie | Střed Indie |
-| &nbsp; | Západní Indie | Střed Indie |
-| &nbsp; | Jižní Indie | Střed Indie |
+| Indie | Indie – střed | Indie – střed |
+| &nbsp; | Západní Indie | Indie – střed |
+| &nbsp; | Jižní Indie | Indie – střed |
 | Japonsko | Japonsko – východ | Japonsko – východ |
 | &nbsp; | Japonsko – západ | Japonsko – východ |
 | Korea | Korea – střed | Korea – střed |

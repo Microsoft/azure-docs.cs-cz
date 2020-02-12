@@ -65,8 +65,8 @@ Tato architektura nabízí dva clustery v různých skupinách prostředků a vi
 
     |Skupina prostředků | Umístění |
     |---|---|
-    | kafka-primary-rg | Střední USA |
-    | kafka-secondary-rg | Středoseverní USA |
+    | kafka-primary-rg | USA – střed |
+    | kafka-secondary-rg | USA – středosever |
 
 1. Vytvořte novou virtuální síť **Kafka-Primary-VNet** v **Kafka-Primary-RG**. Ponechte výchozí nastavení.
 1. Vytvořte novou virtuální síť **Kafka-Secondary-VNet** v **Kafka-Secondary-RG**, ale také s výchozím nastavením.

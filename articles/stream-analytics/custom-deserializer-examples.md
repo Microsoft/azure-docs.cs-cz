@@ -225,11 +225,11 @@ Následující kód jazyka JavaScript je příkladem formátu serializace deseri
 
 Tato funkce je k dispozici v následujících oblastech:
 
-* Středozápadní USA
+* USA – středozápad
 * Severní Evropa
-* Východní USA
-* Západní USA
-* Východ USA 2
+* USA – východ
+* USA – západ
+* USA – východ 2
 * Západní Evropa
 
 Můžete [požádat o podporu](https://aka.ms/ccodereqregion) pro další oblasti.

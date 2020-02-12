@@ -45,8 +45,8 @@ Vytvořte dva plány Web App Service ve skupině prostředků pomocí následuj�
 
 |Name (Název)  |Operační systém  |Umístění  |Cenová úroveň  |
 |---------|---------|---------|---------|
-|ASP-01     |Windows|Východ USA|Vývoj/testování D1 – Shared|
-|ASP-02     |Windows|Střední USA|Vývoj/testování D1 – Shared|
+|ASP-01     |Windows|USA – východ|Vývoj/testování D1 – Shared|
+|ASP-02     |Windows|USA – střed|Vývoj/testování D1 – Shared|
 
 ## <a name="create-app-services"></a>Vytvořit App Services
 
@@ -60,8 +60,8 @@ Vytvořte dvě webové aplikace, jednu v každém plánu App Service.
 
    |Name (Název)<br>(musí být jedinečné v rámci. azurewebsites.net)|Skupina prostředků |Zásobník modulu runtime|Region (Oblast)|App Service plán/umístění
    |---------|---------|-|-|-------|
-   |App – 01|Použít existující<br>Výběr skupiny prostředků|.NET Core 2.2|Východ USA|ASP-01 (D1)|
-   |App-02|Použít existující<br>Výběr skupiny prostředků|.NET Core 2.2|Střední USA|ASP-02 (D1)|
+   |App – 01|Použít existující<br>Výběr skupiny prostředků|.NET Core 2.2|USA – východ|ASP-01 (D1)|
+   |App-02|Použít existující<br>Výběr skupiny prostředků|.NET Core 2.2|USA – střed|ASP-02 (D1)|
 
 ### <a name="gather-some-details"></a>Shromáždit nějaké podrobnosti
 
@@ -89,8 +89,8 @@ Nyní můžete vytvořit koncové body pro tyto dvě webové aplikace.
 
    |Typ  |Name (Název)  |Výběr cílového umístění  |Umístění  |Vlastní nastavení hlaviček|
    |---------|---------|---------|---------|---------|
-   |Externí koncový bod     |Konec – 01|IP adresa, kterou jste si poznamenali pro App-01|Východ USA|Hostitel:\<adresu URL, kterou jste si poznamenali pro App-01\><br>Příklad: **Host: App-01.azurewebsites.NET**|
-   |Externí koncový bod     |Konec-02|IP adresa, kterou jste si poznamenali pro App-02|Střední USA|Hostitel:\<adresu URL, kterou jste si poznamenali pro App-02\><br>Příklad: **Host: App-02.azurewebsites.NET**
+   |Externí koncový bod     |Konec – 01|IP adresa, kterou jste si poznamenali pro App-01|USA – východ|Hostitel:\<adresu URL, kterou jste si poznamenali pro App-01\><br>Příklad: **Host: App-01.azurewebsites.NET**|
+   |Externí koncový bod     |Konec-02|IP adresa, kterou jste si poznamenali pro App-02|USA – střed|Hostitel:\<adresu URL, kterou jste si poznamenali pro App-02\><br>Příklad: **Host: App-02.azurewebsites.NET**
 
 ## <a name="create-dns-zone"></a>Vytvořit zónu DNS
 

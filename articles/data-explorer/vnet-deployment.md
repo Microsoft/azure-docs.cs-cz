@@ -109,8 +109,8 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | BrazilSouth | 191.233.25.183 |
 | Kanada – střed | 40.82.188.208 |
 | Kanada – východ | 40.80.255.12 |
-| Střed Indie | 40.81.249.251 |
-| Střední USA | 40.67.188.68 |
+| Indie – střed | 40.81.249.251 |
+| USA – střed | 40.67.188.68 |
 | Střed USA EUAP | 40.89.56.69 |
 | Východní Asie | 20.189.74.103 |
 | USA – východ | 52.224.146.56 |
@@ -122,20 +122,20 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Japonsko – západ | 40.81.184.86 |
 | Korea – střed | 40.82.156.149 |
 | Korea – jih | 40.80.234.9 |
-| Středoseverní USA | 40.81.45.254 |
+| USA – středosever | 40.81.45.254 |
 | Severní Evropa | 52.142.91.221 |
 | Jižní Afrika – sever | 102.133.129.138 |
 | Jižní Afrika – západ | 102.133.0.97 |
-| Středojižní USA | 20.45.3.60 |
+| USA – středojih | 20.45.3.60 |
 | Jihovýchodní Asie | 40.119.203.252 |
 | Jižní Indie | 40.81.72.110 |
 | Velká Británie – jih | 40.81.154.254 |
 | Velká Británie – západ | 40.81.122.39 |
-| Středozápadní USA | 52.159.55.120 |
+| USA – středozápad | 52.159.55.120 |
 | Západní Evropa | 51.145.176.215 |
 | Západní Indie | 40.81.88.112 |
-| Západní USA | 13.64.38.225 |
-| Západní USA 2 | 40.90.219.23 |
+| USA – západ | 13.64.38.225 |
+| USA – západ 2 | 40.90.219.23 |
 
 #### <a name="health-monitoring-addresses"></a>Adresy sledování stavu
 
@@ -148,12 +148,12 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Brazílie – jih | 23.98.145.105 |
 | Kanada – střed | 168.61.212.201 |
 | Kanada – východ | 168.61.212.201 |
-| Střed Indie | 23.99.5.162 |
-| Střední USA | 168.61.212.201 |
+| Indie – střed | 23.99.5.162 |
+| USA – střed | 168.61.212.201 |
 | Střed USA EUAP | 168.61.212.201 |
 | Východní Asie | 168.63.212.33 |
 | USA – východ | 137.116.81.189 |
-| Východ USA 2 | 137.116.81.189 |
+| USA – východ 2 | 137.116.81.189 |
 | Východní USA 2 EUAP | 137.116.81.189 |
 | Francie – střed | 23.97.212.5 |
 | Francie – jih | 23.97.212.5 |
@@ -161,20 +161,20 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Japonsko – západ | 138.91.19.129 |
 | Korea – střed | 138.91.19.129 |
 | Korea – jih | 138.91.19.129 |
-| Středoseverní USA | 23.96.212.108 |
+| USA – středosever | 23.96.212.108 |
 | Severní Evropa | 191.235.212.69 
 | Jižní Afrika – sever | 104.211.224.189 |
 | Jižní Afrika – západ | 104.211.224.189 |
-| Středojižní USA | 23.98.145.105 |
+| USA – středojih | 23.98.145.105 |
 | Jižní Indie | 23.99.5.162 |
 | Jihovýchodní Asie | 168.63.173.234 |
 | Velká Británie – jih | 23.97.212.5 |
 | Velká Británie – západ | 23.97.212.5 |
-| Středozápadní USA | 168.61.212.201 |
+| USA – středozápad | 168.61.212.201 |
 | Západní Evropa | 23.97.212.5 |
 | Západní Indie | 23.99.5.162 |
-| Západní USA | 23.99.5.162 |
-| Západní USA 2 | 23.99.5.162 | 
+| USA – západ | 23.99.5.162 |
+| USA – západ 2 | 23.99.5.162 | 
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Adresy koncových bodů konfigurace Azure Monitor
 
@@ -209,7 +209,7 @@ Nasazení clusteru Azure Průzkumník dat do vaší podsítě vám umožní nast
 | Jihovýchodní Asie | 52.148.86.165 |
 | Velká Británie – jih | 52.174.4.112 |
 | Velká Británie – západ | 52.169.237.246 |
-| Středozápadní USA | 52.161.31.69 |
+| USA – středozápad | 52.161.31.69 |
 | Západní Evropa | 52.174.4.112 |
 | Západní Indie | 13.71.25.187 |
 | Západní USA | 40.78.70.148 |

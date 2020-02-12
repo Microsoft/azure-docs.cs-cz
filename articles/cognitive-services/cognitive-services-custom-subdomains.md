@@ -74,24 +74,24 @@ Ano. Toto je seznam regionálních koncových bodů, které můžete použít s 
 | | Austrálie – východ | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Brazílie – jih | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Střední Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
-| | Střední USA | `https://centralus.api.cognitive.microsoft.com` |
+| | USA – střed | `https://centralus.api.cognitive.microsoft.com` |
 | | Východní Asie | `https://eastasia.api.cognitive.microsoft.com` |
-| | Východ USA | `https://eastus.api.cognitive.microsoft.com` |
-| | Východ USA 2 | `https://eastus2.api.cognitive.microsoft.com` |
+| | USA – východ | `https://eastus.api.cognitive.microsoft.com` |
+| | USA – východ 2 | `https://eastus2.api.cognitive.microsoft.com` |
 | | Francie – střed | `https://francecentral.api.cognitive.microsoft.com` |
 | | Indie – střed | `https://centralindia.api.cognitive.microsoft.com` |
 | | Japonsko – východ | `https://japaneast.api.cognitive.microsoft.com` |
 | | Jižní Korea – střed | `https://koreacentral.api.cognitive.microsoft.com` |
-| | Středoseverní USA | `https://northcentralus.api.cognitive.microsoft.com` |
+| | USA – středosever | `https://northcentralus.api.cognitive.microsoft.com` |
 | | Severní Evropa | `https://northeurope.api.cognitive.microsoft.com` |
 | | Jižní Afrika – sever | `https://southafricanorth.api.cognitive.microsoft.com` |
-| | Středojižní USA | `https://southcentralus.api.cognitive.microsoft.com` |
+| | USA – středojih | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Jihovýchodní Asie | `https://southeastasia.api.cognitive.microsoft.com` |
 | | Spojené království – jih | `https://uksouth.api.cognitive.microsoft.com` |
-| | Středozápadní USA | `https://westcentralus.api.cognitive.microsoft.com` |
+| | USA – středozápad | `https://westcentralus.api.cognitive.microsoft.com` |
 | | Západní Evropa | `https://westeurope.api.cognitive.microsoft.com` |
-| | Západní USA | `https://westus.api.cognitive.microsoft.com` |
-| | Západní USA 2 | `https://westus2.api.cognitive.microsoft.com` |
+| | USA – západ | `https://westus.api.cognitive.microsoft.com` |
+| | USA – západ 2 | `https://westus2.api.cognitive.microsoft.com` |
 | US Gov | USA (Gov) – Virginia | `https://virginia.api.cognitive.microsoft.us` |
 | Čína | Čína – východ 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Čína – sever | `https://chinanorth.api.cognitive.azure.cn` |

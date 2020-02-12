@@ -172,9 +172,9 @@ V tuto chvíli můžete přístup k nastavení `allowProtectedAppendWrites` pou�
 
 > [!IMPORTANT] 
 >  V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
-> - Východní USA
-> - Středojižní USA
-> - Západní USA 2
+> - USA – východ
+> - USA – středojih
+> - USA – západ 2
 >
 > Další informace najdete v tématu [Povolení zápisů v zabezpečeném připojení objektů BLOB](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
 

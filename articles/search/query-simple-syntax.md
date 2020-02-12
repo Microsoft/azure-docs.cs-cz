@@ -1,5 +1,5 @@
 ---
-title: Jednoduchá syntaxe dotazu
+title: Jednoduchá syntaxe dotazů
 titleSuffix: Azure Cognitive Search
 description: Referenční informace pro jednoduchou syntaxi dotazů, která se používá pro dotazy fulltextového vyhledávání v Azure Kognitivní hledání.
 manager: nitinme
@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,19 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fb98be9975de38ec9f65e723e078a1db8755b4ed
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792558"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152665"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Jednoduchá syntaxe dotazů v Azure Kognitivní hledání
 
 Azure Kognitivní hledání implementuje dva jazyky dotazů založené na Lucene: [jednoduchý analyzátor dotazů](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) a [analyzátor dotazů Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). V Azure Kognitivní hledání nezahrnuje jednoduchá syntaxe dotazů možnosti přibližné/sklony.  
 
-> [!NOTE]  
->  Azure Kognitivní hledání poskytuje alternativní [syntaxi dotazů Lucene](query-lucene-syntax.md) pro složitější dotazy. Další informace o architektuře analýzy dotazů a výhodách jednotlivých syntaxí najdete [v tématu Jak funguje fulltextové vyhledávání v Azure kognitivní hledání](search-lucene-query-architecture.md).
+> [!NOTE]
+> Jednoduchá syntaxe dotazů se používá pro výrazy dotazů předané v parametru **Search** rozhraní API pro [hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents) , takže se Nezaměňujte se [syntaxí OData](query-odata-filter-orderby-syntax.md) použitou pro parametr [$Filter](search-filters.md) rozhraní API. Tyto různé syntaxe mají vlastní pravidla pro vytváření dotazů, uvozovacích řetězců a tak dále.
+>
+> Azure Kognitivní hledání poskytuje alternativní [úplnou syntaxi dotazů Lucene](query-lucene-syntax.md) pro složitější dotazy v parametru **Search** . Další informace o architektuře analýzy dotazů a výhodách jednotlivých syntaxí najdete [v tématu Jak funguje fulltextové vyhledávání v Azure kognitivní hledání](search-lucene-query-architecture.md).
 
 ## <a name="how-to-invoke-simple-parsing"></a>Postup vyvolání jednoduché analýzy
 
@@ -72,7 +74,7 @@ Operátor přípona je hvězdička `*`. `lux*` například vyhledá dokumenty s 
 
 ## <a name="phrase-search-operator"></a>Operátor hledání fráze
 
-Operátor fráze uzavře frázi v uvozovkách `" "`. Například když `Roach Motel` (bez uvozovek) vyhledá dokumenty obsahující `Roach` nebo `Motel` kdekoli v libovolném pořadí, `"Roach Motel"` (s uvozovkami) budou odpovídat pouze dokumentům, které obsahují tuto celou frázi společně a v tomto pořadí (analýza textu je stále platí).
+Operátor fráze uzavře frázi v uvozovkách `" "`. Například když `Roach Motel` (bez uvozovek) vyhledá dokumenty obsahující `Roach` nebo `Motel` kdekoli v libovolném pořadí, `"Roach Motel"` (s uvozovkami) budou odpovídat pouze dokumentům, které obsahují tuto celou frázi společně a v tomto pořadí (analýza textu se stále používá).
 
 ## <a name="precedence-operator"></a>Priorita – operátor
 
@@ -88,7 +90,7 @@ Operátor priority uzavře řetězec do závorek `( )`. `motel+(wifi | luxury)` 
 > [!NOTE]  
 >  I když uvozovací znaky zachovává tokeny, analýza textu je může rozdělit v závislosti na režimu analýzy. Podrobnosti najdete v tématu [Podpora &#40;jazyka&#41; Azure kognitivní hledání REST API](index-add-language-analyzers.md) .  
 
-## <a name="see-also"></a>Další informace najdete v tématech  
+## <a name="see-also"></a>Viz také  
 
 + [Hledání dokumentů &#40;Azure kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) 
 + [Syntaxe dotazů Lucene](query-lucene-syntax.md)

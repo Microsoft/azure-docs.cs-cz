@@ -77,7 +77,7 @@ Pokud se rozhodnete počkat do plánované fáze údržby, měli byste zvážit 
 
 #### <a name="paired-regions"></a>Spárované oblasti
 
-Každá oblast Azure je spárovaná s jinou oblastí v rámci stejného geografického okolí. Dohromady vytvářejí pár oblastí. V průběhu plánované fáze údržby Azure aktualizuje jenom virtuální počítače v jedné oblasti páru oblastí. Když například aktualizujete virtuální počítač v Střed USA – sever, Azure neaktualizuje žádný virtuální počítač ve Střed USA – jih ve stejnou dobu. V ostatních oblastech, jako je Severní Evropa, však může údržba probíhat ve stejnou dobu jako v oblasti Východní USA. Porozumět způsobu, jakým dvojice oblastí fungují, vám pomůžou lépe distribuovat vaše virtuální počítače do různých oblastí. Další informace najdete v tématu [dvojice oblastí Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Každá oblast Azure je spárovaná s jinou oblastí v rámci stejného geografického okolí. Dohromady vytvářejí pár oblastí. V průběhu plánované fáze údržby Azure aktualizuje jenom virtuální počítače v jedné oblasti páru oblastí. Když například aktualizujete virtuální počítač v Střed USA – sever, Azure neaktualizuje žádný virtuální počítač ve Střed USA – jih ve stejnou dobu. V ostatních oblastech, jako je Severní Evropa, však může údržba probíhat ve stejnou dobu jako v oblasti USA – východ. Porozumět způsobu, jakým dvojice oblastí fungují, vám pomůžou lépe distribuovat vaše virtuální počítače do různých oblastí. Další informace najdete v tématu [dvojice oblastí Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 #### <a name="availability-sets-and-scale-sets"></a>Sady dostupnosti a sady škálování
 

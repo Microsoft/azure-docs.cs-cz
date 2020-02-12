@@ -68,7 +68,7 @@ Pomocí [Azure Portal vytvořte obor názvů Event Hubs](https://portal.azure.co
 | Cenová úroveň | Úroveň Basic |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
-| Umístění | Východ USA |
+| Umístění | USA – východ |
 | Jednotky propustnosti | 1\. místo |
 
 ### <a name="stream-analytics-job"></a>Stream Analytics úlohy
@@ -80,7 +80,7 @@ Pomocí [Azure Portal vytvořte úlohu Stream Analytics](https://portal.azure.co
 | Name (Název)    | Vyberte název vaší úlohy. |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | DetectStoppedDevices |
-| Umístění | Východ USA |
+| Umístění | USA – východ |
 | Hostitelské prostředí | Cloud |
 | Jednotky streamování | 3 |
 
@@ -95,7 +95,7 @@ Pomocí [Azure Portal vytvořte aplikaci funkcí](https://portal.azure.com/#crea
 | Skupina prostředků | DetectStoppedDevices |
 | OS | Windows |
 | Plán hostování | Plán Consumption |
-| Umístění | Východ USA |
+| Umístění | USA – východ |
 | Zásobník modulu runtime | .NET |
 | Storage | Vytvořit nový |
 

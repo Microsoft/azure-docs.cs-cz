@@ -113,7 +113,7 @@ Když máte projekt skupiny prostředků Azure, vytvořte aplikaci logiky pomoc�
    | ------- | ------------- | ----------- |
    | Uživatelský účet | Fabrikam <br> sophia-owen@fabrikam.com | Účet, který jste použili při přihlášení k aplikaci Visual Studio |
    | **Předplatné** | Průběžné platby <br> (sophia-owen@fabrikam.com) | Název vašeho předplatného Azure a přidruženého účtu |
-   | **Skupina prostředků** | MyLogicApp-RG <br> (Západní USA) | Skupina prostředků Azure a umístění pro ukládání a nasazování prostředků vaší aplikace logiky |
+   | **Skupina prostředků** | MyLogicApp-RG <br> (USA – západ) | Skupina prostředků Azure a umístění pro ukládání a nasazování prostředků vaší aplikace logiky |
    | **Umístění** | **Stejné jako skupina prostředků** | Typ umístění a konkrétní umístění pro nasazení aplikace logiky Typ umístění je buď oblast Azure, nebo existující [prostředí Integration Service (ISE)](connect-virtual-network-vnet-isolated-environment.md). <p>Pro tento rychlý Start ponechejte typ umístění nastavený na **oblast** a umístění nastavené na **stejné jako skupina prostředků**. <p>**Poznámka**: po vytvoření projektu skupiny prostředků můžete [změnit typ umístění a umístění](manage-logic-apps-with-visual-studio.md#change-location), ale jiný typ umístění ovlivní vaši aplikaci logiky různými způsoby. |
    ||||
 

@@ -35,9 +35,9 @@ Skupiny serverů Citus () jsou k dispozici v následujících oblastech Azure:
 * Jižní
     * Kanada – střed *
     * USA – východ
-    * Východ USA 2
+    * USA – východ 2
     * Střed USA – sever *
-    * Západní USA 2
+    * USA – západ 2
 * Asie a Tichomoří:
     * Austrálie – východ *
     * Jihovýchodní Asie

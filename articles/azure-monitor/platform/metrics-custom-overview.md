@@ -171,13 +171,13 @@ Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouz
 |Oblast Azure |Předpona regionálního koncového bodu|
 |---|---|
 | **USA a Kanada** | |
-|Středozápadní USA | https:\//westcentralus.monitoring.azure.com/ |
-|Západní USA 2       | https:\//westus2.monitoring.azure.com/ |
-|Středoseverní USA | https:\//northcentralus.monitoring.azure.com
-|Středojižní USA| https:\//southcentralus.monitoring.azure.com/ |
-|Střední USA      | https:\//centralus.monitoring.azure.com |
+|USA – středozápad | https:\//westcentralus.monitoring.azure.com/ |
+|USA – západ 2       | https:\//westus2.monitoring.azure.com/ |
+|USA – středosever | https:\//northcentralus.monitoring.azure.com
+|USA – středojih| https:\//southcentralus.monitoring.azure.com/ |
+|USA – střed      | https:\//centralus.monitoring.azure.com |
 |Střední Kanada | https:\//canadacentral.Monitoring.Azure.comc
-|Východ USA| https:\//eastus.monitoring.azure.com/ |
+|USA – východ| https:\//eastus.monitoring.azure.com/ |
 | **Evropa** | |
 |Severní Evropa    | https:\//northeurope.monitoring.azure.com/ |
 |Západní Evropa     | https:\//westeurope.monitoring.azure.com/ |
@@ -186,7 +186,7 @@ Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouz
 | **Poskytl** | |
 |Jižní Afrika – sever | https:\//southafricanorth.monitoring.azure.com
 | **Asie** | |
-|Střed Indie | https:\//centralindia.monitoring.azure.com
+|Indie – střed | https:\//centralindia.monitoring.azure.com
 |Austrálie – východ | https:\//australiaeast.monitoring.azure.com
 |Japonsko – východ | https:\//japaneast.monitoring.azure.com
 |Jihovýchodní Asie  | https:\//southeastasia.monitoring.azure.com |

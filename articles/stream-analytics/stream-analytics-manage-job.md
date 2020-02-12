@@ -54,7 +54,7 @@ Pomocí následujícího postupu vytvořte centrum událostí a odešlete do ně
    |Name (Název)     | myEventHubsNS        |  Jedinečný název pro identifikaci oboru názvů centra událostí.       |
    |Předplatné     |   \<Vaše předplatné\>      |   Vyberte předplatné Azure, ve kterém chcete vytvořit centrum událostí.      |
    |Skupina prostředků     |   MyASADemoRG      |  Vyberte **Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet.       |
-   |Umístění     |   Západní USA 2      |    Umístění, kde můžete nasadit obor názvů centra událostí.     |
+   |Umístění     |   USA – západ 2      |    Umístění, kde můžete nasadit obor názvů centra událostí.     |
 
 4. Pro zbývající nastavení použijte výchozí možnosti a vyberte **Vytvořit**.
 
@@ -137,7 +137,7 @@ Teď, když máte stream událostí volání, můžete vytvořit úlohu Stream A
    |Název úlohy     |  ASATutorial       |   Jedinečný název pro identifikaci oboru názvů centra událostí.      |
    |Předplatné    |  \<Vaše předplatné\>   |   Vyberte předplatné Azure, ve kterém chcete vytvořit úlohu.       |
    |Skupina prostředků   |   MyASADemoRG      |   Vyberte **Použít existující** a zadejte název nové skupiny prostředků pro váš účet.      |
-   |Umístění   |    Západní USA 2     |      Umístění, kde můžete nasadit úlohu. Doporučuje se umístit úlohu a centrum událostí do stejné oblasti, abyste dosáhli nejlepšího výkonu a abyste neplatili za přenos dat mezi oblastmi.      |
+   |Umístění   |    USA – západ 2     |      Umístění, kde můžete nasadit úlohu. Doporučuje se umístit úlohu a centrum událostí do stejné oblasti, abyste dosáhli nejlepšího výkonu a abyste neplatili za přenos dat mezi oblastmi.      |
    |Hostitelské prostředí    | Cloud        |     Úlohy Stream Analytics můžete nasadit do cloudu nebo do hraničního zařízení. Cloud umožňuje nasazení do cloudu Azure a Edge umožňuje nasazení do zařízení IoT Edge.    |
    |Jednotky streamování     |    1\. místo       |      Jednotky streamování představují výpočetní prostředky nutné k provedení úlohy. Ve výchozím nastavení je tato hodnota nastavená na 1. Podrobnosti o škálování jednotek streamování najdete v článku věnovaném [principům a úpravám jednotek streamování](stream-analytics-streaming-unit-consumption.md).      |
 

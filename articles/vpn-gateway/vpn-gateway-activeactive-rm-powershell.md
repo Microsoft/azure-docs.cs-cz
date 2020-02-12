@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: dce05c558423400d095c83800cdcaf85e174e081
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ec3697208434eb971e47136416f2c2cc541b5cea
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860402"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152070"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurace připojení VPN S2S typu aktivní-aktivní pomocí bran Azure VPN
 
 Tento článek vás provede kroky k vytvoření připojení typu aktivní-aktivní mezi lokalitami a VNet-to-VNet pomocí modelu nasazení Správce prostředků a PowerShellu.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-highly-available-cross-premises-connections"></a>O vysoce dostupných připojeních mezi různými místy
 Abyste dosáhli vysoké dostupnosti pro připojení mezi různými místy a VNet-to-VNet, měli byste nasadit víc bran VPN a navázat víc paralelních připojení mezi vašimi sítěmi a Azure. Přehled možností připojení a topologie najdete v tématu [vysoce dostupné možnosti připojení mezi různými místy a VNET-to-VNet](vpn-gateway-highlyavailable.md) .

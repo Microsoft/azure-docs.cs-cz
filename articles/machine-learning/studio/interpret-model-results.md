@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 3fc369c59626faae4c97f896650269820626b1ae
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 19ae6e8fd8e8a3118343ed8734abb67bc817c3d5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454702"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153464"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretace výsledků modelu v Azure Machine Learning Studio (Classic)
 Toto téma vysvětluje, jak vizualizovat a interpretovat výsledky předpovědi v Azure Machine Learning Studio (Classic). Po vyškolení modelu a provedení předpovědi nad ním ("skóre modelu") potřebujete pochopit a interpretovat výsledek předpovědi.
@@ -56,7 +56,7 @@ Příkladem problému s klasifikací dvou tříd je klasifikace Iris květů. Ú
 
 ![Snímek obrazovky s experimentem Iris](./media/interpret-model-results/1.png)
 
-Obrázek 1: Experiment pro problémy s klasifikací dvou tříd Iris
+Obrázek 1. Experiment pro problémy s klasifikací dvou tříd Iris
 
 Byl proveden experiment pro vyřešení tohoto problému, jak je znázorněno na obrázku 1. Byl vyškolený a vyhodnocený model rozhodovacího stromu se dvěma třídami. Nyní můžete vizualizovat výsledky předpovědi z modulu [skóre modelu][score-model] kliknutím na výstupní port modulu určení [skóre modelu][score-model] a následným kliknutím na **vizualizovat**.
 
@@ -94,7 +94,7 @@ Po spuštění webové služby a zadání hodnot některých funkcí instance te
 
 Obrázek 5. Výsledek webové služby pro klasifikaci Iris dvou tříd
 
-### <a name="multi-class-classification"></a>Klasifikace s více třídami
+### <a name="multi-class-classification"></a>Klasifikace více tříd
 **Příklad experimentu**
 
 V tomto experimentu provedete úlohu rozpoznávání písmen jako příklad klasifikace s více třídami. Klasifikátor se pokusí odhadnout určité písmeno (třídu) na základě některých hodnot atributů psaných rukou extrahovaných z imagí psaných rukou.
@@ -127,7 +127,7 @@ Obrázek 8. Kód R pro extrakci popisků s skóre a související pravděpodobno
 
 ![Výsledek experimentu](./media/interpret-model-results/9.png)
 
-Obrázek 9. Finální bodování experimentu s klasifikací více tříd rozpoznávání písmen
+Obrázek 9: Finální bodování experimentu s klasifikací více tříd rozpoznávání písmen
 
 Po publikování a spuštění webové služby a zadání hodnot vstupních funkcí se vrácený výsledek bude nacházet jako obrázek 10. Tato ruka psaná písmena s extrahovanou 16 funkcemi je předpovězená jako "T" s pravděpodobností 0,9715.
 
@@ -224,7 +224,7 @@ Pro doporučované systémy můžete použít problém doporučení restaurace j
 
 * Hodnocení restaurace od zákazníků
 * Data funkcí zákazníka
-* Funkční data restaurace
+* Data funkcí restaurace
 
 K dispozici je několik věcí s modulem Matchbox, který je [doporučený pro výuku][train-matchbox-recommender] v Azure Machine Learning Studio (Classic):
 

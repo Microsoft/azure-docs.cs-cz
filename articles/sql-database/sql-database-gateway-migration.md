@@ -27,17 +27,17 @@ Zákazníci budou upozorňováni e-mailem a v Azure Portal předem o jakékoli z
 
 První kolo migrace provozu na novější brány se plánuje na **14. října 2019** v následujících oblastech:
 - Brazílie – jih
-- Západní USA
+- USA – západ
 - Západní Evropa
-- Východ USA
-- Střední USA
+- USA – východ
+- USA – střed
 - Jihovýchodní Asie
-- Středojižní USA
+- USA – středojih
 - Severní Evropa
-- Středoseverní USA
+- USA – středosever
 - Japonsko – západ
 - Japonsko – východ
-- Východ USA 2
+- USA – východ 2
 - Východní Asie
 
 Migrace provozu změní veřejnou IP adresu, kterou služba DNS pro váš SQL Database vyřeší.

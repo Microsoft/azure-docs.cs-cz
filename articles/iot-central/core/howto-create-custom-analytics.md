@@ -65,7 +65,7 @@ Pomocí [Azure Portal vytvořte obor názvů Event Hubs](https://portal.azure.co
 | Cenová úroveň | Úroveň Basic |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | IoTCentralAnalysis |
-| Umístění | Východ USA |
+| Umístění | USA – východ |
 | Jednotky propustnosti | 1\. místo |
 
 ### <a name="azure-databricks-workspace"></a>Pracovní prostor Azure Databricks
@@ -77,7 +77,7 @@ Pomocí [Azure Portal vytvořte službu Azure Databricks](https://portal.azure.c
 | Název pracovního prostoru    | Volba názvu pracovního prostoru |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | IoTCentralAnalysis |
-| Umístění | Východ USA |
+| Umístění | USA – východ |
 | Cenová úroveň | Úroveň Standard |
 
 Po vytvoření požadovaných prostředků vypadá vaše skupina prostředků **IoTCentralAnalysis** jako na následujícím snímku obrazovky:

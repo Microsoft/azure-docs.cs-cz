@@ -106,26 +106,26 @@ Níže jsou uvedené aktuálně podporované oblasti pro každý operační syst
 |Austrálie – jihovýchod | ✔ | ✔<sup>1</sup> |
 |Brazílie – jih| ✔<sup>2</sup> |  |
 |Střední Kanada| ✔ |  |
-|Střední USA| ✔ |  |
+|USA – střed| ✔ |  |
 |Východní Asie| ✔ |  |
-|Východ USA | ✔ | ✔<sup>1</sup> |
-|Východ USA 2| ✔ |  |
+|USA – východ | ✔ | ✔<sup>1</sup> |
+|USA – východ 2| ✔ |  |
 |Francie – střed| ✔ |  |
 |Německo – středozápad| ✔ | |
 |Japonsko – východ| ✔ | ✔<sup>1</sup> |
 |Japonsko – západ| ✔ | |
 |Korea – střed| ✔ |  |
-|Středoseverní USA| ✔ |  |
+|USA – středosever| ✔ |  |
 |Severní Evropa| ✔ | ✔<sup>1</sup> |
-|Středojižní USA| ✔ | ✔<sup>1</sup> |
+|USA – středojih| ✔ | ✔<sup>1</sup> |
 |Jižní Indie | ✔ | |
 |Jihovýchodní Asie| ✔ | ✔<sup>1</sup> |
 |Spojené království – jih| ✔ | |
 |Velká Británie – západ| ✔ |  |
 |Západní Evropa| ✔ | ✔<sup>1</sup> |
 |Západní Indie| ✔ |  |
-|Západní USA| ✔ | ✔<sup>1</sup> |
-|Západní USA 2| ✔ |  |
+|USA – západ| ✔ | ✔<sup>1</sup> |
+|USA – západ 2| ✔ |  |
 
 <sup>1</sup> Maximální horizontální navýšení kapacity je omezené na 20 instancí.  
 <sup>2</sup> . Maximální horizontální navýšení kapacity je omezeno na 60 instancí.

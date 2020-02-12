@@ -32,7 +32,7 @@ Přihlaste se k [Azure Portal](https://portal.azure.com)a vytvořte prostředek 
    | ------------- |:-------------|:-----|
    | **Název**      | Jedinečná hodnota | Název, který identifikuje monitorovanou aplikaci. |
    | **Skupina prostředků**     | myResourceGroup      | Název nové nebo existující skupiny prostředků pro hostování dat App Insights |
-   | **Umístění** | Východní USA | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
+   | **Umístění** | USA – východ | Vyberte umístění poblíž vaší aplikace nebo poblíž místa, kde je vaše aplikace hostovaná. |
 
 > [!NOTE]
 > I když můžete použít stejný název prostředku v různých skupinách prostředků, může být výhodné použít globálně jedinečný název. To může být užitečné v případě, že plánujete [provádění dotazů mezi prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) , protože je zjednodušená požadovaná syntaxe.

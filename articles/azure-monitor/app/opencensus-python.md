@@ -42,7 +42,7 @@ Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete |
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování Application Insightsch dat |
-   | **Umístění** | Východ USA | Umístění poblíž vaší oblasti nebo poblíž místa, kde je vaše aplikace hostována |
+   | **Umístění** | USA – východ | Umístění poblíž vaší oblasti nebo poblíž místa, kde je vaše aplikace hostována |
 
 1. Vyberte **Vytvořit**.
 

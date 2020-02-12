@@ -92,7 +92,7 @@ V příkladech používáme následující hodnoty:
 
 * Název virtuální sítě: TestVNet1
 * Skupina prostředků: TestRG1
-* Umístění: Východní USA
+* Umístění: USA – východ
 * TestVNet1: 10.11.0.0/16 a 10.12.0.0/16
 * FrontEnd: 10.11.0.0/24
 * BackEnd: 10.12.0.0/24
@@ -111,7 +111,7 @@ V příkladech používáme následující hodnoty:
 * BackEnd: 10.42.0.0/24
 * GatewaySubnet: 10.42.255.0/27
 * Skupina prostředků: TestRG4
-* Umístění: Západní USA
+* Umístění: USA – západ
 * Název brány: VNet4GW
 * Veřejná IP adresa: VNet4GWIP
 * Typ sítě VPN: RouteBased

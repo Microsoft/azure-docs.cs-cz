@@ -2,17 +2,17 @@
 title: Co je model a balíček cloudové služby | Microsoft Docs
 description: Popisuje model cloudové služby (. csdef,. cscfg) a balíček (. cspkg) v Azure.
 services: cloud-services
-author: tgore03
+author: tanmaygore
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: 0d04236861287074087cc125d7b0d44dc65eccbf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360697"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148305"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Co je model cloudové služby a jak ho mám zabalit?
 Cloudová služba se vytvoří ze tří součástí, definice služby *(. csdef)* , konfigurace služby *(. cscfg)* a balíčku služby *(. cspkg)* . Soubory **ServiceDefinition. csdef** a **ServiceConfig. cscfg** jsou založené na jazyce XML a popisují strukturu cloudové služby a způsob jejich konfigurace. souhrnně označovaný jako model. **ServicePack. cspkg** je soubor zip, který je generován z **ServiceDefinition. csdef** a mimo jiné, obsahuje všechny požadované binární závislosti. Azure vytvoří cloudovou službu z nástroje **ServicePack. cspkg** a **ServiceConfig. cscfg**.
@@ -106,7 +106,7 @@ Obsahuje definice místních prostředků úložiště. Prostředek místního �
 **Objem**  
 Obsahuje definice pro importované moduly. Předchozí příklad kódu ukazuje moduly pro Připojení ke vzdálené ploše a Azure Connect.
 
-**Startup**  
+**Úvod**  
 Obsahuje úlohy, které se spouštějí při spuštění role. Úkoly jsou definovány v souboru. cmd nebo ve spustitelném souboru.
 
 <a name="cscfg"></a>
@@ -216,6 +216,9 @@ Konfiguraci cloudové služby můžete aktualizovat, když běží v Azure, ani�
 <a name="cspkg"></a>
 
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
+> [!NOTE]
+> Maximální velikost balíčku, která se dá nasadit, je 600MB.
+
 Pokud chcete nasadit aplikaci jako cloudovou službu v Azure, musíte nejdřív aplikaci zabalit v příslušném formátu. Pomocí nástroje příkazového řádku **CSPack** (nainstalovaného se sadou [Azure SDK](https://azure.microsoft.com/downloads/)) můžete vytvořit soubor balíčku jako alternativu k sadě Visual Studio.
 
 **CSPack** používá obsah souboru definice služby a konfiguračního souboru služby k definování obsahu balíčku. **CSPack** vygeneruje soubor balíčku aplikace (. cspkg), který můžete nahrát do Azure pomocí [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Ve výchozím nastavení se balíček jmenuje `[ServiceDefinitionFileName].cspkg`, ale můžete zadat jiný název pomocí možnosti `/out` **CSPack**.
@@ -261,7 +264,7 @@ Kde proměnné jsou definovány takto:
 
 | Proměnná | Hodnota |
 | --- | --- |
-| \[DirectoryName\] |Podadresář v kořenovém adresáři projektu, který obsahuje soubor. csdef projektu Azure. |
+| \[Directory\] |Podadresář v kořenovém adresáři projektu, který obsahuje soubor. csdef projektu Azure. |
 | \[ServiceDefinition\] |Název definičního souboru služby. Ve výchozím nastavení má tento soubor název ServiceDefinition. csdef. |
 | \[OutputFileName\] |Název vygenerovaného souboru balíčku. Obvykle je tato nastavení nastavena na název aplikace. Pokud není zadán žádný název souboru, vytvoří se balíček aplikace jako \[ApplicationName\]. cspkg. |
 | \[RoleName\] |Název role definovaný v definičním souboru služby. |

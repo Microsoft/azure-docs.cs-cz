@@ -82,16 +82,16 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |Brazílie – jih     |    B1, B2, S0, S1, S2, S4, D1     |     1\. místo    |
 |Střední Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1\. místo    |
 |USA – východ     |     B1, B2, S0, S1, S2, S4, D1    |    1\. místo     |
-|Východ USA 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Východ USA 2     |     S8, S9, S8v2, S9v2   |    1\. místo    |
-|Středoseverní USA     |     B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
-|Střední USA     |    B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
-|Středojižní USA     |    B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
-|Středozápadní USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
-|Západní USA     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|Západní USA     |    S8, S9, S8v2, S9v2   |    2  |
-|Západní USA 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|Západní USA 2    |    S8, S9, S8v2, S9v2  |    1\. místo     |
+|USA – východ 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
+|USA – východ 2     |     S8, S9, S8v2, S9v2   |    1\. místo    |
+|USA – středosever     |     B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
+|USA – střed     |    B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
+|USA – středojih     |    B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
+|USA – středozápad   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|USA – západ     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
+|USA – západ     |    S8, S9, S8v2, S9v2   |    2  |
+|USA – západ 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
+|USA – západ 2    |    S8, S9, S8v2, S9v2  |    1\. místo     |
 
 ### <a name="europe"></a>Evropa
 

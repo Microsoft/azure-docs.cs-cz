@@ -36,21 +36,21 @@ Než začnete, ujistěte se, že rozumíte informace v následujících částec
 
 Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analytics v následujících oblastech:
 
-- Středozápadní USA
-- Západní USA
-- Západní USA 2
-- Středojižní USA
-- Východní USA
+- USA – středozápad
+- USA – západ
+- USA – západ 2
+- USA – středojih
+- USA – východ
 - USA – východ 2
-- Střední USA
-- Středoseverní USA
+- USA – střed
+- USA – středosever
 - Střední Kanada
 - Spojené království – jih
 - Severní Evropa
 - Západní Evropa
 - Východní Asie
 - Jihovýchodní Asie
-- Střed Indie
+- Indie – střed
 - Japonsko – východ
 - Austrálie – východ
 - Austrálie – jihovýchod

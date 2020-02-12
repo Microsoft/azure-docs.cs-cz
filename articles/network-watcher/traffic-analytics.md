@@ -61,13 +61,13 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 
 * Kanada – střed
 * Střed USA – západ
-* Východní USA
-* Východní USA 2
+* USA – východ
+* USA – východ 2
 * Střed USA – sever
 * Střed USA – jih
 * Střed USA
-* Západní USA
-* Západní USA 2
+* USA – západ
+* USA – západ 2
 * Francie – střed
 * Západní Evropa
 * Severní Evropa
@@ -79,7 +79,7 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 * Východní Asie
 * Jihovýchodní Asie
 * Jižní Korea – střed
-* Střed Indie
+* Indie – střed
 * Indie – jih
 * Japonsko – východ 
 * Japonsko – západ
@@ -91,13 +91,13 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Kanada – střed
 * Střed USA – západ
-* Východní USA
-* Východní USA 2
+* USA – východ
+* USA – východ 2
 * Střed USA – sever
 * Střed USA – jih
 * Střed USA
-* Západní USA
-* Západní USA 2
+* USA – západ
+* USA – západ 2
 * Střed USA
 * Francie – střed
 * Západní Evropa
@@ -110,7 +110,7 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Východní Asie
 * Jihovýchodní Asie
 * Jižní Korea – střed
-* Střed Indie
+* Indie – střed
 * Japonsko – východ
 * USA (Gov) – Virginia
 * Čína – východ 2

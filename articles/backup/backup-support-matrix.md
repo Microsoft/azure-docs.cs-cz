@@ -150,7 +150,7 @@ Azure Backup přidal funkci obnovení mezi oblastmi, aby se posílila dostupnost
 
 | Typ správy zálohování | Podporováno                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Virtuální počítač Azure               | Ano. Veřejné omezené verze Preview podporované pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Středozápadní USA   |
+| Virtuální počítač Azure               | Ano. Veřejné omezené verze Preview podporované pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | USA – středozápad   |
 | Agent MARS/místní | Ne                                                           | Nevztahuje se               |
 | SQL/SAP HANA          | Ne                                                           | Nevztahuje se               |
 | AFS                    | Ne                                                           | Nevztahuje se               |

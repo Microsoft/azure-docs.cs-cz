@@ -30,7 +30,7 @@ Azure vyhrazené HSM nabízí kryptografického klíče úložiště v Azure. Sp
 Moduly hardwarového zabezpečení jsou distribuovány napříč datovými centry společnosti Microsoft a je možné snadno zřídit jako pár zařízení jako základ vysoce dostupné řešení. Může být také nasadit napříč oblastmi odolné řešení po havárii. Aktuálně jsou oblasti s vyhrazené modulu hardwarového zabezpečení k dispozici:
 
 * USA – východ
-* Východní USA 2
+* USA – východ 2
 * USA – západ
 * Střed USA – jih
 * Jihovýchodní Asie

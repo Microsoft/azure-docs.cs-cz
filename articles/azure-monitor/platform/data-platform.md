@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: b5d35fc14d69da2246c0ef5d4ef6d19a9e0c8462
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 74ede523c9747de4746fe1854bd1e352eba2f7e3
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750999"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148891"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor datovou platformu
 
@@ -38,7 +38,7 @@ Prostředky Azure generují významné množství dat monitorování. Azure Moni
 
 Metriky v Azure Monitor jsou uloženy v databázi časových řad, která je optimalizována pro analýzu časových údajů s časovým razítkem. Díky tomu jsou metriky zvláště vhodné pro upozorňování a rychlé zjišťování problémů. Můžou vám sdělit, jak systém funguje, ale obvykle se musí kombinovat s protokoly, aby identifikoval hlavní příčinu problémů.
 
-Metriky jsou k dispozici pro interaktivní analýzu v Azure Portal s využitím [Průzkumník metrik](../app/metrics-explorer.md). Můžete je přidat do [řídicího panelu Azure](../learn/tutorial-app-dashboards.md) pro vizualizaci v kombinaci s ostatními daty a používat pro [výstrahy](alerts-metric.md)téměř v reálném čase.
+Metriky jsou k dispozici pro interaktivní analýzu v Azure Portal s využitím [Azure Průzkumník metrik](../platform/metrics-getting-started.md). Můžete je přidat do [řídicího panelu Azure](../learn/tutorial-app-dashboards.md) pro vizualizaci v kombinaci s ostatními daty a používat pro [výstrahy](alerts-metric.md)téměř v reálném čase.
 
 Přečtěte si další informace o Azure Monitor metrikách, včetně jejich zdrojů dat v [metrikách v Azure monitor](data-platform-metrics.md).
 
@@ -83,7 +83,7 @@ Seznam různých zdrojů dat, které naplňují jednotlivé typy, najdete v tém
 
 
 ## <a name="stream-data-to-external-systems"></a>Datový Stream k externím systémům
-Kromě použití nástroje pro analýzu dat monitorování v Azure, můžete mít povinnost předat externího nástroje, jako jsou informace o zabezpečení a událostí produktů pro správu (SIEM). Toto přesměrování se obvykle provádí přímo z monitorovaných prostředků prostřednictvím [Azure Event Hubs](/azure/event-hubs/). Některé zdroje je možné nakonfigurovat tak, aby odesílaly data přímo do centra událostí, zatímco můžete k získání požadovaných dat použít jiný proces, jako je například aplikace logiky. Podrobnosti najdete v tématu [streamování dat monitorování Azure do centra událostí pro využití externím nástrojem](stream-monitoring-data-event-hubs.md) .
+Kromě použití nástroje pro analýzu dat monitorování v Azure, můžete mít povinnost předat externího nástroje, jako jsou informace o zabezpečení a událostí produktů pro správu (SIEM). Toto přesměrování se obvykle provádí přímo ze sledovaných prostředků prostřednictvím [Azure Event Hubs](/azure/event-hubs/). Některé zdroje je možné nakonfigurovat tak, aby odesílaly data přímo do centra událostí, zatímco můžete k získání požadovaných dat použít jiný proces, jako je například aplikace logiky. Podrobnosti najdete v tématu [streamování dat monitorování Azure do centra událostí pro využití externím nástrojem](stream-monitoring-data-event-hubs.md) .
 
 
 
@@ -91,4 +91,4 @@ Kromě použití nástroje pro analýzu dat monitorování v Azure, můžete mí
 
 - Přečtěte si další informace o [metrikách v Azure monitor](data-platform-metrics.md).
 - Přečtěte si další informace o [protokolech v Azure monitor](data-platform-logs.md).
-- Další informace o [data k dispozici monitorování](data-sources.md) pro různé prostředky v Azure.
+- Přečtěte si o [dostupných datech monitorování](data-sources.md) různých prostředků v Azure.

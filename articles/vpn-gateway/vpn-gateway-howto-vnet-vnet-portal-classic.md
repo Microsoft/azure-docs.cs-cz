@@ -10,7 +10,7 @@ ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: ca24cbdd9541456cbaa3f384587fee17d47f5ca2
 ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2020
 ms.locfileid: "75864107"
@@ -75,8 +75,8 @@ Následující tabulka ukazuje příklad definování virtuální sítě. Rozsah
 
 | Virtual Network | Adresní prostor | Region (Oblast) | Připojí se k místní síťové lokalitě. |
 |:--- |:--- |:--- |:--- |
-| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |Východní USA |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
-| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Západní USA |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
+| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA – východ |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
+| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA – západ |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 ## <a name="vnetvalues"></a>Krok 2 – Vytvoření virtuálních sítí
 
@@ -98,7 +98,7 @@ Adresní prostor: 10.11.0.0/16, 10.12.0.0/16 (volitelné)<br>
 Název podsítě: výchozí<br>
 Rozsah adres podsítě: 10.11.0.1/24<br>
 Skupina prostředků: ClassicRG<br>
-Umístění: Východní USA<br>
+Umístění: USA – východ<br>
 GatewaySubnet: 10.11.1.0/27
 
 **Hodnoty pro virtuální sítě testvnet4**
@@ -108,7 +108,7 @@ Adresní prostor: 10.41.0.0/16, 10.42.0.0/16 (volitelné)<br>
 Název podsítě: výchozí<br>
 Rozsah adres podsítě: 10.41.0.1/24<br>
 Skupina prostředků: ClassicRG<br>
-Umístění: Západní USA<br>
+Umístění: USA – západ<br>
 GatewaySubnet: 10.41.1.0/27
 
 **Při vytváření virtuální sítě Pamatujte na následující nastavení:**
@@ -137,8 +137,8 @@ Místní lokalita pro každou virtuální síť je druhá virtuální síť. Ná
 
 | Virtual Network | Adresní prostor | Region (Oblast) | Připojí se k místní síťové lokalitě. |
 |:--- |:--- |:--- |:--- |
-| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |Východní USA |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
-| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Západní USA |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
+| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA – východ |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
+| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA – západ |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 1. Vyhledejte virtuální sítě testvnet1 v Azure Portal. V části **připojení VPN** na stránce klikněte na **Brána**.
 

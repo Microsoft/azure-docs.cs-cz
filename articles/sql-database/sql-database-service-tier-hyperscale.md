@@ -170,27 +170,27 @@ Azure SQL Database úroveň škálování je aktuálně dostupná v následujíc
 - Austrálie – jihovýchod
 - Brazílie – jih
 - Střední Kanada
-- Střední USA
+- USA – střed
 - Čína – východ 2
 - Čína – sever 2
 - Východní Asie
-- Východní USA
+- USA – východ
 - Východní USA 2
 - Francie – střed
 - Japonsko – východ
 - Japonsko – západ
 - Korea – střed
 - Korea – jih
-- Středoseverní USA
+- USA – středosever
 - Severní Evropa
 - Jižní Afrika – sever
-- Středojižní USA
+- USA – středojih
 - Jihovýchodní Asie
 - Spojené království – jih
 - Velká Británie – západ
 - Západní Evropa
-- Západní USA
-- Západní USA 2
+- USA – západ
+- USA – západ 2
 
 Pokud chcete vytvořit databázi s škálovatelným škálováním v oblasti, která není uvedená jako podporovaná, můžete odeslat požadavek na registraci prostřednictvím Azure Portal. Pracujeme na rozbalení seznamu podporovaných oblastí, takže se prosím vraťte k seznamu nejnovější oblasti.
 

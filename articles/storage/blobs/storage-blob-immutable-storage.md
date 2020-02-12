@@ -88,9 +88,9 @@ Zásady právního blokování nemohou povolit `allowProtectedAppendWrites` a ne
 
 > [!IMPORTANT] 
 > V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v rámci uchovávání dat v následujících oblastech:
-> - Východní USA
-> - Středojižní USA
-> - Západní USA 2
+> - USA – východ
+> - USA – středojih
+> - USA – západ 2
 >
 > V tuto chvíli se důrazně doporučuje, abyste nepovolili `allowProtectedAppendWrites` ve všech ostatních oblastech kromě těch, které jsou uvedené, protože můžou způsobit občasné chyby a ovlivnit dodržování předpisů pro doplňovací objekty blob. Další informace o tom, jak nastavit a uzamknout zásady uchovávání informací na základě času, najdete v tématu [Povolení povolení povolit chráněným připojením objektů BLOB](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes).
 

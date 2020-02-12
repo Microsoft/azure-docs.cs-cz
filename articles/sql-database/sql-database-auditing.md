@@ -11,7 +11,7 @@ ms.reviewer: vanto
 ms.date: 08/22/2019
 ms.openlocfilehash: 8f82f0539432418f967d51f00e659ce92d1fa9b6
 ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2020
 ms.locfileid: "76719802"
@@ -252,8 +252,8 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
     > [!IMPORTANT]
     > V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
     > - USA – východ
-    > - Středojižní USA
-    > - Západní USA 2
+    > - USA – středojih
+    > - USA – západ 2
 
 
 ## <a id="subheading-7"></a>Správa Azure SQL Server a auditování databáze pomocí Azure PowerShell

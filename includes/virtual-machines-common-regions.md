@@ -44,7 +44,7 @@ Mezi příklady párů oblasti patří:
 
 | Primární | Sekundární |
 |:--- |:--- |
-| Západní USA |Východní USA |
+| USA – západ |USA – východ |
 | Severní Evropa |Západní Evropa |
 | Jihovýchodní Asie |Východní Asie |
 

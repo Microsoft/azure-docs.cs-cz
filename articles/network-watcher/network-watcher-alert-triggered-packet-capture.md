@@ -80,7 +80,7 @@ Prvním krokem je vytvoření funkce Azure pro zpracování výstrahy a vytvoře
     |**Předplatné**|[Vaše předplatné] Předplatné, pro které chcete vytvořit aplikaci Function App.||
     |**Skupina prostředků**|PacketCaptureRG|Skupina prostředků, která obsahuje aplikaci Function App|
     |**Plán hostování**|Plán Consumption| Typ plánování použití aplikace Function App Možnosti jsou spotřeba nebo plán Azure App Service. |
-    |**Umístění**|Střední USA| Oblast, ve které se má vytvořit aplikace Function App|
+    |**Umístění**|USA – střed| Oblast, ve které se má vytvořit aplikace Function App|
     |**Účet úložiště**|automaticky generované| Účet úložiště, který Azure Functions potřeby pro účely obecného úložiště.|
 
 3. V okně **aplikace funkcí PacketCaptureExample** vyberte **funkce** > **vlastní funkce** > **+** .

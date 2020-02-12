@@ -78,21 +78,21 @@ Název oblasti naplněný v poli umístění prostředku v podrobnostech o použ
 |    CanadaCentral         |    Kanada – střed                            |
 |    CanadaEast            |    Kanada – východ                               |
 |    CentralIndia          |    Indie – střed                            |
-|    centralus             |    Střední USA                            |
+|    centralus             |    USA – střed                            |
 |    chinaeast             |    Čína – východ                            |
 |    chinanorth            |    Čína – sever                           |
 |    eastasia              |    Východní Asie                             |
-|    eastus                |    Východní USA                               |
-|    eastus2               |    Východní USA 2                             |
+|    eastus                |    USA – východ                               |
+|    eastus2               |    USA – východ 2                             |
 |    GermanyCentral        |    Německo – střed                            |
 |    GermanyNortheast      |    Německo – severovýchod                          |
 |    japaneast             |    Japonsko – východ                               |
 |    japanwest             |    Japonsko – západ                               |
 |    KoreaCentral          |    Korea – střed                            |
 |    KoreaSouth            |    Korea – jih                              |
-|    northcentralus        |    Středoseverní USA                      |
+|    northcentralus        |    USA – středosever                      |
 |    northeurope           |    Severní Evropa                          |
-|    southcentralus        |    Středojižní USA                      |
+|    southcentralus        |    USA – středojih                      |
 |    southeastasia         |    Jihovýchodní Asie                        |
 |    SouthIndia            |    Indie – jih                              |
 |    UKNorth               |    USA – sever                              |
@@ -108,7 +108,7 @@ Název oblasti naplněný v poli umístění prostředku v podrobnostech o použ
 |    westcentralus         |    USA – středozápad                       |
 |    westeurope            |    Západní Evropa                           |
 |    WestIndia             |    Indie – západ                               |
-|    westus                |    Západní USA                               |
+|    westus                |    USA – západ                               |
 |    westus2               |    USA – západ 2                             |
 
 

@@ -16,13 +16,13 @@ ms.locfileid: "72783553"
 | Oblast              | Maximální počet domén selhání  |
 |---------------------|-------------------------|
 | USA – východ             | 3                       |
-| Východ USA 2           | 3                       |
-| Západní USA             | 3                       |
-| Západní USA 2           | 2                       |
-| Střední USA          | 3                       |
-| Středoseverní USA    | 3                       |
-| Středojižní USA    | 3                       |
-| Středozápadní USA     | 2                       |
+| USA – východ 2           | 3                       |
+| USA – západ             | 3                       |
+| USA – západ 2           | 2                       |
+| USA – střed          | 3                       |
+| USA – středosever    | 3                       |
+| USA – středojih    | 3                       |
+| USA – středozápad     | 2                       |
 | Kanada – střed      | 3                       |
 | Kanada – východ         | 2                       |
 |                     |                         |
@@ -36,7 +36,7 @@ ms.locfileid: "72783553"
 | Japonsko – východ          | 2                       |
 | Japonsko – západ          | 2                       |
 | Jižní Indie         | 2                       |
-| Střed Indie       | 2                       |
+| Indie – střed       | 2                       |
 | Západní Indie          | 2                       |
 | Korea – střed       | 2                       |
 | Korea – jih         | 2                       |

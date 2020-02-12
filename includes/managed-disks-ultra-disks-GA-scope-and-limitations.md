@@ -18,9 +18,9 @@ ms.locfileid: "74935937"
 V současnosti mají extrémně disky další omezení, jsou následující:
 
 - Jsou podporovány v následujících oblastech s proměnlivým počtem zón dostupnosti na oblast:
-    - Východ USA 2
+    - USA – východ 2
     - USA – východ
-    - Západní USA 2
+    - USA – západ 2
     - Jihovýchodní Asie
     - Severní Evropa
     - Západní Evropa

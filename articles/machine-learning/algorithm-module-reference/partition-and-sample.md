@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: ce232fc9216166e94520203bb4afbf4c152aaf6f
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 772c16dc292d8bce4b927c9c2ce3ff6ee0ed399d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314925"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152121"
 ---
 # <a name="partition-and-sample-module"></a>Oddíl a vzorový modul
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Tento modul použijte k provedení vzorkování pro datovou sadu nebo k vytvoření oddílů z datové sady.
 
@@ -44,7 +44,7 @@ Vzorkování je důležitý nástroj ve strojovém učení, protože umožňuje 
 
 Tento modul podporuje více metod, jak rozdělit data do oddílů nebo pro vzorkování. Zvolte nejprve metodu a pak nastavte další možnosti vyžadované metodou.
 
-- Hlavní uzel
+- Head
 - Vzorkování
 - Přiřadit k skládání
 - Vybrat skládání

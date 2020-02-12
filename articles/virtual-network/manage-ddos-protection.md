@@ -47,7 +47,7 @@ Pro většinu organizací není nutné vytvářet více než jeden plán. Plán 
     |Name (Název)           | myDdosProtectionPlan                              |
     |Předplatné   | Vyberte své předplatné.                         |
     |Skupina prostředků | Vyberte **vytvořit nové** a zadejte *myResourceGroup* . |
-    |Umístění       | Východní USA                                           |
+    |Umístění       | USA – východ                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>Povolení DDoS pro novou virtuální síť
 
@@ -60,7 +60,7 @@ Pro většinu organizací není nutné vytvářet více než jeden plán. Plán 
     | Name (Název)            | myVirtualNetwork                                             |
     | Předplatné    | Vyberte své předplatné.                                    |
     | Skupina prostředků  | Vyberte **Použít existující** a pak vyberte **myResourceGroup**. |
-    | Umístění        | Východní USA                                                      |
+    | Umístění        | USA – východ                                                      |
     | Ochrana DDos | Vyberte **Standard** a potom v části **DDoS Protection**vyberte **myDdosProtectionPlan**. Vybraný plán může být ve stejném nebo jiném předplatném, než je virtuální síť, ale oba odběry musí být přidružené ke stejnému Azure Active Directory tenantovi.|
 
 Virtuální síť nejde přesunout do jiné skupiny prostředků nebo předplatného, pokud je DDoS standard pro virtuální síť povolený. Pokud potřebujete přesunout virtuální síť se zapnutou DDoS standardem, zakažte nejprve DDoS Standard, přesuňte virtuální síť a pak povolte DDoS Standard. Po přesunu se automaticky vyladěné prahové hodnoty zásad pro všechny chráněné veřejné IP adresy ve virtuální síti resetují.

@@ -31,7 +31,7 @@ Vaše aplikace se připojí k instanci služby SignalR Service v Azure.
     | **Název prostředku** | Globálně jedinečný název | Název, který identifikuje novou instanci služby SignalR Service. Platné znaky jsou `a-z`, `0-9` a `-`.  | 
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém se nová instance služby SignalR Service vytvoří. | 
     | **[Skupina prostředků](../../azure-resource-manager/management/overview.md)** |  myResourceGroup | Název nové skupiny prostředků, ve které se má instance služby SignalR Service vytvořit. | 
-    | **Umístění** | Západní USA | Zvolte [oblast](https://azure.microsoft.com/regions/) ve vaší blízkosti. |
+    | **Umístění** | USA – západ | Zvolte [oblast](https://azure.microsoft.com/regions/) ve vaší blízkosti. |
     | **Cenová úroveň** | Zadarmo | Vyzkoušejte si službu Azure SignalR Service zdarma. |
     | **Počet jednotek** |  Nevztahuje se | Počet jednotek určuje, kolik připojení může instance služby SignalR Service přijmout. To lze nakonfigurovat jen na úrovni Standard. |
     | **Režim služby** |  Řešení bez serverů | Pro použití s Azure Functions nebo REST API. |

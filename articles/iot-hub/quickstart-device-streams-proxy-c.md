@@ -54,7 +54,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 * Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
 
-  * Střední USA
+  * USA – střed
   * Střed USA EUAP
   * Severní Evropa
   * Jihovýchodní Asie

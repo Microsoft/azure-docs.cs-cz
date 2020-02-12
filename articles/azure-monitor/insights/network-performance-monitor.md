@@ -41,13 +41,13 @@ NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části
 * Západní Evropa
 * Francie – střed
 
-* Středozápadní USA
-* Středoseverní USA
-* Středojižní USA
-* Střední USA
-* Východní USA
-* Východ USA 2
-* Západní USA 2
+* USA – středozápad
+* USA – středosever
+* USA – středojih
+* USA – střed
+* USA – východ
+* USA – východ 2
+* USA – západ 2
 * Východní Japonsko
 * Jihovýchodní Asie
 * Austrálie – jihovýchod
@@ -56,7 +56,7 @@ NPM může monitorovat propojení mezi sítěmi a aplikacemi v jakékoli části
 * Jižní Velká Británie
 * Východní Asie
 * Korea – střed
-* Střed Indie
+* Indie – střed
 * ) – Virginia vlády USA
 * Čína – východ 2
 

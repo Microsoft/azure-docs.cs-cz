@@ -46,7 +46,7 @@ Po spuštění skriptu PowerShell se zobrazí výzva k zadání následujících
 |Parametr|Hodnota|
 |------|------|
 |Název skupiny prostředků Azure | Zadejte jedinečný název pro skupinu prostředků.|
-|Umístění| Zadejte oblast Azure, například „Střední USA“. |
+|Umístění| Zadejte oblast Azure, například „USA – střed“. |
 |Název výchozího účtu úložiště | Zadejte jedinečný název účtu úložiště. |
 |Název clusteru | Zadejte jedinečný název pro cluster HDInsight.|
 |Přihlašovací údaje clusteru | Tento účet slouží pro připojení k řídicímu panelu clusteru v pozdější fázi rychlého startu.|

@@ -4,12 +4,12 @@ description: Další informace o skupinách pro správu, fungování jejich opr�
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: 507f4575e6d8daa16a1ed7db3d429d2810a63a7c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a8b087eeaa2f087e79a4d05764199e3b72b6ec66
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750252"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77151968"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 
@@ -87,7 +87,7 @@ Skupině pro správu se dá například přiřadit role RBAC Přispěvatel virtu
 
 Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 
-| Název role RBAC             | Vytváření | Přejmenovat | Přesun** | Odstranit | Přiřazení přístupu | Přiřazení zásad | Čtení  |
+| Název role RBAC             | Vytvoření | Přejmenovat | Přesun** | Odstranění | Přiřazení přístupu | Přiřazení zásad | Čtení  |
 |:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
 |Vlastník                       | ×      | ×      | ×      | ×      | ×             | ×             | ×     |
 |Přispěvatel                 | ×      | ×      | ×      | ×      |               |               | ×     |
@@ -102,7 +102,7 @@ Následující diagram ukazuje role a podporované akce pro skupiny pro správu.
 
 ## <a name="custom-rbac-role-definition-and-assignment"></a>Vlastní definice role RBAC a přiřazení
 
-Podpora vlastní role RBAC pro skupiny pro správu se v současné době podporuje s některými [omezeními](#limitations).  Můžete definovat rozsah skupiny pro správu v oboru přiřazení definice role.  Tato vlastní role RBAC pak bude k dispozici pro přiřazení v této skupině pro správu a skupině pro správu, předplatného, skupině prostředků nebo prostředku pod ní. Tato vlastní role zdědí hierarchii stejně jako všechny předdefinované role.    
+Vlastní podpora rolí RBAC pro skupiny pro správu je momentálně ve verzi Preview s některými [omezeními](#limitations).  Můžete definovat rozsah skupiny pro správu v oboru přiřazení definice role.  Tato vlastní role RBAC pak bude k dispozici pro přiřazení v této skupině pro správu a skupině pro správu, předplatného, skupině prostředků nebo prostředku pod ní. Tato vlastní role zdědí hierarchii stejně jako všechny předdefinované role.    
 
 ### <a name="example-definition"></a>Příklad definice
 [Definování a vytvoření vlastní role](../../role-based-access-control/custom-roles.md) se nemění se zahrnutím skupin pro správu. Pomocí úplné cesty definujte skupinu pro správu **/providers/Microsoft.Management/managementgroups/{GroupID}** . 

@@ -62,10 +62,10 @@ Tyto modely DNN jsou aktuálně k dispozici:
   - SSD-VGG
 
 FPGA jsou k dispozici v těchto oblastech Azure:
-  - Východní USA
+  - USA – východ
   - Jihovýchodní Asie
   - Západní Evropa
-  - Západní USA 2
+  - USA – západ 2
 
 > [!IMPORTANT]
 > Aby bylo možné optimalizovat latenci a propustnost, váš klient odesílající data do modelu FPGA by měl být v jedné z výše uvedených oblastí (ten, na který jste model nasadili).

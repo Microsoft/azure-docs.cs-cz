@@ -54,7 +54,7 @@ Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatn
     | Nastavení      |  Navrhovaná hodnota   | Popis                                        |
     | --- | --- | --- |
     | **Název** | MyCognitiveServicesAccnt | Zvolte jedinečný název účtu. |
-    | **Umístění** | Západní USA | Použijte umístění, které je k vám nejblíže. |
+    | **Umístění** | USA – západ | Použijte umístění, které je k vám nejblíže. |
     | **Cenová úroveň** | F0 | Začněte s nejnižší úrovní. Pokud vyčerpáte všechna volání, proveďte škálování na vyšší úroveň.|
     | **Skupina prostředků** | myResourceGroup | Stejnou skupinu prostředků použijte pro všechny služby v tomto kurzu.|
 
@@ -141,7 +141,7 @@ Teď máte funkci, která kategorizuje skóre mínění. Dále vytvoříte aplik
     | ----------------- | ------------ | ------------- |
     | **Název** | TweetSentiment | Zvolte vhodný název vaší aplikace. |
     | **Skupina prostředků** | myResourceGroup | Zvolte stejnou existující skupinu prostředků jako předtím. |
-    | **Umístění** | Východní USA | Zvolte umístění, které je blízko vás. |    
+    | **Umístění** | USA – východ | Zvolte umístění, které je blízko vás. |    
 
 4. Po zadání odpovídajících hodnot nastavení klikněte na **Vytvořit** a vytvořte aplikaci logiky. 
 

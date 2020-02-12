@@ -145,7 +145,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
    | **Skupina prostředků** | LA-Tutorial-RG | Stejná skupina prostředků Azure, jakou jste používali dříve |
    | **OS** | <*vašeho operačního systému*> | Vyberte operační systém, který podporuje váš oblíbený programovací jazyk funkcí. V tomto příkladu vyberte možnost **Windows**. |
    | **Plán hostování** | Plán Consumption | Toto nastavení určuje, jak se při běhu aplikace funkcí mají přidělovat a škálovat prostředky, například výpočetní výkon. Podívejte se na [porovnání plánů hostování](../azure-functions/functions-scale.md). |
-   | **Umístění** | Západní USA | Stejná oblast, jakou jste používali dříve |
+   | **Umístění** | USA – západ | Stejná oblast, jakou jste používali dříve |
    | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Vyberte **.NET** pro C# funkce F# a. |
    | **Storage** | cleantextfunctionstorageacct | Vytvořte pro svou aplikaci funkcí účet úložiště. Použijte při tom jenom malá písmena a číslice. <p>**Poznámka:** Tento účet úložiště obsahuje vaše aplikace Function App a pro přílohy e-mailů se liší od dříve vytvořeného účtu úložiště. |
    | **Application Insights** | Zákaz | Zapne monitorování aplikací pomocí [Application Insights](../azure-monitor/app/app-insights-overview.md), ale pro tento kurz vyberte **Zakázat** > **použít**. |
@@ -240,7 +240,7 @@ Když zkontrolujete, že funkce pracuje správně, vytvořte aplikaci logiky. Te
    | **Název** | LA-ProcessAttachment | Název vaší aplikace logiky |
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Stejné předplatné Azure, jaké jste používali dříve |
    | **Skupina prostředků** | LA-Tutorial-RG | Stejná skupina prostředků Azure, jakou jste používali dříve |
-   | **Umístění** | Západní USA | Stejná oblast, jakou jste používali dříve |
+   | **Umístění** | USA – západ | Stejná oblast, jakou jste používali dříve |
    | **Log Analytics** | Vypnuto | Pro tento kurz vyberte nastavení **vypnuto** . |
    ||||
 

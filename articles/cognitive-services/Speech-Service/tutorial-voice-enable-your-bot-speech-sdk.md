@@ -109,7 +109,7 @@ V tomto okamžiku ověřte, že skupina prostředků (**SpeechEchoBotTutorial-re
 
 | JMÉNO | TYP  | UMÍSTĚNÍ |
 |------|-------|----------|
-| SpeechEchoBotTutorial – řeč | Cognitive Services | Západní USA |
+| SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
 
 ### <a name="create-an-azure-app-service-plan"></a>Vytvoření plánu služby Azure App Service
 
@@ -132,8 +132,8 @@ V tomto okamžiku ověřte, že vaše skupina prostředků (**SpeechEchoBotTutor
 
 | JMÉNO | TYP  | UMÍSTĚNÍ |
 |------|-------|----------|
-| SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | Západní USA |
-| SpeechEchoBotTutorial – řeč | Cognitive Services | Západní USA |
+| SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
+| SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
 
 ## <a name="build-an-echo-bot"></a>Sestavení robota s odezvou
 
@@ -209,9 +209,9 @@ Dalším krokem je nasazení nástroje echo bot do Azure. Existuje několik způ
 
 | JMÉNO | TYP  | UMÍSTĚNÍ |
 |------|-------|----------|
-| EchoBot20190805125647 | Aplikační služba | Západní USA |
-| SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | Západní USA |
-| SpeechEchoBotTutorial – řeč | Cognitive Services | Západní USA |
+| EchoBot20190805125647 | Aplikační služba | USA – západ |
+| SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
+| SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
 
 ## <a name="enable-web-sockets"></a>Povolit webové sokety
 
@@ -251,10 +251,10 @@ V tomto okamžiku ověřte skupinu prostředků **SpeechEchoBotTutorial-Resource
 
 | JMÉNO | TYP  | UMÍSTĚNÍ |
 |------|-------|----------|
-| EchoBot20190805125647 | Aplikační služba | Západní USA |
-| SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | Západní USA |
+| EchoBot20190805125647 | Aplikační služba | USA – západ |
+| SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
 | SpeechEchoBotTutorial-BotRegistration | Bot Channels Registration | Globální |
-| SpeechEchoBotTutorial – řeč | Cognitive Services | Západní USA |
+| SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
 
 > [!IMPORTANT]
 > Prostředek registrace kanálů robota zobrazí globální oblast, i když jste vybrali Západní USA. To se očekává.

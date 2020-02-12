@@ -61,7 +61,7 @@ Než začnete, udělejte toto:
    |Skupina prostředků|*vaše skupina prostředků*|
    |Název účtu|DB-VNet-Service-Endpoint|
    |API|Core (SQL)|
-   |Umístění|Západní USA|
+   |Umístění|USA – západ|
    |Geografická redundance|Zákaz|
    |Zápisy ve více oblastech|Povolení|
 

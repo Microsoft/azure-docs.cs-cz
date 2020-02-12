@@ -61,14 +61,14 @@ Pokud upřednostňujete možnost označení služby dvě a váš cluster se nach
 | &nbsp; | Austrálie – střed | HDInsight. AustraliaCentral |
 | Čína | Čína – východ 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Čína – sever 2 | HDInsight. ChinaNorth2 |
-| Spojené státy | Středoseverní USA | HDInsight. NorthCentralUS |
-| &nbsp; | Západní USA 2 | HDInsight. WestUS2 |
-| &nbsp; | Středozápadní USA | HDInsight. WestCentralUS |
+| Spojené státy | USA – středosever | HDInsight. NorthCentralUS |
+| &nbsp; | USA – západ 2 | HDInsight. WestUS2 |
+| &nbsp; | USA – středozápad | HDInsight. WestCentralUS |
 | Kanada | Východní Kanada | HDInsight. CanadaEast |
 | Brazílie | Brazílie – jih | HDInsight. BrazilSouth |
 | Korea | Korea – střed | HDInsight. KoreaCentral |
 | &nbsp; | Korea – jih | HDInsight. KoreaSouth |
-| Indie | Střed Indie | HDInsight. CentralIndia |
+| Indie | Indie – střed | HDInsight. CentralIndia |
 | &nbsp; | Jižní Indie | HDInsight. SouthIndia |
 | Japonsko | Japonsko – západ | HDInsight. JapanWest |
 | Francie | Francie – střed| HDInsight. FranceCentral |
@@ -95,12 +95,12 @@ Pokud je například cluster vytvořen v oblasti `East US 2`, bude nutné do sku
 
 | Země | Region (Oblast) | Značka služby |
 | ---- | ---- | ---- |
-| Spojené státy | Východ USA 2 | HDInsight. EastUS2 |
-| &nbsp; | Střední USA | HDInsight. CentralUS |
+| Spojené státy | USA – východ 2 | HDInsight. EastUS2 |
+| &nbsp; | USA – střed | HDInsight. CentralUS |
 | &nbsp; | NorthCentral nás | HDInsight. NorthCentralUS |
-| &nbsp; | Středojižní USA | HDInsight. SouthCentralUS |
-| &nbsp; | Východní USA | HDInsight. EastUS |
-| &nbsp; | Západní USA | HDInsight. WestUS |
+| &nbsp; | USA – středojih | HDInsight. SouthCentralUS |
+| &nbsp; | USA – východ | HDInsight. EastUS |
+| &nbsp; | USA – západ | HDInsight. WestUS |
 | Japonsko | Japonsko – východ | HDInsight. JapanEast |
 | Evropa | Severní Evropa | HDInsight. NorthEurope |
 | &nbsp; | Západní Evropa| HDInsight. WestEurope |

@@ -140,7 +140,7 @@ Nyní jste připraveni vygenerovat definici OpenAPI.
     | **Název** | Globálně jedinečný název | Název se vygeneruje na základě názvu vaší aplikace Function App. |
     | **Předplatné** | Vaše předplatné | Předplatné, ve kterém je tento nový prostředek vytvořen. |  
     | **[Skupina prostředků](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Stejný prostředek jako aplikace Function App, který by měl být nastaven za vás. |
-    | **Umístění** | Západní USA | Vyberte umístění Západní USA. |
+    | **Umístění** | USA – západ | Vyberte umístění Západní USA. |
     | **Název organizace** | Contoso | Název organizace, který se používá na portálu pro vývojáře, a pro e-mailová oznámení. |
     | **E-mail správce** | Váš e-mail | E-mail, který přijal systémová oznámení z API Management. |
     | **Cenová úroveň** | Spotřeba (Preview) | Úroveň spotřeby je ve verzi Preview a není dostupná ve všech oblastech. Úplné podrobnosti o cenách najdete na [stránce s cenami API Management](https://azure.microsoft.com/pricing/details/api-management/) . |

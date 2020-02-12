@@ -1,48 +1,39 @@
 ---
 title: Změna dat – LUIS
-titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak lze změnit data před predikce v Language Understanding (LUIS)
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: diberry
-ms.openlocfilehash: 1bde70dadbe1e5b8ba9bf90bd9ca2f48a4c65491
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/11/2020
+ms.openlocfilehash: 5547724a6333d248a7ba4e9aeecaaa8f331feb7d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381796"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148262"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Příkaz ALTER utterance dat před nebo během predikcí
-Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do predikce. Mezi ně patří [Oprava pravopisu](luis-tutorial-bing-spellcheck.md)a řešení problémů s pásmem pro předem sestavené [datetimeV2](luis-reference-prebuilt-datetimev2.md). 
+Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do predikce. Mezi ně patří [Oprava pravopisu](luis-tutorial-bing-spellcheck.md)a řešení problémů s pásmem pro předem sestavené [datetimeV2](luis-reference-prebuilt-datetimev2.md).
 
 ## <a name="correct-spelling-errors-in-utterance"></a>Psaní opravovat pravopisné chyby v utterance
 
-[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
+### <a name="v3-runtime"></a>Runtime V3
 
-Služba LUIS používá [API V7 kontrola pravopisu Bingu](../Bing-Spell-Check/overview.md) opravte pravopisné chyby utterance. Služba LUIS, musí klíč spojený s touto službou. Vytvoření klíče a pak přidejte klíč jako parametr řetězce dotazu na [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356). 
+Před odesláním utterance do LUIS je nutné předzpracovat text pro opravy pravopisu. Použijte příklad projevy se správným pravopisem a ujistěte se, že jste získali správnou předpovědi.
 
-<!--
-You can also correct spelling errors in the **Test** panel by [entering the key](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key is kept as a session variable in the browser for the Test panel. Add the key to the Test panel in each browser session you want spelling corrected. 
+Před odesláním do LUIS použijte [Kontrola pravopisu Bingu](../bing-spell-check/overview.md) k opravě textu.
 
-Usage of the key in the test panel and at the endpoint count toward the [key usage](https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/) quota. LUIS implements Bing Spell Check limits for text length. 
+### <a name="prior-to-v3-runtime"></a>Před verzí V3 runtime
 
--->
+LUIS používá [rozhraní API Bingu pro kontrolu pravopisu v7](../Bing-Spell-Check/overview.md) k opravě pravopisných chyb v utterance. Služba LUIS, musí klíč spojený s touto službou. Vytvořte klíč a pak na [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356)přidejte klíč jako parametr QueryString.
 
 Koncový bod vyžaduje dva parametry pro opravy pravopisu pracovat:
 
 |Param|Hodnota|
 |--|--|
 |`spellCheck`|Boolean|
-|`bing-spell-check-subscription-key`|[API V7 kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/) klíče koncového bodu|
+|`bing-spell-check-subscription-key`|Klíč koncového bodu [rozhraní API Bingu pro kontrolu pravopisu v7](https://azure.microsoft.com/services/cognitive-services/spell-check/)|
 
-Když [API V7 kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/) zjistí chybu, původní utterance a opravený utterance jsou vráceny spolu s předpovědí z koncového bodu.
+Když [rozhraní API Bingu pro kontrolu pravopisu v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) detekuje chybu, původní utterance a opravené utterance se vrátí společně s předpovědi z koncového bodu.
 
 #### <a name="v2-prediction-endpoint-responsetabv2"></a>[Předpověď odezvy koncového bodu v2](#tab/V2)
 
@@ -59,7 +50,7 @@ Když [API V7 kontrola pravopisu Bingu](https://azure.microsoft.com/services/cog
 ```
 
 #### <a name="v3-prediction-endpoint-responsetabv3"></a>[Prediktivní odezva koncového bodu V3](#tab/V3)
- 
+
 ```JSON
 {
     "query": "Book a flite to London?",
@@ -76,33 +67,33 @@ Když [API V7 kontrola pravopisu Bingu](https://azure.microsoft.com/services/cog
 }
 ```
 
-* * * 
+* * *
 
 ### <a name="list-of-allowed-words"></a>Seznam povolených slov
 Rozhraní API pro kontrolu pravopisu Bingu používané v LUIS nepodporuje seznam slov, která se mají ignorovat během úprav kontroly pravopisu. Pokud potřebujete povolený seznam slov nebo akronymů, před odesláním utterance do LUIS pro předpověď záměru zpracujte utterance v klientské aplikaci.
 
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Změna časového pásma datetimeV2 předem připravených entit
-Když aplikace LUIS používá předem vytvořenou entitu [datetimeV2](luis-reference-prebuilt-datetimev2.md) , hodnota DateTime může být vrácena v odpovědi předpovědi. Časové pásmo požadavku se používá k určení správné datum a čas k vrácení. Pokud požadavek pochází z robota nebo jiné centralizované aplikace před získáním LUIS, opravte časové pásmo, které používá služba LUIS. 
+Když aplikace LUIS používá předem vytvořenou entitu [datetimeV2](luis-reference-prebuilt-datetimev2.md) , hodnota DateTime může být vrácena v odpovědi předpovědi. Časové pásmo požadavku se používá k určení správné datum a čas k vrácení. Pokud požadavek pochází z robota nebo jiné centralizované aplikace před získáním LUIS, opravte časové pásmo, které používá služba LUIS.
 
 ### <a name="endpoint-querystring-parameter"></a>Parametr řetězce dotazu koncového bodu
-Časové pásmo je opravit tak, že přidáte uživatele časové pásmo pro [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) pomocí `timezoneOffset` param. Hodnota `timezoneOffset` během několika minut, chcete-li změnit čas by měl být kladné nebo záporné číslo.  
+Časové pásmo se opravuje přidáním časového pásma uživatele do [koncového bodu](https://go.microsoft.com/fwlink/?linkid=2092356) pomocí param `timezoneOffset`. Hodnota `timezoneOffset` by měla být kladné nebo záporné číslo v minutách, aby se změnil čas.
 
 |Param|Hodnota|
 |--|--|
 |`timezoneOffset`|kladné nebo záporné číslo, během několika minut|
 
 ### <a name="daylight-savings-example"></a>Příklad úspory letního času
-Pokud potřebujete vrácené předem připravených datetimeV2 upravit pro letní čas, měli byste použít `timezoneOffset` parametr řetězce dotazu s +/-hodnotu v minutách pro [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) dotazu.
+Pokud potřebujete vrátit předem sestavené datetimeV2 pro úpravu pro letní čas, měli byste použít parametr `timezoneOffset` QueryString s hodnotou +/-v minutách pro dotaz na [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) .
 
 #### <a name="v2-prediction-endpoint-requesttabv2"></a>[Hodnota koncového bodu předpovědi v2](#tab/V2)
 
-Přidáte 60 minut: 
+Přidáte 60 minut:
 
-https://{region}.API.cognitive.microsoft.com/luis/v2.0/Apps/{appId}?q=Turn světla na? **timezoneOffset = 60**& podrobné = {datový typ boolean} & Kontrola pravopisu = {datový typ boolean} & pracovní = {datový typ boolean} & Bingu – pravopisu – kontrola subscription-key = {řetězec} protoko & l = {datový typ boolean}
+https://{region}. API. vnímání. Microsoft. com/Luis/v 2.0/Apps/{appId}? q = zapnout světla? **timezoneOffset = 60**& verbose = {boolean} & kontroly pravopisu = {boolean} & fázování = {boolean} & Bing-check-Subscription-Subscription-Key = {string} & log = {Boolean}
 
-Odebrání 60 minut: 
+Odebrání 60 minut:
 
-https://{region}.API.cognitive.microsoft.com/luis/v2.0/Apps/{appId}?q=Turn světla na? **timezoneOffset = 60**& podrobné = {datový typ boolean} & Kontrola pravopisu = {datový typ boolean} & pracovní = {datový typ boolean} & Bingu – pravopisu – kontrola subscription-key = {řetězec} protoko & l = {datový typ boolean}
+https://{region}. API. vnímání. Microsoft. com/Luis/v 2.0/Apps/{appId}? q = zapnout světla? **timezoneOffset =-60**& verbose = {boolean} & kontrola pravopisu = {boolean} & fázování = {boolean} & Bing-check-check-Subscription-Key = {string} & log = {Boolean}
 
 #### <a name="v3-prediction-endpoint-requesttabv3"></a>[Požadavek na koncový bod verze V3](#tab/V3)
 
@@ -110,16 +101,16 @@ Přidáte 60 minut:
 
 https://{region}. API. vnímání. Microsoft. com/Luis/v 3.0-Preview/Apps/{appId}/sloty/produkce/předpověď? dotaz = zapnout světla? **timezoneOffset = 60**& kontroly pravopisu = {boolean} & Bing-check-Subscription-Subscription-Key = {string} & log = {Boolean}
 
-Odebrání 60 minut: 
+Odebrání 60 minut:
 
 https://{region}. API. vnímání. Microsoft. com/Luis/v 3.0-Preview/Apps/{appId}/sloty/produkce/předpověď? dotaz = zapnout světla? **timezoneOffset =-60**& kontrola pravopisu = {boolean} & Bing-check-Subscription-Subscription-Key = {string} & log = {Boolean}
 
 Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-* * * 
+* * *
 
 ## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>Kód jazyka C# určuje správnou hodnotu timezoneOffset
-Následující kód jazyka C# používá [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) třídy [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) metodou ke zjištění správné `timezoneOffset` podle systémový čas:
+Následující C# kód používá metodu [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) třídy [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) k určení správného `timezoneOffset` na základě systémového času:
 
 ```csharp
 // Get CST zone id
@@ -138,4 +129,4 @@ int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Opravovat pravopisné chyby v tomto kurzu](luis-tutorial-bing-spellcheck.md)
+> [Opravení pravopisných chyb pomocí tohoto kurzu](luis-tutorial-bing-spellcheck.md)

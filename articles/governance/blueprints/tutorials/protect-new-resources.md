@@ -155,7 +155,7 @@ Po publikování definice podrobného plánu ji můžete přiřadit k předplatn
      |Název artefaktu|Typ artefaktu|Název parametru|Hodnota|Popis|
      |-|-|-|-|-|
      |Skupina prostředků RGtoLock|Skupina prostředků|Název|TestingBPLocks|Definuje název nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
-     |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|Západní USA 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
+     |Skupina prostředků RGtoLock|Skupina prostředků|Umístění|USA – západ 2|Definuje umístění nové skupiny prostředků, na kterou se mají použít zámky podrobného plánu.|
      |StorageAccount|Šablona Resource Manageru|storageAccountType (StorageAccount)|Standard_GRS|SKU úložiště. Výchozí hodnota je _Standard_LRS_.|
 
 1. Po zadání všech parametrů vyberte **přiřadit** v dolní části stránky.

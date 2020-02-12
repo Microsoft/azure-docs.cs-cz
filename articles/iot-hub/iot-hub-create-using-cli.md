@@ -49,7 +49,7 @@ Pomocí Azure CLI vytvořte skupinu prostředků a pak přidejte službu IoT Hub
    ```
 
    > [!TIP]
-   > Předchozí příklad vytvoří skupinu prostředků v umístění Západní USA. Seznam dostupných umístění můžete zobrazit spuštěním tohoto příkazu: 
+   > Předchozí příklad vytvoří skupinu prostředků v umístění USA – západ. Seznam dostupných umístění můžete zobrazit spuštěním tohoto příkazu: 
    >
    >``` bash
    >az account list-locations -o table

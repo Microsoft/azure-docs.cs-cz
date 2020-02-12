@@ -59,7 +59,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
    | **Název** | LA-dobacesty | Název vaší aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`), kulaté závorky (`(`, `)`) a tečky (`.`). V tomto příkladu se používá "LA-Dobacesty". |
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Název vašeho předplatného Azure |
    | **Skupina prostředků** | LA-dobacesty-SP | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md), která se používá k uspořádání souvisejících prostředků. V tomto příkladu se používá "LA-Dobacesty-RG". |
-   | **Umístění** | Západní USA | TNelze načíst oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
+   | **Umístění** | USA – západ | TNelze načíst oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
 

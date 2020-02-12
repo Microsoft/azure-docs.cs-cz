@@ -33,7 +33,7 @@ Data Catalog je navržená pro technické a netechnické uživatele, včetně t�
 ## <a name="what-is-its-availability-by-region"></a>Jaká je její dostupnost podle oblastí?
 Služba Data Catalog Services je aktuálně dostupná v následujících datových centrech:
 
-* Západní USA
+* USA – západ
 * USA – východ
 * Západní Evropa
 * Severní Evropa

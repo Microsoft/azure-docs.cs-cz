@@ -105,7 +105,7 @@ Pokud si chcete zobrazit regionální webhooky, které se vytvořily v předchoz
 
 Historii volání a odpovědí webhooku uvidíte po kliknutí na jeden z nich. V protokolech obou webhooků byste měli vidět řadu pro akci **nahrání**. Protokol webhooku umístěného v oblasti *Západní USA* zobrazuje aktivaci akce **nahrání** příkazem `docker push` z předchozího kroku:
 
-![Protokol webhooku v registru kontejnerů na portálu Azure Portal (Západní USA)][tutorial-portal-02]
+![Protokol webhooku v registru kontejnerů na portálu Azure Portal (USA – západ)][tutorial-portal-02]
 
 ## <a name="view-the-updated-web-app"></a>Zobrazení aktualizované webové aplikace
 
@@ -117,7 +117,7 @@ Přejděte ve svém prohlížeči na obě nasazení regionální webové aplikac
 
 Pokud si chcete aktualizovanou aplikaci zobrazit, vyberte odkaz v přehledu služby App Service. Zde je příklad zobrazení aplikace běžící v oblasti *Západní USA*:
 
-![Zobrazení prohlížeče s upravenou webovou aplikací běžící v oblasti Západní USA][deployed-app-westus-modified]
+![Zobrazení prohlížeče s upravenou webovou aplikací běžící v oblasti USA – západ][deployed-app-westus-modified]
 
 Ověřte si zobrazením v prohlížeči, že aktualizovaná image kontejneru byla nasazená také v oblasti *East US*.
 

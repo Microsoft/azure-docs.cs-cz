@@ -52,7 +52,7 @@ Ukázková doména použitá pro tento kurz je contoso.net, ale použijte vlastn
    |**Název**|[název vaší domény] |Název domény, kterou jste si zakoupili. V tomto kurzu se jako příklad používá doména contoso.net.|
    |**Předplatné**|[Vaše předplatné]|Vyberte předplatné, ve kterém se má zóna vytvořit.|
    |**Skupina prostředků**|**Vytvořit novou:** contosoRG|Vytvořte skupinu prostředků. Název skupiny prostředků musí být v rámci vybraného předplatného jedinečný.<br>Umístění skupiny prostředků nemá žádný vliv na zónu DNS. Umístění zóny DNS je vždy globální a není zobrazeno.|
-   |**Umístění**|Východ USA||
+   |**Umístění**|USA – východ||
 
 ## <a name="retrieve-name-servers"></a>Načtení názvových serverů
 

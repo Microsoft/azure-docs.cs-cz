@@ -37,7 +37,7 @@ Nastavte v účtu Genomics následující údaje, viz předchozí obrázek.
  |Předplatné         | Název vašeho předplatného|Toto je fakturační jednotka pro vaše služby Azure – podrobnosti o vašem předplatném najdete v části [Předplatná](https://account.azure.com/Subscriptions) |      
  |Skupina prostředků       | MyResourceGroup       |  Skupiny prostředků umožňují sdružení několika prostředků Azure (účet úložiště, účet Genomics atd.) do jedné skupiny pro zjednodušení správy. Další informace najdete v tématu [Skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Platné názvy skupin prostředků najdete v tématu [Pravidla pojmenování](/azure/architecture/best-practices/resource-naming). |
  |Název účtu         | MyGenomicsAccount     |Zvolte jedinečný identifikátor účtu. Informace o platných názvech najdete v části [Pravidla pojmenování](/azure/architecture/best-practices/resource-naming) |
- |Umístění                   | Západní USA 2                    |    Služba je dostupná v oblastech Západní USA 2, Západní Evropa a Jihovýchodní Asie |
+ |Umístění                   | USA – západ 2                    |    Služba je dostupná v oblastech USA – západ 2, Západní Evropa a Jihovýchodní Asie |
 
 V horním řádku nabídek můžete vybrat **oznámení** a monitorovat proces nasazení.
 
@@ -101,7 +101,7 @@ Nakonfigurujte účet úložiště pomocí následujících informací, jak je z
  |Předplatné         | Vaše předplatné Azure |Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |      
  |Skupina prostředků       | MyResourceGroup       |  Můžete vybrat stejnou skupinu prostředků jako váš účet genomiky. Platné názvy skupin prostředků najdete v tématu [pravidla pojmenování](/azure/architecture/best-practices/resource-naming) . |
  |Název účtu úložiště         | MyStorageAccount     |Zvolte jedinečný identifikátor účtu. Platné názvy najdete v tématu [pravidla pojmenování](/azure/architecture/best-practices/resource-naming) . |
- |Umístění                  | Západní USA 2                  | Použijte stejné umístění jako umístění vašeho účtu genomika, abyste snížili náklady na výstup a snížili latenci.  | 
+ |Umístění                  | USA – západ 2                  | Použijte stejné umístění jako umístění vašeho účtu genomika, abyste snížili náklady na výstup a snížili latenci.  | 
  |Výkon                  | Úroveň Standard                   | Výchozí nastavení je Standard. Další podrobnosti o účtech úložiště úrovně Standard a Premium najdete v tématu [Úvod do služby Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) .    |
  |Account kind (Druh účtu)       | BlobStorage       |  Úložiště objektů blob nabízí 2–5× rychlejší stahování a nahrávání než úložiště pro obecné účely. |
  |Replikace                  | (Locally redundant storage) Místně redundantní úložiště                  | Místně redundantní úložiště replikuje data třikrát v rámci oblasti, ve které jste vytvořili účet úložiště. Další informace najdete v tématu [Replikace Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy).    |

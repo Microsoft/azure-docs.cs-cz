@@ -121,11 +121,11 @@ Propojené služby slouží ve službě Data Factory ke dvěma účelům:
 ![Diagram: Data Factory, služba pro integraci dat v cloudu – klíčové koncepty](./media/data-factory-introduction/data-integration-service-key-concepts.png)
 
 ## <a name="supported-regions"></a>Podporované oblasti
-V současné době můžete vytvářet datové továrny v oblastech Západní USA, Východní USA a Severní Evropa. Datová továrna nicméně může přistupovat k úložištím dat a výpočetním službám v jiných oblastech Azure za účelem přesouvání dat mezi úložišti dat nebo zpracování dat pomocí výpočetních služeb.
+V současné době můžete vytvářet datové továrny v oblastech USA – západ, USA – východ a Severní Evropa. Datová továrna nicméně může přistupovat k úložištím dat a výpočetním službám v jiných oblastech Azure za účelem přesouvání dat mezi úložišti dat nebo zpracování dat pomocí výpočetních služeb.
 
 Samotná služba Azure Data Factory žádná data neuchovává. Umožňuje vytvářet pracovní postupy řízené daty k orchestraci přesouvání dat mezi [podporovanými úložišti dat](#data-movement-activities). Umožňuje také zpracovávat data pomocí [výpočetních služeb](#data-transformation-activities) v jiných oblastech nebo v místním prostředí. Také vám umožňuje [monitorovat a spravovat pracovní postupy](data-factory-monitor-manage-pipelines.md) pomocí uživatelského prostředí nebo prostřednictvím kódu programu.
 
-Služba Data Factory je dostupná pouze v oblastech Západní USA, Východní USA a Severní Evropa. Služba pohánějící přesouvání dat ve službě Data Factory je dostupná [globálně](data-factory-data-movement-activities.md#global) v několika oblastech. Pokud je úložiště dat za bránou firewall, o přesun dat se postará [Systém sledování a správy dat](data-factory-move-data-between-onprem-and-cloud.md) nainstalovaný ve vašem místním prostředí.
+Služba Data Factory je dostupná pouze v oblastech USA – západ, USA – východ a Severní Evropa. Služba pohánějící přesouvání dat ve službě Data Factory je dostupná [globálně](data-factory-data-movement-activities.md#global) v několika oblastech. Pokud je úložiště dat za bránou firewall, o přesun dat se postará [Systém sledování a správy dat](data-factory-move-data-between-onprem-and-cloud.md) nainstalovaný ve vašem místním prostředí.
 
 Předpokládejme například, že vaše výpočetní prostředí, jako je cluster Azure HDInsight nebo služba Azure Machine Learning, se nacházejí v oblasti Západní Evropa. Můžete vytvořit a používat instanci služby Azure Data Factory v oblasti Severní Evropa. Pak ji můžete použít k naplánování úloh ve vašich výpočetních prostředích v oblasti Západní Evropa. Trvá několik milisekund, než Data Factory aktivuje úlohu ve výpočetním prostředí, ale čas potřebný pro vykonání úlohy ve výpočetním prostředí se nemění.
 

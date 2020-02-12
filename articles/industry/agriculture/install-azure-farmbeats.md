@@ -57,11 +57,11 @@ Náklady na Azure FarmBeats jsou agregované z nákladů na základní služby A
 V současné době se Azure FarmBeats podporuje ve veřejných cloudových prostředích v následujících oblastech:
 
 - Austrálie – východ
-- Střední USA
+- USA – střed
 - USA – východ
-- Východní USA 2
-- Západní USA
-- Západní USA 2
+- USA – východ 2
+- USA – západ
+- USA – západ 2
 - Severní Evropa
 - Západní Evropa
 - Východní Asie
