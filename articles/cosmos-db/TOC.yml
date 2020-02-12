@@ -494,6 +494,8 @@
           href: javascript-query-api.md
     - name: Optimalizace nákladů na Azure Cosmos DB
       items:
+        - name: Plánování a správa nákladů
+          href: plan-manage-costs.md
         - name: Cenový model
           href: how-pricing-works.md
         - name: Celkové náklady na vlastnictví

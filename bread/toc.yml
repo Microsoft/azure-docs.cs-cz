@@ -152,9 +152,6 @@
     - name: Container Registry
       tocHref: /azure/container-registry/
       topicHref: /azure/container-registry/
-    - name: Cost Management
-      tocHref: /azure/cost-management/
-      topicHref: /azure/cost-management/
     - name: Functions
       tocHref: /azure/azure-functions/
       topicHref: /azure/azure-functions/
@@ -261,9 +258,6 @@
     - name: Batch AI
       tocHref: /azure/batch-ai/
       topicHref: /azure/batch-ai/
-    - name: Správa nákladů a fakturace
-      tocHref: /azure/billing/
-      topicHref: /azure/billing/
     - name: Biztalk Services
       tocHref: /azure/biztalk-services/
       topicHref: /azure/biztalk-services/
@@ -798,3 +792,19 @@
     - name: Windows Virtual Desktop
       tocHref: /azure/virtual-desktop/
       topicHref: /azure/virtual-desktop/
+    - name: Cost Management a fakturace
+      tocHref: /azure/cost-management-billing/
+      topicHref: /azure/cost-management-billing/
+      items:
+        - name: Začínáme
+          tocHref: /azure/cost-management-billing/understand/
+          topicHref: /azure/cost-management-billing/understand/
+        - name: Správa nákladů a využití
+          tocHref: /azure/cost-management-billing/costs/
+          topicHref: /azure/cost-management-billing/costs/
+        - name: Správa účtů a předplatných
+          tocHref: /azure/cost-management-billing/manage/
+          topicHref: /azure/cost-management-billing/manage/
+        - name: Reservations
+          tocHref: /azure/cost-management-billing/reservations/
+          topicHref: /azure/cost-management-billing/reservations/

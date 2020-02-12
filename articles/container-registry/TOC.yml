@@ -8,7 +8,7 @@
       items:
         - name: Informace o službě Container Registry
           href: container-registry-intro.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       expanded: true
       items:
         - name: Vytvoření registru kontejneru – CLI
@@ -84,12 +84,14 @@
               items:
                 - name: Přehled ověřování
                   href: container-registry-authentication.md
-                - name: Ověřování instančních objektů
+                - name: Ověřování pomocí instančního objektu
                   href: container-registry-auth-service-principal.md
-                - name: Ověřování spravovaných identit
+                - name: Ověřování pomocí spravované identity
                   href: container-registry-authentication-managed-identity.md
                 - name: Ověřování ze služby Azure Container Instances
                   href: container-registry-auth-aci.md
+                - name: Ověřování z Kubernetes s tajným klíčem pro načtení
+                  href: container-registry-auth-kubernetes.md
                 - name: Ověřování ze služby Azure Kubernetes Service (AKS)
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
             - name: Řízení přístupu na základě role
@@ -129,7 +131,7 @@
       items:
         - name: Úlohy ACR
           href: container-registry-tasks-overview.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       expanded: true
       items:
         - name: 'Sestavení, nasdílení změn a spuštění image – CLI'
@@ -149,7 +151,7 @@
               href: container-registry-tutorial-base-image-update.md
             - name: Naplánování úlohy
               href: container-registry-tasks-scheduled.md
-    - name: Ukázky
+    - name: ukázky
       expanded: false
       items:
         - name: Soubory YAML a Dockerfile

@@ -135,7 +135,7 @@
           href: logic-apps-enterprise-integration-certificates.md
         - name: Metadata artefaktů
           href: logic-apps-enterprise-integration-metadata.md
-        - name: Příjem zpráv B2B
+        - name: Příjem a odesílání zpráv B2B
           href: logic-apps-enterprise-integration-b2b.md
         - name: Výměna zpráv AS2
           href: logic-apps-enterprise-integration-as2.md

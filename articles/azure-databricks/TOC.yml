@@ -320,26 +320,45 @@
         - name: FileStore
           href: /azure/databricks/data/filestore
           maintainContext: true
-    - name: Nástroje pro business intelligence
+    - name: Integrace
       items:
-        - name: Propojení nástrojů pro BI
-          href: /azure/databricks/bi/jdbc-odbc-bi
+        - name: Přehled integrací
+          href: /azure/databricks/integrations/index
           maintainContext: true
-        - name: Tableau
-          href: /azure/databricks/bi/tableau
-          maintainContext: true
-        - name: Power BI
-          href: /azure/databricks/bi/power-bi
-          maintainContext: true
-        - name: Alteryx
-          href: /azure/databricks/bi/alteryx
-          maintainContext: true
-        - name: Looker
-          href: /azure/databricks/bi/looker
-          maintainContext: true
-        - name: SQL Workbench/J
-          href: /azure/databricks/bi/workbenchj
-          maintainContext: true
+        - name: Nástroje pro business intelligence
+          items:
+            - name: Propojení nástrojů pro BI
+              href: /azure/databricks/bi/jdbc-odbc-bi
+              maintainContext: true
+            - name: Tableau
+              href: /azure/databricks/bi/tableau
+              maintainContext: true
+            - name: Power BI
+              href: /azure/databricks/bi/power-bi
+              maintainContext: true
+            - name: Alteryx
+              href: /azure/databricks/bi/alteryx
+              maintainContext: true
+            - name: Looker
+              href: /azure/databricks/bi/looker
+              maintainContext: true
+            - name: SQL Workbench/J
+              href: /azure/databricks/bi/workbenchj
+              maintainContext: true
+        - name: Datové integrace partnerů
+          items:
+            - name: Přehled integrací partnerů
+              href: /azure/databricks/integrations/ingestion/index
+            - name: Integrace Qliku
+              href: /azure/databricks/integrations/ingestion/qlik
+            - name: Integrace Fivetranu
+              href: /azure/databricks/integrations/ingestion/fivetran
+            - name: Integrace InfoWorks
+              href: /azure/databricks/integrations/ingestion/infoworks
+            - name: Integrace StreamSets
+              href: /azure/databricks/integrations/ingestion/streamsets
+            - name: Integrace SyncSort
+              href: /azure/databricks/integrations/ingestion/syncsort
     - name: Delta Lake
       items:
         - name: Seznámení s Delta Lake
@@ -1818,9 +1837,9 @@
         - name: Typy vydaných verzí
           href: /azure/databricks/release-notes/release-types
           maintainContext: true
-        - name: Stavová stránka Azure Databricks
-          href: /azure/databricks/status
-          maintainContext: true
+    - name: Stavová stránka Azure Databricks
+      href: /azure/databricks/status
+      maintainContext: true
     - name: Příručka pro vývojáře v R
       href: /azure/machine-learning/r-developers-guide
     - name: Plány Azure do budoucna
