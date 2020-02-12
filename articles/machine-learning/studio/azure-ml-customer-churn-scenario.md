@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: cc7ce8a8725e3cbc5c4f0d4db8bfcc3f1b1d657b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 903e3f3dcbcc72289fc82ec59dec0305b6adbc17
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427688"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150914"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Analýza změn zákazníků pomocí Azure Machine Learning Studio (Classic)
 ## <a name="overview"></a>Přehled
@@ -25,7 +25,7 @@ Tento článek představuje referenční implementaci projektu analýzy změn z�
 Tento experiment jsme vyvinuli a otestovali Serge Berger, hlavními vědeckými daty v Microsoftu a Roger Bargy, dříve produktovým manažerem pro Microsoft Azure Machine Learning Studio (Classic). Děkujeme za jejich má tým dokumentace Azure potvrzuje své znalosti a díky pro tento dokument white paper pro sdílení obsahu.
 
 > [!NOTE]
-> Data pro tento experiment není veřejně k dispozici. Příklad toho, jak sestavit model strojového učení pro analýzu provozu, naleznete v tématu: [maloobchodní změny šablony modelu](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) v [galerii Azure AI](https://gallery.azure.ai/)
+> Data pro tento experiment není veřejně k dispozici. Příklad vytvoření modelu strojového učení pro analýzu změn najdete v tématu: [Šablona modelu maloobchodních](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) změn v [Azure AI Gallery](https://gallery.azure.ai/)
 > 
 > 
 
@@ -37,13 +37,13 @@ Firmy na trhu příjemce a ve všech odvětvích enterprise mají se změny. Ně
 Běžné faktorem je, podniky potřebují, chcete-li minimalizovat tyto aktivity dál rozšiřuji uchování speciální zákazníka. Proto by bylo skóre každý zákazník s pravděpodobnost výpovědi a řešit N nejlepších ty přirozené metody. Hlavní zákazníky může být těm, které jsou nejvíce ziskové. Ve složitějších scénářích je například zisk funkce použijí při výběru kandidáty pro zvláštní výjimku. Tyto aspekty jsou však pouze součástí komplexní strategie pro řešení změn. Také firem vzít v účtu rizika (a související odolnosti vůči rizikům), úroveň a náklady na zásah a segmentu přesvědčivého zákazníků.  
 
 ## <a name="industry-outlook-and-approaches"></a>Outlook odvětví a přístupů
-Sofistikované zpracování změn je znak až po zralé odvětví. Klasickým příkladem je odvětví telekomunikace, ve kterém se ví často přepínání z jednoho poskytovatele do jiného předplatitele. Těchto dobrovolné častých změn dat je primárním zájmem. Kromě toho poskytovatelé nashromáždili významné znalosti o *změny ovladače*, které jsou faktory, které řídí zákazníkům přepnout.
+Sofistikované zpracování změn je znak až po zralé odvětví. Klasickým příkladem je odvětví telekomunikace, ve kterém se ví často přepínání z jednoho poskytovatele do jiného předplatitele. Těchto dobrovolné častých změn dat je primárním zájmem. Kromě toho poskytovatelé shromáždili významné znalosti o *ovladačích*změn, což jsou faktory, které umožňují zákazníkům přepínat.
 
 Například telefonu nebo zařízení je dobře známé ovladač četností změn ve firmě mobilního telefonu. Oblíbené zásady v důsledku toho je subvencovat cena telefonu pro nové předplatitele a účtovat plné ceny pro stávající zákazníky na upgrade. Tyto zásady v minulosti vedlo k zákazníkům přepínání z jednoho poskytovatele do druhého a získat tak nové slevu. To, pak má zprostředkovatele pro upřesnění jejich strategie výzva.
 
 Vysoká volatility v nabídkách telefonního sluchátka je faktor, který rychle zruší platnost modely četností změn, které jsou založeny na aktuální modely telefonu. Kromě toho mobilní telefony nejsou pouze telekomunikační zařízení, jsou také podporuje příkazy (vezměte v úvahu iPhone). Tyto sociální prediktory jsou nad rámec regulární telekomunikace datových sad.
 
-Net výsledek pro modelování je zvukový zásad nelze navrhnout jednoduše tak, že odstranění známých důvody pro změny. Strategie průběžné modelování, včetně klasické modely, které umožňuje vyčíslit zařazené do kategorií proměnné (jako je například rozhodovacích stromů), se ve skutečnosti **povinné**.
+Net výsledek pro modelování je zvukový zásad nelze navrhnout jednoduše tak, že odstranění známých důvody pro změny. V podstatě je **povinná**strategie průběžného modelování, včetně klasických modelů, které kvantifikují proměnné kategorií (například rozhodovací stromy).
 
 Použití velkých datových sad na zákazníky, organizace provádění analýzy velkých objemů dat (zejména detekce změn na základě velkých objemů dat) jako efektivního přístupu k problému. Můžete najít další informace o přístupu velkých objemů dat na problém ve doporučení v části ETL.  
 
@@ -60,9 +60,9 @@ Tento přístup vpřed vypadající je nejlepší způsob, jak zpracovávat změ
 
 ![Diagram interakce modelu změn](./media/azure-ml-customer-churn-scenario/churn-2.png)
 
-*Obrázek 4: Unified vícemodelová archetype*  
+*Obrázek 4: sjednocení Archetype s více modely*  
 
-Interakce mezi modely je klíč, pokud se nám poskytovat holistický přístup k udržení zákazníků. Každý model nutně sníží, přetrénujte časem; Tato architektura je proto implicitní smyčky (archetype nastavit Standard OSTRÉ-DM dolování dat, podobně jako [***3***]).  
+Interakce mezi modely je klíč, pokud se nám poskytovat holistický přístup k udržení zákazníků. Každý model je nutně zhoršený v čase; Proto je architektura implicitní smyčka (podobně jako Archetype sada se standardem dolování dat, [***3***]).  
 
 Celkové cyklu riziko rozhodnutí marketingových segmentace/rozložené je stále zobecněný strukturu, která platí pro mnoho obchodních problémů. Analýzy změn je jednoduše silné zástupce této skupiny problémů, protože vykazuje osobnostní rysy komplexní obchodní problém, který neumožňuje zjednodušené prediktivní řešení. Sociální aspektů moderní přístup ke změny nejsou zejména zvýrazněno přístup, ale na sociálních sítích aspekty jsou zapouzdřeny v archetype modelování, jako by byly v jakékoli modelu.  
 
@@ -79,7 +79,7 @@ Následující diagram znázorňuje prototyp, který jsme vytvořili, který vyu
 
 ![Snímek obrazovky znázorňující komplexní pracovní prostor studia (klasické) s mnoha propojenými moduly](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
-*Obrázek 5: Prototyp četností modelování přístup*  
+*Obrázek 5: prototypy přístupu k modelování změn*  
 
 Následující části obsahují další podrobnosti o modelu bodování prototypu, který jsme implementovali pomocí Machine Learning Studio (Classic).  
 
@@ -98,17 +98,17 @@ Následující obrázky znázorňují data, která byla použita.
 
 ![Snímek obrazovky znázorňující ukázku dat použitých s nezpracovanými hodnotami](./media/azure-ml-customer-churn-scenario/churn-4.png)
 
-*Obrázek 6: Výňatek ze zdroje dat (obfuskovaný)*  
+*Obrázek 6: výňatek ze zdroje dat (zakódováno)*  
 
 ![Snímek obrazovky znázorňující statistické funkce extrahované ze zdroje dat](./media/azure-ml-customer-churn-scenario/churn-5.png)
 
-*Obrázek 7: Funkce extrahovaná ze zdroje dat*
+*Obrázek 7: funkce extrahované ze zdroje dat*
  
 
 > Všimněte si, že tato data jsou privátní a proto není možné model a data sdílet.
-> Ale podobný modelu pomocí veřejně dostupných dat, naleznete v tématu této ukázce experimentovat v [galerii Azure AI](https://gallery.azure.ai/): [výpovědí zákazníků Telco](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
+> U podobných modelů, které používají veřejně dostupná data, se ale v tomto ukázkovém experimentu [Azure AI Gallery](https://gallery.azure.ai/): [výpovědi změny zákazníků](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
-> Další informace o implementace modelu analysis změn pomocí Cortana Intelligence Suite, doporučujeme také [toto video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) tak Tok Hyong praco vedoucí manažer programu. 
+> Pokud se chcete dozvědět víc o tom, jak můžete model analýzy změn implementovat pomocí Cortana Intelligence Suite, doporučujeme vám také [Toto video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) od vedoucího programu Hyong tok. 
 > 
 > 
 
@@ -137,14 +137,14 @@ V této části Představujeme naše poznatky o přesnost modelů, které jsou z
 ### <a name="accuracy-and-precision-of-scoring"></a>Přesnost a přesnost bodování
 Obecně platí, že implementace v Azure Machine Learning Studio (Classic) je za přesností SAS přibližně o 10-15% (oblast pod křivkou nebo AUC).  
 
-Nejdůležitější metriky v četnosti změn je ale frekvence chybnou: to znamená z hlavních churners jako předpokládané pomocí třídění, který z nich ve skutečnosti nebyla **není** změny a nepřijal zvláštní zacházení? Následující diagram porovnává tohoto kurzu chybnou pro všechny modely:  
+Nejdůležitější metrika v měně je však **nechybná** míra klasifikace: to znamená horních N změn, které byly předpovězeny tříděním, které jsou ve skutečnosti nezměněné a které ještě přijaly zvláštní ošetření? Následující diagram porovnává tohoto kurzu chybnou pro všechny modely:  
 
 ![Oblast pod grafem křivky porovnáním výkonu 4 algoritmů](./media/azure-ml-customer-churn-scenario/churn-7.png)
 
-*Obrázek 9: Passau prototypu oblasti pod křivkou*
+*Obrázek 9: oblast Passau prototypu pod křivkou*
 
 ### <a name="using-auc-to-compare-results"></a>Použití AUC k porovnání výsledků
-Oblasti v rámci křivky (AUC) je metrika, který představuje globální měřítko *separability* mezi distribucí skóre, které se pro plnění kladné a záporné. Se podobá tradiční grafu příjemce operátor charakteristiku (roc s více TŘÍDAMI), ale jeden důležitý rozdíl je, že AUC metrika není nutné zvolit prahovou hodnotu. Místo toho shrnuje výsledky přes **všechny** možností. Naproti tomu tradiční roc s více TŘÍDAMI graf zobrazuje míru pozitivních výsledků svislá osa a míru falešně pozitivních výsledků na vodorovné ose a prahovou hodnotu klasifikace se liší.   
+Plocha pod křivkou (AUC) je metrika, která představuje globální míru *separability* mezi distribucí výsledků pro pozitivní a negativní populaci. Se podobá tradiční grafu příjemce operátor charakteristiku (roc s více TŘÍDAMI), ale jeden důležitý rozdíl je, že AUC metrika není nutné zvolit prahovou hodnotu. Místo toho shrnuje výsledky přes **všechny** možné volby. Naproti tomu tradiční roc s více TŘÍDAMI graf zobrazuje míru pozitivních výsledků svislá osa a míru falešně pozitivních výsledků na vodorovné ose a prahovou hodnotu klasifikace se liší.   
 
 AUC se používá jako měřítko pro různé algoritmy (nebo různé systémy), protože umožňuje porovnat modely pomocí jejich hodnot AUC. Toto je oblíbený přístup v oborech jako jsou meteorologické a biosciences. Proto AUC představuje oblíbený nástroj pro vyhodnocení výkonu třídění.  
 
@@ -162,14 +162,14 @@ Z Wikipedia následující diagram znázorňuje vztah živá, snadno pochopiteln
 
 ![Dva cíle. V jednom cíli se zobrazují značky, které jsou volně seskupené, ale poblíž zápasy, která je označena jako nízká přesnost: dobrá pravdivost, nízká přesnost. Jiný cíl úzce seskupený, ale daleko od býků – s označením "nízká přesnost: špatná hodnota pravdivosti", dobrá přesnost "](./media/azure-ml-customer-churn-scenario/churn-8.png)
 
-*Obrázek 10: Kompromis mezi přesnost*
+*Obrázek 10: kompromisy mezi přesností a přesností*
 
 ### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Přesnost výsledků pro model posíleného rozhodovacího stromu
 Následující graf zobrazí nezpracované výsledky vyhodnocování pomocí prototypu Machine Learning pro model Posílený rozhodovací strom, což je nejpřesnější mezi čtyři modely:  
 
 ![Fragment kódu tabulky znázorňující přesnost, přesnost, odvolání, F-skóre, AUC, průměrnou ztrátu protokolu a ztrátu protokolu školení pro čtyři algoritmy](./media/azure-ml-customer-churn-scenario/churn-9.png)
 
-*Obrázek 11: Posíleného rozhodovacího stromu modelu vlastnosti*
+*Obrázek 11: zvýšení vlastností modelu rozhodovacího stromu*
 
 ## <a name="performance-comparison"></a>Porovnání výkonu
 Porovnali jsme rychlost, s jakou byly data hodnocena pomocí modelů Machine Learning Studio (Classic) a srovnatelného modelu vytvořeného pomocí stolní edice SAS Enterprise Miner 12,1.  
@@ -178,7 +178,7 @@ Následující tabulka shrnuje výkon algoritmy:
 
 *Tabulka 1. Obecný výkon (přesnost) algoritmů*
 
-| LR | BT | ASIE A TICHOMOŘÍ | SVM |
+| LR | BT | AP | SVM |
 | --- | --- | --- | --- |
 | Průměrná modelu |Nejlepší Model |Nevedou podle očekávání |Průměrná modelu |
 
@@ -188,13 +188,13 @@ Modely hostované v Machine Learning Studio (Classic) převedly SAS 15-25% na ry
 V odvětví telekomunikace vznikly několik postupů k analýze četnosti změn, včetně:  
 
 * Odvození metriky pro čtyři základní kategorie:
-  * **Entity (například předplatné)** . Zřízení základních informací o odběru a/nebo zákazníkovi, který je předmětem změn.
+  * **Entita (například předplatné)** . Zřízení základních informací o odběru a/nebo zákazníkovi, který je předmětem změn.
   * **Aktivita**. Získáte všechny informace o možných využití, která souvisí s entitou, například počet přihlášení.
   * **Zákaznická podpora**. Získejte informace z protokolů podpory zákazníků k označení, zda u odběru byl problémy nebo interakce s zákaznickou podporu.
-  * **Konkurenceschopnost a obchodní data**. Získat všechny informace o možných o zákazníkovi (například může být obtížné sledovat nebo není k dispozici).
+  * **Konkurenční a obchodní data**. Získat všechny informace o možných o zákazníkovi (například může být obtížné sledovat nebo není k dispozici).
 * Použijte význam pro výběr funkcí jednotky. Z toho vyplývá, že model posíleného rozhodovacího stromu je vždy slibně přístup.  
 
-Použijte tyto čtyři kategorie vytváří iluzi, který jednoduchý *deterministické* přístup založený na indexy vytvořené v rozumné faktory podle jednotlivých kategorií, by měla stačit k určení zákazníků riziko pro změny. Bohužel i když se vyskytují zdá se, že přesvědčivého, je false principy. Důvodem je, že změny jsou dočasné účinek a faktory přispívající k změn dat se obvykle nacházejí v přechodném stavu. Čeho zákazník vzít v úvahu byste museli opustit ještě dnes se může lišit zítra, a jistě bude různých šest měsíců od této chvíle. Proto *pravděpodobnostní* je nezbytné v modelu.  
+Použití těchto čtyř kategorií vytvoří iluzi, že jednoduchý *deterministický* přístup, založený na indexech vytvořených v přiměřených faktorech na kategorii, by měl postačovat k identifikaci zákazníků, kteří mají riziko pro změny. Bohužel i když se vyskytují zdá se, že přesvědčivého, je false principy. Důvodem je, že změny jsou dočasné účinek a faktory přispívající k změn dat se obvykle nacházejí v přechodném stavu. Čeho zákazník vzít v úvahu byste museli opustit ještě dnes se může lišit zítra, a jistě bude různých šest měsíců od této chvíle. Proto je model *pravděpodobnostní* nezbytný.  
 
 Tato důležité zjišťování je často přehlédnuta ve firmě, což obecně upřednostňuje analýzy a business intelligence objektově orientovaný přístup, většinou, protože se jedná jednodušší prodávat a zavést jednoduché automatizace.  
 
@@ -215,14 +215,14 @@ Tento dokument popisuje rozumné přístup k řešení běžných problémů vý
 
 [2] Wikipedii článek: [přesnost a přesnost](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [OSTRÉ DM 1.0: Průvodce krok za krokem dat dolování](https://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [zaostřené-DM 1,0: Průvodce dolováním dat krok za krokem](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [Marketing velké objemy dat: upoutat zákazníky efektivněji a posílení hodnoty](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+[4] [Marketing pro velké objemy dat: efektivnější zapojení zákazníků a jejich hodnoty](https://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Telco změny šablony modelu](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) v [galerii Azure AI](https://gallery.azure.ai/) 
+[5] [Šablona modelu výpovědi](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) změn v [Azure AI Gallery](https://gallery.azure.ai/) 
  
 
 ## <a name="appendix"></a>Příloha
 ![Snímek prezentace v prototypu změn](./media/azure-ml-customer-churn-scenario/churn-10.png)
 
-*Obrázek 12: Snímek prezentace na změny v prototypu*
+*Obrázek 12: snímek prezentace v prototypu změn*

@@ -1,23 +1,24 @@
 ---
-title: Ukázkové ovládací prvky FedRAMP středního podrobného plánu
-description: Mapování ovládacích prvků FedRAMP pro střední plán. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-ms.date: 10/31/2019
+title: Ukázkové ovládací prvky podrobného plánu pro úrovni DoD úrovně 4
+description: Mapování ovládacího prvku pro ukázku plánu dopadu DoD. 4. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
+ms.date: 02/09/2020
 ms.topic: sample
-ms.openlocfilehash: 3fd6762f4f0a76b560a37dd1ed4f727aa76385fd
+ms.openlocfilehash: 15ab3bc8bf53d54161ecc3b1f0dc138c3ff923c1
 ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150474"
+ms.locfileid: "77154841"
 ---
-# <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>Mapování ovládacích prvků FedRAMP pro střední plán
+# <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Mapování ovládacího prvku pro ukázku plánu dopadu na 3. plán na úrovni.
 
-Následující článek podrobně popisuje, jak se vzorový vzorek FedRAMP pro střední plán Azure mapuje na střední ovládací prvky FedRAMP. Další informace o ovládacích prvcích najdete v tématu [základní informace o ovládacích prvcích zabezpečení FedRAMP](https://www.fedramp.gov/).
+Následující článek podrobně popisuje, jak je oddělení Azure modrotisky v rámci podrobného plánu úrovně dopadu 4 (DoD IL4) namapováno na ovládací prvky úrovně účinku DoD na úrovni 4. Další informace o ovládacích prvcích najdete v tématu [Průvodce požadavky na zabezpečení služby DoD Cloud Computing (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf). Agentura DISA (obrany Information Systems) je agenturou ministerstva obrany USA, která je odpovědná za vývoj a udržování Průvodce požadavky zabezpečení cloud computingu DoD (SRG). SRG definuje základní požadavky na zabezpečení pro poskytovatele cloudových služeb (CSP), kteří hostují informace, systémy a aplikace, a pro používání cloudových služeb DoD.  
 
-Následující mapování jsou pro střední ovládací prvky **FedRAMP** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte **\[Preview\]: audit FedRAMP moderované ovládací prvky a nasaďte specifická rozšíření virtuálního počítače pro podporu požadavků na audit** integrovaných iniciativ zásad.
+Následující mapování jsou ovládací prvky **úrovně dopadu dod. 4** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte **\[Preview\]:** předdefinovaná zásada pro úroveň dopadu dod. 4.
 
 > [!IMPORTANT]
-> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/fedramp-m/control-mapping.md).
+> Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit.
+> Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/DoDIL4/control-mapping.md).
 
 ## <a name="ac-2-account-management"></a>Správa účtů AC-2
 
@@ -45,14 +46,24 @@ Přístup k virtuálnímu počítači za běhu zamkne příchozí provoz do virt
 
 ## <a name="ac-4-information-flow-enforcement"></a>Vynucování toku informací AC-4
 
-Sdílení prostředků mezi zdroji (CORS) umožňuje, aby byly prostředky App Services požadovány z vnější domény. Microsoft doporučuje, abyste povolili interakci jenom požadovaných domén s rozhraním API, funkcí a webovými aplikacemi. Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám umožní monitorovat omezení přístupu k prostředkům CORS v Azure Security Center.
-Princip implementace CORS vám může pomáhat ověřit, jestli jsou implementované ovládací prvky toku informací.
+Sdílení prostředků mezi zdroji (CORS) umožňuje, aby byly prostředky App Services požadovány z vnější domény. Microsoft doporučuje, abyste povolili interakci jenom požadovaných domén s rozhraním API, funkcí a webovými aplikacemi. Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám umožní monitorovat omezení přístupu k prostředkům CORS v Azure Security Center. Princip implementace CORS vám může pomáhat ověřit, jestli jsou implementované ovládací prvky toku informací.
 
 - CORS by neměl umožňovat každému prostředku přístup k vaší webové aplikaci
 
 ## <a name="ac-5-separation-of-duties"></a>AC-5 oddělení povinností
 
 Jenom jeden vlastník předplatného Azure nepovoluje redundanci správy. I když má příliš mnoho vlastníků předplatného Azure, může dojít k navýšení potenciálu pro porušení zabezpečení prostřednictvím účtu napadeného vlastníka. Tento podrobný plán vám pomůže zachovat příslušný počet vlastníků předplatného Azure přiřazením [Azure Policy](../../../policy/overview.md) definice, které auditují počet vlastníků předplatných Azure. Tento podrobný plán také přiřadí Azure Policy definice, které vám pomůžou s řízením členství ve skupině Administrators na virtuálních počítačích s Windows. Správa vlastníka předplatného a oprávnění správce virtuálních počítačů vám může pomáhat s implementací vhodného oddělení funkcí.
+
+- Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.
+- Auditovat virtuální počítače s Windows, ve kterých skupina Administrators obsahuje některé ze zadaných členů
+- Auditovat virtuální počítače s Windows, ve kterých skupina Administrators neobsahuje všechny zadané členy
+- Nasaďte požadavky na auditování virtuálních počítačů s Windows, ve kterých skupina Administrators obsahuje některé ze zadaných členů.
+- Nasaďte požadavky na auditování virtuálních počítačů s Windows, ve kterých skupina Administrators neobsahuje všechny zadané členy.
+- K vašemu předplatnému by měl být přiřazený víc než jeden vlastník.
+
+## <a name="ac-6-7-least-privilege--review-of-user-privileges"></a>AC-6 (7) nejnižší oprávnění | Kontrola uživatelských oprávnění
+
+Azure implementuje [řízení přístupu na základě role](../../../../role-based-access-control/overview.md) (RBAC), které vám umožní spravovat, kdo má přístup k prostředkům v Azure. Pomocí Azure Portal můžete zkontrolovat, kdo má přístup k prostředkům Azure a jejich oprávnění. Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice pro audit účtů, které by měly být v určitém pořadí pro kontrolu. Kontrola těchto indikátorů účtu vám umožní zajistit, aby byly implementované nejméně ovládací prvky pro oprávnění.
 
 - Pro vaše předplatné by se mělo určit maximálně 3 vlastníci.
 - Auditovat virtuální počítače s Windows, ve kterých skupina Administrators obsahuje některé ze zadaných členů
@@ -72,18 +83,61 @@ Tento podrobný plán vám pomůže s monitorováním a řízením vzdáleného 
 - Vzdálené ladění by mělo být pro Function App vypnuté.
 - Vzdálené ladění by měl být vypnuté pro webovou aplikaci
 
+## <a name="au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>AU-3 (2) obsah záznamů auditu | Centralizovaná správa obsahu plánovaného záznamu auditu
+
+Data protokolu shromážděná pomocí Azure Monitor jsou uložená v pracovním prostoru Log Analytics, který umožňuje centralizovanou konfiguraci a správu. Tento podrobný plán vám pomůže zajistit, aby se události protokoloval pomocí přiřazování [Azure Policy](../../../policy/overview.md) definic, které auditují a vynutily nasazení agenta Log Analytics na virtuálních počítačích Azure.
+
+- \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
+- \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
+- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
+- \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+
 ## <a name="au-5-response-to-audit-processing-failures"></a>Reakce AU-5 na selhání zpracování auditu
 
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které monitorují konfigurace auditu a protokolování událostí. Monitorování těchto konfigurací může poskytnout indikátor selhání systému nebo chybnou konfiguraci a pomáhat s provedením nápravných akcí.
 
 - Auditování nastavení diagnostiky
-- Auditování na SQL serveru by mělo být povolené.
+- Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 
+## <a name="au-6-4-audit-review-analysis-and-reporting--central-review-and-analysis"></a>AU-6 (4) revize auditu, analýza a vytváření sestav | Centrální kontrola a analýza
+
+Data protokolu shromážděná pomocí Azure Monitor jsou uložena v pracovním prostoru Log Analytics umožňující centralizované generování sestav a analýzu. Tento podrobný plán vám pomůže zajistit, aby se události protokoloval pomocí přiřazování [Azure Policy](../../../policy/overview.md) definic, které auditují a vynutily nasazení agenta Log Analytics na virtuálních počítačích Azure.
+
+- \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
+- \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
+- \[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy
+- \[Preview\]: nasazení Log Analytics agenta pro Linux VM Scale Sets (VMSS)
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače se systémem Linux
+- \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
+- \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
+
+## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) kontrola auditu, analýza a vytváření sestav | Možnosti integrace, kontroly a monitorování
+
+Tento podrobný plán poskytuje definice zásad, které auditují záznamy s analýzou vyhodnocování ohrožení zabezpečení na virtuálních počítačích, Virtual Machine Scale Sets, spravovaných instancí SQL a SQL serverech.
+Tyto definice zásad také auditují konfiguraci diagnostických protokolů a poskytují přehled o operacích, které se provádějí v rámci prostředků Azure. Tyto přehledy poskytují informace o stavu zabezpečení nasazených prostředků v reálném čase a můžou vám pomůžou určit prioritu nápravných akcí.
+Pro podrobnou kontrolu a monitorování ohrožení zabezpečení doporučujeme, abyste využili taky Azure Sentinel a Azure Security Center.
+
+- \[Preview\]: v Virtual Machines by mělo být povolené posouzení ohrožení zabezpečení
+- \[Preview\]: Povolit Azure Monitor pro virtuální počítače
+- \[Preview\]: Enable Azure Monitor for VM Scale Sets (VMSS)
+- Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
+- Auditování nastavení diagnostiky
+- Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
+- Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
+- Ohrožení zabezpečení v konfiguraci zabezpečení na vašich počítačích by mělo být opraveno
+- Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
+- Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
+- V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
+
 ## <a name="au-12-audit-generation"></a>Generování auditu AU-12
 
-Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaznamenávány přiřazením [Azure Policy](../../../policy/overview.md) definicí, které auditují nastavení protokolů v prostředcích Azure. Tyto definice zásad auditují a vynutily nasazení Log Analytics agenta na virtuálních počítačích Azure a konfiguraci nastavení auditu pro jiné typy prostředků Azure. Tyto definice zásad také auditují konfiguraci diagnostických protokolů a poskytují přehled o operacích, které se provádějí v rámci prostředků Azure. Kromě toho jsou na SQL serverech nakonfigurovaná auditování a rozšířené zabezpečení dat.
+Tento podrobný plán poskytuje definice zásad, které auditují a vynutily nasazení Log Analytics agenta na virtuálních počítačích Azure a konfiguraci nastavení auditu pro jiné typy prostředků Azure.
+Tyto definice zásad také auditují konfiguraci diagnostických protokolů a poskytují přehled o operacích, které se provádějí v rámci prostředků Azure. Kromě toho jsou na SQL serverech nakonfigurovaná auditování a rozšířené zabezpečení dat.
 
 - \[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) není v seznamu.
 - \[Preview\]: nasazení agenta Log Analytics auditu v VMSS-VM Image (OS) není v seznamu.
@@ -93,12 +147,19 @@ Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaz
 - \[Preview\]: nasazení Log Analytics agenta pro Windows VM Scale Sets (VMSS)
 - \[Preview\]: nasazení Log Analytics agenta pro virtuální počítače s Windows
 - Auditování nastavení diagnostiky
-- Auditování na SQL serveru by mělo být povolené.
+- Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Nasazení pokročilých zabezpečení dat na SQL serverech
 - Nasazení auditování na SQL serverech
 - Nasadit nastavení diagnostiky pro skupiny zabezpečení sítě
+
+## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>Generování auditu AU-12 (01) | Záznam auditu v reálném čase a podle časového rozsahu
+
+Tento podrobný plán vám pomůže zajistit, aby byly systémové události zaznamenávány přiřazením [Azure Policy](../../../policy/overview.md) definicí, které auditují nastavení protokolů v prostředcích Azure.
+Tato předdefinovaná zásada vyžaduje, abyste určili pole typů prostředků, abyste zkontrolovali, jestli jsou nastavení diagnostiky povolená, nebo ne.
+
+- Auditování nastavení diagnostiky
 
 ## <a name="cm-7-2-least-functionality--prevent-program-execution"></a>CM – 7 (2) nejméně funkcí | Zabránit spuštění programu
 
@@ -123,6 +184,16 @@ Adaptivní řízení aplikací v Azure Security Center je inteligentní, automat
 Azure Site Recovery replikuje úlohy běžící na virtuálních počítačích z primárního umístění do sekundárního umístění. Pokud dojde k výpadku v primární lokalitě, zatížení se v rámci sekundárního umístění převezme. Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která Audituje virtuální počítače bez nakonfigurovaného zotavení po havárii. Monitorování tohoto indikátoru vám může pomáhat zajistit, aby byly potřebné pohotovostní kontroly na místě.
 
 - Auditovat virtuální počítače bez nakonfigurovaného zotavení po havárii
+
+## <a name="cp-9-05--information-system-backup--transfer-to-alternate-storage-site"></a>CP-9 (05) záloha systému informací | Přenos na alternativní lokalitu úložiště
+
+Tento podrobný plán přiřadí Azure Policy definice, které v elektronické podobě auditují informace o zálohování systému v organizaci na alternativním webu úložiště. Pro fyzickou expedici metadat úložiště zvažte použití Azure Data Box.
+
+- Pro účty úložiště by mělo být povoleno geograficky redundantní úložiště.
+- Pro Azure Database for PostgreSQL by měla být povolená geograficky redundantní záloha.
+- Pro Azure Database for MySQL by měla být povolená geograficky redundantní záloha.
+- Pro Azure Database for MariaDB by měla být povolená geograficky redundantní záloha.
+- Pro databáze SQL Azure by mělo být povolené dlouhodobé geograficky redundantní zálohování.
 
 ## <a name="ia-2-1-identification-and-authentication-organizational-users--network-access-to-privileged-accounts"></a>IA-2 (1) identifikace a ověřování (uživatelé organizace) | Síťový přístup k privilegovaným účtům
 
@@ -190,7 +261,7 @@ Kromě toho tento podrobný plán také přiřazuje definice zásad, které sled
 
 - Pravidla skupiny zabezpečení sítě pro virtuální počítače s přístupem k Internetu by měla být zesílená.
 - Přístup přes internetový koncový bod by měl být omezený.
-- Webové porty by měly být omezené na skupinách zabezpečení sítě přidružených k vašemu VIRTUÁLNÍmu počítači.
+- Pravidla skupin zabezpečení sítě pro webové aplikace v IaaS by se měla posílit.
 - Auditování neomezeného síťového přístupu k účtům úložiště
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>Ochrana hranice SC-7 (3) | Přístupové body
@@ -274,17 +345,25 @@ Tento podrobný plán vám pomůže monitorovat systém pomocí auditování a v
 - Nasazení auditování na SQL serverech
 - Při vytváření virtuálních sítí nasadit sledovací proces sítě
 - Nasazení detekce hrozeb na SQL serverech
+- Povolená umístění
+- Povolená umístění pro skupiny prostředků
+
+## <a name="si-4-18-information-system-monitoring--analyze-traffic--covert-exfiltration"></a>SI-4 (18) sledování systému informací | Analýza provozu/tajnosti exfiltrace
+
+Rozšířená ochrana před internetovými útoky pro Azure Storage detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Výstrahy ochrany zahrnují vzory přístupu k neobvyklé, neobvyklé extrahování a nahrávání a podezřelou aktivitu úložiště. Tyto indikátory vám pomůžou detekovat exfiltrace informací.
+
+- Nasazení rozšířené ochrany před internetovými útoky na účty úložiště
 
 > [!NOTE]
 > Dostupnost konkrétních definic Azure Policy se může v Azure Government a dalších národních cloudech lišit. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste zkontrolovali mapování ovládacích prvků FedRAMP pro střední plán, najdete v následujících článcích informace o podrobném plánu a způsobu nasazení této ukázky:
+Teď, když jste zkontrolovali mapování ovládacího prvku na úrovni dopadu na 3. plán, najdete v následujících článcích informace o podrobném plánu a způsobu nasazení této ukázky:
 
 > [!div class="nextstepaction"]
-> [FedRAMP mírný podrobný plán – přehled](./index.md)
-> [FodRAMP – střední podrobný plán – nasazení kroků](./deploy.md)
+> [Úroveň dopadu dod. 4 podrobný plán – přehled](./index.md)
+> [stupeň dopadu na 3. plán – nasazení kroků](./deploy.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

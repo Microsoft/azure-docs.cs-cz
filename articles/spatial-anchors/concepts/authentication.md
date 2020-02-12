@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 823ce8d523a231875705d7c4d3f46cfd8fd24994
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: MT
+ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270587"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152597"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Ověřování a autorizace pro prostorové kotvy Azure
 
@@ -96,6 +96,13 @@ Pro aplikace cílené na Azure Active Directory uživatele je doporučeným př�
 
 1. Konfigurace v Azure Portal
     1.  Zaregistrujte svoji aplikaci ve službě Azure AD jako **nativní aplikaci**. V rámci registrace budete muset určit, jestli má aplikace více tenantů, nebo ne, a zadat adresy URL pro přesměrování povolené pro vaši aplikaci.
+        1.  Přepnout na kartu **oprávnění rozhraní API**
+        2.  Vyberte **Přidat oprávnění** .
+            1.  Vybrat **poskytovatele prostředků hybridní reality** v **rozhraní API moje organizace používá** kartu
+            2.  Vyberte **delegovaná oprávnění** .
+            3.  Zaškrtněte políčko **mixedreality.** Přihlaste se pod **mixedreality**
+            4.  Vyberte **Přidat oprávnění** .
+        3.  Vyberte **udělit souhlas správce** .
     2.  Udělit vaší aplikaci nebo uživatelům přístup k vašemu prostředku:
         1.  Přejděte ke zdroji prostorových kotev v Azure Portal
         2.  Přepnout na kartu **řízení přístupu (IAM)**

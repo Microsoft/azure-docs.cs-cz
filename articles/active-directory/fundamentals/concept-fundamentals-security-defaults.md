@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbb6170aa54c286a5a2d8353c1dd951859fdf8a0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 023a52f373844e026de0e588e9cd46323abdcf34
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024581"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149826"
 ---
 # <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
@@ -74,7 +74,7 @@ Aby měli uživatelé snadný přístup k vašim cloudovým aplikacím, Azure AD
 
 V současné době většina neúspěšných pokusů o přihlášení pocházela ze staršího ověřování. Starší verze ověřování nepodporuje Multi-Factor Authentication. I v případě, že máte ve svém adresáři povolené zásady Multi-Factor Authentication, útočník se může ověřit pomocí staršího protokolu a Multi-Factor Authentication obcházení. 
 
-Po povolení výchozích hodnot zabezpečení ve vašem tenantovi budou všechny požadavky na ověření provedené starším protokolem blokované. Výchozí nastavení zabezpečení neblokuje Exchange ActiveSync.
+Po povolení výchozích hodnot zabezpečení ve vašem tenantovi budou všechny požadavky na ověření provedené starším protokolem blokované. Výchozí hodnoty zabezpečení blokují Exchange Active Sync základní ověřování.
 
 > [!WARNING]
 > Než povolíte výchozí nastavení zabezpečení, zajistěte, aby vaši správci nepoužívali starší ověřovací protokoly. Další informace najdete v tématu [Jak přejít pryč ze starší verze ověřování](concept-fundamentals-block-legacy-authentication.md).
@@ -83,8 +83,8 @@ Po povolení výchozích hodnot zabezpečení ve vašem tenantovi budou všechny
 
 Organizace používají různé služby Azure spravované prostřednictvím rozhraní Azure Resource Manager API, včetně:
 
-- Portál Azure 
-- Azure PowerShell 
+- Azure Portal 
+- Azure Powershell 
 - Azure CLI
 
 Použití Azure Resource Manager ke správě služeb je vysoce privilegovaná akce. Azure Resource Manager může měnit konfigurace v rámci tenanta, jako je například nastavení služby a fakturace předplatného. Jednotné vícefaktorové ověřování je zranitelné vůči nejrůznějším útokům, jako je útok phishing a heslo. 
@@ -104,7 +104,7 @@ Ve výchozím nastavení je ve výchozím nastavení zakázáno moderní ověřo
 
 K nasazení výchozích hodnot zabezpečení pro vašeho tenanta se vztahují následující další požadavky.
 
-### <a name="authentication-methods"></a>Metody ověření
+### <a name="authentication-methods"></a>Metody ověřování
 
 Výchozí nastavení zabezpečení umožňuje registraci a používání služby Azure Multi-Factor Authentication **jenom pomocí Microsoft Authenticator aplikace s oznámeními**. Podmíněný přístup umožňuje použití libovolné metody ověřování, kterou správce zvolí k povolení.
 
@@ -140,7 +140,7 @@ Povolení výchozích hodnot zabezpečení v adresáři:
 1. Vyhledejte **Azure Active Directory** > **vlastnosti**.
 1. Vyberte **Spravovat výchozí nastavení zabezpečení**.
 1. Nastavte přepínač **Povolit výchozí hodnoty zabezpečení** na **Ano**.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="disabling-security-defaults"></a>Zakazování výchozích hodnot zabezpečení
 
@@ -154,7 +154,7 @@ Zakázání výchozích hodnot zabezpečení v adresáři:
 1. Vyhledejte **Azure Active Directory** > **vlastnosti**.
 1. Vyberte **Spravovat výchozí nastavení zabezpečení**.
 1. Nastavte přepínač **Povolit výchozí hodnoty zabezpečení** na **ne**.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="next-steps"></a>Další kroky
 

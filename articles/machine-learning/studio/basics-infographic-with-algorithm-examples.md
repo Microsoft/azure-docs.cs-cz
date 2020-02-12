@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodc18
 ms.date: 03/04/2019
-ms.openlocfilehash: b57728b56efc84b903ed442c0dea7e70d4eb5bb2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4907166c392172d243d2d8bb424d9cfd3c8441b2
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454834"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150404"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Infografika ke stažení: Základy služby Machine Learning s příklady algoritmů
 
@@ -27,7 +27,7 @@ Stáhněte si tento snadno pochopitelné infografika přehled nástroje machine 
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Stáhněte si informační grafiky s příklady algoritmů
 
-**[Ke stažení: Infografika machine learning zásad s odkazy na příklady algoritmů (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+**[Stažení: infografika základy strojového učení s odkazy na příklady algoritmů (PDF)](https://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
 ![Infografika: Základy služby Machine learning s příklady algoritmů. Oblíbené algoritmy. Machine learning pro začátečníky.](./media/basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
@@ -36,7 +36,7 @@ Stáhněte si tento snadno pochopitelné infografika přehled nástroje machine 
 * Podrobnější diskuzi o různých typech algoritmů strojového učení, způsobu jejich použití a o tom, jak vybrat tu správnou verzi pro vaše řešení, najdete v tématu [Jak zvolit algoritmy pro Microsoft Azure Machine Learning Studio (Classic)](algorithm-choice.md).
 * Seznam podle kategorie všech algoritmů strojového učení, které jsou k dispozici v Machine Learning Studio (Classic), naleznete v tématu [Inicializace modelu][initialize-model] v algoritmu Machine Learning Studio (Classic) a v nápovědě k modulu.
 * Úplný Abecední seznam algoritmů a modulů v Machine Learning Studio (Classic) najdete v tématu [seznam modulů Machine Learning Studio (Classic)][a-z-list] v Machine Learning Studio (klasickém) algoritmu a v nápovědě k modulu.
-* Přehled o galerii Azure AI a mnoho vytvářené komunitou prostředky k dispozici, najdete v části [sdílené složky a vyhledejte prostředky v galerii Azure AI](gallery-how-to-use-contribute-publish.md).
+* Přehled Azure AI Gallery a množství dostupných prostředků generovaných komunitou najdete v tématu [sdílení a zjišťování prostředků v Azure AI Gallery](gallery-how-to-use-contribute-publish.md).
 
 
 <!-- Module References -->

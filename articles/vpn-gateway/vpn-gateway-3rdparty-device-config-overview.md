@@ -7,17 +7,17 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 733add5aa86ebd7faaaab78bb301ba9469433fdd
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778018"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148328"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Přehled konfigurací partnerských zařízení sítě VPN
 Tento článek poskytuje přehled konfigurace místních zařízení VPN pro připojení ke službě Azure VPN Gateway. Ukázková instalace Azure Virtual Network a brány VPN se používá k zobrazení způsobu připojení k různým konfiguracím místních zařízení VPN pomocí stejných parametrů.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="device-requirements"></a>Požadavky na zařízení
 Brány VPN Azure používají standardní sady protokolů IPsec/IKE pro tunely VPN typu Site-to-Site (S2S). Seznam parametrů protokolu IPsec/IKE a šifrovacích algoritmů pro brány Azure VPN najdete v tématu [informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md). Můžete také zadat přesné algoritmy a síly klíčů pro konkrétní připojení, jak je popsáno v [tématu o kryptografických požadavcích](vpn-gateway-about-compliance-crypto.md).
@@ -32,7 +32,7 @@ Podrobné pokyny k nastavení jediného tunelu VPN najdete v tématu [Konfigurac
 ### <a name="connection-parameters"></a>Parametry připojení
 V této části jsou uvedeny parametry pro příklady, které jsou popsány v předchozích částech.
 
-| **Parametr**                | **Hodnota**                    |
+| **Ukazatele**                | **Hodnota**                    |
 | ---                          | ---                          |
 | Předpony adres virtuální sítě        | 10.11.0.0/16<br>10.12.0.0/16 |
 | IP adresa brány VPN Azure         | Azure VPN Gateway IP         |

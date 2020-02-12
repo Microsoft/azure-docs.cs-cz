@@ -10,16 +10,16 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 40f779fa5545e0e9c8fd1aa2cc2689b29dffdb82
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 68d39b4f363794d50fd05c2067502fc55d5d0170
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760755"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153243"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co je Azure synapse Analytics (dřív SQL DW)?
 
-Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat s analýzami velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání nebo zřízených prostředků, a to ve velkém měřítku. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení.
+Azure Synapse je neomezená analytická služba, která spojuje podnikové skladování dat a analýzy velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení.
 
 Azure synapse má čtyři součásti:
 - SQL Analytics: kompletní analýza založená na T-SQL – všeobecně dostupná
@@ -34,7 +34,7 @@ Azure synapse má čtyři součásti:
 
 ## <a name="sql-analytics-and-sql-pool-in-azure-synapse"></a>SQL Analytics a fond SQL ve službě Azure synapse
 
-SQL Analytics odkazuje na funkce podnikových dat v datovém skladu, které jsou všeobecně dostupné v Azure synapse. 
+SQL Analytics odkazuje na funkce podnikových dat v datovém skladu, které jsou všeobecně dostupné ve službě Azure synapse. 
 
 Fond SQL představuje kolekci analytických prostředků, které se zřídí při použití analýzy SQL. Velikost fondu SQL je určena jednotkami datového skladu (DWU).
 

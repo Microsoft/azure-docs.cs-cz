@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 7c2618f7703ba1a9803952efabcfbd800149ada4
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 541d1001f8b5881f2773f795d7bd849704cbd796
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548335"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153685"
 ---
 # <a name="two-class-logistic-regression-module"></a>Modul logistické regrese se dvěma třídami
 

@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 02/10/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: e0db41098287ff011416932a0d44a1cb9f76127d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786162"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153872"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>Přehled jazyka OData pro `$filter`, `$orderby`a `$select` v Azure Kognitivní hledání
 
@@ -91,9 +91,9 @@ V tomto příkladu se proměnná rozsahu `room` zobrazí v cestě k poli `room/T
 
 Cesty polí se používají v mnoha parametrech [rozhraní REST API služby Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/). V následující tabulce jsou uvedena všechna místa, kde je lze použít, a veškerá omezení jejich používání:
 
-| API | Název parametru | Omezení |
+| Rozhraní API | Název parametru | Omezení |
 | --- | --- | --- |
-| [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `suggesters/sourceFields` | Žádné |
+| [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `suggesters/sourceFields` | Žádná |
 | [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `scoringProfiles/text/weights` | Lze odkazovat pouze na pole s **možností prohledávání** . |
 | [Vytvořit](https://docs.microsoft.com/rest/api/searchservice/create-index) nebo [aktualizovat](https://docs.microsoft.com/rest/api/searchservice/update-index) index | `scoringProfiles/functions/fieldName` | Lze odkazovat pouze na pole, která lze **filtrovat** . |
 | [Search](https://docs.microsoft.com/rest/api/searchservice/search-documents) | `search`, pokud je `queryType` `full` | Lze odkazovat pouze na pole s **možností prohledávání** . |
@@ -105,13 +105,13 @@ Cesty polí se používají v mnoha parametrech [rozhraní REST API služby Azur
 | [Hledat](https://docs.microsoft.com/rest/api/searchservice/search-documents) a [navrhnout](https://docs.microsoft.com/rest/api/searchservice/suggestions) | `$orderby` | Lze odkazovat pouze na pole, která lze **Seřadit** . |
 | [Hledání](https://docs.microsoft.com/rest/api/searchservice/search-documents), [Návrh](https://docs.microsoft.com/rest/api/searchservice/suggestions)a [vyhledávání](https://docs.microsoft.com/rest/api/searchservice/lookup-document) | `$select` | Může odkazovat **jenom na pole, která lze načíst** . |
 
-## <a name="constants"></a>Konstant
+## <a name="constants"></a>Konstanty
 
 Konstanty v OData jsou literálové hodnoty daného typu [model EDM (Entity Data Model)](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) (EDM). Seznam podporovaných typů v Azure Kognitivní hledání najdete v tématu [podporované datové typy](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) . Konstanty typů kolekcí nejsou podporovány.
 
 V následující tabulce jsou uvedeny příklady konstant pro každý datový typ podporovaný službou Azure Kognitivní hledání:
 
-| Data type | Příklady konstant |
+| Typ dat | Příklady konstant |
 | --- | --- |
 | `Edm.Boolean` | `true`, `false` |
 | `Edm.DateTimeOffset` | `2019-05-06T12:30:05.451Z` |
@@ -121,6 +121,17 @@ V následující tabulce jsou uvedeny příklady konstant pro každý datový ty
 | `Edm.Int32` | `123`, `-456` |
 | `Edm.Int64` | `283032927235` |
 | `Edm.String` | `'hello'` |
+
+### <a name="escaping-special-characters-in-string-constants"></a>Uvozovací znaky speciálních znaků v řetězcových konstantách
+
+Řetězcové konstanty v OData jsou oddělené jednoduchými uvozovkami. Pokud potřebujete sestavit dotaz s řetězcovou konstantou, která by mohla obsahovat jednoduché uvozovky, můžete vložit vložené uvozovky pomocí zdvojnásobení.
+
+Například fráze s neformátovaným apostrofem, jako je Alice auto, by byla vyjádřena v OData jako řetězcová konstanta `'Alice''s car'`.
+
+> [!IMPORTANT]
+> Při sestavování filtrů programově je důležité pamatovat na řídicí konstanty řetězce, které pocházejí ze vstupu uživatele. Účelem je zmírnit možnost [útoků prostřednictvím injektáže](https://wikipedia.org/wiki/SQL_injection), zejména při použití filtrů k implementaci [oříznutí zabezpečení](search-security-trimming-for-azure-search.md).
+
+### <a name="constants-syntax"></a>Syntaxe konstant
 
 Následující EBNF ([Rozšířený Backus – formulář Naur](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) definuje gramatiku pro většinu konstant zobrazených ve výše uvedené tabulce. Gramatika pro geografické typy se dá najít v [geograficky funkčních funkcích OData v Azure kognitivní hledání](search-query-odata-geo-spatial-functions.md).
 
@@ -226,7 +237,7 @@ Parametry **$Filter**, **$OrderBy**a **$Select** jsou podrobněji prozkoumání 
 - [Syntaxe $orderby OData v Azure Kognitivní hledání](search-query-odata-orderby.md)
 - [Syntaxe $select OData v Azure Kognitivní hledání](search-query-odata-select.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech  
+## <a name="see-also"></a>Viz také  
 
 - [Omezující navigace v Azure Kognitivní hledání](search-faceted-navigation.md)
 - [Filtry v Azure Kognitivní hledání](search-filters.md)

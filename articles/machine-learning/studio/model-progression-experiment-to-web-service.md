@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: ce1e7d3b3b9908d5c4608f6ab62e9b743f80c0b0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f7f8989cd1a174ecd66f23324a7760fb5cbb665b
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838013"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148085"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Způsob, jakým model Machine Learning Studio (klasický) postupuje z experimentu na webovou službu
 Azure Machine Learning Studio (Classic) poskytuje interaktivní plátno, které umožňuje vyvíjet, spouštět, testovat a iterovat ***experiment*** , který představuje model prediktivní analýzy. K dispozici je celá řada modulů, které mohou:
@@ -49,7 +49,7 @@ Tady jsou fáze, které typické řešení sleduje při vývoji a nasazování p
 ***Školicí experiment*** je počáteční fází vývoje webové služby v Machine Learning Studio (Classic). Účelem školení experimentu je poskytnout místo pro vývoj, testování, iteraci a nakonec výuku modelu strojového učení. Můžete dokonce prokládat více modelů současně při hledání nejlepšího řešení, ale až budete hotovi, vyberete jeden vyškolený model a odstraníte zbytek z experimentu. Příklad vývoje experimentování s prediktivní analýzou najdete [v tématu vývoj řešení prediktivní analýzy pro posuzování úvěrového rizika v Azure Machine Learning Studio (Classic)](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>Prediktivní experiment
-Jakmile budete mít k dispozici školicí model ve školicím experimentu, klikněte na **nastavit webovou službu** a vyberte **prediktivní webovou službu** v Machine Learning Studio (Classic), abyste zahájili proces převodu školicího experimentu na ***prediktivní experiment***. Účelem prediktivního experimentu je vyzkoušení nových dat pomocí vámi vyučeného modelu s cílem nakonec se stát, že bude fungovat jako webová služba Azure.
+Jakmile budete mít školicí model v experimentu pro školení, klikněte na **nastavit webovou službu** a vyberte **prediktivní webovou službu** v Machine Learning Studio (Classic), abyste zahájili proces převodu školicího experimentu na ***prediktivní experiment***. Účelem prediktivního experimentu je vyzkoušení nových dat pomocí vámi vyučeného modelu s cílem nakonec se stát, že bude fungovat jako webová služba Azure.
 
 Tento převod se provádí v následujících krocích:
 
@@ -95,14 +95,14 @@ Tady je příklad: Předpokládejme, že prediktivní experiment vrátí celý �
 
 Pokud chcete zachovat model strojového učení, ale chcete ho znovu naučit s novými daty, máte dvě možnosti:
 
-1. **Přeškolujte model, když je spuštěná webová služba** – Pokud chcete svůj model předávat i v době, kdy je spuštěná prediktivní webová služba, můžete to udělat tak, že provedete několik úprav školicích experimentů, aby se zajistilo ***přeškolování***, pak můžete ho nasadit jako novou  ***výukovou webovou* službu**. Pokyny k tomu, jak to provést, najdete v tématu [přeučení Machine Learningch modelů programově](/azure/machine-learning/studio/retrain-machine-learning-model).
+1. Převeďte **model, když je spuštěná webová služba** – Pokud chcete svůj model předávat i v době, kdy je spuštěná prediktivní webová služba, můžete to udělat tak, že provedete několik úprav školicích experimentů, abyste se přesadili ***experiment***, a pak ho můžete nasadit jako ***webovou službu pro přeškolení*** . Pokyny k tomu, jak to provést, najdete v tématu [přeučení Machine Learningch modelů programově](/azure/machine-learning/studio/retrain-machine-learning-model).
 2. **Vraťte se na původní školicí experiment a pomocí různých školicích dat vytvořte model** – prediktivní experiment je propojen s webovou službou, ale školicí experiment není přímo propojen tímto způsobem. Pokud upravíte původní školicí experiment a kliknete na **nastavit webovou službu**, vytvoří se *Nový* prediktivní experiment, který při nasazení vytvoří *novou* webovou službu. Neaktualizuje jenom původní webovou službu.
 
    Pokud potřebujete upravit zkušební experiment, otevřete ho a kliknutím na **Uložit jako** vytvořte kopii. Tato akce ponechá původní zkušební experiment, prediktivní experiment a webovou službu. Nyní můžete vytvořit novou webovou službu se změnami. Po nasazení nové webové služby se můžete rozhodnout, zda chcete zastavit předchozí webovou službu nebo ponechat spuštěnou současně s novým.
 
 **Chcete si vyškolit jiný model**
 
-Pokud chcete provést změny v původním prediktivním experimentu, jako je například výběr jiného algoritmu strojového učení, pokus o jinou metodu školení atd., je nutné postupovat podle druhého postupu popsaného výše pro přeškolení modelu: Otevřete školení experimentů, klikněte na **Uložit jako** a vytvořte kopii a pak začněte novou cestou k vývoji modelu, Vytvoření prediktivního experimentu a nasazení webové služby. Tím se vytvoří nová webová služba, která nesouvisí s původní verzí, kterou si můžete vybrat, nebo obojí.
+Pokud chcete provést změny v původním prediktivním experimentu, jako je třeba vybrat jiný algoritmus strojového učení, vyzkoušet jinou výukovou metodu atd., pak musíte postupovat podle druhého postupu popsaného výše v tématu o přeškolení modelu: Otevřete zkušební experiment, klikněte na **Uložit jako** a vytvořte kopii a pak začněte novou cestou k vývoji modelu, Vytvoření prediktivního experimentu a nasazení webové služby. Tím se vytvoří nová webová služba, která nesouvisí s původní verzí, kterou si můžete vybrat, nebo obojí.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o procesu vývoje a experimentování najdete v následujících článcích:

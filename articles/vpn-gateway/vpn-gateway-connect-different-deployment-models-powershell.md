@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1c11539460f1ef65f8cea3d36f1a017661133355
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1dc0eec6178420976181b05a059e9f8b4859ec2a
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833959"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152002"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí PowerShellu
 
@@ -166,7 +166,7 @@ Stav brány můžete zjistit pomocí rutiny **Get-AzureVNetGateway** .
 
 ## <a name="creatermgw"></a>Oddíl 2 – konfigurace brány virtuální sítě RM
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 Předpoklady předpokládají, že již máte vytvořenou virtuální síť služby RM. V tomto kroku vytvoříte bránu VPN pro virtuální síť RM. Tyto kroky nespouštějte, dokud nenačtete veřejnou IP adresu pro bránu klasické virtuální sítě. 
 
@@ -298,7 +298,7 @@ Vytvoření připojení mezi bránami vyžaduje prostředí PowerShell. Je možn
 
 [!INCLUDE [vpn-gateway-verify-connection-ps-classic](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 [!INCLUDE [vpn-gateway-verify-connection-azureportal-classic](../../includes/vpn-gateway-verify-connection-azureportal-classic-include.md)]
 
@@ -309,7 +309,7 @@ Vytvoření připojení mezi bránami vyžaduje prostředí PowerShell. Je možn
 
 [!INCLUDE [vpn-gateway-verify-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 [!INCLUDE [vpn-gateway-verify-connection-portal-rm](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 

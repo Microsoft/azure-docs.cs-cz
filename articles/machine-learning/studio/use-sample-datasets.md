@@ -1,5 +1,5 @@
 ---
-title: Použít ukázkové datové sady
+title: Použití ukázkových datových sad
 titleSuffix: ML Studio (classic) - Azure
 description: Popisy datových sad použitých v ukázkových modelech, které jsou součástí Machine Learning Studio (Classic). Tyto ukázkové datové sady můžete použít pro vaše experimenty.
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: c2700c8241905f6e219b566a10e3378dd6c7251d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211a2a83d2668c3240daca11e9063b31d42655ae
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427431"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152750"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>Použití ukázkových datových sad v Azure Machine Learning Studio (klasický)
 [top]: #machine-learning-sample-datasets
@@ -255,7 +255,7 @@ Podmnožina dat z Národního institutu databáze nemocí diabetes a trávící 
 <p></p>
 <b>Použití:</b> Předpovědět, zda má předmět diabetes (binární klasifikace). 
 <p></p>
-<b>Související výzkum:</b> Sigillito, V. (1990). UCI Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/ml úložiště "</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
+<b>Související výzkum:</b> Sigillito, V. (1990). UCI Machine Learning <a href="https://archive.ics.uci.edu/ml">https://archive.ics.uci.edu/mlúložiště "</a>. Irvine, CA: University of California, školní školy a počítačové vědy </td>
 </tr>
 
 <tr>
@@ -270,7 +270,7 @@ Sada metadat o zákaznících, včetně demografických údajů a předvoleb.
 </tr>
 
 <tr>
-  <td>Funkční data restaurace</td>
+  <td>Data funkcí restaurace</td>
   <td>
 Sada metadat o restauracích a jejich funkcích, jako je například typ potraviny, druh stravování a umístění.
 <p></p>
@@ -281,7 +281,7 @@ Sada metadat o restauracích a jejich funkcích, jako je například typ potravi
 </tr>
 
 <tr>
-  <td>Hodnocení restaurací</td>
+  <td>Hodnocení restaurace</td>
   <td>
 Obsahuje hodnocení vydaná uživateli do restaurací na škále od 0 do 2.
 <p></p>
@@ -358,28 +358,28 @@ Upozorňujeme, že některé společnosti nemohly najít článek, takže počet
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing. csv</a></td>
   <td>
 Datová sada obsahuje zákaznická data a údaje o jejich reakci na přímou poštovní kampaň. Každý řádek představuje zákazníka. Datová sada obsahuje devět funkcí demografických údajů uživatele a minulého chování a tři sloupce popisků (Přejít, převod a výdaje).  Návštěva je binární sloupec, který indikuje, že zákazník navštívil po marketingové kampani. Konverze znamená, že zákazník si koupil nějakého nějakého. Útrata je množství, které bylo stráveno.  Datovou sadu vystavila služba Kevin Hillstrom pro MineThatDatay e-mailové analýzy a pro dolování dat.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test. csv</a></td>
   <td>
 Funkce příkladů testů v datové sadě RCV1-v2 pro zprávy Reuters Datová sada obsahuje články 781K News spolu s jejich ID (první sloupec datové sady). Každý článek má tokeny, stopworded a lemmatizátor. Datová sada byla zpřístupněna prostřednictvím David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train. csv</a></td>
   <td>
 Příklady výukových příkladů v datové sadě RCV1-v2 pro zprávy Reuters Datová sada obsahuje články 23K News spolu s jejich ID (první sloupec datové sady). Každý článek má tokeny, stopworded a lemmatizátor. Datová sada byla zpřístupněna prostřednictvím David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. csv</a><br></td>
   <td>
 Datová sada z konference KDD konvičku 1999 a soutěž nástrojů pro dolování dat (<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99. html</a>)
 <p></p>
@@ -388,14 +388,14 @@ Datová sada byla stažena a uložena v úložišti objektů BLOB v Azure (<a hr
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. témats. qrels. csv</a></td>
   <td>
 Přiřazení témat pro články s příspěvky v datové sadě RCV1-v2 pro zprávy Reuters Článek s příspěvky lze přiřadit několika tématům. Formát každého řádku je "&lt;název tématu&gt; &lt;ID dokumentu&gt; 1". Datová sada obsahuje 2,6 M přiřazení tématu. Datová sada byla zpřístupněna prostřednictvím David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
   <td>
 Tato data pocházejí z konference KDDu pro testování výkonu studenta 2010 (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">vyhodnocení výkonu studenta</a>). Použitá data jsou Algebra_2008_2009 sada školení (razítko, J. NICULESCU-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebraický I 2008-2009. Datová sada výzvy z konference KDD 2010 – výzva k dolování dat vzdělávání. Najdete ho na adrese <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads. jsp</a>.
 <p></p>

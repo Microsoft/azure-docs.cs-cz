@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2b4f198d596ddcb475e123c355c38ada784d21d3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b023b49955f642f1cafcb5f26ae67e657718bcd6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883993"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148228"
 ---
 # <a name="authentication-requests-and-responses"></a>Ověřování, požadavky a odpovědi
 
@@ -29,18 +29,18 @@ Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o pou
 
 - Postup vytvoření klíče s názvem TESTKEY v Key Vault použít-`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
 
-- IMPORT klíče s názvem IMPORTEDKEY do Key Vault use-`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- IMPORT klíče s názvem IMPORTEDKEY do Key Vault použít-`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
 
-- ZÍSKÁNÍ tajného kódu s názvem MYSECRET v Key Vault použití-`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- ZÍSKÁNÍ tajného kódu s názvem MYSECRET v Key Vault použít-`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
-- PODEPSÁNí algoritmu Digest pomocí klíče s názvem TESTKEY v Key Vault use-`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
+- PODEPSÁNí algoritmu Digest pomocí klíče s názvem TESTKEY v Key Vault použít-`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  Autorita pro požadavek na Key Vault je vždy následující:`https://{keyvault-name}.vault.azure.net/`  
+  Autorita pro požadavek na Key Vault je vždy následující, `https://{keyvault-name}.vault.azure.net/`  
 
   Klíče se vždycky ukládají do cesty/Keys, tajné klíče se vždycky ukládají do cesty/Secrets.  
 
 ## <a name="api-version"></a>Verze rozhraní API  
- Služba Azure Key Vault podporuje správu verzí protokolu, aby poskytovala kompatibilitu s klienty nižší úrovně, i když pro tyto klienty nebudou k dispozici všechny možnosti. Klienti musí použít `api-version` parametr řetězce dotazu k určení verze protokolu, který podporují, protože není k dispozici výchozí hodnota.  
+ Služba Azure Key Vault podporuje správu verzí protokolu, aby poskytovala kompatibilitu s klienty nižší úrovně, i když pro tyto klienty nebudou k dispozici všechny možnosti. Klienti musí použít parametr řetězce dotazu `api-version` k určení verze protokolu, kterou podporují, protože není k dispozici výchozí hodnota.  
 
  Verze Azure Key Vaultho protokolu následují po schématu číslování dat pomocí {rrrr}. {MM}. Formát {DD}.  
 
@@ -51,7 +51,7 @@ Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o pou
 
  Pokud není uvedeno jinak v popisu operace, musí hlavička žádosti o přijetí obsahovat typ média Application/JSON.  
 
-## <a name="response-body"></a>Text odpovědi  
+## <a name="response-body"></a>Tělo odezvy  
  Pokud není uvedeno jinak v popisu operace, bude typ obsahu odpovědi úspěšné i nezdařené operace aplikace/JSON a obsahuje podrobné informace o chybě.  
 
 ## <a name="using-http-post"></a>Použití HTTP POST  
@@ -60,13 +60,13 @@ Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o pou
 ## <a name="error-responses"></a>Chybové odpovědi  
  Zpracování chyb bude používat stavové kódy HTTP. Typické výsledky jsou:  
 
-- 2xx – úspěch: Používá se pro normální operace. Tělo odpovědi bude obsahovat očekávaný výsledek.  
+- 2xx – úspěch: použito pro normální operaci. Tělo odpovědi bude obsahovat očekávaný výsledek.  
 
-- 3xx – přesměrování: K splnění podmíněného GET se může vrátit 304 "nezměněný". V budoucnu se můžou použít jiné kódy 3xx k označení změn DNS a cest.  
+- 3xx – přesměrování: pro splnění podmíněného načtení může být vráceno 304 "nezměněno". V budoucnu se můžou použít jiné kódy 3xx k označení změn DNS a cest.  
 
-- 4xx – Chyba klienta: Používá se pro chybné požadavky, chybějící klíče, chyby syntaxe, neplatné parametry, chyby ověřování atd. Tělo odpovědi bude obsahovat podrobné vysvětlení chyby.  
+- 4xx – Chyba klienta: používá se pro chybné požadavky, chybějící klíče, chyby syntaxe, neplatné parametry, chyby ověřování atd. Tělo odpovědi bude obsahovat podrobné vysvětlení chyby.  
 
-- 5xx – chyba serveru: Používá se pro interní chyby serveru. Tělo odpovědi bude obsahovat souhrnné informace o chybě.  
+- 5xx – chyba serveru: používá se pro interní chyby serveru. Tělo odpovědi bude obsahovat souhrnné informace o chybě.  
 
   Systém je navržený tak, aby fungoval za proxy serverem nebo bránou firewall. Proto může klient získat další chybové kódy.  
 
@@ -110,9 +110,9 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
  Parametry v hlavičce WWW-Authenticate jsou:  
 
--   udělován Adresa autorizační služby OAuth2, která se dá použít k získání přístupového tokenu pro požadavek.  
+-   autorizace: adresa autorizační služby OAuth2, která se dá použít k získání přístupového tokenu pro požadavek.  
 
--   partner Název prostředku, který se má použít v žádosti o autorizaci.  
+-   prostředek: název prostředku (https://vault.azure.net), který se má použít v žádosti o autorizaci.  
 
 ## <a name="see-also"></a>Viz také  
  [Informace o klíčích, tajných kódech a certifikátech](about-keys-secrets-and-certificates.md)

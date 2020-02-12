@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 8db1d782b6f92637ad929ba863a8d24c81280577
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 61c3dde49d4cd298fb3a0f19dc1d8c00e54977af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548420"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152342"
 ---
 # <a name="enter-data-manually-module"></a>Zadat data ručně modul
 
@@ -38,7 +38,7 @@ Tento modul může být užitečný ve scénářích, jako jsou tyto:
   
     -   **Arff**. Formát souboru relace atributu, který používá weka.   
   
-    -   **CSV**. Formát hodnot oddělených čárkami. Další informace najdete v tématu [převedení do sdíleného svazku clusteru](./convert-to-csv.md).  
+    -   **Sdílený svazek clusteru**. Formát hodnot oddělených čárkami. Další informace najdete v tématu [převedení do sdíleného svazku clusteru](./convert-to-csv.md).  
   
     -   **SVMLight**. Formát používaný pro dostupné a dalšími architekturami strojového učení.  
   
@@ -52,13 +52,13 @@ Tento modul může být užitečný ve scénářích, jako jsou tyto:
   
         Pokud vyberete možnost **HasHeader** , můžete použít první řádek hodnot jako záhlaví sloupce.  
   
-        Pokud zrušíte výběr této možnosti, budou použity názvy sloupců, Sloupec1, col2 a tak dále. Později můžete přidat nebo změnit názvy sloupců pomocí [Upravit metadata](./edit-metadata.md).  
+        Pokud zrušíte výběr této možnosti, budou použity názvy sloupců, Sloupe, col2 a tak dále. Později můžete přidat nebo změnit názvy sloupců pomocí [Upravit metadata](./edit-metadata.md).  
   
     - **TSV**: Chcete-li vytvořit více sloupců, vložte text oddělený tabulátorem nebo zadejte více sloupců pomocí tabulátorů mezi poli.  
   
         Pokud vyberete možnost **HasHeader** , můžete použít první řádek hodnot jako záhlaví sloupce.  
   
-        Pokud zrušíte výběr této možnosti, budou použity názvy sloupců, Sloupec1, col2 a tak dále. Později můžete přidat nebo změnit názvy sloupců pomocí [Upravit metadata](./edit-metadata.md).  
+        Pokud zrušíte výběr této možnosti, budou použity názvy sloupců, Sloupe, col2 a tak dále. Později můžete přidat nebo změnit názvy sloupců pomocí [Upravit metadata](./edit-metadata.md).  
   
     -   **Arff**: vložte do existujícího souboru formátu arff. Pokud zadáváte hodnoty přímo, nezapomeňte přidat volitelné záhlaví a požadovaná pole atributu na začátek dat. 
     
@@ -84,10 +84,10 @@ Tento modul může být užitečný ve scénářích, jako jsou tyto:
   
         Když spustíte modul [zadat data ručně](./enter-data-manually.md) , tyto řádky se převedou na datovou sadu sloupců a hodnot indexu následujícím způsobem:  
   
-        |Sloupec 1|Sloupec 2|Col3|Col4|Popisky|  
+        |Sloupe|Col2|Col3|Col4|Popisky|  
         |-|-|-|-|-|  
-        |0,00016|0,004|0,999961|0,00784|1\. místo|  
-        |0|0,004|0,999955|0,008615|1\. místo|  
+        |0,00016|0,004|0,999961|0,00784|1|  
+        |0|0,004|0,999955|0,008615|1|  
   
 4.  Po každém řádku stiskněte klávesu ENTER a začněte nový řádek.  
   

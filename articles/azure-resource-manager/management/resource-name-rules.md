@@ -2,13 +2,13 @@
 title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 9d685e2852dee25e03bdd98ea5463fd40e795f23
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/11/2020
+ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157802"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153158"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -27,14 +27,14 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | servery | skupina prostředků | 3–63 | Malá písmena a číslice.<br><br>Začínat malým písmenem. |
+> | servers | skupina prostředků | 3–63 | Malá písmena a číslice.<br><br>Začínat malým písmenem. |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | služba | globální | 1-50 | Alfanumerické znaky.<br><br>Začíná písmenem. |
+> | služba | global | 1-50 | Alfanumerické znaky.<br><br>Začíná písmenem. |
 > | služba/rozhraní API | služba | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/rozhraní API/problémy | rozhraní api | 1-256 | Nejde použít:<br> `*#&+:<>?` |
 > | služba/rozhraní API/problémy/přílohy | chybu | 1-256 | Nejde použít:<br> `*#&+:<>?` |
@@ -105,7 +105,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | batchAccounts | Region (Oblast) | 3–24 | Malá písmena a číslice. |
+> | batchAccounts | Oblast | 3–24 | Malá písmena a číslice. |
 > | batchAccounts/aplikace | účet Batch | 1-64 | Alfanumerické znaky, podtržítka a spojovníky. |
 > | batchAccounts/certifikáty | účet Batch | 5-45 | Alfanumerické znaky, podtržítka a spojovníky. |
 > | batchAccounts/fondy | účet Batch | 1-64 | Alfanumerické znaky, podtržítka a spojovníky. |
@@ -115,14 +115,14 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | blockchainMembers | globální | 2-20 | Malá písmena a číslice.<br><br>Začínat malým písmenem. |
+> | blockchainMembers | global | 2-20 | Malá písmena a číslice.<br><br>Začínat malým písmenem. |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | botServices | globální | 2–64 |  Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. |
+> | botServices | global | 2–64 |  Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. |
 > | botServices/kanály | Robot – služba | 2–64 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. |
 > | botServices/připojení | Robot – služba | 2–64 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. |
 > | enterpriseChannels | skupina prostředků | 2–64 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. |
@@ -132,7 +132,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | Redis | globální | 1–63 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. Po sobě jdoucí spojovníky nejsou povolené. |
+> | Redis | global | 1–63 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. Po sobě jdoucí spojovníky nejsou povolené. |
 > | Redis/firewallRules | Redis | 1-256 | Alfanumerické znaky |
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
@@ -141,7 +141,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
 > | profiles | skupina prostředků | 1-260 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
-> | profily/koncové body | globální | 1-50 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
+> | profily/koncové body | global | 1-50 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 
@@ -166,9 +166,9 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | diskEncryptionSets | skupina prostředků | 1–80 | Alfanumerické znaky a podtržítka. |
 > | disks | skupina prostředků | 1–80 | Alfanumerické znaky a podtržítka. |
 > | galleries | skupina prostředků | 1–80 | Alfanumerické znaky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
-> | Galerie/aplikace | galerie | 1–80 | Alfanumerické znaky, spojovníky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
+> | Galerie/aplikace | seznamů | 1–80 | Alfanumerické znaky, spojovníky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
 > | Galerie/aplikace/verze | aplikace | 32-bitové celé číslo | Čísla a tečky. |
-> | Galerie/image | galerie | 1–80 | Alfanumerické znaky, spojovníky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
+> | Galerie/image | seznamů | 1–80 | Alfanumerické znaky, spojovníky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
 > | Galerie/image/verze | image | 32-bitové celé číslo | Čísla a tečky. |
 > | images | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Konec s alfanumerickým nebo podtržítkem. |
 > | snímky | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Konec s alfanumerickým nebo podtržítkem. |
@@ -183,14 +183,14 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | containerGroups | skupina prostředků | 1–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. Po sobě jdoucí pomlčky nejsou povolené. |
+> | containerGroups | skupina prostředků | 1–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. Po sobě jdoucí spojovníky nejsou povolené. |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | registries | globální | 5-50 | Alfanumerické znaky. |
+> | registries | global | 5-50 | Alfanumerické znaky. |
 > | Registry/buildTasks | registr | 5-50 | Alfanumerické znaky. |
 > | Registry/buildTasks/kroky | úloha sestavení | 5-50 | Alfanumerické znaky. |
 > | Registry/replikace | registr | 5-50 | Alfanumerické znaky. |
@@ -213,18 +213,18 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
 > | hubs | skupina prostředků | 1-64 | Alfanumerické znaky.<br><br>Začíná písmenem.  |
-> | rozbočovače/authorizationPolicies | centrum | 1-50 | Alfanumerické znaky, podtržítka a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
-> | rozbočovače/konektory | centrum | 1-128 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
+> | rozbočovače/authorizationPolicies | zdroj | 1-50 | Alfanumerické znaky, podtržítka a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
+> | rozbočovače/konektory | zdroj | 1-128 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
 > | rozbočovače/konektory/mapování | konektor | 1-128 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
-> | centra/interakce | centrum | 1-128 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
-> | centra/klíčový ukazatel výkonu | centrum | 1-512 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
-> | centra/odkazy | centrum | 1-512 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
-> | rozbočovače/předpovědi | centrum | 1-512 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
-> | centra/profily | centrum | 1-128 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
-> | rozbočovače/relationshipLinks | centrum | 1-512 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
-> | rozbočovače/vztahy | centrum | 1-512 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
-> | rozbočovače/roleAssignments | centrum | 1-128 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
-> | centra/zobrazení | centrum | 1-512 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
+> | centra/interakce | zdroj | 1-128 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
+> | centra/klíčový ukazatel výkonu | zdroj | 1-512 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
+> | centra/odkazy | zdroj | 1-512 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
+> | rozbočovače/předpovědi | zdroj | 1-512 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
+> | centra/profily | zdroj | 1-128 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
+> | rozbočovače/relationshipLinks | zdroj | 1-512 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
+> | rozbočovače/vztahy | zdroj | 1-512 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
+> | rozbočovače/roleAssignments | zdroj | 1-128 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
+> | centra/zobrazení | zdroj | 1-512 | Alfanumerické znaky a podtržítka.<br><br>Začíná písmenem. |
 
 ## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
@@ -253,7 +253,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | factories | globální | 3–63 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
+> | factories | global | 3–63 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
 > | továrny/toky dat | instalací | 1-260 | Nejde použít:<br>`<>*#.%&:\\+?/`<br><br>Začněte s alfanumerickými znaky. |
 > | továrny/datové sady | instalací | 1-260 | Nejde použít:<br>`<>*#.%&:\\+?/`<br><br>Začněte s alfanumerickými znaky. |
 > | továrny/integrationRuntimes | instalací | 3–63 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
@@ -267,7 +267,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | accounts | globální | 3–24 | Malá písmena a číslice. |
+> | accounts | global | 3–24 | Malá písmena a číslice. |
 > | účty/computePolicies | account | 3-60 | Alfanumerické znaky, spojovníky a podtržítka. |
 > | účty/dataLakeStoreAccounts | account | 3–24 | Malá písmena a číslice. |
 > | účty/firewallRules | account | 3-50 | Alfanumerické znaky, spojovníky a podtržítka. |
@@ -278,7 +278,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | accounts | globální | 3–24 | Malá písmena a číslice. |
+> | accounts | global | 3–24 | Malá písmena a číslice. |
 > | účty/firewallRules | account | 3-50 | Alfanumerické znaky, spojovníky a podtržítka. |
 > | účty/virtualNetworkRules | account | 3-50 | Alfanumerické znaky, spojovníky a podtržítka. |
 
@@ -287,7 +287,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | Služby | skupina prostředků | 2-62 | Alfanumerické znaky, spojovníky, tečky a podtržítka.<br><br>Začněte s alfanumerickými znaky. |
+> | services | skupina prostředků | 2-62 | Alfanumerické znaky, spojovníky, tečky a podtržítka.<br><br>Začněte s alfanumerickými znaky. |
 > | služby a projekty | služba | 2-57 | Alfanumerické znaky, spojovníky, tečky a podtržítka.<br><br>Začněte s alfanumerickými znaky. |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
@@ -295,41 +295,41 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | servery | globální | 3–63 | Malá písmena, spojovníky a číslice.<br><br>Nelze začínat ani končit spojovníkem. |
-> | servery/databáze | servery | 1–63 | Alfanumerické znaky a spojovníky. |
-> | servery/firewallRules | servery | 1-128 | Alfanumerické znaky, spojovníky a podtržítka. |
-> | servery/virtualNetworkRules | servery | 1-128 | Alfanumerické znaky a spojovníky. |
+> | servers | global | 3–63 | Malá písmena, spojovníky a číslice.<br><br>Nelze začínat ani končit spojovníkem. |
+> | servery/databáze | servers | 1–63 | Alfanumerické znaky a spojovníky. |
+> | servery/firewallRules | servers | 1-128 | Alfanumerické znaky, spojovníky a podtržítka. |
+> | servery/virtualNetworkRules | servers | 1-128 | Alfanumerické znaky a spojovníky. |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | servery | globální | 3–63 | Malá písmena, spojovníky a číslice.<br><br>Nelze začínat ani končit spojovníkem. |
-> | servery/databáze | servery | 1–63 | Alfanumerické znaky a spojovníky. |
-> | servery/firewallRules | servery | 1-128 | Alfanumerické znaky, spojovníky a podtržítka. |
-> | servery/virtualNetworkRules | servery | 1-128 | Alfanumerické znaky a spojovníky. |
+> | servers | global | 3–63 | Malá písmena, spojovníky a číslice.<br><br>Nelze začínat ani končit spojovníkem. |
+> | servery/databáze | servers | 1–63 | Alfanumerické znaky a spojovníky. |
+> | servery/firewallRules | servers | 1-128 | Alfanumerické znaky, spojovníky a podtržítka. |
+> | servery/virtualNetworkRules | servers | 1-128 | Alfanumerické znaky a spojovníky. |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | servery | globální | 3–63 | Malá písmena, spojovníky a číslice.<br><br>Nelze začínat ani končit spojovníkem. |
-> | servery/databáze | servery | 1–63 | Alfanumerické znaky a spojovníky. |
-> | servery/firewallRules | servery | 1-128 | Alfanumerické znaky, spojovníky a podtržítka. |
-> | servery/virtualNetworkRules | servery | 1-128 | Alfanumerické znaky a spojovníky. |
+> | servers | global | 3–63 | Malá písmena, spojovníky a číslice.<br><br>Nelze začínat ani končit spojovníkem. |
+> | servery/databáze | servers | 1–63 | Alfanumerické znaky a spojovníky. |
+> | servery/firewallRules | servers | 1-128 | Alfanumerické znaky, spojovníky a podtržítka. |
+> | servery/virtualNetworkRules | servers | 1-128 | Alfanumerické znaky a spojovníky. |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | IotHubs | globální | 3-50 | Alfanumerické znaky a spojovníky.<br><br>Nemůže končit spojovníkem. |
+> | IotHubs | global | 3-50 | Alfanumerické znaky a spojovníky.<br><br>Nemůže končit spojovníkem. |
 > | IotHubs/certifikáty | IoT Hub | 1-64 | Alfanumerické znaky, spojovníky, tečky a podtržítka. |
 > | IotHubs/eventHubEndpoints/ConsumerGroups | eventHubEndpoints | 1-50 | Alfanumerické znaky, spojovníky, tečky a podtržítka. |
-> | ProvisioningServices | skupina prostředků | 3-64 | Alfanumerické znaky a spojovníky.<br><br>Konec s alfanumerickými znaky. |
-> | provisioningServices/certifikáty | ProvisioningServices | 1-64 | Alfanumerické znaky, spojovníky, tečky a podtržítka. |
+> | provisioningServices | skupina prostředků | 3-64 | Alfanumerické znaky a spojovníky.<br><br>Konec s alfanumerickými znaky. |
+> | provisioningServices/certifikáty | provisioningServices | 1-64 | Alfanumerické znaky, spojovníky, tečky a podtržítka. |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -346,14 +346,14 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | databaseAccounts | globální | 3-31 | Malá písmena, číslice a spojovníky.<br><br>Začněte s malým písmenem nebo číslicí. |
+> | databaseAccounts | global | 3-31 | Malá písmena, číslice a spojovníky.<br><br>Začněte s malým písmenem nebo číslicí. |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | domény | skupina prostředků | 3-50 | Alfanumerické znaky a spojovníky. |
+> | domains | skupina prostředků | 3-50 | Alfanumerické znaky a spojovníky. |
 > | domény a témata | domain | 3-50 | Alfanumerické znaky a spojovníky. |
 > | eventSubscriptions | skupina prostředků | 3-64 | Alfanumerické znaky a spojovníky. |
 > | topics | skupina prostředků | 3-50 | Alfanumerické znaky a spojovníky. |
@@ -364,7 +364,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
 > | clusters | skupina prostředků | 6-50 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem. Končit písmenem nebo číslicí. |
-> | namespaces | globální | 6-50 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem. Končit písmenem nebo číslicí. |
+> | namespaces | global | 6-50 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem. Končit písmenem nebo číslicí. |
 > | obory názvů/autorizačních pravidel | Obor názvů | 1-50 | Alfanumerické znaky, tečky, pomlčky a podtržítka.<br><br>Začíná a končí písmenem nebo číslicí. |
 > | obory názvů/disasterRecoveryConfigs | Obor názvů | 1-50 | Alfanumerické znaky, tečky, pomlčky a podtržítka.<br><br>Začíná a končí písmenem nebo číslicí. |
 > | obory názvů/eventhubs | Obor názvů | 1-50 | Alfanumerické znaky, tečky, pomlčky a podtržítka.<br><br>Začíná a končí písmenem nebo číslicí. |
@@ -376,7 +376,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | clusters | globální | 3-59 | Alfanumerické znaky a spojovníky<br><br>Začíná a končí písmenem nebo číslicí. |
+> | clusters | global | 3-59 | Alfanumerické znaky a spojovníky<br><br>Začíná a končí písmenem nebo číslicí. |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
@@ -390,14 +390,14 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | IoTApps | globální | 2-63 | Malá písmena, číslice a spojovníky.<br><br>Začněte s malým písmenem nebo číslicí. |
+> | IoTApps | global | 2-63 | Malá písmena, číslice a spojovníky.<br><br>Začněte s malým písmenem nebo číslicí. |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | vaults | globální | 3–24 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem. Končit písmenem nebo číslicí. Nemůže obsahovat po sobě jdoucí spojovníky. |
+> | vaults | global | 3–24 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem. Končit písmenem nebo číslicí. Nemůže obsahovat po sobě jdoucí spojovníky. |
 > | trezory/tajné klíče | Trezor | 1-127 | Alfanumerické znaky a spojovníky. |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
@@ -405,10 +405,10 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | clusters | globální | 4-22 | Malá písmena a číslice.<br><br>Začíná písmenem. |
-> | /Clusters/databáze | cluster | 1-260 | Alfanumerické znaky, spojovníky, mezery a tečky. |
-> | /Clusters/databáze/dataconnections | databáze | 1-40 | Alfanumerické znaky, spojovníky, mezery a tečky. |
-> | /Clusters/databáze/eventhubconnections | databáze | 1-40 | Alfanumerické znaky, spojovníky, mezery a tečky. |
+> | clusters | global | 4-22 | Malá písmena a číslice.<br><br>Začíná písmenem. |
+> | /Clusters/databáze | služby | 1-260 | Alfanumerické znaky, spojovníky, mezery a tečky. |
+> | /Clusters/databáze/dataconnections | database | 1-40 | Alfanumerické znaky, spojovníky, mezery a tečky. |
+> | /Clusters/databáze/eventhubconnections | database | 1-40 | Alfanumerické znaky, spojovníky, mezery a tečky. |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 
@@ -483,7 +483,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | expressRouteCircuits | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
 > | firewallPolicies | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
 > | firewallPolicies / ruleGroups | Zásady brány firewall | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
-> | frontDoors | globální | 5-64 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
+> | frontDoors | global | 5-64 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
 > | loadBalancers | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
 > | loadBalancers/inboundNatRules | Load Balancer | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
 > | localNetworkGateways | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
@@ -500,7 +500,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | routeTables | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
 > | routeTables/trasy | směrovací tabulka | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
 > | serviceEndpointPolicies | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
-> | trafficmanagerprofiles | globální | 1–63 | Alfanumerické znaky, spojovníky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
+> | trafficmanagerprofiles | global | 1–63 | Alfanumerické znaky, spojovníky a tečky.<br><br>Začíná a končí alfanumerickými znaky. |
 > | virtualNetworkGateways | skupina prostředků | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
 > | virtualNetworks | skupina prostředků | 2–64 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
 > | virtualnetworks/podsítě | virtuální síť | 1–80 | Alfanumerické znaky, podtržítka, tečky a spojovníky.<br><br>Začněte s alfanumerickými znaky. Koncové alfanumerické znaky nebo podtržítka. |
@@ -515,7 +515,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | namespaces | globální | 6-50 | Alfanumerické znaky a spojovníky<br><br>Začíná a končí alfanumerickými znaky. |
+> | namespaces | global | 6-50 | Alfanumerické znaky a spojovníky<br><br>Začíná a končí alfanumerickými znaky. |
 > | obory názvů/autorizačních pravidel | Obor názvů | 1-256 | Alfanumerické znaky, tečky, spojovníky a podtržítka.<br><br>Zahajte alfanumerické znaky. |
 > | obory názvů/notificationHubs | Obor názvů | 1-260 | Alfanumerické znaky, tečky, spojovníky a podtržítka.<br><br>Zahajte alfanumerické znaky. |
 > | obory názvů/notificationHubs/autorizačních pravidel | Centrum oznámení | 1-256 | Alfanumerické znaky, tečky, spojovníky a podtržítka.<br><br>Zahajte alfanumerické znaky. |
@@ -527,6 +527,13 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | --- | --- | --- | --- |
 > | clusters | skupina prostředků | 4-63 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
 > | workspaces | skupina prostředků | 4-63 | Alfanumerické znaky a spojovníky.<br><br>Začíná a končí alfanumerickými znaky. |
+
+## <a name="microsoftportal"></a>Microsoft.Portal
+
+> [!div class="mx-tableFixed"]
+> | Entita | Rozsah | Délka | Platné znaky |
+> | --- | --- | --- | --- |
+> | dashboards | skupina prostředků | 3-160 | Alfanumerické znaky a spojovníky.<br><br>Chcete-li použít zakázané znaky, přidejte značku s názvem **skrytý a** název řídicího panelu, který chcete použít. Portál zobrazí tento název při zobrazení řídicího panelu. |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
@@ -555,7 +562,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | namespaces | globální | 6-50 | Alfanumerické znaky a spojovníky.<br><br>Začněte písmenem. Končit písmenem nebo číslicí. |
+> | namespaces | global | 6-50 | Alfanumerické znaky a spojovníky.<br><br>Začněte písmenem. Končit písmenem nebo číslicí. |
 > | obory názvů/autorizačních pravidel | Obor názvů | 1-50 |  Alfanumerické znaky, tečky, pomlčky a podtržítka.<br><br>Začíná a končí alfanumerickými znaky. |
 > | obory názvů/HybridConnections | Obor názvů | 1-260 | Alfanumerické znaky, tečky, pomlčky, podtržítka a lomítka.<br><br>Začíná a končí alfanumerickými znaky. |
 > | obory názvů/HybridConnections/autorizačních pravidel | hybridní připojení | 1-50 | Alfanumerické znaky, tečky, pomlčky a podtržítka.<br><br>Začíná a končí alfanumerickými znaky. |
@@ -577,9 +584,9 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | namespaces | globální | 6-50 | Alfanumerické znaky a spojovníky.<br><br>Začněte písmenem. Končit písmenem nebo číslicí.<br><br>Další informace najdete v tématu [Vytvoření oboru názvů](/rest/api/servicebus/create-namespace). |
+> | namespaces | global | 6-50 | Alfanumerické znaky a spojovníky.<br><br>Začněte písmenem. Končit písmenem nebo číslicí.<br><br>Další informace najdete v tématu [Vytvoření oboru názvů](/rest/api/servicebus/create-namespace). |
 > | obory názvů/autorizačních pravidel | Obor názvů | 1-50 | Alfanumerické znaky, tečky, spojovníky a podtržítka.<br><br>Začněte a ukončete pomocí alphnumeric. |
-> | obory názvů/disasterRecoveryConfigs | globální | 6-50 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem. Konec s alfanumerickými znaky. |
+> | obory názvů/disasterRecoveryConfigs | global | 6-50 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem. Konec s alfanumerickými znaky. |
 > | obory názvů/migrationConfigurations | Obor názvů |  | Měla by být vždy **$Default**. |
 > | obory názvů/fronty | Obor názvů | 1-260 | Alfanumerické znaky, tečky, pomlčky, podtržítka a lomítka.<br><br>Začíná a končí alfanumerickými znaky. |
 > | obory názvů/fronty/autorizačních pravidel | fronta | 1-50 | Alfanumerické znaky, tečky, spojovníky a podtržítka.<br><br>Začněte a ukončete pomocí alphnumeric. |
@@ -600,19 +607,19 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | signalR | globální | 3–63 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem. Končit písmenem nebo číslicí.  |
+> | signalR | global | 3–63 | Alfanumerické znaky a spojovníky.<br><br>Začíná písmenem. Končit písmenem nebo číslicí.  |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | managedInstances | globální | 1–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
-> | servery | globální | 1–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
+> | managedInstances | global | 1–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
+> | servers | global | 1–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
 > | servery/databáze | server | 1-128 | Nejde použít:<br>`<>*%&:\/?`<br><br>Nemůže končit tečkou nebo mezerou. |
-> | servery/databáze/syncGroups | databáze | 1-150 | Alfanumerické znaky, spojovníky a podtržítka. |
+> | servery/databáze/syncGroups | database | 1-150 | Alfanumerické znaky, spojovníky a podtržítka. |
 > | servery/elasticPools | server | 1-128 | Nejde použít:<br>`<>*%&:\/?`<br><br>Nemůže končit tečkou nebo mezerou. |
-> | servery/failoverGroups | globální | 1–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
+> | servery/failoverGroups | global | 1–63 | Malá písmena, číslice a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
 > | servery/firewallRules | server | 1-128 | Nejde použít:<br>`<>*%&:;\/?`<br><br>Nemůže končit tečkou. |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
@@ -620,7 +627,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | storageAccounts | globální | 3–24 | Malá písmena a číslice. |
+> | storageAccounts | global | 3–24 | Malá písmena a číslice. |
 > | storageAccounts/blobServices | účet úložiště |  | Musí být `default`. |
 > | storageAccounts/blobServices/kontejnery | účet úložiště | 3–63 | Malá písmena, číslice a spojovníky.<br><br>Začněte s malým písmenem nebo číslicí. Nelze použít po sobě jdoucí spojovníky. |
 > | storageAccounts/služby | účet úložiště |  | Musí být `default`. |
@@ -672,7 +679,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
 > | serverfarms | skupina prostředků | 1-40 | Alfanumerické znaky a spojovníky. |
-> | sites | globální | 2-60 | Obsahuje alfanumerické znaky a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
+> | sites | global | 2-60 | Obsahuje alfanumerické znaky a spojovníky.<br><br>Nelze začínat ani končit spojovníkem. |
 > | lokality/sloty | site | 2-59 | Alfanumerické znaky a spojovníky. |
 
 ## <a name="next-steps"></a>Další kroky

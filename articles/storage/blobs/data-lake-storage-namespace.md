@@ -4,22 +4,22 @@ description: Popisuje koncept hierarchického oboru názvů pro Azure Data Lake 
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/11/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 0b98892bd31b097e3dc217d54f52f12550599d32
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 6ce94590a1d0de6941c27d972bdd1c4194080e95
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847148"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153073"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 hierarchický obor názvů
 
 Klíčový mechanismus, který umožňuje Azure Data Lake Storage Gen2 poskytovat výkon systému souborů při škálování úložiště objektů a ceny jsou přidání **hierarchického oboru názvů**. Díky tomu může být kolekce objektů nebo souborů v rámci účtu uspořádána do hierarchie adresářů a vnořených podadresářů stejným způsobem, jakým je systém souborů v počítači uspořádán. S povoleným hierarchickým oborem názvů je účet úložiště schopný zajistit škálovatelnost a cenovou efektivitu úložiště objektů s sémantikou systému souborů, které jsou známé pro analytické stroje a architektury.
 
-## <a name="the-benefits-of-the-hierarchical-namespace"></a>Výhody hierarchického oboru názvů
+## <a name="the-benefits-of-a-hierarchical-namespace"></a>Výhody hierarchického oboru názvů
 
 K systémům souborů, které implementují hierarchický obor názvů přes data objektů blob, jsou přidružené následující výhody:
 
@@ -31,16 +31,20 @@ K systémům souborů, které implementují hierarchický obor názvů přes dat
 
 Jeden z důvodů, proč úložiště objektů nehistoricky podporovaly hierarchický obor názvů, je, že hierarchické obor názvů omezuje škálování. Data Lake Storage Gen2 hierarchické obor názvů se ale škáluje lineárně a nesnižuje ani datovou kapacitu ani výkon.
 
-## <a name="when-to-enable-the-hierarchical-namespace"></a>Kdy povolit hierarchický obor názvů
+## <a name="deciding-whether-to-enable-a-hierarchical-namespace"></a>Rozhodnutí, jestli se má povolit hierarchický obor názvů
 
-Doporučujeme, abyste zapnuli hierarchický obor názvů pro úlohy úložiště, které jsou navržené pro souborové systémy, které pracují s adresáři. To zahrnuje všechny úlohy, které jsou primárně určené pro zpracování analýz. Datové sady, které vyžadují vysoký stupeň organizace, budou také přínosné povolením hierarchického oboru názvů.
+Až ve svém účtu povolíte hierarchický obor názvů, nemůžete ho vrátit zpátky na plochý obor názvů. Proto zvažte, zda má smysl povolit hierarchický obor názvů na základě povaze úloh úložiště objektů.
+
+Některé úlohy nemusí získat žádné výhody tím, že umožňují hierarchický obor názvů. Mezi příklady patří zálohy, úložiště obrázků a další aplikace, ve kterých je organizace objektů uložená odděleně od samotných objektů (například v samostatné databázi). 
+
+I když se podpora funkcí úložiště BLOB a ekosystému služeb Azure stále zvětšuje, pořád ještě existují některé funkce a služby Azure, které ještě nejsou podporované v účtech s hierarchickým oborem názvů. Viz [známé problémy](data-lake-storage-known-issues.md). 
+
+Obecně doporučujeme, abyste zapnuli hierarchický obor názvů pro úlohy úložiště, které jsou navržené pro souborové systémy, které pracují s adresáři. To zahrnuje všechny úlohy, které jsou primárně určené pro zpracování analýz. Datové sady, které vyžadují vysoký stupeň organizace, budou také přínosné povolením hierarchického oboru názvů.
 
 Důvody pro povolení hierarchického oboru názvů jsou určeny analýzou nákladů na vlastnictví. Obecně řečeno, vylepšení latence úloh v důsledku akcelerace úložiště bude vyžadovat pro kratší dobu výpočetní prostředky. Kvůli manipulaci s atomovou službou, která je povolená hierarchickým oborem názvů, se dá zlepšit latence pro mnoho úloh. V mnoha úlohách výpočetní prostředky představuje > 85% celkových nákladů, takže i mírné snížení latence úloh se rovná významnému množství úspor nákladů na celkové náklady. I v případech, kdy povolení hierarchického oboru názvů zvyšuje náklady na úložiště, je celkové náklady na vlastnictví stále snížené z důvodu snížených výpočetních nákladů.
 
-## <a name="when-to-disable-the-hierarchical-namespace"></a>Kdy se má zablokovat hierarchický obor názvů
+K analýze rozdílů v cenách úložiště dat, cenách transakcí a cenách rezervací kapacity úložiště mezi účty, které mají plochý hierarchický obor názvů oproti hierarchickému oboru názvů, najdete informace v tématu [Azure Data Lake Storage Gen2 ceny](https://azure.microsoft.com/pricing/details/storage/data-lake/).
 
-Některé úlohy úložiště objektů nemusí získat žádné výhody tím, že umožňují hierarchický obor názvů. Mezi příklady patří zálohy, úložiště obrázků a další aplikace, ve kterých je organizace objektů uložená odděleně od samotných objektů (například v samostatné databázi).
-
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření účtu úložiště](./data-lake-storage-quickstart-create-account.md)

@@ -1,59 +1,59 @@
 ---
 title: Úlohy služby Azure Batch
 titleSuffix: ML Studio (classic) - Azure
-description: Přehled služby Azure Batch Services pro úlohy Machine Learning Studio (Classic). Zpracování fondu Batch umožňuje vytvořit fondy, na kterých můžete odesílat dávkové úlohy.
+description: Přehled služby Azure Batch Services pro úlohy Machine Learning Studio (Classic). Zpracování fondu služby batch můžete vytvořit fondy, ve kterých můžete odeslat dávkových úloh Hive.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: ad3ae99b04d5386172c9598f35cbe7d64fddcd36
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c1a7f44539d07761814f5cb3d7074c9428423154
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837707"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153532"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Služba Azure Batch pro úlohy Azure Machine Learning Studio (Classic)
 
-Machine Learning zpracování fondu služby Batch poskytuje pro službu Azure Machine Learning vykonávání dávek od zákazníka i škálování spravované zákazníkem. Klasické dávkové zpracování pro strojové učení se provádí v prostředí s více klienty, které omezuje počet souběžných úloh, které můžete odeslat, a úlohy se zařadí do fronty na základě prvního. Tato nejistota znamená, že nemůžete přesně odhadnout, kdy se úloha spustí.
+Machine Learning fondu služby Batch zpracování poskytuje spravované zákazníkem škálování pro spuštění služby Azure Machine Learning služby Batch. Klasické dávkové zpracování pro strojové učení probíhá v prostředí s více tenanty, která omezuje počet souběžných úloh, které můžete odeslat a úlohy se zařadí do fronty na základě first-in-first-out. Tento nejistoty znamená, že nelze předvídat přesně kdy se budou spouštět vaše úlohy.
 
-Zpracování fondu Batch umožňuje vytvořit fondy, na kterých můžete odesílat dávkové úlohy. Řídíte velikost fondu a do kterého fondu je úloha odeslána. Vaše úloha BES běží ve vlastním prostoru zpracování, který poskytuje předvídatelný výpočetní výkon a možnost vytvářet fondy zdrojů, které odpovídají zatížení zpracování, které odešlete.
+Zpracování fondu služby batch můžete vytvořit fondy, ve kterých můžete odeslat dávkových úloh Hive. Řídíte velikost fondu a do které fondu je úloha odeslána. Úlohy BES se spouští v vlastní zpracování místo poskytování zpracování předvídatelný výkon a schopnost vytvářet fondy zdrojů, které odpovídají zatížení, která odešlete.
 
 > [!NOTE]
 > K vytvoření fondu musíte mít novou Správce prostředkůovou Machine Learningovou webovou službu. Po vytvoření můžete ve fondu spustit jakoukoli webovou službu BES, která je založená na nové Správce prostředků a v klasickém nasazení.
 
-## <a name="how-to-use-batch-pool-processing"></a>Jak používat zpracování fondu Batch
+## <a name="how-to-use-batch-pool-processing"></a>Použití fondu Batch zpracování
 
-Konfigurace zpracování fondu Batch není aktuálně k dispozici prostřednictvím Azure Portal. Chcete-li použít zpracování fondu Batch, je nutné:
+Konfigurace fondu dávkové zpracování není aktuálně k dispozici na webu Azure portal. Použití fondu Batch zpracování, musíte mít:
 
--   Voláním CSS vytvořte účet fondu Batch a získejte adresu URL služby fondu a autorizační klíč.
--   Vytvoření nové webové služby založené na Správce prostředků a fakturačního plánu
+-   Volání šablony stylů CSS pro vytvoření účtu Batch fondu a získat adresu URL služby fondu a autorizačního klíče
+-   Vytvoření webové služby založené na nové Resource Manageru a fakturační plán
 
-Chcete-li vytvořit účet, zavolejte zákaznickou službu a podporu společnosti Microsoft (CSS) a zadejte ID předplatného. Šablony stylů CSS vám budou spolupracovat s vámi k určení vhodné kapacity pro váš scénář. CSS pak nakonfiguruje váš účet s maximálním počtem fondů, které můžete vytvořit, a maximálním počtem virtuálních počítačů, které můžete do každého fondu umístit. Po nakonfigurování účtu se vám poskytne adresa URL služby fondu a autorizační klíč.
+K vytvoření účtu, volejte Microsoft zákaznický servis a podporu (CSS) a zadejte ID svého předplatného. Šablony stylů CSS bude spolupracovat s vámi určit příslušné kapacitu pro váš scénář. CSS se pak nakonfiguruje svůj účet s maximální počet fondů, které můžete vytvořit a maximální počet virtuálních počítačů (VM), které můžete umístit v každém fondu. Jakmile se váš účet je nakonfigurovaný, jsou k dispozici vaše adresa URL služby fondu a autorizačního klíče.
 
-Po vytvoření účtu použijete adresu URL a autorizační klíč služby fondu k provádění operací správy fondů ve fondu služby Batch.
+Po vytvoření účtu pomocí adresy URL služby fondu a autorizačního klíče k provádění operací správy fondu ve vašem fondu služby Batch.
 
-![Architektura služby Batch Pool.](./media/dedicated-capacity-for-bes-jobs/pool-architecture.png)
+![Architektura fond služby batch.](./media/dedicated-capacity-for-bes-jobs/pool-architecture.png)
 
-Fondy vytvoříte voláním operace vytvořit fond na adrese URL služby fondu, kterou vám poskytne CSS. Když vytváříte fond, určete počet virtuálních počítačů a adresu URL nástroje Swagger. JSON nové Machine Learning webové služby založené na Správce prostředků. Tato webová služba je k dispozici pro stanovení fakturačního přidružení. Služba Batch Pool používá k přidružení fondu k plánu fakturace službu Swagger. JSON. Ve fondu můžete spustit jakoukoli webovou službu BES, která je založená na všech nových Správce prostředků a Classic.
+Vytvoření fondů zavoláním operace vytvořit fond na adresu URL služby fond, který jste získali šablon stylů CSS. Při vytváření fondu zadejte že počet virtuálních počítačů a adresu URL swagger.json nové Resource Manageru na základě webové služby Machine Learning. Tato webová služba neposkytujeme k navázání fakturační přidružení. Služba fondu služby Batch používá swagger.json k fondu přidružit plán fakturace. Ve fondu můžete spustit jakoukoli webovou službu BES, která je založená na všech nových Správce prostředků a Classic.
 
-Můžete použít libovolnou novou Správce prostředků webovou službu, ale mějte na paměti, že fakturace za úlohy se účtují na základě fakturačního plánu přidruženého k této službě. Možná budete chtít vytvořit webovou službu a nový plán fakturace specificky pro spuštění úloh fondu Batch.
+Můžete použít libovolné webové službě založené na nové Resource Manageru, ale mějte na paměti, že fakturace pro úlohy, které se účtují proti fakturační plán přidružený k této službě. Můžete chtít vytvořit webovou službu a nové fakturační plán přímo na spouštění úloh fondu služby Batch.
 
 Další informace o vytváření webových služeb najdete v tématu [nasazení webové služby Azure Machine Learning](deploy-a-machine-learning-web-service.md).
 
-Po vytvoření fondu odešlete úlohu BES pomocí adresy URL žádostí Batch pro webovou službu. Můžete se rozhodnout odeslat ho do fondu nebo do klasického dávkového zpracování. Chcete-li odeslat úlohu do zpracování fondu Batch, přidejte následující parametr do textu žádosti o odeslání úlohy:
+Jakmile vytvoříte fond, odeslání úlohy BES pomocí adresy URL žádosti o služby Batch pro webovou službu. Můžete odeslat ho do fondu nebo classic dávkové zpracování. Odeslání úlohy do fondu dávkové zpracování, přidejte následující parametr do textu žádosti odeslání úlohy:
 
 "AzureBatchPoolId": "ID fondu&lt;&gt;"
 
-Pokud parametr nepřidáte, úloha se spustí v prostředí klasického procesu Batch. Pokud má fond dostupné prostředky, úloha se spustí okamžitě. Pokud fond nemá volné prostředky, úloha se zařadí do fronty, dokud nebude k dispozici prostředek.
+Pokud nepřidáte parametr, úloha běží v prostředí procesu klasické služby batch. Pokud fond obsahuje prostředky, úloha se spustí okamžitě. Pokud fond nemá žádné volné prostředky, vaše úloha je zařazena do fronty dokud prostředek není k dispozici.
 
-Pokud zjistíte, že budete pravidelně dosahovat kapacity fondů, a potřebujete vyšší kapacitu, můžete volat šablonu stylů CSS a spolupracovat se zástupcem, aby se zvýšily vaše kvóty.
+Pokud zjistíte, že pravidelně dosažení kapacity vašich fondů a potřebujete větší kapacitu, můžete volat šablony stylů CSS a pracovat s zástupce pro zvýšení vaší kvóty.
 
-Příklad požadavku:
+Příklad žádosti:
 
 https://ussouthcentral.services.azureml.net/subscriptions/80c77c7674ba4c8c82294c3b2957990c/services/9fe659022c9747e3b9b7b923c3830623/jobs?api-version=2.0
 
@@ -96,19 +96,19 @@ https://ussouthcentral.services.azureml.net/subscriptions/80c77c7674ba4c8c82294c
 }
 ```
 
-## <a name="considerations-when-using-batch-pool-processing"></a>Předpoklady při použití zpracování fondu Batch
+## <a name="considerations-when-using-batch-pool-processing"></a>Informace týkající se použití fondu Batch zpracování
 
-Zpracování fondu Batch je vždy fakturovatelná služba a ta vyžaduje, abyste ji přiřadíte k fakturačnímu plánu založenému na Správce prostředků. Účtuje se vám jenom počet výpočetních hodin, na kterých je fond spuštěný. bez ohledu na počet úloh spuštěných během daného časového fondu. Pokud vytvoříte fond, bude se vám účtovat výpočetní hodiny všech virtuálních počítačů ve fondu, dokud se fond neodstraní, a to ani v případě, že se ve fondu nespouštějí žádné úlohy služby Batch. Fakturace virtuálních počítačů se spustí, až se dokončí zřizování a zastaví se, až se odstraní. Můžete použít kterýkoli z plánů, které najdete na [stránce s cenami Machine Learning](https://azure.microsoft.com/pricing/details/machine-learning/).
+Dávkové zpracování fondu je vždy na fakturovatelné služba a, který vyžaduje, abyste ho přidružit k fakturačním plánu založené na Resource Manageru. Nebudete dostávat faktury pro množství výpočetního času, které běží fondu bez ohledu na počet úloh během tohoto fondu času spuštění. Pokud vytvoříte fond, vám budeme fakturovat výpočetní hodiny jednotlivých virtuálních počítačů ve fondu až do odstranění fondu i v případě, že nebudou spuštěny žádné úlohy služby batch ve fondu. Fakturace za virtuální počítače se spustí při jejich dokončení zřizování a zastaví, když se odstranily. Můžete použít kterýkoli z plánů, které najdete na [stránce s cenami Machine Learning](https://azure.microsoft.com/pricing/details/machine-learning/).
 
 Příklad fakturace:
 
-Pokud vytvoříte fond služby Batch se dvěma virtuálními počítači a po 24 hodinách ho odstraníte, váš plán fakturace bude připsán na stranu 48 výpočetních hodin. bez ohledu na to, kolik úloh bylo během daného období spuštěno.
+Pokud vytvoříte fond služby Batch s 2 virtuálními počítači a odstranit po 24 hodinách fakturačního plánu se odečte 48 hodin výpočetních; bez ohledu na to, kolik úlohy byly spuštěny během tohoto období.
 
-Pokud vytvoříte fond služby Batch se 4 virtuálními počítači a po 12 hodinách ho odstraníte, fakturačnímu plánu bude taky účtováno 48 výpočetních hodin.
+Vytvoření fondu služby Batch pomocí 4 virtuální počítače a odstranit po 12 hodinách fakturačního plánu je také MD 48 – výpočetní hodiny.
 
-Doporučujeme, abyste provedli dotaz na stav úlohy a určili, kdy se úlohy dokončily. Až budou všechny úlohy spuštěné, zavolejte operaci změnit velikost fondu a nastavte počet virtuálních počítačů ve fondu na hodnotu nula. Pokud jsou prostředky fondu krátké a potřebujete vytvořit nový fond, například k fakturaci v rámci jiného plánu fakturace, můžete místo toho odstranit fond, až budou všechny úlohy dokončeny.
+Doporučujeme vám, že dotazování stavu úlohy k určení po dokončení úlohy. Při spuštění dokončení všech úloh, volejte operaci změnit velikost fondu nastavit počet virtuálních počítačů ve fondu na nulu. Pokud máte dostatečnou fondu zdrojů a je potřeba vytvořit nový fond, třeba pro fakturaci na jiný fakturační plán, můžete odstranit fondu místo toho při spuštěny všechny úlohy.
 
 
 | **Použít zpracování fondu Batch, když**    | **V případě použití klasického dávkového zpracování**  |
 |---|---|
-|Musíte spustit velký počet úloh.<br>Nebo<br/>Musíte mít jistotu, že se úlohy spustí hned.<br/>Nebo<br/>Potřebujete zaručenou propustnost. Například je třeba v daném časovém rámci spustit několik úloh a chtít škálovat výpočetní prostředky tak, aby vyhovovaly vašim potřebám.    | Spouštíte jenom pár úloh.<br/>And<br/> Nepotřebujete spouštět úlohy hned. |
+|Je potřeba spustit velký počet úloh<br>Nebo<br/>Je potřeba vědět, že vaše úlohy se spustí hned<br/>Nebo<br/>Je třeba garantovanou propustnost. Například budete muset spustit několik úloh v daném časovém rámci a chcete pro horizontální navýšení kapacity výpočetních prostředků podle svých potřeb.    | Používáte pár úloh<br/>And<br/> Není nutné úloh spustit okamžitě |

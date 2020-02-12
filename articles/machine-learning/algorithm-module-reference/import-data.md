@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 161c6816bbef31142c576f52fd122d9dd8af7883
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
-ms.translationtype: MT
+ms.openlocfilehash: 930ff1abf77c4e28d377daf12174ff3fbb60cf23
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546652"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152240"
 ---
 # <a name="import-data-module"></a>Importovat data modul
 
@@ -35,7 +35,7 @@ Modul **Import dat** podporuje čtení dat z následujících zdrojů:
     - Sdílená složka Azure
     - Azure Data Lake
     - Azure Data Lake Gen2
-    - Databáze SQL Azure
+    - Azure SQL Database
     - PostgreSQL Azure    
 
 Než použijete cloudové úložiště, musíte nejdřív zaregistrovat úložiště dat v pracovním prostoru Azure Machine Learning. Další informace najdete v tématu [Jak získat přístup k datům](../how-to-access-data.md). 
@@ -72,7 +72,7 @@ Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a při
 
     Pokud je hlavička k dispozici, záhlaví se použije k pojmenování sloupců výstupní datové sady.
 
-    Pokud v datech nejsou žádná existující záhlaví sloupců, generují se nové názvy sloupců pomocí formátu Sloupec1, col2,... , coln*.
+    Pokud v datech nejsou žádná existující záhlaví sloupců, generují se nové názvy sloupců pomocí formátu Sloupe, col2,... , coln*.
 
 ## <a name="results"></a>Výsledky
 

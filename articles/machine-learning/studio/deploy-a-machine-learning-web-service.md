@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 1b9a836491e989b676663d13b8eebb994c5145d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37968e968a0f9a1098dd5e90d463879bfa95ce1f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454791"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153583"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Nasazení webové služby Azure Machine Learning Studio (Classic)
 
@@ -34,7 +34,7 @@ Z hlediska vysoké úrovně si model nasadíte ve třech krocích:
 
 * **[Vytvoření školicí experimentu]** – v studiu (Classic) můžete vytvářet a testovat model prediktivní analýzy pomocí školicích dat, která zadáte, a to pomocí rozsáhlé sady integrovaných algoritmů strojového učení.
 * **[Převést na prediktivní experiment]** – Jakmile se model vyškole pomocí stávajících dat a jste připraveni ho použít k vyhodnocení nových dat, připravte a Zjednodušte svůj experiment pro předpovědi.
-* **Nasazení** jako **[nové webové služby]** nebo **[klasické webové služby]** – při nasazení prediktivního experimentu jako webové služby Azure mohou uživatelé odesílat data do modelu a přijímat předpovědi modelu.
+* **Nasazení** jako **[Nová webová služba]** nebo **[Klasická webová služba]** – při nasazení prediktivního experimentu jako webové služby Azure mohou uživatelé odesílat data do modelu a přijímat předpovědi modelu.
 
 ## <a name="create-a-training-experiment"></a>Vytvořit výukový experiment
 
@@ -65,7 +65,7 @@ Následující kroky popisují Nasazení prediktivního experimentu jako nové w
 
 Teď, když je připravený experiment připraven, můžete ho nasadit jako novou (Správce prostředků) webovou službu Azure. Pomocí webové služby, uživatelé můžou posílat data do modelu a vrátí jeho předpovědi modelu.
 
-Pokud chcete nasadit prediktivní experiment, klikněte na **Spustit** v dolní části plátna experimentu. Po skončení běhu experimentu klikněte na **nasadit webovou službu** a vyberte **nasadit webovou službu [nové]** .  Otevře se stránka nasazení portálu webové služby Machine Learning Studio (Classic).
+Pokud chcete nasadit prediktivní experiment, klikněte na **Spustit** v dolní části plátna experimentu. Po skončení běhu experimentu klikněte na **nasadit webovou službu** a vyberte **nasadit webovou službu [New]** .  Otevře se stránka nasazení portálu webové služby Machine Learning Studio (Classic).
 
 > [!NOTE] 
 > K nasazení nové webové služby musí mít dostatečná oprávnění v rámci předplatného, ke kterému, můžete nasazení webové služby. Další informace najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md). 
@@ -132,28 +132,28 @@ Ceny jsou specifické pro oblast, takže je potřeba definovat plán fakturace p
 #### <a name="create-a-plan-in-another-region"></a>Vytvoření plánu v jiné oblasti
 
 1. Přihlaste se k [Microsoft Azure Machine Learning webové služby](https://services.azureml.net/).
-2. Klikněte na tlačítko **plány** nabídky.
-3. O plánech přes stránku zobrazení, klikněte na tlačítko **nový**.
-4. Z **předplatné** rozevíracím seznamu vyberte předplatné, ve kterém se bude nacházet nový plán.
-5. Z **oblasti** rozevírací seznam, vyberte oblast pro nový plán. Možnosti plánování pro vybrané oblasti se zobrazí v **možnosti plánování** části stránky.
-6. Z **skupiny prostředků** rozevíracím seznamu vyberte prostředek skupiny pro plán. Další informace o skupinách prostředků najdete v článku [přehled Azure Resource Manageru](../../azure-resource-manager/management/overview.md).
-7. V **název plánu** zadejte název plánu.
-8. V části **možnostech plánů**, klikněte na fakturace úroveň pro nový plán.
-9. Klikněte na **Vytvořit**.
+2. Klikněte na možnost nabídky **plány** .
+3. Na stránce plány pro zobrazení klikněte na **Nový**.
+4. V rozevíracím seznamu **předplatné** vyberte předplatné, ve kterém se nový plán bude nacházet.
+5. V rozevíracím seznamu **oblast** vyberte oblast pro nový plán. Možnosti plánu pro vybranou oblast se zobrazí v části **Možnosti plánu** stránky.
+6. V rozevíracím seznamu **Skupina prostředků** vyberte skupinu prostředků pro daný plán. Další informace o skupinách prostředků najdete v tématu [přehled Azure Resource Manager](../../azure-resource-manager/management/overview.md).
+7. V části **plán název** zadejte název plánu.
+8. V části **Možnosti plánu**klikněte na úroveň fakturace nového plánu.
+9. Klikněte na možnost **Vytvořit**.
 
 #### <a name="deploy-the-web-service-to-another-region"></a>Nasazení webové služby do jiné oblasti
 
 1. Na stránce Microsoft Azure Machine Learning webové služby klikněte na možnost nabídky **webové služby** .
 2. Vyberte webovou službu, kterou nasazujete do nové oblasti.
-3. Klikněte na tlačítko **kopírování**.
-4. V **název webové služby**, zadejte nový název pro webovou službu.
-5. V **webové služby popis**, zadejte popis pro webovou službu.
-6. Z **předplatné** rozevíracím seznamu vyberte předplatné, ve kterém se bude nacházet nové webové služby.
-7. Z **skupiny prostředků** rozevíracím seznamu vyberte prostředek skupiny pro webovou službu. Další informace o skupinách prostředků najdete v článku [přehled Azure Resource Manageru](../../azure-resource-manager/management/overview.md).
-8. Z **oblasti** rozevíracím seznamu vyberte oblast, ve které chcete nasadit také webovou službu.
-9. Z **účtu úložiště** rozevírací seznam, vyberte úložiště účtu pro uložení webové služby.
-10. Z **cenový plán** rozevíracím seznamu vyberte plán v oblasti, které jste vybrali v kroku 8.
-11. Klikněte na tlačítko **kopírování**.
+3. Klikněte na **Kopírovat**.
+4. Do pole **název webové služby**zadejte nový název webové služby.
+5. Do pole **Popis webové služby**zadejte popis webové služby.
+6. V rozevíracím seznamu **předplatné** vyberte předplatné, ve kterém bude nová webová služba umístěna.
+7. V rozevíracím seznamu **Skupina prostředků** vyberte skupinu prostředků pro webovou službu. Další informace o skupinách prostředků najdete v tématu [přehled Azure Resource Manager](../../azure-resource-manager/management/overview.md).
+8. V rozevíracím seznamu **oblast** vyberte oblast, do které chcete nasadit webovou službu.
+9. V rozevíracím seznamu **účet úložiště** vyberte účet úložiště, do kterého chcete uložit webovou službu.
+10. V rozevíracím seznamu **cenový plán** vyberte plán v oblasti, kterou jste vybrali v kroku 8.
+11. Klikněte na **Kopírovat**.
 
 ## <a name="deploy-it-as-a-classic-web-service"></a>Nasaďte ji jako klasickou webovou službu.
 
@@ -167,7 +167,7 @@ Pokud chcete nasadit prediktivní experiment, klikněte na **Spustit** v dolní 
 
 Webovou službu můžete otestovat buď na portálu Machine Learning Studio (Classic) webových služeb, nebo v Machine Learning Studio (Classic).
 
-Webovou službu Request response otestujete kliknutím na tlačítko **test** na řídicím panelu webové služby. Zobrazí se dialogové okno s žádostí o zadání vstupních dat pro službu. Toto jsou sloupce očekávané experimentem bodování. Zadejte sadu dat a pak klikněte na tlačítko **OK**. Výsledky vygenerované webovou službou se zobrazí v dolní části řídicího panelu.
+Webovou službu Request response otestujete kliknutím na tlačítko **test** na řídicím panelu webové služby. Zobrazí se dialogové okno s žádostí o zadání vstupních dat pro službu. Toto jsou sloupce očekávané experimentem bodování. Zadejte sadu dat a pak klikněte na **OK**. Výsledky vygenerované webovou službou se zobrazí v dolní části řídicího panelu.
 
 Kliknutím na odkaz **test** Preview můžete službu otestovat na portálu Azure Machine Learning Studio (Classic) Web Services, jak je uvedeno dříve v části Nová webová služba.
 
@@ -222,9 +222,9 @@ Jednou z možností aktualizace webové služby je přeučení modelu prostředn
 <!-- internal links -->
 [Vytvoření školicí experimentu]: #create-a-training-experiment
 [Převést na prediktivní experiment]: #convert-the-training-experiment-to-a-predictive-experiment
-[Nové webové služby]: #deploy-it-as-a-new-web-service
-[Klasické webové služby]: #deploy-it-as-a-classic-web-service
-[nové]: #deploy-it-as-a-new-web-service
+[Nová webová služba]: #deploy-it-as-a-new-web-service
+[Klasická webová služba]: #deploy-it-as-a-classic-web-service
+[New]: #deploy-it-as-a-new-web-service
 [classic]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal

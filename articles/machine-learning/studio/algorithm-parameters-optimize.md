@@ -7,19 +7,19 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: ac3aa0dc619ec05dcd79a4f8740026b1eabc19aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c74388a376a4f45a8e07cfed69bd497f856f1b37
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427700"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148670"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Výběr parametrů pro optimalizaci algoritmů v Azure Machine Learning Studio (Classic)
 
-Toto téma popisuje, jak zvolit správnou sadu parametrů pro algoritmus v Azure Machine Learning Studio (Classic). Většina algoritmů strojového učení mít parametry se mají nastavit. Při tréninku modelu, budete muset zadat hodnoty pro tyto parametry. Efektivnost trénovaného modelu, závisí na parametry modelu, které zvolíte. Proces hledání optimální sadu parametrů se označuje jako *modelu výběru*.
+Toto téma popisuje, jak zvolit správnou sadu parametrů pro algoritmus v Azure Machine Learning Studio (Classic). Většina algoritmů strojového učení mít parametry se mají nastavit. Při tréninku modelu, budete muset zadat hodnoty pro tyto parametry. Efektivnost trénovaného modelu, závisí na parametry modelu, které zvolíte. Proces nalezení optimální sady parametrů je známý jako *Výběr modelu*.
 
 
 
@@ -27,21 +27,21 @@ Existují různé způsoby, jak modelu výběru. V strojovém učení je kříž
 
 Probíhá hledání sady nejlepší čtyři kroky:
 
-1. **Definování prostor parametr**: pro algoritmus, nejdřív se rozhodněte, parametr přesné hodnoty, které chcete vezměte v úvahu.
-2. **Definujte nastavení křížového ověření**: Rozhodněte, jak zvolit přeložení křížového ověření datové sady.
-3. **Definování metriky**: Rozhodněte, jaké metriky pro určení nejlepší sadu parametrů, jako jsou správnost, střední kořenové spolehlivosti chyba, přesnosti, odvolání nebo f skóre.
-4. **Školení, vyhodnocení a porovnat**: pro každou jedinečnou kombinaci hodnot parametrů křížového ověřování prováděné a na základě metriky chyba definujete. Po vyhodnocení a porovnání můžete zvolit ty modelu.
+1. **Definujte prostor parametru**: pro algoritmus nejdřív určete přesné hodnoty parametrů, které chcete zvážit.
+2. **Definice nastavení křížového ověření**: Rozhodněte, jak zvolit skládání křížového ověřování pro datovou sadu.
+3. **Definování metriky**: Rozhodněte, jaká metrika se má použít k určení nejlepší sady parametrů, jako je přesnost, hlavní střední hodnota chyby, přesnost, odvolání nebo f-skóre.
+4. **Výukové, vyhodnocování a porovnávání**: pro každou jedinečnou kombinaci hodnot parametrů se křížové ověření provádí pomocí a na základě metriky chyby, kterou definujete. Po vyhodnocení a porovnání můžete zvolit ty modelu.
 
 Následující obrázek ukazuje, jak to lze dosáhnout v Azure Machine Learning Studio (Classic).
 
 ![Najít nejlepší sadu parametrů](./media/algorithm-parameters-optimize/fig1.png)
 
 ## <a name="define-the-parameter-space"></a>Definování prostor parametr
-Můžete definovat parametrem nastaveným na model inicializačnímu kroku. Podokno parametr všechny algoritmy strojového učení má dva režimy trainer: *jediný parametr* a *parametr rozsahu*. Zvolte režim oblasti parametrů. V režimu parametr rozsahu můžete zadat více hodnot pro každý parametr. V textovém poli můžete zadat hodnoty oddělené čárkami.
+Můžete definovat parametrem nastaveným na model inicializačnímu kroku. Podokno parametrů všech algoritmů strojového učení má dva režimy Trainer: *jeden parametr* a *Rozsah parametru*. Zvolte režim oblasti parametrů. V režimu parametr rozsahu můžete zadat více hodnot pro každý parametr. V textovém poli můžete zadat hodnoty oddělené čárkami.
 
 ![Dvěma třídami posíleného rozhodovacího stromu, jeden parametr](./media/algorithm-parameters-optimize/fig2.png)
 
- Alternativně můžete definovat maximální a minimální bodů mřížky a celkový počet bodů pomocí **Tvůrce rozsahu použití**. Hodnoty parametrů jsou ve výchozím nastavení generovány lineární stupnice. Avšak v tom případě **logaritmické měřítko** je zaškrtnuto, hodnoty jsou generovány v logaritmické měřítko (to znamená, poměr sousední body je konstantní místo jejich rozdíl). Pro celočíselné parametry můžete definovat rozsah použitím spojovníku. Například "1-10" znamená, že všechny celých čísel od 1 do 10 (obojí inkluzivní) tvoří sadu parametrů. Ve smíšeném režimu je také podporována. Například nastavte parametr "1-10, 20, 50" bude zahrnovat celá čísla 1 až 10, 20 a 50.
+ Alternativně můžete definovat maximální a minimální body mřížky a celkový počet bodů, které mají být vygenerovány pomocí **Tvůrce rozsahu použití**. Hodnoty parametrů jsou ve výchozím nastavení generovány lineární stupnice. Pokud je ale zaškrtnuto **měřítko protokolu** , generují se hodnoty v logaritmickém měřítku (to znamená, že poměr sousedních bodů je konstantní místo jejich rozdílu). Pro celočíselné parametry můžete definovat rozsah použitím spojovníku. Například "1-10" znamená, že všechny celých čísel od 1 do 10 (obojí inkluzivní) tvoří sadu parametrů. Ve smíšeném režimu je také podporována. Například nastavte parametr "1-10, 20, 50" bude zahrnovat celá čísla 1 až 10, 20 a 50.
 
 ![Dvěma třídami posíleného rozhodovacího stromu, parametr rozsahu](./media/algorithm-parameters-optimize/fig3.png)
 
@@ -51,7 +51,7 @@ Můžete definovat parametrem nastaveným na model inicializačnímu kroku. Podo
 ![Rozdělení a vzorky](./media/algorithm-parameters-optimize/fig4.png)
 
 ## <a name="define-the-metric"></a>Definování metriky
-Modul [předparametrů modelu ladění][tune-model-hyperparameters] poskytuje podporu pro empirický výběr nejvhodnější sady parametrů pro daný algoritmus a datovou sadu. Kromě dalších informací ohledně trénování modelu, **vlastnosti** podokně tento modul obsahuje metriky pro určení nejlepší sadu parametrů. Má dvě různé rozevírací seznamy klasifikačních a regresních algoritmů, v uvedeném pořadí. Pokud tento algoritmus uvažovanou je klasifikační algoritmus, je ignorován metrika regrese a naopak. V tomto konkrétním příkladu je metrika **přesnost**.   
+Modul [předparametrů modelu ladění][tune-model-hyperparameters] poskytuje podporu pro empirický výběr nejvhodnější sady parametrů pro daný algoritmus a datovou sadu. Kromě dalších informací týkajících se školení modelu obsahuje podokno **vlastností** tohoto modulu metriku pro určení nejlepší sady parametrů. Má dvě různé rozevírací seznamy klasifikačních a regresních algoritmů, v uvedeném pořadí. Pokud tento algoritmus uvažovanou je klasifikační algoritmus, je ignorován metrika regrese a naopak. V tomto konkrétním příkladu je metrika **přesnost**.   
 
 ![Uklízení parametrů](./media/algorithm-parameters-optimize/fig5.png)
 
@@ -65,7 +65,7 @@ Modul obsahuje také volitelné datové sadě služby vstup. Připojte datové s
 
 ![Posílený rozhodovací strom třídění](./media/algorithm-parameters-optimize/fig6a.png)
 
-Model se pak vyhodnocuje na datové sadě ověření. Na levý výstupní port modulu ukazuje různé požadované metriky, jako funkce hodnot parametrů. Na pravém výstupní port poskytuje trénovaného modelu, který odpovídá na ty model podle vybrané metriky (**přesnost** v tomto případě).  
+Model se pak vyhodnocuje na datové sadě ověření. Na levý výstupní port modulu ukazuje různé požadované metriky, jako funkce hodnot parametrů. Pravý výstupní port poskytuje vyškolený model, který odpovídá nejlepšímu modelu podle zvolené metriky (**přesnost** v tomto případě).  
 
 ![Ověření datové sady](./media/algorithm-parameters-optimize/fig6b.png)
 

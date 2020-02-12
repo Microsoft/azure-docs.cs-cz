@@ -1,0 +1,343 @@
+---
+title: Použití JavaScriptu pro soubory & seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
+description: Pomocí Azure Storage Data Lake klientské knihovny pro JavaScript můžete spravovat adresáře a seznamy řízení přístupu (ACL) souborů a adresářů v účtech úložiště, které mají povolený hierarchický obor názvů (HNS).
+author: normesta
+ms.service: storage
+ms.date: 12/18/2019
+ms.author: normesta
+ms.topic: conceptual
+ms.subservice: data-lake-storage-gen2
+ms.reviewer: prishet
+ms.openlocfilehash: 8fd63adc76422b7fd9978e626208aa90593f8604
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77154865"
+---
+# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Použití JavaScriptu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
+
+V tomto článku se dozvíte, jak pomocí JavaScriptu vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS). 
+
+> [!IMPORTANT]
+> Knihovna JavaScriptu, která je doporučena v tomto článku, je aktuálně ve verzi Public Preview.
+
+[Package (Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-file-datalake) | [ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples) | [sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)
+
+## <a name="prerequisites"></a>Předpoklady
+
+> [!div class="checklist"]
+> * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+> * Účet úložiště, který má povolený hierarchický obor názvů (HNS). Pokud ho chcete vytvořit, postupujte podle [těchto](data-lake-storage-quickstart-create-account.md) pokynů.
+> * Pokud tento balíček používáte v aplikaci Node. js, budete potřebovat Node. js 8.0.0 nebo vyšší.
+
+## <a name="set-up-your-project"></a>Nastavení projektu
+
+Nainstalujte Data Lake klientské knihovny pro JavaScript tak, že otevřete okno terminálu a pak zadáte následující příkaz.
+
+```javascript
+npm install @azure/storage-file-datalake
+```
+
+Naimportujte balíček `storage-file-datalake` umístěním tohoto příkazu v horní části souboru kódu. 
+
+```javascript
+const AzureStorageDataLake = require("@azure/storage-file-datalake");
+```
+
+## <a name="connect-to-the-account"></a>Připojit k účtu 
+
+Pokud chcete používat fragmenty kódu v tomto článku, budete muset vytvořit instanci **DataLakeServiceClient** , která představuje účet úložiště. Nejjednodušší způsob, jak ho získat, je použít klíč účtu. 
+
+Tento příklad vytvoří instanci **DataLakeServiceClient** pomocí klíče účtu.
+
+```javascript
+
+function GetDataLakeServiceClient(accountName, accountKey) {
+
+  const sharedKeyCredential = 
+     new StorageSharedKeyCredential(accountName, accountKey);
+  
+  const datalakeServiceClient = new DataLakeServiceClient(
+      `https://${accountName}.dfs.core.windows.net`, sharedKeyCredential);
+
+  return datalakeServiceClient;             
+}      
+
+```
+> [!NOTE]
+> Tato metoda autorizace funguje pouze pro aplikace Node. js. Pokud máte v úmyslu spustit kód v prohlížeči, můžete autorizovat pomocí Azure Active Directory (AD). Pokyny k tomu, jak to provést, najdete v souboru Readme [Azure Storage souboru Data Lake klientské knihovně pro JavaScript](https://www.npmjs.com/package/@azure/storage-file-datalake) . 
+
+## <a name="create-a-file-system"></a>Vytvoření systému souborů
+
+Systém souborů funguje jako kontejner pro vaše soubory. Můžete ji vytvořit získáním instance **FileSystemClient** a následným voláním metody **FileSystemClient. Create** .
+
+Tento příklad vytvoří systém souborů s názvem `my-file-system`. 
+
+```javascript
+async function CreateFileSystem(datalakeServiceClient) {
+
+  const fileSystemName = "my-file-system";
+  
+  const fileSystemClient = datalakeServiceClient.getFileSystemClient(fileSystemName);
+
+  const createResponse = await fileSystemClient.create();
+        
+}
+```
+
+## <a name="create-a-directory"></a>Vytvoření adresáře
+
+Vytvořte odkaz na adresář získáním instance **DirectoryClient** a následným voláním metody **DirectoryClient. Create** .
+
+Tento příklad přidá adresář s názvem `my-directory` do systému souborů. 
+
+```javascript
+async function CreateDirectory(fileSystemClient) {
+   
+  const directoryClient = fileSystemClient.getDirectoryClient("my-directory");
+  
+  await directoryClient.create();
+
+}
+```
+
+## <a name="rename-or-move-a-directory"></a>Přejmenování nebo přesunutí adresáře
+
+Přejmenujte nebo přesuňte adresář voláním metody **DirectoryClient. rename** . Předejte cestu k požadovanému adresáři do parametru. 
+
+Tento příklad přejmenuje podadresář na název `my-directory-renamed`.
+
+```javascript
+async function RenameDirectory(fileSystemClient) {
+
+  const directoryClient = fileSystemClient.getDirectoryClient("my-directory"); 
+  await directoryClient.move("my-directory-renamed");
+
+}
+```
+
+Tento příklad přesune adresář s názvem `my-directory-renamed` do podadresáře adresáře s názvem `my-directory-2`. 
+
+```javascript
+async function MoveDirectory(fileSystemClient) {
+
+  const directoryClient = fileSystemClient.getDirectoryClient("my-directory-renamed"); 
+  await directoryClient.move("my-directory-2/my-directory-renamed");      
+
+}
+```
+
+## <a name="delete-a-directory"></a>Odstranění adresáře
+
+Odstraňte adresář voláním metody **DirectoryClient. Delete** .
+
+Tento příklad odstraní adresář s názvem `my-directory`.   
+
+```javascript
+async function DeleteDirectory(fileSystemClient) {
+
+  const directoryClient = fileSystemClient.getDirectoryClient("my-directory"); 
+  await directoryClient.delete();
+
+}
+```
+
+## <a name="manage-a-directory-acl"></a>Správa seznamu ACL adresáře
+
+Tento příklad načte a potom nastaví seznam řízení přístupu pro adresář s názvem `my-directory`. Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
+
+> [!NOTE]
+> Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
+
+```javascript
+async function ManageDirectoryACLs(fileSystemClient) {
+
+    const directoryClient = fileSystemClient.getDirectoryClient("my-directory"); 
+    const permissions = await directoryClient.getAccessControl();
+
+    console.log(permissions.acl);
+
+    const acl = [
+    {
+      accessControlType: "user",
+      entityId: "",
+      defaultScope: false,
+      permissions: {
+        read: true,
+        write: true,
+        execute: true
+      }
+    },
+    {
+      accessControlType: "group",
+      entityId: "",
+      defaultScope: false,
+      permissions: {
+        read: true,
+        write: false,
+        execute: true
+      }
+    },
+    {
+      accessControlType: "other",
+      entityId: "",
+      defaultScope: false,
+      permissions: {
+        read: true,
+        write: true,
+        execute: false
+      }
+
+    }
+
+  ];
+
+  await directoryClient.setAccessControl(acl);
+}
+```
+
+## <a name="upload-a-file-to-a-directory"></a>Nahrání souboru do adresáře
+
+Nejprve si přečtěte soubor. V tomto příkladu se používá `fs` modul Node. js. Pak vytvořte odkaz na soubor v cílovém adresáři tak, že vytvoříte instanci **klienta** souborů a potom zavoláte metodu **klient. Create** . Nahrajte soubor voláním metody **klient. Append** . Ujistěte se, že jste dokončí nahrávání voláním metody **klient. Flush** .
+
+Tento příklad nahraje textový soubor do adresáře s názvem `my-directory`.
+
+```javascript
+async function UploadFile(fileSystemClient) {
+
+  const fs = require('fs') 
+
+  var content = "";
+  
+  fs.readFile('mytestfile.txt', (err, data) => { 
+      if (err) throw err; 
+
+      content = data.toString();
+
+  }) 
+  
+  const fileClient = fileSystemClient.getFileClient("my-directory/uploaded-file.txt");
+  await fileClient.create();
+  await fileClient.append(content, 0, content.length);
+  await fileClient.flush(content.length);
+
+}
+```
+
+## <a name="manage-a-file-acl"></a>Správa seznamu ACL souboru
+
+Tento příklad načte a potom nastaví seznam řízení přístupu pro soubor s názvem `upload-file.txt`. Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
+
+> [!NOTE]
+> Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
+
+```javascript
+async function ManageFileACLs(fileSystemClient) {
+
+  const fileClient = fileSystemClient.getFileClient("my-directory/uploaded-file.txt"); 
+  const permissions = await fileClient.getAccessControl();
+
+  console.log(permissions.acl);
+
+  const acl = [
+  {
+    accessControlType: "user",
+    entityId: "",
+    defaultScope: false,
+    permissions: {
+      read: true,
+      write: true,
+      execute: true
+    }
+  },
+  {
+    accessControlType: "group",
+    entityId: "",
+    defaultScope: false,
+    permissions: {
+      read: true,
+      write: false,
+      execute: true
+    }
+  },
+  {
+    accessControlType: "other",
+    entityId: "",
+    defaultScope: false,
+    permissions: {
+      read: true,
+      write: true,
+      execute: false
+    }
+
+  }
+
+];
+
+await fileClient.setAccessControl(acl);        
+}
+```
+
+## <a name="download-from-a-directory"></a>Stažení z adresáře
+
+Nejprve vytvořte instanci **FileSystemClient** , která představuje soubor, který chcete stáhnout. K načtení souboru použijte metodu **FileSystemClient. Read** . Pak zapište soubor. V tomto příkladu se k tomu používá `fs` modul Node. js. 
+
+> [!NOTE]
+> Tato metoda stažení souboru funguje pouze pro aplikace Node. js. Pokud máte v úmyslu spustit kód v prohlížeči, přečtěte si soubor [Azure Storage soubor Data Lake klientské knihovny pro JavaScript](https://www.npmjs.com/package/@azure/storage-file-datalake) Readme, kde najdete příklad toho, jak to provést v prohlížeči. 
+
+```javascript
+async function DownloadFile(fileSystemClient) {
+
+  const fileClient = fileSystemClient.getFileClient("my-directory/uploaded-file.txt");
+
+  const downloadResponse = await fileClient.read();
+
+  const downloaded = await streamToString(downloadResponse.readableStreamBody);
+ 
+  async function streamToString(readableStream) {
+    return new Promise((resolve, reject) => {
+      const chunks = [];
+      readableStream.on("data", (data) => {
+        chunks.push(data.toString());
+      });
+      readableStream.on("end", () => {
+        resolve(chunks.join(""));
+      });
+      readableStream.on("error", reject);
+    });
+  }   
+  
+  const fs = require('fs');
+
+  fs.writeFile('mytestfiledownloaded.txt', downloaded, (err) => {
+    if (err) throw err;
+  });
+}
+
+```
+
+## <a name="list-directory-contents"></a>Výpis obsahu adresáře
+
+Tento příklad vytiskne názvy jednotlivých adresářů a souborů, které jsou umístěny v adresáři s názvem `my-directory`.
+
+```javascript
+async function ListFilesInDirectory(fileSystemClient) {
+  
+  let i = 1;
+
+  let iter = await fileSystemClient.listPaths({path: "my-directory", recursive: true});
+
+  for await (const path of iter) {
+    
+    console.log(`Path ${i++}: ${path.name}, is directory: ${path.isDirectory}`);
+  }
+
+}
+```
+
+## <a name="see-also"></a>Viz také
+
+* [Balíček (Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-file-datalake)
+* [Ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
+* [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)

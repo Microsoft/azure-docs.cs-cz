@@ -7,21 +7,21 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 81e232e37e437c4fa9d23a49a720b88511423905
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3972fb3c0717069f84b177c54e8fc002ec52f469
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427566"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152869"
 ---
 # <a name="getting-started-with-the-r-programming-language-in-azure-machine-learning-studio-classic"></a>Začínáme s programovacím jazykem R v Azure Machine Learning Studio (Classic)
 
 <!-- Stephen F Elston, Ph.D. -->
 
-## <a name="introduction"></a>Představení
+## <a name="introduction"></a>Úvod
 
 Tento kurz vám pomůže začít s rozšířením Azure Machine Learning Studio (Classic) pomocí programovacího jazyka R. Pomocí tohoto kurzu pro programování v R můžete vytvořit, otestovat a spustit kód R v rámci studia (Classic). Při práci v kurzu vytvoříte kompletní řešení předpovědi pomocí jazyka R v aplikaci Studio (Classic).  
 
@@ -503,7 +503,7 @@ Spusťte tento kód v experimentu a Prohlédněte si výsledek z výstupního pr
 
 *Obrázek 11. Souhrn datového rámce se dvěma odebranými sloupci*
 
-Máme pro vás dobré zprávy! Získáte očekávané výsledky.
+Dobrá zpráva! Získáte očekávané výsledky.
 
 ### <a name="add-a-new-column"></a>Přidat nový sloupec
 
@@ -756,7 +756,7 @@ Spusťte tento kód a podívejte se, co se stane. Vykreslení vyprodukované na 
 
 Mezi těmito proměnnými jsou některé struktury s lichým vzhledem. To může být způsobeno trendy v datech a ze skutečnosti, že proměnné jsme nemuseli standardizovaně roznikat.
 
-### <a name="correlation-analysis"></a>analýza korelací.
+### <a name="correlation-analysis"></a>Analýza korelace
 
 Aby bylo možné provést analýzu korelace, musíme použít jak de-LINTREND, tak i standardizovat proměnné. Můžeme jednoduše použít funkci R `scale()`, která obě centra a škáluje proměnné. Tato funkce může být dobře spouštěna rychleji. Chci si ale zobrazit příklad programu obrannou linií v jazyce R.
 

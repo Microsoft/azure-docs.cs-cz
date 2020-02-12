@@ -2,17 +2,17 @@
 title: Prostředky pro vývojáře – Language Understanding
 description: Sady SDK, rozhraní REST API a CLI vám pomůžou vyvíjet aplikace Language Understanding (LUIS) ve vašem programovacím jazyce. Spravujte své prostředky Azure a LUIS předpovědi.
 ms.topic: reference
-ms.date: 02/09/2020
-ms.openlocfilehash: ed869b7022e43b8ecf8c1f05bb3c6f0919076818
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 02/11/2020
+ms.openlocfilehash: fda4301a0851e6a36cbb6493dcf48293b2c5db37
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119977"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152682"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Materiály pro vývojáře sady SDK, REST a CLI pro Language Understanding (LUIS)
 
-Sady SDK, rozhraní REST API a CLI vám pomůžou vyvíjet aplikace Language Understanding (LUIS) ve vašem programovacím jazyce. Spravujte své prostředky Azure a LUIS předpovědi. 
+Sady SDK, rozhraní REST API a CLI vám pomůžou vyvíjet aplikace Language Understanding (LUIS) ve vašem programovacím jazyce. Spravujte své prostředky Azure a LUIS předpovědi.
 
 ## <a name="azure-resource-management"></a>Správa prostředků Azure
 
@@ -36,14 +36,41 @@ Přečtěte si o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
 Pomocí [Cognitive Services ukázkový kód](https://github.com/Azure-Samples/cognitive-services-quickstart-code) se naučíte a používat nejběžnější úlohy.
 
+### <a name="rest-specifications"></a>Specifikace REST
+
+[Specifikace Luis REST](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/cognitiveservices/data-plane/LUIS)spolu se všemi [specifikacemi Azure REST](https://github.com/Azure/azure-rest-api-specs)jsou veřejně dostupné na GitHubu.
+
 ### <a name="rest-apis"></a>Rozhraní REST API
 
 Rozhraní API pro vytváření obsahu a předpovědi jsou dostupná z rozhraní REST API:
 
-|Typ|Version|
+|Typ|Verze|
 |--|--|
 |Vytváření obsahu|[2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[Preview verze 3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
 |Předpověď|[2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[Technologie](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
+
+### <a name="rest-endpoints"></a>Koncové body REST
+
+LUIS má aktuálně 2 typy koncových bodů:
+
+* vytváření obsahu pro školicí koncový bod
+* předpověď dotazů na koncový bod modulu runtime.
+
+|Účel|zprostředkovatele identity|
+|--|--|
+|Vytváření obsahu na školicím bodu|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|V2 runtime – všechny předpovědi v koncovém bodu za běhu|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+|Verze v3 runtime – předpověď verzí na koncovém bodu za běhu|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+|Verze v3 runtime – předpověď slotu v běhovém koncovém bodu|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
+
+Následující tabulka popisuje parametry, které jsou označeny složenými závorkami `{}`v předchozí tabulce.
+
+|Parametr|Účel|
+|--|--|
+|`your-resource-name`|Název prostředku Azure|
+|`q` nebo `query`|text utterance odeslané z klientské aplikace, jako je chatovací robot|
+|`version`|10 název verze znaku|
+|`slot`| `production` nebo `staging`|
 
 ### <a name="language-based-sdks"></a>Sady SDK založené na jazyce
 
@@ -56,7 +83,7 @@ Rozhraní API pro vytváření obsahu a předpovědi jsou dostupná z rozhraní 
 |Python|[Vytváření a předpověď](sdk-authoring.md?pivots=programming-language-python)|[PIP](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Vytváření obsahu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Vytváření obsahu](sdk-authoring.md?pivots=programming-language-python)<br>[Předpověď pomocí REST](luis-get-started-get-intent-from-rest.md)
 
 
-### <a name="containers"></a>Kontejnery
+### <a name="containers"></a>Containers
 
 Language Understanding (LUIS) poskytuje [kontejner](luis-container-howto.md) pro poskytování místních a obsažených verzí vaší aplikace.
 
@@ -77,7 +104,7 @@ Robot Framework nabízí [několik nástrojů](https://github.com/microsoft/botb
 * [Odesílání](https://github.com/microsoft/botbuilder-tools/blob/master/packages/Dispatch)– Správa nadřazených a podřízených aplikací
 * [LUISGen](https://github.com/microsoft/botbuilder-tools/blob/master/packages/LUISGen) – automaticky generuje záložní C#třídy/TypeScript pro Luis a entity.
 * [Emulátor rozhraní robot](https://github.com/Microsoft/BotFramework-Emulator/releases) – desktopová aplikace umožňující vývojářům robotům testovat a ladit roboty sestavené pomocí sady robot Framework SDK
-
+* [Robot Framework robot](https://github.com/microsoft/BotFramework-Composer/blob/stable/README.md) – integrovaný vývojový nástroj pro vývojáře a týmy pro více týmů k sestavování roboty a konverzací v prostředí Microsoft bot Framework
 
 ## <a name="next-steps"></a>Další kroky
 

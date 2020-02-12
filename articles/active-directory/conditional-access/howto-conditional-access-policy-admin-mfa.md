@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e972228923654ca73063aad370d087e550138dbf
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fb396429c95dbed090283752c5a0d9ff5cc176af
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043369"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148194"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Podmíněný přístup: vyžadovat MFA pro správce
 
@@ -24,14 +24,14 @@ ms.locfileid: "76043369"
 
 Společnost Microsoft doporučuje vyžadovat vícefaktorové ověřování na následujících rolích minimálně:
 
-* Globální správce
-* Správce SharePointu
-* Správce Exchange
+* Správce fakturace
 * Správce podmíněného přístupu
-* Správce zabezpečení
+* Správce Exchange
+* Globální správce
 * HelpDesk (heslo) – správce
 * Správce hesel
-* Správce fakturace
+* Správce zabezpečení
+* Správce SharePointu
 * Správce uživatele
 
 Organizace si můžou zvolit, že se mají zahrnout nebo vyloučit role podle potřeby.
@@ -55,14 +55,14 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
 1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
 1. V části **přiřazení**vyberte **Uživatelé a skupiny** .
    1. V části **Zahrnout**vyberte **role adresáře (Preview)** a minimálně jednu z následujících rolí:
-      * Globální správce
-      * Správce SharePointu
-      * Správce Exchange
+      * Správce fakturace
       * Správce podmíněného přístupu
-      * Správce zabezpečení
+      * Správce Exchange
+      * Globální správce
       * Správce helpdesku
       * Správce hesel
-      * Správce fakturace
+      * Správce zabezpečení
+      * Správce SharePointu
       * Správce uživatele
    1. V části **vyloučit**vyberte **Uživatelé a skupiny** a zvolte účty pro nouzový přístup nebo rozklad vaší organizace. 
    1. Vyberte **Done** (Hotovo).

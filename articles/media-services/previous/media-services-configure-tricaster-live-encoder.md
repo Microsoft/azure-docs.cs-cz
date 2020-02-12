@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 11ee8f52a8fd4db2d052eeaeef1387b011d23050
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 7909fbb958a66d00616d4ed1b844d02bb47d997e
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131556"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152495"
 ---
 # <a name="use-the-newtek-tricaster-encoder-to-send-a-single-bitrate-live-stream"></a>Použití kodéru NewTek transkodéry k odeslání živého datového proudu s jednou přenosovou rychlostí  
 > [!div class="op_single_selector"]
@@ -34,10 +34,10 @@ Tento článek ukazuje, jak nakonfigurovat kodér [NewTek transkodéry](https://
 
 Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítač s Windows. Pokud používáte systém Mac nebo Linux, použijte Azure Portal k vytvoření [kanálů](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programů](media-services-portal-creating-live-encoder-enabled-channel.md).
 
+Při použití transkodéry pro odesílání v informačním kanálu o příspěvcích do kanálů AMS, které mají povolené kódování v reálném čase, může být video/audio histogramu v živé události, pokud používáte určité funkce transkodéry, jako je rychlé rozřezání mezi informačními kanály nebo přechod na/z SLAT. Tým AMS pracuje na řešení těchto problémů, a to až do té doby, nedoporučujeme tyto funkce používat.
+
 > [!NOTE]
-> Při použití transkodéry pro odesílání v informačním kanálu o příspěvcích do kanálů AMS, které mají povolené kódování v reálném čase, může být video/audio histogramu v živé události, pokud používáte určité funkce transkodéry, jako je rychlé rozřezání mezi informačními kanály nebo přechod na/z SLAT. Tým AMS pracuje na řešení těchto problémů, a to až do té doby, nedoporučujeme tyto funkce používat.
->
->
+>  Zvažte přechod na TLS 1,2, verze prefferred TLS.
 
 ## <a name="prerequisites"></a>Předpoklady
 

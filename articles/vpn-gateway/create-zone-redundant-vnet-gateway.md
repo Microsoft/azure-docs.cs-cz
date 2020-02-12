@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 58e9b4204e2d563d8e4e1af8353870880f98b065
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: d8c6b68a38d4b60cf7a3194e6a5ded8804cc416f
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133605"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150166"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Vytvoření brány virtuální sítě redundantní v zóně v Zóny dostupnosti Azure
 
@@ -21,27 +21,11 @@ V Zóny dostupnosti Azure můžete nasadit brány VPN a ExpressRoute. Tím se zv
 
 ## <a name="before-you-begin"></a>Než začnete
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-Můžete použít buď PowerShell nainstalovaný místně na vašem počítači, nebo Azure Cloud Shell. Pokud se rozhodnete nainstalovat a používat PowerShell místně, tato funkce vyžaduje nejnovější verzi modulu PowerShellu.
-
-[!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
-
-### <a name="to-use-powershell-locally"></a>Místní použití PowerShellu
-
-Pokud v počítači používáte místně PowerShell, ale nepoužíváte Cloud Shell, musíte nainstalovat modul PowerShellu 1.0.0 nebo novější. Pokud chcete zjistit, kterou verzi prostředí PowerShell máte nainstalovanou, použijte následující příkaz:
-
-```azurepowershell
-Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
-```
-
-Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps).
-
-[!INCLUDE [PowerShell login](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="variables"></a>1. deklarace proměnných
 
-Hodnoty použité pro příklady kroků jsou uvedeny níže. Kromě toho některé příklady používají v rámci kroků deklarované proměnné. Pokud tyto kroky používáte ve svém vlastním prostředí, nezapomeňte tyto hodnoty nahradit vlastními. Při zadávání umístění ověřte, zda je zadaná oblast podporovaná. Další informace najdete v [nejčastějších dotazech](#faq).
+Deklarujte proměnné, které chcete použít. Použijte následující příklad a dle potřeby nahraďte v něm uvedené hodnoty vlastními. Pokud během cvičení zavřete relaci PowerShell/Cloud Shell, stačí zkopírovat hodnoty a vložit je znovu, aby se proměnné znovu deklarovaly. Při zadávání umístění ověřte, zda je zadaná oblast podporovaná. Další informace najdete v [nejčastějších dotazech](#faq).
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"

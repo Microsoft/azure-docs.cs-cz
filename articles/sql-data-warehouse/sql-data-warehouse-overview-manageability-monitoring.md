@@ -1,6 +1,6 @@
 ---
 title: Správa a monitorování – přehled
-description: Přehled monitorování a správy pro využití prostředků, aktivity protokolů a dotazů, doporučení a ochrana dat (zálohování a obnovení) v Azure SQL Data Warehouse.
+description: Přehled monitorování a správy pro využití prostředků, aktivity protokolů, doporučení a ochrany dat (zálohování a obnovení) s fondem SQL.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 54dbf7bcac92f7536d4e4579045c474914264935
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 31a12a60fc6f02a935ff98278e69d1ed2dd68ce5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760738"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153260"
 ---
-# <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Správa a monitorování pomocí Azure SQL Data Warehouse
+# <a name="manageability-and-monitoring-with-sql-pool"></a>Správa a monitorování pomocí fondu SQL
 
-Podívejte se, co je k dispozici, abyste mohli spravovat a monitorovat SQL Data Warehouse. V následujících článcích se zvýrazňují možnosti optimalizace výkonu a využití datového skladu.
+SQL Analytics umožňuje zřídit datový sklad prostřednictvím fondu SQL. Následující články vám pomůžou se správou a monitorováním datového skladu. Naučíte se také, jak optimalizovat využití a výkon datového skladu.
 
 ## <a name="overview"></a>Přehled
 
@@ -33,4 +33,4 @@ Podívejte se, co je k dispozici, abyste mohli spravovat a monitorovat SQL Data 
 
 
 ## <a name="next-steps"></a>Další kroky
-Návody najdete v tématu [monitorování a optimalizace datového skladu](sql-data-warehouse-manage-monitor.md).
+Návody najdete v tématu [monitorování a optimalizace fondu SQL](sql-data-warehouse-manage-monitor.md).

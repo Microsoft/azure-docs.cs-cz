@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 16689982156743f5dc4e2ed09a0f9bc097a51b9b
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 6e1b162d17e2369b579fc1210c57e0409b0546bc
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903038"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148466"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Vytvoření a instalace konfiguračních souborů klienta VPN pro ověřování RADIUS P2S
 
@@ -38,7 +38,6 @@ Pracovní postup konfigurace pro ověřování RADIUS P2S je následující:
 
 Chcete-li použít části v tomto článku, nejprve se rozhodněte, jaký typ ověřování chcete použít: uživatelské jméno/heslo, certifikát nebo jiné typy ověřování. Každá část obsahuje kroky pro Windows, Mac OS X a Linux (k dispozici jsou v tuto chvíli omezené kroky).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="adeap"></a>Ověřování uživatelského jména a hesla
 
@@ -50,7 +49,7 @@ Při konfiguraci ověřování uživatelského jména a hesla můžete vytvořit
 
 Konfigurační soubory klienta VPN můžete vygenerovat pomocí Azure Portal nebo pomocí Azure PowerShell.
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Přejděte do brány virtuální sítě.
 2. Klikněte na **Konfigurace Point-to-site**.
@@ -59,7 +58,7 @@ Konfigurační soubory klienta VPN můžete vygenerovat pomocí Azure Portal neb
 5. Kliknutím na **Stáhnout** vygenerujte soubor. zip.
 6. Soubor. zip se stáhne obvykle do složky Stažené soubory.
 
-#### <a name="azure-powershell"></a>Azure PowerShell
+#### <a name="azure-powershell"></a>Azure Powershell
 
 Vygenerujte konfigurační soubory klienta VPN pro použití s ověřováním uživatelského jména a hesla. Konfigurační soubory klienta VPN můžete vygenerovat pomocí následujícího příkazu:
 

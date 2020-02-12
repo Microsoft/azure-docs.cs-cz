@@ -6,24 +6,24 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: efe4c07a6231e0b2c95b049db056a4e5d055db98
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680949"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152988"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení Gitu pro Azure App Service
 
 V této příručce se dozvíte, jak nasadit aplikaci pro [Azure App Service](overview.md) z úložiště Git na místním počítači.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup je popsaný v tomto návodu:
 
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
   
-- [Nainstalovat Git](https://www.git-scm.com/downloads)
+- [Nainstalovat Git](https://www.git-scm.com/downloads).
   
 - Mít místní úložiště Git s kódem, který chcete nasadit. Chcete-li stáhnout ukázkové úložiště, spusťte následující příkaz v místním okně terminálu:
   
@@ -50,6 +50,9 @@ Pokud chcete získat adresu URL pro povolení místního nasazení Git pro exist
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
 ```
+> [!NOTE]
+> Pokud používáte plán služby aplikace pro Linux, je nutné přidat tento parametr:--runtime Python | 3.7
+
 
 Pokud chcete vytvořit novou aplikaci s povoleným Git, spusťte [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) v Cloud shell s parametrem `--deployment-local-git`. Nahraďte \<název aplikace >, \<název skupiny > a \<Plan-Name > názvy pro novou aplikaci Git, její skupinu prostředků Azure a její plán Azure App Service.
 
@@ -142,16 +145,16 @@ Povolení místního nasazení Git pro vaši aplikaci pomocí Azure Pipelines (P
 
 Když použijete Git k publikování App Service aplikace v Azure, může se zobrazit následující běžné chybové zprávy:
 
-|Zpráva|Příčina|Rozlišení
+|Zpráva|Příčina|Řešení
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Aplikace není v provozu.|Spusťte aplikaci v Azure Portal. Nasazení Git není po zastavení webové aplikace dostupné.|
 |`Couldn't resolve host 'hostname'`|Informace o adrese pro vzdálené úložiště Azure jsou nesprávné.|K vypsání všech vzdálených i přidružených adres URL použijte příkaz `git remote -v`. Ověřte, jestli je adresa URL vzdáleného webu Azure správná. V případě potřeby tento vzdálený příkaz odeberte a znovu vytvořte pomocí správné adresy URL.|
 |`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`|Nezadali jste větev během `git push`nebo jste nenastavili `push.default` hodnotu v `.gitconfig`.|Znovu spusťte `git push` a určete hlavní větev: `git push azure master`.|
 |`src refspec [branchname] does not match any.`|Pokusili jste se odeslat do jiné jiné než hlavní větve na vzdáleném Azure.|Znovu spusťte `git push` a určete hlavní větev: `git push azure master`.|
 |`RPC failed; result=22, HTTP code = 5xx.`|K této chybě může dojít, pokud se pokusíte odeslat velké úložiště Git přes HTTPS.|Změňte konfiguraci Gitu v místním počítači, aby `postBuffer` větší. Například: `git config --global http.postBuffer 524288000`.|
-|`Error - Changes committed to remote repository but your web app not updated.`|Nasadili jste aplikaci Node. js se souborem _Package. JSON_ , který určuje další požadované moduly.|Před touto chybou si přečtěte `npm ERR!` chybové zprávy pro další kontext chyby. Níže jsou uvedené známé příčiny této chyby a příslušné `npm ERR!` zprávy:<br /><br />**Poškozený soubor Package. JSON**: `npm ERR! Couldn't read dependencies.`<br /><br />**Nativní modul nemá pro Windows binární distribuci**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />– nebo – <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
+|`Error - Changes committed to remote repository but your web app not updated.`|Nasadili jste aplikaci Node. js se souborem _Package. JSON_ , který určuje další požadované moduly.|Před touto chybou si přečtěte `npm ERR!` chybové zprávy pro další kontext chyby. Níže jsou uvedené známé příčiny této chyby a příslušné `npm ERR!` zprávy:<br /><br />**Poškozený soubor Package. JSON**: `npm ERR! Couldn't read dependencies.`<br /><br />**Nativní modul nemá pro Windows binární distribuci**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />nebo <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 - [Dokumentace k Project Kudu](https://github.com/projectkudu/kudu/wiki)
 - [Průběžné nasazování do Azure App Service](deploy-continuous-deployment.md)

@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: e440d9d882d0459d04a15b8f39ea6877707ea096
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6976f0bb671b94f71b71287483c2ab88d0959899
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427448"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152767"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio-classic"></a>Migrace analýz z Excelu na Azure Machine Learning Studio (Classic)
 
@@ -54,8 +54,8 @@ Nejprve model aplikace Excel jasně vykonává model studia (Classic):
 |  | Excel | Studio (Classic) |
 | --- |:---:|:---:|
 | Výkon | | |
-| <ul style="list-style-type: none;"><li>Upravený čtvereček R</li></ul> |0.96 |Nevztahuje se |
-| <ul style="list-style-type: none;"><li>Koeficient <br />Analýzy</li></ul> |Nevztahuje se |0.78<br />(nízká přesnost) |
+| <ul style="list-style-type: none;"><li>Upravený čtvereček R</li></ul> |0.96 |Není k dispozici |
+| <ul style="list-style-type: none;"><li>Koeficient <br />Analýzy</li></ul> |Není k dispozici |0.78<br />(nízká přesnost) |
 | Střední absolutní chyba |– 9,5 m |$19.4 m |
 | Střední absolutní chyba (%) |6.03% |12.2% |
 
@@ -72,24 +72,24 @@ Když jsme použili doporučení, dosáhli jsme stejný základní výkon v stud
 |  | Excel | Studio (Classic) (počáteční) | Studio (Classic) s minimálními čtverci |
 | --- |:---:|:---:|:---:|
 | Hodnota s popiskem |Skutečné hodnoty (číselné) |same |same |
-| Student |Excel – > Analýza dat – > regrese |Lineární regrese. |Lineární regrese |
-| Možnosti naučí se |Nevztahuje se |Výchozí |obvyklé nejmenší čtverce<br />L2 = 0,005 |
+| Learner |Excel – > Analýza dat – > regrese |Lineární regrese. |Lineární regrese |
+| Možnosti naučí se |Není k dispozici |Upravovaný |obvyklé nejmenší čtverce<br />L2 = 0,005 |
 | Sada dat |26 řádků, 3 funkce, 1 popisek. Všechny číselné. |same |same |
 | Rozdělit: vlak |Aplikace Excel je vyškolená na prvních 18 řádcích, testováno na posledních 8 řádků. |same |same |
 | Rozdělit: test |Vzorec regrese Excelu aplikovaný na posledních 8 řádků |same |same |
 | **Výkon** | | | |
-| Upravený čtvereček R |0.96 |Nevztahuje se | |
-| Koeficient určení |Nevztahuje se |0.78 |0.952049 |
+| Upravený čtvereček R |0.96 |Není k dispozici | |
+| Koeficient určení |Není k dispozici |0.78 |0.952049 |
 | Střední absolutní chyba |– 9,5 m |$19.4 m |– 9,5 m |
-| Střední absolutní chyba (%) |<span style="background-color: 00FF00;"> 6.03%</span> |12.2% |<span style="background-color: 00FF00;"> 6.03%</span> |
+| Střední absolutní chyba (%) |<span style="background-color: 00FF00;">6,03%</span> |12.2% |<span style="background-color: 00FF00;">6,03%</span> |
 
 Kromě toho jsou excelové koeficienty v porovnání s váhy funkcí v modelu školení Azure:
 
 |  | Excelové koeficienty | Váhy funkcí Azure |
 | --- |:---:|:---:|
 | Zachytit/bias |19470209.88 |19328500 |
-| A |0.832653063 |0.834156 |
-| Součást B |11071967.08 |11007300 |
+| Funkce A |0.832653063 |0.834156 |
+| Funkce B |11071967.08 |11007300 |
 | Funkce C |25383318.09 |25140800 |
 
 ## <a name="next-steps"></a>Další kroky
@@ -129,7 +129,7 @@ Zjistili jsme také, že je vhodné použít [Výběr funkce založený na filtr
 
 Možnost přenést prediktivní analýzu prognózování z studia (Classic) do Excelu systemically umožňuje významně zvýšit schopnost úspěšného poskytování výsledků široké cílové skupině uživatelů pro podnikání. 
 
-## <a name="resources"></a>Materiály
+## <a name="resources"></a>Zdroje a prostředky
 Tady je několik prostředků, které vám pomůžou při práci s regresí: 
 
 * Regrese v aplikaci Excel. Pokud jste nikdy nezkoušeli regresi v Excelu, tento kurz usnadňuje: [https://www.excel-easy.com/examples/regression.html](https://www.excel-easy.com/examples/regression.html)

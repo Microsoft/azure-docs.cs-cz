@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80bc0a1680d43b40b5ab69db5ded5898e5a52ddf
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
-ms.translationtype: HT
+ms.openlocfilehash: dc99e23e1b885de25bd2159d7916790cad851108
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137480"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77150224"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Jamf pro
 
@@ -164,7 +164,7 @@ V této části udělíte B. Simon přístup k Jamf pro.
 
 7. Na stejné stránce se posuňte dolů k oddílu **mapování uživatelů** . Pak proveďte následující kroky.
 
-    ![Oddíl mapování uživatelů na stránce jednotného přihlašování v Jamf pro.](./media/jamfprosamlconnector-tutorial/tutorial_jamfprosamlconnector_single.png)
+    ![Oddíl mapování uživatelů na stránce jednotného přihlašování v Jamf pro.](./media/jamfprosamlconnector-tutorial/tutorial-jamfprosamlconnector-single.png)
 
     a. Vyberte možnost **NameId** pro **mapování uživatelů zprostředkovatele identity**. Ve výchozím nastavení je tato možnost nastavená na **NameId**, ale můžete definovat vlastní atribut.
 

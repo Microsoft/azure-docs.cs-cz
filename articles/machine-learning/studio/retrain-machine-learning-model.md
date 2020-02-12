@@ -1,5 +1,5 @@
 ---
-title: Přeškolení pro webovou službu
+title: Přeučení webové služby
 titleSuffix: ML Studio (classic) - Azure
 description: Naučte se aktualizovat webovou službu tak, aby používala nově vyškolený model strojového učení v Azure Machine Learning Studio (Classic).
 services: machine-learning
@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: c24eb50688efcf220b26b5a0f352d012876dbab3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 867d104b58980679dc815238fef14050e7d9e8c7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838665"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152852"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Přeučení a nasazení modelu strojového učení
 
@@ -31,7 +31,7 @@ Pomocí těchto kroků můžete znovu naučit a nasazovat novou webovou službu 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="deploy-the-retraining-web-service"></a>Nasazení webové služby retraining
+## <a name="deploy-the-retraining-web-service"></a>Nasazení retraining webové služby
 
 Webová služba retraining umožňuje přeškolovat model s novou sadou parametrů, jako jsou nová data, a uložit ho pro pozdější účely. Když připojíte **výstup webové služby** k **modelu vlaků**, zkušební experiment vyprodukuje nový model, který můžete použít.
 
@@ -72,7 +72,7 @@ Na následujícím snímku obrazovky vidíte stránku **spotřebovat** na portá
 
 ![Vybírající stránku](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
-### <a name="update-the-apikey-declaration"></a>Aktualizace deklarace apikey
+### <a name="update-the-apikey-declaration"></a>Aktualizovat deklarace apikey
 
 Vyhledejte deklaraci **apikey** :
 
@@ -80,13 +80,13 @@ Vyhledejte deklaraci **apikey** :
 
 V části **informace o základní spotřebě** **stránky využívání** Najděte primární klíč a zkopírujte ho do **apikey** deklarace.
 
-### <a name="update-the-azure-storage-information"></a>Aktualizace informací o Azure Storage
+### <a name="update-the-azure-storage-information"></a>Aktualizovat informace o Azure Storage
 
 Vzorový kód BES nahraje soubor z místního disku (například "C:\temp\CensusInput.csv") na Azure Storage, zpracuje ho a zapíše výsledky zpět do Azure Storage.
 
 1. Přihlášení k webu Azure Portal
 1. V levém navigačním sloupci klikněte na **Další služby**, vyhledejte **účty úložiště**a vyberte je.
-1. V seznamu účtů úložiště vyberte jednu pro uložení převýukového modelu.
+1. V seznamu účtů úložiště vyberte jeden pro uložení retrained modelu.
 1. V levém navigačním sloupci klikněte na **přístupové klíče**.
 1. Zkopírujte a uložte **Primární přístupový klíč**.
 1. V levém navigačním sloupci klikněte na **objekty blob**.
@@ -100,7 +100,7 @@ Vyhledejte deklarace *StorageAccountName*, *StorageAccountKey*a *StorageContaine
 
 Také je nutné zajistit, aby byl vstupní soubor k dispozici v umístění, které zadáte v kódu.
 
-### <a name="specify-the-output-location"></a>Zadejte umístění výstupu
+### <a name="specify-the-output-location"></a>Určení umístění výstupu
 
 Pokud zadáte umístění výstupu v datové části požadavku, Přípona souboru určeného v *RelativeLocation* musí být zadána jako `ilearner`.
 
@@ -140,7 +140,7 @@ Dále získejte objekt definice webové služby voláním rutiny [Get-AzMlWebSer
 
     $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-Pokud chcete zjistit název skupiny prostředků existující webové služby, spusťte rutinu Get-AzMlWebService bez jakýchkoli parametrů, ve které se budou zobrazovat webové služby v předplatném. Vyhledejte webovou službu a podívejte se na její ID webové služby. Název skupiny prostředků je čtvrtý prvek v ID, a to hned za elementem *resourceGroups* . V následujícím příkladu je název skupiny prostředků default-MachineLearning-SouthCentralUS.
+Pokud chcete zjistit název skupiny prostředků existující webové služby, spusťte rutinu Get-AzMlWebService bez jakýchkoli parametrů, ve které se budou zobrazovat webové služby v předplatném. Vyhledejte webovou službu a podívejte se na jeho ID webové služby. Název skupiny prostředků je čtvrtý prvek v ID, a to hned za elementem *resourceGroups* . V následujícím příkladu je název skupiny prostředků výchozí. MachineLearning SouthCentralUS.
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -149,7 +149,7 @@ Pokud chcete zjistit název skupiny prostředků existující webové služby, s
     Type : Microsoft.MachineLearning/webServices
     Tags : {}
 
-Případně chcete-li zjistit název skupiny prostředků existující webové služby, přihlaste se k portálu Azure Machine Learning Web Services. Vyberte webovou službu. Název skupiny prostředků je pátý prvek adresy URL webové služby hned za elementem *resourceGroups* . V následujícím příkladu je název skupiny prostředků default-MachineLearning-SouthCentralUS.
+Případně chcete-li zjistit název skupiny prostředků existující webové služby, přihlaste se k portálu Azure Machine Learning Web Services. Vyberte webovou službu. Název skupiny prostředků je pátý prvek adresy URL webové služby hned za elementem *resourceGroups* . V následujícím příkladu je název skupiny prostředků výchozí. MachineLearning SouthCentralUS.
 
     https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
 
@@ -182,7 +182,7 @@ Pomocí rutiny [Import-AzMlWebService](https://docs.microsoft.com/powershell/mod
 
     $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
-### <a name="update-the-web-service"></a>Aktualizace webové služby
+### <a name="update-the-web-service"></a>Aktualizovat webovou službu
 
 Nakonec pomocí rutiny [Update-AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) aktualizujte prediktivní experiment.
 

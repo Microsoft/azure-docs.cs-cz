@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 9/19/2019
+ms.date: 2/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c78d2a8b4ccc51bc7afaef82a6c0dd609acdcab9
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9c43f1fe0d5850b53f0f72f05633e498a94d871c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908832"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149300"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Kurz: Hromadná Pozvánka pro uživatele spolupráce Azure AD B2B (Preview)
 
@@ -27,7 +27,7 @@ ms.locfileid: "76908832"
 
 > [!NOTE]
 > Od 12/22/2019 byla funkce hromadného pozvání uživatelů (Preview) dočasně zakázaná.
-> V současné době není k dispozici žádné známé datum, kdy bude tato funkce znovu povolena. 
+> V současné době není k dispozici žádné známé datum, kdy bude tato funkce znovu povolena v Azure Portal. Pokud chcete uživatele typu Host pozvat hromadně pomocí prostředí PowerShell, přečtěte si [ukázky kódu a PowerShellu pro B2B](code-samples.md).
 
 Pokud k práci se svými externími partnery používáte spolupráci B2B služby Azure Active Directory (Azure AD), můžete do organizace pozvat více uživatelů typu host najednou. V tomto kurzu se naučíte, jak pomocí Azure Portal posílat hromadné pozvánky externím uživatelům. Konkrétně provedete následující:
 
@@ -38,7 +38,7 @@ Pokud k práci se svými externími partnery používáte spolupráci B2B služb
 
 Pokud nemáte Azure Active Directory, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Potřebujete alespoň dva testovací e-mailové účty, na které můžete pozvánky odeslat. Účty se nesmí nacházet ve vaší organizaci. Můžete použít libovolný typ účtu, včetně sociálních účtů jako jsou adresy gmail.com nebo outlook.com.
 

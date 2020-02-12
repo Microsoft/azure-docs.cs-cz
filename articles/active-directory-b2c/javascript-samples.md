@@ -1,5 +1,6 @@
 ---
-title: Ukázky JavaScriptu – Azure Active Directory B2C | Microsoft Docs
+title: Ukázky JavaScriptu
+titleSuffix: Azure AD B2C
 description: Další informace o použití jazyka JavaScript v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,39 +8,47 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42dc09ef4518bfda8c63ee183499b1b2e8c22991
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1381ddb16697b1e892794604bbfafda815bd6182
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841927"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149065"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Ukázky jazyka JavaScript pro použití v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Do aplikací Azure Active Directory B2C (Azure AD B2C) můžete přidat vlastní kód na straně klienta JavaScript. Pro povolení JavaScriptu pro vaše aplikace musíte přidat element do [vlastních zásad](custom-policy-overview.md), vybrat [rozložení stránky](page-layout.md)a ve svých žádostech použít [b2clogin.com](b2clogin.md) . Tento článek popisuje, jak můžete změnit vlastní zásady a povolit spouštění skriptů.
+Do aplikací Azure Active Directory B2C (Azure AD B2C) můžete přidat vlastní kód na straně klienta JavaScript.
+
+Povolení JavaScriptu pro vaše aplikace:
+
+* Přidání elementu do [vlastních zásad](custom-policy-overview.md)
+* Vybrat [rozložení stránky](page-layout.md)
+* Použití [b2clogin.com](b2clogin.md) v žádostech
+
+Tento článek popisuje, jak můžete změnit vlastní zásady a povolit spouštění skriptů.
 
 > [!NOTE]
 > Pokud chcete povolit JavaScript pro toky uživatelů, přečtěte si téma [verze JavaScriptu a rozložení stránky v Azure Active Directory B2C](user-flow-javascript-overview.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="select-a-page-layout"></a>Vybrat rozložení stránky
 
-* [Vyberte rozložení stránky](page-layout.md) pro prvky uživatelského rozhraní vaší aplikace.
+* Vyberte [rozložení stránky](contentdefinitions.md#select-a-page-layout) pro prvky uživatelského rozhraní vaší aplikace.
 
-    Pokud máte v úmyslu použít JavaScript, je nutné [definovat verzi rozložení stránky](page-layout.md#replace-datauri-values) pro *všechny* definice obsahu ve vlastních zásadách.
+    Pokud máte v úmyslu použít JavaScript, je nutné [definovat verzi rozložení stránky](contentdefinitions.md#migrating-to-page-layout) s `contract` verzí pro *všechny* definice obsahu ve vlastních zásadách.
 
 ## <a name="add-the-scriptexecution-element"></a>Přidejte prvek ScriptExecution
 
-Povolit spuštění skriptu přidáním **ScriptExecution** elementu [RelyingParty](relyingparty.md) elementu.
+Spuštění skriptu můžete povolit přidáním elementu **ScriptExecution** do elementu [RelyingParty](relyingparty.md) .
 
-1. Otevřete soubor vlastní zásady. Například *SignUpOrSignin.xml*.
-2. Přidat **ScriptExecution** elementu **UserJourneyBehaviors** prvek **RelyingParty**:
+1. Otevřete soubor vlastní zásady. Například *SignUpOrSignin. XML*.
+2. Přidejte element **ScriptExecution** do **UserJourneyBehaviors** elementu **RelyingParty**:
 
     ```XML
     <RelyingParty>
@@ -52,31 +61,13 @@ Povolit spuštění skriptu přidáním **ScriptExecution** elementu [RelyingPar
     ```
 3. Uložte a odešlete soubor.
 
-## <a name="guidelines-for-using-javascript"></a>Pokyny k používání jazyka JavaScript
-
-Při přizpůsobování rozhraní vaší aplikace pomocí jazyka JavaScript, postupujte podle následujících pokynů:
-
-- Událost click není vázán `<a>` elementů HTML.
-- Nevyřídí závislost na Azure AD B2C kódu a v komentářích.
-- Neměnit pořadí nebo hierarchie elementů HTML v Azure AD B2C. Pomocí zásady služby Azure AD B2C můžete řídit pořadí prvků uživatelského rozhraní.
-- Můžete volat jakékoli služby RESTful těchto aspektů:
-    - Budete muset nastavit služby RESTful CORS povolit volání HTTP na straně klienta.
-    - Ujistěte se, že vaše služba RESTful je zabezpečené a využívá protokol HTTPS.
-    - Nepoužívejte JavaScriptu přímo k volání koncových bodů Azure AD B2C.
-- Můžete vložit JavaScript nebo můžete propojit na externí soubory jazyka JavaScript. Pokud používáte externí soubor jazyka JavaScript, nezapomeňte použít absolutní adresu URL a ne relativní adresu URL.
-- Rozhraní jazyka JavaScript:
-    - Azure AD B2C používá specifickou verzi jQuery. Nezahrnují jinou verzi jQuery. Použití více než jedna verze na stejné stránce způsobí problémy.
-    - Použití RequireJS není podporováno.
-    - Většina architektury JavaScriptu nejsou podporovány službou Azure AD B2C.
-- Nastavení služby Azure AD B2C můžete číst voláním `window.SETTINGS`, `window.CONTENT` objekty, jako je aktuální jazyk uživatelského rozhraní. Neměňte hodnotu z těchto objektů.
-- Pokud chcete přizpůsobit chybovou zprávu Azure AD B2C, použijte lokalizaci zásad.
-- Pokud nic jde dosáhnout s použitím zásad, obecně je doporučený postup.
+[!INCLUDE [active-directory-b2c-javascript-guidelines](../../includes/active-directory-b2c-javascript-guidelines.md)]
 
 ## <a name="javascript-samples"></a>Ukázky JavaScriptu
 
 ### <a name="show-or-hide-a-password"></a>Umožňuje zobrazit nebo skrýt heslo
 
-Běžným způsobem, které vašim zákazníkům pomůžou s jejich registrace úspěchu je mohly zobrazit, co se jste zadali jako své heslo. Tato možnost pomáhá uživatelům zaregistrovat tak, že umožňuje snadno zobrazit a provádět opravy hesla v případě potřeby. Jakékoli pole zadejte heslo má zaškrtávací políčko s **zobrazit heslo** popisek.  To umožňuje uživatelům zobrazit heslo jako prostý text. Zahrnout tento fragment kódu do šablony registrace nebo přihlášení s vlastním potvrzením stránky:
+Běžným způsobem, které vašim zákazníkům pomůžou s jejich registrace úspěchu je mohly zobrazit, co se jste zadali jako své heslo. Tato možnost pomáhá uživatelům zaregistrovat tak, že umožňuje snadno zobrazit a provádět opravy hesla v případě potřeby. Každé pole typu heslo má zaškrtávací políčko s popiskem **Zobrazit heslo** .  To umožňuje uživatelům zobrazit heslo jako prostý text. Zahrnout tento fragment kódu do šablony registrace nebo přihlášení s vlastním potvrzením stránky:
 
 ```Javascript
 function makePwdToggler(pwd){
@@ -122,7 +113,7 @@ setupPwdTogglers();
 
 ### <a name="add-terms-of-use"></a>Přidání podmínek použití
 
-Začleňte následující kód na vaši stránku, ve které chcete zahrnout **Terms of Use** zaškrtávací políčko. Toto políčko je obvykle potřeba na stránkách registrace registrace a sociální účtu místní účet.
+Do stránky vložte následující kód, na který chcete zahrnout zaškrtávací políčko s **podmínkami použití** . Toto políčko je obvykle potřeba na stránkách registrace registrace a sociální účtu místní účet.
 
 ```Javascript
 function addTermsOfUseLink() {
@@ -147,8 +138,8 @@ function addTermsOfUseLink() {
 }
 ```
 
-V kódu, nahraďte `termsOfUseUrl` s odkazem na vaše smlouva o podmínkách použití. Pro váš adresář vytvořte nový atribut uživatele s názvem **termsOfUse** a pak jako atribut uživatele přidejte **termsOfUse** .
+V kódu nahraďte `termsOfUseUrl` odkazem na svůj souhlas s podmínkami použití. Pro váš adresář vytvořte nový atribut uživatele s názvem **termsOfUse** a pak jako atribut uživatele přidejte **termsOfUse** .
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak můžete přizpůsobit uživatelského rozhraní aplikací v [přizpůsobit uživatelské rozhraní vaší aplikace pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-ui-customization.md).
+Další informace o tom, jak můžete přizpůsobit uživatelské rozhraní svých aplikací, najdete v tématu [přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C](custom-policy-ui-customization.md).

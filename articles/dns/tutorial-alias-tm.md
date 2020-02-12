@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: 749e5eae64aa0d33c90ef8694da9a093647b8a8b
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937927"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149945"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Kurz: Konfigurace záznamu aliasu pro podporu vrcholů názvů domén ve službě Traffic Manager 
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Musíte mít k dispozici název domény, kterou můžete hostovat v Azure DNS a použít k testování. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
 
 Pokyny k hostování domény v Azure DNS najdete v [kurzu hostování domény v Azure DNS](dns-delegate-domain-azure-dns.md).
@@ -40,7 +40,7 @@ Ukázková doména použitá v tomto kurzu je contoso.com, ale použijte vlastn�
 
 ## <a name="create-the-network-infrastructure"></a>Vytvoření síťové infrastruktury
 Nejprve vytvořte virtuální síť a podsíť, do které umístíte webové servery.
-1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. V levém horním rohu portálu vyberte **Vytvořit prostředek**. Do vyhledávacího pole zadejte *skupina prostředků* a vytvořte skupinu prostředků **RG-DNS-Alias-TM**.
 3. Vyberte **Vytvořit prostředek** > **Sítě** > **Virtuální síť**.
 4. Vytvořte virtuální síť **VNet-Servers**. Umístěte ji do skupiny prostředků **RG-DNS-Alias-TM** a podsíť pojmenujte **SN-Web**.
@@ -61,7 +61,7 @@ Veřejné IP adresy potřebují název DNS, aby fungovaly se službou Traffic Ma
 1. Ve skupině prostředků **RG-DNS-Alias-TM** vyberte veřejnou IP adresu **Web-01-ip**.
 2. V části **Nastavení** vyberte **Konfigurace**.
 3. Do textového pole Popisek názvu DNS zadejte **web01pip**.
-4. Vyberte **Uložit**.
+4. Vyberte **Save** (Uložit).
 
 Celý postup zopakujte pro veřejnou IP adresu **Web-02-ip**, ale jako popisek názvu DNS použijte **web02pip**.
 
@@ -85,7 +85,7 @@ Celý postup zopakujte a nainstalujte službu IIS na virtuální počítač **We
 1. Otevřete skupinu prostředků **RG-DNS-Alias-TM** a vyberte veřejnou IP adresu **Web-01-ip**. Poznamenejte si IP adresu pro pozdější použití. Zopakujte tento krok pro veřejnou IP adresu **Web-02-ip**.
 1. Vyberte **Vytvořit prostředek** > **Sítě** > **Profil služby Traffic Manager**.
 2. Jako název zadejte **TM-alias-test**. Umístěte ho do skupiny prostředků **RG-DNS-Alias-TM**.
-3. Vyberte **Vytvořit**.
+3. Vyberte **Create** (Vytvořit).
 4. Po dokončení nasazení vyberte **Přejít k prostředku**.
 5. Na stránce profilu služby Traffic Manager v části **Nastavení** vyberte **Koncové body**.
 6. Vyberte **Přidat**.

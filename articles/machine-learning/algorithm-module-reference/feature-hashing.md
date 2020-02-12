@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4340ee4ed1edda8590726151e07eec45c0751ed6
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312190"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152257"
 ---
 # <a name="feature-hashing-module-reference"></a>Reference k modulům hash funkcí
 
-Tento článek popisuje modul zahrnutý v Návrháři Azure Machine Learning.
+Tento článek popisuje modul zahrnutý v Návrháři Azure Machine Learning (Preview).
 
 K transformaci datového proudu anglického textu do sady celočíselných funkcí použijte modul hash funkcí. Tuto funkci s hodnotou hash můžete následně předat algoritmu strojového učení a naučit se model pro analýzu textu.
 
@@ -30,10 +30,10 @@ Funkce hashing funkcí funguje převodem jedinečných tokenů na celá čísla.
 
 Například proveďte sadu jednoduchých vět, jako třeba, a potom mínění skóre. Předpokládejme, že chcete použít tento text k vytvoření modelu.
 
-|Uživatelský text|Zabarvení|
+|Uživatelský text|Mínění|
 |--------------|---------------|
 |Jsem mi blízký tuto knihu|3|
-|Hated tuto knihu|1\. místo|
+|Hated tuto knihu|1|
 |Tato kniha byla Skvělé|3|
 |Líbí se mi moje knihy|2|
 
@@ -42,18 +42,18 @@ Interně modul hashování funkcí vytvoří slovník n-gramů. Například sezn
 |Termín (bigrams)|Frequency|
 |------------|---------------|
 |Tato kniha|3|
-|Jsem blízký|1\. místo|
-|Hated|1\. místo|
-|Líbí se mi|1\. místo|
+|Jsem blízký|1|
+|Hated|1|
+|Líbí se mi|1|
 
 Velikost n-gramů můžete řídit pomocí vlastnosti **n-gramů** . Zvolíte-li možnost bigrams, jsou vypočítány také unigrams. Slovník by měl také zahrnovat jednotlivé výrazy, jako jsou tyto:
 
 |Termín (unigrams)|Frequency|
 |------------|---------------|
-|kniha|3|
+|účetních|3|
 |I|3|
-|books|1\. místo|
-|vytvořen|1\. místo|
+|příruček|1|
+|vytvořen|1|
 
 Po vytvoření slovníku modul hash funkcí převede výrazy slovníku na hodnoty hash. Pak vypočítá, zda byla funkce v každém případě použita. Pro každý řádek textových dat modul výstupuje sadu sloupců, jeden sloupec pro každou funkci s algoritmem hash.
 
@@ -61,7 +61,7 @@ Například po použití algoritmu hash mohou sloupce funkce vypadat přibližn�
 
 |Hodnocení|Hash – funkce 1|Funkce hashing 2|Funkce hashing 3|
 |-----|-----|-----|-----|
-|4|1\. místo|1\. místo|0|
+|4|1|1|0|
 |5|0|0|0|
 
 * Pokud je hodnota ve sloupci 0, řádek neobsahuje funkci hash.

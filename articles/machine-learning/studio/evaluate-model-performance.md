@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 2b9293e3c1ce280117ea40c43715f4dcd98de66d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: baf2352c8842a07691288c9296438624d53d3990
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427647"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153481"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Postup vyhodnocení výkonu modelu v Azure Machine Learning Studio (Classic)
 
@@ -56,7 +56,7 @@ Připojte porty, jak je znázorněno na obrázku 1, a nastavte sloupec popisek m
 
 ![Vyhodnocení regresního modelu](./media/evaluate-model-performance/1.png)
 
-Obrázek 1: Vyhodnocení regresního modelu.
+Obrázek 1. Vyhodnocení regresního modelu.
 
 ### <a name="inspecting-the-evaluation-results"></a>Kontrola výsledků hodnocení
 Po spuštění experimentu můžete kliknout na výstupní port modulu [vyhodnocení modelu][evaluate-model] a vybrat *vizualizovat* a zobrazit výsledky vyhodnocení. K dispozici jsou metriky vyhodnocení pro regresní modely: *střední absolutní chyba*, *absolutní absolutní*chyba, *relativní absolutní chyba*, *relativní čtvercová chyba*a *koeficient určení*.
@@ -130,7 +130,7 @@ Obrázek 8. Křížové ověřování modelu binární klasifikace.
 
 ![Výsledky křížového ověřování binárního klasifikátoru](./media/evaluate-model-performance/9.png)
 
-Obrázek 9. Výsledky křížového ověřování binárního třídění.
+Obrázek 9: Výsledky křížového ověřování binárního třídění.
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>Vyhodnocení modelu klasifikace s více třídami
 V tomto experimentu použijeme oblíbenou datovou sadu [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") , která obsahuje instance tří různých typů (tříd) Iris. Pro každou instanci jsou k dispozici čtyři hodnoty funkcí (sepal Length/Width a Petal Length/Width). V předchozích experimentech jsme provedli a otestovali modely pomocí stejných datových sad. V tomto příkladu použijeme modul [rozdělení dat][split] k vytvoření dvou podmnožiny dat, výuku prvního a skóre a vyhodnocení za sekundu. Datová sada Iris je veřejně dostupná v [úložišti UCI Machine Learning](https://archive.ics.uci.edu/ml/index.html)a je možné ji stáhnout pomocí modulu [Import dat][import-data] .

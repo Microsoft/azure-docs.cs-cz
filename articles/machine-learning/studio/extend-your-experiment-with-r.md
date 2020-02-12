@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 13d385c69151891030ea0ee8f87ea8b55197a73f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6c5c09d0214b8ab0d427b15e5637adb5e7cbfdee
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837606"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153039"
 ---
 # <a name="azure-machine-learning-studio-classic-extend-your-experiment-with-r"></a>Azure Machine Learning Studio (Classic): prodlužte experiment pomocí R 
 Můžete roztáhnout funkce Azure Machine Learning Studio (Classic) prostřednictvím jazyka R pomocí modulu [spuštění skriptu jazyka r][execute-r-script] .

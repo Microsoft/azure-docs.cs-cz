@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 6e5c1a1bfc82460ad7e53cc8444a4bb42aa4ef19
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 429ddd62cccb8657aa18ec844968cc12df778f55
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548386"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153787"
 ---
 # <a name="remove-duplicate-rows-module"></a>Odebrat modul duplicitních řádků
 
@@ -26,15 +26,15 @@ Předpokládejme například, že vaše data vypadají jako následující a př
 
 | PatientID | Iniciály| Pohlaví|Věk|Pustil|
 |----|----|----|----|----|
-|1\. místo|F.M.| mil.| 53| led|
-|2| F.A.M.| mil.| 53| led|
-|3| F.A.M.| mil.| 24| led|
-|3| F.M.| mil.| 24| úno|
-|4| F.M.| mil.| 23| úno|
-| | F.M.| mil.| 23| |
-|5| F.A.M.| mil.| 53| |
-|6| F.A.M.| mil.| NaN| |
-|7| F.A.M.| mil.| NaN| |
+|1|F.M.| M| 53| Svalbard|
+|2| F.A.M.| M| 53| Svalbard|
+|3| F.A.M.| M| 24| Svalbard|
+|3| F.M.| M| 24| Revize|
+|4| F.M.| M| 23| Revize|
+| | F.M.| M| 23| |
+|5| F.A.M.| M| 53| |
+|6| F.A.M.| M| NaN| |
+|7| F.A.M.| M| NaN| |
 
 V tomto příkladu je jasně uvedeno více sloupců s potenciálně duplicitními daty. Bez ohledu na to, jestli jsou ve skutečnosti duplicity, záleží na vašich znalostech dat. 
 

@@ -1,6 +1,6 @@
 ---
 title: Zabezpečení databáze
-description: Tipy pro zabezpečení databáze v Azure SQL Data Warehouse pro vývoj řešení.
+description: Tipy pro zabezpečení databáze a vývoj řešení v prostředku fondu SQL analýzy SQL
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5eeb1c25264c36909774ec689b7410765881c8e2
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 26cdbb1fc2899d1b03fea6199074467623706c63
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064729"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153277"
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>Zabezpečení databáze v SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -27,21 +27,21 @@ ms.locfileid: "77064729"
 > 
 > 
 
-Tento článek vás provede základy zabezpečení databáze Azure SQL Data Warehouse. Tento článek vám konkrétně pomůže začít s prostředky pro omezení přístupu, ochranu dat a sledování aktivit v databázi.
+Tento článek vás provede základy zabezpečení fondu SQL ve službě SQL Analytics. Tento článek vám konkrétně pomůže začít s prostředky pro omezení přístupu, ochranou dat a monitorováním aktivit v databázi zřízené pomocí fondu SQL.
 
 ## <a name="connection-security"></a>Zabezpečení připojení
 Zabezpečení připojení spočívá v použití pravidel brány firewall a šifrovaného připojení k omezení a zabezpečení připojení k databázi.
 
 Pravidla brány firewall používá server i databáze k zamítnutí pokusů o připojení z IP adres, které nejsou explicitně na seznamu povolených. Aby bylo možné připojení z vaší aplikace nebo veřejné IP adresy klientského počítače, je třeba nejprve vytvořit pravidlo brány firewall na úrovni serveru pomocí Azure Portal, REST API nebo PowerShellu. 
 
-Doporučujeme co nejvíce omezit rozsah IP adres povolených v serverové bráně firewall.  Pokud chcete získat přístup k Azure SQL Data Warehouse z místního počítače, zajistěte, aby brána firewall v síti a místní počítač umožňovala odchozí komunikaci na portu TCP 1433.  
+Doporučujeme co nejvíce omezit rozsah IP adres povolených v serverové bráně firewall.  Pokud chcete získat přístup k fondu SQL z místního počítače, zajistěte, aby brána firewall v síti a místní počítač umožňovala odchozí komunikaci na portu TCP 1433.  
 
-Azure synapse používá pravidla brány firewall IP na úrovni serveru. Nepodporuje pravidla brány firewall protokolu IP na úrovni databáze. Další informace najdete v tématu [Azure SQL Database pravidla brány firewall](../sql-database/sql-database-firewall-configure.md) .
+Azure synapse Analytics používá pravidla brány firewall IP na úrovni serveru. Nepodporuje pravidla brány firewall protokolu IP na úrovni databáze. Další informace najdete v tématu věnovaném [Azure SQL Database pravidlům brány firewall](../sql-database/sql-database-firewall-configure.md) .
 
-Připojení k vašemu SQL Data Warehouse jsou ve výchozím nastavení zašifrována.  Změna nastavení připojení pro zákaz šifrování je ignorována.
+Připojení k vašemu fondu SQL jsou ve výchozím nastavení zašifrována.  Změna nastavení připojení pro zákaz šifrování je ignorována.
 
-## <a name="authentication"></a>Authentication
-Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. SQL Data Warehouse aktuálně podporuje ověřování SQL Server s uživatelským jménem a heslem a Azure Active Directory. 
+## <a name="authentication"></a>Ověřování
+Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. Fond SQL aktuálně podporuje SQL Server ověřování s uživatelským jménem a heslem a s Azure Active Directory. 
 
 Když jste vytvářeli logický server databáze, zadali jste uživatelské jméno a heslo účtu „server admin“. Pomocí těchto přihlašovacích údajů se můžete na tomto serveru ověřit jako vlastník databáze nebo "dbo" prostřednictvím SQL Server ověřování.
 
@@ -55,7 +55,7 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Pak se připojte k **databázi SQL Data Warehouse** pomocí přihlašovacích údajů správce serveru a vytvořte uživatele databáze na základě přihlášení k serveru, které jste vytvořili.
+Pak se připojte k **databázi fondu SQL** pomocí přihlašovacích údajů správce serveru a vytvořte uživatele databáze na základě přihlášení k serveru, které jste vytvořili.
 
 ```sql
 -- Connect to SQL DW database and create a database user
@@ -98,4 +98,4 @@ V SQL Database je šifrovací klíč databáze chráněn integrovaným certifik�
 Databázi můžete šifrovat pomocí [Azure Portal](sql-data-warehouse-encryption-tde.md) nebo [T-SQL](sql-data-warehouse-encryption-tde-tsql.md).
 
 ## <a name="next-steps"></a>Další kroky
-Podrobnosti a příklady připojení k vašemu skladu pomocí různých protokolů najdete v tématu [připojení k SQL Data Warehouse](sql-data-warehouse-connect-overview.md).
+Podrobnosti a příklady připojení k vašemu skladu pomocí různých protokolů najdete v tématu [připojení k fondu SQL](sql-data-warehouse-connect-overview.md).

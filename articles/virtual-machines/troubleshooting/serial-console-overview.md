@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 8eea568217dc5f47c45433e5fdd755682e322b2f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
-ms.translationtype: HT
+ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134052"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153855"
 ---
 # <a name="azure-serial-console"></a>Sériová konzola Azure
 
@@ -66,37 +66,6 @@ Sériová konzola je k dispozici pro virtuální počítače, které jsou dostup
   1. V části **Podpora a řešení potíží** vyberte **sériová konzola**. Nové podokno v konzole sériového portu se otevře a aktivuje připojení.
 
      ![Sériová Konzola pro sadu škálování virtuálního počítače se systémem Linux](./media/virtual-machines-serial-console/vmss-start-console.gif)
-
-## <a name="serial-console-rbac-role"></a>Role RBAC konzoly sériového portu
-Jak je uvedeno výše, sériová konzola vyžaduje Přispěvatel virtuálních počítačů nebo větší přístup k vašemu virtuálnímu počítači nebo sadě škálování virtuálních počítačů. Pokud nechcete, aby se Přispěvatel virtuálních počítačů udělil uživateli, ale přesto chcete uživateli povolit přístup ke službě sériového prostředí, můžete to udělat s následující rolí:
-
-```
-{
-  "Name": "Serial Console Role",
-  "IsCustom": true,
-  "Description": "Role for Serial Console Users that provides significantly reduced access than VM Contributor",
-  "Actions": [
-      "Microsoft.Compute/virtualMachines/*/write",
-      "Microsoft.Compute/virtualMachines/*/read",
-      "Microsoft.Storage/storageAccounts/*"
-  ],
-  "NotActions": [],
-  "DataActions": [],
-  "NotDataActions": [],
-  "AssignableScopes": [
-    "/subscriptions/<subscriptionId>"
-  ]
-}
-```
-
-### <a name="to-create-and-use-the-role"></a>Vytvoření a použití role:
-*   Uložte kód JSON do známého umístění, například `~/serialconsolerole.json`.
-*   K vytvoření definice role použijte následující příkaz AZ CLI: `az role definition create --role-definition serialconsolerole.json -o=json`
-*   Pokud potřebujete roli aktualizovat, použijte následující příkaz: `az role definition update --role-definition serialconsolerole.json -o=json`
-*   Role se zobrazí v Access Control (IAM) na portálu (může trvat několik minut, než se rozšíří).
-*   Do virtuálního počítače můžete přidat uživatele a účet úložiště diagnostiky spouštění s rolí vlastní role.
-    *   Všimněte si, že uživateli musí být udělena vlastní role na virtuálním počítači *a* účet úložiště diagnostiky spouštění.
-
 
 ## <a name="advanced-uses-for-serial-console"></a>Pokročilé použití pro sériovou konzolu
 Kromě přístupu ke konzole ke svému VIRTUÁLNÍmu počítači můžete také použít konzolu sériového prostředí Azure pro následující:

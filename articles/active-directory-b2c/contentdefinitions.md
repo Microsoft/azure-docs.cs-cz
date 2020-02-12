@@ -1,5 +1,6 @@
 ---
-title: ContentDefinitions-Azure Active Directory B2C | Microsoft Docs
+title: ContentDefinitions
+titleSuffix: Azure AD B2C
 description: Zadejte element ContentDefinitions vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 02/10/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3a940c7676a59ed85d5cf16c76f72a12ce0026d5
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 724736bedd81ea45d7472a615fa22cde6916f21c
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136275"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77148857"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -56,7 +57,6 @@ Metadata technického profilu **LocalAccountSignUpWithLogonEmail** s vlastním k
   ...
 ```
 
-
 ## <a name="contentdefinition"></a>ContentDefinition
 
 Element **ContentDefinition** obsahuje následující atribut:
@@ -72,22 +72,59 @@ Element **ContentDefinition** obsahuje následující prvky:
 | LoadUri | 1:1 | Řetězec, který obsahuje adresu URL stránky HTML5 pro definici obsahu. |
 | RecoveryUri | 0:1 | Řetězec, který obsahuje adresu URL stránky HTML pro zobrazení chyby související s definicí obsahu. |
 | DataUri | 1:1 | Řetězec, který obsahuje relativní adresu URL souboru HTML, který poskytuje činnost koncového uživatele, která se má vyvolat pro krok. |
-| Metadata | 1:1 | Kolekce párů klíč/hodnota, které obsahují metadata využitá definicí obsahu. |
+| Metadata | 0:1 | Kolekce párů klíč/hodnota, které obsahují metadata využitá definicí obsahu. |
 | LocalizedResourcesReferences | 0:1 | Kolekce lokalizovaných odkazů na prostředky Tento prvek použijte k přizpůsobení lokalizace uživatelského rozhraní a atributu deklarace identity. |
 
 ### <a name="datauri"></a>DataUri
 
-Element **DataUri** slouží k určení identifikátoru stránky. Azure AD B2C používá identifikátor stránky k načtení a spuštění prvků uživatelského rozhraní a JavaScriptu na straně klienta. Formát hodnoty je `urn:com:microsoft:aad:b2c:elements:page-name:version`.  V následující tabulce jsou uvedeny hodnoty a popisy identifikátorů stránek, které můžete použít.
+Element **DataUri** slouží k určení identifikátoru stránky. Azure AD B2C používá identifikátor stránky k načtení a spuštění prvků uživatelského rozhraní a JavaScriptu na straně klienta. Formát hodnoty je `urn:com:microsoft:aad:b2c:elements:page-name:version`. Následující tabulka obsahuje seznam identifikátorů stránek, které můžete použít.
 
-| Hodnota |   Popis |
+| Identifikátor stránky | Popis |
 | ----- | ----------- |
-| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | Zobrazí chybovou stránku, pokud dojde k výjimce nebo chybě. |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | Zobrazuje seznam zprostředkovatelů identity, ze kterých si uživatelé můžou vybrat během přihlašování. |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. Tato hodnota také poskytuje možnost "zachovat funkce přihlašování" a zapomněli jste heslo? " odkaz. |
-| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. |
-| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | Ověřuje telefonní čísla pomocí textu nebo hlasu během registrace nebo přihlašování. |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | Zobrazí formulář, který uživatelům umožňuje vytvořit nebo aktualizovat svůj profil. |
+| `globalexception` | Zobrazí chybovou stránku, pokud dojde k výjimce nebo chybě. |
+| `providerselection` | Zobrazuje seznam zprostředkovatelů identity, ze kterých si uživatelé můžou vybrat během přihlašování. |
+| `unifiedssp` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. Tato hodnota také poskytuje možnost "zachovat funkce přihlašování" a zapomněli jste heslo? " odkaz. |
+| `unifiedssp` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. |
+| `multifactor` | Ověřuje telefonní čísla pomocí textu nebo hlasu během registrace nebo přihlašování. |
+| `selfasserted` | Zobrazí formulář, který uživatelům umožňuje vytvořit nebo aktualizovat svůj profil. |
 
+## <a name="select-a-page-layout"></a>Vybrat rozložení stránky
+
+Můžete povolit [javascriptový kód na straně klienta](javascript-samples.md) vložením `contract` mezi `elements` a typem stránky. například `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+
+[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+Část [verze](page-layout.md) `DataUri` určuje balíček obsahu obsahujícího jazyky HTML, CSS a JavaScript pro prvky uživatelského rozhraní v zásadách. Pokud máte v úmyslu povolit kód na straně klienta JavaScript, prvky, na kterých založíte JavaScript, musí být neměnné. Pokud nejsou neměnné, můžou jakékoli změny způsobit neočekávané chování na stránkách uživatele. Chcete-li zabránit těmto problémům, vynutili použití rozložení stránky a určení verze rozložení stránky. Tím zajistíte, že všechny definice obsahu, na kterých jste na svém JavaScriptu vycházíte, jsou neměnné. I v případě, že nechcete povolit JavaScript, je stále nutné zadat verzi rozložení stránky pro vaše stránky.
+
+Následující příklad ukazuje **DataUri** `selfasserted` verze `1.2.0`:
+
+```xml
+<ContentDefinition Id="api.localaccountpasswordreset">
+<LoadUri>~/tenant/templates/AzureBlue/selfAsserted.cshtml</LoadUri>
+<RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+<DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0</DataUri>
+<Metadata>
+    <Item Key="DisplayName">Local account change password page</Item>
+</Metadata>
+</ContentDefinition>
+```
+
+#### <a name="migrating-to-page-layout"></a>Migrace na rozložení stránky
+
+Formát hodnoty musí obsahovat slovo `contract`: _urn: com: Microsoft: AAD: B2C: Elements:**kontrakt**:p věk-Name: Version_. Chcete-li určit rozložení stránky ve vlastních zásadách, které používají starou hodnotu **DataUri** , proveďte migraci do nového formátu pomocí následující tabulky.
+
+| Původní hodnota parametr | Nová hodnota pro parametr |
+| ----------------- | ----------------- |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:selfasserted:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssd:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
@@ -103,19 +140,6 @@ Element **LocalizedResourcesReferences** obsahuje následující atributy:
 | --------- | -------- | ----------- |
 | Jazyk | Ano | Řetězec, který obsahuje podporovaný jazyk pro zásady na značku RFC 5646-Tags pro identifikaci jazyků. |
 | LocalizedResourcesReferenceId | Ano | Identifikátor elementu **LocalizedResources** |
-
-Následující příklad ukazuje definici obsahu pro registraci nebo přihlášení:
-
-```XML
-<ContentDefinition Id="api.signuporsignin">
-  <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
-  <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-  <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
-  <Metadata>
-    <Item Key="DisplayName">Signin and Signup</Item>
-  </Metadata>
-</ContentDefinition>
-```
 
 Následující příklad ukazuje definici obsahu pro registraci nebo přihlašování s odkazem na lokalizaci pro angličtinu, francouzštinu a španělštinu:
 
@@ -154,3 +178,8 @@ Atribut ID elementu **ContentDefinition** určuje typ stránky, která se vztahu
 | **API. selfasserted. profileupdate** | [updateprofile. cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Stránka aktualizace profilu** – zobrazí formulář, ke kterému mají uživatelé přístup, aby mohli aktualizovat svůj profil. Tato stránka se podobá stránce pro registraci účtu sociální sítě s výjimkou polí zadání hesla. |
 | **API. signuporsignin** | [sjednocení. cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Jednotná registrace nebo přihlašovací stránka** – zpracovává proces registrace a přihlášení uživatele. Uživatelé můžou používat podnikové zprostředkovatele identity, poskytovatele sociálních identit, jako je Facebook nebo Google +, nebo místní účty. |
 
+## <a name="next-steps"></a>Další kroky
+
+Příklad přizpůsobení uživatelského rozhraní pomocí definic obsahu najdete v těchto tématech:
+
+[Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady](custom-policy-ui-customization.md)

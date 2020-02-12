@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 492f6ed2775004c6fb013c6a9ead602cb3d2cea0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5049bdfdc84df16c4b8070decf47fd2d726d7777
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427560"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153022"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Sdílení a zjišťování prostředků v Azure AI Gallery
 
@@ -55,7 +55,7 @@ Do galerie můžete přispívat **experimenty**, **kurzy**a **kolekce** .
 Stažení prostředku z Galerie AI:
 
 1. Otevřete prostředek v galerii AI.
-1. Klikněte na tlačítko **Open in Studio**.
+1. **V nástroji Studio**klikněte na otevřít.
 
 ![Otevření položky z Galerie AI](./media/gallery-how-to-use-contribute-publish/open-experiment-from-gallery.png)
 
@@ -88,9 +88,9 @@ A můžete se přihlásit pomocí nástroje pro diskuzi, jako je Disqus, a dost�
 
 1. V galerii zadejte **název** a **značky** , které jsou popisné. Zvýrazněte techniky, které jste použili, nebo problém reálného světa. Příklad experimentu popisný název je "binární klasifikace: Analýza mínění na Twitteru."
 
-1. V **souhrnu** zadejte souhrn experimentu. Krátce popište problém, který byl odstraněn experiment a jak dosaženy.
+1. Do pole **Souhrn** zadejte souhrn experimentu. Krátce popište problém, který byl odstraněn experiment a jak dosaženy.
 
-1. V **podrobný popis** pole, popisují kroky jste provedli v jednotlivých součástí experimentu. Jsou některé užitečné témata, které zahrnují:
+1. V poli **podrobný popis** popište kroky, které jste udělali v jednotlivých částech experimentu. Jsou některé užitečné témata, které zahrnují:
    * Snímek grafu experimentu
    * Vysvětlení a zdroje dat
    * Zpracování dat
@@ -98,19 +98,19 @@ A můžete se přihlásit pomocí nástroje pro diskuzi, jako je Disqus, a dost�
    * Popis modelu
    * Výsledky a vyhodnocení výkonu modelu
 
-   Markdownu můžete použít k formátování popisu. Pokud chcete zobrazit, vzhled vaší položky na stránce experimentu popis publikovaného testu, vyberte **ve verzi Preview**.
+   Markdownu můžete použít k formátování popisu. Chcete-li zjistit, jak budou položky na stránce s popisem experimentu vypadat po publikování experimentu, vyberte možnost **Náhled**.
 
    > [!TIP]
    > Textových polí zobrazených pro markdown úprav a náhledu jsou malé. Doporučujeme napsat dokumentaci experimentu v editoru Markdownu (například [Visual Studio Code](https://aka.ms/vscode)) a pak zkopírovat a vložit dokončenou dokumentaci do textového pole v galerii.
 
-1. Na **výběr Image** zvolte obrázek miniatury pro experiment. Miniaturu se zobrazí v horní části stránky s podrobnostmi experiment a na dlaždici experimentu. Ostatní uživatelé uvidí na miniaturu při procházení Galerie. Můžete nahrát obrázek z vašeho počítače nebo vyberte základní image z galerie.
+1. Na stránce **Výběr obrázku** vyberte miniaturu obrázku pro svůj experiment. Miniaturu se zobrazí v horní části stránky s podrobnostmi experiment a na dlaždici experimentu. Ostatní uživatelé uvidí na miniaturu při procházení Galerie. Můžete nahrát obrázek z vašeho počítače nebo vyberte základní image z galerie.
 
-1. Na **nastavení** stránce v části **viditelnost**, vyberte, jestli k publikování obsahu veřejně (**veřejné**) nebo je přístupná pouze na uživatele, kteří mají odkaz na stránku ( **Neuvedené**).
+1. Na stránce **Nastavení** v části **viditelnost**vyberte, jestli se má obsah publikovat veřejně (**veřejný**), nebo jestli má být přístupný jenom uživatelům, kteří mají odkaz na stránku (bez**seznamu**).
 
    > [!TIP]
-   > Pokud chcete Ujistěte se, že ještě před vydáním se veřejně vypadá správně v dokumentaci k sadě, můžete nejprve publikovat experimentu jako **Unlisted**. Později, můžete změnit nastavení viditelnosti na **veřejné** na stránce s podrobnostmi experimentu. Všimněte si, že po nastavení experimentu jako **veřejné** ho nelze později změnit na **neuvedený seznam**.
+   > Pokud chcete zajistit, aby vaše dokumentace vypadala správně ještě před tím, než veřejně vydáte, můžete experimentu publikovat jako **neuvedený**. Později můžete nastavení viditelnosti na stránce s podrobnostmi experimentu změnit na **veřejné** . Všimněte si, že po nastavení experimentu jako **veřejné** ho nelze později změnit na **neuvedený seznam**.
 
-1. Chcete-li publikovat experimentu do galerie, vyberte **OK** zaškrtávací políčko.
+1. Chcete-li publikovat experiment do galerie, zaškrtněte políčko **OK** .
 
 ### <a name="update-your-experiment"></a>Aktualizovat experimentu
 
@@ -121,23 +121,23 @@ Pro experiment přímo v galerii, můžete změnit některý z následujících 
 * Název experimentu
 * Souhrn nebo popisu
 * Značky
-* Obrázek
-* Nastavení viditelnosti (**veřejné** nebo **Unlisted**)
+* Image
+* Nastavení viditelnosti (**Veřejná** nebo **nerozevírací**)
 
 Můžete také odstranit experiment z galerie.
 
 Můžete tyto změny nebo odstranění experiment, ze stránky podrobností experiment nebo na stránce svého profilu v galerii.
 
-* Na stránce s podrobnostmi experiment, chcete-li změnit podrobnosti pro experiment, vyberte **upravit**. Stránce s podrobnostmi o přejde do režimu úprav. Chcete-li provést změny, vyberte **upravit** vedle název experimentu, souhrn nebo značky. Jakmile budete hotovi, změny, vyberte **provádí**. Chcete-li změnit nastavení viditelnosti pro experiment (**veřejné** nebo **Unlisted**), nebo pokud chcete odstranit experiment z galerie, vyberte **nastavení** ikonu.
+* Na stránce s podrobnostmi experimentu můžete změnit podrobnosti o experimentu a vybrat možnost **Upravit**. Stránce s podrobnostmi o přejde do režimu úprav. Chcete-li provést změny, vyberte možnost **Upravit** vedle názvu experimentu, souhrnu nebo značek. Až skončíte s změnami, vyberte **Hotovo**. Chcete-li změnit nastavení viditelnosti experimentu (veřejné **nebo**neuvedené), nebo chcete-li experiment odstranit z Galerie, vyberte ikonu **Nastavení** .
 
-* Na stránce svého profilu, vyberte šipku dolů u testu a pak vyberte **upravit**. Tím přejdete na stránku podrobností pro experiment, v režimu úprav. Po dokončení změn vyberte **provádí**. Chcete-li odstranit experiment z galerie, vyberte **odstranit**.
+* Na stránce profil vyberte šipku dolů pro experiment a pak vyberte **Upravit**. Tím přejdete na stránku podrobností pro experiment, v režimu úprav. Až změny dokončíte, vyberte **Hotovo**. Chcete-li experiment odstranit z Galerie, vyberte možnost **Odstranit**.
 
 ### <a name="tips-for-documenting-and-publishing-your-experiment"></a>Tipy, jak dokumentovat a publikování experimentů
 
 * Můžete předpokládat, že má čtečka předchozí datové vědy prostředí, ale může být užitečné používat Jednoduchý jazyk. Vysvětluje co podrobně kdykoli je to možné.
 * Poskytuje dostatek informace a podrobné vysvětlení k pomáhají čtenářům přejděte experimentu.
 * Vizuály mohou být užitečné pro čtenáře jak interpretovat a správně používat dokumentaci k experimentu. Vizuály patří grafy experimentů a snímky obrazovek pro data.
-* Pokud do experimentu zahrnete datovou sadu (to znamená, že datovou sadu neimportujete prostřednictvím modulu import dat), datová sada je součástí vašeho experimentu a je publikována v galerii. Ujistěte se, že datová sada, kterou publikujete, obsahuje licenční podmínky, které umožňují sdílení a stahování kýmkoli. Příspěvky v galerii se vztahuje smlouva Azure [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+* Pokud do experimentu zahrnete datovou sadu (to znamená, že datovou sadu neimportujete prostřednictvím modulu import dat), datová sada je součástí vašeho experimentu a je publikována v galerii. Ujistěte se, že datová sada, kterou publikujete, obsahuje licenční podmínky, které umožňují sdílení a stahování kýmkoli. Příspěvky do galerie se týkají [podmínek použití](https://azure.microsoft.com/support/legal/website-terms-of-use/)Azure.
 
 ## <a name="contribute-tutorials-and-collections"></a>Kurzy a kolekce pro Contribute
 
@@ -156,9 +156,9 @@ Psaním **kurzu** v galerii, který vysvětluje koncepty strojového učení neb
 1. Na stránce **Nastavení** pro **viditelnost**vyberte, jestli je váš příspěvek **veřejný** (kdokoli ho může zobrazit) nebo není v **seznamu** (jenom lidé s přímým odkazem ho můžou zobrazit).
 
    > [!TIP]
-   > Pokud chcete Ujistěte se, že ještě před vydáním se veřejně vypadá správně v dokumentaci k sadě, můžete nejprve publikovat experimentu jako **Unlisted**. Později, můžete změnit nastavení viditelnosti na **veřejné** na stránce s podrobnostmi experimentu. Všimněte si, že po nastavení experimentu jako **veřejné** ho nelze později změnit na **neuvedený seznam**.
+   > Pokud chcete zajistit, aby vaše dokumentace vypadala správně ještě před tím, než veřejně vydáte, můžete experimentu publikovat jako **neuvedený**. Později můžete nastavení viditelnosti na stránce s podrobnostmi experimentu změnit na **veřejné** . Všimněte si, že po nastavení experimentu jako **veřejné** ho nelze později změnit na **neuvedený seznam**.
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 Váš příspěvek je teď v Azure AI Gallery. Vaše příspěvky jsou uvedené na stránce vašeho účtu na kartě **položky** .
 
@@ -185,20 +185,20 @@ Obrázky, které odesíláte s vaším příspěvkem, se používají k vytvoře
 
 **Co se stane s datovou sadou použitou v experimentu? Je datová sada také publikována v galerii?**
 
-Pokud je vaše datová sada součástí experimentu a není importována prostřednictvím modulu import dat, je datová sada publikována v galerii v rámci vašeho experimentu. Ujistěte se, že datová sada, kterou publikujete s vaším experimentem, má příslušné licenční podmínky. Licenční podmínky by měl povolit všem uživatelům sdílet a stáhnout data. Příspěvky v galerii se vztahuje smlouva Azure [Terms of Use](https://azure.microsoft.com/support/legal/website-terms-of-use/).
+Pokud je vaše datová sada součástí experimentu a není importována prostřednictvím modulu import dat, je datová sada publikována v galerii v rámci vašeho experimentu. Ujistěte se, že datová sada, kterou publikujete s vaším experimentem, má příslušné licenční podmínky. Licenční podmínky by měl povolit všem uživatelům sdílet a stáhnout data. Příspěvky do galerie se týkají [podmínek použití](https://azure.microsoft.com/support/legal/website-terms-of-use/)Azure.
 
 **Mám experiment, který pomocí modulu import dat vyžádá data z Azure HDInsight nebo SQL Server. K načtení dat používá moje přihlašovací údaje. Můžu tento typ experimentu publikovat? Jak se dá zajistit, aby se moje přihlašovací údaje sdílely?**
 
 V současné době nemůžete publikovat v galerii experiment, který používá přihlašovací údaje.
 
-**Jak mám zadat více značek?**
+**Návody zadat více značek?**
 
 Po zadání značku, zadejte jinou značku, stiskněte klávesu Tabulátor.
 
-## <a name="we-want-to-hear-from-you"></a>Chceme slyšet váš názor!
+## <a name="we-want-to-hear-from-you"></a>Chceme vás od vás.
 
 Chceme, aby Galerie byla řízena našimi uživateli a pro naše uživatele. Použijte emotikonu vpravo a řekněte nám, co se vám na galerii líbí nebo nenávist.  
 
 ![Váš názor](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[PŘEJÍT NA VE GALERII &GT;&GT;](https://gallery.azure.ai)**
+**[Přejít na > Galerie >](https://gallery.azure.ai)**

@@ -6,19 +6,19 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 6e78cbdd9cd921db2340a92c46a9337ac0fc98eb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 714148815fa4ff543ecbf86ab21e8d51fe775543
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311848"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153770"
 ---
 # <a name="select-columns-in-dataset-module"></a>Výběr sloupců v modulu DataSet
 
-Tento článek popisuje modul v Návrháři Azure Machine Learning.
+Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
 
 Pomocí tohoto modulu můžete zvolit podmnožinu sloupců, které se mají použít v rámci podřízených operací. Modul neodebere fyzické sloupce ze zdrojové datové sady. místo toho vytvoří podmnožinu sloupců, podobně jako *zobrazení* nebo *projekce*databáze.
 
@@ -104,7 +104,7 @@ poslední příklad nevede k chybě; Ale vrátí jednu instanci sloupce `4`.
 
 Možnost **povolující duplicity a zachovat pořadí sloupců v výběru** začíná prázdným seznamem a přidává sloupce, které určíte podle názvu nebo indexu. Na rozdíl od jiných možností, které vždy vracejí sloupce v jejich "přirozeném pořadí", tato možnost vypíše sloupce v pořadí, ve kterém je napíšete nebo je vypíšete. 
 
-Například v datové sadě se sloupci Sloupec1, col2, Col3 a Col4 můžete změnit pořadí sloupců a nechat sloupec 2 zadáním jednoho z následujících seznamů:
+Například v datové sadě se sloupci Sloupe, col2, Col3 a Col4 můžete změnit pořadí sloupců a nechat sloupec 2 zadáním jednoho z následujících seznamů:
 
 + `Col4, Col3, Col1`
 + `4,3,1`

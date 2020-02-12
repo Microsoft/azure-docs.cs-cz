@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: xiaoharper
-ms.author: amlstudiodocs
+ms.author: zhanxia
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 2e72c8a363ee7f58630b1c0d8d0f00434c2e2b7e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f6c686151cbf22d375151268afb04a47bd1b8924
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838793"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77153396"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>Správa webové služby pomocí portálu Web Services Azure Machine Learning Studio (Classic)
 Pomocí portálu Microsoft Azure Machine Learning Web Services můžete spravovat Machine Learning nové a klasické webové služby. Vzhledem k tomu, že klasické webové služby a nové webové služby jsou založené na různých základních technologiích, máte u každého z nich poněkud různé možnosti správy.
@@ -80,7 +80,7 @@ Z řídicího panelu můžete zobrazit celkové využití webové služby v čas
 ### <a name="configuring-the-web-service"></a>Konfigurace webové služby
 Klikněte na možnost **Konfigurace** nabídky.
 
-Můžete aktualizovat tyto vlastnosti:
+Můžete aktualizovat následujícími vlastnostmi:
 
 * **Popis** umožňuje zadat popis webové služby.
 * **Název** umožňuje zadat název webové služby.
@@ -147,7 +147,7 @@ Z řídicího panelu můžete zobrazit celkové využití webové služby v čas
 ### <a name="configuring-the-web-service"></a>Konfigurace webové služby
 Klikněte na možnost **Konfigurace** nabídky.
 
-Můžete aktualizovat tyto vlastnosti:
+Můžete aktualizovat následujícími vlastnostmi:
 
 * **Popis** umožňuje zadat popis webové služby. Popis je povinné pole.
 * **Protokolování** umožňuje povolit nebo zakázat protokolování chyb u koncového bodu. Další informace o protokolování najdete v tématu Povolení [protokolování pro Machine Learning webové služby](web-services-logging.md).

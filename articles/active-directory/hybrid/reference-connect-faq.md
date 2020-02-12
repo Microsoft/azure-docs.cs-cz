@@ -15,14 +15,14 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dbc7f8068ed84f42ec41ebd969e0aa91ffbb264
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5aa30bc819531ee8cc9cd337648a6cbc661bb29
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473325"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77149809"
 ---
-# <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy ke službě Azure Active Directory Connect
+# <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy k Azure Active Directory Connect
 
 ## <a name="general-installation"></a>Obecná instalace
 
@@ -101,7 +101,7 @@ Tady je informační dokument, který představuje některé z osvědčených po
     - Záložní klíče
     - Pravidla synchronizace zálohování
     - Konfigurace záložního serveru
-    - SQL Database zálohy
+    - Zálohování databáze SQL
 - Ujistěte se, že neexistují žádní agenti pro zálohování třetích stran, kteří zálohují SQL bez služby SQL VSS Writer (běžné na virtuálních serverech se snímky třetích stran).
 - Omezení množství vlastních synchronizačních pravidel, která se používají při přidávání složitosti
 - Považovat servery Azure AD Connect jako servery vrstvy 0
@@ -113,13 +113,13 @@ Tady je informační dokument, který představuje některé z osvědčených po
 - Pracovní servery nejsou určeny jako řešení vysoké dostupnosti, ale můžete mít několik pracovních serverů.
 - Zavedení "prodlevy" přípravného serveru může zmírnit některé možné výpadky v případě chyby.
 - Nejprve otestujte a ověřte všechny upgrady na přípravném serveru.
-- Před přepnutím do přípravné serverLeverage pracovní server pro úplné importy a úplné synchronizace, aby se snížil dopad na firmu, se exporty vždy ověřují.
+- Před přepnutím na pracovní server vždy ověřte export.  Využití přípravného serveru pro úplné importy a úplné synchronizace, aby se snížil dopad na firmu
 - Udržování konzistence verzí mezi Azure AD Connect servery co nejvíce 
 
 **Otázka: můžu Azure AD Connect vytvořit účet konektoru Azure AD na počítači pracovní skupiny?**
 Ne.  Aby bylo možné Azure AD Connect automaticky vytvořit účet konektoru služby Azure AD, musí být počítač připojený k doméně.  
 
-## <a name="network"></a>Network (Síť)
+## <a name="network"></a>Síť
 **Otázka: Mám bránu firewall, síťové zařízení nebo něco jiného, co omezuje dobu, po kterou mohou připojení zůstat otevřená v síti. Co má prahová hodnota časového limitu na straně klienta při použití Azure AD Connect?**  
 Veškerý síťový software, fyzická zařízení nebo cokoli jiného, co omezuje maximální dobu, po kterou můžou připojení zůstat otevřená, by mělo pro připojení mezi serverem, na kterém je nainstalovaný klient Azure AD Connect, používat prahovou hodnotu nejméně pět minut (300 sekund). a Azure Active Directory. Toto doporučení platí také pro všechny dříve vydané nástroje Microsoft Synchronizace identity.
 

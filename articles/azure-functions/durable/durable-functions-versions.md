@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4a117e7f69647af3ad82f9013bfa40556ccc0dbd
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849798"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152886"
 ---
 # <a name="durable-functions-versions-overview"></a>Přehled verzí Durable Functions
 
@@ -59,6 +59,10 @@ Durable Functions 2. x používá nové schéma Host. JSON. Hlavní změny od 1.
 * `"notifications"` (a pododdíl `"eventGrid"`) pro konfiguraci oznámení služby Event Grid.
 
 Podrobnosti najdete v [referenční dokumentaci k Durable Functions Host. JSON](durable-functions-bindings.md#durable-functions-2-0-host-json) .
+
+#### <a name="default-taskhub-name-changes"></a>Výchozí změny názvu taskhub
+
+Pokud v Host. JSON není zadaný název centra úloh, ve verzi 1. x se použila výchozí hodnota "DurableFunctionsHub". Ve verzi 2. x je výchozí název centra úloh odvozený od názvu aplikace Function App. Z tohoto důvodu Pokud jste při upgradu na 2. x nezadali název centra úloh, váš kód bude pracovat s novým centrem úloh a všechny jeho orchestrace v letadle již nebudou aplikace zpracovávat. Pokud chcete tento problém obejít, můžete buď výslovně nastavit název centra úloh na hodnotu v1. x ve výchozím nastavení "DurableFunctionsHub", nebo můžete postupovat podle našeho [Průvodce nasazením s nulovými výpadky](durable-functions-zero-downtime-deployment.md) , kde najdete podrobné informace o tom, jak zpracovávat zásadní změny v rámci letů.
 
 #### <a name="public-interface-changes-net-only"></a>Změny veřejného rozhraní (jenom .NET)
 

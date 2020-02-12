@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 02/11/2020
 ms.custom: seodec18
-ms.openlocfilehash: b9d64c347881f78e832a39bca8404fdad98cbf17
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: c3c7f59ecb3a06d80012917e2da4425a899859d7
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76981102"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77152512"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Odesílání událostí do prostředí Time Series Insights pomocí centra událostí
 
@@ -25,7 +25,7 @@ Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v 
 ## <a name="configure-an-event-hub"></a>Konfigurace centra událostí
 
 1. Pokud se chcete dozvědět, jak vytvořit centrum událostí, přečtěte si [dokumentaci Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
-1. Do vyhledávacího pole vyhledejte **Event Hubs**. Ve vráceném seznamu vyberte **Event Hubs**.
+1. Do vyhledávacího pole vyhledejte **Event Hubs**. V seznamu vráceno vyberte možnost **Event Hubs**.
 1. Vyberte Centrum událostí.
 1. Při vytváření centra událostí vytváříte obor názvů centra událostí. Pokud jste ještě nevytvořili centrum událostí v rámci oboru názvů, vytvořte v nabídce v části **entity**centrum událostí.  
 
@@ -41,13 +41,13 @@ Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v 
 1. Ujistěte se, že jste vytvořili skupinu uživatelů, která je používána výhradně vaším Time Series Insights zdrojem událostí.
 
     > [!IMPORTANT]
-    > Ujistěte se, že tuto skupinu uživatelů nepoužívá žádná jiná služba, například Azure Stream Analytics úloha nebo jiné Time Series Insights prostředí. Pokud skupinu příjemců je použit jinými služby, operace čtení jsou negativně ovlivněna pro toto prostředí i pro jiné služby. Pokud používáte **$Default** jako skupinu příjemců jinými čtenáři může potenciálně opakovaně používat vaše skupina uživatelů.
+    > Ujistěte se, že tuto skupinu uživatelů nepoužívá žádná jiná služba, například Azure Stream Analytics úloha nebo jiné Time Series Insights prostředí. Pokud skupinu příjemců je použit jinými služby, operace čtení jsou negativně ovlivněna pro toto prostředí i pro jiné služby. Pokud jako skupinu příjemců použijete **$Default** , ostatní čtenáři můžou potenciálně znovu použít vaši skupinu uživatelů.
 
 1. V nabídce v části **Nastavení**vyberte **zásady sdíleného přístupu**a pak vyberte **Přidat**.
 
     [![vyberte zásady sdíleného přístupu a pak vyberte tlačítko Přidat.](media/send-events/add-shared-access-policy.png)](media/send-events/add-shared-access-policy.png#lightbox)
 
-1. V **přidat nové zásady sdíleného přístupu** podokně vytvoření sdíleného přístupu s názvem **zásady MySendPolicy**. Pomocí této zásady sdíleného přístupu můžete odesílat události v C# příkladech dále v tomto článku.
+1. V podokně **Přidat nové zásady sdíleného přístupu** vytvořte sdílený přístup s názvem **MySendPolicy**. Pomocí této zásady sdíleného přístupu můžete odesílat události v C# příkladech dále v tomto článku.
 
     [Do pole název zásady ![zadejte MySendPolicy](media/send-events/configure-shared-access-policy-confirm.png)](media/send-events/configure-shared-access-policy-confirm.png#lightbox)
 
@@ -55,30 +55,36 @@ Tento článek vysvětluje, jak vytvořit a nakonfigurovat centrum událostí v 
 
 ## <a name="add-a-time-series-insights-instance"></a>Přidání instance služby Time Series Insights
 
-Aktualizace služby Time Series Insights používá k přidání kontextové údaje do příchozí telemetrická data instance. Data je spojena v době zpracování dotazu **ID řady času**. **ID časové řady** ukázkového projektu Windmills, který používáme dále v tomto článku, je `id`. Pokud se chcete dozvědět víc o instancích Insights Time Series Insights a **ID časových řad**, přečtěte si [modely časových řad](./time-series-insights-update-tsm.md)pro čtení.
+Aktualizace služby Time Series Insights používá k přidání kontextové údaje do příchozí telemetrická data instance. Data jsou připojena v době dotazu pomocí **ID časové řady**. **ID časové řady** ukázkového projektu Windmills, který používáme dále v tomto článku, je `id`. Pokud se chcete dozvědět víc o instancích Insights Time Series Insights a **ID časových řad**, přečtěte si [modely časových řad](./time-series-insights-update-tsm.md)pro čtení.
 
 ### <a name="create-a-time-series-insights-event-source"></a>Vytvoření zdroje událostí Time Series Insights
 
-1. Pokud jste ještě nevytvořili zdroj událostí, dokončete postup [vytvoření zdroje událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
+1. Pokud jste ještě nevytvořili zdroj událostí, proveďte kroky k [Vytvoření zdroje událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub).
 
-1. Nastavit hodnotu pro `timeSeriesId`. Další informace o **ID časových řad**najdete v tématu [modely časových řad](./time-series-insights-update-tsm.md)pro čtení.
+1. Nastavte hodnotu pro `timeSeriesId`. Další informace o **ID časových řad**najdete v tématu [modely časových řad](./time-series-insights-update-tsm.md)pro čtení.
 
 ### <a name="push-events-to-windmills-sample"></a>Vložení událostí do Windmills Sample
 
-1. Na panelu hledání vyhledejte **Event Hubs**. Ve vráceném seznamu vyberte **Event Hubs**.
+1. Na panelu hledání vyhledejte **Event Hubs**. V seznamu vráceno vyberte možnost **Event Hubs**.
 
 1. Vyberte instanci centra událostí.
 
-1. Přejděte na **zásady sdíleného přístupu** > **MySendPolicy**. Zkopírujte hodnotu **připojovací řetězec – primární klíč**.
+1. Přejděte na **zásady sdíleného přístupu** > **MySendPolicy**. Zkopírujte hodnotu **připojovacího řetězce – primární klíč**.
 
     [![zkopírovat hodnotu pro připojovací řetězec primárního klíče](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. Přejděte do části https://tsiclientsample.azurewebsites.net/windFarmGen.html (Soubor > Nový > Jiné). Adresa URL spustí windmill simulované zařízení.
+1. Přejděte do části https://tsiclientsample.azurewebsites.net/windFarmGen.html (Soubor > Nový > Jiné). Adresa URL vytvoří a spustí simulovaná zařízení Windmill.
 1. Do pole **připojovací řetězec centra událostí** na webové stránce vložte připojovací řetězec, který jste zkopírovali do [vstupního pole Windmill](#push-events-to-windmills-sample).
   
     [![vložte připojovací řetězec primárního klíče do pole Připojovací řetězec centra událostí.](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
-1. Vyberte **Kliknutím spustíte**. Simulátor generuje instance JSON, které můžete použít přímo.
+1. Vyberte **kliknutím spustit**. 
+
+    > [!TIP]
+    > Simulátor Windmill také vytvoří JSON, který můžete použít jako datovou část s [rozhraními API pro dotazy GA Time Series Insights GA](https://docs.microsoft.com/rest/api/time-series-insights/ga-query).
+
+    > [!NOTE]
+    > Simulátor bude pokračovat v posílání dat, dokud nebude zavřena karta prohlížeče.
 
 1. Vraťte se do vašeho centra událostí na webu Azure Portal. Na stránce **Přehled** se zobrazí nové události, které centrum událostí přijalo.
 
@@ -147,7 +153,7 @@ Aktualizace služby Time Series Insights používá k přidání kontextové úd
     }
     ```
 
-* **Výstup**: dvě události. Vlastnost **umístění** se kopíruje do každé události.
+* **Výstup**: dvě události. **Umístění** vlastnosti je zkopírováno do každé události.
 
     |location|events.id|events.timestamp|
     |--------|---------------|----------------------|
@@ -192,7 +198,7 @@ Aktualizace služby Time Series Insights používá k přidání kontextové úd
 
     |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
     |---|---|---|---|---|---|---|---|
-    |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|tlak|psi|108.09|
+    |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
     |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
 ## <a name="next-steps"></a>Další kroky
