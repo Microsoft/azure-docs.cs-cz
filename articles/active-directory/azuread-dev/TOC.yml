@@ -176,6 +176,8 @@
   items:
     - name: Glosář
       href: ../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
+    - name: Videa
+      href: videos.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Blog k Azure AD
