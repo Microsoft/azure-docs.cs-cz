@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9338c1a42737180ec5395f30060b4eed35ce5eda
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: be447b001b0b2e14999aac98ba2125f8cbfe9853
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381072"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186611"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Rychlý Start: blokování přístupu při zjištění rizika relace s Azure Active Directory podmíněný přístup  
 
-Aby se zajistilo, že se vaše prostředí chrání, možná budete chtít zablokovat podezřelé uživatele od přihlášení. [Služba Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analyzuje každé přihlášení a vypočítává pravděpodobnost, že oprávněný vlastník uživatelského účtu neudělal pokus o přihlášení. Pravděpodobnost (nízká, střední, vysoká) je uvedena ve formě počítané hodnoty s názvem [úrovně rizika přihlášení](conditions.md#sign-in-risk). Nastavením rizikové podmínky přihlášení můžete nakonfigurovat zásady podmíněného přístupu, které budou reagovat na konkrétní úrovně rizika přihlašování.
+Aby se zajistilo, že se vaše prostředí chrání, možná budete chtít zablokovat podezřelé uživatele od přihlášení. [Služba Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analyzuje každé přihlášení a vypočítává pravděpodobnost, že oprávněný vlastník uživatelského účtu neudělal pokus o přihlášení. Pravděpodobnost (nízká, střední, vysoká) je uvedena ve formě počítané hodnoty s názvem [úrovně rizika přihlášení](concept-conditional-access-conditions.md#sign-in-risk). Nastavením rizikové podmínky přihlášení můžete nakonfigurovat zásady podmíněného přístupu, které budou reagovat na konkrétní úrovně rizika přihlašování.
 
 V tomto rychlém startu se dozvíte, jak nakonfigurovat [zásady podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) , které blokují přihlášení, když se zjistí nakonfigurovaná úroveň rizika přihlašování.
 
@@ -28,7 +28,7 @@ V tomto rychlém startu se dozvíte, jak nakonfigurovat [zásady podmíněného 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení scénáře v tomto kurzu budete potřebovat:
 
@@ -56,7 +56,7 @@ V této části se dozvíte, jak vytvořit požadované zásady podmíněného p
 | --- | --- |
 | Uživatelé a skupiny | Alain Charon  |
 | Cloudové aplikace | Všechny cloudové aplikace |
-| Riziko přihlášení | Střední |
+| Riziko přihlášení | Střednědobé používání |
 | Udělit | Blokovat přístup |
 
 ![Vytvoření zásad](./media/app-sign-in-risk/130.png)
@@ -129,7 +129,7 @@ V této části se dozvíte, jak vytvořit požadované zásady podmíněného p
 
    ![Povolení zásady](./media/app-sign-in-risk/18.png)
 
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Vyhodnotit simulované přihlašování
 
@@ -161,7 +161,7 @@ V předchozí části jste se dozvěděli, jak vyhodnotit simulované přihlašo
 
 Pokud chcete zásady otestovat, zkuste se k vašemu [Azure Portal](https://portal.azure.com) přihlašovat jako **Jakub Charon** pomocí prohlížeče pro prostředí. Váš pokus o přihlášení by měl blokovat vaše zásada podmíněného přístupu.
 
-![Vícefaktorové ověřování](./media/app-sign-in-risk/118.png)
+![Ověřování pomocí služby Multi-Factor Authentication](./media/app-sign-in-risk/118.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -170,7 +170,7 @@ Pokud už je nepotřebujete, odstraňte testovacího uživatele, prohlížeč pr
 - Pokud nevíte, jak odstranit uživatele Azure AD, přečtěte si téma [odstranění uživatelů ze služby Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 - Pokud chcete zásadu odstranit, vyberte zásadu a pak na panelu nástrojů Rychlý přístup klikněte na **Odstranit** .
 
-   ![Vícefaktorové ověřování](./media/app-sign-in-risk/33.png)
+   ![Ověřování pomocí služby Multi-Factor Authentication](./media/app-sign-in-risk/33.png)
 
 - Pokyny k odebrání prohlížeče pro mandát najdete v tématu věnovaném [odinstalaci](https://tb-manual.torproject.org/uninstalling/).
 

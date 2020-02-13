@@ -8,16 +8,16 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.author: allensu
-ms.openlocfilehash: f62adbaea8d6549af0137f49542ee89e7531b9ef
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: e316da12345c0bf1ea3682dadb1a7a65f250747b
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136171"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191104"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Rychlý Start: vytvoření služby privátního propojení pomocí Azure Portal
 
-Služba privátního propojení Azure odkazuje na vaši vlastní službu, která je spravovaná pomocí privátního propojení. Přístup ke službě nebo prostředku, který funguje za Azure Load Balancer, můžete udělit privátním odkazem. Příjemci vaší služby můžou k němu přistupovat soukromě z vlastních virtuálních sítí. V tomto rychlém startu se dozvíte, jak vytvořit službu privátního propojení pomocí Azure Portal.
+Služba privátního propojení Azure odkazuje na vaši vlastní službu, která je spravovaná pomocí privátního propojení. Přístup ke službě nebo prostředku, který funguje za Azure Standard Load Balancer, můžete udělit privátním odkazem. Příjemci vaší služby můžou k němu přistupovat soukromě z vlastních virtuálních sítí. V tomto rychlém startu se dozvíte, jak vytvořit službu privátního propojení pomocí Azure Portal.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -37,9 +37,9 @@ V této části vytvoříte virtuální síť. Také vytvoříte podsíť pro ho
 
 1. V podokně **vytvořit virtuální síť** zadejte nebo vyberte tyto hodnoty:
 
-   - **Název**: zadejte **MyVNet**.
-   - **Zdroj dat**: vyberte **vytvořit novou**, zadejte **MyResourceGroupLB**a vyberte **OK**.
-   - **Název** > **podsítě** : zadejte **MyBackendSubnet**.
+   - **Název**: zadejte **myVNet**.
+   - **Zdroj dat**: vyberte **vytvořit novou**, zadejte **myResourceGroupLB**a vyberte **OK**.
+   - **Název** > **podsítě** : zadejte **myBackendSubnet**.
 
 1. Vyberte **Create** (Vytvořit).
 
@@ -56,12 +56,12 @@ Pomocí portálu vytvořte standardní interní nástroj pro vyrovnávání zat�
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | **Předplatné**               | Vyberte své předplatné.    |
-    | **Skupina prostředků**         | V poli vyberte **MyResourceGroupLB** .|
+    | **Skupina prostředků**         | V poli vyberte **myResourceGroupLB** .|
     | **Název**                   | Zadejte **myLoadBalancer**.                                   |
     | **Oblast**         | Vyberte **Východní USA 2**.                                        |
     | **Typ**          | Vyberte **interní**.                                        |
     | **SKU**           | Vyberte **Standard**.                          |
-    | **Virtuální síť**           | Vyberte **MyVNet**.                          |
+    | **Virtuální síť**           | Vyberte **myVNet**.                          |
     | **Přiřazení IP adresy**              | Vyberte možnost **static**.   |
     | **Privátní IP adresa**|Zadejte adresu, která se nachází v adresním prostoru virtuální sítě a podsítě. Příkladem je 10.3.0.7.  |
 
@@ -88,13 +88,13 @@ Použijte sondu stavu, aby nástroj pro vyrovnávání zatížení mohl monitoro
 
 Vytvoření sondy stavu pro monitorování stavu prostředků:
 
-1. V nabídce vlevo vyberte **všechny prostředky** a v seznamu prostředků vyberte **MyLoadBalancer** .
+1. V nabídce vlevo vyberte **všechny prostředky** a v seznamu prostředků vyberte **myLoadBalancer** .
 
 1. V **Nastavení** vyberte **Sondy stavu** a potom vyberte **Přidat**.
 
 1. Na stránce **Přidat sondu stavu** zadejte nebo vyberte následující hodnoty:
 
-   - **Název**: zadejte **MyHealthProbe**.
+   - **Název**: zadejte **myHealthProbe**.
    - **Protokol**: vyberte **TCP**.
    - **Port**: zadejte **80**.
    - **Interval**: zadejte **15**. Tato hodnota je počet sekund mezi pokusy o testování.
@@ -110,23 +110,23 @@ Pravidlo nástroje pro vyrovnávání zatížení definuje způsob distribuce pr
 - Fond back-end IP adres pro příjem provozu.
 - Požadované zdrojové a cílové porty.
 
-Pravidlo nástroje pro vyrovnávání zatížení s názvem **MyLoadBalancerRule** naslouchá na portu 80 ve front-endu **LoadBalancerFrontEnd** . Pravidlo odesílá síťový provoz do fondu back-end adres **MyBackendPool** na stejném portu 80.
+Pravidlo nástroje pro vyrovnávání zatížení s názvem **myLoadBalancerRule** naslouchá na portu 80 ve front-endu **LoadBalancerFrontEnd** . Pravidlo odesílá síťový provoz do fondu back-end adres **myBackendPool** na stejném portu 80.
 
 Vytvoření pravidla nástroje pro vyrovnávání zatížení:
 
-1. V nabídce vlevo vyberte **všechny prostředky** a v seznamu prostředků vyberte **MyLoadBalancer** .
+1. V nabídce vlevo vyberte **všechny prostředky** a v seznamu prostředků vyberte **myLoadBalancer** .
 
 1. V části **Nastavení**vyberte **pravidla vyrovnávání zatížení**a pak vyberte **Přidat**.
 
 1. Na stránce **Přidat pravidlo vyrovnávání zatížení** zadejte nebo vyberte následující hodnoty, pokud ještě nejsou k dispozici:
 
-   - **Název**: zadejte **MyLoadBalancerRule**.
+   - **Název**: zadejte **myLoadBalancerRule**.
    - **IP adresa front-endu:** Zadejte **LoadBalancerFrontEnd**.
    - **Protokol**: vyberte **TCP**.
    - **Port**: zadejte **80**.
    - **Back-end port**: zadejte **80**.
-   - **Back-end fond**: vyberte **MyBackendPool**.
-   - **Sonda stavu**: vyberte **MyHealthProbe**. 
+   - **Back-end fond**: vyberte **myBackendPool**.
+   - **Sonda stavu**: vyberte **myHealthProbe**. 
 
 1. Vyberte **OK**.
 
@@ -144,7 +144,7 @@ V této části vytvoříte službu privátního propojení za standardním nás
     |-------------------|------------------------------------------------------------------------------|
     | Podrobnosti o projektu:  |                                                                              |
     | **Předplatné**      | Vyberte své předplatné.                                                     |
-    | **Skupina prostředků**    | Vyberte **MyResourceGroupLB**.                                                    |
+    | **Skupina prostředků**    | Vyberte **myResourceGroupLB**.                                                    |
     | Podrobnosti instance: |                                                                              |
     | **Název**              | Zadejte **myPrivateLinkService**. |
     | **Oblast**            | Vyberte **Východní USA 2**.                                                        |
@@ -155,9 +155,9 @@ V této části vytvoříte službu privátního propojení za standardním nás
 
     | Nastavení                           | Hodnota                                                                           |
     |-----------------------------------|---------------------------------------------------------------------------------|
-    | **Load Balancer**                     | Vyberte **MyLoadBalancer**.                                                           |
-    | **Load Balancer IP adresa front-endu** | Vyberte front-end IP adresu **MyLoadBalancer**.                                |
-    | **Zdrojová virtuální síť NAT**        | Vyberte **myVNET**.                                                                   |
+    | **Load Balancer**                     | Vyberte **myLoadBalancer**.                                                           |
+    | **Load Balancer IP adresa front-endu** | Vyberte front-end IP adresu **myLoadBalancer**.                                |
+    | **Zdrojová virtuální síť NAT**        | Vyberte **myVNet**.                                                                   |
     | **Zdrojová podsíť NAT**                 | Vyberte **myBackendSubnet**.                                                          |
     | **Povolit proxy server TCP v2**               | Vyberte **Ano** nebo **ne** v závislosti na tom, jestli vaše aplikace očekává hlavičku protokolu TCP proxy v2. |
     | **Nastavení privátní IP adresy**       | Pro každou IP adresu NAT nakonfigurujte metodu přidělování a IP adresu.                  |

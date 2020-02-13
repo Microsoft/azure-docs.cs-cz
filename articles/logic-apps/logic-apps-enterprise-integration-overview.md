@@ -8,16 +8,16 @@ ms.author: divswa
 ms.reviewer: jonfan, logicappspm
 ms.topic: overview
 ms.date: 08/01/2019
-ms.openlocfilehash: 141f1a7fc8f966132cb3570fd9d9cfa911127eed
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 9356cecb22672ae15505d14b5ac73d5baeef09e0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792447"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191373"
 ---
 # <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>Řešení B2B Enterprise Integration s Azure Logic Apps a Enterprise Integration Pack
 
-Pro řešení B2B (Business-to-Business) a bezproblémovou komunikaci mezi organizacemi můžete vytvářet automatizované škálovatelné pracovní postupy pro podnikovou integraci pomocí Enterprise Integration Pack (EIP) s [Azure Logic Apps](../logic-apps/logic-apps-overview.md). I když organizace používají různé protokoly a formáty, můžou vyměňovat zprávy elektronicky. EIP transformuje různé formáty do formátu, který mohou systémy vaší organizace zpracovávat, a podporuje standardní protokoly, včetně [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md)a [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Můžete také zabezpečit zprávy pomocí šifrování i digitálních podpisů. EIP podporuje tyto [podnikové integrační konektory](../connectors/apis-list.md#integration-account-connectors) a tyto oborové standardy:
+Pro řešení B2B (Business-to-Business) a bezproblémovou komunikaci mezi organizacemi můžete vytvářet automatizované škálovatelné pracovní postupy pro podnikovou integraci pomocí Enterprise Integration Pack (EIP) s [Azure Logic Apps](../logic-apps/logic-apps-overview.md). I když organizace používají různé protokoly a formáty, můžou vyměňovat zprávy elektronicky. EIP transformuje různé formáty do formátu, který mohou systémy vaší organizace zpracovávat, a podporuje standardní protokoly, včetně [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md)a [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Můžete také zlepšit zabezpečení zpráv pomocí šifrování i digitálních podpisů. EIP podporuje tyto [podnikové integrační konektory](../connectors/apis-list.md#integration-account-connectors) a tyto oborové standardy:
 
 * Elektronický výměna dat (EDI)
 * Enterprise Application Integration (EAI)
@@ -32,7 +32,7 @@ Pokud jste obeznámeni se službou Microsoft BizTalk Server nebo Azure BizTalk S
 
 * Pomocí služby Azure Functions můžete vytvořit vlastní kód pro vaše aplikace logiky.
 
-## <a name="how-do-i-get-started"></a>Jak začít?
+## <a name="how-do-i-get-started"></a>Jak mám začít?
 
 Než budete moct začít sestavovat pracovní postupy B2B Logic Apps s EIP, budete potřebovat tyto položky:
 

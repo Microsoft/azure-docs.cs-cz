@@ -4,7 +4,6 @@ description: 'Rychlý Start: skripty, které používají sadu Azure Python SDK 
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
 ms.service: event-hubs
@@ -15,12 +14,12 @@ ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: c6c27a269abfd6fbf29ec7bbb0980d764abaa242
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6c830cf871c2ae650bb61e8b3712a664e9e405d4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904502"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187292"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Rychlý Start: návod Event Hubsho zachycení: Python (Azure-eventhub verze 1)
 
@@ -39,11 +38,11 @@ V tomto návodu:
 > * Odešlete data do centra událostí pomocí skriptu Pythonu.
 > * Čtení a zpracování souborů z Event Hubs zachytávání pomocí jiného skriptu Pythonu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Python 3,4 nebo novější s `pip` nainstalované a aktualizované.
   
-- Předplatné Azure. Pokud ho nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- Předplatné Azure. Pokud ho nemáte, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
   
 - Obor názvů Active Event Hubs a centrum událostí vytvořené podle pokynů v tématu [rychlý Start: vytvoření centra událostí pomocí Azure Portal](event-hubs-create.md). Poznamenejte si název oboru názvů a centra událostí, které použijete později v tomto návodu. 
   
@@ -57,7 +56,7 @@ V tomto návodu:
 
 Vytvořte účet úložiště a kontejner, který chcete použít pro zachytávání. 
 
-1. Přihlaste se na web [Azure Portal][Azure portal].
+1. Přihlaste se k webu [Portál Azure][Azure portal].
 2. V levém navigačním panelu vyberte **účty úložiště**a na obrazovce **účty úložiště** vyberte **Přidat**.
 3. Na obrazovce vytvoření účtu úložiště vyberte předplatné a skupinu prostředků a zadejte název účtu úložiště. Ostatní výběry můžete ponechat ve výchozím nastavení. Vyberte **zkontrolovat + vytvořit**, zkontrolujte nastavení a pak vyberte **vytvořit**. 
    

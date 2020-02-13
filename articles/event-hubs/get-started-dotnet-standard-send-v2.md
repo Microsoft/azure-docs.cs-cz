@@ -11,28 +11,31 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: c8c6e2741eeeadf2afc0c027da8f9cf957c29c95
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 022af5ce0774ff106a29a2ef0bcf3fe11acfda15
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023238"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187198"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Odesílání událostí do nebo příjem událostí z Azure Event Hubs – .NET Core (Azure. Messaging. EventHubs) 
-Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Po shromáždění dat do Event Hubs můžete data ukládat pomocí clusteru úložiště nebo událostí procesu. Můžete například transformovat data událostí pomocí poskytovatele analýz v reálném čase. Tato rozsáhlá funkce shromažďování a zpracování událostí je klíčovou součástí moderních architektur aplikace, včetně Internet věcí (IoT). Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
-
-V tomto kurzu se dozvíte, jak odesílat události do a přijímat události z centra událostí pomocí .NET Core SDK Event Hubs. 
+# <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Odesílání událostí do a příjem událostí z Azure Event Hubs – .NET Core (Azure. Messaging. EventHubs) 
+V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí knihovny .NET Core **Azure. Messaging. EventHubs** . 
 
 > [!IMPORTANT]
-> V tomto rychlém startu se používá nová knihovna **Azure. Messaging. EventHubs** . Pro rychlý Start, který používá starou knihovnu **Microsoft. Azure. EventHubs** , najdete další informace v [tomto článku](event-hubs-dotnet-standard-getstarted-send.md). 
+> V tomto rychlém startu se používá nová knihovna **Azure. Messaging. EventHubs** . Pro rychlý Start, který používá starou knihovnu **Microsoft. Azure. EventHubs** , najdete informace v tématu [posílání a přijímání událostí pomocí Microsoft. Azure. EventHubs Library](event-hubs-dotnet-standard-getstarted-send.md). 
 
-## <a name="prerequisites"></a>Požadavky
+
+
+## <a name="prerequisites"></a>Předpoklady
+Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
+
+K dokončení tohoto rychlého startu potřebujete následující požadavky:
 
 - **Microsoft Azure předplatné**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo využít výhody pro předplatitele MSDN při [vytváření účtu](https://azure.microsoft.com).
 - **Microsoft Visual Studio 2019**. Klientská knihovna Azure Event Hubs využívá nové funkce, které byly představeny v C# 8,0.  Knihovnu můžete dál používat se staršími verzemi nástroje C#, ale některé z jejích funkcí nebudou dostupné.  Pokud chcete tyto funkce povolit, musíte [cílit na .NET Core 3,0](/dotnet/standard/frameworks#how-to-specify-target-frameworks) nebo [zadat jazykovou verzi](/dotnet/csharp/language-reference/configure-language-version#override-a-default) , kterou chcete použít (8,0 nebo vyšší). Pokud používáte Visual Studio, verze před sadou Visual Studio 2019 nejsou kompatibilní s nástroji potřebnými pro sestavení C# projektů 8,0. Visual Studio 2019, včetně bezplatné komunity, si můžete stáhnout [tady](https://visualstudio.microsoft.com/vs/) .
-- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centra událostí, postupujte podle pokynů v [v tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů Event Hubs** podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto kurzu.
+- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů Event Hubs** podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto rychlém startu.
 
 ## <a name="send-events"></a>Odesílání událostí 
 V této části se dozvíte, jak vytvořit konzolovou aplikaci .NET Core pro odesílání událostí do centra událostí. 
@@ -226,5 +229,6 @@ V tomto rychlém startu použijete Azure Storage jako úložiště kontrolního 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na ukázky na GitHubu. 
 
-- [Ukázky služby Event Hubs na Githubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
+- [Ukázky Event Hubs na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
 - [Ukázky procesoru událostí na GitHubu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples)
+- [Ukázka řízení přístupu na základě role (RBAC)](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)

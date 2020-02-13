@@ -7,15 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
-ms.date: 02/03/2020
-ms.custom: mvc
+ms.date: 02/12/2020
 ms.topic: overview
-ms.openlocfilehash: ad24418bf3879e4ef9a0ae4833c37c051079c668
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133851"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190311"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure ARC pro servery (Preview)
 
@@ -41,6 +40,8 @@ U Azure ARC pro servery (Preview) jsou podporované jenom některé oblasti:
 - WestUS2
 - WestEurope
 - WestAsia
+
+Ve většině případů umístění, které vyberete při vytváření instalačního skriptu, by mělo být oblast Azure geograficky nejblíže umístění vašeho počítače. Uložená data se uloží v rámci geografické oblasti Azure obsahující oblast, kterou zadáte, což může mít vliv i na výběr oblasti, pokud máte požadavky na umístění dat. Pokud je oblast Azure, ke které je počítač připojený, ovlivněná výpadkem, připojený počítač to neovlivní, ale operace správy používající Azure možná nebude možné dokončit. V případě pružnosti v případě výpadku v oblasti regionu, pokud máte více umístění, která poskytují geograficky redundantní službu, je nejlepší připojit počítače v každém umístění do jiné oblasti Azure.
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -135,10 +136,10 @@ Propojení počítačů ve vašem hybridním prostředí s Azure je možné dos�
 
 | Metoda | Popis |
 |--------|-------------|
-| Interaktivně | Ručně nainstalujte agenta na jeden nebo malý počet počítačů podle postupu v části [připojení počítačů od Azure Portal](quickstart-onboard-portal.md).<br> Z Azure Portal můžete vygenerovat skript a spustit ho na počítači, abyste mohli automatizovat kroky instalace a konfigurace agenta.|
-| Ve velkém měřítku | Nainstalujte a nakonfigurujte agenta pro více počítačů, které následují po [připojení počítačů pomocí instančního objektu](quickstart-onboard-powershell.md).<br> Tato metoda vytvoří instanční objekt pro připojení počítačů, které nejsou interaktivně.|
+| Interaktivně | Ručně nainstalujte agenta na jeden nebo malý počet počítačů podle postupu v části [připojení počítačů od Azure Portal](onboard-portal.md).<br> Z Azure Portal můžete vygenerovat skript a spustit ho na počítači, abyste mohli automatizovat kroky instalace a konfigurace agenta.|
+| Ve velkém měřítku | Nainstalujte a nakonfigurujte agenta pro více počítačů, které následují po [připojení počítačů pomocí instančního objektu](onboard-service-principal.md).<br> Tato metoda vytvoří instanční objekt pro připojení počítačů, které nejsou interaktivně.|
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete začít vyhodnocovat Azure ARC pro servery (Preview), postupujte podle článku [připojení Hybrid Machines k Azure z Azure Portal](quickstart-onboard-portal.md). 
+- Pokud chcete začít vyhodnocovat Azure ARC pro servery (Preview), postupujte podle článku [připojení Hybrid Machines k Azure z Azure Portal](onboard-portal.md). 

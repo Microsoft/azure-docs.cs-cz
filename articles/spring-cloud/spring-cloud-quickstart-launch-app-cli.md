@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 85eb35e1634f1183a6a5f93242f9466778b24d22
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: adb5b64456de743142ffb464ebb2c5e9f8dc8f86
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069604"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190775"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure
 
@@ -28,7 +28,7 @@ Po tomto rychlém startu se dozvíte, jak:
 > * Nasazení jednotlivých mikroslužeb
 > * Přiřazení veřejného koncového bodu vaší aplikaci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 >[!Note]
 > Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v našich [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo v souboru o [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) , kde se dozvíte víc.
@@ -94,7 +94,7 @@ az extension add --name spring-cloud
 Aktualizujte konfiguraci-server s umístěním úložiště Git pro náš projekt:
 
 ```git
-az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/Azure-Samples/piggymetrics --label config
+az spring-cloud config-server git set -n <your-service-name> --uri https://github.com/Azure-Samples/piggymetrics-config
 ```
 
 > [!div class="nextstepaction"]

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 5a32d92dd8a44602034d84262f2e502a60ac23a9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: d819d4f7b3049a5c034ec8ac5170175f3ad3e9bb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760636"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190849"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Rychlý Start: použití Azure Service Bus front s jazykem Java k posílání a přijímání zpráv
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte vytvářet aplikace v jazyce Java pro posílání zpr
 > [!NOTE]
 > Ukázky Java můžete najít na GitHubu v [úložišti Azure-Service-Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/Java).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 1. Předplatné Azure. K dokončení tohoto kurzu potřebujete mít účet Azure. Můžete aktivovat výhody pro [předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Pokud nemáte frontu, ve které byste mohli pracovat, postupujte podle kroků v tématu [použití Azure Portal k vytvoření fronty Service Bus](service-bus-quickstart-portal.md) .
     1. Přečtěte si rychlý **přehled** Service Busch **front**. 
@@ -124,9 +124,9 @@ Hlavním způsobem, jak přijímat zprávy z fronty, je použít objekt **Servic
 Při použití režimu **ReceiveAndDelete** je přijetí jednorázová operace – to znamená, že když Service Bus přijme požadavek na čtení zprávy ve frontě, označí zprávu jako spotřebou a vrátí ji do aplikace. **ReceiveAndDelete** režim (což je výchozí režim) je nejjednodušší model a funguje nejlépe ve scénářích, ve kterých aplikace může tolerovat nezpracovávání zprávy v případě selhání. Pro lepší vysvětlení si představte scénář, ve kterém spotřebitel vyšle požadavek na přijetí, ale než ji může zpracovat, dojde v něm k chybě a ukončí se.
 Vzhledem k tomu, že Service Bus označila zprávu jako spotřebovaná, pak když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechala zprávu, která byla spotřebována před selháním.
 
-V režimu **PeekLock** se přijme operace se dvěma fázemi, která umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu příjmu voláním **Delete** v přijaté zprávě. Když Service Bus uvidí volání při **odstranění** , označí zprávu jako spotřebou a odebere ji z fronty.
+V režimu **PeekLock** se přijme operace se dvěma fázemi, která umožňuje podporovat aplikace, které nemůžou tolerovat chybějící zprávy. Když Service Bus přijme požadavek, najde zprávu, která je na řadě ke spotřebování, uzamkne ji proti spotřebování jinými spotřebiteli a vrátí ji do aplikace. Poté, co aplikace dokončí zpracování zprávy (nebo je uloží spolehlivě pro budoucí zpracování), dokončí druhou fázi procesu příjmu voláním metody **Complete ()** na přijatou zprávu. Když Service Bus uvidí volání **Complete ()** , označí zprávu jako spotřebou a odebere ji z fronty. 
 
-Následující příklad ukazuje, jak lze přijímat a zpracovávat zprávy pomocí režimu **PeekLock** (nikoli ve výchozím režimu). Následující příklad provádí nekonečnou smyčku a zpracovává zprávy, když dorazí do našich `TestQueue`:
+Následující příklad ukazuje, jak lze přijímat a zpracovávat zprávy pomocí režimu **PeekLock** (nikoli ve výchozím režimu). Následující příklad používá model zpětného volání s registrovanou obslužnou rutinou zprávy a zpracovává zprávy, když dorazí do našich `TestQueue`. Tento režim volá funkci **Complete ()** automaticky, protože zpětné volání vrátí hodnotu Standard a zavolá **Abandon ()** , pokud zpětné volání vyvolá výjimku. 
 
 ```java
     public void run() throws Exception {
@@ -179,11 +179,11 @@ Následující příklad ukazuje, jak lze přijímat a zpracovávat zprávy pomo
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Zpracování pádů aplikace a nečitelných zpráv
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce z nějakého důvodu nemůže zprávu zpracovat, může zavolat metodu **unlockMessage** na přijatou zprávu (namísto metody **deleteMessage** ). To způsobí, že Service Bus zprávu odemkne ve frontě a zpřístupní ji pro další přijetí, buďto stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
+Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce z nějakého důvodu nemůže zprávu zpracovat, může zavolat metodu **Abandon ()** na objekt klienta s tokenem zámku přijaté zprávy získaným prostřednictvím **getLockToken ()** . To způsobí, že Service Bus zprávu odemkne ve frontě a zpřístupní ji pro další přijetí, buďto stejnou spotřebitelskou aplikací nebo jinou spotřebitelskou aplikací.
 
 Je také časový limit přidružený ke zprávě uzamčený ve frontě a pokud aplikace nedokáže zpracovat zprávu před vypršením časového limitu zámku (například pokud aplikace selže), Service Bus automaticky odemkne zprávu a vytvoří ji. k dispozici pro opětovné přijetí.
 
-V případě, že aplikace po zpracování zprávy dojde k chybě, ale před vydáním žádosti **deleteMessage** , je zpráva po restartování znovu doručena do aplikace. Tomu se často říká *Zpracování nejméně jednou* – to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích se může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často dosahuje pomocí metody **getMessageId** zprávy, která zůstává konstantní při pokusůch o doručení.
+V případě, že dojde k chybě aplikace po zpracování zprávy, ale před vydáním žádosti o **dokončení ()** , je zpráva po restartování znovu doručena do aplikace. Tomu se často říká *Zpracování nejméně jednou* – to znamená, že každá zpráva se zpracuje alespoň jednou, ale v některých situacích se může doručit víckrát. Pokud daný scénář nemůže tolerovat zpracování víc než jednou, vývojáři aplikace by měli přidat další logiku navíc pro zpracování víckrát doručené zprávy. To se často dosahuje pomocí metody **getMessageId** zprávy, která zůstává konstantní při pokusůch o doručení.
 
 > [!NOTE]
 > Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 

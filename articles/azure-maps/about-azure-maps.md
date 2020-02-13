@@ -3,30 +3,30 @@ title: Přehled | Mapy Microsoft Azure
 description: Seznamte se se službami a možnostmi v Microsoft Azure Maps a jejich použití ve svých aplikacích.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2909dbebc7531be0e45b321cc31b599b0f63ee4a
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: e01bfec9edbe1e868a3e3244e3cb6d1e1a46561d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262567"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190357"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
 Azure Maps je kolekce geoprostorových služeb, které používají data z nového mapování k poskytování geografického kontextu pro webové a mobilní aplikace. Azure Maps poskytuje:
 
-* Rozhraní REST API pro vykreslování map v několika stylech a v satelitních proobrázcích.
-* Vyhledá adresy, místa a body zájmu po celém světě.
-* Různé typy směrování: Point-to-Point, MultiPoint, optimalizace pro MultiPoint, isochrone, komerční vozidlo, ovlivnění provozu a směrování matice
-* Tok přenosů a zobrazení incidentů.
-* Služby mobility pro požadavky na veřejný tranzit a alternativní režimy přepravy (například sdílení kol, Scooter sdílená složka a podíl automobilu) a naplánujte trasy v reálném čase. 
-* Stanovení umístění uživatelů prostřednictvím geografického umístění a převod umístění na časová pásma. 
-* Služby pro geografickou a mapovací úložiště dat s informacemi o poloze hostované v Azure. 
+* Rozhraní REST API pro vykreslování map v několika stylech a v satelitním obrazovém obrazu.
+* Služba Search vám umožní najít adresy, místa a body zájmu po celém světě.
+* Různé možnosti směrování; jako je například Point-to-Point, MultiPoint, optimalizace pro MultiPoint, isochrone, komerční vozidlo, ovlivnění provozu a směrování matrice.
+* Zobrazení toku provozu a incidenty pro aplikace, které vyžadují informace o provozu.
+* Služba mobility, která vyžádá logistickou veřejnou tranzitní službu, plánuje trasy v reálném čase a požaduje informace pro alternativní režimy přepravy.
+* Časové pásmo a služby geografického umístění a převod umístění na časová pásma.
+* Služba geografických zón a mapování úložiště dat s informacemi o poloze hostované v Azure. 
 * Informace o poloze prostřednictvím geoprostorové analýzy. 
 
 Služba Azure Maps Services je navíc k dispozici prostřednictvím webové sady SDK nebo Android SDK. Tyto nástroje umožňují vývojářům rychle vyvíjet a škálovat řešení, která integrují informace o poloze do řešení Azure. 
@@ -39,11 +39,11 @@ Následující video vysvětluje Azure Maps do hloubky:
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps/player?format=ny" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-## <a name="map-controls"></a>Ovládací prvky mapy
+## <a name="map-controls"></a>Mapové ovládací prvky
 
 ### <a name="web-sdk"></a>Sada Web SDK
 
-Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy s vlastním obsahem a obrázků pro vaše webové nebo mobilní aplikace. Tento ovládací prvek využívá WebGL, takže můžete vykreslit velké sady dat s vysokým výkonem. Vývoj pomocí sady SDK pomocí JavaScriptu nebo TypeScript
+Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy pomocí vlastního obsahu a snímků. Tuto interaktivní mapu můžete použít pro vaše webové i mobilní aplikace. Mapový ovládací prvek využívá WebGL, takže můžete vykreslit velké sady dat s vysokým výkonem. Vývoj pomocí sady SDK pomocí JavaScriptu nebo TypeScript
 
 ![Příklad mapy změny populace](media/about-azure-maps/Introduction_WebMapControl.png)
 
@@ -57,21 +57,21 @@ K vytváření aplikací pro mobilní mapování použijte Azure Maps Android SD
 
 Azure Maps se skládá z následujících devíti služeb, které poskytují geografickou souvislost aplikacím Azure.
 
-### <a name="data-service"></a>Datová služba
+### <a name="data-service"></a>Služba Data
 
 Data jsou pro mapy naléhavá. Pomocí datové služby můžete nahrávat a ukládat geoprostorové data pro použití s prostorovou operací nebo kompozicí imagí.  Uvedení zákaznických dat blíže ke službě Azure Maps omezí latenci, zvýší produktivitu a vytvoří nové scénáře ve vašich aplikacích. Podrobnosti o této službě najdete v dokumentaci k [rozhraní API datové služby](https://docs.microsoft.com/rest/api/maps/data).
 
 ### <a name="mobility-service"></a>Služba Mobility
 
-Služba mobility Azure Maps umožňuje plánování cest v reálném čase. Vrátí nejlepší možné možnosti směrování a poskytuje různé druhy cestovních režimů. Pro oblasti metro (City) můžou tyto režimy zahrnovat procházení, cyklistice a veřejný tranzit. Můžete si vyžádat přenosovou trasu, geometrii řádků, seznamy zastavení, plánovanému a příchodu v reálném čase a upozornění služby.
+Služba mobility Azure Maps umožňuje plánování cest v reálném čase. Vrátí nejlepší možné možnosti směrování a poskytuje různé druhy cestovních režimů. Pro oblasti metro (City) můžou tyto režimy zahrnovat procházení, cyklistice a veřejný tranzit. Můžete požadovat tranzitní itinerář, geometrii řádku, seznamy zastavení, plánované doručení, doručení v reálném čase a výstrahy služby.
 
-Služba také umožňuje vyhledávat konkrétní typy objektů, jako jsou například sdílená kola, Scooters nebo automobily kolem umístění. Uživatelé můžou požádat o počet dostupných kol v nejbližším Docku a vyhledat dostupná vozidla pro účely nasdílení. Uživatelé taky můžou najít podrobnosti, jako je budoucí dostupnost vozidel a současná úroveň paliva.
+Služba také umožňuje vyhledávat konkrétní typy objektů kolem umístění. Uživatelé můžou vyhledat sdílená kola, Scooters nebo auta v rámci určitého umístění. Uživatelé můžou požádat o počet dostupných kol v nejbližším Docku a vyhledat dostupná vozidla pro účely nasdílení. A uživatelé můžou najít podrobnosti, jako je budoucích dostupnosti vozidel a současná úroveň paliva.
 
 Další informace o této službě najdete v [dokumentaci k rozhraní API mobility](https://docs.microsoft.com/rest/api/maps/mobility).
 
 ### <a name="render-service"></a>Služba Render
 
-Služba vykreslování pomáhá vývojářům vytvářet webové a mobilní aplikace kolem mapování. Služba nabízí buď vysoce kvalitní rastrové podklady v 19 úrovních přiblížení, nebo plně přizpůsobitelné vektorové obrazy.
+Služba vykreslování pomáhá vývojářům vytvářet webové a mobilní aplikace s funkcemi mapování. Služba nabízí buď vysoce kvalitní rastrové podklady v 19 úrovních přiblížení, nebo plně přizpůsobitelné vektorové obrazy.
 
 ![Příklad mapy ze služby vykreslování](media/about-azure-maps/Introduction_Map.png)
 
@@ -79,7 +79,7 @@ Služba Render teď nabízí rozhraní API ve verzi Preview, která umožňují 
 
 ### <a name="route-service"></a>Služba Route
 
-Služba Route obsahuje robustní výpočty geometrie na základě reálné infrastruktury a trasy pro různé způsoby dopravy. Služba umožňuje vývojářům vypočítat trasy v několika různých režimech, např. auto, nákladní vůz, kolo nebo chůze. Služba také dokáže zohlednit zadání, jako je aktuální provoz, omezení hmotnosti nebo doprava nebezpečných látek.
+Služba Route obsahuje robustní výpočty geometrie na základě reálné infrastruktury a trasy pro různé způsoby dopravy. Služba umožňuje vývojářům vypočítat směry v různých režimech cestovních cest, jako je auto, nákladní kolo, kolo nebo procházení. Služba také bere v úvahu vstupy, jako jsou provozní podmínky, omezení hmotnosti nebo přenos nebezpečných látek.
 
 ![Příklad mapy ze služby směrování](media/about-azure-maps/Introduction_Route.png)
 
@@ -108,7 +108,7 @@ Rozhraní API pro dávkové hledání a hledání oblastí jsou aktuálně ve ve
 
 ### <a name="spatial-operations-service"></a>Služba prostorových operací
 
-Služba Azure Maps prostorových operací používá informace o poloze a rychle ji analyzuje, aby pomohla informovat zákazníky o probíhajících událostech v čase a prostoru. Umožňuje analýzu téměř v reálném čase a prediktivní modelování událostí. 
+Služba Azure Maps prostorových operací má informace o poloze. Rychle analyzuje informace o poloze, aby informovala zákazníky o probíhajících událostech, které probíhají v čase a prostoru. Umožňuje analýzu téměř v reálném čase a prediktivní modelování událostí. 
 
 Služba umožňuje zákazníkům zdokonalit své lokátory umístění pomocí knihovny běžných geoprostorovéch matematických výpočtů. Mezi běžné výpočty patří nejbližší bod, Skvělé kolečko a vyrovnávací paměti. Další informace o službě a různých funkcích najdete v [dokumentaci rozhraní API pro prostorové operace](https://docs.microsoft.com/rest/api/maps/spatial).
 
@@ -118,7 +118,7 @@ Služba časového pásma umožňuje dotazovat se na aktuální, historické a b
 
 * Převod ID časových pásem Microsoft Windows na časová pásma IANA.
 * Načítají se posunutí časového pásma na čas UTC.
-* Získání aktuálního času v časovém pásmu. 
+* Získání aktuálního času ve vybraném časovém pásmu. 
 
 Typická odpověď JSON pro dotaz na službu časového pásma vypadá jako v následující ukázce:
 
@@ -169,7 +169,7 @@ Azure Maps také nabízí pohodlný [mapový ovládací prvek JavaScriptu](https
 
 Přístup ke službám Azure Maps Services je podstatou [Azure Portal](https://portal.azure.com) a vytvořením účtu Azure Maps.
 
-V Azure Maps se používá schéma ověřování založeného na klíčích. Váš účet obsahuje dva klíče, které jsou už vygenerované za vás. Zahajte integraci těchto schopností umístění do aplikace pomocí obou klíčů a vytvořte požadavek na službu Azure Maps.
+V Azure Maps se používá schéma ověřování založeného na klíčích. Váš účet obsahuje dvě klíče, které jsou už vygenerované za vás, a to pomocí obou klíčů. Zahajte integraci těchto schopností umístění do vaší aplikace a vyžádejte si žádosti o služby Azure Maps Services.
 
 ## <a name="supported-regions"></a>Podporované oblasti
 

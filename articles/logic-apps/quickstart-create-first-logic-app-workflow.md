@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 6fd9166168a5b21900aa49d42a1dd5b81039dbcd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c2a26f2f40e0312fbfa0962e69ddfd0cfdabad5f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428765"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191281"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Rychlý Start: vytvoření prvního pracovního postupu pomocí Azure Logic Apps-Azure Portal
 
@@ -46,7 +46,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašo
    |----------|-------|-------------|
    | **Název** | <*Logic-App-name*> | Název aplikace logiky, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`), kulaté závorky (`(`, `)`) a tečky (`.`). Tento příklad používá "moji-First-Logic-App". |
    | **Předplatné** | <*název_předplatného_Azure*> | Název vašeho předplatného Azure |
-   | **Skupina prostředků** | <*Azure-resource-group-name*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) , která slouží k uspořádání souvisejících prostředků. V tomto příkladu se používá "My-First-LA-RG". |
+   | **Skupina prostředků** | <*Azure-Resource-Group-name*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) , která slouží k uspořádání souvisejících prostředků. V tomto příkladu se používá "My-First-LA-RG". |
    | **Umístění** | <*Azure – oblast*> | Oblast, kam se mají ukládat informace o aplikaci logiky V tomto příkladu se používá "Západní USA". |
    | **Log Analytics** | Vypnuto | Pokud chcete zapnout protokolování diagnostiky, ponechte nastavení **Vypnuto**. |
    ||||
@@ -80,7 +80,7 @@ Dále přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concept
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **Adresa URL informačního kanálu RSS** | `http://feeds.reuters.com/reuters/topNews` | Odkaz na informační kanál RSS, který chcete monitorovat |
-   | **Interval** | 1\. místo | Počet intervalů, po které se má čekat mezi kontrolami |
+   | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
    | **Frekvence** | Minuta | Jednota času pro každý interval mezi kontrolami  |
    ||||
 
@@ -116,7 +116,7 @@ Teď přidejte [akci](../logic-apps/logic-apps-overview.md#logic-app-concepts) ,
 1. Pokud váš vybraný e-mailový konektor vás vyzve k ověření vaší identity, dokončete tento krok, abyste vytvořili propojení mezi vaší aplikací logiky a vaší e-mailovou službou.
 
    > [!NOTE]
-   > V tomto konkrétním příkladu ručně ověříte svou identitu. Konektory, které vyžadují ověřování, se však liší v typech ověřování, které podporují. Máte také možnost nastavit způsob, jakým chcete zpracovávat ověřování. Například při použití šablon Azure Resource Manager pro nasazení můžete parametrizovat a zabezpečit vstupy, které chcete často nebo snadno měnit, například informace o připojení. Další informace najdete v těchto tématech:
+   > V tomto konkrétním příkladu ručně ověříte svou identitu. Konektory, které vyžadují ověřování, se však liší v typech ověřování, které podporují. Máte také možnost nastavit způsob, jakým chcete zpracovávat ověřování. Například při použití šablon Azure Resource Manager pro nasazení můžete parametrizovat a zdokonalit zabezpečení u vstupů, které chcete často nebo snadno měnit, například informace o připojení. Další informace najdete v těchto tématech:
    >
    > * [Parametry šablony pro nasazení](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)
    > * [Autorizovat připojení OAuth](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md#authorize-oauth-connections)

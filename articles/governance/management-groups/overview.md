@@ -4,12 +4,12 @@ description: Další informace o skupinách pro správu, fungování jejich opr�
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.date: 12/18/2019
 ms.topic: overview
-ms.openlocfilehash: a8b087eeaa2f087e79a4d05764199e3b72b6ec66
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 319f48d4d0f8ce8501fecb74282760340b597188
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77151968"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186985"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Uspořádání vašich prostředků s využitím skupin pro správu Azure
 
@@ -23,7 +23,7 @@ Můžete vytvořit flexibilní strukturu skupin pro správu a předplatných a u
 
 ![Příklad hierarchického stromu skupin pro správu](./media/tree.png)
 
-Můžete vytvořit hierarchii, která aplikuje zásadu, například omezení umístění virtuálních počítačů na oblast USA – západ ve skupině s názvem Produkce. Tato zásada zdědí všechna předplatná EA, která jsou následníky této skupiny pro správu, a uplatní se na všechny virtuální počítače v těchto předplatných. Tuto zásadu zabezpečení nemůže změnit vlastník prostředku ani předplatného. Výsledkem je vylepšení zásad správného řízení.
+Můžete vytvořit hierarchii, která aplikuje zásadu, například omezení umístění virtuálních počítačů na oblast USA – západ ve skupině s názvem Produkce. Tato zásada bude dědit na všechna předplatná smlouva Enterprise (EA), která jsou následníky této skupiny pro správu a bude platit pro všechny virtuální počítače v těchto předplatných. Tuto zásadu zabezpečení nemůže změnit vlastník prostředku ani předplatného. Výsledkem je vylepšení zásad správného řízení.
 
 Dalším scénářem, kde by se skupiny pro správu použily, je poskytnutí uživatelského přístupu k několika předplatným. Přesunutím několika předplatných do skupiny pro správu můžete v této skupině vytvořit jedno přiřazení [řízení přístupu na základě role](../../role-based-access-control/overview.md) (RBAC), které zdědí tento přístup pro všechna předplatná.
 Jedno přiřazení v rámci skupiny pro správu tak může uživatelům umožnit přístup ke všemu, co potřebují, a není potřeba vytvářet skript řízení přístupu na základě role pro různá předplatná.
