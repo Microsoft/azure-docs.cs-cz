@@ -11,20 +11,18 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 0d69f762cea53f2a4c022ad6dddb52faeced1adf
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 4aa0cce83f9adc8c648656899ec6dc12d498e26b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703333"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160444"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Rychlý Start: Přidání přihlašování pomocí OpenID připojení k webové aplikaci Node. js
 
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
-
 V tomto rychlém startu se dozvíte, jak nastavit ověřování OpenID Connect ve webové aplikaci vytvořené pomocí Node. js s Express. Ukázka je navržená tak, aby běžela na jakékoli platformě.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení této ukázky budete potřebovat:
 
@@ -57,7 +55,7 @@ K provedení této ukázky budete potřebovat:
     - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na `http://localhost:3000`.
     - V části **Upřesnit nastavení > implicitního udělení oprávnění** ověřte **tokeny ID** , protože tato ukázka vyžaduje, aby byl [tok implicitního udělení](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) povolen k přihlášení uživatele.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 1. Na stránce **certifikáty & tajné klíče** v části **tajné klíče klienta** vyberte možnost **nový tajný klíč klienta**.
     - Zadejte popis klíče (např. tajný klíč aplikace).
@@ -74,7 +72,7 @@ Z prostředí nebo příkazového řádku:
 
 `$ git clone git@github.com:AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
-– nebo –
+nebo
 
 `$ git clone https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git`
 
@@ -100,7 +98,7 @@ Výchozí úložiště relací v této ukázce je `express-session`. Výchozí �
 
 * Aktualizujte `exports.databaseUri`, pokud chcete použít úložiště relace mongoDB a jiný identifikátor URI databáze.
 
-* Aktualizace `exports.mongoDBSessionMaxAge`. Tady můžete určit, jak dlouho chcete uchovat relaci v mongoDB. Jednotka má sekundu (y).
+* `exports.mongoDBSessionMaxAge`aktualizace. Tady můžete určit, jak dlouho chcete uchovat relaci v mongoDB. Jednotka má sekundu (y).
 
 ## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 
@@ -120,7 +118,7 @@ $ npm install -g bunyan
 $ node app.js | bunyan
 ```
 
-### <a name="youre-done"></a>A je to hotové!
+### <a name="youre-done"></a>Už jste hotovi!
 
 Na `http://localhost:3000`budete mít úspěšné spuštění serveru.
 

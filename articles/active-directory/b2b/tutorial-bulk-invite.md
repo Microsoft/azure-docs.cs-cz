@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c43f1fe0d5850b53f0f72f05633e498a94d871c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149300"
+ms.locfileid: "77166440"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Kurz: Hromadná Pozvánka pro uživatele spolupráce Azure AD B2B (Preview)
 
@@ -27,7 +27,7 @@ ms.locfileid: "77149300"
 
 > [!NOTE]
 > Od 12/22/2019 byla funkce hromadného pozvání uživatelů (Preview) dočasně zakázaná.
-> V současné době není k dispozici žádné známé datum, kdy bude tato funkce znovu povolena v Azure Portal. Pokud chcete uživatele typu Host pozvat hromadně pomocí prostředí PowerShell, přečtěte si [ukázky kódu a PowerShellu pro B2B](code-samples.md).
+> V současné době není k dispozici žádné známé datum, kdy bude tato funkce znovu povolena v Azure Portal. Pokud chcete uživatele typu Host pozvat hromadně pomocí PowerShellu, přečtěte si [kurz hromadného pozvání B2B](bulk-invite-powershell.md) nebo [ukázky kódu a PowerShellu pro B2B](code-samples.md).
 
 Pokud k práci se svými externími partnery používáte spolupráci B2B služby Azure Active Directory (Azure AD), můžete do organizace pozvat více uživatelů typu host najednou. V tomto kurzu se naučíte, jak pomocí Azure Portal posílat hromadné pozvánky externím uživatelům. Konkrétně provedete následující:
 

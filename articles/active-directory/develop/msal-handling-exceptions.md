@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 75893a85f975d5d1454f1b93535a1df7a45e8731
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 018d0c3bc009f6063de75b9a479be650b2c06e7c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084013"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160840"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Zpracování výjimek a chyb MSAL
 
@@ -69,7 +69,7 @@ Interakce se zaměřuje na to, že uživatel provede akci. Některé z těchto p
 
 MSAL zpřístupňuje pole `Classification`, které si můžete přečíst a zajistit tak lepší uživatelské prostředí, například oznámit uživateli, že jeho heslo vypršelo nebo že budou muset vyjádřit souhlas s používáním některých prostředků. Podporované hodnoty jsou součástí výčtu `UiRequiredExceptionClassification`:
 
-| Klasifikace    | Význam           | Doporučené zpracování |
+| Classification    | Význam           | Doporučené zpracování |
 |-------------------|-------------------|----------------------|
 | BasicAction | Podmínku lze vyřešit interakcí uživatele během interaktivního toku ověřování. | Zavolejte AcquireTokenInteractively (). |
 | AdditionalAction | Podmínku lze vyřešit pomocí další nápravné interakce se systémem, mimo tok interaktivního ověřování. | Zavolejte AcquireTokenInteractively (), aby se zobrazila zpráva s vysvětlením nápravné akce. Volání aplikace se může rozhodnout pro skrytí toků vyžadujících additional_action, pokud uživatel pravděpodobně nedokončí akci nápravy. |
@@ -78,7 +78,7 @@ MSAL zpřístupňuje pole `Classification`, které si můžete přečíst a zaji
 | UserPasswordExpired | Vypršela platnost hesla uživatele. | Zavolejte AcquireTokenInteractively (), aby uživatel mohl resetovat svoje heslo. |
 | PromptNeverFailed| Interaktivní ověřování bylo voláno s parametrem Prompt = nikdy, což MSAL vynutí spoléhání na soubory cookie prohlížeče, a ne pro zobrazení prohlížeče. Tato operace se nezdařila. | Volat AcquireTokenInteractively () bez výzvy. None |
 | AcquireTokenSilentFailed | Sada MSAL SDK nemá dostatek informací pro načtení tokenu z mezipaměti. To může být způsobeno tím, že v mezipaměti nejsou žádné tokeny, nebo nebyl nalezen žádný účet. Chybová zpráva obsahuje další podrobnosti.  | Zavolejte AcquireTokenInteractively (). |
-| Žádný    | Nejsou k dispozici žádné další podrobnosti. Podmínku může vyřešit interakce uživatele během toku interaktivního ověřování. | Zavolejte AcquireTokenInteractively (). |
+| Žádná    | Nejsou k dispozici žádné další podrobnosti. Podmínku může vyřešit interakce uživatele během toku interaktivního ověřování. | Zavolejte AcquireTokenInteractively (). |
 
 ## <a name="net-code-example"></a>Příklad kódu .NET
 
@@ -506,7 +506,7 @@ Následující vzorový kód v jazyce C předvádí osvědčené postupy pro zpr
 
 ## <a name="conditional-access-and-claims-challenges"></a>Podmíněný přístup a výzvy k deklaracím
 
-Při tichém získávání tokenů může vaše aplikace obdržet chyby, když se v rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásada MFA [, jako je](conditional-access-dev-guide.md) například zásada MFA.
+Při tichém získávání tokenů může vaše aplikace obdržet chyby, když se v rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásada MFA [, jako je](../azuread-dev/conditional-access-dev-guide.md) například zásada MFA.
 
 Vzor pro zpracování této chyby je interaktivní získání tokenu pomocí MSAL. Při interaktivním získání tokenu se uživateli zobrazí výzva, aby si vyžádali splnění požadovaných zásad podmíněného přístupu.
 
@@ -520,7 +520,7 @@ Pro zpracování výzvy deklarací identity budete muset použít metodu `.WithC
 
 ### <a name="javascript"></a>JavaScript
 
-Při tichém získávání tokenů (pomocí `acquireTokenSilent`) pomocí MSAL. js může vaše aplikace obdržet chyby, když rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásady MFA [, jako je](conditional-access-dev-guide.md) například zásada MFA.
+Při tichém získávání tokenů (pomocí `acquireTokenSilent`) pomocí MSAL. js může vaše aplikace obdržet chyby, když rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásady MFA [, jako je](../azuread-dev/conditional-access-dev-guide.md) například zásada MFA.
 
 Vzor pro zpracování této chyby je provést interaktivní volání metody získání tokenu v MSAL. js, jako je například `acquireTokenPopup` nebo `acquireTokenRedirect` jako v následujícím příkladu:
 

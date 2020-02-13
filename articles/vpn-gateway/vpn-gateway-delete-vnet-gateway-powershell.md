@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.date: 02/07/2019
 ms.author: cherylmc
 ms.topic: conceptual
-ms.openlocfilehash: 2c02b656f8d7879115d25516bf49f49d9921a290
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: f351f14796ec736bd5525f139a518c9a0dd3d19f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146324"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162102"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Odstranění brány virtuální sítě pomocí PowerShellu
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ Existuje několik různých přístupů, které můžete provést, pokud chcete 
 
 ## <a name="before-beginning"></a>Před zahájením
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. Stáhněte nejnovější rutiny prostředí PowerShell pro Azure Resource Manager.
 

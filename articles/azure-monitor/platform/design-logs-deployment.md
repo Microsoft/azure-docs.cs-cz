@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 3d4fe7319e0af9c463bd64483f43a4e73ef8871d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2d530792e1a6f598dbf2ed66889c01cc43467ed
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395760"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162238"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Návrh nasazení Azure Monitorch protokolů
 
@@ -42,7 +42,7 @@ Určení počtu pracovních prostorů, které potřebujete, je ovlivněno jední
 
 IT organizace jsou v současnosti modelované v rámci centralizované, decentralizované nebo mezi hybridem obou struktur. V důsledku toho se běžně používají následující modely nasazení pracovního prostoru k mapování jedné z těchto organizačních struktur:
 
-* **Centralizované**: všechny protokoly jsou uloženy v centrálním pracovním prostoru a spravovány jedním týmem, a Azure monitor poskytují rozlišený přístup pro každý tým. V tomto scénáři se dá snadno spravovat, Hledat v různých zdrojích a protokoly napříč korelacemi. Pracovní prostor se může významně zvýšit v závislosti na množství dat shromážděných z několika prostředků v rámci vašeho předplatného, s dodatečnými administrativními režijními náklady na řízení přístupu pro různé uživatele.
+* **Centralizované**: všechny protokoly jsou uloženy v centrálním pracovním prostoru a spravovány jedním týmem, a Azure monitor poskytují rozlišený přístup pro každý tým. V tomto scénáři se dá snadno spravovat, Hledat v různých zdrojích a protokoly napříč korelacemi. Pracovní prostor se může významně zvýšit v závislosti na množství dat shromážděných z několika prostředků v rámci vašeho předplatného, s dodatečnými administrativními režijními náklady na řízení přístupu pro různé uživatele. Tento model se označuje jako hub a paprsek.
 * **Decentralizované**: každý tým má vlastní pracovní prostor vytvořený ve skupině prostředků, kterou vlastní a spravuje, a data protokolu se oddělí na jeden prostředek. V tomto scénáři je možné pracovní prostor uchovat zabezpečeně a řízení přístupu je konzistentní s přístupem k prostředkům, ale je obtížné protokolovat mezi korelacemi. Uživatelé, kteří potřebují široké zobrazení mnoha prostředků, nemůžou analyzovat data smysluplným způsobem.
 * **Hybridní**: požadavky na dodržování předpisů audit zabezpečení dále komplikuje tento scénář, protože mnoho organizací implementuje současně oba modely nasazení. To obvykle vede ke složitým, nákladným a pevným konfiguracím, a to s mezerami v protokolech pokrytí.
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.openlocfilehash: f3cafb4d2df4d1944f583a99ca2014f3841827d0
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ccece6c840033913ec6d96b446dcb98c4befb32f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701854"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159994"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Jednostránkové aplikace: volání webového rozhraní API
 
@@ -27,9 +27,9 @@ Doporučujeme, abyste před voláním webového rozhraní API zavolali metodu `a
 
 ## <a name="call-a-web-api"></a>Volání webového rozhraní API
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Pomocí získaného přístupového tokenu jako nosiče v požadavku HTTP můžete volat libovolné webové rozhraní API, například Microsoft Graph API. Například:
+Pomocí získaného přístupového tokenu jako nosiče v požadavku HTTP můžete volat libovolné webové rozhraní API, například Microsoft Graph API. Příklad:
 
 ```javascript
     var headers = new Headers();
@@ -47,9 +47,11 @@ Pomocí získaného přístupového tokenu jako nosiče v požadavku HTTP může
         }
 ```
 
-### <a name="angular"></a>Úhlová
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Úhlová obálka MSAL využívá výhod zachytávací protokolu HTTP k tichému získání přístupových tokenů a k jejich připojení k požadavkům protokolu HTTP na rozhraní API. Další informace najdete v tématu [získání tokenu pro volání rozhraní API](scenario-spa-acquire-token.md).
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

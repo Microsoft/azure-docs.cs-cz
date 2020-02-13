@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: a96a3de7c8ad309986417e21a13d5e18f56cbd24
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a279aebdd19ebd3a41ddad0c1c279937e00838c2
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934128"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168466"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Časté otázky týkající se řeči na text
 
@@ -110,7 +110,7 @@ a buď
 
 - přístupový token pro vaše předplatné (viz [tady](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)),
 
-– nebo –
+nebo
 
 - ID prostředku pro vaše předplatné:
   - Přejít na [Azure Portal](https://portal.azure.com),

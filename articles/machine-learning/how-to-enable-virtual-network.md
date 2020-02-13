@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 3dfdbc56456ea67c830d0e1e9785b9d0032bf2cc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988209"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169951"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečení experimentů s Azure ML a odvození úloh v rámci Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Tento článek také poskytuje podrobné informace o *pokročilých nastaveních
 > [!WARNING]
 > Microsoft nepodporuje používání návrháře Azure Machine Learning ani automatizovaného strojového učení (od studia) s prostředky v rámci virtuální sítě.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 + [Pracovní prostor](how-to-manage-workspace.md)Azure Machine Learning.
 
@@ -124,10 +124,6 @@ Pokud chcete používat Azure Machine Learning možnosti experimentování s Azu
 <a id="amlcompute"></a>
 
 ## <a name="compute-instance"></a>Použít Výpočetní prostředky služby Machine Learning
-
-> [!NOTE]
-> Výpočetní instance (Preview) jsou v tuto chvíli dostupné jenom pro pracovní prostory s oblastí **střed USA – sever** nebo **Velká Británie – jih**, která už brzy podporuje další oblasti.
-> Jednu z těchto oblastí použijte k vytvoření výpočetní instance, kterou je možné přidat do virtuální sítě.
 
 Chcete-li použít výpočetní instanci nebo výpočetní cluster Azure Machine Learning ve virtuální síti, musí být splněny následující požadavky na síť:
 
@@ -319,7 +315,7 @@ Konkrétní informace o použití Azure Databricks s virtuální sítí najdete 
 
 Pokud chcete použít virtuální počítač nebo cluster Azure HDInsight ve virtuální síti s vaším pracovním prostorem, použijte následující postup:
 
-1. Vytvořte virtuální počítač nebo cluster HDInsight pomocí Azure Portal nebo Azure CLI a vložte cluster do virtuální sítě Azure. Další informace najdete v těchto článcích:
+1. Vytvořte virtuální počítač nebo cluster HDInsight pomocí Azure Portal nebo Azure CLI a vložte cluster do virtuální sítě Azure. Další informace najdete v následujících článcích:
     * [Vytváření a správa virtuálních sítí Azure pro virtuální počítače se systémem Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [Rozšiřování HDInsight pomocí virtuální sítě Azure](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
@@ -508,5 +504,5 @@ Další informace o konfiguraci pravidla sítě najdete v tématu [nasazení a k
 ## <a name="next-steps"></a>Další kroky
 
 * [Nastavení školicích prostředí](how-to-set-up-training-targets.md)
-* [Kam chcete nasazovat modely](how-to-deploy-and-where.md)
+* [Místo nasazení modelů](how-to-deploy-and-where.md)
 * [Bezpečné nasazení modelů pomocí protokolu SSL](how-to-secure-web-service.md)

@@ -13,12 +13,12 @@ ms.date: 10/05/2018
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 372eac63b2ab9ea7dea540a088d61a5144886686
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dc7771f29fb5d00aedfe5162a98f5f0c14544a7b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698590"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161167"
 ---
 # <a name="how-azure-ad-uses-the-saml-protocol"></a>Jak Azure AD využívá protokol SAML
 
@@ -36,4 +36,4 @@ Azure Active Directory zveřejňuje jednotné přihlašování (nezávislé na k
 
 * Koncový bod nezávislý na klientovi je umístěný na adrese `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. V této adrese koncového bodu se **běžně** zobrazuje název domény klienta nebo ID.
 
-Informace o dokumentech federačních metadat, které zveřejňuje Azure AD, najdete v tématu [federační metadata](azure-ad-federation-metadata.md).
+Informace o dokumentech federačních metadat, které zveřejňuje Azure AD, najdete v tématu [federační metadata](../azuread-dev/azure-ad-federation-metadata.md).

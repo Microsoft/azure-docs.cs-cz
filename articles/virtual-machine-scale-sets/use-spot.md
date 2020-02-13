@@ -6,14 +6,14 @@ tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544782"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162680"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Verze Preview: virtuální počítače Azure ve službě Virtual Machine Scale Sets 
 
@@ -25,7 +25,6 @@ Množství dostupné kapacity se může lišit v závislosti na velikosti, oblas
 > Instance přímých instancí jsou momentálně ve verzi Public Preview.
 > Tato verze Preview se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> V první části verze Public Preview budou mít instance pro tisk pevnou cenu, takže se neúčtují žádné vyřazení na základě cen.
 
 ## <a name="pricing"></a>Ceny
 
@@ -89,7 +88,7 @@ $vmssConfig = New-AzVmssConfig `
     --max-price -1
 ```
 
-## <a name="resource-manager-templates"></a>Šablony Správce prostředků
+## <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
 Proces vytvoření sady škálování, která používá bodové virtuální počítače, je stejný, jak je popsáno v článku Začínáme pro [Linux](quick-create-template-linux.md) nebo [Windows](quick-create-template-windows.md). 
 
@@ -105,7 +104,7 @@ Pro nasazení šablon přímých verzí použijte`"apiVersion": "2019-03-01"` ne
 
 Chcete-li odstranit instanci poté, co byla vyřazena, změňte parametr `evictionPolicy` na `Delete`.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Otázka:** Po vytvoření je stejná jako instance stejné jako standardní instance?
 
@@ -163,9 +162,9 @@ Chcete-li odstranit instanci poté, co byla vyřazena, změňte parametr `evicti
 | Smlouva Enterprise         | Ano                               |
 | Průběžné platby                | Ano                               |
 | Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| Výhody                     | Není k dispozici                     |
-| Sponzorováno                    | Není k dispozici                     |
-| Bezplatná zkušební verze                   | Není k dispozici                     |
+| Výhody                     | Není k dispozici.                     |
+| Financovan                    | Není k dispozici.                     |
+| Bezplatná zkušební verze                   | Není k dispozici.                     |
 
 
 **Otázka:** Kde můžu publikovat otázky?

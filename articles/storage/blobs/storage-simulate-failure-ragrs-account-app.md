@@ -9,20 +9,20 @@ ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 522ed13681a98535c35552128fc8432782ec1ca2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892443"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162697"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Kurz: simulace selhání při čtení dat z primární oblasti
 
-Tento kurz je druhá část série. V takovém případě se dozvíte o výhodách [geograficky redundantního redundantního](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) úložiště (RA-GRS) s přístupem pro čtení, a to simulací selhání.
+Tento kurz je druhá část série. V takovém případě se dozvíte o výhodách [geograficky redundantního úložiště s přístupem pro čtení](../common/storage-redundancy.md) (RA-GRS) při simulaci selhání.
 
-Aby se mohla simulovat chyba, můžete použít buď [statické směrování](#simulate-a-failure-with-an-invalid-static-route) , nebo [Fiddler](#simulate-a-failure-with-fiddler). Obě metody vám umožní simulovat selhání požadavků na primární koncový bod vašeho [geograficky redundantního úložiště s přístupem pro čtení](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS), což způsobí, že aplikace načte ze sekundárního koncového bodu.
+Aby se mohla simulovat chyba, můžete použít buď [statické směrování](#simulate-a-failure-with-an-invalid-static-route) , nebo [Fiddler](#simulate-a-failure-with-fiddler). Obě metody vám umožní simulovat selhání požadavků na primární koncový bod vašeho [geograficky redundantního úložiště s přístupem pro čtení](../common/storage-redundancy.md) (RA-GRS), což způsobí, že aplikace načte ze sekundárního koncového bodu.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 Ve druhé části této série se naučíte:
 
@@ -41,7 +41,7 @@ Postup při simulaci selhání pomocí Fiddler, stažení a [instalace Fiddler](
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>Simulace selhání pomocí neplatné statické trasy
 
-Pro všechny žádosti na primární koncový bod vašeho účtu [geograficky redundantního úložiště jen pro čtení](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) můžete vytvořit neplatnou statickou trasu. V tomto kurzu se používá místní hostitel jako brána pro směrování žádostí na účet úložiště. Použití místního hostitele jako brány způsobí, že všechny žádosti na primární koncový bod vašeho účtu úložiště se ve smyčce vrátí zpět do hostitele, což následně povede k selhání. Následujícím postupem nasimulujete selhání a obnovení primárního koncového bodu pomocí neplatné statické trasy.
+Pro všechny žádosti na primární koncový bod vašeho účtu [geograficky redundantního úložiště jen pro čtení](../common/storage-redundancy.md) (RA-GRS) můžete vytvořit neplatnou statickou trasu. V tomto kurzu se používá místní hostitel jako brána pro směrování žádostí na účet úložiště. Použití místního hostitele jako brány způsobí, že všechny žádosti na primární koncový bod vašeho účtu úložiště se ve smyčce vrátí zpět do hostitele, což následně povede k selhání. Následujícím postupem nasimulujete selhání a obnovení primárního koncového bodu pomocí neplatné statické trasy.
 
 ### <a name="start-and-pause-the-application"></a>Spuštění a pozastavení aplikace
 

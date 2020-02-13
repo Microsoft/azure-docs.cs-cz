@@ -10,14 +10,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 242f2fa9885f3f85439caddd061f650baafb8df4
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: e8a91647d7532a9904901c247bb0b4096ffa0a1c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314419"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161694"
 ---
-# <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – streamovací platforma pro velký objem dat a služba ingestování událostí
+# <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – platforma pro zpracování velkých objemů dat a služba pro příjem událostí
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro příjem událostí. Může přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání.
 
 Následující scénáře jsou některé z scénářů, ve kterých můžete použít Event Hubs:
@@ -61,31 +61,30 @@ Pomocí Event Hubs můžete začít se streamy v megabajtech a přejít na gigab
 
 [Event Hubs Apache Kafka ekosystémů](event-hubs-for-kafka-ecosystem-overview.md) umožňuje klientům a aplikacím [Apache Kafka (1,0 a novějším)](https://kafka.apache.org/) komunikovat s Event Hubs. Nemusíte nastavovat, konfigurovat a spravovat vlastní clustery Kafka.
 
-Díky širokému ekosystému dostupnému v různých [jazycích (.NET, Java, Python, Go, Node.js)](https://github.com/Azure/azure-event-hubs) můžete snadno začít zpracovávat streamy ze služby Event Hubs. Všechny podporované jazyky klientů poskytují integraci na nízké úrovni. Ekosystém taky poskytuje bezproblémovou integraci se službami Azure, jako jsou Azure Stream Analytics a Azure Functions, takže umožňuje vytvářet architektury bez serveru.
+Díky širokému ekosystému dostupnému v různých [jazycích (.NET, Java, Python, přejít, JavaScript)](https://github.com/Azure/azure-event-hubs)můžete snadno začít zpracovávat datové proudy z Event Hubs. Všechny podporované jazyky klientů poskytují integraci na nízké úrovni. Ekosystém taky poskytuje bezproblémovou integraci se službami Azure, jako jsou Azure Stream Analytics a Azure Functions, takže umožňuje vytvářet architektury bez serveru.
 
 ## <a name="key-architecture-components"></a>Klíčové komponenty architektury
 Event Hubs obsahuje následující [klíčové komponenty](event-hubs-features.md):
 
-- **Výrobci událostí**: Každá entita, která odesílá data do centra událostí. Vydavatelé událostí můžou publikovat události pomocí protokolu HTTPS nebo AMQP 1.0 nebo Apache Kafka (1.0 nebo vyšší).
-- **Oddíly**: Každý příjemce přečte jenom určitou podmnožinu nebo oddíl datového proudu zpráv.
-- **Skupiny uživatelů**: Zobrazení (stav, pozice nebo posun) celého centra událostí. Skupiny uživatelů umožňují využívání aplikací pro každý z nich samostatné zobrazení datového proudu událostí. Čtou Stream nezávisle na vlastním tempu a s jejich vlastními posuny.
-- **Jednotky propustnosti**: Předem zakoupené jednotky kapacity, které řídí kapacitu propustnosti Event Hubs.
-- **Přijímače událostí**: Libovolná entita, která čte data událostí z centra událostí. Všichni Event Hubs spotřebitelé se připojují prostřednictvím relace AMQP 1,0. Služba Event Hubs doručuje události prostřednictvím relace, jakmile budou k dispozici. Všichni příjemci Kafka se připojují přes protokol Kafka 1.0 nebo novější.
+- **Poskytovatelé událostí**: Entita, která posílá data do centra událostí. Vydavatelé událostí můžou publikovat události pomocí protokolu HTTPS nebo AMQP 1.0 nebo Apache Kafka (1.0 nebo vyšší).
+- **Oddíly**: Každý příjemce čte jenom konkrétní podmnožinu, neboli oddíl, streamu zprávy.
+- **Skupiny příjemců**: Zobrazení (stav, pozice nebo posun) celého centra událostí. Skupiny uživatelů umožňují využívání aplikací pro každý z nich samostatné zobrazení datového proudu událostí. Čtou Stream nezávisle na vlastním tempu a s jejich vlastními posuny.
+- **Jednotky propustnosti**: Předem koupené jednotky kapacity, které řídí kapacitu propustnosti služby Event Hubs.
+- **Příjemci událostí**: Entita, která čte data událostí z centra událostí. Všichni Event Hubs spotřebitelé se připojují prostřednictvím relace AMQP 1,0. Služba Event Hubs doručuje události prostřednictvím relace, jakmile budou k dispozici. Všichni příjemci Kafka se připojují přes protokol Kafka 1.0 nebo novější.
 
 Následující obrázek znázorňuje architekturu zpracování datového proudu Event Hubs:
 
 ![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud chcete začít používat Event Hubs, přečtěte si kurzy pro **události odeslání a příjem** :
 
-- [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-- [.NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
-- [Java](event-hubs-java-get-started-send.md)
-- [Python](event-hubs-python-get-started-send.md)
-- [Node.js](event-hubs-node-get-started-send.md)
+- [.NET Core](get-started-dotnet-standard-send-v2.md)
+- [Java](get-started-java-send-v2.md)
+- [Python](get-started-python-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (pouze odeslat)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (pouze příjem)](event-hubs-storm-getstarted-receive.md)

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca24cbdd9541456cbaa3f384587fee17d47f5ca2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
-ms.translationtype: HT
+ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864107"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157903"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurace připojení typu VNet-to-VNet (Classic)
 
@@ -33,7 +33,7 @@ Tento článek vám pomůže vytvořit připojení brány VPN mezi virtuálními
 
 ![Diagram připojení virtuální sítě k virtuální síti](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ## <a name="about-vnet-to-vnet-connections"></a>Informace o propojeních VNet-to-VNet
 
@@ -73,10 +73,10 @@ Následující tabulka ukazuje příklad definování virtuální sítě. Rozsah
 
 **Příklad**
 
-| Virtual Network | Adresní prostor | Region (Oblast) | Připojí se k místní síťové lokalitě. |
+| Virtuální síť | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA – východ |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
-| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA – západ |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
+| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Západní USA |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 ## <a name="vnetvalues"></a>Krok 2 – Vytvoření virtuálních sítí
 
@@ -98,7 +98,7 @@ Adresní prostor: 10.11.0.0/16, 10.12.0.0/16 (volitelné)<br>
 Název podsítě: výchozí<br>
 Rozsah adres podsítě: 10.11.0.1/24<br>
 Skupina prostředků: ClassicRG<br>
-Umístění: USA – východ<br>
+Umístění: Východní USA<br>
 GatewaySubnet: 10.11.1.0/27
 
 **Hodnoty pro virtuální sítě testvnet4**
@@ -108,7 +108,7 @@ Adresní prostor: 10.41.0.0/16, 10.42.0.0/16 (volitelné)<br>
 Název podsítě: výchozí<br>
 Rozsah adres podsítě: 10.41.0.1/24<br>
 Skupina prostředků: ClassicRG<br>
-Umístění: USA – západ<br>
+Umístění: Západní USA<br>
 GatewaySubnet: 10.41.1.0/27
 
 **Při vytváření virtuální sítě Pamatujte na následující nastavení:**
@@ -135,10 +135,10 @@ Například virtuální sítě testvnet1 se připojí k místní síťové lokal
 
 Místní lokalita pro každou virtuální síť je druhá virtuální síť. Následující příklady hodnot se používají pro naši konfiguraci:
 
-| Virtual Network | Adresní prostor | Region (Oblast) | Připojí se k místní síťové lokalitě. |
+| Virtuální síť | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA – východ |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
-| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |USA – západ |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
+| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Západní USA |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 1. Vyhledejte virtuální sítě testvnet1 v Azure Portal. V části **připojení VPN** na stránce klikněte na **Brána**.
 
@@ -160,7 +160,7 @@ Každá virtuální síť musí mít bránu virtuální sítě. Brána virtuáln
 3. Název podsítě brány se vyplní automaticky s požadovaným názvem ' GatewaySubnet '. **Rozsah adres** obsahuje IP adresy, které jsou přiděleny službám brány VPN. Některé konfigurace umožňují podsíť brány/29, ale je vhodné použít a/28 nebo/27, aby vyhovovaly budoucím konfiguracím, které mohou vyžadovat více IP adres pro služby brány. V našem příkladu nastavení používáme 10.11.1.0/27. Upravte adresní prostor a pak klikněte na **OK**.
 4. Nakonfigurujte **Velikost brány**. Toto nastavení odkazuje na [SKU brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 5. Nakonfigurujte **typ směrování**. Typ směrování pro tuto konfiguraci musí být **dynamický**. Typ směrování nemůžete později změnit, pokud nechcete bránu odtrhnout a vytvořit novou.
-6. Klikněte na **OK**.
+6. Klikněte na tlačítko **OK**.
 7. Na stránce **nové připojení VPN** klikněte na **OK** a začněte vytvářet bránu virtuální sítě. Vytvoření brány může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové jednotce (SKU) brány.
 
 ## <a name="vnet4settings"></a>Krok 5 – Konfigurace nastavení virtuální sítě testvnet4

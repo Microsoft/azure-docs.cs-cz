@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fdb558267d823657f6a735d8b96efde33cdb8383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 02/11/2020
+ms.openlocfilehash: b6147e45ca686328b1702faa5a8d50d9a75e50d6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466530"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157835"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Správa služby Azure Kognitivní hledání pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -22,25 +22,21 @@ ms.locfileid: "73466530"
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
+> * > [Pythonu](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0) 
 
-Rutiny a skripty prostředí PowerShell můžete spustit v systému Windows, Linux nebo v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) a vytvořit a nakonfigurovat Azure kognitivní hledání. Modul **AZ. Search** rozšiřuje Azure PowerShell] o úplnou paritu [rozhraní REST API pro správu Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchmanagement). Pomocí Azure PowerShell a **AZ. Search**můžete provádět následující úlohy:
+Rutiny a skripty prostředí PowerShell můžete spustit v systému Windows, Linux nebo v [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) a vytvořit a nakonfigurovat Azure kognitivní hledání. Modul **AZ. Search** rozšiřuje [Azure PowerShell](https://docs.microsoft.com/powershell/) o úplnou paritu [rozhraní REST API pro správu vyhledávání](https://docs.microsoft.com/rest/api/searchmanagement) a možnost provádět následující úlohy:
 
 > [!div class="checklist"]
-> * [Vypíše všechny vyhledávací služby v rámci vašeho předplatného.](#list-search-services)
-> * [Získat informace o konkrétní vyhledávací službě](#get-search-service-information)
+> * [Seznam služeb vyhledávání v předplatném](#list-search-services)
+> * [Vrátit informace o službě](#get-search-service-information)
 > * [Vytvoření nebo odstranění služby](#create-or-delete-a-service)
 > * [Znovu vygenerovat klíče rozhraní API pro správu](#regenerate-admin-keys)
 > * [Vytvoření nebo odstranění rozhraní API pro dotazování klíčů](#create-or-delete-query-keys)
-> * [Škálování služby pomocí zvýšení nebo snížení velikosti replik a oddílů](#scale-replicas-and-partitions)
+> * [Horizontální navýšení nebo snížení kapacity díky replikám a oddílům](#scale-replicas-and-partitions)
 
-PowerShell nelze použít ke změně názvu, oblasti nebo úrovně vaší služby. Vyhrazené prostředky jsou přiděleny při vytvoření služby. Změna základního hardwaru (umístění nebo typu uzlu) vyžaduje novou službu. Pro přenos obsahu z jedné služby do jiné nejsou k dispozici žádné nástroje ani rozhraní API. Veškerá správa obsahu je prostřednictvím rozhraní [REST](https://docs.microsoft.com/rest/api/searchservice/) API nebo rozhraní [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) API a pokud chcete přesunout indexy, budete je muset znovu vytvořit a znovu načíst v nové službě. 
+V některých případech se otázky týkají úkolů, které *nejsou* uvedené na seznamu výše. V současné době nemůžete použít modul **AZ. Search** ani REST API správy ke změně názvu serveru, oblasti nebo vrstvy. Vyhrazené prostředky jsou přiděleny při vytvoření služby. Například změna základního hardwaru (umístění nebo typu uzlu) vyžaduje novou službu. Podobně nejsou k dispozici žádné nástroje ani rozhraní API pro přenos obsahu, jako je například index, z jedné služby do jiné.
 
-I když pro správu obsahu nejsou k dispozici žádné vyhrazené příkazy prostředí PowerShell, můžete napsat skript prostředí PowerShell, který volá REST nebo .NET pro vytváření a načítání indexů. Modul **AZ. Search** sám o sobě neposkytuje tyto operace.
-
-Jiné úkoly, které nejsou podporované prostřednictvím PowerShellu nebo žádné jiné rozhraní API (jenom na portálu), zahrnují:
-+ [Připojte prostředek služby poruchy](cognitive-search-attach-cognitive-services.md) pro [indexování obohacenou AI](cognitive-search-concept-intro.md). Služba rozpoznávání je připojená k dovednosti, nikoli k předplatnému nebo službě.
-+ [Řešení monitorování doplňku](search-monitor-usage.md#add-on-monitoring-solutions) pro monitorování Azure kognitivní hledání.
+V rámci služby je vytváření a Správa obsahu prostřednictvím [Search Service REST API](https://docs.microsoft.com/rest/api/searchservice/) nebo [.NET SDK](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search). I když pro obsah nejsou k dispozici žádné vyhrazené příkazy prostředí PowerShell, můžete napsat skript prostředí PowerShell, který volá rozhraní REST nebo rozhraní .NET API k vytváření a načítání indexů.
 
 <a name="check-versions-and-load"></a>
 
@@ -92,7 +88,7 @@ Select-AzSubscription -SubscriptionName ContosoSubscription
 
 <a name="list-search-services"></a>
 
-## <a name="list-all-azure-cognitive-search-services-in-your-subscription"></a>Vypsat všechny služby Azure Kognitivní hledání ve vašem předplatném
+## <a name="list-services-in-a-subscription"></a>Seznam služeb v předplatném
 
 Následující příkazy jsou z [**AZ. Resources**](https://docs.microsoft.com/powershell/module/az.resources/?view=azps-1.4.0#resources)a vracejí informace o stávajících prostředcích a službách, které jsou už ve vašem předplatném zřízené. Pokud si nejste jisti, kolik služeb vyhledávání již bylo vytvořeno, tyto příkazy tyto příkazy vrátí, a tím ušetříte cestu k portálu.
 
@@ -197,11 +193,11 @@ Tags
 
 [**New-AzSearchAdminKey**](https://docs.microsoft.com/powershell/module/az.search/new-azsearchadminkey?view=azps-1.4.0) se používá k kumulativnímu navýšení [klíčů rozhraní API](search-security-api-keys.md)pro správu. Dva klíče správce se vytvoří s každou službou pro ověřený přístup. Klíče jsou požadovány při každém požadavku. Oba klíče správce jsou funkčně ekvivalentní, což poskytuje úplný přístup pro zápis do vyhledávací služby s možností načíst libovolné informace nebo vytvořit a odstranit libovolný objekt. Existují dva klíče, abyste je mohli použít při nahrazování druhé. 
 
-Najednou můžete znovu vygenerovat jenom jednu, zadanou buď `primary` nebo `secondary` klíč. U nepřerušované služby nezapomeňte aktualizovat veškerý kód klienta, aby používal sekundární klíč, a přitom přenášet primární klíč. Vyhněte se změnám klíčů, když jsou operace v letu.
+Můžete znovu vygenerovat pouze jeden, který je zadán jako `primary` nebo `secondary` klíč. U nepřerušované služby nezapomeňte aktualizovat veškerý kód klienta, aby používal sekundární klíč, a přitom přenášet primární klíč. Vyhněte se změnám klíčů, když jsou operace v letu.
 
 V případě, že budete chtít znovu vygenerovat klíče bez aktualizace kódu klienta, požadavky, které používají starý klíč, nebudou úspěšné. Opětovné generování všech nových klíčů vám trvale nezamkne vaše služby a stále budete mít přístup ke službě prostřednictvím portálu. Po opětovném vygenerování primárního a sekundárního klíče můžete aktualizovat klientský kód tak, aby používal nové klíče a operace budou odpovídajícím způsobem pokračovat.
 
-Služba generuje hodnoty pro klíče rozhraní API. Nemůžete zadat vlastní klíč pro použití Azure Kognitivní hledání. Podobně není k dispozici žádný uživatelsky definovaný název pro klíče rozhraní API pro správu. Odkazy na klíč jsou pevné řetězce, buď `primary` nebo `secondary`. 
+Služba generuje hodnoty pro klíče rozhraní API. Nemůžete zadat vlastní klíč pro použití Azure Kognitivní hledání. Podobně není k dispozici žádný uživatelsky definovaný název pro klíče rozhraní API pro správu. Odkazy na klíč jsou pevné řetězce, buď `primary`, nebo `secondary`. 
 
 ```azurepowershell-interactive
 New-AzSearchAdminKey -ResourceGroupName <resource-group-name> -ServiceName <search-service-name> -KeyKind Primary

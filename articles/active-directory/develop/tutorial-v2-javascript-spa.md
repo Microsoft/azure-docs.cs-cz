@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 33e1037a0fe261f9fb0d06a9ebb0b3b323fe8d5f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5657a2d2c348b371f81aed74c92e52b5199cdc61
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701259"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159876"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Přihlaste se uživatelům a zavolejte Microsoft Graph API z jednostránkové aplikace v JavaScriptu (SPA).
 
@@ -47,11 +47,11 @@ Tato příručka používá následující knihovnu:
 
 |Knihovna|Popis|
 |---|---|
-|[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library pro JavaScript Preview|
+|[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library pro JavaScript Preview|
 
 > [!NOTE]
-> *Msal. js* cílí na koncový bod Microsoft Identity Platform, který umožňuje osobním účtům a školním a pracovním účtům přihlašovat a získávat tokeny. Koncový bod platformy Microsoft identity má [určitá omezení](azure-ad-endpoint-comparison.md#limitations).
-> Rozdíly mezi koncovými body v 1.0 a v 2.0 najdete v [Průvodci porovnáním koncových](azure-ad-endpoint-comparison.md)bodů.
+> *Msal. js* cílí na koncový bod Microsoft Identity Platform, který umožňuje osobním účtům a školním a pracovním účtům přihlašovat a získávat tokeny. Koncový bod platformy Microsoft identity má [určitá omezení](../azuread-dev/azure-ad-endpoint-comparison.md#limitations).
+> Rozdíly mezi koncovými body v 1.0 a v 2.0 najdete v [Průvodci porovnáním koncových](../azuread-dev/azure-ad-endpoint-comparison.md)bodů.
 
 <!--end-collapse-->
 
@@ -65,7 +65,7 @@ Tato příručka používá následující knihovnu:
 >
 > Chcete-li před spuštěním nakonfigurovat ukázku kódu, přejděte k [kroku konfigurace](#register-your-application).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pro spuštění tohoto kurzu potřebujete místní webový server, jako je například [Node. js](https://nodejs.org/en/download/), [.net Core](https://www.microsoft.com/net/core)nebo IIS Express integrace se sadou [Visual Studio 2017](https://www.visualstudio.com/downloads/).
 
@@ -80,7 +80,7 @@ Tato příručka používá následující knihovnu:
 >
 > ### <a name="option-2-visual-studio"></a>Možnost 2: Visual Studio
 > Pokud používáte aplikaci Visual Studio a vytváříte nový projekt, postupujte podle následujících kroků:
-> 1. V sadě Visual Studio, vyberte **souboru** > **nový** > **projektu**.
+> 1. V aplikaci Visual Studio vyberte **soubor** > **Nový** > **projekt**.
 > 1. V části **Visual C#\Web** vyberte **Webová aplikace ASP.NET (.NET Framework)** .
 > 1. Zadejte název vaší aplikace a pak vyberte **OK**.
 > 1. V části **Nová webová aplikace ASP.NET**vyberte **prázdné**.
@@ -266,7 +266,7 @@ Zabezpečené ověřování hesla vygenerované touto příručkou volá `acquir
 
 #### <a name="getting-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
-Po počátečním přihlášení nechcete požádat uživatele o opětovné ověření pokaždé, když potřebují požádat o token pro přístup k prostředku. *AcquireTokenSilent* by proto mělo být použito většinou v čase k získání tokenů. Existují však situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Patří mezi ně například:
+Po počátečním přihlášení nechcete požádat uživatele o opětovné ověření pokaždé, když potřebují požádat o token pro přístup k prostředku. *AcquireTokenSilent* by proto mělo být použito většinou v čase k získání tokenů. Existují však situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s koncovým bodem Microsoft Identity Platform. Příklady obsahují:
 
 - Uživatelé musí znovu zadat své přihlašovací údaje, protože vypršela platnost hesla.
 - Vaše aplikace požaduje přístup k prostředku a potřebujete souhlas uživatele.
@@ -325,11 +325,11 @@ Do `index.html` souboru přidejte následující kód v rámci značek `<script>
 
 ## <a name="register-your-application"></a>Registrace vaší aplikace
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 
 1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte účet v pravém horním rohu a pak nastavte relaci portálu na klienta služby Azure AD, kterého chcete použít.
 1. Přejít na stránku Microsoft Identity Platform for Developers [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) .
-1. Když se zobrazí stránka **Zaregistrovat aplikaci**, zadejte název pro vaši aplikaci.
+1. Po zobrazení stránky **Registrovat aplikaci** zadejte název vaší aplikace.
 1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 1. V části **identifikátor URI pro přesměrování** vyberte v rozevíracím seznamu **webovou** platformu a pak nastavte tuto hodnotu na adresu URL aplikace, která je založená na vašem webovém serveru.
 
@@ -339,7 +339,7 @@ Do `index.html` souboru přidejte následující kód v rámci značek `<script>
 1. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
 1. Tento rychlý Start vyžaduje, aby byl povolený [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) . V levém podokně registrované aplikace vyberte **ověřování**.
 1. V části **Upřesnit nastavení**v části **implicitní udělení**vyberte zaškrtávací políčka **tokeny ID** a **přístupové tokeny** . Tokeny ID a přístupové tokeny jsou povinné, protože tato aplikace musí přihlašovat uživatele a volat rozhraní API.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 > #### <a name="set-a-redirect-url-for-nodejs"></a>Nastavení adresy URL pro přesměrování pro Node. js
 > Pro Node. js můžete nastavit port webového serveru v souboru *Server. js* . V tomto kurzu se používá port 30662, ale můžete použít jakýkoli jiný dostupný port.

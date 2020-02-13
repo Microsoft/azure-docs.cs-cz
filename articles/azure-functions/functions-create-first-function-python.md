@@ -1,23 +1,23 @@
 ---
-title: Vytvoření funkce Python aktivované protokolem HTTP v Azure
+title: Vytvoření funkce Python bez serveru pro požadavky HTTP v Azure Functions
 description: Vytvářejte a nasaďte kód Python bez serveru do cloudu pomocí Azure Functions.
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 529a992178fae5566c8e315956388c4cd4b80257
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116213"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157886"
 ---
-# <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Rychlý Start: vytvoření funkce Python aktivované protokolem HTTP v Azure
+# <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce Pythonu v Azure, která reaguje na požadavky HTTP
 
 V tomto článku pomocí nástrojů příkazového řádku vytvoříte funkci Pythonu, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
 K dispozici je také [Visual Studio Codeá verze](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-python) tohoto článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Verze [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 nebo novější.

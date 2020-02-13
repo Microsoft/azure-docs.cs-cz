@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: ec34ed723e9b0743a9a5fbbe6413659dd63b0e8a
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134914"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162527"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
 
@@ -31,7 +31,7 @@ ms.locfileid: "77134914"
 V Azure Media Services (AMS) **kanál** představuje kanál pro zpracování obsahu živého streamování. **Kanál** přijímá živé vstupní proudy jedním ze dvou způsobů:
 
 * On-premises Live Encoder odesílá datový proud s jednou přenosovou rychlostí do kanálu, který má povolené kódování v reálném čase, pomocí Media Services v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4). Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
-* On-premises Live Encoder pošle do kanálu **RTMP** s více přenosovými rychlostmi nebo **Smooth Streaming** (fragmentovaný MP4) do kanálu, který není povolený pro provádění živého kódování v AMS. Ingestované datové proudy procházejí **kanálem**s bez dalšího zpracování. Tato metoda se nazývá **předávací**. Můžete použít následující živé kodéry, které mají výstup s více přenosovými rychlostmi Smooth Streaming: MediaExcel, Ateme, představovat komunikaci, Envivio, Cisco a prvky. Následující kodéry pro výstup jsou v reálném čase: Stream Wirecast, Haivision, Teradek a transkodéry.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* On-premises Live Encoder pošle do kanálu **RTMP** s více přenosovými rychlostmi nebo **Smooth Streaming** (fragmentovaný MP4) do kanálu, který není povolený pro provádění živého kódování v AMS. Ingestované datové proudy procházejí **kanálem**s bez dalšího zpracování. Tato metoda se nazývá **předávací**. Můžete použít následující živé kodéry, které mají výstup s více přenosovými rychlostmi Smooth Streaming: MediaExcel, Ateme, představovat komunikaci, Envivio, Cisco a prvky. Následující kodéry pro výstup jsou v reálném čase: [Stream Wirecast](media-services-configure-wirecast-live-encoder.md), Haivision, Teradek a transkodéry.  Kodér pro kódování v reálném čase může také odesílat datový proud s jednou přenosovou rychlostí do kanálu, který nemá povolené kódování v reálném čase, ale tato konfigurace se nedoporučuje. Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
   > [!NOTE]
   > Použití předávací metody je nejúčinnější způsob, jak provádět živé streamování.
@@ -146,7 +146,7 @@ Požadavky:
 * vzorkovací frekvence 44,1 kHz
 * ADTS balení stylu MPEG-2
 * Mezi Doporučené kodéry patří:
-* Wirecastový Stream
+* [Wirecastový Stream](media-services-configure-wirecast-live-encoder.md)
 * Live Encoder Flash Media
 
 #### <a name="single-bitrate-fragmented-mp4-smooth-streaming"></a>Fragmentovaný soubor MP4 s jednou přenosovou rychlostí (technologie Smooth Streaming)
@@ -219,12 +219,12 @@ Určuje předvolby, které má živý kodér používat v rámci tohoto kanálu.
 
 | Rychlostí | Šířka | Výška | MaxFPS | Profil | Název výstupního datového proudu |
 | --- | --- | --- | --- | --- | --- |
-| 3500 |1280 |720 |30 |Vysoká |Video_1280x720_3500kbps |
-| 2200 |960 |540 |30 |Vysoká |Video_960x540_2200kbps |
-| 1350 |704 |396 |30 |Vysoká |Video_704x396_1350kbps |
-| 850 |512 |288 |30 |Vysoká |Video_512x288_850kbps |
-| 550 |384 |216 |30 |Vysoká |Video_384x216_550kbps |
-| 200 |340 |192 |30 |Vysoká |Video_340x192_200kbps |
+| 3500 |1280 |720 |30 |Vysoký |Video_1280x720_3500kbps |
+| 2200 |960 |540 |30 |Vysoký |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Vysoký |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Vysoký |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Vysoký |Video_384x216_550kbps |
+| 200 |340 |192 |30 |Vysoký |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Výstupní zvukový stream
 
@@ -240,7 +240,7 @@ Když je váš kanál Live Encoding povolený, budete mít ve svém kanálu sou�
 
 Níže jsou uvedeny vlastnosti, které můžete nastavit při signalizaci inzerce. 
 
-### <a name="duration"></a>Doba trvání
+### <a name="duration"></a>Doba platnosti
 Doba trvání komerčního přerušení v sekundách. Aby bylo možné zahájit komerční přerušení, musí být to nenulová kladná hodnota. V případě, že probíhá komerční přerušení a doba trvání je nastavena na hodnotu nula s CueId odpovídajícím probíhajícímu komerčnímu přerušení, pak toto přerušení bylo zrušeno.
 
 ### <a name="cueid"></a>CueId
@@ -256,7 +256,7 @@ Kodér Live Encoder v kanálu se dá signalizovat, aby se mohl přepnout na obr�
 
 Live Encoder se dá nakonfigurovat tak, aby se v určitých situacích přepnul na obrázek s příchodem, a když se v některých případech skryje signál příchozího videa, například během přerušení reklamy. Pokud takové SLAT není nakonfigurované, vstupní video se během tohoto přerušení reklamy nemaskuje.
 
-### <a name="duration"></a>Doba trvání
+### <a name="duration"></a>Doba platnosti
 Doba trvání SLAT v sekundách. Aby bylo možné začít SLAT, musí to být nenulová kladná hodnota. Pokud je k dispozici síla k dispozici a je zadána doba trvání nula, bude ukončeno.
 
 ### <a name="insert-slate-on-ad-marker"></a>Vložit SLAT do značky reklamy
@@ -350,7 +350,7 @@ Prohlédněte si mapy kurzů k Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Související témata

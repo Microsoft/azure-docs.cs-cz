@@ -16,25 +16,25 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 12a20abb4014712f26e5827bcd1d3c822e8b25a1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750726"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162306"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostické protokoly pro centra událostí Azure
 
 Dva typy protokolů můžete zobrazit pro Azure Event Hubs:
 
-* **[Protokoly aktivit](../azure-monitor/platform/platform-logs-overview.md)** : tyto protokoly jsou informace o operace provedené na úlohu. Protokoly jsou vždy povoleny.
-* **[Diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md)** : můžete nakonfigurovat diagnostické protokoly pro bohatší zobrazení všechno, co se děje s úlohou. Diagnostické protokoly aktivit titulní od okamžiku vytvoření úlohy, až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází, když úloha běží.
+* **[Protokoly aktivit](../azure-monitor/platform/platform-logs-overview.md)** : tyto protokoly obsahují informace o operacích provedených v rámci úlohy. Protokoly jsou vždy povoleny.
+* **[Diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md)** : můžete nakonfigurovat diagnostické protokoly pro rozsáhlejší zobrazení všeho, co se stane s úlohou. Diagnostické protokoly aktivit titulní od okamžiku vytvoření úlohy, až do odstranění úlohy, včetně aktualizací a aktivity, ke kterým dochází, když úloha běží.
 
 ## <a name="enable-diagnostic-logs"></a>Povolení diagnostických protokolů
 
 Diagnostické protokoly jsou ve výchozím nastavení zakázané. Povolení diagnostických protokolů, postupujte podle těchto kroků:
 
-1.  V [webu Azure portal](https://portal.azure.com)v části **monitorování a správa**, klikněte na tlačítko **diagnostické protokoly**.
+1.  V [Azure Portal](https://portal.azure.com)v části **monitorování a Správa**klikněte na **diagnostické protokoly**.
 
     ![Navigační podokno k diagnostickým protokolům](./media/event-hubs-diagnostic-logs/image1.png)
 
@@ -44,7 +44,7 @@ Diagnostické protokoly jsou ve výchozím nastavení zakázané. Povolení diag
 
     ![Zapnout diagnostické protokoly](./media/event-hubs-diagnostic-logs/image2.png)
 
-4.  Pro **stav**, klikněte na tlačítko **na**.
+4.  V případě **stavu**klikněte na možnost **zapnuto**.
 
     ![Změnit stav diagnostické protokoly](./media/event-hubs-diagnostic-logs/image3.png)
 
@@ -52,16 +52,16 @@ Diagnostické protokoly jsou ve výchozím nastavení zakázané. Povolení diag
 
 6.  Uložte nové nastavení diagnostiky.
 
-Nové nastavení se projeví během 10 minut. Potom protokolů se objeví v nakonfigurovaných archivace cíli v **diagnostické protokoly** podokně.
+Nové nastavení se projeví během 10 minut. Pak se protokoly objeví v nakonfigurovaném cíli archivace v podokně **diagnostické protokoly** .
 
-Další informace o konfiguraci diagnostiky, najdete v článku [přehled diagnostické protokoly Azure](../azure-monitor/platform/platform-logs-overview.md).
+Další informace o konfiguraci diagnostiky najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Kategorie pro diagnostické protokoly
 
 Event Hubs shromažďuje diagnostických protokolů pro dvou kategorií:
 
-* **Archivovat protokoly**: související s Event Hubs Archive, konkrétně protokoly, archivovat chyby související s protokoly.
-* **Operační protokoly**: informace o tom, co se děje během operace služby Event Hubs, konkrétně typ operace, včetně vytvoření centra událostí, prostředky a stav operace.
+* **Protokoly archivu**: protokoly související s Event Hubs archivy, konkrétně protokoly týkající se chyb archivu.
+* **Provozní protokoly**: informace o tom, co se děje během operací Event Hubs, konkrétně typ operace, včetně vytvoření centra událostí, použitých prostředků a stavu operace.
 
 ## <a name="diagnostic-logs-schema"></a>Diagnostické protokoly schématu
 
@@ -71,14 +71,14 @@ Všechny protokoly se ukládají ve formátu JavaScript Object Notation (JSON). 
 
 Archivace protokolu JSON řetězce obsahovat prvky uvedené v následující tabulce:
 
-Name (Název) | Popis
+Název | Popis
 ------- | -------
 TaskName | Popis úkolu, který se nezdařilo.
 ID aktivity | Interní ID pro sledování.
 trackingId | Interní ID pro sledování.
 resourceId | ID prostředku Azure Resource Manageru
 centra událostí | Centrum událostí úplný název (včetně názvu oboru názvů).
-ID oddílu | Do oddílu centra událostí.
+partitionId | Do oddílu centra událostí.
 archiveStep | ArchiveFlushWriter
 startTime | Selhání spuštění.
 selhání | Počet pokusů, ke které došlo k chybě.
@@ -109,7 +109,7 @@ Následující kód je příkladem protokolu archivu řetězec formátu JSON:
 
 Řetězce JSON operační protokol obsahovat prvky uvedené v následující tabulce:
 
-Name (Název) | Popis
+Název | Popis
 ------- | -------
 ID aktivity | Interní ID používají ke sledování účel.
 EventName | Název operace.  
@@ -117,7 +117,7 @@ resourceId | ID prostředku Azure Resource Manageru
 SubscriptionId | ID předplatného.
 EventTimeString | Čas operace.
 EventProperties | Vlastnosti operace.
-Stav | Stav operace.
+Status | Stav operace.
 Volající | Volající operace (Azure portal nebo správy klienta).
 category | OperationalLogs
 
@@ -139,6 +139,10 @@ Example:
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* [Úvod do služby Event Hubs](event-hubs-what-is-event-hubs.md)
-* [Přehled rozhraní API služby Event Hubs](event-hubs-api-overview.md)
-* [Začínáme s Event Hubs](event-hubs-dotnet-standard-getstarted-send.md)
+- [Úvod do Event Hubs](event-hubs-what-is-event-hubs.md)
+- [Přehled rozhraní API služby Event Hubs](event-hubs-api-overview.md)
+- Začínáme se službou Event Hubs
+    - [.NET Core](get-started-dotnet-standard-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
+    - [Python](get-started-python-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)

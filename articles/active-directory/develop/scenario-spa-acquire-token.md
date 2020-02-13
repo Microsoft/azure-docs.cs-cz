@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: 290b0073ea6736141bca035f82f7aa37bdf364ef
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701922"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160062"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Jednostránkové aplikace: získání tokenu pro volání rozhraní API
 
@@ -42,7 +42,7 @@ Můžete nastavit rozsahy rozhraní API, které má přístupový token zahrnout
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Získání tokenu v překryvném okně
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Následující kód kombinuje dříve popsaný vzor s metodami pro místní prostředí:
 
@@ -69,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-### <a name="angular"></a>Úhlová
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 MSAL úhlová obálka poskytuje zachytávací protokolem HTTP, která automaticky získá přístupové tokeny a připojí je k požadavkům HTTP na rozhraní API.
 
@@ -111,9 +111,11 @@ ngOnDestroy() {
 
 Alternativně můžete explicitně získat tokeny pomocí metod získání tokenu, jak je popsáno v základní knihovně MSAL. js.
 
+---
+
 ## <a name="acquire-a-token-with-a-redirect"></a>Získání tokenu pomocí přesměrování
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Následující vzor je popsaný výše, ale zobrazený s metodou přesměrování pro interaktivní získávání tokenů. Bude nutné zaregistrovat zpětné volání přesměrování, jak bylo zmíněno dříve.
 
@@ -142,6 +144,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 ```
 
 ## <a name="request-optional-claims"></a>Vyžadovat volitelné deklarace identity
+
 Volitelné deklarace identity můžete použít pro následující účely:
 
 - Zahrnout další deklarace identity v tokenech pro vaši aplikaci.
@@ -150,7 +153,6 @@ Volitelné deklarace identity můžete použít pro následující účely:
 
 K vyžádání volitelných deklarací v `IdToken`můžete do pole `claimsRequest` třídy `AuthenticationParameters.ts` odeslat objekt deklarací identity dokument.
 
-### <a name="javascript"></a>JavaScript
 ```javascript
 "optionalClaims":  
    {
@@ -168,12 +170,14 @@ var request = {
 
 myMSALObj.acquireTokenPopup(request);
 ```
+
 Další informace najdete v tématu [volitelné deklarace identity](active-directory-optional-claims.md).
 
-
-### <a name="angular"></a>Úhlová
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Tento kód je stejný, jak je popsáno výše.
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

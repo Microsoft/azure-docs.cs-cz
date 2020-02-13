@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 930ff1abf77c4e28d377daf12174ff3fbb60cf23
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152240"
+ms.locfileid: "77163190"
 ---
 # <a name="import-data-module"></a>Importovat data modul
 
@@ -42,7 +42,7 @@ Než použijete cloudové úložiště, musíte nejdřív zaregistrovat úloži�
 
 Jakmile definujete požadovaná data a připojíte se ke zdroji, **[importujte data](./import-data.md)** datový typ každého sloupce v závislosti na hodnotách, které obsahuje, a načte data do kanálu návrháře. Výstupem **importu dat** je datová sada, která se dá použít s libovolným kanálem návrháře.
 
-Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a přidat nová data tak, že znovu spustíte [importovaná data](./import-data.md). Pokud se však nechcete znovu načíst ze zdroje při každém spuštění kanálu, nastavte možnost **použít výsledky v mezipaměti** na hodnotu true. Pokud je vybrána tato možnost, modul zkontroluje, zda kanál dříve běžel pomocí stejné možnosti zdroje a stejného vstupu. Pokud se najde předchozí spuštění, místo opětovného načtení dat ze zdroje se použijí data v mezipaměti.
+Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a přidat nová data tak, že znovu spustíte [importovaná data](./import-data.md).
 
 ## <a name="how-to-configure-import-data"></a>Jak konfigurovat importovaná data
 
@@ -60,11 +60,7 @@ Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a při
 
     ![import-data-Preview](media/module/import-data.png)
 
-1. Vyberte možnost **použít výsledky v mezipaměti** , pokud chcete datovou sadu ukládat do mezipaměti pro opakované spuštění.
 
-    Za předpokladu, že se v parametrech modulu nezměnily žádné další změny, kanál načte data pouze při prvním spuštění modulu a potom použije verzi datové sady uloženou v mezipaměti.
-
-    Zrušte výběr této možnosti, pokud potřebujete znovu načíst data při každém spuštění kanálu.
 
 1. Spuštění kanálu
 

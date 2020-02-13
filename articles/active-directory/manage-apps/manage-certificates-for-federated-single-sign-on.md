@@ -1,6 +1,6 @@
 ---
-title: Správa federačních certifikátů ve službě Azure AD | Dokumentace Microsoftu
-description: Zjistěte, jak přizpůsobit datum vypršení platnosti federačních certifikátů a jak obnovit certifikáty, které budou brzy vyprší.
+title: Správa federačních certifikátů ve službě Azure AD | Microsoft Docs
+description: Naučte se přizpůsobit datum vypršení platnosti federačních certifikátů a postup obnovení certifikátů, jejichž platnost brzy vyprší.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,100 +15,100 @@ ms.date: 04/04/2019
 ms.author: mimart
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 416e72f7e9e8622f044f7bb6430fbb36010b164e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: de60dc5095ce4ab4d0219a388c445b08f544e1f9
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67701977"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159025"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Správa certifikátů pro federované jednotné přihlašování v Azure Active Directory
 
-V tomto článku se budeme zabývat běžné otázky a informace související s certifikáty, který vytvoří Azure Active Directory (Azure AD) k vytvoření federovaného jednotného přihlašování (SSO) software jako služba (SaaS) aplikací. Přidáte aplikace z Galerie aplikací Azure AD nebo pomocí šablony aplikace mimo galerii. Konfigurace aplikace s použitím možnosti federované jednotné přihlašování.
+V tomto článku se zaměříme na běžné otázky a informace týkající se certifikátů, které Azure Active Directory (Azure AD) vytvoří, k vytvoření federovaného jednotného přihlašování (SSO) k vašim aplikacím typu software jako služba (SaaS). Přidejte aplikace z Galerie aplikací Azure AD nebo pomocí šablony aplikace mimo galerii. Nakonfigurujte aplikaci pomocí možnosti federovaného jednotného přihlašování.
 
-Tento článek je relevantní pouze pro aplikace, které jsou nakonfigurovány pro použití jednotného přihlašování k Azure AD prostřednictvím [Security Assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) federation (SAML).
+Tento článek je relevantní jenom pro aplikace, které jsou nakonfigurované tak, aby používaly federaci služby Azure AD SSO prostřednictvím [Security Assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML).
 
-## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Automaticky generovaný certifikát pro galerie i mimo Galerii aplikace
+## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>Automaticky vygenerovaný certifikát pro galerie a aplikace mimo galerii
 
-Když přidejte novou aplikaci z galerie a nakonfigurovat základě SAML přihlašování (tak, že vyberete **jednotného přihlašování** > **SAML** ze stránky přehled aplikace), Azure AD vygeneruje certifikát pro aplikaci, která platí pro tři roky. Chcete-li stáhnout aktivní certifikát jako certifikát zabezpečení ( **.cer**) soubor, vraťte se na této stránce (**přihlašování na základě SAML**) a vyberte odkaz ke stažení v **podpisový certifikát SAML** záhlaví. Můžete si vybrat nezpracované (binární) certifikátu nebo certifikátu Base64 (základní text kódováním base64). U aplikací, galerie, může zobrazit tato část také odkaz ke stažení certifikátu jako kód XML metadat federace ( **.xml** souboru), v závislosti na požadavku aplikace.
+Když přidáte novou aplikaci z galerie a nakonfigurujete přihlašování založené na SAML (když na stránce Přehled aplikací vyberete **jednotné přihlašování** > **SAML** ), Azure AD vygeneruje certifikát pro aplikaci, který je platný po dobu tří let. Pokud chcete stáhnout aktivní certifikát jako soubor certifikátu zabezpečení ( **. cer**), vraťte se na tuto stránku (**přihlášení založené na SAML**) a vyberte odkaz ke stažení v záhlaví **podpisového certifikátu SAML** . Můžete si vybrat mezi nezpracovaným (binárním) certifikátem nebo certifikátem Base64 (základní text s kódováním Base 64). V případě aplikací galerie se v této části můžou zobrazit také odkazy na stažení certifikátu jako federační metadata XML (soubor **. XML** ) v závislosti na požadavku aplikace.
 
-![SAML aktivní podpisový certifikát možnosti stahování](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
+![Možnosti stažení aktivního podpisového certifikátu SAML](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
 
-Aktivních nebo neaktivních certifikátů můžete také stáhnout tak, že vyberete **podpisový certifikát SAML** nadpisu **upravit** ikonu (tužka), která se zobrazí **podpisový certifikát SAML** stránky. Vyberte tři tečky ( **...** ) vedle certifikátu, kterou chcete stáhnout a pak zvolte který formát certifikátu chcete. Máte další možnost stažení certifikátu ve formátu pošty s vylepšenou ochranou osobních údajů (PEM). Tento formát je stejný jako Base64, ale **.pem** příponu, která není rozpoznána ve Windows jako formát certifikátu.
+Aktivní nebo neaktivní certifikát si můžete stáhnout také tak, že vyberete ikonu pro **Úpravy** záhlaví **podpisového certifikátu SAML** (tužka), která zobrazí stránku **podpisový certifikát SAML** . Vyberte tři tečky ( **...** ) vedle certifikátu, který chcete stáhnout, a pak zvolte požadovaný formát certifikátu. Máte další možnost stáhnout certifikát ve formátu ochrany osobních údajů – Enhanced mail (PEM). Tento formát je stejný jako base64, ale s příponou názvu souboru **. pem** , která se v systému Windows nerozpoznala jako formát certifikátu.
 
-![Podpisového certifikátu možnosti stahování (aktivní a neaktivní) SAML](./media/manage-certificates-for-federated-single-sign-on/all-certificate-download-options.png)
+![Možnosti stažení podpisového certifikátu SAML (aktivní a neaktivní)](./media/manage-certificates-for-federated-single-sign-on/all-certificate-download-options.png)
 
-## <a name="customize-the-expiration-date-for-your-federation-certificate-and-roll-it-over-to-a-new-certificate"></a>Upravit datum vypršení platnosti vašeho certifikátu federace a přejít do nového certifikátu
+## <a name="customize-the-expiration-date-for-your-federation-certificate-and-roll-it-over-to-a-new-certificate"></a>Přizpůsobte datum vypršení platnosti federačního certifikátu a převeďte ho na nový certifikát.
 
-Ve výchozím nastavení Azure nakonfiguruje certifikát vyprší po uplynutí tří let, když je vytvořena automaticky během SAML jednotné přihlašování. Vzhledem k tomu, že datum certifikátu nelze změnit, jakmile ho uložíte, budete muset:
+Ve výchozím nastavení Azure nakonfiguruje certifikát na vypršení platnosti po třech letech, když se vytvoří automaticky během konfigurace jednotného přihlašování SAML. Vzhledem k tomu, že nemůžete změnit datum certifikátu po jeho uložení, musíte:
 
-1. Vytvořte nový certifikát s požadovaného data.
+1. Vytvořte nový certifikát s požadovaným datem.
 1. Uložte nový certifikát.
 1. Stáhněte si nový certifikát ve správném formátu.
-1. Nahrajte nový certifikát k aplikaci.
-1. Nastavit nový certifikát jako aktivní na portálu Azure Active Directory.
+1. Nahrajte nový certifikát do aplikace.
+1. Zajistěte, aby byl nový certifikát aktivní na portálu Azure Active Directory.
 
-V následujících dvou částech vám pomohou provést tyto kroky.
+Následující dvě části vám pomůžou provést tyto kroky.
 
-### <a name="create-a-new-certificate"></a>Vytvořte nový certifikát
+### <a name="create-a-new-certificate"></a>Vytvořit nový certifikát
 
-Nejprve vytvořte a uložte nový certifikát s jinou platnosti:
+Nejdřív vytvořte a uložte nový certifikát s jiným datem vypršení platnosti:
 
-1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com/). **Centra pro správu Azure Active Directory** se zobrazí stránka.
+1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com/). Zobrazí se stránka **Centrum pro správu Azure Active Directory** .
 1. V levém podokně vyberte **Podnikové aplikace**. Zobrazí se seznam podnikových aplikací ve vašem účtu.
-1. Vyberte příslušné aplikace. Zobrazí se stránka s přehledem pro aplikaci.
-1. V levém podokně na stránce Přehled aplikace vyberte **jednotného přihlašování**.
-1. Pokud **vybrat jedinou metodu přihlašování** stránky se zobrazí, vyberte **SAML**.
-1. V **nastavte si jednotné přihlašování pomocí SAML - Preview** stránky, vyhledejte **podpisový certifikát SAML** nadpis a vyberte **upravit** ikonu (tužky). **Podpisový certifikát SAML** se zobrazí stránka, která zobrazuje stav (**aktivní** nebo **neaktivní**), datum vypršení platnosti a kryptografický otisk (řetězec hash) jednotlivých certifikátů.
-1. Vyberte **nový certifikát**. Nový řádek pod se zobrazí seznam certifikátů, kde datum vypršení platnosti výchozí hodnota je přesně tři roky po aktuálním datu. (Vaše změny nebyly uloženy ještě, abyste mohli dál upravit datum vypršení platnosti.)
-1. Na novém řádku certifikát, najeďte myší sloupce Datum vypršení platnosti a vyberte **vybrat datum** ikonu (kalendář). Ovládací prvek calendar zobrazí dny v měsíci, který aktuální datum vypršení platnosti na novém řádku.
-1. Chcete-li nastavit nové datum pomocí ovládacího prvku kalendář. Můžete nastavit libovolné datum v rozmezí aktuální datum a tři roky po aktuálním datu.
-1. Vyberte **Uložit**. Nový certifikát se teď zobrazí se stavem **neaktivní**, vypršení platnosti datum, které jste zvolili a kryptografický otisk.
-1. Vyberte **X** se vraťte do **nastavte si jednotné přihlašování pomocí SAML - Preview** stránky.
+1. Vyberte ovlivněnou aplikaci. Zobrazí se stránka s přehledem pro aplikaci.
+1. V levém podokně stránky přehled aplikace vyberte **jednotné přihlašování**.
+1. Pokud se zobrazí stránka **Vybrat metodu jednotného přihlašování** , vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML-Preview** Najděte hlavičku **podpisového certifikátu SAML** a vyberte ikonu pro **Úpravy** (tužka). Zobrazí se stránka **podpisový certifikát SAML** , ve kterém se zobrazí stav (**aktivní** nebo **neaktivní**), datum vypršení platnosti a kryptografický otisk (řetězec hash) každého certifikátu.
+1. Vyberte **nový certifikát**. Pod seznamem certifikátů se zobrazí nový řádek, kde datum vypršení platnosti je ve výchozím nastavení přesně tři roky od aktuálního data. (Vaše změny se zatím neuložily, takže stále můžete upravit datum vypršení platnosti.)
+1. V řádku nový certifikát umístěte ukazatel myši na sloupec Datum vypršení platnosti a vyberte ikonu **vybrat datum** (kalendář). Zobrazí se ovládací prvek Kalendář, který zobrazuje dny v měsíci aktuálního data vypršení platnosti nového řádku.
+1. Pomocí ovládacího prvku Kalendář nastavte nové datum. Můžete nastavit jakékoli datum mezi aktuálním datem a třemi roky po aktuálním datu.
+1. Vyberte **Save** (Uložit). Nový certifikát se teď zobrazí se stavem **neaktivní**, datum vypršení platnosti, které jste zvolili, a kryptografický otisk.
+1. Vyberte **X** a vraťte se na stránku **nastavit jednotné přihlašování pomocí SAML-Preview** .
 
 ### <a name="upload-and-activate-a-certificate"></a>Nahrát a aktivovat certifikát
 
-Dále stáhněte nový certifikát ve správném formátu, nahrajte ho do aplikace a byl aktivní ve službě Azure Active Directory:
+Pak stáhněte nový certifikát ve správném formátu, nahrajte ho do aplikace a zpřístupněte ho v Azure Active Directory:
 
-1. Zobrazení aplikace Další pokyny ke konfiguraci přihlašování SAML podle:
+1. Další pokyny pro konfiguraci aplikace pro přihlášení k protokolu SAML najdete v těchto pokynech:
 
-   - Výběr **Průvodce konfigurací** odkaz na zobrazení v samostatném okně prohlížeče nebo karty, nebo
-   - má **nastavení** záhlaví a vyberete **zobrazit podrobný** zobrazíte bočním panelu.
+   - Výběr odkazu **Průvodce konfigurací** , který se má zobrazit v samostatném okně nebo záložce prohlížeče nebo
+   - Přesměrujte se na záhlaví **Nastavení** a vyberte **Zobrazit podrobné pokyny** k zobrazení v postranním panelu.
 
-1. V pokynech mějte na paměti formát kódování, které jsou potřebné pro nahrání certifikátu.
-1. Postupujte podle pokynů [automaticky generovaný certifikát pro galerie i mimo Galerii aplikace](#auto-generated-certificate-for-gallery-and-non-gallery-applications) výše v části. Tento krok stáhne certifikátu ve formátu kódování pro nahrávání vyžadovaného aplikací.
-1. Pokud chcete přejít na nový certifikát, vraťte se do **podpisový certifikát SAML** stránce a na řádku nově uložený certifikát, vyberte tři tečky ( **...** ) a vyberte **aktivovat certifikát**. Stav tohoto nového certifikátu se změní na **aktivní**, a dříve aktivní certifikát se změní na stav **neaktivní**.
-1. Pokračujte následujícím pokyny ke konfiguraci přihlašování SAML aplikace, které jste zobrazili dříve, tak, že můžete nahrát SAML podepisování certifikátů ve správném formátu kódování.
+1. V pokynech si poznamenejte formát kódování vyžadovaný pro nahrání certifikátu.
+1. Postupujte podle pokynů v části [automaticky vygenerovaný certifikát pro galerii a mimo galerii aplikací](#auto-generated-certificate-for-gallery-and-non-gallery-applications) . Tento krok stáhne certifikát ve formátu kódování potřebném pro nahrání aplikací.
+1. Pokud chcete přejít na nový certifikát, vraťte se na stránku **podpisový certifikát SAML** a na nově uložený řádek certifikátu vyberte tři tečky ( **...** ) a vyberte **nastavit certifikát jako aktivní**. Stav nového certifikátu se změní na **aktivní**a dříve aktivní certifikát se změní na stav **neaktivní**.
+1. Pokračujte podle pokynů pro konfiguraci přihlášení SAML aplikace, které jste zobrazili dříve, abyste mohli podpisový certifikát SAML nahrát ve správném formátu kódování.
 
-## <a name="add-email-notification-addresses-for-certificate-expiration"></a>Přidat e-mailové adresy pro oznámení pro vypršení platnosti certifikátu
+## <a name="add-email-notification-addresses-for-certificate-expiration"></a>Přidání e-mailových oznámení adres pro vypršení platnosti certifikátu
 
-Azure AD pošle e-mailové oznámení 60, 30 a 7 dnů před vypršením platnosti certifikátu SAML. Můžete přidat více než jednu e-mailovou adresu pro příjem oznámení. Zadání e-mailové adresy, které chcete oznámení k odeslání do:
+Azure AD pošle e-mailové oznámení 60, 30 a 7 dní před vypršením platnosti certifikátu SAML. Pro příjem oznámení můžete přidat více než jednu e-mailovou adresu. Chcete-li zadat e-mailové adresy, na které chcete odesílat oznámení:
 
-1. V **podpisový certifikát SAML** stránky, přejděte **oznámení e-mailové adresy** záhlaví. Ve výchozím nastavení používá toto záhlaví e-mailovou adresu správce, kteří přidali aplikace.
-1. Pod poslední e-mailovou adresu zadejte e-mailovou adresu, která by měla přijímat oznámení o vypršení platnosti certifikátu a stiskněte klávesu Enter.
+1. Na stránce **podpisový certifikát SAML** přejdete na záhlaví **e-mailových adres oznámení** . Ve výchozím nastavení používá tento nadpis jenom e-mailovou adresu správce, který aplikaci přidal.
+1. Pod koncovou e-mailovou adresou napište e-mailovou adresu, která by měla obdržet oznámení o vypršení platnosti certifikátu, a pak stiskněte ENTER.
 1. Opakujte předchozí krok pro každou e-mailovou adresu, kterou chcete přidat.
-1. Pro každou e-mailovou adresu, kterou chcete odstranit, vyberte **odstranit** ikonu (a uvolňování paměti může) vedle e-mailovou adresu.
-1. Vyberte **Uložit**.
+1. Pro každou e-mailovou adresu, kterou chcete odstranit, vyberte ikonu **Odstranit** (může uvolnění paměti) vedle e-mailové adresy.
+1. Vyberte **Save** (Uložit).
 
-Obdržíte e-mailových oznámení z aadnotification@microsoft.com. Aby se zabránilo e-mailu, že přejdete do umístění nevyžádané pošty, přidejte tento e-mail od svých kontaktů.
+Od aadnotification@microsoft.comobdržíte e-mailovou zprávu s oznámením. Pokud chcete e-mailem zabránit v umístění spamu, přidejte tento e-mail do kontaktů.
 
-## <a name="renew-a-certificate-that-will-soon-expire"></a>Obnovit certifikát, jehož platnost brzo vyprší
+## <a name="renew-a-certificate-that-will-soon-expire"></a>Prodloužit platnost certifikátu, který brzo vyprší
 
-Pokud certifikátu brzy vyprší platnost, můžete obnovit pomocí procedury, která má za následek bez významnějších výpadků pro vaše uživatele. Postup obnovení u nichž vyprší platnost certifikátu:
+Pokud se brzo vyprší platnost certifikátu, můžete ho obnovit pomocí postupu, který pro uživatele nevede k výraznému výpadku. Obnovení certifikátu s vypršenou platností:
 
-1. Postupujte podle pokynů [vytvořte nový certifikát](#create-a-new-certificate) části dříve, pomocí datum, které se překrývá s existující certifikát. Toto datum omezuje množství prostoje způsobené vypršení platnosti certifikátu.
-1. Pokud aplikace může automaticky nespotřebujete certifikát, nastavte nový certifikát na aktivní pomocí následujících kroků:
-   1. Přejděte zpět **podpisový certifikát SAML** stránky.
-   1. V řádku nově uložený certifikát, vyberte tři tečky ( **...** ) a pak vyberte **aktivovat certifikát**.
+1. Postupujte podle pokynů v části [Vytvoření nového certifikátu](#create-a-new-certificate) dříve pomocí data, které se překrývá s existujícím certifikátem. Toto datum omezuje množství výpadku způsobené vypršením platnosti certifikátu.
+1. Pokud se aplikace může automaticky vrátit k certifikátu, nastavte nový certifikát na aktivní pomocí následujících kroků:
+   1. Vraťte se na stránku **podpisový certifikát SAML** .
+   1. Na řádku nově uložený certifikát vyberte tři tečky ( **...** ) a pak vyberte **nastavit certifikát jako aktivní**.
    1. Přeskočte následující dva kroky.
 
-1. Pokud aplikace může najednou zpracovat pouze jeden certifikát, vyberte výpadek interval provádět další krok. (Jinak, pokud aplikace nebude automaticky výběr nového certifikátu ale může zpracovávat více než jeden podpisový certifikát, můžete provést další krok kdykoli.)
-1. Předtím, než vyprší platnost původního certifikátu, postupujte podle pokynů [nahrát a aktivovat certifikát](#upload-and-activate-a-certificate) výše v části.
-1. Přihlásit se k aplikaci a ujistit se, že certifikát pracuje správně.
+1. Pokud aplikace může zpracovávat jenom jeden certifikát najednou, vyberte interval výpadku, který provede další krok. (Jinak, pokud aplikace automaticky nevybrala nový certifikát, ale může zpracovat více než jeden podpisový certifikát, můžete provést další krok kdykoli.)
+1. Než starý certifikát vyprší, postupujte podle pokynů v části [nahrání a aktivace certifikátu](#upload-and-activate-a-certificate) výše.
+1. Přihlaste se k aplikaci, abyste se ujistili, že certifikát funguje správně.
 
 ## <a name="related-articles"></a>Související články
 
-- [Kurzy integrace aplikací SaaS pomocí Azure Active Directory](../saas-apps/tutorial-list.md)
+- [Kurzy integrace aplikací SaaS s Azure Active Directory](../saas-apps/tutorial-list.md)
 - [Správa aplikací pomocí Azure Active Directory](what-is-application-management.md)
 - [Jednotné přihlašování k aplikacím v Azure Active Directory](what-is-single-sign-on.md)
-- [Ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory](../develop/howto-v1-debug-saml-sso-issues.md)
+- [Ladění jednotného přihlašování založeného na SAML pro aplikace v Azure Active Directory](../azuread-dev/howto-v1-debug-saml-sso-issues.md)

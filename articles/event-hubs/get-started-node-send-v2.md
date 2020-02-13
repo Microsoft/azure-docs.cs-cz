@@ -1,6 +1,6 @@
 ---
-title: Posílání nebo přijímání událostí z Azure Event Hubs s využitím Node. js (nejnovější)
-description: Tento článek popisuje návod pro vytvoření aplikace Node. js, která odesílá a přijímá události do a z Azure Event Hubs pomocí nejnovějšího balíčku Azure/Event-hub verze 5.
+title: Posílání a přijímání událostí z Azure Event Hubs pomocí JavaScriptu (nejnovější)
+description: Tento článek poskytuje návod pro vytvoření aplikace JavaScriptu, která odesílá a přijímá události z Azure Event Hubs pomocí nejnovějšího balíčku Azure/Event-hub verze 5.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
@@ -8,27 +8,25 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: b523e4a7b463564cbfeb407c91b7bb05317f8166
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e296ae36eeeb816d8704ab03824f8cbb80082ea6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906366"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163003"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-nodejs--azureevent-hubs-version-5"></a>Posílání událostí a přijímání událostí z Center událostí pomocí Node. js (Azure/Event – centra verze 5)
-
-Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro příjem událostí, která může přijímat a zpracovávat miliony událostí za sekundu. Centra událostí můžou zpracovávat a ukládat události, data nebo telemetrie vytvářené distribuovaným softwarem a zařízeními. Data odesílaná do centra událostí je možné transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase nebo adaptérů pro dávkování či ukládání. Další informace najdete v tématu [Event Hubs přehled](event-hubs-about.md) a [Event Hubs funkce](event-hubs-features.md).
-
-V tomto rychlém startu se dozvíte, jak vytvářet aplikace v Node. js, které mohou odesílat události do nebo přijímat události z centra událostí.
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>Odesílání událostí do a příjem událostí z Center událostí pomocí JavaScriptu (Azure/Event-hub verze 5)
+V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure/Event-hub verze 5** JavaScriptu. 
 
 > [!IMPORTANT]
-> V tomto rychlém startu se používá verze 5 sady Azure Event Hubs JavaScript SDK. Rychlý Start, který používá verzi 2 sady JavaScript SDK, najdete v [tomto článku](event-hubs-node-get-started-send.md). 
+> V tomto rychlém startu se používá nejnovější balíček Azure/Event-Centers verze 5. Rychlý Start, který používá starý balíček Azure/Event-hub verze 2, najdete v tématu [posílání a přijímání událostí pomocí Azure/Event – Center verze 2](event-hubs-node-get-started-send.md). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
+Pokud s Azure Event Hubs teprve začínáte, přečtěte si téma [přehled Event Hubs](event-hubs-about.md) před provedením tohoto rychlého startu. 
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
 
-- Předplatné Azure. Pokud ho nemáte, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.  
+- **Microsoft Azure předplatné**. Pokud chcete používat služby Azure, včetně Azure Event Hubs, potřebujete předplatné.  Pokud nemáte existující účet Azure, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/free/) nebo využít výhody pro předplatitele MSDN při [vytváření účtu](https://azure.microsoft.com).
 - Node. js verze 8. x nebo novější. Stáhněte si nejnovější [verzi LTS (Long-Term support)](https://nodejs.org).  
 - Visual Studio Code (doporučeno) nebo jakékoli jiné integrované vývojové prostředí (IDE).  
 - Aktivní Event Hubs obor názvů a centrum událostí. Pokud je chcete vytvořit, proveďte následující kroky: 
@@ -37,6 +35,7 @@ K dokončení tohoto rychlého startu potřebujete následující požadavky:
    1. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v tématu [rychlý Start: vytvoření centra událostí pomocí Azure Portal](event-hubs-create.md).
    1. Pokračujte podle pokynů v tomto rychlém startu. 
    1. Pokud chcete získat připojovací řetězec pro obor názvů centra událostí, postupujte podle pokynů v části [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Poznamenejte si připojovací řetězec pro pozdější použití v tomto rychlém startu.
+- **Vytvoří obor názvů Event Hubs a centrum událostí**. Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytvoření oboru názvů typu Event Hubs a získání přihlašovacích údajů pro správu, které vaše aplikace potřebuje ke komunikaci s centrem událostí. Pokud chcete vytvořit obor názvů a centrum událostí, postupujte podle pokynů v [tomto článku](event-hubs-create.md). Pak Získejte **připojovací řetězec pro obor názvů Event Hubs** podle pokynů uvedených v článku [získání připojovacího řetězce](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Připojovací řetězec použijete později v tomto rychlém startu.
 
 ### <a name="install-the-npm-package"></a>Instalace balíčku npm
 Chcete-li nainstalovat [balíček správce balíčků Node (npm) pro Event Hubs](https://www.npmjs.com/package/@azure/event-hubs), otevřete příkazový řádek, který má v cestě *npm* , změňte adresář na složku, do které chcete uchovávat ukázky, a pak spusťte tento příkaz:
@@ -59,7 +58,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 
 ## <a name="send-events"></a>Odesílání událostí
 
-V této části vytvoříte aplikaci Node. js, která odesílá události do centra událostí.
+V této části vytvoříte aplikaci JavaScriptu, která odesílá události do centra událostí.
 
 1. Otevřete oblíbený editor, například [Visual Studio Code](https://code.visualstudio.com).
 1. Vytvořte soubor s názvem *Send. js*a vložte do něj následující kód:
@@ -109,7 +108,7 @@ Blahopřejeme! Nyní jste odeslali události do centra událostí.
 
 
 ## <a name="receive-events"></a>Příjem událostí
-V této části obdržíte události z centra událostí pomocí úložiště kontrolních bodů služby Azure Blob Storage v aplikaci Node. js. Pro přijaté zprávy v pravidelných intervalech v objektu blob Azure Storage provádí kontrolní body metadat. Tento přístup usnadňuje příjem zpráv později od místa, kde jste skončili.
+V této části obdržíte události z centra událostí pomocí úložiště kontrolních bodů služby Azure Blob Storage v aplikaci JavaScript. Pro přijaté zprávy v pravidelných intervalech v objektu blob Azure Storage provádí kontrolní body metadat. Tento přístup usnadňuje příjem zpráv později od místa, kde jste skončili.
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Vytvoření účtu služby Azure Storage a kontejneru objektů BLOB
 Pokud chcete vytvořit účet úložiště Azure a kontejner objektů BLOB v něm, proveďte následující akce:

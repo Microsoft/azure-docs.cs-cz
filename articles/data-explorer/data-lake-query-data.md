@@ -7,27 +7,27 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: 1e5af0b45b8d2e2eceac1b653a5219a236c25467
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8240b1a01aa39e53b9ae41f73543ccf9774290b2
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512908"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161745"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Dotazování dat v Azure Data Lake pomocí Azure Průzkumník dat
 
-Azure Data Lake Storage je vysoce škálovatelné a nákladově efektivní řešení Data Lake pro analýzu velkých objemů dat. Nabízí kombinaci vysoce výkonného systému souborů s velkým měřítkem a úsporami, takže urychluje dobu nutnou k získání potřebných informací. Řešení Data Lake Storage Gen2 rozšiřuje funkce Azure Blob Storage a je optimalizované pro analytické úlohy.
+Azure Data Lake Storage je vysoce škálovatelné a nákladově efektivní řešení Data Lake pro analýzu velkých objemů dat. Kombinuje výkon vysoce výkonného souborového systému s rozsáhlým škálováním a úsporou, které vám pomůžou zrychlit přehledy. Data Lake Storage Gen2 rozšiřuje možnosti Azure Blob Storage a je optimalizovaná pro úlohy analýzy.
  
-Azure Průzkumník dat se integruje s Azure Blob Storage a Azure Data Lake Storage Gen2 a poskytuje rychlý, uložený a indexovaný přístup k datům v Lake. Data můžete analyzovat a dotazovat v Lake bez předchozí ingestování do Azure Průzkumník dat. Můžete se také dotazovat napříč zpracovanými a nezpracovanými nativními daty Lake data současně.  
+Azure Průzkumník dat se integruje s Azure Blob Storage a Azure Data Lake Storage (Gen1 a Gen2) a poskytuje rychlý, uložený a indexovaný přístup k datům v Lake. Data můžete analyzovat a dotazovat v Lake bez předchozí ingestování do Azure Průzkumník dat. Můžete se také dotazovat napříč zpracovanými a nezpracovanými nativními daty Lake data současně.  
 
 > [!TIP]
-> Nejlepší výkon dotazů vyžaduje přijímání dat do Azure Průzkumník dat. Možnost dotazování dat v Azure Data Lake Storage Gen2 bez předchozí ingestování by se měla použít jenom pro historická data nebo data, která se dotazují jenom zřídka. [Optimalizujte výkon dotazů v Lake](#optimize-your-query-performance) pro dosažení nejlepších výsledků.
+> Nejlepší výkon dotazů vyžaduje přijímání dat do Azure Průzkumník dat. Možnost dotazování externích dat bez předchozí ingestování by se měla použít jenom pro historická data nebo data, která se dotazují jenom zřídka. [Optimalizujte výkon dotazů v Lake](#optimize-your-query-performance) pro dosažení nejlepších výsledků.
  
 
 ## <a name="create-an-external-table"></a>Vytvoření externí tabulky
 
  > [!NOTE]
- > Aktuálně podporované účty úložiště jsou Blob Storage nebo Azure Data Lake Storage Gen2 Azure. Aktuálně podporované formáty dat jsou JSON, CSV, TSV a txt.
+ > Aktuálně podporované účty úložiště jsou Azure Blob Storage nebo Azure Data Lake Storage (Gen1 a Gen2).
 
 1. Pomocí příkazu `.create external table` můžete vytvořit externí tabulku ve službě Azure Průzkumník dat. Další příkazy externí tabulky, například `.show`, `.drop`a `.alter`, jsou zdokumentovány v [příkazech externích tabulek](/azure/kusto/management/externaltables).
 
@@ -46,6 +46,7 @@ Azure Průzkumník dat se integruje s Azure Blob Storage a Azure Data Lake Stora
     > * Při definování externí tabulky s oddíly se očekává, že struktura úložiště bude shodná.
 Pokud je tabulka definovaná například pomocí oddílu DateTime ve formátu RRRR/MM/DD (výchozí), cesta k souboru úložiště identifikátoru URI by měla být *container1/rrrr/mm/dd/all_exported_blobs*. 
     > * Pokud je externí tabulka rozdělená podle sloupce data a času, vždy do dotazu zahrňte časový filtr pro uzavřený rozsah (například dotaz-`ArchivedProducts | where Timestamp between (ago(1h) .. 10m)`-by měl být větší než tento (otevřený rozsah) jeden-`ArchivedProducts | where Timestamp > ago(1h)`). 
+    > * Všechny [podporované formáty](ingest-data-overview.md#supported-data-formats) ingestování se dají dotazovat pomocí externích tabulek.
 
 1. Externí tabulka se zobrazí v levém podokně webového uživatelského rozhraní.
 

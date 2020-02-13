@@ -13,12 +13,12 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e85a768d8e4f11ca3637bc8f0b394cfb1ea9744a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697468"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160963"
 ---
 # <a name="support-and-help-options-for-developers"></a>Možnosti pomoci a podpory pro vývojáře
 
@@ -31,7 +31,7 @@ Pokud se teprve začínáte integrovat s Azure Active Directory (Azure AD), Micr
 > * Pokud narazíte na problém s jednou z našich knihoven pro ověřování, vyvolejte problém *GitHubu* .
 > * Nakonec, pokud potřebujete mluvit s někým, možná budete chtít otevřít žádost o podporu.
 
-## <a name="search"></a>Hledat
+## <a name="search"></a>Hledání
 
 Pokud máte dotazy související s vývojem, možná budete moci najít odpověď v dokumentaci, [ukázkách GitHubu](https://github.com/azure-samples)nebo odpovědích na [Stack Overflow](https://www.stackoverflow.com) otázky.
 
@@ -61,11 +61,11 @@ Pokud nemůžete najít odpověď na svůj dotaz pomocí hledání, odešlete no
 |Součást/oblast  | Značky |
 |---------|---------|
 | Knihovna ADAL | [modulu](https://stackoverflow.com/questions/tagged/adal) |
-| Knihovna MSAL     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
+| Knihovna MSAL     | [msal](https://stackoverflow.com/questions/tagged/msal) |
 | Middleware OWIN  | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
-| [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
+| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[Azure-AD-B2B]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
+| [B2C Azure](https://azure.microsoft.com/services/active-directory-b2c/)  | [[Azure-AD-B2C]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[Microsoft-Graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
 | Jakákoli další oblast související s ověřováním nebo autorizačními tématy | [[Azure-Active-Directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
 Následující příspěvky z Stack Overflow obsahují tipy, jak klást otázky a jak přidat zdrojový kód. Postupujte podle těchto pokynů a zvyšte pravděpodobnost, že členové komunity budou moci rychle posoudit a reagovat na své otázky:
@@ -79,8 +79,8 @@ Pokud narazíte na chybu nebo problém týkající se našich knihoven, vyvolejt
 
 Seznam knihoven a jejich úložišť GitHub najdete v následujících tématech:
 
-* Knihovny [ADAL](active-directory-authentication-libraries.md) a úložiště GitHub
-* [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL. ](https://github.com/AzureAD/microsoft-authentication-library-for-android)Knihovny pro Android a [MSAL. obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) a úložiště GitHub
+* Knihovny [knihovny Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) a úložiště GitHub
+* Knihovny [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md) a úložiště GitHub
 
 ## <a name="open-a-support-request"></a>Otevřete žádost o podporu.
 

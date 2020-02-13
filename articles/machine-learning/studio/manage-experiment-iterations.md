@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 71a20f0de9907b04b9dcfd63c0003f2540a2e370
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: e2e13942b4ada2c6e90a056a0239bc620951638b
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153379"
+ms.locfileid: "77168499"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio-classic"></a>Správa iterací experimentů v Azure Machine Learning Studio (Classic)
 Vývojem modelu prediktivní analýzy je iterativní proces - úpravou různých funkcí a parametrů experimentu sloučit výsledky až se ujistíte, že máte natrénován efektivní model. Klíč k tomuto procesu se ke sledování různých iterací experimentu parametry a konfigurací.
@@ -42,7 +42,7 @@ Předpokládejme například, že vytvoříte experiment s modulem [lineární r
 | Hodnota rychlost učení | Počáteční čas spuštění |
 | --- | --- |
 | 0.1 |9/11/2014 16:18:58: 00 |
-| 0.2 |9/11/2014 16:24:33: 00 |
+| 0,2 |9/11/2014 16:24:33: 00 |
 | 0,4 |9/11/2014 16:28:36: 00 |
 | 0,5 |9/11/2014 16:33:31: 00 |
 

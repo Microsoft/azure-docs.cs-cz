@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 0cd4c45403d59819bf7ba729ea99de76ccf967ca
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9c5534f2df4a375daf355d74f788b7f610f92919
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819896"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162153"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Ukládat zálohy Azure SQL Database po dobu až 10 let
 
-Mnoho aplikací má zákonné, dodržování předpisů nebo jiné obchodní účely, které vyžadují, abyste zachovali zálohy databáze po 7-35 dnů, které Azure SQL Database [Automatické zálohy](sql-database-automated-backups.md)poskytují. Pomocí funkce dlouhodobá doba uchovávání (LTR) můžete do úložiště objektů BLOB v [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) ukládat zadané úplné zálohy SQL Database po dobu až 10 let. Pak můžete libovolnou zálohu obnovit jako novou databázi.
+Mnoho aplikací má zákonné, dodržování předpisů nebo jiné obchodní účely, které vyžadují, abyste zachovali zálohy databáze po 7-35 dnů, které Azure SQL Database [Automatické zálohy](sql-database-automated-backups.md)poskytují. Pomocí funkce dlouhodobá doba uchovávání (LTR) můžete ukládat zadané úplné zálohy SQL Database do úložiště objektů BLOB v Azure s geograficky redundantním úložištěm s přístupem pro čtení po dobu až 10 let. Pak můžete obnovit jakoukoli zálohu jako novou databázi. Další informace o Azure Storage redundanci najdete v tématu [Azure Storage redundance](../storage/common/storage-redundancy.md).
 
 > [!NOTE]
 > U databází s jednou a ve fondu se dá povolit LTR. Ještě není k dispozici pro databáze instancí ve spravovaných instancích. Úlohy agenta SQL můžete použít k naplánování [záloh databáze pouze kopírování](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) jako alternativu k více než 35 dnům.

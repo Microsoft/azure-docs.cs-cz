@@ -17,16 +17,15 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 92e4376108de02b912c05459411adfacf926c448
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 37ce80c94478d2250eae321f7a42bda64d441dea
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700460"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159638"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform a OAuth 2,0 s tokem za chodu
 
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 OBO (OAuth 2,0 on-of-jménem toku) slouží k použití případu, kdy aplikace vyvolá službu nebo webové rozhraní API, která zase potřebuje volat jiné služby nebo webové rozhraní API. Nápad je rozšířit identitu delegovaného uživatele a oprávnění prostřednictvím řetězce požadavků. Aby služba střední vrstvy prováděla ověřené požadavky na službu pro příjem dat, musí jménem uživatele zabezpečit přístupový token od platformy Microsoft identity.
 
@@ -77,7 +76,7 @@ Při použití sdíleného tajného klíče obsahuje požadavek na přístupový
 | `scope` | Požaduje se | Mezerou oddělený seznam oborů pro požadavek na token. Další informace najdete v tématu [obory](v2-permissions-and-consent.md). |
 | `requested_token_use` | Požaduje se | Určuje, jak se má požadavek zpracovat. V toku OBO musí být hodnota nastavená na `on_behalf_of`. |
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 Následující příspěvek HTTP požaduje přístupový token a aktualizuje token s `user.read`m oborem pro https://graph.microsoft.com webové rozhraní API.
 
@@ -112,7 +111,7 @@ Požadavek na přístupový token služby na službu s certifikátem obsahuje n�
 
 Všimněte si, že parametry jsou skoro stejné jako v případě požadavku pomocí sdíleného tajného klíče s tím rozdílem, že parametr `client_secret` je nahrazen dvěma parametry: `client_assertion_type` a `client_assertion`.
 
-#### <a name="example"></a>Příklad:
+#### <a name="example"></a>Příklad
 
 Následující příspěvek HTTP požaduje přístupový token s oborem `user.read` pro https://graph.microsoft.com webové rozhraní API s certifikátem.
 
@@ -182,7 +181,7 @@ Koncový bod tokenu vrátí chybovou odpověď při pokusu o získání přístu
 
 Služba střední vrstvy teď může použít token získaný výše k provádění ověřených požadavků webového rozhraní API pro příjem dat, a to nastavením tokenu v hlavičce `Authorization`.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 ```
 GET /v1.0/me HTTP/1.1

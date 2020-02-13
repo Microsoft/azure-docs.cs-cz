@@ -5,15 +5,15 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 2da9e41323a308782dad509c628a3677ab0cd21f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 02/07/2020
+ms.openlocfilehash: 3feacd94558ba275c81469827993aef106ae633c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162880"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162204"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura Apache Hadoop v HDInsightu
 
@@ -46,6 +46,27 @@ NodeManagers spustí úlohy, které tvoří aplikaci, a pak oznámí jejich prů
 Všechny typy clusterů HDInsight nasazují PŘÍZi. Správce prostředků je nasazen pro vysokou dostupnost s primární a sekundární instancí, která běží na prvním a druhém hlavním uzlu v rámci clusteru. V jednom okamžiku je aktivní jenom jedna instance Správce prostředků. Instance NodeManager se spouštějí napříč dostupnými pracovními uzly v clusteru.
 
 ![Apache PŘÍZe v Azure HDInsight](./media/hdinsight-hadoop-architecture/apache-yarn-on-hdinsight.png)
+
+## <a name="soft-delete"></a>Obnovitelné odstranění
+
+Pokud chcete obnovit soubor z účtu úložiště, přečtěte si:
+
+### <a name="azure-storage"></a>Azure Storage
+
+* [Obnovitelné odstranění objektů blob služby Azure Storage](../storage/blobs/storage-blob-soft-delete.md)
+* [Obnovit objekt BLOB](https://docs.microsoft.com/rest/api/storageservices/undelete-blob)
+
+### <a name="azure-data-lake-storage-gen-1"></a>Azure Data Lake Storage Gen 1
+
+[Obnovit – AzDataLakeStoreDeletedItem](https://docs.microsoft.com/powershell/module/az.datalakestore/restore-azdatalakestoredeleteditem)
+
+### <a name="azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2
+
+[Známé problémy s Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-known-issues.md)
+
+## <a name="trash-purging"></a>Vyprazdňování odpadků
+
+Vlastnost `fs.trash.interval` z **HDFS** > **Rozšířená základní** hodnota by měla zůstat na výchozí `0`, protože byste neměli ukládat data do místního systému souborů. Tato hodnota nemá vliv na účty vzdáleného úložiště (WASB, ADLS GEN1, ABFS).
 
 ## <a name="next-steps"></a>Další kroky
 

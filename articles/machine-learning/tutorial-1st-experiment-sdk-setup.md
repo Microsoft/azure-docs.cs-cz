@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 1dacc59ee0bf79128efd8920a91f3c3d54e5584a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a6f977c0cdca670b40ccdc01db64a493962e3dda
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116607"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77165972"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-## <a name="create-a-workspace"></a>Vytvořit pracovní prostor
+## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 
 Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu ve službě. 
 
@@ -99,10 +99,6 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
 1. Jakmile je virtuální počítač k dispozici, zobrazí se na horním panelu nástrojů.  Tento Poznámkový blok teď můžete spustit buď pomocí rutiny **Spustit vše** na panelu nástrojů, nebo pomocí **SHIFT + ENTER** v buňkách kódu poznámkového bloku.
 
 Pokud máte vlastní widgety nebo dáváte přednost použití Jupyter/JupyterLab, vyberte rozevírací nabídku **Jupyter** úplně vpravo a potom vyberte **Jupyter** nebo **JupyterLab**. Otevře se nové okno prohlížeče.
-
-> [!NOTE]
-> Výpočetní instance (Preview) jsou v tuto chvíli dostupné jenom pro pracovní prostory s oblastí **střed USA – sever**, **východní USA 2**, **Severní Evropa** nebo **Velká Británie – jih**. Podpora dalších oblastí už brzy bude dostupná.
->Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) .  Ke spuštění poznámkového bloku můžete použít buď virtuální počítač s poznámkovým blokem, nebo instanci služby Compute. Virtuální počítač bude pokračovat v běhu a bude mít náklady, dokud ho nezastavíte. Můžete ji zastavit ručně z karty **COMPUTE** v nástroji Studio nebo v [příspěvku blogu](https://techcommunity.microsoft.com/t5/educator-developer-blog/azure-virtual-machine-auto-shutdown/ba-p/379342) při povolování automatického vypínání virtuálních počítačů Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

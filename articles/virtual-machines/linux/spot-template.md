@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 2e94c48188d0eed22b338d0d7238c0d27a5d1862
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 457f1008b75fe0605c0d2934f2de09937fac8d21
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782200"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162442"
 ---
 # <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Nasazení virtuálních počítačů na místě pomocí šablony Správce prostředků
 
@@ -33,7 +33,7 @@ Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu
 > Instance přímých instancí jsou momentálně ve verzi Public Preview.
 > Tato verze Preview se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> V první části verze Public Preview budou mít instance pro tisk pevnou cenu, takže se neúčtují žádné vyřazení na základě cen.
+
 
 
 ## <a name="use-a-template"></a>Použití šablony 
@@ -48,9 +48,6 @@ Pro nasazení šablon přímých verzí použijte`"apiVersion": "2019-03-01"` ne
                 }
 ```
 
-
-> [!IMPORTANT]
-> V první části veřejné verze Preview můžete nastavit maximální cenu, ale bude se ignorovat. Virtuální počítače s cenami budou mít pevnou cenu, takže se neúčtují žádné vyřazení na základě cen.
 
 
 Tady je Ukázková šablona s přidanými vlastnostmi pro virtuální počítač s přímým odkazem. Názvy prostředků nahraďte vlastními a `<password>` hesla pro účet místního správce ve VIRTUÁLNÍm počítači.

@@ -1,0 +1,37 @@
+---
+title: 'Vzor: operátor Count v definici zásady'
+description: Tento model Azure Policy poskytuje příklad použití operátoru Count v definici zásady.
+ms.date: 01/31/2020
+ms.topic: sample
+ms.openlocfilehash: 88c2d1083a92732ac56ca4d6da7087cc4220d9a5
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77172944"
+---
+# <a name="azure-policy-pattern-the-count-operator"></a>Azure Policy vzor: operátor Count
+
+Operátor [Count](../concepts/definition-structure.md#count) vyhodnocuje členy \[\*\] aliasu.
+
+## <a name="sample-policy-definition"></a>Definice ukázkové zásady
+
+Tato definice zásad [Audituje](../concepts/effects.md#audit) skupiny zabezpečení sítě, které jsou nakonfigurované tak, aby umožňovaly provoz příchozího protokol RDP (Remote Desktop Protocol) (RDP)
+
+:::code language="json" source="~/policy-templates/patterns/pattern-count-operator.json":::
+
+### <a name="explanation"></a>Vysvětlení
+
+Základní komponenty operátoru **Count** jsou _pole_, _kde_a podmínka. Každá je zvýrazněna v následujícím fragmentu kódu.
+
+- _pole_ udává počet, který [alias](../concepts/definition-structure.md#aliases) vyhodnocuje členy. Tady se díváte na **securityRules\[\*\]** _pole_ alias skupiny zabezpečení sítě.
+- _kde_ nástroj používá jazyk zásad k definování, které členy _pole_ splňují kritéria. V tomto příkladu skupiny logických operátorů **allOf** seskupují tři odlišná vyhodnocení podmínky vlastností _pole_ aliasu: _Direction_, _Access_a _destinationPortRange_.
+- Podmínka Count v tomto příkladu je **větší**. Počet se vyhodnotí jako true, pokud jeden nebo více členů _pole_ aliasu odpovídá klauzuli _WHERE_ .
+
+:::code language="json" source="~/policy-templates/patterns/pattern-count-operator.json" range="12-32" highlight="3,4,20":::
+
+## <a name="next-steps"></a>Další kroky
+
+- Zkontrolujte další [vzory a předdefinované definice](./index.md).
+- Projděte si [strukturu definic Azure Policy](../concepts/definition-structure.md).
+- Projděte si [Vysvětlení efektů zásad](../concepts/effects.md).

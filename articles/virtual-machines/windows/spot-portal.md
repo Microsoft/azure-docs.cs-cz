@@ -7,14 +7,14 @@ manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 682ee86c373c715080ef1baf82b473242a2e43db
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8845d0f9277384c1cc32b31b5ea5151cd0668c79
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782044"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158974"
 ---
 # <a name="preview-deploy-spot-vms-using-the-azure-portal"></a>Verze Preview: nasazení virtuálních počítačů s virtuálními počítači pomocí Azure Portal
 
@@ -28,7 +28,7 @@ Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu
 > Instance přímých instancí jsou momentálně ve verzi Public Preview.
 > Tato verze Preview se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> V první části verze Public Preview budou mít instance pro tisk pevnou cenu, takže se neúčtují žádné vyřazení na základě cen.
+
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
 

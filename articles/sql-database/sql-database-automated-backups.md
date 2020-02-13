@@ -1,5 +1,5 @@
 ---
-title: automatické, geograficky redundantní zálohy
+title: Automatické, geograficky redundantní zálohy
 description: SQL Database automaticky vytvoří zálohování místní databáze každých několik minut a používá geograficky redundantní úložiště s přístupem pro čtení z Azure pro geografickou redundanci.
 services: sql-database
 ms.service: sql-database
@@ -12,24 +12,24 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 6b880696b4922c68c73ce4ff59f72a62ce5a5a30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348943"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157495"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
-SQL Database automaticky vytvoří zálohy databáze uchovávané po dobu trvání nakonfigurované doby uchování a pomocí [geograficky redundantního úložiště Azure s přístupem pro čtení (RA-GRS)](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) zajistí, že jsou zachovány i v případě, že datové centrum není k dispozici. Tyto zálohy jsou vytvořeny automaticky. Zálohy databází jsou důležitou součástí jakékoli strategie pro provozní kontinuitu a zotavení po havárii, protože chrání vaše data před náhodným poškozením nebo odstraněním. Pokud vaše pravidla zabezpečení vyžadují, aby byly zálohy dostupné po delší dobu (až 10 let), můžete nakonfigurovat [dlouhodobé uchovávání](sql-database-long-term-retention.md) pro databáze typu Singleton a elastické fondy.
+SQL Database automaticky vytvoří zálohy databáze uchovávané po dobu trvání nakonfigurované doby uchování a pomocí [geograficky redundantního úložiště Azure s přístupem pro čtení (RA-GRS)](../storage/common/storage-redundancy.md) zajistí, že jsou zachovány i v případě, že datové centrum není k dispozici. Tyto zálohy jsou vytvořeny automaticky. Zálohy databází jsou důležitou součástí jakékoli strategie pro provozní kontinuitu a zotavení po havárii, protože chrání vaše data před náhodným poškozením nebo odstraněním. Pokud vaše pravidla zabezpečení vyžadují, aby byly zálohy dostupné po delší dobu (až 10 let), můžete nakonfigurovat [dlouhodobé uchovávání](sql-database-long-term-retention.md) pro databáze typu Singleton a elastické fondy.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="what-is-a-sql-database-backup"></a>Co je zálohování SQL Database
 
-SQL Database používá technologii SQL Server k vytváření [úplných záloh](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) každý týden, [rozdílové zálohování](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) každých 12 hodin a [zálohování protokolů transakcí](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) každých 5-10 minut. Zálohy se ukládají v objektech [BLOB úložiště RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) , které se replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md) kvůli ochraně před výpadkem datového centra. Při obnovení databáze vyřadí služba vyčíslení úplného, rozdílového a zálohy protokolu transakcí, které je třeba obnovit.
+SQL Database používá technologii SQL Server k vytváření [úplných záloh](https://docs.microsoft.com/sql/relational-databases/backup-restore/full-database-backups-sql-server) každý týden, [rozdílové zálohování](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) každých 12 hodin a [zálohování protokolů transakcí](https://docs.microsoft.com/sql/relational-databases/backup-restore/transaction-log-backups-sql-server) každých 5-10 minut. Zálohy se ukládají v objektech [BLOB úložiště RA-GRS](../storage/common/storage-redundancy.md) , které se replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md) kvůli ochraně před výpadkem datového centra. Při obnovení databáze vyřadí služba vyčíslení úplného, rozdílového a zálohy protokolu transakcí, které je třeba obnovit.
 
-Tyto zálohy rovněž umožňují:
+Tyto zálohy můžete použít k těmto akcím:
 
 - **Obnovte stávající databázi k určitému bodu v čase v minulosti** v rámci doby uchování pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. V izolovaných databázích a elastických fondech Tato operace vytvoří novou databázi na stejném serveru jako původní databázi. V rámci spravované instance Tato operace může vytvořit kopii databáze nebo stejné nebo jiné spravované instance v rámci stejného předplatného.
 - **Obnovení odstraněné databáze na čas, kdy byla odstraněna** nebo kdykoli v rámci doby uchování. Odstraněnou databázi lze obnovit pouze na stejném logickém serveru nebo ve spravované instanci, kde byla vytvořena původní databáze.
@@ -42,7 +42,7 @@ Tyto zálohy rovněž umožňují:
 
 Některé z těchto operací můžete vyzkoušet v následujících příkladech:
 
-| | Azure Portal | Azure PowerShell |
+| | Azure Portal | Azure Powershell |
 |---|---|---|
 | Změna uchovávání záloh | [Izolovaná databáze](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [Spravovaná instance](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | Změna dlouhodobého uchovávání záloh | [Samostatná databáze](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Izolovaná databáze](sql-database-long-term-backup-retention-configure.md)<br/>Spravovaná instance – není k dispozici  |
@@ -53,11 +53,11 @@ Některé z těchto operací můžete vyzkoušet v následujících příkladech
 
 ## <a name="backup-frequency"></a>Frekvence zálohování
 
-### <a name="point-in-time-restore"></a>Obnovení k určitému časovému okamžiku
+### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
-SQL Database podporuje samoobslužné obnovení (PITR) pomocí automatického vytváření úplných záloh, rozdílových záloh a záloh protokolů transakcí. Úplné zálohy databáze jsou vytvářeny týdně, rozdílové zálohy databáze jsou obvykle vytvářeny každých 12 hodin a zálohy protokolu transakcí jsou obvykle vytvářeny každých 5-10 minut, přičemž četnost je založena na výpočetní velikosti a množství aktivity databáze. První úplné zálohování je naplánováno ihned po vytvoření databáze. Obvykle se dokončí do 30 minut, ale může trvat déle, než databáze bude mít značnou velikost. Například počáteční záloha může trvat déle na obnovenou databázi nebo kopii databáze. Po první úplné záloze se všechny další zálohy naplánují automaticky a budou se bezobslužně spravovat na pozadí. Přesné načasování všech záloh databáze určuje služba SQL Database, protože musí vyrovnat celkové zatížení systému. Úlohy zálohování nemůžete změnit ani zakázat. 
+SQL Database podporuje samoobslužné obnovení (PITR) pomocí automatického vytváření úplných záloh, rozdílových záloh a záloh protokolů transakcí. Úplné zálohy databáze jsou vytvářeny týdně, rozdílové zálohy databáze jsou obvykle vytvářeny každých 12 hodin a zálohy protokolu transakcí jsou obvykle vytvářeny každých 5-10 minut, přičemž četnost je založena na výpočetní velikosti a množství aktivity databáze. První úplné zálohování je naplánováno ihned po vytvoření databáze. Obvykle se dokončí do 30 minut, ale může trvat déle, než databáze bude mít značnou velikost. Například počáteční záloha může trvat déle na obnovenou databázi nebo kopii databáze. Po prvním úplném zálohování se všechna další zálohování naplánují automaticky a budou spravovaná na pozadí. Přesné časování všech záloh databáze určuje služba SQL Database, protože vyrovnává celkovou úlohu systému. Úlohy zálohování nemůžete změnit ani zakázat.
 
-Zálohy PITR jsou geograficky redundantní a chráněné [Azure Storage replikace mezi různými oblastmi](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) .
+Zálohy PITR jsou chráněné pomocí geograficky redundantního úložiště. Další informace najdete v tématu [Azure Storage redundance](../storage/common/storage-redundancy.md).
 
 Další informace najdete v tématu [obnovení k bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) .
 
@@ -65,7 +65,7 @@ Další informace najdete v tématu [obnovení k bodu v čase](sql-database-reco
 
 Databáze typu Single a Pool nabízí možnost konfigurace dlouhodobého uchovávání (LTR) úplných záloh po dobu až 10 let v úložišti objektů BLOB v Azure. Pokud je povolená zásada LTR, týdenní úplné zálohy se automaticky zkopírují do jiného kontejneru úložiště RA-GRS. Pokud chcete splnit jiný požadavek na dodržování předpisů, můžete pro týdenní, měsíční nebo roční zálohy vybrat jinou dobu uchování. Spotřeba úložiště závisí na zvolené četnosti zálohování a na dobu uchování (e). Pomocí [cenové kalkulačky ltr](https://azure.microsoft.com/pricing/calculator/?service=sql-database) můžete odhadnout náklady na úložiště ltr.
 
-Podobně jako PITR, zálohy LTR jsou geograficky redundantní a chráněné [Azure Storage replikace mezi různými oblastmi](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
+Podobně jako PITR jsou zálohy LTR chráněné pomocí geograficky redundantního úložiště. Další informace najdete v tématu [Azure Storage redundance](../storage/common/storage-redundancy.md).
 
 Další informace najdete v tématu [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
 
@@ -103,7 +103,7 @@ Nadměrná spotřeba úložiště záloh bude záviset na zatížení a velikost
 > Pro analytická Datová tržiště \ úlohy datového skladu se důrazně doporučuje použít [clusterované indexy columnstore](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes), snížit počet neclusterovaných indexů a také zvážit operace hromadného načítání s počtem řádků přibližně 1 000 000, abyste snížili nadměrné využití úložiště záloh.
 
 
-## <a name="storage-costs"></a>Náklady na úložiště
+## <a name="storage-costs"></a>Cena za uložení
 
 
 ### <a name="dtu-model"></a>Model DTU
@@ -112,7 +112,7 @@ Pro úložiště zálohování databází a elastických fondů pomocí modelu D
 
 ### <a name="vcore-model"></a>Model virtuálních jader
 
-U izolovaných databází se minimální hodnota záložního úložiště rovná 100% velikosti databáze je k dispozici bez dalších poplatků. U elastických fondů a spravovaných instancí se minimální hodnota úložiště zálohy rovná 100% přiděleného úložiště dat pro fond nebo velikost instance, v uvedeném pořadí, je k dispozici bez dalších poplatků. Využití úložiště zálohování nad tuto mez bude zpoplatněno v jednotkách GB/měsíc. Tato další spotřeba bude záviset na zatížení a velikosti jednotlivých databází.
+U izolovaných databází se minimální hodnota záložního úložiště rovná 100% velikosti databáze je k dispozici bez dalších poplatků. U elastických fondů a spravovaných instancí se minimální hodnota úložiště zálohy rovná 100% přiděleného úložiště dat pro fond nebo velikost instance, v uvedeném pořadí, je k dispozici bez dalších poplatků. Další spotřeba úložiště zálohování se bude účtovat v GB za měsíc. Tato další spotřeba bude záviset na zatížení a velikosti jednotlivých databází.
 
 Azure SQL DB bude počítat celkové úložiště záloh v rámci uchovávání jako kumulativní hodnotu. Každou hodinu se tato hodnota oznamuje fakturačnímu kanálu Azure, který zodpovídá za agregaci tohoto hodinového využití za účelem získání spotřeby na konci každého měsíce. Po vyřazení databáze snížíme spotřebu jako stáří zálohy. Jakmile budou starší než doba uchovávání, fakturace se zastaví. Vzhledem k tomu, že se všechny zálohy protokolů a rozdílové zálohy uchovávají pro celou dobu uchovávání dat, budou vysoce upravované databáze mít vyšší poplatky za zálohování. 
 
@@ -195,7 +195,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 
 ### <a name="change-pitr-retention-period-using-rest-api"></a>Změna doby uchování PITR pomocí REST API
 
-#### <a name="sample-request"></a>Ukázková žádost
+#### <a name="sample-request"></a>Ukázkový požadavek
 
 ```http
 PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroup/providers/Microsoft.Sql/servers/testserver/databases/testDatabase/backupShortTermRetentionPolicies/default?api-version=2017-10-01-preview

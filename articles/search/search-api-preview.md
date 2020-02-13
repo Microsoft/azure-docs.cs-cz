@@ -7,22 +7,22 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.openlocfilehash: fd21a4b821e1911e94d542a0922e5269786c365d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/11/2020
+ms.openlocfilehash: db941152186127302680b5e659e43cd2d82a8908
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991061"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162272"
 ---
 # <a name="preview-features-in-azure-cognitive-search"></a>Funkce ve verzi Preview v Azure Kognitivní hledání
 
 Tento článek obsahuje seznam funkcí, které jsou v současnosti ve verzi Preview. Funkce, které přecházejí z verze Preview na obecnou dostupnost, se z tohoto seznamu odeberou. Můžete kontrolovat [aktualizace služby](https://azure.microsoft.com/updates/?product=search) nebo [novinky](whats-new.md) pro oznámení týkající se všeobecné dostupnosti.
 
-I když některé funkce verze Preview můžou být dostupné na portálu a .NET SDK, má REST API vždycky funkce ve verzi Preview. 
+I když některé funkce verze Preview můžou být dostupné na portálu a .NET SDK, má REST API vždycky funkce ve verzi Preview.
 
-+ Aktuální verze Preview rozhraní API pro operace vyhledávání je [`2019-05-06-Preview`](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview)
-+ Aktuální verze Preview pro operace správy je [`2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview)
++ Pro operace vyhledávání je [ **`2019-05-06-Preview`** ](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview) aktuální verzí Preview.
++ Pro operace správy je [ **`2019-10-01-Preview`** ](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) aktuální verzí Preview.
 
 > [!IMPORTANT]
 > Funkce Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -31,27 +31,29 @@ I když některé funkce verze Preview můžou být dostupné na portálu a .NET
 
 Prozkoumejte nejnovější vylepšení rozšíření AI prostřednictvím [rozhraní API pro vyhledávání ve verzi Preview](https://docs.microsoft.com/rest/api/searchservice/index-2019-05-06-preview).
 
-+ [Vlastní dovednosti při vyhledávání entit (Preview)](cognitive-search-skill-custom-entity-lookup.md ) je vnímání znalostí, které hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale nejsou zcela přesné. 
-
-+ [Dovednost detekce PII (Preview)](cognitive-search-skill-pii-detection.md) je způsob rozpoznávání, který se používá při indexování, která extrahuje osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby.
-
-+ [Přírůstkové obohacení (Preview)](cognitive-search-incremental-indexing-conceptual.md) přidá do kanálu pro rozšíření ukládání do mezipaměti, což vám umožní znovu použít stávající výstup, pokud cílené změny, jako je například aktualizace dovednosti nebo jiného objektu, nemění obsah. Ukládání do mezipaměti se týká pouze obohacených dokumentů vyprodukovaných dovednosti.
-
-+ [Znalostní báze Knowledge Store (Preview)](knowledge-store-concept-intro.md) je nový cíl kanálu pro rozšíření na bázi AI. Fyzická datová struktura existuje v úložišti objektů BLOB v Azure a v úložišti tabulek Azure a je vytvořená a naplněná při spuštění indexeru, který má připojené rozpoznávání dovednosti. Definice samotného úložiště znalostí je specifikována v rámci definice dovednosti. V rámci definice znalostní báze Knowledge Store můžete řídit fyzické struktury dat prostřednictvím prvků *projekce* , které určují způsob, jakým jsou data uložená v úložišti tabulek nebo objektů blob, a to, jestli existuje více zobrazení.
+|||
+|-|-|
+| [Dovednosti při vyhledávání vlastních entit (Preview)](cognitive-search-skill-custom-entity-lookup.md ) | Vnímání dovedností, která hledá text z vlastního uživatelsky definovaného seznamu slov a frází. Pomocí tohoto seznamu jsou všechny dokumenty označeny všemi vyhovujícími entitami. Dovednost také podporuje stupeň přibližné shody, které lze použít pro hledání shod, které jsou podobné, ale nejsou zcela přesné. | 
+| [Dovednost pro detekci PII (Preview)](cognitive-search-skill-pii-detection.md) | Vnímání odbornosti, která se používá při indexování, která extrahuje osobní údaje ze vstupního textu a poskytuje možnost jejich maskování z tohoto textu různými způsoby.| 
+| [Přírůstkové obohacení (Preview)](cognitive-search-incremental-indexing-conceptual.md) | Přidá do kanálu pro rozšíření ukládání do mezipaměti, což vám umožní znovu použít stávající výstup, pokud cílené změny, jako je například aktualizace dovednosti nebo jiného objektu, nezmění obsah. Ukládání do mezipaměti se týká pouze obohacených dokumentů vyprodukovaných dovednosti.| 
+| [Znalostní báze Knowledge Store (Preview)](knowledge-store-concept-intro.md) | Nový cíl kanálu rozšíření na bázi AI. Fyzická datová struktura existuje v úložišti objektů BLOB v Azure a v úložišti tabulek Azure a je vytvořená a naplněná při spuštění indexeru, který má připojené rozpoznávání dovednosti. Definice samotného úložiště znalostí je specifikována v rámci definice dovednosti. V rámci definice znalostní báze Knowledge Store můžete řídit fyzické struktury dat prostřednictvím prvků *projekce* , které určují způsob, jakým jsou data uložená v úložišti tabulek nebo objektů blob, a to, jestli existuje více zobrazení.| 
 
 ## <a name="indexing-and-query-features"></a>Indexování a funkce dotazů
 
 Funkce ve verzi Preview indexeru jsou dostupné v rozhraní API pro vyhledávání ve verzi Preview. 
 
-+ [Cosmos DB indexer](search-howto-index-cosmosdb.md) podporuje rozhraní MongoDB API (Preview), rozhraní Gremlin API (Preview) a rozhraní API Cassandra (Preview).
-
-+ [Azure Data Lake Storage Gen2 indexer (Preview)](search-howto-index-azure-data-lake-storage.md) může indexovat obsah a metadata z Data Lake Storage Gen2.
-
-+ [parametr dotazu moreLikeThis (Preview)](search-more-like-this.md) vyhledá dokumenty, které jsou relevantní pro určitý dokument. Tato funkce je ve starších verzích Preview. 
+|||
+|-|-|
+| [Cosmos DB indexer](search-howto-index-cosmosdb.md) | Podpora rozhraní API pro MongoDB (Preview), rozhraní Gremlin API (Preview) a rozhraní API Cassandra (Preview) typů rozhraní API. | 
+|  [Azure Data Lake Storage Gen2 indexer (Preview)](search-howto-index-azure-data-lake-storage.md) | Indexuje obsah a metadata z Data Lake Storage Gen2.| 
+| [parametr dotazu moreLikeThis (Preview)](search-more-like-this.md) | Vyhledá dokumenty, které jsou relevantní pro určitý dokument. Tato funkce je ve starších verzích Preview. | 
 
 ## <a name="management-features"></a>Funkce správy
 
-+ [Podpora privátního koncového bodu](service-create-private-endpoint.md) prostřednictvím [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) REST API správy. Můžete vytvořit službu, která má omezení k přístupu ke koncovému bodu.
+|||
+|-|-|
+| [Podpora privátních koncových bodů](service-create-private-endpoint.md) | Můžete vytvořit virtuální síť se zabezpečeným klientem (například virtuálním počítačem) a pak vytvořit vyhledávací službu, která používá privátní koncový bod. |
+| Omezení přístupu IP | Pomocí [`api-version=2019-10-01-Preview`](https://docs.microsoft.com/rest/api/searchmanagement/index-2019-10-01-preview) REST API správy můžete vytvořit službu, která má omezení přístupu k povoleným IP adresám. |
 
 ## <a name="earlier-preview-features"></a>Dřívější funkce ve verzi Preview
 

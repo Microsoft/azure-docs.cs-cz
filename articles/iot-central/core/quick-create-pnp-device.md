@@ -3,17 +3,17 @@ title: Rychlý Start – přidání simulovaného zařízení do Azure IoT Centr
 description: V tomto rychlém startu se dozvíte, jak vytvořit šablonu zařízení a přidat do aplikace IoT Central simulované zařízení.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: cb8f0c806435a6c623d14e50263844db7aac61bb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 489bf81388c1bb889756d54957e791282054f0f7
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027759"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169619"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Rychlý Start: Přidání simulovaného zařízení do aplikace IoT Central
 
@@ -28,7 +28,7 @@ V tomto rychlém startu přidáte šablonu zařízení pro desku *MXChip IoT Dev
 * Reaguje na příkazy, jako je zapnutí a vypnutí.
 * Sestavy obecných vlastností zařízení, jako je například verze firmwaru a sériové číslo.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete průvodce [vytvořením aplikace Azure IoT Central](./quick-deploy-iot-central.md) pro vytvoření IoT Central aplikace pomocí vlastní šablony **aplikace > vlastní** .
 
@@ -68,10 +68,10 @@ Následující kroky ukazují, jak pomocí katalogu zařízení importovat model
 
 1. Vyberte **vlastnosti cloudu** a pak **+ přidat cloudovou vlastnost**. K přidání dvou vlastností cloudu do šablony zařízení použijte informace v následující tabulce:
 
-    | Zobrazovaný název      | Sémantický typ | Schéma |
+    | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádné          | Datum   |
-    | Jméno zákazníka     | Žádné          | Řetězec |
+    | Last Service Date (Datum poslední údržby) | Žádná          | Datum   |
+    | Název zákazníka     | Žádná          | String |
 
 1. Kliknutím na **Uložit** uložte změny:
 

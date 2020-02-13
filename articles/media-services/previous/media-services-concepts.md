@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2126fed5231f2264ba9a0bbc13be9410bb8294da
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978828"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162901"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services koncepty 
 
@@ -29,7 +29,7 @@ Toto téma poskytuje přehled nejdůležitějších Media Services konceptů.
 
 ## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>prostředky a úložiště
 ### <a name="assets"></a>Prostředky
-[Asset](https://docs.microsoft.com/rest/api/media/operations/asset) obsahuje digitální soubory (včetně video, zvuk, obrázky, kolekci miniatur, textové stopy a soubory s titulky) a metadata o těchto souborech. Jakmile jsou digitální soubory nahrát do assetu, může použít ve službě Media Services, kódování a streamování pracovních postupů.
+[Asset](https://docs.microsoft.com/rest/api/media/operations/asset) obsahuje digitální soubory (včetně videa, zvuku, obrázků, kolekcí miniatur, textových stop a skrytých souborů titulků) a metadat těchto souborů. Jakmile jsou digitální soubory nahrát do assetu, může použít ve službě Media Services, kódování a streamování pracovních postupů.
 
 Asset se namapuje na kontejner objektů BLOB v účtu Azure Storage a soubory v prostředku se ukládají jako objekty blob bloku v tomto kontejneru. Azure Media Services nepodporuje objekty blob stránky.
 
@@ -111,7 +111,7 @@ Informace o podporovaných kodérech najdete v tématu [kodéry](media-services-
 ## <a name="live-streaming"></a>Živé streamování
 V Azure Media Services kanál představuje kanál pro zpracování obsahu živého streamování. Kanál přijímá živé vstupní proudy jedním ze dvou způsobů:
 
-* On-premises Live Encoder posílá do kanálu RTMP s více přenosovými rychlostmi nebo Smooth Streaming (fragmentovaný MP4). Můžete použít následující živé kodéry, které mají výstup s více přenosovými rychlostmi Smooth Streaming: MediaExcel, Ateme, představovat komunikaci, Envivio, Cisco a prvky. Následující kodéry pro výstup v reálném čase: Kodér Adobe Flash Live Encoder, Wirecast, Teradek, Haivision a transkodéry. Ingestované datové proudy procházejí kanálem bez dalšího překódování a kódování. Služba Media Services doručí datový proud zákazníkům na vyžádání.
+* On-premises Live Encoder posílá do kanálu RTMP s více přenosovými rychlostmi nebo Smooth Streaming (fragmentovaný MP4). Můžete použít následující živé kodéry, které mají výstup s více přenosovými rychlostmi Smooth Streaming: MediaExcel, Ateme, představovat komunikaci, Envivio, Cisco a prvky. Následující kodéry pro výstup v reálném čase: Kodér Adobe Flash Live Encoder, [Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision a transkodéry. Ingestované datové proudy procházejí kanálem bez dalšího překódování a kódování. Služba Media Services doručí datový proud zákazníkům na vyžádání.
 * Datový proud s jednou přenosovou rychlostí (v jednom z následujících formátů: RTMP nebo Smooth Streaming (fragmentovaný MP4)) se pošle do kanálu, který má povolené kódování v reálném čase pomocí Media Services. Kanál potom provede kódování v reálném čase pro příchozí datový proud s jednou přenosovou rychlostí v reálném čase na datový proud videa s více přenosovými rychlostmi (adaptivní). Služba Media Services doručí datový proud zákazníkům na vyžádání.
 
 ### <a name="channel"></a>Kanál
@@ -131,7 +131,7 @@ Každý program (událost) je přidružen k Assetu. Pro publikování programu m
 
 Kanál podporuje až tři současně spuštěné programy, takže si můžete vytvořit několik archivů stejného příchozího datového proudu. To vám umožní podle potřeby publikovat a archivovat různé části události. Požadavek vaší firmy může být například takový, že chcete archivovat 6 hodin programu, ale vysílat jenom posledních 10 minut. K tomu potřebujete vytvořit dva současně spuštěné programy. Jeden program nastavíte, aby archivoval 6 hodin události, ale tento program nebudete publikovat. Druhý program nastavíte, aby archivoval 10 minut a tento program budete publikovat.
 
-Další informace:
+Další informace naleznete v tématu:
 
 * [Práce s kanály, které jsou povolené k provádění Live Encoding s Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
 * [Práce s kanály, které přijímají živé datové proudy s více přenosovými rychlostmi z místních kodérů](media-services-live-streaming-with-onprem-encoders.md)
@@ -190,7 +190,7 @@ Progresivní stahování vám umožní začít přehrávat média před stažen�
 >[!NOTE]
 >Pokud chcete, aby byly k dispozici pro progresivní stahování, je nutné dešifrovat šifrované prostředky.
 
-Pokud chcete uživatelům poskytnout adresy URL progresivního stahování, musíte nejdřív vytvořit Lokátor OnDemandOrigin. Vytvoření lokátoru vám poskytne základní cestu k assetu. Pak musíte připojit název souboru MP4. Například:
+Pokud chcete uživatelům poskytnout adresy URL progresivního stahování, musíte nejdřív vytvořit Lokátor OnDemandOrigin. Vytvoření lokátoru vám poskytne základní cestu k assetu. Pak musíte připojit název souboru MP4. Příklad:
 
 http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 

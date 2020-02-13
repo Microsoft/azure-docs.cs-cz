@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 20b667ae345e468bcd3db25d85b7c9de561af4bc
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 447e8a67cedbb8f78e4db9602f603fefd382693c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111481"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162935"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>K připojení databází v Azure Průzkumník dat použít databázi sledování
 
@@ -206,8 +206,8 @@ V této části se naučíte připojit databázi k existujícímu clusteru pomoc
 
 |**Nastavení**  |**Popis**  |
 |---------|---------|
-|Název clusteru sledování     |  Název clusteru následného. Toto je cluster, ve kterém bude tato šablona nasazena.  |
-|Název připojených konfigurací databáze    |    Název objektu připojené konfigurace databáze. Název může být libovolný řetězec, pokud je na úrovni clusteru jedinečný.     |
+|Název clusteru sledování     |  Název clusteru následného programu; kde bude šablona nasazena.  |
+|Název připojených konfigurací databáze    |    Název objektu připojené konfigurace databáze. Název může být libovolný řetězec, který je jedinečný na úrovni clusteru.     |
 |Název databáze     |      Název databáze, která se má dodržovat Pokud chcete sledovat všechny databáze vedoucího vedoucího, použijte znak *.   |
 |ID prostředku clusteru vedoucího procesu    |   ID prostředku vedoucího clusteru      |
 |Výchozí typ změny objektů zabezpečení    |   Výchozí typ změny objektu zabezpečení. Může být `Union`, `Replace` nebo `None`. Další informace o výchozím typu změny objektu zabezpečení naleznete v tématu [hlavní ovládací prvek typu změny](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |

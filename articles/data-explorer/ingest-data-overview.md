@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
-ms.translationtype: MT
+ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091782"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157240"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Ingestování dat v Azure Průzkumník dat
 
@@ -90,7 +90,7 @@ Kusto nabízí klientskou sadu SDK, která se dá použít k ingestování a dot
 
 | Metoda | Latence |
 | --- | --- |
-| **Ingestování vloženého textu** | Okamžité |
+| **Ingestování vloženého textu** | Okamžitá |
 | **Ingestování z dotazu** | Doba zpracování dotazu + |
 | **Ingestování z úložiště** | Doba stahování a doba zpracování |
 | **Přijímání zpráv do fronty** | Čas dávky a doba zpracování |
@@ -118,7 +118,7 @@ Pro organizace s existující infrastrukturou, která je založená na službě 
 ## <a name="supported-data-formats"></a>Podporované formáty dat
 
 Pro všechny metody příjmu kromě ingestování z dotazu naformátujte data tak, aby je mohla Azure Průzkumník dat analyzovat. 
-* Podporované formáty dat jsou: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH, JSON (řádek oddělený, víceřádkový), Avro a Parquet. 
+* Podporovány jsou formáty dat: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH, JSON (oddělený čárkami, víceřádkové), Avro, orc a Parquet. 
 * Podporuje kompresi ZIP a GZIP.
 
 > [!NOTE]
@@ -129,7 +129,7 @@ Pro všechny metody příjmu kromě ingestování z dotazu naformátujte data ta
 * Efektivní zásady uchovávání dat ingestně se odvozují ze zásad uchovávání databáze. Podrobnosti najdete v tématu [zásady uchovávání informací](/azure/kusto/concepts/retentionpolicy) . Ingestování dat vyžaduje pro ingestování **tabulek** nebo pro ingestování **databází** oprávnění.
 * Ingestování podporuje maximální velikost souboru 5 GB. Doporučením je ingestování souborů mezi 100 MB a 1 GB.
 
-## <a name="schema-mapping"></a>mapování schématu
+## <a name="schema-mapping"></a>Mapování schématu
 
 Mapování schématu pomáhá navazovat zdrojová datová pole na sloupce cílové tabulky.
 

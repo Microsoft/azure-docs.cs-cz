@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 3217a2d5ba3d45a069eacdb67a8d69e9abc674b8
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "69015205"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162561"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Umožňuje živé streamování pomocí Media Services k vytváření datových proudů s více přenosovými rychlostmi pomocí Azure Portal  
 > [!div class="op_single_selector"]
@@ -43,8 +43,8 @@ Následující část představuje obecné kroky, které jsou součástí proces
 
 1. Připojte k počítači videokameru. <br/>V případě nápadů při instalaci se podívejte na [Nastavení jednoduchého a přenosného kormidelního videa událostí]( https://link.medium.com/KNTtiN6IeT).
 
-    Pokud nemáte přístup k kameře, můžete pomocí nástrojů, jako je [Wirecastový Stream](https://www.telestream.net/wirecast/overview.htm) , vygenerovat živý kanál ze souboru videa.
-1. Spusťte a nakonfigurujte on-premises Live Encoder, který může nastavovat jeden datový proud s jednou přenosovou rychlostí v jednom z těchto protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Podívejte se také na tento blog: [Živá streamovaná výroba pomocí OBS](https://link.medium.com/ttuwHpaJeT).
+    Pokud nemáte přístup k kameře, můžete pomocí nástrojů, jako je [Wirecastový Stream](media-services-configure-wirecast-live-encoder.md) , vygenerovat živý kanál ze souboru videa.
+1. Spusťte a nakonfigurujte místní kodér pro kódování v reálném čase, který umí produkovat stream s jednou přenosovou rychlostí v jednom z následujících protokolů: RTMP nebo Smooth Streaming. Další informace najdete v článku [Podpora RTMP ve službě Azure Media Services a kodéry pro kódování v reálném čase](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Podívejte se také na tento blog: [živá streamovaná výroba pomocí OBS](https://link.medium.com/ttuwHpaJeT).
 
     Tento krok můžete provést i po vytvoření kanálu.
 1. Vytvořte a spusťte kanál. 
@@ -61,12 +61,12 @@ Následující část představuje obecné kroky, které jsou součástí proces
 1. Kdykoli budete chtít zastavit streamování a archivaci události, zastavte událost.
 1. Odstraňte událost (volitelně můžete odstranit i asset).   
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kurzu potřebujete následující:
 
 * K dokončení tohoto kurzu potřebujete mít účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. 
-  Podrobnosti najdete v tématu [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/pricing/free-trial/).
+  Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Vytvoření účtu](media-services-portal-create-account.md).
 * Webová kamera a kodér, který dokáže odesílat živý datový proud s jednou přenosovou rychlostí.
 
@@ -94,7 +94,7 @@ K dokončení kurzu potřebujete následující:
         Možnost protokolu nelze změnit, pokud kanál nebo jeho přidružené události nebo programy právě běží. Pokud požadujete různé protokoly, vytvořte samostatné kanály pro každý protokol streamování.  
    2. Na ingestování můžete použít omezení IP adres. 
 
-       Můžete definovat IP adresy, které mají v tomto kanálu povoleno ingestování videa. Povolené IP adresy můžete zadat buď jako jednu IP adresu (např. '10.0.0.1'), rozsah IP adres pomocí IP adresy a masky podsítě s technologií CIDR (např. '10.0.0.1/22') nebo jako rozsah IP adres pomocí IP adresy a masky podsítě zapsané jako čísla oddělená tečkami (např. '10.0.0.1(255.255.252.0)').
+       Můžete definovat IP adresy, které mají v tomto kanálu povoleno ingestování videa. Povolené IP adresy je možné zadat buď jako jednu IP adresu (např. 10.0.0.1), rozsah IP adres pomocí IP adresy a masky podsítě CIDR (např. 10.0.0.1/22), nebo rozsah IP adres pomocí IP adresy a masky s tečkami v desítkové soustavě (např. 10.0.0.1 (255.255.252.0)).
 
        Pokud žádné IP adresy nezadáte a nedefinujete žádné pravidlo, nebude povolená žádná IP adresa. Pokud chcete povolit libovolnou IP adresy, vytvořte pravidlo a nastavte 0.0.0.0/0.
 6. Na kartě **Náhled** použijte na náhled omezení IP adres.
@@ -112,7 +112,7 @@ Po vytvoření kanálu můžete kliknutím na kanál a výběrem **Nastavení** 
 Další informace najdete v článku [Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi](media-services-manage-live-encoder-enabled-channels.md).
 
 ## <a name="get-ingest-urls"></a>Získání ingestovaných adres URL
-Po vytvoření kanálu můžete získat ingestované adresy URL, které poskytnete kodéru pro kódování v reálném čase. Kodér tyto adresy URL používá ke vkládání živého proudu.
+Po vytvoření kanálu můžete získat ingestované adresy URL, které poskytnete kodéru pro kódování v reálném čase. Kodér tyto adresy URL používá ke vkládání živého datového proudu.
 
 ![adresy URL pro příjem](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
 
@@ -165,7 +165,7 @@ Publikovanou událost můžete sledovat na stránce **Živá událost**.
 Pokud kliknete na tlačítko **Zrušit streamování**, zastaví se všechny živé události. 
 
 ## <a name="watch-the-event"></a>Sledování události
-Pokud chcete sledovat událost, klikněte na tlačítko **Sledovat** na webu Azure Portal nebo zkopírujte adresu URL streamování a použijte přehrávač dle svého výběru. 
+Pokud chcete sledovat událost, klikněte na tlačítko **Sledovat** na portálu Azure nebo zkopírujte adresu URL streamování a použijte přehrávač dle svého výběru. 
 
 ![Vytvořeno](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-play-event.png)
 
@@ -194,6 +194,6 @@ Prohlédněte si mapy kurzů k Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
+## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

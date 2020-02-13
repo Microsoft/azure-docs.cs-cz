@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 3d6439424f2a39bf5b5477cebd5fadb23a6370b0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984808"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169818"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -50,16 +50,12 @@ Spravovaný výpočetní prostředek je vytvořený a spravovaný pomocí Azure 
 
 Můžete vytvořit Azure Machine Learning výpočetních instancí (Preview) nebo výpočetních clusterů v nástroji:
 
-| | Azure Machine Learning Studio | Portál Azure | SDK | Šablona Resource Manageru | Rozhraní příkazového řádku |
+| | Azure Machine Learning Studio | Azure Portal | Sada SDK | Šablona Resource Manageru | Rozhraní příkazového řádku |
 |---| ----- | ----- | ----- | ----- | ----- |
 | Instance služby Compute | ano | ano | ano | ano |  |
 | Výpočetní cluster | ano | ano | ano | ano | ano |
 
 Po vytvoření těchto výpočetních prostředků se tento pracovní prostor automaticky dojedná na rozdíl od jiných druhů výpočetních cílů.
-
-> [!NOTE]
-> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever**, **východní USA 2**, **Severní Evropa** nebo **Velká Británie – jih**s podporou pro jiné oblasti, které již brzy připravujeme.
->Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) . 
 
 ### <a name="compute-clusters"></a>Výpočetní clustery
 
@@ -78,6 +74,6 @@ Nespravovaný cíl výpočetní služby není *spravován nástrojem* Azure Mach
 
 ## <a name="next-steps"></a>Další kroky
 
-Získáte informace o těchto tématech:
+Naučte se:
 * [Nastavení cílového výpočetního prostředí pro výuku modelu](how-to-set-up-training-targets.md)
 * [Nasazení modelu do cíle služby COMPUTE](how-to-deploy-and-where.md)

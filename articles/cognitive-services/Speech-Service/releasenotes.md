@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 235d8788b47355925d93cb3e3835d32e25c1b51f
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293585"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168150"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -34,7 +34,7 @@ ms.locfileid: "76293585"
 - JavaScript: nyní `NODE_TLS_REJECT_UNAUTHORIZED`me, protože přispíváme k příspěvku z [orgads](https://github.com/orgads). [Tady](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)najdete podrobnosti.
 
 
-**Rozbíjející změny v**
+**Průlomové změny**
 
 - `OpenSSL` byla aktualizována na verzi 1.1.1 b a staticky propojená se základní knihovnou sady Speech SDK pro Linux. To může způsobit přerušení, pokud `OpenSSL` doručených zpráv není nainstalován do `/usr/lib/ssl` adresáře v systému. Pokud chcete tento problém obejít, přečtěte si [naši dokumentaci](how-to-configure-openssl-linux.md) v části dokumentace k sadě Speech SDK.
 - Změnili jsme datový typ vrácený pro C# `WordLevelTimingResult.Offset` z `int` na `long`, aby bylo možné získat přístup k `WordLevelTimingResults`ům, když jsou data řeči delší než 2 minuty.
@@ -78,7 +78,7 @@ ms.locfileid: "76293585"
 - Přidání podpory `KeywordRecognizer` do Windows (UWP), Androidu a iOS prostřednictvím balíčků NuGet a Unity
 - Bylo přidáno rozhraní API vzdálené konverzace Java, které umožní přepis konverzace v asynchronních dávkách.
 
-**Rozbíjející změny v**
+**Průlomové změny**
 
 - Funkce konverzace Transcriber přesunuté do oboru názvů `Microsoft.CognitiveServices.Speech.Transcription`.
 - Součást metod konverzace Transcriber je přesunuta do nové třídy `Conversation`.
@@ -309,7 +309,7 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
 - Android
   - Povolená podpora ProGuard během generování APK
 
-**Vylepšení**
+**Vylepšen**
 
 - Vylepšení využití interního vlákna, což snižuje počet vláken, zámků a mutexů.
 - Vylepšené zasílání zpráv o chybách/informace. V několika případech se chybové zprávy nerozšířily tak, jak jsou.
@@ -339,9 +339,9 @@ Toto je verze jenom pro JavaScript. Nepřidaly se žádné funkce. Byly proveden
 
 - Podpora pro Android x86/x64.
 - Podpora proxy serveru: v objektu `SpeechConfig` nyní můžete zavolat funkci pro nastavení informací o proxy serveru (název hostitele, port, uživatelské jméno a heslo). Tato funkce není k dispozici v systému iOS.
-- Vylepšené chybové kód a zprávy. Pokud rozlišení vrátil chybu, to již nastaven `Reason` (v případě zrušené) nebo `CancellationDetails` (v výsledek rozpoznání) k `Error`. Zrušené událost teď obsahuje dva další členy, `ErrorCode` a `ErrorDetails`. Pokud server vrátil Další informace o chybě s oznámenou chybu, teď bude k dispozici v nové členy.
+- Vylepšené chybové kód a zprávy. Pokud rozpoznávání vrátilo chybu, nastavilo se již `Reason` (ve zrušené události) nebo `CancellationDetails` (ve výsledku rozpoznávání) na `Error`. Zrušená událost teď obsahuje dva další členy `ErrorCode` a `ErrorDetails`. Pokud server vrátil Další informace o chybě s oznámenou chybu, teď bude k dispozici v nové členy.
 
-**Vylepšení**
+**Vylepšen**
 
 - Přidání dalšího ověření v konfiguraci modulu pro rozpoznávání a přidal další chybové zprávy.
 - Vylepšené zpracování dlouholetý nečinnosti uprostřed zvukový soubor.
@@ -376,16 +376,16 @@ Vylepšení spolehlivosti a opravy chyb:
 - Jazyk JavaScript: Oprava týkající se událostí a instalační soubory.
 - Dokumentace k vylepšení.
 
-V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidán nový ukázky pro jazyk JavaScript.
+V našem [ukázkovém úložišti](https://aka.ms/csspeech/samples)se přidala Nová ukázka pro JavaScript.
 
 ## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services sadou SDK pro řeč 1.0.0: 2018zářijová verze
 
 **Nové funkce**
 
-- Podpora pro Objective-C v iOS. Podívejte se na naše [rychlý start Objective-C pro iOS](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md).
-- Podpora jazyka JavaScript v prohlížeči. Podívejte se na naše [JavaScript quickstart](quickstart-js-browser.md).
+- Podpora pro Objective-C v iOS. Podívejte se na náš rychlý úvodní úkol [v jazyce C pro iOS](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone-langs/objectivec-ios.md).
+- Podpora jazyka JavaScript v prohlížeči. Podívejte se na náš [rychlý úvodní JavaScript](quickstart-js-browser.md).
 
-**Rozbíjející změny v**
+**Průlomové změny**
 
 - V této verzi se zavádí určitý počet nezměněných změn.
   Podrobnosti najdete na [této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) .
@@ -395,19 +395,19 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 **Nové funkce**
 
 - Aplikace UPW vytvořené pomocí sadou SDK pro řeč teď můžete předat Kit certifikaci aplikace Windows (souboru).
-  Podívejte se [UPW quickstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp&tabs=uwp).
+  Podívejte se na [rychlé zprovoznění UWP](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp&tabs=uwp).
 - Podpora pro .NET Standard 2.0 pro Linux (Ubuntu 16.04 x 64).
 - Experimentální: Podpora jazyka Java 8 na Windows (64 bitů) a Linux (Ubuntu 16.04 x 64).
-  Podívejte se [rychlý start Java Runtime Environment](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre).
+  Podívejte se na [rychlý úvodní Java Runtime Environment](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=jre).
 
-**Funkční změny**
+**Změna funkčnosti**
 
 - Zobrazit další podrobné informace o chybě na chyby připojení.
 
-**Rozbíjející změny v**
+**Průlomové změny**
 
-- V jazyce Java (Android) `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` funkce už vyžaduje parametr cesty. Cesta se nyní automaticky zjistí na všech podporovaných platformách.
-- Přistupující objekt get vlastnosti `EndpointUrl` byla odebrána v jazyce Java a C#.
+- V jazyce Java (Android) již funkce `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate` nevyžaduje parametr cesty. Cesta se nyní automaticky zjistí na všech podporovaných platformách.
+- Přístupový objekt get vlastnosti `EndpointUrl` v jazyce Java a C# byl odebrán.
 
 **Opravy chyb**
 
@@ -420,34 +420,34 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 
 **Nové funkce**
 
-- Podpora platformy Android (API 23: Android 6.0 Marshmallow nebo vyšší). Podívejte se [Android rychlý Start](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=android).
-- Podpora .NET Standard 2.0 na Windows. Podívejte se [rychlý start pro .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
+- Podpora platformy Android (API 23: Android 6.0 Marshmallow nebo vyšší). Podívejte se na [rychlý Start pro Android](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java&tabs=android).
+- Podpora .NET Standard 2.0 na Windows. Podívejte se na [rychlé zprovoznění .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore).
 - Experimentální: Podpora UWP na Windows (verze 1709 nebo novější).
-  - Podívejte se [UPW quickstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp).
+  - Podívejte se na [rychlé zprovoznění UWP](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp).
   - Poznámka: Aplikace UPW vytvořené pomocí sadou SDK pro řeč ještě nepředávejte Kit certifikaci aplikace Windows (souboru).
 - Podporují rozpoznávání dlouhotrvající se automatické obnovení připojení.
 
 **Funkční změny**
 
-- `StartContinuousRecognitionAsync()` podporuje dlouhotrvající rozpoznávání.
-- Rozpoznávání výsledek obsahuje více polí. Máte posun od začátku zvuku a doba trvání (i v taktech) si rozpoznaný text a další hodnoty, které představují rozpoznávání stav, například `InitialSilenceTimeout` a `InitialBabbleTimeout`.
+- `StartContinuousRecognitionAsync()` podporuje dlouhodobě běžící rozpoznávání.
+- Rozpoznávání výsledek obsahuje více polí. Jsou posunuty od zahájení zvuku a doby trvání (v tiků) rozpoznaného textu a dalších hodnot, které představují stav rozpoznávání, například `InitialSilenceTimeout` a `InitialBabbleTimeout`.
 - Podpora AuthorizationToken vytváření instancí továrny.
 
-**Rozbíjející změny v**
+**Průlomové změny**
 
 - Události rozpoznávání: typ události `NoMatch` byl sloučen do události `Error`.
 - SpeechOutputFormat v C# byla přejmenována na `OutputFormat`, aby C++zůstala zarovnána s.
-- Návratový typ některé metody `AudioInputStream` rozhraní se mírně změní:
-  - V jazyce Java `read` metody nyní vrací `long` místo `int`.
-  - V jazyce C# `Read` metody nyní vrací `uint` místo `int`.
-  - V jazyce C++ `Read` a `GetFormat` metody nyní návratový `size_t` místo `int`.
-- Jazyk C++: Výskyty vstupních audiostreamy nyní mohou být předány pouze jako `shared_ptr`.
+- Návratový typ některých metod `AudioInputStream` rozhraní se mírně změnil:
+  - V jazyce Java nyní metoda `read` vrátí `long` namísto `int`.
+  - V C#rozhraní `Read` metoda nyní vrací `uint` namísto `int`.
+  - V C++nástroji `Read` a `GetFormat` metody nyní vrací `size_t` místo `int`.
+- C++: Instance zvukových vstupních streamů se teď dají předávat jenom jako `shared_ptr`.
 
 **Opravy chyb**
 
-- Oprava nesprávné návratové hodnoty ve výsledku Pokud `RecognizeAsync()` vyprší časový limit.
+- Opravily se nesprávné návratové hodnoty v důsledku `RecognizeAsync()` vypršení časového limitu.
 - Závislost na knihovny media foundation ve Windows se odebrala. Sada SDK nyní používá rozhraní API Core zvuk.
-- Oprava dokumentace: přidání [oblastech](regions.md) stránky k popisu podporovaných oblastí.
+- Oprava dokumentace: Přidání stránky [oblastí](regions.md) pro popis podporovaných oblastí.
 
 **Známý problém**
 
@@ -459,28 +459,28 @@ V našem [ukázkové úložiště](https://aka.ms/csspeech/samples), byl přidá
 
 - AudioInputStream
 
-  Rozlišovače teď můžou využívat datového proudu jako zdroje zvuku. Další informace najdete v tématu související [Příručka](how-to-use-audio-input-streams.md).
+  Rozlišovače teď můžou využívat datového proudu jako zdroje zvuku. Další informace najdete v části související [Průvodce](how-to-use-audio-input-streams.md).
 
 - Formát podrobný výstup
 
-  Když vytvoříte `SpeechRecognizer`, můžete požádat o `Detailed` nebo `Simple` formát výstupu. `DetailedSpeechRecognitionResult` Obsahuje skóre spolehlivosti, textové rozpoznaných, lexikální nezpracované podobě, normalizovaná forma a normalizovaná forma se maskované vulgárních výrazů.
+  Když vytváříte `SpeechRecognizer`, můžete požádat o výstupní formát `Detailed` nebo `Simple`. `DetailedSpeechRecognitionResult` obsahuje hodnocení spolehlivosti, rozpoznaný text, nezpracovaný lexikální tvar, normalizovanou formu a normalizovanou formu s maskovánými vulgárními výrazy.
 
 **Zásadní změna**
 
-- Změnit na `SpeechRecognitionResult.Text` z `SpeechRecognitionResult.RecognizedText` v jazyce C#.
+- Změna na `SpeechRecognitionResult.Text` z `SpeechRecognitionResult.RecognizedText` v C#.
 
 **Opravy chyb**
 
 - Oprava potíží možné zpětného volání ve vrstvě USP během vypínání.
 - Pokud rozlišovače spotřebované zvuku vstupního souboru, to se udržuje popisovač souboru, který je delší než nezbytnou.
 - Odebrat několika zablokování mezi pumpu zpráv a rozlišovače.
-- Oheň `NoMatch` dojít, pokud vypršel časový limit odpověď ze služby.
+- Spustí `NoMatch` výsledek, když vypršel časový limit odpovědi na službu.
 - Knihovny media foundation na Windows jsou zpožděné načtení. Tato knihovna je vyžadován pro vstup pouze pro mikrofon.
 - Rychlost odesílání pro zvukových dat je omezená na rychlost dvakrát původní zvuku.
 - Na Windows C# .NET sestavení teď je silný název.
-- Oprava dokumentace: `Region` jsou vyžadované informace k vytvoření rozpoznávání rukopisu.
+- Oprava dokumentace: `Region` jsou požadovány informace k vytvoření nástroje pro rozpoznávání.
 
-Další ukázky byly přidány a jsou neustále aktualizovány. Nejnovější sadu ukázek, najdete v článku [úložišti GitHub s ukázkami sadou SDK pro řeč](https://aka.ms/csspeech/samples).
+Další ukázky byly přidány a jsou neustále aktualizovány. Nejnovější sadu ukázek najdete v části [sada Speech SDK Samples v úložišti GitHub](https://aka.ms/csspeech/samples).
 
 ## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>Services cognitive řeči vydání sady SDK 0.2.12733: květen 2018
 

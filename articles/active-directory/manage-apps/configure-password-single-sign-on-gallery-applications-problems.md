@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e933c82229415a71182096a6aca9a2e535934d89
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274197"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159042"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Problém s konfigurací jednotného přihlašování k heslu pro aplikaci Galerie Azure AD
 
@@ -31,7 +31,7 @@ K tomuto problému obvykle dochází v případě, že dodavatel aplikace změni
 
 I když má společnost Microsoft technologie, aby automaticky zjistily, kdy integrace přeruší, nemusí být možné tyto problémy najít hned, jinak problémy vyřeší. V případě, že některá z těchto integrací nefunguje správně, otevřete případ podpory, aby bylo možné je opravit co nejrychleji.
 
-**Pokud se obrátíte na dodavatele této aplikace,** pošlete jim náš způsob, aby Microsoft mohl s nimi pracovat, aby nativně integroval svou aplikaci s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../develop/howto-app-gallery-listing.md) , abyste je mohli začít.
+**Pokud se obrátíte na dodavatele této aplikace,** pošlete jim náš způsob, aby Microsoft mohl s nimi pracovat, aby nativně integroval svou aplikaci s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../azuread-dev/howto-app-gallery-listing.md) , abyste je mohli začít.
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Přihlašovací údaje jsou vyplněné a odeslané, ale stránka indikuje, že přihlašovací údaje nejsou správné.
 
@@ -59,7 +59,7 @@ V případě, že předchozí návrhy nefungují, může to být případ, kdy d
 
 I když má společnost Microsoft technologie, aby automaticky zjistily, kdy integrace aplikace přeruší, nemusí být možné tyto problémy najít hned, jinak může opravit problémy. Pokud integrace nefunguje správně, můžete otevřít případ podpory, abyste ho mohli co nejrychleji opravit. 
 
-V případě, že se **s dodavatelem této aplikace obrátíte,** **pošlete je našemu způsobu** , abychom s nimi mohli s nimi pracovat nativně integrací aplikace s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../develop/howto-app-gallery-listing.md) , abyste je mohli začít.
+V případě, že se **s dodavatelem této aplikace obrátíte,** **pošlete je našemu způsobu** , abychom s nimi mohli s nimi pracovat nativně integrací aplikace s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../azuread-dev/howto-app-gallery-listing.md) , abyste je mohli začít.
 
 ## <a name="the-extension-works-in-chrome-and-firefox-but-not-in-internet-explorer"></a>Rozšíření funguje v Chrome a Firefox, ale ne v Internet Exploreru.
 
@@ -73,7 +73,7 @@ Existují dva hlavní příčiny tohoto problému:
 
   * Tato situace se bohužel může lišit v závislosti na verzi prohlížeče, rychlosti počítače nebo navštíveném webu. V takovém případě doporučujeme, abyste kontaktovali podporu, abychom mohli opravit integraci pro tuto konkrétní aplikaci.
 
-V případě, že se **s dodavatelem této aplikace obrátíte,** **pošlete je našemu způsobu** , abychom s nimi mohli s nimi pracovat nativně integrací aplikace s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../develop/howto-app-gallery-listing.md) , abyste je mohli začít.
+V případě, že se **s dodavatelem této aplikace obrátíte,** **pošlete je našemu způsobu** , abychom s nimi mohli s nimi pracovat nativně integrací aplikace s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../azuread-dev/howto-app-gallery-listing.md) , abyste je mohli začít.
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Zkontroluje, jestli se přihlašovací stránka aplikace v poslední době změnila, nebo jestli vyžaduje další pole.
 
@@ -81,7 +81,7 @@ Pokud se přihlašovací stránka aplikace významně změnila, někdy to způso
 
 I když má společnost Microsoft technologie, aby automaticky zjistily, kdy integrace aplikace přeruší, nemusí být možné tyto problémy najít hned, jinak může opravit problémy. Pokud integrace nefunguje správně, můžete otevřít případ podpory, abyste ho mohli co nejrychleji opravit. 
 
-V případě, že se **s dodavatelem této aplikace obrátíte,** **pošlete je našemu způsobu** , abychom s nimi mohli s nimi pracovat nativně integrací aplikace s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../develop/howto-app-gallery-listing.md) , abyste je mohli začít.
+V případě, že se **s dodavatelem této aplikace obrátíte,** **pošlete je našemu způsobu** , abychom s nimi mohli s nimi pracovat nativně integrací aplikace s Azure Active Directory. Dodavatele můžete odeslat do [výpisu vaší aplikace v Azure Active Directory Galerie aplikací](../azuread-dev/howto-app-gallery-listing.md) , abyste je mohli začít.
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>Postup instalace rozšíření prohlížeče přístupového panelu
 
@@ -89,7 +89,7 @@ Chcete-li nainstalovat rozšíření prohlížeče přístupového panelu, postu
 
 1.  Otevřete [přístupový panel](https://myapps.microsoft.com) v jednom z podporovaných prohlížečů a přihlaste se jako **uživatel** ve službě Azure AD.
 
-2.  Na přístupovém panelu klikněte na **aplikaci pro jednotné přihlašování pomocí hesla** .
+2.  na přístupovém panelu klikněte na **aplikaci pro jednotné přihlašování pomocí hesla** .
 
 3.  Na příkazovém řádku s výzvou k instalaci softwaru vyberte **nainstalovat hned**.
 

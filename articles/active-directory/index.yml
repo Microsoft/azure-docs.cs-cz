@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: 1ce670f2783eb12db307eac42974667dd809de9d
-  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.openlocfilehash: e11e0edf214d3362784285cc24ee209855383119
+  ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 02/12/2020
-  ms.locfileid: "77159297"
+  ms.locfileid: "77166168"
 highlightedContent:
   items:
   - title: Co je Azure AD?
@@ -70,15 +70,15 @@ conceptualContent:
       text: Další informace
   - title: Authentication
     links:
-    - url: ./authentication/concept-mfa-howitworks.md
+    - url: ./authentication/overview-authentication.md
       itemType: concept
-      text: 'Jak to funguje: Azure MFA'
-    - url: ./authentication/concept-sspr-howitworks.md
-      itemType: concept
-      text: Samoobslužné resetování hesla Azure AD
-    - url: ./authentication/concept-password-ban-bad.md
-      itemType: concept
-      text: Ochrana hesel Azure AD
+      text: Co je služba Azure AD Authentication?
+    - url: ./authentication/tutorial-enable-sspr.md
+      itemType: tutorial
+      text: Povolení samoobslužného resetování hesel
+    - url: ./authentication/tutorial-enable-azure-mfa.md
+      itemType: tutorial
+      text: Povolení služby Azure Multi-Factor Authentication
     footerLink:
       url: ./authentication/index.yml
       text: Další informace

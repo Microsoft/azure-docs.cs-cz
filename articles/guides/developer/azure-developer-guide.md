@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 67fe048c5afb07c65dcddc797e3a1d8461b1893f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
-ms.translationtype: MT
+ms.openlocfilehash: fa8013722376a4864ba955783dbde1f73c0d9e8a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965959"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163105"
 ---
-# <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
+# <a name="get-started-guide-for-azure-developers"></a>Příručka Začínáme pro vývojáře v Azure
 
 ## <a name="what-is-azure"></a>Co je Azure?
 
@@ -93,10 +93,10 @@ Místo toho, abyste se museli starat o sestavování a správu celé aplikace ne
 Azure Service Fabric je platforma distribuovaných systémů. Tato platforma usnadňuje sestavování, balení, nasazování a správu škálovatelných a spolehlivých mikroslužeb. Poskytuje také komplexní možnosti správy aplikací, jako například:
 
 * Zřizování
-* Nasazování
-* Sledování
+* Nasazení
+* Monitorování
 * Upgrade/opravy
-* Odstraňování
+* Odstraňuje
 
 Aplikace, které se spouštějí ve sdíleném fondu počítačů, můžou v případě potřeby začít využívat malý objem a škálovat na stovky nebo tisíce počítačů.
 
@@ -163,7 +163,7 @@ Azure nabízí několik způsobů použití kontejnerů ve vašich aplikacích.
   >
   > **Začínáme**: [použijte vlastní image docker pro App Service v systému Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Ověření
+### <a name="authentication"></a>Ověřování
 
 Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k tomu, aby se zabránilo neoprávněnému přístupu k prostředkům. Azure nabízí několik způsobů, jak ověřit klienty aplikace.
 
@@ -171,7 +171,7 @@ Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k t
 
   > **Kdy použít**: když chcete poskytnout možnosti jednotného přihlašování, pracovat s daty založenými na grafech nebo ověřovat uživatele založené na doméně.
   >
-  > **Začínáme**: Další informace najdete v [příručce pro vývojáře Azure Active Directory](../../active-directory/develop/v1-overview.md).
+  > **Začínáme**: Další informace najdete v [příručce pro vývojáře Azure Active Directory](../../active-directory/develop/v2-overview.md).
 
 - **Ověřování App Service**: když zvolíte App Service k hostování vaší aplikace, získáte také integrovanou podporu ověřování pro Azure AD společně se zprostředkovateli sociálních identit, včetně Facebooku, Google, Microsoft a Twitteru.
 
@@ -181,7 +181,7 @@ Je velmi důležité nejen zjistit, kdo používá vaše aplikace, ale také k t
 
 Další informace o osvědčených postupech zabezpečení v Azure najdete v tématu [osvědčené postupy a vzory zabezpečení Azure](../../security/fundamentals/best-practices-and-patterns.md).
 
-### <a name="monitoring"></a>Sledování
+### <a name="monitoring"></a>Monitorování
 
 Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat problémy a zjistit, jak zákazníci používají vaši aplikaci. Azure nabízí několik možností monitorování.
 
@@ -198,7 +198,7 @@ Když vaše aplikace běží v Azure, je potřeba monitorovat výkon, sledovat p
 Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publikování vašich webových aplikací pomocí průběžné integrace, se Azure integruje s většinou oblíbených DevOps nástrojů. Můžete pracovat s nástroji, které už máte, a maximalizovat stávající prostředí s podporou nástrojů jako:
 
 * Jenkins
-* GitHubu
+* GitHub
 * Puppet
 * Chef
 * TeamCity
@@ -210,7 +210,7 @@ Bez ohledu na to, jestli je zřizování virtuálních počítačů nebo publiko
 > **Vyzkoušejte si to teď:** [Vyzkoušejte některé z DevOps integrací](https://azure.microsoft.com/try/devops/).
 
 
-## <a name="azure-regions"></a>Oblasti Azure
+## <a name="azure-regions"></a>Oblast Azure
 
 Azure je globální cloudová platforma, která je obecně dostupná v mnoha oblastech po celém světě. Při zřizování služby, aplikace nebo virtuálního počítače v Azure budete požádáni o výběr oblasti. Tato oblast představuje konkrétní datové centrum, ve kterém je vaše aplikace spuštěná, nebo kde jsou uložená vaše data. Tyto oblasti odpovídají konkrétním umístěním, která jsou publikována na stránce [oblastí Azure](https://azure.microsoft.com/regions/) .
 
@@ -238,9 +238,9 @@ Azure poskytuje dva způsoby, jak spravovat aplikace a služby z příkazového 
 
 -   [Azure PowerShell](../../powershell-install-configure.md): poskytuje sadu modulů s rutinami, které vám umožní spravovat prostředky Azure pomocí Windows PowerShellu.
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
-[Azure Portal](https://portal.azure.com) je webová aplikace. Pomocí Azure Portal můžete vytvářet, spravovat a odebírat prostředky a služby Azure. Obsahuje:
+[Azure Portal](https://portal.azure.com) je webová aplikace. Pomocí Azure Portal můžete vytvářet, spravovat a odebírat prostředky a služby Azure. Zahrnuje:
 
 * Konfigurovatelný řídicí panel
 * Nástroje pro správu prostředků Azure
@@ -280,7 +280,7 @@ Tato nasazení vyvíjíte pomocí šablony Azure Resource Manager, což je dokum
 
 Jako vývojáři chceme podrobně přímo do kódu a při provádění našich aplikací je možné začít co nejrychleji. Určitě chceme začít pracovat v Azure co nejrychleji. Díky tomu Azure nabízí [bezplatnou zkušební verzi](https://azure.microsoft.com/free/). Některé služby obsahují i funkci vyzkoušet si bezplatnou službu, například [Azure App Service](https://tryappservice.azure.com/), což nevyžaduje ani vytvoření účtu. Stejně jako při podrobněi kódování a nasazování vaší aplikace do Azure je také důležité, abyste porozuměli tomu, jak Azure funguje. Konkrétně byste měli pochopit, jak funguje z hlediska uživatelských účtů, předplatných a fakturace.
 
-### <a name="what-is-an-azure-account"></a>Co je účet Azure?
+### <a name="what-is-an-azure-account"></a>Co je to účet Azure?
 
 Pokud chcete vytvořit předplatné Azure nebo pracovat s ním, musíte mít účet Azure. Účet Azure je jednoduše identita ve službě Azure AD nebo v adresáři, jako je pracovní nebo školní organizace, kterou důvěřuje Azure AD. Pokud k takové organizaci nepatříte, můžete předplatné kdykoli vytvořit pomocí účtu Microsoft, který je důvěryhodný pro Azure AD. Další informace o integraci místní služby Windows Server Active Directory se službou Azure AD najdete v tématu [Integrace místních identit s Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md).
 
@@ -320,11 +320,11 @@ Azure Resource Manager umožňuje přiřadit k jednotlivým prostředkům vlastn
 * V šabloně Azure Resource Manager
 * S využitím REST API
 * Použití Azure CLI
-* Použití PowerShellu
+* Pomocí prostředí PowerShell
 
 Každému prostředku můžete přiřadit více značek. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../../resource-group-using-tags.md).
 
-### <a name="billing"></a>Vyúčtování
+### <a name="billing"></a>Fakturace
 
 V rámci přesunu z místního prostředí do služeb hostovaných v cloudu jsou sledování a odhadace využití služeb a související náklady významnými aspekty. Je důležité odhadnout, jaké nové náklady na jednotlivé prostředky se mají měsíčně provádět. Můžete také promítnout, jak vyúčtování vyhledává daný měsíc na základě aktuální útraty.
 

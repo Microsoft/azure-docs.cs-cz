@@ -12,16 +12,14 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 58fce1ca2401ecf79e478377e7547a6c5785f7d1
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: c11f7daf68585d63d19fca282ef2f4a306303ac7
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703639"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160725"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 V tomto rychlém startu se dozvíte, jak může webová aplikace ASP.NET Core přihlašovat osobní účty (hotmail.com, outlook.com, ostatní) a pracovní a školní účty z jakékoli instance Azure Active Directory (Azure AD).
 
@@ -41,7 +39,7 @@ V tomto rychlém startu se dozvíte, jak může webová aplikace ASP.NET Core p�
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu
 >
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte si aplikaci
 > K registraci aplikace a ručnímu přidání registračních informací aplikace do řešení použijte následující postup:
 >
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
@@ -54,8 +52,8 @@ V tomto rychlém startu se dozvíte, jak může webová aplikace ASP.NET Core p�
 > 1. Vyberte nabídku **ověřování** a přidejte následující informace:
 >    - V **rozevíracích** **identifikátorech URI pro přesměrování**přidejte `https://localhost:44321/signin-oidc`a vyberte Uložit.
 >    - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na `https://localhost:44321/signout-oidc`.
->    - V části **Implicitní udělení** zaškrtněte políčko **Tokeny ID**.
->    - Vyberte **Uložit**.
+>    - V části **implicitní udělení**ověřte **tokeny ID**.
+>    - Vyberte **Save** (Uložit).
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
@@ -70,7 +68,7 @@ V tomto rychlém startu se dozvíte, jak může webová aplikace ASP.NET Core p�
 
 - [Stažení řešení pro Visual Studio 2019](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/archive/aspnetcore2-2.zip)
 
-#### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Nakonfigurujte si projekt sady Visual Studio
+#### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: Konfigurace projektu sady Visual Studio
 
 1. Extrahujte soubor zip do místní složky v kořenové složce, například **C:\Azure-Samples**
 1. Pokud používáte Visual Studio 2019, otevřete řešení v aplikaci Visual Studio (volitelné).
@@ -142,7 +140,7 @@ Metoda `AddAuthentication` nakonfiguruje službu tak, aby přidala ověřování
 > |Kde  |  |
 > |---------|---------|
 > | ClientId  | ID aplikace (klienta) z aplikace zaregistrované v Azure Portal. |
-> | Autorita | Koncový bod služby STS pro uživatele, který se má ověřit Obvykle je to <https://login.microsoftonline.com/{tenant}/v2.0> pro veřejný cloud, kde {tenant} je název vašeho tenanta nebo ID tenanta nebo *společný* odkaz na společný koncový bod (používaný pro víceklientské aplikace). |
+> | Dohled | Koncový bod služby STS pro uživatele, který se má ověřit Obvykle je to <https://login.microsoftonline.com/{tenant}/v2.0> pro veřejný cloud, kde {tenant} je název vašeho tenanta nebo ID tenanta nebo *společný* odkaz na společný koncový bod (používaný pro víceklientské aplikace). |
 > | TokenValidationParameters | Seznam parametrů pro ověřování tokenů; V takovém případě je `ValidateIssuer` nastavená na `false`, která označuje, že může přijímat přihlášení z libovolného osobního nebo pracovního nebo školního účtu. |
 
 

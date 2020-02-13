@@ -3,12 +3,12 @@ title: Označení prostředků pro logickou organizaci
 description: Ukazuje, jak použít značky k uspořádání prostředků Azure k fakturaci a správě.
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 5751f2d1bc123c5918ae0fabc5b908b5f4fec71d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c7f8d8672e205fa677bff33c8ed173c1105b26c6
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087325"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166607"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Použití značek k uspořádání prostředků Azure
 
@@ -43,7 +43,7 @@ Pro použití značek u prostředků musí mít uživatel k tomuto typu prostře
 
 Pomocí [Azure Policy](../../governance/policy/overview.md) můžete vymáhat pravidla označování a konvence. Vytvořením zásady se vyhnete scénáři nasazení prostředků do vašeho předplatného, které nedodržují očekávané značky vaší organizace. Místo ručního použití značek nebo hledání prostředků, které nedodržují předpisy, můžete vytvořit zásadu, která při nasazení automaticky použije potřebné značky. Značky se teď dají použít u existujících prostředků s novým efektem [změny](../../governance/policy/concepts/effects.md#modify) a [úlohou nápravy](../../governance/policy/how-to/remediate-resources.md). V následující části jsou uvedeny příklady zásad pro značky.
 
-[!INCLUDE [Tag policies](../../../includes/azure-policy-samples-general-tags.md)]
+[!INCLUDE [Tag policies](../../../includes/azure-policy-samples-policies-tags.md)]
 
 ## <a name="powershell"></a>PowerShell
 

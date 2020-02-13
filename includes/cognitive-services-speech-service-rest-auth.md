@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: 22a95be43f06e95a6067b179b3023ba94ee5795d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 020055c1629a66ec1aa82beb050501803b2a0f18
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362484"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168326"
 ---
 ## <a name="authentication"></a>Ověřování
 
@@ -18,29 +18,35 @@ Každá žádost vyžaduje autorizační hlavičku. Tato tabulka ukazuje, které
 | Podporované autorizační hlavičky | Převod řeči na text | Převod textu na řeč |
 |------------------------|----------------|----------------|
 | OCP-Apim-Subscription-Key | Ano | Ne |
-| udělován Nosný | Ano | Ano |
+| Autorizace: nosiče | Ano | Ano |
 
-Při použití `Ocp-Apim-Subscription-Key` záhlaví, je nutné pouze zadejte klíč předplatného. Příklad:
+Když použijete hlavičku `Ocp-Apim-Subscription-Key`, budete muset zadat jenom svůj klíč předplatného. Příklad:
 
 ```
 'Ocp-Apim-Subscription-Key': 'YOUR_SUBSCRIPTION_KEY'
 ```
 
-Při použití `Authorization: Bearer` záhlaví, budete muset vytvořit žádost o `issueToken` koncového bodu. V této žádosti o výměnu váš klíč předplatného pro přístupový token, který je platný 10 minut. V následujících částech se dozvíte, jak získat token a použít token.
+Při použití hlavičky `Authorization: Bearer` je nutné vytvořit požadavek na koncový bod `issueToken`. V této žádosti o výměnu váš klíč předplatného pro přístupový token, který je platný 10 minut. V následujících částech se dozvíte, jak získat token a použít token.
 
 ### <a name="how-to-get-an-access-token"></a>Jak získat přístupový token
 
-K získání přístupového tokenu, je potřeba vytvořit žádost o `issueToken` pomocí koncového bodu `Ocp-Apim-Subscription-Key` a váš klíč předplatného.
+K získání přístupového tokenu budete muset na `issueToken` koncový bod vytvořit žádost pomocí `Ocp-Apim-Subscription-Key` a vašeho klíče předplatného.
 
-Podporují se tyto oblasti a koncové body:
+`issueToken` koncový bod má tento formát:
 
-[!INCLUDE [](./cognitive-services-speech-service-endpoints-token-service.md)]
+```
+https://<REGION_IDENTIFIER>.api.cognitive.microsoft.com/sts/v1.0/issueToken
+```
+
+Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vašeho předplatného z této tabulky:
+
+[!INCLUDE [](cognitive-services-speech-service-region-identifier.md)]
 
 Tyto ukázky použijte při vytváření žádosti o token přístupu.
 
 #### <a name="http-sample"></a>Ukázka protokolu HTTP
 
-V tomto příkladu je jednoduché požadavku HTTP k získání tokenu. Nahraďte `YOUR_SUBSCRIPTION_KEY` s klíči předplatného Speech Service. Pokud vaše předplatné není v oblasti USA – Západ, nahraďte `Host` záhlaví s názvem hostitele vaší oblasti.
+V tomto příkladu je jednoduché požadavku HTTP k získání tokenu. Nahraďte `YOUR_SUBSCRIPTION_KEY` klíčem předplatného služby Speech. Pokud vaše předplatné není v oblasti Západní USA, nahraďte `Host` hlavičku názvem hostitele vaší oblasti.
 
 ```http
 POST /sts/v1.0/issueToken HTTP/1.1
@@ -54,7 +60,7 @@ Tělo odpovědi obsahuje přístupový token ve formátu JSON Web Token (JWT).
 
 #### <a name="powershell-sample"></a>Ukázka PowerShellu
 
-V tomto příkladu je jednoduchý skript prostředí PowerShell k získání přístupového tokenu. Nahraďte `YOUR_SUBSCRIPTION_KEY` s klíči předplatného Speech Service. Nezapomeňte použít správný koncový bod pro oblast, která odpovídá vašeho předplatného. V tomto příkladu je aktuálně nastavený na západní USA.
+V tomto příkladu je jednoduchý skript prostředí PowerShell k získání přístupového tokenu. Nahraďte `YOUR_SUBSCRIPTION_KEY` klíčem předplatného služby Speech. Nezapomeňte použít správný koncový bod pro oblast, která odpovídá vašeho předplatného. V tomto příkladu je aktuálně nastavený na západní USA.
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -73,7 +79,7 @@ $OAuthToken
 
 #### <a name="curl-sample"></a>Ukázka cURL
 
-cURL je nástroj příkazového řádku jsou k dispozici v systému Linux (a v subsystému Windows pro Linux). Tento příkaz cURL znázorňuje, jak získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` s klíči předplatného Speech Service. Nezapomeňte použít správný koncový bod pro oblast, která odpovídá vašeho předplatného. V tomto příkladu je aktuálně nastavený na západní USA.
+cURL je nástroj příkazového řádku jsou k dispozici v systému Linux (a v subsystému Windows pro Linux). Tento příkaz cURL znázorňuje, jak získat přístupový token. Nahraďte `YOUR_SUBSCRIPTION_KEY` klíčem předplatného služby Speech. Nezapomeňte použít správný koncový bod pro oblast, která odpovídá vašeho předplatného. V tomto příkladu je aktuálně nastavený na západní USA.
 
 ```cli
 curl -v -X POST
@@ -85,7 +91,7 @@ curl -v -X POST
 
 #### <a name="c-sample"></a>Ukázka v jazyce C#
 
-To C# třídy ukazuje, jak získat přístupový token. Předejte klíč předplatného Speech Service při vytváření instance třídy. Pokud vaše předplatné není v oblasti USA – Západ, změňte hodnotu vlastnosti `FetchTokenUri` tak, aby odpovídaly oblast pro vaše předplatné.
+To C# třídy ukazuje, jak získat přístupový token. Předejte klíč předplatného Speech Service při vytváření instance třídy. Pokud vaše předplatné není v oblasti Západní USA, změňte hodnotu `FetchTokenUri` tak, aby odpovídala oblasti vašeho předplatného.
 
 ```cs
 public class Authentication
@@ -143,7 +149,7 @@ def get_token(subscription_key):
 
 ### <a name="how-to-use-an-access-token"></a>Použití přístupového tokenu
 
-Přístupový token odesílaných do služby, jako `Authorization: Bearer <TOKEN>` záhlaví. Každý přístupový token je platný 10 minut. Kdykoli můžete získat nový token, ale pokud chcete minimalizovat síťový provoz a latence, doporučujeme použít stejný token devět minut.
+Přístupový token by měl být službě odeslán jako `Authorization: Bearer <TOKEN>` záhlaví. Každý přístupový token je platný 10 minut. Kdykoli můžete získat nový token, ale pokud chcete minimalizovat síťový provoz a latence, doporučujeme použít stejný token devět minut.
 
 Tady je ukázka požadavku HTTP pro převod textu na řeč rozhraní REST API:
 

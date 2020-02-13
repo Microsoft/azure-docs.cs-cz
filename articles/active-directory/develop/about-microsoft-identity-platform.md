@@ -12,12 +12,12 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
-ms.openlocfilehash: 78e18998d6e6096b045cc8328ca5adacb1342e68
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 3c18440e87cf50e370b21b5f0ca33b42e0069fc1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699525"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161422"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Rozvoj platformy Microsoft Identity Platform
 
@@ -68,4 +68,4 @@ Koncový bod Microsoft Identity Platform (v 2.0) je teď OIDC certifikovaný. Fu
 Přečtěte si další informace o verzích v1.0 a v2.0.
 
 * [Microsoft Identity Platform (v 2.0) – přehled](v2-overview.md)
-* [Přehled Azure Active Directory pro vývojáře (v 1.0)](v1-overview.md)
+* [Přehled Azure Active Directory pro vývojáře (v 1.0)](../azuread-dev/v1-overview.md)

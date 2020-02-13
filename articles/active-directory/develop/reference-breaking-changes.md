@@ -17,12 +17,12 @@ ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
-ms.translationtype: MT
+ms.openlocfilehash: 9cb13ea56c39f365ddb888a5d4e94228b1881fc4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758746"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160356"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového pro ověřování? 
 
@@ -156,7 +156,7 @@ Od 15. listopadu 2018, Azure AD, přestane přijímat předchozích ověřovací
 
 Pokud vaše aplikace opakovaně používá autorizační kódy k získání tokenů pro několik prostředků, doporučujeme použít kód pro získání tokenu obnovení a pak pomocí tohoto tokenu obnovení získat další tokeny pro jiné prostředky. Autorizační kódy lze použít pouze jednou, ale obnovovací tokeny lze použít více než jednou v několika prostředcích. Jakákoli nová aplikace, která se pokusí znovu použít ověřovací kód během toku kódu OAuth, obdrží chybu invalid_grant.
 
-Další informace o aktualizačních tokenech najdete v tématu [aktualizace přístupových tokenů](v1-protocols-oauth-code.md#refreshing-the-access-tokens).  Pokud používáte ADAL nebo MSAL, je to zpracováno knihovnou – nahraďte druhou instanci ' AcquireTokenByAuthorizationCodeAsync ' ' AcquireTokenSilentAsync '. 
+Další informace o aktualizačních tokenech najdete v tématu [aktualizace přístupových tokenů](v2-oauth2-auth-code-flow.md#refresh-the-access-token).  Pokud používáte ADAL nebo MSAL, je to zpracováno knihovnou – nahraďte druhou instanci ' AcquireTokenByAuthorizationCodeAsync ' ' AcquireTokenSilentAsync '. 
 
 ## <a name="may-2018"></a>Květen 2018
 
@@ -166,7 +166,7 @@ Další informace o aktualizačních tokenech najdete v tématu [aktualizace př
 
 **Ovlivněné koncové body**: v 1.0 i v 2.0
 
-**Ovlivněné protokoly**: implicitní tok toku a [OBO](v1-oauth2-on-behalf-of-flow.md)
+**Ovlivněné protokoly**: implicitní tok a [tok](v2-oauth2-on-behalf-of-flow.md) za běhu
 
 Od 1. května 2018 se id_tokens nedá použít jako kontrolní výraz v OBO toku pro nové aplikace. Místo toho by se měly používat přístupové tokeny k zabezpečení rozhraní API, a to i mezi klientem a střední vrstvou stejné aplikace. Aplikace zaregistrované před 1. května 2018 budou fungovat i nadále a budou moci Exchange id_tokens pro přístupový token. Tento model se však nepovažuje za osvědčený postup.
 

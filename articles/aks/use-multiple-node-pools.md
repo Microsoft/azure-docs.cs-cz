@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: mlearned
-ms.openlocfilehash: e494a5141a96409fc6691df3a5f1194600ad0c32
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: bbfb65c31bf6fd46cc18c9eee66086afbbff1d5f
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086464"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157970"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -23,7 +23,7 @@ Ve službě Azure Kubernetes Service (AKS) jsou uzly stejné konfigurace seskupe
 
 V tomto článku se dozvíte, jak vytvořit a spravovat více fondů uzlů v clusteru AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
@@ -31,13 +31,12 @@ Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo nově
 
 Při vytváření a správě clusterů AKS, které podporují více fondů uzlů, platí následující omezení:
 
+* Podívejte se [na téma kvóty, omezení velikosti virtuálních počítačů a dostupnost oblasti ve službě Azure Kubernetes Service (AKS)][quotas-skus-regions].
 * Výchozí fond uzlů (první) nelze odstranit.
 * Nelze použít doplněk směrování aplikace HTTP.
 * Cluster AKS musí používat standardní nástroj pro vyrovnávání zatížení SKU pro použití více fondů uzlů, ale funkce nástroje pro vyrovnávání zatížení Basic SKU není podporována.
 * Cluster AKS musí pro uzly používat sadu škálování virtuálních počítačů.
 * Název fondu uzlů může obsahovat jenom malé alfanumerické znaky a musí začínat malým písmenem. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků, v případě fondů uzlů systému Windows musí být délka mezi 1 a 6 znaky.
-* Cluster AKS může mít maximálně 10 fondů uzlů.
-* Cluster AKS může mít maximálně 1000 uzlů napříč těmito fondy 10 uzlů.
 * Všechny fondy uzlů se musí nacházet ve stejné virtuální síti a podsíti.
 * Při vytváření více fondů uzlů v době vytváření clusteru se musí všechny verze Kubernetes používané fondy uzlů shodovat s verzí nastavenou pro plochu ovládacího prvku. Dá se aktualizovat po zřízení clusteru pomocí operací pro fond uzlů.
 
@@ -604,6 +603,7 @@ Informace o vytváření a používání fondů uzlů kontejnerů Windows server
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 <!-- INTERNAL LINKS -->
+[quotas-skus-regions]: quotas-skus-regions.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [az-aks-create]: /cli/azure/aks#az-aks-create

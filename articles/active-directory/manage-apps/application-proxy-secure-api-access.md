@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: celested
+ms.date: 02/12/2020
+ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: b741f42bb215df59903fed7ed84094b7d037ce65
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ecd5d8bae22d67f8d9f5b99d5c94eecf54a4a1f3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063009"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166019"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Zabezpečený přístup k místním rozhraním API pomocí Azure Proxy aplikací služby AD
 
@@ -53,19 +53,19 @@ Publikování webového rozhraní API SecretAPI prostřednictvím aplikačního 
 
 1. Sestavte a publikujte vzorový projekt SecretAPI jako webovou aplikaci ASP.NET na místním počítači nebo intranetu. Ujistěte se, že máte přístup k webové aplikaci místně. 
    
-1. V [Azure Portal](https://portal.azure.com)v levém navigačním panelu vyberte **Azure Active Directory** . Pak na stránce **Přehled** vyberte **podnikové aplikace**.
+1. V [Azure Portal](https://portal.azure.com)vyberte **Azure Active Directory**. Pak vyberte **podnikové aplikace**.
    
 1. V horní části stránky **podnikové aplikace – všechny aplikace** vyberte možnost **Nová aplikace**.
    
-1. Na stránce **Procházet galerii Azure AD** v části **místní aplikace**vyberte **Přidat místní aplikaci**. Zobrazí se stránka **Přidat vlastní místní aplikace** .
+1. Na stránce **Přidat aplikaci** vyberte možnost **místní aplikace**. Zobrazí se stránka **Přidat vlastní místní aplikace** .
    
 1. Pokud nemáte nainstalovaný konektor proxy aplikací, zobrazí se výzva k jeho instalaci. Vyberte **Stáhnout konektor proxy aplikací** a stáhněte a nainstalujte konektor. 
    
 1. Po instalaci konektoru proxy aplikací na stránce **Přidat vlastní místní aplikaci** :
    
-   1. Do **pole název**zadejte *SecretAPI* .
+   1. Vedle **pole název**zadejte *SecretAPI*.
       
-   1. Zadejte adresu URL, kterou používáte pro přístup k rozhraní API v intranetu, a to u **interní adresy URL**. 
+   1. Do pole **interní adresa URL**zadejte adresu URL, kterou používáte pro přístup k rozhraní API v rámci intranetu.
       
    1. Ujistěte se, že **předběžné ověřování** je nastaveno na **Azure Active Directory**. 
       

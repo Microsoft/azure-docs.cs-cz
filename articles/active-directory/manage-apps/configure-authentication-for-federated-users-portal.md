@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 174cdc31d7e5f29716febc7f68bbb410f33926c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274630"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159161"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurace chování přihlášení Azure Active Directory pro aplikace pomocí zásad zjišťování domovské sféry
 
@@ -152,7 +152,7 @@ Pomocí rutin Azure AD PowerShellu projdeme několik scénářů, mezi které pa
 - Seznam aplikací, pro které je nakonfigurovaná zásada
 
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty služby ve službě Azure AD.
 
 1.  Začněte stažením nejnovější rutiny Azure AD PowerShellu ve verzi Preview. 
@@ -271,4 +271,4 @@ Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ## <a name="next-steps"></a>Další kroky
 - Další informace o tom, jak ověřování funguje v Azure AD, najdete v tématu [scénáře ověřování pro Azure AD](../develop/authentication-scenarios.md).
 - Další informace o jednotném přihlašování uživatelů najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](what-is-single-sign-on.md).
-- Přehled veškerého obsahu souvisejícího s vývojářem najdete v [příručce pro vývojáře služby Active Directory](../develop/v1-overview.md) .
+- Přehled veškerého obsahu souvisejícího s vývojářem najdete na [platformě Microsoft Identity](../develop/v2-overview.md) .

@@ -16,19 +16,19 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b8aac627936aef2cfa79bbd92d6163fe40b4d32
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 70a85a81996766b862cd6fbc3b605636385e0fda
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274859"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159178"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problémy s přihlašováním k aplikaci mimo galerii nakonfigurovanou pro federované jednotné přihlašování
 
 Pokud chcete řešit potíže s přihlašováním níže, doporučujeme vám postupovat podle těchto návrhů a získat tak lepší diagnostiku a automatizovat postup řešení:
 
 - Pokud chcete zajistit lepší diagnostiku a řešení při použití zkušebního prostředí v Azure Portal, nainstalujte [rozšíření prohlížeče moje aplikace](access-panel-extension-problem-installing.md) na pomoc Azure Active Directory (Azure AD).
-- Reprodukuje chybu pomocí prostředí testování na stránce konfigurace aplikace v Azure Portal. Další informace o [ladění aplikací jednotného přihlašování založeného na SAML](../develop/howto-v1-debug-saml-sso-issues.md)
+- Reprodukuje chybu pomocí prostředí testování na stránce konfigurace aplikace v Azure Portal. Další informace o [ladění aplikací jednotného přihlašování založeného na SAML](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
 
 ## <a name="application-not-found-in-directory"></a>Aplikace nebyla nalezena v adresáři.
 
@@ -40,7 +40,7 @@ Atribut vystavitele odeslaný z aplikace do služby Azure AD v požadavku SAML s
 
 **Rozhodnutí**
 
-Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte prostředí pro [testování](../develop/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
+Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
 
 1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce.**
 
@@ -66,11 +66,11 @@ Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identif
 
 **Možná příčina** 
 
-Hodnota AssertionConsumerServiceURL v požadavku SAML neodpovídá hodnotě adresy URL odpovědi nebo vzoru nakonfigurovanému ve službě Azure AD. Hodnota AssertionConsumerServiceURL v požadavku SAML je adresa URL, která se zobrazí v chybě. 
+Hodnota AssertionConsumerServiceURL v požadavku SAML neodpovídá hodnotě nebo vzoru adresy URL odpovědi nakonfigurovaným v Azure AD. Hodnota AssertionConsumerServiceURL v požadavku SAML je adresa URL, která se zobrazí v chybě. 
 
 **Rozhodnutí** 
 
-Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte prostředí pro [testování](../develop/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
+Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
  
 1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce.** 
 
@@ -98,11 +98,11 @@ Po aktualizaci hodnoty adresy URL odpovědi v Azure AD, která odpovídá hodnot
 
 **Možná příčina**
 
-Uživateli nebyl udělen přístup k aplikaci ve službě Azure AD.
+Uživateli se v Azure AD neudělil přístup k aplikaci.​
 
 **Rozhodnutí**
 
-Chcete-li přiřadit jednoho nebo více uživatelů k aplikaci přímo, postupujte podle následujících kroků. Pokud používáte prostředí pro [testování](../develop/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
+Chcete-li přiřadit jednoho nebo více uživatelů k aplikaci přímo, postupujte podle následujících kroků. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
 
 1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce.**
 
@@ -146,9 +146,9 @@ Po krátké době možné ke spouštění těchto aplikací pomocí metod popsan
 
 Azure AD nepodporuje požadavek SAML, který aplikace odeslala pro jednotné přihlášení. Mezi běžné problémy patří:
 
--   Chybí povinná pole v požadavku SAML.
+-   Chybějící požadovaná pole v požadavku SAML
 
--   Metoda kódovaná v požadavku SAML
+-   Kódovaná metoda požadavku SAML
 
 **Rozhodnutí**
 
@@ -172,7 +172,7 @@ Atribut `Issuer` odeslaný z aplikace do služby Azure AD v požadavku SAML se n
 
 **Rozhodnutí**
 
-Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte [prostředí testování](../develop/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků:
+Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte [prostředí testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků:
 
 1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce**.
 
@@ -264,7 +264,7 @@ Odstraní nepoužívané adresy URL odpovědí nakonfigurované pro aplikaci.
 
 6.  Vyberte aplikaci, kterou chcete nakonfigurovat pro jednotné přihlašování.
 
-7.  Po načtení aplikace otevřete **základní konfiguraci SAML**. V **adrese URL odpovědi (adresa URL služby vyhodnocení zákazníka)** Odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořené systémem. Například, `https://127.0.0.1:444/applications/default.aspx`.
+7.  Po načtení aplikace otevřete **základní konfiguraci SAML**. V **adrese URL odpovědi (adresa URL služby vyhodnocení zákazníka)** Odstraňte nepoužívané nebo výchozí adresy URL odpovědí vytvořené systémem. například `https://127.0.0.1:444/applications/default.aspx`.
 
 
 

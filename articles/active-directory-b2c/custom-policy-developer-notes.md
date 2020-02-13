@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: acd02f143fe35edd867ce26f26a4cba74bd6f10b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6439393b72eb724ca017edc17ce7a7c36c275fca
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847339"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166966"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Poznámky pro vývojáře pro vlastní zásady v Azure Active Directory B2C
 
@@ -61,35 +61,35 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="identity-providers-tokens-protocols"></a>Zprostředkovatelé identity, tokeny, protokoly
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky: |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | IDP-OpenIDConnect |  |  | × | Například Google +.  |
 | IDP – OAUTH2 |  |  | × | Například Facebook.  |
 | IDP-OAUTH1 (Twitter) |  | × |  | Například Twitter. |
-| IDP-OAUTH1 (ex-twitter) |  |  |  | Nepodporováno |
+| IDP-OAUTH1 (ex-twitter) |  |  |  | Nepodporuje se |
 | IDP-SAML |  |   | × | Například Salesforce, ADFS. |
 | IDP-WSFED | × |  |  |  |
-| OAUTH1 předávající strany |  |  |  | Není podporováno. |
+| OAUTH1 předávající strany |  |  |  | Nepodporuje se. |
 | OAUTH2 předávající strany |  |  | × |  |
 | OIDC předávající strany |  |  | × |  |
-| SAML předávající strany | × |  |  |  |
+| SAML předávající strany |  |×  |  |  |
 | WSFED předávající strany | × |  |  |  |
 | REST API se základními a ověřovacími certifikáty |  |  | × | Například Azure Logic Apps. |
 
 ### <a name="component-support"></a>Podpora komponent
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky: |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Azure Multi Factor Authentication |  |  | × |  |
+| Azure Multi-Factor Authentication |  |  | × |  |
 | Azure Active Directory jako místní adresář |  |  | × |  |
 | Podsystém e-mailů Azure pro ověření e-mailu |  |  | × |  |
 | Podpora více jazyků|  |  | × |  |
 | Ověřování predikátů |  |  | × | Například složitost hesla. |
-| Používání poskytovatelů e-mailových služeb třetích stran | × |  |  |  |
+| Používání poskytovatelů e-mailových služeb třetích stran |  |×  |  |  |
 
 ### <a name="content-definition"></a>Definice obsahu
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky: |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Chybová stránka, rozhraní API. Chyba |  |  | × |  |
 | IDP výběr stránky, API. idpselections |  |  | × |  |
@@ -105,7 +105,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="app-ief-integration"></a>Integrace aplikací – IEF
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky: |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Parametr řetězce dotazu domain_hint |  |  | × | K dispozici jako deklarace identity, se dají předat do IDP. |
 | Parametr řetězce dotazu login_hint |  |  | × | K dispozici jako deklarace identity, se dají předat do IDP. |
@@ -115,7 +115,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="session-management"></a>Správa relací
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky: |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Zprostředkovatel relace jednotného přihlašování |  |  | × |  |
 | Externí zprostředkovatel přihlašovací relace |  |  | × |  |
@@ -124,7 +124,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="security"></a>Zabezpečení
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky: |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Klíče zásad – vygenerování, ruční, nahrání |  |  | × |  |
 | Klíče zásad – RSA/certifikát, tajné klíče |  |  | × |  |
@@ -132,7 +132,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 
 ### <a name="developer-interface"></a>Vývojové rozhraní
 
-| Funkce | Vývoj | Preview | GA | Poznámky |
+| Funkce | Vývoj | Preview | GA | Poznámky: |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Portál Azure – IEF UX |  |  | × |  |
 | Application Insights UserJourney Logs |  | × |  | Používá se pro řešení potíží během vývoje.  |

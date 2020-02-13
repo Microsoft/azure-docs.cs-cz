@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 4e2a76e40206e1562d565571dbe22e5d9d0e930e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834169"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161915"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -167,7 +167,7 @@ Nejdřív budete muset vytvořit prostředek identity přiřazené uživatelem.
 
 5. Na kartě **přiřazené uživatelem** klikněte na tlačítko **Přidat**.
 
-6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na tlačítko **Add** (Přidat).
+6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na **Přidat**.
 
     ![Spravovaná identita v App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
@@ -253,7 +253,7 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 
 > |Název parametru|V|Popis|
 > |-----|-----|-----|
-> |resource|Dotaz|Identifikátor URI prostředku AAD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.|
+> |prostředek|Dotaz|Identifikátor URI prostředku AAD prostředku, pro který by měl být získán token. Může to být jedna ze [služeb Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) nebo jakýkoli jiný identifikátor URI prostředku.|
 > |api-version|Dotaz|Verze rozhraní API tokenu, která se má použít. "2017-09-01" je aktuálně podporovaná verze.|
 > |Tajný kód|Hlavička|Hodnota proměnné prostředí MSI_SECRET. Tato hlavička se používá ke zmírnění útoků na straně serveru (SSRF).|
 > |ClientID|Dotaz|(Volitelné, pokud není přiřazeno uživatelem) ID uživatelem přiřazené identity, která se má použít. Je-li tento parametr vynechán, je použita identita přiřazená systémem.|
@@ -267,10 +267,10 @@ Aplikace se spravovanou identitou má definované dvě proměnné prostředí:
 > |-------------|----------|
 > |access_token|Požadovaný přístupový token Volající webová služba může tento token použít k ověření pro přijímající webovou službu.|
 > |expires_on|Čas vypršení platnosti přístupového tokenu. Datum se reprezentuje jako počet sekund od roku 1970-01-01T0:0: 0Z UTC až do doby vypršení platnosti. Tato hodnota se používá k určení doby života tokenů uložených v mezipaměti.|
-> |resource|Identifikátor URI ID aplikace přijímající webové služby.|
+> |prostředek|Identifikátor URI ID aplikace přijímající webové služby.|
 > |token_type|Určuje hodnotu typu tokenu. Jediným typem, který podporuje Azure AD, je nosič. Další informace o nosných tokenech najdete v části [autorizační rozhraní OAuth 2,0: použití nosných tokenů (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt).|
 
-Tato odpověď je stejná jako [odpověď pro požadavek Service-to-Service Access tokenu služby AAD](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
+Tato odpověď je stejná jako [odpověď pro požadavek Service-to-Service Access tokenu služby AAD](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md#get-a-token).
 
 > [!NOTE]
 > Proměnné prostředí jsou nastaveny při prvním spuštění procesu, takže po povolení spravované identity pro aplikaci bude pravděpodobně nutné restartovat aplikaci nebo znovu nasadit kód, než `MSI_ENDPOINT` a `MSI_SECRET` jsou k dispozici pro váš kód.

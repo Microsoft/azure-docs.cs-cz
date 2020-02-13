@@ -17,16 +17,14 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4d06e5a2bfe05a530fe369f70880ea04f0bc3dd3
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b45ba0c0b417be9cf308fedbb7fad2f6ad5fceaf
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700511"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159727"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform a tok udělení autorizace zařízení OAuth 2,0
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Platforma Microsoft identity podporuje [udělení autorizací zařízení](https://tools.ietf.org/html/rfc8628), které umožňuje uživatelům přihlásit se ke vstupním zařízením s omezeným použitím, jako je například inteligentní TV, zařízení IoT nebo tiskárna.  Pokud chcete tento tok povolit, zařízení uživateli navštíví webovou stránku v prohlížeči na jiném zařízení, abyste se přihlásili.  Jakmile se uživatel přihlásí, zařízení může získat přístupové tokeny a aktualizovat tokeny podle potřeby.  
 
@@ -72,12 +70,12 @@ scope=user.read%20openid%20profile
 
 | Parametr | Formát | Popis |
 | ---              | --- | --- |
-|`device_code`     | Řetězec | Dlouhý řetězec, který slouží k ověření relace mezi klientem a autorizačním serverem. Klient používá tento parametr k vyžádání přístupového tokenu z autorizačního serveru. |
-|`user_code`       | Řetězec | Krátký řetězec zobrazený uživateli, který se používá k identifikaci relace v sekundárním zařízení.|
-|`verification_uri`| Identifikátor URI | Identifikátor URI, na který by měl uživatel přejít pomocí `user_code`, aby se mohl přihlásit. |
+|`device_code`     | String | Dlouhý řetězec, který slouží k ověření relace mezi klientem a autorizačním serverem. Klient používá tento parametr k vyžádání přístupového tokenu z autorizačního serveru. |
+|`user_code`       | String | Krátký řetězec zobrazený uživateli, který se používá k identifikaci relace v sekundárním zařízení.|
+|`verification_uri`| URI | Identifikátor URI, na který by měl uživatel přejít pomocí `user_code`, aby se mohl přihlásit. |
 |`expires_in`      | int | Počet sekund před `device_code` a vypršení platnosti `user_code`. |
 |`interval`        | int | Počet sekund, po které má klient čekat mezi požadavky na dotazování. |
-| `message`        | Řetězec | Uživatelsky čitelný řetězec s pokyny pro uživatele. To lze lokalizovat zahrnutím **parametru dotazu** do žádosti formuláře `?mkt=xx-XX`a vyplněním příslušného kódu jazykové kultury. |
+| `message`        | String | Uživatelsky čitelný řetězec s pokyny pro uživatele. To lze lokalizovat zahrnutím **parametru dotazu** do žádosti formuláře `?mkt=xx-XX`a vyplněním příslušného kódu jazykové kultury. |
 
 > [!NOTE]
 > V tuto chvíli není zahrnuto nebo není podporováno pole `verification_uri_complete` Response.  Uvádíme to proto, že pokud si přečtete [Standard](https://tools.ietf.org/html/rfc8628) , zjistíte, že `verification_uri_complete` je jako volitelná součást standardu toku kódu pro zařízení.
@@ -134,7 +132,7 @@ Tok kódu zařízení je protokol cyklického dotazování, aby klient musel obd
 
 | Parametr | Formát | Popis |
 | --------- | ------ | ----------- |
-| `token_type` | Řetězec| Vždy "nosič". |
+| `token_type` | String| Vždy "nosič". |
 | `scope` | Řetězce oddělené mezerami | V případě vrácení přístupového tokenu zobrazí seznam oborů, pro které je přístupový token platný. |
 | `expires_in`| int | Počet sekund, než je zahrnutý přístupový token platný pro. |
 | `access_token`| Neprůhledný řetězec | Vydány pro požadované [obory](v2-permissions-and-consent.md) .  |

@@ -11,18 +11,18 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47806fe9c5c97c1f5a9c26d4ca38fb46bdf4057c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: f47f55252c6274360f200a4bce0ed0b739e3d8a3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931408"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77166571"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
 
 Tento kurz vás provede pilotním zřizováním cloudu pro testovací doménovou strukturu Active Directory, která je už synchronizovaná pomocí služby Azure Active Directory (Azure AD) Connect Sync.
 
-![Vytváření](media/tutorial-migrate-aadc-aadccp/diagram.png)
+![Vytvořit](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
 ## <a name="considerations"></a>Požadavky
 Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
@@ -35,7 +35,7 @@ Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
 
 4. Toto je pokročilý scénář. Ujistěte se, že postup je přesně popsaný v tomto kurzu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Níže jsou uvedené předpoklady nezbytné pro dokončení tohoto kurzu.
 - Testovací prostředí s Azure AD Connect synchronizace verze 1.4.32.0 nebo novější
 - Organizační jednotka nebo skupina, která je v rozsahu synchronizace a kterou lze použít pro pilotní nasazení. Doporučujeme začít s malou sadou objektů.
@@ -67,8 +67,7 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
  3. Na stránce **Popis** zadejte následující text a klikněte na tlačítko **Další**:
 
     **Název:** Udělení pravidla smysluplnému názvu<br>
-    **Popis:** Přidat smysluplný popis<br> 
-    
+    **Popis:** Přidat smysluplný popis<br>
     **Připojený systém:** Vyberte konektor služby Active Directory, pro který píšete vlastní pravidlo synchronizace.<br>
     **Typ připojeného systémového objektu:** Uživatelský<br>
     **Typ objektu úložiště metaverse:** Uživateli<br>
@@ -87,7 +86,7 @@ Azure AD Connect synchronizace synchronizuje změny, ke kterým došlo v místn�
     ![Vlastní pravidlo](media/how-to-cloud-custom-user-rule/user3.png)</br>
  
  5. Na stránce pravidla **spojování** klikněte na **Další**.
- 6. Na stránce **transformace** přidejte konstantní transformaci: Flow true do atributu cloudNoFlow. Klikněte na tlačítko **Add** (Přidat).
+ 6. Na stránce **transformace** přidejte konstantní transformaci: Flow true do atributu cloudNoFlow. Klikněte na **Přidat**.
  ![vlastní pravidlo](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
 Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stejný postup. Opakujte kroky podle nakonfigurované doménové struktury AD Connector/AD na jednu. 

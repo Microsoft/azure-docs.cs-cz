@@ -10,12 +10,12 @@ ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 592be1710893791e80dfe4b20e1323e789b33e69
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945452"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157088"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Návrh vysoce dostupných aplikací s využitím geograficky redundantního úložiště s přístupem pro čtení
 
@@ -23,8 +23,8 @@ Běžnou funkcí cloudových infrastruktur, jako je Azure Storage, je, že posky
 
 Účty úložiště nakonfigurované pro geograficky redundantní replikaci se synchronně replikují v primární oblasti a pak se asynchronně replikují do sekundární oblasti, která je od sebe stovky kilometrů. Azure Storage nabízí dva typy geograficky redundantní replikace:
 
-* [Geografická zóna – redundantní úložiště (GZRS) (Preview)](storage-redundancy-gzrs.md) poskytuje replikaci pro scénáře vyžadující vysokou dostupnost a maximální odolnost. Data se replikují synchronně v rámci tří zón dostupnosti Azure v primární oblasti pomocí redundantního úložiště (ZRS) zóny a pak se asynchronně replikují do sekundární oblasti. Pro přístup pro čtení dat v sekundární oblasti povolte přístup pro čtení Geo-Zone-redundantní úložiště (RA-GZRS).
-* [Geograficky redundantní úložiště (GRS)](storage-redundancy-grs.md) zajišťuje meziregionální replikaci pro ochranu před místními výpadky. Data se replikují synchronně třikrát v primární oblasti pomocí místně redundantního úložiště (LRS) a pak se asynchronně replikují do sekundární oblasti. Pro přístup pro čtení dat v sekundární oblasti povolte geograficky redundantní úložiště s přístupem pro čtení (RA-GRS).
+* [Geografická zóna – redundantní úložiště (GZRS) (Preview)](storage-redundancy.md) poskytuje replikaci pro scénáře vyžadující vysokou dostupnost a maximální odolnost. Data se replikují synchronně v rámci tří zón dostupnosti Azure v primární oblasti pomocí redundantního úložiště (ZRS) zóny a pak se asynchronně replikují do sekundární oblasti. Pro přístup pro čtení dat v sekundární oblasti povolte přístup pro čtení Geo-Zone-redundantní úložiště (RA-GZRS).
+* [Geograficky redundantní úložiště (GRS)](storage-redundancy.md) zajišťuje meziregionální replikaci pro ochranu před místními výpadky. Data se replikují synchronně třikrát v primární oblasti pomocí místně redundantního úložiště (LRS) a pak se asynchronně replikují do sekundární oblasti. Pro přístup pro čtení dat v sekundární oblasti povolte geograficky redundantní úložiště s přístupem pro čtení (RA-GRS).
 
 V tomto článku se dozvíte, jak navrhnout aplikaci pro zpracování výpadku v primární oblasti. Pokud primární oblast nebude k dispozici, může být aplikace přizpůsobena provádění operací čtení v sekundární oblasti. Než začnete, ujistěte se, že je váš účet úložiště nakonfigurovaný pro RA-GRS nebo RA-GZRS.
 
@@ -200,52 +200,21 @@ Geograficky redundantní úložiště funguje replikací transakcí z primární
 
 Následující tabulka ukazuje příklad toho, co se může stát, když aktualizujete podrobnosti o zaměstnanci, abyste je mohli udělat jako členové role *správců* . V tomto příkladu je potřeba aktualizovat entitu **Zaměstnanec** a aktualizovat entitu **role správce** s počtem celkového počtu správců. Všimněte si, jak se aktualizace aplikují v sekundární oblasti mimo pořadí.
 
-| **čas** | **Transakce**                                            | **Replikace**                       | **Čas poslední synchronizace** | **výsledek** |
+| **Interval** | **Transakce**                                            | **Replikace**                       | **Čas poslední synchronizace** | **Vyústit** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Transakce A: <br> Vložit zaměstnance <br> entita v primárním objektu |                                   |                    | Transakce A vložená na primární,<br> ještě není replikované. |
 | T1       |                                                            | Transakce A <br> replikováno do<br> sekundární | T1 | Transakce byla replikována do sekundárního. <br>Čas poslední synchronizace se aktualizoval.    |
-| T2       | Transakce B:<br>Aktualizovat<br> entita zaměstnance<br> v primárním  |                                | T1                 | Transakce B se zapsala do primárního,<br> ještě není replikované.  |
-| T3       | Transakce C:<br> Aktualizovat <br>správce<br>entita role v<br>primární |                    | T1                 | Transakce C byla zapsána do primárního,<br> ještě není replikované.  |
+| T2       | Transakce B:<br>Aktualizace<br> entita zaměstnance<br> v primárním  |                                | T1                 | Transakce B se zapsala do primárního,<br> ještě není replikované.  |
+| T3       | Transakce C:<br> Aktualizace <br>Správce<br>entita role v<br>primární |                    | T1                 | Transakce C byla zapsána do primárního,<br> ještě není replikované.  |
 | *T4*     |                                                       | Transakce C <br>replikováno do<br> sekundární | T1         | Transakce C byla replikována do sekundárního.<br>LastSyncTime se neaktualizovala, protože <br>transakce B se ještě nereplikoval.|
-| *T5*     | Čtení entit <br>ze sekundární                           |                                  | T1                 | Získáte zastaralou hodnotu pro zaměstnance. <br> entita, protože transakce B nebyla <br> replika ještě proběhla. Získáte novou hodnotu pro<br> entita role správce, protože C má<br> replikovateln. Čas poslední synchronizace ještě není.<br> Aktualizováno, protože transakce B<br> nereplikuje se. Můžete říct, že<br>entita role správce je nekonzistentní. <br>protože je datum/čas entity po <br>Čas poslední synchronizace |
+| *Výtisk*     | Čtení entit <br>ze sekundární                           |                                  | T1                 | Získáte zastaralou hodnotu pro zaměstnance. <br> entita, protože transakce B nebyla <br> replika ještě proběhla. Získáte novou hodnotu pro<br> entita role správce, protože C má<br> replikovateln. Čas poslední synchronizace ještě není.<br> Aktualizováno, protože transakce B<br> nereplikuje se. Můžete říct, že<br>entita role správce je nekonzistentní. <br>protože je datum/čas entity po <br>Čas poslední synchronizace |
 | *T6*     |                                                      | Transakce B<br> replikováno do<br> sekundární | T6                 | *T6* – všechny transakce prostřednictvím C <br>replikováno, čas poslední synchronizace<br> je aktualizovaný. |
 
 V tomto příkladu Předpokládejme, že klient přepne na čtení ze sekundární oblasti v T5. V tuto chvíli může úspěšně číst entitu **role správce** , ale entita obsahuje hodnotu pro počet správců, kteří nejsou konzistentní s počtem entit **zaměstnanců** , kteří jsou v této době označeni jako správci v sekundární oblasti. Váš klient může jednoduše zobrazit tuto hodnotu s rizikem, že se jedná o nekonzistentní informace. Klient se případně může pokusit určit, že **role správce** je v potenciálně nekonzistentním stavu, protože aktualizace nastaly mimo pořadí, a pak uživatele informovat o této skutečnosti.
 
 Aby bylo možné rozpoznat, že má potenciálně nekonzistentní data, může klient použít hodnotu *času poslední synchronizace* , kterou můžete kdykoli získat pomocí dotazu na službu úložiště. Tím se dozvíte čas, kdy byla data v sekundární oblasti naposledy konzistentní a kdy služba použila všechny transakce před tímto bodem v čase. V příkladu uvedeném výše služba vloží entitu **Zaměstnanec** do sekundární oblasti, čas poslední synchronizace se nastaví na *T1*. Zůstane v *T1* , dokud služba neaktualizuje entitu **Zaměstnanec** v sekundární oblasti, když je nastavená na *T6*. Pokud klient načte čas poslední synchronizace při čtení entity v *T5*, může ji porovnat s časovým razítkem v entitě. Pokud je časové razítko v entitě pozdější než čas poslední synchronizace, pak je entita v potenciálně nekonzistentním stavu a můžete to provést, pokud je pro vaši aplikaci vhodná akce. Použití tohoto pole vyžaduje, abyste věděli, kdy byla poslední aktualizace k primárnímu dokončení dokončena.
 
-## <a name="getting-the-last-sync-time"></a>Načítá se čas poslední synchronizace.
-
-Pomocí PowerShellu nebo rozhraní příkazového řádku Azure můžete načíst čas poslední synchronizace a určit, kdy byla data naposledy zapsána do sekundárního.
-
-### <a name="powershell"></a>PowerShell
-
-Pokud chcete získat čas poslední synchronizace pro účet úložiště pomocí PowerShellu, nainstalujte modul Azure Storage Preview, který podporuje získávání statistik geografické replikace. Například:
-
-```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
-```
-
-Pak zkontrolujte vlastnost **GeoReplicationStats. LastSyncTime** účtu úložiště. Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami:
-
-```powershell
-$lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
-    -Name <storage-account> `
-    -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-Pokud chcete získat čas poslední synchronizace pro účet úložiště pomocí rozhraní příkazového řádku Azure, podívejte se na vlastnost **geoReplicationStats. lastSyncTime** účtu úložiště. Použijte parametr `--expand` pro návrat hodnot vlastností vnořených do **geoReplicationStats**. Nezapomeňte nahradit hodnoty zástupných symbolů vlastními hodnotami:
-
-```azurecli
-$lastSyncTime=$(az storage account show \
-    --name <storage-account> \
-    --resource-group <resource-group> \
-    --expand geoReplicationStats \
-    --query geoReplicationStats.lastSyncTime \
-    --output tsv)
-```
+Informace o tom, jak ověřit čas poslední synchronizace, najdete v tématu [Zkontrolujte vlastnost čas poslední synchronizace pro účet úložiště](last-sync-time-get.md).
 
 ## <a name="testing"></a>Testování
 

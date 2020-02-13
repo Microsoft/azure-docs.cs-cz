@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5a9e5e014740302c439036bd3889761f4750344f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 203bf584711fbfcfd0baeee8f5e4c7f70d96823b
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062859"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157209"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -93,7 +93,7 @@ Pokud se chcete dozvědět, jak vytvořit prémiovou sdílenou složku, přečt�
 V současné době nemůžete přímo převádět mezi standardní sdílenou složkou souborů a prémiovou sdílenou složkou. Pokud byste chtěli přepnout na jednu vrstvu, musíte v této vrstvě vytvořit novou sdílenou složku a ručně zkopírovat data z původní sdílené složky do nové sdílené složky, kterou jste vytvořili. Můžete to provést pomocí kteréhokoli z podporovaných nástrojů pro kopírování souborů Azure, jako je například Robocopy nebo AzCopy.
 
 > [!IMPORTANT]
-> Soubory úrovně Premium jsou dostupné ve většině oblastí, které nabízí účty úložiště a ZRS v menší podmnožině oblastí. Pokud chcete zjistit, jestli jsou v současnosti ve vaší oblasti dostupné sdílené složky Premium, přečtěte si stránku [Dostupné produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=storage) pro Azure. Pokud chcete zjistit, které oblasti podporují ZRS, přečtěte si téma [Podpora pokrytí a regionální dostupnost](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability).
+> Soubory úrovně Premium jsou dostupné ve většině oblastí, které nabízí účty úložiště a ZRS v menší podmnožině oblastí. Pokud chcete zjistit, jestli jsou v současnosti ve vaší oblasti dostupné sdílené složky Premium, přečtěte si stránku [Dostupné produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=storage) pro Azure. Informace o oblastech, které podporují ZRS, najdete v tématu [Azure Storage redundance](../common/storage-redundancy.md).
 >
 > Abychom vám pomohli upřednostnit nové oblasti a funkce úrovně Premium, vyplňte prosím tento [průzkum](https://aka.ms/pfsfeedback).
 
@@ -155,41 +155,14 @@ Nové sdílené složky začínají úplným počtem kreditů v rámci svého sh
 
 ## <a name="file-share-redundancy"></a>Redundance sdílení souborů
 
-Standardní sdílené složky Azure Files podporují čtyři možnosti redundance dat: místně redundantní úložiště (LRS), zóna redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS) a geograficky redundantní úložiště (GZRS) (Preview).
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-Sdílené složky Azure Files Premium podporují LRS i ZRS, ale ZRS jsou momentálně dostupné v menší podmnožině oblastí.
-
-V následujících částech jsou popsány rozdíly mezi různými možnostmi redundance:
-
-### <a name="locally-redundant-storage"></a>(Locally redundant storage) Místně redundantní úložiště
-
-[!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
-
-### <a name="zone-redundant-storage"></a>Redundantní úložiště zóny
-
-[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
-
-### <a name="geo-redundant-storage"></a>Geograficky redundantní úložiště
+Pokud se rozhodnete pro geograficky redundantní úložiště s přístupem pro čtení (RA-GRS), měli byste se seznámit s tím, že Azure File v tuto chvíli nepodporuje geograficky redundantní úložiště s přístupem pro čtení (RA-GRS). Sdílené složky v účtu úložiště RA-GRS fungují stejně jako v účtech GRS a účtují se za GRS ceny.
 
 > [!Warning]  
 > Pokud používáte sdílenou složku Azure jako koncový bod cloudu v účtu úložiště GRS, neměli byste iniciovat převzetí služeb při selhání účtu úložiště. Pokud to uděláte, synchronizace přestane fungovat a v případě nově vrstvených souborů může dojít i k neočekávané ztrátě dat. V případě ztráty oblasti Azure spustí Microsoft převzetí služeb při selhání účtu úložiště způsobem, který je kompatibilní s Azure File Sync.
 
-Geograficky redundantní úložiště (GRS) je navrženo tak, aby poskytovalo alespoň 99.99999999999999% (16 9) odolnosti objektů v průběhu daného roku tím, že replikuje data do sekundární oblasti, která je od primární oblasti od sebe stovky kilometrů. Pokud je váš účet úložiště GRS povolený, jsou vaše data odolná i v případě kompletního výpadku nebo havárie, ve kterém se primární oblast nedá obnovit.
-
-Pokud se rozhodnete pro geograficky redundantní úložiště s přístupem pro čtení (RA-GRS), měli byste se seznámit s tím, že Azure File v tuto chvíli nepodporuje geograficky redundantní úložiště s přístupem pro čtení (RA-GRS). Sdílené složky v účtu úložiště RA-GRS fungují stejně jako v účtech GRS a účtují se za GRS ceny.
-
-GRS replikuje vaše data do jiného datového centra v sekundární oblasti, ale data jsou k dispozici pro čtení pouze v případě, že společnost Microsoft iniciuje převzetí služeb při selhání z primární do sekundární oblasti.
-
-Pro účet úložiště s povoleným GRS se všechna data nejdřív replikují s místně redundantním úložištěm (LRS). Aktualizace se nejdřív potvrdí do primárního umístění a replikuje se pomocí LRS. Aktualizace se pak asynchronně replikuje do sekundární oblasti pomocí GRS. Když jsou data zapsána do sekundárního umístění, je také replikována v tomto umístění pomocí LRS.
-
-Primární i sekundární oblasti spravují repliky v různých doménách selhání a upgradovací domény v rámci jednotky škálování úložiště. Jednotka škálování úložiště je základní jednotkou replikace v datacentru. Replikaci na této úrovni poskytuje LRS; Další informace najdete v tématu [místně redundantní úložiště (LRS): redundance dat pro Azure Storage s nízkými náklady](../common/storage-redundancy-lrs.md).
-
-Při rozhodování o tom, kterou možnost replikace použít, pamatujte na tyto body:
-
-* Geografická zóna – redundantní úložiště (GZRS) (Preview) poskytuje vysokou dostupnost společně s maximální odolností tím, že replikuje data synchronně na třech zónách dostupnosti Azure a pak asynchronně replikuje data do sekundární oblasti. Můžete také povolit přístup pro čtení do sekundární oblasti. GZRS je navržený tak, aby poskytoval alespoň 99.99999999999999% (16 9) odolnosti objektů v průběhu daného roku. Další informace o GZRS najdete v článku [geograficky redundantní úložiště pro vysokou dostupnost a maximální trvanlivost (Preview)](../common/storage-redundancy-gzrs.md).
-* Zóna – redundantní úložiště (ZRS) poskytuje vysokou dostupnost díky synchronní replikaci a může být lepší volbou pro některé scénáře než GRS. Další informace o ZRS najdete v tématu [ZRS](../common/storage-redundancy-zrs.md).
-* Asynchronní replikace zahrnuje zpoždění od okamžiku, kdy jsou data zapsána do primární oblasti, při replikaci do sekundární oblasti. V případě regionálních havárií může dojít ke ztrátě změn, které ještě nebyly replikovány do sekundární oblasti, pokud tato data nebude možné obnovit z primární oblasti.
-* V GRS není tato replika k dispozici pro přístup pro čtení nebo zápis, pokud společnost Microsoft neinicializuje převzetí služeb při selhání sekundární oblastí. V případě převzetí služeb při selhání budete mít k datům přístup pro čtení a zápis po dokončení převzetí služeb při selhání. Další informace najdete v tématu [pokyny pro zotavení po havárii](../common/storage-disaster-recovery-guidance.md).
+Sdílené složky Azure Files Premium podporují LRS i ZRS, ale ZRS jsou momentálně dostupné v menší podmnožině oblastí.
 
 ## <a name="onboard-to-larger-file-shares-standard-tier"></a>Připojování k větším sdíleným složkám (úroveň Standard)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6dff1fe974ad4ffa993e4df03b4903d7e46e1990
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363502"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162255"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Návod k Azure Monitoring REST API
 
@@ -57,7 +57,7 @@ New-AzRoleAssignment -RoleDefinitionName Reader `
 
 ```
 
-Pro dotazování rozhraní Azure Monitor API by klientská aplikace měla k ověření použít dřív vytvořený instanční objekt. Následující ukázkový skript prostředí PowerShell zobrazuje jeden přístup pomocí [Active Directory Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) k získání ověřovacího tokenu JWT. Token JWT se předává jako součást autorizačního parametru HTTP v požadavcích na Azure Monitor REST API.
+Pro dotazování rozhraní Azure Monitor API by klientská aplikace měla k ověření použít dřív vytvořený instanční objekt. Následující ukázkový skript prostředí PowerShell zobrazuje jeden přístup pomocí [Active Directory Authentication Library](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) (ADAL) k získání ověřovacího tokenu JWT. Token JWT se předává jako součást autorizačního parametru HTTP v požadavcích na Azure Monitor REST API.
 
 ```powershell
 $azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
@@ -466,7 +466,7 @@ Jakmile jsou dostupné definice metriky známy, je možné načíst souvisejíc�
 
 **Metoda**: Get
 
-**Identifikátor URI žádosti**: *https://management.azure.com/subscriptions/ {ID předplatného}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{Resource-Type}* / *{resource-Name}* /Providers/Microsoft.Insights/Metrics? $Filter = *{Filter}* & API-Version = *{apiVersion}*
+**Identifikátor URI žádosti**: *https://management.azure.com/subscriptions/{ID předplatného}* /resourceGroups/ *{Resource-Group-Name}* /Providers/ *{Resource-Provider-Namespace}* / *{Resource-Type}* / *{resource-Name}* /Providers/Microsoft.Insights/Metrics? $Filter = *{Filter}* & API-Version = *{apiVersion}*
 
 Například pro načtení datových bodů metriky RunsSucceeded pro daný časový rozsah a za časový interval 1 hodiny bude požadavek následující:
 
@@ -620,13 +620,13 @@ Chcete-li najít ID prostředku pro požadovaný prostředek, je jedním z užit
 
 ![ALT "Azure Resource Explorer"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 ID prostředku se taky dá získat z Azure Portal. Provedete to tak, že přejdete k požadovanému prostředku a pak vyberete vlastnosti. ID prostředku se zobrazí v části Properties (vlastnosti), jak je vidět na následujícím snímku obrazovky:
 
 ![ALT "ID prostředku zobrazené v okně Vlastnosti v Azure Portal"](./media/rest-api-walkthrough/resourceid_azure_portal.png)
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### <a name="azure-powershell"></a>Azure Powershell
 
 ID prostředku se dá načíst taky pomocí rutin Azure PowerShell. Pokud například chcete získat ID prostředku pro aplikaci logiky Azure, spusťte rutinu Get-AzureLogicApp, jako v následujícím příkladu:
 

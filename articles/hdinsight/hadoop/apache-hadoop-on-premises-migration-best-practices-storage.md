@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 6fe7dfaccc3cf1c3fbe4a9ea42578c56f910ea36
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 71afbf09d563a43469689132dfce071b40d694b6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435771"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162663"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrace místních Apache Hadoopových clusterů do Azure HDInsight
 
@@ -70,7 +70,7 @@ Ověřte, že přidaný certifikát je v úložišti důvěryhodnosti.
 keytool -list -v -keystore /path/to/jre/lib/security/cacerts
 ```
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Použití Azure Storage s clustery Azure HDInsight](../hdinsight-hadoop-use-blob-storage.md)
 - [Cíle škálovatelnosti pro účty úložiště úrovně Standard](../../storage/common/scalability-targets-standard-account.md)
@@ -83,7 +83,7 @@ Další informace najdete v těchto článcích:
 
 Azure Data Lake Storage implementuje model řízení přístupu k stylu aplikace HDFS a POSIX. Poskytuje pro jemně odstupňované řízení přístupu první integraci třídy s AAD. Neexistují žádná omezení velikosti dat, která může uložit, nebo schopnost spouštět výkonné paralelní analýzy.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Vytváření clusterů HDInsight pomocí Data Lake Storage pomocí Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 - [Použití Data Lake Storage s clustery Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
@@ -112,7 +112,7 @@ Pro přístup k datům, která jsou uložená v ADLS Gen2, se dá použít jeden
 - `abfs:///`: přístup k výchozímu Data Lake Storage clusteru.
 - `abfs://file_system@account_name.dfs.core.windows.net`: používá se při komunikaci s jiným než výchozím Data Lake Storage.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Úvod do Azure Data Lake Storage Gen2](../../storage/data-lake-storage/introduction.md)
 - [Ovladač systému souborů objektů BLOB v Azure (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
@@ -198,11 +198,11 @@ Všechna data zapsaná do Azure Storage se automaticky šifrují pomocí [šifr
 - [Místně redundantní úložiště (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [Zónově redundantní úložiště (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [Geograficky redundantní úložiště (GRS)](../../storage/common/storage-redundancy-grs.md)
-- [Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
+- [Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../../storage/common/storage-redundancy.md)
 
 Azure Data Lake Storage poskytuje místně redundantní úložiště (LRS), ale měli byste také zkopírovat kritická data do jiného účtu Data Lake Storage v jiné oblasti s frekvencí, která je zarovnaná na požadavky plánu zotavení po havárii. Existují různé metody kopírování dat, včetně [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), [DistCp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html), [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)nebo [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Doporučuje se také vyhovět zásadám přístupu pro účet Data Lake Storage, abyste zabránili nechtěnému odstranění.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Účet replikace Azure Storage](../../storage/common/storage-redundancy.md)
 - [Pokyny k havárii pro Azure Data Lake Storage (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d2dbe29c5a348363172f57da86483ccf3fd787f0
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
-ms.translationtype: HT
+ms.openlocfilehash: 483603b8ff2f4b51f85d21d6ff4f02ad6f8a8272
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046098"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162085"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -122,9 +122,9 @@ Zobrazení výsledků ve formátu CSV:
 
 ### <a name="file-system-features"></a>Funkce systému souborů
 
-| Funkce | Stav podpory | Poznámky |
+| Funkce | Stav podpory | Poznámky: |
 |---------|----------------|-------|
-| Seznamy ACL | Plně podporováno | Seznamy řízení přístupu systému Windows jsou zachovány Azure File Sync a jsou vynutily Windows Server na koncových bodech serveru. Seznamy řízení přístupu (ACL) Windows nejsou (zatím) podporované soubory Azure, pokud se k souborům dostanete přímo v cloudu. |
+| Seznamy řízení přístupu (ACL) | Plně podporováno | Seznamy řízení přístupu systému Windows jsou zachovány Azure File Sync a jsou vynutily Windows Server na koncových bodech serveru. Seznamy řízení přístupu (ACL) Windows nejsou (zatím) podporované soubory Azure, pokud se k souborům dostanete přímo v cloudu. |
 | Pevné odkazy | Přeskočeno | |
 | Symbolické odkazy | Přeskočeno | |
 | Přípojné body | Částečně podporováno | Přípojné body můžou být kořenem koncového bodu serveru, ale pokud se nacházejí v oboru názvů koncového bodu serveru, přeskočí se. |
@@ -147,13 +147,13 @@ Zobrazení výsledků ve formátu CSV:
 | ehThumbs. DB | Dočasný soubor pro miniatury multimédií |
 | ~$\*.\* | Dočasný soubor Office |
 | \*. tmp | Dočasný soubor |
-| \*.laccdb | Soubor zámků Access DB|
+| \*. laccdb | Soubor zámků Access DB|
 | 635D02A9D91C401B97884B82B3BCDAEA.* | Soubor interní synchronizace|
 | Informace o svazcích \\systému | Složka specifická pro svazek |
 | $RECYCLE. BIN| Složka |
 | \\SyncShareState | Složka pro synchronizaci |
 
-### <a name="failover-clustering"></a>Clustering s podporou převzetí služeb při selhání
+### <a name="failover-clustering"></a>Clusteringu s podporou převzetí služeb při selhání
 Clustering s podporou převzetí služeb při selhání ve Windows serveru podporuje Azure File Sync pro možnost nasazení souborový server pro obecné použití. Clustering s podporou převzetí služeb při selhání není podporován na Souborový server se škálováním na více systémů pro data aplikací (SOFS) nebo na sdílených svazcích clusteru (CSV).
 
 > [!Note]  
@@ -206,10 +206,10 @@ Pro Azure File Sync a DFS-R pro práci vedle sebe:
 
 Další informace najdete v tématu [přehled replikace DFS](https://technet.microsoft.com/library/jj127250).
 
-### <a name="sysprep"></a>Nástroj Sysprep
+### <a name="sysprep"></a>Příkazu
 Použití nástroje Sysprep na serveru s nainstalovaným agentem Azure File Sync není podporováno a může vést k neočekávaným výsledkům. Instalace agenta a registrace serveru by se měly vyskytnout po nasazení image serveru a dokončení zkrácené instalace nástroje Sysprep.
 
-### <a name="windows-search"></a>Windows Search
+### <a name="windows-search"></a>Hledání ve Windows
 Pokud je na koncovém bodu serveru povolené vrstvení cloudu, soubory, které jsou vrstveny, se přeskočí a neindexují služba Windows Search. Soubory bez vrstev jsou indexovány správně.
 
 ### <a name="antivirus-solutions"></a>Antivirová řešení
@@ -234,7 +234,7 @@ Pokud používáte místní řešení zálohování, měli byste zálohy provád
 ### <a name="encryption-solutions"></a>Řešení šifrování
 Podpora šifrovacích řešení závisí na způsobu jejich implementace. Azure File Sync je známo, že funguje:
 
-- Šifrování nástrojem BitLocker
+- Šifrování BitLockeru
 - Azure Information Protection, Azure Rights Management Services (Azure RMS) a Active Directory RMS
 
 Azure File Sync je známo, že nepracuje s:
@@ -246,52 +246,52 @@ Obecně platí, Azure File Sync by měla podporovat interoperabilitu s řešení
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Další řešení pro správu hierarchických úložišť (HSM)
 S Azure File Sync by se neměla používat žádná další řešení HSM.
 
-## <a name="region-availability"></a>Regionální dostupnost
+## <a name="region-availability"></a>Dostupnost v oblastech
 Azure File Sync je k dispozici pouze v následujících oblastech:
 
-| Region (Oblast) | Umístění Datacenter |
+| Oblast | Umístění Datacenter |
 |--------|---------------------|
 | Austrálie – východ | Nový Jižní Wales |
 | Austrálie – jihovýchod | Victoria |
-| Brazílie – jih | Sao Paulo – stát |
-| Střední Kanada | Toronto |
+| Brazílie – jih | Stav Svatý Paulo |
+| Kanada – střed | Toronto |
 | Východní Kanada | Québec |
-| Indie – střed | Puné |
-| USA – střed | Iowa |
+| Střed Indie | Pune |
+| Střední USA | Iowa |
 | Východní Asie | Hongkong – zvláštní správní oblast |
-| USA – východ | Virginie |
-| USA – východ 2 | Virginie |
+| USA – východ | ) – Virginia |
+| USA – východ 2 | ) – Virginia |
 | Francie – střed | Paříž |
 | Francie – jih * | Marseille |
-| Korea – střed | Soul |
-| Korea – jih | Pusan |
-| Japonsko – východ | Tokio, Saitama |
+| Jižní Korea – střed | Soul |
+| Jižní Korea – jih | Busan |
+| Japonsko – východ | Tokio, Prefektura Saitama |
 | Japonsko – západ | Ósaka |
-| USA – středosever | Illinois |
+| Středoseverní USA | Illinois |
 | Severní Evropa | Irsko |
 | Jižní Afrika – sever | Johannesburg |
 | Jižní Afrika – západ * | Kapské město |
-| USA – středojih | Texas |
-| Jižní Indie | Čennaj |
+| Střed USA – jih | Texas |
+| Indie – jih | Čennaj |
 | Jihovýchodní Asie | Singapur |
-| Spojené království – jih | Londýn |
-| Velká Británie – západ | Cardiff |
-| US Gov – Arizona | Arizona |
-| US Gov – Texas | Texas |
-| US Gov – Virginie | Virginie |
-| Spojené arabské emiráty – sever | Dubaj |
-| Spojené arabské emiráty střed * | Abú Zabí |
+| Velká Británie – jih | Londýn |
+| Spojené království – západ | Cardiff |
+| USA (Gov) – Arizona | Arizona |
+| USA (Gov) – Texas | Texas |
+| USA (Gov) – Virginia | ) – Virginia |
+| Spojené arabské emiráty sever | Dubaj |
+| Spojené arabské emiráty střed * | Abú Dhabi |
 | Západní Evropa | Nizozemsko |
-| USA – středozápad | Wyoming |
-| USA – západ | Kalifornie |
-| USA – západ 2 | Washington |
+| Střed USA – západ | Wyoming |
+| Západní USA | Kalifornii |
+| Západní USA 2 | Washington |
 
 Azure File Sync podporuje synchronizaci jenom se sdílenou složkou Azure, která je ve stejné oblasti jako služba synchronizace úložiště.
 
 U oblastí označených hvězdičkami musíte kontaktovat podporu Azure a požádat o přístup k Azure Storage v těchto oblastech. Tento postup je popsaný v [tomto dokumentu](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 ### <a name="azure-disaster-recovery"></a>Zotavení po havárii Azure
-Kvůli ochraně před ztrátou oblasti Azure Azure File Sync integrace s možností [redundance redundantního úložiště](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). GRS Storage funguje pomocí asynchronního blokování replikace mezi úložištěm v primární oblasti, se kterým obvykle pracujete, a úložištěm v spárované sekundární oblasti. V případě havárie, která způsobí, že se oblast Azure dočasně nebo trvale převede do režimu offline, bude Microsoft převzetí služeb při selhání úložiště do spárované oblasti. 
+Kvůli ochraně před ztrátou oblasti Azure Azure File Sync integrace s [geograficky redundantním úložištěm](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS). GRS Storage funguje pomocí asynchronního blokování replikace mezi úložištěm v primární oblasti, se kterým obvykle pracujete, a úložištěm v spárované sekundární oblasti. V případě havárie, která způsobí, že se oblast Azure dočasně nebo trvale převede do režimu offline, bude Microsoft převzetí služeb při selhání úložiště do spárované oblasti. 
 
 > [!Warning]  
 > Pokud používáte sdílenou složku Azure jako koncový bod cloudu v účtu úložiště GRS, neměli byste iniciovat převzetí služeb při selhání účtu úložiště. Pokud to uděláte, synchronizace přestane fungovat a v případě nově vrstvených souborů může dojít i k neočekávané ztrátě dat. V případě ztráty oblasti Azure spustí Microsoft převzetí služeb při selhání účtu úložiště způsobem, který je kompatibilní s Azure File Sync.
@@ -302,36 +302,36 @@ Pro podporu integrace převzetí služeb při selhání mezi geograficky redunda
 |---------------------|--------------------|
 | Austrálie – východ      | Austrálie – jihovýchod|
 | Austrálie – jihovýchod | Austrálie – východ     |
-| Brazílie – jih        | USA – středojih   |
-| Střední Kanada      | Východní Kanada        |
-| Východní Kanada         | Střední Kanada     |
-| Indie – střed       | Jižní Indie        |
-| USA – střed          | USA – východ 2          |
+| Brazílie – jih        | Střed USA – jih   |
+| Kanada – střed      | Východní Kanada        |
+| Východní Kanada         | Kanada – střed     |
+| Střed Indie       | Indie – jih        |
+| Střední USA          | Východní USA 2          |
 | Východní Asie           | Jihovýchodní Asie     |
-| USA – východ             | USA – západ            |
-| USA – východ 2           | USA – střed         |
+| USA – východ             | Západní USA            |
+| Východní USA 2           | Střední USA         |
 | Francie – střed      | Francie – jih       |
 | Francie – jih        | Francie – střed     |
 | Japonsko – východ          | Japonsko – západ         |
 | Japonsko – západ          | Japonsko – východ         |
-| Korea – střed       | Korea – jih        |
-| Korea – jih         | Korea – střed      |
+| Jižní Korea – střed       | Jižní Korea – jih        |
+| Jižní Korea – jih         | Jižní Korea – střed      |
 | Severní Evropa        | Západní Evropa        |
-| USA – středosever    | USA – středojih   |
+| Středoseverní USA    | Střed USA – jih   |
 | Jižní Afrika – sever  | Jižní Afrika – západ  |
 | Jižní Afrika – západ   | Jižní Afrika – sever |
-| USA – středojih    | USA – středosever   |
-| Jižní Indie         | Indie – střed      |
+| Střed USA – jih    | Středoseverní USA   |
+| Indie – jih         | Střed Indie      |
 | Jihovýchodní Asie      | Východní Asie          |
-| Spojené království – jih            | Velká Británie – západ            |
-| Velká Británie – západ             | Spojené království – jih           |
-| US Gov – Arizona      | US Gov – Texas       |
-| USA – Iowa         | US Gov – Virginie    |
-| US Gov – Virginie      | US Gov – Texas       |
+| Velká Británie – jih            | Spojené království – západ            |
+| Spojené království – západ             | Velká Británie – jih           |
+| USA (Gov) – Arizona      | USA (Gov) – Texas       |
+| US Gov – Iowa         | USA (Gov) – Virginia    |
+| USA (Gov) – Virginia      | USA (Gov) – Texas       |
 | Západní Evropa         | Severní Evropa       |
-| USA – středozápad     | USA – západ 2          |
-| USA – západ             | USA – východ            |
-| USA – západ 2           | USA – středozápad    |
+| Střed USA – západ     | Západní USA 2          |
+| Západní USA             | USA – východ            |
+| Západní USA 2           | Střed USA – západ    |
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -346,7 +346,7 @@ V následující tabulce jsme poskytovali jak velikost oboru názvů, tak i pře
 
 | Velikost oboru názvů – soubory & adresářů (miliony)  | Typická kapacita (TiB)  | Jádra procesoru  | Doporučená paměť (GiB) |
 |---------|---------|---------|---------|
-| 3        | 1.4     | 2        | 8 (počáteční synchronizace)/2 (Typická četnost změn)      |
+| 3        | 1,4     | 2        | 8 (počáteční synchronizace)/2 (Typická četnost změn)      |
 | 5        | 2.4     | 2        | 16 (počáteční synchronizace)/4 (Typická četnost změn)    |
 | 10       | 4.8     | 4        | 32 (počáteční synchronizace)/8 (Typická četnost změn)   |
 | 30       | 14,3    | 8        | 48 (počáteční synchronizace)/16 (Typická četnost změn)   |

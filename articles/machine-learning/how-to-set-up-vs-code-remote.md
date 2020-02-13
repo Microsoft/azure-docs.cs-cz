@@ -9,19 +9,16 @@ ms.topic: conceptual
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: f5607c5d41a028a20a4658a67a7ce487a75f0d7c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990347"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169758"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktivně se ladit na Azure Machine Learning výpočetní instanci s VS Code Vzdálená
 
 V tomto článku se dozvíte, jak nastavit Visual Studio Code vzdáleně na instanci služby Azure Machine Learning COMPUTE, abyste mohli **interaktivně ladit kód** z vs Code. 
-
-> [!NOTE]
-> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever**, **východní USA 2**, **Severní Evropa** nebo **Velká Británie – jih**s podporou pro jiné oblasti, které již brzy připravujeme.
 
 + [Instance služby Azure Machine Learning COMPUTE](concept-compute-instance.md) je plně spravovaná cloudová pracovní stanice pro odborníky přes data a poskytuje funkce pro správu a připravenost v podniku pro správce IT. 
 
@@ -37,7 +34,7 @@ Na platformách systému Windows je nutné [nainstalovat klienta ssh kompatibiln
 
 ## <a name="get-ip-and-ssh-port"></a>Získat port IP a SSH 
 
-1. V https://ml.azure.com/ Azure Machine Learning studia.
+1. V https://ml.azure.com/Azure Machine Learning studia.
 
 2. Vyberte svůj [pracovní prostor](concept-workspace.md).
 1. Klikněte na kartu **výpočetní instance** .

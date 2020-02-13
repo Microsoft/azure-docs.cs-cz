@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: justhu
 ms.custom: aaddev
-ms.openlocfilehash: 364395a05737f6dc6333b922f54376a9d5149fe6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 38cb1222a64b1759528749caa15dfb1bb906cef6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701446"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159909"
 ---
 # <a name="tenancy-in-azure-active-directory"></a>Tenantů v Azure Active Directory
 
@@ -46,9 +46,9 @@ V Azure Portal můžete svou aplikaci nakonfigurovat tak, aby byla jedním nebo 
 
 Vytváření skvělých aplikací s více klienty může být náročné kvůli počtu různých zásad, které správci IT můžou ve svých klientech nastavit. Pokud se rozhodnete sestavit aplikaci pro více tenantů, postupujte podle těchto osvědčených postupů:
 
-* Otestujte svoji aplikaci v tenantovi, která má nakonfigurované [zásady podmíněného přístupu](conditional-access-dev-guide.md).
+* Otestujte svoji aplikaci v tenantovi, která má nakonfigurované [zásady podmíněného přístupu](../azuread-dev/conditional-access-dev-guide.md).
 * Postupujte podle principu minimálního přístupu uživatelů, abyste měli jistotu, že vaše aplikace žádá jenom o oprávnění, která skutečně potřebují. Vyhněte se Požadování oprávnění, která vyžadují souhlas správce, protože by to mohlo zabránit uživatelům v používání vaší aplikace v některých organizacích. 
-* Poskytněte vhodné názvy a popisy pro všechna oprávnění, která vystavíte v rámci vaší aplikace. To pomáhá uživatelům a správcům zjistit, na co se dohodli při pokusu o použití rozhraní API vaší aplikace. Další informace najdete v části osvědčené postupy v [Průvodci oprávněními](v1-permissions-and-consent.md).
+* Poskytněte vhodné názvy a popisy pro všechna oprávnění, která vystavíte v rámci vaší aplikace. To pomáhá uživatelům a správcům zjistit, na co se dohodli při pokusu o použití rozhraní API vaší aplikace. Další informace najdete v části osvědčené postupy v [Průvodci oprávněními](v2-permissions-and-consent.md).
 
 ## <a name="next-steps"></a>Další kroky
 

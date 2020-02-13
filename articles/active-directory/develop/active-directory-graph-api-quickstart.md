@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f32d9832f0bad81ca29ab7553d956b593531d1bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9fd5fa943468924c289587285fe7986a73c21dba
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698930"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161337"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Postupy: použití Graph API Azure AD
 
@@ -81,7 +81,7 @@ Pro účely tohoto průvodce rychlým startem můžete použít webový ladicí 
 
 V následujícím příkladu použijete webový ladicí program Fiddler k vytvoření nové skupiny zabezpečení ' MyTestGroup ' v adresáři služby Azure AD.
 
-**Získání přístupového tokenu**: pro přístup k Azure AD graphu se klienti musí nejdřív úspěšně ověřit ve službě Azure AD. Další informace najdete v tématu [scénáře ověřování pro Azure AD](v1-authentication-scenarios.md).
+**Získání přístupového tokenu**: pro přístup k Azure AD graphu se klienti musí nejdřív úspěšně ověřit ve službě Azure AD. Další informace najdete v tématu [scénáře ověřování pro Azure AD](authentication-scenarios.md).
 
 **Vytvořte a spusťte dotaz**: proveďte následující kroky:
 

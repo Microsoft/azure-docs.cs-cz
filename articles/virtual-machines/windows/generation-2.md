@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: ace08d95e1f2eb5a6e7252ecdf505e282b04ddf8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7daa2da76bf3097679a72bfdef069db20ae66087
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837340"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161728"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -35,7 +35,7 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 * [Řady B-Series](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
 * Řady [Dsv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) a [Dsv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
-* [Esv3-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
+* [Esv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
 * [Řady GS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
 * [Řady s více procesory](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hb-series)
@@ -54,11 +54,12 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 Virtuální počítače generace 2 podporují následující image na webu Marketplace:
 
 * Windows Server 2019, 2016, 2012 R2, 2012
-* Windows 10
+* Windows 10
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
 * Ubuntu Server 16,04, 18,04, 19,04, 19,10 
-* RHEL 8.0
+* RHEL 8,0, 7,6, 7,5, 7,4, 7,0
+* Cent OS 8,0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Místní a Azure generace 2 – virtuální počítače
 
@@ -78,9 +79,9 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 | Funkce | Generace 1 | Generace 2 |
 |---------|--------------|--------------|
-| Spouštění             | PCAT                      | UEFI                               |
-| Řadiče disku | IDE                       | SCSI                               |
-| Velikosti virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
+| Boot             | PCAT                      | UEFI                               |
+| Řadiče disku | IDE – integrované vývojové prostředí                       | SCSI                               |
+| Velikost virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Generace 1 vs. generace 2 – možnosti
 
@@ -100,18 +101,19 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 
 V Azure Portal nebo Azure CLI můžete vytvořit virtuální počítače 2. generace z image Marketplace, která podporuje spouštění pomocí UEFI.
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
-Image generace 2 pro Windows a SLES jsou součástí stejné nabídky serveru jako image Gen1. Z hlediska toků to znamená, že vyberete nabídku a SKU z portálu pro váš virtuální počítač. Pokud SKU podporuje jak image generace 1, tak i generace 2, můžete vybrat vytvoření virtuálního počítače generace 2 z karty *Upřesnit* v toku vytváření virtuálních počítačů.
+Níže jsou uvedené kroky k vytvoření virtuálního počítače generace 2 (Gen2) v Azure Portal.
 
-V současné době následující SKU podporují image generace 1 i generace 2:
-
-* Windows Server 2012
-* Windows Server 2012 R2
-* Windows Server 2016
-* Windows Server 2019
-
-Když jako nabídku vyberete SKU Windows serveru, na kartě **Upřesnit** máte možnost vytvořit virtuální počítač s identifikátorem **1.1** nebo **Gen 2** (UEFI). Pokud vyberete **Obecné 2**, ujistěte se, že velikost virtuálního počítače vybraná na kartě **základy** se [podporuje pro virtuální počítače generace 2](#generation-2-vm-sizes).
+1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
+1. Vyberte **vytvořit prostředek**.
+1. Klikněte na **Zobrazit vše** z Azure Marketplace vlevo.
+1. Vyberte bitovou kopii, která podporuje Gen2.
+1. Klikněte na možnost **Vytvořit**.
+1. Na kartě **Upřesnit** v části **generování virtuálního počítače** vyberte možnost **Obecné 2** .
+1. Na kartě **základy** klikněte v části **Podrobnosti instance**na **Velikost** a otevřete okno **Vybrat velikost virtuálního počítače** .
+1. Vyberte [podporovaný virtuální počítač 2. generace](#generation-2-vm-sizes).
+1. Pokud chcete dokončit vytváření virtuálního počítače, Projděte si [tok vytváření Azure Portal](quick-create-portal.md) .
 
 ![Vyberte virtuální počítač 1. generace 2 nebo 2. generace.](./media/generation-2/gen1-gen2-select.png)
 
@@ -195,6 +197,13 @@ Virtuální počítače 2. generace můžete vytvořit také pomocí sady Virtua
 
 * **Můžu migrovat virtuální počítač z generace 1 na generaci 2?**  
     Ne, generaci virtuálního počítače po jeho vytvoření nemůžete změnit. Pokud potřebujete přepínat mezi generací virtuálních počítačů, vytvořte nový virtuální počítač jiné generace.
+
+* **Proč se při pokusu o vytvoření virtuálního počítače s Gen2 nepovoluje velikost svého virtuálního počítače v selektoru velikosti?**
+
+    To může být vyřešeno následujícím způsobem:
+
+    1. Ověřte, že je vlastnost **generování virtuálního počítače** na kartě **Upřesnit** nastavená na hodnotu **Obecné 2** .
+    1. Ověřte, že hledáte [Velikost virtuálního počítače, která podporuje virtuální počítače s Gen2](#generation-2-vm-sizes).
 
 ## <a name="next-steps"></a>Další kroky
 

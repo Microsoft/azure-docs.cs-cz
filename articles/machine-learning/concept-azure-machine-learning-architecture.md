@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 927014ed0c2b261351df786ad8a6b56f20c573a8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5f5522201534a54f5d132257553469eed5addab3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984859"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169871"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -23,14 +23,14 @@ Přečtěte si o architektuře, konceptech a pracovním postupu pro Azure Machin
 
 ![Azure Machine Learning architektura a pracovní postup](./media/concept-azure-machine-learning-architecture/workflow.png)
 
-## <a name="workflow"></a>Pracovní postupy
+## <a name="workflow"></a>Pracovní postup
 
 Pracovní postup modelu Machine Learning se obvykle řídí tímto pořadím:
 
 1. **Průřez**
     + Vývoj školicích skriptů pro strojové učení v **Pythonu** nebo pomocí vizuálního návrháře.
-    + Vytvoření a konfigurace **cílové výpočetní prostředí**.
-    + **Odeslat skripty** do cílového výpočetního nakonfigurované prostředí pro spuštění v daném prostředí. Během školení můžou skripty číst nebo zapisovat do **úložiště dat**. A záznamy o spuštění jsou uloženy jako **běhy** v **pracovním prostoru** a seskupeny pod **experimenty**.
+    + Vytvořte a nakonfigurujte **výpočetní cíl**.
+    + **Odešlete skripty** do konfigurovaného výpočetního cíle pro spuštění v daném prostředí. Během školení můžou skripty číst nebo zapisovat do **úložiště dat**. A záznamy o spuštění jsou uloženy jako **běhy** v **pracovním prostoru** a seskupeny pod **experimenty**.
 
 1. **Balíček** – po nalezení uspokojivého spuštění Zaregistrujte trvalý model v **registru modelu**.
 
@@ -63,10 +63,10 @@ Použijte tyto nástroje pro Azure Machine Learning:
 + <a href="#experiments">Experimenty</a>
 + <a href="#github-tracking-and-integration">Sledování Gitu</a>
 + <a href="#iot-module-endpoints">Moduly IoT</a>
-+ <a href="#logging">Protokolování</a>
++ <a href="#logging">Protokolu</a>
 + <a href="#ml-pipelines">Kanály ML</a>
 + <a href="#models">Vzor</a>
-+ <a href="#runs">Spuštění</a>
++ <a href="#runs">Spouštěl</a>
 + <a href="#run-configurations">Konfigurace spuštění</a>
 + <a href="#snapshots">Snímek</a>
 + <a href="#training-scripts">Školicí skript</a>
@@ -84,9 +84,6 @@ Aktivity můžou poskytovat oznámení prostřednictvím sady SDK nebo webového
 
 ### <a name="compute-instance"></a>Instance COMPUTE (Preview)
 
-> [!NOTE]
-> Výpočetní instance jsou k dispozici pouze pro pracovní prostory s oblastí **střed USA – sever**, **východní USA 2**, **Severní Evropa** nebo **Velká Británie – jih**s podporou pro jiné oblasti, které již brzy připravujeme.
->Pokud je váš pracovní prostor v jakékoli jiné oblasti, můžete místo toho vytvořit a použít [virtuální počítač s poznámkovým blokem](concept-compute-instance.md#notebookvm) . 
 
 **Instance služby compute Azure Machine Learning** (dříve virtuální počítač poznámkového bloku) je plně spravovaná cloudová pracovní stanice, která zahrnuje několik nástrojů a prostředí nainstalovaných pro strojové učení. Výpočetní instance se dají použít jako cíl výpočtů pro školení a Inferencing úlohy. V případě rozsáhlých úloh [Azure Machine Learning výpočetní clustery](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzly lepší volbou cíle pro výpočty.
 
@@ -144,7 +141,7 @@ Pro usnadnění školení modelů s oblíbenými rozhraními vám třída Estima
 
 Pro úlohy PyTorch, TensorFlow a řetězení Azure Machine Learning poskytuje také příslušné [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)a [Chain](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) odhady pro zjednodušení používání těchto rozhraní.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 * [Modely vlakových ml pomocí odhady](how-to-train-ml-models.md).
 * [Pytorch se škálují modely hloubkového učení s](how-to-train-pytorch.md)využitím Azure Machine Learning.

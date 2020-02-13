@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 9a260577906ec94ecba87bb1be02fe35d8c763b3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 882904ec09014df821c648bb4823d7a0930abba5
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469563"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156148"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete:
 
@@ -58,7 +58,7 @@ Text a grafická reprezentace vašeho uživatelského rozhraní by teď měla vy
 
 1. Ve stejném souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného.
 
-1. Nahraďte řetězec `YourServiceRegion` také [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) přidruženým k vašemu předplatnému. Použijte například `westus` pro předplatné bezplatné zkušební verze.
+1. Nahraďte řetězec `YourServiceRegion` parametrem sady Speech SDK z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému. Použijte například `westus` pro předplatné bezplatné zkušební verze.
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 

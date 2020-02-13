@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6149fa631633d05399568bd1ec797c5ee47d29a4
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3de84e2d814acfca67bc722243a90fa41f6536e1
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152597"
+ms.locfileid: "77161677"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Ověřování a autorizace pro prostorové kotvy Azure
 
@@ -92,7 +92,7 @@ Až to bude hotové, sada SDK bude pokládat s výměnou klíče účtu pro př�
 
 ## <a name="azure-ad-user-authentication"></a>Ověřování uživatelů Azure AD
 
-Pro aplikace cílené na Azure Active Directory uživatele je doporučeným přístupem použití tokenu Azure AD pro uživatele, který můžete získat pomocí knihovny ADAL, jak je popsáno v následující dokumentaci: [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md); postupujte podle kroků uvedených v části "rychlé spuštění", mezi které patří:
+U aplikací, které cílí na Azure Active Directory uživatele, se doporučuje použít pro uživatele token Azure AD, který můžete získat pomocí [knihovny MSAL](../../active-directory/develop/msal-overview.md). Měli byste postupovat podle kroků uvedených v [rychlém startu pro registraci aplikace](../../active-directory/develop/quickstart-register-app.md), mezi které patří:
 
 1. Konfigurace v Azure Portal
     1.  Zaregistrujte svoji aplikaci ve službě Azure AD jako **nativní aplikaci**. V rámci registrace budete muset určit, jestli má aplikace více tenantů, nebo ne, a zadat adresy URL pro přesměrování povolené pro vaši aplikaci.
@@ -118,7 +118,7 @@ Pro aplikace cílené na Azure Active Directory uživatele je doporučeným př�
         3.  Pokud vaše aplikace podporuje **všechny účet Microsoft uživatele**, nahraďte tuto hodnotu **běžnými** .
     3.  U žádosti o token nastavte **prostředek** na "https://sts.mixedreality.azure.com". Tento prostředek bude označovat Azure AD, že vaše aplikace požaduje token pro službu Azure prostor kotev.
 
-V takovém případě by vaše aplikace měla být schopná získat z knihovny ADAL token Azure AD; Tento token Azure AD můžete nastavit jako **authenticationToken** v objektu konfigurace cloudové relace.
+V takovém případě by vaše aplikace měla být schopná získat z MSAL tokenu Azure AD; Tento token Azure AD můžete nastavit jako **authenticationToken** v objektu konfigurace cloudové relace.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -168,7 +168,7 @@ Doporučená možnost nasazení aplikací využívajících prostorové kotvy Az
 
 V tomto případě se předpokládá, že vaše aplikace používá vlastní mechanismus (například účet Microsoft, PlayFab, Facebook, Google ID, vlastní uživatelské jméno a heslo atd.) a ověří se i pro její back-end službu. Po ověření vašich uživatelů pro back-end službu může tato služba získat token Azure AD, vyměnit ho pro přístupový token pro prostorové kotvy Azure a vrátit ho zpátky do klientské aplikace.
 
-Přístupový token Azure AD se načte pomocí knihovny ADAL, jak je popsáno v následující dokumentaci: [https://docs.microsoft.com/azure/active-directory/develop/v1-overview](../../active-directory/develop/v1-overview.md); postupujte podle kroků uvedených v části "rychlé spuštění", mezi které patří:
+Přístupový token Azure AD se načte pomocí [knihovny MSAL](../../active-directory/develop/msal-overview.md). Měli byste postupovat podle kroků uvedených v [rychlém startu pro registraci aplikace](../../active-directory/develop/quickstart-register-app.md), mezi které patří:
 
 1.  Konfigurace v Azure Portal:
     1.  Registrace aplikace ve službě Azure AD:

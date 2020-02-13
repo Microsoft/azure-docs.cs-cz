@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/17/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 6e8c0e1c7fef884844b8aaae9dc4c7e3eaa220a2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 5672334ab42ab474d862ae4c9649b94b58bb6af4
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274563"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157261"
 ---
 Azure Storage nabízí několik typů účtů úložiště. Každý typ podporuje různé funkce a má svůj vlastní cenový model. Před vytvořením účtu úložiště zvažte tyto rozdíly a určete typ účtu, který je pro vaše aplikace nejvhodnější. Typy účtů úložiště jsou:
 
@@ -27,11 +27,11 @@ Následující tabulka popisuje typy účtů úložiště a jejich možnosti:
 
 | Typ účtu úložiště | Podporované služby                       | Podporované úrovně výkonu      | Podporované úrovně přístupu         | Možnosti replikace               | Model nasazení<div role="complementary" aria-labelledby="deployment-model"><sup>1</sup></div> | Šifrování<div role="complementary" aria-labelledby="encryption"><sup>2</sup></div> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------|-----------------------------------|------------------------------|------------------------|
-| Obecné účely v2   | Objekt blob, soubor, fronta, tabulka, disk a Data Lake Gen2<div role="complementary" aria-labelledby="data-lake-gen2"><sup>6</sup></div>      | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Horká, studená, archivní<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS, GZRS (Preview), RA-GZRS (Preview)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Správce prostředků             | Šifrované              |
-| Obecné účely v1   | Objekt blob, soubor, fronta, tabulka a disk       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Nevztahuje se                            | LRS, GRS, RA-GRS                  | Správce prostředků, klasický    | Šifrované              |
-| BlockBlobStorage   | Objekt BLOB (jenom objekty blob bloku a doplňovací objekty BLOB) | Premium                       | Nevztahuje se                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Správce prostředků             | Šifrované              |
-| Úložiště   | Pouze soubor | Premium                       | Nevztahuje se                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Správce prostředků             | Šifrované              |
-| BlobStorage         | Objekt BLOB (jenom objekty blob bloku a doplňovací objekty BLOB) | Úroveň Standard                      | Horká, studená, archivní<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS                  | Správce prostředků             | Šifrované              |
+| Obecné účely v2   | Objekt blob, soubor, fronta, tabulka, disk a Data Lake Gen2<div role="complementary" aria-labelledby="data-lake-gen2"><sup>6</sup></div>      | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Horká, studená, archivní<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS, GZRS (Preview), RA-GZRS (Preview)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Resource Manager             | Šifrované              |
+| Obecné účely v1   | Objekt blob, soubor, fronta, tabulka a disk       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | NEUŽÍVÁ SE.                            | LRS, GRS, RA-GRS                  | Správce prostředků, klasický    | Šifrované              |
+| BlockBlobStorage   | Objekt BLOB (jenom objekty blob bloku a doplňovací objekty BLOB) | Premium                       | NEUŽÍVÁ SE.                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | Šifrované              |
+| Úložiště   | Pouze soubor | Premium                       | NEUŽÍVÁ SE.                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Resource Manager             | Šifrované              |
+| BlobStorage         | Objekt BLOB (jenom objekty blob bloku a doplňovací objekty BLOB) | Standardní                      | Horká, studená, archivní<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS                  | Resource Manager             | Šifrované              |
 
 <div id="deployment-model"><sup>1</sup> Doporučuje se použít model nasazení Azure Resource Manager. Účty úložiště, které používají model nasazení Classic, se stále dají vytvořit v některých umístěních a stávající klasické účty se pořád podporují. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manager vs. Classic Deployment: Principy modelů nasazení a stavu vašich prostředků</a>.</div>
 
@@ -39,7 +39,7 @@ Následující tabulka popisuje typy účtů úložiště a jejich možnosti:
 
 <div id="archive"><sup>3</sup> . Archivní úroveň je k dispozici pouze na úrovni jednotlivých objektů blob, nikoli na úrovni účtu úložiště. Archivovat lze pouze objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers">úložiště objektů BLOB v Azure: horká, studená a archivní úroveň úložiště</a>.</div>
 
-<div id="zone-redundant-storage"><sup>4</sup> . Redundantní úložiště (ZRS) a Geografická zóna redundantní úložiště (GZRS/RA-GZRS) (verze Preview) jsou k dispozici pouze pro účty standard pro obecné účely v2, BlockBlobStorage a úložiště v určitých oblastech. Další informace o ZRS najdete v článku <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs">redundantní úložiště (ZRS): vysoce dostupné aplikace Azure Storage</a>. Další informace o GZRS/RA-GZRS najdete v tématu o <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-gzrs">vysoké dostupnosti a maximální trvanlivosti (Preview) v geograficky zóně redundantním úložišti</a>. Další informace o dalších možnostech replikace najdete v tématu <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">replikace Azure Storage</a>.</div>
+<div id="zone-redundant-storage"><sup>4</sup> . Redundantní úložiště (ZRS) a Geografická zóna redundantní úložiště (GZRS/RA-GZRS) (verze Preview) jsou k dispozici pouze pro účty standard pro obecné účely v2, BlockBlobStorage a úložiště v určitých oblastech. Další informace o možnostech redundance Azure Storage najdete v tématu <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure Storage redundance</a>.</div>
 
 <div id="premium-performance"><sup>5</sup> . K dispozici je výkon úrovně Premium pro účty pro obecné účely v2 a obecné účely v1 jenom pro objekty blob disku a stránky. Výkon služby Premium pro objekty blob bloku nebo Append je k dispozici pouze v účtech BlockBlobStorage. Premium Performance for Files je k dispozici pouze v účtech úložiště.</div>
 

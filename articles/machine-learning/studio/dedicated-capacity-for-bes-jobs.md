@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: xiaoharper
-ms.author: zhanxia
+author: likebupt
+ms.author: keli19
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio (classic) | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: c1a7f44539d07761814f5cb3d7074c9428423154
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 0bb4157ff77ef57f377ba0c6a08bfe8529f663f4
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153532"
+ms.locfileid: "77169277"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-classic-jobs"></a>Služba Azure Batch pro úlohy Azure Machine Learning Studio (Classic)
 
@@ -111,4 +111,4 @@ Doporučujeme vám, že dotazování stavu úlohy k určení po dokončení úlo
 
 | **Použít zpracování fondu Batch, když**    | **V případě použití klasického dávkového zpracování**  |
 |---|---|
-|Je potřeba spustit velký počet úloh<br>Nebo<br/>Je potřeba vědět, že vaše úlohy se spustí hned<br/>Nebo<br/>Je třeba garantovanou propustnost. Například budete muset spustit několik úloh v daném časovém rámci a chcete pro horizontální navýšení kapacity výpočetních prostředků podle svých potřeb.    | Používáte pár úloh<br/>And<br/> Není nutné úloh spustit okamžitě |
+|Je potřeba spustit velký počet úloh<br>Nebo<br/>Je potřeba vědět, že vaše úlohy se spustí hned<br/>Nebo<br/>Je třeba garantovanou propustnost. Například budete muset spustit několik úloh v daném časovém rámci a chcete pro horizontální navýšení kapacity výpočetních prostředků podle svých potřeb.    | Používáte pár úloh<br/>A<br/> Není nutné úloh spustit okamžitě |

@@ -6,21 +6,21 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 3f68ae9665b6235d44411835299721b835745252
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 1d4153ac5e02d28d054034f33859332158d5a555
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048325"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162357"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem
 
 > [!NOTE]
 > V tuto chvíli musíte požádat o přístup k používání této možnosti. Pokud to chcete udělat, kontaktujte AskAzureDBforMySQL@service.microsoft.com.
 
-Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem vám umožní Bring Your Own Key (BYOK) pro ochranu dat v klidovém umístění. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. Pomocí šifrování spravovaného zákazníkem zodpovídáte za vás a plnou kontrolu nad životní cyklus klíčů, oprávnění k použití klíče a auditování operací s klíči.
+Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for MySQL vám umožní přenést qwn klíč (BYOK) pro ochranu dat v klidovém prostředí. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. Pomocí šifrování spravovaného zákazníkem zodpovídáte za vás a plně řídíte životní cyklus klíčů, oprávnění k použití klíče a auditování operací s klíči.
 
-V případě Azure Database for MySQL nastavíte šifrování dat na úrovni serveru. Pomocí této formy šifrování dat použijete klíč v šifrování datového šifrovacího klíče (klíč DEK). KLÍČ DEK je asymetrický klíč spravovaný zákazníkem, který je uložený v instanci [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) ve vlastnictví zákazníka a zákazníka. KLÍČ DEK se podrobněji popisuje dále v tomto článku.
+Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for MySQL je nastaveno na úrovni serveru. Pro daný server se k zašifrování datového šifrovacího klíče (klíč DEK) používaného službou používá klíč spravovaný zákazníkem (KEK), který se nazývá klíč šifrovací klíč (). KEK je asymetrický klíč uložený v instanci [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) spravované zákazníkem a zákazníkem. Klíč šifrování klíče (KEK) a šifrovací klíč (klíč DEK) jsou podrobněji popsány dále v tomto článku.
 
 Key Vault je cloudový externí systém pro správu klíčů. Je vysoce dostupná a poskytuje škálovatelné a zabezpečené úložiště pro kryptografické klíče RSA, volitelně zajištěné moduly zabezpečení FIPS 140-2 Level 2 (HSM). Neumožňuje přímý přístup k uloženému klíči, ale poskytuje služby šifrování a dešifrování autorizovaným entitám. Key Vault může klíč vygenerovat, naimportovat nebo [přenášet z místního zařízení HSM](../key-vault/key-Vault-hsm-protected-keys.md).
 
@@ -31,11 +31,11 @@ Key Vault je cloudový externí systém pro správu klíčů. Je vysoce dostupn�
 
 Šifrování dat pro Azure Database for MySQL přináší následující výhody:
 
-* Zvýšení transparentnosti, podrobného řízení a správy šifrovacího klíče.
-* Centrální správa a organizace klíčů jejich hostováním v Azure Key Vault.
-* Možnost implementovat oddělení povinností při správě klíčů a dat v rámci organizace.
-* Schopnost oddělit správu klíčů od správy dat v rámci organizace, takže správce Key Vault může odvolat přístupová oprávnění k klíčům, aby se zašifrovaná databáze nepřístupná.
-* Větší důvěra od koncových uživatelů, protože Microsoft nemůže v Key Vault zobrazit ani extrahovat šifrovací klíče.
+* Přístup k datům je plně řízen možností odebrání klíče a zpřístupnění databáze. 
+* Úplná kontrola nad životním cyklem klíčů, včetně rotace klíče, který se má zarovnat k podnikovým zásadám
+* Centrální správa a organizace klíčů v Azure Key Vault
+* Možnost implementovat oddělení povinností mezi bezpečnostními důstojníky a správci systému
+
 
 ## <a name="terminology-and-description"></a>Terminologie a popis
 

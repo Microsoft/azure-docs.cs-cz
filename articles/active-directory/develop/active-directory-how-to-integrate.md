@@ -13,12 +13,12 @@ ms.date: 04/08/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: c5b8c506398af27ced284405dd75e48fb19a17af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: dbbe501b27bf7ae4d4cb4bc00501aeb1fb06819e
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698845"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161218"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace s Azure Active Directory
 
@@ -32,7 +32,7 @@ Existuje několik způsobů, jak se vaše aplikace integruje s Azure AD. Využij
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>Podpora Azure AD jako způsobu přihlášení k aplikaci
 
-**Snižte tření při přihlašování a snižte náklady na podporu.** Když ke své aplikaci přihlašujete pomocí Azure AD, uživatelé nebudou mít k zapamatování další jméno a heslo. Jako vývojář budete mít jedno méně hesla pro ukládání a ochranu. Nemusíte zpracovávat zapomenuté resetování hesla, ale jenom významné úspory. Pravomoci Azure AD se přihlásí pro některé z nejoblíbenějších cloudových aplikací světa, včetně Office 365 a Microsoft Azure. Se stovkami milionů uživatelů od milionů organizací je pravděpodobné, že se Váš uživatel už přihlásil ke službě Azure AD. Přečtěte si další informace o [Přidání podpory pro přihlášení ke službě Azure AD](v1-authentication-scenarios.md).
+**Snižte tření při přihlašování a snižte náklady na podporu.** Když ke své aplikaci přihlašujete pomocí Azure AD, uživatelé nebudou mít k zapamatování další jméno a heslo. Jako vývojář budete mít jedno méně hesla pro ukládání a ochranu. Nemusíte zpracovávat zapomenuté resetování hesla, ale jenom významné úspory. Pravomoci Azure AD se přihlásí pro některé z nejoblíbenějších cloudových aplikací světa, včetně Office 365 a Microsoft Azure. Se stovkami milionů uživatelů od milionů organizací je pravděpodobné, že se Váš uživatel už přihlásil ke službě Azure AD. Přečtěte si další informace o [Přidání podpory pro přihlášení ke službě Azure AD](authentication-scenarios.md).
 
 **Zjednodušte si registraci své aplikace.**  Při registraci vaší aplikace může Azure AD odeslat základní informace o uživateli, abyste mohli předem vyplnit formulář pro registraci, nebo ho úplně eliminovat. Uživatelé se můžou k vaší aplikaci zaregistrovat pomocí svého účtu Azure AD prostřednictvím známého prostředí pro vyjádření souhlasu, které se podobá těm, která se nacházejí v sociálních médiích a mobilních aplikacích. Každý uživatel se může zaregistrovat a přihlásit k aplikaci, která je integrovaná s Azure AD bez nutnosti zapojení IT. Přečtěte si další informace o [registraci aplikace pro přihlášení k účtu Azure AD](../../app-service/configure-authentication-provider-aad.md).
 
@@ -70,7 +70,7 @@ Integrace se službou Azure AD přináší výhody, které nevyžadují zápis d
 
 **Azure AD rozšiřuje službu Active Directory do cloudu, takže vaše aplikace může být integrovaná se službou AD.**  Mnoho organizací po celém světě používá službu Active Directory jako svůj hlavní přihlašování a systém správy identit a vyžaduje, aby aplikace spolupracovaly se službou AD. Integrace se službou Azure AD integruje vaši aplikaci se službou Active Directory.
 
-### <a name="advanced-security-features"></a>Rozšířené funkce zabezpečení
+### <a name="advanced-security-features"></a>Pokročilé funkce zabezpečení
 
 **Multi-Factor Authentication.**  Azure AD poskytuje nativní službu Multi-Factor Authentication. Správci IT můžou pro přístup k vaší aplikaci vyžadovat vícefaktorové ověřování, takže tuto podporu nemusíte zakódovat sami. Přečtěte si další informace o [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/).
 
@@ -92,5 +92,5 @@ Integrace se službou Azure AD přináší výhody, které nevyžadují zápis d
 
 Začněte [psát kód](v2-overview.md#getting-started).
 
-[Podepisování uživatelů při používání platformy Microsoft Identity Platform](v1-authentication-scenarios.md)
+[Podepisování uživatelů při používání platformy Microsoft Identity Platform](authentication-scenarios.md)
 

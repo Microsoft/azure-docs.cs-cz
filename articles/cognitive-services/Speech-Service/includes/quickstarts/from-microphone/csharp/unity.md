@@ -9,17 +9,17 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 149ec84732171cd57b3f8a9590d5340107536eac
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 894c9d34f3e9874a51f5939021f908ac4ecaaaa9
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75927955"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156734"
 ---
 > [!NOTE]
 > Sada Speech SDK for Unity podporuje Desktop Windows (x86 a x64) nebo Univerzální platforma Windows (x86, x64, ARM/ARM64), Android (x86, ARM32/64) a iOS (simulátor x64, ARM32 a ARM64).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete:
 
@@ -42,7 +42,7 @@ Pokud jste to již provedli, Skvělé. Pojďme pokračovat.
 1. Do **název projektu**zadejte **CSharp-Unity**.
 1. Pokud se v **šablonách**ještě není vybraná možnost **3D** , vyberte ji.
 1. V části **umístění**vyberte nebo vytvořte složku, do které chcete projekt uložit.
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 Po uplynutí časového intervalu se zobrazí okno Editor Unity.
 
@@ -90,7 +90,7 @@ Chcete-li přidat ukázkový kód skriptu pro projekt Unity, postupujte takto:
 
 1. Vyhledejte a nahraďte řetězec `YourSubscriptionKey` klíčem k předplatnému služby Speech.
 
-1. Vyhledejte řetězec `YourServiceRegion` a nahraďte ho [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) , která je přidružená k vašemu předplatnému. Pokud například používáte bezplatnou zkušební verzi, oblast je `westus`.
+1. Vyhledejte a nahraďte řetězec `YourServiceRegion` parametrem sady Speech SDK z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému. Pokud například používáte bezplatnou zkušební verzi, oblast je `westus`.
 
 1. Uložte změny do skriptu.
 

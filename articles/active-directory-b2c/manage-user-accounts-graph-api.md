@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9e55edcb7c107a3dfa91f61aaa1fea64bc62f21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 71b437f57f9d9e6e18af88d6413269cac6f66c47
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848873"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161660"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: použití Graph API Azure AD
 
@@ -26,11 +26,11 @@ Možná budete muset migrovat existující úložiště uživatelů do tenanta B
 Pro klienty B2C existují dva primární režimy komunikace s Graph API:
 
 * Pro **interaktivní**úlohy spouštěné v jednom okamžiku byste při provádění úkolů měli v tenantovi B2C fungovat jako účet správce. Tento režim vyžaduje, aby se správce přihlásil s přihlašovacími údaji předtím, než může správce provést jakákoli volání Graph API.
-* Pro **automatizované**nepřetržité úkoly byste měli použít nějaký typ účtu služby, který zadáte s potřebnými oprávněními k provádění úloh správy. V Azure AD to můžete udělat tak, že zaregistrujete aplikaci a ověřujete ji ve službě Azure AD. To se provádí pomocí *ID aplikace* , které používá [udělení přihlašovacích údajů klienta OAuth 2,0](../active-directory/develop/service-to-service.md). V tomto případě aplikace funguje stejně jako uživatel, nikoli jako uživatel, pro volání Graph API.
+* Pro **automatizované**nepřetržité úkoly byste měli použít nějaký typ účtu služby, který zadáte s potřebnými oprávněními k provádění úloh správy. V Azure AD to můžete udělat tak, že zaregistrujete aplikaci a ověřujete ji ve službě Azure AD. To se provádí pomocí *ID aplikace* , které používá [udělení přihlašovacích údajů klienta OAuth 2,0](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). V tomto případě aplikace funguje stejně jako uživatel, nikoli jako uživatel, pro volání Graph API.
 
 V tomto článku se dozvíte, jak provést automatizovaný případ použití. Vytvoříte `B2CGraphClient` .NET 4,5, která provede operace vytvoření, čtení, aktualizace a odstranění (CRUD) uživatelem. Klient bude mít rozhraní příkazového řádku (CLI) systému Windows, které umožňuje vyvolání různých metod. Kód je však napsán tak, aby se choval v neinteraktivním, automatizovaném způsobem.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než budete moci vytvořit aplikace nebo uživatele, potřebujete klienta Azure AD B2C. Pokud ho ještě nemáte, [Vytvořte klienta Azure Active Directory B2C](tutorial-create-tenant.md).
 
@@ -60,7 +60,7 @@ Oprávnění *ke čtení a zápisu dat adresáře* , které jste předtím uděl
 
 Pokud chcete aplikaci umožnit, aby odstranila uživatele nebo aktualizovala hesla, musíte jí udělit roli *správce uživatele* .
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat**vyberte **role a správci**.
@@ -73,7 +73,7 @@ Vaše aplikace Azure AD B2C má teď další oprávnění, která jsou nutná k 
 
 ## <a name="get-the-sample-code"></a>Získání ukázkového kódu
 
-Ukázka kódu je Konzolová aplikace .NET, která používá [Active Directory Authentication Library (ADAL)](../active-directory/develop/active-directory-authentication-libraries.md) k interakci s Graph API Azure AD. Jeho kód ukazuje, jak volat rozhraní API pro programovou správu uživatelů v klientovi Azure AD B2C.
+Ukázka kódu je Konzolová aplikace .NET, která používá [Active Directory Authentication Library (ADAL)](../active-directory/azuread-dev/active-directory-authentication-libraries.md) k interakci s Graph API Azure AD. Jeho kód ukazuje, jak volat rozhraní API pro programovou správu uživatelů v klientovi Azure AD B2C.
 
 Můžete [si stáhnout ukázkový archiv](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) (\*. zip) nebo klonovat úložiště GitHub:
 

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/06/2019
+ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8124aea96ab00e7f09782531702dcb5cfa4ccdf2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: eb75aa53051e7e3c424ffe131cda61324fe86b1a
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701820"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159960"
 ---
 # <a name="single-page-application-sign-in-and-sign-out"></a>Jednostránkové aplikace: přihlášení a odhlášení
 
@@ -47,7 +47,7 @@ V aplikaci nemůžete použít metody automaticky otevíraných oken a přesměr
 
 ## <a name="sign-in-with-a-pop-up-window"></a>Přihlášení pomocí automaticky otevíraného okna
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const loginRequest = {
@@ -63,7 +63,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 });
 ```
 
-### <a name="angular"></a>Úhlová
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 MSALá obálka umožňuje zabezpečit konkrétní trasy ve vaší aplikaci přidáním `MsalGuard` do definice trasy. Tato ochrana vyvolá metodu pro přihlášení k této trase.
 
@@ -89,10 +89,11 @@ Pro Automatické zobrazování oken povolte možnost konfigurace `popUp`. Obory,
             })]
          })
 ```
+---
 
 ## <a name="sign-in-with-redirect"></a>Přihlášení pomocí přesměrování
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Metody přesměrování nevrací příslib z důvodu přesunu z hlavní aplikace. Aby bylo možné zpracovat a přistupovat ke vráceným tokenům, je nutné před voláním metod přesměrování zaregistrovat úspěšné a zpětné volání chyb.
 
@@ -110,12 +111,14 @@ const loginRequest = {
 userAgentApplication.loginRedirect(loginRequest);
 ```
 
-### <a name="angular"></a>Úhlová
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 Kód je stejný, jak je popsáno výše v části o přihlášení pomocí překryvného okna. Výchozím tokem je přesměrování.
 
 > [!NOTE]
 > Token ID neobsahuje odsouhlasené obory a reprezentuje pouze ověřeného uživatele. Přijaté obory se vrátí v přístupovém tokenu, který získáte v dalším kroku.
+
+---
 
 ## <a name="sign-out"></a>Odhlášení
 
@@ -123,7 +126,7 @@ Knihovna MSAL poskytuje metodu `logout`, která vymaže mezipaměť v prohlíže
 
 Můžete nakonfigurovat identifikátor URI, na který se má přesměrovat po odhlášení, nastavením `postLogoutRedirectUri`. Tento identifikátor URI by měl být také zaregistrován jako identifikátor URI pro odhlášení v registraci vaší aplikace.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const config = {
@@ -140,7 +143,7 @@ userAgentApplication.logout();
 
 ```
 
-### <a name="angular"></a>Úhlová
+# <a name="angulartabangular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts
@@ -154,6 +157,8 @@ userAgentApplication.logout();
 // In app.component.ts
 this.authService.logout();
 ```
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

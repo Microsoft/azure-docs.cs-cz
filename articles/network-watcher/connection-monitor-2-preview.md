@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 5dc705fbd17a12ee001e1e8de15b49e841f08b81
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 43c49cce1dd53edd5c2b13b01a31f94752579dff
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049239"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169318"
 ---
 # <a name="unified-connectivity-monitoring-with-connection-monitor-preview"></a>Jednotné monitorování připojení pomocí monitorování připojení (Preview)
 
@@ -403,7 +403,7 @@ Chcete-li vytvořit testovací skupinu v monitorování připojení, zadejte hod
 
       ![Přidat cíle 2](./media/connection-monitor-2-preview/add-azure-dests2.png)
 
-   2. Kliknutím na kartu koncové body vyberte virtuální počítače Azure jako cíle. Seznam koncových bodů se naplní pomocí adres URL testů O365 a D365, seskupených podle názvu.  Můžete také zvolit koncový bod vytvořený v jiných testovacích skupinách ve stejném monitorování připojení. Pokud chcete přidat nový koncový bod, klikněte na + koncový bod z pravého horního rohu obrazovky a zadejte adresu URL/název koncového bodu/IP adresy/plně kvalifikovaný název domény a název.
+   2. Kliknutím na kartu koncové body můžete vybrat koncové body jako cíle. Seznam koncových bodů se naplní pomocí adres URL testů O365 a D365, seskupených podle názvu.  Můžete také zvolit koncový bod vytvořený v jiných testovacích skupinách ve stejném monitorování připojení. Pokud chcete přidat nový koncový bod, klikněte na + koncový bod z pravého horního rohu obrazovky a zadejte adresu URL/název koncového bodu/IP adresy/plně kvalifikovaný název domény a název.
 
       ![Přidat koncové body](./media/connection-monitor-2-preview/add-endpoints.png)
 
@@ -574,7 +574,7 @@ Pro monitorování připojení, které bylo vytvořeno před prostředím monito
 
 Typ prostředku – Microsoft. Network/networkWatchers/connectionMonitors
 
-| Metrika | Metriky zobrazovaný název | Jednotka | Typ agregace | Popis | Dimenze |
+| Metrika | Metriky zobrazovaný název | Jednotka | Typ agregace | Popis | Rozměry |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | % PROBE selhalo | Procento | Průměr | % sond monitorování připojení selhalo. | Žádné dimenze |
 | AverageRoundtripMs | Průměrná doba odezvy (MS) | Milisekund | Průměr | Průměrná doba odezvy sítě (MS) pro testy monitorování připojení odesílané mezi zdrojem a cílem |             Žádné dimenze |
@@ -599,7 +599,7 @@ Vytvoření výstrahy:
 7. Zadat podrobnosti výstrahy
 8. Vytvořit pravidlo výstrahy
 
-   ![Upozornění](./media/connection-monitor-2-preview/mdm-alerts.jpg)
+   ![Výstrahy](./media/connection-monitor-2-preview/mdm-alerts.jpg)
 
 ## <a name="step-5-diagnose-issues-in-your-network"></a>Krok 5: Diagnostika problémů ve vaší síti
 

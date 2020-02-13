@@ -7,14 +7,14 @@ manager: gwallace
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 10/14/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 8752522e4b5a7b91778d6eb2cd8e4ba3bac95da0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 17186d1d7b50ea872dc47eca8c2c4491787d2a38
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74782122"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158940"
 ---
 # <a name="preview-deploy-spot-vms-using-azure-powershell"></a>Verze Preview: nasazení virtuálních počítačů s přímým použitím Azure PowerShell
 
@@ -29,7 +29,7 @@ Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu
 > Instance přímých instancí jsou momentálně ve verzi Public Preview.
 > Tato verze Preview se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> V první části verze Public Preview budou mít instance pro tisk pevnou cenu, takže se neúčtují žádné vyřazení na základě cen.
+
 
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
@@ -37,9 +37,6 @@ Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu
 Vytvořte spotVM pomocí [New-AzVmConfig](/powershell/module/az.compute/new-azvmconfig) pro vytvoření konfigurace. Přidejte `-Priority Spot` a nastavte `-MaxPrice` buď na:
 - `-1` tak, že se virtuální počítač nevyřadí na základě ceny.
 - hodnota dolaru, maximálně 5 číslic. `-MaxPrice .98765` například znamená, že se virtuální počítač bude uvolnit, jakmile bude cena za spotVM přibližně $. 98765 za hodinu.
-
-> [!IMPORTANT]
-> V první části veřejné verze Preview můžete nastavit maximální cenu, ale bude se ignorovat. Virtuální počítače s cenami budou mít pevnou cenu, takže se neúčtují žádné vyřazení na základě cen.
 
 
 Tento příklad vytvoří spotVM, který se nevrátí na základě cen (jenom v případě, že Azure potřebuje kapacitu zpátky).

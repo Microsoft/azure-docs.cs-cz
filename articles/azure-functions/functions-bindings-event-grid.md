@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 8062428ae63a572b81a5432c8b29910fe8422e24
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 812875be47cabdd23e6307403bb95d8d6ff174ec
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547451"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167508"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Aktivační událost Event Grid pro Azure Functions
 
@@ -36,7 +36,7 @@ Aktivační událost Event Grid je k dispozici v balíčku NuGet [Microsoft. Azu
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -97,7 +97,7 @@ namespace Company.Function
 
 Následující příklad ukazuje aktivační vazbu v souboru *Function. JSON* a [ C# funkci skriptu](functions-reference-csharp.md) , která používá vazbu.
 
-Zde je vazba dat v *function.json* souboru:
+Tady jsou data vazby v souboru *Function. JSON* :
 
 ```json
 {
@@ -149,7 +149,7 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 
 Následující příklad ukazuje aktivační vazbu v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu.
 
-Zde je vazba dat v *function.json* souboru:
+Tady jsou data vazby v souboru *Function. JSON* :
 
 ```json
 {
@@ -180,7 +180,7 @@ module.exports = function (context, eventGridEvent) {
 
 Následující příklad ukazuje aktivační vazbu v souboru *Function. JSON* a [funkci Pythonu](functions-reference-python.md) , která používá vazbu.
 
-Zde je vazba dat v *function.json* souboru:
+Tady jsou data vazby v souboru *Function. JSON* :
 
 ```json
 {
@@ -224,19 +224,7 @@ Tato část obsahuje následující příklady:
 * [Aktivační procedura Event Grid, řetězcový parametr](#event-grid-trigger-string-parameter)
 * [Aktivační událost Event Grid, parametr POJO](#event-grid-trigger-pojo-parameter)
 
-Následující příklady znázorňují aktivační vazbu v souboru *Function. JSON* a [funkcích jazyka Java](functions-reference-java.md) , které používají vazbu a tisknou událost, nejprve obdrží událost jako ```String``` a druhá jako Pojo.
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "eventGridEvent",
-      "direction": "in"
-    }
-  ]
-}
-```
+V následujících příkladech je znázorněna vazba triggeru v [jazyce Java](functions-reference-java.md) , která používá vazbu a vytiskne událost, nejprve přijme událost jako `String` a druhá jako Pojo.
 
 ### <a name="event-grid-trigger-string-parameter"></a>Aktivační procedura Event Grid, řetězcový parametr
 
@@ -340,7 +328,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |---------|---------|
 | **type** | Požadováno – musí být nastavené na `eventGridTrigger`. |
 | **direction** | Požadováno – musí být nastavené na `in`. |
-| **name** | Required – název proměnné použitý v kódu funkce pro parametr, který přijímá data události. |
+| **Jméno** | Required – název proměnné použitý v kódu funkce pro parametr, který přijímá data události. |
 
 ## <a name="usage"></a>Využití
 
@@ -424,11 +412,11 @@ Vysvětlení běžných vlastností a specifických pro události naleznete v t�
 
 Typ `EventGridEvent` definuje pouze vlastnosti nejvyšší úrovně; vlastnost `Data` je `JObject`.
 
-## <a name="create-a-subscription"></a>Vytvoření odběru
+## <a name="create-a-subscription"></a>Umožňuje vytvořit odběr.
 
 Pokud chcete začít přijímat Event Grid požadavky HTTP, vytvořte Event Grid předplatné, které určuje adresu URL koncového bodu, která funkci vyvolá.
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 U funkcí, které vyvíjíte v Azure Portal pomocí triggeru Event Grid vyberte **přidat Event Grid předplatné**.
 
@@ -600,7 +588,7 @@ Spustí se funkce triggeru Event Grid a zobrazí protokoly podobné následujíc
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech a vazbách Azure Functions](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
 > [Další informace o Event Grid](../event-grid/overview.md)

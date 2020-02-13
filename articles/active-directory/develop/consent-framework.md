@@ -13,12 +13,12 @@ ms.date: 11/30/2018
 ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
-ms.openlocfilehash: 3f95a0743ca6fadff0c7a26a796ef20659adfb80
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: cb9441e6ce19094ff72e902cdeea151041ceb963
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697740"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161122"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory – rozhraní pro vyjádření souhlasu
 
@@ -28,7 +28,7 @@ Rozhraní je založené na uživateli nebo správci, kteří přistupují k apli
 
 Rozhraní pro vyjádření souhlasu je postavené na OAuth 2,0 a jeho různých tocích, jako je udělení autorizačního kódu a udělení přihlašovacích údajů klienta, pomocí veřejných nebo důvěrných klientů. Díky použití OAuth 2,0 může Azure AD vytvořit mnoho různých typů klientských aplikací – například na telefonu, tabletu, serveru nebo webové aplikaci – a získat přístup k požadovaným prostředkům.
 
-Další informace o používání souhlasu architektury s autorizačními stipendii OAuth 2.0 najdete v tématu [autorizace přístupu k webovým aplikacím pomocí OAuth 2,0 a Azure AD](v1-protocols-oauth-code.md) a [scénářů ověřování pro Azure AD](authentication-scenarios.md). Informace o tom, jak pomocí Microsoft Graph získat autorizovaný přístup k Office 365, najdete v tématu [ověřování aplikací pomocí Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
+Další informace o používání souhlasu architektury s autorizačními stipendii OAuth 2.0 najdete v tématu [autorizace přístupu k webovým aplikacím pomocí OAuth 2,0 a Azure AD](v2-oauth2-auth-code-flow.md) a [scénářů ověřování pro Azure AD](authentication-scenarios.md). Informace o tom, jak pomocí Microsoft Graph získat autorizovaný přístup k Office 365, najdete v tématu [ověřování aplikací pomocí Microsoft Graph](https://developer.microsoft.com/graph/docs/authorization/auth_overview).
 
 ## <a name="consent-experience---an-example"></a>Prostředí pro vyjádření souhlasu – příklad
 
@@ -42,13 +42,13 @@ Následující kroky ukazují, jak funguje souhlas pro vývojáře aplikací i p
 
 1. Pokud uživatel ještě není ověřený, koncový bod `/authorize` služby Azure AD vyzve uživatele, aby se přihlásil.
 
-    ![Přihlášení uživatele nebo správce k Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    ![Přihlášení uživatele nebo správce k Azure AD](./media/consent-framework/usersignin.png)
 
 1. Až se uživatel přihlásí, Azure AD určí, jestli se uživatel musí zobrazit na stránce souhlasu. Toto rozhodnutí je založené na tom, jestli uživatel (nebo správce organizace) už udělil souhlas s aplikací. Pokud souhlas ještě nebyl udělen, Azure AD vyzve uživatele k vyjádření souhlasu a zobrazí požadovaná oprávnění, která potřebuje k tomu, aby fungovala. Sada oprávnění, která se zobrazí v dialogovém okně pro vyjádření souhlasu, se shodují s těmi vybranými v **delegovaných oprávněních** v Azure Portal.
 
-    ![Zobrazuje příklad oprávnění zobrazených v dialogovém okně pro vyjádření souhlasu.](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+    ![Zobrazuje příklad oprávnění zobrazených v dialogovém okně pro vyjádření souhlasu.](./media/consent-framework/consent.png)
 
-1. Jakmile uživatel udělí souhlas, vrátí se do vaší aplikace autorizační kód, který se považuje za získání přístupového tokenu a aktualizačního tokenu. Další informace o tomto toku najdete v tématu [Typ aplikace webového rozhraní API](web-api.md).
+1. Jakmile uživatel udělí souhlas, vrátí se do vaší aplikace autorizační kód, který se považuje za získání přístupového tokenu a aktualizačního tokenu. Další informace o tomto toku najdete v tématu [tok autorizačního kódu OAuth 2,0](v2-oauth2-auth-code-flow.md).
 
 1. Jako správce můžete také vyjádřit souhlas s delegovanými oprávněními aplikace jménem všech uživatelů ve vašem tenantovi. Souhlas se správou brání tomu, aby se v dialogovém okně pro každého uživatele v tenantovi zobrazoval dialog a uživatel s rolí správce může provádět [Azure Portal](https://portal.azure.com) . Informace o tom, které role správce můžou souhlasit s delegovanými oprávněními, najdete v tématu [oprávnění role správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 

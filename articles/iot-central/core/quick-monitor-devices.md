@@ -3,18 +3,18 @@ title: Rychlý Start – monitorování zařízení v Azure IoT Central
 description: Jako operátor se naučíte, jak pomocí aplikace IoT Central v Azure monitorovat vaše zařízení.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/09/2019
+ms.date: 02/12/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e5185d78b0ffc17e861f49d294af65ddcd200d07
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027745"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168743"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Rychlý Start: použití IoT Central Azure ke sledování vašich zařízení
 
@@ -22,11 +22,11 @@ ms.locfileid: "77027745"
 
 V tomto rychlém startu se dozvíte, jak pomocí Microsoft Azure IoT Central aplikace monitorovat vaše zařízení a měnit nastavení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, měli byste provést tři předchozí rychlé starty a [vytvořit aplikaci Azure IoT Central](./quick-deploy-iot-central.md), [Přidat simulované zařízení do aplikace IoT Central](./quick-create-pnp-device.md) a [nakonfigurovat pravidla a akce pro vaše zařízení](quick-configure-rules.md).
 
-## <a name="receive-a-notification"></a>Přijmout oznámení
+## <a name="receive-a-notification"></a>Příjem oznámení
 
 Azure IoT Central posílá oznámení o zařízení v podobě e-mailových zpráv. Tvůrce přidal pravidlo pro odeslání oznámení v případě, že teplota v snímači připojeného zařízení překročila prahovou hodnotu. Zprávu najdete v e-mailech odeslaných na účet, který tvůrce zvolil pro příjem oznámení.
 
@@ -38,15 +38,13 @@ Zobrazení **přehledu** pro simulované zařízení, které jste vytvořili v p
 
 ![Zařízení, které aktivovalo e-mailovou zprávu s oznámením](media/quick-monitor-devices/dashboard.png)
 
-## <a name="investigate-an-issue"></a>Průzkum problému
+## <a name="investigate-an-issue"></a>Prozkoumat problém
 
 Jako operátor můžete zobrazit informace o zařízení v zobrazeních **Přehled**, **informace**a **příkazy** . Tvůrce vytvořil zobrazení pro **správu zařízení** , ve kterém můžete upravovat informace o zařízení a nastavovat vlastnosti zařízení.
 
-Kliknutím na zobrazení **přehledu** zobrazíte informace o zařízení.
-
 Graf na řídicím panelu vykresluje teplotní křivku zařízení. Rozhodnete se, že je teplota zařízení příliš vysoká.
 
-## <a name="remediate-an-issue"></a>Oprava problému
+## <a name="remediate-an-issue"></a>Opravit problém
 
 Chcete-li provést změnu zařízení, použijte stránku **spravovat zařízení** .
 
@@ -58,9 +56,9 @@ Změňte **rychlost ventilátoru** na 500, aby se zařízení vychlado. Pokud ch
 
 V tomto rychlém startu jste se naučili:
 
-* Přijmout oznámení
-* Průzkum problému
-* Oprava problému
+* Příjem oznámení
+* Prozkoumat problém
+* Opravit problém
 
 Teď, když už víte, jak zařízení monitorovat, je navržený další krok:
 

@@ -2,13 +2,13 @@
 title: Pravidla přístupu brány firewall
 description: Nakonfigurujte pravidla pro přístup ke službě Azure Container Registry za bránou firewall tím, že povolíte přístup k ("povolenému") REST API a názvům koncových bodů úložiště nebo rozsahům IP adres pro konkrétní služby.
 ms.topic: article
-ms.date: 07/17/2019
-ms.openlocfilehash: 4d3c4ff4ca19d8b563c185e5c314011823081df1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/11/2020
+ms.openlocfilehash: 06fedea2adf5e73929f5752279f2bd7e7227e570
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745196"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168017"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall
 
@@ -115,6 +115,10 @@ Vyhledejte konkrétní oblast, například **Storage. AustraliaCentral**.
 Ve službě Azure Virtual Network použijte pravidla zabezpečení sítě k filtrování provozu z prostředku, jako je například virtuální počítač, do registru kontejneru. Pro zjednodušení vytváření pravidel sítě Azure použijte [značku služby](../virtual-network/security-overview.md#service-tags) **AzureContainerRegistry** . Značka služby představuje skupinu předpon IP adres pro účely přístupu ke službě Azure globálně nebo podle oblasti Azure. Značka je automaticky aktualizována při změně adres. 
 
 Můžete například vytvořit pravidlo skupiny zabezpečení odchozí sítě s cílovým **AzureContainerRegistry** , které umožní provoz do služby Azure Container Registry. Pokud chcete přístup ke značce služby udělit jenom v konkrétní oblasti, zadejte oblast v následujícím formátu: **AzureContainerRegistry**. [*název oblasti*].
+
+## <a name="configure-client-firewall-rules-for-mcr"></a>Konfigurace pravidel brány firewall klienta pro MCR
+
+Pokud potřebujete přístup k Microsoft Container Registry (MCR) z za bránou firewall, přečtěte si pokyny ke konfiguraci [pravidel brány firewall klienta MCR](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md). MCR je primární registr pro všechny image Docker publikované Microsoftem, jako jsou image Windows serveru.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 59c1b7dbb4c47b6963cd4bbcfdeb1b2b9a2d3bb6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 56771658380e0a5b946c3acc70df98a262561b5c
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704115"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77160685"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Rychlý Start: Změna účtů podporovaných aplikací
 
@@ -25,7 +25,7 @@ Při registraci aplikace na platformě Microsoft Identity Platform možná budet
 
 V tomto rychlém startu se dozvíte, jak úpravou konfigurace vaší aplikace změnit, kdo (jaké účty) může k aplikaci přistupovat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, musíte splnit následující požadavky:
 
@@ -57,13 +57,13 @@ Pokud píšete aplikaci, kterou chcete zpřístupnit zákazníkům nebo partner�
     * Pokud vytváříte obchodní aplikaci, vyberte **Účty jen v tomto adresáři**. Tato možnost není dostupná, pokud aplikace není zaregistrovaná v adresáři.
     * Pokud chcete cílit na všechny zákazníky z řad firem a vzdělávacích institucí, vyberte **Účty v libovolném organizačním adresáři**.
     * Pokud chcete cílit na co nejširší okruh zákazníků, vyberte **Účty v libovolném organizačním adresáři a osobní účty Microsoft**.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>Povolení implicitního udělení OAuth 2.0 u jednostránkových aplikací
 
 Jednostránkové aplikace (SPA) mají obvykle strukturu front-endu se spoustou JavaScriptu běžícího v prohlížeči, který volá back-end aplikace webového rozhraní API, aby provedl obchodní logiku. U jednostránkových aplikací hostovaných v Azure AD se používá implicitní udělení OAuth 2.0 k ověření uživatele pomocí Azure AD a získání tokenu, který můžete použít k zabezpečení volání z javascriptového klienta aplikace do back-endu webového rozhraní API.
 
-Jakmile uživatel udělí souhlas, může se stejný protokol ověřování použít k získání tokenů, aby se zabezpečila volání mezi klientem a jinými prostředky webového rozhraní API nakonfigurovanými pro danou aplikaci. Další informace o implicitním udělení autorizace a pomoc s rozhodnutím, zda je implicitní udělení autorizace pro váš scénář vhodné, najdete v článcích o toku implicitního udělení OAuth 2.0 v Azure AD [v1.0](v1-oauth2-implicit-grant-flow.md) a [v2.0](v2-oauth2-implicit-grant-flow.md).
+Jakmile uživatel udělí souhlas, může se stejný protokol ověřování použít k získání tokenů, aby se zabezpečila volání mezi klientem a jinými prostředky webového rozhraní API nakonfigurovanými pro danou aplikaci. Další informace o implicitním udělení autorizace a pomoc s rozhodnutím, zda je implicitní udělení autorizace pro váš scénář vhodné, najdete v článcích o toku implicitního udělení OAuth 2.0 v Azure AD [v1.0](../azuread-dev/v1-oauth2-implicit-grant-flow.md) a [v2.0](v2-oauth2-implicit-grant-flow.md).
 
 Ve výchozím nastavení je implicitní udělení OAuth 2.0 u aplikací zakázané. Implicitní udělení OAuth 2.0 můžete u své aplikace povolit podle níže uvedeného postupu.
 
@@ -72,7 +72,7 @@ Ve výchozím nastavení je implicitní udělení OAuth 2.0 u aplikací zakázan
 1. Na stránce **Přehled** aplikace vyberte část **Ověřování**.
 1. V části **Upřesnit nastavení** vyhledejte část **Implicitní udělení**.
 1. Vyberte **Tokeny ID**, **Přístupové tokeny** nebo obojí.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cd10bd2a04bfb2a3e3316d86e64a98c75c12e36d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76530925"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77179056"
 ---
 Tento článek vysvětluje, jak naplánovat zálohování a zotavení po havárii (DR) virtuálních počítačů s IaaS (VM) a disků v Azure. Tento dokument pokrývá spravované i nespravované disky.
 
 Nejdřív zabereme integrované funkce odolnosti proti chybám na platformě Azure, které pomáhají chránit před místními chybami. Potom se podíváme na scénáře havárie, které nejsou plně pokryté integrovanými funkcemi. Zobrazujeme také několik příkladů scénářů úloh, které mohou být použity v různých ohledech na zálohování a zotavení po havárii. Pak si projdeme možná řešení pro zotavení po havárii IaaS disků.
 
-## <a name="introduction"></a>Představení
+## <a name="introduction"></a>Úvod
 
 Platforma Azure využívá různé metody pro redundanci a odolnost proti chybám, které vám pomůžou ochránit zákazníky před lokalizovanými chybami hardwaru. K místním selháním můžou patřit problémy s Azure Storage serverového počítače, které ukládají část dat pro virtuální disk nebo chyby SSD nebo HDD na tomto serveru. K takovým izolovaným selháním hardwarových součástí může dojít během normálního provozu.
 
@@ -33,7 +33,7 @@ Než se podíváme na možnosti zálohování a zotavení po havárii, pojďme R
 
 ### <a name="azure-iaas-resiliency"></a>Odolnost Azure IaaS
 
-*Odolnost* proti chybám označuje toleranci pro běžné chyby, ke kterým dochází v hardwarových součástech. Odolnost proti chybám je schopnost zotavení po selháních a nadále fungovat. Nejedná se o způsoby, jak zabránit selhání, ale o reakci na selhání způsobem, který zabraňuje výpadkům nebo ztrátě dat. Cílem odolnosti proti chybám je obnovení plně funkčního stavu aplikace co nejdříve po selhání. Virtuální počítače a disky Azure jsou navržené tak, aby byly odolné vůči běžným hardwarovým chybám. Pojďme se podívat, jak tato odolnost zajišťuje platforma Azure IaaS.
+*Odolnost* proti chybám označuje toleranci pro běžné chyby, ke kterým dochází v hardwarových součástech. Odolnost proti chybám je schopnost zotavení po selháních a nadále fungovat. Nejedná se o předcházení chybám, ale reaguje na selhání způsobem, který brání výpadkům nebo ztrátě dat. Cílem odolnosti proti chybám je obnovení plně funkčního stavu aplikace co nejdříve po selhání. Virtuální počítače a disky Azure jsou navržené tak, aby byly odolné vůči běžným hardwarovým chybám. Pojďme se podívat, jak tato odolnost zajišťuje platforma Azure IaaS.
 
 Virtuální počítač se skládá hlavně ze dvou částí: výpočetní Server a trvalé disky. Obojí má vliv na odolnost virtuálního počítače.
 
@@ -103,17 +103,17 @@ Pokud používáte [SSD úrovně Premium](../articles/virtual-machines/windows/d
 U nespravovaných disků můžete pro disky IaaS použít místně redundantní typ úložiště, ale zajistěte, aby byla pro trezor služby Recovery Services v možnosti geograficky redundantního úložiště zapnutá možnost Azure Backup.
 
 > [!NOTE]
-> Pokud pro nespravované disky použijete [geograficky redundantní úložiště](../articles/storage/common/storage-redundancy-grs.md) nebo [geograficky redundantní úložiště s přístupem pro čtení](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) , budete pro zálohování a zotavení po havárii stále potřebovat konzistentní snímky. Použijte buď [Azure Backup](https://azure.microsoft.com/services/backup/) , nebo [konzistentní snímky](#alternative-solution-consistent-snapshots).
+> Pokud pro nespravované disky použijete [geograficky redundantní úložiště](../articles/storage/common/storage-redundancy-grs.md) nebo [geograficky redundantní úložiště s přístupem pro čtení](../articles/storage/common/storage-redundancy.md) , budete pro zálohování a zotavení po havárii stále potřebovat konzistentní snímky. Použijte buď [Azure Backup](https://azure.microsoft.com/services/backup/) , nebo [konzistentní snímky](#alternative-solution-consistent-snapshots).
 
  Následující tabulka představuje souhrn řešení, která jsou k dispozici pro zotavení po havárii.
 
 | Scénář | Automatická replikace | Řešení zotavení po havárii |
 | --- | --- | --- |
-| Disky SSD úrovně Premium | Místní ([místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| SSD úrovně Premium disky | Místní ([místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Spravované disky | Místní ([místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nespravované místně redundantní disky úložiště | Místní ([místně redundantní úložiště](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nespravované geografické redundantní disky úložiště | Mezi oblastmi ([geograficky redundantní úložiště](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konzistentní snímky](#alternative-solution-consistent-snapshots) |
-| Nespravované disky geograficky redundantního úložiště s přístupem pro čtení | Mezi oblastmi ([geograficky redundantní úložiště s přístupem pro čtení](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konzistentní snímky](#alternative-solution-consistent-snapshots) |
+| Nespravované disky geograficky redundantního úložiště s přístupem pro čtení | Mezi oblastmi ([geograficky redundantní úložiště s přístupem pro čtení](../articles/storage/common/storage-redundancy.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konzistentní snímky](#alternative-solution-consistent-snapshots) |
 
 Vysoká dostupnost se nejlépe splní pomocí spravovaných disků v sadě dostupnosti společně s Azure Backup. Pokud používáte nespravované disky, můžete i nadále používat Azure Backup pro zotavení po havárii. Pokud nemůžete použít Azure Backup a pak zabere [konzistentní snímky](#alternative-solution-consistent-snapshots), jak je popsáno v pozdější části, je alternativním řešením pro zálohování a zotavení po havárii.
 
@@ -124,7 +124,7 @@ Vaše volby pro vysokou dostupnost, zálohování a zotavení po havárii na úr
 | Aplikace | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktura    | Skupina dostupnosti  | Geograficky redundantní úložiště s konzistentními snímky |
 
-### <a name="using-azure-backup"></a>Použití služby Azure Backup 
+### <a name="using-azure-backup"></a>Použití Azure Backup 
 
 [Azure Backup](../articles/backup/backup-azure-vms-introduction.md) můžou zálohovat virtuální počítače se systémem Windows nebo Linux do trezoru služby Azure Recovery Services. Zálohování a obnova důležitých podnikových dat je složitá o skutečnost, že podniková data musí být zálohována, zatímco aplikace vytvářející data jsou spuštěny. 
 
@@ -229,7 +229,7 @@ U virtuálních počítačů s více disky je nutné zkopírovat všechny snímk
 
 ## <a name="other-options"></a>Další možnosti
 
-### <a name="sql-server"></a>SQL Server
+### <a name="sql-server"></a>Server SQL
 
 SQL Server běžící na virtuálním počítači má své vlastní integrované funkce pro zálohování databáze SQL Server do úložiště objektů BLOB v Azure nebo do sdílené složky. Pokud je účet úložiště geograficky redundantní úložiště nebo geograficky redundantní úložiště s přístupem pro čtení, můžete k těmto zálohám přistupovat v sekundárním datovém centru účtu úložiště v případě havárie se stejnými omezeními, jak je popsáno výše. Další informace najdete v tématu [zálohování a obnovení pro SQL Server ve virtuálních počítačích Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md). Kromě zálohování a obnovení můžou [SQL Server skupiny dostupnosti AlwaysOn](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-high-availability-dr.md) uchovávat sekundární repliky databází. Tato možnost značně zkracuje dobu zotavení po havárii.
 

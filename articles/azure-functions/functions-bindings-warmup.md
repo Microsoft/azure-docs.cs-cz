@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933318"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77167312"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Aktivační událost Azure Functions zahřívání
 
@@ -80,7 +80,7 @@ Následující příklad ukazuje Trigger zahřívání v souboru *Function. JSON
 
 Vaše funkce musí mít název ```warmup``` (nerozlišuje velká a malá písmena) a pro každou aplikaci může existovat jenom jedna zahřívání funkce.
 
-Tady je *function.json* souboru:
+Tady je soubor *Function. JSON* :
 
 ```json
 {
@@ -94,7 +94,7 @@ Tady je *function.json* souboru:
 }
 ```
 
-[Konfigurace](#trigger---configuration) bodu vysvětluje tyto vlastnosti.
+Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#trigger---configuration) .
 
 Zde je C# kód skriptu, který se váže k `HttpRequest`:
 
@@ -111,7 +111,7 @@ Následující příklad ukazuje Trigger zahřívání v souboru *Function. JSON
 
 Vaše funkce musí mít název ```warmup``` (nerozlišuje velká a malá písmena) a v každé aplikaci může být jenom jedna zahřívání funkce.
 
-Tady je *function.json* souboru:
+Tady je soubor *Function. JSON* :
 
 ```json
 {
@@ -125,7 +125,7 @@ Tady je *function.json* souboru:
 }
 ```
 
-[Konfigurace](#trigger---configuration) bodu vysvětluje tyto vlastnosti.
+Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#trigger---configuration) .
 
 Tady je kód jazyka JavaScript:
 
@@ -142,7 +142,7 @@ Následující příklad ukazuje Trigger zahřívání v souboru *Function. JSON
 
 Vaše funkce musí mít název ```warmup``` (nerozlišuje velká a malá písmena) a v každé aplikaci může být jenom jedna zahřívání funkce.
 
-Tady je *function.json* souboru:
+Tady je soubor *Function. JSON* :
 
 ```json
 {
@@ -156,7 +156,7 @@ Tady je *function.json* souboru:
 }
 ```
 
-[Konfigurace](#trigger---configuration) bodu vysvětluje tyto vlastnosti.
+Tyto vlastnosti jsou vysvětleny v části [Konfigurace](#trigger---configuration) .
 
 Tady je kód Pythonu:
 
@@ -171,25 +171,9 @@ def main(warmupContext: func.Context) -> None:
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Následující příklad ukazuje Trigger zahřívání v souboru *Function. JSON* a [funkce jazyka Java](functions-reference-java.md) , které se spustí na každé nové instanci při přidání do vaší aplikace.
+Následující příklad ukazuje Trigger zahřívání, který se spustí při přidání každé nové instance do aplikace.
 
-Vaše funkce musí mít název ```warmup``` (nerozlišuje velká a malá písmena) a v každé aplikaci může být jenom jedna zahřívání funkce.
-
-Tady je *function.json* souboru:
-
-```json
-{
-    "bindings": [
-        {
-            "type": "warmupTrigger",
-            "direction": "in",
-            "name": "warmupContext"
-        }
-    ]
-}
-```
-
-Tady je kód Java:
+Vaše funkce musí mít název `warmup` (nerozlišuje velká a malá písmena) a v každé aplikaci může být jenom jedna zahřívání funkce.
 
 ```java
 @FunctionName("Warmup")
@@ -241,13 +225,13 @@ Aktivační událost zahřívání není v jazyce Java podporována jako atribut
 
 ## <a name="trigger---configuration"></a>Aktivační události – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `WarmupTrigger` atribut.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `WarmupTrigger`.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-| **type** | –| Požadováno – musí být nastavené na `warmupTrigger`. |
-| **direction** | –| Požadováno – musí být nastavené na `in`. |
-| **name** | –| Požadováno – název proměnné použitý v kódu funkce.|
+| **type** | neuvedeno| Požadováno – musí být nastavené na `warmupTrigger`. |
+| **direction** | neuvedeno| Požadováno – musí být nastavené na `in`. |
+| **Jméno** | neuvedeno| Požadováno – název proměnné použitý v kódu funkce.|
 
 ## <a name="trigger---usage"></a>Aktivační události – využití
 
@@ -262,4 +246,4 @@ Při vyvolání funkce aktivované zahřívání nejsou k dispozici žádné dal
 
 ## <a name="next-steps"></a>Další kroky
 
-[Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
+[Další informace o aktivačních událostech a vazbách Azure Functions](functions-triggers-bindings.md)

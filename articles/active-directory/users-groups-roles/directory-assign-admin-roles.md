@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b5ac2e899de33614fa30b1f4baf0e85efec26bb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b142d3561e7d05b9afaeab9768b6b50a33ef28ce
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898854"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77158158"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -121,7 +121,7 @@ Uživatelé v této roli mají možnost vytvářet, číst, aktualizovat a odstr
 
 ### <a name="billing-administratorbilling-administrator-permissions"></a>[Správce fakturace](#billing-administrator-permissions)
 
-Umožňuje nákupy, spravovat předplatná, spravovat lístky podpory a monitorovat stav služby.
+Může dělat nákupy, spravovat předplatná, spravovat lístky žádostí o podporu a sledovat stav služeb.
 
 ### <a name="cloud-application-administratorcloud-application-administrator-permissions"></a>[Správce cloudové aplikace](#cloud-application-administrator-permissions)
 
@@ -219,7 +219,7 @@ Tento správce spravuje federaci mezi klienty Azure Active Directory a externím
 
 ### <a name="global-administrator--company-administratorcompany-administrator-permissions"></a>[Globální správce/správce společnosti](#company-administrator-permissions)
 
-Uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure Active Directory a také službám, které používají Azure Active Directory identity, jako je Microsoft 365 Security Center, Microsoft 365 Center pro dodržování předpisů, Exchange Online, SharePoint Online a Online Skype pro firmy. Osoba, která se zaregistruje do tenanta Azure Active Directory, se stal globálním správcem. Další role správců můžou přiřazovat jenom globální správci. Ve vaší společnosti může být víc než jeden globální správce. Globální správci můžou resetovat heslo každého uživatele a všech ostatních správců.
+Uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure Active Directory a také službám, které používají Azure Active Directory identity, jako je Microsoft 365 Security Center, Microsoft 365 Center pro dodržování předpisů, Exchange Online, SharePoint Online a Online Skype pro firmy. Osoba, která se zaregistruje do tenanta Azure Active Directory, se stal globálním správcem. Ve vaší společnosti může být víc než jeden globální správce. Globální správci můžou resetovat heslo každého uživatele a všech ostatních správců.
 
 > [!NOTE]
 > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell je tato role označená jako správce společnosti. Jedná se o globální správce v [Azure Portal](https://portal.azure.com).
@@ -366,7 +366,7 @@ V | Může
 Centrum služby Identity Protection | Všechna oprávnění role čtenář zabezpečení<br>Kromě toho možnost provádět všechny operace centra služby Identity Protection s výjimkou resetování hesel
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Všechna oprávnění role čtenář zabezpečení<br>**Nejde** spravovat přiřazení rolí nebo nastavení role Azure AD.
 [Sada Office 365 Centrum zabezpečení a dodržování předpisů](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Správa zásad zabezpečení<br>Zobrazení, zkoumání a reakce na bezpečnostní hrozby<br>Zobrazit sestavy
-Rozšířená ochrana před internetovými útoky v Azure | Monitorování a reakce na podezřelé aktivity zabezpečení
+Rozšířená ochrana před internetovými útoky Azure | Monitorování a reakce na podezřelé aktivity zabezpečení
 Ochrana ATP a EDR v programu Windows Defender | Přiřazení rolí<br>Správa skupin počítačů<br>Konfigurace detekce hrozeb a automatizované nápravy koncových bodů<br>Zobrazit, prozkoumat a reagovat na výstrahy
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Zobrazí informace o uživatelích, zařízeních, registraci, konfiguraci a aplikacích.<br>Nejde dělat změny v Intune.
 [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | Přidávání správců, přidávání zásad a nastavení, nahrávání protokolů a provádění akcí zásad správného řízení
@@ -447,9 +447,9 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 
 | | |
 | --- | --- |
-|Obecná oprávnění|<p>Vytváření uživatelů a skupin</p><p>Vytváření a Správa uživatelských zobrazení</p><p>Správa lístků podpory Office<p>Aktualizace zásad vypršení platnosti hesla|
+|Obecná oprávnění|<p>Vytváření uživatelů a skupin</p><p>Vytvářet a spravovat zobrazení uživatelů</p><p>Správa lístků podpory Office<p>Aktualizace zásad vypršení platnosti hesla|
 |<p>U všech uživatelů, včetně všech správců</p>|<p>Spravovat licence</p><p>Spravovat všechny vlastnosti uživatele kromě hlavního názvu uživatele</p>
-|Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatele|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
+|Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatelů|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
@@ -608,7 +608,7 @@ Vytváření a Správa zásad pro pravidla důvěryhodnosti v architektuře pros
 
 ### <a name="billing-administrator-permissions"></a>Oprávnění správce fakturace
 
-Může provádět běžné úkoly související s fakturací, jako je aktualizace platebních údajů.
+Může provádět běžné úkoly související s fakturací, třeba aktualizovat platební údaje.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
@@ -627,7 +627,7 @@ Může provádět běžné úkoly související s fakturací, jako je aktualizac
 
 ### <a name="cloud-application-administrator-permissions"></a>Oprávnění správce cloudové aplikace
 
-Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací kromě proxy aplikací.
+Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací, kromě proxy aplikací.
 
 | **Akce** | **Popis** |
 | --- | --- |
@@ -685,7 +685,7 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 
 ### <a name="company-administrator-permissions"></a>Oprávnění správce společnosti
 
-Může spravovat všechny aspekty Azure AD a služeb Microsoftu, které používají identity Azure AD. Tato role je také známá jako role globálního správce. 
+Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používají identity Azure AD. Tato role je také známá jako role globálního správce. 
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
@@ -752,7 +752,7 @@ Může spravovat všechny aspekty Azure AD a služeb Microsoftu, které použív
 
 ### <a name="compliance-administrator-permissions"></a>Oprávnění správce dodržování předpisů
 
-Může číst a spravovat konfiguraci a sestavy dodržování předpisů v Azure AD a Office 365.
+Může číst a spravovat konfiguraci dodržování předpisů a sestav v Azure AD a Office 365.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
@@ -1104,7 +1104,7 @@ Může spravovat všechny aspekty skupin a nastavení skupiny, jako jsou zásady
 | microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy o využití Office 365. |
 
 ### <a name="guest-inviter-permissions"></a>Oprávnění pozvat hosta
-Může pozvat uživatele typu Host bez ohledu na nastavení členové můžou pozvat hosty.
+Může zvát uživatele typu host bez ohledu na nastavení, jestli členové můžou zvát hosty.
 
 | **Akce** | **Popis** |
 | --- | --- |
@@ -1121,7 +1121,7 @@ Může pozvat uživatele typu Host bez ohledu na nastavení členové můžou po
 
 ### <a name="helpdesk-administrator-permissions"></a>Oprávnění správce helpdesku
 
-Může resetovat hesla pro správce bez oprávnění správce a helpdesku.
+Může resetovat hesla uživatelů, kteří nejsou správci, a správců technické podpory.
 
 | **Akce** | **Popis** |
 | --- | --- |
@@ -1343,7 +1343,7 @@ Může resetovat hesla správců, kteří nejsou správci a hesla.
 
 ### <a name="power-bi-service-administrator-permissions"></a>Power BI oprávnění správce služby
 
-Může spravovat všechny aspekty Power BI produktu.
+Může spravovat všechny aspekty produktu Power BI.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu Popis role výše.
@@ -1695,8 +1695,8 @@ Správce ověřování | Správce ověřování | c4e39bd9-1100-46d3-8c65-fb160d
 Správce Azure DevOps | Správce Azure DevOps | e3973bdf-4987-49ae-837a-ba8e231c7286
 Správce Azure Information Protection | Správce Azure Information Protection | 7495fdc4-34c4-4d15-a289-98788ce399fd
 Správce toku B2C uživatele | Správce toku B2C uživatele | 6e591065-9bad-43ed-90f3-e9424366d2f0
-Správce atributů uživatelských toků B2C | Správce atributů uživatelských toků B2C | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
-Správce sady klíčů IEF B2C | Správce sady klíčů IEF B2C | aaf43236-0c0d-4d5f-883a-6955382ac081
+Správce atributů toku uživatele B2C | Správce atributů toku uživatele B2C | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
+B2C IEF, správce sady klíčů | B2C IEF, správce sady klíčů | aaf43236-0c0d-4d5f-883a-6955382ac081
 Správce zásad IEF B2C | Správce zásad IEF B2C | 3edaf663-341e-4475-9f94-5c398ef6c070
 Správce fakturace | Správce fakturace | b0f54661-2d74-4c50-afa3-1ec803f12efe
 Správce cloudové aplikace | Správce cloudové aplikace | 158c047a-c907-4556-b7ef-446551a6b5f7
@@ -1719,7 +1719,7 @@ Správce služby Exchange | Správce Exchange | 29232cdf-9323-42fd-ade2-1d097af3
 Správce externích zprostředkovatelů identity | Správce externích zprostředkovatelů identity | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Globální čtenář | Globální čtenář | f2ef992c-3afb-46b9-b7cf-a126ee74c451
 Správce skupiny | Správce skupiny | fdd7a751-b60b-444a-984c-02652fe8fa1c 
-Pozvánka hosta | Pozvánka hosta | 95e79109-95c0-4d8e-aee3-d01accf2d47b
+Pozvánka hosta | Odesílatel pozvánky hostů | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Správce helpdesku | Správce helpdesku | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Správce služby Intune | Správce Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5
 Správce Kaizala | Správce Kaizala | 74ef975b-6605-40af-a5d2-b9539d836353
@@ -1740,7 +1740,7 @@ Správce hledání | Správce hledání | 0964bb5e-9bdb-4d7b-ac29-58e794862a40
 Editor hledání | Editor hledání | 8835291a-918c-4fd7-a9ce-faa49f0cf7d9
 Správce zabezpečení | Správce zabezpečení | 194ae4cb-b126-40b2-bd5b-6091b380977d
 Operátor zabezpečení | Operátor zabezpečení | 5f2222b1-57c3-48ba-8ad5-d4759f1fde6f
-Čtecí modul zabezpečení | Čtenář zabezpečení | 5d6b6bb7-de71-4623-b4af-96380a352509
+Čtenář zabezpečení | Čtenář zabezpečení | 5d6b6bb7-de71-4623-b4af-96380a352509
 Správce služby Service support | Správce služeb | f023fd81-a637-4b56-95fd-791ac0226033
 Správce služby SharePoint | Správce SharePointu | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Správce komunikace týmů | Správce komunikace týmů | baf37b3a-610e-45da-9e62-d9d1e5e8914b
@@ -1755,7 +1755,7 @@ Připojení zařízení na pracovišti | Připojení zařízení na pracovišti 
 
 Následující role by se neměly používat. Jsou zastaralé a v budoucnu se odeberou z Azure AD.
 
-* Správce licencí ad hoc
+* Správce ad hoc licencí
 * Připojení zařízení
 * Správci zařízení
 * Uživatelé zařízení

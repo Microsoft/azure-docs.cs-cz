@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 23c292a950deea262ee063b4141b07a4f64f9f84
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 02/05/2020
+ms.openlocfilehash: c67fb21783a926f813d165528520b9d088154412
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061306"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162391"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Použití Data Lake Storage Gen1 s clustery Azure HDInsight
 
@@ -40,7 +40,7 @@ Clustery HDInsight můžou Data Lake Storage Gen1 použít dvěma způsoby:
 
 Od tohoto okamžiku podporují jenom některé typy a verze clusteru HDInsight použití Data Lake Storage Gen1 jako výchozího úložiště a dalších účtů úložiště:
 
-| Typ clusteru HDInsight | Data Lake Storage Gen1 jako výchozí úložiště | Data Lake Storage Gen1 jako další úložiště| Poznámky |
+| Typ clusteru HDInsight | Data Lake Storage Gen1 jako výchozí úložiště | Data Lake Storage Gen1 jako další úložiště| Poznámky: |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight verze 4,0 | Ne | Ne |ADLS Gen1 není v HDInsight 4,0 podporovaná. |
 | HDInsight verze 3.6 | Ano | Ano | S výjimkou HBase|
@@ -130,6 +130,8 @@ Pokud chcete nakonfigurovat přístup Data Lake Storage z vašeho clusteru HDIns
 
 > [!NOTE]  
 > Pokud budete používat Azure Data Lake Storage Gen1 jako další úložiště pro cluster HDInsight, důrazně doporučujeme, abyste to provedli během vytváření clusteru, jak je popsáno v tomto článku. Přidání Azure Data Lake Storage Gen1 jako dalšího úložiště do stávajícího clusteru HDInsight není podporovaným scénářem.
+
+Další informace o základech modelu řízení přístupu pro Data Lake Storage Gen1 najdete [v tématu řízení přístupu v Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md).
 
 ## <a name="access-files-from-the-cluster"></a>Přístup k souborům z clusteru
 

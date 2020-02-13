@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639867"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161932"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Místní zotavení po havárii pro clustery Azure Databricks
 
@@ -37,7 +37,7 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
 
    1. Zřizování více Azure Databricks pracovních prostorů v samostatných oblastech Azure. Můžete například vytvořit primární pracovní prostor Azure Databricks ve službě východní USA 2. Vytvořte sekundární pracovní prostor Azure Databricks obnovení po havárii v samostatné oblasti, například Západní USA.
 
-   2. Použijte [geograficky redundantní úložiště](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage). Data, která jsou Azure Databricks přidružená, se ve výchozím nastavení ukládají v Azure Storage. Výsledky z úloh datacihly se také ukládají do Azure Blob Storage, aby zpracovaná data byla trvalá a po ukončení clusteru zůstala vysoce dostupná. Vzhledem k tomu, že je cluster úložiště a datacihly společně umístěn, je nutné použít geograficky redundantní úložiště, aby k datům bylo možné přistupovat v sekundární oblasti, pokud již primární oblast nebude přístupná.
+   2. Použijte [geograficky redundantní úložiště](../storage/common/storage-redundancy.md). Data, která jsou Azure Databricks přidružená, se ve výchozím nastavení ukládají v Azure Storage. Výsledky z úloh datacihly se také ukládají do Azure Blob Storage, aby zpracovaná data byla trvalá a po ukončení clusteru zůstala vysoce dostupná. Vzhledem k tomu, že je cluster úložiště a datacihly společně umístěn, je nutné použít geograficky redundantní úložiště, aby k datům bylo možné přistupovat v sekundární oblasti, pokud již primární oblast nebude přístupná.
 
    3. Po vytvoření sekundární oblasti je nutné migrovat uživatele, složky uživatelů, poznámkové bloky, konfiguraci clusteru, konfiguraci úloh, knihovny, úložiště, skripty init a znovu nakonfigurovat řízení přístupu. Další podrobnosti jsou popsaný v následující části.
 
@@ -90,7 +90,7 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
    > [!NOTE]
    > Knihovny se v tomto kroku nekopírují, protože příslušné rozhraní API je nepodporuje.
 
-   Zkopírujte a uložte následující skript Pythonu do souboru a spusťte ho v příkazovém řádku datacihly. Například, `python scriptname.py`.
+   Zkopírujte a uložte následující skript Pythonu do souboru a spusťte ho v příkazovém řádku datacihly. například `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output
@@ -133,7 +133,7 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
 
    Následující skript poskytuje tisk mapování ze starých na nová ID clusteru, která se dají použít k migraci úlohy později (pro úlohy, které jsou nakonfigurované pro použití existujících clusterů).
 
-   Zkopírujte a uložte následující skript Pythonu do souboru a spusťte ho v příkazovém řádku datacihly. Například, `python scriptname.py`.
+   Zkopírujte a uložte následující skript Pythonu do souboru a spusťte ho v příkazovém řádku datacihly. například `python scriptname.py`.
 
    ```python
    from subprocess import call, check_output

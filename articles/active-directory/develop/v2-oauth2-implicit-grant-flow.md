@@ -17,16 +17,14 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 42d315b44a76e79d6f1db48e5024094099564a98
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d7f27ad2adc5d4abf2b5ec993b3398ebf1370f52
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700477"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77159671"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform a implicitní tok udělení
-
-[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
 Pomocí koncového bodu Microsoft Identity Platform můžete uživatele v rámci jedné stránky podepisovat pomocí osobních i pracovních nebo školních účtů od Microsoftu. Jedna stránka a další JavaScriptové aplikace, které se primárně spouštějí v prohlížeči, čelí několika zajímavým problémům, když se přijdou k ověřování:
 
@@ -42,6 +40,35 @@ Pokud ale nechcete používat knihovnu v rámci jednostránkové aplikace a odes
 
 > [!NOTE]
 > V rámci koncového bodu Microsoft Identity Platform nejsou podporovány všechny scénáře a funkce Azure Active Directory (Azure AD). Pokud chcete zjistit, jestli byste měli použít koncový bod platformy Microsoft identity, přečtěte si informace o [omezeních platformy Microsoft Identity](active-directory-v2-limitations.md).
+
+## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>Vhodné scénáře pro implicitní udělení OAuth2
+
+Specifikace OAuth2 deklaruje, že implicitní Grant byl vytvořen za účelem povolení aplikací uživatelského agenta – to znamená, že aplikace JavaScriptu spouštěné v prohlížeči. Definováním charakteristických vlastností těchto aplikací je, že kód jazyka JavaScript se používá pro přístup k prostředkům serveru (typicky k webovému rozhraní API) a odpovídajícím způsobem pro aktualizaci uživatelského prostředí aplikace. Můžete si představit aplikace jako Gmail nebo Outlook Web Access: Když vyberete zprávu z doručené pošty, změní se jenom panel vizualizace zprávy, aby se zobrazil nový výběr, zatímco zbytek stránky zůstane beze změny. Tato vlastnost je v kontrastu s tradičními webovými aplikacemi založenými na přesměrování, kde každá interakce uživatele má za následek úplné vystavení stránky a úplné vykreslování nové serverové odpovědi.
+
+Aplikace, které přijímají přístup na základě JavaScriptu na své extrémní, se nazývají jednostránkové aplikace nebo jednostránkové. Nápad je, že tyto aplikace poskytují pouze počáteční stránku HTML a přidružený JavaScript, přičemž všechny následné interakce jsou ovládány voláními webového rozhraní API provedenými prostřednictvím JavaScriptu. Nicméně hybridní přístupy, kde je aplikace většinou řízené postbackem, ale provádí občasné volání JS, nejsou neobvyklá – diskuze o použití implicitního toku je relevantní i pro tyto.
+
+Aplikace založené na přesměrování obvykle zabezpečují své žádosti prostřednictvím souborů cookie, ale tento přístup nefunguje i pro aplikace JavaScriptu. Soubory cookie pracují pouze s doménou, pro kterou byly vygenerovány, zatímco volání JavaScriptu mohou být směrována k ostatním doménám. V takovém případě to často znamená, že aplikace vyvolají rozhraní Microsoft Graph API, rozhraní Office API, rozhraní API Azure – všechny nacházející se mimo doménu, ze kterých se aplikace obsluhuje. Rostoucí trend pro aplikace JavaScriptu nemá žádný back-end. spoléháme se 100% na webová rozhraní API třetích stran a implementujte svou obchodní funkci.
+
+V současné době upřednostňovaná metoda ochrany volání webového rozhraní API je použít přístup k tokenu OAuth2 Bearer, kde každé volání je doprovázeno přístupovým tokenem OAuth2. Webové rozhraní API kontroluje token příchozího přístupu a pokud v něm najde potřebné obory, udělí přístup k požadované operaci. Implicitní tok poskytuje pohodlný mechanismus pro aplikace JavaScriptu k získání přístupových tokenů pro webové rozhraní API, který nabízí mnoho výhod v souvislosti s soubory cookie:
+
+* Tokeny lze spolehlivě získat bez nutnosti pro volání mezi zdroji – povinnou registrací identifikátoru URI přesměrování, na které tokeny vrátí záruky, že tokeny nejsou posunuty.
+* Aplikace JavaScriptu můžou získat tolik přístupových tokenů, kolik potřebují, a to u tolika webových rozhraní API, která cílí – bez omezení domén.
+* Funkce HTML5, jako je například Session nebo místní úložiště, poskytují úplnou kontrolu nad ukládáním do mezipaměti a správou životnosti tokenů, zatímco Správa souborů cookie je neprůhledná
+* Přístupové tokeny nejsou náchylné k útokům prostřednictvím CSRF (mezi lokalitami).
+
+Tok implicitního udělení nevydá aktualizační tokeny, většinou z bezpečnostních důvodů. Obnovovací token není tak Zúžený rozsah jako přístupové tokeny. tím se ještě vyšší výkon, což způsobí mnohem větší škodu pro případ, že dojde k úniku. V implicitním toku jsou tokeny dodány v adrese URL, takže riziko zachycení je vyšší než v udělení autorizačního kódu.
+
+Aplikace JavaScriptu ale má jiný mechanismus pro obnovení přístupových tokenů, aniž by bylo nutné opakovaně vyzvat uživatele k zadání přihlašovacích údajů. Aplikace může pomocí skrytého prvku IFRAME provádět nové žádosti o tokeny proti koncovému bodu autorizace služby Azure AD: Pokud má prohlížeč stále aktivní relaci (čtení: má soubor cookie relace) vůči doméně služby Azure AD, požadavek na ověření může k úspěšnému výskytu bez nutnosti zásahu uživatele.
+
+Tento model uděluje aplikaci JavaScriptu možnost nezávisle obnovit přístupové tokeny a dokonce získat nové pro nové rozhraní API (za předpokladu, že ho uživatel dřív poslal). Tím se zabrání zvýšení zátěže, která získává, zachovává a chrání vysoce hodnotový artefakt, jako je aktualizační token. Artefakt, který způsobuje tiché obnovení, je soubor cookie relace služby Azure AD spravován mimo aplikaci. Další výhodou tohoto přístupu je, že se uživatel může odhlásit z Azure AD pomocí kterékoli z aplikací přihlášených do služby Azure AD, které běží na kterékoli z karet prohlížeče. Výsledkem je odstranění souboru cookie relace Azure AD a aplikace JavaScriptu bude automaticky ztratit schopnost obnovit tokeny pro odhlášeného uživatele.
+
+## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Je implicitní grant vhodný pro moji aplikaci?
+
+Implicitní grant představuje více rizik než jiné granty a oblasti, které je potřeba věnovat pozornost, jsou dobře zdokumentováné (například [zneužití přístupového tokenu k zosobnění vlastníka prostředku v implicitním toku] [OAuth2-spec-implicitní-zneužití] a [model hrozeb OAuth 2,0. a aspektů zabezpečení] [OAuth2-Threat-model-and-Security-dopady]). Vyšší rizikový profil je však z velké části vzhledem k tomu, že je určeno k povolení aplikací, které spouštějí aktivní kód, obsluhované vzdáleným prostředkem do prohlížeče. Pokud plánujete architekturu SPA, nemáte žádné back-endové součásti ani nechtěli vyvolat webové rozhraní API prostřednictvím JavaScriptu, doporučuje se použít implicitní tok pro získání tokenu.
+
+Pokud je vaše aplikace nativním klientem, implicitní tok se nevejde na skvělé. Neexistence souboru cookie relace Azure AD v kontextu nativního klienta odznamená vaši aplikaci z prostředků údržby dlouhotrvající relace. To znamená, že aplikace bude při získávání přístupových tokenů pro nové prostředky opakovaně vyzvat uživatele.
+
+Pokud vyvíjíte webovou aplikaci, která zahrnuje back-end a spotřebováváte rozhraní API z back-endu kódu, implicitní tok také není vhodný. Další výkon vám poskytne mnohem víc. Například udělení přihlašovacích údajů klienta OAuth2 poskytuje možnost získat tokeny, které odrážejí oprávnění přiřazená samotné aplikaci, a to na rozdíl od delegování uživatelů. To znamená, že klient může spravovat programový přístup k prostředkům i v případě, že uživatel aktivně není v relaci, a tak dále. Nejen to, ale takové granty poskytují vyšší záruky zabezpečení. Přístupové tokeny se nikdy nemigrují přes prohlížeč uživatelů, ale neohrožují uložení v historii prohlížeče atd. Klientská aplikace může také při požadavku na token provádět silné ověřování.
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 
@@ -75,14 +102,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| `tenant` | required |Hodnotu `{tenant}` v cestě k žádosti lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátory klientů. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints). |
-| `client_id` | required | ID aplikace (klienta), ke které se stránka [Azure Portal registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená vaší aplikaci. |
-| `response_type` | required |Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Může taky zahrnovat response_type `token`. Když použijete `token`, umožníte aplikaci získat přístupový token hned z autorizačního koncového bodu, aniž byste museli udělat druhý požadavek na autorizační koncový bod. Použijete-li response_type `token`, musí parametr `scope` obsahovat obor, který určuje, který prostředek má být vydaný token (například User. Read on Microsoft Graph).  |
-| `redirect_uri` | Doporučené |Redirect_uri vaší aplikace, ve které vaše aplikace může odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z redirect_uris, který jste zaregistrovali na portálu, s výjimkou musí být zakódovaný URL. |
-| `scope` | required |Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md). Pro OpenID Connect (id_tokens) musí zahrnovat obor `openid`, který se v uživatelském rozhraní souhlasu překládá na oprávnění přihlásit se. Volitelně můžete také zahrnout rozsahy `email` a `profile` pro získání přístupu k dalším uživatelským datům. V této žádosti můžete také zahrnout další obory pro žádosti o souhlas s různými prostředky, pokud je požadován přístupový token. |
+| `tenant` | požadováno |Hodnotu `{tenant}` v cestě k žádosti lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátory klientů. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints). |
+| `client_id` | požadováno | ID aplikace (klienta), ke které se stránka [Azure Portal registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) přiřazená vaší aplikaci. |
+| `response_type` | požadováno |Musí zahrnovat `id_token` pro přihlášení OpenID Connect. Může taky zahrnovat response_type `token`. Když použijete `token`, umožníte aplikaci získat přístupový token hned z autorizačního koncového bodu, aniž byste museli udělat druhý požadavek na autorizační koncový bod. Použijete-li response_type `token`, musí parametr `scope` obsahovat obor, který určuje, který prostředek má být vydaný token (například User. Read on Microsoft Graph).  |
+| `redirect_uri` | doporučil |Redirect_uri vaší aplikace, ve které vaše aplikace může odesílat a přijímat odpovědi na ověřování. Musí přesně odpovídat jednomu z redirect_uris, který jste zaregistrovali na portálu, s výjimkou musí být zakódovaný URL. |
+| `scope` | požadováno |Mezerou oddělený seznam [oborů](v2-permissions-and-consent.md). Pro OpenID Connect (id_tokens) musí zahrnovat obor `openid`, který se v uživatelském rozhraní souhlasu překládá na oprávnění přihlásit se. Volitelně můžete také zahrnout rozsahy `email` a `profile` pro získání přístupu k dalším uživatelským datům. V této žádosti můžete také zahrnout další obory pro žádosti o souhlas s různými prostředky, pokud je požadován přístupový token. |
 | `response_mode` | volitelné |Určuje metodu, která se má použít k odeslání výsledného tokenu zpátky do vaší aplikace. Ve výchozím nastavení se dotazuje pouze na přístupový token, ale fragment, pokud požadavek obsahuje id_token. |
-| `state` | Doporučené |Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Náhodně vygenerovaná jedinečná hodnota se obvykle používá k [prevenci útoků proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se používá také ke kódování informací o stavu uživatele v aplikaci před tím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
-| `nonce` | required |Hodnota obsažená v požadavku, která se vygenerovala aplikací, která se zahrne do výsledného id_token jako deklarace. Aplikace pak může tuto hodnotu ověřit a zmírnit tak útoky na opakované přehrání tokenů. Hodnota je obvykle náhodný jedinečný řetězec, který lze použít k identifikaci původu žádosti. Požadováno pouze v případě, že je požadováno id_token. |
+| `state` | doporučil |Hodnota obsažená v požadavku, která se také vrátí v odpovědi tokenu. Může to být řetězec libovolného obsahu, který chcete. Náhodně vygenerovaná jedinečná hodnota se obvykle používá k [prevenci útoků proti padělání požadavků mezi lokalitami](https://tools.ietf.org/html/rfc6749#section-10.12). Stav se používá také ke kódování informací o stavu uživatele v aplikaci před tím, než došlo k žádosti o ověření, jako je například stránka nebo zobrazení, na kterých se nachází. |
+| `nonce` | požadováno |Hodnota obsažená v požadavku, která se vygenerovala aplikací, která se zahrne do výsledného id_token jako deklarace. Aplikace pak může tuto hodnotu ověřit a zmírnit tak útoky na opakované přehrání tokenů. Hodnota je obvykle náhodný jedinečný řetězec, který lze použít k identifikaci původu žádosti. Požadováno pouze v případě, že je požadováno id_token. |
 | `prompt` | volitelné |Určuje typ interakce uživatele, která je povinná. V tuto chvíli jsou k dispozici pouze platné hodnoty "login," none "," select_account "a" souhlas ". `prompt=login` vynutí, aby uživatel zadal přihlašovací údaje k danému požadavku, přičemž se pro ně použije negace jednotného přihlašování. `prompt=none` je opak, zajistí, že se uživateli nebude zobrazovat žádná interaktivní výzva. Pokud se žádost nedá v tichém režimu dokončit pomocí jednotného přihlašování, vrátí koncová platforma Microsoft Identity platformu chybu. `prompt=select_account` odešle uživateli na výběr účtu, kde se zobrazí všechny účty, které jsou v relaci zapamatovat. `prompt=consent` spustí dialog pro vyjádření souhlasu OAuth po přihlášení uživatele a požádá uživatele, aby aplikaci udělil oprávnění. |
 | `login_hint`  |volitelné |Dá se použít k předvyplnění pole uživatelské jméno a e-mailová adresa uživatele přihlašovací stránky, pokud znáte své uživatelské jméno předem. Aplikace budou často používat tento parametr během opakovaného ověřování, kteří již rozvěděli uživatelské jméno z předchozího přihlášení pomocí `preferred_username` deklarace identity.|
 | `domain_hint` | volitelné |Pokud se tato možnost zahrne, přeskočí proces zjišťování e-mailu, který uživatel prochází na přihlašovací stránce, což vede k poněkud efektivnějšímu uživatelskému prostředí. To se běžně používá pro obchodní aplikace, které pracují v jednom tenantovi, kde budou v rámci daného tenanta poskytovat název domény.  Tím se uživatel přepošle poskytovateli federace pro daného tenanta.  Všimněte si, že tato akce zabrání hostům v přihlašování k této aplikaci.  |
@@ -211,8 +238,8 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 
 | Parametr |  | Popis |
 | --- | --- | --- |
-| `tenant` |required |Hodnotu `{tenant}` v cestě k žádosti lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátory klientů. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints). |
-| `post_logout_redirect_uri` | Doporučené | Adresa URL, na kterou se má uživatel vrátit po odhlášení, se dokončí. Tato hodnota musí odpovídat jednomu z registrovaných identifikátorů URI přesměrování pro aplikaci. Pokud tato akce není zahrnutá, zobrazí se uživateli obecná zpráva od koncového bodu Microsoft Identity Platform. |
+| `tenant` |požadováno |Hodnotu `{tenant}` v cestě k žádosti lze použít k řízení, kdo se může přihlásit k aplikaci. Povolené hodnoty jsou `common`, `organizations`, `consumers`a identifikátory klientů. Další podrobnosti najdete v tématu [základy protokolu](active-directory-v2-protocols.md#endpoints). |
+| `post_logout_redirect_uri` | doporučil | Adresa URL, na kterou se má uživatel vrátit po odhlášení, se dokončí. Tato hodnota musí odpovídat jednomu z registrovaných identifikátorů URI přesměrování pro aplikaci. Pokud tato akce není zahrnutá, zobrazí se uživateli obecná zpráva od koncového bodu Microsoft Identity Platform. |
 
 ## <a name="next-steps"></a>Další kroky
 

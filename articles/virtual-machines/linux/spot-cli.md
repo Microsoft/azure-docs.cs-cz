@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0635be14937a3688792f65208dcb9d482b9e6d44
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 110e935671ab1d640b2ff3dc26c203b262e999fe
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781992"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77163088"
 ---
 # <a name="preview-deploy-spot-vms-using-the-azure-cli"></a>Verze Preview: nasazení virtuálních počítačů s virtuálními počítači pomocí rozhraní příkazového řádku Azure
 
@@ -35,10 +35,10 @@ Postup vytvoření virtuálního počítače s využitím rozhraní příkazové
 > Instance přímých instancí jsou momentálně ve verzi Public Preview.
 > Tato verze Preview se nedoporučuje pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> V první části verze Public Preview budou mít instance pro tisk pevnou cenu, takže se neúčtují žádné vyřazení na základě cen.
 
 
-## <a name="install-azure-cli"></a>Instalace Azure CLI
+
+## <a name="install-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
 
 Pokud chcete vytvořit virtuální počítače se systémem, musíte mít spuštěnou verzi Azure CLI 2.0.74 nebo novější. Verzi zjistíte spuštěním příkazu **az --version**. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli). 
 

@@ -11,18 +11,20 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f1379202fc59e9cca7a3543be201f8ebff276bef
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816663"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168356"
 ---
 # <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech
 
 Služba Speech umožňuje vaší aplikaci převod zvuku na text, překlad řeči a převod textu na řeč. Služba je k dispozici v několika oblastech pomocí jedinečných koncových bodů pro rozhraní API REST a sadou SDK pro řeč.
 
-Ujistěte se, že používáte koncového bodu, který se shoduje s oblastí pro vaše předplatné.
+Portál pro rozpoznávání řeči pro vlastní konfigurace prostředí Speech pro všechny oblasti je k dispozici zde: https://speech.microsoft.com
+
+V případě vyvolání služby Speech zajistěte, aby se hovor shodoval s oblastí vašeho předplatného.
 
 ## <a name="speech-sdk"></a>Speech SDK
 
@@ -30,28 +32,13 @@ V [sadě Speech SDK](speech-sdk.md)jsou oblasti určeny jako řetězec (napřík
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>Převod řeči na text, převod textu na řeč a překlad
 
-Sada Speech SDK je k dispozici v těchto oblastech pro **rozpoznávání řeči**, převod **textu na řeč**a **překlady**:
+Portál pro přizpůsobení řeči je k dispozici zde: https://speech.microsoft.com
 
-| Oblast           | Parametr SDK řeči | Přizpůsobení portálu řeči    |
-| ---------------- | -------------------- | ------------------------------ |
-| USA – západ          | `westus`             | https://westus.cris.ai         |
-| USA – západ 2        | `westus2`            | https://westus2.cris.ai        |
-| USA – východ          | `eastus`             | https://eastus.cris.ai         |
-| USA – východ 2        | `eastus2`            | https://eastus2.cris.ai        |
-| USA – střed       | `centralus`          | https://centralus.cris.ai      |
-| USA – středosever | `northcentralus`     | https://northcentralus.cris.ai |
-| USA – středojih | `southcentralus`     | https://southcentralus.cris.ai |
-| Indie – střed    | `centralindia`       | https://centralindia.cris.ai   |
-| Východní Asie        | `eastasia`           | https://eastasia.cris.ai       |
-| Jihovýchodní Asie   | `southeastasia`      | https://southeastasia.cris.ai  |
-| Japonsko – východ       | `japaneast`          | https://japaneast.cris.ai      |
-| Korea – střed    | `koreacentral`       | https://koreacentral.cris.ai   |
-| Austrálie – východ   | `australiaeast`      | https://australiaeast.cris.ai  |
-| Kanada – střed   | `canadacentral`      | https://canadacentral.cris.ai  |
-| Severní Evropa     | `northeurope`        | https://northeurope.cris.ai    |
-| Západní Evropa      | `westeurope`         | https://westeurope.cris.ai     |
-| Velká Británie – jih         | `uksouth`            | https://uksouth.cris.ai        |
-| Francie – střed   | `francecentral`      | https://francecentral.cris.ai  |
+Služba Speech je v těchto oblastech dostupná pro **rozpoznávání řeči**, převod **textu na řeč**a **překlady**:
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+Použijete-li [sadu Speech SDK](speech-sdk.md), oblasti jsou určeny **identifikátorem oblasti** (například jako parametr `SpeechConfig.FromSubscription`). Ujistěte se, že je oblast shodná s oblastí vašeho předplatného.
 
 ### <a name="intent-recognition"></a>Rozpoznávání záměru
 
@@ -65,11 +52,11 @@ Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speec
 | Evropa        | Severní Evropa     | `northeurope`        |
 | Evropa        | Západní Evropa      | `westeurope`         |
 | Severní Amerika | USA – východ          | `eastus`             |
-| Severní Amerika | USA – východ 2        | `eastus2`            |
-| Severní Amerika | USA – středojih | `southcentralus`     |
-| Severní Amerika | USA – středozápad  | `westcentralus`      |
-| Severní Amerika | USA – západ          | `westus`             |
-| Severní Amerika | USA – západ 2        | `westus2`            |
+| Severní Amerika | Východní USA 2        | `eastus2`            |
+| Severní Amerika | Střed USA – jih | `southcentralus`     |
+| Severní Amerika | Střed USA – západ  | `westcentralus`      |
+| Severní Amerika | Západní USA          | `westus`             |
+| Severní Amerika | Západní USA 2        | `westus2`            |
 | Jižní Amerika | Brazílie – jih     | `brazilsouth`        |
 
 Toto je podmnožina oblastí publikování, které podporuje [služba Language Understanding (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
@@ -80,10 +67,10 @@ Toto je podmnožina oblastí publikování, které podporuje [služba Language U
 
 | Oblast         | Parametr SDK řeči |
 | -------------- | -------------------- |
-| USA – západ        | `westus`             |
-| USA – západ 2      | `westus2`            |
+| Západní USA        | `westus`             |
+| Západní USA 2      | `westus2`            |
 | USA – východ        | `eastus`             |
-| USA – východ 2      | `eastus2`            |
+| Východní USA 2      | `eastus2`            |
 | Západní Evropa    | `westeurope`         |
 | Severní Evropa   | `northeurope`        |
 | Jihovýchodní Asie | `southeastasia`      |
@@ -96,7 +83,18 @@ Speech service také poskytuje koncové body REST pro požadavky na převod ře�
 
 Referenční dokumentaci k textu pro převod řeči na text najdete v tématu [REST API řeči](rest-speech-to-text.md).
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+Koncový bod pro REST API má tento formát:
+
+```
+https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
+```
+
+Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vašeho předplatného z této tabulky:
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
+
+> [!NOTE]
+> Parametr Language se musí připojit k adrese URL, aby nedošlo k 4xx chybě HTTP. Například jazyk nastavený na AMERICKou angličtinu pomocí Západní USAho koncového bodu je: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
 
 ### <a name="text-to-speech"></a>Převod textu na řeč
 

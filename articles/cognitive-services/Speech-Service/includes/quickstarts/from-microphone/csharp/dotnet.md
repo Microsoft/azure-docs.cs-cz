@@ -9,14 +9,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: f3b0df9f663866c916a45c85767d49b8701152cd
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4b8f58fbfa9de929139646ad267a433645e2db35
+ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75927828"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77156752"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete:
 
@@ -40,7 +40,7 @@ Pojďme přidat kód, který funguje jako kostra pro náš projekt. Nezapomeňte
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Než budete moct inicializovat objekt `SpeechRecognizer`, musíte vytvořit konfiguraci, která používá váš klíč předplatného a oblast předplatného. Vložte tento kód do metody `RecognizeSpeechAsync()`.
+Předtím, než můžete inicializovat objekt `SpeechRecognizer`, je nutné vytvořit konfiguraci, která používá váš klíč předplatného a oblast předplatného (vyberte parametr sada Speech SDK "z [oblasti](https://aka.ms/speech/sdkregion). Vložte tento kód do metody `RecognizeSpeechAsync()`.
 
 > [!NOTE]
 > Tato ukázka používá metodu `FromSubscription()` k sestavení `SpeechConfig`. Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).

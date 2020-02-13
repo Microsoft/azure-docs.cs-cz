@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: c852bdeb30efe6acf626ae67028ec1ccb9e0b6db
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 08e10996f633d35ffbf946b61937a0e9a76f7227
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310964"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77162221"
 ---
 # <a name="available-event-hubs-apis"></a>Dostupná Event Hubs rozhraní API
 
@@ -31,13 +31,13 @@ V následující části jsou popsány všechny aktuálně dostupné klienty Azu
 
 Další informace o aktuálním stavu každé běhové knihovny najdete v části [Další informace](#additional-information).
 
-| Jazyk/platforma | Klientský balíček | Balíček EventProcessorHost | Úložiště |
+| Jazyk/platforma | Balíček klienta | Balíček EventProcessorHost | Úložiště |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHub](https://github.com/azure/azure-event-hubs-dotnet) |
-| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | Nevztahuje se |
+| .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | NEUŽÍVÁ SE. |
 | Java | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) | [Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) | [GitHub](https://github.com/Azure/azure-event-hubs-java) |
-| Uzel | [NPM](https://www.npmjs.com/package/azure-event-hubs) | Nevztahuje se | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
-| C | Nevztahuje se | Nevztahuje se | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
+| Node | [NPM](https://www.npmjs.com/package/azure-event-hubs) | NEUŽÍVÁ SE. | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
+| C | NEUŽÍVÁ SE. | NEUŽÍVÁ SE. | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
 
 ### <a name="additional-information"></a>Další informace
 
@@ -45,9 +45,9 @@ Další informace o aktuálním stavu každé běhové knihovny najdete v část
 
 Ekosystém .NET má několik modulů runtime, takže existuje více knihoven .NET pro Event Hubs. Knihovnu .NET Standard lze spustit buď pomocí .NET Core, nebo .NET Framework, zatímco knihovnu .NET Framework lze spustit pouze v .NET Framework prostředí. Další informace o .NET Framework verzích najdete v tématu [verze rozhraní](https://docs.microsoft.com/dotnet/articles/standard/frameworks).
 
-#### <a name="node"></a>Uzel
+#### <a name="node"></a>Node
 
-[Knihovna Node. js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) je aktuálně ve verzi Preview a je udržována jako vedlejší projekt od zaměstnanců společnosti Microsoft a externích přispěvatelů. Všechny příspěvky včetně zdrojového kódu jsou Welcome a budou přezkoumány.
+[Knihovna JavaScriptu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) je aktuálně ve verzi Preview a je udržována jako vedlejší projekt od zaměstnanců společnosti Microsoft a externích přispěvatelů. Všechny příspěvky včetně zdrojového kódu jsou Welcome a budou přezkoumány.
 
 ## <a name="management-apis"></a>Rozhraní API pro správu
 

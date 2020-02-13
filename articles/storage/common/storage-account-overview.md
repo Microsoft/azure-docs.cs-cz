@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274539"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77157260"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 
@@ -79,7 +79,7 @@ Ve většině případů byste měli používat účty pro obecné účely v2. �
 Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 
 - Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom číslice a malá písmena.
-- Váš název účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemohou mít stejný název.
+- Název vašeho účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemůžou mít stejný název.
 
 ## <a name="performance-tiers"></a>Úrovně výkonu
 
@@ -115,11 +115,9 @@ Pokud dojde ke změně ve vzoru používání vašich dat, můžete kdykoli pře
 > [!IMPORTANT]
 > Změna úrovně přístupu pro existující účet úložiště nebo objekt BLOB může mít za následek další poplatky. Další informace najdete v [části fakturace účtu úložiště](#storage-account-billing).
 
-## <a name="replication"></a>Replikace
+## <a name="redundancy"></a>Redundance
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
-
-Další informace o replikaci úložiště najdete v tématu [replikace Azure Storage](storage-redundancy.md).
 
 ## <a name="encryption"></a>Šifrování
 

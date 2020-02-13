@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/11/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 724736bedd81ea45d7472a615fa22cde6916f21c
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
-ms.translationtype: HT
+ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148857"
+ms.locfileid: "77157869"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -84,11 +84,11 @@ Element **DataUri** slouží k určení identifikátoru stránky. Azure AD B2C p
 | `globalexception` | Zobrazí chybovou stránku, pokud dojde k výjimce nebo chybě. |
 | `providerselection` | Zobrazuje seznam zprostředkovatelů identity, ze kterých si uživatelé můžou vybrat během přihlašování. |
 | `unifiedssp` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. Tato hodnota také poskytuje možnost "zachovat funkce přihlašování" a zapomněli jste heslo? " odkaz. |
-| `unifiedssp` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. |
+| `unifiedssd` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. |
 | `multifactor` | Ověřuje telefonní čísla pomocí textu nebo hlasu během registrace nebo přihlašování. |
 | `selfasserted` | Zobrazí formulář, který uživatelům umožňuje vytvořit nebo aktualizovat svůj profil. |
 
-## <a name="select-a-page-layout"></a>Vybrat rozložení stránky
+### <a name="select-a-page-layout"></a>Vybrat rozložení stránky
 
 Můžete povolit [javascriptový kód na straně klienta](javascript-samples.md) vložením `contract` mezi `elements` a typem stránky. například `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
@@ -126,6 +126,29 @@ Formát hodnoty musí obsahovat slovo `contract`: _urn: com: Microsoft: AAD: B2C
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:unifiedssp:1.2.0` |
 
+
+### <a name="metadata"></a>Metadata
+
+Element **metadata** obsahuje následující prvky:
+
+| Prvek | Výskytů | Popis |
+| ------- | ----------- | ----------- |
+| Položka | 0: n | Metadata vztahující se k definici obsahu. |
+
+Element **Item** elementu **metadata** obsahuje následující atributy:
+
+| Atribut | Požaduje se | Popis |
+| --------- | -------- | ----------- |
+| Klíč | Ano | Klíč metadat.  |
+
+#### <a name="metadata-keys"></a>Klíče metadat
+
+Definice obsahu podporuje následující položky metadat: 
+
+| Klíč | Požaduje se | Popis |
+| --------- | -------- | ----------- |
+| DisplayName | Ne | Řetězec, který obsahuje název definice obsahu. |
+
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
 
 Element **LocalizedResourcesReferences** obsahuje následující prvky:
@@ -134,7 +157,7 @@ Element **LocalizedResourcesReferences** obsahuje následující prvky:
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | Seznam lokalizovaných odkazů na prostředky pro definici obsahu. |
 
-Element **LocalizedResourcesReferences** obsahuje následující atributy:
+Element **LocalizedResourcesReference** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |

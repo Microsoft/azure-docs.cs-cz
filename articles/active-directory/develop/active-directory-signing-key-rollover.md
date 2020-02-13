@@ -12,18 +12,18 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d3994b56b55a7aac0ba3ab64d53b6436bc19c45b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f3585cfa7ea6f0d8afc61e899f9641d415a2e354
+ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698539"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77161184"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Výměna podpisového klíče v Azure Active Directory
 Tento článek popisuje, co potřebujete znát o veřejných klíčích, které se používají v Azure Active Directory (Azure AD) k podepisování tokenů zabezpečení. Je důležité si uvědomit, že tyto klíče se převezmou v pravidelných intervalech a v naléhavém případě by mohlo dojít k okamžitému zavedení. Všechny aplikace, které používají Azure AD, by měly být schopné programově zpracovat proces výměny klíčů nebo vytvořit pravidelný proces ručního zaměníní. Pokračujte ve čtení, abyste pochopili, jak klíče fungují, jak vyhodnotit dopad přechodu na aplikaci a jak aktualizovat aplikaci nebo vytvořit pravidelný ruční proces ručního zpracování, který v případě potřeby zabere v případě potřeby klíčovou výměnu.
 
 ## <a name="overview-of-signing-keys-in-azure-ad"></a>Přehled podpisových klíčů ve službě Azure AD
-Azure AD používá kryptografii s veřejným klíčem postavenou na průmyslových standardech k navázání vztahu důvěryhodnosti mezi sebou samými a aplikacemi, které ho používají. V praktických případech to funguje následujícím způsobem: Azure AD používá podpisový klíč, který se skládá z páru veřejného a privátního klíče. Když se uživatel přihlásí k aplikaci, která používá Azure AD k ověřování, vytvoří Azure AD token zabezpečení, který obsahuje informace o uživateli. Tento token je podepsaný službou Azure AD pomocí jejího privátního klíče, než se pošle zpátky do aplikace. Pokud chcete ověřit, jestli je token platný a pochází z Azure AD, musí aplikace ověřit podpis tokenu pomocí veřejného klíče vystaveného službou Azure AD, který je obsažený v [dokumentu zjišťování OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) tenanta nebo v [dokumentu federačních METADAT](azure-ad-federation-metadata.md)SAML/WS.
+Azure AD používá kryptografii s veřejným klíčem postavenou na průmyslových standardech k navázání vztahu důvěryhodnosti mezi sebou samými a aplikacemi, které ho používají. V praktických případech to funguje následujícím způsobem: Azure AD používá podpisový klíč, který se skládá z páru veřejného a privátního klíče. Když se uživatel přihlásí k aplikaci, která používá Azure AD k ověřování, vytvoří Azure AD token zabezpečení, který obsahuje informace o uživateli. Tento token je podepsaný službou Azure AD pomocí jejího privátního klíče, než se pošle zpátky do aplikace. Pokud chcete ověřit, jestli je token platný a pochází z Azure AD, musí aplikace ověřit podpis tokenu pomocí veřejného klíče vystaveného službou Azure AD, který je obsažený v [dokumentu zjišťování OpenID Connect](https://openid.net/specs/openid-connect-discovery-1_0.html) tenanta nebo v [dokumentu federačních METADAT](../azuread-dev/azure-ad-federation-metadata.md)SAML/WS.
 
 Z bezpečnostních důvodů se podpisový klíč služby Azure AD pravidelně zakládá a v případě nouze se dá okamžitě navrátit. Každá aplikace, která se integruje se službou Azure AD, by měla být připravená na zpracování události při výměně klíčů bez ohledu na to, jak často k ní může dojít. Pokud tomu tak není a vaše aplikace se pokusí použít klíč s vypršenou platností k ověření podpisu na tokenu, žádost o přihlášení selže.
 
@@ -281,7 +281,7 @@ Použijte následující postup, chcete-li ověřit, zda je logika výměny klí
             <add thumbprint="3A38FA984E8560F19AADC9F86FE9594BB6AD049B" />
           </keys>
    ```
-2. V nastavení **\<přidat kryptografický otisk = "" >** změňte hodnotu kryptografického otisku tak, že nahradíte libovolný znak jiným. Uložte soubor **Web.config**.
+2. V nastavení **\<přidat kryptografický otisk = "" >** změňte hodnotu kryptografického otisku tak, že nahradíte libovolný znak jiným. Uložte soubor **Web. config** .
 3. Sestavte aplikaci a potom ji spusťte. Pokud můžete dokončit proces přihlášení, aplikace úspěšně aktualizuje klíč stažením požadovaných informací z dokumentu federačních metadat vašeho adresáře. Pokud máte problémy s přihlášením, zajistěte, aby změny v aplikaci byly správné, a přečtěte si téma [přidání přihlášení k webové aplikaci pomocí Azure AD](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) nebo stažení a kontrola následující ukázky kódu: [víceklientské cloudová aplikace pro Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="vs2010"></a>Webové aplikace chránící prostředky a vytvořené pomocí sady Visual Studio 2008 nebo 2010 a technologie Windows Identity Foundation (WIF) v 1.0 pro .NET 3,5
