@@ -9,9 +9,9 @@
   expanded: true
   items:
     - name: Připojení počítačů ke službě Azure Arc z webu Azure Portal
-      href: ./servers/quickstart-onboard-portal.md
+      href: ./servers/onboard-portal.md
     - name: Připojení počítačů ve velkém měřítku s využitím instančního objektu
-      href: ./servers/quickstart-onboard-powershell.md
+      href: ./servers/onboard-service-principal.md
 - name: Referenční informace
   items:
     - name: Rozhraní příkazového řádku agenta připojeného počítače Azure
