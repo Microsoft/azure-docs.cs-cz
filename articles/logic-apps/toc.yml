@@ -87,7 +87,7 @@
           href: logic-apps-handle-large-messages.md
         - name: Zabezpečení
           items:
-            - name: Zabezpečení aplikací logiky
+            - name: Vylepšení zabezpečení pro aplikace logiky
               href: logic-apps-securing-a-logic-app.md
             - name: Ověřování pomocí spravovaných identit
               href: create-managed-service-identity.md
@@ -97,7 +97,7 @@
           items:
             - name: Vytvoření vlastních rozhraní API pro aplikace logiky
               href: logic-apps-create-api-app.md
-            - name: Zabezpečení volání vlastních rozhraní API
+            - name: Vylepšení zabezpečení pro volání vlastních rozhraní API
               href: logic-apps-custom-api-authentication.md
             - name: Nasazení a volání vlastních rozhraní API
               href: logic-apps-custom-api-host-deploy-call.md

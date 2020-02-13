@@ -77,7 +77,7 @@
           href: notifications.md
         - name: Odstranění spravované domény
           href: delete-aadds.md
-        - name: Migrace z klasického nasazení (Preview)
+        - name: Migrace z klasického nasazení
           href: migrate-from-classic-vnet.md
         - name: Změna skladové položky
           href: change-sku.md

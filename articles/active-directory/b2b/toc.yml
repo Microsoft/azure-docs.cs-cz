@@ -15,7 +15,9 @@
           href: b2b-quickstart-invite-powershell.md
     - name: Kurzy
       items:
-        - name: Hromadné pozvání uživatelů typu host B2B
+        - name: Hromadné pozvání prostřednictvím PowerShellu
+          href: bulk-invite-powershell.md
+        - name: Hromadné pozvání prostřednictvím portálu (Preview)
           href: tutorial-bulk-invite.md
         - name: Vynucení vícefaktorového ověřování
           href: b2b-tutorial-require-mfa.md

@@ -21,7 +21,11 @@
 - name: Koncepty
   items:
     - name: Umístění a partneři
-      href: virtual-wan-locations-partners.md
+      items:
+        - name: Umístění center a partneři
+          href: virtual-wan-locations-partners.md
+        - name: Automatizační pokyny pro partnery
+          href: virtual-wan-configure-automation-providers.md
     - name: Zásady protokolu IPsec
       href: virtual-wan-ipsec.md
 - name: Návody
@@ -46,8 +50,6 @@
       href: virtual-wan-point-to-site-azure-ad.md
     - name: Konfigurace víceaplikačního ověřování Azure AD pro VPN uživatele
       href: openvpn-azure-ad-tenant-multi-app.md
-    - name: Konfigurace automatizace (partneři služby Virtual WAN)
-      href: virtual-wan-configure-automation-providers.md
     - name: Stažení globálních profilů VPN a profilů VPN založených na centrech
       href: global-hub-profile.md
     - name: Konfigurace směrování

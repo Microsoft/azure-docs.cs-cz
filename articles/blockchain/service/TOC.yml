@@ -23,14 +23,18 @@
           href: connect-truffle.md
 - name: Kurzy
   items:
-    - name: Použití inteligentních kontraktů
+    - name: Vytváření inteligentních kontraktů
       href: send-transaction.md
+    - name: Publikování dat s využitím Data Manageru
+      href: data-manager-cosmosdb.md
 - name: Koncepty
   items:
     - name: Konsorcium
       href: consortium.md
     - name: Zabezpečení a přístup k datům
       href: data-security.md
+    - name: Přehled Data Manageru
+      href: data-manager.md
     - name: Vývoj
       href: develop.md
     - name: Omezení
@@ -41,6 +45,10 @@
   items:
     - name: Konfigurace přístupu Azure AD
       href: configure-aad.md
+    - name: Konfigurace Data Manageru – portál
+      href: data-manager-portal.md
+    - name: Konfigurace Data Manageru – CLI
+      href: data-manager-cli.md
     - name: Konfigurace transakčních uzlů
       href: configure-transaction-nodes.md
     - name: Správa s využitím rozhraní příkazového řádku Azure
@@ -51,16 +59,6 @@
       href: ethereum-logic-app.md
     - name: Monitorování služby Azure Blockchain
       href: monitor-azure-blockchain-service.md
-- name: Data Manager pro blokchain
-  items:
-    - name: Přehled Data Manageru
-      href: data-manager.md
-    - name: Konfigurace Data Manageru – portál
-      href: data-manager-portal.md
-    - name: Konfigurace Data Manageru – CLI
-      href: data-manager-cli.md
-    - name: Publikování dat do Cosmos DB
-      href: data-manager-cosmosdb.md
 - name: Zdroje a prostředky
   items:
     - name: Sada Azure Blockchain Dev Kit

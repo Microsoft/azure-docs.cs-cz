@@ -907,22 +907,6 @@
           href: platform/rest-api-walkthrough.md
     - name: Vizualizace dat
       items:
-        - name: Zobrazení
-          items:
-            - name: Návrhář zobrazení
-              href: platform/view-designer.md
-            - name: Referenční informace k dlaždicím
-              href: platform/view-designer-tiles.md
-            - name: Referenční informace k části vizualizace
-              href: platform/view-designer-parts.md
-            - name: Filtry
-              href: platform/view-designer-filters.md
-        - name: Power BI
-          items:
-            - name: Export dat protokolů
-              href: platform/powerbi.md
-            - name: Export dat aplikací
-              href: app/export-power-bi.md
         - name: Workbooks
           items:
             - name: Přehled
@@ -949,6 +933,36 @@
                       href: platform/workbooks-time.md
                     - name: Parametry textu
                       href: platform/workbooks-text.md
+        - name: Zobrazení
+          items:
+            - name: Převod zobrazení na sešity
+              items:
+                - name: Přehled převodů
+                  href: platform/view-designer-conversion-overview.md
+                - name: Možnosti převodu
+                  href: platform/view-designer-conversion-options.md
+                - name: Přehled a přístup
+                  href: platform/view-designer-conversion-access.md
+                - name: Běžné úkoly
+                  href: platform/view-designer-conversion-tasks.md
+                - name: Převody dlaždic
+                  href: platform/view-designer-conversion-tiles.md
+                - name: Příklady
+                  href: platform/view-designer-conversion-examples.md
+            - name: Návrhář zobrazení
+              href: platform/view-designer.md
+            - name: Referenční informace k dlaždicím
+              href: platform/view-designer-tiles.md
+            - name: Referenční informace k části vizualizace
+              href: platform/view-designer-parts.md
+            - name: Filtry
+              href: platform/view-designer-filters.md
+        - name: Power BI
+          items:
+            - name: Export dat protokolů
+              href: platform/powerbi.md
+            - name: Export dat aplikací
+              href: app/export-power-bi.md
         - name: Řídicí panely
           items:
             - name: Řídicí panel s využitím dat protokolů

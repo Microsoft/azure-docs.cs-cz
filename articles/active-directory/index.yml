@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: d212a7223eea2ccbaaddeb9c45db85e13c7ff9c8
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.openlocfilehash: 1ce670f2783eb12db307eac42974667dd809de9d
+  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75443462"
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77159297"
 highlightedContent:
   items:
   - title: Co je Azure AD?
@@ -53,6 +53,20 @@ conceptualContent:
       text: Proxy aplikací pro místní aplikace
     footerLink:
       url: ./manage-apps/index.yml
+      text: Další informace
+  - title: Zřizování aplikací a HR
+    links:
+    - url: ./app-provisioning/user-provisioning.md
+      itemType: overview
+      text: Co je zřizování aplikací?
+    - url: ./app-provisioning/how-provisioning-works.md
+      itemType: concept
+      text: Jak funguje zřizování aplikací
+    - url: ./app-provisioning/plan-cloud-hr-provision.md
+      itemType: how-to-guide
+      text: Plánování nasazení zřizování HR v cloudu
+    footerLink:
+      url: ./app-provisioning/index.yml
       text: Další informace
   - title: Authentication
     links:

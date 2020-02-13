@@ -372,6 +372,8 @@
                   href: ./spark/apache-spark-run-machine-learning-automl.md
         - name: Řešení potíží
           items:
+            - name: Nejde vytvořit poznámkový blok Jupyter
+              href: ./spark/troubleshoot-jupyter-notebook-convert.md
             - name: Výjimka OutOfMemoryError
               href: ./spark/apache-spark-troubleshoot-outofmemory.md
             - name: Selhání úlohy Apache Sparku – NoClassDefFoundError
@@ -396,6 +398,8 @@
               href: ./spark/apache-spark-troubleshoot-event-log-requestbodytoolarge.md
             - name: Ladění úloh Apache Spark
               href: ./spark/apache-spark-job-debugging.md
+            - name: Ladění operací se soubory WASB
+              href: ./spark/troubleshoot-debug-wasb.md
             - name: Použití IntelliJ k ladění úloh Apache Spark
               href: ./spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md
             - name: Řešení potíží s Apache Sparkem
@@ -523,6 +527,8 @@
               href: ./hadoop/troubleshoot-port-conflict.md
             - name: Ztráta přístupu ke službě Key Vault
               href: ./hadoop/troubleshoot-lost-key-vault-access.md
+            - name: Výjimka úložiště WASBS
+              href: ./hadoop/troubleshoot-wasbs-storage-exception.md
 - name: Apache Kafka
   items:
     - name: Přehled

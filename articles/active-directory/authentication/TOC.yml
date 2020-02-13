@@ -64,7 +64,7 @@
   items:
     - name: Samoobslužné resetování hesla
       items:
-        - name: Nasazení samoobslužného resetování hesla
+        - name: Průvodce nasazením
           href: howto-sspr-deployment.md
         - name: Předběžná registrace dat ověřování
           href: howto-sspr-authenticationdata.md
@@ -74,7 +74,7 @@
           href: howto-sspr-windows.md
     - name: Cloudové ověřování MFA
       items:
-        - name: Nasazení cloudového ověřování MFA
+        - name: Průvodce nasazením
           href: howto-mfa-getstarted.md
         - name: Ověřování MFA podle uživatele
           href: howto-mfa-userstates.md

@@ -271,6 +271,8 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Propojení s Power BI
               href: knowledge-store-connect-power-bi.md
+            - name: Příklady projekcí
+              href: knowledge-store-projections-examples.md
     - name: Dotazování dokumentů
       items:
         - name: Sestavení a typy dotazů

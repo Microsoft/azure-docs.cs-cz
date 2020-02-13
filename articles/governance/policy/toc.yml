@@ -37,218 +37,30 @@
 - name: ukázky
   items:
     - name: Index
-      displayName: 'list, examples'
+      displayName: 'list, builtins'
       href: ./samples/index.md
-    - name: Obecné
+    - name: Předdefinované zásady
+      href: ./samples/built-in-policies.md
+    - name: Předdefinované iniciativy
+      href: ./samples/built-in-initiatives.md
+    - name: Vzory využití
       items:
-        - name: Pojmenování
-          items:
-            - name: Povolení více vzorů s názvy
-              displayName: 'deny, indexed'
-              href: samples/allow-multiple-name-patterns.md
-            - name: Vyžadování vzoru s podmínkou like
-              displayName: 'deny, indexed'
-              href: samples/enforce-like-pattern.md
-            - name: Vyžadování shody se vzorem
-              displayName: 'deny, indexed'
-              href: samples/enforce-match-pattern.md
-            - name: Vyžadování shody značky se vzorem
-              displayName: 'deny, all'
-              href: samples/enforce-tag-match-pattern.md
-        - name: Značky
-          items:
-            - name: Zavedení značky a její výchozí hodnoty
-              displayName: 'append, builtin, concat'
-              href: samples/apply-tag-default-value.md
-            - name: Iniciativa zásad fakturačních značek
-              href: samples/billing-tags-policy-initiative.md
-            - name: Vynucovat použití značky a její hodnoty
-              displayName: 'deny, concat, builtin'
-              href: samples/enforce-tag-value.md
-            - name: Vynucení značky a její hodnoty ve skupinách prostředků
-              displayName: 'deny, concat'
-              href: samples/enforce-tag-on-resource-groups.md
-        - name: Umístění
-          items:
-            - name: Povolená umístění
-              displayName: 'deny, builtin, location'
-              href: samples/allowed-locations.md
-        - name: Typy prostředků
-          items:
-            - name: Povolené typy prostředků
-              displayName: 'deny, builtin, resourceTypes'
-              href: samples/allowed-resource-types.md
-            - name: Nepovolené typy prostředků
-              displayName: 'deny, builtin, resourceTypes'
-              href: samples/not-allowed-resource-types.md
-    - name: Compute
-      items:
-        - name: Virtuální počítače
-          items:
-            - name: Povolení vlastní image virtuálního počítače ze skupiny prostředků
-              displayName: 'deny, concat, ExistingResourceGroups'
-              href: samples/allow-custom-vm-image.md
-            - name: Povolené skladové položky účtů úložišť a virtuálních počítačů
-              displayName: 'initiative, vmSKUs, storageSKUs'
-              href: samples/allowed-skus-storage.md
-            - name: Schválené image virtuálních počítačů
-              displayName: deny
-              href: samples/allowed-custom-images.md
-            - name: 'Auditování, když neexistuje rozšíření'
-              displayName: auditIfNotExists
-              href: samples/audit-extension-not-exist.md
-            - name: Nepovolená rozšíření virtuálního počítače
-              displayName: deny
-              href: samples/not-allowed-vm-extension.md
-        - name: Škálovací sady virtuálních počítačů
-          items:
-            - name: 'Audit virtuálního počítače, který nepoužívá spravovaný disk'
-              displayName: audit
-              href: samples/create-vm-managed-disk.md
-            - name: 'Vytvoření virtuálního počítače, který používá spravovaný disk'
-              displayName: deny
-              href: samples/use-managed-disk-vm.md
-            - name: Odepření zvýhodněného hybridního využití
-              displayName: deny
-              href: samples/deny-hybrid-use.md
-            - name: Povolení jenom určité image platformy virtuálního počítače
-              displayName: deny
-              href: samples/allow-certain-vm-image.md
-    - name: Data Lake
-      items:
-        - name: Vynucení šifrování Data Lake Store
-          displayName: deny
-          href: samples/enforce-data-lake-store-encryption.md
-    - name: Konfigurace hosta
-      items:
-        - name: 'Audit aplikací, které nejsou nainstalované v Linuxu'
-          displayName: 'audit, vm'
-          href: samples/guest-configuration-applications-installed-linux.md
-    - name: Trezory klíčů
-      items:
-        - name: Auditování trezorů bez koncových bodů virtuální sítě
-          displayName: 'audit, KeyVault, indexed'
-          href: samples/keyvault-no-vnet-rules.md
-    - name: Monitorování
-      items:
-        - name: Auditování nastavení diagnostiky
-          displayName: 'auditIfNotExists, resourceTypes'
-          href: samples/audit-diagnostic-setting.md
-    - name: Síť
-      items:
-        - name: Síťová rozhraní
-          items:
-            - name: NSG X ve všech síťových rozhraních
-              displayName: deny
-              href: samples/nsg-on-nic.md
-            - name: Použití schválené podsítě pro síťová rozhraní virtuálních počítačů
-              displayName: deny
-              href: samples/use-approved-subnet-vm-nics.md
-            - name: Použití schválené virtuální sítě pro síťová rozhraní virtuálních počítačů
-              displayName: 'deny, concat'
-              href: samples/use-approved-vnet-vm-nics.md
-        - name: Virtuální sítě
-          items:
-            - name: Povolené skladové položky aplikační brány
-              displayName: deny
-              href: samples/allowed-app-gateway-sku.md
-            - name: Povolené skladové položky brány virtuální sítě
-              displayName: deny
-              href: samples/allowed-vnet-gateway-sku.md
-            - name: Povolené skladové položky nástroje pro vyrovnávání zatížení
-              displayName: deny
-              href: samples/allowed-load-balancer-skus.md
-            - name: Blokování partnerských vztahů se sítí ER
-              displayName: 'deny, all, concat, ExistingResourceGroups'
-              href: samples/no-peering-express-route-network.md
-            - name: Bez tabulky směrování definované uživatelem
-              displayName: 'deny, all'
-              href: samples/no-user-defined-route-table.md
-            - name: NSG X ve všech podsítích
-              displayName: 'deny, all'
-              href: samples/nsg-on-subnet.md
-            - name: Použití schválené podsítě pro síťová rozhraní virtuálních počítačů
-              displayName: deny
-              href: samples/use-approved-subnet-vm-nics.md
-            - name: Použití schválené virtuální sítě pro síťová rozhraní virtuálních počítačů
-              displayName: deny
-              href: samples/use-approved-vnet-vm-nics.md
-        - name: Skupiny zabezpečení sítě
-          items:
-            - name: NSG X ve všech síťových rozhraních
-              displayName: deny
-              href: samples/nsg-on-nic.md
-            - name: NSG X ve všech podsítích
-              displayName: 'deny, all'
-              href: samples/nsg-on-subnet.md
-        - name: ExpressRoute
-          items:
-            - name: Povolená šířka pásma pro ExpressRoute
-              displayName: deny
-              href: samples/allowed-express-route-bandwidth.md
-            - name: Povolené skladové položky pro ExpressRoute
-              displayName: deny
-              href: samples/allowed-express-route-skus.md
-            - name: Povolená umístění peeringu pro ExpressRoute
-              displayName: 'deny, Location'
-              href: samples/allowed-express-route-peering.md
-        - name: Sledovací procesy sítě
-          items:
-            - name: 'Provedení auditu, pokud oblast nemá povolenou službu Network Watcher'
-              displayName: 'auditIfNotExists, Location'
-              href: samples/network-watcher-not-enabled.md
-        - name: Application Gateway
-          items:
-            - name: Povolené skladové položky aplikační brány
-              displayName: deny
-              href: samples/allowed-app-gateway-sku.md
-    - name: SQL
-      items:
-        - name: SQL Servery
-          items:
-            - name: 'Auditování, když není žádný správce Azure Active Directory'
-              displayName: auditIfNotExists
-              href: samples/audit-no-aad-admin.md
-            - name: Audit nastavení detekce hrozeb na úrovni serveru
-              displayName: auditIfNotExists
-              href: samples/audit-sql-server-threat-detection-setting.md
-            - name: Audit nastavení auditování SQL Serveru
-              displayName: 'auditIfNotExists, builtin'
-              href: samples/sql-server-audit.md
-            - name: Audit nastavení auditování na úrovni SQL Serveru
-              displayName: auditIfNotExists
-              href: samples/audit-sql-server-audit-setting.md
-        - name: Databáze SQL
-          items:
-            - name: Povolené skladové položky pro databáze SQL
-              displayName: deny
-              href: samples/allowed-sql-db-skus.md
-            - name: Audit nastavení detekce hrozeb na úrovni databáze SQL
-              displayName: auditIfNotExists
-              href: samples/audit-db-threat-detection-setting.md
-            - name: Audit šifrování databáze SQL
-              displayName: 'auditIfNotExists, disabled, indexed, builtin'
-              href: samples/sql-database-encryption-audit.md
-            - name: Audit nastavení auditování na úrovni databáze SQL
-              displayName: auditIfNotExists
-              href: samples/audit-sql-db-audit-setting.md
-    - name: Storage
-      items:
-        - name: Povolené skladové položky pro účet úložiště a virtuální počítače
-          displayName: 'initiative, vmSKUs, storageSKUs'
-          href: samples/allowed-skus-storage.md
-        - name: Povolené skladové položky účtu úložiště
-          displayName: 'deny, builtin, storageSKUs'
-          href: samples/allowed-storage-account-skus.md
-        - name: Odepření studených úrovní přístupu pro účty úložiště
-          displayName: 'deny, all'
-          href: samples/deny-cool-access-tiering.md
-        - name: Zajištění výhradně provozu HTTPS pro účet úložiště
-          displayName: 'deny, all'
-          href: samples/ensure-https-storage-account.md
-        - name: Zajištění šifrování souborů úložiště
-          displayName: 'deny, all'
-          href: samples/ensure-storage-file-encryption.md
+        - name: Logické operátory
+          href: ./samples/pattern-logical-operators.md
+        - name: Fields (Pole)
+          href: ./samples/pattern-fields.md
+        - name: Parametry
+          href: ./samples/pattern-parameters.md
+        - name: Podrobnosti o efektu
+          href: ./samples/pattern-effect-details.md
+        - name: Operátor hodnoty
+          href: ./samples/pattern-value-operator.md
+        - name: Operátor počtu
+          href: ./samples/pattern-count-operator.md
+        - name: Seskupení do iniciativy
+          href: ./samples/pattern-group-with-initiative.md
+        - name: Nasazení prostředků
+          href: ./samples/pattern-deploy-resources.md
 - name: Koncepty
   items:
     - name: Struktura definic Azure Policy

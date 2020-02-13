@@ -19,20 +19,30 @@
       href: concept-conditional-access-policy-common.md
     - name: Komponenty zásad podmíněného přístupu
       href: concept-conditional-access-policies.md
-    - name: Cloudové aplikace a akce
-      href: concept-conditional-access-cloud-apps.md
-    - name: Podmínky
-      href: conditions.md
-    - name: Podmínky umístění
-      href: location-condition.md
-    - name: Ovládací prvky
-      href: controls.md
+    - name: Přiřazení
+      items:
+        - name: Uživatelé a skupiny
+          href: concept-conditional-access-users-groups.md
+        - name: Cloudové aplikace nebo akce
+          href: concept-conditional-access-cloud-apps.md
+        - name: Podmínky
+          href: concept-conditional-access-conditions.md
+    - name: Řízení přístupu
+      items:
+        - name: Oprávnění
+          href: concept-conditional-access-grant.md
+        - name: Relace
+          href: concept-conditional-access-session.md
     - name: Režim pouze sestav
       href: concept-conditional-access-report-only.md
     - name: Závislosti služeb
       href: service-dependencies.md
+    - name: Podmínky umístění
+      href: location-condition.md
     - name: Nástroj What If
       href: what-if-tool.md
+    - name: Ovládací prvky
+      href: controls.md
     - name: Migrace klasických zásad
       href: policy-migration.md
     - name: Zásady základní ochrany
@@ -84,10 +94,6 @@
       items:
         - name: Řešení potíží pomocí nástroje What If
           href: troubleshoot-conditional-access-what-if.md
-- name: Referenční informace
-  items:
-    - name: Technické referenční informace
-      href: technical-reference.md
 - name: Zdroje a prostředky
   items:
     - name: Fórum Azure pro názory

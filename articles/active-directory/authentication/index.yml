@@ -10,14 +10,14 @@ metadata:
   ms.topic: landing-page
   author: iainfoulds
   ms.author: iainfou
-  ms.date: 08/20/2019
+  ms.date: 02/11/2020
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 01e1fe5ed73275078fc37dbec9a0857a8c4a8619
-  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+  ms.openlocfilehash: 3c431b81c0da54045e9b9b020de5275912b394c6
+  ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/05/2019
-  ms.locfileid: "74847147"
+  ms.lasthandoff: 02/12/2020
+  ms.locfileid: "77166420"
 landingContent:
 - title: Informace o ověřování
   linkLists:
@@ -39,16 +39,16 @@ landingContent:
       url: concept-sspr-howitworks.md
     - text: Zpětný zápis hesla
       url: concept-sspr-writeback.md
-  - linkListType: quickstart
+  - linkListType: tutorial
     links:
-    - text: Rychlé zprovoznění samoobslužného resetování hesla
-      url: quickstart-sspr.md
+    - text: Povolení samoobslužného resetování hesel
+      url: tutorial-enable-sspr.md
+    - text: Povolení zpětného zápisu hesel do místního prostředí
+      url: tutorial-enable-writeback.md
   - linkListType: deploy
     links:
-    - text: Nasazení samoobslužného resetování hesla Azure AD
+    - text: Průvodce nasazením pro samoobslužné resetování hesla
       url: howto-sspr-deployment.md
-    - text: Povolení zpětného zápisu hesel
-      url: howto-sspr-writeback.md
     - text: Povolení resetování hesla z přihlašovací obrazovky Windows
       url: howto-sspr-windows.md
 - title: Povolení služby Azure Multi-Factor Authentication
@@ -59,13 +59,13 @@ landingContent:
       url: concept-mfa-howitworks.md
   - linkListType: tutorial
     links:
-    - text: Pilotní Azure MFA pro konkrétní aplikace
-      url: tutorial-mfa-applications.md
-    - text: Použití detekce rizik k aktivaci vícefaktorového ověřování a změn hesel
+    - text: Povolení služby Azure Multi-Factor Authentication
+      url: tutorial-enable-azure-mfa.md
+    - text: Zapnutí služby Azure Multi-Factor Authentication na základě rizikové události
       url: tutorial-risk-based-sspr-mfa.md
   - linkListType: deploy
     links:
-    - text: Nasazení služby Azure Multi-Factor Authentication
+    - text: Průvodce nasazením pro Azure Multi-Factor Authentication
       url: howto-mfa-getstarted.md
     - text: Integrace místních aplikací pomocí rozšíření serveru NPS
       url: howto-mfa-nps-extension.md
