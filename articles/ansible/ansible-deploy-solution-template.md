@@ -4,12 +4,12 @@ description: V tomto rychlém startu se dozvíte, jak nasadit šablonu řešení
 keywords: Ansible, Azure, DevOps, šablona řešení, virtuální počítač, spravované identity pro prostředky Azure, CentOS, Red Hat
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: ebd01411ff27b0e95be21ef147098a90b6f62742
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: cc3a6c1f0ef36b51b62e6aa58f317aee13149589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156327"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193782"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>Rychlý Start: nasazení šablony řešení Ansible pro Azure do CentOS
 
@@ -19,7 +19,7 @@ ms.locfileid: "74156327"
 - **Rozhraní příkazového řádku Azure (CLI) 2,0** – [Azure CLI 2,0](/cli/azure/?view=azure-cli-latest) je prostředí příkazového řádku pro různé platformy pro správu prostředků Azure. 
 - **spravované identity pro prostředky Azure** – funkce [spravované identity pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/overview) řeší potíže se zabezpečením přihlašovacích údajů ke cloudovým aplikacím.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 
@@ -31,7 +31,7 @@ ms.locfileid: "74156327"
 
 1. Zobrazí se okno s informacemi o podmínek použití, zásadách ochrany osobních údajů a použití podmínek Azure Marketplace. Vyberte **Pokračovat**.
 
-1. Zobrazí se Azure Portal a zobrazí stránku Ansible, která popisuje šablonu řešení. Vyberte **Vytvořit**.
+1. Zobrazí se Azure Portal a zobrazí stránku Ansible, která popisuje šablonu řešení. Vyberte **Create** (Vytvořit).
 
 1. Na stránce **vytvořit Ansible** se zobrazí několik karet. Na kartě **základy** zadejte požadované informace:
 
@@ -85,4 +85,4 @@ ms.locfileid: "74156327"
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Rychlý Start: konfigurace virtuálního počítače se systémem Linux v Azure pomocí Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Rychlý Start: konfigurace virtuálního počítače se systémem Linux v Azure pomocí Ansible](./ansible-create-vm.md)

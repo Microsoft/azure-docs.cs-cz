@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 01/23/2020
+ms.date: 02/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fc1129b4ca6d0618e6b818a103e2a5513f69f3d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: c5ccfb4719d14d0ce73caf093c5fe63631eda2a7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758206"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195211"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Co je přístup uživatelů typu host při spolupráci B2B v Azure Active Directory?
 
@@ -30,23 +30,29 @@ Následující video nabízí praktický přehled.
 >[!VIDEO https://www.youtube.com/embed/AhwrweCBdsc]
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>Spolupráce s partnery s využitím jejich vlastních identit
-Při spolupráci B2B v Azure AD partner používá ke správě identit vlastní řešení. Vaší organizaci tak v této souvislosti nevznikají další režijní náklady. 
-- Partner používá vlastní identity a přihlašovací údaje, a nepotřebuje k tomu Azure AD. 
-- Nemusíte spravovat externí účty ani hesla. 
+
+Při spolupráci B2B v Azure AD partner používá ke správě identit vlastní řešení. Vaší organizaci tak v této souvislosti nevznikají další režijní náklady.
+
+- Partner používá vlastní identity a přihlašovací údaje, a nepotřebuje k tomu Azure AD.
+- Nemusíte spravovat externí účty ani hesla.
 - Nemusíte synchronizovat účty ani spravovat jejich životní cyklus.  
 
 ![Snímek obrazovky zobrazující stránku přidat členy](media/what-is-b2b/add-member.png)
 
 ## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>Pozvání uživatelů typu host prostřednictvím jednoduché pozvánky a jejího uplatnění
+
 Uživatelé typu host používají při přihlášení k vašim aplikacím a službám vlastní pracovní, školní nebo sociální identitu. Pokud uživatel typu host nemá účet Microsoft ani účet Azure AD, vytvoří se jim po uplatnění pozvánky. 
+
 - K pozvání uživatelů typu host použijte e-mailovou identitu, kterou si sami vyberou.
-- Pošlete jim přímo odkaz na aplikaci nebo jim pošlete pozvánku do vlastního přístupového panelu uživatele typu host. 
+- Pošlete jim přímo odkaz na aplikaci nebo jim pošlete pozvánku do vlastního přístupového panelu uživatele typu host.
 - Uživatelé typu host provedou při přihlášení a uplatnění pozvánky několik jednoduchých kroků.
 
 ![Snímek obrazovky se stránkou pro kontrolu oprávnění](media/what-is-b2b/consentscreen.png)
 
 ## <a name="use-policies-to-securely-share-your-apps-and-services"></a>Použití zásad při bezpečném sdílení aplikací a služeb
+
 K ochraně firemního obsahu můžete použít zásady autorizace. Zásady podmíněného přístupu, jako je Multi-Factor Authentication, se dají vymáhat:
+
 - Na úrovni tenanta
 - Na úrovni aplikace
 - Pro konkrétní uživatele typu host, abyste chránili firemní aplikace a data
@@ -57,6 +63,7 @@ K ochraně firemního obsahu můžete použít zásady autorizace. Zásady podm�
 ## <a name="easily-add-guest-users-in-the-azure-ad-portal"></a>Jednoduché přidání uživatelů typu host na webu Azure Portal
 
 Jako správce můžete do své organizace na webu Azure Portal jednoduše přidat uživatele typu host.
+
 - V Azure AD můžete vytvořit nového uživatele typu host podobně, jako byste přidávali nového uživatele.
 - Uživateli typu host ihned přijde přizpůsobená pozvánka, ze které se může přihlásit ke svému přístupovému panelu.
 - Uživatele typu host můžete v adresáři přiřazovat k aplikacím nebo skupinám.  
@@ -65,19 +72,19 @@ Jako správce můžete do své organizace na webu Azure Portal jednoduše přida
 
 ## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>Nechte vlastníky aplikací a skupin spravovat vlastní uživatele typu host
 
-Správu uživatelů typu host můžete delegovat na vlastníky aplikací, aby do libovolné aplikace, kterou chtějí sdílet, mohli přímo přidávat uživatele typu host. Přitom nezáleží, jestli je aplikace od Microsoftu. 
- - Správci nastaví samoobslužnou správu aplikace a skupiny.
- - Uživatelé, kteří nejsou správci, použijí k přidání uživatelů typu host do aplikací nebo skupin [přístupový panel](https://myapps.microsoft.com).
+Správu uživatelů typu host můžete delegovat na vlastníky aplikací, aby do libovolné aplikace, kterou chtějí sdílet, mohli přímo přidávat uživatele typu host. Přitom nezáleží, jestli je aplikace od Microsoftu.
+
+- Správci nastaví samoobslužnou správu aplikace a skupiny.
+- Uživatelé, kteří nejsou správci, použijí k přidání uživatelů typu host do aplikací nebo skupin [přístupový panel](https://myapps.microsoft.com).
 
 ![Snímek obrazovky zobrazující přístupový panel pro uživatele typu Host](media/what-is-b2b/access-panel-manage-app.png)
 
-## <a name="use-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>Použití rozhraní API a ukázkového kódu k jednoduchému připojení vytvořených aplikací
+## <a name="customize-the-onboarding-experience-for-b2b-guest-users"></a>Přizpůsobení prostředí připojování pro uživatele typu Host B2B
 
 Připojte externí partnery tak, jak to vyhovuje potřebám vaší organizace.
-- K přizpůsobení připojovacího prostředí můžete použít [rozhraní API s pozváním ke spolupráci B2B](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation), včetně vytvoření samoobslužných přihlašovacích portálů. 
-- Použijte vzorový kód, který poskytujeme pro samoobslužný portál [na GitHubu](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web).
 
-![Snímek obrazovky s ukázkovým registračním portálem](media/what-is-b2b/sign-up-portal.png)
+- Využijte [správu nároků Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) ke konfiguraci zásad, které [spravují přístup pro externí uživatele](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users).
+- Použijte [rozhraní API pro pozvánky B2B pro spolupráci](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) k přizpůsobení prostředí připojování.
 
 ## <a name="next-steps"></a>Další kroky
 

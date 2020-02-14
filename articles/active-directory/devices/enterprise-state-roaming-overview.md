@@ -1,41 +1,41 @@
 ---
-title: Co je stav enterprise roaming v Azure Active Directory? | Dokumenty Microsoft
-description: Enterprise State Roaming uživatelům poskytuje jednotné prostředí v jejich zařízeních Windows a snižuje čas potřebný ke konfiguraci nových zařízení.
+title: Co je roaming státních přenosů v Azure Active Directory?
+description: Enterprise State Roaming poskytuje uživatelům jednotný zážitek ze svých zařízení s Windows.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: overview
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5b60970592180a2353860369e637d4b9a9bb8f9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c22baf0a08718883f0c0c9844cc395f607b5b20d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481909"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194275"
 ---
 # <a name="what-is-enterprise-state-roaming"></a>Co je Enterprise State Roaming?
 
-S Windows 10 [Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) uživatelé získají možnost bezpečně synchronizaci svých uživatelských nastavení a nastavení data aplikací do cloudu. Enterprise State Roaming uživatelům poskytuje jednotné prostředí v jejich zařízeních Windows a snižuje čas potřebný ke konfiguraci nových zařízení. Enterprise State Roaming funguje podobně jako standardní [synchronizace nastavení příjemce](https://go.microsoft.com/fwlink/?linkid=2015135) , která byla poprvé zavedena v systému Windows 8. Enterprise State Roaming dál nabízí:
+S Windows 10 uživatelé [Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) získají možnost bezpečně synchronizovat data uživatelských nastavení a nastavení aplikace do cloudu. Enterprise State Roaming poskytuje uživatelům jednotný zážitek ze svých zařízení s Windows a zkracuje dobu potřebnou ke konfiguraci nového zařízení. Enterprise State Roaming funguje podobně jako standardní [synchronizace nastavení zákazníků](https://go.microsoft.com/fwlink/?linkid=2015135) , která byla poprvé zavedena ve Windows 8. Kromě toho Enterprise State Roaming nabídky:
 
-* **Oddělení podnikové a uživatelských dat** – organizace mají kontrolu nad jejich dat a neexistuje žádná kombinování firemních dat v cloudovém účtu příjemce nebo uživatelských dat v účtu služby enterprise cloud.
-* **Zvýšené zabezpečení** – Data budou automaticky šifrována před opuštěním zařízení s Windows 10 uživatele pomocí Azure Rights Management (Azure RMS) a data zůstanou šifrovaná v klidovém stavu uložených v cloudu. Veškerý obsah zůstává zašifrovaný v klidovém stavu uložených v cloudu, s výjimkou obory názvů, jako jsou názvy nastavení a aplikace Windows.  
-* **Lepší monitorování a správa** – poskytuje řízení a viditelnost, přes který se má synchronizovat nastavení ve vaší organizaci a v zařízení, která prostřednictvím portálu integrace služby Azure AD. 
+* **Oddělení podnikových a zákaznických dat** – organizace mají kontrolu nad svými daty a neexistují žádné kombinace podnikových dat v účtu cloudového a zákaznického data v podnikovém cloudovém účtu.
+* **Rozšířené zabezpečení** – data se šifrují automaticky před tím, než se zařízení s Windows 10 opustí pomocí Azure Rights Management (Azure RMS), a data zůstanou v cloudu zašifrovaná v klidovém prostředí. Veškerý obsah zůstává zašifrovaný v klidovém stavu v cloudu, s výjimkou oborů názvů, jako jsou názvy nastavení a názvy aplikací pro Windows.  
+* **Lepší správa a monitorování** – poskytuje kontrolu a viditelnost při synchronizaci nastavení ve vaší organizaci a na tom, která zařízení prostřednictvím integrace portálu Azure AD. 
 
-Enterprise State Roaming je k dispozici v několika oblastech Azure. Aktualizovaný seznam dostupných oblastí najdete na [služeb Azure podle oblasti](https://azure.microsoft.com/regions/#services) stránce v části Azure Active Directory.
+Enterprise State Roaming je k dispozici ve více oblastech Azure. Aktualizovaný seznam dostupných oblastí najdete na stránce [služby Azure podle oblastí](https://azure.microsoft.com/regions/#services) v části Azure Active Directory.
 
 | Článek | Popis |
 | --- | --- |
-| [Povolení služby Enterprise State Roaming v Azure Active Directory](enterprise-state-roaming-enable.md) |Enterprise State Roaming je k dispozici pro všechny organizace s předplatným Premium služby Azure Active Directory (Azure AD). Další informace o tom, jak získat předplatné Azure AD, najdete v článku [produktu Azure AD](https://azure.microsoft.com/services/active-directory) stránky. |
-| [Nastavení a datovému roamingu – nejčastější dotazy](enterprise-state-roaming-faqs.md) |Toto téma odpovědi na některé dotazy, které správce IT může mít informace o nastavení a synchronizace dat aplikace. |
-| [Skupina zásad a nastavení MDM pro nastavení synchronizace](enterprise-state-roaming-group-policy-settings.md) |Windows 10 nabízí zásad skupiny a správy mobilních zařízení (MDM) nastavení zásad k omezení nastavení synchronizace. |
-| [Informace o cestovní nastavení Windows 10](enterprise-state-roaming-windows-settings-reference.md) |Následuje úplný seznam všech nastavení, které bude možné s roamingem a/nebo zálohování ve Windows 10. |
-| [Odstraňování potíží](enterprise-state-roaming-troubleshooting.md) |Toto téma prochází některé základní kroky pro řešení potíží a obsahuje seznam známých problémů. |
+| [Povolit Enterprise State Roaming v Azure Active Directory](enterprise-state-roaming-enable.md) |Enterprise State Roaming je k dispozici pro libovolnou organizaci s předplatným Premium Azure Active Directory (Azure AD). Další informace o tom, jak získat předplatné služby Azure AD, najdete na stránce [produktu Azure AD](https://azure.microsoft.com/services/active-directory) . |
+| [Nejčastější dotazy k nastavení a datovému roamingu](enterprise-state-roaming-faqs.md) |Tento článek obsahuje odpovědi na některé otázky, které správci IT můžou narazit na nastavení a synchronizaci dat aplikace. |
+| [Zásady skupiny a nastavení MDM pro synchronizaci nastavení](enterprise-state-roaming-group-policy-settings.md) |Windows 10 poskytuje Zásady skupiny a nastavení zásad správy mobilních zařízení (MDM) k omezení synchronizace nastavení. |
+| [Referenční informace o nastavení roamingu pro Windows 10](enterprise-state-roaming-windows-settings-reference.md) |Seznam nastavení, která budou v systému Windows 10 roamingovaná a zálohovaná. |
+| [Řešení potíží](enterprise-state-roaming-troubleshooting.md) |Tento článek prochází několik základních kroků pro řešení potíží a obsahuje seznam známých problémů. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Informace o povolení enterprise stav roamingu najdete v tématu [povolit roaming stavu enterprise](enterprise-state-roaming-enable.md).
+Informace o povolení roamingu podnikového stavu najdete v tématu [Povolení služby Enterprise State Roaming](enterprise-state-roaming-enable.md).

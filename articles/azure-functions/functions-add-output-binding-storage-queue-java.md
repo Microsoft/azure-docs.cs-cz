@@ -3,12 +3,12 @@ title: Připojte funkci jazyka Java k Azure Storage
 description: Naučte se připojit funkci Java aktivovanou protokolem HTTP, která se Azure Storage pomocí výstupní vazby úložiště fronty.
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: 98f49338f0df935347a26798aceccb80f9f43f50
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 72e3aad15ea8ef922d89a67891e223b65473b909
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926903"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198543"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Připojte funkci jazyka Java k Azure Storage
 
@@ -118,7 +118,7 @@ mvn azure-functions:run
 ```
 
 > [!NOTE]  
-> Vzhledem k tomu, že jste povolili sady rozšíření v Host. JSON, [rozšíření pro vytváření vazeb úložiště](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) se během spouštění stáhlo a nainstalovalo společně s dalšími rozšířeními vazby Microsoftu.
+> Vzhledem k tomu, že jste povolili sady rozšíření v Host. JSON, [rozšíření pro vytváření vazeb úložiště](functions-bindings-storage-blob.md#add-to-your-functions-app) se během spouštění stáhlo a nainstalovalo společně s dalšími rozšířeními vazby Microsoftu.
 
 Stejně jako dřív aktivujte funkci z příkazového řádku pomocí funkce kudrlinkou v novém okně terminálu:
 

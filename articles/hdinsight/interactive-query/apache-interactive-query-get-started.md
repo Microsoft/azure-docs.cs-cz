@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 09/17/2019
-ms.openlocfilehash: 3e0fddc03ad880d36876276827198b0ac180a00d
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: f03797a8c7df1609a32f934bc090c7adc899aa9a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076362"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198918"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Co je interaktivní dotaz ve službě Azure HDInsight
 
-Interaktivní dotaz (označovaný také jako Apache Hive LLAP nebo [Analytical Processing s nízkou latencí](https://cwiki.apache.org/confluence/display/Hive/LLAP)) je [typ clusteru](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)Azure HDInsight. Interaktivní dotaz podporuje ukládání do mezipaměti v paměti, což dává Apache Hive dotazy rychleji a mnohem více interaktivních. Zákazníci používají interaktivní dotaz k dotazování dat uložených ve službě Azure Storage & Azure Data Lake Storage velmi rychle. Interaktivní dotaz vývojářům a datům usnadňuje práci s velkými objemy dat pomocí nástrojů BI, které mají nejvíc. Interaktivní dotaz HDInsight podporuje snadnější přístup k velkým objemům dat několika různými nástroji.
+Interaktivní dotaz (označovaný také jako Apache Hive LLAP nebo [Analytical Processing s nízkou latencí](https://cwiki.apache.org/confluence/display/Hive/LLAP)) je [typ clusteru](../hdinsight-hadoop-provision-linux-clusters.md#cluster-type)Azure HDInsight. Interaktivní dotaz podporuje ukládání do mezipaměti v paměti, což dává Apache Hive dotazy rychleji a mnohem více interaktivních. Zákazníci používají interaktivní dotaz k dotazování dat uložených ve službě Azure Storage & Azure Data Lake Storage velmi rychle. Interaktivní dotaz vývojářům a datům usnadňuje práci s velkými objemy dat pomocí nástrojů BI, které mají nejvíc. Interaktivní dotaz HDInsight podporuje snadnější přístup k velkým objemům dat několika různými nástroji.
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
@@ -30,7 +30,7 @@ Ke službě podregistru můžete přistupovat v clusteru interaktivních dotazů
 Informace o vytvoření clusteru HDInsight najdete v tématu věnovaném [vytváření Apache Hadoop clusterů ve službě HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Vyberte typ clusteru interaktivní dotaz.
 
 > [!IMPORTANT]
-> Minimální hlavnímu uzlu velikost pro clustery interaktivních dotazů je Standard_D13_v2. Další informace najdete v [grafu o velikosti virtuálních počítačů Azure](../../cloud-services/cloud-services-sizes-specs.md#dv2-series).
+> Minimální velikost hlavnímu uzlu pro clustery interaktivních dotazů je Standard_D13_v2. Další informace najdete v [grafu o velikosti virtuálních počítačů Azure](../../cloud-services/cloud-services-sizes-specs.md#dv2-series).
 
 ## <a name="execute-apache-hive-queries-from-interactive-query"></a>Spustit Apache Hive dotazy z interaktivního dotazu
 
@@ -40,11 +40,11 @@ K provedení dotazů na podregistr máte následující možnosti:
 
     Viz [vizualizace interaktivních dotazů Apache Hive dat pomocí Power BI ve službě Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) najdete v tématu [vizualizace velkých objemů dat pomocí Power BI ve službě Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
 
-* Použití Visual Studia
+* Použití sady Visual Studio
 
     Přečtěte si téma [připojení ke službě Azure HDInsight a spuštění dotazů Apache Hive pomocí data Lakech nástrojů pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
 
-* Použít Visual Studio Code
+* Použití editoru Visual Studio Code
 
     Viz [použití Visual Studio Code pro Apache Hive, LLAP nebo pySpark](../hdinsight-for-vscode.md).
 * Pomocí zobrazení podregistru Apache Ambari spusťte Apache Hive.
@@ -62,7 +62,7 @@ K provedení dotazů na podregistr máte následující možnosti:
 
 Vyhledání připojovacího řetězce připojení k databázi Java (JDBC):
 
-1. Přihlaste se k Apache Ambari pomocí následující adresy URL `https://<cluster name>.AzureHDInsight.net`:.
+1. Přihlaste se k Apache Ambari pomocí následující adresy URL: `https://<cluster name>.AzureHDInsight.net`.
 2. V nabídce vlevo vyberte **podregistr**.
 3. Pokud chcete zkopírovat adresu URL, vyberte ikonu schránky:
 

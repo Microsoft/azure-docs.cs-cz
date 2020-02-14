@@ -4,18 +4,18 @@ description: V tomto rychlém startu se dozvíte, jak provádět různé Ansible
 keywords: ansible, azure, devops, bash, cloudshell, playbook, bash
 ms.topic: quickstart
 ms.date: 04/30/2019
-ms.openlocfilehash: d04708be82a704c2ce20a928380fca1d325493da
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 0eb89bcacae1629bdb1f6dcda8f9a25efdb6eedf
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74155970"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193646"
 ---
 # <a name="quickstart-run-ansible-playbooks-via-bash-in-azure-cloud-shell"></a>Rychlý Start: spuštění Ansible playbooky přes bash v Azure Cloud Shell
 
 Azure Cloud Shell je interaktivní prostředí přístupné pro prohlížeč, které slouží ke správě prostředků Azure. Cloud Shell vám umožní použít buď příkaz bash, nebo příkazový řádek prostředí PowerShell. V tomto článku použijete bash v rámci Azure Cloud Shell ke spuštění Ansible PlayBook.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 - **Konfigurace Azure Cloud Shell** – pokud s Azure Cloud Shell začínáte, přečtěte si téma [rychlý Start pro bash v Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
@@ -47,4 +47,4 @@ Pokud chcete ověřit úspěšnou konfiguraci, pomocí Ansible vytvořte skupinu
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Rychlý Start: konfigurace virtuálního počítače v Azure pomocí Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Rychlý Start: konfigurace virtuálního počítače v Azure pomocí Ansible](./ansible-create-vm.md)

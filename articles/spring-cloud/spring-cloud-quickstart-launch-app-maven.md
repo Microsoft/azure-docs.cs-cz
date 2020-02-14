@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: a8ccda88239a150a24c9abaf6ebb172f0fd01dba
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd8ce6d9b4dc63592e491a06a0055a7d065252b5
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278925"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201423"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Rychlý Start: spuštění aplikace pro jarní Cloud z Azure pomocí modulu plug-in Maven
 
@@ -33,9 +33,9 @@ Po tomto rychlém startu se dozvíte, jak:
 >[!TIP]
 > Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít ke spuštění příkazů v tomto článku. Má předinstalované běžné nástroje Azure, včetně nejnovějších verzí Gitu, sady Java Development Kit (JDK), Maven a Azure CLI. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com). Další informace najdete v tématu [přehled Azure Cloud Shell](../cloud-shell/overview.md).
 
-K dokončení tohoto rychlého startu je potřeba:
+K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
-1. [Nainstalovat Git](https://git-scm.com/)
+1. [Nainstalovat Git](https://git-scm.com/).
 2. [Nainstalujte JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
 3. [Nainstalujte Maven 3,0 nebo novější](https://maven.apache.org/download.cgi).
 4. [Zaregistrujte si bezplatné předplatné Azure](https://azure.microsoft.com/free/).
@@ -58,18 +58,18 @@ K dokončení tohoto rychlého startu je potřeba:
 Nasazení služby trvá asi 5 minut. Po nasazení služby vyberte **Přejít na prostředek** a zobrazí se stránka **Přehled** pro instanci služby.
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=provision)
+> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=provision)
 
 ## <a name="set-up-your-configuration-server"></a>Nastavení konfiguračního serveru
 
 1. Na stránce **Přehled** služby vyberte možnost **konfigurační server**.
-1. V části **výchozí úložiště** nastavte **URI** na **https://github.com/Azure-Samples/piggymetrics** , nastavte **jmenovku** na **config**a pak klikněte na **použít** , aby se změny uložily.
+1. V části **výchozí úložiště** nastavte **URI** na **https://github.com/Azure-Samples/piggymetrics-config** a pak kliknutím na **použít** uložte změny.
 
     > [!div class="mx-imgBorder"]
     > ![definovat a použít konfigurační nastavení](media/maven-qs-apply-config.jpg)
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=config-server)
+> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=config-server)
 
 ## <a name="clone-and-build-the-sample-application-repository"></a>Klonování a sestavení ukázkového úložiště aplikace
 
@@ -113,7 +113,7 @@ Nasazení služby trvá asi 5 minut. Po nasazení služby vyberte **Přejít na 
 1. Po dokončení nasazení můžete k PiggyMetrics přistupovat pomocí adresy URL, která je k dispozici ve výstupu z předchozího příkazu.
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=deploy)
+> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=deploy)
 
 ## <a name="next-steps"></a>Další kroky
 

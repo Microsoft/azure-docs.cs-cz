@@ -3,12 +3,12 @@ title: Přidání vazby fronty Azure Storage k funkci Pythonu
 description: Integrujte frontu Azure Storage s funkcí Pythonu pomocí výstupní vazby.
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: 14a381d13da052fd67679ed17bbb6b6711f7a0e6
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715364"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198475"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Přidání vazby fronty Azure Storage k funkci Pythonu
 
@@ -156,7 +156,7 @@ Pozor *, abyste nemuseli* psát žádný kód pro ověřování, získání odka
 1. Až skončíte, zastavte hostitele pomocí **kombinace kláves Ctrl**+**C**.
 
 > [!TIP]
-> Během spouštění hostitel stáhne a nainstaluje [rozšíření vazby úložiště](functions-bindings-storage-blob.md#packages---functions-2x-and-higher) a další rozšíření Microsoft Binding Extensions. K této instalaci dochází, protože rozšíření vazby jsou ve výchozím nastavení povolena v souboru *Host. JSON* s následujícími vlastnostmi:
+> Během spouštění hostitel stáhne a nainstaluje [rozšíření vazby úložiště](functions-bindings-storage-blob.md#add-to-your-functions-app) a další rozšíření Microsoft Binding Extensions. K této instalaci dochází, protože rozšíření vazby jsou ve výchozím nastavení povolena v souboru *Host. JSON* s následujícími vlastnostmi:
 >
 > ```json
 > {

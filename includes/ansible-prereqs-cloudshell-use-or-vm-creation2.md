@@ -4,14 +4,14 @@ ms.service: ansible
 ms.topic: include
 ms.date: 04/30/2019
 ms.author: tarcher
-ms.openlocfilehash: 5c3f47cefb9f583047908a2d7442afb7b3b7b8b3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: fc04bcbe811db189c040b32f6924b3a51d3d9b10
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175027"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193578"
 ---
-- **Nainstalujte Ansible**: Proveďte jednu z následujících možností:
+- **Install Ansible**: udělejte jednu z následujících možností:
 
-    - [Nainstalujte](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine) a [nakonfigurovat](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials) Ansible na virtuální počítač s Linuxem 
-    - [Konfigurace Azure Cloud Shell](/azure/cloud-shell/quickstart) a – pokud nemáte přístup k virtuální počítač s Linuxem – [vytvoření virtuálního počítače pomocí Ansible](/azure/virtual-machines/linux/ansible-create-vm).
+    - [Instalace](/azure/ansible/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine) a [Konfigurace](/azure/ansible/ansible-install-configure#create-azure-credentials) Ansible na virtuálním počítači se systémem Linux 
+    - [Konfigurace Azure Cloud Shell](/azure/cloud-shell/quickstart) a – pokud nemáte přístup k virtuálnímu počítači se systémem Linux – [vytvořte virtuální počítač pomocí Ansible](/azure/ansible/ansible-create-vm).

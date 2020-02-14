@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6280f3784247b671521a4994be1f233d4913d90c
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700290"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194496"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity Platform (v 2.0) – přehled
 
@@ -42,7 +42,11 @@ S platformou Microsoft Identity můžete napsat kód jenom jednou a oslovit kaž
 
 ## <a name="getting-started"></a>Začínáme
 
-Práce s identitou nemusí být těžká. Vyberte [scénář](authentication-flows-app-scenarios.md) , který vám bude platit – každá cesta scénáře obsahuje rychlý Start a stránku s přehledem, která vám umožní začít pracovat během několika minut:
+Práce s identitou nemusí být těžká. 
+
+Podívejte se na [video o platformě Microsoft Identity](identity-videos.md) , kde se seznámíte se základy. 
+
+Vyberte [scénář](authentication-flows-app-scenarios.md) , který vám bude platit – každá cesta scénáře obsahuje rychlý Start a stránku s přehledem, která vám umožní začít pracovat během několika minut:
 
 - [Sestavení jednostránkové aplikace](scenario-spa-overview.md)
 - [Vytvoření webové aplikace, která se přihlásí uživatelům](scenario-web-app-sign-user-overview.md)
