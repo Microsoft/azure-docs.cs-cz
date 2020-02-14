@@ -7,6 +7,7 @@
     - name: Rozvoj platformy Microsoft Identity Platform
       href: about-microsoft-identity-platform.md
 - name: Rychlé starty
+  expanded: true
   items:
     - name: Nastavení tenanta
       href: quickstart-create-new-tenant.md
@@ -90,6 +91,7 @@
 - name: ukázky
   href: sample-v2-code.md
 - name: Koncepty
+  expanded: true
   items:
     - name: Základy ověřování
       href: authentication-scenarios.md

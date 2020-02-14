@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: d28eb6c4ee4fadf8a090a17121f6910eb34135e3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935205"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201590"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co je Azure SQL Database spravovaná instance?
 
@@ -60,8 +60,8 @@ Klíčové funkce spravovaných instancí jsou uvedené v následující tabulce
 | Integrovaná instance a monitorování databáze a metriky | Ano |
 | Automatické opravy softwaru | Ano |
 | Nejnovější funkce databázového stroje | Ano |
-| Počet datových souborů (řádků) na databázi | Několik |
-| Počet souborů protokolu (protokol) na databázi | 1\. místo |
+| Počet datových souborů (řádků) na databázi | Více |
+| Počet souborů protokolu (protokol) na databázi | 1 |
 | Nasazení VNet-Azure Resource Manager | Ano |
 | Model nasazení sítě VNet – klasický | Ne |
 | Podpora portálu | Ano|
@@ -80,9 +80,6 @@ V modelu vCore si můžete vybrat mezi generacemi hardwaru.
 - **Gen5** Logické procesory jsou založené na procesorech Intel E5-2673 v4 (Broadwell) 2,3 a Intel SP-8160 (Skylake), Fast NVMe SSD, logických jader vláken a výpočetních velikostí mezi 4 a 80 jádry.
 
 Přečtěte si další informace o rozdílech mezi generacemi hardwaru v [omezeních prostředků spravované instance](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
-
-> [!IMPORTANT]
-> Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblastech Austrálie – východ a Brazílie – jih.
 
 ## <a name="managed-instance-service-tiers"></a>Úrovně služby spravované instance
 
@@ -153,7 +150,7 @@ V následující tabulce najdete souhrn operací a typických celkových dob trv
 |Nasazení |První instance jiné generace hardwaru v neprázdné podsíti (například první instance Gen 5 v podsíti s instancemi Gen 4)|Vytváření virtuálních clusterů *|90% dokončených operací za 4 hodiny|
 |Nasazení |Vytvoření první instance 4 virtuální jádra, v prázdné nebo neprázdné podsíti|Vytváření virtuálních clusterů * *|90% dokončených operací za 4 hodiny|
 |Nasazení |Vytváření dalších instancí v neprázdné podsíti (druhá, třetí atd. instance)|Změna velikosti virtuálního clusteru|90% dokončených operací za 2,5 hodin|
-|**Aktualizace** |Změna vlastnosti instance (heslo správce, přihlášení AAD, příznak Zvýhodněné hybridní využití Azure)|Nevztahuje se|Až 1 minuta|
+|**Aktualizace** |Změna vlastnosti instance (heslo správce, přihlášení AAD, příznak Zvýhodněné hybridní využití Azure)|NEUŽÍVÁ SE.|Až 1 minuta|
 |Aktualizovat |Horizontální navýšení kapacity úložiště instance (Pro obecné účely úroveň služeb)|Připojení souborů databáze|90% dokončených operací za 5 minut|
 |Aktualizovat |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace úroveň služeb)|– Změna velikosti virtuálního clusteru<br>– Vysazení skupiny dostupnosti Always On|90% dokončených operací během 2,5 hodin + času pro osazení všech databází (220 GB za hodinu)|
 |Aktualizovat |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely)|– Změna velikosti virtuálního clusteru<br>-Připojení souborů databáze|90% dokončených operací za 2,5 hodin|
@@ -258,7 +255,7 @@ Zavádí se nová syntaxe pro vytváření objektů zabezpečení serveru Azure 
 
 Možnost nasazení spravované instance umožňuje centrálně spravovat identity uživatele databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](sql-database-aad-authentication.md). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory podporuje [vícefaktorové ověřování (MFA)](sql-database-ssms-mfa-authentication-configure.md) pro zvýšení zabezpečení dat a aplikací při současné podpoře jednotného přihlašování.
 
-### <a name="authentication"></a>Ověření
+### <a name="authentication"></a>Ověřování
 
 Ověřování spravované instance odkazuje na to, jak uživatelé při připojování k databázi prokáže jejich identitu. SQL Database podporuje dva typy ověřování:  
 
@@ -323,12 +320,12 @@ Možnost nasazení spravované instance umožňuje správcům systému strávit 
 
 V následující tabulce je uvedeno několik vlastností, které jsou přístupné prostřednictvím jazyka Transact SQL, které můžete použít k detekci, že aplikace pracuje se spravovanou instancí a načetla důležité vlastnosti.
 
-|Vlastnost|Hodnota|Poznámka|
+|Vlastnost|Hodnota|Komentář|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Tato hodnota je stejná jako v SQL Database. To neznamená, **že** modul SQL verze 12 (SQL Server 2014). Spravovaná instance vždy spouští nejnovější stabilní verzi modulu SQL, která je stejná nebo vyšší než nejnovější dostupná verze RTM SQL Server.  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Tato hodnota je stejná jako v SQL Database.|
 |`SERVERPROPERTY('EngineEdition')`|8|Tato hodnota jednoznačně identifikuje spravovanou instanci.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Název DNS úplná instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`.Database.Windows.NET, kde `<instanceName>` je poskytnutá výhradně zákazník, zatímco `<dnsPrefix>` je automaticky generované část názvu zaručující globální jedinečnost názvu DNS ("wcus17662feb9ce98", například)|Příklad: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Úplný název DNS instance v následujícím formátu:`<instanceName>`.`<dnsPrefix>`. database.windows.net, kde `<instanceName>` je jméno poskytované zákazníkem, zatímco `<dnsPrefix>` automaticky vygenerovala část názvu, která zaručuje jedinečnost globálních názvů DNS ("wcus17662feb9ce98", například).|Příklad: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Další kroky
 
