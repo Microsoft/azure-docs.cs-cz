@@ -1,20 +1,20 @@
 ---
 title: 'Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python) | Mapy Microsoft Azure'
 description: V tomto kurzu se dozvíte, jak spojit data senzorů s daty předpovědi počasí z Microsoft Azure služby mapy počasí pomocí Azure Notebooks (Python).
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6d49a305a9b2e02d9e9d743ff8f076f453a08fcb
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: d6b82ec0662745fd9c9a05db28595ff84f57f330
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989616"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208025"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python)
 
@@ -31,7 +31,7 @@ V tomto kurzu provedete následující:
 > * Vykreslí data prognózy v grafech.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu je nutné nejprve provést tyto kroky:
 
@@ -68,7 +68,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Požadovat data denní předpovědi
 
-V našem scénáři chceme pro každé umístění senzoru požádat o denní předpověď. Následující skript volá [rozhraní API denní předpovědi](https://aka.ms/AzureMapsWeatherDailyForecast) služby Azure Maps počasí, aby získala každodenní předpověď počasí pro každou větrnou turbínu po dobu příštích 15 dní od aktuálního data.
+V našem scénáři chceme pro každé umístění senzoru požádat o denní předpověď. Následující skript volá [rozhraní API pro denní předpověď](https://aka.ms/AzureMapsWeatherDailyForecast) počasí služby Azure Maps počasí. Toto rozhraní API vrátí předpověď počasí pro každou větrnou turbínu po dobu příštích 15 dní od aktuálního data.
 
 
 ```python
@@ -129,7 +129,7 @@ display(Image(poi_range_map))
 ![Umístění turbíny](./media/weather-service-tutorial/location-map.png)
 
 
-Data prognózy se seskupují s ukázkovými daty na základě ID stanice datového centra počasí. Toto seskupení rozšiřuje ukázková data o data předpovědi. 
+Data prognózy budeme seskupovat pomocí ukázkových dat na základě ID stanice. ID stanice je pro datové centrum počasí. Toto seskupení rozšiřuje ukázková data o data předpovědi.
 
 ```python
 # Group forecasted data for all locations

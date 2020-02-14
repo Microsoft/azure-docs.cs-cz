@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 94a7218933935aa1a9d38a9fc420bb8d3f669492
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a37178f8dc8ecc3c61ca16f193e2e52c309d46
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472741"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209473"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Kurz: Vytvoření více instancí prostředků pomocí šablon Resource Manageru
 
@@ -25,9 +25,9 @@ Tento kurz se zabývá následujícími úkony:
 > * Úprava šablony
 > * Nasazení šablony
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto článku potřebujete:
 
@@ -108,7 +108,7 @@ Hotová šablona vypadá takto:
 }
 ```
 
-Další informace o vytvoření více instancí najdete v tématu [Nasazení více instancí prostředku nebo vlastnosti v šablonách Azure Resource Manageru](./create-multiple-instances.md)
+Další informace o vytvoření více instancí najdete v tématu [Nasazení více instancí prostředku nebo vlastnosti v šablonách Azure Resource Manageru](./copy-resources.md)
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 

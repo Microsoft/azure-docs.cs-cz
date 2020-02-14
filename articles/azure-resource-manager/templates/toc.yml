@@ -132,7 +132,16 @@
           displayName: 'linked templates, nested templates'
           href: linked-templates.md
         - name: Vytvoření několika instancí
-          href: create-multiple-instances.md
+          items:
+            - name: Zdroje a prostředky
+              displayName: 'iteration,copy'
+              href: copy-resources.md
+            - name: Vlastnosti
+              displayName: 'iteration,copy'
+              href: copy-properties.md
+            - name: Proměnné
+              displayName: 'iteration,copy'
+              href: copy-variables.md
         - name: Prostředky na úrovni předplatného
           href: deploy-to-subscription.md
         - name: Prostředky na úrovni skupiny pro správu

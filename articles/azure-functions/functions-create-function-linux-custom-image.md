@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: edb947f0748c186e146bce5f4dbe9d0b95a2568d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846483"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210187"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce na platformě Linux pomocí vlastního kontejneru
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Windows, Mac OS nebo Linux. Dokončení kurzu vám bude účtovat v účtu Azure náklady na několik amerických dolarů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Verze [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 nebo novější
@@ -54,7 +54,7 @@ Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Wi
     ::: zone-end
     ::: zone pivot="programming-language-typescript"
     - [Node.js](https://nodejs.org/en/download/)
-    - [TypeScript](http://www.typescriptlang.org/#download-links)
+    - [Psací](http://www.typescriptlang.org/#download-links)
     ::: zone-end
 - [Docker](https://docs.docker.com/install/)
 - [ID Docker](https://hub.docker.com/signup)
@@ -256,7 +256,7 @@ Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Wi
     docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
-1. Po spuštění image v místním kontejneru otevřete v prohlížeči `http://localhost:8080`, ve kterém se má zobrazit zástupný obrázek uvedený níže. V tomto okamžiku se zobrazí obrázek, protože funkce je spuštěná v místním kontejneru, stejně jako v Azure, což znamená, že je chráněná přístupovým klíčem definovaným v *Function. JSON* s vlastností `"authLevel": "function"`. Kontejner ještě není v Azure publikovaný do aplikace Function App, takže tento klíč ještě není dostupný. Pokud chcete místně testovat test, zastavte Docker, změňte vlastnost Authorization na `"authLevel": "anonymous"`, znovu sestavte image a restartujte Docker. Pak resetujte `"authLevel": "function"` v *Function. JSON*. Další informace najdete v tématu [autorizační klíče](functions-bindings-http-webhook.md#authorization-keys).
+1. Po spuštění image v místním kontejneru otevřete v prohlížeči `http://localhost:8080`, ve kterém se má zobrazit zástupný obrázek uvedený níže. V tomto okamžiku se zobrazí obrázek, protože funkce je spuštěná v místním kontejneru, stejně jako v Azure, což znamená, že je chráněná přístupovým klíčem definovaným v *Function. JSON* s vlastností `"authLevel": "function"`. Kontejner ještě není v Azure publikovaný do aplikace Function App, takže tento klíč ještě není dostupný. Pokud chcete místně testovat test, zastavte Docker, změňte vlastnost Authorization na `"authLevel": "anonymous"`, znovu sestavte image a restartujte Docker. Pak resetujte `"authLevel": "function"` v *Function. JSON*. Další informace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
     ![Zástupný obrázek označující, že je kontejner spuštěn místně](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 

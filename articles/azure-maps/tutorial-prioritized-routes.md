@@ -1,32 +1,32 @@
 ---
 title: 'Kurz: vyhledání více tras podle režimu cestování | Mapy Microsoft Azure'
 description: V tomto kurzu se naučíte, jak najít trasy pro různé režimy cestování pomocí Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 73cc2ff49653c91d635d52b79a92d1974bfd895b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 628a3003cec2cc2ca58f1b133cf3236417dfa94e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989650"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209490"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Kurz: Vyhledání tras pro různé režimy cestování pomocí Azure Maps
 
 V tomto kurzu se dozvíte, jak používat účet Azure Maps a službu Směrování. Služba směrování může trasu najít do svého bodu zájmu a nastavit prioritu podle vašeho způsobu cestování. Na mapě můžete zobrazit dvě různé trasy, jednu pro automobily a jednu pro nákladní automobily. Směrovací služba vezme v úvahu omezení z důvodu výšky a váhy vozidla nebo v případě, že vozidlo uskutečňuje nebezpečný náklad. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
+> * Vytvoření nové webové stránky s použitím rozhraní API pro mapové ovládací prvky
 > * Vizualizace aktuálního provozu na mapě
 > * Vytvoření dotazů na trasy s deklarací režimu dopravy
 > * Zobrazení více tras na mapě
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než budete pokračovat, postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a vyberte cenovou úroveň S1. Použijte k získání primárního klíče pro váš účet postup uvedený v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 ## <a name="create-a-new-map"></a>Vytvoření nové mapy
@@ -158,7 +158,7 @@ V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna t
     });
     ```
     
-    V obslužné rutině události Maps `ready` se vytvoří zdroj dat pro uložení řádků trasy a počátečního a koncového bodu. Vytvoří se vrstva čar, která se připojí ke zdroji dat a která definuje, jak se vykreslí čára trasy. Ve funkci čáry trasy se tloušťka a barva čáry načte z vlastností pomocí výrazů. Při přidávání vrstvy do mapy se předá druhý parametr s hodnotou `'labels'`, který určuje, že se má tato vrstva vykreslit pod popisky mapy. Tím se zajistí, že čára trasy nepřekryje popisky silnic. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak budou vykresleny počáteční a koncové body. V tomto případě byly přidány výrazy pro načtení obrázku ikony a informace o popisku textu z vlastností u jednotlivých objektů objektu Point. 
+    V obslužné rutině události Maps `ready` se vytvoří zdroj dat pro uložení řádků trasy a počátečního a koncového bodu. Vytvoří se vrstva čar, která se připojí ke zdroji dat a která definuje, jak se vykreslí čára trasy. Ve funkci čáry trasy se tloušťka a barva čáry načte z vlastností pomocí výrazů. Při přidávání vrstvy do mapy se předá druhý parametr s hodnotou `'labels'`, který určuje, že se má tato vrstva vykreslit pod popisky mapy. Tím se zajistí, že řádek trasy nepokrývá popisky cest. Vytvoří se vrstva symbolů, která se připojí ke zdroji dat. Tato vrstva určuje, jak budou vykresleny počáteční a koncové body. V tomto případě byly přidány výrazy pro načtení obrázku ikony a informace o popisku textu z vlastností u jednotlivých objektů objektu Point. 
     
 2. Pro účely tohoto kurzu jako počáteční bod nastavte fiktivní společnost Fabrikam v Seattlu a jako cílový bod nastavte pobočku Microsoftu. V obslužné rutině události Maps `ready` přidejte následující kód.
 
@@ -200,7 +200,11 @@ V tomto kurzu se vypočítají dvě trasy, které se vykreslí na mapě. Jedna t
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>Vykreslovat trasy s určenou prioritou podle režimu dopravy
 
-V této části se dozvíte, jak pomocí rozhraní API služby mapy tras vyhledat několik tras z daného počátečního bodu až po koncový bod na základě vašeho režimu přenosu. Route Service poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *úsporné* nebo *vzrušující* trasy mezi dvěma místy s přihlédnutím k aktuální dopravní situaci. Umožňuje uživatelům také plánovat trasy v budoucnu s použitím rozsáhlé databáze Azure s historickými dopravními informacemi a předvídat dobu trvání trasy pro kterýkoli den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Všechny následující bloky kódu by se měly přidat **do modulu eventListener pro načtení mapy**, aby se zajistilo jejich načtení po úplném načtení mapy.
+V této části se dozvíte, jak používat rozhraní API služby mapy tras. Rozhraní API trasy se používá k vyhledání několika tras z daného počátečního bodu až po koncový bod na základě vašeho režimu přenosu. Služba Směrování poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *ekonomické*nebo *Thrilling* trasy. Nejen naplánují trasy rozhraní API mezi dvěma umístěními, ale také zvažte aktuální podmínky provozu. 
+
+Rozhraní API pro směrování umožňuje uživatelům plánovat trasy v budoucnu pomocí rozsáhlé historické databáze přenosů Azure. Rozhraní API může předpovědět dobu trvání tras pro daný den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). 
+
+Všechny následující bloky kódu by měly být přidány **v rámci naslouchacího procesu událostí zatížení mapy** , aby bylo zajištěno, že budou načteny po úplném načtení mapy.
 
 1. Do funkce GetMap přidejte následující kód JavaScript Code.
 
@@ -244,7 +248,7 @@ V této části se dozvíte, jak pomocí rozhraní API služby mapy tras vyhleda
     });
     ```
 
-    Tento fragment kódu výše se dotazuje směrovací služby Azure Maps pomocí metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . Z odpovědi, která je extrahována pomocí metody `geojson.getFeatures()`, je následně extrahována z kolekce funkcí pro použití funkce injson. Řádek trasy se pak přidá do zdroje dat. Index 0 zajistí, že se vykreslí před všemi ostatními řádky ve zdroji dat. To se provádí proto, že výpočet trasy pro nákladní vůz bude často pomalejší než výpočet trasy pro auto, a kdyby se čára trasy pro nákladní vůz přidala ke zdroji dat až po čáře trasy pro auto, vykreslila by se nad ní. Do řádku trasy vozíku se přidají dvě vlastnosti, Barva tahu, která je dobrým barevným trendem modrou, a tloušťka čáry devět pixelů.
+    Tento fragment kódu výše se dotazuje směrovací služby Azure Maps pomocí metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-maps-typescript-latest) . Z odpovědi, která je extrahována pomocí metody `geojson.getFeatures()`, je následně extrahována z kolekce funkcí pro použití funkce injson. Řádek trasy se pak přidá do zdroje dat. Index 0 zajistí, že se vykreslí před všemi ostatními řádky ve zdroji dat. To se provádí, protože výpočet trasy vozíku bude často pomalejší než výpočet trasy auta. Pokud je čára postupu nákladní jednotky přidána do zdroje dat po trase auta, vykreslí se nad ní. Do řádku trasy vozíku se přidají dvě vlastnosti, Barva tahu, která je dobrým barevným trendem modrou, a tloušťka čáry devět pixelů.
 
 3. Přidáním následujícího kódu jazyka JavaScript vytvořte trasu pro automobil a zobrazte výsledky.
 
@@ -270,14 +274,14 @@ V této části se dozvíte, jak pomocí rozhraní API služby mapy tras vyhleda
 
     ![Trasy s určenou prioritou s použitím rozhraní API Route Service v prostředí Azure](./media/tutorial-prioritized-routes/prioritized-routes.png)
 
-    Trasa pro nákladní vůz je modrá a tlustší, zatímco trasa pro auto je fialová a tenčí. Trasa pro auto prochází přes Lake Washington po silnici I-90, která vede tunely pod obytnými oblastmi, a proto je na ní zakázaný náklad nebezpečného odpadu. Trasa pro nákladní vůz s určeným typem nákladu USHazmatClass2 je správně přesměrovaná přes jinou silnici.
+    Směr nákladní automobil je silný modrou a trasa automobilu je tenká fialová. Trasa automobilu projde přes Lake Washington prostřednictvím I-90, který prochází tunely v rámci domácích oblastí. Vzhledem k tomu, že tunely jsou blízko domácích oblastí, je zakázaný nebezpečný odpadní náklad. Směr nákladní lodě, který určuje typ nákladu USHazmatClass2, je směrován na použití jiné dálnice.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
+> * Vytvoření nové webové stránky s použitím rozhraní API pro mapové ovládací prvky
 > * Vizualizace aktuálního provozu na mapě
 > * Vytvoření dotazů na trasy s deklarací režimu dopravy
 > * Zobrazení více tras na mapě

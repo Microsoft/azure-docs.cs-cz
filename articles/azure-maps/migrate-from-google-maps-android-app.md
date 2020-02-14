@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 855036a5a8e87bd10e9a4d524a1e8ea8bcdccf50
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 9514398ec6a84becd1283e4b0975804101b64086
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086296"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209728"
 ---
 # <a name="migrate-an-android-app-from-google-maps"></a>Migrace aplikace pro Android z Google Maps
 
@@ -365,7 +365,7 @@ Druhou možností je předat jazyk a zobrazit informace kódu XML mapového ovl�
     />
 ```
 
-Třetí možností je naprogramovat jazyk a oblastní zobrazení mapy pomocí metody map `setStyle`. Tato možnost aktualizuje jazyk a regionální zobrazení kdykoli, když se kód spustí.
+Třetí možností je naprogramovat jazyk a oblastní zobrazení mapy pomocí metody map `setStyle`. Tato možnost aktualizuje jazyk a regionální zobrazení, kdykoli se kód spustí.
 
 ```java
 mapControl.onReady(map -> {
@@ -725,7 +725,7 @@ public void onMapReady(GoogleMap googleMap) {
 Dlaždicovou vrstvu lze přidat k mapě podobným způsobem jako jakékoli jiné vrstvy. Naformátovaná adresa URL, která má zástupné symboly x, y a zoom; `{x}`, `{y}``{z}` v uvedeném pořadí slouží k oznámení vrstvy, kde má být přístup k dlaždicím. Vrstvy dlaždic v Azure Maps také podporují zástupné symboly `{quadkey}`, `{bbox-epsg-3857}`a `{subdomain}`. Chcete-li nastavit, aby byla vrstva dlaždice částečně průhledná, je použita hodnota neprůhlednosti 0,8. Neprůhlednost a průhlednost, i když jsou podobné, používají obrácené hodnoty. Pro převod obou možností odečtěte jejich hodnotu od čísla 1.
 
 > [!TIP]
-> V Azure Maps je vhodné vykreslit vrstvy pod jinými vrstvami, včetně základních vrstev mapy. Často je žádoucí vykreslovat vrstvy dlaždice pod popisky map, aby byly snadno čitelné. Metoda `map.layers.add` přebírá druhý parametr, který je identifikátorem vrstvy, do které chcete vložit novou vrstvu. Chcete-li vložit vrstvu dlaždice pod popisky mapy, lze použít následující kód: `map.layers.add(myTileLayer, "labels");`
+> V Azure Maps je vhodné vykreslit vrstvy pod jinými vrstvami, včetně základních vrstev mapy. Je také často žádoucí vykreslovat vrstvy dlaždice pod popisky map, aby byly snadno čitelné. Metoda `map.layers.add` přebírá druhý parametr, který je identifikátorem vrstvy, do které chcete vložit novou vrstvu. Chcete-li vložit vrstvu dlaždice pod popisky mapy, lze použít následující kód: `map.layers.add(myTileLayer, "labels");`
 
 ```java
 mapControl.onReady(map -> {

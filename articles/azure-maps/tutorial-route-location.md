@@ -1,31 +1,31 @@
 ---
 title: 'Kurz: Vyhledání trasy do umístění | Mapy Microsoft Azure'
 description: V tomto kurzu se dozvíte, jak vykreslit cestu k umístění (bod zájmu) na mapě pomocí služby směrování Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3fedb045773cb975d37e2d866862e7863a6232e3
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ba9ef8ad98dd33bdd61875e5c1cf02e15a739c03
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989633"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208076"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Kurz: směrování do bodu zájmu pomocí Azure Maps
 
 V tomto kurzu se dozvíte, jak pomocí účtu Azure Maps a sady SDK Route Service vyhledat trasu k bodu zájmu. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
+> * Vytvoření nové webové stránky s použitím rozhraní API pro mapové ovládací prvky
 > * Nastavit souřadnice pro adresu
-> * Zadat dotaz na rozhraní API Route Service ohledně trasy k bodu zájmu
+> * Zadat dotaz na službu Route Service ohledně trasy k bodu zájmu
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, postupujte podle pokynů v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps), potřebujete předplatné s cenovou úrovní S1. Použijte k získání primárního klíče pro váš účet postup uvedený v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -214,7 +214,7 @@ V této části se dozvíte, jak používat Azure Maps rozhraní API služby sm�
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
+> * Vytvoření nové webové stránky s použitím rozhraní API pro mapové ovládací prvky
 > * Nastavit souřadnice pro adresu
 > * Zadat dotaz na službu Route Service ohledně trasy k bodu zájmu
 

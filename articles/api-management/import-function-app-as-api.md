@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 97e4863294a32e7c11cd0c4bfa987b4e5764c0d4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442579"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209184"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Import aplikace Azure Function App jako rozhraní API ve službě Azure API Management
 
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > * Testovat rozhraní API na portálu Azure Portal
 > * Testování rozhraní API na portálu pro vývojáře
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Projděte si rychlý start [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 * Zkontrolujte, jestli máte v předplatném aplikaci Azure Functions. Další informace najdete v tématu [Vytvoření aplikace Azure Function App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). Musí obsahovat funkce s triggerem HTTP a úrovní autorizace nastavenou na *Anonymní* nebo *Funkce*.
@@ -75,7 +75,7 @@ Podle následujícího postupu vytvoříte z aplikace Azure Function App nové r
 
     ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-06.png)
 
-8. Klikněte na **Vytvořit**.
+8. Klikněte na možnost **Vytvořit**.
 
 ## <a name="append-azure-function-app-to-api"></a>Připojení aplikace Azure Function App k existujícímu rozhraní API
 
@@ -118,7 +118,7 @@ Při importu aplikace Azure Function App se automaticky vygeneruje:
 * Klíč hostitele v rámci Function App s názvem APIM-{*název instance služby Azure API Management*}
 * Pojmenovaná hodnota v rámci instance služby Azure API Management s názvem {*název instance azure Function App*} – klíč, který obsahuje vytvořený klíč hostitele.
 
-Pro rozhraní API vytvořená po 4. dubnu 2019 se hostitelský klíč předává v požadavcích HTTP od API Management do Function App v hlavičce. Starší rozhraní API předejte klíč hostitele jako [parametr dotazu](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization). Toto chování může být změněno pomocí `PATCH Backend` [REST API voláním](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) *back-end* entity přidružené k Function App.
+Pro rozhraní API vytvořená po 4. dubnu 2019 se hostitelský klíč předává v požadavcích HTTP od API Management do Function App v hlavičce. Starší rozhraní API předejte klíč hostitele jako [parametr dotazu](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). Toto chování může být změněno pomocí `PATCH Backend` [REST API voláním](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) *back-end* entity přidružené k Function App.
 
 > [!WARNING]
 > Odebráním nebo změnou hodnoty klíče hostitele aplikace Azure Function App nebo pojmenované hodnoty ve službě Azure API Management se přeruší komunikace mezi službami. Tyto hodnoty se nesynchronizují automaticky.

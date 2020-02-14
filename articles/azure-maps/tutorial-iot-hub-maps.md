@@ -1,24 +1,24 @@
 ---
 title: 'Kurz: implementace prostorové analýzy IoT | Mapy Microsoft Azure'
 description: Integruje IoT Hub s rozhraními API služby Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 24295e27a3b94f6960777a8704fdf448697da4e1
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 48d148256fe69bbdfd188f1d8472c2de80b0fa64
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987240"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208365"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>Kurz: implementace prostorových analýz IoT pomocí Azure Maps
 
-Sledování a zachytávání relevantních událostí, ke kterým dochází v prostoru a čase, je běžným scénářem IoT. Příklady scénářů zahrnují správu loďstva, sledování prostředků, mobilitu a aplikace inteligentního měst. Tento kurz vás provede vzorem řešení pro používání rozhraní Azure Maps API. Relevantní události jsou zachyceny IoT Hub pomocí modelu odběru událostí, který poskytuje Event Grid.
+Ve scénáři IoT je běžné zaznamenávat a sledovat relevantní události, ke kterým dochází v prostoru a čase. Příklady scénářů zahrnují správu loďstva, sledování prostředků, mobilitu a aplikace inteligentního měst. Tento kurz vás provede vzorem řešení pomocí Azure Maps rozhraní API. Relevantní události jsou zachyceny pomocí IoT Hub pomocí modelu odběru událostí, který poskytuje Event Grid.
 
 V tomto kurzu provedete tyto kroky:
 
@@ -34,9 +34,9 @@ V tomto kurzu provedete tyto kroky:
 
 ## <a name="use-case"></a>Případ použití
 
-Toto řešení předvádí situaci, kdy se společnost půjčovny automobilů plánuje sledovat a protokolovat události pro jeho půjčovnu automobilů. Společnosti půjčovny aut jsou často pronajaté automobily pro konkrétní geografickou oblast a potřebují si udržet přehled o jejich umístění i při jejich pronájmu. Instance auta, které opustí zvolenou geografickou oblast, musí být zaprotokolovány. Protokolování dat zajišťuje správné zpracování zásad, poplatků a dalších obchodních aspektů.
+Toto řešení předvádí situaci, kdy se společnost půjčovny automobilů plánuje sledovat a protokolovat události pro jeho půjčovnu automobilů. Společnosti pro nájem auta obvykle pronajímat automobily do konkrétní geografické oblasti. Musí sledovat, jaké má vaše automobily v průběhu pronájmu. Instance auta, které opouští zvolenou geografickou oblast, musí být protokolovány. Protokolování dat zajišťuje správné zpracování zásad, poplatků a dalších obchodních aspektů.
 
-V našem případě použití jsou Půjčovna auta vybavená zařízeními IoT, která pravidelně odesílají data telemetrie do Azure IoT Hub. Telemetrie zahrnuje aktuální umístění a označuje, jestli je modul auta spuštěný. Schéma umístění zařízení dodržuje [schéma IoT technologie Plug and Play pro geoprostorové údaje](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md). Schéma telemetrie zařízení pro půjčovnu aut vypadá takto:
+V našem případě použití jsou Půjčovna automobilů vybavená zařízeními IoT, která pravidelně odesílají data telemetrie do Azure IoT Hub. Telemetrie zahrnuje aktuální umístění a označuje, jestli je modul auta spuštěný. Schéma umístění zařízení dodržuje [schéma IoT technologie Plug and Play pro geoprostorové údaje](https://github.com/Azure/IoTPlugandPlay/blob/master/Schemas/geospatial.md). Schéma telemetrie zařízení pro půjčovnu aut vypadá takto:
 
 ```JSON
 {
@@ -63,9 +63,13 @@ V našem případě použití jsou Půjčovna auta vybavená zařízeními IoT, 
 }
 ```
 
-Pojďme využít telemetrii zařízení v vozidlo k dosažení našeho cíle. Chceme spustit pravidla geografických zón a reagovat, kdykoli obstáváme událost, která indikuje, že se automobil přesunul. Uděláte to tak, že se přihlásíte k odběru událostí telemetrie zařízení od IoT Hub přes Event Grid. Existuje několik způsobů, jak se přihlásit k odběru Event Grid, v tomto kurzu používáme Azure Functions. Azure Functions reaguje na události publikované v Event Grid. Implementuje také obchodní logiku pro Pronájem auta, která je založená na Azure Maps prostorové analýzy. Kód v rámci Azure Function kontroluje, jestli vozidlo opustilo geografickou ochranu. Pokud vozidlo opustilo geografickou oblast, funkce Azure shromáždí další informace, jako je adresa přidružená k aktuálnímu umístění. Funkce také implementuje logiku pro ukládání smysluplných dat událostí do úložiště objektů BLOB dat, které pomáhá poskytnout popis okolností události. Případy událostí mohou být užitečné pro společnost půjčovny aut a zákazníka na nájem.
+Pojďme využít telemetrii zařízení v vozidlo k dosažení našeho cíle. Chceme spustit pravidla pro monitorování geografických zón. A chceme odpovědět, kdykoli obdržením události, která indikuje, že se automobil přesunul. Uděláte to tak, že se přihlásíte k odběru událostí telemetrie zařízení od IoT Hub přes Event Grid. 
 
-Následující diagram obsahuje podrobný přehled systému.
+Existuje několik způsobů, jak se přihlásit k odběru Event Grid, v tomto kurzu používáme Azure Functions. Azure Functions reaguje na události publikované v Event Grid. Implementuje také obchodní logiku pro Pronájem auta, která je založená na Azure Maps prostorové analýzy. 
+
+Kód v rámci Azure Function kontroluje, jestli vozidlo opustilo geografickou ochranu. Pokud vozidlo opustilo geografickou oblast, funkce Azure shromáždí další informace, jako je adresa přidružená k aktuálnímu umístění. Funkce také implementuje logiku pro ukládání smysluplných dat událostí do úložiště objektů BLOB dat, které pomáhá poskytnout popis okolností události. 
+
+Případy událostí mohou být užitečné pro společnost půjčovny aut a zákazníka na nájem. Následující diagram obsahuje podrobný přehled systému.
 
  
   <center>
@@ -74,18 +78,18 @@ Následující diagram obsahuje podrobný přehled systému.
   
   </center>
 
-Následující obrázek představuje oblast geografické oblasti, zvýrazněnou modrou a trasu k pronájmu vozidla, která je označena zelenou čárou.
+Následující obrázek představuje oblast geografické oblasti zvýrazněnou modrou. Trasa prostředku pronájmu je označena zelenou čárou.
 
   ![Trasa geografické ploty](./media/tutorial-iot-hub-maps/geofence-route.png)
 
 
-## <a name="prerequisites"></a>Požadavky 
+## <a name="prerequisites"></a>Předpoklady 
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit skupinu prostředků v Azure Portal. Pokud chcete vytvořit skupinu prostředků, udělejte toto:
+Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit skupinu prostředků v Azure Portal. Chcete-li vytvořit skupinu prostředků, proveďte následující kroky:
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 
 2. Vyberte **Skupiny prostředků**.
     
@@ -106,11 +110,11 @@ Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit skupinu 
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps 
 
-Abychom mohli implementovat obchodní logiku na základě Azure Maps prostorové analýzy, musíme vytvořit účet Azure Maps ve skupině prostředků, kterou jsme vytvořili. Postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
+Abychom mohli implementovat obchodní logiku na základě Azure Maps prostorové analýzy, musíme vytvořit účet Azure Maps ve skupině prostředků, kterou jsme vytvořili. Podle pokynů v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) vytvořte předplatné Azure Maps účtu s cenovou úrovní S1. Použijte k získání primárního klíče pro váš účet postup uvedený v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 
 
-### <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Pokud chcete protokolovat data události, vytvoříme účet pro obecné účely **v2storage** ve skupině prostředků "ContosoRental" pro ukládání dat jako objektů BLOB. Pokud chcete vytvořit účet úložiště, postupujte podle pokynů v částech [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal). Dále bude nutné vytvořit kontejner pro ukládání objektů BLOB. Postupujte podle následujících kroků:
 
@@ -127,11 +131,11 @@ Pokud chcete protokolovat data události, vytvoříme účet pro obecné účely
     ![přístupové klíče](./media/tutorial-iot-hub-maps/access-keys.png)
 
 
-Teď máme účet úložiště a kontejner pro protokolování dat událostí. Nyní vytvoříme centrum IoT.
+Teď máme účet úložiště a kontejner pro protokolování dat událostí. V dalším kroku vytvoříme centrum IoT.
 
 ### <a name="create-an-iot-hub"></a>Vytvořit IoT Hub
 
-IoT Hub je spravovaná služba v cloudu, která funguje jako centrální Centrum zpráv pro obousměrnou komunikaci mezi aplikací IoT a zařízeními, která spravuje. Aby bylo možné směrovat zprávy telemetrie zařízení do Event Grid, vytvořte IoT Hub v rámci skupiny prostředků "ContosoRental". Nastavte integraci zpráv v rámci směrování zpráv, kde budeme filtrovat zprávy na základě stavu modulu auta. Zprávy telemetrie zařízení také pošleme Event Grid při každém přesunu auta.
+IoT Hub je spravovaná služba v cloudu. IoT Hub slouží jako centrální Centrum zpráv pro obousměrnou komunikaci mezi aplikací IoT a zařízeními, která spravuje. Aby bylo možné směrovat zprávy telemetrie zařízení do Event Grid, vytvořte IoT Hub v rámci skupiny prostředků "ContosoRental". Nastavte integraci zpráv v rámci směrování zpráv, kde budeme filtrovat zprávy na základě stavu modulu auta. Zprávy telemetrie zařízení také pošleme Event Grid při každém přesunu auta.
 
 > [!Note] 
 > Funkce IoT Hub pro publikování událostí telemetrie zařízení v Event Grid je ve verzi Public Preview. Funkce Public Preview jsou dostupné ve všech oblastech kromě **východní USA, západní USA, západní Evropa, Azure Government, Azure Čína 21Vianet** a **Azure Německo**. 
@@ -204,7 +208,11 @@ V dalším kroku vytvoříme funkci Azure ve skupině prostředků ContosoRental
 
 ## <a name="create-an-azure-function-and-add-an-event-grid-subscription"></a>Vytvoření funkce Azure functions a přidání předplatného Event Grid
 
-Azure Functions je výpočetní služba bez serveru, která nám umožňuje spustit kód na vyžádání, aniž by bylo nutné explicitně zřizovat nebo spravovat výpočetní infrastrukturu. Další informace o Azure Functions najdete v dokumentaci ke [službě Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) . Logika, kterou implementujeme ve funkci, používá data umístění přicházející z telemetrie zařízení v rámci vozidla pro vyhodnocení stavu geografické oblasti. V případě, že dané vozidlo přechází mimo geografickou oblast, funkce bude shromažďovat další informace, jako je adresa umístění, prostřednictvím [rozhraní Get Search Reverted API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) , které překládá dané umístění do popisné adresy. Všechny relevantní informace o událostech se pak uloží do úložiště objektů BLOB. Krok 5 ukazuje na spustitelný kód implementující takovou logiku. Pomocí následujících kroků vytvořte funkci Azure, která odešle protokoly dat do kontejneru objektů BLOB v účtu úložiště a přidá do ní Event Grid předplatné.
+Azure Functions je výpočetní služba bez serveru, která nám umožňuje spustit kód na vyžádání, aniž by bylo nutné explicitně zřizovat nebo spravovat výpočetní infrastrukturu. Další informace o Azure Functions najdete v dokumentaci ke [službě Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) . 
+
+Logika, kterou implementujeme ve funkci, používá data umístění přicházející z telemetrie zařízení v rámci vozidla pro vyhodnocení stavu geografické oblasti. V případě, že dané vozidlo přechází mimo geografickou ochranou, funkce získá další informace, jako je adresa umístění, prostřednictvím [rozhraní Get Search address reverzní API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse). Toto rozhraní API překládá dané umístění na adresu, kterou si pochopíte. 
+
+Všechny relevantní informace o událostech se pak uchovávají v úložišti objektů BLOB. Krok 5 ukazuje na spustitelný kód implementující takovou logiku. Pomocí následujících kroků vytvořte funkci Azure, která odešle protokoly dat do kontejneru objektů BLOB v účtu úložiště BLOB a přidejte do ní Event Grid předplatné.
 
 1. Na řídicím panelu Azure Portal vyberte vytvořit prostředek. V seznamu dostupných typů prostředků vyberte **COMPUTE** a pak vyberte **aplikace Function App**.
 
@@ -216,7 +224,7 @@ Azure Functions je výpočetní služba bez serveru, která nám umožňuje spus
 
 2. Zkontrolujte podrobnosti aplikace Function App a vyberte vytvořit.
 
-3. Po vytvoření aplikace musíme do ní přidat funkci. Přejděte do aplikace Function App a kliknutím na **Nová funkce** Přidejte funkci, jako vývojové prostředí zvolte **in-Portal** a pak vyberte **pokračovat**.
+3. Po vytvoření aplikace musíme do ní přidat funkci. Přejít do aplikace Function App. Klikněte na **Nová funkce** a přidejte funkci a jako vývojové prostředí vyberte možnost jako **portál** . Pak vyberte **pokračovat**.
 
     ![vytvořit funkci](./media/tutorial-iot-hub-maps/function.png)
 
@@ -231,20 +239,20 @@ Azure Functions je výpočetní služba bez serveru, která nám umožňuje spus
 7. V skriptu jazyka c# nahraďte následující parametry:
     * Nahraďte **SUBSCRIPTION_KEY** klíčem primárního předplatného účtu Azure Maps.
     * Nahraďte **udId** UDIDou geograficky, kterou jste nahráli. 
-    * Funkce **CreateBlobAsync** ve skriptu vytvoří objekt blob na událost v účtu úložiště dat. Nahraďte **ACCESS_KEY**, **ACCOUNT_NAME** a **STORAGE_CONTAINER_NAME** pomocí přístupového klíče účtu úložiště, názvu účtu a kontejneru úložiště dat.
+    * Funkce **CreateBlobAsync** ve skriptu vytvoří objekt blob na událost v účtu úložiště dat. Pomocí přístupového klíče účtu úložiště, názvu účtu a kontejneru úložiště dat nahraďte **ACCESS_KEY**, **ACCOUNT_NAME**a **STORAGE_CONTAINER_NAME** .
 
 10. Klikněte na **přidat Event Grid předplatné**.
     
     ![Přidat událost-mřížka](./media/tutorial-iot-hub-maps/add-egs.png)
 
-11. Vyplňte podrobnosti předplatného, v části **Podrobnosti odběru události** název vašeho předplatného a schématu událostí vyberte Event Grid schéma. V části **Podrobnosti o tématu** vyberte "účty Azure IoT Hub" jako typ tématu. Zvolte stejné předplatné, které jste použili k vytvoření skupiny prostředků, vyberte "ContosoRental" jako "skupinu prostředků" a zvolte IoT Hub, který jste vytvořili jako prostředek. Jako typ události vyberte **telemetrie zařízení** . Po zvolení těchto možností se zobrazí text "typ tématu", který se změní na "IoT Hub" automaticky.
+11. Vyplňte podrobnosti předplatného, v části **Podrobnosti odběru události** název vašeho předplatného a schématu událostí vyberte Event Grid schéma. V části **Podrobnosti o tématu** vyberte "účty Azure IoT Hub" jako typ tématu. Zvolte stejné předplatné, které jste použili k vytvoření skupiny prostředků, a jako skupinu prostředků vyberte "ContosoRental". Vyberte IoT Hub, který jste vytvořili jako prostředek. Jako typ události vyberte **telemetrie zařízení** . Po výběru těchto možností se zobrazí text "typ tématu", který se změní na "IoT Hub" automaticky.
 
     ![událost-mřížka-předplatné](./media/tutorial-iot-hub-maps/af-egs.png)
  
 
 ## <a name="filter-events-using-iot-hub-message-routing"></a>Filtrování událostí pomocí IoT Hub směrování zpráv
 
-Po přidání předplatného Event Grid do funkce Azure se teď v **okně Směrování zpráv** v IoT Hub zobrazí výchozí trasa zprávy, která se má Event Grid. Směrování zpráv umožňuje směrovat různé typy dat, jako jsou zprávy telemetrie zařízení, události životního cyklu zařízení a události s dvojitou změnou v zařízení do různých koncových bodů. Další informace o směrování zpráv služby IoT Hub najdete v tématu [použití IoT Hub směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
+Po přidání předplatného Event Grid do funkce Azure Function se zobrazí výchozí trasa zprávy, která se Event Grid v **okně Směrování zpráv** v IoT Hub. Směrování zpráv umožňuje směrovat různé datové typy do různých koncových bodů. Můžete například směrovat zprávy telemetrie zařízení, události životního cyklu zařízení a události změny zařízení s dvojitou změnou. Další informace o směrování zpráv služby IoT Hub najdete v tématu [použití IoT Hub směrování zpráv](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
 
 ![rozbočovač – např. trasa](./media/tutorial-iot-hub-maps/hub-route.png)
 

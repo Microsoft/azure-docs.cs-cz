@@ -1,20 +1,20 @@
 ---
 title: 'Kurz: hledání blízkých míst na mapě | Mapy Microsoft Azure'
 description: V tomto kurzu se naučíte hledat body zájmu na mapě pomocí Microsoft Azurech map.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9b390806e678c7900b166a07316d7f8ac32a5153
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1035f9c8284f3acf2667d93ce257039defeb3c71
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716180"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209507"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Kurz: hledání okolních bodů zájmu pomocí Azure Maps
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 
 <a id="createaccount"></a>
 

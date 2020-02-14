@@ -1,20 +1,20 @@
 ---
 title: 'Kurz: Vytvoření aplikace lokátoru úložiště pomocí Azure Maps | Mapy Microsoft Azure'
 description: V tomto kurzu se naučíte, jak vytvořit webovou aplikaci lokátoru úložiště pomocí webu Microsoft Azure Maps Web SDK.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 063f085de875272a7b1ba4f52aeceb8f36114cca
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5621ed8f9e5d7990ca7b522d6388f855db81618e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987001"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209558"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Kurz: vytvoření lokátoru úložiště pomocí Azure Maps
 
@@ -33,7 +33,7 @@ Tento kurz vás provede procesem vytvoření jednoduchého lokátoru úložišt�
 
 Přejděte dopředu na [příklad lokátoru Live Storu](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator) nebo [zdrojový kód](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator). 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli dokončit kroky v tomto kurzu, musíte nejdřív vytvořit účet Azure Maps a získat primární klíč (klíč předplatného). Postupujte podle pokynů v části [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) a vytvořte předplatné účtu Azure Maps s cenovou úrovní S1 a podle kroků v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) Získejte primární klíč pro svůj účet. Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
@@ -381,7 +381,7 @@ Spusťte aplikaci nyní, zobrazí se tlačítko záhlaví, vyhledávací pole a 
 
 V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat JavaScript, aby se data načetla a analyzovala, a pak se na mapě vykreslí data. Začněte tím, že otevřete *index. js* a do něj přidáte kód, jak je popsáno v následujícím postupu.
 
-1. Přidejte globální možnosti, aby bylo nastavení snazší aktualizovat. Definujte proměnné pro mapu, překryvné okno, zdroj dat, vrstvu ikony, značku HTML, která zobrazuje střed oblasti hledání, a instanci klienta služby Azure Maps Search.
+1. Přidejte globální možnosti, aby bylo nastavení snazší aktualizovat. Definujte proměnné pro mapu, překryvné okno, zdroj dat, vrstvu ikony a značku HTML. Nastavte značku HTML tak, aby označovala střed oblasti hledání. A definujte instanci klienta služby Search Azure Maps.
 
     ```JavaScript
     //The maximum zoom level to cluster data point data on the map.
@@ -397,9 +397,9 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
 
 1. Přidejte kód do *indexu. js*. Následující kód inicializuje mapu. Přidali jsme [naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) , který bude počkat na dokončení načítání stránky. Pak se v případě, že se budou monitorovat načítající mapy, zadávají události a na tlačítko Hledat a na tlačítko "umístění" získáte funkce.
 
-   Když uživatel vybere tlačítko hledání nebo když uživatel stiskne klávesu ENTER po zadání umístění do vyhledávacího pole, je zahájeno přibližné vyhledávání proti dotazu uživatele. Pokud chcete výsledky hledání omezit na tyto země nebo oblasti, předejte pole hodnot 2 země do `countrySet` možnosti. Omezení zemí nebo oblastí pro hledání pomáhá zvýšit přesnost vrácených výsledků. 
+   Když uživatel vybere tlačítko hledání nebo zadá umístění do vyhledávacího pole, pak stiskne klávesu ENTER, bude zahájeno přibližné vyhledávání proti dotazu uživatele. Pokud chcete výsledky hledání omezit na tyto země nebo oblasti, předejte pole hodnot 2 země do `countrySet` možnosti. Omezení zemí nebo oblastí pro hledání pomáhá zvýšit přesnost vrácených výsledků. 
   
-   Po dokončení hledání Vezměte v úvahu první výsledek a nastavte kameru mapy přes tuto oblast. Když uživatel vybere tlačítko pro vlastní umístění, použijte rozhraní API geografického umístění HTML5, které je integrováno do prohlížeče, a načtěte jeho umístění a vycentrovat mapu do svého umístění.  
+   Po dokončení hledání Vezměte v úvahu první výsledek a nastavte kameru mapy přes tuto oblast. Když uživatel vybere tlačítko pro umístění uživatele, načtěte jeho umístění pomocí rozhraní API geografického umístění HTML5. Toto rozhraní API je integrováno do prohlížeče. Pak vycentrovat mapu na jejich umístění.  
 
    > [!Tip]
    > Při použití automaticky otevíraných oken je nejlepší vytvořit jedinou instanci `Popup` a znovu ji použít tak, že aktualizujete její obsah a polohu. Pro každou `Popup`instanci, kterou přidáte do kódu, se na stránku přidá více elementů DOM. Další prvky modelu DOM, na kterých se nachází, jsou na stránce mnohem více věcí, které prohlížeč musí sledovat. Pokud je příliš mnoho položek, může se stát, že prohlížeč bude pomalý.
@@ -527,7 +527,7 @@ V uživatelském rozhraní se teď nastavuje vše. Pořád potřebujeme přidat 
     map.markers.add(centerMarker);
     ```
 
-1. V okně naslouchací proces událostí `ready` mapy přidejte zdroj dat. Pak zavolejte na načíst a analyzujte datovou sadu. Povolte clusteringu ve zdroji dat. Clustering ve skupinách zdrojů dat překrývá body dohromady v clusteru. Clustery se v jednotlivých bodech oddělují jako přiblížení uživatele. Díky tomu se zvyšuje výkon při práci.
+1. V okně naslouchací proces událostí `ready` mapy přidejte zdroj dat. Pak zavolejte na načíst a analyzujte datovou sadu. Povolte clusteringu ve zdroji dat. Clustering ve skupinách zdrojů dat překrývá body dohromady v clusteru. Clustery se v jednotlivých bodech oddělují jako přiblížení uživatele. Toto chování nabízí lepší uživatelské prostředí a zvyšuje výkon.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -928,7 +928,7 @@ Když uživatel poprvé vybere tlačítko pro umístění, zobrazí se upozorně
 
 ![snímek obrazovky žádosti prohlížeče o přístup k umístění uživatele](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
-Když přiblížíte dostatek místa v oblasti, která má umístění v kavárně, clustery se rozdělují do jednotlivých umístění. Vyberte jednu z ikon na mapě nebo vyberte položku na bočním panelu, aby se zobrazilo překryvné okno, které zobrazuje informace o daném umístění.
+Když přiblížíte dostatek místa v oblasti, která má umístění v kavárně, clustery se rozdělují do jednotlivých umístění. Vyberte jednu z ikon na mapě nebo vyberte položku na bočním panelu, aby se zobrazilo překryvné okno. Automaticky otevírané okno zobrazuje informace o vybraném umístění.
 
 <center>
 

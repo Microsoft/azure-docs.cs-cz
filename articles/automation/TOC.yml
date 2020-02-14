@@ -116,13 +116,7 @@
               href: source-control-integration.md
               displayName: 'github, vsts, azure devops, personal access token'
             - name: Integrace správy zdrojového kódu – stará verze
-              href: automation-source-control-integration-legacy.md
-              displayname: github
-            - name: Integrace správy zdrojového kódu pomocí GitHub Enterprise
-              href: automation-scenario-source-control-integration-with-github-ent.md
-              displayName: 'CI, runbooks'
-            - name: Integrace správy zdrojového kódu pomocí Azure DevOps
-              href: automation-scenario-source-control-integration-with-VSTS.md
+              href: source-control-integration-legacy.md
     - name: Řešení potíží
       items:
         - name: 'Data, která se mají shromažďovat při otevření případu pro Microsoft Azure Automation'

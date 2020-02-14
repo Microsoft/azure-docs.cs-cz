@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 67f9168d2b18a98850588554f77c4a5859f365df
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: b954c812bea6c2abf4376c2cee38a3789461ad01
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086417"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208739"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Migrace webové aplikace z Map Google
 
 Většina webových aplikací, které používají mapy Google, používá sadu SDK pro Google Maps V3 JavaScript. Azure Maps Web SDK je vhodná sada SDK založená na Azure, na kterou se má migrovat. Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy pomocí vlastního obsahu a snímků. Svou aplikaci můžete spustit na webových nebo mobilních aplikacích. Tento ovládací prvek využívá WebGL a umožňuje vykreslovat rozsáhlé datové sady s vysokým výkonem. Pomocí JavaScriptu nebo TypeScript se budete vyvíjet pomocí této sady SDK.
 
-Pokud migrujete existující webovou aplikaci, zkontrolujte, zda je použita knihovna Open Source ovládacího prvku mapy. Příklady knihovny open source ovládacího prvku mapa jsou: cesium, leták a OpenLayers. Pokud vaše aplikace používá open source knihovnu mapového ovládacího prvku a nechcete používat Azure Maps Web SDK, můžete stále migrovat. V takovém případě připojte aplikaci ke službám Azure Maps[dlaždice (\|](https://docs.microsoft.com/rest/api/maps/render/getmaptile) [satelitní dlaždice](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)). Následující body jsou podrobně popsány v tématu použití Azure Maps v některých běžně používaných knihovench ovládacích prvků pro mapování open source.
+Pokud migrujete existující webovou aplikaci, zkontrolujte, zda je použita knihovna Open Source ovládacího prvku mapy. Příklady knihovny open source ovládacího prvku mapa jsou: cesium, leták a OpenLayers. Stále můžete migrovat aplikaci i v případě, že používá open source knihovnu ovládacího prvku mapy a nechcete používat Azure Maps Web SDK. V takovém případě připojte aplikaci ke službám Azure Maps[dlaždice (\|](https://docs.microsoft.com/rest/api/maps/render/getmaptile) [satelitní dlaždice](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytile)). Následující body jsou podrobně popsány v tématu použití Azure Maps v některých běžně používaných knihovench ovládacích prvků pro mapování open source.
 
 - Cesium – ovládací prvek 3D mapy pro web. [Dokumentace k](https://cesiumjs.org/) [ukázce kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Raster%20Tiles%20in%20Cesium%20JS) \|
 - Leták – zjednodušený 2D mapový ovládací prvek pro web. [Dokumentace k](https://leafletjs.com/) [ukázce kódu](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Azure%20Maps%20Raster%20Tiles%20in%20Leaflet%20JS) \|
@@ -62,7 +62,7 @@ Níže jsou uvedeny některé klíčové rozdíly mezi službami Google Maps a A
 
 ## <a name="web-sdk-side-by-side-examples"></a>Webové sady SDK vedle sebe – příklady
 
-Tato kolekce obsahuje ukázky kódu pro každou platformu, každá ukázka se zabývá běžným případem použití. Je určena k tomu, aby vám usnadnila migraci webové aplikace ze sady Google Maps V3 JavaScript SDK do sady Azure Maps Web SDK. Ukázky kódu související s webovými aplikacemi jsou k dispozici v jazyce JavaScript. Azure Maps ale také poskytuje definice TypeScript jako další možnost prostřednictvím [modulu npm](how-to-use-map-control.md).
+Tato kolekce obsahuje ukázky kódu pro každou platformu a každá ukázka pokrývá běžný případ použití. Je určena k tomu, aby vám usnadnila migraci webové aplikace ze sady Google Maps V3 JavaScript SDK do sady Azure Maps Web SDK. Ukázky kódu související s webovými aplikacemi jsou k dispozici v jazyce JavaScript. Azure Maps ale také poskytuje definice TypeScript jako další možnost prostřednictvím [modulu npm](how-to-use-map-control.md).
 
 ### <a name="load-a-map"></a>Načtení mapy
 
@@ -80,7 +80,7 @@ Obě sady SDK mají stejný postup pro načtení mapy:
 - Při odkazování na prvek `div`, ve kterém bude mapa vykreslena, třída `Map` v Azure Maps vyžaduje pouze `id` hodnotu, zatímco Google Maps vyžaduje objekt `HTMLElement`.
 - Souřadnice v Azure Maps jsou definovány jako objekty pozice, které lze zadat jako jednoduché pole čísel ve formátu `[longitude, latitude]`.
 - Úroveň přiblížení v Azure Maps je jedna úroveň nižší než úroveň přiblížení v Mapách Google Maps. Tato nesrovnalost je způsobená rozdílem velikosti systému dlaždic dvou platforem.
-- Azure Maps nepřidá žádné navigační ovládací prvky do plátna mapy. Takže ve výchozím nastavení nemá mapa tlačítka lupy a tlačítka pro mapování stylů. Existují však ovládací prvky pro přidání výběru stylu mapy, tlačítek lupy, kompasu nebo ovládacího prvku otáčení a ovládacího prvku pro sklon.
+- Azure Maps nepřidá žádné navigační ovládací prvky do plátna mapy. Takže ve výchozím nastavení nemá mapa tlačítka lupy a tlačítka pro mapování stylů. Existují však možnosti ovládacího prvku pro přidání výběru stylu mapy, tlačítek lupy, kompasu nebo ovládacího prvku otáčení a ovládacího prvku sklonu.
 - Do Azure Maps se přidá obslužná rutina události, která monitoruje událost `ready` instance mapy. Tato událost se aktivuje, jakmile mapa dokončí načtení kontextu WebGL a všech potřebných prostředků. Přidejte veškerý kód, který chcete spustit po dokončení načítání mapy, do této obslužné rutiny události.
 
 Základní příklady níže využívají Google Maps k načtení mapy uprostřed v New Yorku v souřadnicích. Zeměpisná délka:-73,985, zeměpisná šířka: 40,747 a mapa jsou na úrovni přiblížení 12.
@@ -212,7 +212,7 @@ lokalizace ![Google Maps](media/migrate-google-maps-web-app/google-maps-localiza
 
 **Po: Azure Maps**
 
-Azure Maps poskytuje dva různé způsoby nastavení jazyka a regionálního zobrazení mapy. První možností je přidat tyto informace do oboru názvů Global *Atlas* , což způsobí, že se všechny instance mapového ovládacího prvku ve vaší aplikaci budou ve výchozím nastavení nacházet. Následující nastaví jazyk na francouzštinu ("fr-FR") a místní zobrazení na "auto":
+Azure Maps poskytuje dva různé způsoby nastavení jazyka a regionálního zobrazení mapy. První možností je přidat tyto informace do oboru názvů Global *Atlas* . Výsledkem bude, že ve výchozím nastavení budou všechny instance mapového ovládacího prvku ve vaší aplikaci. Následující nastaví jazyk na francouzštinu ("fr-FR") a místní zobrazení na "auto":
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -246,7 +246,7 @@ Tady je příklad Azure Maps s jazykem nastaveným na "fr" a oblastí uživatele
 
 ### <a name="setting-the-map-view"></a>Nastavení zobrazení mapy
 
-V Azure Maps i ve službě Google Maps lze dynamická mapování programově přesunout do nových geografických umístění. Uděláte to tak, že zavoláte příslušné funkce v JavaScriptu. V tomto příkladu se dozvíte, jak nastavit mapu, aby se zobrazil satelitní datový sklad, vycentrovat mapu na místo a v Mapách Google se změnila úroveň přiblížení na 15. Používají se následující souřadnice umístění: Zeměpisná délka:-111,0225 a zeměpisná šířka: 35,0272.
+V Azure Maps i ve službě Google Maps lze dynamická mapování programově přesunout do nových geografických umístění. Uděláte to tak, že zavoláte příslušné funkce v JavaScriptu. V tomto příkladu se dozvíte, jak nastavit mapu, aby se zobrazil satelitní datový sklad, vycentrovat mapu do umístění a změnili úroveň přiblížení. Používají se následující souřadnice umístění: Zeměpisná délka:-111,0225 a zeměpisná šířka: 35,0272.
 
 > [!NOTE]
 > Mapy Google používá v dimenzích dlaždice, které jsou 256 pixelů, zatímco Azure Maps používá větší dlaždici 512-pixel. Proto Azure Maps vyžaduje menší počet síťových požadavků pro načtení stejné oblasti rozvržení jako Google Maps. Vzhledem k tom, jak jsou pyramidy dlaždice v mapových ovládacích prvcích fungovat, je třeba při použití Azure Maps odečíst úroveň přiblížení v Google Maps číslem One. Tato aritmetická operace zajišťuje, že větší dlaždice v Azure Maps vykreslí stejnou oblast rozvržení jako v Mapách Google.
@@ -856,7 +856,7 @@ V metodě `map.data.setStyle` zadejte jednu funkci zpětného volání. Uvnitř 
 
 **Po: Azure Maps**
 
-Injson je základní datový typ v Azure Maps. Importujte ho do zdroje dat pomocí metody `datasource.importFromUrl`. Použijte bublinovou vrstvu, která poskytuje funkce pro vykreslování kruhů s měřítkem na základě vlastností funkcí ve zdroji dat. Namísto funkce zpětného volání je obchodní logika převedena na výraz a předána do možností stylu. Výrazy definují, jak obchodní logika funguje. Výrazy mohou být předány do jiného vlákna a vyhodnocovány proti datům funkce. Do Azure Maps lze přidat více zdrojů dat a vrstev s jinou obchodní logikou. Tato funkce umožňuje vykreslit více datových sad na mapě různými způsoby.
+Injson je základní datový typ v Azure Maps. Importujte ho do zdroje dat pomocí metody `datasource.importFromUrl`. Použijte bublinovou vrstvu. Bublinová vrstva poskytuje funkce pro vykreslování kruhů s měřítkem na základě vlastností funkcí ve zdroji dat. Namísto funkce zpětného volání je obchodní logika převedena na výraz a předána do možností stylu. Výrazy definují, jak obchodní logika funguje. Výrazy mohou být předány do jiného vlákna a vyhodnocovány proti datům funkce. Do Azure Maps lze přidat více zdrojů dat a vrstev s jinou obchodní logikou. Tato funkce umožňuje vykreslit více datových sad na mapě různými způsoby.
 
 ```html
 <!DOCTYPE html>
@@ -953,7 +953,7 @@ V následujících příkladech kód načte informační kanál pro zemětřesen
 
 **Před: Google Maps**
 
-Použijte knihovnu MarkerCluster ke značkám clusteru. Ikony clusteru jsou omezené na image, které mají čísla jedna až pět jako jejich název a hostují se ve stejném adresáři.
+Použijte knihovnu MarkerCluster ke značkám clusteru. Ikony clusteru jsou omezené na obrázky, které mají čísla jedna až pět jako jejich název. Hostují se ve stejném adresáři.
 
 ```html
 <!DOCTYPE html>
@@ -1025,9 +1025,9 @@ Když je clustering povolený, bude zdroj dat odesílat clusterované a neseskup
 
 | Název vlastnosti             | Typ    | Popis   |
 |---------------------------|---------|---------------|
-| `cluster`                 | Datový typ Boolean | Indikuje, že funkce představuje cluster. |
+| `cluster`                 | Boolean | Indikuje, že funkce představuje cluster. |
 | `cluster_id`              | řetězec  | Jedinečné ID clusteru, které lze použít s metodami DataSource `getClusterExpansionZoom`, `getClusterChildren`a `getClusterLeaves`. |
-| `point_count`             | number  | Počet bodů, které cluster obsahuje.  |
+| `point_count`             | číslo  | Počet bodů, které cluster obsahuje.  |
 | `point_count_abbreviated` | řetězec  | Řetězec, který zkrátí `point_count` hodnotu, pokud je Long. (například 4 000 se bude 4K)  |
 
 Třída `DataSource` má následující pomocnou funkci pro přístup k dalším informacím o clusteru pomocí `cluster_id`.
@@ -1151,7 +1151,7 @@ Přímo importujte data typu injson pomocí funkce `importDataFromUrl` ve tříd
 
 Heat mapy, označované také jako mapy hustoty bodů, jsou typem vizualizace dat. Slouží k reprezentaci hustoty dat pomocí rozsahu barev. A často se používají k zobrazení dat "aktivních bodů" na mapě. Tepelné mapy jsou skvělým způsobem, jak vykreslovat sady velkých bodů dat.
 
-Následující příklady načtou z sadě USGS informační kanál zemětřesení za minulý měsíc a vykreslí je jako vážená Heat mapa. Vlastnost `"mag"` se používá jako váha.
+V následujících příkladech je načten informační kanál zemětřesení pro všechny za minulý měsíc, z sadě USGS a vykresluje se jako vážená Heat mapa. Vlastnost `"mag"` se používá jako váha.
 
 **Před: Google Maps**
 
@@ -1395,7 +1395,7 @@ Pokud kliknete na jednu z ikon přenosů v Azure Maps, zobrazí se další infor
 
 ### <a name="add-a-ground-overlay"></a>Přidání překrytí základní desky
 
-Mapy Azure i Google podporují překrývání imagí na mapě. Obrázky, které se při posouvání a přiblížení mapují a přibližují, se škálují. V Mapách Google jsou obrázky s mikroodkazem označovány jako základní překrytí, zatímco v Azure Maps jsou označovány jako vrstvy obrázků. Ty jsou skvělé pro vytváření plánů podlaží, překrývání starých map nebo k použití snímků z pomocí dronů.
+Mapy Azure i Google podporují překrývání imagí na mapě. Obrázky, které se při posouvání a přiblížení mapují a přibližují, se škálují. V Mapách Google jsou obrázky s mikroodkazem označovány jako základní překrytí, zatímco v Azure Maps jsou označovány jako vrstvy obrázků. Jsou skvělé pro vytváření plánů poschodí, překrývajících se starých map nebo k zobrazení snímků z pomocí dronů.
 
 **Před: Google Maps**
 
