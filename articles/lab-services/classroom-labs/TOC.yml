@@ -52,6 +52,8 @@
           href: how-to-manage-lab-accounts.md
         - name: Konfigurace účtů testovacího prostředí
           href: how-to-configure-lab-accounts.md
+        - name: Umožnění výběru umístění testovacího prostředí pro jeho tvůrce
+          href: allow-lab-creator-pick-lab-location.md
         - name: Připojení vašich testovacích prostředí k partnerské virtuální síti
           href: how-to-connect-peer-virtual-network.md
         - name: Připojení nebo odpojení sdílené galerie imagí

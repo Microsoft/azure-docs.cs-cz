@@ -554,6 +554,8 @@
           href: cassandra-introduction.md
         - name: Podpora přenosového protokolu
           href: cassandra-support.md
+        - name: Elastické škálování
+          href: manage-scale-cassandra.md
         - name: Rychlé starty
           items:
             - name: .NET
@@ -1071,6 +1073,8 @@
           href: migrate-cosmosdb-data.md
         - name: 'Migrace relačních dat typu 1:několik'
           href: migrate-relational-to-cosmos-db-sql-api.md
+        - name: Migrate – Couchbase do SQL API
+          href: couchbase-cosmos-migration.md
     - name: Knihovna Bulk Executor
       items:
         - name: Informace o knihovně Bulk Executoru

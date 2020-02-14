@@ -23,8 +23,6 @@
           href: b2b-tutorial-require-mfa.md
     - name: ukázky
       items:
-        - name: Ukázka portálu se samoobslužnou registrací
-          href: self-service-portal.md
         - name: Ukázky kódu a Azure PowerShellu
           href: code-samples.md
     - name: Koncepty
@@ -50,6 +48,8 @@
           href: conditional-access.md
         - name: B2B pro hybridní organizace
           href: hybrid-organizations.md
+        - name: Samoobslužné přihlášení
+          href: self-service-portal.md
         - name: Aktuální omezení
           href: current-limitations.md
     - name: Návody

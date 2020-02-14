@@ -313,14 +313,20 @@
           href: search-pagination-page-layout.md
         - name: Vyladění relevance (profily vyhodnocování)
           href: index-add-scoring-profiles.md
-    - name: Správa a monitorování
+    - name: Správa služby
       items:
-        - name: Správa portálu
+        - name: Portál
           href: search-manage.md
-        - name: Správa PowerShellu
+        - name: PowerShell
           href: search-manage-powershell.md
-        - name: Protokolování a monitorování aktivit
+    - name: Monitorování a protokolování
+      items:
+        - name: Základy
           href: search-monitor-usage.md
+        - name: Monitorování aktivity dotazů
+          href: search-monitor-queries.md
+        - name: Protokolování diagnostiky
+          href: search-monitor-logs.md
         - name: Prohledání analýzy provozu
           href: search-traffic-analytics.md
     - name: Řešení potíží

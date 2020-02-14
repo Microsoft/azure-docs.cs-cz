@@ -160,6 +160,8 @@
           href: disk-scalability-targets.md
         - name: Zálohování a zotavení po havárii pro disky
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Sdílené disky
+          href: disks-shared.md
         - name: Disky OS s kratší platností
           href: ephemeral-os-disks.md
     - name: Sítě
@@ -553,6 +555,8 @@
         - name: Nasazení disků pomocí šablony
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: Povolení sdílených disků
+          href: disks-shared-enable.md
         - name: Nahrání virtuálního pevného disku na disk – CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
         - name: Změna velikosti disku
