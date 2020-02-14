@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 1c1995b4daf3b76abf7663d8d6c1f4cb7b1d6e2b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835012"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201675"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k SQL Database Managed Instances (FAQ)
 
@@ -56,7 +56,7 @@ Nové funkce a verze Preview najdete v [poznámkách k verzi](/azure/sql-databas
 
 Očekávaná doba pro vytvoření nové spravované instance nebo změna úrovně služby (virtuální jádra, Storage) závisí na několika faktorech. Prohlédněte si [operace správy](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) 
 
-## <a name="naming-convention"></a>Zásady vytváření názvů
+## <a name="naming-convention"></a>Konvence pojmenování
 
 **Může mít spravovaná instance stejný název jako místní SQL Server?**
 
@@ -82,21 +82,11 @@ Jednou z možností je [exportovat databázi do BacPac](sql-database-export.md) 
 
 Toto je doporučený postup, pokud je databáze menší než 100 GB. Transakční replikaci je možné použít, pokud všechny tabulky v databázi mají primární klíče.
 
-## <a name="gen-4-vs-gen-5"></a>Gen 4 vs. 5. generace 
-
-**Návody zvolit mezi generováním hardwaru Gen 4 a gen 5 pro spravovanou instanci?**
-
-Závisí na vašich úlohách, protože některé generace hardwaru jsou pro určité typy úloh lepší než druhá. I když je předmět výkonu složitý a zjednodušuje se tak tyto rozdíly mezi generacemi hardwaru, které ovlivňují výkon úloh:
-- Gen 4 poskytuje lepší výpočetní podporu, protože je založená na fyzických procesorech, vs. Gen 5 založené na vCore procesorech. Může být výhodnější pro úlohy náročné na výpočetní výkon.
-- Gen 5 podporuje urychlené síťové služby, což má za následek lepší šířku pásma v/v pro vzdálené úložiště. Může být výhodné pro úlohy náročné na vstupně-výstupní operace na Pro obecné účely úrovní služeb. Gen 5 používá rychlejší místní disky SSD v porovnání s Gen 4. Může být výhodné pro úlohy náročné na vstupně-výstupní operace pro důležité podnikové úrovně služeb.
-
-Důrazně doporučujeme, abyste před živým testováním výkonu skutečných úloh určených pro produkci vyzkoušeli, která generace hardwaru bude v konkrétním případě lépe fungovat.
-
 ## <a name="switch-hardware-generation"></a>Přepnout generování hardwaru 
 
 **Můžu přepínat generování hardwaru spravované instance mezi Gen 4 a 1.5 online?**
 
-Automatizované online přepínání mezi generacemi hardwaru je možné, pokud jsou hardwarové generace dostupné v oblasti, kde je spravovaná vaše spravovaná instance zřízena. V takovém případě můžete pomocí [skriptu z blogového příspěvku](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824) vysvětlit, jak přepínat mezi generováním hardwaru.
+Automatizované online přepínání mezi generacemi hardwaru je možné, pokud jsou hardwarové generace dostupné v oblasti, kde je spravovaná vaše spravovaná instance zřízena. V takovém případě si můžete prohlédnout [stránku Přehled modelu Vcore](sql-database-service-tiers-vcore.md) vysvětlující, jak přepínat mezi generováním hardwaru.
 
 Tato operace je dlouhotrvající, protože nová spravovaná instance se zřídí na pozadí a databáze automaticky přenesené mezi starou a novou instancí s rychlým převzetím služeb při selhání na konci procesu. 
 
@@ -108,8 +98,6 @@ Pokud se ve stejné oblasti nepodporují hardwarové generace, změna hardwarov�
 **Návody vyladit výkon mé spravované instance?**
 
 Pro obecné účely spravovaná instance používá vzdálené úložiště, protože se jedná o velikost dat a souborů protokolu, které jsou důležité pro výkon. Další informace najdete v tématu [vliv velikosti souboru protokolu na výkon pro obecné účely spravované instance](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
-
-Pro úlohy náročné na vstupně-výstupní operace zvažte použití hardwaru Gen 5 a používejte Gen 4 pro úlohy náročné na výpočetní výkon. Další informace najdete v tématu [návody výběru mezi fin 4 a gen 5](#gen-4-vs-gen-5).
 
 Pokud se vaše zatížení skládá z velkého množství malých transakcí, zvažte možnost přepnout typ připojení ze proxy serveru do režimu přesměrování.
 
@@ -206,7 +194,7 @@ Z tohoto důvodu se důrazně nedoporučuje spoléhat na neměnnosti IP adresy, 
 
 Ne, toto je aktuální omezení platformy. Po vytvoření spravované instance se nepodporují přesunutí spravované instance nebo virtuální sítě do jiné skupiny prostředků nebo předplatného.
 
-## <a name="change-time-zone"></a>Změna časového pásma
+## <a name="change-time-zone"></a>Změnit časové pásmo
 
 **Můžu změnit časové pásmo existující spravované instance?**
 

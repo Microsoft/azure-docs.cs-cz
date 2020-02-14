@@ -1,5 +1,5 @@
 ---
-title: Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí – Kurz – Azure Portal | Microsoft Docs
+title: Připojení virtuálních sítí pomocí partnerského vztahu VNet – kurz – Azure Portal
 description: V tomto kurzu zjistíte, jak propojit virtuální sítě s využitím partnerského vztahu virtuálních sítí pomocí webu Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 65749182bf93e84c8712409cd16bd3a60184c7ca
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016047"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201294"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Kurz: Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí webu Azure Portal
 
@@ -34,7 +34,7 @@ Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](tutorial-c
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure. 
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
@@ -48,8 +48,8 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |---|---|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
-    |Region (Oblast)| Vyberte **USA – východ**.|
-    |Name (Název)|myVirtualNetwork1|
+    |Oblast| Vyberte **USA – východ**.|
+    |Název|myVirtualNetwork1|
 
 4. Na kartě **IP adresy** zadejte 10.0.0.0/16 pro pole **adresní prostor** . Klikněte na tlačítko **Přidat podsíť** níže a jako **Rozsah adres podsítě**zadejte *Subnet1* pro **název podsítě** a 10.0.0.0/24.
 5. Vyberte **zkontrolovat + vytvořit** a pak vyberte **vytvořit**.
@@ -58,7 +58,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
     |Nastavení|Hodnota|
     |---|---|
-    |Name (Název)|myVirtualNetwork2|
+    |Název|myVirtualNetwork2|
     |Adresní prostor|10.1.0.0/16|
     |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
     |Název podsítě | Podsíť Subnet2|
@@ -101,7 +101,7 @@ Vytvořte v obou virtuálních sítích virtuální počítač, abyste mezi nimi
     |Nastavení|Hodnota|
     |---|---|
     |Skupina prostředků| Vyberte **Použít existující** a pak vyberte **myResourceGroup**.|
-    |Name (Název)|myVm1|
+    |Název|myVm1|
     |Umístění| Vyberte **USA – východ**.|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
@@ -124,7 +124,7 @@ Zopakujte kroky 1 až 6 s následujícími změnami:
 
 |Nastavení|Hodnota|
 |---|---|
-|Name (Název) | myVm2|
+|Název | myVm2|
 |Virtuální síť | myVirtualNetwork2|
 
 Vytvoření virtuálních počítačů trvá několik minut. Nepokračujte ve zbývajících krocích, dokud se oba virtuální počítače nevytvoří.
@@ -132,9 +132,9 @@ Vytvoření virtuálních počítačů trvá několik minut. Nepokračujte ve zb
 ## <a name="communicate-between-vms"></a>Komunikace mezi virtuálními počítači
 
 1. Do pole *Hledat* v horní části portálu začněte zadávat *myVm1*. Jakmile se ve výsledcích hledání zobrazí virtuální počítač **myVm1**, vyberte ho.
-2. Vyberte **Připojit** a vytvořte připojení ke vzdálené ploše virtuálního počítače *myVm1*, jak je znázorněno na následujícím obrázku:
+2. Vyberte *Připojit* a vytvořte připojení ke vzdálené ploše virtuálního počítače **myVm1**, jak je znázorněno na následujícím obrázku:
 
-    ![Připojení k virtuálnímu počítači](./media/tutorial-connect-virtual-networks-portal/connect-to-virtual-machine.png)  
+    ![Připojit k virtuálnímu počítači](./media/tutorial-connect-virtual-networks-portal/connect-to-virtual-machine.png)  
 
 3. Pokud se chcete připojit k virtuálnímu počítači, otevřete stažený soubor RDP. Pokud se zobrazí výzva, vyberte **Připojit**.
 4. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače (abyste mohli zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače, možná budete muset vybrat **Další možnosti** a pak **Použít jiný účet**), a pak vyberte **OK**.
@@ -165,9 +165,9 @@ Vytvoření virtuálních počítačů trvá několik minut. Nepokračujte ve zb
 
 Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostředky, které obsahuje: 
 
-1. Do pole **Hledat** v horní části portálu zadejte *myResourceGroup*. Jakmile se ve výsledcích hledání zobrazí skupina prostředků **myResourceGroup**, vyberte ji.
+1. Do pole *Hledat* v horní části portálu zadejte **myResourceGroup**. Jakmile se ve výsledcích hledání zobrazí skupina prostředků **myResourceGroup**, vyberte ji.
 2. Vyberte **Odstranit skupinu prostředků**.
-3. V části **ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ** zadejte *myResourceGroup* a vyberte **Odstranit**.
+3. V části *ZADEJTE NÁZEV SKUPINY PROSTŘEDKŮ* zadejte **myResourceGroup** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 

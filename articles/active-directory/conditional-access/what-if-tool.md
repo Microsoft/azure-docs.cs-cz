@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5846934a8ad8455ca375b4bc54fc46d45aba1cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379977"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185886"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Řešení potíží pomocí nástroje What If v podmíněném přístupu
 
@@ -26,7 +26,7 @@ Tento článek vysvětluje, jak můžete pomocí tohoto nástroje testovat zása
 
 ## <a name="what-it-is"></a>Co to je
 
-**Nástroj zásady podmíněného přístupu what if Policy** vám umožní pochopit dopad zásad podmíněného přístupu ve vašem prostředí. Místo testování zásad ručním prováděním několika přihlášení umožňuje tento nástroj vyhodnotit simulované přihlášení uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace. Tato sestava neobsahuje jenom seznam použitých zásad podmíněného přístupu, ale také [klasické zásady](policy-migration.md#classic-policies) , pokud existují.    
+**Nástroj zásady podmíněného přístupu what if Policy** vám umožní pochopit dopad zásad podmíněného přístupu ve vašem prostředí. Místo testování zásad pomocí ručního provádění více přihlášení vám nástroj umožní vyhodnotit simulované přihlašování uživatele. Při této simulaci se odhadne dopad přihlášení na vaše zásady a vygeneruje se sestava simulace. Tato sestava neobsahuje jenom seznam použitých zásad podmíněného přístupu, ale také [klasické zásady](policy-migration.md#classic-policies) , pokud existují.    
 
 Nástroj **What If** poskytuje způsob, jak rychle určit zásady, které se vztahují na konkrétního uživatele. Tyto informace můžete použít například v případě, že potřebujete vyřešit problém.    
 
@@ -72,11 +72,11 @@ IP adresa je jedna adresa IPv4 pro napodobení [podmínky umístění](location-
 
 ### <a name="device-platforms"></a>Platformy zařízení
 
-Toto nastavení napodobuje [stav platforem zařízení](conditions.md#device-platforms) a představuje ekvivalent **všech platforem (včetně nepodporovaných)** . 
+Toto nastavení napodobuje [stav platforem zařízení](concept-conditional-access-conditions.md#device-platforms) a představuje ekvivalent **všech platforem (včetně nepodporovaných)** . 
 
 ### <a name="client-apps"></a>Klientské aplikace
 
-Toto nastavení napodobuje [stav klientských aplikací](conditions.md#client-apps).
+Toto nastavení napodobuje [stav klientských aplikací](concept-conditional-access-conditions.md#client-apps-preview).
 Ve výchozím nastavení toto nastavení způsobí vyhodnocení všech zásad s **prohlížečem** nebo **mobilními aplikacemi a desktopových klientů** buď jednotlivě, nebo podle obou vybraných. Také detekuje zásady, které vynutily **protokol Exchange ActiveSync (EAS)** . Toto nastavení můžete zúžit výběrem možnosti:
 
 - **Prohlížeč** pro vyhodnocení všech zásad s aspoň vybraným **prohlížečem** . 
@@ -84,7 +84,7 @@ Ve výchozím nastavení toto nastavení způsobí vyhodnocení všech zásad s 
 
 ### <a name="sign-in-risk"></a>Riziko přihlášení
 
-Toto nastavení napodobuje [rizikové podmínky přihlášení](conditions.md#sign-in-risk).   
+Toto nastavení napodobuje [rizikové podmínky přihlášení](concept-conditional-access-conditions.md#sign-in-risk).   
 
 ## <a name="evaluation"></a>Hodnocení 
 

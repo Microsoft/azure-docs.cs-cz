@@ -4,14 +4,14 @@ ms.service: ansible
 ms.topic: include
 ms.date: 04/30/2019
 ms.author: tarcher
-ms.openlocfilehash: 3e99c24b17d19f94b8ba171cea5a16b7d0c0cd56
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 1d48d9ad92c6a83467fbe718cf0217ceefbb28db
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175026"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77202386"
 ---
-- **Nainstalujte Ansible**: Proveďte jednu z následujících možností:
+- **Install Ansible**: udělejte jednu z následujících možností:
 
-    - [Nainstalujte](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine) a [nakonfigurovat](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials) Ansible na virtuální počítač s Linuxem 
+    - [Instalace](/azure/ansible/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine) a [Konfigurace](/azure/ansible/ansible-install-configure#create-azure-credentials) Ansible na virtuálním počítači se systémem Linux 
     - [Konfigurace služby Azure Cloud Shell](/azure/cloud-shell/quickstart)

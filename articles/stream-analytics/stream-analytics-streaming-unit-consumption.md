@@ -7,14 +7,14 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: d270d38bce45c45f9323a971ad69dc2b931a9169
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369843"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201488"
 ---
-# <a name="understand-and-adjust-streaming-units"></a>Pochopení a úprava jednotek streamování
+# <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
 Jednotky streamování (SUs) představují výpočetní prostředky, které jsou přiděleny k provedení Stream Analytics úlohy. Čím vyšší je počet SU, tím více prostředků CPU a paměti se úloze přidělí. Tato kapacita vám umožní soustředit se na logiku dotazů a abstrakce nutnosti spravovat hardware a včas spouštět úlohy Stream Analytics.
 
@@ -59,6 +59,8 @@ Dočasné (časově orientované) prvky dotazu jsou základní sadou stavových 
 Všimněte si, že úloha se složitou logikou dotazů by mohla mít vysoké procento využití SU i v případě, že nepřetržitě nepřijímá vstupní události. K tomu může dojít po náhlém špičkě ve vstupních a výstupních událostech. Pokud je dotaz složitý, může úloha dál udržovat stav v paměti.
 
 Využití SU% se může po krátké době před návratem na očekávané úrovně náhle přetáhnout na 0. K tomu dochází kvůli přechodným chybám nebo upgradům iniciované systémem. Zvýšení počtu jednotek streamování pro úlohu se nemusí snížit, pokud váš dotaz není [plně paralelní](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization).
+
+Při porovnávání využití v časovém intervalu používejte [metriky rychlosti událostí](stream-analytics-monitoring.md). Metriky InputEvents a OutputEvents ukazují, kolik událostí bylo přečteno a zpracováno. Existují metriky, které označují počet chybových událostí, jako jsou například chyby deserializace. Když se počet událostí za časovou jednotku zvýší, ve většině případů se zvyšuje hodnota SU%.
 
 ## <a name="stateful-query-logicin-temporal-elements"></a>Stavových dotazů logiky v elementech dočasné
 Jeden jedinečné funkce úlohy Azure Stream Analytics je stavové zpracování, jako jsou agregace v okně, dočasné spojení a dočasné analytických funkcí. Každý z těchto operátorů uchovává informace o stavu. Maximální velikost okna pro tyto prvky dotazu je sedm dní. 

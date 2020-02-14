@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980721"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192872"
 ---
 ## <a name="for-users-in-your-directory"></a>Pro uživatele ve vašem adresáři
 
@@ -81,7 +81,7 @@ Postupujte podle těchto kroků, pokud chcete uživatelům, kteří nejsou ve va
 1. Po výběru všech připojených organizací klikněte na **Vybrat**.
 
     > [!NOTE]
-    > Všichni uživatelé z vybraných připojených organizací budou moct požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k organizaci, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [povolení nebo blokování pozvánek uživatelů B2B z konkrétních organizací](../articles/active-directory/b2b/allow-deny-list.md).
+    > Všichni uživatelé z vybraných připojených organizací budou moct požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k organizaci, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](../articles/active-directory/b2b/allow-deny-list.md).
 
 1. Přeskočte dolů k části [schválení](#approval) .
 
@@ -198,7 +198,7 @@ Například pokud jste jako první schvalovateli v seznamu Alice a Bob, vypíše
 
 ## <a name="enable-requests"></a>Povolit žádosti
 
-1. Pokud chcete, aby byl balíček přístupu hned dostupný pro uživatele v zásadách žádosti, klikněte na **Ano** , aby se aktivovala žádost.
+1. Pokud chcete, aby byl balíček přístupu hned dostupný pro uživatele v zásadách žádosti, přesuňte přepínač Povolit na **Ano**.
 
     Po dokončení vytváření balíčku pro přístup ho můžete v budoucnu kdykoli povolit.
 

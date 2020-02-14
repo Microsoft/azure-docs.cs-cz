@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
-ms.date: 10/03/2019
-ms.openlocfilehash: 8c5fe1970857a04c7b237a101ac228dea024815b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive,mvc
+ms.date: 02/12/2020
+ms.openlocfilehash: 5eb6788a558e4429296731f1693edd18bf92f98f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494502"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198884"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Kurz: Načítání dat a spouštění dotazů v clusteru Apache Spark ve službě Azure HDInsight
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 > * Vytvoření datového rámce ze souboru CSV
 > * Spouštění dotazů nad datovým rámcem
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Cluster Apache Spark ve službě HDInsight. Viz [Vytvoření clusteru Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
 
@@ -32,9 +32,9 @@ Cluster Apache Spark ve službě HDInsight. Viz [Vytvoření clusteru Apache Spa
 
 Jupyter Notebook je interaktivní prostředí poznámkového bloku, které podporuje různé programovací jazyky. Poznámkový blok umožňuje pracovat s daty, kombinovat kód s textem markdownu a provádět jednoduché vizualizace.
 
-1. Upravte adresu URL `https://SPARKCLUSTER.azurehdinsight.net/jupyter` tak, že nahradíte `SPARKCLUSTER` názvem vašeho clusteru Spark. Pak zadejte upravenou adresu URL do webového prohlížeče. Po zobrazení výzvy zadejte přihlašovací údaje clusteru.
+1. Upravte `https://SPARKCLUSTER.azurehdinsight.net/jupyter` URL tak, že nahradíte `SPARKCLUSTER` názvem vašeho clusteru Spark. Pak zadejte upravenou adresu URL do webového prohlížeče. Po zobrazení výzvy zadejte přihlašovací údaje clusteru.
 
-2. Na webové stránce Jupyter vyberte **nový** > **PySpark** pro vytvoření poznámkového bloku.
+2. Na webové stránce Jupyter vyberte **nový** > **PySpark** a vytvořte Poznámkový blok.
 
    ![Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Vytvoření Jupyter Notebook pro spuštění interaktivního dotazu Spark SQL")
 
@@ -60,7 +60,9 @@ Aplikace mohou vytvářet datový rámec přímo ze souborů nebo složek na vzd
 
     ![Stav interaktivního dotazu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-interactive-spark-query-status.png "Stav interaktivního dotazu Spark SQL")
 
-2. Spuštěním následujícího kódu vytvořte datový rámec a dočasnou tabulku (**hvac**).
+1. Všimněte si vráceného ID relace. Z obrázku výše je ID relace 0. V případě potřeby můžete získat podrobnosti relace tak, že přejdete na `https://CLUSTERNAME.azurehdinsight.net/livy/sessions/ID/statements`, kde název_clusteru je název vašeho clusteru Spark a ID je číslo ID vaší relace.
+
+1. Spuštěním následujícího kódu vytvořte datový rámec a dočasnou tabulku (**hvac**).
 
     ```python
     # Create a dataframe and table from sample data
@@ -87,7 +89,7 @@ Po vytvoření tabulky můžete nad daty spustit interaktivní dotaz.
 
     ![Plošný graf interaktivního dotazu Spark – výsledek](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Plošný graf interaktivního dotazu Spark – výsledek")
 
-3. V řádku nabídek poznámkového bloku přejděte na **soubor** > **Uložit a kontrolní bod**.
+3. V panelu nabídek poznámkového bloku přejděte na **soubor** > **Uložit a kontrolní bod**.
 
 4. Pokud právě začínáte s [dalším kurzem](apache-spark-use-bi-tools.md), nechte poznámkový blok otevřený. Pokud ne, vypněte Poznámkový blok a uvolněte prostředky clusteru: z řádku nabídek Poznámkový blok přejděte na **soubor** >  **Zavřít a zastavit**.
 

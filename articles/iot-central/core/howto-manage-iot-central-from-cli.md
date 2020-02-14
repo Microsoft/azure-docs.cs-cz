@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: cf0414531d363ab5401e8c9574943a40ecf2d449
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: c44b7cd045547d01d1a31f949a42087e78e88b21
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137823"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198833"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Správa IoT Central z Azure CLI
 
@@ -28,6 +28,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Pokud raději spustíte Azure CLI na místním počítači, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli). Když Azure CLI spouštíte místně, přihlaste se k Azure pomocí příkazu **AZ Login** , abyste se mohli pokusit použít příkazy v tomto článku.
+
+> [!TIP]
+> Pokud potřebujete spustit příkazy rozhraní příkazového řádku v jiném předplatném Azure, přečtěte si téma [Změna aktivního předplatného](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription).
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurace zón zpětného vyhledávání pro kontrolu bannerů protokolu SMTP v Azure
+title: Konfigurace zón zpětného vyhledávání pro kontrolu banneru SMTP
 titlesuffix: Azure Virtual Network
 description: Popisuje postup konfigurace zón zpětného vyhledávání pro kontrolu banneru SMTP v Azure.
 services: virtual-network
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 084fdb7f850f3819738a982127fa98efab114197
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 6c37ba61005c9936e6421d06369d1f52b93ac264
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059027"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201692"
 ---
 # <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>Konfigurace zón zpětného vyhledávání pro kontrolu banneru SMTP
 
@@ -28,7 +28,7 @@ Tento článek popisuje, jak používat reverzní zónu v Azure DNS a vytvořit 
 
 Pokud v Microsoft Azure hostuje server SMTP, může se při odesílání nebo přijímání zprávy ze vzdálených poštovních serverů zobrazit následující chybová zpráva:
 
-**554: Žádný záznam PTR**
+**554: žádný záznam PTR**
 
 ## <a name="solution"></a>Řešení
 

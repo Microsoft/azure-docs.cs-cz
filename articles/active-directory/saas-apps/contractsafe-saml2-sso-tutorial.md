@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4f625999ff9cbdad6aeefb662e39a6b30a1881
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 7ab2dc71f39164988e0d229fc994548a00447986
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291528"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185620"
 ---
 # <a name="tutorial-integrate-azure-active-directory-single-sign-on-sso-with-contractsafe-saml2-sso"></a>Kurz: Integrace Azure Active Directory jednotného přihlašování (SSO) pomocí jednotného přihlašování ContractSafe typu Saml2
 
@@ -85,7 +85,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího formátu: `https://app.contractsafe.com/saml2_auth/<UNIQUEID>/acs/`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory ContractSafe typu Saml2 SSO Client support](mailto:donne@contractsafe.com) . Můžete se také podívat na formáty zobrazené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory ContractSafe typu Saml2 SSO Client support](mailto:support@contractsafe.com) . Můžete se také podívat na formáty zobrazené v části **základní konfigurace SAML** v Azure Portal.
 
 1. ContractSafe typu Saml2 SSO očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -93,7 +93,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Kromě výchozích atributů očekává aplikace ContractSafe typu Saml2 SSO několik dalších atributů, které se vrátí zpátky v odpovědi SAML. Tyto atributy jsou předem vyplněné, ale můžete je zkontrolovat podle svých požadavků. Následující seznam obsahuje další atributy.
 
-    | Name (Název) | Zdrojový atribut|
+    | Název | Zdrojový atribut|
     | ---------------| --------------- |
     | e-mailová adresa | user.userprincipalname |
     | e-mail | User. onpremisesuserprincipalname |
@@ -111,7 +111,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem **B. Simon**.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**. Vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte e-mailovou adresu ve formátu `username@companydomain.extension`. Příklad: `B.Simon@contoso.com`.
@@ -138,17 +138,17 @@ V této části povolíte **B. Simon** používat jednotné přihlašování Azu
 
 ## <a name="configure-contractsafe-saml2-sso"></a>Konfigurace jednotného přihlašování ContractSafe typu Saml2
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **jednotného přihlašování ContractSafe typu Saml2** , je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory pro ContractSafe typu Saml2 SSO](mailto:donne@contractsafe.com). Tým je zodpovědný za správné nastavení připojení SAML na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **jednotného přihlašování ContractSafe typu Saml2** , je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory pro ContractSafe typu Saml2 SSO](mailto:support@contractsafe.com). Tým je zodpovědný za správné nastavení připojení SAML na obou stranách.
 
 ## <a name="create-a-contractsafe-saml2-sso-test-user"></a>Vytvoření testovacího uživatele ContractSafe typu Saml2 SSO
 
-Vytvořte uživatele s názvem B. Simon v rámci ContractSafeu typu Saml2 SSO. Spolupracujte s [týmem podpory ContractSafe typu Saml2 SSO](mailto:donne@contractsafe.com) a přidejte uživatele na platformě CONTRACTSAFE typu Saml2 SSO. Před použitím jednotného přihlašování se musí vytvořit a aktivovat uživatelé.
+Vytvořte uživatele s názvem B. Simon v rámci ContractSafeu typu Saml2 SSO. Spolupracujte s [týmem podpory ContractSafe typu Saml2 SSO](mailto:support@contractsafe.com) a přidejte uživatele na platformě CONTRACTSAFE typu Saml2 SSO. Před použitím jednotného přihlašování se musí vytvořit a aktivovat uživatelé.
 
 ## <a name="test-sso"></a>Test SSO
 
 Otestujte konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu. Když vyberete dlaždici SSO ContractSafe typu Saml2 SSO na přístupovém panelu, měli byste se automaticky přihlásit k rozhraní ContractSafe typu Saml2 SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

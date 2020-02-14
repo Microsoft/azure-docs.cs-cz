@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 39bcaac2ca94eedebd991a1c4e93f324ef651888
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2bfdf1046c67ed1651f792191923bf4c533d0299
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76961455"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205693"
 ---
 Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se Azure Managed Disks a Azure SSD úrovně Premium disků.
 
@@ -29,11 +29,11 @@ Standardní spravovaný disk vytvořený z disku VHD 80 GB se považuje za dalš
 
 **Jsou nějaké transakční náklady na standard Managed disks?**
 
-Ano. Účtují se vám poplatky za všechny transakce. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage).
+Ano. Účtují se vám poplatky za jednotlivé transakce. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage).
 
 **U standardního spravovaného disku se mi bude účtovat skutečná velikost dat na disku nebo zajištěná kapacita disku?**
 
-Poplatky se vám účtují na základě zřízené kapacity disku. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage).
+Účtují se vám poplatky podle zřízené kapacity disku. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/storage).
 
 **Jak se ceny za spravované disky úrovně Premium liší od nespravovaných disků?**
 
@@ -148,7 +148,7 @@ Snímky podpory SSD úrovně Premium, Standard SSD a standardní HDD. U těchto 
 **Co jsou rezervace disků Azure?**
 Rezervace disku je možnost předem si koupit jeden rok diskového úložiště a snížit tak celkové náklady. Podrobnosti o rezervacích disků Azure najdete v našem článku na předmětu: [Vysvětlení způsobu použití zlevněné slevy na disk Azure](../articles/cost-management-billing/reservations/understand-disk-reservations.md).
 
-**Jaké možnosti nabízí rezervace disku Azure?** Rezervace disku Azure nabízí možnost koupit SSD úrovně Premium v zadaných SKU z P30 (1 TiB) až P80 (32 TiB) po dobu jednoho roku. Minimální množství disků potřebných k zakoupení rezervovaného disku není nijak omezené. Kromě toho můžete zvolit jednu platbu předem nebo měsíční platby. Pro SSD úrovně Premium Managed Disks se neúčtují žádné další transakční náklady. 
+**Jaké možnosti nabízí rezervace disku Azure?** Rezervace disku Azure nabízí možnost koupit SSD úrovně Premium v zadaných SKU z P30 (1 TiB) až P80 (32 TiB) po dobu jednoho roku. Minimální množství disků potřebných k zakoupení rezervovaného disku není nijak omezené. Kromě toho se můžete rozhodnout, že platíte s jednou, předem platbou nebo měsíčními platbami. Pro SSD úrovně Premium Managed Disks se neúčtují žádné další transakční náklady. 
 
 Rezervace se provádějí ve formě disků, mimo kapacitu. Jinými slovy, když rezervujete disk P80 (32 TiB), získáte jeden P80 disk, takže nemůžete tuto specifickou rezervaci rozdělit do dvou menších disků P70 (16 TiB). Můžete samozřejmě vyhradit tolik disků, kolik jich budete chtít, a to včetně dvou samostatných disků P70 (16 TiB).
 
@@ -160,6 +160,44 @@ Rezervace disků Azure se kupuje pro konkrétní oblast a SKU (jako je P30 v Vý
 
 **Co se stane, když vyprší platnost rezervace na discích Azure?**    
 Před vypršením platnosti a znovu po datu vypršení platnosti obdržíte e-mailová oznámení 30 dnů. Po vypršení platnosti rezervace budou nasazené disky i nadále spuštěné a budou se fakturovat s nejnovějšími [tarify](https://azure.microsoft.com/pricing/details/managed-disks/)průběžných plateb.
+
+### <a name="azure-shared-disks"></a>Sdílené disky Azure
+
+**Je funkce sdílené disky podporovaná pro nespravované disky nebo objekty blob stránky?**
+
+Ne, podporuje se jenom pro disky se správou SSD úrovně Premium.
+
+**Které oblasti podporují sdílené disky?**
+
+Aktuálně je jenom Středozápadní USA.
+
+**Můžou se sdílené disky používat jako disk s operačním systémem?**
+
+Ne, sdílené disky se podporují jenom pro datové disky.
+
+**Jaké velikosti disků podporují sdílené disky?**
+
+Pouze SSD úrovně Premium, které jsou P15 nebo vyšší, podporují sdílené disky.
+
+**Pokud mám existující disk SSD úrovně Premium, můžu na něj Povolit sdílené disky?**
+
+Sdílené disky můžou povolit všechny spravované disky vytvořené pomocí rozhraní API verze 2019-07-01 nebo vyšší. K tomu je potřeba odpojit disk od všech virtuálních počítačů, ke kterým je připojený. Pak na disku upravte vlastnost `maxShares`.
+
+**Pokud už nechci používat disk ve sdíleném režimu, jak ho můžu zakázat?**
+
+Odpojte disk ze všech virtuálních počítačů, ke kterým je připojen. Pak na disku upravte vlastnost maxShare na hodnotu 1.
+
+**Můžete změnit velikost sdíleného disku?**
+
+Ano.
+
+**Můžu povolit akcelerátor zápisu na disku, na kterém jsou taky povolené sdílené disky?**
+
+Ne.
+
+**Můžu povolit ukládání hostitelů do mezipaměti pro disk, na kterém je povolený sdílený disk?**
+
+Jediná podporovaná možnost ukládání hostitelů do mezipaměti je None.
 
 ## <a name="ultra-disks"></a>Disky Ultra
 
@@ -245,7 +283,7 @@ Následující příklad ukazuje oddíl *Properties. storageProfile. osDisk* pro
 Kompletní příklad vytvoření SSD úrovně Standard disku pomocí šablony najdete v tématu [Vytvoření virtuálního počítače z image Windows s datovými disky SSD úrovně Standard](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
 
 **Můžu převést existující disky na SSD úrovně Standard?**
-Ano, je to možné. Přečtěte si téma [Převod úložiště Azure Managed disks z úrovně Standard na Premium a naopak](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) pro obecné pokyny k převodu Managed disks. Pomocí následující hodnoty můžete aktualizovat typ disku na SSD úrovně Standard.
+Ano, můžete. Přečtěte si téma [Převod úložiště Azure Managed disks z úrovně Standard na Premium a naopak](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) pro obecné pokyny k převodu Managed disks. Pomocí následující hodnoty můžete aktualizovat typ disku na SSD úrovně Standard.
 -AccountType StandardSSD_LRS
 
 **Jaká je výhoda použití SSD úrovně Standard disků místo HDD?**
@@ -257,7 +295,7 @@ Ne, standardní disky SSD jsou k dispozici pouze jako Managed Disks.
 **Podporuje SSD úrovně Standard disky smlouvu SLA pro virtuální počítače s jednou instancí?**
 Ne, standardní SSD nemají smlouvu SLA pro virtuální počítače s jednou instancí. Pro smlouvu SLA pro virtuální počítače s jednou instancí použijte SSD úrovně Premium disky.
 
-## <a name="migrate-to-managed-disks"></a>Migrace na Spravované disky
+## <a name="migrate-to-managed-disks"></a>Migrace na spravované disky
 
 **Existuje dopad migrace na Managed Disks výkon?**
 

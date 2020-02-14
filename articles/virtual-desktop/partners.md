@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 02/13/2020
 ms.author: helohr
-ms.openlocfilehash: b7c7c21f14eddf29c3dda1f420d7748a4c23e53d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f75e404e37ff45eb7d9f540cf6acba71fa83349f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906843"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201777"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -46,6 +46,8 @@ V rámci schváleného poskytovatele se výhody virtuálního klienta Windows ro
 10ZiG technologie s špičkovým tenkým a nulovým klientským hardwarem a softwarem je dlouhodobě zavazuje chránit partnerem s Microsoftem a vyhrazeným Microsoft Azure a partnerem pro virtuální počítače s Windows. 10ZiG klienti s Windows 10 na bázi IoT jsou výkonné, spolehlivé a cenově dostupné koncové body pro všechny víc uživatelů virtuálních počítačů s Windows. Software 10ZiG Manager poskytuje výjimečné řízení a nasazování bez licenčních omezení bez dalších nákladů. 10ZiG tech tým, program pro zajištění bezproblémových ukázek a bezproblémové ukázky jsou jedním z nenáročného řešení podpory více relací pro virtuální počítače s Windows v cloudu.
 
 10ZiG's celosvětového trhu v tenkých a nulových zařízeních koncových bodů klienta a software pro správu virtuálních ploch je exemplified podle toho, jak pracují pro zákazníky. Jeho tenký klientský hardware se dodává s Thoughtfully funkcemi a možnostmi pro zvýhodnění, které jsou navržené tak, aby zákazníci dostávali správná klientská zařízení podle svých potřeb. 10ZiG přizpůsobí svá zařízení tak, aby se vešla do zákaznických prostředí pomocí klientů se systémem Windows a Linux, které poskytují nejlepší možný výkon ve virtuálních plochách i mimo Cloud.
+
+- [Přejít na web partnera](https://www.10zig.com/).
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -89,7 +91,7 @@ deviceTRUST rozšiřuje hodnotu virtuálního klienta Windows s jejich kontextov
 
 - [Přejít na web partnera](https://devicetrust.com/wvd).
 
-## <a name="hp"></a>HP
+## <a name="hp"></a>EMULEX
 
 ![Logo HP](./media/partners/hp.png)
 
@@ -148,6 +150,8 @@ Liquidware Essentials rozšiřuje hodnotu virtuálního klienta Windows tím, ž
 Liquit Application Aggregator and Delivery software umožňuje podnikům a poskytovatelům služeb připojit se ke všem back-endovému pracovnímu prostoru (Citrix, VMWare, Windows Virtual Desktop, RDP a Legacy) a dodat přizpůsobenému a konzistentnímu zákazníkovi. prostředí bez ohledu na to, kde se nacházejí aplikace zákazníka. Když zákazník publikuje inteligentní ikonu, liquit se rozhodne, kde spustí aplikaci na základě práva na umístění, zařízení a profilu zákazníka.
 
 Jako certifikovaný partner pro integraci liquit pomáhá urychlit přechod do cloudu bez prodlevy s protokolem RIP a nahrazování. Virtuální počítač s Windows se může snadno připojit k existujícímu prostředí, vytvořit pracovní prostor a zajistit pracovní plochu. Pak můžete nějakou dobu migrovat ze starých platforem a provádět změny na back-endu bez všímáte vašich uživatelů. Získejte konzistentní prostředí pro koncové uživatele, flexibilní infrastrukturu a udržujte kontrolu nad vašimi aplikacemi bez ohledu na to, kde jsou.
+
+- [Přejít na web partnera](https://www.liquit.com/wvd/).
 
 ## <a name="login-vsi"></a>Přihlašovací VSI
 

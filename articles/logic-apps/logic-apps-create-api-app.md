@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
-ms.openlocfilehash: e4200d09a02da1fd95f9bf5051b7f9d5fca5aa98
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793226"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191434"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytváření vlastních rozhraní API, která můžete volat z Azure Logic Apps
 
@@ -206,9 +206,9 @@ Triggery Webhooku fungují podobně jako [Akce Webhooku](#webhook-actions) popsa
 > [!TIP]
 > Příklad vzoru Webhooku najdete [v ukázce tohoto kontroleru triggeru triggeru Webhooku na GitHubu](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-## <a name="secure-calls-to-your-apis-from-logic-apps"></a>Zabezpečená volání vašich rozhraní API z aplikací logiky
+## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Vylepšení zabezpečení volání rozhraní API z Logic Apps
 
-Po vytvoření vlastních rozhraní API nastavte ověřování pro vaše rozhraní API, abyste je mohli bezpečně volat z Logic Apps. Naučte [se zabezpečit volání vlastních rozhraní API z Logic Apps](../logic-apps/logic-apps-custom-api-authentication.md).
+Po vytvoření vlastních rozhraní API nastavte ověřování pro vaše rozhraní API, abyste je mohli bezpečně volat z Logic Apps. Naučte [se zlepšovat zabezpečení volání vlastních rozhraní API z Logic Apps](../logic-apps/logic-apps-custom-api-authentication.md).
 
 ## <a name="deploy-and-call-your-apis"></a>Nasazení a volání rozhraní API
 

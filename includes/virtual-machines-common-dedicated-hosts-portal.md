@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 01/09/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 77eb54f5d7194f3006ce463fc5f905165bdfc659
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 2d440db3e55638fcf2e3d3f3fe76f82ac4d25948
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75833934"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192539"
 ---
 ## <a name="limitations"></a>Omezení
 
 - Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
-- Počáteční verze podporuje následující řadu virtuálních počítačů: DSv3 a ESv3. 
+- Počáteční verze podporuje následující řadu virtuálních počítačů: DSv3, ESv3 a Fsv2. 
 
 ## <a name="create-a-host-group"></a>Vytvoření hostitelské skupiny
 
@@ -54,7 +54,7 @@ Vytvoření skupiny hostitelů by nemělo chvíli trvat.
 
 ## <a name="create-a-dedicated-host"></a>Vytvoření vyhrazeného hostitele
 
-Teď ve skupině hostitelů vytvořte vyhrazeného hostitele. Kromě názvu pro hostitele je nutné zadat SKU pro hostitele. SKU hostitele zachytí podporovanou řadu virtuálních počítačů a také generování hardwaru pro vyhrazeného hostitele. Podporovány jsou následující hodnoty SKU hostitele: DSv3_Type1 a ESv3_Type1.
+Teď ve skupině hostitelů vytvořte vyhrazeného hostitele. Kromě názvu pro hostitele je nutné zadat SKU pro hostitele. SKU hostitele zachytí podporovanou řadu virtuálních počítačů a také generování hardwaru pro vyhrazeného hostitele.
 
 Další informace o SKU a cenách hostitelů najdete v tématu [ceny za vyhrazené hostitele Azure](https://aka.ms/ADHPricing).
 

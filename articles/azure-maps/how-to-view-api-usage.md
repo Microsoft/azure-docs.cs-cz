@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7ba50f63fb015a8696904df3decd13c811625459
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cd60552abf247f448acdaad700396dca0cd1a1f7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911340"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198118"
 ---
-# <a name="view-azure-maps-api-usage-metrics"></a>Zobrazit Azure Maps metriky využití rozhraní API
+# <a name="view-azure-maps-api-usage-metrics"></a>Zobrazení metrik využití rozhraní API služby Azure Maps
 
-V tomto článku se dozvíte, jak zobrazit metriky využití rozhraní API pro účet Azure Maps na [portálu](https://portal.azure.com). Metriky se zobrazují ve vhodném formátu grafu po upravitelnou dobu trvání.
+V tomto článku se dozvíte, jak zobrazit metriky využití rozhraní API pro účet Azure Maps v [Azure Portal](https://portal.azure.com). Metriky se zobrazují ve vhodném formátu grafu po upravitelnou dobu trvání.
 
 ## <a name="view-metric-snapshot"></a>Zobrazit snímek metriky
 
@@ -42,15 +42,15 @@ Pokud potřebujete přizpůsobit tyto grafy pro konkrétní analýzu, přejděte
 
       ![Podokno metriky využití Azure Maps](media/how-to-view-api-usage/portal-metrics.png)
 
-5. V dalším kroku můžete vybrat *časový rozsah* kliknutím na **posledních 24 hodin (automaticky)** . Ve výchozím nastavení je časový rozsah nastavený na 24 hodin. Po kliknutí se zobrazí všechny vybrané časové rozsahy. Můžete vybrat *časové rozlišení* a zvolit, že se má v jednom rozevíracím seznamu zobrazit čas jako *místní* nebo *GMT* . Klikněte na tlačítko **Použít**.
+5. V dalším kroku můžete vybrat *časový rozsah* kliknutím na **posledních 24 hodin (automaticky)** . Ve výchozím nastavení je časový rozsah nastavený na 24 hodin. Po kliknutí se zobrazí všechny vybrané časové rozsahy. Můžete vybrat *časové rozlišení* a zvolit, že se má v jednom rozevíracím seznamu zobrazit čas jako *místní* nebo *GMT* . Klikněte na **Použít**.
 
     ![Časový rozsah Azure Mapsch metrik](media/how-to-view-api-usage/time-range.png)
 
-6. Po přidání metriky můžete **Přidat filtr** z vlastností, které jsou pro danou metriku relevantní, a pak vybrat hodnotu vlastnosti, pro kterou chcete graf zobrazit.
+6. Po přidání metriky můžete **Přidat filtr** z vlastností, které jsou pro danou metriku relevantní. Pak vyberte hodnotu vlastnosti, kterou chcete zobrazit v grafu.
 
     ![Filtr metrik Azure Maps využití](media/how-to-view-api-usage/filter.png)
 
-7. V závislosti na zvolené vlastnosti metriky můžete také **použít rozdělení** metriky. To umožňuje, aby byl graf rozdělen do více grafů, jednu pro každou hodnotu této vlastnosti. Na následujícím obrázku odpovídá barva každého grafu hodnotě vlastnosti zobrazené v dolní části grafu.
+7. V závislosti na zvolené vlastnosti metriky můžete také **použít rozdělení** metriky. Umožňuje rozdělit graf na více grafů, a to pro každou hodnotu této vlastnosti. Na následujícím obrázku odpovídá barva každého grafu hodnotě vlastnosti zobrazené v dolní části grafu.
 
     ![Rozdělení Azure Mapsch metrik využití](media/how-to-view-api-usage/splitting.png)
 

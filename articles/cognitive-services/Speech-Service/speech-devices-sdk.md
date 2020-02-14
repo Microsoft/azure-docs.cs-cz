@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 02/12/2020
 ms.author: erhopf
-ms.openlocfilehash: 7f6793cab3d2d7cc54252bae3a7393f836256bdd
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 854e7beb2afd8ae838455f77ff448f13d8b3fbea
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815528"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188982"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Sada Speech Devices SDK
 
@@ -27,17 +27,17 @@ Vám můžou pomoct sadou SDK pro řeč zařízení:
 - Speech service založené na cloudu mnohem snazší integrate do zařízení.
 - Vytvoření mimořádné uživatelské prostředí pro vaše zákazníky.
 
-Využívá sadou SDK pro řeč zařízení [sadou SDK pro řeč](speech-sdk.md). Používá sadou SDK pro řeč pro posílat zvuk, který je zpracován našeho algoritmu pokročilé zpracování zvuku z pole mikrofon zařízení, které chcete [Speech service](overview.md). Používá vícekanálový zvuku můžete poskytnout přesnější úplně pole [rozpoznávání řeči](speech-to-text.md) prostřednictvím šumu potlačení, zrušení zpětné vazby, beamforming a dereverberation.
+SADA Speech SDK pro zařízení spotřebovává [sadu Speech](speech-sdk.md). Použití našich pokročilých algoritmů pro zpracování zvuku s polem mikrofonu zařízení k odeslání zvuku do [služby pro rozpoznávání řeči](overview.md). Poskytuje přesné [rozpoznávání řeči](speech-to-text.md) se špičkovým potlačením hluku, ozvěnou zrušení, beamforming a dereverberation.
 
-Sadu Speech Devices SDK můžete použít také k sestavení okolních zařízení s vlastním [přizpůsobeným klíčovým slovem](speech-devices-sdk-create-kws.md) , aby se upozornění, které iniciuje interakci uživatele, pro vaši značku unikátní.
+Můžete také použít sadu Speech SDK pro zařízení k vytváření okolních zařízení, která mají vlastní [přizpůsobené klíčové slovo](speech-devices-sdk-create-kws.md). Vlastní klíčové slovo poskytuje hromádku, která spouští interakci uživatele, která je pro vaši značku jedinečná.
 
-Sada Speech Devices SDK usnadňuje celou řadu scénářů s podporou hlasu, jako jsou [hlasové asistenty](https://aka.ms/bots/speech/va), systémy řazení, [přepisy konverzací](conversation-transcription-service.md)a inteligentní reproduktory. Může reagovat na uživatele s textem, mluvit zpět na ně ve výchozí nebo [vlastní hlasové](how-to-customize-voice-font.md), poskytovat výsledky vyhledávání [přeložit](speech-translation.md) do jiných jazyků a další. Těšíme se zobrazuje, co je vytvořit!
+Sada Speech Devices SDK umožňuje celou řadu scénářů s podporou hlasu, jako jsou například [hlasové asistenty](https://aka.ms/bots/speech/va), systémy řazení, [přepisy konverzací](conversation-transcription-service.md)a inteligentní reproduktory. Můžete reagovat na uživatele s textem, mluvit zpátky do nich ve výchozím nebo [vlastním hlasu](how-to-customize-voice-font.md), poskytovat výsledky hledání, [překládat](speech-translation.md) je na jiné jazyky a další. Těšíme se zobrazuje, co je vytvořit!
 
 ## <a name="get-the-speech-devices-sdk"></a>Získání sady Speech Devices SDK
 
 ### <a name="android"></a>Android
 
-Pro zařízení s Androidem si stáhněte nejnovější verzi [sady SDK pro zařízení s Androidem pro rozpoznávání řeči](https://aka.ms/sdsdk-download-android).
+V případě Androidu si zařízení stáhnou nejnovější verzi [sady SDK pro zařízení s Androidem pro rozpoznávání řeči](https://aka.ms/sdsdk-download-android).
 
 ### <a name="windows"></a>Windows
 
@@ -48,6 +48,8 @@ Aplikace je sestavená pomocí balíčku sady Speech SDK a Java IDE v 64 (v4) na
 
 Pro Linux je ukázková aplikace poskytována jako aplikace Java pro různé platformy. Stáhněte si nejnovější verzi [sady JRE Speech pro zařízení](https://aka.ms/sdsdk-download-JRE).
 Aplikace je sestavena pomocí balíčku sady Speech SDK a Java IDE v 64 (v4) na-bit Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9). Běží na 64bitovém prostředí Java 8 Runtime Environment (JRE).
+
+K dispozici jsou další binární soubory pro podporu nadcházejících zařízení, [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2)a [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter).
 
 ## <a name="next-steps"></a>Další kroky
 

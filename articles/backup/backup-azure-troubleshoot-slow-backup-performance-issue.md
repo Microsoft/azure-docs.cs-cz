@@ -4,12 +4,12 @@ description: Poskytuje pokyny k odstraňování potíží, které vám pomůžou
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 2b7b8903da0d8dd83591b260bacb496b0c253ae3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 01fff1d970a76d0d4d38c2536b41d58a4db301c8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172585"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198608"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Řešení potíží s pomalým zálohováním souborů a složek ve službě Azure Backup
 
@@ -25,6 +25,18 @@ Než začnete řešit problémy, doporučujeme si stáhnout a nainstalovat [nejn
 Důrazně doporučujeme, abyste si přesvědčili, že [služba Azure Backup Service na nejčastější dotazy](backup-azure-backup-faq.md) , abyste se ujistili, že nedošlo k žádným běžným problémům s konfigurací.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
+
+## <a name="cause-backup-job-running-in-unoptimized-mode"></a>Příčina: úloha zálohování běží v neoptimalizovaném režimu
+
+* Agent MARS může spustit úlohu zálohování v **optimalizovaném režimu** pomocí deníku změn (číslo sekvence aktualizace) nebo **neoptimalizovaného režimu** tak, že zkontroluje celý svazek pomocí hledání změn v adresářích nebo souborech.
+* Neoptimalizovaný režim je pomalý, protože agent musí naskenovat každý soubor na svazku a porovnat s metadaty a určit změněné soubory.
+* Pokud to chcete ověřit, otevřete **Podrobnosti úlohy** z konzoly agenta Mars a zkontrolujte stav, abyste viděli, jestli říká **přenos dat (neoptimalizované, může trvat delší dobu)** , jak je znázorněno níže:
+
+    ![Spuštění v neoptimalizovaném režimu](./media/backup-azure-troubleshoot-slow-backup-performance-issue/unoptimized-mode.png)
+
+* Následující podmínky můžou způsobit, že se úloha zálohování spustí v neoptimalizovaném režimu:
+  * První zálohování (označované taky jako počáteční replikace) se vždycky spustí v neoptimalizovaném režimu.
+  * Pokud předchozí úloha zálohování selže, spustí se další naplánovaná úloha zálohování jako neoptimalizovaná.
 
 <a id="cause1"></a>
 

@@ -6,29 +6,29 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/9/2019
-ms.openlocfilehash: 8b3d6ea46c4a88187b70b520457ad34f7e7f36ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 757a061bff72ca9fc34d408cd94cec9966d1157f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975138"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191121"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Omezení ve službě Azure Database for MySQL
-Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby. Viz také [obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) pro databázového stroje MySQL.
+Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby. Viz také [Obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) platná pro databázový stroj MySQL.
 
 ## <a name="maximum-connections"></a>Maximální počet připojení
 Maximální počet připojení na cenová úroveň a virtuálními jádry jsou následující: 
 
-|**Cenová úroveň**|**počet virtuálních jader:**| **Maximální počet připojení**|
+|**Cenová úroveň**|**vCore (celkem)**| **Maximální počet připojení**|
 |---|---|---|
-|Úroveň Basic| 1\. místo| 50|
-|Úroveň Basic| 2| 100|
-|Obecné použití| 2| 600|
-|Obecné použití| 4| 1250|
-|Obecné použití| 8| 2500|
-|Obecné použití| 16| 5000|
-|Obecné použití| 32| 10000|
-|Obecné použití| 64| 20000|
+|Basic| 1| 50|
+|Basic| 2| 100|
+|Pro obecné účely| 2| 600|
+|Pro obecné účely| 4| 1250|
+|Pro obecné účely| 8| 2500|
+|Pro obecné účely| 16| 5000|
+|Pro obecné účely| 32| 10000|
+|Pro obecné účely| 64| 20000|
 |Paměťově optimalizované| 2| 1250|
 |Paměťově optimalizované| 4| 2500|
 |Paměťově optimalizované| 8| 5000|
@@ -38,29 +38,34 @@ Maximální počet připojení na cenová úroveň a virtuálními jádry jsou n
 Při připojení překročí limit, může se zobrazit následující chyba:
 > Chyba 1040 (08004): Příliš mnoho připojení
 
+> [!IMPORTANT]
+> Pro dosažení optimálního prostředí doporučujeme, abyste k efektivní správě připojení používali připojení Pooler jako ProxySQL.
+
+Vytváření nových připojení klientů k MySQL trvá čas i po jejich navázání, tato připojení zabírají databázové prostředky i v případě nečinnosti. Většina aplikací vyžaduje mnoho krátkodobých připojení, což je v této situaci celé. Výsledkem je méně prostředků dostupných pro vaše skutečné zatížení, což vede ke snížení výkonu. Připojení Pooler, které zkracuje nečinné připojení a znovu používá existující připojení, jim pomůže vyhnout se. Další informace o nastavení ProxySQL najdete v našem [blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042).
+
 ## <a name="storage-engine-support"></a>Podpora modulu úložiště
 
-### <a name="supported"></a>Podporováno
+### <a name="supported"></a>Podporuje se
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)
-- [PAMĚŤ](https://dev.mysql.com/doc/refman/5.7/en/memory-storage-engine.html)
+- [REZIDENT](https://dev.mysql.com/doc/refman/5.7/en/memory-storage-engine.html)
 
 ### <a name="unsupported"></a>Nepodporované
 - [MyISAM](https://dev.mysql.com/doc/refman/5.7/en/myisam-storage-engine.html)
-- [SMĚROVAČE BLACKHOLE](https://dev.mysql.com/doc/refman/5.7/en/blackhole-storage-engine.html)
-- [ARCHIV](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
+- [BLACKHOLE](https://dev.mysql.com/doc/refman/5.7/en/blackhole-storage-engine.html)
+- [ZÁLOHOVAT](https://dev.mysql.com/doc/refman/5.7/en/archive-storage-engine.html)
 - [FEDEROVANÉ](https://dev.mysql.com/doc/refman/5.7/en/federated-storage-engine.html)
 
 ## <a name="privilege-support"></a>Podpora oprávnění
 
 ### <a name="unsupported"></a>Nepodporované
 - DBA role: mnoho parametrů serveru a nastavení můžete neúmyslně snížit výkon serveru nebo negate kyseliny vlastnosti správce databáze. V důsledku toho pro zajištění integrity služby a smlouvě SLA na úrovni produktu, tato služba nevystavuje DBA role. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje provádět většinu příkazů DDL a jazyk DML instance spravované databáze. 
-- Oprávnění SUPERUŽIVATELE: podobně [SUPER oprávnění](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) je také omezen.
+- Superuživatele (SUPER Privileged Privilege) je taky omezené [oprávnění Super](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) .
 - DEFINe: vyžaduje pro vytvoření a omezení superuživatele oprávnění. Pokud importujete data pomocí zálohy, odeberte příkazy `CREATE DEFINER` ručně nebo pomocí příkazu `--skip-definer` při provádění mysqldump.
 
 ## <a name="data-manipulation-statement-support"></a>Podpora příkaz manipulace dat
 
-### <a name="supported"></a>Podporováno
-- `LOAD DATA INFILE` je podporováno, ale `[LOCAL]` parametr musí být zadán a směrované na cestu UNC (úložiště Azure připojit přes protokol SMB).
+### <a name="supported"></a>Podporuje se
+- `LOAD DATA INFILE` se podporuje, ale je potřeba zadat parametr `[LOCAL]` a směrovat ho na cestu UNC (úložiště Azure připojené prostřednictvím protokolu SMB).
 
 ### <a name="unsupported"></a>Nepodporované
 - `SELECT ... INTO OUTFILE`
@@ -72,7 +77,7 @@ Při připojení překročí limit, může se zobrazit následující chyba:
 - Snížení velikosti úložiště serveru se nepodporuje.
 
 ### <a name="server-version-upgrades"></a>Upgrady verze serveru
-- Automatizovaný přenos mezi verzí vyhledávacích strojů hlavní databáze se aktuálně nepodporuje. Pokud chcete upgradovat na novou hlavní verzi, [výpisu a obnovení](./concepts-migrate-dump-restore.md) ho na server, který byl vytvořen v nové verzi modulu.
+- Automatizovaný přenos mezi verzí vyhledávacích strojů hlavní databáze se aktuálně nepodporuje. Pokud chcete upgradovat na další hlavní verzi, [vystavte výpis a obnovte](./concepts-migrate-dump-restore.md) ho na serveru, který byl vytvořen s novou verzí modulu.
 
 ### <a name="point-in-time-restore"></a>Obnovení do bodu v čase
 - Při použití funkce PITR se vytvoří nový server se stejnou konfiguraci jako server, který je založen na.
@@ -85,8 +90,8 @@ Při připojení překročí limit, může se zobrazit následující chyba:
 - Omezení velikosti úložiště na cenové úrovni najdete v [cenové úrovni](concepts-pricing-tiers.md) .
 
 ## <a name="current-known-issues"></a>Aktuální známé problémy
-- Instanci MySQL serveru zobrazuje verze serveru měla špatný po navázání připojení. Chcete-li získat správný server verze modulu instance, použijte `select version();` příkazu.
+- Instanci MySQL serveru zobrazuje verze serveru měla špatný po navázání připojení. Správnou verzi modulu instance serveru získáte pomocí příkazu `select version();`.
 
 ## <a name="next-steps"></a>Další kroky
-- [Co je k dispozici na jednotlivých úrovních služby](concepts-pricing-tiers.md)
+- [Co je dostupné v jednotlivých úrovních služby](concepts-pricing-tiers.md)
 - [Podporované verze databáze MySQL](concepts-supported-versions.md)

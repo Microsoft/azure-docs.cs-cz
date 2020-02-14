@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 213e5523c0c99309c3244e19a406a7b82297188f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161796"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190369"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Chraňte rozhraní API pomocí OAuth 2,0 s Azure Active Directory a API Management
 
@@ -71,7 +71,7 @@ Aby bylo možné chránit rozhraní API pomocí Azure AD, prvním krokem je regi
 
 Každá klientská aplikace, která volá rozhraní API, musí být registrovaná taky jako aplikace v Azure AD. V tomto příkladu je klientská aplikace konzolou pro vývojáře na portálu API Management Developer Portal. Tady je postup, jak zaregistrovat jinou aplikaci ve službě Azure AD, která bude reprezentovat konzolu pro vývojáře.
 
-1. Pro registraci aplikace použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **registrace rozhraní API**.
+1. Pro registraci aplikace použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **Registrace aplikací**.
 
 1. Vyberte **Nová registrace**.
 
@@ -97,7 +97,7 @@ Po vytvoření tajného klíče si poznamenejte klíčovou hodnotu pro použití
 
 Teď, když jste zaregistrovali dvě aplikace, které představují rozhraní API a konzolu pro vývojáře, musíte udělit oprávnění, aby klientská aplikace mohla volat back-end aplikaci.  
 
-1. Chcete-li udělit oprávnění k klientské aplikaci, použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **registrace rozhraní API**.
+1. Chcete-li udělit oprávnění k klientské aplikaci, použijte [Azure Portal](https://portal.azure.com) . Vyhledejte a vyberte **Registrace aplikací**.
 
 1. Vyberte klientskou aplikaci. Pak v seznamu stránek aplikace vyberte **oprávnění rozhraní API**.
 
@@ -202,7 +202,7 @@ Pomocí zásady [ověřit token JWT](api-management-access-restriction-policies.
     <openid-config url="https://login.microsoftonline.com/{aad-tenant}/.well-known/openid-configuration" />
     <required-claims>
         <claim name="aud">
-            <value>{Application ID URI of backend-app}</value>
+            <value>{Application ID of backend-app}</value>
         </claim>
     </required-claims>
 </validate-jwt>

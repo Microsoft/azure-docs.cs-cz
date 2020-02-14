@@ -1,30 +1,30 @@
 ---
-title: Zajištění propustnosti v kontejnerech a databázích Azure Cosmos
+title: Zřizování propustnosti na kontejnery Azure Cosmos a databází
 description: Přečtěte si, jak nastavit zřízenou propustnost pro vaše kontejnery a databáze Azure Cosmos.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 9ac22461e04b447fe34d5647eb5ec7847d25a09d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b60b117b10ac9ade6f685acf788e942ff7a2c93c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931269"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188772"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
-Databáze Azure Cosmos je jednotka správy pro sadu kontejnerů. Databáze se skládá ze sady nezávislá kontejnerů schématu. Kontejner Azure Cosmos je jednotka škálovatelnosti pro propustnost i úložiště. Kontejner je vodorovně rozdělený na celou skupinu počítačů v rámci oblasti Azure a distribuuje se do všech oblastí Azure přidružených k vašemu účtu Azure Cosmos.
+Databáze Azure Cosmos je jednotka správy pro skupinu kontejnerů. Databáze obsahuje sadu kontejnerů dogmaticky na schématu. Kontejner služby Azure Cosmos je jednotka škálovatelnost pro propustnost a úložiště. Kontejner je horizontálně dělené do oddílů mezi sadu počítačů v rámci oblasti Azure a je distribuovaná napříč všemi oblastmi Azure spojené s vaším účtem Azure Cosmos.
 
 Pomocí Azure Cosmos DB můžete zřídit propustnost ve dvou členitosti:
  
-- Kontejnery Azure Cosmos
-- Databáze Azure Cosmos
+- Kontejnery Azure Cosmos DB
+- Databáze Azure Cosmos DB
 
 ## <a name="set-throughput-on-a-container"></a>Nastavení propustnosti pro kontejner  
 
-Propustnost zřízená v kontejneru Azure Cosmos je exkluzivně vyhrazena pro tento kontejner. Kontejner obdrží veškerou zajištěnou propustnost pokaždé. Zřízená propustnost na kontejneru je finančně zajištěná SLA. Informace o tom, jak nakonfigurovat propustnost na kontejneru, najdete v tématu [zřízení propustnosti v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
+Propustnost zřízená v kontejneru Azure Cosmos je exkluzivně vyhrazena pro tento kontejner. Kontejner obdrží zřízená propustnost celou dobu. Zřízenou propustnosti kontejneru finančně podložená smlouvami SLA. Informace o tom, jak nakonfigurovat propustnost na kontejneru, najdete v tématu [zřízení propustnosti v kontejneru Azure Cosmos](how-to-provision-container-throughput.md).
 
 Nastavení zřízené propustnosti kontejneru je nejčastěji používaná možnost. Propustnost pro kontejner můžete elasticky škálovat tím, že zřizujete množství propustnosti pomocí [jednotek žádostí (ru)](request-units.md). 
 
@@ -42,17 +42,17 @@ Následující obrázek ukazuje, jak fyzický oddíl je hostitelem jednoho nebo 
 
 Při zřizování propustnosti v databázi Azure Cosmos se propustnost sdílí ve všech kontejnerech (nazývaných sdílené databázové kontejnery) v databázi. Výjimkou je, že jste pro konkrétní kontejnery v databázi zadali zřízenou propustnost. Sdílení zřízené propustnosti databáze mezi kontejnery je podobné jako hostování databáze na clusteru počítačů. Vzhledem k tomu, že všechny kontejnery v rámci databáze sdílejí prostředky dostupné v počítači, přirozeně nedosáhnete předvídatelného výkonu u žádného konkrétního kontejneru. Informace o tom, jak nakonfigurovat zřízenou propustnost v databázi, najdete v tématu [Konfigurace zřízené propustnosti v databázi Azure Cosmos](how-to-provision-database-throughput.md).
 
-Nastavení propustnosti v databázi Azure Cosmos zaručuje, že se vám bude pořídit zajištěná propustnost pro tuto databázi. Vzhledem k tomu, že všechny kontejnery v databázi sdílejí zřízenou propustnost, Azure Cosmos DB pro konkrétní kontejner v této databázi neposkytují předvídatelné záruky propustnosti. Část propustnosti, kterou může určitý kontejner obdržet, závisí na:
+Nastavení propustnosti v databázi Azure Cosmos zaručuje, že se vám bude pořídit zajištěná propustnost pro tuto databázi. Vzhledem k tomu, že všechny kontejnery v databázi sdílejí zřízenou propustnost, Azure Cosmos DB pro konkrétní kontejner v této databázi neposkytují předvídatelné záruky propustnosti. Část propustnost, které můžou přijímat konkrétní kontejner je závislá na:
 
 * Počet kontejnerů.
 * Volba klíčů oddílů pro různé kontejnery.
-* Rozdělení zatížení napříč různými logickými oddíly kontejnerů. 
+* Rozdělení zatížení napříč různými logické oddíly kontejnerů. 
 
 Doporučujeme, abyste nakonfigurovali propustnost v databázi, pokud chcete sdílet propustnost napříč více kontejnery, ale nechcete vyhradit propustnost pro jakýkoliv konkrétní kontejner. 
 
 Následující příklady ukazují, kde je upřednostňováno zřídit propustnost na úrovni databáze:
 
-* Sdílení zřízené propustnosti databáze napříč sadou kontejnerů je užitečné pro víceklientské aplikace. Každý uživatel může být reprezentován jedinečným kontejnerem Azure Cosmos.
+* Sdílení zřízené propustnosti databáze napříč sadou kontejnerů je užitečné pro víceklientské aplikace. Každý uživatel může být reprezentována odlišné kontejneru Azure Cosmos.
 
 * Sdílení zřízené propustnosti databáze napříč sadou kontejnerů je užitečné při migraci databáze NoSQL, jako je třeba MongoDB nebo Cassandra, která je hostovaná v clusteru virtuálních počítačů nebo z místních fyzických serverů na Azure Cosmos DB. Zamyslete se nad zajištěnou propustností nakonfigurovanou v databázi Azure Cosmos jako s logickým ekvivalentem, ale cenově výhodnější a elastické pro výpočetní kapacitu vašeho clusteru MongoDB nebo Cassandra.  
 
@@ -60,24 +60,11 @@ Všechny kontejnery vytvořené v databázi s zřízenou propustností se musí 
 
 Pokud zatížení na logickém oddílu spotřebovává více než propustnost, která je přidělena konkrétnímu logickému oddílu, jsou operace omezené na míru. Pokud dojde k omezení rychlosti, můžete buď zvýšit propustnost pro celou databázi, nebo opakovat operace. Další informace o dělení najdete v tématu [logické oddíly](partition-data.md).
 
-Propustnost zajištěná v databázi může sdílet kontejnery v rámci této databáze. Každý nový kontejner v sdílené propustnosti na úrovni databáze bude vyžadovat 100 RU/s. Při zřizování kontejnerů pomocí nabídky sdílené databáze:
+Kontejnery ve sdílené databázi propustnosti sdílejí propustnost (RU/s) přidělenou této databázi. Ve sdílené databázi propustnosti:
 
-* Každý 25 kontejnerů je seskupen do sady oddílů a propustnost databáze (D) je sdílena mezi kontejnery v sadě oddílů. Pokud je v databázi až 25 kontejnerů a v jakémkoli časovém okamžiku používáte jenom jeden kontejner, může tento kontejner použít maximum propustnosti.
+* V databázi můžete mít až čtyři kontejnery s minimálně 400 RU/s. Každý nový kontejner po prvním 4 bude vyžadovat minimálně dalších 100 RU/s. Pokud máte například sdílenou databázi propustnosti s osmi kontejnery, minimální RU/s v databázi bude 800 RU/s.
 
-* U každého nového kontejneru vytvořeného po 25 kontejnerech se vytvoří nová sada oddílů a propustnost databáze se rozdělí mezi nově vytvořené sady oddílů (tj. D/2 pro 2 sady oddílů, D/3 pro 3 sady oddílů...). Pokud v jakémkoli okamžiku používáte jenom jeden kontejner z databáze, může použít maximálně (D/2, D/3, D/4...). propustnost). Vzhledem k omezené propustnosti doporučujeme, abyste v jedné databázi nevytvořili více než 25 kontejnerů.
-
-**Příklad**
-
-* Pokud vytvoříte databázi s názvem "MyDB" s zřízenou propustností 10 000 RU/s.
-
-* Pokud zřizujete 25 kontejnerů v části "MyDB", pak se všechny kontejnery seskupí do sady oddílů. Pokud v jakémkoli okamžiku používáte jenom jeden kontejner z databáze, může použít maximálně 10 000 RU/s (D).
-
-* Když zřizujete kontejner 26, vytvoří se nová sada oddílů a propustnost se rovnoměrně rozděluje mezi sady oddílů. Takže pokud používáte jenom jeden kontejner z databáze, tak v jakémkoli okamžiku může použít maximálně 5K RU/s (D/2). Vzhledem k tomu, že existují dvě sady oddílů, je faktor podílu propustnosti rozdělen na D/2.
-
-   Následující obrázek znázorňuje obrázek v předchozím příkladu:
-
-   ![Faktor sdílení v propustnosti na úrovni databáze](./media/set-throughput/database-level-throughput-shareability-factor.png)
-
+* V databázi můžete mít maximálně 25 kontejnerů. Pokud již máte ve sdílené databázi propustnosti více než 25 kontejnerů, nebudete moci vytvořit další kontejnery, dokud nebude počet kontejnerů menší než 25.
 
 Pokud vaše úlohy zahrnují odstranění a opětovné vytvoření všech kolekcí v databázi, doporučuje se odstranit prázdnou databázi a znovu vytvořit novou databázi před vytvořením kolekce. Následující obrázek ukazuje, jak může fyzický oddíl hostovat jeden nebo více logických oddílů, které patří do různých kontejnerů v rámci databáze:
 
@@ -85,7 +72,7 @@ Pokud vaše úlohy zahrnují odstranění a opětovné vytvoření všech kolekc
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Nastavení propustnosti pro databázi a kontejner
 
-Tyto dva modely můžete kombinovat. Zajištění propustnosti databáze i kontejneru je povoleno. Následující příklad ukazuje, jak zřídit propustnost pro databázi Azure Cosmos a kontejner:
+Tyto dva modely můžete kombinovat. Zajištění propustnosti databáze i kontejneru je povoleno. Následující příklad ukazuje, jak zřídit propustnost v databázi Azure Cosmos a kontejneru:
 
 * Můžete vytvořit databázi Azure Cosmos s názvem *Z* s zřízenou propustností *"K"* ru. 
 * Dále v rámci databáze vytvořte pět kontejnerů s názvem *a*, *B*, *C*, *D*a *E* . Při vytváření kontejneru B Nezapomeňte povolit **vyhrazenou propustnost pro tuto možnost kontejneru** a explicitně nakonfigurovat *"P"* ru zřízené propustnosti v tomto kontejneru. Všimněte si, že se sdílená a vyhrazená propustnost dá nakonfigurovat jenom při vytváření databáze a kontejneru. 
@@ -117,12 +104,12 @@ Zřízenou propustnost kontejneru nebo databáze můžete kdykoli škálovat. P�
 |**Ukazatele**  |**Propustnost zajištěná v databázi**  |**Zajištěná propustnost na kontejneru**|
 |---------|---------|---------|
 |Minimální ru |400 (za první čtyři kontejnery vyžaduje každý další kontejner minimálně 100 ru za sekundu.) |400|
-|Minimální počet ru na kontejner|100|400|
+|Minimální jednotek požadavku za kontejner|100|400|
 |Maximální ru|Neomezeno, v databázi.|Bez omezení, na kontejneru.|
-|Ru přiřazený nebo dostupný ke konkrétnímu kontejneru|Žádné záruky. Ru přiřazený k danému kontejneru závisí na vlastnostech. Vlastnosti mohou být volbou klíčů oddílů kontejnerů, které sdílejí propustnost, distribuci zatížení a počet kontejnerů. |Všechny ru nakonfigurované na kontejneru jsou výhradně vyhrazené pro kontejner.|
-|Maximální úložiště pro kontejner|Počet.|Počet.|
-|Maximální propustnost na logický oddíl kontejneru|10 000 ru|10 000 ru|
-|Maximální velikost úložiště (data + index) na logický oddíl kontejneru|10 GB|10 GB|
+|Ru přiřazený nebo dostupný ke konkrétnímu kontejneru|Žádné záruky. Ru přiřazený k danému kontejneru závisí na vlastnostech. Vlastnosti mohou být volbou klíčů oddílů kontejnerů, které sdílejí propustnost, distribuci zatížení a počet kontejnerů. |Všechny jednotky ru nakonfigurované v kontejneru jsou rezervovaných exkluzivně pro kontejner.|
+|Maximální velikost úložiště pro kontejner|Neomezený počet.|Neomezený počet.|
+|Maximální propustnost na logický oddíl kontejneru|10 tisíc ru|10 tisíc ru|
+|Maximální velikost úložiště (data a index) na logický oddíl kontejneru|10 GB|10 GB|
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -13,25 +13,26 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 17906a7d0953d8b320301d74cda81d14c9ad340f
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 324425662622201bb50261d396d3eef1f531ba37
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123431"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187300"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Zachycení událostí pomocí Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage
-Azure Event Hubs umožňuje automaticky zachytit streamovaná data ve službě Event Hubs do [úložiště objektů Blob v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [úložiště Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) účet podle vašeho výběru s flexibilnější určení časový nebo velikostní interval. Nastavení zachytávání je rychlý, neexistují žádné administrativní náklady na spuštění a automaticky se škáluje s Event Hubs [jednotek propustnosti](event-hubs-scalability.md#throughput-units). Funkce Event Hubs Capture představuje nejjednodušší způsob, jak načíst streamovaná data do Azure a vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.
+Azure Event Hubs umožňuje automaticky zachytit streamovaná data v Event Hubs v [úložišti objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo v účtu, který si využijete [Azure Data Lake Storage obecné 1 nebo Gen 2](https://azure.microsoft.com/services/data-lake-store/) s přidanou flexibilitou zadání času nebo velikosti intervalu. Nastavení zachytávání je rychlé, neexistují žádné náklady na správu, které by bylo možné spustit, a automaticky se škálují s Event Hubs [jednotkami propustnosti](event-hubs-scalability.md#throughput-units). Funkce Event Hubs Capture představuje nejjednodušší způsob, jak načíst streamovaná data do Azure a vám umožní zaměřit se na zpracování dat a nikoli na sběr dat.
 
 Funkce Event Hubs Capture umožňuje zpracovávat v reálném čase a dávkově kanály pro stejný datový proud. To znamená, že můžete vytvářet řešení, které podle vašich potřeb v čase. Ať už vytváříte systémy batch ještě dnes s přehled směrem k budoucímu zpracování v reálném čase, nebo chcete přidat do existujícího řešení v reálném čase efektivní studené cesty, Event Hubs Capture usnadňuje práci se streamovanými daty jednodušší.
 
+
 ## <a name="how-event-hubs-capture-works"></a>Princip funkce Event Hubs Capture
 
-Event Hubs je doba uchovávání trvalý vyrovnávací paměti pro příchozí telemetrická data, podobně jako distribuované protokolu. Klíčem k škálování ve službě Event Hubs je [modelu oddělených příjemců je pravidlo](event-hubs-scalability.md#partitions). Každý oddíl je nezávislé segment dat a je využívat nezávisle. V čase ages tato data, na základě období možnost konfigurace uchovávání. V důsledku toho se daný eventhub nikdy získá "plný."
+Event Hubs je doba uchovávání trvalý vyrovnávací paměti pro příchozí telemetrická data, podobně jako distribuované protokolu. Klíčem k horizontálnímu navýšení kapacity v Event Hubs je [modelem rozděleného uživatele](event-hubs-scalability.md#partitions). Každý oddíl je nezávislé segment dat a je využívat nezávisle. V čase ages tato data, na základě období možnost konfigurace uchovávání. V důsledku toho se daný eventhub nikdy získá "plný."
 
-Funkce Event Hubs Capture umožňuje určit vlastní účet úložiště objektů Blob v Azure a kontejneru nebo účtu Azure Data Lake Store, které se používají k ukládání zachycená data. Tyto účty může být ve stejné oblasti jako vaše Centrum událostí nebo v jiné oblasti, přidání flexibility funkce Event Hubs Capture.
+Služba Event Hubs Capture umožňuje zadat vlastní účet služby Azure Blob Storage a kontejner nebo účet Azure Data Lake Storage, který se používá k uložení zachycených dat. Tyto účty může být ve stejné oblasti jako vaše Centrum událostí nebo v jiné oblasti, přidání flexibility funkce Event Hubs Capture.
 
 Zachycená data se zapisují ve formátu [Apache Avro][Apache Avro] : kompaktní a rychlý binární formát, který poskytuje struktury s bohatou datovou strukturou s vloženým schématem. Tento formát je široce používat v ekosystému Hadoop, Stream Analytics a Azure Data Factory. Další informace o práci s Avrem je k dispozici dále v tomto článku.
 
@@ -53,16 +54,16 @@ V případě, že je objekt BLOB služby Azure Storage dočasně nedostupný, Sl
 
 ### <a name="scaling-to-throughput-units"></a>Škálování s jednotkami propustnosti
 
-Event Hubs provoz se řídí [jednotek propustnosti](event-hubs-scalability.md#throughput-units). Jedna jednotka propustnosti za sekundu nebo 1000 událostí za sekundu dvakrát šířka odchozích přenosů dat a příchozího přenosu dat umožňuje 1 MB. Standardní Event Hubs můžete nakonfigurovat s 1-20 jednotkami propustnosti a můžete si koupit další s [žádostí o podporu][support request]zvýšení kvóty. Použití nad rámec vašeho zakoupené jednotky propustnosti se omezí. Funkce Event Hubs Capture kopíruje data přímo z interní úložiště služby Event Hubs, obejít kvóty odchozího přenosu dat jednotky propustnosti a ukládání vašich odchozího přenosu dat pro jiné čtečky zpracování, jako je například Stream Analytics nebo Spark.
+Event Hubs provoz se řídí podle [jednotek propustnosti](event-hubs-scalability.md#throughput-units). Jedna jednotka propustnosti za sekundu nebo 1000 událostí za sekundu dvakrát šířka odchozích přenosů dat a příchozího přenosu dat umožňuje 1 MB. Standardní Event Hubs můžete nakonfigurovat s 1-20 jednotkami propustnosti a můžete si koupit další s [žádostí o podporu][support request]zvýšení kvóty. Použití nad rámec vašeho zakoupené jednotky propustnosti se omezí. Funkce Event Hubs Capture kopíruje data přímo z interní úložiště služby Event Hubs, obejít kvóty odchozího přenosu dat jednotky propustnosti a ukládání vašich odchozího přenosu dat pro jiné čtečky zpracování, jako je například Stream Analytics nebo Spark.
 
 Po nakonfigurování funkce Event Hubs Capture automaticky spustí, když posíláte první událost a bude nadále spuštěn. Aby bylo snazší pro příjem dat zpracování vědět, že proces funguje, Event Hubs zapíše prázdné soubory, když nejsou žádná data. Tento proces zajišťuje předvídatelný tempo a značky, který může zadat procesorů služby batch.
 
 ## <a name="setting-up-event-hubs-capture"></a>Nastavení funkce Event Hubs Capture
 
-Funkci Capture můžete nakonfigurovat pomocí event hub pro čas vytvoření [webu Azure portal](https://portal.azure.com), nebo pomocí šablon Azure Resource Manageru. Další informace najdete v následujících článcích:
+V čase vytvoření centra událostí můžete pomocí [Azure Portal](https://portal.azure.com)nakonfigurovat záznam pomocí Azure Resource Manager šablony. Další informace najdete v následujících článcích:
 
-- [Povolení funkce Event Hubs Capture pomocí webu Azure portal](event-hubs-capture-enable-through-portal.md)
-- [Vytvořte obor názvů služby Event Hubs s centrem událostí a povolení funkce Capture pomocí šablony Azure Resource Manageru](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
+- [Povolit Event Hubs zachytávání pomocí Azure Portal](event-hubs-capture-enable-through-portal.md)
+- [Vytvoření oboru názvů Event Hubs pomocí centra událostí a povolení zachytávání pomocí šablony Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
 
 
 ## <a name="exploring-the-captured-files-and-working-with-avro"></a>Zkoumání zaznamenané soubory prostředků a práci s Avrem
@@ -127,28 +128,28 @@ Tento příkaz vrátí
 
 Můžete také použít nástroje Avro převést soubor do formátu JSON a provádět další zpracování.
 
-K provádění rozšířené zpracování, stáhněte a nainstalujte Avro pro platformy podle vašeho výběru. V době psaní tohoto návodu, nejsou k dispozici pro C, C++, C implementace\#, Java, NodeJS, Perl, PHP, Python nebo Ruby.
+K provádění rozšířené zpracování, stáhněte a nainstalujte Avro pro platformy podle vašeho výběru. V době psaní tohoto zápisu jsou k dispozici implementace pro C, C++, C\#, Java, NodeJS, Perl, php, Python a Ruby.
 
-Apache Avro nabízí kompletní Příručky k Začínáme pro [jazyky Java][Java] a [Python][Python]. Také můžete přečíst [Začínáme se službou Event Hubs Capture](event-hubs-capture-python.md) článku.
+Apache Avro nabízí kompletní Příručky k Začínáme pro [jazyky Java][Java] a [Python][Python]. Můžete si také přečíst článek [Začínáme s Event Hubs Capture](event-hubs-capture-python.md) .
 
 ## <a name="how-event-hubs-capture-is-charged"></a>Jak funkce Event Hubs Capture se účtuje
 
-Funkce Event Hubs Capture se měří podobně pro jednotky propustnosti: jako hodinovou sazbu. Sazba je přímo úměrný počtu jednotek propustnosti zakoupili pro obor názvů. Jednotky propustnosti jsou zvýšení a snížení, Event Hubs Capture měřiče zvýšit nebo snížit zajistit odpovídající výkonu. Při vytvoření celostní dojde k měřiče. Podrobnosti o cenách najdete v tématu [ceny služby Event Hubs](https://azure.microsoft.com/pricing/details/event-hubs/). 
+Funkce Event Hubs Capture se měří podobně pro jednotky propustnosti: jako hodinovou sazbu. Sazba je přímo úměrný počtu jednotek propustnosti zakoupili pro obor názvů. Jednotky propustnosti jsou zvýšení a snížení, Event Hubs Capture měřiče zvýšit nebo snížit zajistit odpovídající výkonu. Při vytvoření celostní dojde k měřiče. Podrobnosti o cenách najdete v tématu [Event Hubs ceny](https://azure.microsoft.com/pricing/details/event-hubs/). 
 
 Všimněte si, že Capture nespotřebovává kvótu pro odchozí přenosy, protože se účtuje samostatně. 
 
 ## <a name="integration-with-event-grid"></a>Integrace s využitím služby Event Grid 
 
-Můžete vytvořit předplatné Azure Event Grid se obor názvů služby Event Hubs jako svůj zdroj. V následujícím kurzu se dozvíte, jak vytvořit odběr Event gridu pomocí centra událostí jako zdroj a jako jímku aplikaci Azure Functions: [procesu a migrace do SQL Data Warehouse s využitím služby Event Grid a Azure FunctionszachycenádataEventHubs](store-captured-data-data-warehouse.md).
+Můžete vytvořit předplatné Azure Event Grid se obor názvů služby Event Hubs jako svůj zdroj. V následujícím kurzu se dozvíte, jak vytvořit předplatné Event Grid s centrem událostí jako zdrojovou a Azure Functionsovou aplikací jako jímku: [zpracování a migrace zachycených Event Hubs dat do SQL Data Warehouse pomocí Event Grid a Azure Functions](store-captured-data-data-warehouse.md).
 
 ## <a name="next-steps"></a>Další kroky
-
 Event Hubs Capture představuje nejjednodušší způsob, jak načíst data do Azure. Pomocí Azure Data Lake, Azure Data Factory a Azure HDInsight, můžete provádět dávkové zpracování a další analýzy pomocí známých nástrojů a platformy podle vašeho výběru, v libovolném měřítku potřebujete.
 
-Další informace o službě Event Hubs najdete na následujících odkazech:
+Přečtěte si, jak tuto funkci povolit pomocí šablony Azure Portal a Azure Resource Manager:
 
-* [Začínáme, odesílání a příjem událostí](event-hubs-dotnet-framework-getstarted-send.md)
-* [Přehled služby Event Hubs][Event Hubs overview]
+- [Použití webu Azure Portal k povolení funkce Event Hubs Capture](event-hubs-capture-enable-through-portal.md)
+- [Použití šablony Azure Resource Manager k povolení zachycení Event Hubs](event-hubs-resource-manager-namespace-event-hub-enable-capture.md)
+
 
 [Apache Avro]: https://avro.apache.org/
 [Apache Drill]: https://drill.apache.org/

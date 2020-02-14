@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f015b1568098b506abc847608a1fca91ef72b6e9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 74da278dbbc0ac32407c345524e224ca5f7616da
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761221"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194593"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coda"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Coda
 
@@ -37,7 +37,7 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Odběr povolený jednotného přihlašování (SSO) Coda.
+* Předplatné s podporou jednotného přihlašování (SSO) pro CODA (Enterprise) s GDrive integrací je zakázané. Obraťte se na [tým podpory Coda](mailto:support@coda.io) a zakažte integraci GDrive pro vaši organizaci, pokud je aktuálně povolená.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -47,7 +47,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Systém Coda podporuje zřizování uživatelů **jenom v čase**
 
-* Jakmile nakonfigurujete Coda, můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Po nakonfigurování Coda můžete vymáhat ovládací prvky relací, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-coda-from-the-gallery"></a>Přidání Coda z Galerie
 
@@ -67,12 +67,33 @@ Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Coda pomo
 
 Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Coda, dokončete následující stavební bloky:
 
+1. **[Zahajte konfiguraci jednotného přihlašování Coda](#begin-configuration-of-coda-sso)** – Chcete-li zahájit konfiguraci jednotného přihlašování v systému Coda.
 1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[NAKONFIGURUJTE jednotné přihlašování Coda](#configure-coda-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-    * **[Vytvořte testovacího uživatele Coda](#create-coda-test-user)** , abyste měli protějšek B. Simon v systému Coda, který je propojený s reprezentací uživatele v Azure AD.
+   * **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
+   * **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
+1. **[NAKONFIGURUJTE jednotné přihlašování Coda](#configure-coda-sso)** – pro dokončení konfigurace nastavení jednotného přihlašování v systému Coda.
+   * **[Vytvořte testovacího uživatele Coda](#create-coda-test-user)** , abyste měli protějšek B. Simon v systému Coda, který je propojený s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+
+## <a name="begin-configuration-of-coda-sso"></a>Zahájit konfiguraci Coda jednotného přihlašování
+
+Pokud chcete začít, postupujte podle těchto kroků v Coda.
+
+1. V prostředí Coda otevřete panel **Nastavení organizace** .
+
+   ![Otevřít nastavení organizace](media/coda-tutorial/org-settings.png)
+
+1. Ujistěte se, že má vaše organizace zapnutou integraci GDrive. Pokud je tato možnost aktuálně povolená, obraťte se na [tým podpory pro Coda](mailto:support@coda.io) , který vám usnadní migraci GDrive.
+
+   ![GDrive zakázané](media/coda-tutorial/gdrive-off.png)
+
+1. V části **ověřování pomocí jednotného přihlašování (SAML)** vyberte možnost **Konfigurovat protokol SAML** .
+
+   ![Nastavení SAML](media/coda-tutorial/saml-settings-link.png)
+
+1. Poznamenejte si hodnoty pro **ID entity** a **adresu URL odpovědi SAML**, které budete potřebovat v následujících krocích.
+
+   ![ID entity a adresa URL odpovědi SAML pro použití v Azure](media/coda-tutorial/azure-settings.png)
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
 
@@ -86,32 +107,32 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://coda.io/samlId/<CUSTOMID>`
+   a. Do textového pole **identifikátor** zadejte "ID entity". Měl by postupovat podle vzoru: `https://coda.io/samlId/<CUSTOMID>`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://coda.io/samlId/<CUSTOMID>/consume`
+   b. Do textového pole **Adresa URL odpovědi** zadejte "URL odpověď SAML". Měl by postupovat podle vzoru: `https://coda.io/login/sso/saml/<CUSTOMID>/consume`
 
-    > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory pro klienta Coda](mailto:support@coda.io) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+   > [!NOTE]
+   > Vaše hodnoty se budou lišit od výše uvedeného. vaše hodnoty najdete v konzole Coda "konfigurace SAML". Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+   ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
 
 1. V části **Nastavení Coda** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
+   ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **Název** zadejte `B.Simon`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. například `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+   1. Klikněte na možnost **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 
@@ -125,7 +146,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+   ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
 1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
@@ -133,19 +154,29 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-coda-sso"></a>Konfigurace jednotného přihlašování Coda
 
-Ke konfiguraci jednotného přihlašování na straně **Coda** je potřeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal [týmu podpory Coda](mailto:support@coda.io). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+Chcete-li dokončit instalaci, zadejte hodnoty z Azure Active Directory v panelu pro nastavení Coda pro modul **SAML** .
+
+1. V prostředí Coda otevřete panel **Nastavení organizace** .
+1. V části **ověřování pomocí jednotného přihlašování (SAML)** vyberte možnost **Konfigurovat protokol SAML** .
+1. Nastavte **poskytovatele SAML** na **Azure Active Directory**.
+1. V části **Adresa URL pro přihlášení zprostředkovatele identity**vložte **přihlašovací adresu URL** z konzoly Azure.
+1. V části **Vystavitel zprostředkovatele identity**vložte **identifikátor Azure AD** z konzoly Azure.
+1. V části **veřejný certifikát poskytovatele identity**vyberte možnost **nahrát certifikát** a vyberte soubor certifikátu, který jste stáhli dříve.
+1. Vyberte **Save** (Uložit).
+
+Tím se dokončí práce, která je nezbytná pro nastavení připojení SAML SSO.
 
 ### <a name="create-coda-test-user"></a>Vytvořit testovacího uživatele Coda
 
 V této části se ve Coda vytvoří uživatel s názvem Britta Simon. Systém Coda podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povoleno. V této části není žádná položka akce. Pokud uživatel ve Coda ještě neexistuje, vytvoří se po ověření nový.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici CODA na přístupovém panelu byste se měli automaticky přihlášeni k Coda, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

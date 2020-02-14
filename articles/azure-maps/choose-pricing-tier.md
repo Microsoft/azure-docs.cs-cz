@@ -8,22 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 8764e9161f952118ca7ae28343dcd16477cf1eee
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 2950c0e0fdd6839b905386c90665d95563a0a3f2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155753"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190287"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Výběr správné cenové úrovně v Azure Maps
 
 Azure Maps nabízí dvě cenové úrovně S0 a S1. Účelem tohoto článku je pomáhat s výběrem správné cenové úrovně pro vaše potřeby. Pokud chcete zvolit správnou cenovou úroveň, položte si následující dvě otázky.
 
-## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Jaké geoprostorové možnosti mám v plánu použít?
-Cenová úroveň S0 je vhodná pro vás, pokud základní geoprostorové rozhraní API splňuje požadavky vaší služby. Pokud chcete pro aplikaci využít pokročilejší možnosti, zvažte možnost použít cenovou úroveň S1. Příklad pokročilých možností: letecká a hybridní obrázek, získání rozsahu směrování a geografické kódování Batch. Tabulka **schopností cenové úrovně** vám může přispět k výběru cenové úrovně vhodné pro vaši aplikaci.
-
 ## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Kolik souběžných uživatelů Plánujem podporu? 
-Cenové úrovně S0 a S1 zpracovávají různé objemy propustnosti dat. Cenová úroveň S0 zpracovává až **50 dotazů za sekundu**, zatímco úroveň S1 zpracovává **více než 50 dotazů za sekundu**.
+Cenové úrovně S0 a S1 zpracovávají různé objemy propustnosti dat. Cenová úroveň S0 zpracovává až **50 dotazů za sekundu**. Zatímco úroveň S1 zpracovává **více než 50 dotazů za sekundu**.
+
+## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Jaké geoprostorové možnosti mám v plánu použít?
+Cenová úroveň S0 je pro vás nejvhodnější, pokud základní geoprostorové rozhraní API splňuje požadavky vaší služby. Pokud chcete pro aplikaci využít pokročilejší možnosti, zvažte možnost použít cenovou úroveň S1. Mezi pokročilé funkce patří: letecká a hybridní satelitní obrázek, získání rozsahu směrování a geografické kódování dávky. Zkontrolujte tabulku **schopností cenové úrovně** a vyberte cenovou úroveň, která je pro vaši aplikaci nejvhodnější.
 
 ### <a name="pricing-tier-capabilities"></a>Možnosti cenové úrovně
 
@@ -31,22 +31,22 @@ Cenové úrovně S0 a S1 zpracovávají různé objemy propustnosti dat. Cenová
 |-----------------------------------------|:-------------------:|:--------:|
 | Vykreslování mapy                              | ✓                   | ✓       |
 | Satelitních snímků                       |                     | ✓        |
-| Hledat                                  | ✓                    | ✓        |
-| Hromadné vyhledávání                            |                     | ✓        |
+| Hledání                                  | ✓                    | ✓        |
+| Dávkové vyhledávání                            |                     | ✓        |
 | Trasa                                   | ✓                    |✓        |
-| Hromadné směrování                            |                    | ✓        |
-| Maticové směrování                          |                     | ✓        |
-| Rozsah tras (izochrony)                |                     | ✓        |
+| Směrování Batch                            |                    | ✓        |
+| Směrování matice                          |                     | ✓        |
+| Rozsah trasy (Izochronů)                |                     | ✓        |
 | Provoz                                |✓                    |✓        |
 | Časové pásmo                               |✓                    |✓        |
 | Geografická poloha (Preview)                    |✓                   |✓        |
 | Prostorové operace                        |                    |✓        |
-| Geofencing                                |                    |✓        |
+| Monitorování geografických zón                                |                    |✓        |
 | Data Azure Maps (Preview)                |                     | ✓        |
 | Mobilita (Preview)                       |                     | ✓        |
 | Počasí (Preview)                        |✓                    |✓        |
 
-Je potřeba zvážit tyto další datové body:
+Vezměte v úvahu tyto další body:
 * Jaký typ firmy máte?
 * Jak kritická je vaše aplikace?
 
@@ -57,7 +57,7 @@ Podívejte se na tabulku **cílené zákazníky s cenovou úrovní** a získejte
 | Cenová úroveň  |     Cíloví zákazníci                                                                |
 |-----------------|:-----------------------------------------------------------------------------------------|
 | S0            |    <p>Cenová úroveň S0 funguje pro aplikace ve všech fázích produkce: od testování konceptu a testování v rané fázi při výrobě a nasazování aplikací. Tato úroveň je však navržena pro vývoj v malém měřítku nebo pro zákazníky s nízkými souběžnými uživateli nebo obojí. <p>|
-| S1            |    <p>Cenová úroveň S1 je určena zákazníkům, kteří potřebují podporu pro rozsáhlé podnikové, klíčové aplikace nebo velké objemy souběžných uživatelů. Také pro zákazníky, kteří vyžadují pokročilé geoprostorové služby.</p>|
+| S1            |    <p>Cenová úroveň S1 je určena pro zákazníky, kteří mají rozsáhlé podnikové aplikace, klíčové aplikace nebo velké objemy souběžných uživatelů. Také pro zákazníky, kteří vyžadují pokročilé geoprostorové služby.</p>|
 
 ## <a name="next-steps"></a>Další kroky
 

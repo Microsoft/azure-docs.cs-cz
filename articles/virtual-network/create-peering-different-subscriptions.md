@@ -1,5 +1,5 @@
 ---
-title: Vytvoření partnerského vztahu virtuální sítě Azure – Správce prostředků různých předplatných
+title: Vytvoření partnerského vztahu virtuálních sítí – různá předplatná
 titlesuffix: Azure Virtual Network
 description: Naučte se, jak vytvořit partnerský vztah virtuální sítě mezi virtuálními sítěmi vytvořenými prostřednictvím Správce prostředků, které existují v různých předplatných Azure.
 services: virtual-network
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: da85d8904fcd44788d6a87a22ea14d683982e333
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020008"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201743"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Vytvoření partnerského vztahu virtuální sítě – Správce prostředků různých předplatných
 
@@ -60,7 +60,7 @@ Následující kroky používají pro každé předplatné různé účty. Pokud
 6. V části **řízení přístupu myVnetA (IAM)** vyberte **+ Přidat přiřazení role**.
 7. V poli **role** vyberte **Přispěvatel sítě** .
 8. V poli **Vybrat** vyberte *UserB*nebo zadejte e-mailovou adresu UserB, kterou chcete vyhledat.
-9. Vyberte **Uložit**.
+9. Vyberte **Save** (Uložit).
 10. V části **myVnetA-Access Control (IAM)** vyberte **vlastnosti** ze svislého seznamu možností na levé straně. Zkopírujte **ID prostředku**, které se používá v pozdějším kroku. ID prostředku je podobné jako v následujícím příkladu: `/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA`.
 11. Odhlaste se z portálu jako UserA a pak se přihlaste jako UserB.
 12. Proveďte kroky 2-3, zadejte nebo vyberte následující hodnoty v kroku 3:
@@ -311,7 +311,7 @@ Po dokončení tohoto kurzu možná budete chtít odstranit prostředky, které 
    az group delete --name myResourceGroupB --yes
    ```
 
-### <a name="delete-powershell"></a>PowerShell
+### <a name="delete-powershell"></a>Prostředí
 
 1. Přihlaste se k Azure jako UserA a spusťte následující příkaz:
 

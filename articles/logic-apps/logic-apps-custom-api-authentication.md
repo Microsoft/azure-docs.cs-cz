@@ -1,25 +1,25 @@
 ---
 title: Přidání ověřování pro zabezpečení volání vlastních rozhraní API
-description: Jak nastavit ověřování pro zabezpečení volání vlastních rozhraní API z Azure Logic Apps
+description: Jak nastavit ověřování pro zlepšení zabezpečení pro volání vlastních rozhraní API z Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666886"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191412"
 ---
-# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Zabezpečená volání vlastních rozhraní API z Azure Logic Apps
+# <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Zvýšení zabezpečení pro volání vlastních rozhraní API z Azure Logic Apps
 
-Chcete-li zabezpečit volání rozhraní API, můžete pomocí Azure Portal nastavit ověřování Azure Active Directory (Azure AD), takže nemusíte aktualizovat kód. Nebo můžete vyžádat a vynutit ověřování prostřednictvím kódu API.
+Pro zvýšení zabezpečení volání rozhraní API můžete nastavit ověřování Azure Active Directory (Azure AD) prostřednictvím Azure Portal, takže nemusíte aktualizovat kód. Nebo můžete vyžádat a vynutit ověřování prostřednictvím kódu API.
 
 ## <a name="authentication-options-for-your-api"></a>Možnosti ověřování pro vaše rozhraní API
 
-V těchto způsobech můžete zabezpečit volání vlastního rozhraní API:
+V těchto způsobech můžete zlepšit zabezpečení volání vlastních rozhraní API:
 
 * [Žádné změny kódu](#no-code): pomocí Azure Portal chránit rozhraní API pomocí služby [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) , takže nemusíte aktualizovat kód ani znovu nasazovat rozhraní API.
 
@@ -206,7 +206,7 @@ Otevřete definici aplikace logiky v zobrazení kódu, vyhledejte část definic
 | type | Ano | Typ ověřování. Pro ověřování ActiveDirectoryOAuth je hodnota `ActiveDirectoryOAuth`. | 
 |||| 
 
-Příklad:
+Například:
 
 ``` json
 {

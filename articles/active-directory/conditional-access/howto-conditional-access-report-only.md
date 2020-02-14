@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3cd57c09c08ab4c86feeca27915639123b439d0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d63aaa0103715a928cdd5332de738a473b329f2e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180300"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186091"
 ---
 # <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Konfigurace zásad podmíněného přístupu v režimu pouze sestavy (Preview)
 
@@ -41,9 +41,12 @@ Zobrazení výsledku zásad pouze pro sestavy pro konkrétní přihlášení:
 1. Vyberte přihlášení nebo přidejte filtry pro zúžení výsledků.
 1. V zásuvce **podrobností** vyberte kartu **pouze sestava (Preview)** a zobrazte zásady vyhodnocené během přihlašování.
 
+> [!NOTE]
+> Když stahujete protokoly přihlášení, vyberte formát JSON, který bude obsahovat data o výsledku podmíněného přístupu pouze sestavy.
+
 ## <a name="set-up-azure-monitor-integration-with-azure-ad"></a>Nastavení Integrace Azure Monitor s využitím Azure AD
 
-Aby bylo možné zobrazit agregovaný dopad zásad podmíněného přístupu pomocí nového sešitu pro podmíněný přístup, musíte Azure Monitor s Azure AD integrovat a exportovat protokoly přihlášení. Tuto integraci můžete nastavit dvěma kroky: 
+Aby bylo možné zobrazit agregovaný dopad zásad podmíněného přístupu pomocí nového sešitu pro podmíněný přístup, musíte Azure Monitor s Azure AD integrovat a exportovat protokoly přihlášení. Pro nastavení této integrace existují dva kroky: 
 
 1. [Zaregistrujte si předplatné Azure monitor a vytvořte pracovní prostor](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 1. [Exportujte protokoly přihlášení z Azure AD do Azure monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics).
@@ -61,7 +64,7 @@ Po integraci protokolů služby Azure AD s Azure Monitor můžete sledovat dopad
 1. Vyberte časový rozsah (Pokud časový rozsah překračuje dostupnou datovou sadu, sestava zobrazí všechna dostupná data). Jakmile nastavíte **zásady podmíněného přístupu** a parametry **časového rozsahu** , sestava se načte.
    1. Volitelně můžete vyhledat jednotlivé **uživatele** nebo **aplikace** a zúžit tak rozsah sestavy.
 1. Vyberte mezi zobrazením dat v časovém rozsahu podle počtu uživatelů nebo počtu přihlášení.
-1. V závislosti na **zobrazení dat**zobrazuje **Souhrn dopadu** počet uživatelů nebo přihlášení v rozsahu zvolených parametrů, seskupený podle celkového počtu, **úspěšnosti**, **selhání**, **akce uživatele**a **Nepoužito.** . Vyberte dlaždici pro kontrolu přihlášení určitého typu výsledku. 
+1. V závislosti na **zobrazení dat**zobrazuje **Souhrn dopadu** počet uživatelů nebo přihlášení v rozsahu zvolených parametrů, seskupený podle celkového počtu, **úspěšnosti**, **selhání**, **akce uživatele**a **Nepoužito**. Vyberte dlaždici pro kontrolu přihlášení určitého typu výsledku. 
    1. Pokud jste změnili parametry sešitu, můžete zvolit uložení kopie pro budoucí použití. V horní části sestavy vyberte ikonu Uložit a zadejte název a umístění, do kterého chcete ukládat.
 1. Posuňte se dolů a zobrazte rozpis přihlášení pro každou podmínku.
 1. Podívejte se na **Podrobnosti o přihlášení** v dolní části sestavy, abyste mohli prozkoumat jednotlivé události přihlašování filtrované podle výše uvedených možností.
@@ -69,7 +72,7 @@ Po integraci protokolů služby Azure AD s Azure Monitor můžete sledovat dopad
 > [!TIP] 
 > Potřebujete přejít k podrobnostem konkrétního dotazu nebo exportovat přihlašovací údaje? Kliknutím na tlačítko napravo od libovolného dotazu otevřete dotaz v Log Analytics. Vyberte Exportovat pro export do sdíleného svazku clusteru nebo Power BI.
 
-## <a name="common-problems-and-solutions"></a>Běžné problémy a řešení
+## <a name="common-problems-and-solutions"></a>Nejčastější problémy a jejich řešení
 
 ### <a name="why-are-the-queries-in-the-workbook-failing"></a>Proč se dotazy v sešitu nedaří?
 

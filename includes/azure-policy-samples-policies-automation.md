@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: 76083e2cf3c0441c25e6b534f973bbaeee5e8ebc
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
-ms.translationtype: HT
+ms.openlocfilehash: 24c7215be4574c902e4795b11eb4658abe8c243a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172741"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193033"
 ---
-|Název |Popis |Vliv (s) |Verze |
+|Název |Popis |Vliv (s) |Version |
 |---|---|---|---|
-|[Proměnné účtu Automation by se měly šifrovat.](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |Při ukládání citlivých dat je důležité povolit šifrování prostředků proměnných účtu služby Automation. |Audit, zakázáno |1.0.0 |
+|[Proměnné účtu Automation by se měly šifrovat.](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |Při ukládání citlivých dat je důležité povolit šifrování prostředků proměnných účtu služby Automation. |Audit, zakázáno |1.0.0 |

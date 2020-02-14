@@ -1,6 +1,6 @@
 ---
-title: Konfigurace místního prostředí Integration runtime jako proxy pro SSIS
-description: Přečtěte si, jak nakonfigurovat Integration Runtime v místním prostředí jako proxy pro Azure-SSIS Integration Runtime.
+title: Konfigurace prostředí Integration runtime v místním prostředí jako proxy pro SSIS
+description: Přečtěte si, jak nakonfigurovat Integration runtime v místním prostředí jako proxy server pro Azure-SSIS Integration Runtime.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,65 +12,75 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 02/06/2020
-ms.openlocfilehash: b20a615691d95c04574e2909f69b5a83a97f9d14
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 5f9e15b83c36c6c19fbe93c5f1df365f6f763c81
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048955"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187687"
 ---
-# <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Konfigurace místního prostředí IR jako proxy pro Azure-SSIS IR v ADF
+# <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurace prostředí IR v místním prostředí jako proxy serveru pro Azure-SSIS IR v Azure Data Factory
 
-Tento článek popisuje, jak spouštět balíčky služba SSIS (SQL Server Integration Services) (SSIS) v Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF) s místním prostředím IR nakonfigurovaným jako proxy.  Tato funkce umožňuje přístup k datům místně bez [připojení Azure-SSIS IR k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).  To je užitečné v případě, že vaše podniková síť má příliš složitou zásadu konfigurace/omezující zásady, která umožňuje vložit do ní Azure-SSIS IR.
+Tento článek popisuje, jak spustit balíčky služba SSIS (SQL Server Integration Services) (SSIS) na Azure-SSIS Integration Runtime (Azure-SSIS IR) v Azure Data Factory pomocí modulu runtime integrace (v místním prostředí IR), který je nakonfigurovaný jako proxy. 
 
-Tato funkce rozdělí balíček obsahující úlohu toku dat s místním zdrojem dat do dvou pracovních úloh: první z nich spuštěná v místním prostředí IR nejprve přesune data z místního zdroje dat do pracovní oblasti v Azure Blob Storage, zatímco Druhá z nich spuštěná v Azure-SSIS IR pak přesune data z pracovní oblasti do určeného cíle dat.
+Pomocí této funkce můžete získat přístup k místním datům, aniž byste se museli [připojit k Azure-SSIS IR k virtuální síti](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Tato funkce je užitečná v případě, že vaše podniková síť má příliš složitou konfiguraci nebo je zásada příliš omezující, takže se do ní Azure-SSIS IR vložit.
 
-Tato funkce také poskytuje další výhody a možnosti, protože umožňuje zřídit technologii IR v místním prostředí v oblastech, které ještě nejsou podporované nástrojem Azure-SSIS IR, povolit veřejnou statickou IP adresu místního prostředí IR v bráně firewall vašich zdrojů dat atd.
+Tato funkce rozdělí balíčky, které obsahují úlohu toku dat s místním zdrojem dat, na dvě pracovní úlohy: 
+* První úkol, který běží v místním prostředí IR, nejprve přesune data z místního zdroje dat do pracovní oblasti v úložišti objektů BLOB v Azure.
+* Druhý úkol, který běží na vašem Azure-SSIS IR, pak přesune data z pracovní oblasti do zamýšleného data cíle.
 
-## <a name="prepare-self-hosted-ir"></a>Příprava prostředí IR pro místní hostování
+Další výhody a funkce této funkce umožňují například nastavit vaše místní prostředí IR v oblastech, které ještě nejsou podporované Azure-SSIS IR, a umožnit veřejnou statickou IP adresu místního prostředí IR v bráně firewall vašich zdrojů dat.
 
-Aby bylo možné tuto funkci používat, musíte nejdřív vytvořit ADF a zřídit Azure-SSIS IR pod ní, pokud jste to ještě neudělali, a to pomocí článku [jak zřídit Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) článek.
+## <a name="prepare-the-self-hosted-ir"></a>Příprava prostředí IR pro místní hostování
 
-Potom budete muset zřídit svůj místní prostředí IR v rámci stejného ADF, kde se vaše Azure-SSIS IR zřídí, podle pokynů v článku [vytvoření prostředí IR s místním hostováním](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime) .
+Pokud chcete tuto funkci používat, musíte nejdřív vytvořit datovou továrnu a nastavit v ní Azure-SSIS IR. Pokud jste to ještě neudělali, postupujte podle pokynů v části [nastavení Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure).
 
-Nakonec budete muset stáhnout a nainstalovat nejnovější verzi prostředí IR v místním prostředí a také další ovladače a modul runtime na místním počítači nebo virtuálním počítači Azure (VM) následujícím způsobem:
-- Stáhněte si a nainstalujte nejnovější verzi prostředí IR v místním prostředí (webhost) z [tohoto místa](https://www.microsoft.com/download/details.aspx?id=39717).
-- Pokud používáte konektory OLEDB ve svých balíčcích, Stáhněte a nainstalujte příslušné ovladače OLEDB do stejného počítače, ve kterém je nainstalováno prostředí IR v místním prostředí, pokud jste to ještě neudělali.  Pokud používáte starší verzi ovladače OLEDB pro SQL Server (SQLNCLI), můžete si stáhnout verzi 64 z [tohoto místa](https://www.microsoft.com/download/details.aspx?id=50402).  Pokud používáte nejnovější verzi ovladače OLEDB pro SQL Server (MSOLEDBSQL), můžete si stáhnout verzi 64 z [tohoto místa](https://www.microsoft.com/download/details.aspx?id=56730).  Pokud používáte ovladače OLEDB pro jiné databázové systémy, jako je PostgreSQL, MySQL, Oracle atd., můžete si stáhnout 64 verzi ze svých příslušných webů.
-- Pokud jste to ještě C++ neudělali, Stáhněte a nainstalujte Visual (VC) runtime na stejném počítači, kde je nainstalováno prostředí IR pro místní hostování.  64 verzi si můžete stáhnout [tady](https://www.microsoft.com/download/details.aspx?id=40784).
+Potom nastavíte místní prostředí IR ve stejné datové továrně, kde je nastavená vaše Azure-SSIS IR. Postup najdete v tématu [vytvoření prostředí IR](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)v místním prostředí.
 
-## <a name="prepare-azure-blob-storage-linked-service-for-staging"></a>Příprava propojené služby Azure Blob Storage pro přípravu
+Nakonec stáhnete a nainstalujete nejnovější verzi prostředí IR v místním prostředí a také další ovladače a modul runtime, na místním počítači nebo virtuálním počítači Azure (VM) následujícím způsobem:
+- Stáhněte a nainstalujte si nejnovější verzi prostředí IR pro místní [hostování](https://www.microsoft.com/download/details.aspx?id=39717).
+- Pokud ve svých balíčcích používáte konektory objektů Linking and Embedding Database (OLEDB), Stáhněte a nainstalujte příslušné ovladače OLEDB do stejného počítače, ve kterém je nainstalovaný modul IR pro místní hostování, pokud jste to ještě neudělali.  
 
-Pokud jste to ještě neudělali, vytvořte propojenou službu Azure Blob Storage v rámci stejného ADF, na které jste svoji Azure-SSIS IR zřídili (Pokud jste to ještě neudělali) podle článku [jak vytvořit propojenou službu ADF](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service) .  Ověřte prosím následující:
-- Pro **úložiště dat** je vybraná možnost **Azure Blob Storage** .
-- **AutoResolveIntegrationRuntime** je vybraný pro **připojení prostřednictvím prostředí Integration runtime** .
-- Pro **metodu ověřování** je vybraný buď **klíč účtu**/**identifikátor URI SAS**/**instanční objekt** .
+  Pokud používáte starší verzi ovladače OLEDB pro SQL Server (SQL Server Native Client [SQLNCLI]), [Stáhněte si 64 verzi](https://www.microsoft.com/download/details.aspx?id=50402).  
 
->[!TIP]
->Když je vybraný **instanční objekt** , udělte aspoň **roli Přispěvatel dat objektu BLOB úložiště**. Další informace najdete v tématu [konektor Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties).
+  Pokud používáte nejnovější verzi ovladače OLEDB pro SQL Server (MSOLEDBSQL), [Stáhněte si 64 verzi](https://www.microsoft.com/download/details.aspx?id=56730).  
+  
+  Pokud používáte ovladače OLEDB pro jiné databázové systémy, jako jsou PostgreSQL, MySQL, Oracle a tak dále, můžete si stáhnout 64 verzí ze svých webů.
+- Pokud jste to ještě neudělali, [Stáhněte a nainstalujte verzi 64 sady Visual C++ (VC)](https://www.microsoft.com/download/details.aspx?id=40784) na stejném počítači, na kterém je nainstalovaný modul IR pro místní hostování.
 
-![Příprava propojené služby Azure Blob Storage pro přípravu](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
+## <a name="prepare-the-azure-blob-storage-linked-service-for-staging"></a>Příprava služby Azure Blob Storage – propojená služba pro přípravu
 
-## <a name="configure-azure-ssis-ir-with-self-hosted-ir-as-a-proxy"></a>Konfigurace Azure-SSIS IR s využitím místního hostitele IR jako proxy
+Pokud jste to ještě neudělali, vytvořte propojenou službu Azure Blob Storage ve stejné datové továrně, kde je nastavená vaše Azure-SSIS IR. Postup najdete v tématu [vytvoření propojené služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service). Nezapomeňte provést následující akce:
+- V případě **úložiště dat**vyberte **Azure Blob Storage**.  
+- Pro **připojení prostřednictvím prostředí Integration runtime**vyberte **AutoResolveIntegrationRuntime**.  
+- V případě **metody ověřování**vyberte **klíč účtu**, **identifikátor URI SAS**nebo **instanční objekt**.  
 
-Když jste připravili vaše místní prostředí IR a propojenou službu Azure Blob Storage pro přípravu, můžete teď nakonfigurovat nové nebo existující Azure-SSIS IR pomocí prostředí IR pro místní hostování jako proxy na portálu ADF nebo v aplikaci.  Pokud je spuštěný existující Azure-SSIS IR, před tím, než to uděláte, ho zastavte a pak ho znovu spusťte.
+    >[!TIP]
+    >Pokud vyberete **instanční objekt**, udělte aspoň roli  *Přispěvatel dat objektů BLOB úložiště* . Další informace najdete v tématu [Azure Blob Storage Connector](connector-azure-blob-storage.md#linked-service-properties).
 
-1. V instalačním panelu prostředí Integration runtime se v sekcích **Obecné nastavení** a **nastavení SQL** pokračujte výběrem tlačítka **Další** . 
+![Příprava služby Azure Blob Storage – propojená služba pro přípravu](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
-1. V části **Upřesnit nastavení** :
+## <a name="configure-an-azure-ssis-ir-with-your-self-hosted-ir-as-a-proxy"></a>Konfigurace Azure-SSIS IR s využitím místního hostitele IR jako proxy
+
+Připravili jste místní prostředí IR a službu Azure Blob Storage – propojená služba pro přípravu, teď můžete nakonfigurovat nové nebo existující Azure-SSIS IR s využitím místního prostředí IR jako proxy serveru na portálu Data Factory nebo v aplikaci. Předtím, než to uděláte, pokud už existující Azure-SSIS IR běží, zastavte ho a pak ho znovu spusťte.
+
+1. V podokně **instalace prostředí Integration runtime** přeskočte předchozí části **Obecné nastavení** a **nastavení SQL** výběrem možnosti **Další**. 
+
+1. V části **Upřesnit nastavení** proveďte tyto kroky:
 
    1. Zaškrtněte políčko **nastavit Integration runtime pro místní hostování jako proxy pro Azure-SSIS Integration runtime** zaškrtávací políčko. 
 
-   1. Pro **Integration runtime**v místním prostředí vyberte pro Azure-SSIS IR existující místní prostředí IR jako proxy.
+   1. V rozevíracím seznamu **Integration runtime** v místním prostředí vyberte pro Azure-SSIS IR existující místní prostředí IR jako proxy.
 
-   1. V případě **pracovní služby s**ochranou úložiště vyberte existující propojenou službu Azure Blob Storage nebo vytvořte novou pro přípravu.
+   1. V rozevíracím seznamu **pracovní služba s připojeným úložištěm** vyberte existující propojenou službu Azure Blob Storage, nebo vytvořte novou pro přípravu.
 
-   1. Do pole **pracovní cesta**zadejte kontejner objektů BLOB ve vybraném účtu služby Azure Blob Storage nebo ho nechte prázdný, aby se pro přípravu použil výchozí.
+   1. V poli **pracovní cesta** Určete kontejner objektů BLOB ve vybraném účtu služby Azure Blob Storage nebo ho nechte prázdný, aby se pro přípravu použil výchozí.
 
    1. Vyberte **Pokračovat**.
 
    ![Rozšířená nastavení s místním prostředím IR](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-shir.png)
 
-Můžete také nakonfigurovat nové nebo existující Azure-SSIS IR pomocí prostředí IR v místním prostředí jako proxy pomocí PowerShellu.
+Pomocí prostředí PowerShell můžete také nakonfigurovat nové nebo existující Azure-SSIS IR s využitím místního prostředí IR jako proxy.
 
 ```powershell
 $ResourceGroupName = "[your Azure resource group name]"
@@ -106,52 +116,58 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 ## <a name="enable-ssis-packages-to-connect-by-proxy"></a>Povolit SSIS balíčky pro připojení pomocí proxy
 
-Pomocí nejnovější SSDT s rozšířením projektů SSIS pro Visual Studio, které se dá stáhnout [odsud nebo jako](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects) samostatný instalační program, který se dá stáhnout z [tohoto místa](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer), můžete najít novou vlastnost **ConnectByProxy** , která se přidala do Správce připojení OLEDB/plochých souborů.  
+Pomocí nejnovější SSDT s rozšířením projektů SSIS pro Visual Studio nebo samostatného instalačního programu můžete najít novou vlastnost `ConnectByProxy`, která byla přidána do Správce připojení OLEDB nebo plochých souborů.
+* [Stažení SSDT s rozšířením projektů SSIS pro Visual Studio](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
+* [Stažení samostatného instalačního programu](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
 
-Když navrhujete nové balíčky obsahující úlohy toku dat se zdroji souborů OLEDB/Flat pro přístup k databázím a souborům v místním prostředí, můžete tuto vlastnost povolit nastavením na **hodnotu true** na panelu Vlastnosti příslušných správců připojení.
+Když navrhujete nové balíčky, které obsahují úlohy toku dat se zdroji OLEDB nebo plochých souborů, které umožňují přístup k databázím nebo souborům v místním prostředí, můžete tuto vlastnost povolit nastavením na *hodnotu true* v podokně **vlastnosti** příslušných správců připojení.
 
 ![Povolit vlastnost ConnectByProxy](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
-Tuto vlastnost můžete také povolit při spouštění existujících balíčků, aniž byste je museli ručně změnit o jednu.  Existují dvě možnosti:
-- Otevřete, znovu sestavíte a znovu nasadíte projekt obsahující tyto balíčky s nejnovějším SSDT pro spuštění ve vašem Azure-SSIS IR: vlastnost lze povolit nastavením na **hodnotu true** pro příslušné Správce připojení, který se zobrazí na kartě **Správci připojení** v místním okně spustit balíček při spouštění balíčků z SSMS.
+Tuto vlastnost můžete povolit také při spuštění existujících balíčků, aniž byste je museli ručně změnit o jednu.  Existují dvě možnosti:
+- **Možnost A**: otevřete, znovu sestavte a znovu nasaďte projekt obsahující tyto balíčky s nejnovějším SSDT pro spuštění ve vašem Azure-SSIS IR. Vlastnost pak můžete povolit nastavením na *hodnotu true* pro příslušné Správce připojení. Když spouštíte balíčky z SSMS, zobrazí se tito správci připojení na kartě **Správci připojení** v místním okně **spustit balíček** .
 
   ![Povolit ConnectByProxy Vlastnost2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
 
-  Vlastnost se dá povolit taky tak, že ji nastavíte na **true** pro příslušné Správce připojení, které se zobrazí na kartě **Správci připojení** v [aktivitě SSIS balíčku](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) pro spuštění balíčků v kanálech ADF.
+  Vlastnost můžete povolit také tak, že ji nastavíte na *hodnotu true* pro příslušné Správce připojení, které se zobrazí na kartě **Správci připojení** v rámci [aktivity balíčku pro spuštění SSIS](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) při spouštění balíčků v kanálu Data Factory.
   
   ![Povolit ConnectByProxy property3](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssis-activity.png)
 
-- Opětovné nasazení projektu obsahujícího tyto balíčky ke spuštění v SSIS IR: vlastnost se pak dá povolit tak, že poskytne cestu k vlastnosti, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`a nastaví ji na **true** jako přepsání vlastnosti na kartě **Upřesnit** v místním okně spustit balíček při spouštění balíčků z SSMS.
+- **Možnost B:** Znovu nasaďte projekt, který obsahuje tyto balíčky pro spuštění v SSIS IR. Vlastnost pak můžete povolit zadáním cesty k vlastnostem, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`a nastavením na *hodnotu true* jako přepsání vlastnosti na kartě **Upřesnit** v automaticky otevíraném okně **spustit balíček** při spouštění balíčků z SSMS.
 
   ![Povolit ConnectByProxy property4](media/self-hosted-integration-runtime-proxy-ssis/shir-advanced-tab-ssms.png)
 
-  Vlastnost může být také povolena tím, že poskytuje cestu k vlastnostem, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`a nastavení na **hodnotu true** jako přepsání vlastnosti na kartě **přepsání vlastností** [aktivity balíčku](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) Overrides při spuštění balíčků v kanálech ADF.
+  Vlastnost můžete povolit také tak, že zadáte její cestu k vlastnostem, `\Package.Connections[YourConnectionManagerName].Properties[ConnectByProxy]`a nastavíte ji na *true* jako přepsání vlastnosti na kartě **přepsání vlastností** [aktivity SSIS Package](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity) , když spouštíte balíčky v data Factorych kanálech.
   
   ![Povolit ConnectByProxy property5](media/self-hosted-integration-runtime-proxy-ssis/shir-property-overrides-tab-ssis-activity.png)
 
 ## <a name="debug-the-first-and-second-staging-tasks"></a>Ladění první a druhé pracovní úlohy
 
-V místním prostředí IR můžete najít protokoly modulu runtime ve složce `C:\ProgramData\SSISTelemetry` a protokoly spouštění pro první pracovní úkoly v `C:\ProgramData\SSISTelemetry\ExecutionLog` složce.  Protokoly spouštění druhých pracovních úkolů najdete v SSISDB nebo zadaných cestách protokolování, v závislosti na tom, jestli vaše balíčky ukládáte do SSISDB nebo souborů/sdílených složek/souborů Azure (v uvedeném pořadí).  Jedinečné identifikátory první pracovní úlohy můžete také najít v protokolech spouštění druhé pracovní úlohy, např. 
+V místním prostředí IR můžete najít protokoly za běhu ve složce *C:\ProgramData\SSISTelemetry* a protokoly spouštění pro první pracovní úlohy ve složce *C:\ProgramData\SSISTelemetry\ExecutionLog* .  V závislosti na tom, jestli vaše balíčky ukládáte do SSISDB nebo systému souborů, sdílených složek nebo souborů Azure, můžete najít protokoly spouštění druhých pracovních úloh v SSISDB nebo zadané cesty protokolování. Můžete také najít jedinečné identifikátory prvních pracovních úloh v protokolech spouštění druhé pracovní úlohy. 
 
 ![Jedinečné ID první pracovní úlohy](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
-## <a name="using-windows-authentication-in-staging-tasks"></a>Použití ověřování systému Windows v pracovních úlohách
+## <a name="use-windows-authentication-in-staging-tasks"></a>Použití ověřování systému Windows v pracovních úlohách
 
-Pokud vaše pracovní úkoly v místním prostředí IR vyžadují ověřování systému Windows, je třeba [nakonfigurovat balíčky SSIS tak, aby používaly stejné ověřování systému Windows](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). Vaše pracovní úkoly budou vyvolány s účtem služby IR v místním prostředí (ve výchozím nastavení`NT SERVICE\DIAHostService`) a vaše úložiště dat budou k dispozici s účtem ověřování systému Windows. Oba účty vyžadují, aby jim byly přiřazeny určité zásady zabezpečení. Proto v místním počítači IR otevřete `Local Security Policy` -> `Local Policies` -> `User Rights Assignment` a proveďte následující kroky.
-- Přiřaďte **kvóty pro úpravu paměti pro proces** a **nahraďte zásady tokenu na úrovni procesu** na účet služby IR pro místní hostování. Tato funkce by měla být automaticky provedena při instalaci místního prostředí IR s výchozím účtem služby. Pokud používáte jiný účet služby, přiřaďte k němu stejné zásady.
-- Přiřaďte k účtu ověřování systému Windows zásadu **přihlášení jako služby** .
+Pokud pracovní úkoly v místním prostředí IR vyžadují ověřování systému Windows, [nakonfigurujte balíčky SSIS tak, aby používaly stejné ověřování systému Windows](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
+
+Vaše pracovní úkoly budou vyvolány s účtem služby IR v místním prostředí (*NT SERVICE\DIAHostService*ve výchozím nastavení) a vaše úložiště dat budou k dispozici s účtem ověřování systému Windows. Oba účty vyžadují, aby jim byly přiřazeny určité zásady zabezpečení. V místním počítači IR spusťte místní zásady **zabezpečení** > **místní zásady** > **přiřazení uživatelských práv**a pak postupujte takto:
+
+1. Přiřaďte *kvóty pro úpravu paměti pro proces* a *nahraďte zásady tokenu na úrovni procesu* na účet služby IR pro místní hostování. Tato situace by se měla provádět automaticky při instalaci místního prostředí IR s výchozím účtem služby. Pokud používáte jiný účet služby, přiřaďte k němu stejné zásady.
+
+1. Přiřaďte k účtu ověřování systému Windows zásadu *přihlášení jako služby* .
 
 ## <a name="billing-for-the-first-and-second-staging-tasks"></a>Faktura za první a druhý pracovní úkol
 
-První pracovní úkoly spuštěné v místním prostředí IR se budou účtovat samostatně stejným způsobem jako všechny aktivity přesunu dat spuštěné v místním prostředí IR se účtují tak, jak je uvedeno v článku o [cenách datového kanálu ADF](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) .
+První pracovní úkoly, které běží na vašem místním prostředí IR, se účtují samostatně, stejně jako všechny aktivity přesunu dat, které běží v místním prostředí IR, se účtují. Tento údaj je uvedený v článku [Azure Data Factory ceny datového kanálu](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) .
 
-Druhý pracovní úkol, který běží na vašem Azure-SSIS IR, se nebude účtovat samostatně, ale běžící Azure-SSIS IR bude účtována tak, jak je uvedeno v článku [Azure-SSIS IR ceny](https://azure.microsoft.com/pricing/details/data-factory/ssis/) .
+Druhé pracovní úkoly, které běží na vašem Azure-SSIS IR, se neúčtují samostatně, ale vaše běžící Azure-SSIS IR se fakturují tak, jak je uvedeno v článku [Azure-SSIS IR ceny](https://azure.microsoft.com/pricing/details/data-factory/ssis/) .
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-- V současné době jsou podporovány pouze úlohy toku dat se správci připojení k souborům ODBC/OLEDB/Flat File a zdroji dat ODBC/OLEDB/Flat File nebo cíle OLEDB. 
-- V současné době jsou podporovány pouze propojené služby Azure Blob Storage nakonfigurované s **klíčem účtu**/**identifikátor URI SAS**/ověřování **instančního objektu** .
+- V současné době jsou podporovány pouze úlohy toku dat s použitím rozhraní ODBC (Open Database Connectivity), OLEDB nebo plochých souborů a zdrojů ODBC, OLEDB a plochých souborů nebo cíle OLEDB. 
+- V současné době jsou podporovány pouze propojené služby Azure Blob Storage, které jsou konfigurovány pomocí *klíče účtu*, *identifikátoru URI sdíleného přístupového podpisu (SAS)* nebo ověřování *instančního objektu* .
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nakonfigurování místního prostředí IR jako proxy pro váš Azure-SSIS IR můžete nasadit a spustit balíčky pro přístup k datům v místním prostředí, jak spouštět aktivity balíčků SSIS v kanálech ADF, v tématu [spouštění balíčků SSIS jako provádění aktivit balíčku SSIS v kanálech ADF](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).
+Po nakonfigurování místního prostředí IR jako proxy serveru pro váš Azure-SSIS IR můžete nasadit a spustit balíčky pro přístup k místním datům, jako jsou spouštěné aktivity balíčků SSIS v Data Factorych kanálech. Informace o tom, jak najdete [v tématu spouštění balíčků SSIS jako aktivity balíčku SSIS v data Factorych kanálech](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

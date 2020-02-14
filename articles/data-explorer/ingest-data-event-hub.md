@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773940"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188189"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Ingestování dat z centra událostí do Azure Průzkumník dat
 
@@ -22,9 +22,9 @@ ms.locfileid: "76773940"
 > * [Python](data-connection-event-hub-python.md)
 > * [Šablona Azure Resource Manageru](data-connection-event-hub-resource-manager.md)
 
-Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí ingestování (načítání) dat ze služby Event Hubs, platformy pro streamování velkých objemů dat a služby pro ingestování událostí. [Event Hubs](/azure/event-hubs/event-hubs-about) může zpracovávat miliony událostí za sekundu téměř v reálném čase. V tomto článku vytvoříte centrum událostí, připojíte se k němu z Azure Průzkumník dat a Prohlédněte si tok dat prostřednictvím systému.
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer nabízí ingestování (načítání) dat ze služby Event Hubs, platformy pro streamování velkých objemů dat a služby pro ingestování událostí. [Event Hubs](/azure/event-hubs/event-hubs-about) může zpracovávat miliony událostí za sekundu téměř v reálném čase. V tomto článku vytvoříte centrum událostí, připojíte se k němu z Azure Průzkumník dat a Prohlédněte si tok dat prostřednictvím systému.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * [Testovací cluster a databáze](create-cluster-database-portal.md).
@@ -33,7 +33,7 @@ Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumán�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
@@ -45,7 +45,7 @@ V tomto článku vygenerujete ukázková data a odešlete je do centra událost�
 
     Výběrem tlačítka **Deploy to Azure** (Nasadit do Azure) přejdete na web Azure Portal, kde vyplníte formulář nasazení.
 
-    ![Nasadit do Azure](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Nasazení do Azure](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. Vyberte předplatné, ve kterém chcete centrum událostí vytvořit, a vytvořte skupinu prostředků s názvem *test-hub-rg*.
 
@@ -117,8 +117,8 @@ Teď se můžete z Azure Data Exploreru připojit k centru událostí. Po naváz
     | Obor názvů centra událostí | Jedinečný název oboru názvů | Název, který jste zvolili dříve a který identifikuje váš obor názvů |
     | Centrum událostí | *test-hub* | Centrum událostí, které jste vytvořili |
     | Skupina uživatelů | *test-group* | Skupina uživatelů, kterou jste definovali v centrum událostí, které jste vytvořili |
-    | Vlastnosti systému událostí | Vyberte příslušné vlastnosti. | [Vlastnosti systému centra událostí](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Pokud existuje více záznamů na jednu zprávu události, budou do prvního z nich přidány vlastnosti systému. Při přidávání vlastností systému, [Vytvoření](/azure/kusto/management/tables#create-table) nebo [aktualizace](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schématu tabulky a [mapování](/azure/kusto/management/mappings) tak, aby zahrnovaly vybrané vlastnosti. |
-    | Komprese | *Žádné* | Typ komprese pro datovou část zpráv centra událostí. Podporované typy komprese: *žádné, gzip*.|
+    | Vlastnosti systému událostí | Vyberte příslušné vlastnosti. | [Vlastnosti systému centra událostí](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Pokud existuje více záznamů na jednu zprávu události, budou do prvního z nich přidány vlastnosti systému. Při přidávání vlastností systému, [Vytvoření](/azure/kusto/management/create-table-command) nebo [aktualizace](/azure/kusto/management/alter-table-command) schématu tabulky a [mapování](/azure/kusto/management/mappings) tak, aby zahrnovaly vybrané vlastnosti. |
+    | Komprese | *NTato* | Typ komprese pro datovou část zpráv centra událostí. Podporované typy komprese: *žádné, gzip*.|
     | | |
 
     **Cílová tabulka:**
@@ -128,7 +128,7 @@ Teď se můžete z Azure Data Exploreru připojit k centru událostí. Po naváz
 
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Table | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
+    | Tabulka | *TestTable* | Tabulka, kterou jste vytvořili v databázi **TestDatabase** |
     | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC a PARQUET. |
     | Mapování sloupců | *TestMapping* | [Mapování](/azure/kusto/management/mappings) , které jste vytvořili v **TestDatabase**, které mapuje příchozí data JSON na názvy sloupců a datové typy **testovacího**typu. Vyžaduje se pro JSON nebo VÍCEŘÁDKOVé JSON a volitelné pro jiné formáty.|
     | | |

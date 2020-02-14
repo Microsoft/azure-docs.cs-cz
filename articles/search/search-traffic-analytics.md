@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 84e60b0a942bad94d8e36eb20b5be8e3f55af80a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426993"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190946"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Implementace vyhledávání analýzy provozu v Azure Kognitivní hledání
 
@@ -106,7 +106,7 @@ Pokaždé, když uživatel vydává požadavek na hledání, byste se měli při
 **SearchServiceName**: (String) název vyhledávací služby **searchid**: (GUID) jedinečný identifikátor vyhledávacího dotazu (v odpovědi na hledání) **indexeru**: (String) index služby vyhledávání, který se má dotazovat na **QueryTerms**: (řetězce) hledané výrazy zadané uživatelem **element resultcount nastavený**: (int) počet vrácených dokumentů (je k dispozici v odpovědi hledání) **ScoringProfile**: (řetězec) název používaného profilu vyhodnocování
 
 > [!NOTE]
-> Počet požadavků u dotazů generovaných uživatelem přidáním $count = true do vyhledávacího dotazu. Další informace najdete [tady](https://docs.microsoft.com/rest/api/searchservice/search-documents#request) .
+> Počet požadavků u dotazů generovaných uživatelem přidáním $count = true do vyhledávacího dotazu. Další informace najdete [tady](/rest/api/searchservice/search-documents#counttrue--false).
 >
 
 > [!NOTE]
@@ -179,9 +179,9 @@ Po instrumentaci aplikace a ověření, že je aplikace správně připojená k 
 
 3. Sestava se otevře v Power BI Desktop a zobrazí se výzva, abyste se připojili k Application Insights a zadali přihlašovací údaje. Informace o připojení najdete na stránce Azure Portal pro prostředek Application Insights. Pro přihlašovací údaje zadejte stejné uživatelské jméno a heslo, které používáte pro přihlášení k portálu.
 
-   ![Připojení k Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Připojte se k Application Insights")
+   ![Připojení k Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Připojení k Application Insights")
 
-4. Klikněte na **Načíst**.
+4. Klikněte na **načíst**.
 
 Sestava obsahuje grafy a tabulky, které vám pomůžou dělat podrobnější rozhodnutí o vylepšení výkonu a relevance hledání.
 

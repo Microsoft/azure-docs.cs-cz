@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 54e2516211495f7f044f716c518291ca8008f92d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 02ae140568150b0db8ebdea065ee683e4f4eec9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118923"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189005"
 ---
 # <a name="tutorial-create-a-tenant-model-preview"></a>Kurz: vytvoření modelu tenanta (Preview)
 
@@ -79,9 +79,9 @@ Až správce povolí model tenanta pro vaši organizaci, můžete vytvořit jazy
 
    > [!NOTE]
    > Zákazníci Office 365 Enterprise v Severní Amerika mají nárok na vytvoření modelu tenanta (anglicky). Pokud jste Customer Lockbox, klíč zákazníka nebo zákazníkem pro státní správu Office 365, tato funkce není k dispozici. Pokud chcete zjistit, jestli Customer Lockbox jste zákazníkem zákaznického zákazníka, přečtěte si téma:
-   > * [Customer Lockbox](https://docs.microsoft.com/office365/securitycompliance/controlling-your-data-using-customer-key#FastTrack)
-   > * [Klíč zákazníka](https://docs.microsoft.com/microsoft-365/compliance/customer-lockbox-requests)
-   > * [Vládní organizace pro Office 365](https://www.microsoft.com/microsoft-365/government)
+   > * [Customer Lockbox](/microsoft-365/compliance/customer-lockbox-requests)
+   > * [Klíč zákazníka](/microsoft-365/compliance/customer-key-overview)
+   > * [Vládní organizace pro Office 365](/microsoft-365/government)
 
 1. Zvolte **Přihlásit**.
 

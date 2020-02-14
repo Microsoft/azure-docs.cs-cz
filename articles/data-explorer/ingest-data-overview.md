@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 54401d4fd8a911fc9cf5bc67d4324e84005fa752
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 4846a19c403cce16bed704ed4e7c70499f3b5d13
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157240"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187981"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Ingestování dat v Azure Průzkumník dat
 
@@ -90,7 +90,7 @@ Kusto nabízí klientskou sadu SDK, která se dá použít k ingestování a dot
 
 | Metoda | Latence |
 | --- | --- |
-| **Ingestování vloženého textu** | Okamžitá |
+| **Ingestování vloženého textu** | Okamžité |
 | **Ingestování z dotazu** | Doba zpracování dotazu + |
 | **Ingestování z úložiště** | Doba stahování a doba zpracování |
 | **Přijímání zpráv do fronty** | Čas dávky a doba zpracování |
@@ -133,8 +133,8 @@ Pro všechny metody příjmu kromě ingestování z dotazu naformátujte data ta
 
 Mapování schématu pomáhá navazovat zdrojová datová pole na sloupce cílové tabulky.
 
-* [Mapování CSV](/azure/kusto/management/mappings?branch=master#csv-mapping) (volitelné) funguje se všemi ordinálními formáty. Dá se udělat pomocí parametru příkazu ingestovat nebo [předem vytvořit v tabulce](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) a odkazovat z parametru příkazu ingestování.
-* [Mapování JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (povinné) a [mapování Avro](/azure/kusto/management/mappings?branch=master#avro-mapping) (povinné) je možné provést pomocí parametru příkazového řádku ingestování. Lze je také [předem vytvořit v tabulce](/azure/kusto/management/tables#create-ingestion-mapping) a odkazovat z parametru příkazu ingest.
+* [Mapování CSV](/azure/kusto/management/mappings?branch=master#csv-mapping) (volitelné) funguje se všemi ordinálními formáty. Dá se udělat pomocí parametru příkazu ingestovat nebo [předem vytvořit v tabulce](/azure/kusto/management/create-ingestion-mapping-command) a odkazovat z parametru příkazu ingestování.
+* [Mapování JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (povinné) a [mapování Avro](/azure/kusto/management/mappings?branch=master#avro-mapping) (povinné) je možné provést pomocí parametru příkazového řádku ingestování. Lze je také [předem vytvořit v tabulce](/azure/kusto/management/create-ingestion-mapping-command) a odkazovat z parametru příkazu ingest.
 
 ## <a name="next-steps"></a>Další kroky
 

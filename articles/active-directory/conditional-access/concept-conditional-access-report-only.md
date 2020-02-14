@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4289f4870ca03657afabec07049b3333412f3899
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 75880f4c533a503852d62ff940e53d4bcc30d218
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180326"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186123"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Co je režim pouze pro sestavy podmíněného přístupu?
 
@@ -25,7 +25,8 @@ Podmíněný přístup se v mnoha případech používá pro naše zákazníky k
 Režim pouze pro sestavy je nový stav zásad podmíněného přístupu, který umožňuje správcům vyhodnotit dopad zásad podmíněného přístupu předtím, než je povolí ve svém prostředí.  S vydáním režimu pouze pro sestavy:
 
 - V režimu pouze pro sestavy lze povolit zásady podmíněného přístupu.
-- Během přihlašování jsou zásady v režimu pouze sestavy vyhodnocovány, ale nejsou vyhodnoceny. Výsledky jsou protokolovány na kartách **podmíněný přístup** a **pouze sestava (Preview)** v podrobnostech protokolu přihlášení.
+- Během přihlašování jsou zásady v režimu pouze sestavy vyhodnocovány, ale nejsou vyhodnoceny.
+- Výsledky jsou protokolovány na kartách **podmíněný přístup** a **pouze sestava (Preview)** v podrobnostech protokolu přihlášení.
 - Zákazníci s předplatným Azure Monitor můžou monitorovat dopad zásad podmíněného přístupu pomocí sešitu s přehledem podmíněného přístupu.
 
 > [!WARNING]

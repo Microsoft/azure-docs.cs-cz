@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: c0aa33cce8dc163722557b1ef868cf0de8bea8fe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928735"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187476"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Řešení potíží se spuštěním balíčku v prostředí SSIS Integration runtime
 
@@ -142,7 +142,7 @@ Ujistěte se, že je nainstalovaný a spuštěný místní prostředí Integrati
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Chybová zpráva: Chyba přípravného úkolu: ErrorCode: 2906, ErrorMessage: provedení balíčku se nezdařilo., výstup: {"OperationErrorMessages": "Chyba: požadovaný poskytovatel OLE DB... není zaregistrováno. Pokud není nainstalován ovladač 64, spusťte balíček v režimu 32... "
 
-Zajistěte, aby odpovídající zprostředkovatel používaný konektory OLE DB ve vašem balíčku byl správně nainstalovaný na počítači s integrací prostředí Integration runtime. Další podrobnosti najdete v části [Konfigurace prostředí IR pro místní hostování jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir) .
+Zajistěte, aby odpovídající zprostředkovatel používaný konektory OLE DB ve vašem balíčku byl správně nainstalovaný na počítači s integrací prostředí Integration runtime. Další podrobnosti najdete v části [Konfigurace prostředí IR pro místní hostování jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) .
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Chybová zpráva: Chyba pracovní úlohy: ErrorCode: 2906, ErrorMessage: provedení balíčku se nezdařilo., výstup: {"OperationErrorMessages": "Error: System. IO. FileLoadException: nelze načíst soubor nebo sestavení" Microsoft. WindowsAzure. Storage, verze =... ". Culture = neutrální, PublicKeyToken = 31bf3856ad364e35 ' nebo jedna z jeho závislostí. Nalezená definice manifestu sestavení neodpovídá odkazu na sestavení. ' ..."
 
@@ -157,7 +157,7 @@ Jednou z možných příčin je, že váš místní prostředí Integration runt
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Chybová zpráva: stav pracovní úlohy: nezdařilo se. Chyba přípravného úkolu: ErrorCode: 2906, ErrorMessage: spuštění balíčku se nezdařilo. výstup: {"OperationErrorMessages": "ukončovací kód prováděcího modulu SSIS:-1. \ n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration":..., "durationInQueue": {"integrationRuntimeQueue":...}} "
 
-Ujistěte se, C++ že je Visual runtime nainstalovaný v místním prostředí Integration runtime Machine. Další podrobnosti najdete v části [Konfigurace prostředí IR pro místní hostování jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-self-hosted-ir) .
+Ujistěte se, C++ že je Visual runtime nainstalovaný v místním prostředí Integration runtime Machine. Další podrobnosti najdete v části [Konfigurace prostředí IR pro místní hostování jako proxy pro Azure-SSIS IR v ADF](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) .
 
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>Neočekávaně se spouští více spuštění balíčku.
 

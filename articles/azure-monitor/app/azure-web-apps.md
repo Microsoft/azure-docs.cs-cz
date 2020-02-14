@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/11/2019
-ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3ca9cbf2e282e3f67af3c5da470a3d81e6055f98
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407237"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189585"
 ---
-# <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu služby Azure App Service
+# <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu Azure App Service
 
 Povolení monitorování webových aplikací založených na ASP.NET a ASP.NET Core běžících na [Azure App Services](https://docs.microsoft.com/azure/app-service/) je teď jednodušší než kdy dřív. Vzhledem k tomu, že jste předtím museli ručně nainstalovat rozšíření lokality, je ve výchozím nastavení do image služby App Service standardně integrováno nejnovější rozšíření nebo agent. Tento článek vás provede povolením Application Insights monitorování a poskytuje předběžné pokyny pro automatizaci procesu pro rozsáhlá nasazení.
 
@@ -116,7 +116,7 @@ Webové aplikace založené na Pythonu App Service v současné době nepodporuj
 
 Monitorování na straně klienta je výslovný souhlas pro ASP.NET. Postup při povolování monitorování na straně klienta:
 
-* Vyberte **nastavení** > ** **nastavení aplikace** **.
+* Vyberte **nastavení** > * * * * nastavení aplikace * * * *.
    * V části nastavení aplikace přidejte název a **hodnotu** **Nastavení nové aplikace** :
 
      Název: `APPINSIGHTS_JAVASCRIPT_ENABLED`
@@ -173,7 +173,7 @@ Aby bylo možné povolit shromažďování telemetrie s Application Insights, je
 |ApplicationInsightsAgent_EXTENSION_VERSION | Hlavní rozšíření, které řídí monitorování za běhu. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  Jenom ve výchozím režimu jsou k dispozici základní funkce, aby se zajistil optimální výkon. | `default` nebo `recommended`. |
 |InstrumentationEngine_EXTENSION_VERSION | Určuje, zda bude modul binárního zápisu `InstrumentationEngine` zapnutý. Toto nastavení má vliv na výkon a má vliv na čas spuštění a spuštění. | `~1` |
-|XDT_MicrosoftApplicationInsights_BaseExtensions | Ovládací prvky, pokud se v SQL & text tabulky Azure bude zachytávat spolu s voláními závislostí. Upozornění výkonu: Toto nastavení vyžaduje `InstrumentationEngine`. | `~1` |
+|XDT_MicrosoftApplicationInsights_BaseExtensions | Ovládací prvky, pokud se v SQL & text tabulky Azure bude zachytávat spolu s voláními závislostí. Upozornění na výkon: bude to mít vliv na počáteční čas spuštění aplikace. Toto nastavení vyžaduje `InstrumentationEngine`. | `~1` |
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>App Service nastavení aplikace s Azure Resource Manager
 
@@ -229,6 +229,10 @@ Níže je ukázka, kde nahraďte všechny instance `AppMonitoredSite` názvem va
                         {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
                             "value": "[reference('microsoft.insights/components/AppMonitoredSite', '2015-05-01').InstrumentationKey]"
+                        },
+                        {
+                            "name": "APPLICATIONINSIGHTS_CONNECTION_STRING",
+                            "value": "[reference('microsoft.insights/components/AppMonitoredSite', '2015-05-01').ConnectionString]"
                         },
                         {
                             "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
@@ -308,9 +312,6 @@ Níže je ukázka, kde nahraďte všechny instance `AppMonitoredSite` názvem va
 }
 ```
 
-> [!NOTE]
-> Šablona vygeneruje nastavení aplikace ve výchozím režimu. Tento režim je optimalizovaný pro výkon, ale můžete upravit šablonu, aby se aktivovaly libovolné funkce, které dáváte přednost.
-
 ### <a name="enabling-through-powershell"></a>Povolení přes PowerShell
 
 Aby bylo možné povolit monitorování aplikací prostřednictvím prostředí PowerShell, je nutné změnit pouze nastavení základní aplikace. Níže je ukázka, která umožňuje monitorování aplikací pro web s názvem "AppMonitoredSite" ve skupině prostředků "AppMonitoredRG" a konfiguruje data, která se mají odeslat do klíče instrumentace "012345678-abcd-ef01-2345-6789abcd".
@@ -320,8 +321,9 @@ Aby bylo možné povolit monitorování aplikací prostřednictvím prostředí 
 ```powershell
 $app = Get-AzWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
 $newAppSettings = @{} # case-insensitive hash map
-$app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} #preserve non Application Insights Application settings.
-$newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # enable the ApplicationInsightsAgent
+$app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} # preserve non Application Insights application settings.
+$newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # set the Application Insights instrumentation key
+$newAppSettings["APPLICATIONINSIGHTS_CONNECTION_STRING"] = "InstrumentationKey=012345678-abcd-ef01-2345-6789abcd"; # set the Application Insights connection string
 $newAppSettings["ApplicationInsightsAgent_EXTENSION_VERSION"] = "~2"; # enable the ApplicationInsightsAgent
 $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.ResourceGroup -Name $app.Name -ErrorAction Stop
 ```
@@ -370,7 +372,7 @@ Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorov�
         * Pokud není k dispozici podobná hodnota, znamená to, že aplikace momentálně není spuštěná nebo není podporovaná. Chcete-li zajistit, aby aplikace běžela, zkuste ručně navštívit koncové body adresy URL nebo aplikace, čímž umožníte zpřístupnění běhových informací.
 
     * Potvrďte, že `IKeyExists` `true`
-        * Pokud má hodnotu false, přidejte do nastavení aplikace APPINSIGHTS_INSTRUMENTATIONKEY s identifikátorem GUID ikey.
+        * Pokud je `false`, přidejte do nastavení aplikace `APPINSIGHTS_INSTRUMENTATIONKEY` a `APPLICATIONINSIGHTS_CONNECTION_STRING` s identifikátorem GUID ikey.
 
     * Potvrďte, že nejsou k dispozici žádné položky pro `AppAlreadyInstrumented`, `AppContainsDiagnosticSourceAssembly`a `AppContainsAspNetTelemetryCorrelationAssembly`.
         * Pokud existuje kterákoli z těchto položek, odeberte z aplikace následující balíčky: `Microsoft.ApplicationInsights`, `System.Diagnostics.DiagnosticSource`a `Microsoft.AspNet.TelemetryCorrelation`.

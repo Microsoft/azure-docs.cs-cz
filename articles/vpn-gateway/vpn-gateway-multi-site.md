@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: yushwang
-ms.openlocfilehash: 5bedf5bd6d061d74201dbac3f1f99ed0d4c381aa
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902440"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198087"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Přidání připojení typu Site-to-site k virtuální síti s existujícím připojením brány VPN (Classic)
 
@@ -55,10 +55,13 @@ Než začnete s konfigurací, ověřte, že máte následující:
 
 * Kompatibilní hardware sítě VPN pro každé místní umístění. Projděte si [informace o zařízeních VPN pro připojení Virtual Network](vpn-gateway-about-vpn-devices.md) , abyste ověřili, jestli zařízení, které chcete použít, je něco, co je známo kompatibilní.
 * Veřejná IP adresa IPv4, která je externě přístupná pro každé zařízení VPN. IP adresa nesmí být umístěná za překladem adres (NAT). Toto je požadavek.
-* Budete potřebovat nainstalovat nejnovější verzi rutin Azure PowerShellu. Nezapomeňte kromě verze Správce prostředků nainstalovat i verzi správy služeb (SM). Další informace najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview) .
 * Někdo, který je zdatní na konfiguraci hardwaru VPN. Budete muset mít silný přehled o tom, jak nakonfigurovat zařízení VPN, nebo pracovat s někým, kdo má.
 * Rozsahy IP adres, které chcete použít pro virtuální síť (Pokud jste ji ještě nevytvořili).
 * Rozsahy IP adres pro všechny místní síťové lokality, ke kterým se budete připojovat. Bude nutné zajistit, aby se rozsahy IP adres pro všechny místní síťové lokality, ke kterým se chcete připojit, překrývaly. V opačném případě bude portál nebo REST API odmítat nahranou konfiguraci.<br>Například pokud máte dvě místní síťové lokality, které obě obsahují rozsah IP adres 10.2.3.0/24 a máte balíček s cílovou adresou 10.2.3.3, Azure by neznal, na který web chcete balíček odeslat, protože rozsahy adres se překrývají. Aby nedocházelo k problémům s směrováním, Azure vám neumožní nahrát konfigurační soubor, který má překrývající se rozsahy.
+
+### <a name="working-with-azure-powershell"></a>Práce s využitím Azure Powershellu
+
+[!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="1-create-a-site-to-site-vpn"></a>1. vytvoření sítě VPN typu Site-to-site
 Pokud už máte síť VPN typu Site-to-site s bránou dynamického směrování, Skvělé! Můžete pokračovat a [Exportovat nastavení konfigurace virtuální sítě](#export). Pokud ne, udělejte toto:
@@ -72,6 +75,19 @@ Pokud už máte síť VPN typu Site-to-site s bránou dynamického směrování,
 2. Pomocí těchto pokynů nakonfigurujte bránu dynamického směrování: [nakonfigurujte VPN Gateway](vpn-gateway-configure-vpn-gateway-mp.md). Ujistěte se, že jste vybrali možnost **dynamické směrování** pro typ brány.
 
 ## <a name="export"></a>2. exportujte konfigurační soubor sítě.
+
+Otevřete konzolu PowerShellu se zvýšenými právy. Chcete-li přepnout na správu služeb, použijte tento příkaz:
+
+```powershell
+azure config mode asm
+```
+
+Připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
+
+```powershell
+Add-AzureAccount
+```
+
 Exportujte soubor konfigurace sítě Azure spuštěním následujícího příkazu. V případě potřeby můžete změnit umístění souboru, aby se v případě potřeby exportovali do jiného umístění.
 
 ```powershell
@@ -156,7 +172,7 @@ Importujte soubor konfigurace sítě. Při importu tohoto souboru se změnami bu
 ## <a name="6-download-keys"></a>6. stažení klíčů
 Až budou vaše nové tunely přidané, pomocí rutiny Get-AzureVNetGatewayKey v PowerShellu Získejte předsdílené klíče IPsec/IKE pro každé tunelové propojení.
 
-Příklad:
+Například:
 
 ```powershell
 Get-AzureVNetGatewayKey –VNetName "VNet1" –LocalNetworkSiteName "Site1"

@@ -13,12 +13,12 @@ ms.date: 10/10/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: d29168f154c80eb2c66d0316f773375325ded67f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062179"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190026"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Možné opravy pro chybovou zprávu "nemůžete se dostat sem"
 
@@ -29,7 +29,7 @@ Pokud se vám zobrazí zpráva, že se **tam nedaří získat** přístup k web�
 
 ![Chybová zpráva týkající se podpory prohlížeče](media/user-help-device-remediation/browser-version.png)
 
-Chcete-li tento problém vyřešit, je nutné nainstalovat a spustit podporovaný prohlížeč v závislosti na vašem operačním systému. Pokud používáte Windows 10, podporované prohlížeče zahrnují Microsoft Edge, Internet Explorer a Google Chrome. Pokud používáte jiný operační systém, můžete se podívat na úplný seznam [podporovaných prohlížečů](../conditional-access/technical-reference.md#supported-browsers).
+Chcete-li tento problém vyřešit, je nutné nainstalovat a spustit podporovaný prohlížeč v závislosti na vašem operačním systému. Pokud používáte Windows 10, podporované prohlížeče zahrnují Microsoft Edge, Internet Explorer a Google Chrome. Pokud používáte jiný operační systém, můžete se podívat na úplný seznam [podporovaných prohlížečů](../conditional-access/concept-conditional-access-conditions.md#supported-browsers).
 
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>Ujistěte se, že používáte podporovaný operační systém.
 Ujistěte se, že používáte podporovanou verzi operačního systému, včetně:

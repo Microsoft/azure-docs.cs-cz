@@ -5,30 +5,30 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: sample
-ms.date: 05/08/2018
+ms.date: 02/12/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794a13a3f863c732d4e7ed8cedcbd73f7cbc0d0b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cfa67f529408efcc2a703a4f80b15143c774f0b9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272112"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195789"
 ---
-# <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Portál se samoobslužnou registrací pro spolupráci B2B služby Azure AD
+# <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Samoobslužná registrace pro spolupráci služby Azure AD B2B
 
-Zákazníci mají spoustu možností, jak využít integrované funkce, ke kterým mají přístup prostřednictvím webu [Azure Portal](https://portal.azure.com) a [přístupového panelu aplikací](https://myapps.microsoft.com) pro koncové uživatele. Pracovní postup onboardingu můžete ale potřebovat přizpůsobit pro uživatele B2B, aby vyhovoval potřebám vaší organizace. Můžete to udělat pomocí [rozhraní API pro pozvánky](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation).
+Zákazníci mají spoustu možností, jak využít integrované funkce, ke kterým mají přístup prostřednictvím webu [Azure Portal](https://portal.azure.com) a [přístupového panelu aplikací](https://myapps.microsoft.com) pro koncové uživatele. Pracovní postup onboardingu můžete ale potřebovat přizpůsobit pro uživatele B2B, aby vyhovoval potřebám vaší organizace.
 
-Jako zvoucí organizace nemusíte vždy předem vědět, kdo jednotliví externí spolupracovníci, kteří potřebují přístup k vašim prostředkům, jsou. Potřebujete způsob, kterým se můžou uživatelé z partnerských společností zaregistrovat sami a získat sadu zásad, které jako zvoucí organizace řídíte. Tento scénář je možné provést prostřednictvím rozhraní API. [Na GitHubu existuje ukázkový projekt](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web), který přesně tohle dokáže.
+## <a name="azure-ad-entitlement-management-for-b2b-guest-user-sign-up"></a>Správa opravňujících k Azure AD pro registraci uživatele hosta B2B
 
-Tento projekt na GitHubu ukazuje, jak můžou organizace použít rozhraní API, aby poskytnuly důvěryhodným partnerům samoobslužné registrace založené na zásadách s pravidly, které budou určovat přístupné aplikace. Partnerští uživatelé můžou k prostředkům v případě potřeby přistupovat. Můžou to dělat bezpečně, aniž by je zvoucí organizace musela onboardovat ručně. Tento projekt můžete jednoduše nasadit do libovolného předplatného Azure.
+Jako pozvání k organizaci nesmíte znát čas, kdy jednotliví externí spolupracovníci potřebují mít přístup k vašim prostředkům. Potřebujete způsob, jak se uživatelům z partnerských společností zaregistrovat sami se zásadami, které ovládáte. Pokud chcete povolit uživatelům z jiných organizací, aby si vyžádali přístup, a po schválení se zřídí účty hostů a přiřadí se ke skupinám, aplikacím a webům SharePointu Online, můžete pomocí [správy nároků Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) nakonfigurovat zásady, které [spravují přístup pro externí uživatele](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users).
 
-## <a name="as-is-code"></a>Kód „tak, jak je“
+## <a name="azure-active-directory-b2b-invitation-api"></a>Rozhraní API pro pozvání Azure Active Directory B2B
 
-Tento kód je k dispozici jako ukázka použití rozhraní API pro pozvánky Azure Active Directory B2B. Váš tým vývojářů nebo partner by ho měl přizpůsobit a před nasazením do produkčního prostředí byste ho měli zkontrolovat.
+Organizace můžou používat [rozhraní API pro Microsoft Graph pro správce pozvání](https://docs.microsoft.com/graph/api/resources/invitation?view=graph-rest-1.0) k sestavování vlastního prostředí pro uživatele typu Host B2B. Pokud chcete nabízet samoobslužné registrace uživatelů pro službu B2B, doporučujeme použít [správu nároků Azure AD](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview). Pokud ale chcete vytvořit vlastní prostředí, můžete použít [rozhraní API pro vytvoření pozvánky](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-1.0&tabs=http) k automatickému odeslání přizpůsobeného e-mailu pozvánky přímo uživateli B2B, například. Nebo vaše aplikace může použít inviteRedeemUrl vrácenou v reakci na vytvoření k vytvoření vlastní pozvánky (prostřednictvím vašeho komunikačního mechanismu výběru) pozvánému uživateli.
 
 ## <a name="next-steps"></a>Další kroky
 

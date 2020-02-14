@@ -5,24 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad897ea73f32327b894558c5c04449c667663dad
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e81039328aa9382a19412c961e28bc3275c08ec8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379768"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194462"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s nastavením Enterprise State Roaming v Azure Active Directory
 
 Toto téma poskytuje informace o tom, jak řešit a diagnostikovat problémy s Enterprise State Roaming a poskytuje seznam známých problémů.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Tento článek se týká starší verze prohlížeče založeného na HTML v Microsoft Edge, který se spouští s Windows 10 v červenci 2015. Článek neplatí pro nový prohlížeč založený na Microsoft Edge chrom vydaný 15. ledna 2020. Další informace o chování synchronizace pro nové Microsoft Edge najdete v článku o [synchronizaci Microsoft Edge](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync).
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>Předběžné kroky pro řešení potíží 
 
@@ -31,7 +34,7 @@ Před zahájením odstraňování potíží ověřte, zda byl uživatel a zaří
 1. V zařízení je nainstalován systém Windows 10 s nejnovějšími aktualizacemi a minimální verzí 1511 (Build operačního systému 10586 nebo novější). 
 1. Zařízení je připojené k Azure AD nebo je připojené k hybridní službě Azure AD. Další informace najdete v tématu [Jak získat zařízení pod kontrolou služby Azure AD](overview.md).
 1. Zajistěte, aby byl pro tenanta ve službě Azure AD povolený **Enterprise State Roaming** , jak je popsáno v tématu [povolení Enterprise State Roaming](enterprise-state-roaming-enable.md). Můžete povolit roaming pro všechny uživatele nebo jenom pro vybranou skupinu uživatelů.
-1. Uživateli musí být již přiřazena licence Azure Active Directory Premium.  
+1. Uživateli je přiřazena licence Azure Active Directory Premium.  
 1. Zařízení se musí restartovat a uživatel se musí znovu přihlásit, aby mohl získat přístup k funkcím Enterprise State Roaming.
 
 ## <a name="information-to-include-when-you-need-help"></a>Informace, které se mají zahrnout, když potřebujete pomáhat
@@ -46,6 +49,7 @@ Pokud problém nemůžete vyřešit pomocí následujících pokynů, můžete s
 Včetně těchto informací nám pomáhá co nejrychleji vyřešit váš problém.
 
 ## <a name="troubleshooting-and-diagnosing-issues"></a>Řešení potíží a diagnostika problémů
+
 V této části jsou podrobnější informace o tom, jak řešit problémy související s Enterprise State Roaming a diagnostikovat problémy.
 
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>Ověřte synchronizaci a stránku nastavení synchronizovat nastavení. 
@@ -66,13 +70,13 @@ Enterprise State Roaming vyžaduje, aby zařízení bylo zaregistrované ve slu�
 1. Po otevření příkazového řádku zadejte "*dsregcmd. exe/status*".
 1. Pro očekávaný výstup by měla být hodnota pole **AzureAdJoined** "Yes", hodnota pole **WamDefaultSet** by měla být "Yes" a hodnota pole **WamDefaultGUID** by měla být identifikátorem GUID s "(AzureAd)" na konci.
 
-**Možný problém**: **WamDefaultSet** a **AzureAdJoined** mají v hodnotě pole hodnotu Ne, zařízení bylo připojeno k doméně a zaregistrováno ve službě Azure AD a zařízení se nesynchronizuje. Pokud se to zobrazuje, může být nutné, aby zařízení čekalo na použití zásad nebo selhalo ověřování pro zařízení při připojování ke službě Azure AD. Aby bylo možné použít zásady, může uživatel počkat několik hodin. Další kroky při řešení potíží můžou zahrnovat opakování automatické registrace odhlášením a vrácením se změnami nebo spuštěním úlohy v Plánovač úloh. V některých případech je možné s tímto problémem spustit příkaz "*dsregcmd. exe/Leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a pokus o registraci.
+**Možný problém**: **WamDefaultSet** a **AzureAdJoined** mají v hodnotě pole hodnotu Ne, zařízení bylo připojeno k doméně a zaregistrováno ve službě Azure AD a zařízení se nesynchronizuje. Pokud se to zobrazuje, může být nutné, aby zařízení čekalo na použití zásad nebo selhalo ověřování pro zařízení při připojování ke službě Azure AD. Aby bylo možné použít zásady, může uživatel počkat několik hodin. Další kroky při řešení potíží můžou zahrnovat opakování autoregistrace tím, že se odhlásí a znovu odhlásí nebo spustí úkol v Plánovač úloh. V některých případech je možné s tímto problémem spustit příkaz "*dsregcmd. exe/Leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a pokus o registraci.
 
-**Potenciální problém**: pole pro **SettingsUrl** je prázdné a zařízení se nesynchronizuje. Uživatel se možná naposledy přihlásil k zařízení před tím, než se Enterprise State Roaming povolil na portálu Azure Active Directory. Restartujte zařízení a přihlaste se uživateli. Volitelně můžete na portálu zkusit, aby správce IT přešel na **Azure Active Directory** > **zařízení** > **Enterprise State Roaming** zakázání a opětovné povolení **uživatelů může synchronizovat nastavení a data aplikací napříč zařízeními**. Po opětovném povolení restartujte zařízení a přihlaste se uživateli. Pokud se tím problém nevyřeší, může být v případě špatného certifikátu zařízení **SettingsUrl** prázdná. V takovém případě se při použití příkazu "*dsregcmd. exe/Leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a pokus o registraci může pomáhat s tímto problémem.
+**Potenciální problém**: pole pro **SettingsUrl** je prázdné a zařízení se nesynchronizuje. Uživatel se možná naposledy přihlásil k zařízení před tím, než se Enterprise State Roaming povolil na portálu Azure Active Directory. Restartujte zařízení a přihlaste se uživateli. Volitelně můžete na portálu zkusit, aby správce IT přešel na **Azure Active Directory** > **zařízení** > **Enterprise State Roaming** zakázání a opětovné povolení **uživatelů může synchronizovat nastavení a data aplikací napříč zařízeními**. Po opětovném povolení restartujte zařízení a přihlaste se uživateli. Pokud se tím problém nevyřeší, **SettingsUrl** může být prázdný, pokud je k dispozici špatný certifikát zařízení. V takovém případě se při použití příkazu "*dsregcmd. exe/Leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a pokus o registraci může pomáhat s tímto problémem.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming a Multi-Factor Authentication 
 
-Za určitých podmínek může Enterprise State Roaming selhat při synchronizaci dat, pokud je nakonfigurovaná Azure Multi-Factor Authentication. Další podrobnosti o těchto symptomech najdete v dokumentu podpory [KB3193683](https://support.microsoft.com/kb/3193683). 
+Za určitých podmínek může Enterprise State Roaming selhat při synchronizaci dat, pokud je nakonfigurovaná Azure Multi-Factor Authentication. Další informace o těchto symptomech najdete v dokumentu podpory [KB3193683](https://support.microsoft.com/kb/3193683). 
 
 **Potenciální problém**: Pokud je vaše zařízení nakonfigurované tak, aby vyžadovalo Multi-Factor Authentication na portále Azure Active Directory, nemůžete při přihlašování k zařízení s Windows 10 pomocí hesla nakonfigurovat jeho nastavení. Tento typ konfigurace Multi-Factor Authentication slouží k ochraně účtu správce Azure. Uživatelé s oprávněními správce můžou pořád synchronizovat přihlášením ke svým zařízením s Windows 10 a jejich Microsoft Passport for Work kódem PIN nebo doplněním Multi-Factor Authentication při přístupu k jiným službám Azure, jako je Office 365.
 
@@ -149,7 +153,7 @@ Připojte zařízení k podnikové síti, aby synchronizace mohla pokračovat.
 
 ### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>Zařízení připojené k Azure AD se nesynchronizuje a uživatel má smíšený hlavní název uživatele případu.
 
-Pokud má uživatel smíšený hlavní název uživatele (např. uživatelské jméno namísto uživatelského jména) a uživatel je na zařízení připojeném k Azure AD, které se upgraduje z Windows 10 build 10586 na 14393, zařízení uživatele se nemusí podařit synchronizovat. 
+Pokud má uživatel smíšený hlavní název uživatele (například uživatelské jméno namísto uživatelského jména) a uživatel se nachází na zařízení připojeném k Azure AD, které se upgraduje z Windows 10 build 10586 na 14393, může se stát, že se zařízení uživatele nepodaří synchronizovat. 
 
 **Doporučená akce**  
 Uživatel bude muset zařízení odpojovat a znovu připojit ke cloudu. Provedete to tak, že se přihlásíte jako uživatel místního správce a odpojíte zařízení **tak, že** na **nastavení** > **systém** > a vyberete spravovat nebo odpojit od práce nebo školy. Níže tyto soubory vyčistěte a pak Azure AD připojte zařízení znovu v **nastavení** > **systém** > **o** a vyberte připojit se k práci nebo škole. Pokračujte tím, že se připojíte k zařízení Azure Active Directory a dokončíte tok.

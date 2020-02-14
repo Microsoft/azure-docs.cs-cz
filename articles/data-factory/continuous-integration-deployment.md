@@ -10,13 +10,13 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: f1b15688004d23e8a568695b565b5b34d7b466d6
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.date: 02/12/2020
+ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110187"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77187811"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -139,6 +139,9 @@ Následuje návod pro nastavení verze Azure Pipelines, která automatizuje nasa
 
    ![Vyberte vytvořit vydání.](media/continuous-integration-deployment/continuous-integration-image10.png)
 
+> [!IMPORTANT]
+> Ve scénářích CI/CD musí být typ prostředí Integration runtime (IR) v různých prostředích stejný. Například pokud máte v prostředí pro vývoj v místním prostředí IR, stejný IR musí být také typu v místním prostředí v jiných prostředích, jako je například test a produkce. Podobně pokud sdílíte prostředí Integration runtime v několika fázích, je nutné nakonfigurovat prostředí Integration runtime jako propojená místně ve všech prostředích, jako je vývoj, testování a produkce.
+
 ### <a name="get-secrets-from-azure-key-vault"></a>Získání tajných kódů z Azure Key Vault
 
 Pokud máte tajné kódy, které byste měli předat do šablony Azure Resource Manager, doporučujeme používat Azure Key Vault s Azure Pipelinesou verzí.
@@ -184,11 +187,11 @@ Existují dva způsoby, jak pokládat s tajnými kódy:
 
 Pokud se pokusíte aktualizovat aktivní aktivační události, může nasazení selhat. Chcete-li aktualizovat aktivní aktivační události, je nutné je ručně zastavit a po nasazení je znovu spustit. Můžete to provést pomocí úlohy Azure PowerShell:
 
-1.  Na kartě **úlohy** ve vydané verzi přidejte úlohu **Azure PowerShell** .
+1.  Na kartě **úlohy** ve vydané verzi přidejte úlohu **Azure PowerShell** . Vyberte úlohu verze 4. *. 
 
-1.  Jako typ připojení vyberte **Azure Resource Manager** a pak vyberte své předplatné.
+1.  Vyberte předplatné, ve kterém je váš objekt pro vytváření.
 
-1.  Jako typ skriptu vyberte **vložený skript** a potom zadejte svůj kód. Následující kód zastaví triggery:
+1.  Jako typ skriptu vyberte **cestu k souboru skriptu** . To vyžaduje uložení skriptu PowerShellu do úložiště. K zastavení aktivačních událostí můžete použít následující skript prostředí PowerShell:
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -196,21 +199,28 @@ Pokud se pokusíte aktualizovat aktivní aktivační události, může nasazení
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-    ![Azure PowerShell úkol](media/continuous-integration-deployment/continuous-integration-image11.png)
-
 Můžete provést podobný postup (pomocí funkce `Start-AzDataFactoryV2Trigger`) a restartovat triggery po nasazení.
 
-> [!IMPORTANT]
-> Ve scénářích CI/CD musí být typ prostředí Integration runtime (IR) v různých prostředích stejný. Například pokud máte v prostředí pro vývoj v místním prostředí IR, stejný IR musí být také typu v místním prostředí v jiných prostředích, jako je například test a produkce. Podobně pokud sdílíte prostředí Integration runtime v několika fázích, je nutné nakonfigurovat prostředí Integration runtime jako propojená místně ve všech prostředích, jako je vývoj, testování a produkce.
+### <a name="sample-pre--and-post-deployment-script"></a>Ukázka skriptu předběžného a po nasazení
 
-#### <a name="sample-pre--and-post-deployment-script"></a>Ukázka skriptu předběžného a po nasazení
+Pomocí následujícího ukázkového skriptu můžete před nasazením zastavit triggery a potom je znovu restartovat. Skript také obsahuje kód pro odstranění odebraných prostředků. Uložte skript do úložiště Git Azure DevOps a prokažte ho pomocí úlohy Azure PowerShell s použitím verze 4. *.
 
-Následující vzorový skript ukazuje, jak zastavit triggery před nasazením a následně je restartovat. Skript také obsahuje kód pro odstranění odebraných prostředků. Pokud chcete nainstalovat nejnovější verzi Azure PowerShell, přečtěte si téma [instalace Azure PowerShell ve Windows pomocí PowerShellGet](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Při spuštění skriptu předběžného nasazení bude nutné zadat variaci následujících parametrů v poli **argumenty skriptu** .
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
+
+
+Při spuštění skriptu po nasazení bude nutné zadat variaci následujících parametrů v poli **argumenty skriptu** .
+
+`-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
+
+    ![Azure PowerShell task](media/continuous-integration-deployment/continuous-integration-image11.png)
+
+Tady je skript, který se dá použít k předběžnému a následnému nasazení. Účty IT pro odstraněné prostředky a odkazy na prostředky.
 
 ```powershell
 param
 (
-    [parameter(Mandatory = $false)] [String] $rootFolder,
     [parameter(Mandatory = $false)] [String] $armTemplate,
     [parameter(Mandatory = $false)] [String] $ResourceGroupName,
     [parameter(Mandatory = $false)] [String] $DataFactoryName,

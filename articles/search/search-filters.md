@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f4ce3cd0db20f76aa6169f15254cf36ee64151a5
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406750"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191020"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filtry v Azure Kognitivní hledání 
 
@@ -51,7 +51,7 @@ Pokud chcete ve výsledcích hledání zúžit efekt, filtry nejsou vaší volbo
 
 + `$select` parametr se používá k určení, která pole se mají zahrnout do sady výsledků, před odesláním do volající aplikace efektivně vystřihí odpověď. Tento parametr neupřesňuje dotaz ani neomezuje kolekci dokumentů, ale pokud je menší odezva na váš cíl, je tento parametr možnost zvážit. 
 
-Další informace o obou parametrech naleznete v tématu [Search documents > Request > dotazu Parameters](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
+Další informace o obou parametrech naleznete v tématu [Search documents > Request > dotazu Parameters](/rest/api/searchservice/search-documents#query-parameters).
 
 
 ## <a name="how-filters-are-executed"></a>Jak se spouštějí filtry
@@ -197,8 +197,8 @@ Chcete-li pracovat s dalšími příklady, viz [Příklady syntaxe výrazů filt
 
 ## <a name="see-also"></a>Viz také
 
-+ [Jak funguje úplné hledání textu v Azure Kognitivní hledání](search-lucene-query-architecture.md)
-+ [Hledat dokumenty REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [Jak funguje fulltextové vyhledávání ve službě Azure Cognitive Search](search-lucene-query-architecture.md)
++ [Rozhraní API pro vyhledávání v dokumentech](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [Jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Syntaxe dotazů Lucene](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 + [Podporované datové typy](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)

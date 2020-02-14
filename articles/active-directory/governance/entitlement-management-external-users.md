@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: bf7e4837aaf65b0df28ea4a07fb485948309bc7c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608716"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185579"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Řízení přístupu pro externí uživatele ve správě nároků Azure AD
 
@@ -91,7 +91,7 @@ Aby uživatelé mimo vaši organizaci mohli žádat o přístup k balíčkům a 
 
 ### <a name="review-your-conditional-access-policies"></a>Kontrola zásad podmíněného přístupu
 
-- Nezapomeňte vyloučit hosty ze všech zásad podmíněného přístupu, které noví uživatelé typu Host nebudou moci naplnit, protože se jim budou moci přihlásit k adresáři. Například hosté, které pravděpodobně nemají registrované zařízení, nejsou ve známém umístění a nechcete znovu registrovat službu Multi-Factor Authentication (MFA), takže přidání těchto požadavků do zásad podmíněného přístupu zablokuje hostům v používání oprávnění. správu. Další informace najdete v tématu [co jsou podmínky v Azure Active Directory podmíněný přístup?](../conditional-access/conditions.md).
+- Nezapomeňte vyloučit hosty ze všech zásad podmíněného přístupu, které noví uživatelé typu Host nebudou moci naplnit, protože se jim budou moci přihlásit k adresáři. Například hosté, které pravděpodobně nemají registrované zařízení, nejsou ve známém umístění a nechcete znovu registrovat službu Multi-Factor Authentication (MFA), takže přidání těchto požadavků do zásad podmíněného přístupu zablokuje hostům v používání oprávnění. správu. Další informace najdete v tématu [co jsou podmínky v Azure Active Directory podmíněný přístup?](../conditional-access/concept-conditional-access-conditions.md).
 
     ![Vyloučení nastavení zásad podmíněného přístupu Azure AD](./media/entitlement-management-external-users/conditional-access-exclude.png)
 

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 93c0b3e27156655acee24d424cd890b48bb8e4e7
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 78455c90bab694b77a5e4a56d0b40518867d8d8c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064984"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188369"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer"></a>Ingestování dat z IoT Hub do Azure Průzkumník dat 
 
@@ -24,7 +24,7 @@ ms.locfileid: "77064984"
 
 Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování (načítání dat) od IoT Hub, platformy pro streamování velkých objemů dat a služby ingestování IoT.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * Vytvořte [testovací cluster a databázi](create-cluster-database-portal.md) s názvem databáze *TestDB*.
@@ -83,7 +83,7 @@ Nyní se připojíte k IoT Hub z Azure Průzkumník dat. Po dokončení tohoto p
     | IoT Hub | Název IoT Hub |
     | Zásady sdíleného přístupu | Název zásad sdíleného přístupu. Musí mít oprávnění ke čtení. |
     | Skupina uživatelů |  Skupina uživatelů definovaná v předdefinovaném koncovém bodu IoT Hub |
-    | Vlastnosti systému událostí | [Vlastnosti systému událostí IoT Hub](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Při přidávání vlastností systému, [Vytvoření](/azure/kusto/management/tables#create-table) nebo [aktualizace](/azure/kusto/management/tables#alter-table-and-alter-merge-table) schématu tabulky a [mapování](/azure/kusto/management/mappings) tak, aby zahrnovaly vybrané vlastnosti. | | | 
+    | Vlastnosti systému událostí | [Vlastnosti systému událostí IoT Hub](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages). Při přidávání vlastností systému, [Vytvoření](/azure/kusto/management/create-table-command) nebo [aktualizace](/azure/kusto/management/alter-table-command) schématu tabulky a [mapování](/azure/kusto/management/mappings) tak, aby zahrnovaly vybrané vlastnosti. | | | 
 
     > [!NOTE]
     > V případě [ručního převzetí služeb při selhání](/azure/iot-hub/iot-hub-ha-dr#manual-failover)je nutné datové připojení znovu vytvořit.
@@ -95,7 +95,7 @@ Nyní se připojíte k IoT Hub z Azure Průzkumník dat. Po dokončení tohoto p
 
      **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Table | *TestTable* | Tabulka, kterou jste vytvořili v **TestDB**. |
+    | Tabulka | *TestTable* | Tabulka, kterou jste vytvořili v **TestDB**. |
     | Formát dat | *JSON* | Podporované formáty jsou Avro, CSV, JSON, VÍCEŘÁDKOVé JSON, PSV, SOHSV, SCSV, TSV, TSVE a TXT. |
     | Mapování sloupců | *TestMapping* | [Mapování](/azure/kusto/management/mappings) , které jste vytvořili v **TestDB**, které mapuje příchozí data JSON na názvy sloupců a datové typy **TestDB**. Vyžaduje se pro JSON, VÍCEŘÁDKOVé JSON a AVRO a volitelné pro jiné formáty.|
     | | |

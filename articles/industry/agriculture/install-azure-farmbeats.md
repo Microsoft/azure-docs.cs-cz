@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: b7d99c3bf61de17f9cebba834234cc8ea52f30d6
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 701e42caba5325df34bdbb2381389708b9b5a03f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131886"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198850"
 ---
 # <a name="install-azure-farmbeats"></a>Instalace služby Azure FarmBeats
 
@@ -57,11 +57,11 @@ Náklady na Azure FarmBeats jsou agregované z nákladů na základní služby A
 V současné době se Azure FarmBeats podporuje ve veřejných cloudových prostředích v následujících oblastech:
 
 - Austrálie – východ
-- USA – střed
+- Střední USA
 - USA – východ
-- USA – východ 2
-- USA – západ
-- USA – západ 2
+- Východní USA 2
+- Západní USA
+- Západní USA 2
 - Severní Evropa
 - Západní Evropa
 - Východní Asie
@@ -83,7 +83,9 @@ V tenantovi Azure budete potřebovat následující oprávnění pro instalaci A
 - Předplatné – vlastník
 - Skupina prostředků, ve které se FarmBeats instaluje – vlastník
 
-První dvě oprávnění jsou potřebná k [Vytvoření kroku aplikace AAD](#create-an-aad-application) . V případě potřeby můžete získat někoho s příslušnými oprávněními k vytvoření aplikace AAD. Osoba, která instaluje FarmBeats, musí být vlastníkem skupiny prostředků, ve které se instaluje FarmBeats.
+První dvě oprávnění jsou potřebná k [Vytvoření kroku aplikace AAD](#create-an-aad-application) . V případě potřeby můžete získat někoho s příslušnými oprávněními k vytvoření aplikace AAD.
+
+Osoba, která spouští FarmBeats Install z Marketplace, musí být vlastníkem skupiny prostředků, ve které se instaluje FarmBeats. Pro vlastníky předplatného se k tomu automaticky dojde při vytvoření skupiny prostředků. Pro jiné nastavte skupinu prostředků předem a požádejte vlastníka předplatného, aby vás vytvořil jako vlastník skupiny prostředků.
 
 Oprávnění k přístupu můžete v Azure Portal ověřit podle pokynů v tématu [řízení přístupu na základě rolí](https://docs.microsoft.com/azure/role-based-access-control/check-access).
 
@@ -120,7 +122,15 @@ Spusťte následující postup v instanci Cloud Shell pomocí prostředí PowerS
         ./create_aad_script.ps1
     ```
 
-4. Spuštění skriptu AAD trvá přibližně 2 minuty a na obrazovce se vytvoří výstup hodnot na obrazovce a také soubor JSON ve stejném adresáři. Pokud jste museli skript spustit někomu jinému, požádejte ho, aby s vámi nasdílel tento výstup.
+4. Skript si vyžádá následující tři vstupy:
+
+    - FarmBeats název webu: Jedná se o jedinečnou předponu adresy URL vaší webové aplikace FarmBeats. V případě, že předpona už je obsazená, skript se zobrazí jako chyba. Po instalaci bude vaše nasazení FarmBeats dostupné z https://\<FarmBeats-web-Name >. azurewebsites. NET a rozhraní API Swagger budou na https://\<FarmBeats – název webu >-api.azurewebsites.net
+
+    - Přihlašovací ID Azure: zadejte přihlašovací ID Azure pro uživatele, kterého chcete přidat jako správce FarmBeats. Tento uživatel pak může udělit přístup pro přístup k webové aplikaci FarmBeats jiným uživatelům. ID přihlášení je obecně ve formě john.doe@domain.com. Podporuje se i hlavní název uživatele (UPN) Azure.
+
+    - ID předplatného: Toto je ID předplatného, ve kterém chcete nainstalovat službu Azure FarmBeats.
+
+5. Spuštění skriptu AAD trvá přibližně 2 minuty a na obrazovce se vytvoří výstup hodnot na obrazovce a také soubor JSON ve stejném adresáři. Pokud jste museli skript spustit někomu jinému, požádejte ho, aby s vámi nasdílel tento výstup.
 
 ### <a name="create-sentinel-account"></a>Vytvořit účet Sentinel
 

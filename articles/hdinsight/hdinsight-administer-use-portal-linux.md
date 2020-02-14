@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: 4cf979c99c596abff075eb38f3358c6389a6b07e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.custom: hdinsightactive
+ms.date: 02/12/2020
+ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264283"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186842"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
 
@@ -21,13 +21,13 @@ ms.locfileid: "72264283"
 
 Pomocí [Azure Portal](https://portal.azure.com)můžete spravovat clustery [Apache Hadoop](https://hadoop.apache.org/) ve službě Azure HDInsight. Pro informace o správě clusterů Hadoop ve službě HDInsight pomocí jiných nástrojů použijte selektor karet výše.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Existující cluster Apache Hadoop v HDInsight.  Další informace najdete v tématu [Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
 ## <a name="getting-started"></a>Začínáme
 
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com).
+Přihlaste se k webu [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="showClusters"></a>Výpis a zobrazení clusterů
 
@@ -35,7 +35,7 @@ Na stránce **clustery HDInsight** se zobrazí seznam stávajících clusterů. 
 1. V nabídce vlevo vyberte **všechny služby** .
 2. V části **Analýza**vyberte **clustery HDInsight** .
 
-## <a name="homePage"></a>Domovská stránka clusteru 
+## <a name="homePage"></a>Domovská stránka clusteru
 
 Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showClusters) .  Tím otevřete zobrazení **přehledu** , které bude vypadat podobně jako na následujícím obrázku:
 
@@ -43,76 +43,77 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
 
 **Horní nabídka:**  
 
-| Položkami| Popis |
+| Položka| Popis |
 |---|---|
-|Pøesunout|Přesune cluster do jiné skupiny prostředků nebo do jiného předplatného.|
-|Odstranit|Odstraní cluster. |
-|Téhle|Aktualizuje zobrazení.|
+|Přesunout|Přesune cluster do jiné skupiny prostředků nebo do jiného předplatného.|
+|Odstranění|Odstraní cluster. |
+|Obnovení|Aktualizuje zobrazení.|
 
 **Levá nabídka:**  
 
   - **Levá horní nabídka**
 
-    | Položkami| Popis |
+    | Položka| Popis |
     |---|---|
     |Přehled|Poskytuje obecné informace o clusteru.|
     |Protokol aktivit|Zobrazení a dotazování protokolů aktivit.|
     |Řízení přístupu (IAM)|Použijte přiřazení rolí.  Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).|
     |Značky|Umožňuje nastavit páry klíč/hodnota pro definování vlastní taxonomie vašich cloudových služeb. Můžete například vytvořit klíč s názvem **Project**a potom použít společnou hodnotu pro všechny služby přidružené ke konkrétnímu projektu.|
-    |Diagnostika a řešení problémů|Zobrazit informace o řešení potíží.|
+    |Diagnostikovat a řešit problémy|Zobrazit informace o řešení potíží.|
     |Rychlý start|Zobrazuje informace, které vám pomůžou začít používat HDInsight.|
     |Nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
 
   - **Nabídka nastavení**  
 
-    | Položkami| Popis |
+    | Položka| Popis |
     |---|---|
     |Velikost clusteru|Kontrolovat, zvyšovat a snižovat počet pracovních uzlů clusteru. Viz [škálování clusterů](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Omezení kvót|Zobrazí použitá a dostupná jádra pro vaše předplatné.|
-    |SSH + přihlášení k clusteru|Zobrazuje pokyny pro připojení ke clusteru pomocí připojení Secure Shell (SSH). Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
+    |SSH + přihlašovací údaje clusteru|Zobrazuje pokyny pro připojení ke clusteru pomocí připojení Secure Shell (SSH). Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).|
     |Data Lake Storage Gen1|Nakonfigurujte přístup Data Lake Storage Gen1.  Viz [rychlý Start: nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
     |Účty úložiště|Zobrazení účtů úložiště a klíčů. Účty úložiště se konfigurují během procesu vytváření clusteru.|
-    |vyrovnání|Přidat nebo odebrat aplikace HDInsight.  Viz [instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).|
+    |Aplikace|Přidat nebo odebrat aplikace HDInsight.  Viz [instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md).|
     |Akce skriptů|Spusťte skripty bash v clusteru. Viz [Přizpůsobení clusterů HDInsight se systémem Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).|
-    |Externí metaúložiště|Zobrazte [Apache Hive](https://hive.apache.org/) a [Apache Oozie](https://oozie.apache.org/) metaúložiště. Metaúložiště se dá nakonfigurovat jenom během procesu vytváření clusteru.|
+    |Externí metastory|Zobrazte [Apache Hive](https://hive.apache.org/) a [Apache Oozie](https://oozie.apache.org/) metaúložiště. Metaúložiště se dá nakonfigurovat jenom během procesu vytváření clusteru.|
     |Partner HDInsight|Přidat nebo odebrat aktuálního partnera HDInsight.|
     |Vlastnosti|Zobrazení [vlastností clusteru](#properties).|
-    |Počtu|Přidejte zámek, abyste zabránili úpravám nebo odstranění clusteru.|
-    |Exportovat šablonu|Zobrazte a exportujte šablonu Azure Resource Manager pro cluster. V současné době můžete exportovat jenom závislý účet úložiště Azure. Další informace najdete [v tématu Vytvoření clusterů Apache Hadoop se systémem Linux v HDInsight pomocí šablon Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).|
+    |Zámky|Přidejte zámek, abyste zabránili úpravám nebo odstranění clusteru.|
+    |Export šablony|Zobrazte a exportujte šablonu Azure Resource Manager pro cluster. V současné době můžete exportovat jenom závislý účet úložiště Azure. Další informace najdete [v tématu Vytvoření clusterů Apache Hadoop se systémem Linux v HDInsight pomocí šablon Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md).|
 
   - **Nabídka monitorování**
 
-    | Položkami| Popis |
+    | Položka| Popis |
     |---|---|
-    |Upozornění|Spravujte výstrahy a akce.|
+    |Výstrahy|Spravujte výstrahy a akce.|
     |Metriky|Monitorujte metriky clusteru v protokolech Azure Monitor.|
     |Nastavení diagnostiky|Nastavení, kde se mají ukládat metriky diagnostiky.|
     |Azure Monitor|Monitorujte svůj cluster v Azure Monitor.|
 
   - **Nabídka podpora a řešení potíží**
 
-    | Položkami| Popis |
+    | Položka| Popis |
     |---|---|
-    |Stav prostředku|Podívejte se na téma [Přehled Azure Resource Health](../service-health/resource-health-overview.md).|
+    |Stav prostředků|Podívejte se na téma [Přehled Azure Resource Health](../service-health/resource-health-overview.md).|
     |Nová žádost o podporu|Umožňuje vytvořit lístek podpory s podporou Microsoftu.|
 
 ## <a name="properties"></a>Vlastnosti clusteru
 
 Na [domovské stránce clusteru](#homePage)v části **Nastavení** vyberte **vlastnosti**.
 
-|Položkami | Popis |
+|Položka | Popis |
 |---|---|
-|NÁZEV hostitele|Název clusteru|
+|NÁZEV HOSTITELE|Název clusteru|
 |ADRESA URL CLUSTERU|Adresa URL webového rozhraní Ambari|
-|Soukromý koncový bod|Privátní koncový bod pro cluster.|
+|Privátní koncový bod|Privátní koncový bod pro cluster.|
 |Secure Shell (SSH)|Uživatelské jméno a název hostitele, který se má použít při přístupu ke clusteru přes SSH.|
 |STAV|Jedna z těchto: přerušeno, přijato, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, provozní, běžící, chyba, odstranění, odstranění, vypršení časového limitu, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, ResizeQueued nebo ClusterCustomization.|
-|VĚŘITEL|Umístění Azure. Seznam podporovaných umístění Azure najdete v rozevíracím seznamu **oblast** na stránce [ceny služby HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).|
+|OBLAST|Umístění Azure. Seznam podporovaných umístění Azure najdete v rozevíracím seznamu **oblast** na stránce [ceny služby HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).|
 |DATUM VYTVOŘENÍ|Datum, kdy byl cluster nasazen.|
 |OPERAČNÍ SYSTÉM|Buď **Windows** , nebo **Linux**.|
-|TEXTOVÝ|Hadoop, HBA, vyplavení, Spark.|
-|Version|Viz [verze HDInsight](hdinsight-component-versioning.md).|
-|FORMĚ|Název předplatného|
+|TYP|Hadoop, HBA, vyplavení, Spark.|
+|Verze|Viz [verze HDInsight](hdinsight-component-versioning.md).|
+|Minimální verze protokolu TLS|Verze TLS.|
+|PŘEDPLATNÉ|Název předplatného|
 |VÝCHOZÍ ZDROJ DAT|Výchozí systém souborů clusteru.|
 |Velikosti uzlů pracovních procesů|Vybraná velikost virtuálního počítače pracovních uzlů.|
 |Velikost hlavního uzlu|Vybraná velikost virtuálního počítače pro hlavní uzly.|
@@ -139,7 +140,7 @@ Z [domovské stránky clusteru](#homePage):
 
 Viz také [pozastavit/vypnout clustery](#pauseshut-down-clusters).
 
-## <a name="add-additional-storage-accounts"></a>Přidat další účty úložiště
+## <a name="add-additional-storage-accounts"></a>Přidání dalších účtů úložiště
 
 Po vytvoření clusteru můžete přidat další účty Azure Storage a účty Azure Data Lake Storage. Další informace najdete v tématu [Přidání dalších účtů úložiště do služby HDInsight](./hdinsight-hadoop-add-storage.md).
 
@@ -221,9 +222,9 @@ Heslo se změní na všech uzlech v clusteru.
    | Pole | Hodnota |
    | --- | --- |
    | Typ skriptu | Z rozevíracího seznamu vyberte **-vlastní** .|
-   | Name |Změna hesla SSH |
+   | Název |Změna hesla SSH |
    | Identifikátor URI skriptu bash |Identifikátor URI souboru changepassword.sh |
-   | Typ (typy) uzlů: (Head, work, Nimbus, nadřízený, Zookeeper atd.) |✓ pro všechny typy uzlů v seznamu |
+   | Typ (typy) uzlů: (Head, work, Nimbus, nadřízený nebo Zookeeper.) |✓ pro všechny typy uzlů v seznamu |
    | Parametry |Zadejte uživatelské jméno SSH a pak nové heslo. Mezi uživatelským jménem a heslem by měla být jedna mezera. |
    | Zachovat tuto akci se skripty... |Nechte toto pole nezaškrtnuté. |
 
@@ -264,10 +265,10 @@ Dlaždice **Velikost clusteru** z [domovské stránky clusteru](#homePage) zobra
 > [!IMPORTANT]  
 > Pokud chcete monitorovat služby poskytované clusterem HDInsight, musíte použít web Ambari nebo Ambari REST API. Další informace o použití Ambari najdete v tématu [Správa clusterů HDInsight pomocí Apache Ambari](hdinsight-hadoop-manage-ambari.md) .
 
-## <a name="connect-to-a-cluster"></a>Připojit ke clusteru
+## <a name="connect-to-a-cluster"></a>Připojení ke clusteru
 
 - [Použití Apache Hive se službou HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
-- [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [Použití SSH s HDInsightem](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>Další kroky
 

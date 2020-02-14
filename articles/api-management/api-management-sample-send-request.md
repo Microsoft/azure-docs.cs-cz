@@ -1,6 +1,6 @@
 ---
-title: Použití služby API Management k vygenerování žádosti protokolu HTTP
-description: Naučte se používat zásady požadavků a odpovědí pro volání externích služeb z vašeho rozhraní API ve službě API Management
+title: Generování požadavků HTTP pomocí služby API Management
+description: Naučte se používat zásady požadavků a odpovědí v API Management k volání externích služeb z rozhraní API.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 2c4e5d0117f046343b140ef2b2c46c074c835075
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1c86570850894a47f57a2d3587811411cc9a76eb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557910"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190013"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Použití externích služeb ze služby Azure API Management
-Zásady, které jsou k dispozici ve službě Azure API Management můžete provádět řadu užitečnou práci čistě na základě příchozího požadavku, odchozí odpovědi a informace o základní konfiguraci. Ale nebudou moct komunikovat s externími službami ze služby API Management otevře zásad a mnoho více příležitostí.
+Zásady, které jsou dostupné ve službě Azure API Management, můžou provádět nejrůznější práci založenou čistě na příchozím požadavku, odchozí odpovědi a základní informace o konfiguraci. Je ale možné pracovat s externími službami ze zásad API Management otevírá mnoho dalších příležitostí.
 
-Jste předtím viděli, jak pracovat [služby Azure Event Hubs pro protokolování, monitorování a analýze](api-management-log-to-eventhub-sample.md). Tento článek popisuje zásady, které umožňují pracovat s libovolnou externí službu založenou na protokolu HTTP. Tyto zásady je možné spustit vzdálené události nebo pro načtení informací, který se používá k manipulaci s původní žádost a odpověď nějakým způsobem.
+Dříve jste viděli, jak komunikovat se [službou centra událostí Azure za účelem protokolování, monitorování a analýzy](api-management-log-to-eventhub-sample.md). Tento článek popisuje zásady, které umožňují interakci s libovolnou externí službou založenou na protokolu HTTP. Tyto zásady se dají použít k aktivaci vzdálených událostí nebo k získání informací, které se používají k manipulaci s původním požadavkem a odpovědí v nějakým způsobem.
 
 ## <a name="send-one-way-request"></a>Send-One-Way-Request
-Případně je nejjednodušší externí interakce stylu ohně a zapomenout požadavku, který umožňuje externí služby upozornit nějaký druh důležité události. Zásada řízení toku `choose` lze použít k detekci jakýkoli druh podmínku, která vás zajímají.  Pokud je podmínka splněna, můžete vytvořit externí pomocí požadavku HTTP [odeslat jeden způsob, jak žádosti](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) zásad. Může to být požadavek na systému zasílání zpráv, jako je Hipchat nebo Slack nebo e-mailu rozhraní API SendGrid nebo MailChimp, nebo pro incidenty podpory se zásadním něco jako PagerDuty. Všechny tyto systémy zasílání zpráv mají jednoduchá rozhraní API HTTP, který lze vyvolat.
+Nejjednodušší vnější interakce je stylem požáru a zapomenutí požadavku, který umožňuje externí službě upozorňovat na určitý druh důležité události. `choose` zásad toku řízení lze použít k detekci libovolného druhu stavu, který vás zajímá.  Pokud je podmínka splněná, můžete vytvořit externí požadavek HTTP pomocí zásady [Odeslat a jednosměrné žádosti](/azure/api-management/api-management-advanced-policies#SendOneWayRequest) . Může se jednat o požadavek na systém zasílání zpráv, jako je HipChat nebo časová rezerva nebo poštovní rozhraní API, jako je SendGrid nebo MailChimp, nebo pro kritické incidenty podpory, jako je PagerDuty. Všechny tyto systémy zasílání zpráv mají jednoduchá rozhraní API HTTP, která lze vyvolat.
 
-### <a name="alerting-with-slack"></a>Upozorňování s využitím Slack
-Následující příklad ukazuje, jak odeslat zprávu na Slack chatovací místnosti, pokud stavového kódu odpovědi HTTP je větší než nebo rovna hodnotě 500. Chyba 500 rozsah indikuje problém s back-endové rozhraní API, která klientské rozhraní API nelze vyřešit samy. Obvykle vyžaduje určitý druh zásah v části správy rozhraní API.  
+### <a name="alerting-with-slack"></a>Upozorňování s časovou rezervou
+Následující příklad ukazuje, jak odeslat zprávu do chatovací místnosti s časovou rezervou, pokud je stavový kód odpovědi HTTP větší nebo roven 500. Chyba rozsahu 500 indikuje problém s rozhraním API back-end, které klient rozhraní API nemůže vyřešit sami. Obvykle vyžaduje určitý druh zásahu v API Management část.  
 
 ```xml
 <choose>
@@ -57,31 +57,31 @@ Následující příklad ukazuje, jak odeslat zprávu na Slack chatovací místn
 </choose>
 ```
 
-Slack je pojem příchozí webhooků. Při konfiguraci příchozí volané webhookem Slack generuje speciální adresu URL, která vám umožní provést jednoduchý požadavek POST a předejte zprávu do kanálu Slack. Text JSON, který vytvoříte, je založen na formátu definovaném Slack.
+Časová rezerva má fiktivní vstupní Webhooky. Při konfiguraci příchozího webového zavěšení vygeneruje časová rezerva speciální adresu URL, která umožňuje provést jednoduchou žádost POST a předat zprávu do kanálu časové rezervy. Text JSON, který vytvoříte, je založen na formátu definovaném časovou rezervou.
 
-![Slack Webhook](./media/api-management-sample-send-request/api-management-slack-webhook.png)
+![Webový zavěšení časové rezervy](./media/api-management-sample-send-request/api-management-slack-webhook.png)
 
-### <a name="is-fire-and-forget-good-enough"></a>Je fire spustit a zapomenout dostatečně kvalitní?
-Při použití stylu ohně a zapomenout požadavku se určitých kompromisů. Pokud pro z nějakého důvodu žádost selže, pak není hlášené chyby. V této konkrétní situaci není oprávněné složitost s selhání sekundárního objektu systému a další náklady na čekání na odezvu sestavy. Pro scénáře, kdy je velmi důležité zkontrolovat odpověď, a pak bude [požadavků na odeslání](/azure/api-management/api-management-advanced-policies#SendRequest) zásad je lepší volbou.
+### <a name="is-fire-and-forget-good-enough"></a>Je požár a zapomenout dostatečně dobrý?
+Při použití stylu požáru a zapomenutí žádosti se používají určité kompromisy. Pokud z nějakého důvodu požadavek selže, nebude chyba hlášena. V této konkrétní situaci není zaručena složitá náročnost systému generování sestav sekundárního selhání a dodatečné náklady na výkon při čekání na odpověď. V případě scénářů, kde je důležité pro kontrolu odpovědi, je lepší volbou zásada [Odeslat požadavek](/azure/api-management/api-management-advanced-policies#SendRequest) .
 
-## <a name="send-request"></a>Požadavek na odeslání
-`send-request` Zásada umožňuje pomocí externí služby a provádět komplexní zpracování funkce vrátí data do API managementu služby, který lze použít pro další zpracování zásad.
+## <a name="send-request"></a>Odeslat požadavek
+Zásada `send-request` umožňuje použití externí služby k provádění složitých funkcí zpracování a vrácení dat do služby API Management, která se dá použít k dalšímu zpracování zásad.
 
-### <a name="authorizing-reference-tokens"></a>Autorizace tokeny odkazů
-Hlavní funkce služby API Management chrání back-endovým prostředkům. Pokud vytvoří autorizační server používá vaše rozhraní API [tokeny JWT](https://jwt.io/) jako součást tok OAuth2, jako [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) nemá, pak můžete použít `validate-jwt` zásady k ověření platnosti tokenu. Některé autorizace servery vytvořit, co se nazývají [odkazovat na tokeny](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) , který nelze ověřit bez provedení zpětné volání k autorizačnímu serveru.
+### <a name="authorizing-reference-tokens"></a>Autorizace tokenů reference
+Hlavní funkcí API Management je ochrana back-end prostředků. Pokud autorizační Server používaný vaším rozhraním API vytvoří [tokeny JWT](https://jwt.io/) jako součást toku OAuth2, jak to dělá [Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md) , pak můžete použít zásady `validate-jwt` a ověřit platnost tokenu. Některé autorizační servery vytvoří, co se nazývá [referenční tokeny](https://leastprivilege.com/2015/11/25/reference-tokens-and-introspection/) , které se nedají ověřit bez zpětného volání na autorizační Server.
 
 ### <a name="standardized-introspection"></a>Standardizované introspekce
-V minulosti bylo standardizované nijak ověřit token odkazu pomocí autorizačního serveru. Ale nedávno navrhovaný standard [RFC 7662](https://tools.ietf.org/html/rfc7662) zveřejnila společnost IETF, který definuje, jak můžete zdrojový server ověřit platnost tokenu.
+V minulosti neexistuje standardizovaný způsob ověření tokenu reference pomocí autorizačního serveru. Nedávno navržené standardní [dokumenty RFC 7662](https://tools.ietf.org/html/rfc7662) byly PUBLIKOVÁNy sdružením IETF, které definují, jak může server prostředků ověřit platnost tokenu.
 
-### <a name="extracting-the-token"></a>Extrahuje token
-Prvním krokem je extrahovat token z autorizační hlavičky. Hodnota záhlaví musí být naformátovaná za použití `Bearer` schéma autorizace, jedna mezera a ověřovací token, který podle [RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1). Bohužel se případech, kdy je vynechán schéma autorizace. Aby se zohlednily to při analýze, API Management rozdělí hodnotu hlavičky v prostoru a vybere poslední řetězec z vráceného pole řetězců. To poskytuje řešení pro chybně formátovaná autorizační hlavičky.
+### <a name="extracting-the-token"></a>Extrahuje se token.
+Prvním krokem je extrakce tokenu z autorizační hlavičky. Hodnota hlavičky by měla být naformátovaná pomocí `Bearer`ho autorizačního schématu, jednoho prostoru a potom autorizačního tokenu podle [RFC 6750](https://tools.ietf.org/html/rfc6750#section-2.1). Existují však případy, kdy je autorizační schéma vynecháno. Aby se při analýze zohlednila hodnota, API Management rozdělí hodnotu hlavičky v prostoru a vybere poslední řetězec ze vráceného pole řetězců. To poskytuje alternativní řešení pro chybné formátování autorizačních hlaviček.
 
 ```xml
 <set-variable name="token" value="@(context.Request.Headers.GetValueOrDefault("Authorization","scheme param").Split(' ').Last())" />
 ```
 
-### <a name="making-the-validation-request"></a>Provádění ověření požadavku
-Jakmile služba API Management má autorizačním tokenem, API Management můžete provést ověření tokenu. RFC 7662 volá tento proces introspekce a vyžaduje, aby vám `POST` formuláře HTML na introspekce prostředek. Formulář HTML musí obsahovat aspoň pár klíč/hodnota s klíčem `token`. Tuto žádost k autorizačnímu serveru musí být také ověřené zajistit, že škodlivý klienty nelze přejít rybolov platné tokeny.
+### <a name="making-the-validation-request"></a>Provádění žádosti o ověření
+Jakmile API Management má autorizační token, API Management může vytvořit žádost o ověření tokenu. RFC 7662 volá tento proces introspekce a vyžaduje, abyste `POST` formulář HTML pro prostředek introspekce. Formulář HTML musí obsahovat alespoň dvojici klíč/hodnota s klíčem `token`. Tento požadavek na autorizační Server musí být také ověřený, aby bylo zajištěno, že se zlomyslní klienti nebudou moci dostat do sítě pro platné tokeny.
 
 ```xml
 <send-request mode="new" response-variable-name="tokenstate" timeout="20" ignore-error="true">
@@ -97,13 +97,17 @@ Jakmile služba API Management má autorizačním tokenem, API Management může
 </send-request>
 ```
 
-### <a name="checking-the-response"></a>Kontrola odpovědi
-`response-variable-name` Atribut se používá k udělení přístupu vrácená odpověď. Název definovaný v této vlastnosti můžete použít jako klíč do `context.Variables` slovníku pro přístup k `IResponse` objektu.
+### <a name="checking-the-response"></a>Kontroluje se odpověď.
+Atribut `response-variable-name` slouží k udělení přístupu k vrácené odpovědi. Název definovaný v této vlastnosti lze použít jako klíč do slovníku `context.Variables` pro přístup k objektu `IResponse`.
 
-Z odpovědi objektu můžete načíst obsah a RFC 7622 říká API Management, že odpověď musí být objektem JSON a musí obsahovat aspoň vlastnost s názvem `active` , který je logická hodnota. Když `active` má hodnotu true, pak tento token se považuje za platný.
+Z objektu Response můžete načíst tělo a RFC 7622 říká API Management, že odpověď musí být objekt JSON a musí obsahovat alespoň vlastnost s názvem `active`, která je logická hodnota. Pokud je `active` true, token se považuje za platný.
 
-### <a name="reporting-failure"></a>Oznamuje se chyba
-Můžete použít `<choose>` zásad zjistit, jestli je token platný a pokud ano, vrátí odpověď 401.
+Případně, pokud autorizační Server neobsahuje pole "aktivní", aby označoval, zda je token platný, použijte nástroj, jako je například post, a určete, jaké vlastnosti jsou nastaveny v platném tokenu. Například pokud platná odpověď tokenu obsahuje vlastnost s názvem "expires_in", ověřte, zda tento název vlastnosti existuje v odpovědi autorizačního serveru tímto způsobem:
+
+< when podmínka = "@ (((IResponse) Context. Proměnné ["tokenstate"]). Body.As<JObject>(). Property ("expires_in") = = null) ">
+
+### <a name="reporting-failure"></a>Selhání generování sestav
+Pomocí zásad `<choose>` můžete zjistit, jestli je token neplatný, a pokud ano, vrátit odpověď 401.
 
 ```xml
 <choose>
@@ -118,7 +122,7 @@ Můžete použít `<choose>` zásad zjistit, jestli je token platný a pokud ano
 </choose>
 ```
 
-Jak je uvedeno [RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) vystihuje jak `bearer` tokeny by měla sloužit, správu rozhraní API také vrátí hodnotu `WWW-Authenticate` hlavičku odpovědi 401. WWW-Authenticate určena dáte pokyn, aby klient o tom, jak vytvořit žádost o správně autorizované. Z důvodu celou řadu postupů s OAuth2 framework je obtížné komunikovat všechny potřebné informace. Naštěstí existují úsilí probíhá na pomoc [klienti zjistíte, jak správně autorizaci požadavků na server prostředků](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
+V závislosti na [specifikaci RFC 6750](https://tools.ietf.org/html/rfc6750#section-3) , která popisuje, jak by se měly `bearer` tokeny použít, API Management také vrátí hlavičku `WWW-Authenticate` s odpovědí 401. Ověřování na straně klienta je určeno k tomu, aby bylo klientovi pokyn, jak vytvořit řádně autorizovaný požadavek. Vzhledem k široké škále dostupných přístupů s OAuth2 Framework je obtížné sdělit všechny potřebné informace. Naštěstí je snaha pomáhat klientům, [kteří zjistí, jak správně autorizovat požadavky na server prostředků](https://tools.ietf.org/html/draft-jones-oauth-discovery-00).
 
 ### <a name="final-solution"></a>Konečné řešení
 Na konci získáte následující zásady:
@@ -157,32 +161,32 @@ Na konci získáte následující zásady:
 </inbound>
 ```
 
-Toto je pouze jeden z mnoha příklady jak `send-request` zásady je možné integrovat do procesů požadavků a odpovědí prostřednictvím služby API Management užitečné externích služeb.
+Toto je jenom jeden z příkladů, jak se dá zásada `send-request` použít k integraci užitečných externích služeb do procesu požadavků a odpovědí, které přecházejí přes službu API Management.
 
-## <a name="response-composition"></a>Složení odpovědi
-`send-request` Zásadu lze použít pro zlepšení primární požadavek na back-end systém, protože jste viděli v předchozím příkladu, nebo může sloužit jako kompletní nahrazení pro volání back-endu. Tímto způsobem můžete snadno vytvořit složené prostředky, které jsou seskupeny z více různých systémů.
+## <a name="response-composition"></a>Kompozice odpovědí
+Zásady `send-request` se dají použít k vylepšení primárního požadavku na back-end systém, jak jste viděli v předchozím příkladu, nebo ho můžete použít jako kompletní náhradu za back-end volání. Pomocí této techniky můžete snadno vytvářet složené prostředky, které jsou agregované z více různých systémů.
 
-### <a name="building-a-dashboard"></a>Vytváření řídicího panelu
-Někdy budete chtít mohli zveřejnit informace, které existují v různých systémů back-endu, třeba, k řízení řídicího panelu. Klíčové ukazatele výkonu pocházejí ze všechny různé back EndY, ale chcete raději nechcete poskytuje přímý přístup k nim a by pokud může načíst všechny informace v jednom požadavku. Například některé z informací back-end potřebuje některé segmentování a analyzování a trochu sanitaci nejprve! Možnost pro ukládání do mezipaměti složený prostředek může být užitečné ke snížení zatížení back-endu, protože víte, že uživatelé mají podporují bombarduje klávesu F5, chcete-li zobrazit, pokud jejich nedostatečně metriky může změnit.    
+### <a name="building-a-dashboard"></a>Vytvoření řídicího panelu
+Někdy budete chtít vystavovat informace, které existují v různých systémech back-end, například pro řízení řídicího panelu. Klíčové ukazatele výkonu pocházejí ze všech různých back-endu, ale nebudete jim dávat přímý přístup, ale v případě, že by se daly načíst všechny informace v jediném požadavku, je skvělé. Některé informace o back-endu vyžadují několik analyzování a jejich navýšení. Možnost ukládání do mezipaměti tohoto složeného prostředku by byla užitečná, aby se snížilo zatížení back-endu, protože uživatelé mají k dispozici možnost kladiva klávesy F5, aby bylo možné zjistit, zda se jejich nefunkční metrika může změnit.    
 
-### <a name="faking-the-resource"></a>Faking prostředku
-Prvním krokem při vytváření prostředků řídicí panel je konfigurace novou operaci na webu Azure Portal. Jedná se o operaci zástupný symbol slouží ke konfiguraci zásad složení vytvářet dynamické prostředků.
+### <a name="faking-the-resource"></a>Faking prostředek
+Prvním krokem při sestavování prostředku řídicího panelu je konfigurace nové operace v Azure Portal. Toto je zástupná operace, která se používá ke konfiguraci zásad kompozice k sestavení dynamického prostředku.
 
-![Operace řídicí panel](./media/api-management-sample-send-request/api-management-dashboard-operation.png)
+![Operace řídicího panelu](./media/api-management-sample-send-request/api-management-dashboard-operation.png)
 
-### <a name="making-the-requests"></a>Provedení žádosti
-Po operaci vytvoření, můžete nakonfigurovat zásady speciálně pro tuto operaci. 
+### <a name="making-the-requests"></a>Vytváření žádostí
+Po vytvoření operace můžete nakonfigurovat zásadu specifickou pro tuto operaci. 
 
-![Operace řídicí panel](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
+![Operace řídicího panelu](./media/api-management-sample-send-request/api-management-dashboard-policy.png)
 
-Prvním krokem je extrahovat všechny parametry dotazu z příchozího požadavku, takže je můžete dál back-endu. V tomto příkladu řídicí panel se zobrazuje informace v závislosti na určitou dobu a proto má `fromDate` a `toDate` parametru. Můžete použít `set-variable` zásady k extrahování informací z adresy URL požadavku.
+Prvním krokem je extrakce parametrů dotazů z příchozího požadavku, abyste je mohli přeslat do back-endu. V tomto příkladu se na řídicím panelu zobrazují informace na základě časového období, a proto má parametr `fromDate` a `toDate`. K extrakci informací z adresy URL žádosti můžete použít zásady `set-variable`.
 
 ```xml
 <set-variable name="fromDate" value="@(context.Request.Url.Query["fromDate"].Last())">
 <set-variable name="toDate" value="@(context.Request.Url.Query["toDate"].Last())">
 ```
 
-Jakmile tyto informace můžete provádět požadavky všech systémů back-endu. Každý požadavek vytvoří novou adresu URL s informace o parametrech a volá jeho příslušný server a uloží odpovědi kontextové proměnné.
+Po zadání těchto informací můžete provést požadavky na všechny back-endové systémy. Každý požadavek vytvoří novou adresu URL s informacemi o parametrech a zavolá svůj příslušný server a uloží odpověď do kontextové proměnné.
 
 ```xml
 <send-request mode="new" response-variable-name="revenuedata" timeout="20" ignore-error="true">
@@ -206,10 +210,10 @@ Jakmile tyto informace můžete provádět požadavky všech systémů back-endu
 </send-request>
 ```
 
-Tyto požadavky na spouštění v pořadí, což není ideální. 
+Tyto požadavky jsou spouštěny v pořadí, což není ideální. 
 
-### <a name="responding"></a>Reagovat
-K vytvoření složeného odpovědi, můžete použít [vrátit odpověď](/azure/api-management/api-management-advanced-policies#ReturnResponse) zásad. `set-body` Element výraz lze použít k vytvoření nového `JObject` se všechny komponenty reprezentace je vložený jako vlastnosti.
+### <a name="responding"></a>Attendee
+Chcete-li vytvořit složenou odpověď, můžete použít zásady [vrácení odpovědi](/azure/api-management/api-management-advanced-policies#ReturnResponse) . Element `set-body` může použít výraz k vytvoření nového `JObject` se všemi reprezentacemi součástí, které jsou vložené jako vlastnosti.
 
 ```xml
 <return-response response-variable-name="existing response variable">
@@ -227,7 +231,7 @@ K vytvoření složeného odpovědi, můžete použít [vrátit odpověď](/azur
 </return-response>
 ```
 
-Dokončení zásad by měl vypadat takto:
+Kompletní zásada vypadá následovně:
 
 ```xml
 <policies>
@@ -279,8 +283,8 @@ Dokončení zásad by měl vypadat takto:
 </policies>
 ```
 
-V konfiguraci operace zástupného symbolu můžete nakonfigurovat řídicí panel prostředků do mezipaměti pro nejméně jednu hodinu. 
+V konfiguraci operace zástupných znaků můžete nakonfigurovat prostředek řídicího panelu tak, aby se ukládal do mezipaměti alespoň po dobu 1 hodiny. 
 
 ## <a name="summary"></a>Souhrn
-Služba Azure API Management poskytuje flexibilní zásady, které je možné selektivně použít pro provoz protokolu HTTP a umožňuje složení back-endové služby. Určuje, zda chcete vylepšit brány rozhraní API s výstrahy funkce, ověřování, ověřování možností nebo vytvořit nový složené prostředky založené na několika službách back-endu `send-request` a odhalit tak svět možnosti související zásady.
+Služba Azure API Management poskytuje flexibilní zásady, které je možné selektivně použít pro přenosy HTTP, a umožňuje složení back-end služeb. Bez ohledu na to, jestli chcete bránu API vylepšit pomocí funkcí upozorňování, ověřování, ověřování nebo vytvoření nových složených prostředků na základě více služeb back-end, `send-request` a související zásady otevřou spoustu možností.
 

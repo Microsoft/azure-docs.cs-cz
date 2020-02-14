@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 8a53f1cfbde2f518848e7ef1104bf41ba4996961
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936392"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200074"
 ---
 # <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
 
@@ -34,11 +34,11 @@ Podrobné rozhraní API je k dispozici jako [dokument Swagger](https://westus.cr
 
 Vedle snadno použitelného rozhraní API nemusíte nasazovat vlastní koncové body a nemusíte sledovat žádné požadavky na souběžnost.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="subscription-key"></a>Klíč předplatného
 
-Se všemi funkcemi služby řeči, při vytváření odběru klíč z [webu Azure portal](https://portal.azure.com) podle našich [Příručka Začínáme](get-started.md).
+Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pomocí [příručky Začínáme](get-started.md)klíč předplatného z [Azure Portal](https://portal.azure.com) .
 
 >[!NOTE]
 > K použití dávkového přepisu se vyžaduje standardní předplatné (S0) pro službu Speech. Bezplatné předplatné klíče (F0) nebudou fungovat. Další informace najdete v tématu [ceny a omezení](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
@@ -89,14 +89,14 @@ K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
 
 | Parametr | Popis |
 |-----------|-------------|
-| `ProfanityFilterMode` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Platné hodnoty jsou `None` který zakáže filtrování vulgárních výrazů `Masked` hvězdičky, která nahradí vulgárních výrazů `Removed` výsledek, který zruší všechny vulgárních výrazů nebo `Tags` které přidá značky "vulgárních výrazů". Ve výchozím nastavení je `Masked`. |
-| `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Platné hodnoty jsou `None` který zakáže interpunkční znaménka, `Dictated` což naznačuje explicitní interpunkce, `Automatic` které umožní dekodér řešit interpunkční znaménka, nebo `DictatedAndAutomatic` což naznačuje nařízeny interpunkční znaménka nebo automaticky. |
+| `ProfanityFilterMode` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Přípustné hodnoty jsou `None`, které deaktivují filtrování vulgárních výrazů, `Masked`, které nahradí vulgární znaky hvězdičkami, `Removed` které odstraní všechny vulgární výrazy z výsledku nebo `Tags`, které přidávají značky "vulgární výrazy". Výchozí nastavení je `Masked`. |
+| `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Přípustné hodnoty jsou `None`, což zakáže interpunkci, `Dictated`, která implikuje explicitní interpunkci, `Automatic`, která umožňuje dekodéru zacházet s interpunkčním znaménkem nebo `DictatedAndAutomatic`, což znamená, že se automaticky zakazují interpunkční znaménka |
 | `AddWordLevelTimestamps` | Určuje, zda mají být do výstupu přidány časová razítka na úrovni aplikace Word. Přípustné hodnoty jsou `true`, které umožňují, aby byla časová razítka na úrovni aplikace Word a `false` (výchozí hodnota) zakázána. |
 | `AddSentiment` | Určuje mínění by měl být přidán do utterance. Přijaté hodnoty jsou `true`, které povolují mínění na utterance a `false` (výchozí hodnotu), která ho zakáže. |
 | `AddDiarization` | Určuje, že by měla být provedena analýza diarization na vstupu, u kterého se očekává, že kanál mono obsahuje dvě hlasy. Přípustné hodnoty jsou `true`, které povolují diarization a `false` (výchozí hodnota), která ji zakáže. Také je nutné, aby bylo `AddWordLevelTimestamps` nastaveno na hodnotu true.|
 |`TranscriptionResultsContainerUrl`|Volitelná adresa URL s [SAS služby](../../storage/common/storage-sas-overview.md) pro zapisovatelný kontejner v Azure. Výsledek bude uložen v tomto kontejneru.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Služba Batch přepisu podporuje [úložiště objektů BLOB v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) pro čtení zvuku a psaní přepisů do úložiště.
 
@@ -129,8 +129,8 @@ U zvukového vstupu mono se vytváří jeden soubor výsledků přepisu. V pří
                                                              speakerId as a string if
                                                              diarization requested for
                                                              mono audio file'
-          "Offset": number                                  'time in milliseconds'
-          "Duration": number                                'time in milliseconds'
+          "Offset": number                                  'time in ticks (1 tick is 100 nanosec)'
+          "Duration": number                                'time in ticks (1 tick is 100 nanosec)'
           "OffsetInSeconds" : number                        'Real number. Two decimal places'
           "DurationInSeconds" : number                      'Real number. Two decimal places'
           "NBest": [
@@ -150,8 +150,8 @@ U zvukového vstupu mono se vytváří jeden soubor výsledků přepisu. V pří
               "Words": [
                 {
                   "Word": string
-                  "Offset": number                          'time in milliseconds'
-                  "Duration": number                        'time in milliseconds'
+                  "Offset": number                          'time in ticks (1 tick is 100 nanosec)'
+                  "Duration": number                        'time in ticks (1 tick is 100 nanosec)'
                   "OffsetInSeconds": number                 'Real number. Two decimal places'
                   "DurationInSeconds": number               'Real number. Two decimal places'
                   "Confidence": number                      'between 0 and 1'
@@ -199,7 +199,7 @@ Pro vyžádání diarization stačí přidat relevantní parametr v požadavku H
 
 Časová razítka na úrovni aplikace by také musel být zapnutá, protože parametry výše uvedené žádosti ukazují.
 
-## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
+## <a name="sentiment-analysis"></a>Analýza mínění
 
 Funkce mínění odhadne mínění vyjádřenou ve zvukovém zařízení. Mínění se vyjadřuje hodnotou mezi 0 a 1 pro `Negative`, `Neutral`a `Positive` mínění. Například analýza mínění lze použít ve scénářích volání centra:
 
@@ -265,7 +265,7 @@ Vzorový kód nastaví klienta a odešle požadavek přepisu. Pak se zobrazí do
 
 Úplné podrobnosti o předchozích voláních najdete v našem [dokumentu Swagger](https://westus.cris.ai/swagger/ui/index). Úplný vzorek zobrazený tady najdete na [GitHubu](https://aka.ms/csspeech/samples) v podadresáři `samples/batch`.
 
-Poznamenejte si nastavení asynchronní pro zvuk odesílání a příjem určené k transkripci stav. Klient, který vytvoříte je klienta .NET protokolu HTTP. Je `PostTranscriptions` metodu pro odesílání podrobnosti zvukový soubor a `GetTranscriptions` metodu pro příjem výsledků. `PostTranscriptions` Vrátí popisovač, a `GetTranscriptions` používá k vytvoření popisovače se získat stav určené k transkripci.
+Poznamenejte si nastavení asynchronní pro zvuk odesílání a příjem určené k transkripci stav. Klient, který vytvoříte je klienta .NET protokolu HTTP. K odeslání podrobností o zvukovém souboru a metodě `GetTranscriptions` pro příjem výsledků je `PostTranscriptions` metoda. `PostTranscriptions` vrátí popisovač a `GetTranscriptions` ho použije k vytvoření popisovače pro získání stavu přepisu.
 
 Aktuální vzorový kód neurčuje vlastního modelu. Služba používá základní modely pro přepisování na soubor nebo soubory. K určení vzorů, můžete předat na stejné metodě jako ID modelu akustických a jazykový model.
 

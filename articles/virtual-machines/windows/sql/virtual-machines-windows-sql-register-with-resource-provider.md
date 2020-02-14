@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 148ded0eba61221a2bdf0b8a50392da47a4c5f20
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 01e683e31905281d25fdcf976bc58397c052a6c3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122486"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201624"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Registrace virtuálního počítače s SQL Server v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 
@@ -57,7 +57,7 @@ Další informace o výhodách použití poskytovatele prostředků virtuálníc
 <iframe src="https://channel9.msdn.com/Shows/Data-Exposed/Benefit-from-SQL-VM-Resource-Provider-when-self-installing-SQL-Server-on-Azure/player" width="960" height="540" allowFullScreen frameBorder="0" title="Výhody od poskytovatele prostředků SQL VM při samoobslužné instalaci SQL Server na Azure – Microsoft Channel 9 video"></iframe>
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat: 
 
@@ -126,7 +126,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 
 ### <a name="lightweight-management-mode"></a>Režim zjednodušené správy
 
-Pokud na virtuálním počítači není nainstalované [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md) , doporučujeme, abyste se v odlehčeném režimu zaregistrovali u poskytovatele prostředků virtuálního počítače SQL. Tím se nainstaluje rozšíření SQL IaaS v [jednoduchém režimu](#management-modes) a zabrání se restartování služby SQL Server. Následně můžete upgradovat na úplný režim kdykoli, ale tím dojde k restartování služby SQL Server, aby bylo doporučeno počkat do plánovaného časového období údržby. Musíte zadat typ licence SQL Server jako průběžné platby (`PAYG`) k placení za použití nebo Zvýhodněné hybridní využití Azure (`AHUB`), abyste mohli používat vlastní licenci.
+Pokud na virtuálním počítači není nainstalované [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md) , doporučujeme, abyste se v odlehčeném režimu zaregistrovali u poskytovatele prostředků virtuálního počítače SQL. Tím se nainstaluje rozšíření SQL IaaS v [jednoduchém režimu](#management-modes) a zabrání se restartování služby SQL Server. Následně můžete upgradovat na úplný režim kdykoli, ale tím dojde k restartování služby SQL Server, aby bylo doporučeno počkat do plánovaného časového období údržby. 
+
+Poskytněte SQL Server Typ licence jako průběžné platby (`PAYG`) a platíte za použití, Zvýhodněné hybridní využití Azure (`AHUB`) k používání vlastní licence nebo zotavení po havárii (`DR`) k aktivaci [bezplatné licence na repliku Dr](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure).
 
 Instance clusteru s podporou převzetí služeb při selhání a nasazení s více instancemi se dají zaregistrovat jenom u poskytovatele prostředků virtuálního počítače SQL v odlehčeném režimu. 
 
@@ -176,7 +178,7 @@ Pokud chcete virtuální počítač SQL Server zaregistrovat přímo v plném re
 
 SQL Server 2008 a 2008 R2 nainstalované v systému Windows Server 2008 (_ne R2_) je možné zaregistrovat u poskytovatele prostředků SQL VM v [režimu neagent](#management-modes). Tato možnost zaručuje dodržování předpisů a umožňuje monitorovat SQL Server virtuálním počítačem v Azure Portal s omezenými funkcemi.
 
-Zadejte buď `AHUB`, nebo `PAYG` jako **sqlLicenseType**, a buď `SQL2008-WS2008`, nebo `SQL2008R2-WS2008` jako **sqlImageOffer**. 
+Jako **sqlLicenseType**zadejte buď `AHUB`, `PAYG`nebo `DR`, a buď `SQL2008-WS2008` nebo `SQL2008R2-WS2008` jako **sqlImageOffer**. 
 
 K registraci instance SQL Server 2008 nebo 2008 R2 v instanci Windows Server 2008 použijte následující příkaz AZ CLI nebo PowerShell Code: 
 

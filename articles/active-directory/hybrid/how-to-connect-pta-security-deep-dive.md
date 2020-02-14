@@ -15,12 +15,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f9686be08de2589cddadf741dadf243d0e7895
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1ddce8d4d7ca1f03c0a57d0f0c8c41ac122973e0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174438"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185562"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování zabezpečení s hloubkovým podrobně
 
@@ -45,7 +45,7 @@ Toto jsou klíčové aspekty zabezpečení této funkce:
   - Úplný seznam požadavků na síť najdete v tématu [Azure Active Directory předávacího ověřování: rychlý Start](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
 - Hesla, která uživatelé poskytují během přihlašování, se šifrují v cloudu předtím, než je místní agent ověřování přijímají k ověřování proti službě Active Directory.
 - Kanál HTTPS mezi Azure AD a místním ověřovacím agentem je zabezpečený pomocí vzájemného ověřování.
-- Chrání vaše uživatelské účty pomocí [zásad podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně Multi-Factor Authentication (MFA), [blokováním staršího ověřování](../conditional-access/conditions.md) a [filtrováním útoků hrubou silou na hesla](../authentication/howto-password-smart-lockout.md).
+- Chrání vaše uživatelské účty pomocí [zásad podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně Multi-Factor Authentication (MFA), [blokováním staršího ověřování](../conditional-access/concept-conditional-access-conditions.md) a [filtrováním útoků hrubou silou na hesla](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="components-involved"></a>Zapojené součásti
 
@@ -72,7 +72,7 @@ Následující části podrobněji popisují tyto fáze.
 
 ### <a name="authentication-agent-installation"></a>Instalace ověřovacího agenta
 
-Pouze globální Správci mohou nainstalovat ověřovacího agenta (pomocí Azure AD Connect nebo samostatné) na místním serveru. Instalace přidá do **ovládacích panelů**dvě nové položky  > **programy** > **programy a seznam funkcí** :
+Pouze globální Správci mohou nainstalovat ověřovacího agenta (pomocí Azure AD Connect nebo samostatné) na místním serveru. Instalace přidá dvě nové položky do **ovládacího panelu** > **programy** > seznam **programů a funkcí** :
 - Aplikace ověřovacího agenta samotného. Tato aplikace se spouští s oprávněními [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx) .
 - Aplikace aktualizace, která se používá k automatické aktualizaci ověřovacího agenta. Tato aplikace běží s oprávněními [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) .
 
@@ -177,10 +177,10 @@ Postup obnovení vztahu důvěryhodnosti ověřovacího agenta s Azure AD:
     - Nastavte předmět certifikátu (rozlišující název nebo DN) na ID tenanta, identifikátor GUID, který jedinečně identifikuje vašeho tenanta. Obory názvu jsou jenom certifikáty pro vašeho tenanta.
 6. Azure AD ukládá nový veřejný klíč ověřovacího agenta do Azure SQL Database, ke kterému má přístup jenom přístup. Také zruší platnost starého veřejného klíče přidruženého k agentovi ověřování.
 7. Nový certifikát (vydaný v kroku 5) je pak uložený na serveru v úložišti certifikátů Windows (konkrétně v umístění [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER) ).
-    - Vzhledem k tomu, že se postup obnovení vztahu důvěryhodnosti neinteraktivně (bez přítomnosti globálního správce), agent ověřování už nebude mít přístup k aktualizaci stávajícího certifikátu v umístění CERT_SYSTEM_STORE_LOCAL_MACHINE. 
+    - Vzhledem k tomu, že se postup obnovení vztahu důvěryhodnosti neprovádí interaktivně (bez přítomnosti globálního správce), agent ověřování již nemá přístup k aktualizaci stávajícího certifikátu v umístění CERT_SYSTEM_STORE_LOCAL_MACHINE. 
     
    > [!NOTE]
-   > Tento postup neodebere samotný certifikát z umístění CERT_SYSTEM_STORE_LOCAL_MACHINE.
+   > Tento postup neodebere samotný certifikát z CERT_SYSTEM_STORE_LOCAL_MACHINEho umístění.
 8. Nový certifikát se používá k ověření od tohoto okamžiku. Každé následné obnovení certifikátu nahrazuje certifikát v umístění CERT_SYSTEM_STORE_LOCAL_MACHINE.
 
 ## <a name="auto-update-of-the-authentication-agents"></a>Automatické aktualizace ověřovacích agentů

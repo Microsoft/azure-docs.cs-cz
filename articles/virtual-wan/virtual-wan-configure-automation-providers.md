@@ -1,20 +1,20 @@
 ---
-title: Partneři Azure Virtual WAN | Microsoft Docs
+title: Pokyny pro automatizaci Azure Virtual WAN partneři | Microsoft Docs
 description: Tento článek pomáhá partnerům nastavit automatizaci Azure Virtual WAN.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7848dda09b39f446dd218b7ce1eb2a07664bcaa6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775304"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190418"
 ---
-# <a name="virtual-wan-partners"></a>Virtuální partneři sítě WAN
+# <a name="automation-guidelines-for-virtual-wan-partners"></a>Pokyny pro automatizaci pro virtuální partneři sítě WAN
 
 Tento článek vám pomůže pochopit, jak nastavit prostředí automatizace pro připojení a konfiguraci zařízení pobočky (místní zařízení VPN zákazníka nebo SDWAN CPE) pro Azure Virtual WAN. Pokud jste poskytovatel, který poskytuje Pobočková zařízení, která se můžou řídit připojením VPN přes IPsec/IKEv2 nebo IPsec/IKEv1, je tento článek pro vás.
 
@@ -27,7 +27,7 @@ Zařízení pobočky (místní zařízení VPN zákazníka nebo SDWAN CPE) obvyk
 * Otestujte možnosti portálu Azure Virtual WAN.
 * Pak rozhodněte, která část kroků připojení byste chtěli automatizovat. Je minimálně vhodné automatizovat tyto akce:
 
-  * Access Control
+  * Řízení přístupu
   * Nahrání informací o zařízeních z pobočky do Azure Virtual WAN
   * Stažení konfigurace Azure a nastavení připojení ze zařízení z větve do Azure Virtual WAN
 

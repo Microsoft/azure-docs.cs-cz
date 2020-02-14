@@ -6,14 +6,14 @@ ms.author: lcozzens
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 269ae5630d1524cb8f89d3af8728892079f6eb5f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ce8d42ec7c37b19378b6f4ae0c81548f2eff5c9c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899625"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190380"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Synchronizace instance konfigurace aplikace pomocí akcí GitHubu
+# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Synchronizace instance App Configuration s využitím GitHub Actions
 Konfigurace aplikace Azure používá akce GitHubu k aktualizaci instance konfigurace aplikace, když se aktivuje akcí prováděnou v úložišti GitHubu. Pracovní postupy GitHubu můžete využít k aktualizaci konfigurace aplikace a povolení integrace aktualizací konfigurace aplikace do stejného pracovního postupu, který se používá k aktualizaci kódu aplikace.
 
 [Pracovní postup](https://help.github.com/articles/about-github-actions#workflow) akcí GitHubu je automatizovaný proces definovaný v úložišti GitHub. Tento proces oznamuje GitHubu, jak sestavit a nasadit váš projekt GitHubu. Konfigurace aplikace Azure poskytuje akci *synchronizace konfigurace aplikace Azure* , která umožňuje aktualizace instance konfigurace aplikace při provedení změn ve zdrojovém úložišti. 
@@ -25,8 +25,7 @@ Události GitHubu, například nabízené oznámení do úložiště, můžou ak
 [Dokumentace k](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) GitHubu poskytuje podrobný pohled na pracovní postupy a akce GitHubu. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>Povolení akcí GitHubu v úložišti
-Pokud chcete začít používat tuto akci GitHubu, klikněte na své úložiště a vyberte kartu **Akce** . na webu Marketplace vyhledejte a vyberte akci GitHubu, a to tak, že vyhledáte "synchronizace konfigurace aplikací Azure". 
-
+Pokud chcete začít používat tuto akci GitHubu, přejděte do úložiště a vyberte kartu **Akce** . klikněte na nový pracovní postup a pak na nastavit pracovní postup sami. Odtud na webu Marketplace vyhledejte "synchronizace konfigurace aplikace Azure".
 > [!div class="mx-imgBorder"]
 > ![vyberte kartu akce](media/find-github-action.png)
 
@@ -187,13 +186,13 @@ Vstupní parametry určují data, která akce používá během běhu.  Následu
 | Název vstupu | Povinné? | Hodnota |
 |----|----|----|
 | configurationFile | Ano | Cesta ke konfiguračnímu souboru v úložišti, relativní ke kořenu úložiště.  Jsou podporovány vzory glob a mohou obsahovat více souborů. |
-| formát | Ano | Formát souboru konfiguračního souboru.  Platné formáty jsou: JSON, YAML, Properties. |
+| format | Ano | Formát souboru konfiguračního souboru.  Platné formáty jsou: JSON, YAML, Properties. |
 | connectionString | Ano | Připojovací řetězec pro instanci konfigurace aplikace Připojovací řetězec by měl být uložen jako tajný klíč v úložišti GitHub a v pracovním postupu by měl být použit pouze tajný název. |
 | oddělování | Ano | Oddělovač použitý při sloučení konfiguračního souboru na páry klíč-hodnota.  Platné hodnoty jsou:. , ; : - _ __ / |
 | prefix | Ne | Předpona, která se má přidat na začátek klíčů |
 | label | Ne | Popisek použitý při nastavování párů klíč-hodnota Je-li tento parametr zadán, je použit popisek s hodnotou null. |
 | zásadní | Ne | Logická hodnota, která určuje, zda je povolen striktní režim. Výchozí hodnota je false. |
-| Úrovní | Ne | Maximální hloubka pro sloučení konfiguračního souboru.  Hloubka musí být kladné číslo.  Výchozí hodnota nebude mít žádnou maximální hloubku. |
+| úrovní | Ne | Maximální hloubka pro sloučení konfiguračního souboru.  Hloubka musí být kladné číslo.  Výchozí hodnota nebude mít žádnou maximální hloubku. |
 | značek | Ne | Určuje sadu značek pro páry klíč-hodnota.  Očekávaným formátem je dokument formulář objektu JSON následujícího obrazce: {[propertyName: String]: String;} Název každé vlastnosti – hodnota se zobrazí jako značka. |
 
 ## <a name="next-steps"></a>Další kroky

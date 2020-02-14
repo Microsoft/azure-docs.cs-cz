@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: fa8013722376a4864ba955783dbde1f73c0d9e8a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: af5399a6e1a76a6020448b2e91d76a1d2e1f0ed8
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163105"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186954"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Příručka Začínáme pro vývojáře v Azure
 
@@ -60,7 +60,7 @@ Vzhledem k tomu, že všechny tři typy aplikací sdílejí modul runtime App Se
 
 App Service byla navržena s ohledem na DevOps. Podporuje různé nástroje pro publikování a nepřetržitou integraci nasazení. Mezi tyto nástroje patří Webhooky GitHubu, Jenkinse, Azure DevOps, TeamCity a další.
 
-Stávající aplikace můžete migrovat na App Service pomocí [Nástroje pro online migraci](https://www.migratetoazure.net/).
+Stávající aplikace můžete migrovat na App Service pomocí [Nástroje pro online migraci](https://appmigration.microsoft.com/).
 
 > **Kdy použít**: Použijte App Service, když migrujete existující webové aplikace do Azure a potřebujete plně spravovanou hostující platformu pro vaše webové aplikace. App Service můžete použít také v případě, že potřebujete podporovat mobilní klienty nebo zveřejnit rozhraní REST API s vaší aplikací.
 >

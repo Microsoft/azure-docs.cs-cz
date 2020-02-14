@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 1e3692920c35a6965a23c0305aeeebfc80505d85
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931109"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190934"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Řešení běžných potíží indexerů v Azure Kognitivní hledání
 
@@ -112,6 +112,6 @@ Indexery hledají dokumenty ze [zdroje dat](https://docs.microsoft.com/rest/api/
 
 * Dokument nebyl indexován. Na portálu vyhledejte úspěšné spuštění indexeru.
 * Po spuštění indexeru se dokument aktualizoval. Pokud je indexer podle [plánu](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-schedule), bude ho nakonec znovu spustit a vybrat.
-* [Dotaz](https://docs.microsoft.com/rest/api/searchservice/create-data-source#request-body-syntax) zadaný ve zdroji dat vylučuje dokument. Indexery nemůžou indexovat dokumenty, které nejsou součástí zdroje dat.
+* [Dotaz](/rest/api/searchservice/create-data-source) zadaný ve zdroji dat vylučuje dokument. Indexery nemůžou indexovat dokumenty, které nejsou součástí zdroje dat.
 * [Mapování polí](https://docs.microsoft.com/rest/api/searchservice/create-indexer#fieldmappings) nebo [rozšíření AI](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) změnilo dokument a vypadá jinak, než očekáváte.
 * K vyhledání dokumentu použijte [rozhraní API pro vyhledávání v dokumentu](https://docs.microsoft.com/rest/api/searchservice/lookup-document) .

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 12/05/2019
-ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 797cd82327d68003d4e5f007d1f16e9534092ac0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893661"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191359"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
@@ -49,7 +49,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
   **Minimální požadavky**
 
   * .NET Framework 4.7.2
-  * 64bitová verze Windows 7 nebo Windows Serveru 2008 R2 (nebo novější)
+  * 64. bitová verze systému Windows 7 nebo Windows Server 2008 R2 (nebo novější)
 
   **Doporučené požadavky**
 
@@ -96,7 +96,7 @@ Tento článek ukazuje, jak stáhnout, nainstalovat a nastavit místní bránu d
 
    Vaše instalace brány se může propojit jenom s jedním účtem Azure.
 
-1. Vyberte **Registrace nové brány na tomto počítači** > **Další**. Tento krok zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service).
+1. Vyberte možnost **zaregistrovat novou bránu na tomto počítači** > **Další**. Tento krok zaregistruje instalaci brány pomocí [cloudové služby brány](#gateway-cloud-service).
 
    ![Registrovat bránu v místním počítači](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -188,7 +188,7 @@ Aby bylo možné získat přehled o všech místních branách dat v tenantovi A
 
 <a name="restart-gateway"></a>
 
-## <a name="restart-gateway"></a>Restartování brány
+## <a name="restart-gateway"></a>Restartovat bránu
 
 Ve výchozím nastavení se instalace brány na místním počítači spouští jako účet služby systému Windows s názvem "místní služba brány dat". Instalace brány však používá `NT SERVICE\PBIEgwService` název přihlašovacích údajů k účtu "přihlásit se jako" a má oprávnění "přihlásit jako službu".
 
@@ -199,13 +199,13 @@ Stejně jako u jakékoli jiné služby Windows můžete bránu spouštět a zast
 
 <a name="gateway-cloud-service"></a>
 
-## <a name="how-the-gateway-works"></a>Jak funguje brána
+## <a name="how-the-gateway-works"></a>Jak brána funguje
 
 Uživatelé ve vaší organizaci mají přístup k místním datům, ke kterým už mají autorizovaný přístup. Než se však tito uživatelé budou moci připojit k místnímu zdroji dat, je třeba nainstalovat a nastavit místní bránu dat. Správce je obvykle osoba, která instaluje a nastavuje bránu. Tyto akce můžou vyžadovat oprávnění správce serveru nebo speciální znalosti o vašich místních serverech.
 
-Brána usnadňuje rychlou a zabezpečenou komunikaci při komunikaci. Tato komunikace komunikuje mezi uživatelem v cloudu, cloudovou službou brány a vaším místním zdrojem dat. Cloudová služba brány šifruje a ukládá vaše přihlašovací údaje ke zdroji dat a podrobnosti o bráně. Služba také směruje dotazy a jejich výsledky mezi uživatelem, bránou a vaším místním zdrojem dat.
+Brána usnadňuje rychlejší a bezpečnější komunikaci na pozadí. Tato komunikace komunikuje mezi uživatelem v cloudu, cloudovou službou brány a vaším místním zdrojem dat. Cloudová služba brány šifruje a ukládá vaše přihlašovací údaje ke zdroji dat a podrobnosti o bráně. Služba také směruje dotazy a jejich výsledky mezi uživatelem, bránou a vaším místním zdrojem dat.
 
-Brána pracuje s branami firewall a používá jenom odchozí připojení. Veškerý provoz vychází z agenta brány na zabezpečený odchozí provoz. Brána přenáší data z místních zdrojů do šifrovaných kanálů prostřednictvím [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). Tato služba Service Bus vytváří kanál mezi bránou a volající službou, ale neukládá žádná data. Všechna data, která jsou přenášena přes bránu, jsou zašifrovaná.
+Brána pracuje s branami firewall a používá jenom odchozí připojení. Veškerý provoz pochází z agenta brány jako zabezpečený odchozí provoz. Brána přenáší data z místních zdrojů do šifrovaných kanálů prostřednictvím [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). Tato služba Service Bus vytváří kanál mezi bránou a volající službou, ale neukládá žádná data. Všechna data, která jsou přenášena přes bránu, jsou zašifrovaná.
 
 ![Architektura pro místní bránu dat](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
@@ -262,7 +262,7 @@ Tady jsou způsoby, jak můžete porovnat místní účty Active Directory se sl
 Další informace najdete v těchto tématech:
 
 * [Nejčastější dotazy k místní bráně dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Řešení problémů s místní bránou dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Řešení potíží s místní bránou dat](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [Monitorování a optimalizace výkonu brány](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Další kroky

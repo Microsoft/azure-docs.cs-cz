@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 02/12/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3c3bb0cb6726326cda7ede46ba09fa6d17c2ba2c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 76e2b1c221475a90dc63498d13d4ede7a78e0779
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983040"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185592"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -48,10 +48,10 @@ Element **ClaimType** obsahuje následující atribut:
 
 Element **ClaimType** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizována](localization.md). |
-| DataType | 1:1 | Typ deklarace identity. Lze použít datové typy Boolean, Date, dateTime, int, Long, String, StringCollection. Primitivní datový typ představuje ekvivalent C# variabilního datového typu. StringCollection představuje kolekci řetězců. Další informace naleznete v tématu [ C# typy a proměnné](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables). Datum odpovídá konvenci ISO 8601. |
+| DataType | 1:1 | Typ deklarace identity. Lze použít datové typy Boolean, Date, dateTime, int, Long, String, StringCollection a phoneNumber. Primitivní datový typ představuje ekvivalent C# variabilního datového typu. StringCollection představuje kolekci řetězců. Další informace naleznete v tématu [ C# typy a proměnné](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables). Datum odpovídá konvenci ISO 8601. |
 | DefaultPartnerClaimTypes | 0:1 | Výchozí typy deklarací partnerů, které se mají použít pro zadaný protokol. Hodnota může být přepsána v **PartnerClaimType** určeném v elementech **InputClaim** nebo **OutputClaim** . Tento prvek slouží k určení výchozího názvu protokolu.  |
 | Zrušit | 0:1 | Volitelné řetězce maskování znaků, které lze použít při zobrazení deklarace identity. Například telefonní číslo 324-232-4343 lze maskovat jako XXX-XXX-4343. |
 | UserHelpText | 0:1 | Popis typu deklarace, který může být užitečný pro uživatele, aby porozuměl jeho účelu. Hodnota může být [lokalizována](localization.md). |
@@ -63,7 +63,7 @@ PredicateValidationReference| 0:1 | Odkaz na element **PredicateValidationsInput
 
 **DefaultPartnerClaimTypes** může obsahovat následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Protocol (Protokol) | 1: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
 
@@ -71,7 +71,7 @@ Element **Protocol** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Name (Název) | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
+| Název | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
 | PartnerClaimType | Ano | Název typu deklarace, který se má použít |
 
 Když v následujícím příkladu architektura prostředí identit komunikuje s poskytovatelem identity typu Saml2 nebo s aplikací předávající strany, **je tato deklarace identity** namapovaná na `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`s OpenIdConnect a OAuth2 je tato deklarace namapovaná na `family_name`.
@@ -150,12 +150,12 @@ Element **omezení** může obsahovat následující atribut:
 
 Element **omezení** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Enumeration | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele, kteří mají vybrat pro deklaraci identity, například hodnotu v rozevíracím seznamu. |
+| Výčet | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele, kteří mají vybrat pro deklaraci identity, například hodnotu v rozevíracím seznamu. |
 | Vzor | 1:1 | Regulární výraz, který má být použit. |
 
-### <a name="enumeration"></a>Enumeration
+### <a name="enumeration"></a>Výčet
 
 Prvek **výčtu** obsahuje následující atributy:
 
@@ -354,7 +354,7 @@ Typ vstupu uživatele **jen pro čtení** se používá k zadání pole jen pro 
 ```
 
 
-### <a name="paragraph"></a>Pododstavec
+### <a name="paragraph"></a>Odstavec
 
 **Odstavcový** typ vstupu uživatele slouží k poskytnutí pole, které zobrazuje text pouze v označení odstavce. Například &lt;p&gt;text&lt;/p&gt;.
 

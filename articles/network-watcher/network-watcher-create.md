@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b091c501fb565fb267c40f686dc037e41f3c90ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 77812a3765a027152c957f6dbb7c9b3811a2278f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845119"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191179"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Vytvoření instance služby Azure Network Watcher
 
@@ -27,7 +27,7 @@ Network Watcher je místní služba, která umožňuje monitorovat a diagnostiko
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="network-watcher-is-automatically-enabled"></a>Network Watcher je automaticky povoleno.
-Když ve svém předplatném vytvoříte nebo aktualizujete virtuální síť, Network Watcher se automaticky povolí v oblasti vašeho Virtual Network. Na vaše prostředky to nemá žádný dopad a za automatické povolení služby Network Watcher se neúčtuje žádný poplatek.
+Když ve svém předplatném vytvoříte nebo aktualizujete virtuální síť, Network Watcher se automaticky povolí v oblasti vašeho Virtual Network. Pro automatické povolování Network Watcher neexistuje žádný vliv na vaše prostředky ani související poplatky.
 
 #### <a name="opt-out-of-network-watcher-automatic-enablement"></a>Výslovný nesouhlas s Network Watcher automatické povolení
 Pokud se chcete odhlásit z Network Watcher automatické povolení, můžete to udělat tak, že spustíte následující příkazy:
@@ -132,5 +132,3 @@ Teď, když máte instanci Network Watcher, přečtěte si informace o dostupný
 * [Zobrazení skupin zabezpečení](network-watcher-security-group-view-overview.md)
 * [Protokolování toku NSG](network-watcher-nsg-flow-logging-overview.md)
 * [Řešení potíží s Virtual Networkovou bránou](network-watcher-troubleshoot-overview.md)
-
-Jakmile je instance Network Watcher, můžete povolit zachytávání paketů v rámci virtuálních počítačů. Informace o tom, jak najdete v tématu [Vytvoření výstrahy aktivované zachytávání paketů](network-watcher-alert-triggered-packet-capture.md)

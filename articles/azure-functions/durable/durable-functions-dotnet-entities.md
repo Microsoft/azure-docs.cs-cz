@@ -5,12 +5,12 @@ author: sebastianburckhardt
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 750ccbfa885b4679dfa61240b49ea9ec86a46d51
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 01e07eaee705634b03cc4462c4058e290daa8bc2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120637"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198492"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Příručka pro vývojáře k odolným entitám v .NET
 
@@ -371,7 +371,7 @@ public static Task Run([EntityTrigger] IDurableEntityContext ctx)
 
 Na rozdíl od regulárních funkcí nemají metody třídy entit přímý přístup k vstupní a výstupní vazbě. Místo toho musí být vazba dat zachycena v deklaraci funkce vstupního bodu a poté předána metodě `DispatchAsync<T>`. Všechny objekty předané do `DispatchAsync<T>` budou automaticky předány do konstruktoru třídy entity jako argument.
 
-Následující příklad ukazuje, jak lze zpřístupnit `CloudBlobContainer` odkaz ze [vstupní vazby objektu BLOB](../functions-bindings-storage-blob.md#input) na entitu založenou na třídě.
+Následující příklad ukazuje, jak lze zpřístupnit `CloudBlobContainer` odkaz ze [vstupní vazby objektu BLOB](../functions-bindings-storage-blob-input.md) na entitu založenou na třídě.
 
 ```csharp
 public class BlobBackedEntity

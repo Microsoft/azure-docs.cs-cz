@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16c6ce46af8fb9a9ab4be5fcc63ccd4909374e4f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 33b1f76dd1489e00115d0f805add8d754038df84
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846163"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185913"
 ---
 # <a name="conditional-access-classic-policy-migration"></a>Migrace klasických zásad podmíněného přístupu
 
@@ -89,7 +89,7 @@ Pokud máte novou zásadu, která má nakonfigurované podmínky **Exchange Acti
 
 ![Podmínky podmíněného přístupu](./media/policy-migration/16.png)
  
-Klasické zásady [založené na](technical-reference.md#approved-client-app-requirement) aplikacích pro Office 365 Exchange Online, které zahrnují **Exchange Active Sync** jako stav klientských aplikací, umožňují použití **podporovaných** a **nepodporovaných** [platforem zařízení](technical-reference.md#device-platform-condition). I když v souvisejících nových zásadách nemůžete konfigurovat jednotlivé platformy zařízení, můžete omezit podporu jenom na [podporované platformy zařízení](technical-reference.md#device-platform-condition) . 
+Klasické zásady založené na aplikacích pro Office 365 Exchange Online, které zahrnují **Exchange Active Sync** jako stav klientských aplikací, umožňují použití **podporovaných** a **nepodporovaných** platforem zařízení. I když v souvisejících nových zásadách nemůžete konfigurovat jednotlivé platformy zařízení, můžete omezit podporu jenom na [podporované platformy zařízení](concept-conditional-access-conditions.md#device-platforms) . 
 
 ![Podmíněný přístup vybrat Exchange ActiveSync](./media/policy-migration/65.png)
 
@@ -109,9 +109,9 @@ V takovém případě můžete své klasické zásady konsolidovat do jedné nov
 
 ### <a name="device-platforms"></a>Platformy zařízení
 
-Klasické zásady s [ovládacími prvky založenými na aplikaci](technical-reference.md#approved-client-app-requirement) jsou předem nakonfigurované s iOS a Androidem jako s [podmínkou platformy zařízení](technical-reference.md#device-platform-condition). 
+Klasické zásady s ovládacími prvky založenými na aplikaci jsou předem nakonfigurované s iOS a Androidem jako s podmínkou platformy zařízení. 
 
-V nové zásadě musíte vybrat [platformy zařízení](technical-reference.md#device-platform-condition) , které chcete podporovat samostatně.
+V nové zásadě musíte vybrat [platformy zařízení](concept-conditional-access-conditions.md#device-platforms) , které chcete podporovat samostatně.
 
 ![Výběr platforem zařízení pro podmíněný přístup](./media/policy-migration/41.png)
 

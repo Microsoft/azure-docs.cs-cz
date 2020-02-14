@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/03/2020
-ms.openlocfilehash: e1eb852b7cf7aea887dea429e19b0a3b1ac5805a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.date: 02/14/2020
+ms.openlocfilehash: 14b04f7d6068863c79c7060d29b58232be1f40cb
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989854"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201794"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
 
@@ -49,9 +49,13 @@ Postup aktualizace úrovně kompatibility úlohy v Azure Portal:
 
 Při aktualizaci úrovně kompatibility T-Compiler ověří úlohu se syntaxí, která odpovídá vybrané úrovni kompatibility.
 
-## <a name="compatibility-level-12"></a>Úroveň kompatibility 1.2
+## <a name="compatibility-level-12"></a>Úroveň kompatibility 1,2
 
 V úrovni kompatibility 1,2 jsou představeny tyto hlavní změny:
+
+###  <a name="amqp-messaging-protocol"></a>Protokol zasílání zpráv AMQP
+
+**1,2 úroveň**: Azure Stream Analytics používá rozšířený protokol zasílání zpráv [protokolu AMQP (Message Queueing Protocol)](../service-bus-messaging/service-bus-amqp-overview.md) k zápisu do Service Busch front a témat. AMQP umožňuje sestavovat hybridní aplikace pro různé platformy s využitím otevřeného standardního protokolu.
 
 ### <a name="geospatial-functions"></a>Geoprostorové funkce
 
@@ -119,7 +123,7 @@ V úrovni kompatibility 1.1 byly zavedeny následující hlavní změny:
 
 ### <a name="service-bus-xml-format"></a>Service Bus formát XML
 
-**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Příklad:
+**úroveň 1,0:** Azure Stream Analytics použila DataContractSerializer, takže obsah zprávy obsahuje značky XML. Například:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

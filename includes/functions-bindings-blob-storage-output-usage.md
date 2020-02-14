@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 414381d42c52e7489fbd6aaacf0f079cdd978ebe
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 0c0ab0e62a5d951f0bc0e237f44cf55c5b8e16cc
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642094"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77202096"
 ---
 Můžete vytvořit vazby na následující typy pro zápis objektů BLOB:
 
@@ -30,12 +30,12 @@ Můžete vytvořit vazby na následující typy pro zápis objektů BLOB:
 * `CloudPageBlob`<sup>2</sup>
 * `CloudAppendBlob`<sup>2</sup>
 
-<sup>1</sup> vyžaduje vazbu `direction` "in" v *Function. JSON* nebo `FileAccess.Read` v knihovně C# tříd. Můžete však použít objekt kontejneru, který modul runtime poskytuje k provádění operací zápisu, jako je například nahrání objektů blob do kontejneru.
+<sup>1</sup> vyžaduje, aby vazba "in" v knihovně C# tříd `direction` *Function. JSON* nebo `FileAccess.Read`. Můžete však použít objekt kontejneru, který modul runtime poskytuje k provádění operací zápisu, jako je například nahrání objektů blob do kontejneru.
 
-<sup>2</sup> vyžaduje vazbu `direction` "InOut" v *Function. JSON* nebo `FileAccess.ReadWrite` v knihovně C# tříd.
+<sup>2</sup> vyžaduje `direction` vazbu "InOut" v knihovně C# tříd *Function. JSON* nebo `FileAccess.ReadWrite`.
 
-Pokud se pokusíte vytvořit propojení s jedním z typů sad SDK úložiště a získat chybovou zprávu, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby Storage](#azure-storage-sdk-version-in-functions-1x).
+Pokud se pokusíte vytvořit propojení s jedním z typů sad SDK úložiště a získat chybovou zprávu, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby Storage](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x).
 
-V asynchronních funkcí, použijte vrácenou hodnotu nebo `IAsyncCollector` místo `out` parametru.
+V asynchronních funkcích použijte místo parametru `out` návratovou hodnotu nebo `IAsyncCollector`.
 
-Vazba na `string` nebo `Byte[]` je doporučena pouze v případě, že velikost objektu BLOB je malá, protože celý obsah objektu BLOB je načten do paměti. Obecně je vhodnější použít `Stream` typ nebo. `CloudBlockBlob` Další informace naleznete v části [využití souběžnosti a paměti](#trigger---concurrency-and-memory-usage) výše v tomto článku.
+Vazba na `string` nebo `Byte[]` se doporučuje pouze v případě, že je velikost objektu BLOB malá, protože celý obsah objektu BLOB je načten do paměti. Obecně je vhodnější použít `Stream` nebo `CloudBlockBlob` typ. Další informace naleznete v části [využití souběžnosti a paměti](../articles/azure-functions/functions-bindings-storage-blob-trigger.md#concurrency-and-memory-usage) výše v tomto článku.

@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 58070cab1221b9d9585784d82cf1a48afcedb8af
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ce7f3eafa57cbd993be98f4a2da3d89cb312f9b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802827"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190694"
 ---
 # <a name="security-controls-for-azure-sql-database"></a>Ovládací prvky zabezpečení pro Azure SQL Database
 
@@ -25,7 +25,7 @@ SQL Database zahrnuje [jednu databázi](sql-database-single-index.yml) i [spravo
 
 ## <a name="network"></a>Síť
 
-| Řízení zabezpečení | Ano/Ne | Poznámky |
+| Řízení zabezpečení | Ano/Ne | Poznámky: |
 |---|---|--|
 | Podpora koncového bodu služby| Ano | Platí pouze pro [jedinou databázi](sql-database-single-index.yml) . |
 | Podpora injektáže v Azure Virtual Network| Ano | Platí jenom pro [spravovanou instanci](sql-database-managed-instance.md) . |
@@ -34,38 +34,38 @@ SQL Database zahrnuje [jednu databázi](sql-database-single-index.yml) i [spravo
 
 ## <a name="monitoring--logging"></a>Monitorování protokolování &
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky:|
 |---|---|--|
 | Podpora monitorování Azure, například Log Analytics nebo Application Insights| Ano | SecureSphere řešení SIEM z Imperva je také podporováno prostřednictvím integrace služby [Azure Event Hubs](../event-hubs/index.yml) prostřednictvím [auditování SQL](sql-database-auditing.md). |
 | Řízení-rovina a Správa – protokolování a audit roviny| Ano | Ano jenom pro některé události |
-| Protokolování a audit roviny dat | Ano | Via [SQL audit](sql-database-auditing.md) |
+| Protokolování a audit roviny dat | Ano | Prostřednictvím [auditu SQL](sql-database-auditing.md) |
 
 ## <a name="identity"></a>Identita
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky:|
 |---|---|--|
 | Ověřování| Ano | Azure Active Directory (Azure AD) |
-| Autorizace| Ano | Žádný |
+| Autorizace| Ano | Žádná |
 
 ## <a name="data-protection"></a>Ochrana dat
 
-| Řízení zabezpečení | Ano/Ne | Poznámky |
+| Řízení zabezpečení | Ano/Ne | Poznámky: |
 |---|---|--|
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano | Označuje se jako "použití šifrování", jak je popsáno v článku [Always Encrypted](sql-database-always-encrypted.md). Šifrování na straně serveru používá [transparentní šifrování dat](transparent-data-encryption-azure-sql.md).|
 | Šifrování při přenosu:<ul><li>Šifrování Azure ExpressRoute</li><li>Šifrování ve virtuální síti</li><li>Šifrování mezi virtuálními sítěmi</ul>| Ano | Pomocí protokolu HTTPS. |
 | Zpracování šifrovacího klíče, jako je například CMK nebo BYOK| Ano | Jsou nabízeny zpracování klíčů spravovaných službou i zákazníkem. Druhá z nich je nabízena prostřednictvím [Azure Key Vault](../key-vault/index.yml). |
 | Šifrování na úrovni sloupce poskytované datovými službami Azure| Ano | Prostřednictvím [Always Encrypted](sql-database-always-encrypted.md). |
-| Šifrovaná volání rozhraní API| Ano | Pomocí protokolu HTTPS/SSL. |
+| Šifrovaná volání rozhraní API| Ano | Pomocí protokolu HTTPS/TLS. |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky:|
 |---|---|--|
-| Podpora správy konfigurace, jako je například Správa verzí konfigurace| Ne  | Žádný |
+| Podpora správy konfigurace, jako je například Správa verzí konfigurace| Ne  | Žádná |
 
 ## <a name="additional-security-controls-for-sql-database"></a>Další ovládací prvky zabezpečení pro SQL Database
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky:|
 |---|---|--|
 | Preventivní: posouzení ohrožení zabezpečení | Ano | Další informace najdete v tématu [Služba posouzení ohrožení zabezpečení SQL vám pomůže identifikovat slabá místa databáze](sql-vulnerability-assessment.md). |
 | Preventivní: zjišťování a klasifikace dat  | Ano | Viz [Azure SQL Database a SQL Data Warehouse klasifikace & zjišťování dat](sql-database-data-discovery-and-classification.md). |

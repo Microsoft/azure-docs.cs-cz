@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87f3e815f541ad4cfabc22d917ca9cecba47b50f
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 87224c9e3e697b86aab51d1e922af8ab2130ac40
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077604"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186234"
 ---
 # <a name="building-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
@@ -32,15 +32,15 @@ Jak organizace vytváří tyto zásady? Co je potřeba?
 
 ### <a name="users-and-groups"></a>Uživatelé a skupiny
 
-Uživatelé a skupiny přiřadí, kdo bude zásada zahrnovat nebo vyloučit. Toto přiřazení může zahrnovat všechny uživatele, konkrétní skupiny uživatelů, role adresáře nebo externí uživatele typu Host. 
+[Uživatelé a skupiny](concept-conditional-access-users-groups.md) přiřadí, kdo bude zásada zahrnovat nebo vyloučit. Toto přiřazení může zahrnovat všechny uživatele, konkrétní skupiny uživatelů, role adresáře nebo externí uživatele typu Host. 
 
 ### <a name="cloud-apps-or-actions"></a>Cloudové aplikace nebo akce
 
-Cloudové aplikace nebo akce můžou zahrnovat nebo vyloučit cloudové aplikace nebo uživatelské akce, které budou platit pro tyto zásady.
+[Cloudové aplikace nebo akce](concept-conditional-access-cloud-apps.md) můžou zahrnovat nebo vyloučit cloudové aplikace nebo uživatelské akce, které budou platit pro tyto zásady.
 
 ### <a name="conditions"></a>Podmínky
 
-Zásada může obsahovat více podmínek.
+Zásada může obsahovat více [podmínek](concept-conditional-access-conditions.md).
 
 #### <a name="sign-in-risk"></a>Riziko přihlášení
 
@@ -66,17 +66,19 @@ Tato podmínka přiřazení umožňuje zásadám podmíněného přístupu cíli
 
 Tento ovládací prvek slouží k vyloučení zařízení, která jsou připojená k hybridní službě Azure AD, nebo označení kompatibilního v Intune. Toto vyloučení se dá udělat pro blokování nespravovaných zařízení. 
 
-## <a name="access-controls"></a>Ovládací prvky přístupu
+## <a name="access-controls"></a>Řízení přístupu
 
 Část řízení přístupu v zásadách podmíněného přístupu řídí způsob, jakým se zásady vynutily.
 
-### <a name="grant"></a>Udělení
+### <a name="grant"></a>Udělit
+
+[Udělení oprávnění](concept-conditional-access-grant.md) správcům poskytuje prostředky pro vynucení zásad, kde můžou zablokovat nebo udělit přístup.
 
 #### <a name="block-access"></a>Blokovat přístup
 
 Blok přístupu zablokuje přístup pouze v rámci zadaných přiřazení. Ovládací prvek blokování je výkonný a měl by být wielded s příslušným vědomím.
 
-#### <a name="grant-access"></a>Udělit přístup
+#### <a name="grant-access"></a>Udělení přístupu
 
 Řízení grant může aktivovat vynucení jednoho nebo více ovládacích prvků. 
 
@@ -84,7 +86,7 @@ Blok přístupu zablokuje přístup pouze v rámci zadaných přiřazení. Ovlá
 - Vyžadovat, aby zařízení byla označená jako vyhovující (Intune)
 - Vyžadovat zařízení připojené k hybridní službě Azure AD
 - Vyžaduje se klientem schválená aplikace.
-- Vyžadovat zásady ochrany aplikací
+- Vyžadování zásad ochrany aplikací
 
 Správci se mohou rozhodnout, že budou vyžadovat jeden z předchozích ovládacích prvků nebo všechny vybrané ovládací prvky pomocí následujících možností. Výchozí nastavení pro více ovládacích prvků vyžaduje všechny.
 
@@ -93,12 +95,12 @@ Správci se mohou rozhodnout, že budou vyžadovat jeden z předchozích ovláda
 
 ### <a name="session"></a>Relace
 
-Řízení relací může omezit prostředí 
+[Řízení relací](concept-conditional-access-session.md) může omezit prostředí 
 
-- Používat omezení vynucená aplikací
+- Použít omezení pro uplatnění aplikace
    - V současné době funguje pouze s Exchange Online a SharePoint Online.
       - Předá informace o zařízení, aby bylo umožněno řízení přístupu na základě úplného nebo omezeného přístupu.
-- Používat Řízení podmíněného přístupu k aplikacím
+- Použít Řízení podmíněného přístupu k aplikacím
    - Používá signály z Microsoft Cloud App Security k provádění akcí jako: 
       - Blokuje stahování, vyjmutí, kopírování a tisk citlivých dokumentů.
       - Monitorovat nebezpečné chování relace.
@@ -121,11 +123,11 @@ Zásada podmíněného přístupu musí obsahovat minimálně následující pod
 
 ![Prázdné zásady podmíněného přístupu](./media/concept-conditional-access-policies/conditional-access-blank-policy.png)
 
-## <a name="next-steps"></a>Další postup
+V článku [společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md) jsou některé zásady, které považujeme za užitečné pro většinu organizací.
+
+## <a name="next-steps"></a>Další kroky
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
-
-[Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
 
 [Plánování cloudového nasazení Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
 

@@ -1,26 +1,25 @@
 ---
-title: Nastavení clusteru pro Apache a R Server ve službě Azure HDInsight
+title: Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších
 description: Nastavte clustery Hadoop, Kafka, Spark, HBA, R Server nebo neplní clustery pro HDInsight z prohlížeče, rozhraní příkazového řádku Azure Classic, Azure PowerShell, REST nebo sady SDK.
-keywords: instalace clusteru Hadoop, instalace clusteru Kafka, instalace clusteru Spark, co je cluster v Hadoop
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
-ms.date: 02/03/2020
-ms.openlocfilehash: 2c9c5b35110be8f9e51d2205f9fe63dfa4ef8e10
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/12/2020
+ms.openlocfilehash: b4922326b92efa88552eb100488a29fc53e1f914
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031010"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198972"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Naučte se, jak nastavit a nakonfigurovat clustery v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka, interaktivních dotazů, Apache HBA, služeb ML nebo Apache Storm. Přečtěte si také, jak přizpůsobit clustery a přidat zabezpečení jejich připojením k doméně.
+Naučte se, jak nastavit a nakonfigurovat Apache Hadoop, Apache Spark, Apache Kafka, interaktivní dotazy, Apache HBA, služby ML nebo Apache Storm ve službě HDInsight. Přečtěte si také, jak přizpůsobit clustery a přidat zabezpečení jejich připojením k doméně.
 
 Cluster Hadoop se skládá z několika virtuálních počítačů (uzlů), které se používají pro distribuované zpracování úloh. Azure HDInsight zpracovává podrobnosti o implementaci instalace a konfigurace jednotlivých uzlů, takže stačí zadat obecné informace o konfiguraci.
 
@@ -40,25 +39,33 @@ V následující tabulce jsou uvedeny různé metody, které můžete použít k
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Šablony Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
-## <a name="basic-cluster-setup"></a>Základní nastavení clusteru
-
 Tento článek vás provede instalačním programem v [Azure Portal](https://portal.azure.com), kde můžete vytvořit cluster HDInsight pomocí výchozího zobrazení nebo *klasického*nastavení.
 
-![možnosti vytvoření vlastního rychlého vytvoření v HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
+## <a name="basics"></a>Základy
 
-Postupujte podle pokynů na obrazovce. Níže jsou uvedeny podrobnosti pro:
+![vlastní rychlé možnosti vytvoření HDInsight](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-basics-blank-fs.png)
 
-* [Název skupiny prostředků](#resource-group-name)
-* [Typy a konfigurace clusteru](#cluster-types)
-* [Název clusteru](#cluster-name)
-* [Přihlášení ke clusteru a uživatelské jméno SSH](#cluster-login-and-ssh-username)
-* [Umístění](#location)
+### <a name="project-details"></a>Podrobnosti o projektu
 
-## <a name="resource-group-name"></a>Název skupiny prostředků
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) vám pomůže pracovat s prostředky v aplikaci jako se skupinou, která se označuje jako [Skupina prostředků](../azure-resource-manager/management/overview.md#resource-groups)Azure. Všechny prostředky pro aplikaci můžete nasadit, aktualizovat, monitorovat nebo odstranit v rámci jediné koordinované operace.
 
-[Azure Resource Manager](../azure-resource-manager/management/overview.md) vám pomůže pracovat s prostředky v aplikaci jako se skupinou, která se označuje jako skupina prostředků Azure. Všechny prostředky pro aplikaci můžete nasadit, aktualizovat, monitorovat nebo odstranit v rámci jediné koordinované operace.
+### <a name="cluster-details"></a>Podrobnosti o clusteru
 
-## <a name="cluster-types"></a>Typy a konfigurace clusteru
+#### <a name="cluster-name"></a>Název clusteru
+
+Názvy clusterů HDInsight mají následující omezení:
+
+* Povolené znaky: a-z, 0-9, A až Z
+* Maximální délka: 59
+* Rezervované názvy: aplikace
+* Obor názvů clusteru je pro všechny Azure v rámci všech předplatných. Proto musí být název clusteru jedinečný po celém světě.
+* Prvních šest znaků musí být jedinečný v rámci virtuální sítě.
+
+#### <a name="region"></a>Oblast
+
+Umístění clusteru nemusíte explicitně určovat: cluster je ve stejném umístění jako výchozí úložiště. Seznam podporovaných oblastí získáte tak, že vyberete rozevírací seznam **oblast** na [ceny služby HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
+
+#### <a name="cluster-type"></a>Typ clusteru
 
 Azure HDInsight v současné době poskytuje následující typy clusterů, z nichž každá obsahuje sadu součástí, které poskytují určité funkce.
 
@@ -75,47 +82,33 @@ Azure HDInsight v současné době poskytuje následující typy clusterů, z ni
 | [Spark](spark/apache-spark-overview.md) |Zpracování v paměti, interaktivní dotazy, zpracování streamu mikrodávkování |
 | [Chráněn](storm/apache-storm-overview.md) |Zpracování událostí v reálném čase |
 
-### <a name="hdinsight-version"></a>Verze HDInsight
+#### <a name="version"></a>Verze
 
 Vyberte verzi HDInsight pro tento cluster. Další informace najdete v tématu [podporované verze HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
-## <a name="cluster-name"></a>Název clusteru
-
-Názvy clusterů HDInsight mají následující omezení:
-
-* Povolené znaky: a-z, 0-9, A až Z
-* Maximální délka: 59
-* Rezervované názvy: aplikace
-* Obor názvů clusteru je pro všechny Azure v rámci všech předplatných. Proto musí být název clusteru jedinečný po celém světě.
-* Prvních šest znaků musí být v rámci virtuální sítě jedinečné.
-
-## <a name="cluster-login-and-ssh-username"></a>Přihlášení ke clusteru a uživatelské jméno SSH
+### <a name="cluster-credentials"></a>Pověření clusteru
 
 Clustery HDInsight umožňují během vytváření clusteru konfigurovat dva uživatelské účty:
 
-* Uživatel HTTP: výchozí uživatelské jméno je *admin*. Používá základní konfiguraci na Azure Portal. V některých případech se nazývá "uživatel clusteru".
-* Uživatel SSH: slouží k připojení ke clusteru přes SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Uživatelské jméno přihlášení clusteru: výchozí uživatelské jméno je *admin*. Používá základní konfiguraci na Azure Portal. Někdy se nazývá "uživatel clusteru" nebo "HTTP uživatel".
+* Uživatelské jméno Secure Shell (SSH): slouží k připojení ke clusteru přes SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Uživatelské jméno protokolu HTTP má následující omezení:
 
-* Povolené speciální znaky: _ a @
+* Povolené speciální znaky: `_` a `@`
 * Nepovolené znaky: #;. ",\/:! *? $ (){}[] < > | &--= +% ~ ^ Space
 * Maximální délka: 20
 
 Uživatelské jméno SSH má následující omezení:
 
-* Povolené speciální znaky: _ a @
+* Povolené speciální znaky:`_` a `@`
 * Nepovolené znaky: #;. ",\/:! *? $ (){}[] < > | &--= +% ~ ^ Space
 * Maximální délka: 64
 * Rezervované názvy: Hadoop, uživatelé, Oozie, podregistr, mapred, Ambari-QA, Zookeeper, tez, HDFS, Sqoop, příze, hcat, AMS, HBA, doplňování, správce, správce, uživatel, uživatel1, test, uživatel2, test1, user3, admin1, 1, 123, a, ACTUser, ADM, admin2, ASPNET, Backup, Console, David, Host, Jan, Owner, root, server, SQL, podpora, support_388945a0, sys, test2, test3, user4, user5, Spark
 
-Balíček Enterprise Security umožňuje integrovat HDInsight se službou Active Directory a Apache Ranger. Pomocí balíčku podnikového zabezpečení lze vytvořit více uživatelů.
+## <a name="storage"></a>Úložiště
 
-## <a name="location"></a>Umístění (oblastí) pro clustery a úložiště
-
-Umístění clusteru nemusíte explicitně určovat: cluster je ve stejném umístění jako výchozí úložiště. Seznam podporovaných oblastí získáte tak, že kliknete na rozevírací seznam **oblast** na [ceny služby HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
-
-## <a name="storage-endpoints-for-clusters"></a>Koncové body úložiště pro clustery
+![Nastavení úložiště clusteru: koncové body kompatibilní se HDFS](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
 
 I když místní instalace systému Hadoop používá pro úložiště v clusteru systém souborů DFS (Distributed File System) Hadoop (HDFS), v cloudu použijete koncové body úložiště připojené ke clusteru. Použití cloudového úložiště znamená, že můžete bezpečně odstranit clustery HDInsight používané pro výpočty a přitom zachovat data.
 
@@ -134,11 +127,9 @@ Další informace o možnostech úložiště ve službě HDInsight najdete v té
 
 Během konfigurace pro výchozí koncový bod úložiště zadáte kontejner objektů blob Azure Storage účtu nebo Data Lake Storage. Výchozí úložiště obsahuje protokoly aplikací a systému. Volitelně můžete zadat další propojené účty Azure Storage a účty Data Lake Storage, ke kterým může cluster přistupovat. Cluster HDInsight a závislé účty úložiště musí být ve stejném umístění Azure.
 
-![Nastavení úložiště clusteru: koncové body úložiště kompatibilní s HDFS](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-storage.png)
-
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-### <a name="optional-metastores"></a>Volitelné metaúložiště
+### <a name="metastore-settings"></a>Nastavení metastore
 
 Můžete vytvořit volitelný podregistr nebo Apache Oozie metaúložiště. Ne všechny typy clusterů ale podporují metaúložiště a Azure SQL Data Warehouse nejsou kompatibilní s metaúložiště.
 
@@ -147,28 +138,40 @@ Další informace najdete v tématu [použití externích úložišť metadat ve
 > [!IMPORTANT]  
 > Když vytvoříte vlastní metastore, nepoužívejte v názvu databáze pomlčky, spojovníky nebo mezery. To může způsobit selhání procesu vytváření clusteru.
 
-### <a name="use-hiveoozie-metastore"></a>metastore Hive
+#### <a name="sql-database-for-hive"></a>SQL Database pro podregistr
 
 Pokud chcete uchovat tabulky podregistru po odstranění clusteru HDInsight, použijte vlastní metastore. Pak můžete metastore připojit k jinému clusteru HDInsight.
 
 An HDInsight metastore, která je vytvořená pro jednu verzi clusteru HDInsight, nejde sdílet mezi různými verzemi clusterů HDInsight. Seznam verzí služby HDInsight najdete v tématu [podporované verze služby HDInsight](hdinsight-component-versioning.md#supported-hdinsight-versions).
 
-### <a name="oozie-metastore"></a>Oozie metastore
+#### <a name="sql-database-for-oozie"></a>SQL Database pro Oozie
 
 Pokud chcete zvýšit výkon při použití Oozie, použijte vlastní metastore. Metastore může také poskytnout přístup k datům úlohy Oozie po odstranění clusteru.
+
+#### <a name="sql-database-for-ambari"></a>SQL Database pro Ambari
+
+Ambari se používá k monitorování clusterů HDInsight, provádění změn konfigurace a ukládání informací o správě clusteru a také k historii úloh. Funkce vlastní Ambari DB umožňuje nasadit nový cluster a nastavit Ambari v externí databázi, kterou spravujete. Další informace najdete v tématu [vlastní AMBARI DB](./hdinsight-custom-ambari-db.md).
 
 > [!IMPORTANT]  
 > Nemůžete znovu použít vlastní Oozie metastore. Pokud chcete použít vlastní metastore Oozie, musíte při vytváření clusteru HDInsight zadat prázdnou Azure SQL Database.
 
-## <a name="enterprise-security-package"></a>Balíček podnikového zabezpečení
+## <a name="security--networking"></a>Zabezpečení a sítě
+
+![možnosti vytvoření HDInsight výběr balíčku podnikového zabezpečení](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking.png)
+
+### <a name="enterprise-security-package"></a>Balíček podnikového zabezpečení
 
 Pro typy clusterů Hadoop, Spark, HBA, Kafka a interaktivní dotaz můžete povolit **balíček zabezpečení podniku**. Tento balíček nabízí možnost mít bezpečnější instalaci clusteru pomocí Apache Ranger a integraci s Azure Active Directory. Další informace najdete v tématu [Přehled podnikového zabezpečení ve službě Azure HDInsight](./domain-joined/hdinsight-security-overview.md).
 
-![možnosti vytvoření HDInsight výběr balíčku podnikového zabezpečení](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-security-networking-esp.png)
+Balíček Enterprise Security umožňuje integrovat HDInsight se službou Active Directory a Apache Ranger. Pomocí balíčku podnikového zabezpečení lze vytvořit více uživatelů.
 
 Další informace o vytvoření clusteru HDInsight připojeného k doméně najdete v tématu [vytvoření prostředí sandboxu HDInsight připojeného k doméně](./domain-joined/apache-domain-joined-configure.md).
 
-## <a name="extend-clusters-with-a-virtual-network"></a>Rozšiřování clusterů pomocí virtuální sítě
+### <a name="tls"></a>TLS
+
+Další informace najdete v tématu [zabezpečení transportní vrstvy](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security) .
+
+### <a name="virtual-network"></a>Virtuální síť
 
 Pokud vaše řešení vyžaduje technologie, které jsou rozdělené mezi více typů clusterů HDInsight, může [virtuální síť Azure](https://docs.microsoft.com/azure/virtual-network) propojit požadované typy clusterů. Tato konfigurace umožňuje clusterům a veškerý kód, který do nich nasazujete, k přímé komunikaci.
 
@@ -176,11 +179,25 @@ Další informace o používání služby Azure Virtual Network s HDInsight najd
 
 Příklad použití dvou typů clusterů v rámci virtuální sítě Azure najdete v tématu [použití Apache Spark strukturovaného streamování s Apache Kafka](hdinsight-apache-kafka-spark-structured-streaming.md). Další informace o používání služby HDInsight s virtuální sítí, včetně specifických požadavků na konfiguraci pro virtuální síť, najdete v tématu [plánování virtuální sítě pro HDInsight](hdinsight-plan-virtual-network-deployment.md).
 
-## <a name="configure-cluster-size"></a>Konfigurace velikosti clusteru
+### <a name="disk-encryption-setting"></a>Nastavení šifrování disku
+
+Další informace najdete v tématu [šifrování klíčového disku spravovaného zákazníkem](./disk-encryption.md).
+
+### <a name="kafka-rest-proxy"></a>Proxy REST Kafka
+
+Toto nastavení je k dispozici pouze pro typ clusteru Kafka. Další informace najdete v tématu [použití proxy REST](./kafka/rest-proxy.md).
+
+### <a name="identity"></a>Identita
+
+Další informace najdete v tématu [spravované identity ve službě Azure HDInsight](./hdinsight-managed-identities.md).
+
+## <a name="configuration--pricing"></a>Konfigurace a ceny
+
+![HDInsight Volba velikosti uzlu](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
 
 Účtuje se vám využití uzlu, dokud cluster existuje. Fakturace začne při vytvoření clusteru a zastaví se při jeho odstranění. Clustery nemůžou být nepřidělené nebo se zablokují.
 
-### <a name="number-of-nodes-for-each-cluster-type"></a>Počet uzlů pro každý typ clusteru
+### <a name="node-configuration"></a>Konfigurace uzlů
 
 Každý typ clusteru má svůj vlastní počet uzlů, terminologii pro uzly a výchozí velikost virtuálního počítače. V následující tabulce je počet uzlů pro každý typ uzlu v závorkách.
 
@@ -211,8 +228,6 @@ Pokud jste právě zkoušeli HDInsight, doporučujeme použít jeden pracovní u
 
 Když použijete Azure Portal ke konfiguraci clusteru, velikost uzlu je k dispozici na kartě **Konfigurace + ceny** . Na portálu můžete také zobrazit náklady spojené s různými velikostmi uzlů.
 
-![HDInsight Volba velikosti uzlu](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration.png)
-
 ### <a name="virtual-machine-sizes"></a>Velikosti virtuálních počítačů
 
 Při nasazení clusterů vyberte výpočetní prostředky na základě řešení, které plánujete nasadit. Pro clustery HDInsight se používají následující virtuální počítače:
@@ -227,19 +242,15 @@ Pokud chcete zjistit, jakou hodnotu byste měli použít k určení velikosti vi
 
 Další informace najdete v tématu [velikosti pro virtuální počítače](../virtual-machines/windows/sizes.md). Informace o cenách různých velikostí najdete v tématu ceny služby [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight).
 
-## <a name="install-hdinsight-applications-on-clusters"></a>Instalace aplikací HDInsight do clusterů
+### <a name="add-application"></a>Přidání aplikace
 
 Aplikace HDInsight je aplikace, kterou uživatelé mohou nainstalovat na clusteru HDInsight se systémem Linux. Můžete používat aplikace od Microsoftu, třetích stran nebo si sami vyvíjíte. Další informace najdete v tématu [instalace aplikací Apache Hadoop třetích stran v Azure HDInsight](hdinsight-apps-install-applications.md).
 
 Většina aplikací HDInsight je nainstalovaná na prázdném hraničním uzlu.  Prázdný hraniční uzel je virtuální počítač se systémem Linux se stejnými klientskými nástroji, který je nainstalovaný a nakonfigurovaný jako hlavní uzel. Hraniční uzel můžete použít pro přístup ke clusteru, testování klientských aplikací a hostování klientských aplikací. Další informace najdete v tématu [použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md).
 
-![Azure Portal aplikace konfigurace clusteru](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-applications.png)
-
-## <a name="script-actions"></a>Akce skriptů
+### <a name="script-actions"></a>Akce skriptů
 
 Během vytváření můžete nainstalovat další součásti nebo přizpůsobit konfiguraci clusteru pomocí skriptů. Tyto skripty jsou vyvolány prostřednictvím **akce skriptu**, což je možnost konfigurace, kterou lze použít z Azure Portal, rutin prostředí Windows PowerShell pro HDInsight nebo sady HDInsight .NET SDK. Další informace najdete v tématu [přizpůsobení clusteru HDInsight pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md).
-
-![Azure Portal akce skriptu konfigurace clusteru](./media/hdinsight-hadoop-provision-linux-clusters/azure-portal-cluster-configuration-scriptaction.png)
 
 Některé nativní komponenty Java, jako je Apache Mahout a Cascading, se dají spouštět v clusteru jako soubory v archivu Java (JAR). Tyto soubory JAR je možné distribuovat, aby Azure Storage a odeslaly do clusterů HDInsight pomocí mechanismů pro odesílání úloh Hadoop. Další informace najdete v tématu [odeslání Apache Hadoop úloh programově](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 

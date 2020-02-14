@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a9b545d71f21138c0374cf199ce10dc2dc246afb
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732140"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190677"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Povolit a vytvořit velké sdílené složky souborů
 
-Původně se standardní sdílené složky mohly škálovat jenom na 5 TiB. Teď se s velkými sdílenými složkami můžou škálovat až 100 TiB. Toto škálování můžete povolit u svých stávajících účtů úložiště pro existující sdílené složky. Ve výchozím nastavení se sdílené složky Premium škálují až na 100 TiB.
+Když v účtu úložiště povolíte velké sdílené složky, sdílené složky se můžou škálovat až na 100 TiB. Toto škálování můžete povolit u svých stávajících účtů úložiště pro existující sdílené složky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -26,14 +26,14 @@ Původně se standardní sdílené složky mohly škálovat jenom na 5 TiB. Teď
 
 ## <a name="restrictions"></a>Omezení
 
-V současné době můžete použít jenom LRS nebo ZRS na účtech s povolenými velkými sdílenými soubory. Nemůžete použít GZRS, GRS nebo RA-GRS.
+V současné době můžete použít jenom místně redundantní úložiště (LRS) nebo úložiště ZRS (zóna – redundantní úložiště) na účtech s povolenými velkými sdílenými soubory. Nemůžete použít geograficky redundantní úložiště (GZRS), geograficky redundantní úložiště (GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GRS).
 Povolení velkých sdílených složek na účtu je nevratný proces. Když ho povolíte, nebudete moct účet převést na GZRS, GRS nebo RA-GRS.
 
 ## <a name="create-a-new-storage-account"></a>Vytvoření nového účtu úložiště
 
 ### <a name="portal"></a>Portál
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 1. Na webu Azure Portal vyberte **Všechny služby**. 
 1. V seznamu prostředků zadejte **účty úložiště**. Při psaní se seznam filtruje podle vašeho zadání. Vyberte **Účty úložiště**.
 1. V okně **účty úložiště** , které se zobrazí, vyberte **Přidat**.
@@ -49,17 +49,17 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
 
    |Pole  |Hodnota  |
    |---------|---------|
-   |Model nasazení     |Správce prostředků         |
-   |Výkon     |Úroveň Standard         |
+   |Model nasazení     |Resource Manager         |
+   |Výkon     |Standard         |
    |Account kind (Druh účtu)     |StorageV2 (obecné účely v2)         |
-   |Vrstva přístupu     |Hot         |
+   |Access tier (Vrstva přístupu)     |Hot         |
 
 1. Vyberte **Upřesnit**a potom vyberte možnost **povoleno** napravo od **velkých sdílených složek**.
 1. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
 
     ![Snímek obrazovky s přepínačem Enabled na novém účtu úložiště v Azure Portal](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 ### <a name="cli"></a>Rozhraní příkazového řádku
 

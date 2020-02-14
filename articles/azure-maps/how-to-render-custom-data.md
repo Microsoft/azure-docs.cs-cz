@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 049762382bb1a67da21f5b95fdf28319672bfca6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766033"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198203"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Vykreslovat vlastní data na rastrové mapě
 
-V tomto článku se dozvíte, jak používat funkci [statické Image Service](https://docs.microsoft.com/rest/api/maps/render/getmapimage) s kompozicí obrázků, která umožňuje překryvy na rastrové mapě. Složení obrázku zahrnuje možnost získat rastrovou dlaždici s dalšími daty, jako jsou vlastní špendlíky, popisky a překryvy geometrie.
+V tomto článku se dozvíte, jak používat [službu statického obrazu](https://docs.microsoft.com/rest/api/maps/render/getmapimage)s funkcí kompozice obrázků k umožnění překryvů nad rastrovou mapou. Složení obrázku zahrnuje možnost získat rastrovou dlaždici s dalšími daty, jako jsou vlastní špendlíky, popisky a překryvy geometrie.
 
 Chcete-li vykreslit vlastní špendlíky, popisky a překryvy geometrie, můžete použít aplikaci post. [Rozhraní API služby Azure Maps data Service](https://docs.microsoft.com/rest/api/maps/data) můžete použít k ukládání a vykreslování překryvů.
 
 > [!Tip]
 > Použití Azure Maps webové sady SDK je často mnohem výhodnější k zobrazení jednoduché mapy na webové stránce, než aby používala službu statických imagí. Webová sada SDK používá dlaždice mapy a pokud uživatel neposouvá a nezvětšuje mapu, často generuje pouze zlomek transakce na zatížení mapy. Všimněte si, že Azure Maps Web SDK obsahuje možnosti pro vypnutí posouvání a zvětšování. Azure Maps webová sada SDK navíc poskytuje bohatší sadu možností vizualizace dat než webová služba statické mapy.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps
 
@@ -43,7 +43,7 @@ Chcete-li vykreslit špendlíky s popisky a vlastní image, proveďte tyto kroky
 
 1. Vytvořte kolekci, do které se mají ukládat požadavky. V aplikaci pro odesílání vyberte **Nový**. V okně **vytvořit nové** vyberte **kolekce**. Pojmenujte kolekci a vyberte tlačítko **vytvořit** . 
 
-2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** pro špendlíky. Vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění, kam chcete žádost uložit, a pak vyberte **Uložit**.
+2. Pokud chcete vytvořit žádost, vyberte **Nový** znovu. V okně **vytvořit nové** vyberte **požadavek**. Zadejte **název žádosti** pro špendlíky. Vyberte kolekci, kterou jste vytvořili v předchozím kroku, jako umístění pro uložení žádosti. Potom vyberte **Uložit**.
     
     ![Vytvoření žádosti v post](./media/how-to-render-custom-data/postman-new.png)
 
@@ -148,7 +148,7 @@ Můžete také získat cestu a informace o umístění PIN pomocí [rozhraní AP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. Chcete-li získat udId, otevřete novou kartu v aplikaci post a na kartě tvůrce vyberte získat metodu HTTP a vytvořte požadavek GET na identifikátor URI stavu. Pokud se vaše data úspěšně nahrála, obdržíte udId v těle odpovědi. Zkopírujte udId.
+6. Pokud chcete získat udId, otevřete novou kartu v aplikaci pro odesílání. Na kartě tvůrce vyberte získat metodu HTTP. proveďte požadavek GET na identifikátor URI stavu. Pokud se vaše data úspěšně nahrála, obdržíte udId v těle odpovědi. Zkopírujte udId.
 
    ```JSON
    {

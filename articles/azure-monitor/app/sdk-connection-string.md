@@ -8,12 +8,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2cf3c784c711977a6fe758bb9017e1f0dc404c33
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8febe1fd749842a6db0cd1c9991f4002eb7cf2ad
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992063"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190099"
 ---
 # <a name="connection-strings"></a>Připojovací řetězce
 
@@ -140,10 +140,10 @@ V tomto příkladu tento připojovací řetězec Určuje Explicitní přepsání
 - Ve výchozím nastavení se schéma autorizace používá jako "ikey". 
 - Klíč instrumentace: 00000000-0000-0000-0000-000000000000
 - Identifikátory URI regionálních služeb jsou založené na explicitních hodnotách přepsání: 
-   - Přijímání: https://custom.com:111/
-   - Živá metrika: https://custom.com:222/
-   - Profiler: https://custom.com:333/ 
-   - Ladicí program: https://custom.com:444/   
+   - Ingestování: https:\//custom.com:111/
+   - Živá metrika: https:\//custom.com:222/
+   - Profiler: https:\//custom.com:333/ 
+   - Ladicí program: https:\//custom.com:444/   
 
 
 ## <a name="how-to-set-a-connection-string"></a>Nastavení připojovacího řetězce
@@ -275,7 +275,7 @@ Začínáme při spuštění:
 Začínáme při vývoji:
 
 * [ASP.NET](../../azure-monitor/app/asp-net.md)
-* [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
+* [Jádro ASP.NET](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
 * [Python (Preview)](../../azure-monitor/app/opencensus-python.md)

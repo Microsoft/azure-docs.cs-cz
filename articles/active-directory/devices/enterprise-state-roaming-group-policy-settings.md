@@ -1,58 +1,62 @@
 ---
-title: Nastavení MDM a zásady skupiny | Dokumentace Microsoftu
-description: Poskytuje informace o zásad skupiny a mobilní zařízení nastavení management (MDM), které byste neměli používat v zařízení vlastněných společností.
+title: Nastavení Zásady skupiny a MDM pro ESR-Azure Active Directory
+description: Nastavení správy pro Enterprise State Roaming
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 06/28/2019
+ms.date: 02/12/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3f2b1afa67ec36da4d4da57b296e696fd6c6910
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 11a18715385eca85c199b17f6a675be1a7e60153
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67481948"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194309"
 ---
-# <a name="group-policy-and-mdm-settings"></a>Nastavení zásad skupiny a MDM
-Použijte tyto zásady skupiny a nastavení správy mobilních zařízení jenom na zařízeních vlastněných společností, protože tyto zásady platí pro celé zařízení uživatele. Zásady MDM zakázání synchronizace nastavení pro osobní použití, zařízení ve vlastnictví uživatele bude mít negativní vliv na použití těchto zařízení. Kromě toho další uživatelské účty na zařízení také ovlivňuje zásady.
+# <a name="group-policy-and-mdm-settings"></a>Nastavení Zásady skupiny a MDM
 
-Podnikům, které chcete spravovat cestovní pro osobní zařízení (nespravovaného) můžete použít na webu Azure portal k povolení nebo zakázání roamingu, nikoli pomocí zásad skupiny nebo správy mobilních zařízení.
-Následující tabulky popisují nastavení zásad, která je k dispozici.
+Tato nastavení zásad skupiny a správy mobilních zařízení (MDM) použijte jenom na zařízeních vlastněných společností, protože tyto zásady se použijí na celé zařízení uživatele. Když použijete zásadu MDM a zakážete synchronizaci nastavení pro osobní zařízení vlastněná uživatelem, bude to mít negativní dopad na použití tohoto zařízení. Kromě toho zásady ovlivní i další uživatelské účty v zařízení.
+
+Podniky, které chtějí spravovat roaming osobních (nespravovaných) zařízení, můžou použít Azure Portal k povolení nebo zakázání roamingu místo použití Zásady skupiny nebo MDM.
+V následujících tabulkách jsou popsána nastavení zásad, která jsou k dispozici.
+
+> [!NOTE]
+> Tento článek se týká starší verze prohlížeče založeného na HTML v Microsoft Edge, který se spouští s Windows 10 v červenci 2015. Článek neplatí pro nový prohlížeč založený na Microsoft Edge chrom vydaný 15. ledna 2020. Další informace o chování synchronizace pro nové Microsoft Edge najdete v článku o [synchronizaci Microsoft Edge](https://docs.microsoft.com/deployedge/microsoft-edge-enterprise-sync).
 
 ## <a name="mdm-settings"></a>Nastavení MDM
-Nastavení zásad MDM platí pro Windows 10 a Windows 10 Mobile.  Podpora Windows 10 Mobile je dostupná jenom pro účet Microsoft na základě roaming prostřednictvím účtu OneDrive.  Najdete [zařízení a koncových bodů](enterprise-state-roaming-windows-settings-reference.md) podrobnosti o jaká zařízení se podporují pro synchronizaci Azure AD na základě.
+
+Nastavení zásad MDM se vztahuje na systémy Windows 10 a Windows 10 Mobile.  Podpora Windows 10 Mobile existuje jenom pro účet Microsoft roamingu prostřednictvím účtu OneDrive uživatele. Podrobnosti o tom, jaká zařízení jsou podporovaná pro synchronizaci na základě služby Azure AD, najdete v tématu [zařízení a koncové body](enterprise-state-roaming-windows-settings-reference.md) .
 
 | Název | Popis |
 | --- | --- |
-| Povolit připojení k účtu Microsoft |Umožňuje uživatelům provést ověření pomocí účtu Microsoft na zařízení |
-| Povolit synchronizaci nastavení |Umožňuje uživatelům zpřístupní Windows nastavení a data aplikací; Zakázání této zásady zakážete synchronizace, jakož i zálohování na mobilních zařízeních |
+| Umožňuje připojení k účtu Microsoft. |Umožňuje uživatelům ověřování pomocí účet Microsoft na zařízení. |
+| Povolí synchronizaci mých nastavení. |Umožňuje uživatelům roaming nastavení systému Windows a dat aplikací. Zakázáním těchto zásad se zakáže synchronizace i zálohování na mobilních zařízeních. |
 
 ## <a name="group-policy-settings"></a>Nastavení zásad skupiny
-Nastavení zásad skupiny platí pro zařízení s Windows 10, která jsou připojená k doméně služby Active Directory. V tabulce jsou zahrnuty i starší verze nastavení, která by se zobrazí ke správě nastavení synchronizace, ale nefungují pro Enterprise stav roamingu pro Windows 10, které jsou označeny pomocí "Nepoužívejte" v popisu.
 
-Tato nastavení se nacházejí ve: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
+Nastavení zásad skupiny platí pro zařízení s Windows 10, která jsou připojená k doméně služby Active Directory. Tabulka obsahuje taky starší nastavení, která se zobrazí při správě nastavení synchronizace, ale která nefungují pro Enterprise State Roaming pro Windows 10, která se v popisu poznamenala jako nepoužívat.
+
+Tato nastavení se nacházejí v následujících umístěních: `Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
 | Název | Popis |
 | --- | --- |
-| Účty: Blokovat účty Microsoft |Nastavení této zásady zabrání uživatelům v přidávání nových účtů Microsoft na tomto počítači |
-| Se nesynchronizují |Zabrání uživatelům zpřístupní Windows nastavení a data aplikací |
-| Se nesynchronizují přizpůsobení |Zakáže synchronizaci skupiny motivy |
-| Nastavení prohlížeče se nesynchronizují |Zakáže synchronizaci skupiny aplikace Internet Explorer |
-| Hesla se nesynchronizují |Zakáže synchronizaci hesel skupiny |
-| Další nastavení Windows se nesynchronizují |Zakáže synchronizaci ostatní Windows nastavení skupiny |
-| Přizpůsobení plochy se nesynchronizují |Nepoužívejte; nemá žádný vliv |
-| U měřených připojení se nesynchronizují |Zakáže roamingu v měřené připojení, například mobilní sítě 3 G |
-| Aplikace se nesynchronizují |Nepoužívejte; nemá žádný vliv |
-| Nastavení aplikace se nesynchronizují |Zakáže roaming dat aplikací |
-| Nastavení spuštění se nesynchronizují |Nepoužívejte; nemá žádný vliv |
+| Účty: blokovat účty Microsoft |Nastavení této zásady zabrání uživatelům v přidávání nových účtů Microsoft na tento počítač. |
+| Nesynchronizovat |Brání uživatelům v roamingu nastavení Windows a dat aplikací. |
+| Nesynchronizovat přizpůsobení |Zakáže synchronizaci skupiny motivů. |
+| Nesynchronizovat nastavení prohlížeče |Zakáže synchronizaci skupiny Internet Exploreru. |
+| Nesynchronizovat hesla |Zakáže synchronizaci skupiny hesel. |
+| Nesynchronizovat ostatní nastavení Windows |Zakáže synchronizaci ostatních skupin nastavení systému Windows. |
+| Nesynchronizovat individuální nastavení plochy |Nepoužívejte; nemá žádný vliv |
+| Nesynchronizovat u monitorovaných připojení |Zakáže roaming u připojení účtovaná podle objemu dat, jako je například mobilní aplikace 3G. |
+| Nesynchronizovat aplikace |Nepoužívejte; nemá žádný vliv |
+| Nesynchronizovat nastavení aplikace |Zakáže roaming dat aplikace. |
+| Nesynchronizovat počáteční nastavení |Nepoužívejte; nemá žádný vliv |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Přehled najdete v tématu [enterprise State Roaming přehled](enterprise-state-roaming-overview.md).
-
-
+Přehled najdete v tématu [Přehled služby Enterprise State Roaming](enterprise-state-roaming-overview.md).

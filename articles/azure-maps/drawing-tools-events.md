@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: fd235f3f39d67f86c8387add79ca0dbf17dc5906
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911668"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198305"
 ---
 # <a name="drawing-tool-events"></a>Události nástrojů pro kreslení
 
-Při použití nástrojů pro kreslení na mapě je často vhodné reagovat na určité události, když uživatel na mapě nakreslí. V následující tabulce jsou uvedeny všechny události, které třída `DrawingManager` podporuje.
+Při použití nástrojů pro kreslení na mapě je vhodné reagovat na určité události, když uživatel na mapě nakreslí. Tato tabulka uvádí všechny události, které třída `DrawingManager` podporuje.
 
 | Událost | Popis |
 |-------|-------------|
 | `drawingchanged` | Je aktivována, když dojde k přidání nebo změně jakékoli souřadnice v obrazci. | 
-| `drawingchanging` | Je aktivována, když se zobrazí libovolná souřadnice náhledu pro obrazec. Například se bude považovat víckrát za přetáhnutí souřadnice. | 
+| `drawingchanging` | Je aktivována, když se zobrazí libovolná souřadnice náhledu pro obrazec. Tato událost se například aktivuje víckrát, protože je přetažena souřadnice. | 
 | `drawingcomplete` | Je aktivována, když byl tvar dokončen nebo vyčerpán z režimu úprav. |
 | `drawingmodechanged` | Je aktivována při změně režimu kreslení. Nový režim kreslení se předává do obslužné rutiny události. |
 | `drawingstarted` | Je aktivována, když uživatel spustí kreslení tvaru nebo vloží tvar do režimu úprav.  |
@@ -39,11 +39,11 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>události n�
 
 ## <a name="examples"></a>Příklady
 
-Následují příklady některých běžných scénářů, které používají události nástrojů pro kreslení.
+Pojďme se podívat na některé běžné scénáře, které používají události nástrojů pro kreslení.
 
 ### <a name="select-points-in-polygon-area"></a>Vybrat body v oblasti mnohoúhelníku
 
-Následující kód ukazuje, jak monitorovat kresby tvarů, které představují mnohoúhelníkové oblasti (mnohoúhelníky, obdélníky a kroužky), a určují, které datové body na mapě jsou v oblasti vykreslování. Událost `drawingcomplete` slouží k aktivaci logiky SELECT. V logice Select jsou všechny datové body na mapě předány cyklicky a testovány pro průnik s oblastí mnohoúhelníku vykresleného tvaru. Tento příklad využívá Open Source knihovnu [Turf. js](https://turfjs.org/) k provedení výpočtu prostorového průniku.
+Tento kód ukazuje, jak monitorovat událost uživatelských tvarů kresby. V tomto příkladu kód sleduje obrazce mnohoúhelníků, obdélníků a kroužků. Pak určuje, které datové body na mapě jsou v oblasti vykreslování. Událost `drawingcomplete` slouží k aktivaci logiky SELECT. Ve vybrané logice kód projde všemi datovými body na mapě. Kontroluje, zda je průsečík bodu a oblasti vykresleného obrazce. Tento příklad využívá Open Source knihovnu [Turf. js](https://turfjs.org/) k provedení výpočtu prostorového průniku.
 
 <br/>
 
@@ -55,7 +55,7 @@ Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/XWJdeja'>Vybrat 
 
 ### <a name="draw-and-search-in-polygon-area"></a>Kreslení a hledání v oblasti mnohoúhelníku
 
-Následující kód ukazuje, jak provést hledání bodů zájmů v oblasti tvarů poté, co uživatel dokončil vykreslování obrazce. Událost `drawingcomplete` slouží k aktivaci logiky hledání. Pokud uživatel nakreslí obdélník nebo mnohoúhelník, je provedena hledání v rámci geometrie. Je-li nakreslený kruh vynakreslený, používá se poloměr a Centrovaná pozice k provedení hledání bodu zájmu. Událost `drawingmodechanged` slouží k určení, kdy uživatel přepne do režimu kreslení, a vyčistí kreslicí plátno.
+Tento kód vyhledá body zájmů v oblasti tvaru poté, co uživatel dokončil vykreslování obrazce. Kód můžete upravit a spustit kliknutím na tlačítko Upravit v psaní kódu v pravém horním rohu rámečku. Událost `drawingcomplete` slouží k aktivaci logiky hledání. Pokud uživatel nakreslí obdélník nebo mnohoúhelník, je provedena hledání v rámci geometrie. Je-li nakreslený kruh vynakreslený, používá se poloměr a Centrovaná pozice k provedení hledání bodu zájmu. Událost `drawingmodechanged` slouží k určení, kdy uživatel přepne do režimu kreslení, a tato událost vymaže plátno pro vykreslování.
 
 <br/>
 
@@ -67,7 +67,7 @@ Přečtěte si pero <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>Kreslení
 
 ### <a name="create-a-measuring-tool"></a>Vytvořit nástroj pro měření
 
-Následující kód ukazuje, jak lze pomocí události kreslení vytvořit nástroj pro měření. `drawingchanging` slouží k monitorování tvaru při jeho vykreslování. Když uživatel přesune myš, vypočítají se rozměry obrazce. Událost `drawingcomplete` slouží k provedení konečného výpočtu obrazce po jeho vykreslení. Událost `drawingmodechanged` se používá k určení, kdy se uživatel přepne do režimu kreslení, a vyčistí kreslicí plátno a staré informace o měření.
+Následující kód ukazuje, jak lze pomocí události kreslení vytvořit nástroj pro měření. `drawingchanging` slouží k monitorování tvaru při jeho vykreslování. Když uživatel přesune myš, vypočítají se rozměry obrazce. Událost `drawingcomplete` slouží k provedení konečného výpočtu obrazce po jeho vykreslení. Událost `drawingmodechanged` slouží k určení, kdy uživatel přepne do režimu kreslení. Také událost `drawingmodechanged` vymaže kreslicí plátno a vymaže staré informace o měření.
 
 <br/>
 

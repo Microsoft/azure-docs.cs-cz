@@ -8,23 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 4d5d3cc6159a4601f0a398e87b89eea9b8d3aba6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c12aaea1dbc99a3f6db064e03b4b49e569f15194
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446945"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189063"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Poznámky k verzi: sada Speech SDK pro zařízení
 
 V následujících částech jsou uvedeny změny v posledních verzích.
 
+## <a name="speech-devices-sdk-190"></a>Sada Speech 1.9.0 SDK pro zařízení:
+
+- K dispozici jsou počáteční binární soubory pro [URBETTER DDK](https://aka.ms/sdsdk-download-urbetter) (Linux ARM64).
+- Roobo v1 nyní používá Maven pro sadu Speech SDK
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.9.0. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
+
 ## <a name="speech-devices-sdk-170"></a>Sada Speech 1.7.0 SDK pro zařízení:
 
 - Systém Linux ARM je nyní podporován.
-- K dispozici jsou počáteční binární soubory pro Roobo v2 (Linux ARM64).
+- K dispozici jsou počáteční binární soubory pro [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) (Linux ARM64).
 - Uživatelé systému Windows můžou použít `AudioConfig.fromDefaultMicrophoneInput()` nebo `AudioConfig.fromMicrophoneInput(deviceName)` k určení mikrofonu, který se má použít.
 - Velikost knihovny byla optimalizována.
 - Podpora pro rozpoznávání vícenásobného zapnutí pomocí stejného objektu pro rozpoznávání řeči nebo záměru.
@@ -49,7 +55,7 @@ V následujících částech jsou uvedeny změny v posledních verzích.
 - Nová technologie klíčového slova přináší významná vylepšení kvality, viz přerušující změny.
 - Nový kanál zpracování zvuku, který vylepšuje rozpoznávání daleko se všemi poli.
 
-**Rozbíjející změny v**
+**Průlomové změny**
 
 - Z důvodu nové technologie klíčových slov se musí všechna klíčová slova znovu vytvořit na našem vylepšeném portálu klíčových slov. Pokud chcete úplně odebrat stará klíčová slova ze zařízení, odinstalujte starou aplikaci.
   - adb uninstall com.microsoft.coginitiveservices.speech.samples.sdsdkstarterapp
@@ -64,7 +70,7 @@ V následujících částech jsou uvedeny změny v posledních verzích.
 - Bylo aktualizováno zpracování klíčových slov, viz přerušující změny.
 - Ukázková aplikace přidá výběr jazyka pro rozpoznávání řeči i pro překlad.
 
-**Rozbíjející změny v**
+**Průlomové změny**
 
 - Zjednodušená [instalace klíčového slova](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws) je teď součástí aplikace a nepotřebuje samostatnou instalaci na zařízení.
 - Rozpoznávání klíčového slova se změnilo a podporují se dvě události.
@@ -83,7 +89,7 @@ V následujících částech jsou uvedeny změny v posledních verzích.
 - Vylepšení rozpoznávání řeči bude vylepšeno pomocí našeho vylepšeného algoritmu pro zpracování zvuku.
 - Je opravena jedna zvuková relace průběžného rozpoznávání.
 
-**Rozbíjející změny v**
+**Průlomové změny**
 
 - V této verzi představeny počet nejnovější změny. Podrobnosti o rozhraních API najdete na [této stránce](https://aka.ms/csspeech/breakingchanges_1_0_0) .
 - Soubory modelu KWS nejsou kompatibilní se sadou Speech SDK pro 1.0.1. Existující soubory klíčových slov budou odstraněny po zápisu nových souborů klíčových slov do zařízení.

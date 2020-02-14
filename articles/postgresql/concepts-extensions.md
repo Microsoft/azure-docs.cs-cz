@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/20/2019
-ms.openlocfilehash: 069fc83e773c00be41e21e23fc01c589c13d687d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: a12738f5de783c8a34718b8d9cb4bbf54f230589
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372699"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201267"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Rozšíření PostgreSQL v Azure Database for PostgreSQL – jeden server
 PostgreSQL poskytuje možnost rozšíření funkcí databáze pomocí rozšíření. Rozšíření seskupují více souvisejících objektů SQL společně v jednom balíčku, který se dá načíst nebo odebrat z databáze jediným příkazem. Po načtení do databáze nástroje rozšíření funguje jako předdefinované funkce.
@@ -26,14 +26,14 @@ Azure Database for PostgreSQL podporuje podmnožinu rozšíření klíčů, jak 
 V Azure Database for PostgreSQLch serverech jsou k dispozici následující rozšíření, která mají Postgres verze 11. 
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření**| **Verze rozšíření** | **Popis** |
+> | **Klapk**| **Verze rozšíření** | **Popis** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Slouží k analýze adresy na prvky prvku. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Příklad adresy pro normalizační sadu US|
 > |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | Podpora indexování běžných typů DataTypes v GIN|
 > |[btree_gist](https://www.postgresql.org/docs/11/btree-gist.html)                   | 1,5             | Podpora indexování běžných typů DataTypes v registru|
 > |[citext](https://www.postgresql.org/docs/11/citext.html)                       | 1,5             | datový typ pro řetězce znaků bez rozlišení velkých a malých písmen|
-> |[cube](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | datový typ pro multidimenzionální datové krychle|
+> |[datov](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | datový typ pro multidimenzionální datové krychle|
 > |[dblink](https://www.postgresql.org/docs/11/dblink.html)                       | 1.2             | připojení k jiným databázím PostgreSQL v rámci databáze|
 > |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1.0             | Šablona slovníku pro hledání textu pro celá čísla|
 > |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | Výpočet vzdáleností skvělého kruhu na povrchu země|
@@ -41,7 +41,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[hstore](https://www.postgresql.org/docs/11/hstore.html)                       | 1,5             | datový typ pro ukládání sad párů (klíč, hodnota)|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.2           | Hypotetické indexy pro PostgreSQL|
 > |[intarray](https://www.postgresql.org/docs/11/intarray.html)                     | 1.2             | funkce, operátory a podpora indexu pro jednorozměrná pole s celými čísly|
-> |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | datové typy pro mezinárodní standardy číslování produktů|
+> |[není](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | datové typy pro mezinárodní standardy číslování produktů|
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | datový typ pro hierarchické struktury podobné stromu|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Funkce a operátory, které emuluje podmnožinu funkcí a balíčků z komerčních RDBMS|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | poskytuje funkce auditování|
@@ -64,14 +64,14 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | funkce, které pracují s celými tabulkami včetně křížového|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | Umožňuje škálovatelné vkládání a složité dotazy pro data časových řad.|
 > |[odakcent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | slovník hledání textu, který odebere zvýraznění|
-> |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | generování univerzálně jedinečných identifikátorů (UUID)|
+> |[UUID – OSSP](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | generování univerzálně jedinečných identifikátorů (UUID)|
 
 ## <a name="postgres-10-extensions"></a>Rozšíření Postgres 10 
 
 V Azure Database for PostgreSQLch serverech jsou k dispozici následující rozšíření, která mají Postgres verze 10.
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření**| **Verze rozšíření** | **Popis** |
+> | **Klapk**| **Verze rozšíření** | **Popis** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | Slouží k analýze adresy na prvky prvku. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Příklad adresy pro normalizační sadu US|
@@ -79,7 +79,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[btree_gist](https://www.postgresql.org/docs/10/btree-gist.html)                   | 1,5             | Podpora indexování běžných typů DataTypes v registru|
 > |[chkpass](https://www.postgresql.org/docs/10/chkpass.html)                       | 1.0             | datový typ pro automaticky zašifrovaná hesla|
 > |[citext](https://www.postgresql.org/docs/10/citext.html)                       | 1.4             | datový typ pro řetězce znaků bez rozlišení velkých a malých písmen|
-> |[cube](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | datový typ pro multidimenzionální datové krychle|
+> |[datov](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | datový typ pro multidimenzionální datové krychle|
 > |[dblink](https://www.postgresql.org/docs/10/dblink.html)                       | 1.2             | připojení k jiným databázím PostgreSQL v rámci databáze|
 > |[dict_int](https://www.postgresql.org/docs/10/dict-int.html)                     | 1.0             | Šablona slovníku pro hledání textu pro celá čísla|
 > |[earthdistance](https://www.postgresql.org/docs/10/earthdistance.html)                | 1.1             | Výpočet vzdáleností skvělého kruhu na povrchu země|
@@ -87,7 +87,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[hstore](https://www.postgresql.org/docs/10/hstore.html)                       | 1.4             | datový typ pro ukládání sad párů (klíč, hodnota)|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | Hypotetické indexy pro PostgreSQL|
 > |[intarray](https://www.postgresql.org/docs/10/intarray.html)                     | 1.2             | funkce, operátory a podpora indexu pro jednorozměrná pole s celými čísly|
-> |[isn](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | datové typy pro mezinárodní standardy číslování produktů|
+> |[není](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | datové typy pro mezinárodní standardy číslování produktů|
 > |[ltree](https://www.postgresql.org/docs/10/ltree.html)                        | 1.1             | datový typ pro hierarchické struktury podobné stromu|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Funkce a operátory, které emuluje podmnožinu funkcí a balíčků z komerčních RDBMS|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.2             | poskytuje funkce auditování|
@@ -110,14 +110,14 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[tablefunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1.0             | funkce, které pracují s celými tabulkami včetně křížového|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Umožňuje škálovatelné vkládání a složité dotazy pro data časových řad.|
 > |[odakcent](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | slovník hledání textu, který odebere zvýraznění|
-> |[uuid-ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | generování univerzálně jedinečných identifikátorů (UUID)|
+> |[UUID – OSSP](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | generování univerzálně jedinečných identifikátorů (UUID)|
 
 ## <a name="postgres-96-extensions"></a>Rozšíření Postgres 9,6 
 
 V Azure Database for PostgreSQLch serverech jsou k dispozici následující rozšíření, která mají Postgres verze 9,6.
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření**| **Verze rozšíření** | **Popis** |
+> | **Klapk**| **Verze rozšíření** | **Popis** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | Slouží k analýze adresy na prvky prvku. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Příklad adresy pro normalizační sadu US|
@@ -125,7 +125,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[btree_gist](https://www.postgresql.org/docs/9.6/btree-gist.html)                   | 1.2             | Podpora indexování běžných typů DataTypes v registru|
 > |[chkpass](https://www.postgresql.org/docs/9.6/chkpass.html)                       | 1.0             | datový typ pro automaticky zašifrovaná hesla|
 > |[citext](https://www.postgresql.org/docs/9.6/citext.html)                       | 1.3             | datový typ pro řetězce znaků bez rozlišení velkých a malých písmen|
-> |[cube](https://www.postgresql.org/docs/9.6/cube.html)                         | 1.2             | datový typ pro multidimenzionální datové krychle|
+> |[datov](https://www.postgresql.org/docs/9.6/cube.html)                         | 1.2             | datový typ pro multidimenzionální datové krychle|
 > |[dblink](https://www.postgresql.org/docs/9.6/dblink.html)                       | 1.2             | připojení k jiným databázím PostgreSQL v rámci databáze|
 > |[dict_int](https://www.postgresql.org/docs/9.6/dict-int.html)                     | 1.0             | Šablona slovníku pro hledání textu pro celá čísla|
 > |[earthdistance](https://www.postgresql.org/docs/9.6/earthdistance.html)                | 1.1             | Výpočet vzdáleností skvělého kruhu na povrchu země|
@@ -133,7 +133,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[hstore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1.4             | datový typ pro ukládání sad párů (klíč, hodnota)|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | Hypotetické indexy pro PostgreSQL|
 > |[intarray](https://www.postgresql.org/docs/9.6/intarray.html)                     | 1.2             | funkce, operátory a podpora indexu pro jednorozměrná pole s celými čísly|
-> |[isn](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | datové typy pro mezinárodní standardy číslování produktů|
+> |[není](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | datové typy pro mezinárodní standardy číslování produktů|
 > |[ltree](https://www.postgresql.org/docs/9.6/ltree.html)                        | 1.1             | datový typ pro hierarchické struktury podobné stromu|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Funkce a operátory, které emuluje podmnožinu funkcí a balíčků z komerčních RDBMS|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.1.2             | poskytuje funkce auditování|
@@ -156,14 +156,14 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[tablefunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1.0             | funkce, které pracují s celými tabulkami včetně křížového|
 > |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | Umožňuje škálovatelné vkládání a složité dotazy pro data časových řad.|
 > |[odakcent](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | slovník hledání textu, který odebere zvýraznění|
-> |[uuid-ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | generování univerzálně jedinečných identifikátorů (UUID)|
+> |[UUID – OSSP](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | generování univerzálně jedinečných identifikátorů (UUID)|
 
 ## <a name="postgres-95-extensions"></a>Rozšíření Postgres 9,5 
 
 V Azure Database for PostgreSQLch serverech jsou k dispozici následující rozšíření, která mají Postgres verze 9,5.
 
 > [!div class="mx-tableFixed"]
-> | **Rozšíření**| **Verze rozšíření** | **Popis** |
+> | **Klapk**| **Verze rozšíření** | **Popis** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | Slouží k analýze adresy na prvky prvku. |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Příklad adresy pro normalizační sadu US|
@@ -171,7 +171,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[btree_gist](https://www.postgresql.org/docs/9.5/btree-gist.html)                   | 1.1             | Podpora indexování běžných typů DataTypes v registru|
 > |[chkpass](https://www.postgresql.org/docs/9.5/chkpass.html)                       | 1.0             | datový typ pro automaticky zašifrovaná hesla|
 > |[citext](https://www.postgresql.org/docs/9.5/citext.html)                       | 1.1             | datový typ pro řetězce znaků bez rozlišení velkých a malých písmen|
-> |[cube](https://www.postgresql.org/docs/9.5/cube.html)                         | 1.0             | datový typ pro multidimenzionální datové krychle|
+> |[datov](https://www.postgresql.org/docs/9.5/cube.html)                         | 1.0             | datový typ pro multidimenzionální datové krychle|
 > |[dblink](https://www.postgresql.org/docs/9.5/dblink.html)                       | 1.1             | připojení k jiným databázím PostgreSQL v rámci databáze|
 > |[dict_int](https://www.postgresql.org/docs/9.5/dict-int.html)                     | 1.0             | Šablona slovníku pro hledání textu pro celá čísla|
 > |[earthdistance](https://www.postgresql.org/docs/9.5/earthdistance.html)                | 1.0             | Výpočet vzdáleností skvělého kruhu na povrchu země|
@@ -179,7 +179,7 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[hstore](https://www.postgresql.org/docs/9.5/hstore.html)                       | 1.3             | datový typ pro ukládání sad párů (klíč, hodnota)|
 > |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | Hypotetické indexy pro PostgreSQL|
 > |[intarray](https://www.postgresql.org/docs/9.5/intarray.html)                     | 1.0             | funkce, operátory a podpora indexu pro jednorozměrná pole s celými čísly|
-> |[isn](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | datové typy pro mezinárodní standardy číslování produktů|
+> |[není](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | datové typy pro mezinárodní standardy číslování produktů|
 > |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | datový typ pro hierarchické struktury podobné stromu|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | Funkce a operátory, které emuluje podmnožinu funkcí a balíčků z komerčních RDBMS|
 > |[pgaudit](https://www.pgaudit.org/)                     | 1.0.7             | poskytuje funkce auditování|
@@ -200,26 +200,30 @@ V Azure Database for PostgreSQLch serverech jsou k dispozici následující roz�
 > |[postgres_fdw](https://www.postgresql.org/docs/9.5/postgres-fdw.html)                 | 1.0             | obálka s cizími daty pro vzdálené servery PostgreSQL|
 > |[tablefunc](https://www.postgresql.org/docs/9.5/tablefunc.html)                    | 1.0             | funkce, které pracují s celými tabulkami včetně křížového|
 > |[odakcent](https://www.postgresql.org/docs/9.5/unaccent.html)                     | 1.0             | slovník hledání textu, který odebere zvýraznění|
-> |[uuid-ossp](https://www.postgresql.org/docs/9.5/uuid-ossp.html)                    | 1.0             | generování univerzálně jedinečných identifikátorů (UUID)|
+> |[UUID – OSSP](https://www.postgresql.org/docs/9.5/uuid-ossp.html)                    | 1.0             | generování univerzálně jedinečných identifikátorů (UUID)|
 
 
 ## <a name="pg_stat_statements"></a>pg_stat_statements
-Rozšíření pg_stat_statements je předem načteno na každém serveru Azure Database for PostgreSQL a poskytuje tak prostředky pro sledování statistik provádění příkazů SQL.
+[Rozšíření pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) je předem načteno na každém serveru Azure Database for PostgreSQL a poskytuje tak prostředky pro sledování statistik provádění příkazů SQL.
 Nastavení `pg_stat_statements.track`, které určuje, které příkazy jsou počítány rozšířením, výchozí hodnota `top`, což znamená, že jsou sledovány všechny příkazy vystavené přímo klienty. Tyto dvě úrovně sledování jsou `none` a `all`. Toto nastavení se dá nakonfigurovat jako parametr serveru prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli).
 
 Mezi informacemi o spuštění dotazu pg_stat_statements poskytuje kompromis a dopad na výkon serveru při zaznamenání jednotlivých příkazů SQL. Pokud nepoužíváte rozšíření pg_stat_statements, doporučujeme nastavit `pg_stat_statements.track` na `none`. Všimněte si, že některé služby monitorování třetích stran můžou spoléhat na pg_stat_statements k poskytování přehledů o výkonu dotazů, takže ověřte, jestli se jedná o případ nebo ne.
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink a postgres_fdw
-dblink a postgres_fdw vám umožní připojit se z jednoho serveru PostgreSQL k druhému nebo do jiné databáze na stejném serveru. Přijímající server musí v bráně firewall umožňovat připojení z odesílajícího serveru. Pokud se tato rozšíření používají pro připojení mezi Azure Database for PostgreSQL servery, můžete to udělat nastavením možnosti "povolení přístupu ke službám Azure" na ZAPNUTo. To je také nutné v případě, že chcete použít rozšíření pro návrat ke stejnému serveru. Nastavení "povolení přístupu ke službám Azure" najdete na stránce Azure Portal pro server Postgres v části zabezpečení připojení. Zapnutím možnosti "povolení přístupu ke službám Azure" získáte všechny IP adresy Azure na seznamu povolených.
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) a [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) vám umožní připojit se z jednoho serveru PostgreSQL k druhému nebo do jiné databáze na stejném serveru. Přijímající server musí v bráně firewall umožňovat připojení z odesílajícího serveru. Pokud se tato rozšíření používají pro připojení mezi Azure Database for PostgreSQL servery, můžete to udělat nastavením možnosti "povolení přístupu ke službám Azure" na ZAPNUTo. To je také nutné v případě, že chcete použít rozšíření pro návrat ke stejnému serveru. Nastavení "povolení přístupu ke službám Azure" najdete na stránce Azure Portal pro server Postgres v části zabezpečení připojení. Zapnutím možnosti "povolení přístupu ke službám Azure" získáte všechny IP adresy Azure na seznamu povolených.
 
 Odchozí připojení z Azure Database for PostgreSQL se v současné době nepodporují, s výjimkou připojení k jiným serverům Azure Database for PostgreSQL.
 
 ## <a name="uuid"></a>Uuid
-Pokud plánujete použít `uuid_generate_v4()` z rozšíření UUID-OSSP, zvažte porovnání s `gen_random_uuid()` z rozšíření pgcrypto pro výhody výkonu.
-
+Pokud plánujete použít `uuid_generate_v4()` z [rozšíření UUID-OSSP](https://www.postgresql.org/docs/current/uuid-ossp.html), zvažte porovnání s `gen_random_uuid()` z [rozšíření pgcrypto](https://www.postgresql.org/docs/current/pgcrypto.html) pro výhody výkonu.
 
 ## <a name="pgaudit"></a>pgAudit
-Rozšíření pgAudit poskytuje protokolování auditování relací a objektů. Informace o tom, jak používat toto rozšíření v Azure Database for PostgreSQL, najdete v článku věnovaném [koncepcím auditu](concepts-audit.md). 
+[Rozšíření pgAudit](https://github.com/pgaudit/pgaudit/blob/master/README.md) poskytuje protokolování auditování relací a objektů. Informace o tom, jak používat toto rozšíření v Azure Database for PostgreSQL, najdete v článku věnovaném [koncepcím auditu](concepts-audit.md). 
+
+## <a name="pg_prewarm"></a>pg_prewarm
+Rozšíření pg_prewarm načte relační data do mezipaměti. Předzpracováním vašich mezipamětí znamená, že vaše dotazy mají po restartování lepší dobu odezvy při jejich prvním spuštění. V Postgres 10 a níže se předtepla provádí ručně pomocí [předteplé funkce](https://www.postgresql.org/docs/10/pgprewarm.html).
+
+V Postgres 11 a vyšších můžete nakonfigurovat, aby se předhřívání provádělo [automaticky](https://www.postgresql.org/docs/current/pgprewarm.html). Je potřeba zahrnout pg_prewarm do seznamu `shared_preload_libraries` parametrů a restartovat server, aby se změna projevila. Parametry lze nastavit v šabloně [Azure Portal](howto-configure-server-parameters-using-portal.md), [CLI](howto-configure-server-parameters-using-cli.md), REST API nebo ARM. 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB je databáze časových řad, která je zabalená jako přípona pro PostgreSQL. TimescaleDB poskytuje časově orientované analytické funkce, optimalizace a škáluje Postgres pro úlohy časových řad.

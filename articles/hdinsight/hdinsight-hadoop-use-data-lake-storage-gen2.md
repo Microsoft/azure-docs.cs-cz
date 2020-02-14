@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
-ms.openlocfilehash: 6ed0742a214b001ab773e33e851abfb94495984b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aeb86823ddb25bbe0340630b55360806faef59e9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767666"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186884"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 s clustery Azure HDInsight
 
@@ -36,12 +36,12 @@ Pokud chcete vytvořit cluster HDInsight, který používá Data Lake Storage Ge
 
 Vytvořte spravovanou identitu přiřazenou uživatelem, pokud ji ještě nemáte.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **přiřazený uživatel** a klikněte na položku **spravovaná identita přiřazená uživateli**.
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 1. Zadejte název spravované identity, vyberte správné předplatné, skupinu prostředků a umístění.
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 
 Další informace o tom, jak spravované identity fungují ve službě Azure HDInsight, najdete v tématu [spravované identity ve službě Azure HDInsight](hdinsight-managed-identities.md).
 
@@ -51,13 +51,13 @@ Další informace o tom, jak spravované identity fungují ve službě Azure HDI
 
 Vytvořte účet úložiště Azure Data Lake Storage Gen2.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 1. V levém horním rohu klikněte na **vytvořit prostředek**.
 1. Do vyhledávacího pole zadejte **Storage** a klikněte na **účet úložiště**.
-1. Klikněte na **Vytvořit**.
+1. Klikněte na možnost **Vytvořit**.
 1. Na obrazovce **vytvořit účet úložiště** :
     1. Vyberte správné předplatné a skupinu prostředků.
-    1. Zadejte název účtu Data Lake Storage Gen2. Další informace o zásadách vytváření názvů účtů úložiště najdete v tématu zásady [vytváření názvů pro prostředky Azure](/azure/architecture/best-practices/resource-naming#storage).
+    1. Zadejte název účtu Data Lake Storage Gen2. Další informace o zásadách vytváření názvů účtů úložiště najdete v tématu zásady [vytváření názvů pro prostředky Azure](/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).
     1. Klikněte na kartu **Upřesnit** .
     1. V části **Data Lake Storage Gen2**klikněte na **povoleno** vedle **hierarchického oboru názvů** .
     1. Klikněte na **Zkontrolovat a vytvořit**.
@@ -81,7 +81,7 @@ Přiřaďte spravovanou identitu k roli **vlastníka dat objektů BLOB úložiš
 
     ![Snímek obrazovky ukazující, jak přiřadit roli RBAC](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
-1. Vyberte **Uložit**. Uživatelem přiřazená identita, kterou jste vybrali, je teď uvedená v seznamu vybraná role.
+1. Vyberte **Save** (Uložit). Uživatelem přiřazená identita, kterou jste vybrali, je teď uvedená v seznamu vybraná role.
 1. Po dokončení tohoto počátečního nastavení můžete cluster vytvořit prostřednictvím portálu. Cluster musí být ve stejné oblasti Azure jako účet úložiště. V části **úložiště** v nabídce vytvoření clusteru vyberte následující možnosti:
 
     * Jako **typ primárního úložiště**vyberte **Azure Data Lake Storage Gen2**.

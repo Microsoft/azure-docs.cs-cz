@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b92e03c4e5346dd39eaba84cfeeedb93e418678c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: cabf39f017afe440c883a63db57643c5c5367128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911794"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189745"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Zvolit styl mapy v Azure Maps
 
-Mnohé z [podporovaných stylů mapy v Azure Maps](./supported-map-styles.md) jsou dostupné v sadě web SDK. Tento článek ukazuje, jak použít funkce související se styly k nastavení stylu při načítání mapy, nastavení nového stylu a použití ovládacího prvku pro výběr stylu.
+Mnohé z [podporovaných stylů mapy v Azure Maps](./supported-map-styles.md) jsou dostupné v sadě web SDK. Tento článek ukazuje, jak používat funkce související se styly. Naučte se nastavit styl při načítání mapy a Naučte se nastavit nový styl mapy pomocí ovládacího prvku Výběr stylu.
 
 ## <a name="set-style-on-map-load"></a>Nastavit styl při načítání mapy
 
@@ -30,7 +30,7 @@ V následujícím kódu je možnost `style` v mapě nastavena na `grayscale_dark
 
 ## <a name="update-the-style"></a>Aktualizace stylu
 
-V následujícím kódu po načtení instance mapy je styl mapy aktualizován z `road` na `satellite` pomocí funkce [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) mapy.
+V následujícím kódu po načtení instance mapy je styl mapy aktualizován z `road` na `satellite` pomocí funkce [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) .
 
 <br/>
 
@@ -39,7 +39,7 @@ V následujícím kódu po načtení instance mapy je styl mapy aktualizován z 
 
 ## <a name="add-the-style-picker"></a>Přidat výběr stylu
 
-Následující kód přidá na mapu [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) , aby uživatel mohl snadno přepínat mezi různými styly mapy. 
+Následující kód přidá do mapy [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) , takže uživatel může snadno přepínat mezi různými styly mapy. Přepněte styl mapy pomocí ovládacího prvku styl mapy v pravém horním rohu.
 
 <br/>
 
@@ -47,14 +47,14 @@ Následující kód přidá na mapu [StyleControl](/javascript/api/azure-maps-co
 </iframe>
 
 > [!TIP]
-> Ve výchozím nastavení ovládací prvek pro výběr stylu zobrazí seznam všech dostupných stylů při použití cenové úrovně S0 Azure Maps ve výchozím nastavení. Pokud chcete snížit počet stylů v tomto seznamu, předejte pole stylů, které chcete zobrazit v seznamu, do možnosti `mapStyle` výběru stylu. Pokud používáte S1 a chcete zobrazit všechny dostupné styly, nastavte `mapStyles` možnosti výběru stylu na `"all"`.
+> Ve výchozím nastavení, při použití cenové úrovně S0 Azure Maps, ovládací prvek pro výběr stylu vypíše všechny dostupné styly. Pokud chcete snížit počet stylů v tomto seznamu, předejte pole stylů, které chcete zobrazit v seznamu, do možnosti `mapStyle` výběru stylu. Pokud používáte S1 a chcete zobrazit všechny dostupné styly, nastavte `mapStyles` možnosti výběru stylu na `"all"`.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 Přidejte ovládací prvky do svých map:
 

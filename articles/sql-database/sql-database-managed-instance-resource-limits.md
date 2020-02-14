@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 11/27/2019
-ms.openlocfilehash: 90f39a5edd32225b7fed259ca48dcf4802d0ced3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443830"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201726"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -38,8 +38,8 @@ Spravovaná instance má charakteristiky a omezení prostředků, které závis�
 | Maximální rezervované úložiště instancí |  Pro obecné účely: 8 TB<br/>Pro důležité obchodní informace: 1 TB | Pro obecné účely: 8 TB<br/> V závislosti na počtu jader Pro důležité obchodní informace 1 TB, 2 TB nebo 4 TB. |
 
 > [!IMPORTANT]
-> - Probíhá fáze COMPUTE GEN4 – hardwaru. Doporučuje se nasadit nové spravované instance na Gen5 hardware.
-> - COMPUTE GEN4 – hardware je v tuto chvíli stále k dispozici pouze v následujících oblastech: Severní Evropa, Západní Evropa, Východní USA, Střed USA – jih, Střed USA – sever, Západní USA 2, Střed USA, Kanada – střed, Jižní Indie, jihovýchodní Asie a Korea – střed.
+> - COMPUTE GEN4 – hardware je vyladěný a již není pro nová nasazení k dispozici. Všechny nové spravované instance musí být nasazené na Gen5 hardwaru.
+> - Zvažte [přesunutí spravovaných instancí na hardware Gen 5](sql-database-service-tiers-vcore.md) a vyzkoušejte širší škálu Vcore a škálovatelnosti úložiště, akcelerované síťové služby, nejlepší vstupně-výstupní výkon a minimální latenci.
 
 ### <a name="in-memory-oltp-available-space"></a>OLTP volné místo v paměti 
 
@@ -48,7 +48,7 @@ Velikost OLTP prostoru v paměti v [pro důležité obchodní informace](sql-dat
 | OLTP místo v paměti  | **Gen5** | **COMPUTE GEN4 –** |
 | --- | --- | --- |
 | 4 virtuální jádra  | 3,14 GB | |   
-| 8 virtuálních jader  | 6,28 GB | 8 GB |
+| 8 virtuální jádra  | 6,28 GB | 8 GB |
 | 16 virtuální jádra | 15,77 GB | 20 GB |
 | 24 virtuální jádra | 25,25 GB | 36 GB |
 | 32 virtuální jádra | 37,94 GB | |
@@ -78,7 +78,7 @@ Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-s
 | Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 22 MB/s | 4 MB/s na vCore<br/>Max 48 MB/s |
 | Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[zvětšete velikost souboru, abyste získali lepší vstupně-výstupní operace](#file-io-characteristics-in-general-purpose-tier) . | Neomezeno. |
 | Latence v/v úložiště (přibližná) | 5-10 ms | 1-2 ms |
-| OLTP v paměti | Nepodporováno | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
+| OLTP v paměti | Nepodporuje se | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
 | Maximální počet relací | 30000 | 30000 |
 | [Repliky jen pro čtení](sql-database-read-scale-out.md) | 0 | 1 (zahrnuto do ceny) |
 
@@ -178,7 +178,7 @@ Postup pro zahájení procesu získání větší kvóty:
 
 5. Klikněte na **Další**.
 6. Na kartě kontaktní informace u nové žádosti o podporu zadejte upřednostňovanou metodu kontaktu (e-mail nebo telefon) a kontaktní údaje.
-7. Klikněte na **Vytvořit**.
+7. Klikněte na možnost **Vytvořit**.
 
 ## <a name="next-steps"></a>Další kroky
 

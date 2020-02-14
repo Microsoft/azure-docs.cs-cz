@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: 6b31555215f4f2efc63d0e1df0a7b4bf13a43924
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: fe06257127ff352f68fb27d3507cee0229e31498
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834591"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201573"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Konfigurace vynuceného tunelování pomocí modelu nasazení Classic
 
@@ -33,13 +33,13 @@ Vynucené tunelování v Azure se konfiguruje prostřednictvím virtuální sít
 
 * Každé podsíti virtuální sítě má integrované, směrovací tabulky systému. Systémovou tabulku směrování má následující tři skupiny tras:
 
-  * **Místní virtuální sítě trasy:** přímo do cílového umístění virtuálních počítačů ve stejné virtuální síti.
-  * **Místní trasy:** pro Azure VPN gateway.
-  * **Výchozí trasa:** přímo k Internetu. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
+  * **Trasy místní virtuální sítě:** Přímo k cílovým virtuálním počítačům ve stejné virtuální síti.
+  * **Místní trasy:** K bráně Azure VPN Gateway.
+  * **Výchozí trasa:** Přímo na Internet. Pakety směřující na privátní IP adresy není pokrytá předchozí dvě trasy se zahodí.
 * S vydáním trasy definované uživatelem můžete vytvořit směrovací tabulku, která chcete přidat výchozí trasa a přidružte směrovací tabulky do vaší virtuální síti tento počet podsítí: Povolit vynucené tunelování na těchto podsítí.
 * Budete muset nastavit "výchozí web" mezi místy místní servery připojené k virtuální síti.
 * Vynucené tunelování musí být přidružen virtuální síť, která má bránu dynamického směrování VPN (není statická brána).
-* ExpressRoute se vynucené tunelování přes tento mechanismus není nakonfigurovaná, ale místo toho zajišťuje inzeruje výchozí trasu prostřednictvím relací vytvoření partnerského vztahu protokolu BGP ExpressRoute. Podrobnosti najdete [dokumentace ke službě ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) Další informace.
+* ExpressRoute se vynucené tunelování přes tento mechanismus není nakonfigurovaná, ale místo toho zajišťuje inzeruje výchozí trasu prostřednictvím relací vytvoření partnerského vztahu protokolu BGP ExpressRoute. Další informace najdete v [dokumentaci k ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) .
 
 ## <a name="configuration-overview"></a>Přehled konfigurace
 V následujícím příkladu front-endové podsítě není vynucené tunelové propojení. Úlohy ve front-endové podsíti můžete nadále přijímat a reagovat na požadavky zákazníků z Internetu přímo. Střední vrstvě a back-endové podsítě jsou vynuceného tunelového propojení. Odchozí připojení k Internetu, tyto dvě podsítě se vynucené nebo přesměrován zpět do místní lokality přes jeden tunel VPN s2s.
@@ -49,13 +49,26 @@ Můžete omezit a kontrolovat přístup k Internetu z vašich virtuálních poč
 ![Vynucené tunelování](./media/vpn-gateway-about-forced-tunneling/forced-tunnel.png)
 
 ## <a name="before-you-begin"></a>Než začnete
-Před zahájením konfigurace ověřte, zda máte následující.
+Před zahájením konfigurace ověřte, zda máte následující:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 * Nakonfigurované virtuální sítě. 
-* Nejnovější verzi rutin Azure Powershellu. Další informace o instalaci rutin prostředí PowerShell najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+* [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-## <a name="configure-forced-tunneling"></a>Konfigurace vynuceného tunelového propojení
+### <a name="to-sign-in"></a>Pro přihlášení
+
+1. Otevřete konzolu PowerShellu se zvýšenými právy. Chcete-li přepnout na správu služeb, použijte tento příkaz:
+
+   ```powershell
+   azure config mode asm
+   ```
+2. Připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
+
+   ```powershell
+   Add-AzureAccount
+   ```
+
+## <a name="configure-forced-tunneling"></a>Konfigurace vynuceného tunelování
 Následující postup vám pomůže určit vynucené tunelové propojení pro virtuální síť. Postup konfigurace odpovídají soubor konfigurace sítě VNet.
 
 ```xml

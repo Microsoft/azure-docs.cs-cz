@@ -3,12 +3,12 @@ title: Referenční C# informace pro vývojáře Azure Functions
 description: Naučte se vyvíjet Azure Functions pomocí C#.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 89b3ae927b14454ac3f58fb510626e315842240f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: cfa53fe2defca768196af595c1d088d41bc60f71
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921049"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198373"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Referenční C# informace pro vývojáře Azure Functions
 
@@ -204,7 +204,7 @@ Pokud nainstalujete základní nástroje pomocí NPM, neovlivní to základní v
 
 ## <a name="supported-types-for-bindings"></a>Podporované typy pro vazby
 
-Každá vazba má své vlastní podporované typy; atribut triggeru objektu BLOB lze například použít pro parametr typu řetězec, parametr POCO, parametr `CloudBlockBlob` nebo některý z několika jiných podporovaných typů. [Článek odkazu vazby pro vazby objektů BLOB](functions-bindings-storage-blob.md#trigger---usage) obsahuje seznam všech podporovaných typů parametrů. Další informace najdete v tématech [triggery a vazby](functions-triggers-bindings.md) a [Referenční dokumentace k vazbě pro každý typ vazby](functions-triggers-bindings.md#next-steps).
+Každá vazba má své vlastní podporované typy; atribut triggeru objektu BLOB lze například použít pro parametr typu řetězec, parametr POCO, parametr `CloudBlockBlob` nebo některý z několika jiných podporovaných typů. [Článek odkazu vazby pro vazby objektů BLOB](functions-bindings-storage-blob-trigger.md#usage) obsahuje seznam všech podporovaných typů parametrů. Další informace najdete v tématech [triggery a vazby](functions-triggers-bindings.md) a [Referenční dokumentace k vazbě pro každý typ vazby](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -353,7 +353,7 @@ Definujte imperativní vazbu následujícím způsobem:
 
 ### <a name="single-attribute-example"></a>Příklad jednoduchého atributu
 
-Následující příklad kódu vytvoří [výstupní vazbu objektu BLOB úložiště](functions-bindings-storage-blob.md#output) s cestou objektu blob, která je definovaná v době běhu, a pak zapíše řetězec do objektu BLOB.
+Následující příklad kódu vytvoří [výstupní vazbu objektu BLOB úložiště](functions-bindings-storage-blob-output.md) s cestou objektu blob, která je definovaná v době běhu, a pak zapíše řetězec do objektu BLOB.
 
 ```cs
 public static class IBinderExample
@@ -378,7 +378,7 @@ public static class IBinderExample
 
 ### <a name="multiple-attribute-example"></a>Příklad více atributů
 
-Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage`). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()`. Použijte parametr `Binder`, nikoli `IBinder`.  Příklad:
+Předchozí příklad získá nastavení aplikace pro připojovací řetězec hlavního účtu úložiště aplikace Function App (což je `AzureWebJobsStorage`). Můžete zadat vlastní nastavení aplikace, které se má použít pro účet úložiště, a to přidáním [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) a předáním pole atributu do `BindAsync<T>()`. Použijte parametr `Binder`, nikoli `IBinder`.  Například:
 
 ```cs
 public static class IBinderExampleMultipleAttributes

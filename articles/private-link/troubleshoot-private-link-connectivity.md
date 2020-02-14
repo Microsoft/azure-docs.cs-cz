@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 667fa1c85c63ffb87e49c4bf99112f57d0c85a72
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 0d26ad6802e551523875dcad13066fdbdbf39ada
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031917"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191041"
 ---
-# <a name="troubleshoot-private-link-service-connectivity-problems"></a>Řešení potíží s připojením služby Private Link
+# <a name="troubleshoot-private-link-service-connectivity-problems"></a>Řešení problémů s připojením služby Private Link
 
 Tato příručka poskytuje podrobné pokyny, jak ověřit a diagnostikovat připojení pro instalaci služby privátních odkazů. 
 
@@ -112,4 +112,4 @@ Pokud dochází k problémům s připojením k nastavení privátního propojen�
 
  * [Vytvoření služby privátního propojení (CLI)](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
 
- * [Průvodce odstraňováním potíží privátního koncového bodu](https://docs.microsoft.com/azure/private-link/private-endpoint-connectivity-troubleshooting)
+ * [Průvodce odstraňováním potíží privátního koncového bodu](troubleshoot-private-endpoint-connectivity.md)

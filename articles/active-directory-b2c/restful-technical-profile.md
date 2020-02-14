@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edad748bc2192f98b9674b80dada5b03aa9ee2d1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840277"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77197980"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu RESTful ve vlastní zásadě Azure Active Directory B2C
 
@@ -123,12 +123,13 @@ Technický profil také vrací deklarace identity, které nejsou vraceny zprost�
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| serviceUrl | Ano | Adresa URL koncového bodu REST API. |
+| ServiceUrl | Ano | Adresa URL koncového bodu REST API. |
 | AuthenticationType | Ano | Typ ověřování prováděného zprostředkovatelem deklarací RESTful. Možné hodnoty: `None`, `Basic`, `Bearer`nebo `ClientCertificate`. Hodnota `None` označuje, že REST API není anonymní. Hodnota `Basic` označuje, že REST API je zabezpečeno pomocí základního ověřování HTTP. K rozhraní API můžou přistupovat jenom ověření uživatelé, včetně Azure AD B2C. Hodnota `ClientCertificate` (doporučeno) znamená, že REST API omezuje přístup pomocí ověřování klientského certifikátu. K vašemu rozhraní API můžou mít přístup jenom služby, které mají příslušné certifikáty, například Azure AD B2C. Hodnota `Bearer` označuje, že REST API omezuje přístup pomocí OAuth2 nosného tokenu klienta. |
 | SendClaimsIn | Ne | Určuje, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful. Možné hodnoty: `Body` (výchozí), `Form`, `Header`nebo `QueryString`. Hodnota `Body` je vstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. Hodnota `Form` je vstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty "& oddělovače klíče" typu ampersand. Hodnota `Header` je vstupní deklarace, která je odeslána v hlavičce požadavku. Hodnota `QueryString` je vstupní deklarace, která je odeslána v řetězci dotazu požadavku. Příkazy HTTP, které jsou vyvolány pomocí obou, jsou následující:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
 | ClaimsFormat | Ne | Určuje formát pro výstupní deklarace identity. Možné hodnoty: `Body` (výchozí), `Form`, `Header`nebo `QueryString`. Hodnota `Body` je výstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. Hodnota `Form` je výstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty "& oddělovače klíče" typu ampersand. Hodnota `Header` je výstupní deklarace, která je odeslána v hlavičce požadavku. Hodnota `QueryString` je výstupní deklarace, která je odeslána v řetězci dotazu požadavku. |
 | ClaimUsedForRequestPayload| Ne | Název deklarace identity řetězce, která obsahuje datovou část, která se má odeslat do REST API. |
 | DebugMode | Ne | Spustí technický profil v režimu ladění. Možné hodnoty: `true`nebo `false` (výchozí). V režimu ladění může REST API vrátit více informací. Přečtěte si část [vracení chybové zprávy](#returning-error-message) . |
+| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true`nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true`. |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
@@ -221,7 +222,7 @@ Vaše REST API může potřebovat vrátit chybovou zprávu, například ' uživa
 | --------- | -------- | ----------- |
 | version | Ano | 1.0.0 |
 | status | Ano | 409 |
-| kód | Ne | Kód chyby od poskytovatele koncového bodu RESTful, který se zobrazí, když je povolená `DebugMode`. |
+| code | Ne | Kód chyby od poskytovatele koncového bodu RESTful, který se zobrazí, když je povolená `DebugMode`. |
 | Identifikátor | Ne | Identifikátor požadavku od poskytovatele koncového bodu RESTful, který se zobrazí, když je povolená `DebugMode`. |
 | userMessage | Ano | Chybová zpráva, která se zobrazí uživateli. |
 | developerMessage | Ne | Podrobný popis problému a jak ho opravit, který se zobrazí, když je povolený `DebugMode`. |

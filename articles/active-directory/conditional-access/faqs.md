@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2cc562f155fe3b84e5d28b2e0e22d50238d480c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816210"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186053"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory Nejčastější dotazy týkající se podmíněného přístupu
 
 ## <a name="which-applications-work-with-conditional-access-policies"></a>Které aplikace pracují se zásadami podmíněného přístupu?
 
-Informace o aplikacích, které pracují se zásadami podmíněného přístupu, najdete v tématu [aplikace a prohlížeče, které používají pravidla podmíněného přístupu v Azure Active Directory](technical-reference.md).
+Informace o aplikacích, které pracují se zásadami podmíněného přístupu, najdete v tématu [aplikace a prohlížeče, které používají pravidla podmíněného přístupu v Azure Active Directory](concept-conditional-access-cloud-apps.md).
 
 ## <a name="are-conditional-access-policies-enforced-for-b2b-collaboration-and-guest-users"></a>Jsou pro spolupráci B2B a uživatele typu Host vynutily zásady podmíněného přístupu?
 

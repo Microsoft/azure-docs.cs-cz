@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: d56b83c8bd9a71ac30112f9e77a97ed8ab61a137
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cd90ae2b751a97c18dc8b6be4b8eb565a17df7a2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825975"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191133"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Konzultační služby pro Azure Marketplace a AppSource
 Konzultační služby v Azure Marketplace a AppSource poskytují partnerům Microsoftu cíle připojení zákazníků k službám pro podporu a rozšiřování jejich používání v Azure a obchodních cílech. 
@@ -38,7 +38,7 @@ Nabídky konzultačních služeb, které jsou založené na Microsoft Dynamics 3
 Konzultační služby a nabídky spravovaných služeb, které jsou založené na Microsoft Azure, jsou způsobilé pro Azure Marketplace. Další informace najdete v článcích o [publikování konzultační služby Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) a [publikování nabídky spravované služby na Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers).
 
 > [!Note]
-> Konzultační služby v Azure Marketplace by měly využít nabídky zaměřené na **technickou cílovou skupinu se zaměřením na *technická řešení a služby Azure.* \* * Konzultační služby v AppSource by měly využít nabídky zaměřené na jejich odbornost při doručování kvalitních řešení pro Dynamics 365, Power BI nebo PowerApps, aby využívaly nabídky konzultačních služeb na AppSource.
+> Konzultační služby v Azure Marketplace by měly využít nabídky zaměřené na * * technickou cílovou skupinu se zaměřením na *technická řešení a služby Azure.* \* * Konzultační služby v AppSource by měly využít nabídky zaměřené na jejich odbornost při doručování kvalitních řešení pro Dynamics 365, Power BI nebo PowerApps, aby využívaly nabídky konzultačních služeb na AppSource.
 > 
 > 
 > [!TIP]
@@ -94,7 +94,7 @@ Před registrací můžete začít shromažďovat a připravovat obsah, který v
 
 |Nastavení pro nové vydavatele  |
 |---------|
-|MPN ID     |
+|ID MPN     |
 |Loga společnosti (48 &#215; 48, 216 &#215; 216)     |
 |Cíl zájemce     |
 
@@ -159,7 +159,7 @@ Při kontrole popisů nabídky a souhrnů nabídek tým použije následující 
 |**Ověření konceptu**    |    Vyjadřují, jaké technické změny, technické artefakty nebo jiné artefakty může zákazník očekávat jako výsledek zapojení     | Optimalizujte souhrn nabídky pomocí klíčových slov pro optimalizaci nejlepšího vyhledávacího modulu.        |
 |**Dílně**    |   V závislosti na zvolené době trvání vaší nabídky uveďte podrobné agendy denně, týdně nebo měsíčně. Vyjadřují, jaké jsou studijní cíle nebo jiné dodávky vaší dílny     |   Optimalizujte souhrn nabídky pomocí klíčových slov pro optimalizaci nejlepšího vyhledávacího modulu.      |
 
-V rámci portál partnerů cloudu můžete do svého seznamu přidat formátování pomocí [Markdownu](https://docs.microsoft.com/contribute/how-to-write-use-markdown). Toto je zjednodušený návrhový jazyk, který vám pomůže přidat k vašemu seznamu dokonalý vzhled. 
+V rámci portál partnerů cloudu můžete do svého seznamu přidat formátování pomocí [Markdownu](/contribute/markdown-reference). Toto je zjednodušený návrhový jazyk, který vám pomůže přidat k vašemu seznamu dokonalý vzhled. 
 
 **Ukázka poznámek Markdownu**
 * Přidat * na začátek a konec kopírovacího bloku – bez místa pro vytvoření kurzívy (např. *obsah*)

@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 047579550172995378d92327ecf22d63712bf407
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 598fdd5e3682226253ef8f2611ede2bbeba596f7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967123"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190441"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
 
@@ -63,7 +63,7 @@ Nastavení časového pásma serveru pro vaši webovou aplikaci:
 2. V části **nastavení aplikace**přidejte toto nastavení:
     * Key = WEBSITE_TIME_ZONE
     * Hodnota = *časové pásmo, které chcete*
-3. Vyberte **Uložit**.
+3. Vyberte **Save** (Uložit).
 
 Pro služby App Service, které jsou spuštěné v systému Windows, se ve sloupci **timezone (časové pásmo** ) v článku [výchozí časové pásmo](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) pro přijaté hodnoty zobrazí. Pro služby App Services spuštěné v systému Linux nastavte jako hodnotu časového pásma [název TZ databáze](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) . Tady je příklad názvu TZ databáze: America/Adak.
 
@@ -141,7 +141,7 @@ Pokud používáte Hybrid Connections pro přístup k SQL Server, může aktuali
 Exception: System.Data.Entity.Core.EntityException: The underlying provider failed on Open. —> System.OverflowException: Arithmetic operation resulted in an overflow. or (64 bit Web app) System.OverflowException: Array dimensions exceeded supported range, at System.Data.SqlClient.TdsParser.ConsumePreLoginHandshake
 ```
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Výjimka byla způsobena problémem s Správce hybridního připojení, která od byla opravena. Nezapomeňte [aktualizovat správce hybridního připojení](https://go.microsoft.com/fwlink/?LinkID=841308) pro vyřešení tohoto problému.
 
@@ -314,4 +314,4 @@ Můžete také zadat konkrétní dynamické a statické typy MIME, které chcete
 
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Návody migraci z místního prostředí do App Service?
 
-Chcete-li migrovat lokality z webových serverů Windows a Linux na App Service, můžete použít Pomocník s migrací Azure App Service. Nástroj pro migraci v Azure podle potřeby vytvoří webové aplikace a databáze a publikuje obsah. Další informace najdete v tématu [Azure App Service Pomocník s migrací](https://www.migratetoazure.net/).
+Chcete-li migrovat lokality z webových serverů Windows a Linux na App Service, můžete použít Pomocník s migrací Azure App Service. Nástroj pro migraci v Azure podle potřeby vytvoří webové aplikace a databáze a publikuje obsah. Další informace najdete v tématu [Azure App Service Pomocník s migrací](https://appmigration.microsoft.com/).

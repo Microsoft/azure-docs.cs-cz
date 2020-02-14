@@ -7,18 +7,18 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647369"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191085"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co je služba privátního propojení Azure?
 
 Služba privátního propojení Azure je odkazem na vlastní službu, která využívá privátní propojení Azure. Služba, která je spuštěná za [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) , se dá povolit pro přístup k privátním odkazům, aby k nim uživatelé mohli přistupovat soukromě z vlastních virtuální sítě. Vaši zákazníci můžou ve své virtuální síti vytvořit privátní koncový bod a namapovat ho k této službě. Tento článek vysvětluje koncepty týkající se strany poskytovatele služeb. 
 
-## <a name="workflow"></a>Pracovní postupy
+## <a name="workflow"></a>Pracovní postup
 
 ![Pracovní postup služby privátního propojení](media/private-link-service-overview/private-link-service-workflow.png)
 
@@ -55,6 +55,7 @@ Služba privátního propojení určuje následující vlastnosti:
 |Load Balancer konfigurace IP adresy front-endu (loadBalancerFrontendIpConfigurations)    |    Služba Private Link je vázaná na IP adresu front-endu Standard Load Balancer. Veškerý provoz určený pro službu se dostane do front-endu služby SLB. Můžete nakonfigurovat pravidla služby SLB pro přesměrování tohoto provozu do příslušných back-end fondů, kde běží vaše aplikace. Konfigurace IP adresy front-endu pro vyrovnávání zatížení se liší od konfigurace IP adres NAT.      |
 |Konfigurace protokolu IP NAT (IPConfiguration)    |    Tato vlastnost odkazuje na konfiguraci protokolu IP NAT (překladu síťových adres) pro službu privátního propojení. IP adresu NAT si můžete vybrat z libovolné podsítě ve virtuální síti poskytovatele služeb. Služba privátního propojení provádí NAT cílového umístění na straně cíle na přenosy privátního propojení. Tím se zajistí, že nedojde ke konfliktu IP adres mezi zdrojovým a cílovým adresním prostorem (poskytovatelem služeb). Na straně cíle (na straně poskytovatele služeb) se IP adresa NAT zobrazí jako zdrojová IP adresa pro všechny pakety přijaté službou a cílovou IP adresou pro všechny pakety odesílané vaší službou.       |
 |Připojení privátního koncového bodu (privateEndpointConnections)     |  Tato vlastnost zobrazí seznam privátních koncových bodů připojujících se ke službě privátního propojení. Ke stejné službě privátního propojení se může připojit několik privátních koncových bodů a poskytovatel služeb může řídit stav jednotlivých privátních koncových bodů.        |
+|Protokol proxy serveru TCP v2 (EnableProxyProtocol)     |  Tato vlastnost umožňuje poskytovateli služeb použít k načtení informací o připojení pro příjemce služby TCP proxy v2. Poskytovatel služeb zodpovídá za nastavení konfigurace přijímače, aby mohl analyzovat hlavičku proxy protokolu v2.        |
 |||
 
 
@@ -95,14 +96,28 @@ Příjemci s expozicí (řízenou nastavením viditelnosti) do vaší služby pr
 
 Akci schválení připojení lze automatizovat pomocí vlastnosti automatického schvalování ve službě privátního propojení. Automatické schválení je schopnost, aby poskytovatelé služeb předem schválili sadu předplatných pro automatický přístup ke své službě. Aby poskytovatelé služeb mohli přidat do seznamu automatického schválení, budou muset uživatelé sdílet své odběry do offline režimu. Automatické schválení je podmnožinou pole viditelnosti. Viditelnost ovládá nastavení expozice, zatímco automatické schvalování kontroluje nastavení schválení pro vaši službu. Pokud zákazník požádá o připojení z předplatného v seznamu automatického schválení, připojení se automaticky schválí a naváže se připojení. Poskytovatelé služeb nemusí žádost už ručně schválit. Na druhé straně, pokud zákazník požádá o připojení z předplatného v poli viditelnosti, nikoli v poli automatického schválení, požadavek se dostane k poskytovateli služeb, ale poskytovatel služeb musí připojení ručně schválit.
 
+## <a name="getting-connection-information-using-tcp-proxy-v2"></a>Získání informací o připojení pomocí proxy serveru TCP v2
+
+Při použití služby Private Link je zdrojová IP adresa paketů přicházejících z privátního koncového bodu přeložena (NAT) na straně poskytovatele služeb pomocí IP adresy NAT přidělené z virtuální sítě poskytovatele. Aplikace proto obdrží přidělenou IP adresu překladu adres (NAT) místo skutečné zdrojové IP adresy příjemců služby. Pokud vaše aplikace potřebuje skutečnou zdrojovou IP adresu ze strany spotřebitele, můžete ve službě povolit protokol proxy a načíst informace z hlavičky protokolu proxy serveru. Kromě zdrojové IP adresy je v záhlaví protokolu proxy také identifikátor LinkID privátního koncového bodu. Kombinace zdrojové IP adresy a identifikátor LinkID může pomáhat poskytovatelům služeb jednoznačně identifikovat jejich příjemce. Další informace o protokolu proxy najdete tady. 
+
+Tyto informace jsou zakódovány pomocí vlastního vektoru typu s délkou Value (TLV) následujícím způsobem:
+
+Podrobnosti vlastního TLV:
+
+|Pole |Délka (oktety)  |Popis  |
+|---------|---------|----------|
+|Typ  |1        |PP2_TYPE_AZURE (0xEE)|
+|Délka  |2      |Délka hodnoty|
+|Hodnota  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
+|  |4        |UINT32 (4 bajty) představující LINKID privátního koncového bodu. Kódováno ve formátu Little endian.|
+
+
 ## <a name="limitations"></a>Omezení
 
 Následující jsou známá omezení při použití služby privátního propojení:
 - Podporováno pouze v Standard Load Balancer 
 - Podporuje jenom přenosy IPv4.
 - Podporuje jenom přenosy TCP.
-- Vytváření a Správa prostředí z Azure Portal se nepodporuje.
-- Poskytovateli služeb nenabízí informace o připojení klientů pomocí protokolu proxy.
 
 ## <a name="next-steps"></a>Další kroky
 - [Vytvoření služby privátního propojení pomocí Azure PowerShell](create-private-link-service-powershell.md)

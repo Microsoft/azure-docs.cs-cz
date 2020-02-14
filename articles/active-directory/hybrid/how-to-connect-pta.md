@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Předávací ověřování | Microsoft Docs'
+title: 'Azure AD Connect: předávací ověřování | Microsoft Docs'
 description: Tento článek popisuje předávací ověřování v Azure Active Directory (Azure AD) a to, jak umožňuje přihlášení k Azure AD pomocí ověřování hesel uživatelů proti místní službě Active Directory.
 services: active-directory
 keywords: Co je Azure AD Connect předávací ověřování, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
@@ -16,12 +16,12 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 814c81b6092c4af3778617e165a0bdbce09d71d7
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779113"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185506"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Přihlášení uživatele pomocí Azure Active Directoryho předávacího ověřování
 
@@ -49,7 +49,7 @@ Předávací ověřování můžete kombinovat s funkcí [snadného jednotného 
   - Žádná režie správy. Agent automaticky přijímá vylepšení a opravy chyb.
 - *Zabezpečení*
   - Místní hesla se v jakémkoli formuláři nikdy neukládají v cloudu.
-  - Chrání vaše uživatelské účty pomocí [zásad podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně služby Multi-Factor Authentication (MFA), [blokujícího staršího ověřování](../conditional-access/conditions.md) a [filtrováním útoků hrubou silou na hesla](../authentication/howto-password-smart-lockout.md).
+  - Chrání vaše uživatelské účty pomocí [zásad podmíněného přístupu Azure AD](../active-directory-conditional-access-azure-portal.md), včetně Multi-Factor Authentication (MFA), [blokováním staršího ověřování](../conditional-access/concept-conditional-access-conditions.md) a [filtrováním útoků hrubou silou na hesla](../authentication/howto-password-smart-lockout.md).
   - Agent zpřístupňuje jenom odchozí připojení z vaší sítě. Proto neexistuje žádný požadavek na instalaci agenta do hraniční sítě, označované také jako DMZ.
   - Komunikace mezi agentem a službou Azure AD je zabezpečená pomocí ověřování založeného na certifikátech. Tyto certifikáty se v Azure AD automaticky Obnovují každých několik měsíců.
 - *Vysoce dostupné*
@@ -59,7 +59,7 @@ Předávací ověřování můžete kombinovat s funkcí [snadného jednotného 
 
 - Podporuje přihlášení uživatele do všech aplikací založených na webovém prohlížeči a do systém Microsoft Office klientských aplikací, které používají [moderní ověřování](https://aka.ms/modernauthga).
 - Přihlašovací jména uživatelů můžou být místní výchozí uživatelské jméno (`userPrincipalName`) nebo jiný atribut nakonfigurovaný v Azure AD Connect (známý jako `Alternate ID`).
-- Tato funkce funguje bez problémů s funkcemi [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) , jako je vícefaktorové ověřování (MFA), které vám pomůžou zabezpečit uživatele.
+- Tato funkce bezproblémově funguje s funkcemi [podmíněného přístupu](../active-directory-conditional-access-azure-portal.md) , jako je Multi-Factor Authentication (MFA), které vám pomůžou zabezpečit uživatele.
 - Je integrovaná s cloudovou [samoobslužnou správou hesel](../authentication/active-directory-passwords-overview.md), včetně zpětného zápisu hesla do místní služby Active Directory a ochrany heslem, a to tak, že se hesla běžně používají.
 - Prostředí s více doménovými strukturami se podporují, pokud mezi doménovými strukturami služby AD existují vztahy důvěryhodnosti doménové struktury a pokud je Směrování přípon názvů správně nakonfigurované.
 - Je to bezplatná funkce a nepotřebujete žádné placené edice Azure AD, abyste ji mohli používat.
@@ -68,9 +68,9 @@ Předávací ověřování můžete kombinovat s funkcí [snadného jednotného 
 - Instalace více agentů poskytuje vysokou dostupnost žádostí o přihlášení.
 - [Chrání](../authentication/howto-password-smart-lockout.md) místní účty proti útokům prostřednictvím hesla hrubou silou v cloudu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Rychlé zprovoznění](how-to-connect-pta-quick-start.md) – Získejte a spusťte předávací ověřování Azure AD.
+- [Rychlý Start](how-to-connect-pta-quick-start.md) – Získejte a spusťte předávací ověřování Azure AD.
 - [Migrace z AD FS na předávací ověřování](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) – podrobný průvodce migrací z AD FS (nebo jiných federačních technologií) na předávací ověřování.
 - [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md) – umožňuje nakonfigurovat funkci inteligentního uzamčení pro vašeho tenanta, aby se chránily uživatelské účty.
 - [Aktuální omezení](how-to-connect-pta-current-limitations.md) – Zjistěte, které scénáře jsou podporovány a které nejsou.

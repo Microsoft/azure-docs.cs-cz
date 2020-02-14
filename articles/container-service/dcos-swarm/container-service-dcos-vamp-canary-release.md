@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275663"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77189104"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>ZASTARALÉ Využitím vampu v clusteru s Azure Container Service DC/OS vydaných verzí mikroslužeb
 
@@ -91,7 +91,7 @@ Využitím vampu vyžaduje pro shromažďování a agregaci metriky Elasticsearc
    ```
   
 
-3. Klikněte na tlačítko **nasazení**.
+3. Klikněte na **nasadit**.
 
    DC/OS nasadí kontejner Elasticsearch. Průběh můžete sledovat na stránce **služby** .  
 
@@ -127,13 +127,13 @@ Jakmile Elasticsearch sestavy jako **spuštěné**, můžete přidat balíček v
 
 Teď, když je využitím vampu v provozu, nasaďte službu z podrobného plánu. 
 
-V nejjednodušším tvaru popisuje [využitím vampu podrobný plán](https://vamp.io/documentation/using-vamp/blueprints/) koncových bodů (bran), clusterů a služeb, které se mají nasadit. Využitím vampu využívá clustery k seskupení různých variant stejné služby do logických skupin pro účely zkušebního vydání nebo testování A/B.  
+V nejjednodušším tvaru popisuje [využitím vampu podrobný plán](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) koncových bodů (bran), clusterů a služeb, které se mají nasadit. Využitím vampu využívá clustery k seskupení různých variant stejné služby do logických skupin pro účely zkušebního vydání nebo testování A/B.  
 
 Tento scénář používá ukázkovou aplikaci monolitické s názvem [**Sava**](https://github.com/magneticio/sava), která je ve verzi 1,0. Monolitu je zabalen v kontejneru Docker, který je v Docker Hub v magneticio/Sava: 1.0.0. Aplikace normálně běží na portu 8080, ale v tomto případě ji chcete zpřístupnit v rámci portu 9050. K nasazení aplikace prostřednictvím využitím vampu použijte jednoduchý podrobný plán.
 
 1. Přejít na **nasazení**.
 
-2. Klikněte na tlačítko **Přidat**.
+2. Klikněte na **Přidat**.
 
 3. Vložte následující YAML podrobného plánu. Tento podrobný plán obsahuje jeden cluster s pouze jednou variantou služby, který se změní v pozdějším kroku:
 
@@ -287,9 +287,9 @@ Provedli jsme také některé výkonné funkce využitím vampu: sloučení nov�
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si o správě akcí využitím vampu prostřednictvím [využitím vampu REST API](https://vamp.io/documentation/api/api-reference/).
+* Přečtěte si o správě akcí využitím vampu prostřednictvím [využitím vampu REST API](https://docs.vamp.io/how-vamp-works/events-and-metrics#events).
 
-* Sestavujte skripty pro automatizaci využitím vampu v Node. js a spusťte je jako [pracovní postupy využitím vampu](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow).
+* Sestavujte skripty pro automatizaci využitím vampu v Node. js a spusťte je jako [pracovní postupy využitím vampu](https://docs.vamp.io/how-vamp-works/concepts-and-components#workflows).
 
-* Podívejte se na další [kurzy využitím vampu](https://vamp.io/documentation/tutorials/).
+* Podívejte se na další [kurzy využitím vampu](https://docs.vamp.io/tutorials/).
 

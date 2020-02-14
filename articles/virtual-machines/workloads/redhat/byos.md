@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: b0ef6030b1b460d118a255ede3c46719616fe3b0
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a54e1c9cbc9a80139d71a89f86ac51ecf5ce9902
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133841"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190505"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux ve službě Azure na základě vlastních předplatných zlatých imagí
 
@@ -175,7 +175,7 @@ Následuje ukázkový skript. Měli byste nahradit skupinu prostředků, umíst�
 
 Pomocí [Azure Disk Encryption](../../linux/disk-encryption-overview.md)je možné zabezpečit zlaté image, které se dají použít Red Hat Enterprise Linux. Předplatné ale **musí** být zaregistrované předtím, než se povolí šifrování.  Podrobnosti o registraci RHEL BYOS Gold jsou k dispozici na webu Red Hat. Podívejte se [, jak zaregistrovat a přihlásit se k odběru systému na portál Red Hat Customer pomocí programu Red Hat Subscription – Manager](https://access.redhat.com/solutions/253273). Pokud máte aktivní předplatné Red Hat, můžete si také přečíst téma [vytváření aktivačních klíčů pro zákazníka Red Hat](https://access.redhat.com/articles/1378093).
 
-Azure Disk Encryption se u [vlastních imagí Red Hat](/linux/redhat-create-upload-vhd)nepodporuje. Další požadavky a požadavky na ADE jsou popsány v [Azure Disk Encryption pro virtuální počítače se systémem Linux](../../linux/disk-encryption-overview.md#additional-vm-requirements).
+Azure Disk Encryption se u [vlastních imagí Red Hat](../../linux/redhat-create-upload-vhd.md)nepodporuje. Další požadavky a požadavky na ADE jsou popsány v [Azure Disk Encryption pro virtuální počítače se systémem Linux](../../linux/disk-encryption-overview.md#additional-vm-requirements).
 
 Kroky pro použití Azure Disk Encryption jsou k dispozici ve [scénářích Azure Disk Encryption na virtuálních počítačích s Linux a v](../../linux/disk-encryption-linux.md) souvisejících článcích.
 

@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a89983a9ae45f21deb7a823de049373b4ff9b935
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: ca77d4704fb71972090ce0b96dfdb888ef7d1d2c
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989055"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190329"
 ---
 # <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reakce na události Azure Maps pomocí Event Grid 
 
-Azure Maps se integruje s Azure Event Grid, aby uživatelé mohli posílat oznámení o událostech jiným službám a aktivovat podřízené procesy. Účelem tohoto článku je pomáhat při konfiguraci obchodních aplikací, aby naslouchaly Azure Maps události. Tato služba umožňuje reagovat na kritické události spolehlivým, škálovatelným a zabezpečeným způsobem. Uživatelé můžou třeba vytvořit aplikaci pro aktualizaci databáze, vytvořit lístek a poslat e-mailové oznámení, když zařízení vstoupí do geografické zóny.
+Azure Maps se integruje s Azure Event Grid, aby uživatelé mohli posílat oznámení o událostech jiným službám a aktivovat podřízené procesy. Účelem tohoto článku je pomáhat při konfiguraci obchodních aplikací, aby naslouchaly Azure Maps události. To umožňuje uživatelům reagovat na kritické události spolehlivým, škálovatelným a zabezpečeným způsobem. Uživatelé můžou třeba vytvořit aplikaci pro aktualizaci databáze, vytvořit lístek a poslat e-mailové oznámení, když zařízení vstoupí do geografické zóny.
 
 Azure Event Grid je plně spravovaná služba Směrování událostí, která používá model publikování a odběru. Event Grid obsahuje integrovanou podporu pro služby Azure, jako je [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) a [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview). Může doručovat výstrahy událostí na služby mimo Azure pomocí webhooků. Úplný seznam obslužných rutin událostí, které Event Grid podporuje, najdete v [úvodu k Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
 
@@ -32,8 +32,8 @@ Event Grid používá [odběry událostí](https://docs.microsoft.com/azure/even
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | Vyvolá se, když se přijaté souřadnice přesunuly mimo danou geografickou oblast do v rámci. |
-| Microsoft.Maps.GeofenceExited | Vyvolá se, když se přijaté souřadnice přesunuly z dané geografické oblasti na vnější. |
+| Microsoft.Maps.GeofenceEntered | Vyvoláno, když se přijaté souřadnice přesunuly mimo danou geografickou oblast do v rámci. |
+| Microsoft.Maps.GeofenceExited | Vyvoláno, když se přijaté souřadnice přesunuly z dané geografické oblasti na vnější. |
 | Microsoft.Maps.GeofenceResult | Vyvoláno pokaždé, když dotaz monitorování geografických zón vrátí výsledek bez ohledu na stav. |
 
 ## <a name="event-schema"></a>Schéma událostí
@@ -80,9 +80,9 @@ Následující příklad ukazuje schéma pro GeofenceResult:
 
 Aplikace, které zpracovávají Azure Maps události geografického plotu, by měly dodržovat několik doporučených postupů:
 
-* Více předplatných lze nakonfigurovat pro směrování událostí do stejné obslužné rutiny události. Je důležité, aby se nepředpokládalo, že události jsou z konkrétního zdroje. Vždy zkontrolujte téma zprávy a ověřte, zda pochází ze zdroje, který jste očekávali.
-* Zprávy mohou být doručeny mimo pořadí nebo po zpoždění. Použijte pole `X-Correlation-id` v hlavičce odpovědi, abyste pochopili, jestli jsou informace o objektech v aktuálním stavu.
-* Při volání metody Get a POST rozhraní API pro monitorování geografických zón se `EnterAndExit`pro každou geometrii v geografickém stavu, pro který se změnil stav z předchozího volání rozhraní API geografického ohraničení, vygeneruje událost Enter nebo Exit.
+* Nakonfigurujte více předplatných pro směrování událostí do stejné obslužné rutiny události. Je důležité, aby se nepředpokládalo, že události jsou z konkrétního zdroje. Vždy zkontrolujte téma zprávy a ujistěte se, že zpráva pochází ze zdroje, který jste očekávali.
+* Použijte pole `X-Correlation-id` v hlavičce odpovědi, abyste pochopili, jestli jsou informace o objektech v aktuálním stavu. Zprávy mohou být doručeny mimo pořadí nebo po zpoždění.
+* Pokud je volána žádost GET nebo POST v rozhraní API geografické plotu s parametrem Mode nastaveným na `EnterAndExit`, pak je vygenerována událost Enter nebo Exit pro každou geometrii v geografickém stavu, pro kterou se změnil stav z předchozího volání rozhraní API geografické ploty.
 
 ## <a name="next-steps"></a>Další kroky
 

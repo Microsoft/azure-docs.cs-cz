@@ -1,6 +1,6 @@
 ---
-title: Po přihlášení, zobrazí se chybová zpráva na stránce aplikace | Dokumentace Microsoftu
-description: Jak řešit problémy pomocí přihlášení Azure AD při aplikaci vrátí chybovou zprávu.
+title: Po přihlášení se zobrazí chybová zpráva na stránce aplikace | Microsoft Docs
+description: Jak vyřešit problémy s přihlášením pomocí Azure AD, když aplikace vrátí chybovou zprávu
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,152 +16,152 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23e6a3d0b533dccc3c3111382b014907d5c026ab
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9b8d20b31e96973a492355f0515d0532deea0ac9
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612669"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185481"
 ---
-# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Na stránce aplikace zobrazí chybová zpráva po přihlášení uživatele
+# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Stránka aplikace zobrazuje chybovou zprávu, až se uživatel přihlásí.
 
-V tomto scénáři Azure Active Directory (Azure AD) přihlásí uživatel. Ale aplikace zobrazí chybovou zprávu a nebude nechat uživatele dokončit tok přihlášení. Problém je, že aplikace nepřijala odpověď, která vydala Azure AD.
+V tomto scénáři Azure Active Directory (Azure AD) přihlásí uživatele v. Aplikace ale zobrazí chybovou zprávu a neumožní uživateli dokončit přihlašovací tok. Problémem je, že aplikace nepřijala odpověď, kterou vystavila služba Azure AD.
 
-Existuje několik možných důvodů, proč aplikaci nepřijala odpověď ze služby Azure AD. Pokud chybová zpráva není identifikují co je v odpovědi nebyl nalezen, zkuste následující:
+Existuje několik možných důvodů, proč aplikace nepřijala odpověď z Azure AD. Pokud chybová zpráva jasně neidentifikuje, co v odpovědi chybí, vyzkoušejte následující:
 
--   Pokud aplikace je Galerie Azure AD, ověřte, že jste postupovali podle kroků v [ladění založené na SAML jednotného přihlašování k aplikacím ve službě Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
+-   Pokud je aplikace Galerie Azure AD, ověřte, že jste postupovali podle kroků v tématu [Postup ladění jednotného přihlašování založeného na SAML k aplikacím v Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
 
--   Pomocí některého nástroje, například [Fiddler](https://www.telerik.com/fiddler) k zaznamenání požadavku a odpovědi a tokenu SAML.
+-   K zachycení požadavku, odpovědi a tokenu SAML použijte nástroj, jako je [Fiddler](https://www.telerik.com/fiddler) .
 
--   Poslat odpověď SAML na dodavatele aplikace a požádejte ho, co chybí.
+-   Odešlete odpověď SAML dodavateli aplikace a požádejte je o to, co chybí.
 
-## <a name="attributes-are-missing-from-the-saml-response"></a>Atributy chybí odpověď SAML
+## <a name="attributes-are-missing-from-the-saml-response"></a>V odpovědi SAML chybí atributy.
 
-Chcete-li přidat atribut v konfiguraci Azure AD, odeslaný v odpovědi služby Azure AD, postupujte takto:
+Chcete-li přidat atribut v konfiguraci služby Azure AD, který bude odeslán v odpovědi Azure AD, postupujte podle následujících kroků:
 
-1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako globální správce nebo spolusprávce.
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako globální správce nebo spolusprávce.
 
-2. V horní části navigačního podokna na levé straně vyberte **všechny služby** otevřít rozšíření Azure AD.
+2. V horní části navigačního podokna na levé straně vyberte **všechny služby** a otevřete rozšíření Azure AD.
 
-3. Typ **Azure Active Directory** do vyhledávacího pole filtrovat a pak vyberte **Azure Active Directory**.
+3. Do vyhledávacího pole filtru zadejte **Azure Active Directory** a pak vyberte **Azure Active Directory**.
 
-4. Vyberte **podnikové aplikace** v navigačním podokně Azure AD.
+4. V navigačním podokně Azure AD vyberte **podnikové aplikace** .
 
-5. Vyberte **všechny aplikace** zobrazení seznamu aplikací.
+5. Výběrem **všech aplikací** zobrazíte seznam aplikací.
 
    > [!NOTE]
-   > Pokud nevidíte aplikaci, kterou chcete, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací**. Nastavte **zobrazit** možnost "Všech aplikací."
+   > Pokud nevidíte aplikaci, kterou chcete, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace**. Nastavte možnost **Zobrazit** na všechny aplikace.
 
-6. Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
+6. Vyberte aplikaci, kterou chcete nakonfigurovat pro jednotné přihlašování.
 
-7. Po dokončení načítání aplikace, vyberte **jednotného přihlašování** v navigačním podokně.
+7. Po načtení aplikace vyberte v navigačním podokně **jednotné přihlašování** .
 
-8. V **atributy uživatele** vyberte **zobrazit a upravit všechny ostatní atributy uživatele**. Tady můžete změnit atributy, které budou odesílat do aplikace v tokenu SAML, když se uživatelé přihlásí.
+8. V části **atributy uživatele** vyberte možnost **Zobrazit a upravit všechny ostatní atributy uživatele**. Tady můžete změnit atributy, které se mají posílat do aplikace v tokenu SAML, když se uživatelé přihlásí.
 
-   Chcete-li přidat atribut:
+   Přidání atributu:
 
-   1. Vyberte **přidat atribut**. Zadejte **název**a vyberte **hodnota** z rozevíracího seznamu.
+   1. Vyberte **Přidat atribut**. Zadejte **název**a v rozevíracím seznamu vyberte **hodnotu** .
 
-   1.  Vyberte **Uložit**. Zobrazí se vám nový atribut v tabulce.
+   1.  Vyberte **Save** (Uložit). V tabulce se zobrazí nový atribut.
 
 9. Konfiguraci uložte.
 
-   Při příštím přihlášení uživatele k aplikaci Azure AD pošle odpověď SAML nového atributu.
+   Až se uživatel příště přihlásí k aplikaci, Azure AD pošle nový atribut v odpovědi SAML.
 
-## <a name="the-app-doesnt-identify-the-user"></a>Aplikace nemá identifikaci uživatele
+## <a name="the-app-doesnt-identify-the-user"></a>Aplikace neidentifikuje uživatele.
 
-Přihlášení do aplikace selže, protože odpověď SAML chybí atribut jako je například roli. Nebo se nezdaří, protože jiný formát nebo hodnotu očekává, že aplikace **NameID** atribut (identifikátor uživatele).
+Přihlášení k aplikaci se nepovede, protože v odpovědi SAML chybí atribut, jako je například role. Nebo se nezdařila, protože aplikace očekává jiný formát nebo hodnotu atributu **NameId** (uživatelský identifikátor).
 
-Pokud používáte [Azure AD automatické zřizování uživatelů](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) vytvořit, spravovat a odebírat uživatele v aplikaci, ověřte, že uživatel zřízený aplikace SaaS. Další informace najdete v tématu [žádní uživatelé se nezřizují k aplikaci Galerie Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned).
+Pokud používáte [automatizované zřizování uživatelů Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) k vytváření, údržbě a odebírání uživatelů v aplikaci, ověřte, jestli je uživatel zřízený do aplikace SaaS. Další informace najdete v článku o tom, že [se žádní uživatelé nezřídí do aplikace Galerie Azure AD](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md).
 
 ## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>Přidání atributu do konfigurace aplikace Azure AD
 
-Chcete-li změnit hodnotu identifikátoru uživatele, postupujte podle těchto kroků:
+Chcete-li změnit hodnotu identifikátoru uživatele, použijte následující postup:
 
-1. Otevřít [ **webu Azure portal** ](https://portal.azure.com/) a přihlaste se jako globální správce nebo spolusprávce.
+1. Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako globální správce nebo spolusprávce.
 
-2. Vyberte **všechny služby** v horní části navigačního podokna na levé straně otevřete rozšíření Azure AD.
+2. V horní části navigačního podokna na levé straně vyberte **všechny služby** a otevřete rozšíření Azure AD.
 
-3. Typ **Azure Active Directory** do vyhledávacího pole filtrovat a pak vyberte **Azure Active Directory**.
+3. Do vyhledávacího pole filtru zadejte **Azure Active Directory** a pak vyberte **Azure Active Directory**.
 
-4. Vyberte **podnikové aplikace** v navigačním podokně Azure AD.
+4. V navigačním podokně Azure AD vyberte **podnikové aplikace** .
 
-5. Vyberte **všechny aplikace** zobrazení seznamu aplikací.
+5. Výběrem **všech aplikací** zobrazíte seznam aplikací.
 
    > [!NOTE]
-   > Pokud nevidíte aplikaci, kterou chcete, použijte **filtr** ovládacího prvku v horní části **seznam všech aplikací**. Nastavte **zobrazit** možnost "Všech aplikací."
+   > Pokud nevidíte aplikaci, kterou chcete, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace**. Nastavte možnost **Zobrazit** na všechny aplikace.
 
-6. Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
+6. Vyberte aplikaci, kterou chcete nakonfigurovat pro jednotné přihlašování.
 
-7. Po dokončení načítání aplikace, vyberte **jednotného přihlašování** v navigačním podokně.
+7. Po načtení aplikace vyberte v navigačním podokně **jednotné přihlašování** .
 
-8. V části **atributy uživatele**, vyberte jedinečný identifikátor pro uživatele **identifikátor uživatele** rozevíracího seznamu.
+8. V části **atributy uživatele**vyberte jedinečný identifikátor uživatele z rozevíracího seznamu **identifikátor uživatele** .
 
 ## <a name="change-the-nameid-format"></a>Změna formátu NameID
 
-Pokud aplikace očekává, že jiný formát pro **NameID** atribut (identifikátor uživatele), najdete v článku [úpravy nameID](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) změnit formát ID názvu položky.
+Pokud aplikace očekává jiný formát atributu **NameId** (uživatelský identifikátor), přečtěte si článek [Úprava NameId](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) a změňte formát NameId.
 
-Azure AD vybere formát **NameID** atribut (identifikátor uživatele) na základě hodnoty, která je vybrána nebo formátu, který je požadován aplikací v SAML AuthRequest. Další informace najdete v tématu v části "NameIDPolicy" [jednotné přihlašování – protokol SAML](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy).
+Azure AD vybere formát pro atribut **NameId** (identifikátor uživatele) na základě hodnoty, která je vybrána, nebo formátu, který požaduje aplikace v AuthRequest SAML. Další informace najdete v části "NameIDPolicy" tématu [protokol SAML jednotného přihlašování](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy).
 
-## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>Aplikace očekává, že jiný podpis metody pro odpověď SAML
+## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>Aplikace očekává pro odpověď SAML jinou metodu podpisu.
 
-Chcete-li změnit, které části tokenu SAML jsou digitálně podepsané pomocí Azure AD, postupujte podle těchto kroků:
+Chcete-li změnit, které části tokenu SAML jsou digitálně podepsány službou Azure AD, postupujte podle následujících kroků:
 
-1. Otevřít [webu Azure portal](https://portal.azure.com/) a přihlaste se jako globální správce nebo spolusprávce.
+1. Otevřete [Azure Portal](https://portal.azure.com/) a přihlaste se jako globální správce nebo spolusprávce.
 
-2. Vyberte **všechny služby** v horní části navigačního podokna na levé straně otevřete rozšíření Azure AD.
+2. V horní části navigačního podokna na levé straně vyberte **všechny služby** a otevřete rozšíření Azure AD.
 
-3. Typ **Azure Active Directory** do vyhledávacího pole filtrovat a pak vyberte **Azure Active Directory**.
+3. Do vyhledávacího pole filtru zadejte **Azure Active Directory** a pak vyberte **Azure Active Directory**.
 
-4. Vyberte **podnikové aplikace** v navigačním podokně Azure AD.
+4. V navigačním podokně Azure AD vyberte **podnikové aplikace** .
 
-5. Vyberte **všechny aplikace** zobrazení seznamu aplikací.
+5. Výběrem **všech aplikací** zobrazíte seznam aplikací.
 
    > [!NOTE]
-   > Pokud nevidíte aplikaci, která má, použít **filtr** ovládacího prvku v horní části **seznam všech aplikací**. Nastavte **zobrazit** možnost "Všech aplikací."
+   > Pokud nevidíte aplikaci, kterou chcete použít, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace**. Nastavte možnost **Zobrazit** na všechny aplikace.
 
-6. Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
+6. Vyberte aplikaci, kterou chcete nakonfigurovat pro jednotné přihlašování.
 
-7. Po načtení aplikace, vyberte **jednotného přihlašování** v navigačním podokně.
+7. Po načtení aplikace vyberte v navigačním podokně **jednotné přihlašování** .
 
-8. V části **podpisový certifikát SAML**vyberte **zobrazit pokročilé nastavení podepisování certifikátu**.
+8. V části **podpisový certifikát SAML**vyberte **Zobrazit upřesňující nastavení podepisování certifikátů**.
 
-9. Vyberte **podepisování možnost** , který aplikace očekává, že z těchto možností:
+9. Vyberte **možnost podepisování** , kterou aplikace očekává mezi tyto možnosti:
 
    * **Podepsat odpověď SAML**
-   * **Podepsat odpověď SAML a kontrolní výraz**
+   * **Podepsat odpověď a kontrolní výraz SAML**
    * **Podepsat kontrolní výraz SAML**
 
-   Při příštím přihlášení uživatele k aplikaci Azure AD podepíše součástí odpověď SAML, který jste vybrali.
+   Až se uživatel příště přihlásí k aplikaci, služba Azure AD podepíše část odpovědi SAML, kterou jste vybrali.
 
-## <a name="the-app-expects-the-sha-1-signing-algorithm"></a>Aplikace bude podpisový algoritmus SHA-1
+## <a name="the-app-expects-the-sha-1-signing-algorithm"></a>Aplikace očekává podpisový algoritmus SHA-1.
 
-Ve výchozím nastavení Azure AD podepisuje tokenu SAML s použitím algoritmu nejvyšší zabezpečení. Doporučujeme, abyste podpisový algoritmus neměnit *SHA-1* Pokud aplikace nevyžaduje SHA-1.
+Služba Azure AD ve výchozím nastavení podepisuje tokeny SAML pomocí nejbezpečnějšího algoritmu. Pokud aplikace nevyžaduje SHA-1, Doporučujeme neměnit podpisový algoritmus na *SHA-1* .
 
-Chcete-li změnit podpisový algoritmus, postupujte takto:
+Chcete-li změnit podpisový algoritmus, použijte následující postup:
 
-1. Otevřít [webu Azure portal](https://portal.azure.com/) a přihlaste se jako globální správce nebo spolusprávce.
+1. Otevřete [Azure Portal](https://portal.azure.com/) a přihlaste se jako globální správce nebo spolusprávce.
 
-2. Vyberte **všechny služby** v horní části navigačního podokna na levé straně otevřete rozšíření Azure AD.
+2. V horní části navigačního podokna na levé straně vyberte **všechny služby** a otevřete rozšíření Azure AD.
 
-3. Typ **Azure Active Directory** do vyhledávacího pole filtrovat a pak vyberte **Azure Active Directory**.
+3. Do vyhledávacího pole filtru zadejte **Azure Active Directory** a pak vyberte **Azure Active Directory**.
 
-4. Vyberte **podnikové aplikace** v navigačním podokně Azure AD.
+4. V navigačním podokně Azure AD vyberte **podnikové aplikace** .
 
-5. Vyberte **všechny aplikace** zobrazení seznamu vašich aplikací.
+5. Výběrem **všech aplikací** zobrazíte seznam aplikací.
 
    > [!NOTE]
-   > Pokud nevidíte aplikaci, která má, použít **filtr** ovládacího prvku v horní části **seznam všech aplikací**. Nastavte **zobrazit** možnost "Všech aplikací."
+   > Pokud nevidíte aplikaci, kterou chcete použít, použijte ovládací prvek **filtru** v horní části **seznamu všechny aplikace**. Nastavte možnost **Zobrazit** na všechny aplikace.
 
-6. Vyberte aplikaci, kterou chcete konfigurovat pro jednotné přihlašování.
+6. Vyberte aplikaci, kterou chcete nakonfigurovat pro jednotné přihlašování.
 
-7. Po dokončení načítání aplikace, vyberte **jednotného přihlašování** z navigačního podokna na levé straně aplikace.
+7. Po načtení aplikace vyberte v navigačním podokně na levé straně aplikace **jednotné přihlašování** .
 
-8. V části **podpisový certifikát SAML**vyberte **zobrazit pokročilé nastavení podepisování certifikátu**.
+8. V části **podpisový certifikát SAML**vyberte **Zobrazit upřesňující nastavení podepisování certifikátů**.
 
-9. Vyberte **SHA-1** jako **podpisový algoritmus**.
+9. Jako **podpisový algoritmus**vyberte **SHA-1** .
 
-   Při příštím přihlášení uživatele k aplikaci Azure AD podepíše tokenu SAML s využitím algoritmu SHA-1.
+   Až se uživatel příště přihlásí k aplikaci, služba Azure AD podepíše token SAML pomocí algoritmu SHA-1.
 
-## <a name="next-steps"></a>Další postup
-[Ladění založené na SAML jednotného přihlašování k aplikacím ve službě Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
+## <a name="next-steps"></a>Další kroky
+[Jak ladit jednotné přihlašování založené na SAML pro aplikace ve službě Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).

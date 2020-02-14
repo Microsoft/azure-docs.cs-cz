@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 17c7949f2bbd6d75343bb2e6825be36b56a20967
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: de259daa7fd27cc4f138c294a7f347502ca482a4
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695326"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185829"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Migrace aplikací pro iOS, které používají Microsoft Authenticator z ADAL.NET na MSAL.NET
 
@@ -25,7 +25,7 @@ Používali jste knihovnu Azure Active Directory Authentication Library pro .NET
 
 Kde byste měli začít? Tento článek vám pomůže s migrací aplikace pro Xamarin iOS z ADAL do MSAL.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že už máte aplikaci Xamarin iOS integrovanou se zprostředkovatelem iOS. Pokud to neuděláte, přejděte přímo na MSAL.NET a spusťte implementaci zprostředkovatele tam. Informace o tom, jak vyvolat zprostředkovatele iOS v MSAL.NET pomocí nové aplikace, najdete v [této dokumentaci](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS#why-use-brokers-on-xamarinios-and-xamarinandroid-applications).
 
 ## <a name="background"></a>Pozadí
@@ -36,8 +36,8 @@ Zprostředkovatelé jsou aplikace poskytované Microsoftem v Androidu a iOS. (Po
 
 Umožňují:
 
-- Jednotné přihlašování
-- Identifikace zařízení, která je vyžadována některými [zásadami podmíněného přístupu](../conditional-access/overview.md). Další informace najdete v tématu [Správa zařízení](../conditional-access/conditions.md#device-platforms).
+- Jednotné přihlašování.
+- Identifikace zařízení, která je vyžadována některými [zásadami podmíněného přístupu](../conditional-access/overview.md). Další informace najdete v tématu [Správa zařízení](../conditional-access/concept-conditional-access-conditions.md#device-platforms).
 - Ověřování totožnosti aplikace, které je také vyžadováno v některých podnikových scénářích. Další informace najdete v tématu [Správa mobilních aplikací (MAM) v Intune](https://docs.microsoft.com/intune/mam-faq).
 
 ## <a name="migrate-from-adal-to-msal"></a>Migrace z ADAL na MSAL
@@ -118,7 +118,7 @@ V MSAL.NET provedete dvě věci pro nastavení okna objektu pro iOS:
 1. V `AppDelegate.cs`nastavte `App.RootViewController` na nové `UIViewController()`. Toto přiřazení zajišťuje, že existuje UIViewController se voláním zprostředkovatele. Pokud není správně nastavená, může se zobrazit tato chyba: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 1. V volání AcquireTokenInteractive použijte `.WithParentActivityOrWindow(App.RootViewController)`a předejte odkaz na okno objektu, které použijete.
 
-**Příklad:**
+**Například:**
 
 V `App.cs`:
 ```csharp
@@ -189,7 +189,7 @@ ADAL.NET a MSAL.NET obě používají `-canOpenURL:` ke kontrole, jestli je zpro
 <table>
 <tr><td>Aktuální kód ADAL:</td><td>MSAL protějšek:</td></tr>
 <tr><td>
-Využití 
+Používá 
 
 `msauth`
 
@@ -201,7 +201,7 @@ Využití
 </array>
 ```
 </td><td>
-Využití 
+Používá 
 
 `msauthv2`
 

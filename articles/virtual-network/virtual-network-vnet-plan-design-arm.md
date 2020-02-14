@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: dfa7681b43bd18e15ee929156ab9a45bb9790c5b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e066d28afc4b0959b15284378cde682fbc05615
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845585"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190465"
 ---
 # <a name="plan-virtual-networks"></a>Plánování virtuálních sítí
 
@@ -27,7 +27,7 @@ Vytvoření virtuální sítě pro experimentování s je dostatečně snadné, 
 
 ## <a name="naming"></a>Pojmenování
 
-Všechny prostředky Azure mají název. Název musí být jedinečný v rámci oboru, který se může u každého typu prostředku lišit. Například název virtuální sítě musí být v rámci [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)jedinečný, ale může být duplikován v rámci [předplatného](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) nebo [oblasti](https://azure.microsoft.com/regions/#services)Azure. Definování konvence vytváření názvů, kterou můžete použít konzistentně, když je pojmenování prostředků užitečné při správě několika síťových prostředků v průběhu času. Návrhy najdete v tématu zásady [vytváření názvů](/azure/architecture/best-practices/resource-naming#networking).
+Všechny prostředky Azure mají název. Název musí být jedinečný v rámci oboru, který se může u každého typu prostředku lišit. Například název virtuální sítě musí být v rámci [skupiny prostředků](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)jedinečný, ale může být duplikován v rámci [předplatného](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) nebo [oblasti](https://azure.microsoft.com/regions/#services)Azure. Definování konvence vytváření názvů, kterou můžete použít konzistentně, když je pojmenování prostředků užitečné při správě několika síťových prostředků v průběhu času. Návrhy najdete v tématu zásady [vytváření názvů](../azure-resource-manager/management/resource-name-rules.md#microsoftnetwork).
 
 ## <a name="regions"></a>Oblasti
 
@@ -109,7 +109,7 @@ Prostředky v jedné virtuální síti nemůžou přeložit názvy prostředků 
 
 Azure využívá [řízení přístupu na základě role](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (RBAC) k prostředkům. Oprávnění jsou přiřazena k [oboru](../role-based-access-control/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#scope) v následující hierarchii: skupina pro správu, předplatné, skupina prostředků a jednotlivé prostředky. Další informace o hierarchii najdete v tématu [uspořádání prostředků](../azure-resource-manager/management-groups-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete pracovat s virtuálními sítěmi Azure a všemi jejich souvisejícími možnostmi, jako je například partnerský vztah, skupiny zabezpečení sítě, koncové body služby a směrovací tabulky, můžete členům vaší organizace přiřadit předdefinované role [](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#owner) [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) , [přispěvatele](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#contributor)nebo sítě a potom přiřadit roli příslušnému oboru. Pokud chcete přiřadit konkrétní oprávnění k podmnožině možností virtuální sítě, vytvořte [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a přiřaďte specifická oprávnění požadovaná pro [virtuální sítě](manage-virtual-network.md#permissions), [podsítě a koncové body služby](virtual-network-manage-subnet.md#permissions), [Síťová rozhraní](virtual-network-network-interface.md#permissions), [partnerské vztahy](virtual-network-manage-peering.md#permissions), [skupiny zabezpečení sítě a aplikace](manage-network-security-group.md#permissions)nebo [směrovací tabulky](manage-route-table.md#permissions) k roli.
 
-## <a name="policy"></a>Zásady
+## <a name="policy"></a>Zásada
 
 Azure Policy vám umožní vytvářet, přiřazovat a spravovat definice zásad. Definice zásad pro vaše prostředky vynutila různá pravidla, takže prostředky zůstávají v souladu se standardy vaší organizace a smlouvami o úrovni služeb. Azure Policy spouští vyhodnocení vašich prostředků, hledá prostředky, které nejsou kompatibilní s definicemi zásad, které máte. Můžete například definovat a použít zásadu, která umožňuje vytváření virtuálních sítí jenom v konkrétní skupině prostředků nebo oblasti. Jiná zásada může vyžadovat, aby každá podsíť měla přidruženou skupinu zabezpečení sítě. Zásady se pak vyhodnotí při vytváření a aktualizaci prostředků.
 

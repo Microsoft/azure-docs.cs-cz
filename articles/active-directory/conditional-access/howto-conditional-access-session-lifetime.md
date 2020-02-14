@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 797475bfe0f1ec077ad39c6fce1f0facdf679802
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483461"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77195058"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relace ověřování pomocí podmíněného přístupu
 
@@ -49,7 +49,24 @@ Nastavení četnosti přihlašování funguje s aplikacemi, které implementoval
 - SharePoint a OneDrive
 - Webový klient pro týmy
 - Dynamics CRM Online
-- portál Azure
+- Azure Portal
+
+### <a name="user-sign-in-frequency-and-device-identities"></a>Četnost přihlašování uživatelů a identit zařízení
+
+Pokud máte připojenou službu Azure AD, připojené k hybridní službě Azure AD nebo zařízení registrovaná v Azure AD, když uživatel odemkne své zařízení nebo přihlášení interaktivně, bude tato událost vyhovovat i zásadám četnosti přihlašování. V následujících 2 příkladech je četnost přihlášení uživatele nastavena na 1 hodinu:
+
+Příklad 1:
+
+- V 00:00 se uživatel přihlásí k zařízení připojenému ke službě Azure AD ve Windows 10 a spustí práci na dokumentu uloženém na SharePointu Online.
+- Uživatel pokračuje v práci na stejném dokumentu na svém zařízení po celou hodinu.
+- V 01:00 se uživateli zobrazí výzva k opětovnému přihlášení na základě požadavku na četnost přihlášení v zásadách podmíněného přístupu nakonfigurovaných správcem.
+
+Příklad 2:
+
+- V 00:00 se uživatel přihlásí k zařízení připojenému ke službě Azure AD ve Windows 10 a spustí práci na dokumentu uloženém na SharePointu Online.
+- V 00:30 se uživatel zaregistruje a provede přerušení uzamykání zařízení.
+- V 00:45 se uživatel vrátí z jeho přerušení a odemkne zařízení.
+- V 01:45 se uživateli zobrazí výzva k opětovnému přihlášení na základě požadavku na četnost přihlášení v zásadách podmíněného přístupu nakonfigurovaných správcem od posledního přihlášení v 00:45.
 
 ## <a name="persistence-of-browsing-sessions"></a>Trvalost relací procházení
 
@@ -67,7 +84,7 @@ Podmíněný přístup je Azure AD Premium schopnost a vyžaduje licenci na pré
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Zásady 1: řízení četnosti přihlašování
 
-1. Vytvořit novou zásadu
+1. Vytvořit nové zásady
 1. Vyberte všechny požadované podmínky pro prostředí zákazníka, včetně cílových cloudových aplikací.
 
    > [!NOTE]
@@ -86,7 +103,7 @@ Pokud jste nakonfigurovali různou frekvenci přihlašování pro různé webov�
 
 ### <a name="policy-2-persistent-browser-session"></a>Zásada 2: trvalá relace prohlížeče
 
-1. Vytvořit novou zásadu
+1. Vytvořit nové zásady
 1. Vyberte všechny požadované podmínky.
 
    > [!NOTE]
@@ -101,7 +118,7 @@ Pokud jste nakonfigurovali různou frekvenci přihlašování pro různé webov�
 > [!NOTE]
 > Trvalá konfigurace relace prohlížeče v rámci podmíněného přístupu Azure AD přepíše "zůstat přihlášeni?" nastavení v podokně Branding společnosti v Azure Portal pro stejného uživatele, pokud jste nakonfigurovali obě zásady.
 
-## <a name="validation"></a>Ověření
+## <a name="validation"></a>Ověřování
 
 Pomocí nástroje citlivosti pro simulaci přihlášení uživatele k cílové aplikaci a dalším podmínkám na základě toho, jak jste nakonfigurovali zásady. Ve výsledku nástroje se zobrazí ovládací prvky správy relace ověřování.
 

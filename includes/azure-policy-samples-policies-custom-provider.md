@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: dacoulte
-ms.openlocfilehash: 67c0114a5f074bd002036ae217ce0562c643e8c1
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
-ms.translationtype: HT
+ms.openlocfilehash: 09620ec89c50b69d6b7a43e881c49176e7dfcd85
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172692"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192843"
 ---
-|Název |Popis |Vliv (s) |Verze |
+|Název |Popis |Vliv (s) |Version |
 |---|---|---|---|
-|[Nasazení přidružení pro vlastního zprostředkovatele](https://github.com/Azure/azure-policy/blob/masterbuilt-in-policies/policyDefinitions/Custom%20Provider/AssociationForCustomProvider_Deploy.json) |Nasadí prostředek přidružení, který přidruží vybrané typy prostředků k zadanému vlastnímu zprostředkovateli. Toto nasazení zásad nepodporuje vnořené typy prostředků. |deployIfNotExists |1.0.0 |
+|[Nasazení přidružení pro vlastního zprostředkovatele](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Custom%20Provider/AssociationForCustomProvider_Deploy.json) |Nasadí prostředek přidružení, který přidruží vybrané typy prostředků k zadanému vlastnímu zprostředkovateli. Toto nasazení zásad nepodporuje vnořené typy prostředků. |deployIfNotExists |1.0.0 |

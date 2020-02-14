@@ -4,12 +4,12 @@ description: Naučte se používat Ansible ke správě dynamických inventářů
 keywords: Ansible, Azure, DevOps, bash, cloudshellu, dynamický soupis
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d2ebf202cfc9f94b28fc7a512e1fea452401aec6
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442787"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193595"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Kurz: Konfigurace dynamického inventáře vašich prostředků Azure pomocí Ansible
 
@@ -32,7 +32,7 @@ Ansible se dají použít k získání informací o inventáři z různých zdro
 
 ## <a name="create-the-test-vms"></a>Vytvoření testovacích virtuálních počítačů
 
-1. Přihlaste se na web [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Portál Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
@@ -47,7 +47,7 @@ Ansible se dají použít k získání informací o inventáři z různých zdro
 
 1. Pomocí některého z následujících postupů vytvořte dva virtuální počítače se systémem Linux v Azure:
 
-    - **Ansible PlayBook** – článek [Vytvoření základního virtuálního počítače v Azure pomocí Ansible](/azure/virtual-machines/linux/ansible-create-vm) ukazuje, jak vytvořit virtuální počítač z Ansible PlayBook. Pokud k definování jednoho nebo obou virtuálních počítačů použijete PlayBook, ujistěte se, že se místo hesla používá připojení SSH.
+    - **Ansible PlayBook** – článek [Vytvoření základního virtuálního počítače v Azure pomocí Ansible](./ansible-create-vm.md) ukazuje, jak vytvořit virtuální počítač z Ansible PlayBook. Pokud k definování jednoho nebo obou virtuálních počítačů použijete PlayBook, ujistěte se, že se místo hesla používá připojení SSH.
 
     - **Azure CLI** – vydejte každý z následujících příkazů v Cloud Shell k vytvoření těchto dvou virtuálních počítačů:
 
@@ -237,7 +237,7 @@ Od Ansible 2,8 poskytuje Ansible [modul plug-in Azure Dynamic-Inventory](https:/
               service: name=nginx state=started
     ```
 
-1. Uložte tento soubor a ukončete editor.
+1. Uložte soubor a ukončete Editor.
 
 1. Spusťte PlayBook pomocí příkazu `ansible-playbook`:
 
@@ -316,4 +316,4 @@ Tato část ukazuje jednu z postupů testování, že Nginx je na vašem virtuá
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"] 
-> [Rychlý Start: Konfigurace virtuálních počítačů se systémem Linux v Azure pomocí Ansible](/azure/virtual-machines/linux/ansible-create-vm)
+> [Rychlý Start: Konfigurace virtuálních počítačů se systémem Linux v Azure pomocí Ansible](./ansible-create-vm.md)

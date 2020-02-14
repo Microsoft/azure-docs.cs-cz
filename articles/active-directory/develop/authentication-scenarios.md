@@ -13,18 +13,18 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 9760f09f2588f09263c96cf8c1be74129b117009
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 6e14284b5d653af01631d56acf954f9c2a1f10ab
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77085376"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77194991"
 ---
 # <a name="authentication-basics"></a>Základy ověřování
 
 ## <a name="what-is-authentication"></a>Co je ověřování
 
-Tento článek popisuje mnohé z konceptů ověřování, které budete potřebovat při vytváření chráněných webových aplikací, webových rozhraní API nebo aplikací, které volají chráněná webová rozhraní API. Pokud se zobrazí termín, který neznáte, vyzkoušejte náš [Glosář](developer-glossary.md).
+Tento článek popisuje mnohé z konceptů ověřování, které budete potřebovat při vytváření chráněných webových aplikací, webových rozhraní API nebo aplikací, které volají chráněná webová rozhraní API. Pokud se vám zobrazí termín, který neznáte, vyzkoušejte si náš [Glosář](developer-glossary.md) nebo naše [videa Microsoftu pro identitu platforem](identity-videos.md) , která se týkají základních konceptů.
 
 **Ověřování** je proces prokazující, na koho jste se rozhodli. V angličtině se pro ověřování někdy používá zkrácené slovo AuthN.
 

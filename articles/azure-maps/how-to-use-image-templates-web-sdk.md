@@ -1,6 +1,6 @@
 ---
 title: Šablony obrázků v sadě Azure Maps Web SDK | Mapy Microsoft Azure
-description: V tomto článku se naučíte, jak používat šablony obrázků se značkami HTML a různými vrstvami v sadě Microsoft Azure Maps Web SDK.
+description: V tomto článku se dozvíte, jak používat šablony obrázků se značkami HTML a různými vrstvami v sadě Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: cb182a5db77a517b11fb1863665f8c54d58b254a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911576"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198220"
 ---
 # <a name="how-to-use-image-templates"></a>Používání šablon obrázků
 
@@ -24,7 +24,7 @@ Obrázky lze použít se značkami HTML a různými vrstvami v Azure Maps webov�
  - Vrstvy mnohoúhelníků lze vykreslit pomocí obrázku vzorku výplně. 
  - Značky HTML mohou vykreslovat body pomocí obrázků a dalších prvků HTML.
 
-Aby bylo zajištěno dobrý výkon pomocí vrstev, je nutné před vykreslením načíst do prostředku Sprite obrázku mapy. [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions) z SymbolLayer předvede několik obrázků značek v několik barev do Sprite obrázku mapy ve výchozím nastavení. Tyto stejné obrázky značek a další jsou k dispozici jako šablony SVG a lze je použít k vytvoření obrázků s vlastními měřítki a také primární a sekundární barvou zákazníka. V celku jsou k dispozici 42 šablon imagí; 27 ikon symbolů a 15 vzorků výplně mnohoúhelníku.
+Chcete-li zajistit dobrý výkon pomocí vrstev, načtěte obrázky do prostředku Sprite obrázku mapy před vykreslením. [IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)SymbolLayer, předem načte několik obrázků značek v několik barev do Sprite obrázku mapy, ve výchozím nastavení. Tyto obrázky značek a další jsou k dispozici jako šablony SVG. Dají se použít k vytvoření obrázků s vlastními měřítki nebo k jejich použití jako primární a sekundární barvy zákazníka. V součtu jsou k dispozici 42 šablon imagí: 27 ikon symbolů a 15 vzorů výplně mnohoúhelníku.
 
 Šablony obrázků lze přidat k prostředkům Sprite obrázku mapy pomocí funkce `map.imageSprite.createFromTemplate`. Tato funkce umožňuje předat až pět parametrů;
 
@@ -32,9 +32,9 @@ Aby bylo zajištěno dobrý výkon pomocí vrstev, je nutné před vykreslením 
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-kde `id` je jedinečný identifikátor, který vytvoříte, který je přiřazen k obrázku při jeho přidání do Sprite obrázku mapy. Pomocí tohoto identifikátoru v vrstvách určete, který prostředek obrázku se má vykreslit. `templateName` určuje, která šablona obrázku se má použít. Možnost `color` nastaví primární barvu obrázku a možnosti `secondaryColor` nastaví vedlejší barvu obrázku. Možnost `scale` škáluje šablonu obrázku předtím, než ji použijete na Sprite obrazu. Když se obrázek použije na Sprite obrázku, převede se na PNG. Aby bylo zajištěno ostré vykreslování, je lepší škálovat šablonu obrázku před přidáním do Sprite, než je možné škálovat ve vrstvě.
+`id` je jedinečný identifikátor, který vytvoříte. `id` se k obrázku přiřadí při jeho přidání do Sprite obrázku mapy. Pomocí tohoto identifikátoru v vrstvách určete, který prostředek obrázku se má vykreslit. `templateName` určuje, která šablona obrázku se má použít. Možnost `color` nastaví primární barvu obrázku a možnosti `secondaryColor` nastaví vedlejší barvu obrázku. Možnost `scale` škáluje šablonu obrázku předtím, než ji použijete na Sprite obrazu. Když se obrázek použije na Sprite obrázku, převede se na PNG. Aby se zajistilo ostré vykreslování, je lepší škálovat šablonu obrázku před přidáním do Sprite, než je můžete škálovat ve vrstvě.
 
-Tato funkce asynchronně načte obrázek do Sprite obrazu a vrátí příslib, který můžete počkat na dokončení této funkce.
+Tato funkce asynchronně načte obrázek do Sprite obrazu. Proto vrátí příslib, který můžete počkat na dokončení této funkce.
 
 Následující kód ukazuje, jak vytvořit obrázek z jedné z předdefinovaných šablon a použít jej s vrstvou symbolů.
 
@@ -106,12 +106,12 @@ Podívejte se na <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>značku HTML
 
 ## <a name="create-custom-reusable-templates"></a>Vytváření vlastních opakovaně použitelných šablon
 
-Pokud vaše aplikace používá stejnou ikonu s různými ikonami nebo pokud vytváříte modul, který přidává další šablony obrázků, můžete tyto ikony snadno přidat z Azure Maps webové sady SDK a načíst je pomocí následujících statických funkcí v oboru názvů `atlas`.
+Pokud vaše aplikace používá stejnou ikonu s různými ikonami nebo pokud vytváříte modul, který přidává další šablony obrázků, můžete tyto ikony snadno přidat a načíst z Azure Maps webové sady SDK. V oboru názvů `atlas` použijte následující statické funkce.
 
-| Name (Název) | Návratový typ | Popis | 
+| Název | Návratový typ | Popis | 
 |-|-|-|
 | `addImageTemplate(templateName: string, template: string, override: boolean)` | | Přidá do oboru názvů Atlas vlastní šablonu obrázku SVG. |
-|  `getImageTemplate(templateName: string, scale?: number)`| string | Načte šablonu SVG podle názvu. |
+|  `getImageTemplate(templateName: string, scale?: number)`| řetězec | Načte šablonu SVG podle názvu. |
 | `getAllImageTemplateNames()` | řetězec [] |  Načte šablonu SVG podle názvu. |
 
 Šablony obrázků SVG podporují následující zástupné hodnoty:
@@ -133,31 +133,31 @@ Podívejte se na pero <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Přidá
 
 ## <a name="list-of-image-templates"></a>Seznam šablon obrázků
 
-V následující tabulce jsou uvedeny všechny šablony imagí, které jsou aktuálně dostupné v sadě Azure Maps Web SDK, s názvem šablony nad každým obrázkem. Ve výchozím nastavení je primární barva modrá a vedlejší barva je bílá. Pro snadnější zobrazení sekundární barvy na bílém pozadí mají následující obrázky nastavenou sekundární barvu na černou.
+Tato tabulka obsahuje seznam všech šablon imagí, které jsou aktuálně k dispozici v sadě Azure Maps Web SDK. Název šablony je nad každým obrázkem. Ve výchozím nastavení je primární barva modrá a vedlejší barva je bílá. Pro snadnější zobrazení sekundární barvy na bílém pozadí mají následující obrázky nastavenou sekundární barvu na černou.
 
 **Šablony ikon symbolů**
 
 |||||
 |:-:|:-:|:-:|:-:|
-| Značky | Značka – silná | Značka – kroužek | Značka – plochá |
+| značky | Značka – silná | Značka – kroužek | Značka – plochá |
 |![ikona značky](./media/image-templates/marker.png)|![Značka – tlustá ikona](./media/image-templates/marker-thick.png)|![Značka – ikona kruhu](./media/image-templates/marker-circle.png)|![Značka – plochá ikona](./media/image-templates/marker-flat.png)|
 ||||
 | Značka – čtvercový | Marker – čtvercový – cluster | značka – šipka | Fix – míč – PIN | 
 |![ikona se čtvercovými značkami](./media/image-templates/marker-square.png)|![Značka – čtvercový – ikona clusteru](./media/image-templates/marker-square-cluster.png)|![Marker – ikona šipky](./media/image-templates/marker-arrow.png)|![Fix – míč – ikona kódu PIN](./media/image-templates/marker-ball-pin.png)|
 ||||
-| Značka – čtvercový – zaoblený | znak – čtvercový – zaoblený – cluster | flag | příznak – trojúhelník |
+| Značka – čtvercový – zaoblený | znak – čtvercový – zaoblený – cluster | příznaků | příznak – trojúhelník |
 | ![Značka – čtvercově zaoblená ikona](./media/image-templates/marker-square-rounded.png) | ![ikona se čtvercový-zaoblenými clustery](./media/image-templates/marker-square-rounded-cluster.png) | ![Ikona příznaku](./media/image-templates/flag.png) | ![ikona s označením trojúhelníku](./media/image-templates/flag-triangle.png) |
 ||||
-| trojúhelník | trojúhelníkově silné | trojúhelník – šipka nahoru | trojúhelník – šipka doleva |
+| nahoru | trojúhelníkově silné | trojúhelník – šipka nahoru | trojúhelník – šipka doleva |
 | ![ikona trojúhelníku](./media/image-templates/triangle.png) | ![trojúhelníkově tlustá ikona](./media/image-templates/triangle-thick.png) | ![trojúhelník – ikona šipky nahoru](./media/image-templates/triangle-arrow-up.png) | ![trojúhelník – ikona šipky vlevo](./media/image-templates/triangle-arrow-left.png) |
 ||||
 | šestiúhelník | šestiúhelníka tlustá | šestiúhelník – zaoblené | šestiúhelníková zaoblená – silná |
 | ![ikona šestiúhelníku](./media/image-templates/hexagon.png) | ![šestiúhelník – tlustá ikona](./media/image-templates/hexagon-thick.png) | ![ikona se zaokrouhlením na šestiúhelník](./media/image-templates/hexagon-rounded.png) | ![šestiúhelník – zaoblený – ikona silného](./media/image-templates/hexagon-rounded-thick.png) |
 ||||
 | pin | připnout – zaokrouhlit | Zaoblený – čtvercový | Zaoblený – čtvercový – silný |
-| ![Ikona připnutí](./media/image-templates/pin.png) | ![ikona kulatého připnutí](./media/image-templates/pin-round.png) | ![ikona s zaobleným čtvercem](./media/image-templates/rounded-square.png) | ![ikona s kulatým čtvercem a tlustou ikonou](./media/image-templates/rounded-square-thick.png) |
+| ![ikona připnutí](./media/image-templates/pin.png) | ![ikona kulatého připnutí](./media/image-templates/pin-round.png) | ![ikona s zaobleným čtvercem](./media/image-templates/rounded-square.png) | ![ikona s kulatým čtvercem a tlustou ikonou](./media/image-templates/rounded-square-thick.png) |
 ||||
-| Šipka nahoru | Šipka nahoru – tenká | car ||
+| Šipka nahoru | Šipka nahoru – tenká | kabin ||
 | ![ikona šipky nahoru](./media/image-templates/arrow-up.png) | ![Šipka nahoru – ikona tenké](./media/image-templates/arrow-up-thin.png) | ![ikona auta](./media/image-templates/car.png) | |
 
 **Šablony vzorku výplně mnohoúhelníku**

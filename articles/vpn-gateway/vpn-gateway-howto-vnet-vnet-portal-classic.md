@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: ddcc7fcc14c7958e8c0d012c2395ad2b6c422f4f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157903"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201845"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurace připojení typu VNet-to-VNet (Classic)
 
@@ -61,9 +61,9 @@ Virtuální sítě může být vhodné propojit z následujících důvodů:
 
 Další informace o propojeních VNet-to-VNet najdete v části [Aspekty propojení VNet-to-VNet](#faq) na konci tohoto článku.
 
-### <a name="before-you-begin"></a>Než začnete
+### <a name="powershell"></a>Práce s Azure PowerShell
 
-Před zahájením tohoto cvičení Stáhněte a nainstalujte nejnovější verzi rutin PowerShellu pro správu služeb Azure (SM). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Portál používáme pro většinu kroků, ale k vytvoření připojení mezi virtuální sítě je potřeba použít PowerShell. Připojení nemůžete vytvořit pomocí Azure Portal.
+Portál používáme pro většinu kroků, ale k vytvoření připojení mezi virtuální sítě je potřeba použít PowerShell. Připojení nemůžete vytvořit pomocí Azure Portal. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ## <a name="plan"></a>Krok 1: Plánování rozsahů IP adres
 
@@ -73,7 +73,7 @@ Následující tabulka ukazuje příklad definování virtuální sítě. Rozsah
 
 **Příklad**
 
-| Virtuální síť | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
+| Virtual Network | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA – východ |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Západní USA |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -135,7 +135,7 @@ Například virtuální sítě testvnet1 se připojí k místní síťové lokal
 
 Místní lokalita pro každou virtuální síť je druhá virtuální síť. Následující příklady hodnot se používají pro naši konfiguraci:
 
-| Virtuální síť | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
+| Virtual Network | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
 |:--- |:--- |:--- |:--- |
 | TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |USA – východ |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
 | TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |Západní USA |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
@@ -209,37 +209,34 @@ Když v Azure Portal vytvoříte klasický virtuální sítě, název, který si
 
 V následujících krocích se připojíte ke svému účtu Azure a stáhnete a zobrazíte soubor konfigurace sítě, abyste získali hodnoty požadované pro vaše připojení.
 
-1. Stáhněte a nainstalujte si nejnovější verzi rutin PowerShellu pro správu služeb Azure (SM). Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
+1. Stáhněte a nainstalujte si nejnovější verzi rutin PowerShellu pro správu služeb Azure (SM). Další informace najdete v tématu [práce s Azure PowerShell](#powershell).
 
-2. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
-
-   ```powershell
-   Connect-AzAccount
-   ```
-
-   Zkontrolujte předplatná pro příslušný účet.
+2. Otevřete konzolu PowerShellu se zvýšenými právy. Použijte následující příklady, které vám pomůžou se připojit. Tyto příkazy musíte spustit místně pomocí modulu pro správu služby PowerShell. Chcete-li přepnout na správu služeb, použijte tento příkaz:
 
    ```powershell
-   Get-AzSubscription
+   azure config mode asm
    ```
-
-   Máte-li více předplatných, vyberte předplatné, které chcete použít.
-
-   ```powershell
-   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
-   ```
-
-   V dalším kroku použijte následující rutinu k vašemu předplatnému Azure přidat do prostředí PowerShell pro model nasazení classic.
+3. Připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
    ```powershell
    Add-AzureAccount
    ```
-3. Exportujte a zobrazte konfigurační soubor sítě. Vytvořte ve svém počítači adresář a potom do něj exportujte soubor konfigurace sítě. V tomto příkladu je konfigurační soubor sítě exportován do **C:\AzureNet**.
+4. Zkontrolujte předplatná pro příslušný účet.
+
+   ```powershell
+   Get-AzureSubscription
+   ```
+5. Máte-li více předplatných, vyberte předplatné, které chcete použít.
+
+   ```powershell
+   Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"
+   ```
+6. Exportujte a zobrazte konfigurační soubor sítě. Vytvořte ve svém počítači adresář a potom do něj exportujte soubor konfigurace sítě. V tomto příkladu je konfigurační soubor sítě exportován do **C:\AzureNet**.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-4. Otevřete soubor pomocí textového editoru a zobrazte názvy pro virtuální sítě a weby. Jedná se o název, který použijete při vytváření připojení.<br>Názvy virtuální sítě jsou uvedené jako **VirtualNetworkSite název =**<br>Názvy webů jsou uvedené jako **LocalNetworkSiteRef název =**
+7. Otevřete soubor pomocí textového editoru a zobrazte názvy pro virtuální sítě a weby. Tyto názvy budou názvy, které použijete při vytváření připojení.<br>Názvy virtuální sítě jsou uvedené jako **VirtualNetworkSite název =**<br>Názvy webů jsou uvedené jako **LocalNetworkSiteRef název =**
 
 ## <a name="createconnections"></a>Krok 8 – vytvoření připojení brány VPN Gateway
 
@@ -273,7 +270,7 @@ V příkladech si všimněte, že je sdílený klíč přesně stejný. Sdílen�
 ## <a name="faq"></a>Požadavky VNet-to-VNet pro klasický virtuální sítě
 * Virtuální sítě mohou být ve stejném nebo jiném předplatném.
 * Virtuální sítě se můžou nacházet ve stejné oblasti (umístění) Azure nebo v různých oblastech.
-* Cloudová služba ani koncový bod vyrovnávání zatížení nemůžou pracovat nad více virtuálními sítěmi ani v případě, že jsou propojeny.
+* Cloudová služba nebo koncový bod pro vyrovnávání zatížení nemůžou být napříč virtuálními sítěmi, i když se vzájemně spojí.
 * Propojení více virtuálních sítí dohromady nevyžaduje žádná zařízení VPN.
 * VNet-to-VNet podporuje propojení virtuálních sítí Azure. Nepodporuje připojení virtuálních počítačů ani cloudových služeb, které nejsou nasazené do virtuální sítě.
 * VNet-to-VNet vyžaduje brány dynamického směrování. Brány statického směrování Azure se nepodporují.

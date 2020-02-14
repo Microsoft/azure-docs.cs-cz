@@ -1,31 +1,31 @@
 ---
-title: Klientské aplikace v zásadách podmíněného přístupu – Azure Active Directory
-description: ''
+title: Cloudové aplikace nebo akce v zásadách podmíněného přístupu – Azure Active Directory
+description: Co jsou cloudové aplikace nebo akce v zásadách podmíněného přístupu Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 02/11/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9afc25c906ecd3b7807e6bf3e0763ac1673ebd99
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a9d2780e09c099d76aa2ef4ec2638a410793481d
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544051"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186384"
 ---
-# <a name="conditional-access-cloud-apps-and-actions"></a>Podmíněný přístup: cloudové aplikace a akce
+# <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: cloudové aplikace nebo akce
 
-Cloudové aplikace nebo akce jsou klíčovou součástí zásad podmíněného přístupu. Zásady podmíněného přístupu umožňují správcům přiřazovat ovládací prvky konkrétním aplikacím nebo akcím. 
+Cloudové aplikace nebo akce jsou klíčovým signálem v zásadách podmíněného přístupu. Zásady podmíněného přístupu umožňují správcům přiřazovat ovládací prvky konkrétním aplikacím nebo akcím.
 
 - Správci si můžou vybrat ze seznamu aplikací, které obsahují integrované aplikace Microsoftu a všechny [integrované aplikace Azure AD](../manage-apps/what-is-application-management.md) , včetně galerie, mimo galerie a aplikace publikované prostřednictvím [proxy aplikací](../manage-apps/what-is-application-proxy.md).
 - Správci se můžou rozhodnout definovat zásady, které nejsou založené na cloudové aplikaci, ale na akci uživatele. Jediná podporovaná akce je registrace informací o zabezpečení (Preview), která umožňuje podmíněný přístup vymáhat ovládací prvky v rámci [kombinovaného prostředí pro registraci informací o zabezpečení](../authentication/howto-registration-mfa-sspr-combined.md).
 
-![Definování zásad podmíněného přístupu a určení cloudových aplikací](./media/concept-conditional-access-cloud-apps/conditional-access-define-policy-specify-cloud-apps.png)
+![Definování zásad podmíněného přístupu a určení cloudových aplikací](./media/concept-conditional-access-cloud-apps/conditional-access-cloud-apps-or-actions.png)
 
 ## <a name="microsoft-cloud-applications"></a>Cloudové aplikace Microsoftu
 
@@ -49,7 +49,7 @@ Správci můžou k těmto cloudovým aplikacím od Microsoftu přiřazovat zása
 - Microsoft Forms
 - Microsoft Intune
 - [Registrace Microsoft Intune](https://docs.microsoft.com/intune/enrollment/multi-factor-authentication)
-- Microsoft Planner
+- Aplikace Microsoft Planner
 - Microsoft PowerApps
 - Hledání ve službě Bing
 - Microsoft StaffHub
@@ -58,7 +58,7 @@ Správci můžou k těmto cloudovým aplikacím od Microsoftu přiřazovat zása
 - Office 365 Exchange Online
 - Office 365 SharePoint Online
 - Office 365 Yammer
-- Office Delve
+- Office – Delvu
 - Sway pro Office
 - Outlook Groups
 - Služba Power BI
@@ -86,7 +86,7 @@ Klíčové aplikace, které jsou zahrnuté v klientské aplikaci Office 365 (Pre
    - Office 365 SharePoint Online
    - Sada Office 365 Search Service
    - Office 365 Yammer
-   - Office Delve
+   - Office – Delvu
    - Office Online
    - Office.com
    - OneDrive
@@ -98,10 +98,10 @@ Klíčové aplikace, které jsou zahrnuté v klientské aplikaci Office 365 (Pre
 
 Aplikace pro správu Microsoft Azure zahrnuje několik základních služeb. 
 
-   - Portál Azure
+   - Azure Portal
    - Poskytovatel Azure Resource Manager
    - Rozhraní API modelu nasazení Classic
-   - Azure PowerShell
+   - Azure Powershell
    - Portál pro správu předplatných sady Visual Studio
    - Azure DevOps
    - Portál Azure Data Factory
@@ -124,6 +124,7 @@ Akce uživatele jsou úkoly, které může provést uživatel. Jediná aktuáln�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Komponenty zásad podmíněného přístupu](concept-conditional-access-policies.md)
+- [Podmíněný přístup: podmínky](concept-conditional-access-conditions.md)
+
+- [Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
 - [Závislosti klientských aplikací](service-dependencies.md)
-- [Microsoft Intune: vyžadovat MFA pro zápis zařízení](https://docs.microsoft.com/intune/enrollment/multi-factor-authentication)

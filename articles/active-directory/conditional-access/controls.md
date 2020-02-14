@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2ad8894078a15bf37a5383cdff3721f4bf7be910
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424971"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186214"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou ovládací prvky přístupu v Azure Active Directory podmíněný přístup?
 
@@ -51,7 +51,7 @@ Pomocí ovládacích prvků grant můžete buď zablokovat přístup zcela, nebo
 
 ![Řízení](./media/controls/18.png)
 
-### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+### <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
 
 Tento ovládací prvek můžete použít k vyžádání vícefaktorového ověřování pro přístup k zadané cloudové aplikaci. Tento ovládací prvek podporuje následující Multi-Factor Providers:
 
@@ -85,18 +85,18 @@ Další informace najdete v tématu [nastavení Azure Active Directory zásad po
 Vzhledem k tomu, že vaši zaměstnanci používají mobilní zařízení pro osobní i pracovní úkoly, možná budete chtít chránit podniková data, která používají zařízení, i v případě, že je nespravujete sami.
 [Zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy) můžete použít k ochraně firemních dat nezávisle na řešení správy mobilních zařízení (MDM).
 
-Se schválenými klientskými aplikacemi můžete vyžadovat klientskou aplikaci, která se pokusí o přístup k vašim cloudovým aplikacím, aby podporovala [Zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Můžete například omezit přístup k Exchangi Online do aplikace Outlook. Zásady podmíněného přístupu, které vyžadují schválené klientské aplikace, se taky označují jako [zásady podmíněného přístupu na základě aplikace](app-based-conditional-access.md). Seznam podporovaných autorizovaných klientských aplikací najdete v tématu [schválení klientské aplikace – požadavek](technical-reference.md#approved-client-app-requirement).
+Se schválenými klientskými aplikacemi můžete vyžadovat klientskou aplikaci, která se pokusí o přístup k vašim cloudovým aplikacím, aby podporovala [Zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Můžete například omezit přístup k Exchangi Online do aplikace Outlook. Zásady podmíněného přístupu, které vyžadují schválené klientské aplikace, se taky označují jako [zásady podmíněného přístupu na základě aplikace](app-based-conditional-access.md). Seznam podporovaných autorizovaných klientských aplikací najdete v tématu [schválení klientské aplikace – požadavek](concept-conditional-access-grant.md#require-approved-client-app).
 
 ### <a name="app-protection-policy-preview"></a>Zásady ochrany aplikací (Preview)
 
 Vzhledem k tomu, že vaši zaměstnanci používají mobilní zařízení pro osobní i pracovní úkoly, možná budete chtít chránit podniková data, která používají zařízení, i v případě, že je nespravujete sami.
 [Zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy) můžete použít k ochraně firemních dat nezávisle na řešení správy mobilních zařízení (MDM).
 
-Pomocí zásad ochrany aplikací můžete omezit přístup k klientským aplikacím, které nahlásily službě Azure AD, a které přijaly [Zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Můžete například omezit přístup k Exchangi Online na aplikaci Outlook, která má zásady ochrany aplikací Intune. Zásady podmíněného přístupu, které vyžadují zásady ochrany aplikací, se taky označují jako [zásady podmíněného přístupu na základě ochrany aplikací](app-protection-based-conditional-access.md). 
+Pomocí zásad ochrany aplikací můžete omezit přístup k klientským aplikacím, které nahlásily službě Azure AD, a které přijaly [Zásady ochrany aplikací Intune](https://docs.microsoft.com/intune/app-protection-policy). Můžete například omezit přístup k Exchangi Online na aplikaci Outlook, která má zásady ochrany aplikací Intune. Zásady podmíněného přístupu, které vyžadují zásady ochrany aplikací, se taky označují jako [zásady podmíněného přístupu na základě ochrany aplikací](concept-conditional-access-session.md#application-enforced-restrictions). 
 
 Aby bylo možné aplikaci označit jako chráněnou zásadou, musí být vaše zařízení zaregistrované ve službě Azure AD.
 
-Seznam podporovaných klientských aplikací chráněných zásadami najdete v tématu [požadavky na zásady ochrany aplikací](technical-reference.md#app-protection-policy-requirement).
+Seznam podporovaných klientských aplikací chráněných zásadami najdete v tématu [požadavky na zásady ochrany aplikací](concept-conditional-access-session.md#application-enforced-restrictions).
 
 ### <a name="terms-of-use"></a>Podmínky použití
 

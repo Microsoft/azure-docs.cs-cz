@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12aa78d0ba7c9300fc012958660e2282e91568aa
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: a8ee1e07dafac46467aa26f89b609cd499346974
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510817"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186597"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurace zařízení IoT Edge pro komunikaci přes proxy server
 
@@ -22,7 +22,7 @@ Tento článek vás provede následujícími čtyřmi kroky ke konfiguraci a spr
 
 1. **Nainstalujte do svého zařízení modul runtime IoT Edge.**
 
-   Instalační skripty pro IoT Edge najdou balíčky a soubory z Internetu, takže vaše zařízení musí komunikovat přes proxy server, aby tyto požadavky učinily. Podrobný postup najdete v části [Instalace modulu runtime prostřednictvím serveru proxy](#install-the-runtime-through-a-proxy) v tomto článku. Instalační skript pro zařízení s Windows také nabízí možnost [offline instalace](how-to-install-iot-edge-windows.md#offline-installation) .
+   Instalační skripty pro IoT Edge najdou balíčky a soubory z Internetu, takže vaše zařízení musí komunikovat přes proxy server, aby tyto požadavky učinily. Podrobný postup najdete v části [Instalace modulu runtime prostřednictvím serveru proxy](#install-the-runtime-through-a-proxy) v tomto článku. Instalační skript pro zařízení s Windows také nabízí možnost [offline instalace](how-to-install-iot-edge-windows.md#offline-or-specific-version-installation) .
 
    Tento krok je jednorázový proces, který se v zařízení IoT Edge prováděl při prvním nastavení. Při aktualizaci modulu runtime IoT Edge se vyžadují také stejná připojení.
 
@@ -48,13 +48,13 @@ Tento článek vás provede následujícími čtyřmi kroky ke konfiguraci a spr
 
 Než začnete s některým z kroků v tomto článku, musíte znát adresu URL vašeho proxy serveru.
 
-Adresy URL proxy serveru provést následující formát: **protokol**://**proxy_host**:**proxy_port**.
+Adresy URL proxy serveru mají následující formát: **protokol**://**proxy_host**:**proxy_port**.
 
-* **Protokol** HTTP nebo HTTPS. Démon Docker může použít buď protokol, v závislosti na nastavení registru kontejneru, ale IoT Edge démon a kontejnery modulu runtime vždy používají protokol HTTP pro připojení k proxy serveru.
+* **Protokol** je buď http, nebo HTTPS. Démon Docker může použít buď protokol, v závislosti na nastavení registru kontejneru, ale IoT Edge démon a kontejnery modulu runtime vždy používají protokol HTTP pro připojení k proxy serveru.
 
-* **Proxy_host** je adresa proxy serveru. Pokud vaše proxy server vyžaduje ověření, můžete přihlašovací údaje zadat v rámci hostitele proxy v následujícím formátu: **uživatel**:**heslo**\@**proxy_host**.
+* **Proxy_host** je adresa proxy server. Pokud vaše proxy server vyžaduje ověření, můžete přihlašovací údaje zadat v rámci hostitele proxy v následujícím formátu: **uživatel**:**heslo**\@**proxy_host**.
 
-* **Proxy_port** je síťového portu, na kterém proxy serveru reaguje na síťový provoz.
+* **Proxy_port** je síťový port, na kterém proxy server reaguje na síťový provoz.
 
 ## <a name="install-the-runtime-through-a-proxy"></a>Instalace modulu runtime prostřednictvím proxy serveru
 
@@ -62,7 +62,7 @@ Bez ohledu na to, jestli je zařízení IoT Edge spuštěné v systému Windows 
 
 ### <a name="linux-devices"></a>Linux zařízení
 
-Pokud instalujete modul runtime IoT Edge na zařízení s Linuxem, konfigurace Správce balíčků na serveru proxy pro přístup k instalačnímu balíčku. Například [nastavení apt-get pro používání proxy serveru http](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Po nakonfigurování správce balíčků postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md) obvyklým způsobem.
+Pokud instalujete modul runtime IoT Edge na zařízení s Linuxem, konfigurace Správce balíčků na serveru proxy pro přístup k instalačnímu balíčku. [Nastavte například apt-get pro použití HTTP-proxy](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Po nakonfigurování správce balíčků postupujte podle pokynů v části [Instalace modulu runtime Azure IoT Edge v systému Linux](how-to-install-iot-edge-linux.md) obvyklým způsobem.
 
 ### <a name="windows-devices"></a>Zařízení Windows
 
@@ -100,7 +100,7 @@ Moby i démony IoT Edge musí být nakonfigurované tak, aby používaly proxy s
 
 ### <a name="moby-daemon"></a>Démon Moby
 
-Vzhledem k tomu, že Moby je postaven na Docker, použijte dokumentaci k Docker ke konfiguraci démona Moby s proměnnými prostředí. Většina registrů kontejnerů (včetně Dockerhubu a Azure Container Registry) podporují požadavky HTTPS, takže je parametr, který byste měli nastavit **HTTPS_PROXY**. Pokud jste přetahování imagí z registru, který nepodporuje zabezpečení transportní vrstvy (TLS), pak byste měli nastavit **HTTP_PROXY** parametru.
+Vzhledem k tomu, že Moby je postaven na Docker, použijte dokumentaci k Docker ke konfiguraci démona Moby s proměnnými prostředí. Většina registrů kontejnerů (včetně Dockerhubu a kontejnerů Azure Container Registry) podporuje požadavky HTTPS, takže parametr, který byste měli nastavit, je **HTTPS_PROXY**. Pokud nahráváte image z registru, který nepodporuje protokol TLS (Transport Layer Security), měli byste nastavit parametr **http_proxy** .
 
 Vyberte článek, který se vztahuje na operační systém IoT Edge zařízení:
 
@@ -121,7 +121,7 @@ Otevřete editor, v terminálu konfigurace démona IoT Edge.
 sudo systemctl edit iotedge
 ```
 
-Zadejte následující text nahrazení  **\<adresu URL proxy serveru >** adresa proxy serveru a port. Potom uložte a zavřete.
+Zadejte následující text a nahraďte **\<adresu URL proxy serveru >** adresou a portem proxy server. Potom uložte a zavřete.
 
 ```ini
 [Service]
@@ -148,7 +148,7 @@ systemctl show --property=Environment iotedge
 
 #### <a name="windows"></a>Windows
 
-Otevřete okno Powershellu jako správce a spusťte následující příkaz, který úprava registru pomocí nové proměnné prostředí. Nahraďte  **\<adresu url proxy serveru >** adresa proxy serveru a port.
+Otevřete okno Powershellu jako správce a spusťte následující příkaz, který úprava registru pomocí nové proměnné prostředí. Adresu **url\<proxy serveru** nahraďte > adresou a portem proxy server.
 
 ```powershell
 reg add HKLM\SYSTEM\CurrentControlSet\Services\iotedge /v Environment /t REG_MULTI_SZ /d https_proxy=<proxy URL>
@@ -166,9 +166,9 @@ Agent IoT Edge je prvním modulem, který se má spustit na jakémkoli IoT Edgem
 
 Tento krok probíhá na zařízení IoT Edge při počátečním nastavení zařízení.
 
-1. Otevřete soubor config.yaml na zařízení IoT Edge. V systémech Linux, tento soubor nachází ve **/etc/iotedge/config.yaml**. V systémech Windows, tento soubor nachází ve **C:\ProgramData\iotedge\config.yaml**. Konfigurační soubor je chráněný, takže je třeba oprávnění správce pro přístup k ní. V systémech Linux použijte příkaz `sudo` před otevřením souboru v upřednostňovaném textovém editoru. Ve Windows otevřete textový editor, jako je Poznámkový blok jako správce, a pak otevřete soubor.
+1. Otevřete soubor config.yaml na zařízení IoT Edge. V systémech Linux se tento soubor nachází na adrese **/etc/iotedge/config.yaml**. V systémech Windows se tento soubor nachází na adrese **C:\ProgramData\iotedge\config.yaml**. Konfigurační soubor je chráněný, takže je třeba oprávnění správce pro přístup k ní. V systémech Linux použijte příkaz `sudo` před otevřením souboru v upřednostňovaném textovém editoru. Ve Windows otevřete textový editor, jako je Poznámkový blok jako správce, a pak otevřete soubor.
 
-2. V souboru config.yaml vyhledejte **agenta Edge module specifikace** oddílu. Definice agenta IoT Edge zahrnuje parametr **ENV** , kde můžete přidat proměnné prostředí.
+2. V souboru config. yaml Najděte oddíl **Specifikace modulu Edge agent** . Definice agenta IoT Edge zahrnuje parametr **ENV** , kde můžete přidat proměnné prostředí.
 
 3. Odeberte složených závorek, které jsou zástupné symboly pro parametr env a přidejte novou proměnnou na nový řádek. Mějte na paměti, že odsazení v YAML byly mezery dvě.
 
@@ -208,9 +208,9 @@ Další IoT Edge moduly, které se připojují k Internetu, by měly být nakonf
 
 Tento krok probíhá po celou dobu životnosti IoT Edgeho zařízení.
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
-Při použití **nastavit moduly** průvodce k vytvoření nasazení IoT Edge zařízení, každý modul **proměnné prostředí** oddíl, který můžete použít ke konfiguraci připojení k proxy serveru.
+Použijete-li průvodce **nastavením modulů** k vytvoření nasazení pro IoT Edge zařízení, každý modul obsahuje oddíl **proměnné prostředí** , které můžete použít ke konfiguraci proxy server připojení.
 
 Chcete-li nakonfigurovat IoT Edge agenta a moduly IoT Edge centra, vyberte v prvním kroku průvodce možnost **nastavení modulu runtime** .
 
@@ -270,6 +270,6 @@ Pokud jste zahrnuli proměnnou prostředí **UpstreamProtocol** do souboru confi
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o rolích z [modul runtime IoT Edge](iot-edge-runtime.md).
+Přečtěte si další informace o rolích [modulu runtime IoT Edge](iot-edge-runtime.md).
 
-Řešení potíží s chybami instalace a konfigurace s [běžné problémy a řešení Azure IoT Edge](troubleshoot.md)
+Řešení potíží s instalací a konfigurací pomocí [běžných problémů a řešení pro Azure IoT Edge](troubleshoot.md)

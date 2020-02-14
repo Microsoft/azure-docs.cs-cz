@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f7dcf342a1b9b2107138044dfc207d6dbcb42e9e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4259868ff3b3c9ca9f9818532acd7e865e0300d7
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260692"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77205675"
 ---
 Vytvoření a správa virtuálních počítačů Azure (VM) konzistentním způsobem v měřítku, uvítáte nějakou formu automatizace. Existuje mnoho nástrojů a řešení, která umožňují automatizovat nasazení kompletní infrastrukturu Azure a životního cyklu správy. Tento článek představuje některé z infrastruktury automatizační nástroje, které můžete použít v Azure. Tyto nástroje běžně nevešla do jedné z následujících postupů:
 
@@ -29,9 +29,9 @@ Vytvoření a správa virtuálních počítačů Azure (VM) konzistentním způs
 
 Naučte se:
 
-- [Nainstalujte a nakonfigurujte Ansible pro Linux pro použití s Azure](../articles/virtual-machines/linux/ansible-install-configure.md).
-- [Vytvořte virtuální počítač se systémem Linux](../articles/virtual-machines/linux/ansible-create-vm.md).
-- [Správa virtuálního počítače se systémem Linux](../articles/virtual-machines/linux/ansible-manage-linux-vm.md).
+- [Nainstalujte a nakonfigurujte Ansible pro Linux pro použití s Azure](../articles/ansible/ansible-install-configure.md).
+- [Vytvořte virtuální počítač se systémem Linux](../articles/ansible/ansible-create-vm.md).
+- [Správa virtuálního počítače se systémem Linux](../articles/ansible/ansible-manage-linux-vm.md).
 
 
 ## <a name="chef"></a>Chef
@@ -103,7 +103,7 @@ Naučte se:
 - [Vytvořte infrastrukturu Azure pomocí terraformu](../articles/virtual-machines/linux/terraform-create-complete-vm.md).
 
 
-## <a name="azure-automation"></a>Azure Automation
+## <a name="azure-automation"></a>Automatizace Azure
 [Azure Automation](https://azure.microsoft.com/services/automation/) používá Runbooky ke zpracování sady úloh na virtuálních počítačích, na které cílíte. Azure Automation se používá ke správě stávající virtuální počítače, a nikoli k vytvoření infrastruktury. Azure Automation můžete provozovat i Linuxu a virtuální počítače s Windows, jakož i v místním virtuálních nebo fyzických počítačů pomocí funkce hybrid runbook worker. Sady Runbook mohou být uloženy v úložištěm správy zdrojového kódu, jako je například GitHub. Tyto sady runbook pak můžete spustit ručně nebo podle předem definovaného plánu.
 
 Azure Automation poskytuje také služby Desired State Configuration (DSC), které vám umožní vytvořit definice pro konfiguraci danou sadu virtuálních počítačů. DSC pak zajistí, že se použije požadované konfigurace a virtuální počítač zůstane konzistentní. Azure Automation DSC běží na počítačích s Windows i Linux.
@@ -118,7 +118,7 @@ Naučte se:
 ## <a name="azure-devops-services"></a>Azure DevOps Services
 [Azure DevOps Services](https://www.visualstudio.com/team-services/) je sada nástrojů, které vám pomůžou sdílet a sledovat kód, používat automatizovaná sestavení a vytvářet kompletní kanál průběžné integrace a vývoje (CI/CD). Služby Azure DevOps se integruje se sadou Visual Studio a jiných editorech zjednodušit využití. Služby Azure DevOps můžete také vytvořit a konfigurovat virtuální počítače Azure a pak nasaďte kód na ně.
 
-Další informace:
+Další informace pro:
 
 - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
 

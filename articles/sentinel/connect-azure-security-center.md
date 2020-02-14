@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8d8f960d8cf1310ec0a380e75bdaa714408e2cac
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 4c75d1870ca3b966acdd658c91c0af8fd7465bfb
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563662"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190879"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Připojení dat z Azure Security Center
 
@@ -24,13 +24,12 @@ ms.locfileid: "75563662"
 
 Azure Sentinel umožňuje propojit výstrahy z [Azure Security Center](../security-center/security-center-intro.md) a streamovat je do Azure Sentinel. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-- Pokud chcete exportovat výstrahy z Azure Security Center, musíte být přispěvatelem předplatného, jehož protokoly jste streamují.
+- Pokud chcete exportovat výstrahy z Azure Security Center, musíte mít v předplatném zasílaných protokolů roli čtenáře zabezpečení.
 
 - Musíte mít na předplatném spuštěnou [úroveň Standard Azure Security Center](../security-center/security-center-pricing.md) . V takovém případě [upgradujte předplatné na úroveň Standard](https://azure.microsoft.com/pricing/details/security-center/).
 
-- Musíte se přihlásit pomocí uživatele, který má oprávnění globálního správce nebo správce zabezpečení u každého předplatného, které chcete připojit.
 
 
 ## <a name="connect-to-azure-security-center"></a>Připojení k Azure Security Center

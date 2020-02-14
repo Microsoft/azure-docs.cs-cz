@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: eb4b51c94a62ad9f700b7cd448ff0f53485a16bf
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.date: 02/13/2020
+ms.openlocfilehash: 2fa43cb9ec526cfab2367431712e09406556a529
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110457"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191847"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integrační služby (ISE)
 
-Pro scénáře, ve kterých aplikace logiky a účty pro integraci potřebují přístup k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md), vytvořte [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE je soukromé a izolované prostředí, které využívá vyhrazené úložiště a další prostředky, které jsou oddělené od veřejné, Logic Apps služby pro více tenantů. Toto oddělení také snižuje vliv na výkon, který můžou mít jiní klienti Azure na výkon vašich aplikací. ISE také poskytuje vlastní statické IP adresy. Tyto IP adresy jsou oddělené od statických IP adres, které jsou sdílené pomocí Logic Apps ve veřejné víceklientské službě.
+Pro scénáře, ve kterých aplikace logiky a účty pro integraci potřebují přístup k [virtuální síti Azure](../virtual-network/virtual-networks-overview.md), vytvořte [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE je izolované prostředí, které využívá vyhrazené úložiště a další prostředky, které jsou zachované odděleně od veřejné, Logic Apps služby pro více tenantů. Toto oddělení také snižuje vliv na výkon, který můžou mít jiní klienti Azure na výkon vašich aplikací. ISE také poskytuje vlastní statické IP adresy. Tyto IP adresy jsou oddělené od statických IP adres, které jsou sdílené pomocí Logic Apps ve veřejné víceklientské službě.
 
 Při vytváření ISE Azure *vloží* do vaší virtuální sítě Azure, které ISE, nasadí službu Logic Apps do vaší virtuální sítě. Když vytvoříte aplikaci logiky nebo účet pro integraci, vyberte ISE jako své umístění. Vaše aplikace logiky nebo účet pro integraci pak můžou přímo přistupovat k prostředkům, jako jsou virtuální počítače (VM), servery, systémy a služby, ve vaší virtuální síti.
 
@@ -49,7 +49,7 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
 
   * Ujistěte se, že vaše virtuální síť [umožňuje přístup k vašemu ISE](#enable-access) , takže vaše ISE může správně fungovat a zůstat přístupná.
 
-  * Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), který poskytuje privátní připojení ke cloudovým službám Microsoftu, musíte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , která má následující trasu a propojit ji s každou podsítí, kterou používá vaše ISE:
+  * Pokud používáte [ExpressRoute](../expressroute/expressroute-introduction.md), který poskytuje privátní připojení ke cloudovým službám Microsoftu, které usnadňuje poskytovatel připojení, musíte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , která má následující trasu a propojit ji s každou podsítí, kterou používá vaše ISE:
 
     **Název**: <*trasa-Name*><br>
     **Předpona adresy**: 0.0.0.0/0<br>
@@ -75,9 +75,10 @@ Abyste se ujistili, že je váš ISE přístupný a že aplikace logiky v této 
 
 * Pokud jste vytvořili novou virtuální síť Azure a podsítě bez jakýchkoli omezení, nemusíte ve virtuální síti nastavovat [skupiny zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/security-overview.md#network-security-groups) , abyste mohli řídit provoz napříč podsítěmi.
 
-* V existující virtuální síti můžete *volitelně* nastavit skupin zabezpečení sítě [filtrováním síťového provozu mezi podsítěmi](../virtual-network/tutorial-filter-network-traffic.md). Pokud zvolíte tuto trasu, ujistěte se, že ve virtuální síti, ve které chcete nastavit skupin zabezpečení sítě, [otevřete porty v této tabulce](#network-ports-for-ise). Pokud používáte [pravidla zabezpečení NSG](../virtual-network/security-overview.md#security-rules), budete potřebovat protokoly TCP i UDP.
+* V existující virtuální síti můžete *volitelně* nastavit skupin zabezpečení sítě [filtrováním síťového provozu mezi podsítěmi](../virtual-network/tutorial-filter-network-traffic.md). Pokud chcete přejít k této trase nebo pokud již používáte skupin zabezpečení sítě, ujistěte se, že jste [v této tabulce otevřeli porty](#network-ports-for-ise) ve virtuální síti, ve které máte skupin zabezpečení sítě nebo chcete nastavit skupin zabezpečení sítě.
 
-* Pokud jste již dříve existující skupin zabezpečení sítě, ujistěte se, že jste [v této tabulce otevřeli porty](#network-ports-for-ise). Pokud používáte [pravidla zabezpečení NSG](../virtual-network/security-overview.md#security-rules), budete potřebovat protokoly TCP i UDP.
+  > [!NOTE]
+  > Pokud používáte [pravidla zabezpečení NSG](../virtual-network/security-overview.md#security-rules), *musíte použít protokoly TCP i UDP* . Pravidla zabezpečení NSG popisují porty, které je třeba otevřít pro IP adresy, které potřebují přístup k těmto portům. Ujistěte se, že všechny brány firewall, směrovače nebo jiné položky, které existují mezi těmito koncovými body, také udržují tyto porty dostupné pro tyto IP adresy.
 
 <a name="network-ports-for-ise"></a>
 
@@ -94,17 +95,17 @@ Tato tabulka popisuje porty ve vaší virtuální síti Azure, kterou používá
 | Komunikace mezi podsítěmi | Příchozí & odchozí | 80, 443 | VirtualNetwork | VirtualNetwork | Pro komunikaci mezi podsítěmi |
 | Komunikace z Azure Logic Apps | Odchozí | 80, 443 | VirtualNetwork | Internet | Port závisí na externí službě, se kterou služba Logic Apps komunikuje. |
 | Azure Active Directory | Odchozí | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
-| Azure Storage závislost | Odchozí | 80, 443 | VirtualNetwork | Úložiště | |
+| Azure Storage závislost | Odchozí | 80, 443, 445 | VirtualNetwork | Úložiště | |
 | Komunikace s Azure Logic Apps | Příchozí | 443 | Interní ISE: <br>VirtualNetwork <p><p>Externí ISE: <br>Internet | VirtualNetwork | IP adresa počítače nebo služby, která ve vaší aplikaci logiky volá jakékoli triggery žádostí nebo Webhooky. Zavření nebo blokování tohoto portu zabrání volání HTTP do Logic Apps s triggery žádostí. |
 | Historie spuštění aplikace logiky | Příchozí | 443 | Interní ISE: <br>VirtualNetwork <p><p>Externí ISE: <br>Internet | VirtualNetwork | IP adresa počítače, ze kterého chcete zobrazit historii spuštění vaší aplikace logiky. I když uzavření nebo blokování tohoto portu nebrání v zobrazení historie spuštění, nemůžete zobrazit vstupy a výstupy pro každý krok v této historii spuštění. |
 | Správa připojení | Odchozí | 443 | VirtualNetwork  | AppService | |
 | Publikování diagnostických protokolů & metriky | Odchozí | 443 | VirtualNetwork  | AzureMonitor | |
 | Komunikace z Azure Traffic Manager | Příchozí | Interní ISE: 454 <p><p>Externí ISE: 443 | AzureTrafficManager | VirtualNetwork | |
-| Návrhář Logic Apps – dynamické vlastnosti | Příchozí | 454 | IP adresy, které mají být povoleny, najdete ve sloupci poznámky. | VirtualNetwork | Požadavky pocházejí z [příchozích](../logic-apps/logic-apps-limits-and-config.md#inbound) IP adres koncového bodu přístupu Logic Apps pro tuto oblast. |
-| Kontrolu stavu sítě | Příchozí | 454 | IP adresy, které mají být povoleny, najdete ve sloupci poznámky. | VirtualNetwork | Požadavky pocházejí z koncového bodu přístupu Logic Apps pro [příchozí](../logic-apps/logic-apps-limits-and-config.md#inbound) i [odchozí](../logic-apps/logic-apps-limits-and-config.md#outbound) IP adresy pro tuto oblast. |
+| Návrhář Logic Apps – dynamické vlastnosti | Příchozí | 454 | IP adresy, které mají být povoleny, najdete ve sloupci **poznámky** . | VirtualNetwork | Požadavky pocházejí z [příchozích](../logic-apps/logic-apps-limits-and-config.md#inbound) IP adres koncového bodu přístupu Logic Apps pro tuto oblast. |
+| Kontrolu stavu sítě | Příchozí | 454 | IP adresy, které mají být povoleny, najdete ve sloupci **poznámky** . | VirtualNetwork | Požadavky pocházejí z koncového bodu přístupu Logic Apps pro [příchozí](../logic-apps/logic-apps-limits-and-config.md#inbound) i [odchozí](../logic-apps/logic-apps-limits-and-config.md#outbound) IP adresy pro tuto oblast. |
 | Závislost správy App Service | Příchozí | 454, 455 | AppServiceManagement | VirtualNetwork | |
 | Nasazení konektoru | Příchozí | 454 | AzureConnectors | VirtualNetwork | Nutné pro nasazení a aktualizaci konektorů. Zavřením nebo blokováním tohoto portu dojde k selhání nasazení ISE a znemožňuje aktualizace a opravy konektoru. |
-| Nasazení zásad konektoru | Příchozí | 3443 | Internet | VirtualNetwork | Nutné pro nasazení a aktualizaci konektorů. Zavřením nebo blokováním tohoto portu dojde k selhání nasazení ISE a znemožňuje aktualizace a opravy konektoru. |
+| Nasazení zásad konektoru | Příchozí | 3443 | APIManagement | VirtualNetwork | Nutné pro nasazení a aktualizaci konektorů. Zavřením nebo blokováním tohoto portu dojde k selhání nasazení ISE a znemožňuje aktualizace a opravy konektoru. |
 | Závislost Azure SQL | Odchozí | 1433 | VirtualNetwork | SQL | |
 | Azure Resource Health | Odchozí | 1886 | VirtualNetwork | AzureMonitor | Pro publikování stavu do Resource Health |
 | Koncový bod správy API Management | Příchozí | 3443 | APIManagement | VirtualNetwork | |
@@ -117,31 +118,28 @@ Tato tabulka popisuje porty ve vaší virtuální síti Azure, kterou používá
 
 ## <a name="create-your-ise"></a>Vytvoření ISE
 
-K vytvoření prostředí ISE (Integration Service Environment) použijte následující postup:
+1. V [Azure Portal](https://portal.azure.com)do hlavního pole Azure Search jako filtr zadejte `integration service environments` a vyberte **prostředí integrační služby**.
 
-1. V [Azure Portal](https://portal.azure.com)v hlavní nabídce Azure vyberte **vytvořit prostředek**.
-Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
+   ![Najde a vybere "prostředí integrační služby".](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
 
-   ![Vytvořit nový prostředek](./media/connect-virtual-network-vnet-isolated-environment/find-integration-service-environment.png)
+1. V podokně **prostředí integrační služby** vyberte **Přidat**.
 
-1. V podokně vytváření prostředí integrační služby klikněte na možnost **vytvořit**.
+   ![Najde a vybere "prostředí integrační služby".](./media/connect-virtual-network-vnet-isolated-environment/add-integration-service-environment.png)
 
-   ![Vyberte vytvořit.](./media/connect-virtual-network-vnet-isolated-environment/create-integration-service-environment.png)
-
-1. Zadejte tyto údaje pro vaše prostředí a pak zvolte možnost **zkontrolovat + vytvořit**, například:
+1. Zadejte tyto údaje pro vaše prostředí a pak vyberte **zkontrolovat + vytvořit**, například:
 
    ![Zadání podrobností prostředí](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
    | Vlastnost | Požaduje se | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Předplatné** | Ano | <*název_předplatného_Azure*> | Předplatné Azure, které se má použít pro vaše prostředí |
-   | **Skupina prostředků** | Ano | <*Azure-Resource-Group-name*> | Skupina prostředků Azure, ve které chcete vytvořit prostředí |
+   | **Skupina prostředků** | Ano | <*Azure-Resource-Group-name*> | Nová nebo existující skupina prostředků Azure, ve které chcete vytvořit prostředí. |
    | **Název prostředí integrační služby** | Ano | <*prostředí – název*> | Název ISE, který může obsahovat jenom písmena, číslice, spojovníky (`-`), podtržítka (`_`) a tečky (`.`). |
    | **Umístění** | Ano | <*Azure-Datacenter – oblast*> | Oblast datacenter Azure, kde se má vaše prostředí nasadit |
    | **SKU** | Ano | **Premium** nebo **Developer (bez smlouvy SLA)** | SKU ISE, která se má vytvořit a použít. Rozdíly mezi těmito SKU najdete v tématu [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Důležité**: Tato možnost je k dispozici pouze při vytváření ISE a nedá se změnit později. |
    | **Další kapacita** | Nárok <br>Ano <p><p>Maximalizac <br>Neuvedeno | Nárok <br>0 až 10 <p><p>Maximalizac <br>Neuvedeno | Počet dalších jednotek zpracování, které se mají použít pro tento prostředek ISE. Pokud chcete přidat kapacitu po vytvoření, přečtěte si téma [Přidání kapacity ISE](#add-capacity). |
    | **Koncový bod přístupu** | Ano | **Interní** nebo **externí** | Typ koncových bodů přístupu, které se mají použít pro ISE. Tyto koncové body určují, jestli triggery Request nebo Webhooku v Logic Apps ve vašem ISE můžou přijímat volání z vnějšku vaší virtuální sítě. <p><p>Váš výběr také ovlivňuje způsob zobrazení a přístupu ke vstupům a výstupům v historii spuštění aplikace logiky. Další informace najdete v tématu [ISE Endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Důležité**: Tato možnost je k dispozici pouze při vytváření ISE a nedá se změnit později. |
-   | **Virtuální síť** | Ano | <*Azure-Virtual-Network-name*> | Virtuální síť Azure, do které chcete vložit své prostředí, aby měly aplikace logiky v tomto prostředí přístup k vaší virtuální síti. Pokud nemáte síť, [vytvořte nejdřív virtuální síť Azure](../virtual-network/quick-create-portal.md). <p>**Důležité**: Toto vkládání můžete provést *jenom* při vytváření ISE. |
+   | **Virtuální síť** | Ano | <*Azure-Virtual-Network-name*> | Virtuální síť Azure, do které chcete vložit své prostředí, aby měly aplikace logiky v tomto prostředí přístup k vaší virtuální síti. Pokud nemáte síť, [vytvořte nejdřív virtuální síť Azure](../virtual-network/quick-create-portal.md). <p><p>**Důležité**: Toto vkládání můžete provést *jenom* při vytváření ISE. |
    | **Podsítě** | Ano | <> *seznam prostředků podsítě* | ISE vyžaduje čtyři *prázdné* podsítě pro vytváření a nasazování prostředků ve vašem prostředí. Chcete-li vytvořit každou podsíť, [postupujte podle kroků v této tabulce](#create-subnet). |
    |||||
 
@@ -175,22 +173,22 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
      **Předpona adresy**: 0.0.0.0/0<br>
      **Další segment směrování**: Internet
 
-   1. V seznamu **podsítě** vyberte možnost **spravovat konfiguraci podsítě**.
+   1. V seznamu **podsítě** vyberte **spravovat konfiguraci podsítě**.
 
-      ![Správa konfigurace podsítě](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet.png)
+      ![Správa konfigurace podsítě](./media/connect-virtual-network-vnet-isolated-environment/manage-subnet-configuration.png)
 
-   1. V podokně **podsítě** vyberte možnost **podsíť**.
+   1. V podokně **podsítě** vyberte **podsíť**.
 
-      ![Přidání podsítě](./media/connect-virtual-network-vnet-isolated-environment/add-subnet.png)
+      ![Přidat čtyři prázdné podsítě](./media/connect-virtual-network-vnet-isolated-environment/add-empty-subnets.png)
 
    1. V podokně **Přidat podsíť** zadejte tyto informace.
 
       * **Název**: název vaší podsítě.
       * **Rozsah adres (blok CIDR)** : rozsah vaší podsítě ve virtuální síti a ve formátu CIDR
 
-      ![Přidat podrobnosti podsítě](./media/connect-virtual-network-vnet-isolated-environment/subnet-details.png)
+      ![Přidat podrobnosti podsítě](./media/connect-virtual-network-vnet-isolated-environment/provide-subnet-details.png)
 
-   1. Až budete hotovi, klikněte na **OK**.
+   1. Až to bude hotové, vyberte **OK**.
 
    1. Opakujte tyto kroky pro tři další podsítě.
 
@@ -199,7 +197,7 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
 
    Další informace o vytváření podsítí najdete v tématu [Přidání podsítě virtuální sítě](../virtual-network/virtual-network-manage-subnet.md).
 
-1. Až Azure úspěšně ověří vaše ISE informace, vyberte **vytvořit**, třeba:
+1. Až Azure úspěšně ověří vaše ISE informace, vyberte **vytvořit**, například:
 
    ![Po úspěšném ověření vyberte vytvořit.](./media/connect-virtual-network-vnet-isolated-environment/ise-validation-success.png)
 
@@ -209,7 +207,7 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
 
    Pokud se nasazení úspěšně dokončí, Azure zobrazí toto oznámení:
 
-   ![Nasazení bylo úspěšné.](./media/connect-virtual-network-vnet-isolated-environment/deployment-success.png)
+   ![Nasazení bylo úspěšné.](./media/connect-virtual-network-vnet-isolated-environment/deployment-success-message.png)
 
    Jinak postupujte podle pokynů Azure Portal pro řešení potíží s nasazením.
 
@@ -233,23 +231,42 @@ Do vyhledávacího pole zadejte jako filtr "prostředí integrační služby".
 
 ## <a name="add-ise-capacity"></a>Přidat kapacitu ISE
 
-Základní jednotka ISE úrovně Premium má pevnou kapacitu, takže pokud potřebujete větší propustnost, můžete přidat další jednotky škálování, a to buď během vytváření, nebo později. Automatické škálování můžete na základě metrik výkonu nebo na základě řady dalších jednotek zpracování. Pokud zvolíte automatické škálování na základě metrik, můžete si vybrat z různých kritérií a zadat mezní podmínky pro splnění těchto kritérií. SKU vývojáře neobsahuje možnost přidávat jednotky škálování.
+Základní jednotka ISE úrovně Premium má pevnou kapacitu, takže pokud potřebujete větší propustnost, můžete přidat další jednotky škálování, a to buď během vytváření, nebo později. SKU vývojáře neobsahuje možnost přidávat jednotky škálování.
 
 1. V Azure Portal Najděte své ISE.
 
-1. Pokud chcete zkontrolovat metriky využití a výkonu pro ISE, v hlavní nabídce vaší ISE vyberte **Přehled**.
+1. Pokud chcete zkontrolovat metriky využití a výkonu pro váš ISE, v nabídce ISE vyberte **Přehled**.
 
    ![Zobrazit využití pro ISE](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-usage.png)
 
-1. Automatické škálování nastavíte tak, že v části **Nastavení**vyberete horizontální navýšení **kapacity**. Na kartě **Konfigurovat** vyberte **Povolit automatické škálování**.
+1. V části **Nastavení**vyberte **horizontální**navýšení kapacity. V podokně **Konfigurace** vyberte z těchto možností:
 
-   ![Zapnout automatické škálování](./media/connect-virtual-network-vnet-isolated-environment/scale-out.png)
+   * [**Ruční škálování**](#manual-scale): škálování na základě počtu zpracovávaných jednotek, které chcete použít.
+   * [**Vlastní automatické škálování**](#custom-autoscale): škálování na základě metrik výkonu výběrem z různých kritérií a určením mezních podmínek pro splnění těchto kritérií.
 
-1. Pro **název nastavení automatického škálování**zadejte název vašeho nastavení.
+   ![Vyberte typ škálování, který chcete.](./media/connect-virtual-network-vnet-isolated-environment/select-scale-out-options.png)
 
-1. Ve **výchozím** oddílu vyberte možnost škálování na **základě metriky** nebo **škály na konkrétní počet instancí**.
+<a name="manual-scale"></a>
 
-   * Pokud zvolíte možnost založený na instanci, zadejte počet jednotek zpracování mezi 0 a 10 včetně.
+### <a name="manual-scale"></a>Ruční škálování
+
+1. Po výběru **ručního škálování**pro **Další kapacitu**vyberte počet jednotek škálování, které chcete použít.
+
+   ![Vyberte typ škálování, který chcete.](./media/connect-virtual-network-vnet-isolated-environment/select-manual-scale-out-units.png)
+
+1. Jakmile budete mít hotovo, vyberte **Uložit**.
+
+<a name="custom-autoscale"></a>
+
+### <a name="custom-autoscale"></a>Vlastní automatické škálování
+
+1. Po výběru možností **vlastní automatické škálování**, pro **název nastavení automatického škálování**zadejte název vašeho nastavení a volitelně vyberte skupinu prostředků Azure, do které nastavení patří.
+
+   ![Zadejte název pro nastavení automatického škálování a vyberte skupinu prostředků.](./media/connect-virtual-network-vnet-isolated-environment/select-custom-autoscale.png)
+
+1. Pro **výchozí** podmínku vyberte možnost škálování na **základě metriky** nebo **škály na konkrétní počet instancí**.
+
+   * Pokud zvolíte možnost založený na instanci, zadejte číslo pro jednotky zpracování, což je hodnota od 0 do 10.
 
    * Zvolíte-li možnost založenou na metrikách, postupujte následovně:
 
@@ -257,7 +274,13 @@ Základní jednotka ISE úrovně Premium má pevnou kapacitu, takže pokud potř
 
      1. V podokně **pravidlo škálování** nastavte kritéria a akci, která se má provést při triggeru pravidla.
 
-     1. Až skončíte, klikněte na **Přidat**.
+     1. V případě **omezení instancí**zadejte tyto hodnoty:
+
+        * **Minimum**: minimální počet jednotek zpracování, které se mají použít
+        * **Maximum**: maximální počet jednotek zpracování, které se mají použít
+        * **Výchozí**: Pokud dojde k potížím při čtení metriky prostředků a aktuální kapacita je pod výchozí kapacitou, automatické škálování škáluje na výchozí počet zpracovaných jednotek. Pokud ale aktuální kapacita překročí výchozí kapacitu, automatické škálování se neškáluje.
+
+1. Pokud chcete přidat další podmínku, vyberte **Přidat podmínku škálování**.
 
 1. Až skončíte s nastavením automatického škálování, uložte změny.
 

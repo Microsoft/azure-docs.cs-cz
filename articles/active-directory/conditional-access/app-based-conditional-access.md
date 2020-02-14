@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c173d0e17166911e28fea3d1c5820879d17af4a8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1a8832234978a2c8b2db25d88b5dd6c211b634b7
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381121"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186456"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování schválených klientských aplikací pro cloudový přístup k aplikaci pomocí podmíněného přístupu 
 
-Vaši zaměstnanci používají mobilní zařízení pro osobní i pracovní úkoly. I když se rozhodnete, že vaše zaměstnanci můžou být produktivní, budete také chtít zabránit ztrátě dat. Pomocí podmíněného přístupu Azure Active Directory (Azure AD) můžete omezit přístup k vašim cloudovým aplikacím na schválené klientské aplikace, které můžou chránit vaše firemní data.  
+Vaši zaměstnanci používají mobilní zařízení pro osobní a pracovní úkoly. I když se rozhodnete, že vaše zaměstnanci můžou být produktivní, budete také chtít zabránit ztrátě dat. Pomocí podmíněného přístupu Azure Active Directory (Azure AD) můžete omezit přístup k vašim cloudovým aplikacím na schválené klientské aplikace, které můžou chránit vaše firemní data.  
 
 Toto téma vysvětluje, jak nakonfigurovat zásady přístupu k podmínkám, které vyžadují schválené klientské aplikace.
 
@@ -36,20 +36,20 @@ V terminologii podmíněného přístupu se tyto klientské aplikace označují 
 
 ![Podmíněný přístup](./media/app-based-conditional-access/05.png)
 
-Seznam schválených klientských aplikací najdete v tématu [schválený klient aplikace požadavky](technical-reference.md#approved-client-app-requirement).
+Seznam schválených klientských aplikací najdete v tématu [schválený klient aplikace požadavky](concept-conditional-access-grant.md).
 
 Zásady podmíněného přístupu na základě aplikace můžete kombinovat s jinými zásadami, jako jsou [zásady podmíněného přístupu na základě zařízení](require-managed-devices.md) , které poskytují flexibilitu v tom, jak chránit data pro osobní i firemní zařízení.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto tématu se předpokládá, že máte zkušenosti s nástrojem:
 
-- Požadavek na technické informace o [schválené klientské aplikaci](technical-reference.md#approved-client-app-requirement) .
+- [Požadavek na schválenou aplikaci klienta](concept-conditional-access-grant.md)
 - Základní koncepty [podmíněného přístupu v Azure Active Directory](overview.md).
 - Jak [nakonfigurovat zásadu podmíněného přístupu](app-based-mfa.md).
 - [Migrace zásad podmíněného přístupu](best-practices.md#policy-migration).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete vytvořit zásadu podmíněného přístupu na základě aplikace, musíte mít Enterprise Mobility + Security nebo předplatné Azure Active Directory Premium a uživatelé musí mít licenci pro EMS nebo Azure AD. 
 
@@ -72,7 +72,7 @@ V tomto scénáři se předpokládá, že uživatel:
 
 V době, kdy se přistupují k firemním datům, se aktivují všechny zásady ochrany aplikací Intune a můžou uživatele vyzvat k restartování aplikace, použití dalšího kódu PIN atd. (Pokud je nakonfigurované pro aplikaci a platformu).
 
-### <a name="configuration"></a>Konfiguraci 
+### <a name="configuration"></a>Konfigurace 
 
 **Krok 1 – Konfigurace zásady podmíněného přístupu Azure AD pro Exchange Online**
 
@@ -117,7 +117,7 @@ V tomto scénáři se předpokládá, že uživatel:
 - Pokusy o přihlášení se stejnými přihlašovacími údaji jako s přihlašovacími údaji aplikace Outlooku
 - Nemusí znovu registrovat a získat přístup k prostředkům
 
-### <a name="configuration"></a>Konfiguraci
+### <a name="configuration"></a>Konfigurace
 
 **Krok 1 – Konfigurace zásady podmíněného přístupu Azure AD pro Exchange Online a SharePoint Online**
 
@@ -164,7 +164,7 @@ Tento scénář předpokládá, že:
 - Uživatelé, kteří nejsou zaregistrovaní a zaregistrovaní ve službě Azure AD pomocí aplikace chráněné aplikací, musí zaregistrovat zařízení pro přístup k prostředkům.
 - Zaregistrovaní uživatelé, kteří používají chráněnou aplikaci, nemusí zařízení znovu zaregistrovat.
 
-### <a name="configuration"></a>Konfiguraci
+### <a name="configuration"></a>Konfigurace
 
 **Krok 1 – Konfigurace zásady podmíněného přístupu Azure AD pro Exchange Online a SharePoint Online**
 
@@ -220,7 +220,7 @@ V tomto scénáři se předpokládá, že uživatel:
 
 Všechny zásady ochrany aplikací Intune se aktivují v době přístupu k podnikovým datům a můžou uživatele vyzvat k restartování aplikace, použití dalšího kódu PIN atd. (Pokud je nakonfigurované pro aplikaci a platformu)
 
-### <a name="configuration"></a>Konfiguraci
+### <a name="configuration"></a>Konfigurace
 
 **Krok 1 – Konfigurace zásady podmíněného přístupu Azure AD pro Exchange Online a SharePoint Online**
 

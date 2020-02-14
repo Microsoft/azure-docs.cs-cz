@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4ba7326d9c23bed2406e62fe1a206501d05a1b1
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 021941339bbbf72112628c54f5b05d5fd305bd0f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666175"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198577"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurace aplikace App Service v Azure Portal
 
@@ -33,7 +33,7 @@ Pro vývojáře v ASP.NET a ASP.NET Core je nastavení aplikace v App Service t�
 
 Další jazykové zásobníky také získají nastavení aplikace jako proměnné prostředí za běhu. Postup pro konkrétní jazykový zásobník najdete v těchto tématech:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
+- [Jádro ASP.NET](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
 - [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
@@ -90,7 +90,7 @@ V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci
 
 ![Nastavení aplikace](./media/configure-common/open-ui.png)
 
-Pro vývojáře v ASP.NET a ASP.NET Core je nastavení připojovacích řetězců v App Service jako nastavení v `<connectionStrings>` v *souboru Web. config*, ale hodnoty, které jste nastavili v App Service přepisují ty v *souboru Web. config*. V App Service můžete zachovat nastavení pro vývoj (například databázový soubor) v souboru *Web. config* a v produkčních tajných klíčích (například SQL Database pověření). Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
+Pro vývojáře v ASP.NET a ASP.NET Core je nastavení připojovacích řetězců v App Service jako nastavení v `<connectionStrings>` v *souboru Web. config*, ale hodnoty, které jste nastavili v App Service přepisují ty v *souboru Web. config*. Nastavení vývoje (například databázový soubor) v souboru *Web. config* a v produkčních tajných souborech (například SQL Database pověření) můžete v App Service bezpečně. Stejný kód používá vaše vývojové nastavení při ladění místně a při nasazení do Azure používá vaše provozní tajemství.
 
 Pro jiné jazykové zásobníky je vhodnější místo toho použít [nastavení aplikace](#configure-app-settings) , protože připojovací řetězce vyžadují pro přístup k hodnotám speciální formátování v proměnných klíčů. Tady je jedna výjimka. některé typy databází Azure se ale zálohují společně s aplikací, pokud ve své aplikaci nakonfigurujete své připojovací řetězce. Další informace najdete v tématu [co se zálohuje](manage-backup.md#what-gets-backed-up). Pokud tuto automatizovanou zálohu nepotřebujete, použijte nastavení aplikace.
 
@@ -103,7 +103,7 @@ V době běhu jsou připojovací řetězce k dispozici jako proměnné prostřed
 
 Například připojovací řetězec MySql s názvem *ConnectionString1* je k dispozici jako proměnná prostředí `MYSQLCONNSTR_connectionString1`. Postup pro konkrétní jazykový zásobník najdete v těchto tématech:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
+- [Jádro ASP.NET](containers/configure-language-dotnetcore.md#access-environment-variables)
 - [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
 - [PHP](containers/configure-language-php.md#access-environment-variables)
 - [Python](containers/how-to-configure-python.md#access-environment-variables)
@@ -231,7 +231,7 @@ Další informace najdete v tématu [obsluha obsahu z Azure Storage v App Servic
 
 Pro aplikace pro Linux se podívejte na:
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md)
+- [Jádro ASP.NET](containers/configure-language-dotnetcore.md)
 - [Node.js](containers/configure-language-nodejs.md)
 - [PHP](containers/configure-language-php.md)
 - [Python](containers/how-to-configure-python.md)

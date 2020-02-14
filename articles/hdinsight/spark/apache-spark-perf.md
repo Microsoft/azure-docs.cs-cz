@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/01/2019
-ms.openlocfilehash: 0d8890eeba7fcb53517d6ee653c8dd09866805ef
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.date: 02/12/2020
+ms.openlocfilehash: 3d8f4a28961be7e0ece517e00026d9711d8f67e9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177365"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198867"
 ---
 # <a name="optimize-apache-spark-jobs-in-hdinsight"></a>Optimalizace úloh Apache Spark v HDInsight
 
-Naučte se optimalizovat [Apache Spark](https://spark.apache.org/) konfiguraci clusteru pro konkrétní zatížení.  Nejběžnějším problémem je zatížení paměti kvůli nesprávným konfiguracím (zvláště nesprávnému vykonavateli), dlouhotrvajícím operacím a úlohám, které způsobují kartézském operace. Úlohy můžete urychlit s vhodným ukládáním do mezipaměti a díky tomu, aby bylo možné [Zkosit data](#optimize-joins-and-shuffles). Nejlepšího výkonu dosáhnete, když budete monitorovat a kontrolovat dlouhodobá spuštění úloh Sparku, která jsou náročná na prostředky.
+Naučte se optimalizovat [Apache Spark](https://spark.apache.org/) konfiguraci clusteru pro konkrétní zatížení.  Nejběžnějším problémem je zatížení paměti kvůli nesprávným konfiguracím (zvláště nesprávnému vykonavateli), dlouhotrvajícím operacím a úlohám, které způsobují kartézském operace. Úlohy můžete urychlit s vhodným ukládáním do mezipaměti a díky tomu, aby bylo možné [Zkosit data](#optimize-joins-and-shuffles). Nejlepšího výkonu dosáhnete, když budete monitorovat a kontrolovat dlouhodobá spuštění úloh Sparku, která jsou náročná na prostředky. Informace o tom, jak začít s Apache Spark v HDInsight, najdete v tématu [Vytvoření clusteru Apache Spark pomocí Azure Portal](apache-spark-jupyter-spark-sql-use-portal.md).
 
 Následující části popisují běžné optimalizace úloh Spark a doporučení.
 
@@ -57,13 +57,15 @@ Nejlepší formát pro výkon je Parquet s *kompresí s přichycením*, což je 
 
 Když vytváříte nový cluster Spark, můžete jako výchozí úložiště clusteru vybrat Azure Blob Storage nebo Azure Data Lake Storage. Obě možnosti vám poskytnou výhod dlouhodobého úložiště pro přechodné clustery, takže vaše data se při odstranění clusteru automaticky neodstraní. Můžete znovu vytvořit přechodný cluster a stále získat přístup k datům.
 
-| Typ úložiště | Systém souborů | Rychlost | Dočasný | Případy použití |
+| Typ úložiště | Systém souborů | Rychlost | Přechodná | Případy použití |
 | --- | --- | --- | --- | --- |
 | Azure Blob Storage | **wasb:** //URL/ | **Standard** | Ano | Přechodný cluster |
 | Azure Blob Storage (zabezpečení) | **wasbs:** //URL/ | **Standard** | Ano | Přechodný cluster |
 | Azure Data Lake Storage Gen 2| **ABFS:** //URL/ | **Zrychlení** | Ano | Přechodný cluster |
-| Azure Data Lake Storage Gen1| **ADL:** //URL/ | **Zrychlení** | Ano | Přechodný cluster |
+| Azure Data Lake Storage Gen 1| **ADL:** //URL/ | **Zrychlení** | Ano | Přechodný cluster |
 | Místní HDFS | **HDFS:** //URL/ | **Způsobem** | Ne | Interaktivní cluster 24/7 |
+
+Úplný popis možností úložiště dostupných pro clustery HDInsight najdete v tématu [porovnání možností úložiště pro použití s clustery Azure HDInsight](../hdinsight-hadoop-compare-storage-options.md).
 
 ## <a name="use-the-cache"></a>Použití mezipaměti
 
@@ -74,7 +76,7 @@ Spark poskytuje vlastní nativní mechanizmy ukládání do mezipaměti, které 
     * Nefunguje s dělením na oddíly, které se mohou v budoucích vydáních Spark změnit.
 
 * Ukládání na úrovni úložiště do mezipaměti (doporučeno)
-    * Lze implementovat pomocí [Alluxio](https://www.alluxio.io/).
+    * Dá se implementovat na HDInsight pomocí funkce [mezipaměti v/](apache-spark-improve-performance-iocache.md) v.
     * Používá ukládání do mezipaměti SSD v paměti a SSD.
 
 * Místní HDFS (doporučeno)
@@ -106,6 +108,8 @@ Pokud chcete adresovat zprávy o nedostatku paměti, zkuste:
 * Preferovat `TreeReduce`, což více pracuje na prováděcích modulech nebo oddílech, pro `Reduce`, který funguje na ovladači.
 * Využijte místo objektů RDD na nižší úrovni datový rámec.
 * Vytvořte ComplexTypes, které zapouzdřují akce, například "horních N", různé agregace nebo operace s okny.
+
+Další kroky pro řešení potíží najdete v tématu [výjimky OutOfMemoryError pro Apache Spark ve službě Azure HDInsight](apache-spark-troubleshoot-outofmemory.md).
 
 ## <a name="optimize-data-serialization"></a>Optimalizovat serializaci dat
 
@@ -193,7 +197,11 @@ Při spouštění souběžných dotazů Vezměte v úvahu následující skuteč
 3. Distribuujte dotazy napříč paralelními aplikacemi.
 4. Upravte velikost na základě zkušebních běhů a na předchozích faktorech, jako je například režie GC.
 
-Monitorujte výkon dotazů pro odlehlé nebo jiné problémy s výkonem. Prohlédněte si zobrazení Časová osa, SQL Graph, Statistika úloh a tak dále. Někdy je jeden nebo několik prováděcích modulů pomalejší než u ostatních a provádění úloh trvá mnohem déle. K tomu často dochází na větších clusterech (> 30 uzlů). V takovém případě rozdělte práci do většího počtu úkolů, aby mohl Scheduler kompenzovat pomalé úlohy. Například musí mít alespoň dvakrát tolik úloh jako počet jader prováděcích modulů v aplikaci. Můžete také povolit spekulativní provádění úkolů s `conf: spark.speculation = true`.
+Další informace o použití Ambari ke konfiguraci prováděcích modulů najdete v tématu [nastavení Apache Spark – vykonavatelé Spark](apache-spark-settings.md#configuring-spark-executors).
+
+Monitorujte výkon dotazů pro odlehlé nebo jiné problémy s výkonem. Prohlédněte si zobrazení Časová osa, SQL Graph, Statistika úloh a tak dále. Informace o ladění úloh Sparku pomocí PŘÍZu a serveru historie Spark najdete v tématu [ladění Apache Spark úlohy spuštěné v Azure HDInsight](apache-spark-job-debugging.md). Tipy k použití serveru časové osy PŘÍZ najdete v tématu [přístup Apache Hadoopch protokolů aplikací příze](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
+
+Někdy je jeden nebo několik prováděcích modulů pomalejší než u ostatních a provádění úloh trvá mnohem déle. K tomu často dochází na větších clusterech (> 30 uzlů). V takovém případě rozdělte práci do většího počtu úkolů, aby mohl Scheduler kompenzovat pomalé úlohy. Například musí mít alespoň dvakrát tolik úloh jako počet jader prováděcích modulů v aplikaci. Můžete také povolit spekulativní provádění úkolů s `conf: spark.speculation = true`.
 
 ## <a name="optimize-job-execution"></a>Optimalizace provádění úloh
 

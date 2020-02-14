@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894530aa9624af18f2f33a061d5cde683e9f01be
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880262"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185890"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Postupy: plánování nasazení podmíněného přístupu v Azure Active Directory
 
@@ -53,7 +53,7 @@ Pro vytvoření zásad podmíněného přístupu pro vaši organizaci použijte 
 |Byl proveden pokus o přístup:<br>– Do cloudové aplikace *<br>– podle uživatelů a skupin*<br>Použití<br>-Podmínka 1 (například mimo síť Corp)<br>-Condition 2 (například platformy zařízení)|Udělit přístup pomocí (a):<br>-Požadavek 1 (například MFA)<br>– Požadavek 2 (například dodržování předpisů zařízením)|
 |Byl proveden pokus o přístup:<br>– Do cloudové aplikace *<br>– podle uživatelů a skupin*<br>Použití<br>-Podmínka 1 (například mimo síť Corp)<br>-Condition 2 (například platformy zařízení)|Udělit přístup pomocí (nebo):<br>-Požadavek 1 (například MFA)<br>– Požadavek 2 (například dodržování předpisů zařízením)|
 
-Minimálně, pokud k **tomu dojde** , definuje objekt zabezpečení (**který**), který se pokusí o přístup ke cloudové aplikaci (**co**). V případě potřeby můžete také zahrnout **způsob, jakým** je proveden pokus o přístup. V podmíněném přístupu prvky definující, kdo, co a jak jsou známy jako podmínky. Další informace najdete v tématu [co jsou podmínky v Azure Active Directory podmíněný přístup?](conditions.md) 
+Minimálně, pokud k **tomu dojde** , definuje objekt zabezpečení (**který**), který se pokusí o přístup ke cloudové aplikaci (**co**). V případě potřeby můžete také zahrnout **způsob, jakým** je proveden pokus o přístup. V podmíněném přístupu prvky definující, kdo, co a jak jsou známy jako podmínky. Další informace najdete v tématu [co jsou podmínky v Azure Active Directory podmíněný přístup?](concept-conditional-access-conditions.md) 
 
 V **takovém**případě můžete definovat odpověď na zásadu na podmínku přístupu. V odpovědi zablokujete nebo udělíte přístup s dalšími požadavky, například službou Multi-Factor Authentication (MFA). Úplný přehled najdete [v tématu Co jsou ovládací prvky přístupu v Azure Active Directory podmíněný přístup?](controls.md)  
 
@@ -116,7 +116,7 @@ Běžné případy použití, které vyžadují MFA, mají přístup:
 
 Pomocí zásad podmíněného přístupu můžete implementovat automatizované reakce na přihlášení z potenciálně ohrožených identit. Pravděpodobnost, že dojde k ohrožení bezpečnosti účtu, je vyjádřena ve formě úrovní rizika. Služba Identity Protection počítá dvě úrovně rizik: riziko přihlášení a riziko pro uživatele. Chcete-li implementovat odpověď na riziko přihlášení, máte dvě možnosti:
 
-- [Podmínka rizika přihlašování](conditions.md#sign-in-risk) v zásadách podmíněného přístupu
+- [Podmínka rizika přihlašování](concept-conditional-access-conditions.md#sign-in-risk) v zásadách podmíněného přístupu
 - [Zásady rizik přihlašování](../identity-protection/howto-sign-in-risk-policy.md) v Identity Protection 
 
 Upřednostňování rizika přihlašování jako podmínka je upřednostňovaná metoda, protože poskytuje další možnosti přizpůsobení.
@@ -131,7 +131,7 @@ Rozšíření podporovaných zařízení pro přístup k vašim cloudovým prost
 
 ### <a name="require-approved-client-apps"></a>Vyžadování klientem schválených aplikací
 
-Jedním z prvních rozhodnutí, která potřebujete udělat pro scénáře Přineste si vlastní zařízení (BYOD), je to, jestli potřebujete spravovat celé zařízení nebo jenom data. Vaši zaměstnanci používají mobilní zařízení pro osobní i pracovní úkoly. I když se rozhodnete, že vaše zaměstnanci můžou být produktivní, budete také chtít zabránit ztrátě dat. Pomocí podmíněného přístupu Azure Active Directory (Azure AD) můžete omezit přístup k vašim cloudovým aplikacím na schválené klientské aplikace, které můžou chránit vaše firemní data. Další informace najdete v tématu [jak vyžadovat schválené klientské aplikace pro přístup k cloudovým aplikacím pomocí podmíněného přístupu](app-based-conditional-access.md).
+Jedním z prvních rozhodnutí, která potřebujete udělat pro scénáře Přineste si vlastní zařízení (BYOD), je to, jestli potřebujete spravovat celé zařízení nebo jenom data. Vaši zaměstnanci používají mobilní zařízení pro osobní a pracovní úkoly. I když se rozhodnete, že vaše zaměstnanci můžou být produktivní, budete také chtít zabránit ztrátě dat. Pomocí podmíněného přístupu Azure Active Directory (Azure AD) můžete omezit přístup k vašim cloudovým aplikacím na schválené klientské aplikace, které můžou chránit vaše firemní data. Další informace najdete v tématu [jak vyžadovat schválené klientské aplikace pro přístup k cloudovým aplikacím pomocí podmíněného přístupu](app-based-conditional-access.md).
 
 ### <a name="block-legacy-authentication"></a>Blokování starší verze ověřování
 
@@ -158,7 +158,7 @@ Některé organizace mají pro tento účel testovací klienty. Může však bý
 
 Testovací plán je důležitý pro porovnání očekávaných výsledků a skutečných výsledků. Před testováním byste měli vždycky očekávat. Následující tabulka popisuje příklady testovacích případů. Upravte scénáře a očekávané výsledky na základě toho, jak jsou nakonfigurované zásady certifikační autority.
 
-|Zásady |Scénář |Očekávaný výsledek | Výsledek |
+|Zásada |Scénář |Očekávaný výsledek | Výsledek |
 |---|---|---|---|
 |[Vyžadovat MFA, pokud není v práci](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Autorizovaný uživatel se přihlásí do *aplikace* v důvěryhodném umístění/v práci.|Uživatel není vyzván k MFA.| |
 |[Vyžadovat MFA, pokud není v práci](https://docs.microsoft.com/azure/active-directory/conditional-access/untrusted-networks)|Autorizovaný uživatel se přihlásí do *aplikace* , když není v důvěryhodném umístění/v práci.|Uživatel je vyzván k ověřování MFA a úspěšně se může přihlásit.| |
@@ -220,7 +220,7 @@ V případě, že potřebujete vrátit nově implementované zásady, použijte 
 
 1. **Zakáže zásadu** – zakázáním zásady se ověří, že se uživatel nepoužije, když se uživatel pokusí přihlásit. Kdykoli se můžete vrátit zpátky a povolit zásadu, když byste ji chtěli použít.
 
-   ![zakázat zásadu](media/plan-conditional-access/07.png)
+   ![Zakázání zásady](media/plan-conditional-access/07.png)
 
 1. **Vyloučení uživatele nebo skupiny ze zásad** – Pokud uživatel nemá přístup k aplikaci, můžete se rozhodnout vyloučit uživatele ze zásad.
 

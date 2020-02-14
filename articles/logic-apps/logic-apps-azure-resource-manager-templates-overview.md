@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 486f90d82af729a3dbfd836239d2d19ebdf44819
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972688"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191424"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Přehled: Automatizace nasazení pro Azure Logic Apps pomocí šablon Azure Resource Manager
 
@@ -145,11 +145,11 @@ Tento příklad ukazuje jenom parametry šablony pro hodnoty používané k vytv
 
 S výjimkou parametrů, které zpracovávají citlivé hodnoty, nebo musí být zabezpečené, jako jsou uživatelská jména, hesla a tajné klíče, všechny tyto parametry zahrnují `defaultValue` atributy, i když v některých případech jsou výchozí hodnoty prázdné hodnoty. Hodnoty nasazení, které se mají použít pro tyto parametry šablony, jsou k dispozici v souboru ukázkových [parametrů](#template-parameter-files) popsaných dále v tomto tématu.
 
-Chcete-li zabezpečit parametry šablony, přečtěte si tato témata:
+Další informace o zabezpečení parametrů šablon najdete v těchto tématech:
 
 * [Doporučení zabezpečení pro parametry šablony](../azure-resource-manager/templates/template-best-practices.md#parameters)
-* [Parametry zabezpečené šablony](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [Předání hodnot zabezpečeného parametru pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
+* [Zvýšení zabezpečení pro parametry šablony](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+* [Předání zabezpečených hodnot parametrů pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Jiné objekty šablon často odkazují na parametry šablony, aby mohli použít hodnoty, které předávají parametry šablony, například:
 
@@ -171,9 +171,9 @@ Tady je několik osvědčených postupů pro definování parametrů:
 
   * [Doporučení zabezpečení pro parametry šablony](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
-  * [Parametry zabezpečené šablony](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
+  * [Zvýšení zabezpečení pro parametry šablony](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [Předání hodnot zabezpečeného parametru pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
+  * [Předání zabezpečených hodnot parametrů pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * Chcete-li odlišit názvy parametrů šablony z názvů parametrů definice pracovního postupu, můžete použít názvy parametrů popisné šablony, například: `TemplateFabrikamPassword`
 
@@ -188,7 +188,7 @@ Chcete-li zadat hodnoty parametrů šablony, uložte tyto hodnoty do [souboru pa
 * Název souboru šablony aplikace logiky: **<*Logic-App-Name*>. JSON**
 * Název souboru parametrů: **<*Logic-App-Name*>. Parameters. JSON**
 
-Tady je struktura v souboru parametrů, která obsahuje odkaz na Trezor klíčů pro [předání hodnoty zabezpečeného parametru s Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md):
+Tady je struktura v souboru parametrů, která obsahuje odkaz na Trezor klíčů pro [předávání hodnoty zabezpečeného parametru pomocí Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md):
 
 ```json
 {

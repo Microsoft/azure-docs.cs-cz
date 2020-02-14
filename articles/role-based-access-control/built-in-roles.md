@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 01/17/2020
+ms.date: 02/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 04a3af7c85a361878e37cf3ee210e8a5c9f3cd30
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121972"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198662"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -294,7 +294,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="acrquarantinewriter"></a>AcrQuarantineReader
+## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -422,7 +422,8 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **ID** | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | **Akce** |  |
 > | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft.Insights/alertRules/* | Vytváření a Správa pravidel výstrah |
+> | Microsoft.Insights/alertRules/* | Vytváření a Správa pravidel pro klasických výstrah |
+> | Microsoft. Insights/metricAlerts/* | Vytváření a Správa nových pravidel upozornění |
 > | Microsoft. Insights/Components/* | Vytváření a Správa komponent Insights |
 > | Microsoft.Insights/webtests/* | Vytváření a správa webových testů |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
@@ -483,7 +484,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="automation-operator"></a>Operátor automatizace
+## <a name="automation-operator"></a>Operátor služby Automation
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -2482,7 +2483,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/switchprotection/Action | Přepnout kontejner ochrany |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/Action | Testovací převzetí služeb při selhání |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/Action | Vyčištění testovacího převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Při selhání |
+> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Převzetí služeb při selhání |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Aktualizovat službu mobility |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Přečíst všechna mapování kontejnerů ochrany |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/Read | Číst všechny poskytovatele Recovery Services |
@@ -3064,7 +3065,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="user-access-administrator"></a>Správce uživatelského přístupu
+## <a name="user-access-administrator"></a>Správce přístupu uživatelů
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

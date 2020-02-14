@@ -1,6 +1,6 @@
 ---
 title: Glosář Azure Maps | Microsoft Docs
-description: Glosář běžně používaných termínů spojených s Azure Maps, Location Based Services a GIS.
+description: Glosář běžně používaných termínů spojených s Azure Maps, službami na základě umístění a GIS.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
@@ -8,40 +8,40 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 02bf5ba30a1fc7b4ee739cb0a591ffe084269541
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6c1e14e332f6081111d2a58a30702093b99a876
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408875"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198237"
 ---
 # <a name="glossary"></a>Glosář
 
-Následuje seznam běžných slov používaných v Azure Maps.
+Následující seznam popisuje běžná slova používaná s Azure Maps službami.
 
 ## <a name="a"></a>A
 
 <a name="address-validation"></a>**Ověřování adres**: proces ověřování existence adresy.
 
-<a name="advanced-routing"></a>**Rozšířené směrování**: kolekce služeb, které provádějí předběžné operace s využitím dat o směrování cest, jako je například výpočet dosažitelných rozsahů (izochronů), mezimatice a požadavky dávkové trasy.
+<a name="advanced-routing"></a>**Rozšířené směrování**: kolekce služeb, které provádějí předběžné operace s využitím dat o směrování na cestách; například výpočet dosažitelných rozsahů (izochronů), zástupných tříd a požadavků dávkové trasy.
 
 <a name="aerial-imagery"></a>**Letecké satelitní**obraz: viz [satelitní](#satellite-imagery)obrazové. 
 
-<a name="along-a-route-search"></a>**Podél hledání tras**: prostorový dotaz, který hledá data, která jsou v rámci zadaného času nebo vzdálenosti v cestě trasy.
+<a name="along-a-route-search"></a>**Podél hledání tras**: prostorový dotaz, který vyhledává data v zadaném čase nebo vzdálenosti od cesty trasy.
 
 <a name="altitude"></a>**Nadmořská**Výška: výška nebo svislé zvýšení úrovně bodu nad referenční plochu. Měření nadmořského nadlimitního množství vychází z konkrétního referenčního údaje, jako je například střední úroveň moře. Viz také zvýšení úrovně oprávnění.
 
-<a name="ambiguous"></a>**Dvojznačný**: stav nejistoty v klasifikaci dat, která existuje v případě, že může být objekt vhodně přiřazen dvěma nebo více hodnotám pro daný atribut. Například při obdobu geografického kódování "CA" se vrátí dva dvojznačné výsledky; "Kanada" a "Kalifornie" jako "CA" jsou kód země a státu pro každý z nich. 
+<a name="ambiguous"></a>**Dvojznačný**: stav nejistoty v klasifikaci dat, která existuje v případě, že může být objekt vhodně přiřazen dvěma nebo více hodnotám pro daný atribut. Například při geografickém kódování "CA" jsou vraceny dva dvojznačné výsledky: "Kanada" a "Kalifornie". "CA" je země a kód stavu, v uvedeném pořadí "Kanada" a "Kalifornie". 
 
 <a name="annotation"></a>**Anotace**: text nebo grafika zobrazená na mapě k poskytnutí informací uživateli. Poznámka může identifikovat nebo popsat konkrétní mapovou entitu, zadat obecné informace o oblasti na mapě nebo zadat informace o samotné mapě.
 
-<a name="antimeridian"></a>Navýšení **: také**známé jako 180-<sup>tý</sup> je bod, kde-180 stupňů a 180 stupňů délky. Což je u primárního poledníku na světě.
+<a name="antimeridian"></a>**Antipoledníku**: označuje se také jako 180.<sup>tý</sup> . To je bod, kde-180 stupňů a 180 stupňů délky. Což je opak prvotního poledníku na světě.
 
 <a name="application-programming-interface-api"></a>**Rozhraní API (Application Programming Interface)** : specifikace, která vývojářům umožňuje vytvářet aplikace.
 
 <a name="api-key"></a>**Klíč rozhraní API**: viz [ověřování sdíleného klíče](#shared-key-authentication).
 
-<a name="area-of-interest-aoi"></a>**Oblast zájmu (AOI)** : rozsah, který slouží k definování oblasti pro fokus pro účely mapy nebo databázového provozu.
+<a name="area-of-interest-aoi"></a>**Oblast zájmu (AOI)** : rozsah, který slouží k definování oblasti pro fokus pro mapu nebo pro produkci databáze.
 
 <a name="asset-tracking"></a>**Sledování prostředků**: proces sledování umístění assetu, jako je osoba, vozidlo nebo nějaký jiný objekt.
 
@@ -63,7 +63,7 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="batch-request"></a>**Požadavek Batch**: Proces kombinování více požadavků do jediného požadavku.
 
-<a name="bearing"></a>**Nesoucí**: horizontální směr bodu ve vztahu k jinému bodu. Tato hodnota se vyjádří jako úhel relativní vůči severním, od 0 do 360-stupne ve směru po směru hodinových ručiček. 
+<a name="bearing"></a>**Nesoucí**: horizontální směr bodu ve vztahu k jinému bodu. Tato hodnota se vyjadřuje jako úhel relativní vůči severním, od 0 do 360 stupňů po směru hodinových ručiček. 
 
 <a name="boundary"></a>**Hranice**: čára nebo mnohoúhelník oddělení sousedících politických entit, jako jsou země/oblasti, oblasti a vlastnosti. Hranice je řádek, který může nebo nemusí splňovat fyzické funkce, jako jsou řeky, Mountains nebo zdi.
 
@@ -75,11 +75,11 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="cadastre"></a>**Cadastre**: záznam registrované půdy a vlastností. Viz také [parcela](#parcel).
 
-<a name="camera"></a>**Kamera**: v kontextu interaktivního ovládacího prvku mapy fotoaparát definuje pole mapy zobrazení. Zobrazení kamery se určuje na základě několika parametrů mapy; vycentrovat, úroveň přiblížení, rozteč, s ohledem na. 
+<a name="camera"></a>**Kamera**: v kontextu interaktivního ovládacího prvku mapy fotoaparát definuje pole mapy zobrazení. Zobrazení kamery se určuje na základě několika parametrů mapování: Center, úroveň přiblížení, rozteč, s sebou. 
 
 <a name="centroid"></a>**Těžiště**: geometrické centrum funkce. Těžiště řádku by byl střední bod, zatímco těžiště mnohoúhelníku by byl jeho středem oblasti.
 
-<a name="choropleth-map"></a>**Mapa kartogramy**: tematické mapování, ve kterém jsou oblasti vybarvené v poměru k měření statistické proměnné zobrazené na mapě. Například vybarvení hranice každého stavu USA na základě jeho relativního naplnění na všechny ostatní stavy.
+<a name="choropleth-map"></a>**Mapa kartogramy**: tematické mapování, ve kterém jsou oblasti vybarvené v poměru k měření statistické proměnné. Tato statistická proměnná se zobrazí na mapě. Například vybarvení hranice každého stavu USA na základě jeho relativního naplnění na všechny ostatní stavy.
 
 <a name="concave-hull"></a>**Konkávní trup**: tvar, který představuje možná konkávní geometrii, která obklopuje všechny tvary v zadané datové sadě. Vygenerovaný tvar je podobný obtékání dat s plastovým zabalením a pak je zahřívání, což způsobí velké rozpětí mezi body až konkávní v dalších datových bodech.
 
@@ -127,11 +127,11 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 ## <a name="e"></a>E
 
-<a name="elevation"></a>**Zvýšení oprávnění**: svislá vzdálenost bodu nebo objektu nad nebo pod referenční povrch nebo datum (obecně střední úroveň moře). Zvýšení úrovně obecně odkazuje na vertikální výšku půdy.
+<a name="elevation"></a>**Zvýšení oprávnění**: svislá vzdálenost bodu nebo objektu nad nebo pod odkazem na referenční plochu nebo datum. Obecně platí, že referenční plocha je střední úroveň moře. Zvýšení úrovně obecně odkazuje na vertikální výšku půdy.
 
 <a name="envelope"></a>**Obálka**: viz [ohraničovací rámeček](#bounding-box).
 
-<a name="extended-postal-code"></a>**Rozšířené poštovní**směrovací číslo: PSČ, který může obsahovat další informace. Například v USA mají kódy PSČ pět číslic, ale rozšířené PSČ, označované jako zip + 4, bude obsahovat čtyři další číslice. Tyto další číslice se používají k identifikaci geografického segmentu v rámci oblasti pro doručování s pěti číslicemi, jako je blok města, skupina poboček nebo poštovní schránka, která pomáhá efektivní řazení a doručování pošty.
+<a name="extended-postal-code"></a>**Rozšířené poštovní**směrovací číslo: PSČ, který může obsahovat další informace. Například v USA mají kódy PSČ pět číslic. Ale rozšířené PSČ, označované jako zip + 4, obsahuje čtyři další číslice. Tyto další číslice slouží k identifikaci geografického segmentu v rámci oblasti pro doručování s pěti číslicemi, jako je například blok města, skupina poboček nebo poštovní kancelář. Znalost geografického segmentu v oblasti efektivního řazení a doručování pošty.
 
 <a name="extent"></a>**Rozsah**: viz [ohraničovací rámeček](#bounding-box).
 
@@ -147,7 +147,7 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="find-nearby"></a>**Najít okolní**: prostorový dotaz, který vyhledává pevnou vzdálenost rovnou řádku (jako rozvětvené rozvětvené) z bodu.
 
-<a name="fleet-management"></a>**Řízení loďstva**: Správa komerčních vozidel, jako jsou automobily, automobily, lodě a roviny. Správa loďstva může zahrnovat řadu funkcí, jako je financování vozidel, údržba, telematika (sledování a Diagnostika) a také ovladače, rychlost, palivo a Správa stavu a zabezpečení. Správa loďstva je proces používaný společnostmi, které se spoléhají na dopravu v jejich podnikání, aby se minimalizovala rizika a omezily celkové náklady na dopravu a pracovníky a současně zajistila dodržování předpisů pro státní správu.
+<a name="fleet-management"></a>**Řízení loďstva**: Správa komerčních vozidel, jako jsou automobily, automobily, lodě a roviny. Správa loďstva může zahrnovat řadu funkcí, jako je financování vozidel, údržba, telematika (sledování a Diagnostika) a také ovladače, rychlost, palivo a Správa stavu a zabezpečení. Správa loďstva je proces používaný společnostmi, které se spoléhají na přepravu ve své firmě. Společnosti chtějí minimalizovat rizika a snížit celkové náklady na dopravu a pracovníky a přitom zajistit soulad s právními předpisy pro státní správu.
 
 <a name="free-flow-speed"></a>**Rychlost toku zdarma**: za ideálních podmínek se očekává rychlost bezplatného toku. Obvykle je to omezení rychlosti.
 
@@ -155,7 +155,7 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="fuzzy-search"></a>**Přibližné vyhledávání**: hledání, které odpovídá prázdnému řetězci textu, který může být adresa nebo bod zájmu. 
 
-## <a name="g"></a>G
+## <a name="g"></a>Věcn
 
 <a name="geocode"></a>Zeměpisná **poloha: adresa**nebo umístění, které se převedlo na souřadnici, která se dá použít k zobrazení tohoto umístění na mapě. 
 
@@ -217,7 +217,7 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 ## <a name="l"></a>L
 
-<a name="landsat"></a>**Landsat**: družicové a uzemněné satelity, které vyvinula NASA, které shromažďují z pozemků pozemky, které se používají v mnoha oborech, jako jsou zemědělství, lesnictví a cartography.
+<a name="landsat"></a>**Landsat**: družicové a uzemněné satelity, které vyvinula NASA, které shromažďují na pozemky. Tento obrázek se používá v mnoha odvětvích, jako jsou zemědělství, lesnictví a cartography.
 
 <a name="latitude"></a>**Zeměpisná šířka**: úhlová vzdálenost měřená ve stupních od nárazu v severním nebo jižním směru.
 
@@ -235,7 +235,7 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="longitude"></a>**Zeměpisná délka**: úhlová vzdálenost měřená ve stupních od primárního poledníku po východním nebo západním směru.
 
-## <a name="m"></a>mil.
+## <a name="m"></a>M
 
 <a name="map-tile"></a>**Dlaždice mapy**: obdélníkový obrázek, který představuje oddíl mapového plátna. Další informace naleznete v [dokumentaci úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md).
 
@@ -247,13 +247,13 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="multipoint"></a>**MultiPoint**: geometrie, která představuje kolekci objektů Point.
 
-<a name="multipolygon"></a>**Promnohoúhelník**: geometrie, která představuje kolekci objektů mnohoúhelníku. Například chcete-li zobrazit hranici Havajské ostrovy, každý ostrov by byl obrysem mnohoúhelníku a hranice Havaji by tedy měla být pro více mnohoúhelníků.
+<a name="multipolygon"></a>**Promnohoúhelník**: geometrie, která představuje kolekci objektů mnohoúhelníku. Například chcete-li zobrazit hranici Havajské ostrovy, každý ostrov by byl obrysem mnohoúhelníku. Proto by měla hranice Havajské ostrovy tedy být pro více mnohoúhelníků.
 
 <a name="municipality"></a>**Obec**: město nebo město. 
 
 <a name="municipality-subdivision"></a>**Dílčí dělení**: rozčlenění obce, jako je například okolní nebo místní název oblasti, například "centru".
 
-## <a name="n"></a>N
+## <a name="n"></a>Ne
 
 <a name="navigation-bar"></a>**Navigační panel**: sada ovládacích prvků na mapě, která se používá pro úpravu úrovně přiblížení, sklonu, rotace a přepínání základní vrstvy mapy.
 
@@ -285,13 +285,13 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="post-code"></a>**PSČ: viz** [PSČ](#postal-code).
 
-<a name="postal-code"></a>**PSČ**: Řada písmen nebo číslic nebo obojí, v konkrétním formátu, který používá poštovní služba země nebo oblasti k rozdělení geografických oblastí do zón, aby se zjednodušilo doručování e-mailů.
+<a name="postal-code"></a>**Poštovní směrovací číslo**: Řada písmen nebo číslic nebo obojí, v určitém formátu. PSČ používá poštovní služba země nebo oblasti k rozdělení geografických oblastí do zón, aby bylo možné zjednodušit doručování e-mailů.
 
 <a name="primary-key"></a>**Primární klíč**: první ze dvou klíčů předplatného, které jsou k dispozici pro ověřování Azure Mapsho sdíleného klíče. Viz [ověřování sdíleného klíče](#shared-key-authentication).
 
-<a name="prime-meridian"></a>**Prvotní poledníku**: čára délky, která představuje 0 – stupně zeměpisné délky. Obecně platí, že při cestování v západním směru až do 180-stupně a při přechodu do východním směrů do-180-stupňů se hodnoty nezvyšují. 
+<a name="prime-meridian"></a>**Prvotní poledníku**: čára délky, která představuje 0 – stupně zeměpisné délky. Obecně se hodnoty délky nezmenšují při cestování v západním směru až do 180 stupňů a zvyšují se při cestování v východním směrech do-180-stupňů. 
 
-<a name="prj"></a>**PRJ**: textový soubor, který často doprovází soubor shapefile, který obsahuje informace o prodaném systémovém souřadnicovém systému, ve kterém je datová sada.
+<a name="prj"></a>**PRJ**: textový soubor, který často provází soubor shapefile, který obsahuje informace o prodaném systému souřadnicového systému, ve kterém je datová sada.
 
 <a name="projection"></a>**Projekce**: Projektový systém souřadnic založený na projekci mapy, jako je příčná Mercator, Albers EQUAL Area a Robinson. Ty poskytují možnost projektovat mapy kulového povrchu země na dvojrozměrné rovině kartézském souřadnice. Předpokládané systémy souřadnic se někdy označují jako projekce map.
 
@@ -299,7 +299,7 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="quadkey"></a>**Quadkey**: index adresy Base-4 pro dlaždici v systému quadtree dláždění. Další informace najdete v části [úrovně přiblížení a](zoom-levels-and-tile-grid.md) v dokumentaci k mřížce dlaždice pro další informace.
 
-<a name="quadtree"></a>**Quadtree**: datová struktura, ve které má každý uzel přesně čtyři podřízené položky. Systém dlaždic používaný v Azure Maps používá strukturu quadtree, například když uživatel přiblíží jednu úroveň, každá dlaždice mapy se rozdělí do čtyř dílčích dlaždic.  Další informace najdete v části [úrovně přiblížení a](zoom-levels-and-tile-grid.md) v dokumentaci k mřížce dlaždice pro další informace.
+<a name="quadtree"></a>**Quadtree**: datová struktura, ve které má každý uzel přesně čtyři podřízené položky. Systém dlaždic používaný v Azure Maps používá strukturu quadtree, například když uživatel přiblíží jednu úroveň, každá dlaždice mapy se rozdělí do čtyř dlaždic.  Další informace najdete v části [úrovně přiblížení a](zoom-levels-and-tile-grid.md) v dokumentaci k mřížce dlaždice pro další informace.
 
 <a name="queries-per-second-qps"></a>**Dotazy za sekundu (QPS)** : počet dotazů nebo požadavků, které lze provést na službu nebo platformu během jedné sekundy. 
 
@@ -321,7 +321,7 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="reproject"></a>**Reprojektovat**: viz [transformace](#transformation).
 
-<a name="rest-service"></a>**Služba REST**: zkratka pro přenos stavu pro reprezentaci. Architektura pro výměnu informací mezi partnerskými uzly v decentralizovaném a distribuovaném prostředí. REST umožňuje programům v různých počítačích komunikovat nezávisle na operačním systému nebo platformě odesláním požadavku HTTP (Hypertext Transfer Protocol) do adresy URL a získání dat zpět.
+<a name="rest-service"></a>**Služba REST**: zkratka pro přenos stavu pro reprezentaci. Architektura pro výměnu informací mezi partnerskými uzly v decentralizovaném a distribuovaném prostředí. REST umožňuje programům na různých počítačích komunikovat nezávisle na operačním systému nebo platformě. Služba může poslat požadavek HTTP (Hypertext Transfer Protocol) na adresu URL (Uniform Resource Locator) a získat zpět data.
 
 <a name="route"></a>**Route**: cesta mezi dvěma nebo více umístěními, která může obsahovat taky další informace, třeba pokyny pro Waypoints trasy.
 
@@ -337,7 +337,7 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="shapefile-shp"></a>**Shapefile (SHP)** : označuje se také jako ESRI shapefile, je formát úložiště vektorových dat pro ukládání umístění, tvaru a atributů geografických funkcí. Shapefile je uložen v sadě souvisejících souborů.
 
-<a name="shared-key-authentication"></a>**Ověřování pomocí sdíleného klíče**: ověřování pomocí sdíleného klíče spoléhá na předávání klíčů generovaných Azure Mapsm účtu s každým požadavkem Azure Maps. Tyto klíče se často označují jako klíče předplatného. Doporučujeme, aby se klíče pravidelně znovu vygenerovaly z důvodu zabezpečení. K dispozici jsou dva klíče, abyste mohli při opětovném generování druhé klávesy spravovat připojení pomocí jednoho klíče. Když znovu vygenerujete klíče, musíte aktualizovat všechny aplikace, které přistupují k tomuto účtu, aby používaly nové klíče. Další informace o ověřování Azure Maps najdete v tématech [Azure Maps a Azure AD](azure-maps-authentication.md) a [správa ověřování v Azure Maps](how-to-manage-authentication.md).
+<a name="shared-key-authentication"></a>**Ověřování pomocí sdíleného klíče**: ověřování pomocí sdíleného klíče spoléhá na předávání klíčů generovaných Azure Mapsm účtu s každým požadavkem Azure Maps. Tyto klíče se často označují jako klíče předplatného. Doporučuje se, aby se klíče pravidelně znovu vygenerovaly z důvodu zabezpečení. K dispozici jsou dva klíče, abyste mohli při opětovném generování druhé klávesy spravovat připojení pomocí jednoho klíče. Když znovu vygenerujete klíče, musíte aktualizovat všechny aplikace, které přistupují k tomuto účtu, aby používaly nové klíče. Další informace o ověřování Azure Maps najdete v tématech [Azure Maps a Azure AD](azure-maps-authentication.md) a [správa ověřování v Azure Maps](how-to-manage-authentication.md).
 
 <a name="software-development-kit-sdk"></a>**Sada SDK (Software Development Kit)** : kolekce dokumentace, ukázkový kód a ukázkové aplikace, které vývojářům pomůžou při sestavování aplikací použít rozhraní API.
 
@@ -345,15 +345,15 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="spatial-query"></a>**Prostorový dotaz**: požadavek provedený na službu, která provádí prostorovou operaci. Například kruhové hledání nebo vyhledávání tras.
 
-<a name="spatial-reference"></a>**Prostorová reference**: místní, regionální nebo globální systém založený na souřadnicích, který se používá k přesnému nalezení geografických entit. Definuje souřadnicový systém, který se používá k přidružení souřadnic mapy k umístěním v reálném světě. Prostorové odkazy zajistí, aby prostorová data z různých vrstev nebo zdrojů mohla být integrovaná pro přesné zobrazení nebo analýzu. Azure Maps používá referenční systém souřadnic [EPSG: 3857](https://epsg.io/3857) a WGS 84 pro vstupní data geometrie. 
+<a name="spatial-reference"></a>**Prostorová reference**: místní, regionální nebo globální systém založený na souřadnicích, který se používá k přesnému nalezení geografických entit. Definuje souřadnicový systém, který se používá k přidružení souřadnic mapy k umístěním v reálném světě. Prostorové odkazy zajišťují, že prostorová data z různých vrstev nebo zdrojů můžou být integrovaná pro přesné zobrazení nebo analýzu. Azure Maps používá referenční systém souřadnic [EPSG: 3857](https://epsg.io/3857) a WGS 84 pro vstupní data geometrie.
 
 <a name="sql-spatial"></a>**Prostor SQL**: odkazuje na prostorové funkce integrované do SQL Azure a SQL Server 2008 a vyšší. Tato prostorová funkce je také k dispozici jako knihovna .NET, která se dá použít nezávisle na SQL Server. Další informace najdete v dokumentaci k [prostorovým datům (SQL Server)](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) , kde najdete další informace.
 
 <a name="subscription-key"></a>**Klíč předplatného**: viz [ověřování sdíleného klíče](#shared-key-authentication).
 
-<a name="synchronous-request"></a>**Synchronní požadavek**: požadavek HTTP otevře připojení a počká na odpověď. Prohlížeče omezují počet souběžných požadavků HTTP, které lze vytvořit ze stránky. Je-li více dlouho spuštěných synchronních požadavků provedeno současně, je možné dosáhnout tohoto limitu a požadavků, které jsou zpožděny, dokud jedna z ostatních požadavků nedokončí.
+<a name="synchronous-request"></a>**Synchronní požadavek**: požadavek HTTP otevře připojení a počká na odpověď. Prohlížeče omezují počet souběžných požadavků HTTP, které lze vytvořit ze stránky. Je-li více dlouho spuštěných synchronních požadavků provedeno současně, je možné dosáhnout tohoto omezení. Žádosti budou zpožděny, dokud se jedna z ostatních požadavků nedokončí.
 
-## <a name="t"></a>bil.
+## <a name="t"></a>T
 
 <a name="telematics"></a>**Telematické**: posílání, přijímání a ukládání informací prostřednictvím komunikačních zařízení spolu s tím, jak ovlivňuje řízení vzdálených objektů. 
 
@@ -363,20 +363,20 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="thematic-maps"></a>**Tematické mapy**: tematická mapa je jednoduchá Mapa vytvořená tak, aby odrážela motiv geografické oblasti. Běžným scénářem tohoto typu mapy je vybarvit oblasti správy, jako jsou země nebo oblasti, na základě některé metriky dat.
 
-<a name="tile-layer"></a>**Vrstva dlaždice**: vrstva zobrazená pomocí navýšení dlaždic mapy (pravoúhlé části) do souvislé vrstvy. Dlaždice jsou buď dlaždice rastrového obrázku, nebo vektorové dlaždice. Vrstvy rastrových dlaždic jsou obvykle vykresleny před časem a uloženy jako obrázky na serveru. To může zabrat spoustu úložného prostoru. Vrstvy vektorové dlaždice se v rámci klientské aplikace vykreslují průběžně, takže požadavky na úložiště na straně serveru jsou menší.
+<a name="tile-layer"></a>**Vrstva dlaždice**: vrstva zobrazená pomocí navýšení dlaždic mapy (pravoúhlé části) do souvislé vrstvy. Dlaždice jsou buď dlaždice rastrového obrázku, nebo vektorové dlaždice. Vrstvy rastrových dlaždic jsou obvykle vykresleny předem a jsou uloženy jako obrázky na serveru. Vrstvy rastrových dlaždic můžou používat velký prostor úložiště. Vrstvy vektorové dlaždice jsou vykreslovány téměř v reálném čase v rámci klientské aplikace. Proto jsou požadavky na úložiště na straně serveru pro vrstvy vektorové dlaždice menší.
 
 <a name="time-zone"></a>**Časové pásmo**: oblast zeměkoule, která sleduje jednotnou standardní dobu pro právní, komerční a sociální účely. Časová pásma mají za následek sledovat hranice zemí nebo oblastí a jejich dílčí dělení.
 
 <a name="transaction"></a>**Transakce**: Azure Maps používá model transakčních licencí, kde;
 
 - Jedna transakce se vytvoří pro každých 15 požadavků na dlaždice mapy nebo přenosů.
-- Jedna transakce se vytvoří pro každé volání rozhraní API k jedné ze služeb v Azure Maps, jako je například hledání nebo směrování.
+- Jedna transakce se vytvoří pro každé volání rozhraní API k jedné ze služeb v Azure Maps. Příklady Azure Maps služby jsou hledání a směrování.
 
 <a name="transformation"></a>**Transformace**: proces převodu dat mezi různými geografickými systémy souřadnic. Můžete například mít data zaznamenaná ve Spojeném království a na základě geografického systému souřadnic OSGB 1936. Azure Maps používá souřadnici [EPSG: 3857](https://epsg.io/3857) referenční systém variant WGS84. Vzhledem k tomu, že se data zobrazují správně, bude nutné, aby jejich souřadnice byly transformované z jednoho systému do jiného.
 
 <a name="traveling-salesmen-problem-tsp"></a>**Salesmen problém na cestách (TSP)** : problém okruhu Hamiltonian, ve kterém prodejce musí najít nejúčinnější způsob, jak navštívit řadu zastavení, a pak se vrátit do počátečního umístění.  
 
-<a name="trilateration"></a>**Trilateration**: proces stanovení pozice bodu na povrchu země v závislosti na dvou ostatních bodech měřením vzdálenosti mezi všemi třemi body.
+<a name="trilateration"></a>**Trilateration**: proces stanovení pozice bodu na povrchu země, s ohledem na dva další body měřením vzdálenosti mezi všemi třemi body.
 
 <a name="turn-by-turn-navigation"></a>**Zapnutí navigace**: aplikace, která poskytuje pokyny k směrování pro každý krok trasy, se uživatelům blíží následující manévrů.
 
@@ -386,19 +386,19 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="vector-tile"></a>**Vector dlaždice**: otevřená specifikace dat pro ukládání geoprostorových vektorových dat pomocí stejného systému dlaždic jako mapového ovládacího prvku. Viz také [Dlaždicová vrstva](#tile-layer).
 
-<a name="vehicle-routing-problem-vrp"></a>**Problém s směrováním na vozidlo (VRP)** : třída problémů, ve kterých se počítá sada seřazených tras pro loďstva vozidel, přičemž se bere v úvahu sada omezení. Tato omezení můžou zahrnovat věci, jako je například časová období doručení, několik kapacit tras a omezení doby trvání cesty.
+<a name="vehicle-routing-problem-vrp"></a>**Problém s směrováním na vozidlo (VRP)** : třída problémů, při které se počítá sada seřazených tras pro loďstva vozidel, přičemž se bere v úvahu sada omezení. Tato omezení můžou zahrnovat časová období doručení, několik kapacit tras a omezení doby trvání cesty.
 
-<a name="voronoi-diagram"></a>**Voronoi diagram**: oddíl prostoru v oblastech nebo buňkách, které obklopují sadu geometrických objektů (obvykle funkce bodu). Tyto buňky nebo mnohoúhelníky musí splňovat kritéria pro Delaunay trojúhelníky. Všechna místa v oblasti jsou blíž k objektu, který obklopuje, než na jiný objekt v sadě. Diagramy Voronoi se často používají k vymezení oblastí ovlivňujících geografické funkce. 
+<a name="voronoi-diagram"></a>**Voronoi diagram**: oddíl prostoru v oblastech nebo buňkách, které obklopují sadu geometrických objektů, obvykle funkce Point. Tyto buňky nebo mnohoúhelníky musí splňovat kritéria pro Delaunay trojúhelníky. Všechna místa v oblasti jsou blíž k objektu, který obklopuje, než na jiný objekt v sadě. Diagramy Voronoi se často používají k vymezení oblastí ovlivňujících geografické funkce. 
 
 ## <a name="w"></a>W
 
 <a name="waypoint"></a>**Bod na trase**: bod na trase je zadané zeměpisné umístění definované zeměpisnou délkou a zeměpisnou šířkou, které se používá pro navigační účely. Často se používá k reprezentaci bodu, ve kterém někdo prochází trasu.
 
-<a name="waypoint-optimization"></a>**Optimalizace bod na trase**: proces přeuspořádání sady Waypoints pro minimalizaci doby trvání cesty nebo vzdálenosti, která je potřeba k předávání všech poskytovaných Waypoints. V závislosti na složitosti optimalizace je často označována jako [Salesmen problém](#traveling-salesmen-problem-tsp) nebo [problémy s směrováním na vozidlo](#vehicle-routing-problem-vrp) .
+<a name="waypoint-optimization"></a>**Optimalizace bod na trase**: proces přeuspořádání sady Waypoints pro minimalizaci doby trvání cesty nebo vzdálenosti, která je potřeba k předávání všech poskytovaných Waypoints. V závislosti na složitosti optimalizace se tato optimalizace často označuje jako problém [Salesmen na cestování](#traveling-salesmen-problem-tsp) nebo [problémy s směrováním na vozidlo](#vehicle-routing-problem-vrp).
 
 <a name="web-map-service-wms"></a>**Služba webového mapování (WMS)** : WMS je OGC (Open geografický Consortium), který definuje mapové služby založené na bitových kopiích. Služba WMS nabízí mapy obrázků pro konkrétní oblasti v rámci mapy na vyžádání. Obrázky zahrnují předem vykreslené Symbology a mohou být vykresleny v jednom z několika pojmenovaných stylů, pokud jsou definovány službou.
 
-<a name="web-mercator"></a>**Web Mercator**: označované také jako kulové Mercator projekce je mírnou variantou projekce Mercator, která se používá primárně v rámci webových programů mapování. Používá stejné vzorce jako standardní projekce Mercator, která se používá pro mapy malého rozsahu. Web Mercator ale používá pro všechna měřítka kulové vzorce, zatímco Mercator mapy ve velkém měřítku obvykle používají ellipsoidal formu projekce. Nesoulad je nepravdivý v globálním měřítku, ale způsobuje, že mapy místních oblastí se mírně odchylují od skutečných ellipsoidal Mercator map ve stejné škále.
+<a name="web-mercator"></a>**Web Mercator**: označuje se také jako kulové Mercator projekce. Jedná se o mírnou variantu projekce Mercator, která se používá hlavně ve webových aplikacích pro mapování. Používá stejné vzorce jako standardní projekce Mercator, která se používá pro mapy malého rozsahu. Web Mercator ale používá pro všechna měřítka kulové vzorce, ale mapy Mercator ve velkém měřítku obvykle používají ellipsoidal formu projekce. Nesoulad je nepravdivý v globálním měřítku, ale způsobuje, že mapy místních oblastí se mírně odchylují od skutečných ellipsoidal Mercator map ve stejném měřítku.
 
 <a name="wgs84"></a>**WGS84**: sada konstant sloužící k propojení prostorových souřadnic do umístění na povrchu mapy. WGS84 datum je standardní verze, kterou používá většina poskytovatelů online mapování a zařízení GPS. Azure Maps používá souřadnici [EPSG: 3857](https://epsg.io/3857) referenční systém variant WGS84.
 
@@ -408,5 +408,5 @@ Následuje seznam běžných slov používaných v Azure Maps.
 
 <a name="zip-code"></a>**PSČ**: viz [poštovní směrovací](#postal-code)číslo.
 
-<a name="Zoom level"></a>**Úroveň přiblížení**: Určuje úroveň podrobností a velikost viditelného rozvržení. Když se zmenší úroveň 0, celá světová mapa bude často v zobrazení, ale zobrazí se omezené podrobnosti, jako jsou názvy zemí nebo oblastí, ohraničení a názvy oceánů. Při přiblížení do úrovně 17 se v mapě zobrazí oblast několika bloků města s podrobnými informacemi o cestách. Další informace naleznete v dokumentaci [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md) .
+<a name="Zoom level"></a>**Úroveň přiblížení**: Určuje úroveň podrobností a velikost viditelného rozvržení. Při přiblížení všech možností na úroveň 0 bude celá světová mapa často viditelná. Mapa ale zobrazí omezené podrobnosti, jako jsou názvy zemí nebo oblastí, ohraničení a názvy oceánů. Při přiblížení do úrovně 17 se v mapě zobrazí oblast několika bloků města s podrobnými informacemi o cestách. V Azure Maps je nejvyšší úroveň přiblížení 22. Další informace naleznete v dokumentaci [úrovně přiblížení a mřížka dlaždic](zoom-levels-and-tile-grid.md) .
 

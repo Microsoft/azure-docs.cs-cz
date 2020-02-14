@@ -1,5 +1,5 @@
 ---
-title: Vlastní domény v Azure Proxy aplikací služby AD | Microsoft Docs
+title: Vlastními doménami v Proxy aplikací Azure AD | Dokumentace Microsoftu
 description: Konfigurace a Správa vlastních domén v Azure Proxy aplikací služby AD.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 6f1656d730d55d4c5ab7fb963e49a8057ad88c9f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062531"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185539"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurace vlastních domén pomocí Azure Proxy aplikací služby AD
 
-Když publikujete aplikaci prostřednictvím Proxy aplikací služby Azure Active Directory, vytvoříte externí adresu URL pro uživatele. Tato adresa URL získá výchozí *yourtenant.msappproxy.NET*domény. Například pokud publikujete aplikaci s názvem *výdaje* ve vašem tenantovi s názvem *Contoso*, externí adresa URL je *https: \//Expenses-contoso.msappproxy.NET*. Pokud chcete místo *msappproxy.NET*použít vlastní název domény, můžete pro svou aplikaci nakonfigurovat vlastní doménu. 
+Když publikujete aplikaci prostřednictvím Proxy aplikací služby Azure Active Directory, vytvoříte externí adresu URL pro uživatele. Tato adresa URL získá výchozí *yourtenant.msappproxy.NET*domény. Například pokud publikujete aplikaci s názvem *výdaje* ve vašem tenantovi s názvem *Contoso*, externí adresa URL je *https:\//Expenses-contoso.msappproxy.NET*. Pokud chcete místo *msappproxy.NET*použít vlastní název domény, můžete pro svou aplikaci nakonfigurovat vlastní doménu. 
 
 ## <a name="benefits-of-custom-domains"></a>Výhody vlastních domén
 
@@ -49,7 +49,7 @@ Konfigurace DNS v závislosti na vašich požadavcích je několik možností:
 
 Pokud nechcete, aby interní uživatelé procházeli prostřednictvím proxy aplikace, můžete nastavit *DNS pro dělené mozek*. Rozdělená infrastruktura DNS směruje interní hostitele na interní názvový server domény a externí hostitele na externí názvový server domény, aby bylo možné překlad názvů. 
 
-![DNS děleného – mozek](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
+![„Schizofrenní“ DNS](./media/application-proxy-configure-custom-domain/split-brain-dns.png)
 
 ### <a name="different-internal-and-external-urls"></a>Různé interní a externí adresy URL 
 
@@ -93,7 +93,7 @@ Publikování aplikace prostřednictvím proxy aplikací s vlastní doménou:
    
 6. Pokud již doména obsahuje certifikát, zobrazí se v poli **certifikát** informace o certifikátu. V opačném případě vyberte pole **certifikát** . 
    
-   ![Kliknutím Nahrajte certifikát.](./media/application-proxy-configure-custom-domain/certificate.png)
+   ![Klikněte na tlačítko pro odeslání certifikátu](./media/application-proxy-configure-custom-domain/certificate.png)
    
 7. Na stránce **certifikát SSL** vyhledejte a vyberte soubor certifikátu PFX. Zadejte heslo pro certifikát a vyberte **Odeslat certifikát**. Další informace o certifikátech najdete v části [certifikáty pro vlastní domény](#certificates-for-custom-domains) .
    
@@ -144,5 +144,5 @@ Po vypršení platnosti certifikátu se zobrazí upozornění, abyste si nahrál
 
 ## <a name="next-steps"></a>Další kroky
 * [Povolte jednotné přihlašování](application-proxy-configure-single-sign-on-with-kcd.md) k publikovaným aplikacím pomocí ověřování Azure AD.
-* [Povolte podmíněný přístup](../conditional-access/technical-reference.md#cloud-apps-assignments) k publikovaným aplikacím.
+* [Povolte podmíněný přístup](../conditional-access/overview.md) k publikovaným aplikacím.
 

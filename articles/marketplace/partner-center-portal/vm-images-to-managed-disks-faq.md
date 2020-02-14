@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: d85f6ba9d50b7d30930322ca34cb15edb30e1472
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 683b35661a41325cfd5baa877acdb0e37529bb94
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76775002"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77198730"
 ---
 # <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Přesouváme image virtuálních počítačů v Azure Marketplace do úložiště spravovaného disku.
 
@@ -61,6 +61,6 @@ Během přesouvání nelze provést aktualizace imagí virtuálních počítač�
 
 Ne, proces publikování zůstane stejný. 
 
-## <a name="next-steps"></a>Další kroky
+### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>Může vydavatel přesunout své nabídky na spravovaný disk?
 
-Navštivte stránku [Průvodce pro vydavatele na virtuálním počítači](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) .
+Ne, Vydavatelé nemůžou přesunout své nabídky na spravovaný disk. Budou muset počkat a jejich obrázky budou automaticky přesunuty. Než provedeme změny, pošleme vám oznámení na vydavatele.

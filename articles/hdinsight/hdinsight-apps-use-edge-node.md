@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/27/2020
-ms.openlocfilehash: b8bb68f7da74e547b020ae00a4672e10d70cbfd1
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844458"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199003"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Použití prázdných hraničních uzlů na Apache Hadoop clusterech v HDInsight
 
@@ -52,7 +52,7 @@ Můžete přidat prázdný hraniční uzel do stávajícího clusteru HDInsight 
 
 Jak je znázorněno v ukázce, můžete volitelně zavolat [akci skriptu](hdinsight-hadoop-customize-cluster-linux.md) pro provedení další konfigurace, jako je například instalace [odstínu Apache](hdinsight-hadoop-hue-linux.md) do hraničního uzlu. Skript akce skriptu musí být veřejně přístupný na webu.  Pokud je například skript uložen v Azure Storage, použijte buď veřejné kontejnery nebo veřejné objekty blob.
 
-Velikost virtuálního počítače hraničního uzlu musí splňovat požadavky na velikost virtuálního počítače pro pracovní uzel clusteru HDInsight. Doporučené velikosti virtuálních počítačů pracovních uzlů najdete v tématu [Vytvoření clusterů Apache Hadoop ve službě HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types).
+Velikost virtuálního počítače hraničního uzlu musí splňovat požadavky na velikost virtuálního počítače pro pracovní uzel clusteru HDInsight. Doporučené velikosti virtuálních počítačů pracovních uzlů najdete v tématu [Vytvoření clusterů Apache Hadoop ve službě HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-type).
 
 Po vytvoření hraničního uzlu se můžete připojit k hraničnímu uzlu pomocí protokolu SSH a spustit klientské nástroje pro přístup ke clusteru Hadoop ve službě HDInsight.
 
@@ -154,15 +154,15 @@ Hraniční uzel můžete z Azure Portal odstranit.
 2. Otevřete cluster HDInsight s hraničním uzlem.
 3. Vyberte **aplikace**. Zobrazí se seznam hraničních uzlů.  
 4. Klikněte pravým tlačítkem myši na hraniční uzel, který chcete odstranit, a vyberte **Odstranit**.
-5. Výběrem **Ano** potvrďte.
+5. Odstranění potvrďte výběrem **Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste se naučili, jak přidat hraniční uzel a jak přistupovat k hraničnímu uzlu. Další informace najdete v následujících článcích:
 
 * [Instalace aplikací HDInsight](hdinsight-apps-install-applications.md): Naučte se instalovat aplikace HDInsight do svých clusterů.
-* [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se nasazovat nepublikované aplikace HDInsight do HDInsight.
+* [Instalace vlastních aplikací HDInsight](hdinsight-apps-install-custom-applications.md): Naučte se, jak nasadit nepublikovanou aplikaci HDInsight do HDInsight.
 * [Publikování aplikací HDInsight](hdinsight-apps-publish-applications.md): Zjistěte, jak publikovat vlastní aplikace HDInsight do obchodu Azure Marketplace.
 * [MSDN: Instalace aplikace HDInsight](https://msdn.microsoft.com/library/mt706515.aspx): Další informace jak definovat aplikace HDInsight.
 * [Přizpůsobení clusterů HDInsight v systému Linux pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md): další informace o použití akce skriptu k instalaci dalších aplikací.
-* [Vytvářet clustery založené na Linuxu Apache Hadoop v HDInsight pomocí šablon Resource Manageru](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Zjistěte, jak voláním šablon Resource Manageru vytvoříte clustery HDInsight.
+* [Vytvoření clusterů Apache Hadoop se systémem Linux v HDInsight pomocí šablon Správce prostředků](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Naučte se volat šablony Správce prostředků pro vytváření clusterů HDInsight.

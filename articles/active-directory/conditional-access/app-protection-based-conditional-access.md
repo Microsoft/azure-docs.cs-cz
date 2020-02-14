@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3c853ef3a5a40381aba4e1c13eaf9ad7d8653170
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964085"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186624"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Vyžadovat zásady ochrany aplikací pro cloudový přístup k aplikaci pomocí podmíněného přístupu (Preview)
 
@@ -36,7 +36,7 @@ V terminologii podmíněného přístupu se tyto klientské aplikace označují 
 
 ![Podmíněný přístup](./media/app-protection-based-conditional-access/05.png)
 
-Seznam klientských aplikací chráněných zásadami najdete v tématu požadavky na [Zásady ochrany aplikací](technical-reference.md#approved-client-app-requirement).
+Seznam klientských aplikací chráněných zásadami najdete v tématu požadavky na [Zásady ochrany aplikací](concept-conditional-access-grant.md).
 
 Zásady podmíněného přístupu na základě ochrany aplikací můžete kombinovat s jinými zásadami, jako jsou [zásady podmíněného přístupu podle zařízení](require-managed-devices.md). Tímto způsobem můžete zajistit flexibilitu v tom, jak chránit data pro osobní i firemní zařízení.
 
@@ -55,8 +55,8 @@ Podobně jako u dodržování předpisů, které Intune oznamuje pro iOS a Andro
 
 V tomto článku se předpokládá, že jste obeznámeni s:
 
-- Technické informace o [požadavcích zásad ochrany aplikací](technical-reference.md#app-protection-policy-requirement) .
-- Požadavek na technické informace o [schválené klientské aplikaci](technical-reference.md#approved-client-app-requirement) .
+- [Požadavek zásady ochrany aplikací](concept-conditional-access-grant.md).
+- [Požadavek na schválenou aplikaci klienta](concept-conditional-access-grant.md)
 - Základní koncepty [podmíněného přístupu v Azure Active Directory](overview.md).
 - Jak [nakonfigurovat zásadu podmíněného přístupu](app-based-mfa.md).
 

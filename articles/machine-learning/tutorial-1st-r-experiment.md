@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: první model ML s R'
+title: 'Kurz: logistické regresní modely v R'
 titleSuffix: Azure Machine Learning
-description: V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se model logistické regrese s využitím balíčků R azuremlsdk a stříšky k předvídání pravděpodobnosti závažnosti při havárii automobilu.
+description: V tomto kurzu vytvoříte model logistické regrese s využitím balíčků R azuremlsdk a stříšky k předvídání pravděpodobnosti závažnosti při havárii automobilu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,34 +9,35 @@ ms.topic: tutorial
 ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
-ms.date: 11/04/2019
-ms.openlocfilehash: 7ea02fa4544b478e6b041e0b9c342bccdfe6c48c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 02/07/2020
+ms.openlocfilehash: 37f2f98e594f558a9cd3c3e5994bf17a71ff1899
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533444"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191249"
 ---
-# <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Kurz: výuka a nasazení prvního modelu v jazyce R s Azure Machine Learning
+# <a name="tutorial-create-a-logistic-regression-model-in-r-with-azure-machine-learning"></a>Kurz: vytvoření modelu logistické regrese ve R s Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning.  Vytvoříte a nasadíte model **blikajícího kurzoru** , který předpovídá pravděpodobnost závažnosti v případě nehody automobilu. Po dokončení tohoto kurzu budete mít praktické znalosti sady R SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
+V tomto kurzu použijete R a Azure Machine Learning k vytvoření modelu logistické regrese, který předpovídá pravděpodobnost závažnosti v případě nehody automobilu. Po dokončení tohoto kurzu budete mít praktické znalosti Azure Machine Learning R SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
 
-V tomto kurzu se naučíte provádět následující úlohy:
-
+V tomto kurzu provedete následující úlohy:
 > [!div class="checklist"]
-> * Připojit pracovní prostor
+> * Vytvoření pracovního prostoru Azure Machine Learningu
+> * Naklonujte složku poznámkového bloku se soubory nezbytnými pro spuštění tohoto kurzu do svého pracovního prostoru.
+> * Otevření RStudio z pracovního prostoru
 > * Načtení dat a příprava na školení
 > * Nahrajte data do úložiště dat, aby bylo dostupné pro vzdálené školení.
-> * Vytvoření výpočetního prostředku
-> * Výukový model blikajícího znaku pro předpověď pravděpodobnosti závažnosti
+> * Vytvoření výpočetního prostředku pro vzdálenou výuku modelu
+> * Výuka `caret` modelu pro předpověď pravděpodobnosti závažnosti
 > * Nasazení koncového bodu předpovědi
 > * Testování modelu z R
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 
-## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
+## <a name="create-a-workspace"></a>Vytvořit pracovní prostor
 
 Azure Machine Learning pracovní prostor je základní prostředek v cloudu, který používáte k experimentování, výuce a nasazování modelů strojového učení. Přijedná se o vaše předplatné Azure a skupinu prostředků k snadno spotřebovanému objektu ve službě. 
 
@@ -66,13 +67,11 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
 
 1. Otevřete složku s číslem verze.  Toto číslo představuje aktuální vydání pro sadu R SDK.
 
-1. Otevřete složku **Vignettes** .
-
-1. Vyberte **"..."** napravo od složky **výuka a nasazení-do-ACI** a pak vyberte **klonovat**.
+1. Na pravé straně složky **Vignettes** vyberte **"..."** a pak vyberte **klonovat**.
 
     ![Klonovat složku](media/tutorial-1st-r-experiment/clone-folder.png)
 
-1. Seznam složek zobrazuje každého uživatele, který přistupuje k pracovnímu prostoru.  Vyberte složku, do které se naklonuje složka s **výukou a nasazením do ACI** .
+1. Seznam složek zobrazuje každého uživatele, který přistupuje k pracovnímu prostoru.  Vyberte složku, do které chcete naklonovat složku **Vignettes** .
 
 ## <a name="a-nameopenopen-rstudio"></a><a name="open">otevřít RStudio
 
@@ -84,10 +83,11 @@ Ke spuštění tohoto kurzu použijte RStudio na výpočetní instanci nebo na v
 
 1. Po spuštění výpočetní služby použijte odkaz **RStudio** k otevření RStudio.
 
-1. Ve RStudio má vaše **výuková a nasazování do složky ACI** několik úrovní od **uživatelů** v části **soubory** v pravém dolním rohu.  Vyberte složku **výuka a nasazení-do-ACI** a vyhledejte soubory potřebné v tomto kurzu.
+1. Ve RStudio má vaše složka *Vignettes* několik úrovní od *uživatelů* v části **soubory** v pravém dolním rohu.  V části *Vignettes*vyberte složku *výuka a nasazení-do-ACI* a vyhledejte soubory potřebné v tomto kurzu.
 
 > [!Important]
-> Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v tématu **výuka a nasazení-do-ACI. Soubor RMD** Pokud máte zkušenosti s RMarkdown, můžete použít kód z tohoto souboru.  Nebo můžete zkopírovat nebo vložit fragmenty kódu z nebo z tohoto článku do skriptu R nebo příkazového řádku.  
+> Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v tématu *výuka a nasazení-do-ACI. Soubor RMD* Pokud máte zkušenosti s RMarkdown, můžete použít kód z tohoto souboru.  Nebo můžete zkopírovat nebo vložit fragmenty kódu z nebo z tohoto článku do skriptu R nebo příkazového řádku.  
+
 
 ## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
 Nastavení pro vývojovou práci v tomto kurzu zahrnuje následující akce:
@@ -102,12 +102,6 @@ V tomto kurzu se předpokládá, že už máte nainstalovanou sadu Azure ML SDK.
 
 ```R
 library(azuremlsdk)
-```
-
-V tomto kurzu se používá data z [balíčku **DAAG** ](https://cran.r-project.org/package=DAAG). Nainstalujte balíček, pokud ho nemáte.
-
-```R
-install.packages("DAAG")
 ```
 
 Skripty pro školení a bodování (`accidents.R` a `accident_predict.R`) mají nějaké další závislosti. Pokud plánujete spouštět tyto skripty místně, ujistěte se, že máte také tyto požadované balíčky.
@@ -147,15 +141,21 @@ wait_for_provisioning_completion(compute_target)
 ```
 
 ## <a name="prepare-data-for-training"></a>Příprava dat pro školení
-V tomto kurzu se používá data z balíčku **DAAG** . Tato datová sada zahrnuje data z více než 25 000 chyb auta v USA s proměnnými, které můžete použít k předpovědi pravděpodobnosti závažnosti. Nejprve importujte data do jazyka R a Transformujte je do nového datového rámce `accidents` pro účely analýzy a exportujte je do souboru `Rdata`.
+V tomto kurzu se používá data z [státní správy zabezpečení provozu](https://cdan.nhtsa.gov/tsftables/tsfar.htm) USA (s poděkováním [Marie C. Meyer a Tremika Finney](https://www.stat.colostate.edu/~meyer/airbags.htm)).
+Tato datová sada zahrnuje data z více než 25 000 chyb auta v USA s proměnnými, které můžete použít k předpovědi pravděpodobnosti závažnosti. Nejprve importujte data do jazyka R a Transformujte je do nového datového rámce `accidents` pro účely analýzy a exportujte je do souboru `Rdata`.
 
 ```R
-library(DAAG)
-data(nassCDS)
-
+nassCDS <- read.csv("nassCDS.csv", 
+                     colClasses=c("factor","numeric","factor",
+                                  "factor","factor","numeric",
+                                  "factor","numeric","numeric",
+                                  "numeric","character","character",
+                                  "numeric","numeric","character"))
 accidents <- na.omit(nassCDS[,c("dead","dvcat","seatbelt","frontal","sex","ageOFocc","yearVeh","airbag","occRole")])
 accidents$frontal <- factor(accidents$frontal, labels=c("notfrontal","frontal"))
 accidents$occRole <- factor(accidents$occRole)
+accidents$dvcat <- ordered(accidents$dvcat, 
+                          levels=c("1-9km/h","10-24","25-39","40-54","55+"))
 
 saveRDS(accidents, file="accidents.Rd")
 ```
@@ -174,7 +174,7 @@ upload_files_to_datastore(ds,
 ```
 
 
-## <a name="train-a-model"></a>Trénování modelu
+## <a name="train-a-model"></a>Učení modelu
 
 Pro tento kurz si nahráli model logistické regrese pro nahraná data pomocí vzdáleného výpočetního clusteru. K odeslání úlohy potřebujete:
 
@@ -394,5 +394,6 @@ Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní pros
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste dokončili první Azure Machine Learning experimentovat v R, se dozvíte víc o [Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/index.html).
+* Teď, když jste dokončili první Azure Machine Learning experimentovat v R, se dozvíte víc o [Azure Machine Learning SDK pro R](https://azure.github.io/azureml-sdk-for-r/index.html).
 
+* Přečtěte si další informace o Azure Machine Learning s R z příkladů v ostatních složkách *Vignettes* .

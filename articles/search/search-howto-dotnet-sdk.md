@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 54fcd1fb936b5dd41715798408b604106a24bcf9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112594"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190975"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Jak používat Azure Kognitivní hledání z aplikace .NET
 
@@ -33,8 +33,8 @@ Ostatní balíčky NuGet v sadě SDK jsou:
 
 Různé klientské knihovny definují třídy jako `Index`, `Field`a `Document`a také operace jako `Indexes.Create` a `Documents.Search` na `SearchServiceClient` a `SearchIndexClient`ch třídách. Tyto třídy jsou uspořádány do následujících oborů názvů:
 
-* [Microsoft.Azure.Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
-* [Microsoft.Azure.Search.Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
+* [Microsoft. Azure. Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
+* [Microsoft. Azure. Search. Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
 Pokud chcete poskytnout zpětnou vazbu k budoucí aktualizaci sady SDK, přečtěte si naši [zpětnou vazbu](https://feedback.azure.com/forums/263029-azure-search/) nebo vytvořte problém na [GitHubu](https://github.com/azure/azure-sdk-for-net/issues) a uveďte "Azure kognitivní hledání" v názvu problému.
 
@@ -462,7 +462,7 @@ První věc, kterou je třeba si všimnout, je, že název každé veřejné vla
 > 
 > 
 
-Druhá věc k oznámení je, že každá vlastnost je upravena pomocí atributů jako `IsFilterable`, `IsSearchable`, `Key`a `Analyzer`. Tyto atributy jsou mapovány přímo k [odpovídajícím atributům polí v indexu služby Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/create-index#request). Třída `FieldBuilder` používá tyto vlastnosti k sestavení definic polí pro index.
+Druhá věc k oznámení je, že každá vlastnost je upravena pomocí atributů jako `IsFilterable`, `IsSearchable`, `Key`a `Analyzer`. Tyto atributy jsou mapovány přímo k [odpovídajícím atributům polí v indexu služby Azure kognitivní hledání](/rest/api/searchservice/create-index). Třída `FieldBuilder` používá tyto vlastnosti k sestavení definic polí pro index.
 
 Třetí důležitou věcí o `Hotel` třídy jsou datové typy veřejných vlastností. .NET typy těchto vlastností se mapují na odpovídající typy polí v definici indexu. Například řetězcová vlastnost `Category` se mapuje na pole `category`, které je typu `Edm.String`. Existují podobné mapování typů mezi `bool?`, `Edm.Boolean`, `DateTimeOffset?`a `Edm.DateTimeOffset` a tak dále. Konkrétní pravidla pro mapování typů jsou zdokumentována pomocí metody `Documents.Get` v [referenčních informacích k sadě Azure kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). Třída `FieldBuilder` postará o toto mapování za vás, ale přesto může být užitečné pochopit, jak potřebujete řešit problémy s serializací.
 

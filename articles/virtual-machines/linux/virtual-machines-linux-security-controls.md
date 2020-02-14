@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 00753d885985e2734f0d87fdad9f219f44277d5a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 300acaf4a9d2a11ef107e19df99452c909257d54
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828352"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77190577"
 ---
 # <a name="security-controls-for-linux-virtual-machines"></a>Ovládací prvky zabezpečení pro Linux Virtual Machines
 
@@ -22,9 +22,9 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Linux Vir
 
 [!INCLUDE [Security controls header](../../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Sítě
+## <a name="network"></a>Síť
 
-| Řízení zabezpečení | Ano/Ne | Poznámky |
+| Řízení zabezpečení | Ano/Ne | Poznámky: |
 |---|---|--|
 | Podpora koncového bodu služby| Ano | |
 | Podpora vkládání virtuální sítě| Ano | |
@@ -33,7 +33,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Linux Vir
 
 ## <a name="monitoring--logging"></a>Monitorování protokolování &
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky:|
 |---|---|--|
 | Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | Viz [monitorování a aktualizace virtuálního počítače se systémem Linux v Azure](/azure/virtual-machines/linux/tutorial-monitoring). |
 | Protokolování a audit roviny řízení a správy| Ano |  |
@@ -41,24 +41,24 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Linux Vir
 
 ## <a name="identity"></a>Identita
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky:|
 |---|---|--|
 | Ověřování| Ano |  |
 | Autorizace| Ano |  |
 
 ## <a name="data-protection"></a>Ochrana dat
 
-| Řízení zabezpečení | Ano/Ne | Poznámky |
+| Řízení zabezpečení | Ano/Ne | Poznámky: |
 |---|---|--|
 | Šifrování na straně serveru v klidovém umístění: klíče spravované společností Microsoft | Ano | Viz [Azure Disk Encryption pro virtuální počítače se systémem Linux](disk-encryption-overview.md). |
 | Šifrování při přenosu (například šifrování ExpressRoute, šifrování virtuální sítě a šifrování virtuální sítě)| Ano | Azure Virtual Machines podporuje šifrování [ExpressRoute](/azure/expressroute) a virtuální sítě. Viz [šifrování v přenosech na virtuálních počítačích](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
 | Šifrování na straně serveru v klidovém umístění: klíče spravované zákazníkem (BYOK) | Ano | Klíče spravované zákazníkem jsou podporovaným scénářem šifrování Azure; viz [Přehled šifrování Azure](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
-| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |
-| Zašifrovaná volání rozhraní API| Ano | Přes HTTPS a SSL. |
+| Šifrování na úrovni sloupce (Azure Data Services)| Není k dispozici | |
+| Zašifrovaná volání rozhraní API| Ano | Přes HTTPS a TLS. |
 
 ## <a name="configuration-management"></a>Správa konfigurace
 
-| Řízení zabezpečení | Ano/Ne | Poznámky|
+| Řízení zabezpečení | Ano/Ne | Poznámky:|
 |---|---|--|
 | Podpora správy konfigurace (Správa verzí konfigurace atd.)| Ano |  | 
 

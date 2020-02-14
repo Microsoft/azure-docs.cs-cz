@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836044"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77193375"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
 
@@ -46,16 +46,16 @@ Následující části uvádějí dostupné překladače deklarací identity.
 
 ### <a name="culture"></a>Jazyková verze
 
-| Deklarovat | Popis | Příklad: |
+| Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
 | {Culture: LanguageGroup} | Dva číslice kódu ISO pro jazyk | en |
 | {Culture: LCID}   | Identifikátor LCID kódu jazyka. | 1033 |
-| {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | Spojené státy |
+| {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | USA |
 | {Culture: RFC5646} | Kód jazyka RFC5646 | cs-CZ |
 
-### <a name="policy"></a>Zásady
+### <a name="policy"></a>Zásada
 
-| Deklarovat | Popis | Příklad: |
+| Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | Název zásady předávající strany | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | ID tenanta zásady předávající strany. | your-tenant.onmicrosoft.com |
@@ -64,21 +64,21 @@ Následující části uvádějí dostupné překladače deklarací identity.
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| Deklarovat | Popis | Příklad: |
+| Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |Parametr řetězce dotazu `acr_values`. | Nevztahuje se |
+| {OIDC:AuthenticationContextReferences} |Parametr řetězce dotazu `acr_values`. | Není k dispozici |
 | {OIDC: ClientId} |Parametr řetězce dotazu `client_id`. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |Parametr řetězce dotazu `domain_hint`. | facebook.com |
 | {OIDC:LoginHint} |  Parametr řetězce dotazu `login_hint`. | someone@contoso.com |
-| {OIDC:MaxAge} | Hodnota `max_age` | Nevztahuje se |
+| {OIDC:MaxAge} | Hodnota `max_age` | Není k dispozici |
 | {OIDC: nonce} |Parametr řetězce dotazu `Nonce`. | defaultNonce |
-| {OIDC:Prompt} | Parametr řetězce dotazu `prompt`. | Přihlásit |
-| {OIDC: Resource} |Parametr řetězce dotazu `resource`. | Nevztahuje se |
+| {OIDC:Prompt} | Parametr řetězce dotazu `prompt`. | přihlášení |
+| {OIDC: Resource} |Parametr řetězce dotazu `resource`. | Není k dispozici |
 | {OIDC:scope} |Parametr řetězce dotazu `scope`. | OpenID |
 
 ### <a name="context"></a>Kontext
 
-| Deklarovat | Popis | Příklad: |
+| Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
 | {Context: BuildNumber} | Verze architektury rozhraní identity Experience Framework (číslo buildu).  | 1.0.507.0 |
 | {Context:CorrelationId} | ID korelace.  | 00000000-0000-0000-0000-000000000000 |
@@ -91,18 +91,40 @@ Následující části uvádějí dostupné překladače deklarací identity.
 
 Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, se dá namapovat na deklaraci identity uživatele. Například požadavek z aplikace může obsahovat parametr řetězce dotazu s názvem `app_session`, `loyalty_number`nebo libovolným vlastním řetězcem dotazu.
 
-| Deklarovat | Popis | Příklad: |
+| Deklarovat | Popis | Příklad |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV: campaignId} | Parametr řetězce dotazu. | ostrovy |
 | {OAUTH-KV: app_session} | Parametr řetězce dotazu. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Parametr řetězce dotazu. | 1234 |
-| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | Nevztahuje se |
+| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | Není k dispozici |
 
 ### <a name="oauth2"></a>OAuth2
 
-| Deklarovat | Popis | Příklad: |
+| Deklarovat | Popis | Příklad |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Přístupový token | Nevztahuje se |
+| {OAuth2: access_token} | Přístupový token. | Není k dispozici |
+
+## <a name="using-claim-resolvers"></a>Použití překladačů deklarací identity 
+
+Překladače deklarací identity můžete použít s následujícími prvky: 
+
+| Položka | Prvek | Nastavení |
+| ----- | ----------------------- | --------|
+|Application Insights technický profil |`InputClaim` | |
+|[Azure Active Directory](active-directory-technical-profile.md) technický profil| `InputClaim`, `OutputClaim`| 1, 2|
+|[OAuth2](oauth2-technical-profile.md) Technical Profile| `InputClaim`, `OutputClaim`| 1, 2|
+|[OpenID Connect](openid-connect-technical-profile.md) Technical Profile| `InputClaim`, `OutputClaim`| 1, 2|
+|Technický profil [transformace deklarací identity](claims-transformation-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|Technický profil [poskytovatele RESTful](restful-technical-profile.md)| `InputClaim`| 1, 2|
+|[Typu Saml2](saml-technical-profile.md) Technical Profile| `OutputClaim`| 1, 2|
+|Technický profil [s vlastním uplatněním](self-asserted-technical-profile.md)| `InputClaim`, `OutputClaim`| 1, 2|
+|[ContentDefinition](contentdefinitions.md)| `LoadUri`| |
+|[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
+|[RelyingParty](relyingparty.md#technicalprofile) Technical Profile| `OutputClaim`| 2 |
+
+Možnost 
+1. `IncludeClaimResolvingInClaimsHandling` metadata musí být nastavená na `true`
+1. Vstupní nebo výstupní atribut deklarace identity `AlwaysUseDefaultValue` musí být nastaven na `true`
 
 ## <a name="how-to-use-claim-resolvers"></a>Jak používat překladače deklarací identity
 

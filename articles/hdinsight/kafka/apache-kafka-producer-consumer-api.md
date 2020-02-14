@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
-ms.openlocfilehash: 65fc3259b0bc5fce61ccd1ceb8df30f1bba49b19
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
-ms.translationtype: HT
+ms.openlocfilehash: 102523316aaa59803fb9a6957457fc7bd4f6ce4f
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161711"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77186819"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití rozhraní Apache Kafka Producer and Consumer API
 
@@ -24,30 +24,29 @@ Rozhraní Kafka Producer API umožňuje aplikacím odesílat datové proudy do c
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Předpoklady
+> * Požadavky
 > * Vysvětlení kódu
 > * Sestavení a nasazení aplikace
 > * Spuštění aplikace v clusteru
 
 Další informace o rozhraních API najdete v dokumentaci k rozhraní [Producer API](https://kafka.apache.org/documentation/#producerapi) a [Consumer API](https://kafka.apache.org/documentation/#consumerapi) na webu Apache.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-* Apache Kafka ve službě HDInsight 3,6. Informace o tom, jak vytvořit Kafka v clusteru HDInsight, najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
-
+* Apache Kafka v clusteru HDInsight. Informace o tom, jak vytvořit cluster, najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
 * [Java Developer Kit (JDK) verze 8](https://aka.ms/azure-jdks) nebo ekvivalent, jako je například OpenJDK.
-
 * [Apache Maven](https://maven.apache.org/download.cgi) správně [nainstalované](https://maven.apache.org/install.html) v souladu s Apache.  Maven je systém sestavení projektu pro projekty v jazyce Java.
-
-* Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient SSH, jako je například výstup. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>Vysvětlení kódu
 
-Ukázková aplikace se nachází na adrese [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) v podadresáři `Producer-Consumer`. Aplikace se skládá primárně ze čtyř souborů:
+Ukázková aplikace se nachází na adrese [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) v podadresáři `Producer-Consumer`. Pokud používáte cluster Kafka s povoleným **balíček zabezpečení podniku (ESP)** , měli byste použít verzi aplikace, která se nachází v podadresáři `DomainJoined-Producer-Consumer`.
 
+Aplikace se skládá primárně ze čtyř souborů:
 * `pom.xml`: Tento soubor definuje závislosti projektu, verzi Javy a metody balení.
 * `Producer.java`: Tento soubor pomocí rozhraní Producer API odesílá do systému Kafka náhodné věty.
 * `Consumer.java`: Tento soubor pomocí rozhraní Consumer API čte data ze systému Kafka a posílá je do výstupu STDOUT.
+* `AdminClientWrapper.java`: Tento soubor používá rozhraní API pro správu k vytváření, popisu a odstraňování témat Kafka.
 * `Run.java`: Rozhraní příkazového řádku, které slouží ke spuštění kódu producenta a konzumenta.
 
 ### <a name="pomxml"></a>Pom.xml
@@ -116,9 +115,11 @@ Soubor [Run. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-sta
 
 ## <a name="build-and-deploy-the-example"></a>Sestavení a nasazení příkladu
 
+Chcete-li tento krok přeskočit, lze předem sestavené jar stáhnout z podadresáře `Prebuilt-Jars`. Stáhněte si Kafka-Producer-Consumer. jar. Pokud je váš cluster **balíček zabezpečení podniku (ESP)** povolený, použijte Kafka-Producer-Consumer-ESP. jar. Spusťte krok 3 ke zkopírování jar do clusteru HDInsight.
+
 1. Stáhněte a extrahujte příklady z [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started).
 
-2. Nastavte aktuální adresář na umístění adresáře `hdinsight-kafka-java-get-started\Producer-Consumer` a použijte tento příkaz:
+2. Nastavte aktuální adresář na umístění adresáře `hdinsight-kafka-java-get-started\Producer-Consumer`. Pokud používáte cluster Kafka s povoleným **balíček zabezpečení podniku (ESP)** , měli byste nastavit umístění pro `DomainJoined-Producer-Consumer`podadresář. Pomocí následujícího příkazu sestavte aplikaci:
 
     ```cmd
     mvn clean package
@@ -140,29 +141,12 @@ Soubor [Run. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-sta
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Nainstalujte [JQ](https://stedolan.github.io/jq/)procesor JSON pro příkazový řádek. V otevřeném připojení SSH zadejte následující příkaz pro instalaci `jq`:
+1. Pokud chcete získat hostitele zprostředkovatele Kafka, nahraďte hodnoty pro `<clustername>` a `<password>` v následujícím příkazu a spusťte ji. Pro `<clustername>` použijte stejná velká písmena, jak je znázorněno v Azure Portal. Nahraďte `<password>` heslem přihlášení clusteru a pak spusťte:
 
     ```bash
     sudo apt -y install jq
-    ```
-
-1. Nastavte proměnnou hesla. Nahraďte `PASSWORD` heslem přihlášení clusteru a pak zadejte příkaz:
-
-    ```bash
-    export password='PASSWORD'
-    ```
-
-1. Extrahuje správně použita název clusteru. V závislosti na tom, jak byl cluster vytvořen, může být skutečná velikost názvu clusteru odlišná, než očekáváte. Tento příkaz získá skutečnou velikost písmen a uloží ji do proměnné. Zadejte následující příkaz:
-
-    ```bash
-    export clusterName=$(curl -u admin:$password -sS -G "http://headnodehost:8080/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
-    ```
-    > [!Note]  
-    > Pokud provádíte tento proces mimo cluster, existuje jiný postup pro uložení názvu clusteru. Získá název clusteru z Azure Portal malými písmeny. Pak v následujícím příkazu nahraďte název clusteru pro `<clustername>` a spusťte ho: `export clusterName='<clustername>'`.  
-
-1. Chcete-li získat hostitele zprostředkovatele Kafka, použijte následující příkaz:
-
-    ```bash
+    export clusterName='<clustername>'
+    export password='<password>'
     export KAFKABROKERS=$(curl -sS -u admin:$password -G https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/services/KAFKA/components/KAFKA_BROKER | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2);
     ```
 

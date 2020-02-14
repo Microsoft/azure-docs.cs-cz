@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a27c9ae1b75b9517bd3af92486df96434c5b34fb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cebb59d30dd717e54321ab138f6580947a545961
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207393"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77185850"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
 
@@ -55,9 +55,9 @@ V části **uživatelská zařízení**jsou uvedena pouze následující zaříz
 
 ---
 
-### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices-"></a>Otázka: Proč se uživatelům zobrazí chybová zpráva s oznámením, že vaše organizace odstranila zařízení nebo že vaše organizace zařízení zakázala na svých zařízeních s Windows 10?
+### <a name="q-why-do-my-users-see-an-error-message-saying-your-organization-has-deleted-the-device-or-your-organization-has-disabled-the-device-on-their-windows-10-devices"></a>Otázka: Proč se uživatelům zobrazí chybová zpráva s oznámením, že vaše organizace odstranila zařízení nebo že vaše organizace zařízení zakázala na svých zařízeních s Windows 10?
 
-**A:** V zařízeních s Windows 10 připojených nebo registrovaných ve službě Azure AD se uživatelům vydává [primární obnovovací token (PRT)](concept-primary-refresh-token.md) , který umožňuje jednotné přihlašování. Platnost PRT vychází z validaity samotného zařízení. Tato zpráva se zobrazí, pokud je zařízení buď odstraněno, nebo zakázáno ve službě Azure AD, aniž by bylo potřeba zahájit akci ze samotného zařízení. Zařízení se dá v Azure AD odstranit nebo zakázat jedním z následujících scénářů: 
+**A:** V zařízeních s Windows 10 připojených nebo registrovaných ve službě Azure AD se uživatelům vydává [primární obnovovací token (PRT)](concept-primary-refresh-token.md) , který umožňuje jednotné přihlašování. Platnost PRT vychází z platnosti samotného zařízení. Tato zpráva se zobrazí, pokud je zařízení buď odstraněno, nebo zakázáno ve službě Azure AD, aniž by bylo potřeba zahájit akci ze samotného zařízení. Zařízení se dá v Azure AD odstranit nebo zakázat jedním z následujících scénářů: 
 
 - Uživatel zařízení zakáže z portálu moje aplikace. 
 - Správce (nebo uživatel) odstraní nebo zakáže zařízení v Azure Portal nebo pomocí PowerShellu.
@@ -71,7 +71,7 @@ Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
 
 ### <a name="q-i-disabled-or-deleted-my-device-in-the-azure-portal-or-by-using-windows-powershell-but-the-local-state-on-the-device-says-its-still-registered-what-should-i-do"></a>Otázka: zařízení je zakázané nebo odstraněné v Azure Portal nebo pomocí Windows PowerShellu. Ale místní stav zařízení říká, že je pořád zaregistrovaný. Co bych měl/a dělat?
 
-**A:** Tato operace je záměrné. V takovém případě zařízení nemá přístup k prostředkům v cloudu. Správci můžou tuto akci provést u zastaralých, ztracených nebo odcizených zařízení, aby se zabránilo neoprávněnému přístupu. Pokud se tato akce prováděla omylem, budete muset zařízení znovu povolit nebo znovu zaregistrovat, jak je popsáno níže.
+**A:** Tato operace je záměrné. V takovém případě zařízení nemá přístup k prostředkům v cloudu. Správci můžou tuto akci provést u zastaralých, ztracených nebo odcizených zařízení, aby se předešlo neoprávněnému přístupu. Pokud se tato akce prováděla omylem, budete muset zařízení znovu povolit nebo znovu zaregistrovat, jak je popsáno níže.
 
 - Pokud je zařízení ve službě Azure AD zakázané, správce s dostatečnými oprávněními může povolit z portálu Azure AD.  
   > [!NOTE]
@@ -119,7 +119,7 @@ Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>Otázka: Služba registrace zařízení s Windows 10 v Azure AD podporuje čipy TPM v režimu FIPS?
 
-**A:** Registrace zařízení s Windows 10 je podporovaná jenom pro čip TPM kompatibilní se standardem FIPS 2,0 a není podporovaná pro čip TPM 1,2. Pokud vaše zařízení mají čip TPM kompatibilní se standardem FIPS 1,2, musíte je před tím, než budete pokračovat v připojení k Azure AD nebo k hybridní službě Azure AD, zakázat. Všimněte si, že Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislý na výrobci čipu TPM. Požádejte o podporu svého hardwarového výrobce OEM. 
+**A:** Registrace zařízení s Windows 10 je podporovaná jenom pro čip TPM kompatibilní se standardem FIPS 2,0 a není podporovaná pro čip TPM 1,2. Pokud vaše zařízení mají čip TPM kompatibilní se standardem FIPS 1,2, musíte je před tím, než budete pokračovat v připojení k Azure AD nebo k hybridní službě Azure AD, zakázat. Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislý na výrobci čipu TPM. Požádejte o podporu svého hardwarového výrobce OEM. 
 
 ---
 
@@ -293,7 +293,7 @@ Připojení k hybridní službě Azure AD má přednost před stavem zaregistrov
 ---
 ### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>Otázka: Jak můžu zablokovat uživatelům přidávání dalších pracovních účtů (registrovaných v Azure AD) na zařízeních s Windows 10?
 
-**A:** Pokud chcete uživatelům zablokovat přidávání dalších pracovních účtů do vaší firemní domény, připojené k Azure AD nebo k zařízením s Windows 10 připojeným k Azure AD, povolte následujícímu registru. Tato zásada se dá taky použít k zablokování počítačů připojených k doméně z neúmyslného získání registrace Azure AD se stejným uživatelským účtem. 
+**A:** Pokud chcete uživatelům zablokovat přidávání dalších pracovních účtů do vaší firemní domény, připojeného k Azure AD nebo hybridních zařízení s Windows 10 připojená k Azure AD, povolte následujícímu registru. Tato zásada se dá taky použít k zablokování počítačů připojených k doméně z neúmyslného získání registrace Azure AD se stejným uživatelským účtem. 
 
 `HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
@@ -312,7 +312,7 @@ Připojení k hybridní službě Azure AD má přednost před stavem zaregistrov
 
 **Mark**
 
-- Uživatelé zahrnutí do zásad podmíněného přístupu potřebují pro přístup k prostředkům [podporovanou verzi Office pro MacOS](../conditional-access/technical-reference.md#client-apps-condition) . 
+- Uživatelé zahrnutí do zásad podmíněného přístupu potřebují pro přístup k prostředkům [podporovanou verzi Office pro MacOS](../conditional-access/concept-conditional-access-conditions.md) . 
 - Při prvním pokusu o přístup se uživatelům zobrazí výzva k registraci zařízení pomocí portálu společnosti.
 
 ---

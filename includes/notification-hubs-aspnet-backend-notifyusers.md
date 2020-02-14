@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "70934106"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77192620"
 ---
 ## <a name="create-the-webapi-project"></a>Vytvoření projektu WebAPI
 
 Následující části popisují vytvoření nového back-endu ASP.NET WebAPI. Tento proces má tři hlavní účely:
 
-- **Ověřování klientů**: Přidáte obslužnou rutinu zpráv pro ověřování požadavků klientů a k žádosti přiřadíte uživatele.
-- **Zaregistrujte se na oznámení pomocí back-endu WebApi**: Přidáte kontroler, který bude zpracovávat nové registrace pro klientské zařízení, aby přijímal oznámení. Ověřené uživatelské jméno se automaticky přidá do registrace jako [značka](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md).
-- **Odesílat oznámení klientům**: Přidáte kontroler, který umožní uživatelům aktivovat zabezpečené nabízení oznámení zařízením a klientům přidruženým k této značce.
+- **Ověřování klientů:** Přidáte popisovač zprávy, který bude ověřovat požadavky klientů a přiřazovat uživatele k požadavkům.
+- **Registrace k oznámením pomocí back-endu WebAPI:** Přidáte kontroler, který bude zpracovávat nové registrace klientských zařízení k přijímání oznámení. Ověřené uživatelské jméno se automaticky přidá do registrace jako [značka](../articles/notification-hubs/notification-hubs-tags-segment-push-message.md).
+- **Odesílání oznámení klientům:** Přidáte kontroler, který uživatelům umožní aktivovat zabezpečené nabízení do zařízení a klientů přidružených ke značce.
 
 Vytvořte nový back-end ASP.NET WebAPI provedením následujících akcí:
 
@@ -108,7 +108,7 @@ V této části vytvoříte pro nový back-end novou třídu popisovače zprávy
                 string user = authorizationUserAndPwd.Split(':')[0];
                 string password = authorizationUserAndPwd.Split(':')[1];
 
-                if (verifyUserAndPwd(user, password))
+                if (VerifyUserAndPwd(user, password))
                 {
                     // Attach the new principal object to the current HttpContext object
                     HttpContext.Current.User =
@@ -123,7 +123,7 @@ V této části vytvoříte pro nový back-end novou třídu popisovače zprávy
             return base.SendAsync(request, cancellationToken);
         }
 
-        private bool verifyUserAndPwd(string user, string password)
+        private bool VerifyUserAndPwd(string user, string password)
         {
             // This is not a real authentication scheme.
             return user == password;
@@ -140,7 +140,7 @@ V této části vytvoříte pro nový back-end novou třídu popisovače zprávy
     ```
 
     > [!NOTE]
-    > Poznámka k zabezpečení: `AuthenticationTestHandler` Třída neposkytuje skutečné ověřování. Používá se pouze k napodobení základního ověřování a není bezpečná. Ve svých produkčních aplikacích a službách musíte implementovat mechanismus zabezpečeného ověřování.
+    > Poznámka k zabezpečení: Třída `AuthenticationTestHandler` nezajišťuje skutečné ověřování. Používá se pouze k napodobení základního ověřování a není bezpečná. Ve svých produkčních aplikacích a službách musíte implementovat mechanismus zabezpečeného ověřování.
 5. Pro registraci popisovače zprávy přidejte následující kód na konec metody `Register` ve třídě **App_Start/WebApiConfig.cs**:
 
     ```csharp
@@ -392,7 +392,7 @@ Dále tuto aplikaci nasadíte na web Azure, aby byla přístupná ze všech zař
 
 3. V okně **Vytvořit plán App Service** vyberte váš účet Azure. Vyberte **Změnit typ** > **Webová aplikace**. Ponechejte výchozí **Název webové aplikace** a vyberte **Předplatné**, **Skupinu prostředků** a **Plán služby App Service**.
 
-4. Vyberte **Vytvořit**.
+4. Vyberte **Create** (Vytvořit).
 
 5. Poznamenejte si vlastnost **Adresa URL webu** v části **Souhrn**. Tato adresa URL je váš *koncový bod back-endu*, který použijete později v tomto kurzu.
 

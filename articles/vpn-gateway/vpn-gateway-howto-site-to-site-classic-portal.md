@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 02/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: 298d720d3848f27b18aa24897357dfaa47a12a70
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e386e5fc9c4d62266e0ca23869bf30ccaffeb91d
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863719"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201556"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Vytvoření připojení typu Site-to-Site pomocí webu Azure Portal (Classic)
 
@@ -39,7 +39,7 @@ Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 * Ujistěte se, že máte kompatibilní zařízení VPN a někoho, kdo jej umí nakonfigurovat. Další informace o kompatibilních zařízeních VPN a konfiguraci zařízení najdete v tématu [Informace o zařízeních VPN](vpn-gateway-about-vpn-devices.md).
 * Ověřte, že máte veřejnou IPv4 adresu pro vaše zařízení VPN.
 * Pokud neznáte rozsahy IP adres v konfiguraci vaší místní sítě, budete se muset spojit s někým, kdo vám s tím pomůže. Při vytváření této konfigurace musíte zadat předpony rozsahu IP adres, které bude Azure směrovat do vašeho místního umístění. Žádná z podsítí vaší místní sítě se nesmí překrývat s podsítěmi virtuální sítě, ke kterým se chcete připojit.
-* V současné době je se k zadání sdíleného klíče a vytvoření připojení brány VPN vyžaduje PowerShell. Nainstalujte nejnovější verzi rutin PowerShellu pro správu služeb Azure. Informace o instalaci rutin najdete v tématu [Správa služeb](/powershell/azure/servicemanagement/install-azure-ps). Další informace o instalaci PowerShellu obecně najdete v tématu [instalace a konfigurace Azure PowerShell](/powershell/azure/overview). Při práci s prostředím PowerShell pro tuto konfiguraci se ujistěte, že jej spouštíte jako správce.
+* Aby bylo možné zadat sdílený klíč a vytvořit připojení brány VPN, je nutné PowerShell. [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
 ### <a name="values"></a>Ukázkové hodnoty konfigurace pro toto cvičení
 
@@ -69,10 +69,10 @@ Pokud vytváříte virtuální síť pro použití k připojení typu Site-to-Si
 
 ### <a name="to-create-a-virtual-network"></a>Chcete-li vytvořit virtuální síť
 
-1. V prohlížeči přejděte na portál [Azure Portal](https://portal.azure.com) a v případě potřeby se přihlaste pomocí účtu Azure.
+1. V prohlížeči přejděte na [portál Azure](https://portal.azure.com) a v případě potřeby se přihlaste pomocí účtu Azure.
 2. Klikněte na * *+ vytvořit prostředek*. Do pole **Hledat na Marketplace** zadejte text „Virtuální síť“. Ve vráceném seznamu vyhledejte položku **Virtuální síť** a kliknutím otevřete stránku **Virtuální síť**.
 3. klikněte na **(změnit na klasický)** a pak klikněte na **vytvořit**.
-4. Na stránce **Vytvořit virtuální síť (Classic)** nakonfigurujte nastavení virtuální sítě. Na této stránce přidáte první adresní prostor a jeden rozsah adres podsítě. Po dokončení vytváření sítě VNet můžete přejít zpět a přidat další podsítě a adresní prostory.
+4. Na stránce **Vytvořit virtuální síť (Classic)** nakonfigurujte nastavení virtuální sítě. Na této stránce přidáte první adresní prostor a jeden rozsah adres podsítě. Po vytvoření virtuální sítě se můžete vrátit zpátky a přidat další podsítě a adresní prostory.
 
    ![Stránka pro vytvoření virtuální sítě](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "Stránka pro vytvoření virtuální sítě")
 5. V rozevíracím seznamu **Předplatné** zkontrolujte, jestli je vybrané správné předplatné. Předplatná můžete měnit prostřednictvím rozevíracího seznamu.
@@ -159,23 +159,24 @@ V tomto kroku nastavíte sdílený klíč a vytvoříte připojení. Klíč, kte
 
 ### <a name="step-1-connect-to-your-azure-account"></a>Krok 1. Připojení k účtu Azure
 
-Tyto příkazy musíte spustit místně pomocí modulu pro správu služby PowerShell. Chcete-li přepnout na správu služeb, použijte tento příkaz:
+Tyto příkazy musíte spustit místně pomocí modulu pro správu služby PowerShell. 
 
-```powershell
-azure config mode asm
-```
+1. Otevřete konzolu PowerShellu se zvýšenými právy. Chcete-li přepnout na správu služeb, použijte tento příkaz:
 
-1. Otevřete konzolu PowerShellu se zvýšenými oprávněními a připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
+   ```powershell
+   azure config mode asm
+   ```
+2. Připojte se ke svému účtu. Připojení vám usnadní následující ukázka:
 
    ```powershell
    Add-AzureAccount
    ```
-2. Zkontrolujte předplatná pro příslušný účet.
+3. Zkontrolujte předplatná pro příslušný účet.
 
    ```powershell
    Get-AzureSubscription
    ```
-3. Máte-li více předplatných, vyberte předplatné, které chcete použít.
+4. Máte-li více předplatných, vyberte předplatné, které chcete použít.
 
    ```powershell
    Select-AzureSubscription -SubscriptionId "Replace_with_your_subscription_ID"

@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 4f9804ed0e7d6c83a4f6fc732f836fcecce1c2e7
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: cc152460be777c30d79f783b9acfa846a4c73a72
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548341"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188026"
 ---
 # <a name="streaming-ingestion-preview"></a>Ingestování streamování (Preview)
 
@@ -23,7 +23,7 @@ Použijte klasickou (hromadnou) ingestu místo příjmu streamování, když se 
 > [!NOTE]
 > Přijímání streamování nepodporuje následující funkce:
 > * [Kurzory databáze](/azure/kusto/management/databasecursor).
-> * [Mapování dat](/azure/kusto/management/mappings). Je podporováno pouze [předem vytvořené](/azure/kusto/management/tables#create-ingestion-mapping) mapování dat. 
+> * [Mapování dat](/azure/kusto/management/mappings). Je podporováno pouze [předem vytvořené](/azure/kusto/management/create-ingestion-mapping-command) mapování dat. 
 
 ## <a name="prerequisites"></a>Předpoklady
 

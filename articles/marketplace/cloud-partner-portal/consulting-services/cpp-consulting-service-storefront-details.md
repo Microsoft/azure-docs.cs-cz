@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 3d741361cdeb25d6fc063f95da7bc301178f31fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 557cfeb66301650e932e5ce271080e9fc8a256d6
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818085"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77191174"
 ---
 # <a name="storefront-details-tab"></a>Karta podrobností o prodejních místech
 
@@ -71,7 +71,7 @@ Do pole **Popis nabídky** zadejte popis nabídky konzultační služby. Dobrý 
 
 V popisu nabídky nezahrnujte svou e-mailovou adresu nebo telefonní číslo. Tlačítko **kontakt mi** je součástí vaší nabídky, aby mohl odeslat zájemce do cíle správy zájemců, který pro vaši nabídku identifikujete.
 
-Zadejte popis nabídky ve formátu Markdownu. Pokud nejste obeznámeni s Markdownu nebo formátováním pro HTML, přečtěte si téma [použití Markdownu pro psaní dokumentů](https://docs.microsoft.com/contribute/how-to-write-use-markdown).
+Zadejte popis nabídky ve formátu Markdownu. Pokud nejste obeznámeni s Markdownu nebo formátováním pro HTML, přečtěte si téma [použití Markdownu pro psaní dokumentů](/contribute/markdown-reference).
 
 Pomocí těchto formátů se ujistěte, že je vaše nabídka pro vaše zákazníky snadno čitelná.
 
@@ -87,11 +87,11 @@ Následující příklad ukazuje dobře sestavený popis nabídky a její souvis
 
 Program
 
-Den 1
+1 den
 
 -   Zaměřuje se na zabezpečení, škálování a organizování dat v cloudu Microsoftu pomocí Azure Data Lake, Azure HDInsight nebo Azure SQL Data Warehouse.
 
-Den 2
+2\. den
 
 -   Popisuje, jak nakonfigurovat a nasadit Pokročilá Analytická řešení pomocí Microsoft R a Azure Machine Learning.
 

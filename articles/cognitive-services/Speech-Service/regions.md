@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: f1379202fc59e9cca7a3543be201f8ebff276bef
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: f1f425a6e3c66a72c7632cfea16d78ea6cc0d319
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168356"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201148"
 ---
 # <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech
 
@@ -53,8 +53,8 @@ Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speec
 | Evropa        | Západní Evropa      | `westeurope`         |
 | Severní Amerika | USA – východ          | `eastus`             |
 | Severní Amerika | Východní USA 2        | `eastus2`            |
-| Severní Amerika | Střed USA – jih | `southcentralus`     |
-| Severní Amerika | Střed USA – západ  | `westcentralus`      |
+| Severní Amerika | Středojižní USA | `southcentralus`     |
+| Severní Amerika | Středozápadní USA  | `westcentralus`      |
 | Severní Amerika | Západní USA          | `westus`             |
 | Severní Amerika | Západní USA 2        | `westus2`            |
 | Jižní Amerika | Brazílie – jih     | `brazilsouth`        |
