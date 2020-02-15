@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 01/27/2020
-ms.openlocfilehash: 3f5f51c944cab84c00e29b2f72433a726ed70d33
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0eaff1685cea88d352f1a22f382b7af2ed0ed6cb
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024343"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252208"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
 
@@ -196,7 +196,7 @@ Pokud je připojení úspěšné, měl by se zobrazit následující výstup rep
 
 Zadejte `exit` pro opuštění relace SSH.
 
-## <a name="enable-high-availability"></a>Zajistit vysokou dostupnost
+## <a name="enable-high-availability"></a>Povolit vysokou dostupnost
 
 > [!IMPORTANT]
 > Aby bylo možné dokončit tuto část kurzu, musíte mít předplatné pro RHEL a doplněk vysoké dostupnosti. Pokud používáte image doporučenou v předchozí části, nemusíte registrovat jiné předplatné.
@@ -543,7 +543,7 @@ sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
 sudo systemctl restart mssql-server
 ```
 
-### <a name="create-a-certificate"></a>Vytvoření certifikátu
+### <a name="create-a-certificate"></a>Vytvořit certifikát
 
 V současné době nepodporujeme ověřování AD na koncový bod AG. Proto je nutné použít certifikát pro šifrování koncového bodu AG.
 
@@ -786,7 +786,7 @@ Po [vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker](/sql/linu
 
 ### <a name="create-the-ag-cluster-resource"></a>Vytvoření prostředku clusteru AG
 
-1. Pomocí následujícího příkazu vytvořte `ag_cluster` prostředků v `ag1`dostupné skupiny.
+1. Pomocí následujícího příkazu vytvořte `ag_cluster` prostředků ve skupině dostupnosti `ag1`.
 
     ```bash
     sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
@@ -960,7 +960,7 @@ sudo pcs stonith fence <VM3> --debug
 > [!NOTE]
 > Ve výchozím nastavení akce plotu přesune uzel a pak na. Pokud chcete pouze převést uzel do režimu offline, použijte možnost `--off` v příkazu.
 
-Měli byste získat následující výstup:
+By měl získat následující výstup:
 
 ```output
 [<username>@<VM1> ~]$ sudo pcs stonith fence <VM3> --debug
