@@ -10,14 +10,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 14fee047e1f62ae7f7d3484d89779e1512e4bab7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198713"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206102"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Koncové body streamování (počátek) v Azure Media Services
 
@@ -50,7 +50,7 @@ Popis těchto typů najdete v následující tabulce:
 |Typ|Jednotky škálování|Popis|
 |--------|--------|--------|  
 |**Standard**|0|Výchozí koncový bod streamování je **standardní** typ – dá se změnit na typ Premium úpravou `scaleUnits`.|
-|**Premium**|> 0|Úroveň **Premium** Koncové body streamování jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Přesunete se na typ **Premium** úpravou `scaleUnits` (jednotky streamování). `scaleUnits` poskytují vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Při použití typu **Premium** poskytuje každá povolená jednotka pro aplikaci další kapacitu šířky pásma. |
+|**Premium**|>0|Úroveň **Premium** Koncové body streamování jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Přesunete se na typ **Premium** úpravou `scaleUnits` (jednotky streamování). `scaleUnits` poskytují vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Při použití typu **Premium** poskytuje každá povolená jednotka pro aplikaci další kapacitu šířky pásma. |
 
 > [!NOTE]
 > Pro zákazníky, kteří chtějí doručovat obsah do rozsáhlých internetových cílových skupin, doporučujeme povolit CDN pro koncový bod streamování.
@@ -147,17 +147,20 @@ Také je potřeba vzít v úvahu, jak funguje adaptivní streamování. Jednotli
 
 ### <a name="enable-azure-cdn-integration"></a>Povolit integraci Azure CDN
 
+> [!IMPORTANT]
+> CDN se nedá povolit pro zkušební verze nebo účty Azure studenta.
+>
+> Integrace CDN je povolená ve všech datových centrech Azure s výjimkou federálních oblastí pro státní správu a Čínu.
+
 Po zřízení koncového bodu streamování s povoleným CDN je u Media Services definovaná čekací doba, než se provede aktualizace DNS pro mapování koncového bodu streamování na koncový bod CDN.
 
 Pokud budete chtít síť CDN později zakázat nebo povolit, musí být koncový bod streamování ve stavu **Zastaveno** . Může trvat až dvě hodiny, než se aktivuje Integrace Azure CDN a změny, které se mají aktivní napříč všemi body POP CDN. Můžete ale spustit koncový bod streamování a datový proud bez přerušení z koncového bodu streamování a po dokončení integrace se datový proud doručí ze sítě CDN. Během období zřizování bude koncový bod streamování ve **výchozím** stavu a může se stát, že dojde ke snížení výkonu.
 
 Když se vytvoří koncový bod streamování Standard, je ve výchozím nastavení nakonfigurovaný se standardem Verizon. Pomocí rozhraní REST API můžete nakonfigurovat poskytovatele Premium Verizon nebo Standard Akamai.
 
-Integrace CDN je povolená ve všech datových centrech Azure s výjimkou Číny a federálních vládních oblastí.
-
 Azure Media Services integrace s Azure CDN je implementovaná na **Azure CDN z Verizon** pro koncové body streamování Standard. Koncové body streamování Premium se dají nakonfigurovat pomocí všech **Azure CDN cenové úrovně a zprostředkovatelů**. 
 
-> [!IMPORTANT]
+> [!NOTE]
 > Podrobnosti o Azure CDN najdete v [přehledu CDN](../../cdn/cdn-overview.md).
 
 ### <a name="determine-if-dns-change-was-made"></a>Určení, jestli se provedla změna DNS
@@ -168,7 +171,7 @@ Můžete určit, jestli se změna DNS provedla u koncového bodu streamování (
 
 Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 [Přehled CDN](../../cdn/cdn-overview.md)
 

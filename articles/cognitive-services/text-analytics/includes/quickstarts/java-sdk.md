@@ -6,15 +6,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 01/15/2020
+ms.date: 02/11/2020
 ms.author: aahi
 ms.reviewer: tasharm, assafi
-ms.openlocfilehash: c5898b0c05400904bc3c9e6a6bc318beac76d93c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: eeaef4a9970609c43c03cd784436796a6f8af174
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987881"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211380"
 ---
 <a name="HOLTop"></a>
 
@@ -39,7 +39,7 @@ Přidejte do projektu následující závislost analýzy textu. Tato verze závi
     <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>1.0.0-beta.1</version>
+        <version>1.0.0-beta.2</version>
     </dependency>
 </dependencies>
 ```
@@ -49,20 +49,9 @@ Vytvořte nový soubor Java v následujícím adresáři: `\src\main\java`.
 Otevřete soubor Java a přidejte následující příkazy `import`:
 
 ```java
-import com.azure.ai.textanalytics.models.AnalyzeSentimentResult;
-import com.azure.ai.textanalytics.models.DetectLanguageResult;
-import com.azure.ai.textanalytics.models.DetectedLanguage;
-import com.azure.ai.textanalytics.models.ExtractKeyPhraseResult;
-import com.azure.ai.textanalytics.models.LinkedEntity;
-import com.azure.ai.textanalytics.models.LinkedEntityMatch;
-import com.azure.ai.textanalytics.models.NamedEntity;
-import com.azure.ai.textanalytics.models.RecognizeEntitiesResult;
-import com.azure.ai.textanalytics.models.RecognizeLinkedEntitiesResult;
-import com.azure.ai.textanalytics.models.RecognizePiiEntitiesResult;
-import com.azure.ai.textanalytics.models.TextSentiment;
+import com.azure.ai.textanalytics.models.*;
 import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
 import com.azure.ai.textanalytics.TextAnalyticsClient;
-import java.util.List;
 ```
 
 V souboru Java přidejte novou třídu a přidejte klíč a koncový bod prostředku Azure, jak je znázorněno níže.
@@ -70,7 +59,7 @@ V souboru Java přidejte novou třídu a přidejte klíč a koncový bod prostř
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
 ```java
-public class TextAnalyticsSample {
+public class TextAnalyticsSamples {
     private static String KEY = "<replace-with-your-text-analytics-key-here>";
     private static String ENDPOINT = "<replace-with-your-text-analytics-endpoint-here>";
 }
@@ -80,9 +69,9 @@ Do třídy přidejte následující metodu Main. Zde budete definovat metody, kt
 
 ```java
 public static void main(String[] args) {
-    
+
     TextAnalyticsClient client = authenticateClient(KEY, ENDPOINT);
-    
+
     sentimentAnalysisExample(client);
     detectLanguageExample(client);
     recognizeEntitiesExample(client);
@@ -99,7 +88,7 @@ Klient Analýza textu je `TextAnalyticsClient` objekt, který se ověřuje v Azu
 ## <a name="code-examples"></a>Příklady kódu
 
 * [Ověření klienta](#authenticate-the-client)
-* [Analýza subjektivního hodnocení](#sentiment-analysis) 
+* [Analýza mínění](#sentiment-analysis) 
 * [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání pojmenovaných entit](#named-entity-recognition-ner) 
 * [Propojení entit](#entity-linking)
@@ -110,17 +99,17 @@ Klient Analýza textu je `TextAnalyticsClient` objekt, který se ověřuje v Azu
 Vytvořte metodu pro vytvoření instance objektu `TextAnalyticsClient` pomocí `KEY` a `ENDPOINT` vytvořili výše.
 
 ```java
-static TextAnalyticsClient authenticateClient(String subscriptionKey, String endpoint) {
+static TextAnalyticsClient authenticateClient(String key, String endpoint) {
     return new TextAnalyticsClientBuilder()
-    .subscriptionKey(subscriptionKey)
-    .endpoint(endpoint)
-    .buildClient();
+        .apiKey(new TextAnalyticsApiKeyCredential(key))
+        .endpoint(endpoint)
+        .buildClient();
 }
 ```
 
 V metodě `main()` programu zavolejte metodu ověřování pro vytvoření instance klienta.
 
-## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
+## <a name="sentiment-analysis"></a>Analýza mínění
 
 Vytvořte novou funkci nazvanou `sentimentAnalysisExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci `analyzeSentiment()`. Vrácený objekt `AnalyzeSentimentResult` bude obsahovat `documentSentiment` a `sentenceSentiments` v případě úspěchu nebo `errorMessage`, pokud ne. 
 
@@ -130,35 +119,33 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
     // The text that need be analyzed.
     String text = "I had the best day of my life. I wish you were there with me.";
 
-    AnalyzeSentimentResult sentimentResult = client.analyzeSentiment(text);
-    TextSentiment documentSentiment = sentimentResult.getDocumentSentiment();
-    System.out.printf(
-        "Recognized TextSentiment: %s, Positive Score: %.2f, Neutral Score: %.2f, Negative Score: %.2f.%n",
-        documentSentiment.getTextSentimentClass(),
-        documentSentiment.getPositiveScore(),
-        documentSentiment.getNeutralScore(),
-        documentSentiment.getNegativeScore());
-
-    List<TextSentiment> sentiments = sentimentResult.getSentenceSentiments();
-    for (TextSentiment textSentiment : sentiments) {
+    DocumentSentiment documentSentiment = client.analyzeSentiment(text);
         System.out.printf(
-            "Recognized Sentence TextSentiment: %s, Positive Score: %.2f, Neutral Score: %.2f, Negative Score: %.2f.%n",
-            textSentiment.getTextSentimentClass(),
-            textSentiment.getPositiveScore(),
-            textSentiment.getNeutralScore(),
-            textSentiment.getNegativeScore());
-    }
+            "Recognized document sentiment: %s, positive score: %.2f, neutral score: %.2f, negative score: %.2f.%n",
+            documentSentiment.getSentiment(),
+            documentSentiment.getSentimentScores().getPositive(),
+            documentSentiment.getSentimentScores().getNeutral(),
+            documentSentiment.getSentimentScores().getNegative());
+
+        for (SentenceSentiment sentenceSentiment : documentSentiment.getSentences()) {
+            System.out.printf(
+                "Recognized sentence sentiment: %s, positive score: %.2f, neutral score: %.2f, negative score: %.2f.%n",
+                sentenceSentiment.getSentiment(),
+                sentenceSentiment.getSentimentScores().getPositive(),
+                sentenceSentiment.getSentimentScores().getNeutral(),
+                sentenceSentiment.getSentimentScores().getNegative());
+        }
 }
 ```
 
 ### <a name="output"></a>Výstup
 
 ```console
-Recognized TextSentiment: positive, Positive Score: 1.00, Neutral Score: 0.00, Negative Score: 0.00.
-Recognized Sentence TextSentiment: positive, Positive Score: 1.00, Neutral Score: 0.00, Negative Score: 0.00.
-Recognized Sentence TextSentiment: neutral, Positive Score: 0.21, Neutral Score: 0.77, Negative Score: 0.02.
+Recognized document sentiment: positive, Positive Score: 1.00, Neutral Score: 0.00, Negative Score: 0.00.
+Recognized sentence sentiment: positive, positive score: 1.00, neutral score: 0.00, negative score: 0.00.
+Recognized sentence sentiment: neutral, positive score: 0.21, neutral score: 0.77, negative score: 0.02.
 ```
-## <a name="language-detection"></a>Detekce jazyka
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 Vytvořte novou funkci nazvanou `detectLanguageExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci `detectLanguage()`. Vrácený objekt `DetectLanguageResult` bude obsahovat nalezený primární jazyk, seznam dalších jazyků zjištěných v případě úspěchu nebo `errorMessage`, pokud ne.
 
@@ -171,19 +158,18 @@ static void detectLanguageExample(TextAnalyticsClient client)
     // The text that need be analyzed.
     String text = "Ce document est rédigé en Français.";
 
-    DetectLanguageResult detectLanguageResult = client.detectLanguage(text, "US");
-    DetectedLanguage detectedDocumentLanguage = detectLanguageResult.getPrimaryLanguage();
-    System.out.printf("Language: %s, ISO 6391 Name: %s, Score: %s.%n",
-        detectedDocumentLanguage.getName(),
-        detectedDocumentLanguage.getIso6391Name(),
-        detectedDocumentLanguage.getScore());
+    DetectedLanguage detectedLanguage = client.detectLanguage(text);
+    System.out.printf("Detected primary language: %s, ISO 6391 name: %s, score: %.2f.%n",
+        detectedLanguage.getName(),
+        detectedLanguage.getIso6391Name(),
+        detectedLanguage.getScore());
 }
 ```
 
 ### <a name="output"></a>Výstup
 
 ```console
-Language: French, ISO 6391 Name: fr, Score: 1.0.
+Detected primary language: French, ISO 6391 name: fr, score: 1.00.
 ```
 ## <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
 
@@ -197,17 +183,15 @@ Vytvořte novou funkci nazvanou `recognizeEntitiesExample()`, která převezme k
 ```java
 static void recognizeEntitiesExample(TextAnalyticsClient client)
 {
-    // The text that need be analysed.
+    // The text that need be analyzed.
     String text = "I had a wonderful trip to Seattle last week.";
-    
-    RecognizeEntitiesResult recognizeEntitiesResult = client.recognizeEntities(text);
 
-    for (NamedEntity entity : recognizeEntitiesResult.getNamedEntities()) {
+    for (CategorizedEntity entity : client.recognizeEntities(text)) {
         System.out.printf(
-            "Recognized NamedEntity Text: %s, Type: %s, Subtype: %s, Offset: %s, Length: %s, Score: %.3f.%n",
+            "Recognized entity: %s, entity category: %s, entity sub-category: %s, offset: %s, length: %s, score: %.2f.%n",
             entity.getText(),
-            entity.getType(),
-            entity.getSubtype() == null || entity.getSubtype().isEmpty() ? "N/A" : entity.getSubtype(),
+            entity.getCategory(),
+            entity.getSubCategory() == null || entity.getSubCategory().isEmpty() ? "N/A" : entity.getSubCategory(),
             entity.getOffset(),
             entity.getLength(),
             entity.getScore());
@@ -218,28 +202,26 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 ### <a name="output"></a>Výstup
 
 ```console
-Recognized NamedEntity Text: Seattle, Type: Location, Subtype: N/A, Offset: 26, Length: 7, Score: 0.806.
-Recognized NamedEntity Text: last week, Type: DateTime, Subtype: DateRange, Offset: 34, Length: 9, Score: 0.800.
+Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, offset: 26, length: 7, score: 0.92.
+Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, offset: 34, length: 9, score: 0.80.
 ```
 
-## <a name="using-ner-to-detect-personal-information"></a>Použití NER k detekci osobních údajů
+## <a name="using-ner-to-recognize-personal-information"></a>Rozpoznávání osobních údajů pomocí NER
 
 Vytvořte novou funkci nazvanou `recognizePIIEntitiesExample()`, která převezme klienta, kterého jste vytvořili dříve, a zavolejte jeho funkci `recognizePiiEntities()`. Vrácený objekt `RecognizePiiEntitiesResult` bude obsahovat seznam `NamedEntity`, pokud je to úspěšné, nebo `errorMessage`, pokud ne. 
 
 ```java
 static void recognizePIIEntitiesExample(TextAnalyticsClient client)
 {
-    // The text that need be analysed.
+    // The text that need be analyzed.
     String text = "Insurance policy for SSN on file 123-12-1234 is here by approved.";
-    
-    RecognizePiiEntitiesResult recognizePIIEntitiesResult = client.recognizePiiEntities(text);
 
-    for (NamedEntity entity : recognizePIIEntitiesResult.getNamedEntities()) {
+    for (PiiEntity entity : client.recognizePiiEntities(text)) {
         System.out.printf(
-            "Personally Identifiable Information Entities Text: %s, Type: %s, Subtype: %s, Offset: %s, Length: %s, Score: %s.%n",
+            "Recognized personal identifiable information entity: %s, entity category: %s, entity sub-category: %s, offset: %s, length: %s, score: %.2f.%n",
             entity.getText(),
-            entity.getType(),
-            entity.getSubtype() == null || entity.getSubtype().isEmpty() ? "N/A" : entity.getSubtype(),
+            entity.getCategory(),
+            entity.getSubCategory() == null || entity.getSubCategory().isEmpty() ? "N/A" : entity.getSubCategory(),
             entity.getOffset(),
             entity.getLength(),
             entity.getScore());
@@ -250,8 +232,7 @@ static void recognizePIIEntitiesExample(TextAnalyticsClient client)
 ### <a name="output"></a>Výstup
 
 ```console
-Personally Identifiable Information Entities
-Text: 123-12-1234, Type: U.S. Social Security Number (SSN), Subtype: N/A, Offset: 33, Length: 11, Score: 0.85.
+Recognized personal identifiable information entity: 123-12-1234, entity category: U.S. Social Security Number (SSN), entity sub-category: N/A, offset: 33, length: 11, score: 0.85.
 ```
 
 ## <a name="entity-linking"></a>Propojení entit
@@ -261,29 +242,27 @@ Vytvořte novou funkci nazvanou `recognizeLinkedEntitiesExample()`, která přev
 ```java
 static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 {
-    // The text that need be analysed.
+    // The text that need be analyzed.
     String text = "Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, " +
             "to develop and sell BASIC interpreters for the Altair 8800. " +
             "During his career at Microsoft, Gates held the positions of chairman, " +
             "chief executive officer, president and chief software architect, " +
             "while also being the largest individual shareholder until May 2014.";
-    
-    RecognizeLinkedEntitiesResult recognizeLinkedEntitiesResult = client.recognizeLinkedEntities(text);
 
     System.out.printf("Linked Entities:%n");
-    for (LinkedEntity linkedEntity : recognizeLinkedEntitiesResult.getLinkedEntities()) {
+    for (LinkedEntity linkedEntity : client.recognizeLinkedEntities(text)) {
         System.out.printf("Name: %s, ID: %s, URL: %s, Data Source: %s.%n",
-            linkedEntity.getName(),
-            linkedEntity.getId(),
-            linkedEntity.getUrl(),
-            linkedEntity.getDataSource());
-        System.out.printf("tMatches:%n");
+                linkedEntity.getName(),
+                linkedEntity.getId(),
+                linkedEntity.getUrl(),
+                linkedEntity.getDataSource());
+        System.out.printf("Matches:%n");
         for (LinkedEntityMatch linkedEntityMatch : linkedEntity.getLinkedEntityMatches()) {
             System.out.printf("Text: %s, Offset: %s, Length: %s, Score: %.2f.%n",
-                linkedEntityMatch.getText(),
-                linkedEntityMatch.getOffset(),
-                linkedEntityMatch.getLength(),
-                linkedEntityMatch.getScore());
+                    linkedEntityMatch.getText(),
+                    linkedEntityMatch.getOffset(),
+                    linkedEntityMatch.getLength(),
+                    linkedEntityMatch.getScore());
         }
     }
 }
@@ -294,25 +273,25 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 ```console
 Linked Entities:
 Name: Altair 8800, ID: Altair 8800, URL: https://en.wikipedia.org/wiki/Altair_8800, Data Source: Wikipedia.
-tMatches:
-Text: Altair 8800, Offset: 11, Length: 116, Score: 0.65.
+Matches:
+Text: Altair 8800, Offset: 11, Length: 116, Score: 0.78.
 Name: Bill Gates, ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates, Data Source: Wikipedia.
-tMatches:
-Text: Bill Gates, Offset: 10, Length: 25, Score: 0.24.
-Text: Gates, Offset: 5, Length: 161, Score: 0.24.
+Matches:
+Text: Bill Gates, Offset: 10, Length: 25, Score: 0.55.
+Text: Gates, Offset: 5, Length: 161, Score: 0.55.
 Name: Paul Allen, ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen, Data Source: Wikipedia.
-tMatches:
-Text: Paul Allen, Offset: 10, Length: 40, Score: 0.17.
+Matches:
+Text: Paul Allen, Offset: 10, Length: 40, Score: 0.53.
 Name: Microsoft, ID: Microsoft, URL: https://en.wikipedia.org/wiki/Microsoft, Data Source: Wikipedia.
-tMatches:
-Text: Microsoft, Offset: 9, Length: 0, Score: 0.20.
-Text: Microsoft, Offset: 9, Length: 150, Score: 0.20.
+Matches:
+Text: Microsoft, Offset: 9, Length: 0, Score: 0.47.
+Text: Microsoft, Offset: 9, Length: 150, Score: 0.47.
 Name: April 4, ID: April 4, URL: https://en.wikipedia.org/wiki/April_4, Data Source: Wikipedia.
-tMatches:
-Text: April 4, Offset: 7, Length: 54, Score: 0.14.
+Matches:
+Text: April 4, Offset: 7, Length: 54, Score: 0.25.
 Name: BASIC, ID: BASIC, URL: https://en.wikipedia.org/wiki/BASIC, Data Source: Wikipedia.
-tMatches:
-Text: BASIC, Offset: 5, Length: 89, Score: 0.05.
+Matches:
+Text: BASIC, Offset: 5, Length: 89, Score: 0.28.
 ```
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
@@ -323,11 +302,10 @@ static void extractKeyPhrasesExample(TextAnalyticsClient client)
 {
     // The text that need be analyzed.
     String text = "My cat might need to see a veterinarian.";
-    
-    ExtractKeyPhraseResult keyPhraseResult = client.extractKeyPhrases(text);
 
-    for (String keyPhrase : keyPhraseResult.getKeyPhrases()) {
-        System.out.printf("Recognized Phrases: %s.%n", keyPhrase);
+    System.out.printf("Recognized phrases: %n");
+    for (String keyPhrase : client.extractKeyPhrases(text)) {
+        System.out.printf("%s%n", keyPhrase);
     }
 }
 ```
@@ -335,6 +313,7 @@ static void extractKeyPhrasesExample(TextAnalyticsClient client)
 ### <a name="output"></a>Výstup
 
 ```console
-Recognized Phrases: cat.
-Recognized Phrases: veterinarian.
+Recognized phrases: 
+cat
+veterinarian
 ```

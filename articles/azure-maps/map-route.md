@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 359f2b42ca6f56087be53a5aeb328fe43a478d63
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 63f7eac52a555be1877f235bd2f7f1d9315d53d5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988275"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208501"
 ---
 # <a name="show-directions-from-a-to-b"></a>Zobrazení pokynů pro trasu z A do B
 
@@ -43,7 +43,7 @@ Třetí blok kódu vytvoří a přidá objekt [DataSource](https://docs.microsof
 
 Poslední blok kódu nastaví meze mapy pomocí vlastnosti [SetCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
 
-Dotaz směrování, zdroj dat, symbol, vrstvy čáry a hranice kamery jsou vytvořeny a nastaveny uvnitř [naslouchacího procesu události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)mapy. Tato struktura kódu zajišťuje, že se výsledky zobrazí až po úplném načtení mapy.
+Dotaz Route, zdroj dat, symbol, vrstvy čáry a hranice kamery jsou vytvořeny v rámci [naslouchacího procesu události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events). Tato struktura kódu zajišťuje, že se výsledky zobrazí až po úplném načtení mapy.
 
 ## <a name="query-the-route-via-fetch-api"></a>Dotazování trasy prostřednictvím rozhraní API pro načtení
 
@@ -54,7 +54,7 @@ Ve výše uvedeném kódu první blok kódu vytvoří objekt mapy a nastaví mec
 
 Druhý blok kódu vytvoří a přidá objekt [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) do mapy.
 
-Třetí blok kódu vytvoří počáteční a cílový bod pro trasu a přidá je do zdroje dat. Pokyny k použití [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)najdete [v tématu Přidání kódu PIN na mapě](map-add-pin.md) .
+Třetí blok kódu vytvoří počáteční a cílový bod pro trasu. Pak je přidá do zdroje dat. Pokyny k použití [addPins](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)najdete [v tématu Přidání kódu PIN na mapě](map-add-pin.md) .
 
 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) vykreslí řádkové objekty zabalené ve [zdroji dat](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako řádky na mapě. Čtvrtý blok kódu vytvoří a přidá na mapu řádkovou vrstvu. Viz Vlastnosti vrstvy čáry na [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest).
 
@@ -64,7 +64,7 @@ Další blok kódu vytvoří `SouthWest` a `NorthEast` body z počátečního a 
 
 Poslední blok kódu používá [rozhraní Fetch API](https://fetch.spec.whatwg.org/) k vytvoření žádosti o vyhledávání na [rozhraní API pro Azure Maps tras](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Odpověď se pak analyzuje. Pokud byla odpověď úspěšná, informace o zeměpisné šířce a délce se použijí k vytvoření řádku a propojení těchto bodů. Data řádku se pak přidají do zdroje dat, aby se vygenerovala trasa na mapě. Pokyny najdete [na stránce Přidání čáry na mapě](map-add-line-layer.md) .
 
-Dotaz směrování, zdroj dat, symbol, vrstvy čáry a hranice kamery jsou vytvořeny a nastaveny uvnitř [naslouchacího procesu události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)mapy. Znovu chceme zajistit, aby se výsledky zobrazovaly po úplném načtení mapy.
+Dotaz Route, zdroj dat, symbol, vrstvy čáry a hranice kamery jsou vytvořeny v rámci [naslouchacího procesu události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events). Znovu chceme zajistit, aby se výsledky zobrazovaly po úplném načtení mapy.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: d7d3182ad00d0ce151c6d327b29584c7e2ff1323
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 67846293257661a4f7a907d76402d2e98c339225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457859"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251630"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric pro Visual Studio Code
 
@@ -69,7 +69,7 @@ Rozšíření Service Fabric Reliable Services pro VS Code poskytuje mnoho pří
 
 Příkaz **Service Fabric: Create Application** vytvoří novou aplikaci Service Fabric ve vašem aktuálním pracovním prostoru. V závislosti na tom, které generátory Yeoman jsou nainstalovány na vašem vývojovém počítači, můžete vytvořit několik typů Service Fabric aplikace, včetně C#projektů Java,, kontejnerů a hostů. 
 
-1.  Výběr příkazu **Service Fabric: Add Service**
+1.  Výběr příkazu **Service Fabric: Create Application**
 2.  Vyberte typ nové aplikace Service Fabric. 
 3.  Zadejte název aplikace, kterou chcete vytvořit.
 3.  Vyberte typ služby, kterou chcete přidat do aplikace Service Fabric. 

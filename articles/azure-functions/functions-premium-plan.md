@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: b373691a6b9649a43d68c9da93b49fd20536c42b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024632"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212460"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
@@ -88,42 +88,47 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a využité paměti za sekundu.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
 
-|Skladová položka|Jádra|Paměť|Storage|
+|SKU|Jádra|Memory (Paměť)|Storage|
 |--|--|--|--|
-|EP1|1\. místo|3,5 GB|250 GB|
+|EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
 |EP3|4|S frekvencí|250 GB|
 
-## <a name="regions"></a>Oblasti
+### <a name="memory-utilization-considerations"></a>Požadavky na využití paměti
+Spuštění v počítači, který má více paměti, neznamená vždycky, že vaše aplikace Function App bude používat veškerou dostupnou paměť.
+
+Například aplikace funkcí JavaScriptu je omezená na výchozí omezení paměti v Node. js. Pokud chcete zvýšit toto omezení pevné paměti, přidejte nastavení aplikace `languageWorkers:node:arguments` s hodnotou `--max-old-space-size=<max memory in MB>`.
+
+## <a name="regions"></a>Regions
 
 Níže jsou uvedené aktuálně podporované oblasti pro každý operační systém.
 
-|Region (Oblast)| Windows | Linux |
+|Oblast| Windows | Linux |
 |--| -- | -- |
 |Austrálie – střed| ✔<sup>1</sup> | |
 |Austrálie – střed 2| ✔<sup>1</sup> | |
 |Austrálie – východ| ✔ | |
 |Austrálie – jihovýchod | ✔ | ✔<sup>1</sup> |
 |Brazílie – jih| ✔<sup>2</sup> |  |
-|Střední Kanada| ✔ |  |
-|USA – střed| ✔ |  |
+|Kanada – střed| ✔ |  |
+|Střed USA| ✔ |  |
 |Východní Asie| ✔ |  |
 |USA – východ | ✔ | ✔<sup>1</sup> |
-|USA – východ 2| ✔ |  |
+|Východní USA 2| ✔ |  |
 |Francie – střed| ✔ |  |
 |Německo – středozápad| ✔ | |
 |Japonsko – východ| ✔ | ✔<sup>1</sup> |
 |Japonsko – západ| ✔ | |
-|Korea – střed| ✔ |  |
-|USA – středosever| ✔ |  |
+|Jižní Korea – střed| ✔ |  |
+|Střed USA – sever| ✔ |  |
 |Severní Evropa| ✔ | ✔<sup>1</sup> |
-|USA – středojih| ✔ | ✔<sup>1</sup> |
-|Jižní Indie | ✔ | |
+|Střed USA – jih| ✔ | ✔<sup>1</sup> |
+|Indie – jih | ✔ | |
 |Jihovýchodní Asie| ✔ | ✔<sup>1</sup> |
-|Spojené království – jih| ✔ | |
-|Velká Británie – západ| ✔ |  |
+|Velká Británie – jih| ✔ | |
+|Spojené království – západ| ✔ |  |
 |Západní Evropa| ✔ | ✔<sup>1</sup> |
-|Západní Indie| ✔ |  |
+|Indie – západ| ✔ |  |
 |USA – západ| ✔ | ✔<sup>1</sup> |
 |USA – západ 2| ✔ |  |
 

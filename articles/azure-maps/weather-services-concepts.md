@@ -1,19 +1,19 @@
 ---
 title: Koncepty služeb počasí | Mapy Microsoft Azure
 description: V tomto článku se dozvíte o konceptech, které se vztahují na Microsoft Azure mapování povětrnostních služeb.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bcf100236d4a2a707a007a24e9e51105cc9ca0ac
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: af7ea5c6e9d09b05b2f9271d6954162c0fd429c6
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991193"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208722"
 ---
 # <a name="weather-services-in-azure-maps"></a>Služby počasí v Azure Maps
 
@@ -26,7 +26,7 @@ Některá z rozhraní API služby počasí umožňují uživateli určit, jestli
 |Jednotkách UnitType|Popis         |
 |--------|--------------------|
 |0       |větve                |
-|1\. místo       |Cm              |
+|1       |cm              |
 |2       |mílí               |
 |3       |mm          |
 |4       |×          |
@@ -47,16 +47,16 @@ Některá z rozhraní API služby počasí umožňují uživateli určit, jestli
 |19      |kelvinech.              |
 |20      |procent             |
 |21      |float               |
-|22      |celé číslo             |
+|22      |integer             |
 
 
 ## <a name="weather-icons"></a>Ikony počasí
 
 Některá z rozhraní API služby počasí vrací `iconCode` v odpovědi. `iconCode` je číselná hodnota, která se používá k definování ikony. Neodkazujte na tyto obrázky přímo z vašich aplikací, adresy URL se můžou a změní.
 
-| Číslo ikony |Ikona| Den | Veletrh | Text |
+| Číslo ikony |Ikona| Day | Veletrh | Text |
 |-------------|:----:|-----|-------|------|
-| 1\. místo           |![](./media/weather-services-concepts/sunny-i.png)                      | Ano |  Ne    | Slunečné|
+| 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Ano |  Ne    | Slunečné|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Ano |  Ne    | Hlavně Slunečné|
 | 3           |![](./media/weather-services-concepts/partly-sunny.png)                | Ano |  Ne    | Částečně Slunečné|
 | 4           |![](./media/weather-services-concepts/intermittent-clouds.png)         | Ano |  Ne    | Přerušované cloudy|
@@ -71,7 +71,7 @@ Některá z rozhraní API služby počasí vrací `iconCode` v odpovědi. `iconC
 | 15           |![](./media/weather-services-concepts/tstorms-i.png)                   | Ano |  Ano   | Thunderstorms|
 | 16           |![](./media/weather-services-concepts/mostly-cloudy-tstorms.png)       | Ano |  Ne    | Hlavně cloudy s thunderstorms|
 | 17           |![](./media/weather-services-concepts/partly-sunny-tstorms.png)        | Ano |  Ne    | Částečně Slunečné s thunderstorms|
-| 18           |![](./media/weather-services-concepts/rain-i.png)                      | Ano |  Ano   | Déšť|
+| 18           |![](./media/weather-services-concepts/rain-i.png)                      | Ano |  Ano   | Zástěr|
 | 19           |![](./media/weather-services-concepts/flurries-i.png)                  | Ano |  Ano   | Flurries|
 | 20           |![](./media/weather-services-concepts/mostly-cloudy-flurries.png)      | Ano |  Ne    | Hlavně cloudy s Flurries|
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Ano |  Ne    | Částečně Slunečné s Flurries|

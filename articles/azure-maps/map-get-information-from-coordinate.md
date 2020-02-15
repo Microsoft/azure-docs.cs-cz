@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0b1ab7b2c233eb1e6e231b0ae7935b6c24363948
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 1a6b3b4665e6141fb4c95508a8d8405268de6d19
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988528"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208518"
 ---
 # <a name="get-information-from-a-coordinate"></a>Získání informací ze souřadnice
 
 Tento článek ukazuje, jak vytvořit reverzní hledání na základě adresy, které zobrazuje adresu kliknutí na překryvné okno.
 
-Existují dva způsoby, jak provést zpětné vyhledávání v rámci adresy. Jedním ze způsobů je dotazování [rozhraní API pro hledání zpětné adresy Azure Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) prostřednictvím modulu služby. Druhým způsobem je využít [rozhraní API pro načtení](https://fetch.spec.whatwg.org/) k vytvoření požadavku na [Azure Maps rozhraní API pro vyhledávání zpětného adres](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) , aby se vyhledala adresa. Níže jsou uvedené následující otázky:
+Existují dva způsoby, jak provést zpětné vyhledávání v rámci adresy. Jedním ze způsobů je dotazování [rozhraní API pro hledání zpětné adresy Azure Maps](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) prostřednictvím modulu služby. Druhým způsobem je použít [načtené rozhraní API](https://fetch.spec.whatwg.org/) k vytvoření požadavku na [Azure Maps rozhraní API pro hledání zpětného vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) adres k nalezení adresy. Níže jsou uvedené následující otázky:
 
 ## <a name="make-a-reverse-search-request-via-service-module"></a>Vytvoření požadavku zpětného vyhledávání přes modul služby
 
@@ -37,7 +37,7 @@ Třetí blok kódu aktualizuje styl ukazatele myši na ukazatel a vytvoří [mí
 
 Pátý blok kódu nastaví obsah místní nabídky HTML tak, aby zobrazoval adresu odpovědi pro kliknutím na souřadnicovou polohu.
 
-Změna kurzoru, překryvný objekt a událost Click jsou vytvořeny v [naslouchací službě událostí načtení](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy, aby bylo zajištěno, že se mapa kompletně načte před načtením informací o souřadnicích.
+Změna kurzoru, překryvný objekt a událost Click jsou vytvořeny v [naslouchací službě událostí načtení](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)mapy. Tato struktura kódu zajišťuje před načtením informací o souřadnicích úplnou zátěž mapy.
 
 ## <a name="make-a-reverse-search-request-via-fetch-api"></a>Vytvoření požadavku zpětného vyhledávání přes rozhraní API pro načtení
 
@@ -52,7 +52,7 @@ Druhý blok kódu aktualizuje styl ukazatele myši na ukazatel. Vytvoří instan
 
 Třetí blok kódu přidá naslouchací proces události pro kliknutí myší. Kliknete-li na tlačítko myši, používá [rozhraní API načtení](https://fetch.spec.whatwg.org/) k dotazování [Azure Maps rozhraní API pro vyhledávání zpětné adresy](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) pro kliknutí na souřadnicovou adresu. V případě úspěšné odpovědi aplikace shromáždí adresu pro kliknutí na umístění. Slouží k definování obsahu a umístění automaticky otevíraného okna pomocí funkce [setOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setoptions-popupoptions-) místní třídy.
 
-Změna kurzoru, překryvný objekt a událost Click jsou vytvořeny v [naslouchací službě událostí načtení](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy, aby bylo zajištěno, že se mapa načte kompletně před tím, než se načtou informace o souřadnicích.
+Změna kurzoru, překryvný objekt a událost Click jsou vytvořeny v [naslouchací službě událostí načtení](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)mapy. Tato struktura kódu zajišťuje, že mapa bude plně načtena před načtením informací o souřadnicích.
 
 ## <a name="next-steps"></a>Další kroky
 

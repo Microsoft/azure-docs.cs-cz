@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 781c5a579fa0cd0383e95b79df1f81f74008111c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ffb610634399594788afcb9b600ba00c6803dfdd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679961"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207021"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Aktivita funkce Azure v Azure Data Factory
 
@@ -30,22 +30,22 @@ Po dobu osmi minut a ukázku této funkce se podívejte na toto video:
 
 Návratový typ funkce Azure Function musí být platným `JObject`. ( *Mějte na paměti* , že [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) není `JObject`.) Libovolný návratový typ jiný než `JObject` se nezdařil a vyvolává obsah odpovědi na chyb uživatele není *platný JObject*.
 
-| **Vlastnost** | **Popis** | **Požadováno** |
+| **Vlastnost** | **Popis** | **Požadovanou** |
 | --- | --- | --- |
 | type   | Vlastnost Type musí být nastavená na: **AzureFunction** . | ano |
 | Adresa URL aplikace Function App | Adresa URL pro Azure Function App. Formát je `https://<accountname>.azurewebsites.net`. Tato adresa URL je hodnota v sekci **URL** při zobrazení Function App v Azure Portal  | ano |
-| klíč funkce | Přístupový klíč pro funkci Azure Functions Klikněte na část **Správa** příslušné funkce a zkopírujte buď **klíč funkce** , nebo **klíč hostitele**. Další informace najdete tady: [aktivační události a vazby HTTP Azure Functions](../azure-functions/functions-bindings-http-webhook.md#authorization-keys) . | ano |
+| klíč funkce | Přístupový klíč pro funkci Azure Functions Klikněte na část **Správa** příslušné funkce a zkopírujte buď **klíč funkce** , nebo **klíč hostitele**. Další informace najdete tady: [aktivační události a vazby HTTP Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) . | ano |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Aktivita funkce Azure
 
-| **Vlastnost**  | **Popis** | **Povolené hodnoty** | **Požadováno** |
+| **Vlastnost**  | **Popis** | **Povolené hodnoty** | **Požadovanou** |
 | --- | --- | --- | --- |
 | jméno  | Název aktivity v kanálu  | Řetězec | ano |
 | type  | Typ aktivity je "AzureFunctionActivity". | Řetězec | ano |
 | propojená služba | Propojená služba funkce Azure pro odpovídající Function App Azure  | Odkaz na propojenou službu | ano |
 | Název funkce  | Název funkce v Azure Function App, kterou tato aktivita volá | Řetězec | ano |
-| method  | Metoda REST API pro volání funkce | Typy podporované řetězcem: "GET", "POST", "PUT"   | ano |
+| – metoda  | Metoda REST API pro volání funkce | Typy podporované řetězcem: "GET", "POST", "PUT"   | ano |
 | záhlaví  | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: "hlavičky": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne |
 | těles  | tělo, které se odesílá spolu s požadavkem na metodu rozhraní API funkce  | Řetězec (nebo výraz s hodnotou resultType String) nebo objekt.   | Vyžadováno pro metody PUT/POST |
 |   |   |   | |

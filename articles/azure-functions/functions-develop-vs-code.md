@@ -3,12 +3,12 @@ title: Vývoj Azure Functions pomocí Visual Studio Code
 description: Naučte se vyvíjet a testovat Azure Functions pomocí rozšíření Azure Functions pro Visual Studio Code.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7e533d5826d429a716ad1592d75159782ed43fa7
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 3bc8c9aa5d31f757a34350d9605fdecbe42b8be7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964005"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210238"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Vývoj Azure Functions pomocí Visual Studio Code
 
@@ -71,7 +71,7 @@ Rozšíření Functions umožňuje vytvořit projekt Function App spolu s první
 
     ![Volba šablony triggeru HTTP](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. Jako název funkce zadejte **HttpExample** a vyberte Enter a pak vyberte Authorization – **funkce** . Tato úroveň autorizace vyžaduje zadání [klíče funkce](functions-bindings-http-webhook.md#authorization-keys) při volání koncového bodu funkce.
+1. Jako název funkce zadejte **HttpExample** a vyberte Enter a pak vyberte Authorization – **funkce** . Tato úroveň autorizace vyžaduje zadání [klíče funkce](functions-bindings-http-webhook-trigger.md#authorization-keys) při volání koncového bodu funkce.
 
     ![Vybrat autorizaci funkce](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -220,7 +220,7 @@ Další informace najdete v referenčních odkazech na [výstupní vazbu úloži
 
 [!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
-## <a name="publish-to-azure"></a>Publikování aplikací do Azure
+## <a name="publish-to-azure"></a>Publikování do Azure
 
 Visual Studio Code umožňuje publikovat projekt funkcí přímo do Azure. Během postupu vytvoříte aplikaci funkcí a související prostředky ve vašem předplatném Azure. Aplikace funkcí poskytuje kontext spuštění pro vaše funkce. Projekt se zabalí a nasadí do nové aplikace funkcí ve vašem předplatném Azure.
 
@@ -256,7 +256,7 @@ Následující kroky publikují projekt na novou aplikaci funkcí vytvořenou s 
     | Vyberte modul runtime pro novou aplikaci. | Jazyk projektu | Modul runtime musí odpovídat projektu, který publikujete. |
     | Vyberte skupinu prostředků pro nové prostředky. | Vytvořit novou skupinu prostředků | Do dalšího řádku zadejte název skupiny prostředků, například `myResourceGroup`, a pak vyberte Enter. Můžete také vybrat existující skupinu prostředků. |
     | Vyberte účet úložiště. | Vytvoření nového účtu úložiště | Do dalšího řádku zadejte globálně jedinečný název nového účtu úložiště používaného aplikací Function App a pak vyberte Enter. Názvy účtů úložiště musí mít délku 3 až 24 znaků a můžou obsahovat jenom číslice a malá písmena. Můžete také vybrat existující účet. |
-    | Vyberte umístění pro nové prostředky. | . | Vyberte umístění v [oblasti](https://azure.microsoft.com/regions/) poblíž nebo v blízkosti jiných služeb, ke kterým mají přístup vaše funkce. |
+    | Vyberte umístění pro nové prostředky. | oblast | Vyberte umístění v [oblasti](https://azure.microsoft.com/regions/) poblíž nebo v blízkosti jiných služeb, ke kterým mají přístup vaše funkce. |
 
     Po vytvoření aplikace Function App se zobrazí oznámení a použije se balíček pro nasazení. Pokud chcete zobrazit výsledky vytvoření a nasazení, včetně prostředků Azure, které jste vytvořili, vyberte **Zobrazit výstup** v tomto oznámení.
 
@@ -277,7 +277,7 @@ Projekt se znovu sestaví, znovu zabalí a nahraje do Azure. Existující projek
 
 ## <a name="get-the-url-of-the-deployed-function"></a>Získat adresu URL nasazené funkce
 
-Pro volání funkce aktivované protokolem HTTP potřebujete při nasazení do aplikace Function App adresu URL funkce. Tato adresa URL zahrnuje všechny požadované [funkční klávesy](functions-bindings-http-webhook.md#authorization-keys). K získání těchto adres URL pro nasazené funkce můžete použít rozšíření.
+Pro volání funkce aktivované protokolem HTTP potřebujete při nasazení do aplikace Function App adresu URL funkce. Tato adresa URL zahrnuje všechny požadované [funkční klávesy](functions-bindings-http-webhook-trigger.md#authorization-keys). K získání těchto adres URL pro nasazené funkce můžete použít rozšíření.
 
 1. Výběrem klávesy F1 otevřete paletu příkazů a potom vyhledejte a spusťte příkaz **Azure Functions: Kopírovat adresu URL funkce**.
 
@@ -301,7 +301,7 @@ Chcete-li spustit projekt Functions v místním prostředí, je nutné splnit ty
     | -------- | --------- |
     | **C#** | [C#klapk](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[Nástroje .NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)   |
     | **Java** | [Ladicí program pro rozšíření Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3 nebo novější](https://maven.apache.org/) |
-    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> |  
+    | **JavaScript** | <sup>*</sup> [Node. js](https://nodejs.org/) |  
     | **Python** | [Rozšíření Pythonu](https://marketplace.visualstudio.com/items?itemName=ms-python.python)<br/>Doporučuje se [Python 3.6.8](https://www.python.org/downloads/)|
 
     <sup>*</sup> Aktivní LTS a verze LTS údržby (Doporučené 8.11.1 a 10.14.1).
@@ -341,7 +341,7 @@ Hodnoty v **connectionStrings** se nikdy nepublikují.
 Hodnoty nastavení aplikace Functions lze v kódu přečíst také jako proměnné prostředí. Další informace najdete v oddílech s proměnnými prostředí těchto referenčních článků specifických pro konkrétní jazyk:
 
 * [C#předkompilované](functions-dotnet-class-library.md#environment-variables)
-* [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
+* [C#skript (. csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 

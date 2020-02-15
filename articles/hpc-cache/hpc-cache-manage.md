@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 1/29/2020
 ms.author: rohogue
-ms.openlocfilehash: 9ad6348e15c8a25f721a89be7eab3e17c58ae17c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: da260074fc69fac9e98d3698bb2d40fdf80d7118
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988837"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252038"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Správa mezipaměti z Azure Portal
 
@@ -73,6 +73,8 @@ Klientský přístup se během upgradu softwaru nepřerušil, ale výkon mezipam
 Aktualizace softwaru může trvat několik hodin. Mezipaměť nakonfigurované s vyšší propustností trvá déle než mezipaměť s menšími hodnotami propustnosti ve špičce.
 
 Pokud je k dispozici upgrade softwaru, budete mít týden, nebo ho budete muset použít ručně. Koncové datum je uvedeno ve zprávě o upgradu. Pokud během této doby upgrade neprovedete, Azure tuto aktualizaci automaticky nainstaluje do mezipaměti. Časování automatického upgradu není možné konfigurovat. Pokud máte obavy o dopad na výkon mezipaměti, měli byste software upgradovat sami ještě předtím, než vyprší časový interval.
+
+Pokud se vaše mezipaměť zastaví po průchodu koncového data, mezipaměť při příštím spuštění automaticky upgraduje software. (Aktualizace se nemusí spustit okamžitě, ale spustí se první hodinu.)
 
 Kliknutím na tlačítko **upgradovat** zahájíte aktualizaci softwaru. Stav mezipaměti se změní na **upgradovat** , dokud se operace nedokončí.
 

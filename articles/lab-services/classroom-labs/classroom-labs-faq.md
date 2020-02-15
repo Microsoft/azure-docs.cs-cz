@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 551167cda28a2bb6007e66c1b4b458a0a7b2e396
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718025"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252055"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Laboratoře učebny v Azure Lab Services – nejčastější dotazy (FAQ)
 Získejte odpovědi na některé nejčastější dotazy týkající se učebn Labs v Azure Lab Services. 
@@ -46,6 +46,12 @@ Porty jsou: 49152 – 65535. Učebna Labs za nástrojem pro vyrovnávání zatí
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Jaký rozsah veřejných IP adres mám otevřít v nastavení brány firewall moje organizace pro připojení k testovacím virtuálním počítačům přes RDP/SSH?
 Přečtěte si téma [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519), který poskytuje rozsah veřejných IP adres pro datová centra v Azure. Můžete otevřít IP adresy pro oblasti, ve kterých jsou účty testovacího prostředí.
+
+## <a name="virtual-machine-images"></a>Image virtuálních počítačů
+
+### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>Proč při vytváření nového testovacího prostředí nemůžete v rozevíracím seznamu image virtuálních počítačů povolit další možnosti imagí, proč je autor testovacího prostředí?
+
+Když vám správce přidá jako tvůrce testovacího prostředí do účtu testovacího prostředí, budete mít oprávnění k vytváření cvičení. Nemáte ale oprávnění upravovat žádná nastavení v rámci účtu testovacího prostředí, včetně seznamu povolených imagí virtuálních počítačů. Pokud chcete povolit další image, požádejte správce účtu testovacího prostředí, aby to prohlédl za vás, nebo požádejte správce, aby vás přidal jako roli přispěvatele k účtu testovacího prostředí. Role Přispěvatel vám poskytne oprávnění k úpravám seznamu imagí virtuálního počítače v účtu testovacího prostředí.
 
 ## <a name="users"></a>Uživatelé
 

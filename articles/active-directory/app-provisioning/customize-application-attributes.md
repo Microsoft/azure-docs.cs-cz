@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf1515bcf2223ae730a47f7105d51206ba638cd7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 842e5c4771fcac0b8011dda1df11c646bf8f070c
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161609"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207192"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -111,7 +111,7 @@ Mezi aplikace a systémy, které podporují přizpůsobení seznamu atributů, p
 
 - Salesforce
 - ServiceNow
-- Workday
+- Pracovní den
 - Azure Active Directory (podporují se[výchozí atributy služby Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) a vlastní rozšíření adresáře)
 - Aplikace, které podporují [SCIM 2,0](https://tools.ietf.org/html/rfc7643), ve kterých je potřeba přidat atributy definované ve [schématu Core](https://tools.ietf.org/html/rfc7643)
 
@@ -300,7 +300,7 @@ Některé atributy jako phoneNumbers a e-maily jsou atributy s více hodnotami, 
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>Obnovení výchozích atributů a mapování atributů
 
-Pokud potřebujete začít znovu a obnovit stávající mapování zpátky do výchozího stavu, můžete zaškrtnout políčko **Obnovit výchozí mapování** a uložit konfiguraci. Tím se nastaví všechna mapování, jako by byla aplikace právě přidána do vašeho tenanta Azure AD z Galerie aplikací.
+Pokud potřebujete začít znovu a obnovit stávající mapování zpátky do výchozího stavu, můžete zaškrtnout políčko **Obnovit výchozí mapování** a uložit konfiguraci. Tím se nastaví všechna mapování a filtry oborů, jako by byla aplikace jenom do tenanta Azure AD přidaná z Galerie aplikací.
 
 Výběrem této možnosti efektivně vynutíte opětovnou synchronizaci všech uživatelů, když je služba zřizování spuštěná.
 

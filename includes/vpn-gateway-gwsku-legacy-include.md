@@ -4,16 +4,16 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cherylmc
-ms.openlocfilehash: f2ee442d0d6fecf34449ad28f058615a1274bbea
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 622a2f69c2e7b82f2df10d6120ee2dd466961915
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174895"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211390"
 ---
 Starší (staré) skladové položky brány VPN jsou:
 
-* Basic
+* Výchozí (základní)
 * Standard
 * HighPerformance
 

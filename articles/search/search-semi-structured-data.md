@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: d8d3204c8a5ace17ae47a17d4c4ffec2ec7977f2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/14/2020
+ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112255"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251987"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>Kurz REST: indexování a hledání částečně strukturovaných dat (blobů JSON) v Azure Kognitivní hledání
 
@@ -83,7 +83,7 @@ Ve svém klientovi REST proveďte následující tři volání rozhraní API.
 
 ## <a name="create-a-data-source"></a>Vytvoření zdroje dat
 
-[Rozhraní API pro vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source)vytvoří objekt Azure kognitivní hledání, který určuje, jaká data se mají indexovat.
+[Rozhraní API pro vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) vytvoří objekt Azure kognitivní hledání, který určuje, jaká data se mají indexovat.
 
 Koncový bod tohoto volání je `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search. 
 
@@ -126,7 +126,7 @@ Odpověď by měla vypadat nějak takto:
 
 ## <a name="create-an-index"></a>Vytvoření indexu
     
-Druhé volání je [vytvořit index API](https://docs.microsoft.com/rest/api/searchservice/create-indexer), což vytvoří index služby Azure kognitivní hledání, který ukládá všechna hledaná data. Index určuje všechny parametry a jejich atributy.
+Druhé volání je [vytvořit index API](https://docs.microsoft.com/rest/api/searchservice/create-index), což vytvoří index služby Azure kognitivní hledání, který ukládá všechna hledaná data. Index určuje všechny parametry a jejich atributy.
 
 Adresa URL pro toto volání je `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search.
 

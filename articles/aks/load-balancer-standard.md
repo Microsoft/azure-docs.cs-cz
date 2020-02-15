@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 03daafd383810a5e6cf086ca8e546981b06fa6eb
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b15c60d5436feada8558c83cb14efd7e21a22493
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025703"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212413"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Použití nástroje pro vyrovnávání zatížení Standard SKU ve službě Azure Kubernetes (AKS)
 
@@ -28,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.81 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V tomto článku se předpokládá, že máte cluster AKS s Azure Load Balancerem *standardní* SKU. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
@@ -57,7 +57,10 @@ Při vytváření a správě clusterů AKS, které podporují Nástroj pro vyrov
 
 ## <a name="use-the-standard-sku-load-balancer"></a>Použijte nástroj pro vyrovnávání zatížení *Standard* SKU
 
-Když vytvoříte cluster AKS, použije se ve výchozím nastavení nástroj pro vyrovnávání zatížení *Standard* SKU při spouštění služeb v tomto clusteru. Například [rychlý Start pomocí Azure CLI][aks-quickstart-cli] nasadí ukázkovou aplikaci, která používá nástroj pro vyrovnávání zatížení *Standard* SKU. 
+Když vytvoříte cluster AKS, použije se ve výchozím nastavení nástroj pro vyrovnávání zatížení *Standard* SKU při spouštění služeb v tomto clusteru. Například [rychlý Start pomocí Azure CLI][aks-quickstart-cli] nasadí ukázkovou aplikaci, která používá nástroj pro vyrovnávání zatížení *Standard* SKU.
+
+> [!IMPORTANT]
+> Veřejné IP adresy je možné vyhnout přizpůsobením trasy definované uživatelem (UDR). Zadání odchozího typu clusteru AKS jako UDR může přeskočit nastavení zřizování a back-endu protokolu IP pro AKS vytvořený Nástroj pro vyrovnávání zatížení Azure. Další informace najdete v tématu [nastavení `outboundType` clusteru na ' userDefinedRouting '](egress-outboundtype.md).
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Konfigurace nástroje pro vyrovnávání zatížení jako interního
 

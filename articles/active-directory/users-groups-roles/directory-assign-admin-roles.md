@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b142d3561e7d05b9afaeab9768b6b50a33ef28ce
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 7595ef1b8742c2ba18a262d5afc5eea1b4d7a15c
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158158"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251613"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -246,7 +246,7 @@ Uživatelé v této roli můžou číst nastavení a informace pro správu např
 > Tyto funkce jsou momentálně ve vývoji.
 >
 
-### <a name="group-administratorgroup-administrator-permissions"></a>[Správce skupiny](#group-administrator-permissions)
+### <a name="groups-administratorgroups-administrator-permissions"></a>[Správce skupin](#groups-administrator-permissions)
 
 Uživatelé v této roli můžou vytvářet a spravovat skupiny a její nastavení, jako jsou zásady pro pojmenování a vypršení platnosti. Je důležité pochopit, že přiřazení uživatele k této roli dává možnost spravovat všechny skupiny v tenantovi napříč různými úlohami, jako jsou týmy, SharePoint, Yammer kromě Outlooku. Uživatel bude také moci spravovat různá nastavení skupin na různých portálech pro správu, jako je například centrum pro správu Microsoft, Azure Portal a také konkrétní úlohy, jako jsou týmy a centra pro správu služby SharePoint.
 
@@ -449,7 +449,7 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 | --- | --- |
 |Obecná oprávnění|<p>Vytváření uživatelů a skupin</p><p>Vytvářet a spravovat zobrazení uživatelů</p><p>Správa lístků podpory Office<p>Aktualizace zásad vypršení platnosti hesla|
 |<p>U všech uživatelů, včetně všech správců</p>|<p>Spravovat licence</p><p>Spravovat všechny vlastnosti uživatele kromě hlavního názvu uživatele</p>
-|Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatelů|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
+|Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatelů|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetovat heslo</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
@@ -1081,7 +1081,7 @@ Může číst vše, co globální správce může, ale ne nic upravovat.
 | microsoft.office365.usageReports/allEntities/read | Přečtěte si sestavy o využití Office 365. |
 | Microsoft. Office 365. WebPort/allEntities/Standard/Read   | Načte standardní vlastnosti všech prostředků v Microsoft. Office 365. WebPort. |
 
-### <a name="group-administrator-permissions"></a>Oprávnění správce skupiny
+### <a name="groups-administrator-permissions"></a>Oprávnění správce skupin
 Může spravovat všechny aspekty skupin a nastavení skupiny, jako jsou zásady pro pojmenování a vypršení platnosti.
 
 | **Akce** | **Popis** |
@@ -1718,7 +1718,7 @@ Zapisovače adresářů | Zapisovače adresářů | 9360feb5-f418-4baa-8175-e2a0
 Správce služby Exchange | Správce Exchange | 29232cdf-9323-42fd-ade2-1d097af3e4de
 Správce externích zprostředkovatelů identity | Správce externích zprostředkovatelů identity | be2f45a1-457d-42af-a067-6ec1fa63bc45
 Globální čtenář | Globální čtenář | f2ef992c-3afb-46b9-b7cf-a126ee74c451
-Správce skupiny | Správce skupiny | fdd7a751-b60b-444a-984c-02652fe8fa1c 
+Správce skupin | Správce skupin | fdd7a751-b60b-444a-984c-02652fe8fa1c 
 Pozvánka hosta | Odesílatel pozvánky hostů | 95e79109-95c0-4d8e-aee3-d01accf2d47b
 Správce helpdesku | Správce helpdesku | 729827e3-9c14-49f7-bb1b-9608f156bbb8
 Správce služby Intune | Správce Intune | 3a2c62db-5318-420d-8d74-23affee5d9d5

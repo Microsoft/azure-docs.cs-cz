@@ -1,19 +1,19 @@
 ---
 title: Vyhledat umístění pomocí služby Azure Maps Search Services | Mapy Microsoft Azure
 description: V tomto článku se naučíte, jak vyhledat umístění pomocí Microsoft Azure map Search Service k geografickému kódování a zpětnému zakódování.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3b5da7eab9cff5c5e051fc4d5ab7ff582a95c20d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 40066f24fec00610a1efd10b2cb874b1100acdee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899229"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209881"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Vyhledat umístění pomocí služby Azure Maps Search Services
 
@@ -121,7 +121,7 @@ Většina vyhledávacích dotazů ve výchozím nastavení `maxFuzzyLevel=1` pro
 
     | Klíč | Hodnota |
     |------------------|-------------------------|
-    | countrySet | Spojené státy |
+    | countrySet | USA |
   
     Výsledky jsou nyní ohraničeny kódem země a dotaz vrátí Pizza restaurací ve USA.
   
@@ -173,7 +173,7 @@ Pokud máte k dispozici sadu souřadnicových umístění, můžete pomocí [roz
 
     | Klíč | Hodnota |
     |-----|------------|
-    | číslo | true |
+    | number | true |
 
     Pokud je parametr dotazu [Number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) odeslán s požadavkem, může odpověď zahrnovat stranu ulice (vlevo nebo vpravo) a také pozici posunu pro toto číslo.
   

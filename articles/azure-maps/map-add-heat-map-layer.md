@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d52d808813078c2aca7de59aa626e83f96221720
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986236"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208535"
 ---
 # <a name="add-a-heat-map-layer"></a>Přidání vrstvy heat mapy
 
@@ -79,10 +79,10 @@ Předchozí příklad upravil Heat mapu nastavením možnosti poloměr a krytí.
   | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' interpolace ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[lineární\]<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[heatmapu-hustota\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, "transparentní",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, fialová,<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,5, ' #fb00fb ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, ' #00c3ff '<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Step",<br/>&nbsp;&nbsp;&nbsp;&nbsp;\[heatmapu-hustota\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;"Transparent",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,01, ' námořnická modrá ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,25, "zelená",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,50, "žlutá",<br/>&nbsp;&nbsp;&nbsp;&nbsp;0,75, Red<br/>\] |   
 
 - `opacity`: Určuje způsob, jakým je vrstva Heat mapy neprůhledná nebo průhledná.
-- `intensity`: aplikuje násobitel na váhu jednotlivých datových bodů pro zvýšení celkové intenzity heatmapu. To pomáhá zajistit rozdíl v váhy datových bodů, což usnadňuje vizualizaci.
+- `intensity`: aplikuje násobitel na váhu jednotlivých datových bodů pro zvýšení celkové intenzity heatmapu. Způsobuje rozdíl v hmotnosti datových bodů, což usnadňuje vizualizaci.
 - `weight`: ve výchozím nastavení mají všechny datové body váhu 1 a mají stejnou váhu. Možnost váhy funguje jako násobitel a můžete ji nastavit jako číslo nebo výraz. Pokud je číslo nastavené jako váha, je rovnocenným umístěním jednotlivých datových bodů na mapě dvakrát. Pokud je například váha 2, hustota se zdvojnásobí. Nastavení možnosti váhy na číslo vykreslí Heat mapu podobným způsobem, jak použít možnost intenzita. 
 
-  Pokud však použijete výraz, může být váha každého datového bodu založena na vlastnostech jednotlivých datových bodů. Předpokládejme například, že každý datový bod představuje objekt zemětřesení. Důležitou metrikou každého datového bodu zemětřesení bylo hodnota. K zemětřesení dochází po celou dobu, ale většina má nízkou velikost a nevšimla se. Pomocí hodnoty velikost ve výrazu pro přiřazení váhy každému datovému bodu získáte lepší reprezentaci významnosti zemětřesení v rámci Heat mapy.
+  Pokud však použijete výraz, může být váha každého datového bodu založena na vlastnostech jednotlivých datových bodů. Předpokládejme například, že každý datový bod představuje objekt zemětřesení. Hodnota velikosti byla důležitou metrikou pro každý datový bod zemětřesení. K zemětřesení dochází po celou dobu, ale většina má nízkou velikost a nevšimla se. Pomocí hodnoty velikost ve výrazu přiřaďte váhu každému datovému bodu. Když použijete hodnotu velikost pro přiřazení váhy, získáte lepší reprezentaci významnosti zemětřesení v rámci Heat mapy.
 - `source` a `source-layer`: umožňuje aktualizovat zdroj dat.
 
 Zde je nástroj pro otestování různých možností vrstvy Heat mapy.

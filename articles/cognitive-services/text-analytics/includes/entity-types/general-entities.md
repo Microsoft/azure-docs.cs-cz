@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: aahi
-ms.openlocfilehash: f95d7613926cf332a498cca84563dbc0ebcbbe9b
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: ba516a548fc8385ca86526a7f2dd082b27e53208
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086886"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211382"
 ---
 ## <a name="general-entity-types"></a>Obecné typy entit:
 
@@ -22,7 +22,7 @@ ms.locfileid: "77086886"
 Rozpoznat jména osob v textu.
 
 Jazyky:
-* Verze Public Preview: `English`
+* Public Preview: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` a `Turkish`
 
 | Název podtypu | Popis                                                      | K dispozici počínaje verzí modelu |
 |--------------|------------------------------------------------------------------|---------------------------------------|
@@ -44,12 +44,12 @@ Přirozené a uživatelsky vytvořené orientačních bodů, struktur, geografic
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Public Preview: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` a `Turkish`
 
 | Název podtypu              | Popis                                                                              | K dispozici počínaje verzí modelu |
 |---------------------------|------------------------------------------------------------------------------------------|----------------------------------------|
 | Není k dispozici                       | umístění, například `Atlantic Ocean`, `library`, `Eiffel Tower``Statue of Liberty`  | `2019-10-01`                           |
-| Geopolitická entita (GPE) | Města, země, státy, například `Seattle`, `Pennsylvania`, `South Africa``Tokyo` | `2020-02-01`                           |
+| Geopolitická entita (GPE) – pouze anglicky| Města, země, státy, například `Seattle`, `Pennsylvania`, `South Africa``Tokyo` | `2020-02-01`                           |
 
 ### <a name="organization"></a>Organizace  
 
@@ -57,7 +57,7 @@ Uznávané organizace, společnosti, organizace a další skupiny lidí. Napří
 
 Jazyky: 
 
-* Verze Public Preview: `English`
+* Public Preview: `Arabic`, `Czech`, `Chinese-Simplified`, `Danish`, `Dutch`, `English`, `Finnish`, `French`, `German`, `Hungarian`, `Italian`, `Japanese`, `Korean`, `Norwegian (Bokmål)`, `Polish`, `Portuguese (Portugal)`, `Portuguese (Brazil)`, `Russian`, `Spanish`, `Swedish` a `Turkish`
 
 | Název podtypu | Popis                                                                                             | K dispozici počínaje verzí modelu |
 |--------------|---------------------------------------------------------------------------------------------------------|----------------------------------------|
@@ -156,7 +156,7 @@ Entity data a času.
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Public Preview: `Chinese-Simplified`, `English`, `French`, `German` a `Spanish`
 
 | Název podtypu    | Příklady                     |
 |-------------|------------------------------|
@@ -176,7 +176,7 @@ Jazyky:
 
 Jazyky:
 
-* Verze Public Preview: `English`
+* Public Preview: `Chinese-Simplified`, `English`, `French`, `German` a `Spanish`
 
 | Název podtypu    | Příklady                     |
 |-------------|------------------------------|
@@ -186,4 +186,4 @@ Jazyky:
 | Věk         | `90 day old`, `30 years old` |
 | Currency    | `$10.99`, `€30.00`           |
 | Globální   | `10 miles`, `40 cm`          |
-| Temperature | `32 degrees`, `10°C`         |
+| Teplota | `32 degrees`, `10°C`         |

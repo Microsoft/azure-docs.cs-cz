@@ -6,12 +6,12 @@ author: lisaguthrie
 ms.topic: conceptual
 ms.date: 12/29/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7461f378a4f95a43971f5893fe70739511e942ff
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: f85f63af94beb5c0d99632be69368c0c7c727b7b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75731997"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212211"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrace se spravovanými identitami Azure
 
@@ -67,7 +67,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
 1. V části **předplatné**vyberte své předplatné Azure. Vyberte prostředek App Service pro vaši aplikaci.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
     ![Přidat spravovanou identitu](./media/add-managed-identity.png)
 
@@ -95,7 +95,6 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
     ```csharp-interactive
     using Azure.Identity;
-    using Microsoft.Azure.Services.AppAuthentication;
     ```
 
 1. Pokud chcete získat přístup pouze k hodnotám uloženým přímo v konfiguraci aplikace, aktualizujte metodu `CreateWebHostBuilder` nahrazením metody `config.AddAzureAppConfiguration()`.
@@ -103,7 +102,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
     > [!IMPORTANT]
     > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
 
-    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -135,7 +134,7 @@ Pokud chcete na portálu nastavit spravovanou identitu, musíte nejdřív vytvo�
 
 1. Pokud chcete použít konfigurační hodnoty aplikace i odkazy na Key Vault, aktualizujte *program.cs* , jak je znázorněno níže. Tento kód vytvoří nový `KeyVaultClient` pomocí `AzureServiceTokenProvider` a předá tento odkaz voláním metody `UseAzureKeyVault`.
 
-    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    ### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
             public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -206,7 +205,7 @@ Tento příkaz vám poskytne něco podobného následujícímu výstupu:
 
 ### <a name="deploy-your-project"></a>Nasazení projektu
 
-V _okně místního terminálu_přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte _adresu url\<_ adresou URL vzdáleného úložiště Git, kterou jste získali v části [Povolení místního Gitu pomocí Kudu](#enable-local-git-with-kudu).
+V _okně místního terminálu_přidejte vzdálené úložiště Azure do místního úložiště Git. Nahraďte _adresu url\<>_ adresou URL vzdáleného úložiště Git, kterou jste získali v části [Povolení místního Gitu pomocí Kudu](#enable-local-git-with-kudu).
 
 ```bash
 git remote add azure <url>

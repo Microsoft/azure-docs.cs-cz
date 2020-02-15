@@ -1,181 +1,131 @@
 ---
-title: Monitorování využití prostředků a metrik dotazů
+title: Monitorování operací a aktivity
 titleSuffix: Azure Cognitive Search
 description: Povolte protokolování, Získejte metriky aktivity dotazů, využití prostředků a další systémová data ze služby Azure Kognitivní hledání.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
-tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7ef868f156ac537cb066f293872f69135c4df25f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/15/2020
+ms.openlocfilehash: c4a787362089dabf9c4eda9681358e7a70d8e78a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059640"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210533"
 ---
-# <a name="monitor-resource-consumption-and-query-activity-in-azure-cognitive-search"></a>Sledování využití prostředků a aktivity dotazů v Azure Kognitivní hledání
+# <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Monitorování operací a aktivit Azure Kognitivní hledání
 
-Na stránce Přehled služby Azure Kognitivní hledání můžete zobrazit systémová data o využití prostředků, metrikách dotazů a velikosti dostupné kvóty k vytvoření dalších indexů, indexerů a zdrojů dat. Portál můžete použít také ke konfiguraci Log Analytics nebo jiného prostředku, který se používá pro trvalé shromažďování dat. 
+Tento článek zavádí monitorování na úrovni služby (prostředku) na úrovni pracovního vytížení (dotazy a indexování) a navrhuje rozhraní pro monitorování přístupu uživatelů.
 
-Nastavení protokolů je užitečné pro samoobslužnou diagnostiku a zachovávání provozní historie. Interně protokoly existují v back-endu po krátkou dobu, postačující pro šetření a analýzu, pokud zadáte lístek podpory. Pokud chcete mít kontrolu nad a přistupovat k informacím protokolu, měli byste nastavit jedno z řešení popsaných v tomto článku.
+V rámci spektra použijete kombinaci integrované infrastruktury a základních služeb, jako je Azure Monitor, a také rozhraní API služby, která vrací statistiky, počty a stav. Porozumění rozsahu funkcí vám pomůže nakonfigurovat nebo vytvořit účinný komunikační systém pro proaktivní reakce na problémy, když se objeví.
 
-V tomto článku se dozvíte o možnostech monitorování, o tom, jak povolit protokolování a ukládání protokolů a jak zobrazit obsah protokolu.
+## <a name="use-azure-monitor"></a>Použití Azure Monitoru
 
-## <a name="metrics-at-a-glance"></a>Rychlé metriky
+Mnoho služeb, včetně Azure Kognitivní hledání, využívá [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/) pro výstrahy, metriky a protokolování diagnostických dat. V případě Azure Kognitivní hledání se integrovaná infrastruktura pro monitorování používá hlavně pro monitorování na úrovni prostředků (stav služby) a [monitorování dotazů](search-monitor-queries.md).
 
-Části **využití** a **monitorování** , které jsou na stránce Přehled integrované, se zaměřením na využití prostředků a metriky spuštění dotazů. Tyto informace budou k dispozici hned po zahájení používání služby bez nutnosti konfigurace. Tato stránka se aktualizuje každých několik minut. Pokud dokončujete rozhodnutí o tom, [která úroveň se má použít pro produkční úlohy](search-sku-tier.md), nebo jestli se má [upravit počet aktivních replik a oddílů](search-capacity-planning.md), může vám tyto metriky s těmito rozhodnutími povýšit tím, že vám ukáže, jak rychle se spotřebovávají prostředky a jak dobře aktuální konfigurace zpracovává existující zatížení.
+Následující snímek obrazovky vám pomůže najít Azure Monitor funkce na portálu.
 
-Na kartě **využití** se zobrazuje dostupnost prostředků vzhledem k aktuálním [limitům](search-limits-quotas-capacity.md). Následující obrázek je pro bezplatnou službu, která je omezené na 3 objekty každého typu a 50 MB úložiště. Základní nebo standardní služba má vyšší limity, a pokud nakročíte počty oddílů, maximální velikost úložiště se provedla poměrně.
++ Karta **monitorování** , která se nachází na hlavní stránce Přehled, ukazuje na první pohled klíčové metriky.
++ **Protokol aktivit**, hned pod přehledem, sestavy o akcích na úrovni prostředku: stav služby a oznámení o požadavcích na klíč rozhraní API.
++ **Monitorování**, dále v seznamu, poskytuje konfigurovatelné výstrahy, metriky a diagnostické protokoly. Můžete je vytvořit, až je budete potřebovat. Po shromáždění a uložení dat můžete zadávat dotazy nebo vizualizovat informace pro přehledy.
 
-![Stav použití vzhledem k platným omezením](./media/search-monitor-usage/usage-tab.png
- "Stav použití vzhledem k platným omezením")
+![Azure Monitor integrace ve službě vyhledávání](./media/search-monitor-usage/azure-monitor-search.png
+ "Azure Monitor integrace ve službě vyhledávání")
 
-## <a name="queries-per-second-qps-and-other-metrics"></a>Dotazy za sekundu (QPS) a další metriky
+### <a name="precision-of-reported-numbers"></a>Přesnost hlášených čísel
 
-Karta **monitorování** zobrazuje klouzavý průměr pro metriky, jako jsou vyhledávací *dotazy za sekundu* (QPS), agregované za minutu. 
-*Latence hledání* je doba, kterou vyhledávací služba potřebuje ke zpracování vyhledávacích dotazů, agregovaných za minutu. *Procento omezených vyhledávacích dotazů* (nezobrazený) je procento vyhledávacích dotazů, které byly omezeny, a také agregované za minutu.
+Stránky portálu se aktualizují každých několik minut. V takovém případě mají hodnoty hlášené na portálu přibližnou hodnotu, která vám poskytne obecnou představu o tom, jak dobře systém obsluhuje požadavky. Skutečné metriky, jako například dotazy za sekundu (QPS), mohou být vyšší nebo nižší než číslo zobrazené na stránce.
 
-Tato čísla jsou přibližná a jsou určena k získání Obecné informace o tom, jak dobře systém obsluhuje požadavky. Skutečný QPS může být vyšší nebo nižší než číslo hlášené na portálu.
+## <a name="activity-logs-and-service-health"></a>Protokoly aktivit a stav služby
 
-![Aktivita dotazů za sekundu](./media/search-monitor-usage/monitoring-tab.png "Aktivita dotazů za sekundu")
+[**Protokol aktivit**](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view) shromažďuje informace z Azure Resource Manager a oznamuje změny stavu služby. Protokol aktivit můžete monitorovat pro kritické, chybové a varovné podmínky související se stavem služby.
 
-## <a name="activity-logs"></a>Protokoly aktivit
-
-**Protokol aktivit** shromažďuje informace z Azure Resource Manager. Příklady informací v protokolu aktivit zahrnují vytvoření nebo odstranění služby, aktualizaci skupiny prostředků, kontrolu dostupnosti názvů nebo získání přístupového klíče služby pro zpracování žádosti. 
+Pro úlohy v rámci služby – jako jsou dotazy, indexování nebo vytváření objektů – uvidíte obecná informační oznámení, jako je *získání klíče správce* a *získání klíčů dotazů* pro každý požadavek, ale ne konkrétní akce samotné. Pro informace o tomto zrnitosti je nutné nakonfigurovat protokolování diagnostiky.
 
 K **protokolu aktivit** můžete přistupovat z levého navigačního podokna nebo z oznámení na panelu příkazů v horním okně nebo na stránce **diagnostikovat a řešit problémy** .
 
-Pro úlohy v rámci služby, jako je vytvoření indexu nebo odstranění zdroje dat, uvidíte obecná oznámení, jako je například "získat klíč správce" pro každý požadavek, ale ne konkrétní akci. Pro tuto úroveň informací musíte povolit řešení pro monitorování doplňku.
+## <a name="monitor-storage"></a>Monitorování úložiště
 
-## <a name="add-on-monitoring-solutions"></a>Řešení monitorování doplňku
+Stránky se záložkami, které jsou integrované na stránce Přehled, se odhlásí na základě využití prostředků. Tyto informace budou k dispozici hned po zahájení používání služby, bez nutnosti konfigurace a stránka se aktualizuje každých několik minut. 
 
-Azure Kognitivní hledání neukládá žádná data nad objekty, které spravuje, což znamená, že data protokolu se musí ukládat externě. V případě, že chcete zachovat data protokolu, můžete nakonfigurovat kterýkoli z níže uvedených prostředků. 
+Pokud dokončujete rozhodnutí o tom, [která úroveň se má použít pro produkční úlohy](search-sku-tier.md), nebo jestli se má [upravit počet aktivních replik a oddílů](search-capacity-planning.md), může vám tyto metriky s těmito rozhodnutími povýšit tím, že vám ukáže, jak rychle se spotřebovávají prostředky a jak dobře aktuální konfigurace zpracovává existující zatížení.
 
-V následující tabulce jsou porovnávány možnosti pro ukládání protokolů a přidání podrobného monitorování operací služby a úloh dotazů prostřednictvím Application Insights.
+Výstrahy související s úložištěm nejsou aktuálně k dispozici. spotřeba úložiště není agregovaná ani přihlášená k **AzureMetrics**. Museli byste vytvořit vlastní řešení, abyste získali oznámení související s prostředky.
 
-| Prostředek | Použití |
-|----------|----------|
-| [Protokoly Azure Monitoru](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | Protokolované události a metriky dotazů na základě níže uvedených schémat. Události jsou protokolovány do Log Analytics pracovního prostoru. Můžete spouštět dotazy na pracovní prostor a vracet tak podrobné informace z protokolu. Další informace najdete v tématu [Začínáme s protokoly Azure monitor](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) . |
-| [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Protokolované události a metriky dotazů na základě níže uvedených schémat. Události se zaznamenávají do kontejneru objektů BLOB a ukládají se do souborů JSON. K zobrazení obsahu souboru použijte Editor JSON.|
-| [Centrum událostí](https://docs.microsoft.com/azure/event-hubs/) | Protokolované události a metriky dotazů na základě schémat popsaných v tomto článku. Tuto možnost vyberte jako alternativní službu pro shromažďování dat pro velmi velké protokoly. |
+Na portálu se na kartě **využití** zobrazuje dostupnost prostředků relativně k aktuálním [limitům](search-limits-quotas-capacity.md) , které jsou zavedené vrstvou služby. 
 
-Protokoly Azure Monitor a BLOB Storage jsou k dispozici jako bezplatná služba, takže si ji můžete vyzkoušet bez poplatků za dobu života předplatného Azure. Application Insights se zaregistrovat a použít, pokud je velikost dat aplikace za určitých mezí (podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/monitor/) ).
+Následující obrázek je pro bezplatnou službu, která je omezené na 3 objekty každého typu a 50 MB úložiště. Základní nebo standardní služba má vyšší limity, a pokud nakročíte počty oddílů, maximální velikost úložiště se provedla poměrně.
 
-V další části se seznámíte s postupem povolení a používání úložiště objektů BLOB v Azure ke shromažďování a přístupu k datům protokolu vytvořeným operacemi Azure Kognitivní hledání.
+![Stav použití vzhledem k omezením úrovně](./media/search-monitor-usage/usage-tab.png
+ "Stav použití vzhledem k omezením úrovně")
 
-## <a name="enable-logging"></a>Povolit protokolování
+## <a name="monitor-workloads"></a>Monitorování úloh
 
-Protokolování pro indexování a úlohy dotazů je ve výchozím nastavení vypnuté a závisí na řešeních doplňku pro infrastrukturu protokolování a dlouhodobém externím úložišti. Sám o sobě platí, že jediná trvalá data ve službě Azure Kognitivní hledání jsou objekty, které vytváří a spravují, takže protokoly se musí ukládat jinde.
+Protokolované události obsahují ty, které souvisejí s indexováním a dotazy. Tabulka **Azure Diagnostics** v Log Analytics shromažďuje provozní data týkající se dotazů a indexování.
 
-V této části se dozvíte, jak používat úložiště objektů BLOB k ukládání protokolovaných událostí a dat metrik.
+Většina protokolovaných dat je určena pouze pro operace jen pro čtení. Pro jiné operace Create-Update-Delete nezaznamenané v protokolu můžete zadat dotaz na informace o systému v vyhledávací službě.
 
-1. [Vytvořte účet úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) , pokud ho ještě nemáte. Můžete ji umístit do stejné skupiny prostředků, jako je Azure Kognitivní hledání, aby se zjednodušilo pozdější vyčištění, pokud chcete odstranit všechny prostředky používané v tomto cvičení.
+| OperationName | Popis |
+|---------------|-------------|
+| ServiceStats | Tato operace je rutinním voláním metody [Get Service STATISTICS](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics), která je volána přímo nebo implicitně k naplnění stránky přehledu portálu při načtení nebo aktualizaci. |
+| Dotaz. Search |  Dotazy na požadavky na index najdete v tématu [monitorování dotazů](search-monitor-queries.md) pro informace o protokolovaných dotazech.|
+| Indexuje se. index  | Tato operace je voláním pro [Přidání, aktualizaci nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). |
+| indexy. Vzorový | Toto je index vytvořený Průvodcem importem dat. |
+| Indexery. Create | Vytvořte indexer explicitně nebo implicitně prostřednictvím Průvodce importem dat. |
+| Indexery. Get | Vrátí název indexeru pokaždé, když je indexer spuštěn. |
+| Indexery. stav | Vrátí stav indexeru pokaždé, když je indexer spuštěn. |
+| Zdroje dat. Get | Vrátí název zdroje dat pokaždé, když je spuštěn indexer.|
+| Indexy. Get | Při každém spuštění indexeru vrátí název indexu. |
 
-   Váš účet úložiště musí existovat ve stejné oblasti jako Azure Kognitivní hledání.
+### <a name="kusto-queries-about-workloads"></a>Kusto dotazů na úlohy
 
-2. Otevřete stránku Přehled vyhledávací služby. V levém navigačním podokně přejděte dolů na **sledování** a klikněte na **nastavení diagnostiky**.
+Pokud jste povolili protokolování, můžete zadat dotaz na **AzureDiagnostics** , kde najdete seznam operací spuštěných ve vaší službě a kdy. Můžete také korelovat aktivitu a prozkoumat změny v výkonu.
 
-   ![Nastavení diagnostiky](./media/search-monitor-usage/diagnostic-settings.png "Nastavení diagnostiky")
+#### <a name="example-list-operations"></a>Příklad: výpis operací 
 
-3. Vyberte **Přidat nastavení diagnostiky** .
-
-4. Zvolte data, kterou chcete exportovat: protokoly, metriky nebo obojí. Můžete ho zkopírovat do účtu úložiště, odeslat ho do centra událostí nebo ho exportovat do Azure Monitor protokolů.
-
-   V případě archivace do úložiště objektů BLOB musí existovat pouze účet úložiště. Kontejnery a objekty blob budou při exportu dat protokolu vytvořeny podle potřeby.
-
-   ![Konfigurace archivu úložiště objektů BLOB](./media/search-monitor-usage/configure-blob-storage-archive.png "Konfigurace archivu úložiště objektů BLOB")
-
-5. Uložit profil
-
-6. Testování protokolování vytvořením nebo odstraněním objektů (vytváří události protokolu) a odesláním dotazů (generuje metriky). 
-
-Protokolování je povoleno, jakmile Profil uložíte. Kontejnery se vytvářejí pouze v případě, že existuje aktivita pro protokolování nebo měření. Když se data zkopírují do účtu úložiště, data se naformátují jako JSON a umístí se do dvou kontejnerů:
-
-* insights – protokoly operationlogs: pro protokoly přenosů služby search
-* insights-metrics-pt1m: pro metriky
-
-**Trvá to jednu hodinu, než se kontejnery zobrazí v úložišti objektů BLOB. Jeden objekt BLOB se za hodinu vychází z každého kontejneru.**
-
-K zobrazení souborů můžete použít [Visual Studio Code](#download-and-open-in-visual-studio-code) nebo jiný Editor JSON. 
-
-### <a name="example-path"></a>Příklad cesty
+Vrátí seznam operací a počet každého z nich.
 
 ```
-resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2018/m=12/d=25/h=01/m=00/name=PT1H.json
+AzureDiagnostics
+| summarize count() by OperationName
 ```
 
-## <a name="log-schema"></a>Schéma protokolu
-Objekty blob, které obsahují protokoly přenosů služby Search, jsou strukturované, jak je popsáno v této části. Každý objekt BLOB má jeden kořenový objekt nazvaný **záznamy** obsahující pole objektů log. Každý objekt BLOB obsahuje záznamy pro všechny operace, které byly provedeny během stejné hodiny.
+#### <a name="example-correlate-operations"></a>Příklad: korelace operací
 
-| Název | Typ | Příklad | Poznámky |
-| --- | --- | --- | --- |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |Časové razítko operace |
-| resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VÝCHOZÍ/RESOURCEGROUPS/POSKYTOVATELE /<br/> SPOLEČNOSTI MICROSOFT. HLEDÁNÍ/SEARCHSERVICES/SEARCHSERVICE" |Vaše ID prostředku |
-| operationName |řetězec |"Query.Search" |Název operace |
-| operationVersion |řetězec |"2019-05-06" |Používá rozhraní api-version |
-| category |řetězec |"OperationLogs" |Konstanty |
-| resultType |řetězec |"Success" |Možné hodnoty: úspěch nebo neúspěch |
-| resultSignature |int |200 |Kód výsledku protokolu HTTP |
-| doby trvání v MS |int |50 |Doba trvání operace v milisekundách |
-| Vlastnosti |object |v následující tabulce najdete |Objekt obsahující data specifická pro operace |
+Porovnejte požadavky na dotazy s operacemi indexování a vykreslete datové body v grafu s časovým plánem, abyste viděli, že se operace shodují.
 
-**Schéma vlastností**
+```
+AzureDiagnostics
+| summarize OperationName, Count=count()
+| where OperationName in ('Query.Search', 'Indexing.Index')
+| summarize Count=count(), AvgLatency=avg(DurationMs) by bin(TimeGenerated, 1h), OperationName
+| render timechart
+```
 
-| Název | Typ | Příklad | Poznámky |
-| --- | --- | --- | --- |
-| Popis |řetězec |"GET /indexes('content')/docs" |Operace koncového bodu |
-| Dotaz |řetězec |"?search=AzureSearch&$count=true&api-version=2019-05-06" |Parametry dotazu |
-| Dokumenty |int |42 |Počet zpracovaných dokumentů |
-| indexName |řetězec |"testindex" |Název přidružený k operaci indexu |
+### <a name="use-search-apis"></a>Použití rozhraní API pro vyhledávání
 
-## <a name="metrics-schema"></a>Schématu metrik
-
-Pro požadavky na dotazy jsou zachyceny metriky.
-
-| Název | Typ | Příklad | Poznámky |
-| --- | --- | --- | --- |
-| resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VÝCHOZÍ/RESOURCEGROUPS/POSKYTOVATELE /<br/>SPOLEČNOSTI MICROSOFT. HLEDÁNÍ/SEARCHSERVICES/SEARCHSERVICE" |ID prostředku |
-| metricName |řetězec |"Latence" |Název metriky |
-| time |datetime |"2018-12-07T00:00:43.6872559Z" |časové razítko operace |
-| průměr |int |64 |Průměrná hodnota nezpracovanou ukázky metriky časový interval |
-| minimum |int |37 |Minimální hodnota nezpracovanou ukázky metriky časový interval |
-| maximum |int |78 |Maximální hodnota nezpracovanou ukázky metriky časový interval |
-| celkem |int |258 |Celková hodnota nezpracovanou ukázky metriky časový interval |
-| count |int |4 |Počet nezpracovaných vzorků sloužící ke generování metriku |
-| timegrain |řetězec |"PT1M" |Časový interval metrika ve formátu ISO 8601 |
-
-Všechny metriky se vykazují v minutových intervalech. Každý metrika uvádí minimální, maximální a průměrné hodnoty za minutu.
-
-Metriky SearchQueriesPerSecond minimum je nejnižší hodnota vyhledávací dotazy za sekundu, která byla zaregistrována tohoto minutě. Totéž platí i pro maximální hodnotu. Průměr je agregace napříč celou minutu.
-Představte si, že o tomto scénáři během jedné minuty: jedné sekundy vysoké zatížení, který je maximální pro SearchQueriesPerSecond, za nímž následuje 58 sekund průměrné zatížení a nakonec jedné sekundy se jenom jeden dotaz, což je minimální.
-
-Pro ThrottledSearchQueriesPercentage, minimální, maximální, průměrné a celkový počet, všechny mají stejnou hodnotu: procento vyhledávacích dotazů, které byly omezené z celkového počtu vyhledávací dotazy za jednu minutu.
-
-## <a name="download-and-open-in-visual-studio-code"></a>Stažení a otevření v Visual Studio Code
-
-K zobrazení souboru protokolu můžete použít libovolný editor JSON. Pokud ho nemáte, doporučujeme [Visual Studio Code](https://code.visualstudio.com/download).
-
-1. V Azure Portal otevřete svůj účet úložiště. 
-
-2. V levém navigačním podokně klikněte na **objekty blob**. Měli byste vidět **Insights-logs-operationlogs** a **Insights – metriky – pt1m**. Tyto kontejnery vytvoří služba Azure Kognitivní hledání, když se data protokolu exportují do úložiště objektů BLOB.
-
-3. Klikněte na hierarchii složek dolů, dokud nedosáhnete souboru. JSON.  K stažení souboru použijte kontextovou nabídku.
-
-Po stažení souboru ho otevřete v editoru JSON, abyste mohli zobrazit jeho obsah.
-
-## <a name="use-system-apis"></a>Použití systémových rozhraní API
 REST API Kognitivní hledání Azure i .NET SDK poskytují programový přístup k metrikám služeb, indexům a informacím indexeru a počtům dokumentů.
 
-* [Získat statistiku služeb](/rest/api/searchservice/get-service-statistics)
-* [Získat statistiku indexu](/rest/api/searchservice/get-index-statistics)
-* [Počet dokumentů](/rest/api/searchservice/count-documents)
-* [Získat stav indexeru](/rest/api/searchservice/get-indexer-status)
++ [ZÍSKAT statistiku služby](/rest/api/searchservice/get-service-statistics)
++ [ZÍSKAT statistiku indexu](/rest/api/searchservice/get-index-statistics)
++ [ZÍSKAT počty dokumentů](/rest/api/searchservice/count-documents)
++ [ZÍSKAT stav indexeru](/rest/api/searchservice/get-indexer-status)
 
-Pokud chcete povolit použití PowerShellu nebo rozhraní příkazového řádku Azure CLI, přečtěte si [tu](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)dokumentaci.
+## <a name="monitor-user-access"></a>Sledovat přístup uživatelů
+
+Vzhledem k tomu, že indexy vyhledávání jsou součástí větší klientské aplikace, není pro řízení přístupu k indexu k dispozici žádná uživatelsky definovaná metodologie pro jednotlivé uživatele. Předpokládá se, že požadavky pocházejí z klientské aplikace, a to buď pro žádosti správce, nebo na dotazy. Operace čtení a zápisu pro správce zahrnují vytváření, aktualizaci a odstraňování objektů napříč celou službou. Operace jen pro čtení jsou dotazy na kolekci dokumentů vymezené na jeden index. 
+
+Jak vidíte v protokolech, jsou odkazy na volání pomocí klíčů správce nebo klíčů dotazů. Příslušný klíč je součástí požadavků, které pocházejí z kódu klienta. Služba není vybavena pro zpracování tokenů identity nebo zosobnění.
+
+Pokud obchodní požadavky existují pro autorizaci uživatelů, doporučení se integruje s Azure Active Directory. K [vystřihování výsledků hledání](search-security-trimming-for-azure-search-with-aad.md) dokumentů, které by uživatel neměl vidět, můžete použít $Filter a identity uživatelů. 
+
+Neexistuje žádný způsob, jak tyto informace zaprotokolovat odděleně od řetězce dotazu, který obsahuje parametr $filter. Podrobnosti o řetězcích dotazů pro vytváření sestav najdete v tématu [monitorování dotazů](search-monitor-queries.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete získat další informace o správě služby a [výkonu a optimalizaci](search-performance-optimization.md) pro pokyny k ladění, [Spravujte službu Search na Microsoft Azure](search-manage.md) .
+Fluency s Azure Monitor jsou nezbytné pro dohled nad jakoukoliv službou Azure, včetně prostředků, jako je Azure Kognitivní hledání. Pokud nejste obeznámeni s Azure Monitor, přečtěte si článek o prostředcích souvisejících s prostředky. Kromě kurzů je vhodným místem pro spuštění následující článek.
+
+> [!div class="nextstepaction"]
+> [Monitorování prostředků Azure pomocí Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/monitor-azure-resource)

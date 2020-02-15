@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 2234ae4ce8257559f78d6aa50ecae59ae742ba33
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910010"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251834"
 ---
 # <a name="url-path-based-routing-overview"></a>Přehled směrování na základě cest URL
 
@@ -20,14 +20,14 @@ Směrování na základě cesty URL umožňuje směrovat provoz do fondů back-e
 
 Jedním ze scénářů je směrování požadavků na různé typy obsahu do různých fondů back-endové serveru.
 
-V následujícím příkladu Application Gateway obsluhuje provoz pro contoso.com ze tří fondů back-end serverů, například: Videofondserveru, Obrazkyfondserveru a Vychozifondserveru.
+V následujícím příkladu služba Application Gateway obsluhuje provoz pro contoso.com ze tří fondů back-endového serveru, například: VideoFondServeru, ObrazkyFondServeru a VychoziFondServeru.
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-Požadavky na http\://contoso.com/video/* jsou směrovány do videofondserveru a http\://contoso.com/images/* jsou směrovány do obrazkyfondserveru. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
+Požadavky na http\://contoso.com/video/* jsou směrovány do Videofondserveru a http\://contoso.com/images/* jsou směrovány na Obrazkyfondserveru. Pokud nevyhovuje žádný vzor cesty, vybere se VychoziFondServeru.
 
 > [!IMPORTANT]
-> Pravidla se zpracovávají v pořadí, v jakém jsou uvedena na portálu. Důrazně doporučujeme nakonfigurovat naslouchací procesy pro více webů před konfigurací základního naslouchacího procesu.  Tím se zajistí směrování provozu do správného back-endu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem.
+> V případě SKU V1 se pravidla zpracovávají v pořadí, v jakém jsou uvedena na portálu. Pokud je základní naslouchací proces uveden jako první a odpovídá příchozímu požadavku, požadavek se zpracuje tímto naslouchacím procesem. V případě SKU verze V2 mají přesné shody vyšší prioritu. Před konfigurací základního naslouchacího procesu se ale důrazně doporučuje nakonfigurovat nejprve naslouchací procesy pro více webů. Tím se zajistí směrování provozu do správného back-endu.
 
 ## <a name="urlpathmap-configuration-element"></a>Konfigurační prvek UrlPathMap
 
@@ -121,6 +121,6 @@ Fragment pravidla PathBasedRouting:
 ]
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Po získání informací o směrování obsahu na základě adresy URL přejděte k tématu [Vytvoření služby Application Gateway používající směrování na základě adresy URL](create-url-route-portal.md) a vytvořte službu Application Gateway s pravidly směrování adres URL.

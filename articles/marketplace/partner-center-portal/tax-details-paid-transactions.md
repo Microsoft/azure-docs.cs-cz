@@ -1,18 +1,18 @@
 ---
 Description: Pokud chcete pochopit finanční požadavky na výběr ceny, důsledky výběru a finanční zodpovědnost, přečtěte si v následujících tabulkách země a oblasti distribuce.
 title: Podrobnosti o dani | Azure Marketplace
-ms.date: 12/10/2019
+ms.date: 2/13/2020
 ms.topic: article
 author: MaggiePucciEvans
 manager: evansma
 ms.author: evansma
 ms.service: marketplace
-ms.openlocfilehash: a5d11216b43a1361e4f8d108ce6d289e67e31e0a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: cd580c43aa25dd4cc33ceb7138785a94a021b771
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933570"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210444"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Podrobnosti o daních pro komerční vydavatele na webu Marketplace
 
@@ -22,7 +22,7 @@ Chcete-li porozumět finančním hlediskům pro výběr ceny a daňové zodpově
 > Úpravy rozšíření pro obchod můžou mít dopad na výběr v omezené sadě zemí nebo oblastí. Další podrobnosti o nastaveních rozšíření pro obchod a na trzích, kde se vztahuje, najdete v tématu [smlouva Microsoft Azure Marketplace vydavatele](https://go.microsoft.com/fwlink/p/?LinkID=699560) a seznam ovlivněných zemí nebo oblastí.
 
 > [!IMPORTANT]
-> Daňová zodpovědnost za země/oblasti a okolnosti prodejce (jak je popsáno [níže](#reseller-countriesregions)) se zabývá příslušnou částí [Microsoft Azure Marketplace smlouvy vydavatele](https://go.microsoft.com/fwlink/p/?LinkID=699560), a to bez ohledu na informace v tabulce níže.
+> Daňová zodpovědnost za země/oblasti a okolnosti prodejce (jak je popsáno [níže](#reseller-countriesregions)) se zabývá příslušnou [smlouvou Microsoft Azure Marketplace vydavatele](https://go.microsoft.com/fwlink/p/?LinkID=699560), a to bez ohledu na informace v tabulce níže.
 > Všimněte si, že sloupec **násobitele výběrů** se vztahuje pouze na vydavatele. Daňové tarify uvedené v tomto sloupci se mohou kdykoli změnit a společnost Microsoft nemůže zaručit, že sazby v tabulkách níže budou vždy přesné.
 
 
@@ -63,7 +63,7 @@ Chcete-li porozumět finančním hlediskům pro výběr ceny a daňové zodpově
 | Bouvet                    | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Brazílie                           | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.  | Cena minus za Store                 | Vydavatel          |
 | Britské Panenské ostrovy           | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
-| Brunej                           | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
+| Sultanát                           | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Bulharsko                         | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.       | Cena minus 20% daň, mínus za Store   | Microsoft          |
 | Burkina Faso                     | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Burundi                          | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
@@ -77,10 +77,10 @@ Chcete-li porozumět finančním hlediskům pro výběr ceny a daňové zodpově
 | Chile                            | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.  | Cena minus za Store                 | Vydavatel          |
 | Čína                            | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.  | Cena minus za Store                 | Vydavatel          |
 | Vánoční ostrov                 | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
-| Kokosové ostrovy          | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
+| Kokosové (Keelingovy) ostrovy          | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Kolumbie                         | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 16% DPH, mínus za Store  | Microsoft          |
 | Komory                          | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
-| Kongo                            | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
+| Svahilština                            | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Konžská demokratická republika                      | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Cookovy ostrovy                     | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Kostarika                       | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.  | Cena minus za Store                 | Vydavatel          |
@@ -140,7 +140,7 @@ Chcete-li porozumět finančním hlediskům pro výběr ceny a daňové zodpově
 | Kazachstán                       | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Keňa                            | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.  | Cena minus za Store                 | Vydavatel          |
 | Kiribati                         | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
-| Korea                            | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 10% daň, mínus za Store | Microsoft          |
+| Jižní Korea                            | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 10% daň, mínus za Store | Microsoft          |
 | Kuvajt                           | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Kyrgyzstán                       | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Laos                             | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
@@ -152,7 +152,7 @@ Chcete-li porozumět finančním hlediskům pro výběr ceny a daňové zodpově
 | Lichtenštejnsko                    | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 8% DPH, mínus za Store  | Microsoft          |
 | Litva                        | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 21% daň, mínus za Store | Microsoft          |
 | Lucembursko                       | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 17% daň, mínus za Store | Microsoft          |
-| Macao – zvláštní administrativní oblast                        | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
+| Macao – zvláštní správní oblast                        | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Makedonie (bývalá republika Jugoslávie)                | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Madagaskar                       | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Malawi                           | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
@@ -184,7 +184,7 @@ Chcete-li porozumět finančním hlediskům pro výběr ceny a daňové zodpově
 | Niger                            | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Nigérie                          | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Niue                             | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
-| Norfolk                   | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
+| Ostrov Norfolk                   | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Severní Mariany         | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Norsko                           | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 25% DPH, mínus za Store | Microsoft          |
 | Omán                             | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
@@ -192,7 +192,7 @@ Chcete-li porozumět finančním hlediskům pro výběr ceny a daňové zodpově
 | Palau                            | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Palestinská samospráva            | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Panama                           | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
-| Papua-Nová Guinea                 | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
+| Papua – Nová Guinea                 | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Paraguay                         | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Peru                             | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store            | Vydavatel          |
 | Filipíny                      | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
@@ -215,7 +215,7 @@ Chcete-li porozumět finančním hlediskům pro výběr ceny a daňové zodpově
 | Saúdská Arábie                     | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus 5% daň, mínus za Store                 | Microsoft          |
 | Senegal                          | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Srbsko                           | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 20% daň, mínus za Store | Microsoft          |
-| Seychely                       | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
+| Seychel                       | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Sierra Leone                     | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Singapur                        | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Svatý Martin (dánská část)        | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
@@ -223,17 +223,17 @@ Chcete-li porozumět finančním hlediskům pro výběr ceny a daňové zodpově
 | Slovinsko                         | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 22% DPH, mínus poplatek za Store | Microsoft          |
 | Šalamounovy ostrovy                  | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Somálsko                          | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
-| Jihoafrická republika                     | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 15% DPH, mínus za Store  | Microsoft          |
+| Jižní Afrika                     | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 15% DPH, mínus za Store  | Microsoft          |
 | Španělsko                            | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 21% daň, mínus za Store | Microsoft          |
 | Srí Lanka                        | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Surinam                         | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
-| Špicberky a Jan Mayen                 | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
+| Svalbard a Jan Mayen                 | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Svazijsko                        | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Švédsko                           | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 25% DPH, mínus za Store | Microsoft          |
 | Švýcarsko                      | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 8% DPH, mínus za Store  | Microsoft          |
 | Tchaj-wan                           | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. Daně se odečtou od ceny před vyvýběrem.              | Cena minus 5% daň, mínus za Store  | Microsoft          |
 | Tádžikistán                       | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
-| Tanzanie                         | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
+| Oblasti                         | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Thajsko                         | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Timor Leste                      | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Togo                             | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
@@ -275,11 +275,11 @@ Následující platí pouze pro Azure Marketplace vydavatelů bez ohledu na coko
 ## <a name="mixed-remittance-countriesregions-for-publishers"></a>Smíšené země nebo oblasti pro převod pro vydavatele
 
 
-Někteří finanční partneři Microsoftu mohou shromažďovat a hradit prodej, použití, zboží a služby, přidané hodnoty nebo podobné daně, pokud jsou k dispozici pro získání vašich aplikací nebo produktů v aplikaci prostřednictvím Storu v zemích nebo oblastech uvedených níže. V [sestavách](payout-summary.md#transaction-history-download-export) , které společnost Microsoft zpřístupňuje, budete identifikovat transakce, pro které má fakturační partner shromažďovat prodej, použití, zboží a služby, přidané hodnoty nebo podobné daně, které se vztahují na pořízení vašich aplikací nebo produktů v aplikaci prostřednictvím Storu. S výjimkou transakcí popsaných v těchto výkazech nebude společnost Microsoft ani její poskytovatelé fakturačních služeb odvádět žádné daně z prodeje, použití, zboží a služeb, přidané hodnoty nebo podobné daně vztahující se na platby Zákazníků za vaše Aplikace či Produkty z aplikace (IAP) v těchto zemích. Na vaší straně leží zodpovědnost za kontrolu všech vám předložených výkazů a za stanovení a vyrovnání všech závazků z nich plynoucích ohledně registrace, výběru a úhrady daní vztahujících se na transakce zahrnující vaše Aplikace či Produkty z aplikace (IAP).
+Někteří finanční partneři Microsoftu mohou shromažďovat a hradit prodej, použití, zboží a služby, přidané hodnoty nebo podobné daně, pokud jsou k dispozici pro získání vašich aplikací nebo produktů v aplikaci prostřednictvím Storu v zemích nebo oblastech uvedených níže. V [sestavách](payout-summary.md#transaction-history-download-export) , které společnost Microsoft zpřístupňuje, budete identifikovat transakce, pro které má fakturační partner shromažďovat prodej, použití, zboží a služby, přidané hodnoty nebo podobné daně, které se vztahují na pořízení vašich aplikací nebo produktů v aplikaci prostřednictvím Storu. S výjimkou transakcí popsaných v takových sestavách nepřijde žádný z prodejů, použití, zboží a služeb, přidané hodnoty ani jiné podobné daně v souvislosti s akvizicí vašich aplikací nebo v aplikaci v souvislosti se zákazníky. Produkt (y) v těchto zemích. Zodpovídáte za kontrolu sestav poskytovaných vám a určení a dodržování svých závazků, pokud jsou k dispozici, k registraci, shromáždění a uhrazení daní v souvislosti s transakcemi zahrnujícími vaše aplikace nebo produkty v aplikaci.
 
 | Smíšené země/oblasti pro úhrady |
 |------------------------------------|
-| Jihoafrická republika                       |
+| Jižní Afrika                       |
 | Vietnam                            |
 
 ## <a name="reseller-countriesregions"></a>Země/oblasti prodejce

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0912316d1c41f46e5dba74b58017f4fd5e8ed529
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 8d68d2e83bba055e92b99ee9294daf6f2395d8dc
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909118"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206292"
 ---
 ### <a name="portal"></a>Portál
 
@@ -30,22 +30,22 @@ Nastavení klíčů spravovaných zákazníkem pro vaše disky bude vyžadovat, 
     > Váš Trezor klíčů Azure, sada šifrování disků, virtuální počítač, disky a snímky musí být všechny ve stejné oblasti a předplatném, aby nasazení bylo úspěšné.
 
 1. Vyberte **+ Přidat** a vytvořte novou Key Vault.
-1. Vytvořte novou skupinu prostředků
+1. Vytvoření nové skupiny prostředků
 1. Zadejte název trezoru klíčů, vyberte oblast a vyberte cenovou úroveň.
 1. Vyberte **zkontrolovat + vytvořit**, ověřte své volby a pak vyberte **vytvořit**.
 
-    ![SSE-Create-a-Key-Vault. png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-vault.png)
+    ![Snímek obrazovky s prostředím pro vytváření Azure Key Vault Zobrazení konkrétních hodnot, které vytvoříte](media/virtual-machines-disk-encryption-portal/sse-create-a-key-vault.png)
 
 1. Až se váš Trezor klíčů dokončí, vyberte ho.
 1. V části **Nastavení**vyberte **klíče** .
 1. Vybrat **vygenerovat/importovat**
 
-    ![SSE-Key-Vault-Generate-Settings. png](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
+    ![Snímek obrazovky s podoknem Key Vaultch nastavení prostředků Zobrazuje tlačítko pro generování/import v nastavení.](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
 1. U obou **typů klíčů** ponechte nastavenou hodnotu **RSA** a **velikost klíče RSA** na hodnotu **2080**.
 1. Vyplňte zbývající výběr podle vašich pokynů a pak vyberte **vytvořit**.
 
-    ![SSE-Create-a-Key-Generate. png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
+    ![Snímek obrazovky okna vytvořit klíč, který se zobrazí po výběru tlačítka pro generování/import](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
 
 #### <a name="setting-up-your-disk-encryption-set"></a>Nastavení sady pro šifrování disku
 
@@ -54,7 +54,7 @@ Chcete-li vytvořit a nakonfigurovat sady pro šifrování disků, je nutné pou
 1. Otevřete [odkaz sady Disk Encryption](https://aka.ms/diskencryptionsets).
 1. Vyberte **+ Přidat**.
 
-    ![SSE-Create-Disk-Encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
+    ![Snímek obrazovky s hlavní obrazovkou portálu pro šifrování disků Zvýraznění tlačítka Přidat](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
 1. Vyberte skupinu prostředků, pojmenujte sadu šifrování a vyberte stejnou oblast jako Trezor klíčů.
 1. Vyberte **Trezor klíčů a klíč**.
@@ -62,15 +62,15 @@ Chcete-li vytvořit a nakonfigurovat sady pro šifrování disků, je nutné pou
 1. Stiskněte **Vybrat**.
 1. Vyberte **zkontrolovat + vytvořit** a pak **vytvořit**.
 
-    ![SSE-disk-ENC-set-Blade-Key. png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
+    ![Snímek obrazovky okna pro vytvoření šifrování disku Zobrazuje se předplatné, skupina prostředků, název sady šifrování disku, oblast a selektor klíčů a trezoru klíčů.](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
 
 1. Jakmile se dokončí vytváření, otevřete sadu šifrování disku a vyberte výstrahu, která se objeví.
 
-    ![SSE-disk-ENC-Alert-Fix. png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-alert-fix.png)
+    ![Snímek obrazovky s automaticky otevírané okno výstrahy: Pokud chcete přidružit disk, obrázek nebo snímek k sadě pro šifrování disků, musíte udělit oprávnění k trezoru klíčů. Pokud chcete pokračovat, vyberte tuto výstrahu.](media/virtual-machines-disk-encryption-portal/sse-disk-enc-alert-fix.png)
 
 Měla by se zobrazit a úspěšně zobrazit dvě oznámení. Díky tomu budete moct použít sadu Disk Encryption s vaším trezorem klíčů.
 
-![disk-ENC-Notification-success. png](media/virtual-machines-disk-encryption-portal/disk-enc-notification-success.png)
+![Snímek obrazovky s úspěšným oprávněním a přiřazením role pro váš Trezor klíčů](media/virtual-machines-disk-encryption-portal/disk-enc-notification-success.png)
 
 #### <a name="deploy-a-vm"></a>Nasazení virtuálního počítače
 
@@ -82,13 +82,13 @@ Proces nasazení virtuálního počítače se podobá standardnímu procesu nasa
 1. Na kartě **základní** vyberte stejnou oblast jako sadu šifrování disku a Azure Key Vault.
 1. Zadejte další hodnoty na kartě **Basic** , jak chcete.
 
-    ![SSE-Create-a-VM-region. png](media/virtual-machines-disk-encryption-portal/sse-create-a-vm-region.png)
+    ![Snímek obrazovky s možností vytváření virtuálních počítačů s zvýrazněnou hodnotou oblasti](media/virtual-machines-disk-encryption-portal/sse-create-a-vm-region.png)
 
 1. Na kartě **disky** vyberte možnost **šifrování v klidovém kódu s klíčem spravovaným zákazníkem**.
 1. V rozevíracím seznamu **sada Encryption disk** vyberte sadu šifrování disku.
 1. Vyberte zbývající výběr.
 
-    ![SSE-Create-VM-Select-CMK-Encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
+    ![Snímek obrazovky s prostředím pro vytváření virtuálních počítačů, okno disky Zvýrazněný rozevírací seznam sady Disk Encryption](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
 
 #### <a name="enable-on-an-existing-disk"></a>Povolit na stávajícím disku
 
@@ -101,16 +101,16 @@ Chcete-li spravovat a konfigurovat šifrování disku na stávajících discích
 1. Přejděte k virtuálnímu počítači, který je ve stejné oblasti jako jedna ze sad pro šifrování disků.
 1. Otevřete virtuální počítač a vyberte **zastavit**.
 
-    ![sse-stop-VM-to-encrypt-disk. png](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)
+    ![Snímek obrazovky s hlavním překryvem pro ukázkový virtuální počítač Se zvýrazněným tlačítkem STOP](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)
 
 1. Po ukončení činnosti virtuálního počítače vyberte **disky** a pak vyberte disk, který chcete zašifrovat.
 
-    ![SSE-existing-disk-SELECT. png](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
+    ![Snímek obrazovky s ukázkovým VIRTUÁLNÍm počítačem a otevře se okno disky. Disk s operačním systémem se zvýrazní, jako příklad disku, který chcete vybrat.](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
 
 1. Vyberte **šifrování** a vyberte možnost **šifrování v klidovém kódu pomocí klíče spravovaného zákazníkem** a potom v rozevíracím seznamu vyberte svou sadu Disk Encryption.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
-    ![SSE-Encrypt-existing-disk-Customer-Managed-Key. png](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
+    ![Snímek obrazovky s ukázkovým diskem s operačním systémem. Otevře se okno šifrování, vybral se šifrování v klidovém formátu s klíčem spravovaným zákazníkem a také vaše příklad Azure Key Vault. Po provedení těchto výběrů je vybráno tlačítko Uložit.](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
 
 1. Tento postup opakujte pro všechny ostatní disky připojené k virtuálnímu počítači, který chcete zašifrovat.
 1. Pokud disky dokončí přepínání na klíče spravované zákazníkem a žádné další připojené disky nechcete zašifrovat, můžete svůj virtuální počítač spustit.

@@ -1,19 +1,19 @@
 ---
 title: Formát dat geografického JSON pro geografickou plot | Mapy Microsoft Azure
 description: V tomto článku se dozvíte, jak připravit data o geografickosti, která je možné použít ve službě Microsoft Azure Maps GET a POST API pro geografické rozvržení.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 02/14/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: f853962bba7302affd78d5ef267460893ea80a33
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 7d1c9a1587771a020f5c9f89e2497a25eb1bba70
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911593"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210017"
 ---
 # <a name="geofencing-geojson-data"></a>Geografická data geografických zón
 
@@ -30,11 +30,11 @@ Data pro geografickou nebo množinu geografických plotů jsou reprezentována o
 * `expiredTime` je datum a čas vypršení platnosti dat geografických zón. Pokud je hodnota `userTime` v žádosti pozdější než tato hodnota, příslušná data o geografickou ochraně se považují za data, která vypršela, a nedotazují se na ně. V takovém případě se geometryId těchto dat o geografickém prostředí zahrne do pole `expiredGeofenceGeometryId` v rámci odpovědi na základě geografické ploty.
 * `validityPeriod` je seznam časových období platnosti geografické zóny. Pokud hodnota `userTime` v žádosti spadá mimo období platnosti, považují se odpovídající data o geografickou oblast jako neplatná a nebudou se dotazovat. GeometryId těchto geografických dat je zahrnutých do pole `invalidPeriodGeofenceGeometryId` v rámci odpovědi geografického ohraničení. V následující tabulce jsou uvedeny vlastnosti elementu validityPeriod.
 
-| Name (Název) | Typ | Požaduje se  | Popis |
+| Název | Typ | Požadováno  | Popis |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | Datetime  | true | Datum a čas zahájení období platnosti. |
-| endTime   | Datetime  | true |  Datum a čas konce období platnosti. |
-| recurrenceType | string | false |   Typ opakování období. Hodnota může být `Daily`, `Weekly`, `Monthly`nebo `Yearly`. Výchozí hodnota je `Daily`.|
+| startTime | Datum a čas  | true | Datum a čas zahájení období platnosti. |
+| endTime   | Datum a čas  | true |  Datum a čas konce období platnosti. |
+| recurrenceType | řetězec | false |   Typ opakování období. Hodnota může být `Daily`, `Weekly`, `Monthly`nebo `Yearly`. Výchozí hodnota je `Daily`.|
 | businessDayOnly | Logická hodnota | false |  Určuje, jestli jsou data platná jenom během pracovních dnů. Výchozí hodnota je `false`.|
 
 

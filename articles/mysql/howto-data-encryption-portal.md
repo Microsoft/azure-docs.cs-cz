@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: ba1ad7c533ea1dc9e88c8337373e607db653ac24
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 42b7ceb86e360f192c55fc1090f291f5b7fe7ac5
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048542"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252021"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Šifrování dat pro Azure Database for MySQL pomocí Azure Portal
 
@@ -25,7 +25,7 @@ Naučte se používat Azure Portal k nastavení a správě šifrování dat pro 
   * [Obnovitelné odstranění](../key-vault/key-vault-ovw-soft-delete.md)
 
     ```azurecli-interactive
-    az resource update --id $(az keyvault show --name \ <key_vault_name> -test -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
+    az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
   * [Vyprázdnit chráněné](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)

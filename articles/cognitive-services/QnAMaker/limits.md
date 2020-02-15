@@ -2,13 +2,13 @@
 title: Omezení a hranice – QnA Maker
 description: Nástroj QnA Maker má meta omezení pro části znalostní báze knowledge base a služby. Je důležité udržovat znalostní báze v rámci tyto limity, aby bylo možné testovat a publikovat.
 ms.topic: article
-ms.date: 01/23/2020
-ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.date: 02/14/2020
+ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760228"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252004"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Omezení nástroje QnA Maker znalostní báze knowledge base a hranice
 
@@ -18,7 +18,7 @@ Níže uvedené limity QnA Maker jsou kombinací [omezení cenové úrovně Azur
 
 Maximální počet základů znalostní báze je založený na [omezeních vrstvy Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity).
 
-|**Úroveň Kognitivní hledání Azure** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD, HIGH DENSITY**|
+|**Úroveň Kognitivní hledání Azure** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Maximální povolený počet publikovaných základů znalostí|2|14|49|199|199|2,999|
 
@@ -55,11 +55,13 @@ Maximální počet přímých odkazů, které lze procházet pro extrakci QnAs z
 
 ## <a name="metadata-limits"></a>Omezení metadat
 
+Metadata se ukládají a porovnávají v malých malých písmenech.
+
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Podle cenové úrovně Azure Kognitivní hledání
 
 Maximální počet polí metadat na bázi znalostní báze je založený na **[omezeních vaší vrstvy Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** .
 
-|**Úroveň Kognitivní hledání Azure** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD, HIGH DENSITY**|
+|**Úroveň Kognitivní hledání Azure** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |Pole maximální metadat na službu QnA Maker (v rámci všech znalostní báze)|1 000|100 *|1 000|1 000|1 000|1 000|
 
@@ -69,7 +71,7 @@ Délka a přijatelné znaky pro název a hodnotu metadat jsou uvedeny v následu
 
 |Položka|Povolené znaky|Porovnávání vzorů regulárního výrazu|Maximální počet znaků|
 |--|--|--|--|
-|Name (Název)|Poskytuje<br>alfanumerické znaky (písmena a číslice)<br>`_` (podtržítko)|`^[a-zA-Z0-9_]+$`|100|
+|Název|Poskytuje<br>alfanumerické znaky (písmena a číslice)<br>`_` (podtržítko)|`^[a-zA-Z0-9_]+$`|100|
 |Hodnota|Umožňuje vše kromě<br>`:` (dvojtečka)<br>`|` (vertikální svislá čára)|`^[^:|]+$`|500|
 |||||
 
@@ -87,13 +89,13 @@ Celkové limitů na obsah znalostní báze knowledge base:
 * Adresa URL/stránka HTML: 1 000 000 znaků
 
 ## <a name="create-knowledge-base-call-limits"></a>Vytvoření znalostní báze volání omezení:
-Tyto představují vytvořit omezení pro každou akci znalostní báze; To znamená, že kliknete na *vytvořit KB* nebo volání rozhraní API CreateKnowledgeBase.
+Tyto hodnoty udávají omezení pro každou akci vytvoření znalostní báze. To znamená, že kliknete na *vytvořit KB* nebo zavolat rozhraní CreateKnowledgeBase API.
 * Maximální počet alternativních otázek na odpověď: 300
 * Maximální počet adres URL: 10
 * Maximální počet souborů: 10
 
 ## <a name="update-knowledge-base-call-limits"></a>Aktualizovat omezení volání znalostní báze
-Představují limity pro každou akci aktualizace; To znamená, že kliknete na *uložit a jejich trénování* nebo volání rozhraní API UpdateKnowledgeBase.
+Tyto hodnoty udávají omezení pro každou akci aktualizace. To znamená, že kliknete na *Uložit a naučíte* se volat rozhraní UpdateKnowledgeBase API.
 * Délka názvu každého zdroje: 300
 * Maximální počet přidaných nebo odstraněných alternativních otázek: 300
 * Maximální počet polí metadat přidána nebo odstraněna: 10

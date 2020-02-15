@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 16ba90aab52c00f77af590f854217cd989df53b3
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894797"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251902"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database a řízení přístupu k síti v datovém skladu
 
@@ -113,7 +113,7 @@ Při zkoumání Virtual Network pravidel brány firewall Pamatujte na následuj�
 
 **Podsíť:** Virtuální síť obsahuje **podsítě**. Všechny virtuální počítače Azure, které jste přiřadili k podsítím. Jedna podsíť může obsahovat několik virtuálních počítačů nebo jiných výpočetních uzlů. Výpočetní uzly, které jsou mimo vaši virtuální síť, nemají přístup k virtuální síti, pokud nenastavíte zabezpečení tak, aby umožňovalo přístup.
 
-**Koncový bod služby Virtual Network:** [Virtual Network koncový bod služby] [VM-Virtual-Network-Service-Endpoints-Overview-649d] je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. V tomto článku se zajímá název typu **Microsoft. SQL**, který odkazuje na službu Azure s názvem SQL Database.
+**Koncový bod služby Virtual Network:** [Koncový bod služby Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md) je podsíť, jejíž hodnoty vlastností zahrnují jeden nebo více formálních názvů typů služeb Azure. V tomto článku se zajímá název typu **Microsoft. SQL**, který odkazuje na službu Azure s názvem SQL Database.
 
 **Pravidlo virtuální sítě:** Pravidlo virtuální sítě pro server SQL Database je podsíť, která je uvedená v seznamu řízení přístupu (ACL) vašeho serveru SQL Database. Aby byl v seznamu ACL pro váš SQL Database, podsíť musí obsahovat název typu **Microsoft. SQL** . Pravidlo virtuální sítě přikáže serveru SQL Database, aby přijímal komunikaci z každého uzlu, který je v podsíti.
 
@@ -122,7 +122,7 @@ Při zkoumání Virtual Network pravidel brány firewall Pamatujte na následuj�
 
 Brána firewall pro Azure SQL Server umožňuje zadat rozsahy IP adres, ze kterých se SQL Database přijímá komunikace. Tento přístup je v pořádku pro stabilní IP adresy, které jsou mimo privátní síť Azure. Virtuální počítače v privátní síti Azure ale mají nakonfigurovanou *dynamickou* IP adresu. Dynamické IP adresy se můžou změnit, když se virtuální počítač restartuje, a zase ověří pravidlo brány firewall založené na protokolu IP. V provozním prostředí by se Folly zadat dynamickou IP adresu v pravidle brány firewall.
 
-Toto omezení můžete obejít tak, že získáte *statickou* IP adresu pro virtuální počítač. Podrobnosti najdete v tématu [konfigurace privátních IP adres pro virtuální počítač pomocí Azure Portal] [VM-Configure-Private-IP-addresses-for-a-Virtual-Machine-using-the-Azure-Portal-321w]. Přístup ke statickým IP adresám se ale může obtížně spravovat a při velkém rozsahu je nákladný. 
+Toto omezení můžete obejít tak, že získáte *statickou* IP adresu pro virtuální počítač. Podrobnosti najdete v tématu [Konfigurace privátních IP adres pro virtuální počítač pomocí Azure Portal](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Přístup ke statickým IP adresám se ale může obtížně spravovat a při velkém rozsahu je nákladný. 
 
 Pravidla virtuální sítě jsou jednodušší alternativou ke zřízení a správě přístupu z konkrétní podsítě, která obsahuje vaše virtuální počítače.
 

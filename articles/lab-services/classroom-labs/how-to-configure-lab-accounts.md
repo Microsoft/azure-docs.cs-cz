@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 597bbfdc35c556b5c75968084c01ac222fc468f4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37a657093fd55ce752095417fe744f83946962db
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718082"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210567"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurace účtů testovacího prostředí v Azure Lab Services 
 V Azure Lab Services účet testovacího prostředí je kontejner pro spravované typy testovacích prostředí, jako je například učeben Labs. Správce nastaví účet testovacího prostředí pomocí Azure Lab Services a poskytne přístup k vlastníkům testovacího prostředí, kteří můžou v účtu vytvářet Labs. Tento článek popisuje, jak vytvořit účet testovacího prostředí, Zobrazit všechny účty testovacího prostředí nebo odstranit účet testovacího prostředí.
@@ -37,18 +37,6 @@ Pokud chcete připojit virtuální síť jako rovnocennou síť k virtuální s�
 Laboratoře vytvořené v tomto účtu jsou připojené k vybrané virtuální síti. Můžou mít přístup k prostředkům ve vybrané virtuální síti. Další informace najdete v tématu [připojení sítě testovacího prostředí k partnerské virtuální síti v Azure Lab Services](how-to-connect-peer-virtual-network.md).
 
 Když vyberete virtuální síť pro pole **rovnocenná virtuální síť** , možnost **Povolení testovacího prostředí pro výběr umístění testovacího** prostředí je zakázaná. Je to proto, že laboratoře v účtu testovacího prostředí musí být ve stejné oblasti jako účet testovacího prostředí, aby se připojovaly k prostředkům v partnerské virtuální síti. 
-
-## <a name="allow-lab-creator-to-pick-location-for-the-lab"></a>Umožňuje tvůrci testovacího prostředí vybrat umístění pro testovací prostředí.
-Pomocí následujících kroků můžete programu Lab Creator vytvořit testovací prostředí v jiném umístění než je umístění účtu testovacího prostředí: 
-
-1. Na stránce **účet testovacího prostředí** v nabídce vlevo vyberte **Konfigurace Labs** .
-2. Pro možnost **Povolit autor testovacího prostředí vybrat umístění testovacího prostředí**vyberte možnost **povoleno** , pokud chcete, aby autor testovacího prostředí mohl vybrat umístění pro testovací prostředí. Pokud je tato verze zakázaná, laboratoře se automaticky vytvoří ve stejném umístění, ve kterém účet testovacího prostředí existuje. 
-    
-    Toto pole je zakázáno, když vyberete virtuální síť pro pole **partnerské virtuální sítě** . Je to proto, že laboratoře v účtu testovacího prostředí musí být ve stejné oblasti jako účet testovacího prostředí pro přístup k prostředkům v partnerské virtuální síti. 
-1. Na panelu nástrojů vyberte **Uložit**. 
-
-    ![Konfigurovat nastavení umístění testovacího prostředí](../media/how-to-manage-lab-accounts/labs-configuration-page-lab-location.png)
-
 
 ## <a name="specify-an-address-range-for-vms-in-the-lab"></a>Zadejte rozsah adres pro virtuální počítače v testovacím prostředí.
 Následující postup obsahuje kroky k určení rozsahu adres pro virtuální počítače v testovacím prostředí. Pokud aktualizujete rozsah, který jste předtím zadali, vztahuje se upravený rozsah adres pouze na virtuální počítače, které byly vytvořeny po provedení změny. 

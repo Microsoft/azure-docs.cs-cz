@@ -9,23 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 462d820824ad6c53ad4b93ad5c88c66128619467
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933653"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208552"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Přidání bublinové vrstvy do mapy
 
-V tomto článku se dozvíte, jak vykreslovat data bodů ze zdroje dat jako bublinovou vrstvu na mapě. Bubliny vrstev vykreslí body jako kružnice na mapě s použitím poloměru s pevným pixelem. 
+V tomto článku se dozvíte, jak vykreslovat data bodů ze zdroje dat jako bublinovou vrstvu na mapě. Bubliny vrstev vykreslí body jako kružnice na mapě s pevným poloměrem v pixelech. 
 
 > [!TIP]
 > Bublinové vrstvy ve výchozím nastavení budou kreslit souřadnice všech geometrií ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykreslí pouze funkce geometrie bodu, nastavte vlastnost `filter` vrstvy na `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`, pokud chcete zahrnout i funkce systému MultiPoint.
 
 ## <a name="add-a-bubble-layer"></a>Přidání vrstvy bublin
 
-Následující kód načte pole bodů do zdroje dat. Datové body jsou následně připojeny k [bublinové vrstvě](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). Bublinová vrstva vykresluje poloměr každého bublinu s pěti pixely, barvou výplně bílé, barvy tahu modrou a šířkou tahu šest pixelů. 
+Následující kód načte pole bodů do zdroje dat. Datové body se pak připojí k [bublinové vrstvě](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest). Bublinová vrstva vykresluje poloměr každého bublinu s pěti obrazovými body a barvou výplně bílá. A, Barva tahu modrou a šířka tahu šest pixelů. 
 
 ```javascript
 //Add point locations.
@@ -62,7 +62,7 @@ Níže je uvedená ukázka kompletního spuštění kódu výše uvedené funkce
 
 ## <a name="show-labels-with-a-bubble-layer"></a>Zobrazit popisky s bublinovou vrstvou
 
-Následující kód ukazuje, jak použít bublinovou vrstvu pro vykreslení bodu na mapě a vrstvu symbolů pro vykreslení popisku. Chcete-li skrýt ikonu vrstvy symbolů, nastavte vlastnost `image` možností ikony na `'none'`.
+Tento kód ukazuje, jak použít bublinovou vrstvu pro vykreslení bodu na mapě. A jak použít vrstvu symbolů pro vykreslení popisku. Chcete-li skrýt ikonu vrstvy symbolů, nastavte vlastnost `image` možností ikony na `'none'`.
 
 <br/>
 

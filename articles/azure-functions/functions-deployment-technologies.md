@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: 7b95fae3c7b713a9f97c31578a3bb24a9062fa2e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029856"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210153"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -33,7 +33,7 @@ Každý plán má jiné chování. Ne všechny technologie nasazení jsou k disp
 | Nasazení zip |✔|✔|✔|✔|✔|✔|
 | Kontejner Docker | | | | |✔|✔|
 | Web Deploy |✔|✔|✔| | | |
-| Správa zdrojového kódu |✔|✔|✔| |✔|✔|
+| Správy zdrojového kódu |✔|✔|✔| |✔|✔|
 | Místní Git<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Cloudová synchronizace<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Protokol FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
@@ -51,7 +51,7 @@ Některé klíčové koncepty jsou zásadní pro porozumění způsobu, jakým n
 Při změně jakékoli aktivační události musí infrastruktura funkcí znát změny. K synchronizaci dochází automaticky pro mnoho technologií nasazení. V některých případech je však nutné triggery ručně synchronizovat. Když nasadíte aktualizace odkazem na adresu URL externího balíčku, místní Git, synchronizace cloudu nebo FTP, musíte triggery ručně synchronizovat. Triggery můžete synchronizovat jedním ze tří způsobů:
 
 * Restartujte aplikaci Function App v Azure Portal
-* Odešlete požadavek HTTP POST `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` pomocí [hlavního klíče](functions-bindings-http-webhook.md#authorization-keys).
+* Odešlete požadavek HTTP POST `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` pomocí [hlavního klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
 * Odeslat požadavek HTTP POST do `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01`. Zástupné symboly nahraďte ID předplatného, názvem skupiny prostředků a názvem vaší aplikace Function App.
 
 ### <a name="remote-build"></a>Vzdálené sestavení
@@ -133,7 +133,7 @@ Nasazení webu balíčky a nasadí aplikace Windows na libovolný server služby
 
 >__Kdy ji použít:__ Nasazení webu se podporuje a nemá žádné problémy, ale upřednostňovaným mechanismem je [nasazení zip s povoleným spuštěním z balíčku](#zip-deploy). Další informace najdete v příručce pro [vývoj sady Visual Studio](functions-develop-vs.md#publish-to-azure).
 
-### <a name="source-control"></a>Správa zdrojového kódu
+### <a name="source-control"></a>Správy zdrojového kódu
 
 Použijte správu zdrojového kódu k připojení aplikace Function App k úložišti Git. Aktualizace kódu v tomto úložišti aktivuje nasazení. Další informace najdete na [wikiwebu Kudu](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments).
 

@@ -1,24 +1,25 @@
 ---
-title: Aktivační událost Event Grid pro Azure Functions
+title: Azure Event Grid vazby pro Azure Functions
 description: Pochopte, jak zpracovávat události Event Grid v Azure Functions.
 author: craigshoemaker
 ms.topic: reference
-ms.date: 09/04/2018
+ms.date: 02/03/2020
 ms.author: cshoe
-ms.openlocfilehash: 812875be47cabdd23e6307403bb95d8d6ff174ec
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.custom: fasttrack-edit
+ms.openlocfilehash: df851a79ef3fbb7473e100619f58b7f35bce1d45
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77167508"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212010"
 ---
-# <a name="event-grid-trigger-for-azure-functions"></a>Aktivační událost Event Grid pro Azure Functions
+# <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Event Grid vazby pro Azure Functions
 
 Tento článek vysvětluje, jak zpracovávat události [Event Grid](../event-grid/overview.md) v Azure Functions. Podrobnosti o tom, jak zpracovávat Event Grid zprávy v koncovém bodu HTTP, najdete v tématu [příjem událostí do koncového bodu http](../event-grid/receive-events.md).
 
 Event Grid je služba Azure, která odesílá požadavky HTTP, aby upozornila na události, ke kterým dochází ve *vydavatelích*. Vydavatel je služba nebo prostředek, který tuto událost vytvořil. Například účet Azure Blob Storage je Vydavatel a [odeslání nebo odstranění objektu BLOB je událost](../storage/blobs/storage-blob-event-overview.md). Některé [služby Azure mají integrovanou podporu pro publikování událostí do Event Grid](../event-grid/overview.md#event-sources).
 
-*Obslužné rutiny* událostí přijímají a zpracovávají události. Azure Functions je jedna z několika [služeb Azure, které mají integrovanou podporu pro zpracování Event Gridch událostí](../event-grid/overview.md#event-handlers). V tomto článku se naučíte, jak pomocí triggeru Event Grid vyvolat funkci při přijetí události z Event Grid.
+*Obslužné rutiny* událostí přijímají a zpracovávají události. Azure Functions je jedna z několika [služeb Azure, které mají integrovanou podporu pro zpracování Event Gridch událostí](../event-grid/overview.md#event-handlers). V tomto článku se naučíte, jak pomocí triggeru Event Grid vyvolat funkci, když se z Event Grid přijme událost a použije se výstupní vazba k odeslání událostí do [vlastního tématu Event Grid](../event-grid/post-to-custom-topic.md).
 
 Pokud chcete, můžete použít Trigger HTTP pro zpracování událostí Event Grid; viz [příjem událostí do koncového bodu http](../event-grid/receive-events.md). V současné době nemůžete použít Trigger Event Grid pro aplikaci Azure Functions, když se událost doručí ve [schématu CloudEvents](../event-grid/cloudevents-schema.md#azure-functions). Místo toho použijte Trigger HTTP.
 
@@ -26,7 +27,7 @@ Pokud chcete, můžete použít Trigger HTTP pro zpracování událostí Event G
 
 ## <a name="packages---functions-2x-and-higher"></a>Balíčky – funkce 2. x a vyšší
 
-Aktivační událost Event Grid je k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) , verze 2. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-Functions-eventgrid-Extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) .
+Vazby Event Grid jsou k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. Extensions. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) , verze 2. x. Zdrojový kód balíčku je v úložišti GitHub [Azure-Functions-eventgrid-Extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) .
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -36,7 +37,11 @@ Aktivační událost Event Grid je k dispozici v balíčku NuGet [Microsoft. Azu
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="example"></a>Příklad
+## <a name="trigger"></a>Trigger
+
+Pomocí triggeru funkce můžete reagovat na událost odeslanou Event Grid tématu.
+
+## <a name="trigger---example"></a>Aktivační události – příklad
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -66,7 +71,7 @@ namespace Company.Function
 }
 ```
 
-Další informace najdete v tématu balíčky, [atributy](#attributes), [Konfigurace](#configuration)a [použití](#usage).
+Další informace najdete v tématu balíčky, [atributy](#trigger---attributes), [Konfigurace](#trigger---configuration)a [použití](#trigger---usage).
 
 ### <a name="version-1x"></a>Verze 1. x
 
@@ -127,7 +132,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-Další informace najdete v tématu balíčky, [atributy](#attributes), [Konfigurace](#configuration)a [použití](#usage).
+Další informace najdete v tématu balíčky, [atributy](#trigger---attributes), [Konfigurace](#trigger---configuration)a [použití](#trigger---usage).
 
 ### <a name="version-1x"></a>Verze 1. x
 
@@ -284,7 +289,7 @@ V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/func
 
 ---
 
-## <a name="attributes"></a>Atributy
+## <a name="trigger---attributes"></a>Aktivační události – atributy
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -316,11 +321,11 @@ Python nepodporuje atributy.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) anotace umožňuje deklarativní konfiguraci vazby Event Grid poskytováním hodnot konfigurace. Další podrobnosti najdete v částech s [příkladem](#example) a [konfigurací](#configuration) .
+[EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) anotace umožňuje deklarativní konfiguraci vazby Event Grid poskytováním hodnot konfigurace. Další podrobnosti najdete v částech s [příkladem](#trigger---example) a [konfigurací](#trigger---configuration) .
 
 ---
 
-## <a name="configuration"></a>Konfigurace
+## <a name="trigger---configuration"></a>Aktivační události – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* . Nejsou k dispozici žádné parametry konstruktoru nebo vlastnosti, které by bylo možné nastavit v atributu `EventGridTrigger`.
 
@@ -330,7 +335,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 | **direction** | Požadováno – musí být nastavené na `in`. |
 | **Jméno** | Required – název proměnné použitý v kódu funkce pro parametr, který přijímá data události. |
 
-## <a name="usage"></a>Využití
+## <a name="trigger---usage"></a>Aktivační události – využití
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -370,11 +375,11 @@ Instance Event Grid je k dispozici prostřednictvím parametru nakonfigurovanéh
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Instance události Event Grid je k dispozici prostřednictvím parametru přidruženého k atributu `EventGridTrigger`, který jste zadali jako `EventSchema`. Další podrobnosti najdete v [příkladu](#example) .
+Instance události Event Grid je k dispozici prostřednictvím parametru přidruženého k atributu `EventGridTrigger`, který jste zadali jako `EventSchema`. Další podrobnosti najdete v [příkladu](#trigger---example) .
 
 ---
 
-## <a name="event-schema"></a>Schéma událostí
+## <a name="trigger---event-schema"></a>Trigger – schéma událostí
 
 Data pro událost Event Grid se v těle požadavku HTTP přijímají jako objekt JSON. Formát JSON vypadá podobně jako v následujícím příkladu:
 
@@ -412,11 +417,11 @@ Vysvětlení běžných vlastností a specifických pro události naleznete v t�
 
 Typ `EventGridEvent` definuje pouze vlastnosti nejvyšší úrovně; vlastnost `Data` je `JObject`.
 
-## <a name="create-a-subscription"></a>Umožňuje vytvořit odběr.
+## <a name="trigger---create-a-subscription"></a>Aktivační událost – vytvoření odběru
 
 Pokud chcete začít přijímat Event Grid požadavky HTTP, vytvořte Event Grid předplatné, které určuje adresu URL koncového bodu, která funkci vyvolá.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 U funkcí, které vyvíjíte v Azure Portal pomocí triggeru Event Grid vyberte **přidat Event Grid předplatné**.
 
@@ -486,7 +491,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_exten
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
 ```
 
-Toto je rozhraní API pro správu, takže vyžaduje [hlavní klíč](functions-bindings-http-webhook.md#authorization-keys)aplikace Function App. Nepleťte si systémový klíč (pro vyvolání funkce triggeru Event Grid) s hlavním klíčem (pro provádění úloh správy v aplikaci Function App). Když se přihlásíte k odběru Event Gridho tématu, nezapomeňte použít systémový klíč.
+Toto je rozhraní API pro správu, takže vyžaduje [hlavní klíč](functions-bindings-http-webhook-trigger.md#authorization-keys)aplikace Function App. Nepleťte si systémový klíč (pro vyvolání funkce triggeru Event Grid) s hlavním klíčem (pro provádění úloh správy v aplikaci Function App). Když se přihlásíte k odběru Event Gridho tématu, nezapomeňte použít systémový klíč.
 
 Tady je příklad odpovědi, která poskytuje systémový klíč:
 
@@ -508,11 +513,11 @@ Hlavní klíč pro aplikaci Function App můžete získat z karty **nastavení a
 > [!IMPORTANT]
 > Hlavní klíč poskytuje přístup správcům k vaší aplikaci Function App. Tento klíč nesdílejte třetím stranám nebo ho distribuujte v nativních klientských aplikacích.
 
-Další informace najdete v tématu [autorizační klíče](functions-bindings-http-webhook.md#authorization-keys) v referenčním článku o aktivačních událostech http.
+Další informace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys) v referenčním článku o aktivačních událostech http.
 
 Alternativně můžete odeslat příkaz HTTP PUT a zadat hodnotu klíče sami.
 
-## <a name="local-testing-with-viewer-web-app"></a>Místní testování pomocí webové aplikace v prohlížeči
+## <a name="trigger---local-testing-with-viewer-web-app"></a>Testování místních aktivací pomocí webové aplikace v prohlížeči
 
 K otestování triggeru Event Grid v místním počítači musíte získat Event Grid požadavky HTTP, které jsou od svého původu v cloudu doručeny do místního počítače. Jedním ze způsobů, jak to udělat, je zachytávání požadavků online a ručním odesláním na místním počítači:
 
@@ -584,6 +589,239 @@ Následující snímky obrazovky ukazují záhlaví a text žádosti v poli post
 Spustí se funkce triggeru Event Grid a zobrazí protokoly podobné následujícímu příkladu:
 
 ![Ukázka protokolů funkce triggeru Event Grid](media/functions-bindings-event-grid/eg-output.png)
+
+## <a name="output"></a>Výstup
+
+Použijte výstupní vazbu Event Grid k zápisu událostí do vlastního tématu. Musíte mít platný [přístupový klíč pro vlastní téma](../event-grid/security-authentication.md#custom-topic-publishing).
+
+> [!NOTE]
+> Vazba Event Grid Output nepodporuje signatury sdíleného přístupu (tokeny SAS). Je nutné použít přístupový klíč tématu.
+
+Před pokusem o implementaci výstupní vazby se ujistěte, že jsou na místě požadované odkazy na balíčky.
+
+> [!IMPORTANT]
+> Výstupní vazba Event Grid je k dispozici pouze pro funkce 2. x a vyšší.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která zapisuje zprávu do vlastního tématu Event Grid pomocí návratové hodnoty metody jako výstup:
+
+```csharp
+[FunctionName("EventGridOutput")]
+[return: EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]
+public static EventGridEvent Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
+{
+    return new EventGridEvent("message-id", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+}
+```
+
+Následující příklad ukazuje, jak použít rozhraní `IAsyncCollector` k odeslání dávky zpráv.
+
+```csharp
+[FunctionName("EventGridAsyncOutput")]
+public static async Task Run(
+    [TimerTrigger("0 */5 * * * *")] TimerInfo myTimer,
+    [EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]IAsyncCollector<EventGridEvent> outputEvents,
+    ILogger log)
+{
+    for (var i = 0; i < 3; i++)
+    {
+        var myEvent = new EventGridEvent("message-id-" + i, "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+        await outputEvents.AddAsync(myEvent);
+    }
+}
+```
+
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+
+Následující příklad ukazuje výstupní data vazby Event Grid v souboru *Function. JSON* .
+
+```json
+{
+    "type": "eventGrid",
+    "name": "outputEvent",
+    "topicEndpointUri": "MyEventGridTopicUriSetting",
+    "topicKeySetting": "MyEventGridTopicKeySetting",
+    "direction": "out"
+}
+```
+
+Zde je C# kód skriptu, který vytváří jednu událost:
+
+```cs
+#r "Microsoft.Azure.EventGrid"
+using System;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Extensions.Logging;
+
+public static void Run(TimerInfo myTimer, out EventGridEvent outputEvent, ILogger log)
+{
+    outputEvent = new EventGridEvent("message-id", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0");
+}
+```
+
+Zde je C# kód skriptu, který vytváří více událostí:
+
+```cs
+#r "Microsoft.Azure.EventGrid"
+using System;
+using Microsoft.Azure.EventGrid.Models;
+using Microsoft.Extensions.Logging;
+
+public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent, ILogger log)
+{
+    outputEvent.Add(new EventGridEvent("message-id-1", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0"));
+    outputEvent.Add(new EventGridEvent("message-id-2", "subject-name", "event-data", "event-type", DateTime.UtcNow, "1.0"));
+}
+```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Následující příklad ukazuje výstupní data vazby Event Grid v souboru *Function. JSON* .
+
+```json
+{
+    "type": "eventGrid",
+    "name": "outputEvent",
+    "topicEndpointUri": "MyEventGridTopicUriSetting",
+    "topicKeySetting": "MyEventGridTopicKeySetting",
+    "direction": "out"
+}
+```
+
+Tady je kód JavaScriptu, který vytváří jednu událost:
+
+```javascript
+module.exports = async function (context, myTimer) {
+    var timeStamp = new Date().toISOString();
+
+    context.bindings.outputEvent = {
+        id: 'message-id',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    };
+    context.done();
+};
+```
+
+Tady je kód JavaScriptu, který vytváří několik událostí:
+
+```javascript
+module.exports = function(context) {
+    var timeStamp = new Date().toISOString();
+
+    context.bindings.outputEvent = [];
+
+    context.bindings.outputEvent.push({
+        id: 'message-id-1',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    });
+    context.bindings.outputEvent.push({
+        id: 'message-id-2',
+        subject: 'subject-name',
+        dataVersion: '1.0',
+        eventType: 'event-type',
+        data: "event-data",
+        eventTime: timeStamp
+    });
+    context.done();
+};
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Vazba Event Grid Output není pro Python k dispozici.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Vazba Event Grid Output není pro jazyk Java k dispozici.
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Výstup – atributy a poznámky
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Pro [ C# knihovny tříd](functions-dotnet-class-library.md)použijte atribut [EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs) .
+
+Konstruktor atributu přebírá název nastavení aplikace, které obsahuje název vlastního tématu, a název nastavení aplikace, které obsahuje klíč tématu. Další informace o těchto nastaveních naleznete v tématu [Output-Configuration](#output---configuration). Tady je příklad atributu `EventGrid`:
+
+```csharp
+[FunctionName("EventGridOutput")]
+[return: EventGrid(TopicEndpointUri = "MyEventGridTopicUriSetting", TopicKeySetting = "MyEventGridTopicKeySetting")]
+public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
+{
+    ...
+}
+```
+
+Úplný příklad naleznete v tématu [Output- C# example](#output).
+
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+
+C# Skript nepodporuje atributy.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Atributy nejsou podporovány jazykem JavaScript.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Vazba Event Grid Output není pro Python k dispozici.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Vazba Event Grid Output není pro jazyk Java k dispozici.
+
+---
+
+## <a name="output---configuration"></a>Výstup – konfigurace
+
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a atributu `EventGrid`.
+
+|Vlastnost Function.JSON | Vlastnost atributu |Popis|
+|---------|---------|----------------------|
+|**type** | neuvedeno | Musí být nastavené na "eventGrid". |
+|**direction** | neuvedeno | Musí být nastavena na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
+|**Jméno** | neuvedeno | Název proměnné použitý v kódu funkce, který představuje událost. |
+|**topicEndpointUri** |**TopicEndpointUri** | Název nastavení aplikace, které obsahuje identifikátor URI vlastního tématu, například `MyTopicEndpointUri`. |
+|**topicKeySetting** |**TopicKeySetting** | Název nastavení aplikace, které obsahuje přístupový klíč pro vlastní téma. |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+> [!IMPORTANT]
+> Ujistěte se, že jste nastavili hodnotu vlastnosti konfigurace `TopicEndpointUri` na název nastavení aplikace, které obsahuje identifikátor URI vlastního tématu. Nezadávejte identifikátor URI vlastního tématu přímo v této vlastnosti.
+
+## <a name="output---usage"></a>Výstup – využití
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Odesílat zprávy pomocí parametru metody, jako je například `out EventGridEvent paramName`. Chcete-li zapsat více zpráv, můžete místo `out EventGridEvent`použít `ICollector<EventGridEvent>` nebo `IAsyncCollector<EventGridEvent>`.
+
+# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+
+Odesílat zprávy pomocí parametru metody, jako je například `out EventGridEvent paramName`. Ve C# skriptu `paramName` je hodnota zadaná ve vlastnosti `name` *Function. JSON*. Chcete-li zapsat více zpráv, můžete místo `out EventGridEvent`použít `ICollector<EventGridEvent>` nebo `IAsyncCollector<EventGridEvent>`.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Přístup k události výstupu pomocí `context.bindings.<name>`, kde `<name>` je hodnota zadaná ve vlastnosti `name` *funkce Function. JSON*.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Vazba Event Grid Output není pro Python k dispozici.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Vazba Event Grid Output není pro jazyk Java k dispozici.
+
+---
 
 ## <a name="next-steps"></a>Další kroky
 

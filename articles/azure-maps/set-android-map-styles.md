@@ -1,19 +1,19 @@
 ---
 title: Nastavení stylu mapy pomocí Azure Maps Android SDK | Mapy Microsoft Azure
 description: V tomto článku se dozvíte o funkcích, které se týkají Android SDK Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4adb38148acc0c18ac73709efbe7628ca9497897
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 96564a89a2b64203eef913b0d8300f0dafa332c5
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988953"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209575"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Nastavení stylu mapy pomocí Azure Maps Android SDK
 
@@ -55,7 +55,7 @@ Atribut `mapcontrol_style` výše nastaví styl mapy na **grayscale_dark**.
 
 <center>
 
-![style-grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
+![grayscale_dark stylu](./media/set-android-map-styles/grayscale-dark.png)</center>
 
 ## <a name="set-map-style-in-the-activity-class"></a>Nastavit styl mapy ve třídě Activity
 
@@ -73,4 +73,4 @@ mapControl.onReady(map -> {
 
 <center>
 
-![style-satellite-road-labels](./media/set-android-map-styles/satellite-road-labels.png)</center>
+![Style-satelitní-silniční-popisky](./media/set-android-map-styles/satellite-road-labels.png)</center>

@@ -1,6 +1,6 @@
 ---
 title: Vytvoření přístupné aplikace mapy s Azure Maps | Mapy Microsoft Azure
-description: V tomto článku se naučíte, jak vytvořit aplikaci s funkcemi usnadnění pomocí Microsoft Azure Maps.
+description: V tomto článku se dozvíte, jak vytvořit aplikaci s funkcemi usnadnění pomocí Microsoft Azure Maps.
 services: azure-maps
 author: rbrundritt
 ms.author: richbrun
@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: e298aad6dc43f85f5b6c344eec56f5d8b37980d4
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933305"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209779"
 ---
 # <a name="building-an-accessible-application"></a>Vytvoření přístupné aplikace
 
@@ -61,7 +61,7 @@ Existuje několik různých způsobů, jak lze mapu zvětšit, vytočit, otočit
 - S fokusem mapy použijte klávesu SHIFT a šipky nahoru nebo dolů. 
 - Použití ovládacího prvku sklonu s myší, dotykem nebo klávesou TAB/ENTER Keys.
 
-**Změna stylu mapy** Ne všichni vývojáři budou chtít, aby všechny možné styly mapy byly dostupné ve svých aplikacích. Vývojář může programově nastavit a změnit styl mapy podle potřeby. Pokud vývojář zobrazí ovládací prvek Výběr stylu mapy, bude moci uživatel změnit styl mapy pomocí myši, dotyku nebo klávesnice pomocí kláves TAB/ENTER. Vývojář může určit, které styly mapy mají být k dispozici v ovládacím prvku Výběr stylu mapy. 
+**Změna stylu mapy** Ne všichni vývojáři chtějí mít k dispozici všechny možné styly mapy ve svých aplikacích. Vývojář může programově nastavit a změnit styl mapy. Pokud vývojář zobrazí ovládací prvek pro výběr stylu mapy, může uživatel změnit styl mapy pomocí myši, dotyku nebo klávesnice s klávesou nebo klávesou ENTER. Vývojář může určit, které styly mapy mají být k dispozici v ovládacím prvku Výběr stylu mapy. 
 
 ## <a name="keyboard-shortcuts"></a>Klávesové zkratky
 
@@ -94,7 +94,7 @@ Všechny další informace, které jsou umístěny na základní mapě, by měly
 
 ## <a name="make-popups-keyboard-accessible"></a>Zpřístupnění klávesnice pro místní přístup
 
-Značka nebo symbol se často používá k reprezentaci umístění na mapě. Další informace o umístění se obvykle zobrazují v automaticky otevíraném okně, když uživatel komunikuje se značkou. V případě, že se v případě, že uživatel klikne nebo klepne na značku, zobrazí automaticky otevíraná okna ve většině aplikací, ale tato událost vyžaduje, aby uživatel použil myš nebo dotykovou obrazovku. Dobrým postupem je umožnit přístup k místním přidaným při používání klávesnice. Tuto funkci je možné dosáhnout tak, že vytvoříte místní nabídku pro každý datový bod a přidáte ji do mapy. 
+Značka nebo symbol se často používá k reprezentaci umístění na mapě. Další informace o umístění se obvykle zobrazují v automaticky otevíraném okně, když uživatel komunikuje se značkou. Ve většině aplikací se automaticky otevíraná okna zobrazí, když uživatel klikne nebo klepne na značku. Když ale kliknete a klepnete na vyžadovat, aby uživatel použil myš a dotykovou obrazovku, v uvedeném pořadí. Dobrým postupem je umožnit přístup k místním přidaným při používání klávesnice. Tuto funkci je možné dosáhnout tak, že vytvoříte místní nabídku pro každý datový bod a přidáte ji do mapy. 
 
 Následující příklad načte body zájmů na mapě pomocí vrstvy symbolů a přidá místní nabídku na mapu pro každý bod zájmu. Odkaz na každé místní okno je uložen ve vlastnostech každého datového bodu. Lze ji také načíst pro značku, například při kliknutí na značku. Když se na mapě zaměřuje fokus, stisknutím klávesy TAB umožníte uživateli procházet každé místní nabídky na mapě.
 
@@ -116,12 +116,12 @@ Tady je několik dalších tipů, jak usnadnit přístup k aplikaci mapování w
     - Omezí aktualizace na každých několik sekund. 
     - Logickým způsobem kombinuje zprávy. 
 - Nepoužívejte barvy jako jediný způsob, jak vyjádřit informace. K doplnění nebo nahrazení barvy použijte text, ikony nebo vzory. Některé okolnosti:
-    - Pokud použijete bublinovou vrstvu k zobrazení relativní hodnoty mezi datovými body, zvažte možnost škálovat poloměr každého bublinového obrázku, nebo jako alternativu k jejich vybarvení. 
+    - Pokud použijete bublinovou vrstvu k zobrazení relativní hodnoty mezi datovými body, zvažte možnost škálovat poloměr každého bublinového obrázku, vybarvit bublinu nebo obojí. 
     - Zvažte použití vrstvy symbolů s různými ikonami pro různé kategorie metrik, například trojúhelníky, hvězdičky a čtverce. Vrstva symbolů také podporuje škálování velikosti ikony. Lze také zobrazit textový popisek.
     - Pokud se zobrazují data čáry, může se šířka použít k reprezentaci váhy nebo velikosti. Vzor přerušovaného pole lze použít k reprezentaci různých kategorií řádků. Vrstvu symbolů lze použít v kombinaci s čárou pro překrytí ikon podél čáry. Použití ikony šipky je užitečné pro zobrazení toku nebo směru čáry.
     - Pokud se zobrazují data mnohoúhelníku, lze jako alternativu k barvě použít vzor, jako jsou pruhy. 
 - Některé vizualizace, jako jsou Heat mapy, vrstvy dlaždic a vrstvy obrázků, nejsou dostupné pro uživatele se zhoršenými vadami. Některé okolnosti:
-    - Má čtečka obrazovky popis toho, co se vrstva zobrazuje, když se přidá k mapě. Pokud se například zobrazuje vrstva paprskové dlaždice s počasí, může čtečka obrazovky vypadat přibližně takto: "data o počasí se překrývají na mapě."
+    - Má čtečka obrazovky popis toho, co se vrstva zobrazuje, když se přidá k mapě. Například pokud se zobrazuje vrstva paprskových dlaždic s počasí, pak program pro čtení obrazovky znamená, že se na mapě překrývají data o počasí v paprskovém zobrazení.
 - Omezte množství funkcí, které vyžadují najetí myší. Tyto funkce budou nedostupné uživatelům, kteří k interakci s aplikací používají klávesnice nebo dotykové zařízení. Všimněte si, že je stále vhodný styl najetí myší pro interaktivní obsah, jako jsou například ikony, odkazy a tlačítka.
 - Zkuste aplikaci navigovat pomocí klávesnice. Ujistěte se, že je řazení tabulátoru logické.
 - Pokud vytváříte klávesové zkratky, zkuste ji omezit na dva nebo méně. 

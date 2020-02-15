@@ -1,25 +1,25 @@
 ---
 title: Mobilita (tranzitní) pokrytí | Mapy Microsoft Azure
 description: V tomto článku se dozvíte o pokrytí mobility v Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 06/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8dcbfe7a47dba5a1783d6010d41e33073bc0bb20
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 04804f28b2b0b5c45ed8f523d2f465f81b6ab151
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048922"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208246"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Pokrytí Azure Maps mobility
 
-Azure Maps nabízí [službu mobility](https://aka.ms/AzureMapsMobilityService). Služba mobility vylepšuje dobu vývoje pro aplikace s veřejným průjezdem, sdílením kol a Scooter funkcemi sdílení. Nabízí možnost směrování s možnostmi plánování Multimodal Trip. Funkce pro veřejné přenosy zahrnují hledání blízkých stanic, hledání zarážek, hledání řádků přenosu, načtení informací o plánu, načtení doručení veřejného přenosu v reálném čase a průvodce pro vystavení a směrování. Služba vrací informace o dostupnosti v reálném čase a statické dostupnosti sdíleným vozidlům, jako jsou automobily, kolace a Scooters. Rozhraní API vrátí podrobné a Multimodal podrobných cesty a výstrah služby.
+Azure Maps nabízí [službu mobility](https://aka.ms/AzureMapsMobilityService). Služba mobility vylepšuje dobu vývoje pro aplikace s veřejným průjezdem, sdílením kol a Scooter funkcemi sdílení. Mezi funkce pro veřejné přenosy patří hledání blízkých stanic, hledání zarážek, hledání řádků přenosu, načítání informací o plánu, získávání příchodů veřejných přenosů v reálném čase, pozastavených seznamů a seznamů Průvodce směrováním. Služba vrací informace o dostupnosti v reálném čase a statické dostupnosti sdíleným vozidlům, jako jsou automobily, kolace a Scooters. Služba mobility navíc poskytuje možnosti směrování s možnostmi plánování služby Multimodal Trip. Plánování cest Multimodal zahrnuje možnosti cyklistice, jízdní – Hailing a Transit, a to vše na jednu cestu. Uživatelé mají přístup k podrobným a Multimodal podrobným cesty a výstrahám služby.
 
-Azure Maps nemá stejnou úroveň informací a přesnost pro všechna města a země nebo oblasti. Možnost volání přenosových dat závisí na městě. Data nemusí zahrnovat všechny možnosti veřejného přenosu a organizace, které slouží jako město.
+Azure Maps nemá stejnou úroveň informací a přesnost pro všechna města a země nebo oblasti. Možnost volání přenosových dat závisí na městě. Data navíc nemusí zahrnovat všechny možnosti veřejného přenosu a organizace, které slouží jako město.
 
 Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobility.
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e3a80628e5729813e1d405e58ecb623925b63076
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77193375"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251766"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
 
@@ -51,7 +51,7 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | {Culture: LanguageGroup} | Dva číslice kódu ISO pro jazyk | en |
 | {Culture: LCID}   | Identifikátor LCID kódu jazyka. | 1033 |
 | {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | USA |
-| {Culture: RFC5646} | Kód jazyka RFC5646 | cs-CZ |
+| {Culture: RFC5646} | Kód jazyka RFC5646 | en-US |
 
 ### <a name="policy"></a>Zásada
 
@@ -66,14 +66,14 @@ Následující části uvádějí dostupné překladače deklarací identity.
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |Parametr řetězce dotazu `acr_values`. | Není k dispozici |
+| {OIDC:AuthenticationContextReferences} |Parametr řetězce dotazu `acr_values`. | Není k dispozici |
 | {OIDC: ClientId} |Parametr řetězce dotazu `client_id`. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |Parametr řetězce dotazu `domain_hint`. | facebook.com |
 | {OIDC:LoginHint} |  Parametr řetězce dotazu `login_hint`. | someone@contoso.com |
-| {OIDC:MaxAge} | Hodnota `max_age` | Není k dispozici |
+| {OIDC:MaxAge} | Hodnota `max_age` | Není k dispozici |
 | {OIDC: nonce} |Parametr řetězce dotazu `Nonce`. | defaultNonce |
 | {OIDC:Prompt} | Parametr řetězce dotazu `prompt`. | přihlášení |
-| {OIDC: Resource} |Parametr řetězce dotazu `resource`. | Není k dispozici |
+| {OIDC: Resource} |Parametr řetězce dotazu `resource`. | Není k dispozici |
 | {OIDC:scope} |Parametr řetězce dotazu `scope`. | OpenID |
 
 ### <a name="context"></a>Kontext
@@ -96,13 +96,13 @@ Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, s
 | {OAUTH-KV: campaignId} | Parametr řetězce dotazu. | ostrovy |
 | {OAUTH-KV: app_session} | Parametr řetězce dotazu. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Parametr řetězce dotazu. | 1234 |
-| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | Není k dispozici |
+| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | Není k dispozici |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Přístupový token. | Není k dispozici |
+| {OAuth2: access_token} | Přístupový token. | Není k dispozici |
 
 ## <a name="using-claim-resolvers"></a>Použití překladačů deklarací identity 
 
@@ -123,16 +123,16 @@ Překladače deklarací identity můžete použít s následujícími prvky:
 |[RelyingParty](relyingparty.md#technicalprofile) Technical Profile| `OutputClaim`| 2 |
 
 Možnost 
-1. `IncludeClaimResolvingInClaimsHandling` metadata musí být nastavená na `true`
-1. Vstupní nebo výstupní atribut deklarace identity `AlwaysUseDefaultValue` musí být nastaven na `true`
+1. Metadata `IncludeClaimResolvingInClaimsHandling` musí být nastavena na hodnotu `true`.
+1. Vstupní nebo výstupní atribut deklarace identity `AlwaysUseDefaultValue` musí být nastaven na hodnotu `true`.
 
-## <a name="how-to-use-claim-resolvers"></a>Jak používat překladače deklarací identity
+## <a name="claim-resolvers-samples"></a>Ukázky překladačů deklarací identity
 
 ### <a name="restful-technical-profile"></a>RESTful Technical Profile
 
 V [RESTful](restful-technical-profile.md) Technical Profile můžete chtít odeslat uživatelský jazyk, název zásady, obor a ID klienta. Na základě těchto deklarací může REST API spustit vlastní obchodní logiku a v případě potřeby vyvolat lokalizovanou chybovou zprávu.
 
-Následující příklad ukazuje technický profil RESTful:
+Následující příklad ukazuje technický profil RESTful s tímto scénářem:
 
 ```XML
 <TechnicalProfile Id="REST">
@@ -142,12 +142,13 @@ Následující příklad ukazuje technický profil RESTful:
     <Item Key="ServiceUrl">https://your-app.azurewebsites.net/api/identity</Item>
     <Item Key="AuthenticationType">None</Item>
     <Item Key="SendClaimsIn">Body</Item>
+    <Item Key="IncludeClaimResolvingInClaimsHandling">true</Item>
   </Metadata>
   <InputClaims>
-    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" />
-    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" />
-    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" />
+    <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
 </TechnicalProfile>
@@ -159,9 +160,9 @@ Pomocí překladačů deklarací identity můžete předem naplnit přihlašovac
 
 ### <a name="dynamic-ui-customization"></a>Dynamické přizpůsobení uživatelského rozhraní
 
-Azure AD B2C umožňuje předat parametry řetězce dotazu do koncových bodů definice obsahu HTML, aby bylo možné dynamicky vykreslovat obsah stránky. Obrázek pozadí můžete například změnit na stránce Azure AD B2C registrace nebo přihlášení na základě vlastního parametru, který předáte z webové nebo mobilní aplikace. Další informace najdete v tématu [dynamická konfigurace uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-ui-customization-dynamic.md). Můžete také lokalizovat stránku HTML na základě parametru jazyka nebo můžete změnit obsah na základě ID klienta.
+Azure AD B2C umožňuje předat parametry řetězce dotazu do koncových bodů definice obsahu HTML pro dynamické vykreslování obsahu stránky. Tato možnost například umožňuje upravit obrázek pozadí na stránce Azure AD B2C přihlašovací nebo přihlašovací stránku na základě vlastního parametru, který předáte z webové nebo mobilní aplikace. Další informace najdete v tématu [dynamická konfigurace uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-ui-customization-dynamic.md). Můžete také lokalizovat stránku HTML na základě parametru jazyka nebo můžete změnit obsah na základě ID klienta.
 
-Následující příklad předává do řetězce dotazu parametr s názvem **campaignId** s hodnotou `hawaii`, kód **jazyka** `en-US`a **aplikace** představující ID klienta:
+Následující příklad předává parametr řetězce dotazu s názvem **campaignId** s hodnotou `hawaii`, kód **jazyka** `en-US`a **aplikace** představující ID klienta:
 
 ```XML
 <UserJourneyBehaviors>
@@ -177,6 +178,17 @@ V důsledku toho Azure AD B2C odesílá výše uvedené parametry na stránku ob
 
 ```
 /selfAsserted.aspx?campaignId=hawaii&language=en-US&app=0239a9cc-309c-4d41-87f1-31288feb2e82
+```
+
+### <a name="content-definition"></a>Definice obsahu
+
+V [ContentDefinition](contentdefinitions.md) `LoadUri`můžete posílat překladače deklarací identity na vyžádání obsahu z různých míst na základě použitých parametrů. 
+
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
+  ...
+</ContentDefinition>
 ```
 
 ### <a name="application-insights-technical-profile"></a>Application Insights technický profil
@@ -195,4 +207,29 @@ Díky Azure Application Insights a překladačům deklarací identity můžete z
     <InputClaim ClaimTypeReferenceId="AppId" PartnerClaimType="{property:App}" DefaultValue="{OIDC:ClientId}" />
   </InputClaims>
 </TechnicalProfile>
+```
+
+### <a name="relying-party-policy"></a>Zásady předávající strany
+
+V technickém profilu zásad [předávající strany](relyingparty.md) můžete chtít odeslat ID TENANTA nebo ID korelace do aplikace předávající strany v rámci tokenu JWT. 
+
+```XML
+<RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <TechnicalProfile Id="PolicyProfile">
+      <DisplayName>PolicyProfile</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="givenName" />
+        <OutputClaim ClaimTypeReferenceId="surname" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+        <OutputClaim ClaimTypeReferenceId="correlationId" AlwaysUseDefaultValue="true" DefaultValue="{Context:CorrelationId}" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
 ```

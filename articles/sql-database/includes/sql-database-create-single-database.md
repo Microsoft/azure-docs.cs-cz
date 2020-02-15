@@ -3,14 +3,15 @@ author: MashaMSFT
 ms.service: sql-database
 ms.subservice: single-database
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 02/14/2020
 ms.author: mathoma
-ms.openlocfilehash: 0fad326107fa101cbba869311724710bd3f5307b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: vanto
+ms.openlocfilehash: 3e2c8a424c9a3744bfb91d03632965c15613a424
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496150"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252104"
 ---
 V tomto kroku vytvoříte Azure SQL Database jedinou databázi. 
 
@@ -29,14 +30,14 @@ Vytvořte skupinu prostředků a jedinou databázi pomocí Azure Portal.
 
    ![Vytvoření izolované databáze](../media/sql-database-get-started-portal/create-single-database.png)
 
-3. Na kartě **základy** v části **Project Details (podrobnosti projektu** ) zadejte nebo vyberte následující hodnoty:
+4. Na kartě **základy** v části **Project Details (podrobnosti projektu** ) zadejte nebo vyberte následující hodnoty:
 
    - **Předplatné**: rozevírací seznam a výběr správného předplatného, pokud se nezobrazí.
    - **Skupina prostředků**: vyberte **vytvořit novou**, zadejte `myResourceGroup`a vyberte **OK**.
 
      ![Nová databáze SQL – karta Basic](../media/sql-database-get-started-portal/new-sql-database-basics.png)
 
-4. V části **Podrobnosti databáze** zadejte nebo vyberte následující hodnoty:
+5. V části **Podrobnosti databáze** zadejte nebo vyberte následující hodnoty:
 
    - **Název databáze**: zadejte `mySampleDatabase`.
    - **Server**: vyberte **vytvořit novou**, zadejte následující hodnoty a pak vyberte **Vybrat**.
@@ -63,18 +64,22 @@ Vytvořte skupinu prostředků a jedinou databázi pomocí Azure Portal.
      - Volitelně můžete také vybrat možnost **změnit konfiguraci** a změnit tak generování hardwaru.
    - Vyberte **Použít**.
 
-5. Vyberte kartu **Další nastavení** . 
-6. V části **zdroj dat** v části **použít existující data**vyberte `Sample`.
+6. Vyberte kartu **sítě** a rozhodněte se, jestli chcete [**pro přístup k tomuto serveru používat služby a prostředky Azure**](../sql-database-networkaccess-overview.md), nebo přidejte [privátní koncový bod](../../private-link/private-endpoint-overview.md).
+
+   ![Karta sítě](../media/sql-database-get-started-portal/create-database-networking.png)
+
+7. Vyberte kartu **Další nastavení** . 
+8. V části **zdroj dat** v části **použít existující data**vyberte `Sample`.
 
    ![Další nastavení databáze SQL](../media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
    > Ujistěte se, že jste vybrali **ukázková data (AdventureWorksLT)** , abyste se mohli snadno řídit tímto a dalšími Azure SQL Database rychlými starty, které používají tato data.
 
-7. Zbývající hodnoty ponechte jako výchozí a v dolní části formuláře vyberte **zkontrolovat + vytvořit** .
-8. Zkontrolujte poslední nastavení a vyberte **vytvořit**.
+9. Zbývající hodnoty ponechte jako výchozí a v dolní části formuláře vyberte **zkontrolovat + vytvořit** .
+10. Zkontrolujte poslední nastavení a vyberte **vytvořit**.
 
-9. Na formuláři **SQL Database** vyberte **vytvořit** a nasaďte a zřiďte skupinu prostředků, server a databázi.
+11. Na formuláři **SQL Database** vyberte **vytvořit** a nasaďte a zřiďte skupinu prostředků, server a databázi.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -144,7 +149,7 @@ Vytvořte skupinu prostředků a izolovanou databázi pomocí prostředí PowerS
 
 Tato část článku používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
@@ -219,7 +224,7 @@ Vytvořte skupinu prostředků a samostatnou databázi pomocí AZ CLI.
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [AZ Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Nastaví předplatné jako aktuální aktivní předplatné. | 
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |

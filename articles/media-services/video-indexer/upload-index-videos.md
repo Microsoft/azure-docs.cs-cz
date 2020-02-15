@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169363"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209269"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -47,7 +47,7 @@ V tomto článku se dozvíte, jak nahrát a indexovat videa pomocí těchto mož
 
     Pokud se jedná o soukromou adresu URL, musí být v žádosti poskytnutý přístupový token.
 - Adresa URL musí odkazovat na platný mediální soubor, nikoli na webovou stránku, jako je například odkaz na stránku `www.youtube.com`.
-- Můžete nahrávat až 60 filmů za minutu.
+- V placeném účtu můžete nahrávat až 50 filmů za minutu a ve zkušebním účtu až 5 filmů za minutu.
 
 > [!Tip]
 > Doporučujeme používat rozhraní .NET Framework verze 4.6.2 nebo novější, protože starší rozhraní .NET Framework nemají ve výchozím nastavení protokol TLS 1.2.
@@ -66,7 +66,7 @@ Seznam formátů souborů, které můžete použít s Video Indexer, najdete v �
 1. Přihlaste se k webu [Video Indexer](https://www.videoindexer.ai/).
 2. Pokud chcete nahrát video na server, stiskněte tlačítko nebo odkaz **Upload** (Nahrát).
 
-    ![Nahrávání](./media/video-indexer-get-started/video-indexer-upload.png)
+    ![Odeslat](./media/video-indexer-get-started/video-indexer-upload.png)
 
     Když se vaše video nahraje na server, začne ho Video Indexer indexovat a analyzovat.
 
@@ -91,9 +91,9 @@ Tento parametr umožňuje určit ID, které bude s videem spojené. ID můžete 
 Adresa URL, která se používá k upozornění na zákazníka (pomocí žádosti POST) o následujících událostech:
 
 - Změna stavu indexování: 
-    - Vlastnosti:    
+    - Vlastnosti    
     
-        |Name (Název)|Popis|
+        |Název|Popis|
         |---|---|
         |id|ID videa|
         |state|Stav videa|  
@@ -101,7 +101,7 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
 - Osoba identifikovaná ve videu:
   - Vlastnosti
     
-      |Name (Název)|Popis|
+      |Název|Popis|
       |---|---|
       |id| ID videa|
       |faceId|ID obličeje, které se zobrazí v indexu videa|
@@ -126,7 +126,7 @@ Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují �
 
 Cena závisí na vybrané možnosti indexování.  
 
-#### <a name="priority"></a>priorita
+#### <a name="priority"></a>priority
 
 Videa se indexují Video Indexer podle jejich priority. Pro určení priority indexu použijte parametr **priority** . Platné jsou následující hodnoty: **Nízká**, **normální** (výchozí) a **Vysoká**.
 
@@ -160,8 +160,8 @@ Po zkopírování tohoto kódu na vývojovou platformu budete muset zadat dva pa
 
     Pokud chcete získat klíč rozhraní API, Projděte si tento tok:
 
-    * Přejděte na https://api-portal.videoindexer.ai/
-    * Přihlášení
+    * Přejít na https://api-portal.videoindexer.ai/
+    * Přihlásit
     * Přejít na **produkty** -> **authorization** -> **autorizační předplatné**
     * Zkopírování **primárního klíče**
 * Adresa URL videa – adresa URL videosouboru nebo zvukového souboru, který se má indexovat. Adresa URL musí odkazovat na soubor média (stránky HTML nejsou podporované). Soubor se dá chránit přístupovým tokenem poskytnutým jako součást identifikátoru URI a koncový bod poskytující soubor musí být zabezpečený pomocí protokolu TLS 1.2 nebo vyššího. Adresa URL musí být zakódovaná.
@@ -348,6 +348,7 @@ Operace Upload může vrátit kódy stavu uvedené v následující tabulce.
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|V daném účtu už probíhá zpracování stejného videa.|
 |400|VIDEO_ALREADY_FAILED|V daném účtu se méně než před 2 hodinami nepodařilo zpracovat stejné video. Klienti rozhraní API by měli před dalším nahráním videa vyčkat minimálně 2 hodiny.|
+|429||Zkušební účty se povolují 5 nahrání za minutu. Placené účty jsou povolené 50 nahrávání za minutu.|
 
 ## <a name="next-steps"></a>Další kroky
 

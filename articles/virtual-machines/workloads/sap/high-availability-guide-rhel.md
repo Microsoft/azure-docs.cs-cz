@@ -1,10 +1,10 @@
 ---
-title: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux | Microsoft Docs
+title: Virtuální počítače Azure s vysokou dostupností pro SAP NW v RHEL | Microsoft Docs
 description: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
-ms.author: sedusch
-ms.openlocfilehash: a618a2cb976c90174125e54af645123c6b0a9dcd
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 02/13/2020
+ms.author: radeltch
+ms.openlocfilehash: f3b540fb9122655d0b2c12c90995daa181dd227f
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905035"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212794"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux
 
@@ -154,7 +154,7 @@ Azure Marketplace obsahuje obrázek pro Red Hat Enterprise Linux, který můžet
    1. Uživatelské jméno správce, heslo správce nebo klíč SSH  
       Vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
    1. ID podsítě  
-   Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID předplatného&gt;** /resourceGroups/ **&lt;název skupiny prostředků&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;virtuální síť&gt;** /subnets/ **&lt;název podsítě&gt;**
+   Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID předplatného&gt;** /resourceGroups/ **&lt;název skupiny prostředků&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;název virtuální sítě&gt;** /subnets/ **&lt;název podsítě&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
@@ -178,7 +178,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následn�
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
          1. Zadejte název nového fondu IP adres front-endu (například **NW1-ASCS-front-end**).
          1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.0.0.7**).
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. 10.0.0.8 IP adres pro ASCS OLAJÍCÍCH
          * Zopakováním výše uvedených kroků vytvořte IP adresu pro OLAJÍCÍCH (například **10.0.0.8** a **NW1-aers-back-end**).
    1. Vytvoření back-end fondů
@@ -196,7 +196,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následn�
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **NW1-ASCS-HP**).
          1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. Port 621**02** pro ASCS olajících
          * Zopakováním výše uvedených kroků vytvořte sondu stavu pro OLAJÍCÍCH (například 621**02** a **NW1-aers-HP**)
    1. Pravidla vyrovnávání zatížení
@@ -207,7 +207,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následn�
          1. Vybrat **porty ha**
          1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
          * Zopakováním výše uvedených kroků vytvořte pravidla vyrovnávání zatížení pro OLAJÍCÍCH (například **NW1-9,1-olajících**).
 1. Případně, pokud váš scénář vyžaduje základní nástroj pro vyrovnávání zatížení (interní), postupujte podle následujících kroků:  
    1. Vytvoření IP adresy front-endu
@@ -215,7 +215,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následn�
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
          1. Zadejte název nového fondu IP adres front-endu (například **NW1-ASCS-front-end**).
          1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.0.0.7**).
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. 10.0.0.8 IP adres pro ASCS OLAJÍCÍCH
          * Zopakováním výše uvedených kroků vytvořte IP adresu pro OLAJÍCÍCH (například **10.0.0.8** a **NW1-aers-back-end**).
    1. Vytvoření back-end fondů
@@ -225,7 +225,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následn�
          1. Klikněte na Přidat virtuální počítač.
          1. Vyberte skupinu dostupnosti, kterou jste vytvořili dříve.
          1. Vyberte virtuální počítače v clusteru (A) SCS.
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. Vytvoření fondu back-endu pro ASCS OLAJÍCÍCH
          * Zopakováním výše uvedených kroků vytvořte back-end fond pro OLAJÍCÍCH (například **NW1-aers-back-end**).
    1. Vytvoření sond stavu
@@ -233,7 +233,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následn�
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **NW1-ASCS-HP**).
          1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. Port 621**02** pro ASCS olajících
          * Zopakováním výše uvedených kroků vytvořte sondu stavu pro OLAJÍCÍCH (například 621**02** a **NW1-aers-HP**)
    1. Pravidla vyrovnávání zatížení
@@ -244,7 +244,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následn�
          1. Zachovejte protokol **TCP**, zadejte port **3200**
          1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. Další porty pro ASCS
          * Opakujte výše uvedené kroky pro porty 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 a TCP pro ASCS
       1. Další porty pro ASCS OLAJÍCÍCH
@@ -262,9 +262,9 @@ Postupujte podle kroků v části [Nastavení Pacemaker na Red Hat Enterprise Li
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Příprava na instalaci SAP NetWeaver
 
-Následující položky jsou s předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
+Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
-1. **[A]**  Nastavit rozlišení názvu hostitele
+1. **[A]** nastavení rozlišení názvu hostitele
 
    Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    V následujících příkazech nahraďte IP adresu a název hostitele.
@@ -403,7 +403,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 1. **[1]** instalace SAP NetWeaver ASCS  
 
-   Nainstalujte SAP NetWeaver ASCS jako kořen v prvním uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS, například <b>NW1-ASCS</b>, <b>10.0.0.7</b> a číslo instance, kterou jste použili pro test paměti. Nástroj pro vyrovnávání zatížení, například <b>00</b>.
+   Nainstalujte SAP NetWeaver ASCS jako kořen v prvním uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu nástroje pro vyrovnávání zatížení pro ASCS, například <b>NW1-ASCS</b>, <b>10.0.0.7</b> a číslo instance, kterou jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>00</b>.
 
    Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst.
 
@@ -459,7 +459,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
 
 1. **[2]** instalace SAP NetWeaver olajících  
 
-   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako kořen na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro OLAJÍCÍCH, například <b>NW1-aers</b>, <b>10.0.0.8</b> a číslo instance, kterou jste použili pro test paměti. Nástroj pro vyrovnávání zatížení, například <b>02</b>.
+   Nainstalujte SAP NetWeaver OLAJÍCÍCH jako kořenovou složku na druhém uzlu pomocí virtuálního hostitele, který se mapuje na IP adresu konfigurace front-endu služby Vyrovnávání zatížení pro OLAJÍCÍCH, například <b>NW1-aers</b>, <b>10.0.0.8</b> a číslo instance, kterou jste použili pro sondu nástroje pro vyrovnávání zatížení, například <b>02</b>.
 
    Pomocí parametru sapinst SAPINST_REMOTE_ACCESS_USER můžete pro uživatele, který není rootem, připojovat se k sapinst.
 
@@ -535,12 +535,15 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 migration-threshold=1 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -559,12 +562,15 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo pcs resource create rsc_sap_<b>NW1</b>_ASCS00 SAPInstance \
     InstanceName=<b>NW1</b>_ASCS00_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS00_<b>nw1-ascs</b>" \
     AUTOMATIC_RECOVER=false \
-    meta resource-stickiness=5000 \
+    meta resource-stickiness=5000 migration-threshold=1 failure-timeout=60 \
+    op monitor interval=20 on-fail=restart timeout=60 \
+    op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_ASCS
    
    sudo pcs resource create rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
     InstanceName=<b>NW1</b>_ERS02_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS02_<b>nw1-aers</b>" \
     AUTOMATIC_RECOVER=false IS_ERS=true \
+    op monitor interval=20 on-fail=restart timeout=60 op start interval=0 timeout=600 op stop interval=0 timeout=600 \
     --group g-<b>NW1</b>_AERS
       
    sudo pcs constraint colocation add g-<b>NW1</b>_AERS with g-<b>NW1</b>_ASCS -5000
@@ -575,6 +581,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    </code></pre>
 
    Pokud provádíte upgrade ze starší verze a přejdete na server fronty 2, přečtěte si článek SAP Note [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
+
+   > [!NOTE]
+   > Časové limity ve výše uvedené konfiguraci jsou jenom příklady a možná je budete muset přizpůsobit konkrétnímu nastavení SAP. 
 
    Ujistěte se, že stav clusteru je OK a že všechny prostředky jsou spuštěné. Není důležité, na kterém uzlu jsou prostředky spuštěné.
 

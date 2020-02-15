@@ -3,12 +3,12 @@ title: Reference Host. JSON pro Azure Functions 2. x
 description: Referenční dokumentace pro soubor Azure Functions Host. JSON s modulem runtime v2
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 3ad3682e301eb98d48372c3955c6ff049422c517
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: cc982d3f810c944a5273cbf0cf9778076d119692
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024666"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208820"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Reference Host. JSON pro Azure Functions 2. x a novější 
 
@@ -19,7 +19,7 @@ ms.locfileid: "77024666"
 Soubor metadat *Host. JSON* obsahuje možnosti globální konfigurace, které mají vliv na všechny funkce aplikace Function App. Tento článek obsahuje seznam nastavení, která jsou k dispozici od verze 2. x Azure Functions runtime.  
 
 > [!NOTE]
-> Tento článek je určen pro Azure Functions 2. x a novější verze.  Pro odkaz host.json ve funkcích 1.x, najdete v článku [referenční materiály k host.json pro Azure Functions 1.x](functions-host-json-v1.md).
+> Tento článek je určen pro Azure Functions 2. x a novější verze.  Odkaz na Host. JSON ve funkcích 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](functions-host-json-v1.md).
 
 Další možnosti konfigurace aplikace Function App jsou spravované v [nastavení aplikace](functions-app-settings.md).
 
@@ -145,15 +145,15 @@ Toto nastavení je podřízenou položkou [protokolování](#logging).
 
 | Vlastnost | Výchozí | Popis |
 | --------- | --------- | --------- | 
-| samplingSettings | – | Viz [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
+| samplingSettings | neuvedeno | Viz [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | samplingExcludedTypes | null | Středníkem oddělený seznam typů, které nechcete vzorkovat. Rozpoznané typy jsou: závislost, událost, výjimka, PageView, požadavek, trasování. Jsou přenášeny všechny instance zadaných typů; typy, které nejsou určeny, jsou vzorkované. |
 | samplingIncludedTypes | null | Seznam typů, které chcete vzorkovat, oddělený středníky; prázdný seznam zahrnuje všechny typy. Níže uvedený typ `samplingExcludedTypes` přepsat typy. Rozpoznané typy jsou: závislost, událost, výjimka, PageView, požadavek, trasování. Jsou přenášeny všechny instance zadaných typů; typy, které nejsou určeny, jsou vzorkované. |
 | enableLiveMetrics | true | Povoluje shromažďování živých metrik. |
 | enableDependencyTracking | true | Povolí sledování závislostí. |
 | enablePerformanceCountersCollection | true | Povolí shromažďování čítačů výkonu Kudu. |
 | liveMetricsInitializationDelay | 00:00:15 | Pouze pro interní použití. |
-| httpAutoCollectionOptions | – | Viz [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
-| snapshotConfiguration | – | Viz [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
+| httpAutoCollectionOptions | neuvedeno | Viz [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
+| snapshotConfiguration | neuvedeno | Viz [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
@@ -184,7 +184,7 @@ Další informace o snímcích najdete v tématu [ladění snímků při výjimk
 |Vlastnost | Výchozí | Popis |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | Koncový bod, který se používá pro připojení ke službě Application Insights Snapshot Debugger. Pokud je null, použije se výchozí koncový bod. |
-| captureSnapshotMemoryWeight | 0,5 | Váha přidělená aktuální velikosti paměti procesu při kontrole, zda je k dispozici dostatek paměti pro pořízení snímku. Očekávaná hodnota je větší než 0 správný zlomek (0 < CaptureSnapshotMemoryWeight < 1). |
+| captureSnapshotMemoryWeight | 0.5 | Váha přidělená aktuální velikosti paměti procesu při kontrole, zda je k dispozici dostatek paměti pro pořízení snímku. Očekávaná hodnota je větší než 0 správný zlomek (0 < CaptureSnapshotMemoryWeight < 1). |
 | failedRequestLimit | 3 | Omezení počtu neúspěšných žádostí o snímky, než je procesor telemetrie zakázán.|
 | handleUntrackedExceptions | true | Povolí nebo zakáže sledování výjimek, které nejsou sledovány Application Insights telemetrie. |
 | isEnabled | true | Povolí nebo zakáže shromažďování snímků. | 
@@ -201,9 +201,9 @@ Další informace o snímcích najdete v tématu [ladění snímků při výjimk
 | shareUploaderProcess | true | V případě hodnoty true bude shromažďovat a nahrávat snímky pro několik aplikací, které sdílí InstrumentationKey, jenom jedna instance SnapshotUploader. Pokud je nastavena hodnota false, bude SnapshotUploader jedinečný pro každou řazenou kolekci členů (Process, InstrumentationKey). |
 | snapshotInLowPriorityThread | true | Určuje, zda se mají zpracovávat snímky ve vlákně s nízkým/v prioritou. Vytvoření snímku je rychlá operace, ale aby bylo možné nahrát snímek do služby Snapshot Debugger, musí být nejprve zapsán na disk jako s minimálním výpisem. K tomu dochází v procesu SnapshotUploader. Pokud nastavíte hodnotu true, použije se pro zápis s minimálním výpisem v/v s nízkou prioritou, takže se vaše aplikace nebude konkurovat za prostředky. Nastavením této hodnoty na false zrychlí s minimálním výpisem vytváření na úkor zpomalení aplikace. |
 | snapshotsPerDayLimit | 30 | Maximální počet snímků povolených za jeden den (24 hodin). Toto omezení se taky vynutilo na straně Application Insights služby. Nahrávání jsou pro jednotlivé aplikace omezené na 50 a den (tj. na klíč instrumentace). Tato hodnota pomáhá zabránit vytváření dalších snímků, které se nakonec během nahrávání odmítnou. Hodnota nula odstraní celý limit, což se nedoporučuje. |
-| snapshotsPerTenMinutesLimit | 1\. místo | Maximální počet snímků povolených za 10 minut. I když na této hodnotě není žádná horní mez, požádejte o zvýšení opatrnosti v produkčních úlohách, protože by to mohlo mít vliv na výkon aplikace. Vytvoření snímku je rychlé, ale vytvoření s minimálním výpisem snímku a jeho nahrání do služby Snapshot Debugger je mnohem pomalejší operace, která bude konkurovat vaší aplikaci pro prostředky (procesor i I/O). |
+| snapshotsPerTenMinutesLimit | 1 | Maximální počet snímků povolených za 10 minut. I když na této hodnotě není žádná horní mez, požádejte o zvýšení opatrnosti v produkčních úlohách, protože by to mohlo mít vliv na výkon aplikace. Vytvoření snímku je rychlé, ale vytvoření s minimálním výpisem snímku a jeho nahrání do služby Snapshot Debugger je mnohem pomalejší operace, která bude konkurovat vaší aplikaci pro prostředky (procesor i I/O). |
 | tempFolder | null | Určuje složku pro zápis souborů protokolu Mini výpisy a odeslání. Pokud není nastavená, použije se *%TEMP%\Dumps* . |
-| thresholdForSnapshotting | 1\. místo | Kolikrát Application Insights nutné zobrazit výjimku před tím, než bude požádána o snímky. |
+| thresholdForSnapshotting | 1 | Kolikrát Application Insights nutné zobrazit výjimku před tím, než bude požádána o snímky. |
 | uploaderProxy | null | Přepíše proxy server použitou v procesu odeslání snímku. Toto nastavení může být nutné použít, pokud se vaše aplikace připojí k Internetu prostřednictvím proxy server. Snapshot Collector běží v rámci procesu aplikace a bude používat stejné nastavení proxy serveru. Odeslání snímku se ale spustí jako samostatný proces a možná budete muset proxy server nakonfigurovat ručně. Pokud je tato hodnota null, Snapshot Collector se pokusí automaticky zjistit adresu proxy pomocí prověření System .NET. WebRequest. DefaultWebProxy a předáním hodnoty pro odeslání snímku. Pokud tato hodnota není null, nepoužije se možnost autodetection a v nástroji pro odeslání snímku se použije proxy server, kterou tady zadáte. |
 
 ## <a name="cosmosdb"></a>cosmosDb
@@ -218,7 +218,7 @@ Nastavení konfigurace lze nalézt v [vazby pro Durable Functions](durable/durab
 
 Nastavení konfigurace najdete v [aktivačních událostech a vazbách centra událostí](functions-bindings-event-hubs.md#host-json). 
 
-## <a name="extensions"></a>SND
+## <a name="extensions"></a>přípony
 
 Vlastnost, která vrací objekt, který obsahuje všechna nastavení specifická pro vazbu, například [http](#http) a [eventHub](#eventhub).
 
@@ -228,7 +228,7 @@ Sady rozšíření umožňují přidat do aplikace Function App kompatibilní sa
 
 [!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
-## <a name="functions"></a>functions
+## <a name="functions"></a>– funkce
 
 Seznam funkcí, které hostitel úlohy spouští. Prázdné pole znamená spuštění všech funkcí. Určeno pro použití pouze při [místním spuštění](functions-run-local.md). V aplikacích Function App v Azure byste měli místo použití tohoto nastavení zakázat konkrétní funkce pomocí postupu v [Azure Functions](disable-function.md) .
 
@@ -278,9 +278,9 @@ Nastavení konfigurace pro [Monitor stavu hostitele](https://github.com/Azure/az
 
 ## <a name="http"></a>http
 
-Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](functions-bindings-http-webhook.md#hostjson-settings).
+Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](functions-bindings-http-webhook-output.md#hostjson-settings).
 
-## <a name="logging"></a>protokolu
+## <a name="logging"></a>protokolování
 
 Řídí chování protokolování aplikace Function App, včetně Application Insights.
 
@@ -303,11 +303,11 @@ Nastavení konfigurace najdete v [aktivačních událostech http a vazbách](fun
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Definuje, jakou úroveň protokolování souborů je povoleno.  Možnosti jsou `never`, `always``debugOnly`. |
-|logLevel|–|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x a novější postupují podle ASP.NET Core rozložení pro filtrování kategorií protokolů. Toto nastavení umožňuje filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
-|konzola|–| [console](#console) nastavení protokolování. |
-|applicationInsights|–| Nastavení [applicationInsights](#applicationinsights) |
+|logLevel|neuvedeno|Objekt, který definuje filtrování kategorií protokolů pro funkce v aplikaci. Verze 2. x a novější postupují podle ASP.NET Core rozložení pro filtrování kategorií protokolů. Toto nastavení umožňuje filtrovat protokolování pro konkrétní funkce. Další informace najdete v tématu [filtrování protokolů](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) v dokumentaci k ASP.NET Core. |
+|console|neuvedeno| Nastavení protokolování [konzoly](#console) . |
+|applicationInsights|neuvedeno| Nastavení [applicationInsights](#applicationinsights) |
 
-## <a name="console"></a>konzola
+## <a name="console"></a>console
 
 Toto nastavení je podřízenou položkou [protokolování](#logging). Řídí protokolování konzoly, pokud není v režimu ladění.
 
@@ -339,7 +339,7 @@ Spravovaná závislost je funkce, kterou momentálně podporuje jenom funkce zal
 }
 ```
 
-## <a name="queues"></a>vytvořil
+## <a name="queues"></a>fronty
 
 Nastavení konfigurace najdete v [aktivačních událostech a vazbách fronty úložiště](functions-bindings-storage-queue.md#host-json).  
 
@@ -373,7 +373,7 @@ Nastavení konfigurace pro chování zámku typu singleton. Další informace na
 |listenerLockPeriod|00:01:00|Období, pro které jsou pořízeny zámky naslouchacího procesu.| 
 |listenerLockRecoveryPollingInterval|00:01:00|Časový interval, který se používá pro obnovení zámku naslouchacího procesu, pokud se nepovedlo získat zámek naslouchacího procesu při spuštění.| 
 |lockAcquisitionTimeout|00:01:00|Maximální doba, po kterou se modul runtime pokusí získat zámek.| 
-|lockAcquisitionPollingInterval|–|Interval mezi pokusy o získání zámku.| 
+|lockAcquisitionPollingInterval|neuvedeno|Interval mezi pokusy o získání zámku.| 
 
 ## <a name="version"></a>version
 

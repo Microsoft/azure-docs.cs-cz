@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911894"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212489"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv ze zařízení do cloudu Azure IoT pomocí distribuované trasování (Preview)
 
@@ -130,6 +130,9 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
 ### <a name="edit-the-send-telemetry-sample-to-enable-distributed-tracing"></a>Pokud chcete povolit distribuované trasování, upravte ukázku odeslat telemetrii.
 
+> [!div class="button"]
+> <a href="https://github.com/Azure-Samples/azure-iot-distributed-tracing-sample/blob/master/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c" target="_blank">Získání ukázky na GitHubu</a>
+
 1. Pomocí editoru otevřete zdrojový soubor `azure-iot-sdk-c/iothub_client/samples/iothub_ll_telemetry_sample/iothub_ll_telemetry_sample.c`.
 
 1. Vyhledejte deklaraci konstanty `connectionString`:
@@ -152,7 +155,7 @@ Tyto pokyny se týkají vytváření ukázek ve Windows. Další prostředí nal
 
     [!code-c[](~/samples-iot-distributed-tracing/iothub_ll_telemetry_sample-c/iothub_ll_telemetry_sample.c?name=snippet_sleep&highlight=8)]
 
-### <a name="compile-and-run"></a>Kompilace a spuštění
+### <a name="compile-and-run"></a>Zkompilovat a spustit
 
 1. Přejděte do adresáře *iothub_ll_telemetry_sample* projektu z adresáře cmake (`azure-iot-sdk-c/cmake`), který jste vytvořili dříve, a zkompilujte ukázku:
 
@@ -241,10 +244,10 @@ Pokud chcete aktualizovat konfiguraci pro vzorkování distribuovaného trasová
 }
 ```
 
-| Název elementu | Požaduje se | Typ | Popis |
+| Název elementu | Požadováno | Typ | Popis |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Ano | Integer | Pro zapnutí a vypnutí vzorkování se aktuálně podporují dvě hodnoty režimu. `1` je zapnuto a, `2` je vypnutý. |
-| `sampling_rate` | Ano | Integer | Tato hodnota je procento. Povolují se jenom hodnoty z `0` do `100` (včetně).  |
+| `sampling_mode` | Ano | Celé číslo | Pro zapnutí a vypnutí vzorkování se aktuálně podporují dvě hodnoty režimu. `1` je zapnuto a, `2` je vypnutý. |
+| `sampling_rate` | Ano | Celé číslo | Tato hodnota je procento. Povolují se jenom hodnoty z `0` do `100` (včetně).  |
 
 ## <a name="query-and-visualize"></a>Dotazování a vizualizace
 
@@ -264,7 +267,7 @@ AzureDiagnostics
 
 Příklady protokolů, jak je znázorněno Log Analytics:
 
-| TimeGenerated | OperationName | Kategorie | Úroveň | CorrelationId | Trvání v MS | Vlastnosti |
+| TimeGenerated | OperationName | Kategorie | Level | CorrelationId | Trvání v MS | Vlastnosti |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
 | 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |

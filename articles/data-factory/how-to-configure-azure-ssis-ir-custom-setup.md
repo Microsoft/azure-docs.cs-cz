@@ -11,13 +11,13 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 02/01/2020
-ms.openlocfilehash: c4502cc4a808b4a44f70c1f96fe38fd0ddeebdee
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/14/2020
+ms.openlocfilehash: 9c084564fec3faf59317fe9e05f3e850a38454d6
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187715"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251970"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro Azure-SSIS Integration Runtime
 
@@ -46,7 +46,7 @@ Následující omezení platí pouze pro standardní vlastní nastavení:
 
 - Ovladač IBM iSeries Access ODBC není podporován na Azure-SSIS IR. Při vlastní instalaci se může zobrazit chyba instalace. Pokud to uděláte, požádejte o pomoc podporu společnosti IBM.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -68,7 +68,7 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující položky:
    * Abyste měli jistotu, že se skript dá spustit bezobslužně, doporučujeme ho nejdřív otestovat na svém místním počítači.  
    * Pokud chcete, aby se další protokoly vygenerovaly jinými nástroji (například *Msiexec. exe*), které se mají nahrát do kontejneru, zadejte předdefinovanou proměnnou prostředí `CUSTOM_SETUP_SCRIPT_LOG_DIR`jako složku protokolu ve vašich skriptech (například *msiexec/i xxx. msi/quiet/LV% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ Install. log*).
 
-1. Stáhněte, nainstalujte a otevřete [Průzkumník služby Azure Storage](https://storageexplorer.com/). Postupujte následovně:
+1. Stáhněte, nainstalujte a otevřete [Průzkumník služby Azure Storage](https://storageexplorer.com/). Postup:
 
    a. V části **(místní a připojené)** klikněte pravým tlačítkem na **účty úložiště**a pak vyberte **připojit k Azure Storage**.
 
@@ -121,8 +121,12 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující položky:
 
      * Pokud vyberete **OH22'S HEDDA. V/** v součást, můžete nainstalovat [HEDDA. Kvalita/čisticí data Azure-SSIS IR v/](https://hedda.io/ssis-component/) v oh22 po zakoupení služby Aktuální integrovaná verze je **1.0.13**.
 
-      * Pokud vyberete komponentu **oh22's SQLPhonetics.NET** , můžete nainstalovat součást [SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) Data Quality/Matching z oh22 na svou Azure-SSIS IR zadáním licenčního kódu produktu, který jste si z nich koupili v poli **licenční klíč** . Aktuální integrovaná verze je **1.0.43**.
-   
+     * Pokud vyberete komponentu **oh22's SQLPhonetics.NET** , můžete nainstalovat součást [SQLPhonetics.NET](https://sqlphonetics.oh22.is/sqlphonetics-net-for-microsoft-ssis/) Data Quality/Matching z oh22 na svou Azure-SSIS IR zadáním licenčního kódu produktu, který jste si z nich koupili v poli **licenční klíč** . Aktuální integrovaná verze je **1.0.43**.
+
+     * Pokud vyberete komponentu **KingswaySoft Integration Toolkit pro SSIS** , můžete nainstalovat konektory sady [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) pro aplikace CRM/ERP/marketing a spolupráci, jako je například Microsoft Dynamics/SharePoint/Project Server, marketingový Cloud Oracle nebo Salesforce, a to z KingswaySoft na vaše Azure-SSIS IR zadáním licenčního kódu produktu, který jste si z nich koupili v poli **licenční klíč** . Aktuální integrovaná verze je **2019,2**.
+
+     * Pokud vyberete komponentu **KingswaySoft pro SSIS produktivity** , můžete do svého Azure-SSIS IR nainstalovat sadu funkcí sady [SSIS produktivní Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack) z KingswaySoft, a to zadáním licenčního kódu produktu, který jste si z nich koupili v poli **licenční klíč** . Aktuální integrovaná verze je **10,0**.
+
    Přidaná expresní vlastní nastavení se zobrazí v části **Upřesnit nastavení** . Pokud je chcete odebrat, zaškrtněte příslušná políčka a potom vyberte **Odstranit**.
 
    ![Rozšířená nastavení s vlastními nastaveními](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)

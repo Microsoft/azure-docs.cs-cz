@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: bbb0992eaeef7892e5940130131ac139a339b47d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fa73cb690fafb67f75abafab1b0dd27ffa0b8e32
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77083234"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210495"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazení modelů pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -584,6 +584,20 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 [!INCLUDE [aml-local-deploy-config](../../includes/machine-learning-service-local-deploy-config.md)]
 
 Další informace najdete v dokumentaci [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
+
+### <a name="understanding-service-state"></a>Princip stavu služby
+
+Během nasazování modelu se může zobrazit Změna stavu služby během plného nasazení.
+
+Následující tabulka popisuje různé stavy služby:
+
+| Stav WebService | Popis | Konečný stav?
+| ----- | ----- | ----- |
+| Přechod | Služba je v procesu nasazení. | Ne |
+| Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | Ne |
+| Unschedulable | Službu nyní nelze nasadit z důvodu nedostatku prostředků. | Ne |
+| Neúspěch | Nasazení služby se nezdařilo z důvodu chyby nebo selhání. | Ano |
+| V pořádku | Služba je v pořádku a koncový bod je k dispozici. | Ano |
 
 ### <a id="notebookvm"></a>Webová služba COMPUTE instance (vývoj/testování)
 

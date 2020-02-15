@@ -9,13 +9,13 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.topic: article
-ms.date: 05/31/2019
-ms.openlocfilehash: 634f949daa4926f2707c0611b819800441e76610
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 06/01/2019
+ms.openlocfilehash: d573378bc5e729eb75b6c3b51d3671492f7f98f1
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438032"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209371"
 ---
 # <a name="what-is-azure-database-migration-service"></a>Co je Azure Database Migration Service?
 
@@ -28,7 +28,7 @@ Azure Database Migration Service integruje některé funkce našich stávající
 > [!NOTE]
 > Použití Azure Database Migration Service k provedení online migrace vyžaduje vytvoření instance založené na cenové úrovni Premium.
 
-## <a name="regional-availability"></a>Dostupnost podle oblastí
+## <a name="regional-availability"></a>Regionální dostupnost
 
 Aktuální informace o místní dostupnosti Azure Database Migration Service najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=database-migration).
 

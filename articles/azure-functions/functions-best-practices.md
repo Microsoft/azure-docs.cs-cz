@@ -5,12 +5,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f808ff2a88a86df25b555f94257168e2d176e7f8
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: fd52c4cc5cd9d4c01ddb355bdfb28d0952e65759
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963648"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210255"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizujte výkon a spolehlivost Azure Functions
 
@@ -112,13 +112,13 @@ U C# funkcí lze typ změnit na pole silného typu.  Například namísto `Event
 
 Soubor `host.json` ve Function App umožňuje konfiguraci chování hostitele a spuštění.  Kromě dávkování chování můžete spravovat souběžnost pro určitý počet triggerů. Často se upravují hodnoty v těchto možnostech, které mohou pokaždé škálovat každou instanci odpovídajícím způsobem pro požadavky vyvolaných funkcí.
 
-Nastavení v souboru Host. JSON se aplikují napříč všemi funkcemi v rámci aplikace v rámci *jedné instance* funkce. Pokud jste třeba aplikaci Function App se dvěma funkcemi HTTP a [`maxConcurrentRequests`](functions-bindings-http-webhook.md#hostjson-settings) požadavky nastavili na 25, požadavek na Trigger http by se dostal do sdíleného 25 souběžných požadavků.  Když se tato aplikace Functions škáluje na 10 instancí, můžou tyto dvě funkce efektivně umožňovat 250 souběžných žádostí (10 instancí × 25 souběžných požadavků na instanci). 
+Nastavení v souboru Host. JSON se aplikují napříč všemi funkcemi v rámci aplikace v rámci *jedné instance* funkce. Pokud jste třeba aplikaci Function App se dvěma funkcemi HTTP a [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) požadavky nastavili na 25, požadavek na Trigger http by se dostal do sdíleného 25 souběžných požadavků.  Když se tato aplikace Functions škáluje na 10 instancí, můžou tyto dvě funkce efektivně umožňovat 250 souběžných žádostí (10 instancí × 25 souběžných požadavků na instanci). 
 
 Další možnosti konfigurace hostitele najdete v [článku Konfigurace Host. JSON](functions-host-json.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících materiálech:
 
 * [Správa připojení v Azure Functions](manage-connections.md)
 * [Azure App Service osvědčené postupy](../app-service/app-service-best-practices.md)

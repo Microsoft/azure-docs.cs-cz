@@ -8,16 +8,16 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.openlocfilehash: bd4798ba4faa1808ecafb6d09eee09ba734c293d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3bc3edcd0e75d8f6e3e4d6f9b200032909318040
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121699"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209354"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání na portálu
 
-Azure Kognitivní hledání je samostatný prostředek, který se používá k připojení vyhledávacího prostředí ve vlastních aplikacích. I když se služba Azure Kognitivní hledání snadno integruje s jinými službami Azure, můžete ji použít taky jako samostatnou součást nebo ji integrovat s aplikacemi na síťových serverech nebo se softwarem běžícím na jiných cloudových platformách.
+Azure Kognitivní hledání je samostatný prostředek, který slouží k připojení vyhledávacího prostředí do vlastních aplikací. Služba Azure Kognitivní hledání se snadno integruje s jinými službami Azure, aplikacemi na síťových serverech nebo se softwarem běžícím na jiných cloudových platformách.
 
 V tomto článku se dozvíte, jak vytvořit prostředek v [Azure Portal](https://portal.azure.com/).
 
@@ -45,18 +45,18 @@ Pokud máte více než jedno předplatné, vyberte pro vyhledávací službu jed
 
 ## <a name="set-a-resource-group"></a>Nastavení skupiny prostředků
 
-Skupina prostředků je povinná a je užitečná pro správu všech prostředků, včetně nákladů. Skupina prostředků se může skládat z jedné služby nebo více služeb používaných společně. Pokud například používáte Azure Kognitivní hledání k indexování databáze Azure Cosmos DB, mohli byste pro účely správy nastavit obě služby stejné skupiny prostředků. 
+Skupina prostředků je kontejner, který obsahuje související prostředky pro vaše řešení Azure. Služba vyhledávání je vyžaduje. Je to také užitečné pro správu prostředků, včetně nákladů. Skupina prostředků se může skládat z jedné služby nebo více služeb používaných společně. Pokud například používáte Azure Kognitivní hledání k indexování databáze Azure Cosmos DB, mohli byste pro účely správy nastavit obě služby stejné skupiny prostředků. 
 
 Pokud nekombinujete prostředky do jedné skupiny, nebo pokud jsou stávající skupiny prostředků vyplněné prostředky používanými v nesouvisejících řešeních, vytvořte novou skupinu prostředků jenom pro svůj prostředek Azure Kognitivní hledání. 
 
 ![Vytvořit novou skupinu prostředků](./media/search-create-service-portal/new-resource-group.png "Vytvoření nové skupiny prostředků")
 
-V průběhu času můžete sledovat aktuální a předpokládané náklady (jak je znázorněno na snímku obrazovky) nebo přejít dolů a zobrazit poplatky za jednotlivé prostředky. Následující snímek obrazovky znázorňuje druh informací o nákladech, které můžete očekávat, když zkombinujete více prostředků do jedné skupiny.
+V průběhu času můžete sledovat aktuální a předpokládané náklady nebo si můžete zobrazit poplatky za jednotlivé prostředky. Následující snímek obrazovky znázorňuje druh informací o nákladech, které můžete očekávat při kombinování více prostředků do jedné skupiny.
 
 ![Správa nákladů na úrovni skupiny prostředků](./media/search-create-service-portal/resource-group-cost-management.png "Správa nákladů na úrovni skupiny prostředků")
 
 > [!TIP]
-> Skupiny prostředků zjednodušují vyčištění, protože odstraněním skupiny se také odstraní služby, které jsou v ní obsažené. U prototypových projektů, které využívají více služeb, spojení všech služeb do stejné skupiny prostředků usnadňuje vyčištění po skončení projektu.
+> Skupiny prostředků zjednodušují vyčištění, protože odstraněním skupiny se odstraní všechny služby, které jsou v ní obsažené. U prototypových projektů, které využívají více služeb, spojení všech služeb do stejné skupiny prostředků usnadňuje vyčištění po skončení projektu.
 
 ## <a name="name-the-service"></a>Pojmenování služby
 
@@ -65,10 +65,10 @@ V části Podrobnosti o instanci zadejte název služby do pole **Adresa URL** .
 Požadavky na název služby:
 
 * Musí být jedinečný v rámci oboru názvů search.windows.net.
-* Délka musí být 2 až 60 znaků.
-* Používejte malá písmena, číslice nebo pomlčky („-“).
-* Nepoužívejte pomlčku („-“) v prvních 2 znacích nebo jako poslední znak.
-* Nikde nepoužívejte po sobě jdoucí pomlčky („--“).
+* Musí mít délku 2 až 60 znaků.
+* Je nutné použít malá písmena, číslice nebo pomlčky (-).
+* Nepoužívejte pomlčky ("-") v prvních 2 znacích nebo jako poslední znak.
+* Nemusíte používat po sobě jdoucí pomlčky ("--") kdekoli
 
 > [!TIP]
 > Pokud si myslíte, že budete používat víc služeb, doporučujeme, abyste do názvu služby jako zásadu vytváření názvů zavedli také oblast (nebo umístění). Služby v rámci stejné oblasti můžou bezplatně vyměňovat data, takže pokud je Azure Kognitivní hledání v Západní USA a máte i další služby v Západní USA, název podobný `mysearchservice-westus` vám může při rozhodování o kombinování a připojování prostředků ušetřit cestu na stránku vlastností.
@@ -79,7 +79,7 @@ Jako služba Azure je možné Azure Kognitivní hledání hostovat v datových c
 
 Kliknutím na stejné umístění pro několik služeb můžete snížit nebo vyvarovat poplatky za šířku pásma. Pokud například indexuje data, která poskytuje jiná služba Azure (Azure Storage, Azure Cosmos DB Azure SQL Database), vytvoření služby Azure kognitivní hledání ve stejné oblasti se vyhne poplatkům za šířku pásma (u odchozích dat se neúčtují žádné poplatky, když služby jsou ve stejné oblasti).
 
-Pokud navíc používáte rozšíření AI, vytvořte službu ve stejné oblasti jako Cognitive Services. *Společné umístění Azure kognitivní hledání a Cognitive Services ve stejné oblasti je požadavek na obohacení AI*.
+Pokud používáte rozšíření AI, vytvořte vyhledávací službu ve stejné oblasti jako Cognitive Services. *Společné umístění Azure kognitivní hledání a Cognitive Services ve stejné oblasti je požadavek na obohacení AI*.
 
 > [!Note]
 > Střed Indie není v tuto chvíli pro nové služby k dispozici. Pro služby, které jsou už v Střed Indie, můžete škálovat bez omezení a služba je v této oblasti plně podporovaná. Omezení v této oblasti je dočasné a omezené jenom na nové služby. Tato poznámka se odstraní, když už neplatí omezení.
@@ -90,7 +90,7 @@ Služba [Azure kognitivní hledání se teď nabízí v několika cenových úro
 
 Basic a Standard jsou nejběžnější možnosti pro produkční úlohy, ale většina zákazníků začíná bezplatnou službou. Hlavním rozdílem mezi úrovněmi je velikost oddílu a rychlost a omezení počtu objektů, které můžete vytvořit.
 
-Pamatujte, že cenovou úroveň nelze po vytvoření služby změnit. Pokud budete později potřebovat vyšší nebo nižší úroveň, budete muset službu znovu vytvořit.
+Pamatujte na to, že po vytvoření služby se cenová úroveň nedá změnit. Pokud potřebujete vyšší nebo nižší úroveň, budete muset službu znovu vytvořit.
 
 ## <a name="create-your-service"></a>Vytvoření služby
 
@@ -98,7 +98,7 @@ Po zadání potřebných vstupů pokračujte a vytvořte službu.
 
 ![Kontrola a vytvoření služby](./media/search-create-service-portal/new-service3.png "Kontrola a vytvoření služby")
 
-Vaše služba se nasadí během několika minut, což můžete sledovat prostřednictvím oznámení Azure. Zvažte možnost připnutí služby na řídicí panel, aby byl v budoucnu snadný přístup.
+Vaše služba se nasadí během několika minut. Průběh můžete sledovat prostřednictvím oznámení Azure. Zvažte možnost připnutí služby na řídicí panel, aby byl v budoucnu snadný přístup.
 
 ![Monitorování a připnutí služby](./media/search-create-service-portal/monitor-notifications.png "Monitorování a připnutí služby")
 

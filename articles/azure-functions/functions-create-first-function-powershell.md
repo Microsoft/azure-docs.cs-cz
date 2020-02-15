@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e9aeb7234f5b840d790f6358bab2426462cc7986
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845900"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210221"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Vytvoření první funkce PowerShellu v Azure
 
@@ -23,9 +23,9 @@ Pomocí [rozšíření Azure Functions pro Visual Studio Code] vytvoříte míst
 
 V operačních systémech macOS, Windows a Linux jsou podporovány následující kroky.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-K dokončení tohoto rychlého startu je potřeba:
+K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 * Nainstalovat [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
 
@@ -61,7 +61,7 @@ K dokončení tohoto rychlého startu je potřeba:
 1. Jako šablonu pro první funkci vyberte **Trigger http** , jako název funkce použijte `HTTPTrigger` a vyberte úroveň autorizace **funkce**.
 
     > [!NOTE]
-    > Úroveň autorizace **funkce** vyžaduje hodnotu [klíče funkce](functions-bindings-http-webhook.md#authorization-keys) při volání koncového bodu funkce v Azure. Díky tomu je to obtížnější pro volání vaší funkce pouze komukoli.
+    > Úroveň autorizace **funkce** vyžaduje hodnotu [klíče funkce](functions-bindings-http-webhook-trigger.md#authorization-keys) při volání koncového bodu funkce v Azure. Díky tomu je to obtížnější pro volání vaší funkce pouze komukoli.
 
 1. Po zobrazení výzvy zvolte **Přidat do pracovního prostoru**.
 

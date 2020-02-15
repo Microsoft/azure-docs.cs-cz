@@ -4,22 +4,21 @@ description: Naučte se povolit ověřování na základě identity přes protok
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 01/06/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 489cb9e652d571b5322a1bd92663ca089e28b8cd
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 06ff14b23057755a643e5a57fbaf711798cca00e
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980779"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210478"
 ---
-# <a name="enable-azure-active-directory-domain-services-authentication-over-smb-for-azure-files"></a>Povolení Azure Active Directory Domain Services ověřování pomocí protokolu SMB pro soubory Azure
+# <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Povolení ověřování Azure Active Directory Domain Services u souborů Azure
 
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Přehled ověřování Azure AD pomocí protokolu SMB pro soubory Azure najdete v tématu [přehled Azure Active Directory ověřování pomocí protokolu SMB pro soubory Azure](storage-files-active-directory-overview.md).
-
+Přehled ověřování na základě identity, který je podporovaný u souborů Azure, najdete v tématu [přehled Azure Active Directory ověřování pomocí protokolu SMB pro soubory Azure](storage-files-active-directory-overview.md). Tento článek se zaměřuje na to, jak povolit ověřování pomocí Azure Active Directory Domain Services (Azure služba AD DS) v souborech Azure. 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview-of-the-workflow"></a>Přehled pracovního postupu
@@ -71,11 +70,11 @@ Než povolíte službu Azure AD přes SMB pro soubory Azure, ujistěte se, že j
 
 ## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>Povolit Azure služba AD DS ověřování pro váš účet
 
-Pokud chcete povolit službu Azure služba AD DS Authentication přes protokol SMB pro soubory Azure, můžete nastavit vlastnost na účtech úložiště vytvořených po 24. září 2018 pomocí Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku Azure CLI. Nastavením této vlastnosti se zaregistruje účet úložiště s přidruženým nasazením služby Azure služba AD DS. Pro všechny nové a existující sdílené složky v účtu úložiště se pak povolí ověřování Azure služba AD DS přes protokol SMB.
+Pokud chcete povolit službu Azure služba AD DS Authentication přes protokol SMB pro soubory Azure, můžete nastavit vlastnost na účtech úložiště pomocí rozhraní příkazového řádku Azure Portal, Azure PowerShell nebo Azure CLI. Nastavení této vlastnosti implicitně připojí k doméně účet úložiště s přidruženým nasazením služby Azure služba AD DS. Pro všechny nové a existující sdílené složky v účtu úložiště se pak povolí ověřování Azure služba AD DS přes protokol SMB.
 
 Mějte na paměti, že můžete povolit ověřování Azure služba AD DS přes protokol SMB až po úspěšném nasazení služba AD DS Azure do tenanta Azure AD. Další informace najdete v části [požadavky](#prerequisites).
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>portál Azure
 
 Pokud chcete povolit ověřování pomocí služby Azure služba AD DS přes protokol SMB s [Azure Portal](https://portal.azure.com), postupujte podle následujících kroků:
 
@@ -147,11 +146,11 @@ Zavedli jsme dvě předdefinované role Azure pro udělení oprávnění na úro
 
 Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete přiřadit předdefinované role k identitě uživatele Azure AD pro udělení oprávnění na úrovni sdílené složky.
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>portál Azure
 K přiřazení role RBAC k identitě Azure AD použijte [Azure Portal](https://portal.azure.com)použijte následující postup:
 
 1. V Azure Portal přejdete do sdílené složky nebo [vytvoříte sdílenou složku ve službě soubory Azure](storage-how-to-create-file-share.md).
-2. Vyberte **řízení přístupu (IAM)** .
+2. Vyberte **Access Control (IAM)** .
 3. Vyberte **Přidat přiřazení role** .
 4. V okně **Přidat přiřazení role** vyberte příslušnou integrovanou roli (soubor úložiště, sdílenou složku SMB pro sdílení souborů úložiště, přispěvatel sdílené složky SMB) ze seznamu **rolí** . Nechejte možnost **přiřadit přístup k** výchozímu nastavení: **uživatel, skupina nebo instanční objekt služby Azure AD**. Vyberte cílovou identitu Azure AD podle jména nebo e-mailové adresy.
 5. Výběrem **Uložit** dokončete operaci přiřazení role.

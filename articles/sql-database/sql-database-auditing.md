@@ -9,12 +9,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 7011bf068a96fe9da035ec08a1f6ef7f80a0b240
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161949"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212888"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditováním SQL Database
 
@@ -90,7 +90,7 @@ Pokud chcete nakonfigurovat zápis protokolů auditu na účet úložiště, vyb
 
    ![účet úložiště](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-Pokud chcete nakonfigurovat účet úložiště v rámci virtuální sítě nebo brány firewall, budete potřebovat [Správce služby Active Directory](/sql-database-aad-authentication-configure.md?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server) na serveru, povolit **důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště** v účtu úložiště. Kromě toho musíte mít ve vybraném účtu úložiště oprávnění ' Microsoft. Authorization/roleAssignments/Write '.
+Pokud chcete nakonfigurovat účet úložiště v rámci virtuální sítě nebo brány firewall, budete potřebovat [Správce služby Active Directory](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure?tabs=azure-powershell#provision-an-azure-active-directory-administrator-for-your-managed-instance) na serveru, povolit **důvěryhodným službám Microsoftu přístup k tomuto účtu úložiště** v účtu úložiště. Kromě toho musíte mít ve vybraném účtu úložiště oprávnění ' Microsoft. Authorization/roleAssignments/Write '.
 
 Doporučujeme, abyste měli oprávnění [Správce přístupu uživatele](../role-based-access-control/built-in-roles.md#user-access-administrator) , aby bylo možné udělit spravované identitě roli "Přispěvatel dat objektů BLOB úložiště". Další informace o oprávněních a řízení přístupu na základě rolí najdete v tématu [co je řízení přístupu na základě role (RBAC) pro prostředky Azure?](../role-based-access-control/overview.md) a [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure Portal](../role-based-access-control/role-assignments-portal.md)
 
@@ -243,7 +243,7 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
     > V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
     > - USA – východ
     > - Střed USA – jih
-    > - Západní USA 2
+    > - USA – západ 2
 
 
 ## <a id="subheading-7"></a>Správa Azure SQL Server a auditování databáze pomocí Azure PowerShell

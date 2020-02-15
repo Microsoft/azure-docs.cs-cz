@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8370b71bfa980dbd099ade59a3a19633dfd5dc72
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8107b16a3db76fb0e248f1681463b73cc4ee21cf
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910897"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208416"
 ---
 # <a name="show-traffic-on-the-map"></a>Zobrazit provoz na mapě
 
 V Azure Maps jsou k dispozici dva typy dat přenosů:
 
 - Data o incidentech – skládají se z bodů a řádkových dat pro věci, jako jsou konstrukce, uzavření provozu a nehody.
-- Data toku – poskytuje metriky toku provozu na cestách. Data toku přenosů se často používají k obarvení cest na základě toho, kolik přenosů zpomaluje tok vzhledem k limitu rychlosti nebo jiné metriky. Data toku provozu v Azure Maps mají tři různé metriky měření:
+- Data toku – poskytuje metriky toku provozu na cestách. Data toku provozu se často používají k obarvení cest. Barvy jsou založené na tom, kolik přenosů zpomaluje tok, relativně k limitu rychlosti nebo jiné metriky. Data toku provozu v Azure Maps mají tři různé metriky měření:
     - `relative` – je relativní vzhledem k rychlosti volného toku provozu.
     - `absolute` – jedná se o absolutní rychlost všech vozidel na cestách.
     - `relative-delay` – zobrazí oblasti, které jsou pomalejší než průměrná očekávaná prodleva.
@@ -58,7 +58,7 @@ Projděte si <a href='https://codepen.io/azuremaps/pen/RwbPqRY/'>Možnosti přek
 Další informace o třídách a metodách, které se používají v tomto článku:
 
 > [!div class="nextstepaction"]
-> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [TrafficOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.trafficoptions)

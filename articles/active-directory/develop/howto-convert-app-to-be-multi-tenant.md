@@ -14,12 +14,12 @@ ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 7e19e9067052c516427391adcc615767446c4049
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 197379b5edd3f59c83c557590445fc5dac8fc43a
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697145"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212229"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Postupy: přihlášení libovolného Azure Active Directory uživatele pomocí vzoru aplikace pro více tenantů
 
@@ -134,7 +134,7 @@ Vaše aplikace může mít více vrstev, z nichž každý představuje vlastní 
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Více vrstev v jednom tenantovi
 
-To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Například:
+To může být problém, pokud se vaše logická aplikace skládá ze dvou nebo více registrací aplikace, například samostatného klienta a prostředku. Jak napřed získat prostředek do tenanta zákazníka? Azure AD pokrývá tento případ tím, že umožňuje klientovi a prostředku souhlas v jednom kroku. Uživatel uvidí celkový součet oprávnění vyžádaného klientem i prostředkem na stránce souhlasu. Aby bylo možné toto chování povolit, musí registrace aplikace prostředku zahrnovat ID aplikace klienta jako `knownClientApplications` v [manifestu aplikace][AAD-App-Manifest]. Příklad:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 
@@ -176,7 +176,7 @@ V tomto článku jste zjistili, jak vytvořit aplikaci, která se může přihl�
 
 ## <a name="related-content"></a>Související obsah
 
-* [Ukázky aplikací pro více tenantů](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)
+* [Ukázka víceklientské aplikace](https://github.com/mspnp/multitenant-saas-guidance)
 * [Pokyny pro přizpůsobení aplikací][AAD-App-Branding]
 * [Aplikační objekty a instanční objekty služby][AAD-App-SP-Objects]
 * [Integrace aplikací se službou Azure Active Directory][AAD-Integrating-Apps]

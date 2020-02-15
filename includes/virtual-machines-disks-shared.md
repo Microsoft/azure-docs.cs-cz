@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1bdb4e40d7e173dcb2368f2f0cf645581647f6ee
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 09e5a6c5eee21e5432c4cf96a63fd2337307954a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77202200"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211377"
 ---
 Azure Shared Disks (Preview) je nová funkce pro Azure Managed disks, která umožňuje připojení spravovaného disku Azure k několika virtuálním počítačům současně. Připojení spravovaného disku k několika virtuálním počítačům vám umožní nasadit do Azure nové nebo migrovat existující clusterové aplikace.
 
@@ -55,7 +55,7 @@ Clustery se systémem Linux můžou využívat Správce clusterů, jako je [Pace
 
 Následující diagram znázorňuje ukázkovou databázovou databázovou aplikaci v jednom uzlu, která využívá rozhraní SCSI PR a umožňuje převzetí služeb při selhání z jednoho uzlu na druhý.
 
-![Shared-disk-Updated-Two-Node-cluster-diagram. png](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
+![Cluster se dvěma uzly. Aplikace spuštěná v clusteru zpracovává přístup k disku.](media/virtual-machines-disks-shared-disks/shared-disk-updated-two-node-cluster-diagram.png)
 
 Tok je následující:
 
@@ -68,7 +68,7 @@ Tok je následující:
 
 Následující diagram znázorňuje další běžné clusterované úlohy skládající se z několika uzlů, které čtou data z disku pro spouštění paralelních procesů, jako je například školení modelů strojového učení.
 
-![Shared-disk-Updated-Machine-Learning-Trainer-model. png](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
+![Cluster virtuálních počítačů se čtyřmi uzly, každý uzel registruje záměr pro zápis, aplikace používá výhradní rezervaci pro správné zpracování výsledků zápisu](media/virtual-machines-disks-shared-disks/shared-disk-updated-machine-learning-trainer-model.png)
 
 Tok je následující:
 

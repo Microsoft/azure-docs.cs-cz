@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 78a7f3eb920d2f656b91cff187ca22b1e15973b7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 14ad6dbf139b34f501e0b0ea8c16d8570b2ace5b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77165407"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212576"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Změna způsobu replikace účtu úložiště
 
@@ -38,10 +38,10 @@ Následující tabulka poskytuje přehled toho, jak přepínat mezi jednotlivým
 
 | Přepínání | ... do LRS | ... na GRS/RA – GRS | ... do ZRS | ... na GZRS/RA – GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>... z LRS</b> | NEUŽÍVÁ SE. | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | Provedení ruční migrace <br /><br />Vyžádání migrace za provozu | Provedení ruční migrace <br /><br />Vyžádání migrace za provozu |
-| <b>... z GRS/RA – GRS</b> | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | NEUŽÍVÁ SE. | Provedení ruční migrace <br /><br />Vyžádání migrace za provozu | Provedení ruční migrace <br /><br />Vyžádání migrace za provozu |
-| <b>... z ZRS</b> | Provedení ruční migrace <br /><br />Vyžádání migrace za provozu | Provedení ruční migrace <br /><br />Vyžádání migrace za provozu | NEUŽÍVÁ SE. | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. |
-| <b>... z GZRS/RA – GZRS</b> | Provedení ruční migrace <br /><br />Vyžádání migrace za provozu | Provedení ruční migrace <br /><br />Vyžádání migrace za provozu | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | NEUŽÍVÁ SE. |
+| <b>... z LRS</b> | Není k dispozici | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1</sup> . | Provedení ruční migrace <br /><br />Vyžádání migrace za provozu | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na GRS/RA-GRS a pak požádejte o migraci za provozu<sup>1</sup> . |
+| <b>... z GRS/RA – GRS</b> | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | Není k dispozici | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na LRS a pak požádejte o migraci za provozu. | Provedení ruční migrace <br /><br /> Vyžádání migrace za provozu |
+| <b>... z ZRS</b> | Provedení ruční migrace | Provedení ruční migrace | Není k dispozici | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1</sup> . |
+| <b>... z GZRS/RA – GZRS</b> | Provedení ruční migrace | Provedení ruční migrace | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | Není k dispozici |
 
 <sup>1</sup> dojde k jednorázovému výstupnímu poplatku.
 
@@ -188,7 +188,7 @@ Při migraci účtu úložiště z GRS do LRS se neúčtují žádné další n�
 > [!IMPORTANT]
 > Pokud migrujete účet úložiště z RA-GRS na GRS nebo LRS, tento účet se fakturuje jako RA-GRS po dobu dalších 30 dnů od data, kdy se převedlo.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Azure Storage redundance](storage-redundancy.md)
 - [Podívejte se na vlastnost čas poslední synchronizace pro účet úložiště.](last-sync-time-get.md)

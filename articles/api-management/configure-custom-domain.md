@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72075d4eff336af625bbf6d62f1276d2997bfed4
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967351"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251189"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurace názvu vlastní domény
 
@@ -27,7 +27,7 @@ Když vytvoříte instanci služby Azure API Management, Azure mu přiřadí sub
 > API Management přijímá pouze požadavky s hodnotami [hlaviček hostitele](https://tools.ietf.org/html/rfc2616#section-14.23) , které odpovídají výchozímu názvu domény nebo libovolnému z nakonfigurovaných názvů vlastních domén.
 
 > [!WARNING]
-> Zákazníci, kteří chtějí použít připnutí certifikátů ke zlepšení zabezpečení svých aplikací, musí používat vlastní název domény > a certifikát, který spravují, nikoli výchozí certifikát. Zákazníci, kteří připnout výchozí certifikát, budou mít zavedenou závislost na vlastnostech certifikátu, který neovládají, což není doporučený postup.
+> Zákazníci, kteří chtějí použít připnutí certifikátů ke zlepšení zabezpečení svých aplikací, musí používat vlastní název domény a certifikát, který spravují, nikoli výchozí certifikát. Zákazníci, kteří připnout výchozí certifikát, budou mít zavedenou závislost na vlastnostech certifikátu, který neovládají, což není doporučený postup.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -55,7 +55,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
     - **SCM** (výchozí je: `<apim-service-name>.scm.azure-api.net`).
 
     > [!NOTE]
-    > Pro konfiguraci v úrovni spotřeby je dostupný jenom koncový bod **brány** .
+    > Pouze koncový bod **brány** je k dispozici pro konfiguraci v úrovni spotřeby.
     > Můžete aktualizovat všechny koncové body nebo některé z nich. Zákazníci aktualizují **bránu** (Tato adresa URL se běžně používá k volání rozhraní API vystaveného prostřednictvím API Management) a **portálu** (adresa URL portálu pro vývojáře).
     > Koncové body **správy** a **SCM** se používají interně pouze vlastníky instance API Management, takže se jim pro vlastní název domény často přiřazují méně často.
     > Úroveň **Premium** podporuje nastavení více názvů hostitelů pro koncový bod **brány** .
@@ -63,7 +63,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
 1. Vyberte koncový bod, který chcete aktualizovat.
 1. V okně na pravé straně klikněte na **vlastní**.
 
-    - Do pole **vlastní název domény**zadejte název, který chcete použít. Například, `api.contoso.com`.
+    - Do pole **vlastní název domény**zadejte název, který chcete použít. například `api.contoso.com`.
     - V části **certifikát**vyberte certifikát z Key Vault. Můžete také nahrát platnou hodnotu. Soubor PFX a zadejte **heslo**, pokud je certifikát chráněn heslem.
 
     > [!NOTE]
@@ -73,7 +73,7 @@ K provedení kroků popsaných v tomto článku musíte mít:
     > Doporučujeme použít Azure Key Vault pro správu certifikátů a jejich nastavení na automatické střídání.
     > Pokud používáte Azure Key Vault ke správě vlastního certifikátu SSL domény, ujistěte se, že je certifikát vložen do Key Vault [jako _certifikát_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nikoli jako _tajný kód_.
     >
-    > Aby bylo možné načíst certifikát protokolu SSL, API Management musí mít v Azure Key Vault obsahujícím certifikát oprávnění Get tajných klíčů. Při použití Azure Portal všechny nezbytné kroky konfigurace se automaticky dokončí. Při použití nástrojů příkazového řádku nebo rozhraní API pro správu musí být tato oprávnění udělena ručně. To se provádí ve dvou krocích. Nejprve pomocí stránky spravované identity na vaší instanci API Management zajistěte, aby byla povolena spravovaná identita, a poznamenejte si ID objektu zabezpečení zobrazené na této stránce. Druhý, udělte seznam oprávnění a získejte přístup k tomuto ID objektu zabezpečení pro Azure Key Vault obsahující certifikát.
+    > Aby bylo možné načíst certifikát protokolu SSL, API Management musí mít v Azure Key Vault obsahujícím certifikát oprávnění list a Get tajných klíčů. Při použití Azure Portal všechny nezbytné kroky konfigurace se automaticky dokončí. Při použití nástrojů příkazového řádku nebo rozhraní API pro správu musí být tato oprávnění udělena ručně. To se provádí ve dvou krocích. Nejprve pomocí stránky spravované identity na vaší instanci API Management zajistěte, aby byla povolena spravovaná identita, a poznamenejte si ID objektu zabezpečení zobrazené na této stránce. Druhý, udělte seznam oprávnění a získejte přístup k tomuto ID objektu zabezpečení pro Azure Key Vault obsahující certifikát.
     >
     > Pokud je certifikát nastavený na automatické střídání, API Management se automaticky vybere nejnovější verze bez jakéhokoli výpadku služby (Pokud vaše API Management vrstva má smlouvu SLA – i. e. ve všech vrstvách kromě úrovně pro vývojáře).
 

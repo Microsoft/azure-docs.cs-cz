@@ -3,12 +3,12 @@ title: Osvědčené postupy pro šablony
 description: Popisuje doporučené přístupy k vytváření Azure Resource Manager šablon. Nabízí návrhy, aby se předešlo běžným problémům při používání šablon.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b87f66f194b9e1daf8fa6a546c02aa4e86caabc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484243"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207481"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Doporučené postupy pro šablonu Azure Resource Manager
 
@@ -156,7 +156,7 @@ Následující informace můžou být užitečné při práci s [proměnnými](t
 
 * Přidejte proměnné pro názvy prostředků, které musí být jedinečné.
 
-* Pomocí [smyčky kopírování v proměnných](create-multiple-instances.md#variable-iteration) vytvořte opakovaný vzor objektů JSON.
+* Pomocí [smyčky kopírování v proměnných](copy-variables.md) vytvořte opakovaný vzor objektů JSON.
 
 * Odeberte nepoužité proměnné.
 
@@ -174,7 +174,7 @@ Při rozhodování, jaké [závislosti](define-resource-dependency.md) se mají 
 
 * Pokud je možné určit hodnotu před nasazením, zkuste prostředek nasadit bez závislosti. Pokud například hodnota konfigurace potřebuje název jiného prostředku, možná nebudete potřebovat závislost. Tyto pokyny nefungují vždycky, protože některé prostředky ověřují existenci druhého prostředku. Pokud se zobrazí chyba, přidejte závislost.
 
-## <a name="resources"></a>Materiály
+## <a name="resources"></a>Prostředky
 
 Následující informace můžou být užitečné při práci s [prostředky](template-syntax.md#resources):
 

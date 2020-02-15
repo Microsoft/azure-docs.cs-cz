@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cfdf7dfd4c16f70065e338f8983d2124d3f6f0ef
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 69bf41f9d88081b9a416b9bee91e8650a84f12c7
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933202"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209711"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Přidat vrstvu obrázku do mapy
 
-V tomto článku se dozvíte, jak můžete překrýt obrázek na pevně danou sadu souřadnic na mapě. Tady je několik příkladů typu imagí, které se často překrývají na mapách:
+V tomto článku se dozvíte, jak překrýt obrázek do pevné sady souřadnic. Tady je několik příkladů různých typů imagí, které je možné v mapách překrývají:
 
 * Obrázky zachycené z DRONY zachraňují životy
 * Sestavování floorplans
@@ -62,9 +62,9 @@ Zde je ukázka kompletního běžícího kódu předchozího kódu.
 
 ## <a name="import-a-kml-file-as-ground-overlay"></a>Import souboru KML jako překryvné desky
 
-Tento další příklad ukazuje, jak překrýt informace o překrytí KML, jako vrstvu obrázku na mapě. KML překryvná deska poskytují souřadnice Severní, Jižní, východní a západní osy a rotace po směru hodinových ručiček, zatímco vrstva obrázku očekává souřadnice pro každý roh obrázku. Překrytí základní desky KML v této ukázce je Chartres Cathedral a je ze zdroje [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
+Tento příklad ukazuje, jak přidat informace o překrytí základní desky KML jako vrstvu obrázku na mapě. KML překryvná deska poskytují souřadnice sever, jih, východní a západní délky a rotace po směru hodinových ručiček. Ale vrstva obrázku očekává souřadnice pro každý roh obrázku. Překrytí základní desky KML v této ukázce je pro Cathedral Chartres a je nasource z [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml).
 
-Následující kód používá funkci static `getCoordinatesFromEdges` třídy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) . Vypočítá čtyři rohy obrázku z informací o Severní, Jižní, východní a západní oblasti a informace o rotaci z překrytí základní desky KML.
+Kód používá funkci statického `getCoordinatesFromEdges` z třídy [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest) . Vypočítá čtyři rohy obrázku s použitím informací o Severní, Jižní, východní, západní a rotační překrytí základní desky (KML).
 
 <br/>
 

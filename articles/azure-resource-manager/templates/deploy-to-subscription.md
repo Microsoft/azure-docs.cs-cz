@@ -3,12 +3,12 @@ title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: c53d274303a203a427a36f8f729f6b43cee44e40
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 50db0b4d46ff4e367411829aa75fa017a168372f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120613"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207651"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
@@ -135,7 +135,7 @@ Následující šablona vytvoří prázdnou skupinu prostředků.
 }
 ```
 
-Pomocí [elementu Copy](create-multiple-instances.md) se skupinami prostředků vytvořte více než jednu skupinu prostředků.
+Pomocí [elementu Copy](copy-resources.md) se skupinami prostředků vytvořte více než jednu skupinu prostředků.
 
 ```json
 {
@@ -170,7 +170,7 @@ Pomocí [elementu Copy](create-multiple-instances.md) se skupinami prostředků 
 }
 ```
 
-Informace o iteraci prostředků najdete v tématu [nasazení více než jedné instance prostředku nebo vlastnosti v šablonách Azure Resource Manager](./create-multiple-instances.md)a [kurzu: vytvoření více instancí prostředků pomocí šablon Správce prostředků](./template-tutorial-create-multiple-instances.md).
+Informace o iteraci prostředků najdete v tématu [nasazení více než jedné instance prostředku v šablonách Azure Resource Manager](./copy-resources.md)a [kurzu: vytvoření více instancí prostředků pomocí šablon Správce prostředků](./template-tutorial-create-multiple-instances.md).
 
 ## <a name="resource-group-and-resources"></a>Skupina prostředků a prostředky
 

@@ -4,23 +4,21 @@ description: Naučte se, jak vytvořit instanční objekt pro automatizaci Azure
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5078fcc1ba5c581aca475025b286d0319d6024a6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c599abbf274eb4014323ec217c6d54d3c397b159
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572606"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251664"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace s využitím instančních objektů
 
 Instanční objekty jsou prostředky aplikací služby Azure Active Directory, které vytvoříte v tenantovi za účelem provedení bezobslužných operací na úrovni prostředků a služeb. Jsou to jedinečný typ *identity uživatele* s ID aplikace a heslem nebo certifikátem. Instanční objekt má pouze ta oprávnění, která jsou nutná pro provádění úloh definovaných rolemi a oprávněními, ke kterým je přiřazena. 
 
 V Analysis Services se instanční objekty používají s Azure Automation, bezobslužným režimem PowerShellu, vlastními klientskými aplikacemi a webovými aplikacemi pro automatizaci běžných úloh. Například zřizování serverů, nasazování modelů, aktualizace dat, horizontální navýšení nebo snížení kapacity a pozastavení/obnovení je možné automatizovat pomocí instančních objektů. Oprávnění se přiřazují instančním objektům prostřednictvím členství v rolích, podobně jako běžné účty hlavního názvu uživatele (UPN) služby Azure AD.
-
-Analysis Services taky podporuje operace prováděné spravovanými identitami pomocí instančních objektů. Další informace najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) a [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).
 
 ## <a name="create-service-principals"></a>Vytvoření instančních objektů
  
@@ -92,7 +90,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO a ADOMD 
 
-Když se připojujete ke klientským aplikacím a webovým aplikacím, verze 15.0.2 [klienta AMO a ADOMD](analysis-services-data-providers.md) verze a vyšší instalovatelný balíček z NuGet podporuje instanční objekty v připojovacích řetězcích pomocí následující syntaxe: `app:AppID` a heslo nebo @no_ _t_2_ .`cert:thumbprint` 
+Když se připojujete ke klientským aplikacím a webovým aplikacím, verze 15.0.2 [klienta AMO a ADOMD](analysis-services-data-providers.md) z NuGet podporují instanční objekty v připojovacích řetězcích pomocí následující syntaxe: `app:AppID` a heslo nebo `cert:thumbprint`. 
 
 V následujícím příkladu `appID` a `password` slouží k provedení operace aktualizace databáze modelu:
 

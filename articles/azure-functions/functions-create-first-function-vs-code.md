@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 26313c68305f4d7e6411d31fa12366442ce4bd38
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: cf71f051b014c6ce56290acda5c4b931c23934e2
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964081"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208944"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Rychlý Start: vytvoření projektu Azure Functions pomocí Visual Studio Code
 
@@ -93,7 +93,7 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
     + Zadejte **obor názvů**: typ `My.Functions`. 
     ::: zone-end
 
-    + **Úroveň autorizace**: vyberte `Anonymous`, která umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook.md#authorization-keys).
+    + **Úroveň autorizace**: vyberte `Anonymous`, která umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
     + **Vyberte způsob, jakým chcete projekt otevřít**: zvolte `Add to workspace`.
 

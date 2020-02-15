@@ -1,20 +1,20 @@
 ---
 title: Přidání vrstvy vysunutí mnohoúhelníku na mapu | Mapy Microsoft Azure
 description: Postup přidání vrstvy vysunutí mnohoúhelníku do webové sady SDK Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 10/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: f01e07ea2bbfd0f6b3b0cc19dd219d71984a0d45
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 38a7e6c5f4c139343e735ae82616c11a224ae7ca
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988562"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209677"
 ---
 # <a name="add-a-polygon-extrusion-layer-to-the-map"></a>Přidání vrstvy vysunutí mnohoúhelníku na mapu
 
@@ -88,7 +88,7 @@ Další informace o třídách a metodách, které se používají v tomto člá
 > [!div class="nextstepaction"]
 > [vrstva vysunutí mnohoúhelníku](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonextrusionlayer?view=azure-maps-typescript-latest)
 
-Další materiály:
+Další zdroje informací:
 
 > [!div class="nextstepaction"]
 > [Azure Maps rozšíření pro injson Specification](extend-geojson.md#circle)

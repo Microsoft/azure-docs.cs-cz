@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 4eafd0fbaed067a0852edea010408a1d82353392
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dd36895a34b36bbdf8e796cf629ab031613663cd
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277964"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208878"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -29,7 +29,7 @@ Vývoj funkcí v místním počítači a jejich publikování v Azure pomocí z�
 > * [Spusťte funkci místně.](#start)
 > * [Publikujte projekt do Azure.](#publish)
 
-## <a name="core-tools-versions"></a>Verze nástrojů Core Tools
+## <a name="core-tools-versions"></a>Verze základních nástrojů
 
 Existují tři verze Azure Functions Core Tools. Použitá verze závisí na vašem místním vývojovém prostředí, [výběru jazyka](supported-languages.md)a požadované úrovni podpory:
 
@@ -127,7 +127,7 @@ Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci
 
 1. V souboru `/etc/apt/sources.list.d/dotnetdev.list` vyhledejte jeden z odpovídajících řetězců verze Linux uvedených níže:
 
-    | Linuxové distribuce | Verze |
+    | Linuxové distribuce | Version |
     | --------------- | ----------- |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
@@ -218,7 +218,7 @@ Ve výchozím nastavení se tato nastavení nemigrují automaticky, když je pro
 Hodnoty nastavení aplikace Function App lze ve vašem kódu přečíst také jako proměnné prostředí. Další informace naleznete v části proměnné prostředí v těchto referenčních tématech specifických pro konkrétní jazyk:
 
 * [C#předkompilované](functions-dotnet-class-library.md#environment-variables)
-* [C# skript (.csx)](functions-reference-csharp.md#environment-variables)
+* [C#skript (. csx)](functions-reference-csharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -294,9 +294,9 @@ Tyto možnosti můžete zadat také v příkazu pomocí následujících argumen
 | Argument     | Popis                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Verze 2. x) Vytvoří stejnou C# šablonu skriptu (. csx) použitou ve verzi 1. x a na portálu. |
-| **`--language`** , **`-l`**| Programovací jazyk šablony, například C#, F#nebo JavaScript. Tato možnost je vyžadována ve verzi 1. x. Ve verzi 2. x tuto možnost nepoužívejte nebo vyberte jazyk, který se shoduje s modulem runtime pracovního procesu. |
-| **`--name`** , **`-n`** | Název funkce |
-| **`--template`** , **`-t`** | Pomocí příkazu `func templates list` můžete zobrazit úplný seznam dostupných šablon pro každý podporovaný jazyk.   |
+| **`--language`** **`-l`**| Programovací jazyk šablony, například C#, F#nebo JavaScript. Tato možnost je vyžadována ve verzi 1. x. Ve verzi 2. x tuto možnost nepoužívejte nebo vyberte jazyk, který se shoduje s modulem runtime pracovního procesu. |
+| **`--name`** **`-n`** | Název funkce |
+| **`--template`** **`-t`** | Pomocí příkazu `func templates list` můžete zobrazit úplný seznam dostupných šablon pro každý podporovaný jazyk.   |
 
 Například pro vytvoření triggeru HTTP JavaScriptu v jednom příkazu spusťte:
 
@@ -354,12 +354,12 @@ func host start
 | **`--cors-credentials`** | Povolte pouze ověřené požadavky mezi zdroji (tj. soubory cookie a záhlaví ověřování) pouze verze 2. x. |
 | **`--cors`** | Čárkami oddělený seznam původů CORS bez mezer. |
 | **`--language-worker`** | Argumenty pro konfiguraci modulu Language Worker. Můžete například povolit ladění pro Language Worker tím, že poskytnete [port ladění a další požadované argumenty](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers). Pouze verze 2. x. |
-| **`--nodeDebugPort`** , **`-n`** | Port pro použití ladicího programu Node. js. Výchozí: hodnota ze sady Launch. JSON nebo 5858. Pouze verze 1. x. |
+| **`--nodeDebugPort`** **`-n`** | Port pro použití ladicího programu Node. js. Výchozí: hodnota ze sady Launch. JSON nebo 5858. Pouze verze 1. x. |
 | **`--password`** | Buď heslo, nebo soubor, který obsahuje heslo pro soubor. pfx. Používá se jenom pro `--cert`. Pouze verze 2. x. |
-| **`--port`** , **`-p`** | Místní port, na kterém má naslouchat. Výchozí hodnota: 7071. |
+| **`--port`** **`-p`** | Místní port, na kterém má naslouchat. Výchozí hodnota: 7071. |
 | **`--pause-on-error`** | Před ukončením procesu ponechejte další vstup. Používá se jenom při spouštění základních nástrojů z integrovaného vývojového prostředí (IDE).|
-| **`--script-root`** , **`--prefix`** | Slouží k zadání cesty ke kořenu aplikace Function App, která má být spuštěna nebo nasazena. Používá se pro kompilované projekty, které generují soubory projektu do podsložky. Například při sestavování projektu knihovny C# tříd se soubory Host. JSON, Local. Settings. JSON a Function. JSON generují v *kořenové* podsložce s cestou, jako je `MyProject/bin/Debug/netstandard2.0`. V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0`. Toto je kořen aplikace Function App při spuštění v Azure. |
-| **`--timeout`** , **`-t`** | Časový limit pro spuštění funkce Host v sekundách. Výchozí hodnota: 20 sekund.|
+| **`--script-root`** **`--prefix`** | Slouží k zadání cesty ke kořenu aplikace Function App, která má být spuštěna nebo nasazena. Používá se pro kompilované projekty, které generují soubory projektu do podsložky. Například při sestavování projektu knihovny C# tříd se soubory Host. JSON, Local. Settings. JSON a Function. JSON generují v *kořenové* podsložce s cestou, jako je `MyProject/bin/Debug/netstandard2.0`. V takovém případě nastavte předponu jako `--script-root MyProject/bin/Debug/netstandard2.0`. Toto je kořen aplikace Function App při spuštění v Azure. |
+| **`--timeout`** **`-t`** | Časový limit pro spuštění funkce Host v sekundách. Výchozí hodnota: 20 sekund.|
 | **`--useHttps`** | Připojte se k `https://localhost:{port}` místo `http://localhost:{port}`. Ve výchozím nastavení tato možnost vytvoří důvěryhodný certifikát na vašem počítači.|
 
 Když se hostitel funkce spustí, vypíše adresu URL funkcí aktivovaných protokolem HTTP:
@@ -373,7 +373,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Při místním spuštění není autorizace pro koncové body HTTP vynutila. To znamená, že všechny místní požadavky HTTP jsou zpracovávány jako `authLevel = "anonymous"`. Další informace najdete v [článku vázání http](functions-bindings-http-webhook.md#authorization-keys).
+>Při místním spuštění není autorizace pro koncové body HTTP vynutila. To znamená, že všechny místní požadavky HTTP jsou zpracovávány jako `authLevel = "anonymous"`. Další informace najdete v [článku vázání http](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
 ### <a name="passing-test-data-to-a-function"></a>Předávání testovacích dat do funkce
 
@@ -439,10 +439,10 @@ Funkci lze také vyvolat přímo pomocí `func run <FunctionName>` a zadat vstup
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-| **`--content`** , **`-c`** | Vložený obsah. |
-| **`--debug`** , **`-d`** | Před spuštěním funkce připojte k hostitelskému procesu ladicí program.|
-| **`--timeout`** , **`-t`** | Doba, po kterou se má čekat (v sekundách), dokud nebude hostitel místní funkce připravený.|
-| **`--file`** , **`-f`** | Název souboru, který se má použít jako obsah|
+| **`--content`** **`-c`** | Vložený obsah. |
+| **`--debug`** **`-d`** | Před spuštěním funkce připojte k hostitelskému procesu ladicí program.|
+| **`--timeout`** **`-t`** | Doba, po kterou se má čekat (v sekundách), dokud nebude hostitel místní funkce připravený.|
+| **`--file`** **`-f`** | Název souboru, který se má použít jako obsah|
 | **`--no-interactive`** | Nezobrazuje výzvu k zadání. Užitečné pro scénáře automatizace.|
 
 Například pro volání funkce aktivované protokolem HTTP a předejte tělo obsahu spusťte následující příkaz:
@@ -482,12 +482,12 @@ Následující možnosti publikování jsou podporovány pouze ve verzi 2. x:
 
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only`** , **`-o`** |  Pouze publikování nastavení a přeskočení obsahu. Výchozí hodnota je prompt. |
+| **`--publish-settings-only`** **`-o`** |  Pouze publikování nastavení a přeskočení obsahu. Výchozí hodnota je prompt. |
 |**`--list-ignored-files`** | Zobrazí seznam souborů, které jsou během publikování ignorovány, které jsou založeny na souboru. funcignore. |
 | **`--list-included-files`** | Zobrazí seznam souborů, které jsou publikovány, které jsou založeny na souboru. funcignore. |
 | **`--nozip`** | Zapne výchozí režim `Run-From-Package`. |
 | **`--build-native-deps`** | Při publikování aplikací funkcí Pythonu přeskočí vygenerování složky. kolaes. |
-| **`--build`** , **`-b`** | Provede akci sestavení při nasazení do aplikace Functions pro Linux. Akceptuje: `remote` a `local`. |
+| **`--build`** **`-b`** | Provede akci sestavení při nasazení do aplikace Functions pro Linux. Akceptuje: `remote` a `local`. |
 | **`--additional-packages`** | Seznam balíčků, které se mají nainstalovat při vytváření nativních závislostí Například: `python3-dev libevent-dev`. |
 | **`--force`** | Ignorovat ověření před publikováním v některých scénářích. |
 | **`--csx`** | Publikujte C# projekt skriptu (. csx). |
@@ -545,5 +545,5 @@ Pokud chcete zaslat žádost o chybu nebo funkci, [otevřete problém GitHubu](h
 [Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
+[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
 [sad rozšíření]: functions-bindings-register.md#extension-bundles

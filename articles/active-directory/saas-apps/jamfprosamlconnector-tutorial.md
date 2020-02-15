@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68de948261ec8bad429daafcb27e63ca5f7efb7a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 65b343c79c60bc74f1a140411ff1a4a27119d225
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207294"
+ms.locfileid: "77251681"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Jamf pro
 
@@ -151,16 +151,16 @@ V této části udělíte B. Simon přístup k Jamf pro.
 
   b. Zaškrtněte políčko **Povolit ověřování pomocí jednotného přihlašování** .
 
-    c. V rozevírací nabídce **zprostředkovatele identity** vyberte **Azure** jako možnost.
+  c. V rozevírací nabídce **zprostředkovatele identity** vyberte **Azure** jako možnost.
 
-    d. Zkopírujte hodnotu **ID entity** a vložte ji do pole **identifikátor (ID entity)** v části **základní konfigurace SAML** v Azure Portal.
+  d. Zkopírujte hodnotu **ID entity** a vložte ji do pole **identifikátor (ID entity)** v části **základní konfigurace SAML** v Azure Portal.
 
-    > [!NOTE]
-    > Pomocí hodnoty v poli `<SUBDOMAIN>` dokončete přihlašovací adresu URL a adresu URL odpovědi v části **základní konfigurace SAML** v Azure Portal.
+> [!NOTE]
+> Pomocí hodnoty v poli `<SUBDOMAIN>` dokončete přihlašovací adresu URL a adresu URL odpovědi v části **základní konfigurace SAML** v Azure Portal.
 
-    e. Z rozevírací nabídky **zdroje metadat zprostředkovatele identity** vyberte **metadata URL** . Do zobrazeného pole vložte hodnotu **adresy URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal.
+  e. Z rozevírací nabídky **zdroje metadat zprostředkovatele identity** vyberte **metadata URL** . Do zobrazeného pole vložte hodnotu **adresy URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal.
 
-    f. Volitelné Upravte hodnotu vypršení platnosti tokenu nebo vyberte Zakázat vypršení platnosti tokenu SAML.
+  f. Volitelné Upravte hodnotu vypršení platnosti tokenu nebo vyberte Zakázat vypršení platnosti tokenu SAML.
 
 7. Na stejné stránce se posuňte dolů k oddílu **mapování uživatelů** . Pak proveďte následující kroky.
 

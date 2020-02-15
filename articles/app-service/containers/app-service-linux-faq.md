@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: bb0f2e3fc3b84f5e1f9fe999b31fffadaa5915d4
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: c2dc98d683d822628dc9ea1b4ead02279ea10ea5
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687597"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251800"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Nejčastější dotazy k Azure App Service v systému Linux
 
@@ -30,9 +30,9 @@ Všechny soubory Docker můžete najít na [GitHubu](https://github.com/azure-ap
 
 **Jaké jsou očekávané hodnoty oddílu spouštěcí soubor při konfiguraci zásobníku modulu runtime?**
 
-| Vrstvě           | Očekávaná hodnota                                                                         |
+| Zásobník           | Očekávaná hodnota                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
-| Java SE         | příkaz pro spuštění aplikace JAR (například `java -jar my-app.jar --server.port=80`) |
+| Java SE         | příkaz pro spuštění aplikace JAR (například `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
 | Tomcat, WildFly | umístění skriptu pro provedení potřebných konfigurací (například `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | konfigurační soubor konfiguračního PM2 nebo soubor skriptu                                |
 | .Net Core       | název zkompilované knihovny DLL jako `dotnet <myapp>.dll`                                 |
@@ -58,7 +58,7 @@ Ano, můžete to provést prostřednictvím lokality správy zdrojového kódu (
 
 Měli byste nastavit **rezervované** pole služby App Service na *hodnotu true*.
 
-## <a name="continuous-integration-and-deployment"></a>Průběžná integrace a nasazování
+## <a name="continuous-integration-and-deployment"></a>Průběžná integrace a nasazování
 
 **Moje webová aplikace stále používá starou image kontejneru Docker po aktualizaci image v Docker Hub. Podporujete průběžnou integraci a nasazování vlastních kontejnerů?**
 
@@ -173,13 +173,13 @@ Tady jsou pravidla pro určení kontejneru, který je přístupný – v pořad�
 - První kontejner pro definování portu 80 nebo 8080
 - Pokud žádná z výše uvedených možností není pravdivá, bude první kontejner definovaný v souboru přístupný (vystaveno).
 
-## <a name="pricing-and-sla"></a>Ceny a smlouva SLA
+## <a name="pricing-and-sla"></a>Ceny a smlouvy SLA
 
 **Jaké jsou ceny, teď je služba všeobecně dostupná?**
 
 Účtují se vám běžné ceny Azure App Service počtu hodin, po které se aplikace spouští.
 
-## <a name="other-questions"></a>Další dotazy
+## <a name="other-questions"></a>Další otázky
 
 **Jaké jsou podporované znaky v názvech nastavení aplikace?**
 

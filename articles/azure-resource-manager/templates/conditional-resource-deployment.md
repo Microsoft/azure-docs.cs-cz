@@ -3,12 +3,12 @@ title: Podmíněné nasazení se šablonami
 description: Popisuje postup podmíněného nasazení prostředku v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: b4ee733e81f3a923f268f33f5826387059923bcb
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 83aa22ba57e0111d060665778922437723481c69
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121994"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207787"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Podmíněné nasazení v šablonách Správce prostředků
 
@@ -88,4 +88,4 @@ Pokud nasadíte šablonu s [režimem úplného](deployment-modes.md) nasazení a
 ## <a name="next-steps"></a>Další kroky
 
 * Doporučení k vytváření šablon najdete v tématu [osvědčené postupy pro šablonu Azure Resource Manager](template-best-practices.md).
-* Chcete-li vytvořit více instancí prostředku, přečtěte si článek o [zdroji, vlastnosti nebo iteraci proměnných v šablonách Azure Resource Manager](create-multiple-instances.md).
+* Chcete-li vytvořit více instancí prostředku, přečtěte si téma [iterace prostředků v šablonách Azure Resource Manager](copy-resources.md).

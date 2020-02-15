@@ -3,12 +3,12 @@ title: Podřízené prostředky v šablonách
 description: Popisuje, jak nastavit název a typ pro podřízené prostředky v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 7d8a7a39bab3340b6f5c9e66d54b7398fa70ee3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122011"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207889"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Nastavení názvu a typu pro podřízené prostředky
 
@@ -27,7 +27,7 @@ V šabloně správce prostředků můžete zadat podřízený prostředek buď v
 ]
 ```
 
-Následující příklad ukazuje podřízený prostředek mimo nadřazený prostředek. Tento přístup můžete použít, pokud nadřazený prostředek není nasazený ve stejné šabloně nebo pokud chcete použít [kopírování](create-multiple-instances.md) k vytvoření více než jednoho podřízeného prostředku.
+Následující příklad ukazuje podřízený prostředek mimo nadřazený prostředek. Tento přístup můžete použít, pokud nadřazený prostředek není nasazený ve stejné šabloně nebo pokud chcete použít [kopírování](copy-resources.md) k vytvoření více než jednoho podřízeného prostředku.
 
 ```json
 "resources": [

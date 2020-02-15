@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: e9647c1833416b9b225be988acaffb4022f655c1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422098"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77211699"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Doprovodné materiály k nasazování webových aplikací pomocí šablon Azure Resource Manager
 
@@ -47,7 +47,7 @@ Prostředky se nasazují v následujícím pořadí:
 * App Service certifikát – závisí na správě zdrojového kódu nebo MSDeploy, pokud je přítomen. V opačném případě závisí na webové aplikaci.
 * Nastavení konfigurace (připojovací řetězce, hodnoty Web. config, nastavení aplikace) – závisí na správě zdrojového kódu nebo MSDeploy, pokud je přítomen. V opačném případě závisí na webové aplikaci.
 
-**Tier 5**
+**Vrstva 5**
 * Vazby názvu hostitele – závisí na certifikátu, pokud je k dispozici. V opačném případě závisí na prostředku vyšší úrovně.
 * Rozšíření webu – závisí na nastavení konfigurace, pokud je k dispozici. V opačném případě závisí na prostředku vyšší úrovně.
 
@@ -90,7 +90,7 @@ Pokud vaše Správce prostředků šablona používá MSDeploy, může být obt�
 
 1. Přejít na [konzolu Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console)webu.
 2. Přejděte do složky na adrese D:\home\LogFiles\SiteExtensions\MSDeploy.
-3. Vyhledejte soubory appManagerStatus. XML a appManagerLog. XML. První soubor zapíše stav. Druhý soubor protokoluje informace o chybě. Pokud chyba není pro vás nejasná, můžete ji zahrnout, až budete požádáni o nápovědu k fóru.
+3. Vyhledejte soubory appManagerStatus. XML a appManagerLog. XML. První soubor zapíše stav. Druhý soubor protokoluje informace o chybě. Pokud chyba není pro vás nejasná, můžete ji zahrnout, až budete požádáni o nápovědu k [fóru](https://docs.microsoft.com/answers/topics/azure-webapps.html).
 
 ## <a name="choose-a-unique-web-app-name"></a>Zvolit jedinečný název webové aplikace
 

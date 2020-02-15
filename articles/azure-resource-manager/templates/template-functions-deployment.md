@@ -3,12 +3,12 @@ title: Funkce šablon – nasazení
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení informací o nasazení.
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: f2939efc9481255233fbdda29f4fa30adcd24b7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b241aaf43ee3204c9960d0099ce3c61d4c1a80ee
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484035"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207277"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funkce nasazení pro šablony Azure Resource Manager 
 
@@ -17,11 +17,11 @@ Správce prostředků poskytuje následující funkce pro získání hodnot vzta
 * [prostředí](#deployment)
 * [hlediska](#environment)
 * [parameters](#parameters)
-* [variables](#variables)
+* [proměnné](#variables)
 
 Pokud chcete získat hodnoty z prostředků, skupin prostředků nebo předplatných, přečtěte si téma [funkce prostředků](template-functions-resource.md).
 
-## <a name="deployment"></a>nasazení
+## <a name="deployment"></a>deployment
 
 `deployment()`
 
@@ -89,7 +89,7 @@ Nasazení () můžete použít k propojení na jinou šablonu na základě ident
 
 Pokud šablonu znovu nasadíte z historie nasazení na portálu, šablona bude nasazena jako místní soubor. Vlastnost `templateLink` není ve funkci nasazení vrácena. Pokud vaše šablona spoléhá na `templateLink` vytvoření odkazu na jinou šablonu, nepoužívejte portál k opětovnému nasazení. Místo toho použijte příkazy, které jste použili k původnímu nasazení šablony.
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) vrátí objekt nasazení:
 
@@ -177,7 +177,7 @@ Tato funkce vrátí vlastnosti aktuálního prostředí Azure. Následující p�
 }
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Následující příklad šablony vrátí objekt prostředí.
 
@@ -239,9 +239,9 @@ Vrátí hodnotu parametru. Zadaný název parametru musí být definován v odd�
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |string |Název parametru, který se má vrátit. |
+| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -267,7 +267,7 @@ Obvykle použijete parametry pro nastavení hodnot prostředků. Následující 
 ]
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) ukazuje zjednodušené použití funkce Parameters.
 
@@ -326,10 +326,10 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringOutput | Řetězec | možnost 1 |
-| intOutput | Int | 1\. místo |
+| intOutput | Int | 1 |
 | objectOutput | Objekt | {"One": "a", "Two": "b"} |
 | arrayOutput | Pole | [1, 2, 3] |
 | crossOutput | Řetězec | možnost 1 |
@@ -344,7 +344,7 @@ Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v od
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požadováno | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | variableName |Ano |Řetězec |Název proměnné, která se má vrátit. |
 
@@ -376,7 +376,7 @@ Obvykle používáte proměnné pro zjednodušení šablony vytvořením složit
 ],
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) vrací různé hodnoty proměnných.
 
@@ -418,7 +418,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | exampleOutput1 | Řetězec | MojePromenna |
 | exampleOutput2 | Pole | [1, 2, 3, 4] |
@@ -428,8 +428,8 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 Další informace o použití proměnných naleznete v tématu [proměnné v šabloně Azure Resource Manager](template-variables.md).
 
 ## <a name="next-steps"></a>Další kroky
-* Popis části šablony Azure Resource Manageru najdete v tématu [šablon pro vytváření Azure Resource Manageru](template-syntax.md).
+* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [vytváření šablon Azure Resource Manager](template-syntax.md).
 * Chcete-li sloučit několik šablon, přečtěte si téma [použití propojených šablon s Azure Resource Manager](linked-templates.md).
-* K iteraci zadaného počtu opakování při vytváření konkrétní typ prostředku, naleznete v tématu [vytvořit více instancí prostředku v Azure Resource Manageru](create-multiple-instances.md).
-* Postup nasazení šablony, které jste vytvořili, najdete v sekci [nasazení aplikace pomocí šablony Azure Resource Manageru](deploy-powershell.md).
+* Informace o iteraci zadaného počtu výskytů při vytváření typu prostředku najdete v tématu [vytvoření více instancí prostředků v Azure Resource Manager](copy-resources.md).
+* Pokud chcete zjistit, jak nasadit šablonu, kterou jste vytvořili, přečtěte si téma [nasazení aplikace pomocí šablony Azure Resource Manager](deploy-powershell.md).
 

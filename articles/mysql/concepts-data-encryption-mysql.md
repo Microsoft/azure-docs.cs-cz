@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 1d4153ac5e02d28d054034f33859332158d5a555
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 552c6b5176babfc1a66f74f1bb6daa9370744b8f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162357"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210427"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem
 
 > [!NOTE]
 > V tuto chvíli musíte požádat o přístup k používání této možnosti. Pokud to chcete udělat, kontaktujte AskAzureDBforMySQL@service.microsoft.com.
 
-Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for MySQL vám umožní přenést qwn klíč (BYOK) pro ochranu dat v klidovém prostředí. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. Pomocí šifrování spravovaného zákazníkem zodpovídáte za vás a plně řídíte životní cyklus klíčů, oprávnění k použití klíče a auditování operací s klíči.
+Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for MySQL vám umožní přinést si vlastní klíč (BYOK) pro ochranu dat v klidovém prostředí. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. Pomocí šifrování spravovaného zákazníkem zodpovídáte za vás a plně řídíte životní cyklus klíčů, oprávnění k použití klíče a auditování operací s klíči.
 
 Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for MySQL je nastaveno na úrovni serveru. Pro daný server se k zašifrování datového šifrovacího klíče (klíč DEK) používaného službou používá klíč spravovaný zákazníkem (KEK), který se nazývá klíč šifrovací klíč (). KEK je asymetrický klíč uložený v instanci [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) spravované zákazníkem a zákazníkem. Klíč šifrování klíče (KEK) a šifrovací klíč (klíč DEK) jsou podrobněji popsány dále v tomto článku.
 

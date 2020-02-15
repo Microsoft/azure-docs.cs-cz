@@ -4,12 +4,12 @@ description: Vytvářejte a nasaďte kód Python bez serveru do cloudu pomocí A
 ms.date: 02/11/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: a781e10cee4cf433de5e837490d901020a875205
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16d4d5627ea297d825092009511915f5b6e734b6
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157886"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212438"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce Pythonu v Azure, která reaguje na požadavky HTTP
 
@@ -97,7 +97,7 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
     cd LocalFunctionProj
     ```
     
-1. Do projektu přidejte funkci pomocí následujícího příkazu, kde `--name` argument je jedinečný název vaší funkce a argument `--template` určuje Trigger funkce. `func new` vytvořit podsložku, která odpovídá názvu funkce, který obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfiguračního souboru s názvem *Function. JSON*.
+1. Do projektu přidejte funkci pomocí následujícího příkazu, kde `--name` argument určuje jedinečný název funkce (HttpExample v tomto případě) a argument `--template` Určuje aktivační událost funkce (aktivační událost HTTP). Tento příkaz `func new` vytvoří podsložku, která odpovídá názvu funkce, který obsahuje soubor kódu, který je vhodný pro zvolený jazyk projektu, a konfiguračního souboru s názvem *Function. JSON*.
 
     ```
     func new --name HttpExample --template "HTTP trigger"
@@ -167,7 +167,7 @@ U triggeru HTTP funkce přijímá data žádosti v proměnné `req`, jak je defi
 }
 ```
 
-Každá vazba vyžaduje směr, typ a jedinečný název. Aktivační událost HTTP má vstupní vazbu typu [`httpTrigger`](functions-bindings-http-webhook.md#trigger) a výstupní vazba typu [`http`](functions-bindings-http-webhook.md#output).
+Každá vazba vyžaduje směr, typ a jedinečný název. Aktivační událost HTTP má vstupní vazbu typu [`httpTrigger`](functions-bindings-http-webhook-trigger.md) a výstupní vazba typu [`http`](functions-bindings-http-webhook-output.md).
 
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce

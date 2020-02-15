@@ -1,19 +1,19 @@
 ---
 title: Začínáme s ovládacím prvkem webového mapování | Mapy Microsoft Azure
 description: Naučte se používat mapu Microsoft Azure map mapy JavaScriptu na straně klienta k vykreslování map a vložených Azure Maps funkcí do vaší webové nebo mobilní aplikace.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 90cd752ddd46999627de538abe3ca6b1926005aa
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 6701d777fb9aa16d3012baba082415bf9858e46f
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264117"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209813"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Použití ovládacího prvku Azure Maps mapa
 

@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: eaa95906e20072e2914d1486568d7a6ebeb64f2c
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: a2a65c6fcca4a037408c6b7e780708623aebed2b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114418"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212250"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -60,9 +60,9 @@ Analýza provozu prověřuje protokoly nezpracovaných toků NSG Flow a zachycuj
 Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
 
 * Kanada – střed
-* Střed USA – západ
+* Západní střed USA
 * USA – východ
-* USA – východ 2
+* Východní USA 2
 * Střed USA – sever
 * Střed USA – jih
 * Střed USA
@@ -79,7 +79,7 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 * Východní Asie
 * Jihovýchodní Asie
 * Jižní Korea – střed
-* Indie – střed
+* Střed Indie
 * Indie – jih
 * Japonsko – východ 
 * Japonsko – západ
@@ -90,9 +90,9 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Kanada – střed
-* Střed USA – západ
+* Západní střed USA
 * USA – východ
-* USA – východ 2
+* Východní USA 2
 * Střed USA – sever
 * Střed USA – jih
 * Střed USA
@@ -110,7 +110,7 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Východní Asie
 * Jihovýchodní Asie
 * Jižní Korea – střed
-* Indie – střed
+* Střed Indie
 * Japonsko – východ
 * USA (Gov) – Virginia
 * Čína – východ 2
@@ -123,7 +123,7 @@ Váš účet musí být členem jedné z následujících [předdefinovaných ro
 
 |Model nasazení   | Role                   |
 |---------          |---------               |
-|Správce prostředků   | Vlastník                  |
+|Resource Manager   | Vlastník                  |
 |                   | Přispěvatel            |
 |                   | Čtenář                 |
 |                   | Přispěvatel sítě    |
@@ -182,7 +182,7 @@ Vyberte následující možnosti, jak je znázorněno na obrázku:
 
 1. Vybrat *pro* **stav**
 2. Vyberte *verzi 2* pro **protokol toků verze**. Verze 2 obsahuje statistiku relací toků (bajty a pakety).
-3. Vyberte existující účet úložiště, do kterého se budou ukládat protokoly toku. Pokud chcete data ukládat trvale, nastavte hodnotu na *0*. Za účet úložiště se účtují Azure Storage poplatky. Ujistěte se, že ve vašem úložišti není nastavená možnost Data Lake Storage Gen2 hierarchický obor názvů Enabled na hodnotu true. Protokoly toku NSG se taky nedají Uložit do účtu úložiště s bránou firewall. 
+3. Vyberte existující účet úložiště, do kterého se budou ukládat protokoly toku. Pokud chcete data ukládat trvale, nastavte hodnotu na *0*. Za účet úložiště se účtují Azure Storage poplatky. Ujistěte se, že ve vašem úložišti není nastavená možnost Data Lake Storage Gen2 hierarchický obor názvů Enabled na hodnotu true.
 4. Nastavte dobu **uchování** na počet dní, pro které chcete ukládat data.
 > [!IMPORTANT]
 > V současné době dochází k potížím s [protokolem toku NSG (Network Security Group)](network-watcher-nsg-flow-logging-overview.md) pro Network Watcher se z úložiště objektů BLOB automaticky neodstraňují na základě nastavení zásad uchovávání informací. Pokud máte existující nenulové zásady uchovávání informací, doporučujeme, abyste pravidelně odstranili objekty blob úložiště, které jsou po dobu jejich uchování, a nemuseli se jim účtovat poplatky. Další informace o tom, jak odstranit blog úložiště protokolu toku NSG, najdete v tématu [odstranění objektů BLOB úložiště protokolu toku NSG](network-watcher-delete-nsg-flow-log-blobs.md).

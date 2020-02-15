@@ -3,12 +3,12 @@ title: Nastavení pořadí nasazení pro prostředky
 description: V této části najdete popis postupu při nastavování jednoho prostředku v závislosti na jiném prostředku během nasazování, aby bylo zajištěno nasazení prostředků ve správném pořadí.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 44cf793859d2817695a58bd1159e2f4465c1f9c2
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: ffd6d6c65a1cbe9578b5f9162d29f3238e27ea71
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121960"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77207685"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definování pořadí nasazení prostředků v šablonách Azure Resource Manager
 
@@ -40,7 +40,7 @@ Následující příklad ukazuje sadu škálování virtuálního počítače, k
 }
 ```
 
-V předchozím příkladu je závislost obsažena v prostředcích, které jsou vytvořeny pomocí smyčky kopírování s názvem **storageLoop**. Příklad najdete [v tématu Vytvoření více instancí prostředků v Azure Resource Manager](create-multiple-instances.md).
+V předchozím příkladu je závislost obsažena v prostředcích, které jsou vytvořeny pomocí smyčky kopírování s názvem **storageLoop**. Příklad najdete [v tématu Vytvoření více instancí prostředků v Azure Resource Manager](copy-resources.md).
 
 Při definování závislostí můžete zahrnout obor názvů poskytovatele prostředků a typ prostředku, aby nedocházelo k nejednoznačnosti. Například pro objasnění nástroje pro vyrovnávání zatížení a virtuální sítě, které mohou mít stejné názvy jako jiné prostředky, použijte následující formát:
 

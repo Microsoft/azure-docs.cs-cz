@@ -1,19 +1,19 @@
 ---
 title: Přidání panelu nástrojů pro kreslení na mapu | Mapy Microsoft Azure
 description: Postup přidání panelu nástrojů pro kreslení na mapu pomocí Azure Maps Web SDK
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4c89765a3bc59a37a182a2dfabf0727f95b575b8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cb0f70bc42c9ac0f7026c910593950516f027a88
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933229"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209745"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Přidání panelu nástrojů nástrojů pro kreslení na mapu
 

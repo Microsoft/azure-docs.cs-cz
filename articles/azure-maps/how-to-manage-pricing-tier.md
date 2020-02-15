@@ -1,19 +1,19 @@
 ---
 title: Správa cenové úrovně účtu Azure Maps | Mapy Microsoft Azure
 description: Azure Portal můžete použít ke správě účtu služby Microsoft Azure Maps a jeho cenové úrovně.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 01/27/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c5f222c429ecfd27f5f217e0cb4aaba0ee50596e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 08a00487df70e9bcce394ad06c9d7e4d5c9e1c20
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025584"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209915"
 ---
 # <a name="manage-the-pricing-tier-of-your-azure-maps-account"></a>Správa cenové úrovně účtu Azure Maps
 

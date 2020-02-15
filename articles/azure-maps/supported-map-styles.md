@@ -1,19 +1,19 @@
 ---
 title: Podporované styly mapy | Mapy Microsoft Azure
-description: V tomto článku se seznámíte s různými styly vykreslování map, které podporuje Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+description: V tomto článku se dozvíte o různých stylech vykreslování map podporovaných Microsoft Azure Maps.
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 05/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 92e48486777d82589a56074790dd709c5d525859
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 9cdfd0d029057e36e010203b7c35a5aafee4b574
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910644"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208280"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps podporované styly mapy
 Azure Maps podporuje několik různých vestavěných stylů mapy, jak je popsáno níže.
@@ -31,7 +31,7 @@ Mapa **cest** je standardní mapa, která zobrazuje cesty, přirozené a umělé
 
 ## <a name="blank-and-blank_accessible"></a>prázdné a blank_accessible
 
-**Prázdné** a **blank_accessible** styly mapy poskytují prázdné plátno, na kterém se data vizualizují. Styl **blank_accessible** bude dál poskytovat aktualizace čtečky obrazovky s podrobnostmi o umístění, kde se mapa nachází, i když základní mapa není zobrazená.
+**Prázdné** a **blank_accessible** styly mapy poskytují prázdné plátno, na kterém se data vizualizují. Styl **blank_accessible** bude dál poskytovat aktualizace čtečky obrazovky s podrobnostmi o umístění mapy, i když základní mapa není zobrazená.
 
 > [!Note]
 > V sadě web SDK můžete změnit barvu pozadí mapy nastavením stylu CSS `background-color` stylu elementu DIV mapy.
@@ -39,7 +39,7 @@ Mapa **cest** je standardní mapa, která zobrazuje cesty, přirozené a umělé
 **Platná rozhraní API:**
 * Mapový ovládací prvek sady web SDK
 
-## <a name="satellite"></a>satellite 
+## <a name="satellite"></a>satelitní 
 **Satelitní** styl je kombinací satelitních a leteckých snímků.
 
 ![styl mapy dlaždice satelitu](./media/supported-map-styles/satellite.png)
@@ -80,7 +80,7 @@ Tento styl mapy je hybridem cest a popisků, které se překrývají na družico
 * Ovládací prvek mapy pro Android
 
 
-## <a name="night"></a>noční
+## <a name="night"></a>Veletrh
 **noční** je tmavá verze stylu mapy cest s barevnými cestami a symboly.
 
 ![styl noční mapy](./media/supported-map-styles/night.png)

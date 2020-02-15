@@ -1,19 +1,19 @@
 ---
 title: Podpora lokalizace | Mapy Microsoft Azure
 description: V tomto článku se dozvíte o podporovaných jazycích pro služby v Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eec8e47e75a6c92be8f893af893761a9ccddc650
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5de04b4e37e79a47f89bb235aad2b0f9cab69e6a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025431"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77208144"
 ---
 # <a name="localization-support-in-azure-maps"></a>Podpora lokalizace v Azure Maps
 
@@ -22,10 +22,10 @@ Azure Maps podporuje různé jazyky a zobrazení založené na zemi nebo oblasti
 
 ## <a name="azure-maps-supported-languages"></a>Azure Maps podporované jazyky
 
-Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následující tabulka uvádí podporované kódy jazyků pro každou službu.  
+Azure Maps byly lokalizovány do různých jazyků v rámci svých služeb. Následující tabulka uvádí podporované kódy jazyků pro každou službu.  
   
 
-| ID         | Name (Název)                   |  Mapy | Hledat | Plánování tras | Počasí | Incidenty provozu | JS – ovládací prvek mapy |
+| ID         | Název                   |  Maps | Hledat | Směrování | Počasí | Incidenty provozu | JS – ovládací prvek mapy |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikánština              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | arabština                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -36,7 +36,7 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | bg-BG      | Bulharština              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
 | ES certifikační autority      | Katalánština                |       |    ✓   |         |    ✓      |                   |                |
 | zh-HanS    | Čínština (zjednodušená)   |       |  zh-CN |         |     zh-CN   |                   |                |
-| zh-HanT    | Čínština (Hongkong – zvláštní administrativní oblast)  |  |   |    |    zh-HK   |                   |           |
+| zh-HanT    | Hongkong (zvláštní správní oblast ČLR)  |  |   |    |    zh-HK   |                   |           |
 | zh-HanT    | Čínština (Tchaj-wan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | Chorvatština               |       |    ✓   |         |    ✓      |                   |                |
 | cs-CZ      | Čeština                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -46,7 +46,7 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | cs AU      | angličtina (Austrálie)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | cs NZ      | angličtina (Nový Zéland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | Angličtina (Velká Británie) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| cs-CZ      | Angličtina (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| en-US      | Angličtina (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et – EE      | Estonština               |       |    ✓   |         |      ✓    |         ✓         |                |
 | náhl-PH     | Filipínština               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Finština                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
@@ -63,7 +63,7 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | ID ID      | Indonéština             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
 | IT-IT      | italština                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | Japonština               |       |        |         |     ✓    |                   |                |
-| KN-IN      | Kannadština                |       |       |         |     ✓    |                   |                |
+| KN-IN      | Kannada                |       |       |         |     ✓    |                   |                |
 | kk-KZ      | Kazaština                 |       |    ✓   |         |     ✓    |                   |                |
 | ko-KR      | Korejština                 |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
 | es-419     | Latinskoamerická španělština |       |    ✓   |         |         |                   |                |
@@ -80,7 +80,7 @@ Azure Maps jsou lokalizované v různých jazycích v rámci služeb. Následuj�
 | pt-PT      | Portugalština (Portugalsko)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | PA – v      | Paňdžábština                 |       |       |         |     ✓    |                   |                |
 | ro RO      | Rumunština               |       |    ✓    |         |     ✓    |         ✓         |                |
-| ru-RU      | ruština                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| ru-RU      | Ruština                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | sr-Cyrl-RS | Srbština (cyrilice)     |       |   SR-RS  |         |    SR-RS     |                   |                |
 | SR-Latn-RS | Srbština (latinka)        |       |       |         |     SR-Latn    |                   |                |
 | sk-SK      | Slovenština             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
@@ -142,12 +142,12 @@ Ujistěte se, že jste nastavili parametr **zobrazení** požadovaný pro rozhra
 >    * Azure Maps Web SDK
 >    * Azure Maps Android SDK
 
-Ve výchozím nastavení je parametr zobrazení nastavený na **sjednocené**, i když jste ho v žádosti nedefinovali. Určete umístění uživatelů a pak pro toto umístění nastavte parametr **zobrazení** správně. Případně můžete nastavit možnost zobrazit = automaticky, která vrátí data mapy na základě IP adresy žádosti.  Parametr **zobrazení** v Azure Maps musí být použit v souladu s platnými zákony, včetně zákonů o mapování země, kde jsou k dispozici mapy, obrázky a další data a obsah třetích stran, ke kterým máte oprávnění pro přístup prostřednictvím Azure Maps.
+Ve výchozím nastavení je parametr zobrazení nastavený na **sjednocené**, i když jste ho v žádosti nedefinovali. Určete umístění vašich uživatelů. Potom nastavte pro toto umístění parametr **zobrazení** správně. Případně můžete nastavit možnost zobrazit = automaticky, která vrátí data mapy na základě IP adresy žádosti.  Parametr **zobrazení** v Azure Maps musí být použit v souladu s platnými zákony, včetně zákonů o mapování země, kde jsou k dispozici mapy, obrázky a další data a obsah třetích stran, ke kterým máte oprávnění pro přístup prostřednictvím Azure Maps.
 
 
 Následující tabulka poskytuje podporovaná zobrazení.
 
-| Zobrazit         | Popis                            |  Mapy | Hledat | Ovládací prvek Mapa JS |
+| Zobrazení         | Popis                            |  Maps | Hledat | Ovládací prvek Mapa JS |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Spojené arabské emiráty (pohled na arabské písmo)    |   ✓   |        |     ✓          |
 | AR           | Argentina (pohled z argentinského)           |   ✓   |    ✓   |     ✓          |
@@ -165,5 +165,5 @@ Následující tabulka poskytuje podporovaná zobrazení.
 | SA           | Saúdská Arábie (zobrazení arabštiny)            |   ✓   |        |     ✓          |
 | SY           | Sýrie (zobrazení arabštiny)                   |   ✓   |        |     ✓          |
 | JE           | Jemen (zobrazení arabštiny)                   |   ✓   |        |     ✓          |
-| Automaticky         | Vraťte data mapy na základě IP adresy žádosti.|   ✓   |    ✓   |     ✓          |
-| Unifikace      | Sjednocené zobrazení (ostatní)                  |   ✓   |   ✓     |     ✓          |
+| Autom.         | Vraťte data mapy na základě IP adresy žádosti.|   ✓   |    ✓   |     ✓          |
+| Sjednocen      | Sjednocené zobrazení (ostatní)                  |   ✓   |   ✓     |     ✓          |

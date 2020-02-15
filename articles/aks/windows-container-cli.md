@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: mlearned
-ms.openlocfilehash: d1d04ab3ebb96d2739b991620b05aa307d9eaf91
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 0583e773a344a6786d13a5da30be24369d75f11f
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767440"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77251698"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Preview – vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Po vytvoření clusteru, který může spouštět kontejnery Windows serveru, musíte přidat další fond uzlů. Přidání dalšího fondu uzlů je zahrnuto v pozdějším kroku, ale nejdřív musíte povolit několik funkcí verze Preview.
 
@@ -148,6 +148,10 @@ az aks create \
 > [!Note]
 > Pokud se zobrazí chyba ověřování hesla, zkuste vytvořit skupinu prostředků v jiné oblasti.
 > Pak zkuste cluster vytvořit s novou skupinou prostředků.
+
+> [!Note]
+> Pokud nemůžete vytvořit cluster AKS, protože verze není v této oblasti podporovaná, můžete pro tuto oblast vyhledat seznam podporovaných verzí pomocí příkazu [az AKS get-versions--Location eastus].
+
 
 Po několika minutách se příkaz dokončí a vrátí informace o clusteru ve formátu JSON. Může se stát, že cluster zřídí déle než několik minut. V těchto případech můžete trvat až 10 minut. 
 
@@ -288,6 +292,9 @@ sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 Pokud chcete vidět ukázkovou aplikaci v akci, otevřete webový prohlížeč na externí IP adresu vaší služby.
 
 ![Obrázek přechodu na ukázkovou aplikaci ASP.NET](media/windows-container/asp-net-sample-app.png)
+
+> [!Note]
+> Pokud při pokusu o načtení stránky dojde k vypršení časového limitu připojení, měli byste ověřit, že ukázková aplikace je připravená pomocí následujícího příkazu [kubectl získat lusky--Watch]. V některých případech se kontejner Windows nebude spouštět v době, kdy je k dispozici externí IP adresa.
 
 ## <a name="delete-cluster"></a>Odstranění clusteru
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 28c971993721744245a5d3d57f1f5b68df58b492
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1d203fd0c6777eee96311f45f4d5dfb8728ff431
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841178"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210597"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování na straně serveru Azure Managed disks
 
@@ -38,7 +38,7 @@ Můžete zvolit správu šifrování na úrovni každého spravovaného disku s 
 
 Následující diagram ukazuje, jak spravované disky používají Azure Active Directory a Azure Key Vault k vytváření požadavků pomocí klíče spravovaného zákazníkem:
 
-![Pracovní postup pro klíče spravovaného zákazníkem spravovaných disků](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
+![Pracovní postup spravovaného disku a klíčů spravovaných zákazníkem. Správce vytvoří Azure Key Vault a pak vytvoří sadu šifrování disku a nastaví sadu šifrování disku. Sada je přidružená k virtuálnímu počítači, který umožňuje, aby se disk používal k ověřování Azure AD.](media/disk-storage-encryption/customer-managed-keys-sse-managed-disks-workflow.png)
 
 
 Následující seznam vysvětluje diagram ještě více podrobností:

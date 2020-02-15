@@ -5,19 +5,19 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 08/07/2019
+ms.date: 02/13/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e93ce54262fe6dd38ef2ebc07d676608dae7cfff
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bbdafde85097d0052edd5984b594fd37066dc1e6
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968923"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77279598"
 ---
 Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://portal.azure.com).
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 
 1. Na domovské stránce Azure vyberte tlačítko **+ vytvořit prostředek** a potom do pole **Hledat na Marketplace** zadejte *IoT Hub* .
 
@@ -35,7 +35,7 @@ Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://p
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-   ![Vytvoření centra v Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics-vs2019.png)
+   ![Vytvoření centra v Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-basics.png)
 
 1. Vyberte **Další: velikost a škálování** pro pokračování v vytváření vašeho centra.
 
@@ -48,10 +48,18 @@ Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://p
     - **IoT Hub jednotky**: počet zpráv povolených na jednotku za den závisí na cenové úrovni vašeho centra. Pokud třeba chcete, aby centrum podporovalo příchozí zprávy 700 000, zvolíte dvě jednotky úrovně S1.
     Podrobnosti o dalších možnostech vrstev najdete v tématu [Volba správné IoT Hub úrovně](../articles/iot-hub/iot-hub-scaling.md).
 
+    - **Azure Security Center**: Toto zapněte, pokud chcete přidat další vrstvu ochrany před hrozbami do IoT a vašich zařízení. Tato možnost není dostupná pro rozbočovače na úrovni Free. Další informace o této funkci najdete v tématu [Azure Security Center pro IoT](https://docs.microsoft.com/azure/asc-for-iot/).
+
     - **Rozšířená nastavení** > **oddílech typu zařízení-Cloud**: Tato vlastnost má vztah ke zprávám typu zařízení-Cloud na počet souběžných čtenářů zpráv. Většina Center potřebuje jenom čtyři oddíly.
 
-1. Pro tento článek přijměte výchozí možnosti a potom vyberte **zkontrolovat + vytvořit** a zkontrolujte si své volby. Na této obrazovce vidíte něco podobného.
+1. Pro tento článek přijměte výchozí možnosti a potom vyberte **Další: značky** , které chcete přejít na další obrazovku.
 
-   ![Přečtěte si informace o vytvoření nového centra.](./media/iot-hub-include-create-hub/iot-hub-create-review-vs2019.png)
+    Značky jsou páry název-hodnota. Stejnou značku můžete přiřadit více prostředkům a skupinám prostředků pro kategorizaci prostředků a konsolidaci fakturace.
+
+   ![Nastavení velikosti a měřítka pro nové centrum pomocí Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+
+    Vyberte **Další: zkontrolovat + vytvořit** a zkontrolujte své volby. Na této obrazovce vidíte něco podobného.
+
+   ![Přečtěte si informace o vytvoření nového centra.](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
 1. Vyberte **vytvořit** a vytvořte nové centrum. Vytvoření centra může trvat několik minut.

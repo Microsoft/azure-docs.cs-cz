@@ -1,20 +1,20 @@
 ---
 title: Požadavek na přenosová data v reálném čase | Mapy Microsoft Azure
 description: Vyžádejte data v reálném čase pomocí služby mobility Microsoft Azure Maps.
-author: walsehgal
-ms.author: v-musehg
+author: farah-alyasari
+ms.author: v-faalya
 ms.date: 09/06/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 053e6c84f69e8b3d3fed0a90a8b632aa4eb311cb
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9710366bdb7d8e86c8abb54b29b8dde3cc315692
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198152"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209898"
 ---
 # <a name="request-real-time-data-using-the-azure-maps-mobility-service"></a>Vyžádat data v reálném čase pomocí služby Azure Maps mobility
 
@@ -27,7 +27,7 @@ V tomto článku se dozvíte, jak:
  * Vyžádat informace v reálném čase pro příslušnou dokovací stanici kola
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Nejprve musíte mít účet Azure Maps a klíč předplatného, aby bylo možné volat rozhraní API pro veřejné průjezdy Azure Maps. Informace najdete v pokynech v tématu [Vytvoření účtu](quick-demo-map-app.md#create-an-account-with-azure-maps) pro vytvoření účtu Azure Maps. Použijte k získání primárního klíče pro váš účet postup uvedený v části [získání primárního klíče](quick-demo-map-app.md#get-the-primary-key-for-your-account) . Další informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 

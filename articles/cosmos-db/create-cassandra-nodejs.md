@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 429b8845e49158c906c02773f654c9487ff98d1e
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ffc2681e487a51ce630d9433d6ded86961b5276c
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134763"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210340"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-sdk-and-azure-cosmos-db"></a>Rychlý Start: sestavení aplikace Cassandra pomocí sady Node. js SDK a Azure Cosmos DB
 
@@ -28,9 +28,11 @@ V tomto rychlém startu vytvoříte účet Azure Cosmos DB rozhraní API Cassand
 
 ## <a name="prerequisites"></a>Předpoklady
 
-- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Nebo [vyzkoušejte Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure.
-- [Node. js 0.10.29 +](https://nodejs.org/).
-- [Git](https://www.git-scm.com/downloads)
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]Alternativně můžete [vyzkoušet službu Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
+
+Kromě toho je potřeba toto:
+* [Node.js](https://nodejs.org/dist/v0.10.29/x64/node-v0.10.29-x64.msi) verze 0.10.29 nebo vyšší
+* [Git](https://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 
@@ -110,42 +112,54 @@ Tento krok je volitelný. Pokud vás zajímá, jak se pomocí kódu vytvoří pr
 * Vloží se entity klíč-hodnota.
 
     ```javascript
-    ...
-       {
-          query: 'INSERT INTO  uprofile.user  (user_id, user_name , user_bcity) VALUES (?,?,?)',
-          params: [5, 'IvanaV', 'Belgaum']
-        }
-    ];
-    client.batch(queries, { prepare: true}, next);
+        function insert(next) {
+            console.log("\insert");
+            const arr = ['INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (1, \'AdrianaS\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (2, \'JiriK\', \'Toronto\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (3, \'IvanH\', \'Mumbai\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (4, \'IvanH\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (5, \'IvanaV\', \'Belgaum\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (6, \'LiliyaB\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (7, \'JindrichH\', \'Buenos Aires\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (8, \'AdrianaS\', \'Seattle\')',
+                        'INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (9, \'JozefM\', \'Seattle\')'];
+            arr.forEach(element => {
+            client.execute(element);
+            });
+            next();
+        },
     ```
 
 * Spustí se dotaz pro získání všech hodnot klíčů.
 
     ```javascript
-   var query = 'SELECT * FROM uprofile.user';
-    client.execute(query, { prepare: true}, function (err, result) {
-      if (err) return next(err);
-      result.rows.forEach(function(row) {
-        console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-      }, this);
-      next();
-    });
+        function selectAll(next) {
+            console.log("\Select ALL");
+            var query = 'SELECT * FROM uprofile.user';
+            client.execute(query, function (err, result) {
+            if (err) return next(err);
+            result.rows.forEach(function(row) {
+                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
+            }, this);
+            next();
+            });
+        },
     ```  
     
 * Spustí se dotaz pro získání páru klíč-hodnota.
 
     ```javascript
-    function selectById(next) {
-        console.log("\Getting by id");
-        var query = 'SELECT * FROM uprofile.user where user_id=1';
-        client.execute(query, { prepare: true}, function (err, result) {
-        if (err) return next(err);
+        function selectById(next) {
+            console.log("\Getting by id");
+            var query = 'SELECT * FROM uprofile.user where user_id=1';
+            client.execute(query, function (err, result) {
+            if (err) return next(err);
             result.rows.forEach(function(row) {
-            console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
-        }, this);
-        next();
-        });
-    }
+                console.log('Obtained row: %d | %s | %s ',row.user_id, row.user_name, row.user_bcity);
+            }, this);
+            next();
+            });
+        }
     ```  
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
@@ -190,19 +204,41 @@ Teď se vraťte zpátky na web Azure Portal, kde najdete informace o připojova
 
 3. Uložte `uprofile.js`.
 
+> [!NOTE]
+> Pokud dojde k chybě související s certifikátem v pozdějších krocích a běží na počítači s Windows, ujistěte se, že jste před správným převodem souboru. CRT v níže uvedeném formátu Microsoft. cer postupovali podle tohoto postupu.
+> 
+> Dvojím kliknutím na soubor. CRT ho otevřete v zobrazení certifikátu. 
+>
+> ![Zobrazení a ověření výstupu](./media/create-cassandra-nodejs/crtcer1.gif)
+>
+> V průvodci certifikátem klikněte na tlačítko Další. Vyberte X. 509 s kódováním Base-64 (. CER) a pak klikněte na další.
+>
+> ![Zobrazení a ověření výstupu](./media/create-cassandra-nodejs/crtcer2.gif)
+>
+> Vyberte Procházet (vyhledat cíl) a zadejte název souboru.
+> Vyberte další a dokončit.
+>
+> Nyní byste měli mít správně formátovaný soubor. cer. Zajistěte, aby cesta v `uprofile.js` odkazovala na tento soubor.
+
 ## <a name="run-the-nodejs-app"></a>Spuštění aplikace Node.js
 
-1. V okně terminálu Git spusťte příkaz `npm install`, aby se nainstalovaly požadované moduly npm.
+1. V okně terminálu Git se ujistěte, že jste ve vzorovém adresáři, který jste naklonoval dříve:
 
-2. Spuštěním příkazu `node uprofile.js` spusťte aplikaci uzlu.
+    ```bash
+    cd azure-cosmos-db-cassandra-nodejs-getting-started
+    ```
 
-3. Na příkazovém řádku zkontrolujte očekávané výsledky.
+2. Spusťte `npm install` a nainstalujte požadované moduly npm.
+
+3. Spuštěním příkazu `node uprofile.js` spusťte aplikaci uzlu.
+
+4. Na příkazovém řádku zkontrolujte očekávané výsledky.
 
     ![Zobrazení a ověření výstupu](./media/create-cassandra-nodejs/output.png)
 
     Stisknutím kombinace kláves CTRL + C ukončete provádění programu a zavřete okno konzoly. 
 
-4. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
+5. Na portálu Azure Portal otevřete **Data Explorer**, abyste se mohli na tato nová data dotazovat, měnit je a pracovat s nimi. 
 
     ![Zobrazení dat v Průzkumníku dat](./media/create-cassandra-nodejs/data-explorer.png) 
 
@@ -220,5 +256,3 @@ V tomto rychlém startu jste zjistili, jak vytvořit účet Azure Cosmos DB pomo
 
 > [!div class="nextstepaction"]
 > [Import dat Cassandra do služby Azure Cosmos DB](cassandra-import-data.md)
-
-

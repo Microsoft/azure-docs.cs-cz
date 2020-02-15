@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: f7e5d3e681c86d5ecb014f95d838e6d3d51e1c48
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 2b5d5bfff3ff97efb351497c48a404beada2036a
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768363"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209337"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Cenové úrovně v Azure Database for PostgreSQL – jeden server
 
@@ -20,17 +20,17 @@ Server Azure Database for PostgreSQL můžete vytvořit v jedné ze tří různ�
 |    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Generování výpočtů | Gen 4, fin. 5 | Gen 4, fin. 5 | Gen 5 |
-| Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
-| Paměť na vCore | 2 GB | 5 GB | 10 GB |
+| virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
+| Paměť na vCore | 2 GB | 5 GB | 10 GB |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 16 TB | 5 GB až 16 TB |
-| Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
+| Typ úložiště | Úložiště Azure úrovně Standard | Premium Storage Azure | Premium Storage Azure |
 | Doba uchování zálohy databáze | 7 až 35 dní | 7 až 35 dní | 7 až 35 dní |
 
 Pokud chcete zvolit cenovou úroveň, použijte jako výchozí bod následující tabulku.
 
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
-| Úroveň Basic | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
+| Basic | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
 | Obecné použití | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
 | Paměťově optimalizované | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
 
@@ -40,19 +40,19 @@ Po vytvoření serveru se dá v průběhu několika sekund změnit počet virtu�
 
 Výpočetní prostředky se poskytují jako virtuální jádra, což představuje logický procesor základního hardwaru. Čína – východ 1, Čína – sever 1, US DoD – střed a US DoD – východ využití logických procesorů Gen 4, které jsou založené na procesorech Intel E5-2673 V3 (Haswell) 2,4 GHz. Všechny ostatní oblasti využívají logické procesory s Gen 5, které jsou založené na procesorech Intel E5-2673 v4 (Broadwell) 2,3 GHz.
 
-## <a name="storage"></a>Úložiště
+## <a name="storage"></a>Storage
 
 Úložiště, které zřizujete, je množství úložné kapacity dostupné pro váš server Azure Database for PostgreSQL. Úložiště se používá pro soubory databáze, dočasné soubory, transakční protokoly a protokoly serveru PostgreSQL. Celková velikost úložiště, kterou zřizujete, také definuje kapacitu v/v k dispozici pro váš server.
 
 |    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
-| Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
+| Typ úložiště | Úložiště Azure úrovně Standard | Premium Storage Azure | Premium Storage Azure |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 16 TB | 5 GB až 16 TB |
 | Velikost přírůstku úložiště | 1 GB | 1 GB | 1 GB |
 | IOPS | Proměnná |3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS |
 
 > [!NOTE]
-> Úložiště až do 16TB a 20 000 IOPS je podporované v následujících oblastech: Východní USA, Východní USA 2, Střed USA, Západní USA, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – střed, Jižní Austrálie, Austrálie – východ, Austrálie Jihovýchodní.
+> Úložiště až do 16TB a 20 000 IOPS je podporované v následujících oblastech: Východní USA, Východní USA 2, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – střed , Korea – jih, Austrálie – východ, Austrálie – jihovýchod
 >
 > Všechny ostatní oblasti podporují až 4 TB úložiště a 6000 IOPS.
 >

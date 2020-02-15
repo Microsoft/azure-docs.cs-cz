@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: da983f87977de922ec547c3ade2972dfb4d69363
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841025"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77206255"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -119,7 +119,7 @@ Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvořen
 | Příjmení |Libovolná hodnota řetězce nebo hodnota *null* |(User. příjmení-EQ "hodnota") |
 | telephoneNumber |Libovolná hodnota řetězce nebo hodnota *null* |(User. telephoneNumber-EQ "value") |
 | usageLocation |Dva směrové číslo země |(User. usageLocation-EQ "US") |
-| userPrincipalName (Hlavní název uživatele) |libovolná hodnota řetězce |(user.userPrincipalName -eq "alias@domain") |
+| userPrincipalName (Hlavní název uživatele) |libovolná hodnota řetězce |(User. userPrincipalName-EQ "alias@domain") |
 | userType |člen typu host *null* |(User. userType-EQ "Member") |
 
 ### <a name="properties-of-type-string-collection"></a>Vlastnosti kolekce řetězců typu
@@ -138,11 +138,11 @@ V následující tabulce jsou uvedeny všechny podporované operátory a jejich 
 | Operátor | Syntaxe |
 | --- | --- |
 | Nerovná se |-Ne |
-| Rovná se |– EQ |
+| Je rovno |– EQ |
 | Nezačíná na |-notStartsWith |
 | Začíná |– startsWith |
 | Neobsahuje |-notContains |
-| Contains |-obsahuje |
+| Obsahuje |-obsahuje |
 | Neodpovídá |-notMatch |
 | Přes |– shoda |
 | V | -in |
@@ -341,13 +341,13 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Vlastnosti rozšíření a vlastnosti vlastního rozšíření
 
-Atributy rozšíření a vlastnosti vlastního rozšíření jsou podporovány jako vlastnosti řetězce v dynamických pravidlech členství. Atributy rozšíření se synchronizují z místního systému Windows Server AD a převezmou formát "ExtensionAttributeX", kde X se rovná 1-15. Tady je příklad pravidla, které používá atribut rozšíření jako vlastnost:
+Atributy rozšíření a vlastnosti vlastního rozšíření jsou podporovány jako vlastnosti řetězce v dynamických pravidlech členství. [Atributy rozšíření](https://docs.microsoft.com/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) se synchronizují z místního systému Windows Server AD a převezmou formát "ExtensionAttributeX", kde X se rovná 1-15. Tady je příklad pravidla, které používá atribut rozšíření jako vlastnost:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-Vlastní vlastnosti rozšíření se synchronizují z místní služby Windows Server AD nebo z připojené aplikace SaaS a mají formát `user.extension_[GUID]_[Attribute]`, kde:
+[Vlastní vlastnosti rozšíření](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions) se synchronizují z místní služby Windows Server AD nebo z připojené aplikace SaaS a mají formát `user.extension_[GUID]_[Attribute]`, kde:
 
 * [GUID] je jedinečný identifikátor ve službě Azure AD pro aplikaci, která vytvořila vlastnost ve službě Azure AD.
 * [Attribute] je název vlastnosti, jak byla vytvořena.
@@ -374,7 +374,7 @@ Můžete také vytvořit pravidlo, které vybere objekty zařízení pro členst
 
 Je možné použít následující atributy zařízení.
 
- Atribut zařízení  | Hodnoty | Příklad:
+ Atribut zařízení  | Hodnoty | Příklad
  ----- | ----- | ----------------
  accountEnabled | true false | (Device. accountEnabled-EQ true)
  displayName | libovolná hodnota řetězce |(Device. DisplayName-EQ "Rob iPhone")

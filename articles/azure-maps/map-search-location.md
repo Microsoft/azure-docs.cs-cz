@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 08d9245201a8e0899d47847eb10dcdff3c0d8d16
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 13daf20e364b1e629b3ae13be2c9406da3702211
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984672"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209643"
 ---
 # <a name="show-search-results-on-the-map"></a>Zobrazit výsledky hledání na mapě
 
@@ -37,7 +37,7 @@ Třetí blok kódu vytvoří objekt zdroje dat pomocí třídy [DataSource](http
 
 Poslední blok kódu upraví meze kamery pro mapu pomocí vlastnosti [SetCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) mapy.
 
-Požadavek hledání, zdroj dat, vrstva symbolů a hranice kamery jsou uvnitř [naslouchacího procesu události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)připravenosti mapy. Chceme zajistit, aby se výsledky zobrazovaly po úplném načtení mapy.
+Požadavek hledání, zdroj dat, vrstva symbolů a hranice kamery jsou uvnitř [naslouchacího procesu události](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) mapy. Chceme zajistit, aby se výsledky zobrazovaly po úplném načtení mapy.
 
 
 ## <a name="make-a-search-request-via-fetch-api"></a>Vytvoření žádosti o vyhledávání prostřednictvím rozhraní API pro načtení

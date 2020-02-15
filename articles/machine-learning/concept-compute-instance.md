@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: b65b7a9fd38b690729fafd86fe213ff56760a1bb
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
+ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169841"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77252072"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Co je instance služby COMPUTE Azure Machine Learning?
 
@@ -141,11 +141,11 @@ Výpočetní instance se dají použít jako [školicí cíl](concept-compute-ta
 
 ## <a name="notebookvm"></a>Co se stalo s virtuálním počítačem poznámkového bloku?
 
-Výpočetní instance nahrazují virtuální počítač poznámkového bloku.  V oblastech, kde nejsou ještě výpočetní instance dostupné, můžete dál používat virtuální počítače s poznámkovým blokem s plnou funkčností a vytvářet nové virtuální počítače poznámkových bloků.
+Výpočetní instance nahrazují virtuální počítač poznámkového bloku.  
 
 Všechny soubory poznámkových bloků uložené ve sdílené složce pracovního prostoru a data v úložištích dat pracovního prostoru budou přístupná z instance Compute. Všechny vlastní balíčky, které byly dřív nainstalované na virtuálním počítači s poznámkovým blokem, se ale musí na instanci COMPUTE znovu nainstalovat. Omezení kvót, která se vztahují na vytváření výpočetních clusterů, se budou vztahovat i na výpočetní instance. 
 
-V oblastech, kde jsou k dispozici výpočetní instance, nelze vytvořit nové virtuální počítače poznámkového bloku. Máte ale pořád přístup k vytvořeným virtuálním počítačům s poznámkovým blokem s plnou funkčností. Výpočetní instance se dají vytvořit ve stejném pracovním prostoru jako stávající virtuální počítače s poznámkovým blokem. 
+Nelze vytvořit nové virtuální počítače poznámkového bloku. Máte ale pořád přístup k vytvořeným virtuálním počítačům s poznámkovým blokem s plnou funkčností. Výpočetní instance se dají vytvořit ve stejném pracovním prostoru jako stávající virtuální počítače s poznámkovým blokem. 
 
 
 ## <a name="next-steps"></a>Další kroky

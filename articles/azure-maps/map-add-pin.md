@@ -1,6 +1,6 @@
 ---
 title: Přidat vrstvu symbolů do mapy | Mapy Microsoft Azure
-description: V tomto článku se dozvíte, jak pomocí vrstvy symbolů přizpůsobit a přidat symboly na mapě pomocí webové sady SDK Microsoft Azure Maps.
+description: V tomto článku se dozvíte, jak použít vrstvu symbolů k přizpůsobení symbolu a Přidání symbolů na mapě pomocí webové sady SDK Microsoft Azure Maps.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,16 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8c39c7b57167d65dfa639d41665f5d5b38110183
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: b8d131dcc798fb2fe1d4bb650cd5b0a68903381b
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933130"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77209694"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Přidání vrstvy symbolů do mapy
 
-Symbol připojený ke zdroji dat, který se používá k vykreslení ikony nebo textu v daném bodě. Vrstvy symbolů se vykreslují pomocí WebGL a používají se k vykreslování velkých kolekcí bodů na mapě. Ve srovnání s HTML značkou vrstva symbolů vykreslí na mapě velký počet bodů dat s lepším výkonem. Nicméně vrstva symbolů nepodporuje tradiční prvky CSS a HTML pro stylování.  
+Umožňuje připojit symbol ke zdroji dat a použít ho k vykreslení ikony nebo textu v daném bodě. 
+
+Vrstvy symbolů se vykreslují pomocí WebGL. Použijte vrstvu symbolů pro vykreslení velkých kolekcí bodů na mapě. Ve srovnání s HTML značkou vrstva symbolů vykreslí na mapě velký počet bodů dat s lepším výkonem. Nicméně vrstva symbolů nepodporuje tradiční prvky CSS a HTML pro stylování.  
 
 > [!TIP]
 > Vrstvy symbolů ve výchozím nastavení vykreslí souřadnice všech geometrií ve zdroji dat. Chcete-li omezit vrstvu tak, aby vykreslí pouze funkce geometrie bodu nastavte vlastnost `filter` vrstvy na `['==', ['geometry-type'], 'Point']` nebo `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` Pokud chcete, můžete také zahrnout funkce systému MultiPoint.
@@ -33,7 +35,9 @@ Správce mapy Sprite obrázku načte vlastní image používané vrstvou symbol�
 
 ## <a name="add-a-symbol-layer"></a>Přidání vrstvy symbolů
 
-Předtím, než můžete na mapu přidat vrstvu symbolů, je nutné provést několik kroků. Nejprve vytvořte zdroj dat a přidejte jej do mapy. Vrstvu symbolů lze poté vytvořit a předat zdroji dat a načíst data ze zdroje dat. Nakonec je třeba do zdroje dat přidat data, aby bylo vygenerováno něco. Následující kód ukazuje kód, který by měl být přidán do mapy poté, co byl načten. Kód vykreslí jeden bod na mapě pomocí vrstvy symbolů. 
+Předtím, než můžete na mapu přidat vrstvu symbolů, je nutné provést několik kroků. Nejprve vytvořte zdroj dat a přidejte jej do mapy. Vytvoří symbolovou vrstvu. Potom předejte zdroj dat do vrstvy symbolů, aby bylo možné načíst data ze zdroje dat. Nakonec přidejte data do zdroje dat, aby bylo vygenerováno něco. 
+
+Následující kód ukazuje, co by mělo být přidáno do mapy poté, co bylo načteno. Tato ukázka vykreslí jeden bod na mapě pomocí vrstvy symbolů. 
 
 ```javascript
 //Create a data source and add it to the map.

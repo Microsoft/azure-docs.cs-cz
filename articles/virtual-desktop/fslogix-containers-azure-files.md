@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 7003e5b8574d2caa05bfe66e500b93db0c1cdcfa
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d45fa08383d9f61776a739093d78fc033ad54a6b
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891639"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212402"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontejnery profilů FSLogix a soubory Azure
 
@@ -56,7 +56,7 @@ V následující tabulce jsou uvedeny výhody a omezení pro předchozí technol
 
 #### <a name="performance"></a>Výkon
 
-UPD vyžaduje [prostory úložiště s přímým přístupem (S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) k řešení požadavků na výkon. UPD používá protokol SMB (Server Message Block). Zkopíruje profil do virtuálního počítače, ve kterém je uživatel zaznamenáván. UPD s S2D je řešení, které doporučujeme pro virtuální počítače s Windows.  
+UPD vyžaduje [prostory úložiště s přímým přístupem (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) k řešení požadavků na výkon. UPD používá protokol SMB (Server Message Block). Zkopíruje profil do virtuálního počítače, ve kterém je uživatel zaznamenáván. UPD s S2D je řešení, které doporučujeme pro virtuální počítače s Windows.  
 
 #### <a name="cost"></a>Náklady
 
@@ -70,15 +70,15 @@ Clustery S2D vyžadují operační systém, který se opraví, aktualizuje a udr
 
 19. listopadu 2018 [Společnost Microsoft získala FSLogix](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix řeší mnoho výzev k kontejneru profilů. Mezi ně patří klíč:
 
-- **Výkon:** [Kontejnery profilu FSLogix](https://fslogix.com/products/profile-containers) mají vysoký výkon a řeší problémy s výkonem, které mají historicky blokovaný režim výměny do mezipaměti.
-- **OneDrive:** OneDrive pro firmy se bez kontejnerů profilů FSLogix nepodporuje v prostředích netrvalých virtuálních počítačů a virtuálních klientských počítačů (VDI). [Nejlepší postupy pro OneDrive pro firmy a FSLogix](https://fslogix.com/products/technical-faqs/284-onedrive-for-business-and-fslogix-best-practices) popisují jejich interakci. Další informace najdete v tématu [použití synchronizačního klienta na virtuálních plochách](https://docs.microsoft.com/deployoffice/rds-onedrive-business-vdi).
+- **Výkon:** [Kontejnery profilu FSLogix](/fslogix/configure-profile-container-tutorial/) mají vysoký výkon a řeší problémy s výkonem, které mají historicky blokovaný režim výměny do mezipaměti.
+- **OneDrive:** OneDrive pro firmy se bez kontejnerů profilů FSLogix nepodporuje v prostředích netrvalých virtuálních počítačů a virtuálních klientských počítačů (VDI). [Nejlepší postupy pro OneDrive pro firmy a FSLogix](/fslogix/overview/) popisují jejich interakci. Další informace najdete v tématu [použití synchronizačního klienta na virtuálních plochách](/deployoffice/rds-onedrive-business-vdi/).
 - **Další složky:** FSLogix poskytuje možnost rozšiřování uživatelských profilů, aby zahrnovaly další složky.
 
 Od pořízení společnost Microsoft začala nahrazovat existující řešení uživatelských profilů, jako je UPD, pomocí kontejnerů profilů FSLogix.
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Integrace souborů Azure s doménovou službou Azure Active Directory
 
-Výkon a funkce kontejnerů profilů FSLogix využívají cloud. Od 7. srpna 2019 Microsoft Azure soubory oznámily obecnou dostupnost [ověřování souborů Azure pomocí služby Azure Active Directory Domain Service (služba AD DS)](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview). Díky ověřování Azure se službou Azure služba AD DS ověřování je pro profily uživatelů ve službě Virtual Desktop systému Windows výhodnější řešení Azure Files.
+Výkon a funkce kontejnerů profilů FSLogix využívají cloud. Od 7. srpna 2019 Microsoft Azure soubory oznámily obecnou dostupnost [ověřování souborů Azure pomocí služby Azure Active Directory Domain Service (služba AD DS)](../storage/files/storage-files-active-directory-overview.md). Díky ověřování Azure se službou Azure služba AD DS ověřování je pro profily uživatelů ve službě Virtual Desktop systému Windows výhodnější řešení Azure Files.
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Osvědčené postupy pro virtuální počítače s Windows
 
@@ -87,7 +87,7 @@ Virtuální plocha Windows nabízí plnou kontrolu velikosti, typu a počtu virt
 Aby se zajistilo, že prostředí virtuálních počítačů s Windows dodržuje osvědčené postupy:
 
 - Účet úložiště Azure Files musí být ve stejné oblasti jako virtuální počítače hostitele relace.
-- Oprávnění k souborům Azure by měla odpovídat oprávněním popsaným v [kontejnerech profil požadavků](https://docs.microsoft.com/fslogix/overview#requirements).
+- Oprávnění k souborům Azure by měla odpovídat oprávněním popsaným v [kontejnerech profil požadavků](/fslogix/overview#requirements/).
 - Každý fond hostitelů musí být sestaven se stejným typem a velikostí virtuálního počítače na základě stejné hlavní bitové kopie.
 - Každý virtuální počítač fondu hostitelů musí být ve stejné skupině prostředků, aby se mohla spravovat podpora, škálování a aktualizace.
 - Pro zajištění optimálního výkonu by se řešení úložiště a kontejner profilu FSLogix měly nacházet ve stejném umístění datového centra.
@@ -99,7 +99,7 @@ K nastavení prostředí virtuálních ploch Windows použijte následující p�
 
 - Pokud chcete začít sestavovat vaše řešení virtualizace plochy, přečtěte si téma [Vytvoření tenanta ve virtuální ploše Windows](tenant-setup-azure-active-directory.md).
 - Pokud chcete vytvořit fond hostitelů v rámci tenanta virtuálních klientů Windows, přečtěte si téma [Vytvoření fondu hostitelů pomocí Azure Marketplace](create-host-pools-azure-marketplace.md).
-- Pokud chcete nastavit plně spravované sdílené složky v cloudu, přečtěte si téma [Nastavení sdílené složky Azure Files](/azure/storage/files/storage-files-active-directory-enable).
+- Pokud chcete nastavit plně spravované sdílené složky v cloudu, přečtěte si téma [Nastavení sdílené složky Azure Files](/azure/storage/files/storage-files-active-directory-enable/).
 - Pokud chcete nakonfigurovat kontejnery profilů FSLogix, přečtěte si téma [vytvoření kontejneru profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md).
 - Pokud chcete přiřadit uživatele k fondu hostitelů, přečtěte si téma [Správa skupin aplikací pro virtuální počítač s Windows](manage-app-groups.md).
 - Informace o přístupu k prostředkům virtuálního počítače s Windows z webového prohlížeče najdete v tématu [připojení k virtuálnímu](connect-web.md)počítači s Windows.

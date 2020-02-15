@@ -1,22 +1,14 @@
 ---
 title: Konverzace s vícenásobným zapnete – QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Pomocí výzev a kontextu můžete spravovat vícenásobná vypnutí, označovaná jako vícenásobný křížek, pro robota z jedné otázky do druhé. Vícenásobné zapínání je schopnost mít v případě potřeby konverzaci, kde kontext předchozí otázky ovlivňuje další otázku a odpověď.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.author: diberry
-ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/13/2020
+ms.openlocfilehash: abdde09fbb1f6b066772366c5cea933824cb5864
+ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843256"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77210410"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Použití následných dotazů k vytvoření konverzace s několika směry
 
@@ -31,6 +23,9 @@ Pokud chcete zjistit, jak funguje vícenásobně, podívejte se na následujíc�
 Na některé otázky se nedají odpovědět jediným zahnutím. Při navrhování konverzací klientské aplikace (chat bot) může uživatel položit otázku, kterou je třeba filtrovat nebo upravit, aby bylo možné určit správnou odpověď. Provedete to tak, že si projdete možné otázky tím, že uživateli *zobrazíte následné výzvy*.
 
 Když si uživatel vyžádá otázku, QnA Maker vrátí odpověď _a_ všechny následné výzvy. Tato odpověď vám umožní prezentovat reakce na dotazy jako možnosti.
+
+> [!CAUTION]
+> V dokumentech s nejčastějšími dotazy se neextrahují výzvy s vícenásobným zapnutím. Pokud potřebujete vícenásobné extrakce, odeberte otazníky, které určují páry QnA jako nejčastější dotazy.
 
 ## <a name="example-multi-turn-conversation-with-chat-bot"></a>Příklad víceřádkové konverzace s robotem chatu
 

@@ -7,12 +7,12 @@ manager: rochakm
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 254f64c6405fb214bfbc61b3e45747d9e119565d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 583511194fb100add1d5fc4ea9c06a869cf652b5
+ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509321"
+ms.lasthandoff: 02/14/2020
+ms.locfileid: "77212280"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Nastavení zotavení po havárii pro virtuální počítače Azure pomocí Azure PowerShell
 
@@ -43,7 +43,7 @@ Než začnete, potřebujete:
 - Zkontrolujte [požadavky na podporu](azure-to-azure-support-matrix.md) pro všechny komponenty.
 - Máte modul Azure PowerShell `Az`. Pokud potřebujete nainstalovat nebo upgradovat Azure PowerShell, postupujte podle pokynů v tomto [Průvodci a nainstalujte a nakonfigurujte Azure PowerShell](/powershell/azure/install-az-ps).
 
-## <a name="log-in-to-your-microsoft-azure-subscription"></a>Přihlášení k předplatnému Microsoft Azure
+## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Přihlaste se k předplatnému Microsoft Azure.
 
 Přihlaste se k předplatnému Azure pomocí rutiny `Connect-AzAccount`.
 
@@ -57,9 +57,9 @@ Vyberte své předplatné Azure. Pomocí rutiny `Get-AzSubscription` získáte s
 Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
-## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>Získat podrobnosti o virtuálních počítačích, které se mají replikovat
+## <a name="get-details-of-the-virtual-machine-to-be-replicated"></a>Získat podrobnosti o virtuálním počítači, který se má replikovat
 
-V příkladu v tomto článku bude virtuální počítač v oblasti Východní USA replikován do a obnoven v Západní USA 2 oblasti. Replikovaný virtuální počítač je virtuální počítač s diskem s operačním systémem a jedním datovým diskem. Název virtuálního počítače, který se používá v příkladu, je `AzureDemoVM`.
+V tomto článku se virtuální počítač v Východní USA oblasti replikuje do Západní USA 2 oblasti a obnoví se. Replikovaný virtuální počítač má disk s operačním systémem a jeden datový disk. Název virtuálního počítače, který se používá v příkladu, je `AzureDemoVM`.
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -68,7 +68,7 @@ $VM = Get-AzVM -ResourceGroupName "A2AdemoRG" -Name "AzureDemoVM"
 Write-Output $VM
 ```
 
-```
+```Output
 ResourceGroupName  : A2AdemoRG
 Id                 : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/A2AdemoRG/providers/Microsoft.Compute/virtualMachines/AzureDemoVM
 VmId               : 1b864902-c7ea-499a-ad0f-65da2930b81b
@@ -84,7 +84,7 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-Získejte podrobnosti o discích virtuálního počítače. Podrobnosti o disku se použijí později při spuštění replikace pro virtuální počítač.
+Získejte podrobnosti disku pro disky virtuálního počítače. Podrobnosti o disku se použijí později při spuštění replikace pro virtuální počítač.
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
@@ -100,14 +100,14 @@ Vytvořte skupinu prostředků, ve které chcete vytvořit trezor Recovery Servi
 > * Skupina prostředků trezoru služby Recovery Services a virtuální počítače, které jsou chráněny, musí být v různých umístěních Azure.
 > * Trezor služby Recovery Services a skupina prostředků, do které patří, můžou být ve stejném umístění Azure.
 
-V příkladu v tomto článku je virtuální počítač chráněný v oblasti Východní USA. Oblast obnovení vybraná pro zotavení po havárii je Západní USA 2 oblast. Trezor služby Recovery Services a skupina prostředků trezoru jsou v oblasti obnovení (Západní USA 2).
+V příkladu v tomto článku je virtuální počítač chráněný v oblasti Východní USA. Oblast obnovení vybraná pro zotavení po havárii je Západní USA 2 oblast. Trezor služby Recovery Services a skupina prostředků trezoru jsou v oblasti obnovení Západní USA 2.
 
 ```azurepowershell
 #Create a resource group for the recovery services vault in the recovery Azure region
 New-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 ```
 
-```
+```Output
 ResourceGroupName : a2ademorecoveryrg
 Location          : westus2
 ProvisioningState : Succeeded
@@ -115,7 +115,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-Vytvořte Trezor služby Recovery Services. V následujícím příkladu je Recovery Services trezor s názvem `a2aDemoRecoveryVault` vytvořen v oblasti Západní USA 2.
+Vytvořte Trezor služby Recovery Services. V tomto příkladu je Recovery Services trezor s názvem `a2aDemoRecoveryVault` vytvořen v oblasti Západní USA 2.
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -124,7 +124,7 @@ $vault = New-AzRecoveryServicesVault -Name "a2aDemoRecoveryVault" -ResourceGroup
 Write-Output $vault
 ```
 
-```
+```Output
 Name              : a2aDemoRecoveryVault
 ID                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2aDemoRecoveryVault
 Type              : Microsoft.RecoveryServices/vaults
@@ -136,14 +136,14 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
 ## <a name="set-the-vault-context"></a>Nastavte kontext trezoru.
 
-Nastavte kontext trezoru pro použití v relaci PowerShellu. Po nastavení se následné operace Azure Site Recovery v relaci PowerShellu provádějí v kontextu vybraného trezoru.
+Nastavte kontext trezoru pro použití v relaci PowerShellu. Po nastavení kontextu trezoru se operace Azure Site Recovery v relaci PowerShellu provádějí v kontextu vybraného trezoru.
 
 ```azurepowershell
 #Setting the vault context.
 Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 ```
 
-```
+```Output
 ResourceName         ResourceGroupName ResourceNamespace          ResourceType
 ------------         ----------------- -----------------          -----------
 a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults
@@ -170,7 +170,7 @@ Objekt Fabric v trezoru představuje oblast Azure. Vytvoří se primární objek
 - V jednotlivých oblastech se dá vytvořit jenom jeden objekt Fabric.
 - Pokud jste dříve povolili Site Recovery replikaci pro virtuální počítač v Azure Portal, Site Recovery vytvoří objekt Fabric automaticky. Pokud objekt Fabric pro oblast existuje, nemůžete vytvořit nový objekt.
 
-Než začnete, pamatujte na to, že Site Recovery operace se provádějí asynchronně. Když zahájíte operaci, odešle se Azure Site Recovery úloha a vrátí se objekt sledování úlohy. Pomocí objektu sledování úlohy můžete získat nejnovější stav úlohy (`Get-AzRecoveryServicesAsrJob`) a monitorovat stav operace.
+Než začnete, pochopte, že Site Recovery operace se provádějí asynchronně. Když zahájíte operaci, odešle se Azure Site Recovery úloha a vrátí se objekt sledování úlohy. Pomocí objektu sledování úlohy můžete získat nejnovější stav úlohy (`Get-AzRecoveryServicesAsrJob`) a monitorovat stav operace.
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -193,7 +193,7 @@ Pokud jsou virtuální počítače z více oblastí Azure chráněny do stejnéh
 
 ### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>Vytvoření objektu Site Recovery Fabric, který bude představovat oblast obnovení
 
-Objekt prostředků infrastruktury obnovení představuje umístění Azure pro obnovení. Virtuální počítače budou replikovány do a obnoveny do (v případě převzetí služeb při selhání) oblast obnovení reprezentované prostředky infrastruktury pro obnovení. Oblast Azure pro obnovení použitou v tomto příkladu je Západní USA 2.
+Objekt prostředků infrastruktury obnovení představuje umístění Azure pro obnovení. Pokud dojde k převzetí služeb při selhání, virtuální počítače se replikují a obnoví do oblasti obnovení reprezentované prostředky infrastruktury pro obnovení. Oblast Azure pro obnovení použitou v tomto příkladu je Západní USA 2.
 
 ```azurepowershell
 #Create Recovery ASR fabric
@@ -289,10 +289,10 @@ $EusToWusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Protec
 
 ### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Vytvořit mapování kontejneru ochrany pro navrácení služeb po obnovení (reverzní replikace po převzetí služeb při selhání)
 
-Po převzetí služeb při selhání budete moct po převzetí služeb při selhání virtuální počítač přenést zpátky do původní oblasti Azure, po navrácení služeb po obnovení. Po navrácení služeb po obnovení je virtuální počítač převzetí služeb při selhání replikován z oblasti převzetí služeb při selhání do původní oblasti. Pro zpětnou replikaci role v části původní oblast a přepínač oblasti obnovení. Původní oblast se teď stala novou oblastí obnovení a původní oblast obnovení se teď stal primární oblastí. Mapování kontejneru ochrany pro zpětnou replikaci představuje přepínací role původních oblastí a oblasti obnovení.
+Po převzetí služeb při selhání budete moct po převzetí služeb při selhání virtuální počítač přenést zpátky do původní oblasti Azure a provést navrácení služeb po obnovení. Pro navrácení služeb po obnovení je virtuální počítač, který převezme služby při selhání, zpětně replikován z oblasti převzetí služeb při selhání do původní oblasti. Pro zpětnou replikaci role v části původní oblast a přepínač oblasti obnovení. Původní oblast se teď stala novou oblastí obnovení a původní oblast obnovení se teď stal primární oblastí. Mapování kontejneru ochrany pro zpětnou replikaci představuje přepínací role původních oblastí a oblasti obnovení.
 
 ```azurepowershell
-#Create Protection container mapping (for failback) between the Recovery and Primary Protection Containers with the Replication policy
+#Create Protection container mapping (for fail back) between the Recovery and Primary Protection Containers with the Replication policy
 $TempASRJob = New-AzRecoveryServicesAsrProtectionContainerMapping -Name "A2ARecoveryToPrimary" -Policy $ReplicationPolicy -PrimaryProtectionContainer $RecoveryProtContainer -RecoveryProtectionContainer $PrimaryProtContainer
 
 #Track Job status to check for completion
@@ -303,18 +303,20 @@ while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStart
 
 #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
 Write-Output $TempASRJob.State
+
+$WusToEusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $RecoveryProtContainer -Name "A2ARecoveryToPrimary"
 ```
 
-## <a name="create-cache-storage-accounts-and-target-storage-accounts"></a>Vytvořit účty úložiště mezipaměti a cílové účty úložiště
+## <a name="create-cache-storage-account-and-target-storage-account"></a>Vytvoření účtu úložiště mezipaměti a cílového účtu úložiště
 
-Účet úložiště mezipaměti je účet standardního úložiště ve stejné oblasti Azure jako virtuální počítač, který se replikuje. Účet úložiště mezipaměti se používá k dočasnému uchovávání změn replikace, než se změny přesunou do oblasti obnovení Azure. Můžete zvolit, že chcete (ale nemusíte) zadat jiné účty úložiště mezipaměti pro různé disky virtuálního počítače.
+Účet úložiště mezipaměti je účet standardního úložiště ve stejné oblasti Azure jako virtuální počítač, který se replikuje. Účet úložiště mezipaměti se používá k dočasnému uchovávání změn replikace, než se změny přesunou do oblasti obnovení Azure. Můžete zvolit, že není nutné, abyste pro různé disky virtuálního počítače určili různé účty úložiště mezipaměti.
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
 $EastUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-U virtuálních počítačů, které **nepoužívají spravované disky**, je cílovým účtem úložiště účty úložiště v oblasti obnovení, na které se replikují disky virtuálního počítače. Cílový účet úložiště může být buď účet standardního úložiště, nebo účet Premium Storage. Vyberte druh účtu úložiště vyžadovaný v závislosti na rychlosti změny dat (rychlost zápisu v/v) pro disky a Azure Site Recovery podporovaná omezení změn pro typ úložiště.
+U virtuálních počítačů, které **nepoužívají spravované disky**, je cílovým účtem úložiště účet úložiště v oblasti obnovení, na které se replikují disky virtuálního počítače. Cílový účet úložiště může být buď účet standardního úložiště, nebo účet Premium Storage. Vyberte druh účtu úložiště vyžadovaný v závislosti na rychlosti změny dat (rychlost zápisu v/v) pro disky a Azure Site Recovery podporovaná omezení změn pro typ úložiště.
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account
@@ -325,7 +327,7 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
 
 Mapování sítě mapuje virtuální sítě v primární oblasti na virtuální sítě v oblasti obnovení. Mapování sítě určuje virtuální síť Azure v oblasti obnovení, na kterou by měl virtuální počítač v primární virtuální síti převzít služby při selhání. Jedna virtuální síť Azure se dá namapovat jenom na jednu virtuální síť Azure v oblasti obnovení.
 
-- Vytvořte virtuální síť Azure v oblasti obnovení pro převzetí služeb při selhání:
+- Vytvořte virtuální síť Azure v oblasti obnovení, pro kterou převezmete služby při selhání:
 
    ```azurepowershell
     #Create a Recovery Network in the recovery region
@@ -336,7 +338,7 @@ Mapování sítě mapuje virtuální sítě v primární oblasti na virtuální 
     $WestUSRecoveryNetwork = $WestUSRecoveryVnet.Id
    ```
 
-- Načíst primární virtuální síť (virtuální síť, ke které je virtuální počítač připojený):
+- Načtěte primární virtuální síť. Virtuální síť, ke které je virtuální počítač připojený:
 
    ```azurepowershell
     #Retrieve the virtual network that the virtual machine is connected to
@@ -379,7 +381,7 @@ Mapování sítě mapuje virtuální sítě v primární oblasti na virtuální 
 - Vytvořit mapování sítě pro zpětný směr (navrácení služeb po obnovení):
 
     ```azurepowershell
-    #Create an ASR network mapping for failback between the recovery Azure virtual network and the primary Azure virtual network
+    #Create an ASR network mapping for fail back between the recovery Azure virtual network and the primary Azure virtual network
     $TempASRJob = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "A2AWusToEusNWMapping" -PrimaryFabric $RecoveryFabric -PrimaryAzureNetworkId $WestUSRecoveryNetwork -RecoveryFabric $PrimaryFabric -RecoveryAzureNetworkId $EastUSPrimaryNetwork
 
     #Track Job status to check for completion
@@ -477,9 +479,9 @@ FriendlyName ProtectionState ReplicationHealth
 AzureDemoVM  Protected       Normal
 ```
 
-## <a name="perform-a-test-failover-validate-and-cleanup-test-failover"></a>Testování převzetí služeb při selhání, ověření a vyčištění testovacího převzetí služeb při selhání
+## <a name="do-a-test-failover-validate-and-cleanup-test-failover"></a>Proveďte test převzetí služeb při selhání, ověření a vyčištění testovacího převzetí služeb při selhání
 
-Jakmile replikace virtuálního počítače dosáhne chráněného stavu, může se provést testovací operace převzetí služeb při selhání na virtuálním počítači (na chráněné položce replikace virtuálního počítače).
+Po dokončení replikace virtuálního počítače do chráněného stavu se může provést testovací operace převzetí služeb při selhání na virtuálním počítači (na chráněné položce replikace virtuálního počítače).
 
 ```azurepowershell
 #Create a separate network for test failover (not connected to my DR network)
@@ -504,7 +506,7 @@ Počkejte, než se dokončí operace testovacího převzetí služeb při selhá
 Get-AzRecoveryServicesAsrJob -Job $TFOJob
 ```
 
-```
+```Output
 Name             : 3dcb043e-3c6d-4e0e-a42e-8d4245668547
 ID               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2aDemoR
                    ecoveryVault/replicationJobs/3dcb043e-3c6d-4e0e-a42e-8d4245668547
@@ -534,15 +536,15 @@ $Job_TFOCleanup = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -Replication
 Get-AzRecoveryServicesAsrJob -Job $Job_TFOCleanup | Select State
 ```
 
-```
+```Output
 State
 -----
 Succeeded
 ```
 
-## <a name="failover-to-azure"></a>Převzetí služeb při selhání do Azure
+## <a name="fail-over-to-azure"></a>Převzetí služeb při selhání do Azure
 
-Převzetí služeb při selhání virtuálního počítače pro určitý bod obnovení.
+Převzetí služeb při selhání virtuálního počítače na určitý bod obnovení.
 
 ```azurepowershell
 $RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem $ReplicationProtectedItem
@@ -551,12 +553,12 @@ $RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedIt
 "{0} {1}" -f $RecoveryPoints[0].RecoveryPointType, $RecoveryPoints[-1].RecoveryPointTime
 ```
 
-```
+```Output
 CrashConsistent 4/24/2018 11:10:25 PM
 ```
 
 ```azurepowershell
-#Start the failover job
+#Start the fail over job
 $Job_Failover = Start-AzRecoveryServicesAsrUnplannedFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem -Direction PrimaryToRecovery -RecoveryPoint $RecoveryPoints[-1]
 
 do {
@@ -567,11 +569,11 @@ do {
 $Job_Failover.State
 ```
 
-```
+```Output
 Succeeded
 ```
 
-Po úspěšném selhání můžete operaci převzetí služeb při selhání potvrdit.
+Po úspěšném provedení úlohy převzetí služeb při selhání můžete operaci převzetí služeb při selhání potvrdit.
 
 ```azurepowershell
 $CommitFailoverJOb = Start-AzRecoveryServicesAsrCommitFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem
@@ -579,7 +581,7 @@ $CommitFailoverJOb = Start-AzRecoveryServicesAsrCommitFailoverJob -ReplicationPr
 Get-AzRecoveryServicesAsrJob -Job $CommitFailoverJOb
 ```
 
-```
+```Output
 Name             : 58afc2b7-5cfe-4da9-83b2-6df358c6e4ff
 ID               : /Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2aDemoR
                    ecoveryVault/replicationJobs/58afc2b7-5cfe-4da9-83b2-6df358c6e4ff
@@ -599,7 +601,7 @@ Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```
 
-## <a name="reprotect-and-failback-to-source-region"></a>Znovu nastavit ochranu a navrátit služby po obnovení do zdrojové oblasti
+## <a name="reprotect-and-fail-back-to-the-source-region"></a>Opětovné zapnutí ochrany a navrácení služeb po obnovení do zdrojové oblasti
 
 Až budete převzetí služeb při selhání připraveni přejít zpátky do původní oblasti, spusťte zpětnou replikaci pro položku chráněnou replikace pomocí rutiny `Update-AzRecoveryServicesAsrProtectionDirection`.
 
@@ -609,12 +611,12 @@ $WestUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragewestus" 
 ```
 
 ```azurepowershell
-#Use the recovery protection container, new cache storage accountin West US and the source region VM resource group
+#Use the recovery protection container, new cache storage account in West US and the source region VM resource group
 Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure
--ProtectionContainerMapping $RecoveryProtContainer -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.Id
+-ProtectionContainerMapping $WusToEusPCMapping -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.ResourceId
 ```
 
-Po dokončení ochrany můžete převzetí služeb při selhání iniciovat v opačném směru (Západní USA pro Východní USA) a navrácení služeb po obnovení do zdrojové oblasti.
+Po dokončení ochrany můžete převzít služby při selhání v opačném směru, Západní USA Východní USA a navrácení služeb po obnovení do zdrojové oblasti.
 
 ## <a name="disable-replication"></a>Zákaz replikace
 
@@ -626,4 +628,4 @@ Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na [odkaz Azure Site Recovery PowerShellu](/powershell/module/az.RecoveryServices) , kde se dozvíte, jak provádět další úlohy, jako je vytváření plánů obnovení a testování převzetí služeb při selhání pro plány obnovení prostřednictvím PowerShellu.
+Podívejte se na [odkaz Azure Site Recovery PowerShell](/powershell/module/az.RecoveryServices) , kde se dozvíte, jak provádět další úkoly, jako je vytváření plánů obnovení a testování převzetí služeb při selhání v prostředí PowerShell.
