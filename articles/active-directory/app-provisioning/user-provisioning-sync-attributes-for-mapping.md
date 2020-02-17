@@ -15,18 +15,18 @@ ms.date: 05/13/2019
 ms.author: mimart
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f49fce985484e85bcba2883a66ec0b1e6d032a8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 12d8e60d3bfeb2e72d52b30dffcec4ad6e6c3f08
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066041"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368180"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>Synchronizace atributu z místní služby Active Directory do Azure AD kvůli zřizování pro aplikaci
 
 Při přizpůsobování mapování atributů pro zřizování uživatelů můžete zjistit, že atribut, který chcete mapovat, se nezobrazí v seznamu **zdrojového atributu** . V tomto článku se dozvíte, jak přidat chybějící atribut synchronizací z místní služby Active Directory (AD) do Azure Active Directory (Azure AD).
 
-Azure AD musí obsahovat všechna data potřebná k vytvoření profilu uživatele při zřizování uživatelských účtů z Azure AD do aplikace SaaS. V některých případech je možné, že budete potřebovat synchronizovat atributy z místní služby AD do Azure AD. Azure AD Connect automaticky synchronizuje určité atributy do Azure AD, ale ne všechny atributy. Kromě toho nemusí být některé atributy (například SAMAccountName), které jsou synchronizované ve výchozím nastavení, zpřístupněné prostřednictvím Graph API Azure AD. V těchto případech můžete použít funkci rozšíření adresář Azure AD Connect k synchronizaci atributu do Azure AD. Tímto způsobem bude atribut viditelný pro Graph API Azure AD a službu Azure AD Provisioning.
+Azure AD musí obsahovat všechna data potřebná k vytvoření profilu uživatele při zřizování uživatelských účtů z Azure AD do aplikace SaaS. V některých případech je možné, že budete potřebovat synchronizovat atributy z místní služby AD do Azure AD. Azure AD Connect automaticky synchronizuje určité atributy do Azure AD, ale ne všechny atributy. Kromě toho je možné, že některé atributy (například SAMAccountName), které jsou synchronizovány ve výchozím nastavení, nemusí být vystaveny pomocí rozhraní Microsoft Graph API. V těchto případech můžete použít funkci rozšíření adresář Azure AD Connect k synchronizaci atributu do Azure AD. Tímto způsobem bude atribut viditelný pro rozhraní Microsoft Graph API a službu Azure AD Provisioning.
 
 Pokud jsou data potřebná pro zřizování ve službě Active Directory, ale není k dispozici pro zřizování z důvodu výše popsaných, postupujte podle těchto kroků.
  

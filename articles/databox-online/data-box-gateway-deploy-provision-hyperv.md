@@ -8,24 +8,25 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 0b106e0412de972801fa8782de08269e13042191
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 63d88f1b9903eaad7ed4f57f59ca2a49445e3d40
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60756984"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365319"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Kurz: Zřízení Azure Data Box brány technologie Hyper-v
+# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Kurz: zřízení Azure Data Box Gateway v Hyper-V
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz popisuje, jak zřídit službu Data Box Gateway v hostitelském systému s Hyper-V ve Windows Serveru 2016, Windows Serveru 2012 R2 nebo Windows Serveru 2012. 
+Tento kurz popisuje, jak zřídit službu Data Box Gateway v hostitelském systému s Hyper-V ve Windows Serveru 2016, Windows Serveru 2012 R2 nebo Windows Serveru 2012.
 
 Ke zřízení a konfiguraci virtuálního zařízení potřebujete oprávnění správce. Dokončení zřizování a počátečního nastavení může trvat přibližně 10 minut.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
+>
 > * Zajištění, aby hostitel splňoval minimální požadavky na zařízení
 > * Zřízení virtuálního zařízení v hypervisoru
 > * Spuštění virtuálního zařízení a získání IP adresy
@@ -45,7 +46,7 @@ Než začnete, ujistěte se, že:
 
   > [!IMPORTANT]
   > Software ve službě Data Box Gateway je možné používat pouze s prostředkem Data Box Gateway.
- 
+
 ### <a name="for-the-data-box-gateway-virtual-device"></a>Virtuální zařízení Data Box Gateway
 
 Před nasazením zařízení se ujistěte, že:
@@ -54,18 +55,17 @@ Před nasazením zařízení se ujistěte, že:
 * Hostitelský systém může pro zřízení virtuálního zařízení vyhradit následující prostředky:
 
   * Minimálně 4 jádra
-  * Minimálně 8 GB paměti RAM 
+  * Minimálně 8 GB paměti RAM
   * Jedno síťové rozhraní
   * 250GB disk s operačním systémem
   * 2TB virtuální disk pro data
 
 ### <a name="for-the-network-in-the-datacenter"></a>Síť v datovém centru
 
-Než začnete:
+Před zahájením:
 
 - Projděte si požadavky na síť pro nasazení služby Data Box Gateway a nakonfigurujte podle těchto požadavků síť datacentra. Další informace najdete v tématu popisujícím [požadavky na síť pro službu Data Box Gateway](data-box-gateway-system-requirements.md#networking-port-requirements).
 - Ujistěte se, že je šířka internetového pásma minimálně 20 Mb/s, aby zařízení mohlo fungovat optimálně.
-
 
 ## <a name="check-the-host-system"></a>Kontrola hostitelského systému
 
@@ -86,64 +86,63 @@ K vytvoření virtuálního zařízení potřebujete:
 Pomocí následujících kroků ve svém hypervisoru zřiďte zařízení.
 
 1. Na hostiteli s Windows Serverem zkopírujte na místní disk image virtuálního zařízení. Tuto image VHDX jste si stáhli přes Azure Portal. Poznamenejte si umístění, do kterého jste image zkopírovali, protože tuto image použijete v pozdější části tohoto postupu.
-2. Otevřete **Správce serveru**. V pravém horním rohu klikněte na tlačítko **nástroje** a vyberte **Správce technologie Hyper-V**.
+2. Otevřete **Správce serveru**. V pravém horním rohu klikněte na **nástroje** a vyberte **Správce technologie Hyper-V**.
 
-    ![Vyberte Správce technologie Hyper-V ve Správci serveru](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
+    ![Ve Správce serveru vyberte Správce technologie Hyper-V.](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
   
 3. V podokně oboru **Správce technologie Hyper-V** kliknutím pravým tlačítkem na uzel systému otevřete místní nabídku a pak klikněte na **Nový** > **Virtuální počítač**.
 
    ![Vytvořit nový virtuální počítač ve Správci technologie Hyper-V](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. Na stránce **Než začnete** Průvodce novým virtuálním počítačem klikněte na **Další**.
-5. Na stránce **Zadejte název a umístění** zadejte **Název** virtuálního zařízení. Klikněte na **Další**.
+5. Na stránce **Zadejte název a umístění** zadejte **Název** virtuálního zařízení. Klikněte na **Další**.
 
-   ![Zadejte název a umístění stránky](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
+   ![Zadat název a stránku umístění](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. Na stránce **Zadat generaci** zvolte jako typ image zařízení .vhdx **Generace 2** a pak klikněte na **Další**.    
 
-   ![Zadejte generování stránky](./media/data-box-gateway-deploy-provision-hyperv/image4.png)
+   ![Zadat stránku generace](./media/data-box-gateway-deploy-provision-hyperv/image4.png)
 7. Na stránce **Přiřadit paměť** zadejte jako **Spouštěcí paměť** alespoň **8 192 MB**, dynamickou paměť nepovolujte, a pak klikněte **Další**.
 
-   ![Přiřazení paměti stránky](./media/data-box-gateway-deploy-provision-hyperv/image5.png) 
+   ![Stránka přiřazení paměti](./media/data-box-gateway-deploy-provision-hyperv/image5.png) 
 8. Na stránce **Konfigurace sítí** zadejte virtuální přepínač připojený k internetu a pak klikněte na **Další**.
 
-   ![Konfigurace sítě stránky](./media/data-box-gateway-deploy-provision-hyperv/image6.png)
+   ![Stránka konfigurace sítě](./media/data-box-gateway-deploy-provision-hyperv/image6.png)
 9. Na stránce **Připojit virtuální pevný disk** zvolte **Použít existující virtuální pevný disk**, zadejte umístění image virtuálního zařízení a pak klikněte na **Další**.
 
-   ![Připojit virtuální pevný disk stránku](./media/data-box-gateway-deploy-provision-hyperv/image7.png)
+   ![Stránka připojit virtuální pevný disk](./media/data-box-gateway-deploy-provision-hyperv/image7.png)
 10. Zkontrolujte **Souhrn** a pak kliknutím na **Dokončit** vytvořte virtuální počítač.
 
-    ![Dokončuje se stránka průvodce nový virtuální počítač](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
-11. Chcete-li splňují minimální požadavky, je třeba 4 virtuální procesory. Pokud chcete přidat 4 virtuální procesory, v okně **Správce technologie Hyper-V** vyberte váš hostitelský systém. V pravém podokně v seznamu **Virtuální počítače** vyhledejte virtuální počítač, který jste právě vytvořili. Vyberte název počítače, klikněte na něj pravým tlačítkem a vyberte **Nastavení**.
+    ![Probíhá dokončování stránky Průvodce novým virtuálním počítačem.](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
+11. Abyste splnili minimální požadavky, potřebujete 4 virtuální procesory. Pokud chcete přidat 4 virtuální procesory, v okně **Správce technologie Hyper-V** vyberte váš hostitelský systém. V pravém podokně v seznamu **Virtuální počítače** vyhledejte virtuální počítač, který jste právě vytvořili. Vyberte název počítače, klikněte na něj pravým tlačítkem a vyberte **Nastavení**.
 
     ![Nastavení virtuálního počítače](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
-12. Na stránce **Nastavení** klikněte v levém podokně na **Procesor**. V pravém podokně nastavte **počet virtuálních procesorů** na 4 (nebo více). Klikněte na tlačítko **Použít**.
+12. Na stránce **Nastavení** klikněte v levém podokně na **Procesor**. V pravém podokně nastavte **počet virtuálních procesorů** na 4 (nebo více). Klikněte na **Použít**.
 
-    ![Na stránce nastavení nastavit počet virtuálních procesorů](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
+    ![Nastavit počet virtuálních procesorů na stránce nastavení](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
 13. Ke splnění minimálních požadavků je také potřeba přidat 2TB virtuální datový disk. Na stránce **Nastavení**:
 
     1. V levém podokně vyberte **Řadič SCSI**.
     2. V pravém podokně vyberte **Pevný disk** a klikněte na **Přidat**.
 
-    ![Přidat na stránku nastavení pevného disku](./media/data-box-gateway-deploy-provision-hyperv/image11.png)
+    ![Přidat pevný disk na stránku nastavení](./media/data-box-gateway-deploy-provision-hyperv/image11.png)
 14. Na stránce **Pevný disk** vyberte možnost **Virtuální pevný disk** a klikněte na **Nový**. Spustí se **Průvodce novým virtuálním pevným diskem**.
 
-    ![Průvodce vytvořením virtuálního pevného disku](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
-1. Na stránce **Než začnete** Průvodce novým virtuálním pevným diskem klikněte na **Další**.
-2. Na stránce **Zvolit formát disku** přijměte výchozí možnost formátu **VHDX**. Klikněte na **Další**.
-   
-17. Na stránce **Zvolit typ disku** jako typ virtuálního pevného disku nastavte **Dynamicky se zvětšující** (doporučeno). Disk **pevné velikosti** by také fungoval, ale možná byste museli dlouho čekat. Doporučujeme nepoužívat možnost **Rozdílový**. Klikněte na **Další**. 
+    ![Průvodce novým virtuálním pevným diskem](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
+15. Na stránce **Než začnete** Průvodce novým virtuálním pevným diskem klikněte na **Další**.
+16. Na stránce **Zvolit formát disku** přijměte výchozí možnost formátu **VHDX**. Klikněte na **Další**.
+17. Na stránce **Zvolit typ disku** jako typ virtuálního pevného disku nastavte **Dynamicky se zvětšující** (doporučeno). Disk **pevné velikosti** by také fungoval, ale možná byste museli dlouho čekat. Doporučujeme nepoužívat možnost **Rozdílový**. Klikněte na **Další**.
 
-    ![Vyberte stránku typ disku](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
-18. Na stránce **Zadejte název a umístění** zadejte **název** a **umístění** (k umístění můžete přejít) datového disku. Klikněte na **Další**.
+    ![Výběr stránky typ disku](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
+18. Na stránce **Zadejte název a umístění** zadejte **název** a **umístění** (k umístění můžete přejít) datového disku. Klikněte na **Další**.
 
-    ![Zadejte název a umístění stránky](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. Na stránce **Konfigurovat disk** vyberte možnost **Vytvořit nový prázdný virtuální pevný disk** a jako velikost zadejte **2 TB** (nebo více). 
+    ![Zadat název a stránku umístění](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
+19. Na stránce **Konfigurovat disk** vyberte možnost **Vytvořit nový prázdný virtuální pevný disk** a jako velikost zadejte **2 TB** (nebo více).
     
-    Minimální požadavek je 2 TB, ale vždy můžete zřídit větší disk. Mějte na paměti, že disk po zřízení už není možné zmenšit. Probíhá pokus o zmenšit výsledky disku za následek ztrátu všech místních dat v zařízení. Můžete ho však zvětšit přidáním datového disku. Klikněte na **Další**.
+    Minimální požadavek je 2 TB, ale vždy můžete zřídit větší disk. Mějte na paměti, že disk po zřízení už není možné zmenšit. Při pokusu o zmenšení disku dojde ke ztrátě všech místních dat v zařízení. Rozšíření datového disku není podporováno. Klikněte na **Další**.
 
-    ![Konfigurace disku stránky](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
+    ![Stránka konfigurace disku](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. Na stránce **Souhrn** zkontrolujte podrobnosti virtuálního pevného disku, a pokud budete spokojeni, kliknutím na **Dokončit** disk vytvořte. Průvodce se zavře a do vašeho počítače se přidá virtuální pevný disk.
 
-    ![Dokončuje se Průvodce vytvořením virtuálního pevného disku stránky](./media/data-box-gateway-deploy-provision-hyperv/image16.png)
+    ![Probíhá dokončování stránky Průvodce novým virtuálním pevným diskem.](./media/data-box-gateway-deploy-provision-hyperv/image16.png)
 21. Vraťte se na stránku **Nastavení**. Kliknutím na **OK** zavřete stránku **Nastavení** a vraťte se do okna Správce technologie Hyper-V.
 
     ![Stránka Nastavení](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
@@ -154,12 +153,12 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
 #### <a name="to-start-the-virtual-device"></a>Spuštění virtuálního zařízení
 1. Spusťte virtuální zařízení.
 
-   ![Spuštění virtuálního zařízení](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
+   ![Spustit virtuální zařízení](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
 2. Jakmile bude zařízení spuštěné, vyberte ho, klikněte na něj pravým tlačítkem a vyberte **Připojit**.
 
-3. Možná budete muset 10 až 15 minut počkat, než se zařízení připraví. V konzole se zobrazí zpráva o stavu značící průběh. Jakmile bude zařízení připravené, přejděte do části **Akce**. Stisknutím klávesy `Ctrl + Alt + Delete` pro přihlášení k virtuálnímu zařízení. Výchozí uživatel je *EdgeUser* a výchozí heslo je *Password1*.
+3. Možná budete muset 10 až 15 minut počkat, než se zařízení připraví. V konzole se zobrazí zpráva o stavu značící průběh. Jakmile bude zařízení připravené, přejděte do části **Akce**. Stisknutím `Ctrl + Alt + Delete` se přihlaste k virtuálnímu zařízení. Výchozí uživatel je *EdgeUser* a výchozí heslo je *Password1*.
 
-   ![Přihlaste se k virtuálnímu zařízení](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
+   ![Přihlaste se k virtuálnímu zařízení.](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
    
 6. Kroky 5 až 7 proveďte pouze v případě, že zařízení spouštíte v jiném prostředí než DHCP. Pokud jste v prostředí DHCP, přeskočte tyto kroky. Pokud jste zařízení spustili v jiném prostředí než DHCP, zobrazí se o tom zpráva.
     
@@ -171,17 +170,17 @@ Pomocí následujících kroků spusťte své virtuální zařízení a připojt
     
 9. Po dokončení počátečního nastavení a spuštění zařízení se zobrazí text banneru zařízení. Poznamenejte si IP adresu a adresu URL pro správu zařízení, které se zobrazí v textu banneru. Pomocí této IP adresy se připojte k webovému uživatelskému rozhraní vašeho virtuálního zařízení a dokončete místní nastavení a aktivaci.
 
-   ![Informační zpráva virtuální zařízení s IP adresou URL adresy a připojení](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
+   ![Banner virtuálního zařízení s IP adresou a adresou URL připojení](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
       
 
 Pokud vaše zařízení nesplňuje minimální požadavky na konfiguraci, zobrazí se v textu banneru chyba. Upravte konfiguraci zařízení tak, aby měl počítač dostatečné prostředky ke splnění minimálních požadavků. Pak můžete zařízení restartovat a připojit se k němu. Projděte si minimální požadavky na konfiguraci v části věnované [kontrole, jestli hostitelský systém splňuje minimální požadavky na virtuální zařízení](#check-the-host-system).
 
-Pokud budete mít jiná chyba během počáteční konfigurace prostřednictvím místního webového uživatelského rozhraní, najdete v následujících pracovních postupů:
+Pokud se při počáteční konfiguraci s použitím místního webového uživatelského rozhraní zobrazí nějaká chyba, přečtěte si následující pracovní postupy:
 
-- [Spustit diagnostické testy k řešení potíží s instalací webové uživatelské rozhraní](data-box-gateway-troubleshoot.md#run-diagnostics).
-- [Vygenerujte balíček pro protokolu a zobrazit soubory protokolů](data-box-gateway-troubleshoot.md#collect-support-package).
+- [Spusťte diagnostické testy pro řešení potíží s instalací webového uživatelského rozhraní](data-box-gateway-troubleshoot.md#run-diagnostics).
+- [Generování souboru protokolu a zobrazení souborů protokolu](data-box-gateway-troubleshoot.md#collect-support-package).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Data Box Gateway, jako jsou:
 
@@ -194,5 +193,3 @@ V dalším kurzu se dozvíte, jak připojit, nastavit a aktivovat virtuální za
 
 > [!div class="nextstepaction"]
 > [Připojení a nastavení služby Data Box Gateway](./data-box-gateway-deploy-connect-setup-activate.md)
-
-

@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 021d00b9fb02f2f5ea2560038741efec11b8cbc0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 16d8faa1f20227241d1a582dd4d80e0123f7a31e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169191"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368487"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory
 Azure Event Hubs podporuje použití Azure Active Directory (Azure AD) k autorizaci požadavků na Event Hubs prostředky. Pomocí Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení oprávnění objektu zabezpečení, který může být uživatel nebo instanční objekt služby. Další informace o rolích a přiřazení rolí najdete v tématu [Principy různých rolí](../role-based-access-control/overview.md).
@@ -54,9 +54,13 @@ Následující seznam popisuje úrovně, na jejichž základě můžete nastavit
 - **Předplatné**: přiřazení role se vztahuje na všechny prostředky Event Hubs ve všech skupinách prostředků v rámci předplatného.
 
 > [!NOTE]
-> Mějte na paměti, že rozšíření přiřazení rolí RBAC může trvat až pět minut. 
+> - Mějte na paměti, že rozšíření přiřazení rolí RBAC může trvat až pět minut. 
+> - Tento obsah se týká Event Hubs i Event Hubs pro Apache Kafka. Další informace o Event Hubs podpoře pro Kafka najdete v článku [Event Hubs pro Kafka-zabezpečení a ověřování](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication).
+
 
 Další informace o tom, jak jsou předdefinované role definované, najdete v tématu [vysvětlení definic rolí](../role-based-access-control/role-definitions.md#management-and-data-operations). Informace o vytváření vlastních rolí RBAC najdete v tématu [Vytvoření vlastních rolí pro Azure založené na rolích Access Control](../role-based-access-control/custom-roles.md).
+
+
 
 ## <a name="samples"></a>Ukázky
 - [Ukázky Microsoft. Azure. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac) 
@@ -65,6 +69,8 @@ Další informace o tom, jak jsou předdefinované role definované, najdete v t
 - [Ukázky pro Azure. Messaging. EventHubs](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     Tato ukázka se aktualizovala tak, aby používala nejnovější knihovnu **Azure. Messaging. EventHubs** .
+- [Event Hubs pro ukázky Kafka-OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth). 
+
 
 ## <a name="next-steps"></a>Další kroky
 - Přečtěte si, jak přiřadit k objektu zabezpečení integrovanou roli RBAC, najdete v tématu [ověření přístupu k prostředkům Event Hubs pomocí Azure Active Directory](authenticate-application.md).

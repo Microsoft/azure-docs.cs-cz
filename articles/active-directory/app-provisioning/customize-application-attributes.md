@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 842e5c4771fcac0b8011dda1df11c646bf8f070c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bfc5c24b1ba3d623e148e0da5b38a869d056996a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207192"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367820"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení uživatelského zřizování atributů – mapování pro SaaS aplikace v Azure Active Directory
 
@@ -111,8 +111,8 @@ Mezi aplikace a systémy, které podporují přizpůsobení seznamu atributů, p
 
 - Salesforce
 - ServiceNow
-- Pracovní den
-- Azure Active Directory (podporují se[výchozí atributy služby Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) a vlastní rozšíření adresáře)
+- Workday
+- Azure Active Directory (podporuje se[Referenční dokumentace Microsoft Graph REST API v 1.0](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) a vlastní rozšíření adresáře)
 - Aplikace, které podporují [SCIM 2,0](https://tools.ietf.org/html/rfc7643), ve kterých je potřeba přidat atributy definované ve [schématu Core](https://tools.ietf.org/html/rfc7643)
 
 > [!NOTE]
@@ -133,7 +133,7 @@ Při úpravách seznamu podporovaných atributů jsou k dispozici následující
 - **Více hodnot?** – Zda atribut podporuje více hodnot.
 - **Přesný případ?** – Zda jsou hodnoty atributů vyhodnocovány způsobem, který rozlišuje velká a malá písmena.
 - **Výraz rozhraní API** – nepoužívejte, pokud k tomu nejste vyzváni v dokumentaci pro konkrétní zřizovací konektor (například Workday).
-- **Odkazovaný atribut objektu** – Pokud se jedná o atribut typu odkazu, pak v této nabídce můžete vybrat tabulku a atribut v cílové aplikaci, která obsahuje hodnotu přidruženou k atributu. Například pokud máte atribut s názvem "Department", jehož uložená hodnota odkazuje na objekt v samostatné tabulce "oddělení", vyberte "Departments.Name". Referenční tabulky a pole primárních ID podporovaná pro danou aplikaci jsou předem nakonfigurované a v současné době není možné upravovat pomocí Azure Portal, ale můžete je upravovat pomocí [Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
+- **Odkazovaný atribut objektu** – Pokud se jedná o atribut typu odkazu, pak v této nabídce můžete vybrat tabulku a atribut v cílové aplikaci, která obsahuje hodnotu přidruženou k atributu. Například pokud máte atribut s názvem "Department", jehož uložená hodnota odkazuje na objekt v samostatné tabulce "oddělení", vyberte "Departments.Name". Referenční tabulky a pole primárních ID podporovaná pro danou aplikaci jsou předem nakonfigurované a aktuálně se nedají upravovat pomocí Azure Portal, ale dají se upravit pomocí [rozhraní Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes).
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Zřízení vlastního rozšíření atributu pro aplikaci vyhovující SCIM
 SCIM RFC definuje základní schéma uživatelů a skupin a zároveň umožňuje rozšíření schématu, aby splňovala potřeby vaší aplikace. Přidání vlastního atributu do aplikace SCIM:

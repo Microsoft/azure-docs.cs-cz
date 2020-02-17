@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7b8eed501571bdd3e7372a348ba34d0632ca2cd8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772772"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367283"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -64,7 +64,7 @@ K dispozici je několik věcí, které potřebujete k nastavení virtuální plo
 
 Plánujeme přidat podporu pro následující operačních systémech, takže se ujistěte, že máte [příslušné licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro uživatele na základě plochy a aplikací, které plánujete nasadit:
 
-|OS|Požadovaná licence|
+|Operační systém|Požadovaná licence|
 |---|---|
 |Windows 10 Enterprise s více relacemi nebo Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, a3, A5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, a3, A5|
@@ -72,7 +72,7 @@ Plánujeme přidat podporu pro následující operačních systémech, takže se
 
 K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto věci:
 
-* [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* [Azure Active Directory](/active-directory/)
 * Služba Windows Server Active Directory je synchronizovaná s Azure Active Directory. Můžete ji nakonfigurovat jedním z následujících způsobů:
   * Azure AD Connect (pro hybridní organizace)
   * Azure AD Domain Services (pro hybridní nebo cloudové organizace)
@@ -80,7 +80,7 @@ K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto v�
   
 Virtuální počítače Azure, které vytvoříte pro virtuální počítače s Windows, musí být:
 
-* [Standardní](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) služba AD připojená k doméně nebo k ní [připojená](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtuální počítače nemůžou být připojené k Azure AD.
+* [Standardní](../active-directory-domain-services/active-directory-ds-comparison.md) služba AD připojená k doméně nebo k ní [připojená](../active-directory/devices/hybrid-azuread-join-plan.md). Virtuální počítače nemůžou být připojené k Azure AD.
 * Spouští se jedna z následujících [podporovaných bitových kopií operačního systému](#supported-virtual-machine-os-images).
 
 >[!NOTE]
@@ -149,7 +149,7 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 |Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|Automaticky|
 |Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|Automaticky|
 |Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|Automaticky|
-|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Manual|
+|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Ručně|
 |Windows Server 2019|Ano|Ano|Ne|Ne|Automaticky|
 |Windows Server 2016|Ano|Ano|Ano|Ano|Automaticky|
 |Windows Server 2012 R2|Ano|Ano|Ne|Ne|Automaticky|

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: f510879e7df967944f5e7a3deac308a430d53d0c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f9baaf6c39f85f82b034bee42f01cf3c0dd2a610
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771304"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367450"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Vytvoření fondu hostitelů pomocí PowerShellu
 
@@ -20,7 +20,7 @@ Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních poč
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>Vytvoření fondu hostitelů pomocí klienta PowerShellu
 
-Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali.
+Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali.
 
 Spuštěním následující rutiny se přihlaste do prostředí virtuálních počítačů s Windows.
 
@@ -60,9 +60,9 @@ Teď můžete vytvořit virtuální počítač Azure, který se dá připojit ke
 
 Virtuální počítač můžete vytvořit několika způsoby:
 
-- [Vytvoření virtuálního počítače z Image Galerie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#create-virtual-machine)
-- [Vytvoření virtuálního počítače ze spravované image](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)
-- [Vytvoření virtuálního počítače z nespravované image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+- [Vytvoření virtuálního počítače z Image Galerie Azure](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [Vytvoření virtuálního počítače ze spravované image](../virtual-machines/windows/create-vm-generalized-managed.md)
+- [Vytvoření virtuálního počítače z nespravované image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image.md)
 
 >[!NOTE]
 >Pokud nasazujete virtuální počítač s operačním systémem Windows 7 jako hostitelský operační systém, proces vytvoření a nasazení bude trochu jiný. Další podrobnosti najdete v tématu [nasazení virtuálního počítače s Windows 7 na virtuálním počítači s Windows](deploy-windows-7-virtual-machine.md).
@@ -78,7 +78,7 @@ Než budete moct nainstalovat agenty virtuálních počítačů s Windows a zare
 
 K úspěšnému připojení k doméně udělejte na každém virtuálním počítači tyto věci:
 
-1. [Připojte se k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
+1. [Připojte se k virtuálnímu počítači](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
 2. Na virtuálním počítači spusťte **Ovládací panely** a vyberte možnost **systém**.
 3. Vyberte **název počítače**, vyberte **změnit nastavení**a pak zvolte **změnit...**
 4. Vyberte **doména** a pak zadejte doménu služby Active Directory ve virtuální síti.
@@ -93,7 +93,7 @@ Registrace virtuálních počítačů do fondu hostitelů virtuálních klientů
 
 Pokud chcete zaregistrovat agenty virtuálních počítačů s Windows, udělejte na každém virtuálním počítači následující:
 
-1. [Připojte se k virtuálnímu počítači](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
+1. [Připojte se k virtuálnímu počítači](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
 2. Stáhněte a nainstalujte agenta virtuálního počítače s Windows.
    - Stáhněte si [agenta pro virtuální počítače s Windows](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv).
    - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**, vyberte **odblokování**a pak vyberte **OK**. To umožní vašemu systému důvěřovat instalačnímu programu.
@@ -104,7 +104,7 @@ Pokud chcete zaregistrovat agenty virtuálních počítačů s Windows, udělejt
    - Spusťte instalační program.
 
 >[!IMPORTANT]
->Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](../security-center/security-center-just-in-time.md).
 
 ## <a name="next-steps"></a>Další kroky
 

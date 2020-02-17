@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: c41a433ee19969546e1db2aa583c72ed166b7ebf
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: eee8fdf515861b43b58d5af111930e2224c9a60a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607461"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367232"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>Diagnostika problémů s výkonem grafiky na vzdálené ploše
 
@@ -69,9 +69,9 @@ Vysoká hodnota pro kterýkoli z vynechaných snímků za sekundu znamená, že 
 
 Pokud čítače výstupních snímků/sekund odpovídají vstupním rámcům/druhému počítadla, přesto si stále všimnete neobvyklého zpoždění nebo zastavení, Průměrná doba kódování může být příčinou. Kódování je synchronní proces, který probíhá na serveru ve scénáři s jednou relací (vGPU) a na virtuálním počítači ve scénáři s více relacemi. Průměrná doba kódování by měla být pod 33 MS. Pokud je průměrná doba kódování pod 33 MS, ale stále dochází k problémům s výkonem, může se jednat o problém s aplikací nebo operačním systémem, který používáte.
 
-Další informace o diagnostikování problémů souvisejících s aplikacemi najdete v tématu [čítače výkonu zpoždění vstupu uživatele](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters).
+Další informace o diagnostikování problémů souvisejících s aplikacemi najdete v tématu [čítače výkonu zpoždění vstupu uživatele](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/).
 
-Vzhledem k tomu, že protokol RDP podporuje průměrnou dobu kódování 33 MS, podporuje vstupní snímkový kmitočet až 30 snímků za sekundu. Počítejte s tím, že maximální podporovaná frekvence snímků je 33 MS. V mnoha případech bude frekvence snímků, kterou uživatel zjistil, nižší, a to v závislosti na tom, jak často je rámec k protokolu RDP od zdroje k dispozici. Například úlohy, jako je sledování videa, vyžadují snímkovou rychlost 30 snímků za sekundu, ale méně výpočetně náročné úlohy, jako je například zřídka se upravování dokumentu. Výsledkem je mnohem nižší hodnota vstupních snímků za sekundu bez snížení úrovně v uživatelském kvalita zkušeností.
+Vzhledem k tomu, že protokol RDP podporuje průměrnou dobu kódování 33 MS, podporuje vstupní snímkový kmitočet až 30 snímků za sekundu. Počítejte s tím, že maximální podporovaná frekvence snímků je 33 MS. V mnoha případech bude frekvence snímků, kterou uživatel zjistil, nižší, a to v závislosti na tom, jak často je rámec k protokolu RDP od zdroje k dispozici. Například úlohy, jako je sledování videa, vyžadují snímkovou rychlost 30 snímků za sekundu, ale méně výpočetní úlohy, jako je například zřídka se upravování dokumentu, mají mnohem nižší hodnotu pro vstupní snímky/s bez snížení kvality uživatelského prostředí.
 
 ### <a name="addressing-poor-frame-quality"></a>Řešení špatné kvality snímků
 
@@ -101,6 +101,6 @@ Pokud prostředky klienta způsobují kritické body, vyzkoušejte jeden z násl
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o vytvoření virtuálního počítače Azure optimalizovaného grafickým PROCESORem najdete v tématu [Konfigurace akcelerace GPU (Graphics Processing Unit) pro prostředí virtuálních počítačů s Windows](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu).
-- Přehled postupů řešení potíží a eskalace najdete v tématu [řešení potíží – přehled, názory a podpora](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview).
-- Další informace o této službě najdete v tématu [prostředí pro stolní počítače s Windows](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
+- Informace o vytvoření virtuálního počítače Azure optimalizovaného grafickým PROCESORem najdete v tématu [Konfigurace akcelerace GPU (Graphics Processing Unit) pro prostředí virtuálních počítačů s Windows](configure-vm-gpu.md).
+- Přehled postupů řešení potíží a eskalace najdete v tématu [řešení potíží – přehled, názory a podpora](troubleshoot-set-up-overview.md).
+- Další informace o této službě najdete v tématu [prostředí pro stolní počítače s Windows](environment-setup.md).

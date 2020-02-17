@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4e2e25189b35f7d17ef42536aa7cd86ac92ec82
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5ff7cda6a593b1517ad711a56f73d29a14345baf
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185867"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368015"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -1698,7 +1698,7 @@ Umožňuje tato aktualizace můžete zjistit, které zásady jsou vyhodnocovány
 **Kategorie služby:** Zpravodajský  
 **Schopnost produktu:** Monitorování & vytváření sestav
  
-Díky zavedení pole **klientské aplikace** v protokolech aktivit přihlašování zákazníci teď můžou zobrazit uživatele, kteří používají starší verze ověřování. Zákazníci budou mít k těmto informacím přístup pomocí přihlašovacích údajů MS Graph API nebo prostřednictvím protokolů aktivit přihlašování na portálu Azure AD, kde můžete pomocí ovládacího prvku **klientská aplikace** filtrovat starší verze ověřování. Přečtěte si další podrobnosti naleznete v dokumentaci.
+Díky zavedení pole **klientské aplikace** v protokolech aktivit přihlašování zákazníci teď můžou zobrazit uživatele, kteří používají starší verze ověřování. Zákazníci budou mít přístup k těmto informacím pomocí Microsoft Graph rozhraní API pro přihlášení nebo prostřednictvím protokolů aktivit přihlašování na portálu Azure AD, kde můžete pomocí ovládacího prvku **klientská aplikace** filtrovat starší verze ověřování. Přečtěte si další podrobnosti naleznete v dokumentaci.
 
 ---
 
@@ -2092,7 +2092,7 @@ Kontrola přístupu skupiny a aplikace je teď obecně dostupná jako součást 
 **Kategorie služby:** Zpravodajský  
 **Schopnost produktu:** Monitorování & vytváření sestav
  
-Azure protokoly aktivit AD, které obsahuje přihlášení a protokoly auditu, jsou teď dostupné prostřednictvím MS Graphu. Představili jsme dva koncové body prostřednictvím MS Graphu k těmto protokolům získat přístup. Pokud chcete začít, podívejte se na naše [dokumenty](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) pro programový přístup k rozhraním API pro generování sestav Azure AD. 
+Protokoly aktivit Azure AD, které obsahují protokoly přihlášení a auditu, jsou teď dostupné prostřednictvím rozhraní Microsoft Graph API. Pro přístup k těmto protokolům jsme nastavili dva koncové body prostřednictvím rozhraní Microsoft Graph API. Pokud chcete začít, podívejte se na naše [dokumenty](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) pro programový přístup k rozhraním API pro generování sestav Azure AD. 
 
 ---
  
@@ -2596,7 +2596,7 @@ Další informace o tom, jak tyto sestavy používat, najdete v tématu [Azure A
 **Kategorie služby:** Zpravodajský  
 **Schopnost produktu:** Monitorování & vytváření sestav
 
-Jako součást zpětné vazby zákazníků bez oprávnění správce rolí má přístup k aktivit Azure AD povolit protokoly, zavedli jsme možnost pro uživatele, kteří jsou v roli "Čtenáře sestav" přístup k přihlášení a auditování aktivit v rámci webu Azure portal, jakož i pomocí našich rozhraní Graph API. 
+V rámci zpětné vazby od zákazníků po povolení přístupu k protokolům aktivit Azure AD uživatelům, kteří jsou v roli Čtenář sestav, povolili uživatelům, kteří jsou v rámci této služby, přístup k přihlašovacím a auditovým aktivitám v rámci Azure Portal a používání Microsoft Graph API. 
 
 Další informace o tom, jak tyto sestavy používat, najdete v tématu [Azure Active Directory vytváření sestav](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal). 
 

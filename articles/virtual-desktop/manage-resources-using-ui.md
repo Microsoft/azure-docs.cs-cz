@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 187c92f8e5b0148577f204f68077c58ea9ab9a3d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 032062dd200781b6d1f5abeb2391ae75c4c43e6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887355"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367306"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Nasazení nástroje pro správu pomocí šablony Azure Resource Manager
 
@@ -36,7 +36,7 @@ Před nasazením nástroje pro správu budete potřebovat uživatele Azure Activ
 
 - Máte zakázanou službu Azure Multi-Factor Authentication (MFA)
 - Mít oprávnění k vytváření prostředků ve vašem předplatném Azure
-- Mít oprávnění k vytvoření aplikace služby Azure AD. Pomocí těchto kroků zkontrolujete, jestli má uživatel požadovaná oprávnění, podle pokynů v tématu [požadovaná oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+- Mít oprávnění k vytvoření aplikace služby Azure AD. Pomocí těchto kroků zkontrolujete, jestli má uživatel požadovaná oprávnění, podle pokynů v tématu [požadovaná oprávnění](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
 Po nasazení a konfiguraci nástroje pro správu doporučujeme, abyste požádali uživatele, aby spustil uživatelské rozhraní pro správu, aby se zajistilo, že všechno funguje. Uživatel, který spouští uživatelské rozhraní pro správu, musí mít přiřazení role, které jim umožní zobrazit nebo upravit klienta virtuální plochy Windows.
 

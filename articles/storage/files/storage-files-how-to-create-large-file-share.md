@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d94237d2cfeb814b2e15d43c9f8863a76c0bcd11
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 94a376c01229de20e6a1264da3f29532becefa8a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190677"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368656"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Povolit a vytvořit velké sdílené složky souborů
 
@@ -43,7 +43,7 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
     ![Snímek obrazovky znázorňující postup vytvoření skupiny prostředků na portálu](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. Dále zadejte název účtu úložiště. Název musí být v rámci Azure jedinečný. Název musí mít délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.
-1. Vyberte umístění účtu úložiště a ujistěte se, že se jedná [o jednu z oblastí podporovaných pro velké sdílené složky](storage-files-planning.md#regional-availability).
+1. Vyberte umístění účtu úložiště a ujistěte se, že se jedná [o jednu z podporovaných replikací pro velké sdílené složky](storage-files-planning.md#regional-availability).
 1. Nastavte replikaci buď na **místně redundantní úložiště** , nebo na **redundantní úložiště v zóně**.
 1. Ponechte tato pole na jejich výchozích hodnotách:
 

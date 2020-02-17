@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: helohr
-ms.openlocfilehash: 0db1ffe46165d91148b6980abbf89d03340e646e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8065be841b18fa0f8706a3bea3739ee2cb013323
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486687"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367583"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>Konfigurace typu přiřazení fondu hostitelů osobní plochy
 
@@ -27,7 +27,7 @@ Automatické přiřazování je výchozí typ přiřazení pro nové fondy hosti
 
 Pokud chcete automaticky přiřazovat uživatele, nejdřív je přiřaďte do fondu hostitelů osobní plochy, aby viděli plochu v informačním kanálu. Když přiřazený uživatel spustí plochu v informačním kanálu, vyžádá dostupného hostitele relace, pokud ještě nejsou připojeni ke fondu hostitelů, který dokončí proces přiřazení.
 
-Než začnete, [Stáhněte a importujte modul PowerShell virtuálního klienta Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , pokud jste to ještě neudělali. 
+Než začnete, [Stáhněte a importujte modul PowerShell virtuálního klienta Windows](/powershell/windows-virtual-desktop/overview/) , pokud jste to ještě neudělali. 
 
 > [!NOTE]
 > Než budete postupovat podle těchto pokynů, ujistěte se, že jste nainstalovali modul PowerShellu pro virtuální počítače s Windows verze 1.0.1534.2001 nebo novější.

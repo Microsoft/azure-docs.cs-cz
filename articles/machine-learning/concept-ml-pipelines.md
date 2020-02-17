@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 840c5cf061658f3210fec963b82b490185b92a4b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905731"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366214"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co jsou kanály Azure Machine Learning?
 
 Azure Machine Learning kanály umožňují vytvářet pracovní postupy v projektech machine learningu. Tyto pracovní postupy mají několik výhod: 
 
-+ Jednoduchost
++ Administrativ
 + Rychlost
 + Opakovatelnost
 + Flexibilita
@@ -31,7 +31,7 @@ Azure Machine Learning kanály umožňují vytvářet pracovní postupy v projek
 
 Tyto výhody se stanou významnou, jakmile se váš projekt Machine Learning pohybuje mimo rámec čistého průzkumu a iterace. Můžou být užitečné i jednoduché kanály s jedním krokem. Projekty strojového učení jsou často ve složitém stavu a může být pro zajištění přesného splnění jednoho pracovního postupu jednoduchý proces.
 
-Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline.md).
+Naučte se, jak [vytvořit první kanál](how-to-create-your-first-pipeline.md).
 
 ![Kanály strojového učení v Azure Machine Learning](./media/concept-ml-pipelines/pipeline-flow.png)
 
@@ -40,11 +40,12 @@ Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline
 
 Cloud Azure nabízí několik dalších kanálů, z nichž každý má jiný účel. V následující tabulce jsou uvedeny různé kanály a jejich použití pro:
 
-| Kanál | Výsledek | Kanonický kanál |
-| ---- | ---- | ---- |
-| Azure Machine Learning kanály | Definuje opakovaně použitelné pracovní postupy strojového učení, které se dají použít jako šablona pro scénáře vašeho strojového učení. | Model dat > |
-| [Kanály Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Seskupuje, transformuje a řídí aktivity, které jsou potřebné k provedení úkolu.  | Data-> data |
-| [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) | Průběžná integrace a doručování vaší aplikace na libovolnou platformu/libovolný Cloud  | > App/Service pro kód |
+| Scénář | Primární osoba | Nabídka Azure | Nabídka OSS | Kanonický kanál | Silné stránky | 
+| -------- | --------------- | -------------- | ------------ | -------------- | --------- | 
+| Orchestrace modelů (Machine Learning) | Odborník přes data | Azure Machine Learning kanály | Kanály Kubeflow | Model dat > | Distribuce, ukládání do mezipaměti, kód – první, opakované použití | 
+| Orchestrace dat (PREP pro data) | Inženýr dat | [Kanály Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Postup Apache | Data-> data | Pohyb silného typu. Aktivity zaměřené na data. |
+| Kód & orchestrace aplikace (CI/CD) | Vývojář aplikace/OPS | [Kanály Azure DevOps](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + Model – > App/Service | Největší podpora otevřených a Flexibile aktivit, fronty schvalování, fáze s vyuzavíráním | 
+
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Co můžou kanály Azure ML dělat?
 
@@ -52,7 +53,7 @@ Kanál Azure Machine Learning je nezávisle spustitelný pracovní postup dokon�
 
 + Přípravu dat, včetně importu, ověřování a čištění, transformace a nedefinované transformace, normalizace a fázování
 + Konfiguraci trénování, včetně parametrizace argumentů, cest k souborům a konfigurací protokolování a generování sestav
-+ Efektivní a opakované školení, které může zahrnovat určení specifických podmnožin dat, různých hardwarových výpočetních prostředků, distribuovaného zpracování a sledování průběhu
++ Školení a ověřování efektivně a opakovaně. Efektivita může pocházet z určení specifických podmnožin dat, různých výpočetních prostředků hardwaru, distribuovaného zpracování a sledování průběhu.
 + Nasazení, včetně správy verzí, škálování, zřizování a řízení přístupu 
 
 Nezávislé kroky umožňují, aby více pracovníků dat pracovalo na stejném kanálu současně bez překročení výpočetních prostředků. Jednotlivé kroky také usnadňují používání různých výpočetních typů/velikostí pro každý krok.
@@ -69,7 +70,7 @@ V krátkém případě je možné s kanály považovat všechny komplexní úkol
 
 Kanál Azure ML provádí kompletní logický pracovní postup s uspořádaným pořadím kroků. Každý krok je diskrétní akce zpracování. Kanály běží v kontextu Azure Machine Learning [experimentu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py).
 
-V zcela rané fázi projektu ML je dobré mít jeden Jupyter Poznámkový blok nebo skript Pythonu, který provádí veškerou práci v pracovním prostoru a konfiguraci prostředků Azure, přípravu dat, konfiguraci, školení a ověřování. Ale stejně jako funkce a třídy se rychle přestanou preferovat na jeden imperativný blok kódu, pracovní postupy ML rychle budou vhodnější pro monolitické Poznámkový blok nebo skript. 
+V počátečních fázích projektu ML je dobré mít jeden Jupyter Poznámkový blok nebo skript Pythonu, který provádí veškerou práci v pracovním prostoru a konfiguraci prostředků Azure, přípravu dat, konfiguraci, školení a ověřování. Ale stejně jako funkce a třídy se rychle přestanou preferovat na jeden imperativný blok kódu, pracovní postupy ML rychle budou vhodnější pro monolitické Poznámkový blok nebo skript. 
 
 Na základě úloh modularizing ML podporují kanály pro počítačovou vědu, že by měla komponenta dělat (jenom jednu věc). Modularita je jasně zásadní pro úspěch projektu při programování v týmech, ale i při samotné práci, a to i v případě, že se jedná o samostatný projekt, který zahrnuje samostatné úkoly, z nichž každý má dobrou složitost Mezi úlohy patří: Konfigurace pracovního prostoru a přístup k datům, příprava dat, definice modelu a konfigurace a nasazení. Zatímco výstupy jednoho nebo více úloh tvoří vstupy do jiné, jsou přesné podrobnosti o implementaci jakékoli úlohy v nejbližším případě nepodstatných odčítání v dalším. V nejhorším případě výpočetní stav jedné úlohy může způsobit chybu v jiném. 
 
@@ -197,10 +198,10 @@ Mezi klíčové výhody použití kanálů pro pracovní postupy machine learnin
 
 |Hlavní výhodou|Popis|
 |:-------:|-----------|
-|**Bezobslužné&nbsp;běží**|Naplánujte kroky paralelně nebo v rámci spolehlivého a bezobslužného zpracování. Příprava a modelování dat může mít poslední dny nebo týdny a kanály vám umožní soustředit se na další úlohy, když je proces spuštěný. |
+|**Bezobslužná&nbsp;spuštění**|Naplánujte kroky paralelně nebo v rámci spolehlivého a bezobslužného zpracování. Příprava a modelování dat může mít poslední dny nebo týdny a kanály vám umožní soustředit se na další úlohy, když je proces spuštěný. |
 |**Heterogenní COMPUTE**|Používejte více kanálů, které jsou spolehlivě koordinované napříč heterogenními a škálovatelnými výpočetními prostředky a umístěními úložiště. Využijte k efektivnímu využití dostupných výpočetních prostředků spuštěním jednotlivých kroků kanálu na různých výpočetních cílech, jako je HDInsight, GPU pro datové vědy GPU a datacihly.|
-|**Opětovné použití**|Vytvořte šablony kanálu pro konkrétní scénáře, jako je například přeškolení a dávkové vyhodnocování. Triggery publikovaných kanálů z externích systémů prostřednictvím jednoduchých volání REST.|
-|**Sledování a správy verzí**|Namísto ručního sledování dat a cest výsledků při iteraci můžete použít sadu SDK pro kanály k explicitnímu pojmenování a používání datových zdrojů, vstupů a výstupů. Skripty a data můžete spravovat i samostatně pro zvýšení produktivity.|
+|**Možnost opakovaného využití**|Vytvořte šablony kanálu pro konkrétní scénáře, jako je například přeškolení a dávkové vyhodnocování. Triggery publikovaných kanálů z externích systémů prostřednictvím jednoduchých volání REST.|
+|**Sledování a správa verzí**|Namísto ručního sledování dat a cest výsledků při iteraci můžete použít sadu SDK pro kanály k explicitnímu pojmenování a používání datových zdrojů, vstupů a výstupů. Skripty a data můžete spravovat i samostatně pro zvýšení produktivity.|
 | **Modularitu** | Oddělení otázek a izolace změn umožňuje softwaru vyvíjet se rychleji s vyšší kvalitou. | 
 |**Prostřednictvím**|Kanály umožňují odborníkům přes data spolupracovat ve všech oblastech procesu návrhu strojového učení, přičemž můžou souběžně fungovat na postupech kanálu.|
 
@@ -223,7 +224,7 @@ Příklady kódu pro vytváření, připojování a používání modulů v Azur
 Kanály Azure ML jsou výkonné zařízení, které začíná dodávat hodnoty ve fázích předčasného vývoje. Hodnota se zvyšuje při zvětšování týmu a projektu. Tento článek vysvětluje, jak se zadává kanály s Azure Machine Learning Python SDK a orchestruje se v Azure. Viděli jste nějaký základní zdrojový kód a zavedli jsme několik `PipelineStep` tříd, které jsou k dispozici. Měli byste mít představu o tom, kdy používat kanály Azure ML a jak je Azure spouští. 
 
 
-+ Zjistěte, jak [vytvořit svůj první kanál](how-to-create-your-first-pipeline.md).
++ Naučte se, jak [vytvořit první kanál](how-to-create-your-first-pipeline.md).
 
 + Naučte se [spouštět Batch předpovědi pro velké objemy dat](tutorial-pipeline-batch-scoring-classification.md ).
 

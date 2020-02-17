@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 23d032a2496e975c7e6ceafb61691c2cb1216218
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5b07416f785ad263b4dbb9a0d249cb6022c01b13
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605749"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367468"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
 
@@ -28,7 +28,7 @@ Před spuštěním šablony Azure Resource Manager se ujistěte, že znáte nás
 - Vaše přihlašovací údaje k doméně
 - Přihlašovací údaje k virtuálnímu počítači s Windows
 
-Když vytvoříte fond hostitelů virtuálních počítačů s Windows pomocí šablony Azure Resource Manager, můžete vytvořit virtuální počítač z Galerie Azure, spravované bitové kopie nebo nespravované image. Další informace o tom, jak vytvořit image virtuálních počítačů, najdete v tématu [Příprava virtuálního pevného disku (VHD) Windows nebo VHDX pro nahrání do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) a [Vytvoření spravované image zobecněného virtuálního počítače v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).
+Když vytvoříte fond hostitelů virtuálních počítačů s Windows pomocí šablony Azure Resource Manager, můžete vytvořit virtuální počítač z Galerie Azure, spravované bitové kopie nebo nespravované image. Další informace o tom, jak vytvořit image virtuálních počítačů, najdete v tématu [Příprava virtuálního pevného disku (VHD) Windows nebo VHDX pro nahrání do Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) a [Vytvoření spravované image zobecněného virtuálního počítače v Azure](../virtual-machines/windows/capture-image-resource.md).
 
 ## <a name="run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool"></a>Spusťte šablonu Azure Resource Manager pro zřízení nového fondu hostitelů.
 
@@ -52,7 +52,7 @@ Pokyny týkající se parametrů, které byste měli zadat pro váš scénář, 
 
 Po dokončení šablony Azure Resource Manager GitHubu přiřaďte uživatelský přístup před zahájením testování klientů s úplnými relacemi na virtuálních počítačích.
 
-Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali.
+Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali.
 
 Pokud chcete přiřadit uživatele do skupiny desktopové aplikace, otevřete okno PowerShellu a spuštěním této rutiny se přihlaste k prostředí virtuálních počítačů s Windows:
 
@@ -71,4 +71,4 @@ Hlavní název uživatele (UPN) by měl odpovídat identitě uživatele v Azure 
 Po dokončení těchto kroků se uživatelé přidaní do skupiny desktopových aplikací můžou přihlásit k virtuální ploše Windows pomocí podporovaných klientů vzdálené plochy a zobrazit prostředek pro plochu relace.
 
 >[!IMPORTANT]
->Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](../security-center/security-center-just-in-time.md).

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
-ms.openlocfilehash: b5fa5fc13c8ce0c98c04d2451f3a50e89b986c16
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8c062c1ce8e938ac426a10c41161eb7e28f3dcba
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676452"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368771"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>Kurz: nastavení výstrah služby
 
@@ -27,9 +27,9 @@ Další informace o Azure Service Health najdete v dokumentaci ke [službě Azur
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Kurz: vytvoření tenanta ve virtuální ploše Windows](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
-- [Kurz: vytvoření instančních objektů a přiřazení rolí pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
-- [Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
+- [Kurz: vytvoření tenanta ve virtuální ploše Windows](tenant-setup-azure-active-directory.md)
+- [Kurz: vytvoření instančních objektů a přiřazení rolí pomocí PowerShellu](create-service-principal-role-powershell.md)
+- [Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace](create-host-pools-azure-marketplace.md)
 
 ## <a name="create-service-alerts"></a>Vytvoření výstrah služby
 
@@ -48,7 +48,7 @@ Doporučujeme vytvořit výstrahy služby pro následující typy událostí sta
 
 Konfigurace výstrah služby:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 2. Vyberte **Service Health.**
 3. Pomocí pokynů v tématu [vytvoření výstrah protokolu aktivit v oznámeních služby](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) nastavte výstrahy a oznámení.
 

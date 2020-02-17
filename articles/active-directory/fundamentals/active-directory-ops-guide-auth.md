@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76511888"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368058"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenční příručka operací správy ověřování Azure Active Directory
 
@@ -105,7 +105,7 @@ Pokud chcete lépe porozumět možnostem ověřování, přečtěte si téma [Vo
 
 ### <a name="programmatic-usage-of-credentials"></a>Programové použití přihlašovacích údajů
 
-Skripty Azure AD využívající PowerShell nebo aplikace, které používají Graph API vyžadují zabezpečené ověřování. Nízká Správa přihlašovacích údajů provádí tyto skripty a nástroje, které zvyšují riziko krádeže přihlašovacích údajů. Pokud používáte skripty nebo aplikace, které spoléhají na pevně kódovaná hesla nebo výzvy k zadání hesla, měli byste nejdřív zkontrolovat hesla v konfiguračních souborech nebo ve zdrojovém kódu, pak tyto závislosti nahradit a používat spravované identity Azure, integrované ověřování systému Windows nebo [certifikáty](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) , kdykoli to bude možné. U aplikací, kde předchozí řešení nemůžete použít, zvažte použití [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
+Skripty Azure AD s využitím PowerShellu nebo aplikací, které používají rozhraní Microsoft Graph API, vyžadují zabezpečené ověřování. Nízká Správa přihlašovacích údajů provádí tyto skripty a nástroje, které zvyšují riziko krádeže přihlašovacích údajů. Pokud používáte skripty nebo aplikace, které spoléhají na pevně kódovaná hesla nebo výzvy k zadání hesla, měli byste nejdřív zkontrolovat hesla v konfiguračních souborech nebo ve zdrojovém kódu, pak tyto závislosti nahradit a používat spravované identity Azure, integrované ověřování systému Windows nebo [certifikáty](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) , kdykoli to bude možné. U aplikací, kde předchozí řešení nemůžete použít, zvažte použití [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).
 
 Pokud zjistíte, že existují instanční objekty s přihlašovacími údaji hesla a nejste si jistí, jak jsou přihlašovací údaje hesla zabezpečené skripty nebo aplikacemi, obraťte se na vlastníka aplikace, aby lépe pochopil vzorce používání.
 
@@ -141,7 +141,7 @@ Pokud spravujete zařízení s MDM nebo Microsoft Intune, ale v zásadách podm�
 #### <a name="device-trust-access-policies-recommended-reading"></a>Doporučené čtení zásad přístupu důvěryhodnosti zařízení
 
 - [Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
-- [Konfigurace přístupu k identity a zařízení](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Konfigurace identit a přístupu k zařízením](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>Windows Hello pro firmy
 
@@ -205,9 +205,9 @@ S [pojmenovanými umístěními](https://docs.microsoft.com/azure/active-directo
 
 Podle priority použijte následující tabulku k vyhledání doporučeného řešení, které nejlépe vyhovuje potřebám vaší organizace:
 
-| **Priorita** | **Scénář** | **Doporučení** |
+| **Priorita** | **Scénář** | **Základě** |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| 1\. místo | Pokud používáte KOSMETICE nebo PTA a nebyla definována pojmenovaná umístění | Definování pojmenovaných umístění pro zlepšení detekce rizikových událostí |
+| 1 | Pokud používáte KOSMETICE nebo PTA a nebyla definována pojmenovaná umístění | Definování pojmenovaných umístění pro zlepšení detekce rizikových událostí |
 | 2 | Pokud jste federované a nepoužíváte deklaraci "insideCorporateNetwork" a pojmenovaná umístění nebyla definována. | Definování pojmenovaných umístění pro zlepšení detekce rizikových událostí |
 | 3 | Pokud v zásadách podmíněného přístupu nepoužíváte pojmenovaná umístění a v zásadách podmíněného přístupu není žádné řízení rizik nebo zařízení | Nakonfigurujte zásady podmíněného přístupu tak, aby zahrnovaly pojmenovaná umístění. |
 | 4 | Pokud jste federované a nedefinovali jste deklaraci identity "insideCorporateNetwork" a pojmenovaná umístění nebyla definována. | Definování pojmenovaných umístění pro zlepšení detekce rizikových událostí |
@@ -256,7 +256,7 @@ Podmíněný přístup je důležitým nástrojem pro zlepšení stav zabezpeče
 #### <a name="conditional-access-recommended-reading"></a>Doporučené čtení pro podmíněný přístup
 
 - [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/best-practices)
-- [Konfigurace přístupu k identity a zařízení](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [Konfigurace identit a přístupu k zařízením](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Odkaz na nastavení Azure Active Directory podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference)
 - [Společné zásady podmíněného přístupu](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-policy-common)
 
@@ -305,7 +305,7 @@ Níže najdete seznam aplikací s oprávněními, které byste mohli chtít poř
 | Office 365 Exchange Online | EA. AccessAsUser. All |
 | | EWS. AccessAsUser. All |
 | | Pošta. čtení |
-| Microsoft Graph | Pošta. čtení |
+| Rozhraní API pro Microsoft Graph | Pošta. čtení |
 | | Pošta. Read. Shared |
 | | Pošta. v zápisu |
 
@@ -313,15 +313,14 @@ Níže najdete seznam aplikací s oprávněními, které byste mohli chtít poř
 
 |Prostředek | Oprávnění |
 | :- | :- |
-| Graf Azure AD | Directory. AccessAsUser. All |
-| Microsoft Graph | Directory. AccessAsUser. All |
-| Azure REST API | user_impersonation |
+| Rozhraní API pro Microsoft Graph| Directory. AccessAsUser. All |
+| REST API Azure | user_impersonation |
 
 Chcete-li se tomuto scénáři vyhnout, měli byste se podívat, jak zjistit a opravit [nedovolené granty souhlasu v sadě Office 365](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) k identifikaci a opravě aplikací s nedovolenými granty nebo aplikacemi, které mají více grantů, než je nutné. Dále [odeberte samoobslužné služby zcela](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) a [vytvořte postupy zásad správného řízení](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Nakonec Naplánujte pravidelné kontroly oprávnění aplikací a odeberte je, když je nepotřebujete.
 
 #### <a name="consent-grants-recommended-reading"></a>Souhlas udělí doporučené čtení
 
-- [Oprávnění pro Microsoft Graph](https://docs.microsoft.com/graph/permissions-reference)
+- [Microsoft Graph oprávnění API](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Nastavení uživatelů a skupin
 

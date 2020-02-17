@@ -1,6 +1,6 @@
 ---
-title: Použití rozhraní API MS Graph ke konfiguraci zřizování-Azure Active Directory | Microsoft Docs
-description: Potřebujete nastavit zřizování pro víc instancí aplikace? Naučte se, jak ušetřit čas pomocí rozhraní API MS graphu pro automatizaci konfigurace automatického zřizování.
+title: Použití rozhraní API pro Microsoft Graph ke konfiguraci zřizování-Azure Active Directory | Microsoft Docs
+description: Potřebujete nastavit zřizování pro víc instancí aplikace? Naučte se, jak ušetřit čas pomocí Microsoft Graph rozhraní API k automatizaci konfigurace automatického zřizování.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f19f6e4add9bd677b05e09c627532a7a48354ce
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f5780227274e8f9574fcdfcd388d75e333cc3d42
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77067185"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367822"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurace zřizování pomocí rozhraní API Microsoft Graph
 
-Azure Portal je pohodlný způsob, jak nakonfigurovat zřizování pro jednotlivé aplikace po jednom. Pokud ale vytváříte několik (nebo dokonce stovky) instancí aplikace, může být snazší automatizovat vytváření a konfiguraci aplikací pomocí Microsoft Graph rozhraní API. Tento článek popisuje, jak automatizovat konfiguraci zřizování prostřednictvím rozhraní API. Tato metoda se běžně používá pro aplikace, jako je [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
+Azure Portal je pohodlný způsob, jak nakonfigurovat zřizování pro jednotlivé aplikace po jednom. Pokud ale vytváříte několik (nebo dokonce stovky) instancí aplikace, je možné jednodušší automatizaci vytváření a konfigurace aplikací pomocí rozhraní API pro Microsoft Graph. Tento článek popisuje, jak automatizovat konfiguraci zřizování prostřednictvím rozhraní API. Tato metoda se běžně používá pro aplikace, jako je [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
 
 **Přehled kroků pro automatizaci konfigurace zřizování pomocí rozhraní Microsoft Graph API**
 

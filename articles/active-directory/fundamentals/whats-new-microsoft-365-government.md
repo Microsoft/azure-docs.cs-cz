@@ -1,5 +1,5 @@
 ---
-title: Co je nového pro Azure AD v Microsoft 365 státní správy? | Dokumenty Microsoft
+title: Co je nového pro Azure AD v Microsoft 365 státní správy? | Microsoft Docs
 description: Přečtěte si o některých změnách Azure Active Directory (Azure AD) v instanci cloudu Microsoft 365 státní správy, což vám může ovlivnit.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75e7c6809810a78c81348bd4bbeb808e103f453f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bc6a478bebef0733847ef4744b722ed9e61a6c7f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805287"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367944"
 ---
 # <a name="whats-new-for-azure-active-directory-in-microsoft-365-government"></a>Novinky Azure Active Directory v Microsoft 365 státní správě
 
@@ -55,7 +55,6 @@ V následující tabulce jsou uvedeny koncové body pro všechny zákazníky:
 |------|------------------|
 | Portály |Microsoft Azure Government: https://portal.azure.us<p>Microsoft 365ská vláda – velká a rychlé v oblasti RSZ: https://portal.office365.us<p>Microsoft 365 státní správa – DoD: https://portal.apps.mil |
 | Koncový bod Azure Active Directory autority | https://login.microsoftonline.us |
-| Azure Active Directory Graph API | https://graph.windows.net |
 | Rozhraní API pro Microsoft Graph pro Microsoft 365 státní správu – RSZ – vysoká | https://graph.microsoft.us |
 | Microsoft Graph API pro Microsoft 365 vládu – DoD | https://dod-graph.microsoft.us |
 | Koncové body služby Azure Government Services | Podrobnosti najdete v tématu [Azure Government příručka pro vývojáře](https://docs.microsoft.com/azure/azure-government/documentation-government-developer-guide) . |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 7feb62bb3e38452a441c505107569457d7c90a3f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60ff8769192191ba112008e7baee23740147dfe9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233449"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Kurz: Azure Active Directory integrace se službou SharePoint v místním prostředí
 
@@ -32,7 +32,7 @@ Integrace služby SharePoint v místním prostředí se službou Azure AD poskyt
 * Můžete spravovat své účty na jediném místě – na webu Azure portal.
 
 Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -206,7 +206,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
-    d. Klikněte na **Vytvořit**.
+    d. Klikněte na možnost **Vytvořit**.
 
 ### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Vytvoření skupiny zabezpečení Azure AD v Azure Portal
 
@@ -330,7 +330,7 @@ Uživatelé se teď můžou přihlašovat k SharePointu 2016 pomocí identit z A
 
 U hledaných hodnot není žádné ověření, což může vést k nesprávnému pravopisu nebo uživatelům omylem zvolit špatný typ deklarace identity, jako je třeba **příjmení** . To může uživatelům zabránit v úspěšném přístupu k prostředkům.
 
-Pro pomoc s tímto scénářem je open source řešení s názvem [AzureCP](https://yvand.github.io/AzureCP/) , které poskytuje vlastního zprostředkovatele deklarací identity pro SharePoint 2016. Pomocí grafu Azure AD zjistíte, co uživatelé zadávají a provedou ověřování. Další informace najdete na adrese [AzureCP](https://yvand.github.io/AzureCP/).
+Pro pomoc s tímto scénářem je open source řešení s názvem [AzureCP](https://yvand.github.io/AzureCP/) , které poskytuje vlastního zprostředkovatele deklarací identity pro SharePoint 2016. Použije rozhraní Microsoft Graph API k vyřešení toho, co uživatelé zadávají a provádějí ověřování. Další informace najdete na adrese [AzureCP](https://yvand.github.io/AzureCP/).
 
 ### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Přiřaďte skupinu zabezpečení Azure AD v Azure Portal
 
@@ -367,7 +367,7 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
 Po kliknutí na dlaždici místní služby SharePoint na přístupovém panelu byste měli být automaticky přihlášeni k místnímu serveru SharePoint, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aa6bc856fc7b7de071a45f3aa11c051e36eca4f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e17e0f1f01e836a7a240100c1c0e1f015da5f00
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480109"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368149"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Doporučené postupy Azure Active Directory B2B
 Tento článek obsahuje doporučení a osvědčené postupy pro spolupráci B2B (Business-to-Business) v Azure Active Directory (Azure AD).
@@ -33,7 +33,7 @@ Tento článek obsahuje doporučení a osvědčené postupy pro spolupráci B2B 
 | Vyhovět zásadám podmíněného přístupu pro Multi-Factor Authentication (MFA) | Doporučujeme vynucovat zásady MFA u aplikací, které chcete sdílet s uživateli B2B pro partnery. Vícefaktorové ověřování se v aplikacích ve vašem tenantovi bude konzistentně uplatňovat bez ohledu na to, jestli partnerská organizace používá MFA. Podívejte se [na podmíněný přístup pro uživatele spolupráce B2B](conditional-access.md). |
 | Pokud vynucujete zásady podmíněného přístupu na základě zařízení, pomocí seznamů vyloučení povolte přístup uživatelům B2B. | Pokud jsou ve vaší organizaci povolené zásady podmíněného přístupu na základě zařízení, zablokují se zařízení uživatelů hosta B2B, protože nejsou spravovaná vaší organizací. Můžete vytvořit seznam vyloučení, který obsahuje konkrétní uživatele, aby je vyloučil ze zásad podmíněného přístupu na základě zařízení. Podívejte se [na podmíněný přístup pro uživatele spolupráce B2B](conditional-access.md). |
 | Při poskytování přímých odkazů na uživatele typu Host B2B použijte adresu URL specifickou pro tenanta. | Jako alternativu k e-mailu s pozvánkou můžete hostům poskytnout přímý odkaz na vaši aplikaci nebo portál. Tento přímý odkaz musí být specifický pro tenanta, což znamená, že musí zahrnovat ID tenanta nebo ověřenou doménu, aby se host mohla ověřit ve vašem tenantovi, kde se nachází sdílená aplikace. Podívejte [se na možnosti pro vyplacení uživatele typu Host](redemption-experience.md). |
-| Při vývoji aplikace použijte k určení uživatelského prostředí typu Host možnost UserType.  | Pokud vyvíjíte aplikaci a chcete pro uživatele klientů a uživatele typu Host poskytovat různá prostředí, použijte vlastnost UserType. Deklarace UserType není aktuálně zahrnutá v tokenu. Aplikace by měly použít Graph API k dotazování adresáře, aby uživatel získal své UserType. |
+| Při vývoji aplikace použijte k určení uživatelského prostředí typu Host možnost UserType.  | Pokud vyvíjíte aplikaci a chcete pro uživatele klientů a uživatele typu Host poskytovat různá prostředí, použijte vlastnost UserType. Deklarace UserType není aktuálně zahrnutá v tokenu. Aplikace by měly používat rozhraní Microsoft Graph API k dotazování adresáře, aby uživatel získal své UserType. |
 | Změnit vlastnost UserType *pouze* v případě, že se změní vztah uživatele k organizaci | I když je možné použít PowerShell k převedení vlastnosti UserType pro uživatele z člena na hosta (a naopak), měli byste změnit tuto vlastnost pouze v případě, že se změní vztah uživatele k vaší organizaci. Podívejte [se na vlastnosti uživatele typu Host B2B](user-properties.md).|
 
 ## <a name="next-steps"></a>Další kroky

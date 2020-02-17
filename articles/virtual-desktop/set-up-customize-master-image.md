@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
-ms.openlocfilehash: 30895af3e973fd5c9ae0de559df440f18cec1563
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 23763123ce8e92b6bb15b2b33a196ed1a1d75c9f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013148"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368794"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
@@ -22,13 +22,13 @@ V tomto článku se dozvíte, jak připravit hlavní image virtuálního pevnéh
 
 Více relací Windows 10 Enterprise je k dispozici v galerii imagí Azure. Existují dvě možnosti, jak tento obrázek přizpůsobit.
 
-První možností je zřídit virtuální počítač (VM) v Azure podle pokynů v tématu [Vytvoření virtuálního počítače ze spravované image](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-generalized-managed)a následnou přeskočení na [přípravu softwaru a instalaci](set-up-customize-master-image.md#software-preparation-and-installation).
+První možností je zřídit virtuální počítač (VM) v Azure podle pokynů v tématu [Vytvoření virtuálního počítače ze spravované image](../virtual-machines/windows/create-vm-generalized-managed.md)a následnou přeskočení na [přípravu softwaru a instalaci](set-up-customize-master-image.md#software-preparation-and-installation).
 
 Druhou možností je vytvořit image místně tak, že si stáhnete image, zřídíte virtuální počítač s technologií Hyper-V a přizpůsobíte ji tak, aby vyhovovala vašim potřebám, které jsme si pokryli v následující části.
 
 ### <a name="local-image-creation"></a>Vytvoření místní image
 
-Po stažení Image do místního umístění otevřete **Správce technologie Hyper-V** a vytvořte virtuální počítač se zkopírovaným virtuálním pevným diskem. V následujících pokynech je jednoduchá verze, ale můžete najít podrobnější pokyny v tématu [Vytvoření virtuálního počítače v Hyper-V](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v).
+Po stažení Image do místního umístění otevřete **Správce technologie Hyper-V** a vytvořte virtuální počítač se zkopírovaným virtuálním pevným diskem. V následujících pokynech je jednoduchá verze, ale můžete najít podrobnější pokyny v tématu [Vytvoření virtuálního počítače v Hyper-V](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v/).
 
 Vytvoření virtuálního počítače se zkopírovaným virtuálním pevným diskem:
 
@@ -50,7 +50,7 @@ Set-VM -Name <VMNAME> -CheckpointType Disabled
 
 ### <a name="fixed-disk"></a>Pevný disk
 
-Pokud vytvoříte virtuální počítač z existujícího virtuálního pevného disku, vytvoří se ve výchozím nastavení dynamický disk. Můžete ji změnit na pevný disk výběrem možnosti **Upravit disk...** , jak je znázorněno na následujícím obrázku. Podrobnější pokyny najdete v tématu [Příprava virtuálního pevného disku (VHDX) Windows pro nahrání do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image).
+Pokud vytvoříte virtuální počítač z existujícího virtuálního pevného disku, vytvoří se ve výchozím nastavení dynamický disk. Můžete ji změnit na pevný disk výběrem možnosti **Upravit disk...** , jak je znázorněno na následujícím obrázku. Podrobnější pokyny najdete v tématu [Příprava virtuálního pevného disku (VHDX) Windows pro nahrání do Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md).
 
 ![Snímek obrazovky s možností upravit disk](media/35772414b5a0f81f06f54065561d1414.png)
 
@@ -70,7 +70,7 @@ Pokud uživatelé potřebují přístup k určitým aplikacím LOB, doporučujem
 
 ### <a name="set-up-user-profile-container-fslogix"></a>Nastavení kontejneru profilu uživatele (FSLogix)
 
-Pokud chcete zahrnout kontejner FSLogix jako součást image, postupujte podle pokynů v tématu [vytvoření kontejneru profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). V [tomto rychlém](https://docs.microsoft.com/fslogix/configure-cloud-cache-tutorial)startu můžete testovat funkčnost kontejneru FSLogix.
+Pokud chcete zahrnout kontejner FSLogix jako součást image, postupujte podle pokynů v tématu [vytvoření kontejneru profilu pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md#configure-the-fslogix-profile-container). V [tomto rychlém](/fslogix/configure-cloud-cache-tutorial/)startu můžete testovat funkčnost kontejneru FSLogix.
 
 ### <a name="configure-windows-defender"></a>Konfigurace programu Windows Defender
 
@@ -78,9 +78,9 @@ Pokud je ve virtuálním počítači nakonfigurovaný Windows Defender, ujistět
 
 Tato konfigurace odstraní jenom kontrolu souborů VHD a VHDX během přílohy, ale neovlivní kontrolu v reálném čase.
 
-Podrobnější pokyny týkající se konfigurace Windows Defenderu na Windows serveru najdete v tématu [konfigurace vyloučení antivirové ochrany v programu Windows Defender na Windows serveru](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus).
+Podrobnější pokyny týkající se konfigurace Windows Defenderu na Windows serveru najdete v tématu [konfigurace vyloučení antivirové ochrany v programu Windows Defender na Windows serveru](/windows/security/threat-protection/windows-defender-antivirus/configure-server-exclusions-windows-defender-antivirus/).
 
-Další informace o tom, jak nakonfigurovat Windows Defender pro vyloučení určitých souborů ze skenování, najdete v tématu [Konfigurace a ověření vyloučení na základě přípony souboru a umístění složky](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus).
+Další informace o tom, jak nakonfigurovat Windows Defender pro vyloučení určitých souborů ze skenování, najdete v tématu [Konfigurace a ověření vyloučení na základě přípony souboru a umístění složky](/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus/).
 
 ### <a name="disable-automatic-updates"></a>Zakázat automatické aktualizace
 
@@ -137,9 +137,9 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 Tento článek nepopisuje, jak nakonfigurovat jazyk a regionální podporu. Další informace najdete v následujících článcích:
 
-- [Přidání jazyků do imagí Windows](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
-- [Funkce na vyžádání](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
-- [Funkce jazyků a oblastí na vyžádání (francouzské verze)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
+- [Přidání jazyků do imagí Windows](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
+- [Funkce na vyžádání](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
+- [Funkce jazyků a oblastí na vyžádání (francouzské verze)](/windows-hardware/manufacture/desktop/features-on-demand-language-fod/)
 
 ### <a name="other-applications-and-registry-configuration"></a>Další aplikace a konfigurace registru
 
@@ -174,7 +174,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 ## <a name="prepare-the-image-for-upload-to-azure"></a>Příprava image pro nahrání do Azure
 
-Po dokončení konfigurace a instalace všech aplikací postupujte podle pokynů v tématu [Příprava virtuálního pevného disku (VHD) Windows nebo VHDX k nahrání do Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) pro přípravu image.
+Po dokončení konfigurace a instalace všech aplikací postupujte podle pokynů v tématu [Příprava virtuálního pevného disku (VHD) Windows nebo VHDX k nahrání do Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) pro přípravu image.
 
 Po přípravě image pro nahrání se ujistěte, že virtuální počítač zůstane ve stavu vypnuto nebo zrušeno.
 

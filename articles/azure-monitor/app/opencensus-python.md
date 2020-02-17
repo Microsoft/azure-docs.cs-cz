@@ -8,25 +8,25 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 091cf26a0c18aba0925ad23e61950f8622f6080b
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b9d2bda1d3f01d2bf4bb152c0f62ade87bb61b4c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989514"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368267"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Nastavení Azure Monitor pro aplikaci v Pythonu (Preview)
 
 Azure Monitor podporuje distribuované trasování, shromažďování metrik a protokolování aplikací Pythonu prostřednictvím integrace s [OpenCensus](https://opencensus.io). Tento článek vás provede procesem nastavení OpenCensus pro Python a odeslání dat monitorování do Azure Monitor.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Instalace Pythonu Tento článek používá [Python 3.7.0](https://www.python.org/downloads/), i když starší verze budou nejspíš fungovat s menšími změnami.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Vytvoření prostředku Application Insights v Azure Monitor
 
@@ -44,7 +44,7 @@ Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování Application Insightsch dat |
    | **Umístění** | USA – východ | Umístění poblíž vaší oblasti nebo poblíž místa, kde je vaše aplikace hostována |
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Instrumentace se sadou OpenCensus Python SDK pro Azure Monitor
 
@@ -107,7 +107,7 @@ Tady jsou vývozci, kteří OpenCensus poskytují mapování na typy telemetrie,
     [SpanData(name='test', context=SpanContext(trace_id=8aa41bc469f1a705aed1bdb20c342603, span_id=None, trace_options=TraceOptions(enabled=True), tracestate=None), span_id='f3f9f9ee6db4740a', parent_span_id=None, attributes=BoundedDict({}, maxlen=32), start_time='2019-06-27T18:21:46.157732Z', end_time='2019-06-27T18:21:47.269583Z', child_span_count=0, stack_trace=None, annotations=BoundedList([], maxlen=32), message_events=BoundedList([], maxlen=128), links=BoundedList([], maxlen=32), status=None, same_process_as_parent_span=None, span_kind=0)]
     ```
 
-3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat `SpanData` k Azure Monitor. Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
+3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat `SpanData` k Azure Monitor. Předání připojovacího řetězce přímo do exportéra nebo ho můžete zadat v proměnné prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING`. Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
 
     ```python
     from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -193,7 +193,7 @@ Tady jsou vývozci, kteří OpenCensus poskytují mapování na typy telemetrie,
     Point(value=ValueLong(7), timestamp=2019-10-09 20:58:07.138614)
     ```
 
-3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat data metriky pro Azure Monitor. Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
+3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat data metriky pro Azure Monitor. Předání připojovacího řetězce přímo do exportéra nebo ho můžete zadat v proměnné prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING`. Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
 
     ```python
     from datetime import datetime
@@ -277,7 +277,7 @@ Tady jsou vývozci, kteří OpenCensus poskytují mapování na typy telemetrie,
     90
     ```
 
-3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat data protokolu pro Azure Monitor. Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
+3. I když zadáním hodnot je užitečné pro demonstrační účely, nakonec chceme vygenerovat data protokolu pro Azure Monitor. Předání připojovacího řetězce přímo do exportéra nebo ho můžete zadat v proměnné prostředí `APPLICATIONINSIGHTS_CONNECTION_STRING`. Upravte kód z předchozího kroku na základě následujícího příkladu kódu:
 
     ```python
     import logging
@@ -381,7 +381,7 @@ Podrobnější informace o používání dotazů a protokolů najdete [v tématu
 
 ## <a name="learn-more-about-opencensus-for-python"></a>Další informace o OpenCensus pro Python
 
-* [OpenCensus Python on GitHub](https://github.com/census-instrumentation/opencensus-python)
+* [OpenCensus Python na GitHubu](https://github.com/census-instrumentation/opencensus-python)
 * [Uživatelských](https://github.com/census-instrumentation/opencensus-python/blob/master/README.rst#customization)
 * [Integrace na baňce](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-flask)
 * [Integrace Django](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-django)

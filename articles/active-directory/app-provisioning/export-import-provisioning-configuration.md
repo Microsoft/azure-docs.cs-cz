@@ -1,6 +1,6 @@
 ---
-title: Exportujte nebo importujte konfiguraci zřizování pomocí Graph API | Microsoft Docs
-description: Naučte se exportovat a importovat konfiguraci zřizování pomocí Graph API.
+title: Exportujte nebo importujte konfiguraci zřizování pomocí rozhraní Microsoft Graph API | Microsoft Docs
+description: Naučte se exportovat a importovat konfiguraci zřizování pomocí rozhraní Microsoft Graph API.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -15,21 +15,21 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af699fa2201bce5627426dcdefc1b98c1d885ae5
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e2fa80726875c82cfa4b5d4cf6a14f4e0dae1871
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066613"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367797"
 ---
-# <a name="export-or-import-your-provisioning-configuration-by-using-graph-api"></a>Exportujte nebo importujte konfiguraci zřizování pomocí Graph API
+# <a name="export-or-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Export nebo import konfigurace zřizování pomocí rozhraní Microsoft Graph API
 
-Pomocí Microsoft Graph API a Graph Exploreru můžete exportovat mapování atributů zřizování uživatelů a schéma do souboru JSON a importovat ho zpátky do Azure AD. Můžete také použít kroky zaznamenané tady a vytvořit zálohu konfigurace zřizování. 
+Pomocí rozhraní Microsoft Graph API a Průzkumníka Microsoft Graph můžete exportovat mapování atributů zřizování uživatelů a schéma do souboru JSON a naimportovat ho zpátky do Azure AD. Můžete také použít kroky zaznamenané tady a vytvořit zálohu konfigurace zřizování. 
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Krok 1: načtení ID objektu zabezpečení zřizování App Service (ID objektu)
 
 1. Spusťte [Azure Portal](https://portal.azure.com)a přejděte do části vlastnosti vaší aplikace zřizování. Například pokud chcete exportovat pracovní *postup do mapování aplikace pro zřizování uživatelů služby AD* , přejděte do části vlastnosti této aplikace. 
-1. V části vlastnosti vaší aplikace pro zřizování Zkopírujte hodnotu identifikátoru GUID přidruženou k poli *ID objektu* . Tato hodnota se také označuje jako **ServicePrincipalId** vaší aplikace a bude se používat v rámci operací Graph Exploreru.
+1. V části vlastnosti vaší aplikace pro zřizování Zkopírujte hodnotu identifikátoru GUID přidruženou k poli *ID objektu* . Tato hodnota se také označuje jako **ServicePrincipalId** vaší aplikace a bude se používat v operacích v Průzkumníkovi Microsoft Graph.
 
    ![ID objektu App Service Workday](./media/export-import-provisioning-configuration/wd_export_01.png)
 
@@ -38,7 +38,7 @@ Pomocí Microsoft Graph API a Graph Exploreru můžete exportovat mapování atr
 1. Spustit [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)
 1. Klikněte na tlačítko Přihlásit se pomocí Microsoft a přihlaste se pomocí účtu globálního správce Azure AD nebo přihlašovacích údajů správce aplikací.
 
-    ![Přihlášení do grafu](./media/export-import-provisioning-configuration/wd_export_02.png)
+    ![Přihlášení Microsoft Graph](./media/export-import-provisioning-configuration/wd_export_02.png)
 
 1. Po úspěšném přihlášení se zobrazí podrobnosti o uživatelském účtu v levém podokně.
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acc458c59858196ea110d0ff2030ccd7f7b6fc58
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: feedce112110b1c944e3cb0af79e76fe1bda4778
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121736"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365631"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
 
@@ -93,7 +93,7 @@ Tato část se zabývá následujícími aspekty plánování:
 * [Integrace s více doménami služby Active Directory](#integrating-with-multiple-active-directory-domains)
 * [Plánování mapování a transformací atributů uživatele z Workday na službu Active Directory](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
@@ -345,7 +345,7 @@ V tomto kroku udělíte oprávnění "zabezpečení obchodních procesů" pro da
 
 1. Do vyhledávacího pole zadejte Activate a potom klikněte na odkaz **aktivovat nedokončené změny zásad zabezpečení**.
 
-    ![Aktivovat](./media/workday-inbound-tutorial/wd_isu_16.png "Activate")
+    ![Aktivovat](./media/workday-inbound-tutorial/wd_isu_16.png "Aktivovat")
 
 1. Zahajte úkol aktivovat změny zásad zabezpečení zadáním komentáře pro účely auditování a pak klikněte na tlačítko **OK**.
 1. Dokončete úkol na další obrazovce zaškrtnutím políčka **Potvrdit**a potom klikněte na tlačítko **OK**.
@@ -801,7 +801,7 @@ Ne, řešení neudržuje mezipaměť uživatelských profilů. Služba zřizová
 
 #### <a name="does-the-solution-support-assigning-on-premises-ad-groups-to-the-user"></a>Je řešení přiřazování místních skupin AD k uživateli?
 
-Tato funkce se momentálně nepodporuje. Doporučený postup je nasadit PowerShellový skript, který se dotazuje na koncový bod Azure AD Graph API pro data protokolu auditu a použije ho ke spuštění scénářů, jako je přiřazení skupiny. Tento skript PowerShellu se dá připojit ke Plánovači úloh a nasadit do stejného pole, ve kterém je spuštěný agent zřizování.  
+Tato funkce se momentálně nepodporuje. Doporučený postup je nasadit skript PowerShellu, který se dotáže na koncový bod rozhraní API Microsoft Graph pro [data protokolu auditu](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-beta) a použít ho ke spuštění scénářů, jako je přiřazení skupiny. Tento skript PowerShellu se dá připojit ke Plánovači úloh a nasadit do stejného pole, ve kterém je spuštěný agent zřizování.  
 
 #### <a name="which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles"></a>Která rozhraní API Workday používá řešení k dotazování a aktualizaci profilů pracovních procesů Workday?
 
@@ -1114,7 +1114,7 @@ Když kliknete na některý ze záznamů protokolu auditu, otevře se stránka *
 
   Chcete-li zjistit záznamy protokolu zřizovacího agenta, které odpovídají této operaci importu služby AD, otevřete protokoly Windows Prohlížeč událostí a použijte příkaz **Najít...** možnost nabídky k vyhledání položek protokolu, které obsahují ID a spojovací hodnotu atributu vlastnosti (v tomto případě *21023*).
 
-  ![Najít](media/workday-inbound-tutorial/wd_event_viewer_02.png)
+  ![Hledání](media/workday-inbound-tutorial/wd_event_viewer_02.png)
 
   Vyhledejte položku s *ID události = 9*, které vám poskytne filtr hledání LDAP používaný agentem k načtení účtu AD. Můžete ověřit, zda se jedná o správný vyhledávací filtr pro načtení jedinečných uživatelských záznamů.
 

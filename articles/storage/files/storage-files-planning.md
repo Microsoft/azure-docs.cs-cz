@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 203bf584711fbfcfd0baeee8f5e4c7f70d96823b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157209"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368617"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -177,8 +177,6 @@ Tato část se vztahuje pouze na standardní sdílené složky. Všechny sdílen
 Standardní sdílené složky s 100 TiB limit kapacity jsou k dispozici globálně ve všech oblastech Azure –
 
 - LRS: všechny oblasti kromě jar (Jižní Afrika – sever a Jižní Afrika – západ)
-   - Východní USA a Západní Evropa: jsou podporovány všechny nové účty. Malý počet existujících účtů nedokončil proces upgradu. Můžete zjistit, jestli vaše stávající účty úložiště dokončily proces upgradu tím, že se pokusí [Povolit velké sdílené složky souborů](storage-files-how-to-create-large-file-share.md).
-
 - ZRS: všechny oblasti kromě Japonska – východ, Severní Evropa, Jižní Afrika – sever.
 - GRS/GZRS: není podporováno.
 

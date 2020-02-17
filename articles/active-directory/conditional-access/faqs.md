@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: baa44481c4641f69ead5335298316c837062d2c0
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 6842338bd27e4bea3436f0b249380ab773d60de6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186053"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368084"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory Nejčastější dotazy týkající se podmíněného přístupu
 
@@ -40,7 +40,7 @@ Zásada podmíněného přístupu nastavuje požadavky pro přístup ke službě
 
 Zásady podmíněného přístupu se vztahují na všechny uživatelské účty. To zahrnuje uživatelské účty, které se používají jako účty služeb. Účet služby, který běží bez obsluhy, často nesplňuje požadavky zásad podmíněného přístupu. Například může být vyžadováno Multi-Factor Authentication. Účty služeb se dají vyloučit ze zásady pomocí nastavení správy zásad podmíněného přístupu. 
 
-## <a name="are-graph-apis-available-for-configuring-conditional-access-policies"></a>Jsou k dispozici rozhraní Graph API pro konfiguraci zásad podmíněného přístupu?
+## <a name="are-microsoft-graph-apis-available-for-configuring-conditional-access-policies"></a>Jsou k dispozici Microsoft Graph rozhraní API pro konfiguraci zásad podmíněného přístupu?
 
 V současné době ne. 
 

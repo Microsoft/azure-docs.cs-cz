@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: fd8be170f0f4388ee711881dde16923b9547f21f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 98d1a9c3dd86972990ae896d156be6c6aedfff77
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606918"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367400"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Kurz: Vytvoření fondu hostitelů pro ověření aktualizací služby
 
@@ -20,12 +20,12 @@ Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních poč
 
 Pokud chcete zajistit, aby vaše aplikace pracovaly s nejnovějšími aktualizacemi, fond hostitelů ověření by měl být podobně jako fondy hostitelů ve vašem produkčním prostředí. Uživatelé by se měli často připojovat k fondu ověřování pro ověřování stejně jako k produkčnímu fondu hostitelů. Pokud máte ve fondu hostitelů automatizované testování, měli byste zahrnout automatizované testování do fondu ověřovacích hostitelů.
 
-Problémy v hostitelském fondu ověřování můžete ladit buď pomocí [diagnostické funkce](diagnostics-role-service.md) , nebo článků pro [řešení potíží s virtuálním počítačem s Windows](https://docs.microsoft.com/Azure/virtual-desktop/troubleshoot-set-up-overview).
+Problémy v hostitelském fondu ověřování můžete ladit buď pomocí [diagnostické funkce](diagnostics-role-service.md) , nebo článků pro [řešení potíží s virtuálním počítačem s Windows](troubleshoot-set-up-overview.md).
 
 >[!NOTE]
 > Pro otestování všech budoucích aktualizací doporučujeme opustit fond hostitelů ověřování na místě.
 
-Než začnete, [Stáhněte a importujte modul PowerShell virtuálního klienta Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview), pokud jste to ještě neudělali. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
+Než začnete, [Stáhněte a importujte modul PowerShell virtuálního klienta Windows](/powershell/windows-virtual-desktop/overview/), pokud jste to ještě neudělali. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

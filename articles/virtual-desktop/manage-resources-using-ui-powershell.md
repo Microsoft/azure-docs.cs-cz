@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 2a7d10f41e343f21e16b10f4bf7c79670824ec2c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: e55641457e1ed27928e6bf380701b646b672cae8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77115903"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368828"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Nasazení nástroje pro správu pomocí PowerShellu
 
@@ -36,7 +36,7 @@ Následující prohlížeče jsou kompatibilní s nástrojem pro správu:
 Před nasazením nástroje pro správu budete potřebovat uživatele Azure Active Directory (Azure AD) k vytvoření registrace aplikace a nasazení uživatelského rozhraní pro správu. Tento uživatel musí:
 
 - Mít oprávnění k vytváření prostředků ve vašem předplatném Azure
-- Mít oprávnění k vytvoření aplikace služby Azure AD. Pomocí těchto kroků zkontrolujete, jestli má uživatel požadovaná oprávnění, podle pokynů v tématu [požadovaná oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+- Mít oprávnění k vytvoření aplikace služby Azure AD. Pomocí těchto kroků zkontrolujete, jestli má uživatel požadovaná oprávnění, podle pokynů v tématu [požadovaná oprávnění](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
 Aby bylo možné úspěšně nasadit a nakonfigurovat nástroj pro správu, musíte nejprve stáhnout následující skripty PowerShellu z [úložiště GitHub šablon RDS](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy/scripts) a uložit je do stejné složky na místním počítači.
 

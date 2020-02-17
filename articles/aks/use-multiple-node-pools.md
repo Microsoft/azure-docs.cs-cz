@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 02/14/2020
 ms.author: mlearned
-ms.openlocfilehash: bbfb65c31bf6fd46cc18c9eee66086afbbff1d5f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 20cef402a81ef348d4492daf05e6b16a8d9f709f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157970"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365179"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -453,6 +453,61 @@ Events:
 
 V uzlech v *gpunodepool*se dají naplánovat jenom lusky, které mají tuto chuti. Jakékoli jiné pod by se naplánovaly ve fondu uzlů *nodepool1* . Pokud vytvoříte další fondy uzlů, můžete použít další příchuti a tolerování k omezení, které z nich je možné naplánovat na tyto prostředky uzlu.
 
+## <a name="specify-a-tag-for-a-node-pool"></a>Zadejte značku pro fond uzlů.
+
+V clusteru AKS můžete použít značku Azure na fondy uzlů. Značky použité pro fond uzlů se aplikují na každý uzel v rámci fondu uzlů a ukládají se prostřednictvím upgradů. Značky jsou také aplikovány na nové uzly přidané do fondu uzlů během operací horizontálního navýšení kapacity. Přidání značky může pomáhat s úkoly, jako je sledování zásad nebo odhad nákladů.
+
+> [!IMPORTANT]
+> Chcete-li použít značky fondu uzlů, potřebujete rozšíření *AKS-Preview* CLI verze 0.4.29 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte, jestli nejsou dostupné aktualizace, pomocí příkazu [AZ Extension Update][az-extension-update] :
+> 
+> ```azurecli-interactive
+> # Install the aks-preview extension
+> az extension add --name aks-preview
+> 
+> # Update the extension to make sure you have the latest version installed
+> az extension update --name aks-preview
+> ```
+
+Vytvořte fond uzlů pomocí modulu [Přidat fond uzlů AZ AKS][az-aks-nodepool-add]. Zadejte název *tagnodepool* a pomocí parametru `--tag` určete *oddělení = IT* a *CostCenter = 9999* pro značky.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name tagnodepool \
+    --node-count 1 \
+    --tags dept=IT costcenter=9999 \
+    --no-wait
+```
+
+> [!NOTE]
+> Parametr `--tags` můžete použít také při použití příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] a při vytváření clusteru. Při vytváření clusteru použije parametr `--tags` značku na počáteční fond uzlů vytvořený s clusterem. Všechny názvy značek musí vyhovovat omezením v [použití značek k uspořádání prostředků Azure][tag-limitation]. Aktualizace fondu uzlů s parametrem `--tags` aktualizuje všechny existující hodnoty značek a připojí všechny nové značky. Například pokud váš fond uzlů měl *oddělení = IT* a *CostCenter = 9999* pro značky a Vy jste ho aktualizovali pomocí *Team = dev* a *CostCenter = 111* for Tags, budete nodepool mít *oddělení = IT*, *CostCenter = 111*a *Team = dev* for Tags.
+
+Následující příklad výstupu příkazu [AZ AKS nodepool list][az-aks-nodepool-list] ukazuje, že *taggednodepool* *vytváří* uzly se zadanou *značkou*:
+
+```console
+$ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
+
+[
+  {
+    ...
+    "count": 1,
+    ...
+    "name": "tagnodepool",
+    "orchestratorVersion": "1.15.7",
+    ...
+    "provisioningState": "Creating",
+    ...
+    "tags": {
+      "dept": "IT",
+      "costcenter": "9999"
+    },
+    ...
+  },
+ ...
+]
+```
+
 ## <a name="manage-node-pools-using-a-resource-manager-template"></a>Správa fondů uzlů pomocí šablony Správce prostředků
 
 Když použijete šablonu Azure Resource Manager k vytváření a správě prostředků, můžete obvykle aktualizovat nastavení v šabloně a znovu nasadit, aby se prostředek aktualizoval. U fondů uzlů v AKS nelze počáteční profil fondu uzlů aktualizovat po vytvoření clusteru AKS. Toto chování znamená, že nemůžete aktualizovat existující šablonu Správce prostředků, provést změnu v fondech uzlů a znovu nasadit. Místo toho je nutné vytvořit samostatnou šablonu Správce prostředků, která aktualizuje pouze fondy uzlů pro existující cluster AKS.
@@ -603,21 +658,25 @@ Informace o vytváření a používání fondů uzlů kontejnerů Windows server
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
 
 <!-- INTERNAL LINKS -->
-[quotas-skus-regions]: quotas-skus-regions.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-group-create]: /cli/azure/group#az-group-create
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-nodepool-add]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-list
-[az-aks-nodepool-upgrade]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-delete
-[vm-sizes]: ../virtual-machines/linux/sizes.md
-[taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
-[gpu-cluster]: gpu-cluster.md
-[az-group-delete]: /cli/azure/group#az-group-delete
-[install-azure-cli]: /cli/azure/install-azure-cli
-[supported-versions]: supported-kubernetes-versions.md
-[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
 [aks-windows]: windows-container-cli.md
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-delete
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-group-create]: /cli/azure/group#az-group-create
+[az-group-delete]: /cli/azure/group#az-group-delete
 [az-group-deployment-create]: /cli/azure/group/deployment#az-group-deployment-create
+[gpu-cluster]: gpu-cluster.md
+[install-azure-cli]: /cli/azure/install-azure-cli
+[operator-best-practices-advanced-scheduler]: operator-best-practices-advanced-scheduler.md
+[quotas-skus-regions]: quotas-skus-regions.md
+[supported-versions]: supported-kubernetes-versions.md
+[tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
+[taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
+[vm-sizes]: ../virtual-machines/linux/sizes.md

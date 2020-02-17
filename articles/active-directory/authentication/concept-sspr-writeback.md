@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c92048d2fce4a098da1e707ec8f7d75479d563f1
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: aa66299753ab11dcad280361cb5fb6f0c31ef242
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161575"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368176"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 
@@ -158,13 +158,13 @@ Hesla se zapisují zpátky do všech těchto situací:
 Hesla se *nezapisují zpátky* v následujících situacích:
 
 * **Nepodporované operace koncového uživatele**
-   * Libovolný koncový uživatel resetuje vlastní heslo pomocí prostředí PowerShell verze 1, verze 2 nebo Azure AD Graph API
+   * Libovolný koncový uživatel resetuje vlastní heslo pomocí prostředí PowerShell verze 1, verze 2 nebo rozhraní Microsoft Graph API.
 * **Nepodporované operace Správce**
-   * Jakékoli resetování hesla koncového uživatele iniciované správcem z PowerShellu verze 1, verze 2 nebo Azure AD Graph API
+   * Jakékoli resetování hesla koncového uživatele iniciované správcem z PowerShellu verze 1, verze 2 nebo rozhraní Microsoft Graph API
    * Jakékoli resetování hesla koncových uživatelů iniciované správcem z [centra pro správu Microsoft 365](https://admin.microsoft.com)
 
 > [!WARNING]
-> Pomocí zaškrtávacího políčka Uživatel musí změnit heslo při příštím přihlášení v místních nástrojích pro správu služby Active Directory, jako jsou uživatelé a počítače služby Active Directory, nebo Centrum správy služby Active Directory se podporuje jako funkce verze Preview Azure AD Connect. Další informace najdete v článku o [implementaci synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](../hybrid/how-to-connect-password-hash-synchronization.md#public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon).
+> Pomocí zaškrtávacího políčka Uživatel musí změnit heslo při příštím přihlášení v místních nástrojích pro správu služby Active Directory, jako jsou uživatelé a počítače služby Active Directory, nebo Centrum správy služby Active Directory se podporuje jako funkce verze Preview Azure AD Connect. Další informace najdete v článku o [implementaci synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](../hybrid/how-to-connect-password-hash-synchronization.md).
 
 ## <a name="next-steps"></a>Další kroky
 

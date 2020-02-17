@@ -3,17 +3,17 @@ title: Migrace z úložiště Prem HDFS do Azure Storage s využitím Azure Data
 description: Migrace dat z místního úložiště HDFS do Azure Storage
 author: normesta
 ms.service: storage
-ms.date: 11/19/2019
+ms.date: 02/14/2019
 ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: e82c325ad5ad91e6b4503949e6534b054023f1f2
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 990b4afa6bdb63e626be0272553aea408afb864f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990959"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368675"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migrace z úložiště Prem HDFS do Azure Storage s využitím Azure Data Box
 
@@ -25,19 +25,19 @@ Tento článek vám pomůže dokončit tyto úlohy:
 > * Připravte se na migraci dat.
 > * Zkopírujte data do Data Box nebo Data Box Heavyho zařízení.
 > * Dodejte zařízení zpět společnosti Microsoft.
-> * Přesuňte data na Data Lake Storage Gen2.
+> * Použít přístupová oprávnění k souborům a adresářům (jenom Data Lake Storage Gen2)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení migrace potřebujete tyto věci.
 
-* Dva účty úložiště; ten, který má povolen hierarchický obor názvů, a druhý.
+* Účet služby Azure Storage.
 
 * Místní cluster Hadoop, který obsahuje vaše zdrojová data.
 
 * [Zařízení Azure Data box](https://azure.microsoft.com/services/storage/databox/).
 
-  * [Seřazení data box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) nebo [data box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). Při objednávání zařízení si nezapomeňte zvolit účet úložiště, na kterém **nejsou** povolené hierarchické obory názvů. Důvodem je to, že zařízení Data Box ještě nepodporují přímé přijímání do Azure Data Lake Storage Gen2. Budete se muset zkopírovat do účtu úložiště a pak provést druhou kopii účtu ADLS Gen2. Pokyny k tomuto postupu jsou uvedené v následujících krocích.
+  * [Seřazení data box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) nebo [data box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). 
 
   * Připojte [data box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) nebo [data box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) k místní síti kabelem.
 
@@ -173,36 +173,14 @@ Pomocí těchto kroků Připravte a odešlete zařízení Data Box společnosti 
 
     * Data Box Heavy zařízení najdete v tématu věnovaném [Dodávání data box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up).
 
-5. Jakmile Microsoft přijme vaše zařízení, připojí se k síti datového centra a data se nahrají do zadaného účtu úložiště (s nepovolenými hierarchickými obory názvů), když jste umístili pořadí zařízení. Ověřte soubory kusovníku, že všechna vaše data jsou nahraná do Azure. Tato data teď můžete přesunout do účtu úložiště Data Lake Storage Gen2.
+5. Jakmile Microsoft přijme vaše zařízení, připojí se k síti datového centra a data se nahrají do účtu úložiště, který jste zadali při umístění zařízení do objednávky. Ověřte soubory kusovníku, že všechna vaše data jsou nahraná do Azure. 
 
-## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>Přesunout data do Azure Data Lake Storage Gen2
+## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>Použít přístupová oprávnění k souborům a adresářům (jenom Data Lake Storage Gen2)
 
-Data už máte ve svém účtu Azure Storage. Teď budete kopírovat data do svého účtu úložiště Azure Data Lake a použít přístupová oprávnění k souborům a adresářům.
+Data už máte ve svém účtu Azure Storage. Teď budete používat přístupová oprávnění k souborům a adresářům.
 
 > [!NOTE]
-> Tento krok je nutný, pokud používáte Azure Data Lake Storage Gen2 jako úložiště dat. Pokud používáte pouze účet Blob Storage bez hierarchického oboru názvů jako úložiště dat, můžete tuto část přeskočit.
-
-### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>Kopírovat data na účet Azure Data Lake Storage Gen 2
-
-Data můžete kopírovat pomocí Azure Data Factory nebo pomocí clusteru Hadoop založeného na Azure.
-
-* Pokud chcete použít Azure Data Factory, [přejeďte data na adls Gen2](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2)v tématu Azure Data Factory. Ujistěte se, že jako zdroj určíte **Azure Blob Storage** .
-
-* Pokud chcete použít cluster Hadoop založený na Azure, spusťte tento příkaz DistCp:
-
-    ```bash
-    hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
-    ```
-
-    * Nahraďte zástupné symboly `<source_account>` a `<dest_account>` názvy zdrojového a cílového účtu úložiště.
-
-    * Nahraďte zástupné symboly `<source_container>` a `<dest_container>` názvy zdrojového a cílového kontejneru.
-
-    * Nahraďte zástupné symboly `<source_path>` a `<dest_path>` cestami zdrojového a cílového adresáře.
-
-    * Zástupný text `<source_account_key>` nahraďte přístupovým klíčem účtu úložiště, který obsahuje data.
-
-    Tento příkaz zkopíruje data i metadata z vašeho účtu úložiště do svého účtu služby Data Lake Storage Gen2 Storage.
+> Tento krok je nutný jenom v případě, že jako úložiště dat používáte Azure Data Lake Storage Gen2. Pokud používáte pouze účet Blob Storage bez hierarchického oboru názvů jako úložiště dat, můžete tuto část přeskočit.
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Vytvoření instančního objektu pro účet Azure Data Lake Storage Gen2
 

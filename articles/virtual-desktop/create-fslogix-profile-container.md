@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
-ms.openlocfilehash: 1e26d61e0b1ec50e7a3831970af1fd8fad7fed99
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 4c5b31c54bf4926caaa1bd793229bdfbb22af2a2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483653"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368910"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files
 
@@ -32,19 +32,19 @@ Pokyny v této příručce jsou určené konkrétně pro uživatele s virtuáln�
 >[!NOTE]
 >Pokud hledáte srovnávací materiál o různých možnostech úložiště kontejneru FSLogix v Azure, přečtěte si téma [Možnosti úložiště pro kontejnery profilů FSLogix](store-fslogix-profile.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moct vytvořit kontejner profilu FSLogix pro fond hostitelů, musíte:
 
 - Nastavení a konfigurace virtuálního počítače s Windows
 - Zřízení fondu hostitelů virtuálních počítačů s Windows
-- [Povolení předplatného Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)
+- [Povolení předplatného Azure NetApp Files](../azure-netapp-files/azure-netapp-files-register.md)
 
 ## <a name="set-up-your-azure-netapp-files-account"></a>Nastavení účtu Azure NetApp Files
 
 Abyste mohli začít, musíte nastavit účet Azure NetApp Files.
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). Ujistěte se, že váš účet má oprávnění přispěvatele nebo správce.
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com). Ujistěte se, že váš účet má oprávnění přispěvatele nebo správce.
 
 2. Vyberte **ikonu Azure Cloud Shell** napravo od panelu hledání a otevřete Azure Cloud Shell.
 

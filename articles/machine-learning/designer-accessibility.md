@@ -1,5 +1,5 @@
 ---
-title: Použití funkcí usnadnění v Návrháři
+title: Použití funkcí usnadnění v Návrháři (Preview)
 titleSuffix: Azure Machine Learning
 description: Přečtěte si o funkcích, které jsou k dispozici v návrháři, klávesových zkratek a obrazovkách čtečky
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d5c8047fea8e9081de08b582c537711714ea463
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314228"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366195"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Použití klávesnice k použití návrháře Azure Machine Learning
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Použití klávesnice k použití návrháře Azure Machine Learning (Preview)
 
 Naučte se používat čtečku klávesnice a obrazovky k používání návrháře Azure Machine Learning. Seznam klávesových zkratek, které fungují všude v Azure Portal, najdete v tématu [klávesové zkratky v Azure Portal](../azure-portal/azure-portal-keyboard-shortcuts.md)
 
@@ -24,7 +24,7 @@ Tento pracovní postup byl testován pomocí programu [Narrator](https://support
 
 ## <a name="navigate-the-pipeline-graph"></a>Navigace v grafu kanálu
 
-Graf kanálu je uspořádaný jako seznam seznamů. Seznam modulů nejvyšší úrovně obsahuje celý modul v kanálu. Každá položka v seznamu modul obsahuje seznam připojení, který popisuje všechna jeho připojení. 
+Graf kanálu je uspořádaný jako vnořený seznam. Vnější seznam je seznam modulů, který popisuje všechny moduly v grafu kanálu. Vnitřní seznam je seznam připojení, který popisuje všechna připojení určitého modulu.  
 
 1. V seznamu modul použijte klávesu šipka k přepínání modulů.
 1. Pomocí karty otevřete seznam připojení pro cílový modul.
@@ -54,7 +54,7 @@ Připojení modulu k jinému modulu:
 
 | Stisknutí kláves | Popis |
 |-|-|
-| Ctrl+F6 | Přepnout fokus mezi plátnem a stromem modulu |
+| CTRL + F6 | Přepnout fokus mezi plátnem a stromem modulu |
 | CTRL + F1   | Při zaměření na uzel ve stromu modulů otevřít informační kartu |
 | CTRL + SHIFT + H | Otevřete pomocníka připojení, pokud se fokus nachází na uzlu. |
 | CTRL + SHIFT + E | Otevřete vlastnosti modulu, když je fokus na uzlu. |
@@ -66,9 +66,9 @@ Použijte následující klávesové zkratky s přístupovým klíčem. Další 
 
 | Stisknutí kláves | Akce |
 |-|-|
-| Přístupový klíč + R | Spuštění |
+| Přístupový klíč + R | Spusťte |
 | Přístupový klíč + P | Publikování |
-| Přístupová klávesa + C | Klon |
+| Přístupová klávesa + C | Klonování |
 | Přístupová klávesa + D | Nasazení |
 | Přístupový klíč + I | Vytvořit nebo aktualizovat kanál odvození |
 | Přístupový klíč + B | Vytvořit nebo aktualizovat kanál odvození dávky |

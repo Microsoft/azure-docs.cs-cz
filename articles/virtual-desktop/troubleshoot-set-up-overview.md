@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 02/07/2020
 ms.author: helohr
-ms.openlocfilehash: dc4e4e271ac7108f4c29c82646e9849b9a5cd929
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 730d12625b134f411096b4b49641b79efb1a0d26
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110779"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368742"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Přehled řešení potíží, zpětná vazba a podpora
 
@@ -24,7 +24,7 @@ Navštivte [technickou komunitu pro virtuální počítače s Windows](https://t
 
 ## <a name="escalation-tracks"></a>Cvičení eskalace
 
-Pomocí následující tabulky můžete identifikovat a vyřešit problémy, se kterými se můžete setkat při nastavování prostředí klienta pomocí klienta vzdálené plochy. Po nastavení vašeho tenanta můžete využít naši novou [službu diagnostiky](https://docs.microsoft.com/azure/virtual-desktop/diagnostics-role-service) k identifikaci problémů pro běžné scénáře.
+Pomocí následující tabulky můžete identifikovat a vyřešit problémy, se kterými se můžete setkat při nastavování prostředí klienta pomocí klienta vzdálené plochy. Po nastavení vašeho tenanta můžete využít naši novou [službu diagnostiky](diagnostics-role-service.md) k identifikaci problémů pro běžné scénáře.
 
 >[!NOTE]
 > Máme Fórum odborné komunity, které můžete navštívit a diskutovat o problémech s produktovým týmem a aktivními členy komunity. Pokud chcete začít diskuzi, navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) .
@@ -38,7 +38,7 @@ Pomocí následující tabulky můžete identifikovat a vyřešit problémy, se 
 | Vytvoření virtuálního počítače fondu hostitelů relace, když se nepoužívají šablony Azure Resource Manager s virtuálním počítačem s Windows | [Otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/)a pak pro tuto službu vyberte **virtuální počítač s Windows** . <br> <br> Problémy s Azure Resource Manager šablonami, které jsou k dispozici s virtuálním počítačem s Windows, najdete v části Vytvoření tenanta virtuálních počítačů s Windows v tématu vytváření [fondů klientů a fondů hostitelů](troubleshoot-set-up-issues.md). |
 | Správa prostředí hostitele relace virtuálních počítačů s Windows z Azure Portal    | [Otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/). <br> <br> Problémy se správou při používání PowerShellu služby Vzdálená plocha/prostředí Windows Virtual Desktop PowerShell najdete v tématu virtuální plocha [Windows PowerShell](troubleshoot-powershell.md) nebo [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/), vyberte **virtuální plochu Windows** pro tuto službu, vyberte **Konfigurace a Správa** pro typ problému a pak vyberte **problémy s konfigurací tenanta pomocí PowerShellu** pro problémový podtyp. |
 | Správa konfigurace virtuálních klientských počítačů s Windows vázaných na fondy hostitelů a skupiny aplikací (skupiny aplikací)      | Podívejte se na téma [PowerShell virtuální plochy Windows](troubleshoot-powershell.md)nebo [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/), vyberte **virtuální plochu Windows** pro tuto službu a potom vyberte vhodný typ problému.|
-| Nasazení a Správa kontejnerů profilů FSLogix | Přečtěte si [příručku Poradce při potížích s produkty FSLogix](https://docs.microsoft.com/fslogix/fslogix-trouble-shooting-ht) . Pokud se problém nevyřeší, [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/), vyberte **virtuální plochu Windows** pro tuto službu, pro typ problému vyberte **FSLogix** a pak vyberte příslušný podtyp problému. |
+| Nasazení a Správa kontejnerů profilů FSLogix | Přečtěte si [příručku Poradce při potížích s produkty FSLogix](/fslogix/fslogix-trouble-shooting-ht/) . Pokud se problém nevyřeší, [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/), vyberte **virtuální plochu Windows** pro tuto službu, pro typ problému vyberte **FSLogix** a pak vyberte příslušný podtyp problému. |
 | Selhání klientů vzdálené plochy při spuštění                                                 | Podívejte [se na téma Poradce při potížích s klientem vzdálené plochy](troubleshoot-client.md) a v případě, že problém nevyřeší, [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/), vyberte **virtuální plochu Windows** pro tuto službu a pak jako typ problému vyberte **Klienti vzdálené plochy** .  <br> <br> Pokud se jedná o problém v síti, uživatelé musí kontaktovat svého správce sítě. |
 | Připojeno, ale bez kanálu                                                                 | Řešení potíží pomocí nástroje se [připojuje, ale nic se nezobrazuje (bez informačního kanálu)](troubleshoot-service-connection.md#user-connects-but-nothing-is-displayed-no-feed) v [připojeních služby Virtual Desktop systému Windows](troubleshoot-service-connection.md). <br> <br> Pokud byli vaši uživatelé přiřazeni ke skupině aplikací, [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/), vyberte **virtuální plochu Windows** pro tuto službu a pak jako typ problému vyberte **Klienti vzdálené plochy** . |
 | Podávat potíže se zjišťováním v důsledku sítě                                            | Uživatelé musí kontaktovat svého správce sítě. |

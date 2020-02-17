@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 0e04b075259ed1d003df4a03686d46b1adf694d3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c907052f10fa7d1cfd1ff79e981fdccef874ee5
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606865"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367335"
 ---
 # <a name="identify-and-diagnose-issues"></a>Identifikace a diagnostika problémů
 
@@ -24,7 +24,7 @@ Virtuální plocha Windows nabízí diagnostické funkce, které správci umož�
   
 Připojení, která nedosáhnou virtuálního klienta Windows, se nezobrazí ve výsledcích diagnostiky, protože samotná služba role diagnostiky je součástí virtuálního klienta Windows. Problémy s připojením k virtuálnímu počítači s Windows se můžou vyskytnout, když koncový uživatel dochází k problémům se síťovým připojením.
 
-Pokud jste to ještě neudělali, [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
+Pokud jste to ještě neudělali, [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -143,7 +143,7 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 |Číselný kód|Kód chyby|Navrhované řešení|
 |---|---|---|
 |3|UnauthorizedAccess|Uživatel, který se pokusil spustit rutinu prostředí PowerShell pro správu, nemá oprávnění k tomu, aby to provedl nebo nedokázal zadat své uživatelské jméno.|
-|1 000|TenantNotFound|Název tenanta, který jste zadali, se neshoduje s žádnými stávajícími klienty. Zkontrolujte název tenanta pro překlepy a zkuste to znovu.|
+|1000|TenantNotFound|Název tenanta, který jste zadali, se neshoduje s žádnými stávajícími klienty. Zkontrolujte název tenanta pro překlepy a zkuste to znovu.|
 |1006|TenantCannotBeRemovedHasSessionHostPools|Tenanta nemůžete odstranit, pokud obsahuje objekty. Nejprve odstraňte fondy hostitelů relací a potom akci opakujte.|
 |2000|HostPoolNotFound|Název fondu hostitelů, který jste zadali, se neshoduje s žádnými existujícími fondy hostitelů. Přečtěte si název fondu hostitelů pro překlepy a zkuste to znovu.|
 |2005|HostPoolCannotBeRemovedHasApplicationGroups|Fond hostitelů nemůžete odstranit, pokud obsahuje objekty. Odeberte nejprve všechny skupiny aplikací ve fondu hostitelů.|

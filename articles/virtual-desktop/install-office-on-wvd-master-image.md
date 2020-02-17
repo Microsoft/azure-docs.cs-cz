@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 059748f6f08b1c73d56aa3a127aa785f55eb63ee
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1637cb7621d6071bbce2af66f3a106770139ad4e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539133"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368815"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Instalace sady Office do hlavní image virtuálního pevného disku
 
@@ -20,20 +20,20 @@ V tomto článku se dozvíte, jak nainstalovat Office 365 ProPlus, OneDrive a da
 
 V tomto článku se předpokládá, že už jste vytvořili virtuální počítač (VM). Pokud ne, přečtěte si téma [Příprava a přizpůsobení hlavního image virtuálního pevného disku](set-up-customize-master-image.md#create-a-vm) .
 
-Tento článek také předpokládá, že máte na virtuálním počítači vyšší oprávnění, ať už je zřízené v Azure nebo ve Správci technologie Hyper-V. Pokud ne, přečtěte si téma [zvýšení přístupu ke správě všech předplatných a skupin pro správu Azure](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin).
+Tento článek také předpokládá, že máte na virtuálním počítači vyšší oprávnění, ať už je zřízené v Azure nebo ve Správci technologie Hyper-V. Pokud ne, přečtěte si téma [zvýšení přístupu ke správě všech předplatných a skupin pro správu Azure](../role-based-access-control/elevate-access-global-admin.md).
 
 >[!NOTE]
 >Tyto pokyny se týkají konfigurace specifické pro virtuální počítače s Windows, které se dají použít s existujícími procesy vaší organizace.
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>Nainstalovat Office v režimu aktivace sdíleného počítače
 
-Aktivace pomocí sdíleného počítače vám umožní nasadit Office 365 ProPlus na počítač ve vaší organizaci, ke kterému má více uživatelů přistup. Další informace o aktivaci sdíleného počítače najdete v tématu [Přehled aktivace sdíleného počítače pro Office 365 ProPlus](https://docs.microsoft.com/DeployOffice/overview-of-shared-computer-activation-for-office-365-proplus).
+Aktivace pomocí sdíleného počítače vám umožní nasadit Office 365 ProPlus na počítač ve vaší organizaci, ke kterému má více uživatelů přistup. Další informace o aktivaci sdíleného počítače najdete v tématu [Přehled aktivace sdíleného počítače pro Office 365 ProPlus](/deployoffice/overview-of-shared-computer-activation-for-office-365-proplus/).
 
 K instalaci Office použijte [Nástroj pro nasazení Office](https://www.microsoft.com/download/details.aspx?id=49117) . Windows 10 Enterprise multi-session podporuje jenom tyto verze Office:
-- Office 365 ProPlus
+- Office 365 ProPlus
 - Office 365 Business, který je součástí předplatného Microsoft 365 Business
 
-Nástroj pro nasazení Office vyžaduje konfigurační soubor XML. Postup přizpůsobení následující ukázky najdete v tématu [Možnosti konfigurace pro nástroj pro nasazení Office](https://docs.microsoft.com/deployoffice/configuration-options-for-the-office-2016-deployment-tool).
+Nástroj pro nasazení Office vyžaduje konfigurační soubor XML. Postup přizpůsobení následující ukázky najdete v tématu [Možnosti konfigurace pro nástroj pro nasazení Office](/deployoffice/configuration-options-for-the-office-2016-deployment-tool/).
 
 Tato ukázka konfiguračního souboru XML provede následující akce:
 

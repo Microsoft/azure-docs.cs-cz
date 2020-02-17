@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7791e7b50a963d2f92a2cbc460e36f9e83bb1b52
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 4ef8f1ef381c86b6eec62c96ff6dcf87522de040
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025702"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367958"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -36,7 +36,7 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 ![Bezproblémové jednotné přihlašování](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->Bezproblémové jednotné přihlašování vyžaduje, aby zařízení uživatele bylo **připojené k doméně**, ale není nutné, aby bylo zařízení [připojené k Azure AD](../active-directory-azureadjoin-overview.md).
+>Bezproblémové jednotné přihlašování vyžaduje, aby zařízení uživatele bylo jenom **připojené k doméně** , ale nepoužívá se v [připojené službě Azure AD](../active-directory-azureadjoin-overview.md) nebo [připojené k hybridní službě Azure AD] (... /active-directory-azureadjoin-overview.md). PN jednotného přihlašování k Azure AD a připojení k hybridní službě Azure AD, které se připojily, funguje na základě [primárního obnovovacího tokenu] (. /active-directory/devices/concept-primary-refresh-token.md)
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
@@ -63,12 +63,12 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ano\*|Ano|Ano|Ano\*\*\*|neuvedeno
-|Windows 8.1|Ano\*|neuvedeno|Ano|Ano\*\*\*|neuvedeno
-|Windows 8|Ano\*|neuvedeno|Ano|Ano\*\*\*|neuvedeno
-|Windows 7|Ano\*|neuvedeno|Ano|Ano\*\*\*|neuvedeno
-|Windows Server 2012 R2 nebo novější|Ano\*\*|neuvedeno|Ano|Ano\*\*\*|neuvedeno
-|Mac OS X|neuvedeno|neuvedeno|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
+|Windows 10|Ano\*|Ano|Ano|Ano\*\*\*|Není k dispozici
+|Windows 8.1|Ano\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
+|Windows 8|Ano\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
+|Windows 7|Ano\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
+|Windows Server 2012 R2 nebo novější|Ano\*\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
+|Mac OS X|Není k dispozici|Není k dispozici|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
 
 
 \*vyžaduje Internet Explorer verze 10 nebo vyšší.

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: 8e8eec8af81832992a27206efcd7b7e7051a83b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f6a8e4b9129018686aa5833a2ac260075e5627f9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772546"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367633"
 ---
 # <a name="set-up-msix-app-attach"></a>Nastavení připojení aplikace MSIX
 
@@ -38,7 +38,7 @@ Nejdřív musíte získat image operačního systému, kterou budete používat 
 1. Otevřete [portál Windows Insider](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) a přihlaste se.
 
      >[!NOTE]
-     >Abyste mohli získat přístup k portálu Windows Insider, musíte být členem programu Windows Insider. Další informace o programu Windows Insider najdete v [dokumentaci k Windows Insider](https://docs.microsoft.com/windows-insider/at-home/).
+     >Abyste mohli získat přístup k portálu Windows Insider, musíte být členem programu Windows Insider. Další informace o programu Windows Insider najdete v [dokumentaci k Windows Insider](/windows-insider/at-home/).
 
 2. Přejděte dolů k části **Vybrat edici** a vyberte **Windows 10 Insider Preview Enterprise (Fast) – Build 19035** nebo novější.
 
@@ -79,7 +79,7 @@ Po nahrání virtuálního pevného disku do Azure vytvořte fond hostitelů zal
 
 ## <a name="prepare-the-application-for-msix-app-attach"></a>Příprava aplikace pro připojení aplikace MSIX 
 
-Pokud už máte balíček MSIX, přeskočte k [konfiguraci infrastruktury virtuálních počítačů s Windows](#configure-windows-virtual-desktop-infrastructure). Pokud chcete testovat starší verze aplikací, postupujte podle pokynů v tématu [Vytvoření balíčku MSIX z desktopového instalačního programu na virtuálním](https://docs.microsoft.com/windows/msix/packaging-tool/create-app-package-msi-vm) počítači, aby se starší verze aplikace převedla na balíček MSIX.
+Pokud už máte balíček MSIX, přeskočte k [konfiguraci infrastruktury virtuálních počítačů s Windows](#configure-windows-virtual-desktop-infrastructure). Pokud chcete testovat starší verze aplikací, postupujte podle pokynů v tématu [Vytvoření balíčku MSIX z desktopového instalačního programu na virtuálním](/windows/msix/packaging-tool/create-app-package-msi-vm/) počítači, aby se starší verze aplikace převedla na balíček MSIX.
 
 ## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Generování balíčku VHD nebo VHDX pro MSIX
 
@@ -149,7 +149,7 @@ Potom budete muset "rozbalit" MSIX Image tím, že ji rozbalíte. Rozbalení ima
 
 3. Přejděte na připojený virtuální pevný disk a otevřete složku aplikace a ověřte, jestli je přítomen obsah balíčku.
 
-4. Odpojte virtuální pevný disk(VHD).
+4. Odpojte virtuální pevný disk.
 
 ## <a name="configure-windows-virtual-desktop-infrastructure"></a>Konfigurace infrastruktury virtuálních počítačů s Windows
 
@@ -184,8 +184,8 @@ Pokud vaše aplikace používá certifikát, který není veřejný nebo podepsa
 
 Připojení aplikace MSIX má čtyři samostatné fáze, které je potřeba provést v uvedeném pořadí:
 
-1. Stage
-2. Zaregistrovat
+1. Krok
+2. Registrace
 3. Zrušení registrace
 4. Depříprava
 
@@ -206,7 +206,7 @@ Než začnete aktualizovat skripty PowerShellu, ujistěte se, že máte identifi
 
 4.  Otevřete nadřazenou složku. Pokud je správně rozbalený, zobrazí se složka se stejným názvem jako balíček. Aktualizujte **$PackageName** proměnnou tak, aby odpovídala názvu této složky.
 
-    Například, `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
+    například `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
 5.  Otevřete příkazový řádek a zadejte příkaz **mountvol**. Tento příkaz zobrazí seznam svazků a jejich identifikátorů GUID. Zkopírujte identifikátor GUID svazku, ve kterém písmeno jednotky odpovídá jednotce, ke které jste připojili VHD v kroku 2.
 
@@ -390,7 +390,7 @@ rmdir $packageName -Force -Verbose
 
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Nastavení skriptů simulace pro připojení agenta aplikace MSIX
 
-Po vytvoření skriptů je uživatelé můžou ručně spustit nebo je nastavit tak, aby se spouštěly automaticky jako spouštěcí, přihlašovací, odhlašovací a ukončovací skripty. Další informace o těchto typech skriptů najdete [v tématu Použití spouštěcích, ukončovacích, přihlašovacích a odhlašovacích skriptů v Zásady skupiny](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)).
+Po vytvoření skriptů je uživatelé můžou ručně spustit nebo je nastavit tak, aby se spouštěly automaticky jako spouštěcí, přihlašovací, odhlašovací a ukončovací skripty. Další informace o těchto typech skriptů najdete [v tématu Použití spouštěcích, ukončovacích, přihlašovacích a odhlašovacích skriptů v Zásady skupiny](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/).
 
 Každý z těchto automatických skriptů spouští jednu fázi připojovat skripty aplikace:
 
@@ -407,7 +407,7 @@ Chcete-li nainstalovat licenční soubory, bude nutné použít skript prostřed
 
 Tady je postup nastavení licencí pro použití v režimu offline: 
 
-1. Stáhněte si balíček aplikace, licence a požadovaná rozhraní z Microsoft Store pro firmy. Potřebujete jak kódované, tak nekódované licenční soubory. Podrobné pokyny ke stažení najdete [tady](https://docs.microsoft.com/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app).
+1. Stáhněte si balíček aplikace, licence a požadovaná rozhraní z Microsoft Store pro firmy. Potřebujete jak kódované, tak nekódované licenční soubory. Podrobné pokyny ke stažení najdete [tady](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app/).
 2. Aktualizujte ve skriptu následující proměnné pro krok 3:
       1. `$contentID` je hodnota ID obsahu z nekódovaného souboru s licencí (. XML). Soubor s licencí můžete otevřít v textovém editoru podle vašeho výběru.
       2. `$licenseBlob` je celý řetězec pro objekt BLOB licence v souboru kódované licence (. bin). Kódovaný soubor s licencí můžete otevřít v textovém editoru podle vašeho výběru. 

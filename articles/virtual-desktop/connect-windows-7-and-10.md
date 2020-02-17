@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: helohr
-ms.openlocfilehash: 745b33efe46c82e3b9358c9c5a2ed13292242db1
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 15bda000f0297f6e8e006416672897cb15792b79
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997339"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367497"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Připojení s desktopovým klientem Windows
 
@@ -57,4 +57,4 @@ Po přihlášení k odběru informačního kanálu se obsah informačního kaná
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o použití desktopového klienta Windows najdete v tématu [Začínáme s klientem Windows pro stolní počítače](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windowsdesktop).
+Další informace o použití desktopového klienta Windows najdete v tématu [Začínáme s klientem Windows pro stolní počítače](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/).

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f38f0cec336061c97daa02798e94d98844d76ea2
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459502"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368787"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Kurz: vytvoření tenanta ve virtuální ploše Windows
 
@@ -121,7 +121,7 @@ Pokud chcete zjistit ID vašeho předplatného Azure:
 
 Teď, když jste udělili oprávnění služby Virtual Desktop systému Windows k dotazování Azure Active Directory a přiřadili roli TenantCreator uživatelskému účtu, můžete vytvořit klienta virtuální plochy Windows.
 
-Nejdřív [Stáhněte a importujte modul Virtual desktopu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) pro použití v relaci PowerShellu, pokud jste to ještě neudělali.
+Nejdřív [Stáhněte a importujte modul Virtual desktopu Windows](/powershell/windows-virtual-desktop/overview/) pro použití v relaci PowerShellu, pokud jste to ještě neudělali.
 
 Přihlaste se k virtuálnímu počítači s Windows pomocí uživatelského účtu TenantCreator s touto rutinou:
 

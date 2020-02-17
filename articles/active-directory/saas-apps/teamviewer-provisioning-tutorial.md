@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0602757fad0eb4424e10fb0c1cf0272826ed0024
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: dc33cf9249a5b804ef46e75ff1822eaa5c6f9d6a
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150693"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366436"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Kurz: Konfigurace TeamVieweru pro Automatické zřizování uživatelů
 
@@ -101,7 +101,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte přihlašovací údaje a uživatelské jméno správce TeamVieweru. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k TeamVieweru. Pokud se připojení nepovede, ujistěte se, že váš účet TeamViewer má oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `ttps://webapi.teamviewer.com/scim/v2` do pole **Adresa URL pro zadržení** a zadejte token skriptu, který jste vytvořili dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k TeamVieweru. Pokud se připojení nepovede, ujistěte se, že váš účet TeamViewer má oprávnění správce, a zkuste to znovu.
 
     ![zřizování](./media/teamViewer-provisioning-tutorial/provisioning.png)
 

@@ -4,15 +4,15 @@ description: Naučte se koupit Azure Cosmos DB rezervovanou kapacitu, abyste uš
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 17f6787cddf2800663d37b153b3e1b8cf33390f8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 8e29683b994d66e769a24bb2d386a2120cf8eab9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201168"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367690"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimalizace nákladů pomocí rezervované kapacity v Azure Cosmos DB
 
@@ -52,7 +52,7 @@ Tady je příklad doporučení:
 
 ![Doporučení na vyhrazenou kapacitu](./media/cosmos-db-reserved-capacity/reserved-capacity-recommendation.png)
 
-Toto doporučení k zakoupení rezervace 3 000 000 RU/s indikuje, že mezi 3 roky rezervace bude velikost rezervace 3 000 000 RU/s maximalizovat úspory. V takovém případě se doporučení vypočítá na základě posledních 30 dnů od použití Azure Cosmos DB. Pokud tento zákazník očekává, že uplynulé 30 dnů od Azure Cosmos DB využití je reprezentativní pro budoucí použití, maximalizuje se tím nákupem rezervace 3 000 000 RU/s.
+Toto doporučení k zakoupení rezervace 30 000 RU/s indikuje, že mezi 3 roky rezervace bude velikost rezervace 30 000 RU/s maximalizovat úspory. V takovém případě se doporučení vypočítá na základě posledních 30 dnů od použití Azure Cosmos DB. Pokud tento zákazník očekává, že uplynulé 30 dnů od Azure Cosmos DB využití je reprezentativní pro budoucí použití, maximalizuje se tím nákupem rezervace 30 000 RU/s.
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Koupit Azure Cosmos DB rezervovanou kapacitu
 

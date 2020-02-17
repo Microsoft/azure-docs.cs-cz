@@ -7,24 +7,24 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: e158c0a6090493bec0169c144f030300de921516
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8469b54afe01d9ee42dda8cf99f2f0125a4a1982
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679458"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367314"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>Kurz: Správa skupin aplikací pro virtuální počítače s Windows
 
 Výchozí skupina aplikací vytvořená pro nový fond hostitelů virtuálních počítačů s Windows taky publikuje celou plochu. Kromě toho můžete vytvořit jednu nebo více skupin aplikací RemoteApp pro fond hostitelů. Podle tohoto kurzu vytvořte skupinu aplikací RemoteApp a publikujte jednotlivé aplikace v nabídce **Start** .
 
-V tomto kurzu se dozvíte, jak:
+V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvořte skupinu RemoteApp.
 > * Udělení přístupu k aplikacím vzdálené aplikace RemoteApp.
 
-Než začnete, [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
+Než začnete, [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

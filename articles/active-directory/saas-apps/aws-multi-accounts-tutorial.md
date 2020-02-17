@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb528d71b94449b282947a487e4fc79b343df778
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: edd54352b1328c95ae2c3e466003b64eaa0fcfde
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195908"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367996"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Kurz: Azure Active Directory integrace s více účty Amazon Web Services (AWS)
 
@@ -42,7 +42,7 @@ Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, p
 
 **Upozorňujeme, že tento postup nedoporučujeme používat z následujících důvodů:**
 
-* K opravě všech rolí do aplikace je nutné použít přístup k Průzkumníku Graph. Nedoporučujeme používat přístup k souboru manifestu.
+* Chcete-li do aplikace opravit všechny role, je nutné použít přístup k aplikaci Microsoft Graph Explorer. Nedoporučujeme používat přístup k souboru manifestu.
 
 * Zjistili jsme, že zákazníci, kteří po přidání rolí aplikace ~ 1200 pro jednu aplikaci AWS, nahlásí, že všechny operace spuštěné v aplikaci vyvolají chyby týkající se velikosti. Objekt aplikace má pevně stanovený limit velikosti.
 
@@ -50,7 +50,7 @@ Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, p
 
 * Všechny účty AWS budou používat stejný soubor XML s federačními metadaty a v době, kdy dojde ke změně certifikátu, je nutné tento obrovské cvičení využít k aktualizaci certifikátu na všech účtech AWS ve stejnou dobu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Ke konfiguraci integrace služby Azure AD s Amazon Web Services (AWS) potřebujete následující položky:
 
@@ -247,7 +247,7 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
 
 16. Proveďte výše uvedený krok pro všechny role ve všech účtech a uložte je do formátu **role ARN, důvěryhodné entity** v poznámkovém bloku.
 
-17. Otevřete [Průzkumníka Azure AD Graph](https://developer.microsoft.com/graph/graph-explorer) v jiném okně.
+17. Otevřete [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) v jiném okně.
 
     a. Přihlaste se k webu Průzkumník grafů pomocí přihlašovacích údajů globálního správce nebo spolusprávce pro vašeho tenanta.
 
@@ -325,9 +325,9 @@ V této části povolíte jednotné přihlašování Azure AD v Azure Portal a n
     > [!Note]
     > Nové role můžete přidat až po **msiam_access** pro operaci patch. V rámci vaší organizace taky můžete přidat tolik rolí, kolik potřebujete. Azure AD pošle **hodnotu** těchto rolí jako hodnotu deklarace v odpovědi SAML.
 
-    j. Vraťte se do Průzkumníka graphu a změňte metodu z možnosti **získat** na **opravu**. Opravte objekt instančního objektu tak, aby měl požadované role, a to tak, že aktualizuje vlastnost appRoles podobnou té, kterou vidíte výše v příkladu. Kliknutím na **Spustit dotaz** spusťte operaci patch. Zpráva o úspěchu potvrzuje vytvoření role pro vaši aplikaci Amazon Web Services.
+    j. Vraťte se do Microsoft Graph Exploreru a změňte metodu z možnosti **získat** na **opravu**. Opravte objekt instančního objektu tak, aby měl požadované role, a to tak, že aktualizuje vlastnost appRoles podobnou té, kterou vidíte výše v příkladu. Kliknutím na **Spustit dotaz** spusťte operaci patch. Zpráva o úspěchu potvrzuje vytvoření role pro vaši aplikaci Amazon Web Services.
 
-    ![Průzkumník graphu – dialogové okno](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+    ![Dialogové okno Průzkumníka Microsoft Graph](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 18. Po opravě instančního objektu s více rolemi můžete přiřadit uživatele nebo skupiny k příslušným rolím. To se dá udělat tak, že přejdete na portál a přejdete na Amazon Web Services aplikaci. Klikněte na kartu **Uživatelé a skupiny** v horní části.
 
@@ -361,9 +361,9 @@ Můžete také ověřit odpověď SAML a zobrazit role předávané jako deklara
 
 Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
-* [Jak nakonfigurovat zřizování pomocí rozhraní MS Graph API](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
+* [Jak nakonfigurovat zřizování pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 

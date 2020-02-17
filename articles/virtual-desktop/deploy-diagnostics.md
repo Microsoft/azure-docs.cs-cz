@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5eff53119362cd03c9a6497e3133984627e513c1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452426"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368850"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Nasazení diagnostických nástrojů
 
@@ -25,7 +25,7 @@ Tady je postup, jak Nástroj pro diagnostiku virtuálních počítačů s Window
 - Odeslat zprávu aktivním uživatelům na konkrétním hostiteli relace.
 - Odhlaste uživatele z hostitele relace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předtím, než budete moci nasadit šablonu Azure Resource Manager pro nástroj, je nutné vytvořit registraci aplikace Azure Active Directory a pracovní prostor Log Analytics. Vy nebo správce k tomu potřebují tato oprávnění:
 
@@ -36,8 +36,8 @@ Předtím, než budete moci nasadit šablonu Azure Resource Manager pro nástroj
 
 Tyto dva moduly PowerShellu je potřeba nainstalovat i před zahájením práce:
 
-- [Modul Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-2.4.0)
-- [Modul Azure AD](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+- [Modul Azure PowerShell](/powershell/azure/install-az-ps?view=azps-2.4.0/)
+- [Modul Azure AD](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
 
 Ujistěte se, že máte ID předplatného připravené pro přihlášení.
 
@@ -50,7 +50,7 @@ V této části se dozvíte, jak pomocí PowerShellu vytvořit aplikaci Azure Ac
 >[!NOTE]
 >Oprávnění rozhraní API jsou virtuální počítače s Windows, Log Analytics a Microsoft Graph rozhraní API se do aplikace Azure Active Directory přidala oprávnění.
 
-1. Otevřete Powershell jako správce.
+1. Otevřete PowerShell jako správce.
 2. Přihlaste se k Azure pomocí účtu, který má oprávnění vlastníka nebo přispěvatele v předplatném Azure, které byste chtěli použít pro nástroj pro diagnostiku:
    ```powershell
    Login-AzAccount
@@ -253,7 +253,7 @@ Můžete také interagovat s uživateli na hostiteli relace:
 
     - Prahová hodnota: vyšší než 80% je označena jako stav není v pořádku.
 
-- [Zpoždění vstupu uživatele na relaci (\*)\\maximálního zpoždění vstupu](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Zpoždění vstupu uživatele na relaci (\*)\\maximálního zpoždění vstupu](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/):
 
     - Prahová hodnota: vyšší než 2000 MS je označeno jako není v pořádku.
 

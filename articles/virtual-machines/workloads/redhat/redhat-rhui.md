@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: e4213e67d9d752f3fc6450236b41e8bbf61f9957
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169309"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368902"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure pro virtuální počítače na vyžádání Red Hat Enterprise Linuxem v Azure
  RHUI ( [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) ) umožňuje poskytovatelům cloudu, jako je Azure, zrcadlit obsah úložiště hostovaného na Red Hat, vytvářet vlastní úložiště pomocí obsahu specifického pro Azure a zpřístupňuje je pro virtuální počítače koncových uživatelů.
@@ -27,6 +27,10 @@ Další informace o RHEL imagí v Azure, včetně publikování a zásad uchová
 
 Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete na stránce [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata) .
 
+> [!IMPORTANT]
+> RHUI je určena jenom pro image s průběžnými platbami (PAYGO). U vlastních a zlatých imagí, označovaných také jako přizpůsobené předplatné (BYOS), musí být systém připojen k RHSM nebo satelitu, aby mohl přijímat aktualizace. Další podrobnosti najdete v [článku o Red Hat](https://access.redhat.com/solutions/253273) .
+
+
 ## <a name="important-information-about-azure-rhui"></a>Důležité informace o Azure RHUI
 
 * Azure RHUI je infrastruktura aktualizací, která podporuje všechny virtuální počítače s PAYG RHEL vytvořené v Azure. To vám nebrání v registraci virtuálních počítačů s PAYG RHEL pomocí Správce předplatného nebo jiného zdroje aktualizací, ale pokud to uděláte s virtuálním počítačem s PAYG, výsledkem bude nepřímá fakturace. Podrobnosti najdete v následujícím bodu.
@@ -35,6 +39,7 @@ Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete na strán
 * Image RHEL SAP PAYG v Azure (RHEL pro SAP, RHEL for SAP HANA a RHEL for SAP Business Applications) se připojují k vyhrazeným kanálům RHUI, které v konkrétní verzi RHEL zůstávají jako požadavky na certifikaci SAP.
 
 * Přístup k RHUI hostovanému v Azure se omezí jenom na virtuální počítače v [rozsahu IP adres datacentra Azure](https://www.microsoft.com/download/details.aspx?id=41653). Pokud jste připojení přes server proxy veškerý provoz virtuálního počítače přes místní síťové infrastruktury, musíte nastavit trasy definované uživatelem pro virtuální počítače s průběžnými PLATBAMI RHEL pro přístup k Azure RHUI. V takovém případě bude potřeba přidat trasy definované uživatelem pro _všechny_ IP adresy RHUI.
+
 
 ## <a name="image-update-behavior"></a>Chování aktualizace obrázku
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 336d2ef471e21e3157c7d8c81b3837bb6a962e2e
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191299"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366228"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Referenční příručka schématu pro typy triggerů a akcí v Azure Logic Apps
 
@@ -2304,7 +2304,7 @@ Tato akce smyčky obsahuje akce, které se spustí, dokud není zadaná podmínk
 | <*Akce – typ*> | Řetězec | Typ akce, kterou chcete spustit | 
 | <*Akce – vstupy*> | Některé | Vstupy pro akci, která se má spustit | 
 | <*podmínka*> | Řetězec | Podmínka nebo výraz, který se má vyhodnotit po dokončení všech akcí ve smyčce | 
-| < *– počet cyklů*> | Integer | Limit nejvyšší hodnoty smyček, které mohou být akce spuštěny. Výchozí hodnota `count` je 60. | 
+| < *– počet cyklů*> | Integer | Limit nejvyšší hodnoty smyček, které mohou být akce spuštěny. Další informace o výchozím omezení a maximálním limitu najdete v tématu [omezení a konfigurace pro Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). | 
 | *cyklus <– časový limit*> | Řetězec | Limit v nejdelší době, kdy může být smyčka spuštěna. Výchozí hodnota `timeout` je `PT1H`, což je požadovaný [formát ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
 |||| 
 

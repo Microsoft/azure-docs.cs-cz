@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: 1141731697c9f649a4a8d4052cd550605049b52e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1e26af6c4bf86cfd412df7435379e610ffd69e85
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606938"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367417"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Kurz: vytvoření instančních objektů a přiřazení rolí pomocí PowerShellu
 
@@ -38,7 +38,7 @@ Než budete moct vytvořit instanční objekty a přiřazení rolí, musíte ud�
     Install-Module AzureAD
     ```
 
-2. [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview).
+2. [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/).
 
 3. Postupujte podle všech pokynů v tomto článku ve stejné relaci prostředí PowerShell. Proces nemusí fungovat, pokud ukončíte relaci PowerShellu tím, že okno zavřete a znovu otevřete později.
 
@@ -58,7 +58,7 @@ Než vytvoříte přiřazení role pro instanční objekt, zobrazte si přihlaš
 
 Tady jsou tři přihlašovací údaje, které byste měli napsat, a rutiny, které je potřeba spustit, abyste je získali:
 
-- Zadáno
+- Heslo:
 
     ```powershell
     $svcPrincipalCreds.Value
@@ -80,7 +80,7 @@ Tady jsou tři přihlašovací údaje, které byste měli napsat, a rutiny, kter
 
 Dále musíte vytvořit přiřazení role, aby se instanční objekt mohl přihlásit k virtuálnímu klientovi Windows. Ujistěte se, že se přihlásíte pomocí účtu, který má oprávnění k vytváření přiřazení rolí.
 
-Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali.
+Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali.
 
 Spusťte následující rutiny PowerShellu, abyste se připojili k virtuální ploše Windows a zobrazili své klienty.
 

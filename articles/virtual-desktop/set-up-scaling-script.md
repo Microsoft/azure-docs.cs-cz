@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: helohr
-ms.openlocfilehash: c201df03bb156bac3f63d03cc4ca35215792f65c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f38fc45411c89351eb9a50a48f22d22905ee34e6
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061482"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367254"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Škálování hostitelů relací pomocí Azure Automation
 
@@ -35,7 +35,7 @@ Nástroj pro škálování používá kombinaci Azure Automation PowerShellovýc
 Během špičky využívání úlohy zkontroluje aktuální počet relací a kapacitu virtuálního počítače aktuálně spuštěného hostitele relace pro každý fond hostitelů. Tyto informace používá k výpočtu, jestli virtuální počítače hostitele spuštěné relace můžou podporovat existující relace na základě parametru *SessionThresholdPerCPU* definovaného pro soubor **createazurelogicapp. ps1** . Pokud virtuální počítače hostitele relace nepodporují existující relace, spustí úloha další virtuální počítače hostitele relace ve fondu hostitelů.
 
 >[!NOTE]
->*SessionThresholdPerCPU* neomezuje počet relací na virtuálním počítači. Tento parametr určuje, zda je nutné spustit nové virtuální počítače pro vyrovnávání zatížení připojení. Pokud chcete omezit počet relací, musíte podle pokynů [set-RdsHostPool](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/set-rdshostpool) nakonfigurovat parametr *MaxSessionLimit* odpovídajícím způsobem.
+>*SessionThresholdPerCPU* neomezuje počet relací na virtuálním počítači. Tento parametr určuje, zda je nutné spustit nové virtuální počítače pro vyrovnávání zatížení připojení. Pokud chcete omezit počet relací, musíte podle pokynů [set-RdsHostPool](/powershell/module/windowsvirtualdesktop/set-rdshostpool/) nakonfigurovat parametr *MaxSessionLimit* odpovídajícím způsobem.
 
 V době mimo špičku bude úloha určovat, které virtuální počítače hostitele relace by se měly vypnout na základě parametru *MinimumNumberOfRDSH* . Úloha nastaví virtuální počítače hostitele relace na režim vyprázdnění, aby se zabránilo novým relacím, které se připojují k hostitelům. Pokud nastavíte parametr *LimitSecondsToForceLogOffUser* na nenulovou kladnou hodnotu, skript pošle všem aktuálně přihlášeným uživatelům, aby uložil svou práci, čekal nakonfigurovanou dobu a pak vynutila odhlášení uživatelů. Po odhlášení všech uživatelských relací na virtuálním počítači hostitele relace vypíná skript virtuální počítač.
 
@@ -51,7 +51,7 @@ Nástroj má však také následující omezení:
 >[!NOTE]
 >Nástroj pro škálování řídí režim vyrovnávání zatížení fondu hostitelů, který je škálovatelný. Nastaví ji na geografickou vyrovnávání zatížení pro hodiny špičky i mimo špičku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s nastavením nástroje pro škálování, ujistěte se, že máte připravené následující akce:
 
@@ -126,7 +126,7 @@ Vytvoření účtu Spustit jako ve vašem účtu Azure:
 
 Dále je potřeba vytvořit přiřazení role, aby AzureRunAsConnection mohl komunikovat s virtuálním počítačem s Windows. Nezapomeňte použít PowerShell pro přihlášení pomocí účtu, který má oprávnění k vytváření přiřazení rolí.
 
-Nejdřív Stáhněte a importujte [modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali. Spusťte následující rutiny PowerShellu, abyste se připojili k virtuální ploše Windows a zobrazili své klienty.
+Nejdřív Stáhněte a importujte [modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali. Spusťte následující rutiny PowerShellu, abyste se připojili k virtuální ploše Windows a zobrazili své klienty.
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"

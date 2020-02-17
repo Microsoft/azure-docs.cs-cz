@@ -6,19 +6,25 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: b5a037eaf310aa28c76d831dc9fe56eefaddbe56
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d4304abf0ca089fbbea86f12cd03dea836db612e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123464"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368349"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Autorizace přístupu ke službě Azure Event Hubs
 Pokaždé, když publikujete nebo spotřebujete události a data z centra událostí, se klient snaží získat přístup k prostředkům Event Hubs. Každý požadavek na zabezpečený prostředek musí být autorizovaný, aby služba mohla zajistit, aby měl klient potřebná oprávnění k publikování/využívání dat. 
 
 Azure Event Hubs nabízí následující možnosti pro autorizaci přístupu k zabezpečeným prostředkům:
+
+- Azure Active Directory
+- Sdílený přístupový podpis
+
+> [!NOTE]
+> Tento článek se týká Event Hubs i [Apache Kafkach](event-hubs-for-kafka-ecosystem-overview.md) scénářů. 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 Integrace služby Azure Active Directory (Azure AD) pro prostředky Event Hubs poskytuje řízení přístupu na základě role (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům. Řízení přístupu na základě role (RBAC) můžete použít k udělení oprávnění objektu zabezpečení, který může být uživatel, skupina nebo instanční objekt. Služba Azure AD ověřuje objekt zabezpečení, aby vrátil token OAuth 2,0. Token se dá použít k autorizaci žádosti o přístup k prostředku Event Hubs.

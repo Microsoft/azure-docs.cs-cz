@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: f8400cbefc514fa01dedb1434a60989b1df0528d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c15662409f9f5badf50765b78bce7dd71e9fb1bc
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980216"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367159"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
 Tento článek použijte k řešení problémů, které máte při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů (VM) Windows.
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 
 Navštivte [technickou komunitu pro virtuální počítače s Windows](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , kde můžete diskutovat o službě Virtual Desktop v systému Windows pomocí produktového týmu a aktivních členů komunity.
 
@@ -26,7 +26,7 @@ Navštivte [technickou komunitu pro virtuální počítače s Windows](https://t
 
 Pokud máte problémy s připojením virtuálních počítačů k doméně, postupujte podle těchto pokynů.
 
-- Připojte se k VIRTUÁLNÍmu počítači ručně pomocí procesu [připojení virtuálního počítače s Windows serverem ke spravované doméně](https://docs.microsoft.com/azure/active-directory-domain-services/Active-directory-ds-admin-guide-join-windows-vm-portal) nebo pomocí [šablony připojení k doméně](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+- Připojte se k VIRTUÁLNÍmu počítači ručně pomocí procesu [připojení virtuálního počítače s Windows serverem ke spravované doméně](../active-directory-domain-services/join-windows-vm.md) nebo pomocí [šablony připojení k doméně](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 - Zkuste na virtuálním počítači testovat název domény z příkazového řádku.
 - Projděte si seznam chybových zpráv připojení k doméně při [řešení potíží s chybovými zprávami k doméně](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx).
 
@@ -37,7 +37,7 @@ Pokud máte problémy s připojením virtuálních počítačů k doméně, post
 **Oprava:** Proveďte jednu z následujících akcí, které je potřeba vyřešit.
 
 - Ručně přidejte virtuální počítače do domény.
-- Po potvrzení přihlašovacích údajů znovu nasaďte šablonu. Další informace najdete v tématu [Vytvoření fondu hostitelů pomocí PowerShellu](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+- Po potvrzení přihlašovacích údajů znovu nasaďte šablonu. Další informace najdete v tématu [Vytvoření fondu hostitelů pomocí PowerShellu](create-host-pools-powershell.md).
 - Připojte virtuální počítače k doméně pomocí šablony s [připojením existujícímu virtuálnímu počítači s Windows k doméně AD](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Chyba: časový limit čekání na vstup uživatele
@@ -62,17 +62,17 @@ Pokud máte problémy s připojením virtuálních počítačů k doméně, post
 
 **Příčina 1:** Virtuální počítače jsou ve virtuální síti, která není přidružená k virtuální síti (VNET), ve které se nachází doména.
 
-**Oprava 1:** Vytvořte partnerský vztah virtuálních sítí mezi virtuální sítí, ve které byly virtuální počítače zřízené a virtuální síť, ve které je spuštěný řadič domény (DC). Přečtěte si téma [vytvoření partnerského vztahu virtuální sítě – Správce prostředků různých předplatných](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
+**Oprava 1:** Vytvořte partnerský vztah virtuálních sítí mezi virtuální sítí, ve které byly virtuální počítače zřízené a virtuální síť, ve které je spuštěný řadič domény (DC). Přečtěte si téma [vytvoření partnerského vztahu virtuální sítě – Správce prostředků různých předplatných](../virtual-network/create-peering-different-subscriptions.md).
 
 **Příčina 2:** Při použití Azure Active Directory Domain Services (Azure služba AD DS) nemá virtuální síť aktualizované nastavení serveru DNS tak, aby odkazovala na spravované řadiče domény.
 
-**Oprava 2:** Pokud chcete aktualizovat nastavení DNS pro virtuální síť, která obsahuje Azure služba AD DS, přečtěte si téma [aktualizace nastavení DNS pro virtuální síť Azure](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network).
+**Oprava 2:** Pokud chcete aktualizovat nastavení DNS pro virtuální síť, která obsahuje Azure služba AD DS, přečtěte si téma [aktualizace nastavení DNS pro virtuální síť Azure](../active-directory-domain-services/tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network).
 
 **Příčina 3:** Nastavení serveru DNS síťového rozhraní neukazuje na příslušný server DNS ve virtuální síti.
 
 **Oprava 3:** Proveďte jednu z následujících akcí, které je potřeba vyřešit, podle kroků v [změna serverů DNS].
-- Změňte nastavení serveru DNS síťového rozhraní na **vlastní** s použitím kroků v části [Změna serverů DNS](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) a zadejte privátní IP adresy serverů DNS ve virtuální síti.
-- Změňte nastavení serveru DNS síťového rozhraní tak, aby **dědilo z virtuální sítě** s použitím kroků v části [Změna serverů DNS](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers), a potom změňte nastavení serveru DNS virtuální sítě pomocí kroků z části [změnit servery DNS](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers).
+- Změňte nastavení serveru DNS síťového rozhraní na **vlastní** s použitím kroků v části [Změna serverů DNS](../virtual-network/virtual-network-network-interface.md#change-dns-servers) a zadejte privátní IP adresy serverů DNS ve virtuální síti.
+- Změňte nastavení serveru DNS síťového rozhraní tak, aby **dědilo z virtuální sítě** s použitím kroků v části [Změna serverů DNS](../virtual-network/virtual-network-network-interface.md#change-dns-servers), a potom změňte nastavení serveru DNS virtuální sítě pomocí kroků z části [změnit servery DNS](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Agent virtuálního počítače Windows a spouštěcí zavaděč virtuálních počítačů s Windows nejsou nainstalované.
 
@@ -88,7 +88,7 @@ Postupujte podle těchto pokynů a ověřte, zda jsou součásti nainstalovány 
 
 **Příčina 1:** Přihlašovací údaje zadané během vstupu pro šablonu Azure Resource Manager byly nesprávné nebo mají dostatečná oprávnění.
 
-**Oprava 1:** Ručně přidejte chybějící součásti do virtuálních počítačů pomocí [Vytvoření fondu hostitelů pomocí prostředí PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+**Oprava 1:** Ručně přidejte chybějící součásti do virtuálních počítačů pomocí [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md).
 
 **Příčina 2:** Prostředí PowerShell DSC se dokázalo spustit a spustit, ale nedokončilo se, protože se nemůže přihlásit k virtuální ploše Windows a získat potřebné informace.
 
@@ -147,7 +147,7 @@ Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na v
 
 **Oprava 2:** Podle těchto pokynů otevřete port 443.
 
-1. Ověřte, že je port 443 otevřený stažením nástroje PSPing z [nástrojů společnosti Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psping).
+1. Ověřte, že je port 443 otevřený stažením nástroje PSPing z [nástrojů společnosti Sysinternals](/sysinternals/downloads/psping/).
 2. Nainstalujte PSPing na virtuálním počítači hostitele relace, kde je spuštěný agent.
 3. Otevřete příkazový řádek jako správce a vydejte následující příkaz:
 
@@ -189,7 +189,7 @@ Pokud je nainstalovaná a povolená souběžná sada protokolů, výstup z **qwi
 
 ![Nainstalovaná nebo povolená Souběžná instalace s qwinsta, která je ve výstupu uvedená jako RDP-SxS.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
-Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty se shodují. Pokud klíče registru chybí nebo se neshodují s hodnotami, postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) , jak přeinstalovat souběžný zásobník.
+Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty se shodují. Pokud klíče registru chybí nebo se neshodují s hodnotami, postupujte podle pokynů v části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md) , jak přeinstalovat souběžný zásobník.
 
 ```registry
     HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal
@@ -208,13 +208,13 @@ Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty s
 **Oprava:** Při instalaci souběžného zásobníku na virtuálním počítači hostitele relace postupujte podle těchto pokynů.
 
 1. Pomocí protokol RDP (Remote Desktop Protocol) (RDP) se přímo do virtuálního počítače hostitele relace dostanou jako místní správce.
-2. Pokud jste to ještě neudělali, Stáhněte a importujte [modul PowerShellu virtuálního počítače s Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , který chcete použít v relaci PowerShellu, a pak spusťte tuto rutinu, abyste se mohli přihlásit ke svému účtu:
+2. Pokud jste to ještě neudělali, Stáhněte a importujte [modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, a pak spusťte tuto rutinu, abyste se mohli přihlásit ke svému účtu:
 
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
 
-3. Nainstalujte souběžný zásobník pomocí části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+3. Nainstalujte souběžný zásobník pomocí části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md).
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Jak opravit souběžný zásobník virtuálních počítačů s Windows, který nefunguje správně
 
@@ -226,7 +226,7 @@ Existují známé okolnosti, které můžou způsobit selhání souběžného z�
 - Spuštění enablesxsstackrc. ps1 několikrát
 - Spuštění enablesxsstackrc. ps1 v účtu, který nemá oprávnění místního správce
 
-Pokyny v této části vám pomůžou odinstalovat souběžnou sadu virtuálních počítačů s Windows. Po odinstalování souběžného zásobníku v části [Vytvoření fondu hostitelů s PowerShellem](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell) pro přeinstalaci souběžného zásobníku použijte možnost zaregistrovat virtuální počítač s fondem hostitelů virtuálních klientů Windows.
+Pokyny v této části vám pomůžou odinstalovat souběžnou sadu virtuálních počítačů s Windows. Po odinstalování souběžného zásobníku v části [Vytvoření fondu hostitelů s PowerShellem](create-host-pools-powershell.md) pro přeinstalaci souběžného zásobníku použijte možnost zaregistrovat virtuální počítač s fondem hostitelů virtuálních klientů Windows.
 
 Virtuální počítač, který se používá ke spuštění nápravy, musí být ve stejné podsíti a doméně jako virtuální počítač se selháním souběžného zásobníku.
 
@@ -305,7 +305,7 @@ Pokud časový limit vyprší, zobrazí se chybová zpráva oznamující, že Vz
 Pokud se zobrazí některá z těchto zpráv, znamená to, že bitová kopie nemá nainstalované nejnovější aktualizace systému Windows nebo že nastavujete režim licencování vzdálené plochy prostřednictvím zásad skupiny. Postupujte podle kroků v následujících částech a ověřte nastavení zásad skupiny, identifikujte verzi Windows 10 Enterprise multi-session a nainstalujte odpovídající aktualizaci.  
 
 >[!NOTE]
->Virtuální desktop Windows vyžaduje jenom licenci CAL pro klientský přístup (CAL), pokud fond hostitelů obsahuje hostitele relací Windows serveru. Informace o tom, jak nakonfigurovat licence VP CAL, najdete v článku o [licenci nasazení služby Vzdálená plocha pomocí licencí pro klientský přístup](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-client-access-license).
+>Virtuální desktop Windows vyžaduje jenom licenci CAL pro klientský přístup (CAL), pokud fond hostitelů obsahuje hostitele relací Windows serveru. Informace o tom, jak nakonfigurovat licence VP CAL, najdete v článku o [licenci nasazení služby Vzdálená plocha pomocí licencí pro klientský přístup](/windows-server/remote/remote-desktop-services/rds-client-access-license/).
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>Zakázat nastavení zásad skupiny pro režim licencování vzdálené plochy
 

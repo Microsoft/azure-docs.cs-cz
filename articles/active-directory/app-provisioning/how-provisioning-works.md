@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c3c0aea6ecaccc972702a8c87e4d127c71c75d6
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: a3b1b38063dcef1c61fbfb6fec529aeeed40a662
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121363"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367776"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -91,7 +91,7 @@ Všimněte si, že userPrincipalName pro uživatele typu Host je často uložen 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Cykly zřizování: počáteční a přírůstkové
 
-Když je Azure AD zdrojový systém, služba zřizování používá [funkci rozdílového dotazu Graph API Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query) k monitorování uživatelů a skupin. Služba zřizování spouští počáteční cyklus proti zdrojovému systému a cílovému systému, po kterém následují pravidelné přírůstkové cykly.
+Když je Azure AD zdrojovým systémem, služba zřizování používá [dotaz použít rozdíl ke sledování změn v Microsoft Graph dat](https://docs.microsoft.com/graph/delta-query-overview) pro monitorování uživatelů a skupin. Služba zřizování spouští počáteční cyklus proti zdrojovému systému a cílovému systému, po kterém následují pravidelné přírůstkové cykly.
 
 ### <a name="initial-cycle"></a>Počáteční cyklus
 
@@ -142,8 +142,8 @@ Po úvodním cyklu budou všechny ostatní cykly:
 
 Zřizovací služba pokračuje v provádění přírůstkových cyklů back-to-back v intervalech definovaných v tomto [kurzu, které jsou specifické pro jednotlivé aplikace](../saas-apps/tutorial-list.md). Přírůstkové cykly pokračují, dokud nedojde k jedné z následujících událostí:
 
-- Služba se ručně zastavila pomocí Azure Portal nebo pomocí příslušného příkazu Graph API 
-- Nový počáteční cyklus se aktivuje pomocí možnosti **Vymazat stav a restartovat** v Azure Portal nebo pomocí příslušného příkazu Graph API. Tato akce vymaže libovolný uložený vodoznak a způsobí, že všechny zdrojové objekty budou znovu vyhodnoceny.
+- Služba se ručně zastavila pomocí Azure Portal nebo pomocí příslušného příkazu Microsoft Graph API.
+- Nový počáteční cyklus se aktivuje pomocí možnosti **Vymazat stav a restartovat** v Azure Portal nebo pomocí příslušného příkazu Microsoft Graph API. Tato akce vymaže libovolný uložený vodoznak a způsobí, že všechny zdrojové objekty budou znovu vyhodnoceny.
 - Spustí se nový počáteční cyklus, protože se změní mapování atributů nebo filtry oborů. Tato akce také vymaže všechny uložené meze a způsobí, že všechny zdrojové objekty budou znovu vyhodnoceny.
 - Proces zřizování přejde do karantény (viz níže) z důvodu vysoké míry chyb a zůstane v karanténě po dobu více než čtyř týdnů. V takovém případě se služba automaticky zakáže.
 

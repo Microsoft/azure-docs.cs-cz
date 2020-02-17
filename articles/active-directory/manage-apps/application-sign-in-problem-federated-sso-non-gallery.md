@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70a85a81996766b862cd6fbc3b605636385e0fda
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8cd951f0b4d2f4887630e29cbd3b0ae429b9f6f7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159178"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367856"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problémy s přihlašováním k aplikaci mimo galerii nakonfigurovanou pro federované jednotné přihlašování
 
@@ -38,7 +38,7 @@ Pokud chcete řešit potíže s přihlašováním níže, doporučujeme vám pos
 
 Atribut vystavitele odeslaný z aplikace do služby Azure AD v požadavku SAML se neshoduje s hodnotou identifikátoru nakonfigurovanou v aplikaci Azure AD.
 
-**Rozhodnutí**
+**Rozlišení**
 
 Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
 
@@ -68,7 +68,7 @@ Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identif
 
 Hodnota AssertionConsumerServiceURL v požadavku SAML neodpovídá hodnotě nebo vzoru adresy URL odpovědi nakonfigurovaným v Azure AD. Hodnota AssertionConsumerServiceURL v požadavku SAML je adresa URL, která se zobrazí v chybě. 
 
-**Rozhodnutí** 
+**Rozlišení** 
 
 Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
  
@@ -100,7 +100,7 @@ Po aktualizaci hodnoty adresy URL odpovědi v Azure AD, která odpovídá hodnot
 
 Uživateli se v Azure AD neudělil přístup k aplikaci.​
 
-**Rozhodnutí**
+**Rozlišení**
 
 Chcete-li přiřadit jednoho nebo více uživatelů k aplikaci přímo, postupujte podle následujících kroků. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
 
@@ -150,7 +150,7 @@ Azure AD nepodporuje požadavek SAML, který aplikace odeslala pro jednotné př
 
 -   Kódovaná metoda požadavku SAML
 
-**Rozhodnutí**
+**Rozlišení**
 
 1.  Zachytit požadavek SAML. v tomto kurzu se dozvíte, [jak pomocí SAML ladit jednotné přihlašování k aplikacím ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) a Naučte se zachytit požadavek SAML.
 
@@ -164,13 +164,13 @@ Dodavatel aplikace by měl ověřit, jestli podporují implementaci Azure AD SAM
 
 ## <a name="misconfigured-application"></a>Chybně nakonfigurovaná aplikace
 
-*Chyba AADSTS650056: nesprávně nakonfigurovaná aplikace To může být způsobeno jedním z následujících způsobů: klient v rámci registrace aplikace klienta neuvádí žádná oprávnění pro ' typ grafu AAD ' v požadovaných oprávněních. Nebo správce v tenantovi nesouhlasí. Případně můžete v žádosti zkontrolovat identifikátor aplikace a zajistit, aby odpovídaly nakonfigurovanému identifikátoru klientské aplikace. Obraťte se prosím na správce, aby opravil konfiguraci nebo souhlas jménem tenanta.* ..
+*Chyba AADSTS650056: nesprávně nakonfigurovaná aplikace Příčinou může být jedna z následujících: klient neuvádí žádná oprávnění v požadovaných oprávněních v registraci aplikace klienta. Nebo správce v tenantovi nesouhlasí. Případně můžete v žádosti zkontrolovat identifikátor aplikace a zajistit, aby odpovídaly nakonfigurovanému identifikátoru klientské aplikace. Obraťte se prosím na správce, aby opravil konfiguraci nebo souhlas jménem tenanta.* ..
 
 **Možná příčina**
 
 Atribut `Issuer` odeslaný z aplikace do služby Azure AD v požadavku SAML se neshoduje s hodnotou identifikátoru nakonfigurovanou pro aplikaci ve službě Azure AD.
 
-**Rozhodnutí**
+**Rozlišení**
 
 Zajistěte, aby se atribut `Issuer` v žádosti SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte [prostředí testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků:
 
@@ -198,7 +198,7 @@ Chyba AADSTS50003: není nakonfigurovaný žádný podpisový klíč.
 
 Objekt aplikace je poškozený a Azure AD nerozpozná certifikát nakonfigurovaný pro aplikaci.
 
-**Rozhodnutí**
+**Rozlišení**
 
 Chcete-li odstranit a vytvořit nový certifikát, postupujte podle následujících kroků:
 
@@ -234,7 +234,7 @@ Chcete-li odstranit a vytvořit nový certifikát, postupujte podle následujíc
 
 Služba Azure AD nemohla identifikovat požadavek SAML v rámci parametrů adresy URL v požadavku HTTP. K tomu může dojít, když aplikace při odesílání požadavku SAML do Azure AD nepoužívá vazbu přesměrování HTTP.
 
-**Rozhodnutí**
+**Rozlišení**
 
 Aplikace potřebuje odeslat požadavek SAML zakódovaný do hlavičky umístění pomocí vazby přesměrování HTTP. Další informace o způsobu implementace najdete v části věnované vazbě HTTP Redirect v [dokumentu specifikace protokolu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
@@ -246,7 +246,7 @@ Pokud v rámci jednotného přihlašování požadavek na přihlášení neobsah
 
 Při přidávání aplikace jako aplikace mimo galerii služba Azure Active Directory vytvořila tuto adresu URL pro odpověď jako výchozí hodnotu. Toto chování se změnilo a Azure Active Directory už tuto adresu URL ve výchozím nastavení nepřidává. 
 
-**Rozhodnutí**
+**Rozlišení**
 
 Odstraní nepoužívané adresy URL odpovědí nakonfigurované pro aplikaci.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: f6b06e7bb2bb8637ca28b2fa4185754f8686798e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 475ba601c61169f92eddd7f203b7fa34ed2e4916
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587924"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368252"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>Sledování příchozích požadavků pomocí OpenCensus Pythonu
 
@@ -39,9 +39,9 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
     ```python
     OPENCENSUS = {
         'TRACE': {
-            'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=0.5)',
+            'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=1)',
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                service_name='foobar',
+                connection_string="InstrumentationKey=<your-ikey-here>"
             )''',
         }
     }
@@ -54,9 +54,9 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
         'TRACE': {
             'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=0.5)',
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                service_name='foobar',
+                connection_string="InstrumentationKey=<your-ikey-here>",
             )''',
-            'BLACKLIST_PATHS': 'https://example.com',  <--- This site will not be traced if a request is sent from it.
+            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent from it.
         }
     }
     ```
@@ -95,9 +95,9 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
         'TRACE': {
             'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=1.0)',
             'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                service_name='foobar',
+                connection_string="InstrumentationKey=<your-ikey-here>",
             )''',
-            'BLACKLIST_PATHS': 'https://example.com',  <--- This site will not be traced if a request is sent to it.
+            'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
         }
     }
     ```
@@ -122,9 +122,9 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
             'TRACE': {
                 'SAMPLER': 'opencensus.trace.samplers.ProbabilitySampler(rate=1.0)',
                 'EXPORTER': '''opencensus.ext.azure.trace_exporter.AzureExporter(
-                    service_name='foobar',
+                    connection_string="InstrumentationKey=<your-ikey-here>",
                 )''',
-                'BLACKLIST_PATHS': 'https://example.com',  <--- This site will not be traced if a request is sent to it.
+                'BLACKLIST_PATHS': ['https://example.com'],  <--- These sites will not be traced if a request is sent to it.
             }
         }
     }

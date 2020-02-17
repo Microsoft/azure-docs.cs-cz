@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: e202eed8e3694245b5b4527578c02cfb518723f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4db6ad83c44e0c811df0a3b91a473861e4e1ab87
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705345"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367154"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Vytvoření organizační jednotky (OU) ve Azure AD Domain Services spravované doméně
 
@@ -54,7 +54,7 @@ Když vytvoříte vlastní organizační jednotky ve spravované doméně Azure 
 * Vytvoří se výchozí organizační jednotka pro *uživatele AADDC* , která obsahuje všechny synchronizované uživatelské účty z vašeho TENANTA Azure AD.
     * Nemůžete přesunout uživatele nebo skupiny z organizační jednotky *AADDC Users* do vlastních organizačních jednotek, které vytvoříte. Do vlastních organizačních jednotek se dají přesunout jenom uživatelské účty nebo prostředky vytvořené ve spravované doméně Azure služba AD DS.
 * Uživatelské účty, skupiny, účty služeb a objekty počítačů, které vytvoříte v části vlastní organizační jednotky, nejsou k dispozici ve vašem tenantovi Azure AD.
-    * Tyto objekty se nezobrazují pomocí Graph API Azure AD nebo v uživatelském rozhraní Azure AD; jsou k dispozici pouze ve spravované doméně Azure služba AD DS.
+    * Tyto objekty se nezobrazují pomocí rozhraní Microsoft Graph API ani v uživatelském rozhraní Azure AD; jsou k dispozici pouze ve spravované doméně Azure služba AD DS.
 
 ## <a name="create-a-custom-ou"></a>Vytvoření vlastní organizační jednotky
 

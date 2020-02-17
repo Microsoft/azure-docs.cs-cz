@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 65006b8357db44c3e1b8f8d9e819615b5dd9db6e
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 571be831d337c71a084780da18b480cdd1e42d20
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031744"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77365207"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení chyb pomocí runbooků
 
@@ -569,53 +569,77 @@ Spuštění příkazu **sudo** pro Linux Hybrid Runbook Worker načte neočekáv
 
 * Ověřte konfiguraci účtu nxautomationuser v souboru sudoers. Viz [spouštění Runbooků na Hybrid Runbook Worker](../automation-hrw-run-runbooks.md)
 
+## <a name="scenario-cmdlet-failing-in-pnp-powershell-runbook-on-azure-automation"></a>Scénář: selhání rutiny v Runbooku PowerShellu PnP v Azure Automation
+
+### <a name="issue"></a>Problém
+
+Když sada Runbook zapíše objekt generovaný PowerShellem PnP do výstupního Azure Automation přímo, výstup rutiny nemůže streamovat zpět do automatizace.
+
+### <a name="cause"></a>Příčina
+
+K tomuto problému nejčastěji dochází, když Azure Automation zpracovává Runbooky, které vyvolávají rutiny PowerShellu pro PnP, například **Add-pnplistitem**, bez zachycení vrácených objektů.
+
+### <a name="resolution"></a>Řešení
+
+Upravte skripty, abyste přiřadili jakékoli návratové hodnoty proměnným, aby se rutiny nepokoušely o zápis celých objektů do standardního výstupu. Skript může přesměrovat výstupní datový proud do rutiny, jak je znázorněno níže.
+
+```azurecli
+  $null = add-pnplistitem
+```
+Pokud váš skript analyzuje výstup rutiny, skript musí uložit výstup do proměnné a manipulovat s proměnnou namísto pouhého streamování výstupu.
+
+```azurecli
+$SomeVariable = add-pnplistitem ....
+if ($SomeVariable.someproperty -eq ....
+```
+
 ## <a name="other"></a>Můj problém není uvedený výše.
 
 Níže uvedené části obsahují další běžné chyby navíc k podpoře dokumentace, která vám pomůžou problém vyřešit.
 
-## <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Hybrid Runbook Worker nespouští úlohy nebo nereaguje
+### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Hybrid Runbook Worker nespouští úlohy nebo nereaguje
 
 Pokud spouštíte úlohy pomocí hybridního pracovního procesu místo v Azure Automation, možná budete muset [vyřešit problémy samotného hybridního pracovního procesu](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker).
 
-## <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook selže s chybou typu Žádná oprávnění
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>Runbook selže s chybou typu Žádná oprávnění
 
 Účty Spustit jako nemusí mít stejná oprávnění oproti prostředkům Azure jako váš aktuální účet. Ujistěte se, že váš účet Spustit jako má [oprávnění pro přístup k jakýmkoli prostředkům](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) používaným ve vašem skriptu.
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbooky fungovaly, ale najednou fungovat přestaly
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbooky fungovaly, ale najednou fungovat přestaly
 
 * Pokud byly Runbooky dříve spuštěny, ale byly zastaveny, ujistěte se, že [účet Spustit jako](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal) nevypršel.
 * Pokud ke spouštění Runbooků používáte Webhooky, zajistěte, aby nevypršela platnost [Webhooku](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook) .
 
-## <a name="issues-passing-parameters-into-webhooks"></a>Problémy s předáváním parametrů do webhooků
+### <a name="issues-passing-parameters-into-webhooks"></a>Problémy s předáváním parametrů do webhooků
 
 Nápovědu k předávání parametrů do webhooků najdete v tématu [Spuštění runbooku z Webhooku](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters).
 
-## <a name="issues-using-az-modules"></a>Problémy s použitím AZ modules
+### <a name="issues-using-az-modules"></a>Problémy s použitím AZ modules
 
-Používání modulů Az a AzureRM ve stejném účtu Automation se nepodporuje. Další informace najdete v tématu [AZ modules in runbookys](https://docs.microsoft.com/azure/automation/az-modules) , kde najdete další podrobnosti.
+Použití AZ modules a AzureRM modulů ve stejném účtu Automation se nepodporuje. Další informace najdete v tématu [AZ modules in runbookys](https://docs.microsoft.com/azure/automation/az-modules) , kde najdete další podrobnosti.
 
-## <a name="inconsistent-behavior-in-runbooks"></a>Nekonzistentní chování runbooků
+### <a name="inconsistent-behavior-in-runbooks"></a>Nekonzistentní chování runbooků
 
 Postupujte podle pokynů v části [Spuštění Runbooku](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior) , abyste se vyhnuli problémům s souběžnými úlohami, provedli jsme vytváření prostředků víckrát nebo jiné logiky s časováním v sadách Runbook.
 
-## <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Sada Runbook se nezdařila s chybou bez oprávnění, zakázáno (403) nebo některé varianty
+### <a name="runbook-fails-with-the-error-no-permission-forbidden-403-or-some-variation"></a>Sada Runbook se nezdařila s chybou bez oprávnění, zakázáno (403) nebo některé varianty
 
 Účty Spustit jako nemusí mít stejná oprávnění oproti prostředkům Azure jako váš aktuální účet. Ujistěte se, že váš účet Spustit jako má [oprávnění pro přístup k jakýmkoli prostředkům](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) používaným ve vašem skriptu.
 
-## <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbooky fungovaly, ale najednou fungovat přestaly
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Runbooky fungovaly, ale najednou fungovat přestaly
 
 * Pokud byly Runbooky dříve spuštěny, ale byly zastaveny, ujistěte se, že účet Spustit jako nevypršel. Viz [obnovení certifikace](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
 * Pokud ke spouštění Runbooků používáte Webhooky, ujistěte se, že Webhook [nevypršel](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook).
 
-## <a name="passing-parameters-into-webhooks"></a>Předávání parametrů do webhooků
+### <a name="passing-parameters-into-webhooks"></a>Předávání parametrů do webhooků
 
 Nápovědu k předávání parametrů do webhooků najdete v tématu [Spuštění runbooku z Webhooku](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters).
 
-## <a name="using-az-modules"></a>Používání modulů Az
+### <a name="using-az-modules"></a>Používání modulů Az
 
-Používání modulů Az a AzureRM ve stejném účtu Automation se nepodporuje. Viz [AZ modules in runbookys](https://docs.microsoft.com/azure/automation/az-modules).
+Použití AZ modules a AzureRM modulů ve stejném účtu Automation se nepodporuje. Viz [AZ modules in runbookys](https://docs.microsoft.com/azure/automation/az-modules).
 
-## <a name="using-self-signed-certificates"></a>Používání certifikátů podepsaných svým držitelem
+### <a name="using-self-signed-certificates"></a>Používání certifikátů podepsaných svým držitelem
 
 Pokud chcete používat certifikáty podepsané svým držitelem, přečtěte si téma [Vytvoření nového certifikátu](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate).
 

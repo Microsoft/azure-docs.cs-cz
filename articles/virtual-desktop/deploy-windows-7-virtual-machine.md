@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 28111e45d365069f80f10b88c38618dbb2b4651d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f8aebee72105e4f3218e7ae5f867962d0ed8e23d
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896224"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367364"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Nasazení virtuálního počítače s Windows 7 do Windows Virtual Desktopu
 
 Proces nasazení virtuálního počítače s Windows 7 na virtuálním počítači s Windows se trochu liší od virtuálních počítačů, na kterých běží novější verze Windows. V této příručce se dozvíte, jak nasadit Windows 7.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, vytvořte fond hostitelů podle pokynů v tématu [Vytvoření fondu hostitelů s prostředím PowerShell](create-host-pools-powershell.md) . Potom postupujte podle pokynů v tématu [vytvoření fondů hostitelů v nástroji Azure Marketplace](create-host-pools-azure-marketplace.md#optional-assign-additional-users-to-the-desktop-application-group) k přiřazení jednoho nebo více uživatelů do skupiny desktopových aplikací.
 
@@ -44,7 +44,7 @@ Postup nastavení virtuálního počítače se systémem Windows 7 na virtuáln�
      shutdown /r /t 0
      ```
     
-12. Pokud chcete získat registrační token, postupujte podle pokynů uvedených [tady](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) .
+12. Pokud chcete získat registrační token, postupujte podle pokynů uvedených [tady](/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo/) .
 13. [Stáhněte si agenta virtuální plochy Windows pro Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
 14. [Stáhněte správce agenta virtuálních počítačů s Windows pro Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
 15. Spusťte instalační program agenta virtuálních počítačů s Windows a postupujte podle pokynů. Po zobrazení výzvy zadejte registrační klíč, který jste vytvořili v kroku 12.

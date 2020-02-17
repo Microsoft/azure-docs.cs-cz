@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1300ecff416962bda4da800c5eff134951658846
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 600cd3f3ad8826b52648b51beb8c66a382766b80
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159161"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367876"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurace chování přihlášení Azure Active Directory pro aplikace pomocí zásad zjišťování domovské sféry
 
@@ -100,9 +100,7 @@ Zásady se projeví jenom pro konkrétní aplikaci, když jsou připojené k ins
 
 V jednom okamžiku může být aktivní jenom jedna zásada HRD (instanční objekt).  
 
-K vytváření a správě zásad HRD můžete použít buď rozhraní API Microsoft Azure Active Directory Graph přímo, nebo rutiny Azure Active Directory PowerShellu.
-
-Graph API, které pracují se zásadami, jsou popsány v článku [operace na zásadách](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) na webu MSDN.
+K vytváření a správě zásad HRD můžete použít rutiny prostředí PowerShell pro Azure Active Directory.
 
 Následuje příklad definice zásady HRD:
     
@@ -209,7 +207,7 @@ Pokud chcete zásady HRD použít po jejím vytvoření, můžete ji přiřadit 
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Krok 2: Vyhledání instančního objektu, ke kterému se má zásada přiřadit  
 Potřebujete **ID** objektu služby, ke kterému chcete zásadu přiřadit. Existuje několik způsobů, jak najít **objectID** objektů služby.    
 
-Můžete použít portál nebo můžete zadat dotaz na [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Můžete také přejít na [Nástroj Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) a přihlásit se k účtu služby Azure AD, abyste viděli všechny instanční objekty vaší organizace. 
+Můžete použít portál nebo můžete zadat dotaz na [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta). Můžete také přejít na [Nástroj Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) a přihlásit se k účtu služby Azure AD, abyste viděli všechny instanční objekty vaší organizace. 
 
 Vzhledem k tomu, že používáte PowerShell, můžete použít následující rutinu pro výpis objektů služby a jejich ID.
 

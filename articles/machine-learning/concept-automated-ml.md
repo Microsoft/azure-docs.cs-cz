@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f7a2e78ed2b1de770f7a60f1312e069dc1757cb6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 2869384d4f4072e1e71ab0a69af81edc68e7a5b7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191195"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77366246"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -211,22 +211,71 @@ Následující techniky jsou další možnosti pro zpracování nevyvážených 
 
 Pomocí Azure Machine Learning můžete pomocí automatizovaného ML vytvořit model Pythonu a nechat ho převést na formát ONNX. Modul runtime ONNX podporuje C#, takže můžete automaticky použít model sestavený ve vašich C# aplikacích bez nutnosti opětovného kódování nebo jakékoli latence sítě, které zavádí koncové body REST. Vyzkoušejte příklad tohoto toku [v tomto poznámkovém bloku Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb).
 
-## <a name="automated-ml-across-microsoft"></a>Automatizované ML v Microsoftu
+## <a name="automated-ml-in-azure-machine-learning"></a>Automatizované ML v Azure Machine Learning
 
-Automatizovaná ML je také k dispozici v jiných řešeních Microsoftu, jako jsou:
+Azure Machine Learning nabízí dvě prostředí pro práci s automatizovanými ML.
 
-|Integrace|Popis|
-|------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Automatický výběr modelů a školení v aplikacích .NET pomocí sady Visual Studio a Visual Studio Code s automatizovanými ML ML.NET.|
-|[HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|Škálujte automatizované školicí úlohy na Sparku v clusterech HDInsight paralelně.|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Vyvolejte modely strojového učení přímo v Power BI.|
-|[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|Vytvářejte nové modely strojového učení pro vaše data v clusterech s SQL Server 2019 s velkými objemy dat.|
+* Pro zákazníky se zkušenostmi s kódem [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py) 
+
+* Pro zákazníky s omezením a nezkušeným kódem se Azure Machine Learning Studio na [https://ml.azure.com](https://ml.azure.com/)  
+
+V následující části jsou shrnuté funkce automatizovaného ML na nejvyšší úrovni, které jsou podporovány v každém prostředí.
+
+<a name="parity"></a>
+
+### <a name="experiment-settings"></a>Nastavení experimentu 
+
+Následující nastavení vám umožní nakonfigurovat experiment automatizovaného ML. 
+
+| | Python SDK| Studio
+----|:----:|:----:
+Rozdělit data na sady vlaků a ověření| ✓|✓
+Podporuje úlohy ML: klasifikace, regrese a prognózy.| ✓| ✓
+Optimalizuje se na základě primární metriky.| ✓| ✓
+Podporuje COMPUTE AML jako cíl výpočtů. | ✓|✓
+Konfigurace horizontu předpovědi, cílové prodlevy & posuvné okno|✓|✓
+Nastavení kritérií ukončení |✓|✓ 
+Nastavit souběžné iterace| ✓|✓
+Odkládací sloupce| ✓|✓
+Algoritmy blokování|✓|✓
+Křížové ověření |✓|✓
+Podporuje školení u clusterů Azure Databricks.| ✓|
+Zobrazit názvy navržených funkcí|✓|
+Featurization souhrn| ✓|
+Featurization svátků|✓|
+Úroveň podrobností pro soubory protokolu| ✓|
+
+### <a name="model-settings"></a>Nastavení modelu
+
+Tato nastavení je možné použít pro nejlepší model v důsledku automatizovaného experimentu ML.
+
+||Python SDK|Studio
+----|:----:|:----:
+Nejlepší registrace modelu| ✓|✓
+Nejlepší nasazení modelu| ✓| ✓
+Nejlepší vysvětlovat model| ✓|✓
+Povolit &ové kompletování modelů sady zásobníku| ✓|✓
+Zobrazit nejlepší model založený na neprimární metrikě|✓|Povolit/zakázat kompatibilitu s modelem ONNX|✓|
+Testování modelu | ✓| |
+
+### <a name="run-control-settings"></a>Spustit nastavení ovládacího prvku
+
+Tato nastavení umožňují kontrolovat a řídit spouštění experimentů a jejich podřízených spuštění. 
+
+||Python SDK| Studio
+----|:----:|:----:
+Spustit souhrnnou tabulku| ✓|✓
+Zrušit běh| ✓|✓
+Zrušit podřízený běh| ✓| ✓
+Získat guardrails| ✓|✓
+Pozastavit běh| ✓| 
+Pokračovat v běhu| ✓| 
 
 ## <a name="next-steps"></a>Další kroky
 
 Podívejte se na příklady a Naučte se vytvářet modely pomocí automatizovaného strojového učení:
 
-+ Postupujte podle [kurzu: Automatické učení regresního modelu pomocí automatizovaného Machine Learning Azure](tutorial-auto-train-models.md)
++ Postupujte podle [kurzu: Automatické učení regresního modelu s Azure Machine Learning](tutorial-auto-train-models.md)
 
 + Nakonfigurujte nastavení pro experiment automatických školení:
   + V Azure Machine Learning Studiu [použijte tento postup](how-to-create-portal-experiments.md).
@@ -235,3 +284,5 @@ Podívejte se na příklady a Naučte se vytvářet modely pomocí automatizovan
 + Naučte se, jak automaticky naučit data časových řad pomocí [těchto kroků](how-to-auto-train-forecast.md).
 
 + Vyzkoušení [Jupyter notebook ukázek pro automatizované strojové učení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
+
+* Automatizovaná ML je dostupná taky v dalších řešeních Microsoftu, jako je [ml.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) a [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa282afdf910c2449b5d5ea0bc5e38a396f3aa02
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 70156335d0d5617b4c1ccb2d11ce8e9f8dc9d036
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608852"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368120"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Vlastnosti Azure Active Directoryho uživatele spolupráce B2B
 
@@ -73,7 +73,7 @@ Tato vlastnost určuje, jak se uživatel přihlásí.
 
 - Pozvaný uživatel: Tento uživatel byl pozván, ale dosud neodkazoval na pozvánku.
 
-- Externí služba Active Directory: Tento uživatel je doma v externí organizaci a ověřuje se pomocí účtu Azure AD, který patří do jiné organizace. Tento typ přihlášení odpovídá stavu 1.
+- Externí Azure Active Directory: Tento uživatel je doma v externí organizaci a ověřuje se pomocí účtu Azure AD, který patří do jiné organizace. Tento typ přihlášení odpovídá stavu 1.
 
 - Účet Microsoft: Tento uživatel je doma v účet Microsoft a ověřuje se pomocí účet Microsoft. Tento typ přihlášení odpovídá stavu 2.
 

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 12/16/2019
+ms.date: 02/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: fd744e6283b00b0dfdd50805cb628f5bc40ab8d6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e814d9be4a0db2852bd9e21f3d3c1d54a45bd268
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846154"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368645"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Tvar událostí pomocí Azure čas Series Insights ve verzi Preview
 
@@ -80,7 +80,7 @@ Instance časové řady obsahuje metadata zařízení. Tato metadata se nemění
 ### <a name="time-series-instance"></a>Instance řady čas 
 
 > [!NOTE]
-> Je čas řady ID *deviceId*.
+> ID časové řady je *deviceId*.
 
 ```JSON
 [
@@ -115,7 +115,7 @@ Instance časové řady obsahuje metadata zařízení. Tato metadata se nemění
 ]
 ```
 
-Čas Series Insights ve verzi Preview spojuje tabulku (po sloučení) během doby dotazu. Tabulka obsahuje další sloupce, jako například **typ**. Následující příklad ukazuje, jak můžete [tvarovat](./time-series-insights-send-events.md#supported-json-shapes) data telemetrie.
+Čas Series Insights ve verzi Preview spojuje tabulku (po sloučení) během doby dotazu. Tabulka obsahuje další sloupce, například **typ**. Následující příklad ukazuje, jak můžete [tvarovat](./time-series-insights-send-events.md#supported-json-shapes) data telemetrie.
 
 | deviceId  | Typ | L1 | L2 | časové razítko | series_Flow ft3 míry/s | vyseries_Engine psí tlak v oleji |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
