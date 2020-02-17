@@ -105,9 +105,9 @@
           href: search-sku-tier.md
         - name: Omezení služby
           href: search-limits-quotas-capacity.md
-        - name: Škálování oddílů a replik
+        - name: Úprava kapacity
           href: search-capacity-planning.md
-        - name: Doporučené postupy a strategie nasazení
+        - name: Škálování pro zajištění výkonu
           href: search-performance-optimization.md
         - name: Víceklientská architektura
           href: search-modeling-multitenant-saas-applications.md
