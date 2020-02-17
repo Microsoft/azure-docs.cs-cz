@@ -119,12 +119,22 @@
       href: ../../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: ukázky
   items:
-    - name: Vzorový kód pro rozhraní API pro faktury
-      href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-    - name: Vzorový kód pro rozhraní API služby Usage
-      href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-    - name: Vzorový kód pro rozhraní API služby RateCard
-      href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
+    - name: REST API
+      items:
+        - name: Kontrola podnikových nákladů
+          href: review-enterprise-billing.md
+        - name: Kontrola využití předplatného
+          href: review-subscription-billing.md
+        - name: Kontrola využití prostředků
+          href: review-service-usage-api.md
+    - name: Ukázky .NET
+      items:
+        - name: Vzorový kód pro rozhraní API pro faktury
+          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+        - name: Vzorový kód pro rozhraní API služby Usage
+          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+        - name: Vzorový kód pro rozhraní API služby RateCard
+          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: Referenční informace
   items:
     - name: Scénáře automatizace služby Billing
