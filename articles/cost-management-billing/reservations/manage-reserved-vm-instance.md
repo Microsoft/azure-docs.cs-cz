@@ -3,19 +3,17 @@ title: Správa rezervací Azure
 description: Zjistěte, jak spravovat rezervace Azure.
 ms.service: cost-management-billing
 author: bandersmsft
-manager: yashesvi
+ms.reviewer: yashesvi
 ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/06/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: cc24c176b5b61210d68d2dcb244d63f15402928b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 82bf250a7902cfe4b905991809fd4bbe5dea102a
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994048"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188507"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací prostředků Azure
 
@@ -128,7 +126,7 @@ Nastavení optimalizace rezervace aktualizujete takto:
 
 ## <a name="optimize-reservation-use"></a>Optimalizace využití rezervace
 
-Úspory z rezervací Azure vyplývají jen z trvalého využívání prostředků. Při nákupu rezervace zaplatíte předem náklady na prakticky 100% možné využití prostředku v jednoletém nebo tříletém období. Pokuste se svou rezervaci maximalizovat, abyste dosáhli co nejlepšího využití a úspory. Následující části vysvětlují, jak rezervaci monitorovat a optimalizovat její využití.
+Úspory z rezervací Azure vyplývají jen z trvalého využívání prostředků. Při nákupu rezervace zaplatíte náklady na prakticky 100% možné využití prostředku v jednoletém nebo tříletém období. Pokuste se svou rezervaci maximalizovat, abyste dosáhli co nejlepšího využití a úspory. Následující části vysvětlují, jak rezervaci monitorovat a optimalizovat její využití.
 
 ### <a name="view-reservation-use-in-the-azure-portal"></a>Zobrazení využití rezervace na webu Azure Portal
 

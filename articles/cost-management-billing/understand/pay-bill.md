@@ -2,22 +2,22 @@
 title: Placení vyúčtování služeb Microsoft Azure | Microsoft Docs
 description: Popisuje způsob platby faktury na webu Azure Portal.
 keywords: billing, past due, balance, pay now,
-author: jureid
-manager: jureid
+author: banders
+manager: judupont
 tags: billing, past due, pay now, bill, invoice, pay
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: d486fe72a43465832ca13ac1a62a7f0a9aeaa65e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 214382693d942152d82b7ae5e487969b8ebaeaff
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989706"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188122"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Postup placení vyúčtování služeb Microsoft Azure
 
@@ -35,21 +35,12 @@ Pokud chcete platit faktury na webu Azure Portal, musíte být vlastníkem, při
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.
-1. V okně **Přehled** klikněte na kartu *Souhrn*.
-
-    ![Snímek obrazovky, který zobrazuje kartu Souhrn](./media/pay-bill/billing-account-overview.png)
-
-1. Pokud máte fakturu splatnou nebo po splatnosti, uvidíte celkovou splatnou částku.
-1. Klikněte na modré tlačítko **Zaplatit**.
-
-    ![Snímek obrazovky, který zobrazuje tlačítko Zaplatit](./media/pay-bill/paynow-button-overview.png)
-
-1. V novém okně klikněte na **Vybrat způsob platby** a zvolte existující platební kartu nebo přidejte novou.<!-- screenshot of select payment method link -->
+1. V nabídce vlevo v části Fakturace vyberte **Faktury**.
+1. Pokud jsou některé faktury splatné nebo po splatnosti, uvidíte u této faktury modrý odkaz **Zaplatit**. Vyberte **Zaplatit**.
+1. V novém okně klikněte na **Vybrat způsob platby** a zvolte existující platební kartu nebo přidejte novou.
 1. Jakmile je vybraný způsob platby, klikněte na **Zaplatit**.
 
 Stav faktury se v okně faktury aktualizuje na zaplaceno.
-
-<!-- pay now from invoice blade -->
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Kontrola přístupu ke smlouvě se zákazníkem Microsoftu
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-mca.md)]

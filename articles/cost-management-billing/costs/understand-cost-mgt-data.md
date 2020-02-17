@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/29/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 156684676758d777231d3b159ba7bc4749b8582a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a514dc07da3e4fd5928614099eb86ecef311bbb1
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901757"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188534"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -85,8 +85,6 @@ Pokud nevidíte data pro předplatné a chcete určit, zda vaše předplatné sp
 
 V následujících tabulkách se zobrazují data, která jsou nebo nejsou zahrnuta ve službě Cost Management. Až do vygenerování faktury se náklady pouze odhadují. Zobrazené náklady nezahrnují bezplatné a předplacené kredity.
 
-**Data o nákladech a využití**
-
 | **Zahrnuto** | **Nezahrnuto** |
 | --- | --- |
 | Využití služby Azure<sup>5</sup>        | Poplatky za podporu – další informace najdete v tématu [Vysvětlení podmínek fakturace](../understand/understand-invoice.md). |
@@ -101,13 +99,42 @@ _<sup>**6**</sup> Nákupy na Marketplace nejsou momentálně dostupné pro nabí
 
 _<sup>**7**</sup> Nákupy rezervací jsou momentálně dostupné pouze pro účty smlouvy Enterprise (EA)._
 
-**Metadata**
+## <a name="how-tags-are-used-in-cost-and-usage-data"></a>Způsob použití značek v datech o nákladech a využití
 
-| **Zahrnuto** | **Nezahrnuto** |
-| --- | --- |
-| Značky prostředků<sup>8</sup> | Značky skupiny prostředků |
+Azure Cost Management přijímá značky jako součást jednotlivých záznamů o využití odesílaných jednotlivými službami. Pro tyto značky platí následující omezení:
 
-_<sup>**8**</sup> Značky prostředků použité při využití se generují z každé služby a nejsou dostupné zpětně u historického využití._
+- Značky musí být použité přímo na prostředky a implicitně se nedědí z nadřazené skupiny prostředků.
+- Značky prostředků se podporují jenom pro prostředky nasazené do skupin prostředků.
+- Některé nasazené prostředky nemusí podporovat značky nebo nemusí vkládat značky do dat o využití – viz [Podpora značek pro prostředky Azure](../../azure-resource-manager/tag-support.md).
+- Značky prostředků jsou zahrnuté jenom v datech o využití, když se značka používá. Značky se neaplikují na historická data.
+- Značky prostředků jsou ve službě Cost Management dostupné jenom po aktualizaci dat – viz [Rozdíly ve frekvenci aktualizace dat o využití](#usage-data-update-frequency-varies).
+- Značky prostředků jsou ve službě Cost Management dostupné, jenom pokud je prostředek aktivní nebo spuštěný a vytváří záznamy o využití (např. ne v případě uvolněného virtuálního počítače).
+- Správa značek vyžaduje přístup přispěvatele ke každému prostředku.
+- Správa zásad značek vyžaduje přístup buď vlastníka, nebo přispěvatele zásad ke skupině pro správu, předplatnému nebo skupině prostředků.
+    
+Pokud ve službě Cost Management určitou značku nevidíte, zvažte následující okolnosti:
+
+- Použila se značka přímo na prostředek?
+- Použila se značka před více než 24 hodinami? Viz [Rozdíly ve frekvenci aktualizace dat o využití](#usage-data-update-frequency-varies)
+- Podporuje typ prostředku značky? Následující typy prostředků nepodporují značky v datech o využití od 1. prosince 2019. Úplný seznam toho, co se podporuje, najdete v tématu [Podpora značek pro prostředky Azure](../../azure-resource-manager/tag-support.md).
+    - Adresáře Azure Active Directory B2C
+    - Brány Azure Firewall
+    - Azure NetApp Files
+    - Data Factory
+    - Databricks
+    - Nástroje pro vyrovnávání zatížení
+    - Network Watcher
+    - Notification Hubs
+    - Service Bus
+    - Time Series Insights
+    - VPN Gateway
+    
+Tady je několik tipů pro práci se značkami:
+
+- Plánujte dopředu a definujte strategii označování, která vám umožní rozdělit náklady podle organizace, aplikace, prostředí atd.
+- Použijte Azure Policy ke kopírování značek skupin prostředků do jednotlivých prostředků a vynucení strategie označování.
+- Použijte rozhraní API značek ve spojení s dotazem nebo podrobnostmi o využití a získejte všechny náklady na základě aktuálních značek.
+
 
 **Upgrade bezplatné zkušební verze na nabídku průběžných plateb**
 

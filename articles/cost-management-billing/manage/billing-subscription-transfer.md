@@ -3,30 +3,27 @@ title: Převod vlastnictví fakturace předplatného Azure
 description: Popisuje, jak převést vlastnictví fakturace předplatného Azure na jiný účet, a obsahuje některé nejčastější dotazy týkající se tohoto procesu.
 keywords: převod předplatného azure, azure převod předplatného, přesun předplatného azure do jiného účtu, azure změna vlastníka předplatného, převod předplatného azure na jiný účet, azure převod fakturace
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2bbfd7f4ddc5fc34c0bec3612783dfef5074d83
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3eb76535a8047840a577f5b044001d85c20b13f0
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76270856"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188392"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
 
-Vlastnictví fakturace vašeho předplatného Azure můžete chtít převést, když opouštíte organizaci, nebo chcete, aby se vaše předplatné účtovalo k jinému účtu. Převod vlastnictví fakturace na jiný účet poskytuje správcům v novém účtu oprávnění k provádění fakturačních úkolů, jako je třeba změna způsobu platby, zobrazení poplatků a zrušení předplatného.
+Vlastnictví fakturace vašeho předplatného Azure můžete chtít převést, když opouštíte organizaci, nebo pokud chcete, aby se vaše předplatné účtovalo k jinému účtu. Převod vlastnictví fakturace na jiný účet poskytuje správcům v novém účtu oprávnění pro fakturační úkoly. Mohou změnit způsob platby, zobrazit si poplatky a předplatné zrušit.
 
 Pokud chcete vlastnictví fakturace zachovat, ale chcete změnit typ vašeho předplatného, přečtěte si téma [Přepnutí předplatného Azure na jinou nabídku](switch-azure-offer.md). Pokud chcete řídit, kdo může spravovat prostředky v předplatném, přečtěte si téma [Předdefinované role pro prostředky Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
-Pokud jste zákazníkem se smlouvou Enterprise (EA), můžou správci vaší organizace převádět vlastnictví fakturace vašich předplatných mezi účty. Další informace najdete v tématu [Převod vlastnictví fakturace předplatných se smlouvou Enterprise (EA)](#transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions).
+Pokud jste zákazníkem se smlouvou Enterprise (EA), můžou správci vaší organizace převádět vlastnictví fakturace vašich předplatných mezi účty. Další informace najdete v tématu [Převod vlastnictví fakturace předplatných se smlouvou Enterprise (EA)](#EA).
 
 ## <a name="transfer-billing-ownership-of-an-azure-subscription"></a>Převod vlastnictví fakturace předplatného Azure
 
@@ -44,7 +41,7 @@ Pokud jste zákazníkem se smlouvou Enterprise (EA), můžou správci vaší org
 
 1. Zadejte e-mailovou adresu uživatele, který je správcem fakturace účtu, který bude novým vlastníkem předplatného.
 
-1. Pokud předplatné převádíte na účet v jiném tenantovi Azure AD, vyberte, jestli chcete předplatné do tenanta nového účtu přesunout. Další informace najdete v tématu [Převod předplatného na účet v jiném tenantovi služby Azure AD](#transferring-subscription-to-an-account-in-another-azure-ad-tenant).
+1. Pokud předplatné převádíte na účet v jiném tenantovi Azure AD, vyberte, jestli chcete předplatné do tenanta nového účtu přesunout. Další informace najdete v tématu [Převod předplatného na účet v jiném tenantovi služby Azure AD](#transfer-a-subscription-to-another-azure-ad-tenant-account).
 
     > [!IMPORTANT]
     >
@@ -58,7 +55,7 @@ Pokud jste zákazníkem se smlouvou Enterprise (EA), můžou správci vaší org
 
    ![E-mail pro převod předplatného odeslaný příjemci](./media/billing-subscription-transfer/billing-receiver-email.png)
 
-1. Uživatel může žádost o převod schválit tím, že vybere odkaz v e-mailu a bude postupovat podle zobrazených pokynů. Uživatel bude muset zvolit způsob platby, který se bude pro platbu za předplatné používat. Pokud navíc uživatel nemá účet Azure, bude se muset zaregistrovat k novému účtu.
+1. Uživatel může žádost o převod schválit tím, že vybere odkaz v e-mailu a bude postupovat podle zobrazených pokynů. Uživatel potom zvolí způsob platby, který se bude pro platbu za předplatné používat. Pokud uživatel nemá účet Azure, musí si zaregistrovat nový účet.
 
    ![První webová stránka převodu předplatného](./media/billing-subscription-transfer/billing-accept-ownership-step1.png)
 
@@ -68,23 +65,23 @@ Pokud jste zákazníkem se smlouvou Enterprise (EA), můžou správci vaší org
 
 1. Výborně! Předplatné je teď převedené.
 
-## <a name="transferring-subscription-to-an-account-in-another-azure-ad-tenant"></a>Převod předplatného na účet v jiném tenantovi služby Azure AD
+## <a name="transfer-a-subscription-to-another-azure-ad-tenant-account"></a>Převod předplatného na jiný účet tenanta Azure AD
 
 Tenant Azure Active Directory (AD) se vám vytvoří při registraci do Azure. Tenant představuje váš účet. Tenant se používá ke správě přístupu k předplatným a prostředkům.
 
 Když vytvoříte nové předplatné, hostuje se v tenantovi Azure AD vašeho účtu. Pokud chcete přístup k vašemu předplatnému nebo jeho prostředkům poskytnout jiným uživatelům, musíte je pozvat, aby se připojili k vašemu tenantovi. Takto můžete řídit přístup k předplatným a prostředkům.
 
-Když převádíte vlastnictví fakturace vašeho předplatného na účet v jiném tenantovi Azure AD, můžete předplatné do tenanta nového účtu přesunout. Pokud to uděláte, všichni uživatelé, skupiny nebo instanční objekty, které měly [přístup na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md) pro správu předplatných a jejich prostředků, tento přístup ztratí. Přístup ke správě prostředků bude mít pouze uživatel v novém účtu, který přijme žádost o převod. Aby bylo možné poskytnout přístup uživatelům, kteří ho dříve měli, bude muset nový vlastník [přidat tyto uživatele do předplatného ručně](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Když převádíte vlastnictví fakturace vašeho předplatného na účet v jiném tenantovi Azure AD, můžete předplatné do tenanta nového účtu přesunout. Pokud to uděláte, všichni uživatelé, skupiny nebo instanční objekty, které měly [přístup na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md) pro správu předplatných a jejich prostředků, tento přístup ztratí. Přístup ke správě prostředků bude mít pouze uživatel v novém účtu, který přijme žádost o převod. Pokud nový vlastník chce poskytnout přístup uživatelům, kteří ho ztratili, [musí je do předplatného ručně přidat](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 
-## <a name="transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions"></a>Převod předplatných sady Visual Studio, programu MPN a předplatných pro vývoj a testování s průběžnými platbami
+## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>Převod předplatných sady Visual Studio a programu Partner Network
 
-Předplatná sady Visual Studio a programu Microsoft Partner Network mají přidružený měsíční opakující se kredit Azure. Při převodu těchto předplatných není kredit v cílovém fakturačním účtu dostupný. Předplatné používá kredit v cílovém fakturačním účtu. Robert například převede předplatné sady Visual Studio Enterprise do Janina účtu 9. září a Jana převod přijme. Jakmile se převod dokončí, začne předplatné používat kredit v Janině účtu. Tento kredit se devátého dne každého měsíce obnoví.
+Předplatná sady Visual Studio a programu Microsoft Partner Network mají přidružený měsíční opakující se kredit Azure. Při převodu těchto předplatných není kredit v cílovém fakturačním účtu dostupný. Předplatné používá kredit v cílovém fakturačním účtu. Robert například 9. září převede předplatné sady Visual Studio Enterprise do Janina účtu a Jana tento převod přijme. Jakmile se převod dokončí, začne předplatné používat kredit v Janině účtu. Kredit se resetuje vždy devátého v měsíci.
 
 
 <a id="EA"></a>
 
-## <a name="transfer-billing-ownership-of-enterprise-agreement-ea-subscriptions"></a>Převod vlastnictví fakturace předplatných se smlouvou Enterprise (EA)
+## <a name="transfer-ea-subscription-billing-ownership"></a>Přenést vlastnictví fakturace předplatných EA
 
 Podnikový správce může převádět vlastnictví předplatných mezi účty v rámci registrace. Další informace najdete v tématu o [změně vlastníka účtu](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) na portálu EA.
 
@@ -145,7 +142,7 @@ Pokud si nejste jisti, kdo je správcem účtu předplatného, zjistíte to nás
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Převádí se všechno? Včetně skupin prostředků, virtuálních počítačů, disků a dalších spuštěných služeb?
 
-Všechny prostředky, jako jsou virtuální počítače, disky a weby, se převedou na nový účet. Pokud ale převádíte předplatné do účtu v jiném tenantovi Azure AD, žádné [role správce](add-change-subscription-administrator.md) ani přiřazení [řízení přístupu na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md) předplatného se [nepřevedou](#transferring-subscription-to-an-account-in-another-azure-ad-tenant). Dále se společně s předplatným nepřevádí [registrace aplikací](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) a jiné služby specifické pro tenanta.
+Všechny prostředky, jako jsou virtuální počítače, disky a weby, se převedou na nový účet. Pokud ale převádíte předplatné do účtu v jiném tenantovi Azure AD, žádné [role správce](add-change-subscription-administrator.md) ani přiřazení [řízení přístupu na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md) předplatného se [nepřevedou](#transfer-a-subscription-to-another-azure-ad-tenant-account). Dále se společně s předplatným nepřevádí [registrace aplikací](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) a jiné služby specifické pro tenanta.
 
 ### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Můžu převést vlastnictví na účet v jiné zemi?
 Převody mezi zeměmi bohužel na webu Azure Portal nejdou provádět. Pokud chcete předplatné převést mezi zeměmi, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
@@ -155,9 +152,9 @@ Ano, předplatné můžete převádět mezi vašimi účty. Vaše účty jsou ko
 
 ### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>Způsobí převod předplatného nějaké výpadky služeb?
 
-Pokud převádíte předplatné na účet ve stejném tenantovi Azure AD, nemá to žádný vliv na prostředky spuštěné v tomto předplatném. Pokud ale převádíte předplatné na účet v jiném tenantovi a rozhodnete se předplatné do tohoto tenanta přesunout, všichni uživatelé, skupiny a instanční objekty, které měly [přístup na základě role (RBAC)](../../role-based-access-control/overview.md) ke správě prostředků v předplatném, tento přístup ztratí. To může vést k výpadkům služby.
+Pokud převádíte předplatné na účet ve stejném tenantovi Azure AD, nemá to žádný vliv na prostředky spuštěné v tomto předplatném. Informace o kontextu uložené v PowerShellu se ale neaktualizují, takže je možná budete muset vymazat nebo změnit nastavení. Pokud převádíte předplatné na účet v jiném tenantovi a rozhodnete se předplatné do tohoto tenanta přesunout, všichni uživatelé, skupiny a instanční objekty, které měly [přístup na základě role (RBAC)](../../role-based-access-control/overview.md) ke správě prostředků v předplatném, tento přístup ztratí. Následkem toho může dojít k výpadku služeb.
 
-### <a name="do-users-in-new-account-have-access-to-usage-and-billing-history"></a>Mají uživatelé v novém účtu přístup k historii využití a fakturace?
+### <a name="can-users-in-new-account-access-usage-and-billing-history"></a>Mají uživatelé v novém účtu přístup k historii využití a fakturace?
 
 Jediné informace, které budou mít uživatelé v novém účtu k dispozici, budou informace o nákladech na předplatné za poslední měsíc. Zbytek historie využití a fakturace se společně s předplatným nepřevede.
 
@@ -167,7 +164,7 @@ Pokud nemůžete převést vlastnictví předplatného, můžete prostředky mig
 
 ### <a name="if-i-transfer-a-visual-studio-or-microsoft-partner-network-subscription-does-my-credit-carry-forward-with-the-subscription-in-the-new-account"></a>Když převádím předplatné sady Visual Studio nebo programu Microsoft Partner Network, převede se můj kredit do nového účtu společně s předplatným?
 
-Ne, váš kredit nebude v novém účtu k dispozici. Uživatel, který přijímá žádost o převod, musí mít licenci sady Visual Studio, aby žádost o převod mohl přijmout. Předplatné používá kredit sady Visual Studio, který je k dispozici v účtu uživatele. Další informace najdete v článku [Převod předplatných sady Visual Studio, programu Microsoft Partner Network (MPN) a předplatných pro vývoj a testování s průběžnými platbami](#transferring-visual-studio-mpn-and-pay-as-you-go-devtest-subscriptions).
+Ne, váš kredit nebude v novém účtu k dispozici. Uživatel, který přijímá žádost o převod, musí mít licenci sady Visual Studio, aby žádost o převod mohl přijmout. Předplatné používá kredit sady Visual Studio, který je k dispozici v účtu uživatele. Další informace najdete v tématu věnovaném [převodu předplatných sady Visual Studio a programu Partner Network](#transfer-visual-studio-and-partner-network-subscriptions).
 
 
 ## <a name="frequently-asked-questions-faq-for-recipients"></a>Nejčastější dotazy pro příjemce
@@ -176,7 +173,7 @@ Tyto nejčastější dotazy se týkají uživatelů, kteří přijímají vlastn
 
 ### <a name="if-i-take-over-billing-ownership-of-a-subscription-from-another-account-do-users-in-that-account-continue-to-have-access-to-my-resources"></a>Pokud převezmu vlastnictví fakturace předplatného z jiného účtu, budou mít uživatelé tohoto účtu i nadále přístup k mým prostředkům?
 
-Ano. Pokud je ale váš účet v tenantovi Azure AD, který se liší od tenanta předplatného, a uživatel, který odeslal žádost o převod, přesune předplatné do tenanta vašeho účtu, všechny [role správce](add-change-subscription-administrator.md) a přiřazení [řízení přístupu na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md) se odeberou. Pokud chcete zobrazit uživatele, kteří mají přístup [na základě role (RBAC)](../../role-based-access-control/overview.md) ke správě prostředků v předplatném, použijte následující postup:
+Ano. Může ale dojít k odebrání [rolí správce](add-change-subscription-administrator.md) a přiřazení [řízení přístupu na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md). Ke ztrátě přístupu dojde, když je váš účet v jiném tenantovi Azure AD, než je tenant předplatného, a uživatel, který odeslal požadavek na převod, přesune předplatné do tenanta vašeho účtu. Pokud chcete zobrazit uživatele, kteří mají přístup [na základě role (RBAC)](../../role-based-access-control/overview.md) ke správě prostředků v předplatném, použijte následující postup:
 
 1. Přejděte na [stránku Předplatná na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Vyberte předplatné, které chcete zkontrolovat, a pak v levém podokně vyberte **Řízení přístupu (IAM)** .
@@ -193,7 +190,7 @@ Pokud příjemce potřebuje omezit přístup k prostředkům, měl by zvážit a
   1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
   2. V nabídce centra vyberte **Všechny prostředky**.
   3. Vyberte prostředek.
-  4. Na stránce prostředku klikněte na **Nastavení**. Tady můžete zobrazit a aktualizovat existující tajné kódy.
+  4. Na stránce prostředku vyberte **Nastavení**. Tady můžete zobrazit a aktualizovat existující tajné kódy.
 
 ### <a name="if-i-take-over-the-billing-ownership-of-a-subscription-in-the-middle-of-the-billing-cycle-do-i-have-to-pay-for-the-entire-billing-cycle"></a>Pokud převezmu vlastnictví fakturace předplatného uprostřed fakturačního cyklu, musím platit za celý fakturační cyklus?
 

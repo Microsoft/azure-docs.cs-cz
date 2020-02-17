@@ -2,28 +2,28 @@
 title: Úhrada předplatných Azure pomocí faktury
 description: Tento článek popisuje, jak zaplatit předplatná Azure pomocí faktury.
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: a0f012145788d2d1d4935e10691859e5aaf71255
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: a471e859261dc735e92bfff743eb3a8e13dd9a35
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75994334"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133628"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Úhrada předplatných Azure pomocí faktury
 
 Pokud přepnete na platby pomocí faktur, znamená to, že budete hradit faktury prostřednictvím šeku nebo bezhotovostního převodu do 30 dnů od jejich vystavení. Pokud chcete získat nárok na placení předplatného Azure pomocí faktur, odešlete žádost na podporu Azure. Po schválení vaší žádosti můžete přepnout na platby pomocí faktur (šekem nebo převodem) na webu[Azure Portal](https://portal.azure.com).
 
 > [!IMPORTANT]
-> * Platby pomocí faktur (šekem nebo bezhotovostním převodem) jsou dostupné jen pro podnikové účty.
+> * Platba pomocí faktury (šekem nebo převodem) je dostupná jenom pro zákazníky, kteří používají Azure jménem společnosti.
 > * Před přepnutím na tento způsob plateb je potřeba uhradit všechny nezaplacené poplatky.
 > * Platby pomocí faktur se pro globální službu Azure v Číně v současnosti nepodporují.
 

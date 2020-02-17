@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/31/2020
 ms.author: diberry
-ms.openlocfilehash: 5214395aa583bfa344f2c8e84066db84edb3939a
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 92552a9870f037555a6cde9daa67d3af112ccee7
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76966796"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368442"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Azure Language Understanding – vytváření znaků a vytváření kódu URL koncového bodu prostředku 32. Vytvořte pomocí [Azure Portal](../luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) nebo [Azure CLI](../luis-how-to-azure-subscription.md#create-resources-in-azure-cli).
 * Importujte aplikaci [TravelAgent](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/TravelAgent.json) z úložiště GitHub-Services-Language-porozumění.
@@ -29,8 +29,6 @@ ms.locfileid: "76966796"
 [!INCLUDE [Quickstart explanation of example utterance JSON file](get-started-get-model-json-example-utterances.md)]
 
 ## <a name="change-model-programmatically"></a>Programové změny modelu
-
-Pomocí možnosti přejít přidejte do aplikace [rozhraní API](https://aka.ms/luis-apim-v3-authoring) náročné na počítač.
 
 1. Vytvořte podadresář s názvem `lib` a zkopírujte ho do následujících Java knihovny:
 
@@ -135,7 +133,7 @@ Pomocí možnosti přejít přidejte do aplikace [rozhraní API](https://aka.ms/
     |Informace|Účel|
     |--|--|
     |`YOUR-KEY`|Klíč pro vytváření znaků 32.|
-    |`YOUR-ENDPOINT`| Váš koncový bod adresy URL pro vytváření Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`. Název prostředku se nastaví při vytváření prostředku.|
+    |`YOUR-ENDPOINT`| Váš koncový bod adresy URL pro vytváření například `replace-with-your-resource-name.api.cognitive.microsoft.com`. Název prostředku se nastaví při vytváření prostředku.|
     |`YOUR-APP-ID`| Vaše ID aplikace LUIS |
 
     Přiřazené klíče a prostředky jsou zobrazené na portálu LUIS v části Správa na stránce **prostředky Azure** . ID aplikace je k dispozici ve stejné části pro správu na stránce **nastavení aplikace** .

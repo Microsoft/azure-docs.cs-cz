@@ -3,19 +3,19 @@ title: Začínáme se službou Custom Speech-Speech
 titleSuffix: Azure Cognitive Services
 description: Custom Speech je sada online nástrojů, která vám umožní vyhodnotit a vylepšit přesnost řeči na text pro vaše aplikace, nástroje a produkty. Vše, co bude trvat, je několik testovací zvukové soubory. Pomocí odkazů níže můžete začít vytvářet vlastní prostředí pro text v textu.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.author: erhopf
-ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/14/2020
+ms.author: dapine
+ms.openlocfilehash: 0788ff84cd5b0d50e0798d0d72ee84b47cb5f0b1
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806007"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368328"
 ---
 # <a name="what-is-custom-speech"></a>Co je Custom Speech?
 
@@ -60,6 +60,9 @@ Po vytvoření účtu Azure a předplatného služby Speech se budete muset při
 Obsah, který je podobný datům, modelům, testům a koncovým bodům, je uspořádán do **projektů** na [portálu Custom Speech](https://speech.microsoft.com/customspeech). Každý projekt je specifický pro doménu a zemi/jazyk. Můžete například vytvořit projekt pro volání Center, která používají angličtinu v USA.
 
 Pokud chcete vytvořit svůj první projekt, vyberte **Speech-to-text/Custom Speech**a pak klikněte na **Nový projekt**. Postupujte podle pokynů průvodce a vytvořte projekt. Po vytvoření projektu by se vám měly zobrazit čtyři karty: **data**, **testování**, **školení**a **nasazení**. Pomocí odkazů uvedených v [následujících krocích](#next-steps) se dozvíte, jak používat jednotlivé karty.
+
+> [!IMPORTANT]
+> [Portál Custom Speech](https://aka.ms/custom-speech) se nedávno aktualizoval. Pokud jste vytvořili předchozí projekty s daty, modely, testy a publikovanými koncovými body na portálu položku CRI nebo s rozhraními API, je potřeba vytvořit nový projekt na novém portálu, abyste se připojili k těmto starým entitám.
 
 ## <a name="next-steps"></a>Další kroky
 

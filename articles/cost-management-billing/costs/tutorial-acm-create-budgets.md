@@ -1,21 +1,20 @@
 ---
 title: Kurz – vytváření a správa rozpočtů Azure | Microsoft Docs
 description: Tento kurz vám pomůže plánovat a zohledňovat náklady na služby Azure, které využíváte.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/22/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: adwise
+ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: bb02c4903348a3b8c1d129f02be64109ec0f48eb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9900a2f7a41a6b35be75326b9412ec628328e39b
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769850"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77132106"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytváření a správa rozpočtů Azure
 
@@ -33,12 +32,13 @@ Podívejte se na video zobrazující, [jak použít rozpočty na předplatná po
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořit rozpočet na portálu Azure Portal
-> * Upravovat rozpočet
+> * Vytvoření rozpočtu na portálu Azure Portal
+> * Vytváření a úpravy rozpočtů pomocí PowerShellu
+> * Úprava rozpočtu
 
 ## <a name="prerequisites"></a>Požadavky
 
-Rozpočty jsou podporovány pro různé typy účtů Azure. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku [Vysvětlení dat služby Cost Management](understand-cost-mgt-data.md). Pokud chcete zobrazit rozpočty, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure.
+Rozpočty jsou podporovány pro různé typy účtů Azure. Úplný seznam podporovaných typů účtů si můžete prohlédnout v článku, který [vysvětluje data služby Cost Management](understand-cost-mgt-data.md). Pokud chcete zobrazit rozpočty, potřebujete přinejmenším oprávnění ke čtení k vašemu účtu Azure.
 
  Pokud máte předplatná Azure EA, musíte mít oprávnění ke čtení, abyste si mohli rozpočty zobrazit. Chcete-li rozpočty vytvářet a spravovat, musíte mít oprávnění přispěvatele. Můžete vytvořit individuální rozpočty pro předplatná EA a skupiny prostředků. Nemůžete však vytvořit rozpočty pro fakturační účty EA.
 
@@ -62,7 +62,7 @@ Chcete-li vytvořit nebo zobrazit rozpočet, otevřete požadovaný obor na webu
 
 Po vytvoření rozpočtů se zobrazí jednoduchý přehled vašich aktuálních výdajů v rámci rozpočtů.
 
-Klikněte na tlačítko **Add** (Přidat).
+Vyberte **Přidat**.
 
 ![Příklad zobrazující seznam rozpočtů, které již byly vytvořeny](./media/tutorial-acm-create-budgets/budgets01.png)
 
@@ -78,7 +78,11 @@ Na základě dosud zvolených polí v rozpočtu se zobrazí graf, který vám po
 
 ![Příklad znázorňující tvorbu rozpočtu s údaji o měsíčních nákladech ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Po konfiguraci částky rozpočtu klikněte na **Další** a nakonfigurujte upozornění rozpočtu. Rozpočty vyžadují alespoň jednu prahovou hodnotu pro náklady (% rozpočtu) a odpovídající e-mailovou adresu. Do jednoho rozpočtu můžete volitelně zahrnout až pět prahových hodnot a pět e-mailových adres. Po dosažení prahové hodnoty rozpočtu jsou e-mailová oznámení obvykle přijímána za méně než 20 hodin. Další informace o oznámeních naleznete v tématu [Použití upozornění na náklady](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md). V následujícím příkladu se e-mailové upozornění vygeneruje při dosažení 90 % rozpočtu. Pokud vytvoříte rozpočet pomocí rozhraní API pro rozpočty, můžete také lidem přiřadit role pro příjem upozornění. Na webu Azure Portal není přiřazování rolí lidem podporováno. Další informace o rozhraní API pro rozpočty Azure najdete v tématu popisujícím [rozhraní API pro rozpočty](/rest/api/consumption/budgets).
+Po konfiguraci částky rozpočtu vyberte **Další** a nakonfigurujte upozornění rozpočtu. Rozpočty vyžadují alespoň jednu prahovou hodnotu pro náklady (% rozpočtu) a odpovídající e-mailovou adresu. Do jednoho rozpočtu můžete volitelně zahrnout až pět prahových hodnot a pět e-mailových adres. Po dosažení prahové hodnoty rozpočtu jsou e-mailová oznámení obvykle přijímána za méně než 20 hodin.
+
+Pokud chcete dostávat e-maily, přidejte adresu azure-noreply@microsoft.com do seznamu schválených odesílatelů, aby e-maily nechodily do složky nevyžádané pošty. Další informace o oznámeních naleznete v tématu [Použití upozornění na náklady](../../cost-management/cost-mgt-alerts-monitor-usage-spending.md).
+
+V následujícím příkladu se e-mailové upozornění vygeneruje při dosažení 90 % rozpočtu. Pokud vytvoříte rozpočet pomocí rozhraní API pro rozpočty, můžete také lidem přiřadit role pro příjem upozornění. Na webu Azure Portal není přiřazování rolí lidem podporováno. Další informace o rozhraní API pro rozpočty Azure najdete v tématu popisujícím [rozhraní API pro rozpočty](/rest/api/consumption/budgets).
 
 ![Příklad znázorňující podmínky upozornění](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
@@ -86,7 +90,7 @@ Vytvořený rozpočet se zobrazí v analýze nákladů. Zobrazení rozpočtu ve 
 
 ![Příklad rozpočtu a výdajů zobrazených v analýze nákladů](./media/tutorial-acm-create-budgets/cost-analysis.png)
 
-V předchozím příkladu jste vytvořili rozpočet pro předplatné. Můžete ale také vytvořit rozpočet pro skupinu prostředků. Pokud chcete vytvořit rozpočet pro skupinu prostředků, přejděte na **Správa nákladů a fakturace** &gt; **Předplatné** &gt; vyberte předplatné > **Skupiny prostředků** > vyberte skupinu prostředků > **Rozpočty** > a pak kliknutím na **Přidat** přidejte rozpočet.
+V předchozím příkladu jste vytvořili rozpočet pro předplatné. Můžete také vytvořit rozpočet pro skupinu prostředků. Pokud chcete vytvořit rozpočet pro skupinu prostředků, přejděte na **Správa nákladů a fakturace** &gt; **Předplatné** &gt; vyberte předplatné > **Skupiny prostředků** > vyberte skupinu prostředků > **Rozpočty** > a pak kliknutím na **Přidat** přidejte rozpočet.
 
 ## <a name="costs-in-budget-evaluations"></a>Náklady ve vyhodnocení rozpočtu
 
@@ -106,12 +110,12 @@ Když vytváříte nebo upravujete rozpočet pro předplatné nebo obor skupiny 
 
 
 
-Pokud chcete vytvořit nebo aktualizovat skupiny akcí, klikněte během vytváření nebo úprav rozpočtu na **Spravovat skupiny akcí**.
+Pokud chcete vytvořit nebo aktualizovat skupiny akcí, vyberte během vytváření nebo úprav rozpočtu **Spravovat skupiny akcí**.
 
 ![Příklad vytváření rozpočtu se zobrazenou možností Spravovat skupiny akcí](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
 
-Potom klikněte na **Přidat skupinu akcí** a vytvořte skupinu akcí.
+Potom vyberte **Přidat skupinu akcí** a vytvořte skupinu akcí.
 
 
 ![Obrázek skupinového rámečku Přidat skupinu akcí](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
@@ -128,12 +132,42 @@ Následující příklad ukazuje prahové hodnoty rozpočtu nastavené na 50 %,
 
 Integrace rozpočtu se skupinami akcí funguje jenom pro skupiny akcí, které mají zakázané běžné schéma upozornění. Další informace o zakázání schématu najdete v tématu popisujícím [možnosti povolení běžného schématu upozornění](../../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema).
 
+## <a name="create-and-edit-budgets-with-powershell"></a>Vytváření a úpravy rozpočtů pomocí PowerShellu
+
+Zákazníci se smlouvou EA můžou vytvářet a upravovat rozpočty programově pomocí modulu Azure PowerShellu.  Pokud chcete stáhnout nejnovější verzi Azure PowerShellu, spusťte následující příkaz:
+
+```azurepowershell-interactive
+install-module -name AzureRm
+```
+
+Následující ukázkové příkazy vytvoří rozpočet.
+
+```azurepowershell-interactive
+#Sign into Azure Powershell with your account
+
+Connect-AzureRmAccount
+
+#Select a subscription to to monitor with a budget
+
+select-AzureRmSubscription -Subscription "Your Subscription"
+
+#Create an action group email receiver and corresponding action group
+
+$email1 = New-AzureRmActionGroupReceiver -EmailAddress test@test.com -Name EmailReceiver1
+$ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -Name TestAG -ShortName TestAG -Receiver $email1).Id
+
+#Create a monthly budget that sends an email and triggers an Action Group to send a second email. Make sure the StartDate for your monthly budget is set to the first day of the current month. Note that Action Groups can also be used to trigger automation such as Azure Functions or Webhooks.
+
+New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
+```
+
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Vytvoření rozpočtu na portálu Azure Portal
+> * Vytváření a úpravy rozpočtů pomocí PowerShellu
 > * Úprava rozpočtu
 
 V dalším kurzu se dozvíte, jak vytvořit opakovaný export pro data služby Cost Management.

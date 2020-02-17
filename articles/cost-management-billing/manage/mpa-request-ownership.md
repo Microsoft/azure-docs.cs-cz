@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 65b56511a3b454b192b5adb2a98fb3bb3510bb7e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6a4b215b2b386754bae2c1bbec171ed4bc558a93
+ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988198"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77048211"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Získání vlastnictví fakturace předplatných Azure pro vlastní účet se smlouvou MPA
 
@@ -120,7 +120,7 @@ O vlastnictví fakturace můžete požádat pro níže uvedené typy předplatn�
 - [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/)\*
 - [Smlouva Microsoft Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)
 
-\* Předplatné Enterprise pro vývoj/testování se po převodu bude účtovat podle tarifů průběžných plateb. Pro partnery CSP neplatí žádné slevy nabízené prostřednictvím smlouvy Enterprise zákazníka v rámci nabídky Enterprise pro vývoj/testování.
+\* Předplatné pro vývoj/testování se musí nejprve prostřednictvím lístku podpory převést na nabídku EA Enterprise. Po převodu se bude předplatné Enterprise pro vývoj/testování účtovat pomocí sazeb za průběžné platby. Žádné slevy nabízené prostřednictvím nabídky Enterprise pro vývoj/testování v rámci smlouvy EA zákazníka nebudou partnerovi CSP k dispozici.
 
 ## <a name="additional-information"></a>Další informace
 

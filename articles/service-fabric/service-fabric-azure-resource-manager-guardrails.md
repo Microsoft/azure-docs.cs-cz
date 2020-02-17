@@ -5,14 +5,14 @@ services: service-fabric
 documentationcenter: .net
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: fe5ff2a5eeb4b2c73165d1577702eb6af7079b61
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426738"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368578"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrails 
 Při nasazování clusteru Service Fabric jsou zavedeny guardrails, což způsobí selhání nasazení Azure Resource Manager v případě neplatné konfigurace clusteru. V následujících částech najdete přehled běžných potíží s konfigurací clusteru a kroky potřebné k tomu, abyste tyto problémy zmírnili. 
@@ -60,11 +60,26 @@ Následující část obsahuje příklad neshodné odolnosti mezi nastavením od
 * Odolnost sady škálování virtuálního počítače se neshoduje s cílovou Service Fabricou úrovní odolnosti typu uzlu.
 * Odolnost sady škálování virtuálního počítače odpovídá aktuální Service Fabric úrovně trvanlivosti nebo cílové Service Fabric typu uzlu. 
 
-
 ### <a name="mitigation"></a>Omezení rizik
 Chcete-li opravit neshodu trvanlivosti, která je označena některou z výše uvedených chybových zpráv:
 1. Úroveň trvanlivosti aktualizujte buď v části rozšíření sady škálování virtuálního počítače, nebo Service Fabric typu uzlu Azure Resource Manager šablony, aby se zajistilo, že se hodnoty shodují.
 2. Znovu nasaďte šablonu Azure Resource Manager s aktualizovanými hodnotami.
+
+
+## <a name="seed-node-deletion"></a>Odstranění uzlu počáteční hodnoty 
+### <a name="overview"></a>Přehled
+Cluster Service Fabric má vlastnost [úrovně spolehlivosti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) , která se používá k určení počtu replik systémových služeb, které běží na primárním uzlu typu clusteru. Počet požadovaných replik bude určovat minimální počet uzlů, které musí být udržovány v primárním typu uzlu clusteru. Pokud počet uzlů v primárním uzlu překročí požadované minimum pro úroveň spolehlivosti, cluster přestane být stabilní.  
+
+### <a name="error-messages"></a>Chybové zprávy 
+Byla zjištěna operace odebrání uzlu počáteční hodnoty a bude odmítnuta. 
+* Výsledkem této operace může být pouze {0} potenciálních počátečních uzlů, které mají zůstat v clusteru, zatímco {1} jsou potřeba jako minimum.
+* Odebrání {0}ch počátečních uzlů z {1} by způsobilo, že cluster dostává z důvodu ztráty kvora uzlu na počátečních uzlech. Maximální počet počátečních uzlů, které lze v určitém čase odebrat, je {2}.
+ 
+### <a name="mitigation"></a>Omezení rizik 
+Ujistěte se, že váš typ primárního uzlu má dostatek Virtual Machines pro spolehlivost určenou v clusteru. Virtuální počítač nebudete moct odebrat, pokud by se sada škálování virtuálního počítače nastavila pod minimálním počtem uzlů pro danou úroveň spolehlivosti.
+* Pokud je úroveň spolehlivosti správně zadaná, ujistěte se, že je v primárním uzlu typu podle potřeby pro úroveň spolehlivosti k dispozici dostatek uzlů. 
+* Pokud je úroveň spolehlivosti nesprávná, zahajte změnu v prostředku Service Fabric tak, aby se před zahájením operací s škálováním sady virtuálních počítačů snížila úroveň spolehlivosti, a počkejte, než se dokončí.
+* Pokud je úroveň spolehlivosti bronzová, postupujte podle těchto [kroků](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) , abyste mohli cluster řádně škálovat.
 
 ## <a name="next-steps"></a>Další kroky
 * Vytvoření clusteru na virtuálních počítačích nebo počítačích se systémem Windows Server: [Service Fabric vytvoření clusteru pro Windows Server](service-fabric-cluster-creation-for-windows-server.md)

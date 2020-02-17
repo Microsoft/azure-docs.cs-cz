@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 607b65d6a6893901ce23cd48c277c14209128866
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137971"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367639"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -28,7 +28,9 @@ Propojení entit je schopnost identifikovat a odstranit identitu entity nalezeno
 
 ### <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
 
-Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé entity v textu a kategorizovat je do předem definovaných tříd nebo typů. Například: lidé, místa a organizace.
+Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé entity v textu a kategorizovat je do předem definovaných tříd nebo typů, jako je například osoba, umístění, událost, produkt a organizace.  
+
+Od verze 3 může tato funkce rozhraní API pro analýzu textu také identifikovat osobní a citlivé typy informací, jako je telefonní číslo, číslo sociálního pojištění, e-mailová adresa a číslo bankovního účtu.  Identifikace těchto entit může pomoci při klasifikaci citlivých dokumentů a redigování osobních údajů.
 
 ## <a name="named-entity-recognition-versions-and-features"></a>Verze a funkce pro rozpoznávání pojmenovaných entit
 
@@ -89,7 +91,7 @@ Propojení entit
 | Množství      | Řadový       | "2.", "Second"     |
 | Množství      | Věk           | "90 den starý", "30 let starý"    |
 | Množství      | Měna      | "$10,99"     |
-| Množství      | Globální     | "10 mil", "40 cm"     |
+| Množství      | Dimenze     | "10 mil", "40 cm"     |
 | Množství      | Teplota   | "32 stupňů"    |
 | DateTime      | Není k dispozici\*         | "6:17:30 4. února 2012"      |
 | DateTime      | Datum          | "Květen 2, 2017", "05/02/2017"   |

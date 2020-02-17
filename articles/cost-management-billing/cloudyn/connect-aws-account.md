@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: dcb4c30fe485559834791fa567856bc78cff067e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 28229ad71327daefb8e42881cf001b6a3ddd3a53
+ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770328"
+ms.lasthandoff: 02/08/2020
+ms.locfileid: "77086839"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Připojení účtu Amazon Web Services
 
@@ -41,7 +41,7 @@ V prvním kroku získáte z portálu Cloudyn jedinečné připojovací heslo. V 
 
 ### <a name="add-aws-read-only-role-based-access"></a>Přidání přístupu AWS pro čtení na základě rolí
 
-1. Přihlaste se ke konzole AWS na adrese https://console.aws.amazon.com/iam/home a vyberte **Roles** (Role).
+1. Přihlaste se ke konzole AWS na adrese [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home) a vyberte **Roles** (Role).
 2. Klikněte na **Create Role** (Vytvořit roli) a vyberte **Another AWS account** (Jiný účet AWS).
 3. Do pole **Account ID** (ID účtu) vložte `432263259397`. Toto ID účtu představuje účet kolektoru dat Cloudyn, který AWS přiřadí službě Cloudyn. Použijte přesně stejné ID účtu, jako je zde.
 4. Vedle **Options** (Možnosti) vyberte **Require external ID** (Vyžadovat externí ID). Vložte do pole jedinečnou hodnotu, kterou jste zkopírovali z pole **externího ID** v Cloudynu. Pak klikněte na **Další: Permissions** (Další: Oprávnění).  
@@ -76,7 +76,7 @@ Následující oddíly vás povedou při vytvoření uživatele jen pro čtení,
 
 ### <a name="add-aws-read-only-user-based-access"></a>Přidání přístupu AWS jen pro čtení na základě uživatele
 
-1. Přihlaste se ke konzole AWS na adrese https://console.aws.amazon.com/iam/home a vyberte **Users** (Uživatelé).
+1. Přihlaste se ke konzole AWS na adrese [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home) a vyberte **Users** (Uživatelé).
 2. Klikněte na **Add User** (Přidat uživatele).
 3. Do pole **User name** (Uživatelské jméno) zadejte jméno uživatele.
 4. V poli **Access type** (Typ přístupu) vyberte **Programmatic access** (Programový přístup) a klikněte na **Next: Permissions** (Další: Oprávnění).  
@@ -107,7 +107,7 @@ Služba Cloudyn začne shromažďovat data a plnit sestavy. V dalším kroku [po
 
 Následující postup použijte k získání ARN role pro AWS. ARN role umožňuje udělit oprávnění ke čtení fakturačního kbelíku.
 
-1. Přihlaste se ke konzole AWS na adrese https://console.aws.amazon.com a vyberte **Services** (Služby).
+1. Přihlaste se ke konzole AWS na adrese [https://console.aws.amazon.com](https://console.aws.amazon.com) a vyberte **Services** (Služby).
 2. Do pole pro vyhledávání služby zadejte *IAM* a vyberte tuto možnost.
 3. V nabídce vlevo vyberte **Roles** (Role).
 4. Ze seznamu rolí vyberte roli, kterou jste vytvořili pro přístup ke Cloudynu.
@@ -117,7 +117,7 @@ Následující postup použijte k získání ARN role pro AWS. ARN role umožňu
 
 Vytvořte kbelík S3, do kterého se budou ukládat podrobné informace o fakturaci.
 
-1. Přihlaste se ke konzole AWS na adrese https://console.aws.amazon.com a vyberte **Services** (Služby).
+1. Přihlaste se ke konzole AWS na adrese [https://console.aws.amazon.com](https://console.aws.amazon.com) a vyberte **Services** (Služby).
 2. Do pole pro vyhledávání služby zadejte *S3* a vyberte **S3**.
 3. Na stránce Amazon S3 klikněte na **Create bucket** (Vytvořit kbelík).
 4. V průvodci vytvořením kbelíku zvolte název kbelíku a oblast a klikněte na **Next** (Další).  
@@ -192,4 +192,4 @@ U některých optimalizačních sestav může získání odpovídajícího vzork
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete získat další informace o Cloudynu, pokračujte kurzem, který se věnuje [kontrole využití a nákladů](tutorial-review-usage.md) služby Cloudyn.
+- Pokud se chcete dozvědět více o Cloudynu, pokračujte kurzem o [kontrole využití a nákladů](tutorial-review-usage.md) v Cloudynu.

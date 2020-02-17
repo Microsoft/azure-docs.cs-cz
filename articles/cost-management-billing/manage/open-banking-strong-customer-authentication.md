@@ -2,21 +2,21 @@
 title: Ověřování PSD2 (otevřené bankovnictví) a SCA (Strong Customer Authentication) pro zákazníky Azure
 description: Tento článek vysvětluje, proč se některé nákupy Azure vyžaduje vícefaktorové ověřování a jak ho dokončit.
 author: bandersmsft
-manager: jureid
+manager: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: aff5e1e707980c9a63988c22653fa5fba0fc236b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5f9c5f861e238bf38451863fb2d39cbb8af93225
+ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75996037"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77133567"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Ověřování PSD2 (otevřené bankovnictví) a SCA (Strong Customer Authentication) pro zákazníky Azure
 
@@ -53,14 +53,13 @@ Pokud vaše banka platbu zamítne, stav vašeho účtu Azure na webu Azure Porta
 
 ### <a name="settle-outstanding-charges-for-marketplace-and-reservation-purchases"></a>Vyrovnání neuhrazených poplatků za nákupy na Marketplace a nákupy rezervací
 
-Nákupy na Marketplace a nákupy rezervací se účtují odděleně od služeb Azure. Pokud vaše banka zamítne poplatky za Marketplace nebo rezervace, vaše faktura se na webu Azure Portal zobrazí se stavem **Po termínu**. Stav vašich faktur za Marketplace a rezervace můžete zjistit pomocí následujících kroků:
+Nákupy na Marketplace a nákupy rezervací se účtují odděleně od služeb Azure. Pokud vaše banka zamítne poplatky za Marketplace nebo rezervace, vaše faktura bude po splatnosti a na webu Azure Portal zobrazí možnost **Zaplatit**. Faktury po splatnosti za Marketplace a rezervace můžete zaplatit pomocí následujících kroků:
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com/) jako správce účtu.
 2. Vyhledejte **Cost Management a fakturace**.
 3. V části Fakturace vyberte **Faktury**.
-4. Klikněte vpravo na kartu **Azure Marketplace a rezervace**.
-5. Vyberte odpovídající předplatné.
-6. V tabulce faktur zkontrolujte sloupec stavu. Pokud je faktura označena jako **splatná** nebo **po splatnosti**, klikněte na **Zaplatit**. Během tohoto procesu se zobrazí výzva k dokončení vícefaktorového ověřování.
+5. V rozevíracím seznamu předplatného vyberte předplatné přidružené vašemu nákupu na Marketplace nebo nákupu rezervací.
+6. V tabulce faktur zkontrolujte sloupec typu. Pokud je typ **Azure Marketplace a rezervace**, zobrazí se u splatné faktury nebo faktury po splatnosti odkaz **Zaplatit**. Pokud nevidíte **Zaplatit**, znamená to, že vaše faktura již byla zaplacena. Během procesu placení se zobrazí výzva k dokončení vícefaktorového ověřování.
 
 ## <a name="next-steps"></a>Další kroky
 - Pokud potřebujete zaplatit vyúčtování Azure, projděte si téma [Řešení zůstatku po splatnosti u předplatného Azure](resolve-past-due-balance.md).

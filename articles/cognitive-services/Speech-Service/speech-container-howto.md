@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: ca7e7f7460db82a357ed8aa240467a6894254217
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086996"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77367755"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalace a spuštění kontejnerů služby Speech (verze Preview)
 
@@ -35,11 +35,11 @@ Kontejnery řeči umožňují zákazníkům vytvořit architekturu aplikace pro 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před použitím kontejnerů řeči je nutné splnit následující předpoklady:
 
-| Požadováno | Účel |
+| Požaduje se | Účel |
 |--|--|
 | Modul Docker | Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Informace o úvodu k Docker a kontejneru najdete v tématu [Přehled Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> **V systému Windows**musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br> |
 | Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a taky znalosti základních `docker` příkazů. |
@@ -75,25 +75,25 @@ Následující tabulka popisuje minimální a doporučené přidělení prostře
 
 # <a name="speech-to-texttabstt"></a>[Převod řeči na text](#tab/stt)
 
-| Kontejner | Minimální | Doporučeno |
+| Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
 | Převod řeči na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
 # <a name="custom-speech-to-texttabcstt"></a>[Custom Speech na text](#tab/cstt)
 
-| Kontejner | Minimální | Doporučeno |
+| Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
 | Custom Speech na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
 # <a name="text-to-speechtabtts"></a>[Převod textu na řeč](#tab/tts)
 
-| Kontejner | Minimální | Doporučeno |
+| Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
 | Převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 
 # <a name="custom-text-to-speechtabctts"></a>[Vlastní převod textu na řeč](#tab/ctts)
 
-| Kontejner | Minimální | Doporučeno |
+| Kontejner | Minimální | Doporučené |
 |-----------|---------|-------------|
 | Vlastní převod textu na řeč | 1 jádro, 2 GB paměti | 2 jádra, 3 GB paměti |
 
@@ -261,7 +261,16 @@ Tento příkaz:
 
 # <a name="custom-speech-to-texttabcstt"></a>[Custom Speech na text](#tab/cstt)
 
-Kontejner *Custom Speech-to-text* spoléhá na vlastní model řeči. Vlastní model se musí [vyškolet](how-to-custom-speech-train-model.md) pomocí [vlastního portálu pro rozpoznávání řeči](https://speech.microsoft.com/customspeech). Pro spuštění kontejneru je vyžadováno **ID vlastního modelu** řeči. Najdete ho na stránce **školení** na vlastním portálu pro rozpoznávání řeči. Z vlastního portálu pro rozpoznávání řeči přejděte na stránku **školení** a vyberte model.
+Kontejner *Custom Speech-to-text* spoléhá na vlastní model řeči. Vlastní model se musí [vyškolet](how-to-custom-speech-train-model.md) pomocí [vlastního portálu pro rozpoznávání řeči](https://speech.microsoft.com/customspeech).
+
+> [!IMPORTANT]
+> Model Custom Speech musí být vyškolený z jedné z následujících verzí modelů:
+> * **20181201 (sjednocené v 3.3)**
+> * **20190520 (v 4.14 Unified)**
+> * **20190701 (v 4.17 Unified)**<br>
+> ![Custom Speech pro vlakovou model](media/custom-speech/custom-speech-train-model-container-scoped.png)
+
+Pro spuštění kontejneru je vyžadováno **ID vlastního modelu** řeči. Najdete ho na stránce **školení** na vlastním portálu pro rozpoznávání řeči. Z vlastního portálu pro rozpoznávání řeči přejděte na stránku **školení** a vyberte model.
 <br>
 
 ![Stránka s vlastním školením pro rozpoznávání řeči](media/custom-speech/custom-speech-model-training.png)

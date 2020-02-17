@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 37253bb4c6001afe436e22597e75e2bc869fbbc8
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 04b3802ae17440fe7cb96b424727600ab53aefce
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75990291"
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77168772"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Kurz: Optimalizace nákladů na základě doporučení
 
@@ -79,7 +79,7 @@ V podrobnostech virtuálního počítače se podívejte na využití virtuální
 
 Všimněte si aktuální velikosti virtuálního počítače. Po kontrole, že velikost virtuálního počítače lze změnit, zavřete podrobnosti virtuálního počítače, abyste viděli seznam virtuálních počítačů.
 
-Pokud chcete změnit velikost nebo vypnout virtuální počítač, vyberte v seznamu kandidátů **Změnit velikost *&lt;FromVirtualMachineSKU&gt;* na *&lt;ToVirtualMachineSKU&gt;***.
+Pokud chcete změnit velikost nebo vypnout virtuální počítač, vyberte v seznamu kandidátů **Změnit velikost _&lt;FromVirtualMachineSKU&gt;_ na _&lt;ToVirtualMachineSKU&gt;_** .
 ![Příklad doporučení s možností změny velikosti virtuálního počítače](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
 Dále se zobrazí seznam dostupných možností změny velikosti. Zvolte možnost, která pro váš scénář poskytuje nejvyšší výkon a která je nákladově nejefektivnější. V následujícím příkladu vybraná možnost změní velikost z **Standard_D8s_v3** na **Standard_D2s_v3**.

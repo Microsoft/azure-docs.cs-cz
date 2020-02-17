@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 11/08/2019
+ms.date: 02/14/2020
 ms.author: diberry
-ms.openlocfilehash: 2d7615d810e96beb61c3fe0b182a88158dc77c07
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4dca8ef9381096d83cd63a9f9a4449d9c8750933
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844832"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77368334"
 ---
 # <a name="whats-new-in-qna-maker"></a>Co je nového v QnA Maker
 
@@ -24,6 +24,10 @@ Zjistěte, co je nového ve službě. Tyto položky můžou vydávat poznámky, 
 ## <a name="release-notes"></a>Poznámky k verzi
 
 Přečtěte si, co je nového v QnA Maker.
+
+### <a name="february-2020"></a>Únor 2020
+
+* [Balíček npm](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) s rozhraním API GenerateAnswer
 
 ### <a name="november-2019"></a>Listopad 2019
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 02/11/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e77f6ca587a6dcd001b06fac22d974b22d6fee4e
+ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76294146"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77188650"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -61,6 +61,13 @@ Počáteční zobrazení analýzy nákladů zahrnuje následující oblasti.
 **Kontingenční grafy (prstencové):** Poskytují dynamické přehledy a rozdělení celkových nákladů podle společné sady standardních vlastností. Zobrazují náklady za aktuální měsíc od největších po nejmenší. Kontingenční grafy můžete kdykoli změnit výběrem jiného pivotu. Náklady jsou ve výchozím nastavení kategorizovány podle služby (kategorie měřiče), umístění (oblasti) a podřízeného oboru. Registrační účty například spadají pod fakturační účty, skupiny prostředků pod předplatná a prostředky pod skupiny prostředků.
 
 ![Počáteční zobrazení analýzy nákladů na webu Azure Portal](./media/quick-acm-cost-analysis/cost-analysis-01.png)
+
+### <a name="understand-forecast"></a>Vysvětlení prognózy
+
+Prognóza nákladů ukazuje projekci odhadovaných nákladů za vybrané časové období. Tento model je založený na modelu regrese časových řad. K přesné předpovědi nákladů vyžaduje aktuální data o využití a nákladech nejméně za 10 dnů. Pro konkrétní časové období model prognózy vyžaduje stejný objem školicích dat. To znamená, že například projekce na tři měsíce vyžaduje data o využití a nákladech nejméně za tři měsíce. 
+
+K zajištění projekce nákladů na jeden rok tento model využívá maximálně šest měsíců školicích dat. Ke změně predikce potřebuje školicí data nejméně za sedm dnů. Předpověď je založená na výrazných změnách, jako jsou prudké nárůsty a poklesy, ve vzorech nákladů a využití. Negeneruje individuální projekce pro jednotlivé položky ve vlastnostech umožňujících **seskupování**. Poskytuje jenom prognózu celkových kumulovaných nákladů. Pokud používáte více měn, model poskytuje prognózu nákladů jenom v USD. 
+
 
 ## <a name="customize-cost-views"></a>Přizpůsobení zobrazení nákladů
 
@@ -113,7 +120,7 @@ Ve výchozím nastavení zobrazuje analýza nákladů všechny náklady na využ
 
 ![Přepnutím ze skutečných nákladů na amortizační je možné zobrazit náklady na nákupy rezervací rozprostřené do celého období a přidělené k prostředkům, které rezervaci využily.](./media/quick-acm-cost-analysis/metric-picker.png)
 
-Amortizační náklady rozdělují nákupy rezervací do denních částek a rozprostřou je přes celou dobu trvání období rezervace. Místo nákupu v hodnotě 365 Kč z 1. ledna se tak například zobrazí každý den nákup v hodnotě 1 Kč od 1. ledna do 31. prosince. Kromě základní amortizace jsou tyto náklady také přerozděleny a přidruženy ke konkrétním prostředkům, které rezervaci využily. Pokud by například denní poplatek ve výši 1 Kč byl rozdělen mezi dva virtuální počítače, zobrazily by se vám za tento den dva poplatky ve výši 0,50 Kč. Pokud část rezervace nebude některý den využitá, zobrazí se vám jeden poplatek ve výši 0,50 Kč přidružený k příslušnému virtuálnímu počítači a další poplatek ve výši 0,50 Kč s typem poplatku `UnusedReservation`. Upozorňujeme, že náklady na nevyužité rezervace se dají zobrazit jenom v zobrazení amortizačních nákladů.
+Amortizační náklady rozdělují nákupy rezervací do denních částek a rozprostřou je přes celou dobu trvání období rezervace. Například místo nákupu v hodnotě 365 Kč z 1. ledna se tak každý den od 1. ledna do 31. prosince zobrazí nákup v hodnotě 1 Kč. Kromě základní amortizace jsou tyto náklady také přerozděleny a přidruženy ke konkrétním prostředkům, které rezervaci využily. Pokud by se například denní poplatek ve výši 1 Kč rozdělil mezi dva virtuální počítače, zobrazily by se vám za tento den dva poplatky ve výši 0,50 Kč. Pokud část rezervace nebude některý den využitá, zobrazí se vám jeden poplatek ve výši 0,50 Kč přidružený k příslušnému virtuálnímu počítači a další poplatek ve výši 0,50 Kč s typem poplatku `UnusedReservation`. Upozorňujeme, že náklady na nevyužité rezervace se dají zobrazit jenom v zobrazení amortizačních nákladů.
 
 Vzhledem k rozdílům v započítávání nákladů je důležité mít na vědomí, že v zobrazení skutečných a amortizačních nákladů se zobrazí rozdílné celkové částky. Obecně platí, že celkové náklady v měsících s nákupy rezervací se při přepnutí na amortizační náklady sníží a v měsících po nákupech rezervací se zvýší. Amortizace je v současné době dostupná jenom pro nákupy rezervací a není dostupná pro nákupy přes Azure Marketplace.
 

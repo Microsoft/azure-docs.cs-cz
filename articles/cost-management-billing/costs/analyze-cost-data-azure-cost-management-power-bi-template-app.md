@@ -1,0 +1,155 @@
+---
+title: Analýza nákladů na Azure s využitím aplikace Power BI
+description: Tento článek vysvětluje, jak nainstalovat a používat aplikaci Power BI Azure Cost Management.
+keywords: ''
+author: bandersmsft
+ms.author: banders
+ms.date: 02/12/2020
+ms.topic: conceptual
+ms.service: cost-management-billing
+ms.reviewer: benshy
+ms.openlocfilehash: 4a50ce5c386f1b928e9f767891840c84534938a9
+ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/12/2020
+ms.locfileid: "77169697"
+---
+# <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Analýza nákladů pomocí aplikace Power BI Azure Cost Management pro smlouvy Enterprise (EA)
+
+Tento článek vysvětluje, jak nainstalovat a používat aplikaci Power BI Azure Cost Management. Aplikace vám pomůže analyzovat a spravovat náklady na Azure v Power BI. Pomocí aplikace můžete sledovat náklady, trendy využití a identifikovat možnosti optimalizace nákladů, abyste snížili výdaje.
+
+Aplikaci si stáhnete do Power BI Desktopu. Aplikaci můžete použít tak, jak je, nebo ji můžete upravit, abyste rozšířili výchozí filtry, zobrazení a vizualizace a přizpůsobili je svým potřebám. Pak se pomocí ní připojte k dalším datům a vytvořte přizpůsobené sestavy poskytující ucelené zobrazení vašich celkových obchodních nákladů.
+
+Aplikace Power BI Azure Cost Management aktuálně podporuje pouze zákazníky se [smlouvou Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
+
+## <a name="prerequisites"></a>Požadavky
+
+- [Licence Power BI Pro](/power-bi/service-self-service-signup-for-power-bi) pro instalaci a použití aplikace
+- Pokud se chcete připojit k datům, musíte použít účet [správce Enterprise](../manage/understand-ea-roles.md)
+
+## <a name="installation-steps"></a>Kroky instalace
+
+Postup instalace aplikace:
+
+1. Otevřete [aplikaci Power BI Azure Cost Management](https://aka.ms/costmgmt/ACMApp).
+2. Na stránce Power BI AppSource vyberte **Získat hned**.
+3. Výběrem **Pokračovat** odsouhlasíte podmínky použití a zásady ochrany osobních údajů.
+4. V poli **Instalovat tuto aplikaci Power BI** vyberte **Instalovat**.
+5. V případě potřeby vytvořte pracovní prostor a vyberte **Pokračovat**.
+6. Po dokončení instalace se zobrazí oznámení, že je vaše nová aplikace připravená.
+7. Vyberte **Přejít do aplikace**.
+8. V okně **Začínáme s novou aplikací** v části **Připojit data** vyberte **Připojit**.  
+  ![Začínáme s novou aplikací – Připojit](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/connect-data2.png)
+9. V zobrazeném dialogovém okně zadejte do pole **BillingProfileIdOrEnrollmentNumber** číslo registrace EA. Zadejte počet měsíců, pro které se mají data získat. Ponechte výchozí hodnotu pro **Obor** na **Číslo registrace** a pak vyberte **Další**.  
+  ![Zadání informací o registraci EA](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
+10. Další dialogové okno se připojí k Azure a získá data požadovaná pro doporučení rezervovaných instancí. Ponechte nakonfigurované výchozí hodnoty a vyberte **Přihlásit**.  
+  ![Připojení k Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
+11. Poslední krok instalace se připojí k registraci EA a vyžaduje účet [podnikového správce](../manage/understand-ea-roles.md). Vyberte **Přihlásit** a ověřte se pomocí své registrace EA. Tento krok také v Power BI spustí akci aktualizace dat.  
+  ![Připojení k registraci EA](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
+    > [!NOTE]
+    > Dokončení procesu aktualizace dat může trvat poměrně dlouho. Délka závisí na zadaném počtu měsíců a množství dat potřebných k synchronizaci.
+12. Chcete-li zjistit stav aktualizace dat, vyberte v pracovním prostoru kartu **Datové sady**. Podívejte se vedle časového razítka Aktualizováno. Pokud pořád probíhá aktualizace, uvidíte příslušný ukazatel.  
+  ![Aktualizace dat](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/data-refresh2.png)
+
+Po dokončení aktualizace dat vyberte aplikaci Azure Cost Management, abyste zobrazili předem vytvořené sestavy.
+
+## <a name="reports-available-with-the-app"></a>Sestavy dostupné v aplikaci
+
+V aplikaci jsou k dispozici následující sestavy.
+
+**Začínáme** – poskytuje užitečné odkazy na dokumentaci a odkazy k poskytnutí zpětné vazby.
+
+**Přehled účtu** – sestava zobrazuje měsíční souhrn informací, jako například:
+
+- Poplatky za kredity
+- Nové nákupy
+- Poplatky za Azure Marketplace
+- Nadlimitní využití a celkové poplatky
+
+**Využití podle předplatných a skupin prostředků** – poskytuje zobrazení nákladů v průběhu času a grafy zobrazující náklady podle předplatných a skupin prostředků.
+
+**Využití podle služeb** – poskytuje zobrazení využití v průběhu času podle MeterCategory. Můžete sledovat data o využití a přejít k podrobnostem jakékoli anomálie, abyste porozuměli špičkám a propadům využití.
+
+**5 hlavních ovladačů využití** – v sestavě se zobrazí souhrn vyfiltrovaných nákladů podle prvních 5 MeterCategory a odpovídajících MeterName.
+
+**Využití AHB Windows Serveru** – sestava zobrazuje počet virtuálních počítačů, u kterých je povolené zvýhodněné hybridní využití Azure. Zobrazuje také počet jader nebo vCPU používaných virtuálními počítači.
+
+![Úplná sestava zvýhodněného hybridního využití Azure](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report-full.png)
+
+Tato sestava také identifikuje virtuální počítače s Windows, u kterých je **povolené** zvýhodněné hybridní využití, ale mají _méně než_ 8 vCPU. Zobrazuje také, kde zvýhodněné hybridní využití **není povolené** a přitom je k dispozici 8 _nebo více_ vCPU. Tyto informace vám pomůžou plně využívat zvýhodněné hybridní využití. Použijte výhodu na vaše nejdražší virtuální počítače a maximalizujte potenciální úspory.
+
+![Zvýhodněné hybridní využití Azure – méně než 8 vCPU a nepovolené vCPU](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ahb-report.png)
+
+**Vrácení peněz za rezervované instance** – sestava vám pomůže pochopit, kde a kolik výhod rezervované instance (RI) se používá pro oblast, předplatné, skupinu prostředků nebo prostředek. Sestava k zobrazení používá amortizovaná data o využití.
+
+Abyste zobrazili data o nevyužití rezervovaných instancí, můžete použít filtr pro _chargetype_.
+
+Další informace o amortizovaných datech najdete v článku [Získání nákladů na rezervace a jejich využití u smlouvy Enterprise](/azure/cost-management-billing/reservations/understand-reserved-instance-usage-ea).
+
+**Úspory za rezervované instance** – v sestavě se zobrazují úspory vyplývající z rezervací pro předplatné, skupinu prostředků a úroveň prostředků. Zobrazuje se:
+
+- Náklady rezervace
+- Odhadované náklady na vyžádání, pokud by se na použití nepoužila rezervace
+- Úspora nákladů plynoucí z rezervace
+
+ Sestava od celkových úspor odečte všechny marné náklady na nedostatečně využité rezervace. Bez rezervace by k marným nákladům nedošlo.
+
+Amortizovaná data o využití můžete použít k sestavení dat.
+
+<a name="shared-recommendation"></a>
+**Pokrytí virtuálních počítačů pomocí RI (sdílené doporučení)** – sestava je rozdělená mezi využití virtuálních počítačů na vyžádání a využití virtuálních počítačů v rámci RI za vybrané období. Poskytuje doporučení pro nákupy RI pro virtuální počítače ve sdíleném rozsahu.
+
+Chcete-li sestavu použít, vyberte filtr přechodu k podrobnostem.
+
+![Sestava pokrytí virtuálních počítačů pomocí RI – výběr přechodu k podrobnostem](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-drill-down2.png)
+
+Vyberte oblast, kterou chcete analyzovat. Pak vyberte skupinu flexibility velikosti instance a tak dále.
+
+Pro každou úroveň přechodu k podrobnostem se na sestavu použijí následující filtry:
+
+- Data o pokrytí na pravé straně představují filtr, který ukazuje, kolik využití se účtuje podle sazeb na vyžádání a kolik je pokryto na základě rezervace.
+- Doporučení se také filtrují.
+
+Tabulka doporučení poskytuje doporučení pro nákup rezervací na základě používaných velikostí virtuálních počítačů.
+
+Hodnoty _Normalizovaná velikost_ a _Doporučené množství normalizovaných_ vám pomůžou normalizovat nákup na nejmenší velikost pro skupinu flexibility velikosti instance. Tyto informace jsou užitečné, pokud plánujete zakoupit jenom jednu rezervaci pro všechny velikosti ve skupině flexibility velikosti instance.
+
+![Doporučení RI](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ri-recomendations.png)
+
+**Pokrytí virtuálních počítačů pomocí RI (jednotlivé doporučení)** – sestava je rozdělená mezi využití virtuálních počítačů na vyžádání a využití virtuálních počítačů v rámci RI za vybrané časové období. Poskytuje doporučení pro nákupy RI pro virtuální počítače v rozsahu předplatného.
+
+Podrobnosti o tom, jak používat tuto sestavu, najdete v části [Pokrytí virtuálních počítačů pomocí RI (sdílené doporučení)](#shared-recommendation).
+
+**Nákupy RI** – sestava zobrazuje nákupy rezervovaných instancí v zadaném období.
+
+**Ceník** – sestava zobrazuje podrobný seznam cen specifických pro fakturační účet nebo registraci EA.
+
+## <a name="data-reference"></a>Reference pro data
+
+Následující informace shrnují data, která jsou k dispozici prostřednictvím aplikace. K dispozici jsou také odkazy na rozhraní API, která poskytují podrobné informace o datových polích a hodnotách.
+
+| **Odkaz na tabulku** | **Popis** |
+| --- | --- |
+| **AutoFitComboMeter** | Data zahrnutá v aplikaci pro normalizaci doporučení RI a jejich použití na nejmenší velikost ve skupině rodiny instancí. |
+| [**Shrnutí zůstatku**](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary#response) | Souhrn zůstatku pro smlouvy Enterprise. |
+| [**Rozpočty**](/rest/api/consumption/budgets/get#definitions) | Podrobnosti o rozpočtu pro zobrazení skutečných nákladů nebo využití v rámci stávajících rozpočtových cílů. |
+| [**Ceníky**](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet#see-also) | Použitelné sazby měření pro zadaný fakturační profil nebo registraci EA. |
+| [**Poplatky RI**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges#response) | Poplatky spojené s vašimi rezervovanými instancemi za posledních 24 měsíců. |
+| [**Doporučení RI (sdílená)** ](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response) | Doporučení pro nákup rezervovaných instancí založená na trendech využití všech vašich předplatných za posledních 7, 30 nebo 60 dnů. |
+| [**Doporučení RI (jednotlivé)** ](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#response-1) | Doporučení pro nákup rezervovaných instancí založená na trendech využití vašeho jednotlivého předplatného za posledních 7, 30 nebo 60 dnů. |
+| [**Podrobnosti využití RI**](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#response) | Podrobnosti o spotřebě pro stávající rezervované instance za poslední měsíc. |
+| [**Souhrn využití RI**](/rest/api/consumption/reservationssummaries/list) | Procentní část denního využití rezervací Azure. |
+| [**Podrobnosti využití**](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#usage-details-field-definitions) | Rozpis spotřebovaných množství a odhadovaných poplatků za daný fakturační profil v registraci EA. |
+| [**Amortizované podrobnosti využití**](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#usage-details-field-definitions) | Rozpis spotřebovaných množství a odhadovaných amortizovaných poplatků za daný fakturační profil v registraci EA. |
+
+## <a name="next-steps"></a>Další kroky
+
+Další informace o konfiguraci dat, aktualizaci, sdílení sestav a dalším přizpůsobení sestav najdete v následujících článcích:
+
+- [Konfigurace plánované aktualizace](/power-bi/refresh-scheduled-refresh)
+- [Sdílení řídicích panelů a sestav Power BI se spolupracovníky a dalšími lidmi](/power-bi/service-share-dashboards)
+- [Přihlášení vás a ostatních k sestavám a řídicím panelům ve službě Power BI](/power-bi/service-report-subscribe)
+- [Stažení sestavy ze služby Power BI do Power BI Desktopu](/power-bi/service-export-to-pbix)
+- [Uložení sestavy ve službě Power BI a Power BI Desktopu](/power-bi/service-report-save)
+- [Vytvoření sestavy ve službě Power BI importem datové sady](/power-bi/service-report-create-new)

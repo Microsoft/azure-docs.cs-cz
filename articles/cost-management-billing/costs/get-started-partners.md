@@ -1,25 +1,28 @@
 ---
 title: Začínáme se službou Azure Cost Management pro partnery
 description: V tomto článku je vysvětlené, jak partneři používají funkce služby Azure Cost Management a jak k ní umožní přístup svým zákazníkům.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/28/2020
+ms.date: 02/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: fc0401ac200ac55de5d812ddc5162d970b8e6d2a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9f35f0ae2b310fba462a3f45038496854077da27
+ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76842414"
+ms.lasthandoff: 02/11/2020
+ms.locfileid: "77117590"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
-Azure Cost Management mají nativně k dispozici partneři, jejichž zákazníci uzavřeli smlouvu se zákazníkem Microsoftu a mají [koupený plán Azure](/partner-center/purchase-azure-plan). V tomto článku je vysvětlené, jak můžou partneři používat funkce služby [Azure Cost Management](../index.yml) k zobrazení nákladů na předplatné v plánu Azure. V článku je také popsané, jak můžou partneři umožnit přístup ke službě Cost Management svým zákazníkům. Zákazníci můžou používat funkce služby Cost Management, pokud jim ji zpřístupní jejich partner CSP.
+Azure Cost Management mají přirozeně k dispozici přímí partneři, jejichž zákazníci přešli na Smlouvu se zákazníkem Microsoftu a mají [koupený plán Azure](/partner-center/purchase-azure-plan). V tomto článku je vysvětlené, jak můžou partneři používat funkce služby [Azure Cost Management](../index.yml) k zobrazení nákladů na předplatné v plánu Azure. V článku je také popsané, jak můžou partneři umožnit přístup ke službě Cost Management svým zákazníkům.
+
+V případě přímých partnerů a nepřímých poskytovatelů mají agenti pro správu a globální správu nepřímých poskytovatelů přístup ke službě Cost Management v tenantovi partnera. Prodejci a zákazníci mají přístup ke službě Cost Management v tenantovi zákazníka a vidí náklady pro předplatná, kde se náklady vypočítávají a zobrazují v maloobchodních sazbách. K zobrazení nákladů ale musí mít přístup RBAC k předplatnému v tenantovi zákazníka. Pro tenanta zákazníka je potřeba povolit zásadu viditelnosti nákladů.
+
+Zákazníci můžou používat funkce služby Cost Management, pokud jim ji zpřístupní jejich partner CSP.
 
 Jak partneři CSP používají Cost Management:
 
