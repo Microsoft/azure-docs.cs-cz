@@ -1,18 +1,18 @@
 ---
 title: Ingestování objektů blob Azure do Azure Průzkumník dat
 description: V tomto článku se dozvíte, jak odesílat data účtu úložiště do Azure Průzkumník dat pomocí Event Grid předplatného.
-author: radennis
-ms.author: radennis
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: da701dc91781ef72c29e6454e79523073810dbe4
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: a07a5a5956d8ea295d269d81ed264177bc8805f2
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667483"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424979"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Ingestování objektů blob do Azure Průzkumník dat díky přihlášení k odběru oznámení Event Grid
 
@@ -44,13 +44,13 @@ V tomto článku se naučíte, jak nastavit předplatné [Azure Event Grid](/azu
 
     **Nastavení** | **Navrhovaná hodnota** | **Popis pole**
     |---|---|---|
-    | Name (Název) | *test-Grid – připojení* | Název gridu událostí, který chcete vytvořit.|
+    | Název | *test-Grid – připojení* | Název gridu událostí, který chcete vytvořit.|
     | Schéma událostí | *Event Grid schéma* | Schéma, které má být použito pro Event Grid. |
     | Typ tématu | *Účet úložiště* | Typ tématu Event gridu |
     | Prostředek tématu | *gridteststorage* | Název vašeho účtu úložiště. |
-    | Přihlášení k odběru všech typů událostí | *jejich* | Nedostávat oznámení o všech událostech. |
+    | Přihlásit se k odběru všech typů událostí | *jejich* | Nedostávat oznámení o všech událostech. |
     | Typy definovaných událostí | *Objekt BLOB se vytvořil.* | Konkrétní události, pro které se má zobrazit oznámení |
-    | Typ koncového bodu | *Centra událostí* | Typ koncového bodu, na který odesíláte události. |
+    | Typ koncového bodu | *Centrum událostí* | Typ koncového bodu, na který odesíláte události. |
     | Koncový bod | *test-hub* | Centrum událostí, které jste vytvořili |
     | | |
 
@@ -157,6 +157,11 @@ Uložte data do souboru a nahrajte ho pomocí tohoto skriptu:
 
     echo "Done"
 ```
+
+> [!NOTE]
+> Azure Průzkumník dat neodstraní objekty blob po ingestování.
+> Uložte objekty blob pro thrre do pěti dnů.
+> Použijte [životní cyklus úložiště objektů BLOB v Azure](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal) ke správě odstranění objektu BLOB. 
 
 ## <a name="review-the-data-flow"></a>Kontrola toku dat
 

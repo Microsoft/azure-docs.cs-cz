@@ -8,126 +8,40 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42426e8249f3b6ceb592254833f38ab0df99c83c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8bb65e07a8360c434f73ff826ed21f380b036604
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848964"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373138"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Po dokončení tohoto článku budete mít vlastní zásadu registrace a přihlašování s vaší značkou a vzhledem. Pomocí Azure Active Directory B2C (Azure AD B2C) získáte téměř úplné řízení obsahu HTML a CSS, který je prezentován uživatelům. Když použijete vlastní zásadu, nakonfigurujete přizpůsobení uživatelského rozhraní v XML namísto použití ovládacích prvků v Azure Portal.
+Provedením kroků v tomto článku vytvoříte vlastní zásadu registrace a přihlašování s vaší značkou a zobrazením. Pomocí Azure Active Directory B2C (Azure AD B2C) získáte téměř úplné řízení obsahu HTML a CSS, který je prezentován uživatelům. Když použijete vlastní zásadu, nakonfigurujete přizpůsobení uživatelského rozhraní v XML namísto použití ovládacích prvků v Azure Portal.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md). Měli byste mít pracovní vlastní zásady pro registraci a přihlašování pomocí místních účtů.
 
-## <a name="page-ui-customization"></a>Přizpůsobení uživatelského rozhraní stránky
+[!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-Pomocí funkce přizpůsobení uživatelského rozhraní stránky můžete přizpůsobit vzhled a chování libovolné vlastní zásady. Můžete také udržovat konzistenci značky a vizuální konzistenci mezi vaší aplikací a službou Azure AD B2C.
-
-Tady je postup, jak to funguje: Azure AD B2C spouští kód v prohlížeči zákazníka a používá moderní přístup nazvaný [sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/). Nejdřív zadáte adresu URL do vlastních zásad s přizpůsobeným obsahem HTML. Azure AD B2C sloučí elementy uživatelského rozhraní s obsahem HTML, který je načtený z vaší adresy URL, a pak zobrazí stránku zákazníkovi.
-
-## <a name="create-your-html5-content"></a>Vytvoření obsahu HTML5
-
-V nadpisu Vytvořte obsah HTML s názvem značky vašeho produktu.
-
-1. Zkopírujte následující fragment kódu HTML. Je ve správném formátu HTML5 s prázdným elementem s názvem *\<div ID = "API"\>\</div\>* umístěný v\<značky\>*těla zprávy* . Tento prvek indikuje, kam se má vložit Azure AD B2C obsah.
-
-   ```html
-   <!DOCTYPE html>
-   <html>
-   <head>
-       <title>My Product Brand Name</title>
-   </head>
-   <body>
-       <div id="api"></div>
-   </body>
-   </html>
-   ```
-
-1. Vložte zkopírovaný fragment do textového editoru a pak soubor uložte jako *Customize-UI. html*.
-
-> [!NOTE]
-> Prvky formuláře HTML budou odebrány z důvodu omezení zabezpečení, pokud použijete login.microsoftonline.com. Použijte b2clogin.com, pokud chcete použít prvky formuláře HTML ve vlastním obsahu HTML. Další výhody najdete v tématu [použití b2clogin.com](b2clogin.md) .
-
-## <a name="create-an-azure-blob-storage-account"></a>Vytvoření účtu úložiště objektů Blob v Azure
-
->[!NOTE]
-> V tomto článku používáme pro hostování našeho obsahu službu Azure Blob Storage. Svůj obsah můžete hostovat na webovém serveru, ale musíte [na svém webovém serveru povolit CORS](https://enable-cors.org/server.html).
-
-Chcete-li tento obsah HTML hostovat v úložišti objektů blob, proveďte následující kroky:
-
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. V nabídce **centra** vyberte **nový** > **úložiště** > **účet úložiště**.
-1. Vyberte **předplatné** pro účet úložiště.
-1. Vytvořte **skupinu prostředků** nebo vyberte existující.
-1. Zadejte jedinečný **název** účtu úložiště.
-1. Vyberte **zeměpisnou polohu** svého účtu úložiště.
-1. **Model nasazení** může zůstat **Správce prostředků**.
-1. **Výkon** může zůstat v **úrovni Standard**.
-1. Změňte **druh účtu** na **úložiště objektů BLOB**.
-1. **Replikace** může zůstat v **RA-GRS**.
-1. **Úroveň přístupu** může zůstat v **chodu**.
-1. Kliknutím na tlačítko **zkontrolovat + vytvořit** vytvořte účet úložiště.
-    Po dokončení nasazení se automaticky otevře stránka **účet úložiště** .
-
-## <a name="create-a-container"></a>Vytvoření kontejneru
-
-Pokud chcete vytvořit veřejný kontejner ve službě BLOB Storage, proveďte následující kroky:
-
-1. V části **BLOB Service** v nabídce na levé straně vyberte **objekty blob**.
-1. Klikněte na **+ kontejner**.
-1. Jako **název**zadejte *root*. Může to být název vašeho výběru, například *wingtiptoys*, ale v tomto příkladu používáme pro jednoduchost v tomto příkladu *kořen* .
-1. Jako **úroveň veřejného přístupu**vyberte **objekt BLOB**a pak klikněte na **OK**.
-1. Kliknutím na **kořen** otevřete nový kontejner.
-1. Klikněte na **Odeslat**.
-1. Klikněte na ikonu složky vedle **výběru souboru**.
-1. Přejděte na a vyberte **Customize-UI. html** , který jste vytvořili dříve v oddílu přizpůsobení uživatelského rozhraní stránky.
-1. Pokud chcete nahrávat do podsložky, rozbalte **Upřesnit** a zadejte název složky do **složky nahrát do složky**.
-1. Vyberte **Nahrát**.
-1. Vyberte objekt BLOB **Customize-UI. html** , který jste nahráli.
-1. Napravo od textového pole **Adresa URL** výběrem ikony **Kopírovat do schránky** zkopírujte adresu URL do schránky.
-1. Ve webovém prohlížeči přejděte na adresu URL, kterou jste zkopírovali, a ověřte přístup k uloženému objektu BLOB. Pokud je nepřístupná, například pokud dojde k chybě `ResourceNotFound`, ujistěte se, že je typ přístupu kontejneru nastavený na **BLOB**.
-
-## <a name="configure-cors"></a>Konfigurace CORS
-
-Pomocí následujících kroků nakonfigurujte úložiště objektů BLOB pro sdílení prostředků mezi zdroji:
-
-1. V nabídce vyberte **CORS**.
-1. U **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta je potřeba použít všechna malá písmena.
-1. U **povolených metod**vyberte `GET` i `OPTIONS`.
-1. U **povolených hlaviček**zadejte hvězdičku (*).
-1. U **zveřejněných hlaviček**zadejte hvězdičku (*).
-1. Do **maximálního stáří**zadejte 200.
-1. Klikněte na možnost **Uložit**.
-
-## <a name="test-cors"></a>Test CORS
-
-Ověřte, že jste připraveni, provedením následujících kroků:
-
-1. Přejít na web [www.test-CORS.org](https://www.test-cors.org/) a vložte adresu URL do pole **Adresa URL pro vzdálenou adresu** .
-1. Klikněte na **Odeslat žádost**.
-    Pokud se zobrazí chyba, ujistěte se, že je [Nastavení CORS](#configure-cors) správné. Je také možné, že budete muset vymazat mezipaměť prohlížeče nebo otevřít soukromou relaci procházení stisknutím kombinace kláves CTRL + SHIFT + P.
-
-## <a name="modify-the-extensions-file"></a>Úprava souboru rozšíření
+## <a name="4-modify-the-extensions-file"></a>4. Upravte soubor rozšíření.
 
 Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte **ContentDefinition** a jeho podřízené prvky ze základního souboru do souboru rozšíření.
 
-1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>. Jedná se o jeden ze souborů zásad, které jsou součástí úvodní sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em>. Tento základní soubor je jedním ze souborů zásad, které jsou součástí počáteční sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Vyhledejte a zkopírujte celý obsah elementu **ContentDefinitions** .
 1. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions. XML*. Vyhledejte element **BuildingBlocks** . Pokud element neexistuje, přidejte jej.
 1. Vložte celý obsah elementu **ContentDefinitions** , který jste zkopírovali jako podřízený prvek **BuildingBlocks** elementu.
 1. Vyhledejte element **ContentDefinition** , který obsahuje `Id="api.signuporsignin"` ve formátu XML, který jste zkopírovali.
-1. Změňte hodnotu **LoadUri** na adresu URL souboru HTML, který jste nahráli do úložiště. Například, `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
+1. Změňte hodnotu **LoadUri** na adresu URL souboru HTML, který jste nahráli do úložiště. například `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
 
-    Vaše vlastní zásada by měla vypadat takto:
+    Vaše vlastní zásada by měla vypadat jako následující fragment kódu:
 
     ```xml
     <BuildingBlocks>
@@ -146,9 +60,9 @@ Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte 
 
 1. Uložte soubor rozšíření.
 
-## <a name="upload-and-test-your-updated-custom-policy"></a>Nahrávání a testování aktualizovaných vlastních zásad
+## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. nahrávání a testování aktualizovaných vlastních zásad
 
-### <a name="upload-the-custom-policy"></a>Nahrajte vlastní zásadu.
+### <a name="51-upload-the-custom-policy"></a>5,1 nahrajte vlastní zásadu.
 
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. Vyhledejte a vyberte **Azure AD B2C**.
@@ -156,55 +70,66 @@ Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte 
 1. Vyberte **Odeslat vlastní zásadu**.
 1. Nahrajte soubor rozšíření, který jste předtím změnili.
 
-### <a name="test-the-custom-policy-by-using-run-now"></a>Otestujte vlastní zásady pomocí rutiny **spustit hned**
+### <a name="52-test-the-custom-policy-by-using-run-now"></a>5,2 otestujte vlastní zásady pomocí rutiny **spustit hned**
 
 1. Vyberte zásady, které jste nahráli, a pak vyberte **Spustit nyní**.
 1. Měli byste být schopni se zaregistrovat pomocí e-mailové adresy.
 
-## <a name="reference"></a>Referenční informace
+[!INCLUDE [active-directory-b2c-html-templates](../../includes/active-directory-b2c-html-templates.md)]
 
-### <a name="sample-templates"></a>Ukázkové šablony
-Ukázkové šablony pro přizpůsobení uživatelského rozhraní můžete najít tady:
+## <a name="configure-dynamic-custom-page-content-uri"></a>Konfigurovat dynamický identifikátor URI obsahu vlastní stránky
 
+Pomocí Azure AD B2C vlastních zásad můžete odeslat parametr v cestě URL nebo v řetězci dotazu. Předáním parametru do vašeho koncového bodu HTML můžete dynamicky měnit obsah stránky. Můžete například změnit obrázek pozadí na registrační nebo přihlašovací stránce Azure AD B2C na základě parametru, který předáte z vašeho webu nebo mobilní aplikace. Parametr může být jakýkoli [překladač deklarací identity](claim-resolver-overview.md), jako je ID aplikace, ID jazyka nebo vlastní parametr řetězce dotazu, například `campaignId`.
+
+### <a name="sending-query-string-parameters"></a>Odesílají se parametry řetězce dotazu.
+
+K odeslání parametrů řetězce dotazu v [zásadách předávající strany](relyingparty.md)přidejte `ContentDefinitionParameters` element, jak je znázorněno níže.
+
+```XML
+<RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <UserJourneyBehaviors>
+    <ContentDefinitionParameters>
+        <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
+        <Parameter Name="lang">{Culture:LanguageName}</Parameter>
+        <Parameter Name="appId">{OIDC:ClientId}</Parameter>
+    </ContentDefinitionParameters>
+    </UserJourneyBehaviors>
+    ...
+</RelyingParty>
 ```
-git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
+
+V definici obsahu změňte hodnotu `LoadUri` na `https://<app_name>.azurewebsites.net/home/unified`. Vaše vlastní zásady `ContentDefinition` by měly vypadat jako následující fragment kódu:
+
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://<app_name>.azurewebsites.net/home/unified</LoadUri>
+  ...
+</ContentDefinition>
 ```
 
-Složka sample_templates/Wingtip obsahuje následující soubory HTML:
+Když Azure AD B2C načte stránku, provede volání na koncový bod webového serveru:
 
-| Šablona HTML5 | Popis |
-|----------------|-------------|
-| *phonefactor.html* | Tento soubor použijte jako šablonu pro stránku služby Multi-Factor Authentication. |
-| *resetpassword.html* | Tento soubor použijte jako šablonu pro stránku zapomenuté heslo. |
-| *selfasserted.html* | Tento soubor použijte jako šablonu pro přihlašovací stránku účtu sociální sítě, přihlašovací stránku místního účtu nebo přihlašovací stránku místního účtu. |
-| *unified.html* | Tento soubor použijte jako šablonu pro sjednocenou registraci nebo přihlašovací stránku. |
-| *updateprofile.html* | Tento soubor použijte jako šablonu pro stránku Aktualizace profilu. |
+```http
+https://<app_name>.azurewebsites.net/home/unified?campaignId=123&lang=fr&appId=f893d6d3-3b6d-480d-a330-1707bf80ebea
+```
 
-Tady je postup, jak použít ukázku:
+### <a name="dynamic-page-content-uri"></a>Identifikátor URI dynamického obsahu stránky
 
-1. Naklonujte úložiště na místním počítači. Vyberte složku šablony v části sample_templates. Můžete použít `wingtip` nebo `contoso`.
-1. Nahrajte všechny soubory ve složkách `css`, `fonts`a `images` do úložiště objektů blob, jak je popsáno v předchozích částech.
-1. Potom otevřete každý soubor \*. HTML v kořenovém adresáři buď `wingtip` nebo `contoso` (podle toho, co jste vybrali v prvním kroku), a nahraďte všechny výskyty "http://localhost" adresami URL souborů CSS, obrázků a písem, které jste nahráli v kroku 2.
-1. Uložte soubory \*. html a nahrajte je do úložiště objektů BLOB.
-1. Nyní upravte soubor rozšíření tak, jak bylo uvedeno dříve v [části Úprava souboru rozšíření](#modify-the-extensions-file).
-1. Pokud se zobrazí chybějící písma, obrázky nebo CSS, zkontrolujte odkazy v zásadách rozšíření a v souborech \*. html.
+Obsah lze z různých míst načíst na základě použitých parametrů. V rámci koncového bodu s povoleným CORS nastavte strukturu složek pro hostování obsahu. Můžete například uspořádat obsah v následující struktuře. Kořenová *Složka/složka pro jednotlivé jazyky/soubory HTML* Identifikátor URI vlastní stránky může vypadat například takto:
 
-### <a name="content-definition-ids"></a>ID definice obsahu
+```XML
+<ContentDefinition Id="api.signuporsignin">
+  <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
+  ...
+</ContentDefinition>
+```
 
-V části Upravit vlastní zásady registrace nebo přihlašování jste nakonfigurovali definici obsahu pro `api.idpselections`. Úplná sada ID definice obsahu, která je rozpoznána rozhraním Azure AD B2C identity Experience Framework, a jejich popisy jsou uvedeny v následující tabulce:
+Azure AD B2C pošle 2 – kód ISO pro jazyk, `fr` pro francouzštinu:
 
-| ID definice obsahu | Popis |
-|-----------------------|-------------|
-| *api.error* | **Chybová stránka**. Tato stránka se zobrazí, pokud dojde k výjimce nebo chybě. |
-| *api.idpselections* | **Stránka výběru zprostředkovatele identity** Tato stránka obsahuje seznam zprostředkovatelů identity, ze kterých si může uživatel vybrat během přihlašování. Tyto možnosti jsou buď poskytovatelé podnikových identit, poskytovatelé sociálních identit, jako je Facebook, Google + nebo místní účty. |
-| *api.idpselections.signup* | **Výběr zprostředkovatele identity pro registraci**. Tato stránka obsahuje seznam zprostředkovatelů identity, ze kterých si může uživatel vybrat během registrace. Tyto možnosti jsou buď poskytovatelé podnikových identit, poskytovatelé sociálních identit, jako je Facebook, Google + nebo místní účty. |
-| *api.localaccountpasswordreset* | **Stránka zapomenuté heslo** Tato stránka obsahuje formulář, který musí uživatel dokončit, aby bylo možné resetování hesla inicializovat.  |
-| *api.localaccountsignin* | **Přihlašovací stránka místního účtu** Tato stránka obsahuje přihlašovací formulář pro přihlašování pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. Formulář může obsahovat textové pole pro zadání textu a heslo. |
-| *api.localaccountsignup* | **Přihlašovací stránka místního účtu**. Tato stránka obsahuje registrační formulář pro registraci k místnímu účtu na základě e-mailové adresy nebo uživatelského jména. Formulář může obsahovat různé vstupní ovládací prvky, jako je textové pole, zadání hesla, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. |
-| *api.phonefactor* | **Stránku Multi-Factor Authentication**. Na této stránce můžou uživatelé při registraci nebo přihlašování ověřit svoje telefonní čísla (pomocí textu nebo hlasu). |
-| *api.selfasserted* | **Stránka pro registraci účtu sociální**sítě Tato stránka obsahuje registrační formulář, který musí uživatelé dokončit při registraci pomocí stávajícího účtu od poskytovatele sociálních identit, jako je Facebook nebo Google +. Tato stránka se podobá na předchozí stránce pro registraci účtu sociální sítě, s výjimkou polí zadání hesla. |
-| *api.selfasserted.profileupdate* | **Stránka aktualizace profilu**. Tato stránka obsahuje formulář, pomocí kterého můžou uživatelé aktualizovat svůj profil. Tato stránka se podobá stránce pro registraci účtu sociální sítě, s výjimkou polí zadání hesla. |
-| *api.signuporsignin* | **Jednotná registrace nebo přihlašovací stránka**. Tato stránka zpracovává registraci i přihlašování uživatelů, kteří můžou používat podnikové zprostředkovatele identity, zprostředkovatele sociálních identit, jako je Facebook nebo Google + nebo místní účty.  |
+```http
+https://contoso.blob.core.windows.net/fr/myHTML/unified.html
+```
 
 ## <a name="next-steps"></a>Další kroky
 

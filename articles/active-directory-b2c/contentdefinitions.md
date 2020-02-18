@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3e5fb1ebb763cc5ecd7dfe8724347c03a487bc13
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157869"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425625"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -70,7 +70,7 @@ Element **ContentDefinition** obsahuje následující prvky:
 | Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Řetězec, který obsahuje adresu URL stránky HTML5 pro definici obsahu. |
-| RecoveryUri | 0:1 | Řetězec, který obsahuje adresu URL stránky HTML pro zobrazení chyby související s definicí obsahu. |
+| RecoveryUri | 1:1 | Řetězec, který obsahuje adresu URL stránky HTML pro zobrazení chyby související s definicí obsahu. |
 | DataUri | 1:1 | Řetězec, který obsahuje relativní adresu URL souboru HTML, který poskytuje činnost koncového uživatele, která se má vyvolat pro krok. |
 | Metadata | 0:1 | Kolekce párů klíč/hodnota, které obsahují metadata využitá definicí obsahu. |
 | LocalizedResourcesReferences | 0:1 | Kolekce lokalizovaných odkazů na prostředky Tento prvek použijte k přizpůsobení lokalizace uživatelského rozhraní a atributu deklarace identity. |
@@ -82,11 +82,11 @@ Element **DataUri** slouží k určení identifikátoru stránky. Azure AD B2C p
 | Identifikátor stránky | Popis |
 | ----- | ----------- |
 | `globalexception` | Zobrazí chybovou stránku, pokud dojde k výjimce nebo chybě. |
-| `providerselection` | Zobrazuje seznam zprostředkovatelů identity, ze kterých si uživatelé můžou vybrat během přihlašování. |
+| `providerselection`, `idpselection` | Zobrazuje seznam zprostředkovatelů identity, ze kterých si uživatelé můžou vybrat během přihlašování.  |
 | `unifiedssp` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. Tato hodnota také poskytuje možnost "zachovat funkce přihlašování" a zapomněli jste heslo? " odkaz. |
 | `unifiedssd` | Zobrazí formulář pro přihlášení pomocí místního účtu, který je založený na e-mailové adrese nebo uživatelském jménu. |
 | `multifactor` | Ověřuje telefonní čísla pomocí textu nebo hlasu během registrace nebo přihlašování. |
-| `selfasserted` | Zobrazí formulář, který uživatelům umožňuje vytvořit nebo aktualizovat svůj profil. |
+| `selfasserted` | Zobrazí formulář pro shromažďování dat od uživatele. Například umožňuje uživatelům vytvořit nebo aktualizovat svůj profil. |
 
 ### <a name="select-a-page-layout"></a>Vybrat rozložení stránky
 
