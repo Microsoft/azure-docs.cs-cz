@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7659c8187f7f4763b51b09362c94dad9554ed1c0
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 502b4cef4fc44abcc55c1733b86fb6052e3e43ab
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982836"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372742"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -74,7 +74,7 @@ Následující příklad ukazuje element **RelyingParty** v souboru zásad *B2C_
 
 Volitelný element **RelyingParty** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Výchozí cesta uživatele pro aplikaci RP. |
 | UserJourneyBehaviors | 0:1 | Rozsah chování při jízdě uživatelů. |
@@ -102,7 +102,7 @@ Zásada *B2C_1A_signup_signin* :
 
 Element **DefaultUserJourney** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ReferenceId | Ano | Identifikátor cesty uživatele v zásadě. Další informace najdete v tématu [cesty uživatelů](userjourneys.md) . |
 
@@ -110,7 +110,7 @@ Element **DefaultUserJourney** obsahuje následující atribut:
 
 Element **UserJourneyBehaviors** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | SingleSignOn | 0:1 | Rozsah chování relace jednotného přihlašování (SSO) pro cestu uživatele. |
 | SessionExpiryType |0:1 | Chování při ověřování relace. Možné hodnoty: `Rolling` nebo `Absolute`. Hodnota `Rolling` (výchozí) znamená, že uživatel zůstane přihlášený, dokud bude uživatel v aplikaci neustále aktivní. Hodnota `Absolute` označuje, že se uživatel musí znovu ověřit po časovém intervalu určeném životností relace aplikace. |
@@ -122,9 +122,9 @@ Element **UserJourneyBehaviors** obsahuje následující prvky:
 
 Element **SingleSignon** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Rozsah | Ano | Rozsah chování jednotného přihlašování. Možné hodnoty: `Suppressed`, `Tenant`, `Application`nebo `Policy`. Hodnota `Suppressed` označuje, že chování je potlačeno. Například v případě relace jednotného přihlašování není pro uživatele udržována žádná relace a uživatel se vždy zobrazí výzva k výběru poskytovatele identity. Hodnota `TrustFramework` označuje, že chování je použito pro všechny zásady v rámci vztahu důvěryhodnosti. Například uživatel, který přecházení ze dvou cest zásad pro architekturu trustu, nevyzve k výběru poskytovatele identity. Hodnota `Tenant` označuje, že se chování aplikuje na všechny zásady v tenantovi. Například uživatel, který přecházení ze dvou cest zásad pro tenanta, nevyzve k výběru poskytovatele identity. Hodnota `Application` označuje, že chování bude použito pro všechny zásady aplikace, které vytváří požadavek. Například uživatel, který přecházení ze dvou cest zásad pro aplikaci, nezobrazuje výzvu k výběru poskytovatele identity. Hodnota `Policy` označuje, že chování se vztahuje pouze na zásadu. Například uživatel, který přechází ze dvou cest zásad pro rozhraní vztahu důvěryhodnosti, se při přepínání mezi zásadami zobrazí dotaz na výběr poskytovatele identity. |
+| Obor | Ano | Rozsah chování jednotného přihlašování. Možné hodnoty: `Suppressed`, `Tenant`, `Application`nebo `Policy`. Hodnota `Suppressed` označuje, že chování je potlačeno. Například v případě relace jednotného přihlašování není pro uživatele udržována žádná relace a uživatel se vždy zobrazí výzva k výběru poskytovatele identity. Hodnota `TrustFramework` označuje, že chování je použito pro všechny zásady v rámci vztahu důvěryhodnosti. Například uživatel, který přecházení ze dvou cest zásad pro architekturu trustu, nevyzve k výběru poskytovatele identity. Hodnota `Tenant` označuje, že se chování aplikuje na všechny zásady v tenantovi. Například uživatel, který přecházení ze dvou cest zásad pro tenanta, nevyzve k výběru poskytovatele identity. Hodnota `Application` označuje, že chování bude použito pro všechny zásady aplikace, které vytváří požadavek. Například uživatel, který přecházení ze dvou cest zásad pro aplikaci, nezobrazuje výzvu k výběru poskytovatele identity. Hodnota `Policy` označuje, že chování se vztahuje pouze na zásadu. Například uživatel, který přechází ze dvou cest zásad pro rozhraní vztahu důvěryhodnosti, se při přepínání mezi zásadami zobrazí dotaz na výběr poskytovatele identity. |
 | KeepAliveInDays | Ano | Určuje, jak dlouho zůstane uživatel přihlášený. Nastavením hodnoty 0 dojde k vypnutí funkcí políčko zůstat přihlášeni. Další informace najdete v tématu [zůstat přihlášeni](custom-policy-keep-me-signed-in.md). |
 |EnforceIdTokenHintOnLogout| Ne|  Vynutí předání dříve vydaného tokenu ID koncovému bodu pro odhlášení jako pomocný parametr pro aktuální ověřenou relaci koncového uživatele s klientem. Možné hodnoty: `false` (výchozí) nebo `true`. Další informace najdete v tématu věnovaném [webovému přihlášení pomocí OpenID Connect](openid-connect.md).  |
 
@@ -133,7 +133,7 @@ Element **SingleSignon** obsahuje následující atribut:
 
 Element **JourneyInsights** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | TelemetryEngine | Ano | Hodnota musí být `ApplicationInsights`. |
 | InstrumentationKey | Ano | Řetězec, který obsahuje klíč instrumentace pro element Application Insights. |
@@ -154,54 +154,54 @@ Následující příklad předá parametr s názvem `campaignId` s hodnotou `haw
 
 Element **ContentDefinitionParameters** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0: n | Řetězec, který obsahuje dvojici klíč-hodnota, která je připojena k řetězci dotazu identifikátoru URI pro načtení definice obsahu. |
 
 Element **ContentDefinitionParameter** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Name (Název) | Ano | Název páru klíč-hodnota. |
+| Název | Ano | Název páru klíč-hodnota. |
 
-Další informace najdete v tématu [Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad](custom-policy-ui-customization-dynamic.md) .
+Další informace najdete v tématu [Konfigurace uživatelského rozhraní s dynamickým obsahem pomocí vlastních zásad](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) .
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 
 Element **TechnicalProfile** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Hodnota musí být `PolicyProfile`. |
 
 **TechnicalProfile** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Řetězec, který obsahuje název technického profilu. |
 | Popis | 0:1 | Řetězec, který obsahuje popis technického profilu. |
-| Protocol (Protokol) | 1:1 | Protokol používaný pro federaci. |
+| Protokol | 1:1 | Protokol používaný pro federaci. |
 | Metadata | 0:1 | Kolekce *položek* párů klíč/hodnota využívané protokolem pro komunikaci s koncovým bodem v průběhu transakce pro konfiguraci interakce mezi předávající stranou a ostatními účastníky komunity. |
 | OutputClaims | 1:1 | Seznam typů deklarací, které jsou pořízeny jako výstup v technickém profilu. Každý z těchto prvků obsahuje odkaz na objekt **ClaimType** , který je již definován v části **ClaimsSchema** nebo v zásadě, ze které tento soubor zásad dědí. |
 | SubjectNamingInfo | 1:1 | Název subjektu, který se používá v tokenech. |
 
 Element **Protocol** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
-| Name (Název) | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OpenIdConnect` nebo `SAML2`. Hodnota `OpenIdConnect` představuje standard protokolu OpenID Connect 1,0 podle specifikace OpenID Foundation. `SAML2` představuje standard protokolu SAML 2,0 dle specifikace OASIS. Nepoužívejte token SAML v produkčním prostředí. |
+| Název | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OpenIdConnect` nebo `SAML2`. Hodnota `OpenIdConnect` představuje standard protokolu OpenID Connect 1,0 podle specifikace OpenID Foundation. `SAML2` představuje standard protokolu SAML 2,0 dle specifikace OASIS. Nepoužívejte token SAML v produkčním prostředí. |
 
 ## <a name="outputclaims"></a>OutputClaims
 
 Element **OutputClaims** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| OutputClaim | 0: n | Název očekávaného typu deklarace v seznamu podporovaných pro zásadu, které předávající strana přihlašuje k odběru. Tato deklarace slouží jako výstup pro technický profil. |
+| outputClaim | 0: n | Název očekávaného typu deklarace v seznamu podporovaných pro zásadu, které předávající strana přihlašuje k odběru. Tato deklarace slouží jako výstup pro technický profil. |
 
 Element **OutputClaim** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ano | Odkaz na objekt **ClaimType** již definovaný v oddílu **ClaimsSchema** v souboru zásad. |
 | Hodnot | Ne | Výchozí hodnota, která se dá použít, pokud je hodnota deklarace prázdná. |
@@ -215,7 +215,7 @@ Pomocí elementu **SubjectNameingInfo** řídíte hodnotu předmětu tokenu:
 
 Element **SubjectNamingInfo** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ClaimType | Ano | Odkaz na **PartnerClaimTypeu**výstupní deklarace identity. Deklarace výstupů musí být definované v **OutputClaims** kolekci zásad předávající strany. |
 

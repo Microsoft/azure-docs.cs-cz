@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f171d9d71d3e6f8fa57671578502675442293793
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 2dcdc67f884d1f566c794ab9e996a74984ab61a4
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908924"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373151"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ Pomocí [Azure Portal](tutorial-customize-ui.md) můžete nakonfigurovat přizp�
 
 Pokud používáte [vlastní zásady](custom-policy-overview.md) pro poskytování registrace nebo přihlašování, resetování hesel nebo úprav profilů v aplikaci, použijte [k přizpůsobení uživatelského rozhraní soubory zásad](custom-policy-ui-customization.md).
 
-Pokud potřebujete poskytnout dynamický obsah na základě rozhodnutí zákazníka, použijte vlastní zásady, které mohou [dynamicky měnit obsah stránky](custom-policy-ui-customization-dynamic.md) v závislosti na parametru, který je odeslán v řetězci dotazu. Můžete například změnit obrázek pozadí na Azure AD B2C přihlašovací stránku nebo přihlašovací stránku na základě parametru, který předáte z vaší webové nebo mobilní aplikace.
+Pokud potřebujete poskytnout dynamický obsah na základě rozhodnutí zákazníka, použijte vlastní zásady, které mohou [dynamicky měnit obsah stránky](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) v závislosti na parametru, který je odeslán v řetězci dotazu. Můžete například změnit obrázek pozadí na Azure AD B2C přihlašovací stránku nebo přihlašovací stránku na základě parametru, který předáte z vaší webové nebo mobilní aplikace.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -61,7 +61,7 @@ V části **přizpůsobit** v nabídce vlevo vyberte **rozložení stránky** a 
 
 Potom v seznamu vyberte šablonu. Tady jsou příklady přihlašovacích stránek pro každou šablonu:
 
-| Mořská modrá | Břidlicová šedá | Klasické |
+| Mořská modrá | Břidlicová šedá | Klasický |
 |:-:|:-:|:-:|
 |![Příklad šablony oceánu Blue vygenerované na přihlašovací stránce pro registraci](media/customize-ui-overview/template-ocean-blue.png)|![Příklad šablony břidlicově šedé vygenerované na přihlašovací stránce pro registraci](media/customize-ui-overview/template-slate-gray.png)|![Příklad klasické šablony vykreslené na přihlašovací stránce pro registraci](media/customize-ui-overview/template-classic.png)|
 
@@ -150,7 +150,7 @@ V následující tabulce jsou uvedeny fragmenty kódu HTML, které se Azure AD B
 | Registrace místního účtu | Obsahuje formulář pro registraci místního účtu na základě e-mailové adresy nebo uživatelského jména. Formulář může obsahovat různé vstupní ovládací prvky, jako je textové pole, vstupní pole pro heslo, přepínač, rozevírací seznamy s jedním výběrem a zaškrtávací políčka vícenásobného výběru. |
 | Registrace účtu sociální sítě | Může se zobrazit při registraci pomocí existujícího účtu od poskytovatele sociální identity, jako je Facebook nebo Google. Používá se, když je potřeba shromáždit další informace od zákazníka pomocí registračního formuláře. |
 | Jednotné registrace nebo přihlašování | Zpracovává registraci i přihlašování zákazníků, kteří můžou používat poskytovatele sociálních identit, jako je Facebook, Google nebo místní účty. |
-| Multi-Factor Authentication | Zákazníci si můžou při registraci nebo přihlašování ověřit telefonní čísla (pomocí textu nebo hlasu). |
+| Ověřování pomocí služby Multi-Factor Authentication | Zákazníci si můžou při registraci nebo přihlašování ověřit telefonní čísla (pomocí textu nebo hlasu). |
 | Chyba | Poskytne zákazníkovi informace o chybě. |
 
 ## <a name="company-branding-preview"></a>Branding společnosti (Preview)
@@ -165,7 +165,7 @@ Chcete-li přizpůsobit stránky toku uživatele, je třeba nejprve nakonfigurov
 
 Začněte tím, že nastavíte logo banner, obrázek pozadí a barvu pozadí v rámci **brandingu společnosti**.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat**vyberte **Branding společnosti**.
@@ -186,7 +186,7 @@ Po nakonfigurování firemního brandingu ho Povolte ve svých uživatelských t
 1. Vyberte tok uživatele, pro který chcete povolit Branding společnosti. Branding společnosti není **podporován** pro *přihlašování* a úpravy profilů pro uživatele *v1 typu v1* .
 1. V části **přizpůsobit**vyberte **rozložení stránky**a potom vyberte rozložení, které chcete označit jako značku. Vyberte například možnost **sjednocení registrace nebo přihlášení na přihlašovací stránce**.
 1. Pro **verzi rozložení stránky (Preview)** vyberte verze **1.2.0** nebo vyšší.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 Chcete-li označit všechny stránky v toku uživatele, nastavte pro každé rozložení stránky v toku uživatele verzi rozložení stránky.
 

@@ -5,15 +5,15 @@ author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 02/16/2020
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 750aded128804468ae557d7c016a50c5378d9217
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f67dcf7f1f4f39a11eb995995a8d0acc278b5d4a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762504"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373409"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Výstrahy metrik s dynamickými prahovými hodnotami v Azure Monitor
 
@@ -64,7 +64,7 @@ Můžete zvolit výstrahu, která se má aktivovat, na jednu z následujících 
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Co znamená rozšířené nastavení v případě dynamických prahových hodnot?
 
-**Neúspěšné tečky** – dynamické prahové hodnoty také umožňují nakonfigurovat "počet porušení pro aktivaci výstrahy", minimální počet odchylek vyžadovaných v určitém časovém období pro systém k vyvolání výstrahy (výchozí časový interval je čtyři odchylky za 20 minut). Uživatel může nakonfigurovat neúspěšné intervaly a zvolit, na co se má upozornit, změnou období selhání a časového okna. Tato možnost omezuje hluk výstrah vygenerovaný přechodnými špičkami. Například:
+**Neúspěšné tečky** – dynamické prahové hodnoty také umožňují nakonfigurovat "počet porušení pro aktivaci výstrahy", minimální počet odchylek vyžadovaných v určitém časovém období pro systém k vyvolání výstrahy (výchozí časový interval je čtyři odchylky za 20 minut). Uživatel může nakonfigurovat neúspěšné intervaly a zvolit, na co se má upozornit, změnou období selhání a časového okna. Tato možnost omezuje hluk výstrah vygenerovaný přechodnými špičkami. Příklad:
 
 Chcete-li aktivovat upozornění, když je problém v průběhu 20 minut v intervalu po dobu 4 po sobě jdoucích časů v daném období seskupení 5 minut, použijte následující nastavení:
 
@@ -92,11 +92,11 @@ Pravděpodobně ne. Dynamické prahové hodnoty jsou vhodné pro zjištění vý
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Kolik dat se používá pro náhled a výpočet prahových hodnot?
 
-Při prvním vytvoření výstrahy a upozornění se prahové hodnoty uvedené v grafu vypočítávají na základě množství historických dat za účelem výpočtu hodinových nebo denních sezónních vzorů (10 dní). Po vytvoření pravidla výstrahy budou dynamické prahové hodnoty používat všechna potřebná historická data, která jsou k dispozici a budou se průběžně učit a přizpůsobovat na základě nových dat, aby byly prahové hodnoty přesnější. To znamená, že po tomto výpočtu se v grafu zobrazí také týdenní vzory.
+Při prvním vytvoření pravidla výstrahy se prahové hodnoty uvedené v grafu vypočítávají na základě množství historických dat za účelem výpočtu hodinových nebo denních sezónních vzorů (10 dní). Po vytvoření pravidla výstrahy budou dynamické prahové hodnoty používat všechna potřebná historická data, která jsou k dispozici a budou se průběžně učit a přizpůsobovat na základě nových dat, aby byly prahové hodnoty přesnější. To znamená, že po tomto výpočtu se v grafu zobrazí také týdenní vzory.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Kolik dat je potřeba k aktivaci výstrahy?
 
-Pokud máte nový prostředek nebo chybí data metriky, nebudou dynamické prahové hodnoty aktivovat výstrahy před 3 dny k dispozici, aby bylo zajištěno správné prahové hodnoty.
+Pokud máte nový prostředek nebo chybí data metriky, nebudou dynamické prahové hodnoty aktivovat výstrahy před 3 dny nebo 30 vzorků dat metrik, aby bylo zajištěno přesné prahové hodnoty.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Osvědčené postupy pro dynamické prahové hodnoty
 
@@ -129,7 +129,7 @@ Následující položky jsou osvědčené postupy pro konfiguraci výstrah na n�
 
 8. V grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat.
 
-9. Klikněte na **Done** (Hotovo).
+9. Klikněte na **Hotovo**.
 
 10. Vyplňte **Podrobnosti výstrahy** , jako **je název pravidla výstrahy**, **Popis**a **závažnost**.
 
@@ -164,7 +164,7 @@ Následující položky jsou osvědčené postupy pro konfiguraci výstrah na n�
 
 8. V grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat.
 
-9. Klikněte na **Done** (Hotovo).
+9. Klikněte na **Hotovo**.
 
 10. Vyplňte **Podrobnosti výstrahy** , jako **je název pravidla výstrahy**, **Popis**a **závažnost**.
 

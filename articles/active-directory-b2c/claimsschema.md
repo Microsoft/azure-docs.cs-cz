@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/12/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76e2b1c221475a90dc63498d13d4ede7a78e0779
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185592"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372991"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,7 +42,7 @@ Element **ClaimsSchema** definuje typy deklarací identity, na které se dá odk
 
 Element **ClaimType** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor, který se používá pro typ deklarace. Ostatní elementy můžou tento identifikátor v zásadách použít. |
 
@@ -51,7 +51,7 @@ Element **ClaimType** obsahuje následující prvky:
 | Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Název, který se zobrazí uživatelům na různých obrazovkách. Hodnota může být [lokalizována](localization.md). |
-| DataType | 1:1 | Typ deklarace identity. Lze použít datové typy Boolean, Date, dateTime, int, Long, String, StringCollection a phoneNumber. Primitivní datový typ představuje ekvivalent C# variabilního datového typu. StringCollection představuje kolekci řetězců. Další informace naleznete v tématu [ C# typy a proměnné](https://docs.microsoft.com/dotnet/csharp/tour-of-csharp/types-and-variables). Datum odpovídá konvenci ISO 8601. |
+| DataType | 1:1 | Typ deklarace identity. |
 | DefaultPartnerClaimTypes | 0:1 | Výchozí typy deklarací partnerů, které se mají použít pro zadaný protokol. Hodnota může být přepsána v **PartnerClaimType** určeném v elementech **InputClaim** nebo **OutputClaim** . Tento prvek slouží k určení výchozího názvu protokolu.  |
 | Zrušit | 0:1 | Volitelné řetězce maskování znaků, které lze použít při zobrazení deklarace identity. Například telefonní číslo 324-232-4343 lze maskovat jako XXX-XXX-4343. |
 | UserHelpText | 0:1 | Popis typu deklarace, který může být užitečný pro uživatele, aby porozuměl jeho účelu. Hodnota může být [lokalizována](localization.md). |
@@ -59,17 +59,35 @@ Element **ClaimType** obsahuje následující prvky:
 | Omezení | 0:1 | Omezení hodnoty pro tuto deklaraci identity, například regulární výraz (Regex) nebo seznam přijatelných hodnot. Hodnota může být [lokalizována](localization.md). |
 PredicateValidationReference| 0:1 | Odkaz na element **PredicateValidationsInput** . Prvky **PredicateValidationReference** umožňují provést proces ověření, aby bylo zajištěno, že budou zadána pouze správně vytvořená data. Další informace najdete v tématu [predikáty](predicates.md). |
 
+### <a name="datatype"></a>DataType
+
+Element **DataType** podporuje následující hodnoty:
+
+| Typ | Popis |
+| ------- | ----------- | 
+|Boolean|Představuje logickou hodnotu (`true` nebo `false`).|
+|date| Představuje okamžitý čas, obvykle vyjádřený jako datum dne. Hodnota data dodržuje konvenci ISO 8601.|
+|Datum a čas|Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu. Hodnota data dodržuje konvenci ISO 8601.|
+|duration|Představuje časový interval v letech, měsících, dnech, hodinách, minutách a sekundách. Formát je `PnYnMnDTnHnMnS`, kde `P` označuje kladný nebo `N` pro zápornou hodnotu. `nY` je počet roků následovaný literálem `Y`. `nMo` je počet měsíců následovaný literálem `Mo`. `nD` je počet dní následovaný literálem `D`. Příklady: `P21Y` představuje 21 let. `P1Y2Mo` představuje jeden rok a dva měsíce. `P1Y2Mo5D` představuje jeden rok, dva měsíce a pět dní.  `P1Y2M5DT8H5M620S` představuje jeden rok, dva měsíce, pět dní, osm hodin, pět minut a dvacet sekund.  |
+|phoneNumber|Představuje telefonní číslo. |
+|int| Představuje číslo mezi-2 147 483 648 a 2 147 483 647.|
+|long| Představuje číslo mezi-9223372036854775808 a 9 223 372 036 854 775 807. |
+|string| Představuje text jako posloupnost jednotek kódu UTF-16.|
+|stringCollection|Představuje kolekci `string`.|
+|userIdentity| Představuje identitu uživatele.|
+|userIdentityCollection|Představuje kolekci `userIdentity`.|
+
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
 **DefaultPartnerClaimTypes** může obsahovat následující element:
 
 | Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Protocol (Protokol) | 1: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
+| Protokol | 1: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
 
 Element **Protocol** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Název | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
 | PartnerClaimType | Ano | Název typu deklarace, který se má použít |
@@ -104,7 +122,7 @@ Výsledkem je, že token JWT vystavil Azure AD B2C, vygeneruje `family_name` **n
 
 Element **Maske** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | `Type` | Ano | Typ masky deklarace identity. Možné hodnoty: `Simple` nebo `Regex`. Hodnota `Simple` označuje, že se pro úvodní část deklarace řetězce používá jednoduchá textová maska. Hodnota `Regex` označuje, že regulární výraz se aplikuje na deklaraci řetězce jako celek.  Pokud je zadána hodnota `Regex`, musí být také definován volitelný atribut s regulárním výrazem, který má být použit. |
 | `Regex` | Ne | Pokud je **`Type`** nastavené na `Regex`, zadejte regulární výraz, který se má použít.
@@ -144,7 +162,7 @@ Architektura prostředí identity vykresluje jenom první písmeno e-mailové ad
 
 Element **omezení** může obsahovat následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | MergeBehavior | Ne | Metoda použitá ke sloučení hodnot výčtu se třídou ClaimType v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základní zásadě. Možné hodnoty: `Append`, `Prepend`nebo `ReplaceAll`. Hodnota `Append` je kolekce dat, která by se měla připojit na konec kolekce zadané v nadřazené zásadě. Hodnota `Prepend` je kolekce dat, která by se měla přidat před kolekce zadané v nadřazené zásadě. Hodnota `ReplaceAll` je kolekce dat zadaných v nadřazené zásadě, která by se měla ignorovat. |
 
@@ -155,11 +173,11 @@ Element **omezení** obsahuje následující prvky:
 | Výčet | 1: n | Dostupné možnosti v uživatelském rozhraní pro uživatele, kteří mají vybrat pro deklaraci identity, například hodnotu v rozevíracím seznamu. |
 | Vzor | 1:1 | Regulární výraz, který má být použit. |
 
-### <a name="enumeration"></a>Výčet
+#### <a name="enumeration"></a>Výčet
 
 Prvek **výčtu** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | Text | Ano | Zobrazovaný řetězec, který je zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
 |Hodnota | Ano | Hodnota deklarace identity, která je přidružená k výběru této možnosti. |
@@ -188,7 +206,7 @@ Rozevírací seznam měst s výchozí hodnotou nastavenou na New York:
 
 Prvek **vzoru** může obsahovat následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Požadováno | Popis |
 | --------- | -------- | ----------- |
 | RegularExpression | Ano | Regulární výraz, který deklarace identity tohoto typu musí splňovat, aby byl platný. |
 | HelpText | Ne | Vzor nebo regulární výraz pro tuto deklaraci. |
@@ -214,11 +232,26 @@ Architektura prostředí identity vykreslí deklaraci identity e-mailové adresy
 
 ![Textové pole zobrazující chybovou zprávu aktivovaný omezením Regex](./media/claimsschema/pattern.png)
 
-## <a name="userinputtype"></a>UserInputType
+### <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, heslo a rozevírací seznam, které se dají použít, když ručně zadáte data deklarace identity pro daný typ deklarace identity. Pokud shromažďujete informace od uživatele pomocí [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md), musíte zadat **UserInputType** .
+Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, heslo a rozevírací seznam, které se dají použít, když ručně zadáte data deklarace identity pro daný typ deklarace identity. Při shromažďování informací od uživatele musíte zadat **UserInputType** pomocí technického profilu a [ovládacích prvků zobrazení](display-controls.md)s [vlastním uplatněním](self-asserted-technical-profile.md) .
 
-### <a name="textbox"></a>TextBox
+K dispozici jsou typy vstupu uživatele dostupné pro **UserInputType** prvky:
+
+| UserInputType | Podporovaný deklarace ClaimType | Popis |
+| --------- | -------- | ----------- |
+|CheckboxMultiSelect| `string` |Rozevírací seznam pro vícenásobný výběr. Hodnota deklarace je reprezentovaná v řetězci oddělovače (čárky) vybraných hodnot. |
+|DateTimeDropdown | `date`, `dateTime` |Rozevírací seznam pro výběr dne, měsíce a roku. |
+|DropdownSingleSelect |`string` |Rozevírací seznam pro jedno výběr. Hodnota deklarace je vybraná hodnota.|
+|EmailBox | `string` |Vstupní pole e-mailu |
+|Odstavec | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Pole, které zobrazuje text pouze v označení odstavce. |
+|Heslo | `string` |Textové pole pro heslo|
+|RadioSingleSelect |`string` | Kolekce přepínacích tlačítek. Hodnota deklarace je vybraná hodnota.|
+|ReadOnly | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Textové pole jen pro čtení. |
+|TextBox |`boolean`, `int`, `string` |Textové pole s jedním řádkem. |
+
+
+#### <a name="textbox"></a>TextBox
 
 Textové **pole pro zadání uživatelského rozhraní** slouží k zadání jednořádkového textového pole.
 
@@ -233,7 +266,7 @@ Textové **pole pro zadání uživatelského rozhraní** slouží k zadání jed
 </ClaimType>
 ```
 
-### <a name="emailbox"></a>EmailBox
+#### <a name="emailbox"></a>EmailBox
 
 Typ vstupu uživatele **EmailBox** se používá k poskytnutí základního pole pro zadání e-mailu.
 
@@ -251,7 +284,7 @@ Typ vstupu uživatele **EmailBox** se používá k poskytnutí základního pole
 </ClaimType>
 ```
 
-### <a name="password"></a>Heslo
+#### <a name="password"></a>Heslo
 
 Typ vstupu uživatele **hesla** se používá k zaznamenání hesla zadaného uživatelem.
 
@@ -266,7 +299,7 @@ Typ vstupu uživatele **hesla** se používá k zaznamenání hesla zadaného u�
 </ClaimType>
 ```
 
-### <a name="datetimedropdown"></a>DateTimeDropdown
+#### <a name="datetimedropdown"></a>DateTimeDropdown
 
 Typ vstupu uživatele **DateTimeDropdown** slouží k poskytnutí sady rozevíracích seznamu pro výběr dne, měsíce a roku. Pomocí predikátů a elementů PredicateValidations můžete řídit minimální a maximální hodnoty data. Další informace najdete v části predikáty **Konfigurace rozsahu kalendářních dat** v [predikátech a PredicateValidations](predicates.md).
 
@@ -281,7 +314,7 @@ Typ vstupu uživatele **DateTimeDropdown** slouží k poskytnutí sady rozevíra
 </ClaimType>
 ```
 
-### <a name="radiosingleselect"></a>RadioSingleSelect
+#### <a name="radiosingleselect"></a>RadioSingleSelect
 
 Typ vstupu uživatele **RadioSingleSelect** slouží k poskytnutí kolekce přepínačů, které umožňují uživateli vybrat jednu možnost.
 
@@ -300,7 +333,7 @@ Typ vstupu uživatele **RadioSingleSelect** slouží k poskytnutí kolekce přep
 </ClaimType>
 ```
 
-### <a name="dropdownsingleselect"></a>DropdownSingleSelect
+#### <a name="dropdownsingleselect"></a>DropdownSingleSelect
 
 Typ vstupu uživatele **DropdownSingleSelect** slouží k poskytnutí rozevíracího seznamu, který uživateli umožňuje vybrat jednu možnost.
 
@@ -319,7 +352,7 @@ Typ vstupu uživatele **DropdownSingleSelect** slouží k poskytnutí rozevírac
 </ClaimType>
 ```
 
-### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
+#### <a name="checkboxmultiselect"></a>CheckboxMultiSelect
 
 Typ vstupu uživatele **CheckboxMultiSelect** slouží k poskytnutí kolekce zaškrtávacích políček, která uživateli umožní vybrat více možností.
 
@@ -338,7 +371,7 @@ Typ vstupu uživatele **CheckboxMultiSelect** slouží k poskytnutí kolekce za�
 </ClaimType>
 ```
 
-### <a name="readonly"></a>ReadOnly
+#### <a name="readonly"></a>ReadOnly
 
 Typ vstupu uživatele **jen pro čtení** se používá k zadání pole jen pro čtení, které zobrazí deklaraci identity a hodnotu.
 
@@ -354,9 +387,9 @@ Typ vstupu uživatele **jen pro čtení** se používá k zadání pole jen pro 
 ```
 
 
-### <a name="paragraph"></a>Odstavec
+#### <a name="paragraph"></a>Odstavec
 
-**Odstavcový** typ vstupu uživatele slouží k poskytnutí pole, které zobrazuje text pouze v označení odstavce. Například &lt;p&gt;text&lt;/p&gt;.
+**Odstavcový** typ vstupu uživatele slouží k poskytnutí pole, které zobrazuje text pouze v označení odstavce.  Například &lt;p&gt;text&lt;/p&gt;. Typ uživatelského vstupu v **odstavci** `OutputClaim` technického profilu s vlastním uplatněním, musí nastavit atribut `Required` `false` (výchozí).
 
 ![Použití typu deklarace s odstavcem](./media/claimsschema/paragraph.png)
 

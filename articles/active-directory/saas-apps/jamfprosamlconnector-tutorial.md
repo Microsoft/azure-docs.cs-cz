@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65b343c79c60bc74f1a140411ff1a4a27119d225
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 1d83dbe756e8e6acdb58861ac359801bc13a63c4
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251681"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373194"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Jamf pro
 
@@ -31,9 +31,9 @@ V tomto kurzu se dozvíte, jak integrovat Jamf pro s Azure Active Directory (Azu
 * Automaticky se přihlaste uživatele k Jamf pro pomocí svých účtů Azure AD.
 * Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -42,7 +42,10 @@ Chcete-li začít, potřebujete následující položky:
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Jamf pro podporuje jednotné přihlašování iniciované v **SP** a **IDP** .
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. 
+
+* Jamf pro podporuje jednotné přihlašování iniciované v **SP** a **IDP** .
+* Po nakonfigurování Jamf pro můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="add-jamf-pro-from-the-gallery"></a>Přidání Jamf pro z Galerie
 
@@ -147,9 +150,9 @@ V této části udělíte B. Simon přístup k Jamf pro.
 
     ![Stránka jednotného přihlašování v Jamf pro](./media/jamfprosamlconnector-tutorial/configure3.png)
 
-  a. Vyberte **Upravit**.
+    a. Vyberte **Upravit**.
 
-  b. Zaškrtněte políčko **Povolit ověřování pomocí jednotného přihlašování** .
+    b. Zaškrtněte políčko **Povolit ověřování pomocí jednotného přihlašování** .
 
   c. V rozevírací nabídce **zprostředkovatele identity** vyberte **Azure** jako možnost.
 
@@ -200,7 +203,7 @@ Chcete-li zřídit uživatelský účet, proveďte následující kroky:
 
     ![Možnost vytvořit standardní účet na stránce & skupiny uživatelských účtů Jamf pro](./media/jamfprosamlconnector-tutorial/user3.png)
 
-6. V dialogovém okně **nový účet** proveďte následující kroky.
+6. V dialogovém okně **nový účet** proveďte následující kroky:
 
     ![Možnosti nastavení nového účtu v nastavení systému Jamf pro](./media/jamfprosamlconnector-tutorial/user4.png)
 
@@ -224,12 +227,12 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici Jamf pro, měli byste se automaticky přihlásit k účtu Jamf pro, pro který jste nakonfigurovali jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Kurzy pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Co je řízení relace v Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 - [Vyzkoušejte si Jamf pro s Azure AD](https://aad.portal.azure.com/)

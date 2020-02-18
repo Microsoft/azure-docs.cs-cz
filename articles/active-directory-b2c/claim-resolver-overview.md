@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1734b063530f9e8a8f0429111c4c39d628bfad4e
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 74813d9f84f682447d30cea43984f0810954da85
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251766"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77372707"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
 
@@ -50,10 +50,10 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | ----- | ----------- | --------|
 | {Culture: LanguageGroup} | Dva číslice kódu ISO pro jazyk | en |
 | {Culture: LCID}   | Identifikátor LCID kódu jazyka. | 1033 |
-| {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | USA |
-| {Culture: RFC5646} | Kód jazyka RFC5646 | en-US |
+| {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | US |
+| {Culture: RFC5646} | Kód jazyka RFC5646 | cs-CZ |
 
-### <a name="policy"></a>Zásada
+### <a name="policy"></a>Zásady
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
@@ -66,14 +66,14 @@ Následující části uvádějí dostupné překladače deklarací identity.
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |Parametr řetězce dotazu `acr_values`. | Není k dispozici |
+| {OIDC:AuthenticationContextReferences} |Parametr řetězce dotazu `acr_values`. | NEUŽÍVÁ SE. |
 | {OIDC: ClientId} |Parametr řetězce dotazu `client_id`. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |Parametr řetězce dotazu `domain_hint`. | facebook.com |
 | {OIDC:LoginHint} |  Parametr řetězce dotazu `login_hint`. | someone@contoso.com |
-| {OIDC:MaxAge} | Hodnota `max_age` | Není k dispozici |
+| {OIDC:MaxAge} | Hodnota `max_age` | NEUŽÍVÁ SE. |
 | {OIDC: nonce} |Parametr řetězce dotazu `Nonce`. | defaultNonce |
 | {OIDC:Prompt} | Parametr řetězce dotazu `prompt`. | přihlášení |
-| {OIDC: Resource} |Parametr řetězce dotazu `resource`. | Není k dispozici |
+| {OIDC: Resource} |Parametr řetězce dotazu `resource`. | NEUŽÍVÁ SE. |
 | {OIDC:scope} |Parametr řetězce dotazu `scope`. | OpenID |
 
 ### <a name="context"></a>Kontext
@@ -96,13 +96,13 @@ Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, s
 | {OAUTH-KV: campaignId} | Parametr řetězce dotazu. | ostrovy |
 | {OAUTH-KV: app_session} | Parametr řetězce dotazu. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Parametr řetězce dotazu. | 1234 |
-| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | Není k dispozici |
+| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | NEUŽÍVÁ SE. |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Přístupový token. | Není k dispozici |
+| {OAuth2: access_token} | Přístupový token. | NEUŽÍVÁ SE. |
 
 ## <a name="using-claim-resolvers"></a>Použití překladačů deklarací identity 
 
@@ -160,7 +160,7 @@ Pomocí překladačů deklarací identity můžete předem naplnit přihlašovac
 
 ### <a name="dynamic-ui-customization"></a>Dynamické přizpůsobení uživatelského rozhraní
 
-Azure AD B2C umožňuje předat parametry řetězce dotazu do koncových bodů definice obsahu HTML pro dynamické vykreslování obsahu stránky. Tato možnost například umožňuje upravit obrázek pozadí na stránce Azure AD B2C přihlašovací nebo přihlašovací stránku na základě vlastního parametru, který předáte z webové nebo mobilní aplikace. Další informace najdete v tématu [dynamická konfigurace uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-ui-customization-dynamic.md). Můžete také lokalizovat stránku HTML na základě parametru jazyka nebo můžete změnit obsah na základě ID klienta.
+Azure AD B2C umožňuje předat parametry řetězce dotazu do koncových bodů definice obsahu HTML pro dynamické vykreslování obsahu stránky. Tato možnost například umožňuje upravit obrázek pozadí na stránce Azure AD B2C přihlašovací nebo přihlašovací stránku na základě vlastního parametru, který předáte z webové nebo mobilní aplikace. Další informace najdete v tématu [dynamická konfigurace uživatelského rozhraní pomocí vlastních zásad v Azure Active Directory B2C](custom-policy-ui-customization.md). Můžete také lokalizovat stránku HTML na základě parametru jazyka nebo můžete změnit obsah na základě ID klienta.
 
 Následující příklad předává parametr řetězce dotazu s názvem **campaignId** s hodnotou `hawaii`, kód **jazyka** `en-US`a **aplikace** představující ID klienta:
 

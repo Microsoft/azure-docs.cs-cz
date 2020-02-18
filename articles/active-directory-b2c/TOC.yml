@@ -177,8 +177,6 @@
             - name: Přizpůsobení uživatelského rozhraní
               href: custom-policy-ui-customization.md
               displayName: 'ux, input, cors, html, css'
-            - name: Dynamické přizpůsobení uživatelského rozhraní
-              href: custom-policy-ui-customization-dynamic.md
             - name: Vlastní e-mail
               href: custom-email.md
               displayName: verification

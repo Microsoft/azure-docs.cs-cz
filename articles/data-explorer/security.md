@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 5f3bceb8398f9837f6f8eaa390def41456daf08d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 786950011f10e25d6bcb72061212c1878e79d45a
+ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271595"
+ms.lasthandoff: 02/17/2020
+ms.locfileid: "77373349"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>Zabezpečení clusterů Azure Průzkumník dat v Azure
 
@@ -34,10 +34,10 @@ Tento problém řeší funkce spravované identity Azure Active Directory (Azure
 
 Ve výchozím nastavení se data šifrují pomocí klíčů spravovaných Microsoftem. Pro další kontrolu nad šifrovacími klíči můžete zadat klíče spravované zákazníkem, které budou použity k šifrování dat. Šifrování dat na úrovni úložiště můžete spravovat pomocí vlastních klíčů. Klíč spravovaný zákazníkem slouží k ochraně a řízení přístupu ke kořenovému šifrovacímu klíči, který se používá k šifrování a dešifrování všech dat. Klíče spravované zákazníkem nabízejí větší flexibilitu při vytváření, střídání, zakázání a odvolávání řízení přístupu. Můžete také auditovat šifrovací klíče používané k ochraně vašich dat.
 
-K ukládání klíčů spravovaných zákazníkem použijte Azure Key Vault. Můžete vytvářet vlastní klíče a ukládat je do trezoru klíčů nebo můžete použít rozhraní Azure Key Vault API k vygenerování klíčů. Cluster Azure Průzkumník dat a Azure Key Vault musí být ve stejné oblasti, ale můžou být v různých předplatných. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](/azure/key-vault/key-vault-overview). Podrobné vysvětlení klíčů spravovaných zákazníkem najdete v tématu [klíče spravované zákazníkem pomocí Azure Key Vault](/azure/storage/common/storage-service-encryption)
+K ukládání klíčů spravovaných zákazníkem použijte Azure Key Vault. Můžete vytvářet vlastní klíče a ukládat je do trezoru klíčů nebo můžete použít rozhraní Azure Key Vault API k vygenerování klíčů. Cluster Azure Průzkumník dat a Azure Key Vault musí být ve stejné oblasti, ale můžou být v různých předplatných. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](/azure/key-vault/key-vault-overview). Podrobné vysvětlení klíčů spravovaných zákazníkem najdete v tématu [klíče spravované zákazníkem pomocí Azure Key Vault](/azure/storage/common/storage-service-encryption). Konfigurace klíčů spravovaných zákazníkem v clusteru Azure Průzkumník dat pomocí [C#](/azure/data-explorer/customer-managed-keys-csharp) šablony nástroje nebo [Azure Resource Manager](/azure/data-explorer/customer-managed-keys-resource-manager)
 
 > [!Note]
-> Klíče spravované zákazníkem spoléhají na spravované identity prostředků Azure, což je funkce Azure Active Directory (Azure AD). Ke konfiguraci klíčů spravovaných zákazníkem v Azure Portal musíte pro svůj cluster nakonfigurovat spravovanou identitu **SystemAssigned** .
+> Klíče spravované zákazníkem spoléhají na spravované identity prostředků Azure, což je funkce Azure Active Directory (Azure AD). Ke konfiguraci klíčů spravovaných zákazníkem v Azure Portal musíte nakonfigurovat spravovanou identitu **SystemAssigned** pro váš cluster, jak je popsáno v části [Konfigurace spravovaných identit pro váš cluster Azure Průzkumník dat](/azure/data-explorer/managed-identities).
 
 #### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Ukládání klíčů spravovaných zákazníkem v Azure Key Vault
 
@@ -54,14 +54,14 @@ K odvolání přístupu ke klíčům spravovaným zákazníkem použijte PowerSh
 > [!Note]
 > Když Azure Průzkumník dat identifikuje, že přístup k klíčům spravovaným zákazníkem je odvolán, bude automaticky pozastaven clusterem, aby odstranil všechna data uložená v mezipaměti. Po vrácení přístupu ke klíči je potřeba cluster obnovit ručně.
 
-## <a name="role-based-access-control"></a>Řízení přístupu založené na rolích
+## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
 Pomocí [řízení přístupu na základě role (RBAC)](/azure/role-based-access-control/overview)můžete oddělit povinnosti v rámci svého týmu a udělit pouze požadovaný přístup pro uživatele clusteru. Místo udělení všech neomezených oprávnění ke clusteru můžete použít jenom určité akce. [Řízení přístupu pro databáze](/azure/data-explorer/manage-database-permissions) můžete nakonfigurovat v [Azure Portal](/azure/role-based-access-control/role-assignments-portal)pomocí rozhraní příkazového [řádku Azure](/azure/role-based-access-control/role-assignments-cli)nebo [Azure PowerShell](/azure/role-based-access-control/role-assignments-powershell).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Konfigurace spravovaných identit pro cluster Azure Průzkumník dat](managed-identities.md)
 * [Zabezpečte svůj cluster v Azure Průzkumník dat – na portálu](manage-cluster-security.md) tím, že povolíte šifrování v klidovém prostředí.
+* [Konfigurace spravovaných identit pro cluster Azure Průzkumník dat](managed-identities.md)
 * [Konfigurace klíčů spravovaných zákazníkem pomocí šablony Azure Resource Manager](customer-managed-keys-resource-manager.md)
 * [Konfigurace klíčů spravovaných zákazníkem pomocíC#](customer-managed-keys-csharp.md)
 
