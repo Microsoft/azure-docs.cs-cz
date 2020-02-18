@@ -23,9 +23,9 @@ Delegovaný přístup k virtuálním plochám Windows podporuje následující h
 * Objekt zabezpečení
     * Uživatelé
     * Instanční objekty
-* Definice role
+* Definice rolí
     * Vestavěné role
-* Rozsah
+* Obor
     * Skupiny tenantů
     * Klienti
     * Fondy hostitelů

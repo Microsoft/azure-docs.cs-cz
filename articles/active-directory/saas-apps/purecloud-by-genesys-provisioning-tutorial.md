@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: b0b5147faf82fedb6dc3c2eea54dcff1b9343f7a
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087476"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370682"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Kurz: Konfigurace PureCloud podle Genesys pro Automatické zřizování uživatelů
 
@@ -55,7 +55,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 2. Vygenerujte token [s vaším klientem OAuth](https://developer.mypurecloud.com/api/rest/authorization/use-client-credentials.html).
 3. Pokud chcete automaticky zřídit členství ve skupině v rámci PureCloud, musíte v PureCloud [vytvořit skupiny](https://help.mypurecloud.com/?p=52397) s totožným názvem pro skupinu ve službě Azure AD.
 
-## <a name="step-3-add-purecloud-by-genesys-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání PureCloud pomocí Genesys z Galerie aplikací Azure AD
+## <a name="step-3-add-purecloud-by-genesys-from-the-azure-ad-application-gallery"></a>Krok 3: Přidání PureCloud pomocí Genesys z Galerie aplikací Azure AD
 
 Přidáním PureCloud by Genesys z Galerie aplikací Azure AD spustíte správu zřizování pro PureCloud pomocí Genesys. Pokud jste dříve nastavili PureCloud pomocí Genesys pro jednotné přihlašování, můžete použít stejnou aplikaci. Doporučuje se ale při počátečním testování integrace vytvořit samostatnou aplikaci. Další informace o přidání aplikace z Galerie [najdete tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
@@ -90,7 +90,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte adresu URL PureCloud podle Genesys API a tokenu OAuth v poli **Adresa URL tenanta** a **tajného tokenu** (v uvedeném pořadí). Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k PureCloud pomocí Genesys. Pokud se připojení nepovede, zajistěte, aby měl účet PureCloud podle Genesys oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte adresu URL PureCloud podle Genesys API a tokenu OAuth v poli **Adresa URL tenanta** a **tajného tokenu** (v uvedeném pořadí). Adresa URL rozhraní API bude strukturována jako `{{API Url}}/api/v2/scim/v2`s použitím adresy URL rozhraní API pro vaši oblast PureCloud z [centra pro vývojáře PureCloud](https://developer.mypurecloud.com/api/rest/index.html). Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k PureCloud pomocí Genesys. Pokud se připojení nepovede, zajistěte, aby měl účet PureCloud podle Genesys oprávnění správce, a zkuste to znovu.
 
     ![zřizování](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
@@ -106,15 +106,15 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
      |Atribut|Typ|
      |---|---|
-     |userName|Řetězec|
+     |userName|String|
      |aktivní|Logická hodnota|
-     |displayName|Řetězec|
-     |e-mailů [typ eq "pracovní"] .value|Řetězec|
-     |Název|Řetězec|
-     |phoneNumbers [eq typ "mobilní"] .value|Řetězec|
-     |phoneNumbers [typ eq "pracovní"] .value|Řetězec|
-     |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
-     |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Odkaz|
+     |displayName|String|
+     |e-mailů [typ eq "pracovní"] .value|String|
+     |Název|String|
+     |phoneNumbers [eq typ "mobilní"] .value|String|
+     |phoneNumbers [typ eq "pracovní"] .value|String|
+     |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|String|
+     |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
 
 10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do PureCloud podle Genesys**.
 
@@ -122,9 +122,9 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
       |Atribut|Typ|
       |---|---|
-      |displayName|Řetězec|
-      |externalId|Řetězec|
-      |členové|Odkaz|
+      |displayName|String|
+      |externalId|String|
+      |členy|Referenční informace|
 
 12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -149,7 +149,7 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 * Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
 * Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

@@ -32,7 +32,7 @@ Pokyny v této příručce jsou určené konkrétně pro uživatele s virtuáln�
 >[!NOTE]
 >Pokud hledáte srovnávací materiál o různých možnostech úložiště kontejneru FSLogix v Azure, přečtěte si téma [Možnosti úložiště pro kontejnery profilů FSLogix](store-fslogix-profile.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete moct vytvořit kontejner profilu FSLogix pro fond hostitelů, musíte:
 

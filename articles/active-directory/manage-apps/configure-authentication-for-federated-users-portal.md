@@ -150,7 +150,7 @@ Pomocí rutin Azure AD PowerShellu projdeme několik scénářů, mezi které pa
 - Seznam aplikací, pro které je nakonfigurovaná zásada
 
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro instanční objekty služby ve službě Azure AD.
 
 1.  Začněte stažením nejnovější rutiny Azure AD PowerShellu ve verzi Preview. 

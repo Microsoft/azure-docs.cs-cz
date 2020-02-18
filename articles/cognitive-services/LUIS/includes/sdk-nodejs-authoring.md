@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: language-understanding
+ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
-ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: e4bba00d6506684a3baf345806bdaa340f6970ca
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 070de0f65e890c38acd5075286b349e95cd19f3b
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76909127"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77372139"
 ---
 Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro Node. js proveďte tyto kroky:
 
@@ -63,7 +63,7 @@ export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
 export LUIS_AUTHORING_ENDPOINT=<replace-with-your-luis-authoring-endpoint>
 ```
 
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změna projevila.
+Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změny projevily.
 
 #### <a name="macostabunix"></a>[macOS](#tab/unix)
 
@@ -74,7 +74,7 @@ export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
 export LUIS_AUTHORING_ENDPOINT=<replace-with-your-luis-authoring-endpoint>
 ```
 
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změna projevila.
+Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změny projevily.
 ***
 
 ### <a name="install-the-npm-library-for-luis-authoring"></a>Instalace knihovny NPM pro vytváření obsahu LUIS

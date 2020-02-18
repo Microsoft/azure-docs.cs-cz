@@ -38,11 +38,11 @@ Rozhraní API pro analýzu textu nabízí dvě verze rozpoznávání pojmenovan�
 
 | Funkce                                                         | NER v2 | NER V3 |
 |-----------------------------------------------------------------|--------|--------|
-| Metody pro jednotlivé a dávkové požadavky                          | ×      | ×      |
-| Základní rozpoznávání entit v několika kategoriích              | ×      | ×      |
-| Rozšířená klasifikace pro rozpoznané entity                 |        | ×      |
-| Samostatné koncové body pro posílání NER entit a žádostí o připojení. |        | ×      |
-| Správa verzí modelů                                                |        | ×      |
+| Metody pro jednotlivé a dávkové požadavky                          | X      | X      |
+| Základní rozpoznávání entit v několika kategoriích              | X      | X      |
+| Rozšířená klasifikace pro rozpoznané entity                 |        | X      |
+| Samostatné koncové body pro posílání NER entit a žádostí o připojení. |        | X      |
+| Správa verzí modelů                                                |        | X      |
 
 Informace najdete v tématu [Podpora jazyků](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
 
@@ -83,25 +83,25 @@ Propojení entit
 
 | Typ  | SubType | Příklad |
 |:-----------   |:------------- |:---------|
-| Person (Osoba)        | Není k dispozici\*         | Jan, vyúčtování Branch     |
+| Osoba        | Není k dispozici\*         | Jan, vyúčtování Branch     |
 | Umístění      | Není k dispozici\*         | "Redmond, Washington", "Paříž"  |
 | Organizace  | Není k dispozici\*         | Microsoft   |
-| Množství      | Číslo        | "6", "šest"     |
+| Množství      | Počet        | "6", "šest"     |
 | Množství      | Procento    | "50%", "50 procent"|
 | Množství      | Řadový       | "2.", "Second"     |
-| Množství      | Věk           | "90 den starý", "30 let starý"    |
+| Množství      | Stáří           | "90 den starý", "30 let starý"    |
 | Množství      | Měna      | "$10,99"     |
 | Množství      | Dimenze     | "10 mil", "40 cm"     |
-| Množství      | Teplota   | "32 stupňů"    |
-| DateTime      | Není k dispozici\*         | "6:17:30 4. února 2012"      |
-| DateTime      | Datum          | "Květen 2, 2017", "05/02/2017"   |
-| DateTime      | Čas          | "8:00", "8:00"  |
-| DateTime      | DateRange     | "Může 2. května až 5."    |
-| DateTime      | TimeRange     | "18:00 to 19:00"     |
-| DateTime      | Doba trvání      | 1 minuta a 45 sekund   |
-| DateTime      | Nastavit           | "každé úterý"     |
-| zprostředkovatele identity           | Není k dispozici\*         | "https:\//www.bing.com"    |
-| Email         | Není k dispozici\*         | support@contoso.com |
+| Množství      | Temperature   | "32 stupňů"    |
+| Datum a čas      | Není k dispozici\*         | "6:17:30 4. února 2012"      |
+| Datum a čas      | Datum          | "Květen 2, 2017", "05/02/2017"   |
+| Datum a čas      | Čas          | "8:00", "8:00"  |
+| Datum a čas      | DateRange     | "Může 2. května až 5."    |
+| Datum a čas      | TimeRange     | "18:00 to 19:00"     |
+| Datum a čas      | Doba platnosti      | 1 minuta a 45 sekund   |
+| Datum a čas      | Nastavit           | "každé úterý"     |
+| URL           | Není k dispozici\*         | "https:\//www.bing.com"    |
+| E-mail         | Není k dispozici\*         | support@contoso.com |
 | Telefonní číslo v USA  | Není k dispozici\*         | (Jenom telefonní čísla USA) "(312) 555-0176" |
 | IP adresa    | Není k dispozici\*         | 10.0.0.100 |
 

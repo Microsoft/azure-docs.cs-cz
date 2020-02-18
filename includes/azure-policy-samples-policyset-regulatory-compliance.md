@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/13/2020
 ms.author: dacoulte
-ms.openlocfilehash: 6960a985a5c6a752ced9d176db6eb9368fdf0779
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d5cf28244fadd6dc0d1d06d5a84a2082a1d1e7e9
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192947"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77371974"
 ---
 |Název |Popis |Zásady |Version |
 |---|---|---|---|
@@ -26,4 +26,4 @@ ms.locfileid: "77192947"
 |[Auditovat FedRAMP vysokou kontrolu a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a nasazení rozšíření virtuálních počítačů, které řeší podmnožinu ovládacích prvků FedRAMP H. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na https://aka.ms/fedramph-blueprint. |81 |1.0.0 – Preview |
 |[Auditovat HITRUST/HIPAA ovládací prvky a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |Tato iniciativa zahrnuje zásady, které řeší podmnožinu ovládacích prvků HITRUST/HIPAA. Další zásady budou přidány v nadcházejících verzích. https://aka.ms/hipaa-blueprint |57 |1.0.0 |
 |[Auditovat přidružování MPAA a nasazovat konkrétní rozšíření virtuálních počítačů pro podporu požadavků na audit](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |Tato iniciativa zahrnuje zásady, které řeší podmnožinu bezpečnostních a řídicích mechanismů MPAA (Motion Picture Association). Další zásady budou přidány v nadcházejících verzích. Další informace najdete na https://aka.ms/mpaa-blueprint |45 |1.0.0 – Preview |
-|[Úroveň dopadu DoD 4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |Přiřadí zásady, které řeší konkrétní ovládací prvky úrovně dopadu na IL4 (DoD). Další informace https://aka.ms/DoDIL4-blueprint. |81 |1.0.0 – Preview |
+|[DoD Impact Level 4](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/DOD_IL4_audit.json) |Přiřadí zásady, které řeší konkrétní ovládací prvky úrovně dopadu na IL4 (DoD). Další informace https://aka.ms/DoDIL4-blueprint. |81 |1.0.0 – Preview |

@@ -27,7 +27,7 @@ Tento článek vám pomůže dokončit tyto úlohy:
 > * Dodejte zařízení zpět společnosti Microsoft.
 > * Použít přístupová oprávnění k souborům a adresářům (jenom Data Lake Storage Gen2)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení migrace potřebujete tyto věci.
 

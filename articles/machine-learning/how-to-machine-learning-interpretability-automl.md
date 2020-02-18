@@ -29,7 +29,7 @@ V tomto článku získáte informace o těchto tématech:
 - Povolit vizualizace, které vám pomůžou zobrazit vzory v datech a vysvětlení.
 - Implementujte výklad při odvozování nebo bodování.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Funkce pro vyhodnocení. Pro získání potřebných balíčků spusťte `pip install azureml-interpret azureml-contrib-interpret`.
 - Znalosti o sestavování automatizovaných experimentů ML. Další informace o tom, jak používat sadu Azure Machine Learning SDK, získáte v tomto [kurzu regresní model](tutorial-auto-train-models.md) nebo v tématu Jak [Konfigurovat automatizované experimenty ml](how-to-configure-auto-train.md).

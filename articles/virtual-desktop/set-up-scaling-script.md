@@ -51,7 +51,7 @@ Nástroj má však také následující omezení:
 >[!NOTE]
 >Nástroj pro škálování řídí režim vyrovnávání zatížení fondu hostitelů, který je škálovatelný. Nastaví ji na geografickou vyrovnávání zatížení pro hodiny špičky i mimo špičku.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete s nastavením nástroje pro škálování, ujistěte se, že máte připravené následující akce:
 

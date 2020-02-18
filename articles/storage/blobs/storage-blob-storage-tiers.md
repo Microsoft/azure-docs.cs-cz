@@ -117,11 +117,11 @@ V následující tabulce jsou popsány porovnání úložiště objektů blob bl
 
 |                                           | **Výkon úrovně Premium**   | **Horká vrstva** | **Studená vrstva**       | **Úroveň archivu**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
-| **Dostupnost**                          | 99,9 %                     | 99,9 %        | 99 %                 | V režimu offline           |
-| **Dostupnost** <br> **(přístupy pro čtení RA-GRS)**  | Není k dispozici                       | 99,99 %       | 99,9 %               | V režimu offline           |
+| **Dostupnost**                          | 99,9 %                     | 99,9 %        | 99 %                 | Offline           |
+| **Dostupnost** <br> **(přístupy pro čtení RA-GRS)**  | NEUŽÍVÁ SE.                       | 99,99 %       | 99,9 %               | Offline           |
 | **Poplatky za využití**                         | Vyšší náklady na úložiště, nižší náklady na přístup a transakce | Vyšší náklady na úložiště, nižší přístup a náklady na transakce | Snížení nákladů na úložiště, vyššího přístupu a transakčních nákladů | Nejnižší náklady na úložiště, nejvyšší přístup a náklady na transakce |
-| **Minimální velikost objektu**                   | Není k dispozici                       | Není k dispozici          | Není k dispozici                 | Není k dispozici               |
-| **Minimální doba uložení**              | Není k dispozici                       | Není k dispozici          | 30 dnů<sup>1</sup> | 180 dnů
+| **Minimální velikost objektu**                   | NEUŽÍVÁ SE.                       | NEUŽÍVÁ SE.          | NEUŽÍVÁ SE.                 | NEUŽÍVÁ SE.               |
+| **Minimální doba uložení**              | NEUŽÍVÁ SE.                       | NEUŽÍVÁ SE.          | 30 dnů<sup>1</sup> | 180 dnů
 | **Latence** <br> **(čas do prvního bajtu)** | Jednociferné číslo milisekund | milisekundy | milisekundy        | hodiny<sup>2</sup> |
 
 <sup>1</sup> objekty ve studené vrstvě na účtech GPv2 mají minimální dobu uchování 30 dnů. Účty úložiště BLOB nemají pro studenou vrstvu minimální dobu uchování.

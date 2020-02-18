@@ -93,7 +93,7 @@ Tato část se zabývá následujícími aspekty plánování:
 * [Integrace s více doménami služby Active Directory](#integrating-with-multiple-active-directory-domains)
 * [Plánování mapování a transformací atributů uživatele z Workday na službu Active Directory](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
 
@@ -345,7 +345,7 @@ V tomto kroku udělíte oprávnění "zabezpečení obchodních procesů" pro da
 
 1. Do vyhledávacího pole zadejte Activate a potom klikněte na odkaz **aktivovat nedokončené změny zásad zabezpečení**.
 
-    ![Aktivovat](./media/workday-inbound-tutorial/wd_isu_16.png "Aktivovat")
+    ![Aktivovat](./media/workday-inbound-tutorial/wd_isu_16.png "Activate")
 
 1. Zahajte úkol aktivovat změny zásad zabezpečení zadáním komentáře pro účely auditování a pak klikněte na tlačítko **OK**.
 1. Dokončete úkol na další obrazovce zaškrtnutím políčka **Potvrdit**a potom klikněte na tlačítko **OK**.
@@ -1114,7 +1114,7 @@ Když kliknete na některý ze záznamů protokolu auditu, otevře se stránka *
 
   Chcete-li zjistit záznamy protokolu zřizovacího agenta, které odpovídají této operaci importu služby AD, otevřete protokoly Windows Prohlížeč událostí a použijte příkaz **Najít...** možnost nabídky k vyhledání položek protokolu, které obsahují ID a spojovací hodnotu atributu vlastnosti (v tomto případě *21023*).
 
-  ![Hledání](media/workday-inbound-tutorial/wd_event_viewer_02.png)
+  ![Najít](media/workday-inbound-tutorial/wd_event_viewer_02.png)
 
   Vyhledejte položku s *ID události = 9*, které vám poskytne filtr hledání LDAP používaný agentem k načtení účtu AD. Můžete ověřit, zda se jedná o správný vyhledávací filtr pro načtení jedinečných uživatelských záznamů.
 

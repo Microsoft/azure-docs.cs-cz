@@ -66,10 +66,10 @@ Použijte následující klávesové zkratky s přístupovým klíčem. Další 
 
 | Stisknutí kláves | Akce |
 |-|-|
-| Přístupový klíč + R | Spusťte |
-| Přístupový klíč + P | Publikování |
-| Přístupová klávesa + C | Klonování |
-| Přístupová klávesa + D | Nasazení |
+| Přístupový klíč + R | Spustit |
+| Přístupový klíč + P | Publikovat |
+| Přístupová klávesa + C | Klonovat |
+| Přístupová klávesa + D | Nasadit |
 | Přístupový klíč + I | Vytvořit nebo aktualizovat kanál odvození |
 | Přístupový klíč + B | Vytvořit nebo aktualizovat kanál odvození dávky |
 | Přístupový klíč + K | Otevřete rozevírací seznam vytvořit kanál odvození. |

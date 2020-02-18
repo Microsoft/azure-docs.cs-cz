@@ -31,7 +31,7 @@ Tato část [Referenční příručka k operacím Azure AD](active-directory-ops
 
 Správa Azure Active Directory vyžaduje průběžné provádění klíčových provozních úloh a procesů, které nemusí být součástí projektu zavedení. Stále je důležité, abyste nastavili tyto úlohy pro optimalizaci prostředí. Mezi klíčové úlohy a jejich Doporučené vlastníky patří:
 
-| Úkol | Vlastník |
+| Úloha | Vlastník |
 | :- | :- |
 | Správa životního cyklu konfigurace jednotného přihlašování (SSO) ve službě Azure AD | Provozní tým IAM |
 | Návrh zásad podmíněného přístupu pro aplikace Azure AD | Tým architektury InfoSec |
@@ -309,7 +309,7 @@ Níže najdete seznam aplikací s oprávněními, které byste mohli chtít poř
 | | Pošta. Read. Shared |
 | | Pošta. v zápisu |
 
-- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Například:
+- Aplikace udělily úplnému zosobnění uživatele přihlášeného uživatele. Příklad:
 
 |Prostředek | Oprávnění |
 | :- | :- |
@@ -337,7 +337,7 @@ Níže jsou uvedena nastavení uživatelů a skupin, která se můžou uzamknout
 > [!NOTE]
 > Bez správců stále přístup k rozhraním pro správu služby Azure AD prostřednictvím příkazového řádku a dalších programových rozhraní.
 
-#### <a name="group-settings"></a>Nastavení skupin
+#### <a name="group-settings"></a>Nastavení skupiny
 
 **Samoobslužná správa skupin/uživatelé můžou vytvářet skupiny zabezpečení nebo skupiny O365.** Pokud není k dispozici žádná stávající samoobslužná iniciativa pro skupiny v cloudu, zákazníci se můžou rozhodnout je vypnout, dokud nebudou připravené k použití této možnosti.
 

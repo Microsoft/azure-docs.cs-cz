@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be39449c1c11acdbdc99bd96f917c51eebda44ae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195776"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371347"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -39,20 +39,20 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Nastavit testovací síťové prostředí
 > * Nasadit bránu firewall
-> * Vytvoření výchozí trasy
+> * Vytvořit výchozí trasu
 > * Konfigurace pravidla použití pro povolení přístupu k www.google.com
 > * Nakonfigurovat pravidlo sítě pro povolení přístupu k externím serverům DNS
-> * Otestovat bránu firewall
+> * Testovat bránu firewall
 
-Pokud chcete, můžete k dokončení tohoto kurzu použít [Azure PowerShell](deploy-ps.md).
+Pokud chcete, můžete tento kurz absolvovat v [Azure PowerShellu](deploy-ps.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="set-up-the-network"></a>Nastavit síť
+## <a name="set-up-the-network"></a>Nastavení sítě
 
 Nejprve vytvořte skupinu prostředků obsahující prostředky potřebné k nasazení brány firewall. Potom vytvořte virtuální síť, podsítě a testovací servery.
 
-### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+### <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 Skupina prostředků obsahuje všechny prostředky pro tento kurz.
 
@@ -61,9 +61,9 @@ Skupina prostředků obsahuje všechny prostředky pro tento kurz.
 3. Jako **název skupiny prostředků**zadejte *test-FW-RG*.
 4. V části **Předplatné** vyberte své předplatné.
 5. V části **Umístění skupiny prostředků** vyberte umístění. Všechny další prostředky, které vytvoříte, musí být ve stejném umístění.
-6. Vyberte **Vytvořit**.
+6. Vyberte **Create** (Vytvořit).
 
-### <a name="create-a-vnet"></a>Vytvoření VNetu
+### <a name="create-a-vnet"></a>Vytvoření virtuální sítě
 
 Tato virtuální síť bude obsahovat tři podsítě.
 
@@ -125,7 +125,7 @@ Pomocí informací v následující tabulce můžete nakonfigurovat jiný virtu�
 
 |Nastavení  |Hodnota  |
 |---------|---------|
-|Subnet|**Zatížení – SN**|
+|Podsíť|**Zatížení – SN**|
 |Veřejná IP adresa|**NTato**|
 |Veřejné příchozí porty|**NTato**|
 
@@ -145,7 +145,7 @@ Nasaďte do virtuální sítě bránu firewall.
    |Název     |**Test – FW01**|
    |Umístění     |Vyberte dříve použité umístění.|
    |Volba virtuální sítě     |**Použít existující**: **test-FW-vn**|
-   |Veřejná IP adresa     |**Vytvořte novou**. Veřejná IP adresa musí být typu Standardní SKU.|
+   |Veřejná IP adresa     |**Přidat nový** Veřejná IP adresa musí být typu Standardní SKU.|
 
 5. Vyberte **Zkontrolovat a vytvořit**.
 6. Zkontrolujte souhrn a pak vyberte **vytvořit** a vytvořte bránu firewall.
@@ -154,7 +154,7 @@ Nasaďte do virtuální sítě bránu firewall.
 7. Po dokončení nasazení přejdete do skupiny prostředků **test-FW-RG** a vyberete možnost **test-FW01** firewall.
 8. Poznamenejte si privátní IP adresu. Budete ji potřebovat později při vytváření výchozí trasy.
 
-## <a name="create-a-default-route"></a>Vytvoření výchozí trasy
+## <a name="create-a-default-route"></a>Vytvořit výchozí trasu
 
 U podsítě **Workload-SN** nakonfigurujte výchozí trasu v odchozím směru, která půjde přes bránu firewall.
 
@@ -165,7 +165,7 @@ U podsítě **Workload-SN** nakonfigurujte výchozí trasu v odchozím směru, k
 5. V části **Předplatné** vyberte své předplatné.
 6. V případě **skupiny prostředků**vyberte **test-FW-RG**.
 7. V části **Umístění** vyberte dříve použité umístění.
-8. Vyberte **Vytvořit**.
+8. Vyberte **Create** (Vytvořit).
 9. Vyberte **aktualizovat**a pak vyberte tabulku směrování **brány firewall** .
 10. Vyberte **podsítě** a pak vyberte **přidružit**.
 11. Vyberte možnost **virtuální síť** > **test-FW-vn**.
@@ -227,10 +227,10 @@ Pro účely testování v tomto kurzu nakonfigurujte primární a sekundární a
 3. V části **Nastavení**vyberte **servery DNS**.
 4. V části **servery DNS**vyberte **vlastní**.
 5. Do textového pole **Přidat server DNS** zadejte **209.244.0.3** a do dalšího textového pole zadejte **209.244.0.4**.
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 7. Restartujte virtuální počítač **Srv-Work**.
 
-## <a name="test-the-firewall"></a>Otestovat bránu firewall
+## <a name="test-the-firewall"></a>Testovat bránu firewall
 
 Nyní otestujte bránu firewall a potvrďte, že funguje podle očekávání.
 

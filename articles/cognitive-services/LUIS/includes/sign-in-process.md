@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.custom: include file
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: language-understanding
+ms.date: 02/14/2020
 ms.topic: include
-ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 5e7feac35ddd607d36cb0ddd3bae10cf1b9bc7a7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 155c88ec4766391f70701b17038b915c399d8b0c
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278576"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77372300"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Přihlášení k portálu LUIS
 
@@ -31,19 +31,19 @@ Nový uživatel, který má LUIS, musí provést tento postup:
 
     ![Vytvořit prostředek pro vytváření](../media/migrate-authoring-key/choose-authoring-resource-form.png)
 
-    Při **vytváření nového prostředku pro vytváření obsahu**zadejte následující informace: 
+    Při **vytváření nového prostředku pro vytváření obsahu**zadejte následující informace:
 
     * **Název prostředku** – vlastní název, který zvolíte, se používá jako součást adresy URL pro dotazy na koncový bod vytváření a předpovědi.
-    * **Tenant** – tenant, ke kterému je předplatné Azure přidružené. 
+    * **Tenant** – tenant, ke kterému je předplatné Azure přidružené.
     * **Název předplatného** – předplatné, které se bude fakturovat za prostředek.
-    * **Skupina prostředků** – název vlastní skupiny prostředků, který zvolíte nebo vytvoříte. Skupiny prostředků umožňují seskupit prostředky Azure pro přístup a správu. 
+    * **Skupina prostředků** – název vlastní skupiny prostředků, který zvolíte nebo vytvoříte. Skupiny prostředků umožňují seskupit prostředky Azure pro přístup a správu.
     * **Umístění** – Volba umístění je založená na výběru **skupiny prostředků** .
     * **Cenová úroveň** – cenová úroveň určuje maximální transakci za sekundu a měsíc.
 
-1. Zobrazí se souhrn prostředku, který má být vytvořen. Vyberte **Next** (Další).
+1. Zobrazí se souhrn prostředku, který má být vytvořen. Vyberte **Další**.
 
     ![Vytvořit prostředek pro vytváření](../media/sign-in/sign-in-confirm-key-selection.png)
 
-1. Potvrďte výběr možnosti **pokračovat**. 
+1. Potvrďte výběr možnosti **pokračovat**.
 
     ![Vytvořit prostředek pro vytváření](../media/sign-in/sign-in-confirm-continue.png)

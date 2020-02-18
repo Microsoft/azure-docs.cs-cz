@@ -33,7 +33,7 @@ Koncepční Kafka a Event Hubs jsou téměř identické: Jedná se o segmentovan
 | Cluster | Obor názvů |
 | Téma | Centrum událostí |
 | Oddíl | Oddíl|
-| Skupina uživatelů | Skupina uživatelů |
+| Skupiny příjemců | Skupiny příjemců |
 | Posun | Posun|
 
 ### <a name="key-differences-between-kafka-and-event-hubs"></a>Hlavní rozdíly mezi Kafka a Event Hubs

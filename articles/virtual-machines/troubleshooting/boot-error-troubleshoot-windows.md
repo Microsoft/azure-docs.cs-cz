@@ -1,5 +1,5 @@
 ---
-title: Služba Azure Virtual Machines restart se zablokuje při restartování, vypínání nebo zastavování služeb | Microsoft Docs
+title: Služba Azure Virtual Machines Shutdown se zablokuje při restartování, vypínání nebo zastavování služeb | Microsoft Docs
 description: Tento článek vám pomůže při řešení chyb služby v Azure Windows Virtual Machines.
 services: virtual-machines-windows
 documentationCenter: ''
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: db7b26402170236843891799738088b9229e4693
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477405"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77371356"
 ---
-# <a name="azure-windows-vm-restart-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Restartování virtuálního počítače Azure s Windows se zablokuje při restartování, vypínání nebo zastavování služeb.
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Vypnutí virtuálního počítače Azure s Windows se zablokuje při restartování, vypínání nebo zastavování služeb.
 
 Tento článek popisuje kroky pro řešení potíží se zprávami "restartování", "vypnutí" nebo "zastavení služeb", se kterými se můžete setkat při restartování virtuálního počítače s Windows v Microsoft Azure.
 
-## <a name="symptoms"></a>Příznaky
+## <a name="symptoms"></a>Symptomy
 
 Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, může se zobrazit, že snímek obrazovky zobrazuje zprávu "restartování", "vypínání" nebo "zastavení služeb".
 
@@ -81,9 +81,9 @@ Pokud se problém nevyřeší po čekání na zpracování změn, budete potřeb
 
 **Připojení disku s operačním systémem k virtuálnímu počítači pro obnovení**
 
-1. Pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [pořízení snímku disku](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
+1. Pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [vytvoření snímku disku](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk).
 
-2. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
+2. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal).
 
 3. Vzdálená plocha do virtuálního počítače pro obnovení.
 
@@ -152,6 +152,6 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
 
 8. Znovu připojte disk s operačním systémem k virtuálnímu počítači pro obnovení, shromážděte soubor výpisu paměti.
 
-## <a name="contact-microsoft-support"></a>Obraťte se na podporu Microsoftu
+## <a name="contact-microsoft-support"></a>Kontaktujte podporu Microsoftu
 
 Po shromáždění souboru s výpisem paměti kontaktujte podporu Microsoftu, abyste zjistili hlavní příčinu.

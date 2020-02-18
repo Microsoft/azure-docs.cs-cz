@@ -22,7 +22,7 @@ Při [převzetí služeb při selhání](site-recovery-failover.md) virtuálníc
 1. Znovu nastavte ochranu virtuálních počítačů v sekundární oblasti, aby se začaly replikovat do primární oblasti.
 1. Po dokončení ochrany a replikaci virtuálních počítačů můžete převzít služby při selhání ze sekundární do primární oblasti.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Převzetí služeb virtuálního počítače při selhání z primární do sekundární oblasti musí být potvrzené.
 - Primární cílový webový server by měl být dostupný a měl by být přístupný nebo vytvářet prostředky v této oblasti.
@@ -42,7 +42,7 @@ Při [převzetí služeb při selhání](site-recovery-failover.md) virtuálníc
 
 Během ochrany můžete přizpůsobit následující vlastnosti cílového virtuálního počítače.
 
-![Přizpůsobení](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
+![Přizpůsobit](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
 |Vlastnost |Poznámky:  |
 |---------|---------|

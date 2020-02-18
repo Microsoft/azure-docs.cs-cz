@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: language-understanding
+ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
-ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: 69814c89c1c44a63febbcac04a4d161cd4c0921f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 631185c20b816191530158fab2b7cd1ed68c3092
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774213"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77372055"
 ---
 Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro Python:
 
@@ -29,7 +29,7 @@ Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro P
 ## <a name="prerequisites"></a>Požadavky
 
 * Účet portálu Language Understanding (LUIS): [Vytvořte si ho zdarma](https://www.luis.ai).
-* [Python 3.x](https://www.python.org/)
+* [Python 3. x](https://www.python.org/)
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -62,7 +62,7 @@ export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
 export LUIS_REGION=<replace-with-your-luis-region>
 ```
 
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změna projevila.
+Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změny projevily.
 
 #### <a name="macostabunix"></a>[macOS](#tab/unix)
 
@@ -73,7 +73,7 @@ export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
 export LUIS_REGION=<replace-with-your-luis-region>
 ```
 
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změna projevila.
+Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změny projevily.
 ***
 
 ### <a name="install-the-python-library-for-luis"></a>Instalace knihovny Pythonu pro LUIS

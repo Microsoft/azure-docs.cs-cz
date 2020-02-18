@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c1f08fa5623642538f2ea99b2de07947b1bd9206
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209592"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370168"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Kurz: nastavení geografického plotu pomocí Azure Maps
 
@@ -32,7 +32,7 @@ V tomto kurzu zjistíte, jak:
 > *   Pomocí Azure Maps rozhraní API pro monitorování geografických zón můžete sledovat, jestli se stavební prostředek nachází v rámci staveniště.
 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="create-an-azure-maps-account"></a>Vytvoření účtu Azure Maps 
 
@@ -176,7 +176,7 @@ V této části vytvoříme obslužnou rutinu události, která obdrží oznáme
 
 Pro zpracování událostí Enter a Exit provedeme dvě [Logic Apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) služby. V případě událostí v triggeru Logic Apps se v posloupnosti spouští více událostí. Nápad je odeslat výstrahy do Operations Manager v tomto případě e-mailů. Následující obrázek znázorňuje vytvoření aplikace logiky pro událost vstupu geografické zóny. Podobně můžete vytvořit další pro událost Exit. Další informace najdete v tématu všechny [podporované obslužné rutiny událostí](https://docs.microsoft.com/azure/event-grid/event-handlers) .
 
-1. Vytvoření aplikace logiky v Azure Portal
+1. Vytvoření aplikace logiky v Azure Portal. Vyberte aplikaci logiky v Azure Marketplace. Pak vyberte tlačítko **vytvořit** .
 
    ![Vytvoření Azure Logic Apps pro zpracování událostí geografické plotu](./media/tutorial-geofence/logic-app.png)
 

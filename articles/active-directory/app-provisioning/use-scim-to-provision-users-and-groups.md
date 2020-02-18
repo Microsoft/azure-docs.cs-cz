@@ -68,7 +68,7 @@ Všimněte si, že nemusíte podporovat uživatele i skupiny ani všechny níže
 | Ve TelephoneNumber |phoneNumbers [typ eq "fax"] .value |
 | givenName |name.givenName |
 | pracovní funkce |Název |
-| e-mailu |e-mailů [typ eq "pracovní"] .value |
+| pošta |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |externalId |
 | Správce |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager |
 | Mobilní zařízení |phoneNumbers [eq typ "mobilní"] .value |
@@ -86,9 +86,9 @@ Všimněte si, že nemusíte podporovat uživatele i skupiny ani všechny níže
 | Skupina Azure Active Directory | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
 | displayName |displayName |
-| e-mailu |e-mailů [typ eq "pracovní"] .value |
+| pošta |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |displayName |
-| členové |členové |
+| členy |členy |
 | ID objektu |externalId |
 | proxyAddresses |e-mailů [Zadejte eq "other"]. Hodnota |
 
@@ -509,7 +509,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 * Aktualizace žádosti o opravu skupiny by měla v odpovědi vracet *HTTP 204 bez obsahu* . Vrácení textu se seznamem všech členů není vhodné.
 * Není nutné podporovat vrácení všech členů skupiny.
 
-#### <a name="create-group"></a>Vytvoření skupiny
+#### <a name="create-group"></a>Vytvořit skupinu
 
 ##### <a name="request-7"></a>Request
 

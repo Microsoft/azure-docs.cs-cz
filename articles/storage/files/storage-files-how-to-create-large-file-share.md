@@ -18,7 +18,7 @@ ms.locfileid: "77368656"
 
 Když v účtu úložiště povolíte velké sdílené složky, sdílené složky se můžou škálovat až na 100 TiB. Toto škálování můžete povolit u svých stávajících účtů úložiště pro existující sdílené složky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -49,10 +49,10 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
 
    |Pole  |Hodnota  |
    |---------|---------|
-   |Model nasazení     |Resource Manager         |
-   |Výkon     |Standard         |
-   |Account kind (Druh účtu)     |StorageV2 (obecné účely v2)         |
-   |Access tier (Vrstva přístupu)     |Hot         |
+   |Model nasazení     |Správce prostředků         |
+   |Výkon     |Standardní         |
+   |Druh účtu     |StorageV2 (obecné účely v2)         |
+   |Úroveň přístupu     |Horká         |
 
 1. Vyberte **Upřesnit**a potom vyberte možnost **povoleno** napravo od **velkých sdílených složek**.
 1. Vyberte **Zkontrolovat a vytvořit**, zkontrolujte nastavení účtu úložiště a vytvořte účet.
@@ -61,7 +61,7 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
 
 1. Vyberte **Create** (Vytvořit).
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
 
 Nejdřív [nainstalujte nejnovější verzi rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , abyste mohli povolit velké sdílené složky.
 
@@ -100,7 +100,7 @@ V účtu úložiště jste teď povolili velké sdílené složky. V dalším kr
 
 Pokud se zobrazí chybová zpráva "pro účet ještě nejsou k dispozici žádné sdílené složky," může být vaše oblast uprostřed dokončení zavedení. Pokud máte naléhavou potřebu pro velké sdílené složky, obraťte se na podporu.
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
 
 Pokud chcete v existujícím účtu povolit velké sdílené složky, použijte následující příkaz. Nahraďte `<yourStorageAccountName>` a `<yourResourceGroup>` informacemi.
 
@@ -130,7 +130,7 @@ Vytváření velkých sdílených složek je skoro stejné jako vytvoření stan
 
 ![Azure Portal uživatelské rozhraní zobrazující pole název a kvóta](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
 
 Chcete-li vytvořit rozsáhlou sdílenou složku, použijte následující příkaz. Pomocí vašich informací nahraďte `<yourStorageAccountName>`, `<yourStorageAccountKey>`a `<yourFileShareName>`.
 
@@ -163,7 +163,7 @@ Až v účtu úložiště povolíte velké sdílené složky, můžete také roz
 
 ![ROZHRANÍ Azure Portal s kvótou stávajících sdílených složek](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+### <a name="cli"></a>CLI
 
 Pokud chcete nastavit kvótu na maximální velikost, použijte následující příkaz. Pomocí vašich informací nahraďte `<yourStorageAccountName>`, `<yourStorageAccountKey>`a `<yourFileShareName>`.
 

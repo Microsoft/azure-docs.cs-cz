@@ -129,7 +129,7 @@ Následující tabulka ilustruje několik příkladů těchto vzorců pro zříz
 |10 240      | 10 240  | Až 30 720  | 675 | 450   |
 |33 792      | 33 792  | Až 100 000 | 2 088 | 1 392   |
 |51 200      | 51 200  | Až 100 000 | 3 132 | 2 088   |
-|102 400     | 100 000 | Až 100 000 | 6 204 | 4 136   |
+|102 400     | 100,000 | Až 100 000 | 6 204 | 4 136   |
 
 > [!NOTE]
 > Výkon sdílených složek závisí na omezeních sítě počítačů, dostupné šířce pásma sítě, velikosti v/v, paralelních operacích, mezi mnoha dalšími faktory. Například na základě interního testování s 8 KiB velikostí vstupně-výstupních operací čtení a zápisu může být jeden virtuální počítač s Windows, *Standard F16s_v2*připojený ke sdílené složce Premium přes SMB, mohl dosáhnout 20 tisíc čtení IOPS a 15 000 IOPS. S 512 velikostí čtení/zápisu v/v souboru MiB může stejný virtuální počítač dosáhnout propustnosti 1,1 GiB/s a 370 propustnosti příchozího přenosu dat MiB/s. Chcete-li dosáhnout maximálního rozsahu výkonu, rozšíříte zatížení napříč více virtuálními počítači. Některé běžné problémy s výkonem a alternativní řešení najdete v [Průvodci odstraňováním potíží](storage-troubleshooting-files-performance.md) .

@@ -55,7 +55,7 @@ Tato omezení ukázala důležitost nástrojů agregace inteligentních dat a vi
 * Data jsou dále kontextové, protože data trvalá v modelu časové řady zachovávají výpočty dotazů na časové řady jako proměnné a znovu je používají v době dotazu.
 * Model časové řady organizuje a agreguje data pro lepší vizualizaci a možnosti správy. (**B**) 
 
-### <a name="key-capabilities"></a>Klíčové funkce
+### <a name="key-capabilities"></a>Hlavní možnosti
 
 Díky cíli, který zjednodušuje a usnadňuje správu kontextu časových řad, poskytuje model časových řad následující funkce Time Series Insights ve verzi Preview. Pomůže vám:
 
@@ -101,7 +101,7 @@ Instance jsou definovány pomocí **timeSeriesId**, **typeId**, **Name**, **Desc
 | --- | ---|
 | timeSeriesId | Identifikátor UUID časové řady, ke které je instance přidružena. |
 | typeId | Identifikátor UUID typu modelu časové řady, ke kterému je instance přidružena. Ve výchozím nastavení se všechny zjištěné nové instance přidružit k výchozímu typu.
-| jméno | Vlastnost **Name** je volitelná a rozlišuje velká a malá písmena. Pokud není **název** k dispozici, použije se výchozí hodnota **timeSeriesId**. Pokud je zadán název, je **timeSeriesId** stále k dispozici. [](time-series-insights-update-explorer.md#4-time-series-well) |
+| name | Vlastnost **Name** je volitelná a rozlišuje velká a malá písmena. Pokud není **název** k dispozici, použije se výchozí hodnota **timeSeriesId**. Pokud je zadán název, je **timeSeriesId** stále k dispozici. [](time-series-insights-update-explorer.md#4-time-series-well) |
 | description | Textový popis instance. |
 | hierarchyIds | Definuje, do kterých hierarchií patří instance. |
 | instanceFields | Vlastnosti instance a všech statických dat, která definují instanci. Definují hodnoty vlastností hierarchie nebo mimo hierarchii a zároveň podporují indexování k provádění operací vyhledávání. |
@@ -148,7 +148,7 @@ Hierarchie jsou definovány podle **ID**, **názvu**a **zdroje**hierarchie.
 | Vlastnost | Popis |
 | ---| ---|
 | id | Jedinečný identifikátor pro hierarchii, který se používá například při definování instance. |
-| jméno | Řetězec, který slouží k zadání názvu hierarchie. |
+| name | Řetězec, který slouží k zadání názvu hierarchie. |
 | source | Určuje organizační hierarchii nebo cestu, která je nejnižším pořadím nadřazeného a podřízeného objektu hierarchie, kterou uživatelé chtějí vytvořit. Vlastnosti nadřazeného a podřízeného objektu mapují pole instance. |
 
 Hierarchie se ve formátu JSON reprezentují jako:
@@ -240,7 +240,7 @@ Typy modelů časových řad jsou definovány podle **ID**, **názvu**, **popisu
 | Vlastnost | Popis |
 | ---| ---|
 | id | Identifikátor UUID pro typ. |
-| jméno | Řetězec, který slouží k zadání názvu pro typ. |
+| name | Řetězec, který slouží k zadání názvu pro typ. |
 | description | Popis řetězce pro typ. |
 | proměnné | Zadejte proměnné přidružené k typu. |
 

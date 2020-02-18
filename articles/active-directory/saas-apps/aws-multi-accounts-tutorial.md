@@ -50,7 +50,7 @@ Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, p
 
 * Všechny účty AWS budou používat stejný soubor XML s federačními metadaty a v době, kdy dojde ke změně certifikátu, je nutné tento obrovské cvičení využít k aktualizaci certifikátu na všech účtech AWS ve stejnou dobu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Ke konfiguraci integrace služby Azure AD s Amazon Web Services (AWS) potřebujete následující položky:
 
@@ -361,7 +361,7 @@ Můžete také ověřit odpověď SAML a zobrazit role předávané jako deklara
 
 Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](../active-directory-saas-access-panel-introduction.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Jak nakonfigurovat zřizování pomocí rozhraní Microsoft Graph API](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](tutorial-list.md)

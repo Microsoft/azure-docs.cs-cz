@@ -55,7 +55,7 @@ Následující část obsahuje příklad neshodné odolnosti mezi nastavením od
 }
 ```
 
-### <a name="error-messages"></a>Chybové zprávy
+### <a name="error-messages"></a>Chybovými zprávami
 * Neshoda trvanlivosti sady škálování virtuálního počítače neodpovídá aktuální úrovni odolnosti typu Service Fabric uzlu.
 * Odolnost sady škálování virtuálního počítače se neshoduje s cílovou Service Fabricou úrovní odolnosti typu uzlu.
 * Odolnost sady škálování virtuálního počítače odpovídá aktuální Service Fabric úrovně trvanlivosti nebo cílové Service Fabric typu uzlu. 
@@ -70,7 +70,7 @@ Chcete-li opravit neshodu trvanlivosti, která je označena některou z výše u
 ### <a name="overview"></a>Přehled
 Cluster Service Fabric má vlastnost [úrovně spolehlivosti](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) , která se používá k určení počtu replik systémových služeb, které běží na primárním uzlu typu clusteru. Počet požadovaných replik bude určovat minimální počet uzlů, které musí být udržovány v primárním typu uzlu clusteru. Pokud počet uzlů v primárním uzlu překročí požadované minimum pro úroveň spolehlivosti, cluster přestane být stabilní.  
 
-### <a name="error-messages"></a>Chybové zprávy 
+### <a name="error-messages"></a>Chybovými zprávami 
 Byla zjištěna operace odebrání uzlu počáteční hodnoty a bude odmítnuta. 
 * Výsledkem této operace může být pouze {0} potenciálních počátečních uzlů, které mají zůstat v clusteru, zatímco {1} jsou potřeba jako minimum.
 * Odebrání {0}ch počátečních uzlů z {1} by způsobilo, že cluster dostává z důvodu ztráty kvora uzlu na počátečních uzlech. Maximální počet počátečních uzlů, které lze v určitém čase odebrat, je {2}.

@@ -395,7 +395,7 @@ Vysvětlení běžných vlastností a specifických pro události naleznete v t�
 
 Typ `EventGridEvent` definuje pouze vlastnosti nejvyšší úrovně; vlastnost `Data` je `JObject`.
 
-## <a name="create-a-subscription"></a>Vytvoření odběru
+## <a name="create-a-subscription"></a>Umožňuje vytvořit odběr.
 
 Pokud chcete začít přijímat Event Grid požadavky HTTP, vytvořte Event Grid předplatné, které určuje adresu URL koncového bodu, která funkci vyvolá.
 

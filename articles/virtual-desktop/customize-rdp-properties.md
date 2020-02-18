@@ -32,7 +32,7 @@ Publikované soubory RDP ve výchozím nastavení obsahují následující vlast
 
 |Vlastnosti protokolu RDP | Stolní počítače | Vzdálené aplikace RemoteApp |
 |---|---| --- |
-| Režim více monitorů | Povoleno | Není k dispozici |
+| Režim více monitorů | Povolit | NEUŽÍVÁ SE. |
 | Přesměrování jednotky povolena | Jednotky, schránka, tiskárny, porty COM, zařízení USB a čipové karty| Jednotky, schránka a tiskárny |
 | Režim vzdáleného zvuku | Přehrát místně | Přehrát místně |
 

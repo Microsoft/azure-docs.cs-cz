@@ -1,11 +1,15 @@
 ---
-ms.openlocfilehash: 3856f192f51c0cd276fd282d2fb72204d0e84092
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: bb96d48edf2b98c6c50b0477b4de748777b67eb8
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77172720"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77370877"
 ---
+## <a name="app-platform"></a>Aplikační platforma
+
+[!INCLUDE [azure-policy-samples-policies-app-platform](azure-policy-samples-policies-app-platform.md)]
+
 ## <a name="app-service"></a>App Service
 
 [!INCLUDE [azure-policy-samples-policies-app-service](azure-policy-samples-policies-app-service.md)]
@@ -22,11 +26,15 @@ ms.locfileid: "77172720"
 
 [!INCLUDE [azure-policy-samples-policies-cache](azure-policy-samples-policies-cache.md)]
 
-## <a name="compute"></a>Compute
+## <a name="compute"></a>Výpočty
 
 [!INCLUDE [azure-policy-samples-policies-compute](azure-policy-samples-policies-compute.md)]
 
-## <a name="cosmos-db"></a>Databáze Cosmos
+## <a name="container-registry"></a>Container Registry
+
+[!INCLUDE [azure-policy-samples-policies-container-registry](azure-policy-samples-policies-container-registry.md)]
+
+## <a name="cosmos-db"></a>Cosmos DB
 
 [!INCLUDE [azure-policy-samples-policies-cosmos-db](azure-policy-samples-policies-cosmos-db.md)]
 
@@ -86,7 +94,7 @@ ms.locfileid: "77172720"
 
 [!INCLUDE [azure-policy-samples-policies-network](azure-policy-samples-policies-network.md)]
 
-## <a name="search"></a>Hledání
+## <a name="search"></a>Hledat
 
 [!INCLUDE [azure-policy-samples-policies-search](azure-policy-samples-policies-search.md)]
 

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: d6347d75e0a3883f23fdf76016080c8b7b330163
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b0ebe6cb505fa2a145dd3cbb94398912f2933a4b
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580810"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77369710"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Použití Azure Data Lake Storage Gen2 pro požadavky na velké objemy dat
 
@@ -25,67 +25,11 @@ Existují čtyři klíčové fáze zpracování velkých objemů dat:
 > * Stahování dat
 > * Vizualizace dat
 
-Začněte tím, že vytvoříte účet úložiště a kontejner. Pak udělte přístup k datům. První část tohoto článku vám pomůžou tyto úlohy provést. Ve zbývajících částech zvýrazníme možnosti a nástroje pro každou fázi zpracování.
+Tento článek popisuje možnosti a nástroje pro jednotlivé fáze zpracování.
 
 Úplný seznam služeb Azure, které můžete používat se službou Azure Data Lake Storage Gen2, najdete v tématu věnovaném [integraci Azure Data Lake Storage se službami Azure](data-lake-storage-integrate-with-azure-services.md) .
 
-## <a name="create-a-data-lake-storage-gen2-account"></a>Vytvoření účtu Data Lake Storage Gen2
-
-Účet Data Lake Storage Gen2 je účet úložiště, který má hierarchický obor názvů. 
-
-Pokud ho chcete vytvořit, přečtěte si téma [rychlý Start: vytvoření účtu úložiště Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
-## <a name="create-a-container"></a>Vytvoření kontejneru
-
-Tady je seznam nástrojů, pomocí kterých můžete vytvořit kontejner pro vaše soubory.
-
-|Nástroj | Doprovodné materiály |
-|---|--|
-|Azure Storage Explorer | [Vytvoření kontejneru pomocí Průzkumník služby Storage](data-lake-storage-explorer.md#create-a-container) |
-|AzCopy | [Vytvoření kontejneru objektů BLOB nebo sdílené složky pomocí AzCopyV10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-files)|
-|Rozhraní příkazového řádku kontejneru Hadoop (HDFS) se službou HDInsight |[Vytvoření kontejneru pomocí HDFS v HDInsight](data-lake-storage-use-hdfs-data-lake-storage.md#create-a-container) |
-|Kód v poznámkovém bloku Azure Databricks|[Vytvoření kontejneru účtu úložiště (Scala)](data-lake-storage-quickstart-create-databricks-account.md#create-storage-account-container) <br><br> [Vytvoření kontejneru a jeho připojení (Python)](data-lake-storage-use-databricks-spark.md#create-a-container-and-mount-it)|
-
-Je nejjednodušší vytvořit systémy souborů pomocí Průzkumník služby Storage nebo AzCopy. Vytváření systémů souborů pomocí HDInsight a datacihly trvá trochu více práce. Pokud ale plánujete použít clustery HDInsight nebo datacihly ke zpracování vašich dat, můžete nejdřív vytvořit své clustery a použít rozhraní příkazového řádku HDFS pro vytváření systémů souborů.  
-
-## <a name="grant-access-to-the-data"></a>Udělení přístupu k datům
-
-Před zahájením ingestování dat nastavte pro svůj účet odpovídající přístupová oprávnění a data v účtu.
-
-Existují tři způsoby, jak udělit přístup:
-
-* Přiřaďte jednu z těchto rolí uživateli, skupině, uživatelsky spravované identitě nebo instančnímu objektu:
-
-  [Čtečka dat objektů BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)
-
-  [Přispěvatel dat objektu BLOB služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
-
-  [Vlastník dat objektu BLOB služby Storage](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
-
-* Použijte token sdíleného přístupového podpisu (SAS).
-
-* Použijte klíč účtu úložiště.
-
-Tato tabulka ukazuje, jak udělit přístup pro jednotlivé služby nebo nástroje Azure.
-
-|Nástroj | Udělení přístupu | Doprovodné materiály |
-|---|--|---|
-|Storage Explorer| Přiřazení role uživatelům a skupinám | [Přiřazení rolí správců a uživatelů bez oprávnění správce k Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) |
-|AzCopy| Přiřazení role uživatelům a skupinám <br>**ani**<br> Použít token SAS| [Přiřazení rolí správců a uživatelů bez oprávnění správce k Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)<br><br>[Snadné vytvoření SAS pro stažení souboru z Azure Storage – pomocí Průzkumník služby Azure Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)|
-|Apache DistCp | Přiřazení role k spravované identitě přiřazené uživatelem | [Vytvoření clusteru HDInsight pomocí Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Data Factory| Přiřazení role k uživatelsky přiřazené identitě spravované uživatelem<br>**ani**<br> Přiřazení role k instančnímu objektu<br>**ani**<br> Použití klíče účtu úložiště | [Vlastnosti propojené služby](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
-|Azure HDInsight| Přiřazení role k spravované identitě přiřazené uživatelem | [Vytvoření clusteru HDInsight pomocí Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
-|Azure Databricks| Přiřazení role k instančnímu objektu | [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
-
-Pokud chcete udělit přístup ke konkrétnímu souboru a složkám, přečtěte si tyto články.
-
-* [Nastavení oprávnění na úrovni souborů a adresářů pomocí Průzkumník služby Azure Storage s Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
-
-* [Seznamy řízení přístupu pro soubory a adresáře](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control#access-control-lists-on-files-and-directories)
-
-Další informace o nastavení dalších aspektů zabezpečení najdete v tématu [Azure Data Lake Storage Gen2 Průvodce zabezpečením](https://docs.microsoft.com/azure/storage/common/storage-data-lake-storage-security-guide?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
-## <a name="ingest-the-data"></a>Ingestování dat
+## <a name="ingest-the-data-into-data-lake-storage-gen2"></a>Ingestování dat do Data Lake Storage Gen2
 
 V této části se vysvětlují různé zdroje dat a různé způsoby, kterými je možné data do účtu Data Lake Storage Gen2 ingestovat.
 
@@ -99,7 +43,7 @@ Tady je seznam nástrojů, které můžete použít k ingestování ad hoc dat.
 
 | Zdroj dat | Ingestování pomocí |
 | --- | --- |
-| Místní počítač |[Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/)<br><br>[Nástroj AzCopy](../common/storage-use-azcopy-v10.md)|
+| Místní počítač |[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)<br><br>[Azure CLI](data-lake-storage-directory-file-acl-cli.md)<br><br>[Průzkumník služby Storage](https://azure.microsoft.com/features/storage-explorer/)<br><br>[Nástroj AzCopy](../common/storage-use-azcopy-v10.md)|
 | Azure Storage Blob |[Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md)<br><br>[Nástroj AzCopy](../common/storage-use-azcopy-v10.md)<br><br>[DistCp běžící na clusteru HDInsight](data-lake-storage-use-distcp.md)|
 
 ### <a name="streamed-data"></a>Streamovaná data
@@ -110,6 +54,7 @@ Tady je seznam nástrojů, které můžete použít k ingestování datových pr
 
 |Nástroj | Doprovodné materiály |
 |---|--|
+|Azure Stream Analytics|[Rychlý Start: vytvoření úlohy Stream Analytics pomocí Azure Portal](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Odchozí přenos dat do Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
 |Azure HDInsight – zaplavení | [Zápis do Apache Hadoop HDFS z Apache Storm ve službě HDInsight](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
 
 ### <a name="relational-data"></a>Relační data
@@ -131,8 +76,10 @@ Tady je seznam nástrojů, které můžete použít k ingestování dat protokol
 |Nástroj | Doprovodné materiály |
 |---|--|
 |Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
+|Azure CLI|[Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
+|Azure PowerShell|[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)|
 
-Pro nahrání dat protokolu webového serveru a také pro nahrávání dalších druhů dat (např. data ze sociálních sítí zabarvení) je dobrým přístupem k zápisu vlastních skriptů nebo aplikací, protože vám nabízí flexibilitu při zahrnutí komponenty pro nahrávání dat v rámci vaše větší aplikace pro velké objemy dat. V některých případech může tento kód mít podobu skriptu nebo jednoduchého nástroje příkazového řádku. V jiných případech může být kód použit k integraci zpracování velkých objemů dat do obchodní aplikace nebo řešení.
+Pro nahrání dat protokolu webového serveru a také pro nahrávání dalších druhů dat (např. data ze sociálních sítí zabarvení) je dobrým přístupem k psaní vlastních skriptů nebo aplikací, protože nabízí flexibilitu, která umožňuje zahrnout komponentu pro nahrávání dat jako součást větší aplikace pro velké objemy dat. V některých případech může tento kód mít podobu skriptu nebo jednoduchého nástroje příkazového řádku. V jiných případech může být kód použit k integraci zpracování velkých objemů dat do obchodní aplikace nebo řešení.
 
 ### <a name="data-associated-with-azure-hdinsight-clusters"></a>Data přidružená k clusterům Azure HDInsight
 
@@ -176,12 +123,7 @@ Tady je seznam nástrojů, pomocí kterých můžete spouštět úlohy analýzy 
 
 ## <a name="visualize-the-data"></a>Vizualizace dat
 
-Pomocí kombinace služeb můžete vytvářet vizuální reprezentace dat uložených v Data Lake Storage Gen2.
-
-![Vizualizovat data v Data Lake Storage Gen2](./media/data-lake-storage-data-scenarios/visualize-data.png "Vizualizovat data v Data Lake Storage Gen2")
-
-* [K přesunu dat z Data Lake Storage Gen2 na Azure SQL Data Warehouse](../../data-factory/copy-activity-overview.md) můžete začít pomocí Azure Data Factory.
-* Potom můžete [integrovat Power BI s Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) a vytvořit tak vizuální reprezentaci dat.
+Pomocí konektoru Power BI můžete vytvářet vizuální reprezentace dat uložených v Data Lake Storage Gen2. Další informace najdete [v tématu Analýza dat v Azure Data Lake Storage Gen2 pomocí Power BI](https://docs.microsoft.com/power-query/connectors/datalakestorage).
 
 ## <a name="download-the-data"></a>Stažení dat
 
@@ -199,3 +141,5 @@ Tady je seznam nástrojů, pomocí kterých můžete stahovat data z Data Lake S
 |---|--|
 |Azure Data Factory | [Aktivita kopírování ve službě Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
 |Apache DistCp | [Použití DistCp ke kopírování dat mezi objekty blob Azure Storage a Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
+|Azure Storage Explorer|[Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí Průzkumník služby Azure Storage](data-lake-storage-explorer.md)|
+|Nástroj AzCopy|[Přenos dat pomocí AzCopy a BLOB Storage](../common/storage-use-azcopy-blobs.md)|

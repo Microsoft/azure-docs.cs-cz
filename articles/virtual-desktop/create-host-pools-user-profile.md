@@ -67,7 +67,7 @@ Pokud chcete nakonfigurovat virtuální počítače s FSLogix softwarem, udělej
 
 | Název                | Typ               | Data/hodnota                        |
 |---------------------|--------------------|-----------------------------------|
-| Povoleno             | HODNOTY              | 1                                 |
+| Povolit             | HODNOTY              | 1                                 |
 | VHDLocations        | Hodnota s více řetězci | "Síťová cesta pro sdílenou složku"     |
 
 >[!IMPORTANT]

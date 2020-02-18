@@ -6,25 +6,25 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2c6d9aa13c8c320dc46f6634f3a60e0c1730c710
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e5083ec55ee0a57cd7defd466f5baf1704336320
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418734"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370669"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Sestavování konfigurací DSC v konfiguraci stavu Azure Automation (DSC) pomocí složených prostředků
 
 Pokud je potřeba prostředek spravovat s více než jednou konfigurací požadovaného stavu konfigurace (DSC), nejlepším řešením je použití [složených prostředků](/powershell/scripting/dsc/resources/authoringresourcecomposite). Složený prostředek je vnořená a Parametrizovaná konfigurace, která se používá jako prostředek DSC v rámci jiné konfigurace. To umožňuje vytváření složitých konfigurací a zároveň umožňuje, aby byly základní složené prostředky (parametrizované konfigurace) jednotlivě spravovány a sestaveny.
 
-Azure Automation umožňuje [Import a kompilaci složených prostředků](automation-dsc-compile.md#compiling-configurations-in-azure-automation-that-contain-composite-resources).
+Azure Automation umožňuje [Import a kompilaci složených prostředků](automation-dsc-compile.md).
 Po importu složených prostředků do účtu Automation můžete na stránce **Konfigurace stavu (DSC)** použít prostředí pro **vytváření konfigurace** .
 
 ## <a name="composing-a-configuration-from-composite-resources"></a>Sestavení konfigurace ze složených prostředků
 
 Než budete moct přiřadit konfiguraci provedenou ze složených prostředků v Azure Portal, je nutné ji vytvořit. To lze provést pomocí **Konfigurace psaní** na stránce **Konfigurace stavu (DSC)** , a to na kartách **Konfigurace** nebo **zkompilované konfigurace** .
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 1. Na levé straně klikněte na **všechny prostředky** a pak na název svého účtu Automation.
 1. Na stránce **účet Automation** vyberte v části **Správa konfigurace**možnost **Konfigurace stavu (DSC)** .
 1. Na stránce **Konfigurace stavu (DSC)** klikněte na kartu **Konfigurace** nebo **zkompilované konfigurace** a pak v nabídce v horní části stránky klikněte na **vytvořit konfiguraci** .

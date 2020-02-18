@@ -5,17 +5,17 @@ services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: luis
+ms.subservice: language-understanding
+ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
 ms.author: diberry
-ms.openlocfilehash: 1b4d878fdac473660999a965296a317441d6b00a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 53e6382cf8d046b2c9818b906890bc64642fd2ed
+ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170558"
+ms.lasthandoff: 02/15/2020
+ms.locfileid: "77371741"
 ---
 Pomocí klientské knihovny pro vytváření Language Understanding (LUIS) pro .NET:
 
@@ -63,7 +63,7 @@ export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key>
 export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
 ```
 
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změna projevila.
+Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změny projevily.
 
 #### <a name="macostabunix"></a>[macOS](#tab/unix)
 
@@ -74,7 +74,7 @@ export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key>
 export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
 ```
 
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změna projevila.
+Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změny projevily.
 ***
 
 ### <a name="create-a-new-c-application"></a>Vytvoření nové C# aplikace

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be1c0e93a51064870635d4f06bd5b365bbfe517a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847282"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370069"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Postupy: povolení resetování hesla z přihlašovací obrazovky Windows
 
@@ -27,6 +27,8 @@ V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete uživatelům povol
 ## <a name="general-limitations"></a>Obecná omezení
 
 - Resetování hesla není v současné době podporováno ze vzdálené plochy nebo z rozšířených relací technologie Hyper-V.
+- Je známo, že někteří poskytovatelé přihlašovacích údajů třetích stran způsobují problémy s touto funkcí.
+- Vypnutí řízení uživatelských účtů prostřednictvím změny [klíče registru EnableLUA](https://docs.microsoft.com/openspecs/windows_protocols/ms-gpsb/958053ae-5397-4f96-977f-b7700ee461ec) je známo, že způsobují problémy.
 - Tato funkce nefunguje pro sítě s nasazeným ověřováním sítě 802.1 x a možnost provést těsně před přihlášením uživatele. Pro povolení této funkce doporučujeme, aby se sítě s nasazeným ověřováním pomocí sítě 802.1 x používaly ověřování počítače.
 - Počítače připojené k hybridní službě Azure AD musí mít na řadiči domény linku připojení k síti, aby bylo možné použít nové heslo a aktualizovat přihlašovací údaje uložené v mezipaměti.
 - Pokud použijete image, před provedením kroku CopyProfile zajistěte, aby byla mezipaměť webu pro předdefinovaný správce vymazána. Další informace o tomto kroku najdete v článku o [výkonu nekvalitního výkonu při používání vlastního výchozího uživatelského profilu](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
@@ -50,7 +52,7 @@ V počítačích se systémem Windows 7, 8, 8,1 a 10 můžete uživatelům povol
 - Správce musí povolit samoobslužné resetování hesla služby Azure AD z Azure Portal.
 - **Před použitím této funkce se uživatelé musí zaregistrovat pro SSPR.**
 - Požadavky na síťový proxy server
-   - Zařízení s Windows 10 
+   - Zařízení s Windows 10 
        - Port 443 pro `passwordreset.microsoftonline.com` a `ajax.aspnetcdn.com`
        - Zařízení s Windows 10 podporují jenom konfiguraci proxy serveru na úrovni počítače.
 - Spusťte aspoň Windows 10, verze z dubna 2018 Update (v1803) a zařízení musí být buď:
@@ -113,7 +115,7 @@ Když uživatelé resetují heslo na přihlašovací obrazovce zařízení s Win
 > [!WARNING]
 > Je nutné povolit TLS 1,2, není pouze nastaveno na automatické vyjednávání.
 
-### <a name="install"></a>Instalace
+### <a name="install"></a>Nainstalovat
 
 1. Stáhněte si odpovídající instalační program pro verzi systému Windows, kterou chcete povolit.
    - Software je k dispozici na webu Microsoft Download Center na [https://aka.ms/sspraddin](https://aka.ms/sspraddin)
@@ -124,7 +126,7 @@ Když uživatelé resetují heslo na přihlašovací obrazovce zařízení s Win
 
 ![Příklad Windows 7 klikl na "Zapomenuté heslo?" Tok SSPR](media/howto-sspr-windows/windows-7-sspr.png)
 
-#### <a name="silent-installation"></a>Bezobslužná instalace
+#### <a name="silent-installation"></a>Tichá instalace
 
 - Pro tichou instalaci použijte příkaz "msiexec/i SsprWindowsLogon. PROD. msi/Qn"
 - Pro tichou odinstalaci použijte příkaz "msiexec/x SsprWindowsLogon. PROD. msi/Qn"

@@ -1117,9 +1117,9 @@ Ve schématu auditu se mění následující pole:
 |Název pole|Co se změnilo|Staré hodnoty|Nové hodnoty|
 |----------|------------|----------|----------|
 |Kategorie|Toto bylo pole **název služby** . Teď je to pole **kategorie auditu** . **Název služby** byl přejmenován na pole **loggedByService** .|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|<ul><li>Správa uživatelů</li><li>Správa skupin</li><li>Správa aplikací</li></ul>|
-|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásada</li><li>Aplikace</li><li>Uživatel</li><li>Skupina</li></ul>|
+|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásady</li><li>Aplikace</li><li>Uživatel</li><li>Skupina</li></ul>|
 |loggedByService|Poskytuje název služby, která vygenerovala protokol auditu.|Null|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|
-|Výsledek|Poskytuje výsledek protokolů auditu. Dřív byl tento výčet vyhodnocený, ale nyní zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li></ul>|<ul><li>Úspěch</li><li>Selhání</li></ul>|
+|Výsledek|Poskytuje výsledek protokolů auditu. Dřív byl tento výčet vyhodnocený, ale nyní zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li></ul>|<ul><li>Úspěch</li><li>Nezdařilo se</li></ul>|
 
 #### <a name="changed-fields-in-the-sign-in-schema"></a>Změněná pole ve schématu přihlášení
 Ve schématu přihlášení se mění následující pole:
@@ -1127,8 +1127,8 @@ Ve schématu přihlášení se mění následující pole:
 |Název pole|Co se změnilo|Staré hodnoty|Nové hodnoty|
 |----------|------------|----------|----------|
 |appliedConditionalAccessPolicies|Toto bylo pole **conditionalaccessPolicies** . Teď je to pole **appliedConditionalAccessPolicies** .|Žádné změny|Žádné změny|
-|conditionalAccessStatus|Poskytuje výsledek stavu zásad podmíněného přístupu při přihlášení. Dřív byl tento výčet vyhodnocený, ale nyní zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Úspěch</li><li>Selhání</li><li>Nepoužito</li><li>Zakázáno</li></ul>|
-|appliedConditionalAccessPolicies: výsledek|Poskytuje výsledek jednotlivých stavů zásad podmíněného přístupu při přihlášení. Dřív byl tento výčet vyhodnocený, ale nyní zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Úspěch</li><li>Selhání</li><li>Nepoužito</li><li>Zakázáno</li></ul>|
+|conditionalAccessStatus|Poskytuje výsledek stavu zásad podmíněného přístupu při přihlášení. Dřív byl tento výčet vyhodnocený, ale nyní zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Úspěch</li><li>Nezdařilo se</li><li>Nepoužito</li><li>Zakázáno</li></ul>|
+|appliedConditionalAccessPolicies: výsledek|Poskytuje výsledek jednotlivých stavů zásad podmíněného přístupu při přihlášení. Dřív byl tento výčet vyhodnocený, ale nyní zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Úspěch</li><li>Nezdařilo se</li><li>Nepoužito</li><li>Zakázáno</li></ul>|
 
 Další informace o schématu najdete v tématu [Interpretace schématu protokolu auditu Azure AD v Azure monitor (Preview)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema) .
 
@@ -1158,7 +1158,7 @@ Správci Azure AD teď můžou resetovat svoje vlastní heslo pomocí oznámení
 
 - Jiná aplikace Mobile Authenticator/kód hardwarového tokenu
 
-- Email
+- E-mail
 
 - Telefonní hovor
 
@@ -3299,7 +3299,7 @@ S Azure AD Privileged Identity Management můžete spravovat, řídit a monitoro
 
 - Předplatná
 - Skupiny prostředků
-- Virtual Machines 
+- Virtuální počítače 
 
 Všechny prostředky v rámci webu Azure portal, které používají funkci Azure RBAC můžete využít výhod zabezpečení a možnosti správy životního cyklu, které Azure AD Privileged Identity Management může nabídnout.
 

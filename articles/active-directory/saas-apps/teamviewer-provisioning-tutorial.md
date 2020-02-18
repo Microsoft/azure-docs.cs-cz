@@ -34,7 +34,7 @@ Tento kurz popisuje kroky, které je třeba provést v TeamVieweru i Azure Activ
 > * Udržování uživatelských atributů synchronizovaných mezi Azure AD a TeamViewerem
 > * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial) k TeamVieweru (doporučeno)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
@@ -66,7 +66,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
     ![Token pro TeamViewer](./media/teamviewer-provisioning-tutorial/token.png)
 
-## <a name="step-3-add-teamviewer-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání TeamVieweru z Galerie aplikací Azure AD
+## <a name="step-3-add-teamviewer-from-the-azure-ad-application-gallery"></a>Krok 3: Přidání TeamVieweru z Galerie aplikací Azure AD
 
 Přidejte TeamViewer z Galerie aplikací Azure AD a začněte spravovat zřizování pro TeamViewer. Pokud jste již dříve nastavili TeamViewer pro jednotné přihlašování, můžete použít stejnou aplikaci. Doporučuje se ale při počátečním testování integrace vytvořit samostatnou aplikaci. Další informace o přidání aplikace z Galerie [najdete tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
@@ -117,8 +117,8 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
    |Atribut|Typ|
    |---|---|
-   |userName|Řetězec|
-   |displayName|Řetězec|
+   |userName|String|
+   |displayName|String|
    |aktivní|Logická hodnota|
 
 10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
@@ -144,7 +144,7 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 * Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
 * Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

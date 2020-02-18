@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: de60b4ea1b09998e84bab4d204e3c8c3bc8779a4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: fe1260982edc877c049716bd74f1bb3e90d33b0f
+ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050444"
+ms.lasthandoff: 02/16/2020
+ms.locfileid: "77370532"
 ---
 # <a name="tutorial-configure-azure-databricks-scim-connector-for-automatic-user-provisioning"></a>Kurz: Konfigurace konektoru Azure Databricks SCIM pro Automatické zřizování uživatelů
 
@@ -57,7 +57,7 @@ Scénář popsaný v tomto kurzu předpokládá, že už máte následující po
 
 3. Zkopírujte **token**. Tato hodnota se zadává do pole token tajného kódu na kartě zřizování aplikace konektoru Azure Databricks SCIM v Azure Portal.
 
-## <a name="step-3-add-azure-databricks-scim-connector-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání konektoru Azure Databricks SCIM z Galerie aplikací Azure AD
+## <a name="step-3-add-azure-databricks-scim-connector-from-the-azure-ad-application-gallery"></a>Krok 3: Přidání konektoru Azure Databricks SCIM z Galerie aplikací Azure AD
 
 Přidejte Azure Databricks konektor SCIM z Galerie aplikací Azure AD a začněte spravovat zřizování pro Azure Databricks konektor SCIM. Pokud jste dříve nastavili Azure Databricks konektor SCIM pro jednotné přihlašování, můžete použít stejnou aplikaci. Doporučuje se ale při počátečním testování integrace vytvořit samostatnou aplikaci. Další informace o přidání aplikace z Galerie [najdete tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
@@ -80,7 +80,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-azure-databricks-scim-connector-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro konektor Azure Databricks SCIM ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -96,7 +96,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte Azure Databricks přihlašovací údaje správce konektoru SCIM a uživatelské jméno. Klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k Azure Databricks konektoru SCIM. Pokud se připojení nepovede, ujistěte se, že váš účet konektoru Azure Databricks SCIM má oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte hodnotu koncového bodu SCIM v **adrese URL klienta**. Adresa URL tenanta by měla být ve formátu `https://<region>.azuredatabricks.net/api/2.0/preview/scim`, kde lze **oblast** najít v adrese URL domovské stránky Azure Databricks. Například koncový bod SCIM pro oblast **westus** bude `https://westus.azuredatabricks.net/api/2.0/preview/scim`. Zadejte hodnotu tokenu získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** , aby se služba Azure AD mohla připojit k Azure Databricks konektoru SCIM. Pokud se připojení nepovede, ujistěte se, že váš účet konektoru Azure Databricks SCIM má oprávnění správce, a zkuste to znovu.
 
     ![zřizování](./media/azure-databricks-scim-provisioning-connector-provisioning-tutorial/provisioning.png)
 
@@ -112,8 +112,8 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
    |Atribut|Typ|
    |---|---|
-   |userName|Řetězec|
-   |displayName|Řetězec|
+   |userName|String|
+   |displayName|String|
    |aktivní|Logická hodnota|
 
 10. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do Azure Databricks konektor SCIM**.
@@ -122,8 +122,8 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
      |Atribut|Typ|
      |---|---|
-     |displayName|Řetězec|
-     |členové|Odkaz|
+     |displayName|String|
+     |členy|Referenční informace|
 
 11. V části **mapování** vyberte možnost **synchronizovat Azure Active Directory skupiny do Azure Databricks konektor SCIM**.
 
@@ -152,7 +152,7 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 * Datacihly vždycky převádí své hodnoty uživatelského jména na malá písmena při ukládání do svého adresáře bez ohledu na to, co se jim odesílají přes SCIM.
 * V současné době jsou požadavky na Azure Databricks rozhraní API SCIM pro uživatele citlivé na velká a malá písmena, takže pokud se dotazuje na USER@contoso.com, bude se při ukládání do user@contoso.comzobrazovat s 0 výsledky.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

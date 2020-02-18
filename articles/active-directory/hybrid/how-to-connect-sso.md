@@ -63,12 +63,12 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ano\*|Ano|Ano|Ano\*\*\*|Není k dispozici
-|Windows 8.1|Ano\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
-|Windows 8|Ano\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
-|Windows 7|Ano\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
-|Windows Server 2012 R2 nebo novější|Ano\*\*|Není k dispozici|Ano|Ano\*\*\*|Není k dispozici
-|Mac OS X|Není k dispozici|Není k dispozici|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
+|Windows 10|Ano\*|Ano|Ano|Ano\*\*\*|NEUŽÍVÁ SE.
+|Windows 8.1|Ano\*|NEUŽÍVÁ SE.|Ano|Ano\*\*\*|NEUŽÍVÁ SE.
+|Windows 8|Ano\*|NEUŽÍVÁ SE.|Ano|Ano\*\*\*|NEUŽÍVÁ SE.
+|Windows 7|Ano\*|NEUŽÍVÁ SE.|Ano|Ano\*\*\*|NEUŽÍVÁ SE.
+|Windows Server 2012 R2 nebo novější|Ano\*\*|NEUŽÍVÁ SE.|Ano|Ano\*\*\*|NEUŽÍVÁ SE.
+|Mac OS X|NEUŽÍVÁ SE.|NEUŽÍVÁ SE.|Ano\*\*\*|Ano\*\*\*|Ano\*\*\*
 
 
 \*vyžaduje Internet Explorer verze 10 nebo vyšší.
