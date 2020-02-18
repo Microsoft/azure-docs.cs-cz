@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 2d39afcea056c76b6c9672e1963d7529fbfce549
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 19613ab917d303863a8d90133bcce2e1353289c1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280930"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426203"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for MariaDB (ve verzi Preview) pomocí rozhraní příkazového řádku
 
@@ -20,7 +20,7 @@ Privátní koncový bod je základním stavebním blokem privátního propojení
 > [!NOTE]
 > Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for MariaDB podporuje cenové úrovně optimalizované pro Pro obecné účely a paměť.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete projít tento průvodce, budete potřebovat:
 
@@ -38,7 +38,7 @@ Než budete moct vytvořit libovolný prostředek, musíte vytvořit skupinu pro
 az group create --name myResourceGroup --location westeurope
 ```
 
-## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="create-a-virtual-network"></a>Vytvoření Virtual Network
 Vytvořte Virtual Network pomocí [AZ Network VNet Create](/cli/azure/network/vnet). Tento příklad vytvoří výchozí Virtual Network s názvem *myVirtualNetwork* s jednou podsítí s názvem *mySubnet*:
 
 ```azurecli-interactive
@@ -129,9 +129,9 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
+1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
-1. Otevřete stažený soubor. RDP *.
+1. Otevřete *stažený soubor. RDP* .
 
     1. Pokud se zobrazí výzva, vyberte **Připojit**.
 
@@ -159,27 +159,28 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
     Non-authoritative answer:
     Name:    mydemoserver.privatelink.mariadb.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MariaDB server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. Otestujte připojení privátního propojení pro server MariaDB pomocí libovolného dostupného klienta. V následujícím příkladu jsem k provedení operace použili aplikaci [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) .
 
-4. In **New connection**, enter or select this information:
+4. V **nové připojení**zadejte nebo vyberte tyto informace:
 
-    | Setting | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
-    | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.privatelink.mariadb.database.azure.com* |
-    | Username | Enter username as *username@servername* which is provided during the MariaDB server creation. |
-    | Password | Enter a password provided during the MariaDB server creation. |
+    | Název připojení| Vyberte název připojení, který chcete zvolit.|
+    | Název hostitele | Vybrat *mydemoserver.privatelink.MariaDB.Database.Azure.com* |
+    | Uživatelské jméno | Jako *username@servername* zadejte uživatelské jméno, které se poskytuje během vytváření MariaDB serveru. |
+    | Heslo | Zadejte heslo, které jste zadali během vytváření MariaDB serveru. |
     ||
 
-5. Select **Test Connection** or **OK**.
+5. Vyberte **Test připojení** nebo **OK**.
 
-6. (Optionally) Browse databases from left menu and Create or query information from the MariaDB database
+6. Volitelně Procházet databáze z levé nabídky a vytvářet nebo dotazovat informace z databáze MariaDB
 
-8. Close the remote desktop connection to myVm.
+8. Zavřete připojení ke vzdálené ploše pro myVm.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Vyčištění prostředků 
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít příkaz AZ Group Delete: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

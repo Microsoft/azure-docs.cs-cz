@@ -2,13 +2,13 @@
 title: Zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 652fe9d379d6e2ba50e9e282f384905e154368d8
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.date: 02/17/2020
+ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031659"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425455"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -55,7 +55,7 @@ Fyzický počítač |  Azure Migrate: posouzení serveru |  Zjistit fyzické ser
 **Hodnota hash** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hostitel Hyper-V** | Se systémem Windows Server 2012 R2 nebo novějším.
 **Azure Migrate projekt** | Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
-**Rozpoznávání** | Zařízení může na vCenter Server zjistit až 5000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.
+**Rozpoznávání** | Zařízení může zjistit až 5000 virtuálních počítačů Hyper-V.<br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.
 **Součásti zařízení** | Aplikace pro správu: webová aplikace v zařízení pro vstup uživatele během nasazování.<br/> Agent zjišťování: shromažďuje data konfigurace počítače.<br/> Agent hodnocení: shromažďování údajů o výkonu.<br/>  Služba automatické aktualizace: aktualizovat součásti (spouští se každých 24 hodin).
 
 

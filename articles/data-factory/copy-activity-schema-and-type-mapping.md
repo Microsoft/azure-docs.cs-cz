@@ -9,20 +9,20 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 2c637346aae72a238963607f6f5d23910684265c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921997"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423619"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Mapování schématu v aktivitě kopírování
 
 Tento článek popisuje, jak Azure Data Factory aktivita kopírování provádí mapování schématu a mapování typů dat ze zdrojových dat na data jímky při spouštění kopie dat.
 
-## <a name="schema-mapping"></a>Schema mapping
+## <a name="schema-mapping"></a>Mapování schématu
 
 Mapování sloupce platí při kopírování dat ze zdroje do jímky. Ve výchozím nastavení jsou **zdrojová data mapování aktivit zkopírována do jímky podle názvů sloupců**. Můžete zadat [explicitní mapování](#explicit-mapping) pro přizpůsobení mapování sloupce podle vašich potřeb. Konkrétně aktivita kopírování:
 
@@ -91,10 +91,10 @@ V části `translator` -> objekt `mappings`-> s `source` a `sink`jsou podporová
 | -------- | ------------------------------------------------------------ | -------- |
 | jméno     | Název zdroje nebo sloupce jímky.                           | Ano      |
 | ordinal  | Index sloupce. Začněte s 1. <br>Použít a vyžádat při použití oddělovače textu bez řádku záhlaví. | Ne       |
-| Cesta     | Výraz cesty JSON pro každé pole k extrakci nebo mapování Platí pro hierarchická data, např. MongoDB/REST.<br>Pro pole v rámci kořenového objektu začíná cesta JSON kořenem $;. pro pole v poli, které je zvoleno vlastností `collectionReference`, začíná cesta JSON od elementu pole. | Ne       |
+| path     | Výraz cesty JSON pro každé pole k extrakci nebo mapování Platí pro hierarchická data, např. MongoDB/REST.<br>Pro pole v rámci kořenového objektu začíná cesta JSON kořenem $;. pro pole v poli, které je zvoleno vlastností `collectionReference`, začíná cesta JSON od elementu pole. | Ne       |
 | type     | Data Factory pomocný datový typ sloupce zdroj nebo jímka. | Ne       |
 | culture  | Jazyková verze zdroje nebo sloupce jímky. <br>Použijte, pokud je typ `Datetime` nebo `Datetimeoffset`. Výchozí formát je `en-us`. | Ne       |
-| formát   | Řetězec formátu, který se má použít, pokud je typ `Datetime` nebo `Datetimeoffset`. Informace o formátování hodnoty DateTime naleznete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Ne       |
+| format   | Řetězec formátu, který se má použít, pokud je typ `Datetime` nebo `Datetimeoffset`. Informace o formátování hodnoty DateTime naleznete v tématu [Vlastní řetězce formátu data a času](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Ne       |
 
 Následující vlastnosti jsou podporovány v rámci `translator` -> `mappings` kromě objektu s `source` a `sink`:
 
@@ -203,7 +203,7 @@ Můžete určit aktivitu kopírování – > `translator` -> `schemaMapping` pro
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost Type pro překladatele aktivity kopírování musí být nastavená na: **TabularTranslator** . | Ano |
-| schemaMapping | Kolekce párů klíč-hodnota, která představuje vztah mapování **ze strany zdroje na stranu jímky**.<br/>- **Key:** představuje zdroj. V poli **tabelární zdroj**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchického zdroje**zadejte výraz cesty JSON pro každé pole, které se má extrahovat a mapovat.<br>- **Value:** představuje jímky. Pro **tabulkovou jímku**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchické jímky**zadejte výraz cesty JSON pro každé pole, které chcete extrahovat a mapovat. <br>V případě hierarchických dat pro pole v části kořenový objekt začíná cesta JSON kořenem $;. pro pole v poli, které je zvoleno vlastností `collectionReference`, začíná cesta JSON od elementu pole.  | Ano |
+| schemaMapping | Kolekce párů klíč-hodnota, která představuje vztah mapování **ze strany zdroje na stranu jímky**.<br/>- **klíč:** představuje zdroj. V poli **tabelární zdroj**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchického zdroje**zadejte výraz cesty JSON pro každé pole, které se má extrahovat a mapovat.<br>- **hodnota:** reprezentuje jímku. Pro **tabulkovou jímku**zadejte název sloupce definovaný ve struktuře datové sady. u **hierarchické jímky**zadejte výraz cesty JSON pro každé pole, které chcete extrahovat a mapovat. <br>V případě hierarchických dat pro pole v části kořenový objekt začíná cesta JSON kořenem $;. pro pole v poli, které je zvoleno vlastností `collectionReference`, začíná cesta JSON od elementu pole.  | Ano |
 | collectionReference | Pokud chcete iterovat a extrahovat data z objektů **uvnitř pole** pole se stejným vzorem a převést je na každý řádek na objekt, zadejte cestu JSON tohoto pole, aby se provedlo křížové použití. Tato vlastnost je podporována pouze v případě, že jsou hierarchická data zdrojem. | Ne |
 
 **Příklad: kopírování z MongoDB do Oracle:**
@@ -237,7 +237,7 @@ Například pokud máte MongoDB dokument s následujícím obsahem:
 
 a chcete ho zkopírovat do tabulky Azure SQL v následujícím formátu, a to tak, že sloučíte data uvnitř pole *(order_pd a order_price)* a spojíte se společnými kořenovými informacemi *(číslo, datum a město)* :
 
-| orderNumber | orderDate | order_pd | order_price | city |
+| orderNumber | OrderDate | order_pd | order_price | city |
 | --- | --- | --- | --- | --- |
 | 01 | 20170122 | P1 | 23 | Seattle |
 | 01 | 20170122 | P2 | 13 | Seattle |
@@ -259,11 +259,11 @@ Nakonfigurujte pravidlo mapování schématu jako následující ukázku JSON ak
         "translator": {
             "type": "TabularTranslator",
             "schemaMapping": {
-                "orderNumber": "$.number",
-                "orderDate": "$.date",
-                "order_pd": "prod",
-                "order_price": "price",
-                "city": " $.city[0].name"
+                "$.number": "orderNumber",
+                "$.date": "orderDate",
+                "prod": "order_pd",
+                "price": "order_price",
+                "$.city[0].name": "city"
             },
             "collectionReference":  "$.orders"
         }
@@ -286,15 +286,15 @@ Data Factory podporuje následující dočasné datové typy: při konfiguraci i
 
 * Byte[]
 * Logická hodnota
-* Datetime
+* Datum a čas
 * Datetimeoffset
 * Decimal
 * Double
-* Guid
+* identifikátor GUID
 * Int16
 * Datový typ Int32
 * Int64
-* Jednoduchá
+* Jednoduché
 * Řetězec
 * Časový interval
 

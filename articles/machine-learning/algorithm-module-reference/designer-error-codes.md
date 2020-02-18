@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/03/2019
-ms.openlocfilehash: cf343773695275bc5600ab59e1cd719374d65700
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: ea132578a08b9f0002084374838c615a01fa820f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152359"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425795"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Výjimky a kódy chyb pro návrháře (Preview)
 
@@ -74,7 +74,7 @@ Existují dva způsoby, jak získat úplný text chybové zprávy v Návrháři:
 |Zprávy výjimek|
 |------------------------|
 |Jeden nebo více vstupů má hodnotu null nebo je prázdné.|
-|Vstup "{0}" má hodnotu null nebo je prázdný.|
+|Vstup {Name} má hodnotu null nebo je prázdný.|
 
 
 ## <a name="error-0004"></a>Chyba 0,0004  
@@ -87,8 +87,8 @@ Existují dva způsoby, jak získat úplný text chybové zprávy v Návrháři:
 |Zprávy výjimek|
 |------------------------|
 |Parametr by měl být větší než hodnota hranice.|
-|Hodnota parametru "{0}" by měla být větší než {1}.|
-|Parametr "{0}" obsahuje hodnotu "{1}", která by měla být větší než {2}.|
+|Hodnota parametru {arg_name} by měla být větší než {lower_boundary}.|
+|Parametr {arg_name} má hodnotu {actual_value}, která by měla být větší než {lower_boundary}.|
 
 
 ## <a name="error-0005"></a>Chyba 0,005  
@@ -101,8 +101,8 @@ Existují dva způsoby, jak získat úplný text chybové zprávy v Návrháři:
 |Zprávy výjimek|
 |------------------------|
 |Parametr by měl být větší nebo roven hodnotě hranice.|
-|Hodnota parametru {arg_name} by měla být větší nebo rovna {target_val}.|
-|Parametr {arg_name} má hodnotu {true_val}, která by měla být větší nebo rovna {target_val}.|
+|Hodnota parametru {arg_name} by měla být větší nebo rovna {lower_boundary}.|
+|Parametr {arg_name} má hodnotu {Value}, která by měla být větší nebo rovna {lower_boundary}.|
 
 
 ## <a name="error-0006"></a>Chyba 0006  
@@ -115,8 +115,8 @@ Existují dva způsoby, jak získat úplný text chybové zprávy v Návrháři:
 |Zprávy výjimek|
 |------------------------|
 |Neshoda parametrů Jeden z parametrů by měl být menší než jiný.|
-|Hodnota parametru "{0}" by měla být menší než hodnota parametru "{1}".|
-|Parametr "{0}" má hodnotu "{1}", která by měla být menší než {2}.|
+|Hodnota parametru {arg_name} by měla být menší než hodnota parametru {upper_boundary_parameter_name}.|
+|Parametr {arg_name} má hodnotu {Value}, která by měla být menší než {upper_boundary_parameter_name}.|
 
 
 ## <a name="error-0007"></a>Chyba 0007  
@@ -137,8 +137,9 @@ Existují dva způsoby, jak získat úplný text chybové zprávy v Návrháři:
 |Zprávy výjimek|
 |------------------------|
 |Neshoda parametrů Jeden z parametrů by měl být menší nebo roven druhému.|
-|Hodnota parametru "{0}" by měla být menší nebo rovna hodnotě parametru "{1}".|
-|Parametr "{0}" má hodnotu "{1}", která by měla být menší nebo rovna {2}.|
+|Hodnota parametru {arg_name} by měla být menší nebo rovna hodnotě parametru {upper_boundary_parameter_name}.|
+|Parametr {arg_name} má hodnotu {actual_value}, která by měla být menší nebo rovna {upper_boundary}.|
+|Parametr {arg_name}, hodnota {actual_value}, by měla být menší nebo rovna parametru {upper_boundary_parameter_name} s hodnotou {upper_boundary}.|
 
 
 ## <a name="error-0008"></a>Chyba 0008  
@@ -154,7 +155,7 @@ Existují dva způsoby, jak získat úplný text chybové zprávy v Návrháři:
 |------------------------|
 |Hodnota parametru není v zadaném rozsahu.|
 |Hodnota parametru {arg_name} není v rozsahu.|
-|Hodnota parametru {arg_name} by měla být v rozsahu [{a}, {b}].|
+|Hodnota parametru {arg_name} by měla být v rozsahu [{lower_boundary}, {upper_boundary}].|
 |Hodnota parametru {arg_name} není v rozsahu. brání|
 
 
@@ -187,7 +188,7 @@ Pokud byla zadána úplná cesta k objektu blob, ověřte, zda je cesta zadána 
 |Zprávy výjimek|
 |------------------------|
 |Název nebo název kontejneru Azure Storage je nesprávný.|
-|Název účtu služby Azure Storage "{0}" nebo název kontejneru "{1}" není správný. očekával se název kontejneru formátu nebo kontejneru objektů BLOB.|
+|Název účtu úložiště Azure {account_name} nebo název kontejneru {container_name} je nesprávný. očekával se název kontejneru formátu nebo kontejneru objektů BLOB.|
 
 
 ## <a name="error-0010"></a>Chyba 0010  
@@ -200,7 +201,7 @@ Pokud byla zadána úplná cesta k objektu blob, ověřte, zda je cesta zadána 
 |Zprávy výjimek|
 |------------------------|
 |Sloupce s odpovídajícím indexem ve vstupních datových sadách mají různé názvy.|
-|Názvy sloupců nejsou pro sloupec {0} (založené na nule) vstupních datových sad ({1} a {2} v uvedeném pořadí) stejné.|
+|Názvy sloupců nejsou stejné pro sloupec {col_index} (založený na nule) vstupních datových sad ({DataSet1.} a {Dataset2} v uvedeném pořadí).|
 
 
 ## <a name="error-0011"></a>Chyba 0011  
@@ -219,7 +220,7 @@ Pokud byla zadána úplná cesta k objektu blob, ověřte, zda je cesta zadána 
 |Zprávy výjimek|
 |------------------------|
 |Zadaná sada sloupců se nevztahuje na žádné sloupce datové sady.|
-|Zadaná sada sloupců "{0}" se nevztahuje na žádné sloupce datové sady.|
+|Zadaná sada sloupců {column_set} se nevztahuje na žádné sloupce datové sady.|
 
 
 ## <a name="error-0012"></a>Chyba 0012  
@@ -301,7 +302,7 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |Zprávy výjimek|
 |------------------------|
 |Při vytváření připojení k databázi došlo k chybě.|
-|Při vytváření připojení k databázi došlo k chybě: {0}.|
+|Při vytváření připojení k databázi došlo k chybě: {connection_str}.|
 
 
 ## <a name="error-0016"></a>Chyba 0016  
@@ -384,8 +385,8 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |Zprávy výjimek|
 |------------------------|
 |Hodnoty ve sloupci nejsou seřazeny.|
-|Hodnoty ve sloupci "{0}" nejsou seřazeny.|
-|Hodnoty ve sloupci "{0}" sady dat "{1}" nejsou seřazeny.|
+|Hodnoty ve sloupci {col_index} nejsou seřazené.|
+|Hodnoty ve sloupci {col_index} sady dat {DataSet} nejsou seřazené.|
 
 
 ## <a name="error-0020"></a>Chyba 0020  
@@ -398,6 +399,7 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |Zprávy výjimek|
 |------------------------|
 |Počet sloupců ve vstupní datové sadě je menší než povolené minimum.|
+|Počet sloupců ve vstupní datové sadě {arg_name} je menší než povolené minimum.|
 |Počet sloupců ve vstupní datové sadě je menší než povolené minimum: {required_columns_count} sloupců.|
 |Počet sloupců ve vstupní datové sadě {arg_name} je menší než povolené minimum (sloupce: {required_columns_count}).|
 
@@ -450,9 +452,9 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 |Zprávy výjimek|
 |------------------------|
 |Počet vybraných sloupců ve vstupní datové sadě se nerovná očekávanému počtu.|
-|Počet vybraných sloupců ve vstupní datové sadě se nerovná {0}.|
-|Vzor výběru sloupců "{0}" poskytuje počet vybraných sloupců ve vstupní datové sadě nerovná se {1}.|
-|U vzorového výběru sloupce{0}se očekává, že se ve vstupní datové sadě vybere {1} sloupce, ale sloupce, které jsou {2}, jsou ve skutečnosti zadané.|
+|Počet vybraných sloupců ve vstupní datové sadě se nerovná {expected_col_count}.|
+|Vzor výběru sloupce {selection_pattern_friendly_name} poskytuje počet vybraných sloupců ve vstupní datové sadě nerovná se {expected_col_count}.|
+|Ve vzorci výběru sloupce {selection_pattern_friendly_name} se očekává, že se ve vstupní datové sadě vybere tento počet sloupců: {expected_col_count}, ale ve skutečnosti jsou zadané sloupce {selected_col_count}.|
 
 
 ## <a name="error-0023"></a>Chyba 0023  
@@ -466,8 +468,8 @@ K této chybě v Azure Machine Learning dochází, pokud cílový sloupec (jak j
 |Zprávy výjimek|
 |------------------------|
 |Vstupní datová sada obsahuje nepodporovaný cílový sloupec.|
-|Vstupní datová sada obsahuje nepodporovaný cílový sloupec "{0}".|
-|Vstupní datová sada má nepodporovaný cílový sloupec{0}pro seznámení s typem {1}typu.|
+|Vstupní datová sada má nepodporovaný cílový sloupec {column_index}.|
+|Vstupní datová sada má nepodporovaný cílový sloupec {column_index} pro informace o typu {learner_type}.|
 
 
 ## <a name="error-0024"></a>Chyba 0024  
@@ -500,8 +502,8 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |Zprávy výjimek|
 |------------------------|
 |V datové sadě není žádný sloupec skóre.|
-|V "{0}" neexistuje žádný sloupec skóre.|
-|V "{0}" není žádný sloupec skóre, který je vytvořen "{1}". Vyhodnotit datovou sadu pomocí správného typu učení.|
+|V "{dataset_name}" neexistuje žádný sloupec s skóre.|
+|V {dataset_name} neexistuje žádný sloupec skóre, který je vytvořený pomocí {learner_type}. Vyhodnotit datovou sadu pomocí správného typu učení.|
 
 
 ## <a name="error-0026"></a>Chyba 0026  
@@ -514,7 +516,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |Zprávy výjimek|
 |------------------------|
 |V argumentech jsou zadány stejné názvy sloupců. Stejný název sloupce není povolený modulem.|
-|Názvy stejných sloupců v argumentech "{0}" a "{1}" nejsou povoleny. Zadejte prosím jiné názvy.|
+|Názvy stejných sloupců v argumentech {arg_name_1} a {arg_name_2} nejsou povolené. Zadejte prosím jiné názvy.|
 
 
 ## <a name="error-0027"></a>Chyba 0027  
@@ -533,7 +535,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |Zprávy výjimek|
 |------------------------|
 |Velikost předaných objektů je nekonzistentní.|
-|Velikost "{0}" je nekonzistentní s velikostí "{1}".|
+|Velikost {friendly_name1} je nekonzistentní s velikostí {friendly_name2}.|
 
 
 ## <a name="error-0028"></a>Chyba 0028  
@@ -571,7 +573,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |Zprávy výjimek|
 |------------------------|
 |Byl předán neplatný identifikátor URI.|
-|Identifikátor URI "{0}" je neplatný.|
+|Identifikátor URI {invalid_url} je neplatný.|
 
 
 ## <a name="error-0030"></a>Chyba 0030  
@@ -584,7 +586,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |Zprávy výjimek|
 |------------------------|
 |Soubor nelze stáhnout.|
-|Při stahování souboru došlo k chybě: {0}.|
+|Při stahování souboru došlo k chybě: {file_url}.|
 
 
 ## <a name="error-0031"></a>Chyba 0031  
@@ -597,7 +599,8 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |Zprávy výjimek|
 |------------------------|
 |Počet sloupců v sadě sloupců je menší, než je vyžadováno.|
-|Je třeba zadat alespoň {0} sloupců. Skutečný počet zadaných sloupců je {1}.|
+|Pro vstupní argument {arg_name} by měla být zadána alespoň tato sloupce: {required_columns_count}.|
+|Pro vstupní argument {arg_name} by měla být zadána alespoň tato sloupce: {required_columns_count}. Skutečný počet zadaných sloupců je {input_columns_count}.|
 
 
 ## <a name="error-0032"></a>Chyba 0032  
@@ -610,7 +613,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |Zprávy výjimek|
 |------------------------|
 |Argument není číslo.|
-|"{0}" není číslo.|
+|{arg_name} není číslo.|
 
 
 ## <a name="error-0033"></a>Chyba 0033  
@@ -623,7 +626,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 |Zprávy výjimek|
 |------------------------|
 |Argument musí být konečný.|
-|"{0}" není konečná.|
+|{arg_name} není konečný.|
 
 
 ## <a name="error-0034"></a>Chyba 0034  
@@ -663,7 +666,7 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Zprávy výjimek|
 |------------------------|
 |Pro požadovaného uživatele nebo položku nebyly zadány žádné funkce.|
-|Funkce pro {0} povinné, ale nejsou k dispozici.|
+|Jsou požadovány funkce pro {required_feature_name}, ale nebyly k dispozici.|
 
 
 ## <a name="error-0036"></a>Chyba 0036  
@@ -676,7 +679,6 @@ For general information about how the Matchbox recommendation algorithm works, a
 |Zprávy výjimek|
 |------------------------|
 |Duplicitní definice funkce pro uživatele nebo položku.|
-|Duplicitní definice funkce pro {0}.|
 
 
 ## <a name="error-0037"></a>Chyba 0037  
@@ -742,9 +744,9 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|
 |------------------------|
 |Převod není povolen.|
-|Sloupec typu {0} nelze převést na sloupec typu {1}.|
-|Sloupec{2}typu {0} nelze převést na sloupec typu {1}.|
-|Nelze převést sloupec{2}typu {0} na sloupec{3}typu {1}.|
+|Sloupec typu {typ1} nelze převést na sloupec typu {typ2}.|
+|Nelze převést sloupec {col_name1} typu {typ1} na sloupec typu {typ2}.|
+|Sloupec {col_name1} typu {typ1} nelze převést na sloupec {col_name2} typu {typ2}.|
 
 
 ## <a name="error-0044"></a>Chyba 0044  
@@ -757,8 +759,8 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|
 |------------------------|
 |Typ elementu sloupce nelze odvodit.|
-|Typ elementu pro sloupec{0}nelze odvodit – všechny elementy jsou odkazy s hodnotou null.|
-|Nejde odvodit typ elementu pro sloupec{0}DataSet{1}--všechny elementy jsou odkazy s hodnotou null.|
+|Typ elementu pro sloupec {column_name} nelze odvodit – všechny elementy jsou odkazy s hodnotou null.|
+|Typ elementu pro sloupec {column_name} datové sady {dataset_name} nelze odvodit – všechny elementy jsou odkazy s hodnotou null.|
 
 
 ## <a name="error-0045"></a>Chyba 0045  
@@ -771,8 +773,8 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|
 |------------------------|
 |Nelze vytvořit sloupec se smíšenými typy prvků.|
-|Nelze vytvořit sloupec s ID "{column_id}" smíšených typů prvků: \ n\tType dat [{row_1}, {column_id}] je "{type_1}". Typ dat [{row_2}, {column_id}] je {type_2}.|
-|Sloupec s ID "{column_id}" smíšených typů prvků nelze vytvořit: \ n\tType v bloku {chunk_id_1} je "{type_1}". Typ v bloku {chunk_id_2} je {type_2} a velikost bloku: {chunk_size}.|
+|Sloupec s ID "{column_id}" smíšených typů prvků nelze vytvořit:<br />Typ dat [{row_1}, {column_id}] je {type_1}. <br />Typ dat [{row_2}, {column_id}] je {type_2}.|
+|Sloupec s ID "{column_id}" smíšených typů prvků nelze vytvořit:<br />Typ v bloku {chunk_id_1} je {type_1}. <br />Typ v bloku {chunk_id_2} je {type_2} a velikost bloku: {chunk_size}.|
 
 
 ## <a name="error-0046"></a>Chyba 0046  
@@ -785,7 +787,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|
 |------------------------|
 |Zadejte prosím platný výstupní adresář.|
-|Adresář: {0} nelze vytvořit. Zadejte prosím platnou cestu.|
+|Adresář: {path} nelze vytvořit. Zadejte prosím platnou cestu.|
 
 
 ## <a name="error-0047"></a>Chyba 0047  
@@ -824,8 +826,8 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|
 |------------------------|
 |Soubor nelze otevřít.|
-|Při otevírání souboru došlo k chybě: {0}.|
-|Při otevírání souboru došlo k chybě: {0}. Zpráva o výjimce úložiště: {1}.|
+|Při otevírání souboru došlo k chybě: {file_name}.|
+|Při otevírání souboru došlo k chybě: {file_name}. Zpráva o výjimce úložiště: {Exception}.|
 
 
 ## <a name="error-0049"></a>Chyba 0049  
@@ -910,7 +912,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|
 |------------------------|
 |Soubor nebo objekt BLOB již existuje.|
-|Soubor nebo objekt blob "{0}" již existuje.|
+|Soubor nebo objekt blob "{file_path}" již existuje.|
 
 
 ## <a name="error-0058"></a>Chyba 0058  
@@ -945,7 +947,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|
 |------------------------|
 |Jeden nebo více zadaných indexů sloupců nebo rozsahů indexu nelze analyzovat.|
-|Index nebo rozsah sloupce "{0}" nelze analyzovat.|
+|Index sloupce nebo rozsah "{column_index_or_range}" nelze analyzovat.|
 
 
 ## <a name="error-0060"></a>Chyba 0060  
@@ -958,7 +960,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|
 |------------------------|
 |Zadaný rozsah indexu sloupce je neplatný nebo mimo rozsah.|
-|Rozsah sloupců "{0}" je neplatný nebo mimo rozsah.|
+|Rozsah sloupců {column_range} je neplatný nebo mimo rozsah.|
 
 
 ## <a name="error-0061"></a>Chyba 0061  
@@ -1035,7 +1037,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 |Zprávy výjimek|
 |------------------------|
 |Prostředek se nepovedlo nahrát do úložiště Azure.|
-|Soubor "{0}" nebylo možné odeslat do služby Azure Storage jako "{1}".|
+|Soubor {source_path} se nepovedlo nahrát do služby Azure Storage jako {dest_path}.|
 
 
 ## <a name="error-0067"></a>Chyba 0067  
@@ -1079,7 +1081,6 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
 |Zprávy výjimek|
 |------------------------|
 |Skript podregistru je nesprávný.|
-|{0} skriptu pro podregistr není správný.|
 
 
 ## <a name="error-0069"></a>Chyba 0069  
@@ -1101,8 +1102,8 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
 |Zprávy výjimek|
 |------------------------|
 |Skript SQL je nesprávný.|
-|Dotaz SQL "{0}" není správný.|
-|Dotaz SQL "{0}" není správný:{1}.|
+|Dotaz SQL {sql_query} není správný.|
+|Dotaz SQL {sql_query} není správný. Zpráva výjimky: {Exception}.|
 
 
 ## <a name="error-0070"></a>Chyba 0070  
@@ -1115,7 +1116,7 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
 |Zprávy výjimek|
 |------------------------|
 |Tabulka Azure neexistuje.|
-|Tabulka Azure "{0}neexistuje".|
+|Tabulka Azure {table_name} neexistuje.|
 
 
 ## <a name="error-0072"></a>Chyba 0072  
@@ -1140,7 +1141,7 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
 |Zprávy výjimek|
 |------------------------|
 |Nepovedlo se převést sloupec.|
-|Nepovedlo se převést sloupec na {0}.|
+|Nepovedlo se převést sloupec na {target_type}.|
 
 
 ## <a name="error-0075"></a>Chyba 0075  
@@ -1169,7 +1170,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|
 |------------------------|
 |Nepodporovaný režim zápisu objektů BLOB|
-|Nepodporovaný režim zápisu objektů BLOB: {0}.|
+|Nepodporovaný režim zápisu objektu BLOB: {blob_write_mode}.|
 
 
 ## <a name="error-0078"></a>Chyba 0078  
@@ -1194,7 +1195,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|
 |------------------------|
 |Název kontejneru úložiště Azure je nesprávný.|
-|Název kontejneru úložiště Azure{0}je nesprávný. očekával se název kontejneru formátu nebo kontejneru objektů BLOB.|
+|Název kontejneru úložiště Azure {container_name} je nesprávný. očekával se název kontejneru formátu nebo kontejneru objektů BLOB.|
 
 
 ## <a name="error-0080"></a>Chyba 0080  
@@ -1207,7 +1208,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|
 |------------------------|
 |Sloupce se všemi chybějícími hodnotami nejsou povoleny.|
-|Ve sloupci {0} chybí všechny hodnoty.|
+|Sloupec {col_index_or_name} neobsahuje všechny hodnoty.|
 
 
 ## <a name="error-0081"></a>Chyba 0081  
@@ -1244,9 +1245,9 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|
 |------------------------|
 |Datová sada použitá pro školení není platná.|
-|{0} obsahuje neplatná data pro školení.|
-|{0} obsahuje neplatná data pro školení. Typ učení: {1}.|
-|{0} obsahuje neplatná data pro školení. Typ učení: {1}. Důvod: {2}.|
+|{data_name} obsahuje neplatná data pro školení.|
+|{data_name} obsahuje neplatná data pro školení. Typ učení: {learner_type}.|
+|{data_name} obsahuje neplatná data pro školení. Typ učení: {learner_type}. Důvod: {důvod}|
 
 
 ## <a name="error-0084"></a>Chyba 0084  
@@ -1271,7 +1272,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|
 |------------------------|
 |Při vyhodnocování skriptu došlo k chybě.|
-|Při vyhodnocování skriptu došlo k následující chybě. Další informace najdete v protokolu výstupu:----------spuštění chybové zprávy z {script_language} překladače----------{Message}----------konec chybové zprávy z {script_language}  ----------překladače|
+|Při vyhodnocování skriptu došlo k následující chybě. Další informace najdete v protokolu výstupu:<br />----------Spuštění chybové zprávy z překladače {script_language}----------<br />Zpráva<br />----------Konec chybové zprávy z překladače {script_language}----------|
 
 
 ## <a name="error-0090"></a>Chyba 0090  
@@ -1284,8 +1285,8 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|
 |------------------------|
 |Tabulku podregistru nešlo vytvořit. V případě clusteru HDInsight prosím zkontrolujte, že název účtu služby Azure Storage přidružený ke clusteru je stejný jako při předání parametru modulu.|
-|Nelze vytvořit tabulku podregistru "{0}". V případě clusteru HDInsight prosím zkontrolujte, že název účtu služby Azure Storage přidružený ke clusteru je stejný jako při předání parametru modulu.|
-|Nelze vytvořit tabulku podregistru "{0}". V případě clusteru HDInsight ověřte, že název účtu úložiště Azure přidružený ke clusteru je "{1}".|
+|Nepovedlo se vytvořit tabulku podregistru {table_name}. V případě clusteru HDInsight prosím zkontrolujte, že název účtu služby Azure Storage přidružený ke clusteru je stejný jako při předání parametru modulu.|
+|Nepovedlo se vytvořit tabulku podregistru {table_name}. Pro cluster HDInsight Prosím zajistěte, aby byl název účtu úložiště Azure přidružený ke clusteru {cluster_name}.|
 
 
 ## <a name="error-0102"></a>Chyba 0102  
@@ -1317,6 +1318,19 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Byl zadán nepodporovaný typ parametru{0}.|  
 
 
+## <a name="error-0107"></a>Chyba 0107  
+ Vyvolá se, když soubor definice modulu definuje nepodporovaný typ výstupu.  
+  
+ Tato chyba ve Azure Machine Learning je vytvořena, když typ výstupního portu v definici XML vlastního modulu neodpovídá podporovanému typu.  
+  
+**Řešení:** Ujistěte se, že vlastnost Type elementu Output v souboru definice XML vlastního modulu je podporovaného typu.  
+  
+|Zprávy výjimek|  
+|------------------------|  
+|Nepodporovaný typ výstupu.|  
+|Byl zadán nepodporovaný typ výstupu {output_type}.|  
+
+
 ## <a name="error-0125"></a>Chyba 0125  
  Vyvolána, když se schéma pro více datových sad neshoduje.  
 
@@ -1342,7 +1356,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|
 |------------------------|
 |Velikost pixelu obrázku překračuje povolený limit.|
-|Velikost pixelu obrázku v souboru{0}překračuje povolený limit:{1}.|
+|Velikost pixelu obrázku v souboru {file_path} překračuje povolený limit {size_limit}.|
 
 
 ## <a name="error-0128"></a>Chyba 0128  
@@ -1353,7 +1367,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 |Zprávy výjimek|
 |------------------------|
 |Počet podmíněných pravděpodobností pro sloupce kategorií překračuje limit.|
-|Počet podmíněných pravděpodobností pro sloupce kategorií překračuje limit. Problematický pár jsou sloupce{0}a{1}.|
+|Počet podmíněných pravděpodobností pro sloupce kategorií překračuje limit. Dvojice sloupců {column_name_or_index_1} a {column_name_or_index_2} je problematická.|
 
 
 ## <a name="error-0129"></a>Chyba 0129  
@@ -1424,7 +1438,7 @@ K této chybě může dojít také v případě, že předchozí operace změní
 |Zprávy výjimek|
 |------------------------|
 |Počet vybraných číselných sloupců a jedinečných hodnot ve sloupcích kategorií a řetězec je příliš malý.|
-|Celkový počet vybraných číselných sloupců a jedinečné hodnoty ve sloupcích kategorií a String (aktuálně {0}) by měly být aspoň {1}.|
+|Celkový počet vybraných číselných sloupců a jedinečných hodnot ve sloupcích kategorií a String (aktuálně {actual_num}) by měly být aspoň {lower_boundary}.|
 
 
 ## <a name="error-0154"></a>Chyba 0154  
@@ -1473,6 +1487,6 @@ Pokud chcete získat další pomoc, doporučujeme, abyste si podrobnou zprávu d
 |Zprávy výjimek|
 |------------------------|
 |Výjimka knihovny|
-|Výjimka knihovny: {0}.|
-|Neznámá výjimka knihovny: {0}. {1}.|
+|Výjimka knihovny: {Exception}.|
+|Neznámá výjimka knihovny: {Exception} {customer_support_guidance}.|
 

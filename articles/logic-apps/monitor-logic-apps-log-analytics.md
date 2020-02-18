@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: 1948151dfa07e565a929b4506273e3f88f5408c4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3e41f92f9e41f7a05102e8c0e1c2edb81fa50bf3
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907822"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426322"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Nastavení protokolů Azure Monitor a shromažďování diagnostických dat pro Azure Logic Apps
 
@@ -21,7 +21,7 @@ Pokud chcete nastavit protokolování pro aplikaci logiky, můžete [povolit Log
 
 Tento článek popisuje, jak povolit Log Analytics, když vytváříte aplikace logiky, jak nainstalovat a nastavit řešení pro správu Logic Apps a jak nastavit a vytvářet dotazy na protokoly Azure Monitor.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, potřebujete [Log Analytics pracovní prostor](../azure-monitor/platform/resource-logs-collect-workspace.md). Pokud nemáte pracovní prostor, přečtěte si, [jak vytvořit pracovní prostor Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
 
@@ -111,7 +111,7 @@ Když ukládáte informace o událostech a datech modulu runtime v [protokolech 
 
    1. Jakmile budete mít hotovo, vyberte **Uložit**.
 
-   Příklad:
+   Například:
 
    ![Vyberte Log Analytics pracovní prostor a data pro protokolování](./media/monitor-logic-apps-log-analytics/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -145,7 +145,7 @@ Po spuštění aplikace logiky můžete zobrazit data o těchto spuštěních v 
    ![Zobrazení sledovaných vlastností aplikace logiky](./media/monitor-logic-apps-log-analytics/logic-app-tracked-properties.png)
 
    > [!NOTE]
-   > Sledované vlastnosti nebo dokončené události můžou při zobrazení Log Analytics pracovního prostoru zaznamenat zpoždění 10-15 minut.
+   > Sledované vlastnosti nebo události, které jsou dokončené, můžou během Log Analytics pracovního prostoru nastat v 10-15 minutách.
    > Možnost opětovného **odeslání** na této stránce je také momentálně nedostupná.
 
 1. Pokud chcete filtrovat výsledky, můžete provést filtrování na straně klienta i na straně serveru.
@@ -179,7 +179,7 @@ Společně s protokoly Azure Monitor můžete pomocí diagnostických dat aplika
 * [Archivace protokolů prostředků Azure do účtu úložiště](../azure-monitor/platform/resource-logs-collect-storage.md)
 * [Streamování protokolů platformy Azure do Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
-Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Příklad:
+Sledování v reálném čase můžete získat pomocí telemetrie a analýz z jiných služeb, jako je [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) a [Power BI](../azure-monitor/platform/powerbi.md). Například:
 
 * [Streamování dat z Event Hubs do Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Analyzujte streamovaná data pomocí Stream Analytics a vytvořte řídicí panel analýzy v reálném čase v Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)

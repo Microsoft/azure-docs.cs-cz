@@ -3,12 +3,12 @@ title: Zálohování souborů a složek – běžné otázky
 description: Řeší běžné otázky týkající se zálohování souborů a složek pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 45c01a08151060b60b0f3e3b27b2fcc16ec8e60b
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 7b80932d49038bb42fa93f71b3ac0194c2869489
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720357"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425064"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Běžné dotazy týkající se zálohování souborů a složek
 
@@ -90,7 +90,7 @@ Toto upozornění se může objevit i v případě, že jste nakonfigurovali zá
 Velikost složky mezipaměti určuje množství dat, která zálohujete.
 
 * Svazky složek mezipaměti by měly mít volné místo, které se rovná minimálně 5-10% celkové velikosti zálohovaných dat.
-* Pokud svazek obsahuje méně než 5% volného místa, zvětšete velikost svazku nebo přesuňte složku mezipaměti na svazek s dostatkem místa.
+* Pokud svazek obsahuje méně než 5% volného místa, zvětšete velikost svazku nebo přesuňte složku mezipaměti na svazek s dostatkem místa pomocí následujících [kroků](#how-do-i-change-the-cache-location-for-the-mars-agent).
 * Pokud budete zálohovat stav systému Windows, budete potřebovat dalších 30-35 GB volného místa ve svazku, který obsahuje složku mezipaměti.
 
 ### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>Jak zjistit, jestli je pomocná složka platná a dostupná?
@@ -98,35 +98,35 @@ Velikost složky mezipaměti určuje množství dat, která zálohujete.
 1. Ve výchozím nastavení je pomocná složka umístěna na adrese `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
 2. Ujistěte se, že cesta k umístění pomocné složky odpovídá hodnotám klíčů registru, které jsou uvedené níže:
 
-  | Cesta k registru | Klíč registru | Hodnota |
-  | --- | --- | --- |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nové umístění složky mezipaměti* |
-  | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nové umístění složky mezipaměti* |
+    | Cesta k registru | Klíč registru | Hodnota |
+    | --- | --- | --- |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nové umístění složky mezipaměti* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nové umístění složky mezipaměti* |
 
 ### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>Návody změnit umístění mezipaměti pro agenta MARS?
 
 1. Spuštěním tohoto příkazu v příkazovém řádku se zvýšenými oprávněními zastavte modul zálohování:
 
     ```Net stop obengine```
-
 2. Pokud jste nakonfigurovali zálohování stavu systému, otevřete správu disků a odpojte disky s názvy ve formátu `"CBSSBVol_<ID>"`.
-3. Nepřesouvat soubory. Místo toho zkopírujte složku místo v mezipaměti na jinou jednotku s dostatkem místa.
-4. Aktualizujte následující položky registru s cestou nové složky mezipaměti.
+3. Ve výchozím nastavení se složka pro pomocné složky nachází na `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+4. Zkopírujte celou složku `\Scratch` na jinou jednotku, která má dostatek místa. Přesvědčte se, zda je obsah zkopírován, nikoli přesunut.
+5. Aktualizujte následující položky registru s cestou nově přesunuté pomocné složky.
 
     | Cesta k registru | Klíč registru | Hodnota |
     | --- | --- | --- |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nové umístění složky mezipaměti* |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nové umístění složky mezipaměti* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Nové umístění pomocné složky* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Nové umístění pomocné složky* |
 
-5. Restartujte zálohovací stroj na příkazovém řádku se zvýšenými oprávněními:
+6. Restartujte zálohovací stroj na příkazovém řádku se zvýšenými oprávněními:
 
-  ```command
-  Net stop obengine
+    ```command
+    Net stop obengine
 
-  Net start obengine
-  ```
+    Net start obengine
+    ```
 
-6. Spusťte zálohování na vyžádání. Po úspěšném dokončení zálohování pomocí nového umístění můžete odebrat původní složku mezipaměti.
+7. Spusťte zálohování na vyžádání. Po úspěšném dokončení zálohování pomocí nového umístění můžete odebrat původní složku mezipaměti.
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Kde by měla být složka mezipaměti umístěna?
 
@@ -153,14 +153,14 @@ Ano, pomocí možnosti **změnit vlastnosti** v agentovi Mars můžete upravit �
 
 ## <a name="restore"></a>Obnovení
 
-### <a name="manage"></a>Spravujte
+### <a name="manage"></a>Spravovat
 
 **Můžu obnovit heslo?**
 Agent Azure Backup vyžaduje heslo (které jste zadali během registrace) k dešifrování zálohovaných dat během obnovování. Přečtěte si níže uvedené scénáře, abyste porozuměli vašim možnostem zpracování ztraceného hesla:
 
 | Původní počítač <br> *(zdrojový počítač, ve kterém proběhlo zálohování)* | Passphrase | Dostupné možnosti |
 | --- | --- | --- |
-| Dostupné |Ztráty |Pokud je váš původní počítač (kde bylo vygenerováno zálohování) dostupný a je stále zaregistrován ve stejném úložišti Recovery Services, můžete heslo znovu vygenerovat pomocí následujících [kroků](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase).  |
+| K dispozici. |Ztráty |Pokud je váš původní počítač (kde bylo vygenerováno zálohování) dostupný a je stále zaregistrován ve stejném úložišti Recovery Services, můžete heslo znovu vygenerovat pomocí následujících [kroků](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase).  |
 | Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
 
 Vezměte v úvahu následující podmínky:
@@ -179,7 +179,7 @@ Pokud máte stejné heslo (které jste zadali během registrace) původního po�
 
 | Původní počítač | Passphrase | Dostupné možnosti |
 | --- | --- | --- |
-| Ztráty |Dostupné |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače. Chcete-li provést obnovení, vyberte **možnost obnovení** > **jiné umístění** . Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Ztráty |K dispozici. |Agenta MARS můžete nainstalovat a zaregistrovat na jiném počítači se stejným heslem, které jste zadali během registrace původního počítače. Chcete-li provést obnovení, vyberte **možnost obnovení** > **jiné umístění** . Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
 | Ztráty |Ztráty |Není možné obnovit data nebo data nejsou k dispozici. |
 
 

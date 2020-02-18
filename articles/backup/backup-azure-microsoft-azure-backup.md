@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: ff5df19d3e2d42af9a45fbc1b71980cee1cdb8a0
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: efa54eac2e3e134fb285d38242ca1b59727c2c86
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111594"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425183"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -163,14 +163,15 @@ Po dokončení procesu extrakce zaškrtněte políčko pro spuštění programu 
 2. Na úvodní obrazovce klikněte na tlačítko **Další** . Tím přejdete na část *kontroly požadovaných součástí* . Na této obrazovce klikněte na tlačítko **ověřit** a určete, zda byly splněny požadavky na hardware a software pro Azure Backup Server. V případě úspěšného splnění všech požadavků se zobrazí zpráva oznamující, že počítač splňuje požadavky. Klikněte na tlačítko **Další** .
 
     ![Azure Backup Server – uvítání a kontrolu předpokladů](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Microsoft Azure Backup Server vyžaduje SQL Server Enterprise. Instalační balíček Azure Backup Server navíc obsahuje příslušné SQL Server binární soubory, které potřebují, pokud nechcete používat vlastní SQL. Když začnete s novou Azure Backup Server instalací, měli byste vybrat možnost **nainstalovat novou instanci SQL Server s tímto nastavením** a kliknout na tlačítko pro **kontrolu a instalaci** . Po úspěšné instalaci požadovaných součástí klikněte na tlačítko **Další**.
+3. Instalační balíček Azure Backup Server obsahuje balíčky s požadovanými binárními soubory SQL Server. Při spuštění nové instalace Azure Backup Server vyberte možnost **nainstalovat novou instanci SQL Server s tímto nastavením** a klikněte na tlačítko pro **kontrolu a instalaci** . Po úspěšné instalaci požadovaných součástí klikněte na tlačítko **Další**.
+
+    >[!NOTE]
+    >Pokud chcete použít vlastní SQL Server, podporované verze SQL Server jsou SQL Server 2014 SP1 nebo vyšší, 2016 a 2017.  Všechny SQL Server verze by měly být Standard nebo Enterprise 64-bit.
+    >Azure Backup Server nebudou fungovat s instancí vzdáleného SQL Server. Instance, kterou používá Azure Backup Server, musí být místní. Pokud používáte stávající SQL Server pro MABS, instalace MABS podporuje pouze použití *pojmenovaných instancí* systému SQL Server.
 
     ![Kontroly Azure Backup Server-SQL](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
     Pokud dojde k selhání s doporučením pro restartování počítače, udělejte to a znovu klikněte na **znovu spustit**. Pokud dojde k nějakým problémům s konfigurací SQL, překonfigurujte SQL podle pokynů pro SQL a zkuste instalaci/upgrade MABS pomocí existující instance SQL.
-
-   > [!NOTE]
-   > Azure Backup Server nebudou fungovat s instancí vzdáleného SQL Server. Instance, kterou používá Azure Backup Server, musí být místní. V případě, že používáte stávající SQL Server pro MABS, instalace MABS podporuje pouze použití *pojmenovaných instancí* systému SQL Server.
 
    **Ruční konfigurace**
 

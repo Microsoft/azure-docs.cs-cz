@@ -2,21 +2,22 @@
 title: Běžné otázky – zjišťování, hodnocení a analýza závislostí v Azure Migrate
 description: Získejte odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
 ms.topic: conceptual
-ms.date: 12/29/2019
-ms.openlocfilehash: 201d67c38e9583de16cb6075cc1c4bf826c204fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/17/2020
+ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77059483"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426288"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí
 
-Tento článek obsahuje odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate. Pokud máte další dotazy po přečtení tohoto článku, publikujte je na [Azure Migrate Fórum](https://aka.ms/AzureMigrateForum). Pokud máte další otázky, přečtěte si tyto články:
+Tento článek obsahuje odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate. Pokud máte další otázky, přečtěte si tyto články:
 
 - [Obecné otázky](resources-faq.md) týkající se Azure Migrate
 - [Otázky](common-questions-appliance.md) týkající se zařízení Azure Migrate.
 - [Dotazy](common-questions-server-migration.md) týkající se migrace serveru
+- Vystavení otázek na [Azure Migrate Fórum](https://aka.ms/AzureMigrateForum)
 
 
 

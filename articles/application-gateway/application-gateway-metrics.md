@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 1fa9c72f7ca305a03cdc90ea02cefe973932792b
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 838d215cb49e526251aff9267dbeb0feb6d5f8df
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046318"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425252"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
@@ -95,10 +95,20 @@ Pro Application Gateway jsou k dispozici následující metriky:
 - **Aktuální připojení**
 
    Celkový počet souběžných připojení aktivních od klientů k Application Gateway
+   
+- **Odhadované jednotky s rozpisem kapacity**
+
+  Počet jednotek kapacity, pomocí kterých je fakturace odhadnuta To se calcutaed jako větší hodnota mezi *aktuálními jednotkami kapacity* a *pevnými jednotkami fakturovatelných kapacit*.  
 
 - **Neúspěšné žádosti**
 
    Počet neúspěšných žádostí, které Application Gateway obsluhovány Počet požadavků může být dále filtrován tak, aby zobrazoval počet pro každý nebo konkrétní back-end fond – kombinace nastavení http.
+   
+- **Pevně Fakturovatelné jednotky kapacity** Minimální počet přidělených kapacitních jednotek byl zřízen podle nastavení *minimální jednotky škálování* v konfiguraci Application Gateway.
+   
+ - **Nová připojení za sekundu**
+
+   Průměrný počet nových připojení TCP za sekundu zavedených z klientů na Application Gateway a od Application Gateway ke členům back-endu.
 
 
 - **Stav odpovědi**

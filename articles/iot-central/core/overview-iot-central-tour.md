@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 4e699b0fdbc22594a181d83c9650d569b35c52f3
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: b905b1e86810b25c4c94072d6cd414b993e2a883
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024156"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425991"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Prohlídka uživatelského rozhraní Azure IoT Central
 
@@ -59,10 +59,10 @@ Aplikaci IoT Central můžete spustit tak, že přejdete na adresu URL, kterou v
 
 ## <a name="navigate-your-application"></a>Navigace v aplikaci
 
-Až budete v aplikaci IoT, můžete k různým oblastem přistupovat v levém podokně. Navigační panel můžete rozbalit nebo sbalit tak, že v horní části panelu navigace vyberete ikonu se třemi řádky:
+Až budete v aplikaci IoT, můžete k různým oblastem přistupovat v levém podokně. V levém podokně můžete rozbalit nebo sbalit tak, že v horní části podokna vyberete ikonu se třemi řádky:
 
 > [!NOTE]
-> Položky, které vidíte na navigačním panelu, budou záviset na vaší roli uživatele. Přečtěte si další informace o [správě uživatelů a rolí](howto-manage-users-roles.md). 
+> Položky, které vidíte v levém podokně, závisí na vaší roli uživatele. Přečtěte si další informace o [správě uživatelů a rolí](howto-manage-users-roles.md). 
 
 :::row:::
   :::column span="":::
@@ -98,7 +98,7 @@ Až budete v aplikaci IoT, můžete k různým oblastem přistupovat v levém po
 Na každé stránce se zobrazuje horní nabídka:
 
 > [!div class="mx-imgBorder"]
-> ![Panel nástrojů](media/overview-iot-central-tour/toolbar-pnp.png)
+> ](media/overview-iot-central-tour/toolbar-pnp.png) ![panelu nástrojů
 
 * Pokud chcete vyhledat šablony zařízení a zařízení, zadejte **hledanou** hodnotu.
 * Chcete-li změnit jazyk uživatelského rozhraní nebo motiv, klikněte na ikonu **Nastavení** . Další informace o [správě předvoleb vaší aplikace](howto-manage-preferences.md)

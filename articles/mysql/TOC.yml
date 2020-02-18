@@ -95,8 +95,6 @@
           href: concepts-data-access-security-private-link.md
         - name: Šifrování dat
           href: concepts-data-encryption-mysql.md
-        - name: Šifrování dat
-          href: concepts-data-encryption-mysql.md
         - name: Ověřování Azure AD
           href: concepts-azure-ad-authentication.md
     - name: Kontinuita podnikových procesů
@@ -222,6 +220,8 @@
           href: howto-troubleshoot-query-performance.md
         - name: Použití zobrazení ve schématu sys
           href: howto-troubleshoot-sys-schema.md
+        - name: Řešení potíží s šifrováním dat
+          href: howto-data-encryption-troubleshoot.md
     - name: Rozšířená ochrana před internetovými útoky
       items:
         - name: portál Azure

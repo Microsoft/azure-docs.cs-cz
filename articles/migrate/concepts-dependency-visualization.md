@@ -1,17 +1,14 @@
 ---
 title: Vizualizace závislostí ve službě Azure Migrate
 description: Poskytuje přehled výpočtů posouzení ve službě hodnocení serveru v Azure Migrate
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2019
-ms.author: hamusa
-ms.openlocfilehash: 75b2120b9fef904114d532e83d571c08e1a1034d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 02/17/2020
+ms.openlocfilehash: 65a99e230262ae05d34dc8c04e87252c15133fda
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772308"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425676"
 ---
 # <a name="dependency-visualization"></a>Vizualizace závislostí
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 19dd0051985231a0274baf550755cc61782ce740
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: d982771d5c7ebc864991026e399e9648d333cc8f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281304"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425523"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for PostgreSQL – jeden server (ve verzi Preview) pomocí rozhraní příkazového řádku
 
@@ -20,7 +20,7 @@ Privátní koncový bod je základním stavebním blokem privátního propojení
 > [!NOTE]
 > Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL jeden server podporuje Pro obecné účely a paměťově optimalizované cenové úrovně.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete projít tento průvodce, budete potřebovat:
 
@@ -38,7 +38,7 @@ Než budete moct vytvořit libovolný prostředek, musíte vytvořit skupinu pro
 az group create --name myResourceGroup --location westeurope
 ```
 
-## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="create-a-virtual-network"></a>Vytvoření Virtual Network
 Vytvořte Virtual Network pomocí [AZ Network VNet Create](/cli/azure/network/vnet). Tento příklad vytvoří výchozí Virtual Network s názvem *myVirtualNetwork* s jednou podsítí s názvem *mySubnet*:
 
 ```azurecli-interactive
@@ -129,9 +129,9 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
+1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
-1. Otevřete stažený soubor. RDP *.
+1. Otevřete *stažený soubor. RDP* .
 
     1. Pokud se zobrazí výzva, vyberte **Připojit**.
 
@@ -159,30 +159,31 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
     Non-authoritative answer:
     Name:    mydemopostgresserver.privatelink.postgres.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the PostgreSQL server using any available client. In the example below I have used [Azure Data studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) to do the operation.
+3. Otestujte připojení privátního propojení pro server PostgreSQL pomocí libovolného dostupného klienta. V následujícím příkladu jsem k provedení operace použili [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download?view=sql-server-ver15) .
 
-4. In **New connection**, enter or select this information:
+4. V **nové připojení**zadejte nebo vyberte tyto informace:
 
-    | Setting | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
-    | Server type| Select **PostgreSQL**.|
-    | Server name| Select *mydemopostgresserver.privatelink.postgres.database.azure.com* |
-    | User name | Enter username as username@servername which is provided during the PostgreSQL server creation. |
-    |Password |Enter a password provided during the PostgreSQL server creation. |
-    |SSL|Select **Required**.|
+    | Typ serveru| Vyberte **PostgreSQL**.|
+    | Název serveru| Vybrat *mydemopostgresserver.privatelink.Postgres.Database.Azure.com* |
+    | Uživatelské jméno | Jako username@servername zadejte uživatelské jméno, které se poskytuje během vytváření PostgreSQL serveru. |
+    |Heslo |Zadejte heslo, které jste zadali během vytváření PostgreSQL serveru. |
+    |SSL|Vyberte možnost **požadováno**.|
     ||
 
-5. Select Connect.
+5. Vyberte připojit.
 
-6. Browse databases from left menu.
+6. Procházet databáze z levé nabídky
 
-7. (Optionally) Create or query information from the postgreSQL server.
+7. Volitelně Vytvoření nebo dotazování informací ze serveru postgreSQL
 
-8. Close the remote desktop connection to myVm.
+8. Zavřete připojení ke vzdálené ploše pro myVm.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Vyčištění prostředků 
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít příkaz AZ Group Delete: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

@@ -3,19 +3,19 @@ title: Postup nahrazení páskové infrastruktury
 description: Přečtěte si, jak Azure Backup poskytuje sémantiku podobnou pásce, která vám umožní zálohovat a obnovovat data v Azure.
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.openlocfilehash: 4659a4d6fcc7213f8323e23d59411680276fcb28
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: aeda1cefc84d425855c40b793f8334936541e63f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173314"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425098"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Přesunutí dlouhodobého úložiště z pásky do cloudu Azure
 
 Zákazníci Azure Backup a System Center Data Protection Manager můžou:
 
 * Zálohujte data v plánech, které nejlépe vyhovují potřebám organizace.
-* Uchovávání zálohovaných dat po delší dobu
+* Uchovávání zálohovaných dat po delší dobu.
 * Zajistěte, aby Azure byla součástí svých dlouhodobých potřeb uchovávání dat (místo pásky).
 
 Tento článek vysvětluje, jak můžou zákazníci povolit zásady zálohování a uchovávání informací. Zákazníci, kteří používají pásky k řešení svých potřeb dlouhodobé uchovávání, teď mají výkonnou a životaschopnou alternativu s dostupností této funkce. Tato funkce je povolená v nejnovější verzi Azure Backup (která je dostupná [tady](https://aka.ms/azurebackup_agent)). Před použitím aplikace DPM se službou Azure Backup musí zákazníci nástroje System Center DPM aktualizovat aspoň na DPM 2012 R2.
@@ -43,9 +43,9 @@ Celkový počet "bodů uchování" zadaných v této zásadě je 90 (denní body
 ![Ukázková obrazovka](./media/backup-azure-backup-cloud-as-tape/samplescreen.png)
 
 1. **Denní zásady uchovávání informací**: zálohování se ukládá na dny po dobu sedmi dnů.
-2. **Týdenní zásady uchovávání informací**: zálohy provedené každý den v půlnoci a 18:00 sobotu se uchovávají po dobu čtyř týdnů.
-3. **Měsíční zásady uchovávání informací**: zálohy provedené po půlnoci a 18:00 v poslední sobotu v měsíci se uchovávají po dobu 12 měsíců.
-4. **Roční zásady uchovávání informací**: zálohy provedené při půlnoci na poslední sobotu v každé březnu jsou zachované po dobu 10 let.
+2. **Týdenní zásady uchovávání informací**: zálohy provedené v půlnoci a 6 pm v sobotu se uchovávají po dobu čtyř týdnů.
+3. **Měsíční zásady uchovávání informací**: zálohy provedené s půlnocí a 6 hodinami v poslední sobotu v měsíci se uchovávají po dobu 12 měsíců.
+4. **Roční zásady uchovávání informací**: zálohy provedené při půlnoci na poslední sobotu v každé březnu se uchovávají po dobu 10 let.
 
 Celkový počet "bodů uchovávání" (body, ze kterých může zákazník obnovit data) v předchozím diagramu se vypočítává takto:
 
@@ -57,14 +57,14 @@ Celkový počet "bodů uchovávání" (body, ze kterých může zákazník obnov
 Celkový počet bodů obnovení je 56.
 
 > [!NOTE]
-> Pomocí Azure Backup můžete vytvořit až 9999 bodů obnovení na chráněnou instanci. Chráněná instance je počítač, Server (fyzický nebo virtuální) nebo zatížení, které se zálohuje do Azure.
+> Pomocí Azure Backup můžete vytvořit až 9999 bodů obnovení na chráněnou instanci. Chráněná instance je počítač, server (fyzický nebo virtuální) nebo úloha zálohující do Azure.
 >
 
 ## <a name="advanced-configuration"></a>Pokročilá konfigurace
 
 Když na předchozí obrazovce kliknete na **Upravit** , zákazníci mají větší flexibilitu při určování plánů uchovávání.
 
-![Úpravy](./media/backup-azure-backup-cloud-as-tape/modify.png)
+![Změnit](./media/backup-azure-backup-cloud-as-tape/modify.png)
 
 ## <a name="next-steps"></a>Další kroky
 

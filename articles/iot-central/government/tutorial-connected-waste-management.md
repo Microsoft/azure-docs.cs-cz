@@ -7,12 +7,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6b8458ce41a1bdacddc4102e8282bbc638d4c01c
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 274d725a0e7987c8cb15363ba276aec7ebc541d5
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016489"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426356"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Kurz: Vytvoření aplikace pro správu propojených odpadů v IoT Central
 
@@ -20,7 +20,7 @@ ms.locfileid: "77016489"
 
 Tento kurz vás provede vytvořením aplikace pro správu nepřipojeného odpadu v Azure IoT Central ze šablony IoT Central **připojené aplikace pro správu odpadu** . 
 
-V tomto kurzu se naučíte: 
+V tomto kurzu se naučíte, jak: 
 
 > [!div class="checklist"]
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Konfigurace úloh
 > * Přizpůsobení brandingu aplikace pomocí whitelabeling
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro absolvování tohoto kurzu potřebujete:
 -  Doporučuje se předplatné Azure. Volitelně můžete použít bezplatnou 7 dní zkušební verzi. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
@@ -129,7 +129,7 @@ Aplikace **pro správu propojených odpadů** je dodávána s ukázkovou šablon
 
 Postup zobrazení šablony zařízení:
 
-1. V IoT Central v levém navigačním podokně aplikace klikněte na **šablony zařízení** . 
+1. Klikněte na **šablony zařízení** v levém podokně aplikace v IoT Central. 
 
     ![Šablona zařízení](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
@@ -177,7 +177,7 @@ Aplikace **pro správu propojených odpadů** má dvě simulovaná zařízení n
 
 ### <a name="to-view-the-devices"></a>Postup zobrazení zařízení:
 
-1. Z IoT Central levém navigačním podokně přejděte do **zařízení** . 
+1. Z IoT Central levém podokně přejděte do **zařízení** . 
 
    ![Zařízení](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
@@ -202,7 +202,7 @@ V Azure IoT Central můžete vytvořit pravidla pro automatické monitorování 
 Aplikace **pro správu propojených odpadů** má čtyři vzorová pravidla.
 
 ### <a name="to-view-rules"></a>Postup zobrazení pravidel:
-1. Přejít na **pravidla** z IoT Central levém navigačním podokně
+1. Přejít k **pravidlům** z IoT Central levém podokně
 
    ![Pravidla](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
@@ -231,13 +231,13 @@ Při splnění nakonfigurované **podmínky** byste měli obdržet e-mail.
 > Aplikace odešle e-mail pokaždé, když je splněna podmínka. **Zakáže** pravidlo pro zastavení přijímání e-mailů od automatizovaného pravidla. 
   
 Vytvoření nového pravidla: 
-1. V levém navigačním podokně vyberte **+ Nový** u **pravidel** .
+1. V levém podokně vyberte **+ Nový** u **pravidel** .
 
 ## <a name="configure-jobs"></a>Konfigurace úloh
 
 V IoT Central úlohy umožňují aktivovat aktualizace vlastností zařízení nebo cloudu na více zařízeních. Kromě vlastností můžete k aktivaci příkazů zařízení na několika zařízeních použít taky úlohy. IoT Central bude pracovní postup automatizovat. 
 
-1. V levém navigačním podokně přejdete na **úlohy** . 
+1. V levém podokně přejdete na **úlohy** . 
 2. Klikněte na **+ Nový** a nakonfigurujte jednu nebo víc úloh. 
 
 

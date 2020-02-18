@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: a2a65c6fcca4a037408c6b7e780708623aebed2b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: e53bd3deae5ccd7339c7a6d491dc4ff0da44a277
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212250"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426220"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -60,12 +60,12 @@ Analýza provozu prověřuje protokoly nezpracovaných toků NSG Flow a zachycuj
 Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli z následujících podporovaných oblastí:
 
 * Kanada – střed
-* Západní střed USA
+* USA – středozápad
 * USA – východ
-* Východní USA 2
-* Střed USA – sever
-* Střed USA – jih
-* Střed USA
+* USA – východ 2
+* USA – středosever
+* USA – středojih
+* USA – střed
 * USA – západ
 * USA – západ 2
 * Francie – střed
@@ -79,7 +79,7 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 * Východní Asie
 * Jihovýchodní Asie
 * Jižní Korea – střed
-* Střed Indie
+* Indie – střed
 * Indie – jih
 * Japonsko – východ 
 * Japonsko – západ
@@ -90,15 +90,15 @@ Analýzu provozu pro skupin zabezpečení sítě můžete použít v kterékoli 
 
 Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Kanada – střed
-* Západní střed USA
+* USA – středozápad
 * USA – východ
-* Východní USA 2
-* Střed USA – sever
-* Střed USA – jih
-* Střed USA
+* USA – východ 2
+* USA – středosever
+* USA – středojih
+* USA – střed
 * USA – západ
 * USA – západ 2
-* Střed USA
+* USA – střed
 * Francie – střed
 * Západní Evropa
 * Severní Evropa
@@ -110,12 +110,12 @@ Pracovní prostor Log Analytics musí existovat v následujících oblastech:
 * Východní Asie
 * Jihovýchodní Asie
 * Jižní Korea – střed
-* Střed Indie
+* Indie – střed
 * Japonsko – východ
 * USA (Gov) – Virginia
 * Čína – východ 2
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="user-access-requirements"></a>Požadavky na přístup uživatelů
 
@@ -184,9 +184,6 @@ Vyberte následující možnosti, jak je znázorněno na obrázku:
 2. Vyberte *verzi 2* pro **protokol toků verze**. Verze 2 obsahuje statistiku relací toků (bajty a pakety).
 3. Vyberte existující účet úložiště, do kterého se budou ukládat protokoly toku. Pokud chcete data ukládat trvale, nastavte hodnotu na *0*. Za účet úložiště se účtují Azure Storage poplatky. Ujistěte se, že ve vašem úložišti není nastavená možnost Data Lake Storage Gen2 hierarchický obor názvů Enabled na hodnotu true.
 4. Nastavte dobu **uchování** na počet dní, pro které chcete ukládat data.
-> [!IMPORTANT]
-> V současné době dochází k potížím s [protokolem toku NSG (Network Security Group)](network-watcher-nsg-flow-logging-overview.md) pro Network Watcher se z úložiště objektů BLOB automaticky neodstraňují na základě nastavení zásad uchovávání informací. Pokud máte existující nenulové zásady uchovávání informací, doporučujeme, abyste pravidelně odstranili objekty blob úložiště, které jsou po dobu jejich uchování, a nemuseli se jim účtovat poplatky. Další informace o tom, jak odstranit blog úložiště protokolu toku NSG, najdete v tématu [odstranění objektů BLOB úložiště protokolu toku NSG](network-watcher-delete-nsg-flow-log-blobs.md).
-
 5. Pro **Analýza provozu stav**vyberte *zapnuto* .
 6. Vyberte interval zpracování. Na základě vašeho výběru budou protokoly toků shromažďovány z účtu úložiště a zpracovány Analýza provozu. Můžete zvolit interval zpracování každé 1 hodiny nebo každých 10 minut. 
 7. Vyberte pracovní prostor existující Log Analytics (OMS) nebo vyberte **vytvořit nový pracovní prostor** a vytvořte nový. Log Analytics pracovní prostor používá Analýza provozu k ukládání agregovaných a indexovaných dat, která se pak používají ke generování analýz. Pokud vyberete existující pracovní prostor, musí existovat v některé z [podporovaných oblastí](#supported-regions-log-analytics-workspaces) a byl upgradován na nový dotazovací jazyk. Pokud nechcete upgradovat existující pracovní prostor nebo nemáte pracovní prostor v podporované oblasti, vytvořte nový. Další informace o jazycích dotazů naleznete v tématu [Azure Log Analytics upgrade na nové prohledávání protokolu](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 59c38423f771685dc79a8be12a383cfdec6a0266
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 798c80ec2290a96b6f76116120292720c05c9198
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031522"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426237"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for MySQL (ve verzi Preview) pomocí rozhraní příkazového řádku
 
@@ -127,7 +127,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
 
 1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) ( *. RDP*) a stáhne ho do vašeho počítače.
 
-1. Otevřete stažený soubor. RDP *.
+1. Otevřete *stažený soubor. RDP* .
 
     1. Pokud se zobrazí výzva, vyberte **Připojit**.
 
@@ -155,30 +155,31 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
     Non-authoritative answer:
     Name:    mydemomysqlserver.privatelink.mysql.database.azure.com
     Address:  10.1.3.4
+    ```
 
-3. Test the private link connection for the MySQL server using any available client. In the example below I have used [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) to do the operation.
+3. Otestujte připojení k privátnímu propojení pro server MySQL pomocí libovolného dostupného klienta. V následujícím příkladu jsem k provedení operace použili aplikaci [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) .
 
 
-4. In **New connection**, enter or select this information:
+4. V **nové připojení**zadejte nebo vyberte tyto informace:
 
-    | Setting | Value |
+    | Nastavení | Hodnota |
     | ------- | ----- |
-    | Connection Name| Select the connection name of your choice.|
-    | Hostname | Select *mydemoserver.privatelink.mysql.database.azure.com* |
-    | Username | Enter username as *username@servername* which is provided during the MySQL server creation. |
-    | Password | Enter a password provided during the MySQL server creation. |
+    | Název připojení| Vyberte název připojení, který chcete zvolit.|
+    | Název hostitele | Vybrat *mydemoserver.privatelink.MySQL.Database.Azure.com* |
+    | Uživatelské jméno | Zadejte uživatelské jméno jako *username@servername* , které je k dispozici během vytváření serveru MySQL. |
+    | Heslo | Zadejte heslo, které jste zadali během vytváření serveru MySQL. |
     ||
 
-5. Select Connect.
+5. Vyberte připojit.
 
-6. Browse databases from left menu.
+6. Procházet databáze z levé nabídky
 
-7. (Optionally) Create or query information from the MySQL database.
+7. Volitelně Vytvoří nebo dotazuje informace z databáze MySQL.
 
-8. Close the remote desktop connection to myVm.
+8. Zavřete připojení ke vzdálené ploše pro myVm.
 
-## Clean up resources 
-When no longer needed, you can use az group delete to remove the resource group and all the resources it has: 
+## <a name="clean-up-resources"></a>Vyčištění prostředků 
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků, které obsahuje, použít příkaz AZ Group Delete: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 74813d9f84f682447d30cea43984f0810954da85
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372707"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425642"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
 
@@ -50,10 +50,10 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | ----- | ----------- | --------|
 | {Culture: LanguageGroup} | Dva číslice kódu ISO pro jazyk | en |
 | {Culture: LCID}   | Identifikátor LCID kódu jazyka. | 1033 |
-| {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | US |
+| {Culture: RegionName} | Dvě písmena kódu ISO pro oblast. | USA |
 | {Culture: RFC5646} | Kód jazyka RFC5646 | cs-CZ |
 
-### <a name="policy"></a>Zásady
+### <a name="policy"></a>Zásada
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
@@ -66,14 +66,14 @@ Následující části uvádějí dostupné překladače deklarací identity.
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |Parametr řetězce dotazu `acr_values`. | NEUŽÍVÁ SE. |
+| {OIDC:AuthenticationContextReferences} |Parametr řetězce dotazu `acr_values`. | Není k dispozici |
 | {OIDC: ClientId} |Parametr řetězce dotazu `client_id`. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |Parametr řetězce dotazu `domain_hint`. | facebook.com |
 | {OIDC:LoginHint} |  Parametr řetězce dotazu `login_hint`. | someone@contoso.com |
-| {OIDC:MaxAge} | Hodnota `max_age` | NEUŽÍVÁ SE. |
+| {OIDC:MaxAge} | Hodnota `max_age` | Není k dispozici |
 | {OIDC: nonce} |Parametr řetězce dotazu `Nonce`. | defaultNonce |
 | {OIDC:Prompt} | Parametr řetězce dotazu `prompt`. | přihlášení |
-| {OIDC: Resource} |Parametr řetězce dotazu `resource`. | NEUŽÍVÁ SE. |
+| {OIDC: Resource} |Parametr řetězce dotazu `resource`. | Není k dispozici |
 | {OIDC:scope} |Parametr řetězce dotazu `scope`. | OpenID |
 
 ### <a name="context"></a>Kontext
@@ -96,13 +96,25 @@ Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, s
 | {OAUTH-KV: campaignId} | Parametr řetězce dotazu. | ostrovy |
 | {OAUTH-KV: app_session} | Parametr řetězce dotazu. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Parametr řetězce dotazu. | 1234 |
-| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | NEUŽÍVÁ SE. |
+| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | Není k dispozici |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Přístupový token. | NEUŽÍVÁ SE. |
+| {OAuth2: access_token} | Přístupový token. | Není k dispozici |
+
+
+### <a name="saml"></a>SAML
+
+| Deklarovat | Popis | Příklad |
+| ----- | ----------- | --------|
+| {SAML: AuthnContextClassReferences} | Hodnota elementu `AuthnContextClassRef`, od požadavku SAML. | urn: Oasis: names: TC: SAML: 2.0: AC: třídy: PasswordProtectedTransport |
+| {SAML: NameIdPolicyFormat} | Atribut `Format` z elementu `NameIDPolicy` požadavku SAML. | urn: Oasis: names: TC: SAML: 1.1: NameId-Format: emailAddress |
+| {SAML: Issuer} |  Hodnota elementu `Issuer` SAML požadavku SAML.| https://contoso.com |
+| {SAML: AllowCreate} | Hodnota atributu `AllowCreate` od `NameIDPolicy` elementu požadavku SAML. | True |
+| {SAML: ForceAuthn} | Hodnota atributu `ForceAuthN` od `AuthnRequest` elementu požadavku SAML. | True |
+| {SAML: ProviderName} | Hodnota atributu `ProviderName` od `AuthnRequest` elementu požadavku SAML.| Contoso.com |
 
 ## <a name="using-claim-resolvers"></a>Použití překladačů deklarací identity 
 

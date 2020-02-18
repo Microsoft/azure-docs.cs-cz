@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: ambapat
-ms.openlocfilehash: 60378632a55fe4578bb376a3a00de5efffc5d275
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 870064406c86e9cef6a45dfbe47c61cdaa9ecab0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976956"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426305"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace Azure Key Vault bran firewall a virtuálních sítí
 
@@ -27,12 +27,12 @@ Tento článek poskytuje podrobné pokyny ke konfiguraci Azure Key Vault bran fi
 Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomocí Azure Portal:
 
 1. Přejděte do trezoru klíčů, který chcete zabezpečit.
-2. Vyberte **brány firewall a virtuální sítě**.
+2. Vyberte **sítě**a pak vyberte kartu **brány firewall a virtuální sítě** .
 3. V části **Povolení přístupu z**vyberte **vybrané sítě**.
 4. Pokud chcete přidat existující virtuální sítě do bran firewall a pravidel virtuální sítě, vyberte **+ Přidat existující virtuální sítě**.
 5. V novém okně, které se otevře, vyberte předplatné, virtuální sítě a podsítě, pro které chcete přístup k tomuto trezoru klíčů zpřístupnit. Pokud virtuální sítě a podsítě, které vyberete, nemají povolený koncový bod služby, potvrďte, že chcete povolit koncové body služby, a vyberte **Povolit**. Platnost může trvat až 15 minut.
-6. V části sítě s protokolem **IP**přidejte rozsahy adres IPv4 zadáním rozsahů IPv4 adres v [CIDR (směrování mezi doménami)](https://tools.ietf.org/html/rfc4632) a zápisem nebo jednotlivými IP adresami.
-7. Vyberte **Uložit**.
+6. V části sítě s protokolem **IP**přidejte rozsahy adres IPv4 zadáním rozsahů IPv4 adres v [CIDR (směrování mezi doménami) a zápisem](https://tools.ietf.org/html/rfc4632) nebo jednotlivými IP adresami.
+7. Vyberte **Save** (Uložit).
 
 Můžete taky přidat nové virtuální sítě a podsítě a potom pro nově vytvořené virtuální sítě a podsítě povolit koncové body služby tak, že vyberete **+ Přidat novou virtuální síť**. Pak postupujte podle pokynů.
 
@@ -40,7 +40,7 @@ Můžete taky přidat nové virtuální sítě a podsítě a potom pro nově vyt
 
 Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomocí Azure CLI.
 
-1. Nainstalujte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a přihlaste [se](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
+1. Nainstalujte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) a [Přihlaste se](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
 
 2. Vypíše dostupná pravidla virtuální sítě. Pokud jste pro tento trezor klíčů nenastavili žádná pravidla, seznam bude prázdný.
    ```azurecli
@@ -79,7 +79,7 @@ Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomoc�
 
 Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomocí prostředí PowerShell:
 
-1. Nainstalujte nejnovější [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)a přihlaste se. [](https://docs.microsoft.com/powershell/azure/authenticate-azureps)
+1. Nainstalujte nejnovější [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)a [přihlaste](https://docs.microsoft.com/powershell/azure/authenticate-azureps)se.
 
 2. Vypíše dostupná pravidla virtuální sítě. Pokud jste pro tento trezor klíčů nenastavili žádná pravidla, seznam bude prázdný.
    ```powershell
@@ -117,7 +117,7 @@ Tady je postup konfigurace Key Vault bran firewall a virtuálních sítí pomoc�
 * Příkazy rozhraní příkazového řádku Azure: [AZ pro Trezor klíčů Network-Rule](https://docs.microsoft.com/cli/azure/keyvault/network-rule?view=azure-cli-latest)
 * Rutiny Azure PowerShell: [Get-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvault), [Add-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Add-azKeyVaultNetworkRule), [Remove-AzKeyVaultNetworkRule](https://docs.microsoft.com/powershell/module/az.KeyVault/Remove-azKeyVaultNetworkRule), [Update-AzKeyVaultNetworkRuleSet](https://docs.microsoft.com/powershell/module/az.KeyVault/Update-azKeyVaultNetworkRuleSet)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Koncové body služby virtuální sítě pro Key Vault](key-vault-overview-vnet-service-endpoints.md)
 * [Zabezpečení trezoru klíčů](key-vault-secure-your-key-vault.md)

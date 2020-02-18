@@ -7,23 +7,23 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: cc152460be777c30d79f783b9acfa846a4c73a72
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 49129bede62e456cf2807cc879b7fc5e1793b65b
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188026"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424945"
 ---
 # <a name="streaming-ingestion-preview"></a>Ingestování streamování (Preview)
 
-Ingestování streamování je cílené pro scénáře, které vyžadují nízkou latenci a dobu příjmu kratší než 10 sekund pro různá data svazků. Používá se pro optimalizaci provozního zpracování mnoha tabulek v jedné nebo více databázích, kde datový proud dat do každé tabulky je relativně malý (několik záznamů za sekundu), ale celkový objem příjmu dat je vysoký (tisíce záznamů za sekundu).
+Ingestování streamování je cílené pro scénáře, které vyžadují nízkou latenci a dobu příjmu kratší než 10 sekund pro různá data svazků. Používá se k optimalizaci provozního zpracování mnoha tabulek v jedné nebo více databázích, kde datový proud dat do každé tabulky je relativně malý (několik záznamů za sekundu), ale celkový objem příjmu dat je vysoký (tisíce záznamů za sekundu).
 
 Použijte klasickou (hromadnou) ingestu místo příjmu streamování, když se objem dat zvětšuje na více než 1 MB za sekundu na tabulku. Přečtěte si [Přehled příjmu dat](/azure/data-explorer/ingest-data-overview) , kde se dozvíte víc o různých metodách přijímání.
 
 > [!NOTE]
 > Přijímání streamování nepodporuje následující funkce:
 > * [Kurzory databáze](/azure/kusto/management/databasecursor).
-> * [Mapování dat](/azure/kusto/management/mappings). Je podporováno pouze [předem vytvořené](/azure/kusto/management/create-ingestion-mapping-command) mapování dat. 
+> * [Mapování dat](/azure/kusto/management/mappings). Je podporováno pouze [předem vytvořené](/azure/kusto/management/tables#create-ingestion-mapping) mapování dat. 
 
 ## <a name="prerequisites"></a>Předpoklady
 
@@ -64,7 +64,7 @@ Existují dva podporované typy přijímání streamování:
 > [!WARNING]
 > Zakazování příjmu streamování může trvat několik hodin.
 
-1. Přetáhněte [zásadu přijímání streamování](/azure/kusto/concepts/streamingingestionpolicy) ze všech relevantních tabulek a databází. Odebrání zásady přijímání do streamování spustí přenos dat příjmu streamování z počátečního úložiště do trvalého úložiště v úložišti sloupců (rozsahy nebo horizontálních oddílů). Pohyb dat může trvat během několika sekund po několik hodin v závislosti na množství dat v počátečním úložišti a využití procesoru a paměti v clusteru.
+1. Přetáhněte [zásadu přijímání streamování](/azure/kusto/concepts/streamingingestionpolicy) ze všech relevantních tabulek a databází. Odebrání zásady přijímání do streamování spustí přenos dat příjmu streamování z počátečního úložiště do trvalého úložiště v úložišti sloupců (rozsahy nebo horizontálních oddílů). Pohyb dat může trvat během několika sekund po několik hodin, v závislosti na množství dat v počátečním úložišti a způsobu, jakým cluster používá a paměť.
 1. V Azure Portal přejdete do svého clusteru Azure Průzkumník dat. V **Nastavení**vyberte **Konfigurace**. 
 1. V podokně **Konfigurace** vyberte **vypnuto** a zakažte příjem **vysílání datového proudu**.
 1. Vyberte **Save** (Uložit).
@@ -73,10 +73,11 @@ Existují dva podporované typy přijímání streamování:
 
 ## <a name="limitations"></a>Omezení
 
-* Zvýšení výkonu a kapacity příjmu streamování díky větší velikosti virtuálních počítačů a clusterů. Souběžné přijímání se omezí na 6 příjmu na jádro. Například u 16 základních SKU, jako je například D14 a L16, je maximální podporované zatížení 96 souběžných ingestování. U 2 základních SKU, jako je například D11, je maximální podporované zatížení 12 souběžných ingest.
+* Zvýšení výkonu a kapacity příjmu streamování díky větší velikosti virtuálních počítačů a clusterů. Souběžné přijímání je omezené na šest ingest na jádro. Například u 16 základních SKU, jako je například D14 a L16, je maximální podporované zatížení 96 souběžných ingestování. U dvou základních SKU, jako je D11, je maximální podporované zatížení 12 souběžných ingest.
 * Omezení velikosti dat na žádost o přijetí dat je 4 MB.
 * Aktualizace schématu, jako je vytváření a úprava tabulek a mapování přijímání, můžou trvat až 5 minut, než se služba pro příjem dat streamuje.
 * Povolení ingestování streamování na clusteru, i když se data nedrží prostřednictvím streamování, používá část místního disku SSD clusterových počítačů pro data příjmu streamování a snižuje úložiště dostupné pro hotkou mezipaměť.
+* U dat příjmu streamování se nedají nastavit [značky rozsahu](/azure/kusto/management/extents-overview.md#extent-tagging) .
 
 ## <a name="next-steps"></a>Další kroky
 

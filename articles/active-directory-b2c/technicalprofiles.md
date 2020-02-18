@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/29/2020
+ms.date: 02/17/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad6b84323ac49713506bc61bd0051421e0234a94
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5dc9bc56ac717d355f0fb0ebcc482430662378ca
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982275"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425603"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -81,7 +81,7 @@ Element **TechnicalProfile** obsahuje následující atribut:
 
 **TechnicalProfile** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Domain (Doména) | 0:1 | Název domény pro technický profil. Pokud například váš technický profil určuje poskytovatele identity Facebooku, název domény je Facebook.com. |
 | DisplayName | 1:1 | Název technického profilu, který se může zobrazit uživatelům |
@@ -111,14 +111,14 @@ Element **Protocol** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Name (Název) | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`, `session management`, `self-asserted`nebo `None`. |
+| Název | Ano | Název platného protokolu podporovaného Azure AD B2C, který se používá jako součást technického profilu. Možné hodnoty: `OAuth1`, `OAuth2`, `SAML2`, `OpenIdConnect`, `Proprietary`nebo `None`. |
 | Popisovač | Ne | Pokud je název protokolu nastaven na `Proprietary`, zadejte plně kvalifikovaný název sestavení, které Azure AD B2C používá k určení obslužné rutiny protokolu. |
 
 ## <a name="metadata"></a>Metadata
 
 Element **metadata** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Položka | 0: n | Metadata vztahující se k technickému profilu. Každý typ technického profilu má jinou sadu položek metadat. Další informace najdete v části typy technických profilů. |
 
@@ -134,7 +134,7 @@ Element **Item** elementu **metadata** obsahuje následující atributy:
 
 Element **CryptographicKeys** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Klíč | 1: n | Kryptografický klíč použitý v tomto technickém profilu. |
 
@@ -151,7 +151,7 @@ Element **CryptographicKeys** obsahuje následující element:
 
 Element **InputClaimsTransformations** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1: n | Identifikátor transformace deklarací identity, který by měl být proveden před odesláním jakýchkoli deklarací do zprostředkovatele deklarací nebo předávající strany. Transformaci deklarací identity lze použít k úpravě stávajících deklarací ClaimsSchema nebo k vygenerování nových. |
 
@@ -167,11 +167,11 @@ Element **InputClaimsTransformation** obsahuje následující atribut:
 
 Element **InputClaims** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| InputClaim | 1: n | Očekával se vstupní typ deklarace identity. |
+| inputClaim | 1: n | Očekával se vstupní typ deklarace identity. |
 
-### <a name="inputclaim"></a>InputClaim
+### <a name="inputclaim"></a>inputClaim
 
 Element **InputClaim** obsahuje následující atributy:
 
@@ -185,7 +185,7 @@ Element **InputClaim** obsahuje následující atributy:
 
 Element **DisplayClaims** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | DisplayClaim | 1: n | Očekával se vstupní typ deklarace identity. |
 
@@ -207,7 +207,7 @@ Element **DisplayClaim** obsahuje následující atributy:
 
 Element **PersistedClaims** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | PersistedClaim | 1: n | Typ deklarace identity, který se má zachovat |
 
@@ -225,11 +225,11 @@ Element **PersistedClaim** obsahuje následující atributy:
 
 Element **OutputClaims** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| OutputClaim | 1: n | Očekával se výstupní typ deklarace identity. |
+| outputClaim | 1: n | Očekával se výstupní typ deklarace identity. |
 
-### <a name="outputclaim"></a>OutputClaim
+### <a name="outputclaim"></a>outputClaim
 
 Element **OutputClaim** obsahuje následující atributy:
 
@@ -244,7 +244,7 @@ Element **OutputClaim** obsahuje následující atributy:
 
 Element **OutputClaimsTransformations** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | OutputClaimsTransformation | 1: n | Identifikátory transformací deklarací identity, které se mají provést před odesláním deklarací do zprostředkovatele deklarací nebo předávající strany. Transformaci deklarací identity lze použít k úpravě stávajících deklarací ClaimsSchema nebo k vygenerování nových. |
 
@@ -260,7 +260,7 @@ Element **OutputClaimsTransformation** obsahuje následující atribut:
 
 Element **ValidationTechnicalProfiles** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1: n | Identifikátory technických profilů, které se používají, ověřují některé nebo všechny výstupní deklarace identity odkazujícího technického profilu. Všechny vstupní deklarace odkazovaného technického profilu se musí objevit ve výstupních deklaracích referenčního technického profilu. |
 

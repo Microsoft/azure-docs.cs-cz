@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 07/09/2019
-ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/17/2020
+ms.openlocfilehash: fe006cebe9aab30a6aaa0bdf2bf3362a494f64d7
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842647"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77426269"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Vytváření a používání aktivní geografické replikace
 
@@ -113,7 +113,7 @@ Aby vaše aplikace mohla hned po převzetí služeb při selhání přistupovat 
 
 ## <a name="configuring-secondary-database"></a>Konfigurace sekundární databáze
 
-U primárních i sekundárních databází je potřeba, aby měly stejnou úroveň služby. Také se důrazně doporučuje, aby se sekundární databáze vytvořila se stejnou výpočetní velikostí (DTU nebo virtuální jádra) jako primární. Pokud primární databáze má velkou zátěžovou úlohu pro zápis, může se stát, že se sekundární s nižší výpočetní velikostí nedokáže s ním udržet. Způsobí prodlevu opakování u sekundárního a potenciálního nedostupnosti. U sekundární databáze, která zaostává za primární databází, také hrozí rozsáhlá ztráta dat v případě, že je potřeba provést vynucené převzetí služeb při selhání. Aby se tato rizika zmírnila, efektivní aktivní geografická replikace omezí rychlost protokolu primárního, aby bylo možné její sekundární zachycení zachytit. Druhou příčinou nevyvážené sekundární konfigurace je to, že po převzetí služeb při selhání bude výkon aplikace ovlivněn z důvodu nedostatečné výpočetní kapacity nového primárního objektu. Bude nutné provést upgrade na vyšší výpočetní výkon na potřebnou úroveň, dokud nebude výpadek omezen. 
+U primárních i sekundárních databází je potřeba, aby měly stejnou úroveň služby. Také se důrazně doporučuje, aby se sekundární databáze vytvořila se stejnou výpočetní velikostí (DTU nebo virtuální jádra) jako primární. Pokud primární databáze má velkou zátěžovou úlohu pro zápis, může se stát, že se sekundární s nižší výpočetní velikostí nedokáže s ním udržet. Způsobí prodlevu opakování u sekundárního a potenciálního nedostupnosti. Sekundární databáze, která je zpožděná za primárním rizikem, také může mít za následek vynucené převzetí služeb při selhání. Aby se tato rizika zmírnila, efektivní aktivní geografická replikace omezí rychlost protokolu primárního, aby bylo možné její sekundární zachycení zachytit. Druhou příčinou nevyvážené sekundární konfigurace je to, že po převzetí služeb při selhání bude výkon aplikace ovlivněn z důvodu nedostatečné výpočetní kapacity nového primárního objektu. Bude nutné provést upgrade na vyšší výpočetní výkon na potřebnou úroveň, dokud nebude výpadek omezen. 
 
 
 > [!IMPORTANT]
@@ -145,7 +145,7 @@ Klient provádějící změny potřebuje síťový přístup k primárnímu serv
 1. Vytvořte odpovídajícího uživatele a přiřaďte ho k roli dbmanager: 
 
    ```sql
-   create user geodrsetup for login gedrsetup
+   create user geodrsetup for login geodrsetup
    alter role geodrsetup dbmanager add member geodrsetup
    ```
 
@@ -245,9 +245,9 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Pro vytvoření sekundární databáze pro existující databázi a spuštění replikace dat použijte argument přidat sekundární na SERVER. |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Použití převzetí služeb při selhání nebo FORCE_FAILOVER_ALLOW_DATA_LOSS k přepnutí sekundární databáze na primární pro zahájení převzetí služeb při selhání |
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current) |Pomocí odebrat sekundární na serveru ukončete replikaci dat mezi SQL Database a zadanou sekundární databází. |
-| [sys.geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Vrátí informace o všech stávajících odkazech replikace pro každou databázi na serveru Azure SQL Database. |
-| [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Získá čas poslední replikace, prodlevu poslední replikace a další informace o odkazu replikace pro danou databázi SQL. |
-| [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zobrazuje stav všech databázových operací, včetně stavu replikačních odkazů. |
+| [sys. geo_replication_links](/sql/relational-databases/system-dynamic-management-views/sys-geo-replication-links-azure-sql-database) |Vrátí informace o všech stávajících odkazech replikace pro každou databázi na serveru Azure SQL Database. |
+| [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) |Získá čas poslední replikace, prodlevu poslední replikace a další informace o odkazu replikace pro danou databázi SQL. |
+| [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) |Zobrazuje stav všech databázových operací, včetně stavu replikačních odkazů. |
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |způsobí, že aplikace počká, až budou všechny potvrzené transakce replikovány a potvrzeny aktivní sekundární databází. |
 |  | |
 
@@ -271,7 +271,7 @@ Jak je popsáno výše, aktivní geografická replikace se dá spravovat taky pr
 
 ### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST API: Správa převzetí služeb při selhání pro jednotlivé a sdružené databáze
 
-| API | Popis |
+| Rozhraní API | Popis |
 | --- | --- |
 | [Vytvořit nebo aktualizovat databázi (createMode = Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vytvoří, aktualizuje nebo obnoví primární nebo sekundární databázi. |
 | [Získat stav databáze pro vytvoření nebo aktualizaci](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) |Vrátí stav během operace vytvoření. |

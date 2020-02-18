@@ -32,6 +32,10 @@
         - name: Přehled ingestování dat
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+    - name: Dotazovací jazyk Kusto
+      items:
+        - name: Stručná referenční příručka
+          href: kql-quick-reference.md
     - name: Přehled vizualizace dat
       href: viz-overview.md
     - name: Přehled zabezpečení

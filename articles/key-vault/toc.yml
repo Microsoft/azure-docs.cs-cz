@@ -112,6 +112,14 @@
           href: managed-identity.md
         - name: Použití zásad řízení přístupu
           href: key-vault-group-permissions-for-apps.md
+        - name: Import klíčů chráněných pomocí HSM
+          items:
+            - name: Přehled
+              href: key-vault-hsm-protected-keys.md
+            - name: Import klíčů chráněných modulem HSM do Key Vaultu (Preview)
+              href: hsm-protected-keys-vendor-agnostic-byok.md
+            - name: Import klíčů chráněných modulem HSM do Key Vaultu (starší verze)
+              href: hsm-protected-keys-legacy.md
     - name: Směrování oznámení trezoru klíčů s využitím Event Gridu
       href: event-grid-tutorial.md
     - name: Příjem oznámení prostřednictvím Event Gridu a Logic Apps
@@ -170,8 +178,6 @@
       items:
         - name: Průvodce vývojáře
           href: key-vault-developers-guide.md
-        - name: Klíče chráněné pomocí HSM
-          href: key-vault-hsm-protected-keys.md
         - name: Migrace na .NET 2.0
           href: key-vault-dotnet2api-release-notes.md
         - name: Uložení tajných kódů webové aplikace

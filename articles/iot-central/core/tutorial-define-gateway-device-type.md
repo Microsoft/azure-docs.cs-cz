@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 04f9a067e0b7df1f90d181d42bc4dd562aca56b0
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8020abf3f8ab153d0143ff50d837ebcfbf5bdfba
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027689"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77423691"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení brány IoT v aplikaci Azure IoT Central
 
@@ -30,7 +30,7 @@ I když chcete, aby zařízení komunikovala s aplikací IoT Central, může tak
 * Reaguje na aktualizace zapisovatelných vlastností provedené operátorem. Například operátor může změnit interval odesílání telemetrie.
 * Odpovězte na příkazy, jako je třeba restartování zařízení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete [vytvořit aplikaci Azure IoT Central](./quick-deploy-iot-central.md).
 
@@ -40,7 +40,7 @@ Tento kurz používá šablony zařízení pro zařízení se **senzorem S1** a 
 
 Vytvoření šablony zařízení pro zařízení se **senzorem S1** :
 
-1. V levém navigačním panelu vyberte **šablony zařízení**. Pak vyberte **+** pro zahájení přidávání šablony.
+1. V levém podokně vyberte **šablony zařízení**. Pak vyberte **+** pro zahájení přidávání šablony.
 
 1. Posuňte se dolů, dokud se nezobrazí dlaždice zařízení se **senzorem S1** . Vyberte dlaždici a potom vyberte **Další: přizpůsobit**.
 
@@ -48,7 +48,7 @@ Vytvoření šablony zařízení pro zařízení se **senzorem S1** :
 
 Vytvoření šablony zařízení pro zařízení**RS40 pro senzory** :
 
-1. V levém navigačním panelu vyberte **šablony zařízení**. Pak vyberte **+** pro zahájení přidávání šablony.
+1. V levém podokně vyberte **šablony zařízení**. Pak vyberte **+** pro zahájení přidávání šablony.
 
 1. Posuňte se dolů, dokud se nezobrazí dlaždice zařízení ***RS40 pro snímače obsazení** . Vyberte dlaždici a potom vyberte **Další: přizpůsobit**.
 
@@ -65,7 +65,7 @@ V tomto kurzu vytvoříte šablonu zařízení pro zařízení brány od úplné
 
 Přidání nové šablony zařízení brány do vaší aplikace:
 
-1. V levém navigačním panelu vyberte **šablony zařízení**. Pak vyberte **+** pro zahájení přidávání šablony.
+1. V levém podokně vyberte **šablony zařízení**. Pak vyberte **+** pro zahájení přidávání šablony.
 
 1. Na stránce **Vybrat typ šablony** vyberte dlaždici **zařízení IoT** a potom vyberte **Další: přizpůsobit**.
 
@@ -89,7 +89,7 @@ Dále přidáte relace do šablon pro šablony zařízení pro příjem dat:
 
 1. Vyberte **+ Přidat relaci** znovu. Jako zobrazované jméno zadejte **snímač obsazení** a jako cíl vyberte **senzor obsazení RS40** .
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ![Šablona zařízení inteligentního sestavování, zobrazení relací](./media/tutorial-define-gateway-device-type/relationships.png)
 
@@ -105,12 +105,12 @@ Chcete-li přidat vlastnosti cloudu do šablony **zařízení služby inteligent
 
     | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
-    | Last Service Date (Datum poslední údržby) | Žádné          | Datum   |
-    | Jméno zákazníka     | Žádné          | Řetězec |
+    | Last Service Date (Datum poslední údržby) | Žádná          | Datum   |
+    | Název zákazníka     | Žádná          | Řetězec |
 
-2. Vyberte **Uložit**.
+2. Vyberte **Save** (Uložit).
 
-### <a name="create-views"></a>Vytváření zobrazení
+### <a name="create-views"></a>Vytvoření zobrazení
 
 Jako tvůrce můžete aplikaci přizpůsobit tak, aby zobrazovala relevantní informace o zařízení snímače životního prostředí pro operátora. Vlastní nastavení umožňuje operátorovi spravovat zařízení senzorů pro životní prostředí připojená k aplikaci. Můžete vytvořit dva typy zobrazení pro operátora pro práci se zařízeními:
 
@@ -149,7 +149,7 @@ Postup vytvoření simulovaného zařízení brány:
 
 1. Pokud chcete začít přidávat nové zařízení, vyberte **+** .
 
-1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Vytvořit**.
+1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Create** (Vytvořit).
 
 Postup vytvoření simulovaných zařízení pro příjem dat:
 
@@ -157,13 +157,13 @@ Postup vytvoření simulovaných zařízení pro příjem dat:
 
 1. Pokud chcete začít přidávat nové zařízení, vyberte **+** .
 
-1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Vytvořit**.
+1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Create** (Vytvořit).
 
 1. Na stránce **zařízení** vyberte v seznamu šablon zařízení možnost **senzor S1** .
 
 1. Pokud chcete začít přidávat nové zařízení, vyberte **+** .
 
-1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Vytvořit**.
+1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Create** (Vytvořit).
 
 ![Simulovaná zařízení ve vaší aplikaci](./media/tutorial-define-gateway-device-type/simulated-devices.png)
 

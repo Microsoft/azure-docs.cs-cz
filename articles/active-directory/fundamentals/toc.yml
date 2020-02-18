@@ -39,8 +39,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: Úložiště dat identity pro EU
       href: active-directory-data-storage-eu.md
-    - name: Úložiště dat identity pro Austrálii
-      href: active-directory-data-storage-australia.md
+    - name: Úložiště dat identity pro Austrálii a Nový Zéland
+      href: active-directory-data-storage-australia-newzealand.md
     - name: Novinky ve službě Microsoft 365 Government
       href: whats-new-microsoft-365-government.md
     - name: Reference operací Azure AD

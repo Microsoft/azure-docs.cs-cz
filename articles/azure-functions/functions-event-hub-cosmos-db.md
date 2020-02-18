@@ -5,12 +5,12 @@ author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
-ms.openlocfilehash: cef1d09f3365350240cb2ed879e4d41edec74aef
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849832"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425319"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Kurz: vytvoření funkce v Java pomocí triggeru centra událostí a výstupní vazby Azure Cosmos DB
 
@@ -29,13 +29,15 @@ V tomto kurzu:
 
 K dokončení tohoto kurzu musíte mít nainstalované následující:
 
-* [Java Developer Kit](https://aka.ms/azure-jdks), verze 8
-* [Apache Maven](https://maven.apache.org), verze 3,0 nebo novější
+* [Java Developer Kit](https://aka.ms/azure-jdks) verze 8
+* [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější
 * [Azure CLI](/cli/azure/install-azure-cli) Pokud nechcete používat Cloud Shell
 * [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) verze 2.6.666 nebo vyšší
 
 > [!IMPORTANT]
 > Aby se tento kurz dokončil, musí být proměnná prostředí `JAVA_HOME` nastavená na umístění instalace JDK.
+
+Pokud dáváte přednost použití kódu pro tento kurz přímo, přečtěte si ukázkové úložiště [Java-Functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -50,7 +52,7 @@ V tomto kurzu budete potřebovat tyto prostředky:
 
 V následujících částech se dozvíte, jak tyto prostředky vytvořit pomocí rozhraní příkazového řádku Azure CLI.
 
-### <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+### <a name="log-in-to-azure"></a>Přihlášení k Azure
 
 Pokud nepoužíváte Cloud Shell, budete k přístupu k vašemu účtu muset použít Azure CLI místně. Pomocí příkazu `az login` z příkazového řádku bash spusťte prostředí pro přihlášení na základě prohlížeče. Pokud máte přístup k více než jednomu předplatnému Azure, nastavte výchozí hodnotu u `az account set --subscription` následovaný IDENTIFIKÁTORem předplatného.
 
@@ -106,7 +108,7 @@ az eventhubs eventhub authorization-rule create \
 
 Obor názvů Event Hubs obsahuje skutečné centrum událostí a jeho autorizační pravidlo. Autorizační pravidlo umožňuje vašim funkcím posílat zprávy do centra a naslouchat odpovídajícím událostem. Jedna funkce odesílá zprávy, které reprezentují data telemetrie. Jiná funkce naslouchá událostem, analyzuje data události a ukládá výsledky v Azure Cosmos DB.
 
-### <a name="create-an-azure-cosmos-db"></a>Vytvořit databázi Azure Cosmos
+### <a name="create-an-azure-cosmos-db"></a>Vytvoření Azure Cosmos DB
 
 Dále vytvořte účet Azure Cosmos DB, databázi a kolekci pomocí následujících příkazů:
 
@@ -201,7 +203,7 @@ Prostředky Azure se teď vytvořily a nakonfigurovali tak, aby správně fungov
 
 ## <a name="create-and-test-your-functions"></a>Vytváření a testování funkcí
 
-V dalším kroku vytvoříte projekt na svém místním počítači, přidáte kód Java a otestujete ho. Pro Azure Functions a Azure Functions Core Tools budete používat příkazy, které pracují s modulem plug-in Maven. Vaše funkce se spustí místně, ale budou používat cloudové prostředky, které jste vytvořili. Jakmile funkce fungují místně, můžete je pomocí Maven nasadit do cloudu a sledovat vaše data a analýzy.
+V dalším kroku vytvoříte projekt na svém místním počítači, přidáte kód Java a otestujete ho. Budete používat příkazy, které pracují s modulem plug-in Azure Functions pro Maven a Azure Functions Core Tools. Vaše funkce se spustí místně, ale budou používat cloudové prostředky, které jste vytvořili. Jakmile funkce fungují místně, můžete je pomocí Maven nasadit do cloudu a sledovat vaše data a analýzy.
 
 Pokud jste k vytváření prostředků použili Cloud Shell, nebudete místně připojeni k Azure. V takovém případě použijte příkaz `az login` pro spuštění procesu přihlašování založeného na prohlížeči. V případě potřeby nastavte výchozí předplatné na `az account set --subscription` následovaný IDENTIFIKÁTORem předplatného. Nakonec spuštěním následujících příkazů znovu vytvořte některé proměnné prostředí v místním počítači. Nahraďte zástupné symboly `<value>` stejnými hodnotami, které jste použili dříve.
 

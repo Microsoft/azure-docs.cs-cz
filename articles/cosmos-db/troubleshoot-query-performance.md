@@ -8,12 +8,12 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 34f5de01df72b48d275448e028ab0f8cb71e51f8
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: aae11facd2fea5413b2996b3088cb2edc23f0dc1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132065"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77424928"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Řešení potíží s dotazy při použití Azure Cosmos DB
 
@@ -75,7 +75,7 @@ Na níže uvedený oddíl můžete získat informace, abyste pochopili relevantn
 
  Níže je uveden příklad skenovacího dotazu, který nebyl zcela obsluhován indexem.
 
-Dotaz:
+Dotaz
 
  ```sql
 SELECT VALUE c.description
@@ -117,9 +117,9 @@ Vaše zásada indexování by měla zahrnovat jakékoli vlastnosti zahrnuté v k
 
 Pokud spustíme jednoduchý dotaz na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datovou sadu, při každém indexování je v případě, že je vlastnost v klauzuli `WHERE` indexována, zabereme mnohem nižší poplatek za ru.
 
-### <a name="original"></a>Původně
+### <a name="original"></a>původně
 
-Dotaz:
+Dotaz
 
 ```sql
 SELECT * FROM c WHERE c.description = "Malabar spinach, cooked"
@@ -193,9 +193,9 @@ Ostatní části dotazu mohou i nadále využívat index navzdory tím, že syst
 
 I když dotazy s filtrem a klauzulí `ORDER BY` obvykle využívají index rozsahu, budou efektivnější, pokud je lze zpracovat ze složeného indexu. Kromě změny zásad indexování byste měli do klauzule `ORDER BY` přidat všechny vlastnosti složeného indexu. Tato úprava dotazu zajistí, že bude používat složený index.  Můžete sledovat dopad spuštěním dotazu na [nutriční](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) datovou sadu.
 
-### <a name="original"></a>Původně
+### <a name="original"></a>původně
 
-Dotaz:
+Dotaz
 
 ```sql
 SELECT * FROM c WHERE c.foodGroup = "Soups, Sauces, and Gravies" ORDER BY c._ts ASC
@@ -302,7 +302,7 @@ Pokud je počet načtených dokumentů přibližně roven výstupnímu počtu do
 
 Azure Cosmos DB používá [dělení](partitioning-overview.md) ke škálování jednotlivých kontejnerů v případě, že se vyžadují jednotky žádosti a úložiště dat. Každý fyzický oddíl má samostatný a nezávislý index. Pokud má váš dotaz filtr rovnosti, který odpovídá klíči oddílu vašeho kontejneru, budete muset pouze ověřit index relevantního oddílu. Tato optimalizace snižuje celkový počet RU dotazů, které vyžaduje dotaz.
 
-Pokud máte velké množství zajištěných údajů RU (více než 30 000) nebo velký objem uložených dat (více než ~ 100 GB), pravděpodobně máte dostatečně velký kontejner, abyste viděli výrazné snížení nákladů na dotaz RU.
+Pokud máte velké množství zřízené RU (více než 30 000) nebo velký objem uložených dat (více než 100 GB), budete pravděpodobně mít velký kontejner, ve kterém se můžete podívat na výrazné snížení nákladů na dotaz RU.
 
 Pokud například vytvoříme kontejner s klíčovým adaptérem oddílu, budou následující dotazy potřebovat pouze kontrolovat jeden fyzický oddíl:
 
@@ -383,7 +383,7 @@ Dotazy, které jsou spouštěny z jiné oblasti, než je účet Azure Cosmos DB,
 
 ## <a name="increase-provisioned-throughput"></a>Zvýšení zřízené propustnosti
 
-V Azure Cosmos DB se zřízená propustnost měří v jednotkách žádosti (RU). Představte si, že máte dotaz, který spotřebovává 5 RU propustnosti. Pokud například zřídíte 1 000 RU, budete moct spustit tento dotaz 200 krát za sekundu. Pokud jste se pokusili spustit dotaz, když není k dispozici dostatek propustnosti, Azure Cosmos DB by vrátil chybu HTTP 429. Po krátké době se tento dotaz automaticky zopakuje v jakékoli aktuální sadě SDK rozhraní API jádra (SQL). Omezené požadavky mohou trvat delší dobu, takže zvýšení zajištěné propustnosti může zlepšit latenci dotazů. [Celkový počet požadavků, které jsou omezeny požadavky](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) , můžete sledovat v okně metriky Azure Portal.
+V Azure Cosmos DB se zřízená propustnost měří v jednotkách žádosti (RU). Představte si, že máte dotaz, který spotřebovává 5 RU propustnosti. Pokud například zřídíte 1 000 RU, budete moct spustit tento dotaz 200 krát za sekundu. Pokud jste se pokusili spustit dotaz, když není k dispozici dostatek propustnosti, Azure Cosmos DB by vrátil chybu HTTP 429. Po krátké době se tento dotaz automaticky zopakuje v jakékoli aktuální sadě SDK rozhraní API jádra (SQL). Omezené požadavky mohou trvat delší dobu, takže zvýšení zajištěné propustnosti může zlepšit latenci dotazů. [Celkový počet omezených požadavků](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) můžete sledovat v okně metriky Azure Portal.
 
 ## <a name="increase-maxconcurrency"></a>Zvýšit MaxConcurrency
 

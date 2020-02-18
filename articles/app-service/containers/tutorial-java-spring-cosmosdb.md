@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: a3e9c05fbe68bf1b03f45d045afd8754753fecd3
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 5109c33acf4a92a3227fe79d6d2c997a54adec08
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688835"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425268"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Java jarní Boot pomocí Azure App Service v systému Linux a Azure Cosmos DB
 
@@ -51,7 +51,7 @@ cd e2e-java-experience-in-app-service-linux-part-2
 yes | cp -rf .prep/* .
 ```
 
-## <a name="create-an-azure-cosmos-db"></a>Vytvořit databázi Azure Cosmos
+## <a name="create-an-azure-cosmos-db"></a>Vytvoření Azure Cosmos DB
 
 Pomocí těchto kroků vytvořte v předplatném Azure Cosmos DBovou databázi. Aplikace seznamu úkolů se připojí k této databázi a uloží její data při spuštění a zůstane beze stavu aplikace bez ohledu na to, kde aplikaci spustíte.
 
@@ -173,7 +173,7 @@ Pokud se zobrazí výjimky místo zprávy "spuštění TodoApplication", zkontro
 
 ## <a name="configure-azure-deployment"></a>Konfigurace nasazení Azure
 
-Otevřete soubor `pom.xml` v adresáři `initial/spring-boot-todo` a přidejte následující [modul plug-in Maven pro konfiguraci Azure App Service](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) .
+Otevřete soubor `pom.xml` v adresáři `initial/spring-boot-todo` a přidejte následující [modul plug-in webové aplikace Azure pro konfiguraci Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) .
 
 ```xml    
 <plugins> 
@@ -236,7 +236,7 @@ Otevřete soubor `pom.xml` v adresáři `initial/spring-boot-todo` a přidejte n
 </plugins>
 ```
 
-## <a name="deploy-to-app-service-on-linux"></a>Nasazení na App Service v systému Linux
+## <a name="deploy-to-app-service-on-linux"></a>Nasazení do App Service v Linuxu
 
 K nasazení aplikace TODO pro Azure App Service v systému Linux použijte `azure-webapp:deploy` cíl Maven.
 
@@ -313,4 +313,4 @@ az group delete --name <your-azure-group-name>
 Přečtěte si další informace o spouštění aplikací Java v App Service v systému Linux v příručce pro vývojáře.
 
 > [!div class="nextstepaction"] 
-> [Java v App Service příručka pro vývoj pro Linux](configure-language-java.md)
+> [Příručka pro vývojáře v Javě v App Service Linux](configure-language-java.md)

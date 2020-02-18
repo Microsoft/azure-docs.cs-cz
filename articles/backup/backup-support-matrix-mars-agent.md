@@ -3,12 +3,12 @@ title: Matice podpory pro agenta MARS
 description: Tento článek shrnuje Azure Backup podporu při zálohování počítačů, na kterých běží agent služby Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: a87d778bff5a52f4251d83e401028c9949713e33
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8f5ce33b5057b11caa33c0ae80cf72e1b13da5d0
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988069"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425013"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -41,7 +41,7 @@ Instalace na záložní server | Když nastavíte DPM nebo MABS pro zálohován�
 
 Když použijete agenta MARS k zálohování dat, agent pořizuje snímek dat a uloží ho do složky místní mezipaměti předtím, než odešle data do Azure. Složka cache (Scratch) má několik požadavků:
 
-**Mezipaměť** | **Podrobnosti**
+**Uchovávat** | **Podrobnosti**
 --- | ---
 Velikost |  Volné místo ve složce mezipaměti by mělo být alespoň 5 až 10 procent celkové velikosti zálohovaných dat.
 Umístění | Složka mezipaměti musí být uložená místně na počítači, který se zálohuje, a musí být online. Složka mezipaměti by neměla být ve sdílené síťové složce, na vyměnitelném médiu nebo na svazku offline.
@@ -112,7 +112,7 @@ Windows Server 2012 nebo novější |54 400 GB
 Windows Server 2008 R2 SP1 |1 700 GB
 Windows Server 2008 SP2| 1 700 GB
 Windows 8 nebo novější| 54 400 GB
-Windows 7| 1 700 GB
+Windows 7| 1 700 GB
 
 ### <a name="other-limitations"></a>Další omezení
 
@@ -126,24 +126,25 @@ Windows 7| 1 700 GB
 Komprimované | Podporuje se.
 Řídké | Podporuje se.
 Komprimované a zhuštěné |Podporuje se.
-Pevné odkazy| Není podporováno. Přeskočeno.
-Bod rozboru| Není podporováno. Přeskočeno.
-Šifrované a zhuštěné |Není podporováno. Přeskočeno.
-Komprimovaný datový proud| Není podporováno. Přeskočeno.
-Zhuštěný datový proud| Není podporováno. Přeskočeno.
-OneDrive (synchronizované soubory jsou zhuštěné streamy)| Není podporováno.
+Pevné odkazy| Nepodporuje se. Přeskočeno.
+Bod rozboru| Nepodporuje se. Přeskočeno.
+Šifrované a zhuštěné |Nepodporuje se. Přeskočeno.
+Komprimovaný datový proud| Nepodporuje se. Přeskočeno.
+Zhuštěný datový proud| Nepodporuje se. Přeskočeno.
+OneDrive (synchronizované soubory jsou zhuštěné streamy)| Nepodporuje se.
+Složky s povoleným Replikace DFS | Nepodporuje se.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Podporované jednotky nebo svazky pro zálohování
 
 **Jednotka/svazek** | **Podpora** | **Podrobnosti**
 --- | --- | ---
-Svazky jen pro čtení| Nepodporováno | Služba Stínová kopie svazku (VSS) funguje pouze v případě, že svazek je zapisovatelný.
-Offline svazky| Nepodporováno |Služba Stínová kopie svazku funguje jenom v případě, že je svazek online.
-Sdílená síťová složka| Nepodporováno |Svazek musí být na serveru místní.
-Svazky zamčené nástrojem BitLocker| Nepodporováno |Svazek musí být před zahájením zálohování odemčen.
-Identifikace systému souborů| Nepodporováno |Podporován je pouze systém souborů NTFS.
-Vyměnitelná média| Nepodporováno |Všechny zdroje záložních položek musí mít *pevný* stav.
-Jednotky s odstraněnými duplicitními daty | Podporováno | Azure Backup převede data s odstraněnými duplicitními daty na normální data. Optimalizuje, šifruje, ukládá a odesílá data do trezoru.
+Svazky jen pro čtení| Nepodporuje se | Služba Stínová kopie svazku (VSS) funguje pouze v případě, že svazek je zapisovatelný.
+Offline svazky| Nepodporuje se |Služba Stínová kopie svazku funguje jenom v případě, že je svazek online.
+Sdílená síťová složka| Nepodporuje se |Svazek musí být na serveru místní.
+Svazky zamčené nástrojem BitLocker| Nepodporuje se |Svazek musí být před zahájením zálohování odemčen.
+Identifikace systému souborů| Nepodporuje se |Podporován je pouze systém souborů NTFS.
+Vyměnitelná média| Nepodporuje se |Všechny zdroje záložních položek musí mít *pevný* stav.
+Jednotky s odstraněnými duplicitními daty | Podporuje se | Azure Backup převede data s odstraněnými duplicitními daty na normální data. Optimalizuje, šifruje, ukládá a odesílá data do trezoru.
 
 ## <a name="support-for-initial-offline-backup"></a>Podpora počátečního zálohování offline
 

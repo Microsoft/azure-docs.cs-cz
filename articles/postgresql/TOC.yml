@@ -245,6 +245,8 @@
           items:
             - name: Řešení chyb připojení
               href: howto-troubleshoot-common-connection-issues.md
+            - name: Řešení potíží s šifrováním dat
+              href: howto-data-encryption-troubleshoot.md
         - name: Rozšířená ochrana před internetovými útoky
           items:
             - name: portál Azure

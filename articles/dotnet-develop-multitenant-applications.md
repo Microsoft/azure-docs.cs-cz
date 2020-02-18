@@ -1,6 +1,6 @@
 ---
-title: Vzoru aplikace s více Tenanty webové | Dokumentace Microsoftu
-description: Najdete architektury přehledy a vzorů návrhu, které popisují, jak implementovat víceklientské webová aplikace v Azure.
+title: Vícenásobný tenant – vzor webové aplikace | Microsoft Docs
+description: Najděte si přehledy architektury a vzory návrhu, které popisují implementaci víceklientské webové aplikace v Azure.
 services: ''
 documentationcenter: .net
 author: wadepickett
@@ -14,80 +14,80 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: 92a0caedca34756228dbf57ec9099fd2ece3d84e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3e267eab056589ed38c436620dd0db185291da1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66225968"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425897"
 ---
 # <a name="multitenant-applications-in-azure"></a>Víceklientské aplikace v Azure
-Víceklientské aplikace je sdílený prostředek, který umožňuje samostatné uživatele, nebo "klienti", chcete-li zobrazit aplikace, jako by byl své vlastní. Typický scénář, který slouží k víceklientské aplikaci je jedním ve kterém všichni uživatelé aplikace chtít přizpůsobit uživatelské prostředí, ale jinak mají stejný základní obchodní požadavky. Příkladem velké víceklientské aplikace jsou visualstudio.com, Office 365 a Outlook.com.
+Víceklientské aplikace je sdílený prostředek, který umožňuje uživatelům v samostatných klientech zobrazit aplikaci, jako by byla vlastní. Typický scénář, který se sám zapůjčuje do víceklientské aplikace, je ten, ve kterém všichni uživatelé aplikace z různých tenantů můžou chtít přizpůsobit uživatelské prostředí, ale v opačném případě mají stejné základní obchodní požadavky. Příklady rozsáhlých víceklientské aplikací jsou Office 365, Outlook.com a visualstudio.com.
 
-Z pohledu zprostředkovatele aplikace výhody víceklientskou architekturu nejčastěji týkají provozní a nákladové efektivity. Jednu verzi vaší aplikace lze splnit potřeby mnoha tenantů/zákazníků, umožňuje konsolidaci systému úlohy správy, jako je monitorování, optimalizace výkonu, údržby softwaru nebo data záloh.
+Z perspektivy poskytovatele aplikace se výhody víceklientské architektury týkají zejména provozní a nákladové efektivity. Jedna verze vaší aplikace může splňovat potřeby mnoha klientů nebo zákazníků, což umožňuje konsolidaci úloh správy systému, jako je monitorování, optimalizace výkonu, údržba softwaru a zálohování dat.
 
-Následuje seznam nejvýznamnější cíle a požadavky z hlediska poskytovatele.
+Níže najdete seznam nejvýznamnějších cílů a požadavků z perspektivy poskytovatele.
 
-* **Zřizování**: Musíte být schopni zřízení nových tenantů pro aplikaci.  Pro víceklientské aplikace s velkým množstvím tenantů je obvykle nezbytná k automatizaci tohoto procesu tím, že umožňuje samoobslužné služby zřizování.
-* **Udržovatelnost**: Musíte být schopni upgradovat aplikaci a provádět další úlohy údržby, zatímco se vytvářejí pomocí více tenantů.
-* **Monitorování**: Musíte být schopni monitorování aplikace za všech okolností zjistit případné problémy a jejich řešení. To zahrnuje monitorování, jak každý klient používá aplikace.
+* **Zřizování**: musíte být schopni zřídit pro aplikaci nové klienty.  Pro víceklientské aplikace s velkým počtem klientů je obvykle potřeba automatizovat tento proces povolením samoobslužného zřizování.
+* **Udržovatelnost**: musíte být schopni provést upgrade aplikace a provádět další úlohy údržby, zatímco je používá více klientů.
+* **Monitorování**: aplikace musí být schopná kdykoli monitorovat, aby bylo možné identifikovat případné problémy a řešit je. Zahrnuje monitorování, jak každý tenant používá aplikaci.
 
-Správně implementovaná víceklientské aplikaci poskytuje následující výhody pro uživatele.
+Správně implementovaná víceklientské aplikace poskytuje uživatelům následující výhody.
 
-* **Izolace**: Aktivity jednotlivých tenantů nemají vliv na použití aplikace podle jiných tenantů. Klienty nelze přistupovat k datům uživatele toho druhého. Zobrazí se do tenanta jako kdyby všichni mají výhradní použití aplikace.
-* **Dostupnost**: Jednotlivé tenanty chcete aplikaci, která bude stále k dispozici, například záruky, které jsou definovány v smlouvu SLA. Znovu aktivity z jiných tenantů nemělo ovlivnit dostupnost aplikace.
-* **Škálovatelnost**: Aplikace se škáluje podle potřeby jednotlivých tenantů. Přítomnost a konání ostatních tenantů by neměla vliv na výkon aplikace.
-* **Náklady na**: Náklady jsou nižší než systémem vyhrazené jednoho tenanta aplikaci, protože více tenantů umožňuje sdílení prostředků.
-* **Přizpůsobitelnost**. Možnost přizpůsobení aplikace pro jednoho klienta různými způsoby, například přidávání nebo odebírání funkcí, změna barev a loga nebo dokonce přidat vlastní kód nebo skript.
+* **Izolace**: aktivity jednotlivých tenantů neovlivňují použití aplikace jinými klienty. Klienti nemají přístup k datům ostatních. Klient se zobrazí, jako by se jednalo o výhradní použití aplikace.
+* **Dostupnost**: jednotliví klienti chtějí nepřetržitě dostupný aplikaci, třeba se zárukami definovanými v rámci smlouvy SLA. V důsledku toho by aktivity jiných tenantů neměly mít vliv na dostupnost aplikace.
+* **Škálovatelnost**: aplikace se škáluje tak, aby splňovala požadavky jednotlivých tenantů. Přítomnost a akce jiných tenantů by neměly mít vliv na výkon aplikace.
+* **Náklady**: náklady jsou nižší než spuštění vyhrazené aplikace s jedním klientem, protože víceklientská architektura umožňuje sdílení prostředků.
+* **Úpravou**. Možnost přizpůsobit aplikaci pro jednotlivé klienty různými způsoby, jako je například přidávání nebo odebírání funkcí, změna barev a log nebo dokonce přidání vlastního kódu nebo skriptu.
 
-Stručně řečeno i když existují mnoho důležité informace, které musí vzít v úvahu k poskytování vysoce škálovatelná služba, existují také řadu cíle a požadavky, které jsou společné pro mnoho víceklientské aplikace. Některé nemusí být v určitých situacích relevantní a závažnost jednotlivých cíle a požadavky se budou lišit v každém scénáři. Jako poskytovatel víceklientské aplikaci budete také mít cíle a požadavky, jako splnění tenanta cíle a požadavky, ziskovosti, fakturace, více úrovní služeb, zřizování, udržovatelnost monitorování a automatizace.
+V krátké době existuje mnoho důležitých informací, které je třeba vzít v úvahu, aby bylo možné zajistit vysoce škálovatelnou službu, existuje také řada cílů a požadavků, které jsou společné pro mnoho víceklientské aplikací. Některé nemusí být relevantní v konkrétních scénářích a význam jednotlivých cílů a požadavků se v každém scénáři liší. Jako poskytovatel víceklientské aplikace budete mít také cíle a požadavky, jako je třeba splnění cílů a požadavků klienta, ziskovosti, fakturace, více úrovní služeb, zřizování, monitorování údržby a automatizace.
 
-Další informace o další aspekty návrhu víceklientské aplikace, najdete v části [hostování aplikace v Azure s více Tenanty][Hosting a Multi-Tenant Application on Azure]. Informace o běžných vzorech architektury dat databázových aplikací softwaru s více tenanty jako služby (SaaS) naleznete v části [Vzory návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
+Další informace o dalších doporučeních pro návrh víceklientské aplikace najdete v tématu [hostování aplikace s více klienty v Azure][Hosting a Multi-Tenant Application on Azure]. Informace o běžných vzorech architektury dat databázových aplikací softwaru s více tenanty jako služby (SaaS) naleznete v části [Vzory návrhu pro aplikace SaaS s více tenanty s databází Azure SQL Database](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
 
-Azure poskytuje mnoho funkcí, které umožňují věnovat důležitým problémům došlo při navrhování víceklientském systému.
+Azure poskytuje mnoho funkcí, které vám umožní řešit klíčové problémy zjištěné při navrhování víceklientského systému.
 
-**Izolace**
+**Oddělení**
 
-* Segment webu klienty podle hlavičky hostitele s nebo bez něj komunikaci prostřednictvím protokolu SSL
-* Segment webu klienty podle parametrů dotazu
+* Segmentovat klienty webu podle hlaviček hostitele s komunikací SSL nebo bez něj
+* Segmentovat klienty webu podle parametrů dotazu
 * Webové služby v rolích pracovního procesu
-  * Role pracovního procesu, které se obvykle zpracovávají data v back-endové aplikace.
-  * Webové role, které obvykle fungují jako front-endu pro aplikace.
+  * Role pracovních procesů, které obvykle zpracovávají data v back-endu aplikace.
+  * Webové role, které obvykle fungují jako front-end pro aplikace.
 
-**Storage**
+**Úložiště**
 
-Správa dat, jako jsou služby Azure SQL Database nebo Azure Storage, jako jsou služby Table service, která poskytuje služby pro ukládání velkých objemů nestrukturovaných dat a služby Blob service, která poskytuje služby, jak ukládat velké objemy nestrukturovaných textových nebo binární data, jako jsou videa, zvukové soubory a obrázky.
+Správa dat, jako jsou například Azure SQL Database nebo Azure Storage služby, jako je Table service, které poskytují služby pro ukládání velkých objemů nestrukturovaných dat a Blob service, které poskytují služby pro ukládání velkých objemů nestrukturovaných textů nebo binární data, jako je video, zvuk a obrázky.
 
-* Zabezpečení dat Multitenant ve službě SQL Database přihlášení serveru SQL Server za klienta.
-* Použití tabulek Azure prostředky aplikace tak, že určíte zásady přístupu na úrovni kontejneru, můžete mít možnost Upravit oprávnění, aniž byste museli vydávat nové adresy URL pro prostředky chráněné pomocí signatur sdíleného přístupu.
-* Fronty Azure pro fronty Azure prostředků aplikace se běžně používají k jednotky zpracování jménem tenantů, ale může také sloužit k distribuci práce potřebné pro zřizování nebo správy.
-* Fronty služby Service Bus pro prostředky aplikace, který by vložil pracujeme, abychom sdílené služby, můžete použít jednou frontou kde odesílatele každý tenant má pouze oprávnění (jak je odvozen z deklarací identity vystavených ze služby ACS) tak, aby nabízel do této fronty, i když má pouze příjemci ze služby oprávnění k načítání z fronty dat přicházejících z více tenantů.
+* Zabezpečují se data ve více klientech v SQL Database přihlašovacích údajů pro každého tenanta SQL Server.
+* Použití tabulek Azure pro prostředky aplikace zadáním zásad přístupu na úrovni kontejneru můžete mít možnost Upravit oprávnění bez nutnosti vydávat nové adresy URL pro prostředky chráněné pomocí sdílených přístupových podpisů.
+* Fronty Azure pro prostředky aplikací Azure Queues se běžně používají k řízení zpracování v zastoupení klientů, ale můžou se používat i k distribuci práce, která se vyžaduje pro zřizování nebo správu.
+* Service Bus fronty pro prostředky aplikací, které přidávají práci do sdílené služby, můžete použít jednu frontu, ve které má každý odesílatel tenanta oprávnění pouze (odvozený od služby ACS), aby se do této fronty nastavily jenom příjemci, kteří mají jenom příjemce ze služby. oprávnění k vyžádání z fronty pro data přicházející z více tenantů.
 
-**Připojení a zabezpečení služeb**
+**Služby připojení a zabezpečení**
 
-* Azure Service Bus, infrastruktura zasílání zpráv umístěná mezi aplikacemi, kterým umožňuje výměnu zpráv volně způsobem lepší škálovatelnost a odolnost proti chybám.
+* Azure Service Busová infrastruktura pro zasílání zpráv, která se nachází mezi aplikacemi a umožňuje jim volně vyměňovat zprávy pro lepší škálování a odolnost.
 
 **Síťové služby**
 
-Azure poskytuje několik síťových služeb, které podporují ověřování a zlepšit možnosti správy hostovaných aplikací. Tyto služby patří:
+Azure poskytuje několik síťových služeb, které podporují ověřování, a vylepšuje možnosti správy hostovaných aplikací. Mezi tyto služby patří následující:
 
-* Azure Virtual Network umožňuje můžete zřizovat a spravovat virtuální privátní sítě (VPN) v Azure také bezpečně je propojíte s místní IT infrastrukturu.
-* Virtuální síť Traffic Manager umožňuje vyrovnávat zatížení příchozího provozu napříč několika hostovanými službami Azure spuštěnými ve stejném datacentru nebo i v různých datacentrech po celém světě.
-* Azure Active Directory (Azure AD) je moderní služba založená na protokolu REST, která poskytuje identitu Správa a řízení přístupu určené pro cloudové aplikace. Používání služby Azure AD pro prostředky aplikace poskytuje snadný způsob ověřování a autorizace uživatelů pro získání přístupu k vaší webové aplikace a služby při povolení funkce ověřování a autorizace promítnout z kódu.
-* Azure Service Bus poskytuje zabezpečené zasílání zpráv a funkci toku dat pro distribuované a hybridní aplikace, jako je komunikace mezi Azure a místní aplikace služeb a aplikací hostovaných, bez nutnosti složité brány firewall a zabezpečení infrastruktury. Pomocí propojovací Service Bus pro prostředky aplikací pro přístup ke službám, které jsou zveřejněné jako koncové body mohou patřit tenantovi (například hostování mimo systém, například v místním prostředí), nebo může být služby poskytované speciálně pro příslušného tenanta (protože specifickým pro tenanta, citlivá data se přenáší prostřednictvím jejich).
+* Azure Virtual Network umožňuje zřizovat a spravovat virtuální privátní sítě (VPN) v Azure a také je bezpečně propojit s místní IT infrastrukturou.
+* Virtual Network Traffic Manager umožňuje vyrovnávat zatížení příchozího provozu napříč několika hostovanými službami Azure bez ohledu na to, jestli běží ve stejném datovém centru nebo napříč různými datacentry po celém světě.
+* Azure Active Directory (Azure AD) je moderní služba založená na REST, která poskytuje funkce pro správu identit a řízení přístupu pro vaše cloudové aplikace. Použití Azure AD pro prostředky aplikací poskytuje snadný způsob, jak ověřovat a autorizovat uživatele, aby měli přístup k vašim webovým aplikacím a službám, a současně umožňuje převzít funkce ověřování a autorizace z vašeho kódu.
+* Azure Service Bus poskytuje zabezpečený přenos zpráv a toků dat pro distribuované a hybridní aplikace, jako je komunikace mezi hostovanými aplikacemi Azure a místními aplikacemi a službami, aniž by bylo potřeba složitou bránu firewall a zabezpečení. infrastruktury. Použití Service Bus Relay pro prostředky aplikace pro přístup ke službám, které jsou vystavené jako koncové body, mohou patřit do tenanta (například hostovaného mimo systém, jako je místní), nebo můžou být služby zřízené speciálně pro tenanta (protože citlivá data specifická pro klienta mezi nimi.
 
 **Zřizování prostředků**
 
-Azure nabízí celou řadu způsobů, jak zřízení nových tenantů pro aplikaci. Pro víceklientské aplikace s velkým množstvím tenantů je obvykle nezbytná k automatizaci tohoto procesu tím, že umožňuje samoobslužné služby zřizování.
+Azure poskytuje několik způsobů, jak pro aplikaci zřídit nové klienty. Pro víceklientské aplikace s velkým počtem klientů je obvykle potřeba automatizovat tento proces povolením samoobslužného zřizování.
 
-* Role pracovního procesu vám umožní zřizování a rušení zřízení na tenanta prostředky (například pokud nového tenanta zaregistruje do služby nebo zruší), shromažďování metrik pro měření použití a správa škálovací po určité plánu nebo v reakci na překročení prahové hodnoty pro výkonu ukazatele. Tento stejný atribut role může také sloužit k odesílání aktualizací a upgradů do řešení.
-* Objekty BLOB Azure, můžete použít ke zřízení výpočetních nebo předem inicializovaná prostředky úložiště pro nové tenanty současně kontejneru zásad úrovně přístupu k ochraně výpočetní služby balíčky, bitové kopie virtuálního pevného disku a další prostředky.
-* Možnosti zřizování prostředků SQL Database pro tenanta zahrnují:
+* Role pracovního procesu umožňují zřídit a zrušit zřízení prostředků klientů (například když se nový tenant zaregistruje nebo zruší), shromažďovat metriky pro měření využití a spravovat škálování podle určitého plánu nebo v reakci na překročení prahových hodnot výkonu klíče. svítiln. Tato stejná role se dá použít taky k odeslání aktualizací a upgradů do řešení.
+* Objekty blob Azure je možné použít ke zřízení výpočetních nebo předem inicializovaných prostředků úložiště pro nové klienty a zároveň poskytovat zásady přístupu na úrovni kontejneru pro ochranu balíčků výpočetních služeb, imagí VHD a dalších prostředků.
+* Mezi možnosti zřízení SQL Database prostředků pro tenanta patří:
   
-  * DDL ve skriptech nebo vložený jako prostředky v rámci sestavení.
-  * SQL Server 2008 R2 balíčky DAC nasazené prostřednictvím kódu programu.
+  * DDL ve skriptech nebo vložených jako prostředky v rámci sestavení.
+  * Balíčky DAC SQL Server 2008 R2 nasazené programově.
   * Kopírování z hlavní referenční databáze.
-  * Pomocí databáze Import a Export zřídit nové databáze ze souboru.
+  * Použití importu a exportu databáze k zřizování nových databází ze souboru.
 
 <!--links-->
 

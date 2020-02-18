@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 5df8ae89c16a453b008afed9ee9f8881a0ac4750
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046419"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425303"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Přidat certifikát SSL v Azure App Service
 
@@ -29,7 +29,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 | Nahrání privátního certifikátu | Pokud už privátní certifikát máte od jiného poskytovatele, můžete ho nahrát. Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
 | Nahrajte veřejný certifikát. | Veřejné certifikáty se nepoužívají k zabezpečení vlastních domén, ale můžete je načíst do kódu, pokud je potřebujete pro přístup ke vzdáleným prostředkům. |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postup při použití tohoto průvodce:
 
@@ -39,7 +39,7 @@ Postup při použití tohoto průvodce:
 ## <a name="private-certificate-requirements"></a>Požadavky na privátní certifikát
 
 > [!NOTE]
-> Azure **Web Apps nepodporuje AES256** a všechny soubory PFX by měly být zašifrované pomocí TrippleDES.
+> Azure **Web Apps nepodporuje AES256** a všechny soubory PFX by měly být zašifrované pomocí TripleDES.
 
 [Bezplatný App Service spravovaný certifikát](#create-a-free-certificate-preview) nebo [certifikát App Service](#import-an-app-service-certificate) již splňuje požadavky App Service. Pokud se rozhodnete odeslat nebo importovat privátní certifikát do App Service, musí váš certifikát splňovat následující požadavky:
 
@@ -369,7 +369,7 @@ Nyní můžete certifikát App Service odstranit. V levém navigačním panelu v
 
 [!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
 
-## <a name="more-resources"></a>Další materiály
+## <a name="more-resources"></a>Další zdroje informací
 
 * [Zabezpečení vlastního názvu DNS pomocí vazby SSL](configure-ssl-bindings.md)
 * [Vynucení HTTPS](configure-ssl-bindings.md#enforce-https)

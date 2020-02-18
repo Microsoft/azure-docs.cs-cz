@@ -8,19 +8,22 @@ ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 5d6b8ce557cb794b3a56ecb3a938a2fe184156ab
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: a6f71cca2c63591d2d26a7d34ced232eabfbc6bb
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680745"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425147"
 ---
-# <a name="switch-api-preference-for-log-alerts"></a>Přepnutí předvolby rozhraní API pro upozornění protokolu
+# <a name="switch-api-preference-for-log-alerts"></a>Přepnout předvolby rozhraní API pro výstrahy protokolu
 
 > [!NOTE]
 > Obsah uvedený pro uživatele, kteří používají jenom veřejný cloud Azure, a **ne** pro Azure Government nebo Azure Čína Cloud.  
 
-Donedávna jste spravovali pravidla upozornění na portálu Microsoft Operations Management Suite. Nové prostředí výstrah bylo integrováno s různými službami v Microsoft Azure včetně Log Analytics a bylo požádáno o [prodloužení vašich pravidel upozornění z portálu OMS do Azure](alerts-extend.md). Pro zajištění minimálního přerušení pro zákazníky ale proces nezměnil programové rozhraní pro své [rozhraní API pro Log Analytics výstrah](api-alerts.md) založené na elementu savedsearch.
+> [!NOTE]
+> Jakmile se uživatel rozhodne přepnout Předvolby na nové [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , není možné se vrátit k používání starší [verze rozhraní api pro výstrahy Log Analytics](api-alerts.md).
+
+Až do poslední doby jste spravovali pravidla výstrahy na portálu Microsoft Operations Management Suite. Nové prostředí výstrah bylo integrováno s různými službami v Microsoft Azure včetně Log Analytics a bylo požádáno o [prodloužení vašich pravidel upozornění z portálu OMS do Azure](alerts-extend.md). Pro zajištění minimálního přerušení pro zákazníky ale proces nezměnil programové rozhraní pro své [rozhraní API pro Log Analytics výstrah](api-alerts.md) založené na elementu savedsearch.
 
 Nyní ale oznamujete Log Analytics upozorňování uživatelů na skutečnou programovou alternativu Azure, [Azure monitor-ScheduledQueryRules rozhraní API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules), které se také odráží v [fakturaci Azure – výstrahy protokolu](alerts-unified-log.md#pricing-and-billing-of-log-alerts). Další informace o tom, jak spravovat výstrahy protokolu pomocí rozhraní API, najdete v tématu [Správa upozornění protokolu pomocí šablony prostředků Azure](alerts-log.md#managing-log-alerts-using-azure-resource-template) a [Správa výstrah protokolu pomocí PowerShellu](alerts-log.md#managing-log-alerts-using-powershell).
 
@@ -50,9 +53,6 @@ Proces přesunutí pravidel výstrah z [rozhraní API pro upozornění starší 
 
 - Změna předvoleb rozhraní API a přístup k vašim pravidlům prostřednictvím nového rozhraní API.
 - Upravený identifikátor URI prostředku pravidla výstrahy obsahující ID použitá v [rozhraní API pro upozornění na starší verzi Log Analytics](api-alerts.md) , nikoli název pravidla výstrahy v této struktuře `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>`. Zobrazovaný název pravidla výstrahy zůstane beze změny.
-
-> [!NOTE]
-> Jakmile se uživatel rozhodne přepnout Předvolby na nové [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , není možné se vrátit k používání starší [verze rozhraní api pro výstrahy Log Analytics](api-alerts.md).
 
 Všichni zákazníci, kteří chtějí dobrovolně přejít na nové [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) a zablokovat využití z [rozhraní API pro upozornění starší verze Log Analytics](api-alerts.md); To lze provést tak, že pomocí volání metody PUT v níže uvedeném rozhraní API přepnete všechna pravidla výstrah přidružená ke konkrétnímu pracovnímu prostoru Log Analytics.
 

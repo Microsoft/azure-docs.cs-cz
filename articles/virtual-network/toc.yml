@@ -39,6 +39,12 @@
       href: virtual-network-disaster-recovery-guidance.md
     - name: Připojení
       items:
+        - name: NAT
+          items:
+            - name: Přehled
+              href: nat-overview.md
+            - name: Prostředek
+              href: nat-gateway-resource.md
         - name: Interoperabilita možností připojení back-endu
           items:
             - name: Úvod a nastavení testu
@@ -111,6 +117,20 @@
           href: virtual-network-nsg-manage-log.md
     - name: Připojení
       items:
+        - name: NAT
+          items:
+            - name: Vytvoření brány NAT – portál
+              href: quickstart-create-nat-gateway-portal.md
+            - name: Vytvoření brány NAT – PowerShell
+              href: quickstart-create-nat-gateway-powershell.md
+            - name: Vytvoření brány NAT – CLI
+              href: quickstart-create-nat-gateway-cli.md
+            - name: Vytvoření a ověření služby NAT Gateway – portál
+              href: tutorial-create-validate-nat-gateway-portal.md
+            - name: Vytvoření a ověření služby NAT Gateway – PowerShell
+              href: tutorial-create-validate-nat-gateway-powershell.md
+            - name: Vytvoření a ověření služby NAT Gateway – CLI
+              href: tutorial-create-validate-nat-gateway-cli.md
         - name: Správa síťových karet
           href: virtual-network-network-interface.md
         - name: Správa virtuální sítě

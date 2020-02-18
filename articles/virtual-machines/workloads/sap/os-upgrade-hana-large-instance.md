@@ -13,20 +13,21 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6341f58791c2fad71a65650e32cff02fb52d78c0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0275d30f2314073af07eced224ade47c49e580c1
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098679"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425372"
 ---
 # <a name="operating-system-upgrade"></a>Upgrade operačního systému
 Tento dokument popisuje podrobnosti o upgradech operačního systému ve velkých instancích HANA.
 
 >[!NOTE]
->Upgrade operačního systému je zodpovědností zákazníků. Microsoft Operations support vám může podávat klíčové oblasti, které vám při upgradu můžou sledovat. Před plánováním upgradu byste se měli obrátit na dodavatele operačního systému.
+>Upgrade operačního systému je zodpovědností zákazníka. Microsoft Operations support vám může v klíčových oblastech sledovat během upgradu. Před plánováním upgradu byste se měli obrátit na dodavatele operačního systému.
 
-V současné době zřizování jednotky HLI operační systém Microsoft Operations Team nainstaluje operační systém. V průběhu času se vyžaduje údržba operačního systému (příklad: Opravy, optimalizace, upgrade atd.) na jednotce HLI
+Během zřizování jednotky HLI nainstaluje Microsoft Operations Team operační systém.
+V průběhu času je nutné zachovat operační systém (například opravy, ladění, upgradování atd.) na HLI jednotce.
 
 Před prováděním podstatných změn v operačním systému (například upgrade SP1 na verzi SP2) musíte kontaktovat tým Microsoft Operations, a to tak, že si spustíte lístek podpory.
 
@@ -49,6 +50,85 @@ V následující části najdete několik běžných známých problémů během
 - U SKU třídy b typu SKU se Software Foundation software (SFS) odebere po upgradu operačního systému. Po upgradu operačního systému je nutné přeinstalovat kompatibilní SFS.
 - Ovladače karet Ethernet (ENIC a FNIC) se vrátily zpátky na starší verzi. Po upgradu musíte přeinstalovat kompatibilní verze ovladačů.
 
-## <a name="next-steps"></a>Další postup
+## <a name="sap-hana-large-instance-type-i-recommended-configuration"></a>SAP HANA velká instance (Type I) doporučená konfigurace
+
+Konfigurace operačního systému se může v průběhu času v důsledku oprav, upgradů systému a změn provedených zákazníky odsílat od doporučeného nastavení. Kromě toho společnost Microsoft identifikuje aktualizace potřebné pro stávající systémy, aby bylo zajištěno, že jsou optimálně nakonfigurované pro dosažení optimálního výkonu a odolnosti. Následující pokyny popisují doporučení, která řeší výkon sítě, stabilitu systému a optimální výkon HANA.
+
+### <a name="compatible-enicfnic-driver-versions"></a>Kompatibilní verze ovladače eNIC/fNIC
+  Aby bylo zajištěno správné fungování sítě a stabilita systému, je doporučeno, aby byly nainstalovány odpovídající verze ovladačů eNIC a fNIC specifické pro operační systém, jak je znázorněno v následující tabulce kompatibility. Servery jsou doručovány zákazníkům s kompatibilními verzemi. Všimněte si, že v některých případech během oprav operačního systému nebo jádra se ovladače můžou vrátit zpátky na výchozí verze ovladačů. Zajistěte, aby na příslušné verzi ovladače běžely operace post-OS/kernel patching.
+       
+      
+  |  Dodavatel operačního systému    |  Verze balíčku operačního systému     |  Ovladač eNIC  |  Ovladač fNIC |
+  |---------------|-------------------------|---------------|--------------|
+  |   SuSE        |  SLES 12 SP2            |   2.3.0.40    |   1.6.0.34   |
+  |   SuSE        |  SLES 12 SP3            |   2.3.0.44    |   1.6.0.36   |
+  |   Red Hat     |  RHEL 7,2               |   2.3.0.39    |   1.6.0.34   |
+ 
+
+### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>Příkazy pro upgrade ovladače a vyčištění starých balíčků ot./min.
+```
+rpm -U driverpackage.rpm
+rpm -e olddriverpackage.rpm
+```
+
+#### <a name="commands-to-confirm"></a>Příkazy k potvrzení
+```
+modinfo enic
+modinfo fnic
+```
+
+### <a name="suse-hlis-grub-update-failure"></a>Selhání aktualizace SuSE HLIs GRUB
+SAP ve velkých instancích Azure HANA (typ I) může být po upgradu v nespouštěcím stavu. Následující postup opravuje tento problém.
+#### <a name="execution-steps"></a>Kroky provedení
+
+
+*   Příkaz EXECUTE `multipath -ll`.
+*   Získejte ID logické jednotky (LUN), jejíž velikost je přibližně 50G, nebo použijte příkaz: `fdisk -l | grep mapper`
+*   Aktualizuje soubor `/etc/default/grub_installdevice` pomocí `/dev/mapper/<LUN ID>`line. Příklad:/dev/Mapper/3600a09803830372f483f495242534a56
+>[!NOTE]
+>ID logické jednotky (LUN) se liší od serveru k serveru.
+
+
+### <a name="disable-edac"></a>Zakázat EDAC 
+   Modul detekce chyb a opravy (EDAC) pomáhá zjišťovat a opravovat chyby paměti. Základní hardware pro SAP HANA ve velkých instancích Azure (Type I) však již provádí stejnou funkci. Stejné funkce, které jsou povolené na úrovni hardwaru a operačního systému (OS), můžou způsobit konflikty a můžou vést k příležitostnému a neplánovanému vypnutí serveru. Proto se doporučuje modul zakázat z operačního systému.
+
+#### <a name="execution-steps"></a>Kroky provedení
+
+* Zkontroluje, jestli je povolený modul EDAC. Pokud se výstup vrátí v níže uvedeném příkazu, znamená to, že je modul povolený. 
+```
+lsmod | grep -i edac 
+```
+* Zakažte moduly připojením následujících řádků k souboru `/etc/modprobe.d/blacklist.conf`
+```
+blacklist sb_edac
+blacklist edac_core
+```
+Aby se změny projevily, je potřeba restartovat počítač. Spusťte příkaz `lsmod` a ověřte, že modul není přítomen ve výstupu.
+
+
+### <a name="kernel-parameters"></a>Parametry jádra
+   Ujistěte se, že se používá správné nastavení pro `transparent_hugepage`, `numa_balancing`, `processor.max_cstate`, `ignore_ce` a `intel_idle.max_cstate`.
+
+* intel_idle. max_cstate = 1
+* procesor. max_cstate = 1
+* transparent_hugepage = nikdy
+* numa_balancing = zakázat
+* MCE = ignore_ce
+
+
+#### <a name="execution-steps"></a>Kroky provedení
+
+* Přidejte tyto parametry do `GRB_CMDLINE_LINUX` řádku v souboru `/etc/default/grub`
+```
+intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
+```
+* Vytvořte nový soubor grub.
+```
+grub2-mkconfig -o /boot/grub2/grub.cfg
+```
+* Restartujte systém.
+
+
+## <a name="next-steps"></a>Další kroky
 - Přečtěte si téma [zálohování a obnovení](hana-overview-high-availability-disaster-recovery.md) pro třídu SKU typu zálohování operačního systému.
 - Přečtěte si [zálohování operačního systému pro položky typu II SKU revize 3](os-backup-type-ii-skus.md) pro třídu SKU typu II.

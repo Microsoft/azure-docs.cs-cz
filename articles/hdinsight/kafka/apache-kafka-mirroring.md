@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 0f444838c87e14fa88f2785030c29915df637cf8
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 45977f52226fac0a3e23455ce9457a721947a8cc
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552198"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425880"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Použití nástroje MirrorMaker k replikaci Apache Kafkach témat pomocí Kafka ve službě HDInsight
 
@@ -92,7 +92,7 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
 
 1. Pro primární cluster přejít na řídicí panel Ambari: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
 1. Vyberte **služby** > **Kafka**. CliSelectck kartu **Konfigurace** .
-1. Do dolní části **šablony Kafka-ENV** přidejte následující konfigurační řádky. Vyberte **Uložit**.
+1. Do dolní části **šablony Kafka-ENV** přidejte následující konfigurační řádky. Vyberte **Save** (Uložit).
 
     ```
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -112,7 +112,7 @@ Nakonfigurujte reklamu protokolu IP, aby se klient mohl připojit pomocí IP adr
 ### <a name="configure-kafka-to-listen-on-all-network-interfaces"></a>Nakonfigurujte Kafka, aby naslouchal na všech síťových rozhraních.
     
 1. V části **služby** > **Kafka**zůstat na kartě **Konfigurace** . V části **Kafka Broker** nastavte vlastnost **listeners** na hodnotu `PLAINTEXT://0.0.0.0:9092`.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 1. Vyberte **restartovat**a **potvrďte restart vše**.
 
 ### <a name="record-broker-ip-addresses-and-zookeeper-addresses-for-primary-cluster"></a>Zaznamenání IP adres zprostředkovatele a adres Zookeeper pro primární cluster.
@@ -305,7 +305,7 @@ Kroky v tomto dokumentu vytvořily clustery v různých skupinách prostředků 
 V tomto dokumentu jste zjistili, jak pomocí [nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) vytvořit repliku clusteru [Apache Kafka](https://kafka.apache.org/) . Pomocí následujících odkazů můžete zjistit další způsoby práce s Kafka:
 
 * [Apache Kafka dokumentaci k nástroje MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) na adrese cwiki.Apache.org.
+* [Osvědčené postupy pro Kafka Mirror maker](https://community.cloudera.com/t5/Community-Articles/Kafka-Mirror-Maker-Best-Practices/ta-p/249269)
 * [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md)
 * [Použití Apache Spark s Apache Kafka v HDInsight](../hdinsight-apache-spark-with-kafka.md)
-* [Použití Apache Storm s Apache Kafka v HDInsight](../hdinsight-apache-storm-with-kafka.md)
 * [Připojení k Apache Kafka prostřednictvím Azure Virtual Network](apache-kafka-connect-vpn-gateway.md)

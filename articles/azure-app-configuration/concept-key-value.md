@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: fbb30b0a290011a5edfb05c1de9b5d4717a5f733
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 1cd13369f443f91782eef1024003e07435a44a45
+ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898707"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77425217"
 ---
 # <a name="keys-and-values"></a>Klíče a hodnoty
 
@@ -25,7 +25,7 @@ Použití konfiguračních dat v rámci aplikačních architektur může určova
 
 Klíče uložené v konfiguraci aplikace rozlišují velká a malá písmena, která jsou založená na kódování Unicode. Klíče *app1* a *app1* se liší v úložišti konfigurace aplikace. Mějte na paměti, že pokud použijete nastavení konfigurace v rámci aplikace, protože některé architektury zpracovávají konfigurační klíče bez rozlišování velkých a malých písmen. Například systém konfigurace ASP.NET Core zpracovává klíče jako řetězce nerozlišující malá a velká písmena. Aby nedocházelo k nepředvídatelnému chování při dotazování na konfiguraci aplikace v rámci aplikace ASP.NET Core, nepoužívejte klíče, které se liší pouze velikostí písmen.
 
-V názvech klíčů zadaných do konfigurace aplikace můžete použít libovolný znak Unicode s výjimkou `*`, `,`a `\`. Tyto znaky jsou vyhrazené. Pokud potřebujete zahrnout vyhrazený znak, musíte ho pomocí `\{Reserved Character}`vytvořit. V páru klíč-hodnota je povolená celková velikost 10 000 znaků. Tento limit zahrnuje všechny znaky v klíči, jeho hodnotu a všechny přidružené volitelné atributy. V rámci tohoto limitu můžete pro klíče mít mnoho úrovní hierarchie.
+V názvech klíčů zadaných do konfigurace aplikace můžete použít libovolný znak Unicode s výjimkou `*`, `,`a `\`. Tyto znaky jsou vyhrazené. Pokud potřebujete zahrnout vyhrazený znak, musíte ho pomocí `\{Reserved Character}`vytvořit. U páru klíč-hodnota je omezení velikosti 10 KB. Tento limit zahrnuje všechny znaky v klíči, jeho hodnotu a všechny přidružené volitelné atributy. V rámci tohoto limitu můžete pro klíče mít mnoho úrovní hierarchie.
 
 ### <a name="design-key-namespaces"></a>Klíčové obory názvů pro návrh
 
@@ -51,7 +51,7 @@ Tady je několik příkladů, jak můžete strukturovat názvy klíčů v hierar
 
 ### <a name="label-keys"></a>Klíče popisků
 
-Hodnoty klíče v konfiguraci aplikace můžou volitelně mít atribut Label. Popisky slouží k odlišení klíčových hodnot se stejným klíčem. Key *app1* *s popisky a* a *B* tvoří dva samostatné klíče v úložišti konfigurace aplikace. Ve výchozím nastavení je popisek pro klíčovou hodnotou prázdný nebo `null`.
+Hodnoty klíče v konfiguraci aplikace můžou volitelně mít atribut Label. Popisky slouží k odlišení klíčových hodnot se stejným klíčem. Key *app1* *s popisky a* a *B* tvoří dva samostatné klíče v úložišti konfigurace aplikace. Ve výchozím nastavení nemá hodnota klíče žádný popisek. Chcete-li explicitně odkazovat na hodnotu klíče bez popisku, použijte `\0` (adresa URL je zakódována jako `%00`).
 
 Label nabízí pohodlný způsob, jak vytvořit varianty klíče. Běžné použití popisků je zadání více prostředí pro stejný klíč:
 
@@ -74,20 +74,16 @@ Jednotlivé hodnoty klíče se jednoznačně identifikují pomocí klíče a pop
 | `key` se vynechá nebo `key=*` | Odpovídá všem klíčům |
 | `key=abc` | Odpovídá přesně názvu klíče **ABC** |
 | `key=abc*` | Odpovídá názvům klíčů, které začínají na **ABC** |
-| `key=*abc` | Odpovídá názvům klíčů, které končí **ABC** |
-| `key=*abc*` | Odpovídá názvům klíčů, které obsahují **ABC** |
 | `key=abc,xyz` | Odpovídá názvům klíčů **ABC** nebo **XYZ**, které jsou omezeny na pět CSV |
 
 Můžete také zahrnout následující vzory popisku:
 
-| Štítek | |
+| Popisek | |
 |---|---|
 | `label` se vynechá nebo `label=*` | Odpovídá jakémukoli popisku, který zahrnuje `null` |
 | `label=%00` | Odpovídá popisku `null` |
 | `label=1.0.0` | Přesně odpovídá popisku **1.0.0** |
 | `label=1.0.*` | Odpovídá popiskům, které začínají na **1,0.** |
-| `label=*.0.0` | Odpovídá jmenovkám, které končí na **. 0,0** |
-| `label=*.0.*` | Odpovídá popiskům, které obsahují **. 0.** |
 | `label=%00,1.0.0` | Odpovídá popiskům `null` nebo **1.0.0**, které jsou omezeny na pět CSV |
 
 ## <a name="values"></a>Hodnoty
