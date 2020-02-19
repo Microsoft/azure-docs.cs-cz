@@ -4,16 +4,16 @@
   items:
     - name: Informace o Terraformu v Azure
       href: terraform-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Instalace a konfigurace Terraformu
-      href: /azure/virtual-machines/linux/terraform-install-configure
+      href: terraform-install-configure.md
       maintainContext: true
     - name: Vytvoření konfigurace Terraformu
       href: terraform-create-configuration.md
     - name: Vytvoření virtuálního počítače s Linuxem
-      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      href: terraform-create-complete-vm.md
       maintainContext: true
 - name: Kurzy
   items:
@@ -35,8 +35,6 @@
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: Infrastruktura
       items:
-        - name: Vytvoření virtuálního počítače Terraform s povolenými spravovanými identitami pro prostředky Azure
-          href: terraform-vm-managed-identities-for-azure-resources.md
         - name: Vytvoření clusteru virtuálních počítačů s využitím modulů Terraformu
           href: terraform-create-vm-cluster-module.md
         - name: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
@@ -61,7 +59,7 @@
               href: terraform-hub-spoke-spoke-network.md
             - name: 6. Ověření možností připojení síťové topologie
               href: terraform-hub-spoke-validation.md
-    - name: Nástroje
+    - name: nástroje
       items:
         - name: Instalace rozšíření Terraform editoru Visual Studio Code
           href: terraform-vscode-extension.md
@@ -69,7 +67,7 @@
           href: terraform-vscode-module-generator.md
         - name: Testování modulů Terraform pomocí Terratestu
           href: terratest-in-terraform-modules.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Šablony konfigurace
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'

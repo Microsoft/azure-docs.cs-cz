@@ -9,12 +9,12 @@ metadata:
   ms.author: tarcher
   ms.topic: landing-page
   ms.date: 10/26/2019
-  ms.openlocfilehash: dbc4ed58b32312023b3248662357777d8567fff9
-  ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+  ms.openlocfilehash: 0e55528ea547954219e9b7c8f7bb4d69897642c8
+  ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/27/2019
-  ms.locfileid: "72969504"
+  ms.lasthandoff: 02/19/2020
+  ms.locfileid: "77467007"
 landingContent:
 - title: Informace o Terraformu v Azure
   linkLists:
@@ -31,7 +31,7 @@ landingContent:
   - linkListType: tutorial
     links:
     - text: Instalace a konfigurace Terraformu
-      url: /azure/virtual-machines/linux/terraform-install-configure?/azure/terraform/toc.json&bc=/azure/bread/toc.json
+      url: terraform-install-configure.md
     - text: Vytvoření konfiguračního souboru Terraformu pro Azure
       url: terraform-create-configuration.md
     - text: Instalace rozšíření Terraform editoru Visual Studio Code
@@ -53,11 +53,9 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Vytvoření virtuálního počítače s Linuxem
-      url: /azure/virtual-machines/linux/terraform-create-complete-vm?/azure/terraform/toc.json&bc=/azure/bread/toc.json
+      url: terraform-create-complete-vm.md
   - linkListType: tutorial
     links:
-    - text: Vytvoření virtuálního počítače Terraform s povolenou službou MSI
-      url: terraform-vm-managed-identities-for-azure-resources.md
     - text: Vytvoření clusteru virtuálních počítačů s využitím modulů Terraformu
       url: terraform-create-vm-cluster-module.md
     - text: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
