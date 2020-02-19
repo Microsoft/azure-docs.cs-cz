@@ -1,41 +1,38 @@
 ---
-title: 'Kurz: použití Preview Azure Firewall Manageru k zabezpečení cloudové sítě pomocí Azure Portal'
-description: V tomto kurzu se naučíte zabezpečit svou cloudovou síť pomocí nástroje Azure Firewall Manager pomocí Azure Portal.
+title: 'Kurz: zabezpečení virtuální sítě WAN pomocí správce Azure Firewall Preview'
+description: V tomto kurzu se naučíte zabezpečit virtuální síť WAN pomocí Azure Firewall Manageru pomocí Azure Portal.
 services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: d2ebfd6003c0bc2b47636be1e38f47e554cc6988
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501908"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443053"
 ---
-# <a name="tutorial-secure-your-cloud-network-with-azure-firewall-manager-preview-using-the-azure-portal"></a>Kurz: zabezpečení cloudové sítě pomocí nástroje Azure Firewall Manager ve verzi Preview pomocí Azure Portal
+# <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Kurz: zabezpečení virtuální sítě WAN pomocí správce Azure Firewall Preview 
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Pomocí služby Azure Firewall Manager Preview můžete vytvořit zabezpečená centra pro zabezpečení síťového provozu, který je určený pro privátní IP adresy, Azure PaaS a Internet. Směrování provozu do brány firewall je automatizované, takže není nutné vytvářet trasy definované uživatelem (udr).
+Pomocí služby Azure Firewall Manager Preview můžete vytvořit zabezpečená virtuální centra pro zabezpečení síťového provozu určeného na privátní IP adresy, Azure PaaS a Internet. Směrování provozu do brány firewall je automatizované, takže není nutné vytvářet trasy definované uživatelem (udr).
 
 ![zabezpečení cloudové sítě](media/secure-cloud-network/secure-cloud-network.png)
 
-## <a name="prerequisites"></a>Předpoklady
+Správce brány firewall taky podporuje architekturu virtuální sítě rozbočovače. Porovnání typů architektury zabezpečeného virtuálního centra a centra virtuálních sítí najdete v tématu [co jsou možnosti architektury Azure firewall Manageru?](vhubs-and-vnets.md)
 
-> [!IMPORTANT]
-> Ukázková verze Azure Firewall Manageru musí být explicitně povolená pomocí příkazu `Register-AzProviderFeature` PowerShellu.
+V tomto kurzu se naučíte:
 
-Z příkazového řádku PowerShellu spusťte následující příkazy:
-
-```azure-powershell
-connect-azaccount
-Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
-```
-Dokončení registrace funkce trvá až 30 minut. Spusťte následující příkaz, který zkontroluje stav registrace:
-
-`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
+> [!div class="checklist"]
+> * Vytvoření virtuální sítě paprsků
+> * Vytvoření zabezpečeného virtuálního rozbočovače
+> * Připojit střed a paprskový virtuální sítě
+> * Vytvoření zásady brány firewall a zabezpečení centra
+> * Směrování provozu do vašeho centra
+> * Testovat bránu firewall
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Vytvoření architektury centra a paprsků
 
@@ -151,7 +148,7 @@ Chcete-li otestovat pravidla brány firewall, budete muset nasadit několik serv
    |Název virtuálního počítače     |**Skok – SRV**|
    |Oblast     |**VYLEPŠENÍ Východní USA)**|
    |Uživatelské jméno správce     |**azureuser**|
-   |Heslo     |**Azure123456!** –|
+   |Heslo     |Zadejte heslo.|
 
 4. V části **pravidla příchozího portu**pro **veřejné příchozí porty**vyberte **Povolit vybrané porty**.
 5. V případě **vyberte příchozí porty**vyberte **RDP (3389)** .

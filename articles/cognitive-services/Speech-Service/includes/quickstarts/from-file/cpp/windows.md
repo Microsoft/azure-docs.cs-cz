@@ -9,14 +9,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
 ms.author: erhopf
-ms.openlocfilehash: 51c9972e73f5e097ea9fe2d54150461e6d5597cd
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: cfe649f56ff57548f6fa711abf67f2925d74a2ea
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77155962"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446208"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 
@@ -37,7 +37,7 @@ Než začnete, nezapomeňte:
 
 1. Ve stejném souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného.
 
-1. Nahraďte řetězec `YourServiceRegion` parametrem "Speech SDK" z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému (například `westus` pro bezplatné zkušební předplatné).
+1. Nahraďte řetězec `YourServiceRegion` **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému (například `westus` pro bezplatné zkušební předplatné).
 
 1. Nahraďte řetězec `whatstheweatherlike.wav` vlastním názvem souboru.
 

@@ -6,14 +6,14 @@ ms.date: 01/27/2020
 ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8f3be4dfb0beeb97558dbda606af7c6bcc50bfa7
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 1a9a85ebc9d883db0415382ecf40de343d300667
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156071"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445412"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
@@ -41,8 +41,8 @@ Předtím, než budete moci inicializovat objekt `IntentRecognizer`, je nutné v
 
 Vložte tento kód do `quickstart.py`. Ujistěte se, že tyto hodnoty aktualizujete:
 
-* Nahraďte `"YourLanguageUnderstandingSubscriptionKey"` klíčem předpovědi LUIS. 
-* Nahraďte `"YourLanguageUnderstandingServiceRegion"` umístěním LUIS. Použít parametr "Speech SDK" z [oblasti](https://aka.ms/speech/sdkregion)
+* Nahraďte `"YourLanguageUnderstandingSubscriptionKey"` klíčem předpovědi LUIS.
+* Nahraďte `"YourLanguageUnderstandingServiceRegion"` umístěním LUIS. Použít **identifikátor oblasti** z [oblasti](https://aka.ms/speech/sdkregion)
 
 >[!TIP]
 > Pokud potřebujete nápovědu k nalezení těchto hodnot, přečtěte si téma [Vytvoření aplikace v Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition).

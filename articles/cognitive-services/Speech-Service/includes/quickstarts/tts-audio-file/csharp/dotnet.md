@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 17e5f35e83f5cb6e8115a9d344f93abf84e5b38a
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: e8ab3cd262876548b8cbfab55dce0cff0cb3132b
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156378"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77446005"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 
@@ -65,8 +65,7 @@ namespace helloworld
 Než budete moct inicializovat objekt `SpeechSynthesizer`, musíte vytvořit konfiguraci, která používá váš klíč předplatného a oblast předplatného. Vložte tento kód do metody `SynthesisToAudioFileAsync()`.
 
 ````C#
-// Replace with your own subscription key and service region (e.g., "westus", use the one of SpeechSDKParameters
-// from here: https://aka.ms/speech/sdkregion).
+// Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
 // The default language is "en-us".
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ````

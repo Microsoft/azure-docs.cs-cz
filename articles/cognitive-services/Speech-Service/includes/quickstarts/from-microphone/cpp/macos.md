@@ -9,14 +9,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: 85f2d671e53592fbe2a543fade43c0bc3e6f47e1
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: eb2032ce9fd6efed4a45aa30b469cb67926f17c9
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156702"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445923"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
@@ -34,7 +34,7 @@ Než začnete:
 
 1. V tomto novém souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného služby Speech.
 
-1. Nahraďte řetězec `YourServiceRegion` parametrem "Speech SDK" z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému (například `westus` pro bezplatné zkušební předplatné).
+1. Nahraďte řetězec `YourServiceRegion` **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému (například `westus` pro bezplatné zkušební předplatné).
 
 > [!NOTE]
 > Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .

@@ -11,7 +11,7 @@ ms.date: 02/17/2020
 ms.author: ambapat
 ms.openlocfilehash: bd70cfb58c9d89f1d454537721e22f36b1fd3d3e
 ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/18/2020
 ms.locfileid: "77429290"

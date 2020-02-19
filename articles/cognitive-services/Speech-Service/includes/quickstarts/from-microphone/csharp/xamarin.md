@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 3f315f29eab107c9e0e145bd25db71a8cb8b2ace
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: ed37e4f5b84431355b63b3d59b0e49b78eaeed86
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156730"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445356"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
@@ -48,13 +48,13 @@ Běžný projekt HelloWorld obsahuje implementace nezávislé na platformě pro 
 1. V obslužné rutině `OnRecognitionButtonClicked` zdrojového souboru Najděte `YourSubscriptionKey`řetězce a nahraďte ho klíčem předplatného.
 
 
-1. V obslužné rutině `OnRecognitionButtonClicked` Najděte `YourServiceregion`řetězce a nahraďte ho parametrem "Speech SDK" z [oblasti](https://aka.ms/speech/sdkregion) přidružené k vašemu předplatnému. (Například pro předplatné bezplatné zkušební verze použijte `westus`.)
+1. V obslužné rutině `OnRecognitionButtonClicked` Najděte řetězec `YourServiceregion`a nahraďte ho **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) , která je přidružená k vašemu předplatnému. (Například pro předplatné bezplatné zkušební verze použijte `westus`.)
 
 1. Dál je potřeba vytvořit [službu Xamarin](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/), která se používá k dotazování na oprávnění mikrofonu z různých projektů platforem, jako je UWP, Android nebo iOS. Chcete-li to provést, přidejte do projektu HelloWorld novou složku s názvem *Services* a vytvořte pod ní C# nový zdrojový soubor. Můžete kliknout pravým tlačítkem na složku *služby* a vybrat **Přidat** > **novou položku** > souboru s **kódem**. Přejmenujte soubor `IMicrophoneService.cs`a do tohoto souboru umístěte veškerý kód z následujícího fragmentu kódu:
 
    [!code-csharp[Quickstart code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/xamarin/helloworld/helloworld/Services/IMicrophoneService.cs)]
 
-#### <a name="androidtabx-android"></a>[Android](#tab/x-android)
+#### <a name="android"></a>[Android](#tab/x-android)
 ## <a name="add-sample-code-for-the-helloworldandroid-project"></a>Přidat vzorový kód pro `helloworld.Android` projekt
 
 Nyní přidejte C# kód, který definuje část aplikace specifickou pro Android.
@@ -75,7 +75,7 @@ Nyní přidejte C# kód, který definuje část aplikace specifickou pro Android
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
    ```
    
-#### <a name="iostabios"></a>[iOS](#tab/ios)
+#### <a name="ios"></a>[iOS](#tab/ios)
 ## <a name="add-sample-code-for-the-helloworldios-project"></a>Přidat vzorový kód pro `helloworld.iOS` projekt
 
 Nyní přidejte C# kód, který definuje část aplikace specifickou pro iOS. V projektu HelloWorld. iOS taky vytvořte konfigurace specifické pro zařízení Apple.
@@ -100,7 +100,7 @@ Nyní přidejte C# kód, který definuje část aplikace specifickou pro iOS. V 
 
 1. Pokud vytváříte počítač s Windows, navažte připojení k zařízení Mac pro sestavování prostřednictvím **nástrojů** > dvojice > iOS **do počítače Mac**. Postupujte podle pokynů průvodce, který poskytuje Visual Studio, a povolte tak připojení k zařízení Mac.
 
-#### <a name="uwptabhelloworlduwp"></a>[PODPORUJÍ](#tab/helloworlduwp)
+#### <a name="uwp"></a>[PODPORUJÍ](#tab/helloworlduwp)
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Přidat vzorový kód pro `helloworld.UWP` projekt
 
 ## <a name="add-sample-code-for-the-helloworlduwp-project"></a>Přidejte vzorový kód pro HelloWorld. Projekt UWP

@@ -18,7 +18,7 @@ ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 30f8111e1d8c9bd76e7b55dd958256f8892b9058
 ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/18/2020
 ms.locfileid: "77442016"

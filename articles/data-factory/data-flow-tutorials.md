@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 02/06/2020
-ms.openlocfilehash: 00b51c14a24b525d98e9634a4f416177364228cb
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
-ms.translationtype: MT
+ms.openlocfilehash: 93b8520c0f65f102c9adf64870b60506d890276d
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069577"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431396"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
@@ -68,6 +68,8 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 [Podmíněná transformace rozdělení](http://youtu.be/W1lQHojhKZw?hd=1)
 
 [Existuje transformace](http://youtu.be/GS8JVgNBMfs?hd=1)
+
+[Dynamická spojení a dynamická vyhledávání](https://youtu.be/CMOPPie9bXM)
 
 ## <a name="source-and-sink"></a>Zdroj a jímka
 

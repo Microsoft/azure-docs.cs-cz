@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: ab5f916b1d323c12d1036dcb9f64516842bb3918
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a95d45d5af0b653c904df39900bfec38a7c644e0
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77156263"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77445348"
 ---
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než začnete, nezapomeňte:
 
@@ -51,8 +51,7 @@ Než začnete, nezapomeňte:
        {
            // Creates an instance of a speech translation config with specified
            // subscription key and service region. Replace with your own subscription key
-           // and service region (e.g., "westus", use the one of SpeechSDKParameters
-           // from here: https://aka.ms/speech/sdkregion).   
+           // and region identifier from here: https://aka.ms/speech/sdkregion
 
            int exitCode = 1;
            SpeechTranslationConfig config = SpeechTranslationConfig.fromSubscription("YourSubscriptionKey",  "YourServiceRegion");
