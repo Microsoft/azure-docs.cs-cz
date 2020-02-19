@@ -4,15 +4,15 @@ description: Popisuje zdroje dat a konektory podporované tabulkami 1200 a vyš�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/20/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4a99bfe8d8235400f9122423aa4592fc6898abc1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: f65d8fa2c2e522c718c637e32defc4c56fca8364
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922288"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461653"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované v Azure Analysis Services
 
@@ -20,12 +20,12 @@ Zdroje dat a konektory zobrazené v průvodci získáním dat nebo importu tabul
 
 ## <a name="azure-data-sources"></a>Zdroje dat Azure
 
-|Zdroj dat  |V paměti  |DirectQuery  |Poznámky |
+|Zdroj dat  |V paměti  |DirectQuery  |Poznámky: |
 |---------|---------|---------|---------|
-|Databáze SQL Azure      |   Ano      |    Ano      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
-|Azure SQL Data Warehouse      |   Ano      |   Ano       |<sup>[2](#azprovider)</sup>|
+|Azure SQL Database      |   Ano      |    Ano      |<sup>[2](#azprovider)</sup>, <sup> [3](#azsqlmanaged)</sup>|
+|Azure synapse Analytics (SQL Data Warehouse)      |   Ano      |   Ano       |<sup>[odst](#azprovider)</sup>|
 |Azure Blob Storage      |   Ano       |    Ne      | <sup>[1](#tab1400a)</sup> |
-|Azure Table Storage     |   Ano       |    Ne      | <sup>[1](#tab1400a)</sup>|
+|Úložiště tabulek v Azure     |   Ano       |    Ne      | <sup>[1](#tab1400a)</sup>|
 |Azure Cosmos DB     |  Ano        |  Ne        |<sup>[1](#tab1400a)</sup> |
 |Azure Data Lake Store Gen1      |   Ano       |    Ne      |<sup>[1](#tab1400a)</sup> |
 |Azure Data Lake Store Gen2       |   Ano       |    Ne      |<sup>[1](#tab1400a)</sup>, <sup> [5](#gen2)</sup>|
@@ -40,37 +40,37 @@ je podporována <a name="azsqlmanaged">3</a> -Azure SQL Database spravovaná ins
 <a name="databricks">4</a> – Azure Databricks používání konektoru Sparku se v tuto chvíli nepodporuje.   
 <a name="gen2">5</a> -adls Gen2 konektor se momentálně nepodporuje, ale konektor Azure Blob Storage můžete použít se zdrojem dat adls Gen2.   
 
-## <a name="other-data-sources"></a>Other data sources
+## <a name="other-data-sources"></a>Další zdroje dat
 
-|Zdroj dat | V paměti | DirectQuery |Poznámky   |
+|Zdroj dat | V paměti | DirectQuery |Poznámky:   |
 |  --- | --- | --- | --- |
-|Databáze aplikace Access     |  Ano | Ne |  |
-|Adresář služby Active Directory     |  Ano | Ne | <sup>[6](#tab1400b)</sup>  |
-|Analysis Services     |  Ano | Ne |  |
+|Přístup k databázi     |  Ano | Ne |  |
+|Active Directory     |  Ano | Ne | <sup>[6](#tab1400b)</sup>  |
+|Služba Analysis Services     |  Ano | Ne |  |
 |Systém Analytics Platform System     |  Ano | Ne |  |
 |Soubor CSV  |Ano | Ne |  |
 |Dynamics 365     |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Excelový sešit     |  Ano | Ne |  |
-|Výměna      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
+|Exchange      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Složka      |Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |IBM Informix  |Ano | Ne |  |
 |Dokument JSON      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Řádky z binárního souboru      | Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|Databáze MySQL     | Ano | Ne |  |
-|Datový kanál OData      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
+|MySQL Database     | Ano | Ne |  |
+|Kanál OData      |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Dotaz ODBC     | Ano | Ne |  |
 |OLE DB     |   Ano | Ne |  |
 |Oracle  | Ano  |Ano  | <sup>[9](#oracle)</sup> |
-|Zprostředkovatel   | Ano | Ne | <sup>[6](#tab1400b)</sup> |
+|Databáze PostgreSQL   | Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Objekty Salesforce|  Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |Sestavy Salesforce |Ano | Ne | <sup>[6](#tab1400b)</sup> |
 |SAP HANA     |  Ano | Ne |  |
 |SAP Business Warehouse    |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
-|Sharepointový seznam      |   Ano | Ne | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
-|SQL Server |Ano   | Ano  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
+|SharePointový seznam      |   Ano | Ne | <sup>[6](#tab1400b)</sup>, <sup> [11](#filesSP)</sup> |
+|Server SQL |Ano   | Ano  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> | 
 |SQL Server Data Warehouse |Ano   | Ano  | <sup>[7](#sqlim)</sup>, <sup> [8](#instgw)</sup> |
 |Databáze Sybase     |  Ano | Ne |  |
-|Teradata | Ano  | Ano  | <sup>[10](#teradata)</sup> |
+|Teradata | Ano  | Ano  | <sup>[10pruhový](#teradata)</sup> |
 |Soubor TXT  |Ano | Ne |  |
 |Tabulka XML    |  Ano | Ne | <sup>[6](#tab1400b)</sup> |
 | | | |
@@ -120,7 +120,7 @@ Pro cloudové zdroje dat:
 
 ## <a name="oauth-credentials"></a>Přihlašovací údaje OAuth
 
-Pro tabelární modely na úrovni kompatibility 1400 a vyšší s použitím režimu v paměti podporují Azure SQL Database, Azure SQL Data Warehouse, Dynamics 365 a SharePointový seznam přihlašovací údaje OAuth. Azure Analysis Services spravuje aktualizace tokenu pro zdroje dat OAuth, aby nedocházelo k vypršení časových limitů pro dlouhotrvající operace aktualizace. Pokud chcete generovat platné tokeny, nastavte přihlašovací údaje pomocí SSMS.
+Pro tabelární modely na úrovni kompatibility 1400 a vyšší s použitím režimu v paměti, Azure SQL Database, Azure synapse Analytics (SQL Data Warehouse), Dynamics 365 a SharePointového seznamu podporují přihlašovací údaje OAuth. Azure Analysis Services spravuje aktualizace tokenu pro zdroje dat OAuth, aby nedocházelo k vypršení časových limitů pro dlouhotrvající operace aktualizace. Pokud chcete generovat platné tokeny, nastavte přihlašovací údaje pomocí SSMS.
 
 Režim přímého dotazu není u přihlašovacích údajů OAuth podporován.
 

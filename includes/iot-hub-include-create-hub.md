@@ -5,15 +5,15 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/14/2020
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 775e9fc737798a0e5517f9eb3314c71b14c5be07
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
-ms.translationtype: HT
+ms.openlocfilehash: cc53f7ae6eb6254eaa05bf643ecfa0188650df95
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77372332"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461853"
 ---
 Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://portal.azure.com).
 
@@ -29,7 +29,7 @@ Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://p
 
    - **Skupina prostředků**: vyberte skupinu prostředků nebo vytvořte novou. Pokud chcete vytvořit nový, vyberte **vytvořit novou** a vyplňte název, který chcete použít. Pokud chcete použít existující skupinu prostředků, vyberte tuto skupinu prostředků. Další informace najdete v tématu [Správa skupin prostředků Azure Resource Manager](../articles/azure-resource-manager/management/manage-resource-groups-portal.md).
 
-   - **Oblast**: Vyberte oblast, ve které chcete umístit rozbočovač. Vyberte umístění, které je pro vás nejblíže.
+   - **Oblast**: Vyberte oblast, ve které chcete umístit rozbočovač. Vyberte umístění, které je pro vás nejblíže. Některé funkce, například [datové proudy zařízení IoT Hub](../articles/iot-hub/iot-hub-device-streams-overview.md), jsou k dispozici pouze v konkrétních oblastech. U těchto omezených funkcí je nutné vybrat jednu z podporovaných oblastí.
 
    - **IoT Hub název**: zadejte název vašeho centra. Tento název musí být globálně jedinečný. Pokud je zadaný název platný, zobrazí se zelený symbol zaškrtnutí.
 
@@ -41,9 +41,11 @@ Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://p
 
    ![Nastavení velikosti a měřítka pro nové centrum pomocí Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-screen-size-scale.png)
 
-    Tato obrazovka vám umožní nastavit následující hodnoty:
+   Tady můžete přijmout výchozí nastavení. V případě potřeby můžete změnit libovolné z následujících polí: 
 
-    - **Úroveň cen a škálování**: vaše vybraná úroveň. Můžete si vybrat z několika vrstev v závislosti na tom, kolik funkcí potřebujete, a kolik zpráv odesíláte prostřednictvím řešení za den. Úroveň Free je určena pro testování a vyhodnocení. Umožňuje připojit zařízení 500 k rozbočovači a až 8 000 zpráv za den. Každé předplatné Azure může vytvořit jednu službu IoT Hub v bezplatné úrovni.
+    - **Úroveň cen a škálování**: vaše vybraná úroveň. Můžete si vybrat z několika vrstev v závislosti na tom, kolik funkcí potřebujete, a kolik zpráv odesíláte prostřednictvím řešení za den. Úroveň Free je určena pro testování a vyhodnocení. Umožňuje připojit zařízení 500 k rozbočovači a až 8 000 zpráv za den. Každé předplatné Azure může vytvořit jednu službu IoT Hub v bezplatné úrovni. 
+
+      Pokud pracujete s rychlým startem IoT Hub datových proudů zařízení, vyberte úroveň Free.
 
     - **IoT Hub jednotky**: počet zpráv povolených na jednotku za den závisí na cenové úrovni vašeho centra. Pokud třeba chcete, aby centrum podporovalo příchozí zprávy 700 000, zvolíte dvě jednotky úrovně S1.
     Podrobnosti o dalších možnostech vrstev najdete v tématu [Volba správné IoT Hub úrovně](../articles/iot-hub/iot-hub-scaling.md).
@@ -52,14 +54,14 @@ Tato část popisuje, jak vytvořit centrum IoT pomocí [Azure Portal](https://p
 
     - **Rozšířená nastavení** > **oddílech typu zařízení-Cloud**: Tato vlastnost má vztah ke zprávám typu zařízení-Cloud na počet souběžných čtenářů zpráv. Většina Center potřebuje jenom čtyři oddíly.
 
-1. Pro tento článek přijměte výchozí možnosti a potom vyberte **Další: značky** , které chcete přejít na další obrazovku.
+1.  Vyberte **Další: značky** a pokračujte na další obrazovku.
 
     Značky jsou páry název-hodnota. Stejnou značku můžete přiřadit více prostředkům a skupinám prostředků pro kategorizaci prostředků a konsolidaci fakturace. Další informace najdete v tématu [použití značek k uspořádání prostředků Azure](../articles/azure-resource-manager/management/tag-resources.md).
 
-   ![Nastavení velikosti a měřítka pro nové centrum pomocí Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
+    ![Přiřaďte značky pro centrum pomocí Azure Portal](./media/iot-hub-include-create-hub/iot-hub-create-tabs.png)
 
-    Vyberte **Další: zkontrolovat + vytvořit** a zkontrolujte své volby. Na této obrazovce vidíte něco podobného.
+1.  Vyberte **Další: zkontrolovat + vytvořit** a zkontrolujte své volby. Na této obrazovce vidíte něco podobného, ale s hodnotami, které jste vybrali při vytváření centra. 
 
-   ![Přečtěte si informace o vytvoření nového centra.](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
+    ![Přečtěte si informace o vytvoření nového centra.](./media/iot-hub-include-create-hub/iot-hub-create-review.png)
 
-1. Vyberte **vytvořit** a vytvořte nové centrum. Vytvoření centra může trvat několik minut.
+1.  Vyberte **vytvořit** a vytvořte nové centrum. Vytvoření centra může trvat několik minut.

@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 5c6173971ac5272c2c2d769551fc9caf3dfa2573
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385792"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462237"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy po spuštění cloudové služby
 Tento článek popisuje několik příkladů běžných úloh po spuštění, které můžete chtít provést ve své cloudové službě. Úlohy po spuštění můžete použít k provádění operací před spuštěním role. Operace, které můžete chtít provést, zahrnují instalaci komponenty, registraci komponent modelu COM, nastavení klíčů registru nebo spuštění dlouhotrvajícího procesu. 
@@ -67,7 +67,7 @@ Příkaz "Appcmd. exe" vrácený funkcí *Appcmd. exe* je uveden v souboru WinEr
 ### <a name="example-of-managing-the-error-level"></a>Příklad správy úrovně chyby
 Tento příklad přidá kompresní oddíl a položku komprese pro JSON do souboru *Web. config* s zpracováním a protokolováním chyb.
 
-Zde jsou uvedeny relevantní oddíly souboru [ServiceDefinition.csdef] , které zahrnují nastavení atributu [ExecutionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) na `elevated` pro poskytnutí oprávnění *Appcmd. exe* pro změnu nastavení v souboru *Web. config* :
+Zde jsou uvedeny relevantní oddíly souboru [ServiceDefinition. csdef] , které zahrnují nastavení atributu [ExecutionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) na `elevated` pro poskytnutí oprávnění *Appcmd. exe* pro změnu nastavení v souboru *Web. config* :
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -90,7 +90,7 @@ REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. Th
 REM   batch file were executed twice. This can occur and must be accounted for in an Azure startup
 REM   task. To handle this situation, set the ERRORLEVEL to zero by using the Verify command. The Verify
 REM   command will safely set the ERRORLEVEL to zero.
-IF %ERRORLEVEL% EQU 183 DO VERIFY > NUL
+IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 
 REM   If the ERRORLEVEL is not zero at this point, some other error occurred.
 IF %ERRORLEVEL% NEQ 0 (
@@ -119,13 +119,13 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>Přidat pravidla brány firewall
-V Azure existují efektivní dvě brány firewall. První brána firewall řídí připojení mezi virtuálním počítačem a vnějším světem. Tato brána firewall je řízena elementem [Koncové body] v souboru [ServiceDefinition.csdef] .
+V Azure existují efektivní dvě brány firewall. První brána firewall řídí připojení mezi virtuálním počítačem a vnějším světem. Tato brána firewall je řízena elementem [Bod] v souboru [ServiceDefinition. csdef] .
 
 Druhá brána firewall řídí připojení mezi virtuálním počítačem a procesy v rámci tohoto virtuálního počítače. Tuto bránu firewall lze ovládat pomocí `netsh advfirewall firewall` nástroje příkazového řádku.
 
 Azure vytvoří pravidla brány firewall pro procesy spuštěné v rámci vašich rolí. Když třeba spustíte službu nebo program, Azure automaticky vytvoří potřebná pravidla firewallu, která této službě umožní komunikovat s internetem. Pokud ale vytvoříte službu, kterou spustí proces mimo vaši roli (třeba službu COM+ nebo plánovanou úlohu Windows), musíte ručně vytvořit pravidlo brány firewall, které umožní přístup k této službě. Tato pravidla brány firewall lze vytvořit pomocí úlohy po spuštění.
 
-Úloha po spuštění, která vytvoří pravidlo brány firewall, musí mít [ExecutionContext][úkol] se **zvýšenými oprávněními**. Přidejte následující úlohu po spuštění do souboru [ServiceDefinition.csdef] .
+Úloha po spuštění, která vytvoří pravidlo brány firewall, musí mít [ExecutionContext][úkol] se **zvýšenými oprávněními**. Přidejte následující úlohu po spuštění do souboru [ServiceDefinition. csdef] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -155,7 +155,7 @@ EXIT /B %errorlevel%
 
 Chcete-li odemknout část **IPSecurity** souboru **ApplicationHost. config** , vytvořte soubor příkazů, který se spustí při spuštění role. Vytvořte složku na kořenové úrovni webové role s názvem **Startup** a v rámci této složky vytvořte dávkový soubor s názvem **Startup. cmd**. Přidejte tento soubor do projektu sady Visual Studio a nastavte vlastnosti na **Kopírovat vždy** , abyste měli jistotu, že je zahrnutý do balíčku.
 
-Přidejte následující úlohu po spuštění do souboru [ServiceDefinition.csdef] .
+Přidejte následující úlohu po spuštění do souboru [ServiceDefinition. csdef] .
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -213,7 +213,7 @@ Tato ukázková konfigurace **odepírá** všem IP adresám přístup k serveru 
 ```
 
 ## <a name="create-a-powershell-startup-task"></a>Vytvoření spouštěcí úlohy PowerShellu
-Skripty prostředí Windows PowerShell nelze volat přímo ze souboru [ServiceDefinition.csdef] , ale mohou být vyvolány v rámci spouštěcího dávkového souboru.
+Skripty prostředí Windows PowerShell nelze volat přímo ze souboru [ServiceDefinition. csdef] , ale mohou být vyvolány v rámci spouštěcího dávkového souboru.
 
 PowerShell (ve výchozím nastavení) nespouští nepodepsané skripty. Pokud váš skript nepodepisujete, budete muset nakonfigurovat PowerShell tak, aby spouštěl nepodepsané skripty. Aby bylo možné spouštět nepodepsané skripty, musí být **ExecutionPolicy** nastaven na **neomezený**. Používané nastavení **ExecutionPolicy** je založené na verzi Windows PowerShellu.
 
@@ -244,7 +244,7 @@ EXIT /B %errorlevel%
 ## <a name="create-files-in-local-storage-from-a-startup-task"></a>Vytvoření souborů v místním úložišti z úlohy po spuštění
 Prostředek místního úložiště můžete použít k ukládání souborů vytvořených spouštěcí úlohou, ke kterým později přistupovala vaše aplikace.
 
-Chcete-li vytvořit prostředek místního úložiště, přidejte do souboru [ServiceDefinition.csdef] oddíl [LocalResources] a přidejte do něj podřízený element [localStorage] . Poskytněte místnímu prostředku úložiště jedinečný název a odpovídající velikost spouštěcí úlohy.
+Chcete-li vytvořit prostředek místního úložiště, přidejte do souboru [ServiceDefinition. csdef] oddíl [LocalResources] a přidejte do něj podřízený element [localStorage] . Poskytněte místnímu prostředku úložiště jedinečný název a odpovídající velikost spouštěcí úlohy.
 
 Pokud chcete použít prostředek místního úložiště v úloze po spuštění, musíte vytvořit proměnnou prostředí, která bude odkazovat na umístění prostředku místního úložiště. Pak bude spouštěcí úkol a aplikace moci číst a zapisovat soubory do místního prostředku úložiště.
 
@@ -298,7 +298,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 ## <a name="run-in-the-emulator-or-cloud"></a>Spuštění v emulátoru nebo v cloudu
 Můžete mít spouštěcí úlohu, pokud je v cloudu v porovnání s tím, kdy se nachází v emulátoru služby COMPUTE, provádět různé kroky. Například můžete chtít použít novou kopii dat SQL pouze v případě, že je spuštěna v emulátoru. Nebo možná budete chtít provést některé optimalizace výkonu pro Cloud, které nemusíte dělat při spuštění v emulátoru.
 
-Tato možnost provádění různých akcí s emulátorem výpočtů a cloudem je možné dosáhnout vytvořením proměnné prostředí v souboru [ServiceDefinition.csdef] . Pak otestujete proměnnou prostředí pro hodnotu v úloze po spuštění.
+Tato možnost provádění různých akcí s emulátorem výpočtů a cloudem je možné dosáhnout vytvořením proměnné prostředí v souboru [ServiceDefinition. csdef] . Pak otestujete proměnnou prostředí pro hodnotu v úloze po spuštění.
 
 Chcete-li vytvořit proměnnou prostředí, přidejte [Variabilní]/elementu [RoleInstanceValue] a vytvořte hodnotu XPath `/RoleEnvironment/Deployment/@emulated`. Hodnota proměnné prostředí **% ComputeEmulatorRunning%** je `true` při spuštění na emulátoru služby compute a `false` při spuštění v cloudu.
 
@@ -395,7 +395,7 @@ ServiceDefinition. cmd:
 </Startup>
 ```
 
-**logwrap.cmd:**
+**logwrap. cmd:**
 
 ```cmd
 @ECHO OFF
@@ -429,7 +429,7 @@ IF %ERRORLEVEL% EQU 0 (
 )
 ```
 
-**Startup2.cmd:**
+**Startup2. cmd:**
 
 ```cmd
 @ECHO OFF
@@ -500,7 +500,7 @@ Přečtěte si další informace o práci s [úkoly](cloud-services-startup-task
 
 [Vytvořte a nasaďte](cloud-services-how-to-create-deploy-portal.md) balíček cloudové služby.
 
-[ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
+[ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
 [Úkol]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
@@ -508,7 +508,7 @@ Přečtěte si další informace o práci s [úkoly](cloud-services-startup-task
 [Variabilní]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Koncové body]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[Bod]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue

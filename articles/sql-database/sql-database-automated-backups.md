@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: f460bc3e4809b8a1cbabe1161c888255a7a484db
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 16ee8c1e271f0aa3e6565322f9a4a422dd90b8b8
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157495"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461764"
 ---
 # <a name="automated-backups"></a>Automatizované zálohy
 
@@ -42,7 +42,7 @@ Tyto zálohy můžete použít k těmto akcím:
 
 Některé z těchto operací můžete vyzkoušet v následujících příkladech:
 
-| | Azure Portal | Azure Powershell |
+| | Azure Portal | Azure PowerShell |
 |---|---|---|
 | Změna uchovávání záloh | [Izolovaná databáze](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [Spravovaná instance](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [Izolovaná databáze](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | Změna dlouhodobého uchovávání záloh | [Samostatná databáze](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Izolovaná databáze](sql-database-long-term-backup-retention-configure.md)<br/>Spravovaná instance – není k dispozici  |
@@ -51,7 +51,7 @@ Některé z těchto operací můžete vyzkoušet v následujících příkladech
 | Obnovení databáze z Azure Blob Storage | Izolovaná databáze – není k dispozici <br/>Spravovaná instance – není k dispozici  | Izolovaná databáze – není k dispozici <br/>[Spravovaná instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 
-## <a name="backup-frequency"></a>Frekvence zálohování
+## <a name="backup-frequency"></a>Četnost zálohování
 
 ### <a name="point-in-time-restore"></a>Obnovení k určitému bodu v čase
 
@@ -81,10 +81,14 @@ Zálohy, které jsou starší než doba uchovávání, se automaticky vyprázdn�
 
 Azure SQL Database vypočítá celkové úložiště záloh v rámci uchování jako kumulativní hodnotu. Každou hodinu se tato hodnota oznamuje fakturačnímu kanálu Azure, který zodpovídá za agregaci tohoto hodinového využití za účelem výpočtu spotřeby na konci každého měsíce. Po vyřazení databáze se spotřeba sníží jako stáří zálohování. Jakmile budou zálohy starší než doba uchovávání, fakturace se zastaví. 
 
+   > [!IMPORTANT]
+   > Zálohy databáze se uchovávají po určenou dobu uchování, a to i v případě, že databáze byla vyřazena. Při vyřazování a opětovném vytváření databáze se často můžou ušetřit náklady na úložiště a výpočetní výkon, což může zvýšit náklady na úložiště záloh, protože uchováváme zálohu pro zadanou dobu uchování (což je 7 dní) pro každou vyřazenou databázi, pokaždé, když se vynechá. 
 
-### <a name="monitoring-consumption"></a>Monitorování spotřeby
 
-Každý typ zálohy (úplný, rozdíl a protokol) je hlášen v okně monitorování databáze jako samostatná metrika. Následující diagram ukazuje, jak monitorovat spotřebu úložiště záloh.  
+
+### <a name="monitor-consumption"></a>Monitorovat spotřebu
+
+Každý typ zálohy (úplný, rozdíl a protokol) je hlášen v okně monitorování databáze jako samostatná metrika. Následující diagram ukazuje, jak monitorovat spotřebu úložiště záloh pro jednu databázi. Tato funkce není pro spravované instance aktuálně k dispozici.
 
 ![Monitorovat spotřebu zálohy databáze v okně monitorování databáze Azure Portal](media/sql-database-automated-backup/backup-metrics.png)
 
@@ -105,6 +109,7 @@ Nadměrná spotřeba úložiště záloh bude záviset na zatížení a velikost
 
 ## <a name="storage-costs"></a>Cena za uložení
 
+Cena za úložiště se liší v případě, že používáte model DTU nebo model vCore. 
 
 ### <a name="dtu-model"></a>Model DTU
 
@@ -120,11 +125,14 @@ Předpokládejme, že databáze shromáždila 744 GB úložiště zálohování 
 
 Teď je to složitější příklad. Předpokládejme, že se v databázi zakázalo zvýšení na 14 dní uprostřed měsíce a tato (hypoteticky) má za následek celkové úložiště zálohování od zdvojnásobení až 1488 GB. SQL DB by nahlásilo 1 GB využití v hodinách 1-372 a pak vykazovat využití jako 2 GB po dobu 373-744. Tato částka se agreguje jako finální faktura za 1116 GB/měsíc. 
 
-Pomocí analýzy nákladů na předplatné Azure můžete zjistit aktuální výdaje na úložiště záloh.
+### <a name="monitor-costs"></a>Sledovat náklady
+
+Pokud chcete pochopit náklady na úložiště zálohování, v Azure Portal klikněte na **cost management + fakturace** , vyberte **cost management**a pak vyberte **Analýza nákladů**. Vyberte požadované předplatné jako **obor**a potom vyfiltrujte časové období a službu, které vás zajímají. 
+
+Přidejte filtr pro **název služby**a pak v rozevíracím seznamu vyberte **SQL Database** . Filtr **podkategorie měřiče** použijte k výběru čítače fakturace pro vaši službu. Pro izolovanou databázi nebo elastický fond vyberte **úložiště záloh Pitr (Single/elastický fond**). V případě spravované instance vyberte možnost **mi Pitr úložiště zálohování**. **Úložiště** a podkategorie **výpočtů** můžou zajímat i v případě, že nejsou spojené s náklady na úložiště zálohování. 
 
 ![Analýza nákladů na úložiště zálohování](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
 
-Pokud chcete například porozumět nákladům na úložiště zálohování pro spravovanou instanci, přejděte prosím do svého předplatného v Azure Portal a otevřete okno Analýza nákladů. Vyberte podkategorii měřičů **Pitr Backup** , abyste viděli aktuální náklady na zálohování a prognózu nákladů. Můžete také zahrnout další podkategorie měřičů, jako je například **Managed instance pro obecné účely – úložiště** nebo **spravovaná instance pro obecné účely – COMPUTE Gen5** pro porovnání nákladů na úložiště zálohování s jinými kategoriemi nákladů.
 
 ## <a name="backup-retention"></a>Uchování záloh
 
@@ -169,13 +177,13 @@ Výchozí dobu uchovávání záloh PITR můžete změnit pomocí Azure Portal, 
 
 Pokud chcete změnit dobu uchovávání záloh PITR pomocí Azure Portal, přejděte na objekt serveru, jehož doba uchovávání dat chcete změnit na portálu, a pak vyberte vhodnou možnost podle toho, který objekt serveru upravujete.
 
-#### <a name="single-database--elastic-poolstabsingle-database"></a>[Elastické fondy & jedné databáze](#tab/single-database)
+#### <a name="single-database--elastic-pools"></a>[Elastické fondy & jedné databáze](#tab/single-database)
 
 Změna uchovávání PITR zálohování pro jednu databázi Azure SQL se provádí na úrovni serveru. Změny provedené na úrovni serveru se vztahují na databáze na tomto serveru. Chcete-li změnit PITR pro Azure SQL Database Server z Azure Portal, přejděte na okno Přehled serveru, klikněte na možnost spravovat zálohy v navigační nabídce a pak na navigačním panelu klikněte na možnost konfigurace uchovávání.
 
 ![Změnit Azure Portal PITR](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instancetabmanaged-instance"></a>[Spravovaná instance](#tab/managed-instance)
+#### <a name="managed-instance"></a>[Spravovaná instance](#tab/managed-instance)
 
 Změna uchovávání záloh PITR pro SQL Database spravovanou instanci se provádí na úrovni jednotlivých databází. Chcete-li změnit uchovávání záloh PITR pro databázi instance z Azure Portal, přejděte do okna Přehled individuální databáze a pak klikněte na možnost konfigurace uchovávání záloh na navigačním panelu.
 

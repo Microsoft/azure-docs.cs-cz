@@ -4,15 +4,15 @@ description: Naučte se, jak vytvořit instanční objekt pro automatizaci Azure
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/18/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c599abbf274eb4014323ec217c6d54d3c397b159
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251664"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461670"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace s využitím instančních objektů
 
@@ -20,16 +20,18 @@ Instanční objekty jsou prostředky aplikací služby Azure Active Directory, k
 
 V Analysis Services se instanční objekty používají s Azure Automation, bezobslužným režimem PowerShellu, vlastními klientskými aplikacemi a webovými aplikacemi pro automatizaci běžných úloh. Například zřizování serverů, nasazování modelů, aktualizace dat, horizontální navýšení nebo snížení kapacity a pozastavení/obnovení je možné automatizovat pomocí instančních objektů. Oprávnění se přiřazují instančním objektům prostřednictvím členství v rolích, podobně jako běžné účty hlavního názvu uživatele (UPN) služby Azure AD.
 
+Analysis Services taky podporuje operace prováděné spravovanými identitami pomocí instančních objektů. Další informace najdete v tématu [spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md) a [služby Azure, které podporují ověřování Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-analysis-services).  
+
 ## <a name="create-service-principals"></a>Vytvoření instančních objektů
  
-Instanční objekty se dají vytvořit v Azure Portal nebo pomocí PowerShellu. Další informace naleznete v tématu:
+Instanční objekty se dají vytvořit v Azure Portal nebo pomocí PowerShellu. Další informace naleznete v tématu:
 
 [Vytvoření instančního objektu – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Vytvoření instančního objektu – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Ukládat přihlašovací údaje a prostředky certifikátů v Azure Automation
 
-Přihlašovací údaje instančního objektu a certifikáty je možné bezpečně ukládat v Azure Automation pro operace sady Runbook. Další informace naleznete v tématu:
+Přihlašovací údaje instančního objektu a certifikáty je možné bezpečně ukládat v Azure Automation pro operace sady Runbook. Další informace naleznete v tématu:
 
 [Prostředky přihlašovacích údajů v Azure Automation](../automation/automation-credentials.md)   
 [Prostředky certifikátů ve službě Azure Automation](../automation/automation-certificates.md)

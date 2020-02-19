@@ -7,7 +7,6 @@ documentationcenter: na
 author: mlottner
 manager: rkarlin
 editor: ''
-ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
 ms.topic: conceptual
@@ -15,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 6a4fc842113218294b3e2ab449e27cfa94c5cfd3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1c85f0205f568f065a7959a9b33890b2117e45a0
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766525"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462220"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Představujeme Azure Security Center pro IoT
 
 Sjednocení správy zabezpečení a umožnění komplexní detekce a analýzy hrozeb v rámci hybridních cloudových úloh a řešení Azure IoT. 
 
-## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>Zabezpečte celé řešení IoT ze zařízení IoT do cloudu Azure.
+## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>Zabezpečení celého řešení IoT ze zařízení IoT do cloudu Azure
 
 Můžete si vybrat z našeho bezproblémového řešení bez agentů nebo využít komplexní zabezpečení založené na agentech, Azure Security Center pro IoT zajišťuje prevenci a analýzu hrozeb pro každé zařízení, IoT Edge a IoT Hub v rámci vašich prostředků IoT.
 
@@ -38,7 +37,7 @@ Azure Security Center pro IoT zjednodušuje ochranu hybridních úloh tím, že 
 
 ### <a name="unified-visibility-and-control"></a>Sjednocená viditelnost a řízení
 
-Získejte jednotný přehled o zabezpečení všech místních i cloudových úloh včetně vašeho řešení Azure IoT. Připojte nová zařízení a pomocí zásad zabezpečení pro vaše úlohy (listová zařízení, zařízení Microsoft Edge IoT Hub) zajistěte dodržování standardů zabezpečení a vylepšení stav zabezpečení. 
+Získejte jednotný přehled o zabezpečení napříč všemi vašimi místními i Cloud úlohami, včetně vašeho řešení Azure IoT. Připojte nová zařízení a pomocí zásad zabezpečení pro vaše úlohy (listová zařízení, zařízení Microsoft Edge IoT Hub) zajistěte dodržování standardů zabezpečení a vylepšení stav zabezpečení. 
 
 ### <a name="adaptive-threat-prevention"></a>Prevence adaptivních hrozeb
 
@@ -46,7 +45,7 @@ Používejte Azure Security Center pro IoT k nepřetržitému monitorování zab
 
 ### <a name="intelligent-threat-detection-and-response"></a>Inteligentní detekce hrozeb a reakce
 
-Využijte pokročilou analýzu a Microsoft Intelligent Security Graph k získání hraničních zařízení, která vám pomohou vyvíjejí se počítačové útoky. Integrované analýzy chování a strojové učení identifikují útoky a zneužití funkce Zero Day. Monitorujte ve svých řešeních IoT příchozí útoky a aktivity po porušení zabezpečení. Zjednodušte zkoumání a nápravu zařízení pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
+Využijte pokročilou analýzu a Microsoft Intelligent Security Graph k získání hraničních zařízení, která vám pomohou vyvíjejí se počítačové útoky. Integrované analýzy chování a strojové učení identifikují útoky a zneužití funkce Zero Day. Monitorujte řešení IoT pro příchozí útoky a činnost po porušení zabezpečení. Zjednodušte zkoumání a nápravu zařízení pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
 
 ## <a name="next-steps"></a>Další kroky
 
