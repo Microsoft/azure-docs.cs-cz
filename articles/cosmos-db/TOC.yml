@@ -176,6 +176,9 @@
         - name: Klíčová slova
           displayName: 'keywords, distinct, between, in, top'
           href: sql-query-keywords.md
+        - name: Konstanty
+          displayName: 'object, number,array'
+          href: sql-query-constants.md
         - name: Operátory
           displayName: 'operators, operator, logical operators, equality, comparison'
           href: sql-query-operators.md
@@ -582,8 +585,7 @@
             - name: Změna kanálu
               href: cassandra-change-feed.md
             - name: Ukládání a správa služby Spring Data
-              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: Cassandra a Spark
               items:
                 - name: Úvod
@@ -658,8 +660,7 @@
                   href: tutorial-develop-mongodb-react.md
             - name: 2. Migrace dat
               displayName: import
-              href: /azure/dms/tutorial-mongodb-cosmos-db
-              maintainContext: true
+              href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: 3. Dotazování dat
               href: tutorial-query-mongodb.md
             - name: 4. Globální distribuce dat
@@ -690,8 +691,7 @@
             - name: Správa indexování dat
               href: mongodb-indexing.md
             - name: Ukládání a správa služby Spring Data
-              href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-mongodb-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: Příkazy rozšíření MongoDB
               href: mongodb-custom-commands.md
               displayName: custom commands
@@ -755,8 +755,7 @@
             - name: Vizualizace dat grafu
               href: graph-visualization.md
             - name: Ukládání a správa služby Spring Data
-              href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
-              maintainContext: true
+              href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: Správa s využitím šablon Resource Manageru
               href: manage-gremlin-with-resource-manager.md
             - name: Správa pomocí prostředí PowerShell
@@ -951,8 +950,7 @@
         - name: Konektor Spark pro Azure Databricks
           href: spark-connector.md
         - name: Streamování s využitím Apache Kafka a Cosmos DB
-          href: /azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb
-          maintainContext: true
+          href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: Integrované poznámkové bloky Jupyter
       items:
         - name: Povolení poznámkových bloků
@@ -976,8 +974,7 @@
         - name: Konfigurace přístupu z privátních koncových bodů
           href: how-to-configure-private-endpoints.md
         - name: Privátní připojení k účtu Cosmos DB
-          href: /azure/private-link/create-private-endpoint-cosmosdb-portal
-          maintainContext: true
+          href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 'Konfigurace sdílení prostředků mezi zdroji (CORS, Cross-Origin Resource Sharing)'
           href: how-to-configure-cross-origin-resource-sharing.md
         - name: Zabezpečení klíčů Azure Cosmos s využitím služby Key Vault
@@ -999,12 +996,11 @@
         - name: Monitorování s diagnostickými protokoly
           href: cosmosdb-monitor-resource-logs.md
         - name: Azure Monitor pro Cosmos (Preview)
-          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
+          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Zobrazení metrik z účtu Cosmos DB
           href: use-metrics.md
         - name: Protokolování aplikací pomocí funkce Logic Apps
-          href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
-          maintainContext: true
+          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Referenční informace k monitorování dat
           href: monitor-cosmos-db-reference.md
     - name: Vývoj v místním prostředí
@@ -1032,29 +1028,23 @@
         - name: Azure App Service
           href: create-website.md
         - name: Indexer služby Azure Cognitive Search
-          href: /azure/search/search-howto-index-cosmosdb
-          maintainContext: true
+          href: ../search/search-howto-index-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Functions
           items:
             - name: Bezserverová architektura
               href: serverless-computing-database.md
             - name: Vazby Azure Functions
-              href: /azure/azure-functions/functions-bindings-cosmosdb
-              maintainContext: true
+              href: ../azure-functions/functions-bindings-cosmosdb.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Data Factory
-          href: /azure/data-factory/connector-azure-cosmos-db
-          maintainContext: true
+          href: ../data-factory/connector-azure-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Stream Analytics
-          href: '/azure/stream-analytics/stream-analytics-define-outputs#azure-cosmos-db'
-          maintainContext: true
+          href: ../stream-analytics/stream-analytics-documentdb-output.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Azure Event Hubs a Azure Storage
           href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
         - name: Použití aplikace Spring Boot Starter
-          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
-          maintainContext: true
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
         - name: Příručka pro vývojáře – Spring Data
-          href: /java/azure/spring-framework/how-to-guides-spring-data-cosmosdb
-          maintainContext: true
+          href: 'https://docs.microsoft.com/azure/java/spring-framework/how-to-guides-spring-data-cosmosdb?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
         - name: Ovladač ODBC
           href: odbc-driver.md
     - name: Migrace dat do Cosmos DB

@@ -34,7 +34,7 @@
       href: connect-virtual-network-gateway-vwan.md
     - name: Konfigurace globálních partnerských vztahů virtuálních sítí
       href: global-peering-vnet.md
-    - name: Vytvoření připojení VPN přes ExpressRoute
+    - name: Konfigurace šifrování ExpressRoute
       href: vpn-over-expressroute.md
     - name: Upgrade SKU virtuální sítě WAN
       href: upgrade-virtual-wan.md

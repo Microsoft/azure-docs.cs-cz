@@ -351,6 +351,12 @@
           href: view-usage-reports.md
         - name: Správa účtů
           href: manage-user-accounts-graph-api.md
+        - name: Nasazení s využitím Azure Pipelines
+          href: deploy-custom-policies-devops.md
+          displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
+        - name: Správa zásad s využitím PowerShellu
+          href: manage-custom-policies-powershell.md
+          displayName: 'scripting, scripts, psh, custom policy'
     - name: Protokoly auditu
       href: view-audit-logs.md
     - name: Správa uživatelů – Azure Portal

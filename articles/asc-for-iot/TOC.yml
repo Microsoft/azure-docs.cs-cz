@@ -77,6 +77,8 @@
       href: how-to-security-data-access.md
     - name: Prozkoumání zařízení
       href: how-to-investigate-device.md
+    - name: Připojení k Azure Sentinelu
+      href: how-to-configure-with-sentinel.md
     - name: Přizpůsobení vašeho řešení
       href: how-to-customize-solution.md
 - name: Zdroje a prostředky

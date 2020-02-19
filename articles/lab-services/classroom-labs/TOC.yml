@@ -52,16 +52,20 @@
           href: how-to-manage-lab-accounts.md
         - name: Konfigurace účtů testovacího prostředí
           href: how-to-configure-lab-accounts.md
+        - name: Přidání autora testovacího prostředí
+          href: add-lab-creator.md
         - name: Umožnění výběru umístění testovacího prostředí pro jeho tvůrce
           href: allow-lab-creator-pick-lab-location.md
-        - name: Připojení vašich testovacích prostředí k partnerské virtuální síti
+        - name: Připojení k partnerské virtuální síti
           href: how-to-connect-peer-virtual-network.md
         - name: Připojení nebo odpojení sdílené galerie imagí
           href: how-to-attach-detach-shared-image-gallery.md
-        - name: Přidání uživatele jako vlastníka do testovacího prostředí v učebně
+        - name: Přidání dalších vlastníků do testovacího prostředí učebny
           href: how-to-add-user-lab-owner.md
-        - name: Nastavení brány firewall pro Azure Lab Services
+        - name: Konfigurace nastavení brány firewall
           href: how-to-configure-firewall-settings.md
+        - name: Určení imagí Marketplace pro testovací prostředí
+          href: specify-marketplace-images.md
     - name: Vytvoření a konfigurace testovacích prostředí v učebnách (instruktor)
       items:
         - name: Vytváření a správa testovacích prostředí v učebnách

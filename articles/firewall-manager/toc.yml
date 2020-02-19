@@ -7,10 +7,14 @@
 - name: Kurzy
   expanded: true
   items:
-    - name: Zabezpečení cloudové sítě – portál
+    - name: Zabezpečení virtuální sítě WAN – portál
       href: secure-cloud-network.md
+    - name: Zabezpečení virtuální sítě WAN rozbočovače – portál
+      href: secure-hybrid-network.md
 - name: Koncepty
   items:
+    - name: Přehled zásad
+      href: policy-overview.md
     - name: Co je zabezpečené virtuální centrum?
       href: secured-virtual-hub.md
     - name: Obecný proces nasazení
@@ -19,11 +23,13 @@
       href: trusted-security-partners.md
     - name: Logika zpracování pravidel
       href: rule-processing.md
+    - name: Možnosti architektury
+      href: vhubs-and-vnets.md
 - name: Návody
   items:
     - name: Nasazení důvěryhodných partnerů pro zabezpečení
       href: deploy-trusted-security-partner.md
-    - name: Migrace na zásady firewallu
+    - name: Migrace na zásady firewallu – PowerShell
       href: migrate-to-policy.md
 - name: Referenční informace
   items:

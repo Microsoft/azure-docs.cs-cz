@@ -4,7 +4,7 @@
   items:
     - name: Co je Azure Batch?
       href: batch-technical-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Spuštění dávkové úlohy – CLI
@@ -29,7 +29,7 @@
       href: tutorial-r-doazureparallel.md
     - name: OCR se službami Batch a Functions
       href: tutorial-batch-functions.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       items:
@@ -71,6 +71,8 @@
           href: batch-aad-auth.md
         - name: Azure AD se službou Batch Management
           href: batch-aad-auth-management.md
+        - name: Zabezpečený přístup ke Key Vaultu s využitím služby Batch
+          href: credential-access-key-vault.md
     - name: Použití balíčků aplikací
       href: batch-application-packages.md
     - name: Vytváření a správa fondů

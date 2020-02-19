@@ -852,6 +852,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: Koncepty
       items:
+        - name: Obecné pokyny k podnikovému zabezpečení
+          href: ./domain-joined/general-guidelines.md
         - name: Plánování pro clustery ESP
           href: ./domain-joined/apache-domain-joined-architecture.md
         - name: Architektura virtuálních sítí HDInsight
@@ -864,6 +866,8 @@
           href: ./hdinsight-service-tags.md
         - name: Šifrování disků s využitím klíčů spravovaných zákazníky
           href: ./disk-encryption.md
+        - name: Synchronizace LDAP v Rangeru a Apache Ambari
+          href: ./domain-joined/ldap-sync.md
     - name: Postup
       items:
         - name: Použití zprostředkovatele ID pro správu přihlašovacích údajů

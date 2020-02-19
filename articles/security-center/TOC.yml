@@ -87,6 +87,8 @@
           href: built-in-vulnerability-assessment.md
         - name: Použití externích skenerů
           href: partner-vulnerability-assessment.md
+    - name: Monitorování kontejnerů
+      href: monitor-container-security.md
     - name: Ochrana serverů pomocí služby Microsoft Defender ATP
       href: security-center-wdatp.md
     - name: Použití pokročilého zabezpečení dat pro SQL na virtuálních počítačích Azure

@@ -81,7 +81,7 @@
           href: container-instances-managed-identity.md
         - name: Použití prostředků GPU (Preview)
           href: container-instances-gpu.md
-        - name: Povolení koncového bodu protokolu SSL
+        - name: Povolení koncového bodu protokolu pro sajdkáru
           href: container-instances-container-group-ssl.md
     - name: Připojení datových svazků
       items:
