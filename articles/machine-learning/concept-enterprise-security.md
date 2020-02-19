@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 32b3135f805cc6c68d8cd9d6fa2b6f957cd140ad
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312409"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444141"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -26,7 +26,7 @@ Když použijete cloudovou službu, osvědčeným postupem je omezit přístup j
 > [!NOTE]
 > Informace v tomto článku jsou v sadě Azure Machine Learning Python SDK verze 1.0.83.1 nebo vyšší.
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
 Služba Multi-Factor Authentication je podporovaná, pokud je služba Azure Active Directory (Azure AD) nakonfigurovaná tak, aby ji používala. Toto je proces ověřování:
 
@@ -46,7 +46,7 @@ Azure Machine Learning podporuje dvě formy ověřování pro webové služby: k
 |Metoda ověřování|Popis|Azure Container Instances|AKS|
 |---|---|---|---|
 |Klíč|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolena|
-|Podpisový|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici| Zakázáno ve výchozím nastavení |
+|Podpisový|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici.| Zakázáno ve výchozím nastavení |
 
 Příklady kódu naleznete v [části ověřování webové služby](how-to-setup-authentication.md#web-service-authentication).
 
@@ -71,7 +71,7 @@ V následující tabulce jsou uvedené některé hlavní operace Azure Machine L
 | Spusťte experiment | ✓ | ✓ | |
 | Zobrazit běhy/metriky | ✓ | ✓ | ✓ |
 | Registrace modelu | ✓ | ✓ | |
-| Vytvořit image | ✓ | ✓ | |
+| Vytvořit bitovou kopii | ✓ | ✓ | |
 | Nasazení webové služby | ✓ | ✓ | |
 | Zobrazení modelů a imagí | ✓ | ✓ | ✓ |
 | Volání webové služby | ✓ | ✓ | ✓ |
@@ -90,7 +90,7 @@ Další informace o spravovaných identitách najdete v tématu [spravované ide
 | ----- | ----- |
 | Pracovní prostor | Přispěvatel |
 | Účet úložiště | Přispěvatel dat objektu BLOB služby Storage |
-| Key Vault | Přístup ke všem klíčům, tajným klíčům, certifikátům |
+| Trezor klíčů | Přístup ke všem klíčům, tajným klíčům, certifikátům |
 | Azure Container Registry | Přispěvatel |
 | Skupina prostředků, která obsahuje pracovní prostor | Přispěvatel |
 | Skupina prostředků, která obsahuje Trezor klíčů (Pokud se liší od tu, která obsahuje pracovní prostor) | Přispěvatel |
@@ -123,7 +123,7 @@ Data školení se většinou ukládají také v úložišti objektů BLOB v Azur
 
 Informace o opětovném generování přístupových klíčů najdete v tématu [opětovné vygenerování přístupových klíčů k úložišti](how-to-change-storage-access-key.md).
 
-#### <a name="azure-cosmos-db"></a>Azure Cosmos DB
+#### <a name="azure-cosmos-db"></a>Databáze Azure Cosmos
 
 Azure Machine Learning ukládá metriky a metadata v instanci Azure Cosmos DB. Tato instance je přidružená k předplatnému Microsoftu spravovanému pomocí Azure Machine Learning. Všechna data uložená v Azure Cosmos DB jsou v klidovém stavu šifrovaná pomocí klíčů spravovaných Microsoftem.
 
@@ -191,7 +191,7 @@ Každý virtuální počítač má také místní dočasný disk pro operace s o
 
 Další informace o tom, jak šifrování v klidovém umístění funguje v Azure, najdete v tématu [šifrování dat Azure v klidovém umístění](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest).
 
-### <a name="encryption-in-transit"></a>Šifrování během přenosu
+### <a name="encryption-in-transit"></a>Šifrování při přenosu
 
 Protokol SSL můžete použít k zabezpečení interní komunikace mezi Azure Machine Learning mikroslužby a k zabezpečení externích volání do bodového koncového bodu. K přístupu k Azure Storage dojde taky přes zabezpečený kanál.
 
@@ -215,7 +215,7 @@ Každý pracovní prostor má přidruženou spravovanou identitu přiřazenou sy
 
 Společnost Microsoft může shromažďovat neuživatelem identifikovatelné informace, jako jsou názvy prostředků (například název datové sady nebo název experimentu Machine Learning), nebo proměnné prostředí úloh pro účely diagnostiky. Všechna taková data se ukládají pomocí klíčů spravovaných Microsoftem v úložišti hostovaném v předplatných vlastněných společností Microsoft a [na základě standardních zásad ochrany osobních údajů společnosti Microsoft a standardů pro zpracování dat](https://privacy.microsoft.com/privacystatement).
 
-Microsoft také doporučuje do proměnných prostředí ukládat citlivé informace (třeba klíčová tajná klíče účtu). Proměnné prostředí jsou protokolovány, šifrovány a uloženy v USA.
+Microsoft také doporučuje do proměnných prostředí ukládat citlivé informace (třeba klíčová tajná klíče účtu). Proměnné prostředí jsou protokolovány, šifrovány a uloženy v USA. Podobně při pojmenování [RunId](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)se vyhněte zahrnutí citlivých informací, jako jsou uživatelská jména nebo tajné názvy projektů. Tyto informace se mohou zobrazit v protokolech telemetrie, které jsou přístupné pro podpora Microsoftu inženýry.
 
 Shromážděná diagnostická data můžete odhlásit tím, že nastavíte parametr `hbi_workspace`, který `TRUE` při zřizování pracovního prostoru. Tato funkce se podporuje při použití šablon aplikace AzureML Python SDK, CLI, REST API nebo Azure Resource Manager.
 
@@ -225,7 +225,7 @@ Při používání služeb, jako jsou například automatizované Machine Learni
 
 Můžete také chtít šifrovat [diagnostické informace zaznamenané z nasazeného koncového bodu](how-to-enable-app-insights.md) do instance služby Azure Application Insights.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 ### <a name="metrics"></a>Metriky
 
@@ -252,8 +252,8 @@ Podrobnosti žádosti o vyhodnocování jsou uložené v Application Insights. P
 * ComputeType
 * RequestUrl
 * StatusCode
-* RequestId
-* Délka
+* Identifikátor
+* Doba trvání
 
 > [!IMPORTANT]
 > Některé akce v pracovním prostoru Azure Machine Learning neprotokolují informace do protokolu aktivit. Například spuštění školicího programu a registrace modelu se nezaprotokolují.
@@ -333,9 +333,9 @@ Podrobnosti najdete tady:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zabezpečení webových služeb Azure Machine Learning s protokolem SSL](how-to-secure-web-service.md)
+* [Zabezpečené Azure Machine Learning webové služby pomocí protokolu SSL](how-to-secure-web-service.md)
 * [Využití modelu Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md)
-* [Jak spustit predikcí služby batch](how-to-use-parallel-run-step.md)
+* [Jak spustit Batch předpovědi](how-to-use-parallel-run-step.md)
 * [Monitorování modelů Azure Machine Learning s využitím Application Insights](how-to-enable-app-insights.md)
 * [Shromažďování dat pro modely v produkčním prostředí](how-to-enable-data-collection.md)
 * [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

@@ -7,26 +7,28 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: f109f2dd45fe90884d3947b244b3dafffd547725
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 91401031945d0ec3ac22fc8cbcea8ba73580ee50
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68355930"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77441999"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-python-library"></a>Ingestování dat pomocí knihovny Pythonu v Azure Průzkumník dat
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Průzkumník dat Azure nabízí dvě klientské knihovny pro Python: [knihovnu ingestů](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) a [knihovnu dat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Tyto knihovny umožňují snadno ingestovat (načíst) data do clusteru a dotazovat se na data z vašeho kódu. V tomto článku vytvoříte nejprve tabulku a mapování dat v clusteru. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
+V tomto článku budete ingestovat data pomocí knihovny Pythonu v Azure Průzkumník dat. Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Průzkumník dat Azure nabízí dvě klientské knihovny pro Python: [knihovnu ingestů](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-ingest) a [knihovnu dat](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Tyto knihovny umožňují ingestovat nebo načítat data do clusteru a dotazovat se na data z vašeho kódu.
+
+Nejprve vytvořte tabulku a mapování dat v clusteru. Pak vytvoříte frontu ingestace do clusteru a ověříte výsledky.
 
 Tento článek je také k dispozici jako [notebook Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueuedIngestSingleBlob.ipynb).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* [Cluster a databáze](create-cluster-database-portal.md)
+* [Python 3.4 +](https://www.python.org/downloads/).
 
-* [Python](https://www.python.org/downloads/) nainstalovaný na počítači pro vývoj
+* [Cluster a databáze](create-cluster-database-portal.md).
 
 ## <a name="install-the-data-and-ingest-libraries"></a>Instalace knihovny dat a knihovny ingestů
 
@@ -37,7 +39,7 @@ pip install azure-kusto-data
 pip install azure-kusto-ingest
 ```
 
-## <a name="add-import-statements-and-constants"></a>Přidání příkazů a konstant pro import
+## <a name="add-import-statements-and-constants"></a>Přidání příkazů pro import a konstant
 
 Importujte třídy z Azure-kusto-data.
 
@@ -47,7 +49,7 @@ from azure.kusto.data.exceptions import KustoServiceError
 from azure.kusto.data.helpers import dataframe_from_result_table
 ```
 
-K ověření aplikace používá Azure Data Explorer ID vašeho tenanta AAD. ID tenanta zjistíte pomocí následující adresy URL, ve které *YourDomain* nahradíte svou doménou.
+K ověření aplikace používá Průzkumník dat Azure ID vašeho tenanta AAD. ID tenanta zjistíte pomocí následující adresy URL, ve které *YourDomain* nahradíte svou doménou.
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
@@ -103,7 +105,7 @@ BLOB_PATH = "https://" + ACCOUNT_NAME + ".blob.core.windows.net/" + \
 
 ## <a name="create-a-table-on-your-cluster"></a>Vytvoření tabulky v clusteru
 
-Vytvořte tabulku, která odpovídá schématu dat v souboru StormEvents.csv. Po spuštění tohoto kódu se vrátí zpráva podobná následující: Pokud *se chcete přihlásit, https://microsoft.com/devicelogin otevřete stránku pomocí webového prohlížeče a zadejte kód F3W4VWZDM, který se má ověřit*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu. Následující bloky kódu, které provedou připojení, vyžadují, abyste se znovu přihlásili.
+Vytvořte tabulku, která odpovídá schématu dat v souboru StormEvents.csv. Když se tento kód spustí, vrátí podobnou zprávu: *Pro přihlášení použijte webový prohlížeč a otevřete stránku https://microsoft.com/devicelogin a zadejte kód F3W4VWZDM k ověření*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu. Následující bloky kódu, které provedou připojení, vyžadují, abyste se znovu přihlásili.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB_DATA)
@@ -181,6 +183,6 @@ Pokud plánujete postupovat podle našich dalších článků, ponechejte prost�
 .drop table StormEvents
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Dotazování dat pomocí Pythonu](python-query-data.md)

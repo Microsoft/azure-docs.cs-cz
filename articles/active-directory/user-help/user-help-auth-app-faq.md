@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 02/18/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 3df7e772ea88a7a58780f08ff20f44d50f01c336
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: f15e92f5e98c047fc5ed481968674370cf222a16
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063879"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443614"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -52,6 +52,7 @@ Aplikace Microsoft Authenticator nahradila Azure Authenticator aplikaci a při p
 | Proč se mi zobrazují oznámení o aktivitě svého účtu? | Abychom vám pomohli lépe informovat o tom, co se stane se svými osobními účet Microsoft, posíláme oznámení o aktivitě do vaší Microsoft Authenticator aplikace. Tato oznámení se zobrazují hned po změnách a pomáhají zajistit lepší zabezpečení. Tato oznámení jsme poslali prostřednictvím e-mailu a SMS a teď je rozšířili tak, aby se zahrnula do aplikace. Další informace o těchto oznámeních o aktivitách najdete v tématu [co se stane, když máte k vašemu účtu neobvyklé přihlášení](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Pokud chcete změnit, kam dostávat oznámení, přihlaste se k webu, [kde vám můžeme kontaktovat stránku výstrahy](https://account.live.com/SecurityNotifications/Update) účtu, který není kritický. |
 | Když se přihlašujete k pracovnímu nebo školnímu účtu pomocí výchozí poštovní aplikace, která se dodává se systémem iOS, zobrazí se mi výzva Microsoft Authenticator aplikace pro informace o ověření zabezpečení. Po zadání těchto informací a návratu do e-mailové aplikace se zobrazí chyba. Co mám udělat? | K tomuto problému dochází, protože vaše přihlášení a poštovní aplikace se vyskytují ve dvou různých aplikacích, což způsobí, že počáteční proces přihlašování na pozadí přestane fungovat a selže. Pokud se chcete pokusit tuto chybu opravit, doporučujeme při přihlášení k aplikaci pošty vybrat ikonu **Safari** na pravé dolní straně obrazovky. Přesunutím na Safari dojde k tomu, že se celý proces přihlašování stane v jedné aplikaci, takže se můžete úspěšně přihlásit k aplikaci. |
 | Moje kódy JEDNORÁZOVého hesla nefungují. Co bych měl/a dělat? | Ujistěte se, že datum a čas v zařízení jsou správné a automaticky se synchronizují. Pokud je datum a čas chybné nebo není synchronizován, kód nebude fungovat. |
+| Operační systém Windows 10 Mobile byl zastaralý v prosinci 2019. Budou Microsoft Authenticator v operačních systémech Windows Mobile i nadále zastaralé? | Aplikace Microsoft Authenticator ve všech operačních systémech Windows Mobile nebude podporována po 28. únoru 2020. Uživatelé nebudou mít nárok na příjem jakýchkoli nových aktualizací do aplikace, aby vyúčtovali uvedené datum. Až 28. února 2020 služby společnosti Microsoft, které aktuálně podporují ověřování pomocí Microsoft Authenticator ve všech operačních systémech Windows Mobile, začnou svoji podporu vyřadit. Aby bylo možné ověřovat služby společnosti Microsoft, důrazně doporučujeme všem našim uživatelům, aby před tímto datem přešli na alternativní mechanismus ověřování. |
 
 ## <a name="next-steps"></a>Další kroky
 

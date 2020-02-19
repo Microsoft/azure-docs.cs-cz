@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e03ba960ab6542198372d75de7e0d34bf8d9e1b
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: aec46a1914fa2361ea15ba34dd1510cfe53a4dc0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513316"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443835"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -36,7 +36,7 @@ Následující diagram znázorňuje, jak řešení vyhodnocuje a aplikuje aktual
 
 ![Tok procesu Update Management](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Update Management můžete nativně nasadit na počítače v různých předplatných stejného tenanta.
+Update Management lze použít k nativně zprovoznění počítačů ve více předplatných ve stejném tenantovi.
 
 Po uvolnění balíčku trvá tato oprava 2 až 3 hodiny, než se oprava zobrazí pro počítače se systémem Linux pro posouzení. U počítačů s Windows trvá 12 až 15 hodin, než se oprava zobrazí po jejím vydání.
 
@@ -67,12 +67,12 @@ Počítač zaregistrovaný pro Update Management ve více než jednom pracovním
 
 ### <a name="supported-client-types"></a>Podporované klientské typy
 
-Následující tabulka uvádí podporované operační systémy pro posouzení aktualizací. Oprava vyžaduje Hybrid Runbook Worker. Informace o požadavcích na Hybrid Runbook Worker najdete v pokynech k instalaci pro instalaci [Windows Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) a [Linux Hybrid Runbook Worker](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker).
+Následující tabulka uvádí podporované operační systémy pro posouzení aktualizací. Oprava vyžaduje Hybrid Runbook Worker. Informace o požadavcích na Hybrid Runbook Worker najdete v pokynech k instalaci pro instalaci [Windows Hybrid Runbook Worker](automation-windows-hrw-install.md) a [Linux Hybrid Runbook Worker](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker).
 
-|Operační systém  |Poznámky  |
+|Operační systém  |Poznámky:  |
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 (RTM a SP1 Standard)| Update Management podporuje jenom vyhodnocení pro tento operační systém, takže se nepodporuje aktualizace, protože [Hybrid Runbook Worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) není pro Windows Server 2008 R2 podporovaná. |
+|Windows Server 2008 R2 (RTM a SP1 Standard)| Update Management podporuje jenom vyhodnocení pro tento operační systém, takže se nepodporuje aktualizace, protože [Hybrid Runbook Worker](automation-windows-hrw-install.md) není pro Windows Server 2008 R2 podporovaná. |
 |CentOS 6 (x86/x64) a 7 (x64)      | Agenty Linux musí mít přístup k úložišti aktualizací. Oprava založená na klasifikaci vyžaduje, `yum`, aby vracela data zabezpečení, která CentOS ve svých verzích RTM. Další informace o opravách na základě klasifikace na CentOS najdete v tématu [klasifikace aktualizací v systému Linux](automation-view-update-assessments.md#linux-2).          |
 |Red Hat Enterprise 6 (x86/x64) a 7 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) a 12 (x64)     | Agenty Linux musí mít přístup k úložišti aktualizací.        |
@@ -86,13 +86,13 @@ Následující tabulka uvádí podporované operační systémy pro posouzení a
 
 V následující tabulce jsou uvedeny nepodporované operační systémy:
 
-|Operační systém  |Poznámky  |
+|Operační systém  |Poznámky:  |
 |---------|---------|
 |Klient Windows     | Klientské operační systémy (například Windows 7 a Windows 10) nejsou podporovány.        |
-|Windows Server 2016 Nano Server     | Není podporováno.       |
-|Uzly služby Azure Kubernetes | Není podporováno. Použijte proces opravy popsaný v tématu [použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md) .|
+|Windows Server 2016 Nano Server     | Nepodporuje se.       |
+|Uzly služby Azure Kubernetes | Nepodporuje se. Použijte proces opravy popsaný v tématu [použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)](../aks/node-updates-kured.md) .|
 
-### <a name="client-requirements"></a>Požadavky na klienty
+### <a name="client-requirements"></a>Požadavky na klienta
 
 Následující informace popisují požadavky klienta na konkrétní operační systémy. Další pokyny najdete v tématu [Plánování sítě](#ports).
 
@@ -135,7 +135,7 @@ Počítače s Windows můžete přidat do skupiny Hybrid Runbook Worker v účtu
 
 ### <a name="management-packs"></a>Sady Management Pack
 
-Pokud je vaše skupina pro správu System Center Operations Manageru připojená k pracovnímu prostoru Log Analytics, nainstalují se do Operations Manageru následující sady Management Pack. Tyto sady Management Pack se po přidání do řešení nainstalují také přímo na připojené počítače s Windows. Sady Management Pack nemusíte konfigurovat ani spravovat:
+Pokud je vaše skupina pro správu System Center Operations Manager připojená k pracovnímu prostoru Log Analytics, v Operations Manager se nainstalují následující sady Management Pack. Tyto sady Management Pack jsou také nainstalovány na přímo připojené počítače se systémem Windows po přidání řešení. Tyto sady Management Pack nemusíte konfigurovat ani spravovat.
 
 * Aktualizace Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -155,7 +155,7 @@ Další informace o tom, jak se aktualizují sady Management Pack řešení, naj
 
 Následující tabulka popisuje připojené zdroje, které toto řešení podporuje:
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporuje se | Popis |
 | --- | --- | --- |
 | Agenti systému Windows |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů systému Windows a poté inicializuje instalaci požadovaných aktualizací. |
 | Agenti systému Linux |Ano |Řešení shromažďuje informace o aktualizacích systému od agentů systému Linux a následně inicializuje instalaci požadovaných aktualizací v podporovaných distribucích. |
@@ -167,7 +167,7 @@ U každého spravovaného počítače se systémem Windows se kontrola provádí
 
 Kontrola se provádí každou hodinu každého spravovaného počítače se systémem Linux.
 
-Zobrazení aktuálních dat o spravovaných počítačích může trvat 30 minut až 6 hodin.
+Může trvat 30 minut a 6 hodin, než se na řídicím panelu zobrazí aktualizovaná data ze spravovaných počítačů.
 
 Průměrné využití dat pomocí Azure Monitor protokolů pro počítač používající Update Management je přibližně 25 megabajtů (MB) měsíčně. Tato hodnota je jenom aproximace a v závislosti na vašem prostředí se může změnit. Doporučujeme monitorovat své prostředí, abyste mohli sledovat přesné využití.
 
@@ -175,7 +175,7 @@ Průměrné využití dat pomocí Azure Monitor protokolů pro počítač použ�
 
 Následující adresy jsou vyžadovány konkrétně pro Update Management. Komunikace s těmito adresami probíhá přes port 443.
 
-|Veřejný partnerský vztah Azure  |Azure Government  |
+|Veřejné Azure  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
@@ -222,7 +222,7 @@ V následujících tabulkách jsou uvedeny klasifikace aktualizací v Update Man
 |Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
 |Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
+|Nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
 |Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
 ### <a name="linux-2"></a>Linux

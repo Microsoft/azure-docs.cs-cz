@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 10/25/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: df87e652d2969d4ae12e97a2b455648cf39382c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73502027"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443121"
 ---
 # <a name="azure-firewall-manager-preview-deployment-overview"></a>Přehled nasazení Preview Azure Firewall Manageru
 
@@ -20,31 +20,40 @@ ms.locfileid: "73502027"
 
 Je k dispozici více než jeden způsob nasazení Azure Firewall Manager Preview, ale doporučuje se tento obecný postup.
 
-## <a name="prerequisites"></a>Předpoklady
-
-> [!IMPORTANT]
-> Ukázková verze Azure Firewall Manageru musí být explicitně povolená pomocí příkazu `Register-AzProviderFeature` PowerShellu.
->Z příkazového řádku PowerShellu spusťte následující příkazy:
->
->```azure-powershell
->connect-azaccount
->Register-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network
->```
->Dokončení registrace funkce trvá až 30 minut. Spusťte následující příkaz a ověřte > stav registrace:
->
->`Get-AzProviderFeature -FeatureName AllowCortexSecurity -ProviderNamespace Microsoft.Network`
-
-
-
 ## <a name="general-deployment-process"></a>Obecný proces nasazení
+
+### <a name="hub-virtual-networks"></a>Centrální virtuální sítě
+
+1.  Vytvoření zásady brány firewall
+
+    - Vytvoření nové zásady
+<br>Hodnota *nebo*<br>
+    - Odvození základní zásady a přizpůsobení místních zásad
+<br>Hodnota *nebo*<br>
+    - Importuje pravidla z existující Azure Firewall. Nezapomeňte odebrat pravidla překladu adres (NAT) ze zásad, které by se měly použít napříč několika branami firewall.
+1. Vytvoření architektury hub a paprsků
+   - Vytvoření centra Virtual Network s použitím partnerského vztahu virtuálních sítí pomocí správce Azure Firewall a virtuálních sítí s partnerským paprskem
+<br>Hodnota *nebo*<br>
+    - Vytvoření virtuální sítě a přidání připojení virtuální sítě a virtuálních sítí s partnerským paprskem do ní pomocí partnerského vztahu virtuálních sítí
+
+3. Vyberte zprostředkovatelé zabezpečení a přidružte zásady brány firewall. V současné době je jako podporovaný zprostředkovatel jenom Azure Firewall.
+
+   - To se provádí při vytváření Virtual Network centra.
+<br>Hodnota *nebo*<br>
+    - Převeďte stávající virtuální síť na Virtual Network centra. Je také možné převést více virtuálních sítí.
+
+4. Nakonfigurujte uživatelsky definované trasy pro směrování provozu do vašeho centra Virtual Network firewall.
+
+
+### <a name="secured-virtual-hubs"></a>Zabezpečená virtuální centra
 
 1. Vytvoření architektury hub a paprsků
 
-   - Vytvořte zabezpečeného virtuálního rozbočovače pomocí správce Azure Firewall a přidejte připojení k virtuální síti.<br>*ani*<br>
+   - Vytvořte zabezpečeného virtuálního rozbočovače pomocí správce Azure Firewall a přidejte připojení k virtuální síti.<br>Hodnota *nebo*<br>
    - Vytvořte virtuální síť WAN hub a přidejte připojení k virtuální síti.
 2. Vybrat poskytovatele zabezpečení
 
-   - Při vytváření zabezpečeného virtuálního rozbočovače se dokončila.<br>*ani*<br>
+   - Při vytváření zabezpečeného virtuálního rozbočovače se dokončila.<br>Hodnota *nebo*<br>
    - Převeďte stávající virtuální centrum sítě WAN na zabezpečené virtuální centrum.
 3. Vytvoření zásady brány firewall a její přidružení ke svému centru
 

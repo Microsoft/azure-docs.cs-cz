@@ -11,18 +11,18 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f47f55252c6274360f200a4bce0ed0b739e3d8a3
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: e0bd53b72c334b35daea0864acf61cc432c272ae
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166571"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442118"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Zřízení pilotního cloudu pro existující synchronizovanou doménovou strukturu AD 
 
 Tento kurz vás provede pilotním zřizováním cloudu pro testovací doménovou strukturu Active Directory, která je už synchronizovaná pomocí služby Azure Active Directory (Azure AD) Connect Sync.
 
-![Vytvořit](media/tutorial-migrate-aadc-aadccp/diagram.png)
+![Vytvoření](media/tutorial-migrate-aadc-aadccp/diagram.png)
 
 ## <a name="considerations"></a>Požadavky
 Než si vyzkoušíte tento kurz, vezměte v úvahu následující položky:
@@ -99,8 +99,8 @@ Pro všechny typy objektů (uživatel, skupina a kontakt) se musí provést stej
  2. Na stránce **Popis** zadejte následující text a klikněte na tlačítko **Další**:
 
     **Název:** Udělení pravidla smysluplnému názvu<br>
-    **Popis:** Přidat smysluplný popis<br> 
-    **připojený systém:** vyberte konektor AAD, pro který píšete vlastní pravidlo synchronizace.<br>
+    **Popis:** Přidat smysluplný popis<br>
+    **Připojený systém:** Vyberte konektor AAD, pro který píšete vlastní pravidlo synchronizace.<br>
     **Typ připojeného systémového objektu:** Uživatelský<br>
     **Typ objektu úložiště metaverse:** Uživateli<br>
     **Typ odkazu:** JoinNoFlow<br>

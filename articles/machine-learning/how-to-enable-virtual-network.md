@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: fd358801b5fe84aac754b5a975234688a707e544
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 6e5571604e6154408f2005ab4804b4270041e4cf
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169951"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444345"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Zabezpečení experimentů s Azure ML a odvození úloh v rámci Azure Virtual Network
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -134,13 +134,14 @@ Chcete-li použít výpočetní instanci nebo výpočetní cluster Azure Machine
 > * Pokud hodláte do jedné virtuální sítě umístit víc výpočetních instancí nebo clusterů, možná budete muset požádat o zvýšení kvóty pro jeden nebo víc vašich prostředků.
 > * Pokud jsou účty Azure Storage v pracovním prostoru zabezpečeny i ve virtuální síti, musí být ve stejné virtuální síti jako Azure Machine Learning výpočetní instance nebo cluster. 
 
-Instance Machine Learning COMPUTE nebo cluster automaticky přiděluje další síťové prostředky ve skupině prostředků, která obsahuje virtuální síť. Pro každou výpočetní instanci nebo cluster přiděluje služba následující prostředky:
-
-* Jedna skupina zabezpečení sítě
-* Jedna veřejná IP adresa
-* Jeden nástroj pro vyrovnávání zatížení
-
-Pro tyto prostředky platí omezení [kvót prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) předplatného.
+> [!TIP]
+> Instance Machine Learning COMPUTE nebo cluster automaticky přiděluje další síťové prostředky ve skupině prostředků, která obsahuje virtuální síť. Pro každou výpočetní instanci nebo cluster přiděluje služba následující prostředky:
+> 
+> * Jedna skupina zabezpečení sítě
+> * Jedna veřejná IP adresa
+> * Jeden nástroj pro vyrovnávání zatížení
+> 
+> Pro tyto prostředky platí omezení [kvót prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) předplatného.
 
 
 ### <a id="mlcports"></a>Požadované porty
@@ -500,6 +501,10 @@ Při použití Azure Firewall musíte nakonfigurovat síťové pravidlo, které 
 Když přidáte pravidlo, nastavte __protokol__ na any a porty, které se mají `*`.
 
 Další informace o konfiguraci pravidla sítě najdete v tématu [nasazení a konfigurace Azure firewall](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule).
+
+## <a name="use-azure-container-registry"></a>Použití služby Azure Container Registry
+
+Při použití virtuální sítě s Azure Machine Learning __neumísťujte__ Azure Container registry pro pracovní prostor ve virtuální síti. Tato konfigurace není podporovaná.
 
 ## <a name="next-steps"></a>Další kroky
 

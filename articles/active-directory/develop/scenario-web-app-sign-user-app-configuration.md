@@ -38,25 +38,25 @@ Knihovny, které slouží k ochraně webové aplikace (a webového rozhraní API
 
 Vyberte kartu, která odpovídá platformě, na kterou zajímáte:
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[Jádro ASP.NET](#tab/aspnetcore)
 
 Fragmenty kódu v tomto článku a následující jsou extrahovány z [přírůstkového kurzu ASP.NET Core webové aplikace, kapitola 1](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg).
 
 Informace o úplné implementaci najdete v tomto kurzu.
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 Fragmenty kódu v tomto článku a níže jsou extrahovány z [ukázky webové aplikace ASP.NET](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect).
 
 Můžete chtít použít tuto ukázku k tomu, abyste si mohli zobrazit úplné podrobnosti implementace.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Fragmenty kódu v tomto článku a níže se extrahují z [webové aplikace Java Calling Sample v Microsoft graphu](https://github.com/Azure-Samples/ms-identity-java-webapp) v MSAL Java.
 
 Můžete chtít použít tuto ukázku k tomu, abyste si mohli zobrazit úplné podrobnosti implementace.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Fragmenty kódu v tomto článku a níže jsou extrahovány z [webové aplikace Python s voláním ukázky Microsoft Graph](https://github.com/Azure-Samples/ms-identity-python-webapp) v MSAL Pythonu.
 
@@ -74,7 +74,7 @@ Webové aplikace, které přihlásí uživatele pomocí platformy Microsoft iden
 
 V některých případech je možné aplikace určit podle `Authority`, což je zřetězení `Instance` a `TenantId`.
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[Jádro ASP.NET](#tab/aspnetcore)
 
 V ASP.NET Core se tato nastavení nacházejí v souboru [appSettings. JSON](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/appsettings.json#L2-L8) v části "AzureAd".
 
@@ -139,7 +139,7 @@ V Azure Portal musí být identifikátory URI odpovědi, které je třeba regist
 
 Stejným způsobem by byl identifikátor URI pro odhlášení nastaven na `https://localhost:44321/signout-callback-oidc`.
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 V ASP.NET je aplikace nakonfigurována pomocí souboru [Web. config](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Web.config#L12-L15) , řádky 12 až 15.
 
@@ -165,7 +165,7 @@ V ASP.NET je aplikace nakonfigurována pomocí souboru [Web. config](https://git
 
 V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat těmto adresám URL. To znamená, že by měly být `https://localhost:44326/`.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 V jazyce Java je konfigurace umístěna v souboru [Application. Properties](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/resources/application.properties) , který je umístěn v části `src/main/resources`.
 
@@ -179,7 +179,7 @@ aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 
 V Azure Portal musí být identifikátory URI odpovědi, které je třeba registrovat na **ověřovací** stránce vaší aplikace, odpovídat `redirectUri` instancím, které aplikace definuje. To znamená, že by měly být `http://localhost:8080/msal4jsample/secure/aad` a `http://localhost:8080/msal4jsample/graph/me`.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Tady je konfigurační soubor Pythonu v [app_config. py](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app_config.py):
 
@@ -207,7 +207,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 Inicializační kód se liší v závislosti na platformě. Pro ASP.NET Core a ASP.NET se podepisování uživatelů přidělí na middleware OpenID Connect. Šablona ASP.NET nebo ASP.NET Core generuje webové aplikace pro koncový bod Azure Active Directory (Azure AD) v 1.0. Některá konfigurace je nutná k jejich přizpůsobení koncovému bodu Microsoft Identity Platform (v 2.0). V případě jazyka Java se v případě, že se jedná o spolupráci aplikace, zpracovává na jaře.
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[Jádro ASP.NET](#tab/aspnetcore)
 
 V ASP.NET Core Web Apps (a webová rozhraní API) je aplikace chráněná, protože máte atribut `[Authorize]` na řadičích nebo akcích kontroleru. Tento atribut kontroluje, jestli je uživatel ověřený. Kód, který inicializuje aplikaci, je v souboru Startup.cs.
 
@@ -316,7 +316,7 @@ public static IServiceCollection AddMicrosoftIdentityPlatformAuthentication(
 
 Třída `AadIssuerValidator` umožňuje vystaviteli tokenu ověřit v mnoha případech. Tato třída spolupracuje s tokenem v 1.0 nebo v 2.0, s jedním klientem nebo víceklientské aplikací nebo s aplikací, která podepisuje uživatele se svými osobními účty Microsoft ve veřejném cloudu Azure nebo v národních cloudech. Je k dispozici z [Microsoft. identity. Web/Resource/AadIssuerValidator. cs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/Resource/AadIssuerValidator.cs).
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 Kód, který se vztahuje k ověřování ve webové aplikaci ASP.NET a webových rozhraních API, se nachází v souboru [app_start/Startup.auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs#L17-L61) .
 
@@ -342,7 +342,7 @@ Kód, který se vztahuje k ověřování ve webové aplikaci ASP.NET a webových
  }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Ukázka Java používá architekturu pružiny. Aplikace je chráněna, protože implementujete filtr, který zachycuje každou odpověď HTTP. V rychlém startu pro webové aplikace v jazyce Java je tento filtr `AuthFilter` v `src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java`.
 
@@ -357,7 +357,7 @@ Podrobnosti najdete v tématu metoda `doFilter()` v [AuthFilter. Java](https://g
 
 Podrobnosti o toku autorizačního kódu, který tato metoda aktivuje, najdete v tématu [tok autorizačního kódu Microsoft Identity Platform a OAuth 2,0](v2-oauth2-auth-code-flow.md).
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Ukázka Pythonu používá baňky. Inicializace baněk a MSAL Pythonu se provádí v [App. py # L1-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L1-L28).
 
@@ -381,22 +381,22 @@ Session(app)
 
 V dalším článku se dozvíte, jak aktivovat přihlášení a odhlášení.
 
-# <a name="aspnet-coretabaspnetcore"></a>[Jádro ASP.NET](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[Jádro ASP.NET](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
 > [Přihlášení a odhlášení](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnetcore)
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
 > [Přihlášení a odhlášení](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=aspnet)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
 > [Přihlášení a odhlášení](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=java)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
 > [Přihlášení a odhlášení](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-sign-user-sign-in?tabs=python)

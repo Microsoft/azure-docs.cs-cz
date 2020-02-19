@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: ac31783f0eb270823b71c86cc8d7f0975d3a586a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 29b8a32989b5a1d60792fb5678f7ba8a9f12daba
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452266"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443801"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění Runbooků na Hybrid Runbook Worker
 
@@ -35,7 +35,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 > [!NOTE]
 > Do rutiny **Start-AzureAutomationRunbook** ve verzi 0.9.1 Microsoft Azure PowerShell byl přidán parametr **RunOn** . [Nejnovější verzi](https://azure.microsoft.com/downloads/) si můžete stáhnout, pokud už máte nainstalovanou dřívější verzi. Tuto verzi musíte nainstalovat jenom na pracovní stanici, na které spouštíte Runbook z PowerShellu. Nemusíte ho instalovat na pracovní počítač, pokud nechcete spouštět Runbooky z tohoto počítače. "
 
-## <a name="runbook-permissions"></a>Oprávnění runbooků
+## <a name="runbook-permissions"></a>Oprávnění sady Runbook
 
 Runbooky běžící na Hybrid Runbook Worker nemůžou používat stejnou metodu, která se obvykle používá pro Runbooky ověřující prostředky Azure, protože přistupuje k prostředkům, které nejsou v Azure. Sada Runbook může buď poskytnout své vlastní ověřování místním prostředkům, nebo může nakonfigurovat ověřování pomocí [spravovaných identit pro prostředky Azure](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager). Můžete také zadat účet RunAs k poskytnutí kontextu uživatele pro všechny sady Runbook.
 
@@ -86,7 +86,7 @@ Pokud chcete používat spravovanou identitu pro prostředky Azure v procesu Hyb
 1. Vytvoření virtuálního počítače Azure
 2. [Konfigurace spravovaných identit pro prostředky Azure na vašem VIRTUÁLNÍm počítači](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
 3. [Udělení přístupu k virtuálnímu počítači do skupiny prostředků v Správce prostředků](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager) kurzu – Windows-VM-Access-ARM. MD # Get-a-Access-token-using-the-VM-System-Assigned-identity-a-use-it-to-Call-Azure-Resource-Manager)
-4. Nainstalujte na virtuální počítač [Hybrid Runbook Worker Windows](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) .
+4. Nainstalujte na virtuální počítač [Hybrid Runbook Worker Windows](automation-windows-hrw-install.md) .
 
 Po dokončení předchozích kroků můžete v Runbooku použít `Connect-AzureRmAccount -Identity` k ověření pro prostředky Azure. Tato konfigurace omezuje nutnost použít účet Spustit jako a spravovat certifikát pro účet Spustit jako.
 

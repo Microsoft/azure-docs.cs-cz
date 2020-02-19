@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 81aded7639cc0bed86c3d3ab3be9e6ef7b355734
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: c08271286373ab8c3e621ee6fa59782ba2d16fb4
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964528"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444175"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Vytvoření datového připojení centra událostí pro Azure Průzkumník dat pomocí Pythonu
 
@@ -22,15 +22,21 @@ ms.locfileid: "76964528"
 > * [Python](data-connection-event-hub-python.md)
 > * [Šablona Azure Resource Manageru](data-connection-event-hub-resource-manager.md)
 
-Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování (načítání dat) z Event Hubs, rozbočovačů IoT a objektů BLOB zapsaných do kontejnerů objektů BLOB. V tomto článku vytvoříte připojení dat centra událostí pro Azure Průzkumník dat pomocí Pythonu.
+V tomto článku vytvoříte připojení dat centra událostí pro Azure Průzkumník dat pomocí Pythonu. Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování nebo načítání dat z Event Hubs, hub IoT a objektů BLOB zapsaných do kontejnerů objektů BLOB.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
-* Vytvoření [clusteru a databáze](create-cluster-database-python.md)
-* Vytvořit [mapování tabulek a sloupců](python-ingest-data.md#create-a-table-on-your-cluster)
-* Nastavení [zásad databáze a tabulek](database-table-policies-python.md) (volitelné)
-* Vytvořte [centrum událostí s daty pro přijímání](ingest-data-event-hub.md#create-an-event-hub). 
+* Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+* [Python 3.4 +](https://www.python.org/downloads/).
+
+* [Cluster a databáze](create-cluster-database-python.md).
+
+* [Mapování tabulek a sloupců](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+
+* [Zásady databáze a tabulky](database-table-policies-python.md) (volitelné).
+
+* [Centrum událostí s daty pro přijímání](ingest-data-event-hub.md#create-an-event-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
 

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: c4a787362089dabf9c4eda9681358e7a70d8e78a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210533"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443597"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Monitorování operací a aktivit Azure Kognitivní hledání
 
 Tento článek zavádí monitorování na úrovni služby (prostředku) na úrovni pracovního vytížení (dotazy a indexování) a navrhuje rozhraní pro monitorování přístupu uživatelů.
 
-V rámci spektra použijete kombinaci integrované infrastruktury a základních služeb, jako je Azure Monitor, a také rozhraní API služby, která vrací statistiky, počty a stav. Porozumění rozsahu funkcí vám pomůže nakonfigurovat nebo vytvořit účinný komunikační systém pro proaktivní reakce na problémy, když se objeví.
+V rámci spektra použijete kombinaci integrované infrastruktury a základních služeb, jako je Azure Monitor, a také rozhraní API služby, která vrací statistiky, počty a stav. Porozumění rozsahu funkcí vám může přispět k vytvoření smyčky zpětné vazby, abyste mohli řešit problémy, jak se budou objevovat.
 
 ## <a name="use-azure-monitor"></a>Použití Azure Monitoru
 
@@ -52,9 +52,9 @@ Stránky se záložkami, které jsou integrované na stránce Přehled, se odhl�
 
 Pokud dokončujete rozhodnutí o tom, [která úroveň se má použít pro produkční úlohy](search-sku-tier.md), nebo jestli se má [upravit počet aktivních replik a oddílů](search-capacity-planning.md), může vám tyto metriky s těmito rozhodnutími povýšit tím, že vám ukáže, jak rychle se spotřebovávají prostředky a jak dobře aktuální konfigurace zpracovává existující zatížení.
 
-Výstrahy související s úložištěm nejsou aktuálně k dispozici. spotřeba úložiště není agregovaná ani přihlášená k **AzureMetrics**. Museli byste vytvořit vlastní řešení, abyste získali oznámení související s prostředky.
+Výstrahy související s úložištěm nejsou aktuálně k dispozici. spotřeba úložiště není agregovaná ani přihlášená do tabulky **AzureMetrics** v Azure monitor. Museli byste vytvořit vlastní řešení, které vysílá oznámení související s prostředky, kde váš kód kontroluje velikost úložiště a zpracovává odpověď. Další informace o metrikách úložiště najdete v tématu [získání statistik služby](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
 
-Na portálu se na kartě **využití** zobrazuje dostupnost prostředků relativně k aktuálním [limitům](search-limits-quotas-capacity.md) , které jsou zavedené vrstvou služby. 
+U vizuálního monitorování na portálu se na kartě **využití** zobrazuje dostupnost prostředků relativně k aktuálním [limitům](search-limits-quotas-capacity.md) , které jsou zavedené vrstvou služby. 
 
 Následující obrázek je pro bezplatnou službu, která je omezené na 3 objekty každého typu a 50 MB úložiště. Základní nebo standardní služba má vyšší limity, a pokud nakročíte počty oddílů, maximální velikost úložiště se provedla poměrně.
 
@@ -63,7 +63,7 @@ Následující obrázek je pro bezplatnou službu, která je omezené na 3 objek
 
 ## <a name="monitor-workloads"></a>Monitorování úloh
 
-Protokolované události obsahují ty, které souvisejí s indexováním a dotazy. Tabulka **Azure Diagnostics** v Log Analytics shromažďuje provozní data týkající se dotazů a indexování.
+Protokolované události obsahují ty, které souvisejí s indexováním a dotazy. Tabulka **AzureDiagnostics** v Log Analytics shromažďuje provozní data týkající se dotazů a indexování.
 
 Většina protokolovaných dat je určena pouze pro operace jen pro čtení. Pro jiné operace Create-Update-Delete nezaznamenané v protokolu můžete zadat dotaz na informace o systému v vyhledávací službě.
 
@@ -115,9 +115,9 @@ REST API Kognitivní hledání Azure i .NET SDK poskytují programový přístup
 
 ## <a name="monitor-user-access"></a>Sledovat přístup uživatelů
 
-Vzhledem k tomu, že indexy vyhledávání jsou součástí větší klientské aplikace, není pro řízení přístupu k indexu k dispozici žádná uživatelsky definovaná metodologie pro jednotlivé uživatele. Předpokládá se, že požadavky pocházejí z klientské aplikace, a to buď pro žádosti správce, nebo na dotazy. Operace čtení a zápisu pro správce zahrnují vytváření, aktualizaci a odstraňování objektů napříč celou službou. Operace jen pro čtení jsou dotazy na kolekci dokumentů vymezené na jeden index. 
+Vzhledem k tomu, že indexy vyhledávání jsou součástí větší klientské aplikace, neexistuje žádná předdefinovaná metodologie pro řízení a monitorování přístupu pro jednotlivé uživatele k indexu. Předpokládá se, že požadavky pocházejí z klientské aplikace, a to buď pro žádosti správce, nebo na dotazy. Operace čtení a zápisu pro správce zahrnují vytváření, aktualizaci a odstraňování objektů napříč celou službou. Operace jen pro čtení jsou dotazy na kolekci dokumentů vymezené na jeden index. 
 
-Jak vidíte v protokolech, jsou odkazy na volání pomocí klíčů správce nebo klíčů dotazů. Příslušný klíč je součástí požadavků, které pocházejí z kódu klienta. Služba není vybavena pro zpracování tokenů identity nebo zosobnění.
+Jak vidíte v protokolech aktivit, jsou odkazy na volání pomocí klíčů správce nebo klíčů dotazů. Příslušný klíč je součástí požadavků, které pocházejí z kódu klienta. Služba není vybavena pro zpracování tokenů identity nebo zosobnění.
 
 Pokud obchodní požadavky existují pro autorizaci uživatelů, doporučení se integruje s Azure Active Directory. K [vystřihování výsledků hledání](search-security-trimming-for-azure-search-with-aad.md) dokumentů, které by uživatel neměl vidět, můžete použít $Filter a identity uživatelů. 
 

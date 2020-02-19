@@ -12,24 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: bb004d536d30d62116866581daeef9b42c23d470
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7601a5f8abefd88de0f9a3682341c5366eec3fb0
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936369"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431057"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integrace s Security Center (Preview)
 
 Azure Container Registry (ACR) je spravovaná privátní služba registru Docker, která ukládá a spravuje vaše image kontejnerů pro nasazení Azure v centrálním registru. Vychází z open source registru Docker Registry 2,0.
 
-Pokud pracujete na úrovni Standard Azure Security Center, můžete přidat sadu registrů kontejnerů. Tato volitelná funkce přináší hlubší přehled o chybách zabezpečení imagí v registrech založených na ARM. Povolte nebo zakažte sadu na úrovni předplatného tak, aby pokryla všechny Registry v rámci předplatného. Tato funkce se účtuje na základě obrázku, ne podle kontroly, jak je znázorněno na [stránce s cenami](security-center-pricing.md). 
-
-Když zapnete sadu registrů kontejnerů, zajistíte, aby Security Center byla připravená na skenování imagí, které se připravují do registru. Kontroly jsou na úrovni obrázku: Security Center nekontrolují registr, hledá Image uložené v registru. 
+Pokud pracujete na úrovni Standard Azure Security Center, můžete přidat sadu registrů kontejnerů. Tato volitelná funkce přináší hlubší přehled o chybách zabezpečení imagí v registrech založených na ARM. Povolte nebo zakažte sadu na úrovni předplatného tak, aby pokryla všechny Registry v rámci předplatného. Tato funkce se účtuje podle obrázku, jak je znázorněno na [stránce s cenami](security-center-pricing.md). Když zapnete sadu registrů kontejnerů, zajistíte, aby Security Center byla připravená na skenování imagí, které se připravují do registru. 
 
 Pokaždé, když se do registru vloží obrázek, Security Center automaticky vyhledá tento obrázek. Pokud chcete spustit kontrolu obrázku, nahrajte ho do úložiště.
 
-Až se kontrola dokončí (obvykle po přibližně 10 minutách), výsledky jsou k dispozici v Security Center doporučení, jako je tato:
+Jakmile se kontrola dokončí (obvykle po přibližně 10 minutách), jsou výsledky k dispozici v Security Center doporučeních, jako je:
 
 [Ukázka ![Azure Security Center doporučení týkající se ohrožení zabezpečení zjištěného v hostované imagi Azure Container Registry (ACR)](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 

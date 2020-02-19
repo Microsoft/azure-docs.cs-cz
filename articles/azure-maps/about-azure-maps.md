@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 07a78dc81d121874db5e59ad267ea8eb08a69c91
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b375ea8fdebd876bdc7ecf157a4cebd5e614dfd0
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210136"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443683"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 
@@ -45,13 +45,13 @@ Následující video vysvětluje Azure Maps do hloubky:
 
 Sada Azure Maps Web SDK umožňuje přizpůsobit interaktivní mapy pomocí vlastního obsahu a snímků. Tuto interaktivní mapu můžete použít pro vaše webové i mobilní aplikace. Mapový ovládací prvek využívá WebGL, takže můžete vykreslit velké sady dat s vysokým výkonem. Vývoj pomocí sady SDK pomocí JavaScriptu nebo TypeScript
 
-![Příklad mapy změny populace](media/about-azure-maps/Introduction_WebMapControl.png)
+![Příklad mapy změny populace](media/about-azure-maps/intro_web_map_control.png)
 
 ### <a name="android-sdk"></a>Android SDK
 
 K vytváření aplikací pro mobilní mapování použijte Azure Maps Android SDK. 
 
-![Příklady map na mobilním zařízení](media/about-azure-maps/AndroidSDK.png)
+![Příklady map na mobilním zařízení](media/about-azure-maps/android_sdk.png)
 
 ## <a name="services-in-azure-maps"></a>Služby v rámci Azure Maps
 
@@ -73,7 +73,7 @@ Další informace o této službě najdete v [dokumentaci k rozhraní API mobili
 
 Služba vykreslování pomáhá vývojářům vytvářet webové a mobilní aplikace s funkcemi mapování. Služba nabízí buď vysoce kvalitní rastrové podklady v 19 úrovních přiblížení, nebo plně přizpůsobitelné vektorové obrazy.
 
-![Příklad mapy ze služby vykreslování](media/about-azure-maps/Introduction_Map.png)
+![Příklad mapy ze služby vykreslování](media/about-azure-maps/intro_map.png)
 
 Služba Render teď nabízí rozhraní API ve verzi Preview, která umožňují vývojářům pracovat se satelitními snímky. Další podrobnosti najdete v [dokumentaci k rozhraní API pro vykreslování](https://docs.microsoft.com/rest/api/maps/render).
 
@@ -81,7 +81,7 @@ Služba Render teď nabízí rozhraní API ve verzi Preview, která umožňují 
 
 Služba Route obsahuje robustní výpočty geometrie na základě reálné infrastruktury a trasy pro různé způsoby dopravy. Služba umožňuje vývojářům vypočítat směry v různých režimech cestovních cest, jako je auto, nákladní kolo, kolo nebo procházení. Služba také bere v úvahu vstupy, jako jsou provozní podmínky, omezení hmotnosti nebo přenos nebezpečných látek.
 
-![Příklad mapy ze služby směrování](media/about-azure-maps/Introduction_Route.png)
+![Příklad mapy ze služby směrování](media/about-azure-maps/intro_route.png)
 
 Služba směrování nabízí verzi Preview pokročilých funkcí, jako například: 
 
@@ -95,7 +95,7 @@ Podrobnosti o možnostech směrování najdete v [dokumentaci k rozhraní API pr
 
 Vyhledávací služba pomáhá vývojářům vyhledávat adresy, místa, obchodní výpisy podle názvu nebo kategorie a dalších geografických informací. Služba vyhledávání může [přesměrovat](https://en.wikipedia.org/wiki/Reverse_geocoding) adresy zeměpisných a meziulic v závislosti na Latitudes a zeměpisných délkách.
 
-![Příklad hledání na mapě](media/about-azure-maps/Introduction_Search.png)
+![Příklad hledání na mapě](media/about-azure-maps/intro_search.png)
 
 Vyhledávací služba také poskytuje pokročilé funkce, jako například:
 
@@ -149,7 +149,7 @@ Přenosová služba je sada webových služeb, které můžou vývojáři použ�
 * Tok přenosů: zaznamenané rychlosti v reálném čase a doby provozu pro všechny klíčové cesty v síti.
 * Incidenty provozu: aktuální přehled o zaseknutí a incidentech provozu kolem sítě v provozu.
 
-![Příklad mapy s informacemi o provozu](media/about-azure-maps/Introduction_Traffic.png)
+![Příklad mapy s informacemi o provozu](media/about-azure-maps/intro_traffic.png)
 
 Další informace najdete v [dokumentaci rozhraní API pro přenos](https://docs.microsoft.com/rest/api/maps/traffic).
 

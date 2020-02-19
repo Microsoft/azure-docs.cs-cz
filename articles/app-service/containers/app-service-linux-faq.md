@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c2dc98d683d822628dc9ea1b4ead02279ea10ea5
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: c590a27f61c1a555ae30828332e4140a6116f95f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251800"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443852"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Nejčastější dotazy k Azure App Service v systému Linux
 
@@ -33,7 +33,7 @@ Všechny soubory Docker můžete najít na [GitHubu](https://github.com/azure-ap
 | Zásobník           | Očekávaná hodnota                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
 | Java SE         | příkaz pro spuštění aplikace JAR (například `java -jar /home/site/wwwroot/app.jar --server.port=80`) |
-| Tomcat, WildFly | umístění skriptu pro provedení potřebných konfigurací (například `/home/site/deployments/tools/startup_script.sh`)          |
+| Tomcat          | umístění skriptu pro provedení potřebných konfigurací (například `/home/site/deployments/tools/startup_script.sh`)          |
 | Node.js         | konfigurační soubor konfiguračního PM2 nebo soubor skriptu                                |
 | .Net Core       | název zkompilované knihovny DLL jako `dotnet <myapp>.dll`                                 |
 | Ruby            | skript Ruby, se kterým chcete aplikaci inicializovat                     |
@@ -58,7 +58,7 @@ Ano, můžete to provést prostřednictvím lokality správy zdrojového kódu (
 
 Měli byste nastavit **rezervované** pole služby App Service na *hodnotu true*.
 
-## <a name="continuous-integration-and-deployment"></a>Průběžná integrace a nasazování
+## <a name="continuous-integration-and-deployment"></a>Průběžná integrace a nasazování
 
 **Moje webová aplikace stále používá starou image kontejneru Docker po aktualizaci image v Docker Hub. Podporujete průběžnou integraci a nasazování vlastních kontejnerů?**
 

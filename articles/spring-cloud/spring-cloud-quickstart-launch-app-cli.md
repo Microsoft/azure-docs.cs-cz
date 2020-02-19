@@ -4,14 +4,14 @@ description: V tomto rychlém startu nasadíte ukázkovou aplikaci do služby Az
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: adb5b64456de743142ffb464ebb2c5e9f8dc8f86
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e30da0844efa48f64a5e2501c79d2167ca4be92
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190775"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431247"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure
 
@@ -143,28 +143,34 @@ az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth
 
 ## <a name="assign-public-endpoint-to-gateway"></a>Přiřazení veřejného koncového bodu k bráně
 
-Potřebujeme způsob, jak získat přístup k aplikaci přes webový prohlížeč. Naše aplikace brány potřebuje veřejný koncový bod, který se dá přiřadit pomocí tohoto příkazu:
+Potřebujeme způsob, jak získat přístup k aplikaci přes webový prohlížeč. Naše aplikace brány potřebuje veřejný koncový bod.
+
+1. Přiřaďte koncový bod pomocí následujícího příkazu:
 
 ```azurecli
 az spring-cloud app update -n gateway --is-public true
 ```
+2. Dotazování aplikace **brány** na veřejnou IP adresu vám umožní ověřit, jestli je aplikace spuštěná:
 
-Nakonec pro veřejnou IP adresu spusťte dotaz na aplikaci **brány** , abyste mohli ověřit, jestli je aplikace spuštěná:
-
+Linux:
 ```azurecli
 az spring-cloud app show --name gateway | grep url
 ```
-
-Pokud chcete spustit aplikaci PiggyMetrics, přejděte na adresu URL poskytnutou předchozím příkazem.
+Windows:
+```azurecli
+az spring-cloud app show --name gateway | findstr url
+```
+3. Pokud chcete spustit aplikaci PiggyMetrics, přejděte na adresu URL poskytnutou předchozím příkazem.
     ![snímek obrazovky PiggyMetrics, na kterém běží](media/spring-cloud-quickstart-launch-app-cli/launch-app.png)
 
 Můžete také přejít na Azure Portal a najít tak adresu URL. 
 1. Přejít ke službě
-1. Vybrat **aplikace**
-1. Vybrat **bránu**
+2. Vybrat **aplikace**
+3. Vybrat **bránu**
 
     ![Snímek obrazovky s PiggyMetrics spuštěným](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
-1. Na stránce s **přehledem brány** ![snímku obrazovky, na které běží](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png) PiggyMetrics, najdete adresu URL.
+    
+4. Na stránce s **přehledem brány** ![snímku obrazovky, na které běží](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png) PiggyMetrics, najdete adresu URL.
 
 > [!div class="nextstepaction"]
 > [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

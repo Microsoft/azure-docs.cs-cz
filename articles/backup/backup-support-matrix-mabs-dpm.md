@@ -3,12 +3,12 @@ title: MABS & – matice podpory DPM pro System Center
 description: Tento článek shrnuje Azure Backup podporu při použití Microsoft Azure Backup serveru (MABS) nebo System Center DPM k zálohování místních a prostředků virtuálních počítačů Azure.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 211a7e39dc9cda9e4bd96e3a66924b2195524be7
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 9441f7ce9069cd85475877f37abe669f3c4fd516
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111463"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444022"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Matice podpory pro zálohování pomocí serveru Microsoft Azure Backup nebo aplikace System Center DPM
 
@@ -70,9 +70,9 @@ Azure Backup můžou zálohovat instance DPM/MABS, na kterých běží některý
 
 **Scénář** | **DPM/MABS**
 --- | ---
-**MABS na virtuálním počítači Azure** | Windows Server 2012 R2.<br/><br/> Windows 2016 Datacenter.<br/><br/> Windows 2019 Datacenter.<br/><br/> Doporučujeme začít s obrázkem z webu Marketplace.<br/><br/> Minimální a2 Standard se dvěma jádry a 3,5 GB paměti RAM.
-**DPM na virtuálním počítači Azure** | System Center 2012 R2 s aktualizací Update 3 nebo novější.<br/><br/> Operační systém Windows podle [požadavků v nástroji System Center](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).<br/><br/> Doporučujeme začít s obrázkem z webu Marketplace.<br/><br/> Minimální a2 Standard se dvěma jádry a 3,5 GB paměti RAM.
-**Místní MABS** | Podporované 64 operační systémy:<br/><br/> MABS v3 a novější: Windows Server 2019 (Standard, Datacenter, Essentials). <br/><br/> MABS v2 a novější: Windows Server 2016 (Standard, Datacenter, Essentials).<br/><br/> Všechny verze MABS: Windows Server 2012 R2.<br/><br/>Všechny verze MABS: Windows Storage Server 2012 R2.
+**MABS na virtuálním počítači Azure** |  Windows 2016 Datacenter.<br/><br/> Windows 2019 Datacenter.<br/><br/> Doporučujeme začít s obrázkem z webu Marketplace.<br/><br/> Minimální Standard_A4_v2 se čtyřmi jádry a 8 GB paměti RAM.
+**DPM na virtuálním počítači Azure** | System Center 2012 R2 s aktualizací Update 3 nebo novější.<br/><br/> Operační systém Windows podle [požadavků v nástroji System Center](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).<br/><br/> Doporučujeme začít s obrázkem z webu Marketplace.<br/><br/> Minimální Standard_A4_v2 se čtyřmi jádry a 8 GB paměti RAM.
+**Místní MABS** |  MABS v3 a novější: Windows Server 2016 nebo Windows Server 2019
 **Místní aplikace DPM** | Fyzický server/virtuální počítač Hyper-V: System Center 2012 SP1 nebo novější.<br/><br/> Virtuální počítač VMware: System Center 2012 R2 s aktualizací Update 5 nebo novější.
 
 >[!NOTE]
