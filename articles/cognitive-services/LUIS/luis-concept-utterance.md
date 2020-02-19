@@ -55,10 +55,10 @@ Vezměte v úvahu tento příklad projevy:
 
 |Ukázkové promluvy|
 |--|
-|Jak získám počítač?|
-|Kde získám počítač?|
-|Chci získat počítač, jak na něj mám přejít?|
-|Kdy můžu počítač dělat?| 
+|how do I get a computer?|
+|Where do I get a computer?|
+|I want to get a computer, how do I go about it?|
+|When can I have a computer?| 
 
 Klíčové slovo "Computer" se neliší. Používejte alternativy, jako je stolní počítač, přenosný počítač, pracovní stanice nebo dokonce jenom počítač. LUIS dokáže inteligentně odvodit synonyma z kontextu, ale při vytváření projevy pro školení je vždy lepší je měnit.
 
@@ -144,8 +144,8 @@ V následujícím projevy je slovo `fair` homograf. Je napsána stejný, ale má
 
 |Promluva|
 |--|
-|Jaký druh county veletrhů se dějí v Seattlu toto léto?|
-|Je aktuální hodnocení ke kontrole Seattle přiměřená?|
+|What kind of county fairs are happening in the Seattle area this summer?|
+|Is the current rating for the Seattle review fair?|
 
 Pokud jste chtěli, aby entita události vyhledala všechna data události, označte slovo `fair` v prvním utterance, ale ne za sekundu.
 
