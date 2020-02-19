@@ -10,20 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/02/2019
-ms.openlocfilehash: 97c277eadbd1b425c50b10d15172c13e17e20eb3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/17/2020
+ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926209"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431088"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-sap-hana-connector.md)
 > * [Aktuální verze](connector-sap-hana.md)
 
-Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z databáze SAP HANA. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z databáze SAP HANA. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
 >[!TIP]
 >Pokud chcete získat přehled o celkové podpoře pro integraci dat přes ADF, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobnými pokyny k úvodu, comparsion a pokyny.
@@ -42,6 +42,7 @@ Konkrétně tento konektor SAP HANA podporuje:
 - Kopírování dat z libovolné verze SAP HANA databáze.
 - Kopírování dat z **modelů informací Hana** (například analytických a výpočetních zobrazení) a **tabulek řádků a sloupců**.
 - Kopírování dat pomocí **základního** ověřování nebo ověřování **systému Windows** .
+- Paralelní kopírování ze zdroje SAP HANA. Podrobnosti najdete v části [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) .
 
 > [!TIP]
 > Chcete-li kopírovat data **do** SAP HANA úložiště dat, použijte obecný konektor ODBC. Viz část [SAP HANA jímka](connector-odbc.md#sap-hana-sink) s podrobnostmi. Všimněte si, že propojené služby konektoru SAP HANA Connector a konektor ODBC mají jiný typ, takže se nedá znovu použít.
@@ -50,8 +51,8 @@ Konkrétně tento konektor SAP HANA podporuje:
 
 Pokud chcete použít tento konektor SAP HANA, musíte:
 
-- Nastavte Integration Runtime pro místní hostování. Zobrazit [modul Integration Runtime](create-self-hosted-integration-runtime.md) , kde najdete podrobnosti.
-- Na Integration Runtime počítač nainstalujte SAP HANA ovladač ODBC. Ovladač SAP HANA ODBC si můžete stáhnout z webu [SAP Software Download Center](https://support.sap.com/swdc). Vyhledejte pomocí klíčového slova **SAP HANA klienta pro Windows**.
+- Nastavte Integration Runtime pro místní hostování. Podrobnosti najdete v článku [Integration runtime](create-self-hosted-integration-runtime.md) v místním prostředí.
+- Na Integration Runtime počítač nainstalujte SAP HANA ovladač ODBC. Ovladač SAP HANA ODBC si můžete stáhnout z [webu SAP software Download Center](https://support.sap.com/swdc). Vyhledejte pomocí klíčového slova **SAP HANA klienta pro Windows**.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -68,8 +69,8 @@ Pro SAP HANA propojenou službu jsou podporovány následující vlastnosti:
 | type | Vlastnost Type musí být nastavená na: **SapHana** . | Ano |
 | connectionString | Zadejte informace potřebné pro připojení k SAP HANA pomocí **základního ověřování** nebo **ověřování systému Windows**. Přečtěte si následující ukázky.<br>V připojovacím řetězci je server/port povinný (výchozí port je 30015) a uživatelské jméno a heslo je při použití základního ověřování povinné. Další upřesňující nastavení najdete v tématu [SAP HANA vlastnosti připojení ODBC](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>) .<br/>Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci hesla z připojovacího řetězce. Další podrobnosti najdete [v článku uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
 | userName | Při použití ověřování systému Windows zadejte uživatelské jméno. Příklad: `user@domain.com` | Ne |
-| heslo | Zadejte heslo pro uživatelský účet. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
-| connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
+| heslo | Zadejte heslo pro uživatelský účet. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
 
 **Příklad: použití základního ověřování**
 
@@ -140,7 +141,7 @@ Pokud jste používali SAP HANA propojenou službu s následující datovou čá
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných sadou SAP HANA DataSet.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných sadou SAP HANA DataSet.
 
 Chcete-li kopírovat data z SAP HANA, jsou podporovány následující vlastnosti:
 
@@ -174,9 +175,12 @@ Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporo
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. V této části najdete seznam vlastností podporovaných zdrojem SAP HANA.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem SAP HANA.
 
 ### <a name="sap-hana-as-source"></a>SAP HANA jako zdroj
+
+>[!TIP]
+>K ingestování dat z SAP HANA efektivní pomocí dělení dat, další informace najdete v části [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) .
 
 Chcete-li kopírovat data z SAP HANA, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
@@ -184,6 +188,9 @@ Chcete-li kopírovat data z SAP HANA, jsou v části **zdroje** aktivity kopíro
 |:--- |:--- |:--- |
 | type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SapHanaSource** . | Ano |
 | query | Určuje dotaz SQL pro čtení dat z instance SAP HANA. | Ano |
+| partitionOptions | Určuje možnosti dělení dat používané k ingestování dat z SAP HANA. Další informace najdete v části [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) .<br>Povolené hodnoty jsou: **None** (výchozí), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Další informace najdete v části [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) . `PhysicalPartitionsOfTable` lze použít pouze při kopírování dat z tabulky, ale nikoli dotazů. <br>Pokud je povolena možnost oddílu (tj. není `None`), stupeň paralelismu na souběžně načtená data z SAP HANA je řízen nastavením [`parallelCopies`](copy-activity-performance.md#parallel-copy) aktivity kopírování. | False |
+| partitionSettings | Určete skupinu nastavení pro dělení dat.<br>Použijte, pokud je možnost oddílu `SapHanaDynamicRange`. | False |
+| partitionColumnName | Zadejte název zdrojového sloupce, který bude oddíl používat pro paralelní kopírování. Pokud není zadaný, index nebo primární klíč tabulky se automaticky zjistí a použije se jako sloupec partition.<br>Použijte, pokud je možnost oddílu `SapHanaDynamicRange`. Pokud použijete dotaz k načtení zdrojových dat, zapojte `?AdfHanaDynamicRangePartitionCondition` v klauzuli WHERE. Viz příklad v sekci [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) . | Ano Při použití oddílu `SapHanaDynamicRange` |
 | packetSize | Určuje velikost síťového paketu (v kilobajtech) pro rozdělení dat na více bloků. Pokud máte velké množství dat ke kopírování, zvýšení velikosti paketu může zvýšit rychlost čtení z SAP HANA ve většině případů. Při úpravě velikosti paketu se doporučuje testování výkonu. | Ne.<br>Výchozí hodnota je 2048 (2 MB). |
 
 **Příklad:**
@@ -220,9 +227,46 @@ Chcete-li kopírovat data z SAP HANA, jsou v části **zdroje** aktivity kopíro
 
 Pokud jste používali `RelationalSource` typ kopie kopírování, je stále podporováno tak, jak je, a až budete chtít začít používat nový.
 
+## <a name="parallel-copy-from-sap-hana"></a>Paralelní kopírování z SAP HANA
+
+Konektor Data Factory SAP HANA poskytuje integrované vytváření oddílů dat pro kopírování dat z SAP HANA paralelně. Možnosti dělení dat najdete ve **zdrojové** tabulce aktivity kopírování.
+
+![Snímek obrazovky s možnostmi oddílů](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
+
+Když povolíte dělenou kopii, Data Factory spustí paralelní dotazy na zdroj SAP HANA a načte data podle oddílů. Paralelní míra je řízena nastavením [`parallelCopies`](copy-activity-performance.md#parallel-copy) u aktivity kopírování. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně generuje a spustí čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat ze svého SAP HANA.
+
+Navrhnete, abyste umožnili paralelní kopírování s vytvářením oddílů dat, obzvláště když obdržíte velké množství dat z SAP HANA. Následují Doporučené konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech se doporučuje zapisovat do složky jako více souborů (zadat jenom název složky). v takovém případě je výkon lepší než zápis do jediného souboru.
+
+| Scénář                                           | Navrhovaná nastavení                                           |
+| -------------------------------------------------- | ------------------------------------------------------------ |
+| Úplné načtení z velké tabulky                        | **Možnost oddílu**: fyzické oddíly tabulky. <br><br/>Během provádění Data Factory automaticky detekuje typ fyzického oddílu zadané SAP HANA tabulky a zvolí strategii pro příslušné oddíly:<br>- **dělení rozsahu**: Získejte sloupce oddílu a rozsahy oddílů definované pro tabulku a pak zkopírujte data podle rozsahu. <br>- **dělení hodnot hash**: použijte klíč oddílu hash jako sloupec partition a potom oddíl a zkopírujte data na základě počítaných rozsahů ADF. <br>- **vytváření oddílů kruhového dotazování** nebo **žádný oddíl**: jako sloupec oddílu použijte primární klíč, potom oddíl a zkopírujte data na základě počítaných rozsahů ADF. |
+| Načtení velkého množství dat pomocí vlastního dotazu. | **Možnost oddílu**: dynamický oddíl rozsahu.<br>**Dotaz**: `SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>`.<br>**Sloupec oddílu**: Zadejte sloupec použitý pro použití dynamického oddílu rozsahu. <br><br>Během provádění Data Factory za prvé vypočítá rozsahy hodnot v zadaném sloupci oddílu, a to rovnoměrně rozděluje řádky v řadě intervalů podle počtu jedinečných hodnot sloupců oddílů a nastavení paralelního kopírování ADF a pak nahrazuje `?AdfHanaDynamicRangePartitionCondition` filtrování rozsahu hodnot sloupců oddílu pro každý oddíl a odesílá se do SAP HANA.<br><br>Pokud chcete použít více sloupců jako sloupec partition, můžete zřetězit hodnoty každého sloupce jako jeden sloupec v dotazu a zadat ho jako sloupec partition v ADF, například `SELECT * FROM (SELECT *, CONCAT(<KeyColumn1>, <KeyColumn2>) AS PARTITIONCOLUMN FROM <TABLENAME>) WHERE ?AdfHanaDynamicRangePartitionCondition`. |
+
+**Příklad: dotazování s fyzickými oddíly tabulky**
+
+```json
+"source": {
+    "type": "SapHanaSource",
+    "partitionOption": "PhysicalPartitionsOfTable"
+}
+```
+
+**Příklad: dotaz s dynamickým oddílem rozsahu**
+
+```json
+"source": {
+    "type": "SapHanaSource",
+    "query": "SELECT * FROM <TABLENAME> WHERE ?AdfHanaDynamicRangePartitionCondition AND <your_additional_where_clause>",
+    "partitionOption": "SapHanaDynamicRange",
+    "partitionSettings": {
+        "partitionColumnName": "<Partition_column_name>"
+    }
+}
+```
+
 ## <a name="data-type-mapping-for-sap-hana"></a>Mapování datových typů pro SAP HANA
 
-Při kopírování dat z SAP HANA se z SAP HANA datových typů používají následující mapování pro Azure Data Factory dočasných datových typů. Zobrazit [schéma a data zadejte mapování](copy-activity-schema-and-type-mapping.md) Další informace o způsobu, jakým aktivitu kopírování, která mapuje typ zdroje schéma a data na jímce.
+Při kopírování dat z SAP HANA se z SAP HANA datových typů používají následující mapování pro Azure Data Factory dočasných datových typů. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ do jímky, najdete v tématu [mapování typů schématu a dat](copy-activity-schema-and-type-mapping.md) .
 
 | SAP HANA datový typ | Data factory dočasné datový typ |
 | ------------------ | ------------------------------ |
@@ -230,18 +274,18 @@ Při kopírování dat z SAP HANA se z SAP HANA datových typů používají ná
 | BIGINT             | Int64                          |
 | TVARU             | Byte[]                         |
 | BINTEXT            | Řetězec                         |
-| BLOB               | Byte[]                         |
-| LOGICK               | Bajtů                           |
+| PŘÍZNAKY               | Byte[]                         |
+| LOGICK               | Bajt                           |
 | CLOB               | Řetězec                         |
-| DATE (Datum)               | Datum a čas                       |
-| DESÍTKOVÉ            | Decimal                        |
-| DOUBLE             | Double                         |
+| DATE (Datum)               | DateTime                       |
+| NOTACI            | Decimal                        |
+| KLEPAT             | Double                         |
 | FLOAT              | Double                         |
 | INTEGER            | Datový typ Int32                          |
 | NCLOB              | Řetězec                         |
 | NVARCHAR           | Řetězec                         |
-| REÁLNÉ               | Jednoduchá                         |
-| SECONDDATE         | Datum a čas                       |
+| NEMOVITOSTÍ               | Jednoduchá                         |
+| SECONDDATE         | DateTime                       |
 | SHORTTEXT          | Řetězec                         |
 | SMALLDECIMAL       | Decimal                        |
 | SMALLINT           | Int16                          |
@@ -249,9 +293,9 @@ Při kopírování dat z SAP HANA se z SAP HANA datových typů používají ná
 | STPOINTTYPE        | Byte[]                         |
 | TEXT               | Řetězec                         |
 | ČAS               | TimeSpan                       |
-| TINYINT            | Bajtů                           |
+| TINYINT            | Bajt                           |
 | VARCHAR            | Řetězec                         |
-| TIMESTAMP          | Datum a čas                       |
+| TIMESTAMP          | DateTime                       |
 | VARBINARY          | Byte[]                         |
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
@@ -259,4 +303,4 @@ Při kopírování dat z SAP HANA se z SAP HANA datových typů používají ná
 Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a jímky v aktivitě kopírování ve službě Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

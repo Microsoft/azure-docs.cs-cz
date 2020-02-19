@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: d3f6acef7491a07f94eec0b2c3b2f3bcd9c01a33
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e013011f81542aa279ba9276a6a1aac01eb9e41
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701673"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443178"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Připojte síť testovacího prostředí k partnerské virtuální síti v Azure Lab Services 
 Tento článek poskytuje informace o partnerském vztahu vaší sítě Labs s jinou sítí. 
@@ -34,7 +34,7 @@ V některých scénářích může být nutné připojit síť testovacího pros
 Některé místní sítě jsou připojené k Azure Virtual Network buď prostřednictvím [ExpressRoute](../../expressroute/expressroute-introduction.md) , nebo [Virtual Network bránou](../../vpn-gateway/vpn-gateway-about-vpngateways.md). Tyto služby musí být nastaveny mimo Azure Lab Services. Další informace o připojení místní sítě k Azure pomocí ExpressRoute najdete v tématu [ExpressRoute Overview](../../expressroute/expressroute-introduction.md). V případě místního připojení pomocí Virtual Network brány musí být brána, zadaná virtuální síť a účet testovacího prostředí všechny ve stejné oblasti.
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurace v době vytváření účtu testovacího prostředí
-Během vytváření nového účtu testovacího prostředí můžete vybrat existující virtuální síť, která se zobrazí v rozevíracím seznamu **partnerských virtuálních sítí** . Vybraná virtuální síť je připojená k laboratořím vytvořeným v rámci účtu testovacího prostředí. Všechny virtuální počítače v laboratořích, které se vytvoří po provedení této změny, budou mít přístup k prostředkům v partnerské virtuální síti. 
+Během vytváření nového účtu testovacího prostředí můžete vybrat existující virtuální síť, která se zobrazí v rozevíracím seznamu **partnerské virtuální sítě** na kartě **Upřesnit** . Vybraná virtuální síť je připojená k laboratořím vytvořeným v rámci účtu testovacího prostředí. Všechny virtuální počítače v laboratořích, které se vytvoří po provedení této změny, budou mít přístup k prostředkům v partnerské virtuální síti. 
 
 ![Vybrat virtuální síť pro partnerský uzel](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 
@@ -56,8 +56,8 @@ Když vyberete virtuální síť pro pole **rovnocenná virtuální síť** , mo
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Účty testovacího prostředí se vytvářejí a spravují jako správce.](how-to-manage-lab-accounts.md)
-- [Jako vlastník testovacího prostředí vytvářet a spravovat cvičení](how-to-manage-classroom-labs.md)
-- [Jako vlastník testovacího prostředí, nastavení a publikování šablon](how-to-create-manage-template.md)
-- [Jako uživatel testovacího prostředí, Access učeben Labs](how-to-use-classroom-lab.md)
-
+- [Povolí autorovi testovacího prostředí vybrat umístění testovacího prostředí.](allow-lab-creator-pick-lab-location.md)
+- [Připojení Galerie sdílených imagí k testovacímu prostředí](how-to-attach-detach-shared-image-gallery.md)
+- [Přidat uživatele jako vlastníka testovacího prostředí](how-to-add-user-lab-owner.md)
+- [Zobrazit nastavení brány firewall pro testovací prostředí](how-to-configure-firewall-settings.md)
+- [Konfigurace dalších nastavení pro testovací prostředí](how-to-configure-lab-accounts.md)

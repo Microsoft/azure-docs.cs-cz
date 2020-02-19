@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: ea9df341fcc76a38364e590f8541e6a85d7ec466
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 52d5628698d1f945a7f672595ee7ce4739b6d13c
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211006"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444362"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Umožňuje tvůrci testovacího prostředí vybrat umístění pro testovací prostředí v Azure Lab Services
 V Azure Lab Services může vlastník účtu testovacího prostředí dovolit tvůrcům testovacího prostředí (pedagogům) vybrat umístění pro testovací prostředí, které vytvoří. Toto umístění se může lišit od umístění účtu testovacího prostředí. Umístění je skupina oblastí Azure. Například umístění USA je skupina oblastí, například Východní USA, Západní USA a tak dále. 
@@ -73,6 +73,8 @@ Předchozí ceny vycházejí z velikosti virtuálního počítače, kterou zvol�
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Jako vlastník testovacího prostředí vytvářet a spravovat cvičení](how-to-manage-classroom-labs.md)
-- [Jako vlastník testovacího prostředí, nastavení a publikování šablon](how-to-create-manage-template.md)
-- [Jako vlastník testovacího prostředí konfigurace a řízení využití testovacího prostředí](how-to-configure-student-usage.md)
+- [Připojení sítě testovacího prostředí k partnerské virtuální síti](how-to-connect-peer-virtual-network.md)
+- [Připojení Galerie sdílených imagí k testovacímu prostředí](how-to-attach-detach-shared-image-gallery.md)
+- [Přidat uživatele jako vlastníka testovacího prostředí](how-to-add-user-lab-owner.md)
+- [Zobrazit nastavení brány firewall pro testovací prostředí](how-to-configure-firewall-settings.md)
+- [Konfigurace dalších nastavení pro testovací prostředí](how-to-configure-lab-accounts.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
-ms.openlocfilehash: d89d506d8912706bbdb802801b16d01036ecb8e2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 99c6ee5d58655350d14add61530fae647a675508
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583519"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443223"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Nastavení a správa fondu virtuálních počítačů 
 V tomto článku se dozvíte, jak provádět následující úlohy:
@@ -96,6 +96,9 @@ Tvůrce testovacího prostředí (instruktor/profesor) se může připojit k vir
  Pokud se chcete připojit k virtuálnímu počítači studenta, najeďte myší na virtuální počítač v seznamu a vyberte tlačítko počítač.  
 
 ![Tlačítko připojit k virtuálnímu počítači studenta](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
+
+> [!NOTE]
+> Když profesor spustí virtuální počítač a připojí se k němu, neovlivní se kvóta studenta. 
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o možnostech využití studenta (jako vlastník testovacího prostředí) můžete nakonfigurovat v následujícím článku: [Konfigurace využití studenta](how-to-configure-student-usage.md).

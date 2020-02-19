@@ -1,0 +1,209 @@
+---
+title: Co je Azure Virtual Network NAT?
+description: Přehled Virtual Network funkcí NAT, prostředků, architektury a implementace. Přečtěte si, jak Virtual Network NAT funguje a jak používat prostředky brány NAT v cloudu.
+services: virtual-network
+documentationcenter: na
+author: asudbring
+manager: KumudD
+ms.service: virtual-network
+Customer intent: As an IT administrator, I want to learn more about Virtual Network NAT, its NAT gateway resources, and what I can use them for.
+ms.devlang: na
+ms.topic: overview
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 02/18/2020
+ms.author: allensu
+ms.openlocfilehash: 98d77f43c990dd00dd5e5d616b2fdee44fb8a2f6
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431413"
+---
+# <a name="what-is-virtual-network-nat-public-preview"></a>Co je Virtual Network NAT (Public Preview)?
+
+Virtual Network NAT (překlad síťových adres) zjednodušuje připojení k Internetu pouze pro virtuální sítě. Při konfiguraci v podsíti všechna odchozí připojení používá vaše zadané statické veřejné IP adresy.  Odchozí připojení je možné bez nástroje pro vyrovnávání zatížení nebo veřejných IP adres, které jsou přímo připojené k virtuálním počítačům. Překlad adres (NAT) je plně spravovaný a vysoce odolný.
+
+<!-- 
+<img src="./media/nat-overview/flow-map.svg" width="270" align="center">
+![Virtual Network NAT](./media/nat-overview/flow-map.svg)
+-->
+
+<p align="center">
+  <img src="./media/nat-overview/flow-map.svg" width="256" title="Virtual Network NAT">
+</p>
+
+
+
+*Obrázek: Virtual Network NAT*
+
+
+>[!NOTE] 
+>Virtual Network překlad adres (NAT) je v tuto chvíli k dispozici jako Public Preview. V současné době je dostupná jenom v omezené sadě [oblastí](#region-availability). Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.comsupport/legal/preview-supplemental-terms).
+
+## <a name="static-ip-addresses-for-outbound-only"></a>Statické IP adresy pouze pro odchozí
+
+Odchozí připojení je možné definovat pro každou podsíť pomocí překladu adres (NAT).  Několik podsítí v rámci jedné virtuální sítě může mít různé NAT. Podsíť je nakonfigurovaná tak, že určíte, který [prostředek brány NAT](./nat-gateway-resource.md) se má použít. Všechny odchozí toky UDP a TCP z jakékoli instance virtuálního počítače budou používat překlad adres (NAT). 
+
+Překlad adres (NAT) je kompatibilní s [prostředky veřejné IP adresy](./virtual-network-ip-addresses-overview-arm.md#standard) standardního SKU nebo [prostředky předpony veřejných IP](./public-ip-address-prefix.md) adres nebo kombinací obou.  Pomocí předpony veřejných IP adres můžete přímo nebo distribuovat veřejné IP adresy předpony napříč více prostředky brány NAT. Překlad adres (NAT) odstraní veškerý provoz do rozsahu IP adres předpony.  Jakékoli seznam povolených IP adres vašich nasazení je teď snadné.
+
+Veškerý odchozí provoz pro podsíť se zpracovává automaticky pomocí překladu adres (NAT) bez jakýchkoli konfigurací zákazníka.  Trasy definované uživatelem nejsou nutné. Překlad adres (NAT) má přednost před jinými [odchozími scénáři](../load-balancer/load-balancer-outbound-connections.md) a nahrazuje výchozí internetový cíl podsítě.
+
+## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>SNAT na vyžádání s více IP adresami pro škálování
+
+NAT používá "překlad síťových adres portu" (PNAT nebo PAT) a doporučuje se pro většinu úloh. Dynamické nebo odchylované úlohy je možné snadno přizpůsobit pomocí odchozího toku na vyžádání. Vyhněte se rozsáhlému plánování, předběžnému přidělení a konečnému nadměrnému zajišťování odchozích prostředků. Prostředky portu SNAT jsou sdílené a dostupné ve všech podsítích pomocí konkrétního prostředku brány NAT a v případě potřeby jsou k dispozici.
+
+Veřejná IP adresa připojená k NAT poskytuje až 64 000 souběžných toků pro UDP a TCP. Můžete začít s jednou IP adresou a škálovat až 16 veřejných IP adres.
+
+Překlad adres (NAT) umožňuje vytvářet toky z virtuální sítě na Internet. Návratový provoz z Internetu je povolený jenom v reakci na aktivní tok.
+
+Na rozdíl od odchozí SNAT nástroje pro vyrovnávání zatížení nemá překlad adres (NAT) žádná omezení, která privátní IP instance virtuálního počítače může vytvořit odchozí připojení.  Sekundární konfigurace IP adresy můžou vytvářet odchozí připojení k Internetu pomocí překladu adres (NAT).
+
+## <a name="coexistence-of-inbound-and-outbound"></a>Koexistence příchozích a odchozích
+
+Překlad adres (NAT) je kompatibilní s následujícími zdroji SKU Standard:
+
+- [Load Balancer](../load-balancer/load-balancer-overview.md)
+- [Veřejná IP adresa](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
+- [Předpona veřejné IP adresy](../virtual-network/public-ip-address-prefix.md)
+
+Při použití spolu s překladem adres (NAT) tyto prostředky poskytují příchozí připojení k internetu vašim podsítím. Překlad adres (NAT) poskytuje veškeré odchozí připojení k Internetu z vašich podsítí.
+
+Funkce NAT a kompatibilní standardní SKU mají na paměti, kdy byl tok spuštěn. Scénáře příchozího a odchozího přenosu můžou existovat současně. Tyto scénáře dostanou správné překlady síťových adres, protože tyto funkce mají informace o směru toku. 
+
+<!-- 
+<img src="./media/nat-overview/flow-direction4.svg" width="500" align="center">
+![Virtual Network NAT flow direction](./media/nat-overview/flow-direction4.svg)
+-->
+<p align="center">
+  <img src="./media/nat-overview/flow-direction4.svg" width="512" title="Virtual Network směr toku NAT">
+</p>
+
+*Obrázek: Virtual Network směr toku NAT*
+
+## <a name="fully-managed-highly-resilient"></a>Plně spravovaná, vysoce odolná
+
+Překlad adres (NAT) je plně škálovatelný od začátku. Není nutná žádná operace se škálováním na více instancí ani na více instancí.  Azure za vás spravuje operace překladu adres (NAT).  NAT má vždycky více domén selhání a může tolerovat více selhání bez výpadku služby.
+
+## <a name="tcp-reset-for-unrecognized-flows"></a>Resetování protokolu TCP pro nerozpoznané toky
+
+Soukromá strana služby NAT odesílá pakety pro resetování TCP pro pokusy o komunikaci s připojením TCP, které neexistuje. Jedním z příkladů je připojení, u kterých se dosáhlo časového limitu nečinnosti. Další přijaté pakety vrátí nastavení protokolu TCP na privátní IP adresu k signalizaci a vynucení ukončení připojení.
+
+Veřejná strana překladu síťových adres (NAT) negeneruje pakety pro resetování TCP ani žádný jiný provoz.  Vygeneruje se jenom provoz vzniklý virtuální sítí zákazníka.
+
+## <a name="configurable-idle-timeout"></a>Konfigurovatelný časový limit nečinnosti
+
+Použije se výchozí časový limit nečinnosti 4 minuty a dá se zvýšit na až 120 minut. Časová prodleva v toku může také resetovat časovač nečinnosti, včetně udržení protokolu TCP.
+
+## <a name="regional-or-zone-isolation-with-availability-zones"></a>Regionální nebo izolovaná izolace se zónami dostupnosti
+
+Překlad adres (NAT) je ve výchozím nastavení regionální. Při vytváření scénářů [zón dostupnosti](../availability-zones/az-overview.md) se NAT může izolovat v konkrétní zóně (nasazení oblastí).
+
+<!-- 
+<img src="./media/nat-overview/az-directions.svg" width="500" align="center">
+![Virtual Network NAT with availability zones](./media/nat-overview/az-directions.svg)
+-->
+
+<p align="center">
+  <img src="./media/nat-overview/az-directions.svg" width="512" title="Virtual Network překlad adres (NAT) se zónami dostupnosti">
+</p>
+
+*Obrázek: Virtual Network překlad adres (NAT) se zónami dostupnosti*
+
+## <a name="multi-dimensional-metrics-for-observability"></a>Multidimenzionální metriky pro pozorování
+
+Provoz vašeho překladu adres (NAT) můžete monitorovat prostřednictvím multidimenzionální metriky, která je dostupná v Azure Monitor. Tyto metriky je možné využít ke sledování využití a k řešení problémů.  Prostředky brány NAT zpřístupňují následující metriky:
+- Bajty
+- Rámců
+- Vyřazené pakety
+- Celkový počet připojení SNAT
+- Přechody stavu připojení SNAT podle intervalu
+
+<!-- "ADD when PM is done" Learn more about [NAT gateway metrics](./nat-gateway-metrics.md) -->
+
+## <a name="sla"></a>SLA
+
+V obecné dostupnosti je k dispozici alespoň 99,9% cesta k datům NAT.
+
+## <a name = "region-availability"></a>Dostupnost oblasti
+
+Překlad adres (NAT) je aktuálně k dispozici v těchto oblastech:
+
+- Evropa – západ
+- Japonsko – východ
+- USA – východ 2
+- USA – západ
+- USA – západ 2
+- USA – středozápad
+
+## <a name = "enable-preview"></a>Účast Public Preview
+
+Aby bylo možné zúčastnit se Public Preview, musí být odběry registrovány.  Účast vyžaduje proces se dvěma kroky a pokyny pro Azure CLI a Azure PowerShell.  Dokončení aktivace může trvat několik minut.
+
+> [!IMPORTANT]
+> Po povolení služby Virtual Network NAT [Preview](./nat-overview.md#enable-preview) ve vašem předplatném použijte https://aka.ms/natportal pro přístup k portálu.
+
+### <a name="azure-cli"></a>Azure CLI
+
+1. registrace předplatného pro Public Preview
+
+    ```azurecli-interactive
+      az feature register --namespace Microsoft.Network --name AllowNatGateway
+    ```
+
+2. aktivovat registraci
+
+    ```azurecli-interactive
+      az provider register --namespace Microsoft.Network
+    ```
+
+### <a name="azure-powershell"></a>Azure Powershell
+
+1. registrace předplatného pro Public Preview
+
+    ```azurepowershell-interactive
+      Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowNatGateway
+    ```
+
+2. aktivovat registraci
+
+    ```azurepowershell-interactive
+      Register-AzProviderFeature -ProviderNamespace Microsoft.Network
+    ```
+
+## <a name="pricing"></a>Ceny
+
+Brána NAT se účtuje se dvěma samostatnými měřiči:
+
+| Měřič | Sazba |
+| --- | --- |
+| Hodiny prostředků | $0.045 za hodinu |
+| Zpracovaná data | $0.045/GB |
+
+Účty hodin prostředků po dobu, po kterou existuje prostředek brány NAT.
+Účty zpracované daty pro veškerý provoz zpracovaných prostředkem brány NAT
+
+Ve verzi Public Preview se ceny uvažují 50%.
+
+## <a name="support"></a>Podpora
+
+Překlad adres (NAT) je podporován prostřednictvím běžných kanálů podpory.
+
+## <a name="feedback"></a>Váš názor
+
+Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Public Preview](https://aka.ms/natfeedback) s námi.  A můžete navrhnout a hlasovat o tom, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
+
+## <a name="limitations"></a>Omezení
+
+- Překlad adres (NAT) je kompatibilní s veřejnou IP adresou SKU, předponou veřejné IP adresy a prostředky nástroje pro vyrovnávání zatížení.   Základní prostředky (například základní nástroj pro vyrovnávání zatížení) a jakékoli produkty, které jsou z nich odvozené, nejsou kompatibilní se službou NAT.  Základní prostředky musí být umístěné v podsíti, která není nakonfigurovaná s překladem adres (NAT).
+- Rodina adres IPv4 je podporovaná.  Překlad adres (NAT) nekomunikuje s řadou IPv6 adres.
+- NSG v podsíti nebo síťové kartě se neuplatňují pro odchozí toky do veřejných koncových bodů pomocí překladu adres (NAT).
+- Protokolování toku NSG se při použití překladu adres (NAT) nepodporuje.
+- Pokud má virtuální síť více podsítí, může mít každá podsíť nakonfigurované jiné nastavení překladu adres (NAT).
+- Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
+
+## <a name="next-steps"></a>Další kroky
+
+- Přečtěte si o [prostředku brány NAT](./nat-gateway-resource.md).
+- [Řekněte nám, co se má sestavit dál ve službě UserVoice](https://aka/natuservoice).
+- [Poskytněte zpětnou vazbu k Public Preview](https://aka.ms/natfeedback).

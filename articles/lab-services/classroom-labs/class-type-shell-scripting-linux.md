@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 226c9ae1c42c85db57dab3fd1911943e167a6288
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 100a485588c77f6977001dae984b30ebcb1de557
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133682"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443546"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Nastavení testovacího prostředí pro učení skriptování prostředí v systému Linux
 V tomto článku se dozvíte, jak nastavit testovací prostředí pro učení skriptování prostředí v systému Linux. Skriptování je užitečnou součástí správy systému, která správcům umožňuje vyhnout se opakovaným úlohám. V tomto ukázkovém scénáři třída pokrývá tradiční skripty bash a rozšířené skripty. Rozšířené skripty jsou skripty, které kombinují příkazy bash a Ruby. Tento přístup umožňuje Ruby předávat data kolem a bash příkazů pro interakci s prostředím. 
@@ -32,7 +32,7 @@ Po vytvoření účtu testovacího prostředí povolte v účtu testovacího pro
 
 | Nastavení účtu testovacího prostředí | Pokyny |
 | ----------- | ------------ |  
-| Image Marketplace | Povolte image [Ubuntu serveru 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) pro použití v rámci vašeho účtu testovacího prostředí. Další informace najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](how-to-configure-lab-accounts.md#specify-marketplace-images-available-to-lab-creators) . | 
+| Image Marketplace | Povolte image [Ubuntu serveru 18,04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.0001-com-ubuntu-server-bionic) pro použití v rámci vašeho účtu testovacího prostředí. Další informace najdete v tématu [určení imagí z Marketplace dostupných pro tvůrce testovacích prostředí](specify-marketplace-images.md). | 
 
 Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací prostředí a použijte následující nastavení:
 

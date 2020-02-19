@@ -5,22 +5,33 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 12/06/2019
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: cf8e6ca3a532dea29a413b1afdfc684ac8f08f17
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0ba2ce30cee3ff7e3a9f71b4f1b0928fa84e775d
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869557"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443141"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Co je verze Preview Azure Firewall Manageru?
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Azure Firewall Manager Preview je služba pro správu zabezpečení, která nabízí centrální zásady zabezpečení a správu směrování pro cloudové bezpečnostní perimetry. Funguje s [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources), což je prostředek spravovaný Microsoftem, který umožňuje snadno vytvářet architektury hub a paprsků. Pokud jsou zásady zabezpečení a směrování přidruženy k takovému centru, označuje se jako *[zabezpečené virtuální rozbočovač](secured-virtual-hub.md)* . 
+Verze Preview služby Azure Firewall Manager je služba pro správu zabezpečení, která poskytuje centrální zásady zabezpečení a správu směrování pro hraniční zabezpečení na základě cloudu. 
 
-![firewall – správce](media/overview/firewallmanagerv3.png)
+Správce brány firewall může poskytovat správu zabezpečení pro dva typy síťové architektury:
+
+- **zabezpečené virtuální centrum**
+
+   [Azure Virtual WAN hub](../virtual-wan/virtual-wan-about.md#resources) je prostředek spravovaný Microsoftem, který umožňuje snadno vytvářet architektury hub a paprsků. Pokud jsou zásady zabezpečení a směrování přidruženy k takovému centru, označuje se jako *[zabezpečené virtuální rozbočovač](secured-virtual-hub.md)* . 
+- **virtuální síť centra**
+
+   Toto je standardní virtuální síť Azure, kterou vytváříte a spravujete sami. Pokud jsou zásady zabezpečení přidružené k takovému centru, označuje se jako *virtuální síť rozbočovače*. V tuto chvíli se podporují jenom zásady Azure Firewall. Můžete vytvořit partnerský paprsek virtuálních sítí, které obsahují vaše servery a služby pro úlohy. Brány firewall můžete spravovat i v samostatných virtuálních sítích, které nejsou partnerského vztahu k žádnému rozbočovači.
+
+Podrobné porovnání *zabezpečeného virtuálního rozbočovače* a architektury *virtuální sítě rozbočovače* najdete v tématu [co jsou možnosti architektury Azure firewall Manageru?](vhubs-and-vnets.md).
+
+![firewall – správce](media/overview/firewallmanagerv5.png)
 
 ## <a name="azure-firewall-manager-preview-features"></a>Funkce Preview nástroje Azure Firewall Manager
 
@@ -38,6 +49,8 @@ Pomocí nástroje Azure Firewall Manager Preview můžete centrálně spravovat 
 
 Kromě Azure Firewall můžete integrovat poskytovatele zabezpečení jako služby (SECaaS) třetích stran a poskytnout tak další ochranu sítě pro připojení k virtuální síti a pobočkám.
 
+Tato funkce je dostupná jenom u zabezpečených nasazení virtuálních rozbočovačů.
+
 - Filtrování provozu virtuální sítě k Internetu (V2I)
 
    - Filtrujte odchozí přenosy virtuální sítě s vaším preferovaným poskytovatelem zabezpečení třetí strany.
@@ -51,18 +64,15 @@ Další informace o důvěryhodných poskytovatelích zabezpečení najdete v t�
 
 ### <a name="centralized-route-management"></a>Centralizovaná správa tras
 
-Snadné směrování provozu do zabezpečeného centra pro filtrování a protokolování bez nutnosti ručního nastavení tras definovaných uživatelem (UDR) ve virtuálních sítích paprsků. Můžete použít poskytovatele třetích stran pro filtrování přenosů větví na Internet (B2I) vedle sebe s Azure Firewall pro větvení na virtuální síť (B2V), virtuální síť a virtuální síť (V2V) a virtuální síť k Internetu (V2I). Pro filtrování provozu V2I můžete také použít poskytovatele třetích stran, pokud pro B2V nebo V2V není vyžadováno Azure Firewall. 
+Snadné směrování provozu do zabezpečeného centra pro filtrování a protokolování bez nutnosti ručního nastavení tras definovaných uživatelem (UDR) ve virtuálních sítích paprsků. 
 
-## <a name="region-availability"></a>Regionální dostupnost
+Tato funkce je dostupná jenom u zabezpečených nasazení virtuálních rozbočovačů.
 
-Verze Public Preview podporuje následující oblasti:
+Můžete použít poskytovatele třetích stran pro filtrování přenosů větví na Internet (B2I) vedle sebe s Azure Firewall pro větvení na virtuální síť (B2V), virtuální síť a virtuální síť (V2V) a virtuální síť k Internetu (V2I). Pro filtrování provozu V2I můžete také použít poskytovatele třetích stran, pokud pro B2V nebo V2V není vyžadováno Azure Firewall. 
 
-- Západní Evropa, Severní Evropa, Francie – střed, Francie – jih, Velká Británie – jih Velká Británie – západ
-- Austrálie – východ, Austrálie – střed, Austrálie – střed 2, Austrálie – jihovýchod
-- Kanada – střed
-- Východní USA, Západní USA, Východní USA 2, Střed USA – jih, Západní USA 2, Střed USA, Střed USA – sever, Středozápadní USA
+## <a name="region-availability"></a>Dostupnost v oblastech
 
-Zásady Azure Firewall lze vytvořit pouze v těchto oblastech, ale lze je použít v různých oblastech. Můžete například vytvořit zásadu v Západní USA a použít ji v Východní USA. 
+Zásady Azure Firewall lze používat napříč oblastmi. Můžete například vytvořit zásadu v Západní USA a použít ji v Východní USA. 
 
 ## <a name="known-issues"></a>Známé problémy
 
@@ -70,13 +80,13 @@ Verze Preview Azure Firewall Manageru má následující známé problémy:
 
 |Problém  |Popis  |Omezení rizik  |
 |---------|---------|---------|
-|Ruční vytvoření centrálního virtuální sítě se nepodporuje.|V současné době Azure Firewall Manager podporuje sítě vytvořené pomocí virtuálních Center. Používání vlastní virtuální sítě rozbočovače se ještě nepodporují.|Prozatím použijte Azure Firewall Manager se sítěmi hub a paprsků vytvořených s virtuálními rozbočovači.<br>Probíhá oprava.
 |Omezení filtrování třetích stran|Filtrování přenosů V2I s poskytovateli třetích stran není podporované u Azure Firewallch B2V a V2V.|Probíhá šetření.|
 |Rozdělení provozu se momentálně nepodporuje.|Rozdělování provozu Office 365 a Azure Public PaaS se v tuto chvíli nepodporuje. V takovém případě je třeba vybrat poskytovatele třetí strany pro V2I nebo B2I také odeslat veškerý provoz Azure Public PaaS a Office 365 prostřednictvím partnerské služby.|Probíhá šetření rozdělení provozu v centru.
-|Jedno centrum na oblast|Nemůžete mít více než jedno centrum na oblast.|Vytvoření více virtuálních sítí WAN v určité oblasti.|
+|Jeden zabezpečený virtuální rozbočovač na oblast|Nemůžete mít více než jedno zabezpečené virtuální rozbočovače na oblast.|Vytvoření více virtuálních sítí WAN v určité oblasti.|
 |Základní zásady musí být ve stejné oblasti jako místní zásada.|Vytvořte všechny místní zásady ve stejné oblasti jako základní zásady. Můžete přesto použít zásadu, která byla vytvořena v jedné oblasti v zabezpečeném centru z jiné oblasti.|Probíhá šetření.|
 |Komunikace mezi rozbočovači nefunguje s zabezpečeným virtuálním rozbočovačem|Zabezpečené virtuální rozbočovače na zabezpečenou komunikaci virtuálního rozbočovače ještě není podporovaná.|Probíhá šetření.|
 |Všechna zabezpečená virtuální centra, která sdílejí stejnou virtuální síť WAN, musí být ve stejné skupině prostředků.|Toto chování je v současné době zarovnané na virtuální rozbočovače WAN.|Vytvořte více virtuálních sítí WAN, aby bylo možné vytvořit zabezpečené virtuální rozbočovače v různých skupinách prostředků.|
+|Skupiny IP adres se v zásadách brány firewall nepodporují.|Skupiny IP adres jsou ve verzi Public Preview a aktuálně se podporují jenom s tradičními pravidly brány firewall.|Probíhá oprava.
 
 ## <a name="next-steps"></a>Další kroky
 

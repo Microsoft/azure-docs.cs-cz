@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 8d43965e87ab57d9f0c79c6661a761b06ccb7073
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 50e050a05fd364a4b1f880e3501b04274ffd360c
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902099"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444226"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocí Pythonu
 
@@ -24,11 +24,15 @@ ms.locfileid: "76902099"
 > * [Python](create-cluster-database-python.md)
 > * [Šablona ARM](create-cluster-database-resource-manager.md)
 
-Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. V tomto článku vytvoříte cluster a databázi pomocí Pythonu.
+V tomto článku vytvoříte cluster a databázi Azure Průzkumník dat pomocí Pythonu. Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, nejdřív vytvořte cluster a v tomto clusteru vytvořte jednu nebo víc databází. Potom ingestujte nebo načtěte data do databáze, abyste na ni mohli spouštět dotazy.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
+* Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+* [Python 3.4 +](https://www.python.org/downloads/).
+
+* [Aplikace služby Azure AD a instanční objekt, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Získejte hodnoty pro `Directory (tenant) ID`, `Application ID`a `Client Secret`.
 
 ## <a name="install-python-package"></a>Instalovat balíček Pythonu
 
@@ -38,7 +42,7 @@ Pro instalaci balíčku Pythonu pro Azure Průzkumník dat (Kusto) otevřete př
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure AD a instanční objekt, který má přístup k prostředkům. Pokud chcete vytvořit bezplatnou aplikaci Azure AD a přidat přiřazení role v oboru předplatného, podívejte se na [vytvořit aplikaci Azure AD](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . Také ukazuje, jak získat `Directory (tenant) ID`, `Application ID`a `Client Secret`.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Vytvoření clusteru Azure Průzkumník dat
@@ -82,7 +86,7 @@ Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure
    |---|---|---|
    | cluster_name | *mykustocluster* | Požadovaný název clusteru.|
    | sku_name | *Standard_D13_v2* | SKU, které bude použito pro váš cluster. |
-   | Basic | *Standard* | Úroveň SKU. |
+   | tier | *Standard* | Úroveň SKU. |
    | capacity | *Automatické* | Počet instancí clusteru |
    | resource_group_name | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
 

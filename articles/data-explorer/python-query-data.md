@@ -7,24 +7,26 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 2c32e67bb2b47a24036a341ea4e1b83037abbaee
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827531"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443971"
 ---
 # <a name="query-data-using-the-azure-data-explorer-python-library"></a>Dotazování na data pomocí knihovny Pythonu v Azure Průzkumník dat
 
-Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Data Explorer poskytuje [datovou klientskou knihovnu pro Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Pomocí této knihovny můžete data dotazovat z kódu. V tomto článku se připojíte k tabulce v *clusteru Help* , kterou jsme nastavili na podporu učení. Pak provedete dotaz na tabulku v tomto clusteru a vrátíte výsledky.
+V tomto článku se dotazují na data pomocí Průzkumník dat Azure. Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie.
+
+Azure Data Explorer poskytuje [datovou klientskou knihovnu pro Python](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data). Pomocí této knihovny můžete data dotazovat z kódu. Připojte se k tabulce v *clusteru Help* , kterou jsme nastavili na podporu učení. Můžete zadat dotaz na tabulku v tomto clusteru a vrátit výsledky.
 
 Tento článek je také k dispozici jako [notebook Azure](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
+
+* [Python 3.4 +](https://www.python.org/downloads/)
 
 * E-mailový účet organizace, který je členem služby Azure Active Directory (AAD)
-
-* [Python](https://www.python.org/downloads/) nainstalovaný na počítači pro vývoj
 
 ## <a name="install-the-data-library"></a>Instalace datové knihovny
 
@@ -34,7 +36,7 @@ Nainstalujte *azure-kusto-data*.
 pip install azure-kusto-data
 ```
 
-## <a name="add-import-statements-and-constants"></a>Přidání příkazů a konstant pro import
+## <a name="add-import-statements-and-constants"></a>Přidání příkazů pro import a konstant
 
 Naimportujte z knihovny třídy a *pandas*, což je knihovna pro analýzu dat.
 
@@ -45,7 +47,7 @@ from azure.kusto.data.helpers import dataframe_from_result_table
 import pandas as pd
 ```
 
-K ověření aplikace používá Azure Data Explorer ID vašeho tenanta AAD. ID tenanta zjistíte pomocí následující adresy URL, ve které *YourDomain* nahradíte svou doménou.
+K ověření aplikace používá Průzkumník dat Azure ID vašeho tenanta AAD. ID tenanta zjistíte pomocí následující adresy URL, ve které *YourDomain* nahradíte svou doménou.
 
 ```
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
@@ -57,7 +59,7 @@ Pokud je vaše doména například *contoso.com*, je adresa URL [https://login.w
 "authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
-ID tenanta je v tomto případě `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Před spuštěním tohoto kódu nastavte hodnotu AAD_TENANT_ID.
+V tomto případě je ID tenanta `6babcaad-604b-40ac-a9d7-9fd97c0b779f`. Před spuštěním tohoto kódu nastavte hodnotu AAD_TENANT_ID.
 
 ```python
 AAD_TENANT_ID = "<TenantId>"
@@ -65,7 +67,7 @@ KUSTO_CLUSTER = "https://help.kusto.windows.net/"
 KUSTO_DATABASE = "Samples"
 ```
 
-Teď sestavte připojovací řetězec. V tomto příkladu se pro přístup ke clusteru používá ověřování pomocí zařízení. Můžete také použít [certifikát aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [klíč aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)a [uživatele a heslo AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
+Teď vytvořte připojovací řetězec. V tomto příkladu se pro přístup ke clusteru používá ověřování pomocí zařízení. Můžete také použít [certifikát aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [klíč aplikace AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)a [uživatele a heslo AAD](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34).
 
 ```python
 KCSB = KustoConnectionStringBuilder.with_aad_device_authentication(
@@ -75,7 +77,7 @@ KCSB.authority_id = AAD_TENANT_ID
 
 ## <a name="connect-to-azure-data-explorer-and-execute-a-query"></a>Připojení k Azure Data Exploreru a spuštění dotazu
 
-Spusťte dotaz vůči clusteru a uložte výstup do datového rámce. Po spuštění tohoto kódu se vrátí zpráva podobná následující: Pokud *se chcete přihlásit, https://microsoft.com/devicelogin otevřete stránku pomocí webového prohlížeče a zadejte kód F3W4VWZDM, který se má ověřit*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu.
+Spusťte dotaz vůči clusteru a uložte výstup do datového rámce. Když se tento kód spustí, vrátí podobnou zprávu: *Pro přihlášení použijte webový prohlížeč a otevřete stránku https://microsoft.com/devicelogin a zadejte kód F3W4VWZDM k ověření*. Podle pokynů se přihlaste a pak se vraťte a spusťte další blok kódu.
 
 ```python
 KUSTO_CLIENT = KustoClient(KCSB)
@@ -95,7 +97,7 @@ df
 
 Měli byste vidět prvních deset výsledků z tabulky StormEvents.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Ingestování dat pomocí knihovny Pythonu v Azure Průzkumník dat](python-ingest-data.md)

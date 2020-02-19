@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a72e98341ecafcda98cc2fde34cf1f9d4eaff94c
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 1e80fa23519104c3c62f6a0bf5d65cbbe0848ae2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658266"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443818"
 ---
 # <a name="what-is-azure-application-gateway"></a>Co je Azure Application Gateway?
 
@@ -50,7 +50,7 @@ Nasazení Application Gateway nebo WAF v rámci Standard_v2 nebo WAF_v2 SKU mů�
 
 Virtuální IP adresa služby Application Gateway v Standard_v2 WAF_v2 nebo SKU podporuje výhradně statický typ VIP. Tím se zajistí, že se virtuální IP adresa přidružená k aplikační bráně nemění ani po dobu života Application Gateway.
 
-## <a name="web-application-firewall"></a>Firewall webových aplikací
+## <a name="web-application-firewall"></a>Brána firewall webových aplikací
 
 Firewall webových aplikací (WAF) je služba, která poskytuje centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení. WAF je založená na pravidlech z [OWASP (Open Web Application Security Project) základních sad pravidel](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1 (jenom WAF_v2), 3,0 a 2.2.9. 
 
@@ -61,7 +61,7 @@ Další informace najdete v tématu [co je firewall webových aplikací Azure?](
 ## <a name="ingress-controller-for-aks"></a>Kontroler Ingress pro AKS
 AGIC () umožňuje používat Application Gateway jako příchozí přenosy pro cluster [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) . Application Gateway 
 
-Kontroler příchozího provozu funguje jako pod clusterem AKS a využívá [Kubernetes prostředky](https://kubernetes.io/docs/concepts/services-networking/ingress/) příchozího přenosu dat a převede je na konfiguraci Application Gateway, která umožňuje bráně vyrovnávat zatížení v Kubernetes luskech. Kontroler příchozího přenosu dat podporuje pouze SKU Application Gateway v2. 
+Kontroler příchozího provozu funguje jako pod clusterem AKS a využívá [Kubernetes prostředky](https://kubernetes.io/docs/concepts/services-networking/ingress/) příchozího přenosu dat a převede je na konfiguraci Application Gateway, která umožňuje bráně vyrovnávat zatížení v Kubernetes luskech. Kontroler příchozího přenosu dat podporuje jenom Application Gateway Standard_v2 a WAF_v2 SKU. 
 
 Další informace najdete v tématu Application Gateway řadič příchozího přenosu dat [(AGIC)](ingress-controller-overview.md).
 
@@ -115,7 +115,7 @@ Vyprázdnění připojení vám pomůže provést řádné odebrání členů ba
 
 Další informace naleznete v části vyprazdňování připojení v tématu [Přehled konfigurace Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining).
 
-## <a name="custom-error-pages"></a>Stránky vlastních chyb
+## <a name="custom-error-pages"></a>Vlastní chybové stránky
 
 Služba Application Gateway vám umožní vytvořit vlastní chybové stránky místo zobrazení výchozích chybových stránek. U vlastní chybové stránky můžete použít vlastní značky a rozložení.
 
@@ -143,7 +143,7 @@ Application Gateway Standard a SKU WAF se momentálně nabízí ve třech veliko
 
 Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé instance služby Application Gateway V1 s povoleným snižováním zatížení SSL:
 
-| Průměrná velikost odpovědi back-endu stránky | Malé | Střední | Velké |
+| Průměrná velikost odpovědi back-endu stránky | Krátkodobé používání | Střednědobé používání | Dlouhodobé používání |
 | --- | --- | --- | --- |
 | 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
 | 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |

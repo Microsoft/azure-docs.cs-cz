@@ -1,6 +1,6 @@
 ---
-title: Postup přidání uživatele jako vlastníka testovacího prostředí v Azure Lab Services
-description: V tomto článku se dozvíte, jak může správce přidat uživatele jako vlastníka testovacího prostředí.
+title: Postup přidání dalších vlastníků do testovacího prostředí v Azure Lab Services
+description: V tomto článku se dozvíte, jak může správce přidat uživatele jako vlastníka testovacího prostředí v Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,20 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2019
+ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e007ee6c95843b7e8ef9d7a701237034811489e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9302cadf0b900c9faac382bad86b51cea7d828fb
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480850"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443512"
 ---
-# <a name="how-to-add-a-user-as-an-owner-of-a-classroom-lab-in-azure-lab-services"></a>Postup přidání uživatele jako vlastníka prostředí učebny v Azure Lab Services
-V tomto článku se dozvíte, jak přidat uživatele jako vlastníka testovacího prostředí v Azure Lab Services.
+# <a name="how-to-add-additional-owners-to-an-existing-lab-in-azure-lab-services"></a>Postup přidání dalších vlastníků do stávajícího testovacího prostředí v Azure Lab Services
+V tomto článku se dozvíte, jak jste jako správce mohli přidat další vlastníky do stávajícího testovacího prostředí.
 
 ## <a name="add-user-to-the-reader-role-for-the-lab-account"></a>Přidat uživatele do role čtenář pro účet testovacího prostředí
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Pokud chcete přidat uživatele jako dalšího vlastníka k existujícímu testovacímu prostředí, musíte nejdřív uživateli udělit oprávnění **ke čtení** z účtu testovacího prostředí.
+
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny služby** . Vyhledejte **služby testovacího prostředí**a vyberte ji.
 3. V seznamu vyberte svůj **účet testovacího prostředí** . 
 2. Na **stránce účet testovacího prostředí**vyberte v nabídce vlevo možnost **Access Control (IAM)** . 
@@ -34,7 +36,7 @@ V tomto článku se dozvíte, jak přidat uživatele jako vlastníka testovacíh
 3. Na stránce **Přidat přiřazení role** proveďte následující kroky: 
     1. Jako **roli**vyberte **Čtenář** . 
     2. Vyberte uživatele. 
-    3. Vyberte **Uložit**. 
+    3. Vyberte **Save** (Uložit). 
 
         ![Přidat uživatele do role čtenář pro účet testovacího prostředí ](../media/how-to-add-user-lab-owner/reader-lab-account.png)
 
@@ -49,7 +51,7 @@ V tomto článku se dozvíte, jak přidat uživatele jako vlastníka testovacíh
 5. Na stránce **Přidat přiřazení role** proveďte následující kroky: 
     1. Jako **roli**vyberte **Owner (vlastník** ). 
     2. Vyberte uživatele. 
-    3. Vyberte **Uložit**. 
+    3. Vyberte **Save** (Uložit). 
 
 ## <a name="next-steps"></a>Další kroky
 Potvrďte, že uživatel uvidí testovací prostředí po přihlášení na [portál služby Lab Services](https://labs.azure.com).

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: f1f425a6e3c66a72c7632cfea16d78ea6cc0d319
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201148"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431158"
 ---
 # <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech
 
@@ -44,7 +44,7 @@ Použijete-li [sadu Speech SDK](speech-sdk.md), oblasti jsou určeny **identifik
 
 Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speech SDK jsou následující:
 
-| Globální oblast | Oblast           | Parametr SDK řeči |
+| Globální oblast | Oblast           | Identifikátor oblasti |
 | ------------- | ---------------- | -------------------- |
 | Asie          | Východní Asie        | `eastasia`           |
 | Asie          | Jihovýchodní Asie   | `southeastasia`      |
@@ -52,11 +52,11 @@ Dostupné oblasti pro **rozpoznávání záměrů** prostřednictvím sady Speec
 | Evropa        | Severní Evropa     | `northeurope`        |
 | Evropa        | Západní Evropa      | `westeurope`         |
 | Severní Amerika | USA – východ          | `eastus`             |
-| Severní Amerika | Východní USA 2        | `eastus2`            |
-| Severní Amerika | Středojižní USA | `southcentralus`     |
-| Severní Amerika | Středozápadní USA  | `westcentralus`      |
-| Severní Amerika | Západní USA          | `westus`             |
-| Severní Amerika | Západní USA 2        | `westus2`            |
+| Severní Amerika | USA – východ 2        | `eastus2`            |
+| Severní Amerika | USA – středojih | `southcentralus`     |
+| Severní Amerika | USA – středozápad  | `westcentralus`      |
+| Severní Amerika | USA – západ          | `westus`             |
+| Severní Amerika | USA – západ 2        | `westus2`            |
 | Jižní Amerika | Brazílie – jih     | `brazilsouth`        |
 
 Toto je podmnožina oblastí publikování, které podporuje [služba Language Understanding (Luis)](/azure/cognitive-services/luis/luis-reference-regions).
@@ -65,12 +65,12 @@ Toto je podmnožina oblastí publikování, které podporuje [služba Language U
 
 [Sada Speech SDK](speech-sdk.md) podporuje možnosti **hlasového asistenta** v těchto oblastech:
 
-| Oblast         | Parametr SDK řeči |
+| Oblast         | Identifikátor oblasti |
 | -------------- | -------------------- |
-| Západní USA        | `westus`             |
-| Západní USA 2      | `westus2`            |
+| USA – západ        | `westus`             |
+| USA – západ 2      | `westus2`            |
 | USA – východ        | `eastus`             |
-| Východní USA 2      | `eastus2`            |
+| USA – východ 2      | `eastus2`            |
 | Západní Evropa    | `westeurope`         |
 | Severní Evropa   | `northeurope`        |
 | Jihovýchodní Asie | `southeastasia`      |

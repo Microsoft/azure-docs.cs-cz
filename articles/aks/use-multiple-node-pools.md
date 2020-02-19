@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: mlearned
-ms.openlocfilehash: 20cef402a81ef348d4492daf05e6b16a8d9f709f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: e77710fe446810ec566ebc7088d802f0721806d2
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365179"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443920"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -483,7 +483,7 @@ az aks nodepool add \
 > [!NOTE]
 > Parametr `--tags` můžete použít také při použití příkazu [AZ AKS nodepool Update][az-aks-nodepool-update] a při vytváření clusteru. Při vytváření clusteru použije parametr `--tags` značku na počáteční fond uzlů vytvořený s clusterem. Všechny názvy značek musí vyhovovat omezením v [použití značek k uspořádání prostředků Azure][tag-limitation]. Aktualizace fondu uzlů s parametrem `--tags` aktualizuje všechny existující hodnoty značek a připojí všechny nové značky. Například pokud váš fond uzlů měl *oddělení = IT* a *CostCenter = 9999* pro značky a Vy jste ho aktualizovali pomocí *Team = dev* a *CostCenter = 111* for Tags, budete nodepool mít *oddělení = IT*, *CostCenter = 111*a *Team = dev* for Tags.
 
-Následující příklad výstupu příkazu [AZ AKS nodepool list][az-aks-nodepool-list] ukazuje, že *taggednodepool* *vytváří* uzly se zadanou *značkou*:
+Následující příklad výstupu příkazu [AZ AKS nodepool list][az-aks-nodepool-list] ukazuje, že *tagnodepool* *vytváří* uzly se zadanou *značkou*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster

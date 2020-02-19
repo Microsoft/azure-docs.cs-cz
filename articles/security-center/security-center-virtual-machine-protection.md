@@ -11,40 +11,40 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/20/2019
+ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: b7e5b0286cdd15834b84e4fd3e619c6555054823
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552997"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430607"
 ---
 # <a name="protect-your-machines-and-applications"></a>Ochrana počítačů a aplikací
 Když Azure Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
 
 Tento článek vysvětluje stránku **COMPUTE a aplikace** v části zabezpečení prostředků Security Center.
 
-Úplný seznam doporučení, která se vám můžou zobrazit na této stránce, najdete v tématu [doporučení pro data a úložiště](recommendations-reference.md#recs-computeapp).
+Úplný seznam doporučení, která se vám můžou zobrazit na této stránce, najdete v tématu [doporučení k výpočtům a aplikacím](recommendations-reference.md#recs-computeapp).
 
 
 ## <a name="view-the-security-of-your-compute-and-apps-resources"></a>Zobrazení zabezpečení prostředků COMPUTE a Apps
 
-[řídicí panel ![Security Center](./media/security-center-virtual-machine-recommendations/overview.png)](./media/security-center-virtual-machine-recommendations/overview.png#lightbox)
+[řídicí panel ![Security Center](./media/security-center-virtual-machine-recommendations/compute-and-apps-recs-overview.png)](./media/security-center-virtual-machine-recommendations/compute-and-apps-recs-overview.png#lightbox)
 
-Pokud chcete zobrazit stav vašich výpočetních a aplikací prostředků, vyberte v části **prostředky** na bočním panelu Security Center **výpočetní & aplikace** . K dispozici jsou následující karty:
+Pokud chcete zobrazit stav prostředků COMPUTE a Apps, vyberte v levém podokně Security Center možnost **compute & aplikace**. K dispozici jsou následující karty:
 
 * **Přehled**: uvádí doporučení pro všechny prostředky výpočtů a aplikací a jejich aktuální stav zabezpečení. 
 
-* [**Virtuální počítače a počítače**](#vms-and-computers): uvádí doporučení pro vaše virtuální počítače, počítače a aktuální stav zabezpečení pro každý z nich.
+* [**Virtuální počítače a servery**](#vms-and-computers): uvádí doporučení pro vaše virtuální počítače, počítače a aktuální stav zabezpečení pro každý z nich.
 
 * [**VM Scale Sets**](#vmscale-sets): uvádí doporučení pro vaše sady škálování, 
 
-* [**Cloud Services**](#cloud-services): uvádí doporučení pro webové a pracovní role monitorované pomocí Security Center
+* [**Cloud Services**](#cloud-services): uvádí doporučení pro webové a pracovní role monitorované nástrojem Security Center
 
 * [**App Services**](#app-services): uvádí doporučení pro vaše aplikační služby App Service Environment a aktuální stav zabezpečení každého
 
-* **Kontejnery**: uvádí doporučení pro vaše kontejnery a posouzení zabezpečení jejich konfigurací.
+* [**Kontejnery**](#containers): uvádí doporučení pro vaše kontejnery a posouzení zabezpečení jejich konfigurací.
 
 * **Výpočetní prostředky**: uvádí doporučení pro výpočetní prostředky, jako jsou Service Fabric clustery a centra událostí.
 
@@ -60,7 +60,10 @@ Každé doporučení obsahuje sadu akcí, které můžete provést po výběru. 
 > Doporučení zabezpečení jsou stejná jako ta na stránce **doporučení** , ale tady se filtrují na konkrétní vybraný typ prostředku. Další informace o řešení doporučení najdete [v tématu Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 >
 
-### <a name="vms-and-computers"></a>Virtuální počítače a počítače
+
+
+
+### <a name="vms-and-computers"></a>Virtuální počítače a servery
 Část virtuální počítače a počítače poskytuje přehled všech doporučení týkajících se zabezpečení pro vaše virtuální počítače a počítače. Jsou zahrnuty čtyři typy počítačů:
 
 ![Počítač umístěný mimo Azure](./media/security-center-virtual-machine-recommendations/security-center-monitoring-icon1.png) Počítač mimo Azure.
@@ -78,44 +81,8 @@ Tady vidíte podrobné informace o zabezpečení pro virtuální počítač nebo
 
 [Cloudové služby ![](./media/security-center-virtual-machine-recommendations/recommendation-list.png)](./media/security-center-virtual-machine-recommendations/recommendation-list.png#lightbox)
 
-### <a name="cloud-services"></a>Cloudové služby
-Pro cloudové služby se vytvoří doporučení, když je verze operačního systému zastaralá.
-
-![Cloudové služby](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
-
-V případě, kdy máte doporučení, postupujte podle kroků v doporučení pro aktualizaci operačního systému. Pokud je k dispozici aktualizace, budete mít upozornění (červená nebo oranžová) v závislosti na závažnosti problému. Úplné vysvětlení tohoto doporučení získáte kliknutím na možnost **Aktualizovat verzi operačního systému** ve sloupci **Popis** .
-
-### <a name="app-services"></a>Aplikační služby
-Pokud chcete zobrazit informace o App Service, musíte být v Security Center cenové úrovně Standard a povolit App Service v předplatném. Pokyny k povolení této funkce najdete v tématu [ochrana App Service pomocí Azure Security Center](security-center-app-services.md).
 
 
-V části **App services**najdete seznam vaší služby App service Environment a provést shrnutí stavu na základě posouzení Security Center.
-
-![Aplikační služby](./media/security-center-virtual-machine-recommendations/app-services.png)
-
-Zobrazují se tři typy aplikačních služeb:
-
-![Prostředí App services](./media/security-center-virtual-machine-recommendations/ase.png) Prostředí App services
-
-![Webová aplikace](./media/security-center-virtual-machine-recommendations/web-app.png) Webová aplikace
-
-![Aplikace – funkce](./media/security-center-virtual-machine-recommendations/function-app.png) Aplikace – funkce
-
-Pokud vyberete webovou aplikaci, otevře se souhrnné zobrazení se třemi kartami:
-
-   - **Doporučení**: na základě posouzení provedených Security Center, která selhala.
-   - **Předaný posouzení**: seznam posouzení, které provádí služba Security Center, který předává.
-   - **Nedostupná posouzení**: seznam vyhodnocení, které se nepovedlo spustit kvůli chybě nebo doporučení není relevantní pro konkrétní službu App service
-
-   V části **doporučení** se seznam doporučení pro vybranou webovou aplikaci a závažnost jednotlivých doporučení.
-
-   ![App Services doporučení](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
-
-Vyberte doporučení, abyste zobrazili popis doporučení a seznam špatných prostředků, zdravých prostředků a nekontrolovaných prostředků.
-
-   - Sloupec **úspěšné vyhodnocení** zobrazuje seznam předaných vyhodnocení. Závažnost těchto hodnocení je vždy zelená.
-
-   - Vyberte ze seznamu popis posouzení, seznam prostředků není v pořádku a v pořádku a seznam nezkontrolované prostředky předané posouzení. Je na kartě pro prostředky není v pořádku, ale tento seznam je prázdný, vždy od předaný posouzení.
 
 ### <a name="vmscale-sets"></a>Virtual Machine Scale Sets
 Security Center automaticky zjišťuje, zda máte sady škálování a doporučuje nainstalovat Microsoft Monitoring Agent na ně.
@@ -140,10 +107,101 @@ Pokud chcete nastavit nové sady škálování tak, aby se automaticky nainstalo
 Pokud chcete nastavit všechny existující sady škálování pro instalaci Microsoft Monitoring Agent, v Azure Policy se můžete vrátit k **nápravě** a použít existující zásady na existující sady škálování.
 
 
+
+
+
+### <a name="cloud-services"></a>Cloudové služby
+Pro cloudové služby se vytvoří doporučení, když je verze operačního systému zastaralá.
+
+![Cloud Services](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig1-new006-2017.png)
+
+V případě, kdy máte doporučení, postupujte podle kroků v doporučení pro aktualizaci operačního systému. Pokud je k dispozici aktualizace, budete mít upozornění (červená nebo oranžová) v závislosti na závažnosti problému. Úplné vysvětlení tohoto doporučení získáte kliknutím na možnost **Aktualizovat verzi operačního systému** ve sloupci **Popis** .
+
+
+
+
+
+
+### <a name="app-services"></a>Aplikační služby
+Pokud chcete zobrazit informace o App Service, musíte být v Security Center cenové úrovně Standard a povolit App Service v předplatném. Pokyny k povolení této funkce najdete v tématu [ochrana App Service pomocí Azure Security Center](security-center-app-services.md).
+
+V části **App Services**najdete seznam prostředí App Service Environment a shrnutí stavu na základě Security Center prováděného hodnocení.
+
+![Aplikační služby](./media/security-center-virtual-machine-recommendations/app-services.png)
+
+Zobrazují se tři typy aplikačních služeb:
+
+![Prostředí App services](./media/security-center-virtual-machine-recommendations/ase.png) Prostředí App services
+
+![Webová aplikace](./media/security-center-virtual-machine-recommendations/web-app.png) Webová aplikace
+
+![Aplikace – funkce](./media/security-center-virtual-machine-recommendations/function-app.png) Aplikace – funkce
+
+Pokud vyberete webovou aplikaci, otevře se souhrnné zobrazení se třemi kartami:
+
+   - **Doporučení**: na základě posouzení provedených Security Center, která selhala.
+   - **Úspěšná vyhodnocení**: seznam hodnocení provedených Security Center, která byla úspěšná.
+   - **Nedostupná posouzení**: seznam posouzení, která se nepodařilo spustit z důvodu chyby, nebo doporučení není relevantní pro konkrétní službu App Service.
+
+   V části **doporučení** je seznam doporučení pro vybranou webovou aplikaci a závažnost každého doporučení.
+
+   ![App Services doporučení](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
+
+Vyberte doporučení, abyste zobrazili popis doporučení a seznam špatných prostředků, zdravých prostředků a nekontrolovaných prostředků.
+
+   - Sloupec **úspěšné vyhodnocení** zobrazuje seznam předaných vyhodnocení. Závažnost těchto hodnocení je vždy zelená.
+
+   - Vyberte ze seznamu popis posouzení, seznam prostředků není v pořádku a v pořádku a seznam nezkontrolované prostředky předané posouzení. Je na kartě pro prostředky není v pořádku, ale tento seznam je prázdný, vždy od předaný posouzení.
+
+
+
+
+
+### <a name="containers"></a>Kontejnery
+
+Když otevřete kartu **kontejnery** v závislosti na vašem prostředí, může se zobrazit některý ze tří typů prostředků:
+
+![Hostitel kontejneru](./media/security-center-virtual-machine-recommendations/icon-container-host-rec.png) Hostitelé kontejneru – virtuální počítače s Docker 
+
+![Služba Kubernetes](./media/security-center-virtual-machine-recommendations/icon-kubernetes-service-rec.png) Clustery Azure Kubernetes Service (AKS)
+
+![Registr kontejneru](./media/security-center-virtual-machine-recommendations/icon-container-registry-rec.png) Registry Azure Container Registry (ACR) – zobrazené pouze v případě, že jste na cenové úrovni Standard a máte povolenou Azure Container Registry sady prostředků.
+
+Pokyny, jak používat funkce zabezpečení kontejnerů, najdete v tématu [monitorování zabezpečení kontejnerů](monitor-container-security.md).
+
+Výhody Azure Container Registry sady jsou vysvětleny [zde](azure-container-registry-integration.md) .
+
+Výhody sady Kubernetes Services jsou vysvětleny [zde](azure-kubernetes-service-integration.md) .
+
+[karta ![kontejnery](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png)](./media/security-center-virtual-machine-recommendations/container-recommendations-all-types.png#lightbox)
+
+Chcete-li zobrazit doporučení pro konkrétní prostředek v seznamu, klikněte na tento prostředek.
+
+#### <a name="visibility-into-container-registries"></a>Viditelnost registrů kontejnerů
+
+Například kliknutím na registr ASC-demo ACR ze seznamu zobrazeného na obrázku výše navedete na tuto stránku s podrobnostmi:
+
+[![doporučení pro konkrétní registr ACR](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png)](./media/security-center-virtual-machine-recommendations/acr-registry-recs-list.png#lightbox)
+
+
+#### <a name="visibility-into-containers-hosted-on-iaas-linux-machines"></a>Viditelnost kontejnerů hostovaných na počítačích s IaaS Linux
+
+Po kliknutí na jeden z virtuálních počítačů s Docker se zobrazí stránka s podrobnostmi s informacemi týkajícími se kontejnerů v počítači, jako je například verze Docker a počet imagí spuštěných na hostiteli.
+
+![Doporučení pro virtuální počítač s Docker](./media/security-center-virtual-machine-recommendations/docker-recommendation.png)
+
+
+#### <a name="security-recommendations-based-on-cis-benchmark-for-docker"></a>Doporučení týkající se zabezpečení na základě srovnávacího testu CIS pro Docker
+
+Security Center kontroluje konfigurace Dockeru a poskytuje vám vhled do nesprávných konfigurací tím, že poskytuje seznam všech neúspěšných pravidel, která byla posouzena. Security Center poskytuje pokyny, které vám pomůžou tyto problémy rychle vyřešit a ušetřit čas. Security Center nepřetržitě posuzuje konfigurace Dockeru a poskytuje vám jejich nejnovější stav.
+
+![karta kontejner](./media/security-center-container-recommendations/container-cis-benchmark.png)
+
+
 ## <a name="next-steps"></a>Další kroky
 Další informace o doporučeních, která se vztahují na jiné typy prostředků Azure, najdete v následujících článcích:
 
 * [Úplný seznam odkazů na doporučení zabezpečení Azure Security Center](recommendations-reference.md)
 * [Monitorování identity a přístupu ve službě Azure Security Center](security-center-identity-access.md)
 * [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
-* [Ochrana služby Azure SQL ve službě Azure Security Center](security-center-sql-service-recommendations.md)
+* [Ochrana služby Azure SQL Service v Azure Security Center](security-center-sql-service-recommendations.md)

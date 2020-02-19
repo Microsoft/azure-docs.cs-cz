@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: a0361203f4a8a2e57d179b39ba6da2fb62f68720
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252055"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443495"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Laboratoře učebny v Azure Lab Services – nejčastější dotazy (FAQ)
 Získejte odpovědi na některé nejčastější dotazy týkající se učebn Labs v Azure Lab Services. 
@@ -27,6 +27,9 @@ Získejte odpovědi na některé nejčastější dotazy týkající se učebn La
 
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Je kvóta na uživatele nebo za týden nebo na celou dobu trvání testovacího prostředí? 
 Kvóta, kterou nastavíte pro testovací prostředí, je určena pro každého studenta po celou dobu trvání testovacího prostředí. A [plánovaná doba spuštění virtuálních počítačů](how-to-create-schedules.md) se nepočítá s kvótou přidělenou uživateli. Kvóta je určena pro dobu mimo plánované hodiny, kterou student stráví na virtuálních počítačích.  Další informace o kvótách najdete v tématu [nastavení kvót pro uživatele](how-to-configure-student-usage.md#set-quotas-for-users).
+
+### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Pokud profesor zapne virtuální počítač studenta, má vliv na kvótu studenta? 
+Ne. Nejedná se o. Když se profesor zapne na virtuálním počítači studenta, neovlivní to kvótu, která je přidělena studentovi. 
 
 ## <a name="schedules"></a>Plány
 
@@ -42,7 +45,9 @@ Například pokud máte blok z/19-10.0.0.0/19, tento rozsah adres bude vyhovovat
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Jaké rozsahy portů mám otevřít v nastavení brány firewall mojí organizace pro připojení k virtuálním počítačům testovacího prostředí přes RDP/SSH?
 
-Porty jsou: 49152 – 65535. Učebna Labs za nástrojem pro vyrovnávání zatížení, takže všechny virtuální počítače v testovacím prostředí mají jednu IP adresu a každý virtuální počítač v testovacím prostředí má jedinečný port. Čísla portů a veřejná IP adresa se můžou změnit při každém opětovném publikování testovacího prostředí.
+Porty jsou: 49152 – 65535. Laboratoře učebny se nachází za nástrojem pro vyrovnávání zatížení. Každé testovací prostředí má jednu veřejnou IP adresu a každý virtuální počítač v testovacím prostředí má jedinečný port. 
+
+Na kartě **fond virtuálních počítačů** na domovské stránce domovské stránky testovacího prostředí v Azure Portal můžete zobrazit také soukromou IP adresu každého virtuálního počítače. Pokud znovu publikujete testovací prostředí, veřejná IP adresa testovacího prostředí se nemění, ale privátní IP adresa a číslo portu každého virtuálního počítače v testovacím prostředí se můžou změnit. Další informace najdete v článku [nastavení brány firewall pro Azure Lab Services](how-to-configure-firewall-settings.md).
 
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Jaký rozsah veřejných IP adres mám otevřít v nastavení brány firewall moje organizace pro připojení k testovacím virtuálním počítačům přes RDP/SSH?
 Přečtěte si téma [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519), který poskytuje rozsah veřejných IP adres pro datová centra v Azure. Můžete otevřít IP adresy pro oblasti, ve kterých jsou účty testovacího prostředí.

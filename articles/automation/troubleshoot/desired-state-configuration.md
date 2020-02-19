@@ -9,41 +9,48 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3c3c9950aab9a5a422ebc9e858daded2888fd82e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: dcd0371d275c3a46fe9bf07c96516a2d0820abb7
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834260"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430529"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Řešení potíží s Azure Automation konfigurace požadovaného stavu (DSC)
 
 Tento článek poskytuje informace o řešení problémů s požadovanou konfigurací stavu (DSC).
 
-## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>Postup řešení potíží s konfigurací požadovaného stavu (DSC)
+## <a name="diagnosing-an-issue"></a>Diagnostikování problému
 
-Pokud máte chyby při kompilaci nebo nasazování konfigurací v konfiguraci stavu Azure, najdete tady několik kroků, které vám pomůžou problém diagnostikovat.
+Když máte při kompilování a nasazování konfigurací v konfiguraci stavu Azure chyby, najdete tady několik kroků, které vám pomůžou problém diagnostikovat.
 
-1. **Ujistěte se, že se konfigurace úspěšně zkompiluje na místním počítači:**  Konfigurace stavu Azure je postavená na PowerShell DSC. Dokumentaci k jazyku DSC a syntaxi najdete v dokumentaci k [PowerShellu DSC](https://docs.microsoft.com/powershell/scripting/overview).
+### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1. Ujistěte se, že se konfigurace úspěšně zkompiluje na místním počítači.
 
-   Zkompilováním konfigurace DSC na místním počítači můžete zjišťovat a řešit běžné chyby, jako například:
+Konfigurace stavu Azure je postavená na PowerShell DSC. Dokumentaci k jazyku DSC a syntaxi najdete v dokumentaci k [PowerShellu DSC](https://docs.microsoft.com/powershell/scripting/overview).
 
-   - **Chybějící moduly**
-   - **Chyby syntaxe**
-   - **Logické chyby**
+Zkompilováním konfigurace DSC na místním počítači můžete zjišťovat a řešit běžné chyby, jako například:
 
-2. **Zobrazit protokoly DSC v uzlu:** Pokud se konfigurace úspěšně zkompiluje, ale při použití v uzlu dojde k chybě, můžete najít podrobné informace v protokolech. Informace o tom, kde najít protokoly DSC, najdete v tématu [kde jsou protokoly událostí DSC](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
+   - Chybějící moduly
+   - Chyby syntaxe
+   - Logické chyby
 
-   Kromě toho vám [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) může pomoct při analýze podrobných informací z protokolů DSC. Pokud se obrátíte na podporu, budou tyto protokoly vyžadovat diagnostiku vašeho problému.
+### <a name="2-view-dsc-logs-on-your-node"></a>2. zobrazení protokolů DSC v uzlu
 
-   **XDscDiagnostics** můžete na svém místním počítači nainstalovat podle pokynů uvedených v části [Instalace modulu stabilní verze](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
+Pokud se konfigurace úspěšně zkompiluje, ale při použití v uzlu dojde k chybě, můžete najít podrobné informace v protokolech DSC. Informace o tom, kde najít tyto protokoly, najdete v tématu [kde jsou protokoly událostí DSC](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
-   Pokud chcete nainstalovat **xDscDiagnostics** na počítač Azure, můžete použít příkaz [AZ VM Run-Command](/cli/azure/vm/run-command) nebo [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand). Na portálu můžete taky použít možnost **Spustit příkaz** , a to podle kroků uvedených v části [spuštění skriptů POWERSHELLu na virtuálním počítači s Windows pomocí příkazu Spustit](../../virtual-machines/windows/run-command.md).
+Modul [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) vám může pomoci při analýze podrobných informací z protokolů DSC. Pokud se obrátíte na podporu, vyžadují tyto protokoly k diagnostice vašeho problému.
 
-   Informace o použití **xDscDiagnostics**najdete v tématu [použití xDscDiagnostics k analýze protokolů DSC](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)a také [rutin xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
-3. **Ujistěte se, že uzly a pracovní prostor služby Automation mají požadované moduly:** Požadovaná konfigurace stavu závisí na modulech nainstalovaných v uzlu.  Při použití konfigurace stavu Azure Automation importujte do svého účtu Automation všechny požadované moduly pomocí kroků uvedených v části [Import modulů](../shared-resources/modules.md#import-modules). Konfigurace můžou mít taky závislost na konkrétních verzích modulů.  Další informace najdete v tématu [řešení potíží s moduly](shared-resources.md#modules).
+Modul xDscDiagnostics můžete na svůj místní počítač nainstalovat pomocí pokynů uvedených v části [Instalace modulu stabilní verze](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
 
-## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Běžné chyby při práci s konfigurací požadovaného stavu (DSC)
+Pokud chcete na počítač Azure nainstalovat modul xDscDiagnostics, použijte [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand). Na portálu můžete taky použít možnost **Spustit příkaz** , a to podle kroků uvedených v části [spuštění skriptů POWERSHELLu na virtuálním počítači s Windows pomocí příkazu Spustit](../../virtual-machines/windows/run-command.md).
+
+Informace o použití xDscDiagnostics najdete v tématu věnovaném [použití xDscDiagnostics k analýze protokolů DSC](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Viz také [rutiny xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
+
+### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. Ujistěte se, že uzly a pracovní prostor služby Automation mají požadované moduly.
+
+DSC závisí na modulech nainstalovaných v uzlu. Při použití konfigurace stavu Azure Automation importujte do svého účtu Automation všechny požadované moduly pomocí kroků uvedených v části [Import modulů](../shared-resources/modules.md#import-modules). Konfigurace můžou mít taky závislost na konkrétních verzích modulů. Další informace najdete v tématu [řešení potíží s moduly](shared-resources.md#modules).
+
+## <a name="common-errors-when-working-with-dsc"></a>Běžné chyby při práci s DSC
 
 ### <a name="unsupported-characters"></a>Scénář: na portálu nejde odstranit konfiguraci se speciálními znaky.
 
@@ -59,7 +66,7 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 Tato chyba je dočasný problém, který se plánuje vyřešit.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 * Pomocí příkazu AZ rutina Remove-AzAutomationDscConfiguration konfiguraci odstraňte.
 * Dokumentace k této rutině se ještě neaktualizovala.  Do té doby se v dokumentaci k modulu AzureRM Podívejte.
@@ -86,7 +93,7 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 Tato chyba je obvykle způsobena bránou firewall, počítač je za proxy server nebo jinými chybami v síti.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Ověřte, že váš počítač má přístup ke správným koncovým bodům pro Azure Automation DSC, a zkuste to znovu. Seznam potřebných portů a adres najdete v tématu [Plánování sítě](../automation-dsc-overview.md#network-planning) .
 
@@ -97,7 +104,7 @@ Ověřte, že váš počítač má přístup ke správným koncovým bodům pro 
 Při registraci uzlu s konfigurací stavu (DSC) se zobrazí některá z následujících chybových zpráv:
 
 ```error
-The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+The attempt to send status report to the server https://{your Automation account URL}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
 ```
 
 ```error
@@ -108,7 +115,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 Příčinou tohoto problému je chybný nebo prošlý certifikát.  Další informace najdete v tématu [vypršení platnosti certifikátu a jeho registrace](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration).
 
-### <a name="resolution"></a>Rozlišení
+### <a name="resolution"></a>Řešení
 
 Postupujte podle následujících kroků a znovu zaregistrujte neúspěšný uzel DSC.
 
@@ -166,7 +173,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 K této chybě obvykle dochází v případě, že je uzel přiřazen k názvu konfigurace (například ABC) namísto názvu konfigurace uzlu (například ABC. WebServer).
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 * Ujistěte se, že přiřadíte uzel s názvem konfigurace uzlu, nikoli "název konfigurace".
 * Můžete přiřadit konfiguraci uzlu uzlu pomocí Azure Portal nebo pomocí rutiny prostředí PowerShell.
@@ -188,7 +195,7 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 Pokud je výraz následující po klíčovém slově **uzlu** v konfiguraci DSC vyhodnocen jako `$null`, nebudou vytvořeny žádné konfigurace uzlů.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Problém vyřeší některá z následujících řešení:
 
@@ -209,7 +216,7 @@ No instance found with given property values
 
 Provedli jste upgrade verze WMF a máte poškozenou službu WMI.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Pokud chcete problém vyřešit, postupujte podle pokynů v článku [známé problémy a omezení DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) .
 
@@ -227,9 +234,9 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 V konfiguraci jste použili přihlašovací údaje, ale neposkytli správné **ConfigurationData** pro nastavení **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
-* Nezapomeňte předat správný **ConfigurationData** a nastavit **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu uvedenou v konfiguraci. Další informace najdete v tématu [assety in Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
+* Nezapomeňte předat správný **ConfigurationData** a nastavit **PSDscAllowPlainTextPassword** na hodnotu true pro každou konfiguraci uzlu uvedenou v konfiguraci. Další informace najdete v tématu [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](../automation-dsc-compile.md).
 
 ### <a name="failure-processing-extension"></a>Scénář: Chyba při připojování z rozšíření DSC, Chyba při neúspěšném rozšíření pro zpracování
 
@@ -245,7 +252,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 K této chybě obvykle dochází v případě, že se k uzlu přiřadí název konfigurace uzlu, který ve službě neexistuje.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 * Ujistěte se, že přiřazujete uzel s názvem konfigurace uzlu, který přesně odpovídá názvu ve službě.
 * Můžete zvolit, že nebudete zahrnovat název konfigurace uzlu, což bude mít za následek připojování uzlu, ale ne přiřazení konfigurace uzlu.
@@ -264,7 +271,7 @@ One or more errors occurred.
 
 K této chybě dochází, když se pokusíte zaregistrovat uzel, který je umístěn v samostatném předplatném, než je účet Automation.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Považovat uzel mezi předplatnými, jako by se jednalo o samostatný nebo místní Cloud.
 
@@ -287,7 +294,7 @@ Provisioning has failed
 
 Tato zpráva se zobrazí, když dojde k potížím s připojením mezi uzlem a Azure.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Zjistěte, jestli je váš uzel v privátní virtuální síti, nebo jestli má jiné problémy s připojením k Azure.
 
@@ -307,7 +314,7 @@ This event indicates that failure happens when LCM is processing the configurati
 
 Zákazníci zjistili, že pokud je `/tmp` umístění nastavené na `noexec`, aktuální verze DSC se nepodaří použít konfigurace.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 * Z umístění `/tmp` odeberte možnost `noexec`.
 
@@ -323,7 +330,7 @@ Pokud je například jeden konfigurační skript použit ke generování konfigu
 
 Známý problém se službou kompilace.
 
-#### <a name="resolution"></a>Rozlišení
+#### <a name="resolution"></a>Řešení
 
 Nejlepším alternativním řešením je kompilace místně nebo v kanálu CI/CD a nahrání souborů MOF přímo do služby.  Pokud je kompilace ve službě požadavkem, další nejlepší alternativní řešení by mělo rozdělit úlohy kompilace, aby se v názvech překrývaly.
 

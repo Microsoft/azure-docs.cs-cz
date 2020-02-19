@@ -3,15 +3,15 @@ title: Nastavení brány firewall pro Azure Lab Services
 description: Přečtěte si, jak zjistit veřejnou IP adresu a rozsah čísel portů virtuálních počítačů v testovacím prostředí, aby bylo možné přidat informace do pravidel brány firewall.
 author: emaher
 ms.author: enewman
-ms.date: 12/12/2019
+ms.date: 02/14/2020
 ms.topic: article
 ms.service: lab-services
-ms.openlocfilehash: da1614e4a3e02ed91ef2d3c59ac4eb3eac0dcc7c
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692768"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443447"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Nastavení brány firewall pro Azure Lab Services
 
@@ -24,10 +24,10 @@ Každé testovací prostředí používá jednu veřejnou IP adresu a několik p
 
 ## <a name="find-public-ip-for-a-lab"></a>Vyhledání veřejné IP adresy pro testovací prostředí
 
-Veřejné IP adresy pro každé testovací prostředí jsou uvedené v okně **všechny laboratoře** účtu testovacího prostředí služby Lab Services.  Návod, jak najít okno **všechny laboratoře** , najdete v tématu [Správa cvičení v účtu testovacího prostředí](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account).  
+Veřejné IP adresy pro každé testovací prostředí jsou uvedené na stránce **všechny laboratoře** účtu testovacího prostředí služby Lab Services.  Pokyny, jak najít stránku **všechny laboratoře** , najdete v tématu [Správa cvičení v účtu testovacího prostředí](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account).  
 
 > [!div class="mx-imgBorder"]
-> okno ![všech cvičení](../media/how-to-configure-firewall-settings/all-labs-properties.png)
+> Stránka všech cvičení ![](../media/how-to-configure-firewall-settings/all-labs-properties.png)
 
 >[!NOTE]
 >Veřejná IP adresa se nezobrazí, pokud ještě není publikovaný počítač šablony pro testovací prostředí.
@@ -35,3 +35,13 @@ Veřejné IP adresy pro každé testovací prostředí jsou uvedené v okně **v
 ## <a name="conclusion"></a>Závěr
 
 Nyní víme o veřejné IP adrese pro testovací prostředí.  Příchozí a odchozí pravidla je možné vytvořit pro bránu firewall organizace pro veřejnou IP adresu a rozsah portů 49152-65535.  Po aktualizaci pravidel můžou studenti přistupovat ke svým virtuálním počítačům bez blokování přístupu přes bránu firewall sítě.
+
+## <a name="next-steps"></a>Další kroky
+Viz následující články:
+
+- [Povolí autorovi testovacího prostředí vybrat umístění testovacího prostředí.](allow-lab-creator-pick-lab-location.md)
+- [Připojení sítě testovacího prostředí k partnerské virtuální síti](how-to-connect-peer-virtual-network.md)
+- [Připojení Galerie sdílených imagí k testovacímu prostředí](how-to-attach-detach-shared-image-gallery.md)
+- [Přidat uživatele jako vlastníka testovacího prostředí](how-to-add-user-lab-owner.md)
+- [Zobrazit nastavení brány firewall pro testovací prostředí](how-to-configure-firewall-settings.md)
+- [Konfigurace dalších nastavení pro testovací prostředí](how-to-configure-lab-accounts.md)

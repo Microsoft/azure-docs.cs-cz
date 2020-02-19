@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 73a505ce68ed046eba011d3b36991616f441506e
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bc15ee42fd7ef8e41b332104b28af808c336789f
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206293"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430404"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Šifrování na straně serveru Azure Managed disks
 
@@ -58,7 +58,7 @@ Pokud chcete odvolat přístup k klíčům spravovaným zákazníkem, přečtět
 
 V současné době jsou podporovány pouze následující oblasti:
 
-- K dispozici jako nabídka GA v oblastech Východní USA, Západní USA 2 a Střed USA – jih.
+- K dispozici jako nabídka GA ve Východní USA, Západní USA 2, Střed USA – jih Velká Británie – jih oblasti.
 - Je dostupná jako veřejná verze Preview v oblastech Středozápadní USA, Východní USA 2, Kanada – střed a Severní Evropa.
 
 ### <a name="restrictions"></a>Omezení

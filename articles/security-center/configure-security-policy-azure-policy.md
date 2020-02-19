@@ -1,5 +1,5 @@
 ---
-title: Vytvoření a úprava Azure Policy zásady zabezpečení pomocí REST API | Microsoft Docs
+title: Vytvoření a úprava Azure Policy zásady zabezpečení pomocí REST API
 description: Přečtěte si o Azure Policy správy zásad pomocí REST API.
 services: security-center
 author: memildin
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 56c5ca8c4e1d70e002a338c753f9ab1f0b1aa411
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522018"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430937"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Konfigurace zásady zabezpečení v Azure Policy pomocí REST API
 
@@ -122,15 +122,15 @@ V tomto příkladu se dozvíte, jak odebrat přiřazení:
 |Šifrování SQL |Monitorování nešifrované databáze SQL v Azure Security Center |sqlEncryptionMonitoringEffect| 
 |SQL Auditing (Auditování SQL) |Monitorování neauditované databáze SQL v Azure Security Center |sqlAuditingMonitoringEffect|
 |Aktualizace systému |Monitorovat chybějící aktualizace systému v Azure Security Center |systemUpdatesMonitoringEffect|
-|Šifrování úložiště |Auditovat chybějící šifrování objektů BLOB pro účty úložiště |storageEncryptionMonitoringEffect|
+|Šifrování úložiště |Auditovat chybějící šifrování objektů blob pro účty úložiště |storageEncryptionMonitoringEffect|
 |Síťový přístup JIT |Sledování možného přístupu JIT (just-in-time) v síti v Azure Security Center |jitNetworkAccessMonitoringEffect |
-|Adaptivní ovládací prvky aplikací |Monitorování možného seznamu povolených aplikací v Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
+|Adaptivní řízení aplikací |Monitorování možného seznamu povolených aplikací v Azure Security Center |adaptiveApplicationControlsMonitoringEffect|
 |Skupiny zabezpečení sítě |Monitorování opravňujícího přístupu k síti v Azure Security Center |networkSecurityGroupsMonitoringEffect| 
 |Konfigurace zabezpečení |Monitorování ohrožení zabezpečení operačního systému v Azure Security Center |systemConfigurationsMonitoringEffect| 
 |Ochrana koncových bodů |Monitorovat chybějící Endpoint Protection v Azure Security Center |endpointProtectionMonitoringEffect |
-|Šifrování disků |Monitorování nešifrovaných disků virtuálních počítačů v Azure Security Center |diskEncryptionMonitoringEffect|
+|Šifrování disku |Monitorování nešifrovaných disků virtuálních počítačů v Azure Security Center |diskEncryptionMonitoringEffect|
 |Posouzení ohrožení zabezpečení |Monitorování ohrožení zabezpečení virtuálních počítačů v Azure Security Center |vulnerabilityAssessmentMonitoringEffect|
-|Firewall webových aplikací |Monitorování nechráněné webové aplikace v Azure Security Center |webApplicationFirewallMonitoringEffect |
+|Brána firewall webových aplikací |Monitorování nechráněné webové aplikace v Azure Security Center |webApplicationFirewallMonitoringEffect |
 |Brána firewall příští generace |Monitorování nechráněných koncových bodů sítě v Azure Security Center| |
 
 

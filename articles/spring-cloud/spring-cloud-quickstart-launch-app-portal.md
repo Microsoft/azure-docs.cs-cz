@@ -4,14 +4,14 @@ description: V tomto rychlém startu nasadíte jarní cloudovou aplikaci do jarn
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 02/03/2020
+ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: b65fbf7882c3ce7f6eb7e88c89eca83340ee2d05
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: a215fe2305b320fe27ef9d868d060f3e9cb14c1c
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251817"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431301"
 ---
 # <a name="quickstart-launch-an-existing-azure-spring-cloud-application-using-the-azure-portal"></a>Rychlý Start: spuštění stávající cloudové aplikace Azure na jaře pomocí Azure Portal
 
@@ -54,20 +54,42 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Zřízení instance služby na Azure Portal
 
-1. Ve webovém prohlížeči otevřete [Tento odkaz na jarní cloud Azure v Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform).
+1. Na nové kartě otevřete [Azure Portal](https://ms.portal.azure.com/). 
 
-1. Vyplňte formulář na stránce **Vytvoření** jarního cloudu Azure.  Vezměte v úvahu následující pokyny:
-    - Název služby: zadejte název instance služby.  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
-    - Předplatné: vyberte předplatné, které chcete pro tento prostředek fakturovat.  Zajistěte, aby bylo toto předplatné přidané do našeho seznamu povolených pro Azure jaře Cloud.
-    - Skupina prostředků: vytváření nových skupin prostředků pro nové prostředky je osvědčeným postupem.
-    - Umístění: vyberte umístění pro instanci služby. Aktuálně podporovaná umístění zahrnují Východní USA, Západní USA 2, Západní Evropa a jihovýchodní Asie.
+2. V horním vyhledávacím poli vyhledejte **Azure jaře Cloud**.
 
-1. Klikněte na tlačítko **zkontrolovat a vytvořit**.
+3. Z výsledků vyberte **Azure jaře Cloud** .
 
-1. Ověřte vaše specifikace a klikněte na **vytvořit**.
+ ![Ikona ASC](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
->[!Note]
-> Pokud se dokončení ověřování šablony trvá déle než 3 minuty, zkuste prosím zakázat trasování a zkuste to znovu.
+4. Na stránce jarní cloud Azure klikněte na **+ Přidat**.
+
+ ![Ikona ASC](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
+
+5. Vyplňte formulář na stránce **Vytvoření** jarního cloudu Azure.  Vezměte v úvahu následující pokyny:
+    - **Předplatné**: vyberte předplatné, které chcete pro tento prostředek fakturovat.  Zajistěte, aby bylo toto předplatné přidané do našeho seznamu povolených pro Azure jaře Cloud.
+    - **Skupina prostředků**: vytváření nových skupin prostředků pro nové prostředky je osvědčeným postupem.
+    - **Podrobnosti o službě/název**: zadejte název instance služby.  Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky.  První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
+    - **Umístění**: vyberte umístění pro instanci služby. Aktuálně podporovaná umístění zahrnují Východní USA, Západní USA 2, Západní Evropa a jihovýchodní Asie.
+
+    ![Začátek portálu ASC](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
+
+6. Kliknutím na kartu **nastavení diagnostiky** otevřete následující dialog.
+
+7. Podle vašich požadavků můžete nastavit **Povolit protokoly** na *Ano* nebo *ne* .
+
+    ![Povolení protokolů](media/spring-cloud-quickstart-launch-app-portal/diagnostic-setting.png)
+
+8. Klikněte na kartu **trasování** .
+
+9. Podle vašich požadavků můžete nastavit **Povolit trasování** na *Ano* nebo *ne* .  Pokud nastavíte možnost **Povolit trasování** na Ano, vyberte taky existující Přehled aplikace nebo vytvořte nový. Bez specifikace **Application Insights** dojde k chybě ověření.
+
+
+    ![Trasování](media/spring-cloud-quickstart-launch-app-portal/tracing.png)
+
+10. Klikněte na **Zkontrolovat a vytvořit**.
+
+11. Ověřte vaše specifikace a klikněte na **vytvořit**.
 
 Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **přehledem** instance služby.
 
@@ -79,9 +101,9 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 1. Přejít na stránku **Přehled** služby a vyberte možnost **konfigurační server**.
 
-1. V části **výchozí úložiště** nastavte možnost **URI** na "https://github.com/Azure-Samples/piggymetrics-config".
+2. V části **výchozí úložiště** nastavte možnost **URI** na "https://github.com/Azure-Samples/piggymetrics-config".
 
-1. Pokud chcete změny uložit, vyberte **použít** .
+3. Pokud chcete změny uložit, vyberte **použít** .
 
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
@@ -98,27 +120,27 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
     git clone https://github.com/Azure-Samples/piggymetrics
     ```
 
-1. Sestavte Klonovaný balíček.
+2. Sestavte Klonovaný balíček.
 
     ```azurecli
     cd piggymetrics
     mvn clean package -DskipTests
     ```
-1. Přiřaďte názvy ke svojí skupině prostředků a službě. Nezapomeňte nahradit níže uvedené zástupné symboly názvem skupiny prostředků a názvem služby, který jste zřídili dříve v tomto kurzu.
+3. Přiřaďte názvy ke svojí skupině prostředků a službě. Nezapomeňte nahradit níže uvedené zástupné symboly názvem skupiny prostředků a názvem služby, který jste zřídili dříve v tomto kurzu.
 
     ```azurecli
     az configure --defaults group=<resource group name>
     az configure --defaults spring-cloud=<service instance name>
     ```
 
-1. Vytvořte aplikaci `gateway` a nasaďte soubor JAR.
+4. Vytvořte aplikaci `gateway` a nasaďte soubor JAR.
 
     ```azurecli
     az spring-cloud app create -n gateway
     az spring-cloud app deploy -n gateway --jar-path ./gateway/target/gateway.jar
     ```
 
-1. Podle stejného vzoru vytvořte `account-service` a `auth-service` aplikace a nasaďte jejich soubory JAR.
+5. Podle stejného vzoru vytvořte `account-service` a `auth-service` aplikace a nasaďte jejich soubory JAR.
 
     ```azurecli
     az spring-cloud app create -n account-service
@@ -127,7 +149,7 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
     az spring-cloud app deploy -n auth-service --jar-path ./auth-service/target/auth-service.jar
     ```
 
-1. Dokončení nasazování aplikací trvá několik minut. Pokud chcete potvrdit, že se nasadili, vyberte v Azure Portal okno **aplikace** . Mělo by se zobrazit řádek každé ze tří aplikací.
+6. Dokončení nasazování aplikací trvá několik minut. Pokud chcete potvrdit, že se nasadili, vyberte v Azure Portal okno **aplikace** . Mělo by se zobrazit řádek každé ze tří aplikací.
 
 > [!div class="nextstepaction"]
 > [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=asc-portal-quickstart&step=deploy)
@@ -136,13 +158,13 @@ Nasazení služby trvá asi 5 minut.  Po nasazení se zobrazí stránka s **pře
 
 1. Otevřete kartu **aplikace** v nabídce na levé straně.
 
-1. Vyberte aplikaci `gateway`, aby se zobrazila stránka s **přehledem** .
+2. Vyberte aplikaci `gateway`, aby se zobrazila stránka s **přehledem** .
 
-1. Vyberte **přiřadit doménu** a přiřaďte k bráně veřejný koncový bod. Tato možnost může trvat několik minut.
+3. Vyberte **přiřadit koncový bod** pro přiřazení veřejného koncového bodu k bráně. Tato možnost může trvat několik minut.
 
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/portal-endpoint.png)
 
-1. Pokud chcete zobrazit spuštěnou aplikaci, zadejte přiřazený veřejný koncový bod (označený jako **URL**) do prohlížeče.
+4. Pokud chcete zobrazit spuštěnou aplikaci, zadejte přiřazený veřejný koncový bod (označený jako **URL**) do prohlížeče.
 
     ![Snímek obrazovky s portálem ASC](media/spring-cloud-quickstart-launch-app-portal/sample-app.png)
 

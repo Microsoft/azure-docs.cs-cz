@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: victorh
-ms.openlocfilehash: 8b55f31f12ab1057ac2e0f625a0285b6518cc44a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 78269461bf01d61bffeed504b0168b4913c6e131
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845769"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77442985"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -30,7 +30,7 @@ Azure Firewall je spravovaná cloudová služba síťového zabezpečení, kter�
 * Podpora pro odchozí SNAT
 * Podpora DNAT u příchozích přenosů
 * Centrální vytváření, prosazování a protokolování zásad pro připojení aplikací a sítí napříč předplatnými Azure a virtuální sítě
-* Plná integrace se službou Azure Monitor zajišťující protokolování a analýzy
+* Plně integrovaná s Azure Monitor pro protokolování a analýzu
 
 ## <a name="what-is-the-typical-deployment-model-for-azure-firewall"></a>Jaký je typický model nasazení pro Azure Firewall?
 
@@ -88,7 +88,7 @@ Viz [ceny Azure firewall](https://azure.microsoft.com/pricing/details/azure-fire
 
 Můžete použít metody *navrácení* a *přidělení* Azure PowerShell.
 
-Příklad:
+Například:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -125,7 +125,7 @@ Ano. Konfigurace udr pro přesměrování provozu mezi podsítěmi ve stejné vi
 
 ## <a name="does-azure-firewall-outbound-snat-between-private-networks"></a>Je Azure Firewall odchozí SNAT mezi privátními sítěmi?
 
-Azure Firewall nesnat, pokud je cílová IP adresa rozsahem privátních IP adres na [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Pokud vaše organizace používá pro privátní sítě rozsah veřejných IP adres, Azure Firewall SNATs provoz na jednu z privátních IP adres brány firewall v AzureFirewallSubnet.
+Azure Firewall nesnat, pokud je cílová IP adresa rozsahem privátních IP adres na [IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Pokud vaše organizace používá pro privátní sítě rozsah veřejných IP adres, Azure Firewall SNATs provoz na jednu z privátních IP adres brány firewall v AzureFirewallSubnet. Azure Firewall **můžete nakonfigurovat tak,** aby nesnat na svůj rozsah veřejných IP adres. Další informace najdete v tématu [Azure firewall rozsahy privátních IP adres SNAT](snat-private-range.md).
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Je podporováno vynucené tunelové propojení/řetězení k síťovému virtuálnímu zařízení?
 

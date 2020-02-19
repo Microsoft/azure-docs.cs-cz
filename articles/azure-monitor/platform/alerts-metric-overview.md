@@ -7,12 +7,12 @@ ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: abcf7d100a1c195d4a49c3061bf22710285c2a9f
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850053"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77444158"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Vysvětlení, jak fungují výstrahy metrik v Azure Monitor
 
@@ -20,7 +20,7 @@ Výstrahy metrik v Azure Monitor pracují na multidimenzionálních metrikách. 
 
 ## <a name="how-do-metric-alerts-work"></a>Jak fungují výstrahy metrik?
 
-Můžete definovat pravidlo výstrahy metriky zadáním cílového prostředku, který se má monitorovat, názvu metriky, typu podmínky (statické nebo dynamické) a podmínky (operátor a prahová hodnota/citlivost) a skupiny akcí, která se aktivuje při aktivaci pravidla výstrahy. Typy podmínek ovlivňují způsob, jakým jsou určovány prahové hodnoty. [Přečtěte si další informace o typu dynamické prahové hodnoty a možnosti citlivosti](alerts-dynamic-thresholds.md).
+Můžete definovat pravidlo výstrahy metriky zadáním cílového prostředku, který se má monitorovat, názvu metriky, typu podmínky (statické nebo dynamické) a podmínky (operátor a prahová hodnota/citlivost) a skupiny akcí, která se aktivuje při aktivaci pravidla výstrahy. Typy podmínek ovlivňují způsob určení prahových hodnot. [Přečtěte si další informace o typu dynamické prahové hodnoty a možnosti citlivosti](alerts-dynamic-thresholds.md).
 
 ### <a name="alert-rule-with-static-condition-type"></a>Pravidlo upozornění s typem statické podmínky
 
@@ -125,15 +125,15 @@ Zvýšení doby zpětného vyhledávání a počtu porušení může také umož
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorování ve velkém měřítku pomocí výstrah metrik v Azure Monitor
 
-Zatím jste viděli, jak se dá jedna výstraha metriky použít k monitorování jedné nebo mnoha metrik časových řad, které souvisí s jedním prostředkem Azure. V mnoha případech možná budete chtít, aby se stejné pravidlo pro upozornění uplatnilo na mnoho prostředků. Azure Monitor také podporuje monitorování více prostředků s jedním pravidlem upozornění na metriky. Tato funkce se aktuálně podporuje jenom pro virtuální počítače, databáze SQL serveru, elastické fondy SQL serveru a hraniční zařízení datového boxu. Jedna výstraha metriky může také monitorovat prostředky v jedné oblasti Azure.
+Zatím jste viděli, jak se dá jedna výstraha metriky použít k monitorování jedné nebo mnoha metrik časových řad, které souvisí s jedním prostředkem Azure. V mnoha případech možná budete chtít, aby se stejné pravidlo pro upozornění uplatnilo na mnoho prostředků. Azure Monitor také podporuje monitorování více prostředků (stejného typu) s jedním pravidlem upozornění na metriky pro prostředky, které existují ve stejné oblasti Azure. Tato funkce se aktuálně podporuje jenom ve veřejném cloudu Azure a jenom pro virtuální počítače, databáze SQL serveru, elastické fondy SQL serveru a hraniční zařízení data box. Tato funkce je také k dispozici pouze pro metriky platforem a není podporována pro vlastní metriky.
 
-Můžete určit rozsah monitorování jedním výstrahou metriky jedním ze tří způsobů:
+Rozsah monitorování můžete určit podle jednoho pravidla výstrahy metriky jedním ze tří způsobů:
 
 - jako seznam virtuálních počítačů v jedné oblasti Azure v rámci předplatného
 - všechny virtuální počítače (v jedné oblasti Azure) v jedné nebo více skupinách prostředků v rámci předplatného
 - všechny virtuální počítače (v jedné oblasti Azure) v jednom předplatném
 
-Vytváření pravidel upozornění na metriky, které monitorují více prostředků, je jako [Vytvoření jakékoli jiné výstrahy metriky](alerts-metric.md) , která monitoruje jeden prostředek. Jediným rozdílem je, že byste vybrali všechny prostředky, které chcete monitorovat. Tato pravidla můžete také vytvořit prostřednictvím [šablon Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). Pro každý virtuální počítač budete dostávat jednotlivá oznámení.
+Vytváření pravidel upozornění na metriky, které monitorují více prostředků, je jako [Vytvoření jakékoli jiné výstrahy metriky](alerts-metric.md) , která monitoruje jeden prostředek. Jediným rozdílem je, že byste vybrali všechny prostředky, které chcete monitorovat. Tato pravidla můžete také vytvořit prostřednictvím [šablon Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources). U každého monitorovaného prostředku budete dostávat jednotlivá oznámení.
 
 ## <a name="typical-latency"></a>Typická latence
 

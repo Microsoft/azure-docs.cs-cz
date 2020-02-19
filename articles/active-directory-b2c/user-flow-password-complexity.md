@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 59ac2f74d4753c1f647bedfa2c402e729e25ee62
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6e629f3c83d847cf20eccbe7a3fb0d3f444dac62
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847807"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77430325"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurace požadavků na složitost pro hesla v Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ Pokud používáte vlastní zásady, můžete ([nakonfigurovat složitost hesla 
 
 ## <a name="configure-password-complexity"></a>Konfigurace složitosti hesla
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
 2. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 3. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **toky uživatelů (zásady)** .
@@ -46,10 +46,10 @@ Pokud používáte vlastní zásady, můžete ([nakonfigurovat složitost hesla 
 
 ### <a name="comparison-chart"></a>Srovnávací graf
 
-| Hesla | Popis |
+| Složitost | Popis |
 | --- | --- |
-| Jednoduchost | Heslo, které má alespoň 8 až 64 znaků. |
-| Strong | Heslo, které má alespoň 8 až 64 znaků. Vyžaduje 3 ze 4 malých a velkých písmen, číslic a symbolů. |
+| Jednoduchý | Heslo, které má alespoň 8 až 64 znaků. |
+| Silné | Heslo, které má alespoň 8 až 64 znaků. Vyžaduje 3 ze 4 malých a velkých písmen, číslic a symbolů. |
 | Vlastní | Tato možnost poskytuje nejvyšší kontrolu nad pravidly složitosti hesla.  Umožňuje nakonfigurovat vlastní délku.  Umožňuje taky přijímat jenom hesla (PIN kód). |
 
 ## <a name="custom-options"></a>Vlastní možnosti
@@ -73,7 +73,7 @@ Umožňuje řídit požadavky na délku hesla.
 Umožňuje řídit různé typy znaků používané v hesle.
 
 - **2 ze 4: malý znak, velké písmeno, číslo (0-9), symbol zajistí,** že heslo obsahuje alespoň dva typy znaků. Například číslo a malý znak.
-- **3 ze 4: malý znak, Velká písmena, číslo (0-9), symbol zajistí,** že heslo obsahuje alespoň dva typy znaků. Například číslo, malý znak a znak velkého písmene.
+- **3 ze 4: malý znak, Velká písmena, číslo (0-9), symbol zajistí,** že heslo obsahuje alespoň tři typy znaků. Například číslo, malý znak a znak velkého písmene.
 - **4 ze 4: malá písmena, Velká písmena, číslo (0-9), symbol zajistí,** že heslo obsahuje všechny typy znaků.
 
     > [!NOTE]

@@ -36,7 +36,7 @@ Vazby tabulkového úložiště jsou k dispozici v balíčku NuGet [Microsoft. A
 
 Pomocí vstupní vazby Azure Table Storage si můžete přečíst tabulku v účtu Azure Storage.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="one-entity"></a>Jedna entita
 
@@ -143,7 +143,7 @@ Další informace o tom, jak používat cloudovou tabulku, najdete v tématu Za�
 
 Pokud se pokusíte vytvořit navázání na `CloudTable` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby úložiště](#azure-storage-sdk-version-in-functions-1x).
 
-# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
 
 ### <a name="one-entity"></a>Jedna entita
 
@@ -310,7 +310,7 @@ Další informace o tom, jak používat cloudovou tabulku, najdete v tématu Za�
 Pokud se pokusíte vytvořit navázání na `CloudTable` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby úložiště](#azure-storage-sdk-version-in-functions-1x).
 
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje vstupní vazbu tabulky v souboru *Function. JSON* a [kódu jazyka JavaScript](functions-reference-node.md) , který používá vazbu. Funkce používá Trigger fronty ke čtení jednoho řádku tabulky. 
 
@@ -352,7 +352,7 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Řádek jedné tabulky 
 
@@ -401,7 +401,7 @@ def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
     return func.HttpResponse(f"Table row: {messageJSON}")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Následující příklad ukazuje funkci aktivovanou protokolem HTTP, která vrací celkový počet položek v zadaném oddílu v úložišti tabulek.
 
@@ -423,7 +423,7 @@ public int run(
 
 ## <a name="input---attributes-and-annotations"></a>Vstupní atributy a poznámky
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
  V [ C# knihovnách tříd](functions-dotnet-class-library.md)použijte následující atributy ke konfiguraci vstupní vazby tabulky:
 
@@ -481,19 +481,19 @@ public int run(
 * Atribut `StorageAccount` aplikovaný na třídu.
 * Výchozí účet úložiště pro aplikaci Function App (nastavení aplikace "AzureWebJobsStorage").
 
-# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
 
 C# Skript nepodporuje atributy.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány jazykem JavaScript.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python nepodporuje atributy.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@TableInput` anotaci u parametrů, jejichž hodnota by pocházela z tabulkového úložiště.  Tuto poznámku lze použít s nativními typy s možnou hodnotou null, Pojo nebo Nullable pomocí `Optional<T>`.
 
@@ -519,7 +519,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="input---usage"></a>(Vstup) – využití
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 * **Číst jeden řádek v**
 
@@ -532,7 +532,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
   > [!NOTE]
   > `IQueryable` není v [modulu runtime Functions v2](functions-versions.md)podporován. Alternativou je [použití parametru paramName metody cloudu](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) pro čtení tabulky pomocí sady SDK Azure Storage. Pokud se pokusíte vytvořit navázání na `CloudTable` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby úložiště](#azure-storage-sdk-version-in-functions-1x).
 
-# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
 
 * **Číst jeden řádek v**
 
@@ -545,15 +545,15 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
   > [!NOTE]
   > `IQueryable` není v [modulu runtime Functions v2](functions-versions.md)podporován. Alternativou je [použití parametru paramName metody cloudu](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) pro čtení tabulky pomocí sady SDK Azure Storage. Pokud se pokusíte vytvořit navázání na `CloudTable` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby úložiště](#azure-storage-sdk-version-in-functions-1x).
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Nastavte vlastnosti `filter` a `take`. Nenastavte `partitionKey` ani `rowKey`. Přístup k entitě vstupní tabulky (nebo entit) pomocí `context.bindings.<BINDING_NAME>`. Deserializované objekty mají vlastnosti `RowKey` a `PartitionKey`.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Data tabulky se předávají funkci jako řetězec JSON. Deserializovat zprávu voláním `json.loads`, jak je znázorněno v [příkladu](#input)vstupu.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Atribut [TableInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput) vám poskytne přístup k řádku tabulky, který funkci aktivoval.
 
@@ -566,7 +566,7 @@ Použijte výstupní vazbu služby Azure Table Storage k zápisu entit do tabulk
 > [!NOTE]
 > Tato výstupní vazba nepodporuje aktualizaci existujících entit. K aktualizaci existující entity použijte operaci `TableOperation.Replace` [ze sady Azure Storage SDK](../cosmos-db/tutorial-develop-table-dotnet.md#delete-an-entity) .
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Následující příklad ukazuje [ C# funkci](functions-dotnet-class-library.md) , která pomocí triggeru http zapisuje jeden řádek tabulky. 
 
@@ -590,7 +590,7 @@ public class TableStorage
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
 
 Následující příklad ukazuje výstupní vazbu tabulky v souboru *Function. JSON* a [ C# kódu skriptu](functions-reference-csharp.md) , který používá vazbu. Funkce zapisuje více entit tabulky.
 
@@ -645,7 +645,7 @@ public class Person
 
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Následující příklad ukazuje výstupní vazbu tabulky v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu. Funkce zapisuje více entit tabulky.
 
@@ -692,7 +692,7 @@ module.exports = function (context) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Následující příklad ukazuje, jak použít výstupní vazbu tabulkového úložiště. Vazba `table` je nakonfigurována v *Function. JSON* přiřazením hodnot do `name`, `tableName`, `partitionKey`a `connection`:
 
@@ -751,7 +751,7 @@ def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
     return func.HttpResponse(f"Message created with the rowKey: {rowKey}")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Následující příklad ukazuje funkci jazyka Java, která pomocí triggeru HTTP zapisuje jeden řádek tabulky.
 
@@ -831,7 +831,7 @@ public class AddPersons {
 
 ## <a name="output---attributes-and-annotations"></a>Výstup – atributy a poznámky
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 V [ C# knihovně tříd](functions-dotnet-class-library.md)použijte [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs).
 
@@ -865,19 +865,19 @@ public static MyPoco TableOutput(
 
 Atribut `StorageAccount` lze použít k určení účtu úložiště na úrovni třídy, metody nebo parametru. Další informace naleznete v tématu [input-Attributes](#input---attributes-and-annotations).
 
-# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
 
 C# Skript nepodporuje atributy.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Atributy nejsou podporovány jazykem JavaScript.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Python nepodporuje atributy.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 V [běhové knihovně funkcí jazyka Java](/java/api/overview/azure/functions/runtime)použijte pro zápis hodnot do tabulkového úložiště [TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/) anotaci parametrů.
 
@@ -903,23 +903,23 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="output---usage"></a>Výstup – využití
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Přístup k entitě výstupní tabulky pomocí parametru metody `ICollector<T> paramName` nebo `IAsyncCollector<T> paramName` kde `T` obsahuje vlastnosti `PartitionKey` a `RowKey`. Tyto vlastnosti jsou často doprovázeny implementací `ITableEntity` nebo dědění `TableEntity`.
 
 Případně můžete použít parametr `CloudTable` metody k zápisu do tabulky pomocí sady Azure Storage SDK. Pokud se pokusíte vytvořit navázání na `CloudTable` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby úložiště](#azure-storage-sdk-version-in-functions-1x).
 
-# <a name="c-scripttabcsharp-script"></a>[C#Pravidel](#tab/csharp-script)
+# <a name="c-script"></a>[C#Pravidel](#tab/csharp-script)
 
 Přístup k entitě výstupní tabulky pomocí parametru metody `ICollector<T> paramName` nebo `IAsyncCollector<T> paramName` kde `T` obsahuje vlastnosti `PartitionKey` a `RowKey`. Tyto vlastnosti jsou často doprovázeny implementací `ITableEntity` nebo dědění `TableEntity`. Hodnota `paramName` je určena ve vlastnosti `name` *Function. JSON*.
 
 Případně můžete použít parametr `CloudTable` metody k zápisu do tabulky pomocí sady Azure Storage SDK. Pokud se pokusíte vytvořit navázání na `CloudTable` a zobrazí se chybová zpráva, ujistěte se, že máte odkaz na [správnou verzi sady SDK služby úložiště](#azure-storage-sdk-version-in-functions-1x).
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Přístup k události výstupu pomocí `context.bindings.<name>`, kde `<name>` je hodnota zadaná ve vlastnosti `name` *funkce Function. JSON*.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 K dispozici jsou dvě možnosti pro výstup zprávy řádku úložiště tabulky z funkce:
 
@@ -927,7 +927,7 @@ K dispozici jsou dvě možnosti pro výstup zprávy řádku úložiště tabulky
 
 - **Imperativní**: předejte hodnotu metodě [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) parametru deklarovaného jako typ [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) . Hodnota předaná do `set` je trvalá jako zpráva centra událostí.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 K dispozici jsou dvě možnosti pro výstup řádku úložiště tabulky z funkce pomocí anotace [TableStorageOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet) :
 

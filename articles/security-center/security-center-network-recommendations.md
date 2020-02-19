@@ -1,5 +1,5 @@
 ---
-title: Ochrana síťových prostředků v Azure Security Center | Microsoft Docs
+title: Ochrana síťových prostředků v Azure Security Center
 description: Tento dokument popisuje doporučení v Azure Security Center, která vám pomůžou chránit vaše síťové prostředky Azure a zůstat v souladu se zásadami zabezpečení.
 services: security-center
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 98001ba01c5dd29375a9af3af43a06f760e4f55f
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
+ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552912"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77431481"
 ---
 # <a name="protect-your-network-resources"></a>Ochrana síťových prostředků
 Azure Security Center průběžně analyzuje stav zabezpečení vašich prostředků Azure pro osvědčené postupy zabezpečení sítě. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení, která vás provedou procesem konfigurace potřebných ovládacích prvků k posílení a ochraně vašich prostředků.
@@ -141,4 +141,4 @@ Třetí úroveň zobrazuje virtuální počítače, které jsou podobné tomu, c
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 
 * [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
-* [Ochrana služby Azure SQL ve službě Azure Security Center](security-center-sql-service-recommendations.md)
+* [Ochrana služby Azure SQL Service v Azure Security Center](security-center-sql-service-recommendations.md)
