@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 4be7dc3e93b61f036a4167347a45725eff185f04
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a2787a0d5f372562f32c4d8adca3ed195d1befd5
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969706"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461964"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí Javy
 
@@ -28,7 +28,7 @@ Přestože sada SDK služby pro Javu funguje na počítačích s Windows i Linux
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte sadu [Java SE Development Kit 8](https://aka.ms/azure-jdks).
 * Nainstalujte [Maven 3](https://maven.apache.org/download.cgi). Aktuální verzi Mavenu zjistíte spuštěním tohoto příkazu:
@@ -108,7 +108,7 @@ Následující kroky ukazují, jak do vzorového kódu přidat podrobnosti o zř
                         "-----END CERTIFICATE-----\n";
                 ```
 
-        9. Zavřete příkazové okno nebo po zobrazení výzvy k zadání *ověřovacího kódu* zadejte **n**. 
+        9. Zavřete příkazové okno nebo po zobrazení výzvy k zadání **ověřovacího kódu** zadejte *n*. 
  
     3. Volitelně můžete svou službu zřizování nakonfigurovat pomocí vzorového kódu:
         - Pokud chcete do ukázky přidat tuto konfiguraci, postupujte následovně:
@@ -149,7 +149,7 @@ Následující kroky ukazují, jak do vzorového kódu přidat podrobnosti o zř
     mvn install -DskipTests
     ```
 
-   Tento příkaz na váš počítač stáhne balíček Maven [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client). Tento balíček obsahuje binární soubory sady SDK služby pro Javu, které vzorový kód vyžaduje k sestavení. Pokud jste v předchozí části spustili nástroj _Generátor certifikátů X.509_, bude tento balíček na vašem počítači už stažený. 
+   Tento příkaz na váš počítač stáhne balíček Maven [`com.microsoft.azure.sdk.iot.provisioning.service`](https://mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client). Tento balíček obsahuje binární soubory sady SDK služby pro Javu, které vzorový kód vyžaduje k sestavení. Pokud jste v předchozí části spustili nástroj _Generátor certifikátů X.509_, bude tento balíček na vašem počítači už stažený. 
 
 3. Spusťte ukázku pomocí těchto příkazů v příkazovém okně:
 
@@ -198,7 +198,7 @@ Pokud chcete zaregistrovat jediné zařízení X.509, upravte následujícím zp
     Attestation attestation = X509Attestation.createFromClientCertificates(PUBLIC_KEY_CERTIFICATE_STRING);
     ```
 
-4. Pomocí postupu v části [Sestavení a spuštění vzorového kódu pro jednotlivou registraci](quick-enroll-device-tpm-java.md#runjavasample) uložte, sestavte a spusťte soubor s ukázkou *jednotlivé registrace*.
+4. Pomocí postupu v části *Sestavení a spuštění vzorového kódu pro jednotlivou registraci* uložte, sestavte a spusťte soubor s ukázkou [jednotlivé registrace](quick-enroll-device-tpm-java.md#runjavasample).
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

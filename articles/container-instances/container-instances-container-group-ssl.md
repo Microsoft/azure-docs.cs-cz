@@ -1,16 +1,16 @@
 ---
-title: Povolit SSL ve skupině kontejnerů
-description: Vytvoření koncového bodu SSL nebo TLS pro skupinu kontejnerů spuštěnou v Azure Container Instances
+title: Povolení SSL s kontejnerem webpostranního vozíku
+description: Vytvoření koncového bodu SSL nebo TLS pro skupinu kontejnerů běžící v Azure Container Instances spuštěním Nginx v kontejneru webvozíku
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/14/2020
+ms.openlocfilehash: 524e997cf6c7c464cc352048b1abf4be119d2f37
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773063"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460548"
 ---
-# <a name="enable-an-ssl-endpoint-in-a-container-group"></a>Povolení koncového bodu SSL ve skupině kontejnerů
+# <a name="enable-an-ssl-endpoint-in-a-sidecar-container"></a>Povolení koncového bodu SSL v kontejneru webvozík
 
 Tento článek ukazuje, jak vytvořit [skupinu kontejnerů](container-instances-container-groups.md) pomocí kontejneru aplikace a kontejneru postranního vozíku s poskytovatelem SSL. Nastavením skupiny kontejnerů pomocí samostatného koncového bodu SSL povolíte připojení SSL pro aplikaci beze změny kódu aplikace.
 
@@ -18,13 +18,15 @@ Nastavili jste ukázkovou skupinu kontejnerů skládající se ze dvou kontejner
 * Kontejner aplikace, který spouští jednoduchou webovou aplikaci s použitím veřejné image Microsoft [ACI-Hello](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) . 
 * Kontejner postranového vozíku, který spouští veřejnou image [Nginx](https://hub.docker.com/_/nginx) , nakonfigurovaný na používání protokolu SSL. 
 
-V tomto příkladu skupina kontejnerů zveřejňuje port 443 pro Nginx s jeho veřejnou IP adresou. Nginx směruje požadavky HTTPS do doprovodné webové aplikace, která naslouchá interně na portu 80. Můžete upravit příklad pro kontejnerové aplikace, které naslouchají na jiných portech. Další přístupy k povolení SSL ve skupině kontejnerů najdete v části [Další kroky](#next-steps) .
+V tomto příkladu skupina kontejnerů zveřejňuje port 443 pro Nginx s jeho veřejnou IP adresou. Nginx směruje požadavky HTTPS do doprovodné webové aplikace, která naslouchá interně na portu 80. Můžete upravit příklad pro kontejnerové aplikace, které naslouchají na jiných portech. 
+
+Další přístupy k povolení SSL ve skupině kontejnerů najdete v části [Další kroky](#next-steps) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 K dokončení tohoto článku můžete použít Azure Cloud Shell nebo místní instalaci rozhraní příkazového řádku Azure. Pokud byste ho chtěli používat místně, doporučuje se verze 2.0.55 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
+## <a name="create-a-self-signed-certificate"></a>Vytvoření certifikátu podepsaného svým držitelem (self-signed certificate)
 
 Pokud chcete nastavit Nginx jako poskytovatele SSL, budete potřebovat certifikát SSL. V tomto článku se dozvíte, jak vytvořit a nastavit certifikát SSL podepsaný svým držitelem. V produkčních scénářích byste měli získat certifikát od certifikační autority.
 
@@ -38,7 +40,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 Podle pokynů přidejte identifikační informace. Do pole běžný název zadejte název hostitele přidružený k certifikátu. Po zobrazení výzvy k zadání hesla stiskněte klávesu ENTER bez psaní, abyste mohli přeskočit Přidání hesla.
 
-Spuštěním následujícího příkazu vytvořte certifikát podepsaný svým držitelem (soubor. CRT) z žádosti o certifikát. Příklad:
+Spuštěním následujícího příkazu vytvořte certifikát podepsaný svým držitelem (soubor. CRT) z žádosti o certifikát. Například:
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
@@ -50,13 +52,13 @@ Nyní byste měli vidět tři soubory v adresáři: žádost o certifikát (`ssl
 
 ### <a name="create-nginx-configuration-file"></a>Vytvořit konfigurační soubor Nginx
 
-V této části vytvoříte konfigurační soubor pro Nginx, který bude používat protokol SSL. Začněte zkopírováním následujícího textu do nového souboru s názvem`nginx.conf`. V Azure Cloud Shell můžete pomocí Visual Studio Code vytvořit soubor v pracovním adresáři:
+V této části vytvoříte konfigurační soubor pro Nginx, který bude používat protokol SSL. Začněte zkopírováním následujícího textu do nového souboru s názvem `nginx.conf`. V Azure Cloud Shell můžete pomocí Visual Studio Code vytvořit soubor v pracovním adresáři:
 
 ```console
 code nginx.conf
 ```
 
-V `location`nezapomeňte nastavit `proxy_pass` se správným portem pro aplikaci. V tomto příkladu nastavíme pro kontejner `aci-helloworld` port 80.
+V `location`nezapomeňte nastavit `proxy_pass` se správným portem pro vaši aplikaci. V tomto příkladu nastavíme pro kontejner `aci-helloworld` port 80.
 
 ```console
 # nginx Configuration File
@@ -85,7 +87,7 @@ http {
 
         # Protect against the BEAST attack by not using SSLv3 at all. If you need to support older browsers (IE6) you may need to add
         # SSLv3 to the list of protocols below.
-        ssl_protocols              TLSv1 TLSv1.1 TLSv1.2;
+        ssl_protocols              TLSv1.2;
 
         # Ciphers set to best allow protection from Beast, while providing forwarding secrecy, as defined by Mozilla - https://wiki.mozilla.org/Security/Server_Side_TLS#Nginx
         ssl_ciphers                ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:ECDHE-RSA-RC4-SHA:ECDHE-ECDSA-RC4-SHA:AES128:AES256:RC4-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!3DES:!MD5:!PSK;
@@ -125,9 +127,9 @@ http {
 Base64 – zakóduje konfigurační soubor Nginx, certifikát SSL a klíč SSL. V další části zadáte kódovaný obsah do souboru YAML, který se používá k nasazení skupiny kontejnerů.
 
 ```console
-cat nginx.conf | base64 -w 0 > base64-nginx.conf
-cat ssl.crt | base64 -w 0 > base64-ssl.crt
-cat ssl.key | base64 -w 0 > base64-ssl.key
+cat nginx.conf | base64 > base64-nginx.conf
+cat ssl.crt | base64 > base64-ssl.crt
+cat ssl.key | base64 > base64-ssl.key
 ```
 
 ## <a name="deploy-container-group"></a>Nasadit skupinu kontejnerů
@@ -216,17 +218,18 @@ V případě úspěšného nasazení je výstup podobný následujícímu:
 ```console
 Name          ResourceGroup    Status    Image                                                    IP:ports             Network    CPU/Memory       OsType    Location
 ------------  ---------------  --------  -------------------------------------------------------  -------------------  ---------  ---------------  --------  ----------
-app-with-ssl  myresourcegroup  Running   mcr.microsoft.com/azuredocs/nginx, aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
+app-with-ssl  myresourcegroup  Running   nginx, mcr.microsoft.com/azuredocs/aci-helloworld        52.157.22.76:443     Public     1.0 core/1.5 gb  Linux     westus
 ```
 
 ## <a name="verify-ssl-connection"></a>Ověření připojení SSL
 
-Běžící aplikaci zobrazíte tak, že v prohlížeči přejdete na její IP adresu. Například IP adresa zobrazená v tomto příkladu je `52.157.22.76`. Pro zobrazení spuštěné aplikace z důvodu konfigurace serveru Nginx je nutné použít `https://<IP-ADDRESS>`. Pokusy o připojení pomocí `http://<IP-ADDRESS>` selžou.
+Pomocí prohlížeče přejděte na veřejnou IP adresu skupiny kontejnerů. IP adresa zobrazená v tomto příkladu je `52.157.22.76`, takže adresa URL je **https://52.157.22.76** . K zobrazení spuštěné aplikace z důvodu konfigurace serveru Nginx je nutné použít protokol HTTPS. Pokus o připojení přes protokol HTTP selže.
 
 ![Snímek obrazovky prohlížeče ukazující aplikaci spuštěnou v instanci kontejneru Azure](./media/container-instances-container-group-ssl/aci-app-ssl-browser.png)
 
 > [!NOTE]
-> Vzhledem k tomu, že v tomto příkladu se používá certifikát podepsaný svým držitelem a ne certifikát od certifikační autority, zobrazuje prohlížeč při připojování k webu přes protokol HTTPS upozornění zabezpečení. Jde o očekávané chování.
+> Vzhledem k tomu, že v tomto příkladu se používá certifikát podepsaný svým držitelem a ne certifikát od certifikační autority, zobrazuje prohlížeč při připojování k webu přes protokol HTTPS upozornění zabezpečení. Může být nutné přijmout upozornění nebo upravit nastavení prohlížeče nebo certifikátu, aby bylo možné pokračovat na stránku. Jde o očekávané chování.
+
 >
 
 ## <a name="next-steps"></a>Další kroky
@@ -239,6 +242,4 @@ Pokud nasadíte skupinu kontejnerů ve [službě Azure Virtual Network](containe
 
 * [Proxy služby Azure Functions](../azure-functions/functions-proxies.md)
 * [Azure API Management](../api-management/api-management-key-concepts.md)
-* [Azure Application Gateway](../application-gateway/overview.md)
-
-Pokud chcete použít Aplikační bránu, přečtěte si ukázkovou [šablonu nasazení](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet).
+* [Azure Application Gateway](../application-gateway/overview.md) – Podívejte se na vzorovou [šablonu nasazení](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet).

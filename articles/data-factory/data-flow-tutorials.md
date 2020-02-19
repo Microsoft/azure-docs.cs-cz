@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 02/06/2020
-ms.openlocfilehash: 93b8520c0f65f102c9adf64870b60506d890276d
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
-ms.translationtype: HT
+ms.openlocfilehash: 1449b34a9bbeb5692d25a5f84c4ee38e6c4e0a33
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431396"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460531"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
@@ -138,3 +138,5 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 ## <a name="data-flow-expressions"></a>Výrazy toku dat
 
 [Výrazy pro datum a čas](https://www.youtube.com/watch?v=uboyCZ25r_E&feature=youtu.be&hd=1)
+
+[Rozdělení polí a příkazů Case](https://www.youtube.com/watch?v=DHNH8ZO7YjI)

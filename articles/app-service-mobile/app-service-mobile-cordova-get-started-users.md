@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: f85c8e4f8eedccf3039038308f2262727fb18197
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 3714ce2a8098608851991115aa82afdc00d08a47
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668558"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459384"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Přidání ověřování do aplikace Apache Cordova
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
-
-> [!NOTE]
-> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
->
-> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="summary"></a>Souhrn
 V tomto kurzu přidáte ověřování do projektu ToDoList pro rychlé zprovoznění na Apache Cordova s použitím podporovaného zprostředkovatele identity. Tento kurz je založený na kurzu [Začínáme s Mobile Apps] , který musíte nejdřív provést.
@@ -32,7 +27,7 @@ V tomto kurzu přidáte ověřování do projektu ToDoList pro rychlé zprovozn�
 ## <a name="permissions"></a>Omezení oprávnění pro ověřené uživatele
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Nyní můžete ověřit, zda byl zakázán anonymní přístup k back-endu. V aplikaci Visual Studio:
+Nyní můžete ověřit, zda byl zakázán anonymní přístup k back-endu. V sadě Visual Studio:
 
 * Otevřete projekt, který jste vytvořili po dokončení kurzu [Začínáme s Mobile Apps].
 * Spusťte aplikaci na webu **Google Android Emulator**.
@@ -47,10 +42,10 @@ Dále aktualizujte aplikaci tak, aby ověřovala uživatele před vyžádáním 
    | Poskytovatel | Název poskytovatele sady SDK | Hostitel OAuth |
    |:--- |:--- |:--- |
    | Azure Active Directory | poplašné | https://login.microsoftonline.com |
-   | Facebook | přes | https://www.facebook.com |
-   | Google | Internetového | https://accounts.google.com |
+   | Facebook | facebook | https://www.facebook.com |
+   | Google | internetového | https://accounts.google.com |
    | Microsoft | microsoftaccount | https://login.live.com |
-   | Twitter | službě | https://api.twitter.com |
+   | Twitter | twitter | https://api.twitter.com |
 
     Příkladem obsahu – zásada zabezpečení (implementovaná pro Azure Active Directory) je následující:
 

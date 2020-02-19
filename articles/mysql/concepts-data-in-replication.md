@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 58882f7569e26ebcba237158db2eb23e76bcd015
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 18c53a53a57b3ddca1168fc1075ae09bcd86f000
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765082"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462492"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikovat data do Azure Database for MySQL
 
@@ -28,12 +28,12 @@ Pro scénáře migrace použijte [Azure Database Migration Service](https://azur
 ## <a name="limitations-and-considerations"></a>Omezení a požadavky
 
 ### <a name="data-not-replicated"></a>Nereplikovaná data
-[*Systémová databáze MySQL*](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) na hlavním serveru se nereplikuje. Změny účtů a oprávnění na hlavním serveru se nereplikují. Pokud vytvoříte účet na hlavním serveru a tento účet potřebuje přístup k serveru repliky, ručně vytvořte stejný účet na straně serveru repliky. Informace o tom, jaké tabulky jsou obsaženy v systémové databázi, najdete v [příručce k MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-database.html).
+[*Systémová databáze MySQL*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html) na hlavním serveru se nereplikuje. Změny účtů a oprávnění na hlavním serveru se nereplikují. Pokud vytvoříte účet na hlavním serveru a tento účet potřebuje přístup k serveru repliky, ručně vytvořte stejný účet na straně serveru repliky. Informace o tom, jaké tabulky jsou obsaženy v systémové databázi, najdete v [příručce k MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html).
 
 ### <a name="requirements"></a>Požadavky
 - Verze hlavního serveru musí být aspoň MySQL verze 5,6. 
 - Verze hlavního serveru a serveru repliky musí být stejné. Musí být například MySQL verze 5,6 nebo musí být MySQL verze 5,7.
-- Každá tabulka musí mít primární klíč.
+- Každá tabulka musí obsahovat primární klíč.
 - Hlavní server by měl používat modul MySQL InnoDB.
 - Uživatel musí mít oprávnění ke konfiguraci binárního protokolování a vytváření nových uživatelů na hlavním serveru.
 - Pokud má hlavní server povolený protokol SSL, zajistěte, aby byl v uložené proceduře `mysql.az_replication_change_master` uložený certifikát certifikační autority SSL zadaný pro tuto doménu. Podívejte se na následující [Příklady](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) a parametr `master_ssl_ca`.
@@ -41,7 +41,7 @@ Pro scénáře migrace použijte [Azure Database Migration Service](https://azur
 - Ujistěte se, že počítač, který je hostitelem hlavního serveru, umožňuje příchozí i odchozí provoz na portu 3306.
 - Ujistěte se, že hlavní server má **veřejnou IP adresu**, služba DNS je veřejně přístupná nebo má plně kvalifikovaný název domény (FQDN).
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Ostatní
 - Replikace dat je podporovaná jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
 - Identifikátory globálních transakcí (GTID) se nepodporují.
 

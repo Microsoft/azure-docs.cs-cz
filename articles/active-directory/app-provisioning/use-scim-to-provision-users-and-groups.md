@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30f8111e1d8c9bd76e7b55dd958256f8892b9058
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: d7c8bdb7236ed0a3a12bae5050e564afe0b68cde
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442016"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461228"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure Active Directory (Azure AD)
 
@@ -106,7 +106,7 @@ Pak můžete pomocí následující tabulky porozumět tomu, jak atributy, kter�
 | Ve TelephoneNumber |phoneNumbers [typ eq "fax"] .value |
 | givenName |name.givenName |
 | pracovní funkce |Název |
-| e-mailu |e-mailů [typ eq "pracovní"] .value |
+| pošta |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |externalId |
 | Správce |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager |
 | Mobilní zařízení |phoneNumbers [eq typ "mobilní"] .value |
@@ -124,9 +124,9 @@ Pak můžete pomocí následující tabulky porozumět tomu, jak atributy, kter�
 | Skupina Azure Active Directory | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
 | displayName |displayName |
-| e-mailu |e-mailů [typ eq "pracovní"] .value |
+| pošta |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |displayName |
-| členové |členové |
+| členy |členy |
 | ID objektu |externalId |
 | proxyAddresses |e-mailů [Zadejte eq "other"]. Hodnota |
 
@@ -1445,6 +1445,16 @@ Po zahájení počátečního cyklu můžete na levém panelu vybrat **protokoly
 
 Pokud vytváříte aplikaci, kterou bude používat víc než jeden tenant, můžete je zpřístupnit v galerii aplikací Azure AD. Díky tomu budou moci organizace snadno vyhledat aplikaci a nakonfigurovat zřizování. Publikování aplikace v galerii Azure AD a zpřístupnění pro ostatní je snadné. Podívejte se na tento [postup.](../develop/howto-app-gallery-listing.md) Microsoft bude s vámi spolupracovat na integraci vaší aplikace do naší galerie, testování koncového bodu a [dokumentaci](../saas-apps/tutorial-list.md) k registraci pro zákazníky, kteří budou používat. 
 
+### <a name="gallery-onboarding-checklist"></a>Kontrolní seznam pro registraci galerie
+Postupujte podle níže uvedeného kontrolního seznamu a ujistěte se, že je vaše aplikace rychlá a zákazníci mají hladké prostředí pro nasazení. Informace budou shromažďovány od vás při připojování k galerii. 
+> [!div class="checklist"]
+> * [Podpora SCIM 2,0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) (povinné)
+> * Podpora minimálně 25 požadavků za sekundu na tenanta (povinné)
+> * Podpora zjišťování schématu (doporučeno)
+> * Podpora udělení autorizačního kódu OAuth nebo dlouhého nedlouhodobého tokenu, jak je popsáno níže (povinné)
+> * Vytvoření technického a podpůrného kontaktního bodu pro podporu registrace Galerie zákazníkům po registraci (povinné)
+> * Veřejně zdokumentujte svůj koncový bod SCIM (doporučeno) 
+
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autorizace pro zřizovací konektory v galerii aplikací
 Specifikace SCIM nedefinuje schéma specifické pro SCIM pro ověřování a autorizaci. Spoléhá se na použití stávajících oborových standardů. Klient zřizování Azure AD podporuje dvě autorizační metody pro aplikace v galerii. 
@@ -1471,6 +1481,17 @@ Osvědčené postupy (doporučeno, ale není nutné):
 **Dlouhodobé tokeny nosiče OAuth:** Pokud vaše aplikace nepodporuje tok udělení autorizačního kódu OAuth, můžete také vygenerovat dlouhodobé tokeny Bearer OAuth, než může správce použít k nastavení integrace zřizování. Token by měl být trvalý nebo jinak bude úloha zřizování v [karanténě](application-provisioning-quarantine-status.md) , až vyprší platnost tokenu. Hodnota tohoto tokenu musí být nižší než 1 KB.  
 
 V případě dalších metod ověřování a autorizace dejte nám na [UserVoice](https://aka.ms/appprovisioningfeaturerequest)informace.
+
+### <a name="gallery-go-to-market-launch-check-list"></a>Seznam kontrol spuštění v galerii pro uvedení na trh
+Abychom vám pomohli při zvyšování povědomí a vyžádání naší společné integrace, doporučujeme aktualizovat svou stávající dokumentaci a rozšířit integraci do marketingových kanálů.  Níže je uveden seznam aktivit kontrolního seznamu, které doporučujeme dokončit pro podporu spuštění.
+
+* **Připravenost na prodej a zákaznickou podporu.** Zajistěte, aby si týmy pro prodej a podporu byly vědomy a mohli mluvit s možnostmi integrace. Stručně váš tým pro prodej a podporu jim poskytne Nejčastější dotazy a integruje integraci do vašich prodejních materiálů. 
+* **Příspěvek na blogu nebo tiskovou verzi.** Vytvořte Blogový příspěvek nebo stiskněte vydanou verzi, která popisuje společnou integraci, výhody a postupy, jak začít. [Příklad: Imprivata and Azure Active Directory Press vydaná verze](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
+* **Sociální média.** Využijte své sociální média, jako je Twitter, Facebook nebo LinkedIn, a Propagujte integraci s vašimi zákazníky. Nezapomeňte zahrnout @AzureAD, abychom mohli vyložit svůj příspěvek. [Příklad: Imprivata Twitter post](https://twitter.com/azuread/status/1123964502909779968)
+* **Marketingový Web.** Vytvořte nebo aktualizujte své marketingové stránky (například stránka integrace, stránka pro partnery, ceny atd.), aby zahrnovaly dostupnost společné integrace. [Příklad: stránka integrace Pingboard](https://pingboard.com/org-chart-for), stránka [integrace Smartsheet](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), [Stránka s cenami Monday.com](https://monday.com/pricing/) 
+* **Technickou dokumentaci.** Vytvořte článek centra pro nápovědu nebo technickou dokumentaci, jak mohou zákazníci začít. [Příklad: integrace zástupné + Microsoft Azure Active Directory.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
+) 
+* **Komunikace se zákazníky.** Upozorní zákazníky na novou integraci prostřednictvím zákaznické komunikace (měsíční bulletiny, e-mailové kampaně, poznámky k verzi produktu). 
 
 ### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>Povolte IP adresy, které používá služba zřizování Azure AD k provádění požadavků SCIM.
 

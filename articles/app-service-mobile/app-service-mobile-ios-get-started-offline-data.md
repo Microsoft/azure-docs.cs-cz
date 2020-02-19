@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 66897263ff9c7d71c64d04fcc6860b96bf59588c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: d943213814b999f101a541abb0195a9fdd5a7423
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668484"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459170"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Povolení offline synchronizace s mobilními aplikacemi pro iOS
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
-
-> [!NOTE]
-> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
->
-> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Přehled
 Tento kurz pokrývá offline synchronizaci s funkcí Mobile Apps Azure App Service pro iOS. Při offline synchronizaci koncoví uživatelé můžou komunikovat s mobilní aplikací a zobrazovat, přidávat nebo upravovat data, i když nemají žádné síťové připojení. Změny jsou uloženy v místní databázi. Až bude zařízení zase online, změny se synchronizují se vzdáleným back-endu.
@@ -160,8 +155,8 @@ Pokud používáte funkci offline synchronizace, definujte tři systémové tabu
 | --- | --- |
 | id | Celé číslo 64 |
 | itemId | Řetězec |
-| properties | Binární data |
-| stolní | Řetězec |
+| properties | Binary Data |
+| tabulka | Řetězec |
 | tableKind | Celé číslo 16 |
 
 
@@ -173,7 +168,7 @@ Pokud používáte funkci offline synchronizace, definujte tři systémové tabu
 | --- | --- |
 | id |Řetězec |
 | operationId |Celé číslo 64 |
-| properties |Binární data |
+| properties |Binary Data |
 | tableKind |Celé číslo 16 |
 
  **MS_TableConfig**
@@ -185,7 +180,7 @@ Pokud používáte funkci offline synchronizace, definujte tři systémové tabu
 | id |Řetězec |
 | key |Řetězec |
 | keyType |Celé číslo 64 |
-| stolní |Řetězec |
+| tabulka |Řetězec |
 | hodnota |Řetězec |
 
 ### <a name="data-table"></a>Tabulka dat
@@ -239,7 +234,7 @@ V této části se připojíte k neplatné adrese URL pro simulaci offline scén
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```
-   **SWIFT**. V ToDoTableViewController. SWIFT:
+   **SWIFT**. In ToDoTableViewController.swift:
    ```swift
    let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
    ```
@@ -267,7 +262,7 @@ Operace normálního vytváření, čtení, aktualizace a odstranění (CRUD) pr
 
 Při synchronizaci místního úložiště se serverem jsme použili metodu **MSSyncTable. pullWithQuery** .
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 * [Synchronizace offline dat v Mobile Apps]
 * [Cloudové pokrytí: offline synchronizace v Azure Mobile Services] \(se video týká Mobile Services, ale Mobile Apps offline synchronizace funguje podobným způsobem.\)
 

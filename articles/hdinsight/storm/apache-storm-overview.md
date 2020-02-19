@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: overview
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9c7e49fe522859f97f00f760822d5eef60db5f69
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b291d5babb0680f5f1a742efcf624a82c804de68
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228861"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460003"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co je Apache Storm ve službě Azure HDInsight?
 
@@ -42,7 +42,7 @@ Storm v HDInsight poskytuje následující funkce:
 
     Ukázkové řešení, které se integruje se službami Azure, najdete v tématu [zpracování událostí z Event Hubs pomocí Apache Storm v HDInsight](https://github.com/Azure-Samples/hdinsight-java-storm-eventhub).
 
-Seznam společností, které používají pro svá řešení pro analýzu v reálném čase Apache Storm, najdete v tématu [Společnosti využívající Apache Storm](https://storm.apache.org/documentation/Powered-By.html).
+Seznam společností, které používají pro svá řešení pro analýzu v reálném čase Apache Storm, najdete v tématu [Společnosti využívající Apache Storm](https://storm.apache.org/Powered-By.html).
 
 Pokud chcete začít používat, přečtěte si téma [Vytvoření a monitorování Apache Storm topologie ve službě Azure HDInsight](apache-storm-quickstart.md).
 
@@ -113,7 +113,7 @@ Následují některé obvyklé scénáře, pro které můžete použít Storm v 
 * Sociální analýzy
 * Extrakce, transformace a načítání (ETL)
 * Monitorování sítě
-* Search
+* Hledání
 * Mobile engagement
 
 Informace o reálných scénářích najdete v tématu [jak společnosti používají Apache Storm](https://storm.apache.org/Powered-By.html) dokumentu.

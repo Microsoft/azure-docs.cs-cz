@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0e612dbecb9f215a90f728afb0f06a65db09764b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 076708cdc32b0547fe34f714798b4a7a963296fe
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162918"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462628"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -66,7 +66,7 @@ Následující tabulka uvádí, které typy účtů úložiště podporují ZRS,
 |    Úložiště    | Evropa – západ<br /> USA – východ    |    Jenom soubory Azure    |
 
 <sup>1</sup> úroveň archivu se v současnosti nepodporuje u účtů ZRS.<br />
-<sup>2</sup> disky Azure pro virtuální počítače, včetně spravovaných i nespravovaných disků, podporují jenom LRS. Nepodporují ZRS ani GZRS. Další informace o službě Managed disks najdete v tématu [ceny za službu Azure Managed disks](/pricing/details/managed-disks/).
+<sup>2</sup> disky Azure pro virtuální počítače, včetně spravovaných i nespravovaných disků, podporují jenom LRS. Nepodporují ZRS ani GZRS. Další informace o službě Managed disks najdete v tématu [ceny za službu Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Informace o tom, které oblasti podporují ZRS, najdete v článku **Podpora služeb podle oblasti** v tématu [co je zóny dostupnosti Azure?](../../availability-zones/az-overview.md).
 
@@ -131,7 +131,7 @@ Pokud je váš účet úložiště nakonfigurovaný pro přístup pro čtení do
 
 Když je povolený přístup pro čtení k sekundárnímu účtu, můžou se vaše data číst ze sekundárního koncového bodu i z primárního koncového bodu pro váš účet úložiště. Sekundární koncový bod připojí příponu *– sekundární* k názvu účtu. Pokud je například primární koncový bod pro úložiště objektů BLOB `myaccount.blob.core.windows.net`, pak je sekundární koncový bod `myaccount-secondary.blob.core.windows.net`. Přístupové klíče účtu pro váš účet úložiště jsou u primárních i sekundárních koncových bodů stejné.
 
-### <a name="check-the-last-sync-time-property"></a>Zkontroluje vlastnost čas poslední synchronizace.
+### <a name="check-the-last-sync-time-property"></a>Kontrola vlastnosti Čas poslední synchronizace
 
 Vzhledem k tomu, že data jsou replikována do sekundární oblasti asynchronně, Sekundární oblast je často za primární oblastí. Pokud dojde k selhání v primární oblasti, je pravděpodobně možné, že všechna zápisy do primární databáze nebudou dosud replikována do sekundárního umístění.
 

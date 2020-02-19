@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 2849dc94f1c45dda3da09120adebba6e004eb96b
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/18/2020
+ms.openlocfilehash: 86e869bc08552ea11728c508486a4784eccf4042
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211175"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462346"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Shromažďování a analýza dat protokolu pro Azure Kognitivní hledání
 
-Diagnostické nebo provozní protokoly poskytují přehled o podrobných operacích služby Azure Kognitivní hledání a jsou užitečné pro monitorování procesů služeb a úloh. Interně protokoly existují v back-endu po krátkou dobu, postačující pro šetření a analýzu, pokud zadáte lístek podpory. Pokud ale chcete, aby se pro provozní data řídil směr od sebe, měli byste nakonfigurovat nastavení diagnostiky, které určuje, kde se mají shromažďovat informace o protokolování. 
+Diagnostické nebo provozní protokoly poskytují přehled o podrobných operacích služby Azure Kognitivní hledání a jsou užitečné pro monitorování procesů služeb a úloh. Interně protokoly existují v back-endu po krátkou dobu, postačující pro šetření a analýzu, pokud zadáte lístek podpory. Pokud ale chcete, aby se pro provozní data řídil směr od sebe, měli byste nakonfigurovat nastavení diagnostiky, které určuje, kde se mají shromažďovat informace o protokolování.
 
 Nastavení protokolů je užitečné pro diagnostiku a zachovávání provozní historie. Po povolení protokolování můžete spouštět dotazy nebo sestavovat sestavy pro strukturované analýzy.
 
@@ -25,50 +25,71 @@ Následující tabulka uvádí možnosti pro shromažďování a uchovávání d
 
 | Prostředek | Použití |
 |----------|----------|
-| [Odeslat do pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | Protokolované události a metriky dotazů na základě níže uvedených schémat. Události jsou protokolovány do Log Analytics pracovního prostoru. Pomocí Log Analytics můžete spustit dotazy a vracet podrobné informace. Další informace najdete v tématu [Začínáme s protokoly Azure monitor](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) . |
-| [Archivace s úložištěm objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Protokolované události a metriky dotazů na základě níže uvedených schémat. Události se zaznamenávají do kontejneru objektů BLOB a ukládají se do souborů JSON. Protokoly můžou být poměrně podrobné (za hodinu a minutu), které jsou užitečné pro zkoumání konkrétního incidentu, ale ne pro vyšetřování otevřeného a nedokončeného. K zobrazení souboru protokolu použijte Editor JSON.|
-| [Streamování do centra událostí](https://docs.microsoft.com/azure/event-hubs/) | Protokolované události a metriky dotazů na základě schémat popsaných v tomto článku. Tuto možnost vyberte jako alternativní službu pro shromažďování dat pro velmi velké protokoly. |
+| [Odeslat do pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | Události a metriky se odesílají do Log Analytics pracovního prostoru, který se dá dotazovat na portálu, aby vracel podrobné informace. Úvod najdete v tématu Začínáme [s protokoly Azure monitor](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) . |
+| [Archivace s úložištěm objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Události a metriky se archivují do kontejneru objektů BLOB a ukládají se do souborů JSON. Protokoly můžou být poměrně podrobné (za hodinu a minutu), které jsou užitečné pro zkoumání konkrétního incidentu, ale ne pro vyšetřování otevřeného a nedokončeného. K zobrazení nezpracovaného souboru protokolu nebo Power BI k agregaci a vizualizaci dat protokolu použijte Editor JSON.|
+| [Streamování do centra událostí](https://docs.microsoft.com/azure/event-hubs/) | Události a metriky se streamují do služby Azure Event Hubs. Tuto možnost vyberte jako alternativní službu pro shromažďování dat pro velmi velké protokoly. |
 
 Protokoly Azure Monitor a BLOB Storage jsou k dispozici jako bezplatná služba, takže si ji můžete vyzkoušet bez poplatků za dobu života předplatného Azure. Application Insights se zaregistrovat a použít, pokud je velikost dat aplikace za určitých mezí (podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/monitor/) ).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud používáte Log Analytics nebo Azure Storage, můžete vytvořit prostředky předem.
 
 + [Vytvoření pracovního prostoru Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 
-+ Pokud potřebujete archiv protokolu, [vytvořte účet úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) .
++ [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 
-## <a name="create-a-log"></a>Vytvoření protokolu
+## <a name="enable-data-collection"></a>Povolení shromažďování dat
 
-Nastavení diagnostiky definují shromažďování dat. Nastavení určuje, jak a co se shromáždí. 
+Nastavení diagnostiky určují, jak se shromažďují protokolované události a metriky.
 
-1. V části **monitorování**vyberte **nastavení diagnostiky**.
+1. V části **Monitorování** vyberte **Nastavení diagnostiky**.
 
    ![Nastavení diagnostiky](./media/search-monitor-usage/diagnostic-settings.png "Nastavení diagnostiky")
 
 1. Vybrat **+ Přidat nastavení diagnostiky**
 
-1. Zvolte data, kterou chcete exportovat: protokoly, metriky nebo obojí. Data můžete shromažďovat v účtu úložiště, v pracovním prostoru Log Analytics nebo je streamovat do centra událostí.
-
-   Doporučuje se Log Analytics, protože na portálu se můžete dotazovat na pracovní prostor.
-
-   Pokud používáte také úložiště objektů blob, kontejnery a objekty BLOB se při exportu dat protokolu vytvoří podle potřeby.
+1. Zaškrtněte **Log Analytics**, vyberte svůj pracovní prostor a vyberte **OperationLogs** a **AllMetrics**.
 
    ![Konfigurace shromažďování dat](./media/search-monitor-usage/configure-storage.png "Konfigurace shromažďování dat")
 
 1. Nastavení uložte.
 
-1. Otestujte vytvořením nebo odstraněním objektů (vytvoří události protokolu) a odesláním dotazů (generuje metriky). 
+1. Po povolení protokolování můžete pomocí vyhledávací služby začít generovat protokoly a metriky. Bude trvat čas před tím, než budou události protokolu a metriky k dispozici.
 
-V úložišti objektů BLOB se kontejnery vytvářejí jenom v případě, že existuje aktivita pro protokolování nebo měření. Když se data zkopírují do účtu úložiště, data se naformátují jako JSON a umístí se do dvou kontejnerů:
+V případě Log Analytics bude k dispozici několik minut, než budou data k dispozici, a potom můžete spustit dotazy Kusto a vracet data. Další informace najdete v tématu [monitorování požadavků na dotazy](search-monitor-logs.md).
 
-* insights – protokoly operationlogs: pro protokoly přenosů služby search
-* insights-metrics-pt1m: pro metriky
+Pro úložiště objektů BLOB trvá jednu hodinu, než se kontejnery zobrazí v úložišti objektů BLOB. Existuje jeden objekt blob, za hodinu a kontejner. Kontejnery se vytvářejí pouze v případě, že existuje aktivita pro protokolování nebo měření. Když se data zkopírují do účtu úložiště, data se naformátují jako JSON a umístí se do dvou kontejnerů:
 
-**Trvá to jednu hodinu, než se kontejnery zobrazí v úložišti objektů BLOB. Jeden objekt BLOB se za hodinu vychází z každého kontejneru.**
++ insights – protokoly operationlogs: pro protokoly přenosů služby search
++ insights-metrics-pt1m: pro metriky
 
-Protokoly se archivují každou hodinu, během které dojde k aktivitě. Následující cesta je příkladem jednoho souboru protokolu vytvořeného v lednu 12 2020 v 9:00 ráno. kde každý `/` je složka: `resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/providers/microsoft.search/searchservices/<searchServiceName>/y=2020/m=01/d=12/h=09/m=00/name=PT1H.json`
+## <a name="query-log-information"></a>Informace protokolu dotazu
+
+V diagnostických protokolech obsahují dvě tabulky protokoly a metriky pro Azure Kognitivní hledání: **AzureDiagnostics** a **AzureMetrics**.
+
+1. V části **monitorování**vyberte **protokoly**.
+
+1. Do okna dotazu zadejte **AzureMetrics** . Spusťte tento jednoduchý dotaz, abyste se seznámili s daty shromážděnými v této tabulce. Posuňte se v tabulce, abyste zobrazili metriky a hodnoty. Všimněte si, že počet záznamů v horní části a pokud vaše služba shromažďuje metriky pro určitou chvíli, možná budete chtít upravit časový interval, abyste získali spravovatelnou datovou sadu.
+
+   ![Tabulka AzureMetrics](./media/search-monitor-usage/azuremetrics-table.png "Tabulka AzureMetrics")
+
+1. Zadejte následující dotaz, který vrátí tabelární sadu výsledků.
+
+   ```
+   AzureMetrics
+    | project MetricName, Total, Count, Maximum, Minimum, Average
+   ```
+
+1. Opakujte předchozí kroky, počínaje **AzureDiagnostics** a vraťte všechny sloupce pro informativní účely, a potom klikněte na další selektivní dotaz, který extrahuje zajímavé informace.
+
+   ```
+   AzureDiagnostics
+   | project OperationName, resultSignature_d, DurationMs, Query_s, Documents_d, IndexName_s
+   | where OperationName == "Query.Search" 
+   ```
+
+   ![Tabulka AzureDiagnostics](./media/search-monitor-usage/azurediagnostics-table.png "Tabulka AzureDiagnostics")
 
 ## <a name="log-schema"></a>Schéma protokolu
 
@@ -78,23 +99,23 @@ Pro úložiště objektů BLOB má každý objekt BLOB jeden kořenový objekt n
 
 Následující tabulka uvádí částečný seznam polí společných pro diagnostické protokolování.
 
-| Název | Typ | Příklad | Poznámky |
+| Název | Typ | Příklad | Poznámky: |
 | --- | --- | --- | --- |
 | timeGenerated |datetime |"2018-12-07T00:00:43.6872559Z" |Časové razítko operace |
 | resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VÝCHOZÍ/RESOURCEGROUPS/POSKYTOVATELE /<br/> SPOLEČNOSTI MICROSOFT. HLEDÁNÍ/SEARCHSERVICES/SEARCHSERVICE" |Vaše ID prostředku |
 | operationName |řetězec |"Query.Search" |Název operace |
 | operationVersion |řetězec |"2019-05-06" |Používá rozhraní api-version |
-| category |řetězec |"OperationLogs" |Konstanty |
+| category |řetězec |"OperationLogs" |– konstanta |
 | resultType |řetězec |"Success" |Možné hodnoty: úspěch nebo neúspěch |
 | resultSignature |int |200 |Kód výsledku protokolu HTTP |
 | doby trvání v MS |int |50 |Doba trvání operace v milisekundách |
-| Vlastnosti |object |v následující tabulce najdete |Objekt obsahující data specifická pro operace |
+| properties |objekt |v následující tabulce najdete |Objekt obsahující data specifická pro operace |
 
 ### <a name="properties-schema"></a>Schéma vlastností
 
 Níže uvedené vlastnosti jsou specifické pro Azure Kognitivní hledání.
 
-| Název | Typ | Příklad | Poznámky |
+| Název | Typ | Příklad | Poznámky: |
 | --- | --- | --- | --- |
 | Description_s |řetězec |"GET /indexes('content')/docs" |Operace koncového bodu |
 | Documents_d |int |42 |Počet zpracovaných dokumentů |
@@ -105,7 +126,7 @@ Níže uvedené vlastnosti jsou specifické pro Azure Kognitivní hledání.
 
 Metriky jsou zachyceny pro požadavky na dotazy a měřené v jednom minutovém intervalu. Každý metrika uvádí minimální, maximální a průměrné hodnoty za minutu. Další informace najdete v tématu [monitorování požadavků na dotazy](search-monitor-queries.md).
 
-| Název | Typ | Příklad | Poznámky |
+| Název | Typ | Příklad | Poznámky: |
 | --- | --- | --- | --- |
 | resourceId |řetězec |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>VÝCHOZÍ/RESOURCEGROUPS/POSKYTOVATELE /<br/>SPOLEČNOSTI MICROSOFT. HLEDÁNÍ/SEARCHSERVICES/SEARCHSERVICE" |ID prostředku |
 | metricName |řetězec |"Latence" |Název metriky |
@@ -123,7 +144,7 @@ U **vyhledávacích dotazů za sekundu** metrika minimální je nejnižší hodn
 
 U **omezených vyhledávacích dotazů procento**, minimum, maximum, průměr a součet musí mít všechny stejnou hodnotu: procento vyhledávacích dotazů, které byly omezeny, z celkového počtu vyhledávacích dotazů během jedné minuty.
 
-## <a name="view-log-files"></a>Zobrazit soubory protokolu
+## <a name="view-raw-log-files"></a>Zobrazit nezpracované soubory protokolu
 
 Úložiště objektů BLOB se používá k archivaci souborů protokolu. K zobrazení souboru protokolu můžete použít libovolný editor JSON. Pokud ho nemáte, doporučujeme [Visual Studio Code](https://code.visualstudio.com/download).
 

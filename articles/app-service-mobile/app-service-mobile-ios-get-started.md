@@ -1,27 +1,21 @@
 ---
-title: Vytvoření aplikace iOS
+title: Vytvoření aplikace pro iOS
 description: V tomto kurzu se naučíte používat Mobilní aplikace Azure back-endy pro vývoj pro iOS v cíli – C nebo SWIFT.
 ms.assetid: 6461a899-9340-42dd-b118-ffc5ba00e846
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: d933319d22fe7622f0409e8931c41a801fcd18ca
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 1b1114a22d33689f485aa228a8a1cf65eba719da
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668795"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461483"
 ---
-# <a name="create-an-ios-app"></a>Vytvoření aplikace iOS
+# <a name="create-an-ios-app"></a>Vytvoření aplikace pro iOS
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
-
-> [!NOTE]
-> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
->
-> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
-
 ## <a name="overview"></a>Přehled
 
 Tento kurz ukazuje, jak do aplikace pro iOS přidat cloudovou back-end službu [Azure App Service Mobile Apps](app-service-mobile-value-prop.md). Prvním krokem je vytvoření nového mobilního back-endu v Azure. Potom stáhnete ukázkovou aplikaci *seznamu úkolů*, která ukládá data v Azure.

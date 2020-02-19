@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 5846e9516548032595c1ce072d1dae8dcce9d39e
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: 353e00f902a7314e5e5b7c8ee03e8b925a510b26
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443597"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462322"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Monitorování operací a aktivit Azure Kognitivní hledání
 
@@ -52,7 +52,7 @@ Stránky se záložkami, které jsou integrované na stránce Přehled, se odhl�
 
 Pokud dokončujete rozhodnutí o tom, [která úroveň se má použít pro produkční úlohy](search-sku-tier.md), nebo jestli se má [upravit počet aktivních replik a oddílů](search-capacity-planning.md), může vám tyto metriky s těmito rozhodnutími povýšit tím, že vám ukáže, jak rychle se spotřebovávají prostředky a jak dobře aktuální konfigurace zpracovává existující zatížení.
 
-Výstrahy související s úložištěm nejsou aktuálně k dispozici. spotřeba úložiště není agregovaná ani přihlášená do tabulky **AzureMetrics** v Azure monitor. Museli byste vytvořit vlastní řešení, které vysílá oznámení související s prostředky, kde váš kód kontroluje velikost úložiště a zpracovává odpověď. Další informace o metrikách úložiště najdete v tématu [získání statistik služby](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
+Výstrahy související s úložištěm nejsou aktuálně k dispozici. spotřeba úložiště není agregovaná ani přihlášená do tabulky **AzureMetrics** v Azure monitor. Museli byste [vytvořit vlastní řešení](https://docs.microsoft.com/azure/azure-monitor/insights/solutions-creating) , které vysílá oznámení související s prostředky, kde váš kód kontroluje velikost úložiště a zpracovává odpověď. Další informace o metrikách úložiště najdete v tématu [získání statistik služby](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics#response).
 
 U vizuálního monitorování na portálu se na kartě **využití** zobrazuje dostupnost prostředků relativně k aktuálním [limitům](search-limits-quotas-capacity.md) , které jsou zavedené vrstvou služby. 
 
@@ -63,7 +63,7 @@ Následující obrázek je pro bezplatnou službu, která je omezené na 3 objek
 
 ## <a name="monitor-workloads"></a>Monitorování úloh
 
-Protokolované události obsahují ty, které souvisejí s indexováním a dotazy. Tabulka **AzureDiagnostics** v Log Analytics shromažďuje provozní data týkající se dotazů a indexování.
+Protokolované události zahrnují ty, které souvisejí s indexováním a dotazy. Tabulka **AzureDiagnostics** v Log Analytics shromažďuje provozní data týkající se dotazů a indexování.
 
 Většina protokolovaných dat je určena pouze pro operace jen pro čtení. Pro jiné operace Create-Update-Delete nezaznamenané v protokolu můžete zadat dotaz na informace o systému v vyhledávací službě.
 

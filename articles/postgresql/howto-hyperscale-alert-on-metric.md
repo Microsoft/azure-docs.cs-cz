@@ -5,17 +5,17 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 68a830f344023967f07ab809d67833f99e4e2958
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 2/18/2020
+ms.openlocfilehash: 0e2eb4ab13319779ae209e58253c6a5f2ccb75da
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977603"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462424"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Použití Azure Portal k nastavení výstrah pro metriky pro Azure Database for PostgreSQL – Citus (škálování)
 
-V tomto článku se dozvíte, jak nastavit výstrahy Azure Database for PostgreSQL pomocí Azure Portal. Můžete obdržet upozornění na základě metrik monitorování vašich služeb Azure.
+V tomto článku se dozvíte, jak nastavit výstrahy Azure Database for PostgreSQL pomocí Azure Portal. Můžete obdržet upozornění na základě [metrik monitorování](concepts-hyperscale-monitoring.md) vašich služeb Azure.
 
 Nastavíme výstrahu, která se aktivuje, když hodnota zadané metriky přechází z prahové hodnoty. Výstraha se aktivuje při prvním splnění podmínky a dále se aktivuje.
 
@@ -27,7 +27,7 @@ Můžete nakonfigurovat výstrahu, která provede následující akce při trigg
 Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 * [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
-* [Rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
+* [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
 ## <a name="create-an-alert-rule-on-a-metric-from-the-azure-portal"></a>Vytvoření pravidla výstrahy na metrikě z Azure Portal
 1. V [Azure Portal](https://portal.azure.com/)vyberte server Azure Database for PostgreSQL, který chcete monitorovat.
@@ -81,13 +81,31 @@ Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
 
     Během několika minut je výstraha aktivní a triggery, jak je popsáno výše.
 
-## <a name="manage-your-alerts"></a>Správa výstrah
+### <a name="managing-alerts"></a>Správa výstrah
 
 Po vytvoření výstrahy ji můžete vybrat a provést následující akce:
 
 * Zobrazení grafu znázorňujícího prahovou hodnotu metriky a skutečné hodnoty z předchozího dne, které se týkají této výstrahy.
 * **Upravte** nebo **odstraňte** pravidlo výstrahy.
 * Pokud chcete dočasně zastavit nebo obnovit přijímání oznámení, **zakažte** nebo **Povolte** výstrahu.
+
+## <a name="suggested-alerts"></a>Navrhované výstrahy
+
+### <a name="disk-space"></a>Místo na disku
+
+Monitorování a upozorňování je důležité pro každou skupinu serverů Citus (produkčního) na úrovni služby. Podkladová databáze PostgreSQL vyžaduje pro správné fungování volné místo na disku. Pokud se disk zaplní, uzel databázového serveru přejde do režimu offline a zamítne spustit, dokud nebude dostupné místo. V tomto okamžiku vyžaduje, aby žádost o podporu společnosti Microsoft tuto situaci opravila.
+
+Doporučujeme nastavit upozornění na místo na disku pro každý uzel v každé skupině serverů, a to i v případě neprodukčního využití. Výstrahy využití místa na disku poskytují předběžné upozornění potřebné k tomu, aby byly uzly v dobrém stavu. Nejlepších výsledků dosáhnete, když si vyzkoušíte řadu výstrah na 75%, 85% a 95% využití. Procentuální hodnoty, které se mají zvolit, závisí na rychlosti příjmu dat, protože rychlé přijímání dat vyplní disk rychleji.
+
+Vzhledem k dosažení limitu místa na disku Vyzkoušejte tyto techniky, abyste získali více volného místa:
+
+* Zkontrolujte zásady uchovávání dat. Pokud je to možné, přesuňte starší data do chladírenského úložiště.
+* Zvažte [Přidání uzlů](howto-hyperscale-scaling.md#add-worker-nodes) do skupiny serverů a nové vyrovnávání horizontálních oddílů. Nové vyrovnávání distribuuje data napříč více počítači.
+* Zvažte [větší kapacitu](howto-hyperscale-scaling.md#increase-vcores) pracovních uzlů. Každý pracovní proces může mít až 2 TiB úložiště. Před změnou velikosti uzlů by se ale mělo provést pokus o přidání uzlů, protože přidávání uzlů se dokončí rychleji.
+
+### <a name="cpu-usage"></a>Využití CPU
+
+Monitorování využití procesoru je užitečné k navázání standardních hodnot výkonu. Můžete si například všimnout, že využití CPU je obvykle přibližně 40-60%. Pokud využití CPU náhle začne najeďte kolem 95%, můžete rozpoznat anomálii. Využití CPU může odrážet ekologický růst, ale může také odhalit neosamocený dotaz. Při vytváření upozornění na procesor nastavte členitost agregované členitosti na průběžné zvyšování úrovně a ignorovat momentické špičky.
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [konfiguraci webhooků v upozorněních](../azure-monitor/platform/alerts-webhooks.md).

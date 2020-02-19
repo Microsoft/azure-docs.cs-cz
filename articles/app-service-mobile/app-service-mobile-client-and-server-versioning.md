@@ -6,18 +6,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 4d0b301dee363c2338cb13a9fc09ee17549467eb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: f24ae0a48b835785a2e000210f3609b82d42d0f6
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668847"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461551"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Správa verzí klienta a serveru v Mobile Apps a Mobile Services
-> [!NOTE]
-> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
->
-> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 Nejnovější verze služby Azure Mobile Services je **Mobile Apps** funkce Azure App Service.
 
@@ -47,7 +43,7 @@ Kontrolu verzí můžete odhlásit nastavením hodnoty **true** pro nastavení a
 ### <a name="MobileAppsClients"></a>Klientské sady SDK pro mobilní *aplikace*
 Kontrola verze byla představena počínaje následujícími verzemi klientské sady SDK pro **Azure Mobile Apps**:
 
-| Klientská platforma | Version | Hodnota hlavičky verze |
+| Klientská platforma | Verze | Hodnota hlavičky verze |
 | --- | --- | --- |
 | Spravovaný klient (Windows, Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
 | iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |
@@ -56,19 +52,19 @@ Kontrola verze byla představena počínaje následujícími verzemi klientské 
 ### <a name="mobile-apps-server-sdks"></a>Sady SDK serveru Mobile *Apps*
 Kontrola verze je zahrnutá v následujících verzích sady SDK serveru:
 
-| Serverová platforma | SDK | Hlavička přijaté verze |
+| Serverová platforma | Sada SDK | Hlavička přijaté verze |
 | --- | --- | --- |
 | .NET |[Microsoft. Azure. Mobile. Server](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server/) |2.0.0 |
 | Node.js |[Azure – Mobile – aplikace](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
 ### <a name="behavior-of-mobile-apps-backends"></a>Chování Mobile Apps back-endy
-| ZUMO – API – VERZE | Hodnota MS_SkipVersionCheck | Odpověď |
+| ZUMO-API-VERSION | Hodnota MS_SkipVersionCheck | Odpověď |
 | --- | --- | --- |
-| x. y. z nebo null |Pravda |200 – OK |
+| x. y. z nebo null |True |200 – OK |
 | Null |Hodnota false/není zadána |400 – Chybný požadavek |
 | 1. x. y |Hodnota false/není zadána |400 – Chybný požadavek |
-| 2.0.0-2. x. y |Hodnota false/není zadána |200 – OK |
-| 3.0.0-3. x. y |Hodnota false/není zadána |400 – Chybný požadavek |
+| 2.0.0-2.x.y |Hodnota false/není zadána |200 – OK |
+| 3.0.0-3.x.y |Hodnota false/není zadána |400 – Chybný požadavek |
 
 [Mobile Services clients]: #MobileServicesClients
 [Mobile Apps clients]: #MobileAppsClients

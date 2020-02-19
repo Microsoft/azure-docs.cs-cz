@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5f5522201534a54f5d132257553469eed5addab3
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 70d843f5773f66e6e17c40d0441553e3cb096c64
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169871"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462152"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Jak Azure Machine Learning funguje: architektura a koncepty
 
@@ -54,24 +54,25 @@ Použijte tyto nástroje pro Azure Machine Learning:
 > I když tento článek popisuje pojmy a koncepty, které používá Azure Machine Learning, nedefinuje pojmy a koncepty pro platformu Azure. Další informace o terminologii platforem Azure najdete v tématu [Microsoft Azure Glosář](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
 
 ## <a name="glossary"></a>Glosář
-+ <a href="#activities">Aktivita</a>
-+ <a href="#compute-targets">Cíle výpočtů</a>
-+ <a href="#datasets-and-datastores">Datová sada & úložiště dat</a>
-+ <a href="#endpoints">Bod</a>
-+ <a href="#environments">Environment</a>
-+ [Odhady](#estimators)
-+ <a href="#experiments">Experimenty</a>
-+ <a href="#github-tracking-and-integration">Sledování Gitu</a>
-+ <a href="#iot-module-endpoints">Moduly IoT</a>
-+ <a href="#logging">Protokolu</a>
-+ <a href="#ml-pipelines">Kanály ML</a>
-+ <a href="#models">Vzor</a>
-+ <a href="#runs">Spouštěl</a>
-+ <a href="#run-configurations">Konfigurace spuštění</a>
-+ <a href="#snapshots">Snímek</a>
-+ <a href="#training-scripts">Školicí skript</a>
-+ <a href="#web-service-endpoint">Webové služby</a>
-+ <a href="#workspaces">Stejných</a>
+
+* [Aktivita](#activities)
+* [Stejných](#workspaces)
+    * [Experimenty](#experiments)
+        * [Spouštěl](#runs) 
+            * [Konfigurace spuštění](#run-configurations)
+            * [Snímek](#snapshots)
+            * [Sledování Gitu](#github-tracking-and-integration)
+            * [Protokolu](#logging)
+    * [Kanály ML](#ml-pipelines)
+    * [Vzor](#models)
+        * [Environment](#environments)
+        * [Školicí skript](#training-scripts)
+        * [Odhady](#estimators)
+    * [Bod](#endpoints)
+        * [Webová služba](#web-service-endpoint)
+        * [Moduly IoT](#iot-module-endpoints)
+    * [Datová sada & úložiště dat](#datasets-and-datastores)
+    * [Cíle výpočtů](#compute-targets)
 
 ### <a name="activities"></a>Aktivity
 
@@ -82,71 +83,9 @@ Aktivita představuje dlouhotrvající operace. Příklady aktivit jsou následu
 
 Aktivity můžou poskytovat oznámení prostřednictvím sady SDK nebo webového uživatelského rozhraní, abyste mohli snadno monitorovat průběh těchto operací.
 
-### <a name="compute-instance"></a>Instance COMPUTE (Preview)
+### <a name="workspaces"></a>Pracovní prostory
 
-
-**Instance služby compute Azure Machine Learning** (dříve virtuální počítač poznámkového bloku) je plně spravovaná cloudová pracovní stanice, která zahrnuje několik nástrojů a prostředí nainstalovaných pro strojové učení. Výpočetní instance se dají použít jako cíl výpočtů pro školení a Inferencing úlohy. V případě rozsáhlých úloh [Azure Machine Learning výpočetní clustery](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzly lepší volbou cíle pro výpočty.
-
-Přečtěte si další informace o [výpočetních instancích](concept-compute-instance.md).
-
-### <a name="compute-targets"></a>Cílové výpočetní objekty
-
-[Cílový výpočetní](concept-compute-target.md) výkon vám umožní určit výpočetní prostředek, ve kterém spustíte školicí skript, nebo hostovat nasazení služby. Toto umístění může být váš místní počítač nebo cloudový výpočetní prostředek.
-
-Přečtěte si další informace o [dostupných výpočetních cílech pro školení a nasazení](concept-compute-target.md).
-
-### <a name="datasets-and-datastores"></a>Datové sady a úložiště dat
-
-**Azure Machine Learning datové sady** (Preview) usnadňují přístup k datům a práci s nimi. Datové sady spravují data v různých scénářích, jako jsou například školení modelů a vytváření kanálů. Pomocí sady Azure Machine Learning SDK můžete získat přístup k základnímu úložišti, prozkoumat data a spravovat životní cyklus různých definic datových sad.
-
-Datové sady poskytují metody pro práci s daty v oblíbených formátech, jako je například použití `from_delimited_files()` nebo `to_pandas_dataframe()`.
-
-Další informace najdete v tématu [Vytvoření a registrace Azure Machine Learning datových sad](how-to-create-register-datasets.md).  Další příklady použití datových sad najdete v [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets).
-
-**Úložiště dat** je abstrakce úložiště v rámci účtu úložiště Azure. Úložiště dat může jako back-end úložiště použít buď kontejner Azure Blob, nebo sdílenou složku Azure. Každý pracovní prostor má výchozí úložiště dat a můžete zaregistrovat další úložiště dat. K ukládání a načítání souborů z úložiště dat použijte rozhraní Python SDK API nebo Azure Machine Learning CLI.
-
-### <a name="endpoints"></a>Koncové body
-
-Koncový bod je instance vašeho modelu do webové služby, kterou je možné hostovat v cloudu nebo v modulu IoT pro nasazení integrovaných zařízení.
-
-#### <a name="web-service-endpoint"></a>Koncový bod webové služby
-
-Při nasazení modelu jako webové služby je možné koncový bod nasadit v Azure Container Instances, službě Azure Kubernetes nebo FPGA. Službu vytvoříte z modelu, skriptu a přidružených souborů. Jsou umístěny do základní image kontejneru, která obsahuje spouštěcí prostředí pro model. Image má koncový bod HTTP s vyrovnáváním zatížení, který přijímá požadavky na bodování, které se odesílají do webové služby.
-
-Azure vám pomůže monitorovat webovou službu shromažďováním Application Insights telemetrie nebo telemetrie modelů, pokud jste se rozhodli tuto funkci povolit. Data telemetrie jsou dostupná jenom pro vás a ukládají se do vašich Application Insights a instancí účtů úložiště.
-
-Pokud jste povolili automatické škálování, Azure automaticky škáluje vaše nasazení.
-
-Příklad nasazení modelu jako webové služby najdete [v tématu nasazení modelu klasifikace imagí v Azure Container Instances](tutorial-deploy-models-with-aml.md).
-
-#### <a name="iot-module-endpoints"></a>Koncové body modulu IoT
-
-Nasazený koncový bod modulu IoT je kontejner Docker, který obsahuje váš model a přidružený skript nebo aplikaci a všechny další závislosti. Tyto moduly nasadíte pomocí Azure IoT Edge na hraničních zařízeních.
-
-Pokud jste povolili monitorování, Azure shromáždí data telemetrie z modelu uvnitř modulu Azure IoT Edge. Data telemetrie jsou dostupná jenom pro vás a ukládají se do vaší instance účtu úložiště.
-
-Azure IoT Edge zajistí, že je váš modul spuštěný, a monitoruje zařízení, které ho hostuje.
-
-### <a name="environments"></a>Prostředí
-
-Prostředí Azure ML se používají k určení konfigurace (Docker/Python/Spark/atd.), která slouží k vytvoření reprodukovatelného prostředí pro přípravu dat, školení modelů a obsluhu modelů. Jsou spravované a se správou verzí v rámci vašeho pracovního prostoru Azure Machine Learning umožňují reprodukovatelné pracovní postupy, které lze auditovat a přenosné strojové učení napříč různými výpočetními cíli.
-
-K vývoji školicího skriptu můžete použít objekt prostředí v místním výpočetním prostředí, použít stejné prostředí v Azure Machine Learning výpočetním prostředí pro modelově škálovatelné školení a dokonce model nasadit do stejného prostředí. 
-
-Naučte [se vytvářet a spravovat opakovaně použitelné prostředí ml](how-to-use-environments.md) pro školení a odvozování.
-
-### <a name="estimators"></a>Odhady
-
-Pro usnadnění školení modelů s oblíbenými rozhraními vám třída Estimator umožňuje snadno sestavit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odesílání školicích skriptů, které používají všechny vámi zvolené vzdělávací architektury (například scikit-učení).
-
-Pro úlohy PyTorch, TensorFlow a řetězení Azure Machine Learning poskytuje také příslušné [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)a [Chain](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) odhady pro zjednodušení používání těchto rozhraní.
-
-Další informace najdete v následujících článcích:
-
-* [Modely vlakových ml pomocí odhady](how-to-train-ml-models.md).
-* [Pytorch se škálují modely hloubkového učení s](how-to-train-pytorch.md)využitím Azure Machine Learning.
-* [TensorFlow modely a zaregistrujte se ve velkém měřítku pomocí Azure Machine Learning](how-to-train-tensorflow.md).
-* [Škálujte a Registrujte modely zřetězení ve velkém měřítku pomocí Azure Machine Learning](how-to-train-chainer.md).
+[Pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro Azure Machine Learning. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte při použití Azure Machine Learning. Pracovní prostor můžete sdílet s ostatními. Podrobný popis pracovních prostorů najdete v tématu [co je Azure Machine Learning pracovní prostor?](concept-workspace.md).
 
 ### <a name="experiments"></a>Experimenty
 
@@ -154,6 +93,33 @@ Experiment je seskupení mnoha běhů ze zadaného skriptu. Vždy patří do pra
 
 Příklad použití experimentu najdete v tématu [kurz: výuka prvního modelu](tutorial-1st-experiment-sdk-train.md).
 
+### <a name="runs"></a>Spuštění
+
+Spuštění je jediné spuštění školicího skriptu. Experiment bude obvykle obsahovat více spuštění.
+
+Azure Machine Learning zaznamenává všechna spuštění a ukládá do experimentu následující informace:
+
+* Metadata o běhu (časové razítko, doba trvání atd.)
+* Metriky, které jsou protokolovány vaším skriptem
+* Výstupní soubory, které jsou na základě experimentu shromažďovány nebo výslovně nahrány
+* Snímek adresáře, který obsahuje vaše skripty před spuštění
+
+Spuštění vytvoříte při odeslání skriptu pro výuku modelu. Spuštění může mít nula nebo více podřízených spuštění. Například spuštění na nejvyšší úrovni může mít dvě podřízená spuštění, z nichž každá může mít vlastní podřízený běh.
+
+### <a name="run-configurations"></a>Konfigurace spuštění
+
+Konfigurace spuštění je sada instrukcí, které definují, jak by měl skript běžet v zadaném výpočetním cíli. Tato konfigurace zahrnuje rozsáhlou sadu definic chování, například to, jestli se má použít existující prostředí Pythonu nebo jak používat conda prostředí, které je sestavené ze specifikace.
+
+Konfiguraci spuštění lze zachovat do souboru v adresáři, který obsahuje školicí skript, nebo může být vytvořen jako objekt v paměti a použit k odeslání běhu.
+
+Například konfigurace spuštění najdete v tématu [Výběr a použití výpočetní cíle ke školení modelu](how-to-set-up-training-targets.md).
+
+### <a name="snapshots"></a>Snímky
+
+Když odešlete běh, Azure Machine Learning zkomprimuje adresář, který obsahuje skript jako soubor zip, a odešle ho do cíle služby Compute. Pak se soubor zip extrahuje a v něm se spustí skript. Azure Machine Learning také ukládá soubor zip jako snímek jako součást spuštění záznamu. Každý, kdo má přístup k pracovním prostoru můžete procházet záznam spuštění a stáhnout snímek.
+
+> [!NOTE]
+> Aby nedocházelo k zahrnutí zbytečných souborů do snímku, udělejte soubor Ignore (. gitignore nebo. amlignore). Tento soubor umístěte do adresáře snímků a přidejte do něj názvy souborů, které chcete v něm ignorovat. Soubor. amlignore používá stejnou [syntaxi a vzory jako soubor. gitignore](https://git-scm.com/docs/gitignore). Pokud oba soubory existují, má soubor. amlignore přednost.
 
 ### <a name="github-tracking-and-integration"></a>Sledování a integrace GitHubu
 
@@ -196,30 +162,13 @@ Registrovaný model, který je používán aktivním nasazením, nelze odstranit
 
 Příklad registrace modelu naleznete v tématu [výuka modelu klasifikace obrázku pomocí Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-### <a name="runs"></a>Spuštění
+### <a name="environments"></a>Prostředí
 
-Spuštění je jediné spuštění školicího skriptu. Azure Machine Learning zaznamenává všechna spuštění a ukládá následující informace:
+Prostředí Azure ML se používají k určení konfigurace (Docker/Python/Spark/atd.), která slouží k vytvoření reprodukovatelného prostředí pro přípravu dat, školení modelů a obsluhu modelů. Jsou spravované a se správou verzí v rámci vašeho pracovního prostoru Azure Machine Learning umožňují reprodukovatelné pracovní postupy, které lze auditovat a přenosné strojové učení napříč různými výpočetními cíli.
 
-* Metadata o běhu (časové razítko, doba trvání atd.)
-* Metriky, které jsou protokolovány vaším skriptem
-* Výstupní soubory, které jsou na základě experimentu shromažďovány nebo výslovně nahrány
-* Snímek adresáře, který obsahuje vaše skripty před spuštění
+K vývoji školicího skriptu můžete použít objekt prostředí v místním výpočetním prostředí, použít stejné prostředí v Azure Machine Learning výpočetním prostředí pro modelově škálovatelné školení a dokonce model nasadit do stejného prostředí. 
 
-Spuštění vytvoříte při odeslání skriptu pro výuku modelu. Spuštění může mít nula nebo více podřízených spuštění. Například spuštění na nejvyšší úrovni může mít dvě podřízená spuštění, z nichž každá může mít vlastní podřízený běh.
-
-### <a name="run-configurations"></a>Konfigurace spuštění
-
-Konfigurace spuštění je sada instrukcí, které definují, jak by měl skript běžet v zadaném výpočetním cíli. Tato konfigurace zahrnuje rozsáhlou sadu definic chování, například to, jestli se má použít existující prostředí Pythonu nebo jak používat conda prostředí, které je sestavené ze specifikace.
-
-Konfiguraci spuštění lze zachovat do souboru v adresáři, který obsahuje školicí skript, nebo může být vytvořen jako objekt v paměti a použit k odeslání běhu.
-
-Například konfigurace spuštění najdete v tématu [Výběr a použití výpočetní cíle ke školení modelu](how-to-set-up-training-targets.md).
-### <a name="snapshots"></a>Snímky
-
-Když odešlete běh, Azure Machine Learning zkomprimuje adresář, který obsahuje skript jako soubor zip, a odešle ho do cíle služby Compute. Pak se soubor zip extrahuje a v něm se spustí skript. Azure Machine Learning také ukládá soubor zip jako snímek jako součást spuštění záznamu. Každý, kdo má přístup k pracovním prostoru můžete procházet záznam spuštění a stáhnout snímek.
-
-> [!NOTE]
-> Aby nedocházelo k zahrnutí zbytečných souborů do snímku, udělejte soubor Ignore (. gitignore nebo. amlignore). Tento soubor umístěte do adresáře snímků a přidejte do něj názvy souborů, které chcete v něm ignorovat. Soubor. amlignore používá stejnou [syntaxi a vzory jako soubor. gitignore](https://git-scm.com/docs/gitignore). Pokud oba soubory existují, má soubor. amlignore přednost.
+Naučte [se vytvářet a spravovat opakovaně použitelné prostředí ml](how-to-use-environments.md) pro školení a odvozování.
 
 ### <a name="training-scripts"></a>Trénovací skripty
 
@@ -227,9 +176,63 @@ Pro trénování modelu, určíte adresář, který obsahuje skript školení a 
 
 Příklad najdete v tématu [kurz: výuka modelu klasifikace obrázků pomocí Azure Machine Learning](tutorial-train-models-with-aml.md).
 
-### <a name="workspaces"></a>Pracovní prostory
+### <a name="estimators"></a>Odhady
 
-[Pracovní prostor](concept-workspace.md) je prostředek nejvyšší úrovně pro Azure Machine Learning. Poskytuje centralizované místo pro práci se všemi artefakty, které vytvoříte při použití Azure Machine Learning. Pracovní prostor můžete sdílet s ostatními. Podrobný popis pracovních prostorů najdete v tématu [co je Azure Machine Learning pracovní prostor?](concept-workspace.md).
+Pro usnadnění školení modelů s oblíbenými rozhraními vám třída Estimator umožňuje snadno sestavit konfigurace spuštění. Můžete vytvořit a použít obecné [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) k odesílání školicích skriptů, které používají všechny vámi zvolené vzdělávací architektury (například scikit-učení).
+
+Pro úlohy PyTorch, TensorFlow a řetězení Azure Machine Learning poskytuje také příslušné [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)a [Chain](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) odhady pro zjednodušení používání těchto rozhraní.
+
+Další informace najdete v následujících článcích:
+
+* [Modely vlakových ml pomocí odhady](how-to-train-ml-models.md).
+* [Pytorch se škálují modely hloubkového učení s](how-to-train-pytorch.md)využitím Azure Machine Learning.
+* [TensorFlow modely a zaregistrujte se ve velkém měřítku pomocí Azure Machine Learning](how-to-train-tensorflow.md).
+* [Škálujte a Registrujte modely zřetězení ve velkém měřítku pomocí Azure Machine Learning](how-to-train-chainer.md).
+
+### <a name="endpoints"></a>Koncové body
+
+Koncový bod je instance vašeho modelu do webové služby, kterou je možné hostovat v cloudu nebo v modulu IoT pro nasazení integrovaných zařízení.
+
+#### <a name="web-service-endpoint"></a>Koncový bod webové služby
+
+Při nasazení modelu jako webové služby je možné koncový bod nasadit v Azure Container Instances, službě Azure Kubernetes nebo FPGA. Službu vytvoříte z modelu, skriptu a přidružených souborů. Jsou umístěny do základní image kontejneru, která obsahuje spouštěcí prostředí pro model. Image má koncový bod HTTP s vyrovnáváním zatížení, který přijímá požadavky na bodování, které se odesílají do webové služby.
+
+Azure vám pomůže monitorovat webovou službu shromažďováním Application Insights telemetrie nebo telemetrie modelů, pokud jste se rozhodli tuto funkci povolit. Data telemetrie jsou dostupná jenom pro vás a ukládají se do vašich Application Insights a instancí účtů úložiště.
+
+Pokud jste povolili automatické škálování, Azure automaticky škáluje vaše nasazení.
+
+Příklad nasazení modelu jako webové služby najdete [v tématu nasazení modelu klasifikace imagí v Azure Container Instances](tutorial-deploy-models-with-aml.md).
+
+#### <a name="iot-module-endpoints"></a>Koncové body modulu IoT
+
+Nasazený koncový bod modulu IoT je kontejner Docker, který obsahuje váš model a přidružený skript nebo aplikaci a všechny další závislosti. Tyto moduly nasadíte pomocí Azure IoT Edge na hraničních zařízeních.
+
+Pokud jste povolili monitorování, Azure shromáždí data telemetrie z modelu uvnitř modulu Azure IoT Edge. Data telemetrie jsou dostupná jenom pro vás a ukládají se do vaší instance účtu úložiště.
+
+Azure IoT Edge zajistí, že je váš modul spuštěný, a monitoruje zařízení, které ho hostuje.
+
+
+### <a name="compute-instance"></a>Instance COMPUTE (Preview)
+
+**Instance služby compute Azure Machine Learning** (dříve virtuální počítač poznámkového bloku) je plně spravovaná cloudová pracovní stanice, která zahrnuje několik nástrojů a prostředí nainstalovaných pro strojové učení. Výpočetní instance se dají použít jako cíl výpočtů pro školení a Inferencing úlohy. V případě rozsáhlých úloh [Azure Machine Learning výpočetní clustery](how-to-set-up-training-targets.md#amlcompute) s možnostmi škálování s více uzly lepší volbou cíle pro výpočty.
+
+Přečtěte si další informace o [výpočetních instancích](concept-compute-instance.md).
+
+### <a name="datasets-and-datastores"></a>Datové sady a úložiště dat
+
+**Azure Machine Learning datové sady** (Preview) usnadňují přístup k datům a práci s nimi. Datové sady spravují data v různých scénářích, jako jsou například školení modelů a vytváření kanálů. Pomocí sady Azure Machine Learning SDK můžete získat přístup k základnímu úložišti, prozkoumat data a spravovat životní cyklus různých definic datových sad.
+
+Datové sady poskytují metody pro práci s daty v oblíbených formátech, jako je například použití `from_delimited_files()` nebo `to_pandas_dataframe()`.
+
+Další informace najdete v tématu [Vytvoření a registrace Azure Machine Learning datových sad](how-to-create-register-datasets.md).  Další příklady použití datových sad najdete v [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets).
+
+**Úložiště dat** je abstrakce úložiště v rámci účtu úložiště Azure. Úložiště dat může jako back-end úložiště použít buď kontejner Azure Blob, nebo sdílenou složku Azure. Každý pracovní prostor má výchozí úložiště dat a můžete zaregistrovat další úložiště dat. K ukládání a načítání souborů z úložiště dat použijte rozhraní Python SDK API nebo Azure Machine Learning CLI.
+
+### <a name="compute-targets"></a>Cílové výpočetní objekty
+
+[Cílový výpočetní](concept-compute-target.md) výkon vám umožní určit výpočetní prostředek, ve kterém spustíte školicí skript, nebo hostovat nasazení služby. Toto umístění může být váš místní počítač nebo cloudový výpočetní prostředek.
+
+Přečtěte si další informace o [dostupných výpočetních cílech pro školení a nasazení](concept-compute-target.md).
 
 ### <a name="next-steps"></a>Další kroky
 

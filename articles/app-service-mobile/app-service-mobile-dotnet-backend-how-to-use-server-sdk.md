@@ -8,20 +8,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 019979307f6dff1dba2ef5f661a971f330b8a9cd
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: cafb0a7e2bf0fbce82448236a2da98079144121e
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668859"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461534"
 ---
-# <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Práce se serverovou sadou .NET back-end SDK v prostředí Azure Mobile Apps
+# <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Práce se serverovou sadou .NET back-end SDK pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
-
-> [!NOTE]
-> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
->
-> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 V tomto tématu se dozvíte, jak používat sadu SDK back-end serveru .NET v klíčových Azure App Servicech Mobile Appsch scénářích. Sada Azure Mobile Apps SDK vám pomůže pracovat s mobilními klienty z aplikace ASP.NET.
 
@@ -67,7 +62,7 @@ Pokud chcete vytvořit projekt Azure Mobile Apps v sadě Visual Studio, nainstal
 3. Vyberte **Webová aplikace ASP.NET**.
 4. Zadejte název projektu. Pak klikněte na **OK**.
 5. V části *šablony ASP.NET 4.5.2*vyberte **mobilní aplikace Azure**. Pokud chcete vytvořit mobilní back-end v cloudu, do kterého můžete tento projekt publikovat, podívejte se do **části hostitel v cloudu** .
-6. Klikněte na **OK**.
+6. Klikněte na tlačítko **OK**.
 
 ## <a name="install-sdk"></a>Postupy: stažení a inicializace sady SDK
 Sada SDK je dostupná na [NuGet.org]. Tento balíček obsahuje základní funkce potřebné k tomu, abyste mohli začít používat sadu SDK. Chcete-li inicializovat sadu SDK, je třeba provést akce s objektem **HttpConfiguration** .
@@ -201,7 +196,7 @@ Pokud máte nainstalovanou sadu Azure SDK, můžete teď vytvořit řadič tabul
    * V rozevíracím seznamu **třída modelu** vyberte nové DTO.
    * V rozevíracím seznamu **DbContext** vyberte DbContext třídu mobilní služby.
    * Název kontroleru se vytvoří za vás.
-4. Klikněte na tlačítko **Přidat**.
+4. Klikněte na **Přidat**.
 
 Projekt serveru pro rychlý Start obsahuje příklad jednoduchého **TodoItemController**.
 

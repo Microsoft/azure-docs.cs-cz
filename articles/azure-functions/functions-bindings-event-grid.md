@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c9891751ac24a630819d9b0a708ffbd288ac1327
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 21654a3b325e8b8f0a3e49ee64b7624c8540d0d5
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365156"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461075"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Event Grid vazby pro Azure Functions
 
@@ -34,7 +34,7 @@ Kód v tomto odkazu je ve výchozím nastavení syntaxe .NET Core, která se pou
 
 ### <a name="functions-2x-and-higher"></a>Functions 2. x a vyšší
 
-Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, zatímco rozšíření zabalí všechny ostatní typy aplikací.
+Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, pokud se sada rozšíření používá pro všechny ostatní typy aplikací.
 
 | Jazyk                                        | Přidat do...                                   | Poznámky 
 |-------------------------------------------------|---------------------------------------------|-------------|

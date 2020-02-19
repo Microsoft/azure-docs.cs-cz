@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/29/2020
+ms.date: 02/18/2020
 ms.author: victorh
-ms.openlocfilehash: 78269461bf01d61bffeed504b0168b4913c6e131
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: HT
+ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442985"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460463"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -129,7 +129,9 @@ Azure Firewall nesnat, pokud je cílová IP adresa rozsahem privátních IP adre
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>Je podporováno vynucené tunelové propojení/řetězení k síťovému virtuálnímu zařízení?
 
-Vynucené tunelování není aktuálně podporováno. Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu.
+Je podporováno vynucené tunelové propojení. Další informace najdete v tématu [Azure firewall vynucené tunelování (Preview)](forced-tunneling.md). 
+
+Azure Firewall musí mít přímé připojení k Internetu. Pokud vaše AzureFirewallSubnet zjišťuje výchozí trasu k místní síti přes protokol BGP, musíte tuto hodnotu přepsat hodnotou 0.0.0.0/0 UDR s hodnotou **typem** nastavenou jako **Internet** pro udržování přímého připojení k Internetu.
 
 Pokud vaše konfigurace vyžaduje vynucené tunelování v místní síti a můžete určit předpony cílových IP adres pro vaše internetové cíle, můžete tyto rozsahy nakonfigurovat v místní síti jako další segment směrování prostřednictvím uživatelsky definované trasy. AzureFirewallSubnet. Nebo můžete k definování těchto tras použít protokol BGP.
 
@@ -166,7 +168,7 @@ Ne. Azure Firewall nepotřebuje podsíť větší než/26.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Jak můžu zvýšit propustnost brány firewall?
 
-Počáteční kapacita propustnosti Azure Firewall je 2,5 – 3 GB/s. V současné době je horizontální navýšení kapacity založené jenom na využití procesoru. V některých případech brána firewall se síťovými pravidly neumožňuje škálovat až do zvýšení propustnosti, protože Síťová pravidla nemají výrazný vliv na využití procesoru. Pokud potřebujete vyšší propustnost pro bránu firewall, obraťte se na podporu, aby se zvýšila kapacita počáteční propustnosti brány firewall.
+Počáteční kapacita propustnosti Azure Firewall je 2,5 – 3 GB/s. V současné době je horizontální navýšení kapacity založeno na využití procesoru a propustnosti. V některých případech brána firewall se síťovými pravidly neumožňuje škálovat až do zvýšení propustnosti, protože Síťová pravidla nemají výrazný vliv na využití procesoru. Pokud potřebujete vyšší propustnost pro bránu firewall, obraťte se na podporu, aby se zvýšila kapacita počáteční propustnosti brány firewall.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Jak dlouho trvá Azure Firewall k horizontálnímu navýšení kapacity?
 

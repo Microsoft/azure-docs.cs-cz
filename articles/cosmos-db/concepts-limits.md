@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d250cc3c74f27079d633fa24c49eb11b94135ead
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200040"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77460207"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -77,7 +77,8 @@ Cosmos DB automaticky provede zálohování vašich dat v pravidelných interval
 | Prostředek | Výchozí omezení |
 | --- | --- |
 | Maximální počet databází | Neomezeno |
-| Maximální počet kontejnerů, které se dají zřídit v databázi se sdílenou propustností |25 |
+| Maximální počet kontejnerů na databázi se sdílenou propustností |25 |
+| Maximální počet kontejnerů na databázi nebo účet s vyhrazenou propustností  |Bez omezení |
 | Maximální počet oblastí | Bez omezení (všechny oblasti Azure) |
 
 ## <a name="per-container-limits"></a>Omezení podle kontejneru
@@ -103,7 +104,7 @@ V závislosti na tom, jaké rozhraní API používáte, může položka Azure Co
 | --- | --- |
 | Maximální velikost položky | 2 MB (délka UTF-8 reprezentace JSON) |
 | Maximální délka hodnoty klíče oddílu | 2048 bajtů |
-| Maximální délka hodnoty ID | 1024 bajtů |
+| Maximální délka hodnoty ID | 1023 bajtů |
 | Maximální počet vlastností na položku | Žádné praktické omezení |
 | Maximální hloubka vnořování | Žádné praktické omezení |
 | Maximální délka názvu vlastnosti | Žádné praktické omezení |

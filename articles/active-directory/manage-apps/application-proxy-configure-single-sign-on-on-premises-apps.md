@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59e4e527f25a32c8a5274db5eab5d33a7843bc3c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1046c11e064e69ed0ddb18c77bf5935ba60fb5aa
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275585"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461279"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Jednotné přihlašování SAML pro místní aplikace s proxy aplikací
 
@@ -41,17 +41,15 @@ Níže uvedené diagramy protokolu popisují posloupnost jednotného přihlašov
 
 1. V Azure Portal vyberte **Azure Active Directory > podnikové aplikace** a vyberte **Nová aplikace**.
 
-2. V části místní **aplikace** vyberte **Přidat místní aplikaci**.
+2. Zadejte zobrazovaný název pro novou aplikaci, vyberte možnost **integrace jakékoli jiné aplikace, kterou v galerii nenajdete**, a pak vyberte **vytvořit**.
 
-3. Zadejte zobrazovaný název pro novou aplikaci a pak vyberte **Přidat**.
+3. Na stránce **Přehled** aplikace vyberte **jednotné přihlašování**.
 
-4. Na stránce **Přehled** aplikace vyberte **jednotné přihlašování**.
+4. Jako metodu jednotného přihlašování vyberte **SAML** .
 
-5. Jako metodu jednotného přihlašování vyberte **SAML** .
+5. Nejdřív nastavte jednotné přihlašování SAML pro práci v podnikové síti. Na stránce **nastavit jednotné přihlašování pomocí SAML** otevřete záhlaví **základní konfigurace SAML** a vyberte jeho ikonu pro **Úpravy** (tužka). Použijte postup v části [zadání základní konfigurace SAML](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) pro konfiguraci ověřování založeného na SAML pro aplikaci.
 
-6. Nejdřív nastavte jednotné přihlašování SAML pro práci v podnikové síti. Na stránce **nastavit jednotné přihlašování pomocí SAML** otevřete záhlaví **základní konfigurace SAML** a vyberte jeho ikonu pro **Úpravy** (tužka). Použijte postup v části [zadání základní konfigurace SAML](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration) pro konfiguraci ověřování založeného na SAML pro aplikaci.
-
-7. Přidejte do aplikace alespoň jednoho uživatele a ujistěte se, že testovací účet má přístup k aplikaci. Když jste připojení k podnikové síti, použijte testovací účet a zjistěte, jestli máte k aplikaci jednotné přihlašování. 
+6. Přidejte do aplikace alespoň jednoho uživatele a ujistěte se, že testovací účet má přístup k aplikaci. Když jste připojení k podnikové síti, použijte testovací účet a zjistěte, jestli máte k aplikaci jednotné přihlašování. 
 
    > [!NOTE]
    > Po nastavení proxy aplikace se vrátíte zpátky a aktualizujete **adresu URL odpovědi**SAML.
@@ -74,7 +72,7 @@ Před poskytnutím jednotného přihlašování pro místní aplikace je potřeb
 
 1. Když je aplikace v Azure Portal stále otevřená, vyberte **jednotné přihlašování**. 
 
-2. Na stránce **nastavit jednotné přihlašování pomocí SAML** otevřete záhlaví **základní konfigurace SAML** a vyberte jeho ikonu pro **Úpravy** (tužka). **Externí adresa URL** , kterou jste nakonfigurovali v proxy aplikaci, automaticky vyplní pole **identifikátor**, **Adresa URL odpovědi**a **Adresa URL pro odhlášení** . Tyto adresy URL neupravujte, protože jsou potřebné k tomu, aby proxy aplikací fungovalo správně.
+2. Na stránce **nastavit jednotné přihlašování pomocí SAML** otevřete záhlaví **základní konfigurace SAML** a vyberte jeho ikonu pro **Úpravy** (tužka). Ujistěte se, že **externí adresa URL** , kterou jste nakonfigurovali v proxy aplikaci, se naplní v polích **identifikátor**, **Adresa URL odpovědi**a **Adresa URL pro odhlášení** . Tyto adresy URL jsou vyžadovány pro správné fungování proxy aplikací. 
 
 3. Upravte **adresu URL odpovědi** nakonfigurovanou dříve, aby její doména byla dosažitelná proxy aplikací. Pokud se například vaše **externí adresa url** `https://contosotravel-f128.msappproxy.net` a původní **adresa url odpovědi** byla `https://contosotravel.com/acs`, bude nutné aktualizovat původní **adresu URL odpovědi** na `https://contosotravel-f128.msappproxy.net/acs`. 
 

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 3/14/2019
-ms.openlocfilehash: ed67a21107f6a7d90341ae40feeb817671785778
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: daca108cfc8bb2e5b2a068170a4a0244c72c9592
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823820"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462594"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Škálování prostředků elastického fondu v Azure SQL Database
 
@@ -57,12 +57,12 @@ Odhadovaná latence změny úrovně služby nebo změna velikosti výpočetní v
 > - V případě přesunu databáze do nebo z elastického fondu stačí pouze místo, které databáze používá, vliv na latenci, nikoli na místo využité elastickým fondem.
 >
 > [!TIP]
-> Informace o monitorování probíhajících operací najdete v tématu [: Správa operací pomocí příkazu SQL REST API](https://docs.microsoft.com/rest/api/sql/operations/list), [Správa operací pomocí](/cli/azure/sql/db/op)rozhraní příkazového řádku a [monitorování operací pomocí T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a těchto dvou příkazů PowerShellu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) a [ Stop – AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> Informace o monitorování probíhajících operací najdete v tématech: [Správa operací pomocí příkazu SQL REST API](https://docs.microsoft.com/rest/api/sql/operations/list), [Správa operací pomocí](/cli/azure/sql/db/op)rozhraní příkazového řádku, [monitorování operací pomocí T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) a těchto dvou příkazů PowerShellu: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) a [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
 ### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>Další předpoklady při změně úrovně služby nebo změna velikosti výpočetní velikosti
 
 - V případě, že možnost virtuální jádra nebo eDTU pro elastický fond, musí být prostor využitý fondem menší než maximální povolená velikost cílové úrovně služby a fondu eDTU.
-- Při změně měřítka virtuální jádra nebo eDTU pro elastický fond platí dodatečné náklady na úložiště, pokud (1) maximální velikost úložiště fondu je podporována cílovým fondem a (2) maximální velikost úložiště překračuje zahrnutý objem úložiště cílového fondu. Pokud je například standardní fond 100 eDTU s maximální velikostí 100 GB zmenšován do fondu 50 eDTU úrovně Standard, budou platit dodatečné náklady na úložiště, protože cílový fond podporuje maximální velikost 100 GB a zahrnuté úložiště je pouze 50 GB. Navíc je velikost dodatečného úložiště 100 GB – 50 GB = 50 GB. Ceny dodatečného úložiště najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/). Pokud je skutečné množství využitého místa menší než zahrnuté množství úložiště, je možné tyto dodatečné náklady vyvarovat snížením maximální velikosti databáze na zahrnutou částku.
+- Při změně měřítka eDTU pro elastický fond platí dodatečné náklady na úložiště, pokud (1) maximální velikost úložiště fondu je podporována cílovým fondem a (2) maximální velikost úložiště překračuje zahrnutý objem úložiště cílového fondu. Pokud je například standardní fond 100 eDTU s maximální velikostí 100 GB zmenšován do fondu 50 eDTU úrovně Standard, budou platit dodatečné náklady na úložiště, protože cílový fond podporuje maximální velikost 100 GB a zahrnuté úložiště je pouze 50 GB. Navíc je velikost dodatečného úložiště 100 GB – 50 GB = 50 GB. Ceny dodatečného úložiště najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/). Pokud je skutečné množství využitého místa menší než zahrnuté množství úložiště, je možné tyto dodatečné náklady vyvarovat snížením maximální velikosti databáze na zahrnutou částku.
 
 ### <a name="billing-during-rescaling"></a>Fakturace během přeškálování
 
@@ -71,7 +71,7 @@ Fakturuje se vám každá hodina existence databáze na nejvyšší úrovni slu�
 ## <a name="change-elastic-pool-storage-size"></a>Změna velikosti úložiště elastického fondu
 
 > [!IMPORTANT]
-> Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="vcore-based-purchasing-model"></a>Nákupní model založený na virtuálních jádrech
 
@@ -83,7 +83,7 @@ Fakturuje se vám každá hodina existence databáze na nejvyšší úrovni slu�
 - Cena za úložiště pro elastický fond je množství úložiště vynásobené jednotkou cena za jednotku úložiště ve vrstvě služeb. Podrobnosti o ceně dodatečného úložiště najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
 
@@ -92,7 +92,7 @@ Fakturuje se vám každá hodina existence databáze na nejvyšší úrovni slu�
 - Cena za dodatečné úložiště pro elastický fond je množství dodatečného úložiště vynásobené dodatečnou jednotkou ceny za službu Storage úrovně služby. Podrobnosti o ceně dodatečného úložiště najdete v tématu [SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
+> Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](sql-database-file-space-management.md).
 
 ## <a name="next-steps"></a>Další kroky
 

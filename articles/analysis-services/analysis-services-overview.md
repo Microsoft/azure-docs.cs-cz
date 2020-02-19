@@ -4,15 +4,15 @@ description: Přečtěte si o Azure Analysis Services plně spravovaná platform
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 01/17/2020
+ms.date: 02/20/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f72da87ae53039e825f2102bebb12e59821706f8
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a61bc852d3042d0bd8828bf89dce6ab6b760d092
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274792"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459680"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -24,7 +24,7 @@ Azure Analysis Services je plně spravovaná platforma jako služba (PaaS), kter
 
 **Video:** Podívejte se na video s [přehledem služby Azure Analysis Services](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) a zjistěte, jak služba Azure Analysis Services zapadá do celkových možností BI od Microsoftu.
 
-## <a name="get-up-and-running-quickly"></a>Řešení velmi rychle zprovozníte
+## <a name="get-up-and-running-quickly"></a>Rychlé zprovoznění
 
 Na webu Azure Portal můžete [vytvořit server](analysis-services-create-server.md) během několika minut. A pomocí PowerShellu a [šablon](../azure-resource-manager/resource-manager-create-first-template.md) Azure Resource Manageru můžete vytvářet servery s využitím deklarativní šablony. S jedinou šablonou můžete nasadit prostředky serveru společně s dalšími komponentami Azure, jako jsou účty úložiště nebo služba Azure Functions. 
 
@@ -40,7 +40,7 @@ Služba Azure Analysis Services je dostupná v úrovních **Developer**, **Basic
 
 Tato úroveň se doporučuje pro scénáře testování, vývoje a vyhodnocení. Jeden plán zahrnuje stejné funkce jako úroveň Standard, ale s omezením výkonu, jednotek QPU a velikosti paměti. Škálování repliky dotazu na více instancí pro tuto úroveň *není k dispozici*. Tato úroveň nenabízí smlouvu SLA.
 
-|Plánujte  |Jednotky QPU  |Paměť (GB)  |
+|Plánování  |Jednotky QPU  |Paměť (GB)  |
 |---------|---------|---------|
 |D1    |    20     |    3     |
 
@@ -49,7 +49,7 @@ Tato úroveň se doporučuje pro scénáře testování, vývoje a vyhodnocení.
 
 Tato úroveň se doporučuje pro produkční řešení s menšími tabulkovými modely, omezenou souběžností uživatelů a jednoduchými požadavky na obnovení dat. Škálování na více instancí repliky dotazů není pro tuto vrstvu *k dispozici* . Perspektivy, větší počet oddílů a funkce tabulkového modelu DirectQuery se v této úrovni *nepodporují*.  
 
-|Plánujte  |Jednotky QPU  |Paměť (GB)  |
+|Plánování  |Jednotky QPU  |Paměť (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
 |B2    |    80     |    16     |
@@ -58,7 +58,7 @@ Tato úroveň se doporučuje pro produkční řešení s menšími tabulkovými 
 
 Tato úroveň je pro důležité produkční aplikace, které vyžadují elastickou uživatelskou souběžnost a využívají datové modely s rychlým růstem. Podporuje pokročilou aktualizaci dat pro aktualizace datových modelů téměř v reálném čase a podporuje veškeré funkce tabulkového modelování.
 
-|Plánujte  |Jednotky QPU  |Paměť (GB)  |
+|Plánování  |Jednotky QPU  |Paměť (GB)  |
 |---------|---------|---------|
 |S0    |    40     |    10     |
 |S1    |    100     |    25     |
@@ -77,44 +77,44 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 
 ### <a name="americas"></a>Amerika
 
-|Region (Oblast)  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
-|Brazílie – jih     |    B1, B2, S0, S1, S2, S4, D1     |     1\. místo    |
-|Střední Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1\. místo    |
-|USA – východ     |     B1, B2, S0, S1, S2, S4, D1    |    1\. místo     |
+|Brazílie – jih     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
+|Kanada – střed    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
+|USA – východ     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |USA – východ 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|USA – východ 2     |     S8, S9, S8v2, S9v2   |    1\. místo    |
-|USA – středosever     |     B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
-|USA – střed     |    B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
-|USA – středojih     |    B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
+|USA – východ 2     |     S8, S9, S8v2, S9v2   |    1    |
+|USA – středosever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
+|USA – střed     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|USA – středojih     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA – středozápad   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |USA – západ     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |USA – západ     |    S8, S9, S8v2, S9v2   |    2  |
 |USA – západ 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|USA – západ 2    |    S8, S9, S8v2, S9v2  |    1\. místo     |
+|USA – západ 2    |    S8, S9, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Evropa
 
-|Region (Oblast)  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Severní Evropa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Severní Evropa     |    S8v2, S9v2      |    3     |
-|Spojené království – jih     |    B1, B2, S0, S1, S2, S4, D1      |     1\. místo    |
+|Velká Británie – jih     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Západní Evropa     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Západní Evropa    |   S8, S9, S8v2, S9v2  |  1\. místo  |
+|Západní Evropa    |   S8, S9, S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Asie a Tichomoří 
 
-|Region (Oblast)  | Podporované plány | Repliky dotazů (pouze plány Standard) |
+|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Austrálie – východ     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Austrálie – východ     |    S8, S9, S8v2, S9v2    |    1\. místo     |
-|Austrálie – jihovýchod     | B1, B2, S0, S1, S2, S4, D1       |    1\. místo     |
-|Japonsko – východ     |   B1, B2, S0, S1, S2, S4, D1       |    1\. místo     |
-|Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1\. místo      |
-|Západní Indie     |    B1, B2, S0, S1, S2, S4, D1     |    1\. místo     |
+|Austrálie – východ     |    S8, S9, S8v2, S9v2    |    1     |
+|Austrálie – jihovýchod     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Japonsko – východ     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
+|Indie – západ     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
-## <a name="scale-to-your-needs"></a>Škálujte podle svých potřeb
+## <a name="scale-to-your-needs"></a>Škálování podle vašich potřeb
 
 ### <a name="scale-updown-pause-and-resume"></a>Vertikální navýšení/snížení kapacity, pozastavení a obnovení
 
@@ -138,7 +138,7 @@ Služba Azure Analysis Services je kompatibilní s mnoha skvělými funkcemi, kt
 
 Podporují se tabulkové modely v režimu DirectQuery i režimu v paměti. Tabulkové modely režimu v paměti (výchozí) podporují více zdrojů dat. Vzhledem k tomu, že data modelu jsou v režimu v paměti hodně komprimovaná a uložená v mezipaměti, poskytuje tento model nejrychlejší odezvu na dotazy ve velkých objemech dat. Poskytuje také největší flexibilitu pro složité datové sady a dotazy. Vytváření oddílů umožňuje přírůstkové načítání, zvyšuje paralelizaci a snižuje využití paměti. Podporují se i další pokročilé funkce modelování dat, jako jsou počítané tabulky a všechny funkce DAX. Modely v paměti se musí aktualizovat (zpracovávat) za účelem aktualizace dat v mezipaměti ze zdrojů dat. Díky podpoře služeb Azure Service Principal, bezobslužné operace aktualizace s využitím PowerShellu, možnosti, TMSL a REST nabízí flexibilitu při zajištění aktuálnosti dat modelu v aktuálním stavu. 
 
-Režim DirectQuery* využívá relační databáze back-endu pro ukládání a spouštění dotazů. Extrémně velké datové sady ve zdrojích dat, jako je jeden SQL Server, SQL Server Data Warehouse, Azure SQL Database, Azure SQL Data Warehouse, Oracle a Teradata, se podporují. Datové sady back-endu mohou být větší než dostupná paměť prostředku serveru. Složité scénáře aktualizace datového modelu nejsou potřeba. Existují také určitá omezení, například omezené typy zdrojů dat, omezení vzorců DAX a některé pokročilé funkce modelování dat nejsou podporovány. Než se rozhodnete, co je pro vás nejvhodnější, podívejte se na článek o [režimu DirectQuery](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular).
+Režim DirectQuery* využívá relační databáze back-endu pro ukládání a spouštění dotazů. Jsou podporovány extrémně velké datové sady v jednom SQL Server, SQL Server datového skladu, Azure SQL Database, zdrojích dat Azure synapse Analytics (SQL Data Warehouse), Oracle a Teradata. Datové sady back-endu mohou být větší než dostupná paměť prostředku serveru. Složité scénáře aktualizace datového modelu nejsou potřeba. Existují také určitá omezení, například omezené typy zdrojů dat, omezení vzorců DAX a některé pokročilé funkce modelování dat nejsou podporovány. Než se rozhodnete, co je pro vás nejvhodnější, podívejte se na článek o [režimu DirectQuery](https://docs.microsoft.com/analysis-services/tabular-models/directquery-mode-ssas-tabular).
 
 \* Dostupnost funkcí závisí na úrovni.
 
@@ -161,7 +161,7 @@ Na úrovni serveru Analysis Services poskytuje bránu firewall, ověřování Az
 
 Brána firewall služby Azure Analysis Services blokuje všechna připojení klientů kromě IP adres zadaných v pravidlech. Ve výchozím nastavení není ochrana brány firewall pro nové servery povolena. Doporučuje se povolit ochranu brány firewall a pravidla se konfigurují jako součást skriptu zřizování serveru nebo na portálu hned po vytvoření serveru. Pravidla můžete konfigurovat zadáním povolených IP adres jednotlivých klientů nebo jejich rozsahu. Povolit nebo blokovat je možné také připojení (služby) Power BI. Pravidla a bránu firewall můžete konfigurovat na portálu nebo pomocí PowerShellu. Další informace najdete v článku o [konfiguraci brány firewall serveru](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Ověření
+### <a name="authentication"></a>Ověřování
 
 Ověřování uživatelů zařizuje služba [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Uživatelé používají při přihlašování identitu účtu organizace s přístupem k databázi založeným na roli. Identity uživatelů musí být členy výchozí služby Azure Active Directory pro předplatné, ve kterém se server nachází. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
 
@@ -189,7 +189,7 @@ Tabulkové modely na úrovni kompatibility 1400 podporují zabezpečení na úro
 
 Instanční objekty jsou prostředky aplikací služby Azure Active Directory, které vytvoříte v tenantovi za účelem provedení bezobslužných operací na úrovni prostředků a služeb. Instanční objekty se používají společně se službou Azure Automation, bezobslužným režimem PowerShellu, vlastními klientskými aplikacemi a webovými aplikacemi pro automatizaci běžných úloh, jako je aktualizace dat, vertikální navýšení a snížení kapacity a pozastavení a obnovení. Oprávnění se instančním objektům přiřazují prostřednictvím členství v roli. Pokud se chcete dozvědět více, podívejte se na článek o [automatizaci s využitím instančních objektů](analysis-services-service-principal.md).
 
-### <a name="azure-governance"></a>Zásady správného řízení Azure
+### <a name="azure-governance"></a>Zásady správného řízení služby Azure
 
 Služba Azure Analysis Services se řídí [podmínkami služeb Microsoft Online Services](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) a [prohlášením o zásadách ochrany osobních údajů společnosti Microsoft](https://privacy.microsoft.com/privacystatement).
 Pokud se o službě Azure Security chcete dozvědět víc, podívejte se na [Microsoft Trust Center](https://www.microsoft.com/trustcenter).

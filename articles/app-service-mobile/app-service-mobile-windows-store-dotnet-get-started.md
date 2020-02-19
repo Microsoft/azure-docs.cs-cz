@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.openlocfilehash: a0f78239406567513c1eb94b48bf1090165d9185
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 9188db19adab9bd46d65fc97f1c62b39141cee90
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668688"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461381"
 ---
 # <a name="create-a-windows-app-with-an-azure-backend"></a>Vytvoření aplikace pro Windows pomocí back-endu Azure
 
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
-
-> [!NOTE]
-> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
->
-> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Přehled
 
@@ -35,7 +30,7 @@ Ve všech dalších kurzech Mobile App pro aplikace UPW se předpokládá dokon�
 Pro absolvování tohoto kurzu potřebujete:
 
 * Aktivní účet Azure. Pokud účet nemáte, můžete si zaregistrovat zkušební verzi Azure a získat až 10 bezplatných mobilních aplikací, které můžete používat i po skončení zkušebního období. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* Windows 10.
+* Windows 10.
 * Visual Studio Community 2017.
 * Znalost vývoje aplikací pro UWP Informace o tom, jak [nastavit](https://docs.microsoft.com/windows/uwp/get-started/get-set-up) vytváření aplikací pro UWP, najdete v [dokumentaci k UWP](https://docs.microsoft.com/windows/uwp/) .
 
@@ -66,7 +61,7 @@ Podle těchto pokynů vytvořte nový back-end mobilní aplikace:
 
 5. Stisknutím klávesy F5 nasaďte a spusťte aplikaci.
 
-6. V aplikaci zadejte do textového pole pro **vložení úkolu** smysluplný text, například *Dokončit kurz*, a klikněte na **Uložit**.
+6. V aplikaci zadejte do textového pole pro *vložení úkolu* smysluplný text, například **Dokončit kurz**, a klikněte na **Uložit**.
 
     ![Dokončení desktopového projektu s rychlým startem pro Windows](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 

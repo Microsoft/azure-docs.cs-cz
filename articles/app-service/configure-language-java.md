@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a088a90642a0394b0ede3c163590f64112799d1a
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: HT
+ms.openlocfilehash: e5beb60107b3632da336a20f167e1c2f5b53140a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425285"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461262"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurace aplikace pro Windows Java pro Azure App Service
 
@@ -29,6 +29,7 @@ K nasazení souborů. War můžete použít [modul plug-in webové aplikace Azur
 V opačném případě vaše metoda nasazení bude záviset na typu archivu:
 
 - K nasazení souborů. War do Tomcat použijte koncový bod `/api/wardeploy/` k odeslání souboru archivu. Další informace o tomto rozhraní API najdete v [této dokumentaci](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
+- K nasazení souborů. jar do Java SE používá koncový bod `/api/zipdeploy/` webu Kudu. Další informace o tomto rozhraní API najdete v [této dokumentaci](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
 
 Nesaďte svůj. War pomocí FTP. Nástroj FTP je určen pro nahrávání spouštěcích skriptů, závislostí nebo jiných souborů modulu runtime. Nejedná se o optimální volbu pro nasazování webových aplikací.
 
@@ -128,9 +129,9 @@ Aplikace Java běžící v App Service mají stejnou sadu [osvědčených postup
 
 Pomocí možnosti **ověřování a autorizace** nastavte ověřování aplikací v Azure Portal. Odtud můžete povolit ověřování pomocí Azure Active Directory nebo přes sociální přihlášení, jako je Facebook, Google nebo GitHub. Konfigurace Azure Portal funguje pouze při konfiguraci jednoho poskytovatele ověřování. Další informace najdete v tématu [Konfigurace aplikace App Service pro použití Azure Active Directory přihlášení](configure-authentication-provider-aad.md) a souvisejících článků pro jiné poskytovatele identity. Pokud potřebujete povolit více poskytovatelů přihlašování, postupujte podle pokynů v článku [přizpůsobení App Serviceho ověřování](app-service-authentication-how-to.md) .
 
-#### <a name="tomcat-and-wildfly"></a>Tomcat a WildFly
+#### <a name="tomcat"></a>Tomcat
 
-Vaše aplikace Tomcat nebo WildFly může získat přístup k deklaracím uživatele přímo z servlet přetypováním objektu zabezpečení na objekt mapy. Objekt mapy bude mapovat jednotlivé typy deklarací na kolekci deklarací pro daný typ. V následujícím kódu `request` je instance `HttpServletRequest`.
+Vaše aplikace Tomcat může získat přístup k deklaracím uživatele přímo z servlet přetypování objektu zabezpečení na objekt mapy. Objekt mapy bude mapovat jednotlivé typy deklarací na kolekci deklarací pro daný typ. V následujícím kódu `request` je instance `HttpServletRequest`.
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
@@ -287,6 +288,10 @@ Pokud chcete upravit `server.xml` nebo jiné konfigurační soubory Tomcat, nejd
 
 Nakonec restartujte App Service. Vaše nasazení by mělo přejít na `D:\home\site\wwwroot\webapps` stejně jako dřív.
 
+## <a name="configure-java-se"></a>Konfigurace Java SE
+
+Při spuštění. Aplikace JAR na Java SE v systému Windows, `server.port` se předává jako možnost příkazového řádku při spuštění aplikace. Port HTTP můžete ručně vyřešit z proměnné prostředí `HTTP_PLATFORM_PORT`. Hodnota této proměnné prostředí bude port HTTP, na kterém by měla vaše aplikace naslouchat. 
+
 ## <a name="java-runtime-statement-of-support"></a>Příkaz Java Runtime pro podporu
 
 ### <a name="jdk-versions-and-maintenance"></a>Verze a údržba JDK
@@ -300,6 +305,8 @@ Podporované sady JDK se na čtvrtletní bázi automaticky opravují v lednu, du
 ### <a name="security-updates"></a>Aktualizace zabezpečení
 
 Opravy a opravy pro hlavní slabá místa zabezpečení budou vydány, jakmile budou dostupné ze systémů Azul. "Hlavní" ohrožení zabezpečení je definováno základním skóre 9,0 nebo vyšším v [systému NIST Common zranitelnost Standard, verze 2](https://nvd.nist.gov/cvss.cfm).
+
+Tomcat 8,0 dosáhl [konce životnosti (konce řádku) až do 30. září 2018](https://tomcat.apache.org/tomcat-80-eol.html). I když je modul runtime stále avialable na Azure App Service, Azure nebude používat aktualizace zabezpečení Tomcat 8,0. Pokud je to možné, migrujte své aplikace na Tomcat 8,5 nebo 9,0. V Azure App Service jsou k dispozici obě Tomcat 8,5 a 9,0. Další informace najdete v [oficiální lokalitě Tomcat](https://tomcat.apache.org/whichversion.html) . 
 
 ### <a name="deprecation-and-retirement"></a>Vyřazení a vyřazení z provozu
 

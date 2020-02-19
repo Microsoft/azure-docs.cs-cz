@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: b7c406c1d7f55b364d72b2b5626b3c17a34d8338
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552759"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462645"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL Database do skupiny převzetí služeb při selhání
 
@@ -34,15 +34,15 @@ Přidejte SQL Database spravovanou instanci do skupiny převzetí služeb při s
   > - Spravované instance účastnící se skupiny převzetí služeb při selhání vyžadují buď [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) , nebo dvě připojené brány VPN Gateway. Tento kurz popisuje kroky pro vytvoření a připojení bran VPN. Tento postup přeskočte, pokud již máte nakonfigurovanou ExpressRoute. 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující: 
 
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) .
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) .
@@ -55,7 +55,7 @@ K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 V tomto kroku vytvoříte skupinu prostředků a primární spravovanou instanci pro skupinu převzetí služeb při selhání pomocí Azure Portal nebo PowerShellu. 
 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal) 
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal) 
 
 Vytvořte skupinu prostředků a svoji primární spravovanou instanci pomocí Azure Portal. 
 
@@ -75,7 +75,7 @@ Vytvořte skupinu prostředků a svoji primární spravovanou instanci pomocí A
 1. Ponechte zbývající nastavení na výchozí hodnoty a vyberte **zkontrolovat a vytvořit** a zkontrolujte nastavení spravované instance. 
 1. Vyberte **vytvořit** k vytvoření vaší primární spravované instance. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Vytvořte skupinu prostředků a primární spravovanou instanci pomocí prostředí PowerShell. 
 
@@ -382,7 +382,7 @@ Vytvořte skupinu prostředků a primární spravovanou instanci pomocí prostř
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků Azure.  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Vytvoří virtuální síť.  |
@@ -405,7 +405,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 ## <a name="2---create-secondary-virtual-network"></a>2 – vytvoření sekundární virtuální sítě
 Pokud používáte Azure Portal k vytvoření spravované instance, bude nutné vytvořit virtuální síť samostatně, protože existuje požadavek, aby podsíť primární a sekundární spravované instance nepřesahoval rozsahy. Pokud ke konfiguraci spravované instance používáte PowerShell, přeskočte dopředu ke kroku 3. 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal) 
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal) 
 Pokud chcete ověřit rozsah podsítě vaší primární virtuální sítě, postupujte podle těchto kroků:
 1. V [Azure Portal](https://portal.azure.com)přejděte do skupiny prostředků a vyberte virtuální síť pro vaši primární instanci. 
 1. V části **Nastavení** vyberte **podsítě** a poznamenejte si **Rozsah adres**. Rozsah adres podsítě virtuální sítě pro sekundární spravovanou instanci se nemůže překrývat. 
@@ -433,7 +433,7 @@ Pokud chcete vytvořit virtuální síť, postupujte takto:
 
     ![Hodnoty sekundární virtuální sítě](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Tento krok je nutný jenom v případě, že k nasazení spravované instance používáte Azure Portal. Pokud používáte PowerShell, přejděte dopředu ke kroku 3. 
 
@@ -446,7 +446,7 @@ Vaše druhá spravovaná instance musí:
 - Být prázdné. 
 - Mít jinou podsíť a rozsah IP adres než primární spravovaná instance. 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal) 
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal) 
 
 Pomocí Azure Portal Vytvořte sekundární spravovanou instanci. 
 
@@ -482,7 +482,7 @@ Pomocí Azure Portal Vytvořte sekundární spravovanou instanci.
 1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte nastavení sekundární spravované instance. 
 1. Vyberte **vytvořit** a vytvořte svou sekundární spravovanou instanci. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Vytvořte sekundární spravovanou instanci pomocí prostředí PowerShell. 
 
@@ -708,7 +708,7 @@ Vytvořte sekundární spravovanou instanci pomocí prostředí PowerShell.
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků Azure.  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Vytvoří virtuální síť.  |
@@ -734,7 +734,7 @@ Aby se dvě spravované instance účastnily skupiny převzetí služeb při sel
 Tento článek popisuje kroky pro vytvoření dvou bran sítě VPN a jejich připojení, ale můžete přeskočit k vytvoření skupiny převzetí služeb při selhání, pokud jste místo toho nakonfigurovali ExpressRoute. 
 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Vytvořte bránu pro virtuální síť vaší primární spravované instance pomocí Azure Portal. 
 
@@ -773,7 +773,7 @@ Vytvořte bránu pro virtuální síť vaší primární spravované instance po
 1. Vyberte **vytvořit** a vytvořte novou bránu virtuální sítě. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Vytvořte bránu pro virtuální síť vaší primární spravované instance pomocí PowerShellu. 
 
@@ -810,7 +810,7 @@ Vytvořte bránu pro virtuální síť vaší primární spravované instance po
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Získá ve skupině prostředků virtuální síť. |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Přidá konfiguraci podsítě do virtuální sítě. | 
@@ -828,7 +828,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 V tomto kroku vytvoříte bránu pro virtuální síť sekundární spravované instance pomocí Azure Portal, 
 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Pomocí Azure Portal vytvořte podsíť virtuální sítě a bránu pro sekundární spravovanou instanci opakováním kroků v předchozí části. Vyplňte požadovaná pole a nakonfigurujte bránu pro sekundární spravovanou instanci. 
 
@@ -851,7 +851,7 @@ Pomocí Azure Portal vytvořte podsíť virtuální sítě a bránu pro sekundá
    ![Nastavení sekundární brány](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Vytvořte bránu pro virtuální síť sekundární spravované instance pomocí PowerShellu. 
 
@@ -891,7 +891,7 @@ Vytvořte bránu pro virtuální síť sekundární spravované instance pomocí
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Získá ve skupině prostředků virtuální síť. |
 | [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Přidá konfiguraci podsítě do virtuální sítě. | 
@@ -908,7 +908,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 V tomto kroku vytvořte obousměrné připojení mezi dvěma branami obou virtuálních sítí. 
 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Připojte dvě brány pomocí Azure Portal. 
 
@@ -933,7 +933,7 @@ Připojte dvě brány pomocí Azure Portal.
 1. Na kartě **Souhrn** zkontrolujte nastavení obousměrného připojení a pak vyberte **OK** . tím vytvoříte připojení. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Připojte dvě brány pomocí PowerShellu. 
 
@@ -956,7 +956,7 @@ Připojte dvě brány pomocí PowerShellu.
 
 Tato část kurzu používá následující rutinu PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Vytvoří připojení mezi dvěma branami virtuální sítě.   |
 
@@ -967,7 +967,7 @@ Tato část kurzu používá následující rutinu PowerShellu:
 V tomto kroku vytvoříte skupinu převzetí služeb při selhání a přidáte do ní obě spravované instance. 
 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Vytvořte skupinu převzetí služeb při selhání pomocí Azure Portal. 
 
 
@@ -984,7 +984,7 @@ Vytvořte skupinu převzetí služeb při selhání pomocí Azure Portal.
 1. Po dokončení nasazení skupiny převzetí služeb při selhání se vrátíte zpátky na stránku **skupiny převzetí služeb při selhání** . 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Vytvořte skupinu převzetí služeb při selhání pomocí PowerShellu. 
 
    ```powershell-interactive
@@ -998,7 +998,7 @@ Vytvořte skupinu převzetí služeb při selhání pomocí PowerShellu.
 
 Tato část kurzu používá následující rutinu PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Vytvoří novou skupinu převzetí služeb při selhání spravované instance Azure SQL Database.  |
 
@@ -1010,11 +1010,11 @@ Tato část kurzu používá následující rutinu PowerShellu:
 V tomto kroku dojde k selhání skupiny převzetí služeb při selhání pro sekundární server a následnému navrácení služeb po obnovení pomocí Azure Portal. 
 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Testovací převzetí služeb při selhání pomocí Azure Portal. 
 
 
-1. Přejděte do spravované instance v rámci [Azure Portal](https://portal.azure.com) a v části nastavení vyberte **instance skupiny převzetí služeb při selhání** . 
+1. V [Azure Portal](https://portal.azure.com) přejděte do _sekundární_ spravované instance a v části nastavení vyberte **instance skupiny převzetí služeb při selhání** . 
 1. Zkontrolujte, která spravovaná instance je primární a která spravovaná instance je sekundární. 
 1. Vyberte **převzetí služeb při selhání** a pak pro upozornění na odpojené relace TDS vyberte **Ano** . 
 
@@ -1024,10 +1024,10 @@ Testovací převzetí služeb při selhání pomocí Azure Portal.
 
    ![Spravované instance mají po převzetí služeb při selhání přepnuté role.](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. Znovu vyberte **převzetí služeb při selhání** , aby se primární instance znovu nezdařila do primární role. 
+1. Vraťte se do nové _sekundární_ spravované instance a znovu vyberte **převzetí služeb při selhání** , aby se primární instance znovu nezdařila do primární role. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Testovací převzetí služeb při selhání pomocí PowerShellu 
 
    ```powershell-interactive
@@ -1064,7 +1064,7 @@ Vraťte skupinu převzetí služeb při selhání zpátky na primární server:
 
 Tato část kurzu používá následující rutiny PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Získá nebo zobrazí seznam skupin převzetí služeb při selhání spravované instance.| 
 | [Switch – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Provede převzetí služeb při selhání pro skupinu převzetí služeb při selhání spravované instance. | 
@@ -1076,14 +1076,14 @@ Tato část kurzu používá následující rutiny PowerShellu:
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Vyčistěte prostředky tak, že nejprve odstraníte spravovanou instanci, potom virtuální cluster, potom všechny zbývající prostředky a nakonec skupinu prostředků. 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 1. Přejděte do skupiny prostředků v [Azure Portal](https://portal.azure.com). 
 1. Vyberte spravované instance a pak vyberte **Odstranit**. Do textového pole zadejte `yes` a potvrďte tak, že chcete odstranit prostředek, a pak vyberte **Odstranit**. Dokončení tohoto procesu může nějakou dobu trvat na pozadí a až do dokončení, nebudete moci odstranit *virtuální cluster* ani žádné jiné závislé prostředky. Sledujte odstranění na kartě aktivita a potvrďte, že se vaše spravovaná instance odstranila. 
 1. Po odstranění spravované instance odstraňte *virtuální cluster* tak, že ho vyberete ve vaší skupině prostředků, a pak zvolíte **Odstranit**. Do textového pole zadejte `yes` a potvrďte tak, že chcete odstranit prostředek, a pak vyberte **Odstranit**. 
 1. Odstraňte všechny zbývající prostředky. Do textového pole zadejte `yes` a potvrďte tak, že chcete odstranit prostředek, a pak vyberte **Odstranit**. 
 1. Odstraňte skupinu prostředků výběrem možnosti **Odstranit skupinu prostředků**, zadáním názvu skupiny prostředků `myResourceGroup`a pak výběrem možnosti **Odstranit**. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Skupinu prostředků budete muset odebrat dvakrát. Při prvním odebrání skupiny prostředků dojde k odebrání spravované instance a virtuálních clusterů, ale tato chybová zpráva se pak nezdaří. `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.`. Spusťte příkaz Remove-AzResourceGroup a podruhé odstraňte všechny zbývající prostředky i skupinu prostředků.
 
@@ -1096,7 +1096,7 @@ Write-host "Removing residual resources and resouce group..."
 
 Tato část kurzu používá následující rutinu PowerShellu:
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků. |
 
@@ -1104,12 +1104,12 @@ Tato část kurzu používá následující rutinu PowerShellu:
 
 ## <a name="full-script"></a>Celý skript
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add managed instance to a failover group")]
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků Azure.  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Vytvoří virtuální síť.  |
@@ -1136,7 +1136,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [Switch – AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Provede převzetí služeb při selhání pro skupinu převzetí služeb při selhání spravované instance. | 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků. | 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal) 
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal) 
 
 Pro Azure Portal nejsou k dispozici žádné skripty.
 

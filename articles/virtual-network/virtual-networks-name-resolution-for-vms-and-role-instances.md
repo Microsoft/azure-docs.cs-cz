@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: f17b4ee0e4ce79cd12a6fda6f056b4e63b4161c9
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76991027"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462662"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky v Azure Virtual Networks
 
@@ -43,8 +43,8 @@ To, který typ překladu názvů použijete, závisí na tom, jak spolu vaše pr
 | Překlad názvů z App Service Web Apps v jedné virtuální síti na virtuální počítače v jiné virtuální síti |Servery DNS spravované zákazníky, které předávají dotazy mezi virtuálními sítěmi pro překlad prostřednictvím Azure (DNS proxy). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Rozlišení místních počítačů a názvů služeb z virtuálních počítačů nebo instancí rolí v Azure. |Servery DNS spravované zákazníky (místní řadič domény, místní řadič domény jen pro čtení nebo sekundární služba DNS, která se synchronizuje pomocí zónových přenosů, například). Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
 | Překlad názvů hostitelů Azure z místních počítačů. |Předává dotazy do služby DNS spravované zákazníkem proxy server v odpovídající virtuální síti, proxy server předává dotazy do Azure pro řešení. Přečtěte si téma [Překlad adres IP pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Pouze plně kvalifikovaný název domény |
-| Reverzní DNS pro interní IP adresy |[Překlad názvů pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Nevztahuje se |
-| Překlad názvů mezi virtuálními počítači nebo instancemi rolí umístěných v různých cloudových službách, nikoli ve virtuální síti. |Není k dispozici. Připojení mezi virtuálními počítači a instancemi rolí v různých cloudových službách není podporováno mimo virtuální síť. |Nevztahuje se|
+| Reverzní DNS pro interní IP adresy |[Překlad názvů pomocí vlastního serveru DNS](#name-resolution-that-uses-your-own-dns-server). |Neuvedeno |
+| Překlad názvů mezi virtuálními počítači nebo instancemi rolí umístěných v různých cloudových službách, nikoli ve virtuální síti. |Neužívá se. Připojení mezi virtuálními počítači a instancemi rolí v různých cloudových službách není podporováno mimo virtuální síť. |Neuvedeno|
 
 ## <a name="azure-provided-name-resolution"></a>Překlad názvů poskytovaných službou Azure
 
@@ -59,7 +59,7 @@ Spolu s překladem veřejných názvů DNS poskytuje Azure interní překlad adr
 
 Překlad názvů poskytovaných Azure zahrnuje tyto funkce:
 * Snadné použití. Není nutná žádná konfigurace.
-* Vysoká dostupnost. Nemusíte vytvářet a spravovat clustery pro vlastní servery DNS.
+* Vysoká dostupnost Nemusíte vytvářet a spravovat clustery pro vlastní servery DNS.
 * Službu můžete používat ve spojení s vašimi vlastními servery DNS, abyste vyřešili názvy místních i hostitelských hostitelů Azure.
 * Můžete použít překlad IP adres mezi virtuálními počítači a instancemi rolí v rámci stejné cloudové služby, a to bez plně kvalifikovaného názvu domény.
 * Můžete použít překlad IP adres mezi virtuálními počítači ve virtuálních sítích, které používají model nasazení Azure Resource Manager, aniž byste museli plně kvalifikovaný název domény. Virtuální sítě v modelu nasazení Classic vyžadují při překladu názvů v různých cloudových službách plně kvalifikovaný název domény. 
@@ -105,8 +105,7 @@ K dispozici je řada různých balíčků pro ukládání do mezipaměti DNS (na
 
 > [!NOTE]
 > Balíček Dnsmasq je jenom jedna z mnoha mezipamětí DNS dostupných pro Linux. Než ho použijete, ověřte jeho vhodnost pro vaše konkrétní potřeby a ověřte, že není nainstalovaná žádná jiná mezipaměť.
->
->
+
     
 ### <a name="client-side-retries"></a>Opakované pokusy na straně klienta
 
@@ -169,11 +168,10 @@ Pokud předávání dotazů do Azure nevyhovuje vašim potřebám, měli byste p
 * Zabezpečte přístup z Internetu a zmírnit tak hrozby, které představují externí agenti.
 
 > [!NOTE]
-> Pro nejlepší výkon při použití virtuálních počítačů Azure jako serverů DNS by měl být protokol IPv6 zakázaný. [Veřejná IP adresa](virtual-network-public-ip-address.md) by se měla přiřadit ke každému virtuálnímu počítači serveru DNS. Další analýzu a optimalizace výkonu při použití Windows serveru jako serveru DNS najdete v tématu [výkon překladu IP adres rekurzivního serveru dns 2012 R2](https://blogs.technet.com/b/networking/archive/2015/08/19/name-resolution-performance-of-a-recursive-windows-dns-server-2012-r2.aspx).
-> 
+> Pro nejlepší výkon při použití virtuálních počítačů Azure jako serverů DNS by měl být protokol IPv6 zakázaný. [Veřejná IP adresa](virtual-network-public-ip-address.md) by se měla přiřadit ke každému virtuálnímu počítači serveru DNS. 
 > 
 
-### <a name="web-apps"></a>Web Apps
+### <a name="web-apps"></a>Webové aplikace
 Předpokládejme, že je třeba provést překlad IP adres z vaší webové aplikace vytvořené pomocí App Service propojených s virtuální sítí na virtuální počítače ve stejné virtuální síti. Kromě nastavení vlastního serveru DNS s předaným serverem DNS, který předává dotazy do Azure (virtuální IP 168.63.129.16), proveďte následující kroky:
 1. Povolte integraci virtuální sítě pro vaši webovou aplikaci, pokud ještě není hotová, jak je popsáno v tématu [integrace aplikace s virtuální sítí](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 2. V Azure Portal pro App Service plán hostování webové aplikace vyberte možnost **synchronizovat síť** v části **síť**, **Virtual Network integrace**.

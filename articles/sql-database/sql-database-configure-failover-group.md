@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 05b099eebcbb7b8f77357c9dcf3a4d567d3886d6
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553065"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461798"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurace skupiny převzetí služeb při selhání pro Azure SQL Database
 
@@ -33,7 +33,7 @@ Vezměte v úvahu následující požadavky:
 
 ### <a name="create-failover-group"></a>Vytvořit skupinu převzetí služeb při selhání
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí Azure Portal.
 
 
@@ -53,7 +53,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
         
     ![Přidat databázi SQL do skupiny převzetí služeb při selhání](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu databázi pomocí PowerShellu. 
 
    ```powershell-interactive
@@ -107,7 +107,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní jednu dat
 
 Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal. 
 
@@ -129,7 +129,7 @@ Otestujte převzetí služeb při selhání ve skupině převzetí služeb při 
 1. Zkontrolujte, který server je teď primární a který server je sekundární. Pokud se převzetí služeb při selhání úspěšně převedlo, musí mít dva servery zaměnitelné role. 
 1. Znovu vyberte **převzetí služeb při selhání** , aby se servery převedly zpátky na původní role. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Testovací převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí PowerShellu  
 
@@ -200,7 +200,7 @@ Vezměte v úvahu následující požadavky:
 
 Vytvořte skupinu převzetí služeb při selhání pro elastický fond pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí Azure Portal.
 
 1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
@@ -221,7 +221,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastick�
         
 1. Vyberte **možnost vyberte** , pokud chcete nastavení elastického fondu použít pro skupinu převzetí služeb při selhání, a pak vyberte **vytvořit** a vytvořte skupinu převzetí služeb při selhání. Přidáním elastického fondu do skupiny převzetí služeb při selhání se automaticky spustí proces geografické replikace. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastický fond pomocí PowerShellu. 
 
@@ -271,7 +271,7 @@ Vytvořte skupinu převzetí služeb při selhání a přidejte do ní elastick�
 
 Otestujte převzetí služeb při selhání elastického fondu pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Převzetí služeb při selhání pro skupinu převezmete do sekundárního serveru a pak navrácení služeb po obnovení pomocí Azure Portal. 
 
@@ -293,7 +293,7 @@ Převzetí služeb při selhání pro skupinu převezmete do sekundárního serv
 1. Zkontrolujte, který server je primární a který server je sekundární. Pokud se převzetí služeb při selhání úspěšně převedlo, musí mít dva servery zaměnitelné role. 
 1. Znovu vyberte **převzetí služeb při** selhání, abyste skupinu převzetí služeb při selhání mohli obnovit původní nastavení. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Testovací převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí PowerShellu
 
@@ -353,7 +353,7 @@ Vezměte v úvahu následující požadavky:
 
 Pokud jste nenakonfigurovali [ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md), můžete vytvořit primární bránu virtuální sítě pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Vytvořte primární bránu virtuální sítě pomocí Azure Portal. 
 
@@ -390,7 +390,7 @@ Vytvořte primární bránu virtuální sítě pomocí Azure Portal.
 
 1. Vyberte **vytvořit** a vytvořte novou bránu virtuální sítě. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Vytvořte primární bránu virtuální sítě pomocí prostředí PowerShell. 
 
@@ -426,7 +426,7 @@ Vytvořte primární bránu virtuální sítě pomocí prostředí PowerShell.
 
 Vytvořte sekundární bránu virtuální sítě pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Zopakováním kroků v předchozí části vytvořte podsíť virtuální sítě a bránu pro sekundární spravovanou instanci. Vyplňte požadovaná pole a nakonfigurujte bránu pro sekundární spravovanou instanci. 
 
    V následující tabulce jsou uvedeny hodnoty nutné pro bránu sekundární spravované instance:
@@ -447,7 +447,7 @@ Zopakováním kroků v předchozí části vytvořte podsíť virtuální sítě
 
    ![Nastavení sekundární brány](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Vytvořte sekundární bránu virtuální sítě pomocí prostředí PowerShell. 
 
@@ -488,7 +488,7 @@ Je potřeba vytvořit dvě připojení – připojení z primární brány k sek
 
 Sdílený klíč použitý pro obě připojení by měl být pro každé připojení stejný. 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 Vytvořte připojení mezi dvěma branami pomocí Azure Portal. 
 
 1. Vyberte **vytvořit prostředek** z [Azure Portal](https://portal.azure.com).
@@ -510,7 +510,7 @@ Vytvořte připojení mezi dvěma branami pomocí Azure Portal.
 
 1. Na kartě **Souhrn** zkontrolujte nastavení obousměrného připojení a pak vyberte **OK** . tím vytvoříte připojení. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Vytvořte připojení mezi dvěma branami pomocí PowerShellu. 
 
@@ -546,7 +546,7 @@ Vytvořte připojení mezi dvěma branami pomocí PowerShellu.
 ### <a name="create-the-failover-group"></a>Vytvoření skupiny převzetí služeb při selhání 
 Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instance pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instance pomocí Azure Portal. 
 
@@ -562,7 +562,7 @@ Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instan
 
 1. Po dokončení nasazení skupiny převzetí služeb při selhání se vrátíte zpátky na stránku **skupiny převzetí služeb při selhání** . 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instance pomocí prostředí PowerShell. 
 
@@ -588,11 +588,11 @@ Vytvořte skupinu převzetí služeb při selhání pro vaše spravované instan
 
 Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal nebo PowerShellu. 
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Otestujte převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí Azure Portal. 
 
-1. Přejděte do spravované instance v rámci [Azure Portal](https://portal.azure.com) a v části nastavení vyberte **instance skupiny převzetí služeb při selhání** . 
+1. V [Azure Portal](https://portal.azure.com) přejděte do _sekundární_ spravované instance a v části nastavení vyberte **instance skupiny převzetí služeb při selhání** . 
 1. Zkontrolujte, která spravovaná instance je primární a která spravovaná instance je sekundární. 
 1. Vyberte **převzetí služeb při selhání** a pak pro upozornění na odpojené relace TDS vyberte **Ano** . 
 
@@ -602,9 +602,9 @@ Otestujte převzetí služeb při selhání ve skupině převzetí služeb při 
 
    ![Spravované instance mají po převzetí služeb při selhání přepnuté role.](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. Znovu vyberte **převzetí služeb při selhání** , aby se primární instance znovu nezdařila do primární role. 
+1. Vraťte se do nové _sekundární_ spravované instance a znovu vyberte **převzetí služeb při selhání** , aby se primární instance znovu nezdařila do primární role. 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Testovací převzetí služeb při selhání ve skupině převzetí služeb při selhání pomocí PowerShellu 
 

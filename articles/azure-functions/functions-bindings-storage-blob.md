@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 794e18590f554d1537449d2aee9451c0053ac4a7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6950f1dd81ef2c70f2c45fb4c547ed7676067790
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198411"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462305"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions-overview"></a>Přehled vazeb Azure Blob Storage pro Azure Functions
 
@@ -26,7 +26,7 @@ Azure Functions se integruje s [Azure Storage](https://docs.microsoft.com/azure/
 
 ### <a name="functions-2x-and-higher"></a>Functions 2. x a vyšší
 
-Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, zatímco rozšíření všechny ostatní typy aplikací.
+Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balíček. Balíček NuGet se používá pro knihovny tříd .NET, pokud se sada rozšíření používá pro všechny ostatní typy aplikací.
 
 | Jazyk                                        | Přidat do...                                   | Poznámky 
 |-------------------------------------------------|---------------------------------------------|-------------|

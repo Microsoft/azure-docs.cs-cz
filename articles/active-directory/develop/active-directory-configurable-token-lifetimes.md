@@ -5,25 +5,24 @@ description: Přečtěte si, jak nastavit životnost pro tokeny vydané službou
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 02/19/2020
 ms.author: ryanwi
-ms.custom: aaddev, annaba, identityplatformtop40
-ms.reviewer: hirsin
-ms.openlocfilehash: 55c7ee6711c6001745053b850c1b4e1859af5dbe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev, identityplatformtop40
+ms.reviewer: hirsin, jlu, annaba
+ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699015"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461194"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životnosti tokenů v Azure Active Directory (Preview)
 
-U tokenu vydaného službou Azure Active Directory (Azure AD) je možné určit dobu životnosti. Životnost tokenů je možné nastavit u všech aplikací ve vaší organizaci, u aplikace pro více tenantů nebo pro konkrétní objekt služby ve vaší organizaci.
+Můžete určit dobu života tokenu vydaného Azure Active Directory (Azure AD). Můžete nastavit životnost tokenů pro všechny aplikace ve vaší organizaci, pro víceklientské aplikace (více organizací) nebo pro konkrétní instanční objekt ve vaší organizaci.
 
 > [!IMPORTANT]
 > Po slyšení od zákazníků ve verzi Preview jsme implementovali [Možnosti správy relace ověřování](https://go.microsoft.com/fwlink/?linkid=2083106) ve službě Azure AD podmíněný přístup. Tuto novou funkci můžete použít ke konfiguraci životností tokenů aktualizace nastavením frekvence přihlášení. Od 1. května 2020 nebudete moct pro konfiguraci relace a aktualizace tokenů použít konfigurovatelné zásady životnosti tokenů. Po vyřazení můžete i po vyřazení nakonfigurovat životnosti přístupového tokenu.
@@ -33,9 +32,8 @@ V Azure AD představuje objekt zásad sadu pravidel, která se vynutila pro jedn
 Zásady můžete určit jako výchozí zásady pro vaši organizaci. Zásada se použije u libovolné aplikace v organizaci, pokud není přepsána zásadou s vyšší prioritou. Můžete také přiřadit zásadu konkrétním aplikacím. Pořadí priority se liší podle typu zásad.
 
 > [!NOTE]
-> Pro SharePoint Online se nepodporují konfigurovatelné zásady životnosti tokenů.  I když máte možnost vytvořit tuto zásadu přes PowerShell, SharePoint Online tuto zásadu nepotvrdí. Další informace o konfiguraci časových limitů nečinných relací najdete v [blogu k SharePointu Online](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) .
->* Výchozí doba životnosti přístupového tokenu SharePointu Online je 1 hodina. 
->* Výchozí maximální doba neaktivního obnovovacího tokenu SharePointu Online je 90 dní.
+> Konfigurovatelné zásady životnosti tokenů platí jenom pro mobilní a desktopové klienty, kteří mají přístup k prostředkům SharePointu Online a OneDrive pro firmy, a nevztahují se na relace webového prohlížeče.
+> Pokud chcete spravovat životnost relací webového prohlížeče pro SharePoint Online a OneDrive pro firmy, použijte funkci [Životnost relace podmíněného přístupu](../conditional-access/howto-conditional-access-session-lifetime.md) . Další informace o konfiguraci časových limitů nečinných relací najdete v [blogu k SharePointu Online](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) .
 
 ## <a name="token-types"></a>Typy tokenů
 
@@ -88,11 +86,11 @@ Zásada životního cyklu tokenu je typ objektu zásad, který obsahuje pravidla
 | Vlastnost | Řetězec vlastnosti zásad | Ovlivňuje | Výchozí | Minimální | Maximum |
 | --- | --- | --- | --- | --- | --- |
 | Doba života přístupového tokenu |AccessTokenLifetime<sup>2</sup> |Přístupové tokeny, tokeny ID, tokeny typu Saml2 |1 hodina |10 minut |1 den |
-| Maximální neaktivní čas obnovovacího tokenu |MaxInactiveTime |Aktualizovat tokeny |90 dní |10 minut |90 dní |
-| Maximální stáří tokenu obnovení jednoho faktoru |MaxAgeSingleFactor |Aktualizovat tokeny (pro všechny uživatele) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
-| Maximální stáří tokenu pro Multi-Factor Refresh |MaxAgeMultiFactor |Aktualizovat tokeny (pro všechny uživatele) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
-| Maximální stáří tokenu relace s jedním faktorem |MaxAgeSessionSingleFactor |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
-| Maximální stáří tokenu relace Multi-Factor |MaxAgeSessionMultiFactor |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Until-revoked<sup>1</sup> |
+| Maximální neaktivní čas obnovovacího tokenu |MaxInactiveTime |Aktualizovat tokeny |90 dnů |10 minut |90 dnů |
+| Maximální stáří tokenu obnovení jednoho faktoru |MaxAgeSingleFactor |Aktualizovat tokeny (pro všechny uživatele) |Do-neodvolán |10 minut |Do-odvolání<sup>1</sup> |
+| Maximální stáří tokenu pro Multi-Factor Refresh |MaxAgeMultiFactor |Aktualizovat tokeny (pro všechny uživatele) |Do-neodvolán |10 minut |Do-odvolání<sup>1</sup> |
+| Maximální stáří tokenu relace s jedním faktorem |MaxAgeSessionSingleFactor |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Do-odvolání<sup>1</sup> |
+| Maximální stáří tokenu relace Multi-Factor |MaxAgeSessionMultiFactor |Tokeny relace (trvalé a netrvalé) |Do-neodvolán |10 minut |Do-odvolání<sup>1</sup> |
 
 * <sup>1</sup>365 dní je maximální explicitní délka, kterou lze pro tyto atributy nastavit.
 * <sup>2</sup> . Chcete-li zajistit, aby webový klient Microsoft Teams funguje, doporučujeme, abyste pro Microsoft Teams AccessTokenLifetime více než 15 minut.
@@ -101,7 +99,7 @@ Zásada životního cyklu tokenu je typ objektu zásad, který obsahuje pravidla
 | Vlastnost | Ovlivňuje | Výchozí |
 | --- | --- | --- |
 | Maximální stáří obnovovacího tokenu (vydané pro federované uživatele, kteří mají nedostatečné informace o odvolání<sup>1</sup>) |Aktualizovat tokeny (vydané pro federované uživatele, kteří mají nedostatečné informace o odvolání<sup>1</sup>) |12 hodin |
-| Maximální neaktivní čas obnovovacího tokenu (vydaný pro důvěrné klienty) |Aktualizovat tokeny (vydané pro důvěrné klienty) |90 dní |
+| Maximální neaktivní čas obnovovacího tokenu (vydaný pro důvěrné klienty) |Aktualizovat tokeny (vydané pro důvěrné klienty) |90 dnů |
 | Maximální stáří obnovovacího tokenu (vydané pro důvěrné klienty) |Aktualizovat tokeny (vydané pro důvěrné klienty) |Do-neodvolán |
 
 * <sup>1</sup> Federované uživatele, kteří mají nedostatečné informace o odvolání, zahrnují všechny uživatele, kteří nemají atribut "LastPasswordChangeTimestamp" synchronizovaný. Těmto uživatelům se doručí krátký maximální stáří, protože AAD nedokáže ověřit, kdy odvolat tokeny, které jsou svázané se starým přihlašovacím údaji (například s heslem, které se změnily), a musí se vrátit častěji, aby se zajistilo, že uživatel a přidružené tokeny jsou pořád dobré.  stání. Aby bylo možné toto prostředí zlepšit, Správci klientů musí zajistit, aby synchronizoval tento atribut "LastPasswordChangeTimestamp" (dá se nastavit v objektu User pomocí PowerShellu nebo prostřednictvím AADSync).
@@ -210,7 +208,7 @@ V příkladech se můžete dozvědět, jak:
 * Vytvoření zásady pro nativní aplikaci, která volá webové rozhraní API
 * Správa pokročilých zásad
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 V následujících příkladech můžete vytvořit, aktualizovat, propojit a odstranit zásady pro aplikace, instanční objekty a celou organizaci. Pokud s Azure AD teprve začínáte, doporučujeme vám seznámit se s tím, [Jak získat tenanta Azure AD](quickstart-create-new-tenant.md) , než budete pokračovat v těchto příkladech.  
 
 Začněte tím, že provedete následující kroky:
@@ -389,7 +387,7 @@ Vytvoří novou zásadu.
 New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
 ```
 
-| Parametry | Popis | Příklad: |
+| Parametry | Popis | Příklad |
 | --- | --- | --- |
 | <code>&#8209;Definition</code> |Pole dokument JSON, které obsahuje všechna pravidla zásad. | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;DisplayName</code> |Řetězec názvu zásady |`-DisplayName "MyTokenPolicy"` |
@@ -406,7 +404,7 @@ Načte všechny zásady Azure AD nebo zadané zásady.
 Get-AzureADPolicy
 ```
 
-| Parametry | Popis | Příklad: |
+| Parametry | Popis | Příklad |
 | --- | --- | --- |
 | <code>&#8209;Id</code> [nepovinné] |**ObjectID (ID)** zásady, kterou chcete. |`-Id <ObjectId of Policy>` |
 
@@ -419,7 +417,7 @@ Načte všechny aplikace a instanční objekty, které jsou propojené se zásad
 Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 ```
 
-| Parametry | Popis | Příklad: |
+| Parametry | Popis | Příklad |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectID (ID)** zásady, kterou chcete. |`-Id <ObjectId of Policy>` |
 
@@ -432,7 +430,7 @@ Aktualizuje existující zásady.
 Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 ```
 
-| Parametry | Popis | Příklad: |
+| Parametry | Popis | Příklad |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectID (ID)** zásady, kterou chcete. |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |Řetězec názvu zásady |`-DisplayName "MyTokenPolicy"` |
@@ -450,7 +448,7 @@ Odstraní zadané zásady.
  Remove-AzureADPolicy -Id <ObjectId of Policy>
 ```
 
-| Parametry | Popis | Příklad: |
+| Parametry | Popis | Příklad |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectID (ID)** zásady, kterou chcete. | `-Id <ObjectId of Policy>` |
 
@@ -466,7 +464,7 @@ Propojí zadané zásady s aplikací.
 Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
 ```
 
-| Parametry | Popis | Příklad: |
+| Parametry | Popis | Příklad |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |**Identifikátor objectID** zásady | `-RefObjectId <ObjectId of Policy>` |
@@ -480,7 +478,7 @@ Získá zásadu, která je přiřazena aplikaci.
 Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 ```
 
-| Parametry | Popis | Příklad: |
+| Parametry | Popis | Příklad |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
 
@@ -493,7 +491,7 @@ Odebere zásadu z aplikace.
 Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
 ```
 
-| Parametry | Popis | Příklad: |
+| Parametry | Popis | Příklad |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |**Identifikátor objectID** zásady | `-PolicyId <ObjectId of Policy>` |
@@ -510,7 +508,7 @@ Propojí zadané zásady s instančním objektem.
 Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
 ```
 
-| Parametry | Popis | Příklad: |
+| Parametry | Popis | Příklad |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |**Identifikátor objectID** zásady | `-RefObjectId <ObjectId of Policy>` |
@@ -524,7 +522,7 @@ Načte všechny zásady propojené se zadaným objektem služby.
 Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 ```
 
-| Parametry | Popis | Příklad: |
+| Parametry | Popis | Příklad |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
 
@@ -537,7 +535,7 @@ Odebere zásadu ze zadaného instančního objektu.
 Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
 ```
 
-| Parametry | Popis | Příklad: |
+| Parametry | Popis | Příklad |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |**Identifikátor objectID** zásady | `-PolicyId <ObjectId of Policy>` |

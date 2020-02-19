@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: bd70cfb58c9d89f1d454537721e22f36b1fd3d3e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: HT
+ms.openlocfilehash: 2f5269587d222be9a1628b72c1f3f0dc1b105f3c
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429290"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461737"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>Import klíčů chráněných HSM do Key Vault (Preview)
 
@@ -43,7 +43,7 @@ Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](k
 * KEK musí být ve stejném trezoru klíčů, kam se má cílový klíč importovat.
 * Po nahrání souboru BYOK do Key Vault Key Vault HSM použít privátní klíč KEK k dešifrování cílového materiálu klíče a naimportuje ho jako klíč HSM. Tato operace probíhá zcela uvnitř Key Vault HSM a cílový klíč vždy zůstává v hranici ochrany HSM.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Seznam požadavků pro Přineste si vlastní klíč (BYOK) pro Azure Key Vault najdete v následující tabulce.
 
@@ -52,13 +52,13 @@ Seznam požadavků pro Přineste si vlastní klíč (BYOK) pro Azure Key Vault n
 | Předplatné Azure |Pokud chcete vytvořit Azure Key Vault, potřebujete předplatné Azure: [Zaregistrujte se do bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/) . |
 | Trezor klíčů (SKU úrovně Premium) pro import klíčů chráněných pomocí HSM |Další informace o úrovních služby a možnostech pro Azure Key Vault najdete na webu [Azure Key Vault s cenami](https://azure.microsoft.com/pricing/details/key-vault/) . |
 | Modul HARDWAROVÉho zabezpečení z podporovaného seznamu HSM spolu s nástrojem BYOK a pokyny, které poskytuje dodavatel HSM. | Musíte mít přístup k modulu hardwarového zabezpečení a základnímu provoznímu znalostí vaší HSM. Viz článek [podporované HSM](#supported-hsms). |
-| Azure CLI verze 2.0.82 nebo novější | Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) .|
+| Azure CLI verze 2.1.0 nebo novější | Další informace najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) .|
 
 ## <a name="supported-hsms"></a>Podporované HSM
 
 |Název dodavatele HSM|Podporované modely HSM|Další podrobnosti|
 |---|---|---|
-|Thales|SafeNet Luna HSM 7 Family s firmwarem verze 7,3 nebo novější| [Nástroj SafeNet Luna BYOK a dokumentace](https://safenet.gemalto.com/blah-blah)|
+|Thales|SafeNet Luna HSM 7 Family s firmwarem verze 7,3 nebo novější| [Nástroj SafeNet Luna BYOK a dokumentace](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 
 
 > [!NOTE]

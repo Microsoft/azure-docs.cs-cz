@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/17/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 305ad1da28de899f801b9b8af58628c6c067a5d7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
-ms.translationtype: HT
+ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425132"
+ms.locfileid: "77444005"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -1510,14 +1510,14 @@ az group deployment create \
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Šablona výstrahy metriky, která monitoruje více prostředků
 
-Předchozí části popisují ukázkovou Azure Resource Manager šablon pro vytváření výstrah metrik, které sledují jeden prostředek. Azure Monitor teď podporuje monitorování více prostředků s jedním pravidlem upozornění na metriku. Tato funkce je momentálně podporovaná jenom ve veřejném cloudu Azure a jenom pro virtuální počítače, databáze SQL, elastické fondy SQL a Databox hraniční zařízení.
+Předchozí části popisují ukázkovou Azure Resource Manager šablon pro vytváření výstrah metrik, které sledují jeden prostředek. Azure Monitor teď podporuje monitorování více prostředků (stejného typu) s jedním pravidlem upozornění na metriky pro prostředky, které existují ve stejné oblasti Azure. Tato funkce je momentálně podporovaná jenom ve veřejném cloudu Azure a jenom pro virtuální počítače, databáze SQL serveru, elastické fondy SQL serveru a Databox hraniční zařízení. Tato funkce je také k dispozici pouze pro metriky platforem a není podporována pro vlastní metriky.
 
 Pravidlo upozornění na dynamické prahové hodnoty může také vytvořit přizpůsobené prahové hodnoty pro stovky řady metrik (dokonce i různých typů), což vede k menšímu počtu pravidel upozornění, která se mají spravovat.
 
 V této části najdete popis Azure Resource Manager šablon pro různé scénáře monitorování více prostředků s jedním pravidlem.
 
 - Monitorování všech virtuálních počítačů (v jedné oblasti Azure) v jedné nebo více skupinách prostředků.
-- Monitorování všech virtuálních počítačů (v jedné oblasti Azure) v předplatném
+- Monitorování všech virtuálních počítačů (v jedné oblasti Azure) v předplatném.
 - Monitorování seznamu virtuálních počítačů (v jedné oblasti Azure) v předplatném.
 
 ### <a name="static-threshold-alert-on-all-virtual-machines-in-one-or-more-resource-groups"></a>Výstraha statické prahové hodnoty na všech virtuálních počítačích v jedné nebo více skupinách prostředků

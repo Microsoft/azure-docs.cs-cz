@@ -323,10 +323,10 @@
       items:
         - name: Základy
           href: search-monitor-usage.md
-        - name: Monitorování aktivity dotazů
-          href: search-monitor-queries.md
         - name: Protokolování diagnostiky
           href: search-monitor-logs.md
+        - name: Monitorování aktivity dotazů
+          href: search-monitor-queries.md
         - name: Prohledání analýzy provozu
           href: search-traffic-analytics.md
     - name: Řešení potíží

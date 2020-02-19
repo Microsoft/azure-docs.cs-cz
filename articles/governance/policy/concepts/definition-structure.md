@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: b98702161753a996cd8a6751670308a78dc36b7c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169772"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461998"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -22,7 +22,7 @@ Schéma definice zásad najdete tady: [https://schema.management.azure.com/schem
 Vytvoření definice zásady pomocí JSON. Definice zásady obsahuje elementy pro:
 
 - režim
-- parameters
+- parametry
 - Zobrazovaný název
 - description
 - pravidlo zásad
@@ -111,6 +111,12 @@ Parametr má následující vlastnosti, které se používají v definici zásad
 - `metadata`: definuje podvlastnost primárně používané Azure Portal k zobrazení uživatelsky přívětivých informací:
   - `description`: vysvětlení použití parametru pro. Dá se použít k zadání příkladů přijatelných hodnot.
   - `displayName`: popisný název zobrazený na portálu pro parametr.
+  - `version`: (volitelné) sleduje podrobnosti o verzi obsahu definice zásady.
+
+    > [!NOTE]
+    > Služba Azure Policy používá vlastnosti `version`, `preview`a `deprecated` k přenosu úrovně změny do předdefinované definice nebo iniciativy a stavu zásad. `version` formátu je: `{Major}.{Minor}.{Patch}`. Konkrétní stavy, například _zastaralé_ nebo ve _verzi Preview_, jsou připojeny k vlastnosti `version` nebo v jiné vlastnosti jako **logická hodnota**.
+
+  - `category`: (volitelné) určuje, pod kterou kategorii v Azure Portal se má definice zásady zobrazovat.
   - `strongType`: (volitelné) používá se při přiřazování definice zásady prostřednictvím portálu. Poskytuje seznam podporující kontext. Další informace najdete v tématu [strongType](#strongtype).
   - `assignPermissions`: (volitelné) nastavte na _hodnotu true_ , pokud chcete, aby během přiřazování zásad Azure Portal vytvořila přiřazení rolí. Tato vlastnost je užitečná v případě, že chcete přiřadit oprávnění mimo rozsah přiřazení. Podle definice role v zásadě (nebo definice role v rámci všech zásad v iniciativě) existuje jedno přiřazení role. Hodnota parametru musí být platným prostředkem nebo oborem.
 - `defaultValue`: (volitelné) nastaví hodnotu parametru v přiřazení, pokud není zadána žádná hodnota.
@@ -631,7 +637,7 @@ Seznam aliasů se pořád rozrůstá. Pokud chcete zjistit, jaké aliasy jsou ak
   Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
   ```
 
-- Azure Powershell
+- Azure PowerShell
 
   ```azurepowershell-interactive
   # Login first with Connect-AzAccount if not using Cloud Shell

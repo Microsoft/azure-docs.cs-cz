@@ -6,21 +6,16 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: fe5ced96a74bfbfbacf3ce1874d64711f6db7449
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 566b6db829c9694a7e5e83cc25695e71ada0bc8d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668761"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461449"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Jak používat Mobile Apps Node. js SDK
 
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
-
-> [!NOTE]
-> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
->
->  Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 Tento článek obsahuje podrobné informace a příklady, které ukazují, jak pracovat s back-end Node. js ve funkci Mobile Apps Azure App Service.
 
@@ -369,17 +364,17 @@ Většina nastavení v souboru azureMobile. js má ekvivalentní nastavení apli
 
 | Nastavení aplikace | nastavení azureMobile. js | Popis | Platné hodnoty |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |jméno |Název aplikace |string |
+| **MS_MobileAppName** |jméno |Název aplikace |řetězec |
 | **MS_MobileLoggingLevel** |Logging. Level |Minimální úroveň protokolu pro zprávy, které se mají protokolovat |Chyba, upozornění, informace, podrobný, ladění, Silly |
-| **MS_DebugMode** |ladí |Povolí nebo zakáže režim ladění. |true, false |
-| **MS_TableSchema** |data. Schema |Výchozí název schématu pro tabulky SQL |String (výchozí: dbo) |
-| **MS_DynamicSchema** |data. dynamicSchema |Povolí nebo zakáže režim ladění. |true, false |
-| **MS_DisableVersionHeader** |verze (nastavená na undefined) |Zakáže hlavičku X-ZUMO-server-Version. |true, false |
-| **MS_SkipVersionCheck** |skipversioncheck |Zakáže kontrolu verze rozhraní API klienta. |true, false |
+| **MS_DebugMode** |ladit |Povolí nebo zakáže režim ladění. |Hodnota TRUE, false |
+| **MS_TableSchema** |data.schema |Výchozí název schématu pro tabulky SQL |String (výchozí: dbo) |
+| **MS_DynamicSchema** |data.dynamicSchema |Povolí nebo zakáže režim ladění. |Hodnota TRUE, false |
+| **MS_DisableVersionHeader** |verze (nastavená na undefined) |Zakáže hlavičku X-ZUMO-server-Version. |Hodnota TRUE, false |
+| **MS_SkipVersionCheck** |skipversioncheck |Zakáže kontrolu verze rozhraní API klienta. |Hodnota TRUE, false |
 
 Nastavení aplikace nastavíte takto:
 
-1. Přihlaste se na web [Azure Portal].
+1. Přihlaste se k webu [Azure Portal].
 1. Vyberte **všechny prostředky** nebo **App Services**a pak vyberte název mobilní aplikace.
 1. Ve výchozím nastavení se otevře podokno **Nastavení** . Pokud tomu tak není, vyberte **Nastavení**.
 1. V nabídce **Obecné** vyberte **nastavení aplikace**.
@@ -396,7 +391,7 @@ Změna většiny nastavení aplikace vyžaduje restart služby.
 
 Použití Azure SQL Database jako úložiště dat je identické napříč všemi Azure App Service typy aplikací. Pokud jste to ještě neudělali, postupujte podle těchto kroků a vytvořte Mobile Apps back-end:
 
-1. Přihlaste se na web [Azure Portal].
+1. Přihlaste se k webu [Azure Portal].
 1. V levém horním rohu okna vyberte tlačítko **+ nový** > **web a mobilní zařízení** > **mobilní aplikace**a zadejte název pro Mobile Apps back end.
 1. Do pole **Skupina prostředků** zadejte stejný název jako vaše aplikace.
 1. Je vybrán výchozí plán App Service. Pokud chcete změnit plán App Service:

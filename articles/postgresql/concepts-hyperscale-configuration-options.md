@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 2ee3e661d6c01aa2e4f37ac9a70e00be5da5f794
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 2/18/2020
+ms.openlocfilehash: 1c9b4b1099bda69764aa7a1a5a984a6316e1047d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975631"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77462407"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-performance-options"></a>Azure Database for PostgreSQL – možnosti výkonu Citus (škálovatelná velikost)
 
@@ -33,20 +33,23 @@ Nastavení výpočtů a úložiště můžete vybrat nezávisle pro pracovní uz
 Skupiny serverů Citus () jsou k dispozici v následujících oblastech Azure:
 
 * Jižní
-    * Kanada – střed *
+    * Kanada – střed
+    * USA – střed
     * USA – východ
     * USA – východ 2
-    * Střed USA – sever *
+    * USA – středosever
     * USA – západ 2
 * Asie a Tichomoří:
-    * Austrálie – východ *
+    * Austrálie – východ
+    * Japonsko – východ
+    * Jižní Korea – střed
     * Jihovýchodní Asie
 * Evropským
     * Severní Evropa
     * Velká Británie – jih
     * Západní Evropa
 
-Oblasti s hvězdičkou (\*) ještě nepodporují [vysokou dostupnost](concepts-hyperscale-high-availability.md).
+Některé z těchto oblastí se nemusí zpočátku aktivovat ve všech předplatných Azure. Pokud chcete použít oblast ze seznamu výše a nevidíte ji v předplatném, nebo pokud chcete použít oblast, která není v tomto seznamu, otevřete [žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="pricing"></a>Ceny
 Nejaktuálnější informace o cenách najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/postgresql/)služeb.

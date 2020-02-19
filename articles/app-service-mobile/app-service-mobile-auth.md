@@ -3,19 +3,14 @@ title: Ověřování a autorizace
 description: Koncepční referenční informace a přehled funkcí ověřování a autorizace pro Azure App Service, konkrétně pro mobilní aplikace.
 ms.topic: article
 ms.date: 10/01/2016
-ms.openlocfilehash: 2c3bc1f9563a5657d7574020fc908f23a711391c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4a9ef62178b9a58fa8703413a09114a617d1d239
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668519"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459459"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>Ověřování a autorizace v Azure App Service pro mobilní aplikace
-
-> [!NOTE]
-> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
->
-> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 Tento článek popisuje, jak ověřování a autorizace funguje při vývoji nativních mobilních aplikací pomocí back-endu App Service. App Service poskytuje integrované ověřování a autorizaci, takže vaše mobilní aplikace mohou podepisovat uživatele bez nutnosti měnit kód v App Service. Poskytuje snadný způsob ochrany vaší aplikace a práci s daty jednotlivých uživatelů. 
 
@@ -48,7 +43,7 @@ Pokud nechcete nastavit sadu SDK poskytovatele, můžete povolit funkci Mobile A
 Kód pro spuštění tohoto toku je obsažen v kurzu ověřování pro každou platformu. Na konci toku má klientská sada SDK token App Service a token je automaticky připojen ke všem žádostem o back-end aplikace.
 
 Další informace o toku ověřování najdete v tématu [App Service tok ověřování](../app-service/overview-authentication-authorization.md#authentication-flow). 
-## <a name="more-resources"></a>Další zdroje
+## <a name="more-resources"></a>Další zdroje informací
 
 V následujících kurzech se dozvíte, jak do mobilních klientů přidat ověřování pomocí [toku směrovaného serverem](../app-service/overview-authentication-authorization.md#authentication-flow):
 

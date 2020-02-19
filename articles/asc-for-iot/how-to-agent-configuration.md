@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2019
+ms.date: 02/18/2020
 ms.author: mlottner
-ms.openlocfilehash: 6adb918bbc6d4718be8518019394582a6a843fb8
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 70396cdcaf8b6e2ac66619290eea35a7b260cd9a
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664834"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77461245"
 ---
 # <a name="tutorial-configure-security-agents"></a>Kurz: konfigurace agentů zabezpečení
 
@@ -108,7 +108,7 @@ Chcete-li použít výchozí hodnotu vlastnosti, odeberte vlastnost z objektu ko
     }
     ```
 
-1. Klikněte na **Uložit**.
+1. Klikněte na možnost **Uložit**.
 
 ### <a name="using-a-default-value"></a>Použití výchozí hodnoty
 
@@ -120,33 +120,32 @@ Následující tabulka obsahuje ovladatelné vlastnosti Azure Security Center pr
 
 Výchozí hodnoty jsou k dispozici ve správném schématu v [GitHubu](https\://aka.ms/iot-security-module-default).
 
-| Name (Název)| Stav | Platné hodnoty| Výchozí hodnoty| Popis |
+| Název| Status | Platné hodnoty| Výchozí hodnoty| Popis |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Požadováno: false |Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT7M |Maximální časový interval před odesláním zpráv s vysokou prioritou.|
 |lowPriorityMessageFrequency |Požadováno: false|Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota: PT5H |Maximální doba před odesláním zpráv s nízkou prioritou.| 
 |snapshotFrequency |Vyžadovat: false|Platné hodnoty: doba trvání ve formátu ISO 8601 |Výchozí hodnota PT13H |Časový interval pro vytváření snímků stavu zařízení.| 
 |maxLocalCacheSizeInBytes |Požadováno: false |Platné hodnoty: |Výchozí hodnota: 2560000, větší než 8192 | Maximální povolená velikost úložiště (v bajtech) pro mezipaměť pro zprávy agenta. Maximální místo, na které je povoleno ukládat zprávy na zařízení před odesláním zprávy.| 
 |maxMessageSizeInBytes |Požadováno: false |Platné hodnoty: kladné číslo větší než 8192, menší než 262144 |Výchozí hodnota: 204800 |Maximální povolená velikost agenta pro zprávu cloudu Toto nastavení řídí maximální množství dat odesílaných v každé zprávě. |
-|eventPriority $ {EventName} |Požadováno: false |Platné hodnoty: vysoká, nízká, off |Výchozí hodnoty: |Priorita každé události generované agentem | 
+|eventPriority${EventName} |Požadováno: false |Platné hodnoty: vysoká, nízká, off |Výchozí hodnoty: |Priorita každé události generované agentem | 
 
 ### <a name="supported-security-events"></a>Podporované události zabezpečení
 
-|Název události| PropertyName | Výchozí hodnota| Událost snímku| Podrobnosti o stavu  |
+|Název události| Vlastnost PropertyName | Výchozí hodnota| Událost snímku| Podrobnosti o stavu  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Diagnostická událost|eventPriorityDiagnostic| Vypnuto| Nepravda| Diagnostické události související s agentem. Tuto událost použijte pro podrobné protokolování.| 
-|Chyba konfigurace |eventPriorityConfigurationError |Nízký |Nepravda |Agentovi se nepovedlo analyzovat konfiguraci. Ověřte konfiguraci oproti schématu.| 
-|Statistika vyřazených událostí |eventPriorityDroppedEventsStatistics |Nízký |Pravda|Statistika událostí souvisejících s agenty |
-|Statistika zprávy|eventPriorityMessageStatistics |Nízký |Pravda |Statistika zpráv souvisejících s agenty |
-|Připojený hardware|eventPriorityConnectedHardware |Nízký |Pravda |Snímek veškerého hardwaru připojeného k zařízení.|
-|Naslouchající porty|eventPriorityListeningPorts |Vysoký |Pravda |Snímek všech otevřených naslouchajících portů na zařízení.|
-|Vytvoření procesu |eventPriorityProcessCreate |Nízký |Nepravda |Audituje vytváření procesů na zařízení.|
-|Ukončení procesu|eventPriorityProcessTerminate |Nízký |Nepravda |Audituje ukončení procesu v zařízení.| 
-|Systémové informace |eventPrioritySystemInformation |Nízký |Pravda |Snímek systémových informací (například: operační systém nebo CPU).| 
-|Místní uživatelé| eventPriorityLocalUsers |Vysoký |Pravda|Snímek registrovaných místních uživatelů v rámci systému. |
-|Přihlášení|  eventPriorityLogin |Vysoký|Nepravda|Auditujte události přihlášení do zařízení (místní a Vzdálená přihlášení).|
-|Vytvoření připojení |eventPriorityConnectionCreate|Nízký|Nepravda|Audituje připojení TCP vytvořená do a ze zařízení. |
-|Konfigurace brány firewall| eventPriorityFirewallConfiguration|Nízký|Pravda|Snímek konfigurace brány firewall zařízení (pravidla brány firewall). |
-|Základní hodnoty operačního systému| eventPriorityOSBaseline| Nízký|Pravda|Snímek kontroly standardních hodnot operačního systému zařízení|
+|Diagnostická událost|eventPriorityDiagnostic| Vypnuto| False| Diagnostické události související s agentem. Tuto událost použijte pro podrobné protokolování.| 
+|Chyba konfigurace |eventPriorityConfigurationError |Nízká |False |Agentovi se nepovedlo analyzovat konfiguraci. Ověřte konfiguraci oproti schématu.| 
+|Statistika vyřazených událostí |eventPriorityDroppedEventsStatistics |Nízká |True|Statistika událostí souvisejících s agenty |
+|Připojený hardware|eventPriorityConnectedHardware |Nízká |True |Snímek veškerého hardwaru připojeného k zařízení.|
+|Naslouchající porty|eventPriorityListeningPorts |Vysoký |True |Snímek všech otevřených naslouchajících portů na zařízení.|
+|Vytvoření procesu |eventPriorityProcessCreate |Nízká |False |Audituje vytváření procesů na zařízení.|
+|Ukončení procesu|eventPriorityProcessTerminate |Nízká |False |Audituje ukončení procesu v zařízení.| 
+|Systémové informace |eventPrioritySystemInformation |Nízká |True |Snímek systémových informací (například: operační systém nebo CPU).| 
+|Místní uživatelé| eventPriorityLocalUsers |Vysoký |True|Snímek registrovaných místních uživatelů v rámci systému. |
+|Přihlásit|  eventPriorityLogin |Vysoký|False|Auditujte události přihlášení do zařízení (místní a Vzdálená přihlášení).|
+|Vytvoření připojení |eventPriorityConnectionCreate|Nízká|False|Audituje připojení TCP vytvořená do a ze zařízení. |
+|Konfigurace brány firewall| eventPriorityFirewallConfiguration|Nízká|True|Snímek konfigurace brány firewall zařízení (pravidla brány firewall). |
+|Základní hodnoty operačního systému| eventPriorityOSBaseline| Nízká|True|Snímek kontroly standardních hodnot operačního systému zařízení|
 |
  
 

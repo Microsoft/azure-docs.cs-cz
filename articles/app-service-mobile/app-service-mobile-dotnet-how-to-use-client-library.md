@@ -6,20 +6,15 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 741d286126bedb8b92828486927283fa9887658e
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 1c9fba3c13cc6e5476377d59130a95a2edaa324d
+ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668463"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77459187"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak používat spravovaného klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
-
-> [!NOTE]
-> Visual Studio App Center podporuje vývoj kompletních integrovaných služeb, které jsou důležité pro vývoj mobilních aplikací. Vývojáři mohou využít služby pro **sestavování**, **testování** a **distribuci** a nastavit kanál pro průběžnou integraci a doručování. Jakmile je aplikace nasazená, mohou vývojáři monitorovat její stav a využití pomocí **analytických** a **diagnostických** služeb a spolupracovat s uživateli pomocí služby **Push**. Vývojáři mohou také využít **Auth** k ověřování svých uživatelů a službu and **Data** k uchování dat aplikace a jejich synchronizaci v cloudu.
->
-> Pokud chcete do vaší mobilní aplikace integrovat cloudové služby, ještě dnes se zaregistrujte do služeb [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Přehled
 V této příručce se dozvíte, jak provádět běžné scénáře pomocí spravované klientské knihovny pro Azure App Service Mobile Apps pro aplikace pro Windows a Xamarin. Pokud s Mobile Apps začínáte, měli byste zvážit, jak nejprve vyplníte kurz [Azure Mobile Apps rychlý Start][1] . V tomto průvodci se zaměříme na spravovanou sadu SDK na straně klienta. Další informace o sadách SDK na straně serveru pro Mobile Apps naleznete v dokumentaci k sadě [.NET Server SDK][2] nebo sadě [SDK serveru Node. js][3].
@@ -34,7 +29,7 @@ Platforma .NET podporuje následující platformy:
 * Verze Xamarin Androidu pro rozhraní API 19 až 24 (KitKat až nougat)
 * Verze Xamarin iOS pro iOS verze 8,0 a novější
 * Univerzální platforma Windows
-* Windows Phone 8,1
+* Windows Phone 8.1
 * Windows Phone 8,0 s výjimkou aplikací Silverlight
 
 Ověřování "Server-Flow" používá pro prezentované uživatelské rozhraní WebView.  Pokud zařízení není schopné prezentovat uživatelské rozhraní WebView, vyžadují se další metody ověřování.  Tato sada SDK není vhodná pro zařízení s omezením typu kukátka nebo podobně.
@@ -89,7 +84,7 @@ var client = new MobileServiceClient("MOBILE_APP_URL");
 V předchozím kódu nahraďte `MOBILE_APP_URL` adresou URL back-endu mobilní aplikace, který najdete v okně pro back-end mobilní aplikace v [Azure Portal]. Objekt MobileServiceClient by měl být typu singleton.
 
 ## <a name="work-with-tables"></a>Práce s tabulkami
-Následující část popisuje, jak vyhledat a načíst záznamy a upravit data v tabulce.  Jsou pokrytá následující témata:
+Následující část popisuje, jak vyhledat a načíst záznamy a upravit data v tabulce.  Jsou pokryta následující témata:
 
 * [Vytvoření odkazu na tabulku](#instantiating)
 * [Dotazování dat](#querying)
