@@ -154,3 +154,5 @@
       href: 'https://windowsvirtualdesktop.uservoice.com/forums/921118-general'
     - name: Plány Microsoft 365 do budoucna
       href: 'https://aka.ms/wvdroadmap'
+    - name: Šablony Azure Resource Manageru
+      href: 'https://github.com/Azure/RDS-Templates/tree/master/wvd-templates'

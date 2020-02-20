@@ -527,7 +527,7 @@
               href: platform/resource-logs-blob-format.md
         - name: Streamování dat do Event Hubs
           href: platform/stream-monitoring-data-event-hubs.md
-    - name: Monitorování virtuálních počítačů a výpočetní prostředí
+    - name: Monitorování virtuálních počítačů a hostovaný operační systém
       items:
         - name: Agenti
           items:
@@ -537,13 +537,15 @@
               href: 'faq.md#agents'
             - name: Rozšíření Azure Diagnostics
               items:
+                - name: Přehled
+                  href: platform/diagnostics-extension-overview.md
                 - name: Windows
                   displayname: diagnostics extension
                   items:
-                    - name: Přehled
-                      href: platform/diagnostics-extension-overview.md
                     - name: Instalace a konfigurace
                       items:
+                        - name: Možnosti instalace
+                          href: platform/diagnostics-extension-windows-install.md
                         - name: PowerShell
                           href: ../virtual-machines/extensions/diagnostics-windows.md?toc=/azure/azure-monitor/toc.json
                         - name: Šablona Resource Manageru
@@ -561,13 +563,11 @@
                     - name: Odeslání do Event Hubs
                       href: platform/diagnostics-extension-stream-event-hubs.md
                     - name: Odeslání do protokolů
-                      href: platform/azure-storage-iis-table.md
-                    - name: Odeslání do Azure Storage
-                      href: platform/diagnostics-extension-to-storage.md
+                      href: platform/diagnostics-extension-logs.md
                     - name: Odeslání do Application Insights
                       href: platform/diagnostics-extension-to-application-insights.md
                     - name: Historie verzí
-                      href: platform/diagnostics-extension-schema.md
+                      href: platform/diagnostics-extension-versions.md
                     - name: Formát protokolů prostředků řádků JSON
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Řešení potíží
@@ -588,9 +588,9 @@
                 - name: Agenti systému Linux
                   href: platform/agent-linux.md
                 - name: Rozšíření virtuálního počítače pro Windows
-                  href: ../virtual-machines/windows/extensions-oms.md
+                  href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
                 - name: Rozšíření virtuálního počítače pro Linux
-                  href: ../virtual-machines/linux/extensions-oms.md
+                  href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
                 - name: Brána Log Analytics
                   href: platform/gateway.md
                 - name: Správa agentů
@@ -1151,8 +1151,8 @@
       href: service-limits.md
     - name: Rozšíření diagnostiky
       items:
-        - name: Schéma
-          href: platform/diagnostics-extension-schema-1dot3.md
+        - name: Schéma konfigurace pro Windows
+          href: platform/diagnostics-extension-schema-windows.md
     - name: Terminologické změny
       href: terminology.md
     - name: Application Insights

@@ -1,4 +1,4 @@
-- name: Dokumentace ke službě Azure App Configuration (Preview)
+- name: Dokumentace ke službě Azure App Configuration
   href: index.yml
 - name: Přehled
   items:
@@ -59,6 +59,8 @@
   items:
     - name: Ukládání hodnot klíče
       href: concept-key-value.md
+    - name: Šifrování s využitím klíčů spravovaných zákazníkem
+      href: concept-customer-managed-keys.md
     - name: Snímek k určitému časovému okamžiku
       href: concept-point-time-snapshot.md
     - name: Správa funkcí
@@ -67,14 +69,18 @@
       href: concept-github-action.md
     - name: Zpracování událostí
       href: concept-app-configuration-event.md
+    - name: Authentication
+      items:
+        - name: Integrace se spravovanou identitou Azure
+          href: howto-integrate-azure-managed-service-identity.md
+        - name: Povolení přístupu s využitím Azure Active Directory
+          href: concept-enable-rbac.md
     - name: Vysoká dostupnost
       items:
         - name: Odolnost a zotavení po havárii
           href: concept-disaster-recovery.md
 - name: Návody
   items:
-    - name: Integrace se spravovanou identitou Azure
-      href: howto-integrate-azure-managed-service-identity.md
     - name: Import nebo export konfiguračních dat
       href: howto-import-export-data.md
     - name: Směrování událostí na vlastní koncový bod
@@ -86,12 +92,12 @@
     - name: Konfigurace
       items:
         - name: Azure CLI
-          href: 'https://docs.microsoft.com/cli/azure/ext/appconfig/appconfig?view=azure-cli-latest'
+          href: 'https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest'
         - name: Poskytovatel .NET Core
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: Tvůrce .NET Frameworku
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: Azure SDK for .Net
+        - name: Sada Azure SDK pro .NET
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Poskytovatel Java Springu
           href: 'https://go.microsoft.com/fwlink/?linkid=2074659'

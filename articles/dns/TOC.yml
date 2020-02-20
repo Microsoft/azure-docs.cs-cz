@@ -6,7 +6,7 @@
       href: dns-overview.md
     - name: Co je Privátní DNS v Azure?
       href: private-dns-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Veřejná služba DNS
@@ -113,6 +113,10 @@
           href: dns-sdk.md
         - name: Vlastní domény pro prostředky Azure
           href: dns-custom-domain.md
+    - name: Privátní DNS
+      items:
+        - name: Ochrana privátních záznamů a zón DNS
+          href: dns-protect-private-zones-recordsets.md
     - name: Řešení potíží
       items:
         - name: Průvodce odstraňováním potíží
