@@ -1,6 +1,6 @@
 ---
-title: StorSimple převzetí služeb při selhání, zotavení po havárii pro zařízení 8000 series | Dokumentace Microsoftu
-description: Zjistěte, jak převzít služby při selhání zařízení StorSimple do stejného zařízení.
+title: Převzetí služeb při selhání a zotavení po havárii na stejné zařízení StorSimple 8000
+description: Přečtěte si, jak převzít služby při selhání zařízení StorSimple na stejné zařízení.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: dd207eaad1a3e821724d51a890d0882bfffda131
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c8fe2d7ec7649f47f6cb9c8ae2c83f19c15691b6
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60577317"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471801"
 ---
-# <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Převzetí služeb při selhání fyzického zařízení StorSimple do stejného zařízení
+# <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Převzetí služeb při selhání fyzického zařízení StorSimple na stejné zařízení
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz popisuje kroky potřebné k převzetí služeb při selhání fyzického zařízení StorSimple 8000 series na sebe sama, pokud nedojde k havárii. StorSimple využívá funkce převzetí služeb při selhání zařízení pro migraci dat ze zdrojové fyzické zařízení v datovém centru do jiného fyzického zařízení. Pokyny v tomto kurzu platí pro StorSimple řady 8000 fyzických zařízení, které používají software verze Update 3 a novější.
+Tento kurz popisuje kroky nutné k převzetí služeb při selhání fyzického zařízení řady StorSimple 8000 v případě havárie. StorSimple využívá funkci převzetí služeb při selhání zařízení k migraci dat ze zdrojového fyzického zařízení v datacentru do jiného fyzického zařízení. Pokyny v tomto kurzu se vztahují na fyzická zařízení řady StorSimple 8000, na kterých běží verze softwaru Update 3 a novější.
 
-Další informace o převzetí služeb při selhání zařízení a jak se používá k zotavení po havárii, přejděte na [převzetí služeb při selhání a zotavení po havárii pro zařízení StorSimple 8000 series](storsimple-8000-device-failover-disaster-recovery.md).
+Další informace o převzetí služeb při selhání zařízení a způsobu jeho použití k zotavení po havárii najdete v tématu [převzetí služeb při selhání a zotavení po havárii pro zařízení s StorSimple 8000 series](storsimple-8000-device-failover-disaster-recovery.md).
 
-Převzetí služeb při selhání fyzické zařízení na jiné fyzické zařízení, přejděte na [převzetí služeb při selhání do stejného fyzického zařízení StorSimple](storsimple-8000-device-failover-physical-device.md). Převzetí služeb při selhání fyzického zařízení StorSimple k řešení StorSimple Cloud Appliance, přejděte na [převzetí služeb při selhání do cloudového zařízení StorSimple](storsimple-8000-device-failover-cloud-appliance.md).
-
-
-## <a name="prerequisites"></a>Požadavky
-
-- Ujistěte se, že jste si prohlédli důležité informace týkající se převzetí služeb při selhání zařízení. Další informace najdete v části [častá rozhodnutí při převzetí služeb při selhání zařízení](storsimple-8000-device-failover-disaster-recovery.md).
+Pokud chcete převzít služby při selhání fyzického zařízení na jiné fyzické zařízení, přečtěte si [převzetí služeb při selhání na stejné StorSimple fyzické zařízení](storsimple-8000-device-failover-physical-device.md). Pokud chcete převzít služby při selhání fyzického zařízení StorSimple na StorSimple Cloud Appliance, přečtěte si [převzetí služeb při selhání do StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md).
 
 
-## <a name="steps-to-fail-over-to-the-same-device"></a>Postup převzetí služeb při selhání do stejného zařízení
+## <a name="prerequisites"></a>Předpoklady
 
-Pokud je potřeba převzetí služeb při selhání do stejného zařízení, proveďte následující kroky.
+- Ujistěte se, že jste si prošli požadavky na převzetí služeb při selhání zařízení. Další informace najdete v [častých otázkách pro převzetí služeb zařízení při selhání](storsimple-8000-device-failover-disaster-recovery.md).
 
-1. Využijte cloudové snímky všech svazků v zařízení. Další informace najdete v části [služby Správce zařízení StorSimple používá k vytvoření zálohy](storsimple-8000-manage-backup-policies-u2.md).
-2. Obnovte v zařízení výchozí tovární nastavení. Postupujte podle podrobných pokynů v [jak resetovat do výchozího továrního nastavení zařízení StorSimple](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
-3. Přejděte do služby Správce zařízení StorSimple a potom vyberte **zařízení**. V **zařízení** okně se starým zařízením by se zobrazit jako **Offline**.
 
-    ![Zdrojové zařízení do offline režimu](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev2.png)
+## <a name="steps-to-fail-over-to-the-same-device"></a>Postup převzetí služeb při selhání u stejného zařízení
 
-4. Konfigurace zařízení a zaregistrujte ho znovu pomocí služby Správce zařízení StorSimple. Nově registrovaná zařízení by se zobrazit jako **připraveno k nastavení**. Název zařízení pro nového zařízení je stejné jako staré zařízení ale připojeny číslo označuje, že se zařízení obnovíte výchozí tovární a zaregistrovat znovu.
+Pokud potřebujete převzít služby při selhání do stejného zařízení, proveďte následující kroky.
 
-    ![Připraveno k nastavení nově registrovaná zařízení](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
-5. Nové zařízení dokončete nastavování zařízení. Další informace najdete v části [krok 4: Dokončení minimální instalace zařízení](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup). Na **zařízení** okna, stav zařízení změní na **Online**.
+1. Využijte cloudové snímky všech svazků v zařízení. Další informace najdete v pro [vytváření záloh pomocí služby StorSimple Device Manager](storsimple-8000-manage-backup-policies-u2.md).
+2. Resetujte zařízení do výchozího továrního nastavení. Postupujte podle podrobných pokynů v tématu [Postup resetování zařízení StorSimple do výchozího továrního nastavení](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
+3. Ve službě StorSimple Device Manager a pak vyberte **zařízení**. V okně **zařízení** by se původní zařízení mělo zobrazit jako **offline**.
+
+    ![Zdrojové zařízení offline](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev2.png)
+
+4. Nakonfigurujte zařízení a znovu ho zaregistrujte ve službě StorSimple Device Manager. Nově registrované zařízení by se mělo zobrazit jako **připravené k nastavení**. Název zařízení pro nové zařízení je stejný jako původní zařízení, ale připojené s číslicí, které indikuje, že se zařízení obnovilo do továrního nastavení a zaregistruje se znovu.
+
+    ![Nově zaregistrované zařízení je připravené k nastavení.](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
+5. Pro nové zařízení dokončete instalaci zařízení. Další informace najdete v [kroku 4: dokončení minimální instalace zařízení](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup). V okně **zařízení** se stav zařízení změní na **online**.
 
    > [!IMPORTANT]
-   > **Nejprve dokončete minimální požadavky na konfiguraci, nebo vaše zotavení po Havárii mohou selhat.**
+   > **Nejdříve proveďte nejprve minimální konfiguraci, jinak může dojít k selhání programu DR.**
 
-    ![Online nově registrovaná zařízení](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev7.png)
+    ![Nově registrované zařízení online](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev7.png)
 
-6. Vyberte se starým zařízením (offline stav) a na panelu příkazů klikněte na tlačítko **převzetí služeb při selhání**. V **převzetí služeb při selhání** okně vyberte původní zařízení jako zdroj a zadat cílové zařízení jako na nově registrovaná zařízení.
+6. Vyberte staré zařízení (stav offline) a na panelu příkazů klikněte na převzít služby **při selhání**. V okně **převzetí služeb při selhání** vyberte jako zdroj původní zařízení a jako nově zaregistrované zařízení zadejte cílové zařízení.
 
     ![Souhrn převzetí služeb při selhání](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev11.png)
 
-    Podrobné pokyny najdete selhání přes do jiného fyzického zařízení.
+    Podrobné pokyny najdete v tématu převzetí služeb při selhání na jiném fyzickém zařízení.
 
-7. Monitorování z se vytvoří úloha obnovení zařízení **úlohy** okno.
+7. Vytvoří se úloha obnovení zařízení, kterou můžete sledovat v okně **úlohy** .
 
-8. Po úspěšném dokončení úlohy, přístup k novým zařízením a přejděte **kontejnery svazků** okno. Ověřte, že všechny kontejnery svazků ze staré zařízení jste migrovali na nové zařízení.
+8. Po úspěšném dokončení úlohy přejděte k novému zařízení a přejděte do okna **kontejnery svazků** . Ověřte, jestli se všechny kontejnery svazků ze starého zařízení migrovali do nového zařízení.
 
    ![Kontejnery svazků migrovány](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev13.png)
 
-9. Po dokončení převzetí služeb můžete deaktivovat a odstranit stará zařízení z portálu. Vyberte staré zařízení (offline), klikněte pravým tlačítkem a pak vyberte **deaktivovat**. Jakmile je zařízení deaktivováno, se aktualizuje stav zařízení.
+9. Po dokončení převzetí služeb při selhání můžete původní zařízení deaktivovat a odstranit z portálu. Vyberte staré zařízení (offline), klikněte pravým tlačítkem myši a pak vyberte **deaktivovat**. Po deaktivaci zařízení se stav zařízení aktualizuje.
 
-     ![Zdrojové zařízení bylo deaktivováno](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev14.png)
+     ![Zdrojové zařízení bylo deaktivováno.](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev14.png)
 
-10. Vyberte deaktivované zařízení, klikněte pravým tlačítkem a pak vyberte **odstranit**. Tím se odstraní ze seznamu zařízení zařízení.
+10. Vyberte deaktivované zařízení, klikněte pravým tlačítkem a pak vyberte **Odstranit**. Tím se zařízení odstraní ze seznamu zařízení.
 
-    ![Zdrojové zařízení odstranit](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev15.png)
+    ![Zdrojové zařízení se odstranilo.](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev15.png)
 
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Po provedení převzetí služeb při selhání, budete muset [Deaktivování nebo odstranění zařízení StorSimple](storsimple-8000-deactivate-and-delete-device.md).
-* Informace o tom, jak použít službu StorSimple Device Manager přejděte na [použití služby Správce zařízení StorSimple ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
+* Po provedení převzetí služeb při selhání možná budete muset [zařízení StorSimple deaktivovat nebo odstranit](storsimple-8000-deactivate-and-delete-device.md).
+* Informace o tom, jak používat službu StorSimple Device Manager, najdete v článku [použití služby StorSimple Device Manager ke správě zařízení StorSimple](storsimple-8000-manager-service-administration.md).
 

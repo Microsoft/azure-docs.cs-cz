@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: a5ad4cbd11d6468413a43576e2156ee807067aa8
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: a2f3dbf58363331cf6b1b05e759d246e68e7e7a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153345"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471206"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Použití PowerShellu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
 
@@ -339,7 +339,7 @@ V tomto příkladu mají vlastnící uživatel a vlastnící skupina jenom oprá
 
 Seznam ACL adresáře nebo souboru získáte pomocí rutiny `Get-AzDataLakeGen2Item`. Potom pomocí rutiny `New-AzDataLakeGen2ItemAclObject` vytvořte novou položku seznamu řízení přístupu. Pomocí rutiny `Update-AzDataLakeGen2Item` použijte nový seznam řízení přístupu.
 
-Tento příklad poskytuje uživateli oprávnění zapisovat a spustit pro adresář.
+Tento příklad poskytuje skupině oprávnění zapisovat a spustit pro adresář.
 
 ```powershell
 $filesystemName = "my-file-system"
@@ -370,7 +370,7 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 
 ```
 
-Tento příklad poskytuje uživateli oprávnění zapisovat a spustit pro soubor.
+Tento příklad poskytuje skupině oprávnění zapisovat a spustit pro soubor.
 
 ```powershell
 $filesystemName = "my-file-system"

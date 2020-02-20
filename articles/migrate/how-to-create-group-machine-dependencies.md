@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: hamusa
-ms.openlocfilehash: 96d1c44eb9ecb71684e817a89f9376a07dbe3ccb
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: bf6798d557cb1d27030565e4706864e945de6f04
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514965"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472090"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Nastavení Vizualizace závislostí pro posouzení
 
@@ -40,7 +40,7 @@ Dostupnost | Vizualizace závislostí není v Azure Government k dispozici.
 Mapa služeb | Vizualizace závislostí používá Service Map řešení v Azure Monitor. [Service map](../azure-monitor/insights/service-map.md) automaticky zjišťuje a zobrazuje spojení mezi servery.
 Agenti | Pokud chcete použít vizualizaci závislostí, nainstalujte na počítačích, které chcete namapovat, následující agenty:<br/> Agent [agenta - Log Analytics](../azure-monitor/platform/log-analytics-agent.md) (dříve označovaný jako Microsoft Monitoring Agent (MMA).<br/> [Agent závislostí - Service map](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent).<br/><br/> K automatizaci instalace agenta můžete použít nástroj pro nasazení, jako je například Configuration Manager, který má řešení nasazení agenta pro Azure Migrate.
 Agent závislostí | Projděte si [podporu agenta závislostí](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent) pro systémy Windows a Linux.<br/><br/> [Přečtěte si další informace](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) o použití skriptů k instalaci agenta závislostí.
-Agent Log Analytics (MMA) | [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent) o metodách instalace MMA.<br/><br/> Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není nutné instalovat agenta MMA. Service Map se integruje s Operations Manager. Integraci můžete povolit pomocí pokynů [zde](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Upozorňujeme však, že na tyto počítače bude nutné nainstalovat agenta závislostí.<br/><br/> [Přečtěte si](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) operační systémy Linux podporované agentem Log Analytics.
+Agent Log Analytics (MMA) | [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) o metodách instalace MMA.<br/><br/> Pro počítače monitorované nástrojem System Center Operations Manager 2012 R2 nebo novějším není nutné instalovat agenta MMA. Service Map se integruje s Operations Manager. Integraci můžete povolit pomocí pokynů [zde](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Upozorňujeme však, že na tyto počítače bude nutné nainstalovat agenta závislostí.<br/><br/> [Přečtěte si](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) operační systémy Linux podporované agentem Log Analytics.
 Skupiny posouzení | Skupiny, pro které chcete vizualizovat závislosti, by neměly obsahovat více než 10 počítačů. Pokud máte více než 10 počítačů, rozdělte je do menších skupin a vizualizujte závislosti.
 
 ## <a name="associate-a-log-analytics-workspace"></a>Přidružit Log Analytics pracovní prostor

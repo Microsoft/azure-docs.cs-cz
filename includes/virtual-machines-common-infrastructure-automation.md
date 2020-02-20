@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 4259868ff3b3c9ca9f9818532acd7e865e0300d7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77205675"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474215"
 ---
 Vytvoření a správa virtuálních počítačů Azure (VM) konzistentním způsobem v měřítku, uvítáte nějakou formu automatizace. Existuje mnoho nástrojů a řešení, která umožňují automatizovat nasazení kompletní infrastrukturu Azure a životního cyklu správy. Tento článek představuje některé z infrastruktury automatizační nástroje, které můžete použít v Azure. Tyto nástroje běžně nevešla do jedné z následujících postupů:
 
@@ -48,7 +48,7 @@ Naučte se:
 
 Naučte se:
 
-- [Nasaďte Puppet z Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview).
+- [Nasaďte Puppet z Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Puppet.puppet-agent-windows-asm?tab=Overview).
 
 
 ## <a name="cloud-init"></a>Cloud-init
@@ -99,8 +99,8 @@ Naučte se:
 
 Naučte se:
 
-- [Nainstalujte a nakonfigurujte terraformu pomocí Azure](../articles/virtual-machines/linux/terraform-install-configure.md).
-- [Vytvořte infrastrukturu Azure pomocí terraformu](../articles/virtual-machines/linux/terraform-create-complete-vm.md).
+- [Nainstalujte a nakonfigurujte terraformu pomocí Azure](../articles/terraform/terraform-install-configure.md).
+- [Vytvořte infrastrukturu Azure pomocí terraformu](../articles/terraform/terraform-create-complete-vm.md).
 
 
 ## <a name="azure-automation"></a>Automatizace Azure

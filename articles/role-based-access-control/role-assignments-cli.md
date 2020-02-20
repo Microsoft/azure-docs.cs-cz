@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0351721283df68fde910ae16b16d567954c3e6fb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b32df50715d5e7276861e0696df1bd6ceb3f684e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707901"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471988"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-cli"></a>Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure CLI
 
@@ -157,7 +157,7 @@ az role assignment create --role "Reader" --assignee annm@example.com --subscrip
 
 ### <a name="user-at-a-management-group-scope"></a>Uživatel v oboru skupiny pro správu
 
-Chcete-li přidat přiřazení role pro uživatele v oboru skupiny pro správu, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create). Chcete-li získat ID skupiny pro správu, můžete ji najít v okně **skupiny pro správu** v Azure Portal nebo můžete použít [příkaz AZ Account Management-Group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
+Chcete-li přidat přiřazení role pro uživatele v oboru skupiny pro správu, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create). Chcete-li získat ID skupiny pro správu, můžete ji najít v okně **skupiny pro správu** v Azure Portal nebo můžete použít [příkaz AZ Account Management-Group list](/cli/azure/account/management-group#az-account-management-group-list).
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
@@ -205,7 +205,7 @@ Následující příklad odebere roli *Čtenář* z *týmové skupiny Ann Mack* 
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-Následující příklad odebere roli *Čtenář fakturace* z uživatele *Alain\@example.com* v oboru skupiny pro správu. ID skupiny pro správu můžete získat pomocí ovládacího panelu [AZ Account Management-Group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list).
+Následující příklad odebere roli *Čtenář fakturace* z uživatele *Alain\@example.com* v oboru skupiny pro správu. ID skupiny pro správu můžete získat pomocí ovládacího panelu [AZ Account Management-Group list](/cli/azure/account/management-group#az-account-management-group-list).
 
 ```azurecli
 az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group

@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 076708cdc32b0547fe34f714798b4a7a963296fe
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 038e53251bd81552fd3379f2d7645570fbcda4ef
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462628"
+ms.locfileid: "77471342"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -66,7 +66,7 @@ Následující tabulka uvádí, které typy účtů úložiště podporují ZRS,
 |    Úložiště    | Evropa – západ<br /> USA – východ    |    Jenom soubory Azure    |
 
 <sup>1</sup> úroveň archivu se v současnosti nepodporuje u účtů ZRS.<br />
-<sup>2</sup> disky Azure pro virtuální počítače, včetně spravovaných i nespravovaných disků, podporují jenom LRS. Nepodporují ZRS ani GZRS. Další informace o službě Managed disks najdete v tématu [ceny za službu Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks).
+<sup>2</sup> disky Azure pro virtuální počítače, včetně spravovaných i nespravovaných disků, podporují jenom LRS. Nepodporují ZRS ani GZRS. Další informace o službě Managed disks najdete v tématu [ceny za službu Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 Informace o tom, které oblasti podporují ZRS, najdete v článku **Podpora služeb podle oblasti** v tématu [co je zóny dostupnosti Azure?](../../availability-zones/az-overview.md).
 

@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7cc8454ca8dc8d6313e1cf353292adb47b15ef47
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 11f3aec10aed0dc8bc0c9831d563dca2b0c1a6fb
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898716"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468329"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace Azure
 
@@ -24,10 +24,6 @@ Tento ukázkový skript vytvoří novou instanci konfigurace aplikace Azure v no
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
-
-Nejdřív musíte nainstalovat rozšíření rozhraní příkazového řádku Azure App Configuration, a to spuštěním následujícího příkazu:
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -68,11 +64,11 @@ Poznamenejte si vygenerovaný název pro novou skupinu prostředků. Tento náze
 
 Tento skript používá následující příkazy k vytvoření nové skupiny prostředků a úložiště konfigurace aplikace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [AZ appconfig Create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Vytvoří prostředek úložiště konfigurace aplikace. |
-| [AZ appconfig Credential list](/cli/azure/ext/appconfig/appconfig/credential?view=azure-cli-latest) | Vypíše přístupové klíče pro úložiště konfigurace aplikace. |
+| [AZ appconfig Create](/cli/azure/appconfig#az-appconfig-create) | Vytvoří prostředek úložiště konfigurace aplikace. |
+| [AZ appconfig Credential list](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Vypíše přístupové klíče pro úložiště konfigurace aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 

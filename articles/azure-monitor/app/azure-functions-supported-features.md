@@ -8,20 +8,22 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5688bd92e63016e195726488bd9ff9ed039c5795
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ce8fcc827afdf0102a459f2c6b58db45eff72fa0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928404"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467383"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Application Insights pro podporované funkce Azure Functions
 
 Azure Functions nabízí [integrovanou integraci](../../azure-functions/functions-monitoring.md) s Application Insights, která je k dispozici prostřednictvím rozhraní ILogger. Níže je uveden seznam aktuálně podporovaných funkcí. Projděte si Azure Functions příručka [Začínáme](../../azure-functions/functions-monitoring.md#enable-application-insights-integration).
 
+Další informace o běhových verzích najdete [zde](../../azure-functions/functions-versions.md).
+
 ## <a name="supported-features"></a>Podporované funkce
 
-| Funkce Azure                       | V1                | V2 (Ignite 2018)  | 
+| Azure Functions                       | V1                | V2 & V3   | 
 |-----------------------------------    |---------------    |------------------ |
 | **Sada Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 

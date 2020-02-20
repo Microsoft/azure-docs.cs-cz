@@ -1,21 +1,20 @@
 ---
 title: Nastavení integrace AWS se službou Azure Cost Management
 description: Tento článek vás provede nastavením a konfigurací integrace sestavy nákladů a využití AWS se službou Azure Cost Management.
-services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/13/2019
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: ormaoz
+ms.reviewer: matrive
 ms.custom: ''
-ms.openlocfilehash: 5dbc6ca836c8d1c8b717fd4bf23eab5aa360a288
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 90d75383c1bd7c67b3feeb77fe2284d7b4e0cdf9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75988692"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199989"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>Nastavení a konfigurace integrace sestavy nákladů a využití AWS
 

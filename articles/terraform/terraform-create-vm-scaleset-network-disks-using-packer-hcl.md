@@ -3,12 +3,12 @@ title: Kurz – vytvoření sady škálování virtuálních počítačů Azure 
 description: Použijte Terraform ke konfiguraci a správě verzí škálovací sady virtuálních počítačů Azure z vlastní image vygenerované v Packeru (s virtuální sítí a spravovanými připojenými disky).
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 9d149a28f82100715035f435de56ff134ca685f5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92a8221d625f8b6b73343f74b85fdfcf5e578b23
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159284"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472196"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>Kurz: vytvoření sady škálování virtuálních počítačů Azure z vlastní image balíčku pomocí Terraformu
 
@@ -28,7 +28,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Terraformu**: [nainstalujte terraformu a nakonfigurujte přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terraformu**: [nainstalujte terraformu a nakonfigurujte přístup k Azure](terraform-install-configure.md).
 - **Pár klíčů ssh**: [vytvořte pár klíčů ssh](/azure/virtual-machines/linux/mac-create-ssh-keys).
 - **Balírna**: [nainstalujte balíček](https://www.packer.io/docs/install/index.html).
 
@@ -329,7 +329,7 @@ terraform apply
 
 Obsah skupiny prostředků vypadá jako na následujícím obrázku:
 
-![Skupina prostředků Terraformu škálovací sady virtuálních počítačů](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step6-apply.png)
+![Skupina prostředků škálovací sady virtuálních počítačů Terraform](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step6-apply.png)
 
 Otevřete prohlížeč a připojte se k plně kvalifikovanému názvu domény vrácenému příkazem. 
 
@@ -434,7 +434,7 @@ terraform apply
 
 Po dokončení nasazení bude obsah skupiny prostředků vypadat jako na následujícím obrázku:
 
-![Skupina prostředků Terraformu škálovací sady virtuálních počítačů](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-create-vmss-step8.png)
+![Skupina prostředků škálovací sady virtuálních počítačů Terraform](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-create-vmss-step8.png)
 
 > [!NOTE]
 > Přihlášení pomocí hesla je na JumpBox a sadě škálování virtuálního počítače, kterou jste nasadili, zakázané. Přihlaste se pomocí SSH pro přístup k virtuálním počítačům.

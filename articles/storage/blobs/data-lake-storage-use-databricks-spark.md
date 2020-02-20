@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: e26ae4d384b1718b1cdb12abbda82aad22afde4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c18c39ced40505a87af8907a65aa16aae978838
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462575"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471869"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Kurz: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -49,7 +49,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
   : heavy_check_mark: při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a heslo do textového souboru. Budete je potřebovat brzy.
 
-### <a name="download-the-flight-data"></a>Stažení údajů o letech
+### <a name="download-the-flight-data"></a>Stažení letových údajů
 
 V tomto kurzu se k předvedení operace ETL používá letová data z statistiky předsednictví. Tato data musíte stáhnout, abyste mohli kurz dokončit.
 
@@ -75,8 +75,8 @@ V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
     |---------|---------|
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.  |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
-    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../azure-resource-manager/management/overview.md). |
-    |**Umístění**     | Vyberte **Západní USA 2**. Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).       |
+    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který uchovává související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../azure-resource-manager/management/overview.md). |
+    |**Umístění**     | Vyberte **USA – západ 2**. Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).       |
     |**Cenová úroveň**     |  Vyberte **Standard**.     |
 
     ![Vytvoření pracovního prostoru Azure Databricks](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Vytvoření služby Azure Databricks")
@@ -105,7 +105,7 @@ V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
 
 4. Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
-## <a name="ingest-data"></a>Ingestace dat
+## <a name="ingest-data"></a>Příjem dat
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Zkopírování zdrojových dat do účtu úložiště
 
@@ -129,7 +129,7 @@ Pomocí AzCopy zkopírujte data ze souboru *. csv* do účtu Data Lake Storage G
 
    * Nahraďte hodnotu zástupného symbolu `<storage-account-name>` názvem svého účtu úložiště.
 
-   * Zástupný symbol `<container-name>` nahraďte libovolným názvem, který chcete vašemu kontejneru přidělit.
+   * Zástupný symbol `<container-name>` nahraďte názvem kontejneru v účtu úložiště.
 
 ## <a name="create-a-container-and-mount-it"></a>Vytvoření kontejneru a jeho připojení
 
@@ -143,7 +143,7 @@ V této části vytvoříte kontejner a složku ve svém účtu úložiště.
 
 3. V dialogovém okně **Vytvořit poznámkový blok** zadejte název poznámkového bloku. Jako jazyk vyberte **Python** a pak vyberte cluster Spark, který jste vytvořili dříve.
 
-4. Vyberte **Vytvořit**.
+4. Vyberte **Create** (Vytvořit).
 
 5. Zkopírujte následující blok kódu a vložte ho do první buňky, ale tento kód ještě nespouštějte.
 
@@ -161,20 +161,7 @@ V této části vytvoříte kontejner a složku ve svém účtu úložiště.
     extra_configs = configs)
     ```
 
-18. V tomto bloku kódu nahraďte `appId`, `password`, `tenant`a `storage-account-name` hodnoty zástupných symbolů v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte hodnotu zástupného symbolu `container-name` názvem, který jste zadali do kontejneru v předchozím kroku.
-
-Pomocí těchto hodnot nahraďte uvedené zástupné symboly.
-
-   * `appId`a `password` jsou z aplikace, kterou jste zaregistrovali se službou Active Directory, v rámci vytváření instančního objektu.
-
-   * `tenant-id` je z vašeho předplatného.
-
-   * `storage-account-name` je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
-
-   * Zástupný symbol `container-name` nahraďte libovolným názvem, který chcete vašemu kontejneru přidělit.
-
-   > [!NOTE]
-   > V nastavení produkčního prostředí zvažte uložení hesla v Azure Databricks. Pak místo hesla přidejte klíč vyhledávání do bloku kódu. Po dokončení tohoto rychlého startu se můžete podívat na příklady tohoto přístupu v článku věnovaném [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) na webu Azure Databricks.
+18. V tomto bloku kódu nahraďte `appId`, `password`, `tenant`a `storage-account-name` hodnoty zástupných symbolů v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte hodnotu zástupného symbolu `container-name` názvem kontejneru.
 
 19. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
 
@@ -196,7 +183,7 @@ flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
 print("Done")
 ```
 
-## <a name="explore-data"></a>Prozkoumání dat
+## <a name="explore-data"></a>Zkoumání dat
 
 Do nové buňky vložte následující kód, který načte seznam souborů CSV odeslaných prostřednictvím AzCopy.
 

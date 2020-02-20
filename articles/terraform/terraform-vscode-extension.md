@@ -3,12 +3,12 @@ title: Kurz – konfigurace rozšíření Visual Studio Code služby Azure Terra
 description: Zjistěte, jak nainstalovat a používat rozšíření Azure Terraform editoru Visual Studio Code.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 7f2f15c3a45480b8922f34e191fb965d5e83d9fa
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: fcb47024fd26f061ca4475b01d00f1ae13303b61
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159231"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472277"
 ---
 # <a name="tutorial-configure-the-azure-terraform-visual-studio-code-extension"></a>Kurz: Konfigurace rozšíření Azure Terraformu Visual Studio Code
 
@@ -23,7 +23,7 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="prerequisites"></a>Požadavky
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Terraform**: [Nainstalujte si a nakonfigurujte Terraform](/azure/virtual-machines/linux/terraform-install-configure).
+- **Terraform**: [Nainstalujte si a nakonfigurujte Terraform](terraform-install-configure.md).
 
 - **Visual Studio Code**: Nainstalujte vhodnou verzi editoru [Visual Studio Code](https://code.visualstudio.com/download) pro vaše prostředí.
 
@@ -44,7 +44,7 @@ Postupujte podle pokynů na webové stránce společnosti HashiCorp pro [instala
 >[!Tip]
 >Je potřeba, abyste postupovali podle pokynů ohledně nastavení systémové proměnné PATH.
 
-### <a name="install-nodejs"></a>Instalace Node.js
+### <a name="install-nodejs"></a>Instalovat Node.js
 
 Abyste mohli Terraform používat ve službě Cloud Shell, musíte si [nainstalovat Node.js](https://nodejs.org/) ve verzi 6.0 nebo novější.
 
@@ -121,7 +121,7 @@ V tomto cvičení vytvoříte a spustíte základní konfigurační soubor Terra
 
     ![Uložení souboru main.tf](media/terraform-vscode-extension/tf-save-as-main.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 1. Z řádku nabídek vyberte **File > Open Folder** (Soubor > Otevřít složku). Přejděte do adresáře s novou složkou, kterou jste vytvořili, a vyberte ji.
 
 ### <a name="run-terraform-init-command"></a>Spuštění příkazu terraform *init*
@@ -252,7 +252,7 @@ V tomto cvičení se dozvíte, jak načíst modul *compute* nástroje Terraform 
 
     ![Složka terraform-azurerm-compute](media/terraform-vscode-extension/tf-terraform-azurerm-compute-folder.png)
 
-### <a name="initialize-terraform"></a>Inicializace Terraformu
+### <a name="initialize-terraform"></a>Inicializovat Terraform
 
 Než budete moct začít používat příkazy nástroje Terraform z editoru Visual Studio Code, musíte si stáhnout moduly plug-in pro dva poskytovatele Azure: random a azurerm.
 

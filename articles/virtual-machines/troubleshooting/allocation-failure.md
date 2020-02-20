@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s chybami přidělení virtuálního počítače Azure | Dokumentace Microsoftu
-description: Řešení potíží s přidělováním při vytváření, restartování nebo změně velikosti virtuálního počítače v Azure
+title: Řešení potíží s chybami alokace virtuálních počítačů Azure | Microsoft Docs
+description: Řešení potíží s přidělením při vytváření, restartování nebo změně velikosti virtuálního počítače v Azure
 services: virtual-machines
 documentationcenter: ''
 author: JiangChen79
@@ -12,96 +12,98 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 72fbdbcfcd94dd41a67bb81314802dd7314ae463
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9bb228725d5ad8e3583c73be09c582478f74a1e8
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505792"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471886"
 ---
-# <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Řešení potíží s přidělováním při vytváření, restartování nebo změna velikosti virtuálních počítačů v Azure
+# <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Řešení potíží s přidělením při vytváření, restartování nebo změně velikosti virtuálních počítačů v Azure
 
-Při vytvoření virtuálního počítače (VM), restartování zastaveno (přidělení zrušeno) virtuálních počítačů nebo změně velikosti virtuálního počítače, platforma Microsoft Azure přiřadí výpočetní prostředky, které vaše předplatné. Budeme průběžně společností investuje do další infrastrukturu a funkce, abyste měli jistotu, že vždy máme všechny typy virtuálních počítačů jsou dostupné pro podporu poptávky zákazníků. Však může občas docházet k selhání přidělení prostředků z důvodu nebývalému nárůstu poptávky pro služby Azure v různých oblastech. Tento problém může vzniknout při pokusu o vytvoření nebo spuštění virtuálních počítačů v oblasti, zatímco se virtuální počítače se zobrazují následující kód chyby a zprávy:
+Když vytvoříte virtuální počítač (VM), restartujete zastavené (navrácené) virtuální počítače nebo změníte velikost virtuálního počítače, Microsoft Azure přidělíte výpočetní prostředky vašemu předplatnému. Průběžně se investuje do další infrastruktury a funkcí, abyste měli jistotu, že všechny typy virtuálních počítačů jsou dostupné pro podporu zákaznických požadavků. Občas ale může dojít k selhání přidělení prostředků z důvodu nebývalého nárůstu poptávky pro služby Azure v určitých oblastech. K tomuto problému může dojít, když se pokusíte vytvořit nebo spustit virtuální počítače v oblasti, ale virtuální počítače zobrazí následující kód chyby a zprávu:
 
-**Kód chyby:** : AllocationFailed nebo ZonalAllocationFailed
+**Kód chyby**: AllocationFailed nebo ZonalAllocationFailed
 
-**Chybová zpráva**: "Přidělení se nezdařilo. V této oblasti nemáme pro požadovanou velikost virtuálního počítače dostatečnou kapacitu. Další informace o pravděpodobnost, že úspěch přidělení na protokol https:\//aka.ms/allocation-guidance "
+**Chybová zpráva**: alokace se nezdařila. Pro požadovanou velikost virtuálního počítače v této oblasti nepotřebujeme dostatečnou kapacitu. Přečtěte si další informace o vylepšení pravděpodobnosti úspěšného přidělení na https:\//aka.ms/allocation-guidance.
 
-Tento článek popisuje některé běžné chyby v přidělení příčiny a navrhne mezi možné nápravy.
+Tento článek vysvětluje příčiny některých běžných chyb přidělení a navrhuje možné nápravy.
 
-Pokud v tomto článku se řešit potíže s Azure, přejděte [fóra Azure na webu MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Na těchto fór nebo položky můžete publikovat svůj problém @AzureSupport na Twitteru. Také, můžete výběrem podporu získat na souboru žádost o podporu Azure [podpory Azure](https://azure.microsoft.com/support/options/) lokality.
+Pokud váš problém s Azure není v tomto článku řešen, navštivte [fóra Azure na webu MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Svůj problém můžete vystavit na těchto fórech nebo @AzureSupport na Twitteru. Žádost o podporu Azure si také můžete vyžádat výběrem možnosti získat podporu na webu [podpory Azure](https://azure.microsoft.com/support/options/) .
 
-Dokud upřednostňovaný typ virtuálního počítače není k dispozici v preferované oblasti, doporučujeme zákazníkům, kteří dojde k problémům s nasazením vzít v úvahu pokyny v následující tabulce jako dočasné řešení. 
+Dokud nebude upřednostňovaný typ virtuálního počítače dostupný v upřednostňované oblasti, doporučujeme zákazníkům, kteří narazí na problémy s nasazením, vzít v úvahu pokyny v následující tabulce jako dočasné alternativní řešení. 
 
-Identifikace scénáře, který nejlépe odpovídá vašemu případu a potom opakujte požadavek na přidělení pomocí odpovídající navrhovaná alternativní řešení ke zvýšení pravděpodobnosti rozdělení úspěch. Alternativně můžete vždy opakovat později. Je to proto dostatek prostředků byl pravděpodobně uvolněn v clusteru, oblast nebo zóně tak, aby vyhovovaly vaší žádosti. 
+Identifikujte scénář, který nejlépe odpovídá vašemu případu, a potom opakujte požadavek na přidělení pomocí odpovídajícího navrženého alternativního řešení a zvyšte pravděpodobnost úspěchu přidělení. Případně se můžete kdykoli pokusit později. Důvodem je to, že v clusteru, oblasti nebo zóně byly uvolněny dostatečné prostředky, které budou vyhovovat vaší žádosti. 
 
 
 ## <a name="resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>Změna velikosti virtuálního počítače nebo přidání virtuálních počítačů do existující skupiny dostupnosti
 
 ### <a name="cause"></a>Příčina
 
-Žádost o změně velikosti virtuálního počítače nebo přidání virtuálního počítače do existující skupiny dostupnosti musí se v původním clusteru, který je hostitelem existující skupině dostupnosti nastavena. Požadovaná velikost virtuálního počítače se podporuje v clusteru, ale cluster aktuálně nemá dostatečnou kapacitu. 
+Požadavek na změnu velikosti virtuálního počítače nebo přidání virtuálního počítače do existující skupiny dostupnosti se musí vyzkoušet v původním clusteru, který hostuje existující skupinu dostupnosti. Požadovaná velikost virtuálního počítače je clusterem podporovaná, ale cluster teď nemusí mít dostatečnou kapacitu. 
 
-### <a name="workaround"></a>Alternativní řešení:
+### <a name="workaround"></a>Alternativní řešení
 
-Pokud virtuální počítač může být součástí do jiné skupiny dostupnosti, vytvoření virtuálního počítače v různých dostupnosti (ve stejné oblasti). Tento nový virtuální počítač je potom možné přidat do stejné virtuální síti.
+Pokud virtuální počítač může být součástí jiné skupiny dostupnosti, vytvořte virtuální počítač v jiné skupině dostupnosti (ve stejné oblasti). Tento nový virtuální počítač se pak dá přidat do stejné virtuální sítě.
 
-Zastavit (uvolníte) všechny virtuální počítače ve stejné skupině dostupnosti nastavena a pak restartujte každé z nich.
-Zastavení: Klikněte na skupiny prostředků > [vaší skupiny prostředků] > prostředky > [dostupnosti] > virtuální počítače > [váš virtuální počítač] > Zastavit.
-Po zastavení všech virtuálních počítačů, vyberte první virtuální počítač a pak klikněte na spustit.
-Tento krok zajistí, že je spuštěn nový pokus o přidělení a že nového clusteru lze vybrat, který má dostatečnou kapacitu.
+Zastavte (zrušte přidělení) všem virtuálním počítačům ve stejné skupině dostupnosti a pak každou z nich spusťte znovu.
+Zastavení: klikněte na skupiny prostředků > [vaše skupina prostředků] > prostředky > [vaše skupina dostupnosti] > Virtual Machines > [váš virtuální počítač] > zastavit.
+Po zastavení všech virtuálních počítačů vyberte první virtuální počítač a pak klikněte na spustit.
+Tento krok zajistí, že se spustí nový pokus o přidělení a že se dá vybrat nový cluster s dostatečnou kapacitou.
 
 ## <a name="restart-partially-stopped-deallocated-vms"></a>Restartování částečně zastavených (uvolněných) virtuálních počítačů
 
 ### <a name="cause"></a>Příčina
 
-Částečné zrušení přidělení znamená, že zastaveno (přidělení zrušeno) jeden nebo více, ale ne všechny virtuální počítače ve skupině dostupnosti nastavena. Pokud můžete zrušit přidělení virtuálního počítače, jsou vydávány přidružené prostředky. Restartování virtuálních počítačů do částečně uvolněno dostupnosti je stejné jako přidávání virtuálních počítačů do stávající sady dostupnosti. Proto musí být požadavek na přidělení pokusili v původním clusteru, hostitelích, které existující skupiny dostupnosti, které nemusí mít dostatečnou kapacitu.
+Částečné navracení znamená, že jste zastavili (oddělili) jednu nebo více virtuálních počítačů ve skupině dostupnosti. Po zrušení přidělení virtuálního počítače se přidávají přidružené prostředky. Restartování virtuálních počítačů v částečně oddělované skupině dostupnosti je stejné jako přidání virtuálních počítačů do existující skupiny dostupnosti. Proto musí být požadavek na přidělení proveden v původním clusteru, který je hostitelem stávající skupiny dostupnosti, která pravděpodobně nemá dostatečnou kapacitu.
 
-### <a name="workaround"></a>Alternativní řešení:
+### <a name="workaround"></a>Alternativní řešení
 
-Zastavit (uvolníte) všechny virtuální počítače ve stejné skupině dostupnosti nastavena a pak restartujte každé z nich.
-Zastavení: Klikněte na skupiny prostředků > [vaší skupiny prostředků] > prostředky > [dostupnosti] > virtuální počítače > [váš virtuální počítač] > Zastavit.
-Po zastavení všech virtuálních počítačů, vyberte první virtuální počítač a pak klikněte na spustit.
-Tím zajistíte, že je spuštěn nový pokus o přidělení a že nového clusteru lze vybrat, který má dostatečnou kapacitu.
+Zastavte (zrušte přidělení) všem virtuálním počítačům ve stejné skupině dostupnosti a pak každou z nich spusťte znovu.
+Zastavení: klikněte na skupiny prostředků > [vaše skupina prostředků] > prostředky > [vaše skupina dostupnosti] > Virtual Machines > [váš virtuální počítač] > zastavit.
+Po zastavení všech virtuálních počítačů vyberte první virtuální počítač a pak klikněte na spustit.
+Tím se zajistí, že se spustí nový pokus o přidělení a že se dá vybrat nový cluster s dostatečnou kapacitou.
 
 ## <a name="restart-fully-stopped-deallocated-vms"></a>Restartování úplně zastavených (uvolněných) virtuálních počítačů
 
 ### <a name="cause"></a>Příčina
 
-Úplné zrušení přidělení znamená, že jste zastavili (přidělení zrušeno) všech virtuálních počítačů ve skupině dostupnosti. Požadavek na přidělení k restartování těchto virtuálních počítačů se zaměří na všechny clustery, které podporují požadovaná velikost v oblastech nebo zónách. Změňte váš požadavek na přidělení podle doporučení v tomto článku a opakujte žádost o zvýšit šanci na úspěch přidělení. 
+Úplné navracení znamená, že jste zastavili (oddělili) všechny virtuální počítače ve skupině dostupnosti. Požadavek na přidělení k restartování těchto virtuálních počítačů bude mít za cíl všechny clustery, které podporují požadovanou velikost v rámci oblasti nebo zóny. Změňte svou žádost o přidělení podle návrhů v tomto článku a opakujte požadavek na zvýšení pravděpodobnosti úspěšného přidělení. 
 
-### <a name="workaround"></a>Alternativní řešení:
+### <a name="workaround"></a>Alternativní řešení
 
-Pokud používáte starší řadu virtuálních počítačů nebo velikostí, jako je například Dv1, DSv1, Av1, D15v2 nebo DS15v2, zvažte přechod na novější verze. Podívejte se na tato doporučení pro určité velikosti virtuálních počítačů.
-Pokud nemáte možnost použít jinou velikost virtuálního počítače, zkuste nasazení provést do jiné oblasti v rámci stejné zeměpisné oblasti. Další informace o dostupných velikostech virtuálních počítačů v jednotlivých oblastech najdete na https://aka.ms/azure-regions
+Pokud používáte starší řady nebo velikosti virtuálních počítačů, například Dv1, DSv1, Av1, D15v2 nebo DS15v2, zvažte přechod na novější verze. V těchto doporučeních najdete konkrétní velikosti virtuálních počítačů.
+Pokud nemáte možnost použít jinou velikost virtuálního počítače, zkuste nasadit do jiné oblasti v rámci stejného geografického umístění. Další informace o dostupných velikostech virtuálních počítačů v jednotlivých oblastech na https://aka.ms/azure-regions
 
-Pokud používáte zóny dostupnosti, zkuste jiné zóny v rámci oblasti, která může mít k dispozici kapacitu pro požadovanou velikost virtuálního počítače.
+Pokud používáte zóny dostupnosti, zkuste jinou zónu v rámci oblasti, která může mít dostupnou kapacitu pro požadovanou velikost virtuálního počítače.
 
-Pokud je váš požadavek na přidělení velký (více než 500 jádra), najdete v následujících částech k rozdělení požadavek do menších nasazení.
+Pokud je vaše žádost o přidělení velká (více než 500 jader), přečtěte si pokyny v následujících částech, kde můžete žádost rozdělit do menších nasazení.
+
+Zkuste [virtuální počítač znovu nasadit](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows). Po opětovném nasazení se virtuální počítač přidělí k novému clusteru v rámci dané oblasti.
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>Selhání přidělení pro starší velikosti virtuálních počítačů (Av1, Dv1, DSv1, D15v2, DS15v2 atd.)
 
-S rozšiřováním infrastrukturu Azure, můžeme nasadit hardwaru novější generace, která má účelem je podporovat nejnovější typy virtuálních počítačů. Některé starší virtuální počítače řady nejdou spustit na naší infrastruktuře nejnovější generace. Z tohoto důvodu zákazníkům občas setkat s přidělováním pro těchto zastaralých skladových položek. K tomuto problému vyhnout, doporučujeme zákazníkům, kteří používají starší verzi řady virtuálních počítačů do zvažte přesunutí na ekvivalentní novější virtuální počítače za následující doporučení: Tyto virtuální počítače jsou optimalizované pro nejnovější hardware a umožňuje využívat lepší ceny a výkonu. 
+Když rozšíříme infrastrukturu Azure, nasadíme novější hardware, který je navržený tak, aby podporoval nejnovější typy virtuálních počítačů. Některé virtuální počítače starší řady neběží na naší nejnovější infrastruktuře generování. Z tohoto důvodu můžou zákazníci občas zaznamenat selhání přidělení těchto starších skladových položek. Pokud se tomuto problému chcete vyhnout, doporučujeme zákazníkům, kteří používají starší verze virtuálních počítačů, zvážit přesun na ekvivalentní novější virtuální počítače na základě následujících doporučení: Tyto virtuální počítače jsou optimalizované pro nejnovější hardware a umožní vám využít lepší výhody. ceny a výkon. 
 
-|Starší verze řady/velikost virtuálního počítače|Doporučené novější řady/velikost virtuálního počítače|Další informace|
+|Starší verze virtuálního počítače – řada/velikost|Doporučený novější virtuální počítač-řada/velikost|Další informace|
 |----------------------|----------------------------|--------------------|
-|Av1-series|[Av2-series](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 nebo DSv1-series (D1 až D5)|[Dv3 nebo DSv3-series](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 nebo DSv1-series (D11 až D14)|[Ev3 nebo ESv3-series](../windows/sizes-memory.md#ev3-series)|
-|D15v2 nebo DS15v2|Pokud používáte model nasazení Správce theResource abyste mohli využívat větší velikosti virtuálních počítačů, zvažte přesunutí D16v3/DS16v3 nebo D32v3/DS32v3. Ty jsou navržené ke spuštění na nejnovější generace hardwaru. Pokud používáte model nasazení Resource Manageru zajistit, aby že vaše instance virtuálního počítače je izolovaná na hardware vyhrazený pro jediného zákazníka, zvažte přesunutí na nový izolovaný velikosti virtuálních počítačů, E64i_v3 nebo E64is_v3, které jsou navrženy pro spouštění na nejnovější generace hardwaru. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
+|Av1-Series|[Av2-Series](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
+|Dv1 nebo DSv1-Series (D1 až D5)|[Dv3 nebo DSv3 – Series](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 nebo DSv1-Series (D11 pro D14)|[Ev3 nebo ESv3 – Series](../windows/sizes-memory.md#ev3-series)|
+|D15v2 nebo DS15v2|Pokud používáte model nasazení theResource Manager, abyste mohli využívat větší velikosti virtuálních počítačů, zvažte přechod na D16v3/DS16v3 nebo D32v3/DS32v3. Ty jsou navržené tak, aby běžely na nejnovějším generaci hardwaru. Pokud používáte model nasazení Správce prostředků, abyste se ujistili, že je instance virtuálního počítače izolovaná na hardwaru vyhrazeném pro jediného zákazníka, zvažte přechod na nové izolované velikosti virtuálních počítačů, E64i_v3 nebo E64is_v3, které jsou navržené tak, aby běžely na nejnovějším generaci hardwaru. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
-## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Selhání přidělení pro velká nasazení (více než 500 jader)
+## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Selhání přidělení pro velká nasazení (víc než 500 jader)
 
-Snížit počet instancí požadovanou velikost virtuálního počítače a pak zkuste operaci nasazení. Kromě toho pro rozsáhlejší nasazení, můžete chtít vyhodnotit [škálovací sady virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machine-scale-sets/). Počet instancí virtuálních počítačů můžete automaticky zvýšit nebo snížit v reakci na požadavky nebo definovaný plán, a budete mít větší pravděpodobnost úspěchu přidělení, protože nasazení lze distribuovat mezi více clusterů. 
+Snižte počet instancí požadované velikosti virtuálního počítače a pak zkuste operaci nasazení zopakovat. U větších nasazení můžete navíc chtít zhodnotit službu [Azure Virtual Machine Scale Sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/). Počet instancí virtuálních počítačů se může automaticky zvětšit nebo zmenšit v reakci na poptávku nebo podle definovaného plánu a máte větší šanci na úspěšnost přidělení, protože nasazení je možné rozložit mezi více clusterů. 
 
 ## <a name="background-information"></a>Základní informace
-### <a name="how-allocation-works"></a>Princip přidělování
-Servery v datových centrech Azure jsou rozdělené do clusterů. Za normálních okolností se požadavek na přidělení zkouší v několika clusterech, ale je možné, že určitá omezení požadavku na přidělení donutí platformu Azure, aby tento požadavek vyzkoušela jenom v jednom clusteru. V tomto článku budeme odkazovat na tuto jako "připnout do clusteru." Diagram 1 níže ukazuje případ normální rozdělení, dojde k pokusu o více clusterů. Obrázek 2 znázorňuje velikost písmen přidělení, která má připnuté na clusteru 2, protože se jedná, kde se hostuje existující cloudové služby CS_1 nebo dostupnost sady.
-![Diagram přidělení](./media/virtual-machines-common-allocation-failure/Allocation1.png)
+### <a name="how-allocation-works"></a>Jak přidělování funguje
+Servery v datových centrech Azure jsou rozdělené do clusterů. Za normálních okolností se požadavek na přidělení zkouší v několika clusterech, ale je možné, že určitá omezení požadavku na přidělení donutí platformu Azure, aby tento požadavek vyzkoušela jenom v jednom clusteru. V tomto článku odkazujeme na to, že je připnuté na cluster. Obrázek 1 níže znázorňuje případ normálního přidělení, které se pokouší o více clusterů. Diagram 2 znázorňuje případ přidělení připnuté ke clusteru 2, protože je to místo, kde je hostovaná CS_1 nebo skupina dostupnosti stávající cloudová služba.
+![](./media/virtual-machines-common-allocation-failure/Allocation1.png) diagramu přidělení
 
 ### <a name="why-allocation-failures-happen"></a>Proč dochází k chybám přidělení
-Pokud požadavek na přidělení je připnutá na cluster, je vyšší riziko selhání Získejte zdarma zdroje informací, protože fond k dispozici zdrojů je menší. Kromě toho pokud požadavek na přidělení je připnutá na cluster, ale tento cluster nepodporuje typ prostředku, který jste požadovali, vaši žádost se nezdaří i v případě, že cluster má volné prostředky. Následující Diagram 3 ilustruje tento případ, ve kterém se připojené přidělení nezdaří, protože pouze Release candidate clusteru nemá žádné volné prostředky. Obrázek 4 ukazuje případ, kde připojené přidělení se nezdaří, protože pouze Release candidate cluster nepodporuje požadovanou velikost virtuálního počítače, i v případě, že cluster má volné prostředky.
+Když je požadavek na přidělení připnutý ke clusteru, existuje větší šance na selhání při hledání volných prostředků, protože dostupný fond zdrojů je menší. Pokud je váš požadavek na přidělení připnutý ke clusteru, ale požadovaný typ prostředku není tímto clusterem podporován, požadavek selže, i když má cluster bezplatné prostředky. Následující diagram 3 znázorňuje případ, kdy připnuté přidělení selhává, protože jediný cluster kandidátů nemá volné prostředky. Diagram 4 znázorňuje případ, kdy připnuté přidělení selhává, protože jediný kandidát clusteru nepodporuje požadovanou velikost virtuálního počítače, i když má cluster bezplatné prostředky.
 
-![Došlo k chybě přidělení připnutých](./media/virtual-machines-common-allocation-failure/Allocation2.png)
+![Připnuté selhání přidělení](./media/virtual-machines-common-allocation-failure/Allocation2.png)
 
 

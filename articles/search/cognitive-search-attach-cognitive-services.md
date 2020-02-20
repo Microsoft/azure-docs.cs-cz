@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 7ec18cab74d683e4547843f965d22026e7ba22aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 254c912114e3f1c7a495f389bc6a6416cbde7e11
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461141"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472447"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Připojení prostředku Cognitive Services k dovednosti v Azure Kognitivní hledání 
 
@@ -48,7 +48,7 @@ Neexistuje žádný způsob, jak přesunout službu mezi oblastmi. Pokud se zobr
 
 Můžete použít omezené a bezplatné možnosti zpracování pro dokončení kurzu obohacení AI a rychlé cvičení.
 
-Prostředky Free (omezená rozšíření) jsou omezené na 20 dokumentů za den v rámci předplatného.
+Prostředky Free (omezené obohacení) jsou na jeden indexer omezené na 20 dokumentů za den. Indexer můžete odstranit a znovu vytvořit, aby se obnovila hodnota čítače.
 
 1. Otevřete Průvodce importem dat:
 

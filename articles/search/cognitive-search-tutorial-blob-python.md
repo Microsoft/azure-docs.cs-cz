@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: c7c4da97101ae1277474e62466d78ffbc66b1ce0
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: d9ae7f4b7dd8b0f45ae02bd2a90aca78127fd3d3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563271"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472396"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Kurz: vytvoření kanálu pro obohacení AI pomocí REST a Pythonu
 
@@ -31,7 +31,7 @@ V tomto kurzu pomocí Pythonu provedete následující úlohy:
 
 Výstupem je fulltextový index s možností prohledávání v Azure Kognitivní hledání. Index můžete rozšířit pomocí dalších standardních funkcí, jako jsou [synonyma](search-synonyms.md), [profily vyhodnocování](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index), [analyzátory](search-analyzers.md) a [filtry](search-filters.md). 
 
-Tento kurz běží na bezplatné službě, ale počet bezplatných transakcí je omezený na 20 dokumentů za den. Pokud chcete spustit tento kurz ve stejný den více než jednou, použijte menší sadu souborů, abyste se mohli přizpůsobit více spuštění.
+Tento kurz běží na bezplatné službě, ale počet bezplatných transakcí je omezený na 20 dokumentů za den. Pokud chcete tento kurz spustit více než jednou za jeden den, odstraňte indexer a resetujte čítač.
 
 > [!NOTE]
 > Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
@@ -169,7 +169,7 @@ V tomto kroku definujete sadu kroků obohacení, které se použijí na vaše da
 
 + [Extrakce klíčových frází](cognitive-search-skill-keyphrases.md), která získává hlavní klíčové fráze 
 
-### <a name="python-script"></a>Skript jazyka Python
+### <a name="python-script"></a>Skript Pythonu
 Spuštěním následujícího skriptu vytvořte dovednosti s názvem `cogsrch-py-skillset`.
 
 ```python
@@ -276,7 +276,7 @@ V této části definujete schéma indexu zadáním polí, která mají být zah
 
 V tomto cvičení použijeme následující pole a jejich typy:
 
-| Názvy polí: | id         | content   | languageCode | keyPhrases         | organizations     |
+| Názvy polí: | id         | content   | languageCode | keyPhrases         | organizace     |
 |--------------|----------|-------|----------|--------------------|-------------------|
 | Typy polí: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 

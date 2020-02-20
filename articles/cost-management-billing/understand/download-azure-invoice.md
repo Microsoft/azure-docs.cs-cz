@@ -3,21 +3,18 @@ title: Zobrazit a stáhnout fakturu Microsoft Azure
 description: Vysvětluje, jak zobrazit a stáhnout fakturu za Microsoft Azure.
 keywords: billing invoice, invoice download, azure invoice, azure usage
 author: bandersmsft
-manager: jureid
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0f413d38565202d379c81570b5cb169c2ed8effe
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 691d27acebf238e84265870e8c01976bfc2412b2
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75987821"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200261"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Zobrazit a stáhnout fakturu Microsoft Azure
 
@@ -87,7 +84,7 @@ Pokud se chcete odhlásit ze zasílání faktur e-mailem, proveďte výše uvede
 <!-- Does following section apply to MPA too? -->
 ## <a name="get-your-microsoft-customer-agreement-invoices-in-email"></a>Zasílání faktur pro smlouvu se zákazníkem Microsoftu e-mailem
 
-Pokud máte fakturační účet na základě smlouvy se zákazníkem Microsoftu, můžete se přihlásit k zasílání faktur e-mailem. Fakturu pak e-mailem obdrží všichni uživatelé s rolí vlastník, přispěvatel, čtenář nebo správce faktur ve fakturačním profilu. 
+Pokud máte fakturační účet na základě smlouvy se zákazníkem Microsoftu, můžete se přihlásit k zasílání faktur e-mailem. Fakturu pak e-mailem obdrží všichni uživatelé s rolí vlastník, přispěvatel, čtenář nebo správce faktur ve fakturačním profilu.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -109,11 +106,11 @@ Pokud máte fakturační účet na základě smlouvy se zákazníkem Microsoftu,
 
 ## <a name="opt-out-of-getting-your-microsoft-customer-agreement-invoices-in-email"></a>Odhlášení ze zasílání faktur pro smlouvu se zákazníkem Microsoftu e-mailem
 
-Pokud se chcete odhlásit ze zasílání faktur e-mailem, proveďte výše uvedený postup a klikněte na **Odhlásit**. Zasílání faktur e-mailem se pak zruší u všech uživatelů s rolí vlastník, přispěvatel, čtenář nebo správce faktur. 
+Pokud se chcete odhlásit ze zasílání faktur e-mailem, proveďte výše uvedený postup a klikněte na **Odhlásit**. Zasílání faktur e-mailem se pak zruší u všech uživatelů s rolí vlastník, přispěvatel, čtenář nebo správce faktur.
 
 ## <a name="give-others-access-to-your-microsoft-customer-agreement-invoices"></a>Poskytnutí přístupu k fakturám pro smlouvu se zákazníkem Microsoftu jiným uživatelům
 
-I jiným uživatelům můžete umožnit zobrazování, stahování a placení faktur tím, že jim pro daný fakturační profil přiřadíte roli správce faktur. Pokud jste se rozhodli pro zasílání faktur e-mailem, dostanou je i tito uživatelé stejným způsobem. 
+I jiným uživatelům můžete umožnit zobrazování, stahování a placení faktur tím, že jim pro daný fakturační profil přiřadíte roli správce faktur. Pokud jste se rozhodli pro zasílání faktur e-mailem, dostanou je i tito uživatelé stejným způsobem.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 

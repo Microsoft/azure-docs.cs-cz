@@ -4,12 +4,12 @@ description: Naučte se, jak nasadit Azure Functions pomocí modulu plug-in Azur
 keywords: Jenkinse, Azure, DevOps, Java, Azure Functions
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: af3e8dfd6e2bfc676e659a03d92658af66b5bcde
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: edf8c763a46a6f519175842a6525b2c1b314fb66
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158768"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470662"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plug-in"></a>Nasazení do Azure Functions pomocí modulu plug-in pro Azure Functions Jenkinse
 
@@ -127,11 +127,11 @@ V této části vytvoříte [kanál Jenkinse](https://jenkins.io/doc/book/pipeli
     }
     ```
 
-## <a name="build-and-deploy"></a>Sestavení a nasazení
+## <a name="build-and-deploy"></a>Sestavení a nasazení
 
 Teď je čas spustit úlohu Jenkinse.
 
-1. Nejdřív Získejte autorizační klíč pomocí pokynů v článku [Azure Functions aktivační události a vazby protokolu HTTP](/azure/azure-functions/functions-bindings-http-webhook#authorization-keys) .
+1. Nejdřív Získejte autorizační klíč pomocí pokynů v článku [Azure Functions aktivační události a vazby protokolu HTTP](/azure/azure-functions/functions-bindings-http-webhook-trigger#authorization-keys) .
 
 1. V prohlížeči zadejte adresu URL aplikace. Zástupné symboly nahraďte odpovídajícími hodnotami a zadejte číselnou hodnotu pro **&lt;input_number >** jako vstup pro funkci Java.
 

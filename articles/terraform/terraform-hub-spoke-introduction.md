@@ -3,12 +3,12 @@ title: Kurz – vytvoření hybridní síťové topologie centra a paprsků v Az
 description: Kurz ilustrující postup vytvoření celé hybridní síťové referenční architektury v Azure pomocí Terraformu
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6f156dd90b83ceaf5749c8c2acebae35bcb54a92
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159035"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472175"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Kurz: Vytvoření hybridní síťové topologie centra a paprsků v Azure pomocí Terraformu
 
@@ -30,7 +30,7 @@ Tento kurz se zabývá následujícími úkony:
 
 - **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Instalace a konfigurace terraformu**: zřizování virtuálních počítačů a jiné infrastruktury v Azure, [instalace a konfigurace terraformu](/azure/virtual-machines/linux/terraform-install-configure)
+- **Instalace a konfigurace terraformu**: zřizování virtuálních počítačů a jiné infrastruktury v Azure, [instalace a konfigurace terraformu](terraform-install-configure.md)
 
 ## <a name="hub-and-spoke-topology-architecture"></a>Architektura topologie rozbočovače a paprsků
 

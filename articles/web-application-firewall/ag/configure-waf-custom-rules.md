@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 1641b74e3b9e59253b2674b22dfd8cd1b6ca2c2c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 4c50c4ce344a51a70f6849beb7c5d9d18a2b401d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133042"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471631"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Konfigurace firewallu webových aplikací v2 na Application Gateway s vlastním pravidlem pomocí Azure PowerShell
 
@@ -27,7 +27,7 @@ Další příklady vlastních pravidel najdete v tématu [Vytvoření a použit�
 
 Pokud chcete spustit Azure PowerShell v tomto článku v jednom souvislém skriptu, který můžete kopírovat, vkládat a spouštět, přečtěte si téma [ukázky Azure Application Gateway PowerShellu](powershell-samples.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-powershell-module"></a>Modul Azure PowerShellu
 
@@ -56,7 +56,7 @@ $appgwName = "WAFCustomRules"
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
 ```
 
-### <a name="create-a-vnet"></a>Vytvoření VNetu
+### <a name="create-a-vnet"></a>Vytvoření virtuální sítě
 
 ```azurepowershell
 $sub1 = New-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -AddressPrefix "10.0.0.0/24"
@@ -109,6 +109,8 @@ $sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 ### <a name="create-two-custom-rules-and-apply-it-to-waf-policy"></a>Vytvoření dvou vlastních pravidel a jejich použití na zásady WAF
 
 ```azurepowershell
+# Create WAF config
+$wafConfig = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention" -RuleSetType "OWASP" -RuleSetVersion "3.0"
 # Create a User-Agent header custom rule 
 $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector User-Agent
 $condition = New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Contains -MatchValue "evilbot" -Transform Lowercase -NegationCondition $False  

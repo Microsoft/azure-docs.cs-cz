@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/07/2019
+ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: e9d5a137247c072516c0b25d7f6147ef48fec248
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1cf4cc9cf4d98dfca59e01cc264549af3a4d5cb4
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839797"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471784"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Použití plánů údržby ke správě aktualizací a údržby služby
 
@@ -55,7 +55,7 @@ Ve výchozím nastavení se pro všechny nově vytvořené instance služby Azur
 
 Pokud chcete zobrazit plán údržby použitý pro váš datový sklad, postupujte následovně:
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 2.  Vyberte datový sklad, který chcete zobrazit. 
 3.  Vybraný datový sklad se otevře v okně Přehled. Plán údržby, který se použije pro datový sklad, se zobrazí pod **plánem údržby**.
 
@@ -71,9 +71,9 @@ Plán údržby lze kdykoli aktualizovat nebo změnit. Pokud vybraná instance pr
 Primární a sekundární systém Windows musí mít oddělené rozsahy dnů. Příkladem je primární okno úterý – čtvrtek a sekundární okno v sobotu – neděle.
 
 Chcete-li změnit plán údržby pro datový sklad, proveďte následující kroky:
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 2.  Vyberte datový sklad, který chcete aktualizovat. Otevře se stránka s přehledem. 
-3.  Otevřete stránku nastavení plánu údržby výběrem odkazu **Souhrn plánu údržby (Preview)** v okně Přehled. Případně vyberte možnost **plán údržby** v nabídce na levé straně prostředku.  
+3.  Kliknutím na odkaz **Souhrn plánu údržby** v okně Přehled otevřete stránku nastavení plánu údržby. Případně vyberte možnost **plán údržby** v nabídce na levé straně prostředku.  
 
     ![Možnosti okna Přehled](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 
@@ -88,7 +88,7 @@ Chcete-li změnit plán údržby pro datový sklad, proveďte následující kro
 
    Oblast **Souhrn plánu** v dolní části okna je aktualizována na základě hodnot, které jste vybrali. 
   
-6. Vyberte **Uložit**. Zobrazí se zpráva s potvrzením, že nový plán je teď aktivní. 
+6. Vyberte **Save** (Uložit). Zobrazí se zpráva s potvrzením, že nový plán je teď aktivní. 
 
    Pokud ukládáte plán v oblasti, která nepodporuje plánování údržby, zobrazí se následující zpráva. Vaše nastavení se uloží a stane se aktivním, když je funkce dostupná ve vybrané oblasti.    
 

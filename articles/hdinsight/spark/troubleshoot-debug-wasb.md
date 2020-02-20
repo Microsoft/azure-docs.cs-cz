@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 02/07/2020
-ms.openlocfilehash: 1256575eea7ee80b41a875c6bcd9b281b98aa360
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 02/18/2020
+ms.openlocfilehash: f1707c7f8d6324678c8bf5a470bbded1e58c719e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163847"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470713"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>Ladění operací se soubory WASB ve službě Azure HDInsight
 
@@ -26,19 +26,17 @@ Vytvořený protokol bude vypadat nějak takto:
 
 ## <a name="turn-on-wasb-debug-log-for-file-operations"></a>Zapnout protokol ladění WASB pro operace se soubory
 
-1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net`, kde `CLUSTERNAME` je název vašeho clusteru Spark.
+1. Ve webovém prohlížeči přejděte na `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs`, kde `CLUSTERNAME` je název vašeho clusteru Spark.
 
-1. Přejděte do **Spark2** > **CONFIGS** > **Pokročilé Spark2-log4j-Properties**.
+1. Přejděte na **Upřesnit spark2-log4j-Properties**.
 
-1. Upravte `log4j.appender.console.Threshold=INFO` na `log4j.appender.console.Threshold=DEBUG`.
+    1. Upravte `log4j.appender.console.Threshold=INFO` na `log4j.appender.console.Threshold=DEBUG`.
+
+    1. Přidejte `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`.
 
 1. Přejděte na **Upřesnit livy2-log4j-Properties**.
 
-1. Přidejte následující vlastnost:
-
-    ```
-    log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG
-    ```
+    Přidejte `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG`.
 
 1. Uložte změny.
 

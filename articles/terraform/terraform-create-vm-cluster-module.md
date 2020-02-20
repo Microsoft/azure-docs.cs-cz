@@ -3,31 +3,31 @@ title: Kurz – vytvoření clusteru virtuálních počítačů Azure s Terrafor
 description: Zjistěte, jak použít moduly Terraformu k vytvoření clusteru virtuálních počítačů s Windows v Azure.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 3ddc80e8f5a81e89e4574ff6524055f12a4a618a
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d17a0d7c26cc1a16ab73350fe6e8c28ba4af6ff2
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185549"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472195"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Kurz: Vytvoření clusteru virtuálních počítačů Azure s Terraformu pomocí registru modulu
 
-Tento článek vás provede vytvořením malého clusteru virtuálních počítačů pomocí [výpočetního modulu Terraform Azure](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Co se v tomto kurzu naučíte: 
+Tento článek vás provede vytvořením malého clusteru virtuálních počítačů pomocí [výpočetního modulu Terraform Azure](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). V tomto kurzu se naučíte: 
 
 > [!div class="checklist"]
-> * Nastavit ověřování pomocí Azure
+> * Nastavení ověřování pomocí Azure
 > * Vytvořit šablonu Terraformu
-> * Vizualizovat změny pomocí plánu
+> * Vizualizace změn pomocí plánu
 > * Použít konfiguraci k vytvoření clusteru virtuálních počítačů
 
 Další informace o Terraformu najdete v [dokumentaci Terraformu](https://www.terraform.io/docs/index.html).
 
-## <a name="set-up-authentication-with-azure"></a>Nastavit ověřování pomocí Azure
+## <a name="set-up-authentication-with-azure"></a>Nastavení ověřování pomocí Azure
 
 > [!TIP]
-> Pokud [používáte proměnné prostředí nástroje Terraform](/azure/virtual-machines/linux/terraform-install-configure) nebo tento kurz spouštíte ve službě [Azure Cloud Shell](/azure/cloud-shell/overview), tento krok přeskočte.
+> Pokud [používáte proměnné prostředí nástroje Terraform](terraform-install-configure.md) nebo tento kurz spouštíte ve službě [Azure Cloud Shell](/azure/cloud-shell/overview), tento krok přeskočte.
 
- Projděte si článek o [instalaci Terraformu a konfiguraci přístupu k Azure](/azure/virtual-machines/linux/terraform-install-configure) a vytvořte objekt služby Azure. Tento objekt služby použijte k naplnění nového souboru `azureProviderAndCreds.tf` v prázdném adresáři následujícím kódem:
+ Projděte si článek o [instalaci Terraformu a konfiguraci přístupu k Azure](terraform-install-configure.md) a vytvořte objekt služby Azure. Tento objekt služby použijte k naplnění nového souboru `azureProviderAndCreds.tf` v prázdném adresáři následujícím kódem:
 
 ```hcl
 variable subscription_id {}
@@ -84,7 +84,7 @@ V adresáři konfigurace spusťte `terraform init`. Pokud používáte Terraform
 
 ![Příkaz terraform init](media/terraformInitWithModules.png)
 
-## <a name="visualize-the-changes-with-plan"></a>Vizualizovat změny pomocí plánu
+## <a name="visualize-the-changes-with-plan"></a>Vizualizace změn pomocí plánu
 
 Spusťte `terraform plan`, abyste si zobrazili náhled infrastruktury virtuálního počítače, kterou vytvořila šablona.
 

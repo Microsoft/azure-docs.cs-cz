@@ -3,12 +3,12 @@ title: Kurz – vytvoření clusteru virtuálních počítačů Azure s Terrafor
 description: Použití Terraformu a HCL k vytvoření clusteru virtuálních počítačů se systémem Linux s nástrojem pro vyrovnávání zatížení v Azure
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 39e9857ad0119c08e949bbe5f6accb07432f3469
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665359"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470866"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Kurz: Vytvoření clusteru virtuálních počítačů Azure s Terraformu a HCL
 
@@ -28,11 +28,11 @@ Naučíte se, jak provádět následující úlohy:
 ## <a name="1-set-up-azure-authentication"></a>1. nastavení ověřování Azure
 
 > [!NOTE]
-> Pokud [používáte proměnné prostředí nástroje Terraform](/azure/virtual-machines/linux/terraform-install-configure) nebo tento kurz spouštíte ve službě [Azure Cloud Shell](terraform-cloud-shell.md), tuto část přeskočte.
+> Pokud [používáte proměnné prostředí nástroje Terraform](terraform-install-configure.md) nebo tento kurz spouštíte ve službě [Azure Cloud Shell](terraform-cloud-shell.md), tuto část přeskočte.
 
 V této části vygenerujete instanční objekt Azure a dva konfigurační soubory Terraformu obsahující přihlašovací údaje z objektu zabezpečení.
 
-1. [Nastavte instanční objekt Azure AD](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure), abyste Terraformu umožnili zřizovat prostředky do Azure. Při vytváření objektu zabezpečení si poznamenejte hodnoty ID předplatného, tenanta, appId a hesla.
+1. [Nastavte instanční objekt Azure AD](terraform-install-configure.md#set-up-terraform-access-to-azure), abyste Terraformu umožnili zřizovat prostředky do Azure. Při vytváření objektu zabezpečení si poznamenejte hodnoty ID předplatného, tenanta, appId a hesla.
 
 2. Otevřete příkazový řádek.
 

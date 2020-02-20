@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 2b5bcd0d3bba914b81e305c88a512645c1a1c258
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 57803ec9889cb6a19dae6d6d1070d8381577aff0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108509"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468384"
 ---
 # <a name="import-an-openapi-specification"></a>Import specifikace OpenAPI
 
 Tento článek ukazuje, jak importovat back-endové rozhraní API „specifikace OpenAPI“ nacházející se na stránce https://conferenceapi.azurewebsites.net?format=json. Toto back-endové rozhraní API poskytuje Microsoft a hostuje ho na Azure. Tento článek také ukazuje, jak otestovat rozhraní API služby APIM.
 
 > [!IMPORTANT]
-> Důležité informace a tipy týkající se importu OpenAPI najdete v tomto [dokumentu](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/).
+> Důležité informace a tipy týkající se importu OpenAPI najdete v tomto [dokumentu](https://azure.microsoft.com/blog/announcing-the-preview-of-openapi-specification-v3-support-in-azure-api-management/).
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -39,7 +39,7 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"> </a>Import a publikování back-endového rozhraní API
+## <a name="create-api"> </a>Import a publikování back-endu rozhraní API
 
 1. V části **API MANAGEMENT** vyberte **rozhraní API**.
 2. Ze seznamu **Přidat nové rozhraní API** vyberte **Specifikace OpenAPI**.
@@ -59,7 +59,7 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
     |**Schéma URL**|*HTTPS*|Určuje, které protokoly je možné použít pro přístup k rozhraní API. |
     |**Produkty**|*Unlimited*| Publikujte rozhraní API jeho přidružením k produktu. Volitelně můžete toto nové rozhraní API přidat k produktu zadáním názvu produktu. Pokud chcete rozhraní API přiřadit k více produktům, můžete tento krok opakovat několikrát.<br/>Produkty jsou sdruženími jednoho nebo více rozhraní API. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získají přístup k rozhraní API. Po přihlášení k odběru získají klíč předplatného, který je možné použít pro jakékoli rozhraní API v příslušném produktu. Pokud jste vytvořili instanci služby APIM, již jste správcem, takže jste ve výchozím nastavení přihlášeni k odběru všech produktů.<br/> Ve výchozím nastavení každá instance služby API Management obsahuje dva ukázkové produkty: **Starter** a **Unlimited**. |
 
-4. Vyberte **Vytvořit**.
+4. Vyberte **Create** (Vytvořit).
 
 > [!NOTE]
 > Omezení importu rozhraní API jsou zdokumentována v [jiném článku](api-management-api-import-restrictions.md).

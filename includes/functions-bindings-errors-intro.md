@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 8573a915c572885b53437843b114aa987be4c66b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198444"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77474256"
 ---
 Chyby vyvolané v Azure Functions můžou pocházet z některého z následujících zdrojů:
 
@@ -37,6 +37,6 @@ Následující triggery mají integrovanou podporu opakování:
 * [Úložiště front Azure](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (fronta/téma)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-Ve výchozím nastavení se tyto triggery spustí znovu a požádá se o pět časů. Po pátém pokusu služba Azure Queue Storage i Azure Service Bus triggery zapíše zprávu do [fronty poškození](..\articles\azure-functions\functions-bindings-storage-queue.md#trigger---poison-messages).
+Ve výchozím nastavení se tyto triggery spustí znovu a požádá se o pět časů. Po pátém pokusu služba Azure Queue Storage i Azure Service Bus triggery zapíše zprávu do [fronty poškození](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages).
 
 Je potřeba ručně implementovat zásady opakování pro všechny ostatní triggery nebo typy vazeb. Ruční implementace mohou zahrnovat zápis informací o chybách do [fronty nezpracovatelných zpráv](..\articles\azure-functions\functions-bindings-storage-blob-trigger.md#poison-blobs). Když zapíšete do fronty nečinnosti, budete mít příležitost opakovat operace později. Tento přístup je stejný jako ten, který používá Trigger služby Blob Storage.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 266fa2403ef96e808a0c1f1eb46b4f7065c06252
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3c8c5e3c2552101437bfed17906f94861e676568
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185890"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468433"
 ---
 # <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Postupy: plánování nasazení podmíněného přístupu v Azure Active Directory
 
@@ -31,6 +31,9 @@ Pokud jsou vyžadovány další funkce, může být také nutné získat souvise
 Existují dva typy zásad podmíněného přístupu: základní a standardní. [Základní](baseline-protection.md) zásady podmíněného přístupu jsou předdefinované. Cílem těchto zásad je ujistit se, že máte povolenou alespoň úroveň zabezpečení. Základní zásady. Základní zásady jsou k dispozici ve všech edicích služby Azure AD a poskytují pouze omezené možnosti vlastního nastavení. Pokud scénář vyžaduje větší flexibilitu, zakažte základní zásady a implementujte své požadavky do vlastních standardních zásad.
 
 V případě standardních zásad podmíněného přístupu můžete upravit všechna nastavení a upravit zásady na vaše obchodní požadavky. Standardní zásady vyžadují licenci Azure AD Premium P1.
+
+>[!NOTE]
+> Doporučujeme použít zásady podmíněného přístupu na základě zařízení Azure AD, abyste získali nejlepší vynucování po počátečním ověření zařízení. Patří sem uzavírací relace, pokud zařízení nedodržuje předpisy a tok kódu zařízení.
 
 ## <a name="draft-policies"></a>Koncepty zásad
 

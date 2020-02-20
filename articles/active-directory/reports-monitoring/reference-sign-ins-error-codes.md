@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 08/08/2019
+ms.date: 02/19/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cd37374ab6341356d84f205e92c9612d8481818f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898884"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468843"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kódy chyb sestav aktivit přihlašování 
 
@@ -133,6 +133,7 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |50178|Řízení relace není pro průchozí uživatele podporováno.|
 |50180|Vyžaduje se integrované ověřování systému Windows. Povolte tenantovi bezproblémové jednotné přihlašování.|
 |50181|Chyba související s jednorázovým heslem při přihlašování |
+|50194|Aplikace {appId} ({appName}) není nakonfigurovaná jako aplikace s více klienty. Použití koncového bodu/běžné se pro tyto aplikace vytvořené po {time} nepodporuje. Použijte koncový bod specifický pro klienta nebo nakonfigurujte aplikaci tak, aby byla více tenantů.|
 |50201|Toto přerušení výzvy zprávy se uživateli zobrazí během přihlašování, pokud je třeba poskytnout další informace uživateli.|
 |51001|Pomocný parametr domény není k dispozici u místního identifikátoru zabezpečení místního hlavního názvu uživatele (UPN).|
 |51004|Uživatelský účet v adresáři neexistuje.|
@@ -185,16 +186,22 @@ Pomocí [rozhraní API pro vytváření sestav](concept-reporting-api.md)můžet
 |90010|Požadavek není z různých důvodů podporován. Požadavek se například provede pomocí nepodporované metody Request (podporuje se jenom metoda POST) nebo se nepodporuje podpisový algoritmus tokenu, který se požaduje. Obraťte se na vývojáře aplikace.|
 |90014| Chybí povinné pole pro zprávu protokolu. Obraťte se na vlastníka aplikace. Pokud jste vlastníkem aplikace, ujistěte se, že máte všechny potřebné parametry pro žádost o přihlášení. |
 |90051| Neplatný token delegování Je zadané neplatné národní ID cloudu ({cloudId}).|
-|90072| Účet musí být nejprve přidán jako externí uživatel v tenantovi. Odhlaste se a znovu se přihlaste s jiným účtem služby Azure AD.|
+|90072| Účet musí být nejprve v tenantovi přidán jako externí uživatel. Odhlaste se a znovu se přihlaste s jiným účtem služby Azure AD.|
 |90094| Aplikace požádala o oprávnění, která přihlášenému uživateli není oprávněná k souhlasu, a uživatel byl zablokován. |
 |90095| Aplikace požádala o oprávnění, která přihlášenému uživateli není oprávněná k souhlasu, a uživatel byl zobrazen ve formuláři [žádosti o souhlas správce](../manage-apps/configure-admin-consent-workflow.md) . |
+|130500|Telefonické přihlášení bylo zablokováno kvůli zásadám přihlašovacích údajů uživatele.|
 |500011| Objekt zabezpečení prostředku s názvem <site address> nebyl nalezen v tenantovi s názvem <tenant ID>. K tomu může dojít, pokud aplikace nebyla nainstalována správcem tenanta nebo odsouhlasena žádným uživatelem v tenantovi. Možná jste odeslali žádost o ověření do nesprávného tenanta.|
+|500014|Prostředek {Identifier} je zakázaný.|
 |500021| Tenant je omezený proxy společností. Odepřete přístup k prostředkům.|
 |500121| Během žádosti o silný požadavek na ověření došlo k chybě ověřování.|
 |500133| Kontrolní výraz není v rámci platného časového rozsahu. Před použitím tohoto kontrolního výrazu pro uživatele Ověřte, zda nevypršela platnost přístupového tokenu, nebo požádejte o nový token.|
+|500172|Certifikát {Name}, který vystavil {Issuer}, není platný. Aktuální čas: {curTime} NotBefore certifikátu: {Čas_spuštění} NotAfter certifikátu: {čas_ukončení}.|
+|501291|Klientská aplikace je aplikace mam, zařízení není zaregistrované a žádosti se odesílají pomocí zprostředkovatele. Aby bylo možné zařízení zaregistrovat, musí se připojit k pracovnímu místu.|
+|530003|Aby bylo možné získat přístup k tomuto prostředku, musí být vaše zařízení spravované.|
 |530021|Aplikace nesplňuje požadavky na aplikace schválené pro podmíněný přístup.|
 |530032|Blokováno zásadami zabezpečení.| 
 |700016|Aplikace s identifikátorem {appIdentifier} se nenašla v adresáři {tenant}. K tomu může dojít, pokud aplikace nebyla nainstalována správcem tenanta nebo odsouhlasena žádným uživatelem v tenantovi. Je možné, že jste odeslali žádost o ověření na špatného tenanta.|
+|700051|Response_type token není pro aplikaci povolený. Aplikace požádala o nepodporovaný typ odpovědi z následujících důvodů: response_type tokenu není pro aplikaci povolený. Vlastník aplikace by měl přejít do Azure Portal nebo volat program MS Graph, aby mohl udělit implicitní přístupový token.|
 |900432|Důvěrného klienta není v žádosti mezi cloudy podporován.|
 |5000811|Nepovedlo se ověřit signaturu tokenu SAML. Identifikátor podpisového klíče neodpovídá žádným platným registrovaným klíčům.|
 |7000215|Byl zadán neplatný tajný klíč klienta.|
