@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: b0a4f390a3a897d14adc2944195b0c51148de495
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 245eabdf4d77682c87062c2581239a554112d748
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209269"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468758"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání videí na server a jejich indexování  
 
@@ -110,7 +110,7 @@ Adresa URL, která se používá k upozornění na zákazníka (pomocí žádost
         
     - Příklad: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
-##### <a name="notes"></a>Poznámky
+##### <a name="notes"></a>Poznámky:
 
 - Video Indexer vrátí všechny existující parametry zadané v původní adrese URL.
 - Zadaná adresa URL musí být kódovaná.
@@ -123,6 +123,10 @@ Tento parametr použijte, pokud nezpracované nebo externí záznamy obsahují �
 - `VideoOnly` – Indexujte a extrahujte přehledy jenom pomocí videa (ignoruje zvuk).
 - `Default` – indexovat a extrahovat přehledy s využitím zvuku i videa
 - `DefaultWithNoiseReduction` – indexovat a extrahovat přehledy ze zvuku i videa při použití algoritmů snížení šumu na zvukový datový proud
+
+> [!NOTE]
+> Video Indexer pokrývá až dvě stopy zvuku. Pokud je v souboru více zvukových stop, budou považovány za jednu stopu.<br/>
+Chcete-li tyto stopy indexovat samostatně, budete muset extrahovat relevantní zvukový soubor a indexovat ho jako `AudioOnly`.
 
 Cena závisí na vybrané možnosti indexování.  
 

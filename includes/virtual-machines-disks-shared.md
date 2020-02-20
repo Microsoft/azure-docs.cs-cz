@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 09e5a6c5eee21e5432c4cf96a63fd2337307954a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a14ae76e15c1adb59917e61fbcbdaa34a7efa2d8
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77211377"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472008"
 ---
 Azure Shared Disks (Preview) je nová funkce pro Azure Managed disks, která umožňuje připojení spravovaného disku Azure k několika virtuálním počítačům současně. Připojení spravovaného disku k několika virtuálním počítačům vám umožní nasadit do Azure nové nebo migrovat existující clusterové aplikace.
 

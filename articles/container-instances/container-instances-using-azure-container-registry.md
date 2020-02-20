@@ -1,23 +1,23 @@
 ---
 title: Nasadit image kontejneru z Azure Container Registry
-description: Naučte se nasazovat kontejnery v Azure Container Instances pomocí imagí kontejnerů ve službě Azure Container Registry.
+description: Naučte se nasazovat kontejnery v Azure Container Instances tím, že nasadíte image kontejneru z Azure Container Registry.
 services: container-instances
 ms.topic: article
-ms.date: 12/30/2019
+ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcb1b02b8a2605a42acbe7f33973bef315ca6f54
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981692"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468911"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Nasazení na Azure Container Instances z Azure Container Registry
 
-[Azure Container Registry](../container-registry/container-registry-intro.md) je spravovaná služba registru kontejnerů založená na Azure, která slouží k ukládání privátních imagí kontejneru Docker. Tento článek popisuje, jak nasadit image kontejneru uložené v registru kontejnerů Azure do Azure Container Instances.
+[Azure Container Registry](../container-registry/container-registry-intro.md) je spravovaná služba registru kontejnerů založená na Azure, která slouží k ukládání privátních imagí kontejneru Docker. Tento článek popisuje, jak načítat image kontejneru uložené v Azure Container Registry při nasazení do Azure Container Instances. Doporučeným způsobem, jak nakonfigurovat přístup k registru, je vytvořit Azure Active Directory instanční objekt a heslo a přihlašovací údaje uložit v trezoru klíčů Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 **Azure Container Registry**: potřebujete službu Azure Container Registry, a alespoň jednu Image kontejneru v registru, abyste mohli dokončit kroky v tomto článku. Pokud potřebujete registr, přečtěte si téma [Vytvoření registru kontejnerů pomocí Azure CLI](../container-registry/container-registry-get-started-azure-cli.md).
 
@@ -28,6 +28,9 @@ ms.locfileid: "75981692"
 V produkčním scénáři, kdy poskytujete přístup k "bezobslužným" službám a aplikacím, se doporučuje nakonfigurovat přístup k registru pomocí [instančního objektu](../container-registry/container-registry-auth-service-principal.md). Instanční objekt umožňuje poskytnout image kontejneru [řízení přístupu na základě rolí](../container-registry/container-registry-roles.md) . Můžete například nakonfigurovat instanční objekt s přístupem k registru pouze ke čtení.
 
 Azure Container Registry poskytuje další [Možnosti ověřování](../container-registry/container-registry-authentication.md).
+
+> [!NOTE]
+> Pomocí [spravované identity](container-instances-managed-identity.md) nakonfigurované ve stejné skupině kontejnerů se nemůžete ověřit, aby se při nasazení skupiny kontejnerů načetly image Azure Container Registry.
 
 V následující části vytvoříte Trezor klíčů Azure a instanční objekt a uložíte přihlašovací údaje instančního objektu do trezoru. 
 
@@ -78,7 +81,7 @@ az keyvault secret set \
     --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
 ```
 
-Vytvořili jste trezor klíčů Azure a uložili jste do něj dva tajné kódy:
+Vytvořili jste Trezor klíčů Azure a uložili do něj dvě tajné klíče:
 
 * `$ACR_NAME-pull-usr`: ID instančního objektu, které se bude používat jako **uživatelské jméno** registru kontejneru.
 * `$ACR_NAME-pull-pwd`: heslo instančního objektu, které se bude používat jako **heslo** registru kontejneru.

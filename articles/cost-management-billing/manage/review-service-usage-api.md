@@ -1,24 +1,17 @@
 ---
 title: Kontrola využití prostředků služeb Azure pomocí rozhraní REST API | Microsoft Docs
 description: Zjistěte, jak pomocí rozhraní Azure REST API zkontrolovat využití prostředků služeb Azure.
-services: billing
-documentationcenter: na
 author: lleonard-msft
-manager: ''
-editor: ''
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: eb444f090c1b2047e3d71c1b2ec52699a61bd880
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f421ddc7cd509527053b099c7e4e538ab84b814e
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989303"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200567"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Kontrola využití prostředků Azure pomocí rozhraní REST API
 
@@ -41,7 +34,7 @@ Authorization: Bearer
 
 Parametr `{subscriptionGuid}` je povinný a měl by obsahovat ID předplatného, ze kterého je možné číst s použitím přihlašovacích údajů uvedených v tokenu rozhraní API. Parametr `{reportName}` nahraďte názvem sestavy.
 
-Jsou vyžadovány následující hlavičky: 
+Jsou vyžadovány následující hlavičky:
 
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
@@ -93,7 +86,7 @@ Prostředek
 
 ## <a name="filtering-reports"></a>Filtrování sestav
 
-Při vytváření sestavy se s využitím oddílů `filter` a `dimensions` v textu požadavku můžete zaměřit na náklady na konkrétní typy prostředků. Předchozí text požadavku ukazuje, jak vyfiltrovat všechny prostředky v určité oblasti. 
+Při vytváření sestavy se s využitím oddílů `filter` a `dimensions` v textu požadavku můžete zaměřit na náklady na konkrétní typy prostředků. Předchozí text požadavku ukazuje, jak vyfiltrovat všechny prostředky v určité oblasti.
 
 ### <a name="get-all-compute-usage"></a>Získání využití všech výpočetních prostředků
 
@@ -105,9 +98,9 @@ Pokud chcete vytvořit sestavu nákladů na virtuální počítače Azure ve va�
         "name": "ResourceType",
         "operator": "In",
         "values": [
-                "Microsoft.ClassicCompute/virtualMachines", 
+                "Microsoft.ClassicCompute/virtualMachines",
                 "Microsoft.Compute/virtualMachines"
-        ] 
+        ]
     }
 }
 ```
@@ -123,7 +116,7 @@ Pokud chcete vytvořit sestavu nákladů na službu Azure SQL Database ve vašem
         "operator": "In",
         "values": [
                 "Microsoft.Sql/servers"
-        ] 
+        ]
     }
 }
 ```

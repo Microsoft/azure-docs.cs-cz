@@ -1,6 +1,6 @@
 ---
-title: Přehled programu Microsoft Azure StorSimple a poskytovatele cloudových řešení | Dokumentace Microsoftu
-description: Přehled o StorSimple a zprostředkovatele kryptografických služeb pro partnery StorSimple.
+title: Nasazení StorSimple Virtual Array pro program poskytovatele Cloud Solution Provider
+description: Přehled o StorSimple a CSP pro partnery StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,94 +14,94 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7f1927a67127766c72be463c283225135b2a2aad
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629894"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77466905"
 ---
-# <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Nasazení virtuálních polí StorSimple pro programu Cloud Solution Provider
+# <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Nasazení StorSimple Virtual Array pro program poskytovatele Cloud Solution Provider
 
 ## <a name="overview"></a>Přehled
 
-StorSimple Virtual Array je možné nasadit pomocí partnery Cloud Solution Provider (CSP) pro své zákazníky. CSP partner, můžete vytvořit služby Správce zařízení StorSimple. Tato služba potom slouží k nasazení a správa StorSimple Virtual Array a přidružené sdílené složky, svazky a zálohy.
+StorSimple Virtual Array může být nasazeno partnery poskytovatele Cloud Solution Provider (CSP) pro své zákazníky. Partner CSP může vytvořit službu StorSimple Device Manager. Tato služba se pak dá použít k nasazení a správě virtuálního pole StorSimple a přidružených sdílených složek, svazků a záloh.
 
-Tento článek popisuje, jak přidat do stávající zákazník zákazníka nebo si nové předplatné a vytvořte službu pro nasazení virtuálních polí StorSimple v CSP CSP partner.
+Tento článek popisuje, jak může partner CSP přidat zákazníka nebo nové předplatné stávajícímu zákazníkovi a pak vytvořit službu pro nasazení StorSimple virtuálního pole v CSP.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že:
 
-- Jste zaregistrování v rámci programu CSP.
-- Máte platný [partnerského centra](https://partnercenter.microsoft.com/) přihlašovací údaje. Přihlašovací údaje umožňují přihlášení k portálu pro partnery přidat nové zákazníky, hledání pro zákazníky nebo přejděte na účet zákazníka z řídicího panelu partnera. Zprostředkovatel kryptografických služeb, můžou fungovat jako správce StorSimple jménem zákazníka na portálu Azure portal.
+- Jste zaregistrovaní v rámci programu CSP.
+- Máte platné přihlašovací údaje [partnerského centra](https://partnercenter.microsoft.com/) . Přihlašovací údaje vám umožní přihlásit se k portálu pro partnery a přidat nové zákazníky, Hledat zákazníky nebo přejít na účet zákazníka z řídicího panelu partnera. CSP může v Azure Portal fungovat jako správce StorSimple jménem zákazníka.
                              
-## <a name="add-a-customer"></a>Přidejte zákazníka
+## <a name="add-a-customer"></a>Přidat zákazníka
 
-Pokud chcete přidat odběratele, předplatné se automaticky vytvoří. Přidejte zákazníka (a automaticky vytvořit odběr), proveďte následující kroky v portálu pro partnery.
+Pokud přidáte zákazníka, vytvoří se předplatné automaticky. Chcete-li přidat zákazníka (a automaticky vytvořit odběr), proveďte následující kroky na portálu pro partnery.
 
-1. Přejděte [partnerského centra](https://partnercenter.microsoft.com/) a přihlaste se pomocí svých přihlašovacích údajů CSP. Klikněte na tlačítko **řídicí panel**.
+1. Přejít do [partnerského centra](https://partnercenter.microsoft.com/) a přihlaste se pomocí svých přihlašovacích údajů CSP. Klikněte na **řídicí panel**.
 
      ![Řídicí panel v partnerském centru](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. V levém podokně klikněte na tlačítko **zákazníkům**. V pravém podokně klikněte na tlačítko **přidáním zákazníků**. Zadejte podrobnosti o zákazníkovi. Klikněte na tlačítko **Další: Předplatná** k vytvoření předplatného zákazníka.
+2. V levém podokně klikněte na **zákazníci**. V pravém podokně klikněte na **Přidat zákazníky**. Zadejte podrobnosti o zákazníkovi. Klikněte na **Další: předplatná** pro vytvoření zákaznického předplatného.
 
-    ![Přidejte zákazníka](./media/storsimple-partner-csp-deploy/image2.png)
+    ![Přidat zákazníka](./media/storsimple-partner-csp-deploy/image2.png)
 
-3.  Vyberte **Microsoft Azure** nabízejí. Přejděte do dolní části stránky a klikněte na tlačítko **revize**.
+3.  Vyberte **Microsoft Azure** nabídka. Posuňte se do dolní části stránky a klikněte na tlačítko **zkontrolovat**.
 
-    ![Projděte si informace o předplatném](./media/storsimple-partner-csp-deploy/image3.png)
+    ![Kontrola informací o předplatném](./media/storsimple-partner-csp-deploy/image3.png)
                               
-4. Zkontrolujte informace a klikněte na tlačítko **odeslat**.
+4. Zkontrolujte informace a klikněte na **Odeslat**.
 
-    ![Odeslat předplatné](./media/storsimple-partner-csp-deploy/image4.png)
+    ![Odeslat odběr](./media/storsimple-partner-csp-deploy/image4.png)
 
-5. Uložte informace o potvrzení pro budoucí použití.
+5. Uložte informace o potvrzení pro budoucí referenci.
 
     ![Potvrzení uložení](./media/storsimple-partner-csp-deploy/image5.png)
 
-6. Najít nebo přejděte na zákazníka jste právě přidali. Klikněte na tlačítko **název společnosti** přejdete na podrobnosti.
+6. Najděte zákazníka, kterého jste právě přidali, nebo přejděte na něj. Kliknutím na **název společnosti** přejdete k podrobnostem.
 
     ![Hledat zákazníka](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. V levém podokně vyberte **Správa služeb**. V pravém podokně v části **spravovat služby**, klikněte na tlačítko **Microsoft Azure Management Portal** přihlásit jako správce Azure pro vaše zákazníky.
+7. V levém podokně vyberte možnost **Správa služeb**. V pravém podokně klikněte v části **Spravovat služby**na **portál pro správu Microsoft Azure** a přihlaste se jako správce Azure pro zákazníka.
 
     ![Přihlášení k webu Azure Portal](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. Chcete-li vytvořit Správce zařízení StorSimple, klikněte na tlačítko **+ nová** a vyhledávání nebo přejděte na **řada virtuálních zařízení StorSimple**. Další informace najdete v části [nasazení služby Správce zařízení StorSimple](storsimple-virtual-array-manage-service.md).
+8. StorSimple Device Manager vytvoříte tak, že kliknete na **+ Nový** a vyhledáte nebo přejdete na **řady virtuálních zařízení StorSimple**. Další informace najdete v [nasazení služby StorSimple Device Manager](storsimple-virtual-array-manage-service.md).
 
-    ![Vytvoření služby StorSimple Device Manager](./media/storsimple-partner-csp-deploy/image8.png)
+    ![Vytvořit službu StorSimple Device Manager](./media/storsimple-partner-csp-deploy/image8.png)
 
 
-## <a name="add-a-subscription"></a>Přidat předplatné
+## <a name="add-a-subscription"></a>Přidání předplatného
 
-V některých případech můžete mít stávající zákazník a musíte přidat předplatné. Pokud chcete přidat předplatné do stávající zákazník, proveďte následující kroky v portálu pro partnery.
+V některých případech je možné, že máte existujícího zákazníka a potřebujete přidat předplatné. Pokud chcete přidat předplatné k existujícímu zákazníkovi, na portálu pro partnery proveďte následující kroky.
 
-1. Přejděte [partnerského centra](https://partnercenter.microsoft.com/) a přihlaste se pomocí svých přihlašovacích údajů CSP. Klikněte na tlačítko **řídicí panel**.
+1. Přejít do [partnerského centra](https://partnercenter.microsoft.com/) a přihlaste se pomocí svých přihlašovacích údajů CSP. Klikněte na **řídicí panel**.
 
      ![Řídicí panel v partnerském centru](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. V levém podokně klikněte na tlačítko **zákazníkům**. Najít nebo přejděte k zákazníkovi chcete přidat předplatné. Klikněte na tlačítko ![ikonu rozbalení kontrola](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) ikonu rozbalte řádek pro název společnosti pro vaše zákazníky. V podrobnostech klikněte na tlačítko **přidat předplatná**.
+2. V levém podokně klikněte na **zákazníci**. Najděte zákazníka, kterému chcete přidat předplatné, nebo na něj přejděte. Kliknutím na ikonu ![rozbalit ikonu kontroly](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) rozbalte řádek pro název společnosti pro zákazníka. V části Podrobnosti klikněte na **Přidat odběry**.
 
     ![Zákazníci](./media/storsimple-partner-csp-deploy/image10.png)
 
-3. Zkontrolujte **Microsoft Azure** pro **Top nabídky** na předplatné a klikněte na **odeslat**. Tím se vytvoří nový odběr.
+3. Zaškrtněte **Microsoft Azure** u **hlavních nabídek** v rámci předplatného a klikněte na **Odeslat**. Tím se vytvoří nové předplatné.
 
     ![Přidat nové předplatné](./media/storsimple-partner-csp-deploy/image11.png)
 
-6. Po vytvoření nového předplatného klikněte na tlačítko **<--zákazníci** v levém podokně se vraťte do **zákazníkům** stránky. Hledání pro zákazníky, pro které jste právě vytvořili odběr. Klikněte na tlačítko **název společnosti** přejdete na podrobnosti.
+6. Po vytvoření nového předplatného klikněte **<--zákazníci** v levém podokně, abyste se vrátili na stránku **Customers** . Vyhledejte zákazníka, pro kterého jste právě vytvořili předplatné. Kliknutím na **název společnosti** přejdete k podrobnostem.
 
     ![Hledat zákazníka](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. V levém podokně vyberte **Správa služeb**. V pravém podokně v části **spravovat služby**, klikněte na tlačítko **Microsoft Azure Management Portal** přihlásit jako správce Azure pro vaše zákazníky.
+7. V levém podokně vyberte možnost **Správa služeb**. V pravém podokně klikněte v části **Spravovat služby**na **portál pro správu Microsoft Azure** a přihlaste se jako správce Azure pro zákazníka.
 
     ![Přihlášení k webu Azure Portal](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. Chcete-li vytvořit Správce zařízení StorSimple, klikněte na tlačítko **+ nová** a vyhledávání nebo přejděte na **řada virtuálních zařízení StorSimple**. Další informace najdete v části [nasazení služby Správce zařízení StorSimple](storsimple-virtual-array-manage-service.md).
+8. StorSimple Device Manager vytvoříte tak, že kliknete na **+ Nový** a vyhledáte nebo přejdete na **řady virtuálních zařízení StorSimple**. Další informace najdete v [nasazení služby StorSimple Device Manager](storsimple-virtual-array-manage-service.md).
 
-    ![Vytvoření služby StorSimple Device Manager](./media/storsimple-partner-csp-deploy/image8.png)
+    ![Vytvořit službu StorSimple Device Manager](./media/storsimple-partner-csp-deploy/image8.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- Pokud máte další otázky týkající se StorSimple v CSP, přejděte na [StorSimple v CSP: Nejčastější dotazy k](storsimple-partner-csp-faq.md).
-- Pokud jste připraveni k nasazení řešení StorSimple, přejděte na [nasazení řešení StorSimple v CSP](storsimple-partner-csp-deploy.md).
+- Pokud máte další otázky týkající se StorSimple ve zprostředkovateli CSP, přečtěte si [Nejčastější dotazy v StorSimple v CSP: nejčastější dotazy](storsimple-partner-csp-faq.md).
+- Pokud jste připraveni nasadit své StorSimple, přečtěte si [nasazení StorSimple v CSP](storsimple-partner-csp-deploy.md).

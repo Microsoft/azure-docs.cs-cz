@@ -3,12 +3,12 @@ title: Kurz – vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes
 description: Kurz vysvětlující, jak vytvořit cluster Kubernetes pomocí služby Azure Kubernetes Service a Terraformu
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: e04abdab2893e76a65615635ae9937797be89855
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: eb8619418cf6d42f600499bb5a12322adce6f44b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708270"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472243"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>Kurz: Vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí Terraformu
 
@@ -25,7 +25,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Nakonfigurovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](/azure/virtual-machines/linux/terraform-install-configure).
+- **Nakonfigurovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](terraform-install-configure.md).
 
 - **Instanční objekt Azure:** Postupujte podle pokynů v části **Vytvoření instančního objektu** v článku [Vytvoření instančního objektu Azure pomocí Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Poznamenejte si hodnoty appId, displayName, password a tenant.
 
@@ -61,7 +61,7 @@ Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu p
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele Azure.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `main.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `main.tf`.
 
     ```bash
     code main.tf
@@ -85,7 +85,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro cluster Kubernetes.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `k8s.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `k8s.tf`.
 
     ```bash
     code k8s.tf
@@ -172,7 +172,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
 
 ## <a name="declare-the-variables"></a>Deklarování proměnných
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `variables.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `variables.tf`.
 
     ```bash
     code variables.tf
@@ -229,7 +229,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje prostředky pro clu
 
 [Výstupy Terraformu](https://www.terraform.io/docs/configuration/outputs.html) vám umožňují definovat hodnoty, které se uživateli zvýrazní, když Terraform použije plán a bude možné se na něj dotázat příkazem `terraform output`. V této části vytvoříte výstupní soubor, který pomocí [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) umožňuje přístup ke clusteru.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `output.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `output.tf`.
 
     ```bash
     code output.tf

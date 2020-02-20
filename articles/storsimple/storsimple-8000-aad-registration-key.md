@@ -1,17 +1,17 @@
 ---
-title: Použití nového ověřování pro službu StorSimple 8000 Device Manager v Azure
+title: Ověřování Azure AD pro StorSimple 8000 v Device Manager
 description: Vysvětluje, jak používat ověřování na základě AAD pro vaši službu, generovat nový registrační klíč a provádět ruční registraci zařízení.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 798b3bf054d5ade2a441bbef5875bb014f526aee
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b16132c24d35ee2c9902fa2b21c44416d8376b4d
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276943"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470900"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Použití nového ověřování pro StorSimple
 
@@ -39,10 +39,10 @@ Aby služba používala ověřování pomocí AAD, všichni uživatelé musí do
 
 Pokud používáte řady StorSimple 8000, zajistěte, aby byla v pravidlech brány firewall zahrnutá následující adresa URL:
 
-| Vzor adresy URL                         | Cloud | Součást/funkce         |
+| Vzor adresy URL                         | Cloudová | Součást/funkce         |
 |------------------------------------|-------|----------------------------------|
-| `https://login.windows.net`        | Veřejný partnerský vztah Azure |Služba ověřování AAD      |
-| `https://login.microsoftonline.us` | US Government |Služba ověřování AAD      |
+| `https://login.windows.net`        | Veřejné Azure |Služba ověřování AAD      |
+| `https://login.microsoftonline.us` | Státní správa USA |Služba ověřování AAD      |
 
 Úplný seznam vzorů adres URL pro zařízení StorSimple 8000 series najdete v části [vzory adres URL pro pravidla brány firewall](storsimple-8000-system-requirements.md#url-patterns-for-firewall-rules).
 

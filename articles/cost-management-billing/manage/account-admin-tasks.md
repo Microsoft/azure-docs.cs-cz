@@ -2,21 +2,18 @@
 title: Úlohy správce účtu na webu Azure Portal
 description: Popis postupu při provádění platebních operací na webu Azure Portal
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 2f858fa7715145d55cf1c978b9c368e1f6586dce
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 5d48f6e02719bbf647cdbf800550d73ce83a018f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132140"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200995"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Úlohy správce účtu na webu Azure Portal
 
@@ -25,35 +22,35 @@ Tento článek vysvětluje, jak na webu Azure Portal provádět následující �
 - Odebrání limitu útraty pro předplatné
 - Přidání kreditů k předplatnému Azure v rámci licenčního programu Open License
 
-Abyste mohli provádět tyto úlohy, musíte být správcem účtu. 
+Abyste mohli provádět tyto úlohy, musíte být správcem účtu.
 
 ## <a name="navigate-to-your-subscriptions-payment-methods"></a>Přechod na způsoby platby předplatného
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu. 
+1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce účtu.
 
 1. Vyhledejte **Cost Management a fakturace**.
-    
+
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace ](./media/account-admin-tasks/search-bar.png)
 
-1. V seznamu **Moje předplatná** vyberte předplatné, ke kterému chcete přidat platební kartu. 
-   
+1. V seznamu **Moje předplatná** vyberte předplatné, ke kterému chcete přidat platební kartu.
+
    ![Snímek obrazovky s mřížkou Moje předplatná v části Přehled](./media/account-admin-tasks/cost-management-billing-overview-x.png)
-   
+
    > [!NOTE]
-   > Pokud tady nevidíte některá svá předplatná, je možné, že jste v nějakém okamžiku změnili adresář předplatného. U těchto předplatných musíte přepnout na původní adresář (adresář, ve které jste se původně zaregistrovali). Potom opakujte krok 2. 
+   > Pokud tady nevidíte některá svá předplatná, je možné, že jste v nějakém okamžiku změnili adresář předplatného. U těchto předplatných musíte přepnout na původní adresář (adresář, ve které jste se původně zaregistrovali). Potom opakujte krok 2.
 
 1. Vyberte **Způsoby platby**.
 
     ![Snímek obrazovky s vybraným oknem Způsoby platby](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
-Tady můžete přidat novou platební kartu, změnit aktivní způsob platby, upravit údaje platebních karet a odstranit platební karty. 
+Tady můžete přidat novou platební kartu, změnit aktivní způsob platby, upravit údaje platebních karet a odstranit platební karty.
 
 ### <a name="change-active-payment-method"></a>Změna aktivního způsobu platby
 
 Aktivní způsob platby můžete změnit přidáním nové platební karty nebo zvolením již uložené platební karty. Změna aktivního způsobu platby na novou platební kartu:
 
 1. V levém horním rohu vyberte + a přidejte platební kartu.
-    
+
     ![Snímek obrazovky se symbolem plus](./media/account-admin-tasks/subscription-payment-methods-plus.png)
 
 1. Do formuláře vpravo zadejte údaje platební karty.
@@ -111,7 +108,7 @@ Pokud chcete získat schválení pro platby pomocí faktur, přečtěte si, [jak
 
 ### <a name="edit-invoice-payment-address"></a>Úprava adresy pro platby pomocí faktur
 
-Pokud chcete upravit adresu pro platby pomocí faktur, v seznamu způsobů platby pro vaše předplatné klikněte na **Faktura**. Na pravé straně se otevře formulář adresy. 
+Pokud chcete upravit adresu pro platby pomocí faktur, v seznamu způsobů platby pro vaše předplatné klikněte na **Faktura**. Na pravé straně se otevře formulář adresy.
 
 ## <a name="remove-spending-limit"></a>Odebrání limitu útraty
 
@@ -124,15 +121,15 @@ Limit útraty není dostupný u předplatných s plány závazků nebo s průbě
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace ](./media/account-admin-tasks/search-bar.png)
 
-1. V seznamu **Moje předplatná** vyberte vaše předplatné sady Visual Studio Enterprise. 
+1. V seznamu **Moje předplatná** vyberte vaše předplatné sady Visual Studio Enterprise.
 
    ![Snímek obrazovky s mřížkou Moje předplatná v části Přehled](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Pokud tady nevidíte některá svá předplatná sady Visual Studio, je možné, že jste v nějakém okamžiku změnili adresář předplatného. U těchto předplatných musíte přepnout na původní adresář (adresář, ve které jste se původně zaregistrovali). Potom opakujte krok 2.
-    
+
 1. V přehledu předplatného odeberte limit útraty kliknutím na oranžový banner.
-    
+
     ![Snímek obrazovky s bannerem pro odebrání limitu útraty](./media/account-admin-tasks/msdn-remove-spending-limit-banner-x.png)
 
 1. Zvolte, jestli chcete limit útraty odebrat trvale, nebo pouze pro aktuální fakturační období.
@@ -152,15 +149,15 @@ Pokud máte předplatné Azure v rámci licenčního programu Open License, mů�
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace ](./media/account-admin-tasks/search-bar.png)
 
-1. V seznamu **Moje předplatná** vyberte vaše předplatné Azure v rámci licenčního programu Open License. 
+1. V seznamu **Moje předplatná** vyberte vaše předplatné Azure v rámci licenčního programu Open License.
 
     ![Snímek obrazovky s mřížkou Moje předplatná v části Přehled](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > Pokud tady nevidíte své předplatné, je možné, že jste v nějakém okamžiku změnili jeho adresář. Musíte přepnout adresář předplatného na původní adresář (adresář, ve kterém jste se původně zaregistrovali). Potom opakujte krok 2.
-    
+
 1. Vyberte **Historie kreditu**.
-    
+
     ![Snímek obrazovky s historií kreditu](./media/account-admin-tasks/aio-credit-history-blade.png)
 
 1. V levém horním rohu vyberte + a přidejte další kredity.
@@ -168,7 +165,7 @@ Pokud máte předplatné Azure v rámci licenčního programu Open License, mů�
     ![Snímek obrazovky s tlačítkem Přidat kredity](./media/account-admin-tasks/aio-credit-history-plus.png)
 
 1. V rozevírací nabídce vyberte způsob platby. Můžete přidat kód Product Key nebo zakoupit kredity pomocí platební karty.
-    
+
     ![Snímek obrazovky s rozevírací nabídkou pro výběr způsobu platby v okně Přidat kredity](./media/account-admin-tasks/add-credits-select-payment-method.png)
 
 1. Pokud jste zvolili kód Product Key:

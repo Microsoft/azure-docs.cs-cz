@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.date: 12/23/2019
-ms.openlocfilehash: 57b4440a29dde470f91bbaae091bf65a0d2a1b51
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 02/14/2020
+ms.openlocfilehash: 0b746963cea5a950ba47d8b4dfeb074cb0910436
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552266"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471019"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Při vytváření clusteru HDInsight přidat vlastní knihovny Apache Hive
 
@@ -33,7 +33,7 @@ Použití akce skriptu v tomto článku zpřístupňuje knihovny při použití 
 
 [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-**Požadavky**
+### <a name="requirements"></a>Požadavky
 
 * Skripty musí být aplikovány na **hlavní uzly** i **pracovní uzly**.
 
@@ -50,7 +50,7 @@ Použití akce skriptu v tomto článku zpřístupňuje knihovny při použití 
 
 ## <a name="create-a-cluster-using-the-script"></a>Vytvoření clusteru pomocí skriptu
 
-1. Spusťte zřizování clusteru pomocí postupu v části [zřízení clusterů HDInsight v systému Linux](hdinsight-hadoop-provision-linux-clusters.md), ale neprovádějte zřízení. Pomocí tohoto skriptu můžete také pomocí Azure PowerShell nebo sady HDInsight .NET SDK vytvořit cluster. Další informace o použití těchto metod najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md). U Azure Portal musíte vybrat možnost **Přejít k klasickému prostředí pro vytváření** a pak na **vlastní (velikost, nastavení, aplikace)** .
+1. Spusťte zřizování clusteru pomocí postupu v části [zřízení clusterů HDInsight v systému Linux](hdinsight-hadoop-provision-linux-clusters.md), ale neprovádějte zřízení. Pomocí tohoto skriptu můžete také pomocí Azure PowerShell nebo sady HDInsight .NET SDK vytvořit cluster. Další informace o použití těchto metod najdete v tématu [Přizpůsobení clusterů HDInsight pomocí akcí skriptů](hdinsight-hadoop-customize-cluster-linux.md). V případě Azure Portal na kartě **Konfigurace + ceny** vyberte **akci + přidat skript**.
 
 1. Pokud se účet **úložiště, který**obsahuje knihovnu souborů JAR, liší od účtu, který se používá pro cluster, dokončete **Další účty úložiště**.
 
@@ -59,10 +59,13 @@ Použití akce skriptu v tomto článku zpřístupňuje knihovny při použití 
     |Vlastnost |Hodnota |
     |---|---|
     |Typ skriptu|– Vlastní|
-    |Name (Název)|Knihovny |
+    |Název|Knihovny |
     |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
     |Typ (typy) uzlů|Vedoucí pracovník|
-    |Parametry|Zadejte adresu WASB kontejneru a účtu úložiště, který obsahuje jar. Například, `wasbs://libs@mystorage.blob.core.windows.net/`.|
+    |Parametry|Zadejte adresu WASB kontejneru a účtu úložiště, který obsahuje jar. například `wasbs://libs@mystorage.blob.core.windows.net/`.|
+
+    > [!NOTE]
+    > Pro Apache Spark 2,1 použijte tento identifikátor URI bash skriptu: `https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v00.sh`.
 
 1. Pokračujte ve zřizování clusteru, jak je popsáno v tématu [zřizování clusterů HDInsight v systému Linux](hdinsight-hadoop-provision-linux-clusters.md).
 

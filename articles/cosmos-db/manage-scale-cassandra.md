@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 668e9ddadf151a86be0d8c09fc91b4c70db12f3a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e2967a6d12fba2d81dad9de31e7476a027a39d1c
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210785"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468826"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastické škálování účtu Azure Cosmos DB rozhraní API Cassandra
 
@@ -23,7 +23,7 @@ K dispozici je celá řada možností, jak prozkoumat elastickou povahu rozhran�
 
 Azure Cosmos DB vrátí chyby s omezením četnosti (429), pokud klienti spotřebují více prostředků (RU/s), než je množství, které jste zřídili. Rozhraní API Cassandra v Azure Cosmos DB překládá tyto výjimky na přetížené chyby v nativním protokolu Cassandra. 
 
-Pokud váš systém není citlivý na latenci, může být dostačující pro zpracování rychlosti propustnosti pomocí opakovaných pokusů. Informace o tom, jak zvládnout omezení četnosti transparentní pomocí [rozšíření Azure Cosmos DB](https://github.com/Azure/azure-cosmos-cassandra-extensions) pro [zásady opakování Cassandra](https://docs.datastax.com/drivers/java/2.0/com/datastax/driver/core/policies/RetryPolicy.html) v jazyce Java, najdete v [ukázce kódu Java](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) . K obsluze omezení rychlosti můžete také použít [rozšíření Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) .
+Pokud váš systém není citlivý na latenci, může být dostačující pro zpracování rychlosti propustnosti pomocí opakovaných pokusů. Informace o tom, jak zvládnout omezení četnosti transparentní pomocí [rozšíření Azure Cosmos DB](https://github.com/Azure/azure-cosmos-cassandra-extensions) pro [zásady opakování Cassandra](https://docs.datastax.com/en/developer/java-driver/4.4/manual/core/retries/) v jazyce Java, najdete v [ukázce kódu Java](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) . K obsluze omezení rychlosti můžete také použít [rozšíření Spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) .
 
 ## <a name="manage-scaling"></a>Správa škálování
 

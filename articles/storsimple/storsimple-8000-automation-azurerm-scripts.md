@@ -1,17 +1,17 @@
 ---
-title: Použití skriptů Azure Resource Manager ke správě zařízení StorSimple
+title: Použití skriptů PowerShellu pro AzureRM ke správě zařízení StorSimple
 description: Naučte se používat skripty Azure Resource Manager k automatizaci úloh StorSimple.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d1c98aa8c9b635f08bb14db2bde5485640a5d24d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 03a5ef49b2d58d351d882b30b5d11e4a5ba90264
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276651"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471954"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Použití Azure Resource Manager skriptů založených na sadě SDK ke správě zařízení StorSimple
 
@@ -27,20 +27,20 @@ K dispozici jsou následující ukázkové skripty pro automatizaci různých ú
 
 | Skript Azure Resource Manager                    | Popis                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Tento skript vám umožní ověřit, že zařízení StorSimple mění šifrovací klíč dat služby.                                                                                                           |
-| [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Tento skript vytvoří StorSimple Cloud Appliance 8010 nebo 8020. Cloudové zařízení se pak dá nakonfigurovat a zaregistrovat ve službě StorSimple Data Manager.                                                       |
-| [CreateOrUpdate-Volume.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/CreateOrUpdate-Volume.ps1)                        | Tento skript vytvoří nebo upraví StorSimple svazky.                                                                                                                                                             |
-| [Get-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackup.ps1)                             | Tento skript obsahuje seznam všech záloh pro zařízení zaregistrované ve službě StorSimple Device Manager.                                                                                                          |
+| [Authorize-ServiceEncryptionRollover. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Tento skript vám umožní ověřit, že zařízení StorSimple mění šifrovací klíč dat služby.                                                                                                           |
+| [Create-StorSimpleCloudAppliance. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Tento skript vytvoří StorSimple Cloud Appliance 8010 nebo 8020. Cloudové zařízení se pak dá nakonfigurovat a zaregistrovat ve službě StorSimple Data Manager.                                                       |
+| [CreateOrUpdate-Volume. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/CreateOrUpdate-Volume.ps1)                        | Tento skript vytvoří nebo upraví StorSimple svazky.                                                                                                                                                             |
+| [Get-DeviceBackup. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackup.ps1)                             | Tento skript obsahuje seznam všech záloh pro zařízení zaregistrované ve službě StorSimple Device Manager.                                                                                                          |
 | [Get-DeviceBackupPolicy. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackupPolicy.ps1)                       | Tento skript všechny zásady zálohování pro zařízení StorSimple.                                                                                                                                                 |
 | [Get-DeviceJobs. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceJobs.ps1)                               | Tento skript načte všechny úlohy StorSimple běžící ve službě StorSimple Device Manager.                                                                                                                     |
-| [Get-DeviceUpdateAvailability.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceUpdateAvailability.ps1)                 | Tento skript zkontroluje server aktualizací a umožní vám zjistit, jestli jsou aktualizace dostupné pro instalaci na zařízení StorSimple.                                                                                          |
-| [Install-DeviceUpdate.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Install-DeviceUpdate.ps1)                         | Tento skript nainstaluje dostupné aktualizace na zařízení StorSimple.                                                                                                                                           |
-| [Manage-CloudSnapshots.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Manage-CloudSnapshots.ps1)                        | Tento skript spustí ruční snímek v cloudu a odstraní snímky cloudu starší než zadané dny uchování.                                                                                                   |
-| [Monitor-Backups.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Monitor-Backups.ps1)                              | Tento Azure Automation skript Runbooku PowerShellu hlásí stav všech úloh zálohování.                                                                                                              |
-| [Remove-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Remove-DeviceBackup.ps1)                          | Tento skript odstraní jediný objekt zálohování.                                                                                                                                                           |
-| [Start-DeviceBackupJob.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Start-DeviceBackupJob.ps1)                        | Tento skript spustí ruční zálohování na zařízení StorSimple.                                                                                                                                       |
-| [Update-CloudApplianceServiceEncryptionKey.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Update-CloudApplianceServiceEncryptionKey.ps1)    | Tento skript aktualizuje šifrovací klíč dat služby pro všechna cloudová zařízení 8010/8020 StorSimple zaregistrovaná ve službě StorSimple Device Manager.                                     |
-| [Verify-BackupScheduleAndBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Verify-BackupScheduleAndBackup.ps1)               | Tento skript zvýrazní chybějící zálohy po analýze všech plánů přidružených k zásadám zálohování. Také ověří katalog záloh se seznamem dostupných záloh.             |
+| [Get-DeviceUpdateAvailability. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceUpdateAvailability.ps1)                 | Tento skript zkontroluje server aktualizací a umožní vám zjistit, jestli jsou aktualizace dostupné pro instalaci na zařízení StorSimple.                                                                                          |
+| [Install-DeviceUpdate. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Install-DeviceUpdate.ps1)                         | Tento skript nainstaluje dostupné aktualizace na zařízení StorSimple.                                                                                                                                           |
+| [Manage-CloudSnapshots. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Manage-CloudSnapshots.ps1)                        | Tento skript spustí ruční snímek v cloudu a odstraní snímky cloudu starší než zadané dny uchování.                                                                                                   |
+| [Monitor-Backups. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Monitor-Backups.ps1)                              | Tento Azure Automation skript Runbooku PowerShellu hlásí stav všech úloh zálohování.                                                                                                              |
+| [Remove-DeviceBackup. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Remove-DeviceBackup.ps1)                          | Tento skript odstraní jediný objekt zálohování.                                                                                                                                                           |
+| [Start-DeviceBackupJob. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Start-DeviceBackupJob.ps1)                        | Tento skript spustí ruční zálohování na zařízení StorSimple.                                                                                                                                       |
+| [Update-CloudApplianceServiceEncryptionKey. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Update-CloudApplianceServiceEncryptionKey.ps1)    | Tento skript aktualizuje šifrovací klíč dat služby pro všechna cloudová zařízení 8010/8020 StorSimple zaregistrovaná ve službě StorSimple Device Manager.                                     |
+| [Verify-BackupScheduleAndBackup. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Verify-BackupScheduleAndBackup.ps1)               | Tento skript zvýrazní chybějící zálohy po analýze všech plánů přidružených k zásadám zálohování. Také ověří katalog záloh se seznamem dostupných záloh.             |
 
 
 
@@ -49,7 +49,7 @@ K dispozici jsou následující ukázkové skripty pro automatizaci různých ú
 
 V této části se používá ukázkový skript a podrobnosti o různých krocích potřebných ke spuštění skriptu.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Než začnete, ujistěte se, že máte následující:
 

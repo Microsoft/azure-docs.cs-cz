@@ -3,21 +3,18 @@ title: Opětovná aktivace zakázaného předplatného Azure
 description: Popisuje, kdy může být vaše předplatné Azure zakázané a jak ho můžete znovu aktivovat.
 keywords: zakázané předplatné azure
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: be5c8cac1b0b7f926f97206ec27bf6fbc9914c91
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: deab6db6b817bc429d3bec9c13674f8141cb2d68
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989914"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199530"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Opětovná aktivace zakázaného předplatného Azure
 

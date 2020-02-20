@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 8d286cbab33a1fb6a2d2a2cb70caed11b21af735
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904093"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467585"
 ---
 # <a name="azure-app-configuration-faq"></a>Nejčastější dotazy ke konfiguraci aplikací Azure
 
 Tento článek obsahuje nejčastější dotazy týkající se konfigurace aplikací Azure.
 
-## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>V čem se App Configuration liší od služby Azure Key Vault?
+## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Jak se liší konfigurace aplikace od Azure Key Vault?
 
 Konfigurace aplikací je navržená pro odlišnou sadu případů použití: pomáhá vývojářům spravovat nastavení aplikace a dostupnost funkcí řízení. Cílem je zjednodušit mnoho úloh práce se složitými konfiguračními daty.
 
@@ -46,23 +46,23 @@ Můžete vytvořit konfigurační hodnoty aplikace, které odkazují na tajné k
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>Šifruje konfigurace aplikace moje data?
 
-Ano. Konfigurace aplikace šifruje všechny hodnoty klíčů, které obsahuje, a šifruje síťovou komunikaci. Názvy klíčů se používají jako indexy pro načítání konfiguračních dat a nejsou zašifrované.
+Ano. Konfigurace aplikace šifruje všechny hodnoty klíčů, které obsahuje, a šifruje síťovou komunikaci. Názvy klíčů a popisky se používají jako indexy pro načítání konfiguračních dat a nejsou zašifrované.
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>Jak se liší konfigurace aplikace od nastavení Azure App Service?
 
-Azure App Service umožňuje definovat nastavení aplikace pro každou instanci App Service. Tato nastavení jsou předána jako proměnné prostředí do kódu aplikace. V případě potřeby můžete přiřadit nastavení k určitému slotu nasazení. Další informace najdete v tématu [Konfigurace nastavení aplikace](/azure/app-service/configure-common#configure-app-settings).
+Azure App Service umožňuje definovat nastavení aplikace pro každou instanci App Service. Tato nastavení jsou předána jako proměnné prostředí do kódu aplikace. Pokud chcete, můžete přiřadit nastavení k určitému slotu nasazení. Další informace najdete v tématu [Konfigurace nastavení aplikace](/azure/app-service/configure-common#configure-app-settings).
 
-Naproti tomu konfigurace aplikací Azure umožňuje definovat nastavení, která se dají sdílet mezi více aplikacemi, včetně aplikací běžících v App Service. K těmto nastavením lze v kódu aplikace získat pøístup prostřednictvím zprostředkovatelů konfigurace pro .NET a Java, prostřednictvím sady Azure SDK nebo přímo přes rozhraní REST API.
+Naproti tomu konfigurace aplikací Azure umožňuje definovat nastavení, která se dají sdílet mezi více aplikacemi. To zahrnuje aplikace běžící v App Service i jiné platformy. Kód aplikace přistupuje k těmto nastavením prostřednictvím zprostředkovatelů konfigurace pro .NET a Java, prostřednictvím sady Azure SDK nebo přímo přes rozhraní REST API.
 
-Můžete také importovat a exportovat nastavení mezi App Service a konfigurací aplikace. To vám umožní rychle nastavit nové úložiště konfigurace aplikace na základě stávajících nastavení App Service nebo snadno sdílet konfiguraci s existující aplikací, která spoléhá na nastavení App Service.
+Můžete také importovat a exportovat nastavení mezi App Service a konfigurací aplikace. Tato možnost umožňuje rychle nastavit nové úložiště konfigurace aplikace na základě stávajících nastavení App Service. Konfiguraci můžete sdílet taky s existující aplikací, která spoléhá na nastavení App Service.
 
 ## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>Existují nějaká omezení velikosti klíčů a hodnot uložených v konfiguraci aplikace?
 
-Existuje limit 10 KB pro jednu položku klíč-hodnota.
+Pro jednu položku klíč-hodnota je povolený limit 10 KB.
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Jak mám ukládat konfigurace pro více prostředí (test, fázování, produkce atd.)?
 
-V současné době můžete řídit, kdo má přístup k konfiguraci aplikace na úrovni na úrovni úložiště. Pro každé prostředí, které vyžaduje různá oprávnění, použijte samostatné úložiště. Tento přístup vám dává nejlepší izolaci zabezpečení.
+V současné době určujete, kdo má přístup ke konfiguraci aplikace na úrovni na úrovni úložiště. Pro každé prostředí, které vyžaduje různá oprávnění, použijte samostatné úložiště. Tento přístup vám dává nejlepší izolaci zabezpečení.
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Jaké jsou doporučené způsoby použití konfigurace aplikace?
 
@@ -70,7 +70,32 @@ Viz [osvědčené postupy](./howto-best-practices.md).
 
 ## <a name="how-much-does-app-configuration-cost"></a>Kolik stojí konfigurace aplikace?
 
-Službu je možné používat v rámci verze Public Preview.
+Existují dvě cenové úrovně: 1) úroveň Free a 2) úroveň Standard.
+
+Pokud jste úložiště vytvořili před zavedením úrovně Standard, při obecné dostupnosti se automaticky přesune na úroveň Free. Můžete vybrat, jestli chcete upgradovat na úroveň Standard, nebo zůstat na úrovni Free, pokud to vyhovuje vašim potřebám.
+
+## <a name="which-app-configuration-tier-should-i-use"></a>Jakou úroveň konfigurace aplikace mám použít?
+
+Obě úrovně konfigurace aplikací nabízejí základní funkce, včetně nastavení konfigurace, příznaků funkcí, Key Vault odkazů, základních operací správy, metrik a protokolů.
+
+Níže jsou uvedeny požadavky pro výběr vrstvy.
+
+- **Prostředky na předplatné**: prostředek se skládá z jednoho úložiště konfigurace. Každé předplatné je omezené na jedno úložiště konfigurace v bezplatné úrovni. Předplatná můžou mít neomezený počet úložišť konfigurace na úrovni Standard.
+- **Úložiště na prostředek**: na úrovni Free je každé úložiště konfigurace omezené na 10 MB úložiště. Na úrovni Standard může každé úložiště konfigurace využívat až 1 GB úložiště.
+- **Historie klíčů**: Konfigurace aplikace ukládá historii všech změn provedených v klíčích. Na úrovni Free je tato historie uložená po dobu sedmi dní. Na úrovni Standard se tato historie ukládá po dobu 30 dnů.
+- **Požadavky za den**: úložiště úrovně Free se omezuje na 1 000 požadavků za den. Jakmile obchod dosáhne 1 000 požadavků, vrátí stavový kód HTTP 429 pro všechny požadavky do půlnoci UTC.
+
+    V případě obchodů úrovně Standard jsou první 200 000 žádosti každý den zahrnuté do denního poplatku. Další požadavky se účtují jako nadlimitní využití.
+
+- **Smlouva o úrovni služeb**: úroveň Standard má smlouvu SLA s 99,9% dostupností. Úroveň Free nemá smlouvu SLA.
+- **Funkce zabezpečení**: obě úrovně zahrnují základní funkce zabezpečení, včetně šifrování pomocí klíčů spravovaných Microsoftem, ověřování pomocí HMAC nebo Azure Active Directory, podpora RBAC a spravované identity. Úroveň Standard nabízí pokročilejší funkce zabezpečení, včetně podpory a šifrování privátních odkazů pomocí klíčů spravovaných zákazníkem.
+- **Náklady**: obchody úrovně Standard mají denní poplatek za využití. Pro žádosti po denním přidělení se taky účtuje poplatky za nadlimitní využití. K používání úložiště úrovně Free se neúčtují žádné náklady.
+
+## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Můžu upgradovat obchod z úrovně Free na úroveň Standard? Můžu z úrovně Standard snížit obchod na úroveň Free?
+
+Můžete kdykoli upgradovat z úrovně Free na úroveň Standard.
+
+Nemůžete downgradovat úložiště z úrovně Standard na úroveň Free. Můžete vytvořit nové úložiště na úrovni Free a pak [importovat konfigurační data do tohoto úložiště](howto-import-export-data.md).
 
 ## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>Jak mohu dostávat oznámení o nových verzích a dalších informacích souvisejících s konfigurací aplikace?
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75fe9c8587a15ed37366dceda05b5befb353ebb3
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f9fe17c8657b183f9f5370b6096d678e12f7d629
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647505"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472498"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Instalace vysoké dostupnosti SAP NetWeaver v clusteru s podporou převzetí služeb při selhání systému Windows a sdílené složce pro instance SAP ASCS/SCS v Azure
 
@@ -199,7 +199,7 @@ ms.locfileid: "75647505"
 
 Tento článek popisuje, jak nainstalovat a nakonfigurovat systém SAP s vysokou dostupností v Azure, s clusterem Windows Server failover cluster (WSFC) a Souborový server se škálováním na více systémů jako možnost pro clusteringu instancí SAP ASCS/SCS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s instalací, přečtěte si následující články:
 
@@ -268,7 +268,7 @@ New-Item -Path $SAPGlobalFOlder -ItemType Directory
 $UsrSAPFolder = "C:\ClusterStorage\SAP$SAPSID\usr\sap\"
 
 # Create a SAPMNT file share and set share security
-New-SmbShare -Name sapmnt -Path $UsrSAPFolder -FullAccess "BUILTIN\Administrators", $ASCSClusterObjectNode1, $ASCSClusterObjectNode2 -ContinuouslyAvailable $false -CachingMode None -Verbose
+New-SmbShare -Name sapmnt -Path $UsrSAPFolder -FullAccess "BUILTIN\Administrators", $ASCSClusterObjectNode1, $ASCSClusterObjectNode2 -ContinuouslyAvailable $true -CachingMode None -Verbose
 
 # Get SAPMNT file share security settings
 Get-SmbShareAccess sapmnt
@@ -299,7 +299,7 @@ Vytvořte název sítě s clustery SAP ASCS/SCS (například **PR1-ASCS [10.0.6.
 
 Nainstalujte instanci SAP ASCS/SCS do prvního uzlu clusteru. Chcete-li nainstalovat instanci, v instalačním nástroji SAP SWPM přejít na:
 
-**\<produktu >**  >  **\<DBMS >**  > **instalaci** > **aplikačního serveru ABAP** (nebo **Java**) > **ASCS/SCS instance** **systému** > **prvním uzlu clusteru**.
+**\<produktu >**  >  **\<DBMS >**  > **instalaci** > **aplikačního serveru ABAP** (nebo **Java**) > **ASCS/SCS instance** **systému** > **prvním uzlu clusteru**. > 
 
 ### <a name="add-a-probe-port"></a>Přidat port testu paměti
 
@@ -320,7 +320,7 @@ Parametry aktualizace v profilu instance SAP ASCS/SCS \<SID >_ASCS/SCS\<Nr >_ \<
 | Název parametru | Hodnota parametru |
 | --- | --- |
 | gw/netstat_once | **0** |
-| enque/encni/set_so_keepalive  | **true** |
+| enque/encni/set_so_keepalive  | **podmínka** |
 | Služba/ha_check_node | **1** |
 
 Restartujte instanci SAP ASCS/SCS. V uzlech clusteru SAP ASCS/SCS nastavte parametry `KeepAlive` podle pokynů k [Nastavení položek registru v uzlech clusteru instance SAP ASCS/SCS][high-availability-guide]. 

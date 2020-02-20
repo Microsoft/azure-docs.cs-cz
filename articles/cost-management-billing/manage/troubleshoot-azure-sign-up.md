@@ -1,24 +1,20 @@
 ---
 title: Řešení potíží s registrací do Azure
 description: Řešení problému při pokusu o registraci nového účtu na portálu Microsoft Azure nebo v centru účtů
-services: billing
 author: v-miegge
-manager: dcscontentpm
+ms.reviewer: dcscontentpm
 editor: v-jesits
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/12/2019
+ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: e13a55143e554a55a2902fc2350f6fde6a8afb09
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: e6f6866cdcfb53782c7dbb18bb76143eb76755f9
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989290"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200499"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Řešení potíží s registrací do Azure
 

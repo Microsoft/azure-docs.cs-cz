@@ -1,21 +1,18 @@
 ---
 title: Migrace z rozhraní API podle smlouvy EA na rozhraní API podle smlouvy se zákazníkem Microsoftu – Azure
 description: Tento článek vám pomůže porozumět důsledkům migrace smlouvy Microsoft Enterprise (EA) na smlouvu se zákazníkem Microsoftu (MCA).
-services: cost-management
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/21/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: micflan
-ms.custom: ''
-ms.openlocfilehash: b0c30cd35efd598767d21dbdafc5100d8896380c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.reviewer: micflan
+ms.openlocfilehash: 397e0a21b1ba11b3bdd74c2030ff358c1ce159d8
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76514710"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201029"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrace z rozhraní API podle smlouvy Enterprise (EA) na rozhraní API podle smlouvy se zákazníkem Microsoftu (MCA)
 
@@ -137,7 +134,7 @@ K aktualizaci naprogramovaného kódu použijte následující parametry queryst
 
 | Původní parametry | Nové parametry |
 | --- | --- |
-| `billingPeriod={billingPeriod}` | Nepodporuje se. |
+| `billingPeriod={billingPeriod}` | Nepodporuje se |
 | `endTime=yyyy-MM-dd` | `endDate=yyyy-MM-dd` |
 | `startTime=yyyy-MM-dd` | `startDate=yyyy-MM-dd` |
 
@@ -432,7 +429,7 @@ Starší vlastnosti z [rozhraní API pro ceníky v rámci Azure Resource Manager
 | --- | --- | --- |
 | ID měření | _meterId_ | Jedinečný identifikátor měřiče Stejné jako meterID. |
 | Název měřiče | meterName | Název měřiče. Měřič představuje nasaditelný prostředek služby Azure. |
-| Kategorie měřiče  | service | Název klasifikační kategorie měřiče. Totéž jako služba v ceníku v rámci smlouvy se zákazníkem Microsoftu. Přesné hodnoty se liší. |
+| Kategorie měřiče  | služba | Název klasifikační kategorie měřiče. Totéž jako služba v ceníku v rámci smlouvy se zákazníkem Microsoftu. Přesné hodnoty se liší. |
 | Podkategorie měřiče | meterSubCategory | Název kategorie dílčí klasifikace měřiče. Na základě klasifikace pro rozlišení sad funkcí na nejvyšší úrovni v rámci služby. Například SQL Database úrovně Basic oproti SQL Database úrovně Standard. |
 | Oblast měřiče | meterRegion | &nbsp;  |
 | Jednotka | _Neužívá se._ | Lze parsovat z položky unitOfMeasure. |

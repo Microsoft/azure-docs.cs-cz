@@ -1,24 +1,17 @@
 ---
 title: Slevy rezervačních plánů pro Red Hat – Azure
 description: Zjistěte, jak se na software Red Hat na virtuálních počítačích uplatňují slevy za plán Red Hat.
-services: billing
-documentationcenter: ''
 author: yashesvi
-manager: yashar
-editor: ''
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/30/2019
-ms.author: cwatson
-ms.openlocfilehash: 280764d3b9185abd1d8112f641007a7dc1861b34
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/12/2020
+ms.author: banders
+ms.openlocfilehash: 173967356c17150d5694b48e6ed2acd78155ca4b
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995322"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199224"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Vysvětlení způsobu uplatňování slevy za plán rezervace softwaru Red Hat Linux Enterprise v Azure
 

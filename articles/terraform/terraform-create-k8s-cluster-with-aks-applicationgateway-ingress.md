@@ -3,12 +3,12 @@ title: Kurz – vytvoření kontroleru Application Gateway příchozího přenos
 description: Kurz ilustrující postup vytvoření clusteru Kubernetes pomocí služby Azure Kubernetes Service pomocí Application Gateway jako řadiče pro příchozí přenosy
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: b16b0a40d14ecde87b2637976299d05d37d706f3
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772856"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472260"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Kurz: vytvoření kontroleru Application Gateway příchozího přenosu ve službě Azure Kubernetes
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte, jak provádět následující úlohy:
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Nakonfigurovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](/azure/virtual-machines/linux/terraform-install-configure).
+- **Nakonfigurovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](terraform-install-configure.md).
 
 - **Skupina prostředků Azure**: Pokud ještě nemáte skupinu prostředků Azure, která se má použít pro ukázku, [vytvořte skupinu prostředků Azure](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups). Poznamenejte si název a umístění skupiny prostředků, protože tyto hodnoty jsou použity v ukázce.
 
@@ -67,7 +67,7 @@ Prvním krokem je vytvoření adresáře s konfiguračními soubory Terraformu p
 
 Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele Azure.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `main.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `main.tf`.
 
     ```bash
     code main.tf
@@ -91,7 +91,7 @@ Vytvořte konfigurační soubor Terraformu, který deklaruje zprostředkovatele 
 
 Vytvořte konfigurační soubor Terraformu, který obsahuje seznam všech proměnných potřebných pro toto nasazení.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `variables.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `variables.tf`.
 
     ```bash
     code variables.tf
@@ -233,7 +233,7 @@ Vytvořte konfigurační soubor Terraformu, který obsahuje seznam všech promě
 ## <a name="define-the-resources"></a>Definování prostředků 
 Vytvořte konfigurační soubor Terraformu, který vytvoří všechny prostředky. 
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `resources.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `resources.tf`.
 
     ```bash
     code resources.tf
@@ -481,7 +481,7 @@ Se službou AKS platíte jenom za pracovní uzly. Záznam `agent_pool_profile` n
 
 [Terraformuové výstupy](https://www.terraform.io/docs/configuration/outputs.html) umožňují definovat hodnoty, které jsou zvýrazněné uživateli, když terraformu použije plán, a dá se dotázat pomocí příkazu `terraform output`. V této části vytvoříte výstupní soubor, který pomocí [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) umožňuje přístup ke clusteru.
 
-1. Ve službě Cloud Shell vytvořte soubor s názvem `output.tf`.
+1. Ve Cloud Shellu vytvořte soubor s názvem `output.tf`.
 
     ```bash
     code output.tf

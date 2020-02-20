@@ -1,23 +1,20 @@
 ---
 title: Vysvětlení poplatků za externí služby v Azure | Microsoft Docs
 description: Přečtěte si o informace účtování poplatků za externí služby v Azure, dříve označované jako poplatky za Marketplace.
-author: jureid
-manager: jureid
+author: bandersmsft
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f94b79e03cf97275ec4dacf17e097e1678e81d10
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ce385de408d4b0a8cf1531f762a126a6b9b2c126
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989420"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199071"
 ---
 # <a name="understand-your-azure-external-services-charges"></a>Vysvětlení poplatků za externí služby v Azure
 Externí služby zveřejňují externí dodavatelé softwaru na webu Azure Marketplace. Takovou externí službou, kterou si můžete zakoupit v Azure, přestože ji nevydal Microsoft, je například SendGrid. Prostřednictvím Azure Marketplace se prodávají i některé produkty Microsoftu.

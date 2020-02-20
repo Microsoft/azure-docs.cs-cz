@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: de644e49d998ad260532078de5c93c482cbc6fbc
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029487"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471852"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Nejčastější dotazy týkající se Azure Network Watcher
 Služba [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) poskytuje sadu nástrojů pro monitorování, diagnostiku, zobrazení metrik a povolení nebo zakázání protokolů pro prostředky ve službě Azure Virtual Network. Tento článek obsahuje odpovědi na běžné dotazy týkající se služby.
@@ -75,8 +75,11 @@ Funkce zachytávání paketů, řešení potíží s připojením a monitorován
 ### <a name="what-are-resource-limits-on-network-watcher"></a>Co jsou omezení prostředků u Network Watcher?
 Všechna omezení najdete na stránce [omezení služby](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#network-watcher-limits) .  
 
-### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Proč je pro jednotlivé oblasti povolena pouze jedna instance Network Watcher?
+### <a name="why-is-only-one-instance-of-network-watcher-allowed-per-region"></a>Proč je pro jednotlivé oblasti povolena pouze jedna instance Network Watcher? 
 Network Watcher pro předplatné, který funguje, je třeba povolit jenom jednou, nejedná se o limit služby.
+
+### <a name="how-can-i-manage-the-network-watcher-resource"></a>Jak můžu spravovat prostředek Network Watcher? 
+Prostředek Network Watcher představuje back-end službu pro Network Watcher a plně spravuje Azure. Zákazníci je nepotřebují spravovat. Operace, jako je přesun, nejsou u prostředku podporovány. Prostředek je ale [možné odstranit](https://docs.microsoft.com/azure/network-watcher/network-watcher-create#delete-a-network-watcher-in-the-portal). 
 
 ## <a name="nsg-flow-logs"></a>Protokoly toku NSG
 

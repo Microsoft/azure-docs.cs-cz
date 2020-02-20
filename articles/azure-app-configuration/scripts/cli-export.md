@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 0cdefaa60c9e7a1aab418042c037ef76b63e7804
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c4fc8f1cd1159f296d37fd67634d1c3171f7d7a9
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898664"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468247"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Export z úložiště konfigurace aplikace Azure
 
@@ -31,10 +31,6 @@ Tento ukázkový skript exportuje klíčové hodnoty z úložiště konfigurace 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
-
-Nejdřív musíte nainstalovat rozšíření rozhraní příkazového řádku Azure App Configuration, a to spuštěním následujícího příkazu:
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -51,9 +47,9 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 Tento skript používá následující příkazy k exportu z úložiště konfigurace aplikace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
-| [AZ appconfig KV export](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-export) | Exportuje z prostředku úložiště konfigurace aplikace. |
+| [AZ appconfig KV export](/cli/azure/appconfig/kv#az-appconfig-kv-export) | Exportuje z prostředku úložiště konfigurace aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 

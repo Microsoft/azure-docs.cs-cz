@@ -1,25 +1,20 @@
 ---
 title: Scénář rozpočtu pro správu nákladů a fakturace Azure | Microsoft Docs
 description: Naučte se používat automatizaci Azure k vypnutí virtuálních počítačů na základě konkrétních rozpočtových prahů.
-services: billing
-documentationcenter: ''
 author: bandersmsft
-manager: dougeby
-editor: ''
+ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
-ms.workload: billing
-ms.date: 10/01/2019
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: e183a622910c7690b566537311661789253efbfb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ae17ecc72bb1e6af1b79d4a2952c2f78dce4b5bd
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75992722"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200978"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Správa nákladů s využitím služby Azure Budgets
 

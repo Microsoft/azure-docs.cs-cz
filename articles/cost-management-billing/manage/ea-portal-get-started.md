@@ -1,19 +1,18 @@
 ---
 title: Začínáme s portálem Azure Enterprise
 description: Tento článek vysvětluje, jak zákazníci se smlouvou Azure Enterprise (Azure EA) používají portál Azure Enterprise.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/04/2020
+ms.date: 02/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
-manager: boalcsva
-ms.openlocfilehash: 516b3704daee885541cec49b0ee374e050dd4b22
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.reviewer: boalcsva
+ms.openlocfilehash: e1c6eac81968ef6ecbc12ec52415c2aa9680f3e1
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023340"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200825"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Začínáme s portálem Azure Enterprise
 
@@ -235,7 +234,7 @@ Při přenášení účtů mějte na paměti toto:
   - Z pracovního nebo školního účtu na jiný pracovní nebo školní účet.
   - Z účtu Microsoft na pracovní nebo školní účet.
   - Z účtu Microsoft na jiný účet Microsoft.
-  
+
     Cílovým účtem pro přenos musí být platný účet Azure Commerce. U nových účtů budete při přihlašování k portálu Azure Enterprise požádáni o vytvoření účtu Azure Commerce. U existujících účtů musíte nejdřív vytvořit nové předplatné Azure – teprve pak bude účet splňovat podmínky.
 
 - Přenos z pracovního nebo školního účtu na účet Microsoft nelze provést.
@@ -285,7 +284,7 @@ Vlastníci účtů mohou zobrazovat a spravovat předplatná. Prostřednictvím 
 
 Vytvořením různých předplatných pro jednotlivá aplikační prostředí přispějete k jejich lepšímu zabezpečení.
 
-- Ke každému předplatnému můžete také přiřadit jiný účet správce služeb. 
+- Ke každému předplatnému můžete také přiřadit jiný účet správce služeb.
 - Předplatná můžete přidružit k libovolnému počtu služeb.
 - Předplatná vytváří vlastník účtu, který také ke každému předplatnému v rámci jeho účtu přiřadí účet správce služeb.
 
@@ -309,7 +308,7 @@ Jak přidat předplatné:
 1. Vyberte **Subscriptions** (Předplatná) a potom vyberte předplatné, které jste vytvořili.
 1. Vyberte **Edit Subscription Details** (Upravit podrobnosti předplatného).
 1. Upravte **název předplatného** a **správce služeb** a potom zaškrtněte políčko.
-  
+
    Název předplatného se zobrazí na sestavách. Jedná se o název projektu, který je k předplatnému přidružený na vývojovém portálu.
 
 Může trvat až 24 hodin, než se nové předplatné objeví v seznamu předplatných. Po vytvoření předplatného můžete:
@@ -509,14 +508,14 @@ Portál Azure Enterprise nabízí podnikovým zákazníkům dva typy předplatn�
 - Microsoft Azure Enterprise, které je ideální pro:
   - Veškeré produkční využití
   - Nejlepší ceny v závislosti na útratě za infrastrukturu
-  
+
   Pokud potřebujete další informace, [kontaktujte obchodní oddělení Azure](https://azure.microsoft.com/pricing/enterprise-agreement/).
 
 - Enterprise pro vývoj/testování, které je ideální pro:
   - Všechny týmové úlohy vývoje/testování
   - Úlohy vývoje/testování se středním až vysokým zatížením
   - Přístup ke speciálním imagím MSDN a preferenčním sazbám za služby
-  
+
   Další informace najdete v tématu, které se věnuje [nabídce Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Je možné převést vlastnictví předplatného na jiný účet?

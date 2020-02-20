@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: ef87d8d02e6d7800435cab207a88197ef7c94b7c
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: c18751d315af6da1a4b2f06aaca28c84746b7be5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430988"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470764"
 ---
 # <a name="container-security-in-security-center"></a>Zabezpečení kontejneru v Security Center
 
@@ -41,7 +41,7 @@ Po nalezení problémů – podle Qualys nebo Security Center – na řídicím 
 ## <a name="environment-hardening"></a>Posílení zabezpečení prostředí
 
 ### <a name="continuous-monitoring-of-your-docker-configuration"></a>Nepřetržité monitorování konfigurace Docker
-Azure Security Center identifikuje nespravované kontejnery hostované na virtuálních počítačích s IaaS Linux nebo jiné počítače se systémem Linux s kontejnery Docker. Security Center nepřetržitě vyhodnocuje konfiguraci těchto kontejnerů. Pak je porovná s [centrem pro Internet Security (CIS) Docker test](https://www.cisecurity.org/benchmark/docker/).
+Azure Security Center identifikuje nespravované kontejnery hostované na virtuálních počítačích s IaaS Linux nebo jiné počítače se systémem Linux s kontejnery Docker. Security Center nepřetržitě vyhodnocuje konfiguraci těchto kontejnerů. Pak je porovná s [centrem testování v Docker pro Internet Security (CIS)](https://www.cisecurity.org/benchmark/docker/).
 
 Security Center zahrnuje celou RuleSet srovnávacího testu služby CI Docker a upozorní vás, pokud vaše kontejnery nevyhovují žádnému z ovládacích prvků. Když nalezne chybnou konfiguraci, Security Center vygeneruje doporučení zabezpečení. Na **stránce doporučení** si můžete zobrazit doporučení a opravit problémy. Na kartě **kontejnery** se zobrazí také doporučení se všemi virtuálními počítači nasazenými pomocí Docker. 
 
@@ -71,9 +71,9 @@ Zjistili jsme hrozby na úrovni hostitele a AKS clusteru. Úplné podrobnosti na
 ## <a name="container-security-faq"></a>Nejčastější dotazy týkající se zabezpečení kontejneru
 
 ### <a name="what-types-of-images-can-azure-security-center-scan"></a>Jaké typy imagí mohou Azure Security Center prohledávat?
-Security Center prohledává image založené na operačním systému Linux. 
+Security Center prohledává image založené na operačním systému Linux, které poskytují přístup k prostředí. 
 
-Qualys Scanner nepodporuje image "distroless", které obsahují jenom vaši aplikaci a její závislosti za běhu.
+Qualys skener nepodporuje image Super minimalist, jako jsou [pomocné obrázky Docker](https://hub.docker.com/_/scratch/) , nebo Image Distroless, které obsahují jenom vaši aplikaci a její závislosti za běhu (bez správce balíčků, prostředí nebo operačního systému).
 
 ### <a name="how-does-we-scan-azure-security-center-scan-an-image"></a>Jak Prohledávám Azure Security Center naskenováním obrázku?
 Bitová kopie se extrahuje z registru. Pak se spustí v izolovaném izolovaném prostoru (sandbox) se skenerem Qualys, který extrahuje seznam známých chyb zabezpečení.

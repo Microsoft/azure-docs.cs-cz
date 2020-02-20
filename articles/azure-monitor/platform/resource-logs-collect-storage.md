@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e99a0e8e42bcfb5c7967a9cb1c91631bacbea53a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f4109359adaaeae0a1ba027ac04439ff60b5a939
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980078"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467177"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archivace protokolů prostředků Azure do účtu úložiště
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé.  Tento článek popisuje, jak shromažďovat protokoly platforem pro účet služby Azure Storage a uchovávat data pro archivaci.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud ještě nemáte [účet úložiště Azure](../../storage/common/storage-account-create.md) , musíte ho vytvořit. Účet úložiště nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
 
 
@@ -33,7 +33,7 @@ Odeslání protokolů platformy do úložiště a dalších cílů vytvořením 
 
 
 ## <a name="collect-data-from-compute-resources"></a>Shromažďování dat z výpočetních prostředků
-Nastavení diagnostiky bude shromažďovat protokoly prostředků pro výpočetní prostředky Azure, jako jsou všechny ostatní prostředky, ale ne jejich hostovaný operační systém nebo úlohy. Chcete-li shromáždit tato data, nainstalujte [agenta pro Windows Azure Diagnostics](diagnostics-extension-overview.md). Podrobnosti najdete [v tématu ukládání a zobrazení diagnostických dat v Azure Storage](diagnostics-extension-to-storage.md) .
+Nastavení diagnostiky bude shromažďovat protokoly prostředků pro výpočetní prostředky Azure, jako jsou všechny ostatní prostředky, ale ne jejich hostovaný operační systém nebo úlohy. Chcete-li shromáždit tato data, nainstalujte [agenta pro Windows Azure Diagnostics](diagnostics-extension-overview.md). 
 
 
 ## <a name="schema-of-platform-logs-in-storage-account"></a>Schéma protokolů platformy v účtu úložiště

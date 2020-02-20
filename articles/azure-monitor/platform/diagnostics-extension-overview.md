@@ -6,85 +6,108 @@ ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/13/2019
-ms.openlocfilehash: 1bdefc6b61e4e5cc5b8648880c5fdd8662af1bc1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/14/2020
+ms.openlocfilehash: d9db4b4c8e6d82f29d227b9f8afe528e000c651e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395372"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467991"
 ---
-# <a name="what-is-azure-diagnostics-extension"></a>Co je rozšíření Azure Diagnostics
-Rozšíření Azure Diagnostics je agentem v rámci Azure, který umožňuje shromažďování diagnostických dat v nasazené aplikaci. Diagnostické rozšíření můžete použít z řady různých zdrojů. V současné době jsou podporované webové a pracovní role Azure Cloud Service (Classic), Virtual Machines, sady škálování virtuálních počítačů a Service Fabric. Jiné služby Azure mají různé diagnostické metody. Podívejte [se na Přehled monitorování v Azure](../../azure-monitor/overview.md).
+# <a name="azure-diagnostics-extension-overview"></a>Přehled rozšíření Azure Diagnostics
+Azure Diagnostics rozšíření je [Agent v Azure monitor](agents-overview.md) , který shromažďuje data monitorování z hostovaného operačního systému výpočetních prostředků Azure, včetně virtuálních počítačů. Tento článek obsahuje přehled rozšíření Azure Diagnostics, včetně specifických funkcí, které podporuje, a možností instalace a konfigurace. 
 
-## <a name="linux-agent"></a>Linuxový agent
-K dispozici je [verze Linux rozšíření](../../virtual-machines/extensions/diagnostics-linux.md) pro Virtual Machines se systémem Linux. Shromážděné statistiky a chování se liší od verze Windows.
+> [!NOTE]
+> Azure Diagnostics rozšíření je jedním z agentů, které jsou k dispozici ke shromažďování dat monitorování z hostovaného operačního systému výpočetních prostředků. Popis různých agentů a pokynů k výběru vhodných agentů pro vaše požadavky najdete v tématu [přehled Azure Monitorch agentů](agents-overview.md) .
 
-## <a name="data-you-can-collect"></a>Data, která lze shromažďovat
-Rozšíření Azure Diagnostics může shromažďovat následující typy dat:
+## <a name="comparison-to-log-analytics-agent"></a>Porovnání s agentem Log Analytics
+Agenta Log Analytics v Azure Monitor lze také použít ke shromažďování dat monitorování z hostovaného operačního systému virtuálních počítačů. V závislosti na vašich požadavcích se můžete rozhodnout použít buď nebo. Podrobné porovnání agentů Azure Monitor najdete v tématu [přehled Azure Monitorch agentů](agents-overview.md) . 
+
+Mezi hlavní rozdíly, které je potřeba vzít v úvahu, patří:
+
+- Rozšíření Azure Diagnostics se dá použít jenom s virtuálními počítači Azure. Agent Log Analytics se dá použít s virtuálními počítači v Azure, jinými cloudy a místním prostředím.
+- Rozšíření Azure Diagnostics odesílá data do Azure Storage, [Azure monitor metriky](data-platform-metrics.md) (pouze Windows) a Event Hubs. Agent Log Analytics shromažďuje data do [protokolů Azure monitor](data-platform-logs.md).
+- Agent Log Analytics je vyžadován pro [řešení](../monitor-reference.md#insights-and-core-solutions), [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md)a další služby, jako je například [Azure Security Center](/azure/security-center/).
+
+## <a name="costs"></a>Náklady
+Pro diagnostické rozšíření Azure se neúčtují žádné náklady, ale pro ingestování dat vám můžou být účtovány poplatky. Podívejte se na [Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/) pro cíl, kde shromažďujete data.
+
+## <a name="data-collected"></a>Data shromážděná
+V následujících tabulkách najdete seznam dat, která se můžou shromažďovat v diagnostickém rozšíření pro Windows a Linux.
+
+### <a name="windows-diagnostics-extension-wad"></a>Rozšíření Windows Diagnostics (WAD)
 
 | Zdroj dat | Popis |
 | --- | --- |
-| Metriky čítače výkonu |Operační systém a vlastní čítače výkonu |
-| Protokoly aplikací |Trasování zpráv zapsaných vaší aplikací |
-| Protokoly událostí Windows |Informace odesílané systému protokolování událostí systému Windows |
+| Protokoly událostí Windows   | Události z protokolu událostí systému Windows. |
+| Čítače výkonu | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
+| Protokoly IIS             | Informace o použití pro weby služby IIS běžící v hostovaném operačním systému. |
+| Protokoly aplikací     | Sleduje zprávy zapsané vaší aplikací. |
 | Protokoly EventSource .NET |Psaní kódu pro události pomocí třídy [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) .NET |
-| Protokoly IIS |Informace o webech služby IIS |
-| [Protokoly ETW založené na manifestech](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Trasování událostí pro události systému Windows generované jakýmkoli procesem. první |
-| Výpisy stavu systému (protokoly) |Informace o stavu procesu, pokud dojde k chybě aplikace |
-| Vlastní protokoly chyb |Protokoly vytvořené vaší aplikací nebo službou |
-| Protokoly diagnostické infrastruktury Azure |Informace o samotné Azure Diagnostics |
+| [Protokoly ETW založené na manifestech](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Trasování událostí pro události systému Windows generované jakýmkoli procesem. |
+| Výpisy stavu systému (protokoly)   | Informace o stavu procesu, pokud dojde k chybě aplikace. |
+| Protokoly založené na souborech    | Protokoly vytvořené vaší aplikací nebo službou. |
+| Diagnostické protokoly agenta | Informace o Azure Diagnostics sebe sama. |
 
-(1) Chcete-li získat seznam zprostředkovatelů ETW, spusťte `c:\Windows\System32\logman.exe query providers` v okně konzoly na počítači, ze kterého chcete získat informace.
 
-## <a name="data-storage"></a>Úložiště dat
-Rozšíření ukládá svá data do vámi zadaného [Azure Storage účtu](diagnostics-extension-to-storage.md) .
+### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)
 
-Můžete ji také odeslat [Application Insights](../../azure-monitor/app/cloudservices.md). 
+| Zdroj dat | Popis |
+| --- | --- |
+| Syslog | Události odeslané do systému protokolování událostí pro Linux.   |
+| Čítače výkonu  | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
+| Soubory protokolu | Záznamy odesílané do protokolu založeného na souborech.  |
 
-Další možností je streamování IT do [centra událostí](../../event-hubs/event-hubs-about.md), které pak umožňuje odeslat ho do služby monitorování mimo Azure.
+## <a name="data-destinations"></a>Cíle dat
+Diagnostické rozšíření Azure pro systémy Windows i Linux vždy shromažďuje data do účtu Azure Storage. Přečtěte si téma [instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)](diagnostics-extension-windows-install.md) a [použijte diagnostické rozšíření systému Linux k monitorování metrik a protokolů](../../virtual-machines/extensions/diagnostics-linux.md) pro seznam konkrétních tabulek a objektů blob, kde jsou tato data shromažďována.
 
-Máte také možnost odesílat data do Azure Monitor databáze časových řad s metrikami. V tuto chvíli je tato jímka platná jenom pro čítače výkonu. Umožňuje posílat čítače výkonu v nástroji jako vlastní metriky. Tato funkce je ve verzi Preview. Jímka Azure Monitor podporuje:
-* Načítání všech čítačů výkonu odeslaných do Azure Monitor prostřednictvím [rozhraní API pro Azure monitor metriky.](https://docs.microsoft.com/rest/api/monitor/)
-* Výstrahy na všechny čítače výkonu odeslané do Azure Monitor prostřednictvím [výstrah metrik](../../azure-monitor/platform/alerts-overview.md) v Azure monitor
-* Zpracovávání operátoru zástupného znaku v čítačích výkonu jako dimenze instance v rámci metriky.  Pokud jste například shromáždili čítač "logický disk (\*)/DiskWrites/sec", mohli byste filtrovat a rozdělit na dimenzi "instance", která vykreslí nebo upozorní na zápisy disku/s pro každý logický disk na virtuálním počítači (například C:)
+Nakonfigurujte jednu nebo více *datových umyvadel* pro odesílání dat do dalších dalších cílů. V následujících částech najdete seznam umyvadel dostupných pro diagnostické rozšíření systému Windows a Linux.
 
-Další informace o tom, jak nakonfigurovat tuto jímku, najdete v [dokumentaci ke schématu diagnostiky Azure.](diagnostics-extension-schema-1dot3.md)
+### <a name="windows-diagnostics-extension-wad"></a>Rozšíření Windows Diagnostics (WAD)
 
-## <a name="costs"></a>Náklady
-U každé z výše uvedených možností se může účtovat náklady. Nezapomeňte je prozkoumat, aby nedocházelo k neočekávaným fakturám.  Application Insights, centrum událostí a Azure Storage mají samostatné náklady spojené s příjmem a uloženým časem. Konkrétně Azure Storage bude uchovávat všechna data navždy, takže možná budete chtít po uplynutí určité doby vyprázdnit starší data a snížit tak náklady.    
+| Cíl | Popis |
+|:---|:---|
+| Azure Monitor metriky | Shromažďovat údaje o výkonu pro Azure Monitor metriky. Viz [odeslání metriky hostovaného operačního systému do databáze metriky Azure monitor](collect-custom-metrics-guestos-resource-manager-vm.md).  |
+| Event Hubs | K posílání dat mimo Azure použijte Azure Event Hubs. Přečtěte si téma [streamování dat Azure Diagnostics do Event Hubs](diagnostics-extension-stream-event-hubs.md) |
+| Objekty blob Azure Storage | Zápis do dat do objektů BLOB v Azure Storage kromě tabulek. |
+| Application Insights | Shromažďovat data z aplikací běžících ve vašem VIRTUÁLNÍm počítači a Application Insights je integrovat s ostatními monitorováním aplikací. Viz [odeslání diagnostických dat do Application Insights](diagnostics-extension-to-application-insights.md). |
 
-## <a name="versioning-and-configuration-schema"></a>Správa verzí a schéma konfigurace
-Viz [Azure Diagnostics Historie verzí a schématu](diagnostics-extension-schema.md).
+Data WAD můžete také shromažďovat z úložiště do pracovního prostoru Log Analytics, abyste je mohli analyzovat pomocí protokolů Azure Monitor, i když se pro tuto funkci obvykle používá agent Log Analytics. Může odesílat data přímo do pracovního prostoru Log Analytics a podporuje řešení a přehledy, které poskytují další funkce.  Viz [shromáždění diagnostických protokolů Azure z Azure Storage](diagnostics-extension-logs.md). 
 
+
+### <a name="linux-diagnostics-extension-lad"></a>Diagnostické rozšíření pro Linux (LAD)
+LAD zapisuje data do tabulek v Azure Storage. Podporuje jímky v následující tabulce.
+
+| Cíl | Popis |
+|:---|:---|
+| Event Hubs | K posílání dat mimo Azure použijte Azure Event Hubs. |
+| Objekty blob Azure Storage | Zápis do dat do objektů BLOB v Azure Storage kromě tabulek. |
+| Azure Monitor metriky | Kromě LAD nainstalujte agenta telegraf. Viz [shromáždění vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf](collect-custom-metrics-linux-telegraf.md).
+
+
+## <a name="installation-and-configuration"></a>Instalace a konfigurace
+Diagnostické rozšíření je implementováno jako [rozšíření virtuálního počítače](/virtual-machines/extensions/overview) v Azure, takže podporuje stejné možnosti instalace pomocí Správce prostředků šablon, PowerShellu a rozhraní příkazového řádku. Obecné informace o instalaci a údržbě rozšíření virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů pro Windows](/virtual-machines/extensions/features-windows) a [rozšíření virtuálních počítačů pro Linux](/virtual-machines/extensions/features-linux) .
+
+Můžete taky nainstalovat a nakonfigurovat diagnostické rozšíření Windows a Linux v Azure Portal v části **nastavení diagnostiky** v nabídce **monitorování** virtuálního počítače.
+
+Podrobnosti o instalaci a konfiguraci diagnostického rozšíření pro Windows a Linux najdete v následujících článcích.
+
+- [Instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)](diagnostics-extension-windows-install.md)
+- [Monitorování metrik a protokolů pomocí diagnostického rozšíření systému Linux](../../virtual-machines/extensions/diagnostics-linux.md)
+
+## <a name="other-documentation"></a>Další dokumentace
+
+###  <a name="azure-cloud-service-classic-web-and-worker-roles"></a>Webové role a role pracovních procesů Azure Cloud Service (Classic)
+- [Seznámení s monitorováním cloudové služby](../../cloud-services/cloud-services-how-to-monitor.md)
+- [Povolení Azure Diagnostics v Azure Cloud Services](../../cloud-services/cloud-services-dotnet-diagnostics.md)
+- [Application Insights pro Azure Cloud Services](../app/cloudservices.md)<br>[Trasování toku Cloud Services aplikace pomocí Azure Diagnostics](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md) 
+
+### <a name="azure-service-fabric"></a>Azure Service Fabric
+- [Monitorování a diagnostika služeb v nastavení místních počítačů pro vývoj](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 ## <a name="next-steps"></a>Další kroky
-Vyberte službu, na kterou se snažíte shromažďovat diagnostiku, a použijte následující články, které vám pomohou začít. Použijte obecné odkazy Azure Diagnostics pro referenční informace pro konkrétní úkoly.
 
-## <a name="cloud-services-using-azure-diagnostics"></a>Cloud Services pomocí Azure Diagnostics
-* Pokud používáte Visual Studio, přečtěte si téma [použití sady Visual Studio k trasování Cloud Services aplikace](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) a začněte. V opačném případě viz
-* [Jak monitorovat cloudové služby pomocí Azure Diagnostics](../../cloud-services/cloud-services-how-to-monitor.md)
-* [Nastavení Azure Diagnostics v aplikaci Cloud Services](../../cloud-services/cloud-services-dotnet-diagnostics.md)
 
-Pokročilejší témata najdete v tématu.
-
-* [Použití Azure Diagnostics s Application Insights pro Cloud Services](../../azure-monitor/app/cloudservices.md)
-* [Trasování toku Cloud Services aplikace pomocí Azure Diagnostics](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
-* [Použití PowerShellu k nastavení diagnostiky na Cloud Services](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-## <a name="virtual-machines"></a>Služba Virtual Machines
-* Pokud používáte Visual Studio, přečtěte si téma [použití sady Visual Studio k trasování služby Azure Virtual Machines](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) , abyste mohli začít. V opačném případě viz
-* [Nastavení Azure Diagnostics na virtuálním počítači Azure](/azure/virtual-machines/extensions/diagnostics-windows)
-
-Pokročilejší témata najdete v tématu.
-
-* [Použití PowerShellu k nastavení diagnostiky v Azure Virtual Machines](../../virtual-machines/extensions/diagnostics-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Vytvoření virtuálního počítače s Windows pomocí monitorování a diagnostiky pomocí šablony Azure Resource Manager](../../virtual-machines/extensions/diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-
-## <a name="service-fabric"></a>Service Fabric
-Začněte [monitorovat Service Fabric aplikaci](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md). Mnoho dalších Service Fabric diagnostických článků je po obdržení tohoto článku k dispozici v navigační stromové struktuře vlevo.
-
-## <a name="general-articles"></a>Obecné články
 * Naučte se [používat čítače výkonu v Azure Diagnostics](../../cloud-services/diagnostics-performance-counters.md).
 * Pokud máte potíže s diagnostikou spouštění nebo hledáním dat v tabulkách úložiště Azure, přečtěte si téma [řešení potíží Azure Diagnostics](diagnostics-extension-troubleshooting.md)
 

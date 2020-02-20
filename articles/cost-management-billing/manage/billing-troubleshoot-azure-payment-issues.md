@@ -1,9 +1,8 @@
 ---
 title: Řešení potíží s platbami za Azure
 description: Řešení problémů při aktualizaci platebních informací v profilu účtu na portálu Microsoft Azure nebo v centru účtů
-services: azure
 author: v-miegge
-manager: dcscontentpm
+ms.reviewerr: dcscontentpm
 editor: v-jesits
 tags: billing
 ms.service: cost-management-billing
@@ -11,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/12/2019
+ms.date: 02/12/2020
 ms.author: jaserano
-ms.openlocfilehash: 986af72ed2ac10a285cfe32768d8541b7fce2428
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 199d32efef256fe3b56dbcf0a5d3ac6351f2d0b3
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75989992"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200910"
 ---
 # <a name="troubleshoot-azure-payment-issues"></a>Řešení potíží s platbami za Azure
 

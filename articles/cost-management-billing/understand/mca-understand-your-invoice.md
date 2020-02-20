@@ -2,21 +2,18 @@
 title: Vysvětlení faktury za smlouvu se zákazníkem Microsoftu v Azure
 description: Zjistěte, jak číst fakturu za smlouvu se zákazníkem Microsoftu v Azure a jak jí rozumět.
 author: bandersmsft
-manager: amberb
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 54fcff23501c3f65e32298126d402f7a3b6ae6d1
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 4c4b105bb4b67e855de27b6a57d2080fde068421
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134995"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200210"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-invoice"></a>Výrazy na faktuře za smlouvu se zákazníkem Microsoftu
 

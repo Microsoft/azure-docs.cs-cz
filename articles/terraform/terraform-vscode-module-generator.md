@@ -3,12 +3,12 @@ title: Kurz – vytvoření základní šablony Terraformu v Azure pomocí Yeoma
 description: Naučte se vytvořit základní šablonu Terraformu v Azure pomocí Yeoman.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: ba81d0ee797fd879fdadc3a6b25ca8f310383f61
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 82c3f5e640789547abb716b55959e1821a61e6d0
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159162"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472141"
 ---
 # <a name="tutorial-create-a-terraform-base-template-in-azure-using-yeoman"></a>Kurz: Vytvoření základní šablony Terraformu v Azure pomocí Yeoman
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak provádět následující úlohy:
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 - **Visual Studio Code**: [Stáhněte si Visual Studio Code](https://code.visualstudio.com/download) pro vaši platformu.
-- **Terraformu**: [nainstalujte terraformu](/azure/virtual-machines/linux/terraform-install-configure ) a spusťte modul vytvořený nástrojem Yeoman.
+- **Terraformu**: [nainstalujte terraformu](terraform-install-configure.md) a spusťte modul vytvořený nástrojem Yeoman.
 - **Docker**: [nainstalujte Docker](https://www.docker.com/get-started) a spusťte modul vytvořený generátorem Yeoman.
 - **Jazyk programovacího jazyka**: [instalace přejít](https://golang.org/) jako Yeoman testové případy je kód pomocí jazyka přejít.
 
@@ -34,7 +34,7 @@ V tomto článku se dozvíte, jak provádět následující úlohy:
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
-### <a name="install-nodejs"></a>Instalace Node.js
+### <a name="install-nodejs"></a>Instalovat Node.js
 
 Abyste mohli Terraform používat ve službě Cloud Shell, musíte si [nainstalovat Node.js](https://nodejs.org/en/download/) ve verzi 6.0 nebo novější.
 

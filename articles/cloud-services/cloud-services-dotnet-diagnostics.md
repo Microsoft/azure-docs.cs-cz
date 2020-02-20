@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: tagore
-ms.openlocfilehash: d5a4e5ce40726ea36734a0dcf751b79225d5e153
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e49a0935a70a2470267e5458fa1f55e3059e965
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75361109"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469761"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Povolení Azure Diagnostics v Azure Cloud Services
 Další informace najdete v tématu [přehled Azure Diagnostics](../azure-diagnostics.md) pro pozadí Azure Diagnostics.
@@ -23,7 +23,7 @@ Další informace najdete v tématu [přehled Azure Diagnostics](../azure-diagno
 ## <a name="how-to-enable-diagnostics-in-a-worker-role"></a>Postup povolení diagnostiky v roli pracovního procesu
 Tento návod popisuje, jak implementovat roli pracovního procesu Azure, která generuje data telemetrie pomocí třídy EventSource .NET. Azure Diagnostics se používá ke shromažďování dat telemetrie a jejich uložení v účtu úložiště Azure. Při vytváření role pracovního procesu Visual Studio automaticky povolí diagnostiku 1,0 jako součást řešení v sadách Azure SDK pro .NET 2,4 a starší. Následující pokyny popisují proces vytvoření role pracovního procesu, zakázání diagnostiky 1,0 z řešení a nasazení diagnostiky 1,2 nebo 1,3 do role pracovního procesu.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že máte předplatné Azure a používáte sadu Visual Studio se sadou Azure SDK. Pokud předplatné Azure nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi][Free Trial]. Nezapomeňte [nainstalovat a nakonfigurovat Azure PowerShell verze 0.8.7 nebo novější][Install and configure Azure PowerShell version 0.8.7 or later].
 
 ### <a name="step-1-create-a-worker-role"></a>Krok 1: vytvoření role pracovního procesu
@@ -139,7 +139,7 @@ namespace WorkerRole1
 2. Kliknutím pravým tlačítkem myši na projekt **WorkerRole1** a vybráním **Přidat** -> novou položku přidejte do projektu **WorkerRole1** soubor XML **...** -> **položky C# vizuálu** -> **soubor XML** -> **dat** . Pojmenujte soubor "WadExample. XML".
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. Přidružte soubor WadConfig. xsd ke konfiguračnímu souboru. Ujistěte se, že okno Editor WadExample. XML je aktivní okno. Stisknutím klávesy **F4** otevřete okno **vlastnosti** . V okně **vlastnosti** klikněte na vlastnost **schémata** . Klikněte na **...** ve vlastnosti **schemas** . Klikněte na tlačítko **Přidat...** a přejděte do umístění, kam jste uložili soubor XSD, a vyberte soubor WadConfig. xsd. Klikněte na **OK**.
+3. Přidružte soubor WadConfig. xsd ke konfiguračnímu souboru. Ujistěte se, že okno Editor WadExample. XML je aktivní okno. Stisknutím klávesy **F4** otevřete okno **vlastnosti** . V okně **vlastnosti** klikněte na vlastnost **schémata** . Klikněte na **...** ve vlastnosti **schemas** . Klikněte na tlačítko **Přidat...** a přejděte do umístění, kam jste uložili soubor XSD, a vyberte soubor WadConfig. xsd. Klikněte na tlačítko **OK**.
 
 4. Nahraďte obsah konfiguračního souboru WadExample. XML následujícím kódem XML a uložte soubor. Tento konfigurační soubor definuje několik čítačů výkonu, které se mají shromáždit: jeden pro využití CPU a jeden pro využití paměti. Konfigurace pak definuje čtyři události odpovídající metodám ve třídě SampleEventSourceWriter.
 
@@ -193,7 +193,7 @@ Konfigurační soubor diagnostiky definuje hodnoty, které se použijí k inicia
 Pokud máte problémy, přečtěte si téma [řešení potíží s Azure Diagnostics](../azure-diagnostics-troubleshooting.md) , kde najdete nápovědu k běžným problémům.
 
 ## <a name="next-steps"></a>Další kroky
-Pokud chcete změnit shromažďovaná data, [Podívejte se na seznam souvisejících diagnostických článků Azure Virtual-Machine](../azure-monitor/platform/diagnostics-extension-overview.md#cloud-services-using-azure-diagnostics) , které vám pomohou při řešení potíží nebo další informace o diagnostice obecně.
+Pokud chcete změnit shromažďovaná data, [Podívejte se na seznam souvisejících diagnostických článků Azure Virtual-Machine](../azure-monitor/platform/diagnostics-extension-overview.md) , které vám pomohou při řešení potíží nebo další informace o diagnostice obecně.
 
 [EventSource Class]: https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
 

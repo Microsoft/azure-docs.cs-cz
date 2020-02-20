@@ -1,23 +1,18 @@
 ---
 title: Zobrazení rezervací prostředků Azure | Microsoft Docs
 description: Zjistěte, jak na webu Azure Portal zobrazit rezervace Azure.
-documentationcenter: ''
 author: yashesvi
-manager: yashar
-editor: ''
+ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 10/01/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 26d130023a4ed7b4131af3963ae7afdb33e79bd7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995179"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199241"
 ---
 # <a name="view-azure-reservations-in-the-azure-portal"></a>Zobrazení rezervací Azure na webu Azure Portal
 

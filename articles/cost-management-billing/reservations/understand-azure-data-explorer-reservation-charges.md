@@ -1,19 +1,18 @@
 ---
 title: Vysvětlení uplatňování slevy za rezervaci na Azure Data Explorer
 description: Zjistěte, jak se uplatňuje sleva za rezervaci na měřič přirážky za Azure Data Explorer.
-services: data-explorer
 author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/03/2019
-ms.openlocfilehash: 88ab9c475d417bc935cf5d2d67f1678794fb74d1
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/12/2020
+ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75995621"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77199326"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Vysvětlení uplatňování slevy za rezervaci na Azure Data Explorer
 
@@ -36,23 +35,23 @@ Sleva za rezervaci se na přirážku za Azure Data Explorer uplatňuje po hodin�
 ## <a name="examples"></a>Příklady
 
 Následující příklady ukazují, jak se sleva za rezervovanou kapacitu Azure Data Exploreru uplatňuje v závislosti na počtu zakoupených jednotek přirážky a na tom, kdy jsou spuštěné.
-Například v případě clusteru modulu se **2 virtuálními počítači řady D11_v2** se vám budou účtovat celkové poplatky za vyžádání čtyř jednotek měřiče přirážky za Azure Data Explorer za hodinu. 
+Například v případě clusteru modulu se **2 virtuálními počítači řady D11_v2** se vám budou účtovat celkové poplatky za vyžádání čtyř jednotek měřiče přirážky za Azure Data Explorer za hodinu.
 
-**Scénář 1** 
+**Scénář 1**
 
 Zakoupíte si rezervovanou kapacitu Azure Data Exploreru pro 8 jednotek přirážky za Azure Data Explorer. Spustíte cluster modulu se dvěma virtuálními počítači řady D13_v2 s celkovým počtem 16 jader, za který se účtuje 16 jednotek přirážky za Azure Data Explorer za hodinu a který vyhovuje ostatním atributům rezervace. Za využití výpočetních prostředků pro osm jader Azure Data Exploreru se vám bude účtovat cena při průběžných platbách a na jednu hodinu využití jednotek přirážky za Azure Data Explorer s osmi jádry získáte slevu za rezervaci.
 
 U ostatních příkladů předpokládejme, že si zakoupíte rezervovanou kapacitu Azure Data Exploreru pro cluster Azure Data Exploreru s 16 jádry a ostatní atributy rezervace odpovídají spuštěnému clusteru Azure Data Exploreru.
 
-**Scénář 2** 
+**Scénář 2**
 
 Ve dvou různých oblastech na hodinu spustíte dva clustery modulu Azure Data Exploreru, z nichž každý má osm jader. Sleva za rezervaci 16 jader se uplatní na oba clustery a na 16 jednotek přirážky za Azure Data Explorer, které spotřebují.
 
-**Scénář 3** 
+**Scénář 3**
 
 Od 13:00 do 13:30 spustíte jeden cluster modulu Azure Data Exploreru s 16 jádry. Od 13:30 do 14:00 spustíte jiný cluster modulu Azure Data Exploreru s 16 jádry. Na obě se bude vztahovat sleva za rezervaci.
 
-**Scénář 4** 
+**Scénář 4**
 
 Od 13:00 do 13:45 spustíte jeden cluster modulu Azure Data Exploreru s 16 jádry. Od 13:30 do 14:00 spustíte jiný cluster modulu Azure Data Exploreru s 16 jádry. Za 15 minut, kdy se doba chodu obou clusterů překrývá, se vám bude účtovat cena při průběžných platbách. Po zbytek doby se na využití přirážky za Azure Data Explorer uplatňuje sleva za rezervaci.
 

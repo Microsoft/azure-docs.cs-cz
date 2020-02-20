@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 559d8cb25624c1d8bebb2969fbeeb80bdcc020e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6393c1eeaaa72d653704fcc52442bfb326dc2cdd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479752"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472328"
 ---
 #   <a name="entity-recognition-cognitive-skill"></a>Vnímání znalostí rozpoznávání entit
 
@@ -26,7 +26,7 @@ Dovednost pro **rozpoznávání entit** extrahuje z textu entity různých typů
 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft. dovednosti. text. EntityRecognitionSkill
+Microsoft.Skills.Text.EntityRecognitionSkill
 
 ## <a name="data-limits"></a>Omezení dat
 Maximální velikost záznamu musí být 50 000 znaků měřenou [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do extraktoru klíčové fráze rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
@@ -38,7 +38,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 | Název parametru     | Popis |
 |--------------------|-------------|
 | categories    | Pole kategorií, které mají být extrahovány.  Možné typy kategorií: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"`, `"Email"`. Pokud není zadána žádná kategorie, jsou vráceny všechny typy.|
-|defaultLanguageCode |  Kód jazyka vstupního textu Podporovány jsou následující jazyky: `de, en, es, fr, it`|
+|defaultLanguageCode |  Kód jazyka vstupního textu Podporovány jsou následující jazyky: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Ne všechny kategorie entit jsou podporovány pro všechny jazyky; Viz poznámka níže.|
 |minimumPrecision | Hodnota v rozsahu 0 až 1. Pokud je hodnocení spolehlivosti (ve výstupu `namedEntities`) menší než tato hodnota, entita se nevrátí. Výchozí hodnota je 0. |
 |includeTypelessEntities | Nastavte na `true`, pokud chcete rozpoznat dobře známé entity, které se nevejdou do aktuálních kategorií. Rozpoznané entity jsou vráceny v poli `entities` složitý výstup. Například "Windows 10" je dobře známá entita (produkt), ale vzhledem k tomu, že "Products" není podporovanou kategorií, bude tato entita obsažena v poli výstup entit. Výchozí hodnota je `false` |
 
@@ -53,19 +53,19 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
 > [!NOTE]
-> Ne všechny kategorie entit jsou podporovány pro všechny jazyky. Jenom _EN_, _ES_ podporují extrakci `"Quantity"`, `"Datetime"`, `"URL"`a `"Email"` typů.
+> Ne všechny kategorie entit jsou podporovány pro všechny jazyky. Typy kategorií entit `"Person"`, `"Location"`a `"Organization"` se podporují pro úplný seznam jazyků uvedených výše. Extrakce `"Quantity"`, `"Datetime"`, `"URL"`a typů `"Email"` podporují pouze _de_, _EN_, _ES_, _fr_a _zh-Hans_ . Další informace najdete v tématu [Podpora jazyků a oblastí pro rozhraní API pro analýzu textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
 
 | Název výstupu     | Popis                   |
 |---------------|-------------------------------|
 | obyvatel      | Pole řetězců, kde každý řetězec představuje jméno osoby. |
-| Polohy  | Pole řetězců, kde každý řetězec představuje umístění. |
+| locations  | Pole řetězců, kde každý řetězec představuje umístění. |
 | organizations  | Pole řetězců, kde každý řetězec představuje organizaci. |
 | množství  | Pole řetězců, kde každý řetězec představuje množství. |
 | Typy DateTime  | Pole řetězců, kde každý řetězec představuje hodnotu DateTime (jak je zobrazeno v textu). |
 | adrese | Pole řetězců, kde každý řetězec představuje adresu URL |
-| zpráv | Pole řetězců, kde každý řetězec představuje e-mail |
+| emails | Pole řetězců, kde každý řetězec představuje e-mail |
 | namedEntities | Pole komplexních typů, které obsahují následující pole: <ul><li>category</li> <li>Value (skutečný název entity)</li><li>posun (umístění, kde byl nalezen v textu)</li><li>důvěra (vyšší hodnota znamená, že se jedná o skutečnou entitu)</li></ul> |
-| podnikům | Pole komplexních typů, které obsahují formátované informace o entitách extrahovaných z textu, s následujícími poli <ul><li> název (skutečný název entity. Toto představuje "normalizovaný" tvar.</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (odkaz na stránku Wikipedii pro entitu)</li><li>bingId</li><li>typ (kategorie rozpoznané entity)</li><li>Podtyp (k dispozici pouze pro určité kategorie, poskytuje podrobnější zobrazení typu entity)</li><li> odpovídá (komplexní kolekce, která obsahuje)<ul><li>text (nezpracovaný text pro entitu)</li><li>posun (umístění, kde byl nalezen)</li><li>Délka (délka textu nezpracované entity)</li></ul></li></ul> |
+| entity | Pole komplexních typů, které obsahují formátované informace o entitách extrahovaných z textu, s následujícími poli <ul><li> název (skutečný název entity. Toto představuje "normalizovaný" tvar.</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (odkaz na stránku Wikipedii pro entitu)</li><li>bingId</li><li>typ (kategorie rozpoznané entity)</li><li>Podtyp (k dispozici pouze pro určité kategorie, poskytuje podrobnější zobrazení typu entity)</li><li> odpovídá (komplexní kolekce, která obsahuje)<ul><li>text (nezpracovaný text pro entitu)</li><li>posun (umístění, kde byl nalezen)</li><li>Délka (délka textu nezpracované entity)</li></ul></li></ul> |
 
 ##  <a name="sample-definition"></a>Definice vzorku
 
@@ -191,7 +191,7 @@ V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 ## <a name="error-cases"></a>Chybové případy
 Pokud kód jazyka pro dokument není podporován, je vrácena chyba a nejsou extrahovány žádné entity.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)

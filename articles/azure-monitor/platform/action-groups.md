@@ -3,15 +3,15 @@ title: Vytváření a Správa skupin akcí v Azure Portal
 description: Naučte se vytvářet a spravovat skupiny akcí v Azure Portal.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 8/19/2019
+ms.date: 2/18/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 01d3edb3de9e57fa7fa8db2ede863c2aa3e100ed
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 6ba48f3c40e45afa02e03a7589e968cca723118e
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030740"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467330"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -89,7 +89,7 @@ E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
 ### <a name="email-azure-resource-manager-role"></a>Role e-mailové Azure Resource Manager
-Odešlete e-mail členům role předplatného.
+Odešlete e-mail členům role předplatného. E-mail se pošle jenom do členů této role pro **uživatele Azure AD** . E-mail se neposílá do skupin Azure AD nebo instančních objektů.
 
 Ve skupině akcí můžete mít omezený počet e-mailových akcí. Podívejte se na článek [o omezení rychlosti](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
@@ -107,8 +107,6 @@ Ve skupině akcí můžete mít omezený počet ITSM akcí.
 Ve skupině akcí můžete mít omezený počet akcí aplikace logiky.
 
 ### <a name="secure-webhook"></a>Zabezpečený Webhook
-**Funkce zabezpečeného Webhooku je teď ve verzi Preview.**
-
 Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory k zabezpečení připojení mezi skupinou akcí a vaším chráněným webovým rozhraním API (koncový bod Webhooku). Celkový pracovní postup pro využití této funkce je popsaný níže. Přehled aplikací a instančních objektů služby Azure AD najdete v tématu [Přehled Microsoft Identity Platform (v 2.0)](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
 
 1. Vytvořte aplikaci Azure AD pro vaše chráněné webové rozhraní API. Viz třída https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview.

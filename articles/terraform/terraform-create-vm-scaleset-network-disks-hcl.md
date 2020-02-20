@@ -3,12 +3,12 @@ title: Kurz – vytvoření sady škálování virtuálních počítačů Azure 
 description: Naučte se používat Terraformu ke konfiguraci a verzi sady škálování virtuálních počítačů Azure.
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 6dcdad21eef003fe773a2c6ea3cb8a69b9175ecb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4e445d5e6ae4b7fc4528c6d61ee2bc86870827b1
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369469"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472226"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Kurz: vytvoření sady škálování virtuálních počítačů Azure pomocí Terraformu
 
@@ -30,7 +30,7 @@ V tomto kurzu se naučíte, jak pomocí [Azure Cloud Shell](/azure/cloud-shell/o
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Nainstalovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](/azure/virtual-machines/linux/terraform-install-configure).
+- **Nainstalovaný nástroj Terraform**: Postupujte podle pokynů v článku o [instalaci Terraformu a konfiguraci přístupu k Azure](terraform-install-configure.md).
 
 - **Vytvoření páru klíčů ssh**: Další informace najdete v tématu [jak vytvořit a použít dvojici veřejného a privátního klíče SSH pro virtuální počítače se systémem Linux v Azure](/azure/virtual-machines/linux/mac-create-ssh-keys).
 
@@ -394,7 +394,7 @@ V Cloud Shell proveďte následující kroky:
 
     Výstup příkazu by se měl podobat následujícímu snímku obrazovky:
 
-    ![Skupina prostředků Terraformu škálovací sady virtuálních počítačů](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
+    ![Skupina prostředků škálovací sady virtuálních počítačů Terraform](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
 
 1. Otevřete prohlížeč a připojte se k plně kvalifikovanému názvu domény vrácenému příkazem.
 
@@ -503,7 +503,7 @@ V Cloud Shell proveďte následující kroky:
 
 Po dokončení nasazení se bude obsah skupiny prostředků podobat následujícímu snímku obrazovky:
 
-![Skupina prostředků Terraformu škálovací sady virtuálních počítačů](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents-final.png)
+![Skupina prostředků škálovací sady virtuálních počítačů Terraform](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents-final.png)
 
 > [!NOTE]
 > Možnost přihlásit se pomocí hesla je u nasazeného jumpboxu a škálovací sady virtuálních počítačů zakázaná. Přihlaste se pomocí SSH, abyste získali přístup k virtuálnímu počítači / virtuálním počítačům.

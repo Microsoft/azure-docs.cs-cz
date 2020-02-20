@@ -15,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 11/08/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 366485c8c735af5689e1b2c2e63eb192218f5ce0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 931c2f738556404e2d58381f7152acb0613a057b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433580"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77468146"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Práce s klíčovými hodnotami v úložišti konfigurace aplikace Azure
 
@@ -31,10 +31,6 @@ Tento ukázkový skript vytvoří novou klíčovou hodnotu v úložišti konfigu
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
-
-Nejdřív musíte nainstalovat rozšíření rozhraní příkazového řádku Azure App Configuration, a to spuštěním následujícího příkazu:
-
-        az extension add -n appconfig
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -87,11 +83,11 @@ az appconfig kv list --name $appConfigName
 
 Tento skript používá následující příkazy pro práci s klíčovými hodnotami v úložišti konfigurace aplikace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
-| [AZ appconfig KV set](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-set) | Vytvoří nebo aktualizuje klíčovou hodnotu. |
-| [AZ appconfig KV list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Uvádí klíčové hodnoty v úložišti konfigurace aplikace. |
-| [AZ appconfig KV DELETE](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-delete) | Odstraní klíčovou hodnotu. |
+| [AZ appconfig KV set](/cli/azure/appconfig/kv#az-appconfig-kv-set) | Vytvoří nebo aktualizuje klíčovou hodnotu. |
+| [AZ appconfig KV list](/cli/azure/appconfig/kv#az-appconfig-kv-list) | Uvádí klíčové hodnoty v úložišti konfigurace aplikace. |
+| [AZ appconfig KV DELETE](/cli/azure/appconfig/kv#az-appconfig-kv-delete) | Odstraní klíčovou hodnotu. |
 
 ## <a name="next-steps"></a>Další kroky
 

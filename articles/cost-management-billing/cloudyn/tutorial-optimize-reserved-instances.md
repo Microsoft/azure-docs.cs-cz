@@ -4,17 +4,17 @@ description: V tomto kurzu zjistíte, jak optimalizovat náklady na rezervované
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 02/13/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 ms.reviewer: benshy
-ms.openlocfilehash: 9b0dbc31f3789cb0033a531ad6c5395d3cfb8bcc
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b37ef5b6fe92538986a267b53c821bf616ba77fb
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76769942"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77201114"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -70,7 +70,7 @@ Podívejme se na vztah mezi náklady na využití standardního virtuálního po
 
 ## <a name="benefits-of-ris"></a>Výhody rezervovaných instancí
 
-Každý nákup rezervované instance se vztahuje na virtuální počítač konkrétní velikosti v konkrétním umístění. Příkladem je virtuální počítač D2s\_v3 spuštěný v umístění Západní USA, jak je znázorněno na následujícím obrázku:
+Každý nákup rezervované instance se vztahuje na virtuální počítač konkrétní velikosti v konkrétním umístění. Příkladem je virtuální počítač D2s\_v3 spuštěný v umístění USA – západ, jak je znázorněno na následujícím obrázku:
 
 ![Podrobnosti o rezervované instanci Azure](./media/tutorial-optimize-reserved-instances/azure02.png)
 
@@ -105,7 +105,7 @@ Na portálu Cloudyn přejděte do části **Optimizer** (Optimalizátor) > **RI 
 
 V sestavě dopadu nákupu rezervované instance vyberte velikost virtuálního počítače (typ instance), umístění (oblast), období rezervace, množství a očekávanou dobu běhu. Pak můžete vyhodnotit, jestli nákupem ušetříte.
 
-Pokud například zakoupíte rezervaci virtuálního počítače typu DS1\_v2 v umístění Východní USA, který bude celý rok neustále spuštěný, pak můžete za rok ušetřit 369,48 USD. Hranice rentability nastane v pátém měsíci. Viz následující obrázek:
+Pokud například zakoupíte rezervaci virtuálního počítače typu DS1\_v2 v umístění USA – východ, který bude celý rok neustále spuštěný, pak můžete za rok ušetřit 369,48 USD. Hranice rentability nastane v pátém měsíci. Viz následující obrázek:
 
 ![Hranice rentability rezervované instance Azure](./media/tutorial-optimize-reserved-instances/azure03.png)
 

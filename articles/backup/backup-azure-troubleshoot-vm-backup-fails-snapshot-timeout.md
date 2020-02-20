@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 0a4d7f152e555ed89bd0a6aee0a7bc83b9815492
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513843"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469132"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -64,6 +64,7 @@ K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální p
 
 - K tomuto problému může dojít, pokud je zámek skupiny prostředků bodu obnovení znemožněn automatickým čištěním bodů obnovení.
 - K tomuto problému může dojít také v případě, že je aktivováno více záloh za den. V současné době doporučujeme jenom jednu zálohu za den, protože body okamžitého obnovení se uchovávají po dobu 1-5 dnů na základě nakonfigurovaného uchování snímku a k virtuálnímu počítači se dá v jednom okamžiku přidružit jenom 18 RPs. <br>
+- Počet bodů obnovení mezi kolekcemi bodů obnovení a skupinami prostředků pro virtuální počítač nemůže překročit 18. Pokud chcete vytvořit nový bod obnovení, odstraňte prosím existující body obnovení.
 
 Doporučená akce:<br>
 Pokud chcete tento problém vyřešit, odeberte zámek pro skupinu prostředků virtuálního počítače a potom operaci spusťte znovu, aby se aktivovala operace vyčištění.
@@ -217,10 +218,10 @@ Odinstalujte rozšíření pro vynucení opětovného načtení rozšíření VM
 Postup při odinstalaci rozšíření:
 
 1. V [Azure Portal](https://portal.azure.com/)přejdete na virtuální počítač, u kterého dochází k chybě zálohování.
-2. Vyberte **nastavení**.
+2. Vyberte **Nastavení**.
 3. Vyberte **Extensions** (Rozšíření).
 4. Vyberte **rozšíření snímku**.
-5. Vyberte **Odinstalovat**.
+5. Vyberte **odinstalovat**.
 
 Pokud se u virtuálního počítače se systémem Linux v Azure Portal nezobrazuje rozšíření VMSnapshot, [aktualizujte agenta Azure Linux](../virtual-machines/linux/update-agent.md)a spusťte zálohování.
 
@@ -228,7 +229,7 @@ Provedením těchto kroků dojde k přeinstalování rozšíření během pří�
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodu obnovení
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_`<Geo>`_`<number>`.
 3. V části **Nastavení** vyberte **zámky** a zobrazte zámky.
 4. Pokud chcete zámek odebrat, vyberte tři tečky a klikněte na **Odstranit**.
@@ -257,7 +258,7 @@ Po odebrání zámku aktivujte zálohování na vyžádání. Tím se zajistí, 
 
 Chcete-li ručně vymazat kolekci bodů obnovení, která není smazána z důvodu zámku skupiny prostředků, zkuste provést následující kroky:
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 2. V nabídce **centra** klikněte na **všechny prostředky**a vyberte skupinu prostředků s následujícím formátem AzureBackupRG_`<Geo>`_`<number>`, kde se virtuální počítač nachází.
 
     ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/resource-group.png)

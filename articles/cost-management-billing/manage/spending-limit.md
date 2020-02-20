@@ -2,21 +2,18 @@
 title: Limit útraty Azure | Microsoft Docs
 description: Tento článek popisuje, jak funguje limit útraty Azure a jak ho odebrat.
 author: bandersmsft
-manager: judupont
+ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: bde3c142fa0f4f69948a9ff1df61d77f06d2b430
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: ef1ed399f2ed3401612543b3dcaf94dfbafb6715
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188275"
+ms.locfileid: "77200550"
 ---
 # <a name="azure-spending-limit"></a>Limit útraty Azure
 
@@ -47,21 +44,21 @@ Pokud máte bezplatný účet Azure, přečtěte si o odebrání limitu útraty 
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace ](./media/spending-limit/search-bar.png)
 
-1. V seznamu **Moje předplatná** vyberte své předplatné. Vyberte například *Visual Studio Enterprise*. 
+1. V seznamu **Moje předplatná** vyberte své předplatné. Vyberte například *Visual Studio Enterprise*.
 
    ![Snímek obrazovky s mřížkou Moje předplatná v části Přehled](./media/spending-limit/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Pokud tady nevidíte některá svá předplatná sady Visual Studio, je možné, že jste v nějakém okamžiku změnili adresář předplatného. U těchto předplatných musíte přepnout na původní adresář (adresář, ve které jste se původně zaregistrovali). Potom opakujte krok 2.
-    
+
 1. V přehledu předplatného odeberte limit útraty kliknutím na oranžový banner.
-    
+
     ![Snímek obrazovky s bannerem pro odebrání limitu útraty](./media/spending-limit/msdn-remove-spending-limit-banner-x.png)
 
 1. Zvolte, jestli chcete limit útraty odebrat trvale, nebo pouze pro aktuální fakturační období.
-    
+
       ![Snímek obrazovky s oknem Odebrat limit útraty](./media/spending-limit/remove-spending-limit-blade-x.png)
-    
+
       | Možnost | Účinek |
       | --- | --- |
       | Trvale odebrat limit útraty | Limit útraty se na začátku dalšího fakturačního období automaticky znovu nezapne. Můžete ho ale kdykoli znovu zapnout. |
@@ -91,13 +88,13 @@ Tato funkce je k dispozici pouze v případě trvalého odebrání limitu útrat
 
     ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace ](./media/spending-limit/search-bar.png)
 
-1. V seznamu **Moje předplatná** vyberte své předplatné. Vyberte například *Visual Studio Enterprise*. 
+1. V seznamu **Moje předplatná** vyberte své předplatné. Vyberte například *Visual Studio Enterprise*.
 
    ![Snímek obrazovky s mřížkou Moje předplatná v části Přehled](./media/spending-limit/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Pokud tady nevidíte některá svá předplatná sady Visual Studio, je možné, že jste v nějakém okamžiku změnili adresář předplatného. U těchto předplatných musíte přepnout na původní adresář (adresář, ve které jste se původně zaregistrovali). Potom opakujte krok 2.
-    
+
 1. V přehledu předplatného klikněte na banner v horní části stránky, abyste limit útraty znovu zapnuli.
 
 ## <a name="custom-spending-limit"></a>Vlastní limit útraty

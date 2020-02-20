@@ -1,5 +1,5 @@
 ---
-title: Vyhodnotit možnosti migrace dat z řady StorSimple 5000-7000 | Microsoft Docs
+title: Možnosti migrace dat ze zařízení StorSimple 5000-7000 Series
 description: Poskytuje přehled možností migrace dat z řady StorSimple 5000-7000.
 services: storsimple
 documentationcenter: NA
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: d51891c076f1784fbddb88bfaed28ac1d889afdc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 44a05ecb273bdf7582300c3b6a9110e2ada0994c
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227768"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471818"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Možnosti migrace dat z řady StorSimple 5000-7000 
 

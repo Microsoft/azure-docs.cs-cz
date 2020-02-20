@@ -7,33 +7,33 @@ ms.subservice: development
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: allenwux
-ms.author: xiwu
+author: denzilribeiro
+ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: 03150ef3a8799cd0f84fb1bc03f2fd712cddd541
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b22ec475c0281a54d65921bc450b35723aa23219
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889792"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471648"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Urychlení analýzy velkých objemů dat v reálném čase pomocí konektoru Spark pro Azure SQL Database a SQL Server
 
 Konektor Spark pro Azure SQL Database a SQL Server umožňuje, aby databáze SQL, včetně Azure SQL Database a SQL Server, sloužily jako vstupní zdroj dat nebo jímka výstupních dat pro úlohy Spark. Umožňuje využívat transakční data v reálném čase s analýzou velkých objemů dat a uchovávat výsledky pro dotazy a vytváření sestav v režimu ad hoc. V porovnání s integrovaným konektorem JDBC poskytuje tento konektor možnost hromadného vkládání dat do databází SQL. Může překoná řádek po vložení řádku s 10x, aby 20krát rychlejší výkon. Konektor Spark pro Azure SQL Database a SQL Server také podporuje ověřování AAD. Umožňuje zabezpečené připojení k databázi SQL Azure z Azure Databricks pomocí svého účtu AAD. Poskytuje podobná rozhraní s integrovaným konektorem JDBC. K použití tohoto nového konektoru je snadné migrovat stávající úlohy Sparku.
 
-## <a name="download"></a>Stáhnout
+## <a name="download"></a>Ke stažení
 Začněte tím, že si stáhnete konektor Spark do SQL DB z [úložiště Azure-SQLDB-Spark](https://github.com/Azure/azure-sqldb-spark) na GitHubu.
 
 ## <a name="official-supported-versions"></a>Oficiální podporované verze
 
-| Komponenta                            |Verze                  |
-| :----------------------------------- | :---------------------- |
-| Apache Spark                         |2.0.2 nebo novější           |
-| Scala                                |2,10 nebo novější            |
-| Ovladač Microsoft JDBC pro SQL Server |6,2 nebo novější             |
-| Microsoft SQL Server                 |SQL Server 2008 nebo novější |
-| Azure SQL Database                   |Podporuje se                |
+| Komponenta                            | Verze                  |
+| :----------------------------------- | :----------------------- |
+| Apache Spark                         | 2.0.2 nebo novější           |
+| Scala                                | 2,10 nebo novější            |
+| Ovladač Microsoft JDBC pro SQL Server | 6,2 nebo novější             |
+| Microsoft SQL Server                 | SQL Server 2008 nebo novější |
+| Azure SQL Database                   | Podporuje se                |
 
 Konektor Spark pro Azure SQL Database a SQL Server využívá ovladač Microsoft JDBC pro SQL Server přesun dat mezi uzly Spark Worker a databáze SQL:
  
@@ -89,7 +89,7 @@ val config = Config(Map(
 ))
 
 //Read all data in table dbo.Clients
-val collection = sqlContext.read.sqlDb(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -118,7 +118,7 @@ import com.microsoft.azure.sqldb.spark.config.Config
 import com.microsoft.azure.sqldb.spark.query._
 val query = """
               |UPDATE Customers
-              |SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+              |SET ContactName = 'Alfred Schmidt', City = 'Frankfurt'
               |WHERE CustomerID = 1;
             """.stripMargin
 
@@ -146,13 +146,13 @@ import com.microsoft.azure.sqldb.spark.connect._
 val config = Config(Map(
   "url"            -> "mysqlserver.database.windows.net",
   "databaseName"   -> "MyDatabase",
-  "user"           -> "username ",
+  "user"           -> "username",
   "password"       -> "*********",
   "authentication" -> "ActiveDirectoryPassword",
   "encrypt"        -> "true"
 ))
 
-val collection = sqlContext.read.SqlDB(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -169,12 +169,12 @@ import com.microsoft.azure.sqldb.spark.connect._
 val config = Config(Map(
   "url"                   -> "mysqlserver.database.windows.net",
   "databaseName"          -> "MyDatabase",
-  "accessToken"           -> "access_token ",
+  "accessToken"           -> "access_token",
   "hostNameInCertificate" -> "*.database.windows.net",
   "encrypt"               -> "true"
 ))
 
-val collection = sqlContext.read.SqlDB(config)
+val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
@@ -214,7 +214,7 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 ## <a name="next-steps"></a>Další kroky
 Pokud jste to ještě neudělali, Stáhněte si konektor Spark pro Azure SQL Database a SQL Server z [úložiště GitHub Azure-SQLDB-Spark](https://github.com/Azure/azure-sqldb-spark) a Prozkoumejte další prostředky v úložišti:
 
--   [Ukázka Azure Databricks poznámkových blocích](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
+- [Ukázka Azure Databricks poznámkových blocích](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
 - [Ukázkové skripty (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
 Můžete také zkontrolovat [Apache Spark SQL, datové rámce a příručky datových sad](https://spark.apache.org/docs/latest/sql-programming-guide.html) a [dokumentaci k Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/).
