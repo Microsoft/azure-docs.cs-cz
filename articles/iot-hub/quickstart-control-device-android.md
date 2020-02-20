@@ -10,44 +10,42 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 4b31b1ee77e6bcafc4981c85f0118d02de00a964
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 765379068b7a02a8d3cca17a34699a1883881793
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77108921"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471240"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Rychlý Start: řízení zařízení připojeného ke centru IoT (Android)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT Hub je služba Azure, která umožňuje spravovat zařízení IoT z cloudu a ingestovat velké objemy telemetrie zařízení do cloudu za účelem uložení nebo zpracování. V tomto rychlém startu použijete *přímou metodu* k řízení simulovaného zařízení připojeného k centru IoT. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT.
-
-Rychlý start používá dvě předem napsané aplikace Java:
-
-* Aplikace simulovaného zařízení, která reaguje na přímé metody volané z back-endové aplikace služby. Aby bylo možné přijímat volání přímé metody, připojí se tato aplikace ke koncovému bodu centra IoT pro konkrétní zařízení.
-
-* Aplikace služby, která volá metodu Direct na zařízení s Androidem. Aby na zařízení bylo možné volat přímou metodu, připojí se tato aplikace ke koncovému bodu centra IoT na straně služby.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+V tomto rychlém startu použijete přímou metodu k řízení simulovaného zařízení připojeného k Azure IoT Hub. IoT Hub je služba Azure, která umožňuje spravovat zařízení IoT z cloudu a ingestovat velké objemy telemetrie zařízení do cloudu za účelem uložení nebo zpracování. Přímé metody můžete použít k provádění vzdálených změn chování zařízení připojeného k centru IoT. V tomto rychlém startu se používají dvě aplikace: simulovaná aplikace zařízení, která reaguje na přímé metody volané z back-endové aplikace služby a aplikace služby, která volá metodu Direct na zařízení s Androidem.
 
 ## <a name="prerequisites"></a>Předpoklady
 
-* Android Studio z https://developer.android.com/studio/. Další informace o instalaci Android Studio najdete v tématu [instalace Androidu](https://developer.android.com/studio/install).
+* Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-* Ukázka v tomto článku se používá Android SDK 27.
+* [Android Studio s Android SDK 27](https://developer.android.com/studio/). Další informace najdete v tématu [instalace Android Studio](https://developer.android.com/studio/install).
 
-* Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
+* [Git](https://git-scm.com/download/)
 
-   ```azurecli-interactive
-   az extension add --name azure-cli-iot-ext
-   ```
+* [Sada SDK pro zařízení – ukázková aplikace pro Android](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample), která je součástí [ukázek Azure IoT (Java)](https://github.com/Azure-Samples/azure-iot-samples-java)
 
-* V tomto rychlém startu jsou vyžadovány dvě ukázkové aplikace: [ukázková aplikace pro Android SDK pro zařízení](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample) a [ukázková aplikace sady SDK pro sadu Service SDK](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample). Oba tyto ukázky jsou součástí úložiště Azure-IoT-Samples-Java na GitHubu. Stáhněte nebo naklonujte úložiště [Azure-IoT-Samples-Java](https://github.com/Azure-Samples/azure-iot-samples-java) .
+* [Ukázková aplikace pro Android Service SDK](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample), která je součástí ukázek Azure IoT (Java).
 
-* Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Port 8883 otevřete v bráně firewall. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="add-azure-iot-extension"></a>Přidat rozšíření Azure IoT
+
+Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
+
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -106,6 +104,8 @@ Poznamenejte si připojovací řetězec služby, který vypadá nějak takto:
 Tuto hodnotu použijete později v tomto rychlém startu. Tento připojovací řetězec služby se liší od připojovacího řetězce zařízení, který jste si poznamenali v předchozím kroku.
 
 ## <a name="listen-for-direct-method-calls"></a>Naslouchání voláním přímé metody
+
+Obě ukázky pro tento rychlý Start jsou součástí úložiště Azure-IoT-Samples-Java na GitHubu. Stáhněte nebo naklonujte úložiště [Azure-IoT-Samples-Java](https://github.com/Azure-Samples/azure-iot-samples-java) .
 
 Ukázkovou aplikaci sady SDK pro zařízení můžete spustit na fyzickém zařízení s Androidem nebo v emulátoru Androidu. Ukázka se připojí ke koncovému bodu specifickému pro zařízení ve službě IoT Hub, pošle simulovanou telemetrii a naslouchá volání přímých metod z vašeho centra. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení po provedení přímé metody pošle potvrzení zpátky do vašeho centra.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/20/2019
-ms.openlocfilehash: a994a72ae57b39dba8025e7636e0f822f483bc8c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e2e17ba6af60fa495a03e7d46a07cfe6b66f4e68
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720669"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472413"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání rozpoznávání dovednosti v Azure Portal
 
@@ -27,7 +27,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Tento rychlý Start používá pro AI Azure Kognitivní hledání, Azure [BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/)a [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) . 
 
-Vzhledem k tomu, že úloha je tak malá, Cognitive Services na pozadí po dobu, po kterou se vyvolají z Azure Kognitivní hledání, za den až 20 transakcí denně na indexer. Pokud používáte ukázková data, která poskytujeme, můžete přeskočit vytvoření nebo připojení prostředku Cognitive Services.
+Vzhledem k tomu, že je zatížení tak malé, Cognitive Services po pozadí klepněte na pozadí, aby bylo možné zajistit bezplatné zpracování až pro 20 transakcí. Pro takovou malou datovou sadu můžete přeskočit vytvoření nebo připojení prostředku Cognitive Services.
 
 1. [Stáhněte si ukázková data](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) sestávající z malé sady souborů různých typů. Soubory rozbalte.
 
@@ -170,12 +170,12 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny pr
 
 Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
-> [!Tip]
-> Pokud chcete tento cvičení zopakovat nebo vyzkoušet jiný návod k rozšíření AI, odstraňte indexer na portálu. Odstranění indexeru resetuje čítač bezplatných denních transakcí zpět na nulu pro zpracování Cognitive Services.
-
 ## <a name="next-steps"></a>Další kroky
 
 Dovednosti můžete vytvořit pomocí portálu, sady .NET SDK nebo REST API. Pokud chcete pokračovat ve své znalosti, zkuste REST API pomocí post a dalších ukázkových dat.
 
 > [!div class="nextstepaction"]
 > [Kurz: extrakce textu a struktury z objektů BLOB JSON pomocí rozhraní REST API](cognitive-search-tutorial-blob.md)
+
+> [!Tip]
+> Pokud chcete tento cvičení zopakovat nebo vyzkoušet jiný návod k rozšíření AI, odstraňte indexer na portálu. Odstranění indexeru resetuje čítač bezplatných denních transakcí zpět na nulu pro zpracování Cognitive Services.

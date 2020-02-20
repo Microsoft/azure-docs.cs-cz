@@ -9,49 +9,28 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: a25bcc38c86d54b11ac1de0b3fbdfcdce1d1ac33
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 3bc5dc754509260591acf7c5d5809d5e85794d9b
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461937"
+ms.locfileid: "77471920"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Rychlý Start: komunikace s aplikací zařízení v Node. js prostřednictvím IoT Hub datových proudů zařízení (Preview)
 
 [!INCLUDE [iot-hub-quickstarts-3-selector](../../includes/iot-hub-quickstarts-3-selector.md)]
 
-Microsoft Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+V tomto rychlém startu spustíte aplikaci na straně služby a nastavíte komunikaci mezi zařízením a službou pomocí datových proudů zařízení. Datové proudy zařízení v Azure IoT Hub umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Během veřejné verze Preview sada Node. js SDK podporuje pouze datové proudy zařízení na straně služby. V důsledku toho se v tomto rychlém startu vztahují jenom na pokyny ke spuštění aplikace na straně služby.
 
-[IoT Hub datové proudy zařízení](./iot-hub-device-streams-overview.md) umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. V rámci verze Public Preview podporuje Node. js SDK na straně služby pouze datové proudy zařízení. V důsledku toho se v tomto rychlém startu vztahují jenom na pokyny ke spuštění aplikace na straně služby. V některém z těchto rychlých startů byste měli spustit příslušnou aplikaci na straně zařízení:
+## <a name="prerequisites"></a>Předpoklady
 
-* [Komunikace s aplikacemi pro zařízení v C prostřednictvím datových proudů zařízení IoT Hub](./quickstart-device-streams-echo-c.md)
+* Dokončíní [komunikace s aplikacemi zařízení v C prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-c.md) nebo [komunikace s C# aplikacemi zařízení v přes IoT Hub streamy zařízení](./quickstart-device-streams-echo-csharp.md).
 
-* [Komunikujte s aplikacemi pro C# zařízení prostřednictvím IoT Hub datových proudů zařízení](./quickstart-device-streams-echo-csharp.md).
+* Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-Aplikace Node. js na straně služby v tomto rychlém startu má následující funkce:
+* [Node. js 10 +](https://nodejs.org)
 
-* Vytvoří datový proud zařízení pro zařízení IoT.
-
-* Přečte vstup z příkazového řádku a pošle ho do aplikace zařízení, která ho vrátí zpátky.
-
-Kód ukáže proces iniciace datového proudu zařízení a také způsob, jak ho použít k posílání a přijímání dat.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-
-## <a name="prerequisites"></a>Požadavky
-
-Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
-
-  * Střed USA
-  * Střed USA EUAP
-  * Severní Evropa
-  * Jihovýchodní Asie
-
-Chcete-li spustit aplikaci na straně služby v tomto rychlém startu, potřebujete Node. js v10 za účelem. x. x nebo novější ve vývojovém počítači.
-
-Node. js si můžete stáhnout z [NodeJS.org](https://nodejs.org)na více platforem.
+* [Ukázkový projekt Node. js](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)
 
 Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověřit pomocí následujícího příkazu:
 
@@ -59,13 +38,25 @@ Aktuální verzi Node.js na počítači používaném pro vývoj můžete ověř
 node --version
 ```
 
-Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
+Microsoft Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+> [!IMPORTANT]
+> Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
+>
+> * USA – střed
+> * Střed USA EUAP
+> * Severní Evropa
+> * Jihovýchodní Asie
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="add-azure-iot-extension"></a>Přidat rozšíření Azure IoT
+
+Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IoT přidá do Azure CLI příkazy služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
 ```azurecli-interactive
 az extension add --name azure-cli-iot-ext
 ```
-
-Pokud jste to ještě neudělali, stáhněte si ukázkový projekt Node.js z webu https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip a extrahujte archiv ZIP.
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -109,13 +100,20 @@ V této části spustíte jak aplikaci na straně zařízení, tak aplikaci na s
 
 Jak bylo zmíněno dříve, IoT Hub Node. js SDK podporuje pouze datové proudy zařízení na straně služby. V případě aplikace na straně zařízení použijte jeden z doprovodných programů zařízení, které jsou dostupné v těchto rychlých startech:
 
-   * [Komunikace s aplikacemi pro zařízení v C prostřednictvím datových proudů zařízení IoT Hub](./quickstart-device-streams-echo-c.md)
+* [Komunikace s aplikacemi pro zařízení v C prostřednictvím datových proudů zařízení IoT Hub](./quickstart-device-streams-echo-c.md)
 
-   * [Komunikace s aplikacemi zařízení v C# přes IoT Hub proudy zařízení](./quickstart-device-streams-echo-csharp.md)
+* [Komunikace s aplikacemi zařízení v C# přes IoT Hub proudy zařízení](./quickstart-device-streams-echo-csharp.md)
 
 Než budete pokračovat k dalšímu kroku, ujistěte se, že je spuštěná aplikace na straně zařízení.
 
 ### <a name="run-the-service-side-application"></a>Spuštění aplikace na straně služby
+
+Aplikace Node. js na straně služby v tomto rychlém startu má následující funkce:
+
+* Vytvoří datový proud zařízení pro zařízení IoT.
+* Přečte vstup z příkazového řádku a pošle ho do aplikace zařízení, která ho vrátí zpátky.
+
+Kód ukáže proces iniciace datového proudu zařízení a také způsob, jak ho použít k posílání a přijímání dat.
 
 Za předpokladu, že je spuštěna aplikace na straně zařízení, použijte následující postup v místním okně terminálu ke spuštění aplikace na straně služby v Node. js:
 

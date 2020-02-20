@@ -9,59 +9,54 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 89b35a6372aa10948e947f2783cc228d500dea92
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: f7dfa1bf391e4affba52fc40a8c22ea9b5f4b4df
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462067"
+ms.locfileid: "77470679"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Rychlý Start: povolení SSH a RDP přes datový proud IoT Hub zařízení pomocí proxy aplikace Node. js (Preview)
 
 [!INCLUDE [iot-hub-quickstarts-4-selector](../../includes/iot-hub-quickstarts-4-selector.md)]
 
+V tomto rychlém startu povolíte odesílání Secure Shell (SSH) a protokol RDP (Remote Desktop Protocol) (RDP) do zařízení přes datový proud zařízení. Datové proudy zařízení v Azure IoT Hub umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. Tento rychlý Start popisuje spuštění proxy aplikace Node. js, která běží na straně služby. V rámci verze Public Preview podporuje sada Node. js SDK pouze datové proudy zařízení na straně služby. V důsledku toho tento rychlý Start popisuje pokyny ke spuštění pouze místní proxy aplikace služby.
+
+## <a name="prerequisites"></a>Předpoklady
+
+* Dokončení [Povolení protokolu SSH a RDP přes IoT Hub datových proudů zařízení pomocí aplikace proxy v jazyce C](./quickstart-device-streams-proxy-c.md) nebo [Povolení SSH a RDP přes IoT Hub datových proudů C# zařízení pomocí proxy aplikace](./quickstart-device-streams-proxy-csharp.md).
+
+* Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+* [Node. js 10 +](https://nodejs.org)
+
+* [Ukázkový projekt Node. js](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip)
+
+Aktuální verzi Node. js můžete na svém vývojovém počítači ověřit pomocí následujícího příkazu:
+
+```cmd/sh
+node --version
+```
+
 Microsoft Azure IoT Hub aktuálně podporuje streamy zařízení jako [funkci ve verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[IoT Hub datové proudy zařízení](./iot-hub-device-streams-overview.md) umožňují aplikacím služeb a zařízením komunikovat zabezpečeným způsobem a bránou firewall. 
-
-Tento rychlý Start popisuje spuštění aplikace proxy serveru Node. js, která je spuštěná na straně služby, aby povolovala přenos Secure Shell (SSH) a protokol RDP (Remote Desktop Protocol) (RDP) do zařízení přes datový proud zařízení. Přehled nastavení najdete v tématu [Ukázka místního proxy serveru](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp). 
-
-V rámci verze Public Preview podporuje sada Node. js SDK pouze datové proudy zařízení na straně služby. V důsledku toho tento rychlý Start popisuje pokyny ke spuštění pouze místní proxy aplikace služby. Pokud chcete spustit místní proxy aplikaci pro zařízení, přečtěte si:  
-
-   * [Povolení SSH a RDP přes IoT Hub datových proudů zařízení pomocí aplikace proxy v jazyce C](./quickstart-device-streams-proxy-c.md)
-   * [Povolit SSH a RDP přes IoT Hub datových proudů zařízení pomocí C# proxy aplikace](./quickstart-device-streams-proxy-csharp.md)
-
-Tento článek popisuje nastavení pro SSH (pomocí portu 22) a pak popisuje, jak upravit nastavení protokolu RDP (který používá port 3389). Vzhledem k tomu, že datové proudy zařízení jsou aplikace a protokol nezávislá, můžete stejnou ukázku upravit tak, aby vyhovovala jiným typům provozu klientských a serverových aplikací, a to obvykle změnou komunikačního portu.
-
+> [!IMPORTANT]
+> Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
+>
+> * USA – střed
+> * Střed USA EUAP
+> * Severní Evropa
+> * Jihovýchodní Asie
+  
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+### <a name="add-azure-iot-extension"></a>Přidat rozšíření Azure IoT
 
-## <a name="prerequisites"></a>Požadavky
+Spuštěním následujícího příkazu přidejte rozšíření Azure IoT pro Azure CLI do instance Cloud Shell. Rozšíření IoT přidá do Azure CLI příkazy, které jsou specifické pro služby IoT Hub, IoT Edge a IoT Device Provisioning (DPS).
 
-* Verze Preview datových proudů zařízení je momentálně podporovaná jenom pro centra IoT, která jsou vytvořená v následujících oblastech:
-
-  * Střed USA
-  * Střed USA EUAP
-  * Jihovýchodní Asie
-  * Severní Evropa
-  
-
-* Pokud chcete spustit místní aplikaci služby v tomto rychlém startu, potřebujete Node. js v10 za účelem. x. x nebo novější na svém vývojovém počítači.
-  * Pro více platforem stáhněte [Node. js](https://nodejs.org) .
-  * Ověřte aktuální verzi Node. js na vývojovém počítači pomocí následujícího příkazu:
-
-   ```
-   node --version
-   ```
-
-* Spuštěním následujícího příkazu přidejte rozšíření Azure IoT pro Azure CLI do instance Cloud Shell. Rozšíření IOT přidá do Azure CLI příkazy, které jsou specifické pro služby IoT Hub, IoT Edge a IoT Device Provisioning (DPS).
-
-    ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
-    ```
-
-* Pokud jste to ještě neudělali, [Stáhněte si ukázkový projekt Node. js](https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip) a Extrahujte archiv zip.
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -109,9 +104,11 @@ Jak bylo zmíněno dříve, sada IoT Hub Node. js SDK podporuje pouze datové pr
    * [Povolení SSH a RDP přes IoT Hub datových proudů zařízení pomocí aplikace proxy v jazyce C](./quickstart-device-streams-proxy-c.md)
    * [Povolit SSH a RDP přes IoT Hub datových proudů zařízení pomocí C# proxy aplikace](./quickstart-device-streams-proxy-csharp.md) 
 
-Než přejdete k dalšímu kroku, ujistěte se, že je spuštěná aplikace proxy místního zařízení.
+Než přejdete k dalšímu kroku, ujistěte se, že je spuštěná aplikace proxy místního zařízení. Přehled nastavení najdete v tématu [Ukázka místního proxy serveru](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp).
 
 ### <a name="run-the-service-local-proxy-application"></a>Spuštění aplikace místní proxy serveru služby
+
+Tento článek popisuje nastavení pro SSH (pomocí portu 22) a pak popisuje, jak upravit nastavení protokolu RDP (který používá port 3389). Vzhledem k tomu, že datové proudy zařízení jsou aplikace a protokol nezávislá, můžete stejnou ukázku upravit tak, aby vyhovovala jiným typům provozu klientských a serverových aplikací, a to obvykle změnou komunikačního portu.
 
 V případě spuštěné aplikace proxy místního zařízení spusťte aplikaci proxy místní služby, která je napsaná v Node. js v místním okně terminálu:
 

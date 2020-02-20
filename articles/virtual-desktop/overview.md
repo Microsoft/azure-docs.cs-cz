@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 7b8eed501571bdd3e7372a348ba34d0632ca2cd8
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 6cb8362b2de1f8345f693b00df021afe84f2d5a5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367283"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77471767"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -35,7 +35,7 @@ Seznamte se s virtuálními počítači s Windows, proč je jedinečný a co je 
 
 Další informace o virtuálním počítači s Windows najdete v [našem seznamu](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev)testů.
 
-## <a name="key-capabilities"></a>Hlavní možnosti
+## <a name="key-capabilities"></a>Klíčové funkce
 
 S virtuálním počítačem s Windows můžete nastavit škálovatelné a flexibilní prostředí:
 
@@ -64,7 +64,7 @@ K dispozici je několik věcí, které potřebujete k nastavení virtuální plo
 
 Plánujeme přidat podporu pro následující operačních systémech, takže se ujistěte, že máte [příslušné licence](https://azure.microsoft.com/pricing/details/virtual-desktop/) pro uživatele na základě plochy a aplikací, které plánujete nasadit:
 
-|OS|Požadovaná licence|
+|Operační systém|Požadovaná licence|
 |---|---|
 |Windows 10 Enterprise s více relacemi nebo Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, a3, A5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, a3, A5|
@@ -72,7 +72,7 @@ Plánujeme přidat podporu pro následující operačních systémech, takže se
 
 K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto věci:
 
-* [Azure Active Directory](/active-directory/)
+* [Azure Active Directory](/azure/active-directory/)
 * Služba Windows Server Active Directory je synchronizovaná s Azure Active Directory. Můžete ji nakonfigurovat jedním z následujících způsobů:
   * Azure AD Connect (pro hybridní organizace)
   * Azure AD Domain Services (pro hybridní nebo cloudové organizace)
@@ -149,7 +149,7 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 |Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|Automaticky|
 |Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|Automaticky|
 |Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|Automaticky|
-|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Ručně prováděné|
+|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Ručně|
 |Windows Server 2019|Ano|Ano|Ne|Ne|Automaticky|
 |Windows Server 2016|Ano|Ano|Ano|Ano|Automaticky|
 |Windows Server 2012 R2|Ano|Ano|Ne|Ne|Automaticky|

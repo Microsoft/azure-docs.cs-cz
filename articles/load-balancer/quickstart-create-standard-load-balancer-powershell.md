@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 0cd2bb54bb436beaa933195b88bc6f13a1b23e6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846528"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470407"
 ---
 # <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Rychlý Start: vytvoření Load Balancer pomocí Azure PowerShell
 
@@ -68,7 +68,10 @@ $publicIp = New-AzPublicIpAddress `
  -zone 1
 ```
 
-K vytvoření základní veřejné IP adresy použijte ```-SKU Basic```. Microsoft doporučuje používat pro produkční úlohy Standard.
+K vytvoření základní veřejné IP adresy použijte ```-SKU Basic```. Základní veřejné IP adresy nejsou kompatibilní se službou Load Balancer **úrovně Standard** . Microsoft doporučuje používat pro produkční úlohy **Standard** .
+
+> [!IMPORTANT]
+> Zbytek v tomto rychlém startu předpokládá, že se během výše uvedeného procesu výběru skladové položky vybere **standardní** SKU.
 
 ## <a name="create-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení
 
@@ -105,7 +108,7 @@ $probe = New-AzLoadBalancerProbeConfig `
 ```
 
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla nástroje pro vyrovnávání zatížení
-Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Abyste zajistili, že provoz budou přijímat pouze virtuální počítače, které jsou v pořádku, nadefinujete také sondu stavu, která se má použít.
+Pravidlo nástroje pro vyrovnávání zatížení slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Abyste zajistili, že provoz budou přijímat pouze virtuální počítače, které jsou v pořádku, nadefinujte také sondu stavu, která se má použít.
 
 Vytvořte pravidlo nástroje pro vyrovnávání zatížení pomocí [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). Následující příklad vytvoří pravidlo nástroje pro vyrovnávání zatížení *myLoadBalancerRule* a nastaví vyrovnávání provozu na portu *TCP* *80*:
 
@@ -161,6 +164,9 @@ $lb = New-AzLoadBalancer `
 ```
 
 K vytvoření základního Load Balancer použijte ```-SKU Basic```. Microsoft doporučuje používat pro produkční úlohy Standard.
+
+> [!IMPORTANT]
+> Zbytek v tomto rychlém startu předpokládá, že se během výše uvedeného procesu výběru skladové položky vybere **standardní** SKU.
 
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 Než nasadíte několik virtuálních počítačů a budete moci otestovat svůj nástroj pro vyrovnávání zatížení, musíte vytvořit podpůrné síťové prostředky – virtuální síť a virtuální síťové karty. 
@@ -351,7 +357,7 @@ Nainstalujte službu IIS s vlastní webovou stránkou na back-endové virtuáln�
 
 
 ## <a name="test-load-balancer"></a>Test nástroje pro vyrovnávání zatížení
-Získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu *myPublicIP*:
+Získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress). Následující příklad získá dříve vytvořenou IP adresu pro *myPublicIP*:
 
 ```azurepowershell
 Get-AzPublicIPAddress `
@@ -363,7 +369,7 @@ Veřejnou IP adresu pak můžete zadat do webového prohlížeče. Zobrazí se w
 
 ![Test nástroje pro vyrovnávání zatížení](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
 
-Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi všechny tři virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče. 
+Pokud chcete zobrazit distribuci provozu nástrojem pro vyrovnávání zatížení mezi všechny virtuální počítače, na kterých je vaše aplikace spuštěná, můžete vynutit aktualizaci webového prohlížeče. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

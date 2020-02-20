@@ -6,20 +6,20 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 01/28/2020
+ms.date: 02/17/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 2a303070b7240bddfd4803ed3d4d796fa52fdef5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 346795b79a78589d949b035a803a67a9e5a2e8e5
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906640"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470730"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Rychlý Start: Analýza dat pomocí datacihlů
 
 V tomto rychlém startu spustíte úlohu Apache Spark pomocí Azure Databricks k provádění analýz dat uložených v účtu úložiště. V rámci úlohy Spark budete analyzovat data předplatného rádiového kanálu, abyste získali přehled o bezplatném nebo placeném využití na základě demografických údajů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -49,7 +49,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
     |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../azure-resource-manager/management/overview.md). |
-    |**Umístění**     | Vyberte **Západní USA 2**. Pokud chcete, můžete si vybrat jinou veřejnou oblast.        |
+    |**Umístění**     | Vyberte **USA – západ 2**. Pokud chcete, můžete si vybrat jinou veřejnou oblast.        |
     |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
 3. Vytvoření účtu trvá několik minut. Chcete-li monitorovat stav operace, zobrazte indikátor průběhu v horní části.
@@ -80,7 +80,7 @@ Další informace o vytváření clusterů najdete v tématu [Vytvoření cluste
 
 ## <a name="create-storage-account-container"></a>Vytvořit kontejner účtu úložiště
 
-V této části nejprve vytvoříte v pracovním prostoru Azure Databricks poznámkový blok a pak spustíte fragmenty kódu, kterými nakonfigurujete účet úložiště.
+V této části nejprve vytvoříte v pracovním prostoru Azure Databricks poznámkový blok a pak spustíte fragmenty kódu, které nakonfigurují účet úložiště.
 
 1. Na portálu [Azure Portal](https://portal.azure.com) přejděte do vytvořeného pracovního prostoru Azure Databricks a vyberte **Spustit pracovní prostor**.
 
@@ -92,7 +92,7 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
 
     ![Vytvoření poznámkového bloku v datacihlech](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Vytvoření poznámkového bloku v datacihlech")
 
-    Vyberte **Vytvořit**.
+    Vyberte **Create** (Vytvořit).
 
 4. Zkopírujte následující blok kódu a vložte ho do první buňky, ale tento kód ještě nespouštějte.
 
@@ -107,14 +107,7 @@ V této části nejprve vytvoříte v pracovním prostoru Azure Databricks pozn�
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
 
    ```
-
-    > [!NOTE]
-    > Tento blok kódu přímo přistupuje k Data Lake koncovému bodu Gen2 pomocí OAuth, ale existují i jiné způsoby, jak připojit pracovní prostor datacihly k vašemu účtu Data Lake Storage Gen2. Kontejner můžete například připojit pomocí protokolu OAuth nebo použít přímý přístup se sdíleným klíčem. <br>Příklady těchto přístupů najdete v [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) článku na webu Azure Databricks.
-
 5. V tomto bloku kódu nahraďte `storage-account-name`, `appID`, `password`a `tenant-id` hodnoty zástupných symbolů v tomto bloku kódu hodnotami, které jste shromáždili při vytváření instančního objektu. Nastavte hodnotu zástupný symbol `container-name` na libovolný název, který chcete kontejneru přidělit.
-
-    > [!NOTE]
-    > V nastavení produkčního prostředí zvažte uložení ověřovacího klíče v Azure Databricks. Pak místo ověřovacího klíče přidejte do bloku kódu vyhledávací klíč. Po dokončení tohoto rychlého startu se můžete podívat na příklady tohoto přístupu v článku věnovaném [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) na webu Azure Databricks.
 
 6. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
 
@@ -180,7 +173,7 @@ Ke spuštění úlohy Spark SQL na datech použijte následující postup.
     - V poli **Values** (Hodnoty) nastavte hodnotu **level** (Úroveň).
     - V poli **Aggregation** (Agregace) vyberte možnost **COUNT** (Počet).
 
-6. Klikněte na tlačítko **Použít**.
+6. Klikněte na **Použít**.
 
 7. Výstup bude obsahovat vizuální reprezentaci znázorněnou na následujícím snímku obrazovky:
 
@@ -196,7 +189,13 @@ Pokud ručně neukončíte cluster, který se automaticky zastaví, za předpokl
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste v Azure Databricks vytvořili cluster Spark a pak jste ke spuštění úlohy Spark použili data v účtu úložiště s povolenou službou Data Lake Storage Gen2. Můžete si také projít článek [Zdroje dat Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html) a zjistit, jak do Azure Databricks importovat data z jiných zdrojů dat. V dalším článku se dozvíte, jak pomocí Azure Databricks provést operaci ETL (extrakce, transformace a načítání dat).
+V tomto článku jste v Azure Databricks vytvořili cluster Spark a pak jste ke spuštění úlohy Spark použili data v účtu úložiště s povolenou službou Data Lake Storage Gen2.
+
+V dalším článku se dozvíte, jak pomocí Azure Databricks provést operaci ETL (extrakce, transformace a načítání dat).
 
 > [!div class="nextstepaction"]
->[Extrakce, transformace a načítání dat pomocí Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md)
+>[Extrakce, transformace a načtení dat pomocí Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md).
+
+- Informace o tom, jak importovat data z jiných zdrojů dat do Azure Databricks, najdete v tématu [zdroje dat Spark](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html).
+
+- Další informace o dalších způsobech přístupu k Azure Data Lake Storage Gen2 z pracovního prostoru Azure Databricks najdete v tématu [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html).

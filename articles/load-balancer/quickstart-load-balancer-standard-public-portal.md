@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: eab8298362bfb3ad790d13fcbf47e0fe624ed3fd
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843867"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470186"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rychlý Start: vytvoření Load Balancer pro vyrovnávání zatížení virtuálních počítačů pomocí Azure Portal
 
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="create-a-load-balancer"></a>Vytvoření nástroje Load Balancer
+## <a name="create-a-load-balancer"></a>Vytvoření Load Balancer
 
 V této části vytvoříte Load Balancer, která pomáhá vyrovnávat zatížení virtuálních počítačů. Můžete vytvořit veřejné Load Balancer nebo interní Load Balancer. Když vytvoříte veřejnou Load Balancer, musíte také vytvořit novou veřejnou IP adresu, která je ve výchozím nastavení nakonfigurovaná jako front-end (s názvem jako *LoadBalancerFrontend* ) pro Load Balancer.
 
@@ -43,13 +43,17 @@ V této části vytvoříte Load Balancer, která pomáhá vyrovnávat zatížen
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte *myResourceGroupSLB* .|
-    | Name (Název)                   | *myLoadBalancer*                                   |
-    | Region (Oblast)         | Vyberte **Západní Evropa**.                                        |
+    | Název                   | *myLoadBalancer*                                   |
+    | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte možnost **veřejné**.                                        |
-    | Skladová položka           | Vyberte **Standard** nebo **Basic**. Microsoft doporučuje pro produkční úlohy Standard.  |
+    | Skladová jednotka (SKU)           | Vyberte **Standard** nebo **Basic**. Microsoft doporučuje pro produkční úlohy Standard. |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. Pokud máte existující veřejnou IP adresu, kterou chcete použít, vyberte **použít existující** . |
-    | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   |
+    | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   K vytvoření základní veřejné IP adresy použijte ```-SKU Basic```. Základní veřejné IP adresy nejsou kompatibilní se službou Load Balancer **úrovně Standard** . Microsoft doporučuje používat pro produkční úlohy **Standard** .|
     | Zóna dostupnosti | Typ *zóna – redundantní* pro vytvoření odolného Load Balancer. Pokud chcete vytvořit oblast Load Balancer, vyberte konkrétní zónu z 1, 2 nebo 3. |
+
+> [!IMPORTANT]
+> Zbytek v tomto rychlém startu předpokládá, že se během výše uvedeného procesu výběru skladové položky vybere **standardní** SKU.
+
 
 3. Na kartě **Revize + vytvořit** vyberte **vytvořit**.   
 
@@ -76,7 +80,7 @@ Pokud chcete Load Balancer, aby mohl monitorovat stav vaší aplikace, použijte
     
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name (Název) | Zadejte *myHealthProbe*. |
+    | Název | Zadejte *myHealthProbe*. |
     | Protocol (Protokol) | Vyberte **http**. |
     | Port | Zadejte *80*.|
     | Interval | Zadejte hodnotu *15* pro **interval** mezi pokusy o sondu v sekundách. |
@@ -85,7 +89,7 @@ Pokud chcete Load Balancer, aby mohl monitorovat stav vaší aplikace, použijte
 4. Vyberte **OK**.
 
 ### <a name="create-a-load-balancer-rule"></a>Vytvoření pravidla Load Balanceru
-Pravidlo Load Balanceru slouží k definování způsobu distribuce provozu do virtuálních počítačů. Nadefinujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Vytvořte pravidlo Load Balancer *myLoadBalancerRuleWeb* pro naslouchání na portu 80 ve front-endu *FrontendLoadBalancer* a odesílání síťového provozu s vyrovnáváním zatížení do fondu back-end adres *myBackEndPool* také pomocí portu 80. 
+Pravidlo Load Balanceru slouží k definování způsobu distribuce provozu do virtuálních počítačů. Definujte konfiguraci front-endových IP adres pro příchozí provoz, back-endový fond IP adres pro příjem provozu a také požadovaný zdrojový a cílový port. Vytvořte pravidlo Load Balancer *myLoadBalancerRuleWeb* pro naslouchání na portu 80 ve front-endu *FrontendLoadBalancer* a odesílání síťového provozu s vyrovnáváním zatížení do fondu back-end adres *myBackEndPool* také pomocí portu 80. 
 
 1. V nabídce vlevo vyberte **všechny služby** , vyberte **všechny prostředky**a potom v seznamu prostředků vyberte **myLoadBalancer** .
 2. V části **Nastavení**vyberte **pravidla vyrovnávání zatížení**a pak vyberte **Přidat**.
@@ -93,11 +97,11 @@ Pravidlo Load Balanceru slouží k definování způsobu distribuce provozu do v
     
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name (Název) | Zadejte *myHTTPRule*. |
+    | Název | Zadejte *myHTTPRule*. |
     | Protocol (Protokol) | Vyberte **TCP**. |
     | Port | Zadejte *80*.|
-    | Port back-endu | Zadejte *80*. |
-    | Back-end fond | Vyberte *myBackendPool*.|
+    | Back-endový port | Zadejte *80*. |
+    | Back-endový fond | Vyberte *myBackendPool*.|
     | Sonda stavu | Vyberte *myHealthProbe*. |
 4. Ponechte zbytek výchozích hodnot a pak vyberte **OK**.
 
@@ -113,7 +117,7 @@ V této části vytvoříte virtuální síť, vytvoříte tři virtuální poč
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Name (Název) | Zadejte *myVNet*. |
+    | Název | Zadejte *myVNet*. |
     | Adresní prostor | Zadejte *10.1.0.0/16*. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte existující prostředek – *myResourceGroupSLB*. |
@@ -127,27 +131,27 @@ SKU veřejných IP adres a Load Balancer SKU se musí shodovat. V případě Sta
 
 1. V levé horní části portálu vyberte **vytvořit prostředek** > **COMPUTE** > **Windows Server 2019 Datacenter**. 
    
-1. V **vytvoření virtuálního počítače**, zadejte nebo vyberte následující hodnoty **Základy** kartu:
+1. V části **vytvořit virtuální počítač**zadejte nebo vyberte následující hodnoty na kartě **základy** :
    - **Předplatné** > **skupinu prostředků**: vyberte **myResourceGroupSLB**.
    - **Podrobnosti Instance** > **název virtuálního počítače**: zadejte *myVM1*.
    - **Podrobnosti Instance** > **oblasti** > vyberte **západní Evropa**.
    - **Podrobnosti Instance** > **Možnosti dostupnosti** > vybrat **zóny dostupnosti**. 
    - **Podrobnosti Instance** > **zóně dostupnosti** > vybrat **1**.
    - **Účet správce**> zadejte **uživatelské jméno**, **heslo** a **potvrzení informací o hesle** .
-   - Vyberte **sítě** kartě nebo vyberte **Další: disky**, pak **Další: sítě**.
+   - Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
   
 1. Na kartě **sítě** zkontrolujte, že jsou vybrané následující:
    - **Virtuální síť**: *myVnet*
    - **Podsíť**: *myBackendSubnet*
    - **Veřejná IP** adresa > vyberte **vytvořit novou**a v okně **vytvořit veřejnou IP adresu** pro položku **SKU**vyberte možnost **Standard**a v části **zóna dostupnosti**vyberte **zóna – redundantní**a pak vyberte **OK**. Pokud jste vytvořili základní Load Balancer, vyberte základní. Microsoft doporučuje pro produkční úlohy používat standardní SKU.
-   - Chcete-li vytvořit novou skupinu zabezpečení sítě (NSG), typ brány firewall, v části **skupinu zabezpečení sítě**vyberte **Upřesnit**. 
-       1. V **konfigurovat skupinu zabezpečení sítě** pole, vyberte **vytvořit nový**. 
+   - Pokud chcete vytvořit novou skupinu zabezpečení sítě (NSG), typ brány firewall, v části **Skupina zabezpečení sítě**vyberte **Upřesnit**. 
+       1. V poli **Konfigurovat skupinu zabezpečení sítě** vyberte **vytvořit novou**. 
        1. Zadejte *myNetworkSecurityGroup*a vyberte **OK**.
    - Pokud chcete virtuálnímu počítači udělat součást back-endu fondu Load Balancer, proveďte následující kroky:
         - V případě **Vyrovnávání zatížení** **umístěte tento virtuální počítač za existující řešení vyrovnávání zatížení**a vyberte **Ano**.
         - V **nastavení vyrovnávání zatížení**v možnosti vyrovnávání **zatížení**vyberte **Azure Load Balancer**.
         - Pro **Vyberte nástroj pro vyrovnávání zatížení** *myLoadBalancer*.
-        - Vyberte **správu** kartě nebo vyberte **Další** > **správu**.
+        - Vyberte kartu **Správa** nebo vyberte možnost **Další** > **Správa**.
 2. Na kartě **Správa** v části **monitorování**nastavte **diagnostiku spouštění** na **vypnuto**. 
 1. Vyberte **Zkontrolovat a vytvořit**.   
 1. Zkontrolujte nastavení a pak vyberte **vytvořit**.
@@ -155,7 +159,7 @@ SKU veřejných IP adres a Load Balancer SKU se musí shodovat. V případě Sta
 
     | Nastavení | VM 2| VM 3|
     | ------- | ----- |---|
-    | Name (Název) |  *myVM2* |*myVM3*|
+    | Název |  *myVM2* |*myVM3*|
     | Zóna dostupnosti | 2 |3|
     |Veřejná IP adresa| **Standardní** SKLADOVÉ|**Standardní** SKLADOVÉ|
     | Veřejná IP adresa – zóna dostupnosti| **Zóna redundantní** |**Zóna redundantní**|
@@ -178,10 +182,10 @@ V této části vytvoříte pravidlo skupiny zabezpečení sítě, které povol�
     - **Popis**: "*Allow http* 
 4. Vyberte **Přidat**.
 5. Opakujte postup pro příchozí pravidlo protokolu RDP, pokud je potřeba, s následujícími hodnotami, které se liší:
-   - **Rozsahy cílových portů**: typ *3389*.
+   - **Rozsahy cílových portů**: zadejte *3389*.
    - **Priorita**: typ *200*. 
-   - **Název**: typ *MyRDPRule*. 
-   - **Popis**: typ *povolit RDP*. 
+   - **Název**: zadejte *MyRDPRule*. 
+   - **Popis**: zadejte *Allow RDP*. 
  
 ### <a name="install-iis"></a>Instalace služby IIS
 

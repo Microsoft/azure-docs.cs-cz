@@ -3,12 +3,12 @@ title: Použití Terraformu v Azure
 description: Seznámení s používáním Terraformu k nasazení a nasazení infrastruktury Azure.
 ms.topic: overview
 ms.date: 10/26/2019
-ms.openlocfilehash: d1754594c651206a0d4d15e659e2926557f9e912
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 05b92fdf8c0a0f84d2f29b4aa7479850b2721441
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158990"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77472158"
 ---
 # <a name="terraform-with-azure"></a>Terraform v Azure
 
@@ -40,6 +40,6 @@ Terraformu je dobře při nasazení infrastruktury napříč více poskytovateli
 
 Přečetli jste si přehled a výhody nástroje Terraform a tady jsou doporučené další kroky:
 
-- Začněte [instalací nástroje Terraform a jeho konfigurací, aby používal Azure](/azure/virtual-machines/linux/terraform-install-configure).
-- [Vytvořte pomocí Terraformu virtuální počítač Azure](/azure/virtual-machines/linux/terraform-create-complete-vm).
+- Začněte [instalací nástroje Terraform a jeho konfigurací, aby používal Azure](terraform-install-configure.md).
+- [Vytvořte pomocí Terraformu virtuální počítač Azure](terraform-create-complete-vm.md).
 - Prozkoumejte [modul Azure Resource Manageru pro Terraform](https://www.terraform.io/docs/providers/azurerm/). 

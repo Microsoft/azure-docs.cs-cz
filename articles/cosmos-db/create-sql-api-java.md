@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8c2ae82bae8457a1c715f160994c7a0da94193ff
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134499"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77469033"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API
 
@@ -69,15 +69,17 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Spuštění aplikace](#run-the-app). 
 
+### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Správa databázových prostředků pomocí synchronního (synchronizačního) rozhraní API
+
 * Inicializace klienta `CosmosClient`. `CosmosClient` poskytuje logickou reprezentaci na straně klienta pro službu Azure Cosmos Database. Tento klient slouží ke konfiguraci a provádění požadavků na službu.
     
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateSyncClient)]
 
-* Vytváření CosmosDatabase
+* vytváření `CosmosDatabase`.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateDatabaseIfNotExists)]
 
-* Vytváření CosmosContainer
+* vytváření `CosmosContainer`.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateContainerIfNotExists)]
 
@@ -85,13 +87,41 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=CreateItem)]
    
-* Čtení bodů se provádí pomocí metody `getItem` a `read`
+* Čtení bodů se provádí pomocí metody `readItem`.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=ReadItem)]
 
 * Dotazy SQL přes JSON se provádějí pomocí metody `queryItems`.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+
+### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>Správa databázových prostředků pomocí asynchronního (asynchronního) rozhraní API
+
+* Asynchronní volání rozhraní API vrátí okamžitě bez čekání na odpověď serveru. Na základě tohoto příkladu následující fragmenty kódu ukazují správné vzory návrhu pro splnění všech předchozích úloh správy pomocí asynchronního rozhraní API.
+
+* Inicializace klienta `CosmosAsyncClient`. `CosmosAsyncClient` poskytuje logickou reprezentaci na straně klienta pro službu Azure Cosmos Database. Tento klient se používá ke konfiguraci a spouštění asynchronních požadavků na službu.
+    
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateAsyncClient)]
+
+* vytváření `CosmosAsyncDatabase`.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateDatabaseIfNotExists)]
+
+* vytváření `CosmosAsyncContainer`.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateContainerIfNotExists)]
+
+* Stejně jako u rozhraní API pro synchronizaci je vytvoření položky provedeno pomocí metody `createItem`. Tento příklad ukazuje, jak efektivně vydávat množství asynchronních `createItem` požadavků pomocí přihlášení k odběru reaktivního proudu, který vydává žádosti a tiskne oznámení. Vzhledem k tomu, že tento jednoduchý příklad běží na dokončování a končí, `CountDownLatch` instance slouží k zajištění, že program během vytváření položky nekončí. **Správný postup asynchronního programování není blokován při asynchronním volání – v reálných žádostech o použití jsou generovány z hlavní () smyčky, která se spouští po neomezenou dobu, což eliminuje nutnost západky na asynchronní volání.**
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=CreateItem)]
+   
+* Stejně jako u rozhraní API pro synchronizaci je čtení bodů prováděno pomocí metody `readItem`.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=ReadItem)]
+
+* Stejně jako u rozhraní API pro synchronizaci jsou dotazy SQL přes JSON prováděny pomocí metody `queryItems`.
+
+    [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
@@ -109,10 +139,10 @@ Teď se vraťte zpět na web Azure Portal, kde najdete informace o připojovac�
     mvn package
     ```
 
-3. V okně terminálu Git pomocí následujícího příkazu spusťte aplikaci v Javě (YOUR_COSMOS_DB_HOSTNAME nahraďte hodnotou identifikátoru URI z portálu v uvozovkách a YOUR_COSMOS_DB_MASTER_KEY nahraďte primárním klíčem z portálu v uvozovkách).
+3. V okně terminálu Git pomocí následujícího příkazu spusťte aplikaci Java (nahraďte SYNCASYNCMODE hodnotou `sync` nebo `async` v závislosti na tom, který vzorový kód chcete spustit, nahraďte YOUR_COSMOS_DB_HOSTNAME hodnotou identifikátoru URI v uvozovkách z portálu a nahraďte YOUR_COSMOS_DB_MASTER_KEY primárním klíčem z portálu.)
 
     ```bash
-    mvn exec:java -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
+    mvn exec:java@SYNCASYNCMODE -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
 
     ```
 

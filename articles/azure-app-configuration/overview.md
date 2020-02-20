@@ -1,23 +1,21 @@
 ---
-title: Co je konfigurace aplikací Azure?
+title: Co je Azure App Configuration?
 description: Přehled služby Azure App Configuration Service.
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: overview
 ms.date: 02/24/2019
-ms.openlocfilehash: 22ebfc53405149358b0a2a03cd256a78db5d1910
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 67a76d3b347ef750b639225a009cc6968cb84c6f
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899325"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77467551"
 ---
-# <a name="what-is-azure-app-configuration"></a>Co je konfigurace aplikací Azure?
+# <a name="what-is-azure-app-configuration"></a>Co je Azure App Configuration?
 
 Azure App Configuration poskytuje službu pro centrální správu nastavení aplikace a příznaků funkcí. Moderní programy, zejména programy běžící v cloudu, mají obecně velký počet komponent, které jsou distribuovány v podstatě. Rozprostření nastavení konfigurace mezi tyto komponenty může vést k chybám, které mohou být obtížné při nasazení aplikace. Pomocí konfigurace aplikace můžete ukládat všechna nastavení aplikace a zabezpečit jejich přístup na jednom místě.
-
-Konfigurace aplikace je aktuálně ve verzi Public Preview. Během období Preview je můžete použít zdarma. Můžete se k němu zaregistrovat v [Azure Portal](https://portal.azure.com).
 
 ## <a name="why-use-app-configuration"></a>Proč používat konfiguraci aplikace?
 
@@ -53,12 +51,12 @@ Doplňková konfigurace aplikace [Azure Key Vault](https://azure.microsoft.com/s
 
 Nejjednodušší způsob, jak přidat úložiště konfigurace aplikace do vaší aplikace, je prostřednictvím klientské knihovny, kterou poskytuje společnost Microsoft. Na základě programovacího jazyka a architektury jsou pro vás k dispozici následující nejlepší metody.
 
-| Programovací jazyk a architektura | Jak připojit |
+| Programovací jazyk a architektura | Jak se připojit |
 |---|---|
 | .NET Core a ASP.NET Core | Poskytovatel konfigurace aplikace pro .NET Core |
 | .NET Framework a ASP.NET | Tvůrce konfigurace aplikací pro .NET |
 | Java Spring | Klient konfigurace aplikace pro jarní Cloud |
-| Další | REST API konfigurace aplikace |
+| Ostatní | REST API konfigurace aplikace |
 
 ## <a name="next-steps"></a>Další kroky
 

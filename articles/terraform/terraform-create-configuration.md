@@ -3,12 +3,12 @@ title: Rychlý Start – vytvoření konfigurace Terraformu pro Azure
 description: Začněte s Terraformu v Azure nasazením Azure Cosmos DB a Azure Container Instances.
 ms.topic: quickstart
 ms.date: 10/26/2019
-ms.openlocfilehash: 47eec1f238d3fdff99b75953bc6d7e92137cca2d
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 92f66fcfeac69b66eb8cdb0dc58b7a3171d45e10
+ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159312"
+ms.lasthandoff: 02/19/2020
+ms.locfileid: "77470017"
 ---
 # <a name="quickstart-create-a-terraform-configuration-for-azure"></a>Rychlý Start: Vytvoření konfigurace Terraformu pro Azure
 
@@ -23,7 +23,7 @@ V tomto rychlém startu vytvoříte prostředky Azure pomocí Terraformu. Postup
 
 V této části vytvoříte konfiguraci pro instanci Azure Cosmos DB.
 
-1. Přihlásit se na [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Přihlaste se k webu [Portál Azure](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. Otevřete Azure Cloud Shell.
 
@@ -173,4 +173,4 @@ terraform destroy -auto-approve
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Nainstalujte a nakonfigurujte terraformu pro zřizování prostředků Azure](../virtual-machines/linux/terraform-install-configure.md).
+> [Nainstalujte a nakonfigurujte terraformu pro zřizování prostředků Azure](terraform-install-configure.md).
