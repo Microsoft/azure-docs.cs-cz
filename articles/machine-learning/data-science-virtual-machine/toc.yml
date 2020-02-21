@@ -6,20 +6,20 @@
   items:
     - name: Co je Data Science Virtual Machine (DVSM)?
       href: overview.md
-    - name: Co je DSVM s Geo AI?
+    - name: Co je Data Science Virtual Machine s Geo AI?
       href: geo-ai-dsvm-overview.md
-    - name: Nástroje zahrnuté do DSVM
+    - name: 'Nástroje, které jsou součástí prostředí Data Science Virtual Machine'
       href: tools-included.md
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytvoření DSVM s Windows
+    - name: Vytvoření prostředí Data Science Virtual Machine s Windows
       href: provision-vm.md
-    - name: Vytvoření DSVM s Ubuntu
+    - name: Vytvoření prostředí Data Science Virtual Machine s Ubuntu
       href: dsvm-ubuntu-intro.md
-    - name: Vytvoření DSVM s CentOS
+    - name: Vytvoření prostředí Data Science Virtual Machine s CentOS
       href: linux-dsvm-intro.md
-    - name: Vytvoření DSVM s Geo AI
+    - name: Vytvoření prostředí Data Science Virtual Machine s Geo AI
       href: provision-geo-ai-dsvm.md
 - name: Koncepty
   items:
@@ -43,13 +43,13 @@
   href: dsvm-samples-and-walkthroughs.md
 - name: Návody
   items:
-    - name: Použití DSVM s Windows
+    - name: Použití prostředí Data Science Virtual Machine s Windows
       href: vm-do-ten-things.md
-    - name: Použití DSVM s Linuxem
+    - name: Použití prostředí Data Science Virtual Machine s Linuxem
       href: linux-dsvm-walkthrough.md
-    - name: Použití DSVM s Geo AI
+    - name: Použití prostředí Data Science Virtual Machine s Geo AI
       href: use-geo-ai-dsvm.md
-    - name: Vytvoření fondu DSVM s automatickým škálováním
+    - name: Vytvoření fondu Data Science Virtual Machine s automatickým škálováním
       href: dsvm-pools.md
     - name: Integrace se službou Active Directory
       href: dsvm-common-identity.md
@@ -65,9 +65,9 @@
       href: /azure/architecture/data-guide/technology-choices/r-developers-guide?context=azure/machine-learning/data-science-virtual-machine/context/ml-context
 - name: Referenční informace
   items:
-    - name: DSVM s Ubuntu
+    - name: Data Science Virtual Machine s Ubuntu
       href: reference-ubuntu-vm.md
-    - name: DSVM s CentOS
+    - name: Data Science Virtual Machine s CentOS
       href: reference-centos-vm.md
     - name: "Poznámky k\_verzi"
       href: release-notes.md

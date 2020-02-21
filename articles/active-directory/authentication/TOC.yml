@@ -130,10 +130,14 @@
       items:
         - name: Nasazování bez hesel
           href: howto-authentication-passwordless-deployment.md
-        - name: Klíče zabezpečení bez hesla
-          href: howto-authentication-passwordless-security-key.md
-        - name: Windows 10 bez hesla
-          href: howto-authentication-passwordless-security-key-windows.md
+        - name: Klíče zabezpečení FIDO2 bez hesla
+          items:
+            - name: Povolení klíčů zabezpečení FIDO2 pro vašeho tenanta
+              href: howto-authentication-passwordless-security-key.md
+            - name: Přihlášení k zařízením s Windows 10
+              href: howto-authentication-passwordless-security-key-windows.md
+            - name: Jednotné přihlašování k místním prostředkům
+              href: howto-authentication-passwordless-security-key-on-premises.md
         - name: Přihlašování telefonem bez hesla
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello pro firmy

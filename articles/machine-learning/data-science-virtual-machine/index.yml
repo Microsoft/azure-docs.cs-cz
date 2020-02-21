@@ -11,36 +11,36 @@ metadata:
   author: gvashishtha
   ms.author: gopalv
   ms.date: 09/13/2019
-  ms.openlocfilehash: db6cebf4b4114a97fd86a173208cc639a5e1f7ed
-  ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+  ms.openlocfilehash: 3996c34b4ac1acfa040c38712f7b96fa546c8eb9
+  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73500138"
+  ms.lasthandoff: 02/21/2020
+  ms.locfileid: "77526038"
 landingContent:
-- title: Začínáme s DSVM
+- title: Začínáme s prostředím Data Science Virtual Machine
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je DSVM?
+    - text: Co je Data Science Virtual Machine?
       url: overview.md
-    - text: Co je DSVM s Geo AI?
+    - text: Co je Data Science Virtual Machine s Geo AI?
       url: geo-ai-dsvm-overview.md
-    - text: Nástroje zahrnuté do DSVM
+    - text: Nástroje, které jsou součástí prostředí Data Science Virtual Machine
       url: tools-included.md
     - text: Poznámky k verzi
       url: release-notes.md
   - linkListType: get-started
     links:
-    - text: Vytvoření DSVM s Windows
+    - text: Vytvoření prostředí Data Science Virtual Machine s Windows
       url: provision-vm.md
-    - text: Vytvoření DSVM s Ubuntu
+    - text: Vytvoření prostředí Data Science Virtual Machine s Ubuntu
       url: dsvm-ubuntu-intro.md
-    - text: Vytvoření DSVM s CentOS
+    - text: Vytvoření prostředí Data Science Virtual Machine s CentOS
       url: linux-dsvm-intro.md
-    - text: Vytvoření DSVM s Geo AI
+    - text: Vytvoření prostředí Data Science Virtual Machine s Geo AI
       url: provision-geo-ai-dsvm.md
-- title: Správa DSVM
+- title: Správa prostředí Data Science Virtual Machine
   linkLists:
   - linkListType: architecture
     links:
@@ -48,7 +48,7 @@ landingContent:
       url: dsvm-enterprise-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Vytváření fondů DSVM s automatickým škálováním
+    - text: Vytvoření fondů Data Science Virtual Machine s automatickým škálováním
       url: dsvm-pools.md
     - text: Integrace se službou Active Directory
       url: dsvm-common-identity.md

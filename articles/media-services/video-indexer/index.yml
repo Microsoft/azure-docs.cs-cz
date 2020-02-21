@@ -1,52 +1,71 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentace k Video Indexeru služby Azure Media Services
+### YamlMime:Landing
+title: Další informace o Video Indexeru služby Azure Media Services
+summary: Video Indexer služby Azure Media Services je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Azure Cognitive Search a Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech). Umožňuje extrahovat přehledy z videí pomocí zvukových modelů a videomodelů Video Indexeru.
 metadata:
-  title: Dokumentace k Video Indexeru služby Azure Media Services | Microsoft Docs
-  description: Další informace o službě Video Indexer
+  title: Dokumentace k Video Indexeru služby Azure Media Services
+  description: Video Indexer služby Azure Media Services je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Azure Cognitive Search a Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech). Umožňuje extrahovat přehledy z videí pomocí zvukových modelů a videomodelů Video Indexeru.
   services: media-services
-  author: juliako
-  manager: femila
   ms.service: media-services
-  ms.subservice: video-indexer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 03/11/2019
+  ms.collection: collection
+  author: Juliako
   ms.author: juliako
-abstract:
-  description: 'Video Indexer služby Azure Media Services je cloudová aplikace sestavená s využitím služeb Azure Media Analytics, Azure Cognitive Search a Cognitive Services (jako jsou rozhraní API pro rozpoznávání tváře, Microsoft Translator, rozhraní API pro počítačové zpracování obrazu a služba Custom Speech). Umožňuje extrahovat přehledy z videí pomocí zvukových modelů a videomodelů Video Indexeru.<br/>Informace o tom, kdy je vhodnější použít Video Indexer a kdy předvolby analyzátoru Media Services, najdete v <a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">dokumentu, který je porovnává</a>.'
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 2
-        items:
-          - href: video-indexer-overview.md
-            html: '<p>Video Indexer zahrnuje mediální technologie AI, které usnadňují extrakci informací z videí.</p>'
-            image:
-              src: media/index/AMSIcons-media_servicesV3.svg
-            title: Co je Video Indexer služby Azure Media Services?
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: 'Přihlaste se k webu Video Indexeru a nahrajte první video:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/AMSIcons-media_analytics.svg
-            text: Extrahování přehledů
-            href: /azure/media-services/video-indexer/video-indexer-get-started
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Naučte se extrahovat přehledy z videí pomocí rozhraní API Video Indexeru:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/AMSIcons-media_analytics.svg
-            text: Extrahování přehledů
-            href: /azure/media-services/video-indexer/video-indexer-use-apis
+  ms.date: 02/18/2020
+  ms.openlocfilehash: a3e1ec7b97d76287614b4e154143899acf7fd902
+  ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77485110"
+landingContent:
+- title: Informace o Video Indexeru služby Azure Media Services
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Video Indexer?
+      url: video-indexer-overview.md
+    - text: Porovnání předvoleb Media Services v3 a Video Indexeru
+      url: compare-video-indexer-with-media-services-presets.md
+    - text: Nejčastější dotazy
+      url: faq.md
+    - text: User Voice
+      url: https://cognitive.uservoice.com/forums/598144-video-indexer
+  - linkListType: whats-new
+    links:
+    - text: Co je nového ve Video Indexeru?
+      url: release-notes.md
+- title: Začínáme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Registrace a nahrání videa
+      url: video-indexer-get-started.md
+    - text: Pozvání uživatelů
+      url: invite-users.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření účtu připojeného k Azure
+      url: connect-to-azure.md
+    - text: Použití rozhraní API Video Indexeru
+      url: video-indexer-use-apis.md
+    - text: Nahrání videí na server a jejich indexování
+      url: upload-index-videos.md
+    - text: Kontrola výstupu vytvořeného rozhraním API
+      url: video-indexer-output-json-v2.md
+    - text: Vložení widgetů Video Indexeru do aplikací
+      url: video-indexer-embed-widgets.md
+  - linkListType: sample
+    links:
+    - text: Ukázky kódů
+      url: https://github.com/Azure-Samples/media-services-video-indexer
+- title: Přizpůsobení modelů obsahu
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Přizpůsobení modelu značek
+      url: customize-brands-model-with-website.md
+    - text: Přizpůsobení jazykového modelu
+      url: customize-language-model-with-website.md
+    - text: Přizpůsobení modelu osob
+      url: customize-person-model-with-website.md

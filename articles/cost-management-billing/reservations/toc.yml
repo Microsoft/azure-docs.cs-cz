@@ -68,6 +68,8 @@
           href: understand-rhel-reservation-charges.md
         - name: Slevy na Azure Database for MariaDB
           href: understand-reservation-charges-mariadb.md
+        - name: Slevy na Azure Cache for Redis
+          href: understand-azure-cache-for-redis-reservation-charges.md
         - name: Slevy na App Service
           href: reservation-discount-app-service-isolated-stamp.md
         - name: Slevy na softwarové plány Azure

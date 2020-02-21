@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Azure Media Services v2 (starší verze)
+summary: Do Media Services v2 se nepřidávají žádné nové funkce. Projděte si nejnovější verzi, Media Services v3.
+metadata:
+  title: Dokumentace ke službě Azure Media Services v2
+  description: Zjistěte, jak pomocí služby Media Services v2 bezpečně streamovat živé video nebo video na vyžádání ve vysílací kvalitě.
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: Juliako
+  ms.author: juliako
+  ms.date: 02/18/2020
+  ms.openlocfilehash: c222a7c0603e9b57518993216711076659b51e4c
+  ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 02/20/2020
+  ms.locfileid: "77500769"
+landingContent:
+- title: Informace o službě Azure Media Services v2
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Přehled služby Azure Media Services v2
+      url: media-services-overview.md
+    - text: Migrace na Media Services v3
+      url: https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3
+  - linkListType: whats-new
+    links:
+    - text: Co je nového v Media Services v2?
+      url: media-services-release-notes.md
+  - linkListType: concept
+    links:
+    - text: Starší verze komponent
+      url: legacy-components.md
+- title: Živé streamování
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Přehled
+      url: media-services-manage-channels-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření účtu Media Services s využitím portálu
+      url: media-services-portal-create-account.md
+    - text: Připojení prostřednictvím kódu programu
+      url: media-services-use-aad-auth-to-access-ams-api.md
+    - text: Živé streamování s využitím webu Azure Portal
+      url: media-services-portal-live-passthrough-get-started.md
+    - text: Živé streamování s využitím .NET
+      url: media-services-dotnet-live-encode-with-onpremises-encoders.md
+- title: Doručování videa na vyžádání
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Použití webu Azure Portal
+      url: media-services-portal-vod-get-started.md
+    - text: Použití .NET
+      url: media-services-dotnet-get-started.md
+    - text: Použití REST
+      url: media-services-rest-get-started.md

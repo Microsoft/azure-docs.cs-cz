@@ -81,6 +81,9 @@
         - name: Registrace poskytovatele služeb SAML
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
+        - name: Registrace aplikace Graph
+          href: microsoft-graph-get-started.md
+          displayName: 'migrate, migration, microsoft graph'
         - name: Přidání aplikace webového rozhraní API
           href: add-web-application.md
         - name: Přidání nativní klientské aplikace
@@ -377,8 +380,6 @@
       items:
         - name: Migrace uživatelů
           href: user-migration.md
-        - name: Migrace uživatelů s externími identitami
-          href: migrate-social-identities.md
 - name: Referenční informace
   items:
     - name: Poznámky k verzi Identity Experience Framework
@@ -392,9 +393,11 @@
       displayName: 'cookies, SameSite'
     - name: Kódy chyb
       href: error-codes.md
+    - name: Operace Microsoft Graph API
+      href: microsoft-graph-operations.md
     - name: Rezidence dat a dostupnost oblastí
       href: data-residency.md
-    - name: Povolení fakturace
+    - name: Model fakturace
       href: billing.md
     - name: Řízení rizik
       href: threat-management.md

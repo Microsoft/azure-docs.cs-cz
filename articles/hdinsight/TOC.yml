@@ -431,53 +431,9 @@
           items:
             - name: Použití sandboxu Apache Hadoopu
               href: ./hadoop/apache-hadoop-emulator-get-started.md
+            - name: Použití Apache Pigu
+              href: use-pig.md
         - name: Vývoj
-          items:
-            - name: Použití MapReduce s Apache Hadoopem
-              items:
-                - name: Přehled MapReduce
-                  href: ./hadoop/hdinsight-use-mapreduce.md
-                - name: Použití SSH
-                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
-                - name: Použití cURL
-                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
-                - name: Použití Azure Powershell
-                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
-                - name: Použití sady SDK pro .NET
-                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
-                - name: Spuštění ukázek MapReduce
-                  href: ./hadoop/apache-hadoop-run-samples-linux.md
-                - name: Spuštění vlastních programů MapReduce Apache Hadoopu
-                  href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: 'Vývoj programů MapReduce se streamováním v C#'
-                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
-                - name: Vývoj programů MapReduce v Javě
-                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-            - name: 'Použití Apache Hivu jako nástroje pro extrakci, transformaci a načítání (ETL)'
-              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
-            - name: 'Extrakce, transformace a načítání ve velkém měřítku'
-              href: ./hadoop/apache-hadoop-etl-at-scale.md
-            - name: Vytváření aplikací .NET HDInsight pro neinteraktivní ověřování
-              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
-            - name: Analýza velkých objemů dat
-              items:
-                - name: Analýza pomocí doplňku Power Query
-                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
-                - name: Připojení Power BI k modulu Interactive Query
-                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
-                - name: Připojení Power BI k Apache Hadoopu
-                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
-                - name: Připojení Excelu k Apache Hadoopu
-                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
-                - name: Připojení pomocí ovladače Apache Hive JDBC
-                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
-                - name: Analýza uložených tweetů
-                  href: ./hdinsight-analyze-twitter-data-linux.md
-                - name: Generování doporučení pomocí Apache Mahoutu
-                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
-                - name: Pokročilé analýzy pro HDInsight
-                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
-        - name: Spravovat
           items:
             - name: Použití prázdných hraničních uzlů
               href: ./hdinsight-apps-use-edge-node.md

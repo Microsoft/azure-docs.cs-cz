@@ -5,7 +5,7 @@
     - name: Co je Azure Resource Graph?
       displayName: 'Resource Manager, query language, rbac, permissions'
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Spusťte svůj první dotaz – Azure Portal
@@ -22,7 +22,7 @@
     - name: Vytvoření a sdílení dotazu na webu Azure Portal
       displayName: 'query, portal'
       href: ./tutorials/create-share-query.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Dotazy pro začátečníky
       displayName: 'query language, data explorer, count, list, show'
@@ -78,6 +78,8 @@
       href: /rest/api/azure-resourcegraph/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01'
+    - name: Typy prostředků a tabulky Resource Graphu
+      href: ./reference/supported-tables-resources.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

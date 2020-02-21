@@ -281,23 +281,23 @@
         - name: Konfigurace sestav Azure Backup
           items:
             - name: Konfigurace sestav Azure Backup
-              href: backup-azure-configure-reports.md
-            - name: Datový model pro sestavy Azure Backup
-              href: backup-azure-reports-data-model.md
-            - name: Datový model Log Analytics pro Azure Backup
-              href: backup-azure-log-analytics-data-model.md
+              href: configure-reports.md
         - name: Konfigurace diagnostických událostí pro trezory služby Recovery Services
           items:
             - name: Použití nastavení diagnostiky pro trezory služby Recovery Services
               href: backup-azure-diagnostic-events.md
             - name: Datový model Log Analytics pro diagnostické události specifické pro prostředek
-              href: backup-azure-log-analytics-new-data-model.md
+              href: backup-azure-reports-data-model.md
+            - name: Datový model Log Analytics pro Azure Backup (režim Azure Diagnostics)
+              href: backup-azure-diagnostics-mode-data-model.md
     - name: Automation
       items:
         - name: Integrovaná služba Azure Policy pro Azure Backup
           items:
             - name: Automatické povolení zálohování při vytváření virtuálních počítačů s využitím Azure Policy
               href: backup-azure-auto-enable-backup.md
+            - name: Konfigurace nastavení diagnostiky trezorů ve velkém
+              href: azure-policy-configure-diagnostics.md
         - name: PowerShell
           items:
             - name: Virtuální počítače Azure na webu Azure Portal

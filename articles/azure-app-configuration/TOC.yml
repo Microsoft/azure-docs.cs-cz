@@ -75,6 +75,8 @@
           href: howto-integrate-azure-managed-service-identity.md
         - name: Povolení přístupu s využitím Azure Active Directory
           href: concept-enable-rbac.md
+        - name: Přiřazení spravované identity Azure
+          href: overview-managed-identity.md
     - name: Vysoká dostupnost
       items:
         - name: Odolnost a zotavení po havárii

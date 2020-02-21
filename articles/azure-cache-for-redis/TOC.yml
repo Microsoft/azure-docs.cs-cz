@@ -53,6 +53,8 @@
           href: cache-how-to-premium-vnet.md
         - name: Nastavení geografické replikace
           href: cache-how-to-geo-replication.md
+        - name: Uložení s využitím rezervované kapacity
+          href: cache-reserved-pricing.md
         - name: Migrace ze služby Managed Cache Service
           href: cache-migrate-to-redis.md
     - name: Automatizace
