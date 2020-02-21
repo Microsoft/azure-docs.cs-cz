@@ -381,7 +381,7 @@
         - name: Aktualizace a opravy
           items:
             - name: Infrastruktura aktualizací Red Hatu
-              href: update-infrastructure-redhat.md
+              href: ../workloads/redhat/redhat-rhui.md
         - name: Agent virtuálního počítače Azure
           items:
             - name: Přehled
@@ -771,4 +771,4 @@
     - name: Nejčastější dotazy
       href: faq.md
 - name: Řešení potíží
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml

@@ -710,7 +710,7 @@
             - name: Nejčastější dotazy
               href: migration-classic-resource-manager-faq.md
 - name: Řešení potíží
-  href: ../troubleshooting/index.md
+  href: ../troubleshooting/index.yml
 - name: Referenční informace
   items:
     - name: Azure CLI
