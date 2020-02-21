@@ -1,23 +1,27 @@
 ---
-title: Osvědčené postupy zabezpečení PlayBook pro Azure SQL Database | Microsoft Docs
-description: Tento článek poskytuje obecné pokyny pro osvědčené postupy zabezpečení v Azure SQL Database.
+title: PlayBook pro řešení běžných požadavků na zabezpečení | Microsoft Docs
+titleSuffix: Azure SQL Database
+description: Tento článek poskytuje běžné požadavky na zabezpečení a osvědčené postupy v Azure SQL Database.
 ms.service: sql-database
 ms.subservice: security
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 01/22/2020
+ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 095d435b9a595c420821da0813fdfc0893d70d89
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c18e1b1a1feba5c528a692b7d63287b3751b62cf
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845879"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506228"
 ---
-# <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL Database osvědčené postupy zabezpečení PlayBook
+# <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>PlayBook pro adresování běžných požadavků na zabezpečení pomocí Azure SQL Database
 
-## <a name="overview"></a>Přehled
+> [!NOTE]
+> Tento dokument poskytuje osvědčené postupy, jak řešit běžné požadavky na zabezpečení. Ne všechny požadavky platí pro všechna prostředí a měli byste se obrátit na databázi a tým zabezpečení, na kterých se funkce implementují.
+
+## <a name="solving-common-security-requirements"></a>Řešení běžných požadavků na zabezpečení
 
 Tento dokument poskytuje pokyny, jak řešit běžné požadavky na zabezpečení pro nové nebo existující aplikace pomocí Azure SQL Database. Je uspořádána podle oblastí zabezpečení vysoké úrovně. Informace o konkrétních hrozbách najdete v části [běžné bezpečnostní hrozby a potenciální rizika](#common-security-threats-and-potential-mitigations) . I když jsou při migraci aplikací z místního prostředí do Azure k dispozici některá z uvedených doporučení, scénáře migrace nejsou zaměřeny na tento dokument.
 
@@ -55,16 +59,19 @@ Pokud není uvedeno jinak, doporučujeme, abyste provedli všechny osvědčené 
 - [NIST speciální publikace 800-53 řízení zabezpečení](https://nvd.nist.gov/800-53): AC-5, AC-6
 - [PCI DSS](https://www.pcisecuritystandards.org/document_library): 6.3.2, 6.4.2
 
-### <a name="feedback"></a>Váš názor
+### <a name="feedback"></a>Názor
 
 Chystáme se dál aktualizovat doporučení a osvědčené postupy, které jsou tady uvedené. Zadáním odkazu na **zpětnou vazbu** na konci tohoto článku zadejte nebo opravte tento dokument.
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 
 Ověřování je proces, který označuje, že uživatel vyžádá. Azure SQL Database podporuje dva typy ověřování:
 
 - Ověřování pomocí SQL
-- Ověřování Azure Active Directory
+- Ověřování pomocí Azure Active Directory
+
+> [!NOTE]
+> Pro všechny nástroje a aplikace třetích stran nemusí být ověřování Azure Active Directory podporováno.
 
 ### <a name="central-management-for-identities"></a>Centrální Správa identit
 
@@ -82,7 +89,7 @@ Centrální Správa identit nabízí následující výhody:
 
 - Vytvořte tenanta Azure AD a [Vytvořte uživatele, kteří](../active-directory/fundamentals/add-users-azure-active-directory.md) budou představovat lidské uživatele, a vytvořit [instanční objekty](../active-directory/develop/app-objects-and-service-principals.md) , které budou představovat aplikace, služby a nástroje pro automatizaci. Instanční objekty jsou stejné jako účty služeb v systému Windows a Linux. 
 
-- Přiřazení přístupových práv k prostředkům k objektům zabezpečení Azure AD prostřednictvím přiřazení skupiny: Vytvoření skupin Azure AD, udělení přístupu ke skupinám a přidání jednotlivých členů do skupin. V databázi vytvořte uživatele databáze s omezením, kteří mapují vaše skupiny Azure AD. 
+- Přiřazení přístupových práv k prostředkům k objektům zabezpečení Azure AD prostřednictvím přiřazení skupiny: Vytvoření skupin Azure AD, udělení přístupu ke skupinám a přidání jednotlivých členů do skupin. V databázi vytvořte uživatele databáze s omezením, kteří mapují vaše skupiny Azure AD. Chcete-li přiřadit oprávnění v rámci databáze, vložte uživatele do databázových rolí s příslušnými oprávněními.
   - Projděte si články, [nakonfigurujte a spravujte Azure Active Directory ověřování pomocí SQL](sql-database-aad-authentication-configure.md) a [použijte Azure AD pro ověřování pomocí SQL](sql-database-aad-authentication.md).
   > [!NOTE]
   > Ve spravované instanci můžete také vytvořit přihlašovací údaje, které se mapují na objekty zabezpečení Azure AD v hlavní databázi. Viz [Create Login (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
@@ -204,11 +211,6 @@ Ověřování SQL odkazuje na ověření uživatele při připojení k Azure SQL
 - Jako správce serveru vytvořte přihlašovací jména a uživatele. Pokud nepoužíváte uživatelé databáze s omezením hesla, ukládají se všechna hesla do hlavní databáze.
   - Přečtěte si článek, [řízení a udělení přístupu k databázi SQL Database a SQL Data Warehouse](sql-database-manage-logins.md).
 
-- Postupujte podle osvědčených postupů pro správu hesel:
-  - Zadejte komplexní heslo, které se skládá z velkých a malých písmen, číslic (0-9) a nealfanumerických znaků (například $,!, # nebo%).
-  - Používejte delší hesla místo kratších náhodně vybraných znaků.
-  - Vynutili ruční změnu hesla nejméně každých 90 dní.
-
 ## <a name="access-management"></a>Správa přístupu
 
 Správa přístupu je proces řízení a správy přístupu autorizovaných uživatelů a oprávnění k Azure SQL Database.
@@ -250,24 +252,25 @@ Následující osvědčené postupy jsou volitelné, ale výsledkem bude lepší
 
 - Upustí od přiřazování oprávnění jednotlivým uživatelům. Používejte místo toho role (databáze nebo role serveru) konzistentně. Role značně pomáhají s vytvářením sestav a s oprávněními k odstraňování potíží. (Azure RBAC podporuje pouze přiřazení oprávnění prostřednictvím rolí.) 
 
-- Předdefinované role použijte, pokud se oprávnění rolí shodují přesně s potřebnými oprávněními pro uživatele. Můžete přiřadit uživatele k více rolím. 
-
-- Vytvoření a použití vlastních rolí, pokud předdefinované role udělují příliš mnoho nebo nedostatečná oprávnění. Typické role používané v praxi: 
+- Vytvořte a používejte vlastní role s přesnými oprávněními. Typické role používané v praxi: 
   - Nasazení zabezpečení 
   - Správce 
-  - Developer 
+  - Vývojář 
   - Pracovníci podpory 
   - Auditor 
   - Automatizované procesy 
   - koncový uživatel 
+  
+- Předdefinované role používejte pouze v případě, že oprávnění role odpovídají přesně potřebným oprávněním pro uživatele. Můžete přiřadit uživatele k více rolím. 
 
 - Pamatujte, že oprávnění v nástroji SQL Server Database Engine lze použít pro následující obory. Menší rozsah, menší dopad udělených oprávnění: 
   - Server Azure SQL Database (speciální role v hlavní databázi) 
-  - databáze 
-  - Schéma (viz také: [schéma – návrh pro SQL Server: doporučení pro návrh schématu s ohledem na zabezpečení](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
+  - Databáze 
+  - Schéma
+      - Osvědčeným postupem je použití schémat k udělení oprávnění v rámci databáze. (viz také: [schéma – návrh pro SQL Server: doporučení pro návrh schématu s ohledem na zabezpečení](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/))
   - Objekt (tabulka, zobrazení, procedura atd.) 
   > [!NOTE]
-  > Nedoporučuje se uplatňovat oprávnění na úrovni objektu, protože tato úroveň přináší nepotřebnou složitost na celkovou implementaci. Pokud se rozhodnete použít oprávnění na úrovni objektu, měli byste je jasně zdokumentovat. Totéž platí pro oprávnění na úrovni sloupců, která se ve stejných důvodech ještě méně doporučují. Standardní pravidla pro [zamítnutí](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql) se pro sloupce nevztahují.
+  > Nedoporučuje se uplatňovat oprávnění na úrovni objektu, protože tato úroveň přináší nepotřebnou složitost na celkovou implementaci. Pokud se rozhodnete použít oprávnění na úrovni objektu, měli byste je jasně zdokumentovat. Totéž platí pro oprávnění na úrovni sloupců, která se ve stejných důvodech ještě méně doporučují. Upozorňujeme také, že ve výchozím nastavení [odmítnutí](https://docs.microsoft.com/sql/t-sql/statements/deny-object-permissions-transact-sql) na úrovni tabulky přepíše udělení na úrovni sloupce. To by vyžadovalo aktivaci [Konfigurace serveru dodržování společných kritérií](https://docs.microsoft.com/sql/database-engine/configure-windows/common-criteria-compliance-enabled-server-configuration-option) .
 
 - Proveďte pravidelné kontroly pomocí [posouzení ohrožení zabezpečení (VA)](https://docs.microsoft.com/sql/relational-databases/security/sql-vulnerability-assessment) k otestování příliš velkého počtu oprávnění.
 
@@ -320,7 +323,7 @@ Oddělení povinností, označované také jako oddělení cel, popisuje nutnost
 
 - Vždy nezapomeňte mít záznam auditu pro akce související se zabezpečením. 
 
-- Definici předdefinovaných rolí RBAC můžete načíst, abyste viděli oprávnění, která se používají, a vytvořit vlastní roli na základě výňatků a kumulace těchto funkcí prostřednictvím PowerShellu. 
+- Definici předdefinovaných rolí RBAC můžete načíst, abyste viděli oprávnění, která se používají, a vytvořit vlastní roli na základě výňatků a kumulace těchto funkcí prostřednictvím PowerShellu.
 
 - Vzhledem k tomu, že kterýkoli člen role db_owner Database může změnit nastavení zabezpečení jako transparentní šifrování dat (TDE) nebo změnit objekt SLO, mělo by být toto členství uděleno opatrně. Existuje však mnoho úloh, které vyžadují db_owner oprávnění. Úkol jako změna nastavení databáze, jako je například změna možností databáze. Auditování hraje klíčovou roli v jakémkoli řešení.
 
@@ -409,6 +412,8 @@ Chrání data při přesunu dat mezi klientem a serverem. Přečtěte si téma [
 
 Použitá data jsou data uložená v paměti databázového systému během provádění dotazů SQL. Pokud vaše databáze uchovává citlivá data, může být vaše organizace nutná k tomu, aby se uživatelům s vysokým oprávněním zabránilo v prohlížení citlivých dat ve vaší databázi. Uživatelé s vysokou úrovní oprávnění, jako jsou například operátoři Microsoftu nebo specializující ve vaší organizaci, by měli mít přístup k databázi, ale nemusejí zobrazovat a potenciálně staly všudypřítomnými citlivá data z paměti procesu SQL Server nebo pomocí dotazování databáze.
 
+Zásady, které určují, která data jsou citlivá a zda musí být citlivá data šifrována v paměti a nejsou přístupná správcům ve formátu prostého textu, jsou specifická pro vaši organizaci a předpisy dodržování předpisů, které je třeba dodržovat. Podívejte se prosím na související požadavky: [identifikace a označení citlivých dat](#identify-and-tag-sensitive-data).
+
 **Jak implementovat**:
 
 - Pomocí [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) zajistěte, aby citlivá data nebyla vystavená ve formě prostého textu v Azure SQL Database, a to ani v paměti. Always Encrypted chrání data od správců databází (specializující) a cloudových správců (nebo špatných aktérů, které mohou zosobnit vysoce privilegovaných uživatelů) a poskytují větší kontrolu nad tím, kdo má přístup k vašim datům.
@@ -416,6 +421,8 @@ Použitá data jsou data uložená v paměti databázového systému během prov
 **Osvědčené postupy**:
 
 - Always Encrypted není náhradou za zašifrování dat v klidovém režimu (TDE) nebo při přenosu (SSL/TLS). Always Encrypted by se neměla používat pro data, která nejsou citlivá, aby se minimalizoval dopad na výkon a funkčnost. Použití Always Encrypted ve spojení s TDE a protokolem TLS (Transport Layer Security) se doporučuje pro komplexní ochranu neaktivních dat, přenosů a používání. 
+
+- Než nasadíte Always Encrypted do provozní databáze, posuďte dopad šifrování identifikovaných sloupců s citlivými daty. Obecně Always Encrypted snižuje funkčnost dotazů v šifrovaných sloupcích a má další omezení uvedená v [podrobnostech o Always Encryptedch funkcích](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine#feature-details). Proto může být nutné změnit architekt vaší aplikace, aby znovu implementovala funkčnost, dotaz nepodporuje, na straně klienta nebo v refaktorování schématu databáze, včetně definic uložených procedur, funkcí, zobrazení a triggerů. Pokud nedodržují omezení a omezení Always Encrypted, existující aplikace nemusí fungovat s šifrovanými sloupci. I když ekosystém nástrojů, produktů a služeb Microsoftu, které podporují Always Encrypted, roste, mnoho z nich nefunguje s šifrovanými sloupci. Šifrování sloupce může také ovlivnit výkon dotazů v závislosti na charakteristikách vaší úlohy. 
 
 - Pokud používáte Always Encrypted k ochraně dat před škodlivými specializující, spravujte Always Encrypted klíče pomocí oddělování rolí. Při oddělování rolí vytvoří Správce zabezpečení fyzické klíče. Správce databáze vytvoří objekty metadat hlavního klíče sloupce a šifrovacího klíče sloupce s popisem fyzických klíčů v databázi. Během tohoto procesu správce zabezpečení nepotřebuje přístup k databázi a DBA nebude potřebovat přístup k fyzickým klíčům ve formátu prostého textu. 
   - Podrobnosti najdete v článku [Správa klíčů pomocí oddělení rolí](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation) . 
@@ -705,7 +712,7 @@ Proaktivně Vylepšete zabezpečení databáze díky zjišťování a oprava pot
 
 ### <a name="identify-and-tag-sensitive-data"></a>Identifikace a označení citlivých dat 
 
-Seznamte se se sloupci, které potenciálně obsahují citlivá data. Klasifikace sloupců pro použití pokročilých scénářů auditování a ochrany na základě citlivosti. 
+Seznamte se se sloupci, které potenciálně obsahují citlivá data. To, co se považuje za citlivé údaje, je silně závislé na zákazníkovi, nařízení dodržování předpisů atd. a musí být vyhodnoceno uživateli na základě těchto dat. Klasifikace sloupců pro použití pokročilých scénářů auditování a ochrany na základě citlivosti. 
 
 **Jak implementovat**:
 

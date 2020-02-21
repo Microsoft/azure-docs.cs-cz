@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 02/20/2020
 ms.author: rkarlin
-ms.openlocfilehash: 9c4ba09c7e3eca4482ed56b0b337124aeec5b838
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c643c037506725b1a48588ca779d074b6aecf7c2
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928258"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506080"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Kurz: vytvoření vlastních pravidel pro analytiky k detekci podezřelých hrozeb
 
@@ -36,49 +36,70 @@ Můžete vytvořit vlastní analytická pravidla, která vám pomůžou vyhledat
 
 1. V Azure Portal v části Azure Sentinel vyberte **Analytics**.
 
-1. V horním řádku nabídek vyberte **+ vytvořit** a vyberte **pravidlo plánovaného dotazu**. Otevře se **Průvodce vytvořením vlastního pravidla**.
+1. V horním řádku nabídek vyberte **+ vytvořit** a vyberte **pravidlo plánovaného dotazu**. Tím se otevře **Průvodce analytickým pravidlem**.
 
     ![Vytvořit plánovaný dotaz](media/tutorial-detect-threats-custom/create-scheduled-query.png)
 
-1. Na kartě **Obecné** zadejte popisný název a popis. Nastavte **Závažnost výstrahy** podle potřeby. Když vytvoříte pravidlo, můžete ho povolit, což způsobí, že se spustí hned po dokončení jeho vytvoření. Pokud ho vytvoříte jako zakázaný, pravidlo se přidá na kartu **aktivních pravidel** a Vy ho můžete v případě potřeby povolit.
+1. Na kartě **Obecné** zadejte jedinečný **název**a **Popis**. V poli **taktiku** si můžete vybrat z kategorií útoků, podle kterých se pravidlo klasifikuje. Nastavte **závažnost** výstrahy podle potřeby. Když vytvoříte pravidlo, jeho **stav** je ve výchozím nastavení **povolený** , což znamená, že se spustí hned po dokončení jeho vytvoření. Pokud nechcete, aby se spouštěla hned, vyberte **disabled (zakázáno**) a pravidlo se přidá na kartu **aktivní pravidla** a Vy ho můžete v případě potřeby povolit.
 
     ![Zahájení vytváření vlastního pravidla pro analytiky](media/tutorial-detect-threats-custom/general-tab.png)
 
-1. Na kartě **Nastavení** můžete buď přímo napsat dotaz, nebo vytvořit dotaz v Log Analytics a pak ho vložit do pole **vyhledávací dotaz** . Když změníte a nakonfigurujete svůj dotaz, Azure Sentinel simuluje výsledky dotazu v okně **Náhled výsledků** na pravé straně. To vám umožní získat přehled o tom, kolik dat se vygenerovalo v konkrétním časovém intervalu pro vytvářenou výstrahu. Tato částka závisí na tom, co jste nastavili pro **příkaz Spustit dotaz každé** a **data vyhledávání z posledního**. Pokud vidíte, že výstraha v průměru vyvolala příliš často upozornění, můžete nastavit počet výsledků, který je vyšší, aby byl nad rámec průměrného směrného plánu.
-
+1. Na kartě **nastavit logiku pravidla** můžete buď napsat dotaz přímo do pole **dotazu pravidla** , nebo vytvořit dotaz v Log Analytics a pak ho zkopírovat a vložit.
+ 
    ![Vytvořit dotaz ve službě Azure Sentinel](media/tutorial-detect-threats-custom/settings-tab.png)
 
-   Tady je ukázkový dotaz, který vás upozorní, když se v aktivitě Azure vytvoří neobvykléý počet prostředků.
+   - Podívejte se na pravé místo v oblasti **Náhled výsledků** , kde se v Azure Sentinel zobrazuje počet výsledků (protokoluje události), který dotaz vygeneruje a při psaní a konfiguraci dotazu se průběžně mění. Graf zobrazuje počet výsledků v rámci definovaného časového období, které je určeno nastavením v sekci **plánování dotazů** .
+    - Pokud vidíte, že dotaz by aktivoval příliš mnoho nebo příliš časté výstrahy, můžete nastavit směrný plán v části **prahová hodnota pro výstrahu** .
 
-    `AzureActivity
-    \| where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
-    \| where ActivityStatus == "Succeeded"
-    \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
+      Tady je ukázkový dotaz, který vás upozorní, když se v aktivitě Azure vytvoří neobvykléý počet prostředků.
 
-   > [!NOTE]
-   > Délka dotazu by měla být mezi 1 a 10 000 znaky a nesmí obsahovat "Search \*" ani "Union \*".
+      `AzureActivity
+     \| where OperationName == "Create or Update Virtual Machine" or OperationName =="Create Deployment"
+     \| where ActivityStatus == "Succeeded"
+     \| make-series dcount(ResourceId)  default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller`
 
-    1. V části **plánování dotazů**nastavte následující parametry:
+      > [!NOTE]
+      > Délka dotazu by měla být mezi 1 a 10 000 znaky a nesmí obsahovat "Search \*" ani "Union \*".
 
-        1.  **Pomocí příkazu Spustit dotaz** můžete nastavit **frekvenci** , jak často se dotaz spouští – stejně jako každých 5 minut nebo jako zřídka jako jednou denně.
+    1. Pomocí oddílu **mapové entity** můžete propojit parametry z výsledků dotazu do entit rozpoznaných pomocí služby Azure Sentinel. Tyto entity tvoří základ pro další analýzu, včetně seskupení výstrah na incidenty na kartě **Nastavení incidentu** .
+    1. V části **plánování dotazů** nastavte následující parametry:
 
-        1.  Nastavte **data vyhledávání z poslední** na kontrolu časového okna, ve kterém se dotaz spustí, například může běžet každou hodinu během 1 až 60 minut dat.
+       1. **Pomocí příkazu Spustit dotaz vždy** proveďte kontrolu nad tím, jak často se má dotaz spouštět – stejně jako každých 5 minut nebo jako nečasto jako jednou denně.
 
-        1. Můžete nastavit možnost Azure Sentinel pro **zastavení spuštění dotazu po vygenerování výstrahy** , pokud chcete, aby se výstraha zobrazila pouze jednou, když k ní dojde. Musíte nastavit okno, během kterého by se měl dotaz zastavit, a to až 24 hodin.
+       1. Nastavte **hledaná data z poslední** pro určení časového období dat pokrytých dotazem – můžete například zadat dotaz na posledních 10 minut dat nebo posledních 6 hodin dat.
 
-    1. V **aktivační události výstrahy**definujte podmínky triggeru výstrahy. V části **mapování entit**můžete namapovat sloupce v dotazu na pole entit rozpoznaná službou Azure Sentinel. Pro každé pole namapujte příslušný sloupec v dotazu, který jste vytvořili v Log Analytics, do pole příslušná entita. Každá entita obsahuje několik polí, například SID a GUID. Entitu můžete mapovat podle libovolných polí, nikoli jenom z entity nejvyšší úrovně.
+       > [!NOTE]
+       > Tato dvě nastavení jsou nezávislá na sobě navzájem, až do bodu. Dotaz můžete spustit v krátkém intervalu pokrývající dobu delší, než je interval (v důsledku překrývajících se dotazů), ale nemůžete spustit dotaz v intervalu, který překračuje období pokrytí. v opačném případě budete mít v celkovém pokrytí dotazu mezery.
 
-1.  Na kartě **automatizace odpovědí** vyberte libovolný playbooky, který chcete spustit automaticky, když se vygeneruje výstraha vlastním pravidlem. Další informace o vytváření a automatizaci playbooky najdete v tématu [reakce na hrozby](tutorial-respond-threats-playbook.md).
+    1. Pomocí oddílu **prahová hodnota pro výstrahu** definujte směrný plán. Například nastavte **Generovat výstrahu, pokud je počet výsledků dotazu** **větší než** a zadejte číslo 1000, pokud chcete, aby pravidlo vygenerovalo výstrahu pouze v případě, že dotaz vygeneruje více než 1000 výsledků při každém spuštění. Toto pole je povinné, pokud nechcete nastavit směrný plán – to znamená, že pokud chcete, aby vaše výstraha zaregistrovala každou událost – zadejte 0 do pole číslo.
 
-    ![Automatizace reakce na hrozby v Azure Sentinel](media/tutorial-detect-threats-custom/response-automation-custom.png)
+    1. V části **potlačení** můžete zapnout funkci **zastavit běžící dotaz po vygenerování výstrahy** nastavení **v** případě, že po obdržení výstrahy budete chtít pozastavit operaci tohoto pravidla v časovém intervalu, který překračuje interval dotazu. Pokud tuto funkci zapnete v, musíte nastavit **zastavit běžící dotaz pro** na dobu, po kterou by měl dotaz skončit, a to až 24 hodin.
 
-1. Vyberte **zkontrolovat** a zkontrolujte všechna nastavení nového pravidla výstrahy a potom vyberte **vytvořit a inicializujte pravidlo upozornění**.
+1. Na kartě **Nastavení incidentu** si můžete vybrat, jestli a jakým způsobem funkce Sentinel Azure zapne výstrahy na nenapadnutelné incidenty. Pokud je tato karta jenom vlevo, Azure Sentinel vytvoří jeden samostatný incident od každého a každého upozornění. Můžete zvolit, aby se nevytvořily žádné incidenty, nebo pokud chcete seskupit několik výstrah do jednoho incidentu, a to změnou nastavení na této kartě.
 
-   ![Kontrola vlastního dotazu](media/tutorial-detect-threats-custom/review-tab.png)
+    1. V části **Nastavení incidentu** můžete **vytvořit incidenty z výstrah aktivovaných tímto pravidlem analýzy** **, což znamená, že**Azure Sentinel vytvoří jeden samostatný incident od každého a všechny výstrahy aktivované pravidlem.<br></br>Pokud nechcete, aby toto pravidlo vedlo k vytvoření jakýchkoli incidentů (například pokud toto pravidlo slouží pouze ke shromažďování informací pro následnou analýzu), nastavte tuto hodnotu na **zakázáno**.
 
-1.  Po vytvoření výstrahy se do tabulky v části **aktivní pravidla**přidá vlastní pravidlo. V tomto seznamu můžete každé pravidlo Povolit, zakázat nebo odstranit.
+    1. Pokud chcete, aby se jeden incident vygeneroval ze skupiny podobných nebo opakovaných výstrah, v části **seskupování výstrah** nastavte **výstrahy související se skupinou, aktivované pomocí tohoto pravidla analýzy, do incidentů** , které se mají **Povolit**, a nastavte následující parametry.
 
-1.  Pokud chcete zobrazit výsledky vytvořených pravidel výstrah, navštivte stránku **incidenty** , kde můžete určit jejich třídění, [prozkoumat incidenty](tutorial-investigate-cases.md)a napravit hrozby.
+    1. **Omezte skupinu na výstrahy vytvořené v rámci vybraného časového rámce**:<br></br> Určete časový rámec, ve kterém budou seskupeny podobné nebo opakované výstrahy. Všechny odpovídající výstrahy v tomto časovém rámci budou souhrnně generovat incident nebo sadu incidentů (v závislosti na nastavení seskupení níže). Výstrahy mimo tento časový rámec způsobí vygenerování samostatného incidentu nebo sady incidentů.
+
+    2. **Výstrahy skupin aktivované pomocí tohoto pravidla analýzy do jednoho incidentu**: vyberte základnu, na které se budou seskupovat výstrahy:
+
+        - **Seskupit výstrahy do jednoho incidentu, pokud se všechny entity shodují**: <br></br>Výstrahy jsou seskupené dohromady, pokud sdílí stejné hodnoty pro každou namapovanou entitu (definované na kartě nastavit logiku pravidla výše). Toto je doporučené nastavení.
+
+        - **Seskupit všechny výstrahy aktivované tímto pravidlem do jednoho incidentu**: <br></br>Všechny výstrahy vygenerované tímto pravidlem jsou seskupené i v případě, že nesdílejí žádné identické hodnoty.
+
+        - **Seskupit výstrahy do jednoho incidentu, pokud se vybrané entity shodují**: <br></br>Výstrahy jsou seskupené dohromady, pokud sdílí stejné hodnoty pro některé mapované entity (které můžete vybrat z rozevíracího seznamu). Toto nastavení můžete chtít použít například v případě, že chcete vytvořit samostatné incidenty založené na zdrojových nebo cílových IP adresách.
+
+    3. **Znovu otevřít uzavřené odpovídající incidenty**: Pokud byl incident uzavřený (což znamená, že došlo k vyřešení základního problému) a následně se vygeneruje další výstraha, která by se do tohoto incidentu přidala, nastavte toto nastavení na **povoleno** , pokud chcete, aby byl uzavřený incident znovu otevřený, a nechejte jako **zakázaný** , pokud chcete, aby výstraha vytvořila nový incident.
+
+1. Na kartě **automatizované odpovědi** vyberte libovolný playbooky, který chcete spustit automaticky, když se vygeneruje výstraha vlastním pravidlem. Další informace o vytváření a automatizaci playbooky najdete v tématu [reakce na hrozby](tutorial-respond-threats-playbook.md).
+
+1. Vyberte **zkontrolovat a vytvořit** a zkontrolujte všechna nastavení nového pravidla výstrahy a potom vyberte **vytvořit a inicializujte pravidlo upozornění**.
+  
+1. Po vytvoření výstrahy se do tabulky v části **aktivní pravidla**přidá vlastní pravidlo. V tomto seznamu můžete každé pravidlo Povolit, zakázat nebo odstranit.
+
+1. Pokud chcete zobrazit výsledky vytvořených pravidel výstrah, navštivte stránku **incidenty** , kde můžete určit jejich třídění, [prozkoumat incidenty](tutorial-investigate-cases.md)a napravit hrozby.
 
 
 > [!NOTE]

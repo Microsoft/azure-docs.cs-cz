@@ -6,7 +6,7 @@ documentationcenter: azure
 author: BarbaraSelden
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 963cec069052484362e4eb31eb2479f4a915cae8
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 93e1d879f69a95fe7472ce530e0e9f38f3480f39
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066444"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522389"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro aplikaci s více klienty
 
@@ -68,13 +68,13 @@ Pokud chcete zjistit, která možnost integrace se má použít pro vaši aplika
 |---|---|---|---|
 | Správa uživatelů a skupin ve službě Azure AD| √| √| Pouze uživatel |
 | Správa uživatelů a skupin synchronizovaných z místní služby Active Directory| √*| √*| Jenom uživatel * |
-| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k datům O365 (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X+| √| × |
+| Přístup k datům mimo uživatele a skupiny během zřizování přístupu k datům O365 (týmy, SharePoint, E-mail, kalendář, dokumenty atd.)| X+| √| X |
 | Vytváření, čtení a aktualizace uživatelů na základě obchodních pravidel| √| √| √ |
-| Odstranění uživatelů na základě obchodních pravidel| √| √| × |
-| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| ×| √ |
-| Podpora více zprostředkovatelů identity| √| ×| √ |
+| Odstranění uživatelů na základě obchodních pravidel| √| √| X |
+| Správa automatického zřizování uživatelů pro všechny aplikace z Azure Portal| √| X| √ |
+| Podpora více zprostředkovatelů identity| √| X| √ |
 | Podpora účtů hostů (B2B)| √| √| √ |
-| Podpora účtů mimo podnik (B2C)| ×| √| √ |
+| Podpora účtů mimo podnik (B2C)| X| √| √ |
 
 <sup>*</sup> – pro synchronizaci uživatelů ze služby AD do Azure AD se vyžaduje nastavení Azure AD Connect.  
 <sup>+</sup >– použití SCIM pro zřizování vám nevylučuje integraci aplikace do Microsoft graphu pro jiné účely.

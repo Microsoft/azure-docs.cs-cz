@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 33fddcf22793e50287fb590dee3547d5e7be4d2b
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 97b65c9f891d925e702c858753aa5e5feb9c9ac1
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462543"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500705"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 
@@ -45,35 +45,46 @@ Služba Azure Sentinel podporuje následující metody datového připojení:
 
 - **Integrace služeb s**službami:<br> Některé služby jsou propojené nativně, jako jsou AWS a služby Microsoftu, využívají tyto služby Azure Foundation k předem připravené integraci. následující řešení je možné připojit několika kliknutími:
     - [Amazon Web Services – CloudTrail](connect-aws.md)
-    - [Office 365](connect-office-365.md)
-    - [Protokoly a přihlášení k auditu Azure AD](connect-azure-active-directory.md)
     - [Aktivita Azure](connect-azure-activity.md)
+    - [Protokoly a přihlášení k auditu Azure AD](connect-azure-active-directory.md)
     - [Azure AD Identity Protection](connect-azure-ad-Identity-protection.md)
-    - [Azure Security Center](connect-azure-security-center.md)
-    - [Azure Information Protection](connect-azure-information-protection.md)
     - [Rozšířená ochrana před internetovými útoky Azure](connect-azure-atp.md)
+    - [Azure Information Protection](connect-azure-information-protection.md)
+    - [Azure Security Center](connect-azure-security-center.md)
     - [Cloud App Security](connect-cloud-app-security.md)
+    - [Server názvů domén](connect-dns.md)
+    - [Office 365](connect-office-365.md)
+    - [ATP v programu Microsoft Defender](connect-microsoft-defender-advanced-threat-protection.md)
+    - [Firewall webových aplikací společnosti Microsoft](connect-microsoft-waf.md)
     - [Události zabezpečení systému Windows](connect-windows-security-events.md) 
     - [Brána Windows Firewall](connect-windows-firewall.md)
+    - [Události zabezpečení systému Windows](connect-windows-security-events.md)
 
 - **Externí řešení prostřednictvím rozhraní API**: některé zdroje dat jsou propojené pomocí rozhraní API, která jsou k dispozici v připojeném zdroji dat. Většina technologií zabezpečení obvykle poskytuje sadu rozhraní API, pomocí kterých lze načíst protokoly událostí. Rozhraní API se připojují k Azure Sentinel a shromažďují konkrétní datové typy a odesílají je do Azure Log Analytics. Mezi zařízení připojená přes rozhraní API patří:
     - [Barracuda](connect-barracuda.md)
-    - [Společnost](connect-symantec.md)
+    - [Barracuda CloudGen firewall](connect-barracuda-cloudgen-firewall.md)
     - [Citrix Analytics (zabezpečení)](connect-citrix-analytics.md)
+    - [F5 BIG-IP](connect-f5-big-ip.md)
+    - [Forcepoint DLP](connect-forcepoint-dlp.md)
+    - [Squadra Technologies Squadra](connect-squadra-secrmm.md)
+    - [Symantec ICDX](connect-symantec.md)
+    - [Zimperium](connect-zimperium-mtd.md)
+
 
 - **Externí řešení prostřednictvím agenta**: službu Azure Sentinel je možné připojit ke všem dalším zdrojům dat, které mohou provádět streamování protokolů v reálném čase pomocí protokolu syslog prostřednictvím agenta. <br>Většina zařízení používá protokol syslog k posílání zpráv o událostech, které obsahují samotný protokol a data o protokolu. Formát protokolů se liší, ale většina zařízení podporuje formátování založené na formátu CEF (Common Event Format) pro data protokolů. <br>Agent Azure Sentinel, který je založen na agentu Log Analytics, převede protokoly formátované CEF do formátu, který lze ingestovat pomocí Log Analytics. V závislosti na typu zařízení se agent nainstaluje buď přímo na zařízení, nebo na vyhrazený server Linux. Agent pro Linux přijímá události z procesu démona syslog přes protokol UDP, ale pokud se očekává, že počítač se systémem Linux shromáždí velký objem událostí syslog, pošle se přes protokol TCP z procesu démona syslog do agenta a tam, kde Log Analytics.
     - Brány firewall, proxy servery a koncové body:
-        - [Stisknutím](connect-f5.md)
         - [Kontrolní bod](connect-checkpoint.md)
         - [Cisco ASA](connect-cisco.md)
+        - [ExtraHop se odhalí (x)](connect-extrahop.md)
+        - [Stisknutím](connect-f5.md)
+        - [Produkty Forcepoint](connect-forcepoint-casb-ngfw.md)
         - [Fortinet](connect-fortinet.md)
-        - [Palo Alto](connect-paloalto.md)
+        - [Palo Alto Networks](connect-paloalto.md)
+        - [Ochrana jedné identity](connect-one-identity.md)
         - [Jiná zařízení CEF](connect-common-event-format.md)
         - [Jiná zařízení syslog](connect-syslog.md)
-        - [Barracuda CloudGen firewall](connect-barracuda-cloudgen-firewall.md)
-        - [ExtraHop se odhalí (x)](connect-extrahop.md)
-        - [Ochrana jedné identity](connect-one-identity.md)
         - [Trend Micro hlubokého zabezpečení](connect-trend-micro.md)
+        - [Zscaler](connect-zscaler.md)
     - Řešení ochrany před únikem informací
     - [Poskytovatelé analýzy hrozeb](connect-threat-intelligence.md)
     - [Počítače DNS](connect-dns.md) – agent nainstalovaný přímo na počítači DNS

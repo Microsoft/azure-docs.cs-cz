@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3238de3f1d3416964af05db031b5ecec20e4f140
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 6ce52b9754f69ef9c6eaf1f59062b6366670985f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720187"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524025"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Ruby a Postgres v Azure App Service v systému Linux
 
@@ -23,7 +23,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvořit databázi PostgreSQL v Azure
 > * Připojit k PostgreSQL aplikaci Ruby on Rails
-> * Nasadit aplikaci do Azure
+> * Nasazení aplikace do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat diagnostické protokoly z Azure
 > * Spravovat aplikaci na webu Azure Portal
@@ -110,7 +110,7 @@ Pokud chcete server Rails zastavit, zadejte do terminálu `Ctrl + C`.
 
 V tomto kroku vytvoříte v [Azure Database for PostgreSQL](/azure/postgresql/) databázi Postgres. Později nakonfigurujete aplikaci Ruby on Rails pro připojení k této databázi.
 
-### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+### <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
@@ -208,7 +208,7 @@ production:
 
 Uložte změny.
 
-### <a name="test-the-application-locally"></a>Test aplikace v místním prostředí
+### <a name="test-the-application-locally"></a>Testování aplikace v místním prostředí
 
 Vraťte se do místního terminálu a nastavte následující proměnné prostředí:
 
@@ -287,7 +287,7 @@ V tomto kroku nasadíte aplikaci Rails připojenou k Postgres do služby Azure A
 
 [!INCLUDE [Create app service plan no h](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
+### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
@@ -311,7 +311,7 @@ rails secret
 
 Nakonfigurujte proměnné vyžadované produkčním prostředím Rails.
 
-V následujícím příkazu Cloud Shell nahraďte _&lt;_ zástupných symbolů, které jste vygenerovali v místním terminálu, pomocí nového tajného klíče.
+V následujícím příkazu Cloud Shell nahraďte _&lt;>_ zástupných symbolů, které jste vygenerovali v místním terminálu, pomocí nového tajného klíče.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
@@ -366,9 +366,9 @@ Pro scénář úkolů upravíte aplikaci tak, abyste mohli úkol označit jako d
 
 ### <a name="add-a-column"></a>Přidání sloupce
 
-V terminálu přejděte do kořenového adresáře úložiště Git.
+V terminálu přejděte do kořenového adresáře úložiště Gitu.
 
-Vytvořte novou migraci, která přidá do tabulky `Tasks` logický sloupec s názvem `Done`:
+Vytvořte novou migraci, která přidá do tabulky `Done` logický sloupec s názvem `Tasks`:
 
 ```bash
 rails generate migration AddDoneToTasks Done:boolean
@@ -455,7 +455,7 @@ V terminálu spusťte migrace databáze Rails, aby produkční prostředí prove
 rake db:migrate RAILS_ENV=production
 ```
 
-Potvrďte všechny změny v Gitu a potom odešlete změny kódu do Azure.
+Potvrďte všechny změny v Gitu a potom nasdílejte změny kódu do Azure.
 
 ```bash
 git add .
@@ -498,7 +498,7 @@ V tomto kurzu jste se naučili:
 > [!div class="checklist"]
 > * Vytvořit v Azure databázi Postgres
 > * Připojit k Postgres aplikaci Ruby on Rails
-> * Nasadit aplikaci do Azure
+> * Nasazení aplikace do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat diagnostické protokoly z Azure
 > * Spravovat aplikaci na webu Azure Portal

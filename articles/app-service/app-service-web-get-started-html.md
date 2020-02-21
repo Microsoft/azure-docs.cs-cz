@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ed756a972b3887ac638a061075d2e6fbeea98104
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e850984bd03f4b1e630db5beceed36e122340ead
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747945"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500441"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Vytvoření webové aplikace ve statickém HTML ve službě Azure
 
@@ -40,7 +40,7 @@ Potom spusťte následující příkaz, pomocí kterého do tohoto adresáře na
 git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 ```
 
-## <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
+## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
 Přejděte do adresáře, který obsahuje vzorový kód a spusťte příkaz `az webapp up`.
 

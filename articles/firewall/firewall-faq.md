@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 39c08a568a60c905394eec23dd27d5dd32ff0112
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: b28d228dd950796265c5412be30e5d7777cf94c6
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460463"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526508"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -88,7 +88,7 @@ Viz [ceny Azure firewall](https://azure.microsoft.com/pricing/details/azure-fire
 
 Můžete použít metody *navrácení* a *přidělení* Azure PowerShell.
 
-Například:
+Příklad:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -117,7 +117,7 @@ Omezení služby Azure Firewall najdete v tématu [limity, kvóty a omezení př
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Může Azure Firewall ve virtuální síti rozbočovače dopřed a filtrovat síťový provoz mezi dvěma virtuálními sítěmi?
 
-Ano, Azure Firewall můžete ve virtuální síti rozbočovače použít k směrování a filtrování provozu mezi dvěma koncovými virtuálními sítěmi. Podsítě v každé virtuální síti s paprsky musí mít UDR, která odkazuje na Azure Firewall jako výchozí bránu, aby tento scénář správně fungoval.
+Ano, Azure Firewall můžete ve virtuální síti rozbočovače použít k směrování a filtrování provozu mezi dvěma koncovými virtuálními sítěmi. Podsítě v každé virtuální síti paprsků musí mít UDR ukazující na Azure Firewall jako výchozí bránu, aby tento scénář správně fungoval.
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Může Azure Firewall dopředný a filtrovaný síťový provoz mezi podsítěmi ve stejné virtuální síti nebo v partnerských virtuálních sítích?
 
@@ -137,7 +137,7 @@ Pokud vaše konfigurace vyžaduje vynucené tunelování v místní síti a mů�
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Existují nějaká omezení skupiny prostředků brány firewall?
 
-Ano. Brána firewall, podsíť, virtuální síť a veřejná IP adresa musí být ve stejné skupině prostředků.
+Ano. Brána firewall, virtuální síť a veřejná IP adresa musí být ve stejné skupině prostředků.
 
 ## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Když konfigurujete DNAT pro příchozí síťový provoz, musím taky nakonfigurovat odpovídající síťové pravidlo, které povolí tento provoz?
 
@@ -168,11 +168,11 @@ Ne. Azure Firewall nepotřebuje podsíť větší než/26.
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Jak můžu zvýšit propustnost brány firewall?
 
-Počáteční kapacita propustnosti Azure Firewall je 2,5 – 3 GB/s. V současné době je horizontální navýšení kapacity založeno na využití procesoru a propustnosti. V některých případech brána firewall se síťovými pravidly neumožňuje škálovat až do zvýšení propustnosti, protože Síťová pravidla nemají výrazný vliv na využití procesoru. Pokud potřebujete vyšší propustnost pro bránu firewall, obraťte se na podporu, aby se zvýšila kapacita počáteční propustnosti brány firewall.
+Počáteční kapacita propustnosti Azure Firewall je 2,5 – 3 GB/s a škálování na 30 GB/s. Škáluje se podle využití procesoru a propustnosti. Pokud brána firewall nemění kapacitu pro splnění vašich potřeb a potřebujete vyšší propustnost, obraťte se na podporu, abyste zvýšili propustnost své brány firewall.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Jak dlouho trvá Azure Firewall k horizontálnímu navýšení kapacity?
 
-V současné době trvá Azure Firewall horizontálního navýšení kapacity od pěti do sedmi minut. Pokud máte shluky, které vyžadují rychlejší automatické škálování, obraťte se na podporu, aby se zvýšila kapacita počáteční propustnosti brány firewall.
+Horizontální navýšení kapacity Azure Firewall trvá od pěti do sedmi minut. Pokud máte shluky, které vyžadují rychlejší automatické škálování, obraťte se na podporu, abyste zvýšili kapacitu počáteční propustnosti brány firewall.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Má Azure Firewall ve výchozím nastavení povolený přístup ke službě Active Directory?
 

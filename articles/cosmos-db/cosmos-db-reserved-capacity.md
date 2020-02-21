@@ -4,15 +4,15 @@ description: Naučte se koupit Azure Cosmos DB rezervovanou kapacitu, abyste uš
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 8e29683b994d66e769a24bb2d386a2120cf8eab9
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 16e8f770445218e10ab7e7645a81325d11be55da
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367690"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505967"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimalizace nákladů pomocí rezervované kapacity v Azure Cosmos DB
 
@@ -30,7 +30,9 @@ Z [Azure Portal](https://portal.azure.com)můžete koupit Azure Cosmos DB rezerv
 
 ## <a name="determine-the-required-throughput-before-purchase"></a>Určení požadované propustnosti před nákupem
 
-Velikost rezervace by měla být založena na celkovém objemu propustnosti, které budou používat existující prostředky nebo Azure Cosmos DB prostředky, které jsou již brzy nasazeny. Doporučené velikosti rezervace můžete zobrazit v Azure Portal pomocí následujících kroků:
+Velikost nákupu rezervovaných kapacit by měla být založena na celkovém objemu propustnosti, které stávající nebo již dříve nasazené Azure Cosmos DB prostředky použijí po hodinách. Příklad: Rezervovaná kapacita nákupu 30 000 RU/s, pokud je to váš konzistentní vzor hodinového používání. V tomto příkladu se veškerá zajištěná propustnost nad 30 000 RU/s bude účtovat s využitím tarifu průběžných plateb. Pokud je zajištěná propustnost nižší než 30 000 RU/s za hodinu, pak bude využívána navíc Rezervovaná kapacita za tuto hodinu.
+
+Vypočítejte doporučení nákupu na základě hodinového způsobu použití. Doporučuje se využití za posledních 7, 30 a 60 dní a na nákup rezervovaných kapacit, který maximalizuje vaše úspory. Doporučené velikosti rezervace můžete zobrazit v Azure Portal pomocí následujících kroků:
 
 1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).  
 
@@ -46,7 +48,7 @@ Doporučení můžete filtrovat podle následujících atributů:
 - **Četnost fakturace** (měsíčně nebo předem)
 - **Typ propustnosti** (ru vs multi-Master ru)
 
-Kromě toho můžete určit rozsah doporučení v rámci jedné skupiny prostředků, jediného předplatného nebo celého zápisu Azure. Můžete zobrazit doporučení na základě využití za posledních 7 dní, 30 dnů nebo 60 dnů.
+Kromě toho můžete určit rozsah doporučení v rámci jedné skupiny prostředků, jediného předplatného nebo celého zápisu Azure. 
 
 Tady je příklad doporučení:
 

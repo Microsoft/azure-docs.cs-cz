@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 00ce40e24a01b765419186a609ecf19ce53c772b
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d2cb40d7510e46539db46bdb61ec2d64c0fd1ec7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905260"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526491"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -61,7 +61,7 @@ Pomocí následujícího příkazu spusťte test srovnávacího testu výkonu.
 
 |    |     |
 |--------|-----------|
-| **Syntaxe** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Syntaktick** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Příklad** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
@@ -121,6 +121,8 @@ AzCopy vytvoří soubory protokolů a plánů pro každou úlohu. Protokoly mů�
 Protokoly budou obsahovat stav selhání (`UPLOADFAILED`, `COPYFAILED`a `DOWNLOADFAILED`), úplnou cestu a důvod selhání.
 
 Ve výchozím nastavení se soubory protokolů a plánů nacházejí v adresáři `%USERPROFILE%\.azcopy` ve Windows nebo v adresáři `$HOME$\.azcopy` v systémech Mac a Linux, ale pokud chcete, můžete toto umístění změnit.
+
+Relevantní chyba není nutně první chyba, která se zobrazí v souboru. V případě chyb, jako jsou chyby sítě, vypršení časového limitu a chyby zaneprázdnění serveru, bude AzCopy opakovat až 20 krát a obvykle se proces opakování zdaří.  První chyba, kterou vidíte, může být neškodná, která byla úspěšně opakována.  Takže místo toho, aby se v souboru prohledala první chyba, vyhledejte chyby, které jsou blízko `UPLOADFAILED`, `COPYFAILED`nebo `DOWNLOADFAILED`. 
 
 > [!IMPORTANT]
 > Při odesílání žádosti o podpora Microsoftu (nebo řešení potíží, které se týkají jakékoli třetí strany) nastavte navýšení verze příkazu, který chcete spustit. Tím se zajistí, že se SAS nebude náhodně sdílet s kdokoli. Navýšení verze se dá najít na začátku souboru protokolu.

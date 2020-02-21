@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 348340516f9332f5492c7ce60c3d164da44a008c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120892"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526225"
 ---
 # <a name="classroom-labs-concepts"></a>Koncepce testovacích prostředí v učebnách
 
@@ -28,11 +28,17 @@ Následující seznam obsahuje klíčové pojmy a definice služby testovacího 
 
 Kvóta je časový limit (v hodinách), který může učitel nastavit pro studenta k použití testovacího virtuálního počítače. Může být nastavené na 0 nebo na určitý počet hodin. Pokud je kvóta nastavená na 0, student může virtuální počítač použít jenom v případě, že je plán spuštěný, nebo když ho pro studenty ručně zapnete na virtuálním počítači.  
 
-Doba kvóty se počítá, když Student spustí virtuální počítač testovacího prostředí sami.  Pokud učitel ručně spustí virtuální počítač testovacího prostředí pro studenta, nepoužijí se pro tohoto studenta kvóty hodin.
+Doba kvóty se počítá, když Student spustí virtuální počítač testovacího prostředí sami.  Pokud učitel ručně spustí virtuální počítač testovacího prostředí pro studenta, nepoužijí se pro tohoto studenta kvóta.
 
 ## <a name="schedules"></a>Plány
 
-Plány jsou časové sloty (jednorázové nebo opakované), které může učitel pro třídu vytvořit. Všechny virtuální počítače v testovacím prostředí se automaticky spustí na začátku plánu a na konci plánu se zastaví. Při spuštění plánu se nepoužijí kvóty hodin.
+Plány jsou časové sloty, které může učitel vytvořit pro třídu, takže virtuální počítače studenta jsou k dispozici pro čas třídy.  Plány můžou být jednorázové nebo opakované.  V případě, že je plán spuštěný, nepoužívají se hodiny kvóty.
+
+Existují tři typy plánů: standardní, pouze spustit a zastavit.
+
+- **Úroveň Standard**.  Tento plán spustí všechny virtuální počítače studenta v zadaném čase zahájení a vypíná všechny virtuální počítače studenta v zadané době zastavení.
+- **Pouze spustit**.   Tento plán spustí všechny virtuální počítače studenta v zadanou dobu.  Virtuální počítače studenta se neukončí, dokud student nezastaví svůj virtuální počítač prostřednictvím portálu Azure Lab Services nebo dojde k zastavení pouze plánu.
+- **Pouze zastavit**.  Tento plán zastaví všechny virtuální počítače studenta v zadanou dobu.  
 
 ## <a name="template-virtual-machine"></a>Virtuální počítač šablony
 

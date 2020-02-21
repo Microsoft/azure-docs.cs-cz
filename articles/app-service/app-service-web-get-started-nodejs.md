@@ -7,12 +7,12 @@ ms.date: 09/30/2019
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 91494cc9c1e3a1fc159702bdbb7f68a4423b604c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 3fcc4d9d33637cd61f5621cc95788e9de8ffaec6
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671366"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500117"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure 
 
@@ -26,7 +26,7 @@ Potřebujete [Visual Studio Code](https://code.visualstudio.com/) nainstalovat s
 
 Budete taky muset nainstalovat [rozšíření Azure App Service](vscode:extension/ms-azuretools.vscode-azureappservice), které můžete použít k vytvoření, správě a nasazení Web Apps pro Linux na platformě Azure jako službu (PaaS).
 
-### <a name="sign-in"></a>Přihlásit se
+### <a name="sign-in"></a>Přihlášení
 
 Po instalaci rozšíření se přihlaste ke svému účtu Azure. V řádku aktivity vyberte na logo Azure, kde se zobrazí Průzkumník **služby Azure App Service** . Vyberte **Přihlásit se k Azure...** a postupujte podle pokynů.
 
@@ -91,7 +91,7 @@ Nyní otevřete prohlížeč a přejděte na [http://localhost:3000](http://loca
 > [!div class="nextstepaction"]
 > [Narazili jsme na problém](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
-## <a name="deploy-to-azure"></a>Nasadit do Azure
+## <a name="deploy-to-azure"></a>Nasazení do Azure
 
 V této části nasadíte aplikaci Node. js pomocí VS Code a rozšíření Azure App Service. V tomto rychlém startu se používá základní model nasazení, ve kterém je vaše aplikace zip a nasazená do Azure Web App on Linux.
 

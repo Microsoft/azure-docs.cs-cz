@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a409d71ff3eae3bc62527a0669a74696246a50cd
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 77132ae9a10eda7170ac56f2b7c65a3ebcde8d6d
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048091"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498995"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role Azure AD v Privileged Identity Management
 
@@ -32,11 +32,11 @@ Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktu
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí uživatele, který je v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 1. Otevřete **Azure AD Privileged Identity Management**. Pokud máte banner v horní části stránky s přehledem, postupujte podle pokynů na kartě **Nová verze** v tomto článku. Jinak postupujte podle pokynů na kartě **předchozí verze** .
 
-    ![Nové verze rolí Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti pro role Azure AD.
 
-# <a name="new-versiontabnew"></a>[Nová verze](#tab/new)
+# <a name="new-version"></a>[Nová verze](#tab/new)
 
 ## <a name="open-role-settings"></a>Otevřít nastavení role
 
@@ -46,15 +46,15 @@ Pomocí těchto kroků otevřete nastavení role Azure AD.
 gt
 1. Otevřete **Azure AD Privileged Identity Management** &gt; **role Azure AD** &gt; **Nastavení role**.
 
-    ![Stránka nastavení role výpis rolí prostředků Azure](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
+    ![Stránka nastavení role se seznamem rolí Azure AD](./media/pim-how-to-change-default-settings/role-settings.png)
 
 1. Vyberte roli, jejíž nastavení chcete nakonfigurovat.
 
-    ![Stránka s podrobnostmi nastavení role – seznam několika přiřazení a nastavení aktivace](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+    ![Stránka s podrobnostmi nastavení role – seznam několika přiřazení a nastavení aktivace](./media/pim-how-to-change-default-settings/role-settings-page.png)
 
 1. Výběrem možnosti **Upravit** otevřete stránku nastavení rolí.
 
-    ![Stránka upravit nastavení role s možnostmi aktualizace nastavení přiřazení a aktivace](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![Stránka upravit nastavení role s možnostmi aktualizace nastavení přiřazení a aktivace](./media/pim-how-to-change-default-settings/role-settings-edit.png)
 
     V podokně nastavení role pro každou roli existuje několik nastavení, která můžete konfigurovat.
 
@@ -66,18 +66,18 @@ Můžete vybrat jednu z následujících možností trvání přiřazení s **n�
 
 | | |
 | --- | --- |
-| **Povolení trvalého oprávněného přiřazení** | Správci prostředků mohou přiřadit trvalé oprávněné přiřazení. |
-| **Vypršení platnosti oprávněného přiřazení** | Správci prostředků mohou vyžadovat, aby u všech oprávněných přiřazení bylo zadané počáteční a koncové datum. |
+| **Povolení trvalého oprávněného přiřazení** | Správci globálních správců a privilegovaných rolí můžou přiřadit trvalé oprávněné přiřazení. |
+| **Vypršení platnosti oprávněného přiřazení** | Správci globálních správců a privilegovaných rolí můžou vyžadovat, aby u všech oprávněných přiřazení bylo zadané počáteční a koncové datum. |
 
 A můžete zvolit jednu z těchto **aktivních** možností trvání přiřazení:
 
 | | |
 | --- | --- |
-| **Povoluje trvalé aktivní přiřazení** | Správci prostředků mohou přiřadit trvalé aktivní přiřazení. |
-| **Po vypršení platnosti aktivního přiřazení** | Správci prostředků mohou vyžadovat, aby u všech aktivních přiřazení bylo zadané počáteční a koncové datum. |
+| **Povoluje trvalé aktivní přiřazení** | Globální správci a správci privilegovaných rolí můžou přiřadit trvalé aktivní přiřazení. |
+| **Po vypršení platnosti aktivního přiřazení** | Správci globálních správců a privilegovaných rolí můžou vyžadovat, aby u všech aktivních přiřazení bylo zadané počáteční a koncové datum. |
 
 > [!NOTE]
-> Všechna přiřazení, která mají zadané koncové datum, může obnovit správci prostředků. Uživatelé můžou taky iniciovat žádosti samoobslužné služby a [prodloužit nebo prodloužit přiřazení rolí](pim-resource-roles-renew-extend.md).
+> Všechna přiřazení, která mají zadané koncové datum, můžou obnovit globální správci a správci privilegovaných rolí. Uživatelé můžou taky iniciovat žádosti samoobslužné služby a [prodloužit nebo prodloužit přiřazení rolí](pim-resource-roles-renew-extend.md).
 
 ## <a name="require-multi-factor-authentication"></a>Vyžadovat Multi-Factor Authentication
 
@@ -87,13 +87,13 @@ Privileged Identity Management poskytuje volitelnou vynucování Multi-Factor Au
 
 V některých případech můžete chtít přiřadit uživatele k roli po krátkou dobu (například jeden den). V takovém případě nemusíte přiřazeným uživatelům požádat o aktivaci. V tomto scénáři Privileged Identity Management nemůžou vymáhat ověřování službou Multi-Factor Authentication, pokud uživatel použije přiřazení role, protože už je v roli aktivní od okamžiku, kdy je přiřazený.
 
-Chcete-li zajistit, že správce prostředků, který odpovídá přiřazení, říká, že jsou k němu přihlášeni, můžete vynutit vícefaktorové ověřování u aktivního přiřazení zaškrtnutím políčka **vyžadovat Multi-Factor Authentication v aktivním přiřazení** .
+Aby se zajistilo, že správce naplní přiřazení, říká, že jsou k němu přihlášeni, můžete vynutit vícefaktorové ověřování u aktivního přiřazení zaškrtnutím políčka **vyžadovat Multi-Factor Authentication v aktivním přiřazení** .
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>Při aktivaci vyžadovat vícefaktorové ověřování
 
 Můžete vyžadovat, aby uživatelé, kteří mají nárok na roli, prokázali, že používají Multi-Factor Authentication Azure, než se můžou aktivovat. Multi-Factor Authentication zajišťuje uživatelům, kteří říkají, že mají rozumnou jistotu. Vynucování této možnosti chrání kritické prostředky v situacích, kdy může dojít k ohrožení uživatelského účtu.
 
-Chcete-li před aktivací vyžadovat službu Multi-Factor Authentication, zaškrtněte políčko **vyžadovat Multi-Factor Authentication při aktivaci** .
+Chcete-li před aktivací vyžadovat službu Multi-Factor Authentication, zaškrtněte políčko **vyžadovat Multi-Factor Authentication při aktivaci** na kartě přiřazení v **nastavení upravit roli**.
 
 Další informace naleznete v tématu [Multi-Factor Authentication a Privileged Identity Management](pim-how-to-require-mfa.md).
 
@@ -121,7 +121,7 @@ Pokud chcete pro aktivaci role vyžadovat schválení, postupujte podle těchto 
 
 1. Po zadání všech nastavení role vyberte **aktualizovat** , aby se změny uložily.
 
-# <a name="previous-versiontabprevious"></a>[Předchozí verze](#tab/previous)
+# <a name="previous-version"></a>[Předchozí verze](#tab/previous)
 
 ## <a name="open-role-settings"></a>Otevřít nastavení role
 
@@ -163,7 +163,7 @@ Další informace najdete v tématu [e-mailová oznámení v Privileged Identity
 
 Použijte přepínač **lístku incident/požadavek** , který vyžádá oprávněným správcům, aby při aktivaci jejich role zahrnuli číslo lístku. Tento postup může zvýšit efektivitu přístupu k rolím.
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Vícefaktorové ověřování
 
 Pomocí přepínače **Multi-Factor Authentication** určete, jestli se má vyžadovat, aby uživatelé před aktivací svých rolí vyžadovali ověření své identity pomocí vícefaktorového ověřování. Musí jenom ověřit identitu jenom jednou pro každou relaci, a ne pokaždé, když se role aktivuje. Při povolování vícefaktorového ověřování je potřeba mít na paměti dvě tipy:
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
-ms.openlocfilehash: abb73f93116fae217f527e0a9faaf61e2b42ba6c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ace953fcb278604cb64eef463753f0f2622d3d24
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433363"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523335"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Řešení potíží s Azure cache pro Redis problémy na straně klienta
 
@@ -51,7 +51,7 @@ V předchozí výjimce je k dispozici několik problémů, které jsou zajímav�
 - Všimněte si, že v části `IOCP` a v `WORKER` oddílu máte `Busy` hodnotu, která je větší než hodnota `Min`. Tento rozdíl znamená, že nastavení `ThreadPool` potřebnou úpravu.
 - Můžete také zobrazit `in: 64221`. Tato hodnota označuje, že 64 211 bajtů bylo přijato na soketové vrstvě jádra klienta, ale aplikace ji nečetla. Tento rozdíl obvykle znamená, že vaše aplikace (například StackExchange. Redis) nečte data ze sítě, a to tak rychle, jak ji server posílá.
 
-[Nastavení `ThreadPool` můžete nakonfigurovat](https://gist.github.com/JonCole/e65411214030f0d823cb) tak, aby se zajistilo, že se váš fond vláken rychle škáluje v rámci shlukových scénářů.
+[Nastavení `ThreadPool` můžete nakonfigurovat](cache-faq.md#important-details-about-threadpool-growth) tak, aby se zajistilo, že se váš fond vláken rychle škáluje v rámci shlukových scénářů.
 
 ## <a name="high-client-cpu-usage"></a>Vysoké využití CPU klienta
 

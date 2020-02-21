@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: bd7801c84860ddba3c3991bce9352c595adb123f
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 3cdd558a8b14498e981c9c60a077a7286188e02e
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469033"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500095"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API
 
@@ -35,6 +35,18 @@ V tomto rychlém startu vytvoříte a spravujete Azure Cosmos DB účet rozhran�
 - [Java Development Kit (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Najeďte proměnnou prostředí `JAVA_HOME` na složku, ve které je nainstalovaná JDK.
 - [Binární archiv Maven](https://maven.apache.org/download.cgi) V Ubuntu spusťte `apt-get install maven` a nainstalujte Maven.
 - [Git](https://www.git-scm.com/downloads) V Ubuntu spusťte `sudo apt-get install git` pro instalaci Gitu.
+
+## <a name="introductory-notes"></a>Úvodní poznámky
+
+*Struktura Cosmos DB účtu* Bez ohledu na rozhraní API nebo programovací jazyk, Cosmos DB *účet* obsahuje nula nebo více *databází*, *databáze* (DB) obsahuje nula nebo více *kontejnerů*a *kontejner* obsahuje nula nebo více položek, jak je znázorněno na následujícím obrázku:
+
+![Entity účtu Azure Cosmos](./media/databases-containers-items/cosmos-entities.png)
+
+Další informace o databázích, kontejnerech a položkách si můžete přečíst [tady.](databases-containers-items.md) Na úrovni kontejneru je definováno několik důležitých vlastností, mezi kterými je *zřízena propustnost* a *klíč oddílu*. 
+
+Zřízená propustnost se měří v jednotkách žádosti (*ru*), které mají peněžní cenu, a jsou zásadním rozhodujícím faktorem za provozní náklady na účet. Zřízenou propustnost lze vybrat v členitosti podle kontejneru nebo členitosti na databázi, ale obvykle je upřednostňována specifikace propustnosti na úrovni kontejneru. Další informace o zřizování propustnosti si můžete přečíst [tady.](set-throughput.md)
+
+Když jsou položky vloženy do kontejneru Cosmos DB, databáze se poroste vodorovně přidáním dalšího úložiště a výpočetních prostředků pro zpracování požadavků. Kapacita úložiště a výpočetní kapacity se přidávají do diskrétních jednotek označovaných jako *oddíly*a Vy musíte zvolit jedno pole v dokumentu, které bude mít klíč oddílu, který mapuje jednotlivé dokumenty na oddíl. Způsob správy oddílů je, že každý oddíl má přiřazený zhruba stejný řez mimo rozsah hodnot klíče oddílu; Proto doporučujeme zvolit klíč oddílu, který je relativně náhodný nebo rovnoměrně distribuovaný. V opačném případě některé oddíly uvidí podstatně více požadavků (*aktivní oddíl*), zatímco ostatní oddíly jsou v podstatě méně požadavků (*studený oddíl*) a že se to vyhne. [Tady](partitioning-overview.md)se můžete dozvědět víc o vytváření oddílů.
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
 

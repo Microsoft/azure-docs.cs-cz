@@ -1,5 +1,6 @@
 ---
-title: Zabezpečení webových a mobilních aplikací PaaS pomocí Azure App Service | Microsoft Docs
+title: Zabezpečení PaaSch mobilních aplikací pro webové &
+titleSuffix: Azure App Service
 description: 'Přečtěte si o Azure App Service osvědčených postupech zabezpečení pro zabezpečení webových a mobilních aplikací PaaS. '
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: 4967f6f7831f1f09a502b935342fcd752af72fce
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c3f3c7fbaa043a03b70ab770c06e493716c70daf
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999149"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500284"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Osvědčené postupy pro zabezpečení webových a mobilních aplikací PaaS pomocí Azure App Service
 
@@ -43,7 +44,7 @@ Nezáleží na tom, jaký je dobrý způsob zabezpečení při ztrátě klíčů
 Pro App Service ve Windows můžete také dynamicky omezit IP adresy konfigurací souboru Web. config. Další informace najdete v tématu [dynamické zabezpečení protokolu IP](/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Tento článek vás zavedl do kolekce App Service osvědčené postupy zabezpečení pro zabezpečení webových a mobilních aplikací PaaS. Další informace o zabezpečení nasazení PaaS najdete v těchto tématech:
 
 - [Zabezpečení nasazení PaaS](paas-deployments.md)

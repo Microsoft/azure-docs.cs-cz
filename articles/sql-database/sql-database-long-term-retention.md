@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 9c5534f2df4a375daf355d74f788b7f610f92919
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162153"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499981"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Ukládat zálohy Azure SQL Database po dobu až 10 let
 
@@ -28,7 +28,13 @@ Mnoho aplikací má zákonné, dodržování předpisů nebo jiné obchodní ú�
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Jak SQL Database dlouhodobá doba uchovávání
 
-Dlouhodobá doba uchovávání záloh (LTR) využívá úplné zálohy databáze, které se [automaticky vytvoří](sql-database-automated-backups.md) , aby se povolilo obnovení bodu a času (PITR). Pokud je nakonfigurovaná zásada LTR, zkopírují se tyto zálohy do různých objektů BLOB pro dlouhodobé uložení. Operace kopírování je úloha na pozadí, která nemá žádný vliv na výkon úlohy databáze. Zálohy LTR se uchovávají po dobu nastavenou zásadou LTR. Zásady LTR pro každou databázi SQL umožňují také určit, jak často se budou vytvářet zálohy LTR. Chcete-li tuto flexibilitu povolit, můžete definovat zásady pomocí kombinace čtyř parametrů: týdenní uchovávání záloh (W), měsíční uchovávání záloh (M), roční uchování záloh (Y) a týden roku (WeekOfYear). Pokud zadáte W, bude jedna záloha každý týden zkopírována do dlouhodobého úložiště. Pokud zadáte M, bude jedna záloha během prvního týdne každého měsíce zkopírována do dlouhodobého úložiště. Pokud zadáte Y, bude do dlouhodobého úložiště zkopírována jedna záloha během týdne určeného parametrem WeekOfYear. Každá záloha bude zachována v dlouhodobém úložišti po dobu určenou pomocí těchto parametrů. Jakékoli změny zásad LTR se vztahují na budoucí zálohy. Pokud je například zadaný WeekOfYear v minulosti při konfiguraci zásady, vytvoří se první záloha LTR v příštím roce. 
+Dlouhodobá doba uchovávání záloh (LTR) využívá úplné zálohy databáze, které se [automaticky vytvoří](sql-database-automated-backups.md) , aby se povolilo obnovení bodu a času (PITR). Pokud je nakonfigurovaná zásada LTR, zkopírují se tyto zálohy do různých objektů BLOB pro dlouhodobé uložení. Kopie je úloha na pozadí, která nemá žádný vliv na výkon úlohy databáze. Zásady LTR pro každou databázi SQL umožňují také určit, jak často se budou vytvářet zálohy LTR.
+
+Pokud chcete povolit LTR, můžete definovat zásady s použitím kombinace čtyř parametrů: týdenní uchovávání záloh (W), uchovávání měsíčního uchovávání záloh (M), ročního uchovávání záloh (Y) a týdenního roku (WeekOfYear). Pokud zadáte W, bude jedna záloha každý týden zkopírována do dlouhodobého úložiště. Zadáte-li M, bude první záloha každého měsíce zkopírována do dlouhodobého úložiště. Pokud zadáte Y, bude do dlouhodobého úložiště zkopírována jedna záloha během týdne určeného parametrem WeekOfYear. Pokud je zadaný WeekOfYear v minulosti, když je zásada nakonfigurovaná, vytvoří se první záloha LTR v následujícím roce. Každá záloha bude uchována v dlouhodobém úložišti podle parametrů zásad, které jsou konfigurovány při vytvoření zálohy LTR.
+
+> [!NOTE]
+> Jakékoli změny v zásadě LTR se vztahují pouze na budoucí zálohy. Pokud se například upraví týdenní uchovávání záloh (W), měsíční uchovávání záloh (M) nebo roční uchovávání záloh (Y), bude se nové nastavení uchovávání vztahovat jenom na nové zálohy. Uchování stávajících záloh se neupraví. Pokud máte v úmyslu odstranit staré zálohy LTR ještě před uplynutím doby uchování, budete muset [zálohy ručně odstranit](https://docs.microsoft.com/azure/sql-database/sql-database-long-term-backup-retention-configure#delete-ltr-backups).
+> 
 
 Příklady zásad LTR:
 
@@ -75,7 +81,7 @@ Informace o tom, jak nakonfigurovat dlouhodobé uchovávání pomocí Azure Port
 
 ## <a name="restore-database-from-ltr-backup"></a>Obnovit databázi ze zálohy LTR
 
-Chcete-li obnovit databázi z úložiště LTR, můžete vybrat konkrétní zálohování na základě jeho časového razítka. Databázi můžete obnovit na jakýkoli existující server v rámci stejného předplatného, jako je původní databáze. Informace o tom, jak obnovit databázi ze zálohy LTR pomocí Azure Portal nebo PowerShellu, najdete v tématu [správa Azure SQL Database dlouhodobé uchovávání záloh](sql-database-long-term-backup-retention-configure.md).
+Chcete-li obnovit databázi z úložiště LTR, můžete vybrat konkrétní zálohování na základě jeho časového razítka. Databázi můžete obnovit na jakýkoli existující server v rámci stejného předplatného, jako je původní databáze. Informace o tom, jak obnovit databázi ze zálohy LTR, pomocí Azure Portal nebo PowerShellu najdete v tématu [správa Azure SQL Database dlouhodobé uchovávání záloh](sql-database-long-term-backup-retention-configure.md).
 
 ## <a name="next-steps"></a>Další kroky
 

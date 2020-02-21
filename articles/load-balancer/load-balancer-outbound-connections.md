@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: d3e4a794a948dd6bd9860c9b7e6f06ac981f86b9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 56c48e9a64ec1fd000f98a20d5005305f522ff41
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162493"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500655"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -42,8 +42,8 @@ Azure Load Balancer a související prostředky jsou explicitně definovány př
 
 | SKU | Scénář | Metoda | Protokoly IP | Popis |
 | --- | --- | --- | --- | --- |
-| Standardní, základní | [1. virtuální počítač s veřejnou IP adresou (s Load Balancer nebo bez něj)](#ilpip) | SNAT, maskování portů se nepoužívá. | TCP, UDP, ICMP, ESP | Azure používá veřejnou IP adresu přiřazenou ke konfiguraci protokolu IP síťové karty instance. Instance má k dispozici všechny dočasné porty. Při použití Standard Load Balancer byste měli použít [odchozí pravidla](load-balancer-outbound-rules-overview.md) k explicitnímu definování odchozího připojení. |
 | Standardní, základní | [1. virtuální počítač s veřejnou IP adresou na úrovni instance (s Load Balancer nebo bez něj)](#ilpip) | SNAT, maskování portů se nepoužívá. | TCP, UDP, ICMP, ESP | Azure používá veřejnou IP adresu přiřazenou ke konfiguraci protokolu IP síťové karty instance. Instance má k dispozici všechny dočasné porty. Při použití Standard Load Balancer se [odchozí pravidla](load-balancer-outbound-rules-overview.md) nepodporují, pokud je k virtuálnímu počítači přiřazená veřejná IP adresa. |
+| Standardní, základní | [2. veřejné Load Balancer přidružené k virtuálnímu počítači (bez veřejné IP adresy v instanci)](#lb) | SNAT s maskou portů (PAT) pomocí Load Balancer front-endu | TCP, UDP |Azure sdílí veřejnou IP adresu veřejných Load Balancer front-endu s více privátními IP adresami. Azure používá dočasné porty front-endu na PAT. K explicitnímu definování odchozího připojení byste měli použít [pravidla odchozí](load-balancer-outbound-rules-overview.md) . |
 | žádné nebo základní | [3. samostatný virtuální počítač (bez Load Balancer, žádná veřejná IP adresa)](#defaultsnat) | SNAT s maskou portů (PAT) | TCP, UDP | Azure automaticky určí veřejnou IP adresu pro SNAT, sdílí tuto veřejnou IP adresu s více privátními IP adresami skupiny dostupnosti a používá dočasné porty této veřejné IP adresy. Tento scénář je záložní pro předchozí scénáře. Nedoporučujeme ho, pokud potřebujete viditelnost a kontrolu. |
 
 Pokud nechcete, aby virtuální počítač komunikoval s koncovými body mimo Azure ve veřejném adresním prostoru IP adres, můžete podle potřeby zablokovat přístup pomocí skupin zabezpečení sítě (skupin zabezpečení sítě). Oddíl [zabraňující odchozímu připojení](#preventoutbound) popisuje skupin zabezpečení sítě podrobněji. Pokyny k navrhování, implementaci a správě virtuální sítě bez jakéhokoli odchozího přístupu jsou mimo rámec tohoto článku.

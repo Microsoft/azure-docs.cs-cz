@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 8cebe02ebc638ba62fceec80dff2c6724ccf92c8
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212302"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498384"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Postup opětovného sestavení indexu v Azure Kognitivní hledání
 
@@ -33,7 +33,7 @@ Pokud platí kterákoli z následujících podmínek, vyřaďte index a vytvořt
 | Přiřazení analyzátoru k poli | [Analyzátory](search-analyzers.md) se definují v indexu a pak se přiřazují k polím. Novou definici analyzátoru můžete kdykoli přidat do indexu, ale když je pole Vytvořeno, můžete k němu *přiřadit* pouze analyzátor. To platí jak pro vlastnosti **analyzátoru** , tak pro **indexAnalyzer** . Vlastnost **searchAnalyzer** je výjimka (tuto vlastnost můžete přiřadit existujícímu poli). |
 | Aktualizace nebo odstranění definice analyzátoru v indexu | Existující konfiguraci analyzátoru (Analyzer, provádějících tokenizaci, filtr tokenu nebo filtr znaků) v indexu nelze odstranit, pokud znovu nevytvoříte celý index. |
 | Přidání pole do modulu pro návrhy | Pokud pole již existuje a chcete ho přidat [do konstrukce](index-add-suggesters.md) tvůrců, je nutné index znovu sestavit. |
-| Odstranění pole | Aby bylo možné fyzicky odebrat všechna trasování v poli, je nutné index znovu sestavit. Pokud okamžité opětovné sestavení není praktické, můžete upravit kód aplikace a zakázat tak přístup k poli Deleted (odstraněno). Fyzicky, definice pole a obsah zůstanou v indexu až do dalšího sestavení, když použijete schéma, které vynechá příslušné pole. |
+| Odstranění pole | Aby bylo možné fyzicky odebrat všechna trasování v poli, je nutné index znovu sestavit. Pokud okamžité opětovné sestavení není praktické, můžete upravit kód aplikace, zakázat přístup k poli Deleted nebo použít [parametr $SELECT dotazu](search-query-odata-select.md) k výběru polí, která jsou v sadě výsledků zastoupena. Fyzicky, definice pole a obsah zůstanou v indexu až do dalšího sestavení, když použijete schéma, které vynechá příslušné pole. |
 | Přepínací vrstvy | Pokud požadujete větší kapacitu, není Azure Portal žádný místní upgrade. Je nutné vytvořit novou službu a indexy musí být od začátku nové služby sestaveny. K automatizaci tohoto procesu můžete použít vzorový kód **index-Backup-Restore** v tomto [úložišti ukázek Azure kognitivní hledání .NET](https://github.com/Azure-Samples/azure-search-dotnet-samples). Tato aplikace zálohuje váš index na řadu souborů JSON a pak znovu vytvoří index ve vyhledávací službě, kterou zadáte.|
 
 ## <a name="update-conditions"></a>Aktualizovat podmínky
@@ -52,9 +52,11 @@ Když přidáte nové pole, u existujících indexovaných dokumentů se pro nov
 
 ## <a name="how-to-rebuild-an-index"></a>Postup opětovného sestavení indexu
 
-Během vývoje se schéma indexu často mění. Můžete ji naplánovat vytvořením indexů, které je možné odstranit, znovu vytvořit a znovu načíst pomocí malého zástupce datové sady. 
+Během vývoje se schéma indexu často mění. Můžete ji naplánovat vytvořením indexů, které je možné odstranit, znovu vytvořit a znovu načíst pomocí malého zástupce datové sady.
 
 Pro aplikace, které už jsou v produkčním prostředí, doporučujeme vytvořit nový index, který se spouští souběžně se stávajícím indexem, aby se předešlo výpadkům dotazů. Váš kód aplikace poskytuje přesměrování na nový index.
+
+Indexování se nespouští na pozadí a služba vyrovnává další indexování u probíhajících dotazů. Během indexování můžete na portálu [monitorovat požadavky](search-monitor-queries.md) na dotazy, aby se zajistilo, že dotazy budou dokončeny včas.
 
 1. Určete, zda je nutné znovu sestavit sestavení. Pokud přidáváte pouze pole nebo měníte část indexu, která nesouvisí s poli, je možné jednoduše [aktualizovat definici](https://docs.microsoft.com/rest/api/searchservice/update-index) bez odstranění, opětovného vytvoření a úplného opětovného načtení.
 
@@ -79,7 +81,11 @@ Při načtení indexu se převedený index každého pole vyplní všemi jedine�
 
 Můžete zahájit dotazování indexu, jakmile se načte první dokument. Pokud znáte ID dokumentu, [vyhledávací dokument REST API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) vrátí konkrétní dokument. Pro širší testování byste měli počkat, až se index zcela načte, a pak použít dotazy k ověření kontextu, který očekáváte, abyste viděli.
 
-## <a name="see-also"></a>Viz také:
+K vyhledání aktualizovaného obsahu můžete použít [Průzkumníka služby Search](search-explorer.md) nebo nástroj pro testování webu, jako je například [post](search-get-started-postman.md) .
+
+Pokud jste přidali nebo přejmenovali pole, použijte [$Select](search-query-odata-select.md) k vrácení tohoto pole: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
+
+## <a name="see-also"></a>Viz také
 
 + [Přehled indexeru](search-indexer-overview.md)
 + [Indexování velkých datových sad ve velkém měřítku](search-howto-large-index.md)

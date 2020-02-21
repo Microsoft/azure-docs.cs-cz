@@ -1,0 +1,54 @@
+---
+title: Velikosti virtuálních počítačů Azure – paměť | Microsoft Docs
+description: Obsahuje seznam různých velikostí optimalizovaných pro paměť, které jsou dostupné pro virtuální počítače v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
+services: virtual-machines
+documentationcenter: ''
+author: jonbeck7
+manager: gwallace
+editor: ''
+tags: azure-resource-manager,azure-service-management
+keywords: Izolace virtuálních počítačů, izolovaný virtuální počítač, izolace, izolovaný režim
+ms.assetid: ''
+ms.service: virtual-machines
+ms.devlang: na
+ms.topic: article
+ms.workload: infrastructure-services
+ms.date: 02/03/2020
+ms.author: jonbeck
+ms.openlocfilehash: 26a44cdf3e57508cebb070669a8c1f473a59df8a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77493524"
+---
+# <a name="memory-optimized-virtual-machine-sizes"></a>Paměťově optimalizované velikosti virtuálních počítačů
+
+Paměťově optimalizované velikosti virtuálních počítačů nabízejí vysoký poměr paměti k procesoru, který je skvělý pro servery relačních databází, střední až velké mezipaměti a analýzu v paměti. Tento článek poskytuje informace o počtu vCPU, datových discích a síťových adaptérů i propustnosti úložiště a šířce pásma sítě pro každou velikost v tomto seskupení.
+
+- [Dv2 a DSv2-Series](dv2-dsv2-series-memory.md), následné až do původní řady D-Series, nabízí výkonnější procesor. Dv2-Series má přibližně 35% rychlejší než řada D-Series. Běží na Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) a s 2,0 technologií Intel Turbo zvyšovat. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
+
+    Dv2 a DSv2-Series jsou ideální pro aplikace, které vyžadují rychlejší vCPU, lepší dočasný výkon úložiště nebo mají vyšší nároky na paměť. Nabízejí výkonnou kombinaci pro mnoho podnikových aplikací.
+
+- [Eav4 a Easv4-Series](eav4-easv4-series.md) využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452 v konfiguraci s více VLÁKNy s až 256Mb mezipamětí L3 a zvyšují možnosti spouštění většiny paměťově optimalizovaných úloh. Řady Eav4-Series a Easv4-Series mají stejnou konfiguraci paměti a disku jako Ev3 & Esv3-Series.
+
+- [Ev3 a Esv3-Series](ev3-esv3-series.md) Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo procesory Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) v konfiguraci s více vlákny, které poskytují lepší hodnotu pro většinu úloh pro obecné účely a přinášejí Ev3 do sblížení s virtuálními počítači pro obecné použití většiny ostatních cloudů. Paměť se rozšířila (od 7 GiB/vCPU do 8 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, které je možné přesunout do technologie Hyper-Threading. Ev3 je následná velikost virtuálních počítačů s vysokou pamětí pro řady D/Dv2.
+
+- [Řada M-Series](m-series.md) nabízí vysoký počet vCPU (až 128 vCPU) a velké množství paměti (až 3,8 TIB). Je to také ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti.
+
+- [Mv2-Series](mv2-series.md) nabízí nejvyšší počet vCPU (až 416 vCPU) a největší paměť (až 8,19 TIB) libovolného virtuálního počítače v cloudu. Je ideální pro extrémně velké databáze nebo další aplikace, kterým přináší výhody vysoký počet virtuálních procesorů a velké množství paměti.
+
+Azure COMPUTE nabízí velikosti virtuálních počítačů, které jsou izolované na konkrétní typ hardwaru a vyhrazené pro jednoho zákazníka. Tyto velikosti virtuálních počítačů jsou nejvhodnější pro úlohy, které vyžadují vysokou úroveň izolace od jiných zákazníků pro úlohy zahrnující prvky, jako jsou dodržování předpisů a zákonné požadavky. Zákazníci si také můžou rozdělit prostředky těchto izolovaných virtuálních počítačů s využitím [podpory Azure pro vnořené virtuální počítače](https://azure.microsoft.com/blog/nested-virtualization-in-azure/). Další informace o možnostech izolovaného virtuálního počítače najdete na stránkách pro rodiny virtuálních počítačů.
+
+## <a name="other-sizes"></a>Jiné velikosti
+
+- [Obecné účely](sizes-general.md)
+- [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)
+- [Optimalizované z hlediska úložiště](sizes-storage.md)
+- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
+- [Předchozí generace](sizes-previous-gen.md)
+
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

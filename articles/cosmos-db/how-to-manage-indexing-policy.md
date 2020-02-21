@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 58e8767de786ed2ae92d19c01287aa05c8b63fbb
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 171542c89b900eb8bf282156c79303a1deb5a5f7
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76767978"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506235"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Správa zásad indexování v Azure Cosmos DB
 
@@ -342,11 +342,11 @@ V Azure Cosmos DB můžete zásady indexování aktualizovat pomocí kterékoli 
 > [!NOTE]
 > Při aktualizaci zásad indexování budou zápisy do Azure Cosmos DB nepřerušeny. Během opakovaného indexování můžou dotazy vracet částečné výsledky, protože se aktualizuje index.
 
-## <a name="use-the-azure-portal"></a>Použití portálu Azure
+## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
 Kontejnery Azure Cosmos ukládají své zásady indexování jako dokument JSON, který vám Azure Portal umožňuje přímo upravit.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 
 1. Vytvořte nový účet Azure Cosmos nebo vyberte existující účet.
 
@@ -364,7 +364,7 @@ Kontejnery Azure Cosmos ukládají své zásady indexování jako dokument JSON,
 
 Pokud chcete vytvořit kontejner s vlastními zásadami indexování, přečtěte si téma [vytvoření kontejneru s vlastní zásadou indexu pomocí](manage-with-cli.md#create-a-container-with-a-custom-index-policy) rozhraní příkazového řádku (CLI).
 
-## <a name="use-powershell"></a>Použití PowerShellu
+## <a name="use-powershell"></a>Použití prostředí PowerShell
 
 Pokud chcete vytvořit kontejner s vlastními zásadami indexování, přečtěte si téma [vytvoření kontejneru s vlastní zásadou indexu pomocí PowerShellu](manage-with-powershell.md#create-container-custom-index) .
 
@@ -472,7 +472,7 @@ indexingPolicy.setIndexingMode(IndexingMode.Consistent);
 // Add an included path
 
 Collection<IncludedPath> includedPaths = new ArrayList<>();
-ExcludedPath includedPath = new IncludedPath();
+IncludedPath includedPath = new IncludedPath();
 includedPath.setPath("/*");
 includedPaths.add(includedPath);
 indexingPolicy.setIncludedPaths(includedPaths);

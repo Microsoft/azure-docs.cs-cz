@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 67ea11b2e1457bf4a788f54664ed54ff7ca9c8d9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 9012f09f75c60ebd0b3743d030b83c0a3aa78648
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688915"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524083"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Sestavení aplikace ASP.NET Core a SQL Database v Azure App Service na Linux
 
@@ -28,16 +28,16 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvořit databázi SQL v Azure
 > * Připojit aplikaci .NET Core k databázi SQL
-> * Nasadit aplikaci do Azure
+> * Nasazení aplikace do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat diagnostické protokoly z Azure
 > * Spravovat aplikaci na webu Azure Portal
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 * [Nainstalovat Git](https://git-scm.com/).
 * [Nainstalovat .NET Core SDK 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
@@ -83,7 +83,7 @@ V tomto kroku vytvoříte databázi SQL v Azure. Po nasazení do Azure bude apli
 
 Jako databáze SQL se v tomto kurzu používá [Azure SQL Database](/azure/sql-database/).
 
-### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+### <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
@@ -156,13 +156,13 @@ V tomto kroku nasadíte aplikaci .NET Core připojenou k databázi SQL do služb
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
+### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)] 
 
 ### <a name="configure-connection-string"></a>Konfigurace připojovacího řetězce
 
-Pokud chcete nastavit pro svou aplikaci Azure připojovací řetězce, použijte v Cloud Shellu příkaz [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set). V následujícím příkazu nahraďte *\<App-name >* a připojovacím řetězcem *\<* připojovacího řetězce, který jste vytvořili dříve.
+Pokud chcete nastavit pro svou aplikaci Azure připojovací řetězce, použijte v Cloud Shellu příkaz [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set). V následujícím příkazu nahraďte *\<App-name >* a připojovacím řetězcem *>\<* připojovacího řetězce, který jste vytvořili dříve.
 
 ```azurecli-interactive
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
@@ -396,7 +396,7 @@ Naučili jste se:
 > [!div class="checklist"]
 > * Vytvořit databázi SQL v Azure
 > * Připojit aplikaci .NET Core k databázi SQL
-> * Nasadit aplikaci do Azure
+> * Nasazení aplikace do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat protokoly z Azure do terminálu
 > * Spravovat aplikaci na webu Azure Portal

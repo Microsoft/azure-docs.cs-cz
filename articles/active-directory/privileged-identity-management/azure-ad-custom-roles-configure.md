@@ -16,16 +16,21 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6251c1576d38b191ca1cba48075cc869c48d004
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 3f087ffe824a198c578f076857cca7fdf0f0a60c
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048114"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498679"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>Konfigurace vlastních rolí Azure AD v Privileged Identity Management
 
 Správce privilegovaných rolí může změnit nastavení role, která platí pro uživatele, když aktivují jejich přiřazení k vlastní roli a dalším správcům aplikací, kteří přiřazují vlastní role.
+
+> [!NOTE]
+> Vlastní role Azure AD nejsou integrovány s předdefinovanými rolemi adresáře ve verzi Preview. Jakmile je funkce všeobecně dostupná, bude se Správa rolí konat v prostředí integrovaných rolí. Pokud se zobrazí následující nápis, tyto role by se měly spravovat [v prostředí integrovaných rolí](pim-how-to-activate-role.md) a tento článek neplatí:
+>
+> [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 ## <a name="open-role-settings"></a>Otevřít nastavení role
 
@@ -95,7 +100,7 @@ Pokud chcete pro aktivaci role vyžadovat schválení, postupujte podle těchto 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Aktivace vlastní role Azure AD](azure-ad-custom-roles-assign.md)
+- [Aktivace vlastní role Azure AD](azure-ad-custom-roles-activate.md)
 - [Přiřazení vlastní role Azure AD](azure-ad-custom-roles-assign.md)
 - [Odebrání nebo aktualizace přiřazení vlastní role Azure AD](azure-ad-custom-roles-update-remove.md)
 - [Definice rolí v Azure AD](../users-groups-roles/directory-assign-admin-roles.md)

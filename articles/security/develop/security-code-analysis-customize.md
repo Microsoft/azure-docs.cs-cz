@@ -1,5 +1,6 @@
 ---
-title: Průvodce přizpůsobením úlohy Microsoft Azure Security Code Analysis
+title: Přizpůsobení úloh analýzy kódu zabezpečení společnosti Microsoft
+titleSuffix: Azure
 description: Tento článek popisuje přizpůsobení úloh v rozšíření Microsoft Security Code Analysis.
 author: vharindra
 manager: sukhans
@@ -12,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6c88fec4e6bea34dd3cf2e45300ae2c1ac15a1c6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851532"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499987"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurace a přizpůsobení úloh sestavení
 
@@ -89,7 +90,7 @@ Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazo
 
 ![Konfigurace úlohy sestavení pro kontrolu přihlašovacích údajů](./media/security-tools/3-taskdetails.png)
 
-Mezi dostupné možnosti patří:
+K dispozici jsou tyto možnosti:
 
   - **Výstupní formát**: dostupné hodnoty zahrnují **TSV**, **CSV**, **SARIF**a **Fast**.
   - **Verze nástroje**: Doporučujeme vybrat možnost **nejnovější**.
@@ -146,7 +147,7 @@ Informace o konfiguraci YAML pro tuto úlohu najdete v [možnostech YAML zjišť
 
 Podrobnosti o konfiguraci úlohy jsou uvedené v následujícím seznamu a Poznámka.
 
-Mezi dostupné možnosti patří:
+K dispozici jsou tyto možnosti:
 
 - **RuleSet**: hodnoty jsou **vyžadovány v SDL**, **doporučuje se SDL**nebo vaše vlastní sada pravidel.
 - **Verze analyzátorů**: Doporučujeme vybrat možnost **nejnovější**.

@@ -1,156 +1,166 @@
 ---
 title: Zálohování SQL Server do Azure jako úlohy DPM
-description: Úvod k zálohování databází SQL Server pomocí služby Azure Backup
+description: Úvod k zálohování SQL Server databází pomocí služby Azure Backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: ea55081d6f3b58c6c64c16e64c7a9d0f673ec196
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8cbb8c833bc2933afac300bcc848fd50861011d0
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025397"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505931"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
 
 Tento článek vás provede kroky konfigurace pro zálohování SQL Server databází pomocí Azure Backup.
 
-K zálohování databází SQL Server do Azure potřebujete účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+K zálohování databází SQL Server do Azure potřebujete účet Azure. Pokud ho nemáte, můžete si během několika minut vytvořit bezplatný účet. Další informace najdete v tématu [Vytvoření bezplatného účtu Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-Správa zálohování SQL Server databáze do Azure a obnovení z Azure zahrnuje tři kroky:
+Zálohování databáze SQL Server do Azure a její obnovení z Azure:
 
-1. Vytvořte zásady zálohování pro ochranu SQL Serverch databází do Azure.
-2. Vytváření záložních kopií na vyžádání v Azure.
-3. Obnovte databázi z Azure.
+1. Vytvořte zásady zálohování pro ochranu SQL Serverch databází v Azure.
+1. Vytváření záložních kopií na vyžádání v Azure.
+1. Obnovte databázi z Azure.
 
 ## <a name="before-you-start"></a>Než začnete
 
-Než začnete, ujistěte se, že byly splněny všechny [požadavky](backup-azure-dpm-introduction.md#prerequisites-and-limitations) pro použití Microsoft Azure Backup k ochraně úloh. Požadavky zahrnují úlohy, jako například: vytvoření trezoru služby Backup, stažení přihlašovacích údajů trezoru, instalace agenta Azure Backup a registrace serveru v trezoru.
+Než začnete, ujistěte se, že jste splnili [požadavky](backup-azure-dpm-introduction.md#prerequisites-and-limitations) na použití Azure Backup k ochraně úloh. Tady jsou některé z požadovaných úloh: 
+* Vytvořte úložiště záloh.
+* Stáhněte si přihlašovací údaje trezoru. 
+* Nainstalujte agenta Azure Backup.
+* Zaregistrujte server v trezoru.
 
-## <a name="create-a-backup-policy-to-protect-sql-server-databases-to-azure"></a>Vytvoření zásady zálohování pro ochranu SQL Serverch databází do Azure
+## <a name="create-a-backup-policy"></a>Vytvoření zásady zálohování 
 
-1. Na serveru DPM klikněte na pracovní prostor **ochrana** .
-2. Na pásu karet nástroje klikněte na **Nový** a vytvořte novou skupinu ochrany.
+Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady zálohování:
 
-    ![Vytvořit skupinu ochrany](./media/backup-azure-backup-sql/protection-group.png)
-3. Aplikace DPM zobrazí úvodní obrazovku s pokyny k vytvoření **skupiny ochrany**. Klikněte na **Další**.
-4. Vyberte **servery**.
+1. Na serveru Data Protection Manager (DPM) vyberte pracovní prostor **ochrana** .
+1. Chcete-li vytvořit skupinu ochrany, vyberte možnost **Nový** .
 
-    ![Vybrat typ skupiny ochrany – servery](./media/backup-azure-backup-sql/pg-servers.png)
-5. Rozbalte SQL Server počítač, ve kterém se nacházejí databáze, které mají být zálohovány. DPM zobrazuje různé zdroje dat, které je možné zálohovat z tohoto serveru. Rozbalte **všechny sdílené složky SQL** a vyberte databáze (v tomto případě jsme vybrali možnost REPORTSERVER $ MSDPM2012 a ReportServer $ MSDPM2012TempDB), aby se zálohoval. Klikněte na **Další**.
+    ![Vytvoření skupiny ochrany](./media/backup-azure-backup-sql/protection-group.png)
+1. Na úvodní stránce si přečtěte pokyny k vytvoření skupiny ochrany. Pak vyberte **Další**.
+1. Vyberte **servery**.
 
-    ![Výběr databáze SQL](./media/backup-azure-backup-sql/pg-databases.png)
-6. Zadejte název skupiny ochrany a zaškrtněte políčko **Chci online ochranu** .
+    ![Vyberte typ skupiny ochrany servery.](./media/backup-azure-backup-sql/pg-servers.png)
+1. Rozbalte SQL Server počítač, ve kterém jsou umístěny databáze, které chcete zálohovat. Zobrazí se zdroje dat, které je možné zálohovat z tohoto serveru. Rozbalte položku **všechny sdílené složky SQL** a pak vyberte databáze, které chcete zálohovat. V tomto příkladu vybereme ReportServer $ MSDPM2012 a ReportServer $ MSDPM2012TempDB. Pak vyberte **Další**.
 
-    ![Metoda ochrany dat – krátkodobý & disku online Azure](./media/backup-azure-backup-sql/pg-name.png)
-7. Na obrazovce **zadat krátkodobé cíle** uveďte nezbytné vstupy pro vytváření záložních bodů na disku.
+    ![Vybrat databázi SQL Server](./media/backup-azure-backup-sql/pg-databases.png)
+1. Pojmenujte skupinu ochrany a potom vyberte **Chci online ochranu**.
 
-    Tady vidíte, že **Rozsah uchování** je nastavený na *5 dní*, **Frekvence synchronizace** je nastavená na každých *15 minut*, což je frekvence, při které se provádí zálohování. **Expresní úplné zálohování** je nastaveno na *8:00 P. M*.
+    ![Zvolit metodu ochrany dat – krátkodobá Ochrana disku nebo online ochrana Azure](./media/backup-azure-backup-sql/pg-name.png)
+1. Na stránce **zadat krátkodobé cíle** uveďte nezbytné vstupy pro vytváření záložních bodů na disku.
 
-    ![Krátkodobé cíle](./media/backup-azure-backup-sql/pg-shortterm.png)
+    V tomto příkladu je **Rozsah uchování** nastavený na *5 dní*. **Frekvence synchronizace** záloh je nastavená na každých *15 minut*. **Expresní úplné zálohování** je nastaveno na *8:00 PM*.
+
+    ![Nastavení krátkodobých cílů ochrany záloh](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
-   > V 8:00. odp. (podle vstupu obrazovky) se bod zálohování vytvoří každý den tak, že se přenese data, která byla upravena z bodu zálohování v předchozím dnu v 8:00 odp. Tento proces se nazývá **expresní úplné zálohování**. I když jsou protokoly transakcí synchronizovány každých 15 minut, je-li nutné obnovit databázi v 9:00. odp., pak je bod vytvořen přehráním protokolů z posledního expresního bodu úplného zálohování (8pm v tomto případě).
+   > V tomto příkladu se bod zálohování vytvoří každý den v 8:00 PM. Data, která byla změněna od posledního dne 8:00. bod zálohování v předchozím dnu, se přenáší. Tento proces se nazývá **expresní úplné zálohování**. I když jsou protokoly transakcí synchronizovány každých 15 minut, potřebujete-li obnovit databázi v 9:00 PM, pak se bod vytvoří přehráním protokolů z posledního expresního bodu úplného zálohování, který je v tomto příkladu 8:00 odp.
    >
    >
 
-8. Klikněte na **Další**
+1. Vyberte **Další**. Aplikace DPM zobrazuje celkový prostor úložiště k dispozici. Zobrazuje taky možné využití místa na disku.
 
-    DPM zobrazuje celkové dostupné místo v úložišti a možné využití místa na disku.
+    ![Nastavení přidělení disku](./media/backup-azure-backup-sql/pg-storage.png)
 
-    ![Přidělení disku](./media/backup-azure-backup-sql/pg-storage.png)
+    Ve výchozím nastavení aplikace DPM vytvoří jeden svazek na zdroj dat (SQL Server databázi). Svazek se používá pro prvotní záložní kopii. V této konfiguraci omezuje Správce logických disků (LDM) ochranu DPM na 300 zdrojů dat (SQL Server databází). Chcete-li toto omezení obejít, vyberte možnost **společně umístit data do fondu úložiště aplikace DPM**. Použijete-li tuto možnost, aplikace DPM použije jeden svazek pro více zdrojů dat. Tato instalace umožňuje DPM chránit až 2 000 SQL Server databází.
 
-    Ve výchozím nastavení aplikace DPM vytvoří jeden svazek na zdroj dat (SQL Server databázi), který se používá pro prvotní záložní kopii. Pomocí tohoto přístupu omezuje Správce logických disků (LDM) ochranu DPM na 300 zdrojů dat (SQL Server databází). Toto omezení můžete obejít tak, že vyberete možnost **společně najít data ve fondu úložiště DPM**, možnost. Použijete-li tuto možnost, aplikace DPM použije jeden svazek pro více zdrojů dat, což umožňuje aplikaci DPM chránit až 2000 databází SQL.
+    Pokud vyberete možnost **automaticky zvětšit svazky**, může aplikace DPM při zvětšování produkčních dat považovat za účet zvýšeného záložního svazku. Pokud nevyberete možnost **automaticky rozšiřovat svazky**, aplikace DPM omezí úložiště zálohování na zdroje dat ve skupině ochrany.
 
-    Pokud je vybraná možnost **automaticky zvětšit svazky** , může aplikace DPM při zvětšování produkčních dat brát v úvahu zvýšený svazek zálohy. Pokud není vybraná možnost **automaticky zvětšit svazky** , aplikace DPM omezí úložiště zálohování používané pro zdroje dat ve skupině ochrany.
-9. Správcům je dána volba pro přenos tohoto počátečního zálohování ručně (vypnutá síť), aby se předešlo zahlcení šířky pásma nebo přes síť. Můžou taky nakonfigurovat čas, kdy se má počáteční přenos provést. Klikněte na **Další**.
+1. Pokud jste správce, můžete se rozhodnout, že chcete toto prvotní zálohování přenést **automaticky přes síť** a zvolit čas přenosu. Nebo se můžete rozhodnout **ručně** přenést zálohu. Pak vyberte **Další**.
 
-    ![Metoda počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
+    ![Zvolit metodu vytvoření repliky](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze) z provozního serveru (SQL Server počítače) na server DPM. Tato data můžou být velká a přenos dat přes síť by mohl překročit šířku pásma. Z tohoto důvodu můžou správci přenést počáteční zálohu **ručně** (pomocí vyměnitelného média), aby se předešlo zahlcení šířky pásma nebo **automaticky přes síť** (v určitou dobu).
+    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze). Data zálohy se přesunou z provozního serveru (SQL Server počítač) na server DPM. Pokud je tato záloha velká, může přenos dat přes síť způsobit zahlcení šířky pásma. Z tohoto důvodu můžou správci zvolit použití vyměnitelných médií k **ručnímu**přenosu prvotní zálohy. Nebo můžou data přenést **automaticky přes síť** v zadaném čase.
 
-    Po dokončení prvotního zálohování jsou zbývající zálohy přírůstkové zálohy v prvotní záložní kopii. Přírůstkové zálohování je obvykle malé a snadno se přenáší přes síť.
-10. Vyberte, kdy chcete spustit kontrolu konzistence, a klikněte na tlačítko **Další**.
+    Po dokončení prvotního zálohování budou zálohy v počátečním záložním kopírování přírůstkově dokončeny. Přírůstkové zálohování je obvykle malé a snadno se přenáší přes síť.
+    
+1. Vyberte, kdy se má spustit Kontrola konzistence. Pak vyberte **Další**.
 
-    ![Kontrola konzistence](./media/backup-azure-backup-sql/pg-consistent.png)
+    ![Vyberte, kdy se má spustit Kontrola konzistence.](./media/backup-azure-backup-sql/pg-consistent.png)
 
-    DPM může provést kontrolu konzistence a ověřit integritu bodu zálohování. Vypočítá kontrolní součet záložního souboru na provozním serveru (SQL Server počítač v tomto scénáři) a zálohovaná data pro tento soubor v aplikaci DPM. V případě konfliktu se předpokládá, že zálohovaný soubor v aplikaci DPM je poškozený. DPM odpraví zálohovaná data odesláním bloků odpovídajících neshodě kontrolního součtu. Vzhledem k tomu, že je kontrola konzistence náročná na výkon, mají správci možnost naplánovat kontrolu konzistence nebo ji spustit automaticky.
-11. Chcete-li určit online ochranu zdrojů dat, vyberte databáze, které chcete chránit pomocí Azure a klikněte na tlačítko **Další**.
+    DPM může spustit kontrolu konzistence v rámci integrity záložního bodu. Vypočítá kontrolní součet záložního souboru na provozním serveru (SQL Server počítač v tomto příkladu) a zálohovaná data pro tento soubor v DPM. Pokud tato kontrolu najde konflikt, předpokládá se, že zálohovaný soubor v DPM je poškozený. DPM opraví zálohovaná data odesláním bloků, které odpovídají neshodě kontrolního součtu. Vzhledem k tomu, že je kontrola konzistence náročná na výkon, můžou správci rozhodnout naplánovat kontrolu konzistence nebo ji spouštět automaticky.
 
-    ![Vybrat zdroje dat](./media/backup-azure-backup-sql/pg-sqldatabases.png)
-12. Správci můžou zvolit plány zálohování a zásady uchovávání informací, které odpovídají zásadám organizace.
+1. Vyberte zdroje dat, které chcete chránit v Azure. Pak vyberte **Další**.
 
-    ![Plán a uchovávání](./media/backup-azure-backup-sql/pg-schedule.png)
+    ![Vyberte zdroje dat, které chcete chránit v Azure.](./media/backup-azure-backup-sql/pg-sqldatabases.png)
+1. Pokud jste správce, můžete zvolit plány zálohování a zásady uchovávání informací, které vyhovují zásadám vaší organizace.
 
-    V tomto příkladu se zálohy odebírají jednou denně v 12:00 PM a 8 ODP. (dolní část obrazovky)
+    ![Zvolit plány a zásady uchovávání informací](./media/backup-azure-backup-sql/pg-schedule.png)
 
-    > [!NOTE]
-    > Je dobrým zvykem, aby na disku bylo několik krátkodobých bodů obnovení pro rychlé obnovení. Tyto body obnovení se používají pro "provozní obnovení". Azure slouží jako dobré umístění mimo pracoviště s vyšší Slaou a zaručenou dostupností.
+    V tomto příkladu se zálohování provádí denně v 12:00 PM a 8:00 odp.
+
+    > [!TIP]
+    > Pro rychlé obnovení Udržujte na disku několik krátkodobých bodů obnovení. Tyto body obnovení se používají pro provozní obnovení. Azure slouží jako dobrá poloha mimo pracoviště a poskytuje vyšší SLA a zaručenou dostupnost.
     >
+    > Použijte DPM k naplánování záloh Azure po dokončení zálohování na místní disk. Po provedení tohoto postupu se poslední záloha disku zkopíruje do Azure.
     >
 
-    **Osvědčený postup**: Ujistěte se, že jsou zálohy Azure naplánované po dokončení zálohování místních disků pomocí DPM. To umožňuje zkopírovat nejnovější zálohu disku do Azure.
+1. Vyberte plán zásad uchovávání informací. Další informace o tom, jak zásady uchovávání informací fungují, najdete v tématu [použití Azure Backup k nahrazení páskové infrastruktury](backup-azure-backup-cloud-as-tape.md).
 
-13. Vyberte plán zásad uchovávání informací. Podrobnosti o tom, jak fungují zásady uchovávání informací, najdete v [článku použití Azure Backup k nahrazení vaší páskové infrastruktury](backup-azure-backup-cloud-as-tape.md).
-
-    ![Zásady uchovávání informací](./media/backup-azure-backup-sql/pg-retentionschedule.png)
+    ![Zvolit zásady uchovávání informací](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
     V tomto příkladu:
 
-    * Zálohy se ponechají jednou denně v 12:00 PM a 8 PM (dolní část obrazovky) a uchovávají se po dobu 180 dnů.
-    * Záloha v sobotu v 12:00. odp. je uchováno po dobu 104 týdnů
-    * Záloha na poslední sobotu v 12:00. odp. je uchováno po dobu 60 měsíců
-    * Záloha na poslední sobotu v březnu v 12:00. odp. je uchováno po dobu 10 let
-14. Klikněte na **Další** a vyberte odpovídající možnost pro přenos prvotní záložní kopie do Azure. Můžete vybrat možnost **automaticky prostřednictvím sítě** nebo **offline zálohování**.
+    * Zálohy se účtují každý den v 12:00 PM a 8:00 odp. Uchovávají se po dobu 180 dnů.
+    * Záloha v sobotu v 12:00./odp. se uchovává po dobu 104 týdnů.
+    * Záloha z poslední sobotu měsíce v 12:00./odp. je uchována po dobu 60 měsíců.
+    * Záloha z poslední sobotu v březnu v 12:00 PM je uchována po dobu 10 let.
+    
+    Po výběru zásady uchovávání informací vyberte **Další**.
 
-    * **Automaticky přes síť** přenáší zálohovaná data do Azure podle plánu vybraného pro zálohování.
-    * Způsob, jakým funguje **offline zálohování** , je vysvětleno v tématu [Přehled zálohování offline](offline-backup-overview.md).
+1. Vyberte způsob přenosu prvotní záložní kopie do Azure.
 
-    Vyberte příslušný přenosový mechanismus pro odeslání prvotní záložní kopie do Azure a klikněte na **Další**.
-15. Po kontrole podrobností zásad na obrazovce **souhrnu** dokončete pracovní postup kliknutím na tlačítko **vytvořit skupinu** . Můžete kliknout na tlačítko **Zavřít** a monitorovat průběh úlohy v pracovním prostoru monitorování.
+    * Možnost **automaticky přes síť** se řídí vaším plánem zálohování a převádí data do Azure.
+    * Další informace o **offline zálohování**najdete v tématu [Přehled zálohování offline](offline-backup-overview.md).
 
-    ![Probíhá vytváření skupiny ochrany.](./media/backup-azure-backup-sql/pg-summary.png)
+    Po výběru mechanismu přenosu vyberte možnost **Další**.
 
-## <a name="on-demand-backup-of-a-sql-server-database"></a>Zálohování databáze SQL Server na vyžádání
+1. Na stránce **Souhrn** zkontrolujte podrobnosti zásady. Pak vyberte **vytvořit skupinu**. Můžete vybrat **Zavřít** a sledovat průběh úlohy v pracovním prostoru **monitorování** .
 
-Zatímco předchozí kroky vytvořily zásady zálohování, vytvoří se bod obnovení jenom v případě, že dojde k prvnímu zálohování. Místo čekání na vystavení plánovače pak níže uvedené kroky aktivují vytvoření bodu obnovení ručně.
+    ![Průběh vytváření skupiny ochrany](./media/backup-azure-backup-sql/pg-summary.png)
 
-1. Před vytvořením bodu obnovení počkejte, až se stav skupiny ochrany zobrazí v poli **OK** pro databázi.
+## <a name="create-on-demand-backup-copies-of-a-sql-server-database"></a>Vytváření záložních kopií databáze SQL Server na vyžádání
 
-    ![Členové skupiny ochrany](./media/backup-azure-backup-sql/sqlbackup-recoverypoint.png)
-2. Klikněte pravým tlačítkem na databázi a vyberte **vytvořit bod obnovení**.
+Bod obnovení se vytvoří, když dojde k prvnímu zálohování. Místo čekání na spuštění plánu můžete ručně aktivovat vytvoření bodu obnovení:
 
-    ![Vytvořit bod obnovení online](./media/backup-azure-backup-sql/sqlbackup-createrp.png)
-3. V rozevírací nabídce vyberte možnost **online ochrana** a klikněte na tlačítko **OK**. Tím se spustí vytvoření bodu obnovení v Azure.
+1. Ve skupině ochrany se ujistěte, že je stav databáze **OK**.
 
-    ![Vytvořit bod obnovení](./media/backup-azure-backup-sql/sqlbackup-azure.png)
-4. Průběh úlohy si můžete prohlédnout v pracovním prostoru **monitorování** , ve kterém se nachází probíhající úloha, jako je ta, která je znázorněna na následujícím obrázku.
+    ![Skupina ochrany, která zobrazuje stav databáze](./media/backup-azure-backup-sql/sqlbackup-recoverypoint.png)
+1. Klikněte pravým tlačítkem na databázi a pak vyberte **vytvořit bod obnovení**.
 
-    ![Konzola monitorování](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
+    ![Zvolit vytvoření bodu obnovení online](./media/backup-azure-backup-sql/sqlbackup-createrp.png)
+1. V rozevírací nabídce vyberte možnost **online ochrana**. Pak vyberte **OK** a začněte vytvářet bod obnovení v Azure.
+
+    ![Začněte vytvářet bod obnovení v Azure.](./media/backup-azure-backup-sql/sqlbackup-azure.png)
+1. Průběh úlohy můžete zobrazit v pracovním prostoru **monitorování** .
+
+    ![Zobrazení průběhu úlohy v konzole monitorování](./media/backup-azure-backup-sql/sqlbackup-monitoring.png)
 
 ## <a name="recover-a-sql-server-database-from-azure"></a>Obnovení databáze SQL Server z Azure
 
-K obnovení chráněné entity (SQL Server databáze) z Azure se vyžadují následující kroky.
+Chcete-li obnovit chráněnou entitu, jako je například databáze SQL Server, z Azure:
 
-1. Otevřete konzolu pro správu serveru DPM. Přejděte do pracovního prostoru **obnovení** , kde vidíte servery zálohované aplikací DPM. Vyhledejte požadovanou databázi (v tomto případě ReportServer $ MSDPM2012). Vyberte **obnovení z** času, který končí na **online**.
+1. Otevřete konzolu pro správu serveru DPM. Přejděte do pracovního prostoru **obnovení** a zobrazte servery, které aplikace DPM zálohuje. Vyberte databázi (v tomto příkladu: ReportServer $ MSDPM2012). Vyberte **čas obnovení** , který končí na **online**.
 
-    ![Vybrat bod obnovení](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
-2. Klikněte pravým tlačítkem myši na název databáze a pak klikněte na tlačítko **obnovit**.
+    ![Výběr bodu obnovení](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
+1. Klikněte pravým tlačítkem na název databáze a vyberte **obnovit**.
 
-    ![Obnovení z Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. DPM zobrazuje podrobnosti bodu obnovení. Klikněte na **Další**. Chcete-li přepsat databázi, vyberte typ obnovení **obnovit do původní instance SQL Server**. Klikněte na **Další**.
+    ![Obnovení databáze z Azure](./media/backup-azure-backup-sql/sqlbackup-recover.png)
+1. DPM zobrazuje podrobnosti bodu obnovení. Vyberte **Další**. Chcete-li přepsat databázi, vyberte typ obnovení **obnovit do původní instance SQL Server**. Pak vyberte **Další**.
 
-    ![Obnovit do původního umístění](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
+    ![Obnovení databáze do původního umístění](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     V tomto příkladu aplikace DPM umožňuje obnovení databáze do jiné instance SQL Server nebo do samostatné síťové složky.
-4. Na obrazovce **zadat možnosti obnovení** můžete vybrat možnosti obnovení, jako je omezování využití šířky pásma sítě, a omezit tak šířku pásma použitou obnovením. Klikněte na **Další**.
-5. Na obrazovce **Souhrn** uvidíte všechny konfigurace obnovení, které jsou doposud k dispozici. Klikněte na tlačítko **obnovit**.
+1. Na stránce **zadat možnosti obnovení** můžete vybrat možnosti obnovení. Můžete například zvolit **omezení využití šířky pásma sítě** k omezení šířky pásma, kterou obnovení používá. Pak vyberte **Další**.
+1. Na stránce **Souhrn** se zobrazí aktuální konfigurace obnovení. Vyberte **obnovit**.
 
-    Stav obnovení ukazuje obnovenou databázi. Kliknutím na **Zavřít** můžete Průvodce zavřít a zobrazit průběh v pracovním prostoru **monitorování** .
+    Stav obnovení ukazuje obnovenou databázi. Kliknutím na tlačítko **Zavřít** můžete Průvodce zavřít a zobrazit průběh v pracovním prostoru **monitorování** .
 
-    ![Zahájit proces obnovení](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
+    ![Spuštění procesu obnovení](./media/backup-azure-backup-sql/sqlbackup-recoverying.png)
 
-    Po dokončení obnovení je obnovená databáze konzistentní vzhledem k aplikacím.
+    Po dokončení obnovení je obnovená databáze konzistentní s aplikací.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Nejčastější dotazy k Azure Backup](backup-azure-backup-faq.md)
+Další informace najdete v tématu [Azure Backup Nejčastější dotazy](backup-azure-backup-faq.md).

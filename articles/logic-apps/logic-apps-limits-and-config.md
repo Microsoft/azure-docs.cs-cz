@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.date: 02/10/2020
-ms.openlocfilehash: f0c38590b667894dd65d212124ef1d26c7918ff7
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.date: 02/20/2020
+ms.openlocfilehash: 059894d441897bd89be525abcc7e1c7ab6ba23e7
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366418"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485042"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Omezení a informace o konfiguraci Azure Logic Apps
 
@@ -155,7 +155,7 @@ Některé operace konektoru provádějí asynchronní volání nebo naslouchán�
 |------|--------------------|---------------------------------------|-------|
 | Velikost zpráv | 100 MB | 200 MB | Pokud chcete tento limit obejít, přečtěte si téma [zpracování velkých zpráv pomocí bloků dat](../logic-apps/logic-apps-handle-large-messages.md). Některé konektory a rozhraní API ale nemusí podporovat blokování nebo ani výchozí omezení. |
 | Velikost zprávy pomocí bloků dat | 1 GB | 5 GB | Toto omezení se vztahuje na akce, které nativně podporují dělení na bloky dat, nebo umožňují povolit v konfiguraci modulu runtime vytváření bloků dat. <p>Pro prostředí integrační služby podporuje modul Logic Apps tento limit, ale konektory mají vlastní meze omezení na modul, například v [referenčních informacích k rozhraní API konektoru Azure Blob Storage](https://docs.microsoft.com/connectors/azureblob/). Další informace najdete v tématu [zpracování velkých zpráv pomocí bloků dat](../logic-apps/logic-apps-handle-large-messages.md). |
-|||||   
+|||||
 
 #### <a name="character-limits"></a>Omezení znaků
 
@@ -248,12 +248,16 @@ Cenové sazby najdete v tématu [Logic Apps ceny](https://azure.microsoft.com/pr
 | Schéma | 8 MB | Pokud chcete nahrávat soubory větší než 2 MB, použijte [účet úložiště Azure a kontejner objektů BLOB](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
 ||||
 
-| Koncový bod modulu runtime | Omezení | Poznámky: |
-|------------------|-------|-------|
-| Čtení hovorů za 5 minut | 60,000 | V případě potřeby můžete úlohy distribuovat napříč více než jedním účtem. |
-| Vyvolat volání za 5 minut | 45,000 | V případě potřeby můžete úlohy distribuovat napříč více než jedním účtem. |
-| Sledování hovorů za 5 minut | 45,000 | V případě potřeby můžete úlohy distribuovat napříč více než jedním účtem. |
-| Blokování souběžných volání | ~1,000 | Můžete snížit počet souběžných požadavků nebo snížit dobu trvání podle potřeby. |
+<a name="integration-account-throughput-limits"></a>
+
+### <a name="throughput-limits"></a>Omezení propustnosti
+
+| Koncový bod modulu runtime | Free | Basic | Standardní | Poznámky: |
+|------------------|------|-------|----------|-------|
+| Čtení hovorů za 5 minut | 3 000 | 30,000 | 60,000 | V případě potřeby můžete úlohy distribuovat napříč více než jedním účtem. |
+| Vyvolat volání za 5 minut | 3 000 | 30,000 | 45,000 | V případě potřeby můžete úlohy distribuovat napříč více než jedním účtem. |
+| Sledování hovorů za 5 minut | 3 000 | 30,000 | 45,000 | V případě potřeby můžete úlohy distribuovat napříč více než jedním účtem. |
+| Blokování souběžných volání | ~1,000 | ~1,000 | ~1,000 | Stejné pro všechny skladové položky. Můžete snížit počet souběžných požadavků nebo snížit dobu trvání podle potřeby. |
 ||||
 
 <a name="b2b-protocol-limits"></a>

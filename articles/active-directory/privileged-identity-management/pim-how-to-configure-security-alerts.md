@@ -14,12 +14,12 @@ ms.date: 11/13/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a28a4ccbaa256133b785d2238657093ba40ea11f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 530eebea19d9e53f85a0079d6fba91c615ee6dd1
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024190"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498920"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Konfigurace výstrah zabezpečení pro role Azure AD v Privileged Identity Management
 
@@ -32,11 +32,11 @@ Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktu
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí uživatele, který je v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 1. Otevřete **Azure AD Privileged Identity Management**. Pokud máte banner v horní části stránky s přehledem, postupujte podle pokynů na kartě **Nová verze** v tomto článku. Jinak postupujte podle pokynů na kartě **předchozí verze** .
 
-    ![Nové verze rolí Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Pokud chcete prozkoumat výstrahy zabezpečení pro role Azure AD, postupujte podle kroků v tomto článku.
 
-# <a name="new-versiontabnew"></a>[Nová verze](#tab/new)
+# <a name="new-version"></a>[Nová verze](#tab/new)
 
 ![Role Azure AD – podokno upozornění obsahující výstrahy a závažnost](./media/pim-how-to-configure-security-alerts/view-alerts.png)
 
@@ -52,7 +52,7 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 
 | | |
 | --- | --- |
-| **Závažnost** | Nízký |
+| **Závažnost** | Nízká |
 | **Proč se mi tato výstraha zobrazí?** | Uživatelům, kterým se přiřadily privilegované role, se nepotřebují zvýšit šance na útok. Útočníkům je také snazší zůstat v účtech, které aktivně nejsou používány. |
 | **Jak opravit?** | Zkontrolujte uživatele v seznamu a odeberte je z privilegovaných rolí, které nepotřebují. |
 | **Únikem** | Přiřaďte privilegované role pouze uživatelům, kteří mají obchodní odůvodnění. </br>Naplánujte pravidelné kontroly [přístupu](pim-how-to-start-security-review.md) , abyste ověřili, že uživatelé pořád potřebují přístup. |
@@ -64,7 +64,7 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 
 | | |
 | --- | --- |
-| **Závažnost** | Nízký |
+| **Závažnost** | Nízká |
 | **Proč se mi tato výstraha zobrazí?** | Bez ověřování Multi-Factor Authentication můžou ohrožení uživatelé aktivovat privilegované role. |
 | **Jak opravit?** | Zkontrolujte seznam rolí a [vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro každou roli. |
 | **Únikem** | [Vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro každou roli.  |
@@ -74,7 +74,7 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 
 | | |
 | --- | --- |
-| **Závažnost** | Nízký |
+| **Závažnost** | Nízká |
 | **Proč se mi tato výstraha zobrazí?** | Aktuální organizace Azure AD nemá Azure AD Premium P2. |
 | **Jak opravit?** | Přečtěte si informace o [edicích Azure AD](../fundamentals/active-directory-whatis.md). Upgradujte na Azure AD Premium P2. |
 
@@ -103,7 +103,7 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 
 | | |
 | --- | --- |
-| **Závažnost** | Nízký |
+| **Závažnost** | Nízká |
 | **Proč se mi tato výstraha zobrazí?** | Globální správce je nejvyšší privilegovaná role. Pokud dojde k ohrožení globálního správce, získá útočník přístup ke všem svým oprávněním, což zaznamená ohrožení celého systému. |
 | **Jak opravit?** | Zkontrolujte uživatele v seznamu a odeberte všechny, které nepotřebují roli globálního správce. </br>Přiřaďte těmto uživatelům méně privilegované role. |
 | **Únikem** | Přiřaďte uživatelům nejnižší privilegovanou roli, kterou potřebují. |
@@ -116,11 +116,11 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 
 | | |
 | --- | --- |
-| **Závažnost** | Nízký |
+| **Závažnost** | Nízká |
 | **Proč se mi tato výstraha zobrazí?** | Více aktivací stejné privilegované role stejným uživatelem je znaménkem útoku. |
 | **Jak opravit?** | Zkontrolujte uživatele v seznamu a ujistěte se, že [Doba trvání aktivace](pim-how-to-change-default-settings.md) pro příslušnou privilegovanou roli je nastavena dostatečně dlouho, aby mohla provádět jejich úkoly. |
 | **Únikem** | Ujistěte se, že je [Doba aktivace](pim-how-to-change-default-settings.md) pro privilegované role nastavená na dostatečnou délku, aby uživatelé mohli provádět své úkoly.</br>[Vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro privilegované role, které mají účty sdílené více správci. |
-| **Akce zmírňování na portálu** | Nevztahuje se |
+| **Akce zmírňování na portálu** | NEUŽÍVÁ SE. |
 | **Trigger** | Aktivuje se, pokud uživatel v zadaném období několikrát aktivuje stejnou privilegovanou roli. Můžete nakonfigurovat jak časové období, tak počet aktivací. |
 | **Časový rámec pro obnovení aktivace** | Toto nastavení určuje počet dnů, hodin, minut a druhý časový interval, který chcete použít ke sledování podezřelých obnovení. |
 | **Počet obnovení aktivace** | Toto nastavení určuje počet aktivací od 2 do 100, na které chcete být upozorněni v rámci zvoleného časového rámce. Toto nastavení můžete změnit přesunutím posuvníku nebo zadáním čísla do textového pole. |
@@ -135,7 +135,7 @@ Přizpůsobení nastavení různých výstrah pro práci s vaším prostředím 
 
 ![Stránka nastavení pro výstrahu, která povolí a nakonfiguruje nastavení](media/pim-resource-roles-configure-alerts/rbac-alert-settings.png)
 
-# <a name="previous-versiontabprevious"></a>[Předchozí verze](#tab/previous)
+# <a name="previous-version"></a>[Předchozí verze](#tab/previous)
 
 ![Role Azure AD – podokno upozornění obsahující výstrahy a závažnost](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
@@ -151,7 +151,7 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 
 | | |
 | --- | --- |
-| **Závažnost** | Nízký |
+| **Závažnost** | Nízká |
 | **Proč se mi tato výstraha zobrazí?** | Uživatelům, kterým se přiřadily privilegované role, se nepotřebují zvýšit šance na útok. Útočníkům je také snazší zůstat v účtech, které aktivně nejsou používány. |
 | **Jak opravit?** | Zkontrolujte uživatele v seznamu a odeberte je z privilegovaných rolí, které nepotřebují. |
 | **Únikem** | Přiřaďte privilegované role pouze uživatelům, kteří mají obchodní odůvodnění. </br>Naplánujte pravidelné kontroly [přístupu](pim-how-to-start-security-review.md) , abyste ověřili, že uživatelé pořád potřebují přístup. |
@@ -163,7 +163,7 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 
 | | |
 | --- | --- |
-| **Závažnost** | Nízký |
+| **Závažnost** | Nízká |
 | **Proč se mi tato výstraha zobrazí?** | Bez ověřování Multi-Factor Authentication můžou ohrožení uživatelé aktivovat privilegované role. |
 | **Jak opravit?** | Zkontrolujte seznam rolí a [vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro každou roli. |
 | **Únikem** | [Vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro každou roli.  |
@@ -173,7 +173,7 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 
 | | |
 | --- | --- |
-| **Závažnost** | Nízký |
+| **Závažnost** | Nízká |
 | **Proč se mi tato výstraha zobrazí?** | Aktuální organizace Azure AD nemá Azure AD Premium P2. |
 | **Jak opravit?** | Přečtěte si informace o [edicích Azure AD](../fundamentals/active-directory-whatis.md). Upgradujte na Azure AD Premium P2. |
 
@@ -202,7 +202,7 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 
 | | |
 | --- | --- |
-| **Závažnost** | Nízký |
+| **Závažnost** | Nízká |
 | **Proč se mi tato výstraha zobrazí?** | Globální správce je nejvyšší privilegovaná role. Pokud dojde k ohrožení globálního správce, získá útočník přístup ke všem svým oprávněním, což zaznamená ohrožení celého systému. |
 | **Jak opravit?** | Zkontrolujte uživatele v seznamu a odeberte všechny, které nepotřebují roli globálního správce. </br>Přiřaďte těmto uživatelům méně privilegované role. |
 | **Únikem** | Přiřaďte uživatelům nejnižší privilegovanou roli, kterou potřebují. |
@@ -215,11 +215,11 @@ V této části jsou uvedené všechny výstrahy zabezpečení pro role Azure AD
 
 | | |
 | --- | --- |
-| **Závažnost** | Nízký |
+| **Závažnost** | Nízká |
 | **Proč se mi tato výstraha zobrazí?** | Více aktivací stejné privilegované role stejným uživatelem je znaménkem útoku. |
 | **Jak opravit?** | Zkontrolujte uživatele v seznamu a ujistěte se, že [Doba trvání aktivace](pim-how-to-change-default-settings.md) pro příslušnou privilegovanou roli je nastavena dostatečně dlouho, aby mohla provádět jejich úkoly. |
 | **Únikem** | Ujistěte se, že je [Doba aktivace](pim-how-to-change-default-settings.md) pro privilegované role nastavená na dostatečnou délku, aby uživatelé mohli provádět své úkoly.</br>[Vyžadovat vícefaktorové ověřování](pim-how-to-change-default-settings.md) pro privilegované role, které mají účty sdílené více správci. |
-| **Akce zmírňování na portálu** | Nevztahuje se |
+| **Akce zmírňování na portálu** | NEUŽÍVÁ SE. |
 | **Trigger** | Aktivuje se, pokud uživatel v zadaném období několikrát aktivuje stejnou privilegovanou roli. Můžete nakonfigurovat jak časové období, tak počet aktivací. |
 | **Časový rámec pro obnovení aktivace** | Toto nastavení určuje počet dnů, hodin, minut a druhý časový interval, který chcete použít ke sledování podezřelých obnovení. |
 | **Počet obnovení aktivace** | Toto nastavení určuje počet aktivací od 2 do 100, na které chcete být upozorněni v rámci zvoleného časového rámce. Toto nastavení můžete změnit přesunutím posuvníku nebo zadáním čísla do textového pole. |

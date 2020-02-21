@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 11/14/2019
+ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 8ab673c1a268f5ab663e8f423dd9b60cdfde14ab
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118370"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485348"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -27,6 +27,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 K dokončení tohoto rychlého startu musíte mít:
 
 - Sada alespoň šest forem stejného typu. Tato data použijete ke školení modelu a testování formuláře. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage.
+
+## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
+
+[!INCLUDE [create resource](../includes/create-resource.md)]
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Nastavení nástroje pro označování ukázek
 
@@ -70,7 +74,7 @@ Povolte CORS v účtu úložiště. V Azure Portal vyberte svůj účet úloži�
 
 ## <a name="connect-to-the-sample-labeling-tool"></a>Připojení k nástroji Sample labeling Tool
 
-Nástroj pro označování ukázek se připojuje ke zdroji (kde jsou původní formuláře) a cíli (umístění, kde exportuje vytvořené popisky a výstupní data).
+Nástroj pro označování ukázek se připojuje ke zdroji (kde jsou původní formuláře) a cíli (kde exportuje vytvořené popisky a výstupní data).
 
 Připojení je možné nastavit a sdílet mezi projekty. Používají model rozšiřitelného poskytovatele, takže můžete snadno přidat nové poskytovatele prostředků a cílů.
 
@@ -89,7 +93,7 @@ Vyplňte pole následujícími hodnotami:
 V nástroji pro označování ukázkových popisků se v projektech ukládají vaše konfigurace a nastavení. Vytvořte nový projekt a vyplňte pole následujícími hodnotami:
 
 * **Zobrazované jméno** – zobrazovaný název projektu
-* **Token zabezpečení** – některá nastavení projektu můžou obsahovat citlivé hodnoty, jako jsou klíče rozhraní API nebo jiné sdílené tajné klíče. Každý projekt vygeneruje token zabezpečení, který lze použít k šifrování/dešifrování citlivých nastavení projektu. Tokeny zabezpečení najdete v nastavení aplikace kliknutím na ikonu ozubeného kolečka v dolním rohu levého navigačního panelu.
+* **Token zabezpečení** – některá nastavení projektu můžou obsahovat citlivé hodnoty, jako jsou klíče rozhraní API nebo jiné sdílené tajné klíče. Každý projekt vygeneruje token zabezpečení, který lze použít k šifrování/dešifrování citlivých nastavení projektu. Tokeny zabezpečení můžete v nastavení aplikace najít kliknutím na ikonu ozubeného kolečka v dolním rohu levého navigačního panelu.
 * **Připojení ke zdroji** – připojení k Azure Blob Storage, které jste vytvořili v předchozím kroku, který chcete použít pro tento projekt.
 * **Cesta ke složce** – volitelné – Pokud se zdrojové formuláře nacházejí ve složce v kontejneru objektů blob, zadejte sem název složky.
 * **Identifikátor URI služby pro rozpoznávání formulářů** – adresa URL koncového bodu rozpoznávání formuláře.
@@ -146,7 +150,7 @@ Po dokončení školení si Projděte hodnotu **Průměrná přesnost** . Pokud 
 
 ## <a name="analyze-a-form"></a>Analýza formuláře
 
-Kliknutím na ikonu prediktivní (obdélníky) na levé straně otestujete svůj model. Nahrajte dokument formuláře, který jste nepoužívali v procesu školení. Pak klikněte na tlačítko **předpověď** na pravé straně, abyste pro formulář získali předpovědi klíč/hodnota. Nástroj bude používat značky v ohraničujících polích a bude hlásit spolehlivost každé značky.
+Kliknutím na ikonu prediktivní (obdélníky) na levé straně otestujete svůj model. Nahrajte dokument formuláře, který jste nepoužili v procesu školení. Pak klikněte na tlačítko **předpověď** na pravé straně, abyste pro formulář získali předpovědi klíč/hodnota. Nástroj bude používat značky v ohraničujících polích a bude hlásit spolehlivost každé značky.
 
 > [!TIP]
 > Můžete také spustit rozhraní API pro analýzu pomocí volání REST. Další informace o tom, jak to udělat, najdete v tématu [výuka s popisky pomocí Pythonu](./python-labeled-data.md).
@@ -165,7 +169,7 @@ Pokud chcete projekt obnovit v jinou dobu nebo v jiném prohlížeči, je nutné
 Přejít na stránku nastavení projektu (ikona posuvníku) a poznamenejte si název tokenu zabezpečení. Pak přejdete na nastavení aplikace (ikona ozubeného kolečka), ve kterém se zobrazí všechny tokeny zabezpečení v aktuální instanci prohlížeče. Vyhledejte token zabezpečení projektu a zkopírujte jeho název a hodnotu klíče do zabezpečeného umístění.
 
 ### <a name="restore-project-credentials"></a>Obnovit přihlašovací údaje projektu
-Pokud chcete pokračovat v projektu, musíte nejprve vytvořit připojení ke stejnému kontejneru úložiště objektů BLOB. Postupujte podle výše uvedených kroků. Pak přejděte na stránku nastavení aplikace (ikona ozubeného kolečka) a podívejte se, jestli je k dispozici token zabezpečení vašeho projektu. Pokud ne, přidejte nový token zabezpečení a zkopírujte ho do svého názvu a klíče tokenu z předchozího kroku. Pak klikněte na Uložit nastavení. 
+Pokud chcete pokračovat v projektu, musíte nejprve vytvořit připojení ke stejnému kontejneru úložiště objektů BLOB. Provedete to tak, že zopakujete výše uvedené kroky. Pak přejděte na stránku nastavení aplikace (ikona ozubeného kolečka) a podívejte se, jestli je k dispozici token zabezpečení vašeho projektu. Pokud ne, přidejte nový token zabezpečení a zkopírujte ho do svého názvu a klíče tokenu z předchozího kroku. Pak klikněte na Uložit nastavení. 
 
 ### <a name="resume-a-project"></a>Pokračování projektu
 Nakonec přejděte na hlavní stránku (ikonu domu) a klikněte na otevřít cloudový projekt. Pak vyberte připojení úložiště objektů BLOB a vyberte soubor *. vott* vašeho projektu. Aplikace načte všechna nastavení projektu, protože má token zabezpečení.

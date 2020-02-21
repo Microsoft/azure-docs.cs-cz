@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: ef136345c7c41c720efd3c79923b6ce646de41e2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75642161"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498633"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Jak indexovat data Cosmos DB pomocí indexeru v Azure Kognitivní hledání 
 
@@ -29,13 +29,13 @@ V tomto článku se dozvíte, jak nakonfigurovat [indexer](search-indexer-overvi
 
 Vzhledem k tomu, že terminologie může být matoucí, je třeba poznamenat, že indexování [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview) a služba [Azure kognitivní hledání indexování](search-what-is-an-index.md) jsou odlišné operace, které jsou pro každou službu jedinečné. Než začnete s indexováním Azure Kognitivní hledání, databáze Azure Cosmos DB už musí existovat a obsahovat data.
 
-Indexer Cosmos DB ve službě Azure Kognitivní hledání může procházet [Azure Cosmos DB položky](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) , ke kterým přistupovaly prostřednictvím různých protokolů.
+Indexer Cosmos DB ve službě Azure Kognitivní hledání může procházet [Azure Cosmos DB položky](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) , ke kterým přistupovaly prostřednictvím různých protokolů. 
 
-+ Pro [rozhraní SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference), které je všeobecně dostupné, můžete použít [portál](#cosmos-indexer-portal), [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)nebo [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet).
++ Pro [rozhraní SQL API](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference), které je všeobecně dostupné, můžete k vytvoření zdroje dat a indexeru použít [portál](#cosmos-indexer-portal), [REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)nebo [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet) .
 
-+ V případě [rozhraní MongoDB API (Preview)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) a [rozhraní Gremlin API (Preview)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)můžete vytvořit indexer pomocí [portálu](#cosmos-indexer-portal) nebo [REST API verze 2019-05-06-Preview](search-api-preview.md) na volání metody [Create indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) .
++ Pro [MONGODB API (Preview)](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction)můžete k vytvoření zdroje dat a indexeru použít buď [portál](#cosmos-indexer-portal) , nebo [REST API verze 2019-05-06-Preview](search-api-preview.md) .
 
-+ Pro [rozhraní API Cassandra (Preview)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction)můžete použít jenom [REST API verze 2019-05-06-Preview](search-api-preview.md) na volání metody [Create indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) .
++ Pro [rozhraní API Cassandra (Preview)](https://docs.microsoft.com/azure/cosmos-db/cassandra-introduction) a [rozhraní Gremlin API (Preview)](https://docs.microsoft.com/azure/cosmos-db/graph-introduction)můžete vytvořit zdroj dat a indexer jenom pomocí [REST API verze 2019-05-06-Preview](search-api-preview.md) .
 
 
 > [!Note]
@@ -175,12 +175,12 @@ Tělo požadavku obsahuje definici zdroje dat, která by měla obsahovat násled
 
 | Pole   | Popis |
 |---------|-------------|
-| **name** | Povinná hodnota. Vyberte libovolný název, který bude představovat váš objekt zdroje dat. |
+| **Jméno** | Povinná hodnota. Vyberte libovolný název, který bude představovat váš objekt zdroje dat. |
 |**type**| Povinná hodnota. Musí být `cosmosdb`. |
 |**přihlašovací údaje** | Povinná hodnota. Musí se jednat o Cosmos DB připojovací řetězec.<br/>V případě kolekcí SQL jsou připojovací řetězce v tomto formátu: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>Pro kolekce MongoDB přidejte **ApiKind = MongoDB** do připojovacího řetězce:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>V případě grafů Gremlin a tabulek Cassandra si zaregistrujte si ve [verzi Preview služby gated indexer](https://aka.ms/azure-cognitive-search/indexer-preview) , abyste získali přístup k verzi Preview a informace o tom, jak tato pověření naformátovat.<br/><br/>Vyhněte se číslům portů v adrese URL koncového bodu. Pokud zadáte číslo portu, Azure Kognitivní hledání nebude moct indexovat databázi Azure Cosmos DB.|
-| **container** | Obsahuje následující prvky: <br/>**název**: povinné. Zadejte ID kolekce databází, která se má indexovat.<br/>**dotaz**: volitelné. Můžete zadat dotaz pro sloučení libovolného dokumentu JSON do plochého schématu, které může Azure Kognitivní hledání indexovat.<br/>Pro rozhraní MongoDB API, rozhraní Gremlin API a rozhraní API Cassandra se dotazy nepodporují. |
+| **vnitřního** | Obsahuje následující prvky: <br/>**název**: povinné. Zadejte ID kolekce databází, která se má indexovat.<br/>**dotaz**: volitelné. Můžete zadat dotaz pro sloučení libovolného dokumentu JSON do plochého schématu, které může Azure Kognitivní hledání indexovat.<br/>Pro rozhraní MongoDB API, rozhraní Gremlin API a rozhraní API Cassandra se dotazy nepodporují. |
 | **dataChangeDetectionPolicy** | Doporučil. Viz část [indexování změněných dokumentů](#DataChangeDetectionPolicy) .|
-|**dataDeletionDetectionPolicy** | Nepovinný parametr. Viz část [indexování odstraněných dokumentů](#DataDeletionDetectionPolicy) .|
+|**dataDeletionDetectionPolicy** | Volitelné. Viz část [indexování odstraněných dokumentů](#DataDeletionDetectionPolicy) .|
 
 ### <a name="using-queries-to-shape-indexed-data"></a>Použití dotazů na indexovaná data obrazců
 Můžete zadat dotaz SQL pro sloučení vnořených vlastností nebo polí, vlastností JSON projektu a filtrovat data, která mají být indexována. 
@@ -257,11 +257,11 @@ Ujistěte se, že schéma cílového indexu je kompatibilní se schématem zdroj
 | Bool |EDM. Boolean, Edm. String |
 | Čísla, která vypadají jako celá čísla |Edm.Int32, Edm.Int64, Edm.String |
 | Čísla, která vypadají jako plovoucí body |Edm.Double, Edm.String |
-| Řetězec |Edm.String |
+| String |Edm.String |
 | Pole primitivních typů, například ["a", "b", "c"] |Collection(Edm.String) |
 | Řetězce, které vypadají jako kalendářní data |Edm.DateTimeOffset, Edm.String |
 | Objekty injson, například {"Type": "Point", "souřadnice": [Long, lat]} |Edm.GeographyPoint |
-| Jiné objekty JSON |Nevztahuje se |
+| Jiné objekty JSON |NEUŽÍVÁ SE. |
 
 ### <a name="4---configure-and-run-the-indexer"></a>4\. konfigurace a spuštění indexeru
 
@@ -288,10 +288,10 @@ Další informace o definování plánů indexerů najdete v tématu [postup pl�
 
 Obecně dostupná sada .NET SDK má úplnou paritu s všeobecně dostupnou REST API. Doporučujeme, abyste si přečtěte předchozí část REST API, kde se dozvíte o konceptech, pracovních postupech a požadavcích. Pak se můžete podívat na následující referenční dokumentaci rozhraní .NET API a implementovat indexer JSON ve spravovaném kódu.
 
-+ [microsoft.azure.search.models.datasource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
-+ [microsoft.azure.search.models.datasourcetype](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
-+ [microsoft.azure.search.models.index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
-+ [microsoft.azure.search.models.indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
++ [Microsoft. Azure. Search. Models. DataSource](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)
++ [Microsoft. Azure. Search. Models. DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) 
++ [Microsoft. Azure. Search. Models. index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 
++ [Microsoft. Azure. Search. Models. indexer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 
 <a name="DataChangeDetectionPolicy"></a>
 

@@ -5,22 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 02/19/2020
 ms.author: helohr
-ms.openlocfilehash: e2fa30772082f4d2f7c02add61412432233e3f04
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 426ca10893e6858722b58422400582e4940287e2
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77470568"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484600"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Nejčastější dotazy k Windows 10 Enterprise pro více relací
 
-Tento článek odpoví na nejčastější dotazy a pokryje osvědčené postupy pro více relací Windows 10 Enterprise.
+Tento článek obsahuje odpovědi na nejčastější dotazy a vysvětluje osvědčené postupy pro více relací Windows 10 Enterprise.
  
-## <a name="what-is-windows-10-enterprise-multi-session"></a>Co je více relací Windows 10 Enterprise? 
+## <a name="what-is-windows-10-enterprise-multi-session"></a>Co je více relací Windows 10 Enterprise?
 
-Windows 10 Enterprise s více relacemi, dříve označované jako Windows 10 Enterprise pro virtuální plochy (EVD), je nový Hostitel relace vzdálené plochy, který umožňuje více souběžných interaktivních relací, které dřív mohl udělat jenom Windows Server. Tato funkce poskytuje uživatelům známé prostředí Windows 10, které může využívat výhod nákladů na více relací a používat stávající licencování Windows na uživatele namísto licencí pro klientský přístup k VP (CAL). Další informace o licencích a cenách najdete v tématu [ceny pro virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
+Windows 10 Enterprise s více relacemi, dříve označované jako Windows 10 Enterprise pro virtuální plochy (EVD), je nový Hostitel relace vzdálené plochy, který umožňuje více souběžných interaktivních relací. Dřív to mohl udělat jenom Windows Server. Tato funkce poskytuje uživatelům známé prostředí Windows 10, které může využívat výhod nákladů na více relací a používat stávající licencování Windows na uživatele namísto licencí pro klientský přístup k VP (CAL). Další informace o licencích a cenách najdete v tématu [ceny pro virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/). 
  
 ## <a name="how-many-users-can-simultaneously-have-an-interactive-session-on-windows-10-enterprise-multi-session"></a>Kolik uživatelů může současně mít interaktivní relaci v rámci více relací Windows 10 Enterprise?
 
@@ -71,6 +71,31 @@ Další informace o tom, jak nakonfigurovat kontejner profilu FSLogix, najdete v
 ## <a name="which-license-do-i-need-to-access-windows-10-enterprise-multi-session"></a>Kterou licenci potřebuji pro přístup k více relacím Windows 10 Enterprise?
 
 Úplný seznam použitelných licencí najdete v tématu [ceny pro virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/).
+
+## <a name="why-do-my-apps-disappear-after-i-sign-out"></a>Proč zmizely moje aplikace po odhlášení?
+
+K tomu dochází, protože používáte víc relací Windows 10 Enterprise s řešením správy profilů, jako je FSLogix. Vaše řešení pro správu nebo profil nakonfigurovalo systém tak, aby při odhlášení uživatele odstranil profily uživatelů. Tato konfigurace znamená, že když po odhlášení systém odstraní svůj uživatelský profil, odebere také všechny aplikace, které jste během vaší relace nainstalovali. Pokud chcete zachovat aplikace, které jste nainstalovali, musíte požádat správce, aby tyto aplikace zřídil pro všechny uživatele ve vašem prostředí virtuálních počítačů s Windows.
+
+## <a name="how-do-i-make-sure-apps-dont-disappear-when-users-sign-out"></a>Návody zajistěte, aby aplikace nezmizely při odhlášení uživatele?
+
+Většina virtualizovaných prostředí se ve výchozím nastavení konfiguruje, aby uživatelé nemohli instalovat další aplikace do jejich profilů. Pokud se chcete ujistit, že aplikace nezmizí, když se uživatel odhlásí z virtuálního klienta Windows, musíte tuto aplikaci zřídit pro všechny uživatelské profily ve vašem prostředí. Další informace o zřizování aplikací najdete v těchto materiálech:
+
+- [Publikování integrovaných aplikací ve virtuálním počítači s Windows](publish-apps.md)
+- [Možnosti příkazového řádku obsluhy balíčku aplikace DISM](https://docs.microsoft.com/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
+- [Add-AppxProvisionedPackage](https://docs.microsoft.com/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+
+## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>Návody zajistěte, aby si uživatelé nestáhli a neinstalovali aplikace z Microsoft Store?
+
+Aplikaci Microsoft Store můžete zakázat, abyste se ujistili, že uživatelé nestahují extra aplikace nad rámec aplikací, které pro ně jste už zřídili.
+
+Zakázání aplikace pro Store:
+
+1. Vytvoří nový Zásady skupiny.
+2. Vyberte možnost **Konfigurace počítače** > **šablony pro správu** > **součásti systému Windows**.
+3. Vyberte **Store**.
+4. Vyberte **aplikace pro Store**.
+5. Vyberte **disabled (zakázáno**) a pak vyberte **OK**.
+6. Vyberte **Použít**.
  
 ## <a name="next-steps"></a>Další kroky
 

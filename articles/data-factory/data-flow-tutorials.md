@@ -5,17 +5,17 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 02/06/2020
-ms.openlocfilehash: 1449b34a9bbeb5692d25a5f84c4ee38e6c4e0a33
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.date: 02/16/2020
+ms.openlocfilehash: 302757eb40d52a8dca5dbcb1147deb0532a0cf00
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460531"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506159"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Videokurzy mapování toku dat
 
-Níže je uveden seznam videí s daty o kurzu mapování toku dat vytvořených týmem Azure Data Factory.
+Níže je uveden seznam videí s daty o kurzu mapování toku dat vytvořených týmem Azure Data Factory. 
 
 Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce v aktuálním Azure Data Factory uživatelského prostředí přidané nebo jiné funkce.
 
@@ -100,6 +100,8 @@ Vzhledem k neustálému navýšení aktualizací produktu mají některé funkce
 [Zkrátit časy zahájení](https://youtu.be/FFCbU4ujCiY?t=528)
 
 [Výkon databáze SQL](https://youtu.be/iyZT5CY3V_4)
+
+[Protokolování a auditování](https://www.youtube.com/watch?v=UC__LOyuf8M)
 
 ## <a name="mapping-data-flow-scenarios"></a>Mapování scénářů toku dat
 

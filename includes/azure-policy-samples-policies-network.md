@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/13/2020
+ms.date: 02/19/2020
 ms.author: dacoulte
-ms.openlocfilehash: 586c705b821ba74536ba11e6a242553170d518f1
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7927866adb5efbdc8eb55b9b5209603a3658ae2c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77370808"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77495300"
 ---
 |Název |Popis |Vliv (s) |Version |Zdroj |
 |---|---|---|---|
@@ -23,7 +23,7 @@ ms.locfileid: "77370808"
 |[Podsítě brány by se neměly konfigurovat se skupinou zabezpečení sítě.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F35f9c03a-cc27-418e-9c0c-539ff999d010) |Tato zásada se zamítne, pokud je podsíť brány nakonfigurovaná pomocí skupiny zabezpečení sítě. Přiřazení skupiny zabezpečení sítě k podsíti brány způsobí, že brána přestane fungovat. |odmítnout |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroupOnGatewaySubnet_Deny.json)
 |[Key Vault by měl používat koncový bod služby virtuální sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fea4d6841-2173-4317-9747-ff522a45120f) |Tato zásada Audituje jakékoli Key Vault, které nejsou nakonfigurované pro použití koncového bodu služby virtuální sítě. |Audit, zakázáno |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_KeyVault_Audit.json)
 |[Síťová rozhraní by měla zakázat předávání IP](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F88c0b9da-ce96-4b03-9635-f29a937e2900) |Tato zásada odmítne síťová rozhraní, která povolují předávání IP. Nastavení předávání IP adres zakáže kontrolu zdrojového a cílového umístění Azure pro síťové rozhraní. To by mělo být přezkoumáno týmem zabezpečení sítě. |odmítnout |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkIPForwardingNic_Deny.json)
-|[Síťová rozhraní by neměla mít veřejné IP adresy.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83a86a26-fd1f-447c-b59d-e51f44264114) |Tato zásada odmítne síťová rozhraní, která jsou nakonfigurovaná s jakoukoli veřejnou IP adresou. Veřejné IP adresy umožňují internetovým prostředkům příchozí komunikaci s prostředky Azure a prostředkům Azure odchozí komunikaci s internetem. To by mělo být přezkoumáno týmem zabezpečení sítě. |odmítnout |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkPublicIPNic_Deny.json)
+|[Síťová rozhraní by neměla mít veřejné IP adresy.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83a86a26-fd1f-447c-b59d-e51f44264114) |Tato zásada odmítne síťová rozhraní, která jsou nakonfigurovaná s jakoukoli veřejnou IP adresou. Veřejné IP adresy umožňují internetovým prostředkům příchozí k prostředkům Azure komunikovat a prostředkům Azure komunikovat odchozí k Internetu. To by mělo být přezkoumáno týmem zabezpečení sítě. |odmítnout |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkPublicIPNic_Deny.json)
 |[Network Watcher by měl být povolený.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |Network Watcher je místní služba, která umožňuje monitorovat a diagnostikovat podmínky na úrovni síťového scénáře v, do a z Azure. Monitorování úrovně scénáře umožňuje diagnostikovat problémy v zobrazení na úrovni koncových sítí. Nástroje pro diagnostiku a diagnostiku sítě, které jsou dostupné v Network Watcher, vám pomůžou pochopit, diagnostikovat a získávat přehledy vaší sítě v Azure. |auditIfNotExists |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json)
 |[Přístup RDP z Internetu by měl být blokovaný.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe372f825-a257-4fb8-9175-797a8a8627d6) |Tato zásada Audituje jakékoli pravidlo zabezpečení sítě, které umožňuje přístup k protokolu RDP z Internetu. |Audit, zakázáno |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkSecurityGroup_RDPAccess_Audit.json)
 |[Service Bus by měl používat koncový bod služby virtuální sítě](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F235359c5-7c52-4b82-9055-01c75cf9f60e) |Tato zásada Audituje jakékoli Service Bus, které nejsou nakonfigurované pro použití koncového bodu služby virtuální sítě. |AuditIfNotExists, zakázáno |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkServiceEndpoint_ServiceBus_AuditIfNotExists.json)

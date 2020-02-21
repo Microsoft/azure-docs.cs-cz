@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: dd36895a34b36bbdf8e796cf629ab031613663cd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208878"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523267"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -43,6 +43,9 @@ Pokud není uvedeno jinak, příklady v tomto článku jsou pro verzi 3. x.
 
 [Azure Functions Core Tools] obsahuje verzi stejného modulu runtime, který funguje Azure Functions runtime, který můžete spustit na místním vývojovém počítači. Poskytuje také příkazy pro vytváření funkcí, připojení k Azure a nasazení projektů funkcí.
 
+>[!IMPORTANT]
+>Aby bylo možné publikovat do Azure z Azure Functions Core Tools, musíte mít místně nainstalované rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .  
+
 ### <a name="v2"></a>Verze 2. x a 3. x
 
 Verze 2. x/3. x nástroje používá modul runtime Azure Functions, který je postaven na .NET Core. Tato verze je podporovaná na všech platformách .NET Core podporovaných [systémem](/azure/azure-functions/functions-run-local?tabs=windows#v2), včetně Windows, [MacOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)a [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2). 
@@ -50,7 +53,7 @@ Verze 2. x/3. x nástroje používá modul runtime Azure Functions, který je po
 > [!IMPORTANT]
 > Požadavek na instalaci .NET Core SDK můžete obejít pomocí [sad rozšíření].
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 Následující kroky používají npm k instalaci základních nástrojů v systému Windows. Můžete také použít [čokolády](https://chocolatey.org/). Další informace najdete v [souboru Readme pro základní nástroje](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows).
 
@@ -76,7 +79,7 @@ Následující kroky používají npm k instalaci základních nástrojů v syst
 
 1. Pokud neplánujete použít [sad rozšíření], nainstalujte [sadu .NET Core 2. x SDK pro Windows](https://www.microsoft.com/net/download/windows).
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macos)
+# <a name="macos"></a>[MacOS](#tab/macos)
 
 Následující kroky používají homebrew k instalaci základních nástrojů na macOS.
 
@@ -100,7 +103,7 @@ Následující kroky používají homebrew k instalaci základních nástrojů n
     brew link --overwrite azure-functions-core-tools@3
     ```
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci základních nástrojů na distribuci Ubuntu/Debian Linux. Další distribuce pro Linux najdete v [souboru Readme pro základní nástroje](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux).
 
@@ -454,6 +457,9 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ## <a name="publish"></a>Publikování do Azure
 
 Azure Functions Core Tools podporuje dva typy nasazení: nasazení souborů projektu funkce přímo do aplikace Function App prostřednictvím nástroje [zip Deploy](functions-deployment-technologies.md#zip-deploy) a [nasazení vlastního kontejneru Docker](functions-deployment-technologies.md#docker-container). Musíte mít už [vytvořenou aplikaci Function App v předplatném Azure](functions-cli-samples.md#create), do které budete kód nasazovat. Projekty, které vyžadují kompilaci, by měly být sestaveny tak, aby mohly být nasazeny binární soubory.
+
+>[!IMPORTANT]
+>Aby bylo možné publikovat do Azure ze základních nástrojů, je nutné mít místně nainstalované rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli) .  
 
 Složka projektu může obsahovat soubory a adresáře specifické pro konkrétní jazyk, které by neměly být publikovány. Vyloučené položky jsou uvedeny v souboru. funcignore v kořenové složce projektu.     
 

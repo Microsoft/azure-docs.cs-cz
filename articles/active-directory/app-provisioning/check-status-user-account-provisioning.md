@@ -6,21 +6,21 @@ documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: app-mgmt
+ms.tgt_pltfrm: app-provisioning
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bfbd3aa57f34361323ecbdc78cddc5cf34a1179
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 289347474189d1fb57d95a2f424cf381e1e37875
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066977"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522658"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: vytváření sestav o automatickém zřizování uživatelských účtů
 
@@ -67,13 +67,13 @@ Odtud můžete přístup k řádku průběh zřizování i k protokolům zřizov
 
 Všechny aktivity prováděné službou zřizování se zaznamenávají v [protokolech zřizování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)Azure AD. Přístup k protokolům zřizování v Azure Portal získáte tak, že v části **aktivita** vyberete **Azure Active Directory** &gt; **podnikové aplikace** &gt; **protokoly zřizování (Preview)** . Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). Typy událostí protokolovaných aktivit zahrnují:
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Sestava souhrnu zřizování a zřizovacích protokolů hraje klíčovou roli, která pomáhá správcům řešit problémy s různými problémy zřizování uživatelských účtů.
 
 Pokyny k řešení potíží s automatickým zřizováním uživatelů najdete v tématu problémy s [konfigurací a zřizováním uživatelů do aplikace](../app-provisioning/application-provisioning-config-problem.md).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

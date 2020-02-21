@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a18f0b1f83ae02b06344c332cfdd1cc093f37fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d19cc39147608dafc4576f4c8bad0533ad1b32d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424882"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521910"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Podmíněný přístup: vyžadovat vyhovující zařízení
 
@@ -27,7 +27,7 @@ Organizace, které nasadily Microsoft Intune, můžou použít informace vrácen
 * Vyžadování minimální nebo maximální verze operačního systému
 * Požadavek na zařízení není jailbreakem nebo rootem.
 
-Tyto informace o dodržování zásad se předají do služby Azure AD, kde podmíněný přístup může učinit rozhodnutí udělit nebo blokovat přístup k prostředkům.
+Tyto informace o dodržování zásad se předají do služby Azure AD, kde podmíněný přístup může učinit rozhodnutí udělit nebo blokovat přístup k prostředkům. Další informace o zásadách dodržování předpisů pro zařízení najdete v článku [Nastavení pravidel na zařízeních pro povolení přístupu k prostředkům ve vaší organizaci pomocí Intune](/intune/protect/device-compliance-get-started) .
 
 ## <a name="create-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
@@ -45,7 +45,7 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
    1. Pokud musíte z vaší zásady vyloučit konkrétní aplikace, můžete je vybrat z karty **vyloučit** v části **Vybrat vyloučené cloudové aplikace** a zvolit **Vybrat**.
    1. Vyberte **Done** (Hotovo).
 1. V části **řízení přístupu** > **udělení**vyberte **vyžadovat, aby zařízení bylo označené jako vyhovující**.
-   1. Vyberte **vyberte**.
+   1. Vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
 
@@ -61,4 +61,4 @@ Ve Windows 7, iOS, Androidu, macOS a některých webových prohlížečích tře
 
 [Simulace chování při přihlašování pomocí nástroje pro What If podmíněného přístupu](troubleshoot-conditional-access-what-if.md)
 
-[Zásady dodržování předpisů pro zařízení fungují s Azure AD](https://docs.microsoft.com/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)
+[Zásady dodržování předpisů pro zařízení fungují s Azure AD](/intune/device-compliance-get-started#device-compliance-policies-work-with-azure-ad)

@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 5163c0cd5584848058620f76f77d9efbb6cef9c1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7103daa4a943edfd8d05333f413245cebaf8f4af
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025142"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524252"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Spuštění úkolů přípravy úloh a uvolnění úloh na výpočetních uzlech Batch
 
@@ -58,7 +58,7 @@ Možná budete chtít uchovat kopii souborů protokolu, které vaše úkoly gene
 > 
 
 ## <a name="job-preparation-task"></a>Úkol přípravy úlohy
-Před provedením úkolů úlohy Batch spustí úkol přípravy úlohy na každém výpočetním uzlu, který má naplánované spuštění úlohy. Služba Batch standardně čeká na dokončení úlohy přípravy úlohy před spuštěním úloh, které mají naplánované spuštění na uzlu. Službu však můžete nakonfigurovat tak, aby nečekala. Pokud se uzel restartuje, úloha přípravy úlohy se znovu spustí, ale toto chování můžete také zakázat.
+Před provedením úkolů úlohy Batch spustí úkol přípravy úlohy na každém výpočetním uzlu, který má naplánované spuštění úlohy. Služba Batch standardně čeká na dokončení úlohy přípravy úlohy před spuštěním úloh, které mají naplánované spuštění na uzlu. Službu však můžete nakonfigurovat tak, aby nečekala. Pokud se uzel restartuje, úloha přípravy úlohy se znovu spustí, ale toto chování můžete také zakázat. Pokud máte úlohu s nakonfigurovanou úlohou přípravy úlohy a úlohou Správce úloh, úloha přípravy úlohy se spustí před úkolem správce úloh stejně jako u všech ostatních úloh. Úkol přípravy úlohy se vždycky spustí nejdřív.
 
 Úkol přípravy úlohy je proveden pouze v uzlech, které mají naplánované spuštění úlohy. Tím se zabrání zbytečnému provedení přípravné úlohy pro případ, že uzel není přiřazený úkol. Tato situace může nastat, pokud je počet úloh úlohy menší než počet uzlů ve fondu. Platí také v případě, že je povoleno [Souběžné provádění úloh](batch-parallel-node-tasks.md) , což ponechá některé uzly nečinné, pokud je počet úloh nižší než celkové možné souběžné úlohy. Nespuštěním úlohy přípravy úlohy na nečinných uzlech můžete strávit poplatky za přenos dat bez dalších poplatků.
 

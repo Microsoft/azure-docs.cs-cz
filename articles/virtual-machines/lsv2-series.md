@@ -1,0 +1,72 @@
+---
+title: Lsv2-Series – Azure Virtual Machines
+description: Specifikace pro virtuální počítače řady Lsv2-Series.
+services: virtual-machines
+author: jonbeck7
+ms.service: virtual-machines
+ms.topic: article
+ms.date: 02/03/2020
+ms.author: lahugh
+ms.openlocfilehash: 226611bde6024f98ce6d3660fe18e66dba9a420c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77493693"
+---
+# <a name="lsv2-series"></a>Lsv2-Series
+
+Funkce Lsv2-Series s vysokou propustností, nízkou latencí a přímo namapovaným místním úložištěm NVMe běžícím na [procesorech AMD EPYC<sup>TM</sup> 7551](https://www.amd.com/en/products/epyc-7000-series) se všemi základními zvýšeními úrovně 2.55 GHz a maximálním zvýšením velikosti 3,0 GHz. Virtuální počítače řady Lsv2-Series přicházejí v případě souběžné konfigurace s více vlákny do velikosti od 8 do 80 vCPU.  K dispozici je 8 GiB paměti na vCPU a jedno 1.92 TB NVMe SSD M. 2 zařízení na 8 vCPU a až 19.2 TB (10x 1.92 TB), které je dostupné na L80s v2.
+
+> [!NOTE]
+> Virtuální počítače řady Lsv2-Series jsou optimalizované tak, aby používaly místní disk na uzlu připojeném přímo k virtuálnímu počítači namísto použití trvalých datových disků. To umožňuje pro vaše úlohy větší počet vstupně-výstupních operací a propustnosti. Lsv2 a ls-series nepodporují vytváření místní mezipaměti, aby bylo možné navýšit IOPs dosažitelné pomocí trvalých datových disků.
+>
+> Vysoká propustnost a IOPs místního disku zpřístupňuje virtuální počítače řady Lsv2-Series ideální pro NoSQL úložiště, jako je Apache Cassandra a MongoDB, které replikují data napříč několika virtuálními počítači, aby se zajistila stálost v případě selhání jednoho virtuálního počítače.
+>
+> Další informace najdete v tématu [optimalizace výkonu na virtuálních počítačích řady Lsv2-Series](/linux/storage-performance.md).  
+
+ACU: 150-175
+
+Premium Storage: podporováno
+
+Ukládání Premium Storage do mezipaměti: nepodporováno
+
+| Velikost | Virtuální procesory | Paměť (GiB) | Dočasný disk<sup>1</sup> (GIB) | Disky NVMe<sup>2</sup> | Propustnost disku NVMe<sup>3</sup> (čtení za sekundu/s) | Maximální propustnost datového disku neuloženého v mezipaměti (IOPs/MB/s)<sup>4</sup> | Maximální počet datových disků | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+|---|---|---|---|---|---|---|---|---|
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2 / 3200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4 / 6400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x 1.92 TB  | 1,5 m/8000    | 32000/640  | 32 | 8 / 12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2,2 m/14000   | 48000/960  | 32 | 8/16000 + |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8rychlostní 1.92 TB  | 2.9 m/16000   | 64000/1280 | 32 | 8/16000 + |
+| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x 1.92 TB | 3.8 m/20000 | 80000/1400 | 32 | 8/16000 + |
+
+<sup>1</sup> virtuální počítače řady Lsv2-Series mají na disku dočasnou jednotku na bázi SCSI pro použití stránkovacího nebo stránkovacího souboru operačního systému (D: ve Windows,/dev/sdb v Linux). Tento disk poskytuje 80 GiB úložiště, 4 000 IOPS 80 a MB/s přenosovou rychlostí pro každých 8 vCPU (např. Standard_L80s_v2 poskytuje 800 GiB při 40 000 IOPS a 800 MB/s). To zajistí, že NVMe jednotky mohou být plně vyhrazené pro použití aplikací. Tento disk je dočasný a veškerá data budou ztracena při zastavení nebo zrušení přidělení.
+
+<sup>2</sup> místní disky NVMe jsou dočasné, data se na těchto discích ztratí, když virtuální počítač zastavíte nebo zrušíte jeho přidělení.
+
+<sup>3</sup> technologie Hyper-V NVMe Direct poskytuje zabezpečený přístup k místním jednotkám NVMe mapované na místo virtuálního počítače hosta.  Dosažení maximálního výkonu vyžaduje použití nejnovějšího sestavení WS2019 nebo Ubuntu 18,04 nebo 16,04 z Azure Marketplace.  Výkon zápisu se liší v závislosti na velikosti vstupně-výstupních operací, zatížení jednotky a využití kapacity.
+
+<sup>4</sup> virtuální počítače řady Lsv2-Series neposkytují mezipaměť hostitele pro datový disk, protože nevyužívají úlohy Lsv2.  Virtuální počítače s Lsv2 ale můžou vyhovovat možnosti dočasného disku s operačním systémem virtuálního počítače Azure (až 30 GiB).
+
+<sup>5</sup> virtuálních počítačů s více než 64 vCPU vyžaduje jeden z těchto podporovaných hostovaných operačních systémů:
+
+- Windows Server 2016 nebo novější
+- Ubuntu 16,04 LTS nebo novější s vyladěným jádrem Azure (4,15 jádro nebo novější)
+- SLES 12 SP2 nebo novější
+- RHEL nebo CentOS verze 6,7 až 6,10 s nainstalovaným balíčkem LIS (nebo novějším) od Microsoftu
+- RHEL nebo CentOS verze 7,3 s nainstalovaným balíčkem aplikace LIS verze 4.2.1 (nebo novější)
+- RHEL nebo CentOS verze 7,6 nebo novější
+- Oracle Linux s UEK4 nebo novějším
+- Debian 9 s jádrem pro porty, Debian 10 nebo novější
+- CoreOS s jádrem 4,14 nebo novějším
+
+## <a name="size-table-definitions"></a>Definice tabulky velikostí
+
+- Kapacita úložiště je v jednotkách GiB, tj. 1024^3 bajtů. Při porovnávání diskové kapacity měřené v GB (1000^3 B) s kapacitou měřenou v GiB (1024^3) pamatujte, že údaj v GiB je číselně menší. Například 1023 GiB = 1098,4 GB
+- Propustnost disku se měří v počtu V/V operací za sekundu (IOPS) a v MB/s, kde 1 MB/s = 10^6 bajtů/s.
+- Pokud chcete dosáhnout nejlepšího výkonu pro vaše virtuální počítače, měli byste omezit počet datových disků na 2 disky na vCPU.
+- **Očekávaná šířka pásma sítě** je maximální agregovaná [Šířka pásma přidělená pro každý typ virtuálního počítače](../virtual-network/virtual-machine-network-throughput.md) v rámci všech síťových adaptérů pro všechna umístění. Horní omezení nejsou garantována, ale slouží jako vodítko pro výběr správného typu virtuálního počítače pro příslušnou aplikaci. Skutečný výkon sítě bude záviset na řadě faktorů, včetně zahlcení sítě, zatížení aplikací a nastavení sítě. Informace o optimalizaci propustnosti sítě najdete v tématu [Optimalizace propustnosti sítě pro Windows a Linux](../virtual-network/virtual-network-optimize-network-bandwidth.md). Pro dosažení očekávaného výkonu sítě na Linuxu nebo ve Windows může být nutné vybrat konkrétní verzi nebo optimalizovat virtuální počítač. Další informace najdete v tématu [Spolehlivé testování propustnosti virtuálního počítače](../virtual-network/virtual-network-bandwidth-testing.md).
+
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

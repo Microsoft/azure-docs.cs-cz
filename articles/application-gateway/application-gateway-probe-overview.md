@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: 5c25f591d1011d2efd66851cafd67ceef8b56637
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766831"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505892"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Přehled monitorování stavu Application Gateway
 
@@ -87,8 +87,8 @@ Následující tabulka poskytuje definice vlastností pro vlastní sondu stavu.
 
 | Vlastnost sondy | Popis |
 | --- | --- |
-| Name (Název) |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
-| Protocol (Protokol) |Protokol použitý k odeslání testu. Sonda používá protokol definovaný v nastavení back-endu HTTP. |
+| Název |Název sondy. Tento název se používá k odkazování na test v nastavení back-endu protokolu HTTP. |
+| Protokol |Protokol použitý k odeslání testu. Sonda používá protokol definovaný v nastavení back-endu HTTP. |
 | Hostitel |Název hostitele, který má odeslat test. Dá se použít jenom v případě, že je na Application Gateway nakonfigurovaný vícenásobný web, jinak použijte 127.0.0.1. Tato hodnota se liší od názvu hostitele virtuálního počítače. |
 | Cesta |Relativní cesta sondy. Platná cesta začíná znakem/. |
 | Interval |Interval testu paměti v sekundách. Tato hodnota představuje časový interval mezi dvěma po sobě jdoucími sondami. |
@@ -101,9 +101,11 @@ Následující tabulka poskytuje definice vlastností pro vlastní sondu stavu.
 
 ## <a name="nsg-considerations"></a>NSG požadavky
 
-Pokud je v podsíti aplikační brány skupina zabezpečení sítě (NSG), musí se rozsahy portů 65503-65534 otevřít v podsíti aplikační brány pro příchozí provoz. Tyto porty jsou vyžadovány pro fungování rozhraní API stavu back-endu.
+Je nutné, aby příchozí internetový provoz na portech TCP 65503-65534 pro SKU Application Gateway V1 a porty TCP 65200-65535 pro SKU verze 2 v2 s cílovou podsítí jako **s označením služby a jako** zdroj jako služba **GatewayManager** . Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure.
 
-Kromě toho se nedají zablokovat odchozí připojení k Internetu a příchozí provoz, který přichází ze značky AzureLoadBalancer, musí být povolený.
+Kromě toho se nedají zablokovat odchozí připojení k Internetu a příchozí provoz, který přichází ze značky **AzureLoadBalancer** , musí být povolený.
+
+Další informace najdete v tématu [Přehled konfigurace Application Gateway](configuration-overview.md#network-security-groups-on-the-application-gateway-subnet).
 
 ## <a name="next-steps"></a>Další kroky
 Po získání informací o Application Gateway sledování stavu můžete nakonfigurovat [vlastní sondu stavu](application-gateway-create-probe-portal.md) v Azure Portal nebo ve [vlastním testu stavu](application-gateway-create-probe-ps.md) pomocí PowerShellu a modelu nasazení Azure Resource Manager.

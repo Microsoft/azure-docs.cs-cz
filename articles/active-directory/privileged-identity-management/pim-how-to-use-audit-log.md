@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d46036efa04b4e0225cad6e8a70cd31ad3c10bd
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a4a2eccc02d13bf5a2dfc8bf3ceb7887e4962489
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024173"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498500"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Zobrazení historie auditu pro role Azure AD v PIM
 
@@ -32,9 +32,9 @@ Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktu
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí uživatele, který je v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 1. Otevřete **Azure AD Privileged Identity Management**. Pokud máte banner v horní části stránky s přehledem, postupujte podle pokynů na kartě **Nová verze** v tomto článku. Jinak postupujte podle pokynů na kartě **předchozí verze** .
 
-    ![Nové verze rolí Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-# <a name="new-versiontabnew"></a>[Nová verze](#tab/new)
+# <a name="new-version"></a>[Nová verze](#tab/new)
 
 Pomocí těchto kroků zobrazíte historii auditu pro role Azure AD.
 
@@ -50,7 +50,7 @@ Audit prostředků poskytuje zobrazení všech aktivit přidružených k rolím 
 
 1. Filtruje historii s použitím předdefinovaného data nebo vlastního rozsahu.
 
-    ![Seznam auditu prostředků s filtry](media/azure-pim-resource-rbac/rbac-resource-audit.png)
+    ![Seznam auditu prostředků s filtry](media/pim-how-to-use-audit-log/resource-audit.png)
 
 ## <a name="view-my-audit"></a>Zobrazit můj audit
 
@@ -66,9 +66,9 @@ Můj audit umožňuje zobrazit aktivitu osobní role.
 
 1. Filtruje historii s použitím předdefinovaného data nebo vlastního rozsahu.
 
-    ![Seznam auditu pro aktuálního uživatele](media/azure-pim-resource-rbac/my-audit-time.png)
+    ![Seznam auditu pro aktuálního uživatele](media/pim-how-to-use-audit-log/audit-time-span.png)
 
-# <a name="previous-versiontabprevious"></a>[Předchozí verze](#tab/previous)
+# <a name="previous-version"></a>[Předchozí verze](#tab/previous)
 
 ## <a name="view-audit-history"></a>Zobrazení historie auditů
 
@@ -88,15 +88,15 @@ Pomocí těchto kroků zobrazíte historii auditu pro role Azure AD.
 
     V dolní části stránky se zobrazí tabulka s informacemi o každé akci v dostupné historii auditu. Sloupce mají následující význam:
 
-    | Column | Popis |
+    | Sloupec | Popis |
     | --- | --- |
-    | Time | Při výskytu akce. |
+    | Čas | Při výskytu akce. |
     | Žadatele | Uživatel, který požádal o aktivaci nebo změnu role Pokud je hodnota **systémem Azure**, podívejte se na historii auditu Azure, kde najdete další informace. |
     | Akce | Akce prováděné žadatelem. Akce mohou zahrnovat přiřazení, zrušení přiřazení, aktivace, deaktivace nebo AddedOutsidePIM. |
     | Člen | Uživatel, který se aktivuje nebo přiřadí k roli. |
     | Role | Roli přiřazenou nebo aktivovanou uživatelem. |
-    | Uvažování | Text, který byl zadán do pole důvod během aktivace |
-    | Vypršení platnosti | Jakmile vyprší platnost aktivované role. Vztahuje se pouze na přiřazení oprávněných rolí. |
+    | Reasoning | Text, který byl zadán do pole důvod během aktivace |
+    | Konec platnosti | Jakmile vyprší platnost aktivované role. Vztahuje se pouze na přiřazení oprávněných rolí. |
 
 1. Chcete-li seřadit historii auditu, klikněte na tlačítka **čas**, **Akce**a **role** .
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 56cbae7ae56c4b482ac6de201c7a2c8aacb81e59
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 44bbd7eab80ecb1cbfef9738e42b4070dff31180
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77048599"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77506043"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurace klíčů spravovaných zákazníkem pro účet Azure Cosmos pomocí Azure Key Vault
 
@@ -61,7 +61,7 @@ Další informace o tom, jak tyto vlastnosti povolit u existující instance Azu
 
    ![Výběr správných oprávnění](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. V části **Vybrat objekt zabezpečení**vyberte možnost **není vybráno**. Pak vyhledejte objekt zabezpečení **Azure Cosmos DB** a vyberte ho. Nakonec zvolte **Vybrat** v dolní části. Pokud objekt zabezpečení **Azure Cosmos DB** v seznamu není, bude pravděpodobně nutné znovu zaregistrovat poskytovatele prostředků **Microsoft. DocumentDB** , jak je popsáno v části [registrace poskytovatele prostředků](#register-resource-provider) v tomto článku.
+1. V části **Vybrat objekt zabezpečení**vyberte možnost **není vybráno**. Pak vyhledejte **Azure Cosmos DB** objekt zabezpečení a vyberte ho (aby bylo snazší najít, můžete také vyhledat ID objektu zabezpečení: `a232010e-820c-4083-83bb-3ace5fc29d0b` pro libovolnou oblast Azure kromě Azure Government oblastí, kde je ID objektu zabezpečení `57506a73-e302-42a9-b869-6f12d9ec29e9`). Nakonec zvolte **Vybrat** v dolní části. Pokud objekt zabezpečení **Azure Cosmos DB** v seznamu není, bude pravděpodobně nutné znovu zaregistrovat poskytovatele prostředků **Microsoft. DocumentDB** , jak je popsáno v části [registrace poskytovatele prostředků](#register-resource-provider) v tomto článku.
 
    ![Vyberte objekt zabezpečení Azure Cosmos DB.](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 

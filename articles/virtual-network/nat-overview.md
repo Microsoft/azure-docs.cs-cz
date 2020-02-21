@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: allensu
-ms.openlocfilehash: 98d77f43c990dd00dd5e5d616b2fdee44fb8a2f6
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 6c8a341a089ef95d99669f592dbea81922d67682
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431413"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526310"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Co je Virtual Network NAT (Public Preview)?
 
@@ -157,7 +157,7 @@ Aby bylo možné zúčastnit se Public Preview, musí být odběry registrovány
       az provider register --namespace Microsoft.Network
     ```
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 1. registrace předplatného pro Public Preview
 
@@ -168,7 +168,7 @@ Aby bylo možné zúčastnit se Public Preview, musí být odběry registrovány
 2. aktivovat registraci
 
     ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network
+      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
     ```
 
 ## <a name="pricing"></a>Ceny
@@ -189,7 +189,7 @@ Ve verzi Public Preview se ceny uvažují 50%.
 
 Překlad adres (NAT) je podporován prostřednictvím běžných kanálů podpory.
 
-## <a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Názor
 
 Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Public Preview](https://aka.ms/natfeedback) s námi.  A můžete navrhnout a hlasovat o tom, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
 
@@ -197,9 +197,7 @@ Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Publi
 
 - Překlad adres (NAT) je kompatibilní s veřejnou IP adresou SKU, předponou veřejné IP adresy a prostředky nástroje pro vyrovnávání zatížení.   Základní prostředky (například základní nástroj pro vyrovnávání zatížení) a jakékoli produkty, které jsou z nich odvozené, nejsou kompatibilní se službou NAT.  Základní prostředky musí být umístěné v podsíti, která není nakonfigurovaná s překladem adres (NAT).
 - Rodina adres IPv4 je podporovaná.  Překlad adres (NAT) nekomunikuje s řadou IPv6 adres.
-- NSG v podsíti nebo síťové kartě se neuplatňují pro odchozí toky do veřejných koncových bodů pomocí překladu adres (NAT).
 - Protokolování toku NSG se při použití překladu adres (NAT) nepodporuje.
-- Pokud má virtuální síť více podsítí, může mít každá podsíť nakonfigurované jiné nastavení překladu adres (NAT).
 - Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
 
 ## <a name="next-steps"></a>Další kroky

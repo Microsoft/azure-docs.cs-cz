@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/12/2019
+ms.date: 02/07/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3261e30d024cedba5885019a62cba1e296c1c00d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0b39336591e9939d0e5200304cbeced2d9831979
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025550"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498776"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Schválení nebo zamítnutí žádostí o role Azure AD v Privileged Identity Management
 
@@ -29,28 +29,28 @@ V případě služby Azure Active Directory (Azure AD) Privileged Identity Manag
 
 ## <a name="determine-your-version-of-pim"></a>Určení vaší verze PIM
 
-Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktualizuje na novou verzi, která se shoduje s prostředími pro role prostředků Azure. Tím se vytvoří další funkce a také [změny stávajícího rozhraní API](azure-ad-roles-features.md#api-changes). I když je nová verze zahrnuta, postupy, které provedete v tomto článku, závisí na verzi Privileged Identity Management, kterou máte v současnosti k dispozici. Podle pokynů v této části určete, kterou verzi Privileged Identity Management máte. Po zjištění vaší verze Privileged Identity Management můžete vybrat postupy v tomto článku, které odpovídají této verzi.
+Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktualizuje na novou verzi, která se shoduje s prostředími pro role Azure. Tím se vytvoří další funkce a také [změny stávajícího rozhraní API](azure-ad-roles-features.md#api-changes). I když je nová verze zahrnuta, postupy, které provedete v tomto článku, závisí na verzi Privileged Identity Management, kterou máte v současnosti k dispozici. Podle pokynů v této části určete, kterou verzi Privileged Identity Management máte. Po zjištění vaší verze Privileged Identity Management můžete vybrat postupy v tomto článku, které odpovídají této verzi.
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí uživatele, který je v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 1. Otevřete **Azure AD Privileged Identity Management**. Pokud máte banner v horní části stránky s přehledem, postupujte podle pokynů na kartě **Nová verze** v tomto článku. Jinak postupujte podle pokynů na kartě **předchozí verze** .
 
-    ![Nové verze rolí Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+    [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
 Podle kroků v tomto článku můžete schvalovat nebo odmítat žádosti pro role Azure AD.
 
-# <a name="new-versiontabnew"></a>[Nová verze](#tab/new)
+# <a name="new-version"></a>[Nová verze](#tab/new)
 
 ## <a name="view-pending-requests"></a>Zobrazit nevyřízené žádosti
 
-Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role prostředku Azure čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v Privileged Identity Management.
+Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role Azure AD čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v Privileged Identity Management.
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
 1. Vyberte **schvalovat žádosti**.
 
-    ![Žádosti o schválení – stránka prostředků Azure ukazující žádost o kontrolu](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+    ![Schvalovat žádosti – stránka ukazující žádost o revizi rolí Azure AD](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
 
     V části **žádosti o aktivaci rolí** se zobrazí seznam žádostí, které čekají na vaše schválení.
 
@@ -64,7 +64,7 @@ Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek
 
 1. Vyberte **schválit**. Obdržíte upozornění Azure na vaše schválení.
 
-    ![Schválit oznámení ukazující, že žádost byla schválena](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+    ![Schválit oznámení ukazující, že žádost byla schválena](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png))
 
 ## <a name="deny-requests"></a>Zamítnutí žádostí
 
@@ -83,18 +83,18 @@ Tady jsou některé informace o oznámeních pracovního postupu:
 - Schvalovatelé jsou upozorňováni e-mailem, když požadavek na roli čeká na jejich kontrolu. E-mailová oznámení zahrnují přímý odkaz na žádost, kde schvalovatel může schválit nebo odepřít.
 - Žádosti jsou vyřešeny prvním schvalovatelem, který schválí nebo zamítne.
 - Když schvalovatel odpoví na požadavek, všichni schvalovatelé budou upozorněni na akci.
-- Správci prostředků jsou upozorňováni v případě, že se schváleného uživatele ve své roli aktivuje.
+- Správci globálních správců a privilegovaných rolí jsou upozorněni v případě, že se schváleného uživatele ve své roli aktivuje.
 
 >[!NOTE]
->Správce prostředků, který se domnívá, že by neměl být aktivní schválený uživatel, může odebrat přiřazení aktivní role v Privileged Identity Management. I když správci prostředků nejsou upozorňováni na nevyřízené žádosti, pokud se nejedná o schvalovatele, mohou zobrazit a zrušit nevyřízené žádosti pro všechny uživatele zobrazením nevyřízených žádostí v Privileged Identity Management.
+>Správce globálního správce nebo privilegované role, který se domnívá, že by neměl být aktivní schválený uživatel, může odebrat přiřazení aktivní role v Privileged Identity Management. I když správci nejsou upozorňováni na nevyřízené žádosti, pokud se nejedná o schvalovatele, mohou zobrazit a zrušit všechny nevyřízené žádosti pro všechny uživatele zobrazením nevyřízených žádostí v Privileged Identity Management.
 
-# <a name="previous-versiontabprevious"></a>[Předchozí verze](#tab/previous)
+# <a name="previous-version"></a>[Předchozí verze](#tab/previous)
 
 ## <a name="view-pending-requests"></a>Zobrazit nevyřízené žádosti
 
 Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek role Azure AD čeká na vaše schválení. Tyto nedokončené žádosti můžete zobrazit v Privileged Identity Management.
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
@@ -132,7 +132,7 @@ Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek
 
     ![Odepřít podokno vybrané žádosti s odůvodněním odepřít](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
 
-1. Klikněte na **Odepřít**.
+1. Vyberte **Odepřít**.
 
     Symbol stavu bude aktualizován o Vaše odmítnutí.
 

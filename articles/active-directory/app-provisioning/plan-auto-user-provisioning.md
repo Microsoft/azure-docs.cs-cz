@@ -5,19 +5,19 @@ services: active-directory
 author: martincoetzer
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0860c2e7b5be686ad5577436f41b321164853a0
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 0d2f284fddfc49632e467adbf5877856b40a81dd
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066509"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522406"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
 
@@ -67,7 +67,7 @@ Tento článek používá následující výrazy:
 
 ### <a name="training-resources"></a>Školicí materiály
 
-| Zdroje a prostředky| Odkaz a popis |
+| Prostředky| Odkaz a popis |
 | - | - |
 | Webináře na vyžádání| [Správa podnikových aplikací pomocí Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Přečtěte si, jak vám Azure AD může přispět k zajištění jednotného přihlašování k podnikovým aplikacím SaaS a osvědčeným postupům pro řízení přístupu. |
 | Videa| [Co je zřizování uživatelů v aktivním adresáři Azure?](https://youtu.be/_ZjARPpI6NI) <br> [Jak nasadit zřizování uživatelů v aktivním adresáři Azure?](https://youtu.be/pKzyts6kfrw) <br> [Integrování Salesforce s Azure AD: Jak automatizovat zřizování uživatelů](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
@@ -293,7 +293,7 @@ Správci by měli v sestavě Shrnutí zřizování sledovat provozní stav úloh
 
 Doporučujeme převzít vlastnictví a využívat tyto sestavy na tempo, který splňuje požadavky vaší organizace. Azure AD uchovává většinu dat auditu po dobu 30 dnů.
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Řešení problémů
 
 Pokud chcete vyřešit všechny problémy, které se můžou během zřizování zapnout, přečtěte si následující odkazy:
 
@@ -319,7 +319,7 @@ Pokud chcete vyřešit všechny problémy, které se můžou během zřizování
 
 * [Agent zřizování Azure AD Connect: Historie verzí](provisioning-agent-release-version-history.md)
 
-#### <a name="resources"></a>Zdroje a prostředky
+#### <a name="resources"></a>Prostředky
 
 * [Poskytnutí zpětné vazby k produktu](https://feedback.azure.com/forums/169401-azure-active-directory)
 

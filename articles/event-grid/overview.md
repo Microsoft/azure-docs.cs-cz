@@ -6,15 +6,15 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 10/22/2019
+ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: cfb9db7c78c57e74bfe44fe4ce1c3092e2bf3ca5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65fd9d06c8b25e0aff94429f8eb95bb922da330c
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437306"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505919"
 ---
 # <a name="what-is-azure-event-grid"></a>Co je Azure Event Grid?
 
@@ -39,11 +39,15 @@ Tento obrázek ukazuje, jak služby Event Grid propojuje zdroje a obslužné rut
 * [Vlastní témata](event-sources.md#custom-topics)
 * [Event Hubs](event-sources.md#event-hubs)
 * [IoT Hub](event-sources.md#iot-hub)
+* [Key Vault (Preview)](event-sources.md#key-vault-preview)
 * [Media Services](event-sources.md#media-services)
 * [Skupiny prostředků (operace správy)](event-sources.md#resource-groups)
 * [Service Bus](event-sources.md#service-bus)
 * [Objekt BLOB úložiště](event-sources.md#storage)
 * [Azure Maps](event-sources.md#maps)
+* [Konfigurace aplikace](event-sources.md#app-configuration)
+* [Signál R](event-sources.md#azure-signalr)
+* [Machine Learning](event-sources.md#azure-machine-learning)
 
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 
@@ -55,9 +59,9 @@ Tento obrázek ukazuje, jak služby Event Grid propojuje zdroje a obslužné rut
 * [Hybridní připojení](event-handlers.md#hybrid-connections)
 * [Logic Apps](event-handlers.md#logic-apps)
 * [Automatizace (dříve označované jako Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
-* [Queue Storage](event-handlers.md#queue-storage)
 * [Service Bus](event-handlers.md#service-bus)
-* [WebHooks](event-handlers.md#webhooks)
+* [Queue Storage](event-handlers.md#queue-storage)
+* [Webhooky](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Koncepty
 
@@ -76,9 +80,9 @@ Další informace o těchto konceptech najdete v článku [Koncepty ve službě 
 Toto jsou některé klíčové vlastnosti služby Azure Event Grid:
 
 * **Jednoduchost** – kliknutím můžete nasměrovat události prostředku Azure do kterékoli obslužné rutiny události nebo koncového bodu.
-* **Rozšířené filtrování** -filtru na události typu nebo události publikování cestu k Ujistěte se, že obslužné rutiny událostí zobrazí pouze relevantní události.
-* **Větveného** -odběru několik koncových bodů pro stejnou událost posílat kopie události na tolik místa podle potřeby.
-* **Spolehlivost** – 24 hodin opakování pomocí exponenciálního omezení rychlosti, abyste měli jistotu, události se doručují.
+* **Rozšířené filtrování** – filtrovat podle typu události nebo cesty publikování události, aby obslužné rutiny událostí přijímaly pouze relevantní události.
+* **Ventilátor** – Přihlaste se k odběru několika koncových bodů na stejnou událost, která odešle kopie události na tolik míst podle potřeby.
+* **Spolehlivost** – 24 hodin opakování pomocí exponenciálního omezení rychlostiu, aby se zajistilo doručení událostí.
 * **Platby za události** – plaťte jenom za to, do jaké míry Event Grid využíváte.
 * **Vysoká propustnost** – sestavujte ve službě Event Grid úlohy s vysokým objemem díky podpoře milionů událostí za sekundu.
 * **Integrované události** – integrované události s definovanými prostředky umožňují rychle zahájit práci.

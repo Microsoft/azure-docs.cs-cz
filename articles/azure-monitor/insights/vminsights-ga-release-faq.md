@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: ea7c695ddb92d441018503839b974c1f4bb33473
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047843"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482880"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor pro virtuální počítače všeobecně dostupné (GA) nejčastější dotazy
 
@@ -24,7 +24,9 @@ Vydali jsme novou verzi Azure Monitor pro virtuální počítače. Zákazníci, 
 
 S tímto upgradem Azure Monitor pro virtuální počítače údaje o výkonu jsou uloženy ve stejné tabulce *InsightsMetrics* jako [Azure monitor pro kontejnery](container-insights-overview.md), což usnadňuje dotazování obou datových sad. Můžete také uložit více různých datových sad, které jsme nedokázali uložit v tabulce, která se dřív použila. 
 
-V příští týden nebo dvou se naše zobrazení výkonu aktualizuje také na používání této nové tabulky.
+Naše zobrazení výkonu teď používají uložená data v tabulce *InsightsMetrics* .  Pokud jste ještě neupgradovali na použití nejnovějšího řešení VMInsights v pracovním prostoru, grafy už nebudou zobrazovat informace.  Upgrade můžete provést **na stránce Začínáme** , jak je popsáno níže.
+
+V tomto upgradu Azure Monitor pro virtuální počítače údaje o výkonu, které jsou uloženy ve stejné tabulce *InsightsMetrics* jako [Azure monitor pro kontejnery](container-insights-overview.md) , což usnadňuje dotazování na dvě sady dat. Můžete také ukládat různorodé datové sady, které jsme nemohli uložit v tabulce, která se dřív použila. 
 
 Uvědomujeme si, že požádáme o upgrade stávajících zákazníků na jejich pracovní postup, což je důvod, proč jsme se k tomu rozhodli teď v Public Preview, ale ne později po GA.
 
@@ -34,6 +36,8 @@ Uvědomujeme si, že požádáme o upgrade stávajících zákazníků na jejich
 Vydali jsme nové řešení s názvem VMInsights, které obsahuje další možnosti shromažďování dat a nové umístění pro ukládání těchto dat do pracovního prostoru Log Analytics. 
 
 V minulosti jsme povolili řešení ServiceMap v pracovním prostoru a nastavili čítače výkonu v pracovním prostoru Log Analytics k odeslání dat do tabulky *perf* . Toto nové řešení odesílá data do tabulky s názvem *InsightsMetrics* , která je také používána Azure monitor pro kontejnery. Toto schéma tabulky nám umožňuje ukládat další metriky a sady dat služby, které nejsou kompatibilní s formátem tabulky *perf* .
+
+Aktualizovali jsme naše grafy výkonu pro používání dat, která ukládáme do tabulky *InsightsMetrics* . Můžete upgradovat na použití tabulky *InsightsMetrics* **na naší stránce Začínáme,** jak je popsáno níže.
 
 
 ## <a name="how-do-i-upgrade"></a>Návody upgradovat?

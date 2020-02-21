@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: dc473c814cdd69204cddd976bc77f19b5db567b1
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6d5ec5f798617d03072ec5931b0d1d3623df3d42
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200074"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500002"
 ---
 # <a name="how-to-use-batch-transcription"></a>Použití dávkového přepisu
 
@@ -34,7 +34,7 @@ Podrobné rozhraní API je k dispozici jako [dokument Swagger](https://westus.cr
 
 Vedle snadno použitelného rozhraní API nemusíte nasazovat vlastní koncové body a nemusíte sledovat žádné požadavky na souběžnost.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="subscription-key"></a>Klíč předplatného
 
@@ -87,14 +87,55 @@ Parametry konfigurace jsou zadány jako JSON:
 
 K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
 
-| Parametr | Popis |
-|-----------|-------------|
-| `ProfanityFilterMode` | Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Přípustné hodnoty jsou `None`, které deaktivují filtrování vulgárních výrazů, `Masked`, které nahradí vulgární znaky hvězdičkami, `Removed` které odstraní všechny vulgární výrazy z výsledku nebo `Tags`, které přidávají značky "vulgární výrazy". Výchozí nastavení je `Masked`. |
-| `PunctuationMode` | Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Přípustné hodnoty jsou `None`, což zakáže interpunkci, `Dictated`, která implikuje explicitní interpunkci, `Automatic`, která umožňuje dekodéru zacházet s interpunkčním znaménkem nebo `DictatedAndAutomatic`, což znamená, že se automaticky zakazují interpunkční znaménka |
-| `AddWordLevelTimestamps` | Určuje, zda mají být do výstupu přidány časová razítka na úrovni aplikace Word. Přípustné hodnoty jsou `true`, které umožňují, aby byla časová razítka na úrovni aplikace Word a `false` (výchozí hodnota) zakázána. |
-| `AddSentiment` | Určuje mínění by měl být přidán do utterance. Přijaté hodnoty jsou `true`, které povolují mínění na utterance a `false` (výchozí hodnotu), která ho zakáže. |
-| `AddDiarization` | Určuje, že by měla být provedena analýza diarization na vstupu, u kterého se očekává, že kanál mono obsahuje dvě hlasy. Přípustné hodnoty jsou `true`, které povolují diarization a `false` (výchozí hodnota), která ji zakáže. Také je nutné, aby bylo `AddWordLevelTimestamps` nastaveno na hodnotu true.|
-|`TranscriptionResultsContainerUrl`|Volitelná adresa URL s [SAS služby](../../storage/common/storage-sas-overview.md) pro zapisovatelný kontejner v Azure. Výsledek bude uložen v tomto kontejneru.
+:::row:::
+   :::column span="1":::
+      **Ukazatele**
+   :::column-end:::
+   :::column span="2":::
+      **Popis**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ProfanityFilterMode`
+   :::column-end:::
+   :::column span="2":::
+      Určuje způsob zpracování vulgárních výrazů v výsledky rozpoznávání. Přípustné hodnoty jsou `None` k zakázání filtrování vulgárních výrazů, `Masked` nahrazení vulgárních výrazů hvězdičkami, `Removed` pro odstranění všech vulgárních výrazů z výsledku nebo `Tags` k přidání značek "vulgárních výrazů". Výchozí nastavení je `Masked`.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `PunctuationMode`
+   :::column-end:::
+   :::column span="2":::
+      Určuje způsob zpracování interpunkce v výsledky rozpoznávání. Přijaté hodnoty jsou `None` k zákazu interpunkce, `Dictated` k implikuje explicitní (mluvené) interpunkci, `Automatic`, aby dekodér mohl pracovat s interpunkčním znaménkem, nebo `DictatedAndAutomatic` k použití diktování a automatické interpunkce. Výchozí nastavení je `DictatedAndAutomatic`.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddWordLevelTimestamps`
+   :::column-end:::
+   :::column span="2":::
+      Určuje, zda mají být do výstupu přidány časová razítka na úrovni aplikace Word. Přijaté hodnoty jsou `true`, aby se povolila časová razítka na úrovni aplikace Word a `false` (výchozí hodnota), která ji zakáže.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddSentiment`
+   :::column-end:::
+   :::column span="2":::
+      Určuje mínění by měl být přidán do utterance. Přijaté hodnoty jsou `true` k povolení mínění na utterance a `false` (výchozí hodnota) pro jejich zakázání.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `AddDiarization`
+   :::column-end:::
+   :::column span="2":::
+      Určuje, že by měla být provedena analýza diarization na vstupu, u kterého se očekává, že kanál mono obsahuje dvě hlasy. Přijaté hodnoty jsou `true` povolením diarization a `false` (výchozí hodnota), která ho zakáže. Také je nutné, aby bylo `AddWordLevelTimestamps` nastaveno na hodnotu true.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `TranscriptionResultsContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      Volitelná adresa URL s [SAS služby](../../storage/common/storage-sas-overview.md) pro zapisovatelný kontejner v Azure. Výsledek bude uložen v tomto kontejneru.
+:::row-end:::
 
 ### <a name="storage"></a>Úložiště
 

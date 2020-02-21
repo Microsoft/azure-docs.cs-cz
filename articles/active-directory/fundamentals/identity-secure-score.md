@@ -1,30 +1,30 @@
 ---
-title: Co je zabezpečené skóre identity? – Azure Active Directory
-description: Použití zabezpečeného skóre identity a zlepšit stav zabezpečení vašeho adresáře
+title: Co je to bezpečné skóre identity? -Azure Active Directory
+description: Jak můžete pomocí bezpečného skóre identity zlepšit stav zabezpečení vašeho adresáře
 services: active-directory
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/20/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cdff2305914ca6e4144f7784d1a60026a1d27c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0f75dea2cffbe710bf2778ceab5eacc91ffcca9c
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65988687"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523100"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Co je skóre zabezpečení identit v Azure Active Directory?
 
-Jak zabezpečený je váš tenant služby Azure AD? Pokud si nejste jisti, jak na tuto otázku odpovědět, tento článek vysvětluje, jak skóre zabezpečení identity vám umožňuje monitorovat a zlepšit tak stav zabezpečení identity.
+Jak zabezpečený je váš tenant služby Azure AD? Pokud si nejste jisti, jak na tuto otázku odpovědět, v tomto článku se dozvíte, jak vám bezpečné skóre identity pomůže monitorovat a zdokonalovat stav zabezpečení identity.
 
 ## <a name="what-is-an-identity-secure-score"></a>Co je bezpečnostní skóre identity?
 
-Skóre zabezpečení identit je číslo z rozsahu 1 až 223, která slouží jako indikátor jak zarovnané jste se od Microsoftu doporučené osvědčené postupy pro zabezpečení. Každá akce zlepšení v zabezpečené skóre identity je vytvořený na míru vaší konkrétní konfiguraci.  
+Skóre identity Secure je číslo mezi 1 a 223, které funguje jako indikátor, jak jste se s doporučenými doporučeními Microsoftu pro zabezpečení vyrovnali. Každá akce zlepšení v zabezpečeném skóre identity je přizpůsobená konkrétní konfiguraci.  
 
 ![Bezpečnostní skóre](./media/identity-secure-score/identity-secure-score-overview.png)
 
@@ -36,27 +36,27 @@ Toto skóre vám umožní:
 
 K tomuto skóre a souvisejícím informacím se dostanete na řídicím panelu bezpečnostního skóre identity. Na tomto řídicím panelu najdete:
 
-- Skóre zabezpečení vaší identity
-- Porovnání graf, který znázorňuje, jak zabezpečit vaši identitu skóre porovnává do jiných tenantů stejného odvětví a podobně jako velikost
-- Trend graf s informacemi o tom, jak má vaše skóre zabezpečení Identity mění v průběhu času
-- Seznam možných zlepšení
+- Vaše zabezpečené skóre identity
+- Graf porovnání znázorňující, jak vaše zabezpečené skóre identity porovnává s ostatními klienty ve stejném oboru a podobnou velikostí
+- Graf trendu znázorňující, jak se v průběhu času mění vaše zabezpečené skóre identity
+- Seznam možných vylepšení
 
 Provedením nápravných akcí můžete:
 
-- Zlepšit tak stav zabezpečení a vaše skóre
-- Využijte funkce dostupné pro vaši organizaci jako součást své investice identity
+- Zlepšení stav zabezpečení a skóre
+- Využijte výhod funkcí dostupných pro vaši organizaci jako součást vašich investic do vaší identity.
 
 ## <a name="how-do-i-get-my-secure-score"></a>Jak získám svoje bezpečnostní skóre?
 
-Skóre zabezpečení identit je k dispozici ve všech edicích služby Azure AD. Svoje skóre uvidíte, když přejdete na [řídicí panel s přehledem služby Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/IdentitySecureScore).
+Hodnocení identity Secure je dostupné ve všech edicích služby Azure AD. Organizace mají přístup k jejich zabezpečenému skóre identity z **Azure Portal** > **Azure Active Directory** > **Security** > **identity Secure**.
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
-Azure každých 48 hodin posuzuje vaši konfiguraci zabezpečení a porovnává vaše nastavení s doporučenými osvědčenými postupy. Na základě výsledku vyhodnocení, se vypočítá nové skóre pro svůj adresář. Je možné, že konfiguraci zabezpečení není nejsou plně v souladu s nejlepších praktik a zlepšování akce, které jsou jen částečně splněny. V těchto scénářích vám bude jenom udělovány část maximální skóre, které jsou k dispozici pro ovládací prvek.
+Azure každých 48 hodin posuzuje vaši konfiguraci zabezpečení a porovnává vaše nastavení s doporučenými osvědčenými postupy. Na základě výsledku tohoto vyhodnocení se pro váš adresář počítá nové skóre. Je možné, že vaše konfigurace zabezpečení není plně zarovnaná s návodem k osvědčeným postupům a akce zlepšování jsou pouze částečně splněné. V těchto scénářích budete mít k dispozici pouze část maximálního skóre dostupného pro tento ovládací prvek.
 
-Každé doporučení se měří na základě vaší konfigurace služby Azure AD. Používáte-li povolit osvědčených postupů doporučení produktů třetích stran, můžete určit tuto konfiguraci v nastaveních zlepšování akce. Máte také možnost nastavit doporučení, která se ignoruje, pokud nemůžete použít pro vaše prostředí. Ignorované doporučení nepřispívá k výpočtu vašeho skóre.
+Každé doporučení se měří na základě vaší konfigurace služby Azure AD. Pokud používáte produkty třetích stran k povolení doporučení osvědčených postupů, můžete tuto konfiguraci označit v nastavení akce zlepšení. Máte také možnost nastavit doporučení, která se mají ignorovat, pokud se nevztahují k vašemu prostředí. Ignorované doporučení nepřispívá k výpočtu vašeho skóre.
 
-![Ignorovat nebo označit akce, jako je předmětem třetích stran](./media/identity-secure-score/identity-secure-score-ignore-or-third-party-reccomendations.png)
+![Ignorovat nebo označit akci, kterou pokrývá třetí strana](./media/identity-secure-score/identity-secure-score-ignore-or-third-party-reccomendations.png)
 
 ## <a name="how-does-it-help-me"></a>Jak mi toto skóre pomůže?
 
@@ -76,9 +76,9 @@ Bezpečnostní skóre identity můžou používat následující role:
 - Správce zabezpečení
 - Čtenáři zabezpečení
 
-### <a name="how-are-controls-scored"></a>Jak jsou hodnocené ovládacích prvků
+### <a name="how-are-controls-scored"></a>Jak se řídí skóre?
 
-Ovládací prvky mohou být upraveny dvěma způsoby. Některé jsou hodnocené v binární podobě – získání skóre 100 %, pokud máte funkci, nebo nakonfigurované nastavení založené na naše doporučení. Další skóre, které se vypočítají jako procento celkové konfiguraci. Například pokud doporučení zlepšování stavy, pokud budete chránit všechny uživatele s MFA a máte 5 100 celkový počet uživatelů, které jsou chráněné, zobrazí se 30 bodů, bude by nabídnuta částečné skóre přibližně 2 body (5 chráněné / celkem 100 * 30 maximální počet bodů = 2 částečné skóre bodů) .
+Ovládací prvky mohou být hodnoceny dvěma způsoby. Některé jsou v binárním formátu skóre – Pokud máte funkci nebo nastavení nakonfigurovanou na základě našeho doporučení, získáte 100% skóre. Další hodnocení jsou vypočítána jako procento z celkové konfigurace. Pokud třeba doporučení pro zlepšení dostanou, získáte 30 bodů, Pokud chráníte všechny uživatele pomocí vícefaktorového ověřování a budete mít jenom 5 z 100 uživatelů s ochranou (celkem 5), měli byste mít k dispozici částečné skóre kolem 2 bodů (5 Protected/100 Total * 30 Max PTS = 2 PTS částečný skore).
 
 ### <a name="what-does-not-scored-mean"></a>Co znamená, když skóre není určené?
 
@@ -90,21 +90,21 @@ Skóre se počítá jednou za den (přibližně v 1:00 PST). Pokud uděláte zm�
 
 ### <a name="my-score-changed-how-do-i-figure-out-why"></a>Moje skóre se změnilo. Jak zjistím, proč k tomu došlo?
 
-Přejděte na [Centrum zabezpečení Microsoft 365](https://security.microsoft.com/), kde najdete kompletní zabezpečené skóre Microsoft. Můžete snadno zobrazit všechny změny na zabezpečené skóre kontrolou podrobné změny na kartě Historie.
+Přejděte do [služby Microsoft 365 Security Center](https://security.microsoft.com/), kde najdete kompletní bezpečnostní skóre Microsoftu. Všechny změny v zabezpečeném skóre můžete snadno zobrazit tak, že zkontrolujete podrobné změny na kartě Historie.
 
-### <a name="does-the-secure-score-measure-my-risk-of-getting-breached"></a>Měření zabezpečeného skóre Moje riziko získávání dojde k porušení zabezpečení?
+### <a name="does-the-secure-score-measure-my-risk-of-getting-breached"></a>Měří zabezpečené skóre riziko, že došlo k porušení?
 
-Nikoli. Zabezpečené skóre neznamenají absolutní měřítko, jak pravděpodobně jste získat dojde k porušení zabezpečení. Vyjadřuje, do jaké míry jste si osvojili funkce, které dokážou riziko porušení zabezpečení kompenzovat. Žádná služba může zaručit, že nebude splněn a zabezpečené skóre neměly by být vykládány jako záruky žádným způsobem.
+Nikoli. Bezpečnostní skóre nevyjadřuje absolutní míru toho, jak je pravděpodobný, že byste se měli porušit. Vyjadřuje, do jaké míry jste si osvojili funkce, které dokážou riziko porušení zabezpečení kompenzovat. Žádná služba nemůže zaručit, že nebudete narušit činnost a že bezpečné skóre by se nemělo v žádném případě vykládat jako záruka.
 
 ### <a name="how-should-i-interpret-my-score"></a>Jak mám skóre interpretovat?
 
-Dostáváte body za konfiguraci doporučených funkcí zabezpečení nebo za provádění úloh souvisejících se zabezpečením (například za prohlížení sestav). U některých akcí obdržíte skóre za částečné dokončení, například za povolení vícefaktorového ověřování pro uživatele. Zabezpečené skóre je přímo zástupce služby Microsoft zabezpečení, které používáte. Mějte na paměti, že zabezpečení musí být vyrovnávaném pomocí použitelnost. Všechna bezpečnostní opatření mají dopad na uživatele. Opatření s nízkým dopadem na uživatele by na každodenní práci uživatelů měla mít minimální nebo nulový vliv.
+Dostáváte body za konfiguraci doporučených funkcí zabezpečení nebo za provádění úloh souvisejících se zabezpečením (například za prohlížení sestav). U některých akcí obdržíte skóre za částečné dokončení, například za povolení vícefaktorového ověřování pro uživatele. Vaše zabezpečené skóre je přímo reprezentativní pro služby zabezpečení společnosti Microsoft, které používáte. Mějte na paměti, že zabezpečení musí být vyvážené pomocí použitelnosti. Všechna bezpečnostní opatření mají dopad na uživatele. Opatření s nízkým dopadem na uživatele by na každodenní práci uživatelů měla mít minimální nebo nulový vliv.
 
-Pokud chcete zobrazit historii skóre, přejděte na [Centrum zabezpečení Microsoft 365](https://security.microsoft.com/) a zkontrolovat celkové skóre zabezpečení Microsoftu. Změny můžete zkontrolovat na celkových zabezpečené skóre se kliknutím na Zobrazit historii. Zvolením konkrétního data zobrazíte, která opatření byla v ten den zavedena a kolik bodů jste za ně získali.
+Pokud chcete zobrazit historii skóre, přejděte do [služby Microsoft 365 Security Center](https://security.microsoft.com/) a Prohlédněte si celkové skóre Microsoftu. Kliknutím na Zobrazit historii můžete zkontrolovat změny v celkovém bezpečném skóre. Zvolením konkrétního data zobrazíte, která opatření byla v ten den zavedena a kolik bodů jste za ně získali.
 
 ### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>Jak bezpečnostní skóre identity souvisí s bezpečnostním skóre Office 365?
 
-[Microsoft secure skóre](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score) obsahuje pět různých ovládacího prvku a skóre kategorie:
+[Microsoft Secure skore](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score) obsahuje pět kategorií různých ovládacích prvků a skóre:
 
 - Identita
 - Data
@@ -112,8 +112,8 @@ Pokud chcete zobrazit historii skóre, přejděte na [Centrum zabezpečení Micr
 - Infrastruktura
 - Aplikace
 
-Skóre zabezpečení identity představuje součást identity skóre zabezpečení Microsoftu. Tento překrytí znamená, že vaše doporučení pro identitu zabezpečení skóre a skóre identity ve službě Microsoft jsou stejné.
+Počet bezpečných identit identity představuje část identity Microsoft Secure skóre. Tento překryv znamená, že vaše doporučení pro bezpečné skóre identity a hodnocení identity v Microsoftu jsou stejná.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-[Další informace o Microsoft zabezpečené skóre](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)
+[Přečtěte si další informace o službě Microsoft Secure skore.](https://docs.microsoft.com/office365/securitycompliance/microsoft-secure-score)

@@ -1,26 +1,20 @@
 ---
 title: Ukázkový skript Azure CLI – odstranění úložiště konfigurace aplikace Azure
 titleSuffix: Azure App Configuration
-description: Ukázkový skript Azure CLI – odstranění úložiště konfigurace aplikace Azure
+description: Použití skriptu Azure CLI k odstranění úložiště konfigurace aplikace Azure
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: balans
-editor: ''
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 02/24/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 62628b611c7df7aa0515cbb2cc938b02977e510e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 7f73de459d8ce9f74e3925789af630b7c804d605
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467654"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523568"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Odstranění úložiště konfigurace aplikace Azure
 
@@ -47,7 +41,7 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 Tento skript pomocí následujících příkazů odstraní úložiště konfigurace aplikace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky: |
+| Příkaz | Poznámky |
 |---|---|
 | [AZ appconfig DELETE](/cli/azure/appconfig#az-appconfig-delete) | Odstraní prostředek úložiště konfigurace aplikace. |
 

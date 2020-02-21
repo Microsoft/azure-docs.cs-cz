@@ -1,5 +1,5 @@
 ---
-title: Co je geograficky Umělal Intelligence DSVM
+title: Co je geograficky umělá inteligentní funkce Data Science Virtual Machine
 titleSuffix: Azure Data Science Virtual Machine
 description: Geografické umělé Data Science Virtual Machine inteligentních funkcí poskytuje ArcGIS pro pro práci s geografickými daty a také s Pythonem, R a Toolkity pro datové vědy pro práci s ML a AI.
 keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 7e2976596ca6b55ea57e00015e53b2721438e990
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: f5a094613b8722f96fccd1d1a6df359fa9b0ebd4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899906"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526057"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Co je geograficky umělá Data Science Virtual Machine inteligentních inteligentních funkcí?
 
@@ -44,5 +44,5 @@ Geografické AI Data Science VM kombinuje prediktivní možnosti DSVM s škálov
 
 Zřídit geografickou Data Science VM AI a začít ji používat s pokyny z následujících zdrojů:
 
-* [Zřízení virtuálního počítače pro geograficky AI datové vědy](provision-geo-ai-dsvm.md)
-* [Použití v geograficky AI pro datové vědy virtuálního počítače](use-geo-ai-dsvm.md)
+* [Zřízení geografického AI Data Science VM](provision-geo-ai-dsvm.md)
+* [Použití geografického AI Data Science VM](use-geo-ai-dsvm.md)

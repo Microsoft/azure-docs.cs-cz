@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/12/2019
+ms.date: 02/18/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7e26e901fdee8cac79cfb55aa0999487e87b8a78
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2a416fa4f9e02372e570b77b0e6fb1af2cad81fb
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113920"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500692"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>Kurz: nastavení automatických odpovědí na hrozby v Azure Sentinel
 
@@ -64,9 +64,9 @@ Pomocí těchto kroků vytvořte nové PlayBook zabezpečení v Azure Sentinel:
 
    ![Aplikace logiky](./media/tutorial-respond-threats-playbook/playbookimg.png)
 
-3. Na stránce **Azure Sentinel-playbooky (Preview)** klikněte na tlačítko **Přidat** .
+3. Na stránce **Azure Sentinel-playbooky** klikněte na tlačítko **Přidat** .
 
-   ![Vytvoření aplikace logiky](./media/tutorial-respond-threats-playbook/create-playbook.png) 
+   ![Vytvořit aplikaci logiky](./media/tutorial-respond-threats-playbook/create-playbook.png) 
 
 4. Na stránce **vytvořit aplikaci logiky** zadejte požadované informace pro vytvoření nové aplikace logiky a klikněte na **vytvořit**. 
 
@@ -106,7 +106,7 @@ Automatizace odpovědí:
 
 1. Vyberte výstrahu, pro kterou chcete odpověď automatizovat.
 1. Na stránce **Upravit pravidlo výstrahy** v části **automatizace v reálném čase**vyberte **aktivovaný PlayBook** , který chcete spustit, když se toto pravidlo výstrahy shoduje.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
    ![automatizace v reálném čase](./media/tutorial-detect-threats/rt-configuration.png)
 

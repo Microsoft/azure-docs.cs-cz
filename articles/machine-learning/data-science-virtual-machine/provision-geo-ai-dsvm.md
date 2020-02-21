@@ -1,5 +1,6 @@
 ---
-title: 'Rychlý start: Vytvoření DSVM s Geo AI'
+title: 'Rychlý Start: vytvoření geografické AI Data Science Virtual Machine'
+titleSuffix: Azure Data Science Virtual Machine
 description: Nakonfigurujte a vytvořte geografickou Data Science Virtual Machine AI v Azure pro geoprostorové analýzy a strojové učení.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,16 +8,16 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: f3ff9bd64f54d8f83fd1889078e8a4c01827d135
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170729"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525885"
 ---
-# <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Rychlý start: Nastavení geograficky umělého virtuálního počítače s logikou v Azure 
+# <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Rychlý Start: nastavení geograficky umělého virtuálního počítače s logikou v Azure 
 
-Geografické AI Data Science Virtual Machine (GEO-DSVM) je rozšíření oblíbeného [Azure Data Science Virtual Machine](https://aka.ms/dsvm) , které je speciálně nakonfigurované pro kombinování AI a geoprostorové analýzy. Geoprostorové analýzy ve virtuálním počítači využívají [ArcGIS Pro](https://www.arcgis.com/features/index.html). Data Science Virtual Machine (DSVM) umožňuje rychlé školení modelů strojového učení a dokonce i obsáhlého učení. Pro vývoj těchto modelů používá data, která jsou obohacena o geografické informace. Geografické DSVM se podporuje jenom v systému Windows 2016 DSVM. 
+Geografické AI Data Science Virtual Machine (GEO-DSVM) je rozšíření oblíbeného [Azure Data Science Virtual Machine](https://aka.ms/dsvm) , které je speciálně nakonfigurované pro kombinování AI a geoprostorové analýzy. Geoprostorové analýzy ve virtuálním počítači jsou napájené pomocí [ArcGIS pro](https://www.arcgis.com/features/index.html). Data Science Virtual Machine (DSVM) umožňuje rychlé školení modelů strojového učení a dokonce i obsáhlého učení. Pro vývoj těchto modelů používá data, která jsou obohacena o geografické informace. Geografické DSVM se podporuje jenom v systému Windows 2016 DSVM. 
 
 Nástroje AI, které jsou zahrnuté v geograficky DSVM, obsahují tyto možnosti:
 
@@ -41,24 +42,24 @@ Pokud chcete vytvořit instanci geografického AI Data Science VM, postupujte ta
 
 **Základy**:
 
-- **Název**: Název serveru datové vědy vytváříte.
+- **Name (název**): název serveru pro datové vědy, který vytváříte.
     
-- **Uživatelské jméno**: Přihlašovací ID účtu správce
+- **Uživatelské jméno**: přihlašovací ID účtu správce.
     
-- **Heslo**: Heslo účtu správce.
+- **Heslo**: heslo účtu správce.
     
-- **Předplatné:** Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač.
+- **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se má počítač vytvořit a fakturovat.
     
-- **Skupina prostředků**: V předplatném můžete vytvořit novou nebo použít **prázdnou** skupinu prostředků Azure.
+- **Skupina prostředků**: můžete vytvořit novou nebo ve svém předplatném použít **prázdnou** existující skupinu prostředků Azure.
     
-- **Umístění**: Vyberte datové centrum, které je vhodné. Obvykle je to ten, který má většinu vašich dat nebo který je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti. Pokud plánujete provozovat hlubokou výuku na GPU, musíte zvolit jedno z umístění v Azure, které má instance virtuálních počítačů GPU řady NC-Series. V současné době jsou tato umístění: **Východní USA, střed USA – sever, střed USA – jih, západní USA 2, Severní Evropa**západní Evropa. V seznamu nejnovější Zkontrolujte stránku [produkty Azure podle oblasti](https://azure.microsoft.com/regions/services/) a vyhledejte v části **výpočetní**prostředí **řady NC-Series** . 
+- **Umístění**: Vyberte datové centrum, které je vhodné. Obvykle je to ten, který má většinu vašich dat nebo který je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti. Pokud plánujete provozovat hlubokou výuku na GPU, musíte zvolit jedno z umístění v Azure, které má instance virtuálních počítačů GPU řady NC-Series. V současné době jsou to tato umístění: **východní USA, střed USA – sever, střed USA – jih, západní USA 2, Severní Evropa, západní Evropa**. V seznamu nejnovější Zkontrolujte stránku [produkty Azure podle oblasti](https://azure.microsoft.com/regions/services/) a vyhledejte v části **výpočetní**prostředí **řady NC-Series** . 
     
     
-**Nastavení**: Pokud máte v plánu provozovat obsáhlý Learning na GPU v geografických DSVMch, vyberte jednu z velikostí virtuálních počítačů GPU řady NC-Series. V opačném případě můžete zvolit jednu z instancí založenou na procesoru. Vytvoření účtu úložiště pro virtuální počítač. 
+**Nastavení**: vyberte jednu z velikostí virtuálních počítačů GPU řady NC-Series, pokud plánujete provozovat hlubokou výuku na GPU v geografických DSVM. V opačném případě můžete zvolit jednu z instancí založenou na procesoru. Vytvoření účtu úložiště pro virtuální počítač. 
        
-**Souhrn**: Ověřte, zda všechny informace, které jste zadali správný.
+**Shrnutí**: Ověřte, zda jsou všechny informace, které jste zadali, správné.
     
-**Koupit**: Chcete-li zahájit proces zřizování, klikněte na tlačítko **koupit**. Pomocí odkazu uvedeného na podmínky služby. Pro velikost serveru, kterou jste zvolili v kroku **Velikost** , nemá tento virtuální počítač žádné další poplatky nad poplatky za výpočetní výkon. 
+**Koupit**: Pokud chcete zahájit proces zřizování, klikněte na **koupit**. Pomocí odkazu uvedeného na podmínky služby. Pro velikost serveru, kterou jste zvolili v kroku **Velikost** , nemá tento virtuální počítač žádné další poplatky nad poplatky za výpočetní výkon. 
  
  >[!NOTE]
  > Zřizování by mělo trvat přibližně 20 až 30 minut. Stav zřizování se zobrazí na portálu Azure portal.
@@ -87,4 +88,4 @@ Po přihlášení k desktopu ArcGIS pro z účtu ArcGIS jste připraveni začít
 
 Začněte používat geografické AI Data Science VM s pokyny z tohoto prostředku:
 
-* [Použití v geograficky AI pro datové vědy virtuálního počítače](use-geo-ai-dsvm.md)
+* [Použití geografického AI Data Science VM](use-geo-ai-dsvm.md)

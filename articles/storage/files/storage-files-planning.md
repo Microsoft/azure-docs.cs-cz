@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9b71c4a5c0f245d9da97dc8f096d15c5386bf919
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 98965a50037558f512401e09915021234790840d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368617"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526474"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 
@@ -176,7 +176,7 @@ Tato část se vztahuje pouze na standardní sdílené složky. Všechny sdílen
 
 Standardní sdílené složky s 100 TiB limit kapacity jsou k dispozici globálně ve všech oblastech Azure –
 
-- LRS: všechny oblasti kromě jar (Jižní Afrika – sever a Jižní Afrika – západ)
+- LRS: všechny oblasti, s výjimkou Jižní Afriky – sever, Jižní Afrika – západ, Německo – středozápad a Německo – sever.
 - ZRS: všechny oblasti kromě Japonska – východ, Severní Evropa, Jižní Afrika – sever.
 - GRS/GZRS: není podporováno.
 

@@ -1,28 +1,26 @@
 ---
 title: Dokončení nasazení ověřování bez hesla pomocí Azure AD
-description: Dokončení nasazení ověřování neAzure Active Directoryho hesla
+description: Naučte se plánovat a nasazovat Azure Active Directory implementaci ověřování nejenom s heslem.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/30/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8323333f378f95f0a640313524f198bdd00dc340
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 4566c8ec58677589c044d79560bffa7616294d70
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512568"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505600"
 ---
-# <a name="complete-a-passwordless-authentication-deployment"></a>Dokončení nasazení ověřování pomocí hesla
+# <a name="complete-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Dokončete nasazení ověřování s neplatným heslem v Azure Active Directory
 
-Většina kyberútokům začíná s uživatelským jménem a heslem odcizeným od někoho v organizaci. 
-
-Organizace se pokusí tuto hrozbu zmírnit tím, že si vyžádá, aby uživatelé používali:
+Většina kyberútokům začíná s uživatelským jménem a heslem odcizeným od někoho v organizaci. Organizace se pokusí tuto hrozbu zmírnit tím, že požadují, aby uživatelé používali některý z následujících přístupů:
 
 - Dlouhá hesla
 - Složitá hesla
@@ -34,16 +32,16 @@ Výzkum Microsoftu [ukazuje](https://aka.ms/passwordguidance) , že tato snaha a
 Nasazení ověřování neheslem přináší následující výhody:
 
 - Zvýšené zabezpečení. Odebráním hesel jako prostoru pro útoky snižte riziko útoků phishing a postřik hesla.
-- Lepší uživatelské prostředí. Poskytněte uživatelům pohodlný způsob, jak získat přístup k datům odkudkoli a zajistit vám i mobilní aplikace pro Outlook, OneDrive, Office a další.
+- Lepší uživatelské prostředí. Poskytněte uživatelům pohodlný způsob, jak získat přístup k datům odkudkoli a zajistit snadný přístup k aplikacím a službám, jako je Outlook, OneDrive nebo Office, i když jsou mobilní.
 - Robustní přehledy. Robustní protokolování a auditování vám umožní získat přehled o aktivitě bez hesla uživatelů.
 
-Heslo je nahrazeno něčím, co jste vy a něco něco znáte. Například ve Windows Hello pro firmy je biometrická gesta, jako je například obličej nebo otisk prstu nebo PIN kód pro konkrétní zařízení, který není přenášen přes síť.
+Bez hesla je heslo nahrazeno něčím, co máte vy nebo něco, co znáte. Například ve Windows Hello pro firmy se jedná o biometrická gesta, jako je například obličej nebo otisk prstu nebo PIN kód pro konkrétní zařízení, které se nepřenáší přes síť.
 
-Microsoft nabízí tři možnosti ověřování s nehesly, které pokrývají mnoho scénářů. Tyto metody lze použít společně. 
+Microsoft nabízí tři možnosti ověřování s nehesly, které pokrývají mnoho scénářů. Tyto metody lze použít společně:
 
 - [Windows Hello pro firmy](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) je nejvhodnější pro uživatele na svých vyhrazených počítačích s Windows.
-- Klíč zabezpečení přihlašování pomocí [klíčů zabezpečení FIDO2](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) je zvláště užitečný pro uživatele, kteří se přihlásí ke sdíleným počítačům, jako jsou veřejné terminály, situace, kdy je používání telefonů omezené a pro vysoce privilegované identity.
-- Telefonický zápis pomocí [Microsoft Authenticator aplikace](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) je užitečný pro poskytování možnosti bez hesla uživatelům s mobilními zařízeními. Přepíná telefon s iOS nebo Androidem do silných přihlašovacích údajů bez hesla tím, že se uživatelům umožní přihlásit se k libovolné platformě nebo prohlížeči. Uživatelé se přihlásí pomocí oznámení na telefon, odpovídající číslo zobrazené na obrazovce na telefonu a následným použitím jejich biometrických dat nebo PIN kódu k potvrzení.
+- Přihlášení k bezpečnostnímu klíči pomocí [klíčů zabezpečení FIDO2](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) je zvlášť užitečné pro uživatele, kteří se přihlásí ke sdíleným počítačům, jako jsou veřejné terminály, v situacích, kdy je používání telefonů omezené a pro vysoce privilegované identity.
+- Telefonický zápis pomocí [Microsoft Authenticator aplikace](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless) je užitečný pro poskytování možnosti bez hesla uživatelům s mobilními zařízeními. Aplikace ověřovatele přepíná telefon s iOS nebo Androidem do silných přihlašovacích údajů bez hesla tím, že uživatelům umožní přihlašovat se k libovolné platformě nebo prohlížeči. Uživatelé se přihlásí pomocí oznámení na telefon, odpovídajícím číslem zobrazeným na obrazovce na telefonu a následným použitím jejich biometrických dat nebo PIN kódu k potvrzení.
 
 ## <a name="compare-passwordless-authentication-methods"></a>Porovnání metod ověřování s nehesly
 
@@ -55,21 +53,21 @@ Metody ověřování s neheslem od Microsoftu umožňují různé scénáře. Po
 | --- | --- | --- | --- |
 | **Přihlášení počítače**: <br> Z přiřazeného zařízení s Windows 10 | **Ne** | **Ano** <br> S biometrikou, připnout | **Ano**<br>pomocí biometrického rozpoznávání a kódu PIN |
 | **Přihlášení počítače**: <br> Ze sdíleného zařízení s Windows 10 | **Ne** | **Ano** <br> S biometrikou, připnout  | **Ne** |
-| **Přihlášení k webové aplikaci**: <br>z počítače vyhrazeného uživatelem | **Ano** | **Ano** <br> Zadané jednotné přihlašování k aplikacím je povolené při přihlášení počítače. | **Ano**<br> Zadané jednotné přihlašování k aplikacím je povolené při přihlášení počítače. |
+| **Přihlášení k webové aplikaci**: <br>z počítače vyhrazeného uživatelem | **Ano** | **Ano** <br> Zadané jednotné přihlašování k aplikacím je povolené při přihlášení k počítači. | **Ano**<br> Zadané jednotné přihlašování k aplikacím je povolené při přihlášení k počítači. |
 | **Přihlášení k webové aplikaci**: <br> z mobilního zařízení nebo z jiného zařízení než Windows | **Ano** | **Ne** | **Ne** |
 | **Přihlášení počítače**: <br> Počítač s jiným systémem než Windows | **Ne** | **Ne** | **Ne** |
 
 ### <a name="technical-considerations-for-the-microsoft-authenticator-app"></a>Technické požadavky pro aplikaci Microsoft Authenticator
 
-**AD FS Integration** – Pokud uživatel povolí Microsoft Authenticator přihlašovací údaje bez hesla, ověřování pro tohoto uživatele standardně posílá oznámení ke schválení. Uživatelům v hybridním tenantovi se zabrání v přesměrování na službu AD FS, aby se přihlásili, pokud nevyberou místo toho použít heslo. Tento proces také obchází všechny místní zásady podmíněného přístupu a předávací ověřovací toky. Pokud je ale zadaný login_hint, uživatel se přepošle na ADFS a obejít možnost používat přihlašovací údaje bez hesla.
+**AD FS Integration** – Pokud uživatel povolí Microsoft Authenticator přihlašovací údaje bez hesla, ověřování pro tohoto uživatele standardně posílá oznámení ke schválení. Uživatelům v hybridním tenantovi se zabrání v přesměrování na službu AD FS, aby se přihlásili, pokud nevyberou místo toho použít heslo. Tento proces také obchází všechny místní zásady podmíněného přístupu a předávací ověřovací toky. Pokud je však zadán *login_hint* , uživatel je předaný do služby ADFS a obejít možnost použití přihlašovacích údajů bez hesla.
 
-**Azure MFA Server** – koncoví uživatelé, kteří mají povolený vícefaktorové ověřování prostřednictvím místního Azure MFA serveru organizace, můžou pořád vytvářet a používat přihlašovací údaje pro přihlášení bez hesla. Pokud se uživatel pokusí upgradovat více instalací (5 +) Microsoft Authenticator s přihlašovacími údaji, může tato změna způsobit chybu.
+**Azure MFA Server** – koncoví uživatelé s POVOLENým ověřováním MFA prostřednictvím místního Azure MFA serveru můžou vytvořit a použít jenom přihlašovací údaje pro přihlášení bez hesla. Pokud se uživatel pokusí upgradovat více instalací (5 nebo více) Microsoft Authenticator s přihlašovacími údaji, může tato změna způsobit chybu.
 
 **Registrace zařízení** : Pokud chcete používat ověřovací aplikaci pro ověřování bez hesla, musí být zařízení zaregistrované v TENANTOVI Azure AD a nemůže být sdíleným zařízením. Zařízení se dá zaregistrovat jenom v jednom tenantovi. Tento limit znamená, že pro přihlášení telefonem pomocí ověřovací aplikace se podporuje jenom jeden pracovní nebo školní účet.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Organizace musí před zahájením nasazení s neplatným heslem splňovat následující požadavky.
+Organizace musí před zahájením nasazení s neplatným heslem splňovat následující požadavky:
 
 | Požadavek | Ověřovací aplikace | FIDO2 klíče zabezpečení |
 | --- | --- | --- |
@@ -102,7 +100,7 @@ Klíče zabezpečení umožňují přístup k vašim prostředkům a měli byste
 
 ### <a name="enable-windows-10-support"></a>Povolit podporu Windows 10
 
-Povolení přihlášení Windows 10 pomocí klíčů zabezpečení FIDO2 vyžaduje povolení funkcí poskytovatele přihlašovacích údajů ve Windows 10. Povolte ji jedním ze dvou způsobů:
+Povolení přihlášení Windows 10 pomocí klíčů zabezpečení FIDO2 vyžaduje povolení funkce poskytovatele přihlašovacích údajů ve Windows 10 jedním z následujících způsobů:
 
 - [Povolení poskytovatele přihlašovacích údajů v Intune](howto-authentication-passwordless-security-key-windows.md#enable-with-intune)
    - Doporučovaná možnost nasazení Intune.
@@ -110,6 +108,15 @@ Povolení přihlášení Windows 10 pomocí klíčů zabezpečení FIDO2 vyžadu
    - Pokud není nasazení Intune možné, musí správci nasadit balíček do každého počítače, aby se povolily funkce poskytovatele přihlašovacích údajů. Instalaci balíčku lze provést pomocí jedné z následujících možností:
       - Zásady skupiny nebo Configuration Manager
       - Místní instalace na počítači s Windows 10
+- [Povolení poskytovatele pověření pomocí Zásady skupiny](howto-authentication-passwordless-security-key-windows.md#enable-with-group-policy)
+   - Podporuje se jenom pro zařízení připojená k hybridní službě Azure AD.
+
+#### <a name="enable-on-premises-integration"></a>Povolit místní integraci
+
+Pokud chcete povolit přístup k místním prostředkům, postupujte podle pokynů pro [Povolení nezabezpečeného přihlášení k místním prostředkům (Preview) pomocí klíče zabezpečení bez hesla](howto-authentication-passwordless-security-key-on-premises.md).
+
+> [!IMPORTANT]
+> Tyto kroky je potřeba provést taky pro všechna zařízení připojená k hybridní službě Azure AD, která využívají klíče zabezpečení FIDO2 pro přihlášení Windows 10.
 
 ### <a name="register-security-keys"></a>Registrovat klíče zabezpečení
 
@@ -129,14 +136,14 @@ Vezměte v úvahu své obchodní potřeby a případy použití pro jednotlivé 
 
 Následující tabulka popisuje případy použití, které mají být implementovány během tohoto projektu.
 
-| Oblast | Popis |
+| Plošný | Popis |
 | --- | --- |
 | **Přístup** | Přihlášení bez hesla je k dispozici v podnikovém nebo osobním zařízení v rámci podnikové sítě nebo mimo ni. |
 | **Auditování** | Data o využití jsou k dispozici správcům k zaznamenávání téměř v reálném čase. <br> Data o využití se stáhnou do podnikových systémů aspoň každých 29 dní nebo se použije nástroj SIEM Tool. |
-| **Zásady správného řízení** | Je definováno a sledováno životní cyklus přiřazení uživatelů k příslušné metodě ověřování a přidruženým skupinám. |
-| **Zabezpečení** | Přístup k příslušné metodě ověřování je řízen pomocí přiřazení uživatelů a skupin. <br> Jenom autorizovaní uživatelé můžou používat přihlašování nejenom heslem. |
+| **Řádnou** | Je definováno a sledováno životní cyklus přiřazení uživatelů k příslušné metodě ověřování a přidruženým skupinám. |
+| **Zabezpečení** | Přístup k příslušné metodě ověřování je řízen pomocí přiřazení uživatelů a skupin. <br> Jenom autorizovaní uživatelé můžou používat přihlášení nejenom heslem. |
 | **Výkon** | Časové osy šíření přístupu k přiřazení jsou zdokumentovány a monitorovány. <br> Časy přihlášení se měří pro snadné použití. |
-| **Činnost koncového uživatele** | Uživatelé mají informace o kompatibilitě mobilních zařízení. <br> Uživatelé můžou nakonfigurovat přihlášení k neheslům aplikace ověřovatel. |
+| **Činnost koncového uživatele** | Uživatelé mají informace o kompatibilitě mobilních zařízení. <br> Uživatelé můžou nakonfigurovat přihlášení k neheslům aplikace ověřovatele. |
 | **Podpora** | Uživatelé si vědomi, jak najít podporu pro problémy s přihlašováním bez hesla. |
 
 ### <a name="engage-the-right-stakeholders"></a>Zapojení správných zúčastněných stran
@@ -147,45 +154,45 @@ Když projekty technologie selžou, je obvykle z důvodu neshodných očekáván
 
 Komunikace je zásadní pro úspěch jakékoli nové služby. Proaktivně komunikuje s tím, jak se budou uživatelé měnit, když se změní, a jak získat podporu, pokud budou mít problémy.
 
-Vaše sdělení koncovým uživatelům budou muset zahrnovat:
+Vaše komunikace s koncovými uživateli by měla obsahovat tyto informace:
 
 - [Povolení kombinovaného prostředí pro registraci zabezpečení](howto-authentication-passwordless-phone.md)
 - [Stahuje se aplikace Microsoft Authenticator.](../user-help/user-help-auth-app-download-install.md)
 - [Registrace v aplikaci Microsoft Authenticator](howto-authentication-passwordless-phone.md)
 - [Přihlášení pomocí telefonu](../user-help/user-help-auth-app-sign-in.md)
 
-Společnost Microsoft poskytuje [šablony](https://aka.ms/mfatemplates)komunikace MFA, [šablony komunikace](https://www.microsoft.com/download/details.aspx?id=56768)samoobslužného resetování hesla (SSPR) a [dokumentaci pro koncové uživatele](../user-help/security-info-setup-signin.md) , které vám pomůžou s konceptem komunikace. Uživatelům můžete odeslat [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) k registraci přímo tak, že vyberete odkazy na informace o zabezpečení na této stránce.
+Společnost Microsoft poskytuje [šablony](https://aka.ms/mfatemplates)komunikace MFA, [šablony komunikace](https://www.microsoft.com/download/details.aspx?id=56768)samoobslužného resetování hesla (SSPR) a [dokumentaci pro koncové uživatele](../user-help/security-info-setup-signin.md) , které vám pomůžou s konceptem komunikace. Uživatelům můžete odeslat [https://myprofile.microsoft.com](https://myprofile.microsoft.com/) k registraci přímo tak, že vyberete odkazy na **informace o zabezpečení** na této stránce.
 
 ### <a name="testing-passwordless"></a>Testování bezheslem
 
-V každé fázi nasazení se ujistěte, že testujete, že výsledky jsou očekávané.
+V každé fázi nasazení při testování scénářů a přijetí se ujistěte, že výsledky jsou očekávané.
 
 #### <a name="testing-the-microsoft-authenticator-app"></a>Testování aplikace Microsoft Authenticator
 
-Zde jsou ukázkové testovací případy pro ověřování bez hesla pomocí aplikace Microsoft Authenticator.
+Zde jsou ukázkové testovací případy pro ověřování bez hesla pomocí Microsoft Authenticator aplikace:
 
 | Scénář | Očekávané výsledky |
 | --- | --- |
 | Uživatel může zaregistrovat Microsoft Authenticator aplikaci. | Uživatel může zaregistrovat aplikaci z aka.ms/mysecurityinfo. |
 | Uživatel může povolit přihlášení telefonem. | Telefonické přihlášení nakonfigurované pro pracovní účet |
-| Uživatel má přístup k aplikaci s přihlašováním telefonem. | Uživatel přejde do toku telefonického přihlášení a dosáhne určené aplikace. |
-| Test registrace zpětného volání při registraci vypnutím Microsoft Authenticator přihlašování se neheslem na obrazovce metody ověřování na portálu Azure Active Directory | Dříve povolení uživatelé nemůžou v Microsoft Authenticator používat přihlašování pomocí hesla. |
-| Odebírání telefonického přihlášení z aplikace Microsoft Authenticator | Pracovní účet už není na Microsoft Authenticator k dispozici. |
+| Uživatel má přístup k aplikaci s přihlášením telefonem. | Uživatel přejde přes tok přihlášení k telefonu a dosáhne určené aplikace. |
+| Test registrace zpětného přihlášení k telefonickému telefonu vypnutím Microsoft Authenticator přihlašování nepodepsaných heslem na obrazovce metody ověřování na portálu Azure Active Directory | Dříve povolení uživatelé nemůžou v Microsoft Authenticator používat přihlášení pomocí hesla. |
+| Odebírá se přihlášení telefonem z aplikace Microsoft Authenticator. | Pracovní účet už není na Microsoft Authenticator k dispozici. |
 
 #### <a name="testing-security-keys"></a>Testování klíčů zabezpečení
 
 Zde jsou ukázkové testovací případy pro ověřování bez hesla s bezpečnostními klíči.
 
-**FIDO přihlášení k zařízení s Windows 10 Azure Active Directory s přihlašováním k heslům**
+**NeFIDOelné přihlášení k Azure Active Directory připojená zařízení s Windows 10**
 
 | Scénář | Očekávané výsledky |
 | --- | --- |
 | Uživatel může zaregistrovat zařízení FIDO2 (1809). | Uživatel může zaregistrovat zařízení FIDO2 pomocí nastavení > účty > Možnosti přihlášení > klíč zabezpečení. |
 | Uživatel může resetovat zařízení FIDO2 (1809). | Uživatel může resetovat zařízení FIDO2 pomocí softwaru výrobce. |
-| Uživatel se může přihlásit pomocí zařízení FIDO2 (1809). | Uživatel může vybrat klíč zabezpečení z okna přihlášení a úspěšně se přihlásit. |
+| Uživatel se může přihlásit pomocí zařízení FIDO2 (1809). | Uživatel může v přihlašovacím okně Vybrat klíč zabezpečení a úspěšně se přihlásit. |
 | Uživatel může zaregistrovat zařízení FIDO2 (1903). | Uživatel může zaregistrovat zařízení FIDO2 v nastavení > účty > Možnosti přihlášení > klíč zabezpečení. |
 | Uživatel může resetovat zařízení FIDO2 (1903). | Uživatel může resetovat zařízení FIDO2 v nastavení > účty > Možnosti přihlášení > klíč zabezpečení. |
-| Uživatel se může přihlásit pomocí zařízení FIDO2 (1903). | Uživatel může vybrat klíč zabezpečení z okna přihlášení a úspěšně se přihlásit. |
+| Uživatel se může přihlásit pomocí zařízení FIDO2 (1903). | Uživatel může v přihlašovacím okně Vybrat klíč zabezpečení a úspěšně se přihlásit. |
 
 **Přihlášení FIDO k webovým aplikacím Azure AD s heslem**
 
@@ -201,14 +208,14 @@ Zde jsou ukázkové testovací případy pro ověřování bez hesla s bezpečno
 
 Azure AD obsahuje sestavy, které poskytují technickou a obchodní přehledy. Vlastníci vaší firmy a technické aplikace předpokládají vlastnictví a využívání těchto sestav na základě požadavků vaší organizace.
 
-V části metody ověřování na portálu Azure Active Directory se můžou správci povolit a spravovat nastavení pro přihlašovací údaje nepřipojeného hesla.
+V části metody **ověřování** na portálu Azure Active Directory se můžou správci povolit a spravovat nastavení pro přihlašovací údaje nepřipojeného hesla.
 
 Azure AD přidává záznamy do protokolů auditu v těchto případech:
 
 - Správce provede změny v části metody ověřování.
 - Uživatel provede libovolný typ změny přihlašovacích údajů v rámci Azure Active Directory.
 
-Následující tabulka uvádí některé příklady typických scénářů generování sestav.
+Následující tabulka uvádí některé příklady typických scénářů vytváření sestav:
 
 |   | Řízení rizik | Zvýšení produktivity | Zásady správného řízení a dodržování předpisů |
 | --- | --- | --- | --- |
@@ -219,15 +226,15 @@ Následující tabulka uvádí některé příklady typických scénářů gener
 
 Uživatelé můžou zaregistrovat a spravovat svoje přihlašovací údaje tak, že přejde na [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Tento odkaz uživatele přesměruje na prostředí pro správu přihlašovacích údajů koncového uživatele, které bylo povoleno prostřednictvím kombinovaného prostředí pro registraci SSPR/MFA. Všechna registrace zařízení zabezpečení FIDO2 nebo změny metod ověřování uživatelem jsou protokolovány v protokolech auditu Azure Active Directory.
 
-Když uživatel povolí nebo zakáže účet v bezpečnostním klíči nebo obnoví druhý faktor bezpečnostního klíče na počítačích s Windows 10, přidá se do protokolu zabezpečení položka s následujícími ID událostí: 4670, 5382.
+Když uživatel povolí nebo zakáže účet v bezpečnostním klíči nebo obnoví druhý faktor bezpečnostního klíče na počítačích s Windows 10, přidá se do protokolu zabezpečení položka s následujícími identifikátory událostí: *4670* a *5382*.
 
 ### <a name="plan-for-rollback"></a>Plánování vrácení zpět
 
 Přestože ověřování bez hesla je zjednodušenou funkcí s minimálním dopadem na koncové uživatele, může být nutné vrátit se zpět.
 
-Vracení zpět vyžaduje, aby se správce přihlásil k portálu Azure Active Directory, vybral požadované metody silného ověřování a změnil možnost povolit na ne. Tento proces vypne funkce bezheslem pro všechny uživatele.
+Vracení zpět vyžaduje, aby se správce přihlásil k portálu Azure Active Directory, vybral požadované metody silného ověřování a změnil možnost povolit na **ne**. Tento proces vypne funkce pro všechny uživatele, které nejsou v heslech.
 
-Uživatelé, kteří už zaregistrovali zařízení zabezpečení FIDO2, budou při příštím přihlášení vyzváni k použití zabezpečovacího zařízení a zobrazí se tato chyba:
+Uživatelům, kteří už zaregistrovali zařízení zabezpečení FIDO2, se zobrazí výzva k použití zabezpečovacího zařízení při příštím přihlášení a pak se zobrazí následující chyba:
 
 ![zvolit jiný způsob, jak se přihlásit](./media/howto-authentication-passwordless-deployment/passwordless-choose-sign-in.png)
 
@@ -247,14 +254,14 @@ Postupujte podle kroků zarovnaných k vybrané metodě níže.
 
 | Role Azure AD | Popis |
 | --- | --- |
-| Správce ověřování | Nejnižší privilegovaná role schopná implementovat a spravovat metody ověřování |
-| Uživatel | Nejnižší privilegovaná role pro konfiguraci ověřovací aplikace na zařízení nebo registrace zařízení zabezpečení klíčů pro web nebo Windows 10. |
+| Správce ověřování | Nejnižší privilegovaná role schopná implementovat a spravovat metody ověřování. |
+| Uživatel | Nejnižší privilegovaná role pro konfiguraci ověřovací aplikace na zařízení nebo registrace zařízení zabezpečení klíče pro web nebo přihlášení Windows 10. |
 
-### <a name="deploy-phone-sign-in-with-the-microsoft-authenticator-app"></a>Nasazení telefonu přihlášení pomocí aplikace Microsoft Authenticator
+### <a name="deploy-phone-sign-in-with-the-microsoft-authenticator-app"></a>Nasazení telefonického přihlášení pomocí aplikace Microsoft Authenticator
 
 Postupujte podle kroků v článku a [Povolte přihlášení bez hesla pomocí aplikace Microsoft Authenticator](howto-authentication-passwordless-phone.md) , abyste aplikaci Microsoft Authenticator ve vaší organizaci povolili jako metodu ověřování bez hesla.
 
-### <a name="deploy-fido2-security-key-sign-in"></a>Nasadit FIDO2 bezpečnostní klíč – přihlášení
+### <a name="deploy-fido2-security-key-sign-in"></a>Nasadit přihlášení k bezpečnostnímu klíči FIDO2
 
 Postupujte podle kroků v článku a [Povolte přihlášení klíče zabezpečení bez hesla pro službu Azure AD](howto-authentication-passwordless-security-key.md) a povolte klíče zabezpečení FIDO2 jako metody ověřování bez hesla ve vaší organizaci.
 
@@ -263,20 +270,20 @@ Postupujte podle kroků v článku a [Povolte přihlášení klíče zabezpečen
 | Scénář | Řešení |
 | --- | --- |
 | Uživatel nemůže provést kombinovanou registraci. | Zajistěte, aby byla povolená [Kombinovaná registrace](concept-registration-mfa-sspr-combined.md) . |
-| Uživatel nemůže povolit aplikaci ověřovatele telefonického přihlášení. | Zajistěte, aby byl uživatel v oboru pro nasazení. |
-| Uživatel není v oboru pro ověřování bez hesla, ale je nabízený s možností přihlášení bez hesla, kterou nelze dokončit. | K tomuto scénáři dochází, když uživatel povolil přihlášení uživatele v n aplikaci před vytvořením zásady. <br> Povolení přihlášení: přidejte uživatele do oboru uživatelů s povoleným přihlášením bez hesla. <br> Chcete-li zablokovat přihlášení: uživatel musí z aplikace odebrat své přihlašovací údaje. |
+| Uživatel nemůže povolit aplikaci ověřovatele přihlášení k telefonu. | Zajistěte, aby byl uživatel v oboru pro nasazení. |
+| Uživatel není v oboru pro ověřování bez hesla, ale je dodáván s možností přihlášení bez hesla, které nelze dokončit. | K tomuto scénáři dochází, když uživatel povolil přihlášení uživatele v n aplikaci před vytvořením zásady. <br> Povolení přihlášení: přidejte uživatele do oboru uživatelů s povoleným přihlášením bez hesla. <br> Chcete-li zablokovat přihlášení: uživatel musí z aplikace odebrat své přihlašovací údaje. |
 
 ### <a name="troubleshoot-security-key-sign-in"></a>Řešení potíží s přihlášením ke klíčům zabezpečení
 
 | Scénář | Řešení |
 | --- | --- |
 | Uživatel nemůže provést kombinovanou registraci. | Zajistěte, aby byla povolená [Kombinovaná registrace](concept-registration-mfa-sspr-combined.md) . |
-| Uživatel nemůže do svého [nastavení zabezpečení](https://aka.ms/mysecurityinfo) přidat bezpečnostní klíč. | Zajistěte, aby byly povolené [zabezpečovací klíče](howto-authentication-passwordless-security-key.md) . |
+| Uživatel nemůže do svého [nastavení zabezpečení](https://aka.ms/mysecurityinfo)přidat bezpečnostní klíč. | Zajistěte, aby byly povolené [zabezpečovací klíče](howto-authentication-passwordless-security-key.md) . |
 | Uživatel nemůže přidat bezpečnostní klíč v možnostech přihlášení ve Windows 10. | [Ujistěte se, že klíče zabezpečení pro přihlášení Windows](howto-authentication-passwordless-enable.md) |
 | **Chybová zpráva**: zjistili jsme, že tento prohlížeč nebo operační systém nepodporuje klíče zabezpečení FIDO2. | FIDO2á zařízení zabezpečení bez hesla se dají registrovat jenom v podporovaných prohlížečích (Microsoft Edge, Firefox verze 67) ve Windows 10 verze 1809 nebo novější. |
 | **Chybová zpráva**: vaše firemní zásady vyžadují, abyste se přihlásili pomocí jiné metody. | V tenantovi nemusíte mít povolené klíče zabezpečení. |
 | Uživatel nemůže spravovat můj klíč zabezpečení ve Windows 10 verze 1809. | Verze 1809 vyžaduje, abyste používali software pro správu klíčů zabezpečení, který poskytuje dodavatel FIDO2 Key. Pro podporu se obraťte na dodavatele. |
-| Myslím, že můj klíč zabezpečení FIDO2 může být vadný – jak ho můžu otestovat | Přejděte na [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/), zadejte přihlašovací údaje k testovacímu účtu, zapojte podezřelý bezpečnostní klíč, klikněte na tlačítko "+" v pravém horním rohu obrazovky, klikněte na tlačítko vytvořit a Projděte si proces vytváření. Pokud se tento scénář nepovede, může být zařízení vadné. |
+| Myslím, že můj klíč zabezpečení FIDO2 může být vadný – jak ho můžu otestovat. | Přejděte na [https://webauthntest.azurewebsites.net/](https://webauthntest.azurewebsites.net/), zadejte přihlašovací údaje pro testovací účet, připojte podezřelý klíč zabezpečení, vyberte tlačítko **+** v pravém horním rohu obrazovky, klikněte na vytvořit a Projděte si proces vytváření. Pokud se tento scénář nepovede, může být zařízení vadné. |
 
 ## <a name="next-steps"></a>Další kroky
 

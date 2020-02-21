@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 4d9ea8c7cc64a27ec6033ff084d5771328f89699
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: f27ad43fabbba92f97a4035b00f72a8a4af4cc5c
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714670"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500219"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Core s konfigurací aplikace
 
@@ -52,7 +52,7 @@ K vytvoření nového projektu konzolové aplikace .NET Core použijete [rozhran
 1. Přidejte odkaz na `Microsoft.Extensions.Configuration.AzureAppConfiguration` balíček NuGet spuštěním následujícího příkazu:
 
     ```CLI
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 3.0.0-preview-011100001-1152
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
     ```
 
 2. Spusťte následující příkaz pro obnovení balíčků pro váš projekt:

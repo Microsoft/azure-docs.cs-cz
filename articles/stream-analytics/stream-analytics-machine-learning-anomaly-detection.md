@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: e29ac6671d71ea02b432c9843541796984737c8b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459611"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525528"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Detekce anomálií v Azure Stream Analytics
 
@@ -21,6 +21,12 @@ K dispozici v cloudu i v Azure IoT Edge Azure Stream Analytics nabízí integrov
 Modely strojového učení předpokládají jednotnou ukázkovou časovou řadu. Pokud časová řada není jednotná, můžete před vyvoláním detekce anomálií vložit krok agregace s bubnovým oknem.
 
 Operace Machine Learningu v tuto chvíli nepodporují sezónnost trendy ani kovariate korelace.
+
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Detekce anomálií pomocí strojového učení v Azure Stream Analytics
+
+Následující video ukazuje, jak detekovat anomálii v reálném čase pomocí funkcí strojového učení v Azure Stream Analytics. 
+
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Real-Time-ML-Based-Anomaly-Detection-In-Azure-Stream-Analytics/player]
 
 ## <a name="model-behavior"></a>Chování modelu
 
@@ -148,15 +154,9 @@ Vzorový kód pro spuštění výše uvedených konfigurací, které nejsou rozd
 ### <a name="identifying-bottlenecks"></a>Identifikace kritických bodů
 Pomocí podokna metrik v Azure Stream Analytics úlohy můžete identifikovat kritická místa ve vašem kanálu. Zkontrolujte **vstupní/výstupní události** pro propustnost a ["zpoždění vodoznaku"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) nebo **nevyřízené události** , abyste viděli, jestli úloha nepracuje se vstupní sazbou. V případě metrik centra událostí vyhledejte **omezené požadavky** a odpovídajícím způsobem upravte prahové jednotky. V případě Cosmos DB metriky si přečtěte **maximální počet spotřebovaných ru/s na rozsah klíče oddílu** propustnost, abyste zajistili, že rozsahy klíčů oddílu budou jednotně spotřebovány. V případě služby Azure SQL DB Sledujte **protokol IO** a **CPU**.
 
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>Detekce anomálií pomocí strojového učení v Azure Stream Analytics
-
-Následující video ukazuje, jak detekovat anomálii v reálném čase pomocí funkcí strojového učení v Azure Stream Analytics. 
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Anomaly-detection-using-machine-learning-in-Azure-Stream-Analytics/player]
-
 ## <a name="next-steps"></a>Další kroky
 
-* [Úvod do služby Azure Stream Analytics](stream-analytics-introduction.md)
+* [Úvod do Azure Stream Analytics](stream-analytics-introduction.md)
 * [Začínáme používat službu Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Škálování služby Stream Analytics](stream-analytics-scale-jobs.md)
 * [Referenční příručka k jazyku Azure Stream Analytics Query Language](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

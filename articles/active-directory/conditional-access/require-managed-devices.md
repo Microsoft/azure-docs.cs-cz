@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a16d28f31887c8bedcc95424382e674e037450e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 66e94393bef942d7bfad41a7dccc8b651696d4af
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468401"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484515"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování spravovaných zařízení pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
@@ -24,14 +24,14 @@ V cloudu, který je mobilní a celosvětový, Azure Active Directory (Azure AD) 
 
 Tento článek vysvětluje, jak můžete nakonfigurovat zásady podmíněného přístupu, které vyžadují spravovaná zařízení pro přístup k určitým cloudovým aplikacím ve vašem prostředí. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Vyžadování spravovaných zařízení pro cloudový přístup k Azure AD je spojeno s **podmíněným přístupem** a **správou zařízení Azure AD** . Pokud jste ještě neseznámili s jednou z těchto oblastí, měli byste si nejdřív přečíst následující témata:
 
 - **[Podmíněný přístup v Azure Active Directory](../active-directory-conditional-access-azure-portal.md)** – Tento článek poskytuje koncepční přehled podmíněného přístupu a související terminologie.
 - **[Seznámení se správou zařízení v Azure Active Directory](../devices/overview.md)** – Tento článek poskytuje přehled různých možností, které je třeba získat v rámci organizačního řízení. 
 
->[!IMPORTANT] 
+>[!NOTE] 
 > Doporučujeme použít zásady podmíněného přístupu na základě zařízení Azure AD, abyste získali nejlepší vynucování po počátečním ověření zařízení. Patří sem uzavírací relace, pokud zařízení nedodržuje předpisy a tok kódu zařízení.
 
 

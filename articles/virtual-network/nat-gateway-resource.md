@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/19/2020
+ms.date: 02/20/2020
 ms.author: allensu
-ms.openlocfilehash: a118d560541595e26c80547dd641968c518aa353
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
-ms.translationtype: HT
+ms.openlocfilehash: 3ae1e3e595e9be9709e8a3d4808100d7f0e48eb8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485008"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526361"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT (Public Preview)
 
@@ -57,7 +57,7 @@ Trasy definované uživatelem nejsou nutné.
 
 Prostředek je navržený tak, aby byl jednoduchý, jak můžete vidět v následujícím příkladu Azure Resource Manager ve formátu podobném šabloně.  Tento formát podobný tomuto: slouží k znázornění konceptů a struktury.  Upravte příklad podle svých potřeb.  Tento dokument není určený jako kurz.
 
-Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Revize 
+Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Revidovat 
 
 <p align="center">
   <img src="media/nat-overview/flow-map.svg" width="256" title="Virtual Network objektového modelu NAT">
@@ -339,7 +339,6 @@ Port SNAT je k dispozici pro opakované použití na stejnou cílovou IP adresu 
 
 - Překlad adres (NAT) je kompatibilní s veřejnou IP adresou SKU, předponou veřejné IP adresy a prostředky nástroje pro vyrovnávání zatížení.   Základní prostředky (například základní nástroj pro vyrovnávání zatížení) a jakékoli produkty, které jsou z nich odvozené, nejsou kompatibilní se službou NAT.  Základní prostředky musí být umístěné v podsíti, která není nakonfigurovaná s překladem adres (NAT).
 - Rodina adres IPv4 je podporovaná.  Překlad adres (NAT) nekomunikuje s řadou IPv6 adres.
-- NSG v podsíti nebo síťové kartě se neuplatňují pro odchozí toky do veřejných koncových bodů pomocí překladu adres (NAT).
 - Protokolování toku NSG se při použití překladu adres (NAT) nepodporuje.
 - Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
 
@@ -347,7 +346,7 @@ Port SNAT je k dispozici pro opakované použití na stejnou cílovou IP adresu 
 
 Podle [pokynů povolte své předplatné](nat-overview.md#public-preview-participation).
 
-## <a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Názor
 
 Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Public Preview](https://aka.ms/natfeedback) s námi.  A můžete navrhnout a hlasovat o tom, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
 

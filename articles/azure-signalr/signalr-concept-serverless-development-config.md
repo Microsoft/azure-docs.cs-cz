@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786771"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523166"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions vývoj a konfigurace pomocí služby Azure Signal Service
 
@@ -27,12 +27,12 @@ V Azure Portal vyhledejte stránku *Nastavení* prostředku služby signaler. Na
 
 ![Režim služby Signal](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
-## <a name="azure-functions-development"></a>Vývoj Azure Functions
+## <a name="azure-functions-development"></a>Vývoj s využitím Azure Functions
 
-Aplikace v reálném čase vytvořená pomocí Azure Functions a služba signalizace Azure obvykle vyžaduje dvě Azure Functions:
+Bezserverová aplikace v reálném čase vytvořená a s využitím Azure Functions a Azure SignalR Service zpravidla vyžaduje dvě funkce Azure Functions:
 
-* Funkce Negotiate, kterou klient volá za účelem získání platného přístupového tokenu služby Signal a adresy URL koncového bodu služby
-* Jedna nebo více funkcí, které odesílají zprávy nebo spravují členství ve skupině
+* Funkci „negotiate“, kterou klient volá k získání adresy URL koncového bodu a platného přístupového tokenu služby SignalR Service
+* Jednu nebo několik funkcí, které odesílají zprávy nebo spravují členství ve skupinách
 
 ### <a name="negotiate-function"></a>funkce Negotiate
 
@@ -40,7 +40,7 @@ Klientská aplikace vyžaduje pro připojení ke službě Azure Signal Service p
 
 Pomocí funkce Azure aktivované protokolem HTTP a vstupní vazbou *SignalRConnectionInfo* vygenerujte objekt informace o připojení. Funkce musí mít trasu HTTP, která končí na `/negotiate`.
 
-Další informace o tom, jak vytvořit funkci Negotiate, najdete v [referenčních odkazech na vstupní vazby *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service.md#input).
+Další informace o tom, jak vytvořit funkci Negotiate, najdete v [referenčních odkazech na vstupní vazby *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service-input.md).
 
 Další informace o tom, jak vytvořit ověřený token, najdete v tématu [použití ověřování App Service](#using-app-service-authentication).
 
@@ -50,7 +50,7 @@ Pomocí výstupní vazby *signálu* můžete odesílat zprávy klientům připoj
 
 Uživatele lze přidat do jedné nebo více skupin. Výstupní vazbu *signálu* můžete také použít k přidání nebo odebrání uživatelů do nebo ze skupin.
 
-Další informace najdete v odkazu na [výstupní vazbu *signálu* ](../azure-functions/functions-bindings-signalr-service.md#output).
+Další informace najdete v odkazu na [výstupní vazbu *signálu* ](../azure-functions/functions-bindings-signalr-service-output.md).
 
 ### <a name="signalr-hubs"></a>Rozbočovače signálu
 
@@ -100,7 +100,7 @@ Existuje však několik zvláštních doporučení pro aplikace, které použív
 
 Klient jazyka JavaScript/TypeScript zpřístupňuje vyjednávání připojení požadavky HTTP na funkci Negotiate. Když je klientská aplikace hostovaná v jiné doméně než aplikace funkce Azure, musí být ve Function App povolená možnost sdílení prostředků mezi zdroji (CORS), jinak se požadavky zablokuje v prohlížeči.
 
-#### <a name="localhost"></a>Místního
+#### <a name="localhost"></a>místního
 
 Při spuštění aplikace Function App na místním počítači můžete přidat část `Host` do *Local. Settings. JSON* a povolit CORS. V části `Host` přidejte dvě vlastnosti:
 

@@ -6,7 +6,7 @@ documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41a4eb565f49b75b64cc072d3017c41000154e2a
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: e48388d4e15923c1f3e66321132197670b30c6b9
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066821"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522556"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -123,7 +123,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 |userPrincipalName (Hlavní název uživatele)|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|.\*@domain.com |Všichni uživatelé, kteří mají userPrincipal @domain.com domény, budou v oboru pro zřizování.|
 |userPrincipalName (Hlavní název uživatele)|NESHODA S REGULÁRNÍM VÝRAZEM|.\*@domain.com|Pro všechny uživatele, kteří mají userPrincipal @domain.com domény, budou mimo rozsah zřizování.|
 |Oddělení|ROVNÁ|prodej|Všichni uživatelé z prodejního oddělení jsou v oboru pro zřizování.|
-|workerID|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|(1[0-9][0-9][0-9][0-9][0-9][0-9])| Všichni zaměstnanci s workerIDs mezi 1000000 a 2000000 jsou v oboru pro zřizování.|
+|WorkerID|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|(1[0-9][0-9][0-9][0-9][0-9][0-9])| Všichni zaměstnanci s workerIDs mezi 1000000 a 2000000 jsou v oboru pro zřizování.|
 
 ## <a name="related-articles"></a>Související články
 * [Automatizace zřizování a rušení uživatelů pro aplikace SaaS](../app-provisioning/user-provisioning.md)

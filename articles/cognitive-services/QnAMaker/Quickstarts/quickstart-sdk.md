@@ -4,12 +4,12 @@ description: V tomto rychlém startu se dozvíte, jak vytvořit a spravovat znal
 ms.topic: quickstart
 ms.date: 01/13/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 730c58dbbe44fe56c0d5bc8f377a2c547b691351
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 33725eb54e8a78547f4bf82d6a8f6fae58fdb5cb
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75946352"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524406"
 ---
 # <a name="quickstart-create-and-manage-knowledge-base"></a>Rychlý Start: vytvoření a Správa znalostní báze
 
@@ -19,12 +19,12 @@ Začněte s klientskou knihovnou QnA Maker. Pomocí těchto kroků nainstalujete
 [!INCLUDE [Get intent with C# and REST](../includes/quickstart-sdk-csharp.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-python"
-[!INCLUDE [Get intent with Python and REST](../includes/quickstart-sdk-python.md)]
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [Get intent with Node.js and REST](../includes/quickstart-sdk-nodejs.md)]
 ::: zone-end
 
-::: zone pivot="programming-language-nodejs"
-[!INCLUDE [Get intent with Node.js and REST](../includes/quickstart-sdk-nodejs.md)]
+::: zone pivot="programming-language-python"
+[!INCLUDE [Get intent with Python and REST](../includes/quickstart-sdk-python.md)]
 ::: zone-end
 
 ## <a name="next-steps"></a>Další kroky

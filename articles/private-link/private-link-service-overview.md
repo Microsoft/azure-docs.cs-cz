@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: d2313bfc47026ed9655d0ca25f0a0fdf3f86d8a5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191085"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500410"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co je služba privátního propojení Azure?
 
@@ -98,7 +98,7 @@ Akci schválení připojení lze automatizovat pomocí vlastnosti automatického
 
 ## <a name="getting-connection-information-using-tcp-proxy-v2"></a>Získání informací o připojení pomocí proxy serveru TCP v2
 
-Při použití služby Private Link je zdrojová IP adresa paketů přicházejících z privátního koncového bodu přeložena (NAT) na straně poskytovatele služeb pomocí IP adresy NAT přidělené z virtuální sítě poskytovatele. Aplikace proto obdrží přidělenou IP adresu překladu adres (NAT) místo skutečné zdrojové IP adresy příjemců služby. Pokud vaše aplikace potřebuje skutečnou zdrojovou IP adresu ze strany spotřebitele, můžete ve službě povolit protokol proxy a načíst informace z hlavičky protokolu proxy serveru. Kromě zdrojové IP adresy je v záhlaví protokolu proxy také identifikátor LinkID privátního koncového bodu. Kombinace zdrojové IP adresy a identifikátor LinkID může pomáhat poskytovatelům služeb jednoznačně identifikovat jejich příjemce. Další informace o protokolu proxy najdete tady. 
+Při použití služby Private Link je zdrojová IP adresa paketů přicházejících z privátního koncového bodu přeložena (NAT) na straně poskytovatele služeb pomocí IP adresy NAT přidělené z virtuální sítě poskytovatele. Aplikace proto obdrží přidělenou IP adresu překladu adres (NAT) místo skutečné zdrojové IP adresy příjemců služby. Pokud vaše aplikace potřebuje skutečnou zdrojovou IP adresu ze strany spotřebitele, můžete ve službě povolit protokol proxy a načíst informace z hlavičky protokolu proxy serveru. Kromě zdrojové IP adresy je v záhlaví protokolu proxy také identifikátor LinkID privátního koncového bodu. Kombinace zdrojové IP adresy a identifikátor LinkID může pomáhat poskytovatelům služeb jednoznačně identifikovat jejich příjemce. Další informace o protokolu proxy najdete [tady](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt). 
 
 Tyto informace jsou zakódovány pomocí vlastního vektoru typu s délkou Value (TLV) následujícím způsobem:
 

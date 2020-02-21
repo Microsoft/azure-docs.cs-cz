@@ -1,5 +1,5 @@
 ---
-title: Nástroje pro zvýšení produktivity na DSVM
+title: Tipy pro vyšší produktivitu
 titleSuffix: Azure Data Science Virtual Machine
 description: Přečtěte si o kancelářských nástrojích pro datové vědy Virtual Machines.
 keywords: obsáhlý learning, AI, nástrojů pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy, vědecké zpracování týmových dat
@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/20/2019
-ms.openlocfilehash: df415ce06afa8be80c0e0ed4375950e20474bcbb
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cfafd680e4f4907248d3d79a504aa04696988021
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615473"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526072"
 ---
 # <a name="productivity-tools-on-the-data-science-virtual-machine"></a>Nástroje pro zvýšení produktivity na Data Science Virtual Machine
 

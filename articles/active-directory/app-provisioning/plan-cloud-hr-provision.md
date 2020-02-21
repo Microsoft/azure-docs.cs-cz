@@ -6,18 +6,18 @@ author: martincoetzer
 manager: CelesteDG
 tags: azuread
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha
-ms.openlocfilehash: 10bd6f1f8582ba048a3f77ff329d90f1b4463675
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 28abe2dfa5a1a13ba09e20202180cb5e47d94072
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066418"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522428"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Plánování aplikace cloudového HR pro Azure Active Directory zřizování uživatelů
 
@@ -80,7 +80,7 @@ Pokud chcete nakonfigurovat aplikaci cloudového HR na integraci zřizování u�
 
 Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a je zajištěná v rámci služby Active Directory nebo Azure AD, potřebujete také platnou licenci pro předplatného Azure AD Premium P1 nebo vyšší. Jakýkoli nesprávný počet licencí vlastněných v aplikaci cloudového HR může vést k chybám při zřizování uživatele.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 - Přístup globálního správce služby Azure AD ke konfiguraci Azure AD Connectho agenta zřizování.
 - Instance testu a výroby aplikace cloudového HR.
@@ -99,7 +99,7 @@ Pro každého uživatele, který se bude nacházet z aplikace cloudového HR a j
 | Nejčastější dotazy | [Automatizované zřizování uživatelů](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Zřizování z Workday do Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
-### <a name="solution-architecture"></a>Architektura řešení
+### <a name="solution-architecture"></a>Architektury řešení
 
 Následující příklad popisuje architekturu řešení zřizování koncových uživatelů pro běžná hybridní prostředí a zahrnuje:
 
@@ -396,7 +396,7 @@ Agent Azure AD Connect zřizování nainstalovaný na Windows serveru vytvoří 
 
 Služba zřizování Azure AD negeneruje sestavy, provádí analýzy ani neposkytuje přehledy po dobu 30 dnů, protože služba neukládá, nezpracovává ani neuchovává žádná data déle než 30 dnů.
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Řešení problémů
 
 Chcete-li vyřešit všechny problémy, které se mohou během zřizování vypnout, přečtěte si následující články:
 
