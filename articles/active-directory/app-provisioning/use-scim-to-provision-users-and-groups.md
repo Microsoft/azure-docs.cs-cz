@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7c8bdb7236ed0a3a12bae5050e564afe0b68cde
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
-ms.translationtype: MT
+ms.openlocfilehash: 9a44cf9aa5b3287a01617be6439cd04b9a5caa73
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461228"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484226"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure Active Directory (Azure AD)
 
@@ -63,7 +63,7 @@ Každá aplikace vyžaduje pro vytvoření uživatele nebo skupiny jiné atribut
 |workMail|E-maily [typ EQ "Work"]. Value|Pošta|
 |Správce|Správce|Správce|
 |tag|urn: IETF: params: SCIM: schémata: rozšíření: 2.0: CustomExtension: tag|extensionAttribute1|
-|status|aktivní|isSoftDeleted (vypočtená hodnota neuložená na uživateli)|
+|stav|aktivní|isSoftDeleted (vypočtená hodnota neuložená na uživateli)|
 
 Výše definované schéma by představovalo použití datové části JSON níže. Všimněte si, že kromě atributů vyžadovaných pro aplikaci obsahuje reprezentace JSON požadované atributy ID, externalId a meta.
 
@@ -145,7 +145,7 @@ V dokumentu RFC SCIM je definováno několik koncových bodů. Můžete začít 
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>Krok 2: pochopení implementace Azure AD SCIM
 > [!IMPORTANT]
-> Chování implementace Azure AD SCIM se naposledy aktualizovalo 18. prosince 2018. Informace o tom, co se změnilo, najdete v článku [dodržování předpisů protokolu SCIM 2,0 ve službě Azure AD pro zřizování uživatelů](../manage-apps/application-provisioning-config-problem-scim-compatibility.md).
+> Chování implementace Azure AD SCIM se naposledy aktualizovalo 18. prosince 2018. Informace o tom, co se změnilo, najdete v článku [dodržování předpisů protokolu SCIM 2,0 ve službě Azure AD pro zřizování uživatelů](application-provisioning-config-problem-scim-compatibility.md).
 
 Pokud vytváříte aplikaci, která podporuje rozhraní API pro správu uživatelů SCIM 2,0, v této části najdete podrobné informace o implementaci klienta Azure AD SCIM. Také ukazuje, jak modelovat zpracování požadavků protokolu SCIM a jejich odpovědi. Po implementaci koncového bodu SCIM ho můžete otestovat pomocí postupu popsaného v předchozí části.
 
@@ -560,7 +560,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 * Aktualizace žádosti o opravu skupiny by měla v odpovědi vracet *HTTP 204 bez obsahu* . Vrácení textu se seznamem všech členů není vhodné.
 * Není nutné podporovat vrácení všech členů skupiny.
 
-#### <a name="create-group"></a>Vytvoření skupiny
+#### <a name="create-group"></a>Vytvořit skupinu
 
 ##### <a name="request-7"></a>Request
 
@@ -1488,7 +1488,7 @@ Abychom vám pomohli při zvyšování povědomí a vyžádání naší společn
 * **Připravenost na prodej a zákaznickou podporu.** Zajistěte, aby si týmy pro prodej a podporu byly vědomy a mohli mluvit s možnostmi integrace. Stručně váš tým pro prodej a podporu jim poskytne Nejčastější dotazy a integruje integraci do vašich prodejních materiálů. 
 * **Příspěvek na blogu nebo tiskovou verzi.** Vytvořte Blogový příspěvek nebo stiskněte vydanou verzi, která popisuje společnou integraci, výhody a postupy, jak začít. [Příklad: Imprivata and Azure Active Directory Press vydaná verze](https://www.imprivata.com/company/press/imprivata-introduces-iam-cloud-platform-healthcare-supported-microsoft) 
 * **Sociální média.** Využijte své sociální média, jako je Twitter, Facebook nebo LinkedIn, a Propagujte integraci s vašimi zákazníky. Nezapomeňte zahrnout @AzureAD, abychom mohli vyložit svůj příspěvek. [Příklad: Imprivata Twitter post](https://twitter.com/azuread/status/1123964502909779968)
-* **Marketingový Web.** Vytvořte nebo aktualizujte své marketingové stránky (například stránka integrace, stránka pro partnery, ceny atd.), aby zahrnovaly dostupnost společné integrace. [Příklad: stránka integrace Pingboard](https://pingboard.com/org-chart-for), stránka [integrace Smartsheet](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), [Stránka s cenami Monday.com](https://monday.com/pricing/) 
+* **Marketingový Web.** Umožňuje vytvořit nebo aktualizovat marketingové stránky (například stránku integrace, stránku pro partnery, ceny atd.), aby zahrnovaly dostupnost společné integrace. [Příklad: stránka integrace Pingboard](https://pingboard.com/org-chart-for), stránka [integrace Smartsheet](https://www.smartsheet.com/marketplace/apps/microsoft-azure-ad), [Stránka s cenami Monday.com](https://monday.com/pricing/) 
 * **Technickou dokumentaci.** Vytvořte článek centra pro nápovědu nebo technickou dokumentaci, jak mohou zákazníci začít. [Příklad: integrace zástupné + Microsoft Azure Active Directory.](https://envoy.help/en/articles/3453335-microsoft-azure-active-directory-integration/
 ) 
 * **Komunikace se zákazníky.** Upozorní zákazníky na novou integraci prostřednictvím zákaznické komunikace (měsíční bulletiny, e-mailové kampaně, poznámky k verzi produktu). 

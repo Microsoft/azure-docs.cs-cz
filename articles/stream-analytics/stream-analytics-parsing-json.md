@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: ac06521df38bdc91ca717d888c73cd541576014d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905449"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484583"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analyzovat data JSON a Avro v Azure Stream Analytics
 
@@ -63,7 +63,7 @@ FROM input
 
 Výsledek je následující:
 
-|DeviceID|připojí|Dlouhé|Teplota|Verze|
+|ID zařízení|připojí|Dlouhé|Temperature|Version|
 |-|-|-|-|-|
 |12345|47|122|80|1.2.45|
 
@@ -80,7 +80,7 @@ FROM input
 
 Výsledek je následující:
 
-|DeviceID|připojí|Dlouhé|
+|ID zařízení|připojí|Dlouhé|
 |-|-|-|
 |12345|47|122|
 
@@ -123,7 +123,7 @@ WHERE
 
 Výsledek je následující:
 
-|DeviceID|senzor|Zadaná hodnota alertmessage|
+|ID zařízení|Senzor|Zadaná hodnota alertmessage|
 |-|-|-|
 |12345|Vlhkost|Výstraha: senzor nad prahovou hodnotou|
 
@@ -144,9 +144,9 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 
 Výsledek je následující:
 
-|DeviceID|senzor|Zadaná hodnota alertmessage|
+|ID zařízení|Senzor|Zadaná hodnota alertmessage|
 |-|-|-|
-|12345|Teplota|80|
+|12345|Temperature|80|
 |12345|Vlhkost|70|
 |12345|CustomSensor01|5|
 |12345|CustomSensor02|99|
@@ -167,6 +167,38 @@ WITH Stage0 AS
 
 SELECT DeviceID, PropertyValue AS Temperature INTO TemperatureOutput FROM Stage0 WHERE PropertyName = 'Temperature'
 SELECT DeviceID, PropertyValue AS Humidity INTO HumidityOutput FROM Stage0 WHERE PropertyName = 'Humidity'
+```
+
+### <a name="parse-json-record-in-sql-reference-data"></a>Analyzovat záznam JSON v referenčních datech SQL
+Při použití Azure SQL Database jako referenčních dat v rámci úlohy je možné mít sloupec, který má data ve formátu JSON. Příklad je uveden níže.
+
+|ID zařízení|Data|
+|-|-|
+|12345|{"Key": "hodnota1"}|
+|54321|{"Key": "hodnota2"}|
+
+Záznam JSON můžete analyzovat ve sloupci *dat* tak, že napíšete jednoduchou uživatelsky definovanou funkci JavaScriptu.
+
+```javascript
+function parseJson(string) {
+return JSON.parse(string);
+}
+```
+
+Pak můžete vytvořit krok v dotazu Stream Analytics, jak je znázorněno níže, a získat tak přístup k polím záznamů JSON.
+
+ ```SQL
+ WITH parseJson as
+ (
+ SELECT DeviceID, udf.parseJson(sqlRefInput.Data) as metadata,
+ FROM sqlRefInput
+ )
+ 
+ SELECT metadata.key
+ INTO output
+ FROM streamInput
+ JOIN parseJson 
+ ON streamInput.DeviceID = parseJson.DeviceID
 ```
 
 ## <a name="array-data-types"></a>Datové typy polí
@@ -248,7 +280,7 @@ Výsledek je následující:
 |DeviceId|ArrayIndex|ArrayValue|
 |-|-|-|
 |12345|0|12|
-|12345|1\. místo|-5|
+|12345|1|-5|
 |12345|2|0|
 
 ```SQL
@@ -265,7 +297,7 @@ Výsledek je následující:
 |DeviceId|smKey|smValue|
 |-|-|-|
 |12345|Výrobce|ABC|
-|12345|Verze|1.2.45|
+|12345|Version|1.2.45|
 
 Pokud se extrahovaná pole musí zobrazit ve sloupcích, je možné datovou sadu pivotovat pomocí syntaxe [with](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics) kromě operace [Join](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) . Toto spojení bude vyžadovat podmínku [časové hranice](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) , která zabrání duplikaci:
 

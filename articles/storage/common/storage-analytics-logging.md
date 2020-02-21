@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 3b61e8680ef2484b1ad42837711adef171fdde25
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882637"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484889"
 ---
 # <a name="azure-storage-analytics-logging"></a>Protokolování analýzy Azure Storage
 
-Analýza úložiště protokoluje podrobné informace o úspěšných a neúspěšných požadavcích službě úložiště. Tyto informace lze použít k monitorování jednotlivých požadavků a k diagnostice problémů se službou úložiště. Požadavky jsou protokolovány na základě nejlepší úsilí.
+Analýza úložiště protokoluje podrobné informace o úspěšných a neúspěšných požadavcích na službu úložiště. Tyto informace je možné použít k monitorování jednotlivých požadavků a diagnostice problémů se službou úložiště. Požadavky jsou protokolovány na základě nejlepší úsilí.
 
- Protokolování Analýza úložiště není pro váš účet úložiště standardně povolené. Můžete ji povolit v [Azure Portal](https://portal.azure.com/). Podrobnosti najdete v tématu [monitorování účtu úložiště v Azure Portal](/azure/storage/storage-monitor-storage-account). Analýza úložiště můžete také povolit programově prostřednictvím REST API nebo klientské knihovny. K povolení Analýza úložiště pro každou službu použijte vlastnosti [získat službu BLOB](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)Service, [získat vlastnosti služby front](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)a [získat operace vlastností služby Table](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) Service.
+ Protokolování Analýzy úložiště ve výchozím nastavení není pro váš účet úložiště povolené. Můžete ji povolit v [Azure Portal](https://portal.azure.com/). Podrobnosti najdete v tématu [monitorování účtu úložiště v Azure Portal](/azure/storage/storage-monitor-storage-account). Analýza úložiště můžete také povolit programově prostřednictvím REST API nebo klientské knihovny. K povolení Analýza úložiště pro každou službu použijte vlastnosti [získat službu BLOB](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API)Service, [získat vlastnosti služby front](https://docs.microsoft.com/rest/api/storageservices/Get-Queue-Service-Properties)a [získat operace vlastností služby Table](https://docs.microsoft.com/rest/api/storageservices/Get-Table-Service-Properties) Service.
 
  Položky protokolu jsou vytvořeny pouze v případě, že jsou zadány požadavky na koncový bod služby. Pokud například účet úložiště obsahuje aktivitu v koncovém bodu objektu blob, ale ne ve svých koncových bodech tabulky nebo fronty, vytvoří se jenom protokoly týkající se Blob service.
 
 > [!NOTE]
->  Protokolování Analýza úložiště je aktuálně k dispozici pouze pro služby objektů blob, Queue a Table. Účet Premium Storage se ale nepodporuje.
+>  Protokolování Analýzy úložiště je v současné době dostupné pouze pro služby Blob a Table service a Službu front. Účet úložiště Premium se však nepodporuje.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -138,7 +138,7 @@ Můžete zadat služby úložiště, které chcete protokolovat, a dobu uchován
 
 ### <a name="enable-storage-logging-using-powershell"></a>Povolení protokolování úložiště pomocí prostředí PowerShell  
 
- Pomocí prostředí PowerShell na místním počítači můžete nakonfigurovat protokolování úložiště ve vašem účtu úložiště pomocí rutiny Azure PowerShell rutiny **Get-AzureStorageServiceLoggingProperty** pro načtení aktuálních nastavení a rutiny **. Set-AzureStorageServiceLoggingProperty** pro změnu aktuálního nastavení.  
+ Pomocí PowerShellu na místním počítači můžete nakonfigurovat protokolování úložiště ve vašem účtu úložiště pomocí rutiny Azure PowerShell rutiny **Get-AzureStorageServiceLoggingProperty** pro načtení aktuálních nastavení a rutinou **set-AzureStorageServiceLoggingProperty** pro změnu aktuálního nastavení.  
 
  Rutiny, které řídí protokolování úložiště, používají parametr **LoggingOperations** , který je řetězec obsahující seznam typů požadavků oddělených čárkami, které se mají protokolovat. Tři možné typy požadavků jsou **čtení**, **zápis**a **odstranění**. Chcete-li přepnout protokolování, použijte hodnotu **none** pro parametr **LoggingOperations** .  
 
@@ -160,7 +160,7 @@ Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations non
 
  Kromě použití Azure Portal nebo rutin Azure PowerShell k řízení protokolování úložiště můžete použít také jedno z rozhraní API pro Azure Storage. Pokud například používáte jazyk .NET, můžete použít knihovnu klienta úložiště.  
 
- Třídy **CloudBlobClient**, **CloudQueueClient**a **cloudtableclient vám** mají metody jako **SetServiceProperties** a **SetServicePropertiesAsync** , které přijímají objekt **ServiceProperties** jako ukazatele. K nakonfigurování protokolování úložiště můžete použít objekt **ServiceProperties** . Například následující C# fragment kódu ukazuje, jak změnit protokol, který je protokolován, a dobu uchování pro protokolování fronty:  
+ Třídy **CloudBlobClient**, **CloudQueueClient**a **cloudtableclient vám** mají metody jako **SetServiceProperties** a **SetServicePropertiesAsync** , které přijímají objekt **ServiceProperties** jako parametr. K nakonfigurování protokolování úložiště můžete použít objekt **ServiceProperties** . Například následující C# fragment kódu ukazuje, jak změnit protokol, který je protokolován, a dobu uchování pro protokolování fronty:  
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);  
@@ -180,6 +180,9 @@ queueClient.SetServiceProperties(serviceProperties);
 ## <a name="download-storage-logging-log-data"></a>Stáhnout data protokolu protokolování úložiště
 
  Pokud chcete zobrazit a analyzovat data protokolu, měli byste si stáhnout objekty blob, které obsahují data protokolu, která vás zajímají, do místního počítače. Mnoho nástrojů pro procházení úložiště vám umožní stahovat objekty BLOB z účtu úložiště. k stažení dat protokolu můžete použít taky Azure Storage týmu [AzCopy](storage-use-azcopy-v10.md) příkazového řádku Azure Copy.  
+ 
+>[!NOTE]
+> Kontejner `$logs` není integrován s Event Grid, takže nebudete dostávat oznámení, když budou soubory protokolu zapisovány. 
 
  Abyste se ujistili, že jste si stáhli data protokolu, která vás zajímají, a nestahovat stejná data protokolu více než jednou:  
 

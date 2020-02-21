@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/24/2019
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: e833ca92004c678808ec5e294de2df7c90121be7
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: ce2b4200496938e6cffb935207df8c7027eaf37a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835113"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486130"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Použití Azure CLI ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 (Preview)
 
@@ -42,7 +42,7 @@ V tomto článku se dozvíte, jak pomocí [rozhraní příkazového řádku Azur
    ```
    Pokud je vaše verze rozhraní příkazového řádku Azure nižší než `2.0.67`, nainstalujte novější verzi. Viz [instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-3. Nainstalujete rozšíření `storage-preview`.
+3. Nainstalujte rozšíření `storage-preview`.
 
    ```azurecli
    az extension add -n storage-preview
@@ -77,7 +77,7 @@ Systém souborů funguje jako kontejner pro vaše soubory. Můžete ho vytvořit
 Tento příklad vytvoří systém souborů s názvem `my-file-system`.
 
 ```azurecli
-az storage container create --name my-file-system
+az storage container create --name my-file-system --account-name mystorageaccount
 ```
 
 ## <a name="create-a-directory"></a>Vytvoření adresáře
@@ -198,7 +198,7 @@ Tento příklad odstraní soubor s názvem `my-file.txt`
 az storage blob delete -c my-file-system -b my-file.txt --account-name mystorageaccount 
 ```
 
-## <a name="manage-permissions"></a>Správa oprávnění
+## <a name="manage-permissions"></a>Spravovat oprávnění
 
 Můžete získat, nastavit a aktualizovat přístupová oprávnění adresářů a souborů.
 
@@ -237,6 +237,12 @@ Tento příklad nastavuje seznam řízení přístupu v adresáři pro vlastníc
 
 ```azurecli
 az storage blob directory access set -a "user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
+```
+
+Tento příklad nastaví *výchozí* seznam řízení přístupu v adresáři pro vlastnícího uživatele, vlastnící skupinu nebo jiné uživatele a pak vytiskne seznam řízení přístupu do konzoly.
+
+```azurecli
+az storage blob directory access set -a "default:user::rw-,group::rw-,other::-wx" -d my-directory -c my-file-system --account-name mystorageaccount
 ```
 
 K nastavení seznamu ACL **souboru**použijte příkaz `az storage blob access set`. 
@@ -299,7 +305,7 @@ Tento příklad ukazuje všechna uživatelsky definovaná metadata pro adresář
 az storage blob directory metadata show -c my-file-system -d my-directory --account-name mystorageaccount
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Ukázka](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview)
 * [Mapování Gen1 na Gen2](https://github.com/Azure/azure-cli-extensions/tree/master/src/storage-preview#mapping-from-adls-gen1-to-adls-gen2)

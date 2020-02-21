@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/23/2020
 ms.author: aahi
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 87cf5f226a8b2d1efcc0ee967d84f6e0002cb03d
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 79dd6160b65469d6a44167913adb7e319f0f583a
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76987879"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525341"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Rychlý Start: použití klientské knihovny Analýza textu
 
@@ -24,8 +24,8 @@ Začněte s klientskou knihovnou Analýza textu. Pomocí těchto kroků nainstal
 
 Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
-* Analýza subjektivního hodnocení
-* Detekce jazyka
+* Analýza mínění
+* Rozpoznávání jazyka
 * Rozpoznávání entit
 * Extrakce klíčových frází
 
@@ -37,17 +37,6 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-> [!IMPORTANT]
-> * Nejnovější verze Preview rozhraní API pro analýzu textu je `3.0-preview`, která zahrnuje verzi Public Preview pro vylepšené [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Nejnovější stabilní verze je `2.1`.
->    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
-> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže. 
-
-[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 
 ::: zone-end
 
@@ -73,6 +62,17 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
 ::: zone-end
 
+::: zone pivot="programming-language-python"
+
+> [!IMPORTANT]
+> * Nejnovější verze Preview rozhraní API pro analýzu textu je `3.0-preview`, která zahrnuje verzi Public Preview pro vylepšené [Analýza mínění](../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) a [rozpoznávání pojmenovaných entit (ner)](../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features). Nejnovější stabilní verze je `2.1`.
+>    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
+> * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže. 
+
+[!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
+
+::: zone-end
+
 ::: zone pivot="programming-language-other"
 
 ## <a name="additional-language-support"></a>Podpora dalších jazyků
@@ -81,8 +81,8 @@ Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovac�
 
 | Jazyk | Dostupná verze | 
 |----------|------------------------|
-| Ruby     | [Verze 2,1](ruby-sdk.md)          | 
-| Go       | [Verze 2,1](go-sdk.md)          | 
+| Ruby     | [Verze 2,1](ruby-sdk.md) | 
+| Přejít       | [Verze 2,1](go-sdk.md) | 
 
 ::: zone-end
 

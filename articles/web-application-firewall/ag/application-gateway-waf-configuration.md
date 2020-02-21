@@ -4,15 +4,15 @@ description: Tento článek obsahuje informace o omezeních velikosti požadavk�
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/17/2019
+ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: cfde1355ef5e5a2f9033456ac4089ce3ca3f9d72
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7244788bbc7431c7f26363b2852babb72d5697e9
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839958"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526786"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Omezení velikosti a seznamů vyloučení požadavků firewallu webových aplikací
 
@@ -26,7 +26,7 @@ Seznamy vyloučení WAF umožňují vynechat určité atributy žádostí z vyho
 
 Následující atributy lze přidat do seznamů vyloučení podle názvu. Hodnoty zvoleného pole nejsou vyhodnoceny proti pravidlům WAF, ale jejich názvy jsou stále (viz příklad 1 níže, hodnota hlavičky uživatelského agenta je vyloučena z vyhodnocení WAF). Seznamy vyloučení odstraňují kontrolu hodnoty pole.
 
-* Hlavičky požadavku
+* Záhlaví žádostí
 * Soubory cookie požadavků
 * Název atributu žádosti (args) se dá přidat jako element vyloučení, třeba:
 
@@ -91,7 +91,13 @@ Takže pokud je adresa URL `http://www.contoso.com/?user%281%29=fdafdasfda` pře
 Firewall webových aplikací umožňuje konfigurovat omezení velikosti požadavků v rámci dolních a horních mezí. K dispozici jsou následující dvě konfigurace omezení velikosti:
 
 - Pole Maximální velikost textu požadavku je zadáno v kilobajtech a řídí celkové omezení velikosti požadavku bez jakýchkoli nahrávání souborů. Toto pole může být v rozsahu od 1 do KB minimálně až 128-maximální hodnota KB. Výchozí hodnota velikosti textu požadavku je 128 KB.
-- Pole limit pro nahrání souboru je zadané v MB a určuje maximální povolenou velikost nahrávání souborů. V tomto poli může být minimální hodnota 1 MB a maximálně 500 MB pro instance velkých SKU, přičemž střední SKU má maximálně 100 MB. Výchozí hodnota pro limit nahrávání souborů je 100 MB.
+- Pole limit pro nahrání souboru je zadané v MB a určuje maximální povolenou velikost nahrávání souborů. Toto pole může mít minimální hodnotu 1 MB a následující maximum:
+
+   - 100 MB pro brány v1 Medium WAF
+   - 500 MB pro velké WAF brány v1
+   - 750 MB pro WAF brány v2 
+
+ Výchozí hodnota pro limit nahrávání souborů je 100 MB.
 
 WAF také nabízí konfigurovatelný ovladač pro zapnutí nebo vypnutí kontroly textu žádosti. Ve výchozím nastavení je kontrola textu žádosti povolena. Pokud je kontrola těla požadavku vypnutá, WAF nevyhodnotí obsah zprávy HTTP. V takových případech WAF nadále vynutil pravidla WAF u hlaviček, souborů cookie a identifikátorů URI. Pokud je kontrola těla žádosti vypnutá, pole Maximální velikost textu požadavku se nedá použít a nedá se nastavit. Vypnutí kontroly textu požadavku umožňuje odeslat zprávy větší než 128 KB do WAF, ale tělo zprávy není zkontrolováno pro ohrožení zabezpečení.
 

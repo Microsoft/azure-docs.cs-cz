@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 75811382867b93c778641ece42971018eff39949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: hdinsightactive
+ms.date: 02/18/2020
+ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664625"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484804"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v Azure HDInsight
 
@@ -21,9 +21,8 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
-* Schéma identifikátoru URI pro primární úložiště clusterů. To `wasb://` pro Azure Blob Storage, `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, `wasbs://`identifikátor URI.  Další informace najdete [v tématu o vyžadování zabezpečeného přenosu v Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
+* Schéma identifikátoru URI pro primární úložiště clusterů. To `wasb://` pro Azure Blob Storage, `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, `wasbs://`identifikátor URI.  Další informace najdete v tématu [vyžadování zabezpečeného přenosu v Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Spuštění poznámkového bloku Apache Zeppelin
 
@@ -106,7 +105,7 @@ Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://
 8. Vyberte ikonu **pruhového grafu** pro změnu zobrazení.  Pak vyberte **Nastavení** a proveďte následující změny:
 
    * **Skupiny:**  Přidat **targettemp**.  
-   * **Hodnoty:** první. Odebrat **Datum**.  2. Přidat **temp_diff**.  3.  Změňte agregátor z **Sum** na **AVG**.  
+   * **Hodnoty:** první. Odebrat **Datum**.  2. Přidejte **temp_diff**.  3.  Změňte agregátor z **Sum** na **AVG**.  
 
      Výstup se zobrazí na následujícím snímku obrazovky.
 
@@ -168,9 +167,44 @@ V takovém případě je třeba provést následující kroky, aby bylo možné 
 
 3. Spustí buňku kódu z existujícího poznámkového bloku Zeppelin. Tím se vytvoří nová relace Livy v clusteru HDInsight.
 
-## <a name="seealso"></a>Viz také
+## <a name="general-information"></a>Obecné informace
 
-* [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
+### <a name="validate-service"></a>Ověřit službu
+
+Pokud chcete službu ověřit z Ambari, přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`, kde název_clusteru je název vašeho clusteru.
+
+Chcete-li ověřit službu z příkazového řádku, SSH k hlavnímu uzlu. Přepněte uživatele na Zeppelin pomocí příkazového `sudo su zeppelin`. Stavové příkazy:
+
+|Příkaz |Popis |
+|---|---|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|Stav služby.|
+|`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Verze služby|
+|`ps -aux | grep zeppelin`|Identifikujte PID.|
+
+### <a name="log-locations"></a>Umístění protokolů
+
+|Service |Cesta |
+|---|---|
+|Zeppelin – Server|/usr/hdp/current/zeppelin-server/|
+|Protokoly serveru|/var/log/zeppelin|
+|Interpret konfigurace, Shiro, site. XML, log4j|/usr/HDP/Current/Zeppelin-Server/conf nebo/etc/Zeppelin/conf|
+|Adresář PID|/var/run/zeppelin|
+
+### <a name="enable-debug-logging"></a>Povolit protokolování ladění
+
+1. Přejděte na `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`, kde název_clusteru je název vašeho clusteru.
+
+1. Přejděte do **konfigurace** > **Upřesnit Zeppelin-log4j-Properties** > **log4j_properties_content**.
+
+1. Upravte `log4j.appender.dailyfile.Threshold = INFO` na `log4j.appender.dailyfile.Threshold = DEBUG`.
+
+1. Přidejte `log4j.logger.org.apache.zeppelin.realm=DEBUG`.
+
+1. Uložte změny a restartujte službu.
+
+## <a name="next-steps"></a>Další kroky
+
+[Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scénáře
 

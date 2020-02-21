@@ -1,6 +1,6 @@
 ---
 title: Jak funguje Azure MFA – Azure Active Directory
-description: Azure Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně plní požadavky uživatelů na jednoduchý proces přihlašování.
+description: Azure Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně splňuje požadavky uživatelů na jednoduchý proces přihlašování.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0982f6fb70cd6866af48feab640d5dc36bcb6b28
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 39948214f5bd080be417ed515bea6bff87d3b303
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848676"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484056"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to funguje: Azure Multi-Factor Authentication
 
@@ -32,15 +32,15 @@ Obrázek metod ![koncepčního ověřování](./media/concept-mfa-howitworks/met
 
 Azure Multi-Factor Authentication (MFA) pomáhá chránit přístup k datům a aplikacím a současně zachovává jednoduchost uživatelů. Poskytuje dodatečné zabezpečení tím, že vyžaduje druhou formu ověřování a zajišťuje silné ověřování prostřednictvím řady snadno použitelných [metod ověřování](concept-authentication-methods.md). Na základě rozhodnutí týkajících se konfigurace, která správce provede, se uživatelé můžou nebo nemusí vyvolávat na MFA.
 
-## <a name="how-to-get-multi-factor-authentication"></a>Jak vícefaktorové ověřování získat?
+## <a name="how-to-get-multi-factor-authentication"></a>Jak získat Multi-Factor Authentication?
 
-Vícefaktorové ověřování je součástí následujících nabídek:
+Multi-Factor Authentication se dodává jako součást následujících nabídek:
 
 * **Azure Active Directory Premium** nebo **Microsoft 365 Business** plně vybaveného použití Azure Multi-Factor Authentication pomocí zásad podmíněného přístupu, které vyžadují vícefaktorové ověřování.
 
-* **Azure AD Free** nebo samostatné licence na **Office 365** – pomocí předem vytvořených [zásad ochrany základní úrovně přístupu](../conditional-access/concept-baseline-protection.md) pro uživatele a správce vyžadovat vícefaktorové ověřování.
+* **Azure AD Free** nebo samostatné licence na **Office 365** – použití [výchozích hodnot zabezpečení](../fundamentals/concept-fundamentals-security-defaults.md) pro vaše uživatele a správce vyžaduje službu Multi-Factor Authentication.
 
-* **Globální správci Azure Active Directory** – podmnožina možností služby Azure Multi-Factor Authentication je k dispozici jako způsob ochrany účtů globálních správců.
+* **Azure Active Directory globálních správců** – podmnožina možností Azure Multi-Factor Authentication je dostupná jako způsob ochrany globálních účtů správců.
 
 > [!NOTE]
 > Noví zákazníci už nemůžou koupit Azure Multi-Factor Authentication jako samostatnou nabídku platnou od 1. září 2018. Multi-Factor Authentication bude nadále dostupná funkce v Azure AD Premium licencích.

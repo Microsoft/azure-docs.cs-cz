@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 0ba1e1cc4f470e24922fc3cf3be2bf6833696982
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 07fd984f72628ac4f6d6736bf0ab903619e96c72
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77118852"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525154"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary"></a>Rychlý Start: Vyhledání slov pomocí dvojjazyčného slovníku
 
@@ -25,36 +25,26 @@ V tomto rychlém startu se dozvíte, jak získat alternativní překlady pro ter
 K tomuto rychlému startu potřebujete [účet služby Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s prostředkem služby Translator Text. Pokud účet nemáte, můžete k získání klíče předplatného použít [bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/).
 
 ::: zone pivot="programming-language-csharp"
-
 [!INCLUDE [C# quickstart](includes/dictionary-csharp.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-java"
-
-[!INCLUDE [Java quickstart](includes/dictionary-java.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-[!INCLUDE [Python quickstart](includes/dictionary-python.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-nodejs"
-
-[!INCLUDE [Node.js quickstart](includes/dictionary-nodejs.md)]
-
 ::: zone-end
 
 ::: zone pivot="programming-language-go"
-
 [!INCLUDE [Go quickstart](includes/dictionary-go.md)]
-
 ::: zone-end
 
-## <a name="see-also"></a>Viz také
+::: zone pivot="programming-language-java"
+[!INCLUDE [Java quickstart](includes/dictionary-java.md)]
+::: zone-end
+
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [Node.js quickstart](includes/dictionary-nodejs.md)]
+::: zone-end
+
+::: zone pivot="programming-language-python"
+[!INCLUDE [Python quickstart](includes/dictionary-python.md)]
+::: zone-end
+
+## <a name="see-also"></a>Viz také:
 
 * [Překlad textu](quickstart-translate.md)
 * [Transliterace textu](quickstart-transliterate.md)

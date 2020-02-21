@@ -7,19 +7,19 @@ documentationcenter: na
 manager: jodadzie
 ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
 ms.service: active-directory
-ms.subservice: app-mgmt
+ms.subservice: app-provisioning
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: d193fdd5336ab32b10038ee170aee22a7cea88fd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 54b4eaf483fd6817fe73c87962d5f26533a2b507
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77066054"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77521927"
 ---
 # <a name="workday-attribute-reference"></a>Referenční informace k atributu Workday
 
@@ -38,7 +38,7 @@ Následující tabulka zachycuje seznam atributů Workday a odpovídající výr
 | 9  | AddressLine9Data                      | Ne/text: Work/forming: Work\_data/přenosová data: pracovní\_data/přenosová data: pozice\_data/přenos: Business\_lokality\_Shrnutí\_data/Přenosová adresa\_data/Přenosová adresa:\_\_\[@wd:Type\_\_= ' ADDRESS\]LINE\(9 ' \)                                                                                                                                                                                                                             |
 | 10 | AddressLineData                       | nespravované: Work/FORMED: Work\_data/přenosová data: pracovní\_data/podprocesy: pozice\_data/přenos: obchodní\_lokality\_Shrnutí\_data/Přenosová adresa\_data/Přenosová adresa\_řádek\_data/text:\(\)                                                                                                                                                                                                                                                            |
 | 11 | BusinessTitle                         | meziprocesový: Work/forming: Work\_data/přenosová data/přenosová\_á: pozice\_data/přenos: obchodní\_název/text\(\)                                                                                                                                                                                                                                                                                                                  |
-| 12 | Společnost                               | neabcdefghijklmnopqrstuvwxyz: Work/FORMED: Work\_data/ABCDEFGHIJKLMNOPQRSTUVWXYZ:\_data/podprocesy: Work\_Organization\_data\[přeložit\(řetězec\(\: Organization\_data/: Organization\_Type\_reference/: ID\[@wd:type= ' COMPANY '\_/WD: organizace\_\]\)\)\]\_Reference/@wd:Descriptor                                                                                      |
+| 12 | Společnosti                               | neabcdefghijklmnopqrstuvwxyz: Work/FORMED: Work\_data/ABCDEFGHIJKLMNOPQRSTUVWXYZ:\_data/podprocesy: Work\_Organization\_data\[přeložit\(řetězec\(\: Organization\_data/: Organization\_Type\_reference/: ID\[@wd:type= ' COMPANY '\_/WD: organizace\_\]\)\)\]\_Reference/@wd:Descriptor                                                                                      |
 | 13 | ContingentWorkerID                    | meziprocesový: Work/FORMED: Work\_reference//text: ID\[@wd:type= "podmíněným\_m\_ID pracovního procesu '\]\(\)                                                                                                                                                                                                                                                                                                                           |
 | 14 | CountryReference                      | Ne/text: Work/FORMED: Work\_data/přenosová data: pracovní\_data/podprocesy: pozice\_data/podprocesy: obchodní\_lokalita\_Shrnutí\_dat:\_\_= '\[@wd:type3166\_1\-Alpha\_3\-kód '\_\]\(\)                                                                                                                                                                                                            |
 | 15 | CountryReferenceFriendly              | meziprocesový: Work/forming: Work\_data/přenosová data: pracovní\_data/přenosová data: pozice\_data/přenos: Business\_web\_Summary\_data/přenosová data: adresa\_data/přenosová zpráva: země\_Reference/@wd:Descriptor                                                                                                                                                                                                                                                       |
@@ -104,6 +104,6 @@ Následující tabulka zachycuje seznam atributů Workday a odpovídající výr
 | 75 | TransactionLogData                    | nepracovní: Work/dodaný: Work\_data/přenosová data:\_protokolu transakcí\_záznam\_data/přenos: transakce\_log\_položka                                                                                                                                                                                                                                                                                                                        |
 | 76 | ID uživatele                                | meziprocesový: Work/forming: Work\_data/přenos: ID\_uživatele/text\(\)                                                                                                                                                                                                                                                                                                                                                               |
 | 77 | WID                                   | meziprocesový: Work/Form: Work\_reference//text: ID\[@wd:type= ' WID '\]\(\)                                                                                                                                                                                                                                                                                                                                              |
-| 78 | workerID                              | nepracovní: Work/forming: Work\_data/přenosová data: Work\_ID/text\(\)                                                                                                                                                                                                                                                                                                                                                             |
+| 78 | WorkerID                              | nepracovní: Work/forming: Work\_data/přenosová data: Work\_ID/text\(\)                                                                                                                                                                                                                                                                                                                                                             |
 | 79 | WorkerType                            | meziprocesový: Work/forming: Work\_data/přenosová data: pracovní\_data/přenosová: pozice\_data/přenos: pracovní\_typ\_Reference/@wd:Descriptor                                                                                                                                                                                                                                                                                                    |
 | 80 | WorkSpaceReference                    | nefunkční: Work/forming: Work\_data/přenosová data: pracovní\_data/přenosová: pozice\_data/přenos: pracovní\_prostor\_\_Reference/@wd:Descriptor                                                                                                                                                                                                                                                                                                   |

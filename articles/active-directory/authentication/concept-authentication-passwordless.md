@@ -1,24 +1,24 @@
 ---
-title: Přihlášení se Azure Active Directory nejenom heslem (Preview)
-description: Přečtěte si o možnostech pro přihlášení k neheslům pro Azure Active Directory používání klíčů zabezpečení FIDO2 nebo Microsoft Authenticator aplikace.
+title: Azure Active Directory přihlašování se nehesly (Preview)
+description: Přečtěte si o možnostech pro přihlášení k neheslům Azure Active Directory pomocí klíčů zabezpečení FIDO2 nebo Microsoft Authenticator aplikace.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 01/30/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0d426fb743e6b1ce5d279544f12bcb490d529f9
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: ba579d6da8c759a4653b729f1a471efdedc2baa7
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756789"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505769"
 ---
-# <a name="passwordless-authentication-options"></a>Možnosti ověřování s heslem
+# <a name="passwordless-authentication-options-for-azure-active-directory"></a>Možnosti ověřování neheslem pro Azure Active Directory
 
 Multi-Factor Authentication (MFA) je skvělý způsob, jak zabezpečit vaši organizaci, ale uživatelé často získají frustrovaní s dodatečnou vrstvou zabezpečení, a to nad tím, že si hesla zapamatují. Metody ověřování bez hesla jsou pohodlnější, protože heslo se odebírá a nahrazuje něco, co máte, a něco vás nebo něco znáte.
 
@@ -26,7 +26,7 @@ Multi-Factor Authentication (MFA) je skvělý způsob, jak zabezpečit vaši org
 | --- | --- | --- |
 | Bez hesla | Bezpečnostní klíč zařízení, telefonu nebo Windows 10 | Biometrika nebo PIN |
 
-Každá organizace má při ověřování jiné požadavky. Microsoft nabízí tři možnosti ověřování s nehesly:
+Každá organizace má při ověřování jiné požadavky. Microsoft nabízí následující tři možnosti ověřování s nehesly:
 
 - Windows Hello pro firmy
 - Aplikace Microsoft Authenticator
@@ -36,7 +36,7 @@ Každá organizace má při ověřování jiné požadavky. Microsoft nabízí t
 
 ## <a name="windows-hello-for-business"></a>Windows Hello pro firmy
 
-Windows Hello pro firmy je ideální pro informační pracovníky, kteří mají vlastní určený počítač s Windows. Biometrika a kód PIN jsou přímo vázané na počítač uživatele, který brání přístupu od někoho jiného než vlastník. S integrací infrastruktury veřejných klíčů (PKI) a integrovanou podporou jednotného přihlašování (SSO) nabízí Windows Hello pro firmy pohodlný způsob, jak bezproblémově přistupovat k podnikovým prostředkům místně a v cloudu.
+Windows Hello pro firmy je ideální pro informační pracovníky, kteří mají vlastní určený počítač s Windows. Biometrika a kód PIN jsou přímo vázané na počítač uživatele, který brání přístupu od jiných osob než vlastník. S integrací infrastruktury veřejných klíčů (PKI) a integrovanou podporou jednotného přihlašování (SSO) nabízí Windows Hello pro firmy pohodlný způsob, jak bezproblémově přistupovat k podnikovým prostředkům místně a v cloudu.
 
 [Průvodce plánováním](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) Windows Hello pro firmy se dá využít k rozhodování o typu nasazení Windows Hello pro firmy a možnostech, které budete muset vzít v úvahu.
 
@@ -52,7 +52,7 @@ Aplikace ověřovatele přepíná telefon s iOS nebo Androidem do silných přih
 
 Klíče zabezpečení FIDO2 jsou nenáročné metody ověřování bez hesla založené na standardech, které mohou být v libovolném formuláři. Rychlá identita online (FIDO) je otevřený standard pro ověřování neheslem. FIDO umožňuje uživatelům a organizacím využít standard pro přihlášení ke svým prostředkům bez uživatelského jména a hesla pomocí externího bezpečnostního klíče nebo klíče platformy integrovaného do zařízení.
 
-Ve verzi Public Preview můžou zaměstnanci použít bezpečnostní klíče pro přihlášení ke svým zařízením s Windows 10 připojeným k Azure AD a získat jednotné přihlašování ke svým cloudovým a místním prostředkům. Uživatelé se také můžou přihlašovat k podporovaným prohlížečům. Klíče zabezpečení FIDO2 představují skvělou možnost pro podniky, které jsou velmi citlivé na zabezpečení, nebo které mají scénáře nebo zaměstnanci, kteří nejsou ochotni nebo nedokázali používat svůj telefon jako druhý faktor.
+Ve verzi Public Preview můžou zaměstnanci použít bezpečnostní klíče pro přihlášení ke svým zařízením s Windows 10 připojeným k Azure AD nebo k hybridnímu připojení Azure AD a získat jednotné přihlášení ke svým cloudovým a místním prostředkům. Uživatelé se také můžou přihlašovat k podporovaným prohlížečům. Klíče zabezpečení FIDO2 představují skvělou možnost pro podniky, které jsou velmi citlivé na zabezpečení, nebo které mají scénáře nebo zaměstnanci, kteří nejsou ochotni nebo nedokázali používat svůj telefon jako druhý faktor.
 
 ![Přihlaste se k Microsoft Edge pomocí bezpečnostního klíče.](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -62,14 +62,14 @@ Bezpečnostní klíč **musí** implementovat následující funkce a rozšíře
 
 | # | Vztah důvěryhodnosti funkcí nebo rozšíření | Proč je tato funkce nebo rozšíření nutná? |
 | --- | --- | --- |
-| 1\. místo | Rezidentní klíč | Tato funkce umožňuje přenos bezpečnostního klíče, kde se ukládají přihlašovací údaje na klíč zabezpečení. |
+| 1 | Rezidentní klíč | Tato funkce umožňuje přenos bezpečnostního klíče, kde se ukládají přihlašovací údaje na klíč zabezpečení. |
 | 2 | Kód PIN klienta | Tato funkce umožňuje chránit vaše přihlašovací údaje pomocí druhého faktoru a vztahuje se na klíče zabezpečení, které nemají uživatelské rozhraní. |
 | 3 | hmac-secret | Toto rozšíření zajišťuje, že se můžete přihlásit k zařízení, když je v režimu online nebo v letadle. |
 | 4 | Více účtů na RP | Tato funkce zajišťuje, že můžete použít stejný bezpečnostní klíč v rámci více služeb, jako je například účet Microsoft a Azure Active Directory. |
 
 Následující poskytovatelé nabízejí bezpečnostní klíče FIDO2 různých faktorů, u kterých je známo, že jsou kompatibilní s prostředím bez hesla. Pro vyhodnocení vlastností zabezpečení těchto klíčů doporučujeme, abyste se obrátili na dodavatele i na FIDO Alliance.
 
-| Poskytovatel | Kontaktovat |
+| Zprostředkovatel | Kontakt |
 | --- | --- |
 | Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
 | Feitian | [https://www.ftsafe.com/about/Contact_Us](https://www.ftsafe.com/about/Contact_Us) |

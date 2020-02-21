@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 278639b27d821e8d6440248a1add43bcd9de22c6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: e75146266568001d8fee7be26898ac8bdfffb7fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775221"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484782"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Jaké jsou výchozí a doporučené konfigurace uzlů pro Azure HDInsight?
 
@@ -30,7 +30,7 @@ Jedinými typy clusterů, které mají datové disky, jsou Kafka a HBA clustery 
 
 Specifikace všech minimálních doporučených typů virtuálních počítačů použitých v tomto dokumentu jsou shrnuté v následující tabulce.
 
-| Velikost              | vCPU | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+| Velikost              | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální propustnost datových disků: IOPS | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
 | Standard_D3_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 16/16x500           | 4 / 3 000                                       |
 | Standard_D4_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 32/32x500           | 8 / 6 000                                       |
@@ -38,22 +38,22 @@ Specifikace všech minimálních doporučených typů virtuálních počítačů
 | Standard_D12_v2   | 4         | 28          | 200            | 12000 / 187 / 93                                         | 16 / 16×500                         | 4 / 3 000                     |
 | Standard_D13_v2   | 8         | 56          | 400            | 24000 / 375 / 187                                        | 32 / 32×500                       | 8 / 6 000                     |
 | Standard_D14_v2   | 16        | 112         | 800            | 48000 / 750 / 375                                        | 64/64x500                       | 8 / 12000          |
-| Standard_A1_v2  | 1\. místo         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2×500               | 2 / 250                 |
+| Standard_A1_v2  | 1         | 2           | 10             | 1000 / 20 / 10                                           | 2 / 2×500               | 2 / 250                 |
 | Standard_A2_v2  | 2         | 4           | 20             | 2000 / 40 / 20                                           | 4 / 4×500               | 2 / 500                 |
 | Standard_A4_v2  | 4         | 8           | 40             | 4000 / 80 / 40                                           | 8 / 8×500               | 4 / 1 000                     |
 
 Další podrobnosti o specifikacích jednotlivých typů virtuálních počítačů najdete v následujících dokumentech:
 
-* [Velikosti virtuálních počítačů pro obecné účely: Dv2 Series 1-5](../virtual-machines/linux/sizes-general.md#dv2-series)
-* [Paměťově optimalizované velikosti virtuálních počítačů: Dv2 Series 11-15](../virtual-machines/linux/sizes-memory.md#dv2-series-11-15)
-* [Velikosti virtuálních počítačů pro obecné účely: Av2 Series 1-8](../virtual-machines/linux/sizes-general.md#av2-series)
+* [Velikosti virtuálních počítačů pro obecné účely: Dv2 Series 1-5](../virtual-machines/dv2-dsv2-series.md)
+* [Paměťově optimalizované velikosti virtuálních počítačů: Dv2 Series 11-15](../virtual-machines/dv2-dsv2-series-memory.md)
+* [Velikosti virtuálních počítačů pro obecné účely: Av2 Series 1-8](../virtual-machines/av2-series.md)
 
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>Všechny podporované oblasti kromě Brazílie – jih a Japonsko – západ
 
 > [!Note]
 > Pokud chcete získat identifikátor SKU pro použití v PowerShellu a dalších skriptech, přidejte `Standard_` na začátek všech SKU virtuálních počítačů v následujících tabulkách. Například `D12_v2` by se stala `Standard_D12_v2`.
 
-| Typ clusteru | Hadoop | HBase | Interactive Query | Storm | Spark | ML Server | Kafka |
+| Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Storm | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
 | Head: výchozí velikost virtuálního počítače | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
 | Head: Minimální doporučené velikosti virtuálních počítačů | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
@@ -68,7 +68,7 @@ Další podrobnosti o specifikacích jednotlivých typů virtuálních počíta�
 
 ### <a name="brazil-south-and-japan-west-only"></a>Brazílie – pouze jih a Japonsko – západ
 
-| Typ clusteru | Hadoop | HBase | Interactive Query | Storm | Spark | Služby ML |
+| Typ clusteru | Hadoop | HBase | Interaktivní dotaz | Storm | Spark | Služby ML |
 |---|---|---|---|---|---|---|
 | Head: výchozí velikost virtuálního počítače | D12 | D12 | D13 | A4_v2 | D12 | D12 |
 | Head: Minimální doporučené velikosti virtuálních počítačů | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |

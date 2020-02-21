@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
-ms.openlocfilehash: 82ae0cab2d3dd7c65371e7a5bfec506e484fcdd2
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169787"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505575"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Co je Azure Machine Learning pracovní prostor?
 
@@ -70,13 +70,16 @@ S vaším pracovním prostorem můžete pracovat následujícími způsoby:
 
 Můžete také provádět následující úlohy správy pracovního prostoru:
 
-| Úloha správy pracovního prostoru   | Portál              | Studio | Python SDK/R SDK       | Rozhraní příkazového řádku        |
+| Úloha správy pracovního prostoru   | Portál              | Studio | Python SDK/R SDK       | CLI        |
 |---------------------------|---------|---------|------------|------------|
-| Vytvoření pracovního prostoru        | **&check;**     | | **&check;** | **&check;** |
+| Vytvořit pracovní prostor        | **&check;**     | | **&check;** | **&check;** |
 | Správa přístupu k pracovnímu prostoru    | **&check;**   || |  **&check;**    |
 | Upgrade na Enterprise Edition    | **&check;** | **&check;**  | |     |
 | Vytváření a Správa výpočetních prostředků    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | Vytvoření virtuálního počítače s poznámkovým blokem |   | **&check;** | |     |
+
+> [!WARNING]
+> Přesunutím pracovního prostoru Azure Machine Learning do jiného předplatného nebo přesunutím vlastnícího předplatného na nového tenanta se nepodporuje. V takovém případě může dojít k chybám.
 
 ## <a name='create-workspace'></a>Vytvořit pracovní prostor
 

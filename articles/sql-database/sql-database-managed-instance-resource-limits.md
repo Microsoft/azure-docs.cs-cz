@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 11/27/2019
-ms.openlocfilehash: eed0ed96efdc84697797c50578e11eee37d4d495
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/18/2020
+ms.openlocfilehash: 6e6d4ea6c96949a60677bcf3bf40a53ec3a251c7
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201726"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526854"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -78,7 +78,7 @@ Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-s
 | Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 22 MB/s | 4 MB/s na vCore<br/>Max 48 MB/s |
 | Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[zvětšete velikost souboru, abyste získali lepší vstupně-výstupní operace](#file-io-characteristics-in-general-purpose-tier) . | Neomezeno. |
 | Latence v/v úložiště (přibližná) | 5-10 ms | 1-2 ms |
-| OLTP v paměti | Nepodporuje se | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
+| OLTP v paměti | Nepodporováno | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
 | Maximální počet relací | 30000 | 30000 |
 | [Repliky jen pro čtení](sql-database-read-scale-out.md) | 0 | 1 (zahrnuto do ceny) |
 
@@ -96,7 +96,7 @@ Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-s
 
 Na úrovni služby Pro obecné účely každý databázový soubor získává vyhrazené IOPS a propustnost, které závisí na velikosti souboru. Větší počet souborů je více vstupně-výstupních operací a propustnosti. Vlastnosti v/v souborů databáze jsou uvedené v následující tabulce:
 
-| Velikost souboru           | 0-128 GiB | 128 – 256 GiB | 256 – 512 GiB | 0,5 – 1 TiB    | 1-2 TiB    | 2-4 TiB | 4-8 TiB |
+| Velikost souboru | > = 0 a < = 128 GiB | > 128 a < = 256 GiB | > 256 a < = 512 GiB | > 0.5 a < = 1 TiB    | > 1 a < = 2 TiB    | > 2 a < = 4 TiB | > 4 a < = 8 TiB |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|
 | Počet IOPS na soubor       | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500   |
 | Propustnost na jeden soubor | 100 MiB/s | 125 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | soubory MiB 480/s | 
@@ -162,7 +162,7 @@ Postup pro zahájení procesu získání větší kvóty:
 
      ![Kvóta typu problému](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
 
-3. Klikněte na **Další**.
+3. Klikněte na **Další**.
 4. Na **kartě problém** u nové žádosti o podporu:
    - V části **závažnost**vyberte úroveň závažnosti problému.
    - **Podrobnosti**získáte zadáním dalších informací o vašem problému, včetně chybových zpráv.
@@ -176,7 +176,7 @@ Postup pro zahájení procesu získání větší kvóty:
      > - Požadovaný počet virtuální jádra, na úroveň služby v existujících podsítích po zvýšení kvóty (Pokud je nutné rozšířit libovolnou existující podsíť.
      > - Požadovaný počet nových podsítí a celkový počet virtuální jádra na úroveň služby v rámci nových podsítí (Pokud potřebujete nasadit spravované instance v nových podsítích).
 
-5. Klikněte na **Další**.
+5. Klikněte na **Další**.
 6. Na kartě kontaktní informace u nové žádosti o podporu zadejte upřednostňovanou metodu kontaktu (e-mail nebo telefon) a kontaktní údaje.
 7. Klikněte na možnost **Vytvořit**.
 

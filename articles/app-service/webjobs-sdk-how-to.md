@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 83884447e9856b5e3db26e4829ccbd3ab1baed13
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549083"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486338"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak používat sadu SDK Azure WebJobs pro zpracování na pozadí založené na událostech
 
@@ -277,9 +277,9 @@ Chcete-li použít aktivační událost časovače nebo vazby souborů, které j
 
 Tyto triggery a typy vazeb jsou součástí verze 2. *x* `Microsoft.Azure.WebJobs` balíčku:
 
-* Úložiště blobů
-* Úložiště front
-* Úložiště tabulek
+* Blob Storage
+* Queue Storage
+* Table Storage
 
 Chcete-li použít jiné typy triggerů a vazeb, nainstalujte balíček NuGet, který je obsahuje, a zavolejte metodu `Use<binding>` pro objekt `JobHostConfiguration`. Například pokud chcete použít aktivační událost časovače, nainstalujte `Microsoft.Azure.WebJobs.Extensions` a zavolejte `UseTimers` v metodě `Main`, jak je znázorněno zde:
 
@@ -453,7 +453,7 @@ static async Task Main()
 }
 ```
 
-Další podrobnosti najdete v článku věnovaném [vazbě úložiště fronty](../azure-functions/functions-bindings-storage-queue.md#hostjson-settings) .
+Další podrobnosti najdete v článku věnovaném [vazbě úložiště fronty](../azure-functions/functions-bindings-storage-queue-trigger.md#hostjson-properties) .
 
 #### <a name="version-2x"></a>Verze 2. *x*
 
@@ -524,7 +524,7 @@ static async Task Main()
 }
 ```
 
-Další podrobnosti najdete v článku věnovaném [vazbě Service Bus](../azure-functions/functions-bindings-service-bus.md#hostjson-settings) .
+Další podrobnosti najdete v článku věnovaném [vazbě Service Bus](../azure-functions/functions-bindings-service-bus-output.md#hostjson-settings) .
 
 ### <a name="configuration-for-other-bindings"></a>Konfigurace pro jiné vazby
 
@@ -680,11 +680,11 @@ Další informace najdete v tématu [vázání za běhu](../azure-functions/func
 
 Dokumentace k Azure Functions poskytuje referenční informace o jednotlivých typech vazeb. V každém referenčním článku o vazbách najdete následující informace. (Tento příklad je založen na frontě úložiště.)
 
-* [Balíčky](../azure-functions/functions-bindings-storage-queue.md#packages---functions-1x). Balíček, který je potřeba nainstalovat, aby zahrnoval podporu vazby v projektu sady WebJobs SDK.
-* [Příklady](../azure-functions/functions-bindings-storage-queue.md#trigger). Ukázky kódu. Příklad C# knihovny tříd se vztahuje na sadu WebJobs SDK. Vynechejte pouze atribut `FunctionName`.
-* [Atributy](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes-and-annotations). Atributy, které mají být použity pro typ vazby.
-* [Konfigurace](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Vysvětlení vlastností atributů a parametrů konstruktoru.
-* [Využití](../azure-functions/functions-bindings-storage-queue.md#trigger---usage). Typy, které můžete svázat, a informace o tom, jak vazba funguje. Příklad: algoritmus cyklického dotazování, zpracování fronty poškození.
+* [Balíčky](../azure-functions/functions-bindings-storage-queue.md). Balíček, který je potřeba nainstalovat, aby zahrnoval podporu vazby v projektu sady WebJobs SDK.
+* [Příklady](../azure-functions/functions-bindings-storage-queue-trigger.md). Ukázky kódu. Příklad C# knihovny tříd se vztahuje na sadu WebJobs SDK. Vynechejte pouze atribut `FunctionName`.
+* [Atributy](../azure-functions/functions-bindings-storage-queue-trigger.md#attributes-and-annotations). Atributy, které mají být použity pro typ vazby.
+* [Konfigurace](../azure-functions/functions-bindings-storage-queue-trigger.md#configuration). Vysvětlení vlastností atributů a parametrů konstruktoru.
+* [Využití](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Typy, které můžete svázat, a informace o tom, jak vazba funguje. Příklad: algoritmus cyklického dotazování, zpracování fronty poškození.
   
 Seznam článků s odkazy na vazby najdete v části "podporované vazby" v článku [triggery a vazby](../azure-functions/functions-triggers-bindings.md#supported-bindings) pro Azure Functions. V tomto seznamu jsou vazby HTTP, webhooks a Event Grid podporovány pouze pomocí Azure Functions, nikoli pomocí sady WebJobs SDK.
 
@@ -821,14 +821,14 @@ Doporučujeme rozhraní protokolování, které bylo vyvinuto pro ASP.NET. V čl
 
 Každý protokol vytvořený instancí `ILogger` má přidruženou `Category` a `Level`. [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) je výčet a celočíselný kód označuje relativní důležitost:
 
-|ÚroveňProtokolu    |kód|
+|LogLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladění       | 1\. místo |
+|Ladit       | 1 |
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
-|Kritické    | 5 |
+|Kritická    | 5 |
 |Žádné        | 6 |
 
 Jednotlivé kategorie můžete nezávisle filtrovat na konkrétní [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Můžete například chtít zobrazit všechny protokoly pro zpracování triggerů objektů blob, ale jenom `Error` a vyšší pro všechno ostatní.
@@ -997,9 +997,9 @@ config.LoggerFactory = new LoggerFactory()
 
 V tomto článku jsou uvedené fragmenty kódu, které ukazují, jak zpracovávat běžné scénáře pro práci se sadou WebJobs SDK. Kompletní ukázky najdete v tématu [Azure-WebJobs-SDK-Samples](https://github.com/Azure/azure-webjobs-sdk/tree/dev/sample/SampleHost).
 
-[`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
-[`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient
-[`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
-[`ITelemetryInitializer`]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
-[`TelemetryConfiguration`]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
-[`JobHostConfiguration`]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs
+[ExecutionContext]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
+[TelemetryClient]: /dotnet/api/microsoft.applicationinsights.telemetryclient
+[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
+['ITelemetryInitializer']: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+['TelemetryConfiguration']: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
+['JobHostConfiguration']: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs

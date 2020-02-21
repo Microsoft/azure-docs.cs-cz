@@ -4,12 +4,12 @@ description: Naučte se vyvíjet funkce pomocí prostředí PowerShell.
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 41f977e7e7c23c2f49fd656461b7a3920802997e
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974236"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485127"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions příručka pro vývojáře PowerShellu
 
@@ -79,7 +79,7 @@ $TriggerMetadata.sys
 | MethodName | Název aktivované funkce     | string   |
 | RandGuid   | Jedinečný identifikátor GUID tohoto spuštění funkce | string   |
 
-Každý typ triggeru má jinou sadu metadat. Například `$TriggerMetadata` pro `QueueTrigger` obsahuje `InsertionTime`, `Id``DequeueCount`, mimo jiné. Další informace o metadatech triggeru fronty najdete v [oficiální dokumentaci k aktivačním událostem fronty](functions-bindings-storage-queue.md#trigger---message-metadata). V dokumentaci k [aktivačním událostem](functions-triggers-bindings.md) , se kterými pracujete, můžete zjistit, co se nachází uvnitř metadat triggeru.
+Každý typ triggeru má jinou sadu metadat. Například `$TriggerMetadata` pro `QueueTrigger` obsahuje `InsertionTime`, `Id``DequeueCount`, mimo jiné. Další informace o metadatech triggeru fronty najdete v [oficiální dokumentaci k aktivačním událostem fronty](functions-bindings-storage-queue-trigger.md#message-metadata). V dokumentaci k [aktivačním událostem](functions-triggers-bindings.md) , se kterými pracujete, můžete zjistit, co se nachází uvnitř metadat triggeru.
 
 ## <a name="bindings"></a>Vazby
 
@@ -125,9 +125,9 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Níže jsou uvedené platné parametry pro volání `Push-OutputBinding`:
 
-| Name (Název) | Typ | Pozice | Popis |
+| Název | Typ | Pozice | Popis |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | Řetězec | 1\. místo | Název výstupní vazby, kterou chcete nastavit. |
+| **`-Name`** | String | 1 | Název výstupní vazby, kterou chcete nastavit. |
 | **`-Value`** | Objekt | 2 | Hodnota výstupní vazby, kterou chcete nastavit, která je přijímána z ByValue kanálu. |
 | **`-Clobber`** | Přepínací parametr | Jmenovanou | Volitelné Když se tato hodnota zadá, vynutí nastavení hodnoty pro zadanou výstupní vazbu. | 
 
@@ -175,7 +175,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>Příklad push-OutputBinding: Queue Output Binding
 
-`Push-OutputBinding` slouží k odesílání dat do výstupních vazeb, jako je například [Výstupní vazba Azure Queue Storage](functions-bindings-storage-queue.md#output). V následujícím příkladu má zpráva zapsaná do fronty hodnotu "výstupní #1":
+`Push-OutputBinding` slouží k odesílání dat do výstupních vazeb, jako je například [Výstupní vazba Azure Queue Storage](functions-bindings-storage-queue-output.md). V následujícím příkladu má zpráva zapsaná do fronty hodnotu "výstupní #1":
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
@@ -235,7 +235,7 @@ Protokolování funkcí prostředí PowerShell funguje jako běžné protokolov�
 | Chyba | **`Write-Error`** |
 | Upozornění | **`Write-Warning`**  | 
 | Informace | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informace | Zapisuje do protokolování na úrovni _informací_ . |
-| Ladění | **`Write-Debug`** |
+| Ladit | **`Write-Debug`** |
 | Trasování | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Kromě těchto rutin se cokoli zapsaným do kanálu přesměruje na úroveň protokolu `Information` a zobrazuje se s výchozím formátováním PowerShellu.
@@ -296,7 +296,7 @@ Objekt Request, který je předán do skriptu, je typu `HttpRequestContext`, kte
 
 | Vlastnost  | Popis                                                    | Typ                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Objekt, který obsahuje tělo žádosti. `Body` je serializován do nejlepšího typu na základě dat. Například pokud jsou data JSON, předává se jako zatřiďovací tabulka. Pokud jsou data řetězcem, je předáno jako řetězec. | object |
+| **`Body`**    | Objekt, který obsahuje tělo žádosti. `Body` je serializován do nejlepšího typu na základě dat. Například pokud jsou data JSON, předává se jako zatřiďovací tabulka. Pokud jsou data řetězcem, je předáno jako řetězec. | objekt |
 | **`Headers`** | Slovník, který obsahuje hlavičky požadavku.                | < Řetězec slovníku, > řetězce<sup>*</sup> |
 | **`Method`** | Metoda HTTP požadavku.                                | string                    |
 | **`Params`**  | Objekt, který obsahuje parametry směrování požadavku. | < Řetězec slovníku, > řetězce<sup>*</sup> |
@@ -311,7 +311,7 @@ Objekt Response, který byste měli odeslat zpět, je typu `HttpResponseContext`
 
 | Vlastnost      | Popis                                                 | Typ                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Objekt, který obsahuje tělo odpovědi.           | object                    |
+| **`Body`**  | Objekt, který obsahuje tělo odpovědi.           | objekt                    |
 | **`ContentType`** | Krátká ruka pro nastavení typu obsahu pro odpověď. | string                    |
 | **`Headers`** | Objekt, který obsahuje hlavičky odpovědi.               | Slovník nebo zatřiďovací tabulka   |
 | **`StatusCode`**  | Stavový kód protokolu HTTP odpovědi.                       | řetězec nebo int             |
@@ -601,7 +601,7 @@ Váš skript se spustí při každém vyvolání. Vyhněte se použití `Install
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace naleznete v následujících zdrojích:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)

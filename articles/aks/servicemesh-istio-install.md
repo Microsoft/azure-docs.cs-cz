@@ -4,15 +4,15 @@ description: Naučte se instalovat a používat Istio k vytvoření sítě v clu
 author: paulbouwer
 ms.service: container-service
 ms.topic: article
-ms.date: 11/15/2019
+ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: d886205e88db780a7a09554391bd975f57eebfe7
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 15b73380269c568977b524a63ca709e352485433
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251732"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485212"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Instalace a použití Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Přístup k doplňkům
 > * Odinstalace Istio z AKS
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Kroky popsané v tomto článku předpokládají, že jste vytvořili cluster AKS (Kubernetes `1.13` a novější s povoleným RBAC) a navázali jste `kubectl` spojení s clusterem. Pokud potřebujete s kteroukoli z těchto položek pomáhat, přečtěte si [rychlý Start AKS][aks-quickstart].
 
@@ -98,10 +98,7 @@ Přístup k instalaci [Helm][helm] pro Istio se v budoucnu už nepoužívá. Nov
 > Istio je v současné době nutné naplánovat na spuštění v uzlech se systémem Linux. Pokud máte v clusteru uzly Windows serveru, musíte zajistit, aby se Istio lusky spouštěly jenom na uzlech se systémem Linux. Použijeme [Selektory uzlů][kubernetes-node-selectors] k ujištění, že lusky jsou naplánované na správných uzlech.
 
 > [!CAUTION]
-> [SDS (tajná služba pro zjišťování tajného klíče)][istio-feature-sds] a [Istio CNI][istio-feature-cni] Istio jsou momentálně v [alfa][istio-feature-stages], takže by se mělo před povolením této možnosti udělit. 
->
-> Všimněte si, že funkce projekce Kubernetes (požadavek pro SDS) pro [token účtu služby][kubernetes-feature-sa-projected-volume] je teď **povolená** pro všechny Kubernetes 1,13 a novější verze v AKS.
-
+> [SDS (tajná služba pro zjišťování tajného klíče)][istio-feature-sds] a [Istio CNI][istio-feature-cni] Istio jsou momentálně v [alfa][istio-feature-stages], takže by se mělo před povolením této možnosti udělit. Kromě toho není v aktuálních verzích AKS povolená funkce projekce Kubernetes (požadavek pro SDS) [tokenu účtu služby][kubernetes-feature-sa-projected-volume] .
 Vytvořte soubor s názvem `istio.aks.yaml` s následujícím obsahem. Tento soubor bude obsahovat podrobnosti o [specifikaci roviny ovládacího prvku Istio][istio-control-plane] pro konfiguraci Istio.
 
 ```yaml

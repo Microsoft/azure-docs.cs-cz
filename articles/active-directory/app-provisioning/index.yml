@@ -5,19 +5,19 @@ metadata:
   title: Dokumentace ke zřizování aplikací
   description: Zřizování aplikací Azure Active Directory umožňuje automaticky vytvářet a spravovat uživatelské identity ve vašich cloudových aplikacích (SaaS). Azure AD také nabízí zřizování s využitím cloudových aplikací pro lidské zdroje (HR). Další informace o správě a nasazení zřizování aplikací a HR v cloudu najdete v našich průvodcích, šablonách a rychlých zprovozněních.
   ms.service: active-directory
-  ms.subservice: app-mgmt
+  ms.subservice: app-provisioning
   ms.workload: identity
   ms.topic: landing-page
   ms.date: 02/06/2020
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 02d9ee235de798e0c6095e0cbf60c08eabec53cd
-  ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+  ms.openlocfilehash: 0b6b3829f4111c57e20f495be962357832a5bfcd
+  ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/07/2020
-  ms.locfileid: "77065497"
+  ms.lasthandoff: 02/21/2020
+  ms.locfileid: "77522462"
 landingContent:
 - title: Zřizování uživatelů a skupin pro cloudovou aplikaci
   linkLists:

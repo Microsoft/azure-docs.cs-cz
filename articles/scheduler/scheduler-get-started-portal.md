@@ -1,36 +1,35 @@
 ---
-title: Vytváření plánovaných úloh pomocí služby Azure Scheduler – Azure Portal | Microsoft Docs
-description: Zjistěte, jak vytvořit, naplánovat a spustit první automatizovanou úlohu pomocí služby Azure Scheduler na webu Azure Portal.
+title: Vytvoření naplánovaných úloh – Azure Portal
+description: Vytvoření, naplánování a spuštění první automatizované úlohy v Azure Portal pomocí Azure Scheduleru
 services: scheduler
 ms.service: scheduler
 ms.suite: infrastructure-services
 author: derek1ee
-ms.author: deli
-ms.reviewer: klam
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.author: estfan
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: conceptual
-ms.date: 09/17/2018
-ms.openlocfilehash: 48e03f41fa0a39642330288fc05ef709179b4c62
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 02/29/2020
+ms.openlocfilehash: a9f7169f4b54dfc08612b1d53bfde48154ee2d1d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300993"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524797"
 ---
-# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Vytvoření a naplánování první úlohy pomocí služby Azure Scheduler – Azure Portal
+# <a name="create-and-schedule-your-first-job-by-using-azure-scheduler---azure-portal"></a>Vytvoření a naplánování první úlohy pomocí Azure Scheduleru – Azure Portal
 
 > [!IMPORTANT]
 > [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nahrazuje [vyřazení](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)Azure Scheduleru. Pokud chcete pokračovat v práci s úlohami, které jste nastavili v plánovači, [migrujte prosím na Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) co nejdříve.
 
-V tomto kurzu se dozvíte, jak snadné je vytvořit a naplánovat úlohu a následně ji monitorovat a spravovat. 
+V tomto kurzu se dozvíte, jak snadné je vytvořit a naplánovat úlohu a následně ji monitorovat a spravovat.
 
-Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>.
+Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
-## <a name="create-job"></a>Vytvořit úlohu
+## <a name="create-job"></a>Vytvoření úlohy
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).  
+1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
 
-1. V hlavní nabídce Azure vyberte **Vytvořit prostředek**. Do vyhledávacího pole zadejte scheduler. V seznamu výsledků vyberte **Scheduler** a pak zvolte **Vytvořit**.
+1. Do pole Azure Search zadejte jako filtr `scheduler`. V seznamu výsledků vyberte **kolekce úloh Scheduler**a vyberte **vytvořit**.
 
    ![Vytvoření prostředku služby Scheduler](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
@@ -93,7 +92,7 @@ Další informace o těchto oblastech získáte výběrem příslušné oblasti:
 
 <a name="properties"></a>
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Vlastnosti
 
 Pokud chcete zobrazit vlastnosti jen pro čtení, které popisují metadata správy pro vaši úlohu, vyberte **Vlastnosti**.
 
@@ -110,7 +109,7 @@ Pokud chcete změnit upřesňující nastavení vaší úlohy, vyberte **Nastave
 | Typ akce | Popis | 
 |-------------|-------------| 
 | Všechny typy | Můžete změnit nastavení **Zásady opakování** a **Akce při chybě**. | 
-| HTTP a HTTPS | Můžete změnit **Metodu** na libovolnou povolenou metodu. Také můžete přidat, odstranit nebo změnit hlavičky a základní ověřovací údaje. | 
+| Protokoly HTTP a HTTPS | Můžete změnit **Metodu** na libovolnou povolenou metodu. Také můžete přidat, odstranit nebo změnit hlavičky a základní ověřovací údaje. | 
 | Fronta úložiště| Můžete změnit účet úložiště, název fronty, token SAS a text. | 
 | Service Bus | Můžete změnit obor názvů, cestu k tématu nebo frontě, nastavení ověření, typ přenosu, vlastnosti zprávy a text zprávy. | 
 ||| 

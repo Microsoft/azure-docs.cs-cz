@@ -1,5 +1,6 @@
 ---
-title: Funkce zabezpečení používané s virtuálními počítači Azure – zabezpečení Azure | Microsoft Docs
+title: Funkce zabezpečení používané s virtuálními počítači Azure
+titleSuffix: Azure security
 description: Tento článek obsahuje přehled základních funkcí zabezpečení Azure, které se dají používat s Azure Virtual Machines.
 services: security
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: 6c01df071f263f7080f6c89b539d9a40aeff282f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3cbe7788ca7486022513fabdca682cbb78615281
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792622"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500386"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure Virtual Machines
 Tento článek obsahuje přehled základních funkcí zabezpečení Azure, které je možné používat s virtuálními počítači.
@@ -37,7 +38,7 @@ S Azure můžete vytvářet řešení kompatibilní se zabezpečením, která sp
 * Identifikujte a zjišťují hrozby.
 * Splnění požadavků na dodržování předpisů.  
 
-## <a name="antimalware"></a>Antimalware
+## <a name="antimalware"></a>Antimalwarové programy
 
 S Azure můžete použít antimalwarový software od dodavatelů zabezpečení, jako jsou Microsoft, Symantec, Trend Micro a Kaspersky. Tento software pomáhá chránit vaše virtuální počítače před škodlivými soubory, adwarem a dalšími hrozbami.
 
@@ -74,7 +75,7 @@ Další informace:
 
 Vylepšení zabezpečení klíčů může zlepšit ochranu šifrování a ověřování. Můžete zjednodušit správu a zabezpečení důležitých tajných kódů a klíčů jejich uložením do Azure Key Vault.
 
-Key Vault umožňuje ukládat klíče v modulech zabezpečení hardwaru (HSM) s certifikací podle standardů FIPS 140-2 úrovně 2. Šifrovací klíče SQL Server pro zálohování nebo [transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx) je možné ukládat do Key Vault pomocí jakýchkoli klíčů a tajných kódů z vašich aplikací. Oprávnění a přístup k těmto chráněným položkám se spravují prostřednictvím [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+Key Vault poskytuje možnost ukládat klíče v modulech hardwarového zabezpečení (HSM) s certifikací podle standardů FIPS 140-2 úrovně 2. Šifrovací klíče SQL Server pro zálohování nebo [transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx) je možné ukládat do Key Vault pomocí jakýchkoli klíčů a tajných kódů z vašich aplikací. Oprávnění a přístup k těmto chráněným položkám se spravují prostřednictvím [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
 Další informace:
 
@@ -94,7 +95,7 @@ Další informace:
 
 ## <a name="virtual-machine-backup"></a>Záloha virtuálního počítače
 
-Azure Backup je škálovatelné řešení, které pomáhá chránit data vaší aplikace pomocí nulové kapitálové investice a minimální provozní náklady. Chyby aplikací můžou poškodit vaše data a lidské omyly zase můžou způsobit chyby v aplikacích. Díky Azure Backup jsou virtuální počítače se systémem Windows a Linux chráněny.
+Azure Backup je škálovatelné řešení, které pomáhá chránit data vaší aplikace pomocí nulové kapitálové investice a minimální provozní náklady. Chyby aplikací můžou poškodit vaše data a lidské chyby můžou do vašich aplikací zavádět chyby. Díky Azure Backup jsou virtuální počítače se systémem Windows a Linux chráněny.
 
 Další informace:
 

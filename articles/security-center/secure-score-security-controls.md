@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0096bccf76e81f2bca1a449cea2474cb5266fabc
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: f4f6cf01502070ea63eaf0083aba33ff213534a4
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443580"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500252"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>Rozšířené skóre zabezpečení (Preview) 
 
@@ -65,15 +65,15 @@ Například řízení zabezpečení s názvem použít aktualizace systému má 
 
 Potenciál ovládacího prvku zabezpečení "použít aktualizace systému" na snímku obrazovky výše ukazuje "2% (1 bod)". To znamená, že pokud opravíte všechna doporučení v tomto ovládacím prvku, vaše skóre se zvýší o 2% (v tomto případě jeden bod). V zájmu jednoduchosti jsou hodnoty ve sloupci "potenciální zvýšení" seznamu doporučení zaokrouhleny na celá čísla. Popisky obsahují přesné hodnoty:
 
+* **Maximální skóre** – maximální počet bodů, které můžete získat provedením všech doporučení v rámci ovládacího prvku. Maximální skóre pro ovládací prvek označuje relativní význam tohoto ovládacího prvku. Použijte hodnoty maximálního skóre k určení, které problémy se mají nejdřív pracovat. 
 * **Možné zvýšení** – zbývající body, které jsou k dispozici v rámci ovládacího prvku. Chcete-li tyto body přidat do zabezpečeného skóre, opravte všechna doporučení ovládacího prvku. V předchozím příkladu je jeden bod zobrazený pro ovládací prvek ve skutečnosti 0,96 bodů.
 * **Aktuální skóre** – aktuální skóre tohoto ovládacího prvku. Každý ovládací prvek přispívá k celkovému skóre. V tomto příkladu je ovládací prvek přispívající k celkovému součtu 5,04 bodů. 
-* **Max skore** – součet předchozích dvou hodnot.
 
 ### <a name="calculations---understanding-your-score"></a>Výpočty – princip skóre
 
 |Metrika|Vzorec a příklad|
 |-|-|
-|**Aktuální skóre ovládacího prvku zabezpečení**|<br>![rovnice pro výpočet aktuálního skóre ovládacího prvku zabezpečení](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Každé individuální řízení zabezpečení přispívá ke skóre zabezpečení. Každý prostředek, na který má vliv doporučení v rámci ovládacího prvku, přispívá k aktuálnímu skóre ovládacího prvku. Aktuální skóre pro každý ovládací prvek je míra stavu prostředků *v rámci* ovládacího prvku.<br>![popisy zobrazení hodnot použitých při výpočtu aktuálního skóre ovládacího prvku zabezpečení](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>V tomto příkladu je maximální skóre 6 děleno 78, protože to je součet zdravých a špatných prostředků.<br>6/78 = 0,0769<br>Výsledkem vynásobení tohoto počtu zdravých prostředků (74) je aktuální skóre:<br>0,0769 * 74 = **5,69**<br><br>|
+|**Aktuální skóre ovládacího prvku zabezpečení**|<br>![rovnice pro výpočet aktuálního skóre ovládacího prvku zabezpečení](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Každé individuální řízení zabezpečení přispívá ke skóre zabezpečení. Každý prostředek, na který má vliv doporučení v rámci ovládacího prvku, přispívá k aktuálnímu skóre ovládacího prvku. Aktuální skóre pro každý ovládací prvek je míra stavu prostředků *v rámci* ovládacího prvku.<br>![popisy zobrazení hodnot použitých při výpočtu aktuálního skóre ovládacího prvku zabezpečení](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>V tomto příkladu je maximální skóre 6 děleno 78, protože to je součet zdravých a špatných prostředků.<br>6/78 = 0,0769<br>Vynásobení tohoto počtu zdravých prostředků (4) má za následek aktuální skóre:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Bezpečnostní skóre**<br>Jedno předplatné|<br>![Rovnice pro výpočet aktuálního zabezpečeného skóre](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Zabezpečené skóre jednotného předplatného se všemi povolenými ovládacími prvky](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>V tomto příkladu je k dispozici jedno předplatné se všemi dostupnými ovládacími prvky zabezpečení (potenciální maximální skóre 60 bodů). Skóre zobrazuje 28 bodů z možného 60 a zbývající 32 body se projeví v hodnotách "potenciálního nárůstu" v rámci ovládacích prvků zabezpečení.<br>![Seznam ovládacích prvků a možné zvýšení skóre](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
 |**Bezpečnostní skóre**<br>Několik předplatných|<br>Přidávají se aktuální skóre pro všechny prostředky ve všech předplatných a výpočet je stejný jako u jednoho předplatného.<br><br>Při prohlížení více předplatných vyhodnotí zabezpečené skóre všechny prostředky ve všech povolených zásadách a seskupují jejich kombinovaný dopad na maximální skóre každého ovládacího prvku zabezpečení.<br>![bezpečné skóre pro více předplatných se všemi povolenými ovládacími prvky](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Kombinované skóre **nepředstavuje průměr** ; místo toho se jedná o vyhodnocený stav stavu všech prostředků ve všech předplatných.<br>Pokud se zobrazí stránka doporučení a přidáte potenciální dostupné body, zjistíte, že se jedná o rozdíl mezi aktuálním skóre (24) a maximálním dostupným skóre (60).|
 ||||

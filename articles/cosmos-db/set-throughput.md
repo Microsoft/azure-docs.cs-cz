@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: b60b117b10ac9ade6f685acf788e942ff7a2c93c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 39eacbb9a87fa18cc6ef92e319fbfbd3e415337b
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77188772"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525511"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
@@ -19,8 +19,8 @@ Databáze Azure Cosmos je jednotka správy pro skupinu kontejnerů. Databáze ob
 
 Pomocí Azure Cosmos DB můžete zřídit propustnost ve dvou členitosti:
  
-- Kontejnery Azure Cosmos DB
-- Databáze Azure Cosmos DB
+- Kontejnery služby Azure Cosmos
+- Databáze Azure Cosmos
 
 ## <a name="set-throughput-on-a-container"></a>Nastavení propustnosti pro kontejner  
 
@@ -60,11 +60,10 @@ Všechny kontejnery vytvořené v databázi s zřízenou propustností se musí 
 
 Pokud zatížení na logickém oddílu spotřebovává více než propustnost, která je přidělena konkrétnímu logickému oddílu, jsou operace omezené na míru. Pokud dojde k omezení rychlosti, můžete buď zvýšit propustnost pro celou databázi, nebo opakovat operace. Další informace o dělení najdete v tématu [logické oddíly](partition-data.md).
 
-Kontejnery ve sdílené databázi propustnosti sdílejí propustnost (RU/s) přidělenou této databázi. Ve sdílené databázi propustnosti:
+Kontejnery ve sdílené databázi propustnosti sdílejí propustnost (RU/s) přidělenou této databázi. V databázi můžete mít až čtyři kontejnery s minimálně 400 RU/s. Každý nový kontejner po prvním 4 bude vyžadovat minimálně dalších 100 RU/s. Pokud máte například sdílenou databázi propustnosti s osmi kontejnery, minimální RU/s v databázi bude 800 RU/s.
 
-* V databázi můžete mít až čtyři kontejnery s minimálně 400 RU/s. Každý nový kontejner po prvním 4 bude vyžadovat minimálně dalších 100 RU/s. Pokud máte například sdílenou databázi propustnosti s osmi kontejnery, minimální RU/s v databázi bude 800 RU/s.
-
-* V databázi můžete mít maximálně 25 kontejnerů. Pokud již máte ve sdílené databázi propustnosti více než 25 kontejnerů, nebudete moci vytvořit další kontejnery, dokud nebude počet kontejnerů menší než 25.
+> [!NOTE]
+> V databázi sdílené propustnosti můžete mít v databázi maximálně 25 kontejnerů. Pokud již máte ve sdílené databázi propustnosti více než 25 kontejnerů, nebudete moci vytvořit další kontejnery, dokud nebude počet kontejnerů menší než 25.
 
 Pokud vaše úlohy zahrnují odstranění a opětovné vytvoření všech kolekcí v databázi, doporučuje se odstranit prázdnou databázi a znovu vytvořit novou databázi před vytvořením kolekce. Následující obrázek ukazuje, jak může fyzický oddíl hostovat jeden nebo více logických oddílů, které patří do různých kontejnerů v rámci databáze:
 

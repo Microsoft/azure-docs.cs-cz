@@ -3,12 +3,12 @@ title: Přidání vazby fronty Azure Storage k funkci Pythonu
 description: Integrujte frontu Azure Storage s funkcí Pythonu pomocí výstupní vazby.
 ms.date: 01/15/2020
 ms.topic: quickstart
-ms.openlocfilehash: f5527e0e636c3f8c9ee3723570ed9811f0df3641
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6cea44dca666bbf002de6e2b7dd283f49ac7bd5a
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198475"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485161"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Přidání vazby fronty Azure Storage k funkci Pythonu
 
@@ -100,7 +100,7 @@ Chcete-li z této funkce zapisovat do fronty Azure Storage, přidejte `out` vazb
 
 V tomto případě je `msg` předána funkci jako výstupní argument. U `queue`ho typu musíte zadat také název fronty v `queueName` a zadat *název* Azure Storage připojení (z *Local. Settings. json*) v `connection`.
 
-Další informace o podrobnostech vazeb najdete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md) a [Konfigurace výstupu fronty](functions-bindings-storage-queue.md#output---configuration).
+Další informace o podrobnostech vazeb najdete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md) a [Konfigurace výstupu fronty](functions-bindings-storage-queue-output.md#configuration).
 
 ## <a name="add-code-to-use-the-output-binding"></a>Přidat kód pro použití výstupní vazby
 
@@ -176,19 +176,19 @@ Když funkce vygeneruje odpověď HTTP pro webový prohlížeč, zavolá také `
 
 1. Otevřete soubor *Local. Setting. JSON* projektu funkce a zkopírujte hodnotu připojovacího řetězce. V terminálu nebo příkazovém okně spusťte následující příkaz, který vytvoří proměnnou prostředí s názvem `AZURE_STORAGE_CONNECTION_STRING`a místo `<connection_string>`bude vkládat konkrétní připojovací řetězec. (Tato proměnná prostředí znamená, že připojovací řetězec nemusíte zadávat do každého následného příkazu pomocí argumentu `--connection-string`.)
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Přepsat](#tab/cmd)
+    # <a name="cmd"></a>[Přepsat](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -198,19 +198,19 @@ Když funkce vygeneruje odpověď HTTP pro webový prohlížeč, zavolá také `
     
 1. Volitelné Pomocí příkazu [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) můžete zobrazit fronty úložiště ve vašem účtu. Výstup z tohoto příkazu by měl zahrnovat frontu s názvem `outqueue`, která byla vytvořena při zapsání první zprávy do této fronty.
     
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Přepsat](#tab/cmd)
+    # <a name="cmd"></a>[Přepsat](#tab/cmd)
     
     ```cmd
     az storage queue list --output tsv
@@ -219,21 +219,21 @@ Když funkce vygeneruje odpověď HTTP pro webový prohlížeč, zavolá také `
     ---
 
 
-1. Pomocí příkazu [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) můžete zobrazit zprávy v této frontě, které by měly být křestní jméno, které jste použili při předchozím testování funkce. Příkaz načte první zprávu ve frontě v [kódování Base64](functions-bindings-storage-queue.md#encoding), takže musíte také dekódovat zprávu, aby se zobrazila jako text.
+1. Pomocí příkazu [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) můžete zobrazit zprávy v této frontě, které by měly být křestní jméno, které jste použili při předchozím testování funkce. Příkaz načte první zprávu ve frontě v [kódování Base64](functions-bindings-storage-queue-trigger.md#encoding), takže musíte také dekódovat zprávu, aby se zobrazila jako text.
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Přepsat](#tab/cmd)
+    # <a name="cmd"></a>[Přepsat](#tab/cmd)
     
     Vzhledem k tomu, že je potřeba odkázat na shromažďování zpráv a dekódovat z formátu base64, spusťte PowerShell a použijte příkaz prostředí PowerShell.
 
@@ -251,13 +251,13 @@ Teď, když jste místně otestovali funkci a ověřili, že zapsala zprávu do 
     
 1. Stejně jako v předchozím rychlém startu použijte k otestování znovu nasazené funkce prohlížeč nebo KUDRLINKOU.
 
-    # <a name="browsertabbrowser"></a>[Prohlížeee](#tab/browser)
+    # <a name="browser"></a>[Prohlížeee](#tab/browser)
     
     Zkopírujte úplnou **adresu URL pro vyvolání** zobrazenou ve výstupu příkazu publikovat do adresního řádku prohlížeče a přidejte parametr dotazu `&name=Azure`. V prohlížeči by se měl zobrazit podobný výstup jako při spuštění funkce místně.
 
     ![Výstup funkce spuštěné v Azure v prohlížeči](./media/functions-create-first-function-python/function-test-cloud-browser.png)
 
-    # <a name="curltabcurl"></a>[Curl](#tab/curl)
+    # <a name="curl"></a>[Curl](#tab/curl)
     
     Spusťte [kudrlinkou](https://curl.haxx.se/) s **adresou URL vyvolání**a připojením parametru `&name=Azure`. Výstupem příkazu by měl být text "Hello Azure".
     

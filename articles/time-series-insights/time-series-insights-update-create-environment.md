@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 12/26/2019
+ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861808"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526806"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Kurz: Nastavení prostředí Azure čas Series Insights ve verzi Preview
 
@@ -79,7 +79,7 @@ Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Previ
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí svého účtu předplatného Azure. 
 1. Vlevo nahoře vyberte **+ Vytvořit prostředek**. 
-1. Vyberte **Internet of Things** kategorie a pak vyberte **Time Series Insights**. 
+1. Vyberte kategorii **Internet věcí** a pak vyberte **Time Series Insights**. 
 
    [![vyberte prostředek prostředí Time Series Insights.](media/v2-update-provision/tsi-create-new-environment.png)](media/v2-update-provision/tsi-create-new-environment.png#lightbox)
 
@@ -121,7 +121,7 @@ Tato část popisuje, jak vytvořit prostředí Azure Time Series Insights Previ
 
    [![nakonfigurovat vytvořené centrum IoT jako zdroj události.](media/v2-update-provision/tsi-configure-event-source.png)](media/v2-update-provision/tsi-configure-event-source.png#lightbox)
 
-1. Vyberte **Vytvořit**.
+1. Vyberte **Create** (Vytvořit).
 
     [pomocí tlačítka vytvořit ![stránku revize a vytvořit.](media/v2-update-provision/tsi-environment-confirmation.png)](media/v2-update-provision/tsi-environment-confirmation.png#lightbox)
 
@@ -173,7 +173,7 @@ Teď, když jste nasadili Time Series Insights prostředí, začněte streamovat
 
     [![řídicí panel simulace Azure IoT.](media/v2-update-provision/tsi-see-active-devices-and-messages.png)](media/v2-update-provision/tsi-see-active-devices-and-messages.png#lightbox)
 
-## <a name="analyze-data"></a>Analyzujte data
+## <a name="analyze-data"></a>Analýza dat
 
 V této části provedete základní analýzy dat časových řad pomocí [Průzkumníka služby Azure Time Series Insights Preview](./time-series-insights-update-explorer.md).
 
@@ -254,7 +254,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
 
     Vyberte **Použít**.
 
-1. Vyberte **Uložit**. Vytvoří a zobrazí tři proměnné.
+1. Vyberte **Save** (Uložit). Vytvoří a zobrazí tři proměnné.
 
     [![po přidání typu, přečtěte si ho v zobrazení modelu.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
@@ -267,7 +267,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
    | **Název** | Zadejte **hierarchii umístění**. |
    |**Hladin**| Jako název první úrovně zadejte **Country (země** ). <br> Vybrat **+ Přidat úroveň** <br> Zadejte **město** druhé úrovně a pak vyberte **+ Přidat úroveň** . <br> Jako název třetí a poslední úrovně zadejte **sestavování** . |
 
-   Vyberte **Uložit**.
+   Vyberte **Save** (Uložit).
 
    [![v zobrazení modelu zobrazit novou hierarchii.](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
@@ -285,10 +285,10 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
     | --- | --- |
     | **Hierarchie** | Vybrat **hierarchii umístění** |
     | **Krajin** | Zadejte **USA** . |
-    | **Město** | Zadejte **Seattle** |
+    | **Vatikán** | Zadejte **Seattle** |
     | **Kapacit** | Zadat **ručičku místa** |
 
-    Vyberte **Uložit**.
+    Vyberte **Save** (Uložit).
 
 1. Pomocí následujících hodnot opakujte předchozí krok s ostatními dvěma instancemi:
 
@@ -301,7 +301,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
     | **Popis** | Zadejte **instanci pro výtah 2** . |
     | **Hierarchie** | Vybrat **hierarchii umístění** |
     | **Krajin** | Zadejte **USA** . |
-    | **Město** | Zadejte **Seattle** |
+    | **Vatikán** | Zadejte **Seattle** |
     | **Kapacit** | Zadejte **střed pro Tichomoří – věda** |
 
     **Pro výtah 3:**
@@ -313,7 +313,7 @@ V této části použijete model ke strukturování dat. Pro dokončení modelu 
     | **Popis** | Zadejte **instanci pro výtah 3** . |
     | **Hierarchie** | Vybrat **hierarchii umístění** |
     | **Krajin** | Zadejte **USA** . |
-    | **Město** | Zadejte **New York** |
+    | **Vatikán** | Zadejte **New York** |
     | **Kapacit** | Zadejte **sestavení stavu Empire** |
 
     [![zobrazit aktualizované instance.](media/v2-update-provision/iot-solution-accelerator-instances.png)](media/v2-update-provision/iot-solution-accelerator-instances.png#lightbox)
@@ -353,9 +353,9 @@ Teď, když víte, jak vytvořit vlastní prostředí pro Azure Time Series Insi
 Přečtěte si o konfiguraci úložiště Azure Time Series Insights:
 
 > [!div class="nextstepaction"]
-> [Azure storage čas Series Insights ve verzi Preview a příchozího přenosu dat](./time-series-insights-update-storage-ingress.md)
+> [Azure Time Series Insights a příchozí úložiště ve verzi Preview](./time-series-insights-update-storage-ingress.md)
 
 Další informace o modelech řady čas:
 
 > [!div class="nextstepaction"]
-> [Modelování dat Azure čas Series Insights ve verzi Preview](./time-series-insights-update-tsm.md)
+> [Modelování dat ve verzi Preview Azure Time Series Insights](./time-series-insights-update-tsm.md)

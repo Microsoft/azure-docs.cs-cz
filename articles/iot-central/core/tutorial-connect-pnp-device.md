@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: ca2ac62892d1c8d438cc37bffcbfede14058bc23
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: af588db37970ee890b8640e45a98f8a1782c332b
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027717"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500514"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Kurz: použití modelu schopností zařízení k vytvoření zařízení IoT technologie Plug and Play (Preview) a jeho připojení k aplikaci IoT Central
 
@@ -80,7 +80,7 @@ V tomto kurzu pomocí Správce knihovny [Vcpkg](https://github.com/microsoft/vcp
 
 Pokud chcete zařízení připojit k IoT Central aplikaci, budete potřebovat klíč zařízení. Vygenerování klíče zařízení:
 
-1. Přihlaste se k aplikaci IoT Central, kterou jste vytvořili pomocí **vlastní šablony aplikace > Preview** v rychlém startu [vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md) .
+1. Přihlaste se k aplikaci IoT Central, kterou jste vytvořili pomocí šablony **vlastní aplikace** v rychlém startu [vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md) .
 
 1. Přejít na stránku **Správa** a vyberte **připojení zařízení**.
 

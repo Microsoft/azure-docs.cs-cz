@@ -1,5 +1,6 @@
 ---
 title: Co je nového v Data Science Virtual Machine
+titleSuffix: Azure Data Science Virtual Machine
 description: Poznámky k verzi pro Azure Data Science Virtual Machine
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 10/10/2019
 ms.topic: reference
-ms.openlocfilehash: 5ba3cdb74c5d3844a7acad34b4c3d52e9cbd0d0d
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 5abf1f4a232dd1100f7906d28bbc7abfe89da9e2
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72301695"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525766"
 ---
 # <a name="azure-data-science-virtual-machine-release-notes"></a>Poznámky k verzi pro Azure Data Science Virtual Machine
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0e04f7e190ef22fb5c2b288e478cac5ffaf89141
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e74e470ec1f3e26ca6e55e74f20030efdc47f971
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76962505"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525247"
 ---
 # <a name="azure-instance-metadata-service"></a>Služba metadat instance Azure
 
@@ -32,16 +32,18 @@ Koncový bod je k dispozici na dobře známé IP adrese, která není směrovate
 > [!IMPORTANT]
 > Tato služba je **všeobecně dostupná** ve všech oblastech Azure.  Pravidelně přijímá aktualizace k vystavování nových informací o instancích virtuálních počítačů. Tato stránka odráží aktuální dostupné [rozhraní API metadat](#metadata-apis) .
 
-## <a name="service-availability"></a>Dostupnost služeb
+## <a name="service-availability"></a>Dostupnost služby
 
 Služba je dostupná v všeobecně dostupných oblastech Azure. Ne všechny verze rozhraní API můžou být dostupné ve všech oblastech Azure.
 
 Oblasti                                        | Dostupnosti?                                 | Podporované verze
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure China 21Vianet](https://www.azure.cn/)                                            | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
-[Azure Německo](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecná dostupnost | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | Všeobecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Všeobecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Čína 21Vianet](https://www.azure.cn/)                                            | Všeobecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | Všeobecně dostupné | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+
+Verze 2019-11-01 je nyní nasazena a nemusí být k dispozici ve všech oblastech.
 
 Tato tabulka je aktualizována, pokud jsou k dispozici aktualizace služby nebo nové podporované verze.
 
@@ -130,7 +132,7 @@ Stavový kód HTTP | Důvod
 ----------------|-------
 200 OK |
 400 Chybný požadavek | Chybějící záhlaví `Metadata: true` nebo chybějící formát při dotazování na uzel typu list
-404 – Nenalezeno | Požadovaný element neexistuje.
+404 Nenalezeno | Požadovaný element neexistuje.
 Metoda 405 není povolená. | Podporují se jenom `GET` požadavky.
 429 příliš mnoho požadavků | Rozhraní API aktuálně podporuje maximálně 5 dotazů za sekundu.
 Chyba služby 500     | Zkusit znovu za chvíli
@@ -452,7 +454,7 @@ Data | Popis | Představená verze
 -----|-------------|-----------------------
 ověřuje přítomnost | Viz [Attestation data](#attested-data) | 2018-10-01
 identita | Spravované identity pro prostředky Azure. Viz [získání přístupového tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) . | 2018-02-01
-případě | Viz [rozhraní API instance](#instance-api) | 2017-04-02
+instance | Viz [rozhraní API instance](#instance-api) | 2017-04-02
 scheduledevents | Viz [Scheduled Events](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Rozhraní API instance
@@ -466,25 +468,25 @@ Data | Popis | Představená verze
 -----|-------------|-----------------------
 azEnvironment | Prostředí Azure, ve kterém je spuštěný virtuální počítač | 2018-10-01
 customData | Tato funkce je teď zakázaná a my tuto dokumentaci aktualizujeme, až bude dostupná. | 2019-02-01
-location | Oblast Azure, ve které je spuštěný virtuální počítač | 2017-04-02
-jméno | Název virtuálního počítače | 2017-04-02
+umístění | Oblast Azure, ve které je spuštěný virtuální počítač | 2017-04-02
+name | Název virtuálního počítače | 2017-04-02
 offer | Informace o nabídce pro image virtuálního počítače a jsou k dispozici jenom pro Image nasazené z Galerie imagí Azure | 2017-04-02
 osType | Linux nebo Windows | 2017-04-02
 placementGroupId | [Skupina umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) vaší sady škálování virtuálních počítačů | 2017-08-01
 rozhraní | [Plánování](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) obsahující název, produkt a vydavatele pro virtuální počítač, pokud se jedná o Azure Marketplace image | 2018-04-02
 platformUpdateDomain |  [Aktualizujte doménu](manage-availability.md) , ve které je spuštěný virtuální počítač. | 2017-04-02
 platformFaultDomain | [Doména selhání](manage-availability.md) , ve kterém je spuštěný virtuální počítač | 2017-04-02
-zprostředkovatele | Poskytovatel virtuálního počítače | 2018-10-01
+Zprostředkovatel | Poskytovatel virtuálního počítače | 2018-10-01
 publicKeys | [Kolekce veřejných klíčů](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) přiřazených k virtuálnímu počítači a cestám | 2018-04-02
 publisher | Vydavatel image virtuálního počítače | 2017-04-02
 resourceGroupName | [Skupina prostředků](../../azure-resource-manager/management/overview.md) pro virtuální počítač | 2017-08-01
 resourceId | [Plně kvalifikované](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID prostředku | 2019-03-11
-skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
+skj | Konkrétní SKU pro bitovou kopii virtuálního počítače | 2017-04-02
 storageProfile | Viz [profil úložiště](#storage-profile) | 2019-06-01
 subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
-tags | [Značky](../../azure-resource-manager/management/tag-resources.md) pro virtuální počítač  | 2017-08-01
+značek | [Značky](../../azure-resource-manager/management/tag-resources.md) pro virtuální počítač  | 2017-08-01
 tagsList | Značky formátované jako pole JSON pro snazší programovou analýzu  | 2019-06-04
-version | Verze image virtuálního počítače | 2017-04-02
+Verze nástroje | Verze image virtuálního počítače | 2017-04-02
 vmId | [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač | 2017-04-02
 vmScaleSetName | [Název sady škálování virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro sadu škálování virtuálního počítače | 2017-12-01
 vmSize | [Velikost virtuálního počítače](sizes.md) | 2017-04-02
@@ -724,8 +726,8 @@ Cloud a hodnoty prostředí Azure jsou uvedené níže.
 ---------|-----------------
 [Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
-[Azure Německo](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
+[Azure Čína 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
+[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>Získávání značek pro virtuální počítač
 
@@ -825,7 +827,7 @@ rozhraní | [Naplánování](https://docs.microsoft.com/rest/api/compute/virtual
 časové razítko/expiresOn | Časové razítko UTC, na kterém vyprší platnost podepsaného dokumentu
 vmId |  [Jedinečný identifikátor](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) pro virtuální počítač
 subscriptionId | Předplatné Azure pro virtuální počítač, které jste zavedli v `2019-04-30`
-skladové | Konkrétní SKU pro bitovou kopii virtuálního počítače, představená v `2019-11-01`
+skj | Konkrétní SKU pro bitovou kopii virtuálního počítače, představená v `2019-11-01`
 
 #### <a name="verifying-the-signature"></a>Ověření podpisu
 
@@ -838,8 +840,8 @@ Jakmile získáte podpis výše, můžete ověřit, že signatura pochází od M
 ---------|-----------------
 [Všechny všeobecně dostupné globální oblasti Azure](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
-[Azure Německo](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
+[Azure Čína 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
+[Azure (Německo)](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
 
 ```bash
 
@@ -915,21 +917,21 @@ Data    | Popis
 id      | ID prostředku
 offer   | Nabídka platformy nebo Image Marketplace
 publisher | Vydavatel obrázku
-skladové     | SKU image
-version | Verze image platformy nebo webu Marketplace
+skj     | SKU image
+Verze nástroje | Verze image platformy nebo webu Marketplace
 
 Objekt disku operačního systému obsahuje následující informace o disku s operačním systémem, který používá virtuální počítač:
 
 Data    | Popis
 --------|-----------------
-vyrovnávací | Požadavky na ukládání do mezipaměti
+ukládání do mezipaměti | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
 diffDiskSettings | Nastavení dočasného disku
 diskSizeGB | Velikost disku v GB
 image   | Virtuální pevný disk zdrojové image uživatele
 (     | Logické číslo jednotky disku
 managedDisk | Parametry spravovaného disku
-jméno    | Název disku
+name    | Název disku
 virtuálního     | Virtuální pevný disk
 writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAccelerator
 
@@ -937,14 +939,14 @@ Pole datových disků obsahuje seznam datových disků připojených k virtuáln
 
 Data    | Popis
 --------|-----------------
-vyrovnávací | Požadavky na ukládání do mezipaměti
+ukládání do mezipaměti | Požadavky na ukládání do mezipaměti
 createOption | Informace o tom, jak byl virtuální počítač vytvořen
 diffDiskSettings | Nastavení dočasného disku
 diskSizeGB | Velikost disku v GB
 encryptionSettings | Nastavení šifrování disku
 image   | Virtuální pevný disk zdrojové image uživatele
 managedDisk | Parametry spravovaného disku
-jméno    | Název disku
+name    | Název disku
 osType  | Typ operačního systému zahrnutý na disku
 virtuálního     | Virtuální pevný disk
 writeAcceleratorEnabled | Bez ohledu na to, jestli je na disku povolená writeAccelerator
@@ -1020,10 +1022,10 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageP
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Příklady volání služby metadat pomocí různých jazyků v rámci virtuálního počítače
 
-Jazyk | Příklad:
+Jazyk | Příklad
 ---------|----------------
 Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
-Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
+Přejít  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
 C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
@@ -1035,7 +1037,7 @@ Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 1. Zobrazuje se chyba `400 Bad Request, Required metadata header not specified`. Co to znamená?
    * Instance Metadata Service vyžaduje, aby byla v požadavku předána hlavička `Metadata: true` záhlaví. Předání této hlavičky v volání REST umožňuje přístup k Instance Metadata Service.

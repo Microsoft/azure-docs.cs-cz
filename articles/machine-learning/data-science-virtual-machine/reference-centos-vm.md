@@ -1,5 +1,6 @@
 ---
-title: 'Referenční informace: CentOS DSVM'
+title: 'Referenční informace: CentOS Data Science Virtual Machine'
+titleSuffix: Azure Data Science Virtual Machine
 description: Podrobnosti o nástrojích, které jsou součástí Data Science Virtual Machine CentOS
 author: gvashishtha
 ms.service: machine-learning
@@ -7,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 0f71a8af2f7d2cfbfe43c0cfcc84cc7c08109c32
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493708"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525834"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>Referenční informace: CentOS (Linux) Data Science Virtual Machine
 
@@ -38,13 +39,13 @@ Klíčové softwarové komponenty, které jsou součástí DSVM pro Linux, jsou:
 * Knihovny v R a Pythonu, které se použijí v Azure Machine Learning a dalších službách Azure.
 * Vývojové nástroje a editory (RStudio, PyCharm, IntelliJ, (Emacs), gedit, VI).
 
-Datové vědy zahrnují iteraci na posloupnosti úloh:
+Vědecké zpracování dat zahrnuje iterace v pořadí úloh:
 
 1. Vyhledávejte, načítají a předběžně zpracovávají data.
-1. Modely sestavení a testování.
-1. Nasaďte modely pro spotřebu v inteligentních aplikacích.
+1. Sestavení a otestování modelů.
+1. Nasazení modelů pro použití v inteligentních aplikacích.
 
-Vědečtí data používají k dokončení těchto úloh různé nástroje. Vyhledání správných verzí softwaru a stažení, kompilování a instalace softwaru může být časově náročné.
+Odborníci přes data pomocí různých nástrojů k provedení těchto úloh. Vyhledání správných verzí softwaru a stažení, kompilování a instalace softwaru může být časově náročné.
 
 DSVM pro Linux může toto zatížení podstatně zjednodušit. Použijte DSVM pro Linux k přechodu na začátek analytického projektu. Linux DSVM vám pomůže pracovat na úkolech v různých jazycích, včetně jazyků R, Python, SQL, Java a C++. Zatmění nabízí snadno použitelné prostředí IDE pro vývoj a testování kódu. Sada Azure SDK, která je součástí DSVM, vám pomůže sestavovat aplikace pomocí různých služeb systému Linux pro cloudovou platformu Microsoftu. Další jazyky jsou předem nainstalovány, včetně Ruby, Perl, PHP a Node. js.
 
@@ -53,9 +54,9 @@ Pro Image DSVM se neúčtují žádné poplatky za software. Platíte jenom popl
 
 ## <a name="machine-learning-server"></a>Machine Learning Server
 
-R je jedním z nejoblíbenějších jazyků pro analýzu dat a strojové učení. Pokud pro analýzu chcete použít R, DSVM má Machine Learning Server s otevřenou a otevřenou knihovnou jádra Microsoft R. Knihovna Math kernel optimalizuje běžné matematické operace v analytických algoritmech. Open jazyka r je plně kompatibilní s CRAN R. Všechny knihovny R publikované v CRAN se dají nainstalovat do jazyka R Open. 
+R je jedním z nejoblíbenějších jazyků pro analýzy dat a strojové učení. Pokud pro analýzu chcete použít R, DSVM má Machine Learning Server s otevřenou a otevřenou knihovnou jádra Microsoft R. Knihovna Math kernel optimalizuje běžné matematické operace v analytických algoritmech. Open jazyka r je plně kompatibilní s CRAN R. Všechny knihovny R publikované v CRAN se dají nainstalovat do jazyka R Open. 
 
-Pomocí Machine Learning Server můžete škálovat a zprovoznění modely R na webové služby. Programy R můžete upravit v jednom z výchozích editorů, jako je RStudio, VI nebo (Emacs). Editor (Emacs) je předinstalován na DSVM. Balíček (Emacs) ESS ((Emacs) mluví STATISTICS) usnadňuje práci se soubory R v editoru (Emacs).
+Pomocí Machine Learning Server můžete škálovat a zprovoznění modely R na webové služby. Můžete upravit sady R v jednom z výchozí editorů, jako je RStudio, editoru vi nebo (emacs). Editor (Emacs) je předinstalován na DSVM. Balíček (Emacs) ESS ((Emacs) mluví STATISTICS) usnadňuje práci se soubory R v editoru (Emacs).
 
 Konzolu R otevřete tak, že v prostředí zadáte **R**. Tento příkaz vás provede interaktivním prostředím. K vývoji programu jazyka R obvykle používáte editor jako (Emacs) nebo VI a potom spustíte skripty v R. RStudio nabízí úplné grafické prostředí IDE pro vývoj programu R.
 
@@ -63,9 +64,9 @@ Skript R, který můžete použít k instalaci [prvních 20 balíčků r](https:
 
 ## <a name="python"></a>Python
 
-Anaconda Python se instaluje s prostředími Python 3,5 a 2,7. Prostředí 2,7 se nazývá _root_ a prostředí 3,5 se nazývá _py35_. Tato distribuce obsahuje základní Python spolu s přibližně 300 z nejoblíbenějších matematických, inženýrských a analytických balíčků.
+Anaconda Python se instaluje s prostředími Python 3,5 a 2,7. Prostředí 2,7 se nazývá _root_ a prostředí 3,5 se nazývá _py35_. Toto rozdělení obsahuje základní Python spolu s přibližně 300 nejoblíbenějších balíčků analytics matematické, inženýrství a data.
 
-Výchozím nastavením je prostředí py35. Pokud chcete aktivovat kořenové prostředí (2,7), použijte tento příkaz:
+Výchozím nastavením je py35 prostředí. Pokud chcete aktivovat kořenové prostředí (2,7), použijte tento příkaz:
 
 ```bash
 source activate root
@@ -86,7 +87,7 @@ source activate root
 pip install <package>
 ```
 
-Nebo zadejte úplnou cestu k PIP:
+Nebo zadat úplnou cestu k nástroje pip:
 
 ```bash
 /anaconda/bin/pip install <package>
@@ -98,7 +99,7 @@ V případě conda byste měli vždy zadat název prostředí (py35 nebo root):
 conda install <package> -n py35
 ```
 
-Pokud používáte grafické rozhraní nebo máte nastavené předávání X11, můžete zadat **PyCharm** a otevřít PYCHARM Python IDE. Můžete použít výchozí textové editory. Kromě toho můžete použít Spyder, integrované vývojové prostředí (IDE), které je součástí distribuce Anaconda Pythonu. Spyder potřebuje grafické nebo X11 přesměrování. Grafická plocha má zástupce pro Spyder.
+Pokud používáte grafické rozhraní nebo máte nastavené předávání X11, můžete zadat **PyCharm** a otevřít PYCHARM Python IDE. Můžete použít výchozí textových editorů. Kromě toho můžete použít Spyder, integrované vývojové prostředí (IDE), které je součástí distribuce Anaconda Pythonu. Spyder potřebuje grafické stolní počítač nebo X11 předávání. Grafická plocha má zástupce pro Spyder.
 
 ## <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
 
@@ -107,9 +108,9 @@ Anaconda distribuce také přináší Jupyter Notebook, prostředí pro sdílen�
 Jupyter Notebook Server je předem nakonfigurovaný s jádry Python 2, Python 3 a R. Pomocí ikony **Jupyter notebook** plocha otevřete prohlížeč a přejděte na server Jupyter notebook. Pokud k DSVM přistupujete přes SSH nebo klienta X2Go, můžete k Jupyter Notebook serveru přistupovat také na adrese https:\//localhost: 8000/.
 
 > [!NOTE]
-> Pokračujte, pokud se zobrazí upozornění týkající se certifikátu.
+> Pokračujte, pokud chcete získat všechna upozornění certifikátu.
 
-K serveru Jupyter Poznámkový blok můžete přistupovat z libovolného hostitele. Zadejte **https:\//\<DSVM název DNS nebo IP adresa\>: 8000/** .
+Server poznámkového bloku Jupyter můžete přistupovat z libovolného hostitele. Zadejte **https:\//\<DSVM název DNS nebo IP adresa\>: 8000/** .
 
 > [!NOTE]
 > Po zřízení DSVM se ve výchozím nastavení v bráně firewall otevře port 8000. 
@@ -120,7 +121,7 @@ Společnost Microsoft obsahuje balíčky ukázkových poznámkových bloků, jed
 
 Instance samostatného režimu Sparku je předem nainstalovanou na platformě Linux DSVM, která vám pomůžou vyvíjet aplikace Spark lokálně ještě předtím, než je otestujete a nasadíte na velké clustery. 
 
-Můžete spouštět PySpark programy prostřednictvím jádra Jupyter. Když otevřete Jupyter, vyberte tlačítko **Nový** a měl by se zobrazit seznam dostupných jader. **Spark-Python** je jádrem PySpark, který umožňuje sestavovat aplikace Spark pomocí jazyka Python. K sestavování programu Spark můžete použít také Python IDE, jako je PyCharm nebo Spyder. 
+Jádra aplikace Jupyter můžete si projít programy PySpark. Když otevřete Jupyter, vyberte tlačítko **Nový** a měl by se zobrazit seznam dostupných jader. **Spark-Python** je jádrem PySpark, který umožňuje sestavovat aplikace Spark pomocí jazyka Python. K sestavování programu Spark můžete použít také Python IDE, jako je PyCharm nebo Spyder. 
 
 V této samostatné instanci se sada Spark spouští v volajícím klientském programu. Tato funkce usnadňuje a usnadňuje řešení problémů v porovnání s vývojem v clusteru Spark.
 
@@ -128,7 +129,7 @@ Jupyter poskytuje ukázkový Poznámkový blok PySpark. Můžete ji najít v adr
 
 Pokud programujete v R pro Spark, můžete použít Machine Learning Server, Spark nebo sparklyr. 
 
-Před spuštěním v kontextu Sparku v Machine Learning Server je třeba provést jednorázový krok nastavení, který povolí místní instanci Hadoop s jedním uzlem a instancí PŘÍZ. Ve výchozím nastavení jsou na DSVM nainstalovány služby Hadoop, ale jsou zakázané. Pokud chcete povolit služby Hadoop, spusťte následující příkazy jako první při prvním:
+Před spuštěním v kontextu Sparku v Machine Learning Server je třeba provést jednorázový krok nastavení, který povolí místní instanci Hadoop s jedním uzlem a instancí PŘÍZ. Ve výchozím nastavení služby Hadoop jsou nainstalované ale deaktivovány datové VĚDY. Pokud chcete povolit služby Hadoop, spusťte následující příkazy jako první při prvním:
 
 ```bash
 echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
@@ -144,7 +145,7 @@ Služby související se systémem Hadoop můžete zastavit, pokud je nepotřebu
 
 Adresář/dsvm/samples/MRS poskytuje ukázku, která ukazuje, jak vyvíjet a testovat Machine Learning Server ve vzdáleném kontextu Spark (samostatná instance Sparku na DSVM).
 
-## <a name="ides-and-editors"></a>IDEs a editory
+## <a name="ides-and-editors"></a>Editory a integrovanými vývojovými prostředími
 
 Můžete si vybrat z několika editorů kódu, včetně VI/VIM, (Emacs), gedit, PyCharm, RStudio, zatmění, LaTeX a IntelliJ. 
 
@@ -178,13 +179,13 @@ SQuirreL SQL je grafický klient SQL, který se může připojit k různým data
 /usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 ```
 
-Před prvním použitím nastavte své ovladače a aliasy databáze. Ovladače JDBC jsou umístěné na adrese/usr/share/Java/jdbcdrivers.
+Před prvním použitím nastavení ovladačů a aliasy databáze. Ovladače JDBC jsou umístěné na adrese/usr/share/Java/jdbcdrivers.
 
 Další informace najdete v tématu [SQUIRREL SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots).
 
 ### <a name="command-line-tools-for-accessing-sql-server"></a>Nástroje příkazového řádku pro přístup k SQL Server
 
-Balíček ovladačů rozhraní ODBC pro SQL Server také obsahuje dva nástroje příkazového řádku:
+Balíček ovladače ODBC pro SQL Server také obsahuje dva nástroje příkazového řádku:
 
 * **BCP**: nástroj BCP hromadně kopíruje data mezi instancí SQL Server a datovým souborem do uživatelsky definovaného formátu. Pomocí nástroje BCP můžete importovat velký počet nových řádků do SQL Server tabulek nebo exportovat data mimo tabulky do datových souborů. Chcete-li importovat data do tabulky, je nutné použít formátový soubor vytvořený pro tuto tabulku. Nebo, musíte pochopit strukturu tabulky a typy dat, které jsou pro své sloupce platné.
 
@@ -195,9 +196,9 @@ Balíček ovladačů rozhraní ODBC pro SQL Server také obsahuje dva nástroje 
   Další informace najdete v tématu [připojení pomocí nástroje Sqlcmd](https://msdn.microsoft.com/library/hh568447.aspx).
 
   > [!NOTE]
-  > Mezi platformami Linux a Windows jsou rozdíly v tomto nástroji. Podrobnosti najdete v dokumentaci.
+  > Mezi platformami Linux a Windows jsou rozdíly v tomto nástroji. Viz podrobnosti naleznete v dokumentaci.
 
-### <a name="database-access-libraries"></a>Knihovny pro přístup k databázi
+### <a name="database-access-libraries"></a>Přístup ke knihovnám databáze
 
 Knihovny pro přístup k databázi jsou k dispozici v R a Pythonu:
 
@@ -209,12 +210,12 @@ Knihovny pro přístup k databázi jsou k dispozici v R a Pythonu:
 Na DSVM jsou nainstalovány následující nástroje Azure:
 
 * **Azure CLI**: rozhraní příkazového řádku v Azure můžete použít k vytváření a správě prostředků Azure pomocí příkazů prostředí. Pokud chcete otevřít nástroje Azure, zadejte **Azure Help**. Další informace najdete na [stránce dokumentace k Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Průzkumník služby Azure Storage**: Průzkumník služby Azure Storage je grafický nástroj, pomocí kterého můžete procházet objekty, které jste uložili v účtu úložiště Azure, a nahrávat a stahovat data do a z objektů blob Azure. K Průzkumník služby Storage můžete přistupovat pomocí ikony zástupce na ploše. Můžete ho také otevřít z příkazového řádku prostředí zadáním **StorageExplorer**. Musíte být přihlášeni z klienta X2Go nebo mít nastavené přesměrování X11.
+* **Průzkumník služby Azure Storage**: Průzkumník služby Azure Storage je grafický nástroj, pomocí kterého můžete procházet objekty, které jste uložili v účtu úložiště Azure, a nahrávat a stahovat data do a z objektů blob Azure. Průzkumník služby Storage se dá dostat z ikonu zástupce na ploše. Můžete ho také otevřít z příkazového řádku prostředí zadáním **StorageExplorer**. Musíte být přihlášeni z klienta X2Go nebo mít nastavené přesměrování X11.
 * **Knihovny Azure**: na DSVM jsou předinstalované následující knihovny:
   
-  * **Python**: knihovny související s Azure v Pythonu jsou *Azure*, *AzureML*, *pydocumentdb*a *pyodbc*. Pomocí prvních tří knihoven můžete přistupovat ke službám Azure Storage, Azure Machine Learning a Azure Cosmos DB (databáze NoSQL v Azure). Čtvrtá knihovna pyodbc (spolu s ovladačem Microsoft ODBC Driver for SQL Server) umožňuje přístup k SQL Server, Azure SQL Database a Azure SQL Data Warehouse z Pythonu pomocí rozhraní ODBC. Zadáním **seznamu PIP** zobrazíte všechny uvedené knihovny. Nezapomeňte spustit tento příkaz v prostředí Python 2,7 a 3,5.
+  * **Python**: knihovny související s Azure v Pythonu jsou *Azure*, *AzureML*, *pydocumentdb*a *pyodbc*. První tři knihovny můžete přístup služby Azure storage, Azure Machine Learning a Azure Cosmos DB (databáze NoSQL v Azure). Čtvrtý knihovny pyodbc (spolu s ovladač Microsoft ODBC pro SQL Server), umožňuje přístup k systému SQL Server, Azure SQL Database a Azure SQL Data Warehouse z Pythonu pomocí rozhraní ODBC. Zadáním **seznamu PIP** zobrazíte všechny uvedené knihovny. Ujistěte se, že tento příkaz spustit v případě Pythonu 2.7 i 3.5 prostředí.
   * **R**: knihovny související s Azure v jazyce R jsou AZUREML a RODBC.
-  * **Java**: seznam knihoven Azure Java najdete v adresáři/DSVM/SDK/AZURESDKJAVA na dsvm. Knihovny klíčů jsou služby Azure Storage a API pro správu, Azure Cosmos DB a ovladače JDBC pro SQL Server.  
+  * **Java**: seznam knihoven Azure Java najdete v adresáři/DSVM/SDK/AZURESDKJAVA na dsvm. Jsou klíčové knihovny Azure ovladače úložiště a správu rozhraní API služby Azure Cosmos DB a JDBC pro SQL Server.  
 
 K [Azure Portal](https://portal.azure.com) můžete přistupovat z předinstalovaného prohlížeče Firefox. V Azure Portal můžete vytvářet, spravovat a monitorovat prostředky Azure.
 
@@ -233,7 +234,7 @@ Informace o tom, jak nasadit modely v R a Pythonu do Azure Machine Learning, naj
 > [!NOTE]
 > Pokyny k [10 akcím, které můžete provádět na data Science Virtual Machine](vm-do-ten-things.md) byly napsány pro verzi DSVM systému Windows. Nicméně informace o nasazení modelů do Azure Machine Learning platí i pro Linux DSVM.
 
-## <a name="machine-learning-tools"></a>Nástroje pro strojové učení
+## <a name="machine-learning-tools"></a>Nástroje Machine learning
 
 DSVM obsahuje několik nástrojů a algoritmů strojového učení, které jsou předkompilovány a předinstalované místně. Mezi ně patří:
 
@@ -258,7 +259,7 @@ cntk configFile=lr_bs.cntk makeMode=false command=Train
 
 Další informace najdete v [úložišti GITHUB CNTK](https://github.com/Microsoft/CNTK) a na [wikiwebu CNTK](https://github.com/Microsoft/CNTK/wiki).
 
-### <a name="vowpal-wabbit"></a>Pro dostupné
+### <a name="vowpal-wabbit"></a>Vowpal Wabbit
 
 Pro dostupné je systém strojového učení, který využívá techniky jako online, hashing, allreduce, snižování, learning2search, aktivní a interaktivní učení.
 
@@ -317,7 +318,7 @@ Rattle (*R* *a*nalytická *T*OOL *t*o *L*získat *E*asily) využívá zkoumání
 - Generuje kód R.
 - Replikuje operace v uživatelském rozhraní, které lze spustit přímo v R nebo použít jako výchozí bod pro další analýzu.
 
-Aby bylo možné spustit Rattle, musíte být přihlášeni k grafické relaci plochy. V terminálu zadejte **r** a otevřete prostředí r. Na příkazovém řádku R zadejte následující příkazy:
+Aby bylo možné spustit Rattle, musíte být přihlášeni k grafické relaci plochy. V terminálu zadejte **r** a otevřete prostředí r. Na řádku R zadejte následující příkazy:
 
 ```R
 library(rattle)
@@ -338,7 +339,7 @@ Grafické rozhraní, které má otevřenou sadu karet. Pomocí následujících 
 1. Vyberte kartu **vyhodnotit** .
 1. Vyberte možnost **rizika** a pak výběrem možnosti **Spustit** zobrazíte zobrazení se dvěma **riziky (kumulativní)** výkon.
 1. Vyberte kartu **protokol** , chcete-li zobrazit generovaný kód R pro předchozí operace. (Kvůli chybě v aktuální verzi Rattle je nutné před **exportem tohoto protokolu** do textu protokolu vložit znak **#** .)
-1. Vyberte tlačítko **exportovat** a uložte soubor skriptu jazyka R s názvem *weather_script. R* do domovské složky.
+1. Vyberte tlačítko **exportovat** a uložte soubor skriptu R s názvem *weather_script. R* do domovské složky.
 
 Můžete ukončit Rattle a R. Nyní můžete upravit generovaný skript R. Nebo použijte skript jako takový a spusťte ho kdykoli, abyste mohli opakovat všechno, co bylo provedeno v uživatelském rozhraní Rattle. Hlavně pro začátečníky v R je to způsob, jak rychle analyzovat a strojové učení v jednoduchém grafickém rozhraní, a to při automatickém generování kódu v jazyce R pro úpravy nebo pro učení.
 

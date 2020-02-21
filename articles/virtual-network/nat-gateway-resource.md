@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/19/2020
 ms.author: allensu
-ms.openlocfilehash: 0cbebf4ab2d865d49a85da2e809bdf24e7258a5f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
-ms.translationtype: MT
+ms.openlocfilehash: a118d560541595e26c80547dd641968c518aa353
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444379"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485008"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT (Public Preview)
 
@@ -341,7 +341,6 @@ Port SNAT je k dispozici pro opakované použití na stejnou cílovou IP adresu 
 - Rodina adres IPv4 je podporovaná.  Překlad adres (NAT) nekomunikuje s řadou IPv6 adres.
 - NSG v podsíti nebo síťové kartě se neuplatňují pro odchozí toky do veřejných koncových bodů pomocí překladu adres (NAT).
 - Protokolování toku NSG se při použití překladu adres (NAT) nepodporuje.
-- Pokud má virtuální síť více podsítí, může mít každá podsíť nakonfigurované jiné nastavení překladu adres (NAT).
 - Překlad adres (NAT) nemůže zahrnovat víc virtuálních sítí.
 
 ## <a name="preview-participation"></a>Účast ve verzi Preview

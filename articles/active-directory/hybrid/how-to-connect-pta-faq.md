@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06dfe1e76682d70170bfea104050b1000269c38f
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 2cfa5e2117b2d6fce525e66b25ec44f696d7d450
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932388"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484413"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: nejčastější dotazy
 
@@ -35,16 +35,16 @@ Přečtěte si [tuto příručku](https://docs.microsoft.com/azure/security/fund
 
 Předávací ověřování je bezplatná funkce. Nepotřebujete žádné placené edice Azure AD, abyste ho mohli používat.
 
-## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloudhttpswwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>Je k dispozici předávací ověřování v [cloudu Microsoft Azure (Německo)](https://www.microsoft.de/cloud-deutschland) a [Microsoft Azure Government cloudu](https://azure.microsoft.com/features/gov/)?
+## <a name="is-pass-through-authentication-available-in-the-microsoft-azure-germany-cloud-and-the-microsoft-azure-government-cloud"></a>Je k dispozici předávací ověřování v [cloudu Microsoft Azure (Německo)](https://www.microsoft.de/cloud-deutschland) a [Microsoft Azure Government cloudu](https://azure.microsoft.com/features/gov/)?
 
 Ne. Předávací ověřování je dostupné jenom v celosvětové instanci Azure AD.
 
-## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>Pracuje [podmíněný přístup](../active-directory-conditional-access-azure-portal.md) s předávacím ověřováním?
+## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Pracuje [podmíněný přístup](../active-directory-conditional-access-azure-portal.md) s předávacím ověřováním?
 
 Ano. Všechny funkce podmíněného přístupu, včetně Azure Multi-Factor Authentication, fungují s předávacím ověřováním.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Podporuje předávací ověřování "alternativní ID" jako uživatelské jméno místo "userPrincipalName"?
-V omezeném rozsahu předávací ověřování podporuje alternativní ID jako uživatelské jméno při konfiguraci v Azure AD Connect. Azure AD Connect potřebuje k Azure AD synchronizovat místní atribut služby Active Directory `UserPrincipalName`. Díky tomu se `UserPrincipalName` v místní službě AD a Azure AD stanou identické. Pokud chcete použít jiný atribut k synchronizaci z místní služby AD jako hlavního názvu uživatele (UPN) do Azure AD, budete muset použít buď synchronizaci hodnoty hash hesla, nebo AD FS. Další informace najdete v tématu [vlastní instalace služby Azure AD Connect](how-to-connect-install-custom.md). Ne všechny aplikace Office 365 podporují `Alternate ID`. Přečtěte si téma Podpora dokumentace k konkrétní aplikaci.
+V omezeném rozsahu předávací ověřování podporuje alternativní ID jako uživatelské jméno při konfiguraci v Azure AD Connect. Azure AD Connect potřebuje k Azure AD synchronizovat místní atribut služby Active Directory `UserPrincipalName`. Díky tomu se `UserPrincipalName` v místní službě AD a Azure AD stanou identické. Pokud chcete použít jiný atribut k synchronizaci z místní služby AD jako hlavního názvu uživatele (UPN) do Azure AD, budete muset použít buď synchronizaci hodnoty hash hesla, nebo AD FS. Další informace najdete v tématu [vlastní instalace Azure AD Connect](how-to-connect-install-custom.md). Ne všechny aplikace Office 365 podporují `Alternate ID`. Přečtěte si téma Podpora dokumentace k konkrétní aplikaci.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Funguje synchronizace hodnot hash hesel jako záložní pro předávací ověřování?
 
@@ -54,7 +54,7 @@ Ne. Předávací _ověřování neprovádí automatické_ převzetí služeb př
 
 Když pomocí Azure AD Connect přepnete metodu přihlašování z synchronizace hodnot hash hesel do předávacího ověřování, předávací ověřování se bude primární metodou přihlášení pro uživatele ve spravovaných doménách. Všimněte si, že hodnoty hash hesel všech uživatelů, které byly dříve synchronizovány pomocí synchronizace hodnot hash hesel, zůstávají uloženy ve službě Azure AD.
 
-## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Můžu nainstalovat konektor [Azure proxy aplikací služby AD](../manage-apps/application-proxy.md) na stejný server jako předávací ověřovací Agent?
+## <a name="can-i-install-an-azure-ad-application-proxy-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Můžu nainstalovat konektor [Azure proxy aplikací služby AD](../manage-apps/application-proxy.md) na stejný server jako předávací ověřovací Agent?
 
 Ano. Verze předaného agenta předávacího ověřování, verze 1.5.193.0 nebo novější, podporují tuto konfiguraci.
 
@@ -107,7 +107,7 @@ Ne, na jeden server můžete nainstalovat jenom jednoho předávacího agenta pr
 
 ## <a name="do-i-have-to-manually-renew-certificates-used-by-pass-through-authentication-agents"></a>Musím ručně obnovovat certifikáty používané agenty předávacího ověřování?
 
-Komunikace mezi každým předávacím agentem ověřování a službou Azure AD je zabezpečená pomocí ověřování založeného na certifikátech. Tyto [certifikáty se v Azure AD automaticky Obnovují každých několik měsíců](how-to-connect-pta-security-deep-dive.md#operational-security-of -the-authentication-agents). Tyto certifikáty není nutné ručně obnovovat. V případě potřeby můžete vyčistit starší certifikáty s vypršenou platností.
+Komunikace mezi každým předávacím agentem ověřování a službou Azure AD je zabezpečená pomocí ověřování založeného na certifikátech. Tyto [certifikáty se v Azure AD automaticky Obnovují každých několik měsíců](how-to-connect-pta-security-deep-dive.md#operational-security-of-the-authentication-agents). Tyto certifikáty není nutné ručně obnovovat. V případě potřeby můžete vyčistit starší certifikáty s vypršenou platností.
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Návody odebrat předávacího agenta ověřování?
 

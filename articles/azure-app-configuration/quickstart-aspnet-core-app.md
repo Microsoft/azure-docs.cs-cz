@@ -6,20 +6,20 @@ author: lisaguthrie
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 657edbac67a53952ab79aee74b63c59a44b7de18
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: ee50d180c579e117c16f1a956871068f0a46e976
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898658"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498559"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace ASP.NET Core s využitím konfigurace aplikace Azure
 
 V tomto rychlém startu použijete Azure App Configuration k centralizaci úložiště a správy nastavení aplikace pro ASP.NET Core aplikaci. ASP.NET Core vytvoří objekt konfigurace s jedním klíčem na základě hodnoty pomocí nastavení z jednoho nebo více zdrojů dat, které jsou určeny aplikací. Tyto zdroje dat jsou známé jako *poskytovatelé konfigurace*. Vzhledem k tomu, že klient .NET Core konfigurace aplikace je implementovaný jako poskytovatel konfigurace, služba se zobrazí jako jiný zdroj dat.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Sada .NET Core SDK](https://dotnet.microsoft.com/download)
@@ -35,9 +35,9 @@ V tomto rychlém startu použijete Azure App Configuration k centralizaci úlož
 
     | Klíč | Hodnota |
     |---|---|
-    | TestApp:Settings:BackgroundColor | Bílá |
+    | TestApp:Settings:BackgroundColor | White |
     | TestApp: nastavení: FontSize | 24 |
-    | TestApp:Settings:FontColor | Černá |
+    | TestApp:Settings:FontColor | Black |
     | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure |
 
     V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
@@ -63,7 +63,7 @@ Otevřete soubor *. csproj* . Přidejte `UserSecretsId` element, jak je znázorn
 > [!IMPORTANT]
 > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
 
-#### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+#### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -81,7 +81,7 @@ Otevřete soubor *. csproj* . Přidejte `UserSecretsId` element, jak je znázorn
 </Project>
 ```
 
-#### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+#### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -102,7 +102,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
 1. Přidejte odkaz na `Microsoft.Azure.AppConfiguration.AspNetCore` balíček NuGet spuštěním následujícího příkazu:
 
     ```dotnetcli
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
 1. Spusťte následující příkaz pro obnovení balíčků pro váš projekt:
@@ -139,7 +139,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
     > [!IMPORTANT]
     > `CreateHostBuilder` nahrazuje `CreateWebHostBuilder` v .NET Core 3,0.  Vyberte správnou syntaxi na základě vašeho prostředí.
 
-    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -152,7 +152,7 @@ Nástroj Secret Manager ukládá citlivá data související s vývojem mimo str
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>

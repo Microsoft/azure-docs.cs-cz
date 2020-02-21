@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d8bdae5a860eb19741aa321606feb3f0825740a9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 6451c5d32fffc0290592a2489c9cdc99be1b7b7c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847300"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483291"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -59,7 +59,7 @@ Ne. Výchozí obory používané pro naši podporovanou sadu zprostředkovatelů
 
 ### <a name="does-my-application-have-to-be-run-on-azure-for-it-work-with-azure-ad-b2c"></a>Musí být moje aplikace spuštěná v Azure pro práci s Azure AD B2C?
 
-Ne, aplikaci můžete hostovat kdekoli (v cloudu nebo místně). To jediné, co pro interakci s Azure AD B2C potřebuje, je možnost odesílat a přijímat požadavky HTTP na veřejně přístupných koncových bodech.
+Ne, aplikaci můžete hostovat kdekoli (v cloudu nebo místně). Vše, co potřebuje k interakci s Azure AD B2C, je schopnost odesílat a přijímat požadavky HTTP na veřejně přístupných koncových bodech.
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>Mám více Azure AD B2C tenantů. Jak je můžu spravovat na Azure Portal?
 
@@ -78,7 +78,7 @@ Podpis e-mailu obsahuje název tenanta Azure AD B2C, který jste zadali při prv
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako globální správce.
 1. Otevřete okno **Azure Active Directory** .
-1. Klikněte na tlačítko **vlastnosti** kartu.
+1. Klikněte na kartu **vlastnosti** .
 1. Změňte pole **název** .
 1. Klikněte na **Uložit** v horní části stránky.
 
@@ -86,15 +86,17 @@ V současné době neexistuje žádný způsob, jak změnit pole "od:" v e-mailu
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>Jak můžu migrovat existující uživatelská jména, hesla a profily z databáze do Azure AD B2C?
 
-Pomocí Graph API Azure AD můžete napsat nástroj pro migraci. Podrobnosti najdete v [Průvodci migrací uživatelů](user-migration.md) .
+K zápisu nástroje pro migraci můžete použít rozhraní Microsoft Graph API. Podrobnosti najdete v [Průvodci migrací uživatelů](user-migration.md) .
 
 ### <a name="what-password-user-flow-is-used-for-local-accounts-in-azure-ad-b2c"></a>Jaký tok uživatelského hesla se používá pro místní účty v Azure AD B2C?
 
-Tok uživatele Azure AD B2C hesla pro místní účty je založený na zásadách pro Azure AD. Služby Azure AD B2C's pro registraci, registraci nebo přihlášení a resetování hesel uživatelské toky používají sílu silného hesla a neprošli platnost hesla. Další podrobnosti najdete v tématu [zásady hesel služby Azure AD](/previous-versions/azure/jj943764(v=azure.100)) . Informace o uzamčení a heslech účtů najdete v tématu [Správa hrozeb pro prostředky a data v Azure Active Directory B2C](threat-management.md).
+Tok uživatele Azure AD B2C hesla pro místní účty je založený na zásadách pro Azure AD. Služby Azure AD B2C's pro registraci, registraci nebo přihlášení a resetování hesel uživatelské toky používají sílu silného hesla a neprošli platnost hesla. Další podrobnosti najdete v tématu [zásady a omezení hesel v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy).
+
+Informace o uzamčení a heslech účtů najdete v tématu [Správa hrozeb pro prostředky a data v Azure Active Directory B2C](threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Můžu použít Azure AD Connect k migraci identit zákazníků, které jsou uložené v místní službě Active Directory, do Azure AD B2C?
 
-Ne, Azure AD Connect není navržená tak, aby spolupracovala s Azure AD B2C. Pro migraci uživatelů zvažte použití [Graph API Azure AD](manage-user-accounts-graph-api.md) . Podrobnosti najdete v [Průvodci migrací uživatelů](user-migration.md) .
+Ne, Azure AD Connect není navržená tak, aby spolupracovala s Azure AD B2C. Pro migraci uživatelů zvažte použití [rozhraní Microsoft Graph API](manage-user-accounts-graph-api.md) . Podrobnosti najdete v [Průvodci migrací uživatelů](user-migration.md) .
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Může moje aplikace otevřít Azure AD B2C stránky v rámci prvku iFrame?
 
@@ -120,7 +122,7 @@ Ne, Azure AD B2C nepodporuje stejnou sadu sestav jako Azure AD Premium. Existuje
 * **Sestavy auditu** zahrnují jak aktivitu správce, tak i aktivitu aplikace.
 * **Sestavy o využití** zahrnují počet uživatelů, počet přihlášení a objem MFA.
 
-### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Můžu lokalizovat uživatelské rozhraní stránek obsluhované Azure AD B2C? Jaké jsou podporované jazyky?
+### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Můžu lokalizovat uživatelské rozhraní stránek obsluhované Azure AD B2C? Jaké jazyky se podporují?
 
 Ano, podívejte se na téma [přizpůsobení jazyka](user-flow-language-customization.md). Poskytujeme překlady pro jazyky 36 a můžete přepsat libovolný řetězec tak, aby vyhovoval vašim potřebám.
 
@@ -134,7 +136,7 @@ Chcete-li odstranit svého tenanta Azure AD B2C, postupujte podle těchto kroků
 
 Můžete použít aktuální prostředí **aplikací** nebo naše nové sjednocené **Registrace aplikací (ve verzi Preview)** . [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
+#### <a name="applications"></a>[Aplikace](#tab/applications/)
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako *Správce předplatného*. Použijte stejný pracovní nebo školní účet nebo stejnou účet Microsoft, jakou jste použili k registraci do Azure.
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
@@ -155,7 +157,7 @@ Můžete použít aktuální prostředí **aplikací** nebo naše nové sjednoce
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. Na stránce **Přehled** vyberte **odstranit adresář**. Dokončete proces podle pokynů na obrazovce.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako *Správce předplatného*. Použijte stejný pracovní nebo školní účet nebo stejnou účet Microsoft, jakou jste použili k registraci do Azure.
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.

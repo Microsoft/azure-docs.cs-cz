@@ -1,17 +1,17 @@
 ---
-title: Plány App Service
+title: Plány služby App Service
 description: Přečtěte si, jak App Service plány pracují v Azure App Service, jak se účtují zákazníkovi a jak se dají škálovat podle svých potřeb.
 keywords: App Service, Azure App Service, škálování, škálovatelná, škálovatelnost, plán služby App Service, náklady na službu App Service
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: c0b28bd7a854d1b4a8b387e40fb045d47160768d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672287"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482339"
 ---
 # <a name="azure-app-service-plan-overview"></a>Přehled plánu Azure App Service
 
@@ -37,7 +37,7 @@ Každá úroveň také poskytuje určitou podmnožinu funkcí App Service. Mezi 
 <a name="new-pricing-tier-premiumv2"></a>
 
 > [!NOTE]
-> Nová cenová úroveň **PremiumV2** poskytuje [virtuální počítače řady Dv2-Series](../virtual-machines/windows/sizes-general.md#dv2-series) s rychlejšími procesory, SSD úložištěm a dvojitým poměrem paměti k jádrům ve srovnání s úrovní **Standard** . **PremiumV2** také podporuje vyšší škálování prostřednictvím zvýšeného počtu instancí a zároveň nabízí všechny pokročilé možnosti, které se nacházejí v plánu Standard. Všechny funkce, které jsou k dispozici v existující úrovni **Premium** , jsou součástí **PremiumV2**.
+> Nová cenová úroveň **PremiumV2** poskytuje [virtuální počítače řady Dv2-Series](../virtual-machines/dv2-dsv2-series.md) s rychlejšími procesory, SSD úložištěm a dvojitým poměrem paměti k jádrům ve srovnání s úrovní **Standard** . **PremiumV2** také podporuje vyšší škálování prostřednictvím zvýšeného počtu instancí a zároveň nabízí všechny pokročilé možnosti, které se nacházejí v plánu Standard. Všechny funkce, které jsou k dispozici v existující úrovni **Premium** , jsou součástí **PremiumV2**.
 >
 > Podobně jako jiné vyhrazené úrovně jsou pro tuto vrstvu k dispozici tři velikosti virtuálních počítačů:
 >

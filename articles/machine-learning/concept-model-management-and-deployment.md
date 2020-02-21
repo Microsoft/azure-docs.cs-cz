@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122334"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486372"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
@@ -114,13 +114,13 @@ Modely se zařízeními IoT můžete používat prostřednictvím **Azure IoT Ed
 
 Další informace najdete v tématu [nasazení modelů](how-to-deploy-and-where.md).
 
-### <a name="analytics"></a>Analýza
+### <a name="analytics"></a>Analytics
 
 Microsoft Power BI podporuje používání modelů strojového učení pro analýzu dat. Další informace najdete v tématu [integrace Azure Machine Learning v Power BI (Preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Zaznamenání dat zásad správného řízení potřebných pro zachycení kompletního životního cyklu ML
 
-Azure ML poskytuje možnost sledovat komplexní záznam auditu všech vašich prostředků ML. Zejména:
+Azure ML poskytuje možnost sledovat komplexní záznam auditu všech vašich prostředků ML. Konkrétně:
 
 - Azure ML [se integruje s Git](how-to-set-up-training-targets.md#gitintegration) a sleduje informace o tom, ze kterého úložiště, větvení a potvrzení kódu pochází.
 - Datové [sady Azure ml](how-to-create-register-datasets.md) vám pomůžou sledovat, profilovat a data verze. 
@@ -138,6 +138,19 @@ Monitorování vám umožní pochopit, jaká data jsou odesílána do modelu, a 
 Tyto informace vám pomohou pochopit, jak je model používán. Shromážděná vstupní data mohou být užitečná také při výuce budoucích verzí modelu.
 
 Další informace najdete v tématu [Jak povolit shromažďování dat modelu](how-to-enable-data-collection.md).
+
+## <a name="retrain-your-model-on-new-data"></a>Přeučení modelu o nových datech
+
+Často budete chtít model aktualizovat, nebo ho dokonce znovu naučit od začátku, protože obdržíte nové informace. V některých případech je příjem nových dat očekávanou součástí domény. Jindy, jak je popsáno v tématu [detekce posunu dat (Preview) u datových sad](how-to-monitor-datasets.md), může výkon modelu zhoršit na tvář takových věcí jako změny konkrétního snímače, přirozené změny dat, jako jsou sezónní efekty, nebo funkce, které se v jejich vztahu k ostatním funkcím posunují. 
+
+Neexistuje žádná univerzální odpověď na "Návody vědět, jestli by se měl přeškolit?" ale výše popsané nástroje pro události a monitorování Azure ML jsou dobré počáteční body pro automatizaci. Jakmile se rozhodnete přeškolit, měli byste: 
+
+- Předzpracování dat pomocí opakovaného, automatizovaného procesu
+- Výuka nového modelu
+- Porovnejte výstupy nového modelu s původními modely.
+- Pomocí předdefinovaných kritérií vyberte, jestli se má původní model nahradit. 
+
+Motivem výše uvedených kroků je, že vaše rekurze by měla být automatizovaná, ne ad hoc. [Kanály Azure Machine Learning](concept-ml-pipelines.md) jsou vhodnou odpovědí k vytváření pracovních postupů souvisejících s přípravou, školením, ověřováním a nasazením dat. Přečtěte si [modely převlaků pomocí návrháře Azure Machine Learning (Preview)](how-to-retrain-designer.md) a podívejte se, jak kanály a návrháře Azure Machine Learning vyhovují scénáři přeškolení. 
 
 ## <a name="automate-the-ml-lifecycle"></a>Automatizace životního cyklu ML 
 

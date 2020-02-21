@@ -16,18 +16,19 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69c633dd3e28047d542e16a58211f997669188f0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896426"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499048"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Možnosti správy pro role Azure AD v Privileged Identity Management
 
 Prostředí pro správu rolí služby Azure AD v Privileged Identity Management bylo aktualizováno, aby bylo sjednoceno, jak se spravují role Azure AD a role prostředků Azure. Dřív Privileged Identity Management pro role prostředků Azure obsahoval několik klíčových funkcí, které pro role Azure AD nebyly k dispozici.
 
 Při současném uvedení aktualizace se tyto dva sloučí do jediného prostředí pro správu. v takovém případě získáte stejné funkce pro role Azure AD jako pro role prostředků Azure. Tento článek vás informuje o aktualizovaných funkcích a všech požadavcích.
+
 
 ## <a name="time-bound-assignments"></a>Přiřazení s časovou vazbou
 

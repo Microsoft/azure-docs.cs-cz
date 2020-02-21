@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ff7cda6a593b1517ad711a56f73d29a14345baf
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d4d5c91966f8c490e056a84c89073e4da7cfdfd6
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368015"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484481"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -1426,7 +1426,7 @@ Další informace o použití vlastních vlastností rozšíření pro pravidla 
 **Kategorie služby:** Podmíněný přístup  
 **Schopnost produktu:** Zabezpečení identity a ochrana
 
-V seznamu [schválených klientských aplikací](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement)jsou následující aplikace:
+V seznamu [schválených klientských aplikací](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)jsou následující aplikace:
 
 - Microsoft To-Do
 
@@ -2753,7 +2753,7 @@ Následující aplikace se přidají koncem února:
 
 Další informace naleznete v tématu:
 
-- [Požadavek na schválenou aplikaci klienta](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Požadavek na schválenou aplikaci klienta](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3044,14 +3044,14 @@ Další informace najdete v tématu [podmíněný přístup ve službě Azure AD
 **Kategorie služby:** Podmíněný přístup  
 **Schopnost produktu:** Zabezpečení identity a ochrana
 
-V seznamu [schválených klientských aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)jsou následující aplikace:
+V seznamu [schválených klientských aplikací](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)jsou následující aplikace:
 
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
 Další informace naleznete v tématu:
 
-- [Požadavek na schválenou aplikaci klienta](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Požadavek na schválenou aplikaci klienta](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---
@@ -3089,7 +3089,7 @@ Další informace najdete v tématu věnovaném [místní integraci](https://doc
 **Kategorie služby:** Služba Azure AD  
 **Schopnost produktu:** Zabezpečení identity a ochrana
 
-Teď můžete omezit přístup k Office 365 a dalším cloudovým aplikacím připojeným k Azure AD na [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement) , které podporují zásady ochrany aplikací Intune pomocí [podmíněného přístupu založeného na aplikaci Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Zásady ochrany aplikací Intune se používají ke konfiguraci a ochraně dat společnosti na těchto klientských aplikací.
+Teď můžete omezit přístup k Office 365 a dalším cloudovým aplikacím připojeným k Azure AD na [schválené klientské aplikace](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview) , které podporují zásady ochrany aplikací Intune pomocí [podmíněného přístupu založeného na aplikaci Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access). Zásady ochrany aplikací Intune se používají ke konfiguraci a ochraně dat společnosti na těchto klientských aplikací.
 
 Kombinací [aplikací na základě](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) zásad podmíněného přístupu [na základě zařízení](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications) získáte flexibilitu při ochraně dat pro osobní zařízení a zařízení společnosti.
 
@@ -3189,14 +3189,14 @@ V Centru pro správu Azure AD teď můžete:
 **Kategorie služby:** Podmíněný přístup  
 **Schopnost produktu:** Zabezpečení identity a ochrana
 
-Do seznamu [schválených klientských aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)byly přidány následující aplikace:
+Do seznamu [schválených klientských aplikací](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)byly přidány následující aplikace:
 
 - Aplikace Microsoft Planner
 - Azure Information Protection 
 
 Další informace naleznete v tématu:
 
-- [Požadavek na schválenou aplikaci klienta](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Požadavek na schválenou aplikaci klienta](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-conditions#client-apps-preview)
 - [Podmíněný přístup na základě aplikace Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
 ---

@@ -9,18 +9,18 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: 6d6e7d564722d1c2ad4713dd1d39e7cba5ed0605
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964953"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525545"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-K dispozici je několik způsobů, jak spravovat prostředky Azure ML. Můžete použít [portál](https://portal.azure.com/), [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)nebo [sadu Python SDK](https://docs.microsoft.com/python/api/overview/azureml-sdk/?view=azure-ml-py). Případně můžete zvolit REST API. REST API používá operace HTTP standardním způsobem k vytváření, načítání, aktualizaci a odstraňování prostředků. REST API funguje s jakýmkoli jazykem nebo nástrojem, který může provádět požadavky HTTP. Jednoduchá struktura je často vhodná pro vytváření skriptovacích prostředí a pro automatizaci MLOps. 
+K dispozici je několik způsobů, jak spravovat prostředky Azure ML. Můžete použít [portál](https://portal.azure.com/), [rozhraní příkazového řádku](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)nebo [sadu Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Případně můžete zvolit REST API. REST API používá operace HTTP standardním způsobem k vytváření, načítání, aktualizaci a odstraňování prostředků. REST API funguje s jakýmkoli jazykem nebo nástrojem, který může provádět požadavky HTTP. Jednoduchá struktura je často vhodná pro vytváření skriptovacích prostředí a pro automatizaci MLOps. 
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -54,7 +54,7 @@ Načtení tokenu:
 1. Otevřete okno terminálu.
 1. Do příkazového řádku zadejte následující kód.
 1. `{your-tenant-id}`, `{your-client-id}`a `{your-client-secret}`nahraďte vlastními hodnotami. V celém tomto článku jsou řetězce obklopené složenými závorkami proměnné, které budete muset nahradit vlastními odpovídajícími hodnotami.
-1. Spuštěním příkazu
+1. Spusťte příkaz
 
 ```bash
 curl -X POST https://login.microsoftonline.com/{your-tenant-id}/oauth2/token \
@@ -201,9 +201,9 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 Všimněte si, že pokud chcete zobrazit seznam experimentů, začíná při `history/v1.0` při výpisu modelů cesta začíná na `modelmanagement/v1.0`. REST API je rozdělen do několika operačních skupin, z nichž každá má odlišnou cestu. Referenční dokumentace rozhraní API na odkazech níže uvádějí operace, parametry a kódy odpovědí pro různé operace.
 
-|Oblast|Cesta|Referenční informace|
+|Plošný|Cesta|Odkaz|
 |-|-|-|
-|Artifacts|artefakt/v 2.0/|[Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|Artefakty|artefakt/v 2.0/|[Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/azureml/artifacts)|
 |Úložiště dat|úložiště dat/v 1.0/|[Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/azureml/datastores)|
 |ladění parametrů|Hyperdrive/v 1.0/|[Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
 |Modely|modelmanagement/v 1.0/|[Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
@@ -211,7 +211,7 @@ Všimněte si, že pokud chcete zobrazit seznam experimentů, začíná při `hi
 
 REST API můžete prozkoumat pomocí obecného vzoru:
 
-|Komponenta adresy URL|Příklad:|
+|Komponenta adresy URL|Příklad|
 |-|-|
 | https://| |
 | oblastní rozhraní API – Server/ | centralus.api.azureml.ms/ |

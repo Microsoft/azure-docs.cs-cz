@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: f7d8d28299b662774a8cc0a7d4a28b052a551eab
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5453793c7e1bb1ef766939d2e7fdf32a1ac1ec72
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906321"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77499947"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -35,7 +35,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 [Další podrobnosti a poznámky](security-center-alerts-iaas.md#windows-)
 
-|Upozornění|Popis|Záměr ([Další informace](#intentions))|
+|Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
 |**Bylo zjištěno přihlášení ze škodlivé IP adresy.**|Pro účet ' Tristan. Schleining ' a proces ' advapi ' bylo úspěšné vzdálené ověření, ale přihlašovací IP adresa [IP adresa] byla dříve hlášena jako škodlivá nebo velmi neobvyklá. Pravděpodobně došlo k úspěšnému útoku.|-|
 |**Bylo zjištěno přihlášení ze škodlivé IP adresy. [zobrazeno vícekrát]**|Došlo k úspěšnému vzdálenému ověření účtu IUSR_10001 a procesu advapi, ale IP adresa [IP adresa] byla dřív hlášena jako škodlivá nebo velmi neobvyklá. Pravděpodobně došlo k úspěšnému útoku. Soubory s příponou. scr jsou soubory spořiče obrazovky a obvykle se nacházejí a provádějí z adresáře systému Windows.|-|
@@ -126,10 +126,10 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 [Další podrobnosti a poznámky](security-center-alerts-iaas.md#linux-)
 
-|Upozornění|Popis|Záměr ([Další informace](#intentions))|
+|Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
 |**Proces, při kterém se zobrazil přístup k souboru klíčů autorizovaným SSH, neobvyklým způsobem**|V metodě, která se podobá známým postupům malwaru, je přístup k souboru klíčů autorizovaných pro SSH. Tento přístup může znamenat, že se útočník pokouší získat trvalý přístup k počítači.|-|
-|**Zjištěn pokus o trvalosti**|Analýza dat hostitele zjistila, že byl nainstalován spouštěcí skript pro režim jednoho uživatele.<br>Vzhledem k tomu, že je zřídka, že by se v tomto režimu musely spustit jakýkoli legitimní proces, může to znamenat, že útočník přidal škodlivý proces do každé úrovně spuštění, aby zajistil trvalost. |Dočasné|
+|**Zjištěn pokus o trvalosti**|Analýza dat hostitele zjistila, že byl nainstalován spouštěcí skript pro režim jednoho uživatele.<br>Vzhledem k tomu, že je zřídka, že by se v tomto režimu musely spustit jakýkoli legitimní proces, může to znamenat, že útočník přidal škodlivý proces do každé úrovně spuštění, aby zajistil trvalost. |Trvalost|
 |**Podezřelá Změna časového razítka souboru**|Analýza dat hostitele zjistila podezřelou změnu časového razítka. Útočníci často kopírují časová razítka z existujících, legitimních souborů do nových nástrojů, aby nedocházelo k detekci těchto nově vynechaných souborů.|Trvalost/DefenseEvasion|
 |**Do skupiny sudoers se přidal nový uživatel.**|Analýza dat hostitele zjistila, že byl uživatel přidán do skupiny sudoers, která umožňuje jeho členům spouštět příkazy s vysokou úrovní oprávnění.|PrivilegeEscalation|
 |**Zjistil se proces přidružený k dolování v digitální měně.**|Analýza dat hostitele zjistila spuštění procesu, který je normálně přidružen k dolování v digitální měně.|Využití/spuštění|
@@ -215,23 +215,24 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 [Další podrobnosti a poznámky](security-center-alerts-compute.md#azure-app-service-)
 
-|Upozornění|Popis|Záměr ([Další informace](#intentions))|
+|Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
-|**Zjistila se podezřelá vyvolání motivu WordPress.**|Protokol aktivity App Service označuje možnou aktivitu vkládání kódu na prostředek App Service.<br>Tato podezřelá aktivita se podobá aktivitě, která pracuje s motivem WordPress, aby podporovala spouštění kódu na straně serveru následovaný přímým webovým požadavkem na vyvolání souboru s tímto tématem. Tento typ aktivity může být součástí kampaně útoku přes WordPress.|-|
-|**Zjistilo se webové otisky prstů.**<br>(NMAP/blind slonů)|Protokol aktivit App Service označuje možnou aktivitu otisku webu na prostředku App Service.<br>Tato podezřelá aktivita je přidružená k nástroji s názvem blind slonů. Nástroj vyhledá webové servery otiskem prstů a pokusí se zjistit nainstalované aplikace a jejich verze. Útočníci často používají tento nástroj k tomu, aby vyhledali chyby zabezpečení webových aplikací. |-|
-|**Zjištěn podezřelý přístup k potenciálně ohroženým webovým stránkám**|Protokol aktivity App Service označuje, že se použila webová stránka, na kterou se jeví citlivý.<br>Tato podezřelá aktivita pochází ze zdrojové adresy, jejíž model přístupu se podobá webovému skeneru. Tento druh aktivity se často přidruží k pokusu útočníka, aby zkontroloval vaši síť a pokusil se získat přístup k citlivým nebo ohroženým webovým stránkám. |-|
-|**V nástroji Analýza hrozeb se našla IP adresa, která se připojila k vašemu Azure App Service rozhraní FTP.**|Analýza protokolů App Service FTP zjistila připojení ze zdrojové adresy, která byla nalezena v informačním kanálu analýzy hrozeb. Během tohoto připojení uživatel přistupoval k uvedeným stránkám.|-|
 |**Pokus o spuštění příkazů systému Linux na App Service Windows**|Analýza App Servicech procesů zjistila pokus o spuštění příkazu pro Linux v App Service Windows. Tuto akci spustila webová aplikace. Toto chování se často zobrazuje při kampaních, které využívají chybu zabezpečení ve společné webové aplikaci.|-|
-|**Zjistilo se podezřelé spuštění PHP.**|Protokoly počítače označují, že je spuštěný podezřelý proces PHP. Akce zahrnovala pokus o spuštění příkazů operačního systému nebo kódu PHP z příkazového řádku pomocí procesu PHP. I když může být toto chování legitimní, ve webových aplikacích může toto chování znamenat škodlivé aktivity, například pokusy o nainfikování webů pomocí webových prostředí.|Provedení|
-|**Byl zjištěn pokus o spuštění příkazu s vysokým oprávněním.**|Analýza App Servicech procesů zjistila, že došlo k pokusu o spuštění příkazu, který vyžaduje vysoké oprávnění. Příkaz běžel v kontextu webové aplikace. I když může být toto chování legitimní, ve webových aplikacích může toto chování znamenat škodlivé aktivity.|-|
-|**Bylo zjištěno ukládání výstupu na disk.**|Analýza App Servicech procesů zjistila spuštění příkazu složeného příkazu, ve kterém byl výstup uložen na disk. I když toto chování může být legitimní, ve webových aplikacích je toto chování také pozorováno v škodlivých aktivitách, jako jsou pokusy o nainfikování webů pomocí webových prostředí.|-|
-|**Bylo zjištěno stahování nezpracovaných dat.**|Analýza App Servicech procesů zjistila pokus o stažení kódu z nezpracovaných webů, jako je Pastebin. Tuto akci spustil proces PHP. Toto chování je přidruženo k pokusům o stažení webových prostředí nebo jiných škodlivých součástí do App Service.|-|
-|**Byl zjištěn skener ohrožení zabezpečení**<br>(Joomla/WordPress/CMS)|Protokol aktivit Azure App Service označuje, že se v prostředku App Service použil možný skener ohrožení zabezpečení. Zjištěná podezřelá aktivita se podobá těm nástrojům, které cílí na aplikace Joomla/aplikace WordPress/systém správy obsahu (CMS).|-|
-|**Byla zjištěna zpráva o spamu ve složce**|Azure App Service protokol aktivit indikuje aktivitu webu, která se identifikovala jako původ z webu přidruženého k aktivitě SPAMu. Tato situace může nastat, pokud je váš web ohrožen a používá se pro aktivitu spamu.|-|
-|**Bylo zjištěno připojení k webové stránce z neobvyklé IP adresy.**|Protokol aktivit Azure App Service označuje připojení k citlivé webové stránce ze zdrojové IP adresy (% {zdrojová IP adresa}), ke které se k ní nikdy nepřipojí. To může znamenat, že se někdo pokusí o útok hrubou silou na stránky pro správu vaší webové aplikace. Může to být také výsledkem nové IP adresy, kterou používá oprávněný uživatel.|-|
-|**Zjištěn podezřelý uživatelský agent**|Azure App Service protokol aktivit indikuje požadavky s podezřelým uživatelským agentem. Toto chování může ukazovat na pokusy o zneužití ohrožení zabezpečení ve vaší aplikaci App Service.|-|
-|**Soubor PHP ve složce pro nahrání**|Protokol aktivity Azure App Service označuje přístup k podezřelé stránce PHP, která se nachází ve složce pro nahrání. Tento typ složky obvykle neobsahuje soubory PHP. Existence tohoto typu souboru může ukazovat na zneužití s využitím libovolných chyb zabezpečení při nahrávání souborů.|-|
+|**V nástroji Analýza hrozeb se našla IP adresa, která se připojila k vašemu Azure App Service rozhraní FTP.**|Analýza protokolů App Service FTP zjistila připojení ze zdrojové adresy, která byla nalezena v informačním kanálu analýzy hrozeb. Během tohoto připojení uživatel přistupoval k uvedeným stránkám.|-|
 |**Byl zjištěn vzor požadavků neobvyklé**|Protokol aktivit Azure App Service označuje aktivitu protokolu HTTP neobvyklé App Service z% {source IP}. Tato aktivita se podobá modelu přibližné aktivity \ hrubá síla.|-|
+|**Byl zjištěn pokus o spuštění příkazu s vysokým oprávněním.**|Analýza App Servicech procesů zjistila, že došlo k pokusu o spuštění příkazu, který vyžaduje vysoké oprávnění. Příkaz běžel v kontextu webové aplikace. I když může být toto chování legitimní, ve webových aplikacích může toto chování znamenat škodlivé aktivity.|-|
+|**Bylo zjištěno připojení k webové stránce z neobvyklé IP adresy.**|Protokol aktivit Azure App Service označuje připojení k citlivé webové stránce ze zdrojové IP adresy (% {zdrojová IP adresa}), ke které se ještě nikdy nepřipojila. To může znamenat, že se někdo pokusí o útok hrubou silou na stránky pro správu vaší webové aplikace. Může to být také výsledkem nové IP adresy, kterou používá oprávněný uživatel.|-|
+|**Bylo zjištěno stahování nezpracovaných dat.**|Analýza App Servicech procesů zjistila pokus o stažení kódu z nezpracovaných webů, jako je Pastebin. Tuto akci spustil proces PHP. Toto chování je přidruženo k pokusům o stažení webových prostředí nebo jiných škodlivých součástí do App Service.|-|
+|**Obsah útoku phishing hostovaný v Azure webapps**|Adresa URL, která se používá pro útok útoku phishing na webu Azure aplikační služby Tato adresa URL byla součástí útoku phishingu odeslaného zákazníkům O365. Obsah se obvykle Lures návštěvníkům při zadávání firemních přihlašovacích údajů nebo finančních informací do legitimního webu.|Kolekce|
+|**Soubor PHP ve složce pro nahrání**|Protokol aktivity Azure App Service označuje přístup k podezřelé stránce PHP, která se nachází ve složce pro nahrání. Tento typ složky obvykle neobsahuje soubory PHP. Existence tohoto typu souboru může ukazovat na zneužití s využitím libovolných chyb zabezpečení při nahrávání souborů.|-|
+|**Bylo zjištěno ukládání výstupu na disk.**|Analýza App Servicech procesů zjistila spuštění příkazu složeného příkazu, ve kterém byl výstup uložen na disk. I když toto chování může být legitimní, ve webových aplikacích je toto chování také pozorováno v škodlivých aktivitách, jako jsou pokusy o nainfikování webů pomocí webových prostředí.|-|
+|**Byla zjištěna zpráva o spamu ve složce**|Azure App Service protokol aktivit indikuje aktivitu webu, která se identifikovala jako původ z webu přidruženého k aktivitě SPAMu. Tato situace může nastat, pokud je váš web ohrožen a používá se pro aktivitu spamu.|-|
+|**Zjištěn podezřelý přístup k potenciálně ohroženým webovým stránkám**|Protokol aktivity App Service označuje, že se použila webová stránka, na kterou se jeví citlivý.<br>Tato podezřelá aktivita pochází ze zdrojové adresy, jejíž model přístupu se podobá webovému skeneru. Tento druh aktivity se často přidruží k pokusu útočníka, aby zkontroloval vaši síť a pokusil se získat přístup k citlivým nebo ohroženým webovým stránkám. |-|
+|**Zjistilo se podezřelé spuštění PHP.**|Protokoly počítače označují, že je spuštěný podezřelý proces PHP. Akce zahrnovala pokus o spuštění příkazů operačního systému nebo kódu PHP z příkazového řádku pomocí procesu PHP. I když může být toto chování legitimní, ve webových aplikacích může toto chování znamenat škodlivé aktivity, například pokusy o nainfikování webů pomocí webových prostředí.|Spouštěcí|
+|**Zjištěn podezřelý uživatelský agent**|Azure App Service protokol aktivit indikuje požadavky s podezřelým uživatelským agentem. Toto chování může ukazovat na pokusy o zneužití ohrožení zabezpečení ve vaší aplikaci App Service.|-|
+|**Zjistila se podezřelá vyvolání motivu WordPress.**|Protokol aktivity App Service označuje možnou aktivitu vkládání kódu na prostředek App Service.<br>Tato podezřelá aktivita se podobá aktivitě, která pracuje s motivem WordPress, aby podporovala spouštění kódu na straně serveru následovaný přímým webovým požadavkem na vyvolání souboru s tímto tématem. Tento typ aktivity může být součástí kampaně útoku přes WordPress.|-|
+|**Byl zjištěn skener ohrožení zabezpečení**<br>(Joomla/WordPress/CMS)|Protokol aktivit Azure App Service označuje, že se v prostředku App Service použil možný skener ohrožení zabezpečení. Zjištěná podezřelá aktivita se podobá těm nástrojům, které cílí na aplikace Joomla/aplikace WordPress/systém správy obsahu (CMS).|-|
+|**Zjistilo se webové otisky prstů.**<br>(NMAP/blind slonů)|Protokol aktivit App Service označuje možnou aktivitu otisku webu na prostředku App Service.<br>Tato podezřelá aktivita je přidružená k nástroji s názvem blind slonů. Nástroj vyhledá webové servery otiskem prstů a pokusí se zjistit nainstalované aplikace a jejich verze. Útočníci často používají tento nástroj k tomu, aby vyhledali chyby zabezpečení webových aplikací. |-|
 ||||
 
 
@@ -239,13 +240,13 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 [Další podrobnosti a poznámky](security-center-alerts-compute.md#azure-containers-)
 
-|Upozornění|Popis|Záměr ([Další informace](#intentions))|
+|Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
-|**VERZE PREVIEW – zjistila se vazba role Správce clusteru.**|Analýza protokolu auditu Kubernetes zjistila novou vazbu na roli Správce clusteru, která má za následek oprávnění správce. Zbytečné poskytování oprávnění správce může mít za následek problémy s eskalací oprávnění v clusteru.|Dočasné|
-|**Zjištěný řídicí panel Kubernetes vystavený verzí PREVIEW**|Analýza protokolu auditu Kubernetes zjistila expozici řídicího panelu Kubernetes službou Vyrovnávání zatížení. Vystavené řídicí panely umožňují neověřený přístup ke správě clusteru a představují bezpečnostní hrozbu.|Dočasné|
-|**PREVIEW – zjistila se nová role s vysokou úrovní oprávnění.**|Analýza protokolu auditu Kubernetes zjistila novou roli s vysokou úrovní oprávnění. Vazba na roli s vysokými oprávněními poskytuje zvýšená oprávnění uživatele nebo skupiny v clusteru. Zbytečně poskytování zvýšených oprávnění může způsobit problémy eskalace oprávnění v clusteru.|Dočasné|
-|**PREVIEW – zjistil se nový kontejner v oboru názvů Kube-System.**|Analýza protokolu auditu Kubernetes zjistila nový kontejner v oboru názvů Kube-System, který není mezi kontejnery, které obvykle běží v tomto oboru názvů. Obory názvů Kube-System by neměly obsahovat prostředky uživatele. Útočníci můžou pomocí tohoto oboru názvů skrývat škodlivé součásti.|Dočasné|
-|**PREVIEW – zjistil se kontejner dolování z digitálního Currency.**|Analýza protokolu auditu Kubernetes zjistila kontejner, který obsahuje image přidruženou k nástroji dolování v digitální měně.|Provedení|
+|**VERZE PREVIEW – zjistila se vazba role Správce clusteru.**|Analýza protokolu auditu Kubernetes zjistila novou vazbu na roli Správce clusteru, která má za následek oprávnění správce. Zbytečné poskytování oprávnění správce může mít za následek problémy s eskalací oprávnění v clusteru.|Trvalost|
+|**Zjištěný řídicí panel Kubernetes vystavený verzí PREVIEW**|Analýza protokolu auditu Kubernetes zjistila expozici řídicího panelu Kubernetes službou Vyrovnávání zatížení. Vystavené řídicí panely umožňují neověřený přístup ke správě clusteru a představují bezpečnostní hrozbu.|Trvalost|
+|**PREVIEW – zjistila se nová role s vysokou úrovní oprávnění.**|Analýza protokolu auditu Kubernetes zjistila novou roli s vysokou úrovní oprávnění. Vazba na roli s vysokými oprávněními poskytuje zvýšená oprávnění uživatele nebo skupiny v clusteru. Zbytečně poskytování zvýšených oprávnění může způsobit problémy eskalace oprávnění v clusteru.|Trvalost|
+|**PREVIEW – zjistil se nový kontejner v oboru názvů Kube-System.**|Analýza protokolu auditu Kubernetes zjistila nový kontejner v oboru názvů Kube-System, který není mezi kontejnery, které obvykle běží v tomto oboru názvů. Obory názvů Kube-System by neměly obsahovat prostředky uživatele. Útočníci můžou pomocí tohoto oboru názvů skrývat škodlivé součásti.|Trvalost|
+|**PREVIEW – zjistil se kontejner dolování z digitálního Currency.**|Analýza protokolu auditu Kubernetes zjistila kontejner, který obsahuje image přidruženou k nástroji dolování v digitální měně.|Spouštěcí|
 |**VERZE PREVIEW – zjistil se privilegovaný kontejner.**|Analýza protokolu auditu Kubernetes zjistila nový kontejner s oprávněním. Privilegovaný kontejner má přístup k prostředkům uzlu a přerušuje izolaci mezi kontejnery. Pokud dojde k ohrožení zabezpečení, může útočník získat přístup k uzlu pomocí privilegovaného kontejneru.|PrivilegeEscalation|
 |**PREVIEW – zjistil se kontejner s citlivým připojením svazku.**|Analýza protokolu auditu Kubernetes zjistila nový kontejner s citlivým připojením svazku. Zjištěný svazek je hostPath typ, který připojuje citlivý soubor nebo složku z uzlu do kontejneru. Pokud dojde k ohrožení bezpečnosti kontejneru, útočník může toto připojení použít k získání přístupu k uzlu.|PrivilegeEscalation|
 ||||
@@ -254,14 +255,14 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 [Další podrobnosti a poznámky](security-center-alerts-compute.md#azure-containers-)
 
-|Upozornění|Popis|Záměr ([Další informace](#intentions))|
+|Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
 |**Zjistil se privilegovaný kontejner.**|Protokoly počítače označují, že je spuštěn kontejner Docker s oprávněním. Privilegovaný kontejner má plný přístup k prostředkům hostitele. Pokud dojde k ohrožení zabezpečení, může útočník získat přístup k hostitelskému počítači pomocí privilegovaného kontejneru.|PrivilegeEscalation/spuštění|
 |**Privilegovaný příkaz spuštěný v kontejneru**|Protokoly počítače označují, že v kontejneru Docker byl spuštěn privilegovaný příkaz. Privilegovaný příkaz má rozšířená oprávnění na hostitelském počítači.|PrivilegeEscalation|
 |**Zjistil se vystavený démon Docker.**|Protokoly počítače označují, že démon Docker (dockerd) zveřejňuje soket TCP. Ve výchozím nastavení konfigurace Docker nepoužívá šifrování ani ověřování, když je povolený soket TCP. Kdokoli s přístupem k příslušnému portu pak může získat úplný přístup k démonu Docker.|Využití/spuštění|
-|**Server SSH běží uvnitř kontejneru.**|Protokoly počítače označují, že server SSH běží uvnitř kontejneru Docker. I když toto chování může být záměrné, často to znamená, že kontejner je nesprávně nakonfigurovaný nebo porušil.|Provedení|
-|**Zjistil se kontejner s Miner imagí.**|Protokoly počítače označují spuštění kontejneru Docker se spuštěnou imagí přidruženou k dolování v digitální měně. Toto chování může znamenat, že vaše prostředky budou zneužity.|Provedení|
-|**Podezřelá žádost o rozhraní Kubernetes API**|Protokoly počítače označují, že v rozhraní Kubernetes API byl proveden podezřelý požadavek. Požadavek byl odeslán z uzlu Kubernetes, případně z jednoho z kontejnerů, které jsou spuštěny v uzlu. I když toto chování může být záměrné, může to znamenat, že uzel používá napadený kontejner.|Provedení|
+|**Server SSH běží uvnitř kontejneru.**|Protokoly počítače označují, že server SSH běží uvnitř kontejneru Docker. I když toto chování může být záměrné, často to znamená, že kontejner je nesprávně nakonfigurovaný nebo porušil.|Spouštěcí|
+|**Zjistil se kontejner s Miner imagí.**|Protokoly počítače označují spuštění kontejneru Docker se spuštěnou imagí přidruženou k dolování v digitální měně. Toto chování může znamenat, že vaše prostředky budou zneužity.|Spouštěcí|
+|**Podezřelá žádost o rozhraní Kubernetes API**|Protokoly počítače označují, že v rozhraní Kubernetes API byl proveden podezřelý požadavek. Požadavek byl odeslán z uzlu Kubernetes, případně z jednoho z kontejnerů, které jsou spuštěny v uzlu. I když toto chování může být záměrné, může to znamenat, že uzel používá napadený kontejner.|Spouštěcí|
 |**Podezřelá žádost na řídicí panel Kubernetes**|Protokoly počítače označují, že na řídicím panelu Kubernetes byl proveden podezřelý požadavek. Požadavek byl odeslán z uzlu Kubernetes, případně z jednoho z kontejnerů, které jsou spuštěny v uzlu. I když toto chování může být záměrné, může to znamenat, že uzel používá napadený kontejner.|-|
 ||||
 
@@ -270,7 +271,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 [Další podrobnosti a poznámky](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
 
-|Upozornění|Popis|Záměr ([Další informace](#intentions))|
+|Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
 |**Možnou chybu zabezpečení při vkládání SQL**|Aplikace vygenerovala v databázi chybný příkaz SQL. To může znamenat možnou zranitelnost vůči útokům prostřednictvím injektáže SQL. Existují dva možné důvody chybného příkazu. Závada v kódu aplikace může být vytvořena v chybném příkazu jazyka SQL. Nebo, kód aplikace nebo uložené procedury neopravily uživatelský vstup při vytváření chybného příkazu SQL, který lze zneužít pro vkládání SQL.|-|
 |**Došlo k pokusu o přihlášení potenciálně škodlivou aplikací.**|Pro přístup k databázi byla použita potenciálně škodlivá aplikace. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok, který využívá běžné nástroje.|Zjišťování|
@@ -279,7 +280,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 |**Potenciální pokus o útok hrubou silou SQL**|Došlo k neobvyklému vysokému počtu neúspěšných přihlášení s různými přihlašovacími údaji. V některých případech výstraha detekuje probíhající test průniku. V jiných případech výstraha detekuje útok hrubou silou.|Zjišťování|
 |**Potenciální injektáže SQL**|K aktivnímu zneužití došlo v případě, že je zjištěná aplikace zranitelná pomocí injektáže SQL. To znamená, že se útočník pokouší vložit škodlivé příkazy SQL pomocí ohroženého kódu aplikace nebo uložených procedur.|-|
 |**Přihlášení z neobvyklého datového centra Azure**|Došlo ke změně vzoru přístupu k SQL Server, kde se někdo přihlásil k serveru z neobvyklého datového centra Azure. V některých případech výstraha detekuje legitimní akci (novou aplikaci nebo službu Azure). V jiných případech výstraha detekuje škodlivou akci (útočník, který působí z porušení prostředků v Azure).|Zjišťování|
-|**Potenciálně nebezpečná akce**|Vysoce privilegovaný příkaz SQL, který se běžně používá v škodlivých relacích, se spustil v SQL Server. Ve výchozím nastavení se doporučuje tyto příkazy zakázat. V některých případech výstraha detekuje legitimní akci (spuštěný skript pro správu). V jiných případech výstraha detekuje škodlivou akci (útočník, který pomocí vztahů důvěryhodnosti SQL důvěřuje porušování vrstvy Windows).|Provedení|
+|**Potenciálně nebezpečná akce**|Vysoce privilegovaný příkaz SQL, který se běžně používá v škodlivých relacích, se spustil v SQL Server. Ve výchozím nastavení se doporučuje tyto příkazy zakázat. V některých případech výstraha detekuje legitimní akci (spuštěný skript pro správu). V jiných případech výstraha detekuje škodlivou akci (útočník, který pomocí vztahů důvěryhodnosti SQL důvěřuje porušování vrstvy Windows).|Spouštěcí|
 |**Neobvyklé umístění exportu**|Došlo ke změně cíle úložiště exportu pro operaci importu a exportu SQL. V některých případech výstraha detekuje legitimní změnu (nové umístění zálohy). V jiných případech výstraha detekuje škodlivou akci (útočník snadno exfiltrated data do souboru).|Exfiltrace|
 ||||
 
@@ -288,7 +289,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 [Další podrobnosti a poznámky](security-center-alerts-data-services.md#azure-storage-)
 
-|Upozornění|Popis|Záměr ([Další informace](#intentions))|
+|Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
 |**Náhled – potenciální malware nahraný do účtu úložiště**|Indikuje, že se do účtu úložiště nahrál objekt BLOB obsahující potenciální malware. Možné příčiny můžou zahrnovat úmyslné nahrání malwaru útočníkem nebo neúmyslné nahrání potenciálně škodlivého objektu BLOB oprávněným uživatelem.|LateralMovement|
 |**Přístup z uzlu pro ukončení mandátu do účtu úložiště**|Indikuje, že se tento účet úspěšně přistupoval z IP adresy, která se označuje jako aktivní odesílací uzel systému (anonymizace proxy server). Závažnost této výstrahy je považována za použitý typ ověřování (pokud existuje) a zda se jedná o první případ takového přístupu. Možnou příčinou může být útočník, který získal účet úložiště pomocí systému pro práci, nebo legitimního uživatele, který získal účet úložiště pomocí systému.|Zjišťování/využívání|
@@ -297,7 +298,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 |**Neobvyklá kontrola přístupu v účtu úložiště**|Označuje, že přístupová oprávnění účtu úložiště byla v porovnání s poslední aktivitou tohoto účtu prověřena neobvyklým způsobem. Možnou příčinou je, že útočník provedl rekognoskace k budoucímu útoku.|Kolekce|
 |**Neobvyklé množství dat extrahovaných z účtu úložiště**|Indikuje, že se v porovnání s poslední aktivitou tohoto kontejneru úložiště extrahuje neobvykle velké množství dat. Možnou příčinou je, že útočník extrahuje velké množství dat z kontejneru, který obsahuje úložiště objektů BLOB.|Exfiltrace|
 |**Neobvyklá aplikace, ke kterým se získal účet úložiště**|Indikuje, že se k tomuto účtu úložiště přistupovala neobvyklá aplikace. Možnou příčinou je, že útočník získal k vašemu účtu úložiště pomocí nové aplikace.|Využívání|
-|**Neobvyklé změny přístupových oprávnění v účtu úložiště**|Indikuje, že oprávnění k přístupu tohoto kontejneru úložiště se změnila neobvyklým způsobem. Možnou příčinou je to, že útočník změnil oprávnění kontejneru pro oslabení stav zabezpečení nebo získání trvalosti.|Dočasné|
+|**Neobvyklé změny přístupových oprávnění v účtu úložiště**|Indikuje, že oprávnění k přístupu tohoto kontejneru úložiště se změnila neobvyklým způsobem. Možnou příčinou je to, že útočník změnil oprávnění kontejneru pro oslabení stav zabezpečení nebo získání trvalosti.|Trvalost|
 |**Neobvyklé zkoumání dat v účtu úložiště**|Označuje, že objekty blob nebo kontejnery v účtu úložiště jsou v porovnání s poslední aktivitou tohoto účtu vyhodnoceny neobvyklým způsobem. Možnou příčinou je, že útočník provedl rekognoskace k budoucímu útoku.|Kolekce|
 |**Neobvyklé odstranění v účtu úložiště**|Označuje, že v účtu úložiště se vyskytla jedna nebo víc neočekávaných operací odstranění v porovnání s poslední aktivitou tohoto účtu. Možnou příčinou je, že útočník odstranil data z vašeho účtu úložiště.|Exfiltrace|
 |**Neobvyklé nahrání. cspkg do účtu úložiště**|Indikuje, že balíček Azure Cloud Services (soubor. cspkg) se neobvyklým způsobem nahrál do účtu úložiště, a to v porovnání s poslední aktivitou na tomto účtu. Možnou příčinou je to, že se útočník připravuje na nasazení škodlivého kódu z vašeho účtu úložiště do cloudové služby Azure.|LateralMovement/spuštění|
@@ -309,7 +310,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 [Další podrobnosti a poznámky](security-center-alerts-data-services.md#azure-cosmos-db)
 
-|Upozornění|Popis|Záměr ([Další informace](#intentions))|
+|Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
 |**Přístup z neobvyklého umístění na účet Cosmos DB**|Indikuje, že došlo ke změně vzoru přístupu k účtu Azure Cosmos DB. Někdo k tomuto účtu přistupoval z neznámé IP adresy v porovnání s poslední aktivitou. K účtu byl přidaný útočník nebo oprávněný uživatel k němu přistupoval z nového a neobvyklého zeměpisného umístění. Příkladem druhé z nich je Vzdálená údržba z nové aplikace nebo vývojáře.|Využívání|
 |**Neobvyklé množství dat extrahovaných z Cosmos DB účtu**|Indikuje, že došlo ke změně vzoru extrakce dat z Azure Cosmos DB účtu. Někdo v porovnání s poslední aktivitou extrahovali neobvyklý objem dat. Útočník mohl extrahovat velké množství dat z databáze Azure Cosmos DB (například exfiltrace nebo únik dat nebo neoprávněný přenos dat). Nebo legitimní uživatel nebo aplikace mohl extrahovat neobvyklé množství dat z kontejneru (například pro aktivitu zálohování údržby).|Exfiltrace|
@@ -320,7 +321,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 [Další podrobnosti a poznámky](security-center-alerts-service-layer.md#azure-network-layer)
 
-|Upozornění|Popis|Záměr ([Další informace](#intentions))|
+|Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
 |**Zjistila se síťová komunikace se škodlivým počítačem.**|Analýza síťového provozu indikuje, že váš počítač (IP% {oběť IP}) komunikuje s tím, co je možné pomocí příkazového a řídicího centra. Pokud je ohroženým prostředkem Nástroj pro vyrovnávání zatížení nebo aplikační bránu, může podezřelá aktivita znamenat, že jeden nebo více prostředků ve fondu back-endu (Nástroj pro vyrovnávání zatížení nebo brána Application Gateway) oznámilo, co je možné příkazem a Control Center.|-|
 |**Zjištěny možné napadené počítače**|Analýza hrozeb indikuje, že váš počítač (na IP adrese% {Machine IP}) může ohrozit malware typu Conficker. Virus Conficker byl počítačový červ, který cílí na operační systém Microsoft Windows a byl poprvé zjištěn v listopadu 2008. Napadené miliony počítačů, včetně státních, obchodních a domácích počítačů, v rámci více než 200 zemí, díky čemuž je od červa 2003 Welchiaa největší nakažený počítač worm.|-|
@@ -345,15 +346,16 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 [Další podrobnosti a poznámky](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
 
-|Upozornění|Popis|Záměr ([Další informace](#intentions))|
+|Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
 |**PREVIEW – zjistilo se spuštění Azurite sady nástrojů.**|Ve vašem prostředí se zjistila známá spuštění rekognoskace sady nástrojů cloudového prostředí. Nástroj [Azurite](https://github.com/mwrlabs/Azurite) může použít útočník (nebo Tester pro průnik) k mapování prostředků předplatných a k identifikaci nezabezpečených konfigurací.|-|
-|**PREVIEW – zjistilo se spuštění funkce pro mikroshluking Toolkit Get-AzureDomainInfo.**|Ve vašem prostředí se zjistila známá spuštění rekognoskace sady nástrojů cloudového prostředí. Nástroj "mikroshluk" (viz https://github.com/NetSPI/MicroBurst) může použít útočník (nebo tester) k mapování vašich prostředků předplatného, identifikaci nezabezpečených konfigurací a nevracení důvěrných informací.|-||**PREVIEW – byla zjištěna podezřelá relace pro správu pomocí neaktivního účtu.**|Analýza protokolů aktivit předplatného zjistila podezřelé chování. Objekt zabezpečení, který se nepoužívá po dlouhou dobu, nyní provádí akce, které mohou zabezpečit trvalost pro útočníka.|Dočasné|
+|**PREVIEW – zjistilo se spuštění funkce pro mikroshluking Toolkit Get-AzureDomainInfo.**|Ve vašem prostředí se zjistila známá spuštění rekognoskace sady nástrojů cloudového prostředí. Nástroj "mikroshluk" (viz https://github.com/NetSPI/MicroBurst) může použít útočník (nebo tester) k mapování vašich prostředků předplatného, identifikaci nezabezpečených konfigurací a nevracení důvěrných informací.|-|
+|**PREVIEW – byla zjištěna podezřelá relace pro správu pomocí neaktivního účtu.**|Analýza protokolů aktivit předplatného zjistila podezřelé chování. Objekt zabezpečení, který se nepoužívá po dlouhou dobu, nyní provádí akce, které mohou zabezpečit trvalost pro útočníka.|Trvalost|
 |**PREVIEW – zjistilo se spuštění funkce pro mikroshluking Toolkit Get-AzurePasswords.**|Ve vašem prostředí se zjistila známá spuštění rekognoskace sady nástrojů cloudového prostředí. Nástroj "mikroshluk" (viz https://github.com/NetSPI/MicroBurst) může použít útočník (nebo tester) k mapování vašich prostředků předplatného, identifikaci nezabezpečených konfigurací a nevracení důvěrných informací.|-|
 |**PREVIEW – podezřelá relace správy s využitím Azure Portal zjištěno**|Analýza protokolů aktivit vašich předplatných zjistila podezřelé chování. Objekt zabezpečení, který pravidelně nepoužívá Azure Portal (Ibiza) ke správě prostředí předplatného (nepoužívá se Azure Portal ke správě během posledních 45 dnů, nebo předplatného, které aktivně spravuje), teď používá Azure Portal a provádí akce, které může zabezpečit trvalost pro útočníka.|-|
-|**PREVIEW – podezřelá relace správy pomocí prostředí PowerShell detekována**|Analýza protokolů aktivit předplatného zjistila podezřelé chování. Objekt zabezpečení, který pravidelně nepoužívá PowerShell ke správě prostředí předplatného, teď používá PowerShell a provádí akce, které můžou zabezpečit trvalost pro útočníka.|Dočasné|
+|**PREVIEW – podezřelá relace správy pomocí prostředí PowerShell detekována**|Analýza protokolů aktivit předplatného zjistila podezřelé chování. Objekt zabezpečení, který pravidelně nepoužívá PowerShell ke správě prostředí předplatného, teď používá PowerShell a provádí akce, které můžou zabezpečit trvalost pro útočníka.|Trvalost|
 |**Aktivita z anonymních IP adres**|Byla zjištěna aktivita uživatelů z IP adresy, která byla identifikována jako IP adresa anonymního proxy serveru.<br>Tyto proxy servery používají lidé, kteří chtějí skrýt IP adresu svého zařízení a můžou se používat pro škodlivý záměr. Tato detekce používá algoritmus strojového učení, který zkracuje falešně pozitivní informace, například IP adresy nesprávného označení, které uživatelé v organizaci používají často.|-|
-|**Aktivita z málo časté země**|Došlo k aktivitě z umístění, které nedávno nebo dříve navštívil žádný uživatel v organizaci.<br>Tato detekce ohledem na minulou umístění aktivit k určení nové a úlohy s řídkým umístění. Modul detekce anomálií ukládá informace o předchozí umístění, které používají uživatelé v organizaci.|-|
+|**Aktivita z nečasté země**|Došlo k aktivitě z umístění, které nedávno nebo dříve navštívil žádný uživatel v organizaci.<br>Tato detekce ohledem na minulou umístění aktivit k určení nové a úlohy s řídkým umístění. Modul detekce anomálií ukládá informace o předchozí umístění, které používají uživatelé v organizaci.|-|
 |**Nemožná aktivita cesty**|Nastaly dvě uživatelské aktivity (v jedné nebo několika relacích), které pocházejí z geograficky vzdálených umístění. K tomu dojde v časovém období kratším, než je čas, kdy by uživatel musel cestovat z prvního umístění do druhé. To znamená, že stejný přihlašovací údaj používá jiný uživatel.<br>Tato detekce používá algoritmus strojového učení, který ignoruje zjevné falešně pozitivní informace, které přispívají k nemožným podmínkám cestování, jako jsou sítě VPN a lokality pravidelně používané ostatními uživateli v organizaci. Tato detekce má počáteční období učení sedmi dnů, během kterého se učí vzor aktivity nového uživatele. |-|
 |**Použití pokročilých technik trvalosti Azure**|Analýza protokolů aktivit předplatného zjistila podezřelé chování. Přizpůsobené role byly předány entitám identity legitimized. To může vést k tomu, že útočník získá průniku v prostředí Azure Customer.|-|
 ||||
@@ -363,7 +365,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 [Další podrobnosti a poznámky](security-center-alerts-service-layer.md#azure-keyvault)
 
-|Upozornění|Popis|Záměr ([Další informace](#intentions))|
+|Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
 |**Přístup z uzlu ukončení příkazu pro vytvoření do Key Vault**|K tomuto Key Vault získal uživatel, který používá systém pro vytvoření anonymity IP adres, ke skrytí jeho umístění. Škodlivé objekty actor se často snaží skrýt jejich umístění při pokusu o získání neoprávněného přístupu k prostředkům připojeným k Internetu.|-|
 |**Velký objem operací v Key Vault**|V porovnání s historickými daty byl proveden větší objem Key Vault operací. Aktivita Key Vault je obvykle stejná v čase. Může se jednat o legitimní změnu aktivity. Případně může dojít k ohrožení zabezpečení vaší infrastruktury a k dalšímu vyšetřování.|-|
@@ -381,7 +383,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 [Další podrobnosti a poznámky](security-center-alerts-integration.md#azure-ddos)
 
-|Upozornění|Popis|Záměr ([Další informace](#intentions))|
+|Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
 |**Zjistil se útok DDoS pro veřejnou IP adresu.**|Zjistil se útok DDoS pro veřejnou IP adresu (IP adresa) a snižuje se jejich zmírnění.|Zjišťování|
 |**Útok DDoS na veřejnou IP adresu byl snížen.**|Útok DDoS na veřejnou IP adresu (IP adresa) byl omezen.|Zjišťování|
@@ -393,7 +395,7 @@ Porozumění úmyslnému útoku vám může usnadnit prozkoumání a hlášení 
 
 Řada kroků popisujících průběh cyberattack z rekognoskace na data exfiltrace se často označuje jako "dezaktivační řetězec". 
 
-Podporované záměry dezaktivačního řetězu Security Center jsou založené na rozhraní [Mitre ATT & CK™ Framework](https://attack.mitre.org/matrices/enterprise) a popsané v následující tabulce.
+Podporované záměry dezaktivačního řetězu Security Center jsou založené na rozhraní [Mitre ATT &AMP; CK™ Framework](https://attack.mitre.org/matrices/enterprise) a popsané v následující tabulce.
 
 |Záměr|Popis|
 |------|-------|
@@ -403,7 +405,7 @@ Podporované záměry dezaktivačního řetězu Security Center jsou založené 
 |**PrivilegeEscalation**|Eskalace oprávnění je výsledkem akcí, které umožňují nežádoucí osoba získat vyšší úroveň oprávnění pro systém nebo síť. Některé nástroje nebo akce vyžadují vyšší úroveň oprávnění pro práci a jsou nejspíš potřeba v mnoha bodech v průběhu operace. Uživatelské účty s oprávněním pro přístup ke konkrétním systémům nebo provádění specifických funkcí nezbytných pro nežádoucí osoby k dosažení jejich cíle může být také považována za eskalaci oprávnění.|
 |**DefenseEvasion**|Daňová povinnost ochrany se skládá z technik, které může nežádoucí osoba použít k obcházení detekce nebo k zamezení jiné obrany. Někdy jsou tyto akce stejné jako (nebo variace) technik v jiných kategoriích, které mají přidané výhody přeměny určité obrany nebo zmírnění rizik.|
 |**CredentialAccess**|Přístup k přihlašovacím údajům představuje techniky, které mají za následek přístup k systému, doméně nebo pověření služby, které se používají v podnikovém prostředí. Nežádoucí osoby se nejspíš pokusí získat legitimní přihlašovací údaje od uživatelů nebo účtů správců (místní správce systému nebo uživatelé domény s přístupem správce), aby je mohli používat v síti. S dostatečným přístupem v rámci sítě může nežádoucí osoba vytvářet účty pro pozdější použití v rámci prostředí.|
-|**Zjišťování**|Zjišťování se skládá z technik, které umožní nežádoucí osoba získat znalosti o systému a interní síti. Když nežádoucí osoby získá přístup k novému systému, musí se orientovat na to, co nyní mají kontrolu nad tím, jaké výhody, které z tohoto systému dávají, přistupují k jejich aktuálnímu cíli nebo celkovým cílům během vniknutí. Operační systém poskytuje mnoho nativních nástrojů, které pomáhají v této fázi shromažďování informací po ohrožení bezpečnosti.|
+|**Rozpoznávání**|Zjišťování se skládá z technik, které umožní nežádoucí osoba získat znalosti o systému a interní síti. Když nežádoucí osoby získá přístup k novému systému, musí se orientovat na to, co nyní mají kontrolu nad tím, jaké výhody, které z tohoto systému dávají, přistupují k jejich aktuálnímu cíli nebo celkovým cílům během vniknutí. Operační systém poskytuje mnoho nativních nástrojů, které pomáhají v této fázi shromažďování informací po ohrožení bezpečnosti.|
 |**LateralMovement**|Boční pohyb se skládá z technik, které umožňují nežádoucí osoba přístup k vzdáleným systémům v síti a jejich řízení, ale nemusí nutně zahrnovat spuštění nástrojů na vzdálených systémech. Technologie příčného pohybu by mohla nežádoucí osoba shromažďovat informace ze systému bez nutnosti dalších nástrojů, jako je například nástroj pro vzdálený přístup. Nežádoucí osoba může využít příčný pohyb pro mnoho účelů, včetně vzdáleného spuštění nástrojů, přemísťování do dalších systémů, přístupu ke konkrétním informacím nebo souborům, přístupu k dalším přihlašovacím údajům nebo k jejímu uplatnění.|
 |**Realizaci**|Cílem spuštění představuje techniky, které vedou k provádění nežádoucí osoba kódu na místním nebo vzdáleném systému. Tento cílem se často používá společně s příčným pohybem k rozšíření přístupu ke vzdáleným systémům v síti.|
 |**Kolekce**|Kolekce se skládá z technik používaných k identifikaci a shromažďování informací, jako jsou citlivé soubory z cílové sítě před exfiltrace. Tato kategorie také pokrývá umístění v systému nebo síti, kde nežádoucí osoba může hledat informace pro exfiltrovat.|
@@ -417,5 +419,5 @@ Podporované záměry dezaktivačního řetězu Security Center jsou založené 
 Další informace o výstrahách najdete v následujících tématech:
 
 * [Výstrahy zabezpečení ve službě Azure Security Center](security-center-alerts-overview.md)
-* [Správa a reakce na výstrahy zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md)
+* [Správa a reakce na upozornění zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Exportovat výstrahy a doporučení zabezpečení (Preview)](continuous-export.md)

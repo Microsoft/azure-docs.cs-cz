@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 1688fe848beb62731391bf4399a0dabec5265320
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766236"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484719"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrovat rozšíření vazby Azure Functions
 
@@ -26,10 +26,10 @@ Následující tabulka uvádí, kdy a jak registrovat vazby.
 
 | Vývojové prostředí |Registrace<br/> ve funkcích 1. x  |Registrace<br/> ve funkcích 2. x  |
 |-------------------------|------------------------------------|------------------------------------|
-|Portál Azure|Automaticky|Automaticky|
+|Azure Portal|Automaticky|Automaticky|
 |Non-.NET jazyky nebo místní vývoj nástrojů Azure Core|Automaticky|[Použití Azure Functions Core Tools a rozšíření sad](#extension-bundles)|
 |C#Knihovna tříd pomocí sady Visual Studio|[Použití nástrojů NuGet](#vs)|[Použití nástrojů NuGet](#vs)|
-|C#Knihovna tříd pomocí Visual Studio Code|Nevztahuje se|[Použít .NET Core CLI](#vs-code)|
+|C#Knihovna tříd pomocí Visual Studio Code|NEUŽÍVÁ SE.|[Použít .NET Core CLI](#vs-code)|
 
 ## <a name="extension-bundles"></a>Sady rozšíření pro místní vývoj
 
@@ -55,7 +55,7 @@ V **aplikaci Visual Studio**můžete balíčky nainstalovat z konzoly Správce b
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-Název balíčku, který se používá pro danou vazbu, je uveden v referenčním článku pro tuto vazbu. Příklad naleznete v [části Packages tématu Service Bus reference Binding](functions-bindings-service-bus.md#packages---functions-1x).
+Název balíčku, který se používá pro danou vazbu, je uveden v referenčním článku pro tuto vazbu. Příklad naleznete v [části Packages tématu Service Bus reference Binding](functions-bindings-service-bus.md#functions-1x).
 
 V příkladu nahraďte `<TARGET_VERSION>` konkrétní verzí balíčku, například `3.0.0-beta5`. Platné verze jsou uvedeny na jednotlivých stránkách balíčku na adrese [NuGet.org](https://nuget.org). Hlavní verze, které odpovídají funkcím runtime 1. x nebo 2. x, jsou uvedeny v referenčním článku pro vazbu.
 

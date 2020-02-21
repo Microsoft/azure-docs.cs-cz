@@ -1,5 +1,5 @@
 ---
-title: Metriky a protokolování diagnostiky
+title: Metriky a diagnostické protokolování
 description: Naučte se, jak povolit diagnostiku v Azure SQL Database k ukládání informací o využití prostředků a statistikách spouštění dotazů.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/16/2019
-ms.openlocfilehash: 6a84dee783240f7f662dab2f04275ead3a3dfe09
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f5ed3ee9b0e7e7218a519baa56cda443fddab105
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750769"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522613"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metriky a protokolování diagnostiky
 
@@ -41,13 +41,13 @@ Tento článek poskytuje pokyny, které vám pomůžou povolit telemetrii diagno
 
 Můžete povolit a spravovat metriky a protokolování telemetrie diagnostiky pomocí jedné z následujících metod:
 
-- Portál Azure
+- Azure Portal
 - PowerShell
 - Azure CLI
 - Azure Monitor REST API
 - Šablona Azure Resource Manageru
 
-Když povolíte metriky a protokolování diagnostiky, musíte zadat cíl prostředku Azure pro shromažďování telemetrie diagnostiky. Mezi dostupné možnosti patří:
+Když povolíte metriky a protokolování diagnostiky, musíte zadat cíl prostředku Azure pro shromažďování telemetrie diagnostiky. K dispozici jsou tyto možnosti:
 
 - Azure SQL Analytics
 - Azure Event Hubs
@@ -82,7 +82,7 @@ Můžete nastavit databáze Azure SQL a databáze instancí pro shromažďován�
 > - Pokud chcete povolit streamování protokolů auditu, přečtěte si téma [nastavení auditování pro vaši databázi](sql-database-auditing.md#subheading-2)a [protokoly auditování v Azure monitor protokoly a Azure Event Hubs](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242).
 > - Nastavení diagnostiky nelze konfigurovat pro **systémové databáze**, jako jsou hlavní databáze, databáze msdb, model, prostředků a databáze tempdb.
 
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>Azure Portal
 
 V nabídce **nastavení diagnostiky** můžete pro každou jednotlivou, sdruženou nebo instancinou databázi v Azure Portal nakonfigurovat streamování diagnostické telemetrie. Kromě toho je možné pro kontejnery databáze samostatně nakonfigurovat také diagnostiku telemetrie: elastické fondy a spravované instance. Můžete nastavit následující cíle pro streamování diagnostiky: Azure Storage, Azure Event Hubs a protokoly Azure Monitor.
 
@@ -117,7 +117,7 @@ Pokud chcete povolit streamování diagnostické telemetrie pro prostředek elas
 1. Zaškrtněte políčko pro telemetrii diagnostiky elastického fondu: **základní** metriky.
    ![konfigurace diagnostiky pro elastické fondy](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 1. Kromě toho nakonfigurujte streamování diagnostiky pro každou databázi v elastickém fondu, který chcete monitorovat pomocí následujících kroků popsaných v následující části.
 
 > [!IMPORTANT]
@@ -142,7 +142,7 @@ Pokud chcete povolit streamování diagnostické telemetrie pro databáze s jedn
 1. V případě standardního prostředí monitorování založeného na událostech zaškrtněte následující políčka pro telemetrii protokolu diagnostiky databáze: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**, **chyby**, **DatabaseWaitStatistics**, **časové limity**, **bloky**a **zablokování**.
 1. V případě pokročilých možností monitorování na základě minut zaškrtněte políčko pro **základní** metriky.
    ![nakonfigurovat diagnostiku pro databáze s jedním, sdruženým nebo instancí](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 1. Opakujte tyto kroky pro každou databázi, kterou chcete monitorovat.
 
 > [!NOTE]
@@ -183,7 +183,7 @@ Chcete-li povolit streamování diagnostické telemetrie pro prostředek spravov
 
    ![Konfigurace diagnostiky pro spravovanou instanci](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 1. Kromě toho nakonfigurujte streamování diagnostiky pro každou databázi instancí v rámci spravované instance, kterou chcete monitorovat, podle postupu popsaného v následující části.
 
 > [!IMPORTANT]
@@ -207,7 +207,7 @@ Pokud chcete povolit streamování diagnostické telemetrie pro databáze instan
 1. Vyberte cílový prostředek pro data diagnostiky streamování: **archivujte do účtu úložiště**, **streamujte do centra událostí**nebo **Log Analytics odeslat**.
 1. Zaškrtněte políčka pro telemetrii diagnostiky databáze: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** a **Errors**.
    ![nakonfigurovat diagnostiku pro databáze instancí](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 1. Opakujte tyto kroky pro každou databázi instance, kterou chcete monitorovat.
 
 > [!TIP]
@@ -306,7 +306,7 @@ Metriky a protokolování diagnostiky můžete povolit pomocí rozhraní příka
 
 Tyto parametry pro povolení více možností výstupu můžete kombinovat.
 
-### <a name="rest-api"></a>Rozhraní REST API
+### <a name="rest-api"></a>REST API
 
 Přečtěte si o tom, jak [změnit nastavení diagnostiky pomocí REST API Azure monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings).
 
@@ -441,7 +441,7 @@ Podrobnosti o základních metrikách podle prostředků najdete v následujíc�
 
 |**Prostředek**|**Metriky**|
 |---|---|
-|Databáze Azure SQL|Procento DTU, využité DTU, limit DTU, procento využití procesoru, procento čtení fyzických dat, procentuální hodnota zápisu protokolu, úspěšná/neúspěšná/zablokovaná připojeními brány firewall, procento relací, procento pracovních procesů, úložiště, procentuální hodnota úložiště, procento velikosti XTP a zablokování |
+|Databáze SQL Azure|Procento DTU, využité DTU, limit DTU, procento využití procesoru, procento čtení fyzických dat, procentuální hodnota zápisu protokolu, úspěšná/neúspěšná/zablokovaná připojeními brány firewall, procento relací, procento pracovních procesů, úložiště, procentuální hodnota úložiště, procento velikosti XTP a zablokování |
 
 ## <a name="advanced-metrics"></a>Pokročilé metriky
 
@@ -449,9 +449,9 @@ Podrobnosti o rozšířených metrikách najdete v následující tabulce.
 
 |**Metrika**|**Zobrazovaný název metriky**|**Popis**|
 |---|---|---|
-|tempdb_data_size| Velikost datového souboru tempdb v kilobajtech |Velikost datového souboru tempdb v kilobajtech Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU. |
-|tempdb_log_size| Velikost souboru protokolu tempdb v kilobajtech |Velikost souboru protokolu tempdb v kilobajtech Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU. |
-|tempdb_log_used_percent| Použit protokol tempdb v procentech |Byl použit protokol tempdb Percent. Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore nebo 100 DTU a vyšší pro nákupní modely založené na DTU. |
+|tempdb_data_size| Velikost datového souboru tempdb v kilobajtech |Velikost datového souboru tempdb v kilobajtech Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore s 2 virtuální jádra a vyšší nebo 200 DTU a vyšší pro nákupní modely založené na DTU. Tato metrika není aktuálně k dispozici pro databáze s škálovatelnými škálováními.|
+|tempdb_log_size| Velikost souboru protokolu tempdb v kilobajtech |Velikost souboru protokolu tempdb v kilobajtech Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore s 2 virtuální jádra a vyšší nebo 200 DTU a vyšší pro nákupní modely založené na DTU. Tato metrika není aktuálně k dispozici pro databáze s škálovatelnými škálováními.|
+|tempdb_log_used_percent| Použit protokol tempdb v procentech |Byl použit protokol tempdb Percent. Neplatí pro datové sklady. Tato metrika bude k dispozici pro databáze používající model nákupu vCore s 2 virtuální jádra a vyšší nebo 200 DTU a vyšší pro nákupní modely založené na DTU. Tato metrika není aktuálně k dispozici pro databáze s škálovatelnými škálováními.|
 
 ## <a name="basic-logs"></a>Základní protokoly
 
@@ -721,7 +721,7 @@ Přečtěte si další informace o [statistice čekání databáze](https://docs
 |Schema_s|Schéma databáze |
 |Table_s|Ovlivněná tabulka |
 |IndexName_s|Název indexu |
-|IndexColumns_s|Název sloupce |
+|IndexColumns_s|název sloupce |
 |IncludedColumns_s|Zahrnuté sloupce |
 |EstimatedImpact_s|Odhadovaný dopad automatického ladění s doporučením JSON |
 |Event_s|Typ události automatického ladění |

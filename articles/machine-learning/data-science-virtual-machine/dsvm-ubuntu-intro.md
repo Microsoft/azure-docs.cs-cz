@@ -1,5 +1,6 @@
 ---
-title: 'Rychlý Start: vytvoření DSVMu Ubuntu'
+title: 'Rychlý Start: vytvoření Data Science Virtual Machine Ubuntu'
+titleSuffix: Azure Data Science Virtual Machine
 description: Nakonfigurujte a vytvořte Data Science Virtual Machine pro Linux (Ubuntu), abyste mohli provádět analýzy a strojové učení.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 263c12b344e8634c639167aa3e455032f0817e2f
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 5d139cbd59b1b3e63786ae22bbd3b934de37cd49
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612083"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526106"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Linux (Ubuntu)
 
@@ -59,7 +60,7 @@ Tady je postup vytvoření instance Data Science Virtual Machine Ubuntu 18,04:
    1. Vyberte **Zkontrolovat a vytvořit**.
    1. **Zkontrolovat a vytvořit**
       * Ověřte, zda všechny informace, které jste zadali správný. 
-      * Vyberte **Vytvořit**.
+      * Vyberte **Create** (Vytvořit).
     
     Zřizování by měla trvat asi 5 minut. Stav se zobrazí v Azure Portal.
 
@@ -75,7 +76,7 @@ K Azure Notebooks můžete také připojit Data Science Virtual Machine ke spuš
 
 ### <a name="ssh"></a>SSH
 
-Pokud byl virtuální počítač vytvořen, pokud byl nakonfigurován s přístupem SSH, můžete se k němu přihlásit pomocí SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v **Základy** část krok 3 pro rozhraní text prostředí. Ve Windows si můžete stáhnout klientský nástroj SSH [, jako je](https://www.putty.org)například výstup. Pokud dáváte přednost grafické ploše (systém Windows X), můžete použít předávání X11 na výstupu.
+Pokud byl virtuální počítač vytvořen, pokud byl nakonfigurován s přístupem SSH, můžete se k němu přihlásit pomocí SSH. Pro rozhraní textového prostředí použijte přihlašovací údaje účtu, které jste vytvořili v části **základy** v kroku 3. Ve Windows si můžete stáhnout klientský nástroj SSH [, jako je](https://www.putty.org)například výstup. Pokud dáváte přednost grafické ploše (systém Windows X), můžete použít předávání X11 na výstupu.
 
 > [!NOTE]
 > Klient X2Go lepších výsledků než X11 předávání v testování. Doporučujeme používat X2Go klienta klasické pracovní plochy grafické rozhraní.
@@ -84,7 +85,7 @@ Pokud byl virtuální počítač vytvořen, pokud byl nakonfigurován s přístu
 
 Virtuální počítač se systémem Linux je již zřízený serverem X2Go a připraven k přijetí připojení klienta. Pro připojení k desktopu grafické virtuálního počítače s Linuxem, proveďte následující postup u svého klienta:
 
-1. Stažení a instalace klienta X2Go pro vaše klientská platforma z [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
+1. Stáhněte a nainstalujte klienta X2Go pro vaši klientskou platformu z [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
 1. Poznamenejte si veřejnou IP adresu virtuálního počítače, kterou můžete najít v Azure Portal otevřením virtuálního počítače, který jste právě vytvořili.
 
    ![IP adresa počítače Ubuntu](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
@@ -95,10 +96,10 @@ Virtuální počítač se systémem Linux je již zřízený serverem X2Go a př
    * **Karta relace**:
      * **Hostitel**: zadejte IP adresu vašeho virtuálního počítače, který jste si poznamenali dříve.
      * **Přihlášení**: zadejte uživatelské jméno na virtuálním počítači se systémem Linux.
-     * **SSH Port**: ponechte výchozí hodnota 22.
-     * **Typ relace**: Změňte hodnotu na **XFCE**. Virtuální počítač se systémem Linux v současné době podporuje pouze desktop Xfce plochu.
-   * **Karta média**: můžete vypnout podpory zvuku a klient tisku, pokud není nutné k jejich použití.
-   * **Sdílené složky**: Pokud chcete adresářů z klientských počítačů připojené na Linuxovém virtuálním počítači, přidejte adresáře klientské počítače, které chcete sdílet s virtuálním Počítačem na této kartě.
+     * **Port SSH**: ponechte ho v 22, výchozí hodnota.
+     * **Typ relace**: Změňte hodnotu na **desktop Xfce**. Virtuální počítač se systémem Linux v současné době podporuje pouze desktop Xfce plochu.
+   * **Karta média**: Pokud je nepotřebujete používat, můžete vypnout zvukovou podporu a tisk klienta.
+   * **Sdílené složky**: Pokud chcete adresáře z klientských počítačů připojených k virtuálnímu počítači se systémem Linux, přidejte do této karty adresáře klientských počítačů, které chcete sdílet s virtuálním počítačem.
 
    ![Konfigurace X2go](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Vyberte **OK**.
@@ -137,6 +138,6 @@ Zde je, jak můžete pokračovat v učení a zkoumání:
 
 * V názorných kurzech [Data Science Virtual Machine pro Linux](linux-dsvm-walkthrough.md) se dozvíte, jak provést několik běžných úloh vědeckého zpracování dat se systémem Linux DSVM zřízeným zde. 
 * Vyzkoušením nástrojů popsaných v tomto článku prozkoumejte různé nástroje pro datové vědy na DSVM. V prostředí virtuálního počítače můžete také spustit `dsvm-more-info`, kde najdete základní Úvod a odkazy na Další informace o nástrojích nainstalovaných na VIRTUÁLNÍm počítači.  
-* Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](https://aka.ms/tdsp).
-* Přejděte [galerii Azure AI](https://gallery.azure.ai/) pro machine learning a datové analýzy ukázek, které využívají služby Azure AI.
+* Naučte se systematicky sestavovat komplexní Analytická řešení pomocí [procesu vědeckého zpracování týmových dat](https://aka.ms/tdsp).
+* Podívejte se na [Azure AI Gallery](https://gallery.azure.ai/) pro strojové učení a ukázky analýzy dat, které používají služby Azure AI.
 * Projděte si příslušnou [referenční dokumentaci](./reference-ubuntu-vm.md) pro tento virtuální počítač.

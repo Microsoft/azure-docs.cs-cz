@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 9bb228725d5ad8e3583c73be09c582478f74a1e8
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471886"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484396"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Řešení potíží s přidělením při vytváření, restartování nebo změně velikosti virtuálních počítačů v Azure
 
@@ -87,9 +87,9 @@ Když rozšíříme infrastrukturu Azure, nasadíme novější hardware, který 
 
 |Starší verze virtuálního počítače – řada/velikost|Doporučený novější virtuální počítač-řada/velikost|Další informace|
 |----------------------|----------------------------|--------------------|
-|Av1-Series|[Av2-Series](../windows/sizes-general.md#av2-series)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
-|Dv1 nebo DSv1-Series (D1 až D5)|[Dv3 nebo DSv3 – Series](../windows/sizes-general.md#dsv3-series-1)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
-|Dv1 nebo DSv1-Series (D11 pro D14)|[Ev3 nebo ESv3 – Series](../windows/sizes-memory.md#ev3-series)|
+|Av1-Series|[Av2-Series](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
+|Dv1 nebo DSv1-Series (D1 až D5)|[Dv3 nebo DSv3 – Series](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/
+|Dv1 nebo DSv1-Series (D11 pro D14)|[Ev3 nebo ESv3 – Series](../ev3-esv3-series.md)|
 |D15v2 nebo DS15v2|Pokud používáte model nasazení theResource Manager, abyste mohli využívat větší velikosti virtuálních počítačů, zvažte přechod na D16v3/DS16v3 nebo D32v3/DS32v3. Ty jsou navržené tak, aby běžely na nejnovějším generaci hardwaru. Pokud používáte model nasazení Správce prostředků, abyste se ujistili, že je instance virtuálního počítače izolovaná na hardwaru vyhrazeném pro jediného zákazníka, zvažte přechod na nové izolované velikosti virtuálních počítačů, E64i_v3 nebo E64is_v3, které jsou navržené tak, aby běžely na nejnovějším generaci hardwaru. |https://azure.microsoft.com/blog/new-isolated-vm-sizes-now-available/
 
 ## <a name="allocation-failures-for-large-deployments-more-than-500-cores"></a>Selhání přidělení pro velká nasazení (víc než 500 jader)

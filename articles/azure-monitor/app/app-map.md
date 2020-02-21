@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 006ea071ce1ab0354ecf191cdde2e031255ef4ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cc7d58f0557e620c273043af8ffb2e8ec4d8ec87
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407692"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485144"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikace: třídění distribuovaných aplikací
 
@@ -236,7 +236,7 @@ Situaci, kdy byste mohli chtít přepsat hodnotu pro instanci cloudové role, m�
 
 Další informace o tom, jak přepsat vlastnost název cloudové role pomocí inicializátorů telemetrie, najdete v tématu věnovaném [Přidání vlastností: ITelemetryInitializer](api-filtering-sampling.md#addmodify-properties-itelemetryinitializer).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud máte potíže s tím, jak mapa aplikace funguje podle očekávání, zkuste postupovat takto:
 
@@ -276,6 +276,6 @@ Pokud chcete poskytnout zpětnou vazbu, použijte možnost zpětné vazby.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o tom, jak korelace funguje v Application Insights, najdete v [článku korelace telemetrie](https://docs.microsoft.com/azure/application-insights/application-insights-correlation).
+* Další informace o tom, jak korelace funguje v Application Insights, najdete v [článku korelace telemetrie](correlation.md).
 * [Koncové prostředí pro diagnostiku transakcí](transaction-diagnostics.md) koreluje telemetrie na straně serveru ze všech vašich Application Insights monitorovaných komponent do jednoho zobrazení.
 * Pro pokročilé scénáře korelace v ASP.NET Core a ASP.NET si projděte článek [sledování vlastních operací](custom-operations-tracking.md) .

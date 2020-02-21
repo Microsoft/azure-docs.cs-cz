@@ -1,0 +1,53 @@
+---
+title: Velikosti virtuálních počítačů Azure – pro obecné účely | Microsoft Docs
+description: Uvádí různé velikosti pro obecné účely, které jsou k dispozici pro virtuální počítače v Azure. Uvádí informace o počtu vCPU, datových discích a síťových adaptérů a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
+services: virtual-machines
+documentationcenter: ''
+author: jonbeck7
+manager: gwallace
+editor: ''
+tags: azure-resource-manager,azure-service-management
+ms.assetid: ''
+ms.service: virtual-machines
+ms.devlang: na
+ms.topic: article
+ms.workload: infrastructure-services
+ms.date: 02/03/2020
+ms.author: jonbeck
+ms.openlocfilehash: 674197bd4d1562d8492a2605d8929572d450af90
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77493576"
+---
+# <a name="general-purpose-virtual-machine-sizes"></a>Velikosti virtuálních počítačů pro obecné účely
+
+Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený poměr PROCESORů k paměti. Ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým a středním provozem. Tento článek poskytuje informace o nabídkách pro obecné účely výpočtu.
+
+- Virtuální počítače [řady Av2-Series](av2-series.md) je možné nasadit na nejrůznější typy hardwaru a procesory. Virtuální počítače řady a-Series mají pro úlohy na vstupní úrovni, jako je vývoj a testování, nejvhodnější konfigurace výkonu a paměti procesoru. Velikost je omezována v závislosti na použitém hardwaru a nabízí konzistentní výkon procesoru pro spuštěné instance bez ohledu na hardware. Pokud chcete zjistit fyzický hardware, na kterém je virtuální počítač dané velikosti nasazený, zadejte dotaz na virtuální hardware přímo z virtuálního počítače. Příklady případů použití zahrnují vývojové a testovací servery, webové servery s nízkým provozem, malé až střední databáze, testování konceptů a úložiště kódu.
+
+- [Řady B-Series pro shluky](sizes-b-series-burstable.md) Virtuální počítače jsou ideální pro úlohy, které nepotřebují průběžný výkon procesoru, jako jsou webové servery, malé databáze a vývojové a testovací prostředí. Tyto úlohy mají typicky požadavky na výkon při roztržení. Řada B-Series poskytuje zákazníkům možnost zakoupit si velikost virtuálního počítače pomocí cenového plánu s vědomím cen, který umožňuje instanci virtuálního počítače sestavovat kredity, když virtuální počítač využívá méně než základní výkon. Když se na virtuálním počítači nashromáždil kredit, může virtuální počítač zvýšit kapacitu virtuálního počítače pomocí až 100% procesoru, když vaše aplikace vyžaduje vyšší výkon procesoru.
+
+- [Dav4 a Dasv4-Series](dav4-dasv4-series.md) jsou novými velikostmi, které využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452 v konfiguraci 256 s více vlákny, která VYnásobí 8 GB této mezipaměti L3 každých 8 jader a zvyšuje možnosti zákazníků na spouštění jejich obecných úloh pro obecné účely. Řady Dav4-Series a Dasv4-Series mají stejnou konfiguraci paměti a disku jako řada D & Dsv3-Series.
+
+- [DC-Series](dc-series.md) je řada virtuálních počítačů v Azure, která vám může přispět k ochraně důvěrnosti a integrity dat a kódu při jejich zpracování ve veřejném cloudu. Tyto počítače jsou založené na nejnovější generaci systému s využitím Intel® Xeon® E-2176G s technologií SGX. Technologie Intel Turbo zvyšuje tyto počítače až na 4.7 GHz. Instance řady DC umožňují zákazníkům vytvářet zabezpečené aplikace založené na enklávy k ochraně kódu a dat, když se používají.
+
+- [Dv2 a Dsv2 – Series](dv2-dsv2-series.md) Virtuální počítače, následná na originální řady D, nabízí výkonnější procesor a optimální konfiguraci procesoru na paměť, která je vhodná pro většinu produkčních úloh. Dv2-Series má přibližně 35% rychlejší než řada D-Series. Dv2-Series běží na procesorech Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) s technologií Intel Turbo 2,0. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
+
+- [Dv3 a Dsv3 – Series](dv3-dsv3-series.md) Virtuální počítače běží na Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) v konfiguraci s více vlákny a poskytují lepší polohu pro většinu úloh pro obecné účely. Paměť se rozšířila (od ~ 3,5 GiB/vCPU na 4 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, aby se přerovnaly k přechodu na vlákno. Řady Dv3-Series již nemají virtuální počítače s vysokou velikostí paměti řady D/Dv2-Series byly přesunuty do paměti optimalizované pro [Ev3 a Esv3-Series](ev3-esv3-series.md).
+
+Příklady případů použití řady D-Series zahrnují aplikace na podnikové úrovni, relační databáze, ukládání do mezipaměti v paměti a analýzy.
+
+## <a name="other-sizes"></a>Jiné velikosti
+
+- [Optimalizované z hlediska výpočetních služeb](sizes-compute.md)
+- [Optimalizované z hlediska paměti](sizes-memory.md)
+- [Optimalizované z hlediska úložiště](sizes-storage.md)
+- [Optimalizované z hlediska GPU](sizes-gpu.md)
+- [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
+- [Předchozí generace](sizes-previous-gen.md)
+
+## <a name="next-steps"></a>Další kroky
+
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

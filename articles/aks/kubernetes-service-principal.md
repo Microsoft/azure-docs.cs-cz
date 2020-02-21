@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 62fc95ed7179dc4188c0c40e4c15aa9940bf2eb5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867167"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524235"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Instanční objekty se službou Azure Kubernetes Service (AKS)
 
@@ -20,7 +20,7 @@ Pro interakci s rozhraními API Azure vyžaduje cluster AKS [instanční objekt 
 
 Tento článek ukazuje, jak vytvořit a používat instanční objekt pro vaše clustery služby AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Abyste mohli vytvořit instanční objekt služby Azure AD, musíte mít oprávnění k registraci aplikace v tenantu Azure AD a přiřazení aplikace k roli v předplatném. Pokud nemáte potřebná oprávnění, možná budete muset požádat správce služby Azure AD nebo předplatného o jejich přiřazení nebo vytvořit instanční objekt pro použití se službou AKS předem.
 
@@ -70,6 +70,9 @@ az aks create \
     --client-secret <password>
 ```
 
+> [!NOTE]
+> Pokud používáte existující instanční objekt s přizpůsobeným tajným klíčem, zajistěte, aby tajný kód nebyl delší než 190 bajtů.
+
 Pokud nasadíte cluster AKS pomocí portálu Microsoft Azure, na stránce *ověřování* dialogového okna **Vytvořit cluster Kubernetes** zvolit **Konfigurace instančního objektu**. Vyberte **Použít existující** a zadejte následující hodnoty:
 
 - **ID klienta instančního objektu** je vaše *appId*
@@ -101,14 +104,14 @@ Můžete použít pokročilé sítě, ve kterých se virtuální síť a podsí�
 
 - Vytvořte [vlastní roli][rbac-custom-role] a definujte následující oprávnění role:
   - *Microsoft. Network/virtualNetworks/subnets/JOIN/Action*
-  - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/virtualNetworks/subnets/write*
+  - *Microsoft. Network/virtualNetworks/podsítí/čtení*
+  - *Microsoft. Network/virtualNetworks/podsítí/Write*
   - *Microsoft. Network/publicIPAddresses/JOIN/Action*
-  - *Microsoft.Network/publicIPAddresses/read*
-  - *Microsoft.Network/publicIPAddresses/write*
+  - *Microsoft. Network/publicIPAddresses/Read*
+  - *Microsoft. Network/publicIPAddresses/Write*
 - Nebo přiřaďte integrovanou roli [Přispěvatel sítě][rbac-network-contributor] k podsíti v rámci virtuální sítě.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Možná budete potřebovat přístup k existujícím diskovým prostředkům v jiné skupině prostředků. Přiřaďte jednu z následujících sad oprávnění role:
 
@@ -121,7 +124,7 @@ Možná budete potřebovat přístup k existujícím diskovým prostředkům v j
 
 Pokud k integraci s AKS používáte Virtual Kubelet a v případě, že se rozhodnete spustit Azure Container Instances (ACI) ve skupině prostředků oddělené ke clusteru AKS, musí být ve skupině prostředků AKS udělená oprávnění *přispěvatele* .
 
-## <a name="additional-considerations"></a>Další aspekty
+## <a name="additional-considerations"></a>Další rozhodnutí
 
 Při použití instančních objektů služeb Azure AD a AKS mějte na paměti následující informace.
 
@@ -140,7 +143,7 @@ Při použití instančních objektů služeb Azure AD a AKS mějte na paměti n
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
         ```
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Řešení problémů
 
 Přihlašovací údaje instančního objektu pro cluster AKS se ukládají do mezipaměti rozhraní příkazového řádku Azure CLI. Pokud vypršela platnost těchto přihlašovacích údajů, narazíte na chyby při nasazování AKS clusterů. Při spuštění [AZ AKS Create][az-aks-create] může znamenat problém s přihlašovacími údaji instančního objektu uloženého v mezipaměti následující chybová zpráva:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/23/2020
-ms.openlocfilehash: 9f377f93ab8fef2c1ad713da6fcd6c6f14107c3f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 33af9c8f3fbe4de57d65be432f249d4aeb5d3e27
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76986814"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485331"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -85,12 +85,12 @@ Pokud chcete zobrazit řešení v Azure Portal, klikněte na tlačítko **Dalš�
 ## <a name="logs"></a>Protokoly
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Jaký je rozdíl mezi protokoly Azure Monitor a Azure Průzkumník dat?
-Průzkumník dat Azure je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Protokoly Azure Monitor jsou postavené na Azure Průzkumník dat a používají stejný dotazovací jazyk Kusto (KQL) s některými drobnými rozdíly. Viz [rozdíly v jazyce pro dotazování protokolu Azure monitor](log-query/data-explorer-difference.md).
+Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Protokoly Azure Monitor jsou postavené na Azure Průzkumník dat a používají stejný dotazovací jazyk Kusto (KQL) s některými drobnými rozdíly. Viz [rozdíly v jazyce pro dotazování protokolu Azure monitor](log-query/data-explorer-difference.md).
 
 ### <a name="how-do-i-retrieve-log-data"></a>Návody načíst data protokolu?
 Všechna data se načítají z Log Analyticsho pracovního prostoru pomocí dotazu protokolu napsaného pomocí dotazovacího jazyka KQL (Kusto Query Language). Můžete napsat vlastní dotazy nebo využít řešení a přehledy, které obsahují dotazy protokolu pro konkrétní aplikaci nebo službu. Další informace najdete [v tématu Přehled dotazů protokolu v Azure monitor](log-query/log-query-overview.md).
 
-### <a name="what-is-a-log-analytics-workspace"></a>Co je pracovní prostor Log Analytics?
+### <a name="what-is-a-log-analytics-workspace"></a>Co je Log Analytics pracovní prostor?
 Všechna data protokolu shromážděná pomocí Azure Monitor jsou uložena v pracovním prostoru Log Analytics. Pracovní prostor je v podstatě kontejner, ve kterém jsou data protokolu shromažďována z nejrůznějších zdrojů. Můžete mít jeden Log Analytics pracovní prostor pro všechna data monitorování nebo mohou mít požadavky na více pracovních prostorů. Přečtěte si téma [navrhování Azure Monitorch protokolů nasazení](platform/design-logs-deployment.md).
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Můžete přesunout existující Log Analytics pracovní prostor do jiného předplatného Azure?
@@ -279,7 +279,7 @@ Desktopová aplikace, kterou můžete použít na webovém serveru služby IIS a
 
 Z webových aplikací serveru:
 
-* Požadavky HTTP
+* HTTP požadavky
 * [Závislosti](app/asp-net-dependencies.md). Volání: databáze SQL; Volání HTTP do externích služeb; Azure Cosmos DB, tabulka, úložiště objektů BLOB a fronta. 
 * [Výjimky](app/asp-net-exceptions.md) a trasování zásobníku.
 * [Čítače výkonu](app/performance-counters.md) – pokud používáte [monitorování stavu](app/monitor-performance-live-website-now.md), [monitorování Azure pro App Services](app/azure-web-apps.md), [monitorování Azure pro virtuální počítače nebo sadu škálování virtuálního počítače](app/azure-vm-vmss-apps.md)nebo [Application Insights shromážděného zapisovače](app/java-collectd.md).
@@ -347,7 +347,7 @@ Po vyhledání atributů geografického umístění jsou **všechny** oktety kli
 
 Můžete:
 
-* Pro data klienta a serveru použijte dva samostatné klíče instrumentace (samostatné Application Insights prostředky). nebo
+* Pro data klienta a serveru použijte dva samostatné klíče instrumentace (samostatné Application Insights prostředky). Nebo
 * Napíšete proxy server, který běží na serveru, a webový klient bude odesílat data prostřednictvím tohoto proxy serveru.
 
 ### <a name="post"></a>Návody najdete v tématu vystavování dat v diagnostickém vyhledávání?
@@ -381,8 +381,8 @@ Pro všechny komponenty nebo role v jednom podnikovém systému použijte jeden 
 | Získat trasování zásobníku z výjimek |[Vložení volání TrackException do kódu](app/asp-net-exceptions.md) (ale některé jsou hlášeny automaticky) |Detekovat a diagnostikovat výjimky |
 | Hledat trasování protokolu |[Přidat adaptér protokolování](app/asp-net-trace-logs.md) |Diagnostikujte výjimky, problémy s výkonem |
 | Základy použití klientů: zobrazení stránky, relace,... |[Inicializátor JavaScriptu na webových stránkách](app/javascript.md) |Analýza využití |
-| Vlastní metriky klienta |[Sledování hovorů na webových stránkách](app/api-custom-events-metrics.md) |Zlepšování zkušeností uživatelů |
-| Vlastní metriky serveru |[Sledování hovorů na serveru](app/api-custom-events-metrics.md) |Business Intelligence |
+| Vlastní metriky klienta |[Sledování hovorů na webových stránkách](app/api-custom-events-metrics.md) |Vylepšení uživatelského prostředí |
+| Vlastní metriky serveru |[Sledování hovorů na serveru](app/api-custom-events-metrics.md) |Business intelligence |
 
 ### <a name="why-are-the-counts-in-search-and-metrics-charts-unequal"></a>Proč se počty v grafech hledání a metrik nerovnají?
 
@@ -395,7 +395,7 @@ Každá odeslaná položka nese `itemCount` vlastnost, která ukazuje, kolik pů
 ```
 
 
-### <a name="automation"></a>Automatizace
+### <a name="automation"></a>Automation
 
 #### <a name="configuring-application-insights"></a>Konfigurace Application Insights
 
@@ -520,7 +520,7 @@ Toto je seznam nejčastějších dotazů týkajících se Azure Monitor kontejne
 
 U agenta verze ciprod12042019 a novějších se ve výchozím nastavení tyto dvě vlastnosti neplní pro každou řádek protokolu, aby se minimalizovaly náklady vzniklé shromážděnými daty protokolů. Existují dvě možnosti, jak zadat dotaz na tabulku, která obsahuje tyto vlastnosti s jejich hodnotami:
 
-#### <a name="option-1"></a>Možnost 1 
+#### <a name="option-1"></a>možnost 1 
 
 Připojte další tabulky, abyste tyto hodnoty vlastností zahrnuli do výsledků.
 
@@ -678,7 +678,7 @@ Pokud upravíte jakékoli nastavení instance kritéria stavu, upraví se všech
 Žádná kritéria stavu na úrovni jednotlivých procesorů a logických procesorů nejsou pro Windows zahrnutá, ve výchozím nastavení se monitoruje jenom celkové využití procesoru, aby se účinně vyhodnotilo zatížení procesoru na základě celkového počtu logických procesorů dostupných pro virtuální počítač Azure. 
 
 ### <a name="are-all-health-criteria-thresholds-configurable"></a>Konfigurovatelné jsou všechny prahové hodnoty kritérií stavu?  
-Prahové hodnoty pro kritéria, které se zaměřují virtuálního počítače s Windows nejsou upravitelné, protože jejich stavů jsou nastaveny na *systémem* nebo *dostupné*. Při dotazování stav z [úlohy monitorování API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components), zobrazí *comparisonOperator* hodnotu **LessThan** nebo **GreaterThan** s *prahová hodnota* hodnotu **4** služby nebo entity pokud:
+Prahové hodnoty pro kritéria stavu, která cílí na virtuální počítač s Windows, se nedají upravovat, protože jejich stavy jsou nastavené na *spouštění* nebo *k dispozici*. Při dotazování na stav z [rozhraní API pro sledování zatížení](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)zobrazuje *comparisonOperator* hodnotu **LessThan** nebo **GreaterThan** s *prahovou* hodnotou **4** pro službu nebo entitu, pokud:
    - Stav služby Klient DNS – služba není spuštěná. 
    - Stav služby Klient DHCP – služba není spuštěná. 
    - Stav služby vzdáleného volání Procedur – služba není spuštěná. 
@@ -688,16 +688,19 @@ Prahové hodnoty pro kritéria, které se zaměřují virtuálního počítače 
    - Stav služby vzdálené správy Windows – služba není spuštěná. 
    - Chyba systému souborů nebo poškození – je logický Disk není k dispozici.
 
-Prahové hodnoty pro následující stav kritéria Linux nejsou upravitelné, protože jeho stav je již nastavena na *true*. Stav se zobrazí *comparisonOperator* s hodnotou **LessThan** a *prahová hodnota* hodnotu **1** při posílat dotaz z Úloha monitorování rozhraní API pro entitu, v závislosti na jeho kontextu:
+Prahové hodnoty pro následující kritéria stavu systému Linux nelze upravovat, protože jejich stav je již nastaven na *hodnotu true*. Stav zobrazuje *comparisonOperator* s hodnotou **LessThan** a *prahovou* hodnotou **1** , pokud se dotazuje z rozhraní API monitorování úloh pro entitu v závislosti na kontextu:
    - Stav logického disku – logický disk není online / k dispozici
    - Stav disku – Disk není online / k dispozici
    - Stav síťového adaptéru – síťový adaptér je zakázána.
 
 ### <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Návody upravit výstrahy, které jsou součástí funkce Health?
-Pravidla výstrah, které jsou definovány pro každé kritérium stavu se nezobrazují na portálu Azure portal. Můžete povolit nebo zakázat upozornění na stav pouze v pravidlo [úlohy monitorování rozhraní API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Nemůžete také přiřadit [Azure monitor skupinu akcí](platform/action-groups.md) pro výstrahy týkající se stavu v Azure Portal. Pomocí rozhraní API pro nastavení oznámení můžete nakonfigurovat skupinu akcí, která se aktivuje při každém vyvolání výstrahy na stav. V současné době můžete přiřadit skupiny akcí na virtuálním počítači tak, aby všechny *výstrahy týkající se stavu* aktivuje proti aktivační událost virtuální počítač stejné skupiny akcí. Na rozdíl od tradičních upozornění v Azure neexistuje koncept skupiny samostatnou akci pro každé pravidlo výstrahy stavu. Kromě toho pouze skupiny akcí, které jsou nakonfigurované na poskytování e-mailu nebo oznámení SMS jsou podporovány, když se aktivuje upozornění na stav. 
+Pravidla výstrah, které jsou definovány pro každé kritérium stavu se nezobrazují na portálu Azure portal. Pravidlo upozornění na stav můžete povolit nebo zakázat pouze v [rozhraní API monitorování úloh](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Nemůžete také přiřadit [Azure monitor skupinu akcí](platform/action-groups.md) pro výstrahy týkající se stavu v Azure Portal. Pomocí rozhraní API pro nastavení oznámení můžete nakonfigurovat skupinu akcí, která se aktivuje při každém vyvolání výstrahy na stav. V současné době můžete k virtuálnímu počítači přiřadit skupiny akcí, aby všechny *výstrahy stavu* aktivované virtuálním počítačem měly stejné skupiny akcí. Na rozdíl od tradičních upozornění v Azure neexistuje koncept skupiny samostatnou akci pro každé pravidlo výstrahy stavu. Kromě toho pouze skupiny akcí, které jsou nakonfigurované na poskytování e-mailu nebo oznámení SMS jsou podporovány, když se aktivuje upozornění na stav. 
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>Se mi nezobrazují některé nebo všech dat v grafech výkonu pro virtuální počítač
+Naše grafy výkonu byly aktualizovány tak, aby používaly data uložená v tabulce *InsightsMetrics* .  Pokud chcete zobrazit data v těchto grafech, budete muset upgradovat, aby používala nové řešení VM Insights.  Další informace najdete v našich [dotazech GA](insights/vminsights-ga-release-faq.md) .
+
 Pokud nevidíte údaje o výkonu v tabulce disků nebo v některém z grafů výkonu, nemusí být v pracovním prostoru nakonfigurovány čítače výkonu. Pokud ho chcete vyřešit, spusťte následující [skript PowerShellu](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell).
+
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Jak se Azure Monitor pro virtuální počítače funkce map liší od Service Map?
 Funkce mapy Azure Monitor pro virtuální počítače je založena na Service Map, ale má následující rozdíly:

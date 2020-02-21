@@ -1,5 +1,6 @@
 ---
-title: 'Rychlý start: Vytvoření Data Science Virtual Machine CentOS'
+title: 'Rychlý Start: vytvoření Data Science Virtual Machine CentOS'
+titleSuffix: Azure Data Science Virtual Machine
 description: Nakonfigurujte a vytvořte Data Science Virtual Machine pro Linux (CentOS), abyste mohli provádět analýzy a strojové učení.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,14 +8,14 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
-ms.openlocfilehash: 1761673198b3d8ffc3740d64f525c9e70bda9e3e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73541b31125ee6e99dc2351e26f6a564a1603487
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204162"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526021"
 ---
-# <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>Rychlý start: Nastavení CentOS (Linux) Data Science Virtual Machine v Azure
+# <a name="quickstart-set-up-a-centos-linux-data-science-virtual-machine-in-azure"></a>Rychlý Start: nastavení CentOS (Linux) Data Science Virtual Machine v Azure
 
 Začněte pracovat s CentOSem na základě Data Science Virtual Machine.
 
@@ -33,7 +34,7 @@ Tady je postup vytvoření instance Data Science Virtual Machine CentOS:
 
 1. V dalším okně vyberte **vytvořit**.
 
-    [![](media/linux-dsvm-intro/create-centos.png "Tlačítko pro vytvoření počítače s CentOS")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
+    [![](media/linux-dsvm-intro/create-centos.png "Button to create a CentOS machine")](media/linux-dsvm-intro/create-centos-expanded.png#lightbox)
 
 1. Měli byste se přesměrovat na okno vytvořit virtuální počítač.
    
@@ -43,28 +44,28 @@ Tady je postup vytvoření instance Data Science Virtual Machine CentOS:
 
     1. **Základy**:
     
-       * **Předplatné:** Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
+       * **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
        * **Skupina prostředků**: Vytvořte novou skupinu nebo použijte existující.
-       * **Název virtuálního počítače**: Zadejte název virtuálního počítače. Tímto způsobem se zobrazí ve vašem Azure Portal.
-       * **Oblast:** Vyberte odpovídající datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
-       * **Obrázek**: Nechte zadanou výchozí hodnotu.
-       * **Velikost**: To by mělo automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Linux v Azure](../../virtual-machines/linux/sizes.md).
-       * **Typ ověřování**: V případě rychlejšího nastavení vyberte možnost heslo. 
+       * **Název virtuálního počítače**: zadejte název virtuálního počítače. Tímto způsobem se zobrazí ve vašem Azure Portal.
+       * **Oblast**: vyberte příslušné datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
+       * **Obrázek**: ponechte výchozí hodnotu.
+       * **Velikost**: Tato hodnota by měla automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Linux v Azure](../../virtual-machines/linux/sizes.md).
+       * **Typ ověřování**: pro rychlejší nastavení vyberte možnost heslo. 
          
          > [!NOTE]
          > Pokud máte v úmyslu používat JupyterHub, ujistěte se, že jste vybrali možnost "heslo", protože JupyterHub *není nakonfigurován k* používání veřejných klíčů ssh.
 
-       * **Uživatelské jméno**: Zadejte uživatelské jméno správce. Toto je uživatelské jméno, které použijete k přihlášení k virtuálnímu počítači, a nemusí být stejné jako uživatelské jméno Azure. Nepoužívejte *Velká* písmena.
+       * **Uživatelské jméno**: zadejte uživatelské jméno správce. Toto je uživatelské jméno, které použijete k přihlášení k virtuálnímu počítači, a nemusí být stejné jako uživatelské jméno Azure. Nepoužívejte *Velká* písmena.
          
          > [!NOTE]
          > Pokud v uživatelském jméně použijete velká písmena, JupyterHub nebude fungovat a dojde k chybě 500 interního serveru.
 
-       * **Heslo**: Zadejte heslo, které použijete k přihlášení k virtuálnímu počítači.    
+       * **Heslo**: zadejte heslo, které budete používat pro přihlášení k virtuálnímu počítači.    
     
    1. Vyberte **Zkontrolovat a vytvořit**.
    1. **Zkontrolovat a vytvořit**
       * Ověřte, zda všechny informace, které jste zadali správný. 
-      * Vyberte **Vytvořit**.
+      * Vyberte **Create** (Vytvořit).
     
     Zřizování by měla trvat asi 5 minut. Stav se zobrazí v Azure Portal.
 
@@ -80,7 +81,7 @@ K Azure Notebooks můžete také připojit Data Science Virtual Machine ke spuš
 
 ### <a name="ssh"></a>SSH
 
-Pokud byl virtuální počítač vytvořen, pokud byl nakonfigurován s přístupem SSH, můžete se k němu přihlásit pomocí SSH. Pomocí přihlašovacích údajů účtu, které jste vytvořili v **Základy** část krok 3 pro rozhraní text prostředí. Ve Windows si můžete stáhnout klientský nástroj SSH [, jako je](https://www.putty.org)například výstup. Pokud dáváte přednost grafické ploše (systém Windows X), můžete použít předávání X11 na výstupu.
+Pokud byl virtuální počítač vytvořen, pokud byl nakonfigurován s přístupem SSH, můžete se k němu přihlásit pomocí SSH. Pro rozhraní textového prostředí použijte přihlašovací údaje účtu, které jste vytvořili v části **základy** v kroku 3. Ve Windows si můžete stáhnout klientský nástroj SSH [, jako je](https://www.putty.org)například výstup. Pokud dáváte přednost grafické ploše (systém Windows X), můžete použít předávání X11 na výstupu.
 
 > [!NOTE]
 > Klient X2Go lepších výsledků než X11 předávání v testování. Doporučujeme používat X2Go klienta klasické pracovní plochy grafické rozhraní.
@@ -89,7 +90,7 @@ Pokud byl virtuální počítač vytvořen, pokud byl nakonfigurován s přístu
 
 Virtuální počítač se systémem Linux je již zřízený serverem X2Go a připraven k přijetí připojení klienta. Pro připojení k desktopu grafické virtuálního počítače s Linuxem, proveďte následující postup u svého klienta:
 
-1. Stažení a instalace klienta X2Go pro vaše klientská platforma z [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
+1. Stáhněte a nainstalujte klienta X2Go pro vaši klientskou platformu z [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).
 1. Poznamenejte si veřejnou IP adresu virtuálního počítače, kterou můžete najít v Azure Portal otevřením virtuálního počítače, který jste právě vytvořili.
 
    ![IP adresa počítače CentOS](./media/linux-dsvm-intro/centos-ip-address.png)
@@ -98,12 +99,12 @@ Virtuální počítač se systémem Linux je již zřízený serverem X2Go a př
 
 1. V okně výsledná konfigurace zadejte následující parametry konfigurace:
    * **Karta relace**:
-     * **Hostitel**: Zadejte IP adresu vašeho virtuálního počítače, který jste si poznamenali dříve.
-     * **Přihlašovací jméno**: Zadejte uživatelské jméno na virtuálním počítači se systémem Linux.
-     * **Port SSH**: Ponechte to 22, výchozí hodnota.
+     * **Hostitel**: zadejte IP adresu vašeho virtuálního počítače, který jste si poznamenali dříve.
+     * **Přihlášení**: zadejte uživatelské jméno na virtuálním počítači se systémem Linux.
+     * **Port SSH**: ponechte ho v 22, výchozí hodnota.
      * **Typ relace**: Změňte hodnotu na **desktop Xfce**. Virtuální počítač se systémem Linux v současné době podporuje pouze desktop Xfce plochu.
    * **Karta média**: Pokud je nepotřebujete používat, můžete vypnout zvukovou podporu a tisk klienta.
-   * **Sdílené složky**: Pokud chcete adresáře z klientských počítačů připojených k VIRTUÁLNÍmu počítači se systémem Linux, přidejte do této karty adresáře klientských počítačů, které chcete sdílet s VIRTUÁLNÍm počítačem.
+   * **Sdílené složky**: Pokud chcete adresáře z klientských počítačů připojených k virtuálnímu počítači se systémem Linux, přidejte do této karty adresáře klientských počítačů, které chcete sdílet s virtuálním počítačem.
 
    ![Konfigurace X2go](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Vyberte **OK**.
@@ -122,16 +123,16 @@ CentOS DSVM spouští [JupyterHub](https://github.com/jupyterhub/jupyterhub), v�
 
        ![IP adresa počítače CentOS](./media/linux-dsvm-intro/centos-ip-address.png)
 
-   1. Z místního počítače otevřete webový prohlížeč a přejděte na https:\//Your-VM-IP: 8000 a nahraďte "Your-VM-IP" IP adresou, kterou jste si poznamenali dříve.
+   1. Z místního počítače otevřete webový prohlížeč a přejděte do https:\//Your-VM-IP: 8000 a nahraďte "Your-VM-IP" IP adresou, kterou jste si poznamenali dříve.
    1. Zadejte uživatelské jméno a heslo, které jste použili k vytvoření virtuálního počítače, a přihlaste se. 
 
       ![Zadejte Jupyter přihlášení.](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
    1. Projděte si mnoho dostupných ukázkových poznámkových bloků.
 
-JupyterLab, generace poznámkové bloky Jupyter a JupyterHub, je také k dispozici. Abyste k němu měli přístup, přihlaste se k JupyterHub a pak přejděte na adresu\/URL https:/your-VM-IP: 8000/User/Your-username/Lab a nahraďte "Your-username" uživatelským jménem, které jste si zvolili při konfiguraci virtuálního počítače.
+JupyterLab, generace poznámkové bloky Jupyter a JupyterHub, je také k dispozici. Pokud k němu chcete získat přístup, přihlaste se k JupyterHub a potom přejděte na adresu URL https:\//Your-VM-IP: 8000/User/Your-username/Lab a nahraďte "Your-username" uživatelským jménem, které jste si zvolili při konfiguraci virtuálního počítače.
 
-Můžete nastavit JupyterLab jako výchozí Poznámkový Server přidáním tohoto řádku do `/etc/jupyterhub/jupyterhub_config.py`:
+JupyterLab můžete nastavit jako výchozí server Poznámkový blok přidáním tohoto řádku do `/etc/jupyterhub/jupyterhub_config.py`:
 
 ```python
 c.Spawner.default_url = '/lab'
@@ -142,7 +143,7 @@ c.Spawner.default_url = '/lab'
 Zde je, jak můžete pokračovat v učení a zkoumání:
 
 * Návod pro [datovou vědu na data Science Virtual Machine pro Linux](linux-dsvm-walkthrough.md) vám ukáže, jak provést několik běžných úloh pro datové vědy se systémem Linux DSVM zřízeným zde. 
-* Vyzkoušením nástrojů popsaných v tomto článku prozkoumejte různé nástroje pro datové vědy na DSVM. Pro základní Úvod a `dsvm-more-info` pro ukazatele na Další informace o nástrojích nainstalovaných v DSVM můžete také spustit v prostředí ve virtuálním počítači.  
-* Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](https://aka.ms/tdsp).
-* Přejděte [galerii Azure AI](https://gallery.azure.ai/) pro machine learning a datové analýzy ukázek, které využívají služby Azure AI.
+* Vyzkoušením nástrojů popsaných v tomto článku prozkoumejte různé nástroje pro datové vědy na DSVM. Můžete také spustit `dsvm-more-info` v prostředí ve virtuálním počítači pro základní Úvod a pro ukazatele na Další informace o nástrojích nainstalovaných v DSVM.  
+* Naučte se systematicky sestavovat komplexní Analytická řešení pomocí [procesu vědeckého zpracování týmových dat](https://aka.ms/tdsp).
+* Podívejte se na [Azure AI Gallery](https://gallery.azure.ai/) pro strojové učení a ukázky analýzy dat, které používají služby Azure AI.
 * Projděte si příslušnou [referenční dokumentaci](./reference-centos-vm.md) pro tento virtuální počítač.

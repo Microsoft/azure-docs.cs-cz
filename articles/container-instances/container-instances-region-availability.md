@@ -2,14 +2,14 @@
 title: Dostupnost prostředků podle oblasti
 description: Dostupnost výpočetních a paměťových prostředků pro službu Azure Container Instances v různých oblastech Azure.
 ms.topic: article
-ms.date: 01/31/2020
+ms.date: 02/19/2020
 ms.author: danlep
-ms.openlocfilehash: 3f64a13331658c1360c9d54f6f57a68c2c91fc6f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117815"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525297"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Dostupnost prostředků pro Azure Container Instances v oblastech Azure
 
@@ -24,7 +24,7 @@ Informace o kvótách a dalších omezeních v nasazeních najdete v tématu [kv
 
 ## <a name="availability---general"></a>Dostupnost – obecné
 
-Pro skupiny kontejnerů se systémem Linux a [podporovanými](container-instances-faq.md#what-windows-base-os-images-are-supported) kontejnery Windows Server 2016 jsou k dispozici následující oblasti a prostředky.
+Pro skupiny kontejnerů se systémem Linux a [podporovanými](container-instances-faq.md#what-windows-base-os-images-are-supported) kontejnery systému Windows Server 2016 jsou k dispozici následující oblasti a maximální počet prostředků.
 
 | Oblasti | OS | Maximální počet procesorů | Maximální velikost paměti (GB) | Úložiště (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
@@ -37,7 +37,7 @@ Pro skupiny kontejnerů se systémem Linux a [podporovanými](container-instance
 
 ## <a name="availability---windows-server-2019-ltsc-1809-deployments-preview"></a>Dostupnost – Windows Server 2019 LTSC, 1809 nasazení (Preview)
 
-Následující oblasti a prostředky jsou k dispozici pro skupiny kontejnerů s kontejnery založenými na Windows serveru 2019 (Preview).
+Následující oblasti a maximální prostředky jsou k dispozici pro skupiny kontejnerů s kontejnery založenými na Windows serveru 2019 (Preview).
 
 | Oblasti | OS | Maximální počet procesorů | Maximální velikost paměti (GB) | Úložiště (GB) |
 | -------- | -- | :---: | :-----------: | :---: |
@@ -47,13 +47,16 @@ Následující oblasti a prostředky jsou k dispozici pro skupiny kontejnerů s 
 
 ## <a name="availability---virtual-network-deployment"></a>Dostupnost – nasazení virtuální sítě
 
-Pro skupinu kontejnerů nasazené ve [službě Azure Virtual Network](container-instances-vnet.md)jsou k dispozici následující oblasti a prostředky.
+Pro skupinu kontejnerů nasazené ve [službě Azure Virtual Network](container-instances-vnet.md)jsou k dispozici následující oblasti a maximální počet prostředků.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 ## <a name="availability---gpu-resources-preview"></a>Dostupnost – prostředky GPU (Preview)
 
-Pro skupinu kontejnerů nasazené s [prostředky GPU](container-instances-gpu.md) (Preview) jsou k dispozici následující oblasti a prostředky.
+Pro skupinu kontejnerů nasazenou s [prostředky GPU](container-instances-gpu.md) (Preview) jsou k dispozici následující oblasti a maximální počet prostředků.
+
+> [!IMPORTANT]
+> Prostředky GPU jsou k dispozici pouze na vyžádání. Pokud chcete požádat o přístup k prostředkům GPU, odešlete prosím [žádost o podporu Azure][azure-support].
 
 [!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
@@ -63,3 +66,6 @@ Pro skupinu kontejnerů nasazené s [prostředky GPU](container-instances-gpu.md
 Nechejte tým informovat, pokud byste chtěli zobrazit další oblasti nebo zvýšit dostupnost prostředků na [aka.MS/ACI/Feedback](https://aka.ms/aci/feedback).
 
 Informace o řešení potíží s nasazením instance kontejneru najdete v tématu [řešení potíží s nasazením pomocí Azure Container Instances](container-instances-troubleshooting.md).
+
+
+[azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

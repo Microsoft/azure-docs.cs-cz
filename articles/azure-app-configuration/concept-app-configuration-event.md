@@ -1,22 +1,22 @@
 ---
-title: Reakce na události klíč-hodnota konfigurace Azure App | Microsoft Docs
+title: Reakce na události klíč-hodnota konfigurace aplikace Azure
 description: Použijte Azure Event Grid k přihlášení k odběru událostí konfigurace aplikace.
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
-ms.date: 05/30/2019
+ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: 5da64155f2823712eee7a60427b1c1e80abec068
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185299"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523794"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reakce na události konfigurace aplikace Azure
 
-Události konfigurace aplikace Azure umožňují aplikacím reagovat na změny v klíčových hodnotách. Tato operace se provádí bez složitého kódu nebo nákladných a neefektivních služeb cyklického dotazování. Místo toho se události odesílají prostřednictvím [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) předplatitelům, jako je [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)nebo dokonce i vlastní naslouchací proces http, a platíte jenom za to, co využijete.
+Události konfigurace aplikace Azure umožňují aplikacím reagovat na změny v klíčových hodnotách. Tato operace se provádí bez složitého kódu nebo nákladných a neefektivních služeb cyklického dotazování. Místo toho se události odesílají prostřednictvím [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) předplatitelům, jako je [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)nebo dokonce i vlastní naslouchací proces http. V kritickém případě platíte jenom za to, co využijete.
 
 Události konfigurace aplikace Azure se odesílají do Azure Event Grid, které vašim aplikacím poskytuje spolehlivé služby doručování prostřednictvím zásad opakovaného opakování a doručování nedoručených zpráv. Další informace najdete v tématu [Event Grid doručování zpráv a zkuste to znovu](https://docs.microsoft.com/azure/event-grid/delivery-and-retry).
 
@@ -39,17 +39,17 @@ Události konfigurace aplikace Azure obsahují všechny informace, které potře
 
 > |Vlastnost|Typ|Popis|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |téma|řetězec|Úplné Azure Resource Manager ID konfigurace aplikace, která událost emituje.|
-> |subject|řetězec|Identifikátor URI klíč-hodnota, která je předmětem události.|
-> |eventTime|řetězec|Datum a čas generování události ve formátu ISO 8601.|
-> |eventType|řetězec|"Microsoft. AppConfiguration. KeyValueModified" nebo "Microsoft. AppConfiguration. KeyValueDeleted".|
-> |ID|řetězec|Jedinečný identifikátor této události.|
-> |dataVersion|řetězec|Verze schématu datového objektu.|
-> |metadataVersion|řetězec|Verze schématu vlastností nejvyšší úrovně.|
-> |data|objekt|Kolekce dat událostí specifických pro konfiguraci aplikací Azure|
-> |data. Key|řetězec|Klíč hodnoty klíč-hodnota, která byla upravena nebo odstraněna.|
-> |data. Label|řetězec|Popisek (pokud existuje) hodnoty klíč-hodnota, která byla upravena nebo odstraněna.|
-> |data.etag|řetězec|Pro `KeyValueModified` značku nového klíč-hodnota. Pro `KeyValueDeleted` značku ETag hodnoty klíč-hodnota, která byla odstraněna.|
+> |topic|string|Úplné Azure Resource Manager ID konfigurace aplikace, která událost emituje.|
+> |subject|string|Identifikátor URI klíč-hodnota, která je předmětem události.|
+> |eventTime|string|Datum a čas generování události ve formátu ISO 8601.|
+> |eventType|string|"Microsoft. AppConfiguration. KeyValueModified" nebo "Microsoft. AppConfiguration. KeyValueDeleted".|
+> |ID|string|Jedinečný identifikátor této události.|
+> |dataVersion|string|Verze schématu datového objektu.|
+> |metadataVersion|string|Verze schématu vlastností nejvyšší úrovně.|
+> |data|object|Kolekce dat událostí specifických pro konfiguraci aplikací Azure|
+> |data. Key|string|Klíč hodnoty klíč-hodnota, která byla upravena nebo odstraněna.|
+> |data. Label|string|Popisek (pokud existuje) hodnoty klíč-hodnota, která byla upravena nebo odstraněna.|
+> |data.etag|string|Pro `KeyValueModified` značku nového klíč-hodnota. Pro `KeyValueDeleted` značku ETag hodnoty klíč-hodnota, která byla odstraněna.|
 
 Tady je příklad události KeyValueModified:
 ```json
@@ -73,11 +73,12 @@ Tady je příklad události KeyValueModified:
 Další informace najdete v tématu [schéma událostí konfigurace aplikace Azure](../event-grid/event-schema-app-configuration.md).
 
 ## <a name="practices-for-consuming-events"></a>Postupy pro náročné události
-Aplikace, které zpracovávají události konfigurace aplikace, by měly dodržovat několik doporučených postupů:
+Aplikace, které zpracovávají události konfigurace aplikace, by měly dodržovat tyto Doporučené postupy:
 > [!div class="checklist"]
-> * Vzhledem k tomu, že je možné nakonfigurovat více předplatných pro směrování událostí ke stejné obslužné rutině události, je důležité, aby události nevznikly z konkrétního zdroje, ale pokud chcete zkontrolovat téma zprávy, abyste měli jistotu, že pochází z konfigurace aplikace, kterou očekáváte.
-> * Podobně ověřte, zda je typ eventType, který je připraven ke zpracování, a nepředpokládá se, že všechny události, které obdržíte, budou takové typy, které očekáváte.
-> * Vzhledem k tomu, že zprávy mohou docházet mimo pořadí a po nějaké prodlevě, použijte pole ETag k pochopení, zda jsou informace o objektech stále aktuální.  Pomocí polí Sequencer můžete také pochopit pořadí událostí u libovolného konkrétního objektu.
+> * Více předplatných lze nakonfigurovat pro směrování událostí do stejné obslužné rutiny události, takže nepředpokládá, že události jsou z konkrétního zdroje. Místo toho zkontrolujte téma zprávy a ujistěte se, že instance konfigurace aplikace posílá událost.
+> * Ověřte typ eventType a Nepředpokládat, že všechny události, které obdržíte, budou typy, které jste očekávali.
+> * Pomocí polí ETag Zjistěte, jestli jsou informace o objektech pořád aktuální.  
+> * Pomocí polí Sequencer můžete pochopit pořadí událostí u libovolného konkrétního objektu.
 > * Pro přístup k upravované hodnotě klíče použijte pole Subject.
 
 

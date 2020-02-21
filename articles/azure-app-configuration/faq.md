@@ -1,31 +1,26 @@
 ---
-title: Nejčastější dotazy ke konfiguraci aplikací Azure | Microsoft Docs
+title: Nejčastější dotazy ke konfiguraci aplikací Azure
 description: Nejčastější dotazy týkající se konfigurace aplikací Azure
 services: azure-app-configuration
-documentationcenter: ''
 author: lisaguthrie
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 02/19/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 4bcd8f042563fa381832fd629061a822f71e844a
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 60ba0a7723861d6e642a23418dda6a1daa57f14e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467585"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523488"
 ---
 # <a name="azure-app-configuration-faq"></a>Nejčastější dotazy ke konfiguraci aplikací Azure
 
-Tento článek obsahuje nejčastější dotazy týkající se konfigurace aplikací Azure.
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se konfigurace aplikací Azure.
 
 ## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>Jak se liší konfigurace aplikace od Azure Key Vault?
 
-Konfigurace aplikací je navržená pro odlišnou sadu případů použití: pomáhá vývojářům spravovat nastavení aplikace a dostupnost funkcí řízení. Cílem je zjednodušit mnoho úloh práce se složitými konfiguračními daty.
+Konfigurace aplikací pomáhá vývojářům spravovat nastavení aplikace a dostupnost funkcí řízení. Cílem je zjednodušit mnoho úloh práce se složitými konfiguračními daty.
 
 Konfigurace aplikací podporuje:
 
@@ -36,7 +31,7 @@ Konfigurace aplikací podporuje:
 - Specializované operace správy
 - Uživatelské rozhraní pro správu funkcí
 
-Konfigurace aplikace je doplňkem Key Vault a obě by se měly používat souběžně ve většině nasazení aplikace.
+Doplňková konfigurace aplikace Key Vault a obě by se měly používat vedle sebe ve většině nasazení aplikací.
 
 ## <a name="should-i-store-secrets-in-app-configuration"></a>Mám tajné klíče ukládat do konfigurace aplikace?
 
@@ -62,7 +57,7 @@ Pro jednu položku klíč-hodnota je povolený limit 10 KB.
 
 ## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>Jak mám ukládat konfigurace pro více prostředí (test, fázování, produkce atd.)?
 
-V současné době určujete, kdo má přístup ke konfiguraci aplikace na úrovni na úrovni úložiště. Pro každé prostředí, které vyžaduje různá oprávnění, použijte samostatné úložiště. Tento přístup vám dává nejlepší izolaci zabezpečení.
+Řídíte, kdo má přístup ke konfiguraci aplikace na úrovni na úrovni úložiště. Pro každé prostředí, které vyžaduje různá oprávnění, použijte samostatné úložiště. Tento přístup poskytuje nejlepší bezpečnostní izolaci.
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Jaké jsou doporučené způsoby použití konfigurace aplikace?
 
@@ -70,9 +65,14 @@ Viz [osvědčené postupy](./howto-best-practices.md).
 
 ## <a name="how-much-does-app-configuration-cost"></a>Kolik stojí konfigurace aplikace?
 
-Existují dvě cenové úrovně: 1) úroveň Free a 2) úroveň Standard.
+Existují dvě cenové úrovně: 
 
-Pokud jste úložiště vytvořili před zavedením úrovně Standard, při obecné dostupnosti se automaticky přesune na úroveň Free. Můžete vybrat, jestli chcete upgradovat na úroveň Standard, nebo zůstat na úrovni Free, pokud to vyhovuje vašim potřebám.
+- Úroveň Free
+- Úroveň Standard.
+
+Pokud jste úložiště vytvořili před zavedením úrovně Standard, při obecné dostupnosti se automaticky přesune na úroveň Free. Můžete zvolit upgrade na úroveň Standard nebo zůstat na úrovni Free.
+
+Nemůžete downgradovat úložiště z úrovně Standard na úroveň Free. Můžete vytvořit nové úložiště na úrovni Free a pak importovat konfigurační data do tohoto úložiště.
 
 ## <a name="which-app-configuration-tier-should-i-use"></a>Jakou úroveň konfigurace aplikace mám použít?
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 02/18/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd013b44454cc0283ef84d6a978b15400eca8786
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0d6d621646aaa5c8c44a20cf327cd10fa31990b0
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022490"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484532"
 ---
 # <a name="understand-the-azure-ad-schema"></a>Pochopení schématu Azure AD
 Objekt v Azure Active Directory (Azure AD), podobně jako jakýkoli adresář, je programovou datovou konstrukcí vysoké úrovně, která představuje takové věci jako uživatelé, skupiny a kontakty. Když vytvoříte nového uživatele nebo kontakt ve službě Azure AD, vytváříte novou instanci tohoto objektu. Tyto instance se můžou odlišit na základě jejich vlastností.
@@ -46,9 +46,9 @@ Pokud byste například měli atribut mail "john.smith@contoso.com" a museli jst
 
 `Replace([mail], "@contoso.com", , ,"", ,)`  
 
-**Ukázkový vstup/výstup:** <br>
+**Vzorový vstup/výstup:** <br>
 
-* **VSTUP** (pošta): "john.smith@contoso.com"
+* **Vstup** (mail): "john.smith@contoso.com"
 * **Výstup**: Jan. Smith
 
 Další informace o tom, jak napsat vlastní výrazy a syntaxi, najdete v tématu [zápis výrazů pro mapování atributů v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data).
@@ -58,21 +58,24 @@ V následující tabulce jsou uvedeny běžné atributy a jejich synchronizace d
 
 |Místní služby Active Directory|Typ mapování|Azure AD|
 |-----|-----|-----|
-|CN|Direct|commonName
-|countryCode|Direct|countryCode|
-|displayName|Direct|displayName|
-|givenName|Expression|givenName|
-|objectGUID|Direct|sourceAnchorBinary|  
-|userprincipalName|Direct|userPrincipalName (Hlavní název uživatele)|
-|ProxyAdress|Direct|ProxyAddress|
+|CN|Přímé|commonName
+|countryCode|Přímé|countryCode|
+|displayName|Přímé|displayName|
+|givenName|Výraz|givenName|
+|objectGUID|Přímé|sourceAnchorBinary|  
+|userprincipalName|Přímé|userPrincipalName (Hlavní název uživatele)|
+|ProxyAdress|Přímé|ProxyAddress|
 
 ## <a name="view-the-schema"></a>Zobrazit schéma
+> [!WARNING]
+> Konfigurace zřizování cloudu vytvoří instanční objekt. Objekt služby je viditelný v Azure Portal. Mapování atributů byste neměli měnit pomocí rozhraní instančního objektu v Azure Portal.  To není podporováno.
+
 Chcete-li zobrazit schéma a ověřit jej, postupujte podle těchto kroků.
 
 1.  Přejít na [Průzkumník grafů](https://developer.microsoft.com/graph/graph-explorer).
 1.  Přihlaste se pomocí účtu globálního správce.
 1.  Na levé straně vyberte změnit oprávnění a zajistěte, aby byl adresář. **nepřístupný** **. všechno** se *poslalo*.
-1.  Spusťte dotaz https://graph.microsoft.com/beta/serviceprincipals/? $filter = StartsWith (DisplayName, ' Active '). Tento dotaz vrátí seznam objektů služby, které jsou vyfiltrovány.
+1.  Spusťte dotaz https://graph.microsoft.com/beta/serviceprincipals/?$filter = StartsWith (DisplayName, ' Active '). Tento dotaz vrátí seznam objektů služby, které jsou vyfiltrovány.
 1.  Vyhledejte `"appDisplayName": "Active Directory to Azure Active Directory Provisioning"` a poznamenejte si hodnotu `"id"`.
     ```
     "value": [

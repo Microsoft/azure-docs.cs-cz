@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/16/2019
+ms.date: 02/20/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5695968973c7446220d8d77b84dfebb4a23ae8c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 62a969519ebefaab919505d9c8faae830f55f4c6
+ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847755"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77505623"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -39,7 +39,7 @@ Kategorie **B2C** v protokolech auditu obsahuje následující typy aktivit:
 |Aplikace | Operace vytvoření, čtení, aktualizace a odstranění (CRUD) v aplikacích B2C. |
 |Klíč |Operace CRUD na klíčích uložených v kontejneru klíčů B2C |
 |Prostředek |Operace CRUD u prostředků B2C Například zásady a zprostředkovatelé identity.
-|Ověření |Ověření přihlašovacích údajů uživatele a vystavení tokenu|
+|Ověřování |Ověření přihlašovacích údajů uživatele a vystavení tokenu|
 
 Pro aktivity objektů CRUD uživatele se podívejte do kategorie **základní adresář** .
 
@@ -51,14 +51,14 @@ Tento příklad obrázku z Azure Portal zobrazuje data zachycená, když se uži
 
 Panel Podrobnosti o aktivitě obsahuje následující relevantní informace:
 
-|Sekce|Pole|Popis|
+|Část|Pole|Popis|
 |-------|-----|-----------|
-| Aktivita | Name (Název) | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře skutečné přihlášení uživatele. |
+| Aktivita | Název | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře skutečné přihlášení uživatele. |
 | Iniciované uživatelem (actor) | Objektu | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |
 | Iniciované uživatelem (actor) | SPN | **ID aplikace** B2C, ke které se uživatel přihlašuje |
 | Cíl (y) | Objektu | **ID objektu** uživatele, který se přihlašuje. |
 | Další podrobnosti | TenantId | **ID tenanta** klienta Azure AD B2C. |
-| Další podrobnosti | `PolicyId` | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
+| Další podrobnosti | PolicyId | **ID zásady** toku uživatele (zásady), která se používá k podepsání uživatele v. |
 | Další podrobnosti | ApplicationId | **ID aplikace** B2C, ke které se uživatel přihlašuje |
 
 ## <a name="view-audit-logs-in-the-azure-portal"></a>Zobrazit protokoly auditu v Azure Portal
@@ -88,51 +88,15 @@ Protokoly auditu se publikují do stejného kanálu jako jiné aktivity pro Azur
 
 ### <a name="enable-reporting-api-access"></a>Povolit přístup k rozhraní API pro vytváření sestav
 
-Abyste povolili přístup k rozhraní API pro vytváření sestav Azure AD pomocí skriptu nebo aplikace, budete potřebovat aplikaci Azure Active Directory registrovanou v Azure AD B2C tenantovi s následujícími oprávněními API:
+Abyste povolili přístup k rozhraní API pro vytváření sestav Azure AD pomocí skriptu nebo aplikace, musíte mít ve svém tenantovi Azure AD B2C registrovanou aplikaci s následujícími oprávněními API. Tato oprávnění můžete povolit pro existující registraci aplikace v rámci vašeho tenanta B2C nebo vytvořit novou specifickou pro použití s automatizací protokolu auditu.
 
-* Microsoft Graph > oprávnění aplikace > AuditLog. Read. All
+* Microsoft Graph > oprávnění aplikace > AuditLog > AuditLog. Read. All
 
-Tato oprávnění můžete povolit pro existující registraci aplikace Azure Active Directory v rámci tenanta B2C nebo vytvořit novou specifickou pro použití s automatizací protokolu auditu.
+Použijte postup v následujícím článku k registraci aplikace s požadovanými oprávněními:
 
-Postupujte podle těchto kroků, zaregistrujte aplikaci, udělte jí požadovaná oprávnění Microsoft Graph API a pak vytvořte tajný klíč klienta.
+[Správa Azure AD B2C s využitím Microsoft Graph](microsoft-graph-get-started.md)
 
-### <a name="register-application-in-azure-active-directory"></a>Registrovat aplikaci v Azure Active Directory
-
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="assign-api-access-permissions"></a>Přiřazení přístupových oprávnění k rozhraní API
-
-#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
-
-1. Na stránce Přehled **zaregistrovaných aplikací** vyberte **Nastavení**.
-1. V části **přístup přes rozhraní API**vyberte **požadovaná oprávnění**.
-1. Vyberte **Přidat**a pak **Vyberte rozhraní API**.
-1. Vyberte **Microsoft Graph**a pak **Vyberte**.
-1. V části **oprávnění aplikace**vyberte **číst všechna data protokolu auditu**.
-1. Vyberte tlačítko **Vybrat** a potom vyberte **Hotovo**.
-1. Vyberte **udělit oprávnění**a pak vyberte **Ano**.
-
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
-
-1. V části **Spravovat**vyberte **oprávnění rozhraní API**.
-1. V části **konfigurovaná oprávnění**vyberte **Přidat oprávnění**.
-1. Vyberte kartu **rozhraní Microsoft API** .
-1. Vyberte **Microsoft Graph**.
-1. Vyberte **oprávnění aplikace**.
-1. Rozbalte **AuditLog** a potom zaškrtněte políčko **AuditLog. Read. All** .
-1. Vyberte **Přidat oprávnění**. Jak je směrované, počkejte několik minut, než budete pokračovat k dalšímu kroku.
-1. Vyberte **udělit souhlas správce pro (název vašeho tenanta)** .
-1. Vyberte aktuálně přihlášený účet, pokud se mu přiřadí role *globálního správce* , nebo se přihlaste pomocí účtu ve Azure AD B2C klientovi, kterému byla přiřazena role *globálního správce* .
-1. Vyberte **Přijmout**.
-1. Vyberte **aktualizovat**a pak ověřte, že "uděleno pro..." zobrazí se v části **stav** pro oprávnění *AuditLog. Read. All* . Rozšíření oprávnění může trvat několik minut.
-
-* * *
-
-### <a name="create-client-secret"></a>Vytvořit tajný klíč klienta
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
-
-Nyní máte aplikaci s požadovaným přístupem k rozhraní API, ID aplikace a klíč, který můžete použít ve svých skriptech automatizace. Příklad toho, jak můžete získat události aktivity pomocí skriptu, najdete v části PowerShellový skript níže v tomto článku.
+Po registraci aplikace s příslušnými oprávněními si přečtěte část PowerShellový skript dále v tomto článku, kde najdete příklad toho, jak můžete pomocí skriptu získat události aktivity.
 
 ### <a name="access-the-api"></a>Přístup k rozhraní API
 
@@ -149,13 +113,14 @@ Následující skript prostředí PowerShell ukazuje příklad postupu dotazová
 Tento skript můžete vyzkoušet v [Azure Cloud Shell](overview.md). Nezapomeňte ho aktualizovat pomocí ID aplikace, tajného kódu klienta a názvu vašeho tenanta Azure AD B2C.
 
 ```powershell
-# This script requires the registration of a Web Application in Azure Active Directory:
-# https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-reporting-api
+# This script requires an application registration that's granted Microsoft Graph API permission
+# https://docs.microsoft.com/azure/active-directory-b2c/microsoft-graph-get-started
 
 # Constants
-$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID (registered by Global Admin)
+$ClientID       = "your-client-application-id-here"       # Insert your application's client ID, a GUID
 $ClientSecret   = "your-client-application-secret-here"   # Insert your application's client secret
-$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant; for example, contoso.onmicrosoft.com
+$tenantdomain   = "your-b2c-tenant.onmicrosoft.com"       # Insert your Azure AD B2C tenant domain name
+
 $loginURL       = "https://login.microsoftonline.com"
 $resource       = "https://graph.microsoft.com"           # Microsoft Graph API resource URI
 $7daysago       = "{0:s}" -f (get-date).AddDays(-7) + "Z" # Use 'AddMinutes(-5)' to decrement minutes, for example
@@ -258,4 +223,4 @@ Tady je reprezentace JSON ukázkové události aktivity uvedené dříve v člá
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete automatizovat další úlohy správy, například [Spravovat uživatele pomocí .NET](manage-user-accounts-graph-api.md).
+Můžete automatizovat další úlohy správy, například [spravovat Azure AD B2C uživatelských účtů pomocí Microsoft Graph](manage-user-accounts-graph-api.md).

@@ -16,12 +16,12 @@ ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef8f1ef381c86b6eec62c96ff6dcf87522de040
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: f1b7e4716e731e6b73e3ac60b64baa71043906fc
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367958"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483750"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -36,7 +36,7 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 ![Bezproblémové jednotné přihlašování](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
->Bezproblémové jednotné přihlašování vyžaduje, aby zařízení uživatele bylo jenom **připojené k doméně** , ale nepoužívá se v [připojené službě Azure AD](../active-directory-azureadjoin-overview.md) nebo [připojené k hybridní službě Azure AD] (... /active-directory-azureadjoin-overview.md). PN jednotného přihlašování k Azure AD a připojení k hybridní službě Azure AD, které se připojily, funguje na základě [primárního obnovovacího tokenu] (. /active-directory/devices/concept-primary-refresh-token.md)
+>Bezproblémové jednotné přihlašování vyžaduje, aby zařízení uživatele bylo jenom **připojené k doméně** , ale nepoužívá se pro zařízení připojená k [Azure AD](../devices/concept-azure-ad-join.md) nebo pro zařízení [připojená k hybridní službě Azure AD](../devices/concept-azure-ad-join-hybrid.md) . Jednotné přihlašování pro službu Azure AD připojené a hybridní připojení ke službě Azure AD funguje na základě [primárního obnovovacího tokenu](../devices/concept-primary-refresh-token.md).
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
@@ -78,7 +78,7 @@ Bezproblémové jednotné přihlašování se dá kombinovat buď se [synchroniz
 \*\*\*vyžaduje [Další konfiguraci](how-to-connect-sso-quick-start.md#browser-considerations) .
 
 >[!NOTE]
->V případě Windows 10 doporučujeme použít službu [Azure AD JOIN](../active-directory-azureadjoin-overview.md) k optimálnímu jednotnému přihlašování v Azure AD.
+>V případě Windows 10 doporučujeme použít službu [Azure AD JOIN](../devices/concept-azure-ad-join.md) k optimálnímu jednotnému přihlašování v Azure AD.
 
 ## <a name="next-steps"></a>Další kroky
 

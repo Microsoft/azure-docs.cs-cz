@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 90be5b407708f6cca3748dd6d6fa09c28ab7fcdc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fcdbf0d56b79662cccd90380489ede672e6a0a66
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840430"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484107"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Správa přístupu uživatelů v Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ V závislosti na pravidle aplikace může být nutné udělit souhlas rodičů u
 
 Následuje příklad toku uživatele pro shromáždění souhlasu rodičů:
 
-1. Operace [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/api/api-catalog) identifikuje uživatele jako nezletilý a vrátí data uživatelů do aplikace ve formě nepodepsaného tokenu JSON.
+1. Operace [Microsoft Graph API](https://docs.microsoft.com/graph/use-the-api) identifikuje uživatele jako nezletilý a vrátí data uživatelů do aplikace ve formě nepodepsaného tokenu JSON.
 
 2. Aplikace zpracovává token JSON a zobrazuje obrazovku jako nezletilou, oznamuje jim, že je vyžadován souhlas rodičů a žádá o souhlas nadřazeného objektu online.
 
@@ -54,9 +54,9 @@ Následuje příklad toku uživatele pro shromáždění souhlasu rodičů:
 
 4. Aplikace nabízí možnost podverze k odvolání souhlasu.
 
-5. V případě, že podverze nebo licence k odvolání odvolá, je možné službu Azure AD Graph API použít ke změně **consentProvidedForMinor** na **odepřené**. Alternativně se může aplikace rozhodnout pro odstranění menšího, ale jeho souhlasu bylo odvoláno. Je volitelně možné přizpůsobit tok uživatele tak, aby ověřený vedlejší (nebo nadřazená položka, která používá účet nezletilý), mohla odvolat souhlas. Azure AD B2C zaznamenává **consentProvidedForMinor** jako **odepřené**.
+5. V případě, že podverze nebo dospělý odvolá souhlas, lze Microsoft Graph rozhraní API použít ke změně **consentProvidedForMinor** na hodnotu **Odepřít**. Alternativně se může aplikace rozhodnout pro odstranění menšího, ale jeho souhlasu bylo odvoláno. Je volitelně možné přizpůsobit tok uživatele tak, aby ověřený vedlejší (nebo nadřazená položka, která používá účet nezletilý), mohla odvolat souhlas. Azure AD B2C zaznamenává **consentProvidedForMinor** jako **odepřené**.
 
-Další informace o **legalAgeGroupClassification**, **consentProvidedForMinor**a **ageGroup**najdete v tématu [typ prostředku uživatele](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Další informace o vlastních atributech najdete v tématu [použití vlastních atributů ke shromažďování informací o vašich spotřebitelích](user-flow-custom-attributes.md). Když řešíte rozšířené atributy pomocí Graph API Azure AD, musíte použít dlouhou verzi atributu, jako je například *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
+Další informace o **legalAgeGroupClassification**, **consentProvidedForMinor**a **ageGroup**najdete v tématu [typ prostředku uživatele](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). Další informace o vlastních atributech najdete v tématu [použití vlastních atributů ke shromažďování informací o vašich spotřebitelích](user-flow-custom-attributes.md). Při adresování rozšířených atributů pomocí rozhraní Microsoft Graph API je nutné použít dlouhou verzi atributu, například *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>Shromážděte data narození a země/oblasti.
 

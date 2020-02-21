@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 838d215cb49e526251aff9267dbeb0feb6d5f8df
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 2d1e6e484fd704669951bd37b17356fd3689cc91
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425252"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485178"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
@@ -66,7 +66,7 @@ Například pokud dojde k špičkám ve trendu *prvního bajtu doby odezvy back-
 
 Pokud si všimnete špičky v *době, kdy uplynula doba odezvy back-endu* , ale *Doba odezvy prvního bajtu* je stabilní, je možné ji odvodit, protože se požaduje větší požadovaný soubor.
 
-Podobně platí, že pokud má služba *Application Gateway celkový čas* špičky, ale *čas posledního bajtu back-endu* je stabilní, může to být buď znaménko kritického bodu výkonu na Application Gateway nebo kritické místo v síti mezi klientem a Application Gateway. Navíc platí, že pokud *klient RTT* má také odpovídající špičku, znamená to, že je degradace z důvodu sítě mezi klientem a Application Gateway.
+Podobně platí, že pokud má služba *Application Gateway celkový čas* špičky, ale *čas posledního bajtu back-endu* je stabilní, může to být buď znaménko kritického bodu výkonu na Application Gateway nebo kritické místo v síti mezi klientem a Application Gateway. Pokud navíc *klient RTT* má také odpovídající špičku, znamená to, že je degradace z důvodu sítě mezi klientem a Application Gateway.
 
 ### <a name="application-gateway-metrics"></a>Application Gateway metriky
 
@@ -86,7 +86,7 @@ Pro Application Gateway jsou k dispozici následující metriky:
 
 - **Aktuální jednotky kapacity**
 
-   Počet spotřebovaných jednotek kapacity Jednotky kapacity měří náklady založené na spotřebě, které se účtují i s pevnými náklady. Existují tři determinanty jednotky kapacity a výpočetní jednotky, trvalá připojení a propustnost. Každá jednotka kapacity se skládá z maximálně: 1 výpočetní jednotka nebo 2500 trvalých připojení nebo propustnosti 2,22 MB/s.
+   Počet jednotek kapacity spotřebovaných k vyrovnávání zatížení provozu. Existují tři determinanty jednotky kapacity a výpočetní jednotky, trvalá připojení a propustnost. Každá jednotka kapacity se skládá z maximálně: 1 výpočetní jednotka nebo 2500 trvalých připojení nebo propustnosti 2,22 MB/s.
 
 - **Aktuální výpočetní jednotky**
 
@@ -98,13 +98,15 @@ Pro Application Gateway jsou k dispozici následující metriky:
    
 - **Odhadované jednotky s rozpisem kapacity**
 
-  Počet jednotek kapacity, pomocí kterých je fakturace odhadnuta To se calcutaed jako větší hodnota mezi *aktuálními jednotkami kapacity* a *pevnými jednotkami fakturovatelných kapacit*.  
+  V případě SKU verze v2 je cenový model založený na spotřebě. Jednotky kapacity měří náklady založené na spotřebě, které se účtují i s pevnými náklady. *Odhadované jednotky s rozpisem kapacity* označují počet jednotek kapacity, pomocí kterých je fakturace odhadovaná. Počítá se jako větší hodnota mezi *aktuálními jednotkami kapacity* (jednotky kapacity vyžadované k vyrovnávání zatížení provozu) a *pevnými fakturovatelnými jednotkami kapacity* (minimální zřízené kapacity).
 
 - **Neúspěšné žádosti**
 
-   Počet neúspěšných žádostí, které Application Gateway obsluhovány Počet požadavků může být dále filtrován tak, aby zobrazoval počet pro každý nebo konkrétní back-end fond – kombinace nastavení http.
+  Počet neúspěšných žádostí, které Application Gateway obsluhovány Počet požadavků může být dále filtrován tak, aby zobrazoval počet pro každý nebo konkrétní back-end fond – kombinace nastavení http.
    
-- **Pevně Fakturovatelné jednotky kapacity** Minimální počet přidělených kapacitních jednotek byl zřízen podle nastavení *minimální jednotky škálování* v konfiguraci Application Gateway.
+- **Pevně Fakturovatelné jednotky kapacity**
+
+  Minimální počet jednotek kapacity uchovávaných v rámci nastavení *minimálních jednotek škálování* (jedna instance překládá na 10 kapacitních jednotek) v konfiguraci Application Gateway.
    
  - **Nová připojení za sekundu**
 
@@ -143,7 +145,9 @@ Pro Application Gateway jsou k dispozici následující metriky:
 
   Počet back-endy, které jsou zjištěny v nesprávném stavu sondou stavu. Můžete filtrovat podle fondu back-endu a zobrazit tak počet nezdravých hostitelů v konkrétním back-end fondu.
   
-- **Počet požadavků za minutu na hostitele v pořádku** Průměrný počet žádostí přijatých každým zdravým členem v back-endu fondu za minutu. Je nutné zadat fond back-endu pomocí dimenze *problémových bezproblémových* .  
+- **Počet požadavků za minutu na hostitele v pořádku**
+
+  Průměrný počet žádostí přijatých každým zdravým členem v back-endu fondu za minutu. Je nutné zadat fond back-endu pomocí dimenze *problémových bezproblémových* .  
   
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Metriky podporované Application Gateway v1 SKU

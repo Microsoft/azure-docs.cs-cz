@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 73402420bdfee7fecbd7901deefe7f4314a76d51
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 7f7aeeaf7cbb957a276347b04633763033a62b4e
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931589"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77522987"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Vytvoření virtuálního počítače pro správu pro konfiguraci a správu spravované domény Azure Active Directory Domain Services
 
@@ -44,6 +44,8 @@ K dokončení tohoto kurzu potřebujete následující prostředky a oprávněn�
 * Virtuální počítač s Windows serverem, který je připojený k spravované doméně Azure služba AD DS.
     * V případě potřeby si přečtěte předchozí kurz [a vytvořte virtuální počítač s Windows serverem a připojte ho ke spravované doméně][create-join-windows-vm].
 * Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
+* Hostitel Azure bastionu nasazený ve vaší virtuální síti Azure služba AD DS.
+    * V případě potřeby [Vytvořte hostitele Azure bastionu][azure-bastion].
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -84,16 +86,15 @@ V předchozím kurzu se vytvořil virtuální počítač s Windows serverem a p�
 Začněte tím, že se připojíte k virtuálnímu počítači s Windows serverem následujícím způsobem:
 
 1. V Azure Portal na levé straně vyberte **skupiny prostředků** . Zvolte skupinu prostředků, ve které se vytvořil váš virtuální počítač, třeba *myResourceGroup*, a potom vyberte virtuální počítač, jako je třeba *myVM*.
-1. V oknech s **přehledem** virtuálního počítače vyberte **připojit**.
+1. V podokně **Přehled** pro váš virtuální počítač vyberte **připojit**a pak **bastionu**.
 
-    ![Připojení k virtuálnímu počítači s Windows v Azure Portal](./media/tutorial-create-management-vm/connect-vm.png)
+    ![Připojení k virtuálnímu počítači s Windows pomocí bastionu v Azure Portal](./media/join-windows-vm/connect-to-vm.png)
 
-    Můžete také [vytvořit a použít hostitele Azure bastionu (v současnosti ve verzi Preview)][azure-bastion] , abyste povolili přístup jenom prostřednictvím Azure Portal přes SSL.
+1. Zadejte přihlašovací údaje pro váš virtuální počítač a pak vyberte **připojit**.
 
-1. Vyberte možnost *Stažení souboru RDP*. Uložte tento soubor RDP ve webovém prohlížeči.
-1. Chcete-li se připojit k virtuálnímu počítači, otevřete stažený soubor protokolu RDP. Pokud se zobrazí výzva, vyberte **Připojit**.
-1. Zadejte přihlašovací údaje uživatele, který je součástí skupiny *správců řadičů domény Azure AD* , například *contoso\dee* .
-1. Pokud se během procesu přihlašování zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat** a připojte se.
+   ![Připojení prostřednictvím hostitele bastionu v Azure Portal](./media/join-windows-vm/connect-to-bastion.png)
+
+V případě potřeby umožněte webovému prohlížeči otevřít automaticky otevíraná okna pro zobrazení připojení bastionu. Vytvoření připojení k VIRTUÁLNÍmu počítači trvá několik sekund.
 
 ## <a name="install-active-directory-administrative-tools"></a>Nainstalovat nástroje pro správu služby Active Directory
 

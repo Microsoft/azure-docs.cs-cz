@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 2fa43cb9ec526cfab2367431712e09406556a529
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 63174e1d4950b9f18fd3693511c507ed2dd018b3
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191847"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500365"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integrační služby (ISE)
 
@@ -35,13 +35,13 @@ V tomto článku se dozvíte, jak tyto úlohy provést:
 > [!IMPORTANT]
 > Logic Apps, integrované triggery, integrované akce a konektory spouštěné ve vašem ISE používají Cenový tarif, který se liší od cenového plánu založeného na spotřebě. Informace o cenách a fakturační práci pro ISEs najdete v článku o [cenovém modelu Logic Apps](../logic-apps/logic-apps-pricing.md#fixed-pricing). Cenové sazby najdete v tématu [Logic Apps ceny](../logic-apps/logic-apps-pricing.md).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
 * [Virtuální síť Azure](../virtual-network/virtual-networks-overview.md). Pokud nemáte virtuální síť, přečtěte si, jak [vytvořit virtuální síť Azure](../virtual-network/quick-create-portal.md).
 
-  * Vaše virtuální síť musí mít čtyři *prázdné* podsítě pro vytváření a nasazování prostředků v ISE. Každá podsíť podporuje pro ISE jinou komponentu Logic Apps. Tyto podsítě můžete vytvořit předem nebo můžete počkat, dokud nevytvoříte ISE, kde můžete vytvářet podsítě ve stejnou dobu. Přečtěte si další informace o [požadavcích na podsíť](#create-subnet).
+  * Vaše virtuální síť musí mít čtyři *prázdné* podsítě pro vytváření a nasazování prostředků v ISE. Každá podsíť podporuje jinou komponentu Logic Apps, která se používá ve vašem ISE. Tyto podsítě můžete vytvořit předem nebo můžete počkat, dokud nevytvoříte ISE, kde můžete vytvářet podsítě ve stejnou dobu. Přečtěte si další informace o [požadavcích na podsíť](#create-subnet).
 
   * Názvy podsítí musí začínat znakem abecedy nebo podtržítkem a nesmí tyto znaky používat: `<`, `>`, `%`, `&`, `\\`, `?`, `/`. 
   
@@ -91,27 +91,25 @@ Tato tabulka popisuje porty ve vaší virtuální síti Azure, kterou používá
 
 | Účel | Směr | Cílové porty | Značka zdrojové služby | Značka cílové služby | Poznámky: |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
-| Intrasubnet komunikace | Příchozí & odchozí | * | Adresní prostor pro virtuální síť s podsítěmi ISE | Adresní prostor pro virtuální síť s podsítěmi ISE | Vyžaduje se, aby provoz mohl procházet v každé podsíti. <p><p>**Důležité**: pro komunikaci mezi součástmi v rámci podsítí nezapomeňte otevřít všechny porty v těchto podsítích. |
-| Komunikace mezi podsítěmi | Příchozí & odchozí | 80, 443 | VirtualNetwork | VirtualNetwork | Pro komunikaci mezi podsítěmi |
-| Komunikace z Azure Logic Apps | Odchozí | 80, 443 | VirtualNetwork | Internet | Port závisí na externí službě, se kterou služba Logic Apps komunikuje. |
-| Azure Active Directory | Odchozí | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
-| Azure Storage závislost | Odchozí | 80, 443, 445 | VirtualNetwork | Úložiště | |
-| Komunikace s Azure Logic Apps | Příchozí | 443 | Interní ISE: <br>VirtualNetwork <p><p>Externí ISE: <br>Internet | VirtualNetwork | IP adresa počítače nebo služby, která ve vaší aplikaci logiky volá jakékoli triggery žádostí nebo Webhooky. Zavření nebo blokování tohoto portu zabrání volání HTTP do Logic Apps s triggery žádostí. |
-| Historie spuštění aplikace logiky | Příchozí | 443 | Interní ISE: <br>VirtualNetwork <p><p>Externí ISE: <br>Internet | VirtualNetwork | IP adresa počítače, ze kterého chcete zobrazit historii spuštění vaší aplikace logiky. I když uzavření nebo blokování tohoto portu nebrání v zobrazení historie spuštění, nemůžete zobrazit vstupy a výstupy pro každý krok v této historii spuštění. |
-| Správa připojení | Odchozí | 443 | VirtualNetwork  | AppService | |
-| Publikování diagnostických protokolů & metriky | Odchozí | 443 | VirtualNetwork  | AzureMonitor | |
-| Komunikace z Azure Traffic Manager | Příchozí | Interní ISE: 454 <p><p>Externí ISE: 443 | AzureTrafficManager | VirtualNetwork | |
+| Komunikace mezi podsítí v rámci virtuální sítě | Příchozí & odchozí | * | Adresní prostor pro virtuální síť s podsítěmi ISE | Adresní prostor pro virtuální síť s podsítěmi ISE | Vyžaduje se pro tok provozu *mezi* podsítěmi ve vaší virtuální síti. <p><p>**Důležité**: Pokud chcete provoz směrovat mezi *součásti* v každé podsíti, ujistěte se, že jste otevřeli všechny porty v každé podsíti. |
+| Komunikace s aplikací logiky | Příchozí | 443 | Interní ISE: <br>VirtualNetwork <p><p>Externí ISE: <br>Internet | VirtualNetwork | Zdrojová IP adresa pro počítač nebo službu, která ve vaší aplikaci logiky volá jakékoli triggery žádostí nebo Webhooky. <p><p>**Důležité**: zavřením nebo blokováním tohoto portu zabráníte volání http do Logic Apps, které mají aktivační události požadavků. |
+| Historie spuštění aplikace logiky | Příchozí | 443 | Interní ISE: <br>VirtualNetwork <p><p>Externí ISE: <br>Internet | VirtualNetwork | Zdrojová IP adresa pro počítač nebo službu, ze které chcete zobrazit historii spuštění vaší aplikace logiky. <p><p>**Důležité**: Přestože zavřením nebo blokováním tohoto portu nebráníte zobrazení historie spuštění, nemůžete zobrazit vstupy a výstupy pro každý krok v této historii spuštění. |
 | Návrhář Logic Apps – dynamické vlastnosti | Příchozí | 454 | IP adresy, které mají být povoleny, najdete ve sloupci **poznámky** . | VirtualNetwork | Požadavky pocházejí z [příchozích](../logic-apps/logic-apps-limits-and-config.md#inbound) IP adres koncového bodu přístupu Logic Apps pro tuto oblast. |
+| Nasazení konektoru | Příchozí | 454 | AzureConnectors | VirtualNetwork | Vyžaduje se pro nasazení a aktualizaci konektorů. Zavřením nebo blokováním tohoto portu dojde k selhání nasazení ISE a znemožňuje aktualizace a opravy konektoru. |
 | Kontrolu stavu sítě | Příchozí | 454 | IP adresy, které mají být povoleny, najdete ve sloupci **poznámky** . | VirtualNetwork | Požadavky pocházejí z koncového bodu přístupu Logic Apps pro [příchozí](../logic-apps/logic-apps-limits-and-config.md#inbound) i [odchozí](../logic-apps/logic-apps-limits-and-config.md#outbound) IP adresy pro tuto oblast. |
 | Závislost správy App Service | Příchozí | 454, 455 | AppServiceManagement | VirtualNetwork | |
-| Nasazení konektoru | Příchozí | 454 | AzureConnectors | VirtualNetwork | Nutné pro nasazení a aktualizaci konektorů. Zavřením nebo blokováním tohoto portu dojde k selhání nasazení ISE a znemožňuje aktualizace a opravy konektoru. |
-| Nasazení zásad konektoru | Příchozí | 3443 | APIManagement | VirtualNetwork | Nutné pro nasazení a aktualizaci konektorů. Zavřením nebo blokováním tohoto portu dojde k selhání nasazení ISE a znemožňuje aktualizace a opravy konektoru. |
-| Závislost Azure SQL | Odchozí | 1433 | VirtualNetwork | SQL | |
-| Azure Resource Health | Odchozí | 1886 | VirtualNetwork | AzureMonitor | Pro publikování stavu do Resource Health |
+| Komunikace z Azure Traffic Manager | Příchozí | Interní ISE: 454 <p><p>Externí ISE: 443 | AzureTrafficManager | VirtualNetwork | |
 | Koncový bod správy API Management | Příchozí | 3443 | APIManagement | VirtualNetwork | |
+| Nasazení zásad konektoru | Příchozí | 3443 | APIManagement | VirtualNetwork | Vyžaduje se pro nasazení a aktualizaci konektorů. Zavřením nebo blokováním tohoto portu dojde k selhání nasazení ISE a znemožňuje aktualizace a opravy konektoru. |
+| Komunikace z aplikace logiky | Odchozí | 80, 443 | VirtualNetwork | Liší se v závislosti na cíli. | Koncové body pro externí službu, se kterou vaše aplikace logiky potřebuje komunikovat. |
+| Azure Active Directory | Odchozí | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
+| Správa připojení | Odchozí | 443 | VirtualNetwork  | AppService | |
+| Publikování diagnostických protokolů & metriky | Odchozí | 443 | VirtualNetwork  | AzureMonitor | |
+| Azure Storage závislost | Odchozí | 80, 443, 445 | VirtualNetwork | Úložiště | |
+| Závislost Azure SQL | Odchozí | 1433 | VirtualNetwork | SQL | |
+| Azure Resource Health | Odchozí | 1886 | VirtualNetwork | AzureMonitor | Požadováno pro publikování stavu do Resource Health |
 | Závislost z protokolu k zásadám centra událostí a agentům monitorování | Odchozí | 5672 | VirtualNetwork | Centrum událostí | |
-| Přístup k mezipaměti Azure pro instance Redis mezi instancemi rolí | Příchozí <br>Odchozí | 6379-6383 | VirtualNetwork | VirtualNetwork | Aby ISE mohli pracovat s Azure cache pro Redis, musíte tyto [odchozí a příchozí porty, které jsou popsané v mezipaměti Azure, otevřít i pro Redis Nejčastější dotazy](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
-| Nástroj pro vyrovnávání zatížení Azure | Příchozí | * | AzureLoadBalancer | VirtualNetwork | |
+| Přístup k mezipaměti Azure pro instance Redis mezi instancemi rolí | Příchozí <br>Odchozí | 6379 – 6383 | VirtualNetwork | VirtualNetwork | Aby ISE mohli pracovat s Azure cache pro Redis, musíte tyto [odchozí a příchozí porty, které jsou popsané v mezipaměti Azure, otevřít i pro Redis Nejčastější dotazy](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
 ||||||
 
 <a name="create-environment"></a>
@@ -130,7 +128,7 @@ Tato tabulka popisuje porty ve vaší virtuální síti Azure, kterou používá
 
    ![Zadání podrobností prostředí](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Vlastnost | Požaduje se | Hodnota | Popis |
+   | Vlastnost | Požadováno | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Předplatné** | Ano | <*název_předplatného_Azure*> | Předplatné Azure, které se má použít pro vaše prostředí |
    | **Skupina prostředků** | Ano | <*Azure-Resource-Group-name*> | Nová nebo existující skupina prostředků Azure, ve které chcete vytvořit prostředí. |
@@ -147,23 +145,19 @@ Tato tabulka popisuje porty ve vaší virtuální síti Azure, kterou používá
 
    **Vytvořit podsíť**
 
-   Pro vytváření a nasazování prostředků ve vašem prostředí ISE potřebuje čtyři *prázdné* podsítě, které nejsou delegované na žádnou službu. Po vytvoření prostředí *nemůžete* tyto adresy podsítě změnit.
+   Pro vytváření a nasazování prostředků ve vašem prostředí ISE potřebuje čtyři *prázdné* podsítě, které nejsou delegované na žádnou službu. Každá podsíť podporuje jinou komponentu Logic Apps, která se používá ve vašem ISE. Po vytvoření prostředí *nemůžete* tyto adresy podsítě změnit. Každá podsíť musí splňovat tyto požadavky:
 
-   > [!IMPORTANT]
-   > 
-   > Názvy podsítí musí začínat znakem abecedy nebo podtržítkem (bez čísel) a tyto znaky nepoužívají: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
-
-   Každá podsíť musí taky splňovat tyto požadavky:
+   * Má název, který začíná abecedním znakem nebo podtržítkem (bez čísel), a nepoužívá tyto znaky: `<`, `>`, `%`, `&`, `\\`, `?`, `/`.
 
    * Používá [Formát CIDR (Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) a adresní prostor třídy B.
 
-   * Používá minimálně `/27` v adresním prostoru, protože každá *podsíť vyžaduje minimálně* *32 adres.* Například:
+   * Používá minimálně `/27` v adresním prostoru, protože každá podsíť vyžaduje *minimálně*32 adres. Příklad:
+
+     * `10.0.0.0/28` má pouze 16 adres a je příliš malý, protože 2<sup>(32-28)</sup> je 2<sup>4</sup> nebo 16.
 
      * `10.0.0.0/27` má 32 adres, protože 2<sup>(32-27)</sup> je 2<sup>5</sup> nebo 32.
 
-     * `10.0.0.0/24` má 256 adres, protože 2<sup>(32-24)</sup> je 2<sup>8</sup> nebo 256.
-
-     * `10.0.0.0/28` má pouze 16 adres a je příliš malý, protože 2<sup>(32-28)</sup> je 2<sup>4</sup> nebo 16.
+     * `10.0.0.0/24` má 256 adres, protože 2<sup>(32-24)</sup> je 2<sup>8</sup> nebo 256. Víc adres ale neposkytuje žádné další výhody.
 
      Další informace o výpočtu adres najdete v tématu [bloky CIDR protokolu IPv4](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).
 

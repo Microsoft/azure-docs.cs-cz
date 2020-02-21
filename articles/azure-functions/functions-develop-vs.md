@@ -4,12 +4,12 @@ description: Naučte se vyvíjet a testovat Azure Functions pomocí Azure Functi
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 7aceae256c4fc4d18615e181bbcb7425e659955d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: b3d683153a1e70f4c65dcc5e401f4ee702af8b49
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547349"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484702"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -42,7 +42,7 @@ Další prostředky, které potřebujete, například účet Azure Storage, se v
 
 ### <a name="check-your-tools-version"></a>Podívejte se na verzi nástrojů v aplikaci Visual Studio 2017
 
-1. Z **nástroje** nabídce zvolte **rozšíření a aktualizace**. Rozbalte položku nainstalované **nástroje** > a vyberte **nástroje Azure functions a webové úlohy**.
+1. V nabídce **nástroje** vyberte **rozšíření a aktualizace**. Rozbalte položku nainstalované **nástroje** > a vyberte **nástroje Azure functions a webové úlohy**.
 
     ![Ověření verze nástrojů Functions](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -136,7 +136,7 @@ Ve C# funkcích knihovny tříd jsou vazby používané funkcí definovány pou�
     }
     ```
 
-    Atribut specifický pro vazbu se použije na každý parametr vazby dodaný metodě vstupního bodu. Atribut přebírá informace o vazbě jako parametry. V předchozím příkladu má první parametr použit atribut **QueueTrigger** , který označuje funkci aktivovanou ve frontě. Název fronty a název nastavení připojovacího řetězce jsou předány jako parametry atributu **QueueTrigger** . Další informace najdete v tématu [vazby Azure Queue Storage pro Azure Functions](functions-bindings-storage-queue.md#trigger).
+    Atribut specifický pro vazbu se použije na každý parametr vazby dodaný metodě vstupního bodu. Atribut přebírá informace o vazbě jako parametry. V předchozím příkladu má první parametr použit atribut **QueueTrigger** , který označuje funkci aktivovanou ve frontě. Název fronty a název nastavení připojovacího řetězce jsou předány jako parametry atributu **QueueTrigger** . Další informace najdete v tématu [vazby Azure Queue Storage pro Azure Functions](functions-bindings-storage-queue-trigger.md).
 
 Výše uvedený postup můžete použít k přidání dalších funkcí do projektu Function App. Každá funkce v projektu může mít jinou aktivační událost, ale funkce musí mít právě jednu aktivační událost. Další informace najdete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
 

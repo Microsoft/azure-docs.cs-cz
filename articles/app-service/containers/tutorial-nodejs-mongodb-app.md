@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca73c7e610b8bd818355f30b9d08bceffeddfc73
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: a68392d003e4e2a81801a903302badd99c1e9e87
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688886"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523964"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Node. js a MongoDB v Azure App Service v systému Linux
 
@@ -28,16 +28,16 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření databáze pomocí rozhraní API Azure Cosmos DB pro MongoDB
 > * Připojit aplikaci Node.js k MongoDB
-> * Nasadit aplikaci do Azure
+> * Nasazení aplikace do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat diagnostické protokoly z Azure
 > * Spravovat aplikaci na webu Azure Portal
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
 1. [Nainstalovat Git](https://git-scm.com/).
 2. [Nainstalovat Node.js v6.0 nebo novější a NPM](https://nodejs.org/)
@@ -114,7 +114,7 @@ Node.js můžete kdykoli zastavit stisknutím `Ctrl+C` v terminálu.
 
 V tomto kroku vytvoříte databázový účet pomocí rozhraní API služby Azure Cosmos DB pro MongoDB. Po nasazení do Azure bude aplikace používat tuto cloudovou databázi.
 
-### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+### <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 [!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)]
 
@@ -240,7 +240,7 @@ V tomto kroku nasadíte aplikaci Node. js na Azure App Service.
 
 <a name="create"></a>
 
-### <a name="create-a-web-app"></a>Vytvořte webovou aplikaci
+### <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-nodejs-linux-no-h.md)] 
 
@@ -291,10 +291,10 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
  * [new branch]      master -> master
 ```
 
-Můžete si všimnout, že proces nasazení po příkazu `npm install` spustí [Gulp](https://gulpjs.com/). Služba App Service během nasazení nespouští úlohy Gulp ani Grunt, takže toto ukázkové úložiště obsahuje v kořenovém adresáři dva další soubory, které je povolují:
+Můžete si všimnout, že proces nasazení po příkazu [ spustí ](https://gulpjs.com/)Gulp`npm install`. Služba App Service během nasazení nespouští úlohy Gulp ani Grunt, takže toto ukázkové úložiště obsahuje v kořenovém adresáři dva další soubory, které je povolují:
 
 - _.deployment_ – Tento soubor informuje službu App Service, že má jako vlastní skript nasazení spustit `bash deploy.sh`.
-- _deploy.sh_ – Vlastní skript nasazení. Když se do souboru podíváte, zjistíte, že po příkazech `npm install` a `bower install` spouští příkaz `gulp prod`.
+- _deploy.sh_ – Vlastní skript nasazení. Když se do souboru podíváte, zjistíte, že po příkazech `gulp prod` a `npm install` spouští příkaz `bower install`.
 
 Pomocí tohoto postupu můžete přidat libovolný krok nasazení z Gitu. Pokud aplikaci Azure restartujete kdykoli, App Service se tyto úlohy Automation znovu nespustí. Další informace najdete v tématu [spuštění grunt/Bower/Gulp](configure-language-nodejs.md#run-gruntbowergulp).
 
@@ -469,7 +469,7 @@ Naučili jste se:
 > [!div class="checklist"]
 > * Vytvoření databáze pomocí rozhraní API Azure Cosmos DB pro MongoDB
 > * Připojení aplikace Node. js k databázi
-> * Nasadit aplikaci do Azure
+> * Nasazení aplikace do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat protokoly z Azure do terminálu
 > * Spravovat aplikaci na webu Azure Portal

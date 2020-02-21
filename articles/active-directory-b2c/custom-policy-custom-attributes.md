@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 04cc45956fc5aedc4c14dfb138be5db02ddec500
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847053"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482764"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: použití vlastních atributů v zásadách úprav vlastního profilu
 
@@ -34,7 +34,7 @@ Adresář Azure AD B2C obsahuje integrovanou sadu atributů. Příklady jsou **k
 * Zprostředkovatel identity má jedinečný identifikátor uživatele, jako je **uniqueUserGUID** , který se musí uložit.
 * Vlastní cesta uživatele musí uchovávat stav uživatele, jako je **migrationStatus**.
 
-Azure AD B2C rozšiřuje sadu atributů uložených v každém uživatelském účtu. Tyto atributy můžete také číst a zapisovat pomocí [Graph API služby Azure AD](manage-user-accounts-graph-api.md).
+Azure AD B2C rozšiřuje sadu atributů uložených v každém uživatelském účtu. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](manage-user-accounts-graph-api.md).
 
 Vlastnosti rozšíření rozšíření schématu objektů uživatele v adresáři. *Vlastnost rozšíření*podmínek, *vlastní atribut*a *vlastní deklarace identity* odkazují na stejnou věc v kontextu tohoto článku. Název se liší v závislosti na kontextu, jako je například aplikace, objekt nebo zásada.
 
@@ -56,7 +56,7 @@ Pokyny jsou uvedené v části **Další kroky** v tomto článku.
     * Název webové aplikace: **WebApp-GraphAPI-DirectoryExtensions**.
     * Typ aplikace: **Webová aplikace/rozhraní API**.
     * Přihlašovací adresa URL: **https://{tenant}. Microsoft. com/webapp-GraphAPI-DirectoryExtensions**.
-5. Vyberte **Vytvořit**.
+5. Vyberte **Create** (Vytvořit).
 6. Vyberte nově vytvořenou webovou aplikaci.
 7. Vyberte **nastavení** > **požadovaná oprávnění**.
 8. Vyberte Azure Active Directory rozhraní API pro **Windows**.
@@ -297,7 +297,7 @@ Token ID odeslaný zpět do vaší aplikace zahrnuje novou vlastnost rozšířen
 
 ## <a name="reference"></a>Referenční informace
 
-Další informace o vlastnostech rozšíření najdete v článku [rozšíření schématu adresáře | Graph API koncepty](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions).
+Další informace o vlastnostech rozšíření najdete v článku [Přidání vlastních dat do prostředků pomocí rozšíření](https://docs.microsoft.com/graph/extensibility-overview).
 
 > [!NOTE]
 > * **TechnicalProfile** je typ prvku nebo funkce, který definuje název, metadata a protokol koncového bodu. **TechnicalProfile** podrobně popisuje výměnu deklarací identity, které architektura prostředí identit provádí. Pokud je tato funkce volána v kroku orchestrace nebo z jiného **TechnicalProfile**, jsou **InputClaims** a **OutputClaims** zadány jako parametry volajícího.

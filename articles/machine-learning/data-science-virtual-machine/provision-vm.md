@@ -1,5 +1,6 @@
 ---
-title: 'Rychlý Start: vytvoření DSVM pro Windows'
+title: 'Rychlý Start: vytvoření Data Science Virtual Machine Windows'
+titleSuffix: Azure Data Science Virtual Machine
 description: Konfigurace a vytvořit virtuální počítač pro datové vědy v Azure pro účely analýzy a strojového učení.
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -7,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: f498c2cd6906d1966ab5dfd1f7547686163fe2ce
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1fdf8eae5d19a2d43499d1984f4dea834d8a61d8
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611913"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77525868"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Windows
 
@@ -46,7 +47,7 @@ Vytvoření instance DSVM:
 1. Vyberte **Zkontrolovat a vytvořit**.
 1. **Zkontrolovat a vytvořit**
    * Ověřte, zda všechny informace, které jste zadali správný. 
-   * Vyberte **Vytvořit**.
+   * Vyberte **Create** (Vytvořit).
 
 
 > [!NOTE]
@@ -69,5 +70,5 @@ K Azure Notebooks také můžete připojit DSVM a spustit poznámkové bloky Jup
 * Prozkoumejte nástroje na DSVM otevřením nabídky **Start** .
 * Přečtěte si o Azure Machine Learning tak, že si přečtete, [co je Azure Machine Learning?](../overview-what-is-azure-ml.md) a vyzkoušíte si [kurzy](../index.yml).
 * Přečtěte si článek [deset věcí, které můžete provádět na data Science Virtual Machine](https://aka.ms/dsvmtenthings).
-* Přejděte [galerii Azure AI](https://gallery.cortanaintelligence.com) služeb machine learning a datové analýzy ukázek, které využívají Azure Machine Learning a související data v Azure. K dispozici jsme také ikonu pro tuto galerii v nabídce **Start** a na ploše virtuálního počítače.
+* Podívejte se na [Azure AI Gallery](https://gallery.cortanaintelligence.com) pro ukázkové strojové učení a analýzu dat, které používají Azure Machine Learning a související datové služby v Azure. K dispozici jsme také ikonu pro tuto galerii v nabídce **Start** a na ploše virtuálního počítače.
 

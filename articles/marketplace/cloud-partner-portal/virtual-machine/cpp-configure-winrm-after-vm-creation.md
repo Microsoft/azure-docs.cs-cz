@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: pabutler
-ms.openlocfilehash: ae5a55c6d640852cbd873bc6b36e502b5fe17165
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d050b32b212f66623a24bcf87d40111fc5973a5
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817951"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77481370"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>Konfigurace WinRM po vytvoření virtuálního počítače
 
@@ -25,7 +25,7 @@ Tento článek vysvětluje, jak nakonfigurovat stávající virtuální počíta
 
 ## <a name="enabling-port-traffic"></a>Povolení přenosů portů
 
-Protokol WinRM přes HTTPS používá port 5896, který není ve výchozím nastavení povolený u předem nakonfigurovaných virtuálních počítačů s Windows, které jsou nabízené na Azure Marketplace. K povolení tohoto protokolu použijte následující postup k přidání nového pravidla do skupiny zabezpečení sítě (NSG) pomocí [Azure Portal](https://portal.azure.com).  Další informace o skupin zabezpečení sítě najdete v tématu [skupiny zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview).
+Protokol WinRM přes HTTPS používá port 5986, který není ve výchozím nastavení povolený u předem nakonfigurovaných virtuálních počítačů s Windows, které jsou nabízené na Azure Marketplace. K povolení tohoto protokolu použijte následující postup k přidání nového pravidla do skupiny zabezpečení sítě (NSG) pomocí [Azure Portal](https://portal.azure.com).  Další informace o skupin zabezpečení sítě najdete v tématu [skupiny zabezpečení](https://docs.microsoft.com/azure/virtual-network/security-overview).
 
 1.  Přejděte na **virtuální počítače** s oknem >  <*název virtuálního počítače*>   **> nastavení/síť**.
 2.  Kliknutím na název NSG (v tomto příkladu **testvm11002**) zobrazíte jeho vlastnosti:

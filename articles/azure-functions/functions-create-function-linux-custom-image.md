@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: 9c97606b21a6e98494fffb689567aaab6e2f0621
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210187"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77482356"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce na platformě Linux pomocí vlastního kontejneru
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Windows, Mac OS nebo Linux. Dokončení kurzu vám bude účtovat v účtu Azure náklady na několik amerických dolarů.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Verze [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 nebo novější
@@ -370,7 +370,7 @@ S imagí nasazenými do aplikace Function App v Azure teď můžete funkci vyvol
 
 1. Pomocí Azure Portal nebo pomocí Azure CLI pomocí příkazu `az rest` načtěte adresu URL funkce s klíčem Access (Function).)
 
-    # <a name="portaltabportal"></a>[Azure Portal](#tab/portal)
+    # <a name="portal"></a>[Azure Portal](#tab/portal)
 
     1. Přihlaste se k Azure Portal a pak vyhledejte svou aplikaci Function App zadáním názvu vaší aplikace Functions do **vyhledávacího** pole v horní části stránky. Ve výsledcích vyberte prostředek **App Service** .
 
@@ -387,7 +387,7 @@ S imagí nasazenými do aplikace Function App v Azure teď můžete funkci vyvol
     > [!NOTE]  
     > Vzhledem k tomu, že je vaše aplikace Function App nasazena jako kontejner, nemůžete na portálu provádět změny kódu funkce. Místo toho je nutné projekt aktualizovat v místní imagi, znovu nahrajte image do registru a pak znovu nasadit do Azure. Průběžné nasazování můžete nastavit v pozdější části.
     
-    # <a name="azure-clitabazurecli"></a>[Azure CLI](#tab/azurecli)
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
     1. Vytvořte řetězec adresy URL v následujícím formátu, nahraďte `<subscription_id>`, `<resource_group>`a `<app_name>` s ID předplatného Azure, skupinou prostředků vaší aplikace Function App a názvem vaší aplikace Function App (v uvedeném pořadí):
 
@@ -877,19 +877,19 @@ Tuto frontu můžete zobrazit v [Azure Portal](../storage/queues/storage-quickst
 
 1. Otevřete soubor *Local. Setting. JSON* projektu funkce a zkopírujte hodnotu připojovacího řetězce. V terminálu nebo příkazovém okně spusťte následující příkaz, který vytvoří proměnnou prostředí s názvem `AZURE_STORAGE_CONNECTION_STRING`a místo `<connection_string>`bude vkládat konkrétní připojovací řetězec. (Tato proměnná prostředí znamená, že připojovací řetězec nemusíte zadávat do každého následného příkazu pomocí argumentu `--connection-string`.)
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
     ```
     
-    # <a name="cmdtabcmd"></a>[Přepsat](#tab/cmd)
+    # <a name="cmd"></a>[Přepsat](#tab/cmd)
     
     ```cmd
     set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
@@ -899,19 +899,19 @@ Tuto frontu můžete zobrazit v [Azure Portal](../storage/queues/storage-quickst
     
 1. Volitelné Pomocí příkazu [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) můžete zobrazit fronty úložiště ve vašem účtu. Výstup z tohoto příkazu by měl zahrnovat frontu s názvem `outqueue`, která byla vytvořena při zapsání první zprávy do této fronty.
     
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```azurecli
     az storage queue list --output tsv
     ```
     
-    # <a name="cmdtabcmd"></a>[Přepsat](#tab/cmd)
+    # <a name="cmd"></a>[Přepsat](#tab/cmd)
     
     ```azurecli
     az storage queue list --output tsv
@@ -919,21 +919,21 @@ Tuto frontu můžete zobrazit v [Azure Portal](../storage/queues/storage-quickst
     
     ---
 
-1. Pomocí příkazu [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) můžete zobrazit zprávy v této frontě, které by měly být křestní jméno, které jste použili při předchozím testování funkce. Příkaz načte první zprávu ve frontě v [kódování Base64](functions-bindings-storage-queue.md#encoding), takže musíte také dekódovat zprávu, aby se zobrazila jako text.
+1. Pomocí příkazu [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) můžete zobrazit zprávy v této frontě, které by měly být křestní jméno, které jste použili při předchozím testování funkce. Příkaz načte první zprávu ve frontě v [kódování Base64](functions-bindings-storage-queue-trigger.md#encoding), takže musíte také dekódovat zprávu, aby se zobrazila jako text.
 
-    # <a name="bashtabbash"></a>[bash](#tab/bash)
+    # <a name="bash"></a>[bash](#tab/bash)
     
     ```bash
     echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
     ```
     
-    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
     ```
     
-    # <a name="cmdtabcmd"></a>[Přepsat](#tab/cmd)
+    # <a name="cmd"></a>[Přepsat](#tab/cmd)
     
     Vzhledem k tomu, že je potřeba odkázat na shromažďování zpráv a dekódovat z formátu base64, spusťte PowerShell a použijte příkaz prostředí PowerShell.
 

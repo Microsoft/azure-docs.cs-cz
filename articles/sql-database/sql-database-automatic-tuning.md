@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 34f102b43de669b5ea03324db47ac4dfcb554133
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: eefaaa59a3dc0f0900666bc697f64e4f405a0d74
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190758"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498712"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatické ladění v Azure SQL Database
 
@@ -82,8 +82,8 @@ Možnosti automatického ladění můžou být nezávisle povolené nebo zakáza
 > [!IMPORTANT]
 > Od března 2020 změny ve výchozích nastaveních Azure pro automatické ladění se projeví takto:
 > - Nové výchozí hodnoty Azure budou FORCE_LAST_GOOD_PLAN = Enabled, CREATE_INDEX = disabled a DROP_INDEX = Disabled.
-> - Stávající servery bez nakonfigurovaného automatického naladění předvoleb se automaticky nakonfigurují s novými výchozími hodnotami Azure. To platí pro všechny zákazníky, kteří aktuálně mají automatické ladění v nedefinovaném stavu.
-> - Nově vytvořené servery se automaticky nakonfigurují s novými výchozími hodnotami Azure (na rozdíl od dříve, kdy byla konfigurace automatického ladění v nedefinovaném stavu při vytváření nového serveru).
+> - Stávající servery bez nakonfigurovaných předvoleb automatického ladění se automaticky nakonfigurují tak, aby ZDĚDILy nové výchozí hodnoty Azure. To platí pro všechny zákazníky, kteří aktuálně mají nastavení serveru pro automatické ladění v nedefinovaném stavu.
+> - Nově vytvořené servery se automaticky nakonfigurují tak, aby ZDĚDILy nové výchozí hodnoty Azure (na rozdíl od dřív, kdy byla konfigurace automatického ladění v nedefinovaném stavu při vytváření nového serveru).
 >
 
 Konfigurace možností automatického ladění na serveru a dědění nastavení pro databáze patřící k nadřazenému serveru je doporučená metoda pro konfiguraci automatického ladění, protože zjednodušuje správu možností automatického ladění pro velký počet databází.

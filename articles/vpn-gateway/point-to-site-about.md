@@ -1,18 +1,18 @@
 ---
-title: O připojeních k síti VPN typu Point-to-site | Microsoft Docs
+title: O připojeních k síti VPN typu Point-to-site | VPN Gateway
 description: Tento článek vám pomůže pochopit připojení typu Point-to-site a pomůže vám určit, který typ ověřování brány VPN P2S použít.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 3db5cf0ddfec231a313df58e551061cbd5f9bef5
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110440"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77500604"
 ---
 # <a name="about-point-to-site-vpn"></a>O síti VPN typu Point-to-site
 
@@ -53,14 +53,14 @@ Pokud chcete nakonfigurovat ověřování Azure AD, musíte na vysoké úrovni p
 
 1. [Konfigurace tenanta Azure AD](openvpn-azure-ad-tenant.md)
 
-2. [Povolit ověřování Azure AD v bráně](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [Povolit ověřování Azure AD v bráně](openvpn-azure-ad-tenant.md#enable-authentication)
 
 3. [Stažení a konfigurace klienta Azure VPN](https://go.microsoft.com/fwlink/?linkid=2117554)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Ověřování pomocí serveru domény služby Active Directory (AD)
 
-Ověřování domény AD umožňuje uživatelům připojit se k Azure pomocí svých přihlašovacích údajů domény organizace. Vyžaduje server RADIUS, který se integruje se serverem AD. Organizace můžou využít i stávající nasazení RADIUS.   
+Ověřování domény AD umožňuje uživatelům připojit se k Azure pomocí svých přihlašovacích údajů domény organizace. Vyžaduje server RADIUS, který se integruje se serverem AD. Organizace můžou využít i stávající nasazení RADIUS.
   
 Server RADIUS se dá nasadit místně nebo ve vaší virtuální síti Azure. Při ověřování funguje VPN Gateway Azure jako předávací a přesměruje ověřovací zprávy mezi serverem RADIUS a připojeným zařízením. Proto je důležité dostupnost brány pro server RADIUS. Pokud se server RADIUS nachází v místním prostředí, vyžaduje se pro dostupnost připojení S2S VPN z Azure do místní lokality.  
   
@@ -156,9 +156,6 @@ Soubor zip také poskytuje hodnoty některých důležitých nastavení na stran
 |TLS_RSA_WITH_AES_128_CBC_SHA256 |
 |TLS_RSA_WITH_AES_256_CBC_SHA256 |
 
-
-
-
 ## <a name="configure"></a>Návody nakonfigurovat připojení P2S?
 
 Konfigurace P2S vyžaduje pár specifických kroků. Následující články obsahují postup, který vás provede konfigurací P2S a odkazy na konfiguraci zařízení klienta VPN:
@@ -169,11 +166,9 @@ Konfigurace P2S vyžaduje pár specifických kroků. Následující články obs
 
 * [Konfigurace OpenVPN](vpn-gateway-howto-openvpn.md)
 
-## <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a>Návody odebrat konfiguraci připojení P2S?
+### <a name="to-remove-the-configuration-of-a-p2s-connection"></a>Odebrání konfigurace připojení P2S
 
-Konfiguraci P2S můžete odebrat pomocí příkazu AZ CLI a následujícího příkazu: 
-
-`az network vnet-gateway update --name <gateway-name> --resource-group <resource-group name> --remove "vpnClientConfiguration"`
+Postup najdete v části [Nejčastější dotazy](#removeconfig).
  
 ## <a name="faqcert"></a>Nejčastější dotazy k nativnímu ověřování certifikátů Azure
 

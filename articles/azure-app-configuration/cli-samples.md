@@ -1,18 +1,17 @@
 ---
-title: Ukázky v Azure CLI – konfigurace aplikací Azure | Microsoft Docs
-description: Poskytuje informace o dostupných ukázkových skriptech pro konfiguraci aplikací Azure.
+title: Ukázky v Azure CLI – konfigurace aplikací Azure
+description: Informace o ukázkových skriptech poskytnutých pro konfiguraci aplikací Azure
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: sample
-ms.date: 02/24/2019
-ms.custom: mvc
-ms.openlocfilehash: 0e559b3aa5d04cfdc2ab1152ae11bd80b9f89415
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 02/19/2020
+ms.openlocfilehash: a255db3fbce2c111a0a629c01b86cc891d71e803
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76899664"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523743"
 ---
 # <a name="azure-cli-samples"></a>Ukázky Azure CLI
 

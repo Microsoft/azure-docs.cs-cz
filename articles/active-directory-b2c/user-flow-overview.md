@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 846819c3a05baf4ef1174d4e086f09893e834b2a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fdc7d9fce3ebce4603369262f164ba72b1e39499
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847794"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77484311"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Toky uživatelů v Azure Active Directory B2C
 
@@ -81,10 +81,8 @@ E-mailová adresa může být vyžadována jako součást toku uživatele. Pokud
 
 Tato e-mailová adresa není v žádném z těchto případů ověřena. Správce klienta může zakázat ověřování e-mailů v základních zásadách pro místní účty. I když je povolené ověřování e-mailových adres, adresy se neověřují, pokud pocházejí od poskytovatele sociální identity a nezměnily se.
 
-Prostřednictvím Graph API Active Directory se zveřejňují jenom vlastnosti **otherMails** a **signInNames** . E-mailová adresa v vlastnosti detail silného ověřování není k dispozici.
+Prostřednictvím rozhraní Microsoft Graph API se zveřejňují jenom vlastnosti **otherMails** a **signInNames** . E-mailová adresa v vlastnosti detail silného ověřování není k dispozici.
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud chcete vytvořit toky doporučeného uživatele, postupujte podle pokynů v tématu [kurz: vytvoření toku uživatele](tutorial-create-user-flows.md).
-
-

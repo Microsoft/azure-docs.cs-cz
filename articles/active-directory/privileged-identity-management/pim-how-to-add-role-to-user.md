@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 01/05/2020
+ms.date: 02/07/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bec73ee7286ea831920fc20bd46cf43c2874081
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 5048cefaae10cd55091dd72f0b73a3cf9d731a35
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047101"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498853"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Přiřazení rolí Azure AD v Privileged Identity Management
 
@@ -33,9 +33,9 @@ Od listopadu 2019 se v části Privileged Identity Management role Azure AD aktu
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) pomocí uživatele, který je v roli [správce privilegované role](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) .
 1. Otevřete **Azure AD Privileged Identity Management**. Pokud máte banner v horní části stránky s přehledem, postupujte podle pokynů na kartě **Nová verze** v tomto článku. Jinak postupujte podle pokynů na kartě **předchozí verze** .
 
-    ![Nové verze rolí Azure AD](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+  [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
-# <a name="new-versiontabnew"></a>[Nová verze](#tab/new)
+# <a name="new-version"></a>[Nová verze](#tab/new)
 
 ## <a name="assign-a-role"></a>Přiřazení role
 
@@ -75,11 +75,11 @@ Pomocí těchto kroků můžete uživateli poskytnout oprávnění pro roli spr�
 
 1. Chcete-li zadat konkrétní dobu trvání přiřazení, zrušte zaškrtnutí políčka a upravte pole počáteční a/nebo koncové datum a čas. Po dokončení vyberte **Hotovo**.
 
-    ![Nastavení členství – datum a čas](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+    ![Nastavení členství – datum a čas](./media/pim-how-to-add-role-to-user/start-and-end-dates.png)
 
 1. Chcete-li vytvořit nové přiřazení role, vyberte **Přidat**. Zobrazí se oznámení o stavu.
 
-    ![Nové přiřazení – oznámení](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+    ![Nové přiřazení – oznámení](./media/pim-how-to-add-role-to-user/assignment-notification.png)
 
 ## <a name="update-or-remove-an-existing-role-assignment"></a>Aktualizovat nebo odebrat existující přiřazení role
 
@@ -87,23 +87,19 @@ Pomocí těchto kroků aktualizujete nebo odeberete existující přiřazení ro
 
 1. Otevřete **Azure AD Privileged Identity Management**.
 
-1. Vyberte **prostředky Azure**.
+1. Vyberte **role Azure AD**.
 
-1. Vyberte prostředek, který chcete spravovat, jako je například předplatné nebo skupina pro správu.
-
-1. V části Spravovat vyberte **role** , abyste viděli seznam rolí pro prostředky Azure.
+1. Vyberte **role** , abyste viděli seznam rolí pro Azure AD.
 
 1. Vyberte roli, kterou chcete aktualizovat nebo odebrat.
 
 1. Vyhledejte přiřazení role na kartách **opravňující role** nebo **aktivní role** .
 
-    ![Aktualizovat nebo odebrat přiřazení role](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+    ![Aktualizovat nebo odebrat přiřazení role](./media/pim-how-to-add-role-to-user/remove-update-assignments.png)
 
 1. Pokud chcete aktualizovat nebo odebrat přiřazení role, vyberte **aktualizovat** nebo **Odebrat** .
 
-    Informace o rozšíření přiřazení role najdete v tématu [rozšíření nebo obnovení rolí prostředků Azure v Privileged Identity Management](pim-resource-roles-renew-extend.md).
-
-# <a name="previous-versiontabprevious"></a>[Předchozí verze](#tab/previous)
+# <a name="previous-version"></a>[Předchozí verze](#tab/previous)
 
 ## <a name="make-a-user-eligible-for-a-role"></a>Nastavit pro roli uživatele, který má nárok
 

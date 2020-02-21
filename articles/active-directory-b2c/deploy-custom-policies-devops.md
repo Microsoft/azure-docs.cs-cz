@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 21fde69f404ee535bfe0019a91843297b1752a92
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 8649537a2992ba11a2b664a9b36207e06c8b1274
+ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77463138"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77498543"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Nasazení vlastních zásad pomocí Azure Pipelines
 
@@ -31,10 +31,11 @@ Pro povolení Azure Pipelines správy vlastních zásad v rámci Azure AD B2C js
 > [!IMPORTANT]
 > Správa Azure AD B2C vlastních zásad pomocí kanálu Azure aktuálně používá operace ve **verzi Preview** , které jsou k dispozici ve službě Microsoft Graph API `/beta` koncového bodu. Použití těchto rozhraní API v produkčních aplikacích není podporováno. Další informace najdete v referenčních informacích ke [koncovému bodu Microsoft Graph REST API beta](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * [Azure AD B2C tenant](tutorial-create-tenant.md)a přihlašovací údaje uživatele v adresáři s rolí [správce zásad IEF B2C](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)
 * [Vlastní zásady](custom-policy-get-started.md) odeslané do vašeho tenanta
+* Ve vašem tenantovi se zaregistrovala [aplikace pro správu](microsoft-graph-get-started.md) se zásadami oprávnění Microsoft Graph API *. TrustFramework* .
 * [Kanál Azure](https://azure.microsoft.com/services/devops/pipelines/)a přístup k [projektu Azure DevOps Services][devops-create-project]
 
 ## <a name="client-credentials-grant-flow"></a>Tok udělení přihlašovacích údajů klienta
@@ -43,47 +44,11 @@ Scénář, který je zde popsán, používá volání služby Service-to-Service
 
 ## <a name="register-an-application-for-management-tasks"></a>Registrace aplikace pro úlohy správy
 
-Začněte tím, že vytvoříte registraci aplikace, kterou skripty PowerShellu spouštěné nástrojem Azure Pipelines použijí ke komunikaci s Azure AD B2C. Pokud již máte registraci aplikace, kterou používáte pro úlohy služby Automation, můžete přejít na oddíl [udělení oprávnění](#grant-permissions) .
+Jak je uvedeno v části [požadavky](#prerequisites), budete potřebovat registraci aplikace, kterou skripty PowerShellu spouštěné pomocí Azure Pipelines – můžou použít pro přístup k prostředkům ve vašem tenantovi.
 
-### <a name="register-application"></a>Registrovat aplikaci
+Pokud už máte registraci aplikace, kterou používáte pro úlohy automatizace, ujistěte se, že je jí udělené oprávnění Microsoft Graph **zásady >  > ** **Policy. Prop. TrustFramework** v rámci **oprávnění API** k registraci aplikace.
 
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
-
-### <a name="grant-permissions"></a>Udělení oprávnění
-
-Potom udělte aplikaci oprávnění používat rozhraní Microsoft Graph API ke čtení a zápisu vlastních zásad ve vašem tenantovi Azure AD B2C.
-
-#### <a name="applications"></a>[Aplikace](#tab/applications/)
-
-1. Na stránce Přehled **zaregistrovaných aplikací** vyberte **Nastavení**.
-1. V části **přístup přes rozhraní API**vyberte **požadovaná oprávnění**.
-1. Vyberte **Přidat**a pak **Vyberte rozhraní API**.
-1. Vyberte **Microsoft Graph**a pak **Vyberte**.
-1. V části **oprávnění aplikace**vyberte **číst a zapsat zásady pro vztah důvěryhodnosti vaší organizace**.
-1. Vyberte **Vybrat**a pak **Hotovo**.
-1. Vyberte **udělit oprávnění**a pak vyberte **Ano**. Aby bylo možné plně šířit oprávnění, může trvat několik minut.
-
-#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
-
-1. Vyberte **Registrace aplikací (Preview)** a pak vyberte webovou aplikaci, která má mít přístup k rozhraní API Microsoft Graph. Například *managementapp1*.
-1. V části **Spravovat**vyberte **oprávnění rozhraní API**.
-1. V části **konfigurovaná oprávnění**vyberte **Přidat oprávnění**.
-1. Vyberte kartu **rozhraní Microsoft API** a pak vyberte **Microsoft Graph**.
-1. Vyberte **oprávnění aplikace**.
-1. Rozbalte položku **zásady** a vyberte **zásady. TrustFramework**.
-1. Vyberte **Přidat oprávnění**. Jak je směrované, počkejte několik minut, než budete pokračovat k dalšímu kroku.
-1. Vyberte **udělit souhlas správce pro (název vašeho tenanta)** .
-1. Vyberte aktuálně přihlášený účet správce nebo se přihlaste pomocí účtu v Azure AD B2C tenantovi, kterému byla přiřazena alespoň role *správce cloudové aplikace* .
-1. Vyberte **Přijmout**.
-1. Vyberte **aktualizovat**a pak ověřte, že "uděleno pro..." zobrazí se pod položkou **stav**. Rozšíření oprávnění může trvat několik minut.
-
-* * *
-
-### <a name="create-client-secret"></a>Vytvořit tajný klíč klienta
-
-Pro ověření pomocí Azure AD B2C musí skript prostředí PowerShell zadat tajný klíč klienta, který vytvoříte pro aplikaci.
-
-[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
+Pokyny k registraci aplikace pro správu najdete v tématu [správa Azure AD B2C s](microsoft-graph-get-started.md)využitím Microsoft Graph.
 
 ## <a name="configure-an-azure-repo"></a>Konfigurace úložiště Azure
 
@@ -200,7 +165,7 @@ Pak přidejte úkol pro nasazení souboru zásad.
 
         ```PowerShell
         # After
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/contosob2cpolicies/B2CAssets/TrustFrameworkBase.xml
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -PolicyId B2C_1A_TrustFrameworkBase -PathToFile $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/TrustFrameworkBase.xml
         ```
 
 1. Kliknutím na **Uložit** uložte úlohu agenta.
@@ -244,7 +209,7 @@ Měl by se zobrazit informační zpráva s oznámením, že vydaná verze byla z
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace:
+Další informace pro:
 
 * [Volání služby mezi službami pomocí přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 * [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/?view=azure-devops)

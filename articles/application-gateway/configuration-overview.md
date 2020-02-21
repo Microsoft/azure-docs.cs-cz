@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714851"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77485076"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -25,7 +25,7 @@ Tento obrázek znázorňuje aplikaci, která má tři naslouchací procesy. Prvn
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Virtuální síť Azure a vyhrazená podsíť
 
@@ -121,7 +121,7 @@ Vyberte front-end IP adresu, kterou plánujete přidružit k tomuto naslouchací
 
 Vyberte front-end port. Vyberte existující port nebo vytvořte nový. Vyberte libovolnou hodnotu z [povoleného rozsahu portů](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Můžete použít nejen známé porty, například 80 a 443, ale kterýkoli povolený vlastní port je vhodný. Port lze použít pro veřejné naslouchací procesy nebo privátní naslouchací procesy.
 
-### <a name="protocol"></a>Protocol (Protokol)
+### <a name="protocol"></a>Protokol
 
 Vyberte HTTP nebo HTTPS:
 
@@ -210,7 +210,7 @@ Pro pravidlo založené na cestách přidejte více nastavení HTTP back-endu, k
 
 Pokud je přesměrování nakonfigurováno pro základní pravidlo, všechny požadavky na přidruženém naslouchací službě budou přesměrovány do cíle. Toto je *globální* přesměrování. Pokud je přesměrování nakonfigurováno pro pravidlo na základě cesty, budou přesměrovány pouze požadavky v určité oblasti lokality. Příkladem je oblast nákupního košíku, která je označená */cart/\** . Toto je přesměrování *na základě cest* .
 
-Další informace o přesměrování najdete v tématu [Přehled přesměrování Application Gateway](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
+Další informace o přesměrování najdete v tématu [Přehled přesměrování Application Gateway](redirect-overview.md).
 
 #### <a name="redirection-type"></a>Typ přesměrování
 
@@ -227,24 +227,24 @@ Jako cíl přesměrování vyberte naslouchací proces pro přesměrování prov
 ![Dialogové okno Application Gateway součásti](./media/configuration-overview/configure-redirection.png)
 
 Další informace o přesměrování mezi HTTP a HTTPS najdete v těchto tématech:
-- [Přesměrování HTTP na HTTPS pomocí Azure Portal](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [Přesměrování HTTP na HTTPS pomocí PowerShellu](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [Přesměrování HTTP na HTTPS pomocí rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [Přesměrování HTTP na HTTPS pomocí Azure Portal](redirect-http-to-https-portal.md)
+- [Přesměrování HTTP na HTTPS pomocí PowerShellu](redirect-http-to-https-powershell.md)
+- [Přesměrování HTTP na HTTPS pomocí rozhraní příkazového řádku Azure](redirect-http-to-https-cli.md)
 
 ##### <a name="external-site"></a>Externí web
 
 Vyberte externí web, když chcete přesměrovat provoz na naslouchací proces, který je přidružený k tomuto pravidlu, na externí Web. Můžete zvolit zahrnutí řetězce dotazu z původní žádosti do žádosti, která je předána cíli přesměrování. Cestu k externímu webu, který byl v původní žádosti, nelze přeslat.
 
 Další informace o přesměrování najdete v tématu:
-- [Přesměrování provozu na externí web pomocí prostředí PowerShell](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-powershell)
-- [Přesměrování provozu na externí web pomocí rozhraní příkazového řádku](https://docs.microsoft.com/azure/application-gateway/redirect-external-site-cli)
+- [Přesměrování provozu na externí web pomocí prostředí PowerShell](redirect-external-site-powershell.md)
+- [Přesměrování provozu na externí web pomocí rozhraní příkazového řádku](redirect-external-site-cli.md)
 
 #### <a name="rewrite-the-http-header-setting"></a>Přepsání nastavení záhlaví HTTP
 
 Toto nastavení přidá, odebere nebo aktualizuje hlavičku požadavku a odpovědi HTTP, zatímco pakety požadavků a odpovědí přecházejí mezi klienty klienta a back-endové fondy. Další informace naleznete v tématu:
 
- - [Přehled hlaviček protokolu HTTP přepisu](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [Konfigurace přepsání hlaviček HTTP](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
+ - [Přehled hlaviček protokolu HTTP přepisu](rewrite-http-headers.md)
+ - [Konfigurace přepsání hlaviček HTTP](rewrite-http-headers-portal.md)
 
 ## <a name="http-settings"></a>Nastavení HTTP
 
@@ -252,17 +252,28 @@ Služba Application Gateway směruje provoz na back-endové servery pomocí konf
 
 ### <a name="cookie-based-affinity"></a>Spřažení na základě souborů cookie.
 
-Tato funkce je užitečná, když chcete zachovat relaci uživatele na stejném serveru. Soubory cookie spravované branou umožňují službě Application Gateway přímý přenos dat z uživatelské relace na stejný server ke zpracování. To je důležité, pokud je stav relace uložen místně na serveru pro relaci uživatele. Pokud aplikace nemůže zpracovat spřažení na základě souborů cookie, nemůžete tuto funkci použít. Pokud ho chcete použít, ujistěte se, že klienti podporují soubory cookie.
+Azure Application Gateway používá ke správě uživatelských relací spravované soubory cookie brány. Když uživatel odešle první požadavek na Application Gateway, nastaví soubor cookie spřažení v odpovědi s hodnotou hash, která obsahuje podrobnosti o relaci, takže následné požadavky na soubor cookie spřažení budou směrovány na stejný back-end Server pro Údržba vytrvalost 
+
+Tato funkce je užitečná, když chcete zachovat relaci uživatele na stejném serveru a když je stav relace uložen místně na serveru pro relaci uživatele. Pokud aplikace nemůže zpracovat spřažení na základě souborů cookie, nemůžete tuto funkci použít. Pokud ho chcete použít, ujistěte se, že klienti podporují soubory cookie.
+
+Od **17. února 2020**nabízí aktualizace [chrom](https://www.chromium.org/Home) [v80](https://chromiumdash.appspot.com/schedule) mandát, ve kterém se soubory cookie http bez atributu SameSite považují za SameSite = Lax. V případě požadavků CORS (sdílení prostředků mezi zdroji) platí, že pokud se soubor cookie má odeslat v kontextu třetí strany, musí použít "SameSite = None; Zabezpečte atributy a je třeba je odesílat jenom přes HTTPS. V opačném případě se ve scénáři protokolu HTTP v prohlížeči neodesílají soubory cookie v kontextu třetí strany. Cílem této aktualizace z Chrome je zvýšit zabezpečení a vyhnout se útokům prostřednictvím CSRF (pro falšování požadavků mezi lokalitami). 
+
+Aby byla tato změna podporovaná, Application Gateway (všechny typy SKU) vloží další stejný soubor cookie s názvem **ApplicationGatewayAffinityCORS** spolu s existujícím souborem cookie **ApplicationGatewayAffinity** , který je podobný, ale tento soubor cookie teď bude mít dva další atributy **SameSite = None;** K němu se přidají zabezpečení, aby se rychlá relace mohla udržovat i pro žádosti o více zdrojů.
+
+Upozorňujeme, že výchozí název souboru cookie spřažení je **ApplicationGatewayAffinity** a uživatelé ho můžou změnit. V případě, že používáte vlastní název souboru cookie spřažení, přidá se do CORS jako přípona další soubor cookie, například **CustomCookieNameCORS**.
+
+> [!NOTE]
+> Je povinné, aby pokud byl atribut **SameSite = None** nastaven, soubor cookie by měl obsahovat také příznak **zabezpečení** a měl by být odeslán prostřednictvím **protokolu HTTPS**. Takže pokud je v CORS vyžadováno spřažení relací, je nutné migrovat úlohy do HTTPS. Tady najdete informace o přesměrování zpracování SSL a kompletní dokumentaci k protokolu SSL pro Application Gateway najdete v tématu [Přehled](ssl-overview.md), [Jak konfigurovat přesměrování zpracování SSL](create-ssl-portal.md), [jak nakonfigurovat komplexní protokol SSL](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Vyprázdnění připojení
 
 Vyprazdňování připojení pomáhá řádně odebrat členy fondu back-end během plánovaných aktualizací služby. Toto nastavení můžete použít pro všechny členy fondu back-end během vytváření pravidla. Zajišťuje, aby všechny odregistrované instance back-end fondu nadále udržovaly stávající připojení a poskytovaly žádosti o konfigurovatelný časový limit a nedostaly žádné nové žádosti nebo připojení. Jedinou výjimkou jsou požadavky vázané na zrušení registrace instancí z důvodu spřažení relace spravované bránou a budou nadále předány do odregistrování instancí. Vyprazdňování připojení se vztahuje na instance back-endu, které jsou explicitně odebrány z fondu back-end.
 
-### <a name="protocol"></a>Protocol (Protokol)
+### <a name="protocol"></a>Protokol
 
 Application Gateway podporuje HTTP i HTTPS pro požadavky směrování na back-endové servery. Pokud zvolíte protokol HTTP, přenosy na back-endové servery budou nešifrované. Pokud nešifrovaná komunikace není přijatelná, vyberte HTTPS.
 
-Toto nastavení kombinované s protokolem HTTPS v naslouchací službě podporuje [koncové šifrování protokolu SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Díky tomu můžete bezpečně přenášet citlivá data zašifrovaná do back-endu. Každý back-end Server ve fondu back-end, který má zapnuté koncové šifrování SSL, musí být nakonfigurovaný s certifikátem, aby bylo možné zabezpečenou komunikaci.
+Toto nastavení kombinované s protokolem HTTPS v naslouchací službě podporuje [koncové šifrování protokolu SSL](ssl-overview.md). Díky tomu můžete bezpečně přenášet citlivá data zašifrovaná do back-endu. Každý back-end Server ve fondu back-end, který má zapnuté koncové šifrování SSL, musí být nakonfigurovaný s certifikátem, aby bylo možné zabezpečenou komunikaci.
 
 ### <a name="port"></a>Port
 
@@ -301,7 +312,7 @@ Jedná se o zástupce pouze uživatelského rozhraní, který vybere dvě požad
 
 ### <a name="use-custom-probe"></a>Použít vlastní test paměti
 
-Toto nastavení přidruží [vlastní test](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe) s nastavením http. K nastavení HTTP můžete přidružit jenom jeden vlastní test paměti. Pokud nechcete explicitně přidružit vlastní test, použije se k monitorování stavu back-endu [výchozí test](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings) . Doporučujeme vytvořit vlastní test pro lepší kontrolu nad monitorováním stavu back-endu.
+Toto nastavení přidruží [vlastní test](application-gateway-probe-overview.md#custom-health-probe) s nastavením http. K nastavení HTTP můžete přidružit jenom jeden vlastní test paměti. Pokud nechcete explicitně přidružit vlastní test, použije se k monitorování stavu back-endu [výchozí test](application-gateway-probe-overview.md#default-health-probe-settings) . Doporučujeme vytvořit vlastní test pro lepší kontrolu nad monitorováním stavu back-endu.
 
 > [!NOTE]
 > Vlastní test nemonitoruje stav fondu back-end, pokud není odpovídající nastavení HTTP explicitně přidruženo k naslouchacímu procesu.
@@ -335,7 +346,7 @@ Až vytvoříte fond back-end, musíte ho přidružit k jednomu nebo více pravi
 
 ## <a name="health-probes"></a>Sondy stavu
 
-Služba Application Gateway ve výchozím nastavení monitoruje stav všech prostředků ve svém back-endu. Důrazně doporučujeme vytvořit vlastní test pro každé nastavení back-endu HTTP a získat tak větší kontrolu nad monitorováním stavu. Informace o tom, jak nakonfigurovat vlastní test paměti, najdete v tématu [vlastní nastavení sondy stavu](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings).
+Služba Application Gateway ve výchozím nastavení monitoruje stav všech prostředků ve svém back-endu. Důrazně doporučujeme vytvořit vlastní test pro každé nastavení back-endu HTTP a získat tak větší kontrolu nad monitorováním stavu. Informace o tom, jak nakonfigurovat vlastní test paměti, najdete v tématu [vlastní nastavení sondy stavu](application-gateway-probe-overview.md#custom-health-probe-settings).
 
 > [!NOTE]
 > Po vytvoření vlastního sondy stavu je potřeba ho přidružit k nastavení back-endu HTTP. Vlastní test nemonitoruje stav fondu back-end, pokud není odpovídající nastavení HTTP explicitně přidruženo k naslouchacímu procesu pomocí pravidla.

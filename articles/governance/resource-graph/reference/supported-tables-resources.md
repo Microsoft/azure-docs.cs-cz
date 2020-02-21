@@ -1,0 +1,461 @@
+---
+title: Podporované typy prostředků Správce prostředků
+description: Poskytněte seznam Správce prostředků typů prostředků, které podporuje Azure Resource Graph, a historii změn.
+ms.date: 02/20/2020
+ms.topic: reference
+ms.openlocfilehash: 130b11f0060f7f27091a21652aa481f0340b288f
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77530221"
+---
+# <a name="azure-resource-graph-table-and-resource-type-reference"></a>Odkaz na typ tabulky a prostředku Azure Resource graphu
+
+Azure Resource Graph podporuje následující **typy prostředků** [Azure Resource Manager](../../../azure-resource-manager/management/overview.md). Každý **typ prostředku** je součástí **tabulky** v grafu prostředků.
+
+## <a name="advisorresources"></a>advisorresources
+
+- Microsoft. Advisor/Configurations
+- Microsoft. Advisor/doporučení
+- Microsoft. Advisor/potlačení
+
+## <a name="alertsmanagementresources"></a>alertsmanagementresources
+
+- Microsoft. alertsmanagement/Alerts
+
+## <a name="maintenanceresources"></a>maintenanceresources
+
+- Microsoft. Maintenance/configurationassignments
+- Microsoft. Maintenance/Updates
+
+## <a name="resourcecontainers"></a>resourcecontainers
+
+- Microsoft. Resources/Subscriptions
+- Microsoft. Resources/Subscriptions/ResourceGroups
+
+## <a name="resources"></a>prostředky
+
+- 84codes. CloudAMQP/servery
+- Citrix. Services/xenappessentials
+- Citrix. Services/xendesktopessentials
+- conexlink. mycloudit/účty
+- zabezpečení/aplikace Crypteron.
+- GridPro. evops/účty
+- GridPro. evops/Accounts/eventrules
+- GridPro. evops/Accounts/requesttemplates
+- GridPro. evops/Accounts/views
+- podregistr. streamování/služby
+- incapsula. WAF/účty
+- livearena. Broadcast/Services
+- mailjet. e-mail/služby
+- Microsoft. aad/DomainServices
+- Microsoft. aadiam/tenantů
+- Microsoft. alertsmanagement/actionrules
+- Microsoft. alertsmanagement/smartdetectoralertrules
+- Microsoft. AnalysisServices/servery
+- Microsoft. apimanagement/Service
+- Microsoft. appconfiguration/configurationstores
+- Microsoft. appplatform/pružina
+- Microsoft. Archive/Collections
+- Microsoft. Automation/automationaccounts
+- Microsoft. Automation/automationaccounts/Configurations
+- Microsoft. Automation/automationaccounts/Runbooky
+- Microsoft. azconfig/configurationstores
+- Microsoft. azureactivedirectory selhala/b2cdirectories
+- Microsoft. azuredata/hybriddatamanagers
+- Microsoft. azuredata/postgresinstances
+- Microsoft. azuredata/sqlbigdataclusters
+- Microsoft. azuredata/sqlinstances
+- Microsoft. azuredata/sqlserverregistrations
+- Microsoft. azurestack/registrací
+- Microsoft. baremetal/consoleconnections
+- Microsoft. baremetal/crayservers
+- Microsoft. baremetal/monitoringservers
+- Microsoft. Batch/batchaccounts
+- Microsoft. batchai/clustery
+- Microsoft. batchai/\ servery
+- Microsoft. batchai/Jobs
+- Microsoft. batchai/pracovní prostory
+- Microsoft. BingMaps/mapapis
+- Microsoft. biztalkservices/BizTalk
+- Microsoft. blockchain/blockchainmembers
+- Microsoft. blockchain/cordamembers
+- Microsoft. blockchain/sledovací procesy
+- Microsoft. botservice/botservices
+- Microsoft. cache/Redis
+- Microsoft. CDN/cdnwebapplicationfirewallpolicies
+- Microsoft. CDN/profily
+- Microsoft. CDN/Profiles/koncových bodů
+- Microsoft. certificateregistration/certificateorders
+- Microsoft. classiccompute/DomainNames
+- Microsoft. classiccompute/VirtualMachines
+- Microsoft. classicnetwork/networksecuritygroups
+- Microsoft. classicnetwork/reservedips
+- Microsoft. classicnetwork/virtualnetworks
+- Microsoft. classicstorage/storageaccounts
+- Microsoft. cloudy/účty
+- Microsoft. CloudSearch/indexy
+- Microsoft. Cognition/syntheticsaccounts
+- Microsoft. cognitiveservices Account/účty
+- Microsoft. COMPUTE/availabilitysets
+- Microsoft. COMPUTE/diskencryptionsets
+- Microsoft. COMPUTE/disky
+- Microsoft. COMPUTE/galerie
+- Microsoft. COMPUTE/Galerie/aplikace
+- Microsoft. COMPUTE/Galerie/aplikace/verze
+- Microsoft. COMPUTE/Galerie/image
+- Microsoft. COMPUTE/Galerie/image/verze
+- Microsoft. COMPUTE/hostgroups
+- Microsoft. COMPUTE/hostgroups/hostitelů
+- Microsoft. COMPUTE/image
+- Microsoft. COMPUTE/proximityplacementgroups
+- Microsoft. COMPUTE/restorepointcollections
+- Microsoft. COMPUTE/sharedvmextensions
+- Microsoft. COMPUTE/sharedvmextensions/verze
+- Microsoft. COMPUTE/sharedvmimages
+- Microsoft. COMPUTE/sharedvmimages/verze
+- Microsoft. COMPUTE/snímky
+- Microsoft. COMPUTE/VirtualMachines
+- Microsoft. COMPUTE/VirtualMachines/Extensions
+- Microsoft. COMPUTE/virtualmachinescalesets
+- Microsoft. containerinstance/containergroups
+- Microsoft. containerregistry/Registry
+- Microsoft. containerregistry/Registry/BuildTasks
+- Microsoft. containerregistry/Registry/replikace
+- Microsoft. containerregistry/Registry/taskruns
+- Microsoft. containerregistry/Registry/úkoly
+- Microsoft. containerregistry/Registry/Webhooky
+- Microsoft. containerservice/containerservices
+- Microsoft. containerservice/managedclusters
+- Microsoft. containerservice/openshiftmanagedclusters
+- Microsoft. contoso/zaměstnanci
+- Microsoft. costmanagement/konektory
+- Microsoft. customproviders/resourceproviders
+- Microsoft. Databox/Jobs
+- Microsoft. databoxedge/databoxedgedevices
+- Microsoft. datacihly/pracovní prostory
+- Microsoft. datacatalog/katalogy
+- Microsoft. datacatalog/datacatalogs
+- Microsoft. DataFactory/DataFactory
+- Microsoft. DataFactory/továrny
+- Microsoft. datalakeanalytics/účty
+- Microsoft. datalakestore/účty
+- migrace a služby společnosti Microsoft.
+- migrace Microsoft. DataServices/služby/projekty
+- Microsoft. datamigration/sloty
+- Microsoft. DataProtection/backupvaults
+- Microsoft. datashare/Accounts
+- Microsoft. dbformariadb/servery
+- Microsoft. dbformysql/servery
+- Microsoft. dbforpostgresql/servergroups
+- Microsoft. dbforpostgresql/servery
+- Microsoft. dbforpostgresql/serversv2
+- Microsoft. deploymentmanager/artifactsources
+- Microsoft. deploymentmanager/uvádění
+- Microsoft. deploymentmanager/servicetopologies
+- Microsoft. deploymentmanager/servicetopologies/Services
+- Microsoft. deploymentmanager/servicetopologies/Services/serviceunits
+- Microsoft. deploymentmanager/Steps
+- Microsoft. desktopvirtualization/applicationgroups
+- Microsoft. desktopvirtualization/hostpools
+- Microsoft. desktopvirtualization/pracovní prostory
+- Microsoft. detonationservice/detonationinstances
+- Microsoft. Devices/elasticpools
+- Microsoft. Devices/elasticpools/iothubtenants
+- Microsoft. Devices/iothubs
+- Microsoft. Devices/provisioningservices
+- Microsoft. DevOps/kanály
+- Microsoft. devspaces/Controllers
+- Microsoft. devtestlab/labcenters
+- Microsoft. devtestlab/Labs
+- Microsoft. devtestlab/Labs/servicerunners
+- Microsoft. devtestlab/Labs/VirtualMachines
+- Microsoft. devtestlab/plánuje
+- Microsoft. digitaltwins/digitaltwinsinstances
+- Microsoft. DocumentDB/databaseaccounts
+- Microsoft. domainregistration/domény
+- Microsoft. enterpriseknowledgegraph/Services
+- Microsoft. eventgrid/domény
+- Microsoft. eventgrid/partnernamespaces
+- Microsoft. eventgrid/partnerregistrations
+- Microsoft. eventgrid/partnertopics
+- Microsoft. eventgrid/systemtopics
+- Microsoft. eventgrid/témata
+- Microsoft. eventhub/clustery
+- Microsoft. eventhub/obory názvů
+- Microsoft. experimentování/experimentworkspaces
+- Microsoft. herní/tituly
+- Microsoft. genomika/účty
+- Microsoft. guestconfiguration/automanagedaccounts
+- Microsoft. hanaonazure/hanainstances
+- Microsoft. hanaonazure/sapmonitors
+- Microsoft. hardwaresecuritymodules/dedicatedhsms
+- Microsoft. HDInsight/clustery
+- Microsoft. healthcareapis/Services
+- Microsoft. hybridcompute/počítače
+- Microsoft. hybridcompute/počítače/rozšíření
+- Microsoft. hybriddata/datamanagers
+- Microsoft. Hydra/– komponenty
+- Microsoft. Hydra/networkscopes
+- Microsoft. importexport/Jobs
+- Microsoft. Insights/actiongroups
+- Microsoft. Insights/upozorněníprotokoluaktivit
+- Microsoft. Insights/alertrules
+- Microsoft. Insights/autoscalesettings
+- Microsoft. Insights/Components
+- Microsoft. Insights/datacollectionrules
+- Microsoft. Insights/guestdiagnosticsettings
+- Microsoft. Insights/metricalerts
+- Microsoft. Insights/notificationgroups
+- Microsoft. Insights/notificationrules
+- Microsoft. Insights/scheduledqueryrules
+- Microsoft. Insights/webtests
+- Microsoft. Insights/sešity
+- Microsoft. Insights/workbooktemplates
+- Microsoft. iotcentral/iotapps
+- Microsoft. iotspaces/Graph
+- Microsoft. hsmpools – trezor/
+- trezory a trezory Microsoft.
+- Microsoft. Kubernetes/connectedclusters
+- Microsoft. kusto/clustery
+- Microsoft. kusto/clustery/databáze
+- Microsoft. labservices/labaccounts
+- Microsoft. Logic/integrationaccounts
+- Microsoft. Logic/integrationserviceenvironments
+- Microsoft. Logic/integrationserviceenvironments/Inspirujte
+- Microsoft. Logic/Workflows
+- Microsoft. machinelearning/commitmentplans
+- Microsoft. machinelearning/WebServices
+- Microsoft. machinelearning/pracovní prostory
+- Microsoft. machinelearningcompute/operationalizationclusters
+- Microsoft. machinelearningservices/pracovní prostory
+- Microsoft. Maintenance/maintenanceconfigurations
+- Microsoft. Maintenance/maintenancepolicies
+- Microsoft. managedidentity/skupiny
+- Microsoft. managedidentity/userassignedidentities
+- Microsoft. managednetwork/managednetworkgroups
+- Microsoft. managednetwork/managednetworkpeeringpolicies
+- Microsoft. managednetwork/managednetworks
+- Microsoft. managednetwork/managednetworks/managednetworkgroups
+- Microsoft. managednetwork/managednetworks/managednetworkpeeringpolicies
+- Microsoft. Maps/Accounts
+- Microsoft. marketplaceapps/classicdevservices
+- Microsoft. Media/MediaServices
+- Microsoft. Media/MediaServices/liveevents
+- Microsoft. Media/MediaServices/starají
+- Microsoft. Media/MediaServices/transformes
+- Microsoft. microservices4spring/appclusters
+- Microsoft. migruje/assessmentprojects
+- Microsoft. migruje/migrateprojects
+- Microsoft. migruje/movecollections
+- Microsoft. migruje/projekty
+- Microsoft. mixedreality/holographicsbroadcastaccounts
+- Microsoft. mixedreality/objectunderstandingaccounts
+- Microsoft. mixedreality/remoterenderingaccounts
+- Microsoft. mixedreality/spatialanchorsaccounts
+- Microsoft. mixedreality/surfacereconstructionaccounts
+- Microsoft. NetApp/netappaccounts
+- Microsoft. NetApp/netappaccounts/backuppolicies
+- Microsoft. NetApp/netappaccounts/capacitypools
+- Microsoft. NetApp/netappaccounts/capacitypools/svazky
+- Microsoft. NetApp/netappaccounts/capacitypools/svazky/mounttargets
+- Microsoft. NetApp/netappaccounts/capacitypools/svazky/snímky
+- Microsoft. Network/applicationgateways
+- Microsoft. Network/applicationgatewaywebapplicationfirewallpolicies
+- Microsoft. Network/applicationsecuritygroups
+- Microsoft. Network/azurefirewalls
+- Microsoft. Network/bastionhosts
+- Microsoft. Network/připojení
+- Microsoft. Network/ddoscustompolicies
+- Microsoft. Network/ddosprotectionplans
+- Microsoft. Network/dnszones
+- Microsoft. Network/expressroutecircuits
+- Microsoft. Network/expressroutecrossconnections
+- Microsoft. Network/expressroutegateways
+- Microsoft. Network/expressrouteports
+- Microsoft. Network/firewallpolicies
+- Microsoft. Network/frontdoors
+- Microsoft. Network/frontdoorwebapplicationfirewallpolicies
+- Microsoft. Network/ipgroups
+- Microsoft. Network/loadbalancers
+- Microsoft. Network/localnetworkgateways
+- Microsoft. Network/natgateways
+- Microsoft. Network/networkexperimentprofiles
+- Microsoft. Network/networkintentpolicies
+- Microsoft. Network/networkinterfaces
+- Microsoft. Network/networkprofiles
+- Microsoft. Network/networksecuritygroups
+- Microsoft. Network/networkwatchers
+- Microsoft. Network/networkwatchers/connectionmonitors
+- Microsoft. Network/networkwatchers/flowlogs
+- Microsoft. Network/networkwatchers/čočky
+- Microsoft. Network/networkwatchers/pingmeshes
+- Microsoft. Network/p2svpngateways
+- Microsoft. Network/privatednszones
+- Microsoft. Network/privatednszones/virtualnetworklinks
+- Microsoft. Network/privateendpointredirectmaps
+- Microsoft. Network/privateendpoints
+- Microsoft. Network/privatelinkservices
+- Microsoft. Network/publicipaddresses
+- Microsoft. Network/publicipprefixes
+- Microsoft. Network/routefilters
+- Microsoft. Network/routetables
+- Microsoft. Network/sampleresources
+- Microsoft. Network/serviceendpointpolicies
+- Microsoft. Network/trafficmanagerprofiles
+- Microsoft. Network/virtualhubs
+- Microsoft. Network/virtualnetworkgateways
+- Microsoft. Network/virtualnetworks
+- Microsoft. Network/virtualnetworktaps
+- Microsoft. Network/virtualrouters
+- Microsoft. Network/virtualwans
+- microsoft.network/vpngateways
+- Microsoft. Network/vpnserverconfigurations
+- Microsoft. Network/vpnsites
+- Microsoft. notificationhubs/obory názvů
+- Microsoft. notificationhubs/obory názvů/notificationhubs
+- Microsoft. ObjectStore/osnamespaces
+- Microsoft. offazure/hypervsites
+- Microsoft. offazure/importsites
+- Microsoft. offazure/serversites
+- Microsoft. offazure/vmwaresites
+- Microsoft. operationalinsights/clustery
+- Microsoft. operationalinsights/pracovní prostory
+- Microsoft. operationsmanagement/Solutions
+- Microsoft. operationsmanagement/zobrazení
+- Microsoft. peering/peering
+- Microsoft. peering/peeringservices
+- Microsoft. Portal/řídicí panely
+- Microsoft. portalsdk/rootresources
+- Microsoft. PowerBI/workspacecollections
+- Microsoft. powerbidedicated/– kapacity
+- Microsoft. projectarcadia/pracovní prostory
+- Microsoft. projectarcadia/pracovní prostory/sparkcomputes
+- Microsoft. projectarcadia/pracovní prostory/sqlcomputes
+- Microsoft. projectbabylon/účty
+- Microsoft. recoveryservices/trezory
+- Microsoft. redhatopenshift/openshiftclusters
+- Microsoft. Relay/obory názvů
+- Microsoft. RemoteApp/kolekce
+- Microsoft. resourcegraph/– dotazy
+- Microsoft. Resources/deploymentscripts
+- Microsoft. SaaS/aplikace
+- Microsoft. Scheduler/jobcollections
+- Microsoft. Search/searchservices
+- Microsoft. Security/automations
+- Microsoft. Security/iotsecuritysolutions
+- Microsoft. ServiceBus/obory názvů
+- Microsoft. servicefabric/clustery
+- Microsoft. servicefabric/containergroupsets
+- Microsoft. servicefabric/managedclusters
+- Microsoft. servicefabricmesh/aplikace
+- Microsoft. servicefabricmesh/gateways
+- Microsoft. servicefabricmesh/sítě
+- Microsoft. servicefabricmesh/tajné kódy
+- Microsoft. servicefabricmesh/– svazky
+- Microsoft. signalrservice/signaler
+- Microsoft. Solutions/appliancedefinitions
+- Microsoft. Solutions/zařízení
+- Microsoft. Solutions/applicationdefinitions
+- Microsoft. Solutions/aplikace
+- Microsoft. Solutions/jitrequests
+- Microsoft. spoolservice/respoolers
+- Microsoft. SQL/instancepools
+- Microsoft. SQL/managedinstances
+- Microsoft. SQL/managedinstances/databáze
+- Microsoft. SQL/servery
+- Microsoft. SQL/servery/databáze
+- Microsoft. SQL/servery/elasticpools
+- Microsoft. SQL/servery/jobaccounts
+- Microsoft. SQL/servery/jobagents
+- Microsoft. SQL/virtualclusters
+- Microsoft. sqlvirtualmachine/sqlvirtualmachinegroups
+- Microsoft. sqlvirtualmachine/sqlvirtualmachines
+- Microsoft. sqlvm/dwvm
+- Microsoft. Storage/storageaccounts
+- Microsoft. storagecache/caches
+- Microsoft. storagesync/storagesyncservices
+- Microsoft. storagesyncdev/storagesyncservices
+- Microsoft. storagesyncint/storagesyncservices
+- Microsoft. StorSimple/– manažeři
+- Microsoft. streamanalytics/streamingjobs
+- Microsoft. support/supporttickets
+- Microsoft. synapse/pracovní prostory
+- Microsoft. synapse/pracovní prostory/bigdatapools
+- Microsoft. synapse/pracovní prostory/sqlpools
+- Microsoft. terraformoss/providerregistrations
+- Microsoft. timeseriesinsights/prostředí
+- Microsoft. timeseriesinsights/prostředí/EventSources
+- Microsoft. timeseriesinsights/prostředí/referencedatasets
+- Microsoft. token/obchody
+- Microsoft. tokenvault/trezory
+- Microsoft. virtualmachineimages/imagetemplates
+- Microsoft. VisualStudio/účet
+- Microsoft. VisualStudio/Account/Extension
+- Microsoft. VisualStudio/Account/Project
+- Microsoft. vmwarecloudsimple/dedicatedcloudnodes
+- Microsoft. vmwarecloudsimple/dedicatedcloudservices
+- Microsoft. vmwarecloudsimple/VirtualMachines
+- Microsoft. vmwareonazure/privateclouds
+- Microsoft. vmwarevirtustream/privateclouds
+- Microsoft. vnfmanager/zařízení
+- Microsoft. vnfmanager/vnfs
+- Microsoft. VSOnline/účty
+- Microsoft. VSOnline/– plány
+- Microsoft. Web/apimanagementaccounts/rozhraní API
+- Microsoft. Web/certifikáty
+- Microsoft. Web/connectiongateways
+- microsoft.web/connections
+- Microsoft. Web/customapis
+- Microsoft. Web/hostingenvironments
+- Microsoft. Web/serverových farem
+- microsoft.web/sites
+- Microsoft. Web/weby/premieraddons
+- microsoft.web/sites/slots
+- Microsoft. Web/staticsites
+- Microsoft. windowsesu/multipleactivationkeys
+- Microsoft. windowsiot/deviceservices
+- myget. PackageManagement/služby
+- paraleap. cloudmonix/služby
+- pokitdok. Platform/Services
+- zprostředkovatelé. test/statefulibizaengines
+- zprostředkovatelé. test/statefulresources
+- zprostředkovatelé. test/statefulresources/nestedresources
+- zprostředkovatelé. test/statelessresources
+- ravenhq. DB/databáze
+- Raygun. crashreporting/aplikace
+- SendGrid. e-mail/účty
+- sparkpost. Basic/Services
+- Stackify. Retrace/Services
+- test. Shoebox/testresources
+- test. Shoebox/testresources2
+- trendmicro. deepsecurity/účty
+- u2uconsult. theidentityhub/služby
+- wandisco. Fusion/fusiongroups
+- wandisco. Fusion/fusiongroups/azurezones
+- wandisco. Fusion/fusiongroups/onpremzones
+- wandisco. Fusion/fusiongroups/replicationrules
+
+## <a name="securityresources"></a>securityresources
+
+- assessmentmetadata
+- Microsoft. Security/Assessments
+- Microsoft. Security/Assessments/posouzení podhodnocení
+- Microsoft. Security/Prices
+- Microsoft. Security/regulatorycompliancestandards
+- Microsoft. Security/regulatorycompliancestandards/regulatorycompliancecontrols
+- Microsoft. Security/regulatorycompliancestandards/regulatorycompliancecontrols/regulatorycomplianceassessments
+- Microsoft. Security/securitystatuses
+- Microsoft. Security/securitystatuses/containerhosts
+- Microsoft. Security/securitystatuses/onpremisemachines
+- Microsoft. Security/securitystatuses/Servers
+- Microsoft. Security/securitystatuses/podsítí
+- Microsoft. Security/securitystatuses/VirtualMachines
+- Microsoft. Security/securitystatusessummaries
+
+## <a name="next-steps"></a>Další kroky
+
+- Přečtěte si další informace o [dotazovacím jazyce](../concepts/query-language.md).
+- Přečtěte si další informace o tom, jak [prozkoumat prostředky](../concepts/explore-resources.md).
+- Podívejte se na ukázky [počátečních dotazů](../samples/starter.md).

@@ -8,16 +8,14 @@ ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: a3d60bf38c4a9dad13dacf8ba9798c4078c1df1a
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 0386897b6cecc27781626cfecd6f1f5f8a3752e4
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049702"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77524379"
 ---
-# <a name="export-your-azure-iot-central-data"></a>Export dat IoT Central Azure
-
-
+# <a name="export-iot-data-to-destinations-in-azure"></a>Export dat IoT do cílových umístění v Azure
 
 *Toto téma se týká správců.*
 
@@ -58,7 +56,7 @@ Pokud nemáte existující Service Bus obor názvů pro export do, postupujte po
 
 Pokud zvolíte Service Bus jako cíl exportu, nesmí fronty a témata obsahovat relace nebo je povoleno zjišťování duplicitních dat. Pokud je některá z těchto možností povolená, některé zprávy ve frontě nebo tématu nepřijde.
 
-### <a name="create-storage-account"></a>Vytvoření účtu úložiště
+### <a name="create-storage-account"></a>Vytvořit účet úložiště
 
 Pokud nemáte existující účet Azure Storage pro export do, postupujte podle těchto kroků:
 
@@ -66,9 +64,9 @@ Pokud nemáte existující účet Azure Storage pro export do, postupujte podle 
 
     |Úroveň výkonu|Typ účtu|
     |-|-|
-    |Standard|Pro obecné účely v2|
-    |Standard|Pro obecné účely v1|
-    |Standard|Blob Storage|
+    |Standardní|Pro obecné účely v2|
+    |Standardní|Pro obecné účely v1|
+    |Standardní|Blob Storage|
     |Premium|Blokovat Blob Storage|
 
 2. Vytvořte kontejner v účtu úložiště. Přejít na účet úložiště. V části **BLOB Service**vyberte **Procházet objekty blob**. V horní části vyberte **+ kontejner** a vytvořte nový kontejner.
@@ -127,7 +125,7 @@ V případě Blob Storage se data exportují jednou za minutu a každý soubor o
 Exportované soubory můžete procházet v Azure Portal tak, že přejdete do souboru a kliknete na kartu **Upravit objekt BLOB** .
 
 
-## <a name="telemetry"></a>Telemetrická data
+## <a name="telemetry"></a>Telemetrie
 
 V případě Event Hubs a Service Bus je nová zpráva exportována rychle po IoT Central přijetí zprávy ze zařízení a Každá exportovaná zpráva obsahuje úplnou zprávu, kterou zařízení odeslalo ve formátu JSON.
 

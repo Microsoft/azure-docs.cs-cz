@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 02/19/2020
 ms.author: iainfou
-ms.openlocfilehash: 4753cc9a98cd59c0c5d446b3d92280aabfb72c12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c40a3b1352c383b8b70a0b14f59265188b77a86d
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474695"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77523681"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Kurz: připojení virtuálního počítače s Windows serverem ke spravované doméně
 
@@ -24,12 +24,12 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření virtuálního počítače s Windows serverem
-> * Připojení k virtuálnímu počítači s Windows serverem k virtuální síti Azure
+> * Připojení virtuálního počítače s Windows serverem k virtuální síti Azure
 > * Připojte virtuální počítač k spravované doméně Azure služba AD DS.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující zdroje:
 
@@ -41,6 +41,8 @@ K dokončení tohoto kurzu potřebujete následující zdroje:
     * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
 * Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
     * Ujistěte se, že jste provedli synchronizaci hodnot hash hesel Azure AD Connect nebo Samoobslužné resetování hesla, aby se účet mohl přihlásit ke spravované doméně Azure služba AD DS.
+* Hostitel Azure bastionu nasazený ve vaší virtuální síti Azure služba AD DS.
+    * V případě potřeby [Vytvořte hostitele Azure bastionu][azure-bastion].
 
 Pokud už máte virtuální počítač, ke kterému se chcete připojit k doméně, přejděte k části [připojení virtuálního počítače k spravované doméně Azure služba AD DS](#join-the-vm-to-the-azure-ad-ds-managed-domain).
 
@@ -48,7 +50,7 @@ Pokud už máte virtuální počítač, ke kterému se chcete připojit k domén
 
 V tomto kurzu vytvoříte virtuální počítač s Windows serverem, který se připojí ke spravované doméně Azure služba AD DS pomocí Azure Portal. Chcete-li začít, nejprve se přihlaste k [Azure Portal](https://portal.azure.com).
 
-## <a name="create-a-windows-server-virtual-machine"></a>Vytvoření virtuálního počítače s Windows Serverem
+## <a name="create-a-windows-server-virtual-machine"></a>Vytvoření virtuálního počítače s Windows serverem
 
 Pokud chcete zjistit, jak připojit počítač k spravované doméně Azure služba AD DS, vytvoříme virtuální počítač s Windows serverem. Tento virtuální počítač je připojený ke službě Azure Virtual Network, která poskytuje připojení ke spravované doméně Azure služba AD DS. Proces připojení ke spravované doméně Azure služba AD DS je stejný jako při připojení k běžné místní doméně Active Directory Domain Services.
 
@@ -70,13 +72,13 @@ Pokud už máte virtuální počítač, ke kterému se chcete připojit k domén
     | Uživatelské jméno             | Zadejte uživatelské jméno pro účet místního správce, který se má vytvořit na virtuálním počítači, například *azureuser* . |
     | Heslo             | Zadejte a potvrďte zabezpečené heslo pro místního správce, které se má na virtuálním počítači vytvořit. Nezadávejte přihlašovací údaje účtu uživatele domény. |
 
-1. Virtuální počítače vytvořené v Azure ve výchozím nastavení nejsou přístupné z Internetu. Tato konfigurace pomáhá zlepšit zabezpečení virtuálního počítače a snižuje oblast pro možný útok. V dalším kroku tohoto kurzu se budete muset připojit k virtuálnímu počítači pomocí protokolu RDP (Remote Desktop Protocol) a pak připojit Windows Server k spravované doméně Azure služba AD DS.
+1. Virtuální počítače vytvořené v Azure jsou ve výchozím nastavení přístupné z Internetu pomocí protokolu RDP. Když je protokol RDP povolený, pravděpodobně dojde k útokům prostřednictvím automatického přihlašování, které by mohlo v důsledku několika neúspěšných pokusů o přihlášení způsobit, že účty s běžnými názvy, jako je *správce* nebo *správce* .
 
-    Když je protokol RDP povolený, pravděpodobně dojde k útokům prostřednictvím automatického přihlašování, které by mohlo v důsledku několika neúspěšných pokusů o přihlášení způsobit, že účty s běžnými názvy, jako je *správce* nebo *správce* . Protokol RDP by měl být povolen pouze v případě potřeby a omezen na sadu autorizovaných rozsahů IP adres. [Přístup k virtuálnímu počítači podle potřeby v Azure][jit-access] jako součást Azure Security Center můžou tyto krátkodobé a omezené relace RDP povolit. Můžete také [vytvořit a použít hostitele Azure bastionu (v současnosti ve verzi Preview)][azure-bastion] , abyste povolili přístup jenom prostřednictvím Azure Portal přes SSL.
+    Protokol RDP by měl být povolen pouze v případě potřeby a omezen na sadu autorizovaných rozsahů IP adres. Tato konfigurace pomáhá zlepšit zabezpečení virtuálního počítače a snižuje oblast pro možný útok. Nebo můžete vytvořit a použít hostitele Azure bastionu, který umožňuje přístup jenom prostřednictvím Azure Portal přes SSL. V dalším kroku tohoto kurzu použijete hostitele Azure bastionu k zabezpečenému připojení k virtuálnímu počítači.
 
-    Pro tento kurz ručně povolte připojení RDP k virtuálnímu počítači.
+    Prozatím zakažte přímá připojení RDP k virtuálnímu počítači.
 
-    V části **veřejné příchozí porty**vyberte možnost pro **Povolení vybraných portů**. V rozevírací nabídce **Vyberte pro možnost vybrat příchozí porty**možnost *RDP (3389)* .
+    V části **veřejné příchozí porty**vyberte *žádné*.
 
 1. Až budete hotovi, vyberte **Další: disky**.
 1. V rozevírací nabídce pro **typ disku s operačním systémem**zvolte *SSD úrovně Standard*a potom vyberte **Další: sítě**.
@@ -120,20 +122,23 @@ Vytvoření virtuálního počítače trvá několik minut. Azure Portal zobrazu
 
 ## <a name="connect-to-the-windows-server-vm"></a>Připojení k virtuálnímu počítači s Windows serverem
 
-Teď se přihlaste k nově vytvořenému virtuálnímu počítači s Windows serverem pomocí protokolu RDP a připojíte se ke spravované doméně Azure služba AD DS. Použijte přihlašovací údaje místního správce, které jste zadali při vytváření virtuálního počítače v předchozím kroku, a to bez jakýchkoli stávajících přihlašovacích údajů do domény.
+K zabezpečenému připojení k virtuálním počítačům použijte hostitele Azure bastionu. S Azure bastionu je spravovaný hostitel nasazený do vaší virtuální sítě a poskytuje webové připojení RDP nebo SSH k virtuálním počítačům. Pro virtuální počítače nejsou nutné žádné veřejné IP adresy a nemusíte otevírat pravidla skupiny zabezpečení sítě pro externí vzdálený provoz. K virtuálním počítačům se můžete připojit pomocí Azure Portal z webového prohlížeče.
 
-1. V podokně **Přehled** vyberte **připojit**.
+Pokud se chcete k VIRTUÁLNÍmu počítači připojit pomocí hostitele bastionu, proveďte následující kroky:
 
-    ![Připojení k virtuálnímu počítači s Windows v Azure Portal](./media/join-windows-vm/connect-to-vm.png)
+1. V podokně **Přehled** pro váš virtuální počítač vyberte **připojit**a pak **bastionu**.
 
-1. Vyberte možnost *Stažení souboru RDP*. Uložte tento soubor RDP ve webovém prohlížeči.
-1. Chcete-li se připojit k virtuálnímu počítači, otevřete stažený soubor protokolu RDP. Pokud se zobrazí výzva, vyberte **Připojit**.
-1. Zadejte přihlašovací údaje místního správce, které jste zadali v předchozím kroku, abyste mohli vytvořit virtuální počítač, například *localhost\azureuser* .
-1. Pokud se během procesu přihlašování zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat** a připojte se.
+    ![Připojení k virtuálnímu počítači s Windows pomocí bastionu v Azure Portal](./media/join-windows-vm/connect-to-vm.png)
+
+1. Zadejte přihlašovací údaje pro váš virtuální počítač, který jste zadali v předchozí části, a pak vyberte **připojit**.
+
+   ![Připojení prostřednictvím hostitele bastionu v Azure Portal](./media/join-windows-vm/connect-to-bastion.png)
+
+V případě potřeby umožněte webovému prohlížeči otevřít automaticky otevíraná okna pro zobrazení připojení bastionu. Vytvoření připojení k VIRTUÁLNÍmu počítači trvá několik sekund.
 
 ## <a name="join-the-vm-to-the-azure-ad-ds-managed-domain"></a>Připojte virtuální počítač k spravované doméně Azure služba AD DS.
 
-Po vytvoření virtuálního počítače a připojení RDP se teď připojte k virtuálnímu počítači s Windows serverem k spravované doméně Azure služba AD DS. Tento proces je stejný jako počítač připojující se k běžné místní Active Directory Domain Services doméně.
+Když je vytvořený virtuální počítač a webové připojení RDP vytvořené pomocí Azure bastionu, teď se ke spravované doméně Azure služba AD DS připojíme k virtuálnímu počítači s Windows serverem. Tento proces je stejný jako počítač připojující se k běžné místní Active Directory Domain Services doméně.
 
 1. Pokud se při přihlášení k virtuálnímu počítači ve výchozím nastavení **Správce serveru** neotevře, vyberte nabídku **Start** a pak zvolte **Správce serveru**.
 1. V levém podokně okna **Správce serveru** vyberte **místní server**. V části **vlastnosti** v pravém podokně vyberte **pracovní skupina**.
@@ -174,22 +179,13 @@ Po restartování virtuálního počítače s Windows serverem se do virtuální
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V dalším kurzu použijete tento virtuální počítač s Windows serverem k instalaci nástrojů pro správu, které vám umožní spravovat spravovanou doménu Azure služba AD DS. Pokud v této sérii kurzů nechcete pokračovat, přečtěte si následující postup vyčištění a [zakažte RDP](#disable-rdp) nebo [Odstraňte virtuální počítač](#delete-the-vm). V opačném případě [přejděte k dalšímu kurzu](#next-steps).
+V dalším kurzu použijete tento virtuální počítač s Windows serverem k instalaci nástrojů pro správu, které vám umožní spravovat spravovanou doménu Azure služba AD DS. Pokud v této sérii kurzů nechcete pokračovat, Projděte si následující postup vyčištění a [Odstraňte virtuální počítač](#delete-the-vm). V opačném případě [přejděte k dalšímu kurzu](#next-steps).
 
 ### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>Zrušení připojení virtuálního počítače ze spravované domény Azure služba AD DS
 
 Pokud chcete virtuální počítač odebrat ze spravované domény Azure služba AD DS, postupujte podle kroků znovu a [Připojte se k virtuálnímu počítači k doméně](#join-the-vm-to-the-azure-ad-ds-managed-domain). Místo připojení ke spravované doméně Azure služba AD DS se můžete rozhodnout připojit k pracovní skupině, jako je například výchozí *pracovní skupina*. Po restartování virtuálního počítače se objekt počítače odebere ze spravované domény Azure služba AD DS.
 
 Pokud [virtuální počítač odstraníte](#delete-the-vm) bez odpojení od domény, bude v Azure služba AD DS ponechán objekt osamocený počítač.
-
-### <a name="disable-rdp"></a>Zakázat protokol RDP
-
-Pokud budete nadále používat virtuální počítač s Windows serverem, který jste vytvořili v tomto kurzu, abyste mohli spouštět vlastní aplikace nebo úlohy, odvoláte, že se protokol RDP otevřel přes Internet. Aby bylo možné zvýšit zabezpečení a snížit riziko útoku, měl by být protokol RDP zakázán po internetu. Pokud chcete zakázat protokol RDP na virtuální počítač s Windows serverem přes Internet, proveďte následující kroky:
-
-1. V nabídce na levé straně vyberte **skupiny prostředků** .
-1. Vyberte skupinu prostředků, například *myResourceGroup*.
-1. Zvolte svůj virtuální počítač, například *myVM*, a pak vyberte *sítě*.
-1. V části **pravidla zabezpečení příchozí sítě** pro skupinu zabezpečení sítě vyberte pravidlo, které povoluje protokol RDP, a pak zvolte **Odstranit**. Odebrání příchozího pravidla zabezpečení trvá několik sekund.
 
 ### <a name="delete-the-vm"></a>Odstranění virtuálního počítače
 
@@ -204,7 +200,7 @@ Pokud tento virtuální počítač s Windows serverem nepoužíváte, odstraňte
 
 Virtuální počítač s Windows serverem by se měl úspěšně připojit ke spravované doméně Azure služba AD DS. stejným způsobem jako běžný místní počítač by se měl připojit k doméně Active Directory Domain Services. Pokud se virtuální počítač s Windows serverem nemůže připojit ke spravované doméně Azure služba AD DS, znamená to, že se jedná o připojení nebo problém související s přihlašovacími údaji. Pokud se chcete úspěšně připojit ke spravované doméně, přečtěte si následující části věnované odstraňování potíží.
 
-### <a name="connectivity-issues"></a>Potíže s připojením
+### <a name="connectivity-issues"></a>Problémy s připojením
 
 Pokud neobdržíte výzvu s výzvou k připojení k doméně, dojde k problému s připojením. Virtuální počítač se nemůže připojit ke spravované doméně Azure služba AD DS ve virtuální síti.
 
@@ -249,6 +245,5 @@ Pokud chcete spravovat Azure služba AD DS spravované domény, nakonfigurujte v
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [password-sync]: active-directory-ds-getting-started-password-sync.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
-[jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

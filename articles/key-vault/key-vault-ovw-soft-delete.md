@@ -6,12 +6,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 26bd6c8b31bd16c058c5cb35cab086117b9f8cc5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 8559dc357d34d505d45cd0a6491183345ae5cf61
+ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845809"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77526582"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Přehled Azure Key Vaultho obnovitelného odstranění
 
@@ -34,15 +34,13 @@ Trezory klíčů Azure jsou sledované prostředky spravované pomocí Azure Res
 
 ### <a name="soft-delete-behavior"></a>Chování obnovitelného odstranění
 
-Pomocí této funkce je operace odstranění u trezoru klíčů nebo objektu trezoru klíčů obnovitelného odstranění a efektivně uchovává prostředky pro danou dobu uchování (90 dní) a zároveň dává dojem, že se objekt odstranil. Služba dále poskytuje mechanismus pro obnovování odstraněného objektu, v podstatě zrušení odstranění. 
+Pokud je povolené obnovitelné odstranění, prostředky označené jako odstraněné prostředky se uchovávají po určenou dobu (ve výchozím nastavení jsou to 90 dny). Služba dále poskytuje mechanismus pro obnovování odstraněného objektu, v podstatě zrušení odstranění.
 
-Obnovitelné odstranění je teď ve výchozím nastavení zapnuté pro nově vytvořené trezory klíčů. Dá se zakázat prostřednictvím [Azure CLI](key-vault-soft-delete-cli.md) nebo [Azure PowerShellu](key-vault-soft-delete-powershell.md).
+Při vytváření nového trezoru klíčů je ve výchozím nastavení zapnuté obnovitelné odstranění. Trezor klíčů můžete vytvořit bez obnovitelného odstranění prostřednictvím rozhraní příkazového [řádku Azure](key-vault-soft-delete-cli.md) nebo [Azure PowerShellu](key-vault-soft-delete-powershell.md). Po povolení obnovitelného odstranění u trezoru klíčů ho nejde zakázat.
 
-Výchozí doba uchování je 90 dní, ale je možné nastavit interval zásad uchovávání informací na hodnotu od 7 do 90 dnů pomocí Azure Portal. Zásady uchovávání informací o vyprázdnění ochrany používají stejný interval. 
+Výchozí doba uchování je 90 dní, ale během vytváření trezoru klíčů je možné nastavit interval zásad uchovávání informací na hodnotu od 7 do 90 dnů pomocí Azure Portal. Zásady uchovávání informací o vyprázdnění ochrany používají stejný interval. Po nastavení se interval zásad uchovávání dat nedá změnit.
 
-Až se obnovitelné odstranění nastaví u trezoru klíčů, nedá se zakázat a interval zásad uchovávání se nedá změnit. 
-
-Nemůžete znovu použít název trezoru klíčů, který byl odstraněn, dokud neuplyne doba uchování. 
+Nemůžete znovu použít název trezoru klíčů, který byl odstraněn, dokud neuplyne doba uchování.
 
 ### <a name="purge-protection"></a>Vyprázdnit ochranu 
 

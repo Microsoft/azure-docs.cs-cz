@@ -16,12 +16,12 @@ ms.date: 01/22/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c1b6f5ebffa39d3b735e85df794e37329e3aa2e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1ecf3a8819518c674a3d8bd7af55d1a3c6393c42
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548896"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77483852"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Přidání propojené organizace v Azure AD – Správa nároků
 
@@ -77,7 +77,7 @@ Pomocí těchto kroků přidáte externí adresář služby Azure AD nebo domén
 1. Kliknutím na **Přidat** Přidejte adresář nebo doménu služby Azure AD. V současné době můžete pro každou propojenou organizaci přidat jenom jeden adresář nebo doménu služby Azure AD.
 
     > [!NOTE]
-    > Všichni uživatelé z adresáře nebo domény služby Azure AD budou moci požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k adresáři, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [povolení nebo blokování pozvánek uživatelů B2B z konkrétních organizací](../b2b/allow-deny-list.md).
+    > Všichni uživatelé z adresáře nebo domény služby Azure AD budou moci požádat o tento balíček přístupu. To zahrnuje uživatele v Azure AD ze všech subdomén přidružených k adresáři, pokud tyto domény nejsou blokované seznamem povolených a zakázaných aplikací Azure B2B. Další informace najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](../b2b/allow-deny-list.md).
 
 1. Až přidáte adresář nebo doménu služby Azure AD, klikněte na **Vybrat**.
 
@@ -96,6 +96,23 @@ Pomocí těchto kroků přidáte externí adresář služby Azure AD nebo domén
 1. Na kartě **Revize + vytvořit** zkontrolujte nastavení organizace a pak klikněte na **vytvořit**.
 
     ![Přístup k balíčku – zásady – přidat připojenou organizaci – revize + vytvořit kartu](./media/entitlement-management-organization/organization-review-create.png)
+
+## <a name="update-a-connected-organization"></a>Aktualizace propojené organizace 
+
+Pokud se připojená organizace změní na jinou doménu, pokud pro tuto organizaci máte nový název nebo chcete změnit sponzory, můžete propojenou organizaci aktualizovat.
+
+**Požadovaná role:** Globální správce, Správce uživatelů nebo Pozvánka hosta
+
+1. V Azure Portal klikněte na **Azure Active Directory** a pak klikněte na zásady **správného řízení identity**.
+
+1. V nabídce vlevo klikněte na **propojené organizace** a pak kliknutím otevřete propojenou organizaci.
+
+1. Na stránce Přehled klikněte na **Upravit** a změňte název nebo popis organizace.  
+
+1. Na stránce adresář a doména klikněte na **aktualizovat adresář + doména** , aby se změnila na jiný adresář nebo doménu.
+
+1. Na stránce sponzoři klikněte na **Přidat interní sponzoři** nebo **přidejte externí sponzoři** a přidejte uživatele jako sponzora.  Chcete-li odebrat sponzora, klikněte na sponzora a v nabídce na pravé straně klikněte na **Odstranit**.
+
 
 ## <a name="delete-a-connected-organization"></a>Odstranění propojené organizace
 

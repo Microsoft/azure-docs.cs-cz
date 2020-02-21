@@ -1,36 +1,36 @@
 ---
-title: Schéma událostí služby Azure Event Grid Azure Maps
-description: Popisuje vlastnosti a schéma, které jsou k dispozici pro události Azure Maps pomocí služby Azure Event Grid
+title: Schéma události Azure Event Grid Azure Maps
+description: V této části najdete popis vlastností a schématu poskytnutých pro Azure Maps události Azure Event Grid
 services: event-grid
-author: walsehgal
+author: femila
 ms.service: event-grid
 ms.topic: reference
 ms.date: 02/08/2019
-ms.author: v-musehg
-ms.openlocfilehash: 74a3674e632f8dc3f0755bc2ad48376708c7966f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: femila
+ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
+ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60861850"
+ms.lasthandoff: 02/20/2020
+ms.locfileid: "77486355"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Schéma událostí Azure Event Grid pro mapy Azure
+# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Event Grid schéma událostí pro Azure Maps
 
-Tento článek obsahuje vlastnosti a schéma pro události Azure Maps. Úvod do schémata událostí, naleznete v tématu [schéma událostí služby Azure Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema).
+Tento článek poskytuje vlastnosti a schéma pro události Azure Maps. Úvod do schémat událostí najdete v tématu [Azure Event Grid schéma událostí](https://docs.microsoft.com/azure/event-grid/event-schema).
 
-## <a name="available-event-types"></a>Typy událostí k dispozici
+## <a name="available-event-types"></a>Dostupné typy událostí
 
-Účet Azure Maps generuje následující typy událostí:
+Účet Azure Maps emituje následující typy událostí:
 
 | Typ události | Popis |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | Vyvolá, když souřadnice přijatých přesunuty z mimo danou monitorové geografické zóny pro v rámci |
-| Microsoft.Maps.GeofenceExited | Vyvolá, když souřadnice přijatých přesunuty z v rámci danou monitorové geografické zóny na mimo |
-| Microsoft.Maps.GeofenceResult | Vyvoláno pokaždé, když monitorování geografických zón dotaz vrátí výsledek, bez ohledu na stav |
+| Microsoft.Maps.GeofenceEntered | Vyvolá se, když se přijaté souřadnice přesunuly mimo danou geografickou oblast do v rámci. |
+| Microsoft.Maps.GeofenceExited | Vyvolá se, když se přijaté souřadnice přesunuly z dané geografické oblasti na vnější. |
+| Microsoft.Maps.GeofenceResult | Vyvoláno pokaždé, když dotaz monitorování geografických zón vrátí výsledek bez ohledu na stav. |
 
 ## <a name="event-examples"></a>Příklady událostí
 
-Následující příklad ukazuje schématu **GeofenceEntered** událostí
+Následující příklad ukazuje schéma události **GeofenceEntered**
 
 ```JSON
 {   
@@ -60,7 +60,7 @@ Následující příklad ukazuje schématu **GeofenceEntered** událostí
 }
 ```
 
-Následující příklad ukazuje schématu pro **GeofenceResult** 
+Následující příklad ukazuje schéma pro **GeofenceResult** 
 
 ```JSON
 {   
@@ -100,70 +100,70 @@ Následující příklad ukazuje schématu pro **GeofenceResult**
 
 ## <a name="event-properties"></a>Vlastnosti události
 
-Událost má následující dat nejvyšší úrovně:
+Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| topic | string | Úplné prostředků cesta ke zdroji události. Toto pole není zapisovatelná. Event gridu poskytuje tuto hodnotu. |
-| subject | string | Vydavatel definované cesta předmět události. |
-| eventType | string | Jeden z typů registrované události pro tento zdroj událostí. |
-| eventTime | string | Vygenerování události podle času UTC poskytovatele. |
-| id | string | Jedinečný identifikátor pro událost. |
-| data | object | Data události monitorování geografických zón. |
-| dataVersion | string | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
-| metadataVersion | string | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
+| téma | string | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| subject | string | Cesta definovaná vydavatelem k předmětu události |
+| eventType | string | Jeden z registrovaných typů událostí pro tento zdroj události. |
+| eventTime | string | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| id | string | Jedinečný identifikátor události |
+| data | objekt | Data události geografických zón. |
+| dataVersion | string | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| apiCategory | string | Rozhraní API kategorie události. |
-| apiName | string | Název rozhraní API události. |
-| issues | object | Uvádí problémy během zpracovávání. Pokud jsou vráceny všechny problémy, pak nebudou žádná geometrie odpověď se vrátí. |
+| apiCategory | string | Kategorie rozhraní API události |
+| apiName | string | Název rozhraní API události |
+| problémy | objekt | Zobrazí seznam problémů zjištěných během zpracování. Pokud se vrátí nějaké problémy, nevrátí se s odpovědí žádné geometrií. |
 | responseCode | číslo | Kód odpovědi HTTP |
-| geometries | object | Seznamy ohrazení geometrie, které obsahují souřadnice umístění nebo překrývat searchBuffer kolem pozici. |
+| geometrie | objekt | Obsahuje seznam geometrií plotu, který obsahuje polohu souřadnic nebo překrývá searchBuffer kolem pozice. |
 
-Objekt error je vrácena, když dojde k chybě v rozhraní API pro mapy. Objekt error má následující vlastnosti:
-
-| Vlastnost | Typ | Popis |
-| -------- | ---- | ----------- |
-| error | ErrorDetails |Tento objekt je vrácen, pokud dojde k chybě v rozhraní API pro mapy  |
-
-Když dojde k chybě v rozhraní API pro mapy, je vrácen objekt detaily chyby. Detaily chyby nebo objekt má následující vlastnosti:
+Objekt Error se vrátí, když dojde k chybě v rozhraní API služby Maps. Objekt Error má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| code | string | Stavový kód HTTP. |
-| message | string | Pokud je k dispozici, lidské čitelný popis chyby. |
-| innererror | InnerError | Pokud je k dispozici, objekt, který obsahuje konkrétní službu informace o této chybě. |
+| chyba | ErrorDetails |Tento objekt se vrátí, když dojde k chybě v rozhraní API mapy.  |
 
-InnerError je objekt, který obsahuje konkrétní službu informace o této chybě. Objekt InnerError má následující vlastnosti: 
+Objekt ErrorDetails se vrátí, když dojde k chybě v rozhraní API služby Maps. ErrorDetails nebo objekt mají následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| code | string | Chybová zpráva. |
+| code | string | Stavový kód HTTP |
+| zpráva | string | V případě, že je k dispozici, čitelný popis chyby. |
+| innererror | InnerError | Je-li k dispozici, objekt obsahující informace o chybě konkrétní služby. |
 
-Objekt geometrie uvádí geometrie ID monitorovaná geografická zóna, které vypršely relativní vůči času uživatele v požadavku. Geometrie objektu má geometrie položky s následujícími vlastnostmi: 
+InnerError je objekt, který obsahuje informace o chybě specifické pro danou službu. Objekt InnerError má následující vlastnosti: 
+
+| Vlastnost | Typ | Popis |
+| -------- | ---- | ----------- |
+| code | string | Chybová zpráva |
+
+Objekt geometrií vypisuje ID geometrie geografických zón, jejichž platnost vypršela relativně k času uživatele v žádosti. Objekt geometrií obsahuje geometrické položky s následujícími vlastnostmi: 
 
 | Vlastnost | Typ | Popis |
 |:-------- |:---- |:----------- |
-| deviceid | string | ID zařízení. |
-| distance | string | <p>Vzdálenost od souřadnice na nejbližší okraj monitorové geografické zóny. Pozitivní znamená, že bod se souřadnicemi je mimo monitorové geografické zóny. Pokud bod se souřadnicemi je mimo monitorové geografické zóny, ale větší než hodnota searchBuffer mimo hranice nejbližší monitorové geografické zóny, hodnota je 999. Negativní znamená, že bod se souřadnicemi je uvnitř monitorové geografické zóny. Pokud bod se souřadnicemi je uvnitř mnohoúhelníku, ale větší než hodnota searchBuffer mimo hranice nejbližší monitorování geografických zón, hodnota je-999. Hodnota 999 znamená, že je skvělé spolehlivosti bod se souřadnicemi je také mimo monitorové geografické zóny. Hodnota-999 znamená, že je skvělé spolehlivosti bod se souřadnicemi je dobře uvnitř monitorové geografické zóny.<p> |
-| geometryid |string | Jedinečné id identifikuje geometrie monitorové geografické zóny. |
-| nearestlat | číslo | Zeměpisná šířka nejbližší bod geometrii. |
-| nearestlon | číslo | Zeměpisná délka nejbližší bod geometrii. |
-| udId | string | Jedinečné id vrácená služba nahrávání uživatele při nahrávání monitorové geografické zóny. Nebudou zahrnuty v rozhraní API příspěvku monitorování geografických zón. |
+| deviceid | string | ID zařízení |
+| vzdálenost | string | <p>Vzdálenost od souřadnice k nejbližšímu okraji geografického ohraničení. Kladné znamená, že souřadnice je mimo geografickou oblast. Pokud je souřadnice mimo geografickou oblast, ale více než hodnota searchBuffer od nejbližšího ohraničení geografické oblasti, pak je hodnota 999. Záporné znamená, že souřadnice jsou uvnitř geografického ohraničení. Pokud je souřadnice uvnitř mnohoúhelníku, ale více než hodnota searchBuffer od nejbližšího ohraničení geografického plotu, pak je hodnota-999. Hodnota 999 znamená, že je velmi jistota, že je souřadnice dobře mimo geografickou oblast. Hodnota-999 znamená, že je zajistěte velkou jistotu, že je souřadnice dobře v geografickém rozsahu.<p> |
+| geometryid |string | Jedinečné ID identifikuje geometrii geografické plotu. |
+| nearestlat | číslo | Zeměpisná šířka nejbližšího bodu geometrie |
+| nearestlon | číslo | Zeměpisná délka nejbližšího bodu geometrie |
+| udId | string | Jedinečné ID vrácené ze služby nahrávání uživatele při nahrávání geografického ohraničení. Nebude součástí rozhraní API pro monitorování geografických zón. |
 
 Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| expiredGeofenceGeometryId | řetězec] | Seznam ID geometrie monitorové geografické zóny, který je relativní vůči času uživatele v požadavku vypršel. |
-| geometries | [] geometrie |Seznamy ohrazení geometrie, které obsahují souřadnice umístění nebo překrývat searchBuffer kolem pozici. |
-| invalidPeriodGeofenceGeometryId | řetězec]  | Seznam ID geometrie monitorové geografické zóny, který je v neplatná perioda. relativní vůči času uživatele v požadavku. |
-| isEventPublished | Boolean | Hodnota TRUE alespoň jednu událost je publikování na Azure Maps odběratel událostí, false, pokud žádná událost se publikuje na předplatitele Azure Maps události. |
+| expiredGeofenceGeometryId | řetězec [] | Seznam ID geometrie geografického přístupnosti, jehož platnost vypršela vzhledem k času uživatele v žádosti. |
+| geometrie | geometrií [] |Obsahuje seznam geometrií plotu, který obsahuje polohu souřadnic nebo překrývá searchBuffer kolem pozice. |
+| invalidPeriodGeofenceGeometryId | řetězec []  | Seznam ID geometrie geograficky, která je v neplatném období vzhledem k času uživatele v žádosti. |
+| isEventPublished | Boolean | True, pokud je alespoň jedna událost publikovaná do odběratele události Azure Maps, false, pokud není žádná událost publikovaná do předplatitele události Azure Maps. |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Úvod do služby Azure Event Grid najdete v tématu [novinky služby Event Grid?](overview.md)
-* Další informace o vytváření předplatného služby Azure Event Grid najdete v tématu [schéma předplatného služby Event Grid](subscription-creation-schema.md).
+* Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](overview.md)
+* Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md).
