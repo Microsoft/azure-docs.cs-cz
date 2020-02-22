@@ -7,14 +7,14 @@ ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
-ms.date: 02/12/2020
+ms.date: 02/20/2020
 ms.topic: overview
-ms.openlocfilehash: 33681d5c9e296d7c292dabbd64560e3d95c45af2
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: a2551791426c246df278e09cea9cec64a6bc019f
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190311"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539293"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure ARC pro servery (Preview)
 
@@ -49,7 +49,7 @@ Ve většině případů umístění, které vyberete při vytváření instala�
 
 Pro agenta připojeného počítače Azure jsou oficiálně podporované následující verze operačního systému Windows a Linux: 
 
-- Windows Server 2012 R2 a vyšší
+- Windows Server 2012 R2 a vyšší (včetně jádra Windows serveru)
 - Ubuntu 16,04 a 18,04
 
 >[!NOTE]
@@ -65,6 +65,15 @@ Pro agenta připojeného počítače Azure jsou oficiálně podporované násled
 ### <a name="azure-subscription-and-service-limits"></a>Omezení předplatného a služeb Azure
 
 Před konfigurací počítačů pomocí Azure ARC pro servery (Preview) byste měli zkontrolovat [omezení Azure Resource Manager předplatného](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) a [skupiny prostředků](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) pro plánování počtu počítačů, které se mají připojit.
+
+## <a name="tls-12-protocol"></a>Protokol TLS 1.2
+
+Abychom zajistili zabezpečení dat při přenosu do Azure, důrazně doporučujeme nakonfigurovat počítač tak, aby používal protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje**se. 
+
+|Platformu nebo jazyk | Podpora | Další informace |
+| --- | --- | --- |
+|Linux | Distribuce systému Linux se obvykle spoléhají na [OpenSSL](https://www.openssl.org) pro podporu TLS 1,2. | Zkontrolujte [OpenSSL protokolu změn](https://www.openssl.org/news/changelog.html) a potvrďte, že je podporovaná vaše verze OpenSSL.|
+| Windows Server 2012 R2 a vyšší | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).|
 
 ### <a name="networking-configuration"></a>Konfigurace sítě
 
@@ -130,6 +139,12 @@ Balíček agenta připojeného počítače Azure pro Windows a Linux si můžete
 >[!NOTE]
 >V této verzi Preview byl vydán pouze jeden balíček, který je vhodný pro Ubuntu 16,04 nebo 18,04.
 
+Agenta připojeného počítače Azure pro Windows a Linux se dá upgradovat na nejnovější verzi ručně nebo automaticky v závislosti na vašich požadavcích. V případě systému Windows může být aktualizace agenta automaticky zajištěna pomocí web Windows Update a pro Ubuntu pomocí nástroje příkazového řádku [apt](https://help.ubuntu.com/lts/serverguide/apt.html) .
+
+### <a name="agent-status"></a>Stav agenta
+
+Agent připojeného počítače pošle službě pravidelné zprávy prezenčního signálu každých 5 minut. Pokud se jeden z těchto 15 minut nepřijme, počítač se považuje za offline a na portálu se automaticky změní stav na **Odpojeno** . Po přijetí následné zprávy prezenčního signálu od připojeného agenta počítače se jeho stav automaticky změní na **připojeno**.
+
 ## <a name="install-and-configure-agent"></a>Instalace a konfigurace agenta
 
 Propojení počítačů ve vašem hybridním prostředí s Azure je možné dosáhnout pomocí různých metod v závislosti na vašich požadavcích. Následující tabulka zvýrazňuje jednotlivé metody, abyste zjistili, které funkce jsou pro vaši organizaci nejvhodnější.
@@ -138,7 +153,6 @@ Propojení počítačů ve vašem hybridním prostředí s Azure je možné dos�
 |--------|-------------|
 | Interaktivně | Ručně nainstalujte agenta na jeden nebo malý počet počítačů podle postupu v části [připojení počítačů od Azure Portal](onboard-portal.md).<br> Z Azure Portal můžete vygenerovat skript a spustit ho na počítači, abyste mohli automatizovat kroky instalace a konfigurace agenta.|
 | Ve velkém měřítku | Nainstalujte a nakonfigurujte agenta pro více počítačů, které následují po [připojení počítačů pomocí instančního objektu](onboard-service-principal.md).<br> Tato metoda vytvoří instanční objekt pro připojení počítačů, které nejsou interaktivně.|
-
 
 ## <a name="next-steps"></a>Další kroky
 

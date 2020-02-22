@@ -1,17 +1,17 @@
 ---
 title: Vývoj aplikace v Kubernetes
 services: azure-dev-spaces
-ms.date: 07/08/2019
+ms.date: 02/20/2020
 ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a příkazový řádek pro vývoj aplikace ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 553c316587d27e0921fbbbf78b02ddb048532c43
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 240d4817b507b4b47e0f022c2990c3da0d645e89
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867251"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538426"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Rychlý Start: vývoj aplikace na Kubernetes-Azure Dev Spaces
 V tomto průvodci se naučíte:
@@ -19,7 +19,7 @@ V tomto průvodci se naučíte:
 - Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
 - Vývoj a spouštění kódu v kontejnerech pomocí příkazového řádku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)
@@ -76,7 +76,7 @@ Aby bylo možné spustit aplikaci na Azure Dev Spaces, potřebujete graf souboru
 Vygenerujte prostředky Docker a Helm Chart pro spuštění aplikace v Kubernetes pomocí příkazu `azds prep`:
 
 ```cmd
-azds prep --public
+azds prep --enable-ingress
 ```
 
 Chcete-li správně vygenerovat prostředky Docker a Helm Chart, je nutné spustit příkaz `prep` z adresáře *dev-Spaces/Samples/NodeJS/Začínáme/webfront-Endu* .
@@ -119,7 +119,7 @@ Pokud příkaz `azds up` zastavíte pomocí *kombinace kláves Ctrl + c*, služb
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit příkaz `azds up`. Příklad:
+Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit příkaz `azds up`. Například:
 
 1. Pokud je stále spuštěna `azds up`, stiskněte klávesy *Ctrl + c*.
 1. Aktualizujte [řádek 13 v `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) na:
