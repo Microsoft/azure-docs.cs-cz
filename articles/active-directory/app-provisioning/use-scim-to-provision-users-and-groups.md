@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb1a57c5b18f1da25e3843b55e86705d05f43c5
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: d9ebeb0db14a42f090a629e379d88e00867bda65
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522335"
+ms.locfileid: "77538171"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure Active Directory (Azure AD)
 
@@ -63,7 +63,7 @@ Každá aplikace vyžaduje pro vytvoření uživatele nebo skupiny jiné atribut
 |workMail|E-maily [typ EQ "Work"]. Value|Pošta|
 |Správce|Správce|Správce|
 |tag|urn: IETF: params: SCIM: schémata: rozšíření: 2.0: CustomExtension: tag|extensionAttribute1|
-|stav|aktivní|isSoftDeleted (vypočtená hodnota neuložená na uživateli)|
+|status|aktivní|isSoftDeleted (vypočtená hodnota neuložená na uživateli)|
 
 Výše definované schéma by představovalo použití datové části JSON níže. Všimněte si, že kromě atributů vyžadovaných pro aplikaci obsahuje reprezentace JSON požadované atributy ID, externalId a meta.
 
@@ -106,7 +106,7 @@ Pak můžete pomocí následující tabulky porozumět tomu, jak atributy, kter�
 | Ve TelephoneNumber |phoneNumbers [typ eq "fax"] .value |
 | givenName |name.givenName |
 | pracovní funkce |Název |
-| pošta |e-mailů [typ eq "pracovní"] .value |
+| e-mailu |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |externalId |
 | Správce |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager |
 | Mobilní zařízení |phoneNumbers [eq typ "mobilní"] .value |
@@ -124,9 +124,9 @@ Pak můžete pomocí následující tabulky porozumět tomu, jak atributy, kter�
 | Skupina Azure Active Directory | urn:ietf:params:scim:schemas:core:2.0:Group |
 | --- | --- |
 | displayName |displayName |
-| pošta |e-mailů [typ eq "pracovní"] .value |
+| e-mailu |e-mailů [typ eq "pracovní"] .value |
 | mailNickname |displayName |
-| členy |členy |
+| členové |členové |
 | ID objektu |externalId |
 | proxyAddresses |e-mailů [Zadejte eq "other"]. Hodnota |
 
@@ -543,7 +543,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
     }
 }
 ```
-#### <a name="delete-user"></a>Odstranit uživatele
+#### <a name="delete-user"></a>Odstranění uživatele
 
 ##### <a name="request-6"></a>Request
 
@@ -560,7 +560,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 * Aktualizace žádosti o opravu skupiny by měla v odpovědi vracet *HTTP 204 bez obsahu* . Vrácení textu se seznamem všech členů není vhodné.
 * Není nutné podporovat vrácení všech členů skupiny.
 
-#### <a name="create-group"></a>Vytvořit skupinu
+#### <a name="create-group"></a>Vytvoření skupiny
 
 ##### <a name="request-7"></a>Request
 
@@ -712,7 +712,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 *HTTP/1.1 204 bez obsahu*
 
-#### <a name="delete-group"></a>Odstranit skupinu
+#### <a name="delete-group"></a>Odstranění skupiny
 
 ##### <a name="request-13"></a>Request
 
@@ -1448,12 +1448,13 @@ Pokud vytváříte aplikaci, kterou bude používat víc než jeden tenant, mů�
 ### <a name="gallery-onboarding-checklist"></a>Kontrolní seznam pro registraci galerie
 Postupujte podle níže uvedeného kontrolního seznamu a ujistěte se, že je vaše aplikace rychlá a zákazníci mají hladké prostředí pro nasazení. Informace budou shromažďovány od vás při připojování k galerii. 
 > [!div class="checklist"]
-> * [Podpora SCIM 2,0](https://tools.ietf.org/html/draft-wahl-scim-profile-00) (povinné)
+> * Podpora koncového bodu uživatelů a skupin [SCIM 2,0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) (je vyžadována pouze jedna, ale doporučuje se obě)
 > * Podpora minimálně 25 požadavků za sekundu na tenanta (povinné)
-> * Podpora zjišťování schématu (doporučeno)
 > * Podpora udělení autorizačního kódu OAuth nebo dlouhého nedlouhodobého tokenu, jak je popsáno níže (povinné)
-> * Vytvoření technického a podpůrného kontaktního bodu pro podporu registrace Galerie zákazníkům po registraci (povinné)
+> * Zřízení technického a podpůrného kontaktního bodu pro podporu zákazníků po registraci galerie (povinné)
+> * Podpora aktualizace více členství ve skupině s jednou OPRAVou (doporučeno) 
 > * Veřejně zdokumentujte svůj koncový bod SCIM (doporučeno) 
+> * [Podpora zjišťování schématu](https://tools.ietf.org/html/rfc7643#section-6) (doporučeno)
 
 
 ### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autorizace pro zřizovací konektory v galerii aplikací

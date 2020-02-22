@@ -3,12 +3,12 @@ title: Azure Functions – přehled verzí modulu runtime
 description: Azure Functions podporuje více verzí modulu runtime. Přečtěte si o rozdílech mezi nimi a o tom, jak zvolit tu, která je pro vás nejvhodnější.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290372"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539497"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions – přehled verzí modulu runtime
 
@@ -38,7 +38,7 @@ Další informace najdete v tématu [Podporované jazyky](supported-languages.md
 
 ## <a name="creating-1x-apps"></a>Spustit na konkrétní verzi
 
-Ve výchozím nastavení jsou aplikace Function App vytvořené v Azure Portal a Azure CLI nastavené na verzi 2. x. Tuto verzi můžete podle potřeby upravit. Verzi modulu runtime můžete změnit až na 1. x po vytvoření aplikace Function App, ale před přidáním jakýchkoli funkcí.  Přesun mezi 2. x a 3. x je povolený i u aplikací, které mají funkce, ale přesto se doporučuje nejdřív otestovat novou aplikaci.
+Ve výchozím nastavení jsou aplikace Function App vytvořené v Azure Portal a pomocí Azure CLI nastavené na verzi 3. x. Tuto verzi můžete podle potřeby upravit. Verzi modulu runtime můžete změnit až na 1. x po vytvoření aplikace Function App, ale před přidáním jakýchkoli funkcí.  Přesun mezi 2. x a 3. x je povolený i u aplikací, které mají funkce, ale přesto se doporučuje nejdřív otestovat novou aplikaci.
 
 ## <a name="migrating-from-1x-to-later-versions"></a>Migrace z 1. x na novější verze
 
@@ -202,7 +202,7 @@ Následující tabulka ukazuje, které vazby jsou podporovány v každé verzi m
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace najdete v následujících zdrojích:
 
 * [Místní psaní kódu a testování funkcí Azure Functions](functions-run-local.md)
 * [Jak cílit na verze modulu runtime Azure Functions](set-runtime-version.md)

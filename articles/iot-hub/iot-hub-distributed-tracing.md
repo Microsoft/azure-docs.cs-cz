@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: ed477dddeb499023f4803929d9433ed37c302159
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: c3291746558dbec2147ebea24eadd0febd317033
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212489"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539531"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv ze zařízení do cloudu Azure IoT pomocí distribuované trasování (Preview)
 
@@ -30,7 +30,7 @@ Povolení distribuovaného trasování pro IoT Hub vám dává možnost:
 
 V tomto článku použijete [sadu SDK pro zařízení Azure IoT pro jazyk C](iot-hub-device-sdk-c-intro.md) s distribuovaným trasováním. Podpora distribuovaného trasování pro ostatní sady SDK stále probíhá.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Verze Preview distribuovaného trasování je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
 
@@ -244,10 +244,10 @@ Pokud chcete aktualizovat konfiguraci pro vzorkování distribuovaného trasová
 }
 ```
 
-| Název elementu | Požadováno | Typ | Popis |
+| Název elementu | Požaduje se | Typ | Popis |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Ano | Celé číslo | Pro zapnutí a vypnutí vzorkování se aktuálně podporují dvě hodnoty režimu. `1` je zapnuto a, `2` je vypnutý. |
-| `sampling_rate` | Ano | Celé číslo | Tato hodnota je procento. Povolují se jenom hodnoty z `0` do `100` (včetně).  |
+| `sampling_mode` | Ano | Integer | Pro zapnutí a vypnutí vzorkování se aktuálně podporují dvě hodnoty režimu. `1` je zapnuto a, `2` je vypnutý. |
+| `sampling_rate` | Ano | Integer | Tato hodnota je procento. Povolují se jenom hodnoty z `0` do `100` (včetně).  |
 
 ## <a name="query-and-visualize"></a>Dotazování a vizualizace
 
@@ -267,7 +267,7 @@ AzureDiagnostics
 
 Příklady protokolů, jak je znázorněno Log Analytics:
 
-| TimeGenerated | OperationName | Kategorie | Level | CorrelationId | Trvání v MS | Vlastnosti |
+| TimeGenerated | OperationName | Kategorie | Úroveň | CorrelationId | Trvání v MS | Vlastnosti |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
 | 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | Informační | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |
@@ -308,8 +308,8 @@ Po povolení bude podpora distribuovaného trasování pro IoT Hub postupovat po
 1. Zařízení IoT zprávu pošle IoT Hub.
 1. Zpráva se dorazí do brány služby IoT Hub.
 1. IoT Hub vyhledá `tracestate` ve vlastnostech aplikace zprávy a zkontroluje, jestli je ve správném formátu.
-1. Pokud ano, IoT Hub vygeneruje a zaprotokoluje `trace-id` a `span-id` pro Azure Monitor diagnostické protokoly v kategorii `DiagnosticIoTHubD2C`.
-1. Po dokončení zpracování zprávy IoT Hub vygeneruje další `span-id` a zaprotokoluje ho spolu s existujícím `trace-id` v `DiagnosticIoTHubIngress`kategorie.
+1. Pokud ano, IoT Hub vygeneruje globálně jedinečný `trace-id` zprávy, `span-id` pro segment směrování a zaprotokoluje je do Azure Monitor diagnostických protokolů v rámci operace `DiagnosticIoTHubD2C`.
+1. Po dokončení zpracování zprávy IoT Hub vygeneruje další `span-id` a zaprotokoluje ho spolu s existujícím `trace-id` v `DiagnosticIoTHubIngress`operace.
 1. Pokud je pro zprávu povoleno směrování, IoT Hub zapíše do vlastního koncového bodu a zaprotokoluje další `span-id` se stejným `trace-id` v `DiagnosticIoTHubEgress`kategorie.
 1. Výše uvedené kroky se opakují pro každou vygenerovanou zprávu.
 

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ea7a62210f48b216d3f98f6359447eacf15cf821
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460795"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539395"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání analyzátorů jazyka do polí řetězců v indexu Azure Kognitivní hledání
 
@@ -44,7 +44,7 @@ Výchozím analyzátorem je standardní Lucene, který funguje dobře pro angli�
  
 + Analyzátor angličtiny pro Lucene v angličtině rozšiřuje standardní analyzátor. Odebere possessives (koncovou) z slov, aplikuje odvozování na Porter lemmatizátor Algorithm a odebere anglická slova o stopách.  
 
-+ Microsoft English Analyzer vykonává lemmatizátor nebo předzpracování místo odvozování. To znamená, že dokáže zvládnout inflected a nepravidelně formulované wordové formy mnohem lepší, což vede k relevantnějším výsledkům vyhledávání. 
++ Microsoft English Analyzer vykonává lemmatizátor nebo předzpracování místo odvozování. To znamená, že může zpracovávat inflected a nepravidelně větší množství slov, což má za následek relevantnější výsledky hledání. 
 
 ## <a name="configuring-analyzers"></a>Konfigurace analyzátorů
 
@@ -90,9 +90,9 @@ Další informace o vlastnostech indexu najdete v tématu [vytvoření indexu &#
 |Islandština|is.microsoft||  
 |Indonéština (Bahasa)|id.microsoft|ID. Lucene|  
 |Irština||GA. Lucene|  
-|italština|it.microsoft|IT. Lucene|  
+|Italština|it.microsoft|IT. Lucene|  
 |Japonština|ja.microsoft|Ja. Lucene|  
-|Kannadština|kn.microsoft||  
+|Kannada|kn.microsoft||  
 |Korejština|ko.microsoft|Ko. Lucene|  
 |Lotyština|lv.microsoft|Lotyšsko. Lucene|  
 |Litevština|lt.microsoft||  
@@ -101,12 +101,12 @@ Další informace o vlastnostech indexu najdete v tématu [vytvoření indexu &#
 |Maráthština|mr.microsoft||  
 |norština|nb.microsoft|Ne. Lucene|  
 |Perština||FA. Lucene|  
-|polština|pl.microsoft|pl. Lucene|  
+|Polština|pl.microsoft|pl. Lucene|  
 |Portugalština (Brazílie)|pt-Br.microsoft|pt-br. Lucene|  
 |Portugalština (Portugalsko)|pt-Pt.microsoft|pt-PT. Lucene|  
 |Paňdžábština|pa.microsoft||  
 |Rumunština|ro.microsoft|ro. Lucene|  
-|ruština|ru.microsoft|ru. Lucene|  
+|Ruština|ru.microsoft|ru. Lucene|  
 |Srbština (cyrilice)|sr-cyrillic.microsoft||  
 |Srbština (latinka)|sr-latin.microsoft||  
 |Slovenština|sk.microsoft||  
@@ -116,14 +116,14 @@ Další informace o vlastnostech indexu najdete v tématu [vytvoření indexu &#
 |Tamilština|ta.microsoft||  
 |Telugština|te.microsoft||  
 |Thajština|th.microsoft|th. Lucene|  
-|turečtina|tr.microsoft|TR. Lucene|  
+|Turečtina|tr.microsoft|TR. Lucene|  
 |Ukrajinština|uk.microsoft||  
 |Urdština|ur.microsoft||  
 |Vietnamština|vi.microsoft||  
 
  Všechny analyzátory s názvy popsanými pomocí **Lucene** jsou napájené z [analyzátorů jazyka Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 
-## <a name="see-also"></a>Další informace najdete v tématech  
+## <a name="see-also"></a>Viz také  
 
 + [Vytvoření indexu &#40;služby Azure kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 

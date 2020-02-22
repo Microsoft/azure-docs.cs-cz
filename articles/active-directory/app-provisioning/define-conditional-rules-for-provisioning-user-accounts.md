@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e48388d4e15923c1f3e66321132197670b30c6b9
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 12ba93a7e3de3c290d5952227b67843c0a9846d3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522556"
+ms.locfileid: "77544262"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -98,10 +98,12 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
    i. **Greater_Than.** Klauzule vrátí "true", pokud je vyhodnocený atribut větší než hodnota. Hodnota zadaná ve filtru oboru musí být celé číslo a atribut na tomto uživateli musí být celé číslo [0, 1, 2,...]. 
    
    j. **Greater_Than_OR_EQUALS.** Klauzule vrátí "true", pokud je vyhodnocený atribut větší nebo roven hodnotě. Hodnota zadaná ve filtru oboru musí být celé číslo a atribut na tomto uživateli musí být celé číslo [0, 1, 2,...]. 
+   
+   k. **Zahrnující.** Klauzule vrátí "true", pokud vyhodnocený atribut obsahuje hodnotu řetězce (rozlišuje velká a malá písmena), jak je popsáno [zde](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8). 
 
 
 >[!IMPORTANT] 
-> Filtry include a MemberOf nejsou podporovány. Budou brzy odebrány z uživatelského rozhraní.
+> Filtr $ MemberOf není aktuálně podporován.
 
 9. Volitelně můžete opakováním kroků 7-8 přidat další klauzule rozsahu.
 

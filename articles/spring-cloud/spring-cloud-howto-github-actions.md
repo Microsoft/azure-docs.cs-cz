@@ -6,18 +6,18 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 303f24ef6d934c0382bd8917833e3ec545f2a540
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776479"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538460"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure jarní Cloud CI/CD s akcemi GitHubu
 
 Akce GitHubu podporují automatizovaný pracovní postup pro životní cyklus vývoje softwaru. S akcemi GitHubu pro jarní cloud Azure můžete vytvářet pracovní postupy v úložišti pro vytváření, testování, balení, vydávání a nasazování do Azure. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Tento příklad vyžaduje rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="set-up-github-repository-and-authenticate"></a>Nastavení úložiště GitHub a ověření
@@ -79,6 +79,7 @@ Vytvořte soubor `.github/workflow/main.yml` v úložišti:
 
 ```
 name: AzureSpringCloud
+on: push
 
 env:
   GROUP: <resource group name>
@@ -125,6 +126,7 @@ Příkaz AZ `run` použije nejnovější verzi rozhraní příkazového řádku 
 V úložišti vytvořte soubor. GitHub/Workflow/Main. yml:
 ```
 name: AzureSpringCloud
+on: push
 
 jobs:
   build-and-deploy:
@@ -165,6 +167,7 @@ Další možností je použít [modul plug-in Maven](https://docs.microsoft.com/
 
 ```
 name: AzureSpringCloud
+on: push
 
 jobs:
   build-and-deploy:
@@ -194,7 +197,7 @@ jobs:
         mvn azure-spring-cloud:deploy
 ```
 
-## <a name="run-the-workflow"></a>Spustit pracovní postup
+## <a name="run-the-workflow"></a>Spuštění workflowu
 **Akce** GitHubu by se měly povolit automaticky po nabízení `.github/workflow/main.yml` do GitHubu. Akce bude aktivována při vložení nového potvrzení změn. Pokud tento soubor vytvoříte v prohlížeči, měla by být akce již spuštěna.
 
 Chcete-li ověřit, zda byla akce povolena, klikněte na kartu **Akce** na stránce úložiště GitHub:

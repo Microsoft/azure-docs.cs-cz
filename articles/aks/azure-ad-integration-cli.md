@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: mlearned
-ms.openlocfilehash: 520557c80bf2630a359188dd86ec0987e0d5326b
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 32138c228284f9487b816583dd1f701556bbcb95
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77158141"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544211"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>Integrace Azure Active Directory se službou Azure Kubernetes pomocí Azure CLI
 
@@ -77,7 +77,7 @@ serverApplicationSecret=$(az ad sp credential reset \
 
 Služba Azure AD potřebuje oprávnění k provádění následujících akcí:
 
-* Číst data z adresáře
+* Čtení dat z adresáře
 * Přihlášení a čtení profilu uživatele
 
 Přiřaďte tato oprávnění pomocí příkazu [AZ AD App Permission Add][az-ad-app-permission-add] :
@@ -123,7 +123,7 @@ oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Perm
 Přidejte oprávnění pro klientské aplikace a součásti serverové aplikace, aby používaly komunikační tok oAuth2 pomocí příkazu [AZ AD App Permission Add][az-ad-app-permission-add] . Pak udělte klientské aplikaci oprávnění ke komunikaci s aplikací serveru pomocí příkazu [AZ AD App oprávnění grant][az-ad-app-permission-grant] :
 
 ```azurecli-interactive
-az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions $oAuthPermissionId=Scope
+az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions ${oAuthPermissionId}=Scope
 az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 ```
 

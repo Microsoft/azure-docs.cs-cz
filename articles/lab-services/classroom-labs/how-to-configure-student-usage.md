@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9fda1295bcdcd44b8a92c101c2aa445197ce6d4a
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169212"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539149"
 ---
 # <a name="add-and-manage-lab-users"></a>Přidání a správa uživatelů testovacího prostředí
 Tento článek popisuje, jak přidat uživatele do testovacího prostředí, získat je zaregistrované v testovacím prostředí a určit počet hodin, po které může virtuální počítač používat, a další. 
@@ -35,7 +35,7 @@ Tento článek popisuje, jak přidat uživatele do testovacího prostředí, zí
     ![Přidat e-mailové adresy uživatele](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. Vyberte **Save** (Uložit). V seznamu se zobrazí e-mailové adresy uživatelů a jejich stavů (registrovaných nebo ne). 
 
-    ![Seznam uživatelů](../media/how-to-configure-student-usage/users-list-new.png)
+    ![Seznam uživatelů](../media/how-to-configure-student-usage/list-of-added-users.png)
 
     > [!NOTE]
     > Po registraci do testovacího prostředí se v seznamu zobrazí jména uživatelů. Název zobrazený v seznamu je vytvořený pomocí jména a příjmení uživatele v Azure Active Directory. 
@@ -101,11 +101,14 @@ Můžete taky získat odkaz na registraci z portálu a odeslat ho pomocí vlastn
 2. V dialogovém okně **registrace uživatele** vyberte možnost **Hotovo**. 
 4. Pošlete **registrační odkaz** studentovi, aby se mohl student zaregistrovat pro třídu. 
 
-## <a name="view-users-registered-with-the-lab"></a>Zobrazení uživatelů zaregistrovaných do testovacího prostředí
+## <a name="view-registered-users"></a>Zobrazit registrované uživatele
 
-V nabídce vlevo vyberte **Uživatelé** a zobrazí se seznam uživatelů registrovaných v testovacím prostředí. 
+1. Přejděte na [web Azure Lab Services](https://labs.azure.com). 
+2. Vyberte **Sign in** (Přihlásit se) a zadejte své přihlašovací údaje. Azure Lab Services podporuje účty organizací a účty Microsoft.
+3. Na stránce **My labs** (Moje testovací prostředí) vyberte testovací prostředí, jehož využití chcete sledovat. 
+4. V levé nabídce nebo na dlaždici **Uživatelé** vyberte **Uživatelé** . Zobrazí se studenti, kteří se zaregistrovali do vašeho testovacího prostředí.  
 
-![Seznam uživatelů registrovaných v testovacím prostředí](../media/how-to-configure-student-usage/students-registered.png)
+    ![Registrovaní uživatelé](../media/tutorial-track-usage/registered-users.png)
 
 ## <a name="set-quotas-for-users"></a>Nastavit kvóty pro uživatele
 Kvóty na uživatele můžete nastavit pomocí následujících kroků: 
@@ -115,7 +118,7 @@ Kvóty na uživatele můžete nastavit pomocí následujících kroků:
 3. Na stránce **kvóta na uživatele** zadejte počet hodin, který chcete každému uživateli (studentovi) poskytnout mimo plánovaný čas třídy, a pak vyberte **Uložit**.
 
     ![Kvóta na uživatele](../media/how-to-configure-student-usage/quota-per-user.png)    
-5. Změněné hodnoty na panelu nástrojů teď vidíte: **kvóta pro uživatele: \<počet hodin >** . 
+5. Změněné hodnoty na panelu nástrojů teď vidíte: **kvóta pro uživatele: \<počet hodin >** a taky v seznamu uživatelů.
 
     ![Kvóta na uživatele – po](../media/how-to-configure-student-usage/quot-per-user-after.png)
 

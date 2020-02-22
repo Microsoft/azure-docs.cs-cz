@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s připojením k privátním linkám Azure
+title: Řešení potíží s připojením ke službě Azure Private Link
 description: Podrobné pokyny pro diagnostiku připojení pomocí privátního propojení
 services: private-link
 documentationcenter: na
@@ -13,26 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 0d26ad6802e551523875dcad13066fdbdbf39ada
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191041"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539463"
 ---
-# <a name="troubleshoot-private-link-service-connectivity-problems"></a>Řešení problémů s připojením služby Private Link
+# <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Řešení potíží s připojením ke službě Azure Private Link
 
-Tato příručka poskytuje podrobné pokyny, jak ověřit a diagnostikovat připojení pro instalaci služby privátních odkazů. 
+Tento článek poskytuje podrobné pokyny k ověření a diagnostice připojení pro nastavení privátního propojení Azure.
 
-Privátní odkaz Azure vám umožní přístup ke službám Azure PaaS (například Azure Storage, Azure Cosmos DB a SQL Database) a hostovaným zákazníkům a partnerským službám Azure prostřednictvím privátního koncového bodu ve vaší virtuální síti. Provoz mezi vaší virtuální sítí a službou prochází přes páteřní síť Microsoftu a eliminuje rizika vystavení na veřejném internetu. Ve své virtuální síti můžete také vytvořit vlastní službu privátního propojení a poskytnout ji soukromým uživatelům. 
+Pomocí privátního odkazu Azure získáte přístup ke službám Azure jako služby (PaaS), jako jsou Azure Storage, Azure Cosmos DB a Azure SQL Database a hostované služby zákazníkům nebo partnery v Azure prostřednictvím privátního koncového bodu ve vaší virtuální síti. Přenosy mezi vaší virtuální sítí a službou procházejí přes páteřní síť Microsoftu, která eliminuje expozici veřejného Internetu. Ve své virtuální síti můžete také vytvořit vlastní službu privátního propojení a poskytnout ji soukromým uživatelům.
 
-Službu spuštěnou za službou Azure Standard Load Balancer můžete povolit pro přístup přes soukromé odkazy. Spotřebitelé vaší služby můžou vytvořit privátní koncový bod uvnitř své virtuální sítě a namapovat ho na tuto službu, aby k nim měli přístup soukromě.
+Můžete povolit službu, která běží za standardní úrovní Azure Load Balancer pro přístup k privátním linkám. Spotřebitelé vaší služby můžou vytvořit privátní koncový bod uvnitř své virtuální sítě a namapovat ho na tuto službu, aby k nim měli přístup soukromě.
 
-Tady jsou scénáře připojení, které jsou k dispozici ve službě privátního propojení.
-- virtuální síť ze stejné oblasti 
+Tady jsou scénáře připojení, které jsou k dispozici s privátním odkazem:
+
+- virtuální síť ze stejné oblasti
 - oblastní virtuální sítě s partnerským vztahem
 - globálně partnerské virtuální sítě
-- místní zákazník přes síť VPN nebo okruhy Express Route
+- Místní zákazník přes VPN nebo okruhy Azure ExpressRoute
 
 ## <a name="deployment-troubleshooting"></a>Řešení potíží s nasazením
 
@@ -40,76 +41,75 @@ Přečtěte si informace o [zakázání zásad sítě ve službě privátního p
 
 Ujistěte se, že nastavení **privateLinkServiceNetworkPolicies** je pro podsíť, ze které vybíráte zdrojovou IP adresu, zakázané.
 
-## <a name="diagnosing-connectivity-problems"></a>Diagnostikování problémů s připojením
+## <a name="diagnose-connectivity-problems"></a>Diagnostika problémů s připojením
 
-Pokud dochází k problémům s připojením k nastavení privátního propojení, přečtěte si níže uvedené kroky a ujistěte se, že všechny běžné konfigurace jsou očekávané.
+Pokud dojde k problémům s připojením k nastavení privátních odkazů, zkontrolujte tyto kroky, abyste se ujistili, že všechny běžné konfigurace jsou očekávané.
 
-1. Kontrola konfigurace služby privátního propojení procházením prostředku 
+1. Projděte si konfiguraci privátního odkazu procházením prostředku.
 
-    a) přejít na **centrum privátních odkazů**
+    a. Přejít na **centrum privátních odkazů**.
 
       ![Centrum privátních odkazů](./media/private-link-tsg/private-link-center.png)
 
-    b) v levém navigačním podokně vyberte **služby privátního propojení** .
+    b. V levém podokně vyberte **služby privátního propojení**.
 
       ![Služby privátního propojení](./media/private-link-tsg/private-link-service.png)
 
-    c) filtr a výběr služby privátního propojení, kterou chcete diagnostikovat
+    c. Vyfiltrujte a vyberte službu privátního propojení, kterou chcete diagnostikovat.
 
-    d) Kontrola připojení privátního koncového bodu
-     - Ujistěte se, že se soukromý koncový bod, ze kterého se snažíte připojit, nachází v seznamu se **schváleným** stavem připojení. 
-     - Pokud **čeká na vyřízení**, vyberte ho a schvalte. 
+    d. Zkontrolujte připojení privátního koncového bodu.
+     - Ujistěte se, že se soukromý koncový bod, ze kterého se snažíte připojit, nachází v seznamu se **schváleným** stavem připojení.
+     - Pokud stav čeká na **vyřízení**, vyberte ho a schvalte.
 
        ![Připojení privátního koncového bodu](./media/private-link-tsg/pls-private-endpoint-connections.png)
 
-     - Kliknutím na název přejděte do privátního koncového bodu, ze kterého se připojujete. Ujistěte se, že se stav připojení zobrazuje jako **schváleno**.
+     - Vyberte název v privátním koncovém bodu, ze kterého se připojujete. Ujistěte se, že se stav připojení zobrazuje jako **schváleno**.
 
        ![Přehled připojení privátního koncového bodu](./media/private-link-tsg/pls-private-endpoint-overview.png)
 
      - Po schválení obou stran zkuste připojení znovu.
 
-    e) Zkontrolujte **alias** z karty Přehled a **ID prostředku** z karty Vlastnosti. 
-     - Ujistěte se, že **ID aliasu nebo prostředku** se shoduje s **ID aliasu nebo prostředku** , který používáte k vytvoření privátního koncového bodu pro tuto službu. 
+    e. Podívejte se na **alias** na kartě **Přehled** a na **ID prostředku** na kartě **vlastnosti** .
+     - Ujistěte se, že informace o **aliasu** a **ID prostředku** se shodují s **aliasem** a **ID prostředku** , které používáte k vytvoření privátního koncového bodu pro tuto službu.
 
-       ![Ověřit alias](./media/private-link-tsg/pls-overview-pane-alias.png)
+       ![Ověřit informace o aliasu](./media/private-link-tsg/pls-overview-pane-alias.png)
 
-       ![Ověřit ID prostředku](./media/private-link-tsg/pls-properties-pane-resourceid.png)
+       ![Ověřit informace o ID prostředku](./media/private-link-tsg/pls-properties-pane-resourceid.png)
 
-    f) kontrola viditelnosti (oddíl přehledu) informace
+    f. Projděte si informace o **viditelnosti** na kartě **Přehled** .
      - Ujistěte se, že vaše předplatné spadá do oboru **viditelnosti** .
 
-       ![Ověřit viditelnost](./media/private-link-tsg/pls-overview-pane-visibility.png)
+       ![Ověřit informace o viditelnosti](./media/private-link-tsg/pls-overview-pane-visibility.png)
 
-    g) Kontrola informací Load Balancer (přehled)
-     - Kliknutím na odkaz služby Vyrovnávání zatížení můžete přejít na nástroj pro vyrovnávání zatížení.
+    g. Informace o **nástroji pro vyrovnávání zatížení** najdete na kartě **Přehled** .
+     - Můžete přejít do nástroje pro vyrovnávání zatížení tak, že vyberete odkaz služby Vyrovnávání zatížení.
 
-       ![Ověřit Load Balancer](./media/private-link-tsg/pls-overview-pane-ilb.png)
+       ![Ověření informací o nástroji pro vyrovnávání zatížení](./media/private-link-tsg/pls-overview-pane-ilb.png)
 
-     - Ujistěte se, že nastavení Load Balancer jsou nakonfigurovaná podle vašich očekávání.
-       - Kontrola konfigurace IP adresy front-endu
-       - Kontrola back-end fondů
-       - Zkontrolovat pravidla vyrovnávání zatížení
+     - Ujistěte se, že nastavení nástroje pro vyrovnávání zatížení jsou nakonfigurovaná podle vašich očekávání.
+       - Zkontrolujte **konfiguraci protokolu IP front-endu**.
+       - Zkontrolujte **fondy back-endu**.
+       - Zkontrolujte **pravidla vyrovnávání zatížení**.
 
-       ![Ověřit vlastnosti Load Balancer](./media/private-link-tsg/pls-ilb-properties.png)
+       ![Ověření vlastností nástroje pro vyrovnávání zatížení](./media/private-link-tsg/pls-ilb-properties.png)
 
-     - Ujistěte se, že Load Balancer pracuje jako na výše uvedeném nastavení.
-       - Vyberte virtuální počítač v jiné podsíti, než je podsíť, ve které je dostupný Load Balancer fond back-endu.
-       - Zkuste získat přístup k front-endu nástroje pro vyrovnávání zatížení z virtuálního počítače výše.
-       - Pokud se připojení nastaví do back-endu na základě pravidel vyrovnávání zatížení, je váš nástroj pro vyrovnávání zatížení funkční.
-       - Můžete také zkontrolovat metriku Load Balancer prostřednictvím Azure Monitor a zjistit, jestli data přecházejí přes Nástroj pro vyrovnávání zatížení.
+     - Ujistěte se, že nástroj pro vyrovnávání zatížení funguje podle předchozích nastavení.
+       - Vyberte virtuální počítač v jiné podsíti, než je podsíť, ve které je k dispozici fond back-end služby Vyrovnávání zatížení.
+       - Zkuste získat přístup k front-endu nástroje pro vyrovnávání zatížení z předchozího virtuálního počítače.
+       - Pokud připojení vytvoří fond back-end podle pravidel vyrovnávání zatížení, je váš nástroj pro vyrovnávání zatížení funkční.
+       - Můžete také zkontrolovat metriku nástroje pro vyrovnávání zatížení prostřednictvím Azure Monitor a zjistit, jestli data procházejí nástrojem pro vyrovnávání zatížení.
 
-2. Použití [**Azure monitor**](https://docs.microsoft.com/azure/azure-monitor/overview) ke kontrole toku dat
+1. Použijte [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) k zobrazení toku dat.
 
-    a) v prostředku služby privátního propojení vyberte **metriky** .
-     - Výběr **bajtů-in** nebo **bajtů na** více instancí
-     - Kontrola toku dat probíhá při pokusu o připojení ke službě privátního propojení. Očekává se zpoždění přibližně 10 minut.
+    a. V prostředku služby privátního propojení vyberte **metriky**.
+     - Vyberte **bajty v bajtech nebo v** **bajtech**.
+     - Podívejte se, jestli data při pokusu o připojení ke službě privátního propojení přecházejí. Očekává se zpoždění přibližně 10 minut.
 
        ![Ověřit metriky služby privátního propojení](./media/private-link-tsg/pls-metrics.png)
 
-3. Pokud je problém stále nevyřešený a stále existuje problém s připojením, obraťte se na tým [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) . 
+1. Pokud je problém stále nevyřešený a stále existuje problém s připojením, obraťte se na tým [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) .
 
 ## <a name="next-steps"></a>Další kroky
 
  * [Vytvoření služby privátního propojení (CLI)](https://docs.microsoft.com/azure/private-link/create-private-link-service-cli)
-
- * [Průvodce odstraňováním potíží privátního koncového bodu](troubleshoot-private-endpoint-connectivity.md)
+ * [Průvodce odstraňováním potíží privátního koncového bodu Azure](troubleshoot-private-endpoint-connectivity.md)

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: d1e34a493b747383ce479bcad638098b41e59d2b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 363e5705e9ccf4aa207ff7e5cafb615bc01bc7d3
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73588184"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538936"
 ---
 # <a name="dashboard-for-classroom-labs"></a>Řídicí panel pro učebn Labs
 Tento článek popisuje zobrazení řídicího panelu pro prostředí učebny v Azure Lab Services. 

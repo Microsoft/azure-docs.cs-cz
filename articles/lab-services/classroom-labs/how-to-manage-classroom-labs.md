@@ -11,19 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: ac990141ccc694ed7460763e84126d9fefdbb609
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264827"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539446"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa učebných cvičení v Azure Lab Services 
 Tento článek popisuje, jak vytvořit a odstranit testovací prostředí pro učebnu. Také se dozvíte, jak zobrazit všechny vývojové laboratoře v účtu testovacího prostředí. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího prostředí, musíte v účtu testovacího prostředí být členem role **Autor testovacího prostředí**. Do této role se automaticky přidá účet, který jste použili k vytvoření účtu testovacího prostředí. Vlastník testovacího prostředí může přidat další uživatele do role Autor testovacího prostředí podle postupu v následujícím článku: [Přidání uživatele do role Autor testovacího prostředí](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
 ## <a name="create-a-classroom-lab"></a>Vytvoření testovacího prostředí v učebně
@@ -41,6 +41,9 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
     6. Vyberte **Save** (Uložit).
 
         ![Nové okno testovacího prostředí](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+
+        > [!NOTE]
+        > Pokud byl účet testovacího prostředí nastavený tak, aby [umožňoval výběr umístění testovacího](allow-lab-creator-pick-lab-location.md) prostředí, zobrazí se vám možnost vybrat umístění pro testovací prostředí. 
 4. Na stránce **přihlašovací údaje virtuálního počítače** zadejte výchozí přihlašovací údaje pro všechny virtuální počítače v testovacím prostředí.
     1. Zadejte **jméno uživatele** pro všechny virtuální počítače v testovacím prostředí.
     2. Zadejte **heslo** tohoto uživatele. 
@@ -52,12 +55,14 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
         Učitel se může rozhodnout použít stejné heslo pro všechny virtuální počítače v testovacím prostředí, nebo umožní studentům nastavit hesla pro svoje virtuální počítače. Ve výchozím nastavení je toto nastavení povolené pro všechny image Windows a Linux s výjimkou Ubuntu. Když vyberete virtuální počítač **Ubuntu** , toto nastavení se zakáže, takže studenti budou vyzváni, aby při prvním přihlášení nastavili heslo.  
 
         ![Nové okno testovacího prostředí](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
-        > [!IMPORTANT]
-        > Uživatelské jméno a heslo si poznamenejte. Znovu se už nezobrazí.    
     4. Pak na stránce **pověření k virtuálnímu počítači** vyberte **Další** . 
-5. Na stránce **zásady testovacího prostředí** zadejte počet hodin přidělený každému uživateli (**kvótu pro každého uživatele**) mimo naplánovaný čas pro testovací prostředí a pak vyberte **Dokončit**. 
+5. Na stránce **zásady testovacího prostředí** proveďte následující kroky:
+    1. Zadejte počet hodin přidělený každému uživateli (**kvóta pro každého uživatele**) mimo plánovaný čas testovacího prostředí. 
+    2. U možnosti **Automatické vypnutí virtuálních počítačů** určete, jestli se má virtuální počítač automaticky vypnout, když se uživatel odpojí. Můžete také určit, jak dlouho by měl virtuální počítač čekat, než se uživatel znovu připojí, než se automaticky vypíná... Další informace najdete v tématu [Povolení automatického vypnutí virtuálních počítačů při odpojení](how-to-enable-shutdown-disconnect.md).
+    3. Pak vyberte **Dokončit**. 
 
-    ![Kvóta pro každého uživatele](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+        ![Kvóta pro každého uživatele](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
+    
 5. Měla by se zobrazit následující obrazovka, která zobrazuje stav vytvoření virtuálního počítače šablony. Vytvoření šablony v testovacím prostředí může trvat až 20 minut. 
 
     ![Stav vytvoření virtuálního počítače šablony](../media/tutorial-setup-classroom-lab/create-template-vm-progress.png)
@@ -90,14 +95,14 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
     2. Chcete-li spustit všechny virtuální počítače najednou, vyberte možnost **Spustit vše** na panelu nástrojů. 
     3. Pokud chcete spustit konkrétní virtuální počítač, vyberte ve **stavu**šipku dolů a pak vyberte **Spustit**. Virtuální počítač můžete spustit také tak, že vyberete virtuální počítač v prvním sloupci a pak výběrem možnosti **Spustit** na panelu nástrojů.                
 
-### <a name="vm-sizes"></a>Velikosti virtuálních počítačů  
+### <a name="vm-sizes"></a>Velikost virtuálních počítačů  
 
 | Velikost | Jádra | Paměť RAM | Popis | 
 | ---- | ----- | --- | ----------- | 
-| Malé | 2 | 3,5 GB | Tato velikost je nejvhodnější pro příkazový řádek, otevírá webový prohlížeč, webové servery s nízkým provozem, malé až střední databáze. |
-| Střední | 4 | 7 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. | 
+| Krátkodobé používání | 2 | 3,5 GB | Tato velikost je nejvhodnější pro příkazový řádek, otevírá webový prohlížeč, webové servery s nízkým provozem, malé až střední databáze. |
+| Střednědobé používání | 4 | 7 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. | 
 | Střední (vnořená virtualizace) | 4 | 16 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. Tato velikost také podporuje vnořenou virtualizaci. <p>Tato velikost se dá použít ve scénářích, kdy každý student potřebuje víc virtuálních počítačů. Učitelé můžou pomocí vnořené virtualizace nastavit v rámci virtuálního počítače několik vnořených virtuálních počítačů s malou velikostí. </p> |
-| Velké | 8 | 32 GB | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti. Tato velikost také podporuje vnořenou virtualizaci. |  
+| Dlouhodobé používání | 8 | 32 GB | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti. Tato velikost také podporuje vnořenou virtualizaci. |  
 | Malý grafický procesor (vizualizace) | 6 | 56 GB | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. | 
 | Malý grafický procesor (COMPUTE) | 6 | 56 GB | Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon a sítě, jako jsou umělá studia a aplikace s hloubkovým učením. | 
 | Střední GPU (vizualizace) | 12 | 112 GB | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. | 
@@ -107,7 +112,7 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 
 ## <a name="view-all-classroom-labs"></a>Zobrazit všechna cvičení v učebně
 1. Přejděte na [portál Azure Lab Services](https://labs.azure.com).
-2. Vyberte **Přihlásit se**. Vyberte nebo zadejte **ID uživatele** , který je členem role **testovacího prostředí** v účtu testovacího prostředí, a zadejte heslo. Azure Lab Services podporuje účty organizací a účty Microsoft. 
+2. Vyberte **Sign in** (Přihlásit se). Vyberte nebo zadejte **ID uživatele** , který je členem role **testovacího prostředí** v účtu testovacího prostředí, a zadejte heslo. Azure Lab Services podporuje účty organizací a účty Microsoft. 
 3. Potvrďte, že ve vybraném účtu testovacího prostředí vidíte všechny laboratoře. Na dlaždici testovacího prostředí uvidíte počet virtuálních počítačů v testovacím prostředí a kvótu pro každého uživatele (mimo naplánovaný čas).
 
     ![Všechny laboratoře](../media/how-to-manage-classroom-labs/all-labs.png)

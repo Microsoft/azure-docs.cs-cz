@@ -1,29 +1,26 @@
 ---
 title: Soubory SharePointu – QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Přidejte do znalostní báze zabezpečené zdroje dat SharePointu, abyste mohli rozšířit znalostní bázi s dotazy a odpověďmi, které je možné zabezpečit pomocí služby Active Directory.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.author: diberry
-ms.openlocfilehash: e28f144c33cbdf253603cb38ca56a4d304afd474
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 02/20/2020
+ms.openlocfilehash: ec77d3ac217991ff191d80249bc86805e7c8ba35
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843288"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544160"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Přidání zabezpečeného zdroje dat SharePointu do znalostní báze
 
-Přidejte do znalostní báze zabezpečené zdroje dat SharePointu, abyste mohli rozšířit znalostní bázi s dotazy a odpověďmi, které je možné zabezpečit pomocí služby Active Directory.
+Přidejte do znalostní báze zabezpečené cloudové zdroje dat SharePointu, abyste mohli rozšířit znalostní bázi s dotazy a odpověďmi, které je možné zabezpečit pomocí služby Active Directory.
 
 Když do znalostní báze přidáte zabezpečený dokument služby SharePoint, jako je třeba správce QnA Maker, musíte požádat o QnA Maker oprávnění služby Active Directory. Jakmile toto oprávnění udělí správce služby Active Directory, aby se QnA Maker pro přístup k SharePointu, nemusí se znovu nadávat. Každý následující dokument přidaný do znalostní báze nebude vyžadovat autorizaci, pokud se nachází ve stejném prostředku služby SharePoint.
 
 Pokud správce znalostní báze QnA Maker Knowledge Base není správce služby Active Directory, bude nutné komunikovat se správcem služby Active Directory a dokončit tento proces.
+
+## <a name="prerequisites"></a>Předpoklady
+
+QnA Maker pro oprávnění používá Microsoft Graph. Pokud je váš SharePoint v místním prostředí, nebudete se moct extrahovat ze SharePointu, protože Microsoft Graph nebude moct určit oprávnění.
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Přidání podporovaných typů souborů do znalostní báze Knowledge Base
 

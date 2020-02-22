@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: 14a51ce103d831bcf1dfd52c892102f72531a4c8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 41c7fc7380ca2b58326c4a35a3b5fdab1c64c4a3
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934301"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544313"
 ---
 # <a name="encrypt-deployment-data"></a>Šifrování dat nasazení
 
@@ -89,7 +89,7 @@ Zásady přístupu by se teď měly zobrazit v zásadách přístupu trezoru kl�
 > Šifrování dat nasazení pomocí klíče spravovaného zákazníkem je dostupné v nejnovější verzi rozhraní API (2019-12-01), která se v tuto chvíli zavádí. Tuto verzi rozhraní API zadejte v šabloně nasazení. Pokud s tím máte nějaké problémy, obraťte se prosím na podporu Azure.
 
 Jakmile nastavíte klíč trezoru klíčů a zásadu přístupu, přidejte do šablony nasazení ACI následující vlastnosti. Další informace o nasazení prostředků ACI pomocí šablony v tomto [kurzu: nasazení skupiny s více kontejnery pomocí šablony Správce prostředků](https://docs.microsoft.com/azure/container-instances/container-instances-multi-container-group). 
-* V části `resources`nastavte `apiVersion` na `2012-12-01`.
+* V části `resources`nastavte `apiVersion` na `2019-12-01`.
 * V části vlastnosti skupiny kontejnerů v šabloně nasazení přidejte `encryptionProperties`, který obsahuje následující hodnoty:
   * `vaultBaseUrl`: název DNS vašeho trezoru klíčů najdete v okně Přehled prostředku trezoru klíčů na portálu.
   * `keyName`: název klíče vygenerovaného dříve.

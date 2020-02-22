@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 7ad10ad2d4393c1d25a835d0ff8cd0b98ed25879
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 6156557d10210535b287aa516070c0b5da416512
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76756392"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539361"
 ---
 # <a name="message-browsing"></a>Procházení zpráv
 
@@ -34,7 +34,7 @@ Prohlížení také vrátí zprávy, které byly uzamčeny a aktuálně jsou zpr
 
 ## <a name="peek-apis"></a>Náhled rozhraní API
 
-Metody [prohlížet/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) existují ve všech klientských knihovnách .NET a Java a na všech objektech přijímače: **MessageReceiver**, **MessageSession**, **QueueClient**a **SubscriptionClient**. Náhled funguje ve všech frontách a předplatných a jejich příslušných frontách nedoručených zpráv.
+Metody [prohlížet/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) existují ve všech klientských knihovnách .NET a Java a na všech objektech přijímače: **MessageReceiver**, **MessageSession**. Náhled funguje ve všech frontách a předplatných a jejich příslušných frontách nedoručených zpráv.
 
 Při opakovaném volání bude metoda náhled vyčíslit všechny zprávy, které existují v protokolu front nebo odběrů, v pořadí pořadového čísla od nejnižších pořadových čísel až po nejvyšší. Toto je pořadí, ve kterém byly zprávy zařazeny do fronty, a nikoli pořadí, ve kterém mohou být zprávy nakonec načteny.
 

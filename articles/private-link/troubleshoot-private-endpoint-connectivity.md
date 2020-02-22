@@ -1,5 +1,5 @@
 ---
-title: Řešení problémů s připojením ke soukromým koncovým bodem Azure
+title: Řešení potíží s připojením k privátnímu koncovému bodu Azure
 description: Podrobné pokyny k diagnostice připojení privátního koncového bodu
 services: private-endpoint
 documentationcenter: na
@@ -13,99 +13,99 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: df4ec6ddbba029eb29d2440717697968f8c79302
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fcc482e6231bbd925fd500a37989052765dede58
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191068"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77538530"
 ---
-# <a name="troubleshoot-private-endpoint-connectivity-problems"></a>Řešení problémů s připojením privátního koncového bodu
+# <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Řešení potíží s připojením k privátnímu koncovému bodu Azure
 
-Tato příručka poskytuje podrobné pokyny, jak ověřit a diagnostikovat nastavení privátního koncového bodu připojení. 
+Tento článek poskytuje podrobné pokyny k ověření a diagnostikování nastavení privátního koncového bodu připojení Azure.
 
-Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě privátního propojení. Toto řešení vám pomůže zabezpečit vaše úlohy v Azure tím, že poskytuje privátní připojení k prostředkům služby Azure z vaší virtuální sítě. Tím se tyto služby efektivně přinášejí do vaší virtuální sítě. 
+Privátní koncový bod Azure je síťové rozhraní, které se připojuje soukromě a bezpečně ke službě privátního propojení. Toto řešení vám pomůže zabezpečit vaše úlohy v Azure tím, že poskytuje privátní připojení k prostředkům služby Azure z vaší virtuální sítě. Toto řešení tyto služby efektivně přináší do vaší virtuální sítě.
 
-Tady jsou scénáře připojení, které jsou k dispozici s privátními koncovými body. 
-- virtuální síť ze stejné oblasti 
+Tady jsou scénáře připojení, které jsou k dispozici s privátním koncovým bodem:
+
+- virtuální síť ze stejné oblasti
 - oblastní virtuální sítě s partnerským vztahem
 - globálně partnerské virtuální sítě
-- místní zákazník přes síť VPN nebo okruhy Express Route
+- Místní zákazník přes VPN nebo okruhy Azure ExpressRoute
 
-## <a name="diagnosing-connectivity-problems"></a>Diagnostikování problémů s připojením 
-Přečtěte si níže uvedené kroky, abyste se ujistili, že všechny běžné konfigurace jsou očekávané pro řešení problémů s připojením při instalaci privátního koncového bodu.
+## <a name="diagnose-connectivity-problems"></a>Diagnostika problémů s připojením 
 
-1. Kontrola konfigurace privátního koncového bodu tím, že prochází prostředek 
+Zkontrolujte tyto kroky, abyste se ujistili, že všechny běžné konfigurace jsou očekávané pro řešení problémů s připojením pomocí nastavení privátního koncového bodu.
 
-    a) přejít na **centrum privátních odkazů**
+1. Projděte si konfiguraci privátního koncového bodu, a to procházením prostředku.
+
+    a. Přejít na **centrum privátních odkazů**.
 
       ![Centrum privátních odkazů](./media/private-endpoint-tsg/private-link-center.png)
 
-    b) výběr privátních koncových bodů v levém navigačním podokně
+    b. V levém podokně vyberte **soukromé koncové body**.
     
       ![Soukromé koncové body](./media/private-endpoint-tsg/private-endpoints.png)
 
-    c) filtr a výběr privátního koncového bodu, který chcete diagnostikovat
+    c. Vyfiltrujte a vyberte privátní koncový bod, který chcete diagnostikovat.
 
-    d) zkontrolujte informace o virtuální síti a DNS.
-    
-     - Ověření stavu připojení je **schváleno** .
+    d. Zkontrolujte informace o virtuální síti a DNS.
+     - Ověřte, zda je stav připojení **schválen**.
      - Ujistěte se, že virtuální počítač má připojení k virtuální síti, která je hostitelem privátních koncových bodů.
-     - Informace o plně kvalifikovaném názvu domény (kopie) a přiřazená privátní IP adresa
+     - Ověřte, zda jsou přiřazeny informace o plně kvalifikovaném názvu domény (kopie) a privátní IP adresa.
     
-       ![Konfigurace virtuální sítě a DNS](./media/private-endpoint-tsg/vnet-dns-configuration.png)    
+       ![Konfigurace virtuální sítě a DNS](./media/private-endpoint-tsg/vnet-dns-configuration.png)
     
-2. Použití [**Azure monitor**](https://docs.microsoft.com/azure/azure-monitor/overview) ke kontrole toku dat
+1. Použijte [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) k zobrazení toku dat.
 
-    a) na prostředku privátního koncového bodu vyberte **monitor** .
-     - Vyberte data nebo data a zkontrolujte, jestli při pokusu o připojení k privátnímu koncovému bodu přecházejí data. Očekává se zpoždění přibližně 10 minut.
+    a. V prostředku privátního koncového bodu vyberte **monitor**.
+     - Vyberte **data v** nebo **mimo data**. 
+     - Podívejte se, jestli při pokusu o připojení k privátnímu koncovému bodu přecházejí data. Očekává se zpoždění přibližně 10 minut.
     
        ![Ověření telemetrie privátních koncových bodů](./media/private-endpoint-tsg/private-endpoint-monitor.png)
 
-3. Použití řešení potíží s připojením k virtuálnímu počítači z **Network Watcher**
+1.  Použijte **řešení potíží s připojením k virtuálnímu počítači** z Azure Network Watcher.
 
-    a) výběr virtuálního počítače klienta
+    a. Vyberte virtuální počítač klienta.
 
-    b) výběr oddílu **řešení potíží s připojením** , karta **odchozí připojení**
+    b. Vyberte možnost **řešení potíží s připojením**a pak vyberte kartu **odchozí připojení** .
     
       ![Network Watcher – testování odchozích připojení](./media/private-endpoint-tsg/network-watcher-outbound-connection.png)
     
-    c) **pro podrobné trasování připojení vyberte použít Network Watcher** .
+    c. **Pro podrobné trasování připojení vyberte použít Network Watcher**.
     
       ![Network Watcher řešení potíží s připojením](./media/private-endpoint-tsg/network-watcher-connection-troubleshoot.png)
 
-    d) vyberte **test podle plně kvalifikovaného názvu domény**
+    d. Vyberte **test podle plně kvalifikovaného názvu domény**.
      - Vložte plně kvalifikovaný název domény z prostředku privátního koncového bodu.
-     - Zadejte port (*obvykle 443 pro Azure Storage nebo Cosmos, 1336 pro SQL...* )
+     - Zadejte port. Obvykle použijte 443 pro Azure Storage nebo Azure Cosmos DB a 1336 pro SQL.
 
-    e) klikněte na **test** a ověřte výsledky testu.
+    e. Vyberte **test**a ověřte výsledky testu.
     
       ![Výsledky Network Watcher-test](./media/private-endpoint-tsg/network-watcher-test-results.png)
     
         
-4. Překlad DNS z výsledků testu musí mít přiřazenou stejnou privátní IP adresu jako soukromý koncový bod.
+1. Překlad názvů DNS z výsledků testu musí mít přiřazenou stejnou privátní IP adresu jako soukromý koncový bod.
 
-    a) Pokud je nastavení DNS nesprávné, udělejte toto:
-     - Používá se privátní zóna: 
-       - Ujistěte se, že virtuální síť virtuálních počítačů je přidružená k privátní zóně
-       - Zkontrolujte, jestli existuje záznam Privátní DNS zóny, vytvořit, pokud není existující.
-    
-     - Používání vlastního DNS:
-       - Zkontrolujte nastavení DNS zákazníka a ověřte, jestli je konfigurace DNS správná.
-       Přehled najdete v tématu [Přehled privátního koncového bodu – konfigurace DNS](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration) pro doprovodné materiály.
+    a. Pokud není nastavení DNS správné, postupujte takto:
+     - Používáte-li privátní zónu: 
+       - Ujistěte se, že je virtuální síť virtuálních počítačů klienta přidružená k privátní zóně.
+       - Zkontrolujte, zda existuje záznam privátní zóny DNS. Pokud neexistuje, vytvořte ji.
+     - Pokud používáte vlastní DNS:
+       - Zkontrolujte vlastní nastavení DNS a ověřte, jestli je konfigurace DNS správná.
+       Pokyny najdete v tématu [Přehled privátního koncového bodu: Konfigurace DNS](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration).
 
-    b) Pokud se připojení nedaří kvůli NSG/udr
+    b. Pokud se připojení nedaří kvůli skupinám zabezpečení sítě (skupin zabezpečení sítě) nebo uživatelem definovaným trasám:
      - Zkontrolujte odchozí pravidla NSG a vytvořte vhodná odchozí pravidla pro povolení provozu.
     
        ![NSG odchozí pravidla](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
-5. Pokud připojení obsahuje ověřené výsledky, může se problém s připojením vztahovat k jiným aspektům, jako jsou tajné klíče, tokeny a hesla na vrstvě aplikace.
-   - V takovém případě zkontrolujte konfiguraci prostředku privátního propojení přidruženého k privátnímu koncovému bodu. Přečtěte si [příručku pro odstraňování potíží s privátní linkou](troubleshoot-private-link-connectivity.md). 
+1. Pokud připojení obsahuje ověřené výsledky, může se problém s připojením vztahovat k jiným aspektům, jako jsou tajné klíče, tokeny a hesla na vrstvě aplikace.
+   - V takovém případě zkontrolujte konfiguraci prostředku privátního propojení přidruženého k privátnímu koncovému bodu. Další informace najdete v [Průvodci odstraňováním potíží s privátními odkazy Azure](troubleshoot-private-link-connectivity.md).
 
-6. Pokud je problém stále nevyřešený a stále existuje problém s připojením, obraťte se na tým [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) . 
+1. Pokud je problém stále nevyřešený a stále existuje problém s připojením, obraťte se na tým [podpory Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) .
 
 ## <a name="next-steps"></a>Další kroky
 
  * [Vytvoření privátního koncového bodu v aktualizované podsíti (Azure Portal)](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal)
-
- * [Průvodce odstraňováním potíží privátních odkazů](troubleshoot-private-link-connectivity.md)
+ * [Průvodce odstraňováním potíží s privátními odkazy Azure](troubleshoot-private-link-connectivity.md)

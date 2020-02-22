@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 1/24/2020
+ms.date: 2/21/2020
 ms.author: mlearned
-ms.openlocfilehash: 934dfdb43d6d2e4ccc346b728f0ac4f5febea327
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 08929d5ec05fbeb80eddebfd667fe1e0fde9bff7
+ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932598"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77544228"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Vytvoření privátního clusteru služby Azure Kubernetes (Preview)
 
@@ -26,18 +26,38 @@ Rovina ovládacího prvku nebo Server API se nachází v předplatném Azure spr
 > * [Zásady podpory AKS](support-policies.md)
 > * [Nejčastější dotazy k podpoře Azure](faq.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Azure CLI verze 2.0.77 nebo novější a verze rozšíření Azure CLI AKS ve verzi Preview 0.4.18
 
 ## <a name="currently-supported-regions"></a>Aktuálně podporované oblasti
+
+* Austrálie – východ
+* Austrálie – jihovýchod
+* Brazílie – jih
+* Kanada – střed
+* Východní Kanada
+* Cenral nás
+* Východní Asie
+* USA – východ
+* USA – východ 2
+* Východní USA 2 EUAP
+* Francie – střed
+* Německo – sever
+* Japonsko – východ
+* Japonsko – západ
+* Jižní Korea – střed
+* Jižní Korea – jih
+* USA – středosever
+* Severní Evropa
+* Severní Evropa
+* USA – středojih
+* Velká Británie – jih
+* Západní Evropa
 * USA – západ
 * USA – západ 2
 * USA – východ 2
-* Střední Kanada
-* Severní Evropa
-* Západní Evropa
-* Austrálie – východ
+
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Nainstalovat nejnovější rozšíření Azure CLI AKS Preview
 

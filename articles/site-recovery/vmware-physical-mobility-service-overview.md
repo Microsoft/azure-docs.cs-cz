@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c5acc9637fe5afe8f7dd32d23fbdbb80373b4f61
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513554"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539378"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>O službě mobility pro virtuální počítače VMware a fyzické servery
 
@@ -21,6 +21,9 @@ Při nastavování zotavení po havárii pro virtuální počítače VMware a fy
 - [Nabízená instalace](#push-installation): Site Recovery nainstaluje agenta mobility na server, pokud je ochrana povolená přes Azure Portal.
 - Ruční instalace: službu mobility můžete nainstalovat ručně na každém počítači prostřednictvím [uživatelského rozhraní](#install-mobility-agent-through-ui) nebo [příkazového řádku](#install-mobility-agent-through-command-prompt).
 - [Automatizované nasazení](vmware-azure-mobility-install-configuration-mgr.md): můžete automatizovat instalaci pomocí nástrojů pro nasazení softwaru, jako je Configuration Manager.
+
+> [!NOTE]
+> Agent mobility využívá přibližně 6% paměti na zdrojových počítačích pro virtuální počítače VMware nebo fyzické počítače.
 
 ## <a name="anti-virus-on-replicated-machines"></a>Antivirová ochrana na replikovaných počítačích
 
@@ -35,7 +38,7 @@ Nabízená instalace je nedílnou součástí úlohy "[Povolení replikace](vmwa
 
 Podrobnosti pracovního postupu nabízené instalace byly popsány v následujících částech.
 
-### <a name="from-923-versionhttpssupportmicrosoftcomen-inhelp4494485update-rollup-35-for-azure-site-recovery-onwards"></a>Od [verze 9,23](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) a vyšší
+### <a name="from-923-version-onwards"></a>Od [verze 9,23](https://support.microsoft.com/en-in/help/4494485/update-rollup-35-for-azure-site-recovery) a vyšší
 
 Během nabízené instalace agenta mobility se provádí následující kroky.
 
@@ -73,7 +76,7 @@ Během nabízené instalace agenta mobility se provádí následující kroky.
 
     ![Registrační stránka služby mobility](./media/vmware-physical-mobility-service-install-manual/mobility3.png)
 
-5. V části **Podrobnosti konfiguračního serveru**zadejte IP adresu a heslo, které jste nakonfigurovali.  
+5. V části **Podrobnosti konfiguračního serveru**zadejte IP adresu a heslo, které jste nakonfigurovali.
 
     ![Registrační stránka služby mobility](./media/vmware-physical-mobility-service-install-manual/mobility4.png)
 
@@ -120,7 +123,7 @@ Instalační protokoly | Pod%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.
 /Role | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
 /InstallLocation| Volitelný parametr. Určuje umístění instalace služby mobility (všechny složky).
 /Platform | Povinné. Určuje platformu, na které je nainstalovaná služba mobility. **VMware** pro virtuální počítače VMware/fyzické servery; **Azure** pro virtuální počítače Azure.<br/><br/> Pokud pracujete s virtuálními počítači Azure jako s fyzickými počítači, zadejte **VMware**.
-/Silent| Nepovinný parametr. Určuje, jestli se má spustit instalační program v tichém režimu.
+/Silent| Volitelné. Určuje, jestli se má spustit instalační program v tichém režimu.
 
 #### <a name="registration-settings"></a>Nastavení registrace
 **Nastavení** | **Podrobnosti**
@@ -158,7 +161,7 @@ Využití | ./Install-d \<umístění instalace >-r \<MS/MT >-v VmWare-q
 -r | Povinný parametr instalace Určuje, jestli má být nainstalovaná služba mobility (MS) nebo hlavní cíl (MT).
 -d | Volitelný parametr. Určuje umístění instalace služby mobility:/usr/local/ASR.
 -v | Povinné. Určuje platformu, na které je nainstalovaná služba mobility. **VMware** pro virtuální počítače VMware/fyzické servery; **Azure** pro virtuální počítače Azure.
--q | Nepovinný parametr. Určuje, jestli se má spustit instalační program v tichém režimu.
+-q | Volitelné. Určuje, jestli se má spustit instalační program v tichém režimu.
 
 #### <a name="registration-settings"></a>Nastavení registrace
 **Nastavení** | **Podrobnosti**
@@ -178,17 +181,17 @@ Přejít na složku%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository na
 
 **Instalační soubor** | **Operační systém (pouze 64 bitů)**
 --- | ---
-Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows Server 2008 R2 SP1
-Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6. * </br> CentOS 6.*
-Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7. * </br> CentOS 7.*
-Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1, SP2, SP3
-Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3
-Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4
-Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6,4, 6,5
-Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz | Ubuntu Linux 14.04
-Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS server
-Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7
-Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8
+Microsoft-ASR\_UA\*Windows\*Release. exe | Windows Server 2016; Windows Server 2012 R2; Windows Server 2012; Windows Server 2008 R2 SP1
+Microsoft-ASR\_UA\*počítače RHEL6-64\*Release. tar. gz | Red Hat Enterprise Linux (RHEL) 6. * </br> CentOS 6.*
+Microsoft-ASR\_UA\*RHEL7-64\*Release. tar. gz | Red Hat Enterprise Linux (RHEL) 7. * </br> CentOS 7.*
+Microsoft-ASR\_UA\*SLES12-64\*Release. tar. gz | SUSE Linux Enterprise Server 12 SP1, SP2, SP3
+Microsoft-ASR\_UA\*SLES11-SP3-64\*Release. tar. gz| SUSE Linux Enterprise Server 11 SP3
+Microsoft-ASR\_UA\*SLES11-SP4-64\*Release. tar. gz| SUSE Linux Enterprise Server 11 SP4
+Microsoft-ASR\_UA\*OL6-64\*Release. tar. gz | Oracle Enterprise Linux 6,4, 6,5
+Microsoft-ASR\_UA\*UBUNTU-14.04-64\*Release. tar. gz | Ubuntu Linux 14.04
+Microsoft-ASR\_UA\*UBUNTU-16.04-64\*Release. tar. gz | Ubuntu Linux 16.04 LTS server
+Microsoft-ASR_UA\*DEBIAN7-64\*Release. tar. gz | Debian 7
+Microsoft-ASR_UA\*DEBIAN8-64\*Release. tar. gz | Debian 8
 
 ## <a name="next-steps"></a>Další kroky
 

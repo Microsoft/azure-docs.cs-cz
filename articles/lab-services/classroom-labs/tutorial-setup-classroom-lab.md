@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: e50d0772eaf706772aa89418a1ad25bf406945b5
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 0f61a0968922d009b8ba60d80dde132fedaece29
+ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134116"
+ms.lasthandoff: 02/21/2020
+ms.locfileid: "77539063"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Kurz: Nastavení testovacího prostředí v učebně 
 V tomto kurzu nastavíte testovací prostředí v učebně pomocí virtuálních počítačů, které používají studenti v učebně.  
@@ -72,7 +72,7 @@ V tomto kroku vytvoříte testovací prostředí pro třídu v Azure.
     4. **Zastavte** virtuální počítač šablony.  
 
 ## <a name="publish-the-template-vm"></a>Publikování šablony virtuálního počítače
-V tomto kroku publikujete virtuální počítač šablony. Proces publikování vytváří testovací virtuální počítače, které jsou v podstatě kopie virtuálního počítače šablony. 
+V tomto kroku publikujete virtuální počítač šablony. Když publikujete virtuální počítač šablony, Azure Lab Services vytvoří virtuální počítače v testovacím prostředí pomocí šablony. Všechny virtuální počítače mají stejnou konfiguraci jako šablona.
 
 1. Na stránce **Šablona** vyberte **publikovat** na panelu nástrojů. 
 
