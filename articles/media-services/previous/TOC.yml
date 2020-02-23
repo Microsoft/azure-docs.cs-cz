@@ -397,8 +397,6 @@
       items:
         - name: Přehrávání médií pomocí stávajících přehrávačů
           href: media-services-playback-content-with-existing-players.md
-        - name: Přehrávání médií pomocí funkce Media Player
-          href: media-services-develop-video-players.md
         - name: Další možnosti přehrávání
           items:
             - name: Aplikace pro Windows Store využívající Smooth Streaming
