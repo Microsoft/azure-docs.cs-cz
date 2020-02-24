@@ -99,6 +99,8 @@
         - name: Koncové body streamování
           displayName: 'origin, packager, cdn'
           href: streaming-endpoint-concept.md
+        - name: Škálování streamování s využitím CDN
+          href: scale-streaming-cdn.md
         - name: Lokátory streamování
           displayName: URLs
           href: streaming-locators-concept.md
@@ -228,6 +230,8 @@
           href: cli-create-transform.md
         - name: Vytváření úloh – CLI
           href: cli-create-jobs.md
+        - name: Úlohy s několika transformačními výstupy
+          href: job-multiple-transform-outputs.md
     - name: Kódování obsahu
       items:
         - name: HTTPS jako vstup úlohy – .NET

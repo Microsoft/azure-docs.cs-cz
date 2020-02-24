@@ -2,43 +2,44 @@
 title: E-mail o zůstatku po splatnosti z Azure
 description: Popisuje, jak provést platbu v případě, že je u předplatného Azure zůstatek po splatnosti.
 author: genlin
-manager: dcscontentpm
+ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 7216af00413b1f8022957ac134f67a5c27b6cc78
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: cbfd5f7bf47cdaf43df00c710bd6680373d67b09
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "75987899"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200601"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Řešení zůstatku po splatnosti u předplatného Azure
 
-Tento článek se týká zákazníků s účtem v rámci programu Microsoft Online Service.
+Tento článek se týká zákazníků, kteří si zaregistrovali do Azure online s použitím platební karty a mají fakturační účet programu Microsoft Online Services. Zjistěte, jak [zkontrolovat typ vašeho fakturačního účtu](#check-the-type-of-your-account). Pokud máte fakturační účet pro Smlouvu se zákazníkem Microsoftu, přečtěte si místo toho článek [Placení vyúčtování služeb Microsoft Azure](../understand/pay-bill.md).
 
-Pokud vaše platba nedorazí nebo ji nemůžeme zpracovat, může vám přijít e-mail nebo se může v Centru účtů nebo na webu Azure Portal zobrazit upozornění.
-Pokud jste [správce účtu](billing-subscription-transfer.md#whoisaa), můžete nezaplacené poplatky uhradit na webu [Azure Portal](https://portal.azure.com). Pokud platíte pomocí faktury, zašlete svoji platbu na adresu uvedenou v dolní části faktury.
+Pokud vaše platba nedorazí nebo ji nemůžeme zpracovat, přijde vám e-mail a na webu Azure Portal se zobrazí upozornění, že je vaše předplatné po splatnosti. Pokud je váš výchozí způsob platby platební karta, [správce účtu](billing-subscription-transfer.md#whoisaa), může nezaplacené poplatky uhradit na webu Azure Portal. Pokud platíte pomocí faktury (šekem nebo převodem), zašlete svou platbu na adresu uvedenou ve spodní části faktury.
 
 > [!IMPORTANT]
 > * Pokud používáte stejnou platební kartu u více předplatných a všechna jsou po splatnosti, musíte celý nevyrovnaný zůstatek uhradit najednou.
-> * Platební nástroj, který použijete k uhrazení nezaplacených poplatků, se nastaví jako nový aktivní způsob platby pro všechna předplatná, u kterých jste používali způsob platby, který selhal.
+> * Platební karta, kterou použijete k uhrazení nezaplacených poplatků, se nastaví jako nový výchozí způsob platby pro všechna předplatná, u kterých se používal způsob platby, který selhal.
 
 ## <a name="resolve-past-due-balance-in-the-azure-portal"></a>Řešení zůstatku po splatnosti na webu Azure Portal
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako správce účtu.
 1. Vyhledejte **Cost Management a fakturace**.
-1. Na stránce Přehled se zobrazí seznam vašich předplatných. Pokud je předplatné ve stavu po splatnosti, klikněte na odkaz **Vyrovnat zůstatek**.
-    ![Snímek obrazovky s odkazem Vyrovnat zůstatek](./media/resolve-past-due-balance/settle-balance-entry-point.png)
-1. Celkový nevyrovnaný zůstatek odráží nezaplacené poplatky napříč všemi službami Microsoftu, u kterých se používá způsob platby, který selhal.
-1. Vyberte způsob platby, který chcete použít k uhrazení zůstatku. Tento způsob platby se nastaví jako aktivní způsob platby pro všechna předplatná, u kterých se aktuálně používá způsob platby, který selhal.
+1. Na stránce **Přehled** vyberte předplatné po splatnosti.
+1. Na stránce **Přehled předplatného** klikněte na červený banner s informací o zůstatku po splatnosti a vyrovnejte zůstatek.
+    > [!NOTE]
+    > Pokud nejste správce účtu, nebudete moct zůstatek vyrovnat.
+1. Na nové stránce **Vyrovnat zůstatek** klikněte na **Vybrat způsob platby**.
     ![Snímek obrazovky s odkazem Vybrat způsob platby](./media/resolve-past-due-balance/settle-balance-screen.png)
-1. Pokud jsou i u vybraného způsobu platby nezaplacené poplatky za služby Microsoftu, promítnou se do celkového nevyrovnaného zůstatku. Musíte uhradit i tyto nezaplacené poplatky.
+
+1. V novém okně na pravé straně vyberte platební kartu z rozevíracího seznamu nebo přidejte novou kliknutím na modrý odkaz **Přidat nový způsob platby**. Tato platební karta se nastaví jako aktivní způsob platby pro všechna předplatná, u kterých se aktuálně používá způsob platby, který selhal.
+     > [!NOTE]
+     > * Celkový nevyrovnaný zůstatek odráží nezaplacené poplatky napříč všemi službami Microsoftu, u kterých se používá způsob platby, který selhal.
+     > * Pokud jsou i u vybraného způsobu platby nezaplacené poplatky za služby Microsoftu, promítnou se do celkového nevyrovnaného zůstatku. Musíte uhradit i tyto nezaplacené poplatky.
 1. Klikněte na **Zaplatit**.
 
 ## <a name="troubleshoot-declined-credit-card"></a>Řešení potíží se zamítnutou platební kartou
@@ -58,6 +59,8 @@ Služba se zruší a vaše prostředky už nebudou k dispozici. Vaše data v Azu
 
 Pokud jste si jisti, že se vaše platba zpracovala, ale vaše předplatné je stále deaktivované, kontaktujte [podporu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
+## <a name="check-the-type-of-your-account"></a>Ověření typu účtu
+[!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 

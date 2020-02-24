@@ -42,6 +42,8 @@
           href: deploy-windows-7-virtual-machine.md
         - name: Nasazení hostitele relace na bázi GPU
           href: configure-vm-gpu.md
+        - name: Rozšíření existujícího fondu hostitelů
+          href: expand-existing-host-pool.md
     - name: Vytvoření kontejneru profilů
       items:
         - name: Použití sdílené složky na bázi virtuálních počítačů

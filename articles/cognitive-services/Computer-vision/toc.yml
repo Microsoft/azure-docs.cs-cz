@@ -57,7 +57,7 @@
               href: QuickStarts/node-thumb.md
             - name: Python
               href: QuickStarts/python-thumb.md
-        - name: Extrakce textu (rozhraní API pro čtení)
+        - name: Extrakce textu (Počítačové zpracování obrazu – rozhraní API pro čtení)
           items:
             - name: 'C#'
               href: QuickStarts/CSharp-hand-text.md
@@ -143,8 +143,10 @@
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Rozhraní API pro počítačové zpracování obrazu v3.0-preview
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/5d98695995feb7853f67d6a6'
     - name: Rozhraní API pro počítačové zpracování obrazu v2.1
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641/operations/56f91f2e778daf14a499f21b'
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641'
     - name: Rozhraní API pro počítačové zpracování obrazu v2.0
       href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44'
     - name: Rozhraní API pro počítačové zpracování obrazu v1.0

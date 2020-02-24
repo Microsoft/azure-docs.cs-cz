@@ -1,0 +1,211 @@
+### YamlMime:Hub
+title: Dokumentace ke službě Speech
+summary: Rozpoznávání řeči, syntetizace řeči, získávání překladů v reálném čase, přepisování konverzací nebo integrace rozpoznávání řeči do prostředí robota
+brand: azure
+metadata:
+  title: Dokumentace ke službě Speech – kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  description: Rozpoznávání řeči, syntetizace řeči, získávání překladů v reálném čase, přepisování konverzací nebo integrace rozpoznávání řeči do prostředí robota
+  author: IEvangelist
+  manager: nitinme
+  ms.service: speech-service
+  ms.topic: hub-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 26979b2d9ffdd80676ca9162b30ae17db20b1129
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77563019"
+highlightedContent:
+  items:
+  - title: Co je služba Speech?
+    itemType: overview
+    url: overview.md
+  - title: Poznámky k verzi sady Speech SDK
+    itemType: whats-new
+    url: releasenotes.md
+  - title: Podpora jazyků ve službách Speech
+    itemType: reference
+    url: language-support.md
+  - title: Vytvoření prostředku služeb Speech
+    itemType: how-to-guide
+    url: get-started.md
+conceptualContent:
+  items:
+  - title: Převod řeči na text
+    links:
+    - itemType: quickstart
+      text: Rozpoznávání řeči se vstupem z mikrofonu
+      url: quickstarts/speech-to-text-from-microphone.md
+    - itemType: quickstart
+      text: Rozpoznávání řeči ze zvukového souboru
+      url: quickstarts/speech-to-text-from-file.md
+    - itemType: quickstart
+      text: Rozpoznávání řeči uložené v úložišti objektů blob
+      url: quickstarts/from-blob.md
+    footerLink:
+      text: Další informace
+      url: index-speech-to-text.yml
+  - title: Převod textu na řeč
+    links:
+    - itemType: quickstart
+      text: Syntéza řeči do reproduktoru
+      url: quickstarts/text-to-speech.md
+    - itemType: quickstart
+      text: Syntéza řeči do zvukového souboru
+      url: quickstarts/text-to-speech-audio-file.md
+    - itemType: quickstart
+      text: Syntéza řeči s využitím dlouhého formátu
+      url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    footerLink:
+      text: Další informace
+      url: index-text-to-speech.yml
+  - title: Překlad řeči
+    links:
+    - itemType: quickstart
+      text: Překlad řeči na text
+      url: quickstarts/translate-speech-to-text.md
+    - itemType: quickstart
+      text: Překlad řeči do několika cílových jazyků
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - itemType: quickstart
+      text: Překlad řeči na řeč
+      url: quickstarts/translate-speech-to-speech.md
+    footerLink:
+      text: Další informace
+      url: index-speech-translation.yml
+  - title: Rozpoznávání záměru
+    links:
+    - itemType: quickstart
+      text: Rozpoznávání řeči, záměru a entit
+      url: quickstarts/intent-recognition.md
+    - itemType: how-to-guide
+      text: Rozpoznávání záměru řeči s využitím LUIS a C#
+      url: how-to-recognize-intents-from-speech-csharp.md
+    - itemType: reference
+      text: Portál služby Language Understanding (LUIS)
+      url: https://www.luis.ai
+    footerLink:
+      text: Další informace
+      url: index-intent-recognition.yml
+  - title: Scénáře konverzace
+    links:
+    - itemType: overview
+      text: Informace o přepisu konverzace
+      url: conversation-transcription.md
+    - itemType: overview
+      text: Informace o konverzacích více zařízení
+      url: multi-device-conversation.md
+    - itemType: how-to-guide
+      text: Přepis nahrávek z call centra
+      url: call-center-transcription.md
+    footerLink:
+      text: Další informace
+      url: index-conversation-scenarios.yml
+  - title: Hlasoví asistenti
+    links:
+    - itemType: overview
+      text: Informace o hlasových asistentech
+      url: voice-assistants.md
+    - itemType: quickstart
+      text: Vytvoření hlasového asistenta pomocí vlastních příkazů
+      url: custom-commands.md
+    - itemType: get-started
+      text: Vytvoření hlasového asistenta pomocí služby Bot Framework
+      url: direct-line-speech.md
+    footerLink:
+      text: Další informace
+      url: index-voice-assistants.yml
+  - title: Hostování
+    links:
+    - itemType: how-to-guide
+      text: Kontejnery služby Speech
+      url: speech-container-howto.md
+    - itemType: how-to-guide
+      text: Kontejnery služby Speech s Kubernetes
+      url: speech-container-howto-on-premises.md
+    - itemType: how-to-guide
+      text: Kontejnery služby Speech ve službě Azure Container Instances
+      url: deploy-speech-on-container-instances.md
+    footerLink:
+      text: Další informace
+      url: index-hosting.yml
+  - title: Zařízení
+    links:
+    - itemType: overview
+      text: Sada Speech Devices SDK
+      url: speech-devices-sdk.md
+    - itemType: how-to-guide
+      text: Získání sady Speech Devices SDK
+      url: get-speech-devices-sdk.md
+    - itemType: quickstart
+      text: Použití sady Speech Devices SDK
+      url: speech-devices-sdk-quickstart.md
+    footerLink:
+      text: Další informace
+      url: index-devices.yml
+  - title: Migrace
+    links:
+    - itemType: how-to-guide
+      text: Migrace ze Zpracování řeči Bingu
+      url: how-to-migrate-from-bing-speech.md
+    - itemType: how-to-guide
+      text: Migrace ze služby Custom Speech
+      url: how-to-migrate-from-custom-speech-service.md
+    - itemType: how-to-guide
+      text: Migrace z rozhraní Translator Speech API
+      url: how-to-migrate-from-translator-speech-api.md
+tools:
+  title: Sady SDK (Software Development Kit)
+  summary: Začněte využívat sadu Speech SDK ve vašem oblíbeném programovacím jazyku.
+  items:
+  - title: C#
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Csharp.svg
+    url: https://aka.ms/csspeech/csharpref
+  - title: C++
+    imageSrc: https://docs.microsoft.com/media/logos/logo_Cplusplus.svg
+    url: https://aka.ms/csspeech/cppref
+  - title: Java
+    imageSrc: https://docs.microsoft.com/media/logos/logo_java.svg
+    url: https://aka.ms/csspeech/javaref
+  - title: JavaScript
+    imageSrc: https://docs.microsoft.com/media/logos/logo_js.svg
+    url: https://aka.ms/csspeech/javascriptref
+  - title: Objective-C a Swift
+    imageSrc: https://docs.microsoft.com/media/logos/logo_ios.svg
+    url: https://aka.ms/csspeech/objectivecref
+  - title: Python
+    imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
+    url: https://aka.ms/csspeech/pythonref
+additionalContent:
+  sections:
+  - items:
+    - title: Rozhraní REST API
+      links:
+      - text: Převod řeči na text
+        url: rest-speech-to-text.md
+      - text: Dávkový přepis
+        url: batch-transcription.md
+      - text: Převod textu na řeč
+        url: rest-text-to-speech.md
+      - text: Přepis konverzace
+        url: https://signature.centralus.cts.speech.microsoft.com/UI/index.html
+    - title: Zdroje a prostředky
+      links:
+      - text: Ceny
+        url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+      - text: Oblasti
+        url: regions.md
+      - text: Informace
+        url: https://docs.microsoft.com/learn/browse/?products=azure-cognitive-services&term=Speech
+    - title: Podpora
+      links:
+      - text: Pomoc a podpora
+        url: support.md
+      - text: Problémy GitHubu
+        url: https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues
+      - text: Stack Overflow
+        url: https://aka.ms/SOspeechquestions

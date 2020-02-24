@@ -2,20 +2,16 @@
 title: Samoobslužné výměny a vrácení peněz za rezervace Azure
 description: Přečtěte si, jak postupovat při vrácení peněz za rezervace Azure nebo při jejich výměně.
 author: yashesvi
-manager: yashesvi
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/24/2020
+ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 5f0c0c50ffd639109fdbb90c76e4ec036a8bc975
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 393db5d2e14e047ade04e0b688582e272c6ca44f
+ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76773882"
+ms.lasthandoff: 02/13/2020
+ms.locfileid: "77200431"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
@@ -72,12 +68,10 @@ Azure využívá při zrušení, výměně nebo refundaci následující zásady
 - Na výměny se nevztahují žádné pokuty ani roční limity.
 
 **Zásady pro refundace**
-- Pokud svou rezervaci zrušíte, může se vám účtovat poplatek za předčasné ukončení ve výši 12 %.
-- Výše vrácených peněz představuje zbývající poměrný zůstatek minus poplatek za předčasné ukončení ve výši 12 %. Zrušení provede tak, že na webu Azure Portal přejdete na danou rezervaci a vyberete možnost **Refundace**.
+- V budoucnu se za zrušení se může účtovat 12% poplatek za předčasné ukončení. V současné době tuto penalizaci neúčtujeme.
 - Celková vrácená částka nesmí překročit 50 000 UDS za rok.
 - Výše vrácených peněz vychází z vaší kupní ceny nebo aktuální ceny rezervace podle toho, která hodnota je nižší.
-- Refundace mohou provádět jen vlastníci rezervací. [Přečtěte si, jak přidávat nebo měnit uživatele, kteří mohou spravovat rezervaci](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
-- Microsoft si vyhrazuje právo požadovat za jakékoli vrácení rezervace 12% poplatek. Ten se sice v současnosti ještě neúčtuje, bude tomu tak ale v budoucnu.
+- Refundace můžou provádět pouze vlastníci objednávek rezervací. [Přečtěte si, jak přidávat nebo měnit uživatele, kteří mohou spravovat rezervaci](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Výměna služby jiného typu než Premium Storage za službu Premium Storage
 

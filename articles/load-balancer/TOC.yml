@@ -64,6 +64,8 @@
   items:
     - name: Upgrade veřejného nástroje pro vyrovnávání zatížení verze Basic na veřejný nástroj pro vyrovnávání zatížení verze Standard
       href: upgrade-basic-standard.md
+    - name: Upgrade interního nástroje pro vyrovnávání zatížení verze Basic na interní nástroj pro vyrovnávání zatížení verze Standard
+      href: upgrade-basicInternal-standard.md
     - name: Konfigurace odchozích pravidel
       items:
         - name: Azure CLI

@@ -13,7 +13,7 @@
 - name: Kurzy
   items:
     - name: Vyžadování služby Azure Multi-Factor Authentication
-      href: /authentication/tutorial-enable-azure-mfa.md?toc=/azure/conditional-access/toc.json&bc=/azure/conditional-access/breadcrumb/toc.json
+      href: ../authentication/tutorial-enable-azure-mfa.md?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json
 - name: Koncepty
   expanded: false
   items:

@@ -2,17 +2,17 @@
 title: Co jsou rezervace Azure?
 description: Informace o rezervacích Azure a úsporách nákladů na virtuální počítače, databáze SQL, službu Azure Cosmos DB a další prostředky
 author: yashesvi
-manager: yashar
+ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 02/18/2020
 ms.author: banders
-ms.openlocfilehash: 10cf5b5a0ec4edda3d3c868cda34352e827604b0
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c6a8547235c302f52aacd0e6ae4a8fbf08b538b8
+ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76841876"
+ms.lasthandoff: 02/18/2020
+ms.locfileid: "77443631"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -31,17 +31,25 @@ U virtuálních počítačů, dat ve službě Blob Storage, služby Azure Cosmos
 Plány služby:
 
 - **Rezervovaná instance virtuálního počítače** – Rezervace se vztahuje jenom na náklady na výpočetní funkce virtuálních počítačů. Nevztahuje se na další poplatky za software, sítě nebo úložiště.
-- **Rezervovaná kapacita služby Azure Storage** – Rezervace pokrývá kapacitu úložiště pro účty úložiště úrovně Standard ve službách Blob Storage nebo Azure Data Lake Storage Gen2. Rezervace nepokrývá šířku pásma ani rychlost transakcí.
-- **Rezervace služby Azure Disk Storage** – Rezervace pokrývá jenom disky SSD P30 Premium nebo větší. Nepokrývá žádné jiné typy disků ani velikosti menší než P30.
+- **Rezervovaná kapacita služby Azure Storage** – Rezervace pokrývá kapacitu úložiště pro účty úložiště úrovně Standard ve službách Blob Storage nebo Azure Data Lake Storage Gen2. Rezervace se nevztahuje na šířku pásma ani rychlost transakcí.
+- **Rezervace služby Azure Disk Storage** – Rezervace pokrývá jenom disky SSD P30 Premium nebo větší. Nevztahuje se na žádné jiné typy disků ani velikosti menší než P30.
 - **Rezervovaná kapacita služby Azure Cosmos DB** – Rezervace se vztahuje na propustnost zřízenou pro vaše prostředky. Nevztahuje se na poplatky za úložiště a sítě.
 - **Rezervované virtuální jádro služby SQL Database** – Rezervace se vztahuje jenom na náklady na výpočetní funkce. Licence se fakturuje samostatně.
 - **SQL Data Warehouse** – Rezervace se vztahuje na využití cDWU. Nevztahuje se na poplatky za úložiště nebo sítě související s využitím služby SQL Data Warehouse.
 - **Poplatek za kolek služby App Service** – Rezervace se vztahuje na využití kolku. Nevztahuje se na pracovní procesy, takže všechny další prostředky přidružené ke kolku se účtují samostatně.
-- Azure Database for MySQL
-- Azure Database for PostgreSQL
-- Azure Database for MariaDB
-- Průzkumník dat Azure
+- **Azure Databricks** – Rezervace se vztahuje pouze na využití DBU. Další poplatky, například za výpočetní prostředky, úložiště a sítě, se účtují zvlášť.
+- **Azure Database for MySQL** – Rezervace se vztahuje pouze na náklady na výpočetní prostředky. Rezervace se nevztahuje na poplatky za software, sítě ani úložiště související s databázovým serverem MySQL.
+- **Azure Database for PostgreSQL** – Rezervace se vztahuje pouze na náklady na výpočetní prostředky. Rezervace se nevztahuje na poplatky za software, sítě ani úložiště související s databázovými servery PostgreSQL.
+- **Azure Database for MariaDB** – Rezervace se vztahuje pouze na náklady na výpočetní prostředky. Rezervace se nevztahuje na poplatky za software, sítě ani úložiště související s databázovým serverem MariaDB.
+- **Azure Data Explorer** – Rezervace se vztahuje na přirážku. Rezervace se nevztahuje na poplatky za výpočetní prostředky, sítě ani úložiště související s clustery.
+- **Spravované disky SSD úrovně Premium** – Rezervace se vztahuje pouze na zadanou skladovou položku disku. 
 
+Softwarové plány:
+
+- **SUSE Linux** – Rezervace se vztahuje na náklady na plán softwaru. Slevy se vztahují pouze na měřiče SUSE, a ne na využití virtuálního počítače.
+- **Plány Red Hat** – Rezervace se vztahuje na náklady na plán softwaru. Slevy se vztahují pouze na měřiče Red Hat, a ne na využití virtuálního počítače.
+- **Azure VMware Solution by CloudSimple** – Rezervace se vztahuje na uzly VMWare CloudSimple. Stále se však účtují další náklady na software.
+- **Azure Red Hat OpenShift** – Rezervace se vztahuje na náklady na OpenShift, ne na infrastrukturu Azure.
 
 U virtuálních počítačů s Windows a služby SQL Database můžete náklady na licencování pokrýt prostřednictvím programu [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
@@ -118,7 +126,7 @@ Rezervace se fakturuje za použití způsobu platby spojeného s předplatným. 
 
 ## <a name="how-reservation-discount-is-applied"></a>Jak se uplatňuje sleva za rezervaci
 
-Sleva za rezervaci se uplatňuje na využití prostředků odpovídající atributům, které vyberete při zakoupení rezervace. Mezi atributy patří rozsah, ve kterém se odpovídající virtuální počítače, databáze SQL, služba Azure Cosmos DB nebo jiné prostředky používají. Pokud například chcete slevu za rezervaci čtyř virtuálních počítačů Standard D2 v oblasti Západní USA, vyberte předplatné, ve kterém se tyto virtuální počítače používají.
+Sleva za rezervaci se uplatňuje na využití prostředků odpovídající atributům, které vyberete při zakoupení rezervace. Mezi atributy patří rozsah, ve kterém se odpovídající virtuální počítače, databáze SQL, služba Azure Cosmos DB nebo jiné prostředky používají. Pokud například chcete slevu za rezervaci čtyř virtuálních počítačů Standard D2 v oblasti USA – západ, vyberte předplatné, ve kterém se tyto virtuální počítače používají.
 
 Nevyužitá sleva za rezervaci se *nenahrazuje*. Pokud nemáte na každou hodinu odpovídající prostředky, o rezervované množství za danou hodinu přijdete. Nevyužité rezervované hodiny nelze převést na další období.
 
@@ -132,7 +140,7 @@ Sleva za rezervaci se vztahuje jenom na prostředky přidružené k předplatný
 
 ## <a name="when-the-reservation-term-expires"></a>Po skončení období rezervace
 
-Na konci rezervačního období vyprší platnost fakturační slevy a prostředky se účtují podle sazeb za průběžné platby. Ve výchozím nastavení není pro rezervace nastavené automatické obnovování. Automatické obnovení rezervace můžete povolit výběrem příslušné možnosti v nastaveních prodloužení. Pokud je nastavené automatické prodloužení, při vypršení platnosti stávající rezervace se koupí náhradní. Náhradní rezervace má ve výchozím nastavení stejné atributy jako rezervace s vypršenou platností. Volitelně můžete v nastaveních prodloužení změnit četnost fakturace, období nebo množství. Prodloužení může nastavit libovolný uživatel, který má přístup k dané rezervaci a k předplatnému použitému pro fakturaci.  
+Na konci rezervačního období vyprší platnost fakturační slevy a prostředky se účtují podle sazeb za průběžné platby. Ve výchozím nastavení není pro rezervace nastavené automatické obnovování. Automatické obnovení rezervace můžete povolit výběrem příslušné možnosti v nastaveních prodloužení. Pokud je nastavené automatické prodloužení, při vypršení platnosti stávající rezervace se koupí náhradní. Náhradní rezervace má ve výchozím nastavení stejné atributy jako rezervace s vypršenou platností. Volitelně můžete v nastaveních prodloužení změnit četnost fakturace, období nebo množství. Prodloužení může nastavit libovolný uživatel, který má přístup vlastníka k dané rezervaci a k předplatnému použitému pro fakturaci.  
 
 ## <a name="discount-applies-to-different-sizes"></a>Sleva se vztahuje na různé velikosti
 

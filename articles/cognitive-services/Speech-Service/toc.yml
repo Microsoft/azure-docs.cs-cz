@@ -1,26 +1,30 @@
 - name: Dokumentace ke službě Speech
-  href: index.md
+  href: index.yml
 - name: Přehled
   expanded: true
   items:
     - name: Co je služba Speech?
       href: overview.md
+    - name: Bezplatné vyzkoušení služby Speech
+      href: get-started.md
     - name: Podpora jazyků a oblastí
       href: language-support.md
       displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice,standard voice'
 - name: Převod řeči na text
   expanded: false
   items:
+    - name: Dokumentace k převodu řeči na text
+      href: index-speech-to-text.yml
     - name: Přehled
       items:
         - name: Co je převod řeči na text?
           href: speech-to-text.md
-    - name: Rychlé starty
+    - name: Rychlý start
       items:
-        - name: Rozpoznávání řeči ze zvukového souboru
-          href: quickstarts/speech-to-text-from-file.md
         - name: Rozpoznávání řeči se vstupem z mikrofonu
           href: quickstarts/speech-to-text-from-microphone.md
+        - name: Rozpoznávání řeči ze zvukového souboru
+          href: quickstarts/speech-to-text-from-file.md
         - name: Rozpoznávání řeči uložené v úložišti objektů blob
           href: quickstarts/from-blob.md
     - name: Návody
@@ -45,8 +49,20 @@
           href: how-to-use-codec-compressed-audio-input-streams-ios.md
         - name: Použití komprimovaných formátů zvukového vstupu (Android)
           href: how-to-use-codec-compressed-audio-input-streams-android.md
-        - name: Použití rozpoznávání řeči s kontejnery Docker
-          href: speech-container-howto.md?tabs=stt
+    - name: Přizpůsobení
+      items:
+        - name: Příprava dat
+          href: how-to-custom-speech-test-data.md
+        - name: Kontrola dat
+          href: how-to-custom-speech-inspect-data.md
+        - name: Vyhodnocení přesnosti
+          href: how-to-custom-speech-evaluate-data.md
+        - name: Trénování vlastního modelu
+          href: how-to-custom-speech-train-model.md
+        - name: Nasazení vlastního modelu
+          href: how-to-custom-speech-deploy-model.md
+        - name: Vytváření přepisů pořízených lidmi
+          href: how-to-custom-speech-human-labeled-transcriptions.md
     - name: Referenční informace
       items:
         - name: Rozhraní API sady Speech SDK
@@ -86,33 +102,68 @@
 - name: Převod textu na řeč
   expanded: false
   items:
+    - name: Dokumentace k převodu textu na řeč
+      href: index-text-to-speech.yml
     - name: Přehled
       items:
         - name: Co je převod textu na řeč?
           href: text-to-speech.md
-    - name: Rychlé starty
+    - name: Rychlý start
       items:
-        - name: Syntéza řeči do zvukového souboru
-          href: quickstarts/text-to-speech-audio-file.md
         - name: Syntéza řeči do reproduktoru
           href: quickstarts/text-to-speech.md
-        - name: Asynchronní syntéza řeči dlouhého formátu
+        - name: Syntéza řeči do zvukového souboru
+          href: quickstarts/text-to-speech-audio-file.md
+        - name: Syntéza řeči s využitím dlouhého formátu
           href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
     - name: Návody
       items:
-        - name: Vylepšení výstupu s využitím SSML
+        - name: Vylepšení syntézy pomocí jazyka SSML
           href: speech-synthesis-markup.md
-        - name: Vylepšení výstupu s využitím nástrojů Vlastní hlas
+        - name: Vylepšení syntézy pomocí sady Vlastní hlas
           href: how-to-custom-voice.md
           displayName: custom voice
         - name: Syntéza řeči s využitím rozhraní API pro řeč dlouhého formátu
           href: long-audio-api.md
-        - name: Použití syntézy řeči s kontejnery Docker
-          href: speech-container-howto.md?tabs=tts
         - name: Získání seznamu hlasů s využitím REST (Python)
           href: quickstart-python-get-text-to-speech-voices.md
         - name: Převod textu na řeč s využitím REST (Python)
           href: quickstart-python-text-to-speech.md
+    - name: Přizpůsobení
+      items:
+        - name: Zodpovědné nasazení
+          items:
+            - name: Omezení přístupu pro Vlastní hlas
+              href: concepts-gating-overview.md
+            - name: Nasazení syntetické technologie
+              href: concepts-guidelines-responsible-deployment-synthetic.md
+            - name: Zveřejnění informací o mluvčím
+              href: 'https://aka.ms/disclosure-voice-talent'
+            - name: Zpřístupnění pokynů pro návrh
+              href: concepts-disclosure-guidelines.md
+            - name: Zpřístupnění způsobů návrhu
+              href: concepts-disclosure-patterns.md
+            - name: Pravidla chování
+              href: 'https://aka.ms/custom-neural-code-of-conduct'
+        - name: Portál služby Vlastní hlas
+          items:
+            - name: Začínáme se službou Custom Voice
+              href: how-to-custom-voice.md
+              displayName: 'custom voice, neural voice'
+            - name: Příprava dat
+              href: how-to-custom-voice-prepare-data.md
+            - name: Vytváření a využití modelů Custom Voice
+              href: how-to-custom-voice-create-voice.md
+            - name: Záznam hlasových ukázek
+              href: record-custom-voice-samples.md
+            - name: Vlastní pokyny pro pojmenovávání klíčových slov
+              href: speech-devices-sdk-kws-guidelines.md
+            - name: Zjišťování vlastních klíčových slov
+              href: speech-devices-sdk-create-kws.md
+        - name: Vytvoření zvukového obsahu
+          items:
+            - name: Vytvoření zvukového obsahu
+              href: how-to-audio-content-creation.md
     - name: Referenční informace
       items:
         - name: Speech SDK
@@ -147,55 +198,16 @@
         - name: Nejčastější dotazy k převodu textu na řeč
           href: faq-text-to-speech.md
           displayName: 'FAQ,TTS FAQ,SS FAQ,frequently asked questions'
-- name: Rozpoznávání záměru
-  expanded: false
-  items:
-    - name: Rychlé starty
-      items:
-        - name: 'Rozpoznávání řeči, záměru a entit'
-          href: quickstarts/intent-recognition.md
-          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
-    - name: Návody
-      items:
-        - name: 'Rozpoznávání záměru řeči s využitím LUIS, C#'
-          href: how-to-recognize-intents-from-speech-csharp.md
-    - name: Referenční informace
-      items:
-        - name: Speech SDK
-          items:
-            - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
-              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-            - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
-              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-            - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
-              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-            - name: JavaScript
-              href: 'https://aka.ms/csspeech/javascriptref'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-            - name: Objective-C
-              href: 'https://aka.ms/csspeech/objectivecref'
-              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-            - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
-              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-            - name: "Poznámky k\_verzi"
-              href: releasenotes.md
-              displayName: 'release notes,updates,what''s new,what is new,changes'
-        - name: Služba LUIS
-          items:
-            - name: Materiály pro vývojáře v LUIS
-              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Překlad řeči
   expanded: false
   items:
+    - name: Dokumentace k překladu řeči
+      href: index-speech-translation.yml
     - name: Přehled
       items:
         - name: Co je překlad řeči?
           href: speech-translation.md
-    - name: Rychlé starty
+    - name: Rychlý start
       items:
         - name: Překlad řeči na text
           href: quickstarts/translate-speech-to-text.md
@@ -236,17 +248,65 @@
       items:
         - name: Nejčastější dotazy k překladu řeči
           href: 'https://www.microsoft.com/translator/faq.aspx'
+- name: Rozpoznávání záměru
+  expanded: false
+  items:
+    - name: Dokumentace k rozpoznávání záměru
+      href: index-intent-recognition.yml
+    - name: Rychlý start
+      items:
+        - name: 'Rozpoznávání řeči, záměru a entit'
+          href: quickstarts/intent-recognition.md
+          displayName: 'Recognize intents and entities with LUIS, LUIS, Language Understanding, prebuilt domains'
+    - name: Návody
+      items:
+        - name: 'Rozpoznávání záměru řeči s využitím LUIS, C#'
+          href: how-to-recognize-intents-from-speech-csharp.md
+    - name: Referenční informace
+      items:
+        - name: Speech SDK
+          items:
+            - name: C++
+              href: 'https://aka.ms/csspeech/cppref'
+              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+            - name: 'C#'
+              href: 'https://aka.ms/csspeech/csharpref'
+              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+            - name: Java
+              href: 'https://aka.ms/csspeech/javaref'
+              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+            - name: JavaScript
+              href: 'https://aka.ms/csspeech/javascriptref'
+              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+            - name: Objective-C
+              href: 'https://aka.ms/csspeech/objectivecref'
+              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+            - name: Python
+              href: 'https://aka.ms/csspeech/pythonref'
+              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+            - name: "Poznámky k\_verzi"
+              href: releasenotes.md
+              displayName: 'release notes,updates,what''s new,what is new,changes'
+        - name: Služba LUIS
+          items:
+            - name: Materiály pro vývojáře v LUIS
+              href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Scénáře konverzace
   expanded: false
   items:
+    - name: Dokumentace ke scénářům konverzace
+      href: index-conversation-scenarios.yml
     - name: Přepis konverzace
       items:
         - name: Přehled
           items:
-            - name: Co je přepis konverzace?
+            - name: Informace o přepisu konverzace
               href: conversation-transcription.md
         - name: Návody
           items:
+            - name: Zpracování scénářů pro call centra
+              href: call-center-transcription.md
+              displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
             - name: Přepis konverzace v reálném čase
               href: how-to-use-conversation-transcription.md
             - name: Asynchronní přepis konverzace
@@ -284,9 +344,9 @@
       items:
         - name: Přehled
           items:
-            - name: Co je konverzace více zařízení?
+            - name: Informace o konverzaci více zařízení
               href: multi-device-conversation.md
-        - name: Rychlé starty
+        - name: Rychlý start
           items:
             - name: Zahájení konverzace a připojení ke konverzaci
               href: quickstarts/multi-device-conversation.md
@@ -301,6 +361,8 @@
 - name: Hlasoví asistenti
   expanded: false
   items:
+    - name: Dokumentace k hlasovým asistentům
+      href: index-voice-assistants.yml
     - name: Přehled
       items:
         - name: Co je hlasový asistent?
@@ -349,115 +411,25 @@
           items:
             - name: Nejčastější dotazy k hlasovým asistentům
               href: faq-voice-assistants.md
-- name: Přizpůsobení
+- name: Hostování
   expanded: false
   items:
-    - name: Převod řeči na text
-      items:
-        - name: Portál služby Custom Speech
-          items:
-            - name: Začínáme se službou Custom Speech
-              href: how-to-custom-speech.md
-            - name: Příprava dat
-              href: how-to-custom-speech-test-data.md
-            - name: Kontrola dat
-              href: how-to-custom-speech-inspect-data.md
-            - name: Vyhodnocení přesnosti
-              href: how-to-custom-speech-evaluate-data.md
-            - name: Trénování vlastního modelu
-              href: how-to-custom-speech-train-model.md
-            - name: Nasazení vlastního modelu
-              href: how-to-custom-speech-deploy-model.md
-            - name: Vytváření přepisů pořízených lidmi
-              href: how-to-custom-speech-human-labeled-transcriptions.md
-        - name: Modely tenantů
-          items:
-            - name: 'Vytvoření, publikování a použití modelu'
-              href: tutorial-tenant-model.md
-    - name: Převod textu na řeč
-      items:
-        - name: Zodpovědné nasazení
-          items:
-            - name: Omezení přístupu pro Vlastní hlas
-              href: concepts-gating-overview.md
-            - name: Nasazení syntetické technologie
-              href: concepts-guidelines-responsible-deployment-synthetic.md
-            - name: Zveřejnění informací o mluvčím
-              href: 'https://aka.ms/disclosure-voice-talent'
-            - name: Zpřístupnění pokynů pro návrh
-              href: concepts-disclosure-guidelines.md
-            - name: Zpřístupnění způsobů návrhu
-              href: concepts-disclosure-patterns.md
-            - name: Pravidla chování
-              href: 'https://aka.ms/custom-neural-code-of-conduct'
-        - name: Portál služby Vlastní hlas
-          items:
-            - name: Začínáme se službou Custom Voice
-              href: how-to-custom-voice.md
-              displayName: 'custom voice, neural voice'
-            - name: Příprava dat
-              href: how-to-custom-voice-prepare-data.md
-            - name: Vytváření a využití modelů Custom Voice
-              href: how-to-custom-voice-create-voice.md
-            - name: Záznam hlasových ukázek
-              href: record-custom-voice-samples.md
-        - name: Vytvoření zvukového obsahu
-          items:
-            - name: Vytvoření zvukového obsahu
-              href: how-to-audio-content-creation.md
-    - name: Vlastní pokyny pro pojmenovávání klíčových slov
-      href: speech-devices-sdk-kws-guidelines.md
-    - name: Zjišťování vlastních klíčových slov
-      href: speech-devices-sdk-create-kws.md
-- name: Služba Speech
-  expanded: false
-  items:
-    - name: Scénáře
-      items:
-        - name: Call centra
-          href: call-center-transcription.md
-          displayName: 'IVRs, IVR, Telephony Data, Transcription for Telephony Data, Real-time Transcription for Call Centers'
+    - name: Dokumentace k hostování
+      href: index-hosting.yml
     - name: Návody
       items:
-        - name: Bezplatné vyzkoušení služby Speech
-          href: get-started.md
-        - name: Vytvoření prostředku služby Speech
-          href: 'get-started.md#create-a-speech-resource-in-azure'
-        - name: Containers
-          expanded: false
-          items:
-            - name: Instalace a spuštění kontejnerů
-              href: speech-container-howto.md
-              displayName: 'containers,install container,run container'
-            - name: Konfigurace kontejnerů
-              href: speech-container-configuration.md
-              displayName: 'containers,configure containers,container config,configuration'
-            - name: Kubernetes a Helm
-              href: speech-container-howto-on-premises.md
-              displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
-            - name: Instance kontejneru Azure
-              href: deploy-speech-on-container-instances.md
-              displayName: 'ACI,azure container instances,container instances,containers'
-    - name: ukázky
-      items:
-        - name: Ukázky REST pro převod textu na řeč
-          href: 'https://github.com/Azure-Samples/Cognitive-Speech-TTS'
-        - name: Ukázky REST pro dávkový přepis
-          href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch'
-    - name: Referenční informace
-      items:
-        - name: Rozhraní REST API
-          items:
-            - name: Rozhraní REST API pro dávkový přepis a vlastní nastavení
-              href: 'https://westus.cris.ai/swagger/ui/index'
-            - name: Rozhraní REST API pro přepis konverzace
-              href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
-            - name: Rozhraní REST API pro převod řeči na text
-              href: rest-speech-to-text.md
-            - name: Rozhraní REST API pro převod textu na řeč
-              href: rest-text-to-speech.md
-        - name: Dokumentace ke Swaggeru
-          href: swagger-documentation.md
+        - name: Instalace a spuštění kontejnerů
+          href: speech-container-howto.md
+          displayName: 'containers,install container,run container'
+        - name: Konfigurace kontejnerů
+          href: speech-container-configuration.md
+          displayName: 'containers,configure containers,container config,configuration'
+        - name: Kubernetes a Helm
+          href: speech-container-howto-on-premises.md
+          displayName: 'containers,kubernetes,k8s,helm,orchestration,on-prem,on-premises'
+        - name: Instance kontejneru Azure
+          href: deploy-speech-on-container-instances.md
+          displayName: 'ACI,azure container instances,container instances,containers'
 - name: Speech SDK
   expanded: false
   items:
@@ -469,7 +441,7 @@
           href: scenario-availability.md
         - name: Dodání aplikace
           href: ship-application.md
-    - name: Rychlé starty
+    - name: Rychlý start
       items:
         - name: Vytvoření projektu
           href: quickstarts/create-project.md
@@ -510,6 +482,8 @@
 - name: Zařízení
   expanded: false
   items:
+    - name: Dokumentace ke Speech Devices
+      href: index-devices.yml
     - name: Přehled
       items:
         - name: Sada Speech Devices SDK
@@ -522,14 +496,10 @@
           href: speech-devices-sdk-microphone.md
         - name: Sada Roobo v1
           href: speech-devices-sdk-roobo-v1.md
-    - name: Rychlé starty
+    - name: Rychlý start
       items:
-        - name: Windows
-          href: speech-devices-sdk-windows-quickstart.md
-        - name: Linux
-          href: speech-devices-sdk-linux-quickstart.md
-        - name: Android
-          href: speech-devices-sdk-android-quickstart.md
+        - name: Použití sady Speech Devices SDK
+          href: speech-devices-sdk-quickstart.md
     - name: Zdroje a prostředky
       items:
         - name: Řešení potíže se sadou Speech Devices SDK
@@ -555,6 +525,8 @@
       displayName: 'support,help,release notes,search,scoped search,azure support,github support,stack overflow,github issues,bugs,feedback,uservoice'
     - name: Oblasti
       href: regions.md
+    - name: Dokumentace ke Swaggeru
+      href: swagger-documentation.md
     - name: Suverénní cloudy
       href: sovereign-clouds.md
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
