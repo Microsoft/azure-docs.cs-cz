@@ -8,7 +8,7 @@
   expanded: true
   items:
     - name: Monitorování připojení (Preview)
-      href: connection-monitor-2-preview.md
+      href: connection-monitor-preview.md
     - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – portál
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: Diagnostika potíží s filtrováním provozu virtuálních počítačů – PowerShell
