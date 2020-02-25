@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 750b49e149907f204b8b15f0b5728ab25f917743
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844508"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559229"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
 
@@ -67,7 +67,7 @@ Než budete moct odstranit vlastní název domény, musíte změnit nebo odstran
 
 ### <a name="forcedelete-option"></a>ForceDelete – možnost
 
-Název domény můžete **ForceDelete** v [centru pro správu Azure AD](https://aad.portal.azure.com) nebo pomocí [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Tyto možnosti používají asynchronní operace a aktualizují všechny odkazy z vlastního názvu domény jakouser@contoso.comna počáteční výchozí název domény, například.user@contoso.onmicrosoft.com 
+Název domény můžete **ForceDelete** v [centru pro správu Azure AD](https://aad.portal.azure.com) nebo pomocí [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Tyto možnosti používají asynchronní operace a aktualizují všechny odkazy z vlastního názvu domény, jako je například "user@contoso.com" na počáteční výchozí název domény, například "user@contoso.onmicrosoft.com". 
 
 Chcete-li volat **ForceDelete** v Azure Portal, je nutné zajistit, aby bylo méně než 1000 odkazů na název domény a všechny odkazy, kde Exchange je služba zřizování, musí být aktualizována nebo odebrána v centru pro [správu serveru Exchange](https://outlook.office365.com/ecp/). To zahrnuje skupiny zabezpečení s povoleným e-mailem Exchange a distribuované seznamy. Další informace najdete v tématu [Odebrání skupin zabezpečení s povolenými e-maily](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Operace **ForceDelete** se taky nezdaří, pokud je splněná některá z následujících podmínek:
 
@@ -87,14 +87,14 @@ Vrátí se chyba, když:
 
 ### <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Otázka: Proč se odstranění domény nepodaří s chybou, která uvádí, že se na tomto názvu domény nastavily hlavní skupiny Exchange?** <br>
-**Odpověď:** V dnešní době jsou některé skupiny, jako jsou skupiny zabezpečení s povolenými poštou a distribuované seznamy, zřízené Exchangem a je potřeba je ručně vyčistit v [centru pro správu Exchange (EAC)](https://outlook.office365.com/ecp/). Může se jednat o záviset na ProxyAddresses, která spoléhá na vlastní název domény a bude nutné ji ručně aktualizovat na jiný název domény. 
+**Otázka: Proč se odstranění domény nepodaří s chybou, která uvádí, že mám v tomto názvu domény hlavní skupiny Exchange?** <br>
+**A:** V dnešní době jsou některé skupiny, jako jsou skupiny zabezpečení s povolenými poštou a distribuované seznamy, zřízené Exchangem a je potřeba je ručně vyčistit v [centru pro správu Exchange (EAC)](https://outlook.office365.com/ecp/). Může se jednat o záviset na ProxyAddresses, která spoléhá na vlastní název domény a bude nutné ji ručně aktualizovat na jiný název domény. 
 
-**Otázka: Přihlásili jste se jako\@správce contoso.com, ale nemůžete odstranit název domény "contoso.com"?**<br>
-**Odpověď:** Nejde odkazovat na název vlastní domény, který se pokoušíte odstranit v názvu uživatelského účtu. Zajistěte, aby účet globálního správce používal počáteční výchozí název domény (. onmicrosoft.com), například admin@contoso.onmicrosoft.com. Přihlaste se pomocí jiného účtu globálního správce, jako admin@contoso.onmicrosoft.com je například nebo jiný vlastní název domény, například "fabrikam.com", admin@fabrikam.comkde je účet.
+**Otázka: jsem přihlášen jako správce\@contoso.com, ale nelze odstranit název domény "contoso.com"?**<br>
+**A:** Nejde odkazovat na název vlastní domény, který se pokoušíte odstranit v názvu uživatelského účtu. Ujistěte se, že účet globálního správce používá počáteční výchozí název domény (. onmicrosoft.com), například admin@contoso.onmicrosoft.com. Přihlaste se pomocí jiného účtu globálního správce, jako je například admin@contoso.onmicrosoft.com nebo jiný vlastní název domény, například "fabrikam.com", kde je účet admin@fabrikam.com.
 
-**Otázka: Po kliknutí na tlačítko Odstranit doménu se zobrazí `In Progress` stav operace odstranit. Jak dlouho to trvá? Co se stane, když dojde k chybě?**<br>
-**Odpověď:** Operace odstranit doménu je asynchronní úloha na pozadí, která přejmenuje všechny odkazy na název domény. Měla by být dokončena do jedné nebo dvou minut. Pokud dojde k odstranění domény, ujistěte se, že nemáte:
+**Otázka: kliknuli jste na tlačítko Odstranit doménu a viděli `In Progress` stav operace odstranit. Jak dlouho to trvá? Co se stane, když dojde k chybě?**<br>
+**A:** Operace odstranit doménu je asynchronní úloha na pozadí, která přejmenuje všechny odkazy na název domény. Měla by být dokončena do jedné nebo dvou minut. Pokud dojde k odstranění domény, ujistěte se, že nemáte:
 
 * Aplikace nakonfigurované v názvu domény pomocí appIdentifierURI
 * Libovolná poštovní skupina s odkazem na vlastní název domény
@@ -102,12 +102,12 @@ Vrátí se chyba, když:
 
 Pokud zjistíte, že některá z podmínek nebyla splněna, ručně vyčistěte odkazy a pokuste se doménu odstranit znovu.
 
-## <a name="use-powershell-or-graph-api-to-manage-domain-names"></a>Použití PowerShellu nebo Graph API ke správě názvů domén
+## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>Použití PowerShellu nebo rozhraní Microsoft Graph API ke správě názvů domén
 
-Většinu úloh správy pro názvy domén v Azure Active Directory je taky možné dokončit pomocí Microsoft PowerShellu nebo programově pomocí Graph API Azure AD.
+Většinu úloh správy pro názvy domén v Azure Active Directory lze také dokončit pomocí prostředí Microsoft PowerShell nebo programově pomocí Microsoft Graphho rozhraní API.
 
 * [Použití PowerShellu ke správě názvů domén ve službě Azure AD](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [Správa názvů domén v Azure AD pomocí Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/domains-operations)
+* [Typ prostředku domény](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
 
 ## <a name="next-steps"></a>Další kroky
 

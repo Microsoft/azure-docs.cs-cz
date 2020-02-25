@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/09/2019
-ms.openlocfilehash: e37571b0078b4966aab9f505ddf88c2edb353197
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/13/2020
+ms.openlocfilehash: 104975e6424ed96d43434a588997957033c31d93
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435626"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560350"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure PowerShell
 
@@ -73,47 +73,16 @@ Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <New
 
  Další informace o škálování clusterů najdete v tématu [škálování clusterů HDInsight](./hdinsight-scaling-best-practices.md).
 
-## <a name="grantrevoke-access"></a>Udělit nebo odvolat přístup
-
-Clustery HDInsight mají následující webové služby HTTP (všechny tyto služby mají koncové body RESTful):
-
-* ODBC
-* JDBC
-* Ambari
-* Oozie
-* Templeton
-
-Ve výchozím nastavení jsou tyto služby uděleny pro přístup. Přístup můžete odvolat nebo udělit. Odvolat:
-
-```powershell
-Revoke-AzHDInsightHttpServicesAccess -ClusterName <Cluster Name>
-```
-
-Chcete-li udělit:
-
-```powershell
-$clusterName = "<HDInsight Cluster Name>"
-
-# Credential option 1
-$hadoopUserName = "admin"
-$hadoopUserPassword = '<Enter the Password>'
-$hadoopUserPW = ConvertTo-SecureString -String $hadoopUserPassword -AsPlainText -Force
-$credential = New-Object System.Management.Automation.PSCredential($hadoopUserName,$hadoopUserPW)
-
-# Credential option 2
-#$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
-
-Grant-AzHDInsightHttpServicesAccess -ClusterName $clusterName -HttpCredential $credential
-```
-
-> [!NOTE]  
-> Tím, že udělíte nebo odvoláváte přístup, resetujete uživatelské jméno a heslo clusteru.
-
-Přístup k udělení a odvolání je možné provést taky prostřednictvím portálu. Další informace najdete v tématu [správa Apache Hadoop clusterů ve službě HDInsight pomocí Azure Portal](hdinsight-administer-use-portal-linux.md).
-
 ## <a name="update-http-user-credentials"></a>Aktualizovat přihlašovací údaje uživatele HTTP
 
-Je to stejný postup jako udělení nebo odvolání přístupu HTTP. Pokud byl clusteru udělen přístup HTTP, je nutné jej nejprve odvolat.  A pak udělte přístup pomocí nových přihlašovacích údajů uživatele HTTP.
+[Set-AzHDInsightGatewayCredential](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightgatewaycredential) nastaví přihlašovací údaje protokolu HTTP brány clusteru Azure HDInsight.
+
+```powershell
+$clusterName = "CLUSTERNAME"
+$credential = Get-Credential -Message "Enter the HTTP username and password:" -UserName "admin"
+
+Set-AzHDInsightGatewayCredential -ClusterName $clusterName -HttpCredential $credential
+```
 
 ## <a name="find-the-default-storage-account"></a>Najít výchozí účet úložiště
 

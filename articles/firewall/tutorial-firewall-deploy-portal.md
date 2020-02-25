@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 38ee180fa59fec6619010a3ded1f6837a5ca5239
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 064fcf618914bca31ad9e7e60c76df8f599cd8bf
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371347"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558892"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -26,7 +26,7 @@ Jedním ze způsobů, jak můžete řídit odchozí síťový přístup z podsí
 
 Síťový provoz podléhá nakonfigurovaným pravidlům brány firewall, když ho směrujete na bránu firewall jako na výchozí bránu podsítě.
 
-V tomto kurzu pro usnadnění nasazení vytvoříte jednu zjednodušenou virtuální síť se třemi podsítěmi. V produkčních nasazeních se doporučuje [model hvězdicové a Paprskové](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) služby, kde brána firewall patří do vlastní virtuální sítě. Servery úloh jsou v virtuální sítě s partnerským vztahem ve stejné oblasti s jednou nebo více podsítěmi.
+V tomto kurzu pro usnadnění nasazení vytvoříte jednu zjednodušenou virtuální síť se třemi podsítěmi. U produkčních nasazení se doporučuje [model hvězdicového a paprskového modelu](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) . Brána firewall je ve své vlastní virtuální síti. Servery úloh jsou v virtuální sítě s partnerským vztahem ve stejné oblasti s jednou nebo více podsítěmi.
 
 * **AzureFirewallSubnet** – v této podsíti bude brána firewall.
 * **Workload-SN** – v této podsíti bude server úloh. Provoz této podsítě bude procházet bránou firewall.
@@ -60,8 +60,8 @@ Skupina prostředků obsahuje všechny prostředky pro tento kurz.
 2. V nabídce Azure Portal vyberte **skupiny prostředků** nebo vyhledejte a vyberte *skupiny prostředků* z libovolné stránky. Pak vyberte **Přidat**.
 3. Jako **název skupiny prostředků**zadejte *test-FW-RG*.
 4. V části **Předplatné** vyberte své předplatné.
-5. V části **Umístění skupiny prostředků** vyberte umístění. Všechny další prostředky, které vytvoříte, musí být ve stejném umístění.
-6. Vyberte **Create** (Vytvořit).
+5. V části **Umístění skupiny prostředků** vyberte umístění. Všechny ostatní prostředky, které vytvoříte, musí být ve stejném umístění.
+6. Vyberte **Vytvořit**.
 
 ### <a name="create-a-vnet"></a>Vytvoření virtuální sítě
 
@@ -165,7 +165,7 @@ U podsítě **Workload-SN** nakonfigurujte výchozí trasu v odchozím směru, k
 5. V části **Předplatné** vyberte své předplatné.
 6. V případě **skupiny prostředků**vyberte **test-FW-RG**.
 7. V části **Umístění** vyberte dříve použité umístění.
-8. Vyberte **Create** (Vytvořit).
+8. Vyberte **Vytvořit**.
 9. Vyberte **aktualizovat**a pak vyberte tabulku směrování **brány firewall** .
 10. Vyberte **podsítě** a pak vyberte **přidružit**.
 11. Vyberte možnost **virtuální síť** > **test-FW-vn**.
@@ -193,10 +193,11 @@ Toto je pravidlo aplikace, které umožňuje odchozí přístup k www.google.com
 6. V části **Priorita** zadejte **200**.
 7. V části **Akce** vyberte **Povolit**.
 8. V části **pravidla**zadejte **cílové plně kvalifikované názvy domény**pro **název**typ **Allow-Google**.
-9. V části **Zdrojové adresy** zadejte **10.0.2.0/24**.
-10. V části **Protokol:Port** zadejte **http, https**.
-11. V případě **cílových plně kvalifikovaných názvů domény**zadejte **www.Google.com** .
-12. Vyberte **Přidat**.
+9. Jako **typ zdroje**vyberte **IP adresa**.
+10. Jako **zdroj**zadejte **10.0.2.0/24**.
+11. V části **Protokol:Port** zadejte **http, https**.
+12. V případě **cílových plně kvalifikovaných názvů domény**zadejte **www.Google.com** .
+13. Vyberte **Přidat**.
 
 Brána Azure Firewall obsahuje předdefinovanou kolekci pravidel pro infrastrukturu plně kvalifikovaných názvů domén, které jsou ve výchozím nastavení povolené. Tyto plně kvalifikované názvy domén jsou specifické pro tuto platformu a pro jiné účely je nelze použít. Další informace najdete v tématu [Plně kvalifikované názvy domén infrastruktury](infrastructure-fqdns.md).
 
@@ -209,10 +210,11 @@ Toto pravidlo sítě povoluje odchozí přístup ke dvěma IP adresám na portu 
 3. Jako **název** zadejte **Net-Coll01**.
 4. V části **Priorita** zadejte **200**.
 5. V části **Akce** vyberte **Povolit**.
-6. V části **pravidla**zadejte do **pole název**možnost **Allow-DNS**.
+6. V části **pravidla**, **IP adresy**zadejte do pole **název**možnost **Allow-DNS**.
 7. V části **Protokol** vyberte **UDP**.
-8. V části **Zdrojové adresy** zadejte **10.0.2.0/24**.
-9. V části Cílová adresa zadejte **209.244.0.3,209.244.0.4**
+9. Jako **typ zdroje**vyberte **IP adresa**.
+1. Jako **zdroj**zadejte **10.0.2.0/24**.
+2. Pro **cílovou adresu**zadejte **209.244.0.3, 209.244.0.4**
 
    Jedná se o veřejné servery DNS provozované nástrojem CenturyLink.
 1. V části **Cílové porty** zadejte **53**.

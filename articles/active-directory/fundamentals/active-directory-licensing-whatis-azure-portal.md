@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a455f0e1959ad496a04f531cc0c3ece240c757ad
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987148"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561557"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co je skupina založená na licencování v Azure Active Directory?
 
@@ -34,7 +34,7 @@ K používání licencování na základě skupin musíte mít jednu z následuj
 
 - Placené nebo zkušební předplatné pro Azure AD Premium P1 a vyšší
 
-- Placená nebo zkušební edice Office 365 Enterprise E3 nebo Office 365 a3 nebo Office 365 RSZ G3 a vyšší
+- Placená nebo zkušební edice Office 365 Enterprise E3 nebo Office 365 a3 nebo Office 365 RSZ G3 nebo Office 365 E3 pro GCCH nebo Office 365 E3 pro DOD a vyšší
 
 ### <a name="required-number-of-licenses"></a>Požadovaný počet licencí
 U všech skupin, které mají přiřazenou licenci, musíte mít také licenci pro každého jedinečného člena. I když nemusíte přiřazovat licence ke skupině, musíte mít aspoň tolik licencí, aby zahrnovali všechny členy. Pokud například máte 1 000 jedinečných členů, kteří jsou součástí licencovaných skupin ve vašem tenantovi, musíte mít minimálně 1 000 licencí, aby splnily licenční smlouvu.
@@ -68,6 +68,6 @@ Další informace o jiných scénářích pro správu licencí pomocí licencov�
 * [Přiřazení licencí ke skupině v Azure Active Directory](../users-groups-roles/licensing-groups-assign.md)
 * [Identifikace a řešení potíží s licencemi pro skupinu v Azure Active Directory](../users-groups-roles/licensing-groups-resolve-problems.md)
 * [Postup migrace jednotlivě licencovaných uživatelů na licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-groups-migrate-users.md)
-* [Migrace uživatelů mezi licencemi produktů pomocí licencování pro skupiny ve službě Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Postup migrace uživatelů mezi licencemi k produktu pomocí licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Další scénáře licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-group-advanced.md)
-* [Příklady prostředí PowerShell pro licencování na základě skupiny v Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)
+* [Příklady prostředí PowerShell pro licencování na základě skupin v Azure Active Directory](../users-groups-roles/licensing-ps-examples.md)

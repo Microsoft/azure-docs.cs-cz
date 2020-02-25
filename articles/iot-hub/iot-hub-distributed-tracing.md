@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: c3291746558dbec2147ebea24eadd0febd317033
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: efee34ddfb2b2f6090d5dc8c43647c7ee1c53ce2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539531"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562424"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Trasování zpráv ze zařízení do cloudu Azure IoT pomocí distribuované trasování (Preview)
 
@@ -30,7 +30,7 @@ Povolení distribuovaného trasování pro IoT Hub vám dává možnost:
 
 V tomto článku použijete [sadu SDK pro zařízení Azure IoT pro jazyk C](iot-hub-device-sdk-c-intro.md) s distribuovaným trasováním. Podpora distribuovaného trasování pro ostatní sady SDK stále probíhá.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Verze Preview distribuovaného trasování je momentálně podporovaná jenom pro centra IoT vytvořená v následujících oblastech:
 
@@ -244,10 +244,10 @@ Pokud chcete aktualizovat konfiguraci pro vzorkování distribuovaného trasová
 }
 ```
 
-| Název elementu | Požaduje se | Typ | Popis |
+| Název elementu | Požadováno | Typ | Popis |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | Ano | Integer | Pro zapnutí a vypnutí vzorkování se aktuálně podporují dvě hodnoty režimu. `1` je zapnuto a, `2` je vypnutý. |
-| `sampling_rate` | Ano | Integer | Tato hodnota je procento. Povolují se jenom hodnoty z `0` do `100` (včetně).  |
+| `sampling_mode` | Ano | Celé číslo | Pro zapnutí a vypnutí vzorkování se aktuálně podporují dvě hodnoty režimu. `1` je zapnuto a, `2` je vypnutý. |
+| `sampling_rate` | Ano | Celé číslo | Tato hodnota je procento. Povolují se jenom hodnoty z `0` do `100` (včetně).  |
 
 ## <a name="query-and-visualize"></a>Dotazování a vizualizace
 

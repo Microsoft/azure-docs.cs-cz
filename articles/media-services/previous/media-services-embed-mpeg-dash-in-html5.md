@@ -1,6 +1,6 @@
 ---
-title: Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 se souborem DASH.js | Dokumentace Microsoftu
-description: Toto téma ukazuje postup vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 se souborem DASH.js.
+title: Vložení videa adaptivního streamování s použitím MPEG-SPOJOVNÍKu do aplikace HTML5 s POMLČKou. js | Microsoft Docs
+description: Toto téma ukazuje, jak vložit video s adaptivním streamování MPEG-SPOJOVNÍK do aplikace HTML5 s POMLČKou. js.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f521fd11a2053cf8cf1ea0f9f91667fe475f0eee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c1df14ba5a9f233f42750d4e6dea68a7d6ddc0e
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464194"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564852"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 se souborem DASH.js  
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Vložení videa adaptivního streamování s použitím MPEG-SPOJOVNÍKu do aplikace HTML5 s POMLČKou. js  
 
 ## <a name="overview"></a>Přehled
-MPEG-DASH je standard ISO pro adaptivní streamování obsahu videa, která nabízí významné výhody pro vývojáře, kteří chtějí dodávat vysoce kvalitní, adaptivní streamování výstup videa. S MPEG-DASH datový proud videa při automaticky upraví na nižší definici stane zahlcení sítě. Tím se snižuje pravděpodobnost, že prohlížeč zobrazuje "pozastaveno" videa, když hráč stáhne další několik sekund přehrávání (označuje se také jako ukládání do vyrovnávací paměti). Jak snižuje zahlcení sítě, přehrávače videa zase vrátit datový proud vyšší kvality. Tato schopnost přizpůsobit požadovanou šířku pásma výsledkem také rychlejší spouštění pro video. To znamená, že prvních pár sekund můžete přehrát v segmentu rychlé stažení nižší kvality a potom krok až vyšší Jakmile dostatečná kvalitního obsahu má byla uložená do vyrovnávací paměti.
+MPEG-POMLČKa je standard ISO pro adaptivní streamování obsahu videa, který nabízí významné výhody pro vývojáře, kteří chtějí poskytovat vysoce kvalitní a adaptivní streamování videí. Pomocí MPEG-POMLČKy se Stream videa automaticky upraví na nižší definici, když dojde k zahlcení sítě. Tím se snižuje pravděpodobnost, že prohlížeč zobrazuje "pozastavené" video, zatímco hráč stahuje několik dalších sekund, než se hraje (to znamená, že snižuje pravděpodobnost ukládání do vyrovnávací paměti). I když se zahlcení sítě omezuje, přehrávač videa se zase vrátí do datového proudu s vyšší kvalitou. Tato možnost přizpůsobení požadované šířky pásma také vede k rychlejšímu počátečnímu času pro video. To znamená, že prvních pár sekund je možné přehrát v rychlém stahování a v případě, že je obsah uložen do vyrovnávací paměti.
 
-Souborem Dash.js je open source MPEG-DASH videopřehrávače napsané v jazyce JavaScript. Jeho cílem je poskytovat robustní, napříč platformami přehrávač, který lze libovolně opětovně použít v aplikacích, které vyžadují přehrávání videa. Poskytuje přehrávání MPEG-DASH v jakémkoli prohlížeči, které dnes podporuje W3C média zdrojového rozšíření (MSE), Chrome, Microsoft Edge a 11 (ostatní prohlížeče označili jejich cílem je podporovat MSE). Další informace o souborem DASH.js js, najdete v článku souborem dash.js úložiště GitHub.
+Pomlčka. js je open source přehrávač videa ve formátu MPEG-SPOJOVNÍK napsaný v JavaScriptu. Jeho cílem je zajistit robustní přehrávač pro více platforem, který se dá volně znovu použít v aplikacích, které vyžadují přehrávání videa. Poskytuje přehrávání ve formátu MPEG-SPOJOVNÍKy v jakémkoli prohlížeči, který podporuje rozhraní MSE (W3C Media source Extensions), dnes, který je Chrome, Microsoft Edge a IE11 (ostatní prohlížeče uvedli svůj záměr podporovat MSE). Další informace o POMLČKě. js, js najdete v úložišti GitHub pomlčka. js.
 
-## <a name="creating-a-browser-based-streaming-video-player"></a>Vytváření založené na prohlížeči streamování přehrávač videa
-K vytvoření jednoduché webové stránky, která zobrazuje přehrávač videa s očekávané řídí takové play, pozastavení, rewind atd., budete muset:
+## <a name="creating-a-browser-based-streaming-video-player"></a>Vytvoření přehrávače videa streamování založeného na prohlížeči
+Chcete-li vytvořit jednoduchou webovou stránku, která zobrazuje přehrávač videa s očekávanými ovládacími prvky, jako je přehrávání, pozastavení, převíjení atd., je třeba:
 
 1. Vytvoření stránky HTML
-2. Přidat značku pro video
-3. Přidat přehrávači souborem dash.js
-4. Inicializovat přehrávači
-5. Přidat některé šablony stylů CSS
+2. Přidat značku videa
+3. Přidat aktéra čárka. js
+4. Inicializace přehrávače
+5. Přidat některý styl CSS
 6. Zobrazení výsledků v prohlížeči, který implementuje MSE
 
-Inicializace přehrávač je možné dokončit v pouze několika řádků kódu jazyka JavaScript. Pomocí souborem dash.js, je to v podstatě to jednoduše vložit video MPEG-DASH do aplikace založené na prohlížeči.
+Inicializace přehrávače se dá provést jenom v několik řádků kódu JavaScriptu. Pomocí pomlčky. js je v aplikacích založených na prohlížeči velmi jednoduché vložit video s POMLČKou MPEG.
 
 ## <a name="creating-the-html-page"></a>Vytvoření stránky HTML
-Prvním krokem je vytvoření standardní stránku HTML obsahující **videa** element uložit tento soubor jako basicPlayer.html jako následující příklad ukazuje:
+Prvním krokem je vytvoření standardní stránky HTML obsahující prvek **video** a tento soubor uložte jako basicPlayer. html, jak ukazuje následující příklad:
 
 ```html
     <!DOCTYPE html>
@@ -54,17 +54,17 @@ Prvním krokem je vytvoření standardní stránku HTML obsahující **videa** e
     </html>
 ```
 
-## <a name="adding-the-dashjs-player"></a>Přidání přehrávači souborem DASH.js
-Přidání souborem dash.js referenční implementaci k aplikaci, musíte zkopírovat soubor dash.all.js z nejnovější verze souborem dash.js projektu. To by měl být uloženy ve složce JavaScript vaší aplikace. Tento soubor je soubor usnadnění práce, která stáhne všechny potřebné souborem dash.js kódu do jednoho souboru. Pokud máte najdete kolem souborem dash.js úložiště, můžete najít jednotlivé soubory, otestovat kód a spoustu dalších věcí, ale pokud vše, co chcete udělat je použít souborem dash.js, dash.all.js souboru je, co potřebujete.
+## <a name="adding-the-dashjs-player"></a>Přidání přehrávače POMLČKa. js
+Chcete-li přidat do aplikace referenční implementaci pomlčky. js, je nutné přestoupit soubor pomlčka. All. js z nejnovější verze projektu typu spojovník. js. Tato složka by měla být uložena ve složce JavaScriptu vaší aplikace. Tento soubor je pohodlným souborem, který do jediného souboru přebírá všechny potřebné kódy pomlčky. js. Pokud se nacházíte v úložišti pomlčka. js, najdete jednotlivé soubory, testovací kód a mnoho dalšího, ale pokud chcete použít funkci pomlčka. js, pak soubor pomlčka. All. js je to, co potřebujete.
 
-K přehrávači souborem dash.js přidejte do svých aplikací, přidáte značky skriptu do hlavní části basicPlayer.html:
+Chcete-li přidat ke svým aplikacím přehrávač pomlčky. js, přidejte značku skriptu do části Head souboru basicPlayer. html:
 
 ```html
     <!-- DASH-AVC/265 reference implementation -->
     < script src="js/dash.all.js"></script>
 ```
 
-V dalším kroku vytvořte funkci inicializace hráč při načtení stránky. Přidejte následující skript po řádek, ve kterém můžete načíst dash.all.js:
+Dále vytvořte funkci pro inicializaci přehrávače při načtení stránky. Přidejte následující skript za řádek, ve kterém načítáte pomlčku. All. js:
 
 ```html
     <script>
@@ -80,19 +80,19 @@ V dalším kroku vytvořte funkci inicializace hráč při načtení stránky. P
     </script>
 ```
 
-Tato funkce vytvoří nejprve DashContext. To slouží ke konfiguraci aplikací pro konkrétní běhového prostředí. Z technického hlediska definuje třídy, které rozhraní injektáž závislostí musí použít při vytváření aplikace. Ve většině případů použít Dash.di.DashContext.
+Tato funkce nejprve vytvoří DashContext. Slouží ke konfiguraci aplikace pro konkrétní běhové prostředí. Z technického hlediska definuje třídy, které má rozhraní injektáže Dependency Framework použít při vytváření aplikace. Ve většině případů se používá pomlčka. di. DashContext.
 
-V dalším kroku vytvoření instance třídy primární rozhraní souborem dash.js MediaPlayer. Tato třída obsahuje základní metody, jako třeba přehrát a pozastavit, spravuje relace s element videa a také řídí výklad soubor média prezentace popis (MPD), který popisuje video přehrát.
+Dále vytvořte instanci třídy pomlčka. js architektury MediaPlayer. Tato třída obsahuje základní metody, které jsou potřeba, jako je třeba přehrát a pozastavit, spravuje relaci s prvkem videa a také spravuje výklad souboru s popisem multimediální prezentace (MPD), který popisuje video, které se má přehrát.
 
-Voláním funkce startup() MediaPlayer třídy se ujistěte se, že hráč připravené k přehrání videa. Mimo jiné funkce zajišťuje, že všechny nezbytné třídy (podle definice v rámci) byly načteny. Když hráč je připravená, můžete připojit element videa pomocí funkce attachView(). Po spuštění funkce umožňuje MediaPlayer k vložení do prvku datový proud videa a také řídit přehrávání podle potřeby.
+Je volána funkce Startup () třídy MediaPlayer, která zajistí, že je přehrávač připraven k přehrání videa. Mimo jiné funkce zajišťuje, aby byly načteny všechny potřebné třídy (definované v kontextu). Jakmile je přehrávač připravený, můžete k němu připojit prvek video pomocí funkce attachView (). Funkce Startup umožňuje MediaPlayer vložit datový proud videa do prvku a také řídit přehrávání podle potřeby.
 
-Předejte adresu URL souboru MPD MediaPlayer takže ví o videa, že se má přehrát. Funkci setupVideo() právě vytvořili, bude nutné provést, jakmile plně načtení stránky. To lze proveďte pomocí události při načtení elementu těla. Změna vašeho `<body>` element:
+Předejte adresu URL souboru MPD do MediaPlayer, aby ví o videu, na které se očekává přehrávání. Právě vytvořená funkce setupVideo () se bude muset provést až po úplném načtení stránky. Použijte k tomu událost Load elementu tělo. Změňte `<body>` element na:
 
 ```html
     <body onload="setupVideo()">
 ```
 
-Nastavte velikost elementu videa pomocí šablon stylů CSS. V prostředí adaptivní streamování totiž obzvláště důležité, velikost přehrávaného videa můžou změnit, protože přehrávání se přizpůsobí měnící se síťové podmínky. V této ukázce jednoduché jednoduše vynuťte elementu video o 80 % okna prohlížeče k dispozici přidáním následující šablony stylů CSS do hlavní části stránky:
+Nakonec nastavte velikost prvku video pomocí šablon stylů CSS. V prostředí adaptivního streamování je to obzvláště důležité, protože velikost přehrávaného videa se může změnit, protože přehrávání se mění podle stavu sítě. V této jednoduché ukázce stačí vynutit, aby byl prvek videa 80% dostupného okna prohlížeče přidáním následujících šablon stylů CSS do části Head stránky:
 
 ```html
     <style>
@@ -104,7 +104,7 @@ Nastavte velikost elementu videa pomocí šablon stylů CSS. V prostředí adapt
 ```
 
 ## <a name="playing-a-video"></a>Přehrávání videa
-Přehrát video, přejděte v prohlížeči na basicPlayback.html souboru a klikněte na tlačítko Přehrát v videopřehrávač zobrazí.
+Video nahrajete tak, že přejdete na svůj prohlížeč v souboru basicPlayback. html a kliknete na Přehrát v zobrazeném přehrávači videa.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -113,7 +113,6 @@ Přehrát video, přejděte v prohlížeči na basicPlayback.html souboru a klik
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Viz také
-[Vývoj aplikací videopřehrávače](media-services-develop-video-players.md)
 
-[Úložiště GitHub souborem dash.js](https://github.com/Dash-Industry-Forum/dash.js) 
+[Úložiště GitHub – pomlčka. js](https://github.com/Dash-Industry-Forum/dash.js) 
 

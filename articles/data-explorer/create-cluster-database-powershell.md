@@ -1,5 +1,5 @@
 ---
-title: Vytvoření clusteru a databáze Azure Průzkumník dat pomocí prostředí PowerShell
+title: Vytvoření clusteru Azure Průzkumník dat & DB pomocí PowerShellu
 description: Naučte se vytvářet cluster a databázi Azure Průzkumník dat pomocí prostředí PowerShell.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: d4561d49c37298a2b1a7f6c6542d78c3e19a145c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 690c3e281e65f54f240c70f7a6e5038f54102c99
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978342"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560588"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocí prostředí PowerShell
 
@@ -30,7 +30,7 @@ Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro anal�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -67,8 +67,8 @@ Následující kroky se nevyžadují, pokud spouštíte příkazy v Azure Cloud 
 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
-   | Name (Název) | *mykustocluster* | Požadovaný název clusteru.|
-   | SKU | *D13_v2* | SKU, které bude použito pro váš cluster. |
+   | Název | *mykustocluster* | Požadovaný název clusteru.|
+   | Skladová položka | *D13_v2* | SKU, které bude použito pro váš cluster. |
    | ResourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
 
     Existují další nepovinné parametry, které můžete použít, například kapacitu clusteru.
@@ -92,7 +92,7 @@ Pokud výsledek obsahuje `provisioningState` s hodnotou `Succeeded`, cluster se 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | Název clusteru | *mykustocluster* | Název clusteru, ve kterém se databáze vytvoří.|
-   | Name (Název) | *mykustodatabase* | Název vaší databáze.|
+   | Název | *mykustodatabase* | Název vaší databáze.|
    | ResourceGroupName | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
    | SoftDeletePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována k dispozici pro dotaz. |
    | HotCachePeriod | *3650:00:00:00* | Doba, po kterou budou data uchována v mezipaměti. |

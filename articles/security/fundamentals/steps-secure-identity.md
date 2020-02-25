@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: cafa9d6100e03d8315bf5dd19d863ca90aadd4bb
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: e0db8edfdfa380697a1d8d7e262a7a84da2fb7d2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190890"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565532"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pět kroků pro zabezpečení infrastruktury identity
 
@@ -35,7 +35,7 @@ Tento kontrolní seznam vám pomůže rychle nasadit kritické doporučené akce
 Ujistěte se, že sledujete, které funkce a kroky jsou dokončeny při čtení tohoto kontrolního seznamu.
 
 > [!NOTE]
-> Mnohé z doporučení v tomto dokumentu platí jenom pro aplikace, které jsou nakonfigurované pro použití Azure Active Directory jako jejich zprostředkovatel identity. Konfigurace aplikací pro jednotné přihlašování zajišťuje výhody zásad pro přihlašovací údaje, detekci hrozeb, auditování, protokolování a další funkce, které se do těchto aplikací přidávají. [Jednotné přihlašování prostřednictvím Azure Active Directory](../../active-directory/manage-apps/configure-single-sign-on-portal.md) je základem, na kterém jsou založená všechna tato doporučení.
+> Mnohé z doporučení v tomto dokumentu platí jenom pro aplikace, které jsou nakonfigurované pro použití Azure Active Directory jako jejich zprostředkovatel identity. Konfigurace aplikací pro jednotné přihlašování zajišťuje výhody zásad pro přihlašovací údaje, detekci hrozeb, auditování, protokolování a další funkce, které se do těchto aplikací přidávají. [Jednotné přihlašování prostřednictvím Azure Active Directory](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md) je základem, na kterém jsou založená všechna tato doporučení.
 
 Doporučení v tomto dokumentu jsou zarovnaná se [známkou pro identitu identity](../../active-directory/fundamentals/identity-secure-score.md), automatizované vyhodnocení konfigurace zabezpečení identity TENANTA Azure AD. Organizace můžou na portálu Azure AD pomocí stránky identita zabezpečeného skóre identity najít mezery v aktuální konfiguraci zabezpečení, aby se zajistilo, že budou dodržovat aktuální [osvědčené postupy](identity-management-best-practices.md) Microsoftu pro zabezpečení. Implementace každého doporučení na stránce bezpečné skóre zvýší vaše skóre a umožní vám sledovat váš pokrok a pomůže vám porovnat vaši implementaci s jinými podobnými organizacemi nebo v oboru.
 

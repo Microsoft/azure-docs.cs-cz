@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 548a578365b03162396fb8618718ab1e7ce5b081
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28b7a2b95e8ad23226f92f2b6fba085cc0fa1bfd
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400798"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565549"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Postup upgradu agenta závislostí Azure Monitor pro virtuální počítače
 
@@ -39,22 +39,15 @@ Nejnovější verzi agenta pro Windows si můžete stáhnout [tady](https://aka.
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 
 2. Spusťte **InstallDependencyAgent-Windows. exe** a spusťte Průvodce instalací nástroje.
+   
+3. Postupujte podle pokynů průvodce **instalací nástroje Dependency agent** k odinstalaci předchozí verze agenta závislostí a pak nainstalujte nejnovější verzi.
 
-3. V dialogovém okně **dependency agent nastavení 9.9.1** **klikněte na Souhlasím a** přijměte licenční smlouvu.
-
-5. V dialogovém okně **dependency agent odinstalace 9.9.0** klikněte na **Další**. Na stránce stav se zobrazuje průběh odinstalace předchozí verze.
-
-6. V dialogovém okně **dependency agent odinstalace 9.9.0** klikněte na **odinstalovat** , abyste mohli pokračovat v odinstalaci předchozí verze z cesty zadané v dialogovém okně. 
-
-7. V dialogovém okně **dependency agent odinstalace 9.9.0** se zobrazí průběh odinstalace a po dokončení se zobrazí stránka **dokončení odinstalace Dependency agent** . Klikněte na **Dokončit**.
-
-8. V dialogovém okně **dependency Agent instalace 9.9.1** se zobrazí průběh instalace. Po zobrazení stránky **dokončení odinstalace Dependency agent** klikněte na **Dokončit**. 
 
 ### <a name="from-the-command-line"></a>Z příkazového řádku
 
 1. Přihlaste se k počítači pomocí účtu, který má práva správce.
 
-2. Spusťte následující příkaz:
+2. Spusťte následující příkaz.
 
     ```dos
     InstallDependencyAgent-Windows.exe /S /RebootMode=manual
@@ -62,7 +55,7 @@ Nejnovější verzi agenta pro Windows si můžete stáhnout [tady](https://aka.
 
     Parametr `/RebootMode=manual` brání upgradu v automatickém restartování počítače, pokud některé procesy používají soubory z předchozí verze a mají pro ně zámek. 
 
-3. Chcete-li ověřit, zda upgrade proběhl úspěšně, zkontrolujte `install.log` podrobnější informace o nastavení. Adresář protokolu je *%Programfiles%\Microsoft závislost Agent\logs*.
+3. Chcete-li ověřit, zda upgrade proběhl úspěšně, zkontrolujte `install.log` podrobnější informace o nastavení. Adresář protokolu je *%ProgramFiles%\Microsoft Dependency Agent\logs*.
 
 ## <a name="upgrade-linux-agent"></a>Upgrade agenta pro Linux 
 
@@ -74,7 +67,7 @@ Nejnovější verzi agenta pro Windows si můžete stáhnout [tady](https://aka.
 
 2. Spusťte následující příkaz jako kořenový`sh InstallDependencyAgent-Linux64.bin -s`. 
 
-Pokud agenta závislostí nespustí, zkontrolujte protokoly podrobné informace o chybě. U agentů Linuxu adresáři protokolu není */var/opt/microsoft/dependency-agent/log*. 
+Pokud agenta závislostí nespustí, zkontrolujte protokoly podrobné informace o chybě. V agentech Linux se adresář protokolu */var/opt/Microsoft/Dependency-agent/log*. 
 
 ## <a name="next-steps"></a>Další kroky
 

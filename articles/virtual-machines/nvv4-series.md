@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 82720a99128facee2d1617d69f1ed852b232de43
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 3b1deceb8d5c6e2a22254b2719449e5adb069def
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493277"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565393"
 ---
 # <a name="nvv4-series-preview"></a>NVv4-Series (Preview)
 
@@ -40,11 +40,11 @@ Ukládání Premium Storage do mezipaměti: podporováno
 
 Aby bylo možné využívat možnosti GPU pro virtuální počítače řady Azure N-Series s Windows, musí být nainstalované ovladače NVIDIA nebo AMD GPU.
 
-[Rozšíření ovladače NVIDIA GPU](/extensions/hpccompute-gpu-windows.md) nainstaluje vhodné ovladače NVIDIA CUDA nebo Grid na virtuální počítač řady N-Series. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](/extensions/hpccompute-gpu-windows.md) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](/extensions/overview.md).
+[Rozšíření ovladače NVIDIA GPU](/extensions/hpccompute-gpu-windows.md) nainstaluje vhodné ovladače NVIDIA CUDA nebo Grid na virtuální počítač s Windows N-Series. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](/extensions/hpccompute-gpu-windows.md) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](/extensions/overview.md).
 
-Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si téma Instalace ovladače GPU [řady n-Series pro Windows](/windows/n-series-driver-setup.md) nebo [n-Series Setup Driver Setup pro Linux](/linux/n-series-driver-setup) pro podporované operační systémy, ovladače, instalace a postupy ověření.
+Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si téma [nastavení ovladače GPU N-Series pro Windows](/windows/n-series-driver-setup.md) pro podporované operační systémy, ovladače, instalace a postupy ověření.
 
-Ruční instalace ovladačů AMD GPU najdete v tématu [instalace ovladačů AMD GPU](/windows/n-series-driver-setup.md) řady N-Series pro Windows pro podporované operační systémy, ovladače, instalace a postupy ověření.
+Ruční instalace ovladačů AMD GPU najdete v tématu [instalace ovladačů AMD GPU řady N-Series pro Windows](/windows/n-series-amd-driver-setup.md) pro podporované operační systémy, ovladače, instalace a postupy ověření.
 
 ## <a name="other-sizes"></a>Jiné velikosti
 

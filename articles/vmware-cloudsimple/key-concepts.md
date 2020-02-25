@@ -1,7 +1,7 @@
 ---
-title: Klíčové pojmy pro správu řešení Azure VMware (AVS)
-description: Popisuje klíčové koncepty pro správu řešení Azure VMware (AVS).
-titleSuffix: Azure VMware Solutions (AVS)
+title: Klíčové pojmy pro správu řešení Azure VMware podle CloudSimple
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Popisuje klíčové koncepty pro správu řešení Azure VMware podle CloudSimple
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 04/24/2019
@@ -9,44 +9,44 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c581ffbba7fbaefc8fbd0ffc7e92350bd69802b8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: efe6cc132b062e833dc85c13cf2f6c5f6289484c
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025227"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564615"
 ---
-# <a name="key-concepts-for-administration-of-azure-vmware-solutions-avs"></a>Klíčové koncepty správy řešení Azure VMware (AVS)
+# <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>Klíčové koncepty pro správu řešení Azure VMware podle CloudSimple
 
-Správa řešení Azure VMware (AVS) vyžaduje porozumění následujícím koncepcím:
+Správa řešení Azure VMware podle CloudSimple vyžaduje porozumění následujícím koncepcím:
 
-* Služba AVS, která se zobrazuje jako Azure VMware Solutions (AVS) – služba
-* Uzel služby AVS, který se zobrazuje jako řešení Azure VMware (AVS) – uzel
-* Privátní cloud AVS
+* Služba CloudSimple, která se zobrazuje jako řešení Azure VMware podle CloudSimple-Service
+* Uzel CloudSimple, který se zobrazuje jako řešení Azure VMware podle CloudSimple-Node
+* Privátní cloud CloudSimple
 * Síťové služby
-* Virtuální počítač se službou AVS, který se zobrazuje jako Azure VMware Solutions (AVS) – virtuální počítač
+* Virtuální počítač CloudSimple, který se zobrazuje jako řešení Azure VMware podle CloudSimple – virtuální počítač
 
-## <a name="avs-service"></a>Služba AVS
+## <a name="cloudsimple-service"></a>Služba CloudSimple
 
-Pomocí služby AVS můžete z Azure Portal vytvářet a spravovat všechny prostředky přidružené k řešení VMware (AVS). Vytvořte prostředek služby v každé oblasti, ve které chcete službu používat.
+Pomocí služby CloudSimple můžete vytvořit a spravovat všechny prostředky, které jsou přidružené k řešení VMware pomocí CloudSimple z Azure Portal. Vytvořte prostředek služby v každé oblasti, ve které chcete službu používat.
 
-Přečtěte si další informace o [službě AVS](cloudsimple-service.md).
+Přečtěte si další informace o [službě CloudSimple](cloudsimple-service.md).
 
-## <a name="avs-node"></a>Uzel AVS
+## <a name="cloudsimple-node"></a>Uzel CloudSimple
 
-Uzel služby AVS je vyhrazený, holého a nenáročného hostitele úložiště, na který je nasazený VMware ESXi hypervisor. Tento uzel je pak začleněn do platforem VMware vSphere, vCenter, síti vSAN a NSX. Služba AVS síťové služby a hraniční síťové služby jsou také povoleny. Každý uzel slouží jako jednotka výpočetní kapacity a úložiště, kterou můžete zřídit pro vytváření [privátních cloudů služby AVS](cloudsimple-private-cloud.md). Uzly zřídíte nebo rezervujete v oblasti, kde je služba AVS k dispozici.
+Uzel CloudSimple je vyhrazený, holé hostitel s více technologiemi a hostitele úložiště, do kterého je nasazený VMware ESXi hypervisor. Tento uzel je pak začleněn do platforem VMware vSphere, vCenter, síti vSAN a NSX. Jsou povolené i síťové služby CloudSimple a hraniční sítě. Každý uzel slouží jako jednotka výpočetní kapacity a úložiště, kterou můžete zřídit pro vytváření [privátních cloudů CloudSimple](cloudsimple-private-cloud.md). Uzly zřídíte nebo rezervujete v oblasti, kde je dostupná služba CloudSimple.
 
-Přečtěte si další informace o [uzlech AVS](cloudsimple-node.md).
+Přečtěte si další informace o [CloudSimple uzlech](cloudsimple-node.md).
 
-## <a name="avs-private-cloud"></a>Privátní cloud AVS
+## <a name="cloudsimple-private-cloud"></a>Privátní cloud CloudSimple
 
-Privátní cloud služby AVS je izolované prostředí VMware Stack spravované serverem vCenter ve vlastní doméně pro správu. Zásobník VMware zahrnuje hostitele ESXi, vSphere, vCenter, síti vSAN a NSX. Zásobník běží na vyhrazených uzlech (vyhrazený a izolovaný holý hardware) a využívají ho uživatelé prostřednictvím nativních nástrojů VMware, které zahrnují vCenter a NSX Manager. Vyhrazené uzly se nasazují v umístěních Azure a spravují se pomocí Azure. Každý privátní cloud služby AVS je možné segmentovat a zabezpečit pomocí síťových služeb, jako jsou sítě VLAN a podsítě a tabulky brány firewall. Připojení k místnímu prostředí a síti Azure se vytvářejí pomocí zabezpečených, privátních sítí VPN a připojení Azure ExpressRoute.
+Privátní cloud CloudSimple je izolované prostředí VMware Stack spravované serverem vCenter ve vlastní doméně pro správu. Zásobník VMware zahrnuje hostitele ESXi, vSphere, vCenter, síti vSAN a NSX. Zásobník běží na vyhrazených uzlech (vyhrazený a izolovaný holý hardware) a využívají ho uživatelé prostřednictvím nativních nástrojů VMware, které zahrnují vCenter a NSX Manager. Vyhrazené uzly se nasazují v umístěních Azure a spravují se pomocí Azure. Každý privátní cloud je možné segmentovat a zabezpečit pomocí síťových služeb, jako jsou sítě VLAN a podsítě a tabulky brány firewall. Připojení k místnímu prostředí a síti Azure se vytvářejí pomocí zabezpečených, privátních sítí VPN a připojení Azure ExpressRoute.
 
-Další informace o [privátním cloudu](cloudsimple-private-cloud.md)pro funkci AVS
+Přečtěte si další informace o [privátním cloudu CloudSimple](cloudsimple-private-cloud.md).
 
 ## <a name="service-networking"></a>Síťové služby
 
-Služba AVS zajišťuje síť pro oblast, ve které je nasazená vaše služba AVS. Ve výchozím nastavení je síť jedním adresním prostorem TCP vrstvy 3 s povoleným směrováním. Všechny privátní cloudy a podsítě pro funkci AVS vytvořené v této oblasti spolu vzájemně komunikují bez jakékoli další konfigurace. Distribuované skupiny portů můžete v vCenter vytvořit pomocí sítí VLAN. Pomocí následujících síťových funkcí můžete nakonfigurovat a zabezpečit prostředky úloh v privátním cloudu služby AVS:
+Služba CloudSimple poskytuje síť pro každou oblast, ve které je nasazená vaše služba CloudSimple. Ve výchozím nastavení je síť jedním adresním prostorem TCP vrstvy 3 s povoleným směrováním. Všechny privátní cloudy a podsítě vytvořené v této oblasti spolu vzájemně komunikují bez jakékoli další konfigurace. Distribuované skupiny portů můžete v vCenter vytvořit pomocí sítí VLAN. Pomocí následujících síťových funkcí můžete nakonfigurovat a zabezpečit prostředky úloh ve vašem privátním cloudu:
 
 * [SÍTĚ VLAN a podsítě](cloudsimple-vlans-subnets.md)
 * [Tabulky brány firewall](cloudsimple-firewall-tables.md)
@@ -54,11 +54,11 @@ Služba AVS zajišťuje síť pro oblast, ve které je nasazená vaše služba A
 * [Veřejná IP adresa](cloudsimple-public-ip-address.md)
 * [Připojení k síti Azure](cloudsimple-azure-network-connection.md)
 
-## <a name="avs-virtual-machine"></a>Virtuální počítač AVS
+## <a name="cloudsimple-virtual-machine"></a>Virtuální počítač CloudSimple
 
-Pomocí služby AVS můžete spravovat virtuální počítače VMware z Azure Portal. Jeden nebo více clusterů nebo fondů prostředků z prostředí vSphere lze namapovat na předplatné, ve kterém je služba vytvořená.
+Pomocí služby CloudSimple můžete spravovat virtuální počítače VMware z Azure Portal. Jeden nebo více clusterů nebo fondů prostředků z prostředí vSphere lze namapovat na předplatné, ve kterém je služba vytvořená.
 
 Další informace:
 
-* [Virtuální počítače pro funkci AVS](cloudsimple-virtual-machines.md)
+* [Virtuální počítače s CloudSimple](cloudsimple-virtual-machines.md)
 * [Mapování předplatného Azure](https://docs.azure.cloudsimple.com/azure-subscription-mapping/)

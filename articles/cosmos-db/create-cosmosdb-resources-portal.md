@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/05/2020
-ms.openlocfilehash: a933caf0b0033cdcd1f27d4f795ba6466f34072a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bc7e77cc498958b2f8f0c5b2d5ab2d59db97a235
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210325"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560826"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Rychlý Start: vytvoření účtu, databáze, kontejneru a položek Azure Cosmos z Azure Portal
 
@@ -30,7 +30,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 
 V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit účet Azure Cosmos DB [rozhraní SQL API](sql-api-introduction.md) , vytvořit databázi dokumentů a kontejner a přidat data do kontejneru. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 - [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
@@ -100,6 +100,12 @@ Přidejte data do nové databáze pomocí Průzkumník dat.
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+
+Pokud chcete odstranit jenom databázi a používat účet Azure Cosmos v budoucnu, můžete databázi odstranit pomocí následujících kroků:
+
+* Máte účet Azure Cosmos.
+* Otevřete **Průzkumník dat**klikněte pravým tlačítkem na databázi, kterou chcete odstranit, a vyberte **odstranit databázi**.
+* Zadáním ID databáze nebo databáze potvrďte operaci odstranění. 
 
 ## <a name="next-steps"></a>Další kroky
 

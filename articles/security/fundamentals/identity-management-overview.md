@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: cdf07c6a4cb98f17a9bc15934a7be42ba70810f6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f61b6193a0d2082296a17128b41d7220f9b7e05f
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840447"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565889"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení služby Azure Identity Management
 
@@ -40,10 +40,10 @@ Cílem tohoto článku je poskytnout přehled základních funkcí zabezpečení
 
 * Jednotné přihlašování
 * Reverzní proxy server
-* Multi-factor Authentication
+* Multi-Factor Authentication
 * Řízení přístupu na základě role (RBAC)
 * Monitorování zabezpečení, výstrahy a sestavy založené na strojovém učení
-* Správa identit a přístupu zákazníků
+* Správa identit a přístupu uživatelů
 * Registrace zařízení
 * Privileged Identity Management
 * Ochrana identit
@@ -64,7 +64,7 @@ Další informace:
 
 * [Přehled jednotného přihlašování](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../../active-directory/manage-apps/what-is-single-sign-on.md)
-* [Integrace Azure Active Directory jednotného přihlašování s aplikacemi SaaS](../../active-directory/manage-apps/configure-single-sign-on-portal.md)
+* [Integrace Azure Active Directory jednotného přihlašování s aplikacemi SaaS](../../active-directory/manage-apps/configure-single-sign-on-non-gallery-applications.md)
 
 ## <a name="reverse-proxy"></a>Reverzní proxy server
 
@@ -73,11 +73,11 @@ Azure Proxy aplikací služby AD umožňuje publikovat místní aplikace, jako j
 Další informace:
 
 * [Povolení služby Azure Proxy aplikací služby AD](/azure/active-directory/manage-apps/application-proxy-enable)
-* [Publikování aplikací pomocí Proxy aplikací Azure AD](/azure/active-directory/active-directory-application-proxy-publish)
+* [Publikování aplikací s využitím Azure Proxy aplikací služby AD](/azure/active-directory/active-directory-application-proxy-publish)
 * [Jednotné přihlašování s proxy aplikací](../../active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd.md)
 * [Práce s podmíněným přístupem](../../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
-## <a name="multi-factor-authentication"></a>Multi-factor Authentication
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Azure Multi-Factor Authentication je metoda ověřování, která vyžaduje použití více než jedné metody ověřování a přidává kritickou druhou vrstvu zabezpečení pro přihlášení a transakce uživatelů. Multi-Factor Authentication pomáhá chránit přístup k datům a aplikacím a současně plnit požadavky uživatelů na jednoduchý proces přihlašování. Poskytuje silné ověřování prostřednictvím řady možností ověřování: telefonní hovory, textové zprávy nebo oznámení mobilní aplikace nebo ověřovací kódy a tokeny OAuth třetích stran.
 
@@ -114,7 +114,7 @@ Další informace:
 * [Začínáme s vytvářením sestav Azure Active Directory](/azure/active-directory/active-directory-reporting-getting-started)
 * [Azure Active Directory průvodce vytvářením sestav](/azure/active-directory/active-directory-reporting-guide)
 
-## <a name="consumer-identity-and-access-management"></a>Správa identit a přístupu zákazníků
+## <a name="consumer-identity-and-access-management"></a>Správa identit a přístupu uživatelů
 
 Azure AD B2C je vysoce dostupná, globální služba pro správu identit pro zákaznické aplikace, která se škáluje na stovky milionů identit. Dá se integrovat do mobilních i webových platforem. Vaši uživatelé se můžou přihlásit ke všem aplikacím prostřednictvím přizpůsobitelného prostředí pomocí svých stávajících účtů sociálních sítí nebo vytvořením nových přihlašovacích údajů.
 
@@ -156,7 +156,7 @@ Pomocí Azure AD Privileged Identity Management můžete:
 Další informace:
 
 * [Co je Azure AD Privileged Identity Management?](../../active-directory/privileged-identity-management/pim-configure.md)
-* [Přiřazení role adresáře Azure AD v PIM](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
+* [Přiřazení rolí adresáře Azure AD v PIM](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>Ochrana identit
 
@@ -174,7 +174,7 @@ Další informace:
 * Synchronizace
 * Integrace AD FS a federace
 * Předávací ověřování
-* Sledování stavu
+* Monitorování stavu
 
 Další informace:
 

@@ -4,15 +4,15 @@ description: Naučte se integrovat s Azure Firewall k zabezpečení odchozího p
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f24a984a4b3e13039f1f9dcf0be459425c048c41
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513336"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565719"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Uzamčení App Service Environment
 
@@ -41,9 +41,11 @@ Provoz do a z pomocného mechanismu řízení musí dodržovat následující ko
 
 ## <a name="locking-down-inbound-management-traffic"></a>Uzamčení příchozího provozu správy
 
-Pokud se k vaší podsíti přiNSGho mechanismu PŘIŘÍZENÍ ještě nepřiřadila žádná, vytvořte ji. V rámci NSG nastavte první pravidlo, které povolí provoz ze značky služby s názvem AppServiceManagement na portech 454, 455. To je všechno, co je pro správu pomocného mechanismu vyžadováno z veřejných IP adres. Adresy za touto značkou služby se používají pouze ke správě Azure App Service. Provoz správy, který prochází těmito připojeními, je šifrovaný a zabezpečený pomocí ověřovacích certifikátů. Typický provoz na tomto kanálu zahrnuje věci, jako jsou příkazy iniciované zákazníkem a sondy stavu. 
+Pokud se k vaší podsíti přiNSGho mechanismu PŘIŘÍZENÍ ještě nepřiřadila žádná, vytvořte ji. V rámci NSG nastavte první pravidlo tak, aby povolovalo provoz ze značky služby s názvem AppServiceManagement na portech 454, 455. Pravidlo pro povolení přístupu ze značky AppServiceManagement je jediným aspektem, který je z veřejných IP adres nutný ke správě vašeho přístupového mechanismu. Adresy za touto značkou služby se používají pouze ke správě Azure App Service. Provoz správy, který prochází těmito připojeními, je šifrovaný a zabezpečený pomocí ověřovacích certifikátů. Typický provoz na tomto kanálu zahrnuje věci, jako jsou příkazy iniciované zákazníkem a sondy stavu. 
 
 Služby ASE vytvořené prostřednictvím portálu s novou podsítí jsou vytvořeny pomocí NSG, který obsahuje pravidlo povolení pro značku AppServiceManagement.  
+
+Vaše pomocného mechanismu musí taky povolit příchozí požadavky z Load Balancer značky na portu 16001. Žádosti z Load Balancer na portu 16001 jsou aktivními kontrolami mezi Load Balancer a front-endu pro pomocného uživatelského rozhraní. Pokud je port 16001 zablokovaný, váš pomocného služby nebude v pořádku.
 
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Konfigurace Azure Firewall pomocí pomocného mechanismu 
 
@@ -114,14 +116,14 @@ Následující informace jsou požadovány pouze v případě, že chcete nakonf
 |----------|
 | Azure SQL |
 | Azure Storage |
-| Azure Event Hubs |
+| Azure Event Hub |
 
 #### <a name="ip-address-dependencies"></a>Závislosti IP adres
 
 | Koncový bod | Podrobnosti |
 |----------| ----- |
-| \*:123 | Kontroluje se čas NTP. Provoz se kontroluje na více koncových bodech na portu 123. |
-| \*:12000 | Tento port se používá pro monitorování systému. Pokud je zablokované, pak se některé problémy budou obtížnější rozlišit, ale bude i nadále fungovat. |
+| \*: 123 | Kontroluje se čas NTP. Provoz se kontroluje na více koncových bodech na portu 123. |
+| \*: 12000 | Tento port se používá pro monitorování systému. Pokud je zablokované, pak se některé problémy budou obtížnější rozlišit, ale bude i nadále fungovat. |
 | 40.77.24.27:80 | Monitorování a upozornění na problémy s MECHANISMem řízení |
 | 40.77.24.27:443 | Monitorování a upozornění na problémy s MECHANISMem řízení |
 | 13.90.249.229:80 | Monitorování a upozornění na problémy s MECHANISMem řízení |
@@ -218,10 +220,10 @@ U Azure Firewall automaticky získáte vše, co je nakonfigurováno pomocí zna�
 
 | Koncový bod |
 |----------|
-|gr-Prod-\*.cloudapp.net:443 |
-| \*.management.azure.com:443 |
-| \*.update.microsoft.com:443 |
-| \*.windowsupdate.microsoft.com:443 |
+|GR-prod-\*. cloudapp.net:443 |
+| \*. management.azure.com:443 |
+| \*. update.microsoft.com:443 |
+| \*. windowsupdate.microsoft.com:443 |
 | \*. identity.azure.net:443 |
 
 #### <a name="linux-dependencies"></a>Závislosti Linux 
@@ -272,7 +274,22 @@ Linux není dostupný v US Gov oblastech a není tak uvedený jako volitelná ko
 |----------|
 | Azure SQL |
 | Azure Storage |
-| Azure Event Hubs |
+| Azure Event Hub |
+
+#### <a name="ip-address-dependencies"></a>Závislosti IP adres
+
+| Koncový bod | Podrobnosti |
+|----------| ----- |
+| \*: 123 | Kontroluje se čas NTP. Provoz se kontroluje na více koncových bodech na portu 123. |
+| \*: 12000 | Tento port se používá pro monitorování systému. Pokud je zablokované, pak se některé problémy budou obtížnější rozlišit, ale bude i nadále fungovat. |
+| 40.77.24.27:80 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 40.77.24.27:443 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 13.90.249.229:80 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 13.90.249.229:443 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 104.45.230.69:80 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 104.45.230.69:443 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 13.82.184.151:80 | Monitorování a upozornění na problémy s MECHANISMem řízení |
+| 13.82.184.151:443 | Monitorování a upozornění na problémy s MECHANISMem řízení |
 
 #### <a name="dependencies"></a>Závislosti ####
 
@@ -338,7 +355,7 @@ Linux není dostupný v US Gov oblastech a není tak uvedený jako volitelná ko
 |www.thawte.com:80 |
 |\*ctldl.windowsupdate.com:443 |
 |\*. management.usgovcloudapi.net:443 |
-|\*.update.microsoft.com:443 |
+|\*. update.microsoft.com:443 |
 |admin.core.usgovcloudapi.net:443 |
 |azperfmerges.blob.core.windows.net:443 |
 |azperfmerges.blob.core.windows.net:443 |

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4db758ce0710f5b8b122feaadaa8b97a90dcb7cb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e3cdf44c2fc4c16bba283b6f884078dd947b1f34
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846858"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564769"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Model fakturace pro Azure Active Directory B2C
 
@@ -91,7 +91,7 @@ Předplatné propojené s klientem Azure AD B2C se dá použít k fakturaci vyu�
 
 ### <a name="create-the-link"></a>Vytvořit odkaz
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a pak vyberte adresář, který obsahuje předplatné Azure, které chcete použít (*ne* adresář obsahující Azure AD B2C tenanta).
 1. Vyberte **vytvořit prostředek**, do pole **Hledat na Marketplace** zadejte `Active Directory B2C` a pak vyberte **Azure Active Directory B2C**.
 1. Vyberte **Vytvořit**.
@@ -140,4 +140,4 @@ Než začnete s přesunem, nezapomeňte si přečíst celý článek, abyste pln
 
 ## <a name="next-steps"></a>Další kroky
 
-Kromě kontroly údajů o využití a fakturaci v rámci vybraného předplatného Azure si můžete projít podrobné sestavy o využití pomocí [rozhraní API pro vytváření sestav využití](view-usage-reports.md).
+Nejnovější informace o cenách najdete v článku [Azure Active Directory B2C ceny](https://azure.microsoft.com/pricing/details/active-directory-b2c/).

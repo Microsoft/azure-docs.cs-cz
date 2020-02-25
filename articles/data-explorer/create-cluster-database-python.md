@@ -1,5 +1,5 @@
 ---
-title: Vytvoření clusteru a databáze Azure Průzkumník dat pomocí Pythonu
+title: Vytvoření clusteru Azure Průzkumník dat & DB pomocí Pythonu
 description: Naučte se vytvářet cluster a databázi Azure Průzkumník dat pomocí Pythonu.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 50e050a05fd364a4b1f880e3501b04274ffd360c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 8425058c9f6ac5b90c37a99f749a810672b406fc
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444226"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560503"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocí Pythonu
 
@@ -26,7 +26,7 @@ ms.locfileid: "77444226"
 
 V tomto článku vytvoříte cluster a databázi Azure Průzkumník dat pomocí Pythonu. Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, nejdřív vytvořte cluster a v tomto clusteru vytvořte jednu nebo víc databází. Potom ingestujte nebo načtěte data do databáze, abyste na ni mohli spouštět dotazy.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
@@ -87,7 +87,7 @@ Pro spuštění příkladů v tomto článku potřebujeme aplikaci služby Azure
    | cluster_name | *mykustocluster* | Požadovaný název clusteru.|
    | sku_name | *Standard_D13_v2* | SKU, které bude použito pro váš cluster. |
    | tier | *Standard* | Úroveň SKU. |
-   | capacity | *Automatické* | Počet instancí clusteru |
+   | kapacita | *Automatické* | Počet instancí clusteru |
    | resource_group_name | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
 
     > [!NOTE]

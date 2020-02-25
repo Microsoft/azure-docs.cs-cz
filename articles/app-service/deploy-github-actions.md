@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: e3d6e730846388c4b74cfa0b6361629e836b0517
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 4a8b3cf47235e061e5dbcc08a409fce84d421771
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670194"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562203"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do App Service pomocí akcí GitHubu
 
@@ -25,7 +25,7 @@ Pracovní postup je definovaný souborem YAML (. yml) v cestě `/.github/workflo
 
 V případě pracovního postupu Azure App Service má soubor tři části:
 
-|Sekce  |Úlohy  |
+|Část  |Úlohy  |
 |---------|---------|
 |**Ověřování** | 1. definování instančního objektu <br /> 2. vytvoření tajného kódu GitHubu |
 |**Budování** | 1. nastavení prostředí <br /> 2. sestavení webové aplikace |
@@ -205,7 +205,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # checkout the repo
-    - name: 'Checkout Github Action' 
+    - name: 'Checkout GitHub Action' 
       uses: actions/checkout@master
     
     - name: Setup Node 10.x
@@ -239,7 +239,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # checkout the repo
-    - name: 'Checkout Github Action' 
+    - name: 'Checkout GitHub Action' 
       uses: actions/checkout@master
    
     - uses: azure/login@v1

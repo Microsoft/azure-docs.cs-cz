@@ -14,12 +14,12 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ce791ee3536b9ab07605787209e59b7e5d60126
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f4eb09ab7fa31af5edf14b113a6a88e08df2d115
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74026292"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562254"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenants-interact"></a>Pochopení způsobu interakce více Azure Active Directory tenantů
 
@@ -46,7 +46,7 @@ Každý tenant služby Azure AD můžete nakonfigurovat nezávisle na tom, aby s
 Pokud chcete do Azure Portal přidat tenanta Azure AD, přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu, který je globálním správcem služby Azure AD, a na levé straně vyberte **Nový**.
 
 > [!NOTE]
-> Na rozdíl od jiných prostředků Azure nejsou vaši klienti podřízenými prostředky předplatného Azure. Pokud se vaše předplatné Azure zruší nebo vypršela jeho platnost, můžete k datům tenanta přistupovat pomocí Azure PowerShell, Graph API Azure nebo centra pro správu Microsoft 365. K tenantovi taky můžete [přidružit jiné předplatné](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+> Na rozdíl od jiných prostředků Azure nejsou vaši klienti podřízenými prostředky předplatného Azure. Pokud se vaše předplatné Azure zruší nebo vypršela jeho platnost, můžete k datům tenanta přistupovat pomocí Azure PowerShell, rozhraní Microsoft Graph API nebo centra pro správu Microsoft 365. K tenantovi taky můžete [přidružit jiné předplatné](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
 >
 
 ## <a name="next-steps"></a>Další kroky

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: dc4762cbda5ad2877d2d69953d2514dea17c8b46
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d989553dc2248e7e0c830bb8cf169a80354dbab2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368902"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562543"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat Update Infrastructure pro virtuální počítače na vyžádání Red Hat Enterprise Linuxem v Azure
  RHUI ( [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) ) umožňuje poskytovatelům cloudu, jako je Azure, zrcadlit obsah úložiště hostovaného na Red Hat, vytvářet vlastní úložiště pomocí obsahu specifického pro Azure a zpřístupňuje je pro virtuální počítače koncových uživatelů.
@@ -28,7 +28,7 @@ Další informace o RHEL imagí v Azure, včetně publikování a zásad uchová
 Informace o zásadách podpory Red Hat pro všechny verze RHEL najdete na stránce [Red Hat Enterprise Linux životní cyklus](https://access.redhat.com/support/policy/updates/errata) .
 
 > [!IMPORTANT]
-> RHUI je určena jenom pro image s průběžnými platbami (PAYGO). U vlastních a zlatých imagí, označovaných také jako přizpůsobené předplatné (BYOS), musí být systém připojen k RHSM nebo satelitu, aby mohl přijímat aktualizace. Další podrobnosti najdete v [článku o Red Hat](https://access.redhat.com/solutions/253273) .
+> RHUI je určena jenom pro image s průběžnými platbami (PAYG). U vlastních a zlatých imagí, označovaných také jako přizpůsobené předplatné (BYOS), musí být systém připojen k RHSM nebo satelitu, aby mohl přijímat aktualizace. Další podrobnosti najdete v [článku o Red Hat](https://access.redhat.com/solutions/253273) .
 
 
 ## <a name="important-information-about-azure-rhui"></a>Důležité informace o Azure RHUI
@@ -105,7 +105,7 @@ Následující pokyny použijte k uzamknutí virtuálního počítače s RHEL na
     yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7-eus.config' install 'rhui-azure-rhel7-eus'
     ```
 
-1. Uzamknout proměnnou releasever (Spustit jako kořen):
+1. Uzamknout proměnnou `releasever` (Spustit jako kořen):
     ```bash
     echo $(. /etc/os-release && echo $VERSION_ID) > /etc/yum/vars/releasever
     ```
@@ -120,7 +120,7 @@ Následující pokyny použijte k uzamknutí virtuálního počítače s RHEL na
 
 ### <a name="switch-a-rhel-vm-back-to-non-eus-remove-a-version-lock"></a>Přepnutí virtuálního počítače s RHEL zpět na jiný než EUS (odebrání zámku verze)
 Spusťte následující příkaz jako kořen:
-1. Odeberte soubor releasever:
+1. Odeberte soubor `releasever`:
     ```bash
     rm /etc/yum/vars/releasever
      ```

@@ -3,27 +3,27 @@ title: Přímý line Speech – Speech Service
 titleSuffix: Azure Cognitive Services
 description: Přehled funkcí, možností a omezení pro hlasové asistenty pomocí přímého Lineového rozpoznávání se sadou Speech Software Development Kit (SDK).
 services: cognitive-services
-author: trrwilson
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: travisw
-ms.openlocfilehash: cec3131d791d591375fd87d1c080294c9034a815
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: 230fbd14ce33b52b1e7a1f9cc9cd530ccdec169a
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806201"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562526"
 ---
 # <a name="about-direct-line-speech"></a>O funkci Direct line Speech
 
-[Hlasové asistenti](voice-assistants.md) naslouchají uživatelům a probírají akci v reakci, často se domluví zpět. Používají [Převod řeči na text](speech-to-text.md) k přepisovat řeči uživatele a pak provádějí akci s použitím přirozeného jazyka pro porozumění textu. Tato akce často zahrnuje mluvený výstup z pomocníka generovaného [převodem textu na řeč](text-to-speech.md). Zařízení se připojují k asistentům pomocí objektu `DialogServiceConnector` sady Speech SDK.
+**Přímý line Speech** je robustní ucelené řešení pro vytváření flexibilního a rozšiřitelného hlasového asistenta. Používá se pro robot Framework a jeho přímý spojnicový hlasový kanál, který je optimalizovaný pro hlasové interakce hlasu s roboty.
 
-**Přímý line Speech** je robustní, ucelené řešení pro vytváření flexibilního a rozšiřitelného hlasového asistenta využívajícího rozhraní robota a jeho přímý spojnicový hlasový kanál, který je optimalizovaný pro hlasovou interakci s roboty.
+[Hlasové asistenti](voice-assistants.md) naslouchají uživatelům a probírají akci v reakci, často se domluví zpět. Používají [Převod řeči na text](speech-to-text.md) k přepisovat řeči uživatele a pak provádějí akci s použitím přirozeného jazyka pro porozumění textu. Tato akce často zahrnuje mluvený výstup z pomocníka generovaného [převodem textu na řeč](text-to-speech.md).
 
-Přímý line Speech nabízí nejvyšší úrovně přizpůsobení a sofistikovanější pro hlasové asistenty. Je vhodný pro konverzační scénáře, které jsou otevřené, přirozené nebo hybridy těchto scénářů při dokončování úkolů nebo použití příkazů a řízení. Tento vysoký stupeň flexibility přináší větší složitost a scénáře, které jsou vymezeny na dobře definované úlohy pomocí vstupu v přirozeném jazyce, můžou pro zjednodušené prostředí řešení zvážit [vlastní příkazy (Preview)](custom-commands.md) .
+Přímý line Speech nabízí nejvyšší úrovně přizpůsobení a sofistikovanější pro hlasové asistenty. Je navržený pro konverzační scénáře, které jsou otevřené, přirozené nebo hybridy těchto dvou s dokončováním úkolů nebo pomocí příkazu a řízení. Tento vysoký stupeň flexibility přináší větší složitost a scénáře, které jsou vymezeny na dobře definované úlohy pomocí vstupu v přirozeném jazyce, můžou pro zjednodušené prostředí řešení zvážit [vlastní příkazy (Preview)](custom-commands.md) .
 
 ## <a name="getting-started-with-direct-line-speech"></a>Začínáme s funkcí Direct line Speech
 
@@ -33,13 +33,13 @@ Prvním postupem při vytváření hlasového asistenta pomocí funkce Direct li
 
 Podrobný průvodce vytvořením jednoduchého hlasového pomocníka pomocí funkce Direct line Speech najdete [v kurzu rozpoznávání řeči – povolení robota se sadou Speech SDK a kanálu Direct line Speech](tutorial-voice-enable-your-bot-speech-sdk.md).
 
-Nabízíme také rychlé starty, které jsou navržené tak, aby běžely kód za méně než 10 minut. Tato tabulka obsahuje seznam rychlých startů hlasového asistenta uspořádaných podle jazyka.
+Nabízíme také rychlé starty, které jsou navržené tak, aby vám poskytovaly kód a rychle přeučení rozhraní API. Tato tabulka obsahuje seznam rychlých startů hlasového asistenta uspořádaných podle jazyka a platformy.
 
-| Rychlý start | Platforma | Referenční materiály k rozhraním API |
+| Rychlé zprovoznění | Platforma | API – referenční informace |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Procházet](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Procházet](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Procházet](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Hlíží](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Hlíží](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Hlíží](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Ukázka kódu
 

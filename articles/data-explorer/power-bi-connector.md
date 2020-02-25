@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 361ea6ed76207e8e9721f64df61738b6cd9631dc
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a95d45481bed17e46429e3a22dff4b8cc62354a9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024217"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560486"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Vizualizace dat pomocí konektoru služby Azure Průzkumník dat pro Power BI
 
@@ -47,7 +47,7 @@ Nejprve se připojíte ke clusteru Azure Průzkumník dat Help a pak přenesete 
     | Cluster | *https://help.kusto.windows.net* | Adresa URL pro cluster s nápovědu Pro jiné clustery je adresa URL ve tvaru *https://\<\>název_clusteru.\<oblasti\>. kusto.Windows.NET*. |
     | Databáze | Ponechte prázdné | Databáze, která je hostována v clusteru, ke kterému se připojujete. Tuto možnost vybereme v pozdějším kroku. |
     | Název tabulky | Ponechte prázdné | Jedna z tabulek v databázi nebo dotaz, jako je například <code>StormEvents \| take 1000</code>. Tuto možnost vybereme v pozdějším kroku. |
-    | Rozšířené možnosti | Ponechte prázdné | Možnosti pro vaše dotazy, jako je například velikost sady výsledků. |
+    | Upřesnit možnosti | Ponechte prázdné | Možnosti pro vaše dotazy, jako je například velikost sady výsledků. |
     | Režim připojení dat | *DirectQuery* | Určuje, zda Power BI importuje data nebo se připojí přímo ke zdroji dat. V této spojnici můžete použít jednu z možností. |
     | | | |
     
@@ -65,11 +65,11 @@ Nejprve se připojíte ke clusteru Azure Průzkumník dat Help a pak přenesete 
 
 1. Pokud ještě nemáte připojení ke clusteru podpory, přihlaste se. Přihlaste se pomocí účtu organizace a pak vyberte **připojit**.
 
-    ![Přihlášení](media/power-bi-connector/sign-in.png)
+    ![Přihlásit](media/power-bi-connector/sign-in.png)
 
 1. Na obrazovce **navigátor** rozbalte databázi **Samples** , vyberte **StormEvents** a pak **Upravit**.
 
-    ![vybrat tabulku](media/power-bi-connector/select-table.png)
+    ![Vybrat tabulku](media/power-bi-connector/select-table.png)
 
     Tabulka se otevře v editoru Power Query, kde můžete před importem dat upravit řádky a sloupce.
 

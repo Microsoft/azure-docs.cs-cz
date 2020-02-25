@@ -1,5 +1,5 @@
 ---
-title: Archivujte, co je nového v Azure Active Directory? | Microsoft Docs
+title: Archivujte, co je nového v Azure Active Directory? | Dokumenty Microsoft
 description: Co je nového poznámky k verzi v přehledu, že část této sady obsahu obsahuje 6 měsíců aktivity. Po 6 měsíců položky se odeberou z hlavní článek a vložit do tohoto článku archivu.
 services: active-directory
 author: msmimart
@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4d5c91966f8c490e056a84c89073e4da7cfdfd6
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: a2249be583f10aaf7ddda039fbd6d71729b06c36
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484481"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565481"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archivujte, co je nového v Azure Active Directory?
 
@@ -1117,7 +1117,7 @@ Ve schématu auditu se mění následující pole:
 |Název pole|Co se změnilo|Staré hodnoty|Nové hodnoty|
 |----------|------------|----------|----------|
 |Kategorie|Toto bylo pole **název služby** . Teď je to pole **kategorie auditu** . **Název služby** byl přejmenován na pole **loggedByService** .|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|<ul><li>Správa uživatelů</li><li>Správa skupin</li><li>Správa aplikací</li></ul>|
-|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásady</li><li>Aplikace</li><li>Uživatel</li><li>Skupina</li></ul>|
+|targetResources|Zahrnuje **TargetResourceType** na nejvyšší úrovni.|&nbsp;|<ul><li>Zásada</li><li>Aplikace</li><li>Uživatel</li><li>Skupina</li></ul>|
 |loggedByService|Poskytuje název služby, která vygenerovala protokol auditu.|Null|<ul><li>Zřizování účtů</li><li>Základní adresář</li><li>Samoobslužné resetování hesla</li></ul>|
 |Výsledek|Poskytuje výsledek protokolů auditu. Dřív byl tento výčet vyhodnocený, ale nyní zobrazujeme skutečnou hodnotu.|<ul><li>0</li><li>1</li></ul>|<ul><li>Úspěch</li><li>Nezdařilo se</li></ul>|
 
@@ -1510,7 +1510,7 @@ Jako součást naší uživatelské rozhraní pro konfiguraci aktualizovaná apl
 
 - Způsob, jak nastavit formátu NameID pro aplikace SAML a způsob, jak nastavit hodnotu NameID jako rozšíření adresáře.
 
-Pokud chcete zapnout toto aktualizované zobrazení, klikněte na odkaz **vyzkoušet náš nový zážitek** z horní části stránky **jednotného přihlašování** . Další informace najdete v tématu [kurz: Konfigurace jednotného přihlašování založeného na SAML pro aplikaci s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).
+Pokud chcete zapnout toto aktualizované zobrazení, klikněte na odkaz **vyzkoušet náš nový zážitek** z horní části stránky **jednotného přihlašování** . Další informace najdete v tématu [kurz: Konfigurace jednotného přihlašování založeného na SAML pro aplikaci s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications).
 
 ---
 

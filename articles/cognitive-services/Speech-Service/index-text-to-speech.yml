@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Dokumentace pro převod textu na řeč
+summary: Převod textu na řeč od služby pro rozpoznávání řeči umožňuje vašim aplikacím, nástrojům a zařízením převádět text na syntetizované rozpoznávání řeči od člověka.
+metadata:
+  title: Dokumentace k převodu textu na řeč – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: 64d8c636aa4b0f8b75ba3a6f92d7792c91a9271d
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562897"
+landingContent:
+- title: Začínáme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je převod textu na řeč?
+      url: text-to-speech.md
+  - linkListType: quickstart
+    links:
+    - text: Syntetizace řeči do reproduktoru
+      url: quickstarts/text-to-speech.md
+    - text: Syntéza řeči do zvukového souboru
+      url: quickstarts/text-to-speech-audio-file.md
+    - text: Rozpoznávání řeči pomocí formátu dlouhého zvuku
+      url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+- title: Podrobní průvodci
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vylepšení syntézy pomocí jazyka SSML
+      url: speech-synthesis-markup.md
+    - text: Vylepšení syntézy pomocí sady Vlastní hlas
+      url: how-to-custom-voice.md
+    - text: Syntéza řeči s využitím rozhraní API pro řeč dlouhého formátu
+      url: long-audio-api.md
+    - text: Získání seznamu hlasů s využitím REST (Python)
+      url: quickstart-python-get-text-to-speech-voices.md
+    - text: Převod textu na řeč s využitím REST (Python)
+      url: quickstart-python-text-to-speech.md
+    - text: Vylepšení syntézy pomocí vytváření zvukového obsahu
+      url: how-to-audio-content-creation.md
+  - linkListType: concept
+    links:
+    - text: Začínáme se službou Custom Voice
+      url: how-to-custom-voice.md
+    - text: Příprava vlastních hlasových dat
+      url: how-to-custom-voice-prepare-data.md
+    - text: Vytváření a využití modelů Custom Voice
+      url: how-to-custom-voice-create-voice.md
+    - text: Záznam hlasových ukázek
+      url: record-custom-voice-samples.md
+    - text: Vlastní pokyny pro pojmenovávání klíčových slov
+      url: speech-devices-sdk-kws-guidelines.md
+    - text: Zjišťování vlastních klíčových slov
+      url: speech-devices-sdk-create-kws.md
+    - text: Omezení přístupu pro Vlastní hlas
+      url: concepts-gating-overview.md
+    - text: Nasazení syntetické technologie
+      url: concepts-guidelines-responsible-deployment-synthetic.md
+    - text: Zpřístupnění pokynů pro návrh
+      url: concepts-disclosure-guidelines.md
+    - text: Zpřístupnění způsobů návrhu
+      url: concepts-disclosure-patterns.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Podpora jazyků
+      url: language-support.md#text-to-speech
+    - text: Ceny
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: Pravidla chování
+      url: https://aka.ms/custom-neural-code-of-conduct
+    - text: Zveřejnění informací o mluvčím
+      url: https://aka.ms/disclosure-voice-talent

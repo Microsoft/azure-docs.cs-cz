@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/29/2020
 ms.author: aahi
-ms.openlocfilehash: bde8d418792e3d481c9e9a74ee98998492754aae
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 5623be028cfe10c0ea6786b24bf75ae2bf9c5255
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992405"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560775"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-go"></a>Rychlý Start: použití klientské knihovny Analýza textu pro přejít
 
@@ -93,7 +93,7 @@ Objekt Response je seznam obsahující informace o analýze pro každý dokument
 Tyto fragmenty kódu ukazují, jak pomocí Analýza textu klientské knihovny pro Python provést následující akce:
 
 * [Ověření klienta](#authenticate-the-client)
-* [Analýza subjektivního hodnocení](#sentiment-analysis)
+* [Analýza mínění](#sentiment-analysis)
 * [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání entit](#entity-recognition)
 * [Extrakce klíčových frází](#key-phrase-extraction)
@@ -119,7 +119,7 @@ func GetTextAnalyticsClient() textanalytics.BaseClient {
 }
 ```
 
-## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
+## <a name="sentiment-analysis"></a>Analýza mínění
 
 Vytvořte novou funkci nazvanou `SentimentAnalysis()` a vytvořte klienta pomocí metody `GetTextAnalyticsClient()` vytvořené dříve. Vytvořte seznam objektů [MultiLanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#MultiLanguageBatchInput) s dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id`, `Language` a atribut `text`. Atribut `text` ukládá text, který má být analyzován, `language` je jazyk dokumentu a `id` může být libovolná hodnota. 
 
@@ -138,7 +138,7 @@ Document ID: 3 , Sentiment Score: 0.44
 Document ID: 4 , Sentiment Score: 1.00
 ```
 
-## <a name="language-detection"></a>Detekce jazyka
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 Vytvořte novou funkci nazvanou `LanguageDetection()` a vytvořte klienta pomocí metody `GetTextAnalyticsClient()` vytvořené dříve. Vytvořte seznam objektů [LanguageInput](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#LanguageInput) s dokumenty, které chcete analyzovat. Každý objekt bude obsahovat `id` a atribut `text`. Atribut `text` ukládá text, který má být analyzován, a `id` může být libovolná hodnota. 
 

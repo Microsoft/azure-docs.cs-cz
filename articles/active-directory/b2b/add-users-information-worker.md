@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37dc4a618f01022f4963a14aba921edcce9f4b60
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: abb5c6939d8c88db35a776aa8f2c075a4bdcc609
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74268855"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565413"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Způsob, jakým uživatelé ve vaší organizaci můžou pozvat uživatele typu Host do aplikace
 
@@ -86,7 +86,7 @@ Samoobslužná správa aplikací vyžaduje určité počáteční nastavení glo
 3. Vyberte **skupiny**.
 4. V části **Nastavení**vyberte **Obecné**.
 5. V části **Samoobslužná správa skupin**, vedle **vlastníků můžou spravovat žádosti o členství ve skupině na přístupovém panelu**, vyberte **Ano**.
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 
 ### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>Vytvořte skupinu, která se přiřadí k aplikaci a nastaví uživatele jako vlastníka.
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce Azure AD nebo globální správce.
@@ -105,7 +105,7 @@ Samoobslužná správa aplikací vyžaduje určité počáteční nastavení glo
 2. V navigačním podokně vyberte **Azure Active Directory**.
 3. V části **Spravovat**vyberte **podnikové aplikace** > **všech aplikacích**.
 4. V seznamu aplikace vyhledejte a otevřete aplikaci.
-5. V části **Spravovat**vyberte **jednotné přihlašování**a nakonfigurujte aplikaci pro jednotné přihlašování. (Podrobnosti najdete v tématu [Správa jednotného přihlašování pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).)
+5. V části **Spravovat**vyberte **jednotné přihlašování**a nakonfigurujte aplikaci pro jednotné přihlašování. (Podrobnosti najdete v tématu [Správa jednotného přihlašování pro podnikové aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-non-gallery-applications).)
 6. V části **Spravovat**vyberte **Samoobslužná služba**a nastavte Samoobslužný přístup k aplikacím. (Podrobnosti najdete v tématu [Jak používat Samoobslužný přístup k aplikacím](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to).) 
 
     > [!NOTE]

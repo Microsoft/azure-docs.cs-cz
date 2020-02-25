@@ -1,5 +1,5 @@
 ---
-title: Kurz kopírování dat do úložiště objektů BLOB v Azure Data Box Heavy přes rozhraní REST API | Microsoft Docs
+title: 'Kurz: kopírování dat do Azure Data Box BLOB Storage přes rozhraní REST API'
 description: Naučte se, jak kopírovat data do úložiště objektů blob Azure Data Box Heavy přes rozhraní REST API.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: adc48acbadaef56958587dc79be377b76a21fdc0
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 43f6404a483cad8377e70591f5454180f0dd07a6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606299"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560333"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Kurz: kopírování dat do Azure Data Box BLOB Storage přes rozhraní REST API  
 
@@ -107,7 +107,7 @@ Pomocí následujícího postupu naimportujte soubor `.cer` do kořenového adre
 #### <a name="use-windows-powershell"></a>Použití prostředí Windows PowerShell
 
 1. Spusťte relaci Windows PowerShellu jako správce.
-2. Na příkazovém řádku zadejte:
+2. Do příkazového řádku zadejte:
 
     ```
     Import-Certificate -FilePath C:\temp\localuihttps.cer -CertStoreLocation Cert:\LocalMachine\Root
@@ -124,7 +124,7 @@ Pomocí následujícího postupu naimportujte soubor `.cer` do kořenového adre
 
     ![Import certifikátu pomocí PowerShellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4.  Klikněte na **Dokončit**. Zobrazí se zpráva oznamující, že import proběhl úspěšně.
+4.  Klikněte na **Finish** (Dokončit). Zobrazí se zpráva oznamující, že import proběhl úspěšně.
 
     ![Import certifikátu pomocí PowerShellu](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 

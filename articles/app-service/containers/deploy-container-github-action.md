@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 127dd8645596b605980bf3c6fbc87bf159f7c03e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: f32ea2ae0be66259ff153c24bfd10e179fddbbe5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671811"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559024"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Nasazení vlastního kontejneru pro App Service pomocí akcí GitHubu
 
@@ -25,7 +25,7 @@ Pracovní postup je definovaný souborem YAML (. yml) v cestě `/.github/workflo
 
 Pro pracovní postup kontejneru Azure App Service má soubor tři části:
 
-|Sekce  |Úlohy  |
+|Část  |Úlohy  |
 |---------|---------|
 |**Ověřování** | 1. Definujte instanční objekt. <br /> 2. Vytvořte tajný klíč GitHubu. |
 |**Budování** | 1. Nastavte prostředí. <br /> 2. Sestavte image kontejneru. |
@@ -64,7 +64,7 @@ Následující příklad používá přihlašovací údaje na úrovni uživatele
 
 1. V [GitHubu](https://github.com/)přejděte do úložiště, vyberte **Nastavení > tajných klíčů > Přidat nový tajný kód** .
 
-2. Vložte obsah níže uvedeného `az cli` příkazu jako hodnotu tajné proměnné. Například, `AZURE_CREDENTIALS`.
+2. Vložte obsah níže uvedeného `az cli` příkazu jako hodnotu tajné proměnné. například `AZURE_CREDENTIALS`.
 
     
     ```azurecli
@@ -100,7 +100,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # checkout the repo
-    - name: 'Checkout Github Action' 
+    - name: 'Checkout GitHub Action' 
       uses: actions/checkout@master
     
     - name: 'Login via Azure CLI'
@@ -143,7 +143,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     # checkout the repo
-    - name: 'Checkout Github Action' 
+    - name: 'Checkout GitHub Action' 
       uses: actions/checkout@master
     
     - name: 'Login via Azure CLI'

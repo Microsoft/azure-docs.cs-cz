@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 3d5b1ab4e72ec759098e9c71515200f89a8dfe82
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931213"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561676"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Průvodce odstraňováním potíží s Průzkumník služby Azure Storage
 
@@ -59,6 +59,17 @@ Pokud nemáte roli, která uděluje žádná oprávnění vrstvy správy, Průzk
 ### <a name="what-if-i-cant-get-the-management-layer-permissions-i-need-from-my-administrator"></a>Co když mi nejde získat oprávnění pro vrstvu správy, které potřebuji od správce?
 
 Pro tento problém momentálně nepoužíváme řešení související s RBAC. Jako alternativní řešení si můžete vyžádat identifikátor URI SAS, který se [připojí k vašemu prostředku](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux#use-a-shared-access-signature-uri).
+
+### <a name="recommended-built-in-rbac-roles"></a>Doporučené předdefinované role RBAC
+
+K dispozici je několik integrovaných rolí RBAC, které mohou poskytnout oprávnění potřebná k použití Průzkumník služby Storage. Některé z těchto rolí:
+- [Vlastník](/azure/role-based-access-control/built-in-roles#owner): Správa všeho, včetně přístupu k prostředkům. **Poznámka**: Tato role vám poskytne přístup k klíčům.
+- [Přispěvatel](/azure/role-based-access-control/built-in-roles#contributor): umožňuje spravovat všechno, kromě přístupu k prostředkům. **Poznámka**: Tato role vám poskytne přístup k klíčům.
+- [Čtenář](/azure/role-based-access-control/built-in-roles#reader): čtení a výpis prostředků
+- [Přispěvatel účtu úložiště](/azure/role-based-access-control/built-in-roles#storage-account-contributor): plná Správa účtů úložiště. **Poznámka**: Tato role vám poskytne přístup k klíčům.
+- [Vlastník dat objektu BLOB úložiště](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): úplný přístup k Azure Storage kontejnerů a dat objektů BLOB.
+- [Přispěvatel dat objektu BLOB služby Storage](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): číst, zapisovat a odstraňovat Azure Storage kontejnery a objekty blob.
+- [Čtečka dat objektů BLOB služby Storage](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): čtení a výpis Azure Storage kontejnerů a objektů BLOB.
 
 ## <a name="error-self-signed-certificate-in-certificate-chain-and-similar-errors"></a>Chyba: certifikát podepsaný svým držitelem v řetězu certifikátů (a podobné chyby)
 
@@ -244,20 +255,20 @@ Pokud chcete zachovat nepoškozená připojení, můžete pomocí následující
 
 Po prozatím všech připojeních, u všech názvů připojení, která nejsou přidaná zpět, je nutné vymazat poškozená data (pokud existují) a přidat je zpět pomocí standardních kroků v Průzkumník služby Storage:
 
-# <a name="windowstabwindows"></a>[Windows](#tab/Windows)
+# <a name="windows"></a>[Windows](#tab/Windows)
 
 1. V nabídce **Start** vyhledejte **Správce přihlašovacích údajů** a otevřete ho.
 2. Přejít na **přihlašovací údaje systému Windows**.
 3. V části **Obecné přihlašovací údaje**vyhledejte položky, které mají klíč `<connection_type_key>/<corrupted_connection_name>` (například `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 4. Odstraňte tyto položky a přidejte připojení znovu.
 
-# <a name="macostabmacos"></a>[macOS](#tab/macOS)
+# <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Otevřete Spotlight (Command + mezerník) a vyhledejte **přístup k řetězci klíčů**.
 2. Vyhledejte položky, které mají klíč `<connection_type_key>/<corrupted_connection_name>` (například `StorageExplorer_CustomConnections_Accounts_v1/account1`).
 3. Odstraňte tyto položky a přidejte připojení znovu.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/Linux)
+# <a name="linux"></a>[Linux](#tab/Linux)
 
 Správa místních přihlašovacích údajů se liší v závislosti na distribuci systému Linux. Pokud vaše distribuce systému Linux neposkytuje integrovaný nástroj grafického uživatelského rozhraní pro správu místních přihlašovacích údajů, můžete nainstalovat nástroj třetí strany pro správu místních přihlašovacích údajů. Můžete například použít Open source nástroj [Seahorse](https://wiki.gnome.org/Apps/Seahorse/)pro správu místních přihlašovacích údajů pro Linux.
 
@@ -309,7 +320,7 @@ Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storag
 > [!NOTE]
 > Průzkumník služby Storage verze 1.7.0 a starší vyžadují .NET Core 2,0. Pokud máte nainstalovanou novější verzi .NET Core, budete muset [opravit Průzkumník služby Storage](#patching-storage-explorer-for-newer-versions-of-net-core). Pokud používáte Průzkumník služby Storage 1.8.0 nebo novější, měli byste být schopni použít až .NET Core 2,2. Verze nad rámec 2,2 se neověřily, aby v tuto chvíli fungovaly.
 
-# <a name="ubuntu-1904tab1904"></a>[Ubuntu 19.04](#tab/1904)
+# <a name="ubuntu-1904"></a>[Ubuntu 19,04](#tab/1904)
 
 1. Stáhněte si Průzkumník služby Storage.
 2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu19-04/runtime-current).
@@ -318,7 +329,7 @@ Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storag
    sudo apt-get install libgconf-2-4 libgnome-keyring0
    ```
 
-# <a name="ubuntu-1804tab1804"></a>[Ubuntu 18,04](#tab/1804)
+# <a name="ubuntu-1804"></a>[Ubuntu 18,04](#tab/1804)
 
 1. Stáhněte si Průzkumník služby Storage.
 2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu18-04/runtime-current).
@@ -327,7 +338,7 @@ Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storag
    sudo apt-get install libgconf-2-4 libgnome-keyring-common libgnome-keyring0
    ```
 
-# <a name="ubuntu-1604tab1604"></a>[Ubuntu 16.04](#tab/1604)
+# <a name="ubuntu-1604"></a>[Ubuntu 16,04](#tab/1604)
 
 1. Stáhněte si Průzkumník služby Storage.
 2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu16-04/runtime-current).
@@ -336,7 +347,7 @@ Tyto balíčky jsou nejběžnějšími požadavky na Průzkumník služby Storag
    sudo apt install libgnome-keyring-dev
    ```
 
-# <a name="ubuntu-1404tab1404"></a>[Ubuntu 14.04](#tab/1404)
+# <a name="ubuntu-1404"></a>[Ubuntu 14,04](#tab/1404)
 
 1. Stáhněte si Průzkumník služby Storage.
 2. Nainstalujte [modul runtime .NET Core](https://dotnet.microsoft.com/download/linux-package-manager/ubuntu14-04/runtime-current).
@@ -353,7 +364,7 @@ Pro Průzkumník služby Storage 1.7.0 nebo starší možná budete muset opravi
 1. Stáhněte si 1.5.43 verze StreamJsonRpc [z NuGet](https://www.nuget.org/packages/StreamJsonRpc/1.5.43). Vyhledejte odkaz Stáhnout balíček na pravé straně stránky.
 2. Po stažení balíčku změňte jeho příponu z `.nupkg` na `.zip`.
 3. Rozbalíte balíček.
-4. Otevřít `streamjsonrpc.1.5.43/lib/netstandard1.1/` složky.
+4. Otevřete složku `streamjsonrpc.1.5.43/lib/netstandard1.1/`.
 5. Zkopírujte `StreamJsonRpc.dll` do následujících umístění ve složce Průzkumník služby Storage:
    * `StorageExplorer/resources/app/ServiceHub/Services/Microsoft.Developer.IdentityService/`
    * `StorageExplorer/resources/app/ServiceHub/Hosts/ServiceHub.Host.Core.CLR.x64/`

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: fdcaa7d8eec0065ad9acd76df9918ed7bccc081b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 07537d3d67e41f7e1179a709ffa19f3d84aa4539
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895861"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565821"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Přehrávání obsahu pomocí stávajících přehrávačů
 Azure Media Services podporuje spoustu oblíbených formátů streamování, například Smooth Streaming, HTTP Live Streaming a MPEG-pomlčky. Toto téma ukazuje na existující přehrávače, které můžete použít k otestování vašich datových proudů.
@@ -60,19 +60,16 @@ Použijte [Azure Media Player](https://aka.ms/azuremediaplayer) k přehrávání
 
 [https://dashif.org](https://dashif.org)
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Ostatní
 K testování adres URL HLS můžete také použít:
 
 * **Safari** na zařízení s iOS nebo
 * **3ivx HLS Player** ve Windows
 
-## <a name="developing-video-players"></a>Vývoj přehrávačů videí
-Informace o vývoji vlastních přehrávačů najdete v tématu [vývoj přehrávačů videí](media-services-develop-video-players.md) .
-
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 [AMSPlayer]: ./media/media-services-playback-content-with-existing-players/media-services-portal-player.png

@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/03/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a77f32620d4e3a694806cdf6c247928fa3c7ede4
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: e8f95f4987d0ce421defaed63ed9a587233d2bf4
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045292"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561574"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Kurz: Vytvoření propojených šablon Azure Resource Manageru
 
-Zjistěte, jak vytvořit propojené šablony Azure Resource Manageru. Použitím propojených šablon, může mít jednu šablonu vyvolávající jinou šablonu. Je to velmi vhodné pro modulační šablony. V tomto kurzu použijete stejné šabloně použité při [kurz: vytvoření Azure Resource Manageru šablony s závislé prostředky](./template-tutorial-create-templates-with-dependent-resources.md), vytváří virtuální počítač, virtuální sítě a dalších závislých prostředků včetně úložiště účet. Můžete oddělit vytvoření prostředků účtu úložiště na propojenou šablonu.
+Zjistěte, jak vytvořit propojené šablony Azure Resource Manageru. Použitím propojených šablon, může mít jednu šablonu vyvolávající jinou šablonu. Je to velmi vhodné pro modulační šablony. V tomto kurzu použijete stejnou šablonu, která se používá v [kurzu: vytváření Azure Resource Manager šablon se závislými prostředky](./template-tutorial-create-templates-with-dependent-resources.md), které vytvoří virtuální počítač, virtuální síť a další závislý prostředek, včetně účtu úložiště. Můžete oddělit vytvoření prostředků účtu úložiště na propojenou šablonu.
 
 Volání propojené šablony je jako volání funkce.  Naučíte se také, jak předat hodnoty parametrů do propojené šablony a jak z propojené šablony získat návratové hodnoty.
 
@@ -31,7 +31,7 @@ Tento kurz se zabývá následujícími úkony:
 
 Další informace najdete v tématu [použití propojených a vnořených šablon při nasazování prostředků Azure](./linked-templates.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -50,7 +50,7 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="open-a-quickstart-template"></a>Otevření šablony pro rychlý start
 
-Šablony pro rychlý start Azure slouží jako úložiště šablon Resource Manageru. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows). Toto je stejné šabloně použité při [kurz: vytvoření Azure Resource Manageru šablony s závislé prostředky](./template-tutorial-create-templates-with-dependent-resources.md). Uložte dvě kopie stejné šablony, které budou použity jako:
+Šablony pro rychlý start Azure slouží jako úložiště šablon Resource Manageru. Místo vytvoření šablony úplně od začátku si můžete najít ukázkovou šablonu a přizpůsobit ji. Šablona používaná v tomto kurzu má název [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Nasazení jednoduchého virtuálního počítače s Windows). Jedná se o šablonu, která se používá v [kurzu: vytváření Azure Resource Manager šablon se závislými prostředky](./template-tutorial-create-templates-with-dependent-resources.md). Uložte dvě kopie stejné šablony, které budou použity jako:
 
 * **Hlavní šablona**: vytvoří se všechny prostředky s výjimkou účtu úložiště.
 * **Propojená šablona**: vytvoří účet úložiště.
@@ -97,9 +97,9 @@ Propojená šablona vytvoří účet úložiště. Odkazovaná šablona se dá p
 
       Název a umístění účtu úložiště se předávají z hlavní šablony do propojené šablony jako parametry.
 
-    * Odeberte **proměnné** element a všechny definice proměnných.
+    * Odeberte element **Variables** a všechny definice proměnných.
     * Odeberte všechny prostředky kromě účtu úložiště. Odeberete celkem čtyři prostředky.
-    * Aktualizujte hodnotu **název** element prostředku účtu úložiště:
+    * Aktualizujte hodnotu prvku **název** prostředku účtu úložiště na:
 
         ```json
           "name": "[parameters('storageAccountName')]",
@@ -165,7 +165,7 @@ Propojená šablona vytvoří účet úložiště. Odkazovaná šablona se dá p
 
 ## <a name="upload-the-linked-template"></a>Odeslání propojené šablony
 
-Hlavní šablony a propojené šablony musí být přístupné ze kterého spouštíte nasazení. V tomto kurzu použijete metody nasazení Cloud shell jako jste použili v [kurz: vytvoření Azure Resource Manageru šablony s závislé prostředky](./template-tutorial-create-templates-with-dependent-resources.md). Hlavní šablona (azuredeploy.json) je odeslána do prostředí. Propojená šablona (linkedTemplate.json) musí být někde bezpečně sdílet. Následující skript PowerShell vytvoří účet Azure Storage, nahraje šablonu do účtu úložiště a pak vygeneruje token SAS pro udělení omezeného přístupu k souboru šablony. Pro zjednodušení tohoto kurzu skript stáhne dokončenou propojenou šablonu z úložiště GitHub. Pokud chcete použít propojené šablony vytvoříte, můžete použít [Cloud shell](https://shell.azure.com) odeslání propojené šablony, a následně upravit skript, který chcete použít vlastní propojenou šablonu.
+Hlavní šablony a propojené šablony musí být přístupné ze kterého spouštíte nasazení. V tomto kurzu použijete metodu nasazení Cloud Shell, jakou jste použili v [kurzu: vytváření Azure Resource Manager šablon se závislými prostředky](./template-tutorial-create-templates-with-dependent-resources.md). Hlavní šablona (azuredeploy.json) je odeslána do prostředí. Propojená šablona (linkedTemplate.json) musí být někde bezpečně sdílet. Následující skript PowerShell vytvoří účet Azure Storage, nahraje šablonu do účtu úložiště a pak vygeneruje token SAS pro udělení omezeného přístupu k souboru šablony. Pro zjednodušení tohoto kurzu skript stáhne dokončenou propojenou šablonu z úložiště GitHub. Pokud chcete použít propojenou šablonu, kterou jste vytvořili, můžete k nahrání propojené šablony použít [Cloud Shell](https://shell.azure.com) a pak změnit skript tak, aby používal vlastní propojenou šablonu.
 
 > [!NOTE]
 > Skript omezuje token SAS pro použití v rámci osm hodin. Pokud potřebujete více času k dokončení tohoto kurzu, zvýšit čas vypršení platnosti.
@@ -221,13 +221,13 @@ Write-Host "Linked template URI with SAS token: $templateURI"
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-1. Vyberte **vyzkoušet** zeleného tlačítka a otevřete tak podokno Azure cloud shell.
-2. Vyberte **kopírování** zkopírujte skript prostředí PowerShell.
-3. Klikněte pravým tlačítkem na libovolné místo v podokně prostředí (části navy modrá) a pak vyberte **vložit**.
+1. Vyberte tlačítko **vyzkoušet** zeleně a otevřete podokno Cloud Shell Azure.
+2. Vyberte **Kopírovat** a zkopírujte skript prostředí PowerShell.
+3. Klikněte pravým tlačítkem myši kamkoli do podokna prostředí (námořnická modrá Blue part) a pak vyberte **Vložit**.
 4. Poznamenejte si tyto dvě hodnoty (název skupiny prostředků a propojenou šablonu identifikátoru URI) na konci podokně prostředí. Tyto hodnoty budete potřebovat v pozdější části kurzu.
-5. Vyberte **ukončit detailní režim** zavřete podokno prostředí.
+5. Chcete-li zavřít podokno prostředí, vyberte možnost **ukončit detailní režim** .
 
-V praxi vygenerování tokenu SAS při nasazování hlavní šablonu a poskytnout menší okno kvůli většímu zabezpečení vypršení platnosti tokenu SAS. Další informace najdete v tématu [token SAS zadat během nasazování](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
+V praxi vygenerování tokenu SAS při nasazování hlavní šablonu a poskytnout menší okno kvůli většímu zabezpečení vypršení platnosti tokenu SAS. Další informace najdete v tématu [poskytnutí tokenu SAS během nasazování](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="call-the-linked-template"></a>Vyvolání propojené šablony
 
@@ -261,12 +261,12 @@ Hlavní šablona se nazývá azuredeploy.json.
     * Můžete použít pouze [přírůstkový](./deployment-modes.md) režim nasazení při vyvolání propojených šablon.
     * `templateLink/uri` obsahuje propojenou šablonu identifikátoru URI. Aktualizujte hodnotu k identifikátoru URI při odeslání propojené šablony (jeden s tokenem SAS).
     * K předání hodnot z hlavní šablony do propojené šablony použijte `parameters`.
-1. Ujistěte se, že jste aktualizovali hodnotu `uri` prvku na hodnotu se zobrazila při odeslání propojené šablony (jeden s tokenem SAS). V praxi budete chtít zadat identifikátor URI s parametrem.
+1. Ujistěte se, že jste aktualizovali hodnotu `uri` elementu na hodnotu, kterou jste získali při nahrávání propojené šablony (s tokenem SAS). V praxi budete chtít zadat identifikátor URI s parametrem.
 1. Uložte upravený šablonu
 
 ## <a name="configure-dependency"></a>Konfigurace závislostí
 
-Pamatujete z [kurz: vytvoření Azure Resource Manageru šablony s závislé prostředky](./template-tutorial-create-templates-with-dependent-resources.md), prostředku virtuálního počítače závisí na účet úložiště:
+Odvolání z [kurzu: vytváření Azure Resource Managerch šablon se závislými prostředky](./template-tutorial-create-templates-with-dependent-resources.md)– prostředek virtuálního počítače závisí na účtu úložiště:
 
 ![Diagram závislostí šablon Azure Resource Manageru](./media/template-tutorial-create-linked-templates/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
@@ -292,7 +292,7 @@ Protože účet úložiště je teď definovaný v propojené šabloně, je nutn
     ![Konfigurace závislostí propojených šablon Azure Resource Manageru](./media/template-tutorial-create-linked-templates/resource-manager-template-linked-templates-configure-dependency.png)
 
     *linkedTemplate* je název prostředku nasazení.
-3. Aktualizovat **vlastnosti/diagnosticsProfile/bootDiagnostics/storageUri** jak je znázorněno na předchozím snímku obrazovky.
+3. Aktualizujte **vlastnosti/diagnosticsProfile/bootDiagnostics/storageUri** , jak je znázorněno na předchozím snímku obrazovky.
 4. Revidovaná šablonu uložte.
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
@@ -313,7 +313,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 Ke zlepšení projekt, proveďte následující další změny do dokončení projektu:
 
 1. Hlavní šablony (azuredeploy.json) upravte, aby přebírá hodnotu identifikátoru URI propojenou šablonu prostřednictvím parametru.
-2. Místo aby generovala tokenu SAS, když nahrajete propojené šablony, vygenerujte token při nasazení hlavní šablony. Další informace najdete v tématu [token SAS zadat během nasazování](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
+2. Místo aby generovala tokenu SAS, když nahrajete propojené šablony, vygenerujte token při nasazení hlavní šablony. Další informace najdete v tématu [poskytnutí tokenu SAS během nasazování](./secure-template-with-sas-token.md#provide-sas-token-during-deployment).
 
 ## <a name="next-steps"></a>Další kroky
 

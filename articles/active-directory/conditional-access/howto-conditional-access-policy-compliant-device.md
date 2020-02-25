@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d19cc39147608dafc4576f4c8bad0533ad1b32d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 90d958d2adc8920e4e6ccbccef20acf20aedca4c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521910"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561608"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>Podmíněný přístup: vyžadovat vyhovující zařízení
 
@@ -48,6 +48,9 @@ Následující kroky vám pomůžou vytvořit zásadu podmíněného přístupu,
    1. Vyberte **Vybrat**.
 1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
 1. Vyberte **vytvořit** a vytvořte tak, aby se zásady povolily.
+
+> [!NOTE]
+> Můžete zaregistrovat nová zařízení do Intune i v případě, že vyberete možnost **vyžadovat, aby zařízení byla označena jako kompatibilní** pro **všechny uživatele** a **všechny cloudové aplikace** , a to pomocí výše uvedeného postupu. **Vyžadovat, aby zařízení bylo označené jako vyhovující,** neblokuje registraci v Intune. 
 
 ### <a name="known-behavior"></a>Známé chování
 

@@ -4,16 +4,23 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 11/27/2018
 ms.author: glenga
-ms.openlocfilehash: db7cf0ee5fa7d89e6072249396b3f969c380dfb6
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 85fbd7a65fe19e785488714411d671c8ee29ab40
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67174807"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562054"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Dokončení tohoto článku rychlý start:
+# <a name="c"></a>[C#](#tab/csharp)
 
-* [Vytvoření první odolné funkce v jazyce C#](../articles/azure-functions/durable/durable-functions-create-first-csharp.md)
-* [Vytvoření první odolné funkce v JavaScriptu](../articles/azure-functions/durable/quickstart-js-vscode.md)
+* [Dokončení článku rychlý Start](../articles/azure-functions/durable/durable-functions-create-first-csharp.md)
+* [Klonovat nebo stáhnout ukázkový projekt z GitHubu](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/precompiled)
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+* [Dokončení článku rychlý Start](../articles/azure-functions/durable/quickstart-js-vscode.md)
+* [Klonovat nebo stáhnout ukázkový projekt z GitHubu](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript)
+
+---

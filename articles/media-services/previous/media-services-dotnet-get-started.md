@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 11754e8e98e13cffefaf4a8c1fa08bc60d650105
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 7dd49df782115c8c328eed819395209ee7217fd3
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69016551"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566059"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Začínáme s doručováním obsahu na vyžádání pomocí sady SDK pro .NET  
 
@@ -31,7 +31,7 @@ Tento kurz vás provede jednotlivými kroky implementace základní aplikace pro
 
 K dokončení kurzu potřebujete následující:
 
-* Účet Azure. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
+* Účet Azure. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * Účet Media Services. Pokud chcete vytvořit účet Media Services, přečtěte si článek [Jak vytvořit účet Media Services](media-services-portal-create-account.md).
 * Rozhraní .NET 4.0 nebo novější.
 * Visual Studio.
@@ -88,7 +88,7 @@ Pokud chcete spustit koncový bod streamování, postupujte takto:
 
 Když službu Media Services používáte s rozhraním .NET, musíte třídu **CloudMediaContext** používat pro většinu programovacích úloh: připojení k účtu Media Services, vytváření, aktualizace, otevírání a odstraňování následujících objektů: prostředky, soubory prostředků, úlohy, zásady přístupu, lokátory atd.
 
-Přepsat výchozí třídu programu následujícím kódem: Kód ukazuje, jak číst hodnoty připojení ze souboru App.config a jak vytvořit objekt **CloudMediaContext**, abyste se mohli připojit ke službě Media Services. Další informace najdete v tématu popisujícím [připojení k rozhraní API služby Media Services](media-services-use-aad-auth-to-access-ams-api.md).
+Výchozí třídu Program přepište následujícím kódem: Kód ukazuje, jak číst hodnoty připojení ze souboru App.config a jak vytvořit objekt **CloudMediaContext**, abyste se mohli připojit ke službě Media Services. Další informace najdete v tématu popisujícím [připojení k rozhraní API služby Media Services](media-services-use-aad-auth-to-access-ams-api.md).
 
 Nezapomeňte aktualizovat název souboru a cestu podle umístění multimediálního souboru.
 
@@ -152,7 +152,7 @@ Funkce **Main** volá metody, které si definujeme v této části.
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>Vytvoření nového prostředku a odeslání videosouboru
 
-Ve službě Media Services můžete digitální soubory nahrát (nebo ingestovat) do prostředku. Entita **Prostředek** může obsahovat video, zvuk, obrázky, kolekci miniatur, textové stopy a soubory titulků (a metadata o těchto souborech.)  Jakmile soubory odešlete, bude váš obsah bezpečně uložen v cloudu pro další zpracování a streamování. Soubory v prostředku se nazývají **soubory prostředku**.
+Ve službě Media Services můžete digitální soubory nahrát (nebo ingestovat) do prostředku. Entita **assetu** může obsahovat video, zvuk, obrázky, kolekce miniatur, textové stopy a soubory titulků (a metadata o těchto souborech.)  Po nahrání souborů je váš obsah bezpečně uložen v cloudu pro další zpracování a streamování. Soubory v prostředku se nazývají **soubory prostředku**.
 
 Metoda **UploadFile** definovaná níže volá metodu **CreateFromFile** (definovanou v rozšíření sady SDK pro .NET). **CreateFromFile** vytvoří nový prostředek, do kterého se zadaný zdrojový soubor odešle.
 
@@ -190,7 +190,7 @@ Přidejte následující metodu do třídy Program.
 ## <a name="encode-the-source-file-into-a-set-of-adaptive-bitrate-mp4-files"></a>Zakódování zdrojového souboru do sady souborů MP4 s adaptivní přenosovou rychlostí
 Po zpracování prostředků ve službě Media Services a před jejich předáním klientům můžete média zakódovat, transmuxovat, označit vodoznakem a tak dále. Tyto aktivity se plánují a spouštějí s několika instancemi role na pozadí, abyste měli zajištěný vysoký výkon a dostupnost. Tyto aktivity se nazývají úlohy a každá úloha se skládá z atomických úloh, které vykonávají samotnou práci na souboru prostředku.
 
-Jak jsem už zmínili dřív, při práci se službou Azure Media Services je jedním nejběžnější scénářů doručování streamování s adaptivní přenosovou rychlostí vašim klientům. Media Services může dynamicky zabalit sadu souborů MP4 s adaptivní přenosovou rychlostí do jednoho z následujících formátů: HTTP Live Streaming (HLS), Smooth Streaming a MPEG POMLČKa.
+Jak jsem už zmínili dřív, při práci se službou Azure Media Services je jedním nejběžnější scénářů doručování streamování s adaptivní přenosovou rychlostí vašim klientům. Služba Media Services umí dynamicky balit sady souborů MP4 s adaptivní přenosovou rychlostí do následujících formátů: HTTP Live Streaming (HLS), technologie Smooth Streaming a MPEG DASH.
 
 Pokud chcete využít výhod dynamického balení, musíte soubor mezzanine (zdrojový soubor) zakódovat nebo převést na sadu souborů MP4 nebo Smooth Streaming s adaptivní přenosovou rychlostí.  
 
@@ -238,7 +238,7 @@ Přidejte následující metodu do třídy Program.
 
 ## <a name="publish-the-asset-and-get-urls-for-streaming-and-progressive-download"></a>Publikování prostředku a získání adres URL pro streamování a progresivní stahování
 
-Pokud chcete prostředek streamovat nebo stáhnout, musíte ho nejdřív „publikovat“ vytvořením lokátoru. Lokátory zajišťují přístup k souborům, které jsou obsaženy v assetu. Služba Media Services podporuje dva typy lokátorů: OnDemandOrigin Lokátory, které se používají ke streamování médií (například MPEG POMLČKa, HLS nebo Smooth Streaming) a Lokátory přístupového podpisu (SAS), které se používají ke stažení mediálních souborů.
+Pokud chcete prostředek streamovat nebo stáhnout, musíte ho nejdřív „publikovat“ vytvořením lokátoru. Lokátory zajišťují přístup k souborům, které jsou obsaženy v assetu. Služba Media Services podporuje dva typy lokátorů: lokátor OnDemandOrigin, používaný ke streamování médií (například MPEG DASH, HLS nebo technologie Smooth Streaming), a lokátor s přístupovým podpisem (SAS), používaný ke stahování mediálních souborů.
 
 ### <a name="some-details-about-url-formats"></a>Podrobnosti o formátech adres URL
 
@@ -375,10 +375,9 @@ Abyste mohli streamovat video, vložte adresu URL do textového pole URL v [pře
 
 Pokud chcete otestovat progresivní stahování, vložte adresu URL do prohlížeče (například Internet Exploreru, Chromu nebo Safari).
 
-Další informace naleznete v následujících tématech:
+Další informace najdete v následujících tématech:
 
 - [Přehrávání obsahu ve stávajících přehrávačích](media-services-playback-content-with-existing-players.md)
-- [Vývoj aplikací videopřehrávače](media-services-develop-video-players.md)
 - [Vložení videa adaptivního streamování MPEG-DASH do aplikace HTML5 využívající DASH.js](media-services-embed-mpeg-dash-in-html5.md)
 
 ## <a name="download-sample"></a>Stažení ukázky

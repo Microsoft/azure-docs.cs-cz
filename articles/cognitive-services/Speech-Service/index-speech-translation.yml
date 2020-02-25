@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Dokumentace k překladu řeči
+summary: Překlad řeči ze služby Speech umožňuje v reálném čase využívat Převod zvukových streamů na řeč a převod řeči na text.
+metadata:
+  title: Dokumentace k překladu řeči – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: c45c16b4421bf48e5728f95e7043ef7ffc109c3a
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562919"
+landingContent:
+- title: Začínáme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je překlad řeči?
+      url: speech-translation.md
+  - linkListType: quickstart
+    links:
+    - text: Překlad řeči na text
+      url: quickstarts/translate-speech-to-text.md
+    - text: Převod řeči do více cílových jazyků
+      url: quickstarts/translate-speech-to-text-multiple-languages.md
+    - text: Překlad řeči na řeč
+      url: quickstarts/translate-speech-to-speech.md
+- title: Podrobní průvodci
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Převod řeči v reálném čase
+      url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
+  - linkListType: tutorial
+    links:
+    - text: Překlad a syntetizování textu pomocí rozhraní REST API
+      url: ../translator/tutorial-build-flask-app-translation-synthesis.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Podpora jazyků
+      url: language-support.md#speech-translation
+    - text: Ceny
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+    - text: Nejčastější dotazy k překladu řeči
+      url: https://www.microsoft.com/translator/business/faq/

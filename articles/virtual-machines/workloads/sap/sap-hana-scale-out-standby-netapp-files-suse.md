@@ -1,5 +1,5 @@
 ---
-title: Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v SUSE Linux Enterprise Server | Microsoft Docs
+title: SAP HANA horizontálního navýšení kapacity s Azure NetApp Files na SLES | Microsoft Docs
 description: Průvodce vysokou dostupností pro SAP NetWeaver v SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 243bbd431b7332d06a4e14581aa5c02bae2b7cba
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c594ef3a62d45fb68002ec2b21fb89115f7a30af
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896280"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565804"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files v SUSE Linux Enterprise Server 
 
@@ -184,7 +184,7 @@ Aby splňovala požadavky na minimální propustnost SAP pro data a protokol, a 
 
 | Svazek | Velikost<br>Premium Storage úroveň | Velikost<br>Úroveň úložiště Ultra Storage | Podporovaný protokol NFS |
 | --- | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TB | v 4.1 |
+| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
 | /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
 | /hana/shared | Max (512 GB, 1xRAM) na 4 pracovní uzly | Max (512 GB, 1xRAM) na 4 pracovní uzly | V3 nebo v 4.1 |
 
@@ -192,11 +192,11 @@ Konfigurace SAP HANA pro rozložení prezentovaná v tomto článku, která vyu�
 
 | Svazek | Velikost<br>Úroveň úložiště Ultra Storage | Podporovaný protokol NFS |
 | --- | --- | --- |
-| /hana/log/mnt00001 | 2 TB | v 4.1 |
-| /hana/log/mnt00002 | 2 TB | v 4.1 |
+| /hana/log/mnt00001 | 2 TiB | v 4.1 |
+| /hana/log/mnt00002 | 2 TiB | v 4.1 |
 | /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
 | /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
-| /hana/shared | 2 TB | V3 nebo v 4.1 |
+| /hana/shared | 2 TiB | V3 nebo v 4.1 |
 
 > [!NOTE]
 > Níže uvedená doporučení pro nastavení velikosti Azure NetApp Files jsou zaměřená na splnění minimálních požadavků, které SAP doporučuje pro poskytovatele infrastruktury. V reálných scénářích nasazení a úloh nemusí být tyto velikosti dostatečné. Tato doporučení použijte jako výchozí bod a přizpůsobte je na základě požadavků konkrétního zatížení.  
@@ -249,7 +249,7 @@ V dalších pokynech se předpokládá, že jste už vytvořili skupinu prostře
 
     d. Vyberte **sítě**a pak připojte síťové rozhraní. V rozevíracím seznamu **připojit síťové rozhraní** vyberte již vytvořená síťová rozhraní pro `storage` a `hana` podsítě.  
     
-    e. Vyberte **Uložit**. 
+    e. Vyberte **Save** (Uložit). 
  
     f. Opakujte kroky b až e pro zbývající virtuální počítače (v našem příkladu **hanadb2** a **hanadb3**).
  

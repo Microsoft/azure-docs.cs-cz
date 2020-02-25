@@ -8,25 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 01/21/2020
 ms.author: aahi
-ms.openlocfilehash: ba9484bd5b04e5a79da53a0bb78877153be42a43
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 75a456c4a297b0465c34b8e0af2e87056ad565b3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805905"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560894"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Migrace z Translator Speech API do služby pro rozpoznávání řeči
 
-Pomocí tohoto článku migrujete své aplikace z Microsoft Translator Speech API do [služby Speech](index.md). Tato příručka popisuje rozdíly mezi Translator Speech API a službu Speech Service a navrhuje strategie pro migraci vašich aplikací.
+Pomocí tohoto článku migrujete své aplikace z Microsoft Translator Speech API do [služby Speech](index.yml). Tato příručka popisuje rozdíly mezi Translator Speech API a službu Speech Service a navrhuje strategie pro migraci vašich aplikací.
 
 > [!NOTE]
 > Služba rozpoznávání řeči nepřijímá váš klíč předplatného Translator Speech API. Budete muset vytvořit nové předplatné služby Speech Service.
 
 ## <a name="comparison-of-features"></a>Porovnání funkcí
 
-| Funkce                                           | Translator Speech API                                  | Služba řeči | Podrobnosti                                                                                                                                                                                                                                                                            |
+| Funkce                                           | Translator Speech API                                  | Služba Speech | Podrobnosti                                                                                                                                                                                                                                                                            |
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Převod na text                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Převod na řeč                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -35,7 +35,7 @@ Pomocí tohoto článku migrujete své aplikace z Microsoft Translator Speech AP
 | Časový limit připojení                             | 90 minut                                               | Neomezeno pomocí sady SDK. 10 minut s připojením typu WebSockets.                                                                                                                                                                                                                                                                                   |
 | Ověřovací klíč v záhlaví                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Více jazyků, které jsou přeloženy v jednom požadavku | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| Dostupné sady SDK                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Dostupné sady SDK najdete v [dokumentaci ke službě Speech](index.md) .                                                                                                                                                    |
+| Dostupné sady SDK                                    | : heavy_minus_sign:                                              | :heavy_check_mark:                 | Dostupné sady SDK najdete v [dokumentaci ke službě Speech](index.yml) .                                                                                                                                                    |
 | Připojení k objektům WebSocket                            | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | Rozhraní API jazyků                                     | :heavy_check_mark:                                              | : heavy_minus_sign:                 | Služba rozpoznávání řeči podporuje stejný rozsah jazyků popsaných v článku [referenční informace o jazycích rozhraní Translator API](../translator-speech/languages-reference.md) . |
 | Filtr a značka vulgárních výrazů                       | : heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -49,7 +49,7 @@ Pomocí tohoto článku migrujete své aplikace z Microsoft Translator Speech AP
 
 ## <a name="migration-strategies"></a>Strategie migrace
 
-Pokud vy nebo vaše organizace máte aplikace ve vývojovém nebo produkčním prostředí, které používají Translator Speech API, měli byste je aktualizovat, aby používaly službu Speech. Dostupné sady SDK, ukázky kódu a kurzy najdete v dokumentaci ke [službě Speech](index.md) . Při migraci Vezměte v úvahu následující:
+Pokud vy nebo vaše organizace máte aplikace ve vývojovém nebo produkčním prostředí, které používají Translator Speech API, měli byste je aktualizovat, aby používaly službu Speech. Dostupné sady SDK, ukázky kódu a kurzy najdete v dokumentaci ke [službě Speech](index.yml) . Při migraci Vezměte v úvahu následující:
 
 * Služba rozpoznávání řeči nenabízí globální koncový bod. Zjistěte, jestli vaše aplikace funguje efektivně, když používá jeden místní koncový bod pro veškerý provoz. Pokud ne, použijte geografickou polohu k určení nejefektivnějšího koncového bodu.
 
@@ -64,7 +64,7 @@ Pokud vy nebo vaše organizace máte aplikace ve vývojovém nebo produkčním p
 * [Vyzkoušejte si službu Speech Service zdarma](get-started.md)
 * [Rychlý Start: rozpoznávání řeči v aplikaci UWP pomocí sady Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Co je služba pro rozpoznávání řeči](overview.md)
 * [Dokumentace ke službě Speech a sadě Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-qsg)

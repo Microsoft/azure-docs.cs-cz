@@ -1,5 +1,5 @@
 ---
-title: Použití připojení rozhraní ODBC (Open Database Connectivity) k Azure Průzkumník dat k vizualizaci dat pomocí Tableau
+title: Použití konektoru rozhraní ODBC pro Azure Průzkumník dat k vizualizaci dat Tableau
 description: V tomto článku se dozvíte, jak používat připojení rozhraní ODBC (Open Database Connectivity) k Azure Průzkumník dat připojení k vizualizaci dat pomocí Tableau.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 4dd8fbd761a3442536919e17bae5465adf6b945f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 903daf450800a7f060899d736c2b31920c1b51f6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023867"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562441"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-tableau"></a>Vizualizace dat z Azure Průzkumník dat v Tableau
 

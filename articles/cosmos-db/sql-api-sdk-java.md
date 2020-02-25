@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 03/13/2019
+ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 3a7eaabedd6736c107625204f982a530f2bab73d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718169"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558924"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -42,6 +42,10 @@ Java SDK pro rozhraní API SQL podporuje synchronní operace. Pro asynchronní p
 |**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="a-name247247"></a><a name="2.4.7"/>2.4.7
+* Opravuje problém s vypršením časového limitu fondu připojení.
+* Opravuje aktualizace ověřovacího tokenu u interních pokusů.
 
 ### <a name="a-name246246"></a><a name="2.4.6"/>2.4.6
 * Aktualizovala se správná značka zásad repliky na straně klienta v databaseAccount a provedla se čtení konfigurace databaseAccount z mezipaměti.
@@ -257,10 +261,21 @@ Jakoukoli žádost do služby Cosmos DB pomocí vyřazeno sady SDK budou odmítn
 
 <br/>
 
-| Version | Datum vydání | Datum vyřazení z provozu |
+| Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
-| [2.1.3](#2.1.3) |13. března 2018 |--- |
-| [2.1.2](#2.1.2) |9\. března 2018 |--- |
+| [2.4.7](#2.4.7) |20. února 2020 |--- |
+| [2.4.6](#2.4.6) |24. ledna 2020 |--- |
+| [2.4.5](#2.4.5) |10. listopadu 2019 |--- |
+| [2.4.4](#2.4.4) |24. října 2019 |--- |
+| [2.4.2 sections](#2.4.2) |Září 26, 2019 |--- |
+| [2.4.1](#2.4.1) |18. července 2019 |--- |
+| [2.4.0](#2.4.0) |4\. května 2019 |--- |
+| [2.3.0](#2.3.0) |Duben 24, 2019 |--- |
+| [2.2.3](#2.2.3) |16. dubna 2019 |--- |
+| [bodě](#2.2.2) |Duben 05, 2019 |--- |
+| [2.2.0](#2.2.0) |27. března 2019 |--- |
+| [2.1.3](#2.1.3) |13. března 2019 |--- |
+| [2.1.2](#2.1.2) |9\. března 2019 |--- |
 | [bodů](#2.1.1) |DEC 13, 2018 |--- |
 | [2.1.0](#2.1.0) |20. listopadu 2018 |--- |
 | [2.0.0](#2.0.0) |21. září 2018 |--- |

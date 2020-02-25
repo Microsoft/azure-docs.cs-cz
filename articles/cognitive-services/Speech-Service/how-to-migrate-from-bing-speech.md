@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/01/2018
+ms.date: 01/21/2020
 ms.author: nitinme
-ms.openlocfilehash: c0e1cc2fc1b3d4aed82c5442d2d3e23a1272fab5
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d6d9cb4dda93523b1136c8cc4cd307ae82c8b674
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805939"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560929"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrace z Zpracování řeči Bingu do služby pro rozpoznávání řeči
 
@@ -37,7 +37,7 @@ Jeden klíč předplatného služby Speech uděluje přístup k následujícím 
 
 Služba rozpoznávání řeči je převážně podobná Zpracování řeči Bingu, s následujícími rozdíly.
 
-Funkce | Zpracování řeči Bingu | Služba řeči | Podrobnosti
+Funkce | Zpracování řeči Bingu | Služba Speech | Podrobnosti
 -|-|-|-
 C++SADĚ | : heavy_minus_sign: | :heavy_check_mark: | Služba rozpoznávání řeči podporuje systémy Windows a Linux.
 Java SDK | :heavy_check_mark: | :heavy_check_mark: | Služba rozpoznávání řeči podporuje zařízení s Androidem a řečí.
@@ -47,11 +47,11 @@ Průběžné rozpoznávání řeči | 10 minut | Neomezeno (se sadou SDK) | Prot
 Vlastní modely řeči | :heavy_check_mark: | :heavy_check_mark: | Zpracování řeči Bingu vyžaduje samostatné předplatné Custom Speech.
 Vlastní hlasová písma | :heavy_check_mark: | :heavy_check_mark: | Zpracování řeči Bingu vyžaduje samostatné vlastní předplatné hlasu.
 24 – KHz hlasů | : heavy_minus_sign: | :heavy_check_mark:
-Rozpoznání záměru řeči | Vyžaduje samostatné volání rozhraní LUIS API. | Integrováno (se sadou SDK) |  Ke službě Speech můžete použít LUIS klíč.
+Rozpoznávání záměrů řeči | Vyžaduje samostatné volání rozhraní LUIS API. | Integrováno (se sadou SDK) |  Ke službě Speech můžete použít LUIS klíč.
 Jednoduché rozpoznávání záměrů | : heavy_minus_sign: | :heavy_check_mark:
 Dávkové přepisy dlouhých audio souborů | : heavy_minus_sign: | :heavy_check_mark:
 Režim rozpoznávání | Ruční prostřednictvím identifikátoru URI koncového bodu | Automaticky | Ve službě Speech není dostupný režim rozpoznávání.
-Prostředí koncového bodu | Globální | Oblastní | Místní koncové body zlepšují latenci.
+Prostředí koncového bodu | Globální | Regionální | Místní koncové body zlepšují latenci.
 Rozhraní REST API | :heavy_check_mark: | :heavy_check_mark: | Rozhraní REST API služby Speech jsou kompatibilní s Zpracování řeči Bingu (jiný koncový bod). Rozhraní REST API podporují funkci převodu textu na řeč a omezené funkce řeči na text.
 Protokoly WebSockets | :heavy_check_mark: | :heavy_check_mark: | Rozhraní API WebSockets služby Speech je kompatibilní s Zpracování řeči Bingu (jiný koncový bod). Pokud je to možné, migrujte na sadu Speech SDK, abyste zjednodušili kód.
 Volání rozhraní API služby-služba | :heavy_check_mark: | : heavy_minus_sign: | K dispozici v Zpracování řeči Bingu C# prostřednictvím knihovny služeb.
@@ -61,7 +61,7 @@ Služba Speech používá cenový model založený na čase (nikoli model založ
 
 ## <a name="migration-strategies"></a>Strategie migrace
 
-Pokud vy nebo vaše organizace máte aplikace ve vývoji nebo v produkčním prostředí, které používají rozhraní API pro zpracování řeči Bingu, měli byste je aktualizovat, aby službu Speech Service co nejdříve používaly. Dostupné sady SDK, ukázky kódu a kurzy najdete v [dokumentaci ke službě Speech](index.md) .
+Pokud vy nebo vaše organizace máte aplikace ve vývoji nebo v produkčním prostředí, které používají rozhraní API pro zpracování řeči Bingu, měli byste je aktualizovat, aby službu Speech Service co nejdříve používaly. Dostupné sady SDK, ukázky kódu a kurzy najdete v [dokumentaci ke službě Speech](index.yml) .
 
 [Rozhraní REST API](rest-apis.md) služby Speech jsou kompatibilní s rozhraními API zpracování řeči Bingu. Pokud aktuálně používáte Zpracování řeči Bingu rozhraní REST API, stačí změnit jenom koncový bod REST a přepnout na klíč předplatného služby Speech.
 
@@ -77,7 +77,7 @@ Pokud vaše aplikace používá dlouhotrvající připojení a nemůže použít
 
 Začínáme se sadou Speech SDK:
 
-1. Stáhněte si [řeči SDK](speech-sdk.md).
+1. Stáhněte si [sadu Speech SDK](speech-sdk.md).
 1. Pracujte prostřednictvím průvodců a [kurzů](how-to-recognize-intents-from-speech-csharp.md)pro [rychlý Start](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet) služby Speech. Podívejte se také na [ukázky kódu](samples.md) , abyste získali zkušenosti s novými rozhraními API.
 1. Aktualizujte aplikaci tak, aby používala službu Speech.
 
@@ -92,7 +92,7 @@ Podporu služby Speech SDK a rozhraní API najdete na [stránce podpory](support
 * [Vyzkoušejte si službu Speech Service zdarma](get-started.md)
 * [Rychlý Start: rozpoznávání řeči v aplikaci UWP pomocí sady Speech SDK](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 * [Poznámky k verzi služby Speech Service](releasenotes.md)
 * [Co je služba pro rozpoznávání řeči](overview.md)
 * [Dokumentace ke službě Speech a sadě Speech SDK](speech-sdk.md#get-the-sdk)

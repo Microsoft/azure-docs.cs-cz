@@ -1,5 +1,5 @@
 ---
-title: Použití Azure Data Box Heavy k migraci obsahu sdílení souborů do SharePointu Online | Microsoft Docs
+title: Použití Azure Data Box Heavy k přesunutí obsahu sdílené složky do SharePointu Online
 description: V tomto kurzu se dozvíte, jak migrovat obsah sdílené složky do sdílení bodu online pomocí Azure Data Box Heavy
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4955b28dff3193a95950912562cc3b6ec789479d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f97ea17551d4415f7ed6371853172cfde30fe4b6
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325277"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560044"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Použití Azure Data Box Heavy k migraci obsahu sdílené složky do SharePointu Online
 
@@ -67,7 +67,7 @@ Při kopírování dat do Data Box Heavy proveďte následující kroky.
 3. [Zkopírujte data do Azure Data box Heavy](data-box-heavy-deploy-copy-data.md). Při kopírování nezapomeňte:
 
     - Ke zkopírování dat použijte pouze složku *StorageAccountName_AzFile* v data box Heavy. Důvodem je to, že chcete, aby data byla ukončena ve sdílené složce Azure, nikoli v objektech blob bloku nebo objektech blob stránky.
-    - Zkopírujte soubory do složky ve složce *StorageAccountName_AzFile* . Sdílená složka v rámci složky *StorageAccountName_AzFile* vytvoří sdílenou složku. Soubory zkopírované přímo do složky *StorageAccountName_AzFile* selžou a nahrají se jako objekty blob bloku. Toto je sdílená složka, kterou budete na VIRTUÁLNÍm počítači připojeni v dalším kroku.
+    - Zkopírujte soubory do složky v *StorageAccountName_AzFile* složce. Sdílená složka v rámci složky *StorageAccountName_AzFile* vytvoří sdílenou složku. Soubory zkopírované přímo do složky *StorageAccountName_AzFile* selžou a nahrají se jako objekty blob bloku. Toto je sdílená složka, kterou budete na VIRTUÁLNÍm počítači připojeni v dalším kroku.
     - Zkopírujte data do obou uzlů Data Box Heavy.
 3. Na svém zařízení spusťte [Příprava k odeslání](data-box-heavy-deploy-picked-up.md#prepare-to-ship) . Úspěšná Příprava na dodávání zajišťuje úspěšné nahrání souborů do Azure.
 4. [Vrátí zařízení](data-box-heavy-deploy-picked-up.md#ship-data-box-heavy-back).
@@ -90,6 +90,6 @@ Pro zajištění nejlepšího výkonu a konektivity doporučujeme vytvořit virt
 > - Rychlost, s jakou se data ingestují do SharePointu Online, ovlivňují několik faktorů bez ohledu na to, jestli data v Azure už máte. Porozumění těmto faktorům vám pomůže naplánovat a maximalizovat efektivitu migrace.  Další informace najdete na [webu SharePoint Online a na rychlost migrace na OneDrive](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed).
 > - Při migraci dat do SharePointu Online existuje riziko ztráty stávajících oprávnění k souborům. Můžete také ztratit určitá metadata, jako je například *Vytvořeno pomocí* a *Datum změny*.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 [Seřazení Data Box Heavy](./data-box-heavy-deploy-ordered.md)

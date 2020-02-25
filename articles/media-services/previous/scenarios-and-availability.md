@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843935"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77564955"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
@@ -37,7 +37,7 @@ V tomto tématu najdete běžné scénáře pro doručování obsahu v [reálné
 
 Pokud chcete začít používat Azure Media Services, potřebujete následující:
 
-* Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
+* Účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Podrobnosti najdete v tématu [Bezplatná zkušební verze Azure](https://azure.microsoft.com).
 * Účet Azure Media Services. Další informace najdete v článku o [vytvoření účtu](media-services-portal-create-account.md).
 * Koncový bod streamování, ze kterého chcete streamovat obsah, musí být ve stavu **Spuštěno**.
 
@@ -137,7 +137,7 @@ Informace o dostupnosti v datových centrech najdete v části [Dostupnost](#ava
 
 ## <a name="consuming-content"></a>Konzumace obsahu
 
-Služba Azure Media Services nabízí nástroje, které potřebujete k vytvoření dynamických aplikací pro klientské přehrávače pro většinu platforem včetně: zařízení iOS, zařízení Android, Windows, Windows Phone, Xbox a set top boxy. Následující téma obsahuje odkazy na sady SDK a architektury přehrávačů, které můžete použít pro vývoj vlastních klientských aplikací, které můžou využívat streamovaná média ze služby Media Services. Další informace najdete v tématu [Vývoj aplikací pro přehrávání videa](media-services-develop-video-players.md).
+Služba Azure Media Services nabízí nástroje, které potřebujete k vytvoření dynamických aplikací pro klientské přehrávače pro většinu platforem včetně: zařízení iOS, zařízení Android, Windows, Windows Phone, Xbox a set top boxy. 
 
 ## <a name="enabling-azure-cdn"></a>Povolení Azure CDN
 
@@ -177,10 +177,10 @@ Zákazníci Media Services si můžou zvolit koncový bod streamování **Standa
 
 #### <a name="availability"></a>Dostupnost
 
-|Name (Název)|Stav|Datacentra
+|Název|Stav|Datová centra
 |---|---|---|
-|Úroveň Standard|GA|Všechno|
-|Premium|GA|Všechno|
+|Standardní|GA|Vše|
+|Premium|GA|Vše|
 
 ### <a name="live-encoding"></a>Kódování v reálném čase
 
@@ -194,9 +194,9 @@ AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Prac
 
 #### <a name="availability"></a>Dostupnost
 
-|Název procesoru médií|Stav|Datacentra
+|Název procesoru médií|Stav|Datová centra
 |---|---|---|
-|Media Encoder Standard|GA|Všechno|
+|Media Encoder Standard|GA|Vše|
 |Pracovní postup kodéru Media Encoder Premium|GA|Všechny s výjimkou Číny|
 
 ### <a name="analytics-media-processors"></a>Analytické procesory médií
@@ -205,14 +205,14 @@ Media Analytics je kolekce řečových a vizuálních komponent, které organiza
 
 #### <a name="availability"></a>Dostupnost
 
-|Název procesoru médií|Stav|Datacentra
+|Název procesoru médií|Stav|Datová centra
 |---|---|---|
-|Azure Media Face Detector|Preview|Všechno|
-|Azure Media Indexer|GA|Všechno|
-|Azure Media Motion Detector|Preview|Všechno|
-|Azure Media OCR|Preview|Všechno|
-|Azure Media Redactor|GA|Všechno|
-|Azure Media Video Thumbnails|Preview|Všechno|
+|Azure Media Face Detector|Preview|Vše|
+|Azure Media Indexer|GA|Vše|
+|Azure Media Motion Detector|Preview|Vše|
+|Azure Media OCR|Preview|Vše|
+|Azure Media Redactor|GA|Vše|
+|Azure Media Video Thumbnails|Preview|Vše|
 
 ### <a name="protection"></a>Ochrana
 
@@ -220,12 +220,12 @@ Microsoft Azure Media Services umožňuje zabezpečení médií od okamžiku opu
 
 #### <a name="availability"></a>Dostupnost
 
-|Šifrování|Stav|Datacentra|
+|Šifrování|Stav|Datová centra|
 |---|---|---| 
-|Storage|GA|Všechno|
-|Klíče AES-128|GA|Všechno|
-|FairPlay|GA|Všechno|
-|PlayReady|GA|Všechno|
+|Úložiště|GA|Vše|
+|Klíče AES-128|GA|Vše|
+|FairPlay|GA|Vše|
+|PlayReady|GA|Vše|
 |Widevine|GA|Všechna kromě oblastí Německo, Federální vláda a Čína.
 
 ### <a name="reserved-units-rus"></a>Rezervované jednotky (RU)
@@ -246,9 +246,9 @@ Další informace najdete v části popisující [škálování](#scaling).
 
 #### <a name="availability"></a>Dostupnost
 
-|Název typu RU|Stav|Datacentra
+|Název typu RU|Stav|Datová centra
 |---|---|---|
-|S1|GA|Všechno|
+|S1|GA|Vše|
 |S2|GA|Všechna kromě oblastí Brazílie – jih a Indie – západ|
 |S3|GA|Všechna kromě oblasti Indie – západ|
 
@@ -262,6 +262,6 @@ Prohlédněte si mapy kurzů k Media Services.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

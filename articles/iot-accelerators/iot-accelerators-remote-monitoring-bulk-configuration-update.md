@@ -1,19 +1,19 @@
 ---
 title: Hromadná Správa zařízení připojených ke vzdálenému monitorování – Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak hromadně spravovat zařízení připojená k řešení vzdáleného monitorování.
-author: aditidugar
+author: Philmea
 manager: philmea
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: adugar
-ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.author: philmea
+ms.openlocfilehash: eaca93ac8a4e8c660be9618aefb27921a4e0a2eb
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980549"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565574"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Kurz: Hromadná Správa připojených zařízení
 
@@ -21,7 +21,7 @@ V tomto kurzu budete pomocí akcelerátoru řešení vzdáleného monitorování
 
 Jako operátor ve společnosti Contoso musíte nakonfigurovat skupinu zařízení s novou verzí firmwaru. Nechcete, aby se firmware jednotlivě aktualizoval na každé zařízení. Chcete-li aktualizovat firmware pro skupinu zařízení, můžete použít skupiny zařízení a automatickou správu zařízení v akcelerátoru řešení vzdáleného monitorování. Každé zařízení, které přidáváte do skupiny zařízení, získá nejnovější firmware ihned po přepnutí zařízení do režimu online.
 
-V tomto kurzu jste:
+V tomto kurzu se naučíte:
 
 >[!div class="checklist"]
 > * Vytvoření skupiny zařízení
@@ -65,7 +65,7 @@ Musíte taky připojit aspoň jedno zařízení IoT DevKit k akcelerátoru řeš
 
 K zobrazení řídicího panelu řešení pro vzdálené monitorování v prohlížeči je potřeba nejdřív přejít na [Akcelerátory řešení Microsoft Azure IoT](https://www.azureiotsolutions.com/Accelerators#dashboard). Může se zobrazit výzva k přihlášení pomocí vašich přihlašovacích údajů k předplatnému Azure.
 
-Potom na dlaždici akcelerátoru řešení pro vzdálené monitorování, který jste nasadili v [rychlém startu](quickstart-remote-monitoring-deploy.md), klikněte na **Spustit**.
+Potom na dlaždici akcelerátoru řešení pro vzdálené monitorování, který jste nasadili v **rychlém startu**, klikněte na [Spustit](quickstart-remote-monitoring-deploy.md).
 
 ## <a name="create-a-device-group"></a>Vytvoření skupiny zařízení
 
@@ -125,7 +125,7 @@ Použijte svůj účet služby Azure Storage k hostování nového souboru firmw
 
 1. Na webu Azure Portal přejděte na svůj účet úložiště. V části služby vyberte **objekty blob**. Vytvořte veřejný kontejner s názvem **firmware** pro ukládání souborů firmwaru:
 
-    ![Vytvořit složku](media/iot-accelerators-remote-monitoring-bulk-configuration-update/blob-folder.png)
+    ![Vytvoření složky](media/iot-accelerators-remote-monitoring-bulk-configuration-update/blob-folder.png)
 
 1. Pokud chcete nahrát soubor firmwaru do kontejneru, vyberte kontejner **firmwaru** a klikněte na **nahrát**.
 
@@ -228,7 +228,7 @@ V této části vytvoříte a spustíte nasazení, které aplikuje konfiguraci z
 
     |Možnost|Hodnota|
     |---|---|
-    |Name (Název)|Nasadit aktualizaci firmwaru|
+    |Název|Nasadit aktualizaci firmwaru|
     |Typ balíčku|Konfigurace zařízení|
     |Typ konfigurace|Firmware|
     |Balíček|firmware-update.json|
@@ -237,7 +237,7 @@ V této části vytvoříte a spustíte nasazení, které aplikuje konfiguraci z
 
     ![Vytvoření nasazení](media/iot-accelerators-remote-monitoring-bulk-configuration-update/newdeployment.png)
 
-    Klikněte na tlačítko **Použít**. Na stránce **nasazení** se zobrazí nové nasazení, které zobrazuje následující metriky:
+    Klikněte na **Použít**. Na stránce **nasazení** se zobrazí nové nasazení, které zobrazuje následující metriky:
 
     * **Cílová** hodnota zobrazuje počet zařízení ve skupině zařízení.
     * **Použito** : zobrazuje počet zařízení, která byla aktualizována pomocí obsahu konfigurace.
@@ -268,7 +268,7 @@ Po dokončení restartování se v zařízení IoT DevKit nyní spouští verze 
 
 Na stránce **nasazení** kliknutím na nasazení zobrazte stav svých zařízení při jejich aktualizaci. Můžete zobrazit stav jednotlivých zařízení ve skupině zařízení a vlastní metriky, které jste definovali.
 
-![Podrobnosti nasazení](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentstatus.png)
+![Podrobnosti o nasazení](media/iot-accelerators-remote-monitoring-bulk-configuration-update/deploymentstatus.png)
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: Monitorování výkonu, stavu a využití Azure Průzkumník dat s metrikami
+title: Monitorování výkonu služby Azure Průzkumník dat, využití & stavu pomocí metrik
 description: Naučte se používat metriky Azure Průzkumník dat k monitorování výkonu, stavu a využití clusteru.
 author: orspod
 ms.author: orspodek
@@ -7,25 +7,25 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: f8078d8bae00ac4789a679be4d7a1944c749cce6
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1319b8cd6ac8a0eb83381c24bcde9996458e47a7
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423840"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560300"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Monitorování výkonu, stavu a využití Azure Průzkumník dat s metrikami
 
 Azure Data Explorer je rychlá, plně spravovaná služba analýzy dat pro analýzy velkých objemů dat v reálném čase, která se streamují z aplikací, webů, zařízení IoT a dalších. Pokud chcete použít Azure Průzkumník dat, musíte nejdřív vytvořit cluster a v tomto clusteru vytvořit jednu nebo víc databází. Pak data ingestujte do databáze, abyste na ni mohli spouštět dotazy. Metriky Azure Průzkumník dat poskytují klíčové indikátory pro stav a výkon prostředků clusteru. Pomocí metrik, které jsou podrobně popsané v tomto článku, můžete monitorovat stav a výkon služby Azure Průzkumník dat clusteru v konkrétním scénáři jako samostatné metriky. Metriky můžete použít také jako základ pro operační [řídicí panely Azure](/azure/azure-portal/azure-portal-dashboards) a [výstrahy Azure](/azure/azure-monitor/platform/alerts-metric-overview).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ho nemáte, můžete si vytvořit [bezplatný účet Azure](https://azure.microsoft.com/free/).
 * [Cluster a databáze](create-cluster-database-portal.md).
 
 ## <a name="using-metrics"></a>Použití metrik
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 1. V clusteru Azure Průzkumník dat vyberte **metriky** a otevřete podokno metriky a začněte analyzovat v clusteru.
     ![vyberte](media/using-metrics/select-metrics.png)metriky.
 1. V podokně metriky: ![podokno metrik](media/using-metrics/metrics-pane.png)
@@ -63,7 +63,7 @@ Vyexportujte metriky stavu a výkonu, které sledují obecný stav a výkon oper
 
 **Metrika** | **Jednotce** | **Agregace** | **Popis metriky** | **Použijí** |
 |---|---|---|---|---|
-Průběžný export počtu exportovaných záznamů    | Počet | Součet | Počet exportovaných záznamů ve všech úlohách průběžného exportu. | Žádná |
+Průběžný export počtu exportovaných záznamů    | Počet | Sum | Počet exportovaných záznamů ve všech úlohách průběžného exportu. | Žádná |
 Maximální zpoždění průběžného exportu |    Počet   | Maximum   | Zpoždění (v minutách) hlášené úlohami průběžného exportu v clusteru. | Žádná |
 Počet nevyřízených položek průběžného exportu | Počet | Maximum   | Počet probíhajících úloh průběžného exportu. Tyto úlohy jsou připravené ke spuštění, ale čekají ve frontě, pravděpodobně z důvodu nedostatečné kapacity. 
 Výsledek průběžného exportu    | Počet |   Počet   | Výsledek selhání/úspěšnost každého spuštění průběžného exportu. | ContinuousExportName |

@@ -1,5 +1,5 @@
 ---
-title: Připojení a Správa Microsoft Azure Data Box Gateway zařízení přes rozhraní Windows PowerShellu | Microsoft Docs
+title: Připojení a Správa zařízení Azure Data Box Gateway pomocí prostředí Windows PowerShell
 description: Popisuje, jak se připojit ke službě Data Box Gateway přes rozhraní Windows PowerShell a potom je spravovat.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 650777d849e172686e8b46502a84db8c519174e7
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6c9f3455a07001a8d1b9b8a1e84f2af3392b5690
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775198"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561863"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Správa zařízení Azure Data Box Gateway přes Windows PowerShell
 
@@ -25,7 +25,7 @@ Tento článek obsahuje následující postupy:
 
 - Připojení k rozhraní PowerShell
 - Vytvoření balíčku pro podporu
-- Nahrát certifikát
+- Nahrání certifikátu
 - Spuštění v prostředí bez DHCP
 - Zobrazit informace o zařízení
 
@@ -37,7 +37,7 @@ Tento článek obsahuje následující postupy:
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-## <a name="upload-certificate"></a>Nahrát certifikát
+## <a name="upload-certificate"></a>Nahrání certifikátu
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 

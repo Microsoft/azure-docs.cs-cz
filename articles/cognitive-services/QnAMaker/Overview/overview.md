@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.author: diberry
-ms.openlocfilehash: 7bac2546ac35f5f188a6490c4d9ecb2b86d7bb2d
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 91a63e87e937eab4c02d2b86026aa09472cb15ef
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843052"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561085"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Co je služba QnA Maker?
 
@@ -38,7 +38,7 @@ Po publikování QnA Maker znalostní báze pošle klientská aplikace dotaz do 
 
 |Krok|Akce|
 |:--|:--|
-|1\. místo|Klientská aplikace pošle _dotaz_ uživatele (text vlastními slovy), "návody programově aktualizovat moji znalostní bázi?" do koncového bodu znalostní báze.|
+|1|Klientská aplikace pošle _dotaz_ uživatele (text vlastními slovy), "návody programově aktualizovat moji znalostní bázi?" do koncového bodu znalostní báze.|
 |2|QnA Maker využívá školenou znalostní bázi k poskytnutí správné odpovědi a dalších výzev, které lze použít k upřesnění hledání nejlepší odpovědi. QnA Maker vrátí odpověď ve formátu JSON.|
 |3|Klientská aplikace používá odpověď JSON k rozhodování o tom, jak pokračovat v konverzaci. Tato rozhodnutí mohou zahrnovat zobrazení horní odpovědi a další možnosti pro upřesnění vyhledávání pro nejlepší odpověď. |
 |||
@@ -78,7 +78,11 @@ Až znalostní báze obdrží dotazy od uživatelů v publikovaném koncovém bo
 
 QnA Maker poskytuje vytváření, školení a publikování společně s oprávněními pro spolupráci k integraci do celého životního cyklu vývoje.
 
-## <a name="how-do-i-start"></a>Jak začít?
+> [!div class="mx-imgBorder"]
+> ![koncepční obrázek vývojového cyklu](../media/qnamaker-overview-learnabout/development-cycle.png)
+
+
+## <a name="how-do-i-start"></a>Návody začít?
 
 **Krok 1**: vytvoření prostředku QnA Maker v [Azure Portal](https://portal.azure.com).
 

@@ -4,18 +4,16 @@ description: Přečtěte si, jak implementovat monitorování stavu pomocí roz�
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f8a589bd4ab4de396c0688f8022515d6fbec96a2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769587"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562118"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scénář monitorování Durable Functions – ukázka sledovacích procesů počasí
 
 Model monitorování odkazuje na flexibilní *opakovaný* proces v pracovním postupu – například dotazování do splnění určitých podmínek. Tento článek vysvětluje ukázku, která používá [Durable Functions](durable-functions-overview.md) k implementaci monitorování.
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -30,11 +28,13 @@ Tato ukázka monitoruje aktuální povětrnostní podmínky umístění a upozor
 * Monitory jsou škálovatelné. Vzhledem k tomu, že každý monitor je instancí orchestrace, lze vytvořit více monitorů bez nutnosti vytvářet nové funkce nebo definovat více kódů.
 * Monitorování se snadno integruje do větších pracovních postupů. Monitorování může být jeden oddíl složitější funkce orchestrace nebo [dílčí orchestrace](durable-functions-sub-orchestrations.md).
 
-## <a name="configuring-twilio-integration"></a>Konfigurace integrace Twilio
+## <a name="configuration"></a>Konfigurace
+
+### <a name="configuring-twilio-integration"></a>Konfigurace integrace Twilio
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="configuring-weather-underground-integration"></a>Konfigurace integrace s počasí v podzemních přístavech
+### <a name="configuring-weather-underground-integration"></a>Konfigurace integrace s počasí v podzemních přístavech
 
 Tato ukázka zahrnuje použití povětrnostního rozhraní API ke kontrole aktuálních povětrnostních podmínek pro určité místo.
 
@@ -50,27 +50,29 @@ Jakmile budete mít klíč rozhraní API, přidejte do aplikace Function App ná
 
 Tento článek vysvětluje následující funkce v ukázkové aplikaci:
 
-* `E3_Monitor`: funkce Orchestrator, která volá `E3_GetIsClear` pravidelně. Volá `E3_SendGoodWeatherAlert`, pokud `E3_GetIsClear` vrátí hodnotu true.
-* `E3_GetIsClear`: funkce aktivity, která kontroluje aktuální povětrnostní podmínky pro určité místo.
+* `E3_Monitor`: [funkce Orchestrator](durable-functions-bindings.md#orchestration-trigger) , která volá `E3_GetIsClear` pravidelně. Volá `E3_SendGoodWeatherAlert`, pokud `E3_GetIsClear` vrátí hodnotu true.
+* `E3_GetIsClear`: [funkce aktivity](durable-functions-bindings.md#activity-trigger) , která kontroluje aktuální povětrnostní podmínky pro určité místo.
 * `E3_SendGoodWeatherAlert`: funkce aktivity, která odesílá zprávu SMS prostřednictvím Twilio.
 
-Následující části vysvětlují konfiguraci a kód, který se používá C# pro skriptování a JavaScript. Kód pro vývoj v aplikaci Visual Studio se zobrazí na konci článku.
+### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor funkce Orchestrator
 
-## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Orchestrace sledování počasí (ukázka Visual Studio Code a Azure Portal ukázkový kód)
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=41-78,97-115)]
+
+Nástroj Orchestrator vyžaduje místo, kde se má monitorovat, a telefonní číslo, na které se pošle zpráva, když se v umístění zruší zaškrtnutí. Tato data se předávají do nástroje Orchestrator jako objekt `MonitorRequest` silného typu.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Funkce **E3_Monitor** používá standardní *funkci Function. JSON* pro funkce Orchestrator.
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_Monitor/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/function.json)]
 
 Zde je kód, který implementuje funkci:
 
-### <a name="c-script"></a>C#Pravidel
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
+
+---
 
 Tato funkce Orchestrator provádí následující akce:
 
@@ -79,48 +81,52 @@ Tato funkce Orchestrator provádí následující akce:
 3. Volá **E3_GetIsClear** k určení, zda v požadovaném umístění nejsou jasné Skies.
 4. Pokud je počasí jasné, zavolá **E3_SendGoodWeatherAlert** k odeslání oznámení SMS požadovanému telefonnímu číslu.
 5. Vytvoří trvalý časovač pro pokračování orchestrace při dalším intervalu dotazování. Ukázka používá pevně zakódované hodnoty pro zkrácení.
-6. Pokračuje v běhu, dokud `CurrentUtcDateTime` (.NET) nebo `currentUtcDateTime` (JavaScript) neprojde časem vypršení platnosti monitoru, nebo se pošle výstraha SMS.
+6. Pokračuje v běhu, dokud aktuální čas UTC neprojde časem vypršení platnosti monitoru, nebo se pošle výstraha SMS.
 
-Několik instancí nástroje Orchestrator může běžet současně posíláním více **MonitorRequests**. Umístění, které se má monitorovat, a telefonní číslo, na které se má odeslat výstraha SMS, se může zadat.
+Více instancí nástroje Orchestrator lze spustit současně voláním funkce Orchestrator vícekrát. Umístění, které se má monitorovat, a telefonní číslo, na které se má odeslat výstraha SMS, se může zadat.
 
-## <a name="strongly-typed-data-transfer-net-only"></a>Přenos dat silného typu (jenom .NET)
+### <a name="e3_getisclear-activity-function"></a>Funkce aktivity E3_GetIsClear
 
-Nástroj Orchestrator vyžaduje více dat, takže [sdílené objekty POCO](../functions-reference-csharp.md#reusing-csx-code) se používají pro přenos dat silného typu v C# nástroji a C# skript:  
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+Stejně jako u jiných ukázek jsou funkce aktivity pomocníka běžné funkcemi, které používají vazbu triggeru `activityTrigger`. Funkce **E3_GetIsClear** získává aktuální povětrnostní podmínky pomocí rozhraní API pro počasí, které určuje, zda je nebe jasný.
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
+# <a name="c"></a>[C#](#tab/csharp)
 
-Ukázka JavaScriptu jako parametry používá regulární objekty JSON.
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=80-85)]
 
-## <a name="helper-activity-functions"></a>Funkce aktivity pomocníka
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Stejně jako u jiných ukázek jsou funkce aktivity pomocníka běžné funkcemi, které používají vazbu triggeru `activityTrigger`. Funkce **E3_GetIsClear** získává aktuální povětrnostní podmínky pomocí rozhraní API pro počasí, které určuje, zda je nebe jasný. *Funkce Function. JSON* je definována takto:
+*Funkce Function. JSON* je definována takto:
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/function.json)]
 
-A zde je implementace. Podobně jako POCOs, který se používá pro přenos dat, je logika pro zpracování volání rozhraní API a analýza JSON odpovědi je abstraktní na sdílenou C#třídu v. Můžete ji najít v rámci [ukázkového kódu sady Visual Studio](#run-the-sample).
-
-### <a name="c-script"></a>C#Pravidel
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
+A zde je implementace.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-Funkce **E3_SendGoodWeatherAlert** používá vazbu Twilio k odeslání zprávy SMS upozorňující koncového uživatele, že se jedná o dobrý čas pro procházení. Jeho *Function. JSON* je jednoduchý:
+---
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/function.json)]
+### <a name="e3_sendgoodweatheralert-activity-function"></a>Funkce aktivity E3_SendGoodWeatherAlert
+
+Funkce **E3_SendGoodWeatherAlert** používá vazbu Twilio k odeslání zprávy SMS upozorňující koncového uživatele, že se jedná o dobrý čas pro procházení.
+
+# <a name="c"></a>[C#](#tab/csharp)
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=87-96,140-205)]
+
+> [!NOTE]
+> Pro spuštění ukázkového kódu budete muset nainstalovat balíček NuGet `Microsoft.Azure.WebJobs.Extensions.Twilio`.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Jeho *Function. JSON* je jednoduchý:
+
+[!code-json[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/function.json)]
 
 A zde je kód, který odesílá zprávu SMS:
 
-### <a name="c-script"></a>C#Pravidel
-
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
-
-### <a name="javascript-functions-20-only"></a>JavaScript (pouze funkce 2,0)
-
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
+
+---
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
@@ -168,15 +174,6 @@ Orchestrace se [ukončí](durable-functions-instance-management.md) po dosažen�
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
-
-## <a name="visual-studio-sample-code"></a>Vzorový kód sady Visual Studio
-
-Toto je orchestrace jako jeden C# soubor v projektu sady Visual Studio:
-
-> [!NOTE]
-> Pro spuštění ukázkového kódu níže budete muset nainstalovat balíček `Microsoft.Azure.WebJobs.Extensions.Twilio` NuGet.
-
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 
 ## <a name="next-steps"></a>Další kroky
 

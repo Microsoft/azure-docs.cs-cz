@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 3ee7a2ffed9c2c50829f237fdf4c8d3b5a6f1531
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: d88c76afb3426dce8c68ae4bcda366fe17700aa7
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538768"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566042"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro GPU
 
@@ -31,7 +31,7 @@ Velikosti virtuálních počítačů optimalizované pro GPU jsou specializovan�
 
 - Velikosti [NV-Series](nv-series.md) a [NVv3-Series](nvv3-series.md) jsou optimalizované a navržené pro vzdálené vizualizace, streamování, hry, kódování a VDI, a to pomocí platforem, jako je OpenGL a DirectX. Tyto virtuální počítače jsou řízené grafickým procesorem NVIDIA Tesla M60.
 
-- [NVv4-Series](nvv4-series.md) Velikosti virtuálních počítačů optimalizované a navržené pro VDI a vzdálenou vizualizaci. U rozděleného GPU nabízí NVv4 správnou velikost pro úlohy, které vyžadují menší prostředky GPU. Tyto virtuální počítače jsou řízené grafickým procesorem AMD Radeon Instinct MI25.
+- [NVv4-Series](nvv4-series.md) Velikosti virtuálních počítačů optimalizované a navržené pro VDI a vzdálenou vizualizaci. U rozděleného GPU nabízí NVv4 správnou velikost pro úlohy, které vyžadují menší prostředky GPU. Tyto virtuální počítače jsou řízené grafickým procesorem AMD Radeon Instinct MI25. Virtuální počítače s NVv4 v současné době podporují jenom hostovaný operační systém Windows.
 
 ## <a name="supported-operating-systems-and-drivers"></a>Podporované operační systémy a ovladače
 

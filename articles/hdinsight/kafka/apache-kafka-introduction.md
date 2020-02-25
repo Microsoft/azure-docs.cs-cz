@@ -1,6 +1,6 @@
 ---
 title: Úvod k Apache Kafka ve službě HDInsight – Azure
-description: 'Informace o Apache Kafka ve službě HDInsight: Co to je, co to dělá a kde najít příklady a informace pro začátek.'
+description: 'Přečtěte si o systému Apache Kafka ve službě HDInsight: co to je, co to dělá a kde najít příklady a informace pro začátek.'
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/13/2019
-ms.openlocfilehash: 7cf83af52d5bedee5b4d57ee1b4dda2fb34d1b3f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 543a18ad48384e3502231f85516a092468db2387
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960088"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560095"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Co je Apache Kafka ve službě Azure HDInsight
 
@@ -59,42 +59,44 @@ K duplikaci oddílů mezi uzly se využívá replikace, která zajišťuje ochra
 
 Tady jsou běžné úlohy a postupy, které je možné provádět s využitím systému Kafka ve službě HDInsight:
 
-* **Replikace Apache Kafkach dat**: Kafka poskytuje nástroj nástroje MirrorMaker, který replikuje data mezi clustery Kafka.
+* **Replikace Apache Kafka dat**: Kafka poskytuje nástroj nástroje MirrorMaker, který replikuje data mezi clustery Kafka.
 
     Informace o použití nástroje MirrorMaker najdete v tématu věnovaném [replikaci Apache Kafka témata Apache Kafka v HDInsight](apache-kafka-mirroring.md).
 
-* **Vzor zasílání zpráv pro publikování a odběr**: Kafka poskytuje výrobci rozhraní API pro publikování záznamů do tématu Kafka. Rozhraní API pro příjemce se používá při přihlášení k odběru tématu.
+* **Vzorec zasílání zpráv na principu publikování a odběru:** Platforma Kafka poskytuje rozhraní API pro autory k publikování záznamů v tématech Kafka. Rozhraní API pro příjemce se používá při přihlášení k odběru tématu.
 
     Další informace najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
 
-* **Zpracování datových proudů**: Kafka se často používá u Apache Storm nebo Sparku pro zpracování datových proudů v reálném čase. Kafka 0.10.0.0 (HDInsight verze 3.5 a 3.6) zavedla rozhraní API pro streamování, které umožňuje vytvářet řešení streamování bez potřeby Stormu nebo Sparku.
+* **Zpracování datových proudů:** Kafka se často používá společně s Apache Storm nebo Spark ke zpracování datových proudů v reálném čase. Kafka 0.10.0.0 (HDInsight verze 3.5 a 3.6) zavedla rozhraní API pro streamování, které umožňuje vytvářet řešení streamování bez potřeby Stormu nebo Sparku.
 
     Další informace najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
 
-* **Horizontální stupnice**: Kafka oddíly streamování napříč uzly v clusteru HDInsight. Procesy příjemců můžou být přidružené k jednotlivým oddílům pro zajištění vyrovnávání zatížení při využívání záznamů.
+* **Horizontální škálování:** Kafka rozděluje datové proudy mezi uzly v clusteru HDInsight. Procesy příjemců můžou být přidružené k jednotlivým oddílům pro zajištění vyrovnávání zatížení při využívání záznamů.
 
     Další informace najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
 
-* **Doručení v daném pořadí**: V rámci každého oddílu se záznamy ukládají v datovém proudu v pořadí, v jakém byly přijaty. Přidružením jednoho procesu příjemce na oddíl můžete zajistit zpracování záznamů v daném pořadí.
+* **Doručení v daném pořadí:** V rámci každého oddílu se záznamy ukládají v datovém proudu v pořadí, v jakém byly přijaty. Přidružením jednoho procesu příjemce na oddíl můžete zajistit zpracování záznamů v daném pořadí.
 
     Další informace najdete v tématu [Začínáme s Apache Kafka v HDInsight](apache-kafka-get-started.md).
 
 ## <a name="use-cases"></a>Případy použití
 
-* **Zasílání zpráv**: Vzhledem k tomu, že podporuje vzor zprávy pro publikování a odběr, se Kafka často používá jako zprostředkovatel zpráv.
+* **Zasílání zpráv:** Protože Kafka podporuje vzorec zasílání zpráv na principu publikování a odběru, často se používá jako zprostředkovatel zpráv.
 
-* **Sledování aktivit**: Vzhledem k tomu, že Kafka poskytuje protokolování záznamů v pořadí, lze je použít ke sledování a opětovnému vytvoření aktivit. Například akcí uživatelů na webu nebo v aplikaci.
+* **Sledování aktivit:** Protože Kafka poskytuje protokolování záznamů v daném pořadí, je možné ji použít ke sledování a opětovnému vytvoření aktivit. Například akcí uživatelů na webu nebo v aplikaci.
 
-* **Agregace**: Pomocí zpracování datových proudů můžete agregovat informace z různých datových proudů, abyste je mohli kombinovat a centralizovat s provozními daty.
+* **Agregace:** Pomocí zpracování datových proudů můžete agregovat a kombinovat informace z různých datových proudů a centralizovat je v podobě provozních dat.
 
-* **Transformace**: Pomocí zpracování datových proudů můžete kombinovat a rozšiřovat data z více vstupních témat do jednoho nebo více témat s výstupem.
+* **Transformace:** Pomocí zpracování datových proudů můžete kombinovat data z více vstupních témat a rozšiřovat je do jednoho nebo několika výstupních témat.
 
 ## <a name="next-steps"></a>Další kroky
 
 Následující odkazy popisují používání Apache Kafka ve službě HDInsight:
 
-* [Rychlé zprovoznění: Vytvoření Apache Kafka ve službě HDInsight](apache-kafka-get-started.md)
+* [Rychlý Start: vytvoření Apache Kafka ve službě HDInsight](apache-kafka-get-started.md)
 
-* [Kurz: Použití Apache Spark s Apache Kafka v HDInsight](../hdinsight-apache-spark-with-kafka.md)
+* [Použití Kafka s proxy REST](rest-proxy.md)
 
-* [Kurz: Použití Apache Storm s Apache Kafka v HDInsight](../hdinsight-apache-storm-with-kafka.md)
+* [Kurz: použití Apache Spark s Apache Kafka v HDInsight](../hdinsight-apache-spark-with-kafka.md)
+
+* [Kurz: použití Apache Storm s Apache Kafka v HDInsight](../hdinsight-apache-storm-with-kafka.md)

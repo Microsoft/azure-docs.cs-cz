@@ -6,36 +6,38 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 02/19/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 783e8666e2602f9251d81e976a27fbce099defa2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7deb773fae6ba56b6f601983ffd2b07d887e1480
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460530"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565755"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Autorizace přístupu k datům v Azure Storage
 
-Pokaždé, když přistupujete k datům v účtu úložiště, klient vytvoří požadavek přes HTTP/HTTPS, aby Azure Storage. Všechny žádosti o přístup k zabezpečeným prostředkům musí být autorizovány, a proto služba ověří, že daný klient má oprávnění vyžadovaná pro přístup k datům.
+Pokaždé, když přistupujete k datům v účtu úložiště, klient vytvoří požadavek přes HTTP/HTTPS, aby Azure Storage. Každý požadavek na zabezpečený prostředek musí být autorizovaný, aby služba zajistila, že má klient oprávnění potřebná pro přístup k datům.
 
 Následující tabulka popisuje možnosti, které Azure Storage nabídky pro autorizaci přístupu k prostředkům:
 
-|  |Sdílený klíč (klíč účtu úložiště)  |Sdílený přístupový podpis (SAS)  |Azure Active Directory (Azure AD)  |Anonymní veřejný přístup pro čtení  |
-|---------|---------|---------|---------|---------|
-|Azure Blobs     |[Podporuje se](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporuje se](storage-sas-overview.md)         |[Podporuje se](storage-auth-aad.md)         |[Podporuje se](../blobs/storage-manage-access-to-resources.md)         |
-|Soubory Azure (SMB)     |[Podporuje se](/rest/api/storageservices/authorize-with-shared-key/)         |Nepodporováno         |[Podporováno, pouze s doménovou službou AAD](../files/storage-files-active-directory-overview.md)         |Nepodporováno         |
-|Soubory Azure (REST)     |[Podporuje se](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporuje se](storage-sas-overview.md)         |Nepodporováno         |Nepodporováno         |
-|Fronty Azure     |[Podporuje se](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporuje se](storage-sas-overview.md)         |[Podporuje se](storage-auth-aad.md)         |Nepodporováno         |
-|Tabulky Azure     |[Podporuje se](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporuje se](storage-sas-overview.md)         |Nepodporováno         |Nepodporováno         |
+|  |Sdílený klíč (klíč účtu úložiště)  |Sdílený přístupový podpis (SAS)  |Azure Active Directory (Azure AD)  |Active Directory (Preview)|Anonymní veřejný přístup pro čtení  |
+|---------|---------|---------|---------|---------|---------|
+|Objekty blob Azure     |[Podporuje se](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporuje se](storage-sas-overview.md)         |[Podporuje se](storage-auth-aad.md)         |Nepodporuje se|[Podporuje se](../blobs/storage-manage-access-to-resources.md)         |
+|Soubory Azure (SMB)     |[Podporuje se](/rest/api/storageservices/authorize-with-shared-key/)         |Nepodporuje se         |[Podporováno, pouze s doménovou službou AAD](../files/storage-files-active-directory-overview.md)         |[Podporuje se přihlašovací údaje musí synchronizovat do Azure AD.](../files/storage-files-active-directory-overview.md)|Nepodporuje se         |
+|Soubory Azure (REST)     |[Podporuje se](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporuje se](storage-sas-overview.md)         |Nepodporuje se         |Nepodporuje se |Nepodporuje se         |
+|Fronty Azure     |[Podporuje se](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporuje se](storage-sas-overview.md)         |[Podporuje se](storage-auth-aad.md)         |Nepodporuje se | Nepodporuje se         |
+|Tabulky Azure     |[Podporuje se](/rest/api/storageservices/authorize-with-shared-key/)         |[Podporuje se](storage-sas-overview.md)         |Nepodporuje se         |Nepodporuje se| Nepodporuje se         |
 
 Každá možnost autorizace je stručně popsána níže:
 
 - **Integrace služby Azure Active Directory (Azure AD)** pro objekty BLOB a fronty. Azure AD poskytuje řízení přístupu na základě role (RBAC) pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům v účtu úložiště. Další informace o integraci Azure AD pro objekty BLOB a fronty najdete v tématu [autorizace přístupu k objektům blob a frontám Azure pomocí Azure Active Directory](storage-auth-aad.md).
 
-- **Integrace služby Azure AD Domain Services (DS) pro soubory (Preview)** . Soubory Azure podporují autorizaci založenou na identitě přes protokol SMB (Server Message Block) prostřednictvím Azure služba AD DS. Pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům služby soubory Azure v účtu úložiště můžete použít RBAC. Další informace o integraci Azure AD pro soubory pomocí služby Domain Services najdete v tématu [Přehled podpory ověřování služby Azure files Azure Active Directory Domain Service (AAD DS) pro přístup přes protokol SMB (Preview)](../files/storage-files-active-directory-overview.md).
+- **Ověřování Azure Active Directory Domain Services (Azure služba AD DS)** pro soubory. Soubory Azure podporují autorizaci založenou na identitě přes protokol SMB (Server Message Block) prostřednictvím Azure služba AD DS. Pro jemně odstupňovanou kontrolu nad přístupem klienta k prostředkům služby soubory Azure v účtu úložiště můžete použít RBAC. Další informace týkající se ověřování souborů Azure pomocí služby Domain Services najdete v našem [přehledu](../files/storage-files-active-directory-overview.md).
+
+- **Ověřování služby Active Directory (AD) pro soubory (Preview)** . Soubory Azure podporují autorizaci založenou na identitě přes protokol SMB prostřednictvím služby AD. Vaše Doménová služba AD se může hostovat na místních nebo virtuálních počítačích Azure. Přístup SMB k souborům se podporuje pomocí přihlašovacích údajů služby AD z počítačů připojených k doméně, a to v místním prostředí nebo v Azure. Pro řízení přístupu na úrovni sdílené složky a pro oprávnění NTFS pro vynucení oprávnění na úrovni adresářů a souborů můžete použít RBAC. Další informace týkající se ověřování souborů Azure pomocí služby Domain Services najdete v našem [přehledu](../files/storage-files-active-directory-overview.md).
 
 - **Autorizace sdíleného klíče** pro objekty blob, soubory, fronty a tabulky. Klient používající sdílený klíč projde hlavičkou každý požadavek, který je podepsaný pomocí přístupového klíče účtu úložiště. Další informace najdete v tématu [autorizace pomocí sdíleného klíče](/rest/api/storageservices/authorize-with-shared-key/).
 - **Sdílené přístupové podpisy** pro objekty blob, soubory, fronty a tabulky. Sdílené přístupové podpisy (SAS) poskytují omezený delegovaný přístup k prostředkům v účtu úložiště. Přidání omezení v časovém intervalu, pro který je podpis platný, nebo na oprávnění, která uděluje, poskytují flexibilitu při správě přístupu. Další informace najdete v tématu [použití sdílených přístupových podpisů (SAS)](storage-sas-overview.md).

@@ -13,18 +13,18 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12803e2f65e17155e8bbcaf4842789adc101b0dd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7acd76ff45f783f614b2a1d3f0d5c10d800a1ea9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024408"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77559041"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Rychlý Start: udělení oprávnění k vytvoření neomezených registrací aplikací
 
-V tomto rychlém startu vytvoříte vlastní roli s oprávněním k vytvoření neomezeného počtu registrací aplikací a potom tuto roli přiřadíte uživateli. Přiřazený uživatel pak může k vytváření registrací aplikací použít portál Azure AD, Azure AD PowerShell, Azure AD Graph API nebo rozhraní API Microsoft Graph. Na rozdíl od předdefinované role vývojář aplikace umožňuje tato vlastní role vytvářet neomezený počet registrací aplikací. Role vývojář aplikace uděluje možnost, ale celkový počet vytvořených objektů je omezen na 250, aby se zabránilo dosažení [kvóty objektu pro celé adresáře](directory-service-limits-restrictions.md).
+V tomto rychlém startu vytvoříte vlastní roli s oprávněním k vytvoření neomezeného počtu registrací aplikací a potom tuto roli přiřadíte uživateli. Přiřazený uživatel pak může k vytváření registrací aplikací použít portál Azure AD, Azure AD PowerShell nebo rozhraní Microsoft Graph API. Na rozdíl od předdefinované role vývojář aplikace umožňuje tato vlastní role vytvářet neomezený počet registrací aplikací. Role vývojář aplikace uděluje možnost, ale celkový počet vytvořených objektů je omezen na 250, aby se zabránilo dosažení [kvóty objektu pro celé adresáře](directory-service-limits-restrictions.md).
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -141,7 +141,7 @@ POST
 https://graph.microsoft.com/beta/roleManagement/directory/roleDefinitions
 ```
 
-Tělo
+Text
 
 ```HTTP
 {
@@ -178,7 +178,7 @@ POST
 https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
-Tělo
+Text
 
 ``` HTTP
 {

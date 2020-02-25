@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/21/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89063cc8131c28f20153c6fe9b4c71b58794e609
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: fb098363a6f1b27bd8afa8e68ab14bfa666ea539
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192113"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561642"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -55,13 +55,17 @@ Zaškrtnutí tohoto políčka bude vyžadovat, aby uživatelé prováděli Multi
 
 Organizace, které nasadily Microsoft Intune, můžou použít informace vrácené ze svých zařízení k identifikaci zařízení, která splňují konkrétní požadavky na dodržování předpisů. Tyto informace o dodržování zásad se předávají z Intune do Azure AD, kde podmíněný přístup může učinit rozhodnutí udělit nebo blokovat přístup k prostředkům. Další informace o zásadách dodržování předpisů najdete v článku [Nastavení pravidel pro zařízení, která umožňují přístup k prostředkům ve vaší organizaci pomocí Intune](https://docs.microsoft.com/intune/protect/device-compliance-get-started).
 
+Zařízení může být označeno jako kompatibilní s Intune (pro libovolný operační systém zařízení) nebo systémem MDM jiného výrobce pro zařízení s Windows 10. Systémy MDM třetích stran pro jiné typy operačních systémů zařízení, než je Windows 10, se nepodporují.
+
+Zařízení musí být zaregistrovaná ve službě Azure AD, aby je bylo možné označit jako vyhovující. Další informace o registraci zařízení najdete v článku [co je identita zařízení](../devices/overview.md).
+
 ### <a name="require-hybrid-azure-ad-joined-device"></a>Vyžadovat zařízení připojené k hybridní službě Azure AD
 
 Organizace se můžou rozhodnout používat identitu zařízení jako součást zásad podmíněného přístupu. Organizace můžou vyžadovat, aby se zařízení připojila k hybridní službě Azure AD pomocí tohoto zaškrtávacího políčka. Další informace o identitách zařízení najdete v článku [co je identita zařízení?](../devices/overview.md).
 
 ### <a name="require-approved-client-app"></a>Vyžaduje se klientem schválená aplikace.
 
-Organizace můžou vyžadovat, aby se pokus o přístup k vybraným cloudovým aplikacím nastavil ze schválené klientské aplikace.
+Organizace můžou vyžadovat, aby se pokus o přístup k vybraným cloudovým aplikacím nastavil ze schválené klientské aplikace. Tyto schválené klientské přístupové body podporují [Zásady ochrany aplikací Intune](/intune/app-protection-policy) nezávisle na řešení správy mobilních zařízení (MDM).
 
 Toto nastavení platí pro následující klientské aplikace:
 
@@ -102,9 +106,7 @@ Toto nastavení platí pro následující klientské aplikace:
 
 ### <a name="require-app-protection-policy"></a>Vyžadování zásad ochrany aplikací
 
-V rámci zásad podmíněného přístupu můžete vyžadovat, aby se v klientské aplikaci nacházely zásady ochrany aplikací, než bude přístup k vybraným cloudovým aplikacím k dispozici. 
-
-![Řízení přístupu pomocí zásad ochrany aplikací](./media/technical-reference/22.png)
+V rámci zásad podmíněného přístupu můžete vyžadovat, aby v klientské aplikaci existovaly [Zásady ochrany aplikací Intune](/intune/app-protection-policy) , aby byl přístup k vybraným cloudovým aplikacím dostupný. 
 
 Toto nastavení platí pro následující klientské aplikace:
 
@@ -118,6 +120,10 @@ Toto nastavení platí pro následující klientské aplikace:
 - Aplikace pro zásady ochrany aplikací podporují funkci správy mobilních aplikací Intune s ochranou zásad.
 - Požadavky na **zásady pro vyžadování zásad ochrany aplikací** :
     - Podporuje jenom podmínku platformy iOS a Android pro zařízení.
+
+### <a name="terms-of-use"></a>Podmínky použití
+
+Pokud vaše organizace vytvořila podmínek použití, můžou být v rámci grant Controls viditelné další možnosti. Tyto možnosti umožňují správcům vyžadovat potvrzení podmínek použití jako podmínku přístupu k prostředkům chráněným pomocí zásad. Další informace o podmínek použití najdete v článku [Azure Active Directory podmínkami použití](terms-of-use.md).
 
 ## <a name="next-steps"></a>Další kroky
 

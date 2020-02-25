@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
-ms.openlocfilehash: d030e44f59d41c32c9a76c0b89c0bce1c8c54a69
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186842"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561778"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
 
@@ -21,11 +21,11 @@ ms.locfileid: "77186842"
 
 Pomocí [Azure Portal](https://portal.azure.com)můžete spravovat clustery [Apache Hadoop](https://hadoop.apache.org/) ve službě Azure HDInsight. Pro informace o správě clusterů Hadoop ve službě HDInsight pomocí jiných nástrojů použijte selektor karet výše.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Existující cluster Apache Hadoop v HDInsight.  Další informace najdete v tématu [Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
-## <a name="getting-started"></a>Začínáme
+## <a name="getting-started"></a>začínáme
 
 Přihlaste se k webu [https://portal.azure.com](https://portal.azure.com).
 
@@ -46,8 +46,8 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
 | Položka| Popis |
 |---|---|
 |Přesunout|Přesune cluster do jiné skupiny prostředků nebo do jiného předplatného.|
-|Odstranění|Odstraní cluster. |
-|Obnovení|Aktualizuje zobrazení.|
+|Odstranit|Odstraní cluster. |
+|Aktualizovat|Aktualizuje zobrazení.|
 
 **Levá nabídka:**  
 
@@ -60,7 +60,7 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
     |Řízení přístupu (IAM)|Použijte přiřazení rolí.  Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).|
     |Značky|Umožňuje nastavit páry klíč/hodnota pro definování vlastní taxonomie vašich cloudových služeb. Můžete například vytvořit klíč s názvem **Project**a potom použít společnou hodnotu pro všechny služby přidružené ke konkrétnímu projektu.|
     |Diagnostikovat a řešit problémy|Zobrazit informace o řešení potíží.|
-    |Rychlý start|Zobrazuje informace, které vám pomůžou začít používat HDInsight.|
+    |Rychlé zprovoznění|Zobrazuje informace, které vám pomůžou začít používat HDInsight.|
     |Nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
 
   - **Nabídka nastavení**  
@@ -93,7 +93,7 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
 
     | Položka| Popis |
     |---|---|
-    |Stav prostředků|Podívejte se na téma [Přehled Azure Resource Health](../service-health/resource-health-overview.md).|
+    |Stav prostředku|Podívejte se na téma [Přehled Azure Resource Health](../service-health/resource-health-overview.md).|
     |Nová žádost o podporu|Umožňuje vytvořit lístek podpory s podporou Microsoftu.|
 
 ## <a name="properties"></a>Vlastnosti clusteru
@@ -229,18 +229,6 @@ Heslo se změní na všech uzlech v clusteru.
    | Zachovat tuto akci se skripty... |Nechte toto pole nezaškrtnuté. |
 
 6. Vyberte **vytvořit** pro použití skriptu. Po dokončení skriptu se můžete připojit ke clusteru pomocí protokolu SSH s novým heslem.
-
-## <a name="grantrevoke-access"></a>Udělit nebo odvolat přístup
-
-Clustery HDInsight mají následující webové služby HTTP (všechny tyto služby mají koncové body RESTful):
-
-- ODBC
-- JDBC
-- Ambari
-- Oozie
-- Templeton
-
-Ve výchozím nastavení jsou tyto služby uděleny pro přístup. Přístup můžete odvolat nebo udělit pomocí [Azure PowerShell](hdinsight-administer-use-powershell.md#grantrevoke-access).
 
 ## <a name="find-the-subscription-id"></a>Najít ID předplatného
 

@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: c1e9be605a6f01695f2472ae76a9e5a786388aa0
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 849d1187d6b854d48ad75ab1e55f600407420346
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77206102"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562356"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Koncové body streamování (počátek) v Azure Media Services
 
@@ -50,7 +50,7 @@ Popis těchto typů najdete v následující tabulce:
 |Typ|Jednotky škálování|Popis|
 |--------|--------|--------|  
 |**Standard**|0|Výchozí koncový bod streamování je **standardní** typ – dá se změnit na typ Premium úpravou `scaleUnits`.|
-|**Premium**|>0|Úroveň **Premium** Koncové body streamování jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Přesunete se na typ **Premium** úpravou `scaleUnits` (jednotky streamování). `scaleUnits` poskytují vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Při použití typu **Premium** poskytuje každá povolená jednotka pro aplikaci další kapacitu šířky pásma. |
+|**Premium**|> 0|Úroveň **Premium** Koncové body streamování jsou vhodné pro pokročilé úlohy a poskytují vyhrazenou a škálovatelnou kapacitu šířky pásma. Přesunete se na typ **Premium** úpravou `scaleUnits` (jednotky streamování). `scaleUnits` poskytují vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Při použití typu **Premium** poskytuje každá povolená jednotka pro aplikaci další kapacitu šířky pásma. |
 
 > [!NOTE]
 > Pro zákazníky, kteří chtějí doručovat obsah do rozsáhlých internetových cílových skupin, doporučujeme povolit CDN pro koncový bod streamování.
@@ -59,11 +59,11 @@ Informace o smlouvě SLA najdete v článku [ceny a smlouvy SLA](https://azure.m
 
 ## <a name="comparing-streaming-types"></a>Porovnávání typů streamování
 
-Funkce|Standard|Premium
+Funkce|Standardní|Premium
 ---|---|---
 Propustnost |Až 600 MB/s a při použití CDN může poskytovat mnohem vyšší efektivní propustnost.|200 MB/s na jednotku streamování (SU). Může poskytovat mnohem vyšší efektivní propustnost při použití CDN.
 CDN|Azure CDN, CDN třetí strany nebo bez CDN.|Azure CDN, CDN třetí strany nebo bez CDN.
-Fakturuje se poměrná hodnota| Denně|Denně
+Fakturuje se poměrná hodnota| denně|denně
 Dynamické šifrování|Ano|Ano
 Dynamické balení|Ano|Ano
 Měřítko|Automatické škálování až na cílovou propustnost.|Další služba SUs
@@ -73,7 +73,7 @@ Doporučené použití |Doporučuje se pro velká většina scénářů streamov
 
 <sup>1</sup> používá se jenom přímo na koncovém bodu streamování, když CDN není na koncovém bodu povolený.<br/>
 
-## <a name="properties"></a>Vlastnosti
+## <a name="streaming-endpoint-properties"></a>Vlastnosti koncového bodu streamování
 
 V této části jsou uvedeny podrobnosti o některých vlastnostech koncového bodu streamování. Příklady, jak vytvořit nový koncový bod streamování a popisy všech vlastností, najdete v tématu [koncový bod streamování](https://docs.microsoft.com/rest/api/media/streamingendpoints/create).
 
@@ -130,50 +130,36 @@ V této části jsou uvedeny podrobnosti o některých vlastnostech koncového b
 
 - `scaleUnits`: poskytují vyhrazenou výstupní kapacitu, kterou můžete koupit v přírůstcích po 200 MB/s. Pokud potřebujete přejít na typ **Premium** , upravte `scaleUnits`.
 
-## <a name="working-with-cdn"></a>Práce s CDN
+## <a name="why-use-multiple-streaming-endpoints"></a>Proč používat více koncových bodů streamování?
 
-Ve většině případů byste měli mít povolenou síť CDN. Pokud však očekáváte maximální souběžnost, která je nižší než 500 prohlížečů, doporučuje se zakázat CDN, protože CDN nejlépe odpovídá souběžnosti.
+Jeden koncový bod streamování může streamovat videa živě i na vyžádání a většina zákazníků používá jenom jeden koncový bod streamování. V této části jsou uvedeny některé příklady, proč možná budete muset použít několik koncových bodů streamování.
 
-### <a name="considerations"></a>Požadavky
+* Každá rezervovaná jednotka umožňuje šířku pásma 200 MB/s. Pokud potřebujete více než 2 000 MB/s (2 GB/s) šířky pásma, můžete použít druhý koncový bod streamování a vyrovnávání zatížení a poskytnout tak větší šířku pásma.
 
-* Koncový bod streamování `hostname` a adresa URL streamování zůstávají stejné, bez ohledu na to, jestli povolíte CDN.
-* Pokud potřebujete mít možnost testovat obsah s CDN nebo bez něj, vytvořte další koncový bod streamování, který není CDN povolený.
+    CDN je ale nejlepším způsobem, jak dosáhnout horizontálního navýšení kapacity pro streamování obsahu, ale pokud dodáváte tolik obsahu, který CDN nasazuje více než 2 GB/s, můžete přidat další koncové body streamování (zdroje). V takovém případě byste potřebovali vysílat adresy URL obsahu, které jsou vyvážené napříč dvěma koncovými body streamování. Tento přístup poskytuje lepší ukládání do mezipaměti, než pokus o odeslání požadavků do jednotlivých zdrojů náhodně (například prostřednictvím Traffic Manageru). 
+    
+    > [!TIP]
+    > V případě, že CDN vychází z více než 2 GB/s, může být něco špatně nakonfigurované (například bez ochrany zdroje).
+    
+* Vyrovnávání zatížení různých poskytovatelů CDN. Například můžete nastavit výchozí koncový bod streamování pro použití CDN Verizon a vytvořit druhý pro použití Akamai. Pak přidejte některé vyrovnávání zatížení mezi dvěma, abyste dosáhli Vyrovnávání více CDN. 
 
-### <a name="detailed-explanation-of-how-caching-works"></a>Podrobné vysvětlení, jak funguje ukládání do mezipaměti
+    Zákazník ale často vyrovnává zatížení mezi více poskytovateli CDN pomocí jednoho původu.
+* Streamování smíšeného obsahu: živé a video na vyžádání. 
 
-Při přidávání CDN není k dispozici žádná konkrétní hodnota šířky pásma, protože velikost pásma potřebná pro koncový bod streamování s povoleným CDNm se liší. Spousta záleží na typu obsahu, na tom, jak oblíbené je, přenosové rychlosti a protokoly. CDN ukládá do mezipaměti jenom to, co se požaduje. To znamená, že oblíbený obsah bude obsluhován přímo ze sítě CDN – Pokud je fragment videa uložen do mezipaměti. Živý obsah se pravděpodobně ukládá do mezipaměti, protože obvykle mnoho lidí sleduje přesně stejné věci. Obsah na vyžádání může být bit trickier, protože je možné, že máte oblíbený obsah, který není. Pokud máte miliony grafických prostředků, kde žádná z nich není oblíbená (jenom jeden nebo dva čtenáři v týdnu), ale máte tisíce lidí, které sledují všechna videa, bude CDN mnohem méně efektivní. V případě neúspěšných přístupů k této mezipaměti zvýšíte zatížení koncového bodu streamování.
+    Vzorce přístupu pro živý a obsah na vyžádání se velmi liší. Živý obsah představuje hodně požadavků na stejný obsah najednou. Obsah videa na vyžádání (dlouhý konec obsahu archivu pro instanci) má nízké využití na stejném obsahu. Proto ukládání do mezipaměti funguje velmi dobře na živém obsahu, ale ne i na dlouhodobém obsahu.
 
-Také je potřeba vzít v úvahu, jak funguje adaptivní streamování. Jednotlivé fragmenty videa se ukládají do mezipaměti, protože jde o vlastní entitu. Představte si například, že při prvním spuštění konkrétního videa se bude sledovat. Pokud se v prohlížeči přeskočí, jak sledovat jenom pár sekund, a tu tam, jenom fragmenty videa spojené s tím, co osoba sledovala, získá v mezipaměti CDN. Díky adaptivnímu streamování obvykle máte 5 až 7 různých přenosů videa. Pokud jedna osoba sleduje jednu přenosovou rychlost a jiná osoba sleduje jinou přenosovou rychlost, pak se všechny ukládají do mezipaměti samostatně v síti CDN. I když dva lidé sledují stejnou přenosovou rychlost, mohly by být streamování přes různé protokoly. Každý protokol (HLS, MPEG-POMLČKa, Smooth Streaming) se ukládá do mezipaměti samostatně. Takže všechny přenosové rychlosti a protokoly se ukládají do mezipaměti odděleně a všechny požadované fragmenty videa se ukládají do mezipaměti.
+    Vezměte v úvahu scénář, ve kterém budou vaši zákazníci hlavně sledovat živý obsah, ale občas sledují obsah na vyžádání a je obsluhován ze stejného koncového bodu streamování. Nízké využití obsahu na vyžádání by zabíralo místo v mezipaměti, které by bylo lépe uloženo pro živý obsah. V tomto scénáři doporučujeme, abyste zasloužili živý obsah z jednoho koncového bodu streamování a z jiného koncového bodu streamování obsah Long. Tím se zvýší výkon obsahu živé události.
+    
+## <a name="scaling-streaming-with-cdn"></a>Škálování streamování pomocí CDN
 
-### <a name="enable-azure-cdn-integration"></a>Povolit integraci Azure CDN
+Viz následující články:
 
-> [!IMPORTANT]
-> CDN se nedá povolit pro zkušební verze nebo účty Azure studenta.
->
-> Integrace CDN je povolená ve všech datových centrech Azure s výjimkou federálních oblastí pro státní správu a Čínu.
-
-Po zřízení koncového bodu streamování s povoleným CDN je u Media Services definovaná čekací doba, než se provede aktualizace DNS pro mapování koncového bodu streamování na koncový bod CDN.
-
-Pokud budete chtít síť CDN později zakázat nebo povolit, musí být koncový bod streamování ve stavu **Zastaveno** . Může trvat až dvě hodiny, než se aktivuje Integrace Azure CDN a změny, které se mají aktivní napříč všemi body POP CDN. Můžete ale spustit koncový bod streamování a datový proud bez přerušení z koncového bodu streamování a po dokončení integrace se datový proud doručí ze sítě CDN. Během období zřizování bude koncový bod streamování ve **výchozím** stavu a může se stát, že dojde ke snížení výkonu.
-
-Když se vytvoří koncový bod streamování Standard, je ve výchozím nastavení nakonfigurovaný se standardem Verizon. Pomocí rozhraní REST API můžete nakonfigurovat poskytovatele Premium Verizon nebo Standard Akamai.
-
-Azure Media Services integrace s Azure CDN je implementovaná na **Azure CDN z Verizon** pro koncové body streamování Standard. Koncové body streamování Premium se dají nakonfigurovat pomocí všech **Azure CDN cenové úrovně a zprostředkovatelů**. 
-
-> [!NOTE]
-> Podrobnosti o Azure CDN najdete v [přehledu CDN](../../cdn/cdn-overview.md).
-
-### <a name="determine-if-dns-change-was-made"></a>Určení, jestli se provedla změna DNS
-
-Můžete určit, jestli se změna DNS provedla u koncového bodu streamování (provoz se směruje na Azure CDN) pomocí https://www.digwebinterface.com. Pokud výsledky ve výsledcích obsahují azureedge.net názvy domén, provoz se teď nasměruje na CDN.
+- [Přehled CDN](../../cdn/cdn-overview.md)
+- [Škálování streamování pomocí CDN](scale-streaming-cdn.md)
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Položte otázky, sdělte nám svůj názor, Získejte aktualizace.
 
 Podívejte se na článek o [komunitě Azure Media Services](media-services-community.md) a podívejte se na různé způsoby, jak můžete klást otázky, sdělit svůj názor a získávat aktualizace Media Services.
-
-## <a name="see-also"></a>Viz také:
-
-[Přehled CDN](../../cdn/cdn-overview.md)
 
 ## <a name="next-steps"></a>Další kroky
 

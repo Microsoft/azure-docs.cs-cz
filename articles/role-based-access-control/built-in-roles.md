@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/13/2020
+ms.date: 02/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 9858f7ac25f2063e62dce0322f1859a0a7fcf83b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 63b1adc7b25b732cda147c5c1d11cc37e7b39248
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198662"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562016"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 
@@ -115,6 +115,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | [Čtecí modul Log Analytics](#log-analytics-reader) | Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | [Přispěvatel aplikace logiky](#logic-app-contributor) | Umožňuje spravovat Logic Apps, ale ne měnit přístup k nim. | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [Operátor aplikace logiky](#logic-app-operator) | Umožňuje číst, povolit a zakázat Logic Apps, ale nemůže je upravovat ani aktualizovat. | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
+> | [Role Přispěvatel spravovaných aplikací](#managed-application-contributor-role) | Umožňuje vytváření prostředků spravovaných aplikací. | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Role operátora spravované aplikace](#managed-application-operator-role) | Umožňuje číst a provádět akce s prostředky spravovaných aplikací. | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Čtecí modul spravovaných aplikací](#managed-applications-reader) | Umožňuje číst prostředky ve spravované aplikaci a vyžadovat přístup JIT. | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
 > | [Přispěvatel spravovaných identit](#managed-identity-contributor) | Vytvoření, čtení, aktualizace a odstranění identity přiřazené uživatelem | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
@@ -133,9 +134,10 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | [Přispěvatel zásad prostředků](#resource-policy-contributor) | Uživatelé s právy k vytváření a úpravám zásad prostředků, vytváření lístků podpory a čtení prostředků/hierarchie. | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Přispěvatel kolekcí úloh Scheduleru](#scheduler-job-collections-contributor) | Umožňuje spravovat kolekce úloh Scheduleru, ale ne přístup k nim. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | [Přispěvatel Search Service](#search-service-contributor) | Umožňuje spravovat služby vyhledávání, ale ne přístup k nim. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
-> | [Správce zabezpečení](#security-admin) | Pouze v Security Center: lze zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, upravit zásady zabezpečení, zobrazit výstrahy a doporučení, zavřít výstrahy a doporučení. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Správce zabezpečení](#security-admin) | Může zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, upravit zásady zabezpečení, zobrazit výstrahy a doporučení, zavřít výstrahy a doporučení. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Přispěvatel vyhodnocení zabezpečení](#security-assessment-contributor) | Umožňuje doručovat hodnocení do Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [Správce zabezpečení (starší verze)](#security-manager-legacy) | Toto je starší role. Místo toho prosím použijte Správce zabezpečení. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [Čtecí modul zabezpečení](#security-reader) | Pouze v Security Center: může zobrazit doporučení a výstrahy, zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [Čtecí modul zabezpečení](#security-reader) | Může zobrazit doporučení a výstrahy, zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | [Přispěvatel Site Recovery](#site-recovery-contributor) | Umožňuje správu Site Recovery služby s výjimkou vytvoření trezoru a přiřazení role. | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | [Operátor Site Recovery](#site-recovery-operator) | Umožňuje převzetí služeb při selhání a navrácení služeb po obnovení, ale jiné operace správy Site Recovery. | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | [Čtecí modul Site Recovery](#site-recovery-reader) | Umožňuje zobrazit Site Recovery stav, ale nemůže provádět jiné operace správy. | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
@@ -167,6 +169,8 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | [Přihlášení uživatele virtuálního počítače](#virtual-machine-user-login) | Zobrazte Virtual Machines na portálu a přihlaste se jako běžný uživatel. | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | [Přispěvatel webového plánu](#web-plan-contributor) | Umožňuje spravovat webové plány pro weby, ale ne přístup k nim. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Přispěvatel webu](#website-contributor) | Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim. | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [Přispěvatel sešitu](#workbook-contributor) | Může ukládat Sdílené sešity. | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | [Čtenář sešitu](#workbook-reader) | Může číst sešity. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 
 
 ## <a name="owner"></a>Vlastník
@@ -294,7 +298,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
+## <a name="acrquarantinewriter"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -346,7 +350,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. ApiManagement/Service/Restore/Action | Obnovení služby API Management ze zadaného kontejneru v účtu úložiště zadaného uživatelem |
 > | Microsoft. ApiManagement/Service/updatecertificate/Action | Odeslat certifikát SSL pro službu API Management |
 > | Microsoft. ApiManagement/Service/updatehostname/Action | Instalace, aktualizace nebo odebrání názvů vlastních domén pro službu API Management |
-> | Microsoft.ApiManagement/service/write | Vytvoří novou instanci služby API Management. |
+> | Microsoft.ApiManagement/service/write | Vytvořit nebo aktualizovat instanci služby API Management |
 > | Microsoft. Authorization/*/Read | Oprávnění ke čtení |
 > | Microsoft.Insights/alertRules/* | Vytváření a Správa pravidel výstrah |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
@@ -484,7 +488,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="automation-operator"></a>Operátor služby Automation
+## <a name="automation-operator"></a>Operátor automatizace
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -609,7 +613,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **ID** | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
 > | **Akce** |  |
 > | Microsoft. HybridCompute/počítače/číst | Čtení jakýchkoli počítačů s obloukem Azure ARC |
-> | Microsoft. HybridCompute/počítače/Write | Zápis počítačů s obloukem Azure ARC |
+> | Microsoft. HybridCompute/počítače/Write | Zapisuje počítače s obloukem Azure ARC. |
 > | Microsoft. GuestConfiguration/guestConfigurationAssignments/Read | Získat přiřazení konfigurace hostů. |
 > | **NotActions** |  |
 > | *nTato* |  |
@@ -626,9 +630,9 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **ID** | cd570a14-e51a-42ad-bac8-bafd67325302 |
 > | **Akce** |  |
 > | Microsoft. HybridCompute/počítače/číst | Čtení jakýchkoli počítačů s obloukem Azure ARC |
-> | Microsoft. HybridCompute/počítače/Write | Zápis počítačů s obloukem Azure ARC |
-> | Microsoft. HybridCompute/počítače/odstranit | Odstranění počítačů s obloukem Azure ARC |
-> | Microsoft. HybridCompute/počítače/znovu připojit/akce | Opětovné připojení počítačů s obloukem Azure ARC |
+> | Microsoft. HybridCompute/počítače/Write | Zapisuje počítače s obloukem Azure ARC. |
+> | Microsoft. HybridCompute/počítače/odstranit | Odstraní počítače s obloukem Azure ARC. |
+> | Microsoft. HybridCompute/počítače/znovu připojit/akce | Znovu připojí počítače ARC Azure. |
 > | Microsoft. HybridCompute/*/Read |  |
 > | **NotActions** |  |
 > | *nTato* |  |
@@ -690,6 +694,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **ID** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Akce** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Výpis přihlašovacích údajů clusterAdmin spravovaného clusteru |
+> | Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action | Získání profilu přístupu spravovaného clusteru podle názvu role pomocí přihlašovacích údajů pro seznam |
 > | **NotActions** |  |
 > | *nTato* |  |
 > | **Akce dataactions** |  |
@@ -1540,6 +1545,8 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. Databox/Jobs/listsecrets/Action |  |
 > | Microsoft. Databox/Jobs/listcredentials/Action | Zobrazí nešifrované přihlašovací údaje související s objednávkou. |
 > | Microsoft. Databox/Locations/availableSkus/Action | Tato metoda vrátí seznam dostupných skladových položek. |
+> | Microsoft. Databox/Locations/validateInputs/Action | Tato metoda provádí všechny typy ověření. |
+> | Microsoft. Databox/Locations/regionConfiguration/Action | Tato metoda vrátí konfigurace pro oblast. |
 > | Microsoft. Databox/Locations/validateAddress/Action | Ověří dodací adresu a v případě potřeby poskytne alternativní adresy. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
 > | Microsoft. support/* | Vytváření a Správa lístků podpory |
@@ -1565,6 +1572,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. Resources/nasazení/* | Vytváření a Správa nasazení skupin prostředků |
 > | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | Microsoft. support/* | Vytváření a Správa lístků podpory |
+> | Microsoft.EventGrid/eventSubscriptions/write | Vytvořit nebo aktualizovat eventSubscription |
 > | **NotActions** |  |
 > | *nTato* |  |
 > | **Akce dataactions** |  |
@@ -1851,6 +1859,8 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft.LabServices/labAccounts/createLab/action | Vytvořte testovací prostředí v účtu testovacího prostředí. |
 > | Microsoft. LabServices/labAccounts/sizes/getRegionalAvailability/Action |  |
 > | Microsoft. LabServices/labAccounts/getRegionalAvailability/Action | Získat informace o regionální dostupnosti pro každou kategorii velikostí nakonfigurovanou v rámci účtu testovacího prostředí |
+> | Microsoft. LabServices/labAccounts/getPricingAndAvailability/Action | Získejte ceny a dostupnost kombinací velikostí, geografických oblastí a operačních systémů pro účet testovacího prostředí. |
+> | Microsoft. LabServices/labAccounts/getRestrictionsAndUsage/Action | Získat základní omezení a využití pro toto předplatné |
 > | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | Microsoft. support/* | Vytváření a Správa lístků podpory |
 > | **NotActions** |  |
@@ -1964,6 +1974,25 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. Web/Connections/*/Read | Čtení připojení. |
 > | Microsoft. Web/customApis/*/Read | Číst vlastní rozhraní API. |
 > | Microsoft.Web/serverFarms/read | Získat vlastnosti v plánu App Service |
+> | **NotActions** |  |
+> | *nTato* |  |
+> | **Akce dataactions** |  |
+> | *nTato* |  |
+> | **NotDataActions** |  |
+> | *nTato* |  |
+
+## <a name="managed-application-contributor-role"></a>Role Přispěvatel spravovaných aplikací
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje vytváření prostředků spravovaných aplikací. |
+> | **ID** | 641177b8-a67a-45b9-a033-47bc880bb21e |
+> | **Akce** |  |
+> | */read | Přečte prostředky všech typů s výjimkou tajných klíčů. |
+> | Microsoft. Solutions/aplikace/* |  |
+> | Microsoft. Solutions/Register/Action | Zaregistrujte se do řešení. |
+> | Microsoft. Resources/Subscriptions/resourceGroups/* |  |
+> | Microsoft. Resources/nasazení/* | Vytváření a Správa nasazení skupin prostředků |
 > | **NotActions** |  |
 > | *nTato* |  |
 > | **Akce dataactions** |  |
@@ -2337,7 +2366,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Pouze v Security Center: lze zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, upravit zásady zabezpečení, zobrazit výstrahy a doporučení, zavřít výstrahy a doporučení. |
+> | **Popis** | Může zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, upravit zásady zabezpečení, zobrazit výstrahy a doporučení, zavřít výstrahy a doporučení. |
 > | **ID** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **Akce** |  |
 > | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
@@ -2351,6 +2380,21 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | Microsoft. Security/* |  |
 > | Microsoft. support/* | Vytváření a Správa lístků podpory |
+> | **NotActions** |  |
+> | *nTato* |  |
+> | **Akce dataactions** |  |
+> | *nTato* |  |
+> | **NotDataActions** |  |
+> | *nTato* |  |
+
+## <a name="security-assessment-contributor"></a>Přispěvatel vyhodnocení zabezpečení
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje doručovat hodnocení do Security Center |
+> | **ID** | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
+> | **Akce** |  |
+> | Microsoft. Security/Assessments/Write | Vytvořit nebo aktualizovat posouzení zabezpečení u předplatného |
 > | **NotActions** |  |
 > | *nTato* |  |
 > | **Akce dataactions** |  |
@@ -2386,7 +2430,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Pouze v Security Center: může zobrazit doporučení a výstrahy, zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny. |
+> | **Popis** | Může zobrazit doporučení a výstrahy, zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny. |
 > | **ID** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **Akce** |  |
 > | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
@@ -2483,7 +2527,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/switchprotection/Action | Přepnout kontejner ochrany |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/Action | Testovací převzetí služeb při selhání |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/Action | Vyčištění testovacího převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Převzetí služeb při selhání |
+> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Při selhání |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Aktualizovat službu mobility |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Přečíst všechna mapování kontejnerů ochrany |
 > | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/Read | Číst všechny poskytovatele Recovery Services |
@@ -3065,7 +3109,7 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | **NotDataActions** |  |
 > | *nTato* |  |
 
-## <a name="user-access-administrator"></a>Správce přístupu uživatelů
+## <a name="user-access-administrator"></a>Správce uživatelského přístupu
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -3114,6 +3158,9 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft. COMPUTE/umístění/* | Vytváření a Správa výpočetních míst |
 > | Microsoft. COMPUTE/virtualMachines/* | Vytváření a správa virtuálních počítačů |
 > | Microsoft.Compute/virtualMachineScaleSets/* | Vytváření a správa virtuálních počítačů Scale Sets |
+> | Microsoft. COMPUTE/disks/Write | Vytvoří nový disk nebo aktualizuje stávající. |
+> | Microsoft. COMPUTE/disky/číst | Získá vlastnosti disku. |
+> | Microsoft. COMPUTE/disks/DELETE | Odstraní disk. |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Vytváření a Správa pravidel výstrah pro přehledy |
 > | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Připojí se ke fondu back-end adres služby Application Gateway. Nelze upozorňovat. |
@@ -3214,6 +3261,38 @@ Následující tabulka uvádí stručný popis každé předdefinované role. Kl
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | Získat vlastnosti v plánu App Service |
 > | Microsoft.Web/sites/* | Vytváření a Správa webů (vytváření webů vyžaduje taky oprávnění k zápisu do přidruženého plánu App Service) |
+> | **NotActions** |  |
+> | *nTato* |  |
+> | **Akce dataactions** |  |
+> | *nTato* |  |
+> | **NotDataActions** |  |
+> | *nTato* |  |
+
+## <a name="workbook-contributor"></a>Přispěvatel sešitu
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Může ukládat Sdílené sešity. |
+> | **ID** | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
+> | **Akce** |  |
+> | Microsoft. Insights/sešity/zápis | Vytvoří nebo aktualizuje sešit. |
+> | Microsoft. Insights/sešity/odstranit | Odstranění sešitu |
+> | Microsoft. Insights/sešity/číst | Přečíst sešit |
+> | **NotActions** |  |
+> | *nTato* |  |
+> | **Akce dataactions** |  |
+> | *nTato* |  |
+> | **NotDataActions** |  |
+> | *nTato* |  |
+
+## <a name="workbook-reader"></a>Čtenář sešitu
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Může číst sešity. |
+> | **ID** | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
+> | **Akce** |  |
+> | Microsoft. Insights/sešity/číst | Přečíst sešit |
 > | **NotActions** |  |
 > | *nTato* |  |
 > | **Akce dataactions** |  |

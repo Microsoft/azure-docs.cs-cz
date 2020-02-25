@@ -1,5 +1,5 @@
 ---
-title: Nastavení SAP HANA systémové replikace na virtuálních počítačích Azure (virtuální počítače) | Microsoft Docs
+title: Vysoká dostupnost SAP HANA na virtuálních počítačích Azure v RHEL | Microsoft Docs
 description: Navažte vysokou dostupnost SAP HANA na virtuálních počítačích Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/28/2020
 ms.author: radeltch
-ms.openlocfilehash: fe4c3d8ea7aee0922ca29b9c0f475bfd9fa3c67a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5e3512ce86bdf96a5e6cfcf0e4459b656a5ac5bc
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76837030"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565855"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na Red Hat Enterprise Linux
 
@@ -340,7 +340,7 @@ Kroky v této části používají následující předpony:
 
    Nakonfigurujte RHEL podle popisu v tématu SAP Note [2292690] a [2455582] a <https://access.redhat.com/solutions/2447641>.
 
-1. **[A]** Instalace SAP HANA
+1. **[A]** instalace SAP HANA
 
    Chcete-li nainstalovat SAP HANA systémové replikace, postupujte podle <https://access.redhat.com/articles/3004101>.
 

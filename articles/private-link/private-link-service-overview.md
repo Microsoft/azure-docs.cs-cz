@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 5db86c09cd104b2a68431ccbe24128a24ebd2ad4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 1ac1feb5e3b179ded5fd8dae47e1859f082ad827
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500410"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565782"
 ---
 # <a name="what-is-azure-private-link-service"></a>Co je služba privátního propojení Azure?
 
@@ -111,6 +111,8 @@ Podrobnosti vlastního TLV:
 |Hodnota  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
 |  |4        |UINT32 (4 bajty) představující LINKID privátního koncového bodu. Kódováno ve formátu Little endian.|
 
+ > [!NOTE]
+ > Poskytovatel služeb zodpovídá za zajištění, že služba za standardním nástrojem pro vyrovnávání zatížení je nakonfigurovaná tak, aby analyzovala hlavičku protokolu proxy podle [specifikace](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) , když je na službě privátního propojení povolený protokol proxy. Pokud je ve službě privátního propojení povolený protokol proxy a služba není nakonfigurovaná k analýze hlavičky, požadavek selže. Obdobně se požadavek nezdaří, pokud služba očekává hlavičku proxy protokolu, ale toto nastavení není povoleno ve službě privátních odkazů. Po povolení nastavení protokolu proxy bude hlavička protokolu serveru proxy také obsažena v testu stavu HTTP/TCP z hostitele do virtuálních počítačů back-end, a to i v případě, že v hlavičce nebudou žádné informace o klientovi. 
 
 ## <a name="limitations"></a>Omezení
 

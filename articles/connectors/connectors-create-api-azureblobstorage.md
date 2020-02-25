@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 86e8415cf2076819e23226e5e7878a2c96343f69
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2e2fea90f125cae6de44afbc82dd749a421ff3e2
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789916"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566008"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Vytváření a správa objektů BLOB v Azure Blob Storage pomocí Azure Logic Apps
 
@@ -23,7 +23,7 @@ Předpokládejme, že máte nástroj, který se aktualizuje na webu Azure. kter�
 Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](../logic-apps/logic-apps-overview.md) a [rychlý Start: Vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Technické informace specifické pro konektor najdete v referenčních informacích k [Azure Blob Storage Connectoru](https://docs.microsoft.com/connectors/azureblobconnector/).
 
 > [!IMPORTANT]
-> Pokud chcete povolit přístup z Azure Logic Apps k účtům úložiště za branami firewall, přečtěte si část [přístup k účtům úložiště za brány firewall](#storage-firewalls) dále v tomto tématu.
+> Aplikace logiky nemají přímý přístup k účtům úložiště, které jsou za bránami firewall, pokud jsou ve stejné oblasti. Jako alternativní řešení můžete mít aplikace logiky a účet úložiště v různých oblastech. Další informace o povolení přístupu z Azure Logic Apps k účtům úložiště za branami firewall najdete v části [přístup k účtům úložiště za brány firewall](#storage-firewalls) dále v tomto tématu.
 
 <a name="blob-storage-limits"></a>
 
@@ -37,7 +37,7 @@ Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps](..
 
   * Postupujte podle triggeru s akcí Azure Blob Storage **získat obsah objektu BLOB** , který načte kompletní soubor a implicitně použije bloky dat.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -121,15 +121,15 @@ V tomto příkladu se načte jenom obsah objektu BLOB. Chcete-li zobrazit obsah,
 
 1. Po zobrazení výzvy k vytvoření připojení zadejte tyto informace:
 
-   | Vlastnost | Požaduje se | Hodnota | Popis |
+   | Vlastnost | Požadováno | Hodnota | Popis |
    |----------|----------|-------|-------------|
    | **Název připojení** | Ano | <*název připojení*> | Název, který se má pro připojení vytvořit |
    | **Účet úložiště** | Ano | *účet úložiště* <> | V seznamu vyberte svůj účet úložiště. |
    ||||
 
-   Například:
+   Příklad:
 
-   ![Vytvoření připojení účtu služby Azure Blob Storage](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
+   ![Vytvoření připojení účtu služby Azure Blob Storage](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png) 
 
 1. Až budete připraveni, vyberte **vytvořit** .
 
@@ -159,9 +159,12 @@ Tady jsou různé možnosti pro přístup k účtům úložiště za branami fir
 
 <a name="access-other-regions"></a>
 
-### <a name="access-to-storage-accounts-in-other-regions"></a>Přístup k účtům úložiště v jiných oblastech
+### <a name="problems-accessing-storage-accounts-in-the-same-region"></a>Problémy při přístupu k účtům úložiště ve stejné oblasti
 
-Aplikace logiky nemají přímý přístup k účtům úložiště, které mají pravidla brány firewall a jsou ve stejné oblasti. Pokud ale povolíte přístup pro [odchozí IP adresy pro spravované konektory ve vaší oblasti](../logic-apps/logic-apps-limits-and-config.md#outbound), vaše aplikace logiky budou mít přístup k účtům úložiště v jiné oblasti s výjimkou případů, kdy používáte konektor Azure Table Storage nebo Azure Queue Storage Connector. Pokud chcete získat přístup k vašemu Table Storage nebo Queue Storage, můžete i nadále používat integrované triggery a akce HTTP.
+Aplikace logiky nemají přímý přístup k účtům úložiště za branami firewall, pokud jsou ve stejné oblasti. Jako alternativní řešení umístěte aplikace logiky do oblasti, která se liší od vašeho účtu úložiště, a udělte přístup k [odchozím IP adresám spravovaných konektorů ve vaší oblasti](../logic-apps/logic-apps-limits-and-config.md#outbound).
+
+> [!NOTE]
+> Toto řešení se nevztahuje na konektor Azure Table Storage a konektor Azure Queue Storage. Místo toho můžete pro přístup k Table Storage nebo Queue Storage použít integrovaný Trigger HTTP a akce.
 
 <a name="access-trusted-virtual-network"></a>
 

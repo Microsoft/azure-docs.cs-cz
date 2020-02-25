@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/24/2020
+ms.date: 02/20/2020
 ms.author: jgao
-ms.openlocfilehash: a67f360aa08f306d6462342d96f59e06a4d3b501
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: d8212fb55b20f051c6479071010ef4f828792baa
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251851"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561149"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
@@ -29,7 +29,7 @@ Naučte se používat skripty pro nasazení v šablonách prostředků Azure. S 
 Výhody skriptu nasazení:
 
 - Snadné kódování, použití a ladění. Skripty pro nasazení můžete vyvíjet ve svých oblíbených vývojových prostředích. Skripty mohou být vloženy do šablon nebo externích souborů skriptu.
-- Můžete zadat jazyk skriptu a platformu. V současné době jsou podporovány pouze skripty nasazení Azure PowerShell v prostředí systému Linux.
+- Můžete zadat jazyk skriptu a platformu. V současné době jsou podporovány skripty nasazení Azure PowerShell a Azure CLI v prostředí systému Linux.
 - Povolte určení identit, které se používají ke spouštění skriptů. V současné době se podporuje jenom [spravovaná identita přiřazená uživatelem Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) .
 - Povolí předání argumentů příkazového řádku do skriptu.
 - Může určit výstupy skriptu a předávat je zpátky do nasazení.
@@ -48,16 +48,29 @@ Výhody skriptu nasazení:
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
   ```
 
-  Pomocí následujícího skriptu PowerShellu Získejte ID zadáním názvu skupiny prostředků a názvu identity.
+  Pomocí následujícího skriptu CLI nebo skriptu PowerShellu Získejte ID zadáním názvu skupiny prostředků a názvu identity.
+
+  # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+
+  ```azurecli-interactive
+  echo "Enter the Resource Group name:" &&
+  read resourceGroupName &&
+  echo "Enter the managed identity name:" &&
+  read idName &&
+  az identity show -g jgaoidentity1008rg -n jgaouami --query id
+  ```
+
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
   $idName = Read-Host -Prompt "Enter the name of the managed identity"
 
-  $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
+  (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name $idName).Id
   ```
+  ---
 
-- **Azure PowerShell verze 2.7.0, 2.8.0 nebo 3.0.0**. Tyto verze nepotřebujete pro nasazování šablon. Tyto verze jsou ale nutné pro místní testování skriptů nasazení. Přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Můžete použít předem nakonfigurovanou bitovou kopii Docker.  Viz [Konfigurace vývojového prostředí](#configure-development-environment).
+- **Azure PowerShell verze 3.0.0, 2.8.0 nebo 2.7.0** nebo **Azure CLI verze 2.0.80, 2.0.79, 2.0.78 nebo 2.0.77**. Tyto verze nepotřebujete pro nasazování šablon. Tyto verze jsou ale nutné pro místní testování skriptů nasazení. Přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Můžete použít předem nakonfigurovanou bitovou kopii Docker.  Viz [Konfigurace vývojového prostředí](#configure-development-environment).
 
 ## <a name="sample-template"></a>Ukázková šablona
 
@@ -67,9 +80,9 @@ Následující kód JSON je příklad.  Nejnovější schéma šablony najdete [
 {
   "type": "Microsoft.Resources/deploymentScripts",
   "apiVersion": "2019-10-01-preview",
-  "name": "myDeploymentScript",
+  "name": "runPowerShellInline",
   "location": "[resourceGroup().location]",
-  "kind": "AzurePowerShell",
+  "kind": "AzurePowerShell", // or "AzureCLI"
   "identity": {
     "type": "userAssigned",
     "userAssignedIdentities": {
@@ -78,7 +91,7 @@ Následující kód JSON je příklad.  Nejnovější schéma šablony najdete [
   },
   "properties": {
     "forceUpdateTag": 1,
-    "azPowerShellVersion": "3.0",
+    "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "scriptContent": "
       param([string] $name)
@@ -102,13 +115,13 @@ Následující kód JSON je příklad.  Nejnovější schéma šablony najdete [
 Podrobnosti hodnoty vlastnosti:
 
 - **Identita**: služba skriptu nasazení používá ke spouštění skriptů spravovanou identitu přiřazenou uživatelem. V současné době je podporována pouze spravovaná identita přiřazená uživatelem.
-- **druh**: zadejte typ skriptu. V současné době je podporován pouze skript Azure PowerShell. Hodnota je **AzurePowerShell**.
+- **druh**: zadejte typ skriptu. V současné době jsou podporovány skripty Azure PowerShell a Azure CLI. Hodnoty jsou **AzurePowerShell** a **Azure CLI**.
 - **forceUpdateTag**: Změna této hodnoty mezi nasazeními šablon vynutí opětovné spuštění skriptu nasazení. Použijte funkci newGuid () nebo utcNow (), která musí být nastavena jako výchozí hodnota parametru. Další informace najdete v tématu [spuštění skriptu více než jednou](#run-script-more-than-once).
-- **azPowerShellVersion**: Zadejte verzi modulu Azure PowerShell, která se má použít. Skript nasazení v současné době podporuje verze 2.7.0, 2.8.0 a 3.0.0.
+- **azPowerShellVersion**/**azCliVersion**: Zadejte verzi modulu, která se má použít. Skript nasazení v současné době podporuje Azure PowerShell verze 2.7.0, 2.8.0, 3.0.0 a Azure CLI verze 2.0.80, 2.0.79, 2.0.78, 2.0.77.
 - **argumenty**: zadejte hodnoty parametrů. Hodnoty jsou oddělené mezerami.
 - **scriptContent**: Zadejte obsah skriptu. Pokud chcete spustit externí skript, použijte místo toho `primaryScriptUri`. Příklady najdete v tématu [použití vloženého skriptu](#use-inline-scripts) a [použití externího skriptu](#use-external-scripts).
-- **primaryScriptUri**: zadejte veřejně přístupnou adresu URL k primárnímu skriptu PowerShellu s podporovanou příponou souboru PowerShellu.
-- **supportingScriptUris**: Určete pole veřejně přístupných adres URL pro podporu souborů prostředí PowerShell, které budou volány buď `ScriptContent`, nebo `PrimaryScriptUri`.
+- **primaryScriptUri**: zadejte veřejně přístupnou adresu URL ke skriptu primárního nasazení s podporovanými příponami souborů.
+- **supportingScriptUris**: Určete pole veřejně přístupných adres URL k podpůrným souborům, které jsou volány buď `ScriptContent`, nebo `PrimaryScriptUri`.
 - **timeout**: zadejte maximální povolenou dobu spuštění skriptu zadanou ve [formátu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí hodnota je **P1D**.
 - **cleanupPreference**. Určete předvolbu čisticích prostředků nasazení, když se spuštění skriptu dostane do stavu terminálu. Výchozí nastavení je **vždy**, což znamená odstranění prostředků navzdory stavu terminálu (úspěšné, neúspěšné, zrušené). Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources).
 - **retentionInterval**: zadejte interval, po který služba uchovává prostředky skriptu nasazení poté, co spuštění skriptu nasazení dosáhne stavu terminálu. Prostředky skriptu nasazení budou odstraněny po uplynutí této doby. Doba trvání vychází ze [vzoru ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). Výchozí hodnota je **P1D**, což znamená sedm dní. Tato vlastnost se používá, pokud je cleanupPreference nastaveno na hodnotu- *vypršení platnosti*. Vlastnost- *vypršení platnosti* není v současné době povolena. Další informace najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources).
@@ -124,7 +137,7 @@ Následující šablona obsahuje jeden prostředek definovaný typu `Microsoft.R
 
 Skript přijímá jeden parametr a výstupní hodnotu parametru. **DeploymentScriptOutputs** se používá k ukládání výstupů.  V části výstupy zobrazuje řádek **hodnoty** jak získat přístup k uloženým hodnotám. `Write-Output` se používá pro účely ladění. Informace o tom, jak získat přístup k výstupnímu souboru, najdete v tématu [ladění skriptů nasazení](#debug-deployment-scripts).  Popis vlastnosti naleznete v tématu [Vzorová šablona](#sample-template).
 
-Pokud chcete skript spustit, vyberte **vyzkoušet** a otevřete Cloud Shell a vložte následující kód do podokna prostředí.
+Chcete-li spustit skript, vyberte příkaz **zkusit** pro otevření Azure Cloud Shell a vložte následující kód do podokna prostředí.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
@@ -144,7 +157,7 @@ Výstup bude vypadat následovně:
 
 ## <a name="use-external-scripts"></a>Použití externích skriptů
 
-Kromě vložených skriptů můžete použít také externí soubory skriptu. V současné době jsou podporovány pouze skripty prostředí PowerShell s příponou souboru **ps1** . Chcete-li použít externí soubory skriptu, nahraďte `scriptContent` `primaryScriptUri`. Příklad:
+Kromě vložených skriptů můžete použít také externí soubory skriptu. Podporují se jenom primární skripty PowerShellu s příponou souboru **ps1** . U skriptů CLI můžou primární skripty mít jakákoli rozšíření (nebo bez přípony), pokud jsou tyto skripty platné bash skripty. Chcete-li použít externí soubory skriptu, nahraďte `scriptContent` `primaryScriptUri`. Příklad:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -170,11 +183,11 @@ Složité logiky můžete oddělit do jednoho nebo více podpůrných souborů s
 ],
 ```
 
-Podpůrné soubory skriptu lze volat z vložených skriptů i souborů primárního skriptu.
+Podpůrné soubory skriptu lze volat z vložených skriptů i souborů primárního skriptu. Podpora souborů skriptu nemá žádná omezení na příponu souboru.
 
 Podpůrné soubory se zkopírují do azscripts/azscriptinput za běhu. Pomocí relativní cesty můžete odkazovat na podpůrné soubory z vložených skriptů a souborů primárního skriptu.
 
-## <a name="work-with-outputs-from-deployment-scripts"></a>Práce s výstupy ze skriptů nasazení
+## <a name="work-with-outputs-from-powershell-script"></a>Práce s výstupy ze skriptu PowerShellu
 
 Následující šablona ukazuje, jak předat hodnoty mezi dvěma deploymentScripts prostředky:
 
@@ -185,6 +198,16 @@ V prvním prostředku definujete proměnnou s názvem **$DeploymentScriptOutputs
 ```json
 reference('<ResourceName>').output.text
 ```
+
+## <a name="work-with-outputs-from-cli-script"></a>Práce s výstupy ze skriptu CLI
+
+Liší se od skriptu nasazení prostředí PowerShell, Podpora CLI/bash nevystavuje společnou proměnnou pro ukládání výstupů skriptu. místo toho je k dispozici proměnná prostředí s názvem **AZ_SCRIPTS_OUTPUT_PATH** , která ukládá umístění, kde se nachází soubor výstupy skriptu. Pokud se skript nasazení spustí ze šablony Správce prostředků, tato proměnná prostředí se pro vás automaticky nastaví pomocí prostředí bash.
+
+Výstupy skriptu nasazení musí být uloženy v umístění AZ_SCRIPTS_OUTPUT_PATH a výstupy musí být platný objekt řetězce JSON. Obsah souboru musí být uložen jako dvojice klíč-hodnota. Například pole řetězců je uloženo jako {"MyResult": ["foo", "bar"]}.  Ukládání pouze výsledků pole, například ["foo", "bar"], je neplatné.
+
+[!code-json[](~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json?range=1-44)]
+
+[JQ](https://stedolan.github.io/jq/) se používá v předchozí ukázce. Dodává se s imagemi kontejneru. Viz [Konfigurace vývojového prostředí](#configure-development-environment).
 
 ## <a name="debug-deployment-scripts"></a>Ladit skripty nasazení
 
@@ -264,7 +287,7 @@ Spuštění skriptu nasazení je operace idempotentní. Pokud se nezměnila žá
 
 ## <a name="configure-development-environment"></a>Konfigurace vývojového prostředí
 
-Skript nasazení v současné době podporuje Azure PowerShell verze 2.7.0, 2.8.0 a 3.0.0.  Pokud máte počítač s Windows, můžete nainstalovat jednu z podporovaných verzí Azure PowerShell a začít vyvíjet a testovat skripty nasazení.  Pokud nemáte počítač s Windows nebo nemáte nainstalovanou jednu z těchto Azure PowerShell verzí, můžete použít předem nakonfigurovanou image kontejneru Docker. Následující postup ukazuje, jak nakonfigurovat bitovou kopii Docker ve Windows. Pro Linux a Mac můžete najít informace na internetu.
+Jako vývojové prostředí skriptu nasazení můžete použít předem nakonfigurovanou image kontejneru Docker. Následující postup ukazuje, jak nakonfigurovat bitovou kopii Docker ve Windows. Pro Linux a Mac můžete najít informace na internetu.
 
 1. Nainstalujte na svém vývojovém počítači [Docker Desktop](https://www.docker.com/products/docker-desktop) .
 1. Otevřete Docker Desktop.
@@ -281,7 +304,15 @@ Skript nasazení v současné době podporuje Azure PowerShell verze 2.7.0, 2.8.
     docker pull mcr.microsoft.com/azuredeploymentscripts-powershell:az2.7
     ```
 
-    V příkladu je použita verze 2.7.0.
+    V příkladu se používá verze PowerShellu 2.7.0.
+
+    Načtení image CLI z Microsoft Container Registry (MCR):
+
+    ```command
+    docker pull mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
+    V tomto příkladu je použita verze rozhraní příkazového řádku 2.0.80. Skript nasazení používá výchozí image kontejnerů rozhraní příkazového řádku, které najdete [tady](https://hub.docker.com/_/microsoft-azure-cli).
 
 1. Spusťte image Docker lokálně.
 
@@ -297,12 +328,18 @@ Skript nasazení v současné době podporuje Azure PowerShell verze 2.7.0, 2.8.
 
     **–** znamená, že udržuje image kontejneru aktivní.
 
+    Příklad rozhraní příkazového řádku:
+
+    ```command
+    docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
+    ```
+
 1. Po zobrazení výzvy vyberte možnost **sdílet** .
-1. Spusťte skript prostředí PowerShell, jak je znázorněno na následujícím snímku obrazovky (s tím, že ve složce d:\docker máte soubor HelloWorld. ps1).
+1. Následující snímek obrazovky ukazuje, jak spustit skript prostředí PowerShell s ohledem, že máte soubor HelloWorld. ps1 ve složce d:\docker.
 
     ![Správce prostředků skript nasazení skriptu Docker cmd](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
-Po úspěšném otestování skriptu PowerShellu ho můžete použít jako skript nasazení.
+Po úspěšném otestování skriptu ho můžete použít jako skript nasazení.
 
 ## <a name="next-steps"></a>Další kroky
 

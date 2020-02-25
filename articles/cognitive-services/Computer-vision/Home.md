@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 17dd428f79f66bc70da47527314ad43a27955c82
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: eb338c39ed3b1a095c1ad31e3f695e8d3fec0ed3
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772499"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565957"
 ---
 # <a name="what-is-computer-vision"></a>Co je počítačové zpracování obrazu?
 
@@ -48,7 +48,7 @@ Můžete analyzovat obrázky, abyste zjistili a poskytovali přehled o jejich vi
 
 ## <a name="extract-text-from-images"></a>Extrakce textu z obrázků
 
-Pomocí rozhraní Počítačové zpracování obrazu [Read](concept-recognizing-text.md#read-api) API můžete extrahovat vytištěné a ručně psaný text z obrázků do datového proudu znaků, který je strojově čitelný. Rozhraní API pro čtení používá naše nejnovější modely a pracuje s textem na nejrůznějších površích a na pozadí, jako jsou například příjmy, plakáty, obchodní karty, dopisy a tabule. V současné době je v současnosti jediným podporovaným jazykem angličtina.
+Pomocí rozhraní Počítačové zpracování obrazu [Read](concept-recognizing-text.md#read-api) API můžete extrahovat vytištěné a ručně psaný text z obrázků do datového proudu znaků, který je strojově čitelný. Rozhraní API pro čtení používá naše nejnovější modely a pracuje s textem na nejrůznějších površích a na pozadí, jako jsou například příjmy, plakáty, obchodní karty, dopisy a tabule. V současné době jsou podporovány pouze anglické a španělské jazyky.
 
 Můžete také použít rozhraní API [optického rozpoznávání znaků (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api) k extrakci vytištěného textu v několika jazycích. V případě potřeby optické rozpoznávání znaků opraví natočení rozpoznaného textu a poskytuje souřadnice rámce každého slova. Optické rozpoznávání znaků podporuje 25 jazyků a automaticky detekuje jazyk rozpoznaného textu.
 

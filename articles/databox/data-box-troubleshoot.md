@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s Azure Data Box, Azure Data Box Heavy | Microsoft Docs
+title: Řešení potíží s Azure Data Box, Azure Data Box Heavy
 description: Popisuje řešení potíží, které se zobrazují v Azure Data Box a Azure Data Box Heavy při kopírování dat do těchto zařízení.
 services: databox
 author: alkohli
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 83f6f7c7f8cd5155669f12fd6e426f86ef1c7baa
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848499"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560061"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Řešení potíží souvisejících se Azure Data Box a Azure Data Box Heavy
 
@@ -31,7 +31,7 @@ Chyby v Data Box a Data Box Heavy jsou shrnuty takto:
 | Data nebo typ souboru | Formát dat nebo typ souboru se nepodporuje. |Stažení seznamů chyb. <br> U objektů blob stránky nebo spravovaných disků zajistěte, aby byla data zarovnaná 512 bajtů a zkopírována do předem vytvořených složek. [Další informace](#data-or-file-type-errors). |
 | Nekritické chyby objektů BLOB nebo souborů  | Názvy objektů BLOB nebo souborů nedodržují pravidla pro pojmenování Azure nebo tento typ souboru se nepodporuje. | Tyto objekty blob nebo soubory se nemusí kopírovat nebo se můžou změnit názvy. [Přečtěte si, jak tyto chyby opravit](#non-critical-blob-or-file-errors). |
 
-\*První čtyři kategorie chyb jsou kritické chyby a je nutné je opravit předtím, než budete moci pokračovat v přípravě na odeslání.
+\* prvních čtyř kategorií chyb jsou kritické chyby a musí být opraveny, aby bylo možné pokračovat v přípravě na odeslání.
 
 
 ## <a name="container-or-share-name-errors"></a>Chyby názvu kontejneru nebo sdílené složky
@@ -51,15 +51,15 @@ Jedná se o chyby týkající se kontejneru a názvů sdílených složek.
     - Názvy můžou obsahovat jenom písmena, číslice a spojovníky.
     - Názvy nesmí začínat ani končit pomlčkami.
     - Názvy nemůžou mít po sobě jdoucí spojovníky.
-    - Příklady platných názvů: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Příklady názvů, které nejsou platné: `my-folder_1`, `my`, `--myfolder`, `myfolder--`,`myfolder!`
+    - Příklady platných názvů: `my-folder-1`, `my-really-extra-long-folder-111`
+    - Příklady názvů, které nejsou platné: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
 
     Další informace najdete v tématu konvence pojmenování Azure pro [názvy kontejnerů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [názvy sdílených složek](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
 
 ### <a name="error_container_or_share_name_alpha_numeric_dash"></a>ERROR_CONTAINER_OR_SHARE_NAME_ALPHA_NUMERIC_DASH
 
-**Popis chyby:** Název kontejneru nebo sdílené složky se musí skládat pouze z písmen, číslic a spojovníků.
+**Popis chyby:** Název kontejneru nebo sdílené složky musí obsahovat jenom písmena, číslice nebo spojovníky.
 
 **Navrhované řešení:** Složka pod Data Box nebo Data Box Heavy sdílené složky (SMB/NFS), do které jste zkopírovali data, se ve vašem účtu úložiště stávají kontejnerem Azure. 
 
@@ -70,8 +70,8 @@ Jedná se o chyby týkající se kontejneru a názvů sdílených složek.
     - Názvy můžou obsahovat jenom písmena, číslice a spojovníky.
     - Názvy nesmí začínat ani končit pomlčkami.
     - Názvy nemůžou mít po sobě jdoucí spojovníky.
-    - Příklady platných názvů: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Příklady názvů, které nejsou platné: `my-folder_1`, `my`, `--myfolder`, `myfolder--`,`myfolder!`
+    - Příklady platných názvů: `my-folder-1`, `my-really-extra-long-folder-111`
+    - Příklady názvů, které nejsou platné: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
 
     Další informace najdete v tématu konvence pojmenování Azure pro [názvy kontejnerů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [názvy sdílených složek](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
@@ -88,8 +88,8 @@ Jedná se o chyby týkající se kontejneru a názvů sdílených složek.
     - Názvy můžou obsahovat jenom písmena, číslice a spojovníky.
     - Názvy nesmí začínat ani končit pomlčkami.
     - Názvy nemůžou mít po sobě jdoucí spojovníky.
-    - Příklady platných názvů: `my-folder-1`,`my-really-extra-long-folder-111`
-    - Příklady názvů, které nejsou platné: `my-folder_1`, `my`, `--myfolder`, `myfolder--`,`myfolder!`
+    - Příklady platných názvů: `my-folder-1`, `my-really-extra-long-folder-111`
+    - Příklady názvů, které nejsou platné: `my-folder_1`, `my`, `--myfolder`, `myfolder--`, `myfolder!`
 
     Další informace najdete v tématu konvence pojmenování Azure pro [názvy kontejnerů](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) a [názvy sdílených složek](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
 
@@ -125,7 +125,7 @@ Jedná se o chyby související s nepodporovaným typem souboru nebo datovým ty
 
 ### <a name="error_blob_or_file_size_alignment"></a>ERROR_BLOB_OR_FILE_SIZE_ALIGNMENT
 
-**Popis chyby:** Objekt blob nebo soubor je nesprávně zarovnán.
+**Popis chyby:** Objekt BLOB nebo soubor je nesprávně zarovnán.
 
 **Navrhované řešení:** Sdílená položka objektu blob stránky v Data Box nebo Data Box Heavy podporuje pouze soubory, které jsou zarovnané 512 bajtů (například VHD/VHDX). Všechna data zkopírovaná do sdílené složky objektů blob stránky se nahrají do Azure jako objekty blob stránky.
 
@@ -210,7 +210,7 @@ Další informace najdete v tématu konvence pojmenování Azure pro [názvy obj
 
 ### <a name="error_blob_or_file_name_aggregate_length"></a>ERROR_BLOB_OR_FILE_NAME_AGGREGATE_LENGTH
 
-**Popis chyby:** Název objektu blob nebo souboru je příliš dlouhý.
+**Popis chyby:** Název objektu BLOB nebo souboru je příliš dlouhý.
 
 **Navrhované řešení:** Názvy objektů BLOB nebo souborů překračují maximální délku.
 
@@ -222,7 +222,7 @@ Další informace najdete v tématu konvence pojmenování Azure pro názvy obje
 
 ### <a name="error_blob_or_file_name_component_length"></a>ERROR_BLOB_OR_FILE_NAME_COMPONENT_LENGTH
 
-**Popis chyby:** Jeden ze segmentů v názvu objektu blob nebo souboru je příliš dlouhý.
+**Popis chyby:** Jeden z segmentů v názvu objektu BLOB nebo souboru je příliš dlouhý.
 
 **Navrhované řešení:** Jeden z segmentů cesty v objektu BLOB nebo názvu souboru překračuje maximální počet znaků. Segment cesty je řetězec mezi po sobě jdoucími znaky oddělovače, například lomítkem nebo.
 
@@ -234,7 +234,7 @@ Další informace najdete v tématu konvence pojmenování Azure pro názvy obje
 
 **Popis chyby:** Pro sdílené složky spravovaného disku jsou zadané nesprávné názvy kontejnerů.
 
-**Navrhované řešení:** U spravovaných disků se v každé sdílené složce vytvoří následující složky, které odpovídají kontejnerům v účtu úložiště: SSD úrovně Premium, HDD úrovně Standard a SSD úrovně Standard. Tyto složky odpovídají úrovni výkonu pro spravovaný disk.
+**Navrhované řešení:** U spravovaných disků se v každé sdílené složce vytvoří následující složky, které odpovídají kontejnerům ve vašem účtu úložiště: SSD úrovně Premium, HDD úrovně Standard a SSD úrovně Standard. Tyto složky odpovídají úrovni výkonu pro spravovaný disk.
 
 - Ujistěte se, že jste zkopírovali data objektů blob stránky (VHD) do jedné z těchto existujících složek. Do Azure se nahrají jenom data z těchto existujících kontejnerů.
 - Všechny ostatní složky, které jsou vytvořeny na stejné úrovni jako SSD úrovně Premium, HDD úrovně Standard a SSD úrovně Standard, neodpovídají platné úrovni výkonu a nelze je použít.
@@ -243,6 +243,6 @@ Další informace najdete v tématu konvence pojmenování Azure pro názvy obje
 Další informace najdete v tématu [kopírování na spravované disky](data-box-deploy-copy-data-from-vhds.md#connect-to-data-box).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - Seznamte se s [požadavky na systém data box BLOB Storage](data-box-system-requirements-rest.md).

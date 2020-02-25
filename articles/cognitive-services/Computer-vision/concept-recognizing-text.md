@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e37b4c02692575f76582e8f62c3aff00b57424ed
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a4c90ed12c8023e0b9ebc509b20d8d9224b49f1b
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946298"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77566246"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Rozpoznávání tištěného a ručně psaného textu
 
@@ -26,10 +26,10 @@ Počítačové zpracování obrazu poskytuje několik služeb, které zjišťuj�
 
 Rozhraní API pro čtení detekuje textový obsah v imagi pomocí našich nejnovějších modelů rozpoznávání a převede identifikovaný text na datový proud znaků, který je strojově čitelný. Je optimalizovaná pro textově náročné obrázky (například digitálně naskenované dokumenty) a pro image s velkým objemem vizuálního hluku. Určí, který model rozpoznávání se má použít pro jednotlivé řádky textu, a podporuje obrázky s tištěným i psaným textem. Rozhraní API pro čtení se spouští asynchronně, protože může trvat několik minut, než se výsledek vrátí.
 
-Operace čtení zachovává původní řádek seskupení rozpoznaných slov ve výstupu. Každý řádek obsahuje souřadnice ohraničujícího pole a každé slovo v řádku má také vlastní souřadnice. Pokud bylo slovo rozpoznáno s nízkou jistotou, budou tyto informace také předány. Další informace najdete v [referenčních dokumentaci k rozhraní API pro čtení](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) .
+Operace čtení zachovává původní řádek seskupení rozpoznaných slov ve výstupu. Každý řádek obsahuje souřadnice ohraničujícího pole a každé slovo v řádku má také vlastní souřadnice. Pokud bylo slovo rozpoznáno s nízkou jistotou, budou tyto informace také předány. Další informace najdete v tématu Referenční dokumentace k [rozhraní Read API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) a [Read API Preview](https://go.microsoft.com/fwlink/?linkid=2118322) .
 
 > [!NOTE]
-> Tato funkce je dostupná jenom pro anglický text.
+> Tato funkce je k dispozici pouze pro text v angličtině a španělštině (ve verzi Preview).
 
 ### <a name="image-requirements"></a>Požadavky image
 
@@ -94,4 +94,4 @@ Přesnost operací rozpoznávání textu závisí na kvalitě obrázků. Násled
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí rychlého startu pro extrakci vytisknutého [textu (OCR)](./quickstarts/csharp-print-text.md) implementujte rozpoznávání C# textu v jednoduché aplikaci.
+Pomocí rychlého startu pro [extrakci textu (čtení)](./QuickStarts/CSharp-hand-text.md) implementujte rozpoznávání textu v C# jednoduché aplikaci.

@@ -1,5 +1,5 @@
 ---
-title: Vizualizace dat z Azure Průzkumník dat pomocí dotazu SQL v Power BI
+title: Vizualizace dat z Azure Průzkumník dat pomocí dotazu Power BI SQL
 description: 'V tomto článku se dozvíte, jak použít jednu ze tří možností pro vizualizaci dat v Power BI: dotaz SQL na clusteru Azure Průzkumník dat.'
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e4e7858a54f3002a511269a2519135d5ac24ed68
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d402d4c1ee77d0f97d2a5c3bdf43d0cc62aac096
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024087"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560469"
 ---
 # <a name="visualize-data-from-azure-data-explorer-using-a-sql-query-in-power-bi"></a>Vizualizace dat z Azure Průzkumník dat pomocí dotazu SQL v Power BI
 
@@ -66,7 +66,7 @@ Obvykle používáte nativní dotazovací jazyk s Azure Průzkumník dat, ale po
 
 1. Pokud ještě nemáte připojení ke clusteru podpory, přihlaste se. Přihlaste se pomocí účet Microsoft a pak vyberte **připojit**.
 
-    ![Přihlášení](media/power-bi-sql-query/sign-in.png)
+    ![Přihlásit](media/power-bi-sql-query/sign-in.png)
 
 1. Na obrazovce **help.kusto.Windows.NET: Samples** (načíst) vyberte **načíst**.
 

@@ -3,21 +3,21 @@ title: Vytvoření zvukového obsahu – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
 description: Vytváření zvukového obsahu je online nástroj, který umožňuje přizpůsobit a vyladit výstup převodu textu na řeč od Microsoftu pro vaše aplikace a produkty.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.author: erhopf
-ms.openlocfilehash: b65a39489f0823a411a9dddf79ec3abd1e5ee20d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 01/31/2020
+ms.author: dapine
+ms.openlocfilehash: aed9c0a72af063c84c0744757772e11c689ac14c
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806200"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561030"
 ---
-# <a name="audio-content-creation"></a>Vytvoření zvukového obsahu
+# <a name="improve-synthesis-with-audio-content-creation"></a>Vylepšení syntézy pomocí vytváření zvukového obsahu
 
 [Vytváření zvukového obsahu](https://aka.ms/audiocontentcreation) je online nástroj, který umožňuje přizpůsobit a vyladit výstup převodu textu na řeč od Microsoftu pro vaše aplikace a produkty. Pomocí tohoto nástroje můžete vyladit veřejné a vlastní hlasy pro přesnější přirozené výrazy a spravovat výstup v cloudu.
 
@@ -104,7 +104,7 @@ Po kontrole zvukového výstupu a splnění jeho optimalizace a úprav můžete 
 | buď | RIFF-16khz-16bitový-mono-PCM | RIFF-24khz-16bitový-mono-PCM |
 | MP3 | Audio-16khz-128kbitrate-mono-MP3 | Audio-24khz-160kbitrate-mono-MP3 |
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Rozhraní API pro dlouhé zvukové zařízení](https://aka.ms/long-audio-api)
 

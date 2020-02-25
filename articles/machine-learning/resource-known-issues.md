@@ -10,18 +10,84 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 40749a80d99782a1ea84b27e68376ea2870e8eb7
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 771ae508aaa46167413c2e701d8193790198cb68
+ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138008"
+ms.lasthandoff: 02/23/2020
+ms.locfileid: "77565906"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
 Tento článek vám pomůže najít a opravit chyby nebo chyby, ke kterým došlo při použití Azure Machine Learning.
 
-## <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Výpadek: upgrade SR-IOV na počítače NCv3 v AmlCompute
+## <a name="sdk-installation-issues"></a>Problémy při instalaci sady SDK
+
+**Chybová zpráva: Nejde odinstalovat ' PyYAML '.**
+
+Azure Machine Learning SDK pro Python: PyYAML je projekt distutils nainstalované. Proto nemůžeme přesně určit, které soubory do ní patří, pokud dojde k částečné odinstalaci. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
+
+```Python
+pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
+```
+
+**Chybová zpráva: `ERROR: No matching distribution found for azureml-dataprep-native`**
+
+Distribuce Anaconda Python 3.7.4 obsahuje chybu, která přerušuje instalaci aplikace AzureML-SDK. Tento problém je popsaný v tomto [problému GitHubu](https://github.com/ContinuumIO/anaconda-issues/issues/11195) . to se dá vyřešit vytvořením nového prostředí conda pomocí tohoto příkazu:
+```bash
+conda create -n <env-name> python=3.7.3
+```
+Díky tomu vytvoří prostředí conda s využitím Pythonu 3.7.3, ve kterém není problém instalace přítomen v 3.7.4.
+
+## <a name="training-and-experimentation-issues"></a>Problémy s školením a experimentováním
+
+### <a name="metric-document-is-too-large"></a>Dokument metriky je moc velký.
+Azure Machine Learning má interní omezení velikosti objektů metriky, které je možné v rámci školicích běhů současně přihlásit. Pokud narazíte na chybu "dokument metriky je moc velký" při protokolování metriky s hodnotou seznamu, zkuste seznam rozdělit na menší bloky dat, například:
+
+```python
+run.log_list("my metric name", my_metric[:N])
+run.log_list("my metric name", my_metric[N:])
+```
+
+Azure ML interně zřetězí bloky se stejným názvem metriky do souvislého seznamu.
+
+### <a name="moduleerrors-no-module-named"></a>ModuleErrors (žádný modul s názvem)
+Pokud při odesílání experimentů v Azure ML pracujete v ModuleErrors, znamená to, že skript školení očekává instalaci balíčku, ale nepřidá se. Až zadáte název balíčku, Azure ML nainstaluje balíček do prostředí, které se používá pro váš školicí běh. 
+
+Pokud používáte [odhady](concept-azure-machine-learning-architecture.md#estimators) k odesílání experimentů, můžete zadat název balíčku pomocí `pip_packages` nebo `conda_packages` parametr v Estimator na základě toho, ze kterého zdroje chcete balíček nainstalovat. Můžete také zadat soubor YML se všemi vašimi závislostmi pomocí `conda_dependencies_file`nebo vypsat všechny požadavky PIP v souboru txt pomocí parametru `pip_requirements_file`. Pokud máte vlastní objekt prostředí Azure ML a chcete přepsat výchozí image, kterou používá Estimator, můžete toto prostředí zadat pomocí parametru `environment` konstruktoru Estimator.
+
+Azure ML také poskytuje odhady specificky pro rozhraní pro Tensorflow, PyTorch, chainer a skriptu sklearn. Pomocí těchto odhady se zajistí, že se závislosti Core Frameworku nainstalují vaším jménem do prostředí používaného pro školení. Máte možnost zadat další závislosti, jak je popsáno výše. 
+ 
+Azure ML zachovává image Docker a jejich obsah se může zobrazit v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers).
+Závislosti specifické pro rozhraní jsou uvedeny v dokumentaci k příslušnému rozhraní – [chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [skriptu sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
+
+> [!Note]
+> Pokud si myslíte, že konkrétní balíček je dostatečně společný, aby ho bylo možné přidat do spravovaných imagí a prostředí Azure ML, vyřešte v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers)problém GitHubu. 
+ 
+### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (název není definován), AttributeError (objekt nemá žádný atribut)
+Tato výjimka by se měla nacházet z vašich školicích skriptů. Můžete si prohlédnout soubory protokolu z Azure Portal a získat další informace o konkrétním názvu, který není definován nebo chyba atributu. V sadě SDK můžete použít `run.get_details()` k zobrazení chybové zprávy. Zobrazí se také seznam všech souborů protokolu generovaných pro váš běh. Ujistěte se prosím, že se podíváte na školicí skript a opravte chybu před opětovným odesláním běhu. 
+
+### <a name="horovod-has-been-shut-down"></a>Horovod se ukončil.
+Ve většině případů, pokud narazíte na "AbortedError: Horovod byl vypnut" Tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí Horovod. Každé pořadí v úloze MPI získá vlastní vyhrazený soubor protokolu v Azure ML. Tyto protokoly jsou pojmenovány `70_driver_logs`. V případě distribuovaného školení jsou názvy protokolů `_rank` s příponou, aby bylo snazší odlišit protokoly. Pokud chcete najít přesnou chybu, která způsobila vypnutí Horovod, Projděte všechny soubory protokolů a hledejte `Traceback` na konci driver_log souborů. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
+
+### <a name="sr-iov-availability-on-ncv3-machines-in-amlcompute-for-distributed-training"></a>Dostupnost rozhraní SR-IOV na počítačích s NCv3 v AmlCompute pro distribuované školení
+Azure COMPUTE vyvolal [upgrade SR-IOV](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku/) počítačů s NCv3, kteří můžou využívat Azure ml Managed COMPUTE (AmlCompute). Aktualizace umožní podporu celého MPI zásobníku a používání sítě InfiniBand RDMA pro lepší výkon distribuovaného školení ve více uzlech, zejména pro obsáhlý Learning.
+
+Podívejte se na [Plán aktualizací](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku/) , kde zjistíte, kdy bude podpora pro vaši oblast zavedená.
+
+### <a name="run-or-experiment-deletion"></a>Spuštění nebo experimentování při odstraňování
+Experimenty je možné archivovat pomocí metody [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) nebo na kartě experiment v nástroji Azure Machine Learning Studio Client prostřednictvím tlačítka "archivní experiment". Tato akce skryje experiment ze seznamu dotazy a zobrazení, ale neodstraní ho.
+
+Trvalé odstranění individuálních experimentů nebo spuštění není aktuálně podporováno. Další informace o odstraňování prostředků pracovního prostoru najdete v tématu [Export nebo odstranění dat pracovního prostoru služby Machine Learning](how-to-export-delete-data.md).
+
+## <a name="azure-machine-learning-compute-issues"></a>Azure Machine Learning výpočetní problémy
+Známé problémy s používáním Azure Machine Learning COMPUTE (AmlCompute).
+
+### <a name="trouble-creating-amlcompute"></a>Problémy při vytváření AmlCompute
+
+Je pravděpodobné, že někteří uživatelé, kteří vytvořili svůj Azure Machine Learning pracovní prostor z Azure Portal před vydáním GA, nemusí být schopni vytvořit AmlCompute v tomto pracovním prostoru. Můžete buď vyvolat žádost o podporu na službu, nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo sadu SDK pro okamžité odblokování.
+
+### <a name="outage-sr-iov-upgrade-to-ncv3-machines-in-amlcompute"></a>Výpadek: upgrade SR-IOV na počítače NCv3 v AmlCompute
 
 Azure COMPUTE bude aktualizovat skladové položky NCv3 počínaje začátkem listopadu 2019, aby podporovaly všechny MPI implementace a verze, a operace RDMA pro virtuální počítače s podporou InfiniBand. To bude vyžadovat krátké výpadky. [Další informace o upgradu SR-IOV najdete v tématu](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
@@ -43,28 +109,6 @@ Možná budete chtít spustit experiment pouze s datovou sadou, která bude vizu
 Před opravou můžete datovou sadu připojit k jakémukoli modulu transformace dat (výběr sloupců v datové sadě, upravit metadata, rozdělit data atd.) a spustit experiment. Pak můžete vizualizovat datovou sadu. 
 
 Následující obrázek ukazuje, jak: ![visulize-data](./media/resource-known-issues/aml-visualize-data.png)
-
-## <a name="sdk-installation-issues"></a>Problémy při instalaci sady SDK
-
-**Chybová zpráva: Nejde odinstalovat ' PyYAML '.**
-
-Azure Machine Learning SDK pro Python: PyYAML je projekt distutils nainstalované. Proto nemůžeme přesně určit, které soubory do ní patří, pokud dojde k částečné odinstalaci. Pokud chcete pokračovat v instalaci sady SDK při tato chyba se ignoruje, použijte:
-
-```Python
-pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
-```
-
-**Chybová zpráva: `ERROR: No matching distribution found for azureml-dataprep-native`**
-
-Distribuce Anaconda Python 3.7.4 obsahuje chybu, která přerušuje instalaci aplikace AzureML-SDK. Tento problém je popsaný v tomto [problému GitHubu](https://github.com/ContinuumIO/anaconda-issues/issues/11195) . to se dá vyřešit vytvořením nového prostředí conda pomocí tohoto příkazu:
-```bash
-conda create -n <env-name> python=3.7.3
-```
-Díky tomu vytvoří prostředí conda s využitím Pythonu 3.7.3, ve kterém není problém instalace přítomen v 3.7.4.
-
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Problémy s vytvářením, Azure Machine Learning Compute
-
-Je vzácné pravděpodobné, že někteří uživatelé, kteří si vytvořili jejich pracovního prostoru Azure Machine Learning z portálu Azure portal před verze GA nemusí být možné vytvořit Azure Machine Learning Compute v daném pracovním prostoru. Můžete zvýšit žádost o podporu na službu nebo vytvořit nový pracovní prostor prostřednictvím portálu nebo pomocí sady SDK pro odblokování sami okamžitě.
 
 ## <a name="image-building-failure"></a>Chyba vytváření bitové kopie
 
@@ -255,38 +299,6 @@ kubectl get secret/azuremlfessl -o yaml
 >[!Note]
 >Kubernetes ukládá tajné klíče ve formátu kódování Base-64. Před tím, než jim poskytnete `attach_config.enable_ssl`, budete muset 64 základní `cert.pem` dekódovat a `key.pem` komponenty tajných kódů. 
 
-## <a name="recommendations-for-error-fix"></a>Doporučení pro opravu chyb
-Na základě obecného sledování najdete tady doporučení Azure ML, kde můžete opravit některé běžné chyby v Azure ML.
-
-### <a name="metric-document-is-too-large"></a>Dokument metriky je moc velký.
-Azure Machine Learning má interní omezení velikosti objektů metriky, které je možné v rámci školicích běhů současně přihlásit. Pokud dojde k chybě "dokument metriky je příliš velký" při protokolování metriky s hodnotou seznamu, zkuste seznam rozdělit do menších bloků dat, například:
-
-```python
-run.log_list("my metric name", my_metric[:N])
-run.log_list("my metric name", my_metric[N:])
-```
-
- Služba historie spuštění interně zřetězí bloky se stejným názvem metriky do souvislého seznamu.
-
-### <a name="moduleerrors-no-module-named"></a>ModuleErrors (žádný modul s názvem)
-Pokud při odesílání experimentů v Azure ML pracujete v ModuleErrors, znamená to, že skript školení očekává instalaci balíčku, ale nepřidá se. Až zadáte název balíčku, Azure ML nainstaluje balíček do prostředí, které se používá pro vaše školení. 
-
-Pokud používáte [odhady](concept-azure-machine-learning-architecture.md#estimators) k odesílání experimentů, můžete zadat název balíčku pomocí `pip_packages` nebo `conda_packages` parametr v Estimator na základě toho, ze kterého zdroje chcete balíček nainstalovat. Můžete také zadat soubor YML se všemi vašimi závislostmi pomocí `conda_dependencies_file`nebo vypsat všechny požadavky PIP v souboru txt pomocí parametru `pip_requirements_file`.
-
-Azure ML také poskytuje odhady specificky pro rozhraní pro Tensorflow, PyTorch, chainer a skriptu sklearn. Pomocí těchto odhady se ujistěte, že se závislosti rozhraní instalují vaším jménem do prostředí používaného pro školení. Máte možnost zadat další závislosti, jak je popsáno výše. 
- 
-Azure ML zachovává image Docker a jejich obsah se může zobrazit v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers).
-Závislosti specifické pro rozhraní jsou uvedeny v dokumentaci k příslušnému rozhraní – [chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [skriptu sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
-
-> [!Note]
-> Pokud si myslíte, že konkrétní balíček je dostatečně společný, aby ho bylo možné přidat do spravovaných imagí a prostředí Azure ML, vyřešte v [kontejnerech AzureML](https://github.com/Azure/AzureML-Containers)problém GitHubu. 
- 
- ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (název není definován), AttributeError (objekt nemá žádný atribut)
-Tato výjimka by se měla nacházet z vašich školicích skriptů. Můžete si prohlédnout soubory protokolu z Azure Portal a získat další informace o konkrétním názvu, který není definován nebo chyba atributu. V sadě SDK můžete použít `run.get_details()` k zobrazení chybové zprávy. Zobrazí se také seznam všech souborů protokolu generovaných pro váš běh. Ujistěte se prosím, že se podíváte na školicí skript, opravte chybu a zkuste to znovu. 
-
-### <a name="horovod-is-shut-down"></a>Horovod je vypnutý.
-Ve většině případů tato výjimka znamená, že došlo k základní výjimce v jednom z procesů, které způsobily vypnutí horovod. Každé pořadí v úloze MPI získá vlastní vyhrazený soubor protokolu v Azure ML. Tyto protokoly jsou pojmenovány `70_driver_logs`. V případě distribuovaného školení jsou názvy protokolů `_rank` s příponou, aby bylo snazší odlišit protokoly. Pokud chcete najít přesnou chybu, která způsobila vypnutí horovod, Projděte všechny soubory protokolů a hledejte `Traceback` na konci driver_log souborů. Jeden z těchto souborů vám poskytne vlastní podkladovou výjimku. 
-
 ## <a name="labeling-projects-issues"></a>Problémy s označováním projektů
 
 Známé problémy s označováním projektů.
@@ -306,12 +318,6 @@ Chcete-li načíst všechny označené obrázky, klikněte na tlačítko **prvn�
 ### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Když stisknete klávesu ESC, zatímco při rozpoznávání objektu se vytvoří popisek s nulovou velikostí v levém horním rohu. Odesílání popisků v tomto stavu se nezdařilo.
 
 Odstraňte popisek kliknutím na křížek vedle něj.
-
-## <a name="run-or-experiment-deletion"></a>Spuštění nebo experimentování při odstraňování
-
-Experimenty se dají archivovat pomocí metody [experiment. Archive](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#archive--) nebo experimentovat v zobrazení na kartách klienta Azure Machine Learning Studio. Tato akce skryje experiment ze seznamu dotazy a zobrazení, ale neodstraní ho.
-
-Trvalé odstranění individuálních experimentů nebo spuštění není aktuálně podporováno. Další informace o odstraňování prostředků pracovního prostoru najdete v tématu [Export nebo odstranění dat pracovního prostoru služby Machine Learning](how-to-export-delete-data.md).
 
 ## <a name="moving-the-workspace"></a>Přesun pracovního prostoru
 

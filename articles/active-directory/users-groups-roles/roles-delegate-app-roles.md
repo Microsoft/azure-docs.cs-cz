@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461ee1fc73448f16ba68850d6137fb396c658abd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 251bc1c2277f9e43543f95c49d0b730a5a41c3d9
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024856"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77558974"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegovat oprávnění k registraci aplikace v Azure Active Directory
 
@@ -74,7 +74,7 @@ V některých případech podniková aplikace vytvořená z Galerie aplikací za
 
 Azure AD obsahuje sadu předdefinovaných rolí správce pro udělení přístupu ke správě konfigurace ve službě Azure AD pro všechny aplikace. Tyto role jsou doporučeným způsobem, jak udělit odborníkům na IT přístup ke správě rozsáhlých oprávnění konfigurace aplikace bez udělení přístupu ke správě jiných částí služby Azure AD, které nesouvisí s konfigurací aplikace.
 
-- Správce aplikace: uživatelé v této roli můžou vytvářet a spravovat všechny aspekty podnikových aplikací, registrací aplikací a nastavení proxy aplikací. Tato role také uděluje možnost vyjádřit souhlas s delegovanými oprávněními a oprávnění aplikací, kromě Microsoft Graph a Azure AD Graph. Uživatelé přiřazení k této roli nebudou přidáni jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
+- Správce aplikace: uživatelé v této roli můžou vytvářet a spravovat všechny aspekty podnikových aplikací, registrací aplikací a nastavení proxy aplikací. Tato role také uděluje možnost vyjádřit souhlas s delegovanými oprávněními a oprávnění aplikací s výjimkou Microsoft Graph. Uživatelé přiřazení k této roli nebudou přidáni jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
 - Správce cloudové aplikace: uživatelé v této roli mají stejná oprávnění jako role správce aplikace, kromě možnosti spravovat proxy aplikace. Uživatelé přiřazení k této roli nebudou přidáni jako vlastníci při vytváření nových registrací aplikací nebo podnikových aplikací.
 
 Další informace a zobrazení popisu těchto rolí najdete v tématu [dostupné role](directory-assign-admin-roles.md#available-roles).

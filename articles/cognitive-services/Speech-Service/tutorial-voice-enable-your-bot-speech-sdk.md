@@ -3,19 +3,19 @@ title: 'Kurz: hlasy umožňují robotům používat sadu Speech SDK – Speech S
 titleSuffix: Azure Cognitive Services
 description: V tomto kurzu vytvoříte robota s odezvou s použitím Microsoft bot-Frameworku, nasadíte ho do Azure a zaregistrujete ho pomocí kanálu s přímým odkazem na rozhraní robota. Potom nakonfigurujete ukázkovou klientskou aplikaci pro Windows, která vám umožní mluvit na robota a slyšet na vás odpověď.
 services: cognitive-services
-author: dargilco
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: dcohen
-ms.openlocfilehash: 0c26f94d0a51b7912d3f964e3cc96ec392fec69b
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 02/21/2020
+ms.author: dapine
+ms.openlocfilehash: 6b037ced7acb94340214ce401ffee9d940312de8
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495173"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562619"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -61,18 +61,17 @@ Tady je postup, který budete potřebovat k dokončení tohoto kurzu:
 - Účet [GitHub](https://github.com/)
 - [Git pro Windows](https://git-scm.com/download/win)
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 Klientská aplikace, kterou vytvoříte v tomto kurzu, používá několik služeb Azure. Aby se snížila doba odezvy pro odpovědi z bot, měli byste se ujistit, že tyto služby jsou umístěné ve stejné oblasti Azure. V této části vytvoříte skupinu prostředků v oblasti **západní USA** . Tato skupina prostředků se použije při vytváření individuálních prostředků pro robot-Framework, kanál přímého zpracování řeči a službu pro rozpoznávání řeči.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
-1. V levém navigačním panelu vyberte **skupiny prostředků**. Pak kliknutím na **Přidat** přidejte novou skupinu prostředků.
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.ResourceGroup" target="_blank">Vytvoření skupiny prostředků<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 1. Zobrazí se výzva k zadání některých informací:
    * Nastavte **předplatné** na **bezplatnou zkušební verzi** (můžete také použít stávající předplatné).
    * Zadejte název vaší **skupiny prostředků**. Doporučujeme **SpeechEchoBotTutorial-Resource**.
    * V rozevíracím seznamu **oblast** vyberte možnost **západní USA**.
-1. Klikněte na tlačítko **zkontrolovat a vytvořit**. Měla by se zobrazit informační zpráva s **potvrzením**, že čtení bylo úspěšné.
-1. Klikněte na **Vytvořit**. Vytvoření skupiny prostředků může trvat několik minut.
+1. Klikněte na **Zkontrolovat a vytvořit**. Měla by se zobrazit informační zpráva s **potvrzením**, že čtení bylo úspěšné.
+1. Klikněte na možnost **Vytvořit**. Vytvoření skupiny prostředků může trvat několik minut.
 1. Stejně jako u prostředků, které vytvoříte později v tomto kurzu, je vhodné Připnout tuto skupinu prostředků na řídicí panel a získat tak snadný přístup. Pokud chcete tuto skupinu prostředků připnout, klikněte na ikonu připnutí v pravém horním rohu řídicího panelu.
 
 ### <a name="choosing-an-azure-region"></a>Výběr oblasti Azure
@@ -85,17 +84,15 @@ Pokud chcete pro tento kurz použít jinou oblast, můžou tyto faktory omezit v
 
 Další informace o oblastech najdete v tématu věnovaném [umístěním Azure](https://azure.microsoft.com/global-infrastructure/locations/).
 
-## <a name="create-resources"></a>Vytvoření prostředků
+## <a name="create-resources"></a>Vytvořit prostředky
 
-Teď, když máte skupinu prostředků v oblasti **západní USA** , je dalším krokem vytvoření jednotlivých prostředků pro každou službu, kterou použijete v tomto kurzu.
+Teď, když máte skupinu prostředků v podporované oblasti, je dalším krokem vytvoření jednotlivých prostředků pro každou službu, kterou použijete v tomto kurzu.
 
 ### <a name="create-a-speech-service-resource"></a>Vytvoření prostředku služby Speech
 
 Pomocí těchto pokynů vytvořte prostředek řeči:
 
-1. Přejít na [Azure Portal](https://portal.azure.com) a v levém navigačním panelu vyberte **vytvořit prostředek** .
-2. Na panelu hledání zadejte **Speech**.
-3. Vyberte **řeč**a pak klikněte na **vytvořit**.
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku služby Speech<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. Zobrazí se výzva k zadání některých informací:
    * Zadejte **název**prostředku. Doporučujeme **SpeechEchoBotTutorial** řeč.
    * U **předplatného**se ujistěte, že je vybraná možnost **bezplatná zkušební verze** .
@@ -107,17 +104,15 @@ Pomocí těchto pokynů vytvořte prostředek řeči:
 
 V tomto okamžiku ověřte, že skupina prostředků (**SpeechEchoBotTutorial-resourceName**) má prostředek řeči:
 
-| JMÉNO | TYP  | UMÍSTĚNÍ |
+| Název | Typ  | Umístění |
 |------|-------|----------|
-| SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
+| SpeechEchoBotTutorial – řeč | Kognitivní služby | USA – západ |
 
 ### <a name="create-an-azure-app-service-plan"></a>Vytvoření plánu služby Azure App Service
 
 Dalším krokem je vytvoření plánu App Service. Plán služby App Service definuje sadu výpočetních prostředků pro provozování webové aplikace.
 
-1. Přejít na [Azure Portal](https://portal.azure.com) a v levém navigačním panelu vyberte **vytvořit prostředek** .
-2. Do panelu hledání zadejte **App Service plán**. Potom ve výsledcích hledání vyhledejte a vyberte kartu **App Service plán** .
-3. Klikněte na **Vytvořit**.
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.AppServicePlanCreate" target="_blank">Vytvoření plánu Azure App Service<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 4. Zobrazí se výzva k zadání některých informací:
    * Nastavte **předplatné** na **bezplatnou zkušební verzi** (můžete také použít stávající předplatné).
    * V případě **skupiny prostředků**vyberte **SpeechEchoBotTutorial-Resource**.
@@ -125,15 +120,15 @@ Dalším krokem je vytvoření plánu App Service. Plán služby App Service def
    * V případě **operačního systému**vyberte možnost **Windows**.
    * V **oblasti oblast**vyberte **západní USA**.
    * V případě **cenové úrovně**se ujistěte, že je vybraná **úroveň Standard S1** . Mělo by se jednat o výchozí hodnotu. Pokud ne, ujistěte se, že jste nastavili **operační systém** na **Windows** , jak je popsáno výše.
-5. Klikněte na tlačítko **zkontrolovat a vytvořit**. Měla by se zobrazit informační zpráva s **potvrzením**, že čtení bylo úspěšné.
-6. Klikněte na **Vytvořit**. Vytvoření skupiny prostředků může trvat několik minut.
+5. Klikněte na **Zkontrolovat a vytvořit**. Měla by se zobrazit informační zpráva s **potvrzením**, že čtení bylo úspěšné.
+6. Klikněte na možnost **Vytvořit**. Vytvoření skupiny prostředků může trvat několik minut.
 
 V tomto okamžiku ověřte, že vaše skupina prostředků (**SpeechEchoBotTutorial-resourceName**) má dva prostředky:
 
-| JMÉNO | TYP  | UMÍSTĚNÍ |
+| Název | Typ  | Umístění |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
-| SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
+| SpeechEchoBotTutorial – řeč | Kognitivní služby | USA – západ |
 
 ## <a name="build-an-echo-bot"></a>Sestavení robota s odezvou
 
@@ -157,11 +152,14 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
    samples\csharp_dotnetcore\02.echo-bot\EchoBot.sln
    ```
 
-4. Po načtení projektu stiskněte `F5` a sestavte a spusťte projekt.
+4. Po načtení projektu stiskněte klávesu <kbd>F5</kbd> a sestavte a spusťte projekt.
+5. Prohlížeč by se měl spustit a zobrazí se obrazovka podobná této.
+    > [!div class="mx-imgBorder"]
+    > ![echobot – běžící – v místním počítači](media/tutorial-voice-enable-your-bot-speech-sdk/echobot-running-on-localhost.png "EchoBot běžící na místním hostiteli")
 
 ### <a name="test-the-bot-sample-with-the-bot-framework-emulator"></a>Test ukázky robota pomocí emulátoru bot Framework
 
-[Emulátor systému robot Framework](https://github.com/microsoft/botframework-emulator) je desktopová aplikace, která umožňuje vývojářům robotům testovat a ladit roboty místně nebo vzdáleně prostřednictvím tunelu. Emulátor podporuje zadaný text jako vstup (ne hlas). Robot bude reagovat na text. Postupujte podle těchto kroků a pomocí emulátoru robot Framework otestujte vaši aplikaci echo robot spuštěnou lokálně s textovým vstupem a textovým výstupem. Po nasazení bot Azure ho budeme testovat pomocí hlasového vstupu a hlasového výstupu.
+[Emulátor systému robot Framework](https://github.com/microsoft/botframework-emulator) je desktopová aplikace, která umožňuje vývojářům robotům testovat a ladit roboty místně nebo vzdáleně prostřednictvím tunelu. Emulátor podporuje zadaný text jako vstup (ne hlas). Robot bude reagovat na text. Postupujte podle těchto kroků a pomocí emulátoru robot Framework otestujte vaši aplikaci echo robot spuštěnou lokálně s textovým vstupem a textovým výstupem. Po nasazení robota do Azure ho budeme testovat pomocí hlasového vstupu a hlasového výstupu.
 
 1. Nainstalujte [emulátor systému bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) verze 4.3.0 nebo novější.
 2. Spusťte emulátor rozhraní bot Framework a otevřete robota:
@@ -172,7 +170,8 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
    http://localhost:3978/api/messages
    ```
    a stiskněte klávesu "připojit".
-4. Robot by vás měl okamžitě popozdravit "Hello a Welcome!" . Zadejte jakoukoli textovou zprávu a potvrďte, že od robota dostanete odpověď.
+4. Robot by vás měl okamžitě popozdravit "Hello a Welcome!" Zpráva. Zadejte jakoukoli textovou zprávu a potvrďte, že od robota dostanete odpověď.
+5. To znamená, že výměna komunikace s instancí robota s odezvou může vypadat jako: ![robot-Framework-emulátor](media/tutorial-voice-enable-your-bot-speech-sdk/bot-framework-emulator.png "Emulátor pro robot Framework")
 
 ## <a name="deploy-your-bot-to-an-azure-app-service"></a>Nasazení robota na Azure App Service
 
@@ -189,7 +188,7 @@ Dalším krokem je nasazení nástroje echo bot do Azure. Existuje několik způ
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt **EchoBot** a vyberte **publikovat...**
 1. Otevře se nové okno s názvem **Vyberte cíl publikování** .
-1. V levém navigačním panelu vyberte **App Service** , vyberte **vytvořit novou**a potom klikněte na **publikovat**.
+1. Z navigace **služeb Azure** vyberte **App Service** , vyberte **vytvořit novou**a potom klikněte na **publikovat**.
 1. Po zobrazení okna **vytvořit App Service** :
    * Klikněte na **Přidat účet**a přihlaste se pomocí svých přihlašovacích údajů k účtu Azure. Pokud jste už přihlášení, v rozevíracím seznamu vyberte požadovaný účet.
    * Pro **název aplikace**budete muset pro robot zadat globálně jedinečný název. Tento název se používá k vytvoření jedinečné adresy URL robota. Bude naplněna výchozí hodnota včetně data a času (například: "EchoBot20190805125647"). Pro tento kurz můžete použít výchozí název.
@@ -207,18 +206,18 @@ Dalším krokem je nasazení nástroje echo bot do Azure. Existuje několik způ
 1. Výchozí prohlížeč by měl otevřít a zobrazit stránku, která čte: "vaše robot je připravený!".
 1. V tomto okamžiku zkontrolujte skupinu prostředků **SpeechEchoBotTutorial-source** ve Azure Portal a potvrďte, že existují tři prostředky:
 
-| JMÉNO | TYP  | UMÍSTĚNÍ |
+| Název | Typ  | Umístění |
 |------|-------|----------|
-| EchoBot20190805125647 | Aplikační služba | USA – západ |
+| EchoBot20190805125647 | App Service | USA – západ |
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
-| SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
+| SpeechEchoBotTutorial – řeč | Kognitivní služby | USA – západ |
 
 ## <a name="enable-web-sockets"></a>Povolit webové sokety
 
 Budete muset udělat malou změnu konfigurace, aby robot mohl komunikovat s přímým řádkem řeči pomocí webových soketů. Pokud chcete povolit webové sokety, postupujte podle těchto kroků:
 
 1. Přejděte do [Azure Portal](https://portal.azure.com)a vyhledejte App Service. Prostředek by měl mít název podobný jako **EchoBot20190805125647** (jedinečný název aplikace).
-2. V levém navigačním panelu v části **Nastavení**klikněte na **Konfigurace**.
+2. V navigaci **služeb Azure** v části **Nastavení**klikněte na **Konfigurace**.
 3. Vyberte kartu **Obecné nastavení** .
 4. Vyhledejte přepínač pro **webové sokety** a nastavte jej na **zapnuto**.
 5. Klikněte na možnost **Uložit**.
@@ -233,9 +232,11 @@ Teď, když jste vytvořili Azure App Service pro hostování robota, je další
 > [!NOTE]
 > Pokud se chcete dozvědět víc o tom, jak roboty využívají kanály, přečtěte si téma [připojení robota k kanálům](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0).
 
-1. Prvním krokem je vytvoření nového prostředku pro registraci. Na portálu [Azure portal](https://portal.azure.com) klikněte na možnost **Vytvořit prostředek**.
+<!-- https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage -->
+
+1. Prvním krokem je vytvoření nového prostředku pro registraci. V [Azure Portal](https://portal.azure.com)klikněte na **vytvořit prostředek**.
 2. Na panelu hledání napište **robot**, po zobrazení výsledků vyberte možnost **registrace kanálů robota**.
-3. Klikněte na **Vytvořit**.
+3. Klikněte na možnost **Vytvořit**.
 4. Zobrazí se výzva k zadání některých informací:
    * Jako **popisovač robota**zadejte **SpeechEchoBotTutorial-BotRegistration**.
    * V případě **předplatného**vyberte **bezplatná zkušební verze**.
@@ -249,12 +250,12 @@ Teď, když jste vytvořili Azure App Service pro hostování robota, je další
 
 V tomto okamžiku ověřte skupinu prostředků **SpeechEchoBotTutorial-Resource** v Azure Portal. Teď by se měly zobrazit čtyři prostředky:
 
-| JMÉNO | TYP  | UMÍSTĚNÍ |
+| Název | Typ  | Umístění |
 |------|-------|----------|
-| EchoBot20190805125647 | Aplikační služba | USA – západ |
+| EchoBot20190805125647 | App Service | USA – západ |
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
-| SpeechEchoBotTutorial-BotRegistration | Bot Channels Registration | Globální |
-| SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
+| SpeechEchoBotTutorial-BotRegistration | Registrace kanálů robota | Globální |
+| SpeechEchoBotTutorial – řeč | Kognitivní služby | USA – západ |
 
 > [!IMPORTANT]
 > Prostředek registrace kanálů robota zobrazí globální oblast, i když jste vybrali Západní USA. To se očekává.
@@ -264,13 +265,13 @@ V tomto okamžiku ověřte skupinu prostředků **SpeechEchoBotTutorial-Resource
 Teď je čas zaregistrovat robota pomocí kanálu Direct line Speech. Tento kanál slouží k vytvoření propojení mezi robotem ozvěny a klientskou aplikací zkompilovanou sadou Speech SDK.
 
 1. Vyhledejte a otevřete prostředek **SpeechEchoBotTutorial-BotRegistration** v [Azure Portal](https://portal.azure.com).
-1. V levém navigačním panelu vyberte **kanály**.
+1. Z navigace **služeb Azure** vyberte **kanály**.
    * Podívejte se na **Další kanály**, najděte a klikněte na **Direct line Speech**.
    * Projděte si text na stránce s názvem **Konfigurace přímého řádku řeč**a pak rozbalte rozevírací nabídku s názvem "účet služby pro rozpoznávání".
    * Vyberte prostředek řeči, který jste předtím vytvořili (např. **SpeechEchoBotTutorial-Speech**) z nabídky a přidružte svůj robot k vašemu klíči předplatného řeči.
    * Klikněte na možnost **Uložit**.
 
-1. V levém navigačním panelu klikněte na **Nastavení**.
+1. Z navigace **služeb Azure** klikněte na **Nastavení**.
    * Zaškrtněte políčko s popiskem **Povolit koncový bod streamování**. Tato možnost je nutná k povolení komunikačního protokolu postaveného na webových soketech mezi robotem a kanálem Direct line Speech.
    * Klikněte na možnost **Uložit**.
 
@@ -295,7 +296,7 @@ Než začneme, ujistěte se, že mikrofon a reproduktory jsou povolené a funguj
 
 Pokud se zobrazí chybová zpráva v hlavním okně aplikace, použijte tuto tabulku k identifikaci a řešení potíží s chybou:
 
-| Chyba | Co byste měli udělat? |
+| Chyba | Co byste měli dělat? |
 |-------|----------------------|
 |Chyba AuthenticationFailure: upgrade protokolu WebSocket se nezdařil s chybou ověřování (401). Vyhledat správný klíč předplatného (nebo autorizační token) a název oblasti| Na stránce nastavení aplikace se ujistěte, že jste zadali správný klíč předplatného pro rozpoznávání řeči a jeho oblast.<br>Ujistěte se, že klíč řeči a klíčová oblast byly zadány správně. |
 |Chyba ConnectionFailure: připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1011. Podrobnosti o chybě: před odesláním zprávy se nepovedlo připojit k robotovi. | Ujistěte se, že jste [zaškrtli políčko Povolit koncový bod streamování](#register-the-direct-line-speech-channel) nebo na zapnuté [ **webové zásuvky** ](#enable-web-sockets) .<br>Ujistěte se, že je spuštěný Azure App Service. Pokud je to, zkuste restartovat App Service.|
@@ -432,7 +433,7 @@ Teď, když jste udělali potřebnou změnu robota, je dalším krokem jeho opě
 
 Pokud nebudete nadále používat službu echo-bot nasazenou v tomto kurzu, můžete ji odebrat a všechny její přidružené prostředky Azure odstranit pouhým odstraněním skupiny prostředků Azure **SpeechEchoBotTutorial-Resource**.
 
-1. V [Azure Portal](https://portal.azure.com)klikněte na **skupiny prostředků** v levém navigačním panelu.
+1. V [Azure Portal](https://portal.azure.com)klikněte na **skupiny prostředků** z navigace **služeb Azure** .
 2. Vyhledejte skupinu prostředků s názvem: **SpeechEchoBotTutorial-Resource**. Klikněte na tři tečky (...).
 3. Vyberte **Odstranit skupinu prostředků**.
 
@@ -441,7 +442,7 @@ Pokud nebudete nadále používat službu echo-bot nasazenou v tomto kurzu, mů�
 > [!div class="nextstepaction"]
 > [Vytvoření vlastní klientské aplikace pomocí sady Speech SDK](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * Nasazení do [oblasti Azure v blízkosti,](https://azure.microsoft.com/global-infrastructure/locations/) abyste viděli vylepšení doby odezvy robota
 * Nasazení do [oblasti Azure, která podporuje hlasy vysoké kvality neuronové TTS](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)

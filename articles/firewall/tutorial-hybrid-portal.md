@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 01/18/2020
+ms.date: 02/21/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: e9ca891d2d92b6760d37108b66afc54c81ac125c
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 15901186194853aebf3b8222f271203161770380
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77442577"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561438"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Kurz: nasazení a konfigurace Azure Firewall v hybridní síti pomocí Azure Portal
 
@@ -79,7 +79,7 @@ Nejdřív vytvořte skupinu prostředků, která bude obsahovat prostředky pro 
 4. V části **Předplatné** vyberte své předplatné.
 5. V **oblasti oblast**vyberte **východní USA**. Všechny prostředky, které vytvoříte později, musí být ve stejném umístění.
 6. Vyberte **zkontrolovat + vytvořit**.
-7. Vyberte **Create** (Vytvořit).
+7. Vyberte **Vytvořit**.
 
 Nyní vytvořte virtuální síť:
 
@@ -157,7 +157,7 @@ Teď nasaďte bránu firewall do virtuální sítě centra brány firewall.
    |Skupina prostředků     |**FW – Hybrid-test** |
    |Název     |**AzFW01**|
    |Umístění     |Vyberte dříve použité umístění.|
-   |Volba virtuální sítě     |**Použít existující**:<br> **Virtuální síť – centrum**|
+   |Volba virtuální sítě     |**Use existing** (Použít existující):<br> **Virtuální síť – centrum**|
    |Veřejná IP adresa     |Vytvořit nový: <br>**Název** - **FW-PIP**. |
 
 5. Vyberte **Zkontrolovat a vytvořit**.
@@ -179,9 +179,10 @@ Nejdřív přidejte síťové pravidlo, které povolí webový provoz.
 6. V části **Akce** vyberte **Povolit**.
 6. Do pole **pravidla**zadejte **AllowWeb**.
 7. V části **Protokol** vyberte **TCP**.
-8. Pro **zdrojové adresy**zadejte **192.168.1.0/24**.
-9. Pro cílovou adresu zadejte **10.6.0.0/16** .
-10. V případě **cílových portů**zadejte **80**.
+8. Jako **typ zdroje**vyberte **IP adresa**.
+9. Jako **zdroj**zadejte **192.168.1.0/24**.
+10. Pro **cílovou adresu**zadejte **10.6.0.0/16** .
+11. V případě **cílových portů**zadejte **80**.
 
 Nyní přidejte pravidlo povolující provoz protokolu RDP.
 
@@ -189,10 +190,11 @@ Na řádku druhý pravidlo zadejte následující informace:
 
 1. **Název**zadejte **AllowRDP**.
 2. V části **Protokol** vyberte **TCP**.
-3. Pro **zdrojové adresy**zadejte **192.168.1.0/24**.
-4. Pro cílovou adresu zadejte **10.6.0.0/16** .
-5. V případě **cílových portů**zadejte **3389**.
-6. Vyberte **Přidat**.
+3. Jako **typ zdroje**vyberte **IP adresa**.
+4. Jako **zdroj**zadejte **192.168.1.0/24**.
+5. Pro **cílovou adresu**zadejte **10.6.0.0/16** .
+6. V případě **cílových portů**zadejte **3389**.
+7. Vyberte **Přidat**.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>Vytvoření a propojení bran VPN
 
@@ -298,11 +300,11 @@ Dále vytvořte několik tras:
 1. Na domovské stránce Azure Portal vyberte **vytvořit prostředek**.
 2. Do textového pole Hledat zadejte **Směrování Table** a stiskněte klávesu **ENTER**.
 3. Vyberte **směrovací tabulku**.
-4. Vyberte **Create** (Vytvořit).
+4. Vyberte **Vytvořit**.
 5. Jako název zadejte **udr-hub-paprsek**.
 6. Vyberte položku **FW-Hybrid-test** pro skupinu prostředků.
 8. V části **Umístění** vyberte dříve použité umístění.
-9. Vyberte **Create** (Vytvořit).
+9. Vyberte **Vytvořit**.
 10. Po vytvoření směrovací tabulky vyberte ji a otevřete stránku směrovací tabulka.
 11. V levém sloupci vyberte možnost **trasy** .
 12. Vyberte **Přidat**.
@@ -326,12 +328,12 @@ Nyní vytvořte výchozí trasu z podsítě paprsků.
 1. Na domovské stránce Azure Portal vyberte **vytvořit prostředek**.
 2. Do textového pole Hledat zadejte **Směrování Table** a stiskněte klávesu **ENTER**.
 3. Vyberte **směrovací tabulku**.
-5. Vyberte **Create** (Vytvořit).
+5. Vyberte **Vytvořit**.
 6. Jako název zadejte **udr-DG**.
 7. Vyberte položku **FW-Hybrid-test** pro skupinu prostředků.
 8. V části **Umístění** vyberte dříve použité umístění.
 4. Pro **šíření tras brány virtuální sítě**vyberte **zakázáno**.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 2. Po vytvoření směrovací tabulky vyberte ji a otevřete stránku směrovací tabulka.
 3. V levém sloupci vyberte možnost **trasy** .
 4. Vyberte **Přidat**.

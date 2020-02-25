@@ -1,5 +1,5 @@
 ---
-title: Co je vlastní hlas? – Speech Service
+title: Vylepšení syntézy pomocí vlastní hlasové služby pro hlasové řeči
 titleSuffix: Azure Cognitive Services
 description: Vlastní hlas je sada online nástrojů, která umožňuje vytvořit rozpoznatelný hlas pro vaši značku. Vše, co vše trvá, je několik zvukových souborů a přidružených přepisů. Pomocí odkazů níže můžete začít vytvářet vlastní prostředí pro text v textu.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: dapine
-ms.openlocfilehash: 15d15ce2d4dfc55a51bf21ba005512606cc4997a
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 786cf687e569af172eabfaa9068ae61ffd6b2988
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424962"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562492"
 ---
 # <a name="get-started-with-custom-voice"></a>Začínáme se službou Custom Voice
 

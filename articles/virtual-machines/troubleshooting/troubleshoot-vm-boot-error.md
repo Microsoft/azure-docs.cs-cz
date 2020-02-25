@@ -6,20 +6,19 @@ documentationcenter: ''
 author: v-miegge
 manager: dcscontentpm
 editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 29242b802dbbff4218506422293082a495c4d21e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685125"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561945"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>Spuštění virtuálního počítače se systémem Linux pro grub záchranu
 

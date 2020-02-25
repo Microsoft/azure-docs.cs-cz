@@ -1,5 +1,5 @@
 ---
-title: Správa vertikálního škálování clusteru (horizontální navýšení kapacity) v Azure Průzkumník dat, aby se vešla měnící poptávka
+title: Správa vertikálního škálování clusteru (horizontální navýšení kapacity) tak, aby odpovídalo poptávce v Azure Průzkumník dat
 description: Tento článek popisuje kroky pro horizontální navýšení a snížení kapacity clusteru Azure Průzkumník dat na základě změny poptávky.
 author: radennis
 ms.author: radennis
@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 80bbdf3a5d936719b06782cd78d56088b36cb21d
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 95275598febae2b6b0355a7bc3e512490dae500d
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67985483"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560435"
 ---
 # <a name="manage-cluster-vertical-scaling-scale-up-in-azure-data-explorer-to-accommodate-changing-demand"></a>Správa vertikálního škálování clusteru (horizontální navýšení kapacity) v Azure Průzkumník dat, aby se vešla měnící poptávka
 
@@ -46,9 +46,9 @@ Tento článek vysvětluje pracovní postup vertikálního škálování:
 
 Nyní jste nakonfigurovali vertikální škálování pro váš cluster Azure Průzkumník dat. Přidejte další pravidlo pro horizontální škálování. Pokud potřebujete pomoc s problémy s škálováním clusteru, [otevřete žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) v Azure Portal.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Správa horizontálního škálování clusteru](manage-cluster-horizontal-scaling.md) pro dynamické horizontální navýšení kapacity počtu instancí na základě metrik, které zadáte.
 
-* Pomocí tohoto článku sledujte využití prostředků: [Monitorujte výkon, stav a využití Azure Průzkumník dat s metrikami](using-metrics.md).
+* Pomocí tohoto článku sledujte využití prostředků: [monitorování výkonu, stavu a využití Azure Průzkumník dat pomocí metrik](using-metrics.md).
 

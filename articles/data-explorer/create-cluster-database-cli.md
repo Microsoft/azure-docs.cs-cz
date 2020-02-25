@@ -1,5 +1,5 @@
 ---
-title: Vytvoření clusteru a databáze Azure Průzkumník dat pomocí Azure CLI
+title: Vytvoření clusteru Azure Průzkumník dat & DB pomocí Azure CLI
 description: Naučte se vytvářet cluster a databázi Azure Průzkumník dat pomocí Azure CLI.
 author: radennis
 ms.author: radennis
@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: bd53a8e29254af617b6cfa68935a191a50fc526c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 6b8c2924e50da095c3bc5c7db2d2bf48ef5a27c2
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326771"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77561931"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Vytvoření clusteru a databáze Azure Průzkumník dat pomocí Azure CLI
 
@@ -61,7 +61,7 @@ Následující kroky se nevyžadují, pokud spouštíte příkazy v Azure Cloud 
    |**Nastavení** | **Navrhovaná hodnota** | **Popis pole**|
    |---|---|---|
    | name | *azureclitest* | Požadovaný název clusteru.|
-   | SKU | *D13_v2* | SKU, které bude použito pro váš cluster. |
+   | skj | *D13_v2* | SKU, které bude použito pro váš cluster. |
    | resource-group | *testrg* | Název skupiny prostředků, ve které se cluster vytvoří. |
 
     Existují další nepovinné parametry, které můžete použít, například kapacitu clusteru.
@@ -72,7 +72,7 @@ Následující kroky se nevyžadují, pokud spouštíte příkazy v Azure Cloud 
     az kusto cluster show --name azureclitest --resource-group testrg
     ```
 
-Pokud výsledek obsahuje `provisioningState` `Succeeded` hodnotu, cluster se úspěšně vytvořil.
+Pokud výsledek obsahuje `provisioningState` s hodnotou `Succeeded`, cluster se úspěšně vytvořil.
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Vytvoření databáze v clusteru Azure Průzkumník dat
 

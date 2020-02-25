@@ -1,0 +1,53 @@
+### YamlMime:Landing
+title: Dokumentace k zařízením pro rozpoznávání řeči
+summary: Sada SDK zařízení řeči je pretuned knihovny, které je spárováno pomocí účelových, mikrofon pole development Kit.
+metadata:
+  title: Dokumentace k zařízením pro rozpoznávání řeči – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  titleSuffix: Azure Cognitive Services
+  services: cognitive-services
+  author: IEvangelist
+  manager: nitinme
+  layout: LandingPage
+  ms.service: speech-service
+  ms.topic: landing-page
+  ms.date: 02/11/2020
+  ms.author: dapine
+  ms.openlocfilehash: f7105a4f0330c61ee10d8dee00d40ce17bc40188
+  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.translationtype: MT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 02/22/2020
+  ms.locfileid: "77562853"
+landingContent:
+- title: Začínáme
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Sada Speech Devices SDK
+      url: speech-devices-sdk.md
+  - linkListType: quickstart
+    links:
+    - text: Použít sadu Speech SDK pro zařízení (Windows)
+      url: speech-devices-sdk-quickstart.md?pivots=platform-windows
+    - text: Použít sadu Speech SDK pro zařízení (Linux)
+      url: speech-devices-sdk-quickstart.md?pivots=platform-linux
+    - text: Použít sadu Speech pro zařízení (Android)
+      url: speech-devices-sdk-quickstart.md?pivots=platform-android
+- title: Podrobní průvodci
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Návrh pole mikrofonu
+      url: speech-devices-sdk-microphone.md
+    - text: Nastavení sady Roobo v1
+      url: speech-devices-sdk-roobo-v1.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Poznámky k verzi
+      url: devices-sdk-release-notes.md
+  - linkListType: reference
+    links:
+    - text: Řešení problémů
+      url: speech-devices-sdk-troubleshooting.md

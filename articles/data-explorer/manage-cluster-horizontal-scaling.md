@@ -1,5 +1,5 @@
 ---
-title: Správa horizontálního škálování clusteru (horizontální navýšení kapacity) v Azure Průzkumník dat, aby se vešly měnící se požadavky
+title: Správa horizontálního škálování clusteru (horizontální navýšení kapacity) tak, aby odpovídalo poptávce v Azure Průzkumník dat
 description: Tento článek popisuje kroky k horizontálnímu navýšení kapacity a škálování v clusteru Azure Průzkumník dat na základě změny poptávky.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 8ab192957ead806b4bb3ae8e7395589f3b1ecbbe
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: d0c9fe9ebd040ee59ae8717e95fd1911eaef61be
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76833290"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560452"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Správa horizontálního škálování clusteru (horizontální navýšení kapacity) v Azure Průzkumník dat, aby se vešly měnící se požadavky
 
@@ -45,7 +45,7 @@ Optimalizované automatické škálování je doporučovanou metodou automatick�
 
 1. Vyberte minimální počet instancí a maximální počet instancí. Automatické škálování clusteru mezi těmito dvěma čísly závisí na zatížení.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
    ![Optimalizovaná metoda automatického škálování](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
 
@@ -100,7 +100,7 @@ Pomocí vlastního automatického škálování můžete cluster dynamicky šká
     | **Časová agregace** | Vyberte kritéria agregace, například **průměr**. |
     | **Název metriky** | Vyberte metriku, na které se má operace škálování zakládat, jako je například **využití mezipaměti**. |
     | **Statistika časových intervalů** | Vyberte **průměrnou**, **minimální**, **maximální**a **součet**. |
-    | **– Operátor** | Vyberte odpovídající možnost, například je **větší nebo rovna**. |
+    | **Podnikatel** | Vyberte odpovídající možnost, například je **větší nebo rovna**. |
     | **Mezí** | Vyberte vhodnou hodnotu. Například pro využití mezipaměti je dobrým výchozím bodem 80 procent. |
     | **Doba trvání (v minutách)** | Vyberte odpovídající čas, po který se má systém při výpočtu metriky podívat na pozadí. Začněte s výchozím nastavením 10 minut. |
     |  |  |
@@ -125,7 +125,7 @@ Pomocí vlastního automatického škálování můžete cluster dynamicky šká
     | **Výchozí** | Výchozí počet instancí. Toto nastavení se používá, pokud dochází k problémům se čtením metrik prostředků. |
     |  |  |
 
-7. Vyberte **Uložit**.
+7. Vyberte **Save** (Uložit).
 
 Nyní jste nakonfigurovali horizontální škálování pro váš cluster Průzkumník dat Azure. Přidejte další pravidlo pro vertikální škálování. Pokud potřebujete pomoc s problémy s škálováním clusteru, [otevřete žádost o podporu](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) v Azure Portal.
 
