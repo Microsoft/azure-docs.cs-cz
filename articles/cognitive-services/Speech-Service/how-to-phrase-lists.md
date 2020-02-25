@@ -3,20 +3,20 @@ title: Seznamy frází – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
 description: Naučte se poskytovat hlasovou službu pomocí seznamu frází pomocí objektu `PhraseListGrammar` ke zlepšení výsledků rozpoznávání řeči na text.
 services: cognitive-services
-author: rhurey
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
-ms.author: rhurey
+ms.date: 02/04/2020
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2ceb53b50810aef501278710ae990c57fc45030c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f84ea6b2b0f1e8246e1d765e54f663cd01f29b1d
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971668"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560843"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Seznamy frází pro převod řeči na text
 
