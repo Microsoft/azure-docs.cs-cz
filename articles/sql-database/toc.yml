@@ -150,6 +150,8 @@
               href: sql-database-managed-instance-public-endpoint-securely.md
             - name: Auditování spravované instance
               href: sql-database-managed-instance-auditing.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Připojení a dotazování
       href: sql-database-connect-query.md
       items:

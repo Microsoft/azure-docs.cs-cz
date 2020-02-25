@@ -72,12 +72,12 @@
       items:
         - name: Přehled zabezpečení
           href: overview-security.md
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Světy zabezpečení
           href: key-vault-ovw-security-worlds.md
         - name: Zabezpečení trezoru klíčů
           href: key-vault-secure-your-key-vault.md
-        - name: Integrované ovládací prvky zabezpečení
-          href: key-vault-security-controls.md
     - name: Obnovitelné odstranění
       href: key-vault-ovw-soft-delete.md
     - name: Monitorování událostí služby Key Vault

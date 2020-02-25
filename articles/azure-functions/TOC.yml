@@ -353,9 +353,27 @@
             - name: Výstup
               href: functions-bindings-event-grid-output.md
         - name: Event Hubs
-          href: functions-bindings-event-hubs.md
+          items:
+            - name: Přehled
+              href: functions-bindings-event-hubs.md
+              displayName: Azure Event Hubs
+            - name: Trigger
+              href: functions-bindings-event-hubs-trigger.md
+              displayName: Azure Event Hubs
+            - name: Výstup
+              href: functions-bindings-event-hubs-output.md
+              displayName: Azure Event Hubs
         - name: IoT Hub
-          href: functions-bindings-event-iot.md
+          items:
+            - name: Přehled
+              href: functions-bindings-event-iot.md
+              displayName: Azure IoT Hubs
+            - name: Trigger
+              href: functions-bindings-event-iot-trigger.md
+              displayName: Azure IoT Hubs
+            - name: Výstup
+              href: functions-bindings-event-iot-output.md
+              displayName: Azure IoT Hubs
         - name: HTTP a webhooky
           items:
             - name: Přehled

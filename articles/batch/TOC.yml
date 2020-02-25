@@ -41,6 +41,10 @@
       href: cli-samples.md
 - name: Koncepty
   items:
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Funkce pro vývojáře
       href: batch-api-basics.md
     - name: Rozhraní API a nástroje
