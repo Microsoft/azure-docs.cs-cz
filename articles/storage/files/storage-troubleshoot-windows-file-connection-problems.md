@@ -7,19 +7,16 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 207a3a6c59012154d547bbd224782b90e1046c6a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544952"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597962"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se soubory Azure v systému Windows
 
 V tomto článku jsou uvedené běžné problémy související se soubory Microsoft Azure, když se připojujete z klientů Windows. Poskytuje taky možné příčiny a řešení těchto problémů. Kromě kroků pro řešení potíží v tomto článku můžete také použít [AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) , abyste zajistili, že prostředí klienta Windows má správné požadavky. AzFileDiagnostics automatizuje detekci většiny příznaků uvedených v tomto článku a pomáhá nastavit vaše prostředí, aby dosáhlo optimálního výkonu. Tyto informace můžete najít také v [poradci při potížích se sdílenými složkami souborů Azure](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares) , který obsahuje postup, který vám pomůže s problémy při připojování/mapování/připojování sdílených složek Azure Files.
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>Chyba 5 při připojení sdílené složky Azure
@@ -250,7 +247,7 @@ Použijte jedno z následujících řešení:
 
 -   Připojte jednotku ze stejného uživatelského účtu, který obsahuje aplikaci. Můžete použít nástroj, jako je PsExec.
 - Název a klíč účtu úložiště předejte do parametrů uživatelské jméno a heslo pro příkaz net use.
-- Pomocí příkazu cmdkey přidejte přihlašovací údaje do Správce přihlašovacích údajů. Tuto operaci proveďte z příkazového řádku v kontextu účtu služby, a to buď pomocí interaktivního přihlášení, nebo pomocí runas.
+- Pomocí příkazu cmdkey přidejte přihlašovací údaje do Správce přihlašovacích údajů. Tuto operaci proveďte z příkazového řádku v kontextu účtu služby, a to buď pomocí interaktivního přihlášení, nebo pomocí `runas`.
   
   `cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>`
 - Namapujte sdílenou složku přímo bez použití mapovaného písmene jednotky. Některé aplikace se nemusí znovu připojit ke správnému písmenu jednotky, takže použití úplné cesty UNC může být spolehlivější. 
@@ -300,7 +297,7 @@ Můžete ho například nastavit na 0x100000 a zjistit, jestli se výkon zlepši
 
 ### <a name="cause"></a>Příčina
 
-K chybě AadDsTenantNotFound dojde při pokusu o [Povolení ověřování služby Azure Active Directory Domain Service (AAD DS) pro soubory Azure](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) v účtu úložiště, ve kterém není vytvořená [Služba AAD Domain Service (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) v tenantovi AAD přidruženého předplatného.  
+K chybě AadDsTenantNotFound dojde při pokusu o [Povolení ověřování Azure Active Directory Domain Services (azure služba AD DS) na Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md) v účtu úložiště, ve kterém není vytvořená [Služba AAD Domain Service (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) v tenantovi AAD přidruženého předplatného.  
 
 ### <a name="solution"></a>Řešení
 
@@ -320,5 +317,5 @@ V současné době můžete zvážit opětovné nasazení služby AAD DS pomocí
 - Názvy nesmí začínat číselným znakem.
 - Název musí mít délku 3 až 63 znaků.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Obraťte se na podporu.
 Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli rychle vyřešit problém.

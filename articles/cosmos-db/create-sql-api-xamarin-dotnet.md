@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: masoucou
-ms.openlocfilehash: 74d34705a6541b396fa2c2bf5028254f5f2e8d21
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f951daf08590feb6fa1aaad831f8a735db141984
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466308"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586763"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>Rychlý Start: Vytvoření aplikace TODO pomocí Azure Cosmos DB účtu rozhraní SQL API pomocí Xamarin
 
@@ -25,7 +25,7 @@ ms.locfileid: "73466308"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB.
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru databáze Azure Cosmos.
 
 > [!NOTE]
 > Vzorový kód celé ukázkové kanonické aplikace Xamarin ukazující několik nabídek Azure, včetně služby Cosmos DB, najdete [tady](https://github.com/xamarinhq/app-geocontacts) na GitHubu. Tato aplikace ukazuje, jak zobrazit kontakty rozptýlené v různých geografických umístěních a jak těmto kontaktům umožnit aktualizaci svého umístění.
@@ -38,7 +38,7 @@ Tento rychlý Start ukazuje, jak vytvořit Azure Cosmos DB účet rozhraní SQL 
 
 Pokud vyvíjíte ve Windows a ještě nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit sady funkcí **Vývoj pro Azure** a **Vývoj mobilních aplikací pomocí .NET**.
 
-Pokud používáte Mac, můžete si stáhnout **bezplatnou verzi** [Visual Studio pro Mac](https://www.visualstudio.com/vs/mac/).
+Pokud používáte Mac, můžete si **zdarma** stáhnout [Visual Studio pro Mac](https://www.visualstudio.com/vs/mac/).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -63,7 +63,7 @@ Pokud používáte Mac, můžete si stáhnout **bezplatnou verzi** [Visual Studi
 
 Teď naklonujte aplikaci Xamarin SQL API z GitHubu, Projděte si kód, Získejte klíče rozhraní API a spusťte ho. Přesvědčíte se, jak snadno se pracuje s daty prostřednictvím kódu programu.
 
-1. Otevřete příkazový řádek, vytvořte novou složku git-samples a pak příkazový řádek zavřete.
+1. Otevřete příkazový řádek, vytvořte novou složku git-samples a potom příkazový řádek zavřete.
 
     ```bash
     md "C:\git-samples"
@@ -89,7 +89,7 @@ Vraťte se na Azure Portal, kde najdete informace o klíčích rozhraní API, a 
 
 1. Na webu [Azure Portal](https://portal.azure.com/) v levém navigačním panelu vašeho účtu rozhraní SQL API služby Azure Cosmos DB klikněte na **Klíče** a pak na **Klíče pro čtení i zápis**. V dalším kroku zkopírujete pomocí tlačítek kopírování na pravé straně obrazovky identifikátor URI a primární klíč do souboru APIKeys.cs.
 
-    ![Zobrazení a zkopírování přístupového klíče na portálu Azure Portal v okně Klíče](./media/create-sql-api-xamarin-dotnet/keys.png)
+    ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal v okně Klíče](./media/create-sql-api-xamarin-dotnet/keys.png)
 
 2. V aplikaci Visual Studio 2019 nebo Visual Studio pro Mac otevřete soubor APIKeys.cs ve složce Azure-DocumentDB-dotnet/Samples/Xamarin/ToDoItems/ToDoItems. Core/Helper.
 
@@ -128,7 +128,7 @@ Teď se rychle podíváme na to, jak aplikace komunikuje se službou Azure Cosmo
 
 * Při dotazování kontejneru pro dokumenty se používá metoda `DocumentClient.CreateDocumentQuery<T>`, jak je vidět ve funkci `CosmosDBService.GetToDoItems`:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=GetToDoItems)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="GetToDoItems"::: 
 
     `CreateDocumentQuery<T>` převezme identifikátor URI, který odkazuje na kontejner vytvořený v předchozí části. Můžete také zadat operátory LINQ, jako je například klauzule `Where`. V tomto případě se vrátí pouze nesplněné položky seznamu úkolů.
 
@@ -141,13 +141,13 @@ Teď se rychle podíváme na to, jak aplikace komunikuje se službou Azure Cosmo
 
 * Funkce `ComsmosDBService.InsertToDoItem` ukazuje, jak vložit nový dokument:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=InsertToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="InsertToDoItem"::: 
 
     Je zadán identifikátor URI položky a také položka, která má být vložena.
 
 * Funkce `CosmosDBService.UpdateToDoItem` ukazuje, jak nahradit existující dokument novým:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=UpdateToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="UpdateToDoItem"::: 
 
     Tady je potřeba nový identifikátor URI k jedinečné identifikaci dokumentu, který se má nahradit, a který se získá pomocí `UriFactory.CreateDocumentUri` a předání názvu databáze a kontejneru a ID dokumentu.
 
@@ -155,7 +155,7 @@ Teď se rychle podíváme na to, jak aplikace komunikuje se službou Azure Cosmo
 
 * Odstranění položky je znázorněno pomocí funkce `CosmosDBService.DeleteToDoItem`:
 
-   [!code-csharp[](~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs?name=DeleteToDoItem)] 
+   :::code language="csharp" source="~/samples-cosmosdb-xamarin/src/ToDoItems.Core/Services/CosmosDBService.cs" id="DeleteToDoItem"::: 
 
     Znovu si poznamenejte, jak se vytváří jedinečný identifikátor URI dokumentu a který se předává do funkce `DocumentClient.DeleteDocumentAsync`.
 

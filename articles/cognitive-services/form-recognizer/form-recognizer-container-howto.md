@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: dapine
-ms.openlocfilehash: f0a707f65ecf17887b4e5d12e3487ba3359a68ec
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 64bd6bb0a1a064f38eae472cb889acb6df7ae4b1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888307"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605144"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Instalace a spuštění kontejnerů pro rozpoznávání formulářů (Preview)
 
@@ -35,9 +35,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Než začnete používat kontejnery pro rozpoznávání formulářů, musíte splnit následující předpoklady:
 
-|Požaduje se|Účel|
+|Požadováno|Účel|
 |--|--|
-|Docker Engine| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Základy Dockeru a kontejnerech základní informace o najdete v článku [přehled Dockeru](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> V systému Windows musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
+|Modul Docker| Potřebujete modul Docker nainstalovaný na [hostitelském počítači](#the-host-computer). Docker poskytuje balíčky, které konfigurují prostředí Docker v systémech [MacOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)a [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Informace o úvodu k Docker a kontejneru najdete v tématu [Přehled Docker](https://docs.docker.com/engine/docker-overview/).<br><br> Docker je třeba nastavit umožňující kontejnery a spojte se s odesílat fakturačních dat do Azure. <br><br> V systému Windows musí být Docker taky nakonfigurovaný tak, aby podporoval kontejnery Linux.<br><br>|
 |Znalost pomocí Docker | Měli byste mít základní znalosti konceptů Docker, jako jsou registry, úložiště, kontejnery a image kontejnerů, a znalosti základních `docker`ch příkazů.|
 |Rozhraní příkazového řádku Azure| Na hostitele nainstalujte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) .|
 |Prostředek rozhraní API pro počítačové zpracování obrazu| Chcete-li zpracovat naskenované dokumenty a obrázky, potřebujete Počítačové zpracování obrazu prostředek. K funkci Rozpoznávání textu můžete přistupovat buď jako prostředek Azure (REST API nebo SDK), nebo jako *textový* [kontejner](../Computer-vision/computer-vision-how-to-install-containers.md#get-the-container-image-with-docker-pull)pro rozpoznávání služeb. Použijí se obvyklé fakturační poplatky. <br><br>Předejte klíč rozhraní API a koncové body pro váš prostředek Počítačové zpracování obrazu (cloud Azure nebo kontejner Cognitive Services). Použijte tento klíč rozhraní API a koncový bod jako **{COMPUTER_VISION_API_KEY}** a **{COMPUTER_VISION_ENDPOINT_URI}** .<br><br> Použijete-li kontejner *vnímání-Services-rozpoznávání-text* , ujistěte se, že:<br><br>Váš Počítačové zpracování obrazu klíč pro kontejner pro rozpoznávání formulářů je klíč zadaný v příkazu Počítačové zpracování obrazu `docker run` pro kontejner rozpoznávání *-Services-rozpoznávání-text* .<br>Koncový bod fakturace je koncový bod kontejneru (například `http://localhost:5000`). Použijete-li kontejner Počítačové zpracování obrazu kontejner a rozpoznávání formulářů společně na stejném hostiteli, nelze současně spustit výchozí port *5000*. |
@@ -64,7 +64,7 @@ Tento klíč se používá ke spuštění kontejneru a je k dispozici na stránc
 
 ## <a name="request-access-to-the-container-registry"></a>Požádat o přístup k registru kontejneru
 
-Aby bylo možné požádat o přístup ke kontejneru, musíte nejprve dokončit a odeslat [formulář žádosti o přístup kontejnerů pro rozpoznávání formulářů Cognitive Services](https://aka.ms/FormRecognizerRequestAccess) . Tím se také zaregistruje Počítačové zpracování obrazu. Nemusíte se do formuláře žádosti o Počítačové zpracování obrazu zaregistrovat samostatně. 
+Aby bylo možné požádat o přístup ke kontejneru, musíte nejprve dokončit a odeslat [formulář žádosti o přístup kontejnerů pro rozpoznávání formulářů Cognitive Services](https://aka.ms/FormRecognizerContainerRequestAccess) . Tím se také zaregistruje Počítačové zpracování obrazu. Nemusíte se do formuláře žádosti o Počítačové zpracování obrazu zaregistrovat samostatně. 
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -125,7 +125,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 Po dokončení kontejneru v [hostitelském počítači](#the-host-computer)použijte následující postup pro práci s kontejnerem.
 
-1. [Spusťte kontejner](#run-the-container-by-using-the-docker-run-command)s požadovaným nastavením fakturace. K dispozici jsou `docker run` další [příklady](form-recognizer-container-configuration.md#example-docker-run-commands) příkazu.
+1. [Spusťte kontejner](#run-the-container-by-using-the-docker-run-command)s požadovaným nastavením fakturace. K dispozici jsou další [příklady](form-recognizer-container-configuration.md#example-docker-run-commands) `docker run` příkazu.
 1. [Dotazování koncového bodu předpovědi kontejneru](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-by-using-the-docker-run-command"></a>Spuštění kontejneru pomocí příkazu Docker run
@@ -252,7 +252,7 @@ services:
 
 Kontejner poskytuje rozhraní API koncových bodů dotazů založených na protokolu WebSocket, ke kterým přistupujete v [dokumentaci k sadě SDK služby pro rozpoznávání formulářů](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/).
 
-Ve výchozím nastavení používá sada SDK pro rozpoznávání formulářů online služby. Chcete-li použít kontejner, je nutné změnit inicializační metodu. Podívejte se na následující příklad:
+Ve výchozím nastavení používá sada SDK pro rozpoznávání formulářů online služby. Chcete-li použít kontejner, je nutné změnit inicializační metodu. Podívejte se na následující příklady.
 
 #### <a name="for-c"></a>ForC#
 
@@ -304,19 +304,19 @@ Kontejner poskytuje rozhraní API koncového bodu REST, které můžete najít n
 
 [!INCLUDE [How to stop the container](../../../includes/cognitive-services-containers-stop.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud spouštíte kontejner s povoleným výstupním [připojením](form-recognizer-container-configuration.md#mount-settings) a povolíte protokolování, kontejner generuje soubory protokolu, které jsou užitečné při řešení problémů, ke kterým dochází při spuštění nebo spuštění kontejneru.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Vyúčtování
+## <a name="billing"></a>Fakturace
 
 Kontejnery pro rozpoznávání formulářů odesílají informace o fakturaci do Azure pomocí prostředku _pro rozpoznávání formulářů_ v účtu Azure.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Další informace o těchto možnostech najdete v tématu [konfigurace kontejnery](form-recognizer-container-configuration.md).
+Další informace o těchto možnostech najdete v tématu [konfigurace kontejnerů](form-recognizer-container-configuration.md).
 
 <!--blogs/samples/video courses -->
 

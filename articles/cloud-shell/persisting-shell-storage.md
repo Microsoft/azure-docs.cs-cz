@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 0b3b0b2cc97c86fefe37055e0744b747d4f31687
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75385552"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598744"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Zachovat soubory v Azure Cloud Shell
 Cloud Shell využívá službu Azure File Storage k uchování souborů napříč relacemi. Při počátečním spuštění vás Cloud Shell vyzve k přidružení nové nebo existující sdílené složky, která bude uchovávat soubory napříč relacemi.
@@ -62,15 +62,25 @@ Cloud Shell používá ke sdílení souborů Azure v účtu úložiště v rámc
 Uživatelé by měli uzamknout přístup ke svým souborům nastavením oprávnění v účtu úložiště nebo na úrovni předplatného.
 
 ## <a name="supported-storage-regions"></a>Podporované oblasti úložiště
-Přidružené účty úložiště Azure se musí nacházet ve stejné oblasti jako Cloud Shell počítač, ke kterému je připojujete. Pokud chcete najít aktuální oblast, kterou můžete spustit `env` v bash a najít `ACC_LOCATION`proměnných. Sdílené složky obdrží obrázek o velikosti 5 GB, který jste vytvořili, abyste zachovali `$Home` adresář.
+Pokud chcete zjistit aktuální oblast, kterou můžete spustit `env` v bash, najděte proměnnou `ACC_LOCATION`nebo v PowerShellu Run `$env:ACC_LOCATION`. Sdílené složky obdrží obrázek o velikosti 5 GB, který jste vytvořili, abyste zachovali `$Home` adresář.
 
 Cloud Shell počítače existují v následujících oblastech:
 
-|Oblast|Region (Oblast)|
+|Oblast|Oblast|
 |---|---|
 |Amerika|Východní USA, Střed USA – jih Západní USA|
 |Evropa|Severní Evropa, Západní Evropa|
 |Asie a Tichomoří|Indie – střed, jihovýchodní Asie|
+
+Zákazníci by si měli zvolit primární oblast, pokud nemají požadavek na uložení uložených dat v určité oblasti. Pokud mají takový požadavek, měla by se použít oblast sekundárního úložiště.
+
+### <a name="secondary-storage-regions"></a>Sekundární oblasti úložiště
+Pokud se používá sekundární oblast úložiště, přidružený účet služby Azure Storage se nachází v jiné oblasti jako Cloud Shell počítač, ke kterému je připojujete. Jana může například nastavit účet úložiště tak, aby byl umístěný v oblasti Kanada – východ, Sekundární oblast, ale počítač, ke kterému je připojený, je pořád umístěný v primární oblasti. Jeho data v klidovém umístění jsou umístěna v Kanadě, ale jsou zpracována v USA.
+
+> [!NOTE]
+> Při použití sekundární oblasti může být přístup k souborům a čas spuštění pro Cloud Shell pomalejší.
+
+Uživatel může spustit `(Get-CloudDrive | Get-AzStorageAccount).Location` v PowerShellu, aby se zobrazilo umístění své sdílené složky.
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Omezení vytváření prostředků pomocí zásad prostředků Azure
 Účty úložiště, které vytvoříte v Cloud Shell jsou označené `ms-resource-usage:azure-cloud-shell`. Pokud chcete uživatelům zakázat vytváření účtů úložiště v Cloud Shell, vytvořte [zásady prostředků Azure pro značky](../azure-policy/json-samples.md) , které se spouštějí touto konkrétní značkou.
@@ -139,7 +149,7 @@ Sdílená složka bude i nadále existovat, dokud ji neodstraníte ručně. Clou
 ![Spuštění clouddrive unmount'command](media/persisting-shell-storage/unmount-h.png)
 
 > [!WARNING]
-> I když se spustí tento příkaz, neodstraní žádné prostředky, ručně odstraní skupinu prostředků, účet úložiště nebo sdílenou složku, která je namapovaná na Cloud Shell vymaže vaši image disku `$Home` adresáře a všechny soubory ve sdílené složce. Tuto akci nejde vrátit zpátky.
+> I když se spustí tento příkaz, neodstraní žádné prostředky, ručně odstraní skupinu prostředků, účet úložiště nebo sdílenou složku, která je namapovaná na Cloud Shell vymaže vaši image disku `$Home` adresáře a všechny soubory ve sdílené složce. Tuto akci nelze vrátit zpět.
 ## <a name="powershell-specific-commands"></a>Příkazy specifické pro PowerShell
 
 ### <a name="list-clouddrive-azure-file-shares"></a>Vypsat `clouddrive` sdílené složky Azure

@@ -2,24 +2,22 @@
 title: Centrum nasazení pro Azure Kubernetes
 description: Centrum nasazení v Azure DevOps zjednodušuje nastavení robustního kanálu Azure DevOps pro vaši aplikaci.
 ms.author: puagarw
-ms.prod: devops
-ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 5384180720d391c6b4ae830f9316a70e80003063
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 84e5533a17dc70fb5c835089f3a3cec1a86e35bf
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972981"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596075"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Centrum nasazení pro Azure Kubernetes
 
 Centrum nasazení v Azure DevOps zjednodušuje nastavení robustního kanálu Azure DevOps pro vaši aplikaci. Ve výchozím nastavení centrum nasazení nakonfiguruje kanál Azure DevOps, aby nasadil aktualizace vaší aplikace do clusteru Kubernetes. Můžete rozšíření výchozího nakonfigurovaného kanálu Azure DevOps a také přidat bohatší možnosti: možnost získat před nasazením, zřídit další prostředky Azure, spouštět skripty, upgradovat aplikaci a dokonce i spustit více ověřovacích testů.
 
-V tomto kurzu provedete následující:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Nakonfigurujte kanál Azure DevOps pro nasazení aktualizací vaší aplikace do clusteru Kubernetes.
@@ -27,7 +25,7 @@ V tomto kurzu provedete následující:
 > * Projděte si kanál průběžného doručování (CD).
 > * Vyčistěte prostředky.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Můžete ho získat zdarma prostřednictvím programu [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/).
 
@@ -57,7 +55,7 @@ V tomto kurzu provedete následující:
 
 1. Vyberte cluster AKS a v levém okně vyberte **centrum nasazení (Preview)** . Vyberte **Začínáme**.
 
-   ![settings](media/deployment-center-launcher/settings.png)
+   ![nastavení](media/deployment-center-launcher/settings.png)
 
 1. Zvolte umístění kódu a vyberte **Další**. Pak vyberte jedno z aktuálně podporovaných úložišť: **[Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)** nebo **GitHub**.
 
@@ -69,7 +67,7 @@ V tomto kurzu provedete následující:
 
     - **GitHub**: autorizovat a vyberte úložiště pro váš účet GitHub.
 
-        ![GitHubu](media/deployment-center-launcher/github.gif)
+        ![GitHub](media/deployment-center-launcher/github.gif)
 
 
 1. Centrum nasazení analyzuje úložiště a detekuje vaše souboru Dockerfile. Pokud chcete aktualizovat souboru Dockerfile, můžete označené číslo portu upravit.

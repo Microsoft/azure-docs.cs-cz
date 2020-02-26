@@ -12,12 +12,12 @@ ms.date: 09/27/2019
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9ff446bae0a010b12e84172d5af60c6ca81c0e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 72b3e37a423442194b81e3d10ecc7157201ff8be
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76896900"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586049"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Prostředí koncových uživatelů pro aplikace v Azure Active Directory
 
@@ -32,7 +32,7 @@ Jaké metody si zvolíte pro nasazení ve vaší organizaci, je vaše rozhodnut�
 
 ## <a name="azure-ad-access-panel"></a>Přístupový panel Azure AD
 
-Přístupový panel na https://myapps.microsoft.com je webový portál, který umožňuje koncovému uživateli s účtem organizace v Azure Active Directory zobrazit a spustit cloudové aplikace, ke kterým jim byl udělen přístup správce Azure AD. Pokud jste koncovým uživatelem s [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), můžete pomocí přístupového panelu využít také možnosti samoobslužné správy skupin.
+Přístupový panel na https://myapps.microsoft.com je webový portál, který umožňuje koncovému uživateli s účtem organizace v Azure Active Directory zobrazit a spustit aplikace, kterým jim byl udělen přístup správce Azure AD. Pokud jste koncovým uživatelem s [Azure Active Directory Premium](https://azure.microsoft.com/pricing/details/active-directory/), můžete pomocí přístupového panelu využít také možnosti samoobslužné správy skupin.
 
 ![Snímek obrazovky se zobrazí na portálu Azure AD Access panel](media/what-is-single-sign-on/azure-ad-access-panel.png)
 

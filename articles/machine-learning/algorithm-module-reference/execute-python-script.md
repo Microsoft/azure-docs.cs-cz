@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 1d82261d4b5c1a66498c33610670d7a38acbb197
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 91480b3ba0a2bbd3e8c31adb931f5baabe1b07ce
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152325"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605591"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
@@ -91,7 +91,7 @@ Modul **spuštění skriptu Pythonu** obsahuje ukázkový kód Pythonu, který m
 
     ![Spustit vstupní mapu Pythonu](media/module/python-module.png)
 
-4. Pokud chcete zahrnout nové balíčky nebo kód v Pythonu, přidejte do **svazku skriptu**soubor zip, který obsahuje tyto vlastní prostředky. **Sada prostředků skriptu** musí být soubor zip, který je už nahraný do vašeho pracovního prostoru. 
+4. Pokud chcete zahrnout nové balíčky nebo kód v Pythonu, přidejte do **svazku skriptu**soubor zip, který obsahuje tyto vlastní prostředky. **Sada prostředků skriptu** musí být soubor zip odeslaný do vašeho pracovního prostoru jako datová sada typu souboru. 
 
     Během provádění kanálu lze použít jakýkoli soubor obsažený v odeslaném archivu zip. Pokud archiv obsahuje adresářovou strukturu, struktura se zachová, ale musíte do cesty předřadit adresář **Src** .
 

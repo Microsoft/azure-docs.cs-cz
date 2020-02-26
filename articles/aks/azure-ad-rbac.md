@@ -1,43 +1,40 @@
 ---
-title: Ovládací prvek prostředků clusteru pomocí RBAC a Azure AD ve službě Azure Kubernetes
-description: Další informace o použití členství ve skupině Azure Active Directory k omezení přístupu k prostředkům clusteru pomocí řízení přístupu na základě role (RBAC) ve službě Azure Kubernetes Service (AKS)
+title: Řízení prostředků clusteru pomocí RBAC a Azure AD ve službě Azure Kubernetes Service
+description: Naučte se používat členství ve skupině Azure Active Directory k omezení přístupu k prostředkům clusteru pomocí řízení přístupu na základě role (RBAC) ve službě Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.author: mlearned
-ms.openlocfilehash: fba54fd23fefbe0029b9a809b23568490f05b23e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 456b6dcdd590b48e06c830db85b726d4bebb69e3
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616168"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596517"
 ---
-# <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Řízení přístupu k prostředkům clusteru pomocí Azure Active Directory identity a řízení přístupu na základě role ve službě Azure Kubernetes
+# <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Řízení přístupu k prostředkům clusteru pomocí řízení přístupu na základě role a Azure Active Directory identit ve službě Azure Kubernetes
 
-Azure Kubernetes Service (AKS) je nakonfigurovat pro ověřování uživatelů pomocí Azure Active Directory (AD). V této konfiguraci se přihlásíte k cluster AKS pomocí tokenu ověřování Azure AD. Můžete také nakonfigurovat Kubernetes řízení přístupu na základě rolí (RBAC) k omezení přístupu k prostředkům clusteru na základě členství uživatele identitu nebo skupinu.
+Službu Azure Kubernetes Service (AKS) je možné nakonfigurovat tak, aby pro ověřování uživatelů používala Azure Active Directory (AD). V této konfiguraci se přihlašujete ke clusteru AKS pomocí ověřovacího tokenu Azure AD. Můžete taky nakonfigurovat Kubernetes řízení přístupu na základě role (RBAC) a omezit tak přístup k prostředkům clusteru, které jsou založené na identitě nebo členství uživatele ve skupině.
 
-Tento článek ukazuje, jak použít členství ve skupině Azure AD a řízení přístupu na obory názvů pomocí Kubernetes RBAC v clusteru AKS prostředky clusteru. Příklad skupin a uživatelů se vytvoří ve službě Azure AD a role a RoleBindings se vytvoří v clusteru AKS udělit příslušná oprávnění k vytváření a zobrazování prostředků.
+Tento článek popisuje, jak pomocí členství ve skupině Azure AD řídit přístup k oborům názvů a prostředkům clusteru pomocí Kubernetes RBAC v clusteru AKS. Ukázkové skupiny a uživatelé se vytvářejí ve službě Azure AD a pak se v clusteru AKS vytvoří role a RoleBindings, které jim udělí příslušná oprávnění k vytváření a zobrazování prostředků.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Tento článek předpokládá, že máte existující cluster AKS povolená díky integraci služby Azure AD. Pokud potřebujete AKS cluster, přečtěte si [integrace Azure Active Directory s AKS][azure-ad-aks-cli].
+V tomto článku se předpokládá, že máte povolený existující cluster AKS s integrací služby Azure AD. Pokud potřebujete cluster AKS, přečtěte si téma věnované [integraci Azure Active Directory s AKS][azure-ad-aks-cli].
 
-Musí mít Azure CLI verze 2.0.61 nebo později nainstalována a nakonfigurována. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
+Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][install-azure-cli].
 
-## <a name="create-demo-groups-in-azure-ad"></a>Vytvoření ukázky skupiny ve službě Azure AD
+## <a name="create-demo-groups-in-azure-ad"></a>Vytvoření ukázkových skupin ve službě Azure AD
 
-V tomto článku vytvoříte dvě role uživatelů, které lze použít k zobrazení, jak Kubernetes RBAC a Azure AD řízení přístupu k prostředkům clusteru. Používají se tyto dva vzorové role:
+V tomto článku vytvoříme dvě role uživatelů, které se dají použít k zobrazení, jak Kubernetes RBAC a Azure AD řídí přístup k prostředkům clusteru. Používají se následující dvě příklady rolí:
 
 * **Vývojář aplikace**
-    * Uživatel se jménem *aksdev* , který je součástí *appdev* skupiny.
-* **Inženýr webové spolehlivosti**
-    * Uživatel se jménem *akssre* , který je součástí *opssre* skupiny.
+    * Uživatel s názvem *aksdev* , který je součástí skupiny *appdev* .
+* **Inženýr spolehlivosti sítě**
+    * Uživatel s názvem *akssre* , který je součástí skupiny *opssre* .
 
-V produkčním prostředí můžete použít existující uživatele a skupiny v rámci tenanta služby Azure AD.
+V produkčních prostředích můžete použít existující uživatele a skupiny v rámci tenanta Azure AD.
 
-Nejprve Získejte ID prostředku clusteru AKS pomocí [az aks zobrazit][az-aks-show] příkazu. ID prostředku přiřadit proměnné s názvem *AKS_ID* tak, aby jej lze odkazovat v dalších příkazů.
+Nejdřív Získejte ID prostředku clusteru AKS pomocí příkazu [AZ AKS show][az-aks-show] . Přiřaďte ID prostředku k proměnné s názvem *AKS_ID* , aby na ně bylo možné odkazovat v dalších příkazech.
 
 ```azurecli-interactive
 AKS_ID=$(az aks show \
@@ -46,13 +43,13 @@ AKS_ID=$(az aks show \
     --query id -o tsv)
 ```
 
-Vytvoření první příklad skupiny ve službě Azure AD pro vývojáře aplikací pomocí [vytvořit skupiny ad az][az-ad-group-create] příkazu. Následující příklad vytvoří skupinu *appdev*:
+Vytvořte první ukázkovou skupinu ve službě Azure AD pro vývojáře aplikací pomocí příkazu [AZ AD Group Create][az-ad-group-create] . Následující příklad vytvoří skupinu s názvem *appdev*:
 
 ```azurecli-interactive
 APPDEV_ID=$(az ad group create --display-name appdev --mail-nickname appdev --query objectId -o tsv)
 ```
 
-Teď vytvořte přiřazení Azure role pro *appdev* skupinou pomocí [vytvořit přiřazení role az][az-role-assignment-create] příkazu. Toto přiřazení umožňuje všechny členy skupiny použijte `kubectl` k interakci s clusterem AKS tak, že jim udělíte *Role uživatele pro Cluster Azure Kubernetes Service*.
+Teď vytvořte přiřazení role Azure pro skupinu *appdev* pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] . Toto přiřazení umožňuje, aby všichni členové skupiny používali `kubectl` k interakci s clusterem AKS tím, že jim přidělí *roli uživatele clusteru služby Azure Kubernetes*.
 
 ```azurecli-interactive
 az role assignment create \
@@ -62,15 +59,15 @@ az role assignment create \
 ```
 
 > [!TIP]
-> Pokud se třeba zobrazí chyba `Principal 35bfec9328bd4d8d9b54dea6dac57b82 does not exist in the directory a5443dcd-cd0e-494d-a387-3039b419f0d5.`, počkejte několik sekund pro ID objektu skupiny Azure AD k rozšíří v rámci adresáře a zkuste `az role assignment create` příkaz znovu.
+> Pokud se zobrazí chyba, například `Principal 35bfec9328bd4d8d9b54dea6dac57b82 does not exist in the directory a5443dcd-cd0e-494d-a387-3039b419f0d5.`, počkejte několik sekund, než se ID objektu skupiny Azure AD rozšíří přes adresář, a potom zkuste příkaz `az role assignment create` znovu.
 
-Vytvořte skupinu druhý příklad, s názvem pro SREs *opssre*:
+Vytvořte druhou příklad skupiny, který pro SREs s názvem *opssre*:
 
 ```azurecli-interactive
 OPSSRE_ID=$(az ad group create --display-name opssre --mail-nickname opssre --query objectId -o tsv)
 ```
 
-Přiřazení Azure role pro udělení členy skupiny znovu vytvořit *Role uživatele pro Cluster Azure Kubernetes Service*:
+Znovu vytvořte přiřazení role Azure a udělte členům skupiny *roli uživatele clusteru služby Azure Kubernetes*:
 
 ```azurecli-interactive
 az role assignment create \
@@ -79,13 +76,13 @@ az role assignment create \
   --scope $AKS_ID
 ```
 
-## <a name="create-demo-users-in-azure-ad"></a>Vytvoření ukázkové uživatelů ve službě Azure AD
+## <a name="create-demo-users-in-azure-ad"></a>Vytváření ukázkových uživatelů v Azure AD
 
-Se dvěma skupinami příklad vytvoří ve službě Azure AD pro naši vývojáři aplikací a SREs Pojďme vytvořit dva příklady uživatelů. Testování integrace RBAC na konci tohoto článku, přihlášení ke clusteru AKS pomocí těchto účtů.
+Pomocí dvou ukázkových skupin vytvořených ve službě Azure AD pro naše vývojáře aplikací a SREs teď umožňuje vytvořit dva ukázkové uživatele. Chcete-li otestovat integraci RBAC na konci článku, přihlaste se k AKS clusteru pomocí těchto účtů.
 
-Vytvořit první účet uživatele v Azure AD používat [vytvořit uživatele ad az][az-ad-user-create] příkazu.
+Vytvořte první uživatelský účet ve službě Azure AD pomocí příkazu [AZ AD User Create][az-ad-user-create] .
 
-Následující příklad vytvoří uživatele se zobrazovaným názvem *AKS Dev* a hlavní název uživatele (UPN) z `aksdev@contoso.com`. Aktualizovat hlavní název uživatele chcete zahrnout ověřenou doménou pro vašeho tenanta Azure AD (nahradit *contoso.com* s vlastní doménou) a zadejte vlastní zabezpečené `--password` přihlašovacích údajů:
+Následující příklad vytvoří uživatele se zobrazovaným názvem *AKS dev* a hlavním názvem uživatele (UPN) `aksdev@contoso.com`. Aktualizujte hlavní název uživatele tak, aby zahrnoval ověřenou doménu pro vašeho tenanta Azure AD (nahraďte *contoso.com* vlastní doménou) a zadejte vlastní zabezpečené `--password` přihlašovací údaje:
 
 ```azurecli-interactive
 AKSDEV_ID=$(az ad user create \
@@ -95,13 +92,13 @@ AKSDEV_ID=$(az ad user create \
   --query objectId -o tsv)
 ```
 
-Nyní přidejte uživatele do *appdev* skupinu vytvořenou v předchozím oddílu pomocí [přidat člena skupiny ad az][az-ad-group-member-add] příkaz:
+Nyní přidejte uživatele do skupiny *appdev* vytvořené v předchozí části pomocí příkazu [AZ AD Group member Add][az-ad-group-member-add] :
 
 ```azurecli-interactive
 az ad group member add --group appdev --member-id $AKSDEV_ID
 ```
 
-Vytvořte druhý uživatelský účet. Následující příklad vytvoří uživatele se zobrazovaným názvem *AKS SRE* a hlavní název uživatele (UPN) z `akssre@contoso.com`. Znovu, aktualizujte hlavní název uživatele chcete zahrnout ověřenou doménou pro vašeho tenanta Azure AD (nahradit *contoso.com* s vlastní doménou) a zadejte vlastní zabezpečené `--password` přihlašovacích údajů:
+Vytvořte druhý uživatelský účet. Následující příklad vytvoří uživatele se zobrazovaným názvem *AKS SRE* a hlavním názvem uživatele (UPN) `akssre@contoso.com`. Znovu aktualizujte hlavní název uživatele tak, aby zahrnoval ověřenou doménu pro vašeho tenanta Azure AD (nahraďte *contoso.com* vlastní doménou) a zadejte vlastní zabezpečené `--password` přihlašovací údaje:
 
 ```azurecli-interactive
 # Create a user for the SRE role
@@ -115,27 +112,27 @@ AKSSRE_ID=$(az ad user create \
 az ad group member add --group opssre --member-id $AKSSRE_ID
 ```
 
-## <a name="create-the-aks-cluster-resources-for-app-devs"></a>Vytvořit prostředky clusteru AKS pro vývojáře aplikací
+## <a name="create-the-aks-cluster-resources-for-app-devs"></a>Vytvoření prostředků clusteru AKS pro app vývojáři
 
-Teď se vytvoří skupiny Azure AD a uživatelů. Přiřazení Azure role byly vytvořeny pro členy skupiny pro připojení ke clusteru AKS jako běžný uživatel. Nyní nakonfigurujeme clusteru AKS, pokud chcete povolit tyto různé skupiny přístup ke konkrétním prostředkům.
+Nyní se vytvoří skupiny a uživatelé služby Azure AD. Přiřazení rolí Azure se vytvořilo pro členy skupiny pro připojení ke clusteru AKS jako běžnému uživateli. Teď nakonfigurujeme cluster AKS, aby tyto různé skupiny umožňovaly přístup ke konkrétním prostředkům.
 
-Nejprve získejte clusteru pomocí přihlašovacích údajů správce [az aks get-credentials][az-aks-get-credentials] příkazu. Jedním z následujících částí, obdržíte standardní *uživatele* přihlašovacích údajů pro ověřování Azure AD najdete v clusteru toku v činnosti.
+Nejprve pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] Získejte přihlašovací údaje Správce clusteru. V jedné z následujících částí získáte standardní přihlašovací údaje pro *uživatele* clusteru, abyste viděli tok ověřování Azure AD v akci.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-Vytvoření oboru názvů v clusteru AKS pomocí [kubectl vytvoření oboru názvů][kubectl-create] příkazu. Následující příklad vytvoří název oboru názvů *dev*:
+Pomocí příkazu [kubectl Create Namespace][kubectl-create] vytvořte v clusteru AKS obor názvů. Následující příklad vytvoří název oboru názvů *dev*:
 
 ```console
 kubectl create namespace dev
 ```
 
-V systému Kubernetes *role* definovat oprávnění udělit, a *RoleBindings* aplikovat požadované uživatelům nebo skupinám. Tato přiřazení můžete použít k daném oboru názvů nebo přes celý cluster. Další informace najdete v tématu [pomocí RBAC se podařilo Autorizovat][rbac-authorization].
+V Kubernetes *role* definují oprávnění pro udělení a *RoleBindings* je použijí pro požadované uživatele nebo skupiny. Tato přiřazení lze použít na daný obor názvů nebo v celém clusteru. Další informace najdete v tématu [použití autorizace RBAC][rbac-authorization].
 
-Nejprve vytvořte roli pro *dev* oboru názvů. Tato role uděluje úplná oprávnění k oboru názvů. V produkčním prostředí můžete určit podrobnější oprávnění pro různé uživatele nebo skupiny.
+Nejprve vytvořte roli pro obor názvů pro *vývoj* . Tato role uděluje úplný přístup k oboru názvů. V produkčních prostředích můžete zadat podrobnější oprávnění pro různé uživatele nebo skupiny.
 
-Vytvořte soubor s názvem `role-dev-namespace.yaml` a vložte následující YAML manifestu:
+Vytvořte soubor s názvem `role-dev-namespace.yaml` a vložte následující manifest YAML:
 
 ```yaml
 kind: Role
@@ -154,19 +151,19 @@ rules:
   verbs: ["*"]
 ```
 
-Vytvoření s použitím Role [použití kubectl][kubectl-apply] příkaz a zadejte název souboru manifestu YAML:
+Vytvořte roli pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte název souboru manifestu YAML:
 
 ```console
 kubectl apply -f role-dev-namespace.yaml
 ```
 
-Potom Získejte ID prostředku pro *appdev* skupinou pomocí [az ad skupiny zobrazit][az-ad-group-show] příkazu. Tato skupina je nastavena jako předmět RoleBinding v dalším kroku.
+V dalším kroku Získejte ID prostředku pro skupinu *appdev* pomocí příkazu [AZ AD Group show][az-ad-group-show] . Tato skupina se nastaví jako předmět RoleBinding v dalším kroku.
 
 ```azurecli-interactive
 az ad group show --group appdev --query objectId -o tsv
 ```
 
-Teď vytvořte RoleBinding pro *appdev* skupiny použijte dříve vytvořenou roli pro přístup k oboru názvů. Vytvořte soubor s názvem `rolebinding-dev-namespace.yaml` a vložte následující YAML manifestu. Na posledním řádku, nahraďte *groupObjectId* s výstupem ID objektu skupiny z předchozího příkazu:
+Nyní vytvořte RoleBinding pro skupinu *appdev* a použijte dříve vytvořenou roli pro přístup k oboru názvů. Vytvořte soubor s názvem `rolebinding-dev-namespace.yaml` a vložte následující manifest YAML. Na posledním řádku nahraďte *groupObjectId* číslem ID objektu skupiny z předchozího příkazu:
 
 ```yaml
 kind: RoleBinding
@@ -184,23 +181,23 @@ subjects:
   name: groupObjectId
 ```
 
-Vytvoření s použitím RoleBinding [použití kubectl][kubectl-apply] příkaz a zadejte název souboru manifestu YAML:
+Vytvořte RoleBinding pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte název souboru manifestu YAML:
 
 ```console
 kubectl apply -f rolebinding-dev-namespace.yaml
 ```
 
-## <a name="create-the-aks-cluster-resources-for-sres"></a>Vytvořit prostředky clusteru AKS pro SREs
+## <a name="create-the-aks-cluster-resources-for-sres"></a>Vytvoření prostředků clusteru AKS pro SREs
 
-Nyní opakujte předchozí kroky k vytvoření oboru názvů, Role a RoleBinding pro SREs.
+Teď zopakováním předchozích kroků vytvořte obor názvů, roli a RoleBinding pro SREs.
 
-Nejprve vytvořte obor názvů pro *sre* pomocí [kubectl vytvoření oboru názvů][kubectl-create] příkaz:
+Nejprve vytvořte obor názvů pro *SRE* pomocí příkazu [kubectl Create Namespace][kubectl-create] :
 
 ```console
 kubectl create namespace sre
 ```
 
-Vytvořte soubor s názvem `role-sre-namespace.yaml` a vložte následující YAML manifestu:
+Vytvořte soubor s názvem `role-sre-namespace.yaml` a vložte následující manifest YAML:
 
 ```yaml
 kind: Role
@@ -219,19 +216,19 @@ rules:
   verbs: ["*"]
 ```
 
-Vytvoření s použitím Role [použití kubectl][kubectl-apply] příkaz a zadejte název souboru manifestu YAML:
+Vytvořte roli pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte název souboru manifestu YAML:
 
 ```console
 kubectl apply -f role-sre-namespace.yaml
 ```
 
-Získejte ID prostředku pro *opssre* skupinou pomocí [az ad skupiny zobrazit][az-ad-group-show] příkaz:
+ID prostředku pro skupinu *opssre* získáte pomocí příkazu [AZ AD Group show][az-ad-group-show] :
 
 ```azurecli-interactive
 az ad group show --group opssre --query objectId -o tsv
 ```
 
-Vytvoření RoleBinding pro *opssre* skupiny použijte dříve vytvořenou roli pro přístup k oboru názvů. Vytvořte soubor s názvem `rolebinding-sre-namespace.yaml` a vložte následující YAML manifestu. Na posledním řádku, nahraďte *groupObjectId* s výstupem ID objektu skupiny z předchozího příkazu:
+Vytvořte RoleBinding pro skupinu *opssre* a použijte dříve vytvořenou roli pro přístup k oboru názvů. Vytvořte soubor s názvem `rolebinding-sre-namespace.yaml` a vložte následující manifest YAML. Na posledním řádku nahraďte *groupObjectId* číslem ID objektu skupiny z předchozího příkazu:
 
 ```yaml
 kind: RoleBinding
@@ -249,7 +246,7 @@ subjects:
   name: groupObjectId
 ```
 
-Vytvoření s použitím RoleBinding [použití kubectl][kubectl-apply] příkaz a zadejte název souboru manifestu YAML:
+Vytvořte RoleBinding pomocí příkazu [kubectl Apply][kubectl-apply] a zadejte název souboru manifestu YAML:
 
 ```console
 kubectl apply -f rolebinding-sre-namespace.yaml
@@ -257,21 +254,21 @@ kubectl apply -f rolebinding-sre-namespace.yaml
 
 ## <a name="interact-with-cluster-resources-using-azure-ad-identities"></a>Interakce s prostředky clusteru pomocí identit Azure AD
 
-Teď můžeme otestovat očekávaná oprávnění práce při vytváření a správě prostředků v clusteru AKS. V těchto příkladech naplánovat a zobrazit podů v oboru názvů přiřazené uživatele. Pak zkuste plán a zobrazení podů mimo přiřazenou oboru názvů.
+Teď otestujeme, že při vytváření a správě prostředků v clusteru AKS budeme fungovat očekávaná oprávnění. V těchto příkladech můžete naplánovat a zobrazit lusky v oboru názvů přiřazené uživateli. Pak se pokusíte naplánovat a zobrazit lusky mimo přiřazený obor názvů.
 
-Nejdříve obnovit *kubeconfig* pomocí kontextu [az aks get-credentials][az-aks-get-credentials] příkazu. V předchozí části můžete nastavit kontext pomocí přihlašovacích údajů Správce clusteru. Uživatel s rolí správce obchází výzev k přihlášení Azure AD. Bez `--admin` parametr, použije se kontext uživatele se použije, která vyžaduje všechny žádosti o ověření pomocí služby Azure AD.
+Nejdříve obnovte kontext *kubeconfig* pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] . V předchozí části nastavíte kontext pomocí přihlašovacích údajů správce clusteru. Uživatel s rolí správce obchází výzvy přihlášení ke službě Azure AD. Bez parametru `--admin` se použije kontext uživatele, který vyžaduje ověření všech požadavků pomocí Azure AD.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
 
-Plán basic pod NGINX pomocí [kubectl spustit][kubectl-run] v příkaz *dev* obor názvů:
+Naplánujte základní NGINX pod pomocí příkazu [kubectl Run][kubectl-run] v oboru názvů pro *vývoj* :
 
 ```console
 kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
 ```
 
-Jako znak na řádku, zadejte přihlašovací údaje pro vlastní `appdev@contoso.com` účet vytvořili na začátku tohoto článku. Jakmile jste úspěšně přihlášení, je token účtu uložená v mezipaměti pro budoucí `kubectl` příkazy. Serveru NGINX se úspěšně naplánovat, jak je znázorněno v následujícím příkladu výstupu:
+Jako přihlašovací výzvu zadejte přihlašovací údaje vlastního účtu `appdev@contoso.com` vytvořeného na začátku článku. Po úspěšném přihlášení se token účtu ukládá do mezipaměti pro budoucí `kubectl` příkazy. NGINX je úspěšně naplánován, jak je znázorněno v následujícím příkladu výstupu:
 
 ```console
 $ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace dev
@@ -281,13 +278,13 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 pod/nginx-dev created
 ```
 
-Teď použijte [kubectl get pods][kubectl-get] příkazu zobrazíte podů v *dev* oboru názvů.
+Nyní použijte příkaz [kubectl Get lusks][kubectl-get] k zobrazení lusků v oboru názvů pro *vývoj* .
 
 ```console
 kubectl get pods --namespace dev
 ```
 
-Jak ukazuje následující příklad výstupu, NGINX pod se úspěšně *systémem*:
+Jak je znázorněno v následujícím příkladu výstupu, je NGINX pod úspěšně *spuštěn*:
 
 ```console
 $ kubectl get pods --namespace dev
@@ -296,15 +293,15 @@ NAME        READY   STATUS    RESTARTS   AGE
 nginx-dev   1/1     Running   0          4m
 ```
 
-### <a name="create-and-view-cluster-resources-outside-of-the-assigned-namespace"></a>Vytvořit a zobrazit prostředky clusteru mimo přiřazenou oboru názvů
+### <a name="create-and-view-cluster-resources-outside-of-the-assigned-namespace"></a>Vytváření a zobrazování prostředků clusteru mimo přiřazený obor názvů
 
-Nyní se pokusí zobrazit podů mimo *dev* oboru názvů. Použití [kubectl get pods][kubectl-get] příkaz znovu, tentokrát zobrazíte `--all-namespaces` následujícím způsobem:
+Nyní se pokuste zobrazit lusky mimo obor názvů pro *vývoj* . Znovu použijte příkaz [kubectl získat lusky][kubectl-get] , tentokrát se zobrazí `--all-namespaces` následujícím způsobem:
 
 ```console
 kubectl get pods --all-namespaces
 ```
 
-Členství ve skupinách daného uživatele nemá roli Kubernetes, který umožňuje tím, jak je znázorněno v následujícím příkladu výstupu:
+Členství ve skupině uživatele nemá roli Kubernetes, která umožňuje tuto akci, jak je znázorněno v následujícím příkladu výstupu:
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -312,7 +309,7 @@ $ kubectl get pods --all-namespaces
 Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cannot list resource "pods" in API group "" at the cluster scope
 ```
 
-Stejným způsobem, zkuste naplánovat pod v jiný obor názvů, jako *sre* oboru názvů. Členství ve skupinách daného uživatele není sladěný s Kubernetes Role a RoleBinding udělení oprávnění, jak je znázorněno v následujícím příkladu výstupu:
+Stejným způsobem se pokuste naplánovat pod v jiném oboru názvů, jako je například obor názvů *SRE* . Členství ve skupině uživatele není zarovnáno s rolí Kubernetes a RoleBinding pro udělení těchto oprávnění, jak je znázorněno v následujícím příkladu výstupu:
 
 ```console
 $ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace sre
@@ -320,24 +317,24 @@ $ kubectl run --generator=run-pod/v1 nginx-dev --image=nginx --namespace sre
 Error from server (Forbidden): pods is forbidden: User "aksdev@contoso.com" cannot create resource "pods" in API group "" in the namespace "sre"
 ```
 
-### <a name="test-the-sre-access-to-the-aks-cluster-resources"></a>Testování SRE přístupu k prostředkům clusteru AKS
+### <a name="test-the-sre-access-to-the-aks-cluster-resources"></a>Testování přístupu SRE k prostředkům clusteru AKS
 
-Pokud chcete potvrdit, že naše členství ve skupině Azure AD a Kubernetes RBAC fungovat správně mezi různými uživateli a skupinami, zkuste předchozích příkazů při přihlášení jako *opssre* uživatele.
+Pokud chcete potvrdit, že naše členství ve skupině Azure AD a Kubernetes RBAC funguje správně mezi různými uživateli a skupinami, zkuste předchozí příkazy přihlášeni jako uživatel *opssre* .
 
-Obnovit *kubeconfig* pomocí kontextu [az aks get-credentials][az-aks-get-credentials] příkaz, který vymaže uložené v mezipaměti ověřovací token pro *aksdev* uživatele:
+Obnovte kontext *kubeconfig* pomocí příkazu [AZ AKS Get-Credentials][az-aks-get-credentials] , který vymaže ověřovací token dříve uložených v mezipaměti pro uživatele *aksdev* :
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --overwrite-existing
 ```
 
-Zkuste naplánovat a zobrazit podů v přiřazená *sre* oboru názvů. Po zobrazení výzvy, přihlaste se pomocí vlastní `opssre@contoso.com` přihlašovacích údajů na začátku tohoto článku vytvořili:
+Zkuste naplánovat a zobrazit lusky v přiřazeném oboru názvů *SRE* . Po zobrazení výzvy se přihlaste pomocí vlastních `opssre@contoso.com` přihlašovacích údajů vytvořených na začátku článku:
 
 ```console
 kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
 kubectl get pods --namespace sre
 ```
 
-Jak ukazuje následující příklad výstupu, můžete úspěšně vytvořit a zobrazit tyto pody:
+Jak je znázorněno v následujícím příkladu výstupu, můžete úspěšně vytvořit a zobrazit lusky:
 
 ```console
 $ kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace sre
@@ -352,14 +349,14 @@ NAME        READY   STATUS    RESTARTS   AGE
 nginx-sre   1/1     Running   0
 ```
 
-Teď si vyzkoušejte zobrazit nebo naplánovat podů mimo přiřazené SRE obor názvů:
+Nyní se pokuste zobrazit nebo naplánovat lusky mimo přiřazený obor názvů SRE:
 
 ```console
 kubectl get pods --all-namespaces
 kubectl run --generator=run-pod/v1 nginx-sre --image=nginx --namespace dev
 ```
 
-Tyto `kubectl` příkazy selžou, jak je znázorněno v následujícím příkladu výstupu. Členství ve skupině a Kubernetes Role a RoleBindings uživatele není udělit oprávnění k vytvoření nebo správce prostředků v jiných oborech názvů:
+Tyto příkazy `kubectl` selžou, jak je znázorněno v následujícím příkladu výstupu. Členství ve skupinách uživatelů a role Kubernetes a RoleBindings neudělují oprávnění k vytváření prostředků nebo správce v jiných oborech názvů:
 
 ```console
 $ kubectl get pods --all-namespaces
@@ -371,7 +368,7 @@ Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cann
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-V tomto článku jste vytvořili prostředky v clusteru AKS a uživatele a skupiny ve službě Azure AD. K uvolnění těchto prostředků, spusťte následující příkazy:
+V tomto článku jste vytvořili prostředky v clusteru AKS a uživatelích a skupinách v Azure AD. Pro vyčištění všech těchto prostředků spusťte následující příkazy:
 
 ```azurecli-interactive
 # Get the admin kubeconfig context to delete the necessary cluster resources
@@ -390,11 +387,11 @@ az ad group delete --group appdev
 az ad group delete --group opssre
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak zabezpečit clustery Kubernetes najdete v tématu [možnosti přístupu a identit pro AKS)][rbac-authorization].
+Další informace o tom, jak zabezpečit clustery Kubernetes, najdete v tématu [Možnosti přístupu a identit pro AKS)][rbac-authorization].
 
-Osvědčené postupy na řízení prostředků a identit, naleznete v tématu [osvědčené postupy pro ověřování a autorizace ve službě AKS][operator-best-practices-identity].
+Osvědčené postupy týkající se identit a řízení prostředků najdete v tématu [osvědčené postupy pro ověřování a autorizaci v AKS][operator-best-practices-identity].
 
 <!-- LINKS - external -->
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create

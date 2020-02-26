@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: 481dbff90ee5368e1581502e612cb5d1993ac89e
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ed2c1f874bd61e846cbdf1f68181a8f374c89524
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200726"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603360"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center a Azure Virtual Machines
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
@@ -42,12 +42,12 @@ Security Center kromě toho, že pomáhá chránit vaše virtuální počítače
 > 
 > 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Abyste mohli začít s Azure Security Center, je třeba znát a zvážit následující skutečnosti:
 
 * Musíte mít předplatné Microsoft Azure. V tématu [Ceny Security Center](https://azure.microsoft.com/pricing/details/security-center/) najdete další informace o úrovních Free a Standard služby Security Center.
 * Naplánujte své přijetí Security Center. V tématu [Průvodce plánováním a provozem Azure Security Center](security-center-planning-and-operations-guide.md) najdete další informace o tom, na co si dát pozor při plánování a provozu.
-* Informace týkající se podpory operačních systémů najdete v tématu [Nejčastější dotazy k Azure Security Center](security-center-faq.md). 
+* Informace týkající se podporovaných operačních systémů najdete v tématu [Azure Security Center Nejčastější dotazy (FAQ)](faq-vms.md). 
 
 ## <a name="set-security-policy"></a>Nastavení zásad zabezpečení
 Je nutné povolit shromažďování dat, aby Azure Security Center mohl shromažďovat informace, které potřebuje k poskytování doporučení a výstrah generovaných na základě vámi nakonfigurovaných zásad zabezpečení. Na obrázku níže vidíte, že **Shromažďování dat** bylo **Zapnuto**.
@@ -93,10 +93,9 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 
 Vyberte výstrahu zabezpečení, abyste se dozvěděli další informace o událostech, které výstrahu vygenerovaly a kroky, pokud existují, které je třeba provést k nápravě útoku. Výstrahy zabezpečení jsou seskupené podle typu a data.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
-
+* [Nejčastější dotazy – Virtual Machines](faq-vms.md) – Přečtěte si nejčastější dotazy týkající se používání služby.

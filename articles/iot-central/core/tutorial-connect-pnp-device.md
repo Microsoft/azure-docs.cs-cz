@@ -8,16 +8,21 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: af588db37970ee890b8640e45a98f8a1782c332b
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 84db3996b49a95d1ef6a9f1e80299605cc31d669
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500514"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602591"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-and-connect-it-to-your-iot-central-application"></a>Kurz: použití modelu schopností zařízení k vytvoření zařízení IoT technologie Plug and Play (Preview) a jeho připojení k aplikaci IoT Central
 
 _Model schopností zařízení_ (DCM) popisuje možnosti zařízení [IoT technologie Plug and Play (Preview)](../../iot-pnp/overview-iot-plug-and-play.md) . IoT Central může použít DCM k vytvoření šablony zařízení a vizualizací pro zařízení, když se zařízení poprvé připojí.
+
+Podpora pro [IoT technologie Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) je ve verzi Preview a je podporovaná jenom ve vybraných oblastech.
+
+> [!NOTE]
+> Kontaktujte technickou podporu pro přístup k vytvoření aplikace ve verzi Preview s podporou pro zařízení IoT technologie Plug and Play.
 
 V tomto kurzu se naučíte:
 

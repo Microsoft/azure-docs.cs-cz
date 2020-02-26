@@ -1,81 +1,78 @@
 ---
-title: Osvědčené postupy pro Azure Kubernetes Service (AKS)
-description: Kolekce clusteru operátor a developer osvědčené postupy při vytváření a správě aplikací ve službě Azure Kubernetes Service (AKS)
+title: Osvědčené postupy pro službu Azure Kubernetes (AKS)
+description: Kolekce operátoru clusteru a osvědčené postupy pro vývojáře při sestavování a správě aplikací ve službě Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 12/07/2018
-ms.author: mlearned
-ms.openlocfilehash: 7127894b364ac8f0fe1d87e13150d5522f5473e2
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 627eeffd18a479486e5a682da06bf89cd5f8f0e1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615966"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596313"
 ---
-# <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Osvědčené postupy pro vytváření a správě aplikací ve službě Azure Kubernetes Service (AKS) – operátor clusteru a pro vývojáře
+# <a name="cluster-operator-and-developer-best-practices-to-build-and-manage-applications-on-azure-kubernetes-service-aks"></a>Doporučené postupy pro vytváření a správu aplikací ve službě Azure Kubernetes (AKS) pro operátora clusteru a vývojáře
 
-Chcete-li vytvářet a spouštět aplikace úspěšně ve službě Azure Kubernetes Service (AKS), jsou některé klíčové faktory pochopit a implementovat. Patří sem více tenantů a funkce plánovače, clusteru a pod zabezpečení nebo obchodní kontinuity podnikových procesů a zotavení po havárii. Následující osvědčené postupy jsou seskupené do clusteru Operátoři a vývojáři pochopit, jaké jsou požadavky na každou z těchto oblastí a implementovat odpovídající funkce.
+K úspěšnému sestavování a spouštění aplikací ve službě Azure Kubernetes Service (AKS) jsou k dispozici některé klíčové důležité informace, které je potřeba pochopit a implementovat. Mezi tyto oblasti patří víceklientské a funkce Scheduleru, cluster a zabezpečení, nebo provozní kontinuita a zotavení po havárii. Následující osvědčené postupy jsou seskupené, které usnadňují operátorům clusteru a vývojářům pochopit důležité informace pro každou z těchto oblastí a implementují příslušné funkce.
 
-Tyto osvědčené postupy a koncepčních článků být napsán ve spojení s AKS produktovou skupinou a technické týmy a týmy pole, včetně globální pásů černé (GBBs).
+Tyto osvědčené postupy a koncepční články byly napsány ve spojení se skupinou produktů AKS, technickými týmy a týmy pro pole, včetně globálních černých pásů (GBBs).
 
-## <a name="cluster-operator-best-practices"></a>Osvědčené postupy clusteru – operátor
+## <a name="cluster-operator-best-practices"></a>Doporučené postupy pro operátora clusteru
 
-Jako operátor clusteru fungují společně s počet vlastníků aplikace a vývojářům k pochopení jejich potřeb. Následující osvědčené postupy pak můžete podle potřeby nakonfigurujte své clustery AKS.
+Jako operátor clusteru můžete spolupracovat s vlastníky aplikací a vývojáři a pochopit jejich potřeby. Pak můžete pomocí následujících osvědčených postupů nakonfigurovat clustery AKS podle potřeby.
 
 **Víceklientská architektura**
 
 * [Osvědčené postupy pro izolaci clusteru](operator-best-practices-cluster-isolation.md)
-    * Zahrnuje více tenantů základní komponenty a logické izolace s obory názvů.
+    * Zahrnuje základní komponenty víceklientské architektury a logickou izolaci s obory názvů.
 * [Osvědčené postupy pro základní funkce plánovače](operator-best-practices-scheduler.md)
-    * Zahrnuje použití kvóty prostředků a rozpočet pod přerušení.
+    * Zahrnuje použití kvót prostředků a rozpočtů přerušení pod.
 * [Osvědčené postupy pro pokročilé funkce plánovače](operator-best-practices-advanced-scheduler.md)
-    * Zahrnuje použití poskvrnění a tolerations, uzel selektory a vztahů a vztahů mezi pod a proti spřažení.
+    * Zahrnuje použití chuti a tolerování, selektorů uzlů a spřažení a spřažení a proti spřažení.
 * [Osvědčené postupy pro ověřování a autorizaci](operator-best-practices-identity.md)
-    * Zahrnuje integraci s Azure Active Directory, pomocí řízení přístupu na základě rolí (RBAC) a pod identit.
+    * Zahrnuje integraci s Azure Active Directory, použití řízení přístupu na základě rolí (RBAC) a identity pod.
 
 **Zabezpečení**
 
 * [Osvědčené postupy pro zabezpečení clusteru a upgrady](operator-best-practices-cluster-security.md)
-    * Zahrnuje zabezpečení přístupu k rozhraní API serveru, omezení přístupu ke kontejneru a Správa aktualizací a restartování uzlu.
-* [Osvědčené postupy pro správu image kontejnerů a zabezpečení](operator-best-practices-container-image-management.md)
-    * Zahrnuje zabezpečení image a moduly runtime a automatizované buildy při aktualizacích základní image.
+    * Zahrnuje zabezpečení přístupu k serveru rozhraní API, omezení přístupu k kontejneru a správu upgradů a restartování uzlů.
+* [Osvědčené postupy pro správu a zabezpečení imagí kontejneru](operator-best-practices-container-image-management.md)
+    * Zahrnuje zabezpečení image a běhových prostředí a automatických sestavení na základních aktualizacích imagí.
 * [Osvědčené postupy pro zabezpečení pod](developer-best-practices-pod-security.md)
-    * Zahrnuje zabezpečení přístupu k prostředkům, omezení odhalení přihlašovacích údajů a používání pod identity a digitální trezorům klíčů.
+    * Zahrnuje zabezpečení přístupu k prostředkům, omezování vystavování přihlašovacích údajů a používání identit pod a digitálních trezorů klíčů.
 
 **Síť a úložiště**
 
 * [Osvědčené postupy pro připojení k síti](operator-best-practices-network.md)
-    * Zahrnuje modely jinou síť, pomocí firewallů příchozího přenosu dat a webových aplikací (WAF) a zabezpečení přístup k uzlu SSH.
+    * Zahrnuje různé síťové modely, použití bran firewall pro příchozí a webové aplikace (WAF) a zabezpečení přístupu k uzlu pomocí protokolu SSH.
 * [Osvědčené postupy pro ukládání a zálohování](operator-best-practices-storage.md)
-    * Zahrnuje zvolíte odpovídající typ a uzel velikost úložiště, dynamické zřizování svazků a záloh.
+    * Zahrnuje výběr vhodného typu úložiště a velikosti uzlu, dynamické zřizování svazků a zálohování dat.
 
-**Spouštění úloh v připraveno pro podniky**
+**Spuštění úloh připravených pro podniky**
 
-* [Osvědčené postupy pro obchodní kontinuity podnikových procesů a zotavení po havárii](operator-best-practices-multi-region.md)
-    * Zahrnuje použití párování oblastí, víc clusterů pomocí Azure Traffic Manageru a geografickou replikaci imagí kontejnerů.
+* [Osvědčené postupy pro zajištění kontinuity podnikových procesů a zotavení po havárii](operator-best-practices-multi-region.md)
+    * Zahrnuje použití párů oblastí, více clusterů s Azure Traffic Manager a geografickou replikaci imagí kontejneru.
 
 ## <a name="developer-best-practices"></a>Osvědčené postupy pro vývojáře
 
-Jako vývojář nebo vlastníka aplikace, můžete zjednodušit vaše zkušenosti s vývojem a definovat vyžadují požadavkům na výkon aplikace.
+Jako vlastníkem vývojářů nebo aplikací můžete zjednodušit vývojové prostředí a definovat požadavky na výkon aplikací.
 
 * [Osvědčené postupy pro vývojáře aplikací ke správě prostředků](developer-best-practices-resource-management.md)
-    * Zahrnuje definování pod prostředků požadavky a omezení, konfigurace nástrojů pro vývoj a kontrola problémů s aplikací.
+    * Zahrnuje definování požadavků a omezení prostředků pod, konfiguraci vývojářských nástrojů a kontrolu potíží s aplikacemi.
 * [Osvědčené postupy pro zabezpečení pod](developer-best-practices-pod-security.md)
-    * Zahrnuje zabezpečení přístupu k prostředkům, omezení odhalení přihlašovacích údajů a používání pod identity a digitální trezorům klíčů.
+    * Zahrnuje zabezpečení přístupu k prostředkům, omezování vystavování přihlašovacích údajů a používání identit pod a digitálních trezorů klíčů.
 
-## <a name="kubernetes--aks-concepts"></a>Kubernetes / koncepty AKS
+## <a name="kubernetes--aks-concepts"></a>Koncepty Kubernetes/AKS
 
-Abychom pomohli pochopit některé funkce a součásti tyto osvědčené postupy, můžete také zobrazit následující koncepční články pro clustery ve službě Azure Kubernetes Service (AKS):
+Pro pochopení některých funkcí a součástí těchto osvědčených postupů můžete také zobrazit následující koncepční články pro clustery ve službě Azure Kubernetes (AKS):
 
 * [Základní koncepty Kubernetes](concepts-clusters-workloads.md)
 * [Přístup a identita](concepts-identity.md)
-* [Koncepty zabezpečení](concepts-security.md)
+* [Koncepce zabezpečení](concepts-security.md)
 * [Koncepty sítě](concepts-network.md)
 * [Možnosti úložiště](concepts-storage.md)
-* [Možnosti škálování.](concepts-scale.md)
+* [Možnosti škálování](concepts-scale.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít pracovat s AKS, postupujte podle jednoho z postupů rychlý start k nasazení clusteru Azure Kubernetes Service (AKS) pomocí [rozhraní příkazového řádku Azure](kubernetes-walkthrough.md) nebo [webu Azure portal](kubernetes-walkthrough-portal.md).
+Pokud potřebujete začít s AKS, postupujte podle jednoho z rychlých startů a nasaďte cluster Azure Kubernetes Service (AKS) pomocí rozhraní příkazového [řádku Azure CLI](kubernetes-walkthrough.md) nebo [Azure Portal](kubernetes-walkthrough-portal.md).

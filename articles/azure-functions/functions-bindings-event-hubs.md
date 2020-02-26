@@ -1,42 +1,30 @@
 ---
 title: Vazby Azure Event Hubs pro Azure Functions
-description: Naučte se používat vazby Azure Event Hubs v Azure Functions.
+description: Naučte se používat aktivační události a vazby Azure Event Hubs v Azure Functions.
 author: craigshoemaker
 ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
 ms.topic: reference
-ms.date: 11/08/2017
+ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 998ba122d6582a86122bbe65ff47bad1ea24a900
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 543b566300ce56bc2d765087f9a9e269c5b0cc99
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925539"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586168"
 ---
-# <a name="azure-event-hubs-bindings-for-azure-functions"></a>Vazby Azure Event Hubs pro Azure Functions
+# <a name="azure-event-hubs-trigger-and-bindings-for-azure-functions"></a>Aktivační událost a vazby Azure Event Hubs pro Azure Functions
 
 Tento článek vysvětluje, jak pracovat s [Event Hubsmi](../event-hubs/event-hubs-what-is-event-hubs.md) vazbami Azure pro Azure Functions. Azure Functions podporuje triggery a výstupní vazby pro Event Hubs.
 
-[!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
-
-## <a name="packages---functions-1x"></a>Balíčky – funkce 1.x
-
-Pro Azure Functions verze 1. x jsou vazby Event Hubs k dispozici v balíčku NuGet [Microsoft. Azure. WebJobs. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) , verze 2. x.
-Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs) úložiště GitHub.
-
-
-[!INCLUDE [functions-package](../../includes/functions-package.md)]
-
-## <a name="packages---functions-2x-and-higher"></a>Balíčky – funkce 2. x a vyšší
-
-V případě funkcí 2. x a vyšší použijte balíček [Microsoft. Azure. WebJobs. Extensions. EventHubs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs) , verze 3. x.
-Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs) úložiště GitHub.
-
-[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
+| Akce | Typ |
+|--------|------|
+| Reakce na události odeslané do datového proudu událostí centra událostí. | [Trigger](./functions-bindings-event-hubs-trigger.md) |
+| Zápis událostí do datového proudu událostí | [Výstupní vazba](./functions-bindings-event-hubs-output.md) |
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
+- [Reakce na události odeslané do datového proudu událostí centra událostí (aktivační událost)](./functions-bindings-event-hubs-trigger.md)
+- [Zápis událostí do datového proudu událostí (výstupní vazba)](./functions-bindings-event-hubs-output.md)

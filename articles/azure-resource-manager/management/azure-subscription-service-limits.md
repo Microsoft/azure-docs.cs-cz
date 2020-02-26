@@ -3,13 +3,13 @@ title: Omezení a kvóty předplatného Azure
 description: Poskytuje seznam běžných limitů, kvót a omezení předplatného a služeb Azure. Tento článek obsahuje informace o tom, jak zvýšit limity spolu s maximálními hodnotami.
 tags: billing
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 4b36fcf8d3630ffd9008ad9deee8d0945f901f9b
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/24/2020
+ms.openlocfilehash: 1987d444c49bb5e53950c26c43c1607c8a87be6d
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153889"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592409"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 
@@ -263,7 +263,7 @@ Následující tabulka se vztahuje na SKU V1, v2, Standard a WAF, pokud není uv
 
 [!INCLUDE [network-watcher-limits](../../../includes/network-watcher-limits.md)]
 
-### <a name="private-link-limits"></a>Omezení privátních odkazů
+### <a name="private-link-limits"></a>Limity služby Private Link
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
 
@@ -294,10 +294,6 @@ Následující tabulka se vztahuje na SKU V1, v2, Standard a WAF, pokud není uv
 ## <a name="role-based-access-control-limits"></a>Omezení řízení přístupu na základě rolí
 
 [!INCLUDE [role-based-access-control-limits](../../../includes/role-based-access-control-limits.md)]
-
-## <a name="scheduler-limits"></a>Omezení plánovače
-
-[!INCLUDE [scheduler-limits-table](../../../includes/scheduler-limits-table.md)]
 
 ## <a name="service-bus-limits"></a>Omezení Service Bus
 

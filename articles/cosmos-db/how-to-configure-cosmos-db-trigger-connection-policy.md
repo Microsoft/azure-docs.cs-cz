@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 6e4c50e5dcc35450463d02bbed040754ea778e70
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 953121a9a15d4fef56d381e3aab85329fadacce2
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093606"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604963"
 ---
 # <a name="how-to-configure-the-connection-policy-used-by-azure-functions-trigger-for-cosmos-db"></a>Postup konfigurace zásad připojení používaných Azure Functions triggerem pro Cosmos DB
 
@@ -23,7 +23,7 @@ Existují dva režimy připojení – přímý režim a režim brány. Další i
 
 ## <a name="changing-the-connection-mode-and-protocol"></a>Změna režimu připojení a protokolu
 
-Ke konfiguraci zásad připojení klienta – **režimu připojení** a **protokolu připojení**jsou k dispozici dvě klíčová nastavení konfigurace. Můžete změnit výchozí režim připojení a protokol používaný triggerem Azure Functions pro Cosmos DB a všechny [vazby Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#output)). Chcete-li změnit výchozí nastavení, je třeba vyhledat `host.json` soubor v projektu Azure Functions nebo v aplikaci Azure functions a přidat následující [Další nastavení](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings):
+Ke konfiguraci zásad připojení klienta – **režimu připojení** a **protokolu připojení**jsou k dispozici dvě klíčová nastavení konfigurace. Můžete změnit výchozí režim připojení a protokol používaný triggerem Azure Functions pro Cosmos DB a všechny [vazby Azure Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-output.md)). Chcete-li změnit výchozí nastavení, je třeba vyhledat soubor `host.json` v projektu Azure Functions nebo v aplikaci Azure Functions a přidat následující [Další nastavení](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings):
 
 ```js
 {
@@ -34,9 +34,9 @@ Ke konfiguraci zásad připojení klienta – **režimu připojení** a **protok
 }
 ```
 
-Kde `connectionMode` musí být požadovaný režim připojení (Direct nebo Gateway) a `protocol` požadovaný protokol připojení (TCP nebo https). 
+Kde `connectionMode` musí mít požadovaný režim připojení (Direct nebo Gateway) a `protocol` požadovaný protokol připojení (TCP nebo https). 
 
-Pokud váš Azure Functions projekt pracuje s modulem runtime Azure Functions V1, má konfigurace mírné rozdíly v nesprávném názvu, `documentDB` měli byste `cosmosDB`použít místo:
+Pokud váš Azure Functions projekt pracuje s modulem runtime Azure Functions V1, má konfigurace mírné rozdíly v názvech, místo `cosmosDB`byste měli použít `documentDB`:
 
 ```js
 {

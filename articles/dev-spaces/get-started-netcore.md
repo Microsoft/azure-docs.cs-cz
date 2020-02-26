@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: 353c8c1db5b5f7c6134388788799a6dccef69f9c
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: bcdae06af8c3f6314e94ba35f748a0b4352339ca
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538853"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605354"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Vytvoření Kubernetesho vývojového prostoru: Visual Studio Code a .NET Core s Azure Dev Spaces
 
@@ -61,7 +61,7 @@ az group create --name MyResourceGroup --location <region>
 Pomocí následujícího příkazu vytvořte cluster Kubernetes:
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
 Vytvoření clusteru bude trvat několik minut.

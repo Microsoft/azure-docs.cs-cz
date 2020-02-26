@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 709ac3a9f5e7cf0bd13a6e387f0b80caf2608fe0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 10ea15168d61d5e73aff976ef641e07b6327dbca
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748459"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604564"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Ověření výstrahy (soubor testu EICAR) v Azure Security Center
 Pomocí tohoto dokumentu se naučíte ověřovat, jestli je váš systém správně nakonfigurovaný pro výstrahy služby Azure Security Center.
@@ -79,5 +79,4 @@ V tomto článku jste se seznámili s procesem ověřování výstrah. Teď, kdy
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Zjistěte, jak monitorovat stav svých prostředků Azure.
 * [Principy výstrah zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) – Přečtěte si o různých typech výstrah zabezpečení.
 * [Průvodce odstraňováním potíží Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide) – Naučte se řešit běžné problémy v Security Center.
-* [Nejčastější](security-center-faq.md) dotazy k Azure Security Center – Přečtěte si nejčastější dotazy týkající se používání služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si blogové příspěvky o zabezpečení Azure a dodržování předpisů.

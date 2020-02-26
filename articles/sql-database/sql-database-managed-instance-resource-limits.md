@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/18/2020
-ms.openlocfilehash: 6e6d4ea6c96949a60677bcf3bf40a53ec3a251c7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/25/2020
+ms.openlocfilehash: 12d457d8d5e57dc4db16d9a191c7795a5f013574
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526854"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605008"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Přehled Azure SQL Database omezení prostředků spravované instance
 
@@ -74,11 +74,11 @@ Managed instance má dvě úrovně služeb: [pro obecné účely](sql-database-s
 | Maximální počet souborů databáze na instanci | Až 280, pokud nedošlo k dosažení limitu velikosti úložiště instance nebo [místa přidělení úložiště na disku Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files) . | 32 767 souborů na databázi, pokud nebylo dosaženo limitu velikosti úložiště instance. |
 | Maximální velikost datového souboru | Omezeno na aktuálně dostupnou velikost úložiště instance (max. 2 TB-8 TB) a [místo přidělení diskového úložiště Azure Premium](sql-database-managed-instance-transact-sql-information.md#exceeding-storage-space-with-small-database-files). | Omezeno na velikost úložiště aktuálně dostupné instance (až do velikosti 1 TB až 4 TB). |
 | Maximální velikost souboru protokolu | Omezeno na 2 TB a aktuálně dostupnou velikost úložiště instance. | Omezeno na 2 TB a aktuálně dostupnou velikost úložiště instance. |
-| Data/protokol IOPS (přibližná) | Až 30-40 K IOPS na instanci *, 500-7500 na jeden soubor<br/>\*[zvětšit velikost souboru a získat tak více IOPS](#file-io-characteristics-in-general-purpose-tier)| 5,5 k-110 K (1375 IOPS/vCore)<br/>Přidáním dalších virtuální jádra získáte lepší výkon v/v. |
+| Data/protokol IOPS (přibližná) | Až 30-40 K IOPS na instanci *, 500-7500 na jeden soubor<br/>\*[zvětšit velikost souboru a získat tak více IOPS](#file-io-characteristics-in-general-purpose-tier)| 10 K-200 K (2500 IOPS/vCore)<br/>Přidáním dalších virtuální jádra získáte lepší výkon v/v. |
 | Limit propustnosti zápisu protokolu (na instanci) | 3 MB/s na vCore<br/>Max. 22 MB/s | 4 MB/s na vCore<br/>Max 48 MB/s |
 | Propustnost dat (přibližná) | 100 – 250 MB/s na jeden soubor<br/>\*[zvětšete velikost souboru, abyste získali lepší vstupně-výstupní operace](#file-io-characteristics-in-general-purpose-tier) . | Neomezeno. |
 | Latence v/v úložiště (přibližná) | 5-10 ms | 1-2 ms |
-| OLTP v paměti | Nepodporováno | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
+| OLTP v paměti | Nepodporuje se | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
 | Maximální počet relací | 30000 | 30000 |
 | [Repliky jen pro čtení](sql-database-read-scale-out.md) | 0 | 1 (zahrnuto do ceny) |
 
@@ -107,7 +107,7 @@ Existují také omezení na úrovni instance, jako je maximální propustnost z�
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Spravované instance lze vytvořit pouze v [podporovaných oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Pokud chcete vytvořit spravovanou instanci v oblasti, která není aktuálně podporovaná, můžete [Odeslat žádost o podporu prostřednictvím Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance).
+Spravované instance lze vytvořit pouze v [podporovaných oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Pokud chcete vytvořit spravovanou instanci v oblasti, která není aktuálně podporovaná, můžete [Odeslat žádost o podporu prostřednictvím Azure Portal](quota-increase-request.md).
 
 ## <a name="supported-subscription-types"></a>Podporované typy předplatného
 
@@ -122,13 +122,13 @@ Spravovaná instance aktuálně podporuje nasazení pouze u následujících typ
 
 ## <a name="regional-resource-limitations"></a>Omezení regionálních prostředků
 
-Podporované typy předplatného můžou obsahovat omezený počet prostředků na oblast. Spravovaná instance má dvě výchozí omezení na oblast Azure (které je možné zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance)) v závislosti na typu typu předplatného:
+Podporované typy předplatného můžou obsahovat omezený počet prostředků na oblast. Spravovaná instance má dvě výchozí omezení pro každou oblast Azure (to se dá zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](quota-increase-request.md) v závislosti na typu typu předplatného:
 
 - **Limit podsítě**: maximální počet podsítí, ve kterých se spravované instance nasazují v jedné oblasti.
 - **limit jednotky Vcore**: maximální počet jednotek Vcore, které se dají nasadit napříč všemi instancemi v jedné oblasti. Jedna vCorea GP používá jednu vCore jednotku a jedna BC vCore přijímá 4 jednotky vCore. Celkový počet instancí není omezený, pokud se nachází v rámci limitu vCore jednotek.
 
 > [!Note]
-> Tato omezení představují výchozí nastavení a nejedná se o technická omezení. Omezení se dají zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](#obtaining-a-larger-quota-for-sql-managed-instance) , pokud v aktuální oblasti potřebujete víc spravovaných instancí. Jako alternativu můžete vytvořit nové spravované instance v jiné oblasti Azure bez nutnosti odesílat žádosti o podporu.
+> Tato omezení představují výchozí nastavení a nejedná se o technická omezení. Omezení se dají zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](quota-increase-request.md) , pokud v aktuální oblasti potřebujete víc spravovaných instancí. Jako alternativu můžete vytvořit nové spravované instance v jiné oblasti Azure bez nutnosti odesílat žádosti o podporu.
 
 Následující tabulka ukazuje **výchozí regionální omezení** pro podporované typy předplatného (pomocí žádosti o podporu popsanou níže můžete rozšířit výchozí omezení):
 
@@ -146,39 +146,9 @@ Při plánování nasazení \* vzít v úvahu, že úroveň služby Pro důleži
 
 \*\* větší podsíť a omezení vCore jsou k dispozici v následujících oblastech: Austrálie – východ, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní Evropa, Západní USA 2.
 
-## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>Získání větší kvóty pro spravovanou instanci SQL
+## <a name="request-a-quota-increase-for-sql-managed-instance"></a>Požádat o zvýšení kvóty pro spravovanou instanci SQL
 
-Pokud ve svých současných oblastech potřebujete víc spravovaných instancí, pošlete žádost o podporu, která kvótu rozšiřuje, pomocí Azure Portal.
-Postup pro zahájení procesu získání větší kvóty:
-
-1. Otevřete **help + podpora**a klikněte na **Nová žádost o podporu**.
-
-   ![Nápověda a podpora](media/sql-database-managed-instance-resource-limits/help-and-support.png)
-2. Na kartě základy nové žádosti o podporu:
-   - Jako **typ problému**vyberte **omezení služby a předplatné (kvóty)** .
-   - V části **Předplatné** vyberte své předplatné.
-   - Jako **typ kvóty**vyberte **SQL Database spravovaná instance**.
-   - V případě **plánu podpory**vyberte svůj plán podpory.
-
-     ![Kvóta typu problému](media/sql-database-managed-instance-resource-limits/issue-type-quota.png)
-
-3. Klikněte na **Další**.
-4. Na **kartě problém** u nové žádosti o podporu:
-   - V části **závažnost**vyberte úroveň závažnosti problému.
-   - **Podrobnosti**získáte zadáním dalších informací o vašem problému, včetně chybových zpráv.
-   - Pro **nahrání souboru**připojte soubor s více informacemi (až 4 MB).
-
-     ![Podrobnosti o problému](media/sql-database-managed-instance-resource-limits/problem-details.png)
-
-     > [!IMPORTANT]
-     > Platná žádost by měla zahrnovat:
-     > - Oblast, ve které je potřeba zvýšit limit předplatného
-     > - Požadovaný počet virtuální jádra, na úroveň služby v existujících podsítích po zvýšení kvóty (Pokud je nutné rozšířit libovolnou existující podsíť.
-     > - Požadovaný počet nových podsítí a celkový počet virtuální jádra na úroveň služby v rámci nových podsítí (Pokud potřebujete nasadit spravované instance v nových podsítích).
-
-5. Klikněte na **Další**.
-6. Na kartě kontaktní informace u nové žádosti o podporu zadejte upřednostňovanou metodu kontaktu (e-mail nebo telefon) a kontaktní údaje.
-7. Klikněte na možnost **Vytvořit**.
+Pokud ve svých současných oblastech potřebujete víc spravovaných instancí, pošlete žádost o podporu, která kvótu rozšiřuje, pomocí Azure Portal. Další informace najdete v tématu [zvýšení kvóty žádostí o Azure SQL Database](quota-increase-request.md).
 
 ## <a name="next-steps"></a>Další kroky
 

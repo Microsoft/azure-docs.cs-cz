@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 71a256b0350742f0e7a7b95519fafff5bc32f58b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a2b775afcd9e603a11b560bb7c42d6cf76be9b34
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928792"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597911"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Rychlý Start: vytvoření datové továrny a kanálu pomocí sady .NET SDK
 
@@ -48,7 +48,7 @@ V části *Postupy: použití portálu k vytvoření aplikace a instančního ob
 1. V části [vytvořit aplikaci Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)vytvořte aplikaci, která představuje aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).
 2. V poli [získat hodnoty pro přihlášení](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)Získejte **ID aplikace** a **ID tenanta**a poznamenejte si tyto hodnoty, které použijete později v tomto kurzu. 
 3. V části [certifikáty a tajné](../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets)klíče Získejte **ověřovací klíč**a poznamenejte si tuto hodnotu, kterou použijete později v tomto kurzu.
-4. V části [přiřadit aplikaci k roli](../active-directory/develop/howto-create-service-principal-portal.md#assign-the-application-to-a-role)přiřaďte aplikaci roli **Přispěvatel** na úrovni předplatného, aby aplikace mohla vytvářet datové továrny v rámci předplatného.
+4. V části [přiřadit aplikaci k roli](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)přiřaďte aplikaci roli **Přispěvatel** na úrovni předplatného, aby aplikace mohla vytvářet datové továrny v rámci předplatného.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
@@ -61,7 +61,7 @@ Dále vytvořte konzolovou C# aplikaci .NET v aplikaci Visual Studio:
 
 ## <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-1. Vyberte **Nástroje** > **Správce balíčků NuGet** > **Konzola správce balíčků**.
+1. Vyberte **nástroje** > **správce balíčků NuGet** > **konzole správce balíčků**.
 2. V podokně **konzoly Správce balíčků** spusťte následující příkazy pro instalaci balíčků. Další informace najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```powershell
@@ -177,7 +177,7 @@ Console.WriteLine(SafeJsonConvert.SerializeObject(
 
 Do metody **Main** přidejte následující kód, který vytvoří **datovou sadu objektů blob Azure**.
 
-Definujete datovou sadu, která představuje data pro kopírování ze zdroje do jímky. Tato datová sada objektů blob v tomto příkladu odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku: Datová sada přebírá parametr, jehož hodnota je nastavená v aktivitě, která tuto datovou sadu využívá. Parametr se používá k vytvoření "folderPath" ukazující na místo, kde jsou uložena data.
+Nadefinujete datovou sadu, která představuje data ke kopírování ze zdroje do jímky. Tato datová sada objektů blob v tomto příkladu odkazuje na propojenou službu Azure Storage, kterou jste vytvořili v předchozím kroku: Datová sada přebírá parametr, jehož hodnota je nastavená v aktivitě, která tuto datovou sadu využívá. Parametr se používá k vytvoření "folderPath" ukazující na místo, kde jsou uložena data.
 
 ```csharp
 // Create an Azure Blob dataset

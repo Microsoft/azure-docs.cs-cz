@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/21/2020
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56b78f4296709206cefb762c87d4d1471bff2df7
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 2c3c52fc85e6c915587db27a3f5ce247fd05ea51
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291511"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598319"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -48,10 +48,13 @@ V průběhu této fáze naplánujete migraci úlohy SAP na platformu Azure. V pr
     - Provozní kontinuita a architektura zotavení po havárii.
     - Podrobné informace o verzích sad support pack operačního systému, DB, jádra a SAP Nemusí nutně platit, že všechny verze operačního systému podporované SAP NetWeaver nebo S/4HANA se podporují na virtuálních počítačích Azure. Totéž platí pro verze DBMS. Zkontrolujte následující zdroje a zarovnejte je a v případě potřeby upgradujte verze SAP, verze DBMS a vydané verze operačních systémů, aby se zajistila podpora SAP a Azure. Aby bylo možné získat plnou podporu pro SAP a Microsoft, musíte mít k dispozici kombinace vydaných verzí, které podporuje SAP a Azure. V případě potřeby musíte naplánovat upgrade některých softwarových součástí. Další podrobnosti o podporovaném softwaru SAP, OS a DBMS jsou popsané tady:
         - [Poznámka k podpoře SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533). Tato poznámka definuje minimální verze operačního systému podporované na virtuálních počítačích Azure. Definuje také minimální verze databází, které jsou požadovány pro většinu databází, které nejsou HANA. Nakonec poskytuje určení velikosti SAP pro typy virtuálních počítačů Azure podporovaných v SAP.
+        - [Poznámka k podpoře SAP #2015553](https://launchpad.support.sap.com/#/notes/2015553). Tato poznámka definuje zásady podpory pro službu Azure Storage a vztah podpory, který je potřeba u Microsoftu.
         - [Poznámka k podpoře SAP #2039619](https://launchpad.support.sap.com/#/notes/2039619). Tato poznámka definuje matrici podpory Oracle pro Azure. Oracle podporuje v Azure pro úlohy SAP jenom Windows a Oracle Linux jako hostované operační systémy. Tento příkaz podpory platí i pro vrstvu aplikace SAP, která spouští instance SAP. Oracle ale nepodporuje vysokou dostupnost pro centrální služby SAP v Oracle Linux prostřednictvím Pacemaker. Pokud potřebujete vysokou dostupnost pro ASCS na Oracle Linux, musíte použít sadu s ochranou Suite pro Linux. Podrobná data o certifikaci SAP najdete v poznámkách k podpoře SAP [#1662610 – podrobnosti o podpoře pro sadu s ochranou Suite pro Linux](https://launchpad.support.sap.com/#/notes/1662610). Pro Windows se podporuje řešení clusteringu s podporou převzetí služeb při selhání Windows serveru SAP pro služby SAP Central Services společně s Oracle jako s vrstvou DBMS.
         - [Poznámka k podpoře SAP #2235581](https://launchpad.support.sap.com/#/notes/2235581). Tato poznámka poskytuje maticovou podporu pro SAP HANA v různých verzích operačního systému.
         - SAP HANA – podporované virtuální počítače Azure a [velké instance Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) jsou uvedené na [webu SAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
         - [Matice dostupnosti produktu SAP](https://support.sap.com/en/).
+        - [Poznámka k podpoře SAP #2555629 – SAP HANA 2,0 dynamické vrstvení – podpora hypervisoru a cloudu](https://launchpad.support.sap.com/#/notes/2555629)
+        - [Poznámka k podpoře SAP #1662610 – podrobnosti o podpoře pro sadu s ochranou Suite pro Linux](https://launchpad.support.sap.com/#/notes/1662610)
         - Poznámky SAP pro jiné produkty specifické pro SAP.     
     - Pro produkční systémy SAP doporučujeme použít striktní tři návrhy. Na jednom virtuálním počítači nedoporučujeme kombinovat ASCS ani DBMS nebo aplikační servery. Použití konfigurace clusteru s více identifikátory SID pro služby SAP Central Services je podporované v hostovaných operačních systémech Windows v Azure. Tato konfigurace ale není podporovaná pro služby SAP Central v operačních systémech Linux v Azure. Dokumentaci k scénáři operačního systému Windows hosta najdete v těchto článcích:
         - [Vysoká dostupnost ASCS/SCS instance SAP pomocí clusteringu s podporou převzetí služeb při selhání Windows serveru a sdíleného disku v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
@@ -102,7 +105,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
         - Vyhodnoťte a otestujte velikost vašich virtuálních počítačů Azure s ohledem na maximální propustnost úložiště a propustnost sítě u typů virtuálních počítačů, které jste zvolili během fáze plánování. Data můžete najít tady:
            -  [Velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
            -  [Velikosti pro virtuální počítače se systémem Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Pro určení velikosti je důležité zvážit *maximální propustnost disku* , který není v mezipaměti.
-   2. Storage.
+   2. Pamì.
         - Minimálně použijte [úložiště Azure SSD úrovně Standard](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) pro virtuální počítače, které reprezentují vrstvy aplikací SAP, a pro nasazení systémů DBMS, které nejsou citlivé na výkon.
         - Obecně nedoporučujeme používat [HDD úrovně Standard disky Azure](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd).
         - [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) použít pro všechny virtuální počítače s DBMS, na kterých je vzdáleně citlivý výkon.
@@ -122,7 +125,7 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
             -  Umístění aplikační vrstvy SAP a SAP DBMS v různých virtuálních sítích Azure, které nejsou partnerské vztahy, se nepodporuje.
             -  Pomocí [skupin zabezpečení aplikace a pravidel skupiny zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview) můžete definovat trasy mezi aplikační vrstvou SAP a vrstvou SAP DBMS.
         - Ujistěte se, že je na virtuálních počítačích, které se používají v aplikační vrstvě SAP a ve vrstvě SAP DBMS, zapnuté [akcelerované síťové služby Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) . Mějte na paměti, že pro podporu akcelerovaných síťových služeb v Azure jsou potřeba různé úrovně operačního systému:
-            - Windows Server 2012 R2 nebo novější
+            - Windows Server 2012 R2 nebo novější.
             - SUSE Linux 12 SP3 nebo novější.
             - RHEL 7,4 nebo novější.
             - Oracle Linux 7,5. Pokud používáte jádro RHCKL, je vyžadována verze 3.10.0-862.13.1. el7. Pokud používáte jádro Oracle UEK, je vyžadována verze 5.
@@ -148,6 +151,21 @@ Doporučujeme, abyste nastavili a ověřili úplné řešení HADR a návrh zabe
             - SameSubNetDelay = 2000
             - SameSubNetThreshold = 15
             - RoutingHistorylength = 30
+    6. Nastavení operačního systému nebo opravy
+        - Pro provozování HANA v SAP si přečtěte tyto poznámky a dokumentace:
+            -   [Poznámka k podpoře SAP #2814271 – zálohování SAP HANA v Azure se nepovede. chyba kontrolního součtu](https://launchpad.support.sap.com/#/notes/2814271)
+            -   [Podpora SAP Poznámka #2753418 – potenciální snížení výkonu z důvodu záložního použití časovače](https://launchpad.support.sap.com/#/notes/2753418)
+            -   [Podpora SAP Poznámka #2791572 – snížení výkonu kvůli chybějící podpoře VDSO pro Hyper-V v Azure](https://launchpad.support.sap.com/#/notes/2791572)
+            -   [Poznámka k podpoře SAP #2382421 – optimalizace konfigurace sítě v HANA a na úrovni operačního systému](https://launchpad.support.sap.com/#/notes/2382421)
+            -   [Poznámka k podpoře SAP #2694118 – doplněk Red Hat Enterprise Linux HA v Azure](https://launchpad.support.sap.com/#/notes/2694118)
+            -   [Poznámka k podpoře SAP #1984787 – SUSE LINUX Enterprise Server 12: poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787)
+            -   [Poznámka k podpoře SAP #2002167-Red Hat Enterprise Linux 7. x: instalace a upgrade](https://launchpad.support.sap.com/#/notes/0002002167)
+            -   [Poznámka k podpoře SAP #2292690 – SAP HANA DB: Doporučená nastavení operačního systému pro RHEL 7](https://launchpad.support.sap.com/#/notes/0002292690)
+            -   [Poznámka k podpoře SAP #2772999-Red Hat Enterprise Linux 8. x: instalace a konfigurace](https://launchpad.support.sap.com/#/notes/2772999)
+            -   [Poznámka k podpoře SAP #2777782 – SAP HANA DB: Doporučená nastavení operačního systému pro RHEL 8](https://launchpad.support.sap.com/#/notes/2777782)
+            -   [Poznámka k podpoře SAP #2578899-SUSE Linux Enterprise Server 15: Poznámka k instalaci](https://launchpad.support.sap.com/#/notes/2578899)
+            -   [Poznámka k podpoře SAP # https://launchpad.support.sap.com/#/notes/0002455582)(https://launchpad.support.sap.com/#/notes/0002455582)
+            -    [Poznámka k podpoře SAP #2729475 – HWCCT se nezdařilo s chybou "hypervisor není podporován" na virtuálních počítačích Azure certifikovaných pro SAP HANA](https://launchpad.support.sap.com/#/notes/2729475)
 1. Otestujte postupy pro vysokou dostupnost a zotavení po havárii.
    1. Simulace převzetí služeb při selhání vypnutím virtuálních počítačů (hostovanými operačními systémy Windows) nebo vložením operačních systémů do nouzového režimu (hostovaných operačních systémů Linux). Tento krok vám pomůže zjistit, jestli vaše konfigurace převzetí služeb při selhání fungují tak, jak jsou navržené.
    1. Změřte, jak dlouho trvá spuštění převzetí služeb při selhání. Pokud jsou časy příliš dlouhé, zvažte následující:
@@ -188,7 +206,7 @@ Během této fáze obvykle nasazujete vývojové systémy, systémy testování 
 10. Po nasazení infrastruktury otestujete a vyhodnoťte latenci sítě mezi virtuálními počítači aplikační vrstvy SAP a virtuálními počítači DBMS podle poznámky podpory SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) a [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Vyhodnoťte výsledky na základě pokynů pro latenci sítě v části [SAP Support note #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Latence sítě by měla být v mírném nebo dobrém rozsahu. Výjimky se vztahují na provoz mezi virtuálními počítači a velkými jednotkami instancí, jak je uvedeno v [tomto článku](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance). Ujistěte se, že žádná omezení uvedená v části [požadavky týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#azure-network-considerations) a [Konfigurace infrastruktury SAP Hana a operací v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) se vztahují na vaše nasazení.
 11. Zajistěte, aby byly virtuální počítače nasazené do správné [skupiny umístění služby Azure Proximity](https://docs.microsoft.com/azure/virtual-machines/linux/co-location), jak je popsáno v tématu [skupiny umístění v blízkosti Azure pro optimální latenci sítě s aplikacemi SAP](sap-proximity-placement-scenarios.md).
 11. Před použitím úlohy proveďte všechny další kontroly uvedené pro fázi ověření konceptu.
-12. Jak zatížení platí, zaznamenejte spotřebu prostředků systémů v Azure. Porovnejte tuto spotřebu se záznamy z vaší staré platformy. Pokud zjistíte, že máte velké rozdíly, upravte velikost virtuálních počítačů v budoucích nasazeních. Pamatujte na to, že když se klidnějších, úložiště a šířka pásma sítě virtuálních počítačů se sníží.
+12. Jak zatížení platí, zaznamenejte spotřebu prostředků systémů v Azure. Porovnejte tuto spotřebu se záznamy z vaší staré platformy. Pokud zjistíte, že máte velké rozdíly, upravte velikost virtuálních počítačů v budoucích nasazeních. Pamatujte na to, že když se klidnějších, úložiště a šířka pásma sítě virtuálních počítačů, sníží se i.
     - [Velikosti virtuálních počítačů s Windows v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)
     - [Velikosti virtuálních počítačů s Linuxem v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. Experimentujte s funkcí a procesy systémové kopie. Cílem je zjednodušit zkopírování vývojového systému nebo testovacího systému, takže projektové týmy můžou rychle získat nové systémy. Zvažte použití [SAP Lama](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) pro tyto úlohy.
@@ -209,7 +227,7 @@ V této fázi můžete shromažďovat, co jste se seznámili a zjistili během n
     - Pokud potřebujete sloučit migraci s upgradem na vydání SAP, použijte proces [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) . Mějte na paměti, že nejsou podporované všechny kombinace zdrojového DBMS a cílového systému DBMS. Další informace najdete v poznámkách k podpoře SAP pro různé verze služby DMO. Například [možnost migrace databáze (DMO) SUM 2,0 SP04](https://launchpad.support.sap.com/#/notes/2644872).
     - Pro případ, že budete potřebovat přesunout zálohy nebo soubory exportu SAP, otestujte, jestli je propustnost přenosu dat lepší prostřednictvím Internetu nebo přes ExpressRoute. Pokud přesouváte data přes Internet, možná budete muset změnit některá pravidla skupiny zabezpečení sítě/skupiny zabezpečení aplikací, která budete muset mít pro budoucí produkční systémy.
 1.  Než přesunete systémy z vaší staré platformy do Azure, Shromážděte data o spotřebě prostředků. Užitečná data zahrnují využití procesoru, propustnost úložiště a data IOPS. Obzvláště Shromážděte tato data z jednotek vrstvy DBMS, ale také je Shromážděte z jednotek aplikační vrstvy. Také změřit latenci sítě a úložiště.
-1.  Znovu Projděte poznámky k podpoře SAP, adresář SAP HANA hardwaru a PAM služby SAP. Ujistěte se, že v podporovaných virtuálních počítačích pro Azure nejsou žádné změny, podporované verze operačního systému v těchto virtuálních počítačích a podporované verze SAP a DBMS.
+1.  Znovu Projděte poznámky k podpoře SAP a požadovaná nastavení operačního systému, SAP HANA adresář hardwaru a modul PAM služby SAP. Ujistěte se, že v podporovaných virtuálních počítačích pro Azure nejsou žádné změny, podporované verze operačního systému v těchto virtuálních počítačích a podporované verze SAP a DBMS.
 1.  Aktualizujte skripty nasazení a vezměte v úvahu nejnovější rozhodnutí, která jste udělali u typů virtuálních počítačů a funkcí Azure.
 1.  Po nasazení infrastruktury a aplikací ověřte, že:
     - Byly nasazeny správné typy virtuálních počítačů se správnými atributy a velikostmi úložiště.
@@ -244,7 +262,7 @@ Během fáze přechodu do živého prostředí nezapomeňte postupovat podle pla
         - Průměrná doba využití procesoru, každý jednotlivý procesor (128 procesorů na virtuálních počítačích s M128)
         - Čas jádra procesoru, každý jednotlivý procesor
         - Uživatelský čas procesoru, každý jednotlivý procesor
-    - Memory:
+    - Rezident.
         - Volná paměť
         - Paměťová stránka za sekundu
         - Nedostatek paměťové stránky za sekundu
@@ -255,7 +273,7 @@ Během fáze přechodu do živého prostředí nezapomeňte postupovat podle pla
         - Zápis na disk v KB/s, na jednotlivé disky
         - Zápis na disk za sekundu, na jednotlivé disky
         - Zápis na disk v mikrosekundách/čteních na jednotlivých discích
-    - Síť.
+    - Sítě.
         - Síťové pakety za sekundu
         - Odchozí síťové pakety za sekundu
         - Síť KB za sekundu

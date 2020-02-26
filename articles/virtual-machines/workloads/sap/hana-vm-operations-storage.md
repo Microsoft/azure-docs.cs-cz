@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/27/2019
+ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26994c3488feb5f2c1522960ba4d2664bdbc80f4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4cc4db9ffcb700d4b65a7f5c21d258e9af52d164
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707472"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598523"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -54,8 +54,11 @@ Vzhledem k toho, že nízká latence úložiště je pro systémy DBMS velmi kri
 
 **Doporučení: jako velikost stripe pro RAID 0 doporučujeme použít:**
 
-- 64 KB nebo 128 KB pro **/Hana/data**
+- 256 KB pro **/Hana/data**
 - 32 KB pro **/Hana/log**
+
+> [!IMPORTANT]
+> Velikost proložení pro/Hana/data se změnila z předchozích doporučení volajících 64 KB nebo 128 KB 256 na základě zkušeností zákazníků s novějšími verzemi systému Linux. Velikost 256 KB poskytuje poněkud lepší výkon.
 
 > [!NOTE]
 > Nemusíte konfigurovat žádnou redundanci pomocí svazků RAID, protože Azure Premium a Storage úrovně Standard udržují tři image VHD. Použití svazku RAID je čistě ke konfiguraci svazků, které poskytují dostatečnou propustnost vstupně-výstupních operací.
@@ -65,7 +68,7 @@ Nahromadění řady virtuálních pevných disků Azure pod položkou RAID se ac
 Při změně velikosti nebo rozhodování pro virtuální počítač si taky Pamatujte na propustnost v/v. Celková propustnost úložiště virtuálních počítačů je popsána v článku [paměťově optimalizované velikosti virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory).
 
 ## <a name="linux-io-scheduler-mode"></a>Režim plánovače I/O systému Linux
-Linux má několik různých režimů plánování vstupu a výstupu. Běžnými doporučeními pro dodavatele Linux a SAP je překonfigurování režimu I/O Scheduleru pro svazky disků z režimu **CFQ** do režimu **NoOp** . Podrobnosti jsou odkazovány v [#1984787 SAP Note](https://launchpad.support.sap.com/#/notes/1984787). 
+Linux má několik různých režimů plánování vstupu a výstupu. Běžnými doporučeními pro dodavatele a SAP pro Linux je překonfigurování režimu v/v plánovače pro svazky disků z režimu **CFQ** do **NoOp** (nejedná se o více front) nebo **none** for (více front) režimu. Podrobnosti jsou odkazovány v [#1984787 SAP Note](https://launchpad.support.sap.com/#/notes/1984787). 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Řešení s Premium Storage a Azure Akcelerátor zápisu pro virtuální počítače řady Azure M-Series
@@ -100,19 +103,19 @@ Doporučení často překračují minimální požadavky SAP, jak je uvedeno vý
 
 **Doporučení: doporučené konfigurace pro produkční scénáře vypadají jako:**
 
-| SKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Nejvýše k VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /hana/data | /hana/log | /hana/shared | Rozsah/root | /usr/sap | Hana a zálohování |
+| Skladová položka virtuálního počítače | Paměť RAM | Nejvýše k VM I/O<br /> Propustnost | /hana/data | /hana/log | /hana/shared | Rozsah/root | /usr/sap | Hana a zálohování |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| M32ts | 192 GiB | 500 MB/s | 3 x P20 | 2 × P20 | 1 × P20 | 1 × P6 | 1 × P6 |1 × P20 |
-| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 2 × P20 | 1 × P20 | 1 × P6 | 1 × P6 |1 × P20 |
-| M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 2 × P20 | 1 × P20 | 1 × P6 | 1 × P6 |1 × P30 |
-| M64s | 1000 GiB | 1000 MB/s | 4 x P20 | 2 × P20 | 1 × P30 | 1 × P6 | 1 × P6 |2 × P30 |
-| M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 2 × P20 | 1 × P30 | 1 × P6 | 1 × P6 | 3 x P30 |
-| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 × P20 | 1 × P30 | 1 × P10 | 1 × P6 | 2 × P40 |
-| M128ms | 3800 GiB | 2000 MB/s | 5 × P30 | 2 × P20 | 1 × P30 | 1 × P10 | 1 × P6 | 4 x P40 |
-| M208s_v2 | 2850 GiB | 1000 MB/s | 4 x P30 | 2 × P20 | 1 × P30 | 1 × P10 | 1 × P6 | 3 x P40 |
-| M208ms_v2 | 5700 GiB | 1000 MB/s | 4 x P40 | 2 × P20 | 1 × P30 | 1 × P10 | 1 × P6 | 3 x P50 |
-| M416s_v2 | 5700 GiB | 2000 MB/s | 4 x P40 | 2 × P20 | 1 × P30 | 1 × P10 | 1 × P6 | 3 x P50 |
-| M416ms_v2 | 11400 GiB | 2000 MB/s | 8 × P40 | 2 × P20 | 1 × P30 | 1 × P10 | 1 × P6 | 4 x P50 |
+| M32ts | 192 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
+| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
+| M64ls | 512 GiB | 1000 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P30 |
+| M64s | 1000 GiB | 1000 MB/s | 4 x P20 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 |2 x P30 |
+| M64ms | 1750 GiB | 1000 MB/s | 3 x P30 | 2 x P20 | 1 x P30 | 1 x P6 | 1 x P6 | 3 x P30 |
+| M128s | 2000 GiB | 2000 MB/s |3 x P30 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 2 x P40 |
+| M128ms | 3800 GiB | 2000 MB/s | 5 x P30 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 4 x P40 |
+| M208s_v2 | 2850 GiB | 1000 MB/s | 4 x P30 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P40 |
+| M208ms_v2 | 5700 GiB | 1000 MB/s | 4 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P50 |
+| M416s_v2 | 5700 GiB | 2000 MB/s | 4 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 3 x P50 |
+| M416ms_v2 | 11400 GiB | 2000 MB/s | 8 x P40 | 2 x P20 | 1 x P30 | 1 x P10 | 1 x P6 | 4 x P50 |
 
 Ověřte, zda propustnost úložiště pro různé navrhované svazky splňuje zatížení, které chcete spustit. Pokud zatížení vyžaduje větší objemy pro **/Hana/data** a **/Hana/log**, je potřeba zvýšit počet virtuálních pevných disků Azure Premium Storage. Změna velikosti svazku s více virtuálními disky, než je uvedené, zvyšuje počet IOPS a propustnost vstupně-výstupních operací v rámci omezení typu virtuálního počítače Azure.
 
@@ -142,24 +145,24 @@ Následující tabulka uvádí konfiguraci typů virtuálních počítačů, kte
 
 Doporučení často překračují minimální požadavky SAP, jak je uvedeno výše v tomto článku. Uvedená doporučení představují kompromis mezi doporučeními velikosti podle SAP a maximální propustností úložiště, kterou poskytují různé typy virtuálních počítačů.
 
-| SKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Nejvýše k VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /Hana/data a/Hana/log<br /> prokládaný pomocí LVM nebo MDADM | /hana/shared | Rozsah/root | /usr/sap | Hana a zálohování |
+| Skladová položka virtuálního počítače | Paměť RAM | Nejvýše k VM I/O<br /> Propustnost | /Hana/data a/Hana/log<br /> prokládaný pomocí LVM nebo MDADM | /hana/shared | Rozsah/root | /usr/sap | Hana a zálohování |
 | --- | --- | --- | --- | --- | --- | --- | -- |
-| DS14v2 | 112 GiB | 768 MB/s | 3 x P20 | 1 × E20 | 1 × E6 | 1 × E6 | 1 × E15 |
-| E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 × E20 | 1 × E6 | 1 × E6 | 1 × E15 |
-| E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 × E20 | 1 × E6 | 1 × E6 | 1 × E20 |
-| E64v3 | 432 GiB | 1 200 MB/s | 3 x P20 | 1 × E20 | 1 × E6 | 1 × E6 | 1 × E30 |
-| GS5 | 448 GiB | 2 000 MB/s | 3 x P20 | 1 × E20 | 1 × E6 | 1 × E6 | 1 × E30 |
-| M32ts | 192 GiB | 500 MB/s | 3 x P20 | 1 × E20 | 1 × E6 | 1 × E6 | 1 × E20 |
-| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 × E20 | 1 × E6 | 1 × E6 | 1 × E20 |
-| M64ls | 512 GiB | 1 000 MB/s | 3 x P20 | 1 × E20 | 1 × E6 | 1 × E6 |1 × E30 |
-| M64s | 1 000 GiB | 1 000 MB/s | 2 × P30 | 1 × E30 | 1 × E6 | 1 × E6 |2 × E30 |
-| M64ms | 1 750 GiB | 1 000 MB/s | 3 x P30 | 1 × E30 | 1 × E6 | 1 × E6 | 3 x E30 |
-| M128s | 2 000 GiB | 2 000 MB/s |3 x P30 | 1 × E30 | 1 × E10 | 1 × E6 | 2 × E40 |
-| M128ms | 3 800 GiB | 2 000 MB/s | 5 × P30 | 1 × E30 | 1 × E10 | 1 × E6 | 2 × E50 |
-| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 x P30 | 1 × E30 | 1 × E10 | 1 × E6 |  3 x E40 |
-| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 4 x P40 | 1 × E30 | 1 × E10 | 1 × E6 |  4 x E40 |
-| M416s_v2 | 5 700 GiB | 2 000 MB/s | 4 x P40 | 1 × E30 | 1 × E10 | 1 × E6 |  4 x E40 |
-| M416ms_v2 | 11400 GiB | 2 000 MB/s | 8 × P40 | 1 × E30 | 1 × E10 | 1 × E6 |  4 x E50 |
+| DS14v2 | 112 GiB | 768 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
+| E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
+| E32v3 | 256 GiB | 768 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
+| E64v3 | 432 GiB | 1 200 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E30 |
+| GS5 | 448 GiB | 2 000 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E30 |
+| M32ts | 192 GiB | 500 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
+| M32ls | 256 GiB | 500 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E20 |
+| M64ls | 512 GiB | 1 000 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 |1 x E30 |
+| M64s | 1 000 GiB | 1 000 MB/s | 2 x P30 | 1 x E30 | 1 x E6 | 1 x E6 |2 x E30 |
+| M64ms | 1 750 GiB | 1 000 MB/s | 3 x P30 | 1 x E30 | 1 x E6 | 1 x E6 | 3 x E30 |
+| M128s | 2 000 GiB | 2 000 MB/s |3 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E40 |
+| M128ms | 3 800 GiB | 2 000 MB/s | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 2 x E50 |
+| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 |  3 x E40 |
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E40 |
+| M416ms_v2 | 11400 GiB | 2 000 MB/s | 8 x P40 | 1 x E30 | 1 x E10 | 1 x E6 |  4 x E50 |
 
 
 Disky doporučené pro menší typy virtuálních počítačů se 3 x P20 neodesílá svazky týkající se doporučení místa podle dokumentu [White paper k úložišti SAP TDI](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). Nicméně možnost zobrazená v tabulce byla provedena za účelem zajištění dostatečné propustnosti disku pro SAP HANA. Pokud budete potřebovat změny ve svazku **/Hana/Backup** , který měl velikost pro uchovávání záloh, které reprezentují dvojnásobek paměti, můžete ho klidně upravit.   
@@ -182,7 +185,7 @@ Microsoft se v procesu zavádí nový typ úložiště Azure s názvem [Azure Ul
 
 Ultra disk poskytuje možnost definovat jeden disk, který splňuje vaši velikost, IOPS a rozsah propustnosti disku. Místo používání správců logických svazků, jako je LVM nebo MDADM, na Azure Premium Storage k vytváření svazků, které splňují požadavky na propustnost vstupně-výstupních operací a úložiště. Můžete spouštět kombinaci konfigurací mezi disky Ultra a Premium Storage. V důsledku toho můžete omezit využití disku Ultra disk na/Hana/data a/Hana/log svazky na výkon a další svazky pokrýt pomocí Azure Premium Storage
 
-Dalšími výhodami extrémně disku může být lepší latence čtení v porovnání s Premium Storage. Rychlejší latence čtení může mít výhody, když chcete snížit čas spuštění HANA a následné načtení dat do paměti. Pokud HANA zapisuje úložných bodů, můžou se taky vycházet z výhod úložiště Ultra disk. Vzhledem k tomu, že Premium Storage disky pro/Hana/data obvykle nejsou Akcelerátor zápisu mezipaměti, latence zápisu pro/Hana/data v Premium Storage v porovnání s Ultra diskem je vyšší. Je možné očekávat, že zápis do uloženého bodu s Ultra diskem je lepší na disku Ultra disk.
+Dalšími výhodami extrémně disku může být lepší latence čtení v porovnání s Premium Storage. Rychlejší latence čtení může mít výhody, když chcete snížit dobu spuštění HANA a následné načtení dat do paměti. Pokud HANA zapisuje úložných bodů, můžou se taky vycházet z výhod úložiště Ultra disk. Vzhledem k tomu, že Premium Storage disky pro/Hana/data obvykle nejsou Akcelerátor zápisu mezipaměti, latence zápisu pro/Hana/data v Premium Storage v porovnání s Ultra diskem je vyšší. Je možné očekávat, že zápis do uloženého bodu s Ultra diskem je lepší na disku Ultra disk.
 
 > [!IMPORTANT]
 > Ultra disk ještě není ve všech oblastech Azure a ještě nepodporují všechny typy virtuálních počítačů uvedené níže. Podrobné informace o dostupnosti Ultra disk a o podporovaných rodinách virtuálních počítačů najdete v článku o [tom, jaké typy disků jsou dostupné v Azure?](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk).
@@ -192,20 +195,20 @@ V této konfiguraci se svazky/Hana/data a/Hana/log udržují samostatně. Navrho
 
 Doporučení často překračují minimální požadavky SAP, jak je uvedeno výše v tomto článku. Uvedená doporučení představují kompromis mezi doporučeními velikosti podle SAP a maximální propustností úložiště, kterou poskytují různé typy virtuálních počítačů.
 
-| SKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Nejvýše k VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | /Hana/data svazek | /Hana/data v/v – propustnost | /Hana/data IOPS | /Hana/log svazek | /Hana/log v/v – propustnost | /Hana/log IOPS |
+| Skladová položka virtuálního počítače | Paměť RAM | Nejvýše k VM I/O<br /> Propustnost | /Hana/data svazek | /Hana/data v/v – propustnost | /Hana/data IOPS | /Hana/log svazek | /Hana/log v/v – propustnost | /Hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| E64s_v3 | 432 GiB | 1 200 MB/s | 600 GB | 700 MB/s | 7 500 | 512 GB | 500 MB/s  | 2 000 |
-| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MB/s | 7 500 | 256 GB | 250 MB/s  | 2 000 |
-| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MB/s | 7 500 | 256 GB | 250 MB/s  | 2 000 |
-| M64ls | 512 GiB | 1 000 MB/s | 600 GB | 600 MB/s | 7 500 | 512 GB | 400 MB/s  | 2 500 |
-| M64s | 1 000 GiB | 1 000 MB/s |  1 200 GB | 600 MB/s | 7 500 | 512 GB | 400 MB/s  | 2 500 |
-| M64ms | 1 750 GiB | 1 000 MB/s | 2 100 GB | 600 MB/s | 7 500 | 512 GB | 400 MB/s  | 2 500 |
-| M128s | 2 000 GiB | 2 000 MB/s |2 400 GB | 1 200 MB/s |9 000 | 512 GB | 800 MB/s  | 3000 | 
-| M128ms | 3 800 GiB | 2 000 MB/s | 4 800 GB | 1200 MB/s |9 000 | 512 GB | 800 MB/s  | 3000 | 
-| M208s_v2 | 2 850 GiB | 1 000 MB/s | 3 500 GB | 1 000 MB/s | 9 000 | 512 GB | 400 MB/s  | 2 500 | 
-| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 200 GB | 1 000 MB/s | 9 000 | 512 GB | 400 MB/s  | 2 500 | 
-| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 200 GB | 1 500 MB/s | 9 000 | 512 GB | 800 MB/s  | 3000 | 
-| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 14 400 GB | 1 500 MB/s | 9 000 | 512 GB | 800 MB/s  | 3000 |   
+| E64s_v3 | 432 GiB | 1 200 MB/s | 600 GB | 700 MB/s | 7,500 | 512 GB | 500 MB/s  | 2,000 |
+| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MB/s | 7,500 | 256 GB | 250 MB/s  | 2,000 |
+| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MB/s | 7,500 | 256 GB | 250 MB/s  | 2,000 |
+| M64ls | 512 GiB | 1 000 MB/s | 600 GB | 600 MB/s | 7,500 | 512 GB | 400 MB/s  | 2,500 |
+| M64s | 1 000 GiB | 1 000 MB/s |  1 200 GB | 600 MB/s | 7,500 | 512 GB | 400 MB/s  | 2,500 |
+| M64ms | 1 750 GiB | 1 000 MB/s | 2 100 GB | 600 MB/s | 7,500 | 512 GB | 400 MB/s  | 2,500 |
+| M128s | 2 000 GiB | 2 000 MB/s |2 400 GB | 1 200 MB/s |9 000 | 512 GB | 800 MB/s  | 3 000 | 
+| M128ms | 3 800 GiB | 2 000 MB/s | 4 800 GB | 1200 MB/s |9 000 | 512 GB | 800 MB/s  | 3 000 | 
+| M208s_v2 | 2 850 GiB | 1 000 MB/s | 3 500 GB | 1 000 MB/s | 9 000 | 512 GB | 400 MB/s  | 2,500 | 
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 200 GB | 1 000 MB/s | 9 000 | 512 GB | 400 MB/s  | 2,500 | 
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 200 GB | 1 500 MB/s | 9 000 | 512 GB | 800 MB/s  | 3 000 | 
+| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 14 400 GB | 1 500 MB/s | 9 000 | 512 GB | 800 MB/s  | 3 000 |   
 
 Uvedené hodnoty mají být výchozím bodem a je nutné je vyhodnotit proti skutečným požadavkům. Výhodou pro Azure Ultra disk je, že hodnoty pro vstupně-výstupní operace a propustnost můžou být přizpůsobené bez nutnosti vypnout virtuální počítač nebo zastavit zatížení, které se v systému používá.   
 
@@ -217,20 +220,20 @@ V této konfiguraci jsou svazky/Hana/data a/Hana/log na stejném disku. Navrhova
 
 Doporučení často překračují minimální požadavky SAP, jak je uvedeno výše v tomto článku. Uvedená doporučení představují kompromis mezi doporučeními velikosti podle SAP a maximální propustností úložiště, kterou poskytují různé typy virtuálních počítačů.
 
-| SKU VIRTUÁLNÍHO POČÍTAČE | Paměť RAM | Nejvýše k VSTUPNĚ-VÝSTUPNÍ OPERACE VIRTUÁLNÍHO POČÍTAČE<br /> Propustnost | Svazek pro/Hana/data a/log | /Hana/data a propustnost vstupně-výstupních operací protokolu | /Hana/data a log IOPS |
+| Skladová položka virtuálního počítače | Paměť RAM | Nejvýše k VM I/O<br /> Propustnost | Svazek pro/Hana/data a/log | /Hana/data a propustnost vstupně-výstupních operací protokolu | /Hana/data a log IOPS |
 | --- | --- | --- | --- | --- | --- |
 | E64s_v3 | 432 GiB | 1 200 MB/s | 1 200 GB | 1 200 MB/s | 9 500 | 
 | M32ts | 192 GiB | 500 MB/s | 512 GB | 400 MB/s | 9 500 | 
 | M32ls | 256 GiB | 500 MB/s | 600 GB | 400 MB/s | 9 500 | 
-| M64ls | 512 GiB | 1 000 MB/s | 1 100 GB | 900 MB/s | 10 000 | 
-| M64s | 1 000 GiB | 1 000 MB/s |  1 700 GB | 900 MB/s | 10 000 | 
-| M64ms | 1 750 GiB | 1 000 MB/s | 2 600 GB | 900 MB/s | 10 000 | 
-| M128s | 2 000 GiB | 2 000 MB/s |2 900 GB | 1 800 MB/s |12 000 | 
-| M128ms | 3 800 GiB | 2 000 MB/s | 5 300 GB | 1 800 MB/s |12 000 |  
-| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 000 GB | 900 MB/s | 10 000 |  
-| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 700 GB | 900 MB/s | 10 000 | 
-| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 700 GB | 1, 800MBps | 12 000 |  
-| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 15 000 GB | 1 800 MB/s | 12 000 |    
+| M64ls | 512 GiB | 1 000 MB/s | 1 100 GB | 900 MB/s | 10,000 | 
+| M64s | 1 000 GiB | 1 000 MB/s |  1 700 GB | 900 MB/s | 10,000 | 
+| M64ms | 1 750 GiB | 1 000 MB/s | 2 600 GB | 900 MB/s | 10,000 | 
+| M128s | 2 000 GiB | 2 000 MB/s |2 900 GB | 1 800 MB/s |12,000 | 
+| M128ms | 3 800 GiB | 2 000 MB/s | 5 300 GB | 1 800 MB/s |12,000 |  
+| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 000 GB | 900 MB/s | 10,000 |  
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 700 GB | 900 MB/s | 10,000 | 
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 700 GB | 1, 800MBps | 12,000 |  
+| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 15 000 GB | 1 800 MB/s | 12,000 |    
 
 Uvedené hodnoty mají být výchozím bodem a je nutné je vyhodnotit proti skutečným požadavkům. Výhodou pro Azure Ultra disk je, že hodnoty pro vstupně-výstupní operace a propustnost můžou být přizpůsobené bez nutnosti vypnout virtuální počítač nebo zastavit zatížení, které se v systému používá.  
 
@@ -294,6 +297,6 @@ Dokumentace k nasazení SAP HANA konfigurace škálování na více instancí s 
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace:
+Další informace naleznete v tématu:
 
 - [SAP HANA Průvodce vysokou dostupností pro virtuální počítače Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).

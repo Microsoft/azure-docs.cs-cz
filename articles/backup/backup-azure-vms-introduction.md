@@ -3,12 +3,12 @@ title: Informace o zálohování virtuálních počítačů Azure
 description: V tomto článku se dozvíte, jak služba Azure Backup zálohuje virtuální počítače Azure a jak postupovat podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b38c61adaf334eacb7d85292d4174189d6fddc46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391903"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597248"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 
@@ -58,12 +58,7 @@ BEKs se také zálohují. Takže pokud dojde ke ztrátě BEKs, autorizovaní už
 
 Azure Backup převezme snímky podle plánu zálohování.
 
-- **Virtuální počítače s Windows:** V případě virtuálních počítačů s Windows se služba Backup koordinuje se stínovou kopií svazku, aby vybrala snímek konzistentní vzhledem k aplikacím na discích virtuálních počítačů.
-
-  - Ve výchozím nastavení Azure Backup provede úplné zálohování VSS. [Další informace](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
-  - Chcete-li změnit nastavení tak, aby Azure Backup trvalo zálohování kopírováním služby VSS, nastavte následující klíč registru z příkazového řádku:
-
-    **REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent"/v USEVSSCOPYBACKUP/t REG_SZ/d TRUE/f**
+- **Virtuální počítače s Windows:** V případě virtuálních počítačů s Windows se služba Backup koordinuje se stínovou kopií svazku, aby vybrala snímek konzistentní vzhledem k aplikacím na discích virtuálních počítačů.  Ve výchozím nastavení Azure Backup provede úplnou zálohu služby VSS (při zálohování se zkrátí protokoly aplikací, jako je SQL Server v době zálohování, aby se získala záloha s konzistentním nastavením úrovně aplikace).  Pokud používáte databázi SQL Server v zálohování virtuálních počítačů Azure, můžete změnit nastavení tak, aby se zabralo zálohování kopírováním STÍNových kopií (pro zachování protokolů). Další informace najdete v [tomto článku](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#troubleshoot-vm-snapshot-issues).
 
 - **Virtuální počítače se systémem Linux:** Aby bylo možné využívat snímky virtuálních počítačů se systémem Linux konzistentní vzhledem k aplikacím, použijte k zápisu vlastních skriptů k zajištění konzistence architekturu předzálohovacího a pozálohovacího skriptu pro Linux.
 
@@ -86,7 +81,7 @@ Následující tabulka vysvětluje různé typy konzistence snímků:
 **Aspekty** | **Podrobnosti**
 --- | ---
 **Disk** | Zálohování disků virtuálních počítačů je paralelní. Pokud například virtuální počítač obsahuje čtyři disky, Služba Backup se pokusí zálohovat všechny čtyři disky paralelně. Zálohování je přírůstkové (pouze změněná data).
-**Plánování** |  Pro snížení zátěže zálohování zálohujte různé virtuální počítače v různou dobu a ujistěte se, že se časy nepřekrývají. Zálohování virtuálních počítačů v současné době způsobuje zablokování provozu.
+**Plánuje** |  Pro snížení zátěže zálohování zálohujte různé virtuální počítače v různou dobu a ujistěte se, že se časy nepřekrývají. Zálohování virtuálních počítačů v současné době způsobuje zablokování provozu.
 **Příprava záloh** | Mějte na paměti čas potřebný k přípravě zálohy. Doba přípravy zahrnuje instalaci nebo aktualizaci rozšíření zálohování a aktivaci snímku podle plánu zálohování.
 **Přenos dat** | Zvažte dobu potřebnou pro Azure Backup k identifikaci přírůstkových změn z předchozí zálohy.<br/><br/> V přírůstkové záloze Azure Backup určuje změny pomocí výpočtu kontrolního součtu bloku. Pokud dojde ke změně bloku, je označený pro přenos do trezoru. Služba analyzuje identifikované bloky a snaží se o další minimalizaci množství dat, která se mají přenést. Po vyhodnocení všech změněných bloků Azure Backup přenese změny do trezoru.<br/><br/> Může dojít ke zpoždění mezi pořizováním snímku a jeho zkopírováním do trezoru.<br/><br/> V časech špičky může trvat až osm hodin, než se budou zálohy zpracovávat. Čas zálohování pro virtuální počítač bude pro každodenní zálohování kratší než 24 hodin.
 **Prvotní zálohování** | I když je celková doba zálohování přírůstkových záloh méně než 24 hodin, nemusí se jednat o případ první zálohy. Čas potřebný k prvotnímu zálohování bude záviset na velikosti dat a při zpracování zálohy.

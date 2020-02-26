@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2019
 ms.author: memildin
-ms.openlocfilehash: 01c0f1199ab8c376fe5bb5e864f81a2730879ed1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1a6999c05c0b3dbaf572b376412f666c50c23df7
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112313"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604454"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Kurz: zlepšení dodržování legislativních předpisů
 ---
 
 Azure Security Center pomáhá zjednodušit proces splnění požadavků na dodržování legislativních předpisů pomocí **řídicího panelu dodržování předpisů regulativního předpisu**. Na řídicím panelu Security Center poskytuje přehledy o dodržování předpisů stav na základě průběžného posouzení prostředí Azure. V souladu s osvědčenými postupy zabezpečení Security Center analyzuje rizikové faktory v hybridním cloudovém prostředí. Tato posouzení jsou namapována na řízení dodržování předpisů z podporované sady standardů. Na řídicím panelu dodržování předpisů můžete zobrazit stav všech posouzení v rámci vašeho prostředí v kontextu určitého standardu nebo nařízení. Při rozhodování o doporučeních a omezení rizikových faktorů ve vašem prostředí vylepšuje stav dodržování předpisů.
 
-V tomto kurzu se naučíte:
+V tomto kurzu se naučíte, jak:
 
 -   Vyhodnocení dodržování předpisů pomocí řídicího panelu dodržování předpisů
 
@@ -49,7 +49,7 @@ Zobrazení řídicího panelu dodržování předpisů může pomáhat zaměřit
 >
 > Funkce [dynamické balíčky s kompatibilitou (Preview)](update-regulatory-compliance-packages.md) umožňuje upgradovat standardy zobrazené na řídicím panelu dodržování předpisů pro nové *dynamické* balíčky. Stejnou funkci ve verzi Preview můžete použít také k přidání nových balíčků dodržování předpisů a k monitorování dodržování předpisů pomocí dalších standardů. 
 
-1.  V hlavní nabídce Security Center v části **zásady & dodržování předpisů** vyberte **dodržování předpisů**. <br>
+1.  V hlavní nabídce Security Center v části **zásady &AMP; dodržování předpisů** vyberte **dodržování předpisů**. <br>
 V horní části obrazovky se zobrazí řídicí panel s přehledem stavu dodržování předpisů se sadou podporovaných předpisů pro dodržování předpisů. Můžete si prohlédnout celkové skóre dodržování předpisů a počet průchodů a vyhodnocení souvisejících s každým standardem.
 
     ![Popis počítače vysoká důvěra](./media/security-center-compliance-dashboard/compliance-dashboard.png)
@@ -62,7 +62,7 @@ V horní části obrazovky se zobrazí řídicí panel s přehledem stavu dodrž
 
     Tato sestava poskytuje přehled o stavu dodržování předpisů pro vybrané standardní údaje na základě Security Center dat posouzení a organizuje se podle ovládacích prvků tohoto standardu. Tuto sestavu lze sdílet s příslušnými zúčastněnými stranami a může sloužit k poskytování důkazů pro interní a externí auditory.
 
-    ![download](./media/security-center-compliance-dashboard/download-report.png)
+    ![Stažení](./media/security-center-compliance-dashboard/download-report.png)
 
 ## <a name="improve-your-compliance-posture"></a>Zlepšení stav dodržování předpisů
 
@@ -76,7 +76,7 @@ S ohledem na informace na řídicím panelu dodržování předpisů můžete vy
 
 1. Po kliknutí na informace o doporučeních a výběru prostředku, který není v pořádku, vás zavede přímo k možnosti povolení **přenosu zabezpečeného úložiště** v rámci Azure Portal.
 
-    Další informace o tom, jak používat doporučení, najdete v části [implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
+    Další informace o tom, jak používat doporučení, najdete [v tématu Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
 
     ![doporučení pro dodržování předpisů](./media/security-center-compliance-dashboard/compliance-remediate-recommendation.png)
 
@@ -104,5 +104,3 @@ Další informace najdete tady:
 -   [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – Přečtěte si, jak používat doporučení v Azure Security Center k ochraně vašich prostředků Azure.
 
 -   [Vylepšete Vaše zabezpečené skóre v Azure Security Center](security-center-secure-score.md) – Zjistěte, jak upřednostnit ohrožení zabezpečení a doporučení zabezpečení, aby se zlepšila bezpečnost stav.
-
--   [Nejčastější](security-center-faq.md) dotazy k Azure Security Center – Přečtěte si nejčastější dotazy týkající se používání služby.

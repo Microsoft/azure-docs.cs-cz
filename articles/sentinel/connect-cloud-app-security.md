@@ -3,7 +3,7 @@ title: Připojit Cloud App Security dat ke službě Azure Sentinel | Microsoft D
 description: Přečtěte si, jak připojit Cloud App Security dat ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 32e7e79465b68caca9a636019f65b9f08284fc72
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.author: yelevin
+ms.openlocfilehash: 348576fbbdd1037f9e2e792218b96bbbecf36668
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928220"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588361"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Připojení dat z Microsoft Cloud App Security 
 
@@ -27,7 +27,7 @@ ms.locfileid: "73928220"
 
 Pomocí jediného kliknutí můžete streamovat protokoly z [Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) do Azure Sentinel. Toto připojení umožňuje streamovat výstrahy z Cloud App Security do Azure Sentinel. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Uživatel s oprávněními globálního správce nebo správce zabezpečení
 - Pokud chcete streamovat Cloud Discovery protokoly do Azure Sentinel, [Povolte jako Siem v Microsoft Cloud App Security možnost Sentinel Azure](https://aka.ms/AzureSentinelMCAS).

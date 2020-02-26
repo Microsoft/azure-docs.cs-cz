@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: výuka a nasazení modelu TensorFlow pro klasifikaci imagí pomocí rozšíření Azure Machine Learning Visual Studio Code'
+title: 'Kurz: výuka a nasazení modelu pomocí rozšíření Visual Studio Code'
 titleSuffix: Azure Machine Learning
 description: Naučte se naučit a nasazovat model klasifikace imagí pomocí TensorFlow a rozšíření Azure Machine Learning Visual Studio Code.
 services: machine-learning
@@ -8,27 +8,27 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 01/16/2019
-ms.openlocfilehash: 899681f2bb9c3ef2a0368015a58db30a843738f5
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 02/24/2020
+ms.openlocfilehash: ba9cd2e7dc0248aa351cb7bc4519689763f1adda
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157553"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602548"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Výuka a nasazení modelu TensorFlow pro klasifikaci imagí pomocí rozšíření Azure Machine Learning Visual Studio Code
 
-Naučte se, jak vytvořit model klasifikace imagí pro rozpoznávání ručně psaných čísel pomocí TensorFlow a rozšíření Azure Machine Learning Visual Studio Code.
+Naučte se, jak naučit a nasazovat model klasifikace imagí pro rozpoznávání ručně psaných čísel pomocí TensorFlow a rozšíření Azure Machine Learning Visual Studio Code.
 
-V tomto kurzu se naučíte provádět následující úlohy:
+V tomto kurzu se seznámíte s následujícími úlohami:
 
 > [!div class="checklist"]
 > * Vysvětlení kódu
-> * Vytvoření pracovního prostoru
+> * Vytvořit pracovní prostor
 > * Vytvoření experimentu
 > * Konfigurace cílů počítače
 > * Spuštění konfiguračního souboru
-> * Trénování modelu
+> * Učení modelu
 > * Zaregistrujte model
 > * Nasazení modelu
 
@@ -46,7 +46,7 @@ Kód pro tento kurz používá TensorFlow k výuce modelu Machine Learning klasi
 
 Získejte kód pro tento kurz stažením a rozzipováváem [nástrojů pro vs Code pro úložiště AI](https://github.com/microsoft/vscode-tools-for-ai/archive/master.zip) kdekoli v počítači.
 
-## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
+## <a name="create-a-workspace"></a>Vytvořit pracovní prostor
 
 První věc, kterou je třeba udělat k vytvoření aplikace v Azure Machine Learning, je vytvoření pracovního prostoru. Pracovní prostor obsahuje prostředky pro výukové modely i pro samotné školené modely. Další informace najdete v tématu [co je pracovní prostor](./concept-workspace.md). 
 
@@ -56,11 +56,11 @@ První věc, kterou je třeba udělat k vytvoření aplikace v Azure Machine Lea
     > [!div class="mx-imgBorder"]
     > ![Vytvoření pracovního prostoru](./media/tutorial-train-deploy-image-classification-model-vscode/create-workspace.png)
 
-1. Ve výchozím nastavení je generován název obsahující datum a čas vytvoření. V paletě příkazů změňte název na "TeamWorkspace" a stiskněte klávesu **ENTER**.
-1. V paletě příkazů vyberte **vytvořit novou skupinu prostředků** . 
-1. Do textového pole Paleta příkazů zadejte "TeamWorkspace-RG" a stiskněte klávesu **ENTER**. 
-1. V paletě příkazů vyberte umístění pro váš pracovní prostor. Doporučuje se zvolit umístění, které je nejblíže umístění, do kterého plánujete model nasadit. V takovém případě vyberte možnost **západní USA 2**.
-1. Po zobrazení výzvy k výběru skladové položky pracovního prostoru vyberte **základní** pro vytvoření základního pracovního prostoru. Další informace o různých nabídkách pracovních prostorů najdete v tématu [přehled Azure Machine Learning](./overview-what-is-azure-ml.md#sku).
+1. Ve výchozím nastavení je generován název obsahující datum a čas vytvoření. V poli textové zadání změňte název na "TeamWorkspace" a stiskněte klávesu **ENTER**.
+1. Vyberte **vytvořit novou skupinu prostředků**. 
+1. Pojmenujte skupinu prostředků "TeamWorkspace-RG" a stiskněte klávesu **ENTER**. 
+1. Vyberte umístění pro váš pracovní prostor. Doporučuje se zvolit umístění, které je nejblíže umístění, do kterého plánujete model nasadit. Například "Západní USA 2".
+1. Po zobrazení výzvy k výběru typu pracovního prostoru vyberte **základní** a vytvořte základní pracovní prostor. Další informace o různých nabídkách pracovních prostorů najdete v tématu [přehled Azure Machine Learning](./overview-what-is-azure-ml.md#sku).
 
 V tomto okamžiku se vytvoří požadavek na Azure, který vytvoří nový pracovní prostor ve vašem účtu. Po několika minutách se nový pracovní prostor zobrazí v uzlu vašeho předplatného. 
 
@@ -77,7 +77,7 @@ V pracovním prostoru se dá vytvořit jeden nebo více experimentů, abyste moh
     > [!div class="mx-imgBorder"]
     > ![Vytvoření experimentu](./media/tutorial-train-deploy-image-classification-model-vscode/create-experiment.png)
 
-1. Na příkazovém řádku palety příkazů pojmenujte experiment "MNIST ručně zapsaných" a stisknutím klávesy **ENTER** vytvořte nový experiment. 
+1. Pojmenujte experiment "MNIST ručně zapsaných" a stisknutím klávesy **ENTER** vytvořte nový experiment. 
 
 Podobně jako pracovní prostory se do Azure pošle požadavek na vytvoření experimentu s poskytnutými konfiguracemi. Po několika minutách se nový experiment zobrazí v uzlu *experimenty* pracovního prostoru. 
 
@@ -90,14 +90,14 @@ Postup vytvoření cíle výpočtů:
 1. Na řádku Visual Studio Code aktivity vyberte ikonu **Azure** . Zobrazí se zobrazení Azure Machine Learning. 
 1. Rozbalte uzel předplatného. 
 1. Rozbalte uzel **TeamWorkspace** . 
-1. Pod uzlem pracovního prostoru, klikněte pravým tlačítkem na **Compute** uzlu a zvolte **vytvořit výpočetní**. 
+1. Pod uzlem pracovní prostor klikněte pravým tlačítkem na **výpočetní** uzel a vyberte **vytvořit výpočetní**prostředky. 
 
     > [!div class="mx-imgBorder"]
     > ![vytvořit cíl výpočtů](./media/tutorial-train-deploy-image-classification-model-vscode/create-compute.png)
 
 1. Vyberte **Azure Machine Learning COMPUTE (AmlCompute)** . Azure Machine Learning COMPUTE je spravovaná a výpočetní infrastruktura, která umožňuje uživateli snadno vytvořit jeden nebo více uzlů, které se dají použít s ostatními uživateli v pracovním prostoru.
-1. Vyberte velikost virtuálního počítače. Na příkazovém řádku palety příkazů vyberte **Standard_F2s_v2**. Velikost virtuálního počítače má vliv na dobu potřebnou k učení vašich modelů. Další informace o velikostech virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
-1. Na příkazovém řádku palety příkazů pojmenujte COMPUTE "TeamWkspc-com" a stisknutím klávesy **ENTER** vytvořte výpočetní výkon.
+1. Vyberte velikost virtuálního počítače. V seznamu možností vyberte **Standard_F2s_v2** . Velikost virtuálního počítače má vliv na dobu potřebnou k učení vašich modelů. Další informace o velikostech virtuálních počítačů najdete v tématu [velikosti pro virtuální počítače Linux v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes).
+1. Pojmenujte svůj COMPUTE "TeamWkspc-com" a stisknutím klávesy **ENTER** vytvořte výpočetní výkon.
 
 Po několika minutách se nový cíl výpočtů zobrazí ve *výpočetním* uzlu vašeho pracovního prostoru.
 
@@ -115,10 +115,10 @@ Vytvoření konfigurace spuštění:
     > [!div class="mx-imgBorder"]
     > ![vytvořit konfiguraci spuštění](./media/tutorial-train-deploy-image-classification-model-vscode/create-run-configuration.png)
 
-1. Na příkazovém řádku palety příkazů zadejte název vaší konfigurace spuštění "MNIST ručně zapsaných-RC" a stisknutím klávesy **ENTER** vytvořte výpočetní výkon.
+1. Zadejte název konfigurace spuštění "MNIST ručně zapsaných-RC" a stisknutím klávesy **ENTER** vytvořte konfiguraci spuštění.
 1. Pak jako typ školicí úlohy vyberte **TensorFlow (školení s jedním uzlem** ).
 1. Stiskněte klávesu **ENTER** a procházejte soubor skriptu, který chcete spustit na výpočetním prostředí. V tomto případě skript pro výuku modelu je `train.py` soubor v adresáři `vscode-tools-for-ai/mnist-vscode-docs-sample`.
-1. Zadejte následující příkaz na příkazovém řádku palety příkazů a určete požadované balíčky.
+1. Do vstupního pole zadejte následující a určete požadované balíčky.
     
     ```text
     pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
@@ -187,12 +187,12 @@ Spuštění Azure Machine Learning experimentu:
 1. Rozbalte uzel předplatného. 
 1. Rozbalte uzel **TeamWorkspace > experimenty** . 
 1. Klikněte pravým tlačítkem na **mnist ručně zapsaných** experiment.
-1. Vyberte **spuštění experimentu**.
+1. Vyberte možnost **Spustit experiment**.
 
     > [!div class="mx-imgBorder"]
     > ![spuštění experimentu](./media/tutorial-train-deploy-image-classification-model-vscode/run-experiment.png)
 
-1. V paletě příkazů vyberte výpočetní cíl **TeamWkspc-com** .
+1. V seznamu možností cíle služby COMPUTE vyberte cíl výpočetního prostředí **TeamWkspc-com** .
 1. Pak vyberte konfiguraci spuštění **mnist ručně zapsaných-RC** .
 1. V tuto chvíli se do Azure pošle žádost, aby se váš experiment spouštěl na vybraném výpočetním cíli ve vašem pracovním prostoru. Tento proces trvá několik minut. Doba, po kterou se spustí školicí úkol, bude mít vliv na několik faktorů, jako je výpočetní typ a velikost dat školení. Pokud chcete sledovat průběh experimentu, klikněte pravým tlačítkem na aktuální uzel spuštění a vyberte **Zobrazit spustit v Azure Portal**.
 1. Když se zobrazí dialogové okno požadující otevření externího webu, vyberte **otevřít**.
@@ -222,9 +222,9 @@ Postup registrace modelu:
     > [!div class="mx-imgBorder"]
     > ![registraci](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png) modelu
 
-1. Na paletě příkazů pojmenujte model "MNIST ručně zapsaných-TensorFlow-model" a stiskněte klávesu **ENTER**.
-1. Model TensorFlow se skládá z několika souborů. V paletě příkazů vyberte jako formát cesty modelu **složku model** . 
-1. Vyberte `azureml_outputs/Run_1/outputs/Run_1/outputs/outputs/model` adresář.
+1. Pojmenujte model "MNIST ručně zapsaných-TensorFlow-model" a stiskněte klávesu **ENTER**.
+1. Model TensorFlow se skládá z několika souborů. V seznamu možností vyberte **složku modelu** jako formát cesty modelu. 
+1. Vyberte `azureml_outputs/Run_1/outputs/outputs/model` adresář.
 
     Soubor obsahující vaše konfigurace modelů se zobrazí v Visual Studio Code s podobným obsahem v následujícím seznamu:
 
@@ -234,7 +234,7 @@ Postup registrace modelu:
         "tags": {
             "": ""
         },
-        "modelPath": "c:\\Dev\\vscode-tools-for-ai\\mnist-vscode-docs-sample\\azureml_outputs\\Run_1\\outputs\\Run_1\\outputs\\outputs\\model",
+        "modelPath": "c:\\Dev\\vscode-tools-for-ai\\mnist-vscode-docs-sample\\azureml_outputs\\Run_1\\outputs\\outputs\\model",
         "description": ""
     }
     ```
@@ -266,10 +266,10 @@ Nasazení webové služby jako ACI:
     > [!div class="mx-imgBorder"]
     > ![Nasazení modelu](./media/tutorial-train-deploy-image-classification-model-vscode/register-model.png)
 
-1. Na paletě příkazů vyberte **Azure Container Instances**.
-1. Pojmenujte službu "mnist ručně zapsaných-tensorflow-SVC" a stiskněte klávesu **ENTER** v paletě příkazů.
-1. Vyberte skript, který chcete spustit v kontejneru stisknutím klávesy **ENTER** v paletě příkazů a procházením souboru `score.py` v adresáři `mnist-vscode-docs-sample`.
-1. Zadejte závislosti potřebné ke spuštění skriptu stisknutím klávesy **ENTER** v paletě příkazů a procházením souboru `env.yml` v adresáři `mnist-vscode-docs-sample`.
+1. Vyberte **Azure Container Instances**.
+1. Pojmenujte službu "mnist ručně zapsaných-tensorflow-SVC" a stiskněte klávesu **ENTER**.
+1. Vyberte skript, který chcete spustit v kontejneru stisknutím klávesy **ENTER** ve vstupním poli a procházením souboru `score.py` v adresáři `mnist-vscode-docs-sample`.
+1. Poskytněte závislosti potřebné ke spuštění skriptu stisknutím klávesy **ENTER** ve vstupním poli a procházením souboru `env.yml` v adresáři `mnist-vscode-docs-sample`.
 
     Soubor obsahující vaše konfigurace modelů se zobrazí v Visual Studio Code s podobným obsahem v následujícím seznamu:
 

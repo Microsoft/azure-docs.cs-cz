@@ -4,12 +4,12 @@ description: Naučte se, jak zálohovat Exchange Server pro Azure Backup pomocí
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: b2231fcadc3e0cb591302ba47572627ae3a17e58
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 813a13739020bed839cc389897704395c77a322d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173282"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586491"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>Zálohování serveru Exchange do služby Azure Backup pomocí nástroje System Center 2012 R2 DPM
 
@@ -24,7 +24,7 @@ Chcete-li úspěšně zaregistrovat server aplikace DPM pomocí Azure Backup, je
 >
 >
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, ujistěte se, že byly splněny všechny [požadavky](backup-azure-dpm-introduction.md#prerequisites-and-limitations) pro použití Microsoft Azure Backup k ochraně úloh. Mezi tyto požadavky patří následující:
 
@@ -34,12 +34,12 @@ Než budete pokračovat, ujistěte se, že byly splněny všechny [požadavky](b
 * Přihlašovací údaje trezoru se použily k registraci serveru DPM.
 * Pokud chráníte Exchange 2016, upgradujte prosím na DPM 2012 R2 UR9 nebo novější.
 
-## <a name="dpm-protection-agent"></a>Agent ochrany aplikace DPM
+## <a name="dpm-protection-agent"></a>Agent ochrany DPM
 
 Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujte podle následujících kroků:
 
-1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](https://technet.microsoft.com/library/Hh758204.aspx).
-2. Nainstalujte agenta na server Exchange kliknutím na **správa > agenti > instalaci** v konzola správce aplikace DPM. Podrobné pokyny najdete v tématu [instalace agenta ochrany aplikace DPM](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) .
+1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758204(v=sc.12)).
+2. Nainstalujte agenta na server Exchange kliknutím na **správa > agenti > instalaci** v konzola správce aplikace DPM. Podrobné pokyny najdete v tématu [instalace agenta ochrany aplikace DPM](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Vytvoření skupiny ochrany pro server Exchange
 
@@ -49,7 +49,7 @@ Chcete-li nainstalovat agenta ochrany aplikace DPM na server Exchange, postupujt
 4. Vyberte databázi systému Exchange Server, kterou chcete chránit, a klikněte na tlačítko **Další**.
 
    > [!NOTE]
-   > Pokud chráníte Exchange 2013, podívejte se na [požadavky exchange 2013](https://technet.microsoft.com/library/dn751029.aspx).
+   > Pokud chráníte Exchange 2013, podívejte se na [požadavky exchange 2013](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12)).
    >
    >
 

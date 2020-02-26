@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708253"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598081"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Řešení potíží s výkonem souborů Azure
 
@@ -22,11 +22,11 @@ V tomto článku jsou uvedené některé běžné problémy související se sd�
 
 ### <a name="cause-1-share-experiencing-throttling"></a>Příčina 1: sdílená omezení
 
-Výchozí kvótou pro sdílenou složku Premium je 100 GiB, která poskytuje 100 standardních IOPS (s potenciálem pro nárůst až 300 po hodinu). Další informace o zřizování a jeho vztahu k IOPS najdete v části [zřízené sdílené složky](storage-files-planning.md#provisioned-shares) v příručce pro plánování.
+Výchozí kvótou pro sdílenou složku Premium je 100 GiB, která poskytuje 100 standardních IOPS (s potenciálem pro nárůst až 300 po hodinu). Další informace o zřizování a jeho vztahu k IOPS najdete v části [zřízené sdílené složky](storage-files-planning.md#understanding-provisioning-for-premium-file-shares) v příručce pro plánování.
 
 Pokud chcete ověřit, jestli se vaše sdílená složka omezuje, můžete využít metriky Azure na portálu.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 1. Vyberte **všechny služby** a pak vyhledejte **metriky**.
 
@@ -102,7 +102,7 @@ Jedná se o známý problém s implementací klienta SMB v systému Linux.
 
 - Rozprostře zatížení mezi více virtuálních počítačů.
 - Ve stejném virtuálním počítači použijte více přípojných bodů s možností **nosharesock** a rozprostřete zatížení mezi tyto přípojné body.
-- V systému Linux se pokuste připojit pomocí možnosti **nostrictsync** , abyste se vyhnuli vynucení vyprázdnění protokolu SMB u každého volání Fsync. U souborů Azure Tato možnost neovlivňuje consistentcy dat, ale může mít za následek zastaralá metadata souborů v seznamu adresářů (příkaz**ls-l** ). Přímo se dotazování na metadata souboru (**stat** Command) vrátí nejaktuálnější metadata souborů.
+- V systému Linux se pokuste připojit pomocí možnosti **nostrictsync** , abyste se vyhnuli vynucení vyprázdnění protokolu SMB u každého volání **Fsync** . U souborů Azure Tato možnost neovlivňuje konzistenci dat, ale může mít za následek zastaralá metadata souborů pro výpis adresáře (příkaz**ls-l** ). Přímo se dotazování na metadata souboru (**stat** Command) vrátí nejaktuálnější metadata souborů.
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>Vysoká latence pro silná zatížení metadat, která zahrnují rozsáhlé operace otevření/zavření.
 
@@ -194,7 +194,7 @@ Vyšší než očekávaná latence při přístupu k souborům Azure pro úlohy 
   > [!NOTE]
   > Pokud je sdílená složka standardní sdílenou složkou, budou hodnoty dimenzí prázdné, protože pro standardní sdílené složky nejsou k dispozici metriky vázané na sdílení. Výstrahy omezování pro standardní sdílené složky se aktivují, pokud je omezená jakákoli sdílená složka v rámci účtu úložiště a výstraha neurčí, která sdílená složka byla omezená. Vzhledem k tomu, že pro standardní sdílené složky nejsou k dispozici metriky jednotlivých sdílených složek, doporučuje se mít pro každý účet úložiště jednu sdílenou složku. 
 
-8. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost a frekvence agregaci), které se používají k vyhodnocení pravidla upozornění na metriky, a klikněte na **Hotovo**.
+8. Definujte **Parametry výstrahy** (prahová hodnota, operátor, členitost a frekvence), které se používají k vyhodnocení pravidla upozornění na metriky a klikněte na **Hotovo**.
 
   > [!TIP]
   > Pokud používáte statickou prahovou hodnotu, graf metriky může pomoci určit rozumnou prahovou hodnotu, pokud je sdílená složka momentálně omezená. Pokud používáte dynamickou prahovou hodnotu, v grafu metriky se zobrazí vypočtené prahové hodnoty na základě nedávných dat.

@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 79e7f2a8dad59de4dc9d84a26d24c82889c14c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 6c002838d5a4f515a594d61e5137196c4d391795
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493316"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605436"
 ---
 # <a name="updated-ndv2-series-preview"></a>Aktualizace NDv2-Series (Preview)
 
@@ -24,13 +24,16 @@ Instance NDv2 poskytují vynikající výkon pro úlohy HPC a AI s využitím CU
 
 Kriticky je NDv2 sestavena jak pro výpočetně náročné škálování (což znamená 8 GPU na virtuální počítač), tak na škálování (více vzájemně pracujících více virtuálních počítačů) úloh. NDv2 Series teď podporuje 100 gigabitové sítě InfiniBand EDR, které jsou k dispozici na začátku série virtuálních počítačů HPC, a umožňují tak vysoce výkonné clustering pro paralelní scénáře, včetně distribuovaného školení pro AI a ML. Tato síť back-end podporuje všechny hlavní protokoly InfiniBand, včetně těch, které pracují s knihovnami NCCL2 společnosti NVIDIA, což umožňuje bezproblémové clusteringu GPU.
 
+
+> [!NOTE]
 > Při [povolování InfiniBand](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) na virtuálním počítači s ND40rs_v2 použijte prosím ovladač OFED 4.7-1.0.0.1 Mellanox.
-
+>
 > V důsledku zvýšené paměti GPU vyžaduje nový virtuální počítač ND40rs_v2 použití [virtuálních počítačů generace 2](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) a imagí z Marketplace. 
-
+>
 > [Přihlaste se, abyste si vyžádali předběžný přístup k virtuálnímu počítači NDv2 ve verzi Preview.](https://aka.ms/AzureNDrv2Preview)
-
+>
 > Poznámka: ND40s_v2 o velikosti 16 GB na paměť GPU již není k dispozici pro verzi Preview a byla nahrazena aktualizovaným ND40rs_v2.
+
 <br>
 
 Premium Storage: podporováno

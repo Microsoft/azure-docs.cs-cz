@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dcb0ffef0cf48a7bcbfbdb0107999f7e90333559
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77151985"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598567"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure soubory škálovatelnost a výkonnostní cíle
 
@@ -51,8 +51,8 @@ Tato omezení najdete v části [cíle škálování účtu Azure Storage](#azur
 ### <a name="file-share-and-file-scale-targets"></a>Sdílení souborů a cíle pro škálování souborů
 
 > [!NOTE]
-> Standardní sdílené složky větší než 5 TiB mají určitá omezení.
-> Seznam omezení, regionálních informací a pokynů, jak tyto větší velikosti sdílených složek povolit, najdete v části připojení [k větším sdíleným složkám](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) v příručce pro plánování souborů.
+> Standardní sdílené složky větší než 5 TiB mají určitá omezení a regionální omezení.
+> Seznam omezení, regionálních informací a pokynů, jak tyto větší velikosti sdílených složek povolit, najdete v části připojení [k větším sdíleným složkám](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) v příručce pro plánování souborů.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 

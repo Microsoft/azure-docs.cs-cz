@@ -3,7 +3,7 @@ title: Připojit data Office 365 k Azure Sentinel | Microsoft Docs
 description: Naučte se připojit data Office 365 k Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2020
-ms.author: rkarlin
-ms.openlocfilehash: 709961fe63e5ed862a0e8dc3fa735d426dd02998
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.author: yelevin
+ms.openlocfilehash: b00f9c9e7de9568a29d2b7a7f4ef84c022ef5679
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371331"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588157"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Připojení dat z protokolů Office 365
 
@@ -30,7 +30,7 @@ Protokoly auditu ze [sady Office 365](https://docs.microsoft.com/office365/admin
 > [!IMPORTANT]
 > Pokud máte licenci E3, musíte předtím, než budete mít přístup k datům prostřednictvím rozhraní API aktivity správy sady Office 365, povolit jednotné protokolování auditu pro vaši organizaci sady Office 365. Provedete to tak, že zapnete protokol auditu Office 365. Pokyny najdete v tématu [Zapnutí nebo vypnutí prohledávání protokolu auditu systému Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off). Další informace najdete v referenčních informacích k [rozhraní API pro správu Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte být globálním správcem nebo správcem zabezpečení vašeho tenanta.
 - Pokud váš tenant nemá licenci Office 365 E3 nebo Office 365 E5, musíte ve svém tenantovi povolit jednotné auditování pomocí jednoho z těchto procesů:

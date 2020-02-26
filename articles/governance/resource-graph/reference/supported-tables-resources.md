@@ -1,14 +1,14 @@
 ---
 title: Podporované typy prostředků Správce prostředků
 description: Poskytněte seznam Správce prostředků typů prostředků, které podporuje Azure Resource Graph, a historii změn.
-ms.date: 02/20/2020
+ms.date: 02/25/2020
 ms.topic: reference
-ms.openlocfilehash: 130b11f0060f7f27091a21652aa481f0340b288f
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: dc08c4a33ec9e0c20b865ffa4d7c6ff9d5248e90
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77530221"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602573"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Odkaz na typ tabulky a prostředku Azure Resource graphu
 
@@ -116,6 +116,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. COMPUTE/sharedvmimages
 - Microsoft. COMPUTE/sharedvmimages/verze
 - Microsoft. COMPUTE/snímky
+- Microsoft. COMPUTE/sshpublickeys
 - Microsoft. COMPUTE/VirtualMachines
 - Microsoft. COMPUTE/VirtualMachines/Extensions
 - Microsoft. COMPUTE/virtualmachinescalesets
@@ -277,6 +278,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. Network/firewallpolicies
 - Microsoft. Network/frontdoors
 - Microsoft. Network/frontdoorwebapplicationfirewallpolicies
+- Microsoft. Network/ipallocations
 - Microsoft. Network/ipgroups
 - Microsoft. Network/loadbalancers
 - Microsoft. Network/localnetworkgateways

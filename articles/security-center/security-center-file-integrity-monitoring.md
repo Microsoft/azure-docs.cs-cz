@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: cfa767a42800ceaf78fe007a8468fe9113a2d412
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 4d65ca8d97e1cca81886259d4f15cc880e45be9c
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558791"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604290"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Monitorování integrity souborů v Azure Security Center
 Naučte se konfigurovat monitorování integrity souborů (FIM) v Azure Security Center pomocí tohoto návodu.
@@ -206,7 +206,6 @@ V tomto článku jste se dozvěděli o použití monitorování integrity soubor
 * [Sledování stavu zabezpečení](security-center-monitoring.md)– Naučte se monitorovat stav svých prostředků Azure.
 * [Správa a reakce na výstrahy zabezpečení](security-center-managing-and-responding-alerts.md)– Naučte se spravovat výstrahy zabezpečení a reagovat na ně.
 * [Monitorování partnerských řešení](security-center-partner-solutions.md) – Naučte se monitorovat stav vašich partnerských řešení.
-* [Nejčastější dotazy k Security Center](security-center-faq.md)– Přečtěte si nejčastější dotazy týkající se používání služby.
 * [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) – Získejte nejnovější informace o zabezpečení Azure.
 
 <!--Image references-->

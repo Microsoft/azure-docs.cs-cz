@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: aa4e8f165320327788255605470bda789047c347
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: d0f96fe758966a435f8fb8e448e75cbb18b85122
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592499"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604525"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Použít šifrování disku v Azure Security Center
 Azure Security Center doporučuje použít šifrování disku, pokud máte disky virtuálních počítačů se systémem Windows nebo Linux, které nejsou šifrovány pomocí Azure Disk Encryption. Šifrování disku umožňuje šifrovat disky virtuálních počítačů s Windows a Linux IaaS.  Na virtuálním počítači se doporučuje šifrování svazku operačního systému i svazku s daty.
@@ -47,7 +47,7 @@ K šifrování Azure Virtual Machines identifikovaných Security Center podle po
 
 K dispozici je mnoho přístupů, které lze použít pro Azure Virtual Machines. Pokud jste už s Azure PowerShellem nebo rozhraním příkazového řádku Azure CLI dobře obeznámeni, dáte možná přednost alternativním přístupům. Další informace o těchto dalších přístupech najdete v tématu [Azure Disk Encryption](../security/fundamentals/encryption-overview.md).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 V tomto dokumentu jste si ukázali, jak implementovat Security Center doporučení použít šifrování disku. Další informace o šifrování disku najdete v následujících tématech:
 
 * [Šifrování a Správa klíčů pomocí Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (video, 36 min 39 sec) – Naučte se používat správu šifrování disku pro virtuální počítače s IaaS a Azure Key Vault k zajištění ochrany a ochrany vašich dat.
@@ -59,7 +59,6 @@ Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato t
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – Přečtěte si, jak doporučení vám pomůžou chránit vaše prostředky Azure.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si blogové příspěvky o zabezpečení Azure a dodržování předpisů.
 
 <!--Image references-->

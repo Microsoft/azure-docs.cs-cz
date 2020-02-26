@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 97975d72214426907a2ab91f0d3cd98d0ce6734b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 39835d9d73adcbe474d3b70dfced313e18d1a3b3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693485"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603429"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Analýza hrozeb a mapa výstrah zabezpečení
 Tento článek vám pomůže při řešení problémů souvisejících se zabezpečením pomocí mapy výstrahy zabezpečení Azure Security Center a zabezpečení analýzy hrozeb na základě událostí zabezpečení.
@@ -64,5 +64,3 @@ V tomto článku jste zjistili, jak používat analýzu hrozeb ve službě Secur
 * [Monitorování stavu zabezpečení ve službě Azure Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.
 * [Vysvětlení výstrah zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Seznamte se s dalšími typy výstrah zabezpečení.
 * [Průvodce odstraňováním potíží pro Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Zjistěte, jak řešit běžné problémy ve službě Security Center.
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md). Najděte odpovědi na nejčastější dotazy ohledně používání této služby.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/). Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

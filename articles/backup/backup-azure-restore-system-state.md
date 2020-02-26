@@ -4,12 +4,12 @@ description: Podrobný popis postupu obnovení stavu systému Windows Server ze 
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 8e256fbac0651b4c237c540151b3377927989d36
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172811"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602469"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
@@ -89,7 +89,7 @@ Terminologie použitá v těchto krocích zahrnuje:
 6. V podokně vybrat záložní server vyberte *zdrojový počítač* ze seznamu zobrazených počítačů.
 7. V podokně vybrat režim obnovení zvolte možnost **stav systému** a klikněte na tlačítko **Další**.
 
-    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Hledání](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. V kalendáři v podokně **Vybrat svazek a datum** vyberte bod obnovení. Můžete obnovit z libovolného bodu obnovení v čase. Kalendářní data **tučně** označují dostupnost alespoň jednoho bodu obnovení. Jakmile vyberete datum, pokud je k dispozici více bodů obnovení, zvolte konkrétní bod obnovení z rozevírací nabídky **čas** .
 
@@ -159,7 +159,7 @@ Jakmile obnovíte Stav systému jako soubory pomocí služby Azure Recovery Serv
 Zálohování stavu systému zahrnuje data služby Active Directory. Pomocí následujících kroků obnovte Doména služby Active Directory služby (služba AD DS) z aktuálního stavu do předchozího stavu.
 
 1. Restartujte řadič domény v režimu obnovení adresářových služeb (DSRM).
-2. Použijte [následující postup k](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) obnovení služba AD DS pomocí rutin zálohování Windows serveru.
+2. Použijte [následující postup k](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore) obnovení služba AD DS pomocí rutin zálohování Windows serveru.
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Řešení potíží s nezdařeným obnovením stavu systému
 

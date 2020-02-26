@@ -12,14 +12,14 @@ ms.service: virtual-machines
 ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 674197bd4d1562d8492a2605d8929572d450af90
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: d8a13d9013b2ad526c8e332cf3ea74e04f253d98
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493576"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597707"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Velikosti virtuálních počítačů pro obecné účely
 
@@ -31,7 +31,7 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený 
 
 - [Dav4 a Dasv4-Series](dav4-dasv4-series.md) jsou novými velikostmi, které využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452 v konfiguraci 256 s více vlákny, která VYnásobí 8 GB této mezipaměti L3 každých 8 jader a zvyšuje možnosti zákazníků na spouštění jejich obecných úloh pro obecné účely. Řady Dav4-Series a Dasv4-Series mají stejnou konfiguraci paměti a disku jako řada D & Dsv3-Series.
 
-- [DC-Series](dc-series.md) je řada virtuálních počítačů v Azure, která vám může přispět k ochraně důvěrnosti a integrity dat a kódu při jejich zpracování ve veřejném cloudu. Tyto počítače jsou založené na nejnovější generaci systému s využitím Intel® Xeon® E-2176G s technologií SGX. Technologie Intel Turbo zvyšuje tyto počítače až na 4.7 GHz. Instance řady DC umožňují zákazníkům vytvářet zabezpečené aplikace založené na enklávy k ochraně kódu a dat, když se používají.
+- [DCv2-Series](dcv2-series.md) může přispět k ochraně důvěrnosti a integrity vašich dat a kódu při jejich zpracování ve veřejném cloudu. Tyto počítače jsou založené na nejnovější generaci procesorů Intel XEON E-2288G s využitím technologie SGX. Technologie Intel Turbo zvyšuje tyto počítače až do verze 5.0 GHz. Instance řad DCv2 umožňují zákazníkům vytvářet zabezpečené aplikace založené na enklávy pro ochranu kódu a dat, když se používají.
 
 - [Dv2 a Dsv2 – Series](dv2-dsv2-series.md) Virtuální počítače, následná na originální řady D, nabízí výkonnější procesor a optimální konfiguraci procesoru na paměť, která je vhodná pro většinu produkčních úloh. Dv2-Series má přibližně 35% rychlejší než řada D-Series. Dv2-Series běží na procesorech Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) s technologií Intel Turbo 2,0. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
 

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: 81ef598c846d98548be2d3e7647166d655398921
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: c286efcfad78a8f7acf9974605d53ed3cc06a09e
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912818"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604538"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Ochrana vašich Azure App Service webových aplikací a rozhraní API
 
@@ -57,12 +57,11 @@ Pokud chcete zakázat monitorování a doporučení pro App Service, opakujte te
 
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 V tomto článku jste zjistili, jak ve službě Azure Security Center používat funkce sledování. Další informace o Azure Security Center najdete v následujících článcích:
 
 * [Nastavení zásad zabezpečení ve službě Azure Security Center](tutorial-security-policy.md): Zjistěte, jak se v Azure Security Center konfiguruje nastavení zabezpečení.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md): Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Aplikační služby](security-center-virtual-machine-protection.md#app-services): zobrazení seznamu služby App Service Environment s přehledy stavu.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md): Zjistěte, jak sledovat stav vašich partnerských řešení.
-* [Časté otázky k Azure Security Center](security-center-faq.md): Přečtěte si nejčastější dotazy k používání této služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení a dodržování předpisů Azure.

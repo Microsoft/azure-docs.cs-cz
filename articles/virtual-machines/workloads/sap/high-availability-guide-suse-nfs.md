@@ -1,10 +1,10 @@
 ---
-title: Vysoká dostupnost pro NFS na virtuálních počítačích Azure v SUSE Linux Enterprise Server | Microsoft Docs
+title: Vysoká dostupnost pro NFS na virtuálních počítačích Azure v SLES | Microsoft Docs
 description: Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
-ms.author: sedusch
-ms.openlocfilehash: c20fc2142718d3cc49d4b80c6a5e22e26a350335
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: radeltch
+ms.openlocfilehash: efba617f9aeefa2e9374f5a7551338e003e70f56
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824866"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598727"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -120,7 +120,7 @@ K nasazení všech požadovaných prostředků můžete použít jednu z šablon
    4. Uživatelské jméno správce a heslo správce  
       Vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
    5. ID podsítě  
-      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID předplatného&gt;** /resourceGroups/ **&lt;název skupiny prostředků&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;virtuální síť&gt;** /subnets/ **&lt;název podsítě&gt;**
+      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID předplatného&gt;** /resourceGroups/ **&lt;název skupiny prostředků&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;název virtuální sítě&gt;** /subnets/ **&lt;název podsítě&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
@@ -143,7 +143,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
             1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
             1. Zadejte název nového fondu IP adres front-endu (například **NW1-front-end**).
             1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.0.0.4**).
-            1. Klikněte na OK.
+            1. Klikněte na tlačítko OK.
          1. IP adresa 10.0.0.5 pro NW2
             * Opakujte výše uvedené kroky pro NW2.
       1. Vytvoření back-end fondů
@@ -161,7 +161,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
             1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
             1. Zadejte název nového testu stavu (například **NW1-HP**).
             1. Vybrat TCP as Protocol, port 610**00**, zachovat interval 5 a špatný práh 2
-            1. Klikněte na OK.
+            1. Klikněte na tlačítko OK.
          1. Port 61001 pro NW2
             * Zopakováním výše uvedených kroků vytvořte sondu stavu pro NW2.
       1. Pravidla vyrovnávání zatížení
@@ -171,7 +171,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
          1. Vyberte **porty ha**.
          1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
          * Opakujte výše uvedené kroky a vytvořte pravidlo vyrovnávání zatížení pro NW2.
    1. Případně, pokud váš scénář vyžaduje základní nástroj pro vyrovnávání zatížení, postupujte podle těchto pokynů:
       1. Vytvoření IP adresy front-endu
@@ -179,7 +179,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
             1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
             1. Zadejte název nového fondu IP adres front-endu (například **NW1-front-end**).
             1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.0.0.4**).
-            1. Klikněte na OK.
+            1. Klikněte na tlačítko OK.
          1. IP adresa 10.0.0.5 pro NW2
             * Opakujte výše uvedené kroky pro NW2.
       1. Vytvoření back-end fondů
@@ -189,7 +189,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
             1. Klikněte na Přidat virtuální počítač.
             1. Vyberte skupinu dostupnosti, kterou jste vytvořili dříve.
             1. Vybrat virtuální počítače clusteru NFS
-            1. Klikněte na OK.
+            1. Klikněte na tlačítko OK.
          1. Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru NFS pro NW2
             * Zopakováním výše uvedených kroků vytvořte fond back-end pro NW2.
       1. Vytvoření sond stavu
@@ -197,7 +197,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
             1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
             1. Zadejte název nového testu stavu (například **NW1-HP**).
             1. Vybrat TCP as Protocol, port 610**00**, zachovat interval 5 a špatný práh 2
-            1. Klikněte na OK.
+            1. Klikněte na tlačítko OK.
          1. Port 61001 pro NW2
             * Zopakováním výše uvedených kroků vytvořte sondu stavu pro NW2.
       1. Pravidla vyrovnávání zatížení
@@ -208,7 +208,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster systému s
             1. Zachovejte protokol **TCP**, zadejte port **2049**
             1. Prodloužit časový limit nečinnosti na 30 minut
             1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
-            1. Klikněte na OK.
+            1. Klikněte na tlačítko OK.
          1. 2049 UDP pro NW1
             * Opakujte výše uvedené kroky pro port 2049 a UDP pro NW1
          1. 2049 TCP pro NW2
@@ -228,9 +228,9 @@ Postupujte podle kroků v části [Nastavení Pacemaker na SUSE Linux Enterprise
 
 ### <a name="configure-nfs-server"></a>Konfigurace serveru NFS
 
-Následující položky jsou s předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
+Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
-1. **[A]**  Nastavit rozlišení názvu hostitele
+1. **[A]** nastavení rozlišení názvu hostitele
 
    Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    V následujících příkazech nahraďte IP adresu a název hostitele.

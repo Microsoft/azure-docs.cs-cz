@@ -2,17 +2,14 @@
 title: Uzel protokolu RDP do clusterů Windows serveru v clusteru služby Azure Kubernetes Service (AKS)
 description: Přečtěte si, jak vytvořit připojení RDP s clustery Windows serveru clusteru Azure Kubernetes Service (AKS) pro úlohy odstraňování potíží a údržby.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.author: mlearned
-ms.openlocfilehash: e3a4ea2e81e6c428b51d164336282f8f929d414b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 897504aa9902d0feaf4245c719d3a4a3c6fd2241
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639798"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594477"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Připojení pomocí protokolu RDP ke službě Azure Kubernetes (AKS) clustery Windows serveru pro účely údržby nebo řešení potíží
 
@@ -22,11 +19,11 @@ Podpora uzlů Windows serveru je v současné době ve verzi Preview v AKS.
 
 V tomto článku se dozvíte, jak vytvořit připojení RDP s uzlem AKS pomocí svých privátních IP adres.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS s uzlem Windows serveru. Pokud potřebujete cluster AKS, přečtěte si článek o [Vytvoření clusteru AKS s kontejnerem Windows pomocí Azure CLI][aks-windows-cli]. Pro uzel Windows serveru, pro který chcete řešit potíže, budete potřebovat uživatelské jméno a heslo správce systému Windows. Potřebujete také klienta protokolu RDP, například [Vzdálená plocha Microsoft][rdp-mac].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.61 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.61 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="deploy-a-virtual-machine-to-the-same-subnet-as-your-cluster"></a>Nasazení virtuálního počítače do stejné podsítě jako cluster
 
@@ -43,7 +40,7 @@ SUBNET_NAME=$(az network vnet subnet list -g $CLUSTER_RG --vnet-name $VNET_NAME 
 SUBNET_ID=$(az network vnet subnet show -g $CLUSTER_RG --vnet-name $VNET_NAME --name $SUBNET_NAME --query id -o tsv)
 ```
 
-Teď, když máte SUBNET_ID, spusťte následující příkaz ve stejném Azure Cloud Shellm okně a vytvořte virtuální počítač:
+Teď, když máte SUBNET_ID, spusťte následující příkaz ve stejném okně Azure Cloud Shell a vytvořte virtuální počítač:
 
 ```azurecli-interactive
 az vm create \
@@ -87,13 +84,13 @@ az network nsg rule create --name tempRDPAccess --resource-group $CLUSTER_RG --n
 
 ## <a name="get-the-node-address"></a>Získat adresu uzlu
 
-Ke správě clusteru Kubernetes použijete klienta příkazového řádku Kubernetes [kubectl][kubectl]. Pokud používáte Azure Cloud Shell, `kubectl` je již nainstalováno. Pokud chcete `kubectl` nainstalovat místně, použijte příkaz [AZ AKS Install-CLI][az-aks-install-cli] :
+Ke správě clusteru Kubernetes použijete klienta příkazového řádku Kubernetes [kubectl][kubectl]. Pokud používáte Azure Cloud Shell, `kubectl` už je nainstalovaný. Pokud chcete `kubectl` nainstalovat místně, použijte příkaz [AZ AKS Install-CLI][az-aks-install-cli] :
     
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Pokud chcete `kubectl` nakonfigurovat připojení ke clusteru Kubernetes, použijte příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
+Pokud chcete nakonfigurovat `kubectl` pro připojení ke clusteru Kubernetes, použijte příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] . Tento příkaz stáhne pověření a nakonfiguruje rozhraní příkazového řádku Kubernetes pro jejich použití.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster

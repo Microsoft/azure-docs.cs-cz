@@ -1,5 +1,5 @@
 ---
-title: Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v SUSE Linux Enterprise Server s Azure NetApp Files | Microsoft Docs
+title: Virtuální počítače Azure s vysokou dostupností pro SAP NW v SLES s využitím Azure NetApp Files | Microsoft Docs
 description: Průvodce vysokou dostupností pro SAP NetWeaver v SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: radeltch
-ms.openlocfilehash: 1a413ce55604ef8b5c3219e8de466fcc23d41bac
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 18aecfc5ea40c8368fbf4d4a07f86e71047265f7
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990937"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598642"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP
 
@@ -253,7 +253,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
          1. Zadejte název nového fondu IP adres front-endu (například **front-end. QAS. ASCS**)
          1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.1.1.20**).
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. 10.1.1.21 IP adres pro ASCS OLAJÍCÍCH
          * Opakujte výše uvedené kroky v části a a vytvořte tak IP adresu pro OLAJÍCÍCH (například **10.1.1.21** a **front-end. QAS. OLAJÍCÍCH**)
    1. Vytvoření back-end fondů
@@ -269,7 +269,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
          1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. Port 621**01** pro ASCS olajících
             * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
    1. Pravidla vyrovnávání zatížení
@@ -280,7 +280,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Vybrat **porty ha**
          1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
          * Opakujte výše uvedené kroky a vytvořte tak pravidla vyrovnávání zatížení pro OLAJÍCÍCH (například **kg. QAS. OLAJÍCÍCH**)
 1. Případně, pokud váš scénář vyžaduje základní nástroj pro vyrovnávání zatížení (interní), postupujte podle následujících kroků:  
    1. Vytvoření IP adresy front-endu
@@ -288,7 +288,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte front-end IP fond a klikněte na Přidat.
          1. Zadejte název nového fondu IP adres front-endu (například **front-end. QAS. ASCS**)
          1. Nastavte přiřazení na statické a zadejte IP adresu (například **10.1.1.20**).
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. 10.1.1.21 IP adres pro ASCS OLAJÍCÍCH
          * Opakujte výše uvedené kroky v části a a vytvořte tak IP adresu pro OLAJÍCÍCH (například **10.1.1.21** a **front-end. QAS. OLAJÍCÍCH**)
    1. Vytvoření back-end fondů
@@ -298,13 +298,13 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Klikněte na Přidat virtuální počítač.
          1. Vyberte skupinu dostupnosti, kterou jste vytvořili dříve pro ASCS. 
          1. Vyberte virtuální počítače v clusteru (A) SCS.
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
    1. Vytvoření sond stavu
       1. Port 620**00** pro ASCS
          1. Otevřete nástroj pro vyrovnávání zatížení, vyberte sondy stavu a klikněte na Přidat.
          1. Zadejte název nového testu stavu (například **stav). QAS. ASCS**)
          1. Vybrat TCP as Protocol, port 620**00**, zachovat interval 5 a špatný práh 2
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. Port 621**01** pro ASCS olajících
             * Opakujte výše uvedené kroky v části "c", chcete-li vytvořit sondu stavu pro OLAJÍCÍCH (například 621**01** a **stav). QAS. OLAJÍCÍCH**)
    1. Pravidla vyrovnávání zatížení
@@ -315,7 +315,7 @@ Nejprve je třeba vytvořit svazky Azure NetApp Files. Nasaďte virtuální poč
          1. Zachovejte protokol **TCP**, zadejte port **3200**
          1. Prodloužit časový limit nečinnosti na 30 minut
          1. **Ujistěte se, že jste povolili plovoucí IP adresu.**
-         1. Klikněte na OK.
+         1. Klikněte na tlačítko OK.
       1. Další porty pro ASCS
          * Opakujte výše uvedené kroky v části "d" pro porty**36 00**,**39 00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 a TCP pro ASCS
       1. Další porty pro ASCS OLAJÍCÍCH
@@ -333,7 +333,7 @@ Postupujte podle kroků v části [Nastavení Pacemaker na SUSE Linux Enterprise
 
 ### <a name="installation"></a>Instalace
 
-Následující položky jsou s předponou buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1 nebo **[2]** – platí jenom pro uzel 2.
+Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí pouze pro uzel 1 nebo **[2]** – platí pouze pro uzel 2.
 
 1. **[A]** instalace KONEKTORu SUSE
 
@@ -382,7 +382,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro všechny u
    sudo zypper in -t patch SUSE-SLE-HA-12-SP2-2017-886=1
    </code></pre>
 
-3. **[A]**  Nastavit rozlišení názvu hostitele
+3. **[A]** nastavení rozlišení názvu hostitele
 
    Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    V následujících příkazech nahraďte IP adresu a název hostitele.
@@ -761,9 +761,9 @@ Postup níže předpokládá, že instalujete aplikační server na jiný server
 Následující položky jsou s předponou buď **[A]** – platí pro pas i AAS, **[P]** – platí jenom pro pas nebo **[S]** – platí jenom pro AAS.
 
 
-1. **[A]**  Konfigurace operačního systému
+1. **[A]** konfigurace operačního systému
 
-   Snížení velikosti mezipaměti změny. Další informace najdete v tématu [zápisu s nízkou výkonu na SLES 11/12 servery s velkou paměť RAM](https://www.suse.com/support/kb/doc/?id=7010287).
+   Snížení velikosti mezipaměti změny. Další informace najdete v tématu [nízký výkon zápisu na serverech SLES 11/12 s velkou pamětí RAM](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>
    sudo vi /etc/sysctl.conf
@@ -772,7 +772,7 @@ Následující položky jsou s předponou buď **[A]** – platí pro pas i AAS,
    vm.dirty_background_bytes = 314572800
    </code></pre>
 
-1. **[A]**  Nastavit rozlišení názvu hostitele
+1. **[A]** nastavení rozlišení názvu hostitele
 
    Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    V následujících příkazech nahraďte IP adresu a název hostitele.

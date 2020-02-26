@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: f4f6cf01502070ea63eaf0083aba33ff213534a4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: ffe9ea5f46571f6a22717c376c97055f6f1759e4
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500252"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604719"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>Rozšířené skóre zabezpečení (Preview) 
 

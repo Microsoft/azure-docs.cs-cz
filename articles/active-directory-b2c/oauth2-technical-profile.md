@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d0fc5e6b5cafa22da6707a8f34675dcbdf5af8cc
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f9db8fd0865b7dba869795526cf6b68f4ad3ffb9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198016"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585777"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OAuth2 v Azure Active Directory B2C vlastní zásady
 
@@ -97,6 +97,7 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 | ExtraParamsInAccessTokenEndpointResponse | Ne | Obsahuje další parametry, které mohou být vráceny v odpovědi od **AccessTokenEndpoint** některými zprostředkovateli identity. Například odpověď z **AccessTokenEndpoint** obsahuje další parametr, jako je například `openid`, což je povinný parametr kromě access_token v řetězci dotazu žádosti **ClaimsEndpoint** . Více názvů parametrů by mělo být uvozeno řídicím znakem a odděleno čárkou, oddělovačem. |
 | ExtraParamsInClaimsEndpointRequest | Ne | Obsahuje další parametry, které mohou být vráceny v žádosti **ClaimsEndpoint** některými zprostředkovateli identity. Více názvů parametrů by mělo být uvozeno řídicím znakem a odděleno čárkou, oddělovačem. |
 | IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true`nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true`. |
+| ResolveJsonPathsInJsonTokens  | Ne | Určuje, zda technický profil řeší cesty JSON. Možné hodnoty: `true`nebo `false` (výchozí). Tato metadata slouží ke čtení dat z vnořeného prvku JSON. V [OutputClaim](technicalprofiles.md#outputclaims)nastavte `PartnerClaimType` na element cesty JSON, který chcete výstup. Například: `firstName.localized`nebo `data.0.to.0.email`.|
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 

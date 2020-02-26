@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování virtuálních počítačů Azure
 description: Poskytuje souhrn nastavení podpory a omezení při zálohování virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 5d83d3426a80acc12c2a53051dcfd7b889f47f02
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: d4d5168ee7f2f8c71b3a63fea64873a8dd71658b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468996"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602204"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Matice podpory pro zálohování virtuálních počítačů Azure
 
@@ -105,12 +105,12 @@ Body obnovení na disku DPM/MABS | 64 pro souborové servery a 448 pro aplikačn
 
 ## <a name="supported-restore-methods"></a>Podporované metody obnovení
 
-**Restore – metoda** | **Podrobnosti**
+**Možnost obnovení** | **Podrobnosti**
 --- | ---
-Vytvořte nový virtuální počítač. | Během procesu obnovení můžete vytvořit virtuální počítač. <br/><br/> Tato možnost načte a spustí základní virtuální počítač. Můžete zadat název virtuálního počítače, skupinu prostředků, virtuální síť, podsíť a úložiště.  
-Obnovení disku | Disk můžete obnovit a použít ho k vytvoření virtuálního počítače.<br/><br/> Když vyberete tuto možnost, Azure Backup zkopíruje data z trezoru do účtu úložiště, který vyberete. Úloha obnovení vygeneruje šablonu. Tuto šablonu můžete stáhnout, použít ji k určení vlastního nastavení virtuálního počítače a vytvořit virtuální počítač.<br/><br/> Tato možnost umožňuje zadat další nastavení, která předchozí možnost vytvoření virtuálního počítače vytvoří.<br/><br/>
-Nahradit existující disk | Disk, který je aktuálně na virtuálním počítači, můžete obnovit a pak použít obnovený disk.
-Obnovit soubory | Můžete obnovit soubory z vybraného bodu obnovení. Stáhněte si skript pro připojení disku virtuálního počítače z bodu obnovení. Pak procházejte diskovými svazky a vyhledejte soubory nebo složky, které chcete obnovit, a odpojte disk, až budete hotovi.
+**Vytvoření nového virtuálního počítače** | Rychle vytvoří a načte základní virtuální počítač v bodu obnovení a spustí ho.<br/><br/> Můžete zadat název virtuálního počítače, vybrat skupinu prostředků a virtuální síť (VNet), do které se bude umístit, a zadat účet úložiště pro obnovený virtuální počítač. Nový virtuální počítač musí být vytvořený ve stejné oblasti jako zdrojový virtuální počítač.
+**Obnovit disk** | Obnoví disk virtuálního počítače, který se pak dá použít k vytvoření nového virtuálního počítače.<br/><br/> Azure Backup poskytuje šablonu, která vám umožní přizpůsobit a vytvořit virtuální počítač. <br/><br> Úloha obnovení vygeneruje šablonu, kterou si můžete stáhnout a použít k určení vlastního nastavení virtuálního počítače, a vytvořit virtuální počítač.<br/><br/> Disky se zkopírují do skupiny prostředků, kterou zadáte.<br/><br/> Případně můžete disk připojit k existujícímu virtuálnímu počítači nebo vytvořit nový virtuální počítač pomocí prostředí PowerShell.<br/><br/> Tato možnost je užitečná, pokud chcete virtuální počítač přizpůsobit, přidat nastavení konfigurace, která se v době zálohování nevyskytla, nebo přidat nastavení, která se musí nakonfigurovat pomocí šablony nebo PowerShellu.
+**Nahradit existující** | Disk můžete obnovit a použít ho k nahrazení disku na stávajícím virtuálním počítači.<br/><br/> Aktuální virtuální počítač musí existovat. Pokud je tato možnost odstraněna, nelze ji použít.<br/><br/> Před nahrazením disku Azure Backup pořizuje stávající virtuální počítač a uloží ho do pracovního umístění, které zadáte. Existující disky připojené k virtuálnímu počítači se nahradily vybraným bodem obnovení.<br/><br/> Snímek se zkopíruje do trezoru a zachová se podle zásad uchovávání informací. <br/><br/> Po operaci nahradit disk se původní disk zachová ve skupině prostředků. Pokud nepotřebujete, můžete původní disky odstranit ručně. <br/><br/>Nahradit existující se podporuje pro nešifrované spravované virtuální počítače. U nespravovaných disků, [zobecněných virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)nebo u virtuálních počítačů [vytvořených pomocí vlastních imagí](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)se nepodporuje.<br/><br/> Pokud má bod obnovení více nebo méně disků než aktuální virtuální počítač, bude počet disků v bodu obnovení odpovídat pouze konfiguraci virtuálního počítače.<br><br> Náhrada stávajících není podporovaná pro virtuální počítače s propojenými prostředky (jako je [uživatelem přiřazená identita](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) nebo [Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)), protože klient zálohování nemá při provádění obnovení oprávnění k těmto prostředkům.
+**Mezi oblastmi (sekundární oblast)** | Obnovení mezi oblastmi se dá použít k obnovení virtuálních počítačů Azure v sekundární oblasti, která je [spárované v oblasti Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#what-are-paired-regions).<br><br> Pokud se zálohování provádí v sekundární oblasti, můžete obnovit všechny virtuální počítače Azure pro vybraný bod obnovení.<br><br> Tato funkce je k dispozici pro následující možnosti:<br> * [Vytvoření virtuálního počítače](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#create-a-vm) <br> * [obnovení disků](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-disks) <br><br> Momentálně nepodporujeme možnost [nahradit existující disky](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#replace-existing-disks) .<br><br> Oprávnění<br> Operaci obnovení v sekundární oblasti můžou provádět správci zálohování a správci aplikací.
 
 ## <a name="support-for-file-level-restore"></a>Podpora pro obnovení na úrovni souborů
 

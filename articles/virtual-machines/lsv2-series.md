@@ -7,14 +7,14 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 226611bde6024f98ce6d3660fe18e66dba9a420c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b10433190ccc7703938bed2a75a5d816f073295e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493693"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587256"
 ---
-# <a name="lsv2-series"></a>Lsv2-Series
+# <a name="lsv2-series"></a>Řada Lsv2
 
 Funkce Lsv2-Series s vysokou propustností, nízkou latencí a přímo namapovaným místním úložištěm NVMe běžícím na [procesorech AMD EPYC<sup>TM</sup> 7551](https://www.amd.com/en/products/epyc-7000-series) se všemi základními zvýšeními úrovně 2.55 GHz a maximálním zvýšením velikosti 3,0 GHz. Virtuální počítače řady Lsv2-Series přicházejí v případě souběžné konfigurace s více vlákny do velikosti od 8 do 80 vCPU.  K dispozici je 8 GiB paměti na vCPU a jedno 1.92 TB NVMe SSD M. 2 zařízení na 8 vCPU a až 19.2 TB (10x 1.92 TB), které je dostupné na L80s v2.
 
@@ -23,7 +23,7 @@ Funkce Lsv2-Series s vysokou propustností, nízkou latencí a přímo namapovan
 >
 > Vysoká propustnost a IOPs místního disku zpřístupňuje virtuální počítače řady Lsv2-Series ideální pro NoSQL úložiště, jako je Apache Cassandra a MongoDB, které replikují data napříč několika virtuálními počítači, aby se zajistila stálost v případě selhání jednoho virtuálního počítače.
 >
-> Další informace najdete v tématu [optimalizace výkonu na virtuálních počítačích řady Lsv2-Series](/linux/storage-performance.md).  
+> Další informace najdete v tématu Optimalizace výkonu na virtuálních počítačích Lsv2-Series pro [Windows](../virtual-machines/windows/storage-performance.md) nebo [Linux](../virtual-machines/linux/storage-performance.md).  
 
 ACU: 150-175
 

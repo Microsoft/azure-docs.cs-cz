@@ -6,19 +6,19 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/21/2020
 ms.author: rogarana
-ms.openlocfilehash: 3a9a2a903bd9979cd0f9a09b7589edc6d4fd8962
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 673bf3be59d72b2cc62b9f92af353fee235c5ddc
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565076"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598812"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>Přehled podpory ověřování na základě identity souborů Azure pro přístup přes protokol SMB
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-Informace o tom, jak povolit ověřování AD pro sdílené složky Azure, najdete v tématu [Povolení ověřování služby Active Directory přes protokol SMB pro sdílené složky Azure](storage-files-active-directory-domain-services-enable.md).
+Informace o tom, jak povolit ověřování AD pro sdílené složky Azure, najdete v tématu [Povolení ověřování služby Active Directory přes protokol SMB pro sdílené složky Azure](storage-files-identity-auth-active-directory-enable.md).
 
-Informace o tom, jak povolit ověřování Azure služba AD DS pro sdílené složky Azure, najdete v tématu [Povolení ověřování služby Azure Active Directory Domain Services přes SMB pro soubory Azure](storage-files-active-directory-enable.md).
+Informace o tom, jak povolit ověřování Azure služba AD DS pro sdílené složky Azure, najdete v tématu [povolení Azure Active Directory Domain Servicesho ověřování u souborů Azure](storage-files-identity-auth-active-directory-domain-service-enable.md).
 
 ## <a name="glossary"></a>Glosář 
 Je užitečné pochopit některé klíčové podmínky týkající se ověřování služby Azure AD Domain Services přes SMB pro sdílené složky Azure:
@@ -98,7 +98,7 @@ Když se identita přidružená k aplikaci běžící na virtuálním počítač
 
 ### <a name="enable-identity-based-authentication"></a>Povolit ověřování na základě identity
 
-Ověřování na základě identity můžete povolit buď pomocí Azure služba AD DS (GA), nebo AD (Preview) pro sdílené složky Azure na vašich nových a existujících účtech úložiště. Pro ověřování přístupu k souborům v účtu úložiště, která platí pro všechny sdílené složky v účtu, se dá použít jenom jedna Doménová služba. Podrobný postup, jak nastavit sdílené složky pro ověřování pomocí Azure služba AD DS (GA) v našem článku [povolení Azure Active Directory Domain Services ověřování prostřednictvím protokolu SMB pro Azure Files](storage-files-active-directory-enable.md) a doprovodné materiály pro službu AD (Preview) v našem článku, pro [sdílené složky Azure povolte službu Active Directory přes protokol SMB](storage-files-active-directory-domain-services-enable.md).
+Ověřování na základě identity můžete povolit buď pomocí Azure služba AD DS (GA), nebo AD (Preview) pro sdílené složky Azure na vašich nových a existujících účtech úložiště. Pro ověřování přístupu k souborům v účtu úložiště, která platí pro všechny sdílené složky v účtu, se dá použít jenom jedna Doménová služba. Podrobný postup, jak nastavit sdílené složky pro ověřování pomocí Azure služba AD DS (GA) v našem článku [povolení Azure Active Directory Domain Servicesho ověřování v souborech Azure](storage-files-identity-auth-active-directory-domain-service-enable.md) a doprovodné materiály k AD (Preview) v našem dalším článku povolení [ověřování služby Active Directory přes protokol SMB pro sdílené složky Azure](storage-files-identity-auth-active-directory-enable.md).
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Konfigurace oprávnění na úrovni sdílené složky pro soubory Azure
 
@@ -126,6 +126,6 @@ Pro povolení ověřování na základě identity přes protokol SMB v účtu ú
 Další informace o souborech Azure a ověřování na základě identity přes SMB najdete v těchto zdrojích informací:
 
 - [Plánování nasazení služby Soubory Azure](storage-files-planning.md)
-- [Povolení ověřování služby Active Directory přes protokol SMB pro sdílené složky Azure](storage-files-active-directory-domain-services-enable.md)
-- [Povolení ověřování Azure Active Directory Domain Services u souborů Azure](storage-files-active-directory-enable.md)
+- [Povolení ověřování služby Active Directory přes protokol SMB pro sdílené složky Azure](storage-files-identity-auth-active-directory-enable.md)
+- [Povolení ověřování Azure Active Directory Domain Services u souborů Azure](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [Nejčastější dotazy](storage-files-faq.md)

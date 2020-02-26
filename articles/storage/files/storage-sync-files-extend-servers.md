@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e3154b9635da889ed7f0484fc04c565c27e9241b
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: eb00234fb7522c763dbaa910bee99cf327bebaf1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77031505"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597894"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Kurz: Rozšíření souborových serverů Windows s využitím Synchronizace souborů Azure
 
@@ -28,11 +28,9 @@ Tento článek popisuje základní kroky pro rozšíření kapacity úložiště
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Příprava prostředí
 
@@ -46,7 +44,7 @@ Pro tento kurz je potřeba provést následující kroky, abyste mohli nasadit A
 
 Na svém místním počítači vytvořte novou složku _FilesToSync_ a přidejte do ní textový soubor _mytestdoc.txt_. Tento soubor nahrajete do sdílené složky později v tomto kurzu.
 
-### <a name="create-a-storage-account"></a>vytvořit účet úložiště
+### <a name="create-a-storage-account"></a>Vytvořit účet úložiště
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -105,7 +103,7 @@ V tomto okamžiku jste vytvořili účet úložiště a sdílenou složku s jedn
 
    1. Vyberte **OK**.
 1. Vyberte **Zkontrolovat a vytvořit**.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
    Můžete vybrat ikonu **oznámení** a sledovat **Průběh nasazení**. Dokončení vytvoření nového virtuálního počítače může trvat několik minut.
 
@@ -128,7 +126,7 @@ Právě jste vytvořili nový virtuální počítač a připojili jste datový d
 1. Otevřete stažený soubor RDP a po zobrazení výzvy vyberte **připojit** .
 1. V okně **Zabezpečení systému Windows** vyberte **Další možnosti** a pak **Použít jiný účet**. Zadejte uživatelské jméno jako *localhost\username*, zadejte heslo, které jste vytvořili pro virtuální počítač, a pak vyberte **OK**.
 
-   ![Další možnosti](./media/storage-sync-files-extend-servers/local-host2.png)
+   ![Další volby](./media/storage-sync-files-extend-servers/local-host2.png)
 
 1. Při přihlášení se může zobrazit upozornění na certifikát. Vyberte **Ano** nebo **pokračovat** a vytvořte připojení.
 
@@ -160,7 +158,7 @@ Teď můžete k virtuálnímu počítači přidat datový disk.
 
 1. Pravým tlačítkem myši klikněte na 1 GB disk s názvem **MSFT Virtual disk** a vyberte **nový svazek**.
 1. Dokončete průvodce. Použijte výchozí nastavení a poznamenejte si přiřazené písmeno jednotky.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 1. Vyberte **Zavřít**.
 
    Právě jste disk převedli do stavu online a vytvořili jste svazek. Otevřete Průzkumníka souborů na virtuálním počítači s Windows serverem a potvrďte přítomnost nedávno přidaného datového disku.
@@ -222,7 +220,7 @@ Pokud chcete nasadit Azure File Sync, nejdřív umístěte prostředek **služby
    | **Název** | Jedinečný název (pro každé předplatné) služby synchronizace úložiště.<br><br>Pro tento kurz použijte _afssyncservice02_ . |
    | **Předplatné** | Předplatné Azure, které používáte pro tento kurz. |
    | **Skupina prostředků** | Skupina prostředků, která obsahuje službu synchronizace úložiště.<br><br>Pro tento kurz použijte _afsresgroup101918_ . |
-   | **Umístění** | USA – východ |
+   | **Umístění** | Východní USA |
 
 1. Jakmile budete hotovi, vyberte **Vytvořit** a nasaďte **službu synchronizace úložiště**.
 1. Vyberte kartu **oznámení** > **Přejít na prostředek**.
@@ -289,7 +287,7 @@ Skupina synchronizace definuje topologii synchronizace sady souborů. Skupina sy
    | **Účet úložiště** | Zvolte **Vybrat účet úložiště**. V podokně, které se zobrazí, vyberte účet úložiště, který obsahuje sdílenou složku Azure, kterou jste vytvořili. Pro tento kurz použijte *afsstoracct101918* . |
    | **Sdílená složka Azure** | Název sdílené složky Azure, kterou jste vytvořili. Pro tento kurz použijte *afsfileshare* . |
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 Pokud vyberete svou skupinu synchronizace, uvidíte, že teď máte jeden **koncový bod cloudu**.
 
@@ -311,7 +309,7 @@ Koncový bod serveru představuje konkrétní umístění na zaregistrovaném se
    | **Vrstvení cloudu** | Pro účely tohoto kurzu nechte tuto možnost zakázanou. |
    | **Volné místo svazku** | Pro účely tohoto kurzu ponechte tuto hodnotu prázdnou. |
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 Vaše soubory se teď synchronizují mezi sdílenou složkou Azure a Windows Serverem.
 

@@ -1,10 +1,10 @@
 ---
-title: Příprava infrastruktury Azure na systém SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS | Microsoft Docs
+title: Infrastruktura Azure pro SAP ASCS/SCS se službou WSFC & sdíleným diskem | Microsoft Docs
 description: Naučte se připravit infrastrukturu Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání Windows a sdíleného disku pro instanci SAP ASCS/SCS.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4de954d55725f36d48d09ac46ef3700787d937b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647641"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591927"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Příprava infrastruktury Azure pro SAP HA pomocí clusteru s podporou převzetí služeb při selhání systému Windows a sdíleného disku pro SAP ASCS/SCS
 
@@ -164,7 +164,7 @@ ms.locfileid: "75647641"
 
 Tento článek popisuje kroky, které můžete provést při přípravě infrastruktury Azure pro instalaci a konfiguraci systému SAP s vysokou dostupností na clusteru s podporou převzetí služeb při selhání s Windows pomocí *sdíleného disku clusteru* jako možnosti CLUSTERINGU instance SAP ASCS.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než začnete s instalací, přečtěte si tento článek:
 
@@ -199,9 +199,9 @@ _**Obrázek 1:** Nastavení Azure Resource Manager parametrů pro vysokou dostup
     * Cluster DBMS: \<SAPSystemSID\>-DB-\<číslo\>
 
   * **Síťové karty pro všechny virtuální počítače s přidruženými IP adresami**:
-    * \<SAPSystemSID\>-nic-di-\<Number\>
-    * \<SAPSystemSID\>-nic-ascs-\<Number\>
-    * \<SAPSystemSID\>-nic-db-\<Number\>
+    * \<SAPSystemSID\>-nic-di-\<číslo\>
+    * \<SAPSystemSID\>-nic-ASCS-\<číslo\>
+    * \<SAPSystemSID\>-nic-DB-\<číslo\>
 
   * **Účty služby Azure Storage (jenom nespravované disky)** :
 
@@ -223,7 +223,7 @@ _**Obrázek 1:** Nastavení Azure Resource Manager parametrů pro vysokou dostup
 >
 
 ## <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Nasazení virtuálních počítačů s připojením k podnikové síti (mezi místními) pro použití v produkčním prostředí
-V případě produkčních systémů SAP nasaďte virtuální počítače Azure s [připojením k podnikové síti (mezi místními)][planning-guide-2.2] pomocí Azure VPN Gateway nebo Azure ExpressRoute.
+V případě produkčních systémů SAP nasaďte virtuální počítače Azure s připojením k podnikové síti pomocí Azure VPN Gateway nebo Azure ExpressRoute.
 
 > [!NOTE]
 > Můžete použít instanci Azure Virtual Network. Virtuální síť a podsíť už jsou vytvořené a připravené.
@@ -372,8 +372,8 @@ V našem příkladu je adresní prostor instance služby Azure Virtual Network 1
 Chcete-li nastavit požadované IP adresy DNS, proveďte následující kroky:
 
 1. V Azure Portal v podokně **servery DNS** se ujistěte, že je možnost **servery DNS** virtuální sítě nastavená na **vlastní DNS**.
-2. Vyberte nastavení podle typu sítě, kterou máte. Další informace najdete v následujících materiálech:
-   * [Připojení k podnikové síti (mezi místními sítěmi)][planning-guide-2.2]: přidejte IP adresy místních serverů DNS.  
+2. Vyberte nastavení podle typu sítě, kterou máte. Další informace najdete v následujících zdrojích:
+   * Přidejte IP adresy místních serverů DNS.  
    Místní servery DNS můžete rozmístit do virtuálních počítačů, které běží v Azure. V takovém scénáři můžete přidat IP adresy virtuálních počítačů Azure, na kterých spouštíte službu DNS.
    * Pro nasazení virtuálních počítačů, které jsou izolované v Azure: nasaďte další virtuální počítač ve stejné instanci Virtual Network, která slouží jako server DNS. Přidejte IP adresy virtuálních počítačů Azure, které jste nastavili pro spuštění služby DNS.
 
@@ -479,15 +479,15 @@ Chcete-li vytvořit požadované koncové body interního vyrovnávání zatíž
 
 | Název pravidla služby/Vyrovnávání zatížení | Výchozí čísla portů | Konkrétní porty pro (ASCS instance s číslem instance 00) (OLAJÍCÍCH s 10) |
 | --- | --- | --- |
-| Server/ *lbrule3200* fronty |32\<InstanceNumber\> |3200 |
-| Server zpráv ABAP/ *lbrule3600* |36\<InstanceNumber\> |3600 |
-| Interní zpráva ABAP/ *lbrule3900* |39\<InstanceNumber\> |3900 |
-| HTTP/ *Lbrule8100* serveru zpráv |81\<InstanceNumber\> |8100 |
-| Služba SAP Start Service ASCS HTTP/ *Lbrule50013* |5\<InstanceNumber\>13 |50013 |
-| Služba SAP Start Service ASCS HTTPS/ *Lbrule50014* |5\<InstanceNumber\>14 |50014 |
-| Replikace do fronty/ *Lbrule50016* |5\<InstanceNumber\>16 |50016 |
-| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51013* |5\<InstanceNumber\>13 |51013 |
-| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51014* |5\<InstanceNumber\>14 |51014 |
+| Server/ *lbrule3200* fronty |32\<číslo instance\> |3200 |
+| Server zpráv ABAP/ *lbrule3600* |36\<číslo instance\> |3600 |
+| Interní zpráva ABAP/ *lbrule3900* |39\<číslo instance\> |3900 |
+| HTTP/ *Lbrule8100* serveru zpráv |81\<číslo instance\> |8100 |
+| Služba SAP Start Service ASCS HTTP/ *Lbrule50013* |5\<číslo instance\>13 |50013 |
+| Služba SAP Start Service ASCS HTTPS/ *Lbrule50014* |5\<číslo instance\>14 |50014 |
+| Replikace do fronty/ *Lbrule50016* |5\<číslo instance\>16 |50016 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51013* |5\<číslo instance\>13 |51013 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51014* |5\<číslo instance\>14 |51014 |
 | Vzdálená správa systému Windows (WinRM) *Lbrule5985* | |5985 |
 | *Lbrule445* sdílení souborů | |445 |
 
@@ -497,15 +497,15 @@ Pak vytvořte tyto koncové body vyrovnávání zatížení pro porty SAP NetWea
 
 | Název pravidla služby/Vyrovnávání zatížení | Výchozí čísla portů | Konkrétní porty pro (instance SCS s číslem instance 01) (OLAJÍCÍCH s 11) |
 | --- | --- | --- |
-| Server/ *lbrule3201* fronty |32\<InstanceNumber\> |3201 |
-| Server brány/ *lbrule3301* |33\<InstanceNumber\> |3301 |
-| Server zpráv Java/ *lbrule3900* |39\<InstanceNumber\> |3901 |
-| HTTP/ *Lbrule8101* serveru zpráv |81\<InstanceNumber\> |8101 |
-| Služba SAP Start Service SCS HTTP/ *Lbrule50113* |5\<InstanceNumber\>13 |50113 |
-| Služba SAP Start Service SCS HTTPS/ *Lbrule50114* |5\<InstanceNumber\>14 |50114 |
-| Replikace do fronty/ *Lbrule50116* |5\<InstanceNumber\>16 |50116 |
-| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51113* |5\<InstanceNumber\>13 |51113 |
-| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51114* |5\<InstanceNumber\>14 |51114 |
+| Server/ *lbrule3201* fronty |32\<číslo instance\> |3201 |
+| Server brány/ *lbrule3301* |33\<číslo instance\> |3301 |
+| Server zpráv Java/ *lbrule3900* |39\<číslo instance\> |3901 |
+| HTTP/ *Lbrule8101* serveru zpráv |81\<číslo instance\> |8101 |
+| Služba SAP Start Service SCS HTTP/ *Lbrule50113* |5\<číslo instance\>13 |50113 |
+| Služba SAP Start Service SCS HTTPS/ *Lbrule50114* |5\<číslo instance\>14 |50114 |
+| Replikace do fronty/ *Lbrule50116* |5\<číslo instance\>16 |50116 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51113* |5\<číslo instance\>13 |51113 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51114* |5\<číslo instance\>14 |51114 |
 | *Lbrule5985* WinRM | |5985 |
 | *Lbrule445* sdílení souborů | |445 |
 
@@ -524,7 +524,7 @@ Pokud chcete pro instance SAP ASCS nebo SCS používat odlišná čísla, musít
 1. V Azure Portal vyberte **\<SID\>-9,1-ASCS load balancer** > **pravidla vyrovnávání**zatížení.
 2. Pro všechna pravidla vyrovnávání zatížení, která patří do instance SAP ASCS nebo SCS, změňte tyto hodnoty:
 
-   * Name (Název)
+   * Název
    * Port
    * Back-end port
 

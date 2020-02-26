@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8aa17f473c550c99d91862754e6a746575aca202
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355634"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604381"
 ---
 # <a name="alert-confidence-score-preview"></a>Skóre spolehlivosti výstrahy (Preview)
 
@@ -47,14 +47,6 @@ Zobrazení dat, která přispěla k obavám Security Center v upozornění:
   ![Podezřelé skóre spolehlivosti][2]
 
 Pomocí hodnocení spolehlivosti Security Center můžete určit prioritu třídění výstrah ve vašem prostředí. Skóre spolehlivosti šetří čas a úsilí tím, že automaticky prozkoumá výstrahy, uplatní osvědčené postupy a inteligentní algoritmy a působí jako virtuální analytik a určí, které hrozby jsou reálné a kde je potřeba zaměřit pozornost.
-
-
-## <a name="next-steps"></a>Další kroky
-Tento článek vysvětluje, jak používat hodnocení spolehlivosti k určení priorit šetření výstrah. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
-
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
-
 
 
 <!--Image references-->

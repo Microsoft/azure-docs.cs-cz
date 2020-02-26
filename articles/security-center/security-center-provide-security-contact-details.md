@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
-ms.openlocfilehash: 1a66ea200082f60a3a763c6a4e2bdea62ec473d8
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 15029c3e0bd3959000786af484a42691f00bb704
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920986"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603568"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Zadání podrobností o kontaktu zabezpečení v Azure Security Center
-Pokud jste to ještě neudělali, Azure Security Center vám doporučujeme zadat podrobnosti o kontaktu zabezpečení pro vaše předplatné Azure. Prostřednictvím tohoto kontaktu se na vás společnost Microsoft obrátí, pokud středisko Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka nezákonně nebo neoprávněně přistupovala třetí strana. Středisko MSRC provádí vybraný monitoring zabezpečení sítě a infrastruktury Azure a přijímá analytické informace o hrozbách a stížnosti na zneužití od třetích stran.
+Pokud jste to ještě neudělali, Azure Security Center vám doporučujeme zadat podrobnosti o kontaktu zabezpečení pro vaše předplatné Azure. Prostřednictvím tohoto kontaktu se na vás společnost Microsoft obrátí, pokud středisko Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka nezákonně nebo neoprávněně přistupovala třetí strana. MSRC provádí výběr sledování zabezpečení sítě a infrastruktury Azure a přijímá analýzy hrozeb a stížnosti na zneužití od třetích stran.
 
 E-mailové oznámení se odešle při prvním výskytu výstrahy během dne a pouze u výstrah s vysokou závažností. Předvolby e-mailu lze konfigurovat pouze pro zásady předplatného. Skupiny prostředků v rámci předplatného zdědí tato nastavení. Výstrahy jsou k dispozici pouze na úrovni Standard Azure Security Center.
 
@@ -40,12 +40,12 @@ Pokud vám například byla odeslána e-mailová zpráva s upozorněním na úto
 
 1. Na portálu vyberte **cenové & nastavení**.
 1. Klikněte na předplatné.
-1. Klikněte na **E-mailová oznámení**.
+1. Klikněte na **e-mailová oznámení**.
 
 > [!NOTE]
 > Pokud implementujete doporučení, vyberte v části **doporučení**možnost **zadat podrobnosti kontaktu zabezpečení**, vyberte předplatné Azure, na které chcete zadat kontaktní údaje. Tím se otevřou **e-mailová oznámení**.
 
-   ![Poskytnutí podrobností kontaktů zabezpečení][2]
+   ![Zadat podrobnosti kontaktů zabezpečení][2]
 
    * Zadejte kontaktní e-mailovou adresu nebo adresy zabezpečení oddělené čárkami. Počet e-mailových adres, které můžete zadat, není omezený.
    * Zadejte jeden kontakt zabezpečení mezinárodní telefonní číslo.
@@ -53,7 +53,7 @@ Pokud vám například byla odeslána e-mailová zpráva s upozorněním na úto
    * Máte možnost Odeslat e-mailová oznámení vlastníkům předplatného (klasický správce služeb a spolusprávci a role vlastníka RBAC v oboru předplatného).
    * Vyberte **Uložit** a použijte tak kontaktní informace zabezpečení pro vaše předplatné.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také:
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
@@ -61,8 +61,6 @@ Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato t
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Získejte nejnovější novinky a informace o zabezpečení Azure.
 
 <!--Image references-->
 [1]: ./media/security-center-provide-security-contacts/provide-contacts.png

@@ -2,18 +2,15 @@
 title: Konfigurace sítě kubenet ve službě Azure Kubernetes Service (AKS)
 description: Naučte se konfigurovat síť kubenet (Basic) ve službě Azure Kubernetes Service (AKS), která umožňuje nasadit cluster AKS do existující virtuální sítě a podsítě.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 06/26/2019
-ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 382895c1b5a4cb2bc88ff2371cec59267ea4e176
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9931c752d5ce33beb41dc00194c27d06b9469807
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442943"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595889"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Používání sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -23,7 +20,7 @@ Díky [rozhraní CNI (Azure Container Networking Interface)][cni-networking]kaž
 
 V tomto článku se dozvíte, jak pomocí sítě *kubenet* vytvořit a použít podsíť virtuální sítě pro cluster AKS. Další informace o možnostech a požadavcích sítě najdete v tématu [Koncepty sítě pro Kubernetes a AKS][aks-network-concepts].
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Virtuální síť pro cluster AKS musí umožňovat odchozí připojení k Internetu.
 * Nevytvářejte více než jeden cluster AKS ve stejné podsíti.

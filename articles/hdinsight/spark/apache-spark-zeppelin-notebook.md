@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/18/2020
-ms.openlocfilehash: c5c8a41aef92876ceaa66fb23c01c6ece1609f91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484804"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598268"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v Azure HDInsight
 
 Clustery HDInsight Spark obsahují poznámkové bloky [Apache Zeppelin](https://zeppelin.apache.org/) , které můžete použít ke spouštění úloh [Apache Spark](https://spark.apache.org/) . V tomto článku se dozvíte, jak používat Poznámkový blok Zeppelin v clusteru HDInsight.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 * Schéma identifikátoru URI pro primární úložiště clusterů. To `wasb://` pro Azure Blob Storage, `abfs://` pro Azure Data Lake Storage Gen2 nebo `adl://` pro Azure Data Lake Storage Gen1. Pokud je pro Blob Storage povolený zabezpečený přenos, `wasbs://`identifikátor URI.  Další informace najdete v tématu [vyžadování zabezpečeného přenosu v Azure Storage](../../storage/common/storage-require-secure-transfer.md) .
@@ -151,6 +151,25 @@ Poznámkové bloky Zeppelin se ukládají do hlavních clusteru. Takže pokud cl
 
 Tím uložíte Poznámkový blok jako soubor JSON do umístění pro stahování.
 
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Pomocí Shiro nakonfigurovat přístup k překladači Zeppelin v clusterech Balíček zabezpečení podniku (ESP)
+Jak je uvedeno výše, překladač `%sh` není podporován od HDInsight 4,0 a vyšší. Vzhledem k tomu, že `%sh` překladače zavádí možné problémy se zabezpečením, jako jsou například přístupové karty pomocí příkazů prostředí, bylo odebráno i z clusterů HDInsight 3,6 ESP. To znamená, že `%sh` není k dispozici, když ve výchozím nastavení kliknete na možnost **vytvořit novou poznámku** nebo v uživatelském rozhraní překladače. 
+
+Uživatelé s privilegovanými doménami můžou použít `Shiro.ini` soubor k řízení přístupu k uživatelskému rozhraní překladače. Proto pouze tito uživatelé mohou vytvořit nové interprety `%sh` a nastavit oprávnění u každého nového interpretu `%sh`. K řízení přístupu pomocí souboru `shiro.ini` použijte následující postup:
+
+1. Definujte novou roli pomocí existujícího názvu skupiny domén. V následujícím příkladu je `adminGroupName` skupina privilegovaných uživatelů v AAD. V názvu skupiny Nepoužívejte speciální znaky ani prázdné znaky. Znaky po `=` poskytují oprávnění pro tuto roli. `*` znamená, že skupina má úplná oprávnění.
+
+    ```
+    [roles]
+    adminGroupName = *
+    ```
+
+2. Přidejte novou roli pro přístup k překladačům Zeppelin. V následujícím příkladu jsou všem uživatelům v `adminGroupName` udělen přístup k překladačům Zeppelin a jsou schopny vytvořit nové překladače. Mezi závorky můžete vložit více rolí v `roles[]`oddělené čárkami. Uživatelé s potřebnými oprávněními pak mají přístup k překladačům Zeppelin.
+
+    ```
+    [urls]
+    /api/interpreter/** = authc, roles[adminGroupName]
+    ```
+
 ## <a name="livy-session-management"></a>Správa relací Livy
 
 Když spustíte první odstavec kódu v poznámkovém bloku Zeppelin, vytvoří se nová relace Livy v clusteru HDInsight Spark. Tato relace se sdílí ve všech poznámkových blocích Zeppelin, které následně vytvoříte. Pokud z nějakého důvodu dojde k usmrcení relace Livy (restart clusteru atd.), nebudete moct spouštět úlohy z poznámkového bloku Zeppelin.
@@ -183,7 +202,7 @@ Chcete-li ověřit službu z příkazového řádku, SSH k hlavnímu uzlu. Přep
 
 ### <a name="log-locations"></a>Umístění protokolů
 
-|Service |Cesta |
+|Služba |Cesta |
 |---|---|
 |Zeppelin – Server|/usr/hdp/current/zeppelin-server/|
 |Protokoly serveru|/var/log/zeppelin|

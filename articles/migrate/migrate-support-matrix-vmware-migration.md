@@ -3,12 +3,12 @@ title: Podpora pro migraci VMware v Azure Migrate
 description: Přečtěte si o podpoře migrace virtuálních počítačů VMware v Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e5a2f40611f6b358a8b5ff1dfb99cadebae4fab6
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: eea2ef1f84e5c31dd18ea4ef65ccf2796231352b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77013990"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597979"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Matice podpory pro migraci VMware
 
@@ -35,7 +35,7 @@ Přečtěte si [Tento článek](server-migrate-overview.md) a zjistěte, kterou 
 --- | ---
 **vCenter Server VMware** | Verze 5,5, 6,0, 6,5 nebo 6,7.
 **VMware vSphere hostitele ESXI** | Verze 5,5, 6,0, 6,5 nebo 6,7.
-**vCenter Server oprávnění** | Migrace bez agentů používá [zařízení migrace](migrate-appliance.md). Zařízení potřebuje tato oprávnění:<br/><br/> - **úložiště dat. Procházejte**: povolení procházení souborů protokolu virtuálních počítačů při řešení potíží s vytvářením a odstraňováním snímků.<br/><br/> **DataStore. LowLevelFileOperations**: povolí operace čtení/zápisu/odstranění/přejmenování v prohlížeči úložiště dat, aby bylo možné řešit problémy při vytváření a odstraňování snímků.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: umožňuje povolit nebo zakázat sledování změn disků virtuálních počítačů, aby se daly načíst změněné bloky dat mezi snímky.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: Povolte operace zapůjčení disku pro virtuální počítač a přečtěte si disk pomocí sady VMware vSphere Virtual disk Development Kit (VDDK).<br/><br/> - **VirtualMachine. Provisioning. AllowReadOnlyDiskAccess**: povolení otevření disku na virtuálním počítači pro čtení disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. AllowVirtualMachineDownload**: umožňuje operace čtení souborů přidružených k virtuálnímu počítači ke stažení protokolů a řešení potíží, pokud dojde k selhání.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: Povolí vytváření a správu snímků virtuálních počítačů pro replikaci.<br/><br/> - **virtuální počítač. interakce. vypnutí**: povolí vypnutí virtuálního počítače během migrace do Azure.
+**vCenter Server oprávnění** | Migrace bez agentů používá [zařízení migrace](migrate-appliance.md). Zařízení potřebuje tato oprávnění:<br/><br/> - **úložiště dat. Procházejte**: povolení procházení souborů protokolu virtuálních počítačů při řešení potíží s vytvářením a odstraňováním snímků.<br/><br/> - **DataStore. LowLevelFileOperations**: povolí operace čtení/zápisu/odstranění/přejmenování v prohlížeči úložiště dat, aby bylo možné řešit problémy při vytváření a odstraňování snímků.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: umožňuje povolit nebo zakázat sledování změn disků virtuálních počítačů, aby se daly načíst změněné bloky dat mezi snímky.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: Povolte operace zapůjčení disku pro virtuální počítač a přečtěte si disk pomocí sady VMware vSphere Virtual disk Development Kit (VDDK).<br/><br/> - **VirtualMachine. Provisioning. AllowDiskAccess**: (konkrétně pro vSphere 6,0 a vyšší) povolí otevření disku na virtuálním počítači s náhodným přístupem pro čtení na disku pomocí VDDK.<br/><br/> - **VirtualMachine. Provisioning. AllowReadOnlyDiskAccess**: povolení otevření disku na virtuálním počítači pro čtení disku pomocí VDDK.<br/><br/>- **VirtualMachine. Provisioning. AllowVirtualMachineDownload**: umožňuje operace čtení souborů přidružených k virtuálnímu počítači ke stažení protokolů a řešení potíží, pokud dojde k selhání.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: Povolí vytváření a správu snímků virtuálních počítačů pro replikaci.<br/><br/> - **virtuální počítač. interakce. vypnutí**: povolí vypnutí virtuálního počítače během migrace do Azure.
 
 
 
@@ -50,15 +50,15 @@ Přečtěte si [Tento článek](server-migrate-overview.md) a zjistěte, kterou 
 **Velikost disku** | 2 TB disk s operačním systémem; 4 TB datových disků
 **Omezení disku** |  Až 60 disků na virtuální počítač.
 **Šifrované disky/svazky** | Virtuální počítače se zašifrovanými disky nebo svazky se nepodporují pro migraci.
-**Cluster sdíleného disku** | Není podporováno.
-**Nezávislé disky** | Není podporováno.
+**Cluster sdíleného disku** | Nepodporuje se.
+**Nezávislé disky** | Nepodporuje se.
 **RDM/průchozí disky** | Pokud virtuální počítače mají RDM nebo průchozí disky, tyto disky se nebudou replikovat do Azure.
 **NFS** | Svazky NFS připojené jako svazky na virtuálních počítačích se nebudou replikovat.
 **cíle iSCSI** | Virtuální počítače s cíli iSCSI nejsou podporované pro migraci bez agenta.
-**Multipath v/v** | Není podporováno.
-**VMotion úložiště** | Není podporováno. Pokud virtuální počítač používá úložiště vMotion, replikace nebude fungovat.
-**Seskupené síťové adaptéry** | Není podporováno.
-**Protokolů** | Není podporováno.
+**Multipath v/v** | Nepodporuje se.
+**VMotion úložiště** | Nepodporuje se. Pokud virtuální počítač používá úložiště vMotion, replikace nebude fungovat.
+**Seskupené síťové adaptéry** | Nepodporuje se.
+**Protokolů** | Nepodporuje se.
 **Cílový disk** | Virtuální počítače se dají migrovat jenom na spravované disky (Standard HDD, Premium SSD) v Azure.
 **Současná replikace** | 100 virtuálních počítačů na vCenter Server. Pokud máte víc, migrujte je v dávkách 100.
 
@@ -71,7 +71,7 @@ Migrace bez agentů používá zařízení Azure Migrate nasazené na virtuáln�
 
 ## <a name="agentless-ports"></a>Bez agentů – porty
 
-**zařízení** | **připojení**
+**Zařízení** | **Vázán**
 --- | ---
 Náplně | Odchozí připojení na portu 443 pro nahrání replikovaných dat do Azure a komunikaci s Azure Migrate službami orchestrace replikace a migrace.
 Server vCenter | Příchozí připojení na portu 443, aby zařízení mohla orchestrovat replikaci – vytvářet snímky, kopírovat data, snímky verzí
@@ -104,15 +104,15 @@ Tabulka shrnuje podporu virtuálních počítačů VMware pro virtuální počí
 **Velikost disku** | 2 TB disk s operačním systémem; 8 TB pro datové disky.
 **Omezení disku** |  Až 63 disků na virtuální počítač.
 **Šifrované disky/svazky** | Virtuální počítače se zašifrovanými disky nebo svazky se nepodporují pro migraci.
-**Cluster sdíleného disku** | Není podporováno.
+**Cluster sdíleného disku** | Nepodporuje se.
 **Nezávislé disky** | Podporuje se.
 **Průchozí disky** | Podporuje se.
 **NFS** | Svazky NFS připojené jako svazky na virtuálních počítačích se nebudou replikovat.
 **cíle iSCSI** | Virtuální počítače s cíli iSCSI nejsou podporované pro migraci bez agenta.
-**Multipath v/v** | Není podporováno.
-**VMotion úložiště** | Podporováno
-**Seskupené síťové adaptéry** | Není podporováno.
-**Protokolů** | Není podporováno.
+**Multipath v/v** | Nepodporuje se.
+**VMotion úložiště** | Podporuje se
+**Seskupené síťové adaptéry** | Nepodporuje se.
+**Protokolů** | Nepodporuje se.
 
 
 
@@ -127,7 +127,7 @@ Při nastavování zařízení replikace pomocí šablony vajíček, která je k
 
 ## <a name="agent-based-ports"></a>Porty založené na agentech
 
-**zařízení** | **připojení**
+**Zařízení** | **Vázán**
 --- | ---
 Virtuální počítače | Služba mobility spuštěná na virtuálních počítačích komunikuje s místním zařízením replikace (konfiguračním serverem) na portu HTTPS 443 příchozím pro správu replikací.<br/><br/> Virtuální počítače odesílají data replikace na procesový Server (spuštěný na počítači konfiguračního serveru) na portu HTTPS 9443 příchozí. Tento port lze změnit.
 Replikační zařízení | Zařízení replikace orchestruje replikaci pomocí Azure přes odchozí port HTTPS 443.
@@ -142,13 +142,13 @@ Všechny místní virtuální počítače replikované do Azure musí splňovat 
 Hostovaný operační systém | Ověří podporované operační systémy virtuálních počítačů VMware pro migraci.<br/> Můžete migrovat libovolné úlohy běžící v podporovaném operačním systému. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Architektura hostovaného operačního systému | 64-bit. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost disku operačního systému | Až 2 048 GB. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Počet disků operačního systému | 1\. místo | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Počet disků operačního systému | 1 | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Počet datových disků | 64 nebo méně. | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Velikost datového disku | Až 4 095 GB | Pokud je tato operace Nepodporovaná, ověřte chybu.
 Síťové adaptéry | Podporuje se několik adaptérů. |
-Sdílený virtuální pevný disk | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-Disk FC | Není podporováno. | Pokud je tato operace Nepodporovaná, ověřte chybu.
-BitLocker | Není podporováno. | Před povolením replikace pro počítač musí být BitLocker zakázán.
+Sdílené VHD | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
+Disk FC | Nepodporuje se. | Pokud je tato operace Nepodporovaná, ověřte chybu.
+BitLocker | Nepodporuje se. | Před povolením replikace pro počítač musí být BitLocker zakázán.
 název virtuálního počítače | Od 1 do 63 znaků.<br/> Pouze písmena, číslice a pomlčky.<br/><br/> Název počítače musí začínat a končit písmenem nebo číslicí. |  Aktualizujte hodnotu ve vlastnostech počítače v Site Recovery.
 Připojit po migraci – Windows | Připojení k virtuálním počítačům Azure s Windows po migraci:<br/> – Před migrací povolí RDP na místním virtuálním počítači. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.<br/> V případě přístupu typu Site-to-site k síti VPN Povolte protokol RDP a Povolte protokol RDP v **bráně Windows Firewall** -> **povolené aplikace a funkce** pro **domény a privátní** sítě. Dále ověřte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](prepare-for-migration.md). |
 Připojit po migraci – Linux | Připojení k virtuálním počítačům Azure po migraci pomocí SSH:<br/> Před migrací na místním počítači ověřte, že je služba Secure Shell nastavená na Start a že pravidla brány firewall umožňují připojení SSH.<br/> Po převzetí služeb při selhání povolte na virtuálním počítači Azure příchozí připojení k portu SSH pro pravidla skupiny zabezpečení sítě na virtuálním počítači, u kterého došlo k převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený. Kromě toho přidejte veřejnou IP adresu pro virtuální počítač. |  

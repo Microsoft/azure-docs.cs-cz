@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: memildin
-ms.openlocfilehash: 70b7f511c32013a5dbc9369a2dfba2b8cd5f9145
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: e1ed403babe66b465fb1800dc8c5a90c7a8f1a08
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558612"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604110"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Správa potíží s ochranou Endpoint Protection pomocí Azure Security Center
 Azure Security Center monitoruje stav antimalwarové ochrany a oznamuje je na stránce problémy s ochranou koncového bodu. Security Center zvýrazní problémy, jako jsou zjištěné hrozby a nedostatečná ochrana, což může způsobit, že vaše virtuální počítače a počítače budou zranitelné proti malwarovým hrozbám. Pomocí informací v části **problémy s ochranou koncového bodu Endpoint Protection**můžete identifikovat plán, který řeší všechny zjištěné problémy.
@@ -75,7 +75,7 @@ V tomto příkladu použijeme **COMPUTE**.  Podíváme se na to, jak nainstalova
 
 4. V části **Endpoint Protection není nainstalovaná na virtuálních počítačích Azure** seznam virtuálních počítačů Azure, u kterých není nainstalovaný antimalwarový software.  Můžete zvolit instalaci antimalwaru na všechny virtuální počítače v seznamu nebo vybrat jednotlivé virtuální počítače pro instalaci antimalwaru kliknutím na konkrétní virtuální počítač.
 5. V části **Vybrat službu Endpoint Protection**vyberte řešení ochrany koncových bodů, které chcete použít. V tomto příkladu vyberte **Microsoft Antimalware**.
-6. Zobrazí se další informace o řešení ochrany koncových bodů. Vyberte **Create** (Vytvořit).
+6. Zobrazí se další informace o řešení ochrany koncových bodů. Vyberte **Vytvořit**.
 
 ## <a name="install-antimalware-on-non-azure-computers"></a>Instalace antimalwaru v počítačích mimo Azure
 
@@ -108,8 +108,6 @@ Další informace o Security Center najdete v následujících dokumentech:
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si blogové příspěvky o zabezpečení Azure a dodržování předpisů.
 
 <!--Image references-->
 [1]:./media/security-center-install-endpoint-protection/compute.png

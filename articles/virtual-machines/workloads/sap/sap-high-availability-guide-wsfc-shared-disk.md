@@ -1,10 +1,10 @@
 ---
-title: Vytvoření clusteru instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru v Azure | Microsoft Docs
+title: Cluster SAP ASCS/SCS instance v WSFC pomocí sdíleného disku v Azure | Microsoft Docs
 description: Naučte se, jak clusterovat instanci SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání s Windows pomocí sdíleného disku clusteru.
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7fae3c08dd4b51b8c8dc9437fce5b5b5de063726
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8156f8706828afae30889b3250cf0b26252bf394
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75637912"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598472"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -191,7 +191,7 @@ Clustering s podporou převzetí služeb při selhání ve Windows serveru je z�
 
 Cluster s podporou převzetí služeb při selhání je skupina s jedním nebo více než nezávisle servery (uzly), které vzájemně spolupracují za účelem zvýšení dostupnosti aplikací a služeb. Pokud dojde k selhání uzlu, clustering s podporou převzetí služeb při selhání ve Windows serveru vypočítá počet selhání, ke kterým může dojít, a udržujte cluster v pořádku, aby poskytoval aplikace a služby. Pro zajištění clusteringu s podporou převzetí služeb při selhání můžete vybrat z různých režimů kvora.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Než začnete s úlohami v tomto článku, přečtěte si následující článek:
 
 * [Architektura a scénáře s vysokou dostupností pro Azure Virtual Machines pro SAP NetWeaver][sap-high-availability-architecture-scenarios]

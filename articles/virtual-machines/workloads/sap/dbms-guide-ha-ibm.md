@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/10/2019
+ms.date: 02/25/2020
 ms.author: juergent
-ms.openlocfilehash: e7de3e8026b15342c06eff9718242c08d33a53a4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a4b3378909d40fe2b770f70f83054a97f2646bd3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72783788"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602357"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -83,8 +83,8 @@ Než začnete s instalací, přečtěte si následující poznámky a dokumentac
 | [Příručky k osvědčeným postupům pro aplikace SAP s 12 SP4 pro SUSE Linux Enterprise Server][sles-for-sap-bp] |
 | [SUSE Linux Enterprise High Availability Extension 12 SP4][sles-ha-guide] |
 | [Nasazení IBM Db2 Azure Virtual Machines DBMS pro úlohy SAP][dbms-db2] |
-| [IBM Db2 HADR 11.1][db2-hadr-11.1] |
-| [IBM Db2 HADR R 10.5][db2-hadr-10.5] |
+| [IBM Db2 HADR 11,1][db2-hadr-11.1] |
+| [IBM Db2 HADR R 10,5][db2-hadr-10.5] |
 
 ## <a name="overview"></a>Přehled
 Pro zajištění vysoké dostupnosti se IBM Db2 LUW s HADR nainstaluje aspoň na dva virtuální počítače Azure, které jsou nasazené v rámci [skupiny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) nebo napříč [zóny dostupnosti Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones). 
@@ -134,8 +134,8 @@ Před spuštěním nasazení dokončete proces plánování. Plánování staví
 | Název a virtuální IP adresa virtuálního hostitele pro databázi IBM Db2| Virtuální IP adresa nebo název hostitele, který se používá pro připojení aplikačních serverů SAP. **DB-Virt-hostname**, **DB-Virt-IP**. |
 | Oplocení Azure | Služby Azure pro monitorování a oplocení SBD (důrazně doporučeno). Metoda, která neumožňuje rozdělit situace mozku. |
 | VIRTUÁLNÍ POČÍTAČ SBD | Velikost virtuálního počítače SBD, úložiště, síť. |
-| Azure Load Balancer | Využití úrovně Basic nebo Standard (doporučeno), port testu pro databázi Db2 (náš doporučení 62500) **– port**. |
-| Překlad adres| Jak řešení překladu názvů funguje v prostředí. Služba DNS se důrazně doporučuje. Je možné použít místní soubor hostitelů. |
+| Nástroj pro vyrovnávání zatížení Azure | Využití úrovně Basic nebo Standard (doporučeno), port testu pro databázi Db2 (náš doporučení 62500) **– port**. |
+| překlad IP adres| Jak řešení překladu názvů funguje v prostředí. Služba DNS se důrazně doporučuje. Je možné použít místní soubor hostitelů. |
     
 Další informace o Pacemaker pro Linux v Azure najdete v tématu [Nastavení Pacemaker na SUSE Linux Enterprise Server v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker).
 
@@ -421,6 +421,9 @@ sudo crm configure property maintenance-mode=false</pre></code>
 
 ### <a name="configure-azure-load-balancer"></a>Konfigurace služby Azure Load Balancer
 Pokud chcete nakonfigurovat Azure Load Balancer, doporučujeme použít službu [Azure Standard Load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) a pak provést následující úkony:
+
+> [!NOTE]
+> SKU Standard Load Balancer má omezení přístupu k veřejným IP adresám z uzlů pod Load Balancer. Článek [připojení ke veřejnému koncovému bodu pro Virtual Machines používání Azure Standard Load Balancer ve scénářích s vysokou dostupností SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) popisuje způsoby, jak tyto uzly povolit přístup k veřejným IP adresám.
 
 1. Vytvořte front-end fond IP adres:
 

@@ -11,22 +11,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 02/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 1267487e44556a468db26a2ffaaa163dce540571
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 3e915c26e9469b37ac8bc345c4d5cd1712e7acdb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443478"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597724"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Připojení nebo odpojení Galerie sdílených imagí v Azure Lab Services
 Učitelé/správce testovacího prostředí může uložit image virtuálního počítače šablony do [Galerie sdílených imagí](../../virtual-machines/windows/shared-image-galleries.md) Azure, aby ji mohli znovu použít jiní uživatelé. Jako první krok správce testovacího prostředí připojí existující galerii sdílených imagí k účtu testovacího prostředí. Jakmile je galerie sdílených imagí připojená, laboratoře vytvořené v účtu testovacího prostředí můžou ukládat image do galerie sdílených imagí. Ostatní učitelé můžou tuto image vybrat z Galerie sdílených imagí a vytvořit tak šablonu pro své třídy. 
 
+Když se obrázek uloží do galerie sdílených imagí, Azure Lab Services replikuje uložený obrázek do jiných oblastí dostupných ve stejné [geografické](https://azure.microsoft.com/global-infrastructure/geographies/)oblasti. Zajišťuje, aby byla bitová cvičení dostupná pro testovací prostředí vytvořená v jiných oblastech ve stejné geografické oblasti. Při ukládání imagí do galerie sdílených imagí se vyskytnou další náklady, včetně nákladů na všechny replikované bitové kopie. Tato cena je oddělená od nákladů na využití Azure Lab Services. Další informace o cenách Galerie sdílených imagí najdete v tématu [Galerie sdílených imagí – fakturace]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
+
 V tomto článku se dozvíte, jak připojit nebo odpojit galerii sdílených imagí k účtu testovacího prostředí. 
 
 > [!NOTE]
-> Když se obrázek uloží do galerie sdílených imagí, Azure Lab Services replikuje uložený obrázek do jiných oblastí dostupných ve stejné [geografické](https://azure.microsoft.com/global-infrastructure/geographies/)oblasti. Zajišťuje, aby byla bitová cvičení dostupná pro testovací prostředí vytvořená v jiných oblastech ve stejné geografické oblasti. Při ukládání imagí do galerie sdílených imagí se vyskytnou další náklady, včetně nákladů na všechny replikované bitové kopie. Tato cena je oddělená od nákladů na využití Azure Lab Services. Další informace o cenách Galerie sdílených imagí najdete v tématu [Galerie sdílených imagí – fakturace]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
+> V současné době Azure Lab Services podporuje vytváření virtuálních počítačů na základě pouze **zobecněných** imagí virtuálních počítačů (nikoli specializovaných imagí) v galerii sdílených imagí. 
 
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurace v době vytváření účtu testovacího prostředí
@@ -42,7 +44,7 @@ Po vytvoření účtu testovacího prostředí můžete provádět následujíc�
 - Odpojení Galerie sdílených imagí od účtu testovacího prostředí
 
 ## <a name="create-and-attach-a-shared-image-gallery"></a>Vytvoření a připojení Galerie sdílených imagí
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 2. V nabídce vlevo vyberte **všechny služby** . V části **DEVOPS** vyberte **testovací služby** . Pokud vyberete hvězdičku (`*`) vedle položky **testovací služby**, přidá se do části **Oblíbené** v nabídce vlevo. Od dalšího okamžiku vyberte v části **Oblíbené položky** **testovací služby** .
 
     ![Všechny služby – > Laboratorní služby](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)

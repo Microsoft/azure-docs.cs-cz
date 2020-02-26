@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a příkazový řádek pro vývoj aplikace ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 240d4817b507b4b47e0f022c2990c3da0d645e89
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 2d3a498d72264d3084e45202b7daa99806d45ce3
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538426"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602608"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Rychlý Start: vývoj aplikace na Kubernetes-Azure Dev Spaces
 V tomto průvodci se naučíte:
@@ -30,7 +30,7 @@ Cluster AKS je potřeba vytvořit v [podporované oblasti][supported-regions]. N
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS
@@ -119,7 +119,7 @@ Pokud příkaz `azds up` zastavíte pomocí *kombinace kláves Ctrl + c*, služb
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit příkaz `azds up`. Například:
+Chcete-li nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit příkaz `azds up`. Příklad:
 
 1. Pokud je stále spuštěna `azds up`, stiskněte klávesy *Ctrl + c*.
 1. Aktualizujte [řádek 13 v `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) na:

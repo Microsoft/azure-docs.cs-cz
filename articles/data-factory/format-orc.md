@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 5f83e9bbcdfffdd9b19786012295ff5643116551
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e104c4c8e976207859b75212d5406558f04c6377
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927367"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597486"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Formát ORC v Azure Data Factory
 
@@ -24,7 +24,7 @@ Formát ORC se podporuje pro následující konektory: [Amazon S3](connector-ama
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [datových sad](concepts-datasets-linked-services.md) článku. V této části najdete seznam vlastností podporovaných datovou sadou ORC.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou ORC.
 
 | Vlastnost         | Popis                                                  | Požaduje se |
 | ---------------- | ------------------------------------------------------------ | -------- |
@@ -62,7 +62,7 @@ Je třeba počítat s následujícím:
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastnosti, které jsou k dispozici pro definování aktivit najdete v článku [kanály](concepts-pipelines-activities.md) článku. V této části najdete seznam vlastností, které ORC zdroj a jímka podporuje.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností, které ORC zdroj a jímka podporuje.
 
 ### <a name="orc-as-source"></a>ORC as source
 
@@ -85,12 +85,13 @@ V části\*aktivita kopírování ***\*jímka*** jsou podporovány následujíc�
 ## <a name="using-self-hosted-integration-runtime"></a>Použití Integration Runtime pro místní hostování
 
 > [!IMPORTANT]
-> Pro kopii, která je oprávněná pro místní hostování Integration Runtime například mezi místními a cloudovým úložištěm dat, pokud soubory ORC nekopírujete **tak, jak jsou**, je nutné na počítač IR nainstalovat **64-bit JRE 8 (Java Runtime Environment) nebo OpenJDK** . Další podrobnosti najdete v následujícím článku.
+> Pro kopii, která je oprávněná pro místní hostování Integration Runtime například mezi místními a cloudovým úložištěm dat, pokud soubory ORC nekopírujete **tak, jak jsou**, je třeba nainstalovat **64-bit JRE 8 (Java Runtime Environment) nebo OpenJDK** and **Microsoft Visual C++ 2010 Redistributable Package** do počítače IR. Další podrobnosti najdete v následujícím odstavci.
 
 Pro kopírování běžící v místním prostředí IR s ORC serializací/deserializace vyhledá ADF modul runtime Java tím, že nejprve zkontroluje *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* registru pro JRE, pokud se nenalezne, podruhé kontroluje proměnnou systému *`JAVA_HOME`* pro OpenJDK.
 
 - **Použití JRE**: 64-bit IR vyžaduje 64-bit JRE. Můžete ho najít [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
 - **Použití OpenJDK**: podporuje se od verze IR 3,13. Zabalit soubor JVM. dll se všemi ostatními požadovanými sestaveními OpenJDK do místního počítače IR a nastavte proměnnou prostředí systému JAVA_HOME odpovídajícím způsobem.
+- **Instalace balíčku Visual C++ 2010 Redistributable**: Visual C++ 2010 Redistributable Package není nainstalovaný s instalacemi v místním prostředí IR. Můžete ho najít [tady](https://www.microsoft.com/download/details.aspx?id=14632).
 
 > [!TIP]
 > Pokud kopírujete data do nebo z formátu ORC pomocí Integration Runtime v místním prostředí a omylem zaznamenáte chybu při vyvolání Java, zpráva: **Java. lang. OutOfMemoryError: prostor haldy Java**", můžete přidat proměnnou prostředí `_JAVA_OPTIONS` v počítači, který je hostitelem prostředí IR v místním prostředí, a upravit tak minimální/maximální velikost haldy pro JVM, abyste mohli takovou kopii provést a pak znovu spustit kanál.

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4046aac5e8362bf315eca11d9cd96a6e862e2c55
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5c5a8bc06c676121c20f6e1f83a26dd9343e6847
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034611"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605520"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Kurz: Použití služby Azure Security Center k monitorování virtuálních počítačů s Linuxem
 
@@ -134,5 +134,5 @@ V tomto kurzu jste nastavili Azure Security Center a pak jste v Security Center 
 Přejděte k dalšímu kurzu, kde najdete další informace o vytvoření kanálu CI/CD pomocí Jenkinse, GitHubu a Dockeru.
 
 > [!div class="nextstepaction"]
-> [Vytvoření infrastruktury CI/CD pomocí Jenkinse, GitHubu a Dockeru](tutorial-jenkins-github-docker-cicd.md)
+> [Vytvoření infrastruktury CI/CD pomocí Jenkinse, GitHubu a Dockeru](../../jenkins/tutorial-jenkins-github-docker-cicd.md)
 

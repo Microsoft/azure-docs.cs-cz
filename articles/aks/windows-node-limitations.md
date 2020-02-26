@@ -2,17 +2,14 @@
 title: Omezení pro fondy uzlů Windows serveru ve službě Azure Kubernetes Service (AKS)
 description: Přečtěte si o známých omezeních při spouštění fondů uzlů Windows serveru a úloh aplikací ve službě Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: mlearned
-ms.openlocfilehash: 3dd7399b68388d92d38b0f64c6e816cb94b3f295
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 6d951652e3522b7ff926b72a3916bffe97575054
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768567"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592489"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows serveru a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 

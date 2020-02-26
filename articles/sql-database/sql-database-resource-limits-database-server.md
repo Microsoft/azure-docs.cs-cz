@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: da8c194b7911d2eeda8e0c903cb7412186aacfcb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638251"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587239"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Database omezení prostředků a zásad správného řízení prostředků
 
@@ -27,7 +27,7 @@ Tento článek poskytuje přehled SQL Databasech omezení prostředků pro SQL D
 
 ## <a name="maximum-resource-limits"></a>Maximum omezení prostředků
 
-| Prostředek | škálování |
+| Prostředek | Omezení |
 | :--- | :--- |
 | Databáze na server | 5000 |
 | Výchozí počet serverů na předplatné v libovolné oblasti | 20 |
@@ -37,14 +37,14 @@ Tento článek poskytuje přehled SQL Databasech omezení prostředků pro SQL D
 | Maximální počet fondů na server | Omezeno počtem DTU nebo virtuální jádra. Pokud je například každý fond 1000 DTU, může server podporovat fondy 54.|
 |||
 
-> [!NOTE]
-> Pokud chcete získat větší kvótu DTU/eDTU, vCore kvótu nebo více serverů než výchozí množství, můžete odeslat novou žádost o podporu v Azure Portal pro předplatné s typem problému "kvóta". Kvóta DTU/eDTU a omezení databáze na server omezuje počet elastických fondů na jeden server.
-
 > [!IMPORTANT]
 > Vzhledem k tomu, že počet databází se blíží limitu pro SQL Database Server, může dojít k následujícím akcím:
 >
 > - Zvýšení latence při spouštění dotazů na hlavní databázi.  Patří sem zobrazení statistik využití prostředků, jako je například sys. resource_stats.
 > - Zvýšení latence při operacích správy a v pohledech na portál pro vykreslování, které zahrnují vytváření výčtu databází na serveru.
+
+> [!NOTE]
+> Pokud chcete získat větší kvótu DTU/eDTU, vCore kvótu nebo více serverů než výchozí množství, odešlete novou žádost o podporu v Azure Portal. Další informace najdete v tématu [zvýšení kvóty žádostí o Azure SQL Database](quota-increase-request.md).
 
 ### <a name="storage-size"></a>Velikost úložiště
 
@@ -60,7 +60,7 @@ Pokud se setkáte s vysokým využitím výpočetních prostředků, zahrnují m
 - Zvýšením výpočetní velikosti databáze nebo elastického fondu poskytnete databázi s více výpočetními prostředky. Viz téma [škálování prostředků jedné databáze](sql-database-single-database-scale.md) a [škálování prostředků elastického fondu](sql-database-elastic-pool-scale.md).
 - Optimalizace dotazů pro snížení využití prostředků každého dotazu. Další informace najdete v tématu [ladění a hinty dotazů](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Úložiště
 
 Když využité místo v databázi dosáhne limitu maximální velikosti, vkládání a aktualizace databáze, které zvyšují velikost dat, selžou a klienti obdrží [chybovou zprávu](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md). Příkazy SELECT a DELETE budou i nadále úspěšné.
 
@@ -118,7 +118,7 @@ Skutečné sazby za generování protokolů, které jsou uvedené v době běhu,
 
 Tvarování provozu správce míry přenosu dat se prochází prostřednictvím následujících typů čekání (zveřejněné v [Sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
 
-| Typ čekání | Poznámky |
+| Typ čekání | Poznámky: |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | Omezení databáze |
 | POOL_LOG_RATE_GOVERNOR | Omezení fondu |

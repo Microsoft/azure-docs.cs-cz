@@ -4,12 +4,12 @@ description: Zjistěte, jak pomocí Ansible vytvořit a nakonfigurovat server Az
 keywords: ansible, azure, devops, bash, playbook, mysql, database
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d8c8fd361f37a9cb961012807fe40b905c10c047
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f068b3022c94466a20b524240dc293392b1f42ff
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156526"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603127"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>Kurz: Konfigurace databází v Azure Database for MySQL pomocí Ansible
 
@@ -23,7 +23,7 @@ ms.locfileid: "74156526"
 >
 > * Vytvoření serveru MySql
 > * Vytvoření databáze MySql
-> * Nakonfigurujte pravidlo na stěně, aby se externí aplikace mohla připojit k vašemu serveru.
+> * Nakonfigurujte pravidlo brány firewall tak, aby se externí aplikace mohla připojit k vašemu serveru.
 > * Připojení k serveru MySql z Azure Cloud shellu
 > * Dotaz na dostupné servery MySQL
 > * Vypíše všechny databáze na připojených serverech.
@@ -33,7 +33,7 @@ ms.locfileid: "74156526"
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
+## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
 Kód PlayBook v této části vytvoří skupinu prostředků Azure. Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.  
 

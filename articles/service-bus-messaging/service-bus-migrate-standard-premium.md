@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 610c3aa486b48b2d29df48d98e93b37cfec4854c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 548163f4c86f4df4d858b31afd95e0e4615f1696
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790379"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587494"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrace stávajících oborů názvů Azure Service Bus Standard do úrovně Premium
 Dřív Azure Service Bus nabízet obory názvů jenom na úrovni Standard. Obory názvů jsou nastavení pro více tenantů, která jsou optimalizovaná pro prostředí s nízkou propustností a vývojářem. Úroveň Premium nabízí vyhrazené prostředky na obor názvů pro předvídatelné latenci a vyšší propustnost za pevnou cenu. Úroveň Premium je optimalizovaná pro vysokou propustnost a produkční prostředí, která vyžadují další podnikové funkce.
@@ -32,7 +32,7 @@ Některé body, které je potřeba poznamenat:
 - Obor názvů **Premium** by neměl obsahovat **žádné entity** , aby migrace proběhla úspěšně. 
 - Všechny **entity** v oboru názvů Standard jsou během procesu migrace **zkopírovány** do oboru názvů Premium. 
 - Migrace podporuje **1 000 entit na jednu jednotku zasílání zpráv** na úrovni Premium. Pokud chcete zjistit, kolik jednotek pro zasílání zpráv potřebujete, začněte s počtem entit, které máte v aktuálním oboru názvů Standard. 
-- Nemůžete přímo migrovat z **úrovně Basic** na **úroveň Premier**, ale můžete to provést nepřímo migrací z úrovně Basic na standard a potom z standardu na prémii v dalším kroku.
+- Nemůžete migrovat přímo z úrovně **Basic** na **úroveň Premium**, ale můžete to provést nepřímo migrací z úrovně Basic na standard a potom z standardu na prémii v dalším kroku.
 
 ## <a name="migration-steps"></a>Kroky migrace
 K procesu migrace jsou přidružené některé podmínky. Seznamte se s následujícími kroky, abyste snížili pravděpodobnost chyb. Tyto kroky popisují proces migrace a podrobné informace jsou uvedené v následujících oddílech.
@@ -62,7 +62,7 @@ Pokud chcete migrovat obor názvů Service Bus Standard do úrovně Premium pomo
    ```
 
     >[!IMPORTANT]
-    > Pro přístup k starému standardnímu oboru názvů po migraci se použije alias nebo název po migraci (post_migration_dns_name). Tuto akci použijte pro vyprázdnění front a odběrů a pak obor názvů odstraňte.
+    > Pro přístup k starému standardnímu oboru názvů po migraci se použije alias nebo název (post_migration_dns_name) po migraci. Tuto akci použijte pro vyprázdnění front a odběrů a pak obor názvů odstraňte.
 
 1. Spárujte obory názvů Standard a Premium a spusťte synchronizaci pomocí následujícího příkazu:
 
@@ -176,7 +176,7 @@ Migraci můžete zrušit buď pomocí příkazu `Abort`, nebo pomocí Azure Port
 az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
 ```
 
-#### <a name="azure-portal"></a>Portál Azure
+#### <a name="azure-portal"></a>Azure Portal
 
 Přerušený tok ![– přerušit synchronizaci][]
 ![přerušení – přerušení dokončeno][]
@@ -190,7 +190,7 @@ Neodstraňují ale entity v oboru názvů Premium ani neodstraní obor názvů P
 >[!IMPORTANT]
 > Pokud se rozhodnete migraci přerušit, odstraňte obor názvů Premium, který jste zřídili pro migraci, abyste se za prostředky neúčtovali.
 
-#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nechci zprávy vyprázdnit. Co mám dělat?
+#### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>Nechci zprávy vyprázdnit. Co mám udělat?
 
 Může se stát, že aplikace odesílatele pošle zprávy a odešlou je do úložiště v oboru názvů Standard během migrace a těsně před potvrzením migrace.
 

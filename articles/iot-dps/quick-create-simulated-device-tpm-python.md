@@ -9,29 +9,30 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 157754c00f9d2b940a3c71401f4e033e914b511a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 67206f36d5c9f08a2110b02f1d3681684cda8a66
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976532"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605428"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení Python pro IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Windows vytvořit simulované zařízení, spustit simulátor Windows TPM jako [modul hardwarového zabezpečení (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) zařízení a jak pomocí vzorového kódu Pythonu propojit toto simulované zařízení se službou Device Provisioning a centrem IoT. 
+V tomto rychlém startu vytvoříte simulované zařízení IoT na počítači s Windows. Simulované zařízení zahrnuje simulátor čipu TPM jako modul hardwarového zabezpečení (HSM). Pomocí ukázkového kódu Pythonu zařízení můžete propojit toto simulované zařízení se službou IoT Hub s využitím individuální registrace ve službě Device Provisioning (DPS).
+
+## <a name="prerequisites"></a>Předpoklady
+
+- Přečtěte si [Koncepty automatického zřizování](concepts-auto-provisioning.md).
+- Dokončení [nastavení IoT Hub Device Provisioning Service s Azure Portal](./quick-setup-auto-provision.md).
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Visual Studio 2015 +](https://visualstudio.microsoft.com/vs/) s vývojem pro C++Desktop s nástrojem
+- [Systém sestavení cmake](https://cmake.org/download/).
+- [Git](https://git-scm.com/download/)
 
 > [!IMPORTANT]
 > Tento článek platí jenom pro zastaralé sady SDK verze V1 Pythonu. Klienti zařízení a služeb pro službu IoT Hub Device Provisioning ještě nejsou ve verzi v2 k dispozici. V současné době je tým v práci, aby se do parity funkcí přineslo v2.
-
-Pokud neznáte proces automatického zřizování, měli byste se seznámit také s [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
-
-Služba Azure IoT Device Provisioning podporuje dva typy registrací:
-- [Skupiny registrací:](concepts-service.md#enrollment-group) Slouží k registraci několika souvisejících zařízení.
-- [Jednotlivé registrace:](concepts-service.md#individual-enrollment) Slouží k registraci jednoho zařízení.
-
-V tomto článku si předvedeme jednotlivé registrace.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -63,7 +64,7 @@ V tomto článku si předvedeme jednotlivé registrace.
     cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
     ```
 
-1. V samostatném příkazovém řádku přejděte do složky simulátoru TPM a spusťte simulátor [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview). Klikněte na **Povolit přístup**. Ten naslouchá přes soket na portech 2321 a 2322. Toto příkazové okno nezavírejte; je potřeba, aby byl tento simulátor spuštěný až do konce tohoto průvodce rychlým startem. 
+1. V samostatném příkazovém řádku přejděte do složky simulátoru TPM a spusťte simulátor [čipu TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) , který bude modul [hardwarového](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) zabezpečení pro simulované zařízení. Klikněte na **Povolit přístup**. Ten naslouchá přes soket na portech 2321 a 2322. Toto příkazové okno nezavírejte; je potřeba, aby byl tento simulátor spuštěný až do konce tohoto průvodce rychlým startem. 
 
     ```cmd/sh
     .\azure-iot-sdk-python\c\provisioning_client\deps\utpm\tools\tpm_simulator\Simulator.exe
@@ -74,7 +75,14 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 ## <a name="create-a-device-enrollment-entry"></a>Vytvoření položky registrace zařízení
 
-1. Otevřete řešení `azure_iot_sdks.sln` vygenerované ve složce *cmake* a sestavte ho v sadě Visual Studio.
+Služba Azure IoT Device Provisioning podporuje dva typy registrací:
+
+- [Skupiny registrací:](concepts-service.md#enrollment-group) Slouží k registraci několika souvisejících zařízení.
+- [Jednotlivé registrace](concepts-service.md#individual-enrollment): používá se k registraci jednoho zařízení.
+
+Tento článek ukazuje jednotlivé registrace.
+
+1. Otevřete řešení *vygenerované ve složce*cmake`azure_iot_sdks.sln` a sestavte ho v sadě Visual Studio.
 
 1. Klikněte pravým tlačítkem na projekt **tpm_device_provision** a vyberte **Nastavit jako spouštěný projekt**. Spusťte řešení. V okně výstup se zobrazí **_ověřovací klíč_** a **_ID registrace_** potřebné pro registraci zařízení. Poznamenejte si tyto hodnoty. 
 
@@ -85,7 +93,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 1. V nabídce služba Device Provisioning vyberte **spravovat registrace**. Vyberte kartu **jednotlivé registrace** a v horní části vyberte tlačítko **přidat jednotlivou registraci** . 
 
 1. Na panelu **Přidat registraci** zadejte následující informace:
-   - Jako *Mechanismus* ověření identity vyberte **TPM**.
+   - Jako **Mechanismus** ověření identity vyberte *TPM*.
    - Zadejte *ID registrace* a *ověřovací klíč* pro vaše zařízení TPM z hodnot, které jste si poznamenali dříve.
    - Vyberte centrum IoT propojené s vaší zřizovací službou.
    - Volitelně můžete zadat následující informace:

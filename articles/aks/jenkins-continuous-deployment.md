@@ -2,17 +2,16 @@
 title: Kurz – nasazení z GitHubu do služby Azure Kubernetes Service (AKS) s Jenkinse
 description: Nastavení Jenkinse pro kontinuální integraci (CI) z GitHubu a průběžného nasazování (CD) do služby Azure Kubernetes Service (AKS)
 services: container-service
-ms.service: container-service
 author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: e46e2c2933ee9afda860b68b10c135ac75a5d247
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: fd754b539a9b0ba3d47ddd2228365dbd09d6e6df
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263921"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595480"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Kurz: nasazení z GitHubu do služby Azure Kubernetes Service (AKS) s Jenkinse průběžnou integrací a nasazením
 
@@ -27,7 +26,7 @@ V tomto kurzu dokončíte tyto úlohy:
 > * Vytvořte úlohu sestavení Jenkinse a Webhook GitHub pro automatizované sestavení.
 > * Otestujte kanál CI/CD, aby se aplikace v AKS aktualizovala na základě potvrzení kódu GitHubu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu budete potřebovat tyto položky:
 
@@ -117,7 +116,7 @@ Pak použijte příkaz [kubectl Apply][kubectl-apply] k nasazení aplikace do cl
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-Je vytvořena služba Vyrovnávání zatížení Kubernetes, která zpřístupňuje aplikaci na internetu. Tento proces může trvat několik minut. Chcete-li monitorovat průběh nasazení nástroje pro vyrovnávání zatížení, použijte příkaz [kubectl Get Service][kubectl-get] s argumentem `--watch`. Jakmile se stav adresy *EXTERNAL-IP* změní ze stavu *Probíhá* na hodnotu *IP adresa*, pomocí klávesové zkratky `Control + C` zastavte sledovací proces kubectl.
+Je vytvořena služba Vyrovnávání zatížení Kubernetes, která zpřístupňuje aplikaci na internetu. Tento proces může trvat několik minut. Chcete-li monitorovat průběh nasazení nástroje pro vyrovnávání zatížení, použijte příkaz [kubectl Get Service][kubectl-get] s argumentem `--watch`. Jakmile se adresa *EXTERNAL-IP* změní ze stavu *probíhá* na *IP adresu*, pomocí klávesové zkratky `Control + C` zastavte sledovací proces kubectl.
 
 ```console
 $ kubectl get service azure-vote-front --watch

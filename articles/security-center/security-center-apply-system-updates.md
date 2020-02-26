@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 1688e85c6e6ed57892ccdffdf0813c8628127cc5
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 3f27753b0775f44cbdf9d4c478a19e423b8e1f19
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202501"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604551"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Použít aktualizace systému v Azure Security Center
 Azure Security Center monitoruje každodenní virtuální počítače s Windows a Linuxem pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných aktualizací zabezpečení a kritické aktualizace od web Windows Update nebo Windows Server Update Services (WSUS) podle toho, která služba je nakonfigurovaná na počítači s Windows. Security Center také kontroluje nejnovější aktualizace v systémech Linux. Pokud na vašem VIRTUÁLNÍm počítači nebo v počítači chybí aktualizace systému, Security Center bude doporučit, abyste použili aktualizace systému.
@@ -44,19 +44,19 @@ V tomto příkladu použijeme **COMPUTE**.
 
    V dolní části řídicího panelu se zobrazují všechny chybějící aktualizace napříč virtuálními počítači a počítači a závažnost chybějící aktualizace.  Seznam obsahuje:
 
-    - JMÉNO: Název chybějící aktualizace
-    - NE. Virtuálních počítačů & počítačů: Celkový počet virtuálních počítačů a počítačů, ve kterých chybí Tato aktualizace.
-    - STÁTECH Aktuální stav doporučení:
+    - Název: název chybějící aktualizace.
+    - POČET Virtuálních počítačů &ch počítačů: celkový počet virtuálních počítačů a počítačů, ve kterých chybí Tato aktualizace.
+    - STATE (stav): aktuální stav doporučení:
 
-      - Otevírají Doporučení ještě není vyřešené.
-      - Probíhá: Doporučení se v tuto chvíli aplikuje na tyto prostředky a nevyžaduje žádnou akci.
-      - Přeložit Doporučení již bylo dokončeno. (Pokud byl problém vyřešen, položka je vyšedlá.)
+      - Otevřít: doporučení ještě není vyřešené.
+      - Probíhá: doporučení se v tuto chvíli aplikuje na tyto prostředky a není nutné provádět žádnou akci.
+      - Vyřešeno: doporučení již bylo dokončeno. (Pokud byl problém vyřešen, položka je vyšedlá.)
 
-    - ZÁVAŽNOST Popisuje závažnost tohoto konkrétního doporučení:
+    - ZÁVAŽNOST: popisuje závažnost tohoto konkrétního doporučení:
 
-      - Maximální Existuje chyba s smysluplným prostředkem (aplikace, virtuální počítač nebo skupina zabezpečení sítě) a vyžaduje pozornost.
-      - Úrovně K dokončení procesu nebo odstranění ohrožení zabezpečení se vyžadují nekritické nebo další kroky.
-      - Slab Ohrožení zabezpečení by se mělo řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
+      - Vysoká: ohrožení zabezpečení existuje smysluplným prostředkem (aplikace, virtuální počítač nebo skupina zabezpečení sítě) a vyžaduje pozornost.
+      - Střední: k dokončení procesu nebo odstranění ohrožení zabezpečení se vyžadují nekritické nebo další kroky.
+      - Nízká: ohrožení zabezpečení by se mělo řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení nejsou doporučení s nízkou závažností uváděny, ale pokud je chcete zobrazit, je možné je vyfiltrovat.)
 
 3. Pokud chcete zobrazit podrobnosti, vyberte v seznamu chybějící aktualizace.
 
@@ -78,7 +78,6 @@ Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato t
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si blogové příspěvky o zabezpečení Azure a dodržování předpisů.
 
 <!--Image references-->

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: memildin
-ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: ef1684f11349696c22a290c90469a8d94f922e58
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202059"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603993"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Vyšetřování incidentů a výstrah v Azure Security Center (vyřazeno)
 Tento dokument vám pomůže s používáním funkce šetření (Preview) v Azure Security Center k prozkoumání incidentů a výstrah zabezpečení.
@@ -64,15 +64,15 @@ Karta **Entity** zobrazuje všechny související entity seskupené podle typu. 
 
 ![Entity](./media/security-center-investigation/security-center-investigation-fig4.png)
 
-### <a name="search"></a>Search
+### <a name="search"></a>Hledat
 
 Karta **Vyhledávání** uvádí všechny typy protokolů, které jsou pro entitu k dispozici. U každého typu protokolu můžete zobrazit počet dostupných záznamů. Kliknutím na jednotlivé typy protokolů přejdete na obrazovku vyhledávání. Na obrazovce vyhledávání můžete upřesnit vaše hledání a použít různé vyhledávací funkce, například nastavení výstrah. V aktuální verzi je karta Vyhledávání dostupná pouze pro entity uživatelů a počítačů.
 
-![Search](./media/security-center-investigation/security-center-investigation-fig5.png)
+![Hledat](./media/security-center-investigation/security-center-investigation-fig5.png)
 
 ### <a name="exploration"></a>Průzkum
 
-Karta **Průzkum** umožňuje vyšetřovateli zkoumat data související s různými problémy, které s entitou souvisí. Pokud se například vyšetřuje počítač, na kartě Průzkum se zobrazí seznam procesů, které se na něm spustily. V některých případech karta Průzkum zobrazí data, která můžou značit podezřelý problém. Vyšetřovatel může data zkoumat na kartě nebo je otevřít na obrazovce vyhledávání, která umožňuje zkoumání velkých sad dat a použití pokročilých možností vyhledávání, jako je filtrování a export do aplikace Excel.
+Karta **Průzkum** umožňuje vyšetřovateli zkoumat data související s různými problémy, které s entitou souvisí. Například když je počítač prověřený, zobrazí se na kartě průzkumu seznam procesů, které jsou na něm provedeny. V některých případech karta průzkumu zobrazuje data, která by mohla poukazovat na podezřelý problém. Vyšetřovatel může data zkoumat na kartě nebo je otevřít na obrazovce vyhledávání, která umožňuje zkoumání velkých sad dat a použití pokročilých možností vyhledávání, jako je filtrování a export do aplikace Excel.
 
 ![Průzkum](./media/security-center-investigation/security-center-investigation-fig6.png)
 
@@ -104,7 +104,7 @@ S šetřením můžete začít od incidentu zabezpečení nebo výstrahy. Zvolen
 2.  Klikněte na **Výstrahy zabezpečení** a vyberte incident, který chcete vyšetřit.
 3.  Na stránce incidentu klikněte na tlačítko **Spustit šetření** a zobrazí se řídicí panel **Šetření**.
 
-    ![Výstrahy](./media/security-center-investigation/security-center-investigation-fig8.png)
+    ![Výstraha](./media/security-center-investigation/security-center-investigation-fig8.png)
 
 4. Na tomto řídicím panelu můžete na mapě vybrat entitu a na pravé straně obrazovky se zobrazí relevantní informace o této entitě.
 
@@ -118,6 +118,3 @@ V tomto dokumentu jste zjistili, jak používat funkci šetření ve službě Se
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.
 * [Monitorování stavu zabezpečení ve službě Azure Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.
 * [Principy výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Seznamte se s dalšími typy výstrah zabezpečení.
-* [Průvodce odstraňováním potíží pro službu Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Zjistěte, jak řešit běžné problémy ve službě Security Center.
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md). Přečtěte si nejčastější dotazy o použití této služby.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/). Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

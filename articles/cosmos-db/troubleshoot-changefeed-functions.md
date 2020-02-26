@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f3af350c96d1dd9eaf4773db503acb10d8a08a8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441124"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605089"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostika a řešení potíží při použití triggeru Azure Functions pro Cosmos DB
 
@@ -66,7 +66,7 @@ Tento scénář může mít několik příčin a všechny by měly být zkontrol
 
 1. Je vaše funkce Azure nasazená ve stejné oblasti jako váš účet Azure Cosmos? Pro zajištění optimální latence sítě by se funkce Azure i váš účet Azure Cosmos měly nacházet ve stejné oblasti Azure.
 2. Jsou změny, ke kterým dochází ve vašem kontejneru Azure Cosmos, průběžné nebo sporadické?
-Pokud jde o sporadické změny, může docházet k určité prodlevě mezi ukládáním změn a jejich vyzvedáváním funkcí Azure. Důvodem je to, že když trigger interně kontroluje změny v kontejneru Azure Cosmos a zjistí, že žádné nečekají na načtení, na určitou nastavitelnou dobu (ve výchozím nastavení 5 sekund) přejde do režimu spánku, a teprve pak zkontroluje nové změny (aby se zabránilo vysoké spotřebě RU). Tuto dobu do režimu spánku můžete nakonfigurovat pomocí nastavení `FeedPollDelay/feedPollDelay` v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) vašeho triggeru (hodnota by měla být v milisekundách).
+Pokud jde o sporadické změny, může docházet k určité prodlevě mezi ukládáním změn a jejich vyzvedáváním funkcí Azure. Důvodem je to, že když trigger interně kontroluje změny v kontejneru Azure Cosmos a zjistí, že žádné nečekají na načtení, na určitou nastavitelnou dobu (ve výchozím nastavení 5 sekund) přejde do režimu spánku, a teprve pak zkontroluje nové změny (aby se zabránilo vysoké spotřebě RU). Tuto dobu do režimu spánku můžete nakonfigurovat pomocí nastavení `FeedPollDelay/feedPollDelay` v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) vašeho triggeru (hodnota by měla být v milisekundách).
 3. Váš kontejner Azure Cosmos může být [omezený na míru](./request-units.md).
 4. Pomocí atributu `PreferredLocations` v triggeru můžete zadat seznam oblastí Azure oddělených čárkou, abyste mohli definovat vlastní preferované pořadí připojení.
 
@@ -93,10 +93,10 @@ Jedním ze způsobů, jak tuto situaci vyřešit, je použít `LeaseCollectionPr
 Opětovné zpracování všech položek v kontejneru od začátku:
 1. Pokud je služba Azure Functions momentálně spuštěná, zastavte ji. 
 1. Odstraňte dokumenty v kolekci zapůjčení (nebo odstraňte a znovu vytvořte kolekci zapůjčení, aby byla prázdná).
-1. Ve své funkci nastavte atribut [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) CosmosDBTrigger na hodnotu true. 
+1. Ve své funkci nastavte atribut [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) CosmosDBTrigger na hodnotu true. 
 1. Restartujte funkci Azure Functions. Nyní bude číst a zpracovávat všechny změny od začátku. 
 
-Nastavení [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) na hodnotu true oznámí službě Azure Function, aby začaly číst změny od začátku historie kolekce namísto aktuálního času. To funguje jenom v případě, že už nejsou vytvořená zapůjčení (tj. dokumenty v kolekci zapůjčení). Nastavení této vlastnosti na hodnotu true, pokud jsou již vytvořené zapůjčené adresy nijak ovlivněny. v tomto scénáři se při zastavení a opětovném spuštění funkce začne číst z posledního kontrolního bodu, jak je definováno v kolekci zapůjčení. Chcete-li znovu zpracovat od začátku, postupujte podle výše uvedených kroků 1-4.  
+Nastavení [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) na hodnotu true oznámí službě Azure Function, aby začaly číst změny od začátku historie kolekce namísto aktuálního času. To funguje jenom v případě, že už nejsou vytvořená zapůjčení (tj. dokumenty v kolekci zapůjčení). Nastavení této vlastnosti na hodnotu true, pokud jsou již vytvořené zapůjčené adresy nijak ovlivněny. v tomto scénáři se při zastavení a opětovném spuštění funkce začne číst z posledního kontrolního bodu, jak je definováno v kolekci zapůjčení. Chcete-li znovu zpracovat od začátku, postupujte podle výše uvedených kroků 1-4.  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Vazbu lze provést pouze s IReadOnlyList\<dokument > nebo JArray
 
@@ -106,7 +106,7 @@ Chcete-li tuto situaci vyřešit, odeberte ručně vytvořený odkaz NuGet a nec
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Změna intervalu dotazování funkce Azure Functions pro zjišťování změn
 
-Jak už bylo vysvětleno dříve, [Pokud moje změny trvá příliš dlouho](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), služba Azure Functions se ve výchozím nastavení v režimu spánku po dobu (5 sekund), než začne kontrolovat nové změny (aby se zabránilo vysoké spotřebě v řádu ru). Tuto dobu do režimu spánku můžete nakonfigurovat pomocí nastavení `FeedPollDelay/feedPollDelay` v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) vašeho triggeru (hodnota by měla být v milisekundách).
+Jak už bylo vysvětleno dříve, [Pokud moje změny trvá příliš dlouho](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received), služba Azure Functions se ve výchozím nastavení v režimu spánku po dobu (5 sekund), než začne kontrolovat nové změny (aby se zabránilo vysoké spotřebě v řádu ru). Tuto dobu do režimu spánku můžete nakonfigurovat pomocí nastavení `FeedPollDelay/feedPollDelay` v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) vašeho triggeru (hodnota by měla být v milisekundách).
 
 ## <a name="next-steps"></a>Další kroky
 

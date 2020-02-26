@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4b3e51b5e8d0ee9b62a7e7bc39955396f327c7e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 237846ec3adda208126aeb22e7900cbf5118ee95
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209536"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598659"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Vytvoření sdílené složky Azure Premium
 Soubory úrovně Premium jsou nabízeny na úložném médiu SSD (Solid-State disk) a jsou užitečné pro úlohy náročné na v/v, včetně hostitelských databází a prostředí HPC (High Performance Computing). Soubory úrovně Premium se hostují v typu účtu úložiště zvláštního účelu, který se nazývá účet úložiště. Prémiové sdílené složky jsou navržené pro vysoce výkonné a podnikové aplikace, které poskytují konzistentní nízkou latenci, vysoké IOPS a vysoce propustnost sdílených složek.
 
 V tomto článku se dozvíte, jak vytvořit tento nový typ účtu pomocí [Azure Portal](https://portal.azure.com/), Azure PowerShell a Azure CLI.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete získat přístup k prostředkům Azure, včetně sdílených složek Azure Premium, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -152,7 +152,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pokud chcete vytvořit novou skupinu prostředků pomocí rozhraní příkazového řádku Azure, použijte příkaz [az group create](/cli/azure/group).
+Pokud chcete vytvořit novou skupinu prostředků pomocí Azure CLI, použijte příkaz [az group create](/cli/azure/group).
 
 ```azurecli-interactive
 az group create `
@@ -211,4 +211,4 @@ az group delete --name myResourceGroup
 V tomto článku jste vytvořili prémiovou sdílenou složku. Pokud se chcete dozvědět o výkonu, který tento účet nabízí, přejděte do části úroveň výkonu v příručce pro plánování.
 
 > [!div class="nextstepaction"]
-> [Úrovně výkonu sdílení souborů](storage-files-planning.md#file-share-performance-tiers)
+> [Vrstvy sdílení souborů](storage-files-planning.md#storage-tiers)

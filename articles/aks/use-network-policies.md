@@ -2,17 +2,14 @@
 title: Zabezpečení v luskech pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)
 description: Naučte se zabezpečit provoz, který se zachází do lusků, pomocí zásad sítě Kubernetes ve službě Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: mlearned
-ms.openlocfilehash: 350e553563aa152c61c922727fb87937bedd14b5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 92e726529f2c81b169dc5ad485148ad8118bbc81
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72928495"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592862"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpečení provozu mezi lusky pomocí zásad sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -55,9 +52,9 @@ Obě implementace používají Linux *softwaru iptables* k vykonání zadaných 
 | Schopnost                               | Azure                      | Calico                      |
 |------------------------------------------|----------------------------|-----------------------------|
 | Podporované platformy                      | Linux                      | Linux                       |
-| Podporované síťové možnosti             | CNI Azure                  | Azure CNI a kubenet       |
+| Podporované síťové možnosti             | Azure CNI                  | Azure CNI a kubenet       |
 | Dodržování předpisů pomocí specifikace Kubernetes | Všechny podporované typy zásad |  Všechny podporované typy zásad |
-| Další funkce                      | Žádné                       | Model rozšířených zásad skládající se z globálních síťových zásad, globální síťové sady a koncového bodu hostitele. Další informace o použití rozhraní příkazového řádku `calicoctl` ke správě těchto rozšířených funkcí najdete v tématu [reference uživatele calicoctl][calicoctl]. |
+| Další funkce                      | Žádná                       | Model rozšířených zásad skládající se z globálních síťových zásad, globální síťové sady a koncového bodu hostitele. Další informace o použití rozhraní příkazového řádku `calicoctl` ke správě těchto rozšířených funkcí najdete v článku [referenční informace o uživatelích calicoctl][calicoctl]. |
 | Podpora                                  | Podporováno technickou podporou a technickým týmem pro Azure | Podpora komunity Calico. Další informace o další placené podpoře najdete v tématu [Možnosti podpory pro Project Calico][calico-support]. |
 | Protokolování                                  | Pravidla přidaná/Odstraněná v softwaru iptables se protokolují na všech hostitelích pod */var/log/Azure-npm.log* . | Další informace najdete v tématu [protokoly komponent Calico][calico-logs] . |
 
@@ -85,7 +82,7 @@ Následující vzorový skript:
 * Vytvoří v definované virtuální síti cluster AKS a povolí zásady sítě.
     * Použije se možnost Zásady sítě *Azure* . Pokud chcete místo toho použít Calico jako zásadu sítě, použijte parametr `--network-policy calico`. Poznámka: Calico lze použít buď s `--network-plugin azure`, nebo `--network-plugin kubenet`.
 
-Poskytněte vlastní zabezpečení *sp_password*. Proměnné *RESOURCE_GROUP_NAME* a *CLUSTER_NAME* můžete nahradit:
+Zadejte vlastní zabezpečený *sp_password*. Můžete nahradit proměnné *RESOURCE_GROUP_NAME* a *CLUSTER_NAME* :
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup-NP
@@ -167,7 +164,7 @@ Vytvořte další pod a připojte relaci terminálu k otestování, jestli můž
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí pomocí `wget` potvrďte, že máte přístup k výchozí webové stránce NGINX:
+Na příkazovém řádku prostředí použijte `wget` k potvrzení, že máte přístup k výchozí webové stránce NGINX:
 
 ```console
 wget -qO- http://backend
@@ -222,7 +219,7 @@ Pojďme se podívat, jestli můžete použít webovou stránku NGINX v back-endu
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget`, abyste viděli, jestli můžete získat přístup k výchozí webové stránce NGINX. Tentokrát nastavte hodnotu časového limitu na *2* sekund. Zásada sítě teď blokuje veškerý příchozí provoz, takže stránku nejde načíst, jak je znázorněno v následujícím příkladu:
+Na příkazovém řádku prostředí můžete pomocí `wget` zjistit, jestli máte přístup k výchozí webové stránce NGINX. Tentokrát nastavte hodnotu časového limitu na *2* sekund. Zásada sítě teď blokuje veškerý příchozí provoz, takže stránku nejde načíst, jak je znázorněno v následujícím příkladu:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -277,7 +274,7 @@ Naplánujte pod označený jako *App = WebApp, role = front-end* a připojte rel
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget`, abyste viděli, jestli můžete získat přístup k výchozí webové stránce NGINX:
+Na příkazovém řádku prostředí použijte `wget` a zjistěte, jestli máte přístup k výchozí webové stránce NGINX:
 
 ```console
 wget -qO- http://backend
@@ -307,7 +304,7 @@ Zásady sítě umožňují provoz z lusků s označením *aplikace: WebApp, role
 kubectl run --rm -it --image=alpine network-policy --namespace development --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí použijte `wget`, abyste viděli, jestli můžete získat přístup k výchozí webové stránce NGINX. Zásada sítě blokuje příchozí provoz, takže nelze načíst stránku, jak je znázorněno v následujícím příkladu:
+Na příkazovém řádku prostředí můžete pomocí `wget` zjistit, jestli máte přístup k výchozí webové stránce NGINX. Zásada sítě blokuje příchozí provoz, takže nelze načíst stránku, jak je znázorněno v následujícím příkladu:
 
 ```console
 $ wget -qO- --timeout=2 http://backend
@@ -338,7 +335,7 @@ Naplánujte test pod v *produkčním* oboru názvů, který je označený jako *
 kubectl run --rm -it frontend --image=alpine --labels app=webapp,role=frontend --namespace production --generator=run-pod/v1
 ```
 
-Na příkazovém řádku prostředí pomocí `wget` potvrďte, že máte přístup k výchozí webové stránce NGINX:
+Na příkazovém řádku prostředí použijte `wget` k potvrzení, že máte přístup k výchozí webové stránce NGINX:
 
 ```console
 wget -qO- http://backend.development

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: f76b5443d6c1e3fd2cebf87cba39ba0a6bbdeaee
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: cfa39799e44cee0a2d36efccd454ccf8ca15157f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521784"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603229"
 ---
 # <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>Aktualizace na dynamické balíčky dodržování předpisů na řídicím panelu dodržování předpisů (Preview)
 
@@ -77,4 +77,3 @@ Další související materiály najdete v následujících článcích:
 - [Řídicí panel dodržování legislativních předpisů služby Security Center](security-center-compliance-dashboard.md)
 - [Práce se zásadami zabezpečení](tutorial-security-policy.md)
 - [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – Přečtěte si, jak používat doporučení v Azure Security Center k ochraně vašich prostředků Azure.
-- [Azure Security Center nejčastějších dotazů](security-center-faq.md) – Získejte odpovědi na nejčastější dotazy týkající se použití Security Center.

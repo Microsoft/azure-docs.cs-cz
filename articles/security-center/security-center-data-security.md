@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: 9dfed5ec14460c3c6213d528f59b86eda15aa1a7
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520879"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604179"
 ---
 # <a name="azure-security-center-data-security"></a>Zabezpečení dat ve službě Azure Security Center
 Služba Azure Security Center pomáhá zákazníkům předcházet hrozbám, detekovat je a reagovat na ně tím, že shromažďuje a zpracovává data související se zabezpečením, včetně informací o konfiguraci, metadat, protokolů událostí, souborů se stavem systému a dalších dat. Společnost Microsoft dodržuje přísné pokyny pro dodržování předpisů a zabezpečení – od psaní kódu po provoz služeb.
@@ -52,7 +52,7 @@ Azure Security Center analyzuje data z následujících zdrojů a poskytuje pře
 | Evropa (s výjimkou Spojeného království)   | Evropa        |
 | Spojené království                      | Spojené království |
 | Asie (s výjimkou Indie, Japonska, Koreje, ČLR)   | Asie a Tichomoří  |
-| Korea                              | Asie a Tichomoří  |
+| Jižní Korea                              | Asie a Tichomoří  |
 | Indie                               | Indie         |
 | Japonsko                               | Japonsko         |
 | Čína                               | Čína         |
@@ -87,12 +87,11 @@ Zákazníci můžou využívat data související se službou Security Center z 
 > [!NOTE]
 > Doporučení zabezpečení je možné využívat také prostřednictvím rozhraní REST API. Další informace najdete v [referenčních materiálech k rozhraní REST API poskytovatele prostředků zabezpečení](https://msdn.microsoft.com/library/mt704034(Azure.100).aspx).
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 V tomto dokumentu jste se dozvěděli informace o způsobu správy a ochrany ve službě Azure Security Center. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md) – Zjistěte, jak naplánovat a pochopit aspekty návrhu, abyste mohli přejít na Azure Security Center.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů

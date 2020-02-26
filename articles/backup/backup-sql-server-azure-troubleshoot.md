@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním databáze SQL Server
 description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 57630749b53224032c763481d12e33366274f13f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 69cae196e7fad70d75fb12709e5bf0d618bbc81c
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978774"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602320"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -23,7 +23,7 @@ Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním po�
 ## <a name="troubleshoot-discover-and-configure-issues"></a>Řešení potíží se zjišťováním a konfigurací problémů
 Po vytvoření a konfiguraci trezoru Recovery Services, který zjišťuje databáze a konfiguruje zálohování, je proces se dvěma kroky.<br>
 
-![sql](./media/backup-azure-sql-database/sql.png)
+![SQL](./media/backup-azure-sql-database/sql.png)
 
 Pokud se v konfiguraci zálohování nezobrazuje virtuální počítač SQL a jeho instance ve **databáze zjišťování na virtuálních počítačích** a **Konfigurace zálohování** (viz výše uvedený obrázek), zajistěte, aby:
 
@@ -43,7 +43,7 @@ Pokud je potřeba virtuální počítač SQL zaregistrovat v novém trezoru, mus
 
 ### <a name="backup-type-unsupported"></a>Typ zálohování se nepodporuje.
 
-| Závažnost | Popis | Možné příčiny | Doporučená akce |
+| Severity | Popis | Možné příčiny | Doporučená akce |
 |---|---|---|---|
 | Upozornění | Aktuální nastavení této databáze nepodporují určité typy zálohování přítomné v přidružených zásadách. | <li>V hlavní databázi lze provést pouze úplnou operaci zálohování databáze. Není možné použít rozdílovou zálohu ani zálohování protokolu transakcí. </li> <li>Žádná databáze v jednoduchém modelu obnovení nepovoluje zálohování protokolů transakcí.</li> | Upravte nastavení databáze tak, aby všechny typy zálohování v těchto zásadách byly podporovány. Nebo můžete změnit aktuální zásady tak, aby zahrnovaly jenom podporované typy zálohování. V opačném případě se nepodporované typy zálohování při plánovaném Zálohování přeskočí, jinak se úloha zálohování na vyžádání nezdařila.
 
@@ -70,7 +70,7 @@ Pokud je potřeba virtuální počítač SQL zaregistrovat v novém trezoru, mus
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Azure Backup se nemůže připojit k instanci SQL. | Azure Backup se nemůže připojit k instanci SQL Server. | Pomocí dalších podrobností v nabídce Azure Portal chyby můžete zúžit hlavní příčiny. Chybu opravíte v tématu [řešení potíží se zálohováním SQL](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) .<br/><ul><li>Pokud výchozí nastavení SQL neumožňují vzdálená připojení, změňte nastavení. Informace o změně nastavení najdete v následujících článcích:<ul><li>[MSSQLSERVER_-1](/previous-versions/sql/sql-server-2016/bb326495(v=sql.130))</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Pokud dojde k problémům s přihlášením, opravte je pomocí těchto odkazů:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Azure Backup se nemůže připojit k instanci SQL. | Azure Backup se nemůže připojit k instanci SQL Server. | Pomocí dalších podrobností v nabídce Azure Portal chyby můžete zúžit hlavní příčiny. Chybu opravíte v tématu [řešení potíží se zálohováním SQL](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine) .<br/><ul><li>Pokud výchozí nastavení SQL neumožňují vzdálená připojení, změňte nastavení. Informace o změně nastavení najdete v následujících článcích:<ul><li>[MSSQLSERVER_-1](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-1-database-engine-error?view=sql-server-ver15)</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Pokud dojde k problémům s přihlášením, opravte je pomocí těchto odkazů:<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
@@ -106,7 +106,7 @@ Pokud je potřeba virtuální počítač SQL zaregistrovat v novém trezoru, mus
 
 | Chybová zpráva | Možné příčiny | Doporučená akce |
 |---|---|---|
-| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Podle pokynů pro SQL ji nejde použít k zastavení v libovolném bodu v čase. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Další informace](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105)).
+| Záloha protokolů použitá k obnovení obsahuje hromadně protokolované změny. Podle pokynů pro SQL ji nejde použít k zastavení v libovolném bodu v čase. | Když je databáze v režimu hromadného obnovení, data mezi hromadně protokolovanými transakcemi a další transakce protokolu se nedají obnovit. | Vyberte jiný bod v čase pro obnovení. [Další informace](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server?view=sql-server-ver15).
 
 ### <a name="fabricsvcbackuppreferencecheckfailedusererror"></a>FabricSvcBackupPreferenceCheckFailedUserError
 

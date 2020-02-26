@@ -7,29 +7,29 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3ce754a67643f4506fa825f0780969dc4a06f826
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 38339defc9d06f3e809bc24f957ebbb30abb46d3
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299577"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598778"
 ---
-# <a name="how-to-deploy-azure-files"></a>Postup nasazení služby soubory Azure
+# <a name="how-to-deploy-azure-files"></a>Nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní průmyslový protokol SMB. V tomto článku se dozvíte, jak prakticky nasadit soubory Azure v rámci vaší organizace.
 
 Důrazně doporučujeme, abyste načetli [plánování pro nasazení souborů Azure](storage-files-planning.md) před provedením kroků v tomto článku.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku se předpokládá, že jste už dokončili následující kroky:
 
 - Vytvořili jste účet Azure Storage s požadovanými možnostmi odolnosti a šifrování v oblasti, kterou si přejete. Podrobné pokyny k vytvoření účtu úložiště najdete v tématu [Vytvoření účtu úložiště](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 - Vytvořili jste sdílenou složku Azure s požadovanou kvótou v účtu úložiště. Podrobné pokyny, jak vytvořit sdílenou složku, najdete v tématu věnovaném [Vytvoření sdílené složky](storage-how-to-create-file-share.md) .
 
 ## <a name="transfer-data-into-azure-files"></a>Přenos dat do souborů Azure
-Možná budete chtít migrovat existující sdílené složky, jako jsou místně uložené, do nové sdílené složky Azure. V této části se dozvíte, jak přesunout data do sdílené složky Azure pomocí několika oblíbených metod popsaných v [Průvodci plánováním](storage-files-planning.md#data-transfer-method) .
+Možná budete chtít migrovat existující sdílené složky, jako jsou místně uložené, do nové sdílené složky Azure. V této části se dozvíte, jak přesunout data do sdílené složky Azure pomocí několika oblíbených metod popsaných v [Průvodci plánováním](storage-files-planning.md#migration) .
 
-### <a name="azure-file-sync"></a>Azure File Sync
-Azure File Sync umožňuje centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure bez toho, aby se zajistila flexibilita, výkon a kompatibilita místního souborového serveru. Dělá to tak, že transformuje servery Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít libovolný protokol dostupný na Windows serveru pro místní přístup k datům (včetně SMB, NFS a FTPS) a můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
+### <a name="azure-file-sync"></a>Synchronizace souborů Azure
+Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Dělá to tak, že transformuje servery Windows na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS) a můžete mít libovolný počet mezipamětí po celém světě.
 
 Azure File Sync můžete použít k migraci dat do sdílené složky Azure, a to i v případě, že mechanismus synchronizace není pro dlouhodobé použití potřeba. Další informace o použití Azure File Sync k přenosu dat do sdílené složky Azure najdete v tématu [Plánování nasazení Azure File Sync](storage-sync-files-planning.md) a nasazení [Azure File Sync](storage-sync-files-deployment-guide.md).
 
@@ -65,7 +65,7 @@ Následující kroky budou importovat data z místního umístění do sdílené
 
     Může být zadáno více sdílených složek s účtem úložiště. Další informace najdete v tématu [Příprava souboru CSV s datovou sadou](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
-5. Vytvořte soubor CSV driveset. V souboru CSV driveset jsou uvedené disky, které jsou k dispozici pro místního exportního agenta. Například následující soubor driveset CSV obsahuje seznam jednotek `X:`, `Y:` a `Z:`, které se mají použít v místní úloze exportu:
+5. Vytvořte soubor CSV driveset. V souboru CSV driveset jsou uvedené disky, které jsou k dispozici pro místního exportního agenta. Například následující soubor driveset CSV uvádí `X:`, `Y:`a `Z:` jednotky, které se mají použít v místní úloze exportu:
 
     ```
     DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -129,7 +129,7 @@ Pokud chcete nahradit místní sdílenou složku, je vhodné tyto sdílené slo�
 > Připojení sdílené složky Azure vyžaduje, abyste jako heslo použili klíč účtu úložiště, a proto doporučujeme připojení jenom v důvěryhodných prostředích. 
 
 ### <a name="windows"></a>Windows
-PowerShell se dá použít ke spuštění příkazu Mount na více počítačích. V následujícím příkladu je hodnota `$computers` ručně naplněná, ale můžete vygenerovat seznam počítačů pro automatické připojení. Tuto proměnnou můžete například naplnit pomocí výsledků ze služby Active Directory.
+PowerShell se dá použít ke spuštění příkazu Mount na více počítačích. V následujícím příkladu je `$computers` ručně vyplněný, ale můžete vygenerovat seznam počítačů pro automatické připojení. Tuto proměnnou můžete například naplnit pomocí výsledků ze služby Active Directory.
 
 ```powershell
 $computer = "MyComputer1", "MyComputer2", "MyComputer3", "MyComputer4"
@@ -137,7 +137,7 @@ $computer | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { net 
 ```
 
 ### <a name="linux"></a>Linux
-Jednoduchý skript bash kombinovaný s SSH může vracet stejný výsledek jako v následujícím příkladu. Proměnná `$computer` se obdobně naplní uživatelem:
+Jednoduchý skript bash kombinovaný s SSH může vracet stejný výsledek jako v následujícím příkladu. Proměnná `$computer` je obdobně naplněna uživatelem:
 
 ```
 computer = ("MyComputer1" "MyComputer2" "MyComputer3" "MyComputer4")

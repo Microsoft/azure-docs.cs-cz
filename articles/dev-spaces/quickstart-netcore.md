@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlé iteraci aplikace .NET Core ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: fe2bb61ccfc7285dc5f4a5c21f3c62abfecca343
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c2d84e823d028f542c5ab852be2ea68a5abafe93
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290593"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605285"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Rychlý Start: ladění a iterace na Kubernetes: Visual Studio Code a .NET Core – Azure Dev Spaces
 
@@ -26,7 +26,7 @@ Azure Dev Spaces také umožňují ladit a iterovat pomocí:
 - [Node. js a Visual Studio Code](quickstart-nodejs.md)
 - [.NET Core a Visual Studio](quickstart-netcore-visualstudio.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 - [Visual Studio Code nainstalován](https://code.visualstudio.com/download).
@@ -39,7 +39,7 @@ Cluster AKS je potřeba vytvořit v [podporované oblasti][supported-regions]. N
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS
@@ -113,7 +113,7 @@ Klikněte na *ladit* a pak *Zastavit ladění* , aby se ladicí program zastavil
 
 ## <a name="update-code"></a>Aktualizace kódu
 
-Pokud chcete nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit *.NET Core Launch (AZDS)* . Například:
+Pokud chcete nasadit aktualizovanou verzi služby, můžete aktualizovat libovolný soubor v projektu a znovu spustit *.NET Core Launch (AZDS)* . Příklad:
 
 1. Pokud je vaše aplikace stále spuštěná, klikněte na tlačítko *ladění* a zastavte tak *ladění* .
 1. Aktualizace [řádku 22 v `Controllers/HomeController.cs`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) na:
@@ -142,7 +142,7 @@ Odstraňte zarážku tak, že umístíte kurzor na řádek 22 v `Controllers/Hom
 
 ## <a name="update-code-from-visual-studio-code"></a>Aktualizace kódu z Visual Studio Code
 
-Když je služba spuštěna v režimu ladění, aktualizujte řádek 22 v `Controllers/HomeController.cs`. Například:
+Když je služba spuštěna v režimu ladění, aktualizujte řádek 22 v `Controllers/HomeController.cs`. Příklad:
 
 ```csharp
 ViewData["Message"] = "Your application description page in Azure while debugging!";

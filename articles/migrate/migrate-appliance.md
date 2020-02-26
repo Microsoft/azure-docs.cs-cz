@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: d02227747be4bc7d994e2ea84cd74e7f2fd2531f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425455"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597537"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -34,7 +34,7 @@ Fyzický počítač |  Azure Migrate: posouzení serveru |  Zjistit fyzické ser
 **Průkaz** | Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
 **Nasazení** | Zařízení nasadíte jako virtuální počítač VMware. Potřebujete dostatek prostředků na vCenter Server k přidělení virtuálního počítače s 32 GB paměti RAM, 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/> Zařízení se může připojit k jednomu vCenter Server.
 **Hardware** | Prostředky v vCenter pro přidělení virtuálního počítače s 32 GB paměti RAM 8 vCPU, přibližně 80 GB diskového úložiště a externím virtuálním přepínačem. 
-**Hodnota hash** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256:4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
+**Hodnota hash** | Zaškrtnout [](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security)
 **Server vCenter/hostitel** | Virtuální počítač zařízení musí být nasazen na hostiteli ESXi, na kterém běží verze 5,5 nebo novější.<br/><br/> vCenter Server se spouští 5,5, 6,0, 6,5 nebo 6,7.
 **Azure Migrate projekt** | Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Rozpoznávání** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k jednomu vCenter Server.
@@ -52,7 +52,7 @@ Fyzický počítač |  Azure Migrate: posouzení serveru |  Zjistit fyzické ser
 **Průkaz** | Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
 **Nasazení zařízení**   |  Zařízení nasadíte jako virtuální počítač Hyper-V.<br/> Virtuální počítač zařízení, který poskytuje Azure Migrate, je virtuální počítač Hyper-V verze 5,0.<br/> Na hostiteli Hyper-V musí běžet Windows Server 2012 R2 nebo novější.<br/> Hostitel potřebuje dostatek místa pro přidělení 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač pro virtuální počítač zařízení.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a přístup k Internetu.
 **Hardware** | Prostředky na hostiteli Hyper-V, které přidělují 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externím přepínači pro virtuální počítač zařízení.
-**Hodnota hash** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
+**Hodnota hash** | Zaškrtnout [](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security)
 **Hostitel Hyper-V** | Se systémem Windows Server 2012 R2 nebo novějším.
 **Azure Migrate projekt** | Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Rozpoznávání** | Zařízení může zjistit až 5000 virtuálních počítačů Hyper-V.<br/> Zařízení se může připojit k až 300 hostitelům Hyper-V.
@@ -67,7 +67,7 @@ Fyzický počítač |  Azure Migrate: posouzení serveru |  Zjistit fyzické ser
 **Odkaz ke stažení** | [Odkaz ke stažení](https://go.microsoft.com/fwlink/?linkid=2105112)
 **Velikost ke stažení** | 59,7 MB
 **Hardware** | Vyhrazený fyzický počítač nebo použít virtuální počítač. Počítač, na kterém běží zařízení, potřebuje 16 GB paměti RAM, 8 vCPU, přibližně 80 GB úložného prostoru a externí přepínač.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a přístup k Internetu.
-**Hodnota hash** | MD5:1e92ede3e87c03bd148e56a708cdd33f<br/><br/> SHA256: a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+**Hodnota hash** | Zaškrtnout [](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security)
 **Operační systém** | Počítač zařízení by měl běžet s Windows serverem 2016. 
 **Nasazení zařízení**   |  Skript instalačního programu zařízení se stáhne z portálu (ve složce zip). <br/> Rozbalte složku a spusťte PowerShellový skript (AzureMigrateInstaller. ps1).
 **Rozpoznávání** | Zařízení může zjistit až 250 fyzických serverů.

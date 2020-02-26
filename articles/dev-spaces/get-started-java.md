@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit a rychle iterovat aplikaci Java ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: cb79b60cdc1b9e417b402ffe8c29151f7790a390
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 2c086c952528d5521ace44d56eaf11c14ac1cabb
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538597"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602844"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Vytvoření Kubernetes vývojového prostoru: Visual Studio Code a Java s Azure Dev Spaces
 
@@ -64,7 +64,7 @@ az group create --name MyResourceGroup --location <region>
 Pomocí následujícího příkazu vytvořte cluster Kubernetes:
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
 Vytvoření clusteru bude trvat několik minut.

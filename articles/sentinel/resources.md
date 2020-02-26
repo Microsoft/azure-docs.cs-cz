@@ -3,7 +3,7 @@ title: Užitečné prostředky při práci se službou Azure Sentinel | Microsof
 description: Tento dokument vám poskytne seznam užitečných prostředků při práci s Sentinel Azure.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: 9b4c8e38-c986-4223-aa24-a71b01cb15ae
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2ce8b9e82907402538ca2d14b864c02bb8bc2d82
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.author: yelevin
+ms.openlocfilehash: 2110d3319cebf693ef06deec26a29fa655e35035
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547995"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585267"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Užitečné prostředky pro práci s Sentinel Azure
 
@@ -70,7 +70,7 @@ Tato data můžete zobrazit jejich streamování z protokolu aktivit Azure do sl
 
 | **Dodavatel**  | **Použít incident v Azure Sentinel** | **Odkaz**|
 |----|----|----|
-| GitHubu| Používá se pro přístup ke stránce komunity.| <https://github.com/Azure/Azure-Sentinel> |
+| GitHub| Používá se pro přístup ke stránce komunity.| <https://github.com/Azure/Azure-Sentinel> |
 | PaloAlto| Konfigurace CEF| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
 | PluralSight | Kurz dotazovacího jazyka Kusto| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 

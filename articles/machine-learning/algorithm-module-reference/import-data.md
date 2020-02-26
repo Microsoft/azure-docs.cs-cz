@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: e7aa19c1d189eb19237ea85aae1ad2441d7e98b9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 8b1e4c60e6054141e71d2509fe34c7ca9baf9ca6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163190"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598455"
 ---
 # <a name="import-data-module"></a>Importovat data modul
 
@@ -48,9 +48,7 @@ Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a při
 
 1. Přidejte do svého kanálu modul **Import dat** . Tento modul můžete najít v kategorii **vstup a výstup dat** v návrháři.
 
-1. Kliknutím na **Spustit Průvodce importem dat** nakonfigurujte zdroj dat pomocí průvodce.
-
-    Průvodce získá název účtu a přihlašovací údaje a pomůže vám nakonfigurovat další možnosti. Pokud upravujete existující konfiguraci, nejprve načte aktuální hodnoty.
+1. Výběrem modulu otevřete pravé podokno.
 
 1. Vyberte **zdroj dat**a vyberte typ zdroje dat. Může se jednat o protokol HTTP nebo úložiště dat.
 
@@ -60,6 +58,11 @@ Pokud se vaše zdrojová data změní, můžete datovou sadu aktualizovat a při
 
     ![import-data-Preview](media/module/import-data.png)
 
+1. Zaškrtávací políčko **znovu vygenerovat výstup**určuje, zda se má spustit modul pro opětovné vygenerování výstupu za běhu. 
+
+    Ve výchozím nastavení je Nevybraná, což znamená, že pokud byl modul spuštěn se stejnými parametry dřív, systém použije výstup z posledního spuštění k omezení doby běhu. 
+
+    Pokud je vybraná, systém znovu spustí modul a obnoví výstup. Tuto možnost vyberte, pokud se budou zdrojová data v úložišti aktualizovat, může vám to usnadnit získání nejnovějších dat.
 
 
 1. Spuštění kanálu

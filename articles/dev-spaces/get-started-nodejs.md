@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: V tomto kurzu se dozvíte, jak používat Azure Dev Spaces a Visual Studio Code k ladění a rychlému iteraci aplikace Node. js ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
-ms.openlocfilehash: cc59d5693740d1d2d6550af3aa61fa9b66420a39
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 1ad30a5dd7504c7e224e4b2d26d1f5a4fe1da38a
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539412"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602870"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Vytvoření Kubernetes vývojového prostoru: Visual Studio Code a Node. js s Azure Dev Spaces
 
@@ -61,7 +61,7 @@ az group create --name MyResourceGroup --location <region>
 Pomocí následujícího příkazu vytvořte cluster Kubernetes:
 
 ```cmd
-az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-keys
 ```
 
 Vytvoření clusteru bude trvat několik minut.
@@ -215,7 +215,7 @@ Tím přidáte konfiguraci ladění pro Azure Dev Spaces do složky `.vscode`. N
 
 ### <a name="select-the-azds-debug-configuration"></a>Výběr konfiguraci AZDS pro ladění
 1. Pokud chcete zobrazit ladění, klikněte na boku editoru VS Code na **panelu aktivit** na ikonu Ladění.
-1. Jako aktivní ladicí konfiguraci vyberte **Launch Program (AZDS)** .
+1. Jako aktivní konfiguraci ladění vyberte **Launch Program (AZDS)** .
 
 ![](media/get-started-node/debug-configuration-nodejs2.png)
 

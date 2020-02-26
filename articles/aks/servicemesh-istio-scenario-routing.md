@@ -2,17 +2,16 @@
 title: Inteligentní směrování a Kanárské verze pomocí Istio ve službě Azure Kubernetes Service (AKS)
 description: Naučte se používat Istio k poskytování inteligentního směrování a nasazování Kanárských verzí do clusteru Azure Kubernetes Service (AKS).
 author: paulbouwer
-ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 48daf2be4a05922982479a86e6574f3aa85d2130
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4c29658473aaa50168175c76234dfca34fcdad83
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530287"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594104"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Použití inteligentního směrování a Kanárských verzí s Istio ve službě Azure Kubernetes Service (AKS)
 
@@ -351,7 +350,7 @@ voting-storage.voting.svc.cluster.local:6379     OK         mTLS       mTLS     
 
 ## <a name="roll-out-a-canary-release-of-the-application"></a>Zavedení Kanárské verze aplikace
 
-Nyní nasadíme novou verzi `2.0` komponent `voting-app`, `voting-analytics` a `voting-storage`. Nová součást `voting-storage` používá MySQL místo Redis a aktualizují `voting-app` a `voting-analytics` komponenty tak, aby mohly používat tuto novou `voting-storage` komponentu.
+Nyní nasadíme novou verzi `2.0` komponent `voting-app`, `voting-analytics`a `voting-storage`. Nová součást `voting-storage` používá MySQL místo Redis a aktualizují `voting-app` a `voting-analytics` komponenty tak, aby mohly používat tuto novou `voting-storage` komponentu.
 
 Komponenta `voting-app` nyní podporuje funkce příznaku funkcí. Tento příznak funkce umožňuje otestovat možnost Istio vydání pro skupinu uživatelů.
 

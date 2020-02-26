@@ -9,36 +9,26 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: a2787a0d5f372562f32c4d8adca3ed195d1befd5
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 534956a53615cfafeffa611127bc8c3cc4493753
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461964"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604918"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Rychlý start: Registrace zařízení X.509 do služby Device Provisioning Service pomocí Javy
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-Tento rychlý start ukazuje, jak prostřednictvím kódu programu s Javou zaregistrovat skupinu simulovaných zařízení X.509 do služby Azure IoT Hub Device Provisioning Service. Zařízení se registrují do služby zřizování vytvořením [skupiny registrací](concepts-service.md#enrollment-group) nebo prostřednictvím [jednotlivé registrace](concepts-service.md#individual-enrollment). Tento rychlý start ukazuje, jak vytvořit oba typy registrace. Registrace se vytvářejí pomocí sady [Java Service SDK](https://azure.github.io/azure-iot-sdk-java/service/) s využitím ukázkové aplikace Java. 
+V tomto rychlém startu použijete Java k programovému zápisu skupiny simulovaných zařízení X. 509 do Azure IoT Hub Device Provisioning Service. Zařízení se registrují do instance zřizovací služby vytvořením skupiny registrace nebo jednotlivé registrace. V tomto rychlém startu se dozvíte, jak vytvořit oba typy registrace pomocí sady SDK služby Java a ukázkové aplikace Java.
 
-Tento rychlý start vychází z předpokladu, že už jste vytvořili centrum IoT a instanci služby Device Provisioning Service. Pokud jste tyto prostředky ještě nevytvořili, před tímto článkem si projděte rychlý start [Nastavení služby IoT Hub Device Provisioning pomocí webu Azure Portal](./quick-setup-auto-provision.md).
+## <a name="prerequisites"></a>Předpoklady
 
-Přestože sada SDK služby pro Javu funguje na počítačích s Windows i Linuxem, tento článek provádí procesem registrace s použitím vývojového počítače s Windows.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="prerequisites"></a>Požadavky
-
-* Nainstalujte sadu [Java SE Development Kit 8](https://aka.ms/azure-jdks).
-* Nainstalujte [Maven 3](https://maven.apache.org/download.cgi). Aktuální verzi Mavenu zjistíte spuštěním tohoto příkazu:
-
-    ```cmd/sh
-    mvn --version
-    ```
-
-* Nainstalujte [Git](https://git-scm.com/download/).
-
+- Dokončení [nastavení IoT Hub Device Provisioning Service pomocí Azure Portal](./quick-setup-auto-provision.md).
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Java se Development Kit 8](https://aka.ms/azure-jdks). V tomto rychlém startu se nainstaluje [sada SDK služby Java](https://azure.github.io/azure-iot-sdk-java/service/) níže. Funguje na systémech Windows i Linux. V tomto rychlém startu se používá Windows.
+- [Maven 3](https://maven.apache.org/download.cgi).
+- [Git](https://git-scm.com/download/)
 
 <a id="javasample"></a>
 
@@ -51,7 +41,7 @@ V této části se používá certifikát X.509 podepsaný svým držitelem. Je 
 
 Následující kroky ukazují, jak do vzorového kódu přidat podrobnosti o zřízení vašeho zařízení X.509. 
 
-1. Otevřete příkazový řádek. Naklonujte úložiště GitHub se vzorovým kódem pro registraci zařízení pomocí sady SDK služby pro Javu:
+1. Otevřete příkazový řádek. Naklonujte ukázku kódu registrace úložiště GitHubu pomocí [sady SDK služby Java](https://azure.github.io/azure-iot-sdk-java/service/):
     
     ```cmd\sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
@@ -140,6 +130,13 @@ Následující kroky ukazují, jak do vzorového kódu přidat podrobnosti o zř
 <a id="runjavasample"></a>
 
 ## <a name="build-and-run-sample-group-enrollment"></a>Sestavení a spuštění ukázkové skupinové registrace
+
+Služba Azure IoT Device Provisioning podporuje dva typy registrací:
+
+- [Skupiny registrací:](concepts-service.md#enrollment-group) Slouží k registraci několika souvisejících zařízení.
+- [Jednotlivé registrace](concepts-service.md#individual-enrollment): používá se k registraci jednoho zařízení.
+
+Tato procedura používá skupinu pro zápis. V další části se používá individuální registrace.
 
 1. Otevřete příkazové okno a přejděte do složky **_azure-iot-sdk-java/provisioning/provisioning-samples/service-enrollment-group-sample_** .
 

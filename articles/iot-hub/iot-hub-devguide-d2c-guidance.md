@@ -1,6 +1,6 @@
 ---
-title: Možnosti typu zařízení cloud Azure IoT Hub | Dokumentace Microsoftu
-description: Příručka pro vývojáře – pokyny k použití zpráv typu zařízení cloud, ohlášených vlastností nebo odeslání souboru pro komunikaci typu cloud zařízení.
+title: Možnosti zařízení-Cloud pro Azure IoT Hub | Microsoft Docs
+description: Příručka pro vývojáře – pokyny k použití zpráv ze zařízení do cloudu, hlášených vlastností nebo nahrání souborů pro komunikaci z cloudu na zařízení.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -8,38 +8,38 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: fffa064b912a96b05feb901d1d2d44533c4681b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02dc1b55d85b7137a5c1f57999cc3b7e9b1efe29
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60885512"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591332"
 ---
-# <a name="device-to-cloud-communications-guidance"></a>Doprovodných materiálech ke komunikaci typu zařízení cloud
+# <a name="device-to-cloud-communications-guidance"></a>Doprovodné materiály k komunikace zařízení-Cloud
 
-Při odeslání informací z aplikace pro zařízení k back-endu řešení, služby IoT Hub zveřejňuje tři možnosti:
+Při odesílání informací z aplikace zařízení do back-endu řešení IoT Hub zpřístupňuje tři možnosti:
 
-* [Zprávy typu zařízení cloud](iot-hub-devguide-messages-d2c.md) pro čas řady telemetrii a upozornění.
+* [Zprávy ze zařízení do cloudu](iot-hub-devguide-messages-d2c.md) pro telemetrii a upozornění časových řad.
 
-* [Uživatele ohlášené vlastnosti dvojčete zařízení](iot-hub-devguide-device-twins.md) za ohlašování informací o stavu zařízení jako jsou k dispozici možnosti, podmínky nebo stavu dlouhotrvající pracovní postupy. Například konfigurační a aktualizace softwaru.
+* [Ohlášené vlastnosti](iot-hub-devguide-device-twins.md) , které jsou v zařízení hlášeny pro vytváření sestav informací o stavu zařízení, jako jsou dostupné možnosti, podmínky nebo stav dlouhotrvajících pracovních postupů. Například konfigurace a aktualizace softwaru.
 
-* [Nahrávání souboru](iot-hub-devguide-file-upload.md) médií souborů a velkých telemetrie dávky odeslaný přerušovaně připojeným zařízením nebo Komprimovat pro snížení šířky pásma.
+* [Nahrávání](iot-hub-devguide-file-upload.md) souborů pro mediální soubory a velké dávky telemetrie nahrané občas připojenými zařízeními nebo komprimované za účelem úspory šířky pásma.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Tady je podrobné porovnání různých možností komunikace typu zařízení cloud.
+Tady je podrobné porovnání různých možností komunikace mezi zařízeními a cloudem.
 
-|  | Zprávy typu zařízení-cloud | Ohlášené vlastnosti dvojčete zařízení | Nahrání souborů |
+|  | Zprávy typu zařízení-cloud | Vlastnosti hlášené v zařízení | Nahrání souborů |
 | ---- | ------- | ---------- | ---- |
-| Scénář | Výstrahy a telemetrická data časové řady. Například 256 KB senzor datových balíků odeslaných každých 5 minut. | K dispozici možnosti a stav. Například aktuální zařízení režim připojení třeba mobilní síť nebo Wi-Fi. Probíhá synchronizace dlouhotrvající pracovní postupy, jako je například konfigurace a aktualizací softwaru. | Mediální soubory. Velké (obvykle komprimované) telemetrických dat dávek. |
-| Ukládání a načítání | Dočasně ukládají ve službě IoT Hub, až na 7 dní. Pouze sekvenční čtení. | Uložené ve službě IoT Hub ve dvojčeti zařízení. Retrievable pomocí [dotazovací jazyk služby IoT Hub](iot-hub-devguide-query-language.md). | Uložené v uživatelem zadaný účet služby Azure Storage. |
-| Velikost | Až 256 KB zpráv. | Ohlášené vlastnosti maximální velikost je 8 KB. | Maximální velikost souboru podporovaná službou Azure Blob Storage. |
-| Frekvence | Vysoká. Další informace najdete v tématu [služby IoT Hub omezuje](iot-hub-devguide-quotas-throttling.md). | Střední. Další informace najdete v tématu [služby IoT Hub omezuje](iot-hub-devguide-quotas-throttling.md). | Nízká. Další informace najdete v tématu [služby IoT Hub omezuje](iot-hub-devguide-quotas-throttling.md). |
-| Protocol | K dispozici na všechny protokoly. | K dispozici používat protokol MQTT nebo AMQP. | K dispozici při použití libovolného protokolu pro, ale vyžaduje protokol HTTPS na zařízení. |
+| Scénář | Časová řada telemetrie a výstrahy. Například 256 – datové balíky snímač KB jsou odesílány každých 5 minut. | Dostupné možnosti a podmínky. Například aktuální režim připojení zařízení, jako je mobilní síť nebo Wi-Fi. Synchronizace dlouhodobě spuštěných pracovních postupů, jako jsou konfigurace a aktualizace softwaru. | Mediální soubory. Velké (obvykle komprimované) dávky telemetrie. |
+| Ukládání a načítání | Dočasně uloženo IoT Hub až 7 dní. Pouze sekvenční čtení. | Uloženo IoT Hub v zařízení je v nevlákna. Získatelné pomocí [dotazovacího jazyka IoT Hub](iot-hub-devguide-query-language.md). | Uloženo v uživatelsky zadaném Azure Storage účtu. |
+| Velikost | Až 256 – zprávy KB. | Maximální velikost hlášených vlastností je 32 KB. | Maximální velikost souboru podporovaná službou Azure Blob Storage. |
+| Frequency | Vysoká. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). | Střední. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). | Nízká. Další informace najdete v tématu [omezení IoT Hub](iot-hub-devguide-quotas-throttling.md). |
+| Protocol (Protokol) | K dispozici na všech protokolech. | K dispozici pomocí MQTT nebo AMQP. | K dispozici při použití libovolného protokolu, ale na zařízení vyžaduje HTTPS. |
 
-Aplikace může potřebovat odeslat informace i jako telemetrická data časové řady nebo výstrahu a zpřístupní ji ve dvojčeti zařízení. V tomto scénáři zvolte jednu z následujících možností:
+Aplikace může potřebovat odesílat informace jak jako časovou řadu telemetrie, tak pro upozornění a zpřístupňuje je v zařízení. V tomto scénáři můžete vybrat jednu z následujících možností:
 
-* Aplikace zařízení odesílá zprávy typu zařízení cloud a sestavy změnu vlastnosti.
-* Back-end řešení může ukládat informace ve dvojčeti zařízení značky při přijetí zprávy.
+* Aplikace zařízení pošle zprávu typu zařízení-Cloud a ohlásí změnu vlastnosti.
+* Back-end řešení může ukládat informace ve značkách vlákna zařízení, když obdrží zprávu.
 
-Protože zpráv typu zařízení cloud povolit mnohem vyšší výkon než aktualizace dvojčete zařízení, někdy je žádoucí vyhnout, aktualizace dvojčete zařízení pro všechny zprávy typu zařízení cloud.
+Vzhledem k tomu, že zprávy typu zařízení-Cloud umožňují mnohem vyšší propustnost než aktualizace nenáročné na zařízení, někdy je žádoucí zabránit tomu, aby se u každé zprávy typu zařízení-Cloud neaktualizovala dvojitá velikost zařízení.

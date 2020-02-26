@@ -7,12 +7,12 @@ ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 55f3e42687c90936c33208684b58792b3e2b9f85
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 5fda51e6d2f62b9cbef0fcac22d5bb2ea0df905b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905790"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605217"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Příručka pro vývojáře pro modelování IoT technologie Plug and Play Preview
 
@@ -115,7 +115,7 @@ Nepoužívejte vlastnosti k odeslání telemetrie ze zařízení. Například vl
 
 U zapisovatelných vlastností aplikace zařízení vrátí stavový kód požadovaného stavu, verzi a popis, aby označoval, zda obdržel a používal hodnotu vlastnosti.
 
-### <a name="telemetry"></a>Telemetrie
+### <a name="telemetry"></a>Telemetrická data
 
 Ve výchozím nastavení IoT Hub směruje všechny zprávy telemetrie ze zařízení na [integrovaný koncový bod (**zprávy/události**)](../iot-hub/iot-hub-devguide-messages-read-builtin.md) , který je kompatibilní se službou [Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/).
 
@@ -182,26 +182,26 @@ result = DigitalTwin_DeviceClient_RegisterInterfacesAsync(
 
 IoT technologie Plug and Play umožňuje používat zařízení, která zaregistrovala své možnosti ve službě IoT Hub. Můžete například získat přímý přístup k vlastnostem a příkazům zařízení.
 
-Pokud chcete používat technologie Plug and Play IoT, která je připojená ke službě IoT Hub, použijte buď IoT Hub REST API nebo jednu z jazykových sad IoT. V následujících příkladech se používá REST API IoT Hub.
+Pokud chcete používat technologie Plug and Play IoT, která je připojená ke službě IoT Hub, použijte buď IoT Hub REST API nebo jednu z jazykových sad IoT. V následujících příkladech se používá REST API IoT Hub. Aktuální verze rozhraní API je `2019-07-01-preview`. Přidejte `?api-version=2019-07-01-preview` k vašim voláním REST PI.
 
 Chcete-li získat hodnotu vlastnosti zařízení, jako je například verze firmwaru (`fwVersion`) v rozhraní `DeviceInformation` ve termostatu, použijte digitální vlákna REST API.
 
-Pokud se zařízení termostatu nazývá `t-123`, dostanete všechny vlastnosti implementované vaším zařízením pomocí volání REST API GET:
+Pokud se zařízení termostatu nazývá `t-123`, získáte všechny vlastnosti ve všech rozhraních implementovaných vaším zařízením pomocí volání REST API GET:
 
 ```REST
 GET /digitalTwins/t-123/interfaces
 ```
 
-Obecněji jsou k dispozici všechny vlastnosti s touto šablonou REST API, kde `{device-id}` je identifikátorem zařízení:
+Obecněji jsou k dispozici všechny vlastnosti všech rozhraní s touto šablonou REST API, kde `{device-id}` je identifikátorem zařízení:
 
 ```REST
 GET /digitalTwins/{device-id}/interfaces
 ```
 
-Pokud znáte název rozhraní a chcete získat vlastnosti tohoto konkrétního rozhraní, oborujte požadavek na konkrétní rozhraní podle názvu:
+Pokud znáte název rozhraní, například `deviceInformation`, a chcete získat vlastnosti pro toto konkrétní rozhraní, vyjistěte obor žádosti na konkrétní rozhraní podle názvu:
 
 ```REST
-GET /digitalTwins/t-123/interfaces/info
+GET /digitalTwins/t-123/interfaces/deviceInformation
 ```
 
 Obecně platí, že k vlastnostem konkrétního rozhraní se dá dostat prostřednictvím této šablony REST API, kde `device-id` je identifikátorem zařízení a `{interface-name}` je název rozhraní:

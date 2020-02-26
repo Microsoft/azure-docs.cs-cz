@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: 96efe5271b91f87e30ba26aabe69a0de76e1a791
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202393"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604260"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Vysvětlení Azure Security Centerch doporučení ke kontejneru
 
@@ -44,20 +44,18 @@ Následující tabulky vám pomůžou pochopit dostupné kontejnery hostované v
 
 | Doporučení | Popis | Náprava |
 | --- | --- | --- |
-|Náprava ohrožení zabezpečení v konfiguraci zabezpečení kontejnerů |Opravte chyby zabezpečení v kontejnerech Konfigurace zabezpečení na základě osvědčených postupů konfigurace.| Náprava chyb zabezpečení v kontejnerech Konfigurace zabezpečení:<br>1. Projděte si seznam neúspěšných pravidel.<br>2. Opravte všechna pravidla podle zadaných pokynů.|
+|Opravit ohrožení zabezpečení v konfiguracích zabezpečení kontejnerů |Opravte chyby zabezpečení v kontejnerech Konfigurace zabezpečení na základě osvědčených postupů konfigurace.| Náprava chyb zabezpečení v kontejnerech Konfigurace zabezpečení:<br>1. Prohlédněte si seznam neúspěšných pravidel.<br>2. Opravte všechna pravidla podle zadaných pokynů.|
 
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o doporučení, které se vztahují na jiné typy prostředků Azure, naleznete v následujících tématech:
 
-* [Monitorování identity a přístupu v Azure Security Center](security-center-identity-access.md)
+* [Monitorování identity a přístupu ve službě Azure Security Center](security-center-identity-access.md)
 * [Ochrana sítě pomocí Azure Security Center](security-center-network-recommendations.md)
-* [Ochrana služby Azure SQL ve službě Azure Security Center](security-center-sql-service-recommendations.md)
+* [Ochrana služby Azure SQL Service v Azure Security Center](security-center-sql-service-recommendations.md)
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Ochrana počítačů a aplikací ve službě Azure Security Center](security-center-virtual-machine-protection.md)
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
-

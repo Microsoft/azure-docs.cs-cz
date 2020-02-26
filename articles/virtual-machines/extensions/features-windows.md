@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 69d08af9fd34728860343db3578f7283802f1611
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 4eb212cb6122803f78b13e6c17a55bac5bc48286
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544748"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587868"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Rozšíření a funkce virtuálních počítačů pro Windows
 
-Rozšíření virtuálních počítačů Azure jsou malé aplikace, které na virtuálních počítačích Azure umožňují provádět úlohy konfigurace a automatizace po nasazení. Pokud virtuální počítač vyžaduje například instalaci softwaru, antivirovou ochranu nebo spuštění interního skriptu, je možné pro tento účel použít rozšíření virtuálního počítače. Rozšíření virtuálních počítačů Azure je možné spustit přes Azure CLI, PowerShell, šablony Azure Resource Manageru a Azure Portal. Rozšíření lze spojit s novým nasazením virtuálního počítače, případně spustit v jakémkoli existujícím systému.
+Rozšíření virtuálních počítačů Azure jsou malé aplikace, které poskytují konfiguraci po nasazení a úlohy automatizace na virtuálních počítačích Azure. Pokud třeba virtuální počítač vyžaduje instalaci softwaru, antivirovou ochranu nebo spuštění skriptu uvnitř něj, můžete použít rozšíření virtuálního počítače. Rozšíření virtuálních počítačů Azure je možné spustit pomocí Azure CLI, PowerShellu, Azure Resource Manager šablon a Azure Portal. Rozšíření lze seskupit pomocí nového nasazení virtuálního počítače nebo spustit s jakýmkoli existujícím systémem.
 
 Tento článek poskytuje přehled rozšíření virtuálních počítačů, předpoklady pro používání rozšíření virtuálních počítačů Azure a pokyny k tomu, jak detekovat, spravovat a odebírat rozšíření virtuálních počítačů. Tento článek poskytuje generalizované informace, protože je k dispozici mnoho rozšíření virtuálních počítačů, z nichž každá má potenciálně jedinečnou konfiguraci. Podrobnosti o rozšíření se dají najít v každém dokumentu specifickém pro jednotlivé rozšíření.
 
@@ -36,13 +36,13 @@ K dispozici je několik různých rozšíření virtuálních počítačů Azure
 
 - Použijte konfiguraci požadovaného stavu PowerShellu na virtuální počítač s rozšířením DSC pro Windows. Další informace najdete v tématu [rozšíření konfigurace požadovaného stavu Azure](dsc-overview.md).
 - Nakonfigurujte monitorování virtuálního počítače pomocí rozšíření virtuálního počítače agenta Log Analytics. Další informace najdete v tématu [připojení virtuálních počítačů Azure k Azure monitor protokolů](../../log-analytics/log-analytics-azure-vm-extension.md).
-- Nakonfigurujte virtuální počítač Azure pomocí systému pro použití. Další informace najdete v tématu [Automatizace nasazení virtuálních počítačů Azure pomocí nástroje pro instalaci](../windows/chef-automation.md).
+- Nakonfigurujte virtuální počítač Azure pomocí systému pro použití. Další informace najdete v tématu [Automatizace nasazení virtuálních počítačů Azure pomocí nástroje pro instalaci](../../chef/chef-automation.md).
 - Nakonfigurujte monitorování infrastruktury Azure pomocí rozšíření služby Datadog. Další informace najdete na [blogu služby Datadog](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/).
 
 
 Kromě rozšíření specifických pro procesy je k dispozici rozšíření vlastních skriptů pro virtuální počítače s Windows i Linux. Rozšíření vlastních skriptů pro Windows umožňuje spuštění libovolného skriptu PowerShellu na virtuálním počítači. Vlastní skripty jsou užitečné pro navrhování nasazení Azure, která vyžadují konfiguraci, a to nad rámec toho, co můžou využít nativní nástroje Azure. Další informace najdete v tématu [rozšíření vlastních skriptů pro virtuální počítače s Windows](custom-script-windows.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro zpracování rozšíření na virtuálním počítači potřebujete nainstalovaného agenta Azure Windows. Některá jednotlivá rozšíření mají požadavky, jako je například přístup k prostředkům nebo závislostem.
 
@@ -140,7 +140,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 Pomocí příkazu `Set-AzVMExtension` lze spustit libovolné rozšíření virtuálního počítače. Další informace najdete v referenčních informacích k [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 Rozšíření virtuálních počítačů je možné použít pro existující virtuální počítač prostřednictvím Azure Portal. Vyberte virtuální počítač na portálu, klikněte na **rozšíření**a pak vyberte **Přidat**. V seznamu dostupných rozšíření vyberte požadované rozšíření a postupujte podle pokynů v průvodci.
 
@@ -423,7 +423,7 @@ Můžete také odebrat rozšíření v Azure Portal následujícím způsobem:
 ## <a name="common-vm-extensions-reference"></a>Referenční informace o běžných rozšířeních virtuálních počítačů
 | Název rozšíření | Popis | Další informace |
 | --- | --- | --- |
-| Rozšíření vlastních skriptů pro Windows |Spouštění skriptů na virtuálním počítači Azure |[Rozšíření vlastních skriptů pro Windows](custom-script-windows.md) |
+| Rozšíření vlastních skriptů pro virtuální počítače |Spouštění skriptů na virtuálním počítači Azure |[Rozšíření vlastních skriptů pro Windows](custom-script-windows.md) |
 | Rozšíření DSC pro Windows |Rozšíření PowerShell DSC (Konfigurace požadovaného stavu) |[Rozšíření DSC pro Windows](dsc-overview.md) |
 | Rozšíření Azure Diagnostics |Správa Azure Diagnostics |[Rozšíření diagnostiky Azure](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Rozšíření přístupu k virtuálnímu počítači Azure |Správa uživatelů a přihlašovacích údajů |[Rozšíření přístupu virtuálních počítačů pro Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |

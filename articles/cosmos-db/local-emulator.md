@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
-ms.date: 07/26/2019
-ms.openlocfilehash: ea4abada259c929f387b1477c127824ac6269319
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 01/31/2020
+ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939172"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591366"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Použití emulátoru Azure Cosmos pro místní vývoj a testování
 
@@ -147,7 +147,7 @@ table.CreateIfNotExists();
 table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowKey")));
 ```
 
-### <a name="cassandra-api"></a>Rozhraní API Cassandra
+### <a name="cassandra-api"></a>Rozhraní Cassandra API
 
 Spusťte emulátor z příkazového řádku správce s názvem "/EnableCassandraEndpoint". Případně můžete také nastavit proměnnou prostředí `AZURE_COSMOS_EMULATOR_CASSANDRA_ENDPOINT=true`.
 
@@ -254,7 +254,7 @@ Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `Micro
 | GremlinPort | Číslo portu, které se má použít pro koncový bod Gremlin Výchozí hodnota je 8901. | Microsoft. Azure. Cosmos. emulátor. exe/GremlinPort =\<port\> | \<port\>: číslo jednoho portu |
 |EnableTableEndpoint | Povolí Azure rozhraní API pro tabulky | Microsoft. Azure. Cosmos. emulátor. exe/EnableTableEndpoint | |
 |TablePort | Číslo portu, které se má použít pro koncový bod tabulky Azure Výchozí hodnota je 8902. | Microsoft. Azure. Cosmos. emulátor. exe/TablePort =\<port\> | \<port\>: číslo jednoho portu|
-| KeyFile | Načte autorizační klíč ze zadaného souboru. Pro vytvoření souboru klíče použijte možnost/GenKeyFile | Microsoft. Azure. Cosmos. emulátor. exe/KeyFile =\<file_name\> | \<file_name\>: cesta k souboru |
+| keyFile | Načte autorizační klíč ze zadaného souboru. Pro vytvoření souboru klíče použijte možnost/GenKeyFile | Microsoft. Azure. Cosmos. emulátor. exe/KeyFile =\<file_name\> | \<file_name\>: cesta k souboru |
 | ResetDataPath | Rekurzivně odstraní všechny soubory v zadané cestě. Pokud cestu nezadáte, použije se výchozí hodnota%LOCALAPPDATA%\CosmosDbEmulator. | Microsoft. Azure. Cosmos. emulátor. exe/ResetDataPath =\<cesta > | \<cesta\>: cesta k souboru  |
 | StartTraces  |  Spusťte shromažďování protokolů trasování ladění pomocí programu LOGMAN. | Microsoft. Azure. Cosmos. emulátor. exe/StartTraces | |
 | StopTraces     | Zastavte shromažďování protokolů trasování ladění pomocí programu LOGMAN. | Microsoft. Azure. Cosmos. emulátor. exe/StopTraces  | |
@@ -312,7 +312,7 @@ Zde je uveden seznam příkazů pro řízení emulátoru z PowerShellu:
 
 ### `Get-CosmosDbEmulatorStatus`
 
-**Syntaxe**
+**Syntaktick**
 
 `Get-CosmosDbEmulatorStatus`
 
@@ -322,7 +322,7 @@ Vrátí jednu z těchto hodnot ServiceControllerStatus: ServiceControllerStatus.
 
 ### `Start-CosmosDbEmulator`
 
-**Syntaxe**
+**Syntaktick**
 
 `Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>] [<CommonParameters>]`
 
@@ -332,7 +332,7 @@ Spustí emulátor. Ve výchozím nastavení tento příkaz čeká, dokud emulát
 
 ### `Stop-CosmosDbEmulator`
 
-**Syntaxe**
+**Syntaktick**
 
  `Stop-CosmosDbEmulator [-NoWait]`
 
@@ -342,7 +342,7 @@ Zastaví emulátor. Ve výchozím nastavení tento příkaz čeká, až emuláto
 
 ### `Uninstall-CosmosDbEmulator`
 
-**Syntaxe**
+**Syntaktick**
 
 `Uninstall-CosmosDbEmulator [-RemoveData]`
 
@@ -485,7 +485,7 @@ Pokud pracujete na Macu, použijte následující postup:
 
 Po provedení tohoto postupu bude vaše prostředí důvěřovat certifikátu používanému emulátorem při připojování k IP adrese, kterou zpřístupňuje `/AllowNetworkAccess`.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Následující tipy vám pomůžou při řešení problémů, ke kterým dochází v emulátoru Azure Cosmos:
 

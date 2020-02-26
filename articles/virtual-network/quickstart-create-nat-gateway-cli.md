@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 816dc9c4460792b56a7dbf0c5d77f92afd257e73
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: df1e363f31aa8c88be54454c9dc060f4ed6b7ca1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429716"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588854"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-cli"></a>Rychlý Start: Vytvoření brány NAT pomocí Azure CLI
 
@@ -33,8 +33,6 @@ V tomto rychlém startu se dozvíte, jak používat službu Azure Virtual Networ
 Tento kurz můžete dokončit pomocí Azure Cloud Shell nebo místně spustit příslušné příkazy.  Pokud jste Azure Cloud Shell nikdy nepoužili, [přihlaste](https://shell.azure.com) se a Projděte si úvodní nastavení.
 Pokud se rozhodnete tyto příkazy spustit lokálně, musíte nainstalovat rozhraní příkazového řádku.  Tento kurz vyžaduje, abyste spustili verzi Azure CLI verze 2.0.71 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
-> [!IMPORTANT]
-> Po povolení služby Virtual Network NAT [Preview](./nat-overview.md#enable-preview) ve vašem předplatném použijte https://aka.ms/natportal pro přístup k portálu.
 
 ## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 

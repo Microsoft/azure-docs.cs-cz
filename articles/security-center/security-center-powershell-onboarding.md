@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: b20b3c1e4216fe8065fbc8ac24c7d8097903fc5a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686363"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603689"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatizace připojování Azure Security Center pomocí prostředí PowerShell
 
@@ -97,7 +97,7 @@ Tyto rutiny PowerShellu teď můžete používat se skripty pro automatizaci k p
 
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 Další informace o tom, jak můžete pomocí PowerShellu automatizovat připojování k Security Center, najdete v následujícím článku:
 
 * [AZ. Security](https://docs.microsoft.com/powershell/module/az.security).
@@ -106,4 +106,3 @@ Další informace o Security Center najdete v následujícím článku:
 
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.

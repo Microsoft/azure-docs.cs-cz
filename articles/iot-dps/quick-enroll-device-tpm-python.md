@@ -9,24 +9,29 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 6266ef3479e74103d0989b8eb0286626da5eb28f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 60ce27ddc533b6c4066cea771f7a24570ff3c04c
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976787"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604891"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Rychlý Start: registrace zařízení TPM pro IoT Hub Device Provisioning Service pomocí sady SDK služby zřizování pro Python
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-Tyto kroky ukazují, jak prostřednictvím kódu programu vytvořit jednotlivou registraci pro zařízení TPM ve službě Azure IoT Hub Device Provisioning Service, pomocí [sady v1 Python Provisioning Service SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) a pomoci ukázkové aplikace v Pythonu. Přestože sada SDK služby pro Python funguje na počítačích s Windows i Linuxem, tento článek provádí procesem registrace s použitím vývojového počítače s Windows.
+V tomto rychlém startu jste programově vytvořili jednotlivou registraci pro zařízení TPM ve službě Azure IoT Hub Device Provisioning Service pomocí sady SDK služby zřizování pro Python a pomohli vám ukázkovou aplikaci v Pythonu.
+
+## <a name="prerequisites"></a>Předpoklady
+
+- Dokončení [nastavení IoT Hub Device Provisioning Service pomocí Azure Portal](./quick-setup-auto-provision.md).
+- Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Python 2. x nebo 3. x](https://www.python.org/downloads/). V tomto rychlém startu se nainstaluje [sada SDK služby zřizování pro Python](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) .
+- [PIP](https://pip.pypa.io/en/stable/installing/), pokud není součástí vaší distribuce Pythonu.
+- Ověřovací klíč. Použijte postup v tématu [Vytvoření a zřízení simulovaného zařízení](quick-create-simulated-device.md) nebo použijte ověřovací klíč dodaný se sadou SDK, popsanou níže.
 
 > [!IMPORTANT]
 > Tento článek platí jenom pro zastaralé sady SDK verze V1 Pythonu. Klienti zařízení a služeb pro službu IoT Hub Device Provisioning ještě nejsou ve verzi v2 k dispozici. V současné době je tým v práci, aby se do parity funkcí přineslo v2.
-
-Než budete pokračovat, nezapomeňte [nastavit službu IoT Hub Device Provisioning pomocí webu Azure Portal](./quick-setup-auto-provision.md).
-
 
 <a id="prepareenvironment"></a>
 
@@ -34,7 +39,7 @@ Než budete pokračovat, nezapomeňte [nastavit službu IoT Hub Device Provision
 
 1. Stáhněte a nainstalujte [Python 2.x nebo 3.x](https://www.python.org/downloads/). Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. Po zobrazení výzvy v průběhu instalace nezapomeňte přidat Python do proměnných prostředí pro konkrétní platformu. 
 
-1. Zvolte jednu z následujících možností:
+1. V [sadě SDK služby zřizování pro Python](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client)vyberte jednu z následujících možností:
 
     - Sestavení a kompilace sady **SDK služby Azure IoT pro Python**. Pomocí [těchto pokynů](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) sestavte balíčky Pythonu. Pokud používáte operační systém Windows, je k povolení používání nativních knihoven DLL z Pythonu potřeba nainstalovat také [balíček distribuovatelných součástí Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
 
@@ -57,7 +62,7 @@ Tato část ukazuje, jak do vzorového kódu přidat podrobnosti o zřizování 
 
 1. Pomocí textového editoru vytvořte nový soubor **TpmEnrollment.py**.
 
-1. Na začátek souboru **TpmEnrollment.py** přidejte následující příkazy `import` a proměnné. Pak nahraďte `dpsConnectionString` vaším připojovacím řetězcem, který najdete v části **Zásady sdíleného přístupu** ve vaší službě **Device Provisioning** na webu **Azure Portal**. Nahraďte `endorsementKey` hodnotou uvedenou dříve v části [Příprava prostředí](quick-enroll-device-tpm-python.md#prepareenvironment). Nakonec vytvořte jedinečné ID registrace `registrationid` a ujistěte se, že se skládá pouze z malých alfanumerických znaků a pomlček.  
+1. Na začátek souboru `import`TpmEnrollment.py**přidejte následující příkazy** a proměnné. Pak nahraďte `dpsConnectionString` vaším připojovacím řetězcem, který najdete v části **Zásady sdíleného přístupu** ve vaší službě **Device Provisioning** na webu **Azure Portal**. Nahraďte `endorsementKey` hodnotou uvedenou dříve v části [Příprava prostředí](quick-enroll-device-tpm-python.md#prepareenvironment). Nakonec vytvořte jedinečné ID registrace `registrationid` a ujistěte se, že se skládá pouze z malých alfanumerických znaků a pomlček.  
    
     ```python
     from provisioningserviceclient import ProvisioningServiceClient

@@ -4,12 +4,12 @@ description: Získejte odpovědi na běžné dotazy týkající se zálohování
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 73224164286e35f8c9447dd24cd81d7242fbb7b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a973761bf16e2d271d718e4a8b29e08624276987
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172022"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597078"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Nejčastější dotazy týkající se SQL Server databází, které běží na zálohování virtuálních počítačů Azure
 
@@ -37,13 +37,15 @@ Automatické zaretušování je ve výchozím nastavení povolené pro všechny 
 - Uložte změny a zavřete soubor.
 - V SQL Server instanci otevřete **úlohu spravovat** a restartujte službu **AzureWLBackupCoordinatorSvc** .
 
-## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>Můžu řídit, kolik souběžných záloh běží na SQL serveru?
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>Můžu řídit, kolik souběžných záloh běží na SQL serveru?
 
 Ano. Rychlost, s jakou se zásady zálohování spouštějí, můžete omezit tak, aby se minimalizoval dopad na instanci SQL Server. Postup změny nastavení:
 
 1. V instanci SQL Server v adresáři *C:\Program Files\Azure úlohy Backup\bin* vytvořte soubor *ExtensionSettingsOverrides. JSON* .
 2. V souboru *ExtensionSettingsOverrides. JSON* změňte nastavení **DefaultBackupTasksThreshold** na nižší hodnotu (například 5). <br>
   `{"DefaultBackupTasksThreshold": 5}`
+<br>
+Výchozí hodnota DefaultBackupTasksThreshold je **20**.
 
 3. Uložte změny a zavřete soubor.
 4. V SQL Server instance otevřete **Správce úloh**. Restartujte službu **AzureWLBackupCoordinatorSvc** .<br/> <br/>

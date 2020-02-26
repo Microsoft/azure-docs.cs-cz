@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: preetikr
 ms.author: preetikr
-ms.reviewer: klam, estfan, logicappspm
+ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
-ms.date: 12/12/2019
+ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: f9aa88934d67d98fce43763c6c8fac7c384d765d
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313786"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598829"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Zvyšte ochranu před hrozbami integrací operací zabezpečení pomocí Microsoft Graph zabezpečení & Azure Logic Apps
 
@@ -32,11 +32,11 @@ Pracovní postup vaší aplikace logiky může používat akce, které získáva
 
 Další informace o Microsoft Graph zabezpečení najdete v tématu [Přehled rozhraní API pro Microsoft Graph zabezpečení](https://aka.ms/graphsecuritydocs). Pokud s Logic Apps začínáte, přečtěte si téma [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Pokud hledáte Microsoft Flow nebo PowerApps, přečtěte si téma [co je Flow?](https://flow.microsoft.com/) nebo [co je PowerApps?](https://powerapps.microsoft.com/)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/). 
 
-* Abyste mohli používat konektor pro Microsoft Graph Security, musí vám být *explicitně udělen* souhlas správce tenanta Azure Active Directory (AD). To je součástí [požadavků na ověřování v Microsoft Graph Security](https://aka.ms/graphsecurityauth). Tento souhlas vyžaduje ID a název aplikace konektoru zabezpečení Microsoft Graph, které můžete také najít v [Azure Portal](https://portal.azure.com):
+* Pokud chcete použít Microsoft Graph Security Connector, musíte *explicitně udělit* souhlas správce tenanta Azure Active Directory (AD), který je součástí [Microsoft Graph požadavků na ověření zabezpečení](https://aka.ms/graphsecurityauth). Tento souhlas vyžaduje ID a název aplikace konektoru zabezpečení Microsoft Graph, které můžete také najít v [Azure Portal](https://portal.azure.com):
 
   | Vlastnost | Hodnota |
   |----------|-------|
@@ -46,9 +46,9 @@ Další informace o Microsoft Graph zabezpečení najdete v tématu [Přehled ro
 
   Správce tenanta Azure AD může udělit souhlas konektoru, a to podle těchto kroků:
 
-  * [Udělení souhlasu správce tenanta pro aplikace Azure AD](../active-directory/develop/v2-permissions-and-consent.md).
+  * [Udělte souhlasu správce tenanta pro aplikace Azure AD](../active-directory/develop/v2-permissions-and-consent.md).
 
-  * Při prvním spuštění aplikace logiky může vaše aplikace požádat správce tenanta Azure AD o souhlas prostřednictvím [prostředí pro souhlas v aplikaci](../active-directory/develop/application-consent-experience.md).
+  * Během prvního spuštění vaší aplikace logiky může vaše aplikace požádat o souhlas správce tenanta Azure AD prostřednictvím [prostředí pro vyjádření souhlasu s aplikací](../active-directory/develop/application-consent-experience.md).
    
 * Základní znalosti o [tom, jak vytvářet aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -117,9 +117,9 @@ Další informace o dotazech, které můžete použít s tímto konektorem, najd
 
 | Akce | Popis |
 |--------|-------------|
-| **Získat výstrahy** | Získejte filtrované výstrahy na základě jedné nebo více [vlastností výstrahy](https://docs.microsoft.com/graph/api/resources/alert), například: <p>`Provider eq 'Azure Security Center' or 'Palo Alto Networks'` | 
+| **Získat výstrahy** | Získejte filtrované výstrahy na základě jedné nebo více [vlastností výstrahy](https://docs.microsoft.com/graph/api/resources/alert), například `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`. | 
 | **Získat upozornění podle ID** | Získat konkrétní výstrahu na základě ID výstrahy. | 
-| **Aktualizace výstrahy** | Aktualizace konkrétní výstrahy na základě ID výstrahy. <p>Chcete-li se ujistit, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti výstrah](https://docs.microsoft.com/graph/api/alert-update). Chcete-li například přiřadit upozornění analytikovi zabezpečení, aby bylo možné je prozkoumat, můžete aktualizovat vlastnost **přiřazeno pro** výstrahu. |
+| **Aktualizovat upozornění** | Aktualizace konkrétní výstrahy na základě ID výstrahy. Chcete-li se ujistit, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti výstrah](https://docs.microsoft.com/graph/api/alert-update). Chcete-li například přiřadit upozornění analytikovi zabezpečení, aby bylo možné je prozkoumat, můžete aktualizovat vlastnost **přiřazeno pro** výstrahu. |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>Správa odběrů výstrah
@@ -135,6 +135,27 @@ Microsoft Graph podporuje [*odběry*](https://docs.microsoft.com/graph/api/resou
 | **Aktualizovat předplatné** | [Aktualizujte předplatné](https://docs.microsoft.com/graph/api/subscription-update) ZADÁNÍm ID předplatného. Pokud třeba chcete prodloužení předplatného, můžete aktualizovat vlastnost `expirationDateTime` předplatného. | 
 | **Odstranit předplatné** | [Odstraňte předplatné](https://docs.microsoft.com/graph/api/subscription-delete) ZADÁNÍm ID předplatného. | 
 ||| 
+
+### <a name="manage-threat-intelligence-indicators"></a>Spravovat indikátory logiky hrozeb
+
+Pokud chcete filtrovat, seřadit nebo získat nejnovější výsledky, zadejte *jenom* [parametry dotazu OData podporované Microsoft Graph](https://docs.microsoft.com/graph/query-parameters). *Nezadávejte* úplnou základní adresu URL nebo akci HTTP, například `https://graph.microsoft.com/beta/security/tiIndicators`nebo operaci `GET` nebo `PATCH`. Tady je konkrétní příklad, který zobrazuje parametry pro akci **Get tiIndicators** , když chcete zobrazit seznam s `DDoS`m typem hrozby:
+
+`Filter threat intelligence indicator value as threatType eq 'DDoS'`
+
+Další informace o dotazech, které můžete použít s tímto konektorem, najdete [v části "volitelné parametry dotazu" v tématu Referenční dokumentace k nástroji Microsoft Graph Security Threat Intelligence](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http). Pokud chcete s tímto konektorem sestavovat vylepšená prostředí, přečtěte si další informace o [vlastnostech schématu – indikátor analýzy hrozeb](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta) , který konektor podporuje.
+
+| Akce | Popis |
+|--------|-------------|
+| **Získat indikátory pro analýzu hrozeb** | Získejte filtr tiIndicators filtrovaný na základě jedné nebo více [tiIndicator vlastností](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta), například `threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **Získat indikátor analýzy hrozeb podle ID** | Získá konkrétní tiIndicator na základě ID tiIndicator. | 
+| **Vytvořit indikátor analýzy hrozeb** | Vytvořte nový tiIndicator publikováním do kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro vytváření tiIndicator](https://docs.microsoft.com/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http). |
+| **Odeslání více ukazatelů analýzy hrozeb** | Vytvořte více nových tiIndicators publikováním kolekce tiIndicators. Chcete-li se ujistit, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro odeslání více tiIndicators](https://docs.microsoft.com/graph/api/tiindicator-submittiindicators?view=graph-rest-beta&tabs=http). |
+| **Aktualizovat indikátor analýzy hrozeb** | Aktualizujte konkrétní tiIndicator na základě ID tiIndicator. Abyste se ujistili, že jste v žádosti předávali požadované a upravitelné vlastnosti, přečtěte si téma [upravitelné vlastnosti pro tiIndicator](https://docs.microsoft.com/graph/api/tiindicator-update?view=graph-rest-beta&tabs=http). Chcete-li například aktualizovat akci, která má být použita, pokud se ukazatel shoduje v rámci nástroje zabezpečení targetProduct, můžete aktualizovat vlastnost **Action** tiIndicator. |
+| **Aktualizace více ukazatelů analýzy hrozeb** | Aktualizace více tiIndicators Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si téma [požadované vlastnosti pro aktualizaci více tiIndicators](https://docs.microsoft.com/graph/api/tiindicator-updatetiindicators?view=graph-rest-beta&tabs=http). |
+| **Odstranit indikátor analýzy hrozeb podle ID** | Odstraňte konkrétní tiIndicator na základě ID tiIndicator. |
+| **Odstranění více ukazatelů analýzy hrozeb podle ID** | Odstraňte více tiIndicators podle jejich ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle ID](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicators?view=graph-rest-beta&tabs=http). |
+| **Odstranění více indikátorů analýzy hrozeb podle externích ID** | Odstraňte více tiIndicators externích ID. Abyste se ujistili, že jste v žádosti předávali požadované vlastnosti, přečtěte si [požadované vlastnosti pro odstranění více tiIndicators podle externích ID](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicatorsbyexternalid?view=graph-rest-beta&tabs=http). |
+|||
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 

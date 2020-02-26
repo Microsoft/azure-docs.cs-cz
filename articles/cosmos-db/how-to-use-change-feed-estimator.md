@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8bd024fae7496db6c9cb6410df26975fde1984f7
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092950"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585284"
 ---
 # <a name="use-the-change-feed-estimator"></a>Použít Estimator kanálu změn
 
@@ -19,7 +19,7 @@ Tento článek popisuje, jak můžete monitorovat průběh instancí [procesoru 
 
 ## <a name="why-is-monitoring-progress-important"></a>Proč je monitorování důležité?
 
-Procesor změn kanálu funguje jako ukazatel, který přechází mezi kanálem [změn](./change-feed.md) a přináší změny implementace delegáta. 
+Procesor změn kanálu funguje jako ukazatel, který přechází mezi [kanálem změn](./change-feed.md) a přináší změny implementace delegáta. 
 
 Nasazení procesoru změny kanálu může zpracovávat změny za určitou míru na základě dostupných prostředků, jako jsou například CPU, paměť, síť a tak dále.
 
@@ -33,19 +33,19 @@ Podobně jako u [procesoru Change feed](./change-feed-processor.md)funguje Estim
 
 Pokud je například procesor pro změnu kanálu definován takto:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartProcessorEstimator)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartProcessorEstimator":::
 
-Správný způsob, jak inicializovat Estimator k měření toho, jak by procesor používal `GetChangeFeedEstimatorBuilder` , například:
+Správný způsob inicializace Estimator k měření, že procesor by používal `GetChangeFeedEstimatorBuilder` například:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartEstimator)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartEstimator":::
 
-Kde jak procesor, tak i Estimator mají stejný `leaseContainer` název.
+Kde jak procesor i Estimator sdílejí stejné `leaseContainer` a stejným názvem.
 
 Další dva parametry jsou delegát, který obdrží číslo, které představuje, **kolik změn čeká na jejich čtení** procesorem, a časový interval, ve kterém chcete toto měření provést.
 
 Příklad delegáta, který obdrží odhad, je:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=EstimationDelegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="EstimationDelegate":::
 
 Tento odhad můžete odeslat řešení monitorování a použít ho k pochopení toho, jak se v průběhu času chová průběh.
 

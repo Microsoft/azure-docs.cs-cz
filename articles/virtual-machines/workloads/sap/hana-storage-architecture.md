@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/04/2019
+ms.date: 02/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 256aaf94175394fd737e53c6281f2d8b45e8af41
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d25201c8195fa6c4c36e159904b5b71a20a45ea
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099647"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598489"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura úložiště SAP HANA (velké instance)
 
@@ -36,6 +36,8 @@ V následující tabulce najdete informace o přidělení úložiště. Tabulka 
 | S192 | 4 608 GB | 1 024 GB | 1 536 GB | 1 024 GB |
 | S192m | 11 520 GB | 1 536 GB | 1 792 GB | 1 536 GB |
 | S192xm |  11 520 GB |  1 536 GB |  1 792 GB |  1 536 GB |
+| S224 |  4 224 GB |  512 GB |  1 024 GB |  512 GB |
+| S224m |  8 448 GB |  512 GB |  1 024 GB |  512 GB |
 | S384 | 11 520 GB | 1 536 GB | 1 792 GB | 1 536 GB |
 | S384m | 12 000 GB | 2 050 GB | 2 050 GB | 2 040 GB |
 | S384xm | 16 000 GB | 2 050 GB | 2 050 GB | 2 040 GB |
@@ -72,13 +74,13 @@ Podrobnosti o rozložení úložiště pro váš scénář najdete v tématu [po
 
 Je možné hostovat více než jednu instanci Active SAP HANA v jednotkách velkých instancí HANA. Aby bylo možné zajistit možnosti snímků úložiště a zotavení po havárii, tato konfigurace vyžaduje sadu svazků nastavenou na jednu instanci. V současné době je možné jednotky velkých instancí HANA rozdělit následujícím způsobem:
 
-- **S72, S72m, S96, S144, S192**: V přírůstcích po 256 GB a 256 GB nejmenší počáteční jednotka. Jiné zvýšení hodnoty, například 256 GB a 512 GB, lze kombinovat až do maximální velikosti paměti jednotky.
-- **S144m a S192m**: V přírůstcích po 256 GB a 512 GB nejmenší jednotky. Jiné zvýšení hodnoty, například 512 GB a 768 GB, lze kombinovat až do maximální velikosti paměti jednotky.
-- **Třída Type II**: V přírůstcích po 512 GB s nejmenší počáteční jednotkou 2 TB. Různá zvýšení, například 512 GB, 1 TB a 1,5 TB, lze kombinovat až do maximální velikosti paměti jednotky.
+- **S72, S72m, S96, S144, S192**: v přírůstcích po 256 gb a 256 GB nejmenší počáteční jednotka. Jiné zvýšení hodnoty, například 256 GB a 512 GB, lze kombinovat až do maximální velikosti paměti jednotky.
+- **S144m a S192m**: v přírůstcích po 256 GB, přičemž nejmenší jednotka je 512 GB. Jiné zvýšení hodnoty, například 512 GB a 768 GB, lze kombinovat až do maximální velikosti paměti jednotky.
+- **Typ třídy II**: v přírůstcích po 512 GB s nejmenší počáteční jednotkou 2 TB. Různá zvýšení, například 512 GB, 1 TB a 1,5 TB, lze kombinovat až do maximální velikosti paměti jednotky.
 
 Několik příkladů spuštění více instancí SAP HANA může vypadat podobně jako v následujícím příkladu.
 
-| SKU | Velikost paměti | Velikost úložiště | Velikosti s více databázemi |
+| Skladová položka | Velikost paměti | Velikost úložiště | Velikosti s více databázemi |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | instance 1x768-GB HANA<br /> nebo instance 1x512-GB + 1x256-GB<br /> nebo 3x256 Instances-GB | 
 | S72m | 1,5 TB | 6 TB | instance 3x512GB HANA<br />nebo instance 1x512-GB instance + 1x1-TB<br />nebo 6x256 Instances-GB<br />nebo 1x 1,5 TB instance | 
@@ -88,7 +90,7 @@ Několik příkladů spuštění více instancí SAP HANA může vypadat podobn�
 
 K dispozici jsou také jiné varianty. 
 
-## <a name="encryption-of-data-at-rest"></a>Šifrování dat v klidu
+## <a name="encryption-of-data-at-rest"></a>Šifrování dat v klidovém umístění
 Úložiště používané pro velkou instanci HANA používá transparentní šifrování dat, která jsou uložená na discích od konce roku 2018. V dřívějších nasazeních se můžete rozhodnout pro získání šifrovaných svazků. Pokud jste s touto možností rozhodnuti, můžete požádat o získání šifrovaných svazků online. Přesun z nešifrovaného na šifrované svazky je transparentní a nevyžaduje výpadky. 
 
 U třídy typu SKU je svazek, na kterém je spouštěcí logická jednotka uložená, zašifrovaný. V revizi 3 HANA velká instance s použitím třídy Type II SKU velké instance HANA budete muset zašifrovat spouštěcí logickou jednotku pomocí metod operačního systému. V revizních razítkech s velkým počtem instancí revize 4 HANA používá jednotka Type II svazek, který je spouštěcí LUN uložený a ve výchozím nastavení je šifrovaný. 
@@ -107,5 +109,5 @@ U třídy typu SKU je svazek, na kterém je spouštěcí logická jednotka ulož
 
 
 
-**Další postup**
+**Další kroky**
 - Odkazy [na podporované scénáře pro velké instance Hana](hana-supported-scenario.md)

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0bc03385cda8752571482cc3d74c0f3887b4656a
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 72f16463c7dfcd3d76db2d99e1805b0159261a55
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506182"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603710"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Zásady zabezpečení Azure monitorované pomocí Security Center
 
@@ -33,14 +33,10 @@ Další informace o integrovaných iniciativách, které jsou monitorovány nás
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o Azure Policy definice zásad zabezpečení v Security Center. Další informace o Security Center najdete v následujících článcích.
+V tomto článku jste se dozvěděli o Azure Policy definice zásad zabezpečení v Security Center. Další informace najdete v následujících článcích.
 
 * [Průvodce plánováním a provozem Azure Security Center](security-center-planning-and-operations-guide.md): Naučte se plánovat a pochopit hlediska návrhu v Azure Security Center.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Získejte odpovědi na nejčastější dotazy týkající se použití této služby.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení a dodržování předpisů Azure.
 * [Azure Policy](../governance/policy/overview.md): Naučte se auditovat a řídit prostředky Azure.
-
-Další informace o Azure Policy najdete v tématu [co je Azure Policy?](../governance/policy/overview.md).

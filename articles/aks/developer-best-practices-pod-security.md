@@ -3,16 +3,15 @@ title: Osvědčené postupy pro vývojáře – Pod zabezpečení ve službě Az
 description: Další informace pro vývojáře osvědčené postupy pro zabezpečení podů ve službě Azure Kubernetes Service (AKS)
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 17f281aeb2ef3f1f32f3e13fe66fe8b74b1d9116
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: eaeb81d7f93124f1f3dedf9676314b1b786d8571
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547672"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595837"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení pod ve službě Azure Kubernetes Service (AKS)
 
@@ -29,22 +28,22 @@ Můžete si také přečíst osvědčené postupy pro [zabezpečení clusteru][b
 
 ## <a name="secure-pod-access-to-resources"></a>Zabezpečení pod přístupu k prostředkům
 
-**Osvědčené postupy pro moduly** – Chcete-li spustit jako jiné uživatele nebo skupinu a omezit přístup k základní uzel procesů a služeb, nastavení zabezpečení pod kontextu. Přiřadit nejmenší počet požadovaná oprávnění.
+**Doprovodné materiály k osvědčeným postupům** – můžete spustit jako jiný uživatel nebo skupinu a omezit přístup k podkladovým procesům a službám uzlů, definovat pod nastavením kontextu zabezpečení. Přiřadit nejmenší počet požadovaná oprávnění.
 
-Pro vaše aplikace správně spustit, by měl spustit podů jako definované uživatele nebo skupiny a ne jako *kořenové*. `securityContext` Pro pod nebo kontejnerů umožňuje definovat nastavení, jako *Spustit_jako_uživatel* nebo *fsGroup* předpokládat, že příslušná oprávnění. Pouze požadovaného uživatele nebo skupiny oprávnění a nepoužívejte kontextu zabezpečení jako způsob předpokládat, že další oprávnění. Nastavení *runAsUser*, eskalace oprávnění a dalších možností pro Linux jsou k dispozici pouze v uzlech a luskech systému Linux.
+Aby vaše aplikace běžely správně, měly by být spuštěny v rámci definovaného uživatele nebo skupiny, nikoli jako *kořen*. `securityContext` pro pod nebo kontejner umožňuje definovat nastavení, jako je například *runAsUser* nebo *fsGroup* , aby se mohla předpokládat příslušná oprávnění. Pouze požadovaného uživatele nebo skupiny oprávnění a nepoužívejte kontextu zabezpečení jako způsob předpokládat, že další oprávnění. Nastavení *runAsUser*, eskalace oprávnění a dalších možností pro Linux jsou k dispozici pouze v uzlech a luskech systému Linux.
 
 Při spuštění jako uživatel bez kořenového kontejnery nelze vytvořit vazbu na privilegované porty v části 1 024. V tomto scénáři je možné ke skrytí skutečnost, že je aplikace spuštěna na konkrétním portu služby Kubernetes.
 
 Kontext zabezpečení pod můžete také definovat oprávnění pro přístup k procesů a služeb nebo další funkce. Můžete nastavit následující běžné definice kontext zabezpečení:
 
-* **allowPrivilegeEscalation** definuje, jestli se může převzít pod *kořenové* oprávnění. Navrhnout aplikace tak, že toto nastavení je vždycky nastavený na *false*.
-* **Možnosti Linux** nechat pod přístup k základní uzel procesy. Postará se přiřazení těchto možností. Přiřadit nejmenší počet potřebná oprávnění. Další informace najdete v tématu [Možnosti pro Linux][linux-capabilities].
-* **Popisky SELinux** je modul zabezpečení jádra systému Linux, který umožňuje definovat zásady přístupu pro přístup k službám, procesy a systému souborů. Znovu přiřadit nejmenší počet potřebná oprávnění. Další informace najdete v tématu [Možnosti SELinux v Kubernetes][selinux-labels] .
+* **allowPrivilegeEscalation** definuje, zda může rozhraním pod předpokládat *Kořenová* oprávnění. Navrhněte své aplikace, aby toto nastavení bylo vždycky nastavené na *false*.
+* **Funkce systému Linux** umožňují podkladové procesy přístupu pod uzlem. Postará se přiřazení těchto možností. Přiřadit nejmenší počet potřebná oprávnění. Další informace najdete v tématu [Možnosti pro Linux][linux-capabilities].
+* **SELinux Labels** je modul zabezpečení jádra pro Linux, který umožňuje definovat zásady přístupu pro služby, procesy a přístup k systému souborů. Znovu přiřadit nejmenší počet potřebná oprávnění. Další informace najdete v tématu [Možnosti SELinux v Kubernetes][selinux-labels] .
 
 Manifest YAML pod následující příklad nastaví kontext nastavení k definování zabezpečení:
 
-* Pod běží jako ID uživatele *1000* a ID skupiny součástí *2000*
-* Nelze zvýšit oprávnění k použití `root`
+* Pod se spustí jako ID uživatele *1000* a část id skupiny *2000* .
+* Nejde eskalovat oprávnění k použití `root`
 * Umožňuje Linux možnosti pro přístup k síťovým rozhraním a hodiny v reálném čase (hardware) hostiteli
 
 ```yaml
@@ -68,7 +67,7 @@ Operátor clusteru rozhodnout, jaká nastavení kontextu zabezpečení je nutné
 
 ## <a name="limit-credential-exposure"></a>Limit odhalení přihlašovacích údajů
 
-**Osvědčené postupy pro moduly** -nebudete definovat přihlašovací údaje v kódu aplikace. Pod žádost o přístup k dalším prostředkům pomocí spravované identity pro prostředky Azure. Digitální trezoru, jako je Azure Key Vault, by měla také sloužit k ukládání a načítání digitálních klíčů a přihlašovacích údajů. Spravované identity pod jsou určené pro použití jenom pro systémy Linux a image kontejnerů.
+**Doprovodné materiály k osvědčeným postupům** – nedefinujte přihlašovací údaje v kódu aplikace. Pod žádost o přístup k dalším prostředkům pomocí spravované identity pro prostředky Azure. Digitální trezoru, jako je Azure Key Vault, by měla také sloužit k ukládání a načítání digitálních klíčů a přihlašovacích údajů. Spravované identity pod jsou určené pro použití jenom pro systémy Linux a image kontejnerů.
 
 Pokud chcete omezit riziko vystavení v kódu aplikace přihlašovacích údajů, se vyhněte použití fixed nebo sdílené přihlašovací údaje. Přihlašovacím údajům nebo klíčům by neměla být obsažená přímo v kódu. Pokud tyto přihlašovací údaje jsou odhaleny, aplikace potřebuje aktualizovat a znovu nasadit. Lepším řešením je poskytnout podů vlastní identity a způsob, jak sami ověření, nebo automaticky načíst přihlašovací údaje z digitální trezoru.
 

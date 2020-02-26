@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: cd45d38759bcf41307ba42d68d504266719579d2
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 2d54c39577a359499cf6dc3aca84cebc4fa6e206
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493420"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598013"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
 
@@ -210,6 +210,24 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 <sup>1</sup> řada virtuálních počítačů může běžet na jednom z následujících procesorů: 2,2 GHz intel Xeon® E5-2660 v2, 2,4 GHz intel Xeon® E5-2673 V3 (Haswell) nebo 2,3 GHz Intel Xeon® E5-2673 v4 (Broadwell).  
 
 <br>
+
+## <a name="preview-dc-series"></a>Verze Preview: DC-Series
+
+Premium Storage: podporováno
+
+Ukládání Premium Storage do mezipaměti: podporováno
+
+DC-Series využívá nejnovější generaci procesorů Intel XEON s 2176G s využitím technologie SGX a s technologií Intel Turbo rozbušky může jít až o 4.7 GHz. 
+
+| Velikost          | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště a úložiště v mezipaměti: IOPS / MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS / MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+|---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
+| Standard_DC2s | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                          | 3200/48                                  | 2 / 1 500                                     |
+| Standard_DC4s | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                          | 6400/96                                  | 2 / 3000                                     |
+
+> [!IMPORTANT]
+>
+> Virtuální počítače DC-Series jsou [virtuální počítače generace 2](./linux/generation-2.md#creating-a-generation-2-vm) a podporují jenom `Gen2` image.
+
 
 ### <a name="ds-series"></a>DS-series  
 

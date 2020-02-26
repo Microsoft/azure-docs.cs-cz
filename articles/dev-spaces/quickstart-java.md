@@ -6,25 +6,25 @@ ms.topic: quickstart
 description: V tomto rychlém startu se dozvíte, jak pomocí Azure Dev Spaces a Visual Studio Code ladit a rychle iterovat aplikaci Java ve službě Azure Kubernetes.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Java, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 8ceb48bf60438442b63fab698091fdb5064793af
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c0062d7cda79cbe91dc7485baa33b60d318a8af0
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77025193"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605318"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>Rychlý Start: ladění a iterace v Kubernetes pomocí Visual Studio Code a Java-Azure Dev Spaces
 
 V tomto rychlém startu jste nastavili Azure Dev Spaces pomocí spravovaného clusteru Kubernetes a pomocí aplikace Java v Visual Studio Code mohli iterativní vývoj a ladění kódu v kontejnerech. Azure Dev Spaces umožňuje ladit a testovat všechny komponenty vaší aplikace ve službě Azure Kubernetes Service (AKS) s minimálním nastavením vývojového počítače. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
 - [Java Development Kit (JDK) 1.8.0 +](https://aka.ms/azure-jdks).
 - [Maven 3.5.0 +](https://maven.apache.org/download.cgi).
 - [Visual Studio Code](https://code.visualstudio.com/download).
 - Ladicí program [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) a [Java pro rozšíření Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds) pro Visual Studio Code.
-- [Rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 - [Git](https://www.git-scm.com/downloads)
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Vytvoření clusteru služby Azure Kubernetes
@@ -33,7 +33,7 @@ Cluster AKS je potřeba vytvořit v [podporované oblasti][supported-regions]. N
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Povolení Azure Dev Spaces v clusteru AKS

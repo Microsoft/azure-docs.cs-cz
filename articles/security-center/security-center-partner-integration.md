@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530948"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603808"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -27,7 +27,7 @@ Tento dokument vám pomůže se správou řešení zabezpečení již propojený
 > Podmnožina řešení zabezpečení byla vyřazena z 31. července 2019. Další informace a alternativní služby najdete v tématu [vyřazení funkcí Security Center (červenec 2019)](security-center-features-retirement-july2019.md#menu_solutions).
 
 ## <a name="integrated-azure-security-solutions"></a>Integrovaná řešení zabezpečení Azure
-Security Center umožňuje snadné povolení integrovaných řešení zabezpečení v Azure. Příklady výhod:
+Security Center umožňuje snadné povolení integrovaných řešení zabezpečení v Azure. Mezi výhody patří:
 
 - **Zjednodušené nasazení:** Security Center nabízí zjednodušené zřízení integrovaných partnerských řešení. Pro řešení, jako jsou antimalware a posouzení ohrožení zabezpečení, Security Center může zřídit agenta na virtuálních počítačích. U zařízení s bránou firewall může Security Center pořídit většinu požadovaných konfigurací sítě.
 - **Integrované detekce:** Události zabezpečení z partnerských řešení se automaticky shromažďují, agregují a zobrazují v rámci výstrah a incidentů služby Security Center. Tyto události jsou také sloučeny s detekcemi z jiných zdrojů a poskytují pokročilé možnosti detekce hrozeb.
@@ -47,7 +47,7 @@ Integrovaná řešení zabezpečení v současné době zahrnují posouzení ohr
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Správa integrovaných řešení zabezpečení Azure a dalších zdrojů dat
 
-1. Přihlaste se na web [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+1. Přihlaste se na web [Azure Portal ](https://azure.microsoft.com/features/azure-portal/).
 
 2. V **nabídce Microsoft Azure** vyberte **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
 
@@ -129,13 +129,13 @@ Než začnete, [vytvořte obor názvů Event Hubs](../event-hubs/event-hubs-crea
 
 #### <a name="stream-the-azure-activity-log-to-event-hubs"></a>Streamování protokolu aktivit Azure do služby Event Hubs
 
-V následujícím článku se zobrazí [Protokol aktivit streamování, který Event Hubs](../azure-monitor/platform/activity-logs-stream-event-hubs.md)
+Event Hubs najdete v následujícím článku [Protokol aktivit streamování](../azure-monitor/platform/activity-logs-stream-event-hubs.md).
 
 #### <a name="install-a-partner-siem-connector"></a>Instalace konektoru SIEM partnera 
 
 Směrování dat monitorování do centra událostí pomocí Azure Monitor umožňuje snadnou integraci s nástroji pro SIEM a monitorování partnerů.
 
-Seznam [podporovaných systémů Siem](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub) najdete v následujícím článku.
+Seznam [podporovaných systémů Siem](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)najdete v následujícím článku.
 
 ### <a name="example-for-querying-data"></a>Příklad pro dotazování dat 
 
@@ -143,15 +143,13 @@ Tady jsou některé dotazy Splunk, které můžete použít k získání údajů
 
 | **Popis dotazu** | **Dotaz** |
 |----|----|
-| Všechna upozornění| index = hlavní Microsoft. Security/umístění/výstrahy|
+| Všechny výstrahy| index = hlavní Microsoft. Security/umístění/výstrahy|
 | Shrnout počet operací podle jejich názvu| index = Main sourceType = "Amal: Security" \| Table NázevOperace \| stat Count by OperationName|
 | Získat informace o výstrahách: čas, název, stav, ID a předplatné | index = hlavní Microsoft. Security/umístění/výstrahy \| tabulce \_čas, vlastnosti. eventName, State, Properties. operationId, am_subscriptionId |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se naučili integrovat partnerská řešení do služby Security Center. Další informace o službě Security Center najdete v následujících článcích:
+V tomto článku jste se naučili integrovat partnerská řešení do služby Security Center. Další informace o Security Center najdete v následujícím článku:
 
 * [Monitorování stavu zabezpečení ve službě Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md). Získejte odpovědi na nejčastější dotazy k používání služby Security Center.
-* [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/). Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

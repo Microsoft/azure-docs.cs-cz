@@ -4,12 +4,12 @@ description: Poskytuje pokyny k odstraňování potíží, které vám pomůžou
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 01fff1d970a76d0d4d38c2536b41d58a4db301c8
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: f8988d3df7f61d2fce4c8fa5b49e42e872c185b8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198608"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603138"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Řešení potíží s pomalým zálohováním souborů a složek ve službě Azure Backup
 
@@ -44,11 +44,11 @@ Důrazně doporučujeme, abyste si přesvědčili, že [služba Azure Backup Ser
 
 Kritická místa v zálohovaném počítači můžou způsobit zpoždění. Například možnost počítače ke čtení nebo zápisu na disk nebo k dostupné šířce pásma pro posílání dat přes síť může způsobit problémová místa.
 
-Systém Windows poskytuje integrovaný nástroj s názvem [sledování výkonu](https://technet.microsoft.com/magazine/2008.08.pulse.aspx) (PerfMon) k detekci těchto kritických bodů.
+Systém Windows poskytuje integrovaný nástroj s názvem [sledování výkonu](h https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (PerfMon) k detekci těchto kritických bodů.
 
 Tady jsou některé čítače a rozsahy výkonu, které mohou být užitečné při diagnostice kritických bodů pro optimální zálohování.
 
-| Čítač | Status |
+| Counter | Status |
 | --- | --- |
 | Logický disk (fyzický disk) –% nečinný |• 100% nečinných až 50% nečinných = v pořádku</br>• 49% nečinných až 20% nečinných = Warning nebo monitor</br>• 19% nečinných po 0% nečinnosti = kritická nebo mimo specifikaci |
 | Logický disk (fyzický disk) –% střední doba disku pro čtení nebo zápis |• 0,001 MS až 0,015 MS = v pořádku</br>• 0,015 ms až 0,025 MS = Warning nebo monitor</br>• 0,026 MS nebo delší = kritická nebo mimo specifikaci |

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/18/2020
+ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 582646b6e1c50c8e6835fafaa8a27c7386b4695c
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: a314af3d53936a58f9dfb3694ec1114ecdc3d521
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429653"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587001"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Kurz: Vytvoření brány NAT pomocí Azure Portal a testování služby NAT
 
@@ -30,10 +30,7 @@ V tomto kurzu vytvoříte bránu NAT, která poskytuje odchozí připojení k vi
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-> [!IMPORTANT]
-> Po povolení služby Virtual Network NAT [Preview](./nat-overview.md#enable-preview) ve vašem předplatném použijte https://aka.ms/natportal pro přístup k portálu.
-
-Přihlaste se k webu [Portál Azure](https://aka.ms/natportal).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>Příprava zdroje na odchozí provoz
 

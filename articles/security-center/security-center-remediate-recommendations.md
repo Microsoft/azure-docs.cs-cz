@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 325c68e5e4531e5519596bea00c370c26460a8ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6863f4bbfc6aabc4e7bf4314ad26dd4590d31362
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981914"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603502"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Oprava doporučení v Azure Security Center
 
@@ -80,7 +80,7 @@ Operace opravy používá volání rozhraní API pro nasazení šablony nebo opr
 |Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat|Tato akce povolí rozšířené zabezpečení dat (ADS) na těchto vybraných serverech a jejich databázích. <br>**Poznámka:**<ul><li>Pro každou oblast a skupinu prostředků vybraných serverů SQL se vytvoří účet úložiště pro ukládání výsledků kontroly a sdílí se se všemi servery v této oblasti. <</li><li>Na reklamu se účtuje $15 na SQL Server.</li></ul>||
 |Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení|Tato akce povolí posouzení ohrožení zabezpečení SQL na těchto vybraných serverech a jejich databázích. <br>**Poznámka:**<ul><li>Posouzení ohrožení zabezpečení SQL je součástí balíčku SQL Advanced Data Security (ADS). Pokud již není služba ADS povolena, bude na serveru SQL Server automaticky povolena.</li><li>Pro každou oblast a skupinu prostředků vybraných serverů SQL se vytvoří účet úložiště pro ukládání výsledků kontroly a sdílí se se všemi instancemi v této oblasti.</li><li>Na reklamu se účtuje $15 na SQL Server.</li></ul>||
 |Mělo by být povoleno transparentní šifrování dat u databází SQL.|Tato akce povolí ve vybraných databázích SQL Database transparentní šifrování dat (TDE). <br>**Poznámka**: ve výchozím nastavení se použijí klíče TDE spravované službou.
-|Měl by se povolit zabezpečený přenos do účtů úložiště|Tato akce aktualizuje zabezpečení účtu úložiště tak, aby povolovala požadavky pouze pomocí zabezpečených připojení. (HTTPS). <br>**Poznámka:**<ul><li>Všechny požadavky využívající protokol HTTP budou odmítnuty.</li><li>Pokud používáte službu souborů Azure, připojení bez šifrování selže, včetně scénářů využívajících SMB 2,1, SMB 3,0 bez šifrování a některých charakterů klienta SMB systému Linux. Získejte další informace.</li></ul>|
+|Zabezpečený přenos do účtů úložiště by měl být povolený.|Tato akce aktualizuje zabezpečení účtu úložiště tak, aby povolovala požadavky pouze pomocí zabezpečených připojení. (HTTPS). <br>**Poznámka:**<ul><li>Všechny požadavky využívající protokol HTTP budou odmítnuty.</li><li>Pokud používáte službu souborů Azure, připojení bez šifrování selže, včetně scénářů využívajících SMB 2,1, SMB 3,0 bez šifrování a některých charakterů klienta SMB systému Linux. Další informace</li></ul>|
 |Webová aplikace by měla být přístupná jen přes HTTPS|Tato akce přesměruje veškerý provoz z HTTP na HTTPS na vybraných prostředcích. <br>**Poznámka:**<ul><li>Koncový bod HTTPS, který nemá certifikát SSL, se v prohlížeči zobrazí se stavem "Chyba ochrany osobních údajů". Takže uživatelé s vlastní doménou musí ověřit, jestli si nastavili certifikát SSL.</li><li>Zajistěte, aby brána firewall paketů a webových aplikací chránila službu App Service a umožnila předávání relací HTTPS.</li></ul>|
 |Funkce aplikace by měla být přístupná jen přes HTTPS|Tato akce přesměruje veškerý provoz z HTTP na HTTPS na vybraných prostředcích. <br>**Poznámka:**<ul><li>Koncový bod HTTPS, který nemá certifikát SSL, se v prohlížeči zobrazí se stavem "Chyba ochrany osobních údajů". Takže uživatelé s vlastní doménou musí ověřit, jestli si nastavili certifikát SSL.</li><li>Zajistěte, aby brána firewall paketů a webových aplikací chránila službu App Service a umožnila předávání relací HTTPS.</li></ul>|
 |Aplikace API by měla být přístupná jen přes protokol HTTPS|Tato akce přesměruje veškerý provoz z HTTP na HTTPS na vybraných prostředcích. <br>**Poznámka:**<ul><li>Koncový bod HTTPS, který nemá certifikát SSL, se v prohlížeči zobrazí se stavem "Chyba ochrany osobních údajů". Takže uživatelé s vlastní doménou musí ověřit, jestli si nastavili certifikát SSL.</li><li>Zajistěte, aby brána firewall paketů a webových aplikací chránila službu App Service a umožnila předávání relací HTTPS.</li></ul>|

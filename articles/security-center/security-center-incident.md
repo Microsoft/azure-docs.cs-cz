@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: b2ab769fc2595af9fd1ea41f1ef492944cb5e7fa
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: a600b17ce25a467b788671e12e3c2425ad20b809
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665764"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604080"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Správa incidentů zabezpečení v Azure Security Center
 
@@ -57,11 +57,10 @@ Následující témata vysvětlují, jak Security Center používá jinou teleme
 * [Výstrahy vrstvy služeb](security-center-alerts-service-layer.md)
 * [Detekce hrozeb pro Azure WAF a Azure DDoS Protection](security-center-alerts-integration.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 V tomto dokumentu jste zjistili, jak ve službě Azure Security Center používat funkci incidentů zabezpečení. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Výstrahy zabezpečení v Azure Security Center](security-center-alerts-overview.md).
 * [Správa výstrah zabezpečení](security-center-managing-and-responding-alerts.md)
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md)
-* [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
 * [Blog o zabezpečení Azure](https://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

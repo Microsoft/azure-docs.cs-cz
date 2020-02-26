@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 0c7ca6236adc5a476fbcf2bfbd54f4cc283bd607
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 7d382ace16305d38b9a65b3a857fd27dfa9e3a2b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201968"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603880"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Azure Security Center a virtuální počítače s Linuxem
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
@@ -46,7 +46,7 @@ Abyste mohli začít s Azure Security Center, je třeba znát a zvážit násled
 
 * Musíte mít předplatné Microsoft Azure. V tématu [Ceny Security Center](https://azure.microsoft.com/pricing/details/security-center/) najdete další informace o úrovních Free a Standard služby Security Center.
 * Naplánujte své přijetí Security Center. V tématu [Průvodce plánováním a provozem Azure Security Center](security-center-planning-and-operations-guide.md) najdete další informace o tom, na co si dát pozor při plánování a provozu.
-* Informace týkající se podpory operačních systémů najdete v tématu [Nejčastější dotazy k Azure Security Center](security-center-faq.md). 
+* Informace týkající se podpory operačních systémů najdete v tématu [Nejčastější dotazy k Azure Security Center](faq-vms.md). 
 
 ## <a name="set-security-policy"></a>Nastavení zásad zabezpečení
 Je nutné povolit shromažďování dat, aby Azure Security Center mohl shromažďovat informace, které potřebuje k poskytování doporučení a výstrah generovaných na základě vámi nakonfigurovaných zásad zabezpečení. Na obrázku níže vidíte, že **Shromažďování dat** bylo **Zapnuto**.
@@ -68,10 +68,10 @@ Po nastavení zásad zabezpečení bude Security Center analyzovat stav zabezpe�
 | --- | --- |
 | Povolit shromažďování dat pro předplatná|Doporučuje, abyste zapnuli shromažďování dat v zásadách zabezpečení pro každé ze svých předplatných a všechny virtuální počítače ve svých předplatných. |
 | Napravit ohrožení zabezpečení operačního systému|Doporučuje upravit konfiguraci operačního systému tak, aby byla v souladu s doporučenými pravidly konfigurace, například abyste zakázali ukládání hesel. |
-| Nainstalovat aktualizace systému|Doporučuje nasazení chybějících aktualizací zabezpečení systému a kritických aktualizací do virtuálních počítačů. |
+| Použít aktualizace systému|Doporučuje nasazení chybějících aktualizací zabezpečení systému a kritických aktualizací do virtuálních počítačů. |
 | Restartovat po aktualizacích systému|Doporučuje, abyste restartovali virtuální počítač k dokončení procesu instalace aktualizací systému. |
 | Povolit agenta virtuálního počítače|Umožňuje vám zobrazit, které virtuální počítače vyžadují agenta virtuálního počítače. Agent virtuálního počítače musí být nainstalovaný na virtuálních počítačích, aby mohl poskytovat vyhledávání oprav, vyhledávání směrných plánů a antimalwarové programy. Agent virtuálního počítače je ve výchozím nastavení nainstalován na virtuálních počítačích nasazených z Azure Marketplace. V článku [Agenti a rozšíření virtuálních počítačů – Část 2](https://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) najdete informace o tom, jak agenta virtuálního počítače nainstalovat. |
-| Použít šifrování disku |Doporučuje, abyste disky svých virtuálních počítačů zašifrovali pomocí služby Azure Disk Encryption (platí pro virtuální počítače s Windows a Linuxem). Na virtuálním počítači se doporučuje šifrování svazku operačního systému i svazku s daty. |
+| Použít šifrování disků |Doporučuje, abyste disky svých virtuálních počítačů zašifrovali pomocí služby Azure Disk Encryption (platí pro virtuální počítače s Windows a Linuxem). Na virtuálním počítači se doporučuje šifrování svazku operačního systému i svazku s daty. |
 
 
 > [!NOTE]
@@ -90,7 +90,7 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 
 Vyberte výstrahu zabezpečení, abyste se dozvěděli další informace o událostech, které výstrahu vygenerovaly a kroky, pokud existují, které je třeba provést k nápravě útoku. Výstrahy zabezpečení jsou seskupené podle typu a data.
 
-## <a name="monitor-security-health"></a>Monitorovat stav zabezpečení
+## <a name="monitor-security-health"></a>Monitorování stavu zabezpečení
 Po povolení [zásad zabezpečení](tutorial-security-policy.md) pro prostředky předplatného bude služba Security Center analyzovat zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení.  V okně **Stav zabezpečení prostředků** můžete zobrazit stav zabezpečení svých prostředků spolu s případnými problémy. Když na dlaždici **Stav zabezpečení prostředků** kliknete na **Virtuální počítače**, otevře se okno **Virtuální počítače**, které obsahuje doporučení pro vaše virtuální počítače. 
 
 ![Stav zabezpečení](./media/security-center-linux-virtual-machine/security-center-linux-virtual-machine-fig4.png)
@@ -105,5 +105,5 @@ Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato t
 
 * [Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md) – Zjistěte, jak konfigurovat zásady zabezpečení pro svá předplatná Azure a skupiny prostředků.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
-* [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
+* [Nejčastější dotazy – Virtual Machines](faq-vms.md) – Přečtěte si nejčastější dotazy týkající se používání služby.
 

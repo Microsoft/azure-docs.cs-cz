@@ -2,17 +2,14 @@
 title: Preview – vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS)
 description: Naučte se rychle vytvořit cluster Kubernetes a nasadit aplikaci v kontejneru Windows serveru ve službě Azure Kubernetes Service (AKS) pomocí rozhraní příkazového řádku Azure CLI.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/27/2020
-ms.author: mlearned
-ms.openlocfilehash: 0583e773a344a6786d13a5da30be24369d75f11f
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 3a3374ea8e88b2494bb48c6835b4c22f1256ec84
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251698"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592658"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Preview – vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -30,7 +27,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.61 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Po vytvoření clusteru, který může spouštět kontejnery Windows serveru, musíte přidat další fond uzlů. Přidání dalšího fondu uzlů je zahrnuto v pozdějším kroku, ale nejdřív musíte povolit několik funkcí verze Preview.
 

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 340f91fc926c155f95449f7cc49c214f46d1ff35
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 81bbd476cea0472647ca183fb188fc13725d1469
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423653"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597622"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Formát Parquet v Azure Data Factory
 
@@ -30,7 +30,7 @@ Formát Parquet se podporuje pro následující konektory: [Amazon S3](connector
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Vlastnost Type datové sady musí být nastavená na **Parquet**. | Ano      |
 | location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location`. **Podrobnosti najdete v článku o konektoru – > Vlastnosti datové sady**. | Ano      |
-| compressionCodec | Kompresní kodek, který se má použít při zápisu do souborů Parquet Při čtení ze souborů Parquet Data Factory automaticky určit Kompresní kodek na základě metadat souboru.<br>Podporované typy jsou "**none**", "**gzip**", "**přichycení**" (výchozí) a "**LZO**". Poznámka: v současné době kopírování nepodporuje LZO při čtení a zápisu Parquet souborů. | Ne       |
+| compressionCodec | Kompresní kodek, který se má použít při zápisu do souborů Parquet Při čtení ze souborů Parquet určují datové továrny automaticky kodek komprese na základě metadat souboru.<br>Podporované typy jsou "**none**", "**gzip**", "**přichycení**" (výchozí) a "**LZO**". Poznámka: v současné době kopírování nepodporuje LZO při čtení a zápisu Parquet souborů. | Ne       |
 
 > [!NOTE]
 > Prázdné znaky v názvu sloupce nejsou pro soubory Parquet podporovány.
@@ -92,12 +92,13 @@ Parquet komplexní datové typy se momentálně nepodporují (např. MAP, LIST, 
 ## <a name="using-self-hosted-integration-runtime"></a>Použití Integration Runtime pro místní hostování
 
 > [!IMPORTANT]
-> Pro kopii, která je oprávněná pro místní hostování Integration Runtime například mezi místními a cloudovým úložištěm dat, pokud soubory Parquet nekopírujete **tak, jak jsou**, je nutné na počítač IR nainstalovat **64-bit JRE 8 (Java Runtime Environment) nebo OpenJDK** . Další podrobnosti najdete v následujícím článku.
+> Pro kopii, která je oprávněná pro místní hostování Integration Runtime například mezi místními a cloudovým úložištěm dat, pokud soubory Parquet nekopírujete **tak, jak jsou**, je třeba nainstalovat **64-bit JRE 8 (Java Runtime Environment) nebo OpenJDK** and **Microsoft Visual C++ 2010 Redistributable Package** do počítače IR. Další podrobnosti najdete v následujícím odstavci.
 
 Pro kopírování běžící v místním prostředí IR s Parquet serializací/deserializace vyhledá ADF modul runtime Java tím, že nejprve zkontroluje *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* registru pro JRE, pokud se nenalezne, podruhé kontroluje proměnnou systému *`JAVA_HOME`* pro OpenJDK.
 
 - **Použití JRE**: 64-bit IR vyžaduje 64-bit JRE. Můžete ho najít [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
 - **Použití OpenJDK**: podporuje se od verze IR 3,13. Zabalit soubor JVM. dll se všemi ostatními požadovanými sestaveními OpenJDK do místního počítače IR a nastavte proměnnou prostředí systému JAVA_HOME odpovídajícím způsobem.
+- **Instalace balíčku Visual C++ 2010 Redistributable**: Visual C++ 2010 Redistributable Package není nainstalovaný s instalacemi v místním prostředí IR. Můžete ho najít [tady](https://www.microsoft.com/download/details.aspx?id=14632).
 
 > [!TIP]
 > Pokud kopírujete data do nebo z formátu Parquet pomocí Integration Runtime v místním prostředí a omylem zaznamenáte chybu při vyvolání Java, zpráva: **Java. lang. OutOfMemoryError: prostor haldy Java**", můžete přidat proměnnou prostředí `_JAVA_OPTIONS` v počítači, který je hostitelem prostředí IR v místním prostředí, a upravit tak minimální/maximální velikost haldy pro JVM, abyste mohli takovou kopii provést a pak znovu spustit kanál.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 6ec818ff77664fcc038412f79fffc1e3e05b82f0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294248"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603749"
 ---
 # <a name="supported-platforms"></a>Podporované platformy 
 
@@ -43,7 +43,7 @@ V následujících oddílech jsou uvedeny podporované serverové operační sys
 
 |OS|Podporováno aplikací Azure Security Center|Podpora integrace s Microsoft Defender ATP|
 |:---|:-:|:-:|
-|Windows Server 2019|✔|×|
+|Windows Server. 2019|✔|X|
 |Windows Server 2016|✔|✔|
 |Windows Server 2012 R2|✔|✔|
 |Windows Server 2008 R2|✔|✔|
@@ -56,7 +56,7 @@ Azure Security Center se integruje se službami Azure za účelem monitorování
 
 ### Operační systémy Linux<a name="os-linux"></a>
 
-64 bitů
+64bitový
 
 * CentOS 6 a 7
 * Amazon Linux 2017.09
@@ -66,7 +66,7 @@ Azure Security Center se integruje se službami Azure za účelem monitorování
 * Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
 * SUSE Linux Enterprise Server 12
 
-32 bitů
+32bitový
 * CentOS 6
 * Oracle Linux 6
 * Red Hat Enterprise Linux Server 6
@@ -105,16 +105,16 @@ Azure Security Center podporují následující prostředky Azure PaaS:
 * Účet Batch
 * Účet Service Fabric
 * Účet Automation
-* Nástroj pro vyrovnávání zatížení
+* Load Balancer
 * Hledat
-* Názvový prostor služby Service Bus
+* Obor názvů služby Service Bus
 * Stream Analytics
 * Obor názvů centra událostí
 * Logické aplikace
 * Redis
-* Analýza Data Lake
+* Data Lake Analytics
 * Data Lake Store
-* Key Vault
+* Trezor klíčů
 
 Další informace o podporovaných funkcích pro výše uvedený seznam prostředků PaaS najdete v tématu [funkce podporované službami PaaS](security-center-services.md#paas-services).
 
@@ -127,5 +127,3 @@ Také je podporována ochrana pro Virtual Machines umístěná v Azure Stack. Da
 - Naučte se [plánovat a porozumět hlediskům návrhu, které je potřeba přijmout Azure Security Center](security-center-planning-and-operations-guide.md).
 - Seznamte [se s funkcemi dostupnými pro různá cloudová prostředí](security-center-services.md).
 - Přečtěte si další informace o [detekci hrozeb pro virtuální počítače & serverech v Azure Security Center](security-center-alerts-iaas.md).
-- Přečtěte si [Nejčastější dotazy týkající se použití Azure Security Center](security-center-faq.md).
-- Přečtěte si [blogové příspěvky o zabezpečení Azure a dodržování předpisů](https://blogs.msdn.com/b/azuresecurity/).

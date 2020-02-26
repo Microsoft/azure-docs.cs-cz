@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 831c771da385ef6faeba194878ca53ede34ccc0a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816640"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598563"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -22,32 +22,30 @@ Aby bylo možné používat sdílenou složku Azure mimo oblast Azure, ve které
 Sdílené složky Azure můžete používat v instalaci Windows na virtuálním počítači Azure nebo v místním prostředí. Následující tabulka uvádí, které verze operačního systému a v jakém prostředí podporují přístup ke sdíleným složkám:
 
 | Verze systému Windows        | Verze protokolu SMB | Možnost připojit na virtuálním počítači Azure | Možnost připojit v místním prostředí |
-|------------------------|-------------|-----------------------|----------------------|
-| Windows Server. 2019    | SMB 3.0 | Ano | Ano |
+|------------------------|-------------|-----------------------|-----------------------|
+| Windows Server 2019 | SMB 3.0 | Ano | Ano |
 | Windows 10<sup>1</sup> | SMB 3.0 | Ano | Ano |
 | Půlroční kanál Windows serveru<sup>2</sup> | SMB 3.0 | Ano | Ano |
-| Windows Server 2016    | SMB 3.0     | Ano                   | Ano                  |
-| Windows 8.1            | SMB 3.0     | Ano                   | Ano                  |
-| Windows Server 2012 R2 | SMB 3.0     | Ano                   | Ano                  |
-| Windows Server 2012    | SMB 3.0     | Ano                   | Ano                  |
-| Windows 7              | SMB 2.1     | Ano                   | Ne                   |
-| Windows Server 2008 R2 | SMB 2.1     | Ano                   | Ne                   |
+| Windows Server 2016 | SMB 3.0 | Ano | Ano |
+| Windows 8.1 | SMB 3.0 | Ano | Ano |
+| Windows Server 2012 R2 | SMB 3.0 | Ano | Ano |
+| Windows Server 2012 | SMB 3.0 | Ano | Ano |
+| Systém Windows 7<sup>3</sup> | SMB 2.1 | Ano | Ne |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ano | Ne |
 
-<sup>1</sup> Windows 10, verze 1507, 1607, 1703, 1709, 1803, 1809 a 1903.  
-<sup>2</sup> . Windows Server, verze 1803, 1809 a 1903.
+<sup>1</sup> Windows 10, verze 1507, 1607, 1709, 1803, 1809, 1903 a 1909.  
+<sup>2</sup> . Windows Server, verze 1809, 1903 a 1909.  
+<sup>3</sup> . Pravidelná podpora Microsoftu pro Windows 7 a Windows Server 2008 R2 skončila. Další podporu pro aktualizace zabezpečení je možné zakoupit jenom prostřednictvím [programu Extended Security Update (EVJ)](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates). Důrazně doporučujeme tyto operační systémy migrovat.
 
 > [!Note]  
 > Vždy doporučujeme získat nejnovější aktualizaci KB pro vaši verzi systému Windows.
 
+## <a name="prerequisites"></a>Předpoklady 
+* **Název účtu úložiště:** K připojení sdílené složky Azure budete potřebovat název účtu úložiště.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* **Klíč účtu úložiště:** K připojení sdílené složky Azure budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
-## <a name="prerequisites"></a>Požadavky 
-* **Název účtu úložiště**: Pokud chcete připojit sdílenou složku Azure, budete potřebovat název účtu úložiště.
-
-* **Klíč účtu úložiště**: Pokud chcete připojit sdílenou složku Azure, budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
-
-* **Ujistěte se, že je port 445 otevřený**: Protokol SMB vyžaduje, aby byl otevřený port TCP 445. Pokud je port 445 zablokován, připojení se nezdaří. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Další informace o [různých způsobech blokovaného alternativního řešení najdete na portu 445](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
+* **Zkontrolujte, že je otevřený port 445:** Protokol SMB vyžaduje otevřený port TCP 445. Pokud je port 445 zablokovaný, připojení selžou. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Další informace o [různých způsobech blokovaného alternativního řešení najdete na portu 445](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
 
     Následující kód PowerShellu předpokládá, že máte nainstalovaný modul Azure PowerShell. Další informace najdete v tématu [instalace Azure PowerShell modulu](https://docs.microsoft.com/powershell/azure/install-az-ps) . Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
@@ -82,7 +80,7 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 ## <a name="using-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Pokud chcete používat sdílenou složku Azure s Windows, musíte ji buď připojit, což znamená přiřadit jí písmeno jednotky nebo cestu k přípojnému bodu, nebo k ní přistupovat přes její [cestu UNC](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx). 
 
-Na rozdíl od ostatních sdílených složek SMB, se kterými jste možná pracovali, jako jsou například sdílené složky SMB hostované na Windows Serveru, serveru Linux Samba nebo zařízení NAS, sdílené složky Azure v současné době nepodporují ověřování protokolu Kerberos pomocí identity Active Directory (AD) ani Azure Active Directory (AAD). Na této funkci však [pracujeme](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles). Místo toho musíte ke sdílené složce Azure přistupovat pomocí klíče účtu úložiště, ve kterém se sdílená složka nachází. Klíč účtu úložiště je klíč správce pro účet úložiště zahrnující oprávnění správce ke všem souborům a složkám v rámci sdílené složky, ke které přistupujete, a ke všem sdíleným složkám a dalším prostředkům úložiště (objekty blob, fronty, tabulky atd.) ve vašem účtu úložiště. Pokud to pro vaši úlohu není dostatečné, v přechodném období do veřejného zpřístupnění chybějícího ověřování protokolu Kerberos založeného na AAD a podpory ACL může tento nedostatek vyřešit [Synchronizace souborů Azure](storage-files-planning.md#data-access-method).
+Na rozdíl od ostatních sdílených složek SMB, se kterými jste možná pracovali, jako jsou například sdílené složky SMB hostované na Windows Serveru, serveru Linux Samba nebo zařízení NAS, sdílené složky Azure v současné době nepodporují ověřování protokolu Kerberos pomocí identity Active Directory (AD) ani Azure Active Directory (AAD). Na této funkci však [pracujeme](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles). Místo toho musíte ke sdílené složce Azure přistupovat pomocí klíče účtu úložiště, ve kterém se sdílená složka nachází. Klíč účtu úložiště je klíč správce pro účet úložiště, včetně oprávnění správce ke všem souborům a složkám v rámci sdílené složky, ke které přistupujete, a pro všechny sdílené složky a další prostředky úložiště (objekty blob, fronty, tabulky atd.). v rámci vašeho účtu úložiště. Pokud to pro vaši úlohu není dostatečné, v přechodném období do veřejného zpřístupnění chybějícího ověřování protokolu Kerberos založeného na AAD a podpory ACL může tento nedostatek vyřešit [Synchronizace souborů Azure](storage-sync-files-planning.md).
 
 Při migraci obchodních aplikací očekávajících sdílenou složku SMB metodou „lift and shift“ do Azure se jako alternativa k provozu vyhrazeného souborového serveru Windows na virtuálním počítači Azure běžně používá sdílená složka Azure. Jedním z důležitých aspektů úspěšné migrace obchodní aplikace, která má používat sdílenou složku Azure, je to, že řada obchodních aplikací se spouští v kontextu vyhrazeného účtu služby s omezenými systémovými oprávněními, a ne v kontextu účtu správce virtuálního počítače. Proto je potřeba zajistit připojení a uložení přihlašovacích údajů pro sdílenou složku Azure z kontextu účtu služby, a nikoli účtu správce.
 
@@ -207,7 +205,7 @@ Remove-PSDrive -Name <desired-drive-letter>
 7. Až budete připraveni sdílenou složku Azure odpojit, můžete to provést tak, že v Průzkumníku souborů kliknete pravým tlačítkem na položku sdílené složky v části **Umístění v síti** a vyberete **Odpojit**.
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Přístup ke snímkům sdílené složky z Windows
-Pokud jste ručně nebo automaticky prostřednictvím skriptu nebo služby jako Azure Backup pořídili snímek sdílené složky, můžete ve Windows zobrazit předchozí verze sdílené složky, adresáře nebo konkrétního souboru ze sdílené složky. Snímek sdílené složky můžete pořídit pomocí webu [Azure Portal](storage-how-to-use-files-portal.md), [Azure PowerShellu](storage-how-to-use-files-powershell.md) nebo [Azure CLI](storage-how-to-use-files-cli.md).
+Pokud jste ručně nebo automaticky prostřednictvím skriptu nebo služby jako Azure Backup pořídili snímek sdílené složky, můžete ve Windows zobrazit předchozí verze sdílené složky, adresáře nebo konkrétního souboru ze sdílené složky. Snímek sdílené složky můžete pořídit z [Azure Portal](storage-how-to-use-files-portal.md), [Azure POWERSHELL](storage-how-to-use-files-powershell.md)a [Azure CLI](storage-how-to-use-files-cli.md).
 
 #### <a name="list-previous-versions"></a>Výpis předchozích verzí
 Přejděte k položce nebo nadřazené položce, kterou je potřeba obnovit. Dvojím kliknutím přejděte do požadovaného adresáře. Klikněte pravým tlačítkem a v nabídce vyberte **Vlastnosti**.
@@ -233,16 +231,16 @@ Následující tabulka obsahuje podrobné informace o stavu protokolu SMB 1 v je
 
 | Verze systému Windows                           | Výchozí stav protokolu SMB 1 | Metoda zakázání/odebrání       | 
 |-------------------------------------------|----------------------|-----------------------------|
-| Windows Server. 2019                       | Zakázáno             | Odebrání pomocí funkce Windows |
+| Windows Server 2019                       | Zakázáno             | Odebrání pomocí funkce Windows |
 | Windows Server verze 1709 nebo novější            | Zakázáno             | Odebrání pomocí funkce Windows |
 | Windows 10 verze 1709 nebo novější                | Zakázáno             | Odebrání pomocí funkce Windows |
-| Windows Server 2016                       | Enabled              | Odebrání pomocí funkce Windows |
-| Windows 10 verze 1507, 1607 a 1703 | Enabled              | Odebrání pomocí funkce Windows |
-| Windows Server 2012 R2                    | Enabled              | Odebrání pomocí funkce Windows | 
-| Windows 8.1                               | Enabled              | Odebrání pomocí funkce Windows | 
-| Windows Server 2012                       | Enabled              | Zakázání pomocí registru       | 
-| Windows Server 2008 R2                    | Enabled              | Zakázání pomocí registru       |
-| Windows 7                                 | Enabled              | Zakázání pomocí registru       | 
+| Windows Server 2016                       | Povoleno              | Odebrání pomocí funkce Windows |
+| Windows 10 verze 1507, 1607 a 1703 | Povoleno              | Odebrání pomocí funkce Windows |
+| Windows Server 2012 R2                    | Povoleno              | Odebrání pomocí funkce Windows | 
+| Windows 8.1                               | Povoleno              | Odebrání pomocí funkce Windows | 
+| Windows Server 2012                       | Povoleno              | Zakázání pomocí registru       | 
+| Windows Server 2008 R2                    | Povoleno              | Zakázání pomocí registru       |
+| Windows 7                                 | Povoleno              | Zakázání pomocí registru       | 
 
 ### <a name="auditing-smb-1-usage"></a>Auditování využití protokolu SMB 1
 > Platí pro Windows Server 2019, půlroční kanál Windows serveru (verze 1709 a 1803), Windows Server 2016, Windows 10 (verze 1507, 1607, 1703, 1709 a 1803), Windows Server 2012 R2 a Windows 8.1
@@ -286,7 +284,7 @@ Proces odebrání dokončíte restartováním počítače.
 ### <a name="disabling-smb-1-on-legacy-versions-of-windowswindows-server"></a>Zakázání protokolu SMB 1 ve starších verzích Windows a Windows Serveru
 > Platí pro Windows Server 2012, Windows Server 2008 R2 a Windows 7.
 
-Ve starších verzích Windows a Windows Serveru není možné protokol SMB 1 zcela odebrat, ale prostřednictvím registru je možné ho zakázat. Pokud chcete zakázat protokol SMB 1, vytvořte v rámci `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters` nový klíč registru `SMB1` typu `DWORD` s hodnotou `0`.
+Ve starších verzích Windows a Windows Serveru není možné protokol SMB 1 zcela odebrat, ale prostřednictvím registru je možné ho zakázat. Pokud chcete zakázat protokol SMB 1, vytvořte v rámci `SMB1` nový klíč registru `DWORD` typu `0` s hodnotou `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters`.
 
 Můžete to také snadno provést pomocí následující rutiny PowerShellu:
 
