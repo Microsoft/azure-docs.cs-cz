@@ -4,20 +4,18 @@ summary: Azure Open DataSets nabízí kurátorovaná a vyčištěná data, včet
 metadata:
   title: Dokumentace ke službě Open Datasets – kurzy, reference k rozhraní API – Azure
   description: Azure Open DataSets nabízí kurátorovaná a vyčištěná data, včetně údajů o počasí, sčítání lidu a svátcích, která můžete s minimální přípravou používat k rozšiřování modelů ML.
-  services: machine-learning
-  ms.service: machine-learning
-  ms.subservice: data-science-vm
+  ms.service: open-datasets
   ms.topic: landing-page
   ms.collection: collection
   author: cjgronlund
   ms.author: cgronlun
   ms.date: 11/04/2019
-  ms.openlocfilehash: 76baa1362eb1eaa4c062fccd4eea84815cb08c50
-  ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+  ms.openlocfilehash: 2c99c349119dea148f9867817c81c22546099c13
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/05/2019
-  ms.locfileid: "73603646"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77617520"
 landingContent:
 - title: Informace o platformě Open Datasets
   linkLists:
@@ -25,7 +23,7 @@ landingContent:
     links:
     - text: Co je platforma Open Datasets?
       url: overview-what-are-open-datasets.md
-    - text: Ukázky
+    - text: ukázky
       url: samples.md
 - title: Začínáme
   linkLists:

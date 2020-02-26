@@ -139,8 +139,6 @@
           href: cloud-services-allocation-failures.md
         - name: Běžné příčiny recyklování rolí cloudové služby
           href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
-        - name: Aplikace nepodporuje TLS 1.2
-          href: applications-dont-support-tls-1-2.md
         - name: Výchozí velikost složky TEMP je pro roli příliš malá
           href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
         - name: Běžné problémy s nasazením

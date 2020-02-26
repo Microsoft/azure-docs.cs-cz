@@ -18,7 +18,7 @@
     - name: 2. Konfigurace
       items:
         - name: Škálování s využitím Azure Container Instances
-          href: /azure/container-instances/container-instances-jenkins
+          href: container-instances-jenkins.md
           maintainContext: true
         - name: Škálování pomocí agentů virtuálních počítačů Azure
           href: jenkins-azure-vm-agents.md
