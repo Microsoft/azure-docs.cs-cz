@@ -142,6 +142,9 @@
             - name: Proměnné
               displayName: 'iteration,copy'
               href: copy-variables.md
+            - name: Výstupy
+              displayName: 'iteration,copy'
+              href: copy-outputs.md
         - name: Prostředky na úrovni předplatného
           href: deploy-to-subscription.md
         - name: Prostředky na úrovni skupiny pro správu

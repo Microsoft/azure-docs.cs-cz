@@ -31,7 +31,7 @@
         - name: AKS
           items:
             - name: Průběžná integrace a doručování do Kubernetes
-              href: /azure/aks/jenkins-continuous-deployment
+              href: jenkins-continuous-deployment.md
               maintainContext: true
             - name: Nasazení do AKS s využitím vzoru modrá/zelená
               href: jenkins-aks-blue-green-deployment.md
@@ -49,7 +49,7 @@
         - name: Nasazení do Azure Functions
           href: jenkins-azure-functions-deploy.md
         - name: Publikování do Azure Storage
-          href: /azure/storage/storage-java-jenkins-continuous-integration-solution
+          href: storage-java-jenkins-continuous-integration-solution.md
           maintainContext: true
         - name: Průběžná integrace a doručování do virtuálních počítačů s Linuxem
           href: tutorial-jenkins-github-docker-cicd.md

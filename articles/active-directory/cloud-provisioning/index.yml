@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentace ke zřizování cloudů Azure AD Connect
-summary: Zřízení cloudu pomáhá zjednodušit a automatizovat správu místních uživatelů tím, že uchovává vše v cloudu.
+summary: Zřízení cloudu pomáhá zjednodušit a automatizovat správu uživatelů Azure AD, a to prostřednictvím cloudově spravovaných pravidel pro synchronizaci těchto uživatelů ze stávajících doménových struktur AD.
 metadata:
   author: billmath
   description: Zřízení cloudu pomáhá zjednodušit a automatizovat správu uživatelů Azure AD, a to prostřednictvím cloudově spravovaných pravidel pro synchronizaci těchto uživatelů ze stávajících doménových struktur AD.
@@ -11,12 +11,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: 89f3cf397322be65166e05c20b2e1d978a837581
-  ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+  ms.openlocfilehash: 83beffa0c0eb035c9cd5e30ec4644200b940dd6c
+  ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 12/03/2019
-  ms.locfileid: "74795237"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77620911"
 landingContent:
 - title: Informace o zřizování cloudu
   linkLists:
