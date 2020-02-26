@@ -28,3 +28,15 @@
       href: security-control-incident-response.md
     - name: Penetrační testy a tzv. red team exercises
       href: security-control-penetration-tests-red-team-exercises.md
+- name: Standardní hodnoty zabezpečení
+  items:
+    - name: Přehled standardních hodnot zabezpečení Azure
+      href: security-baselines-overview.md
+    - name: Standardní hodnoty zabezpečení pro Batch
+      href: ../../batch/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro Key Vault
+      href: ../../key-vault/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro HDInsight
+      href: ../../hdinsight/security-baseline.md
+    - name: Standardní hodnoty zabezpečení pro SQL Database
+      href: ../../sql-database/security-baseline.md

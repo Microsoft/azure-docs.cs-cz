@@ -104,9 +104,9 @@
       href: how-to-assess.md
     - name: Seskupení počítačů pro vyhodnocení
       href: how-to-create-a-group.md
-    - name: Seskupení počítačů s využitím vizualizace závislostí
+    - name: Analýza závislostí počítačů (na základě agentů)
       href: how-to-create-group-machine-dependencies.md
-    - name: Seskupení počítačů s využitím vizualizace závislostí bz agentů
+    - name: Analýza závislostí počítačů (bez agentů)
       href: how-to-create-group-machine-dependencies-agentless.md
     - name: Vytvoření posouzení
       href: how-to-create-assessment.md

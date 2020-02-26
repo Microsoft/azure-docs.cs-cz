@@ -122,6 +122,8 @@
       maintainContext: true
 - name: Návody
   items:
+    - name: Migrace z rozhraní API Azure Service Manageru (Classic) do rozhraní API Resource Manageru
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
     - name: Vývoj
       items:
         - name: Získání připojovacího řetězce Event Hubs

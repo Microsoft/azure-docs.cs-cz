@@ -9,12 +9,12 @@ metadata:
   author: dcurwin
   ms.author: dacurwin
   ms.date: 12/01/2019
-  ms.openlocfilehash: 607603965b0935941fa5ad06c39110535aa33633
-  ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+  ms.openlocfilehash: 9efc7d3ba072b0281d932b31365e7458034c30f5
+  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/21/2020
-  ms.locfileid: "76290780"
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77582615"
 landingContent:
 - title: Přečtěte si o službě Azure Backup
   linkLists:
@@ -130,6 +130,16 @@ landingContent:
       url: backup-azure-dpm-azure-server-faq.md
     - text: Instalace a upgrade MABS
       url: backup-azure-microsoft-azure-backup.md
+- title: Správa ve velkém měřítku
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Řízení ve velkém měřítku pomocí Azure Policy
+      url: backup-azure-auto-enable-backup.md
+    - text: Monitorování a provoz ve velkém měřítku pomocí Průzkumníka záloh
+      url: monitor-azure-backup-with-backup-explorer.md
+    - text: Analýza ve velkém měřítku pomocí Sestav zálohování
+      url: configure-reports.md
 - title: Prozkoumání prostředků pro Azure Backup
   linkLists:
   - linkListType: concept

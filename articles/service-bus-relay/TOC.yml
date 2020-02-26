@@ -24,7 +24,7 @@
           href: service-bus-relay-tutorial.md
         - name: Zveřejnění místní služby WCF REST pro klienta mimo vaši síť
           href: service-bus-relay-rest-tutorial.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Hybridní připojení
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections'
@@ -42,6 +42,8 @@
       href: relay-hybrid-connections-protocol.md
 - name: Postup
   items:
+    - name: Migrace z rozhraní API Azure Service Manageru (Classic) do rozhraní API Resource Manageru
+      href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
     - name: Plánování a návrh
       items:
         - name: Migrace z ACS do SAS
@@ -85,7 +87,7 @@
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Ukázky
+    - name: ukázky
       href: 'https://github.com/azure/azure-relay/tree/master/samples'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

@@ -114,6 +114,8 @@
           href: service-bus-messaging-security-controls.md
 - name: Návody
   items:
+    - name: Migrace z rozhraní API Azure Service Manageru (Classic) do rozhraní API Resource Manageru
+      href: deprecate-service-bus-management.md
     - name: Vytvoření oboru názvů
       href: service-bus-create-namespace-portal.md
     - name: Vývoj

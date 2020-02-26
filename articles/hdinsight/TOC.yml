@@ -810,6 +810,8 @@
           href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
     - name: Koncepty
       items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Obecné pokyny k podnikovému zabezpečení
           href: ./domain-joined/general-guidelines.md
         - name: Plánování pro clustery ESP

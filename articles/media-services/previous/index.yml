@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure Media Services v2 (starší verze)
+title: Dokumentace k platformě Azure Media Services v2 (starší verze)
 summary: Do Media Services v2 se nepřidávají žádné nové funkce. Projděte si nejnovější verzi, Media Services v3.
 metadata:
-  title: Dokumentace ke službě Azure Media Services v2
+  title: Dokumentace k platformě Azure Media Services v2 (starší verze)
   description: Zjistěte, jak pomocí služby Media Services v2 bezpečně streamovat živé video nebo video na vyžádání ve vysílací kvalitě.
   services: media-services
   ms.service: media-services
@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 02/18/2020
-  ms.openlocfilehash: c222a7c0603e9b57518993216711076659b51e4c
-  ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+  ms.openlocfilehash: 6cd7d5d0ef9bd188b42ca893ffa2bacbda1bdbc8
+  ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/20/2020
-  ms.locfileid: "77500769"
+  ms.lasthandoff: 02/25/2020
+  ms.locfileid: "77589381"
 landingContent:
 - title: Informace o službě Azure Media Services v2
   linkLists:
