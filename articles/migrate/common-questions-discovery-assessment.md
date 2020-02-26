@@ -3,12 +3,12 @@ title: Běžné otázky – zjišťování, hodnocení a analýza závislostí v
 description: Získejte odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 2ae534e50cbee3ebd17d703f957aa7200460dbfe
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 179be4f5b39806c717e94789c9fe52842d2a07d8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77426288"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589228"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí
 
@@ -92,7 +92,7 @@ Pokud nepoužíváte vizualizaci závislostí, nepotřebujete tyto agenty.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Můžu použít stávající pracovní prostor?
 
-Ano, existující pracovní prostor můžete připojit k projektu migrace a použít ho pro vizualizaci závislostí. [Další informace](concepts-dependency-visualization.md#how-does-it-work).
+Ano, existující pracovní prostor můžete připojit k projektu migrace a použít ho pro vizualizaci závislostí. 
 
 ## <a name="can-i-export-the-dependency-visualization-report"></a>Můžu sestavu Vizualizace závislostí exportovat?
 

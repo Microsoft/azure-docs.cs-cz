@@ -4,12 +4,12 @@ description: Tento článek poskytuje přehled ochrany DPM/Azure Backup serveru 
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 1750270b3383e815b9255273923b50d2879fdba6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b766c0401dde10fdc257044e004de3dbf8a7b84c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173325"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586474"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Zálohování farmy služby SharePoint do Azure pomocí DPM
 
@@ -19,7 +19,7 @@ Můžete zálohovat farmu služby SharePoint a Microsoft Azure pomocí nástroje
 
 Azure Backup pro DPM podporuje následující scénáře:
 
-| Úloha | Version | Nasazení služby SharePoint | Typ nasazení DPM | DPM – System Center 2012 R2 | Ochrana a obnovení |
+| Úloha | Verze | Nasazení služby SharePoint | Typ nasazení DPM | DPM – System Center 2012 R2 | Ochrana a obnovení |
 | --- | --- | --- | --- | --- | --- |
 | SharePoint |SharePoint 2013, SharePoint 2010, SharePoint 2007, SharePoint 3,0 |SharePoint nasazený jako fyzický server nebo virtuální počítač s technologií Hyper-V nebo VMware <br> -------------- <br> SQL AlwaysOn |Fyzický server nebo místní virtuální počítač Hyper-V |Podporuje zálohování do Azure z kumulativní aktualizace 5 |Ochrana možností obnovení farmy služby SharePoint: farma, databáze a soubor nebo položka seznamu z bodů obnovení disku.  Farma a obnovení databáze z bodů obnovení Azure. |
 
@@ -27,13 +27,13 @@ Azure Backup pro DPM podporuje následující scénáře:
 
 Před zálohováním farmy služby SharePoint do Azure je třeba potvrdit několik věcí.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, ujistěte se, že jste splnili všechny [předpoklady pro použití Microsoft Azure Backup](backup-azure-dpm-introduction.md#prerequisites-and-limitations) k ochraně úloh. Mezi úlohy týkající se požadavků patří: vytvoření trezoru záloh, stažení přihlašovacích údajů trezoru, instalace agenta Azure Backup a registrace DPM/Azure Backup Server s trezorem.
 
 ### <a name="dpm-agent"></a>Agent DPM
 
-Agent aplikace DPM musí být nainstalován na serveru, na kterém je spuštěna služba SharePoint, na serverech se systémem SQL Server a na všech ostatních serverech, které jsou součástí farmy služby SharePoint. Další informace o tom, jak nastavit agenta ochrany, najdete v tématu [instalace agenta ochrany](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Jedinou výjimkou je, že agenta nainstalujete jenom na jeden server s webovým front-end (WFE). DPM potřebuje agenta na jednom serveru WFE, aby sloužil jako vstupní bod pro ochranu.
+Agent aplikace DPM musí být nainstalován na serveru, na kterém je spuštěna služba SharePoint, na serverech se systémem SQL Server a na všech ostatních serverech, které jsou součástí farmy služby SharePoint. Další informace o tom, jak nastavit agenta ochrany, najdete v tématu [instalace agenta ochrany](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).  Jedinou výjimkou je, že agenta nainstalujete jenom na jeden server s webovým front-end (WFE). DPM potřebuje agenta na jednom serveru WFE, aby sloužil jako vstupní bod pro ochranu.
 
 ### <a name="sharepoint-farm"></a>Farmy služby SharePoint
 
@@ -63,13 +63,13 @@ Další informace najdete v blogovém příspěvku, který zavádí [kumulativn�
 
 Než budete moct použít DPM k ochraně SharePointu, musíte nakonfigurovat službu SharePoint VSS Writer (WSS Writer Service) pomocí **ConfigureSharePoint. exe**.
 
-**ConfigureSharePoint. exe** najdete ve složce \bin [Instalační cesta aplikace DPM] na front-end webovém serveru. Tento nástroj poskytuje agentovi ochrany pověření pro farmu služby SharePoint. Spouštíte ji na jednom serveru WFE. Pokud máte více serverů WFE, při konfiguraci skupiny ochrany vyberte jenom jednu.
+**ConfigureSharePoint. exe** najdete ve složce \bin [Instalační cesta aplikace DPM] na front-end webovém serveru. Tento nástroj poskytuje agentovi ochrany pověření pro farmu služby SharePoint. Můžete ho spustit na jednom serveru WFE. Pokud máte více serverů WFE, při konfiguraci skupiny ochrany vyberte jenom jednu.
 
 ### <a name="to-configure-the-sharepoint-vss-writer-service"></a>Konfigurace služby SharePoint VSS Writer
 
 1. Na serveru WFE klikněte na příkazovém řádku na [umístění instalace aplikace DPM] \Bin\
 2. Zadejte ConfigureSharePoint-EnableSharePointProtection.
-3. Zadejte přihlašovací údaje správce farmy. Tento účet by měl být členem místní skupiny správců na serveru WFE. Pokud správce farmy není místní správce, udělte na serveru WFE tato oprávnění:
+3. Zadejte přihlašovací údaje správce farmy. Tento účet by měl být členem místní skupiny správců na serveru WFE. Pokud není správcem farmy místní správce, udělte na serveru WFE tato oprávnění:
    * Udělte skupině WSS_Admin_WPG úplné řízení ke složce aplikace DPM (% Program Files%\Microsoft data Protection Manager\DPM).
    * Udělte skupině WSS_Admin_WPG oprávnění ke čtení klíče registru DPM (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager).
 
@@ -102,12 +102,12 @@ Jakmile nakonfigurujete aplikaci DPM a farmu služby SharePoint, jak je vysvětl
     ![Vyberte způsob ochrany dat](./media/backup-azure-backup-sharepoint/select-data-protection-method1.png)
 
    > [!NOTE]
-   > Metoda ochrany disku pomáhá plnit krátké cíle při obnovení. Azure je ekonomicky krátkodobý cíl ochrany v porovnání s páskami. Další informace najdete v tématu [použití Azure Backup k nahrazení páskové infrastruktury](https://azure.microsoft.com/documentation/articles/backup-azure-backup-cloud-as-tape/) .
+   > Metoda ochrany disku pomáhá plnit krátké cíle při obnovení. Azure je ekonomicky krátkodobý cíl ochrany v porovnání s páskami. Další informace najdete v tématu [použití Azure Backup k nahrazení páskové infrastruktury](./backup-azure-backup-cloud-as-tape.md) .
    >
    >
 5. Na stránce **zadat krátkodobé cíle** vyberte preferovaný **Rozsah uchování** a určete, kdy se mají zálohy provádět.
 
-    ![Zadat krátkodobé cíle](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
+    ![Určení krátkodobých cílů](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
 
    > [!NOTE]
    > Vzhledem k tomu, že se obnovení nejčastěji vyžaduje pro data, která jsou starší než pět dnů, jsme vybrali dobu uchovávání pět dní na disku a zajistili, že záloha proběhne během neprodukčních hodin, a to v tomto příkladu.
@@ -243,5 +243,5 @@ V následujícím příkladu bylo obnovení *položky SharePointu* omylem odstra
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o ochraně SharePointu v DPM – viz [video Series – ochrana DPM služby SharePoint](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
-* Přečtěte si [poznámky k verzi pro System Center 2012-Data Protection Manager](https://technet.microsoft.com/library/jj860415.aspx)
-* Přečtěte si [poznámky k verzi pro data Protection Manager v produktu System Center 2012 SP1](https://technet.microsoft.com/library/jj860394.aspx)
+* Přečtěte si [poznámky k verzi pro System Center 2012-Data Protection Manager](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860415(v=sc.12)?redirectedfrom=MSDN)
+* Přečtěte si [poznámky k verzi pro data Protection Manager v produktu System Center 2012 SP1](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj860394(v=sc.12)?redirectedfrom=MSDN)

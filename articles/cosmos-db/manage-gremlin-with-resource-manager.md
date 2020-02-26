@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: e2201eb678aafe14c86b7faedde67e6b4d92f2b5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e4c18d93f07cb2143dcc5bf9c93b9ac7298d2f7b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980604"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587630"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Správa Azure Cosmos DBch prostředků rozhraní API Gremlin pomocí šablon Azure Resource Manager
 
@@ -25,7 +25,7 @@ Vytvořte Azure Cosmos DB prostředky pomocí šablony Azure Resource Manager. T
 > Názvy účtů musí být malé a 44 nebo méně znaků.
 > Chcete-li aktualizovat RU/s, šablonu znovu odešlete s aktualizovanými hodnotami vlastností propustnosti.
 
-[!code-json[create-cosmos-gremlin](~/quickstart-templates/101-cosmosdb-gremlin/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-gremlin/azuredeploy.json":::
 
 ## <a name="deploy-with-the-azure-cli"></a>Nasazení pomocí Azure CLI
 
@@ -55,7 +55,7 @@ Příkaz `az cosmosdb show` zobrazuje nově vytvořený účet Azure Cosmos po z
 
 ## <a name="next-steps"></a>Další kroky
 
-Tady je několik dalších zdrojů:
+Tady je několik dalších prostředků:
 
 - [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager/)
 - [Azure Cosmos DB schéma poskytovatele prostředků](/azure/templates/microsoft.documentdb/allversions)

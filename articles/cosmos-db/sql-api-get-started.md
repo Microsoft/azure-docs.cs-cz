@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: 78b88f4e4e60d1f79263bfd9d7dfaf0cabc70de6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ba8b097dc852ba97d4223ba09f78d1f2cdb568e0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173912"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587443"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Kurz: Vytvoření aplikace konzoly .NET pro správu dat v Azure Cosmos DB účtu rozhraní SQL API
 
@@ -73,7 +73,7 @@ Vytvořme účet služby Azure Cosmos DB. Pokud již máte účet, který chcete
 
    ID balíčku s klientskou knihovnou rozhraní Azure Cosmos DB SQL API je [Microsoft Azure Cosmos DB Client Library](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/).
 
-Výborně! Teď když jsme dokončili nastavování, napišme nějaký kód. Dokončený projekt tohoto kurzu najdete v tématu [vývoj aplikace konzoly .NET pomocí Azure Cosmos DB](https://github.com/Azure-Samples/cosmos-dotnet-getting-started).
+Skvěle! Teď když jsme dokončili nastavování, napišme nějaký kód. Dokončený projekt tohoto kurzu najdete v tématu [vývoj aplikace konzoly .NET pomocí Azure Cosmos DB](https://github.com/Azure-Samples/cosmos-dotnet-getting-started).
 
 ## <a id="Connect"></a>Krok 3: Připojení k účtu služby Azure Cosmos DB
 
@@ -118,7 +118,7 @@ Výborně! Teď když jsme dokončili nastavování, napišme nějaký kód. Dok
    > [!NOTE]
    > Pokud jste obeznámeni s předchozí verzí sady .NET SDK, můžete být obeznámeni se *shromažďováním* a *dokumentem*s podmínkami. Vzhledem k tomu, že Azure Cosmos DB podporuje více modelů rozhraní API, verze 3,0 sady .NET SDK používá obecný pojem *kontejner* a *položka*. *Kontejner* může být kolekce, graf nebo tabulka. *Položka* může být dokument, okraj, vrchol nebo řádek a je obsahem uvnitř kontejneru. Další informace najdete v tématu [práce s databázemi, kontejnery a položkami v Azure Cosmos DB](databases-containers-items.md).
 
-1. Otevřete web [Azure Portal](https://portal.azure.com). Vyhledejte účet Azure Cosmos DB a pak vyberte **klíče**.
+1. Otevřete [portál Azure](https://portal.azure.com). Vyhledejte účet Azure Cosmos DB a pak vyberte **klíče**.
 
    ![Získat Azure Cosmos DB klíče z Azure Portal](./media/sql-api-get-started/cosmos-getting-started-portal-keys.png)
 
@@ -146,7 +146,7 @@ Výborně! Teď když jsme dokončili nastavování, napišme nějaký kód. Dok
 
 1. Přidejte následující kód pro spuštění asynchronní úlohy **GetStartedDemoAsync** z metody **Main** . Metoda **Main** zachycuje výjimky a vypisuje je do konzoly.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=Main)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="Main":::
 
 1. Zvolte F5 pro spuštění aplikace.
 
@@ -160,7 +160,7 @@ Databáze je logický kontejner položek rozdělených napříč kontejnery. Dat
 
 1. Do metody `GetStartedDemoAsync` zkopírujte a vložte `CreateDatabaseAsync` metodu.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateDatabaseAsync&highlight=7)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateDatabaseAsync":::
 
     `CreateDatabaseAsync` vytvoří novou databázi s ID `FamilyDatabase`, pokud ještě neexistuje, která má ID zadané v poli `databaseId`.
 
@@ -281,7 +281,7 @@ Kontejner lze vytvořit pomocí metody [**CreateContainerIfNotExistsAsync**](/do
 
 1. Do metody `CreateDatabaseAsync` zkopírujte a vložte `CreateContainerAsync` metodu. `CreateContainerAsync` vytvoří nový kontejner s ID `FamilyContainer`, pokud ještě neexistuje, pomocí ID zadaného v poli `containerId` děleném `LastName` vlastností.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=CreateContainerAsync&highlight=9)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="CreateContainerAsync&highlight":::
 
 1. Zkopírujte a vložte kód níže, kde jste vytvořili instanci CosmosClient k volání metody **CreateContainer** , kterou jste právě přidali.
 
@@ -313,11 +313,13 @@ Nejprve vytvoříme třídu `Family`, která představuje objekty uložené v r�
 
 1. Zkopírujte a vložte do `Address` třídu `Family`, `Parent`, `Child`, `Pet`a `Family.cs`.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Family.cs":::
+
 
 1. Zpět v *program.cs*přidejte metodu `AddItemsToContainerAsync` za metodu `CreateContainerAsync`.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=AddItemsToContainerAsync)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="AddItemsToContainerAsync":::
+
 
     Kód zkontroluje, že položka se stejným ID ještě neexistuje. Vložíme dvě položky, jednu z nich pro *rodinu Andersen* a *rodinu wakefieldů*.
 
@@ -346,7 +348,7 @@ Azure Cosmos DB podporuje formátované dotazy na dokumenty JSON uložené v ka�
 
 1. Zkopírujte a vložte metodu `QueryItemsAsync` za metodou `AddItemsToContainerAsync`.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=QueryItemsAsync&highlight=10-11,17-18)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="QueryItemsAsync":::
 
 1. Přidejte volání ``QueryItemsAsync`` v metodě ``GetStartedDemoAsync``.
 
@@ -374,7 +376,7 @@ Teď aktualizujeme položku v Azure Cosmos DB. Změníme vlastnost `IsRegistered
 
 1. Zkopírujte a vložte metodu `ReplaceFamilyItemAsync` za metodou `QueryItemsAsync`.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=ReplaceFamilyItemAsync&highlight=15)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="ReplaceFamilyItemAsync":::
 
 1. Přidejte volání `ReplaceFamilyItemAsync` v metodě `GetStartedDemoAsync`.
 
@@ -403,7 +405,7 @@ Nyní odstraníme položku v Azure Cosmos DB.
 
 1. Zkopírujte a vložte metodu `DeleteFamilyItemAsync` za metodou `ReplaceFamilyItemAsync`.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteFamilyItemAsync&highlight=10)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteFamilyItemAsync":::
 
 1. Přidejte volání `DeleteFamilyItemAsync` v metodě `GetStartedDemoAsync`.
 
@@ -433,11 +435,11 @@ Nyní odstraníme naši databázi. Odstraněním vytvořené databáze dojde k o
 
 1. Zkopírujte a vložte metodu `DeleteDatabaseAndCleanupAsync` za metodou `DeleteFamilyItemAsync`.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=DeleteDatabaseAndCleanupAsync)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="DeleteDatabaseAndCleanupAsync":::
 
 1. Přidejte volání ``DeleteDatabaseAndCleanupAsync`` v metodě ``GetStartedDemoAsync``.
 
-    [!code-csharp[](~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs?name=GetStartedDemoAsync&highlight=14)]
+    :::code language="csharp" source="~/cosmos-dotnet-getting-started/CosmosGettingStartedTutorial/Program.cs" id="GetStartedDemoAsync":::
 
 1. Zvolte F5 pro spuštění aplikace.
 

@@ -3,7 +3,7 @@ title: Prozkoumat incidenty pomocí služby Azure Sentinel | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak prozkoumat incidenty pomocí služby Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: fbab3eff3d7f742c2542e4264ef1b2124c5f15e5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.author: yelevin
+ms.openlocfilehash: ecd8c508d05bfeb541a6cb5efbcdf2fffd3c78d3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72024620"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587188"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Kurz: zkoumání incidentů pomocí služby Azure Sentinel
 
@@ -39,7 +39,7 @@ Tento článek se týká:
 
 Incident může zahrnovat více výstrah. Jedná se o agregaci všech relevantních důkazů pro konkrétní šetření. Incident se vytvoří na základě analytických pravidel, která jste vytvořili na stránce **Analytics** . Vlastnosti související s výstrahami, jako je závažnost a stav, se nastavují na úrovni incidentu. Až budete chtít, aby služba Azure Sentinel znala, jaké druhy hrozeb hledáte a jak se mají najít, můžete monitorovat zjištěné hrozby zkoumáním incidentů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Incident budete moct prozkoumat jenom v případě, že jste při nastavování pravidla pro analýzu použili pole mapování entit. Graf šetření vyžaduje, aby původní incident zahrnoval entity.
 
 ## <a name="how-to-investigate-incidents"></a>Jak prozkoumat incidenty

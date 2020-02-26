@@ -4,31 +4,31 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 87dd3680aae3e87f78ab2dbe70c44b2008706747
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 09fa612e7e5c681da16bf19e94c626ae14a3b8a1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67175028"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77590718"
 ---
-Při přidávání datové disky na virtuální počítač s Linuxem, chyby můžete narazit, pokud neexistuje disku na logické jednotce 0. Pokud přidáváte ručně pomocí disku `azure vm disk attach-new` příkaz a zadejte logickou jednotku (`--lun`) namísto povolení platformy Azure k určení příslušné logické jednotky, zajistíme, že disk již existuje nebo bude existovat na logické jednotce 0. 
+Když přidáváte datové disky do virtuálního počítače se systémem Linux, může dojít k chybám, pokud disk neexistuje na logické jednotce (LUN) 0. Pokud přidáváte disk ručně pomocí příkazu `az vm disk attach -new` a zadáte LOGICKou hodnotu (`--lun`) místo toho, aby platforma Azure mohla určit příslušnou logickou jednotku (LUN), je nutné zajistit, aby disk již existoval, nebo bude existovat na logické jednotce (LUN) 0. 
 
-Podívejte se na následující příklad zobrazuje fragment výstup z `lsscsi`:
+Vezměte v úvahu následující příklad znázorňující fragment výstupu z `lsscsi`:
 
 ```bash
 [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc 
 [5:0:0:1]    disk    Msft     Virtual Disk     1.0   /dev/sdd 
 ```
 
-Existují dva datové disky na logická jednotka LUN 0 a 1 logická jednotka (v prvním sloupci `lsscsi` výstupu ukazuje podrobnosti o `[host:channel:target:lun]`). Oba disky by měly být přístupné z v rámci virtuálního počítače. Pokud jste měli ručně zadali první disk má být přidán na logické jednotce 1 a druhý disk na logické jednotce 2, nemusíte vidět disky správně z ve vašem virtuálním počítači.
+Dva datové disky existují na logických jednotkách 0 a LUN 1 (první sloupec v podrobnostech `lsscsi` výstup `[host:channel:target:lun]`). Oba disky by měly být přístupné z virtuálního počítače. Pokud jste ručně zadali první disk, který se má přidat na logickou jednotku 1 a druhý disk na logické jednotce 2, nemusíte na svém VIRTUÁLNÍm počítači správně vidět disky.
 
 > [!NOTE]
-> Azure `host` hodnota je 5 v těchto příkladech, ale to se může lišit v závislosti na typu úložiště vyberete.
+> Hodnota `host` Azure je 5 v těchto příkladech, ale může se lišit v závislosti na zvoleném typu úložiště.
 > 
 > 
 
-Toto chování disku není problém s Azure, ale způsob, ve kterém linuxového jádra následuje specifikace SCSI. Prohledávání linuxového jádra sběrnice SCSI, hledá připojená zařízení, zařízení musí být nalezen na logická jednotka LUN 0 v pořadí pro systém pokračujte skenování pro další zařízení. Takto:
+Toto chování disku není problém Azure, ale způsob, jakým jádro Linux sleduje specifikace SCSI. Když jádro systému Linux naskenuje sběrnici SCSI pro připojená zařízení, musí se zařízení najít na logické jednotce 0, aby systém pokračoval ve vyhledávání dalších zařízení. Jako takový:
 
-* Prohlédněte si výstup `lsscsi` po přidání datového disku k ověření, že máte disk na logické jednotce 0.
-* Pokud disk není uveden správně ve vašem virtuálním počítači, ověřte, zda že existuje disku na logické jednotce 0.
+* Po přidání datového disku zkontrolujte výstup `lsscsi`, abyste ověřili, že máte disk s logickou jednotkou 0.
+* Pokud se disk na vašem VIRTUÁLNÍm počítači nezobrazuje správně, ověřte, že disk existuje na logické jednotce (LUN) 0.
 

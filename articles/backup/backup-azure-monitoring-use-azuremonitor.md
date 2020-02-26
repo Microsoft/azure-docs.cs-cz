@@ -4,12 +4,12 @@ description: Monitorujte Azure Backup úlohy a vytvářejte vlastní výstrahy p
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: acdd7ae870334fe3a77a37505fac5e02b3af360d
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 0673291ac6bd1692c6ebe07540e05077e3025d55
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500666"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583860"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Monitorování ve velkém měřítku pomocí Azure Monitor
 
@@ -29,11 +29,11 @@ V Azure Monitor můžete vytvořit vlastní výstrahy v pracovním prostoru Log 
 > [!IMPORTANT]
 > Informace o nákladech na vytvoření tohoto dotazu najdete v tématu [Azure monitor Price](https://azure.microsoft.com/pricing/details/monitor/).
 
-Vyberte libovolné grafy a otevřete tak část **protokoly** v pracovním prostoru Log Analytics. V části **protokoly** upravte dotazy a vytvořte výstrahy.
+Otevřete část **protokoly** v pracovním prostoru Log Analytics a napište dotaz na vlastní protokoly. Když vyberete **nové pravidlo výstrahy**, otevře se stránka Azure monitor pro vytvoření výstrahy, jak je znázorněno na následujícím obrázku.
 
-![Vytvoření výstrahy v pracovním prostoru Log Analytics](media/backup-azure-monitoring-laworkspace/la-azurebackup-customalerts.png)
+![Vytvoření výstrahy v pracovním prostoru Log Analytics](media/backup-azure-monitoring-laworkspace/custom-alert.png)
 
-Když vyberete **nové pravidlo výstrahy**, otevře se stránka Azure monitor pro vytvoření výstrahy, jak je znázorněno na následujícím obrázku. Tento prostředek je už označený jako pracovní prostor Log Analytics a poskytuje se integrace skupiny akcí.
+Tento prostředek je už označený jako pracovní prostor Log Analytics a poskytuje se integrace skupiny akcí.
 
 ![Stránka pro vytvoření výstrahy Log Analytics](media/backup-azure-monitoring-laworkspace/inkedla-azurebackup-createalert.jpg)
 
@@ -122,6 +122,26 @@ Výchozí grafy vám umožní Kusto dotazy na základní scénáře, ve kterých
     )
     on BackupItemUniqueId
     ````
+
+- Využité úložiště záloh za zálohovanou položku
+
+    ````Kusto
+    CoreAzureBackup
+    //Get all Backup Items
+    | where OperationName == "BackupItem"
+    //Get distinct Backup Items
+    | distinct BackupItemUniqueId, BackupItemFriendlyName
+    | join kind=leftouter
+    (AddonAzureBackupStorage
+    | where OperationName == "StorageAssociation"
+    //Get latest record for each Backup Item
+    | summarize arg_max(TimeGenerated, *) by BackupItemUniqueId 
+    | project BackupItemUniqueId , StorageConsumedInMBs)
+    on BackupItemUniqueId
+    | project BackupItemUniqueId , BackupItemFriendlyName , StorageConsumedInMBs 
+    | sort by StorageConsumedInMBs desc
+    ````
+
 
 ### <a name="diagnostic-data-update-frequency"></a>Frekvence aktualizace diagnostických dat
 

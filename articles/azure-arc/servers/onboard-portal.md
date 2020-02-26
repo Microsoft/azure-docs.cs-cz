@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3f4954b3a33cdd73c1e004ad1e643f9e24abf1e4
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 8bde9a9e9227f0c8715b38a9a376fad3015c7bf3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485229"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586253"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Připojení hybridních počítačů k Azure z Azure Portal
 
@@ -165,7 +165,7 @@ Pokud chcete odpojit počítač od Arc Azure pro servery (Preview), udělejte to
     >[!NOTE]
     > Průvodce instalací agenta můžete také spustit dvojitým kliknutím na balíček instalačního programu **AzureConnectedMachineAgent. msi** .
 
-    Pokud chcete odebrat skript odebrání agenta, můžete použít následující příklad, který načte kód produktu a odinstaluje agenta pomocí příkazového řádku Msiexec. exe-`msiexec /x {Product Code}`. Postupujte následovně:  
+    Pokud chcete odebrat skript odebrání agenta, můžete použít následující příklad, který načte kód produktu a odinstaluje agenta pomocí příkazového řádku Msiexec. exe-`msiexec /x {Product Code}`. Postup:  
     
     a. Otevřete Editor registru.  
     b. V části klíč registru `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`vyhledejte a zkopírujte identifikátor GUID kódu produktu.  
@@ -180,10 +180,24 @@ Pokud chcete odpojit počítač od Arc Azure pro servery (Preview), udělejte to
     ForEach-Object {MsiExec.exe /x "$($_.PsChildName)" /qn}
     ```
 
-1. Chcete-li odinstalovat agenta pro Linux, spusťte následující příkaz:
+1. Pokud chcete odinstalovat agenta pro Linux, použitý příkaz závisí na operačním systému Linux.
+
+    - V případě Ubuntu spusťte následující příkaz:
 
       ```bash
       sudo apt purge azcmagent
+      ```
+
+    - Pro RHEL, CentOS a Amazon Linux spusťte následující příkaz:
+
+      ```bash
+      sudo yum remove azcmagent
+      ```
+
+    - V případě SLES spusťte následující příkaz:
+
+      ```bash
+      sudo zypper remove azcmagent
       ```
 
 ## <a name="next-steps"></a>Další kroky

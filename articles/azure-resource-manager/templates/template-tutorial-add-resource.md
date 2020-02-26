@@ -2,15 +2,15 @@
 title: Kurz – přidání prostředku do šablony
 description: Popisuje kroky k vytvoření první šablony Azure Resource Manager. Dozvíte se o syntaxi souboru šablony a o tom, jak nasadit účet úložiště.
 author: mumian
-ms.date: 10/04/2019
+ms.date: 02/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8686b15501e267ab23efe654d28a3e67369a8d03
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: af571b6503f04c809b62c530f6d6254082b838be
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765589"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586678"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Kurz: Přidání prostředku do šablony Správce prostředků
 
@@ -26,7 +26,10 @@ Musíte mít Visual Studio Code s rozšířením Správce prostředků Tools a b
 
 Pokud chcete přidat definici účtu úložiště do existující šablony, podívejte se na zvýrazněný kód JSON v následujícím příkladu. Místo kopírování oddílů šablony zkopírujte celý soubor a nahraďte šablonu jeho obsahem.
 
-Nahraďte **{poskytnout-Unique-Name}** jedinečným názvem účtu úložiště. Název účtu úložiště musí být jedinečný v rámci Azure. Název musí obsahovat jenom malá písmena nebo číslice. Nemůže být delší než 24 znaků. Můžete vyzkoušet způsob pojmenování, jako je například použití **store1** jako předpona a přidání vašich počátečních a dnešních dat. Název, který použijete, může například vypadat jako **store1abc09092019**.
+Nahraďte **{poskytnout-Unique-Name}** jedinečným názvem účtu úložiště.
+
+> [!IMPORTANT]
+> Název účtu úložiště musí být jedinečný v rámci Azure. Název musí obsahovat jenom malá písmena nebo číslice. Nemůže být delší než 24 znaků. Můžete vyzkoušet způsob pojmenování, jako je například použití **store1** jako předpona a přidání vašich počátečních a dnešních dat. Název, který použijete, může například vypadat jako **store1abc09092019**.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json" range="1-19" highlight="5-17":::
 
@@ -58,7 +61,7 @@ Pokud se rozhodnete změnit verzi rozhraní API pro určitý prostředek, ujist�
 
 Pokud jste ještě nevytvořili skupinu prostředků, přečtěte si téma [Vytvoření skupiny prostředků](template-tutorial-create-first-template.md#create-resource-group). V příkladu se předpokládá, že jste nastavili proměnnou **templateFile** na cestu k souboru šablony, jak je znázorněno v [prvním kurzu](template-tutorial-create-first-template.md#deploy-template).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -67,7 +70,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile $templateFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -94,7 +97,7 @@ Toto nasazení trvá déle než při nasazení prázdné šablony, protože je v
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 1. Vyberte skupinu prostředků, do které jste nasadili.
 1. Vidíte, že je nasazený účet úložiště.

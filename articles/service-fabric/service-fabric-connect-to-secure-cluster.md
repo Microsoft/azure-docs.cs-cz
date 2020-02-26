@@ -3,12 +3,12 @@ title: Zabezpečené připojení k clusteru Azure Service Fabric
 description: Popisuje ověření přístupu klienta ke clusteru Service Fabric a způsob zabezpečení komunikace mezi klienty a clusterem.
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 89d9f67ba1a202b3830df7a5b960c6ef01091bf2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458269"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587052"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Připojení k zabezpečenému clusteru
 
@@ -24,7 +24,7 @@ Ke clusteru se můžete připojit pomocí příkazu `sfctl cluster select`.
 
 Klientské certifikáty lze zadat dvěma různými způsoby, buď jako certifikát, jako dvojici klíčů, nebo jako jeden soubor PFX. Pro soubory PEM chráněné heslem se zobrazí výzva k automatickému zadání hesla. Pokud jste certifikát klienta získali jako soubor PFX, nejprve převeďte soubor PFX na soubor PEM pomocí následujícího příkazu. 
 
-```bash
+```shell
 openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
 ```
 
@@ -32,7 +32,7 @@ Pokud Váš soubor. pfx není chráněný heslem, použijte parametr-Passin Pass
 
 Chcete-li zadat klientský certifikát jako soubor PEM, zadejte cestu k souboru v argumentu `--pem`. Příklad:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
 ```
 
@@ -40,7 +40,7 @@ Soubory PEM chráněné heslem se před spuštěním libovolného příkazu zobr
 
 Chcete-li zadat certifikát, dvojici klíčů použijte argumenty `--cert` a `--key` k určení cest souborů ke každému příslušnému souboru.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
@@ -49,13 +49,13 @@ Někdy certifikáty, které se používají k zabezpečení testovacích nebo v�
 > [!WARNING]
 > Při připojování k produkčním Service Fabricm clusterům nepoužívejte možnost `no-verify`.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
 Kromě toho můžete zadat cesty k adresářům důvěryhodných certifikátů CA nebo jednotlivých certifikátů. K určení těchto cest použijte argument `--ca`. Příklad:
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
 ```
 

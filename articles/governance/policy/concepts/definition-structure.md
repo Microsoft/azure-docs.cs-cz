@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: d30097badd3ab9ee5a328f17d0e3e91254a89185
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461998"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587120"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -22,7 +22,7 @@ Schéma definice zásad najdete tady: [https://schema.management.azure.com/schem
 Vytvoření definice zásady pomocí JSON. Definice zásady obsahuje elementy pro:
 
 - režim
-- parametry
+- parameters
 - Zobrazovaný název
 - description
 - pravidlo zásad
@@ -328,7 +328,7 @@ Podmínky mohou být také vytvořeny pomocí **hodnoty**. **hodnota** kontroluj
 **hodnota** je spárována s libovolnou podporovanou [podmínkou](#conditions).
 
 > [!WARNING]
-> Pokud je výsledkem _funkce šablony_ chyba, vyhodnocení zásad se nezdařilo. Neúspěšné vyhodnocení je implicitní **odmítnutí**. Další informace najdete v tématu [předcházení chybám šablon](#avoiding-template-failures).
+> Pokud je výsledkem _funkce šablony_ chyba, vyhodnocení zásad se nezdařilo. Neúspěšné vyhodnocení je implicitní **odmítnutí**. Další informace najdete v tématu [předcházení chybám šablon](#avoiding-template-failures). Použijte [enforcementMode](./assignment-structure.md#enforcement-mode) z **DoNotEnforce** , abyste zabránili dopadu neúspěšného vyhodnocení nových nebo aktualizovaných prostředků při testování a ověřování nové definice zásady.
 
 #### <a name="value-examples"></a>Příklady hodnot
 
@@ -580,13 +580,22 @@ Pro použití v rámci pravidla zásad jsou k dispozici všechny [funkce šablon
 
 Následující funkce jsou k dispozici pro použití v pravidle zásad, ale liší se od použití v šabloně Azure Resource Manager:
 
-- addDays (dateTime; numberOfDaysToAdd)
+- `addDays(dateTime, numberOfDaysToAdd)`
   - **DateTime**: [required] řetězec řetězce ve formátu Universal ISO 8601 DateTime "rrrr-MM-DDThh: mm: ss. fffffffZ"
   - **numberOfDaysToAdd**: [povinné] celé číslo-počet dnů k přidání
-- utcNow () – na rozdíl od šablony Správce prostředků lze použít mimo defaultValue.
+- `utcNow()` – na rozdíl od Správce prostředků šablony se dá použít mimo defaultValue.
   - Vrátí řetězec, který je nastaven na aktuální datum a čas ve formátu Universal ISO 8601 DateTime yyyy-MM-ddTHH: mm: ss. fffffffZ.
 
-Kromě toho je k dispozici funkce `field` pro pravidla zásad. `field` se primárně používá s **AuditIfNotExists** a **DeployIfNotExists** k odkazování na pole v prostředku, který se vyhodnocuje. Příklad tohoto použití lze zobrazit v [DeployIfNotExists příkladu](effects.md#deployifnotexists-example).
+Následující funkce jsou dostupné jenom v pravidlech zásad:
+
+- `field(fieldName)`
+  - **FieldName**: [required] řetězec-název [pole](#fields) , které se má načíst
+  - Vrátí hodnotu tohoto pole z prostředku, který je vyhodnocován podmínkou if.
+  - `field` se primárně používá s **AuditIfNotExists** a **DeployIfNotExists** k odkazování na pole v prostředku, který se vyhodnocuje. Příklad tohoto použití lze zobrazit v [DeployIfNotExists příkladu](effects.md#deployifnotexists-example).
+- `requestContext().apiVersion`
+  - Vrátí verzi rozhraní API žádosti, která aktivovala vyhodnocování zásad (například: `2019-09-01`). Toto bude verze rozhraní API, která se použila v požadavku PUT/PATCH k vyhodnocení při vytváření nebo aktualizaci prostředku. Nejnovější verze rozhraní API se vždycky používá během hodnocení dodržování předpisů u stávajících prostředků.
+  
+
 
 #### <a name="policy-function-example"></a>Příklad funkce zásad
 
@@ -637,7 +646,7 @@ Seznam aliasů se pořád rozrůstá. Pokud chcete zjistit, jaké aliasy jsou ak
   Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
   ```
 
-- Azure PowerShell
+- Azure Powershell
 
   ```azurepowershell-interactive
   # Login first with Connect-AzAccount if not using Cloud Shell

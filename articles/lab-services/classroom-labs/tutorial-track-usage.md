@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 55c7e2f30324fe7878e38f1129c63c6e0c51a75f
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a1a3e62646fedd468a02eac7b1a48d0b2d00fd74
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77134824"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591978"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Kurz: Sledování využití testovacího prostředí v Azure Lab Services
 V tomto kurzu se dozvíte, jak může autor nebo vlastník testovacího prostředí sledovat jeho využití.
@@ -53,9 +53,12 @@ V tomto kurzu provedete následující akce:
 ## <a name="manage-student-vms"></a>Správa virtuálních počítačů studentů 
 Na této stránce můžete spustit, zastavit nebo resetovat virtuální počítače studenta pomocí ovládacích prvků ve sloupci **stav** nebo na panelu nástrojů.
 
-![Ovládací prvky virtuálního počítače](../media/tutorial-track-usage/vm-controls.png)
+![Akce virtuálních počítačů](../media/tutorial-track-usage/vm-controls.png)
 
-Další podrobnosti o správě fondu virtuálních počítačů pro testovací prostředí najdete v tématu [nastavení a Správa fondu virtuálních počítačů](how-to-set-virtual-machine-passwords.md).
+Další informace o správě fondu virtuálních počítačů pro testovací prostředí najdete v tématu [nastavení a Správa fondu virtuálních počítačů](how-to-set-virtual-machine-passwords.md).
+
+> [!NOTE]
+> Když Educator zapnete virtuální počítač studenta, neovlivní kvóta pro studenta. Kvóta pro uživatele určuje počet hodin testovacího prostředí uživatele mimo plánovaný čas třídy. Další informace o kvótách najdete v tématu [nastavení kvót pro uživatele](how-to-configure-student-usage.md?#set-quotas-for-users).
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o učebn Labs najdete v článcích v části [Průvodce postupy](how-to-manage-lab-accounts.md).

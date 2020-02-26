@@ -12,12 +12,12 @@ ms.date: 12/08/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1bc2c3a17aef232df184926dca5f70eac61b03ac
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 23433c816fc7b002c3426a0aac7c0aade8cdb338
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698760"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585845"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Postupy: poskytnutí volitelných deklarací identity vaší aplikaci Azure AD
 
@@ -37,8 +37,8 @@ I když jsou volitelné deklarace identity podporované v tokenech formátu v 1.
 
 | Typ účtu | tokeny v 1.0 | tokeny v 2.0  |
 |--------------|---------------|----------------|
-| Osobní účet Microsoft  | Nevztahuje se  | Podporováno |
-| Účet Azure AD      | Podporováno | Podporováno |
+| Osobní účet Microsoft  | neuvedeno  | Podporuje se |
+| Účet Azure AD      | Podporuje se | Podporuje se |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>volitelná sada deklarací v 1.0 a v 2.0
 
@@ -49,7 +49,7 @@ Sada volitelných deklarací, které jsou ve výchozím nastavení k dispozici p
 
 **Tabulka 2: volitelná sada deklarací identity v 1.0 a v 2.0**
 
-| Name (Název)                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky  |
+| Název                       |  Popis   | Typ tokenu | Typ uživatele | Poznámky:  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | Čas posledního ověření uživatele Viz specifikace OpenID Connect.| JWT        |           |  |
 | `tenant_region_scope`      | Oblast tenanta prostředků | JWT        |           | |
@@ -78,14 +78,14 @@ Tyto deklarace jsou vždycky zahrnuté v tokenech Azure AD v 1.0, ale nejsou zah
 
 **Tabulka 3: v 2.0 – jenom volitelné deklarace identity**
 
-| JWT Claim     | Name (Název)                            | Popis                                | Poznámky |
+| JWT Claim     | Název                            | Popis                                | Poznámky: |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP adresa                      | IP adresa, ze které se klient přihlásil.   |       |
 | `onprem_sid`  | Místní identifikátor zabezpečení |                                             |       |
 | `pwd_exp`     | Čas vypršení platnosti hesla        | Datum a čas, kdy platnost hesla vyprší |       |
 | `pwd_url`     | Změnit adresu URL hesla             | Adresa URL, na kterou může uživatel přejít, aby změnila heslo.   |   |
-| `in_corp`     | Uvnitř podnikové sítě        | Signalizuje, že se klient přihlašuje z podnikové sítě. Pokud nejsou, deklarace identity není zahrnutá.   |  Vychází z nastavení [důvěryhodných IP adres](../authentication/howto-mfa-mfasettings.md#trusted-ips) v MFA.    |
-| `nickname`    | Přezdívka                        | Další jméno uživatele. Přezdívka je oddělená od prvního nebo posledního jména. | 
+| `in_corp`     | V podnikové síti        | Signalizuje, že se klient přihlašuje z podnikové sítě. Pokud nejsou, deklarace identity není zahrnutá.   |  Vychází z nastavení [důvěryhodných IP adres](../authentication/howto-mfa-mfasettings.md#trusted-ips) v MFA.    |
+| `nickname`    | zdívek                        | Další jméno uživatele. Přezdívka je oddělená od prvního nebo posledního jména. | 
 | `family_name` | Příjmení                       | Poskytuje příjmení, příjmení nebo rodinné jméno uživatele, jak je definováno v objektu User. <br>"family_name": "Miller" | Podporováno v MSA a Azure AD   |
 | `given_name`  | Jméno                      | Poskytuje první nebo "předané" jméno uživatele, jak je nastaveno u objektu User.<br>"given_name": "Josef"                   | Podporováno v MSA a Azure AD  |
 | `upn`         | Hlavní název uživatele | Identifikátorem pro uživatele, který lze použít s parametrem username_hint.  Nejedná se o trvalý identifikátor pro uživatele a neměl by se používat k klíčovým datům. | Konfiguraci deklarace identity najdete níže v části [Další vlastnosti](#additional-properties-of-optional-claims) . |
@@ -126,7 +126,7 @@ Tento objekt OptionalClaims způsobí, že token ID se vrátil klientovi, aby za
 
 Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednictvím uživatelského rozhraní nebo manifestu aplikace.
 
-1. Přejděte na [portál Azure](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
+1. Přejděte na [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
 
@@ -138,7 +138,7 @@ Volitelné deklarace identity pro aplikaci můžete nakonfigurovat prostřednict
 2. Vyberte **přidat volitelnou deklaraci identity**.
 3. Vyberte typ tokenu, který chcete konfigurovat.
 4. Vyberte volitelné deklarace, které se mají přidat.
-5. Klikněte na tlačítko **Přidat**.
+5. Klikněte na **Přidat**.
 
 **Konfigurace volitelných deklarací pomocí manifestu aplikace:**
 
@@ -186,7 +186,7 @@ Deklaruje volitelné deklarace požadované aplikací. Aplikace může nakonfigu
 
 **Tabulka 5: vlastnosti OptionalClaims typu**
 
-| Name (Název)        | Typ                       | Popis                                           |
+| Název        | Typ                       | Popis                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Kolekce (OptionalClaim) | Volitelné deklarace identity vrácené v tokenu JWT ID. |
 | `accessToken` | Kolekce (OptionalClaim) | Volitelné deklarace identity vrácené v přístupovém tokenu JWT. |
@@ -199,7 +199,7 @@ Pokud je tato možnost podporovaná konkrétní deklarací identity, můžete ta
 
 **Tabulka 6: vlastnosti OptionalClaim typu**
 
-| Name (Název)                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
+| Název                 | Typ                    | Popis                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Název volitelné deklarace identity.                                                                                                                                                                                                                                                                           |
 | `source`               | Edm.String              | Zdroj (objekt adresáře) deklarace identity. Z vlastností rozšíření jsou předdefinované deklarace identity a uživatelsky definované deklarace identity. Pokud má zdrojová hodnota hodnotu null, deklarace identity je předdefinovaná volitelná deklarace identity. Pokud je zdrojovou hodnotou uživatel, hodnota ve vlastnosti název je vlastnost rozšíření z objektu User. |
@@ -207,7 +207,7 @@ Pokud je tato možnost podporovaná konkrétní deklarací identity, můžete ta
 | `additionalProperties` | Collection (EDM. String) | Další vlastnosti deklarace identity Pokud v této kolekci existuje vlastnost, upraví chování volitelné deklarace identity zadané ve vlastnosti název.                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>Konfigurace volitelných deklarací rozšíření adresáře
 
-Kromě standardní volitelné sady deklarací identity můžete také nakonfigurovat tokeny, aby zahrnovaly rozšíření. Další informace najdete v tématu [Přidání vlastních dat do prostředků pomocí rozšíření](https://docs.microsoft.com/graph/extensibility-overview). Tato funkce je užitečná pro připojení dalších uživatelských informací, které vaše aplikace může používat – například Další identifikátor nebo důležitou možnost konfigurace, kterou uživatel nastavil. Příklad najdete v dolní části této stránky.
+Kromě standardní volitelné sady deklarací identity můžete také nakonfigurovat tokeny, aby zahrnovaly rozšíření. Tato funkce je užitečná pro připojení dalších uživatelských informací, které vaše aplikace může používat – například Další identifikátor nebo důležitou možnost konfigurace, kterou uživatel nastavil. Příklad najdete v dolní části této stránky.
 
 > [!NOTE]
 > - Rozšíření schématu adresáře jsou funkcí pouze pro Azure AD, takže pokud manifest aplikace požaduje vlastní rozšíření a MSA uživatele do vaší aplikace, tato rozšíření nebudou vrácena.
@@ -256,7 +256,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    - "Zabezpečení"
    - "DirectoryRole"
 
-   Například:
+   Příklad:
 
     ```json
         "groupMembershipClaims": "SecurityGroup"
@@ -291,7 +291,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    | **Jméno:** | Musí být "skupiny" |
    | **Zdrojová** | Nepoužívá se. Vynechat nebo zadat hodnotu null |
    | **význam** | Nepoužívá se. Vynechat nebo zadat hodnotu false |
-   | **additionalProperties:** | Seznam dalších vlastností  Platné možnosti jsou "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
+   | **AdditionalProperties** | Seznam dalších vlastností  Platné možnosti jsou "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
 
    V additionalProperties se vyžadují jenom jedna z těchto "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name".  Pokud je k dispozici více než jeden, použije se první a ostatní se ignorují.
 
@@ -300,7 +300,7 @@ Tato část se zabývá možnostmi konfigurace v části volitelné deklarace id
    > [!NOTE]
    > Pokud se používá emit_as_roles, neobjeví se v deklaraci identity role žádné aplikační role nakonfigurované k přiřazení uživatele.
 
-**Příklady:**
+**4.6**
 
 1) Generování skupin jako názvů skupin v přístupových tokenech OAuth ve formátu dnsDomainName\sAMAccountName
 
@@ -381,7 +381,7 @@ K dispozici je několik možností aktualizace vlastností konfigurace identity 
     [![ukazuje, jak nakonfigurovat volitelné deklarace identity pomocí uživatelského rozhraní.](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
 
 **Konfigurace manifestu:**
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. Po ověření zvolte svého tenanta Azure AD tak, že ho vyberete v pravém horním rohu stránky.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. V seznamu Najděte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity, a klikněte na ni.

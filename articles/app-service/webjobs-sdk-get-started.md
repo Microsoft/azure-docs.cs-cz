@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: e2b61b87707a732d3b7c27f97b9ca5fcf82b4bf3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: bfbae282f9c383c19aae84a70dfc53f754bd9367
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483037"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592607"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme s Azure WebJobs SDK pro zpracování na pozadí založené na událostech
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak pomocí sady Visual Studio 2019 vytvořit proj
 
 V tomto článku se dozvíte, jak nasadit WebJobs jako konzolovou aplikaci .NET Core. Pokud chcete nasadit WebJobs jako konzolovou aplikaci .NET Framework, přečtěte si téma [WebJobs jako .NET Framework konzolové aplikace](webjobs-dotnet-deploy-vs.md#webjobs-as-net-framework-console-apps). Pokud vás zajímá Sada WebJobs SDK verze 2. x, která podporuje jenom .NET Framework, přečtěte si téma [vývoj a nasazení WebJobs pomocí sady Visual Studio – Azure App Service](webjobs-dotnet-deploy-vs.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Nainstalujte Visual Studio 2019](/visualstudio/install/) s úlohou **vývoj pro Azure** . Pokud již máte aplikaci Visual Studio, ale nemáte tuto úlohu, přidejte úlohu výběrem **nástrojů > získat nástroje a funkce**.
 
@@ -179,7 +179,7 @@ Počínaje verzí 3. x musíte explicitně nainstalovat rozšíření vazby úlo
 
    Parametr `message` nemusí být řetězec. Můžete také vytvořit propojení s objektem JSON, bajtovým polem nebo objektem [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) . [Viz Použití triggeru fronty](../azure-functions/functions-bindings-storage-queue-trigger.md#usage). Každý typ vazby (například fronty, objekty blob nebo tabulky) má jinou sadu typů parametrů, které lze svázat.
 
-## <a name="create-a-storage-account"></a>Vytvořit účet úložiště
+## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
 Emulátor Azure Storage, který se spouští místně, nemá všechny funkce, které vyžaduje Sada WebJobs SDK. Takže v této části vytvoříte účet úložiště v Azure a nakonfigurujete ho tak, aby ho používal. Pokud už máte účet úložiště, přeskočte dolů na krok 6.
 
@@ -195,7 +195,7 @@ Emulátor Azure Storage, který se spouští místně, nemá všechny funkce, kt
 
 1. Vyberte si stejnou **oblast** , ve které jste vytvořili aplikaci App Service, nebo oblast, která je blízko vás.
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
    ![Vytvořit účet úložiště](./media/webjobs-sdk-get-started/create-storage-account.png)
 
@@ -382,7 +382,7 @@ Pokud chcete využít výhod protokolování [Application Insights](../azure-mon
                     string instrumentationKey = context.Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"];
                     if (!string.IsNullOrEmpty(instrumentationKey))
                     {
-                        b.AddApplicationInsights(o => o.InstrumentationKey = instrumentationKey);
+                        b.AddApplicationInsightsWebJobs(o => o.InstrumentationKey = instrumentationKey);
                     }
                 });
         var host = builder.Build();

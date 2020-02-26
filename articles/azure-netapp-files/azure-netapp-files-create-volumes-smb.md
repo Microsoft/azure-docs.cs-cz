@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: b-juche
-ms.openlocfilehash: c65da771dd483b3a79785d4bec2b89cbeefca5c4
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 7affd408ce2471f34a8362ba32101b639aafc514
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049889"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586597"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
 Azure NetApp Files podporuje svazky NFS a SMBv3. Spotřeba kapacity svazku se počítá proti zřízené kapacitě příslušného fondu. V tomto článku se dozvíte, jak vytvořit svazek SMBv3. Pokud chcete vytvořit svazek NFS, přečtěte si téma [vytvoření svazku NFS pro Azure NetApp Files](azure-netapp-files-create-volumes.md). 
 
-## <a name="before-you-begin"></a>Před zahájením 
+## <a name="before-you-begin"></a>Než začnete 
 Musíte mít už nastavený fond kapacity.   
 [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)   
 Podsíť musí být delegovaná na Azure NetApp Files.  
@@ -45,7 +45,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
     |    Webové služby AD    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    Není k dispozici       |    Odpověď na ozvěnu    |
+    |    ICMPv4             |    neuvedeno       |    Odpověď na ozvěnu    |
     |    Sdílené           |    464       |    TCP           |
     |    Sdílené           |    464       |    UDP           |
     |    Sdílené           |    88        |    TCP           |
@@ -70,7 +70,7 @@ Podsíť musí být delegovaná na Azure NetApp Files.
 
 * Azure NetApp Files delegovaná podsíť musí mít přístup ke všem řadičům domény Active Directory Domain Services (v doméně), včetně všech místních a vzdálených řadičů domény. V opačném případě může dojít k přerušení služeb.  
 
-    Pokud máte řadiče domény, které jsou nedostupné prostřednictvím Azure NetApp Files delegované podsítě, můžete odeslat žádost o podporu Azure a změnit obor z **globálních** (výchozích) na **lokalita**.  Azure NetApp Files musí komunikovat jenom s řadiči domény v lokalitě, ve které se nachází Azure NetApp Files delegovaný adresní prostor podsítě.
+    Pokud máte řadiče domény, které jsou nedostupné prostřednictvím Azure NetApp Files delegované podsítě, můžete během vytváření připojení ke službě Active Directory určit lokalitu služby Active Directory.  Azure NetApp Files musí komunikovat jenom s řadiči domény v lokalitě, ve které se nachází Azure NetApp Files delegovaný adresní prostor podsítě.
 
     Viz [návrh topologie lokality](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) o lokalitách a službách Active Directory. 
     
@@ -88,8 +88,10 @@ Další informace o službě AD najdete v tématu Azure NetApp Files [nejčastě
         Toto je služba DNS potřebná pro operace připojení k doméně služby Active Directory a ověřování SMB. 
     * **Sekundární  DNS**  
         Toto je sekundární server DNS pro zajištění redundantních názvových služeb. 
-    * **Domain**  
+    * **Název domény DNS služby Active Directory**  
         Toto je název domény vašeho Active Directory Domain Services, ke které se chcete připojit.
+    * **Název lokality služby Active Directory**  
+        Jedná se o název lokality, na kterou bude zjišťování řadiče domény omezeno.
     * **Předpona serveru SMB (účet počítače)**  
         Toto je předpona názvů pro účet počítače ve službě Active Directory, kterou Azure NetApp Files použít pro vytváření nových účtů.
 

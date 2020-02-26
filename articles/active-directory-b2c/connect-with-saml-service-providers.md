@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7ccc5fe314d49ea65aaa8750937170ab79a8c04f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836656"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581459"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -43,7 +43,7 @@ Shrnutí dvou scénářů, které nejsou exkluzivní, pomocí SAML:
 | Moje aplikace očekává pro dokončení ověřování kontrolní výraz SAML. | **Azure AD B2C funguje jako zprostředkovatel identity (IdP).**<br />Azure AD B2C funguje jako IdP SAML pro aplikace. | Tento článek. |
 | Moji uživatelé potřebují jednotné přihlašování pomocí zprostředkovatele identity kompatibilního s SAML, jako je ADFS, Salesforce nebo Shibboleth.  | **Azure AD B2C funguje jako poskytovatel služeb (SP).**<br />Azure AD B2C slouží jako poskytovatel služeb při připojování k poskytovateli identity SAML. Jedná se o federační proxy mezi vaší aplikací a poskytovatelem identity SAML.  | <ul><li>[Nastavení přihlášení pomocí služby ADFS jako IdP SAML pomocí vlastních zásad](identity-provider-adfs2016-custom.md)</li><li>[Nastavení přihlašování pomocí poskytovatele služby Salesforce SAML pomocí vlastních zásad](identity-provider-salesforce-custom.md)</li></ul> |
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Proveďte kroky v části Začínáme [s vlastními zásadami v Azure AD B2C](custom-policy-get-started.md). Vlastní zásady *SocialAndLocalAccounts* potřebujete od úvodní sady Custom Policy Pack popsané v článku.
 * Základní porozumění protokolu Security Assertion Markup Language (SAML).
@@ -259,7 +259,7 @@ Konečný soubor zásad předávající strany by měl vypadat takto:
 
 Uložte změny a nahrajte nový soubor zásad. Po nahrání obou zásad (rozšíření a souborů předávající strany) otevřete webový prohlížeč a přejděte na metadata zásad.
 
-Metadata zásad Azure AD B2C jsou k dispozici na následující adrese URL. Nahraďte `tenant-name` názvem vašeho tenanta Azure AD B2C a `policy-name` s názvem (ID) zásady:
+Metadata IDP zásad Azure AD B2C jsou informace, které se používají v protokolu SAML k vystavení konfigurace zprostředkovatele identity SAML. Metadata definují umístění služeb, jako je například přihlášení a odhlášení, certifikáty, metoda přihlašování a další. Metadata zásad Azure AD B2C jsou k dispozici na následující adrese URL. Nahraďte `tenant-name` názvem vašeho tenanta Azure AD B2C a `policy-name` s názvem (ID) zásady:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -269,7 +269,7 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-active-directory"></a>4,1 zaregistrovat aplikaci v Azure Active Directory
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
@@ -290,7 +290,7 @@ Pro aplikace SAML existuje několik vlastností, které je třeba nakonfigurovat
 
 `identifierUris` je kolekce řetězců obsahující uživatelsky definované identifikátory URI, které jedinečně identifikují webovou aplikaci v rámci jejího Azure AD B2C tenanta. Váš poskytovatel služeb musí tuto hodnotu nastavit v elementu `Issuer` požadavku SAML.
 
-#### <a name="samlmetadataurl"></a>SamlMetadataUrl
+#### <a name="samlmetadataurl"></a>samlMetadataUrl
 
 Tato vlastnost představuje adresu URL veřejně dostupných metadat poskytovatele služeb. Adresa URL metadat může ukazovat na soubor metadat odeslaný do libovolného anonymního dostupného koncového bodu, například jako úložiště objektů BLOB.
 
@@ -321,7 +321,7 @@ Pro účely tohoto kurzu, ve kterém používáte aplikaci testu SAML, nastavte 
 ],
 ```
 
-#### <a name="logouturl-optional"></a>LogoutUrl (volitelné)
+#### <a name="logouturl-optional"></a>logoutUrl (volitelné)
 
 Tato volitelná vlastnost představuje adresu URL `Logout` (adresa URL`SingleLogoutService` v metadatech předávající strany) a `BindingType` pro tuto vlastnost se předpokládá jako `Http-Redirect`.
 

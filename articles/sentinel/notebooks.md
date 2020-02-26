@@ -2,20 +2,20 @@
 title: Použití poznámkových bloků se službou Azure Sentinel pro lov v zabezpečení
 description: Tento článek popisuje, jak používat poznámkové bloky s možnostmi lovu do Azure Sentinel.
 services: sentinel
-author: rkarlin
-ms.author: rkarlin
+author: yelevin
+ms.author: yelevin
 ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/25/2019
-ms.openlocfilehash: 44a37fb8d06040b0d872f15ab25bdd2c7ff685b8
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 84b72a71ed2de910bce44b0c3f3309782f096680
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563696"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581833"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Použití poznámkových bloků Jupyter k prolovení bezpečnostních hrozeb
 

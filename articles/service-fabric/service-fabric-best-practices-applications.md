@@ -5,12 +5,12 @@ author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: 755e3c1eb649bc6c8ecc084d18e9904cc90b1282
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 876980bd6a59bace9ab4e490358964d19fa52c7e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551841"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586083"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Osvědčené postupy pro návrh aplikací pro Azure Service Fabric
 
@@ -30,7 +30,7 @@ Seznamte se s [obecnou architekturou](https://docs.microsoft.com/azure/architect
 Použijte službu brány API, která komunikuje s back-end službami, které se pak dají škálovat. Používají se nejběžnější služby brány API:
 
 - [Azure API Management](https://docs.microsoft.com/azure/service-fabric/service-fabric-api-management-overview), který je [integrovaný s Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-api-management).
-- [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) nebo [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)pomocí [ServiceFabricProcessor](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor) ke čtení z oddílů centra událostí.
+- [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) nebo [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)pomocí [ServiceFabricProcessor](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Microsoft.Azure.EventHubs.ServiceFabricProcessor) ke čtení z oddílů centra událostí.
 - [Træfik reverzní proxy](https://blogs.msdn.microsoft.com/azureservicefabric/2018/04/05/intelligent-routing-on-service-fabric-with-traefik/)s použitím [poskytovatele služby Azure Service Fabric](https://docs.traefik.io/v1.6/configuration/backends/servicefabric/).
 - [Application Gateway Azure](https://docs.microsoft.com/azure/application-gateway/).
 

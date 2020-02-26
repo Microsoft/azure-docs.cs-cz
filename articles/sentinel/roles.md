@@ -4,7 +4,7 @@ description: Tento článek vysvětluje, jak Azure Sentinel používá řízení
 services: sentinel
 cloud: na
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: angrobe
 ms.assetid: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.author: rkarlin
-ms.openlocfilehash: 0479eba13fd747ea1bcab2672fce1df2156802e8
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.author: yelevin
+ms.openlocfilehash: e7629a53190433c6c331ce372476b0ed768fc5eb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74947582"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587171"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění v Azure Sentinel
 

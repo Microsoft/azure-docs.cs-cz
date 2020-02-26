@@ -4,14 +4,14 @@ description: Naučte se registrovat a volat uložené procedury, triggery a uži
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 02/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: f914d4f61a746aa3c87ee2c67f096c01b75e378e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 00740bc2255962089789682e3227ce414fd0ce64
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719700"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582496"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup při registraci a používání uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB
 
@@ -73,15 +73,17 @@ StoredProcedureResponse storedProcedureResponse = await client.GetContainer("dat
 Následující kód ukazuje, jak zavolat uloženou proceduru pomocí sady .NET SDK V3:
 
 ```csharp
-dynamic newItem = new
+dynamic[] newItems = new dynamic[]
 {
-    category = "Personal",
-    name = "Groceries",
-    description = "Pick up strawberries",
-    isComplete = false
+    new {
+        category = "Personal",
+        name = "Groceries",
+        description = "Pick up strawberries",
+        isComplete = false
+    }
 };
 
-var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItem);
+var result = await client.GetContainer("database", "container").Scripts.ExecuteStoredProcedureAsync<string>("spCreateToDoItem", new PartitionKey("Personal"), newItems);
 ```
 
 ### <a name="stored-procedures---java-sdk"></a>Uložené procedury – Java SDK

@@ -4,12 +4,12 @@ description: Naučte se vyvíjet funkce pomocí JavaScriptu.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714796"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584485"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions příručka pro vývojáře JavaScriptu
 
@@ -232,7 +232,7 @@ Můžete zvolit, aby se data o výstupní vazbě definovala pomocí metody `cont
 context.bindingData
 ```
 
-Vrátí pojmenovaný objekt, který obsahuje metadata triggeru a data vyvolání funkce (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Příklad metadat triggeru najdete v tomto [příkladu centra událostí](functions-bindings-event-hubs.md#trigger).
+Vrátí pojmenovaný objekt, který obsahuje metadata triggeru a data vyvolání funkce (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Příklad metadat triggeru najdete v tomto [příkladu centra událostí](functions-bindings-event-hubs-trigger.md).
 
 ### <a name="contextdone-method"></a>Context. hotový – metoda
 
@@ -418,14 +418,17 @@ FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce
 
 ## <a name="node-version"></a>Verze uzlu
 
-Následující tabulka ukazuje verzi Node. js, kterou používá každá hlavní verze běhového modulu Functions:
+Následující tabulka uvádí aktuální podporované verze Node. js pro každou hlavní verzi modulu runtime funkcí podle operačního systému:
 
-| Verze funkcí | Verze Node. js | 
-|---|---|
-| verze | 6.11.2 (uzamčeno modulem runtime) |
-| 2.x  | _Aktivní LTS_ a _Údržba LTS_ verze Node. js (nedoporučuje se 10). Cílovou verzi v Azure můžete nastavit tak, že nastavíte [nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) WEBSITE_NODE_DEFAULT_VERSION na `~10`.|
+| Verze funkcí | Verze uzlu (Windows) | Verze uzlu (Linux) |
+|---|---| --- |
+| verze | 6.11.2 (uzamčeno modulem runtime) | neuvedeno |
+| 2.x  | ~ 8<br/>~ 10 (doporučeno)<br/>~ 12<sup>*</sup> | ~ 8 (doporučeno)<br/>~ 10  |
+| 3.x | ~ 10<br/>~ 12 (doporučeno)  | ~ 10<br/>~ 12 (doporučeno) |
 
-Aktuální verzi, kterou používá modul runtime, můžete zobrazit zkontrolováním výše uvedeného nastavení aplikace nebo tiskem `process.version` z jakékoli funkce.
+<sup>*</sup> Uzel ~ 12 je aktuálně povolen pro verzi 2. x modulu runtime Functions. Pro nejlepší výkon ale doporučujeme použít modul runtime Functions verze 3. x s uzlem ~ 12. 
+
+Aktuální verzi, kterou používá modul runtime, můžete zobrazit zkontrolováním výše uvedeného nastavení aplikace nebo tiskem `process.version` z jakékoli funkce. Cílovou verzi v Azure můžete nastavit tak, že nastavíte [nastavení WEBSITE_NODE_DEFAULT_VERSION aplikace](functions-how-to-use-azure-function-app-settings.md#settings) na podporovanou verzi LTS, jako je například `~10`.
 
 ## <a name="dependency-management"></a>Správa závislostí
 Aby bylo možné používat knihovny komunity v kódu JavaScriptu, jak je znázorněno v následujícím příkladu, je nutné zajistit, aby všechny závislosti byly nainstalovány v Function App v Azure.

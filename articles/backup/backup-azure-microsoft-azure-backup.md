@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: efa54eac2e3e134fb285d38242ca1b59727c2c86
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e601328a09ece54eb1c678310f76c7999c69f24c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425183"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586423"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -45,7 +45,7 @@ Prvním krokem k zahájení a spuštění Azure Backup Server je nastavení Wind
 
 Když zvolíte Server, na kterém běží Azure Backup Server, doporučujeme začít s imagí Galerie Windows serveru 2016 Datacenter nebo Windows Server 2019 Datacenter. V tomto článku [vytvořte svůj první virtuální počítač s Windows na Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), který poskytuje kurz pro zahájení práce s doporučeným virtuálním počítačem v Azure, a to i v případě, že jste Azure ještě nikdy nepoužívali. Doporučené minimální požadavky pro virtuální počítač serveru (VM) by měly být: Standard_A4_v2 se čtyřmi jádry a 8 GB paměti RAM.
 
-Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tento článek vám pomůže vysvětlit tyto drobné odlišnostiy, [nainstalovat DPM jako virtuální počítač Azure](https://technet.microsoft.com/library/jj852163.aspx). Než počítač nasadíte, přečtěte si tento článek kompletně.
+Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tento článek vám pomůže vysvětlit tyto drobné odlišnostiy, [nainstalovat DPM jako virtuální počítač Azure](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12)). Než počítač nasadíte, přečtěte si tento článek kompletně.
 
 ### <a name="using-an-on-premises-server"></a>Použití místního serveru
 
@@ -56,7 +56,7 @@ Pokud nechcete spustit základní server v Azure, můžete server spustit na vir
 | Windows Server 2019 |64bitová verze |Standard, Datacenter, Essentials |
 | Windows Server 2016 a nejnovější aktualizace service packu |64bitová verze |Standard, Datacenter, Essentials  |
 
-Pomocí odstranění duplicitních dat systému Windows Server můžete odstranit duplicitu úložiště aplikace DPM. Přečtěte si další informace o tom [, jak aplikace DPM a odstraňování duplicitních dat](https://technet.microsoft.com/library/dn891438.aspx) při nasazení na virtuálních počítačích Hyper-V spolupracují.
+Pomocí odstranění duplicitních dat systému Windows Server můžete odstranit duplicitu úložiště aplikace DPM. Přečtěte si další informace o tom [, jak aplikace DPM a odstraňování duplicitních dat](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn891438(v=sc.12)) při nasazení na virtuálních počítačích Hyper-V spolupracují.
 
 > [!NOTE]
 > Azure Backup Server je navržená tak, aby běžela na vyhrazeném serveru s jedním účelem. Nemůžete nainstalovat Azure Backup Server na:
@@ -92,7 +92,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 ### <a name="downloading-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 2. Pokud už máte otevřený trezor Recovery Services, pokračujte krokem 3. Pokud nemáte otevřený trezor Recovery Services, ale nachází se v Azure Portal, v hlavní nabídce klikněte na tlačítko **Procházet**.
 
    * V seznamu prostředků zadejte **Služby zotavení**.
@@ -196,7 +196,7 @@ Po dokončení procesu extrakce zaškrtněte políčko pro spuštění programu 
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    Pracovní umístění je požadavkem pro zálohování do Azure. Ujistěte se, že pracovní umístění je alespoň 5% plánovaného zálohování dat do cloudu. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Konfigurace fondů úložiště a diskového úložiště](https://technet.microsoft.com/library/hh758075.aspx).
+    Pracovní umístění je požadavkem pro zálohování do Azure. Ujistěte se, že pracovní umístění je alespoň 5% plánovaného zálohování dat do cloudu. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Konfigurace fondů úložiště a diskového úložiště](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
 5. Zadejte silné heslo pro omezené místní uživatelské účty a klikněte na **Další**.
 
     ![Microsoft Azure Backup PreReq2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
@@ -305,6 +305,14 @@ Pokud máte bránu firewall nebo proxy server, který brání přístupu k Azure
 * \*.microsoftonline.com
 * \*.windows.net
 
+Pokud používáte partnerský vztah Microsoftu ExpressRoute, vyberte prosím následující služby nebo oblasti:
+
+* Azure Active Directory (12076:5060)
+* Oblast Microsoft Azure (podle umístění vašeho trezoru Recovery Services)
+* Azure Storage (jak na umístění vašeho trezoru Recovery Services)
+
+Další podrobnosti najdete v [požadavcích na směrování ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+
 Po obnovení připojení k Azure na Azure Backup Server počítač se operace, které jde provést, stanoví ve stavu předplatného Azure. Výše uvedená tabulka obsahuje podrobnosti o operacích, které jsou povolené, když je počítač připojený.
 
 ### <a name="handling-subscription-states"></a>Zpracování stavů předplatného
@@ -351,7 +359,7 @@ Můžete se také podívat na [Azure Backup souvisejících nejčastějších](b
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobné informace o [přípravě prostředí pro aplikaci DPM](https://technet.microsoft.com/library/hh758176.aspx) najdete na webu Microsoft TechNet. Obsahuje také informace o podporovaných konfiguracích, na kterých Azure Backup Server lze nasadit a použít. K provádění různých operací můžete použít řadu [rutin PowerShellu](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) .
+Zde najdete podrobné informace o [přípravě prostředí pro aplikaci DPM](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758176(v=sc.12)). Obsahuje také informace o podporovaných konfiguracích, na kterých Azure Backup Server lze nasadit a použít. K provádění různých operací můžete použít řadu [rutin PowerShellu](https://docs.microsoft.com/powershell/module/dataprotectionmanager/?view=systemcenter-ps-2016) .
 
 Pomocí těchto článků můžete získat hlubší přehled o ochraně zatížení pomocí Microsoft Azure Backup serveru.
 

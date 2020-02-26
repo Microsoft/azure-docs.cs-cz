@@ -3,12 +3,12 @@ title: Obnovení sdílených složek Azure
 description: Naučte se používat Azure Portal k obnovení celé sdílené složky nebo konkrétních souborů z bodu obnovení vytvořeného pomocí Azure Backup.
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 8ecb5850c90e5a92e59d17f7949bd5b6cd6205f5
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c22078ebd89f5f6f8299e1424d4d9e21edce8b92
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76930663"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586835"
 ---
 # <a name="restore-azure-file-shares"></a>Obnovení sdílených složek Azure
 
@@ -21,6 +21,7 @@ V tomto článku se dozvíte, jak:
 * Sledujte stav operace obnovení.
 
 ## <a name="steps-to-perform-a-restore-operation"></a>Postup provedení operace obnovení
+
 Chcete-li provést operaci obnovení, postupujte podle těchto kroků.
 
 ### <a name="select-the-file-share-to-restore"></a>Vyberte sdílenou složku, kterou chcete obnovit.
@@ -110,7 +111,7 @@ Tuto možnost obnovení můžete použít k obnovení jednotlivých souborů neb
 
     ![Původní umístění pro obnovení na úrovni položek](./media/restore-afs/original-location-item-level.png)
 
-2. Zvolte **Vybrat soubor** a vyberte soubory nebo složky, které chcete obnovit.
+1. Zvolte **Vybrat soubor** a vyberte soubory nebo složky, které chcete obnovit.
 
     ![Zvolte možnost vybrat soubor](./media/restore-afs/select-file.png)
 

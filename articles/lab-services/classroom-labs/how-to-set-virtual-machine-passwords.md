@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: c01106bf7288e777e601c06558b1408960f4e49b
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 0af2b5f7d756060d463d2b4f3ef71bdd135710ee
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539429"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591519"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Nastavení a správa fondu virtuálních počítačů 
 V tomto článku se dozvíte, jak provádět následující úlohy:
@@ -58,6 +58,9 @@ Druhým způsobem je vybrat jeden nebo více virtuálních počítačů v seznam
 ![Spustit vybrané virtuální počítače](../media/how-to-set-virtual-machine-passwords/start-selected-vms.png)
 
 Podobně můžete zastavit jeden nebo více virtuálních počítačů přepnutím tlačítka ve sloupci **stav** nebo výběrem možnosti **zastavit** na panelu nástrojů. 
+
+> [!NOTE]
+> Když Educator zapnete virtuální počítač studenta, neovlivní kvóta pro studenta. Kvóta pro uživatele určuje počet hodin testovacího prostředí uživatele mimo plánovaný čas třídy. Další informace o kvótách najdete v tématu [nastavení kvót pro uživatele](how-to-configure-student-usage.md?#set-quotas-for-users).
 
 ## <a name="reset-vms"></a>Resetování virtuálních počítačů
 Pokud chcete resetovat jeden nebo víc virtuálních počítačů, vyberte je v seznamu a pak na panelu nástrojů vyberte **obnovit** . 

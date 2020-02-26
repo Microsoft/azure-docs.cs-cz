@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 10/28/2019
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a09478bd2e32a1ab484b85fec33ae03878ebb10c
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8e38f422189ce001063276ddc7c7f82b2acb5929
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951016"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585760"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikáty a PredicateValidations
 
@@ -36,7 +36,7 @@ Element **predikáts** musí být uveden přímo za elementem **ClaimsSchema** v
 
 Element **predikáts** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Predikát | 1: n | Seznam predikátů. |
 
@@ -46,34 +46,34 @@ Element **predikátu** obsahuje následující atributy:
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor, který se používá pro predikát. Ostatní elementy můžou tento identifikátor v zásadách použít. |
 | Metoda | Ano | Typ metody, který se má použít pro ověření. Možné hodnoty: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters**nebo **IsDateRange**. Hodnota **IsLengthRange** ověří, zda je délka hodnoty deklarace řetězce v rozsahu zadaného minimálního a maximálního počtu zadaných parametrů. Hodnota **MatchesRegex** zkontroluje, jestli hodnota deklarace řetězce odpovídá regulárnímu výrazu. Hodnota **IncludesCharacters** zkontroluje, jestli hodnota deklarace řetězce obsahuje znaková sada. Hodnota **IsDateRange** zkontroluje, jestli je hodnota deklarace data v rozsahu zadaného minimálního a maximálního počtu parametrů. |
+| HelpText | Ne | Chybová zpráva pro uživatele, pokud se ověření nepovede. Tento řetězec se dá lokalizovat pomocí [přizpůsobení jazyka](localization.md) . |
 
 Element **predikát** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 | Chybová zpráva pro uživatele, pokud se ověření nepovede. Tento řetězec se dá lokalizovat pomocí [přizpůsobení jazyka](localization.md) . |
+| UserHelpText | 0:1 | Zastaralé Chybová zpráva pro uživatele, pokud se ověření nepovede. |
 | Parametry | 1:1 | Parametry pro typ metody pro ověření řetězce. |
 
 Element **Parameters** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Parametr | 1: n | Parametry pro typ metody pro ověření řetězce. |
 
 Element **Parameter** obsahuje následující atributy:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | ID | 1:1 | Identifikátor parametru |
 
 Následující příklad ukazuje metodu `IsLengthRange` s parametry `Minimum` a `Maximum`, které určují rozsah délky řetězce:
 
 ```XML
-<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-  <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
-    <Parameters>
-      <Parameter Id="Minimum">8</Parameter>
-      <Parameter Id="Maximum">64</Parameter>
+<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
+  <Parameters>
+    <Parameter Id="Minimum">8</Parameter>
+    <Parameter Id="Maximum">64</Parameter>
   </Parameters>
 </Predicate>
 ```
@@ -81,8 +81,7 @@ Následující příklad ukazuje metodu `IsLengthRange` s parametry `Minimum` a 
 Následující příklad ukazuje metodu `MatchesRegex` s parametrem `RegularExpression`, který určuje regulární výraz:
 
 ```XML
-<Predicate Id="PIN" Method="MatchesRegex">
-  <UserHelpText>The password must be numbers only.</UserHelpText>
+<Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
   <Parameters>
     <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
   </Parameters>
@@ -92,8 +91,7 @@ Následující příklad ukazuje metodu `MatchesRegex` s parametrem `RegularExpr
 Následující příklad ukazuje metodu `IncludesCharacters` s parametrem `CharacterSet`, který určuje množinu znaků:
 
 ```XML
-<Predicate Id="Lowercase" Method="IncludesCharacters">
-  <UserHelpText>a lowercase letter</UserHelpText>
+<Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
   <Parameters>
     <Parameter Id="CharacterSet">a-z</Parameter>
   </Parameters>
@@ -137,7 +135,7 @@ Element **PredicateValidations** se musí objevit přímo za prvkem **predikáts
 
 Element **PredicateValidations** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1: n | Seznam ověření predikátu |
 
@@ -149,13 +147,13 @@ Element **PredicateValidation** obsahuje následující atribut:
 
 Element **PredicateValidation** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | PredicateGroups | 1: n | Seznam skupin predikátů. |
 
 Element **PredicateGroups** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | PredicateGroup | 1: n | Seznam predikátů. |
 
@@ -167,20 +165,20 @@ Element **predikátu** obsahuje následující atribut:
 
 Element **predikátu** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| UserHelpText | 1:1 |  Popis predikátu, který může být užitečný pro uživatele, aby věděli, jaká hodnota by měla být typu. |
+| UserHelpText | 0:1 |  Popis predikátu, který může být užitečný pro uživatele, aby věděli, jaká hodnota by měla být typu. |
 | PredicateReferences | 1: n | Seznam odkazů na predikáty |
 
 Element **PredicateReferences** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| MatchAtLeast | Ne | Určuje, že hodnota se musí shodovat s minimálním počtem definic predikátu, aby bylo možné vstup přijmout. |
+| MatchAtLeast | Ne | Určuje, že hodnota se musí shodovat s minimálním počtem definic predikátu, aby bylo možné vstup přijmout. Pokud není zadán, hodnota musí odpovídat všem definicím predikátu. |
 
 Element **PredicateReferences** obsahuje následující prvky:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | PredicateReference | 1: n | Odkaz na predikát. |
 
@@ -206,58 +204,50 @@ Pomocí **predikátů** a **PredicateValidationsInput** můžete řídit požada
 
 ```XML
 <Predicates>
-  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
-    <UserHelpText>The password must be between 8 and 64 characters.</UserHelpText>
+  <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
     <Parameters>
       <Parameter Id="Minimum">8</Parameter>
       <Parameter Id="Maximum">64</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Lowercase" Method="IncludesCharacters">
-    <UserHelpText>a lowercase letter</UserHelpText>
+  <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">a-z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Uppercase" Method="IncludesCharacters">
-    <UserHelpText>an uppercase letter</UserHelpText>
+  <Predicate Id="Uppercase" Method="IncludesCharacters" HelpText="an uppercase letter">
     <Parameters>
       <Parameter Id="CharacterSet">A-Z</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Number" Method="IncludesCharacters">
-    <UserHelpText>a digit</UserHelpText>
+  <Predicate Id="Number" Method="IncludesCharacters" HelpText="a digit">
     <Parameters>
       <Parameter Id="CharacterSet">0-9</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="Symbol" Method="IncludesCharacters">
-    <UserHelpText>a symbol</UserHelpText>
+  <Predicate Id="Symbol" Method="IncludesCharacters" HelpText="a symbol">
     <Parameters>
       <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="PIN" Method="MatchesRegex">
-    <UserHelpText>The password must be numbers only.</UserHelpText>
+  <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
     <Parameters>
       <Parameter Id="RegularExpression">^[0-9]+$</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex">
-    <UserHelpText>An invalid character was provided.</UserHelpText>
+  <Predicate Id="AllowedAADCharacters" Method="MatchesRegex" HelpText="An invalid character was provided.">
     <Parameters>
       <Parameter Id="RegularExpression">(^([0-9A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~"();! ]|(\.(?!@)))+$)|(^$)</Parameter>
     </Parameters>
   </Predicate>
 
-  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex">
-    <UserHelpText>The password must not begin or end with a whitespace character.</UserHelpText>
+  <Predicate Id="DisallowedWhitespace" Method="MatchesRegex" HelpText="The password must not begin or end with a whitespace character.">
     <Parameters>
       <Parameter Id="RegularExpression">(^\S.*\S$)|(^\S+$)|(^$)</Parameter>
     </Parameters>
@@ -361,8 +351,7 @@ Pomocí **predikátů** a elementů **PredicateValidations** můžete řídit mi
 
 ```XML
 <Predicates>
-  <Predicate Id="DateRange" Method="IsDateRange">
-    <UserHelpText>The date must be between 01-01-1980 and today.</UserHelpText>
+  <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
     <Parameters>
       <Parameter Id="Minimum">1980-01-01</Parameter>
       <Parameter Id="Maximum">Today</Parameter>

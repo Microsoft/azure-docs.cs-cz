@@ -3,16 +3,15 @@ title: Řešení běžných problémů se službou Azure Kubernetes
 description: Přečtěte si, jak řešit problémy a řešit běžné problémy při používání služby Azure Kubernetes Service (AKS).
 services: container-service
 author: sauryadas
-ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: 663a1dc597493c7b534b54eab7ccc4bed0ff0e11
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b7aa90bd19e52059319570f1e7f6e64b90dee6e4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209218"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593343"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 
@@ -193,7 +192,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | -- | :--: |
 | 1,10 | 1.10.2 nebo novější |
 | 1,11 | 1.11.0 nebo novější |
-| 1,12 a novější | Není k dispozici |
+| 1,12 a novější | neuvedeno |
 
 ### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Při nastavování UID a GID v mountOptions pro disk Azure došlo k chybě.
 
@@ -267,7 +266,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,11 | 1.11.5 nebo novější |
 | 1,12 | 1.12.3 nebo novější |
 | 1,13 | 1.13.0 nebo novější |
-| 1,14 a novější | Není k dispozici |
+| 1,14 a novější | neuvedeno |
 
 Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, můžete problém zmírnit tím, že počkáte několik minut a zkusíte to znovu.
 
@@ -288,7 +287,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,11 | 1.11.6 nebo novější |
 | 1,12 | 1.12.4 nebo novější |
 | 1,13 | 1.13.0 nebo novější |
-| 1,14 a novější | Není k dispozici |
+| 1,14 a novější | neuvedeno |
 
 Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můžete problém zmírnit tím, že vyzkoušíte následující:
 
@@ -309,7 +308,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,11 | 1.11.9 nebo novější |
 | 1,12 | 1.12.7 nebo novější |
 | 1,13 | 1.13.4 nebo novější |
-| 1,14 a novější | Není k dispozici |
+| 1,14 a novější | neuvedeno |
 
 Pokud používáte verzi Kubernetes, která nemá opravu tohoto problému, můžete tento problém zmírnit ručním odpojením disku.
 
@@ -324,7 +323,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,12 | 1.12.9 nebo novější |
 | 1,13 | 1.13.6 nebo novější |
 | 1,14 | 1.14.2 nebo novější |
-| 1,15 a novější | Není k dispozici |
+| 1,15 a novější | neuvedeno |
 
 Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, a váš virtuální počítač uzlu má zastaralý seznam disků, můžete problém zmírnit tím, že z virtuálního počítače odpojíte všechny neexistující disky jako jedinou hromadnou operaci. **Samostatné odpojení neexistujících disků může selhat.**
 
@@ -344,7 +343,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | 1,12 | 1.12.10 nebo novější |
 | 1,13 | 1.13.8 nebo novější |
 | 1,14 | 1.14.4 nebo novější |
-| 1,15 a novější | Není k dispozici |
+| 1,15 a novější | neuvedeno |
 
 Pokud používáte verzi Kubernetes, která není pro tento problém k dispozici, a virtuální počítač uzlu je ve stavu selhání, můžete problém zmírnit tím, že ručně aktualizujete stav virtuálního počítače pomocí jedné z níže uvedených akcí:
 
@@ -461,7 +460,7 @@ Tento problém byl opraven v následujících verzích Kubernetes:
 | -- | :--: |
 | 1,12 | 1.12.6 nebo novější |
 | 1,13 | 1.13.4 nebo novější |
-| 1,14 a novější | Není k dispozici |
+| 1,14 a novější | neuvedeno |
 
 ### <a name="azure-files-mount-fails-due-to-storage-account-key-changed"></a>Připojení k souborům Azure selhalo kvůli změně klíče účtu úložiště.
 

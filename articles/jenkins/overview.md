@@ -4,12 +4,12 @@ description: Hostování Jenkinse sestavení a nasazení automatizačního serve
 keywords: jenkins, azure, devops, overview
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 84d9a62c432208893ac5ff960a5f7aec743680d1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5991505dac0cf6f7ff2cac5dfabd06f4c90dc20f
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479345"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605693"
 ---
 # <a name="azure-and-jenkins"></a>Azure a Jenkins
 
@@ -22,7 +22,7 @@ Tento článek je úvodem do používání Azure s Jenkinsem a podrobně popisuj
 Díky hostování Jenkinse v Azure můžete centralizovat automatizaci sestavování a škálovat své nasazení s ohledem na rostoucí požadavky vašich softwarových projektů. K nasazení Jenkinse v Azure můžete použít:
  
 - [Šablonu řešení Jenkinse](install-jenkins-solution-template.md) na webu Azure Marketplace.
-- [Virtuální počítače Azure](/azure/virtual-machines/linux/overview). Informace o vytvoření instance Jenkinse na virtuálním počítači najdete v našem [kurzu](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd).
+- [Virtuální počítače Azure](/azure/virtual-machines/linux/overview). Informace o vytvoření instance Jenkinse na virtuálním počítači najdete v našem [kurzu](tutorial-jenkins-github-docker-cicd.md).
 - Pokud používáte cluster Kubernetes spuštěný ve službě [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough), přečtěte si naše [postupy](/azure/container-service/kubernetes/container-service-kubernetes-jenkins).
 
 Monitorujte a spravujte svoje nasazení Azure Jenkinse pomocí [protokolů Azure monitor](/azure/log-analytics/log-analytics-overview) a [Azure CLI](/cli/azure).

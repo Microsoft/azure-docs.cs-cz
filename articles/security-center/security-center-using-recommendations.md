@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: memildin
-ms.openlocfilehash: 5b496523f6205532ea7a4278671e3be6986935a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1034eb47010da2b0e795ee8c79646f06151cac1
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355285"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603283"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití Azure Security Center doporučení k vylepšení zabezpečení
 Můžete snížit pravděpodobnost významné události zabezpečení konfigurací zásad zabezpečení a následnou implementací doporučení Azure Security Center. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení v Security Center, abyste mohli zmírnit útok na zabezpečení. 
@@ -35,7 +35,7 @@ V tomto scénáři se dozvíte, jak použít Security Center ke snížení pravd
 
 Společnost Contoso nedávno provedla migraci některých místních prostředků do Azure. Společnost Contoso chce chránit své prostředky a snížit zranitelnost svých prostředků v cloudu.
 
-## <a name="use-azure-security-center"></a>Použití Azure Security Center
+## <a name="use-azure-security-center"></a>Použít Azure Security Center
 David, od zabezpečení IT společnosti Contoso, se už rozhodla připojit Security Center k předplatným společnosti Contoso Azure Security Center, aby nedocházelo k chybám zabezpečení a detekci jejich zabezpečení. 
 
 Security Center automaticky analyzuje stav zabezpečení prostředků Azure společnosti Contoso a použije výchozí zásady zabezpečení. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří **doporučení** na základě ovládacích prvků nastavených v zásadách zabezpečení. 

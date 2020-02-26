@@ -3,7 +3,7 @@ title: Připojit bránu firewall Barracuda CloudGen k Azure Sentinel | Microsoft
 description: Naučte se připojit bránu firewall Barracuda CloudGen ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: f7d5531c8aba3e2e7abb56d82342bfda79dbc71b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: aaedbfdd3b1bbbc653756d74ee86fc277b21caec
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610722"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588497"
 ---
 # <a name="connect-barracuda-cloudgen-firewall"></a>Připojení brány Barracuda CloudGen Firewall
 
@@ -28,7 +28,7 @@ Konektor brány firewall Barracuda CloudGen (CGFW) umožňuje snadno připojit p
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
 

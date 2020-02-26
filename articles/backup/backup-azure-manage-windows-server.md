@@ -3,12 +3,12 @@ title: Správa serverů a trezorů služby Azure Recovery Services
 description: V tomto článku se dozvíte, jak pomocí řídicího panelu přehled služby Recovery Services trezor monitorovat a spravovat vaše trezory Recovery Services.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: f043d50a2b0e4efbda957a9c4ccb8f1d472dce15
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173042"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586440"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 
@@ -67,11 +67,11 @@ V nabídce výstrahy zálohování se na obrázku výše filtruje podle: stav je
 
 Chcete-li získat přístup k nabídce výstrahy zálohování, v nabídce trezoru Recovery Services klikněte na možnost **zálohování výstrah**.
 
-![Výstrahy zálohování](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
+![Výstrahy záloh](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
 Sestava výstrahy zálohování obsahuje výstrahy pro trezor.
 
-![Výstrahy zálohování](./media/backup-azure-manage-windows-server/backup-alerts.png)
+![Výstrahy záloh](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
 ### <a name="alerts"></a>Výstrahy
 
@@ -87,7 +87,7 @@ V seznamu výstrahy zálohování se zobrazí vybrané informace pro filtrovaná
 
 Sestava výstrahy zálohování sleduje osm podrobností o jednotlivých výstrahách. Použijte tlačítko **Vybrat sloupce** a upravte podrobnosti v sestavě.
 
-![Výstrahy zálohování](./media/backup-azure-manage-windows-server/backup-alerts.png)
+![Výstrahy záloh](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
 Ve výchozím nastavení se v sestavě zobrazí všechny podrobnosti, s výjimkou **času posledního výskytu**.
 
@@ -104,7 +104,7 @@ Ve výchozím nastavení se v sestavě zobrazí všechny podrobnosti, s výjimko
 
 1. Chcete-li změnit informace o sestavě, klikněte v nabídce **výstrahy zálohování** na možnost **Zvolit sloupce**.
 
-   ![Výstrahy zálohování](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
+   ![Výstrahy záloh](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
 
    Otevře se nabídka **Zvolit sloupce** .
 
@@ -205,7 +205,7 @@ Změna filtrů:
 Typ položky je typ správy zálohování chráněné instance. Existují čtyři typy; Podívejte se na následující seznam. Můžete zobrazit všechny typy položek nebo jeden typ položky. Nemůžete vybrat dva nebo tři typy položek. Dostupné typy položek jsou:
 
 * Všechny typy položek
-* Virtuální počítače Azure
+* Virtuální počítač Azure
 * Soubory a složky
 * Azure Storage
 * Zatížení Azure
@@ -229,7 +229,7 @@ Můžete zobrazit všechny stavy nebo jeden. Nemůžete vybrat dva nebo tři sta
 * Všechny stavy
 * Dokončeno
 * Probíhá
-* Neúspěch
+* Neúspěšné
 * Zrušeno
 * Dokončeno s upozorněními
 
@@ -272,4 +272,4 @@ Dlaždice úložiště zálohování na řídicím panelu zobrazuje úložiště
 
 * [Obnovení Windows serveru nebo klienta Windows z Azure](backup-azure-restore-windows-server.md)
 * Další informace o Azure Backup najdete v tématu [Azure Backup Overview](backup-introduction-to-azure-backup.md) .
-* Navštívit [fórum Azure Backup](https://go.microsoft.com/fwlink/p/?LinkId=290933)
+

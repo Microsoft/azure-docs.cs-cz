@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: thweiss
-ms.openlocfilehash: c5699bb851bd0a818a987228155c62683e93f51a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 86e9854cb5a522a56cca09a6e1ea155fd8a62f14
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240787"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585896"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>Najděte poplatek za jednotku žádosti v Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Pokud používáte rozhraní API SQL, máte k dispozici několik možností, jak
 
 V současné době můžete v Azure Portal vyhledat poplatek za požadavek pouze pro dotaz SQL.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-sql-api-dotnet.md#create-account) a zajistěte ho s daty nebo vyberte existující účet Azure Cosmos, který už obsahuje data.
 
@@ -42,7 +42,7 @@ V současné době můžete v Azure Portal vyhledat poplatek za požadavek pouze
 ### <a name="use-the-net-sdk"></a>Použití sady .NET SDK
 ### <a name="net-v2-sdk"></a>.Net V2 SDK
 
-Objekty, které jsou vráceny ze [sady .NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) vystavují `RequestCharge` vlastnost:
+Objekty, které jsou vráceny ze [sady .NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) , zpřístupňují vlastnost `RequestCharge`:
 
 ```csharp
 ResourceResponse<Document> fetchDocumentResponse = await client.ReadDocumentAsync(
@@ -77,15 +77,15 @@ while (query.HasMoreResults)
 
 ### <a name="net-v3-sdk"></a>.Net V3 SDK
 
-Objekty, které jsou vráceny ze [sady .NET SDK V3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) vystavení `RequestCharge` vlastnosti:
+Objekty, které jsou vráceny ze [sady .NET SDK V3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) vystavení vlastnosti `RequestCharge`:
 
-[!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs?name=GetRequestCharge)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/CustomDocsSampleCode.cs" id="GetRequestCharge":::
 
-Další informace najdete v tématu [rychlý Start: Vytvořte webovou aplikaci .NET pomocí účtu rozhraní SQL API v Azure Cosmos DB](create-sql-api-dotnet.md).
+Další informace najdete v tématu [rychlý Start: Vytvoření webové aplikace .NET pomocí účtu SQL API v Azure Cosmos DB](create-sql-api-dotnet.md).
 
 ### <a name="use-the-java-sdk"></a>Použití sady Java SDK
 
-Objekty, které jsou vráceny ze [sady Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) , `getRequestCharge()` zveřejňují metodu:
+Objekty, které jsou vráceny ze [sady Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) , zveřejňují `getRequestCharge()` metodu:
 
 ```java
 RequestOptions requestOptions = new RequestOptions();
@@ -111,11 +111,11 @@ feedResponse.forEach(result -> {
 });
 ```
 
-Další informace najdete v tématu [rychlý Start: Sestavte aplikaci Java pomocí Azure Cosmos DB účtu](create-sql-api-java.md)rozhraní SQL API.
+Další informace najdete v tématu [rychlý Start: Vytvoření aplikace Java pomocí Azure Cosmos DB účtu rozhraní SQL API](create-sql-api-java.md).
 
 ### <a name="use-the-nodejs-sdk"></a>Použití sady Node. js SDK
 
-Objekty, které jsou vráceny ze [sady Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) , `headers` zveřejňují podobjekt, který mapuje všechny hlavičky vrácené podkladovým rozhraním API protokolu HTTP. Poplatek za požadavek je k dispozici `x-ms-request-charge` pod klíčem:
+Objekty, které jsou vráceny ze [sady Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) , zveřejňují `headers` podobjekt, který mapuje všechny hlavičky vrácené podkladovým rozhraním API protokolu HTTP. Poplatek za požadavky je k dispozici pod klíčem `x-ms-request-charge`:
 
 ```javascript
 const item = await client
@@ -146,11 +146,11 @@ while (query.hasMoreResults()) {
 }
 ```
 
-Další informace najdete v tématu [rychlý Start: Sestavte aplikaci Node. js pomocí Azure Cosmos DB účtu](create-sql-api-nodejs.md)rozhraní SQL API. 
+Další informace najdete v tématu [rychlý Start: Vytvoření aplikace Node. js pomocí Azure Cosmos DB účtu rozhraní SQL API](create-sql-api-nodejs.md). 
 
 ### <a name="use-the-python-sdk"></a>Použití sady Python SDK
 
-Objekt ze [sady Python SDK](https://pypi.org/project/azure-cosmos/) zpřístupňuje slovník,kterýmapujevšechnyhlavičkyvrácenépodkladovýmrozhranímAPIprotokoluHTTPproposledníspuštěnouoperaci.`last_response_headers` `CosmosClient` Poplatek za požadavek je k dispozici `x-ms-request-charge` pod klíčem:
+Objekt `CosmosClient` ze [sady Python SDK](https://pypi.org/project/azure-cosmos/) zveřejňuje `last_response_headers` slovníku, který mapuje všechny hlavičky vrácené podkladovým rozhraním API protokolu HTTP pro poslední spuštěnou operaci. Poplatek za požadavky je k dispozici pod klíčem `x-ms-request-charge`:
 
 ```python
 response = client.ReadItem(
@@ -162,17 +162,17 @@ response = client.ExecuteStoredProcedure(
 request_charge = client.last_response_headers['x-ms-request-charge']
 ```
 
-Další informace najdete v tématu [rychlý Start: Sestavte aplikaci v Pythonu pomocí Azure Cosmos DB účtu](create-sql-api-python.md)rozhraní SQL API. 
+Další informace najdete v tématu [rychlý Start: Vytvoření aplikace v Pythonu pomocí Azure Cosmos DB účtu rozhraní SQL API](create-sql-api-python.md). 
 
 ## <a name="azure-cosmos-db-api-for-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
-Poplatek za RU je vystavený pomocí [příkazu vlastní databáze](https://docs.mongodb.com/manual/reference/command/) s `getLastRequestStatistics`názvem. Příkaz vrátí dokument, který obsahuje název poslední provedené operace, poplatek za požadavek a jeho trvání. Pokud používáte rozhraní Azure Cosmos DB API pro MongoDB, máte k dispozici několik možností, jak poplatek za RU načíst.
+Poplatek za RU je vystavený pomocí [příkazu vlastní databáze](https://docs.mongodb.com/manual/reference/command/) s názvem `getLastRequestStatistics`. Příkaz vrátí dokument, který obsahuje název poslední provedené operace, poplatek za požadavek a jeho trvání. Pokud používáte rozhraní Azure Cosmos DB API pro MongoDB, máte k dispozici několik možností, jak poplatek za RU načíst.
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
 V současné době můžete poplatek za požadavek najít v Azure Portal jenom pro dotaz.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
 1. [Vytvořte nový účet Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account) a zajistěte ho s daty nebo vyberte existující účet, který už obsahuje data.
 
@@ -188,7 +188,7 @@ V současné době můžete poplatek za požadavek najít v Azure Portal jenom p
 
 ### <a name="use-the-mongodb-net-driver"></a>Použití ovladače MongoDB .NET
 
-Při použití [oficiálního ovladače MongoDB .NET](https://docs.mongodb.com/ecosystem/drivers/csharp/)můžete spustit příkazy voláním `RunCommand` metody pro `IMongoDatabase` objekt. Tato metoda vyžaduje implementaci `Command<>` abstraktní třídy:
+Při použití [oficiálního ovladače MongoDB .NET](https://docs.mongodb.com/ecosystem/drivers/csharp/)můžete spustit příkazy voláním metody `RunCommand` na objekt `IMongoDatabase`. Tato metoda vyžaduje implementaci `Command<>` abstraktní třídy:
 
 ```csharp
 class GetLastRequestStatisticsCommand : Command<Dictionary<string, object>>
@@ -208,7 +208,7 @@ Další informace najdete v tématu [rychlý Start: Vytvoření webové aplikace
 ### <a name="use-the-mongodb-java-driver"></a>Použití ovladače MongoDB Java
 
 
-Použijete-li [oficiální ovladač Java MongoDB](https://mongodb.github.io/mongo-java-driver/), můžete spustit příkazy voláním `runCommand` metody pro `MongoDatabase` objekt:
+Pokud používáte [oficiální ovladač Java MongoDB](https://mongodb.github.io/mongo-java-driver/), můžete spustit příkazy voláním metody `runCommand` na objekt `MongoDatabase`:
 
 ```java
 Document stats = database.runCommand(new Document("getLastRequestStatistics", 1));
@@ -219,7 +219,7 @@ Další informace najdete v tématu [rychlý Start: Vytvoření webové aplikace
 
 ### <a name="use-the-mongodb-nodejs-driver"></a>Použití ovladače MongoDB Node. js
 
-Při použití [oficiálního ovladače MongoDB Node. js](https://mongodb.github.io/node-mongodb-native/)lze spustit příkazy voláním `command` metody pro `db` objekt:
+Při použití [oficiálního ovladače MongoDB Node. js](https://mongodb.github.io/node-mongodb-native/)můžete spouštět příkazy voláním metody `command` na objektu `db`:
 
 ```javascript
 db.command({ getLastRequestStatistics: 1 }, function(err, result) {
@@ -228,33 +228,33 @@ db.command({ getLastRequestStatistics: 1 }, function(err, result) {
 });
 ```
 
-Další informace najdete v tématu [rychlý Start: Migrujte existující webovou aplikaci Node. js v MongoDB na](create-mongodb-nodejs.md)Azure Cosmos DB.
+Další informace najdete v tématu [rychlý Start: migrace stávající webové aplikace Node. js v MongoDB na Azure Cosmos DB](create-mongodb-nodejs.md).
 
 ## <a name="cassandra-api"></a>Rozhraní Cassandra API
 
-Při provádění operací proti Azure Cosmos DB rozhraní API Cassandra se poplatek za RU vrátí do příchozí datové části jako pole s názvem `RequestCharge`. Máte k dispozici několik možností pro načtení poplatků za RU.
+Při provádění operací proti Azure Cosmos DB rozhraní API Cassandra se poplatek za RU vrátí do příchozí datové části jako pole s názvem `RequestCharge`. Poplatky za RU můžete načíst několika způsoby.
 
 ### <a name="use-the-net-sdk"></a>Použití sady .NET SDK
 
-Pokud používáte [sadu .NET SDK](https://www.nuget.org/packages/CassandraCSharpDriver/), můžete načíst příchozí datovou část v rámci `Info` vlastnosti `RowSet` objektu:
+Pokud používáte [sadu .NET SDK](https://www.nuget.org/packages/CassandraCSharpDriver/), můžete načíst příchozí datovou část pod vlastností `Info` objektu `RowSet`:
 
 ```csharp
 RowSet rowSet = session.Execute("SELECT table_name FROM system_schema.tables;");
 double requestCharge = BitConverter.ToDouble(rowSet.Info.IncomingPayload["RequestCharge"].Reverse().ToArray(), 0);
 ```
 
-Další informace najdete v tématu [rychlý Start: Sestavte aplikaci Cassandra pomocí sady .NET SDK a Azure Cosmos DB](create-cassandra-dotnet.md).
+Další informace najdete v tématu [rychlý Start: sestavení aplikace Cassandra pomocí sady .NET SDK a Azure Cosmos DB](create-cassandra-dotnet.md).
 
 ### <a name="use-the-java-sdk"></a>Použití sady Java SDK
 
-Při použití [sady Java SDK](https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core)můžete načíst příchozí datovou část voláním `getExecutionInfo()` metody pro `ResultSet` objekt:
+Při použití [sady Java SDK](https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core)můžete načíst příchozí datovou část voláním metody `getExecutionInfo()` do objektu `ResultSet`:
 
 ```java
 ResultSet resultSet = session.execute("SELECT table_name FROM system_schema.tables;");
 Double requestCharge = resultSet.getExecutionInfo().getIncomingPayload().get("RequestCharge").getDouble();
 ```
 
-Další informace najdete v tématu [rychlý Start: Sestavte aplikaci Cassandra pomocí sady Java SDK a Azure Cosmos DB](create-cassandra-java.md).
+Další informace najdete v tématu [rychlý Start: sestavení aplikace Cassandra pomocí sady Java SDK a Azure Cosmos DB](create-cassandra-java.md).
 
 ## <a name="gremlin-api"></a>Rozhraní Gremlin API
 
@@ -262,33 +262,33 @@ Když použijete rozhraní Gremlin API, máte několik možností, jak najít sp
 
 ### <a name="use-drivers-and-sdk"></a>Použití ovladačů a sady SDK
 
-Záhlaví vrácená rozhraním API Gremlin jsou namapována na vlastní atributy stavu, které jsou aktuálně umístěny na základě Gremlin .NET a Java SDK. Poplatek za požadavek je k dispozici `x-ms-request-charge` pod klíčem.
+Záhlaví vrácená rozhraním API Gremlin jsou namapována na vlastní atributy stavu, které jsou aktuálně umístěny na základě Gremlin .NET a Java SDK. Poplatek za požadavek je k dispozici pod klíčem `x-ms-request-charge`.
 
 ### <a name="use-the-net-sdk"></a>Použití sady .NET SDK
 
-Když použijete [sadu SDK Gremlin.NET](https://www.nuget.org/packages/Gremlin.Net/), jsou atributy stavu dostupné v rámci `StatusAttributes` vlastnosti `ResultSet<>` objektu:
+Když použijete [sadu SDK Gremlin.NET](https://www.nuget.org/packages/Gremlin.Net/), jsou atributy stavu dostupné pod vlastností `StatusAttributes` objektu `ResultSet<>`:
 
 ```csharp
 ResultSet<dynamic> results = client.SubmitAsync<dynamic>("g.V().count()").Result;
 double requestCharge = (double)results.StatusAttributes["x-ms-request-charge"];
 ```
 
-Další informace najdete v tématu [rychlý Start: Sestavte .NET Framework nebo základní aplikaci pomocí účtu](create-graph-dotnet.md)rozhraní API Azure Cosmos DB Gremlin.
+Další informace najdete v tématu [rychlý Start: sestavení .NET Framework nebo základní aplikace pomocí účtu rozhraní API Azure Cosmos DB Gremlin](create-graph-dotnet.md).
 
 ### <a name="use-the-java-sdk"></a>Použití sady Java SDK
 
-Když použijete [sadu Gremlin Java SDK](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver), můžete načíst atributy stavu voláním `statusAttributes()` metody `ResultSet` objektu:
+Pokud používáte [sadu Gremlin Java SDK](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver), můžete načíst atributy stavu voláním metody `statusAttributes()` u objektu `ResultSet`:
 
 ```java
 ResultSet results = client.submit("g.V().count()");
 Double requestCharge = (Double)results.statusAttributes().get().get("x-ms-request-charge");
 ```
 
-Další informace najdete v tématu [rychlý Start: Vytvořte databázi grafu v Azure Cosmos DB pomocí sady Java SDK](create-graph-java.md).
+Další informace najdete v tématu [rychlý Start: vytvoření databáze grafu v Azure Cosmos DB pomocí sady Java SDK](create-graph-java.md).
 
 ## <a name="table-api"></a>Rozhraní Table API
 
-V současné době je jediná sada SDK, která vrací poplatek za RU za operace s tabulkami, [.NET Standard SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table). `TableResult` Objekt zpřístupňujevlastnost,kterájevyplněnasadouSDKpři`RequestCharge` použití v Azure Cosmos DB rozhraní API pro tabulky:
+V současné době je jediná sada SDK, která vrací poplatek za RU za operace s tabulkami, [.NET Standard SDK](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table). Objekt `TableResult` zpřístupňuje vlastnost `RequestCharge`, která je naplněná sadou SDK, když ji použijete pro Azure Cosmos DB rozhraní API pro tabulky:
 
 ```csharp
 CloudTable tableReference = client.GetTableReference("table");
@@ -299,15 +299,15 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 }
 ```
 
-Další informace najdete v tématu [rychlý Start: Sestavte rozhraní API pro tabulky aplikaci pomocí sady .NET SDK a Azure Cosmos DB](create-table-dotnet.md).
+Další informace najdete v tématu [rychlý Start: Vytvoření aplikace rozhraní API pro tabulky pomocí sady .NET SDK a Azure Cosmos DB](create-table-dotnet.md).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o optimalizaci spotřeby RU najdete v těchto článcích:
 
 * [Jednotky žádostí a propustnost ve službě Azure Cosmos DB](request-units.md)
 * [Optimalizace nákladů na zřízenou propustnost ve službě Azure Cosmos DB](optimize-cost-throughput.md)
-* [Optimalizace nákladů na dotaz v Azure Cosmos DB](optimize-cost-queries.md)
+* [Optimalizace nákladů na dotazování ve službě Azure Cosmos DB](optimize-cost-queries.md)
 * [Globálně škálovat zřízenou propustnost](scaling-throughput.md)
 * [Zřízení propustnosti u kontejnerů a databází](set-throughput.md)
 * [Zřízení propustnosti pro kontejner](how-to-provision-container-throughput.md)

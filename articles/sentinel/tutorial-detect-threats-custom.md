@@ -3,7 +3,7 @@ title: Vytváření vlastních pravidel pro analytiky k detekci podezřelých hr
 description: V tomto kurzu se naučíte vytvářet vlastní pravidla pro analytiky k detekci podezřelých hrozeb s využitím funkce Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
-ms.author: rkarlin
-ms.openlocfilehash: bdd36e2f3c2b426f4bad3e787c12be2f7d09b303
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.author: yelevin
+ms.openlocfilehash: cea7429ecea105355b0afe306bfa334e55d5d9c4
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565515"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585103"
 ---
 # <a name="tutorial-create-custom-analytic-rules-to-detect-suspicious-threats"></a>Kurz: vytvoření vlastních pravidel pro analytiky k detekci podezřelých hrozeb
 

@@ -4,18 +4,18 @@ description: Naučte se, jak zálohovat Exchange Server pro Azure Backup pomocí
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 73dcc190446a71498dee3f12a5225a56c9f4ddc7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 051e33e9340a5ee788011254bb2cf88029ba1505
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173126"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583839"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Zálohování serveru Exchange do Azure pomocí Azure Backup Server
 
 Tento článek popisuje, jak nakonfigurovat Microsoft Azure Backup Server (MABS) pro zálohování Microsoft Exchange serveru do Azure.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, ujistěte se, že jsou [nainstalované a připravené](backup-azure-microsoft-azure-backup.md)Azure Backup Server.
 
@@ -23,8 +23,8 @@ Než budete pokračovat, ujistěte se, že jsou [nainstalované a připravené](
 
 Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte podle následujících kroků:
 
-1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](https://technet.microsoft.com/library/Hh758204.aspx).
-2. Nainstalujte agenta na server Exchange kliknutím na **správa > agenti > nainstalovat** v konzole pro správu MABS. Podrobné pokyny najdete v tématu [instalace agenta MABS Protection](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) .
+1. Ujistěte se, že brány firewall jsou správně nakonfigurované. Viz [Konfigurace výjimek brány firewall pro agenta](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758204(v=sc.12)).
+2. Nainstalujte agenta na server Exchange kliknutím na **správa > agenti > nainstalovat** v konzole pro správu MABS. Podrobné pokyny najdete v tématu [instalace agenta MABS Protection](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758186(v=sc.12)) .
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Vytvoření skupiny ochrany pro server Exchange
 
@@ -34,7 +34,7 @@ Chcete-li nainstalovat agenta MABS Protection na server Exchange, postupujte pod
 4. Vyberte databázi systému Exchange Server, kterou chcete chránit, a klikněte na tlačítko **Další**.
 
    > [!NOTE]
-   > Pokud chráníte Exchange 2013, podívejte se na [požadavky exchange 2013](https://technet.microsoft.com/library/dn751029.aspx).
+   > Pokud chráníte Exchange 2013, podívejte se na [požadavky exchange 2013](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12)).
    >
    >
 

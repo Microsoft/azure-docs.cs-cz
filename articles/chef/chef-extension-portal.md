@@ -2,19 +2,19 @@
 title: Instalace klienta systému pro sestavovatele z Azure Portal
 description: Přečtěte si, jak nasadit a nakonfigurovat klienta z Azure Portal
 keywords: Azure, DevOps, klient, instalace, portál
-ms.date: 05/15/2018
+ms.date: 02/22/2020
 ms.topic: article
-ms.openlocfilehash: f8707c2fe39fb794381af298c24d27704b1ec255
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6e46133c598c44b314077f2d020852416d3d2745
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158255"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586355"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Instalace klienta systému pro sestavovatele z Azure Portal
 Rozšíření klienta pro systém pro rozhraní systému pro počítače můžete přidat přímo do počítače se systémem Linux nebo Windows z Azure Portal. Tento článek vás provede procesem použití nového virtuálního počítače se systémem Linux.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
@@ -79,24 +79,24 @@ V této části nejprve použijete Azure Portal k vytvoření počítače se sys
 1. Na kartě **instalovat rozšíření** zadejte následující hodnoty a pak vyberte **OK**.
 
     - **Adresa URL serveru** pro vyžádání – zadejte adresu URL serveru s názvem, který obsahuje název organizace, například *https://api.chef.io/organization/mycompany* .
-    - **Název uzlu pro název uzlu** – zadejte název uzlu s názvem. Může to být libovolná hodnota.
-    - **Seznam spuštění** – zadejte seznam spuštění pro systém pro použití, který se přidá k počítači. To může být ponecháno prázdné.
-    - **Název ověřovacího klienta** – zadejte název ověřovacího klienta s názvem. například *tarcher-validátor*.
+    - **Název uzlu pro název uzlu** – zadejte název uzlu s názvem.
+    - **Seznam spuštění** – zadejte seznam spuštění pro systém pro použití, který se přidá k počítači. Tato hodnota může být ponechána prázdná.
+    - **Název ověřovacího klienta** – zadejte název ověřovacího klienta s názvem. Například `tarcher-validator`.
     - **Ověřovací klíč** – vyberte soubor obsahující ověřovací klíč, který se používá při zavádění vašich počítačů.
-    - **Konfigurační soubor klienta** – vyberte konfigurační soubor pro klienta aplikace. To může být ponecháno prázdné.
-    - **Verze klienta** systému pro sestavovatele – zadejte verzi klienta systému, kterou chcete nainstalovat. To může být ponecháno prázdné. Prázdná hodnota nainstaluje nejnovější verzi.
+    - **Konfigurační soubor klienta** – vyberte konfigurační soubor pro klienta aplikace. Tato hodnota může být ponechána prázdná.
+    - **Verze klienta** systému pro sestavovatele – zadejte verzi klienta systému, kterou chcete nainstalovat. Tato hodnota může být ponechána prázdná, která nainstaluje nejnovější verzi.
     - **Režim ověřování SSL** – vyberte buď **none** , nebo **peer**. Pro ukázku se nevybral *žádný* .
-    - **Prostředí** systému pro navázání – zadejte prostředí pro systém \ tento uzel by měl být členem. To může být ponecháno prázdné.
-    - **Šifrovaný tajný klíč Databag** – vyberte soubor obsahující tajný klíč pro šifrované Databag, ke kterému má tento počítač přístup. To může být ponecháno prázdné.
-    - **Certifikát SSL serveru** pro zapsání – vyberte certifikát SSL přiřazený k vašemu serveru s vlastním serverem. To může být ponecháno prázdné.
+    - **Prostředí** systému pro navázání – zadejte prostředí pro systém \ tento uzel by měl být členem. Tato hodnota může být ponechána prázdná.
+    - **Tajný klíč zašifrovaného datového kontejneru** – vyberte soubor obsahující tajný klíč pro zašifrovaný datový kontejner, ke kterému má tento počítač přístup. Tato hodnota může být ponechána prázdná.
+    - **Certifikát SSL serveru** pro zapsání – vyberte certifikát SSL přiřazený k vašemu serveru s vlastním serverem. Tato hodnota může být ponechána prázdná.
 
       ![Instalace serveru systému pro instalaci do virtuálního počítače se systémem Linux](./media/chef-extension-portal/install-extension.png)
 
-1. Až se vrátíte na kartu **rozšíření** , vyberte **OK**.
+1. Jakmile se zobrazí karta **rozšíření** , vyberte **OK**.
 
-1. Až se vrátíte na kartu **Nastavení** , vyberte **OK**.
+1. Po zobrazení karty **Nastavení** vyberte **OK**.
 
-1. Při návratu na kartu **vytvořit** (představuje souhrn možností, které jste vybrali a zadali), ověřte informace i **podmínky použití**a vyberte **vytvořit**.
+1. Když se zobrazí karta **vytvořit** , zobrazí se souhrn možností, které jste vybrali a zadali. Ověřte informace i **podmínky použití**a vyberte **vytvořit**.
 
 Po dokončení procesu vytvoření a nasazení virtuálního počítače s rozšířením pro aplikaci pro počítače se zobrazí oznámení o úspěšném nebo neúspěšném provedení operace. Kromě toho se stránka prostředků pro nový virtuální počítač automaticky otevře v Azure Portal po jeho vytvoření.
 
@@ -104,4 +104,5 @@ Po dokončení procesu vytvoření a nasazení virtuálního počítače s rozš
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření virtuálního počítače s Windows v Azure pomocí systému pro vytváření počítačů](/azure/virtual-machines/windows/chef-automation)
+> [!div class="nextstepaction"] 
+> [Vytvoření virtuálního počítače s Windows v Azure pomocí systému pro vytváření počítačů](chef-automation.md)

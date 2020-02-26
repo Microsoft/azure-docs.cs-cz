@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: aa7197dc631ea281bd5616b572f4ca01aeb9d45c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964766"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587290"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Volba mezi vCore a nákupními modely DTU
 
@@ -55,7 +55,7 @@ Náklady na úložiště zálohování jsou stejné jako pro úroveň služby Pr
 
 Popis způsobu definování kapacity a výpočtu nákladů na výpočetní úrovni serveru najdete v tématu [SQL Database bez serveru](sql-database-serverless.md).
 
-## <a name="storage-costs"></a>Náklady na úložiště
+## <a name="storage-costs"></a>Cena za uložení
 
 Různé typy úložiště se účtují jinak. Pro úložiště dat se vám budou účtovat zřízené úložiště založené na maximální velikosti databáze nebo fondu, který vyberete. Náklady se nezmění, pokud je maximální hodnota nesnížíte nebo nezvýšíte. Úložiště zálohování je přidruženo k automatizovaným zálohám vaší instance a dynamicky se přiřazuje. Zvýšení doby uchovávání záloh zvyšuje velikost úložiště zálohování spotřebovaného vaší instancí.
 
@@ -77,7 +77,7 @@ Nákupní model založený na vCore vám umožňuje nezávisle vybrat výpočetn
 
 > [!IMPORTANT]
 > Výpočetní prostředky, vstupně-výstupní operace a data a úložiště protokolů se účtují na základě databáze nebo elastického fondu. Úložiště zálohování se účtuje podle každé databáze. Další informace o poplatcích za spravované instance najdete v tématu [spravované instance](sql-database-managed-instance.md).
-> **Omezení oblastí:** Aktuální seznam podporovaných oblastí najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Pokud chcete vytvořit spravovanou instanci v oblasti, která v tuto chvíli není podporovaná, [pošlete žádost o podporu prostřednictvím Azure Portal](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
+> **Omezení oblastí:** Aktuální seznam podporovaných oblastí najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Pokud chcete vytvořit spravovanou instanci v oblasti, která v tuto chvíli není podporovaná, [pošlete žádost o podporu prostřednictvím Azure Portal](quota-increase-request.md).
 
 Pokud vaše izolovaná databáze nebo elastický fond spotřebovává více než 300 DTU, může převod na model nákupu na základě vCore snížit vaše náklady. Můžete převést pomocí rozhraní API podle vlastního výběru nebo pomocí Azure Portal bez výpadků. Konverze ale není povinná a neprovádí se automaticky. Pokud nákupní model založený na DTU splňuje vaše požadavky na výkon a podnikání, měli byste ho dál používat.
 

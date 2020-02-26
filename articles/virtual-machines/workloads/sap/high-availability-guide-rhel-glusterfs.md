@@ -1,10 +1,10 @@
 ---
-title: GlusterFS na virtuálních počítačích Azure na Red Hat Enterprise Linux pro SAP NetWeaver | Microsoft Docs
+title: GlusterFS na virtuálních počítačích Azure v RHEL pro SAP NetWeaver | Microsoft Docs
 description: GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: mssedusch
-manager: timlt
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
-ms.author: sedusch
-ms.openlocfilehash: 2ae9a1419232cca051f7cab4e9bd8c70f885df73
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.author: radeltch
+ms.openlocfilehash: 388a2db2c888be541d89c5f4274bd38b37e4ca28
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749045"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591910"
 ---
 # <a name="glusterfs-on-azure-vms-on-red-hat-enterprise-linux-for-sap-netweaver"></a>GlusterFS na virtuálních počítačích Azure s Red Hat Enterprise Linuxem pro SAP NetWeaver
 
@@ -98,7 +98,7 @@ K nasazení všech požadovaných prostředků můžete použít jednu z šablon
    4. Uživatelské jméno správce, heslo správce nebo klíč SSH  
       Vytvoří se nový uživatel, který se dá použít k přihlášení k počítači.
    5. ID podsítě  
-      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID předplatného&gt;** /resourceGroups/ **&lt;název skupiny prostředků&gt;** /providers/Microsoft.Network/virtualNetworks/ **&lt;virtuální síť&gt;** /subnets/ **&lt;název podsítě&gt;**
+      Pokud chcete virtuální počítač nasadit do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá jako/Subscriptions/ **&lt;ID předplatného&gt;** /resourceGroups/ **&lt;název skupiny prostředků&gt;** /Providers/Microsoft.Network/virtualNetworks/ **&lt;název virtuální sítě&gt;** /subnets/ **&lt;název podsítě&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linux pomocí Azure Portal
 
@@ -120,7 +120,7 @@ Nejprve je třeba vytvořit virtuální počítače pro tento cluster. Následn�
 
 Následující položky jsou předpony buď **[A]** – platí pro všechny uzly, **[1]** – platí jenom pro uzel 1, **[2]** , které platí jenom pro uzel 2, **[3]** – platí jenom pro uzel 3.
 
-1. **[A]**  Nastavit rozlišení názvu hostitele
+1. **[A]** nastavení rozlišení názvu hostitele
 
    Můžete buď použít DNS server nebo upravit/etc/hosts na všech uzlech. Tento příklad ukazuje, jak použít soubor/etc/hosts.
    V následujících příkazech nahraďte IP adresu a název hostitele.

@@ -1,20 +1,20 @@
 ---
 title: Připojení dat Azure AD Identity Protection k Azure Sentinel
 description: Přečtěte si, jak připojit Azure AD Identity Protection dat ke službě Azure Sentinel.
-author: rkarlin
+author: yelevin
 manager: rkarlin
 ms.assetid: 91c870e5-2669-437f-9896-ee6c7fe1d51d
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 11/17/2019
-ms.author: rkarlin
-ms.openlocfilehash: 8d916606913b19a9eb15cb280defbeb0440565e4
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.author: yelevin
+ms.openlocfilehash: 7d42ff28ddd2d883feb25139096d781efe64d50f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563713"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588565"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Připojení dat z Azure AD Identity Protection
 
@@ -23,7 +23,7 @@ ms.locfileid: "75563713"
 Můžete streamovat protokoly z [Azure AD Identity Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) do Azure Sentinel a streamovat výstrahy do Azure Sentinel a zobrazit řídicí panely, vytvořit vlastní výstrahy a vylepšit šetření. Azure Active Directory Identity Protection poskytuje konsolidované zobrazení v rizikových uživatelích, detekci rizik a ohrožení zabezpečení, s možností okamžitě opravit riziko a nastavit zásady pro automatické napravení budoucích událostí. Služba je postavená na zkušenostech Microsoftu s ochranou identit spotřebitelů a díky signálům z více než 13 000 000 000 přihlášení denně získá obrovský přesnost. 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Musíte mít [licenci Azure Active Directory Premium P1 nebo P2](https://azure.microsoft.com/pricing/details/active-directory/) .
 - Uživatel s oprávněními globálního správce nebo správce zabezpečení

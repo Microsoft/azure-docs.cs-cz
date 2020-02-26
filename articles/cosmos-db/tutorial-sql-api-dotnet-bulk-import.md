@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 40dd7066d959b56f4554ea9d0390e8b1eb41e77f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896279"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587562"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Hromadné importy dat do Azure Cosmos DB účtu rozhraní SQL API pomocí sady .NET SDK
 
@@ -23,11 +23,11 @@ Tento kurz zahrnuje:
 
 > [!div class="checklist"]
 > * Vytvoření účtu služby Azure Cosmos
-> * Konfigurace vašeho projektu
+> * Konfigurace projektu
 > * Připojení k účtu Azure Cosmos s povolenou hromadnou podporou
 > * Provést import dat prostřednictvím souběžných operací vytvoření
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte následující zdroje:
 
@@ -81,7 +81,7 @@ Stále v adresáři aplikace nainstalujte Azure Cosmos DB klientskou knihovnu pr
 
 Ukázková aplikace se musí ověřit pro váš účet Azure Cosmos. K ověřování byste měli do aplikace předat přihlašovací údaje účtu Azure Cosmos. Pomocí následujících kroků Získejte přihlašovací údaje k účtu Azure Cosmos:
 
-1.  Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1.  Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 1.  Přejděte k účtu Azure Cosmos.
 1.  Otevřete podokno **klíče** a zkopírujte **identifikátor URI** a **primární klíč** svého účtu.
 
@@ -120,13 +120,13 @@ Pojďme začít přepsáním výchozí `Main` metody a definováním globálníc
 
 Do metody `Main` přidejte následující kód pro inicializaci objektu CosmosClient:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=CreateClient)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="CreateClient":::
 
 Po povolení hromadného spuštění CosmosClient interně seskupuje souběžné operace do jediného volání služby. Tímto způsobem optimalizuje využití propustnosti distribucí volání služby napříč oddíly a nakonec přiřadíte k původním volajícím jednotlivé výsledky.
 
 Pak můžete vytvořit kontejner pro uložení všech položek.  Definujte `/pk` jako klíč oddílu, 50000 RU/s jako zřízenou propustnost a vlastní zásadu indexování, která bude vyloučit všechna pole pro optimalizaci propustnosti zápisu. Po příkazu inicializace CosmosClient přidejte následující kód:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Initialize)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Initialize":::
 
 ## <a name="step-6-populate-a-list-of-concurrent-tasks"></a>Krok 6: naplnění seznamu souběžných úloh
 
@@ -141,22 +141,22 @@ Nejdřív přidejte do řešení falešně vydaný balíček pomocí příkazu d
 
 Definujte definici položek, které chcete uložit. V souboru `Program.cs` je nutné definovat třídu `Item`:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Model)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Model":::
 
 Dále vytvořte pomocnou funkci uvnitř třídy `Program`. Tato pomocná funkce Získá počet položek, které jste definovali pro vložení, a vygeneruje náhodná data:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Bogus)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Bogus":::
 
 Přečtěte si položky a serializovat je do instancí streamu pomocí třídy `System.Text.Json`. Z důvodu povahy automaticky generovaných dat provádíte serializaci dat jako proudů. Instanci položky můžete také použít přímo, ale jejich převodem na datové proudy můžete využít výkon rozhraní API streamu v CosmosClient. Obvykle můžete data použít přímo, pokud znáte klíč oddílu. 
 
 
 Chcete-li převést data na instance služby Stream, v rámci `Main` metody přidejte následující kód po vytvoření kontejneru:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=Operations)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="Operations":::
 
 Dále pomocí datových proudů vytvořte souběžné úlohy a naplňte seznam úkolů pro vložení položek do kontejneru. Chcete-li provést tuto operaci, přidejte následující kód do třídy `Program`:
 
-[!code-csharp[Main](~/cosmos-dotnet-bulk-import/src/Program.cs?name=ConcurrentTasks)]
+:::code language="csharp" source="~/cosmos-dotnet-bulk-import/src/Program.cs" id="ConcurrentTasks":::
 
 Všechny tyto operace s souběžným bodem se spustí společně (to je hromadně), jak je popsáno v úvodních částech.
 
@@ -187,7 +187,7 @@ V tomto kurzu jste provedli následující kroky:
 
 > [!div class="checklist"]
 > * Vytvoření účtu služby Azure Cosmos
-> * Konfigurace vašeho projektu
+> * Konfigurace projektu
 > * Připojení k účtu Azure Cosmos s povolenou hromadnou podporou
 > * Provést import dat prostřednictvím souběžných operací vytvoření
 

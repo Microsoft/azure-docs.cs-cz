@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 4f6d7580ea7ff0e8968c0c3ce4b3ca6111c86ac8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873365"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587681"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Klauzule FROM v Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Klauzule FROM (`FROM <from_specification>`) je volitelná, pokud se zdroj nefilt
 
 Klauzule FROM vynutila následující pravidla na dotaz:
 
-* Kontejner může být například vytvořen alias, `SELECT f.id FROM Families AS f` nebo jednoduše `SELECT f.id FROM Families f`. Zde je `f` alias pro `Families`. Stejně jako volitelné klíčové slovo pro [alias](sql-query-aliasing.md) identifikátoru.  
+* Kontejner může mít alias, například `SELECT f.id FROM Families AS f` nebo jednoduše `SELECT f.id FROM Families f`. Zde je `f` alias pro `Families`. Stejně jako volitelné klíčové slovo pro [alias](sql-query-aliasing.md) identifikátoru.  
 
 * Po aliasu nelze původní název zdroje svázat. Například `SELECT Families.id FROM Families f` je syntakticky neplatný, protože `Families` identifikátoru byl alias vytvořen a již jej nelze přeložit.  
 
@@ -49,19 +49,19 @@ FROM <from_specification>
   
 - `<from_source>`  
   
-  Určuje zdroj dat, s nebo bez něj alias. Pokud není zadaný alias, bude odvodit z `<container_expression>` pomocí následujících pravidel:  
+  Určuje zdroj dat, s nebo bez něj alias. Pokud není zadán alias, bude odvozen z `<container_expression>` pomocí následujících pravidel:  
   
   -  Pokud má výraz hodnotu container_name, bude container_name použít jako alias.  
   
-  -  Pokud má výraz hodnotu `<container_expression>`, pak %{Property_Name/ pak %{Property_Name/ se použije jako alias. Pokud má výraz hodnotu container_name, bude container_name použít jako alias.  
+  -  Pokud je výraz `<container_expression>`, pak property_name, property_name bude použit jako alias. Pokud má výraz hodnotu container_name, bude container_name použít jako alias.  
   
-- STEJNĚ JAKO `input_alias`  
+- JAKO `input_alias`  
   
-  Určuje, že `input_alias` je sada hodnot vrácených základní výraz kontejneru.  
+  Určuje, že `input_alias` je množinou hodnot vrácených podkladovým výrazem kontejneru.  
  
-- `input_alias` INDIE  
+- `input_alias` v  
   
-  Určuje, že `input_alias` by měly představovat sadu hodnot získala iterace přes všechny prvky pole každé pole vrácené výrazem základní kontejneru. Libovolnou hodnotu vrácenou základní výraz kontejneru, který není pole se ignoruje.  
+  Určuje, že `input_alias` by měl představovat sadu hodnot získaných pomocí iterace u všech prvků pole každého pole vráceného podkladovým výrazem kontejneru. Libovolnou hodnotu vrácenou základní výraz kontejneru, který není pole se ignoruje.  
   
 - `<container_expression>`  
   
@@ -79,17 +79,17 @@ FROM <from_specification>
   
   Určuje, že tento dokument by měl být načten z jiného zdroje určené zadaný alias.  
   
-- `<container_expression> '.' property_`  
+- `<container_expression> '.' property_name`  
   
-  Určuje tento dokument by mělo být získáno díky přístupu `property_name` vlastnost nebo array_index prvek pole pro všechny dokumenty načte zadaný výraz kontejneru.  
+  Určuje, že se má dokument načíst přístupem k vlastnosti `property_name`.  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
-  Určuje tento dokument by mělo být získáno díky přístupu `property_name` vlastnost nebo array_index prvek pole pro všechny dokumenty načte zadaný výraz kontejneru.  
+  Určuje, že se má dokument načíst přístupem k vlastnosti `property_name` nebo k array_index elementu pole pro všechny dokumenty načtené pomocí zadaného výrazu kontejneru.  
   
 ## <a name="remarks"></a>Poznámky
   
-K dispozici všechny aliasy nebo odvozen `<from_source>(`s) musí být jedinečný. Syntaxe `<container_expression>.`%{Property_Name/ je stejný jako `<container_expression>' ['"property_name"']'`. Druhá možnost syntaxi však můžete použít, pokud název vlastnosti obsahuje znak identifikátoru.  
+Všechny aliasy zadané nebo odvozené ve `<from_source>(`s) musí být jedinečné. Syntaxe `<container_expression>.`property_name je stejná jako `<container_expression>' ['"property_name"']'`. Druhá možnost syntaxi však můžete použít, pokud název vlastnosti obsahuje znak identifikátoru.  
   
 ### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>zpracování chybí vlastnosti chybějící prvky pole a nedefinované hodnoty
   
@@ -99,9 +99,9 @@ Pokud výraz kontejneru, který přistupuje k vlastnosti nebo prvky pole a že h
   
 Kontejner výrazu může být kontejner rozsahem nebo rozsahem dokumentu:  
   
--   Výraz je kontejner s rozsahem, pokud podkladový zdroj výraz kontejneru je buď ROOT nebo `container_name`. Takový výraz představuje sadu dokumentů načíst přímo z kontejneru a není závislá na zpracování jiných výrazech kontejneru.  
+-   Výraz je obor kontejneru, pokud je podkladový zdroj výrazu kontejneru buď ROOT, nebo `container_name`. Takový výraz představuje sadu dokumentů načíst přímo z kontejneru a není závislá na zpracování jiných výrazech kontejneru.  
   
--   Výraz je dokument s rozsahem, pokud je podkladový zdroj výrazu kontejneru `input_alias` zavedené dříve v dotazu. Takový výraz představuje sadu dokumentů získanou vyhodnocením výrazu kontejneru v rámci jednotlivých dokumentů, které patří do sady spojenými s daným kontejnerem alias.  Výsledná sada bude sjednocení sad získanou vyhodnocením výrazu kontejner pro všechny dokumenty v základní sadě. 
+-   Výraz je v oboru dokumentu, pokud je podkladový zdroj výrazu kontejneru `input_alias` představen dříve v dotazu. Takový výraz představuje sadu dokumentů získanou vyhodnocením výrazu kontejneru v rámci jednotlivých dokumentů, které patří do sady spojenými s daným kontejnerem alias.  Výsledná sada bude sjednocení sad získanou vyhodnocením výrazu kontejner pro všechny dokumenty v základní sadě. 
 
 ## <a name="examples"></a>Příklady
 
@@ -114,7 +114,7 @@ Klauzule FROM může snížit zdroj na menší podmnožinu. Chcete-li vytvořit 
     FROM Families.children
 ```
 
-Výsledky jsou následující:
+Výsledky jsou:
 
 ```json
     [
@@ -154,7 +154,7 @@ Předchozí dotaz použil pole jako zdroj, ale můžete také použít objekt ja
     FROM Families.address.state
 ```
 
-Výsledky jsou následující:
+Výsledky jsou:
 
 ```json
     [

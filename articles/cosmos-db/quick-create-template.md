@@ -7,22 +7,22 @@ tags: azure-resource-manager
 ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 01/21/2020
-ms.openlocfilehash: 12c2b0b089702b9e56ae099abbefd85769bc1d21
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1203e1ebe42d95ec57a3ea884591ba262dc95c1a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549323"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587885"
 ---
 # <a name="quickstart-create-an-azure-cosmos-db-and-a-container-by-using-azure-resource-manager-template"></a>Rychlý Start: vytvoření Azure Cosmos DB a kontejneru pomocí šablony Azure Resource Manager
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Azure Cosmos DB můžete použít k rychlému vytvoření a dotazování databází klíčů a hodnot, databází dokumentů a grafů. Tento rychlý Start se zaměřuje na proces nasazení šablony Správce prostředků pro vytvoření databáze Azure Cosmos a kontejneru v rámci této databáze. Později můžete do tohoto kontejneru ukládat data.
+Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Azure Cosmos DB můžete použít k rychlému vytvoření a dotazování databází klíčů a hodnot, databází dokumentů a grafů. Tento rychlý Start se zaměřuje na proces nasazení šablony Správce prostředků pro vytvoření databáze Azure Cosmos a kontejneru v rámci této databáze. Později můžete do tohoto kontejneru ukládat data.
 
 [Šablona správce prostředků](../azure-resource-manager/templates/overview.md) je soubor JavaScript Object Notation (JSON), který definuje infrastrukturu a konfiguraci projektu. Šablona používá deklarativní syntaxi, která umožňuje určit, co máte v úmyslu nasadit bez nutnosti napsat sekvenci programovacích příkazů k jeho vytvoření. Pokud chcete získat další informace o vývoji šablon Správce prostředků, přečtěte si téma [dokumentace správce prostředků](/azure/azure-resource-manager/) a [odkaz na šablonu](/azure/templates/microsoft.DocumentDB/allversions).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Předplatné Azure nebo bezplatný zkušební účet služby Azure Cosmos DB
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-create/).
 
-[!code-json[<Resource Manager template create Azure Cosmos DB>](~/quickstart-templates/101-cosmosdb-create/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-create/azuredeploy.json":::
 
 V šabloně jsou definovány tři prostředky Azure:
 
@@ -58,7 +58,7 @@ Další příklady šablon Azure Cosmos DB najdete v [galerii šablon rychlý St
 
     * **Předplatné:** Vyberte předplatné Azure.
     * **Skupina prostředků**: vyberte **vytvořit novou**, zadejte jedinečný název skupiny prostředků a pak klikněte na **OK**.
-    * **Umístění:** Vyberte prosím umístění.  Například **USA (střed)** .
+    * **Umístění:** Vyberte prosím umístění.  Například **střed USA**.
     * **Název účtu**: zadejte název účtu Azure Cosmos. Musí být globálně jedinečný. 
     * **Umístění**: zadejte umístění, kde chcete vytvořit účet Azure Cosmos. Účet Azure Cosmos může být ve stejném umístění jako skupina prostředků. 
     * **Primární oblast**: primární oblast repliky pro účet Azure Cosmos.
@@ -78,7 +78,7 @@ Azure Portal slouží k nasazení šablony. Kromě Azure Portal můžete použí
 
 Můžete buď použít Azure Portal ke kontrole účtu Azure Cosmos, databáze a kontejneru nebo k vytvoření seznamu vytvořeného tajného klíče použít následující skript Azure CLI nebo Azure PowerShell.
 
-# <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter your Azure Cosmos account name:" &&
@@ -88,7 +88,7 @@ read resourcegroupName &&
 az cosmosdb show -g $resourcegroupName -n $cosmosAccountName
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your Azure Cosmos account exists"
@@ -103,7 +103,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the resource group name where your
 Pokud budete chtít pokračovat v práci s dalšími kurzy a, možná budete chtít tyto prostředky ponechat na místě.
 Pokud už je nepotřebujete, odstraňte skupinu prostředků, která odstraní účet Azure Cosmos a související prostředky. Odstranění skupiny prostředků pomocí Azure CLI nebo Azure PowerShellu:
 
-# <a name="clitabcli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -112,7 +112,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

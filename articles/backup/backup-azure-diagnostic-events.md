@@ -3,12 +3,12 @@ title: Použití nastavení diagnostiky pro trezory Recovery Services
 description: Článek popisující, jak používat staré a nové diagnostické události pro Azure Backup
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 875adb82aeeb56b378a84ca01e716c7189abc64f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281100"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583941"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Použití nastavení diagnostiky pro trezory služby Recovery Services
 
@@ -21,14 +21,15 @@ Nastavení diagnostiky pro Recovery Services trezor můžete nakonfigurovat pře
 ## <a name="diagnostics-events-available-for-azure-backup-users"></a>Události diagnostiky dostupné pro Azure Backup uživatele
 
 Azure Backup poskytuje následující diagnostické události, z nichž každá poskytuje podrobná data na konkrétní sadu artefaktů souvisejících se zálohováním:
+
 * CoreAzureBackup
 * AddonAzureBackupAlerts
 * AddonAzureBackupProtectedInstance
 * AddonAzureBackupJobs
 * AddonAzureBackupPolicy
-* AddonAzureBackupStorage 
+* AddonAzureBackupStorage
 
-[Datový model pro události diagnostiky Azure Backup](https://aka.ms/diagnosticsdatamodel)
+[Datový model pro události diagnostiky Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)
 
 Data pro tyto události se dají odeslat do účtu úložiště, do pracovního prostoru LA nebo do centra událostí. Pokud tato data posíláte do pracovního prostoru LA, musíte na obrazovce **nastavení diagnostiky** vybrat přepínač **specifický pro prostředky** (Další informace najdete v následujících částech).
 
@@ -37,6 +38,7 @@ Data pro tyto události se dají odeslat do účtu úložiště, do pracovního 
 V souladu s plánem Azure Log Analytics se teď Azure Backup umožňuje odeslat diagnostická data trezoru k vyhrazeným tabulkám LA pro zálohování. Tyto jsou označovány jako [tabulky specifické pro prostředky](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace#resource-specific).
 
 Odeslání dat diagnostiky trezoru do nástroje LA:
+
 1.  Přejděte do trezoru a klikněte na **nastavení diagnostiky**. Klikněte na **+ Přidat nastavení diagnostiky**.
 2.  Zadejte název nastavení diagnostiky.
 3.  Zaškrtněte políčko **Odeslat do Log Analytics** a vyberte pracovní prostor Log Analytics.
@@ -84,4 +86,4 @@ Následující obrázek ukazuje příklad uživatele se třemi nastaveními diag
 
 ## <a name="next-steps"></a>Další kroky
 
-[Naučte se Log Analytics datový model pro diagnostické události](https://aka.ms/diagnosticsdatamodel)
+[Naučte se Log Analytics datový model pro diagnostické události](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model)

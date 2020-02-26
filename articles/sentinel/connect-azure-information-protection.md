@@ -2,20 +2,20 @@
 title: Připojit Azure Information Protection k Azure Sentinel
 description: Naučte se připojit Azure Information Protection data v Azure Sentinel.
 services: sentinel
-author: cabailey
+author: yelevin
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.author: cabailey
-ms.openlocfilehash: ef97ad601436faf44b0f49bd48d78c4c9420c7c8
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.author: yelevin
+ms.openlocfilehash: 396fd7c4289c9d02d451b26f5fb6299acd31e2a4
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563679"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588548"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Připojení dat z Azure Information Protection
 
@@ -35,7 +35,7 @@ Pokud se však protokolování informací z Azure Information Protection chystá
     
     Když změníte pracovní prostor, budou se teď v pracovním prostoru, který používáte pro Azure Sentinel, ukládat data nových sestav pro Azure Information Protection a historická data nejsou dostupná pro Azure Sentinel. Pokud je navíc nakonfigurovaný předchozí pracovní prostor pro vlastní dotazy, výstrahy nebo rozhraní REST API, je potřeba je překonfigurovat pro pracovní prostor Azure Sentinel, pokud ho budete chtít používat pro Azure Information Protection. Pro klienty a služby, které používají Azure Information Protection, není potřeba žádná další konfigurace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Jedna z následujících rolí správce Azure AD pro vašeho tenanta: 
     - Správce Azure Information Protection

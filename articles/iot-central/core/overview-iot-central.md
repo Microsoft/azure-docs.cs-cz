@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: a16ed6ac942dd4a9fa521cc813a92e6767a98328
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 71d595ecb3a6900da3df79651ee2dddda594b9de
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024122"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589402"
 ---
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
@@ -39,8 +39,12 @@ Tento článek popisuje, jak IoT Central:
 - Úlohy nepodporují komplexní typy.
 - Typy schématu pole nejsou podporovány.
 - Podporovaná je jenom sada SDK zařízení C a sady SDK zařízení a služeb Node. js.
-- Je k dispozici pouze v umístěních USA a Evropa.
+- Je k dispozici pouze v místech USA, Evropa, Asie a Tichomoří a Austrálie.
 - Modely schopností zařízení musí mít všechna rozhraní definovaná vložené do stejného souboru.
+- Podpora pro [IoT technologie Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) je ve verzi Preview a je podporovaná jenom ve vybraných oblastech.
+
+    > [!NOTE]
+    > Kontaktujte technickou podporu pro přístup k vytvoření aplikace ve verzi Preview s podporou pro zařízení IoT technologie Plug and Play.
 
 ## <a name="personas"></a>Osoby
 
@@ -109,7 +113,7 @@ IoT Central aplikaci můžete vytvořit pomocí bezplatné zkušební verze 7 dn
 - Aplikace vytvořené pomocí *bezplatného* plánu jsou po dobu sedmi dnů zdarma a podporují až pět zařízení. Můžete je kdykoli převést na používání standardního cenového plánu, než vyprší jejich platnost.
 - Aplikace, které vytvoříte pomocí plánu *Standard* , se účtují podle jednotlivých zařízení. můžete zvolit Cenový tarif **Standard 1** nebo **Standard 2** s prvními dvěma zařízeními, která jsou zdarma. Přečtěte si další informace o [cenách IoT Central](https://aka.ms/iotcentral-pricing).
 
-## <a name="connect-your-devices"></a>Připojit zařízení
+## <a name="connect-your-devices"></a>Připojení zařízení
 
 Azure IoT Central používá ke správě všech registrací a připojení zařízení [službu azure IoT Hub Device Provisioning Service (DPS)](../../iot-dps/about-iot-dps.md) .
 

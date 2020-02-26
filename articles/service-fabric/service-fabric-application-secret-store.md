@@ -3,12 +3,12 @@ title: Úložiště centrálních tajných kódů Azure Service Fabric
 description: Tento článek popisuje, jak používat úložiště centrálních tajných kódů v Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: bc6ea6260bf50d5b4f8e294e0a3827426f90bee3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 11fb94a9fba40e6f2474ad64f5eb0c454be28ca0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980945"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589160"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Úložiště centrálních tajných kódů v Azure Service Fabric 
 Tento článek popisuje, jak v Azure Service Fabric použít centrální úložiště tajných kódů (CSS) k vytváření tajných kódů v Service Fabricch aplikacích. CSS je místní mezipaměť úložiště tajných klíčů, která uchovává citlivá data, například heslo, tokeny a klíče, zašifrované v paměti.
@@ -76,7 +76,8 @@ Pomocí následující šablony použijte Správce prostředků k vytvoření ta
 Chcete-li vytvořit prostředek `supersecret` tajný klíč pomocí REST API, vytvořte do `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`požadavek PUT. K vytvoření tajného prostředku potřebujete certifikát clusteru nebo klientský certifikát správce.
 
 ```powershell
-Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint>
+$json = '{"properties": {"kind": "inlinedValue", "contentType": "text/plain", "description": "supersecret"}}'
+Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint> -Body $json
 ```
 
 ## <a name="set-the-secret-value"></a>Nastavte tajnou hodnotu.
@@ -125,8 +126,12 @@ Pomocí následující šablony Správce prostředků vytvořte a nastavte tajno
 
 Pomocí následujícího REST API skriptu nastavte tajnou hodnotu.
 ```powershell
-$Params = @{"properties": {"value": "mysecretpassword"}}
+$Params = '{"properties": {"value": "mysecretpassword"}}'
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
+```
+### <a name="examine-the-secret-value"></a>Prověřte tajnou hodnotu.
+```powershell
+Invoke-WebRequest -CertificateThumbprint <ClusterCertThumbprint> -Method POST -Uri "https:<clusterfqdn>/Resources/Secrets/supersecret/values/ver1/list_value?api-version=6.4-preview"
 ```
 ## <a name="use-the-secret-in-your-application"></a>Použití tajného klíče v aplikaci
 

@@ -3,7 +3,7 @@ title: Připojení dat Fortinet ke službě Azure Sentinel | Microsoft Docs
 description: Naučte se připojit data Fortinet ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.assetid: add92907-0d7c-42b8-a773-f570f2d705ff
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 3ed83f794cdb92f709cbf5c0ea236a5a9b4c187b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: aabc95fcb8d3b32b89bb83f4f6892c3d40b03417
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610535"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588191"
 ---
 # <a name="connect-fortinet-to-azure-sentinel"></a>Připojení Fortinet ke službě Azure Sentinel
 
@@ -39,7 +39,6 @@ Nakonfigurujte Fortinet pro přeposílání zpráv syslog ve formátu CEF do pra
         config log syslogd setting
         set format cef
         set port 514
-        set reliable disable
         set server <ip_address_of_Receiver>
         set status enable
         end

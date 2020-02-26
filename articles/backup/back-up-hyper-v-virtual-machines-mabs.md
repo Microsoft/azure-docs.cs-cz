@@ -3,12 +3,12 @@ title: Zálohování virtuálních počítačů s technologií Hyper-V pomocí M
 description: Tento článek obsahuje postupy pro zálohování a obnovení virtuálních počítačů pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 69e415b5aef179c2b64bb04e933593010c8b47d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: e23a3a5ad57e07f95958d8a21e091d663a5c1185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444056"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586508"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Zálohování virtuálních počítačů s technologií Hyper-V pomocí Azure Backup Server
 
@@ -145,7 +145,7 @@ Nastavení ochrany pro migraci za provozu:
 
 3. Přiřaďte účet MABSMachineName $ jako účet správce jen pro čtení v management server VMM.
 
-4. Připojte všechny hostitelské servery Hyper-V ke všem serverům MABS pomocí rutiny prostředí PowerShell `Set-DPMGlobalProperty`. Rutina přijímá více názvů serverů MABS. Použijte formát: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Další informace najdete v tématu [set-DPMGlobalProperty](https://technet.microsoft.com/library/hh881752.aspx).
+4. Připojte všechny hostitelské servery Hyper-V ke všem serverům MABS pomocí rutiny prostředí PowerShell `Set-DPMGlobalProperty`. Rutina přijímá více názvů serverů MABS. Použijte formát: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Další informace najdete v tématu [set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019).
 
 5. Po zjištění všech virtuálních počítačů spuštěných v hostitelích Hyper-V v cloudech VMM nastavte skupinu ochrany a přidejte virtuální počítače, které chcete chránit. Automatické kontroly konzistence by měly být povolené na úrovni skupiny ochrany pro ochranu v rámci scénářů mobility virtuálních počítačů.
 

@@ -9,27 +9,36 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 11/22/2019
+ms.date: 02/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: e53db645875646b1e021cc0d3d760677e1128c0c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 11a6a668b1028ba1640ef076606d4aeb4c3aae6e
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486372"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589364"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Správa modelů, nasazení a monitorování pomocí Azure Machine Learning
 
 V tomto článku se dozvíte, jak pomocí Azure Machine Learning spravovat životní cyklus vašich modelů. Azure Machine Learning používá přístup k operacím Machine Learning (MLOps). MLOps vylepšuje kvalitu a konzistenci vašich řešení pro strojové učení. 
 
+## <a name="what-is-mlops"></a>Co je MLOps?
+
+Operace Machine Learning (MLOps) jsou založené na [DevOps](https://azure.microsoft.com/overview/what-is-devops/) principech a postupech, které zvyšují efektivitu pracovních postupů. Například průběžná integrace, doručování a nasazování. MLOps tyto objekty zabezpečení aplikuje na proces strojového učení s cílem:
+
+* Rychlejší experimentování a vývoj modelů
+* Rychlejší nasazení modelů do produkčního prostředí
+* Zabezpečování kvality
+
 Azure Machine Learning poskytuje následující možnosti MLOps:
 
-- **Vytvořte reprodukovatelné kanály ml**. Kanály umožňují definovat opakované a opakovaně použitelné kroky pro procesy přípravy dat, školení a bodování.
-- **Zaregistrujte, zabalit a nasaďte modely odkudkoli** a sledujte přidružená metadata potřebná k použití modelu.
-- **Zaznamenejte data zásad správného řízení, která jsou nutná pro zachycení kompletního životního cyklu ml**, včetně toho, kdo je publikující modely, proč se změny provádějí a kdy se modely nasadily nebo používaly v produkčním prostředí.
-- **Upozornění a upozornění na události v životním cyklu ml** , jako je například dokončení experimentů, registrace modelů, nasazení modelu a detekce posunu dat.
+- **Vytvořte reprodukovatelné kanály ml**. Kanály Machine Learning umožňují definovat opakované a opakovaně použitelné kroky pro procesy přípravy, školení a bodování vašich dat.
+- **Vytvořte opakovaně použitelná softwarová prostředí** pro školení a nasazení modelů.
+- **Zaregistrujte, zabalit a nasaďte modely odkudkoli**. Můžete také sledovat přidružená metadata potřebná k použití modelu.
+- **Zaznamenejte si data zásad správného řízení pro kompletní životní cyklus ml**. Protokolované informace mohou zahrnovat to, kdo je publikující, proč byly provedeny změny a kdy se modely nasadily nebo používaly v produkčním prostředí.
+- **Upozornění a upozornění na události v průběhu životního cyklu ml**. Například dokončování experimentů, registrace modelů, nasazení modelu a detekce posunu dat.
 - **Monitorovat aplikace na úrovni ml pro problémy související s provozními a ml** Porovnejte modelové vstupy mezi školením a odvozením, prozkoumejte metriky specifické pro model a poskytněte monitorování a výstrahy v infrastruktuře ML.
-- **Automatizujte kompletní životní cyklus ml pomocí Azure Machine Learning a Azure DevOps** , abyste často aktualizovali modely, otestovali nové modely a průběžně zavedli nové modely ml společně s ostatními aplikacemi a službami.
+- **Automatizujte kompletní životní cyklus ml pomocí Azure Machine Learning a Azure Pipelines**. Použití kanálů umožňuje často aktualizovat modely, testovat nové modely a průběžně zavádět nové modely ML společně s ostatními aplikacemi a službami.
 
 ## <a name="create-reproducible-ml-pipelines"></a>Vytváření reprodukovatelné kanály ML
 
@@ -38,6 +47,12 @@ Pomocí kanálů ML z Azure Machine Learning spojíte všechny kroky, které se 
 Kanál ML může obsahovat kroky z přípravy dat na extrakci funkcí až po vyladění modelu do hodnocení. Další informace najdete v tématu [ml kanály](concept-ml-pipelines.md).
 
 Pokud k vytvoření kanálů ml použijete [Návrháře](concept-designer.md) , můžete kdykoli kliknout na tlačítko **"..."** v pravém horním rohu stránky návrháře a pak vybrat **klonovat**. Klonování kanálu vám umožní iterovat návrh kanálu bez ztráty starých verzí.  
+
+## <a name="create-reusable-software-environments"></a>Vytváření opakovaně použitelných softwarových prostředí
+
+Azure Machine Learning prostředí umožňují sledovat a reprodukuje závislosti softwaru projektů při jejich vývojech. Prostředí vám umožní zajistit, aby sestavení byla reprodukovatelná bez ručních konfigurací softwaru.
+
+Prostředí popisují závislosti PIP a conda pro vaše projekty a dají se použít jak pro účely školení, tak pro nasazení modelů. Další informace najdete v tématu [co jsou Azure Machine Learning prostředí](concept-environments.md).
 
 ## <a name="register-package-and-deploy-models-from-anywhere"></a>Registrace, balení a nasazení modelů odkudkoli
 
@@ -82,7 +97,7 @@ Při použití modelu jako webové služby nebo zařízení IoT Edge zadejte ná
 
 * Model (y), které se používají k určení skóre dat odeslaných do služby nebo zařízení.
 * Vstupní skript. Tento skript přijímá požadavky, používá model (y) k vyhodnocení dat a vrací odpověď.
-* Soubor prostředí Conda, který popisuje závislosti vyžadované modelem (y) a vstupním skriptem.
+* Azure Machine Learning prostředí popisující závislosti PIP a Conda, které vyžadují model (y) a skript vstupu.
 * Jakékoli další prostředky, například text, data atd., které jsou vyžadovány modelem (y) a vstupním skriptem.
 
 Také zadáte konfiguraci cílové platformy nasazení. Například typ rodiny virtuálních počítačů, dostupnou paměť a počet jader při nasazení do služby Azure Kubernetes.
@@ -114,7 +129,7 @@ Modely se zařízeními IoT můžete používat prostřednictvím **Azure IoT Ed
 
 Další informace najdete v tématu [nasazení modelů](how-to-deploy-and-where.md).
 
-### <a name="analytics"></a>Analytics
+### <a name="analytics"></a>Analýzy
 
 Microsoft Power BI podporuje používání modelů strojového učení pro analýzu dat. Další informace najdete v tématu [integrace Azure Machine Learning v Power BI (Preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
 
@@ -124,7 +139,7 @@ Azure ML poskytuje možnost sledovat komplexní záznam auditu všech vašich pr
 
 - Azure ML [se integruje s Git](how-to-set-up-training-targets.md#gitintegration) a sleduje informace o tom, ze kterého úložiště, větvení a potvrzení kódu pochází.
 - Datové [sady Azure ml](how-to-create-register-datasets.md) vám pomůžou sledovat, profilovat a data verze. 
-- Historie spuštění Azure ML ukládá snímek kódu, dat a výpočetní služby, které se používají k učení modelu.
+- Historie spuštění Azure ML ukládá snímek kódu, dat a výpočtů používaných pro výuku modelu.
 - Registr modelu Azure ML zachycuje všechna metadata přidružená k vašemu modelu (které experiment vyškole, pokud je nasazený, pokud je jeho nasazení v pořádku).
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>Upozornění, automatizace a upozornění na události v životním cyklu ML
@@ -162,6 +177,8 @@ Pomocí GitHubu a Azure Pipelines můžete vytvořit proces průběžné integra
 * Umožňuje aktivované kanály vydání vyškolené modely vytvořené v školicím kanálu.
 
 Další informace o použití Azure Pipelines s Azure Machine Learning najdete v článku [průběžná integrace a nasazování modelů ml s Azure Pipelinesm](/azure/devops/pipelines/targets/azure-machine-learning) článkem a úložištěm [Azure Machine Learning MLOps](https://aka.ms/mlops) .
+
+Pomocí Azure Data Factory můžete také vytvořit kanál pro příjem dat, který připraví data pro použití s školeními. Další informace najdete v tématu [kanál](how-to-cicd-data-ingestion.md)pro příjem dat.
 
 ## <a name="next-steps"></a>Další kroky
 

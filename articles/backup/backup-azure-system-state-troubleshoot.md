@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak řešit problémy v zálohování
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: fde5fd9f2464c2aff9a7a34ffa440ab9a6a1ca51
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: f311de435d813cb0e6f8a2c3d932e05d695603f3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665044"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583295"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Řešení potíží se zálohováním stavu systému
 
@@ -20,11 +20,11 @@ Tento článek popisuje řešení problémů, ke kterým může docházet při p
 Před zahájením odstraňování potíží se zálohováním stavu systému doporučujeme provést níže uvedené ověření:
 
 - [Zajistěte, aby byl agent Microsoft Azure Recovery Services (MARS) aktuální.](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [Ujistěte se, že existuje síťové propojení mezi agentem MARS a Azure.](https://aka.ms/AB-A4dp50)
+- [Ujistěte se, že existuje síťové propojení mezi agentem MARS a Azure.](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Ujistěte se, že je spuštěná služba Microsoft Azure Recovery Services (v konzole služby). V případě potřeby restartujte operaci a operaci opakujte.
-- [Ujistěte se, že je v umístění pomocné složky k dispozici 5 až 10 % volného místa.](https://aka.ms/AB-AA4dwtt)
-- [Zkontrolujte, jestli službě Azure Backup nepřekáží jiný proces nebo antivirový software.](https://aka.ms/AB-AA4dwtk)
-- [Plánované zálohování se nedaří, ale ruční zálohování funguje](https://aka.ms/ScheduledBackupFailManualWorks)
+- [Ujistěte se, že je v umístění pomocné složky k dispozici 5 až 10 % volného místa.](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#whats-the-minimum-size-requirement-for-the-cache-folder)
+- [Zkontrolujte, jestli službě Azure Backup nepřekáží jiný proces nebo antivirový software.](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)
+- [Plánované zálohování se nedaří, ale ruční zálohování funguje](https://docs.microsoft.com/azure/backup/backup-azure-mars-troubleshoot#backups-dont-run-according-to-schedule)
 - Ujistěte se, že má váš operační systém nainstalované nejnovější aktualizace.
 - [Zajistěte, aby nepodporované jednotky a soubory s nepodporovanými atributy byly ze zálohy vyloučen](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - Ujistěte se, že **systémové hodiny** v chráněném systému jsou nakonfigurované na správné časové pásmo. <br>
@@ -33,14 +33,14 @@ Před zahájením odstraňování potíží se zálohováním stavu systému dop
   - Ujistěte se, že je agent na serveru odinstalován a že je odstraněný z portálu. <br>
   - Použijte stejné heslo, jaké jste původně použili k registraci serveru. <br>
 - Pokud se jedná o offline zálohování, ujistěte se, že je na zdrojovém i kopírovacím počítači nainstalovaná Azure PowerShell verze 3.7.0, než začnete operaci offline zálohování.
-- [Zvážení při spuštění agenta Zálohování na virtuálním počítači Azure](https://aka.ms/AB-AA4dwtr)
+- [Zvážení při spuštění agenta Zálohování na virtuálním počítači Azure](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-backup-agent-running-on-an-azure-virtual-machine)
 
 ### <a name="limitation"></a>Omezení
 
 - Microsoft nedoporučuje obnovování pomocí obnovení stavu systému na jiný hardware.
 - Zálohování stavu systému aktuálně podporuje místní servery Windows. Tato funkce není k dispozici pro virtuální počítače Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před odstraňováním potíží se zálohováním stavu systému pomocí Azure Backup proveďte níže uvedenou kontrolu požadavků.  
 
@@ -77,7 +77,7 @@ Pokud chcete nainstalovat Zálohování Windows Serveru pomocí Správce serveru
 3. Vyberte server z fondu serverů a klikněte na **Další**. V roli serveru ponechte výchozí výběr a klikněte na **Další**.
 4. Na kartě **funkce** vyberte **zálohování Windows serveru** a klikněte na **Další**.
 
-    ![Database](./media/backup-azure-system-state-troubleshoot/features.png)
+    ![funkce](./media/backup-azure-system-state-troubleshoot/features.png)
 
 5. Na kartě **potvrzení** kliknutím na **instalovat** spusťte proces instalace.
 6. Na kartě **výsledky** se zobrazí funkce zálohování Windows serveru se úspěšně nainstalovala na Windows Server.
@@ -97,8 +97,8 @@ Ujistěte se, že níže uvedené služby jsou ve stavu spuštěno:
 Vzdálené volání procedur (RPC) | Automaticky
 Systém událostí COM+ (EventSystem) | Automaticky
 Služba oznamování systémových událostí (SENS) | Automaticky
-Stínová kopie svazku (VSS) | Manual
-Poskytovatel Microsoft software Stínová kopie (SWPRV) | Manual
+Stínová kopie svazku (VSS) | Ručně
+Poskytovatel Microsoft software Stínová kopie (SWPRV) | Ručně
 
 ### <a name="validate-windows-server-backup-status"></a>Ověřit stav Zálohování Windows Serveru
 
@@ -129,19 +129,19 @@ Pokud úloha selže, indikuje problém WSB, který by způsobil selhání záloh
 
 ### <a name="vss-writer-timeout-error"></a>Chyba časového limitu zapisovače VSS
 
-| Příznak | Příčina | Rozlišení
+| Příznak | Příčina | Řešení
 | -- | -- | --
 | -Agent MARS se nezdařil s chybovou zprávou: "úloha WSB selhala s chybami VSS. Ověřte protokoly událostí služby VSS a vyřešte selhání. "<br/><br/> -V protokolech událostí aplikace VSS je k dispozici následující protokol chyb: "modul pro zápis stínové kopie svazku odmítl událost s chybou 0x800423f2. časový limit zapisovače vypršel mezi událostmi zablokování a rozmrazení."| Zapisovač VSS nejde v čase dokončit kvůli nedostatku prostředků procesoru a paměti v počítači. <br/><br/> Modul pro zápis stínové kopie svazku už používá jiný zálohovací software, protože pro tuto zálohu se nepovedlo dokončit operaci snímku. | Počkejte, až se v systému uvolní procesor/paměť, nebo přerušte procesy, které zabírají příliš mnoho paměti nebo procesoru, a operaci opakujte. <br/><br/>  Počkejte na dokončení probíhajícího zálohování a zkuste operaci provést později, až v počítači neběží žádné zálohy.
 
 ### <a name="insufficient-disk-space-to-grow-shadow-copies"></a>Nedostatek místa na disku pro zvětšení stínových kopií
 
-| Příznak | Rozlišení
+| Příznak | Řešení
 | -- | --
 | -Agent MARS se nezdařil s chybovou zprávou: zálohování se nezdařilo, protože svazek stínové kopie nemohl být zvětšen, protože na svazcích obsahujících systémové soubory není dostatek místa na disku. <br/><br/> -V protokolech událostí systému Volsnap jsou k dispozici následující protokol chyb nebo upozornění: "na svazku C není dostatek místa na disku: pro zvýšení úložiště stínové kopie pro stínové kopie C: z důvodu této chyby je riziko odstranění všech stínových kopií svazku C:" | – Uvolněte místo na zvýrazněném svazku v protokolu událostí tak, aby bylo dost místa pro růst stínových kopií, zatímco probíhá zálohování. <br/><br/> – Při konfiguraci prostoru stínových kopií můžeme omezit množství místa využitého pro stínovou kopii. Další informace najdete v tomto [článku](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc788050(v=ws.11)#syntax) .
 
 ### <a name="efi-partition-locked"></a>Oddíl EFI uzamčen
 
-| Příznak | Rozlišení
+| Příznak | Řešení
 | -- | --
 | Agent MARS se nezdařil s chybovou zprávou: "záloha stavu systému se nezdařila, protože systémový oddíl EFI je uzamčen. Důvodem může být přístup k systémovému oddílu pomocí zabezpečení nebo zálohování softwaru třetí strany. | – Pokud k problému dochází kvůli bezpečnostnímu softwaru jiného výrobce, musíte se obrátit na dodavatele antivirového programu, aby mohl agenta MARS umožnit. <br/><br/> – Pokud je spuštěný zálohovací software jiného výrobce, počkejte na jeho dokončení a pak zkuste zálohování zopakovat.
 

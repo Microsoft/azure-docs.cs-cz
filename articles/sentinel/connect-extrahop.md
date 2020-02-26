@@ -3,7 +3,7 @@ title: Připojit ExtraHop zobrazení (x) do Azure Sentinel | Microsoft Docs
 description: Naučte se připojit ExtraHop Odhalek (x) do Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: 90d2a5a985e904217a461b509fb171822d266f60
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 8d82d8c5a76c34875e9a4aae22c547aec897c18a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610573"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588293"
 ---
 # <a name="connect-extrahop-revealx"></a>Připojení ExtraHop Reveal(x)
 
 Konektor dat ExtraHop (x) umožňuje snadno připojit systém zobrazení (x) ke službě Azure Sentinel pro zobrazení řídicích panelů, vytvářet vlastní výstrahy a vylepšit šetření. Tato integrace vám umožní získat přehled o síti vaší organizace a zlepšit možnosti vaší operace zabezpečení.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
 

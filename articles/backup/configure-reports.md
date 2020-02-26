@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 5c43efc8d61d7aa6c8fc94c6c39294d744cd6b87
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501118"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582700"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -41,11 +41,11 @@ Ve výchozím nastavení se data v pracovním prostoru LA uchovávají po dobu 3
 
 Azure Resource Manager prostředky, jako jsou například trezory Recovery Services, zaznamenávají informace o plánovaných operacích a uživatelem aktivované operace jako diagnostická data. 
 
-V části monitorování vašeho trezoru Recovery Services vyberte **nastavení diagnostiky** a zadejte cíl pro diagnostická data trezoru Recovery Services. [Přečtěte si další informace o použití diagnostických událostí](https://aka.ms/AzureBackupDiagnosticDocs).
+V části monitorování vašeho trezoru Recovery Services vyberte **nastavení diagnostiky** a zadejte cíl pro diagnostická data trezoru Recovery Services. [Přečtěte si další informace o použití diagnostických událostí](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events).
 
 ![Okno nastavení diagnostiky](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure Backup také poskytuje integrovaný Azure Policy, který automatizuje konfiguraci nastavení diagnostiky pro všechny trezory v daném oboru. Informace o tom, jak používat tyto zásady, najdete v následujícím článku: [Konfigurace nastavení diagnostiky trezoru ve velkém měřítku](https://aka.ms/AzureBackupDiagnosticsPolicyDocs) .
+Azure Backup také poskytuje integrovaný Azure Policy, který automatizuje konfiguraci nastavení diagnostiky pro všechny trezory v daném oboru. Informace o tom, jak používat tyto zásady, najdete v následujícím článku: [Konfigurace nastavení diagnostiky trezoru ve velkém měřítku](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics) .
 
 3. **Zobrazit sestavy na Azure Portal:**
 
@@ -53,7 +53,7 @@ Po nakonfigurování trezorů pro posílání dat na LA si můžete zobrazit ses
 
 ![Řídicí panel trezoru](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 
-Kliknutím na tento odkaz otevřete sešit zálohovaná sestava. 
+Kliknutím na tento odkaz otevřete sešit zálohovaná sestava.
 
 > [!NOTE]
 > V současné době počáteční načtení sestavy může trvat až 1 minutu.

@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: ce9ca202ee57fe9c42906ebeb62a44c724bd1a52
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 72a87c3b23e0eed6cfbf1614388702443f4e99d0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978729"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588783"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-with-azure-resource-manager-templates"></a>Správa Azure Cosmos DB prostředků rozhraní API SQL (Core) pomocí šablon Azure Resource Manager
 
-V tomto článku se naučíte, jak používat šablony Azure Resource Manager k automatizaci správy účtů Azure Cosmos DB, databází a kontejnerů.
+V tomto článku se dozvíte, jak pomocí šablon Azure Resource Manageru automatizovat správu účtů, databází a kontejnerů Azure Cosmos DB.
 
 Tento článek obsahuje jenom Azure Resource Manager příklady šablon pro účty rozhraní SQL API. Můžete také najít příklady šablon pro rozhraní API pro [Cassandra](manage-cassandra-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md)a [Table](manage-table-with-resource-manager.md) .
 
@@ -39,7 +39,7 @@ Pokud chcete vytvořit prostředky Azure Cosmos DB, zkopírujte následující p
 > * Názvy účtů jsou omezené na 44 znaků, a to vše malými písmeny.
 > * Chcete-li změnit hodnoty propustnosti, šablonu znovu odešlete s aktualizovaným RU/s.
 
-[!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json":::
 
 > [!NOTE]
 > Pokud chcete vytvořit kontejner s velkým klíčem oddílu, upravte předchozí šablonu tak, aby zahrnovala vlastnost `"version":2` v rámci objektu `partitionKey`.
@@ -136,9 +136,9 @@ Zkopírujte následující příklad šablony a nasaďte ji podle popisu v [Powe
 * Volitelně můžete navštívit [galerii Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-cosmosdb-sql-container-sprocs/) a nasadit šablonu z Azure Portal.
 * Můžete také stáhnout šablonu do místního počítače nebo vytvořit novou šablonu a zadat místní cestu s parametrem `--template-file`.
 
-[!code-json[create-cosmosdb-sql-sprocs](~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-sql-container-sprocs/azuredeploy.json":::
 
-### <a name="deploy-with-powershell"></a>Nasazení s PowerShellem
+### <a name="deploy-with-powershell"></a>Nasazení s využitím PowerShellu
 
 Použití PowerShellu k nasazení šablony Azure Resource Manager:
 
@@ -172,7 +172,7 @@ New-AzResourceGroupDeployment `
 
 Šablonu můžete nasadit s místně nainstalovanou verzí PowerShellu místo Azure Cloud Shell. Budete muset [nainstalovat modul Azure PowerShell](/powershell/azure/install-az-ps). Požadovanou verzi zjistíte spuštěním `Get-Module -ListAvailable Az`.
 
-### <a name="deploy-with-azure-cli"></a>Nasazení pomocí rozhraní příkazového řádku Azure
+### <a name="deploy-with-azure-cli"></a>Nasazení s Azure CLI
 
 Postup při nasazení Azure Resource Manager šablony pomocí Azure CLI:
 
@@ -200,7 +200,7 @@ az cosmosdb show --resource-group $resourceGroupName --name accountName --output
 
 ## <a name="next-steps"></a>Další kroky
 
-Tady je několik dalších zdrojů:
+Tady je několik dalších prostředků:
 
 * [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager/)
 * [Azure Cosmos DB schéma poskytovatele prostředků](/azure/templates/microsoft.documentdb/allversions)

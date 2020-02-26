@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb098363a6f1b27bd8afa8e68ab14bfa666ea539
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561642"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585879"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -65,7 +65,7 @@ Organizace se můžou rozhodnout používat identitu zařízení jako součást 
 
 ### <a name="require-approved-client-app"></a>Vyžaduje se klientem schválená aplikace.
 
-Organizace můžou vyžadovat, aby se pokus o přístup k vybraným cloudovým aplikacím nastavil ze schválené klientské aplikace. Tyto schválené klientské přístupové body podporují [Zásady ochrany aplikací Intune](/intune/app-protection-policy) nezávisle na řešení správy mobilních zařízení (MDM).
+Organizace můžou vyžadovat, aby se pokus o přístup k vybraným cloudovým aplikacím nastavil ze schválené klientské aplikace. Tyto schválené klientské aplikace podporují [Zásady ochrany aplikací Intune](/intune/app-protection-policy) nezávisle na řešení správy mobilních zařízení (MDM).
 
 Toto nastavení platí pro následující klientské aplikace:
 

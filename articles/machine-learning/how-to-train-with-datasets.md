@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2e48b47967e29a421a96bb09dd17b2cdcdbaff3c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543303"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580485"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Výuka s datovými sadami v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,9 +27,9 @@ V tomto článku se dozvíte dva způsoby, jak využívat [Azure Machine Learnin
 
 - Možnost 2: Pokud máte nestrukturovaná data, vytvořte datovou sadu souborů a připojte nebo Stáhněte soubory do vzdáleného výpočetního prostředí pro školení.
 
-Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími produkty, jako jsou [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) a [Hyperdrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py).
+Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure Machine Learning školicími produkty, jako jsou [ScriptRun](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrun?view=azure-ml-py), [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py), [Hyperdrive](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.hyperdrive?view=azure-ml-py) a [kanály Azure Machine Learning](how-to-create-your-first-pipeline.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K vytváření a školení s datovými sadami potřebujete:
 
@@ -100,11 +100,12 @@ experiment_run = experiment.submit(est)
 experiment_run.wait_for_completion(show_output=True)
 ```
 
+
 ## <a name="option-2--mount-files-to-a-remote-compute-target"></a>Možnost 2: připojení souborů ke vzdálenému cíli výpočtů
 
 Pokud chcete, aby byly datové soubory k dispozici na výpočetním cíli pro školení, použijte [datovou sadu](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) souborů pro připojení nebo stažení souborů, na které odkazuje.
 
-### <a name="mount-vs-download"></a>Připojit v.s. Stáhnout
+### <a name="mount-vs-download"></a>Připojit vs. stáhnout
 Když připojíte datovou sadu, připojíte soubory, na které datová sada odkazuje, do adresáře (přípojný bod) a zpřístupníte ji na cílovém výpočetním cíli. Připojení se podporuje pro výpočetní služby založené na systému Linux, včetně Azure Machine Learning výpočetních, virtuálních počítačů a HDInsight. Pokud velikost dat překročí velikost výpočetního disku nebo načítáte jenom součást sady dat ve vašem skriptu, doporučuje se připojení. Vzhledem k tomu, že stahování datové sady, která je větší než velikost disku, selže, a připojení bude načíst pouze část dat používaných vaším skriptem v době zpracování. 
 
 Když stáhnete datovou sadu, všechny soubory, na které datová sada odkazuje, se stáhnou do cílového výpočetního prostředí. Stahování je podporováno pro všechny typy výpočtů. Pokud váš skript zpracuje všechny soubory, na které datová sada odkazuje, a váš výpočetní disk se může vejít do celé datové sady, doporučuje se stažení, abyste se vyhnuli režii streamování dat ze služby úložiště.
@@ -199,4 +200,4 @@ y_test = load_data(y_test, True).reshape(-1)
 
 * [Analýza modelů klasifikace obrázků](https://aka.ms/filedataset-samplenotebook) pomocí datových sad
 
-* [Vytváření a Správa prostředí pro školení a nasazení](how-to-use-environments.md)
+* [Výuka s datovými sadami pomocí kanálů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb)

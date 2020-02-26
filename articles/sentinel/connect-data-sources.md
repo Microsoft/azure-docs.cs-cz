@@ -3,7 +3,7 @@ title: Připojení zdrojů dat ke službě Azure Sentinel | Microsoft Docs
 description: Naučte se připojit zdroje dat ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: angrobe
 editor: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
-ms.author: rkarlin
-ms.openlocfilehash: 97b65c9f891d925e702c858753aa5e5feb9c9ac1
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.author: yelevin
+ms.openlocfilehash: 311bb367748be98af704ab11919abea6e38d0ff3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500705"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588327"
 ---
 # <a name="connect-data-sources"></a>Připojení zdrojů dat
 

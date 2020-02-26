@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: 20c30a77201c4f728013bdd204eef81294eefb73
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: d32ce79d0c8b26e0e78e2bae0f0335315c1a3a40
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545156"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587324"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights používání AI k monitorování a řešení potíží s výkonem databáze (Preview)
 
@@ -28,7 +28,7 @@ Intelligent Insights pomocí integrovaných inteligentních funkcí průběžně
 
 Intelligent Insights je jedinečná funkce integrovaných inteligentních funkcí Azure, která poskytuje následující hodnotu:
 
-- Proaktivní sledování
+- Proaktivní monitorování
 - Přehledy výkonu s upraveným výkonem
 - Předčasné zjištění snížení výkonu databáze
 - Zjistila se analýza problémů hlavní příčiny.
@@ -50,7 +50,7 @@ Identifikované SQL Database snížení výkonu se zaznamenávají do diagnostic
 
 | Vlastnost             | Podrobnosti              |
 | :------------------- | ------------------- |
-| Informace o databázi | Metadata o databázi, na které se zjistil přehled, jako je například identifikátor URI prostředku. |
+| informace o databázi | Metadata o databázi, na které se zjistil přehled, jako je například identifikátor URI prostředku. |
 | Zjištěný časový rozsah | Počáteční a koncový čas období zjištěného přehledu |
 | Ovlivněné metriky | Metriky, které způsobily vygenerování přehledu: <ul><li>Zvýšení doby trvání dotazu [sekundy].</li><li>Nadměrné čekání [sekundy].</li><li>Žádosti s časovým limitem [procenta].</li><li>Chybné požadavky [procento].</li></ul>|
 | Hodnota dopadu | Hodnota měřené metriky. |
@@ -113,7 +113,7 @@ Pokud chcete použít Event Hubs k nastavení vlastního monitorování a upozor
 
 ### <a name="set-up-with-azure-storage"></a>Nastavení pomocí Azure Storage
 
-Pokud chcete použít Intelligent Insights s úložištěm, nakonfigurujte data protokolu Intelligent Insights, která se mají streamovat do úložiště, a přečtěte si téma [streamování do Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage).
+Pokud chcete použít Intelligent Insights s úložištěm, nakonfigurujte data protokolu Intelligent Insights, která se mají streamovat do úložiště, a přečtěte si téma [streamování do Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage).
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Vlastní integrace Intelligent Insightsho protokolu
 
@@ -164,7 +164,7 @@ Model nadměrné doby čekání sleduje jednotlivé databázové dotazy. Detekuj
 - Dosažení limitů prostředků elastického fondu
 - Nadměrný počet vláken pracovních procesů nebo relací
 - Nadměrné zamykání databáze
-- Přetížení paměti
+- Tlak paměti
 - Další statistiky čekání
 
 Dosažení limitů prostředků nebo omezení prostředků elastického fondu znamená, že spotřeba dostupných prostředků v rámci předplatného nebo elastického fondu překročila absolutní prahové hodnoty. Tyto statistiky označují snížení výkonu úloh. Nadměrný počet vláken pracovního procesu nebo relace označuje podmínku, ve které počet pracovních vláken nebo relací iniciovaly předané absolutní prahové hodnoty. Tyto statistiky označují snížení výkonu úloh.

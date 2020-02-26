@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: a273b89d864d97d9bc71acff476371f77cfff066
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 5204c7cf80a5b52b0c30b3165d522aa2648cd95c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754822"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587426"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Vytvoření konzolové aplikace Node. js pomocí sady JavaScript SDK pro správu Azure Cosmos DB dat rozhraní SQL API
 
@@ -27,7 +27,7 @@ ms.locfileid: "72754822"
 
 Jako vývojář můžete mít aplikace, které používají data dokumentů NoSQL. K ukládání a přístupu k datům v dokumentu můžete použít účet rozhraní SQL API v Azure Cosmos DB. V tomto kurzu se dozvíte, jak vytvořit konzolovou aplikaci Node. js pro vytváření Azure Cosmos DBch prostředků a dotazování na ně.
 
-V tomto kurzu provedete následující:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořte účet Azure Cosmos DB a připojte se k němu.
@@ -37,7 +37,7 @@ V tomto kurzu provedete následující:
 > * Přidejte položky do kontejneru.
 > * Provede základní operace s položkami, kontejnerem a databází.
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 Ujistěte se, že máte následující prostředky:
 
@@ -95,7 +95,7 @@ Teď, když aplikace existuje, musíte se ujistit, že může komunikovat s Azur
 
 1. Zkopírujte údaje ```database```, ```container``` a ```items``` a vložte je do objektu ```config``` pod nastavení vlastností ```config.endpoint``` a ```config.key```. Pokud již máte data, která chcete uložit do databáze, můžete použít nástroj pro migraci dat v Azure Cosmos DB místo definování dat. Soubor config. js by měl obsahovat následující kód:
 
-   [!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/config.js)]
+   :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
    Sada JavaScript SDK používá obecný pojem *kontejner* a *položka*. Kontejner může být kolekce, graf nebo tabulka. Položka představuje obsah uvnitř kontejneru a může to být dokument, pár hrany a vrcholu nebo řádek. 
    
@@ -150,7 +150,7 @@ Teď, když máte kód pro inicializaci klienta Azure Cosmos DB, se budeme věno
 
    Databázi lze vytvořit pomocí funkce `createIfNotExists` nebo Create třídy **databáze** . Databáze je logický kontejner položek rozdělených napříč kontejnery. 
 
-2. Zkopírujte metody **createDatabase** a **readDatabase** a vložte je do souboru app.js pod definici ```databaseId``` a ```containerId```. Funkce **createDatabase** vytvoří novou databázi s ID ```FamilyDatabase``` zadanou z objektu ```config```, pokud ještě neexistuje. Funkce **readDatabase** přečte definici databáze a ověří, jestli databáze existuje.
+2. Zkopírujte metody **createDatabase** a **readDatabase** a vložte je do souboru app.js pod definici ```databaseId``` a ```containerId```. Funkce **createDatabase** vytvoří novou databázi s ID ```FamilyDatabase```zadanou z objektu ```config```, pokud ještě neexistuje. Funkce **readDatabase** přečte definici databáze a ověří, jestli databáze existuje.
 
    ```javascript
    /**
@@ -602,7 +602,7 @@ Odstraněním vytvořené databáze dojde k odstranění databáze a všech jej�
 
 Jako celek by váš kód měl vypadat přibližně takto:
 
-[!code-javascript[nodejs-get-started](~/cosmosdb-nodejs-get-started/app.js)]
+:::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js":::
 
 V terminálu vyhledejte soubor ```app.js``` a spusťte příkaz: 
 

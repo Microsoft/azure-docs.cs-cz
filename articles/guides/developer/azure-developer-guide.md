@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: af5399a6e1a76a6020448b2e91d76a1d2e1f0ed8
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: d74fd2e3f6b5cc090c6313aba67a1e139c713b85
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186954"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598047"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Příručka Začínáme pro vývojáře v Azure
 
@@ -33,7 +33,7 @@ Tato příručka představuje úvod k platformě Azure pro vývojáře aplikací
 
 ## <a name="where-do-i-start"></a>Kde mám začít?
 
-Se všemi službami, které nabízí Azure, může být zastrašování úkolem zjistit, které služby potřebujete k podpoře vaší architektury řešení. V této části se vysvětlují služby Azure, které vývojáři často používají. Seznam všech služeb Azure najdete v [dokumentaci k Azure](../../index.md).
+Se všemi službami, které nabízí Azure, může být zastrašování úkolem zjistit, které služby potřebujete k podpoře vaší architektury řešení. V této části se vysvětlují služby Azure, které vývojáři často používají. Seznam všech služeb Azure najdete v [dokumentaci k Azure](../../index.yml).
 
 Nejprve se musíte rozhodnout, jak hostovat aplikaci v Azure. Potřebujete spravovat celou infrastrukturu jako virtuální počítač (VM). Můžete používat zařízení pro správu platformy, která poskytuje Azure? Je možné, že budete potřebovat server bez serveru k hostování pouze pro provádění kódu?
 

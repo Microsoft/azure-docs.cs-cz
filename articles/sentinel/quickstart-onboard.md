@@ -2,19 +2,19 @@
 title: 'Rychlý Start: zprovoznění v Azure Sentinel'
 description: Pomocí tohoto dokumentu pro rychlý Start se dozvíte, jak shromažďovat data v Azure Sentinel.
 services: sentinel
-author: rkarlin
-ms.author: rkarlin
+author: yelevin
+ms.author: yelevin
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 925bc229aecc848032ab8847088b7d6ff377a137
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11fecd875385d8ba044cbe44e2270eed11d61ce1
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278280"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581545"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý Start: zprovoznění služby Azure Sentinel
 
@@ -45,13 +45,13 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 
 1. Vyhledejte a vyberte **Azure Sentinel**.
 
-   ![search](./media/quickstart-onboard/search-product.png)
+   ![hledat](./media/quickstart-onboard/search-product.png)
 
 1. Vyberte **Přidat**.
 
 1. Vyberte pracovní prostor, který chcete použít, nebo vytvořte nový. Službu Azure Sentinel můžete spustit ve více než jednom pracovním prostoru, ale data jsou izolovaná do jednoho pracovního prostoru.
 
-   ![search](./media/quickstart-onboard/choose-workspace.png)
+   ![hledat](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - Výchozí pracovní prostory vytvořené nástrojem Azure Security Center se v seznamu nezobrazí. na ně nemůžete nainstalovat službu Azure Sentinel.

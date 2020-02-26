@@ -3,12 +3,12 @@ title: Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 description: Popisuje postup zálohování a obnovení šifrovaných virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3719f26211677a1b726d3c3dc1d217fb58db1fb2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513775"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583170"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Zálohování a obnovení šifrovaného virtuálního počítače Azure
 
@@ -28,9 +28,9 @@ Azure Backup můžou zálohovat a obnovovat virtuální počítače Azure pomoc�
 **Typ disku virtuálního počítače** | **ADE (klíče bek/dm-crypt)** | **ADE a KEK**
 --- | --- | ---
 **Spravovateln** | Ano | Ano
-**Spravované**  | Ano | Ano
+**Starosti**  | Ano | Ano
 
-- Přečtěte si další informace o [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md)a [KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/).
+- Přečtěte si další informace o [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md)a [KEK](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek/).
 - Přečtěte si [Nejčastější dotazy](../security/azure-security-disk-encryption-faq.md) k šifrování disků virtuálních počítačů Azure.
 
 ### <a name="limitations"></a>Omezení
@@ -124,7 +124,7 @@ Nastavení oprávnění:
 
     ![Výběr služby Azure Backup](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-7. Klikněte na **OK**. Do **zásad přístupu**se přidá **Služba správy zálohování** .
+7. Klikněte na tlačítko **OK**. Do **zásad přístupu**se přidá **Služba správy zálohování** .
 
     ![Zásady přístupu](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 

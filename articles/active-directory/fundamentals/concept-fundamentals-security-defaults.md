@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 023a52f373844e026de0e588e9cd46323abdcf34
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 73de446513915bbc5cba9d8b9cf23d08d18cc362
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149826"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585981"
 ---
 # <a name="what-are-security-defaults"></a>Co jsou výchozí nastavení zabezpečení?
 
@@ -95,7 +95,8 @@ Po povolení výchozích hodnot zabezpečení ve vašem tenantovi bude nutné, a
 
 Pokud uživatel není zaregistrován pro Multi-Factor Authentication, bude uživatel vyzván k registraci pomocí aplikace Microsoft Authenticator, aby bylo možné pokračovat. K dispozici není žádné období registrace Multi-Factor Authentication za 14 dní.
 
-Ve výchozím nastavení je ve výchozím nastavení zakázáno moderní ověřování klientů služby Exchange Online ve více než 2017. Abyste se vyhnuli možnosti přihlašovací smyčky při ověřování prostřednictvím těchto tenantů, musíte [Povolit moderní ověřování](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
+> [!NOTE]
+> Ve výchozím nastavení je ve výchozím nastavení zakázáno moderní ověřování klientů služby Exchange Online ve více než 2017. Abyste se vyhnuli možnosti přihlašovací smyčky při ověřování prostřednictvím těchto tenantů, musíte [Povolit moderní ověřování](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online).
 
 > [!NOTE]
 > Účet synchronizace Azure AD Connect je vyloučený z výchozích hodnot zabezpečení a nebude vyzván k registraci nebo provedení vícefaktorového ověřování. Organizace by tento účet neměli používat pro jiné účely.

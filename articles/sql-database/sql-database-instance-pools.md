@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 98757677eae6d21b02d6b0b2a3abade453b5dfed
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552776"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587392"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Co jsou fondy SQL Database instancí (Preview)?
 
@@ -112,7 +112,7 @@ Volitelné funkce nebo funkce, které vyžadují, abyste zvolili konkrétní hod
 
 I když spravované instance v rámci fondů mají vyhrazené vCore a RAM, sdílí místní disk (pro použití databáze tempdb) a síťové prostředky. Není pravděpodobné, ale je možné vyzkoušet *sousední* efekt v případě vysokého počtu instancí, pokud má více instancí ve fondu současně stejnou spotřebu prostředků. Pokud toto chování provedete, zvažte nasazení těchto instancí do většího fondu nebo jako jedné instance.
 
-## <a name="security-considerations"></a>Informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 
 Vzhledem k tomu, že instance nasazené ve fondu sdílejí stejný virtuální počítač, možná budete chtít vzít v úvahu, že jsou zakázané funkce, které vedou k vyšším bezpečnostním rizikům, nebo abyste k těmto funkcím měli oprávnění Například integrace modulu CLR, nativní zálohování a obnovení, databázový e-mail atd.
 
@@ -126,7 +126,7 @@ Pokud máte problémy související s nasazením fondu instancí (vytvoření ne
 
 Pokud máte problémy související s jednou instancí nebo databázemi v rámci fondu, měli byste vytvořit pravidelný lístek podpory pro Azure SQL Database spravované instance.
 
-Pokud chcete vytvořit větší nasazení spravovaných instancí (s fondy instancí nebo bez nich), budete možná muset získat větší regionální kvótu. Použijte [proceduru standardního spravované instance pro vyžádání větší kvóty](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance), ale Všimněte si, že pokud používáte fondy instancí, logika nasazení porovnává celkovou spotřebu Vcore *na úrovni fondu* s vaší kvótou a určí, jestli máte povoleno vytvářet nové prostředky bez dalšího zvýšení kvóty.
+Pokud chcete vytvořit větší nasazení spravovaných instancí (s fondy instancí nebo bez nich), budete možná muset získat větší regionální kvótu. Další informace najdete v tématu [zvýšení kvóty žádostí o Azure SQL Database](quota-increase-request.md). Všimněte si, že pokud používáte fondy instancí, logika nasazení porovnává celkovou spotřebu vCore *na úrovni fondu* s vaší kvótou a určí, jestli máte povoleno vytvářet nové prostředky bez dalšího zvýšení kvóty.
 
 ## <a name="instance-pool-billing"></a>Fakturace fondu instancí
 

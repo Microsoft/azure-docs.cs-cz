@@ -3,12 +3,12 @@ title: Matice podpory pro agenta MARS
 description: Tento článek shrnuje Azure Backup podporu při zálohování počítačů, na kterých běží agent služby Microsoft Azure Recovery Services (MARS).
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f5ce33b5057b11caa33c0ae80cf72e1b13da5d0
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425013"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582632"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Matice podpory pro zálohování s agentem Microsoft Azure Recovery Services (MARS)
 
@@ -66,6 +66,29 @@ A na tyto IP adresy:
 - 40.126.0.0/18
 
 Přístup ke všem adresám URL a IP adresám uvedeným výše používá protokol HTTPS na portu 443.
+
+### <a name="azure-expressroute-support"></a>Podpora Azure ExpressRoute
+
+Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vztahem (k dispozici pro staré okruhy) a partnerským vztahem Microsoftu. Zálohování přes soukromý partnerský vztah se nepodporuje.
+
+S veřejným partnerským vztahem: Zajistěte přístup k následujícím doménám nebo adresám:
+
+- `http://www.msftncsi.com/ncsi.txt`
+- `microsoft.com`
+- `.WindowsAzure.com`
+- `.microsoftonline.com`
+- `.windows.net`
+
+S partnerským vztahem Microsoftu vyberte prosím následující služby nebo oblasti a příslušné hodnoty komunity:
+
+- Azure Active Directory (12076:5060)
+- Oblast Microsoft Azure (podle umístění vašeho trezoru Recovery Services)
+- Azure Storage (podle umístění vašeho trezoru Recovery Services)
+
+Další podrobnosti najdete v tématu [požadavky na směrování ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
+
+>[!NOTE]
+>Veřejné partnerské vztahy se pro nové okruhy zastaraly.
 
 ### <a name="throttling-support"></a>Podpora omezování
 

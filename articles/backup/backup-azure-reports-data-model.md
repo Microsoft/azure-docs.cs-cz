@@ -3,12 +3,12 @@ title: Datový model pro události diagnostiky Azure Backup
 description: Tento datový model se odkazuje na režim konkrétní prostředek odeslání diagnostických událostí na Log Analytics (LA).
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: d38c9dedba7111923fa4f823d348d0783ac36681
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 267753ee1647739e36d92b64f50d8a8be87537d9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500624"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583380"
 ---
 # <a name="data-model-for-azure-backup-diagnostics-events"></a>Datový model pro události diagnostiky Azure Backup
 
@@ -38,9 +38,9 @@ Tato tabulka poskytuje informace o základních entitách zálohování, jako js
 | BackupManagementServerOSVersion   | Text          | Verze operačního systému serveru pro správu zálohování                   |
 | BackupManagementServerVersion     | Text          | Verze serveru pro správu zálohování                      |
 | LatestRecoveryPointLocation       | Text          | Umístění posledního bodu obnovení pro zálohovanou položku    |
-| LatestRecoveryPointTime           | Datum a čas      | Datum a čas posledního bodu obnovení pro zálohovanou položku   |
+| LatestRecoveryPointTime           | DateTime      | Datum a čas posledního bodu obnovení pro zálohovanou položku   |
 | OldestRecoveryPointLocation       | Text          | Umístění nejstaršího bodu obnovení pro zálohovanou položku    |
-| OldestRecoveryPointTime           | Datum a čas      | Datum a čas posledního bodu obnovení pro zálohovanou položku   |
+| OldestRecoveryPointTime           | DateTime      | Datum a čas posledního bodu obnovení pro zálohovanou položku   |
 | PolicyUniqueId                    | Text          | Jedinečné ID pro identifikaci zásad                             |
 | ProtectedContainerFriendlyName    | Text          | Popisný název chráněného serveru                        |
 | ProtectedContainerLocation        | Text          | Bez ohledu na to, jestli je chráněný kontejner umístěný místně nebo v Azure |
@@ -55,7 +55,7 @@ Tato tabulka poskytuje informace o základních entitách zálohování, jako js
 | ResourceGroupName                 | Text          | Skupina prostředků prostředku (například trezor Recovery Services) pro shromažďovaná data |
 | SchemaVersion                     | Text          | Toto pole označuje aktuální verzi schématu. je **v2** |
 | SecondaryBackupProtectionState    | Text          | Zda je pro zálohovanou položku povolena sekundární ochrana  |
-| Stát                             | Text          | Stav objektu zálohované položky Například aktivní, odstraněno |
+| Stav                             | Text          | Stav objektu zálohované položky Například aktivní, odstraněno |
 | StorageReplicationType            | Text          | Typ replikace úložiště pro trezor Například Neredundantní |
 | SubscriptionId                    | Text          | Identifikátor předplatného prostředku (například Recovery Services trezor), pro který se shromažďují data |
 | VaultName                         | Text          | Název trezoru                                            |
@@ -74,21 +74,21 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 | Kategorie                       | Text          | Kategorie dat diagnostiky nabízených do protokolů Azure Monitor – AddonAzureBackupAlerts |
 | AlertCode                      | Text          | Kód pro jedinečnou identifikaci typu výstrahy                     |
 | AlertConsolidationStatus       | Text          | Zjistit, jestli je výstraha konsolidovaná výstraha nebo ne         |
-| AlertOccurrenceDateTime        | Datum a čas      | Datum a čas, kdy byla výstraha vytvořena                     |
+| AlertOccurrenceDateTime        | DateTime      | Datum a čas, kdy byla výstraha vytvořena                     |
 | AlertRaisedOn                  | Text          | Typ entity, na které se aktivuje výstraha                        |
 | AlertSeverity                  | Text          | Závažnost výstrahy Například kritický                 |
 | AlertStatus                    | Text          | Stav výstrahy Například aktivní                     |
-| AlertTimeToResolveInMinutes    | Počet        | Čas potřebný k vyřešení výstrahy. Prázdné pro aktivní výstrahy.     |
+| AlertTimeToResolveInMinutes    | Číslo        | Čas potřebný k vyřešení výstrahy. Prázdné pro aktivní výstrahy.     |
 | AlertType                      | Text          | Typ výstrahy Například zálohování                           |
 | AlertUniqueId                  | Text          | Jedinečný identifikátor vygenerované výstrahy                    |
 | BackupItemUniqueId             | Text          | Jedinečný identifikátor zálohované položky přidružené k výstraze |
 | BackupManagementServerUniqueId | Text          | Pole k jednoznačné identifikaci záložního serveru pro správu, ve kterém je chráněná položka, pokud je k dispozici |
 | BackupManagementType           | Text          | Typ poskytovatele pro server, který provádí úlohu zálohování, například IaaSVM, složka adresáře |
-| CountOfAlertsConsolidated      | Počet        | Počet sloučených výstrah, pokud se jedná o konsolidovanou výstrahu  |
+| CountOfAlertsConsolidated      | Číslo        | Počet sloučených výstrah, pokud se jedná o konsolidovanou výstrahu  |
 | ProtectedContainerUniqueId     | Text          | Jedinečný identifikátor chráněného serveru přidruženého k výstraze |
 | RecommendedAction              | Text          | Akce doporučená pro vyřešení výstrahy                      |
 | SchemaVersion                  | Text          | Aktuální verze schématu, například **v2**            |
-| Stát                          | Text          | Aktuální stav objektu výstrahy, například aktivní, odstraněn |
+| Stav                          | Text          | Aktuální stav objektu výstrahy, například aktivní, odstraněn |
 | StorageUniqueId                | Text          | Jedinečné ID použité k identifikaci entity úložiště                |
 | VaultUniqueId                  | Text          | Jedinečné ID, které slouží k identifikaci trezoru souvisejícího s výstrahou    |
 | SourceSystem                   | Text          | Zdrojový systém aktuálních dat – Azure                    |
@@ -108,7 +108,7 @@ Tato tabulka poskytuje základní pole související s chráněnými instancemi.
 | ProtectedContainerUniqueId     | Text          | Jedinečné ID pro identifikaci chráněného kontejneru, na kterém je úloha spuštěná |
 | ProtectedInstanceCount         | Text          | Počet chráněných instancí pro přidruženou zálohovanou položku nebo chráněný kontejner v dané datum a čas |
 | SchemaVersion                  | Text          | Aktuální verze schématu, například **v2**            |
-| Stát                          | Text          | Stav objektu zálohované položky, například Active, Deleted |
+| Stav                          | Text          | Stav objektu zálohované položky, například Active, Deleted |
 | VaultUniqueId                  | Text          | Jedinečný identifikátor chráněného trezoru přidruženého k chráněné instanci |
 | SourceSystem                   | Text          | Zdrojový systém aktuálních dat – Azure                    |
 
@@ -125,21 +125,21 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | BackupItemUniqueId             | Text          | Jedinečné ID, které slouží k identifikaci zálohované položky související s entitou úložiště |
 | BackupManagementServerUniqueId | Text          | Jedinečné ID, které slouží k identifikaci management server zálohy související s entitou úložiště |
 | BackupManagementType           | Text          | Typ poskytovatele pro provádění zálohování, například IaaSVM, složku, do které tato výstraha patří |
-| DataTransferredInMB            | Počet        | Data přenesená v MB pro tuto úlohu                          |
-| JobDurationInSecs              | Počet        | Celková doba trvání úlohy v sekundách                                |
+| DataTransferredInMB            | Číslo        | Data přenesená v MB pro tuto úlohu                          |
+| JobDurationInSecs              | Číslo        | Celková doba trvání úlohy v sekundách                                |
 | JobFailureCode                 | Text          | Řetězec kódu chyby, protože došlo k selhání úlohy    |
 | JobOperation                   | Text          | Operace, pro kterou je úloha spuštěná, například zálohování, obnovení, konfigurace zálohování |
 | JobOperationSubType            | Text          | Dílčí typ operace úlohy Například ' log ' v případě úlohy zálohování protokolu |
-| JobStartDateTime               | Datum a čas      | Datum a čas spuštění úlohy                       |
+| JobStartDateTime               | DateTime      | Datum a čas spuštění úlohy                       |
 | JobStatus                      | Text          | Stav dokončené úlohy, například dokončeno, neúspěšné   |
 | JobUniqueId                    | Text          | Jedinečné ID pro identifikaci úlohy                                |
 | ProtectedContainerUniqueId     | Text          | Jedinečný identifikátor chráněného serveru přidruženého k výstraze |
 | RecoveryJobDestination         | Text          | Cíl úlohy obnovení, kde se data obnovují   |
-| RecoveryJobRPDateTime          | Datum a čas      | Datum a čas vytvoření bodu obnovení, který se má obnovit |
+| RecoveryJobRPDateTime          | DateTime      | Datum a čas vytvoření bodu obnovení, který se má obnovit |
 | RecoveryJobLocation            | Text          | Umístění, kam se uložil bod obnovení, který se má obnovit |
 | RecoveryLocationType           | Text          | Typ umístění pro obnovení                                |
 | SchemaVersion                  | Text          | Aktuální verze schématu, například **v2**            |
-| Stát                          | Text          | Aktuální stav objektu výstrahy, například aktivní, odstraněn |
+| Stav                          | Text          | Aktuální stav objektu výstrahy, například aktivní, odstraněn |
 | VaultUniqueId                  | Text          | Jedinečný identifikátor chráněného trezoru přidruženého k výstraze |
 | SourceSystem                   | Text          | Zdrojový systém aktuálních dat – Azure                    |
 
@@ -177,7 +177,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 | RetentionDuration               | Text           | Doba uchování pro nakonfigurované zálohy                    |
 | RetentionType                   | Text           | Typ uchování                                            |
 | SchemaVersion                   | Text           | Toto pole označuje aktuální verzi schématu. je **v2** |
-| Stát                           | Text           | Aktuální stav objektu zásad Například aktivní, odstraněno |
+| Stav                           | Text           | Aktuální stav objektu zásad Například aktivní, odstraněno |
 | SynchronisationFrequencyPerDay  | Celé číslo   | Počet pokusů za den, kdy je záloha souborů synchronizovaná pro SC DPM a MABS |
 | VaultUniqueId                   | Text           | Jedinečné ID trezoru, ke kterému patří tato zásada          |
 | WeeklyRetentionDaysOfTheWeek    | Text           | Dny v týdnu vybrané pro týdenní uchování               |
@@ -207,9 +207,9 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úložištěm.
 | PreferredWorkloadOnVolume      | Text          | Úloha, pro kterou je tento svazek upřednostňovaným úložištěm      |
 | ProtectedContainerUniqueId     | Text          | Jedinečný identifikátor chráněného serveru přidruženého k výstraze |
 | SchemaVersion                  | Text          | Verze schématu Například **v2**                   |
-| Stát                          | Text          | Stav objektu zálohované položky Například aktivní, odstraněno |
-| StorageAllocatedInMBs          | Počet        | Velikost úložiště přidělená odpovídající zálohovanou položkou v odpovídajícím úložišti typu disk |
-| StorageConsumedInMBs           | Počet        | Velikost úložiště spotřebovaného odpovídající zálohovanou položkou v příslušném úložišti |
+| Stav                          | Text          | Stav objektu zálohované položky Například aktivní, odstraněno |
+| StorageAllocatedInMBs          | Číslo        | Velikost úložiště přidělená odpovídající zálohovanou položkou v odpovídajícím úložišti typu disk |
+| StorageConsumedInMBs           | Číslo        | Velikost úložiště spotřebovaného odpovídající zálohovanou položkou v příslušném úložišti |
 | StorageName                    | Text          | Název entity úložiště Například jednotku e:\                      |
 | StorageTotalSizeInGBs          | Text          | Celková velikost úložiště v GB, spotřebovaná entitou úložiště     |
 | StorageType                    | Text          | Typ úložiště, například Cloud, svazek, disk             |
@@ -220,5 +220,5 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úložištěm.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Naučte se odesílat diagnostická data do Log Analytics](https://aka.ms/AzureBackupDiagnosticsDocs)
+- [Naučte se odesílat diagnostická data do Log Analytics](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)
 - [Naučte se zapisovat dotazy do tabulek specifických pro prostředky.](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor#sample-kusto-queries)

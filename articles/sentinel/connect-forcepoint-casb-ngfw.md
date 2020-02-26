@@ -2,7 +2,7 @@
 title: Připojení produktů Forcepoint ke službě Azure Sentinel | Microsoft Docs
 description: Naučte se připojit produkty Forcepoint k Sentinel Azure.
 services: sentinel
-author: rkarlin
+author: yelevin
 editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/20/2020
-ms.author: rkarlin
-ms.openlocfilehash: 66b6b7e7c9b3fec1a6252077519710452f37312a
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.author: yelevin
+ms.openlocfilehash: eb099a786a84f9b7d0a6f0dc6e6df9c3459af295
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500962"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588225"
 ---
 # <a name="connect-your-forcepoint-products-to-azure-sentinel"></a>Připojení produktů Forcepoint ke službě Azure Sentinel
 

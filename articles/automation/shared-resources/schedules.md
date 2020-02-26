@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8daa87eca74570f5b1fdf1537b83dae60d292128
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c4898ba62abdc42d95b77b9a77387bfe71fb4771
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849458"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592199"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Naplánování runbooku v Azure Automation
 
@@ -34,8 +34,8 @@ Rutiny v následující tabulce se používají k vytváření a správě plán�
 | [Remove-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/remove-azurermautomationschedule) |Odebere plán. |
 | [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) |Nastaví vlastnosti pro existující plán. |
 | [Get-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/get-azurermautomationscheduledrunbook) |Načte naplánované Runbooky. |
-| [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Přidruží sadu Runbook k plánu. |
-| [Unregister-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Dissociates sadu Runbook z plánu. |
+| [Registrovat – AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) |Přidruží sadu Runbook k plánu. |
+| [Zrušit registraci – AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/unregister-azurermautomationscheduledrunbook) |Dissociates sadu Runbook z plánu. |
 
 ## <a name="creating-a-schedule"></a>Vytvoření plánu
 
@@ -143,7 +143,7 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 Nejčastější interval, po který je možné naplánovat Azure Automation, je jedna hodina. Pokud požadujete, aby se plány spouštěly častěji než to, existují dvě možnosti:
 
-* Vytvořte [Webhook](../automation-webhooks.md) pro Runbook a použijte [Azure Scheduler](../../scheduler/scheduler-get-started-portal.md) pro volání Webhooku. Azure Scheduler poskytuje přesnější členitost při definování plánu.
+* Vytvořte [Webhook](../automation-webhooks.md) pro Runbook a použijte [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) pro volání Webhooku. Azure Logic Apps poskytuje přesnější členitost při definování plánu.
 
 * Vytvořte čtyři plány, které začínají během 15 minut od každé jiné spuštění každou hodinu. Tento scénář umožňuje spuštění sady Runbook každých 15 minut s různými plány.
 

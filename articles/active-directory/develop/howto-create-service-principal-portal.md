@@ -12,12 +12,12 @@ ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 0d3e1e10120dce404f0fdfe781661c4c169ae00a
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697213"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591570"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům
 
@@ -40,9 +40,9 @@ Pojďme přejít přímo na vytvoření identity. Pokud narazíte na problém, z
 
 Vytvořili jste aplikaci a instanční objekt služby Azure AD.
 
-## <a name="assign-the-application-to-a-role"></a>Přiřazení aplikace k roli
+## <a name="assign-a-role-to-the-application"></a>Přiřazení role k aplikaci
 
-Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte aplikaci přiřadit k roli. Rozhodněte, která role nabízí správná oprávnění pro aplikaci. Další informace o dostupných rolí, najdete v článku [RBAC: vestavěné role](../../role-based-access-control/built-in-roles.md).
+Pokud chcete získat přístup k prostředkům ve vašem předplatném, musíte aplikaci přiřadit roli. Rozhodněte, která role nabízí správná oprávnění pro aplikaci. Další informace o dostupných rolích naleznete v tématu [RBAC: předdefinované role](../../role-based-access-control/built-in-roles.md).
 
 Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo prostředku. Oprávnění se dědí do oboru na nižších úrovních. Například přidání aplikace do role čtenář pro skupinu prostředků znamená, že může číst skupinu prostředků a všechny prostředky, které obsahuje.
 
@@ -57,12 +57,12 @@ Rozsah můžete nastavit na úrovni předplatného, skupiny prostředků nebo pr
    Pokud nevidíte předplatné, které hledáte, vyberte **globální filtr předplatných**. Ujistěte se, že je vybráno požadované předplatné portálu.
 
 1. Vyberte **Řízení přístupu (IAM)** .
-1. Vyberte **přidat přiřazení role**.
+1. Vyberte **Přidat přiřazení role**.
 1. Vyberte roli, kterou chcete aplikaci přiřadit. Pokud například chcete, aby aplikace mohla provádět akce, jako je **restartování**, **spuštění** a **zastavení** instancí, vyberte roli **Přispěvatel** .  Další informace o [dostupných rolích](../../role-based-access-control/built-in-roles.md) ve výchozím nastavení se v dostupných možnostech nezobrazí v aplikacích Azure AD. Chcete-li najít aplikaci, vyhledejte její název a vyberte ji.
 
    ![Vyberte roli, kterou chcete přiřadit k aplikaci.](./media/howto-create-service-principal-portal/select-role.png)
 
-1. Vyberte **Uložit** k dokončení přiřazení role. Vaše aplikace se zobrazí v seznamu uživatelů přiřazených k roli pro tento obor.
+1. Kliknutím na **Uložit** dokončete přiřazení role. Vaše aplikace se zobrazí v seznamu uživatelů s rolí pro tento obor.
 
 Vaše instanční objekt je nastavený. Můžete ji začít používat ke spouštění skriptů nebo aplikací. V další části se dozvíte, jak získat hodnoty, které jsou potřeba při přihlašování prostřednictvím kódu programu.
 
@@ -112,7 +112,7 @@ Pokud se rozhodnete nepoužívat certifikát, můžete vytvořit nový tajný kl
 1. Vyberte **Client tajných klíčů – > nový tajný klíč klienta**.
 1. Zadejte popis tajného kódu a dobu trvání. Až budete hotovi, vyberte **Přidat**.
 
-   Po uložení tajného klíče klienta se zobrazí hodnota tajného klíče klienta. Zkopírujte tuto hodnotu, protože nemůžete získat klíč později. Zadejte hodnotu klíče s ID aplikace, abyste se mohli přihlásit jako aplikace. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
+   Po uložení tajného klíče klienta se zobrazí hodnota tajného klíče klienta. Zkopírujte tuto hodnotu, protože už nebudete moct klíč načíst později. Zadáním hodnoty klíče s ID aplikace se přihlásíte jako aplikace. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
 
    ![Zkopírujte tajnou hodnotu, protože ji nemůžete později načíst.](./media/howto-create-service-principal-portal/copy-secret.png)
 
@@ -126,7 +126,7 @@ Mějte na paměti, že možná budete muset pro prostředky, ke kterým aplikace
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
-Musíte mít dostatečná oprávnění k registraci aplikace ve vašem tenantovi Azure AD a přiřazení aplikace k roli v předplatném Azure.
+Musíte mít dostatečná oprávnění k registraci aplikace ve vašem tenantovi Azure AD a přiřazení k aplikaci roli v předplatném Azure.
 
 ### <a name="check-azure-ad-permissions"></a>Ověřit oprávnění služby Azure AD
 
@@ -138,11 +138,11 @@ Musíte mít dostatečná oprávnění k registraci aplikace ve vašem tenantovi
 1. V levém podokně vyberte **nastavení uživatele**.
 1. Ověřte nastavení **Registrace aplikací** . Tuto hodnotu může nastavit jenom správce. Pokud je nastaveno na **Ano**, každý uživatel v TENANTOVI Azure AD může zaregistrovat aplikaci.
 
-Pokud je nastavení registrace aplikací nastaveno na **ne**, můžou tyto typy aplikací registrovat jenom uživatelé s rolí správce. Další informace o dostupných rolích správců a konkrétních oprávněních v Azure AD, která jsou udělena jednotlivým rolím, najdete v tématu [dostupné role](../users-groups-roles/directory-assign-admin-roles.md#available-roles) a [oprávnění role](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) . Pokud je váš účet přiřazený k roli uživatele, ale nastavení registrace aplikace je omezené na uživatele s právy pro správu, požádejte správce, aby vám přidělil jednu z rolí správce, která může vytvářet a spravovat všechny aspekty registrací aplikací, nebo umožnit uživatelům registrovat aplikace.
+Pokud je nastavení registrace aplikací nastaveno na **ne**, můžou tyto typy aplikací registrovat jenom uživatelé s rolí správce. Další informace o dostupných rolích správců a konkrétních oprávněních v Azure AD, která jsou udělena jednotlivým rolím, najdete v tématu [dostupné role](../users-groups-roles/directory-assign-admin-roles.md#available-roles) a [oprávnění role](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) . Pokud má váš účet přiřazenou roli uživatele, ale nastavení registrace aplikace je omezené na uživatele s právy pro správu, požádejte správce, aby vám přidělil jednu z rolí správce, která může vytvářet a spravovat všechny aspekty registrací aplikací nebo umožnit uživatelům registraci. můžou.
 
 ### <a name="check-azure-subscription-permissions"></a>Ověřit oprávnění pro předplatné Azure
 
-Ve vašem předplatném Azure musí mít váš účet `Microsoft.Authorization/*/Write` přístup k přiřazení aplikace AD k roli. Tato akce se povoluje prostřednictvím role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) nebo [správce uživatelských přístupů](../../role-based-access-control/built-in-roles.md#user-access-administrator). Pokud je váš účet přiřazen k roli **Přispěvatel** , nemáte příslušná oprávnění. Při pokusu o přiřazení instančního objektu k roli se zobrazí chyba.
+Ve vašem předplatném Azure musí mít váš účet `Microsoft.Authorization/*/Write` přístup, aby bylo možné přiřadit roli k aplikaci AD. Tato akce se povoluje prostřednictvím role [vlastníka](../../role-based-access-control/built-in-roles.md#owner) nebo [správce uživatelských přístupů](../../role-based-access-control/built-in-roles.md#user-access-administrator). Pokud má váš účet přiřazenou roli **Přispěvatel** , nemáte příslušná oprávnění. Při pokusu o přiřazení instančního objektu k roli se zobrazí chyba.
 
 Ověření oprávnění k předplatnému:
 
@@ -154,9 +154,9 @@ Ověření oprávnění k předplatnému:
 
    ![Vyberte předplatné, ve kterém chcete vytvořit instanční objekt.](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Výběrem **přiřazení rolí** zobrazíte přiřazené role a určíte, jestli máte adekvátní oprávnění k přiřazení aplikace AD k roli. Pokud ne, požádejte správce předplatného, aby vás přidal do role správce přístupu uživatele. Na následujícím obrázku je uživatel přiřazen k roli vlastníka, což znamená, že uživatel má odpovídající oprávnění.
+1. Výběrem **přiřazení rolí** zobrazíte přiřazené role a určíte, jestli máte adekvátní oprávnění k přiřazení role k aplikaci AD. Pokud ne, požádejte správce předplatného, aby vás přidal do role správce přístupu uživatele. Na následujícím obrázku je uživateli přiřazena role vlastníka, což znamená, že uživatel má odpovídající oprávnění.
 
-   ![Tento příklad ukazuje, že uživatel je přiřazen k roli vlastníka.](./media/howto-create-service-principal-portal/view-user-role.png)
+   ![Tento příklad ukazuje, že uživatel má přiřazenou roli vlastníka.](./media/howto-create-service-principal-portal/view-user-role.png)
 
 ## <a name="next-steps"></a>Další kroky
 

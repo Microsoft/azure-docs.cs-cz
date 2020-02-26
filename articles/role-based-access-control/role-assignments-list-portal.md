@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 099cf74dd27f39a4289397d5178511125d9ebf6f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 63aef8d2036e442659145e031d384e9677c779a1
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720698"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598064"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Seznam přiřazení rolí pomocí Azure RBAC a Azure Portal
 
@@ -116,7 +116,7 @@ Pokud chcete vypsat přístup pro uživatele, skupinu, instanční objekt nebo s
 
 ## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Seznam přiřazení rolí pro uživatelem přiřazenou spravovanou identitu
 
-1. V Azure Portal otevřete spravovanou identitu přiřazenou systémem.
+1. V Azure Portal otevřete uživatelem přiřazenou spravovanou identitu.
 
 1. Klikněte na **prostředky Azure**.
 

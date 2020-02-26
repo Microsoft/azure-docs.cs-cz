@@ -3,12 +3,12 @@ title: Odstranění trezoru Microsoft Azure Recovery Services
 description: V tomto článku se dozvíte, jak odebrat závislosti a jak odstranit trezor služby Microsoft Azure Backup Recovery Services (MARS).
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 23e0d2874229616037c44800639411f66bc4d1b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 172c632ae27c789f96e2e5cc1bdef492ef09f667
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173177"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586457"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
 
@@ -28,7 +28,7 @@ Nelze odstranit Recovery Services trezor, který obsahuje závislosti, jako jsou
 
   ![Odstraňte chybu chráněného serveru.](./media/backup-azure-delete-vault/error-message.jpg)
 
-- Pokud se v části se zobrazí zpráva pro zálohování je stav odstraněno pod varovnou zprávou a budete muset počkat, až se trvale odstraní. Další informace najdete v tomto [článku](https://aka.ms/SoftDeleteCloudWorkloads).
+- Pokud se v části se zobrazí zpráva pro zálohování je stav odstraněno pod varovnou zprávou a budete muset počkat, až se trvale odstraní. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
 
    ![Odstraňte chybu trezoru.](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
@@ -50,7 +50,7 @@ Chcete-li zastavit ochranu a odstranit data zálohy, proveďte následující kr
 
 1. Na portálu přejdete do **Recovery Services trezoru**a pak přejdete na **zálohované položky**. Pak zvolte chráněné položky v cloudu (například Azure Virtual Machines, Azure Storage [služba soubory Azure] nebo SQL Server na Virtual Machines Azure).
 
-    ![Vyberte typ zálohování.](./media/backup-azure-delete-vault/azure-storage-selected.png)
+    ![Zvolte typ zálohování.](./media/backup-azure-delete-vault/azure-storage-selected.png)
 
 2. Kliknutím pravým tlačítkem vyberte zálohovanou položku. V závislosti na tom, jestli je zálohovaná položka chráněná, nebo ne, se v nabídce zobrazí buď podokno **Zastavit zálohování** , nebo **Odstranit data zálohy** .
 

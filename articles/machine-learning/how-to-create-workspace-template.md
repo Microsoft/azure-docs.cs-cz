@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: b3e4ff60ab290d25afb003f0753cf852cefffe1a
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 75297f15dbc0067767d97afd7c8aa16738f2fc1a
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069553"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581306"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -26,7 +26,7 @@ V tomto článku se dozvíte několik způsobů, jak vytvořit pracovní prostor
 
 Další informace najdete v tématu [nasazení aplikace pomocí šablony Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Předplatné Azure**. Pokud ho nemáte, vyzkoušejte [bezplatnou nebo placená verzi Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -41,7 +41,7 @@ Následující šablonu Správce prostředků lze použít k vytvoření pracovn
 Tato šablona vytvoří následující služby Azure:
 
 * Skupina prostředků Azure
-* Azure Storage Account
+* Účet služby Azure Storage
 * Azure Key Vault
 * Azure Application Insights
 * Azure Container Registry
@@ -63,9 +63,11 @@ Příklad šablony má dva parametry:
     Názvy ostatních služeb jsou vygenerovány náhodně.
 
 > [!TIP]
-> Zatímco šablona přidružená k tomuto dokumentu vytvoří novou Azure Container Registry, můžete také vytvořit nový pracovní prostor bez vytvoření registru kontejneru. Pokud je v pracovním prostoru registr kontejnerů, vytvoří se při provedení operace, která vyžaduje registr kontejnerů, vytvoří se jedna. Například školení nebo nasazení modelu.
+> Zatímco šablona přidružená k tomuto dokumentu vytvoří novou Azure Container Registry, můžete také vytvořit nový pracovní prostor bez vytvoření registru kontejneru. Ten se vytvoří při provedení operace, která vyžaduje Registry kontejneru. Například školení nebo nasazení modelu.
 >
 > Místo vytvoření nové služby můžete také odkazovat na existující registr kontejnerů nebo účet úložiště v šabloně Azure Resource Manager.
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 Další informace o šablonách najdete v následujících článcích:
 

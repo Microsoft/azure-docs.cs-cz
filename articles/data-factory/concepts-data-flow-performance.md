@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 01/25/2020
-ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.date: 02/24/2020
+ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773846"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587579"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Průvodce optimalizací výkonu a ladění toků dat
 
@@ -35,8 +35,8 @@ Při návrhu toků mapování dat můžete každou transformaci otestovat tak, �
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Zvýšení výpočetní velikosti v Azure Integration Runtime
 
 Integration Runtime s více jádry zvyšuje počet uzlů ve výpočetním prostředí Spark a poskytuje větší výpočetní výkon pro čtení, zápis a transformaci dat.
-* Vyzkoušejte **COMPUTE optimalizovaný** cluster, pokud chcete, aby byl rychlost zpracování vyšší než zadaná rychlost.
-* Vyzkoušení **paměťově optimalizovaného** clusteru, pokud chcete uložit do mezipaměti více dat v paměti.
+* Vyzkoušejte **výpočetní cluster COMPUTE** , pokud chcete, aby byl rychlost zpracování vyšší než zadaná sazba.
+* Vyzkoušení **paměťově optimalizovaného** clusteru, pokud chcete uložit do mezipaměti více dat v paměti. Optimalizovaná paměť má vyšší cenový bod na jádro než výpočetní výkon, ale bude nejspíš mít za následek rychlejší rychlost transformace.
 
 ![Nový IR](media/data-flow/ir-new.png "Nový IR")
 
@@ -73,7 +73,7 @@ V části **Možnosti zdroje** ve zdrojové transformaci můžou mít následuj�
 
 Abyste se vyhnuli zpracování datových toků po řádcích, nastavte **velikost dávky** na kartě nastavení pro Azure SQL DB a jímky Azure SQL DW. Pokud je nastavena velikost dávky, vytvoří ADF v dávkách zápisy do dávek v závislosti na zadané velikosti.
 
-![jímka](media/data-flow/sink4.png "Jímka")
+![Jímkou](media/data-flow/sink4.png "Jímka")
 
 ### <a name="partitioning-on-sink"></a>Dělení na jímku
 
@@ -87,17 +87,24 @@ V kanálu přidejte [aktivitu uložené procedury](transform-data-using-stored-p
 
 Naplánujte změnu velikosti zdroje a jímky Azure SQL DB a DW před spuštěním kanálu, abyste zvýšili propustnost a minimalizovali omezení Azure, jakmile dosáhnete limitů DTU. Po dokončení spuštění kanálu změňte velikost databází zpět na normální rychlost běhu.
 
-### <a name="azure-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Jenom Azure SQL DW] Použití přípravy k hromadnému načtení dat prostřednictvím základu
+* Zdrojová tabulka SQL DB s 887k řádky a 74 sloupci do tabulky SQL DB s jednou odvozenou transformací sloupce trvá přibližně 3 minuty od začátku do konce pomocí paměťově 80 optimalizované pro ladění Azure Core.
+
+### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[Jenom Azure synapse SQL DW] Použití přípravy k hromadnému načtení dat prostřednictvím základu
 
 Pokud chcete do datové sady DW vyhnout vkládání řádků, zaškrtněte v nastavení jímky **Povolit přípravu** , aby ADF mohl použít [základ](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide). Základem může být, že ADF načte data hromadně.
 * Při provádění aktivity toku dat z kanálu musíte vybrat objekt BLOB nebo ADLS Gen2 umístění úložiště pro přípravu dat během hromadného načítání.
 
+* Zdroj souborů 421Mb s 74 sloupci do tabulky synapse a jedna odvozená transformace sloupce trvá přibližně 4 minuty od začátku do konce pomocí paměťově 80 optimalizované pro ladění Azure Core.
+
 ## <a name="optimizing-for-files"></a>Optimalizace pro soubory
 
-V každé transformaci můžete nastavit schéma dělení, které má Datová továrna použít na kartě optimalizace.
+V každé transformaci můžete nastavit schéma dělení, které má Datová továrna použít na kartě optimalizace. Je vhodné nejdřív otestovat jímky založené na souborech, které zachovají výchozí dělení a optimalizace.
+
 * V případě menších souborů můžete najít, že výběr *jednoho oddílu* může někdy fungovat lépe a rychleji než vyžádat Spark, aby rozdělil vaše malé soubory.
 * Pokud nemáte dostatek informací o zdrojových datech, vyberte možnost *kruhové dotazování* na oddíly a nastavte počet oddílů.
 * Pokud vaše data obsahují sloupce, které mohou být vhodnými klíči hash, vyberte možnost *dělení hodnoty hash*.
+
+* Zdroj souborů s jímkou souborů 421Mb souborů s 74 sloupci a jedna odvozená transformace sloupce trvá přibližně 2 minuty od začátku do konce pomocí paměťově 80 optimalizované pro ladění Azure Core.
 
 Při ladění v náhledu dat a při ladění kanálu se limity a velikosti vzorkování pro zdrojové datové sady na základě souborů vztahují pouze na počet vrácených řádků, nikoli na počet čtených řádků. To může mít vliv na výkon při spuštění ladění a může způsobit selhání toku.
 * Clustery ladění jsou ve výchozím nastavení malými clustery s jedním uzlem a doporučujeme pro ladění použít ukázkové malé soubory. Přejděte na nastavení ladění a najeďte na malou podmnožinu dat pomocí dočasného souboru.

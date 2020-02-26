@@ -3,12 +3,12 @@ title: Azure Service Fabric Docker Compose Deployment Preview
 description: Azure Service Fabric přijímá formát Docker Compose, který usnadňuje orchestraci stávajících kontejnerů pomocí Service Fabric. Tato podpora je aktuálně ve verzi preview.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 6dd45e81a0db06cbaa75da3f94b9e7624b0acd69
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458045"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589330"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Podpora nasazení Docker Compose ve službě Azure Service Fabric (Preview)
 
@@ -27,7 +27,7 @@ Chcete-li použít tuto verzi Preview, vytvořte cluster s verzí 5,7 nebo vyš�
 Následující příkazy vytvoří aplikaci Service Fabric (s názvem `fabric:/TestContainerApp`), kterou můžete monitorovat a spravovat stejně jako jakoukoli jinou Service Fabric aplikaci. Pro dotazy na stav můžete použít zadaný název aplikace.
 Service Fabric rozpoznává "Deployment" jako identifikátor nasazení vytváření.
 
-### <a name="use-powershell"></a>Použití PowerShellu
+### <a name="use-powershell"></a>Použití prostředí PowerShell
 
 Spuštěním následujícího příkazu v PowerShellu vytvořte Service Fabric vytvoření nasazení ze souboru Docker-Compose. yml:
 
@@ -69,37 +69,37 @@ Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
 
 Případně můžete použít následující příkaz Service Fabric CLI:
 
-```azurecli
+```shell
 sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
 Po vytvoření nasazení můžete zjistit jeho stav pomocí následujícího příkazu:
 
-```azurecli
+```shell
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Chcete-li odstranit nasazení vytváření, použijte následující příkaz:
 
-```azurecli
+```shell
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Chcete-li zahájit upgrade nasazení, použijte následující příkaz:
 
-```azurecli
+```shell
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
 ```
 
 Pokud chcete vrátit zpět upgrade nasazení psaní, použijte následující příkaz:
 
-```azurecli
+```shell
 sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
 Po přijetí upgradu může být průběh upgradu sledován pomocí následujícího příkazu:
 
-```azurecli
+```shell
 sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 

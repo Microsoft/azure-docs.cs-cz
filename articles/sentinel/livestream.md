@@ -3,7 +3,7 @@ title: K detekci hrozeb použijte lovecké živě ve službě Azure Sentinel | M
 description: Tento článek popisuje, jak používat lovecké živě ve službě Azure Sentinel k udržení přehledu o datech.
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2019
-ms.author: cabailey
-ms.openlocfilehash: 5b347848c9c6a58a70ab1093a6f9c70b62f3f769
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.author: yelevin
+ms.openlocfilehash: b392644e504fa8187e637278bef8718c9c2caa3f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900455"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582122"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>K detekci hrozeb použijte lovecké živě ve službě Azure Sentinel.
 
@@ -53,7 +53,7 @@ Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvoř
 2. Vytvoření relace živě z loveckého dotazu:
     
     1. Na kartě **dotazy** vyhledejte lovecký dotaz, který chcete použít.
-    2. Klikněte pravým tlačítkem na dotaz a vyberte **Přidat do živě**. Například:
+    2. Klikněte pravým tlačítkem na dotaz a vyberte **Přidat do živě**. Příklad:
     
     > [!div class="mx-imgBorder"]
     > ![vytvořit relaci živě z dotazu pro lov na základě ověřovacích dotazů Azure](./media/livestream/livestream-from-query.png)
@@ -83,7 +83,7 @@ Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvoř
 
 1. V Azure Portal přejděte na kartu **Sentinel** > **Threat Management** > **lovecké** > **živě** .
 
-2. Vyberte relaci živě, kterou chcete zobrazit nebo upravit. Například:
+2. Vyberte relaci živě, kterou chcete zobrazit nebo upravit. Příklad:
     
     > [!div class="mx-imgBorder"]
     > ![vytvořit relaci živě z dotazu pro lov na základě ověřovacích dotazů Azure](./media/livestream/livestream-tab.png)
@@ -92,7 +92,7 @@ Můžete vytvořit relaci živě z existujícího loveckého dotazu nebo vytvoř
 
 ## <a name="receive-notifications-when-new-events-occur"></a>Dostávat oznámení, když dojde k novým událostem
 
-Vzhledem k tomu, že živě oznámení o nových událostech používají Azure Portal oznámení, uvidíte tato oznámení vždy, když použijete Azure Portal. Například:
+Vzhledem k tomu, že živě oznámení o nových událostech používají Azure Portal oznámení, uvidíte tato oznámení vždy, když použijete Azure Portal. Příklad:
 
 ![Oznámení Azure Portal pro živě](./media/livestream/notification.png)
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: ce85c45d80a776af84a0987cfbc3f496c2bbb72b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893955"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602584"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ V této části se dozvíte, jak provádět následující úlohy:
 
 Obecný přehled zabezpečení a ověřování v rámci Azure Machine Learning najdete v [článku o konceptu](concept-enterprise-security.md) .
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Vytvořte [pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 * [Nakonfigurujte vývojové prostředí](how-to-configure-environment.md) pro instalaci Azure Machine Learning sady SDK nebo použijte [virtuální počítač s Azure Machine Learningm poznámkovým blokem](concept-azure-machine-learning-architecture.md#compute-instance) , který už je nainstalovaný s SDK.
@@ -266,7 +266,7 @@ from azureml.core.webservice import AciWebservice
 
 aci_config = AciWebservice.deploy_configuration(cpu_cores = 1,
                                                 memory_gb = 1,
-                                                auth_enable=True)
+                                                auth_enabled=True)
 ```
 
 Pak můžete použít vlastní konfiguraci ACI v nasazení pomocí třídy `Model`.

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 3e7f5e46068844da538864fdfaa03ca7023e4372
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8ae85ffc16bd953f04f1c3d7790231939c1f2cf
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445568"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588903"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Změnit procesor kanálu v Azure Cosmos DB 
 
@@ -41,13 +41,13 @@ Abychom lépe porozuměli tomu, jak tyto čtyři prvky procesoru Change feed fun
 
 Bod vstupu je vždy monitorovaný kontejner, od `Container` instance, kterou voláte `GetChangeFeedProcessorBuilder`:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="DefineProcessor":::
 
 Kde první parametr je jedinečný název, který popisuje cíl tohoto procesoru a druhý název je implementace delegáta, která bude zpracovávat změny. 
 
 Příkladem delegáta může být:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs" id="Delegate":::
 
 Nakonec definujete název této instance procesoru pomocí `WithInstanceName`, což je kontejner pro udržení stavu zapůjčení s `WithLeaseContainer`.
 
@@ -84,7 +84,7 @@ Procesor změn kanálu se navíc může dynamicky upravovat na kontejnery škál
 
 Účtují se vám poplatky za ru spotřebované, protože přesun dat do kontejnerů Cosmos a z nich vždycky spotřebovává ru. Účtují se vám poplatky za ru spotřebované kontejnerem zapůjčení.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 * [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

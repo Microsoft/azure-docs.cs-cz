@@ -11,28 +11,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: spelluru
-ms.openlocfilehash: 4ca17bece33107de756eb221e14eaab851660a99
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fbac5a2fab91cdac8ebf626e324f12f209cfade5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992232"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588701"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Výstrahy zabezpečení pro prostředí v Azure DevTest Labs
-V tomto článku se dozvíte, jak zobrazit výstrahy zabezpečení pro prostředí v Azure DevTest Labs. 
+Jako uživatel testovacího prostředí teď můžete zobrazit Azure Security Center výstrahy pro testovací prostředí. Security Center automaticky shromažďuje, analyzuje a integruje data protokolu z vašich prostředků Azure, sítě a připojených partnerských řešení, jako jsou brány firewall a řešení ochrany koncových bodů, aby se zjistily skutečné hrozby a snížil počet falešných poplachů. Seznam upřednostňovaných výstrah zabezpečení se zobrazí ve službě Security Center spolu s informacemi, které potřebujete k rychlému prozkoumání problému, a doporučeními týkajícími se řešení útoku. [Přečtěte si další informace o výstrahách zabezpečení v Azure Security Center](../security-center//security-center-alerts-overview.md).  
 
-## <a name="prerequisites"></a>Požadavky
-V současné době můžete zobrazit výstrahy zabezpečení pouze pro prostředí nasazená do testovacího prostředí. K otestování nebo použití této funkce nasaďte prostředí do testovacího prostředí. 
+
+## <a name="prerequisites"></a>Předpoklady
+V současné době můžete zobrazit výstrahy zabezpečení pouze pro prostředí PaaS (Platform as a Service) nasazená v testovacím prostředí. K otestování nebo použití této funkce [Nasaďte prostředí do testovacího prostředí](devtest-lab-create-environment-from-arm.md). 
 
 ## <a name="view-security-alerts-for-an-environment"></a>Zobrazení výstrah zabezpečení pro prostředí
 
-1. Na domovské stránce testovacího prostředí vyberte v nabídce vlevo možnost **výstrahy zabezpečení** . Měl by se zobrazit počet výstrah zabezpečení (vysoká, střední a nízká).
+1. Na domovské stránce testovacího prostředí vyberte v nabídce vlevo možnost **výstrahy zabezpečení** . Měl by se zobrazit počet výstrah zabezpečení (vysoká, střední a nízká). Přečtěte si další informace o [tom, jak jsou výstrahy klasifikované](../security-center/security-center-alerts-overview.md#how-are-alerts-classified).
 
     ![Výstrahy zabezpečení – přehled](./media/environment-security-alerts/security-alerts-overview-page.png)
 2. V posledním sloupci klikněte pravým tlačítkem na tři tečky (...) a vyberte **Zobrazit výstrahy zabezpečení**. 
 
     ![Zobrazení výstrah zabezpečení](./media/environment-security-alerts/view-security-alerts-menu.png)
-3. Zobrazí se další podrobnosti o výstrahách a doporučeních pro poradce. 
+    
+3. Zobrazí se další podrobnosti o výstrahách a doporučeních pro poradce. Přečtěte si další informace o [správě a reagování na výstrahy zabezpečení v Azure Security Center](../security-center/security-center-managing-and-responding-alerts.md).
 
     ![Zobrazení výstrah zabezpečení](./media/environment-security-alerts/advisor-recommendations.png)
 

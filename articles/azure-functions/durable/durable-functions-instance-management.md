@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 43094fe91921d1399650d9cf47e7a84c47996cd5
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 07a96fdd6350d8db38a92c23e510afb05f7416fb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76261564"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77592081"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Správa instancí v Durable Functions v Azure
 
@@ -39,7 +39,7 @@ Parametry pro spuštění nové instance orchestrace jsou následující:
 
 Následující kód je ukázková funkce, která spouští novou instanci orchestrace:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HelloWorldManualStart")]
@@ -56,11 +56,11 @@ public static async Task Run(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 <a name="javascript-function-json"></a>Pokud není uvedeno jinak, používají příklady na této stránce Trigger HTTP s následujícím souborem Function. JSON.
 
-**function.json**
+**Function. JSON**
 
 ```json
 {
@@ -89,7 +89,7 @@ public static async Task Run(
 > [!NOTE]
 > Tento příklad cílí na Durable Functions verze 2. x. V části verze 1. x použijte `orchestrationClient` místo `durableClient`.
 
-**index.js**
+**index. js**
 
 ```javascript
 const df = require("durable-functions");
@@ -155,7 +155,7 @@ Metoda vrátí objekt s následujícími vlastnostmi:
 
 Tato metoda vrací `null` (.NET) nebo `undefined` (JavaScript), pokud instance neexistuje.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("GetStatus")]
@@ -171,7 +171,7 @@ public static async Task Run(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -220,7 +220,7 @@ Spíše než dotazování jedné instance orchestrace v čase, může být efekt
 
 K dotazování stavů všech instancí orchestrace lze použít metodu `GetStatusAsync` (.NET) nebo `getStatusAll` (JavaScript). V rozhraní .NET můžete předat objekt `CancellationToken` pro případ, že ho chcete zrušit. Metoda vrátí objekty se stejnými vlastnostmi jako metoda `GetStatusAsync` s parametry.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("GetAllStatus")]
@@ -240,7 +240,7 @@ public static async Task Run(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -278,7 +278,7 @@ Co když opravdu nepotřebujete všechny informace, které může dotaz standard
 
 Použijte metodu `GetStatusAsync` (.NET) nebo `getStatusBy` (JavaScript) k získání seznamu instancí orchestrace, které odpovídají sadě předdefinovaných filtrů.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryStatus")]
@@ -306,7 +306,7 @@ public static async Task Run(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -355,9 +355,9 @@ func durable get-instances --created-after 2018-03-10T13:57:31Z --created-before
 
 Máte-li instanci orchestrace, která trvá příliš dlouho, nebo ji pouze potřebujete zastavit, než se z nějakého důvodu dokončí, máte možnost ji ukončit.
 
-K ukončení instancí lze použít metodu `TerminateAsync` (.NET) nebo `terminate` (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) . Dva parametry jsou `instanceId` a `reason` řetězec, který se zapisuje do protokolů a do stavu instance. Ukončená instance přestane běžet hned po dosažení dalšího `await` (.NET) nebo `yield` (JavaScript), nebo se okamžitě ukončí, pokud už je na `await` nebo `yield`.
+K ukončení instancí lze použít metodu `TerminateAsync` (.NET) nebo `terminate` (JavaScript) [vazby klienta Orchestration](durable-functions-bindings.md#orchestration-client) . Dva parametry jsou `instanceId` a `reason` řetězec, který se zapisuje do protokolů a do stavu instance.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TerminateInstance")]
@@ -373,7 +373,7 @@ public static Task Run(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -389,6 +389,8 @@ module.exports = async function(context, instanceId) {
 Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function. JSON.
 
 ---
+
+Ukončená instance bude nakonec převedena do stavu `Terminated`. Tento přechod ale nebude hned probíhat. Místo toho bude operace ukončení zařazena do fronty v centru úloh spolu s dalšími operacemi této instance. Pomocí rozhraní API pro [dotazování instance](#query-instances) můžete zjistit, kdy ukončená instance skutečně dosáhla `Terminated` stavu.
 
 > [!NOTE]
 > Ukončení instance v současné době nešíří. Funkce aktivity a dílčí orchestrace jsou spouštěny k dokončení bez ohledu na to, zda jste ukončili instanci orchestrace, která je jim volána.
@@ -420,7 +422,7 @@ Parametry pro `RaiseEventAsync` (.NET) a `raiseEvent` (JavaScript) jsou následu
 * **EventName**: název události, která se má odeslat.
 * **EventData**: datová část s možností serializace JSON pro odeslání do instance.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEvent")]
@@ -436,7 +438,7 @@ public static Task Run(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -482,11 +484,11 @@ Metodu `WaitForCompletionOrCreateCheckStatusResponseAsync` (.NET) nebo `waitForC
 
 Tady je příklad funkce triggeru HTTP, která ukazuje, jak používat toto rozhraní API:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpSyncStart.cs)]
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpSyncStart/index.js)]
 
@@ -556,7 +558,7 @@ Metody vrátí objekt s následujícími vlastnostmi řetězce:
 
 Funkce mohou odesílat instance těchto objektů do externích systémů a monitorovat nebo přivolávat události pro příslušné orchestrace, jak je znázorněno v následujících příkladech:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("SendInstanceInfo")]
@@ -578,7 +580,7 @@ public static void SendInstanceInfo(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít `DurableActivityContext` namísto `IDurableActivityContext`, je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -614,7 +616,7 @@ Použijte metodu `RewindAsync` (.NET) nebo `rewind` (JavaScript) [vazby klienta 
 > [!NOTE]
 > Funkce *Rewind* nepodporuje převíjení instancí orchestrace, které používají trvalé časovače.
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RewindInstance")]
@@ -630,7 +632,7 @@ public static Task Run(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -666,7 +668,7 @@ Chcete-li odebrat všechna data přidružená k orchestraci, můžete historii i
 
 Tato metoda má dvě přetížení. První přetížení vymaže historii ID instance Orchestration:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -678,7 +680,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -695,7 +697,7 @@ Viz [počáteční instance](#javascript-function-json) pro konfiguraci Function
 
 Následující příklad ukazuje funkci aktivovanou časovačem, která vyprázdní historii pro všechny instance orchestrace, které byly dokončeny po zadaném časovém intervalu. V takovém případě dojde k odebrání dat pro všechny instance, které byly dokončeny před 30 nebo více dny. Je naplánováno, že se spustí jednou za den, ve 12 dop.:
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -716,11 +718,11 @@ public static Task Run(
 > [!NOTE]
 > Předchozí C# kód je pro Durable Functions 2. x. Pro Durable Functions 1. x je nutné použít atribut `OrchestrationClient` namísto atributu `DurableClient` a musíte použít typ parametru `DurableOrchestrationClient` namísto `IDurableOrchestrationClient`. Další informace o rozdílech mezi verzemi najdete v článku o [Durable Functions verzích](durable-functions-versions.md) .
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Metodu `purgeInstanceHistoryBy` lze použít k podmíněně vyprázdnit historii instancí pro více instancí.
 
-**function.json**
+**Function. JSON**
 
 ```json
 {
@@ -744,7 +746,7 @@ Metodu `purgeInstanceHistoryBy` lze použít k podmíněně vyprázdnit historii
 > [!NOTE]
 > Tento příklad cílí na Durable Functions verze 2. x. V části verze 1. x použijte `orchestrationClient` místo `durableClient`.
 
-**index.js**
+**index. js**
 
 ```javascript
 const df = require("durable-functions");

@@ -3,7 +3,7 @@ title: Připojte jednu ochranu identity k ověřovacímu identitě Azure | Micro
 description: Přečtěte si, jak připojit jednu ochranu identity ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: cabailey
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: cabailey
-ms.openlocfilehash: 7e33580c253c98279644e10305557a7e60701c90
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 849087cbbe91be799c51929353b9f020859c85b8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610501"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588140"
 ---
 # <a name="connect-one-identity-safeguard"></a>Připojení jedné ochrany identity
 Jeden datový konektor pro ochranu identit vylepšuje standardní konektor CEF (Common Event Format) s ochranou pro privilegované konkrétní řídicí panely. Pomocí tohoto konektoru můžete snadno začít používat události, které vaše zařízení generuje, pro vizualizaci, výstrahy, vyšetřování a další.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Oprávnění ke čtení a zápisu do pracovního prostoru Azure Sentinel.
 

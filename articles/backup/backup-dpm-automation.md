@@ -3,12 +3,12 @@ title: Použití PowerShellu k zálohování úloh DPM
 description: Naučte se nasazovat a spravovat Azure Backup pro Data Protection Manager (DPM) pomocí PowerShellu.
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: d3a8b2ff95957b69bab4932ce8a7e5a1ab4bfa44
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cd735406a19ca1e03f520f75a7d2f39322725b8d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172407"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583091"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery DPM (Data Protection Manager) pomocí PowerShellu
 
@@ -154,7 +154,7 @@ $credsfilename
 C:\downloads\testvault\_Sun Apr 10 2016.VaultCredentials
 ```
 
-Na serveru DPM spusťte rutinu [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) , která zaregistruje počítač do trezoru.
+Na serveru DPM spusťte rutinu [Start-OBRegistration](https://docs.microsoft.com/powershell/module/msonlinebackup/start-obregistration?view=winserver2012-ps) , která zaregistruje počítač do trezoru.
 
 ```powershell
 $cred = $credspath + $credsfilename
@@ -171,13 +171,13 @@ Machine registration succeeded.
 
 ### <a name="initial-configuration-settings"></a>Nastavení počáteční konfigurace
 
-Po registraci serveru DPM v trezoru Recovery Services se spustí výchozí nastavení předplatného. Mezi tato nastavení předplatného patří sítě, šifrování a pracovní oblast. Pokud chcete změnit nastavení předplatného, musíte nejdřív získat popisovač pro existující (výchozí) nastavení pomocí rutiny [Get-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612793) :
+Po registraci serveru DPM v trezoru Recovery Services se spustí výchozí nastavení předplatného. Mezi tato nastavení předplatného patří sítě, šifrování a pracovní oblast. Pokud chcete změnit nastavení předplatného, musíte nejdřív získat popisovač pro existující (výchozí) nastavení pomocí rutiny [Get-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) :
 
 ```powershell
 $setting = Get-DPMCloudSubscriptionSetting -DPMServerName "TestingServer"
 ```
 
-V tomto místním ```$setting``` objektu PowerShellu se provedou všechny úpravy a pak se úplný objekt potvrdí do DPM a Azure Backup ho uložte pomocí rutiny [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) . Chcete-li zajistit, aby změny byly trvalé, je nutné použít příznak ```–Commit```. Nastavení nebude použito a Azure Backup bude použito, pokud není potvrzeno.
+V tomto místním ```$setting``` objektu PowerShellu se provedou všechny úpravy a pak se úplný objekt potvrdí do DPM a Azure Backup ho uložte pomocí rutiny [set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) . Chcete-li zajistit, aby změny byly trvalé, je nutné použít příznak ```–Commit```. Nastavení nebude použito a Azure Backup bude použito, pokud není potvrzeno.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
@@ -185,7 +185,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="networking"></a>Sítě
 
-Pokud je připojení počítače DPM k Azure Backup službě na internetu prostřednictvím proxy server, mělo by být k dispozici nastavení proxy server pro úspěšné zálohování. K tomu je potřeba použít ```-ProxyServer```a ```-ProxyPort```, ```-ProxyUsername``` a parametry ```ProxyPassword``` s rutinou [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) . V tomto příkladu není proxy server, takže explicitně vymažeme všechny informace týkající se proxy serveru.
+Pokud je připojení počítače DPM k Azure Backup službě na internetu prostřednictvím proxy server, mělo by být k dispozici nastavení proxy server pro úspěšné zálohování. K tomu je potřeba použít ```-ProxyServer```a ```-ProxyPort```, ```-ProxyUsername``` a parametry ```ProxyPassword``` s rutinou [set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) . V tomto příkladu není proxy server, takže explicitně vymažeme všechny informace týkající se proxy serveru.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -NoProxy
@@ -199,7 +199,7 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 ## <a name="configuring-the-staging-area"></a>Konfigurace pracovní oblasti
 
-Agent Azure Backup spuštěný na serveru DPM potřebuje dočasné úložiště pro data obnovená z cloudu (místní pracovní oblast). Nastavte pracovní oblast pomocí rutiny [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) a parametru ```-StagingAreaPath```.
+Agent Azure Backup spuštěný na serveru DPM potřebuje dočasné úložiště pro data obnovená z cloudu (místní pracovní oblast). Nastavte pracovní oblast pomocí rutiny [set-DPMCloudSubscriptionSetting](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmcloudsubscriptionsetting?view=systemcenter-ps-2019) a parametru ```-StagingAreaPath```.
 
 ```powershell
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -StagingAreaPath "C:\StagingArea"
@@ -234,20 +234,20 @@ Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSett
 
 V této části přidáte do DPM provozní server a pak data ochráníte do místního úložiště DPM a pak na Azure Backup. V příkladech ukážeme, jak zálohovat soubory a složky. Logika se dá snadno rozšířit na zálohování libovolného zdroje dat podporovaného aplikací DPM. Všechny zálohy aplikace DPM se řídí skupinou ochrany (PG) se čtyřmi částmi:
 
-1. **Členové skupiny** jsou seznam všech chráněných objektů (označovaných také jako *zdroje dat* v aplikaci DPM), které chcete chránit ve stejné skupině ochrany. Například můžete chtít chránit produkční virtuální počítače v jedné skupině ochrany a SQL Server databáze v jiné skupině ochrany, protože mohou mít různé požadavky na zálohování. Než budete moct zálohovat jakýkoli zdroj dat na provozním serveru, musíte se ujistit, že je na serveru nainstalovaný agent DPM a spravuje ho DPM. Postupujte podle kroků pro [instalaci agenta DPM](https://technet.microsoft.com/library/bb870935.aspx) a jeho propojení s příslušným serverem DPM.
+1. **Členové skupiny** jsou seznam všech chráněných objektů (označovaných také jako *zdroje dat* v aplikaci DPM), které chcete chránit ve stejné skupině ochrany. Například můžete chtít chránit produkční virtuální počítače v jedné skupině ochrany a SQL Server databáze v jiné skupině ochrany, protože mohou mít různé požadavky na zálohování. Než budete moct zálohovat jakýkoli zdroj dat na provozním serveru, musíte se ujistit, že je na serveru nainstalovaný agent DPM a spravuje ho DPM. Postupujte podle kroků pro [instalaci agenta DPM](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2007/bb870935(v=technet.10)) a jeho propojení s příslušným serverem DPM.
 2. **Metoda ochrany dat** Určuje cílové umístění zálohy – páska, disk a Cloud. V našem příkladu budeme chránit data na místní disk a do cloudu.
 3. **Plán zálohování** , který určuje, kdy je potřeba provést zálohování a jak často se mají synchronizovat data mezi serverem DPM a provozním serverem.
 4. **Plán uchovávání informací** , který určuje, jak dlouho mají být body obnovení v Azure uchovávány.
 
 ### <a name="creating-a-protection-group"></a>Vytvoření skupiny ochrany
 
-Začněte vytvořením nové skupiny ochrany pomocí rutiny [New-DPMProtectionGroup](https://technet.microsoft.com/library/hh881722) .
+Začněte vytvořením nové skupiny ochrany pomocí rutiny [New-DPMProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/new-dpmprotectiongroup?view=systemcenter-ps-2019) .
 
 ```powershell
 $PG = New-DPMProtectionGroup -DPMServerName " TestingServer " -Name "ProtectGroup01"
 ```
 
-Výše uvedená rutina vytvoří skupinu ochrany s názvem *ProtectGroup01*. Existující skupinu ochrany je také možné upravit později a přidat tak zálohu do cloudu Azure. Pokud ale chcete udělat změny ve skupině ochrany – nové nebo existující, potřebujeme získat popisovač pro *upravitelný* objekt pomocí rutiny [Get-DPMModifiableProtectionGroup](https://technet.microsoft.com/library/hh881713) .
+Výše uvedená rutina vytvoří skupinu ochrany s názvem *ProtectGroup01*. Existující skupinu ochrany je také možné upravit později a přidat tak zálohu do cloudu Azure. Pokud ale chcete udělat změny ve skupině ochrany – nové nebo existující, potřebujeme získat popisovač pro *upravitelný* objekt pomocí rutiny [Get-DPMModifiableProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmmodifiableprotectiongroup?view=systemcenter-ps-2019) .
 
 ```powershell
 $MPG = Get-ModifiableProtectionGroup $PG
@@ -262,13 +262,13 @@ Každý agent DPM ví seznam zdrojů dat na serveru, na kterém je nainstalován
 3. Načte seznam všech zdrojů dat na serveru.
 4. Vyberte jeden nebo více zdrojů dat a přidejte je do skupiny ochrany.
 
-Seznam serverů, na kterých je nainstalován agent aplikace DPM a který je spravován serverem DPM, je získán pomocí rutiny [Get-DPMProductionServer](https://technet.microsoft.com/library/hh881600) . V tomto příkladu vyfiltrujeme a nakonfigurujeme PS s názvem *productionserver01* , který se má zálohovat.
+Seznam serverů, na kterých je nainstalován agent aplikace DPM a který je spravován serverem DPM, je získán pomocí rutiny [Get-DPMProductionServer](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmproductionserver?view=systemcenter-ps-2019) . V tomto příkladu vyfiltrujeme a nakonfigurujeme PS s názvem *productionserver01* , který se má zálohovat.
 
 ```powershell
 $server = Get-ProductionServer -DPMServerName "TestingServer" | Where-Object {($_.servername) –contains "productionserver01"}
 ```
 
-Nyní načtěte seznam zdrojů dat v ```$server``` pomocí rutiny [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) . V tomto příkladu filtrujeme svazek *D:\\* , který chceme nakonfigurovat pro zálohování. Tento zdroj dat se pak přidá do skupiny ochrany pomocí rutiny [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) . Nezapomeňte použít objekt skupiny ochrany s *upravitelnou* ```$MPG```, abyste mohli dodat.
+Nyní načtěte seznam zdrojů dat v ```$server``` pomocí rutiny [Get-DPMDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmdatasource?view=systemcenter-ps-2019) . V tomto příkladu filtrujeme svazek *D:\\* , který chceme nakonfigurovat pro zálohování. Tento zdroj dat se pak přidá do skupiny ochrany pomocí rutiny [Add-DPMChildDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) . Nezapomeňte použít objekt skupiny ochrany s *upravitelnou* ```$MPG```, abyste mohli dodat.
 
 ```powershell
 $DS = Get-Datasource -ProductionServer $server -Inquire | Where-Object { $_.Name -contains "D:\" }
@@ -280,7 +280,7 @@ Tento krok opakujte tolikrát, kolikrát je potřeba, dokud nepřidáte všechny
 
 ### <a name="selecting-the-data-protection-method"></a>Výběr způsobu ochrany dat
 
-Po přidání zdrojů dat do skupiny ochrany je dalším krokem zadání metody ochrany pomocí rutiny [set-DPMProtectionType](https://technet.microsoft.com/library/hh881725) . V tomto příkladu je skupina ochrany nastavená na místní disk a cloudové zálohování. Je také potřeba zadat zdroj dat, který chcete chránit ke cloudu pomocí příznaku [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732.aspx) s příznakem-online.
+Po přidání zdrojů dat do skupiny ochrany je dalším krokem zadání metody ochrany pomocí rutiny [set-DPMProtectionType](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmprotectiontype?view=systemcenter-ps-2019) . V tomto příkladu je skupina ochrany nastavená na místní disk a cloudové zálohování. Je také potřeba zadat zdroj dat, který chcete chránit ke cloudu pomocí příznaku [Add-DPMChildDatasource](https://docs.microsoft.com/powershell/module/dataprotectionmanager/add-dpmchilddatasource?view=systemcenter-ps-2019) s příznakem-online.
 
 ```powershell
 Set-DPMProtectionType -ProtectionGroup $MPG -ShortTerm Disk –LongTerm Online
@@ -289,7 +289,7 @@ Add-DPMChildDatasource -ProtectionGroup $MPG -ChildDatasource $DS –Online
 
 ### <a name="setting-the-retention-range"></a>Nastavení rozsahu uchování
 
-Nastavte uchovávání bodů zálohy pomocí rutiny [set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) . I když se může stát, že nastavení uchovávání před definováním plánu zálohování je liché, pomocí rutiny ```Set-DPMPolicyObjective``` automaticky nastaví výchozí plán zálohování, který se dá upravit. Plán zálohování je vždy možné nastavit jako první a zásady uchovávání informací po.
+Nastavte uchovávání bodů zálohy pomocí rutiny [set-DPMPolicyObjective](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) . I když se může stát, že nastavení uchovávání před definováním plánu zálohování je liché, pomocí rutiny ```Set-DPMPolicyObjective``` automaticky nastaví výchozí plán zálohování, který se dá upravit. Plán zálohování je vždy možné nastavit jako první a zásady uchovávání informací po.
 
 V následujícím příkladu rutina nastavuje parametry uchovávání pro zálohy disku. Tím se uchovávají zálohy po dobu 10 dnů a data se synchronizují každých 6 hodin mezi provozním serverem a serverem DPM. ```SynchronizationFrequencyMinutes``` nedefinuje, jak často se vytvoří bod zálohování, ale jak často se data zkopírují na server DPM.  Toto nastavení zabrání nadměrnému navracení záloh.
 
@@ -297,7 +297,7 @@ V následujícím příkladu rutina nastavuje parametry uchovávání pro záloh
 Set-DPMPolicyObjective –ProtectionGroup $MPG -RetentionRangeInDays 10 -SynchronizationFrequencyMinutes 360
 ```
 
-V případě záloh do Azure (aplikace DPM na ně odkazuje jako na online zálohování) rozsahy uchovávání dat je možné nakonfigurovat pro [dlouhodobé uchovávání dat pomocí schématu dědečka-otce-syn (GFS)](backup-azure-backup-cloud-as-tape.md). To znamená, že můžete definovat kombinované zásady uchovávání dat zahrnující denní, týdenní, měsíční a roční zásady uchovávání informací. V tomto příkladu vytvoříme pole reprezentující komplexní schéma uchovávání, které chceme, a pak nakonfigurujete rozsah uchování pomocí rutiny [set-DPMPolicyObjective](https://technet.microsoft.com/library/hh881762) .
+V případě záloh do Azure (aplikace DPM na ně odkazuje jako na online zálohování) rozsahy uchovávání dat je možné nakonfigurovat pro [dlouhodobé uchovávání dat pomocí schématu dědečka-otce-syn (GFS)](backup-azure-backup-cloud-as-tape.md). To znamená, že můžete definovat kombinované zásady uchovávání dat zahrnující denní, týdenní, měsíční a roční zásady uchovávání informací. V tomto příkladu vytvoříme pole reprezentující komplexní schéma uchovávání, které chceme, a pak nakonfigurujete rozsah uchování pomocí rutiny [set-DPMPolicyObjective](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyobjective?view=systemcenter-ps-2019) .
 
 ```powershell
 $RRlist = @()
@@ -310,7 +310,7 @@ Set-DPMPolicyObjective –ProtectionGroup $MPG -OnlineRetentionRangeList $RRlist
 
 ### <a name="set-the-backup-schedule"></a>Nastavení plánu zálohování
 
-Pokud určíte cíl ochrany pomocí rutiny ```Set-DPMPolicyObjective```, aplikace DPM nastaví výchozí plán zálohování automaticky. Pokud chcete změnit výchozí plány, použijte rutinu [Get-DPMPolicySchedule](https://technet.microsoft.com/library/hh881749) následovanou rutinou [set-DPMPolicySchedule](https://technet.microsoft.com/library/hh881723) .
+Pokud určíte cíl ochrany pomocí rutiny ```Set-DPMPolicyObjective```, aplikace DPM nastaví výchozí plán zálohování automaticky. Pokud chcete změnit výchozí plány, použijte rutinu [Get-DPMPolicySchedule](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmpolicyschedule?view=systemcenter-ps-2019) následovanou rutinou [set-DPMPolicySchedule](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmpolicyschedule?view=systemcenter-ps-2019) .
 
 ```powershell
 $onlineSch = Get-DPMPolicySchedule -ProtectionGroup $mpg -LongTerm Online
@@ -332,7 +332,7 @@ Takže pokud potřebujete upravit týdenní plán, musíte se podívat na ```$on
 
 ### <a name="initial-backup"></a>Prvotní zálohování
 
-Při prvním zálohování zdroje dat potřebuje DPM vytvořit počáteční repliku, která vytvoří úplnou kopii zdroje dat, který se má chránit na svazku repliky DPM. Tuto aktivitu je možné naplánovat buď na určitou dobu, nebo ji lze aktivovat ručně pomocí rutiny [set-DPMReplicaCreationMethod](https://technet.microsoft.com/library/hh881715) s parametrem ```-NOW```.
+Při prvním zálohování zdroje dat potřebuje DPM vytvořit počáteční repliku, která vytvoří úplnou kopii zdroje dat, který se má chránit na svazku repliky DPM. Tuto aktivitu je možné naplánovat buď na určitou dobu, nebo ji lze aktivovat ručně pomocí rutiny [set-DPMReplicaCreationMethod](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmreplicacreationmethod?view=systemcenter-ps-2019) s parametrem ```-NOW```.
 
 ```powershell
 Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
@@ -340,11 +340,11 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>Změna velikosti repliky aplikace DPM & svazku bodu obnovení
 
-Velikost svazku repliky DPM a svazku stínové kopie můžete také změnit pomocí rutiny [set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) , jako v následujícím příkladu: Get-DatasourceDiskAllocation-DataSource $DS set-DatasourceDiskAllocation-DataSource $DS-Protection $MPG-Manual-ReplicaArea (2 GB)-ShadowCopyArea (2 GB)
+Velikost svazku repliky DPM a svazku stínové kopie můžete také změnit pomocí rutiny [set-DPMDatasourceDiskAllocation](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmdatasourcediskallocation?view=systemcenter-ps-2019) , jako v následujícím příkladu: Get-DatasourceDiskAllocation-DataSource $DS set-DatasourceDiskAllocation-DataSource $DS-Protection $MPG-Manual-ReplicaArea (2 GB)-ShadowCopyArea (2 GB)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>Změny se potvrdily do skupiny ochrany.
 
-Nakonec je třeba provést změny, aby aplikace DPM mohla získat zálohu na novou konfiguraci skupiny ochrany. Toho lze dosáhnout pomocí rutiny [set-DPMProtectionGroup](https://technet.microsoft.com/library/hh881758) .
+Nakonec je třeba provést změny, aby aplikace DPM mohla získat zálohu na novou konfiguraci skupiny ochrany. Toho lze dosáhnout pomocí rutiny [set-DPMProtectionGroup](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmprotectiongroup?view=systemcenter-ps-2019) .
 
 ```powershell
 Set-DPMProtectionGroup -ProtectionGroup $MPG
@@ -352,7 +352,7 @@ Set-DPMProtectionGroup -ProtectionGroup $MPG
 
 ## <a name="view-the-backup-points"></a>Zobrazit body zálohy
 
-Pomocí rutiny [Get-DPMRecoveryPoint](https://technet.microsoft.com/library/hh881746) můžete získat seznam všech bodů obnovení pro zdroj dat. V tomto příkladu budeme:
+Pomocí rutiny [Get-DPMRecoveryPoint](https://docs.microsoft.com/powershell/module/dataprotectionmanager/get-dpmrecoverypoint?view=systemcenter-ps-2019) můžete získat seznam všech bodů obnovení pro zdroj dat. V tomto příkladu budeme:
 
 * Načte všechny PGs na serveru DPM a uloží je do pole ```$PG```
 * získat zdroje dat odpovídající ```$PG[0]```
@@ -370,7 +370,7 @@ Obnovení dat je kombinací objektu ```RecoverableItem``` a objektu ```RecoveryO
 
 V následujícím příkladu ukážeme, jak obnovit virtuální počítač Hyper-V z Azure Backup kombinováním bodů zálohování s cílem obnovení. Tento příklad obsahuje:
 
-* Vytvoření možnosti obnovení pomocí rutiny [New-DPMRecoveryOption](https://technet.microsoft.com/library/hh881592) .
+* Vytvoření možnosti obnovení pomocí rutiny [New-DPMRecoveryOption](https://docs.microsoft.com/powershell/module/dataprotectionmanager/new-dpmrecoveryoption?view=systemcenter-ps-2019) .
 * Načítají se pole záložních bodů pomocí rutiny ```Get-DPMRecoveryPoint```.
 * Výběr bodu zálohování, ze kterého se má obnovit.
 

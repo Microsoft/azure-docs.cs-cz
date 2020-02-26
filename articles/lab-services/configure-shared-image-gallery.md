@@ -14,36 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 6e0c1419e5656f184d27dce8d185a86bea71d173
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 9593d60f76802cd515ca85616bce028cf3aa0d49
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389951"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589313"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurace galerie sdílených imagí v Azure DevTest Labs
-DevTest Labs teď podporuje funkci [Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md) . Uživatelům testovacího prostředí umožňuje přístup k imagím ze sdíleného umístění při vytváření prostředků testovacího prostředí. Pomáhá také vytvořit strukturu a zajistit organizaci související s imagemi virtuálních počítačů s vlastní správou. Funkce Galerie sdílených imagí podporuje:
+DevTest Labs teď podporuje funkci [Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md) . Umožňuje uživatelům testovacího prostředí přistupovat k obrázkům ze sdíleného umístění při vytváření prostředků testovacího prostředí. Pomůže vám taky vytvářet strukturu a organizaci kolem vašich vlastních imagí virtuálních počítačů spravovaných vaším uživatelem. Funkce Galerie sdílených imagí podporuje:
 
 - Spravovaná globální replikace imagí
-- Správa verzí a seskupování imagí pro zjednodušení správy
-- Zajistěte si vysokou dostupnost imagí díky účtům zónově redundantního úložiště v oblastech, které podporují zóny dostupnosti. Zónově redundantní úložiště nabízí vyšší odolnost proti selháním jednotlivých zón.
-- Sdílení imagí mezi předplatnými a dokonce i mezi tenanty, a to s využitím řízení přístupu na základě role (RBAC).
+- Správa verzí a seskupování imagí pro snadnější správu
+- Zpřístupněte své image vysoce dostupné v rámci účtů zóny redundantního úložiště (ZRS) v oblastech, které podporují zóny dostupnosti. ZRS nabízí lepší odolnost proti chybám v rámci oblast.
+- Sdílení mezi předplatnými a dokonce i mezi klienty pomocí řízení přístupu na základě role (RBAC).
 
 Další informace najdete v [dokumentaci Galerie sdílených imagí](../virtual-machines/windows/shared-image-galleries.md). 
  
-Pokud máte velký počet spravovaných imagí, které potřebujete spravovat, a chcete je zpřístupnit v rámci vaší společnosti, můžete galerii sdílených imagí využít jako úložiště, které usnadňuje jejich aktualizaci a sdílení. Jako vlastník testovacího prostředí můžete galerii sdílených imagí k tomuto prostředí připojit. Jakmile je galerie připojená, uživatelé mohou z těchto imagí vytvářet počítače. Klíčovou výhodou této funkce je, že DevTest Labs může využívat výhody sdílení imagí mezi testovacími prostředími, předplatnými i oblastmi. 
+Pokud máte velký počet spravovaných imagí, které potřebujete udržovat a chtějí je zpřístupnit v celé firmě, můžete použít galerii sdílených imagí jako úložiště, které usnadňuje aktualizaci a sdílení imagí. Jako vlastník testovacího prostředí můžete k testovacímu prostředí připojit stávající sdílenou galerii imagí. Po připojení k této galerii můžou uživatelé testovacího prostředí vytvářet počítače z těchto nejnovějších imagí. Klíčovou výhodou této funkce je, že DevTest Labs teď můžou využít výhod sdílení imagí napříč laboratořemi, mezi předplatnými a v různých oblastech. 
 
 > [!NOTE]
 > Další informace o nákladech souvisejících se službou Galerie sdílených imagí najdete v tématu [fakturace pro galerii sdílených imagí](../virtual-machines/windows/shared-image-galleries.md#billing).
 
 ## <a name="considerations"></a>Požadavky
 - Současně můžete k testovacímu prostředí připojit jenom jednu galerii sdílených imagí. Pokud chcete připojit jinou galerii, budete muset odpojit stávající a připojit další. 
+- DevTest Labs aktuálně podporuje pouze generalizované Image Galerie sdílených imagí.
 - DevTest Labs aktuálně nepodporuje nahrávání imagí do galerie prostřednictvím testovacího prostředí. 
 - Při vytváření virtuálního počítače pomocí Image Galerie sdílených imagí DevTest Labs vždycky používá nejnovější publikovanou verzi tohoto obrázku. Pokud má však image více verzí, uživatel se může pokusit vytvořit počítač ze starší verze tak, že v průběhu vytváření virtuálního počítače zobrazí kartu Pokročilá nastavení.  
 - I když DevTest Labs automaticky vytvoří nejlepší pokus o zajištění, že Galerie sdílených imagí replikuje image do oblasti, ve které testovací prostředí existuje, není vždy možné. Aby uživatelům nedocházelo k problémům s vytvářením virtuálních počítačů z těchto imagí, zajistěte, aby byly image již replikovány do oblasti testovacího prostředí. "
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. V levé navigační nabídce vyberte **všechny služby** .
 1. Ze seznamu vyberte **DevTest Labs**.
 1. V seznamu cvičení vyberte **testovací prostředí**.
@@ -62,7 +63,7 @@ Pokud máte velký počet spravovaných imagí, které potřebujete spravovat, a
 1. Uživatelé testovacího prostředí pak můžou vytvořit virtuální počítač pomocí povolených imagí kliknutím na **+ Přidat** a najít obrázek na stránce **Zvolte základní** stránku.
 
     ![Uživatelé testovacího prostředí](./media/configure-shared-image-gallery/lab-users.png)
-## <a name="use-azure-resource-manager-template"></a>Použití šablon Azure Resource Manageru
+## <a name="use-azure-resource-manager-template"></a>Použití šablony Azure Resource Manager
 
 ### <a name="attach-a-shared-image-gallery-to-your-lab"></a>Připojit galerii sdílených imagí k testovacímu prostředí
 Pokud k připojení Galerie sdílených imagí do testovacího prostředí používáte šablonu Azure Resource Manager, je nutné ji přidat do části Resources (prostředky) vaší Správce prostředků šablony, jak je znázorněno v následujícím příkladu:
@@ -88,7 +89,7 @@ Pokud k připojení Galerie sdílených imagí do testovacího prostředí použ
 }
 ```
 
-Úplný příklad šablony Správce prostředků najdete v těchto Správce prostředků vzorových šablonách v našem úložišti GitHub: [Nakonfigurujte galerii sdílených imagí při vytváření testovacího prostředí](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured).
+Úplný příklad šablony Správce prostředků najdete v těchto Správce prostředků vzorových šablonách v našem úložišti GitHub: [Konfigurace Galerie sdílených imagí při vytváření testovacího prostředí](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured).
 
 ## <a name="use-api"></a>Použití rozhraní API
 
@@ -115,5 +116,5 @@ GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 
 
-## <a name="next-steps"></a>Další postup
-Přečtěte si následující články, jak vytvořit virtuální počítač pomocí image z připojené sdílené Image Galerie: [Vytvoření virtuálního počítače pomocí sdílené image z Galerie](add-vm-use-shared-image.md)
+## <a name="next-steps"></a>Další kroky
+V následujících článcích najdete informace o vytvoření virtuálního počítače pomocí image z připojené sdílené Image Galerie: [Vytvoření virtuálního počítače pomocí sdílené image z Galerie](add-vm-use-shared-image.md) .

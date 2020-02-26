@@ -3,7 +3,7 @@ title: Vizualizace dat pomocí řídicích panelů na základě Azure Monitorch 
 description: V tomto kurzu se naučíte vizualizovat data pomocí řídicích panelů na základě sešitů v Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/01/2020
-ms.author: rkarlin
-ms.openlocfilehash: 7baf8cf2e954d773376b7c3c989bce01f60ae0a6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: b4461ac43e9356536914b345ef28f5de62fc9f82
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610450"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585216"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Kurz: vizualizace a monitorování dat
 
@@ -33,7 +33,7 @@ Tento kurz vám pomůže vizualizovat data v Azure Sentinel.
 > * Použití vestavěných sešitů
 > * Vytváření nových sešitů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pro skupinu prostředků pracovního prostoru Azure Sentinel musíte mít alespoň oprávnění čtenář nebo přispěvatel sešitu.
 

@@ -2,17 +2,14 @@
 title: Koncepty – zabezpečení ve službě Azure Kubernetes Services (AKS)
 description: Přečtěte si o zabezpečení ve službě Azure Kubernetes (AKS), včetně komunikace mezi hlavním a uzlem, síťové zásady a Kubernetes tajné klíče.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: mlearned
-ms.openlocfilehash: e461f9de8b20e4f6c8f027b1ae81ae21e54ece86
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 7238e6cd7ab3625e2953a4408c82802d43372256
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547927"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595939"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Koncepce zabezpečení pro aplikace a clustery ve službě Azure Kubernetes (AKS)
 
@@ -22,7 +19,7 @@ V tomto článku se seznámíte se základními koncepty, které zabezpečují v
 
 - [Zabezpečení hlavních součástí](#master-security)
 - [Zabezpečení uzlů](#node-security)
-- [Upgrade clusteru](#cluster-upgrades)
+- [Upgrady clusteru](#cluster-upgrades)
 - [Zabezpečení sítě](#network-security)
 - [Tajné kódy Kubernetes](#kubernetes-secrets)
 

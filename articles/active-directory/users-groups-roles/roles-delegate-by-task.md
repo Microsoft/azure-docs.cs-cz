@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19afaf743cc594ab17776b990687a442c339ed92
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: f07b37fffe61a6be62a72a0281e701b69167e95b
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559007"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596755"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role správce podle úlohy správce v Azure Active Directory
 
@@ -45,14 +45,14 @@ Načíst veškerou konfiguraci | Správce aplikace |
 Vytvoření adresářů Azure AD B2C | Všichni uživatelé bez hosta ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Vytváření B2Cch aplikací | Globální správce | 
 Vytváření podnikových aplikací | Správce cloudové aplikace | Správce aplikace
-Vytváření, čtení, aktualizace a odstraňování zásad B2C | Globální správce | 
-Vytváření, čtení, aktualizace a odstraňování zprostředkovatelů identity | Globální správce | 
-Vytváření, čtení, aktualizace a odstraňování uživatelských toků pro resetování hesel | Globální správce | 
-Vytváření, čtení, aktualizace a odstraňování uživatelských toků upravujících profily | Globální správce | 
-Vytváření, čtení, aktualizace a odstraňování toků přihlašování uživatelů | Globální správce | 
-Vytváření, čtení, aktualizace a odstraňování toku uživatelů při registraci |Globální správce | 
-Vytváření, čtení, aktualizace a odstraňování atributů uživatele | Globální správce | 
-Vytváření, čtení, aktualizace a odstraňování uživatelů | Globální správce ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
+Vytváření, čtení, aktualizace a odstraňování zásad B2C | Správce zásad IEF B2C | 
+Vytváření, čtení, aktualizace a odstraňování zprostředkovatelů identity | Správce externích zprostředkovatelů identity | 
+Vytváření, čtení, aktualizace a odstraňování uživatelských toků pro resetování hesel | Správce toku B2C uživatele | 
+Vytváření, čtení, aktualizace a odstraňování uživatelských toků upravujících profily | Správce toku B2C uživatele | 
+Vytváření, čtení, aktualizace a odstraňování toků přihlašování uživatelů | Správce toku B2C uživatele | 
+Vytváření, čtení, aktualizace a odstraňování toku uživatelů při registraci |Správce toku B2C uživatele | 
+Vytváření, čtení, aktualizace a odstraňování atributů uživatele | Správce atributů toku uživatele B2C | 
+Vytváření, čtení, aktualizace a odstraňování uživatelů | Správce uživatelů
 Načíst veškerou konfiguraci | Globální čtenář | 
 Čtení protokolů auditu B2C | Globální čtenář ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
@@ -127,7 +127,7 @@ Přečíst základní konfiguraci | Výchozí role uživatele ([Viz dokumentace]
 ---- | --------------------- | ----------------
 Vyjádření souhlasu s všemi delegovanými oprávněními | Správce cloudové aplikace | Správce aplikace
 Souhlas s oprávněními aplikace bez zahrnutí Microsoft Graph | Správce cloudové aplikace | Správce aplikace
-Souhlas s oprávněním aplikace k Microsoft Graph | Globální správce | 
+Souhlas s oprávněním aplikace k Microsoft Graph | Správce privilegovaných rolí | 
 Vyjádření souhlasu s aplikacemi, které přistupují k vlastním datům | Výchozí role uživatele ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Vytvořit podnikovou aplikaci | Správce cloudové aplikace | Správce aplikace
 Spravovat proxy aplikace | Správce aplikace | 
@@ -156,7 +156,7 @@ Přiřadit licenci | Správce uživatele |
 Vytvořit skupinu | Správce uživatele | 
 Vytvoření, aktualizace nebo odstranění kontroly přístupu skupiny nebo aplikace | Správce uživatele | 
 Správa vypršení platnosti skupiny | Správce uživatele | 
-Správa nastavení skupin | Globální správce | 
+Správa nastavení skupin | Správce skupin | Správce uživatelů | 
 Načíst veškerou konfiguraci (s výjimkou skrytého členství) | Čtečky adresářů | Výchozí role uživatele ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Číst skryté členství | Člen skupiny | Vlastník skupiny, správce hesel, správce serveru Exchange, Správce služby SharePoint, správce týmů, Správce uživatelů
 Číst členství skupin s skrytým členstvím | Správce helpdesku | Správce uživatele, správci týmů
@@ -234,7 +234,7 @@ Načíst veškerou konfiguraci | Globální čtenář |
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
-Správa zprostředkovatelů identity | Globální správce | 
+Správa zprostředkovatelů identity | Správce externích zprostředkovatelů identity | 
 Správa nastavení | Globální správce | 
 Správa podmínek použití | Globální správce | 
 Načíst veškerou konfiguraci | Globální čtenář | 
@@ -330,11 +330,11 @@ Vytvořit uživatele | Správce uživatele |
 Odstraňování uživatelů | Správce uživatele | 
 Zrušení platnosti aktualizačních tokenů omezených správců (viz dokumentace) | Správce uživatele | 
 Zrušení platnosti aktualizačních tokenů bez oprávnění správce (viz dokumentace) | Správce hesel | Správce uživatele
-Zrušení platnosti aktualizačních tokenů privilegovaných správců (viz dokumentace) | Globální správce | 
+Zrušení platnosti aktualizačních tokenů privilegovaných správců (viz dokumentace) | Správce privilegovaného ověřování | 
 Přečíst základní konfiguraci | Výchozí role uživatele ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
 Resetování hesla pro omezené správce (viz dokumentace) | Správce uživatele | 
 Resetování hesla bez správců (viz dokumentace) | Správce hesel | Správce uživatele
-Resetování hesla privilegovaných správců | Globální správce | 
+Resetování hesla privilegovaných správců | Správce privilegovaného ověřování | 
 Odvolat licenci | Správce licencí | Správce uživatele
 Aktualizovat všechny vlastnosti kromě hlavního názvu uživatele | Správce uživatele | 
 Aktualizace hlavního názvu uživatele pro omezené správce (viz dokumentace) | Správce uživatele | 

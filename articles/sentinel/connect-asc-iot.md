@@ -3,7 +3,7 @@ title: Připojení Azure Security Center pro IoT do Azure Sentinel | Microsoft D
 description: Naučte se, jak připojit Azure Security Center pro data IoT do Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2020
-ms.author: rkarlin
-ms.openlocfilehash: b68745f04a49565090b0f9b14331036f76e5f132
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.author: yelevin
+ms.openlocfilehash: 3af51110a4c4604444573f62be65077c786db606
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501287"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588633"
 ---
 # <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel"></a>Připojení dat z Azure Security Center pro IoT do Azure Sentinel 
 
@@ -29,7 +29,7 @@ ms.locfileid: "77501287"
 
 Použijte Azure Security Center pro IoT Connector ke streamování všech vašich Azure Security Center pro události IoT do Azure Sentinel. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Oprávnění **ke čtení** a **zápisu** v pracovním prostoru, na kterém je nasazená Azure Sentinel
 - **Azure Security Center pro IoT** musí být **povolené** na vašich relevantních IoT hubech.

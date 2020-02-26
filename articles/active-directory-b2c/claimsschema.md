@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fc01bd5c868cddd448e3a262960af64f50b78d74
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77372991"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77581102"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,7 +42,7 @@ Element **ClaimsSchema** definuje typy deklarací identity, na které se dá odk
 
 Element **ClaimType** obsahuje následující atribut:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | ID | Ano | Identifikátor, který se používá pro typ deklarace. Ostatní elementy můžou tento identifikátor v zásadách použít. |
 
@@ -72,7 +72,7 @@ Element **DataType** podporuje následující hodnoty:
 |phoneNumber|Představuje telefonní číslo. |
 |int| Představuje číslo mezi-2 147 483 648 a 2 147 483 647.|
 |long| Představuje číslo mezi-9223372036854775808 a 9 223 372 036 854 775 807. |
-|string| Představuje text jako posloupnost jednotek kódu UTF-16.|
+|řetězec| Představuje text jako posloupnost jednotek kódu UTF-16.|
 |stringCollection|Představuje kolekci `string`.|
 |userIdentity| Představuje identitu uživatele.|
 |userIdentityCollection|Představuje kolekci `userIdentity`.|
@@ -83,11 +83,11 @@ Element **DataType** podporuje následující hodnoty:
 
 | Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| Protokol | 1: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
+| Protocol (Protokol) | 1: n | Seznam protokolů s výchozím názvem typu deklarace identity partnera. |
 
 Element **Protocol** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | Název | Ano | Název platného protokolu, který podporuje Azure AD B2C. Možné hodnoty jsou: OAuth1, OAuth2, typu Saml2, OpenIdConnect. |
 | PartnerClaimType | Ano | Název typu deklarace, který se má použít |
@@ -122,7 +122,7 @@ Výsledkem je, že token JWT vystavil Azure AD B2C, vygeneruje `family_name` **n
 
 Element **Maske** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | `Type` | Ano | Typ masky deklarace identity. Možné hodnoty: `Simple` nebo `Regex`. Hodnota `Simple` označuje, že se pro úvodní část deklarace řetězce používá jednoduchá textová maska. Hodnota `Regex` označuje, že regulární výraz se aplikuje na deklaraci řetězce jako celek.  Pokud je zadána hodnota `Regex`, musí být také definován volitelný atribut s regulárním výrazem, který má být použit. |
 | `Regex` | Ne | Pokud je **`Type`** nastavené na `Regex`, zadejte regulární výraz, který se má použít.
@@ -162,7 +162,7 @@ Architektura prostředí identity vykresluje jenom první písmeno e-mailové ad
 
 Element **omezení** může obsahovat následující atribut:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | MergeBehavior | Ne | Metoda použitá ke sloučení hodnot výčtu se třídou ClaimType v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základní zásadě. Možné hodnoty: `Append`, `Prepend`nebo `ReplaceAll`. Hodnota `Append` je kolekce dat, která by se měla připojit na konec kolekce zadané v nadřazené zásadě. Hodnota `Prepend` je kolekce dat, která by se měla přidat před kolekce zadané v nadřazené zásadě. Hodnota `ReplaceAll` je kolekce dat zadaných v nadřazené zásadě, která by se měla ignorovat. |
 
@@ -175,9 +175,11 @@ Element **omezení** obsahuje následující prvky:
 
 #### <a name="enumeration"></a>Výčet
 
+Prvek **výčtu** definuje dostupné možnosti pro uživatele k výběru deklarace v uživatelském rozhraní, jako je například hodnota v `CheckboxMultiSelect`, `DropdownSingleSelect`nebo `RadioSingleSelect`. Alternativně můžete definovat a lokalizovat dostupné možnosti pomocí elementu [LocalizedCollections](localization.md#localizedcollections) . Chcete-li vyhledat položku z kolekce **výčtu** deklarací identity, použijte transformaci deklarací [GetMappedValueFromLocalizedCollection](string-transformations.md#getmappedvaluefromlocalizedcollection) .
+
 Prvek **výčtu** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | Text | Ano | Zobrazovaný řetězec, který je zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
 |Hodnota | Ano | Hodnota deklarace identity, která je přidružená k výběru této možnosti. |
@@ -206,10 +208,10 @@ Rozevírací seznam měst s výchozí hodnotou nastavenou na New York:
 
 Prvek **vzoru** může obsahovat následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | RegularExpression | Ano | Regulární výraz, který deklarace identity tohoto typu musí splňovat, aby byl platný. |
-| HelpText | Ne | Vzor nebo regulární výraz pro tuto deklaraci. |
+| HelpText | Ne | Chybová zpráva pro uživatele, pokud se chyba kontroly regulárního výrazu nezdařila. |
 
 V následujícím příkladu je nakonfiguruje deklarace **e-mailu** pomocí ověřování vstupu regulárního výrazu a textu v nápovědě:
 
@@ -247,7 +249,7 @@ K dispozici jsou typy vstupu uživatele dostupné pro **UserInputType** prvky:
 |Odstavec | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`|Pole, které zobrazuje text pouze v označení odstavce. |
 |Heslo | `string` |Textové pole pro heslo|
 |RadioSingleSelect |`string` | Kolekce přepínacích tlačítek. Hodnota deklarace je vybraná hodnota.|
-|ReadOnly | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Textové pole jen pro čtení. |
+|ReadOnly | `boolean`, `date`, `dateTime`, `duration`, `int`, `long`, `string`| Textové pole určené jen pro čtení. |
 |TextBox |`boolean`, `int`, `string` |Textové pole s jedním řádkem. |
 
 
@@ -407,5 +409,3 @@ Typ vstupu uživatele **jen pro čtení** se používá k zadání pole jen pro 
   </Restriction>
 </ClaimType>
 ```
-
-Pokud chcete zobrazit jednu z hodnot **výčtu** v deklaraci **responseMsg** , použijte transformaci deklarací identity `GetMappedValueFromLocalizedCollection` nebo `CreateStringClaim`. Další informace najdete v tématu [transformace řetězcových deklarací](string-transformations.md) .

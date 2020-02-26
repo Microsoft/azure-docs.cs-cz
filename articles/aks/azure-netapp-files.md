@@ -3,28 +3,27 @@ title: Integrace Azure NetApp Files se službou Azure Kubernetes
 description: Naučte se integrovat Azure NetApp Files se službou Azure Kubernetes.
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: zarhoads
-ms.openlocfilehash: 84192a831e3b1f24e20eb07a6c8695516c28970f
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 42985e57d63c01553532928b2ba04ed5ee3dd8fb
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71329328"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596636"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integrace Azure NetApp Files se službou Azure Kubernetes
 
 [Azure NetApp Files][anf] je vysoce výkonná služba úložiště monitorovaných souborů na podnikové úrovni, která běží v Azure. V tomto článku se dozvíte, jak integrovat Azure NetApp Files se službou Azure Kubernetes Service (AKS).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
 > [!IMPORTANT]
 > Cluster AKS musí být také [v oblasti, která podporuje Azure NetApp Files][anf-regions].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ### <a name="limitations"></a>Omezení
 
@@ -33,7 +32,8 @@ Při použití Azure NetApp Files platí následující omezení:
 * Azure NetApp Files je k dispozici pouze [ve vybraných oblastech Azure][anf-regions].
 * Předtím, než budete moci použít Azure NetApp Files, je nutné udělit přístup ke službě Azure NetApp Files. Pokud chcete požádat o přístup, můžete použít [formulář pro odeslání Azure NetApp Files pořadníku][anf-waitlist]. Ke službě Azure NetApp Files nemůžete získat přístup, dokud nedostanete oficiální potvrzovací e-mail od Azure NetApp Files týmu.
 * Vaše služba Azure NetApp Files musí být vytvořená ve stejné virtuální síti jako cluster AKS.
-* V AKS je podporováno pouze statické zřizování pro Azure NetApp Files.
+* Po počátečním nasazení clusteru AKS se podporuje pouze statické zřizování pro Azure NetApp Files.
+* Pokud chcete používat dynamické zřizování s Azure NetApp Files, nainstalujte a nakonfigurujte [NetApp Trident](https://netapp-trident.readthedocs.io/) verze 19,07 nebo novější.
 
 ## <a name="configure-azure-netapp-files"></a>Konfigurace Azure NetApp Files
 
@@ -57,7 +57,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Vytvořte účet Azure NetApp Files v rámci skupiny prostředků **uzlu** a stejnou oblast jako cluster AKS pomocí [AZ netappfiles Account Create][az-netappfiles-account-create]. Následující příklad vytvoří účet s názvem *myaccount1* ve skupině prostředků *MC_myResourceGroup_myAKSCluster_eastus* a oblasti *eastus* :
+Vytvořte účet Azure NetApp Files v rámci skupiny prostředků **uzlu** a stejnou oblast jako cluster AKS pomocí [AZ netappfiles Account Create][az-netappfiles-account-create]. Následující příklad vytvoří účet s názvem *myaccount1* ve skupině prostředků *MC_myResourceGroup_myAKSCluster_eastus* a v oblasti *eastus* :
 
 ```azure-cli
 az netappfiles account create \
@@ -205,7 +205,7 @@ kubectl describe pvc pvc-nfs
 
 ## <a name="mount-with-a-pod"></a>Připojit pomocí pod
 
-Vytvoří `nginx-nfs.yaml` definující objekt pod, který používá PersistentVolumeClaim. Příklad:
+Vytvořte `nginx-nfs.yaml` definující pod, který používá PersistentVolumeClaim. Příklad:
 
 ```yaml
 kind: Pod

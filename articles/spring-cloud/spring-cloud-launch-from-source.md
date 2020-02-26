@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: brendm
-ms.openlocfilehash: 8edadbf946a28239ae4d28d56b3dccd77b451a71
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: b506fdcdec1ae3e98c1a4afe9c5124e284ed4d99
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277162"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589007"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Rychlý Start: spuštění vaší jarní cloudové aplikace ze zdrojového kódu
 
@@ -28,7 +28,7 @@ Po tomto rychlém startu se dozvíte, jak:
 > * Nasazení jednotlivých mikroslužeb
 > * Přiřazení veřejného koncového bodu vaší aplikaci
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 >[!Note]
 > Jarní cloud Azure se teď nabízí jako verze Public Preview. Nabídky veřejné verze Preview umožňují zákazníkům experimentovat s novými funkcemi před jejich oficiální verzí.  Funkce a služby verze Public Preview nejsou určeny pro produkční použití.  Další informace o podpoře v rámci verzí Preview najdete v našich [nejčastějších dotazech](https://azure.microsoft.com/support/faq/) nebo v souboru o [support Request](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) , kde se dozvíte víc.
@@ -62,10 +62,16 @@ az account list -o table
 az account set --subscription
 ```
 
-Otevřete okno Azure CLI a spusťte následující příkazy, abyste zřídili instanci Azure Pramenitého cloudu. Všimněte si, že vám také řekne Azure jarní Cloud, který tady přiřadí veřejnou doménu.
+Vytvořte skupinu prostředků, která bude obsahovat službu pro jarní cloudovou službu Azure. Můžete se dozvědět víc o [skupinách prostředků Azure](../azure-resource-manager/management/overview.md).
 
 ```azurecli
-    az spring-cloud create -n <resource name> -g <resource group name> --is-public true
+az group create --location eastus --name <resource group name>
+```
+
+Spuštěním následujících příkazů zřídíte instanci služby Azure jaře Cloud. Připravte si název služby pro jarní cloudovou službu Azure. Název musí být dlouhý 4 až 32 znaků a může obsahovat jenom malá písmena, číslice a spojovníky. První znak názvu služby musí být písmeno a poslední znak musí být písmeno nebo číslo.
+
+```azurecli
+az spring-cloud create -n <resource name> -g <resource group name>
 ```
 
 Nasazení instance služby bude trvat přibližně pět minut.
@@ -78,7 +84,7 @@ az configure --defaults spring-cloud=<service instance name>
 ```
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=provision)
+> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=provision)
 
 ## <a name="create-the-spring-cloud-application"></a>Vytvoření aplikace pro jarní Cloud
 
@@ -141,7 +147,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > V protokolech kpack se zobrazí jenom nejnovější nasazení, pokud se toto nasazení sestavilo ze zdroje pomocí kpack.
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=deploy)
+> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=deploy)
 
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Přiřazení veřejného koncového bodu k bráně
 
@@ -151,7 +157,7 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 4. Pokud chcete zobrazit spuštěnou aplikaci, zadejte přiřazenou veřejnou IP adresu do prohlížeče.
 
 > [!div class="nextstepaction"]
-> [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=public-endpoint)
+> [Narazili jsme na problém](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=public-endpoint)
 
 ## <a name="next-steps"></a>Další kroky
 

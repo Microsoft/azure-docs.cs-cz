@@ -3,12 +3,12 @@ title: Instalace Azure Backup Serveru v Azure Stacku
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server chránit nebo zálohovat úlohy v Azure Stack.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 396621b43db2500ca9107979fca9d4d2c0646e6d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b78e5a662bdcf23ad38cb33292658d4d2455e579
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172399"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583431"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -29,9 +29,9 @@ Azure Backup Server chrání následující Azure Stack úlohy virtuálních po�
 | Windows Server 2012 R2 – Datacenter/Enterprise/Standard | Svazky, soubory, složky |
 | Windows Server 2012 – Datacenter/Enterprise/Standard | Svazky, soubory, složky |
 | Windows Server 2008 R2 – Datacenter/Enterprise/Standard | Svazky, soubory, složky |
-| SQL Server 2016 | Databáze |
-| SQL Server 2014 | Databáze |
-| SQL Server 2012 SP1 | Databáze |
+| SQL Server 2016 | databáze |
+| SQL Server 2014 | databáze |
+| SQL Server 2012 SP1 | databáze |
 | SharePoint 2016 | Farma, databáze, front-end, webový server |
 | SharePoint 2013 | Farma, databáze, front-end, webový server |
 | SharePoint 2010 | Farma, databáze, front-end, webový server |
@@ -91,7 +91,7 @@ Azure Backup Server virtuální počítač musí být připojený k doméně. Na
 
 Při volbě serveru pro Azure Backup Server začněte s imagí Windows Server 2012 R2 Datacenter nebo Windows Server 2016 Datacenter. [V tomto článku vytvořte svůj první virtuální počítač s Windows ve službě Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), který poskytuje kurz, jak začít s doporučeným virtuálním počítačem. Doporučené minimální požadavky pro virtuální počítač serveru (VM) by měly být: a2 Standard se dvěma jádry a 3,5-GB RAM.
 
-Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tento článek vám pomůže vysvětlit tyto drobné odlišnostiy, [nainstalovat DPM jako virtuální počítač Azure](https://technet.microsoft.com/library/jj852163.aspx). Než počítač nasadíte, přečtěte si tento článek kompletně.
+Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tento článek vám pomůže vysvětlit tyto drobné odlišnostiy, [nainstalovat DPM jako virtuální počítač Azure](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/jj852163(v=sc.12)). Než počítač nasadíte, přečtěte si tento článek kompletně.
 
 > [!NOTE]
 > Azure Backup Server je navržená tak, aby běžela na vyhrazeném virtuálním počítači s jedním účelem. Nemůžete nainstalovat Azure Backup Server na:
@@ -243,7 +243,7 @@ Azure Backup Server sdílí kód s Data Protection Manager. V instalačním prog
 
     ![Microsoft Azure Backup PreReq2](./media/backup-mabs-install-azure-stack/mabs-install-wizard-settings-11.png)
 
-    K zálohování do Azure se vyžaduje pomocné umístění. Zajistěte, aby velikost pravého umístění byla stejná jako aspoň 5% dat, která se mají zálohovat do Azure. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Konfigurace fondů úložiště a diskového úložiště](https://technet.microsoft.com/library/hh758075.aspx).
+    K zálohování do Azure se vyžaduje pomocné umístění. Zajistěte, aby velikost pravého umístění byla stejná jako aspoň 5% dat, která se mají zálohovat do Azure. V případě ochrany disku je potřeba po dokončení instalace nakonfigurovat samostatné disky. Další informace o fondech úložiště najdete v tématu [Konfigurace fondů úložiště a diskového úložiště](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh758075(v=sc.12)).
 
 6. Na obrazovce **nastavení zabezpečení** zadejte silné heslo pro omezené místní uživatelské účty a klikněte na **Další**.
 
@@ -341,7 +341,7 @@ Pokud brána firewall nebo proxy server brání v přístupu k Azure, přidejte 
 - \*.Microsoft.com
 - \*.WindowsAzure.com
 - \*.microsoftonline.com
-- \*. windows.net
+- \*.windows.net
 
 Po obnovení připojení k Azure do Azure Backup Server stav předplatného Azure určí operace, které je možné provést. Po **připojení**serveru použijte tabulku v [Možnosti připojení k síti](backup-mabs-install-azure-stack.md#network-connectivity) , abyste viděli dostupné operace.
 

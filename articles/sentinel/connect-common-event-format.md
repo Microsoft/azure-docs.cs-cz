@@ -3,7 +3,7 @@ title: Připojení dat CEF k Azure Sentinel Preview | Microsoft Docs
 description: Naučte se připojit data CEF ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
-ms.author: rkarlin
-ms.openlocfilehash: 640d1ff9e2ee1471706b7900e7e22dbc44920527
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 8314614616c6b8969832d52fc684d47ba1bf0fe3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610637"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588344"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Připojení externího řešení pomocí běžných formátů událostí
 
@@ -42,17 +42,17 @@ Případně bude tato instalace existovat, pokud použijete virtuální počíta
  ![Místní CEF](./media/connect-cef/cef-syslog-onprem.png)
 
 
-## <a name="security-considerations"></a>Informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 
 Nezapomeňte nakonfigurovat zabezpečení počítače podle zásad zabezpečení vaší organizace. Můžete třeba nakonfigurovat síť tak, aby byla v souladu se zásadami zabezpečení podnikové sítě, a změnit porty a protokoly v procesu démona tak, aby odpovídaly vašim požadavkům. Pomocí následujících pokynů můžete zlepšit konfiguraci zabezpečení počítače:  [zabezpečený virtuální počítač v Azure](../virtual-machines/linux/security-policy.md), [osvědčené postupy pro zabezpečení sítě](../security/fundamentals/network-best-practices.md).
 
 Pokud chcete používat komunikaci TLS mezi řešením zabezpečení a počítačem syslog, budete muset nakonfigurovat démona syslog (rsyslog nebo syslog-ng) pro komunikaci v TLS: [šifrování provozu syslog pomocí TLS-rsyslog](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html), [šifrování zpráv protokolu pomocí TLS – syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298).
 
  
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Ujistěte se, že počítač se systémem Linux, který používáte jako proxy, používá jeden z následujících operačních systémů:
 
-- 64 bitů
+- 64bitový
   - CentOS 6 a 7
   - Amazon Linux 2017.09
   - Oracle Linux 6 a 7
@@ -60,7 +60,7 @@ Ujistěte se, že počítač se systémem Linux, který používáte jako proxy,
   - Debian GNU/Linux 8 a 9
   - Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
   - SUSE Linux Enterprise Server 12
-- 32 bitů
+- 32bitový
    - CentOS 6
    - Oracle Linux 6
    - Red Hat Enterprise Linux Server 6

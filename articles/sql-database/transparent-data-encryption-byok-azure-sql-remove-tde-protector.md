@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 02/12/2020
-ms.openlocfilehash: be187e34e3232c0755e2613ffffe0647da70079c
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/24/2020
+ms.openlocfilehash: 811e3bc206b4d98106bdbb1ce2655cd69c8585a2
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201658"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589245"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrání ochrany transparentní šifrování dat (TDE) pomocí prostředí PowerShell
 
@@ -26,14 +26,14 @@ ms.locfileid: "77201658"
 - Musíte mít nainstalovanou a spuštěnou Azure PowerShell.
 - V tomto průvodci se předpokládá, že už používáte klíč z Azure Key Vault jako ochranu TDE pro Azure SQL Database nebo datový sklad. Další informace najdete v tématu [transparentní šifrování dat s podporou BYOK](transparent-data-encryption-byok-azure-sql.md) .
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
  Pokyny k instalaci modulu Az najdete v tématu věnovaném [instalaci Azure PowerShellu](/powershell/azure/install-az-ps). Konkrétní rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
 
 > [!IMPORTANT]
 > Modul Azure Resource Manager PowerShellu (RM) je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou k dispozici pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Informace o instalaci najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -43,11 +43,11 @@ Informace o instalaci najdete v tématu Instalace rozhraní příkazového [řá
 
 Tato příručka popisuje, jak reagovat na potenciálně ohrožené ochrany TDE pro Azure SQL Database nebo datový sklad, který používá TDE s klíči spravovanými zákazníky v podpoře BYOK (Azure Key Vault-Bring Your Own Key). Další informace o podpoře BYOK pro TDE najdete na stránce s [přehledem](transparent-data-encryption-byok-azure-sql.md).
 
-Následující postupy by měly být provedeny pouze v extrémních případech nebo v testovacích prostředích. Projděte si příručku návody, protože odstranění aktivně používaných TDE ochran z Azure Key Vault může způsobit **ztrátu dat**.
+Následující postupy by měly být provedeny pouze v extrémních případech nebo v testovacích prostředích. Projděte si příručku postupy, protože odstranění aktivně používaných TDE ochran z Azure Key Vault způsobí **nedostupnost databáze**.
 
 Pokud dojde k ohrožení bezpečnosti nějakého klíče, aby služba nebo uživatel měli k klíči neoprávněný přístup, je nejlepší klíč odstranit.
 
-Mějte na paměti, že jakmile se ochrana TDE v Key Vault odstraní, **všechna připojení k šifrovaným databázím na serveru jsou blokovaná a tyto databáze budou přecházet do režimu offline a budou se zahodit do 24 hodin**. Staré zálohy šifrované s ohroženým klíčem již nejsou přístupné.
+Mějte na paměti, že jakmile se ochrana TDE odstraní v Key Vault, všechny šifrované databáze začnou zamítnout všechna připojení k příslušné chybové zprávě a změní stav na [nepřístupný](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector).
 
 Následující kroky popisují, jak kontrolovat kryptografické otisky ochrany TDE, které pořád používají virtuální soubory protokolů (VLF) dané databáze.
 Kryptografický otisk aktuálního TDE ochrany databáze a ID databáze lze najít spuštěním:
@@ -66,11 +66,11 @@ Následující dotaz vrátí VLFs a příslušné kryptografické otisky použí
 SELECT * FROM sys.dm_db_log_info (database_id)
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Příkaz PowerShellu **Get-AzureRmSqlServerKeyVaultKey** poskytuje kryptografický otisk ochrany TDE, která se používá v dotazu, abyste viděli, které klíče se mají zachovat a které klíče se mají odstranit v integrace. Z Azure Key Vault můžete bezpečně odstranit jenom klíče, které už nepoužívá databáze.
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Příkaz PowerShellu **AZ SQL Server Key show** poskytuje kryptografický otisk ochrany TDE, která se používá v dotazu, abyste viděli, které klíče se mají zachovat a které klíče se mají odstranit v integrace. Z Azure Key Vault můžete bezpečně odstranit jenom klíče, které už nepoužívá databáze.
 
@@ -83,7 +83,7 @@ Tato příručka přechází přes dvě přístupy v závislosti na požadované
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Zachování přístupných šifrovaných prostředků
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Vytvořte [nový klíč v Key Vault](/powershell/module/az.keyvault/add-azkeyvaultkey). Zajistěte, aby byl tento nový klíč vytvořen v jiném trezoru klíčů od potenciálně ohroženého ochrany TDE, protože řízení přístupu je zřízené na úrovni trezoru.
 
@@ -126,7 +126,7 @@ Tato příručka přechází přes dvě přístupy v závislosti na požadované
    Restore-AzKeyVaultKey -VaultName <KeyVaultName> -InputFile <BackupFilePath>
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Referenční informace k příkazům najdete v [trezoru klíčů Azure CLI](/cli/azure/keyvault/key).
 

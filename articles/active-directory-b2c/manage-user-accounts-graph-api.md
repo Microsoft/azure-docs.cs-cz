@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 64df1188692ae9f1b6200ad880a2bf1eafd98844
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b53405d199072211304e21b681de646c4e41243c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77483223"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77585624"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph
 
@@ -42,7 +42,7 @@ V [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/resources
 - [Aktualizace uživatele](https://docs.microsoft.com/graph/api/user-update)
 - [Odstranění uživatele](https://docs.microsoft.com/graph/api/user-delete)
 
-## <a name="user-properties"></a>Vlastnosti uživatele
+## <a name="user-properties"></a>Uživatelské vlastnosti
 
 ### <a name="display-name-property"></a>Vlastnost zobrazovaného názvu
 
@@ -61,9 +61,9 @@ V rozhraní Microsoft Graph API jsou místní i federované identity uloženy v 
 
 | Vlastnost   | Typ |Popis|
 |:---------------|:--------|:----------|
-|signInType|string| Určuje typy přihlašování uživatelů v adresáři. Pro místní účet: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName`nebo jakýkoli jiný typ, který chcete. Účet sociálních sítí musí být nastaven na `federated`.|
-|stavil|string|Určuje vystavitele identity. U místních účtů (kde **signInType** není `federated`) je tato vlastnost výchozím názvem domény místního B2C tenanta, například `contoso.onmicrosoft.com`. Pro sociální identity (kde **signInType** je `federated`) hodnota je název vystavitele, například `facebook.com`|
-|issuerAssignedId|string|Určuje jedinečný identifikátor přiřazený uživateli vystavitelem. Kombinace **vystavitele** a **issuerAssignedId** musí být ve vašem tenantovi jedinečná. Pro místní účet, pokud je **signInType** nastavená na `emailAddress` nebo `userName`, představuje přihlašovací jméno uživatele.<br>Když je **signInType** nastaveno na: <ul><li>`emailAddress` (nebo začíná `emailAddress` jako `emailAddress1`) **issuerAssignedId** musí být platná e-mailová adresa.</li><li>`userName` (nebo jakákoli jiná hodnota) musí být **issuerAssignedId** platnou [místní částí e-mailové adresy](https://tools.ietf.org/html/rfc3696#section-3) .</li><li>`federated`**issuerAssignedId** představuje jedinečný identifikátor federovaného účtu.</li></ul>|
+|signInType|řetězec| Určuje typy přihlašování uživatelů v adresáři. Pro místní účet: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName`nebo jakýkoli jiný typ, který chcete. Účet sociálních sítí musí být nastaven na `federated`.|
+|stavil|řetězec|Určuje vystavitele identity. U místních účtů (kde **signInType** není `federated`) je tato vlastnost výchozím názvem domény místního B2C tenanta, například `contoso.onmicrosoft.com`. Pro sociální identity (kde **signInType** je `federated`) hodnota je název vystavitele, například `facebook.com`|
+|issuerAssignedId|řetězec|Určuje jedinečný identifikátor přiřazený uživateli vystavitelem. Kombinace **vystavitele** a **issuerAssignedId** musí být ve vašem tenantovi jedinečná. Pro místní účet, pokud je **signInType** nastavená na `emailAddress` nebo `userName`, představuje přihlašovací jméno uživatele.<br>Když je **signInType** nastaveno na: <ul><li>`emailAddress` (nebo začíná `emailAddress` jako `emailAddress1`) **issuerAssignedId** musí být platná e-mailová adresa.</li><li>`userName` (nebo jakákoli jiná hodnota) musí být **issuerAssignedId** platnou [místní částí e-mailové adresy](https://tools.ietf.org/html/rfc3696#section-3) .</li><li>`federated`**issuerAssignedId** představuje jedinečný identifikátor federovaného účtu.</li></ul>|
 
 Pro federované identity v závislosti na zprostředkovateli identity je **issuerAssignedId** jedinečná hodnota pro daného uživatele podle aplikace nebo vývojového účtu. Nakonfigurujte zásady Azure AD B2C se stejným ID aplikace, které dříve přiřadil poskytovatel sociálních sítí nebo jiná aplikace v rámci stejného vývojového účtu.
 
@@ -180,7 +180,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Volání rozhraní API pomocí Microsoft Graph sady SDK](https://docs.microsoft.comgraph/sdks/create-requests) obsahují informace o tom, jak číst a zapisovat informace z Microsoft Graph, pomocí `$select` k řízení vrácených vlastností, zadání vlastních parametrů dotazu a použití parametrů dotazu `$filter` a `$orderBy`.
+[Volání rozhraní API pomocí Microsoft Graph sady SDK](https://docs.microsoft.com/graph/sdks/create-requests) obsahují informace o tom, jak číst a zapisovat informace z Microsoft Graph, pomocí `$select` k řízení vrácených vlastností, zadání vlastních parametrů dotazu a použití parametrů dotazu `$filter` a `$orderBy`.
 
 ## <a name="next-steps"></a>Další kroky
 

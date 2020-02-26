@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 715415929afaad36e4854e75a2b7b5360d22a6bf
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: c606f6e60b1c906a0d5c29992287d126aaa37b7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486338"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77602936"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak používat sadu SDK Azure WebJobs pro zpracování na pozadí založené na událostech
 
@@ -144,7 +144,7 @@ static void Main(string[] args)
 }
 ```
 
-## <a name="triggers"></a>Aktivační události
+## <a name="triggers"></a>Triggery
 
 Funkce musí být veřejné metody a musí mít jeden atribut triggeru nebo atribut [`NoAutomaticTrigger`](#manual-triggers) .
 
@@ -279,7 +279,7 @@ Tyto triggery a typy vazeb jsou součástí verze 2. *x* `Microsoft.Azure.WebJob
 
 * Blob Storage
 * Queue Storage
-* Table Storage
+* Úložiště Table
 
 Chcete-li použít jiné typy triggerů a vazeb, nainstalujte balíček NuGet, který je obsahuje, a zavolejte metodu `Use<binding>` pro objekt `JobHostConfiguration`. Například pokud chcete použít aktivační událost časovače, nainstalujte `Microsoft.Azure.WebJobs.Extensions` a zavolejte `UseTimers` v metodě `Main`, jak je znázorněno zde:
 
@@ -395,7 +395,7 @@ static async Task Main()
 }
 ```
 
-Další podrobnosti najdete v článku věnovaném [vazbám Azure CosmosDB](../azure-functions/functions-bindings-cosmosdb-v2.md#hostjson-settings) .
+Další podrobnosti najdete v článku věnovaném [vazbám Azure CosmosDB](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings) .
 
 ### <a name="event-hubs-trigger-configuration-version-3x"></a>Konfigurace aktivační události Event Hubs (verze 3 *×*)
 
@@ -423,7 +423,7 @@ static async Task Main()
 }
 ```
 
-Další podrobnosti najdete v článku věnovaném [vazbě Event Hubs](../azure-functions/functions-bindings-event-hubs.md#hostjson-settings) .
+Další podrobnosti najdete v článku věnovaném [vazbě Event Hubs](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings) .
 
 ### <a name="queue-storage-trigger-configuration"></a>Konfigurace triggeru služby Queue Storage
 
@@ -824,12 +824,12 @@ Každý protokol vytvořený instancí `ILogger` má přidruženou `Category` a 
 |LogLevel    |Kód|
 |------------|---|
 |Trasování       | 0 |
-|Ladit       | 1 |
+|Ladění       | 1 |
 |Informace | 2 |
 |Upozornění     | 3 |
 |Chyba       | 4 |
 |Kritická    | 5 |
-|Žádné        | 6 |
+|Žádná        | 6 |
 
 Jednotlivé kategorie můžete nezávisle filtrovat na konkrétní [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Můžete například chtít zobrazit všechny protokoly pro zpracování triggerů objektů blob, ale jenom `Error` a vyšší pro všechno ostatní.
 

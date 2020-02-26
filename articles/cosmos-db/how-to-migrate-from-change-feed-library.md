@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: f651beb181430f65d0b4c86f285e74958f8366eb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077552"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588879"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migrace z knihovny Change feed Processor do sady Azure Cosmos DB .NET V3 SDK
 
@@ -21,23 +21,23 @@ Tento článek popisuje nezbytné kroky pro migraci kódu existující aplikace,
 
 Sada .NET V3 SDK obsahuje několik zásadních změn, následující jsou klíčové kroky pro migraci aplikace:
 
-1. Převeďte `DocumentCollectionInfo` `Container` instance na odkazy pro kontejnery monitorované a zapůjčení.
-1. Vlastní nastavení, která `WithProcessorOptions` by se měla použít, `WithLeaseConfiguration` by `WithPollInterval` se měla aktualizovat `WithStartTime` , aby se používaly `WithMaxItems` intervaly [pro čas spuštění](how-to-configure-change-feed-start-time.md)a definovaly maximální počet položek.
-1. `ChangeFeedProcessorOptions.LeasePrefix` `string.Empty` Nastavte on tak`GetChangeFeedProcessorBuilder` , aby odpovídal hodnotě nakonfigurované na, nebo použijte jinak. `processorName`
-1. Změny již nejsou dodávány jako `IReadOnlyList<Document>`místo `IReadOnlyCollection<T>` , kde `T` je typ, který je třeba definovat, již neexistuje žádná základní třída Item.
+1. Převeďte instance `DocumentCollectionInfo` na `Container` odkazy na kontejnery monitorované a zapůjčení.
+1. Vlastní nastavení, která používají `WithProcessorOptions` by se měla aktualizovat tak, aby používala `WithLeaseConfiguration` a `WithPollInterval` pro intervaly, `WithStartTime` [pro čas spuštění](how-to-configure-change-feed-start-time.md)a `WithMaxItems` k definování maximálního počtu položek.
+1. Nastavte `processorName` v `GetChangeFeedProcessorBuilder` tak, aby odpovídala hodnotě nakonfigurované na `ChangeFeedProcessorOptions.LeasePrefix`, nebo použijte `string.Empty` jinak.
+1. Změny již nejsou dodávány jako `IReadOnlyList<Document>`, místo toho se jedná o `IReadOnlyCollection<T>`, kde `T` je typ, který je třeba definovat, již neexistuje žádná základní třída Item.
 1. Pro zpracování změn už nebudete potřebovat implementaci, místo toho musíte [definovat delegáta](change-feed-processor.md#implementing-the-change-feed-processor). Delegát může být statická funkce nebo, pokud potřebujete zachovat stav napříč prováděním, můžete vytvořit vlastní třídu a předat metodu instance jako delegáta.
 
 Například pokud původní kód pro sestavení procesoru Change feed, vypadá takto:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorLibrary)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="ChangeFeedProcessorLibrary":::
 
 Migrovaný kód bude vypadat takto:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=ChangeFeedProcessorMigrated)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="ChangeFeedProcessorMigrated":::
 
 A delegát může být statická metoda:
 
-[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=Delegate)]
+:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="Delegate":::
 
 ## <a name="state-and-lease-container"></a>Stav a kontejner zapůjčení
 
@@ -57,7 +57,7 @@ Aplikaci můžete bezpečně zastavit pomocí starého kódu, migrovat kód na n
 * [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [Další ukázky na GitHubu](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
 

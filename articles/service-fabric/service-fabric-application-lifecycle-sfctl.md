@@ -5,18 +5,18 @@ author: Christina-Kang
 ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: db271d479fd84e5338d53cc25ecc0122d856c442
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610229"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589143"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Správa aplikace Service Fabric Azure pomocí Azure Service Fabric CLI (sfctl)
 
 Naučte se vytvářet a odstraňovat aplikace, které běží v clusteru Azure Service Fabric.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte Service Fabric CLI. Pak vyberte svůj Cluster Service Fabric. Další informace najdete v tématu [Začínáme s Service Fabric CLI](service-fabric-cli.md).
 
@@ -47,7 +47,7 @@ Před vytvořením aplikace nahrajte balíček aplikace do úložiště imagí S
 
 Například pokud je balíček aplikace v adresáři `app_package_dir`, použijte následující příkazy k nahrání adresáře:
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir
 ```
 
@@ -57,7 +57,7 @@ Pro velké balíčky aplikací můžete zadat možnost `--show-progress` pro zob
 
 Po dokončení nahrávání zajistěte aplikaci. Chcete-li zřídit aplikaci, použijte následující příkaz:
 
-```azurecli
+```shell
 sfctl application provision --application-type-build-path app_package_dir
 ```
 
@@ -69,7 +69,7 @@ Doporučuje se odebrat balíček aplikace po úspěšné registraci aplikace.  O
 
 Chcete-li odstranit balíček aplikace z úložiště imagí, použijte následující příkaz:
 
-```azurecli
+```shell
 sfctl store delete --content-path app_package_dir
 ```
 
@@ -79,7 +79,7 @@ sfctl store delete --content-path app_package_dir
 
 Po zřízení aplikace použijte následující příkaz k pojmenování a vytvoření aplikace:
 
-```azurecli
+```shell
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
@@ -91,7 +91,7 @@ Název aplikace musí začínat předponou `fabric:/`.
 
 Po vytvoření aplikace vytvořte služby z aplikace. V následujícím příkladu vytvoříme z naší aplikace novou bezstavovou službu. Služby, které můžete vytvořit z aplikace, jsou definovány v manifestu služby v dříve zřízeném balíčku aplikace.
 
-```azurecli
+```shell
 sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
 --stateless --instance-count 1 --singleton-scheme
 ```
@@ -100,14 +100,14 @@ sfctl service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-t
 
 Chcete-li ověřit, zda je vše v pořádku, použijte následující příkazy pro stav:
 
-```azurecli
+```shell
 sfctl application list
 sfctl service list --application-id TestApp
 ```
 
 Chcete-li ověřit, zda je služba v pořádku, použijte podobné příkazy k načtení stavu služby i aplikace:
 
-```azurecli
+```shell
 sfctl application health --application-id TestApp
 sfctl service health --service-id TestApp/TestSvc
 ```
@@ -122,7 +122,7 @@ Chcete-li odebrat aplikaci, proveďte následující úlohy:
 
 Pokud chcete aplikaci odstranit, použijte následující příkaz:
 
-```azurecli
+```shell
 sfctl application delete --application-id TestEdApp
 ```
 
@@ -130,7 +130,7 @@ sfctl application delete --application-id TestEdApp
 
 Po odstranění aplikace můžete typ aplikace zrušit, pokud ji už nepotřebujete. Chcete-li zrušit zřízení typu aplikace, použijte následující příkaz:
 
-```azurecli
+```shell
 sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
@@ -142,7 +142,7 @@ Po vytvoření aplikace můžete zopakovat stejnou sadu kroků pro zřízení dr
 
 Chcete-li provést upgrade, nejprve zajistěte novou verzi aplikace pomocí stejných příkazů jako dříve:
 
-```azurecli
+```shell
 sfctl application upload --path ~/app_package_dir_2
 sfctl application provision --application-type-build-path app_package_dir_2
 sfctl store delete --content-path app_package_dir_2
@@ -150,7 +150,7 @@ sfctl store delete --content-path app_package_dir_2
 
 Doporučuje se následně provést monitorovaný automatický upgrade, spustit upgrade spuštěním následujícího příkazu:
 
-```azurecli
+```shell
 sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"test\":\"value\"}" --mode Monitored
 ```
 

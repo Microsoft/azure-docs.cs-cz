@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: b4ddc5bb52aeef622a33ace7b3ffad4694d7c072
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76904816"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587613"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -18,7 +18,7 @@ Rozhraní příkazového řádku (CLI) Azure Service Fabric je nástroj příkaz
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před instalací se ujistěte, že je ve vašem prostředí nainstalovaný Python a pip. Další informace najdete v [úvodní dokumentaci nástroje pip](https://pip.pypa.io/en/latest/quickstart/) a oficiální [dokumentaci k instalaci Pythonu](https://wiki.python.org/moin/BeginnersGuide/Download).
 
@@ -39,9 +39,9 @@ Smyslem Service Fabric CLI je podpora nejnovější verze modulu runtime sady Se
 | 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6, 5.7                  |
 
-Volitelně můžete zadat cílovou verzi rozhraní příkazového řádku, která se má nainstalovat, přidáním přípony `==<version>` k příkazu `pip install`. Například pro verzi 1.1.0 by syntax byla následující:
+Volitelně můžete zadat cílovou verzi rozhraní příkazového řádku, která se má nainstalovat, přidáním přípony `pip install` k příkazu `==<version>`. Například pro verzi 1.1.0 by syntax byla následující:
 
-```
+```shell
 pip install -I sfctl==1.1.0
 ```
 
@@ -67,14 +67,14 @@ Ve Windows 10, Windows Server 2016 a Windows Server 2012 R2 použijte standardn�
 
 Teď můžete otevřít nové příkazové okno a získat verze Pythonu i nástroje pip.
 
-```bat
+```shell
 python --version
 pip --version
 ```
 
 Pak spuštěním následujícího příkazu nainstalujte rozhraní příkazového řádku Azure Service Fabric CLI (sfctl) a zobrazte stránku s přehledem CLI:
 
-```bat
+```shell
 pip install sfctl
 sfctl -h
 ```
@@ -99,11 +99,11 @@ Pokud se zobrazí chyba typu příkaz nenalezen, například:
 
 `sfctl: command not found`
 
-Ujistěte se, že `$PATH` má přístup k `~/.local/bin`:
+Ujistěte se, že `~/.local/bin` má přístup k `$PATH`:
 
 ```bash
 export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+echo "export PATH=$PATH:~/.local/bin" >> .shellrc
 ```
 
 Pokud instalace na subsystému Windows pro Linux selže kvůli nesprávným oprávněním ke složce, možná bude nutné pokus opakovat se zvýšenými oprávněními:
@@ -148,7 +148,7 @@ Příkazy mají vždy předponu `sfctl`. Obecné informace o všech příkazech,
 
 Příkazy dodržují opakovatelnou strukturu, kdy cíl příkazu předchází operaci nebo akci.
 
-```azurecli
+```shell
 sfctl <object> <action>
 ```
 
@@ -161,7 +161,7 @@ Před provedením jakékoli operace musíte vybrat cluster, ke kterému se přip
 > [!WARNING]
 > Nepoužívejte nezabezpečené clustery Service Fabric v produkčním prostředí.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint http://testcluster.com:19080
 ```
 
@@ -169,7 +169,7 @@ Koncový bod clusteru musí mít předponu `http` nebo `https`. Musí zahrnovat 
 
 Pro clustery, které jsou zabezpečené pomocí certifikátu, můžete určit certifikát kódovaný PEM. Certifikát lze zadat jako jeden soubor nebo jako pár certifikátu a klíče. Pokud je certifikát, který není podepsaný certifikační autoritou, podepsaný svým držitelem, můžete obejít ověření certifikační autority zadáním možnosti `--no-verify`.
 
-```azurecli
+```shell
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
@@ -181,7 +181,7 @@ Informace o připojení ke clusteru se uchovávají napříč více relacemi Ser
 
 Pokud například chcete získat stav clusteru Service Fabric, použijte následující příkaz:
 
-```azurecli
+```shell
 sfctl cluster health
 ```
 
@@ -218,13 +218,13 @@ Tady jsou některé návrhy a tipy pro řešení běžných problémů.
 
 Service Fabric CLI podporuje certifikáty na straně klienta v podobě souborů PEM (s příponou .pem). Pokud používáte soubory PFX ze systému Windows, musíte tyto certifikáty převést na formát PEM. K převodu souboru PFX na soubor PEM použijte následující příkaz:
 
-```bash
+```shell
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
 Podobně k převodu ze souboru PEM do souboru PFX můžete použít následující příkazy (zde bez zadání hesla):
 
-```bash
+```shell
 openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
 ```
 
@@ -246,13 +246,13 @@ Podrobné protokoly jsou často užitečné při ladění nebo hlášení probl�
 
 Pokud chcete získat nápovědu ke konkrétnímu příkazu nebo skupině příkazů, použijte příznak `-h`.
 
-```azurecli
+```shell
 sfctl application -h
 ```
 
 Tady je další příklad:
 
-```azurecli
+```shell
 sfctl application create -h
 ```
 
@@ -260,7 +260,7 @@ sfctl application create -h
 
 Pokud chcete aktualizovat rozhraní příkazového řádku Service Fabric, spusťte následující příkazy (podle volby provedené během původní instalace nahraďte `pip` pomocí `pip3`):
 
-```bash
+```shell
 pip uninstall sfctl
 pip install sfctl
 ```

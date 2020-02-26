@@ -3,7 +3,7 @@ title: Připojit data syslogu ke službě Azure Sentinel | Microsoft Docs
 description: Přečtěte si, jak připojit data protokolu syslog ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: d5f3d24d10262f28023523668c22f4571799cff9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 73fd55fc24fd94dc88bba2f591c32480f77c7d5d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610467"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588072"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>Připojení externího řešení pomocí protokolu syslog
 
@@ -65,7 +65,7 @@ Další informace najdete v tématu [zdroje dat syslog v Azure monitor](../azure
 
 6. Po přidání všech zařízení, která chcete monitorovat, a upravení všech možností závažnosti pro každé z nich zaškrtněte políčko **použít pro tyto počítače níže uvedenou konfiguraci**.
 
-7. Vyberte **Uložit**. 
+7. Vyberte **Save** (Uložit). 
 
 8. V zařízení syslog se ujistěte, že posíláte zařízení, která jste zadali.
 

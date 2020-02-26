@@ -1,8 +1,8 @@
 ---
 title: Používejte lovecké záložky pro vyšetřování dat v Azure Sentinel
 description: Tento článek popisuje, jak použít záložky pro lovecké funkce Azure Sentinel k udržení přehledu o datech.
-author: cabailey
-ms.author: cabailey
+author: yelevin
+ms.author: yelevin
 manager: rkarlin
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: azure-sentinel
@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/24/2019
-ms.openlocfilehash: 457898e257aa7a347ff99d0987c5ad594637b5f4
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: eacc104bf7157732f91507f631bcda2cd166bfb3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563730"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588684"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Udržujte si přehled o datech během přilovu k Azure Sentinel
 
@@ -34,7 +34,7 @@ Pokud zjistíte, že je v současnosti ve verzi Preview něco, co naléhavě mus
 
 Také ve verzi Preview můžete vizualizovat data v záložkách kliknutím na tlačítko **prozkoumat** v podrobnostech záložky. Tím se spustí šetření, ve kterém si můžete prohlédnout, prozkoumat a vizuálně komunikovat vaše závěry pomocí interaktivního diagramu entit a Timeline grafu.
 
-## <a name="add-a-bookmark"></a>Přidání záložky
+## <a name="add-a-bookmark"></a>Přidat záložku
 
 1. V Azure Portal přejděte na **Sentinel** > **Threat Management** > **lovu** a spusťte dotazy pro podezřelé a neobvykléé chování.
 

@@ -3,12 +3,12 @@ title: Co je nového v Microsoft Azure Backup serveru
 description: Microsoft Azure Backup Server poskytuje rozšířené možnosti zálohování pro ochranu virtuálních počítačů, souborů a složek, úloh a dalších. Přečtěte si, jak nainstalovat nebo upgradovat na Azure Backup Server v3.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 564b11ebf14652166733c226485dfab94e69dfbb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172225"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582802"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Co je nového v Microsoft Azure Backup serveru
 
@@ -18,7 +18,7 @@ MABS V3 obsahuje následující funkce:
 
 ## <a name="volume-to-volume-migration"></a>Migrace svazků na svazek
 
-S Moderní úložiště zálohování (MBS) ve službě MABS v2 jsme oznámili úložiště s podporou úloh, ve kterém nakonfigurujete určité úlohy, které se mají zálohovat do konkrétního úložiště, a to na základě vlastností úložiště. Po dokončení konfigurace ale může být potřeba přesunout zálohy určitých zdrojů dat do jiného úložiště, aby se vyoptimalizované využití prostředků vyhledalo. MABS V3 vám dává možnost migrovat zálohy a nakonfigurovat jejich uložení na jiný svazek ve [třech krocích](https://blogs.technet.microsoft.com/dpm/2017/10/24/storage-migration-with-dpm-2016-mbs/).
+S Moderní úložiště zálohování (MBS) ve službě MABS v2 jsme oznámili úložiště s podporou úloh, ve kterém nakonfigurujete určité úlohy, které se mají zálohovat do konkrétního úložiště, a to na základě vlastností úložiště. Po dokončení konfigurace ale může být potřeba přesunout zálohy určitých zdrojů dat do jiného úložiště, aby se vyoptimalizované využití prostředků vyhledalo. MABS V3 vám dává možnost migrovat zálohy a nakonfigurovat jejich uložení na jiný svazek ve [třech krocích](https://techcommunity.microsoft.com/t5/system-center-blog/sc-2016-dpm-ur4-migrate-backup-storage-in-3-simple-steps/ba-p/351842).
 
 ## <a name="prevent-unexpected-data-loss"></a>Ochrana před neočekávanou ztrátou dat
 

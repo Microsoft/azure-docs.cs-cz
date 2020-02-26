@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: e3dd086108ba8c518bf7caf027f149de2ab70e57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c4dc97453fe50865db74f8918ef3dffdb4013b4f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980618"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588803"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Správa prostředků Azure Cosmos DB rozhraní API Cassandra pomocí šablon Azure Resource Manager
 
@@ -25,7 +25,7 @@ Vytvořte Azure Cosmos DB prostředky pomocí šablony Azure Resource Manager. T
 > Názvy účtů musí být malé a 44 nebo méně znaků.
 > Chcete-li aktualizovat RU/s, šablonu znovu odešlete s aktualizovanými hodnotami vlastností propustnosti.
 
-[!code-json[create-cosmos-Cassandra](~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json":::
 
 ## <a name="deploy-with-the-azure-cli"></a>Nasazení pomocí Azure CLI
 
@@ -56,7 +56,7 @@ Příkaz `az cosmosdb show` zobrazuje nově vytvořený účet Azure Cosmos po z
 
 ## <a name="next-steps"></a>Další kroky
 
-Tady je několik dalších zdrojů:
+Tady je několik dalších prostředků:
 
 - [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager/)
 - [Azure Cosmos DB schéma poskytovatele prostředků](/azure/templates/microsoft.documentdb/allversions)

@@ -3,22 +3,22 @@ title: Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
 description: Nakonfigurujte nastavení diagnostiky Log Analytics pro všechny trezory v daném oboru pomocí Azure Policy
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: bdc3dd1da9d3ddc966b664f8bec479f5a8ff10f2
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: c92957cab3e1ed745e7031e3c6f32e7ecda550a5
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501079"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584502"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>Konfigurace nastavení diagnostiky trezoru ve velkém měřítku
 
-Řešení pro vytváření sestav, které poskytuje Azure Backup, využívá Log Analytics (LA). Aby bylo možné odesílat data z daného trezoru do systému LA, je nutné pro tento trezor vytvořit [nastavení diagnostiky](https://aka.ms/AzureBackupDiagnosticsDocs) .
+Řešení pro vytváření sestav, které poskytuje Azure Backup, využívá Log Analytics (LA). Aby bylo možné odesílat data z daného trezoru do systému LA, je nutné pro tento trezor vytvořit [nastavení diagnostiky](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events) .
 
 Často ruční přidání nastavení diagnostiky na trezor může být náročný úkol. Kromě toho musí mít všechny vytvořené nové trezory taky povolené nastavení diagnostiky, aby bylo možné zobrazit sestavy pro tento trezor. 
 
 Pro zjednodušení vytváření nastavení diagnostiky se škálováním (s LA jako cílovou) Azure Backup poskytuje integrovaný [Azure Policy](https://docs.microsoft.com/azure/governance/policy/). Tato zásada přidá nastavení diagnostiky LA do všech trezorů v daném předplatném nebo skupině prostředků. Následující části obsahují pokyny k použití této zásady.
 
-## <a name="supported-scenarios"></a>Podporované scénáře 
+## <a name="supported-scenarios"></a>Podporované scénáře
 
 * Zásady je možné použít v jednom okamžiku pro všechny trezory Recovery Services v rámci konkrétního předplatného (nebo do skupiny prostředků v rámci předplatného). Uživatel, který přiřazuje zásadu, musí mít oprávnění Owner (Vlastník) k předplatnému, ke kterému je zásada přiřazená.
 
@@ -49,6 +49,7 @@ Chcete-li přiřadit zásadu pro trezory v požadovaném oboru, postupujte podle
 ![Základy přiřazení zásad](./media/backup-azure-policy-configure-diagnostics/policy-assignment-basics.png)
 
 7. V části **parametry**zadejte následující informace:
+
 * **Název profilu** – název, který se přiřadí k nastavení diagnostiky, které vytvořila zásada.
 * **Log Analytics Workspace** – pracovní prostor Log Analytics, ke kterému má být přidruženo nastavení diagnostiky. Diagnostická data všech trezorů v oboru přiřazení zásad budou vložena do zadaného pracovního prostoru LA.
 
@@ -69,7 +70,7 @@ Chcete-li přiřadit zásadu pro trezory v požadovaném oboru, postupujte podle
 * Pro trezor není k dispozici žádné nastavení diagnostiky.
 * Pro trezor jsou k dispozici nastavení diagnostiky, ale žádná z těchto nastavení v přepínači nepovoluje **všechny** události specifické pro prostředky s možností La jako cíl a vybrané **prostředky** . 
 
-Takže i když má uživatel trezor s povolenou událostí AzureBackupReport v režimu AzureDiagnostics (který jsou podporované sestavami zálohování), úloha nápravy se u tohoto trezoru bude vztahovat i v případě, že konkrétní režim prostředků je doporučeným způsobem, jak vytvořit nastavení diagnostiky, a to až [dál](https://aka.ms/AzureBackupDiagnosticsDocs#legacy-event). 
+Takže i když má uživatel trezor s povolenou událostí AzureBackupReport v režimu AzureDiagnostics (který jsou podporované sestavami zálohování), úloha nápravy se u tohoto trezoru bude vztahovat i v případě, že konkrétní režim prostředků je doporučeným způsobem, jak vytvořit nastavení diagnostiky, a to až [dál](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event).
 
 Pokud má uživatel navíc trezor s povolenou pouze podmnožinou všech šesti událostí specifických pro prostředky, bude úloha nápravy platit pro tento trezor, protože sestavy zálohování budou fungovat podle očekávání pouze v případě, že jsou povoleny všechny 6 událostí konkrétního prostředku.
 
@@ -82,6 +83,7 @@ Pokud má uživatel navíc trezor s povolenou pouze podmnožinou všech šesti u
 > Všimněte si, že úloha nápravy **selže,** pokud stávající nastavení diagnostiky bude jako cíl povoleno pouze AzureBackupReport s pracovním prostorem X, protože v tomto případě se nebude překrývat mezi událostmi povolenými existujícím nastavením a událostmi, které jsou povoleny nastavením vytvořeným úlohou nápravy.
 
 ## <a name="next-steps"></a>Další kroky
-- [Naučte se používat sestavy zálohování.](https://aka.ms/AzureBackupReportDocs)
-- [Další informace o Azure Policy](https://docs.microsoft.com/azure/governance/policy/)
-- [K automatickému povolení zálohování pro všechny virtuální počítače v oboru udělte použít Azure Policy.](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)
+
+* [Naučte se používat sestavy zálohování.](https://docs.microsoft.com/azure/backup/configure-reports)
+* [Další informace o Azure Policy](https://docs.microsoft.com/azure/governance/policy/)
+* [K automatickému povolení zálohování pro všechny virtuální počítače v oboru udělte použít Azure Policy.](https://docs.microsoft.com/azure/backup/backup-azure-auto-enable-backup)

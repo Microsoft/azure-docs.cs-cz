@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6fc4b40e9b65f17b0af61b601826279e99410ed1
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 826cc155bae037121ddc303a6e1bf300e2d50a27
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920761"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589296"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Výstrahy zabezpečení ve službě Azure Security Center
 
@@ -35,9 +35,9 @@ Kromě toho útočníci vyvinuli své metody pro přepočet obrany na základě 
 
 ## <a name="what-are-security-alerts"></a>Co jsou výstrahy zabezpečení?
 
-Výstrahy jsou oznámení, která Security Center generuje, když zjistí ohrožení vašich prostředků. Security Center určí prioritu a seznam výstrah spolu s informacemi potřebnými k rychlému prozkoumání problému. Security Center také poskytuje doporučení pro nápravu útoku.
+Výstrahy jsou oznámení, která Security Center generují při detekci hrozeb na vašich prostředcích. Security Center určí prioritu a seznam výstrah spolu s informacemi potřebnými k rychlému prozkoumání problému. Security Center také poskytuje doporučení, jak můžete útok napravit.
 
-## Jak Security Center detekuje hrozby? <a name="detect-threats"></a>
+## Jak Security Center detekuje hrozby? <a name="detect-threats"> </a>
 
 Výzkumníci v oblasti zabezpečení ze společnosti Microsoft neustále vyhledávají nové hrozby. Z důvodu globální přítomnosti Microsoftu v cloudu i v místním prostředí mají přístup k obsáhlém sadě telemetrie. Souběžná a různorodá kolekce datových sad umožňuje zjistit nové vzory útoků a trendy v rámci svých místních zákaznických a podnikových produktů a také jejich online služby. Díky tomu dokáže Security Center rychle aktualizovat své algoritmy detekce spolu s tím, jak útočníci provádějí nové a stále sofistikovanější kousky. Tento přístup pomáhá udržet krok s rychle se rozvíjejícím prostředím hrozeb.
 
@@ -72,15 +72,15 @@ Služba Azure Security Center také identifikuje hrozby pomocí detekce anomáli
 Security Center přiřadí závažnosti výstrahám, které vám pomůžou určit prioritu pořadí, ve kterém se zúčastníte jednotlivých výstrah, takže pokud dojde k ohrožení určitého prostředku, můžete se k němu hned dostat. Závažnost je založena na tom, jak se nachází Security Center ve vyhledávání nebo v analytickém formátu, který vydává výstrahu, a také na úrovni spolehlivosti, u kterých došlo k škodlivému záměru za aktivitu, která vedla k upozornění.
 
 > [!NOTE]
-> Závažnost výstrahy se na portálu a v REST API zobrazí jinak, rozdíly jsou uvedeny v následujícím seznamu.
+> Závažnost výstrahy se na portálu a ve verzích REST API, které předchází 01-01-2019, zobrazuje jinak. Pokud používáte starší verzi rozhraní API, upgradujte na konzistentní prostředí popsané níže.
 
-* **Vysoká:** Existuje vysoká pravděpodobnost, že dojde k ohrožení zabezpečení prostředku. Měli byste se podívat hned. Security Center má vysokou důvěru v škodlivém záměru i ve zjištěních použitých k vystavení výstrahy. Například výstraha, která detekuje spuštění známého škodlivého nástroje, jako je například Mimikatz, společný nástroj používaný ke krádeži přihlašovacích údajů.
-* **Střední (nízká REST API)** : pravděpodobně se jedná o podezřelou aktivitu, která může znamenat, že došlo k ohrožení zabezpečení prostředku.
+- **Vysoká:** Existuje vysoká pravděpodobnost, že dojde k ohrožení zabezpečení prostředku. Měli byste se podívat hned. Security Center má vysokou důvěru v škodlivém záměru i ve zjištěních použitých k vystavení výstrahy. Například výstraha, která detekuje spuštění známého škodlivého nástroje, jako je například Mimikatz, společný nástroj používaný ke krádeži přihlašovacích údajů.
+- **Střední:** Je pravděpodobné, že podezřelá aktivita může znamenat, že došlo k ohrožení zabezpečení prostředku.
 Při analýze nebo hledání je jistota Security Center střední a důvěra škodlivého záměru je střední až vysoká. Obvykle se jedná o strojové učení nebo detekci na základě anomálií. Například pokus o přihlášení z umístění neobvyklé.
-* **Nízká (informace v REST API)** : může to být neškodný pozitivní nebo blokovaný útok.
+- **Nízká úroveň:** Může se jednat o neškodný pozitivní nebo blokovaný útok.
    * Security Center není dostatečně jistý, že záměr je škodlivý a aktivita může být Innocent. Například vymazání protokolu je akce, ke které může dojít, když se útočník pokusí skrýt jejich stopy, ale v mnoha případech je rutinní operací prováděná správci.
    * Security Center vám většinou neřekne při zablokování útoků, pokud se nejedná o zajímavý případ, který doporučujeme najít. 
-* **Informativní (tiché v REST API)** : informační výstrahy se zobrazí jenom v případě, že přejdete k incidentu zabezpečení, nebo pokud používáte REST API s konkrétním ID výstrahy. Incident se většinou skládá z několika výstrah. některé z nich se můžou zobrazovat jenom s informacemi, ale v kontextu dalších výstrah se můžou důvěryhodného o bližším vzhledu. 
+- **Informační:** Informační výstrahy se zobrazí jenom v případě, že přejdete k incidentu zabezpečení, nebo pokud použijete REST API s konkrétním ID výstrahy. Incident se většinou skládá z několika výstrah. některé z nich se můžou zobrazovat jenom s informacemi, ale v kontextu dalších výstrah se můžou důvěryhodného o bližším vzhledu. 
  
 
 ## <a name="continuous-monitoring-and-assessments"></a>Průběžné monitorování a posouzení
@@ -119,7 +119,7 @@ Kromě možnosti k dispozici v Azure Portal nebo programově se výstrahy a inci
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o různých typech výstrah, které jsou k dispozici v Security Center. Další informace:
+V tomto článku jste se dozvěděli o různých typech výstrah, které jsou k dispozici v Security Center. Další informace naleznete v tématu:
 
 * [Průvodce plánováním a provozem služby Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide)
 * [Azure Security Center – nejčastější dotazy](https://docs.microsoft.com/azure/security-center/security-center-faq)

@@ -3,7 +3,7 @@ title: Práce s více klienty v Azure Sentinel pro poskytovatele služeb MSSP | 
 description: Jak v Azure Sentinel pro poskytovatele služeb MSSP pracovat s více klienty.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 34997fb3cd91e4540c76ecdd781d21e2ed1bdb07
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.author: yelevin
+ms.openlocfilehash: caa79b572d0024b93abd2d32ca99d92cc2a8b4bb
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240491"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77582071"
 ---
 # <a name="work-with-multiple-tenants-in-azure-sentinel"></a>Práce s více klienty v Azure Sentinel 
 
-Pokud jste spravovaným poskytovatelem zabezpečení (MSSP) a používáte [Azure Lighthouse](../lighthouse/overview.md) ke správě služeb provozu Security Center (SOC) vašich zákazníků, budete moct spravovat prostředky Sentinel Azure pro vaše zákazníky bez připojení přímo k tenant zákazníka, z vlastního tenanta Azure. 
+Pokud jste spravovaným poskytovatelem zabezpečení (MSSP) a používáte [Azure Lighthouse](../lighthouse/overview.md) ke správě služeb provozu Security Center (SOC) vašich zákazníků, budete moct spravovat prostředky Sentinel Azure pro vaše zákazníky bez přímého připojení k tenantovi zákazníka, a to z vlastního tenanta Azure. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 - [Zprovoznění Azure Lighthouse](../lighthouse/how-to/onboard-customer.md)
-- Aby to fungovalo správně, musí být váš tenant zaregistrován pro poskytovatele prostředků Azure Sentinel aspoň na jednom předplatném. Pokud máte ve svém tenantovi registrovanou ověřovací službu Azure, budete připraveni začít. Pokud ne, v Azure Portal vyberte **předplatná** , která následují **poskytovatelé prostředků** , a `Microsoft.Security.Insights` pak vyhledejte a vyberte **zaregistrovat**.
-   ![Kontrolovat poskytovatele prostředků](media/multiple-tenants-service-providers/check-resource-provider.png)
+- Aby to fungovalo správně, musí být váš tenant zaregistrován pro poskytovatele prostředků Azure Sentinel aspoň na jednom předplatném. Pokud máte ve svém tenantovi registrovanou ověřovací službu Azure, budete připraveni začít. Pokud ne, v Azure Portal vyberte **předplatná** , která následují **poskytovatelé prostředků** , a pak vyhledejte `Microsoft.Security.Insights` a vyberte **zaregistrovat**.
+   ![Projděte poskytovatele prostředků](media/multiple-tenants-service-providers/check-resource-provider.png)
 ## <a name="how-to-access-azure-sentinel-from-other-tenants"></a>Přístup k Azure Sentinel z jiných tenantů
 1. V části **adresář + předplatné**vyberte delegované adresáře a předplatné, kde se nacházejí pracovní prostory Azure Sentinel zákazníka.
 

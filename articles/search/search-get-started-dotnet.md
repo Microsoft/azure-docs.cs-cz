@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.openlocfilehash: e9f43f729fc9e08054cd160b82945ee4bcd5821c
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 3d0006a3c77050c1bb21a0da8d6be51e659f933d
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121660"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77589211"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání C# v rámci používání sady .NET SDK
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 > [!NOTE]
 > Ukázkový kód v tomto článku používá pro jednoduchost synchronní metody sady Azure Kognitivní hledání .NET SDK. U produkčních scénářů ale doporučujeme používat asynchronní metody ve vašich vlastních aplikacích, abyste je zachovali a mohli reagovat. Můžete například použít `CreateAsync` a `DeleteAsync` namísto `Create` a `Delete`.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto rychlém startu jsou vyžadovány následující služby a nástroje.
 
@@ -68,7 +68,7 @@ Pro tento projekt použijte verzi 9 `Microsoft.Azure.Search` balíčku NuGet a n
 
 1. V **nabídce nástroje** > **Správce balíčků NuGet**vyberte **Spravovat balíčky NuGet pro řešení...** . 
 
-1. Klikněte na **Procházet**.
+1. Klikněte na **Browse** (Procházet).
 
 1. Vyhledejte `Microsoft.Azure.Search` a vyberte verze 9.0.1 nebo novější.
 
@@ -215,7 +215,7 @@ Index hotelů se skládá z jednoduchých a složitých polí, kde je jednoduch�
 
     namespace AzureSearchQuickstart
     {
-        class Program
+        class Program {
             // Demonstrates index delete, create, load, and query
             // Commented-out code is uncommented in later steps
             static void Main(string[] args)

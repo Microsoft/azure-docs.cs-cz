@@ -3,7 +3,7 @@ title: Připojení dat Azure ATP k Azure Sentinel | Microsoft Docs
 description: Naučte se připojit data ATP Azure ke službě Azure Sentinel.
 services: sentinel
 documentationcenter: na
-author: rkarlin
+author: yelevin
 manager: rkarlin
 editor: ''
 ms.service: azure-sentinel
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
-ms.author: rkarlin
-ms.openlocfilehash: 6f099a0eb6501b6576c4560e0b397d3105bb15f0
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.author: yelevin
+ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75610705"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588582"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Připojení dat z Azure Advanced Threat Protection (ATP)
 
@@ -29,7 +29,7 @@ ms.locfileid: "75610705"
 
 Protokoly z [rozšířené ochrany před internetovými útoky Azure](https://docs.microsoft.com/azure-advanced-threat-protection/what-is-atp) můžete streamovat do Azure Sentinel jediným kliknutím.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Uživatel s oprávněními globálního správce nebo správce zabezpečení
 - Musíte být ve verzi Preview služby Azure ATP a povolit integraci mezi Azure ATP a Microsoft Cloud App Security. Další informace najdete v tématu [integrace rozšířené ochrany Azure](https://docs.microsoft.com/cloud-app-security/aatp-integration).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ad3bb41b6c5faa7bab0e618dd46c48427f364db
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b7c4a0e64e1f08bb3e80eaf67937da10906bfce0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167383"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591604"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Postupy: plánování implementace služby Hybrid Azure Active Directory JOIN
 
@@ -30,7 +30,7 @@ Přenosem zařízení do Azure AD maximalizujete produktivitu uživatelů díky 
 
 Pokud máte místní prostředí Active Directory (AD) a chcete se připojit k počítačům připojeným k doméně AD do služby Azure AD, můžete to provést pomocí hybridního připojení k Azure AD. Tento článek poskytuje související kroky pro implementaci hybridního připojení k Azure AD ve vašem prostředí. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V tomto článku se předpokládá, že jste obeznámeni se [Seznámkou se správou identit zařízení v Azure Active Directory](../device-management-introduction.md).
 
@@ -55,7 +55,7 @@ Připojení k hybridní službě Azure AD podporuje širokou škálu zařízení
 
 ### <a name="windows-current-devices"></a>Aktuální zařízení s Windows
 
-- Windows 10
+- Windows 10
 - Windows Server 2016
 - Windows Server 2019
 
@@ -73,20 +73,21 @@ Jako první krok plánování byste měli zkontrolovat prostředí a určit, jes
 
 ## <a name="review-things-you-should-know"></a>Projděte si věci, které byste měli znát.
 
-Služba připojení k hybridní službě Azure AD se v současné době nepodporuje, pokud vaše prostředí obsahuje jednu doménovou strukturu služby AD synchronizující data identity do více než jednoho tenanta Azure AD.
+### <a name="unsupported-scenarios"></a>Nepodporované scénáře
+- Služba připojení k hybridní službě Azure AD se v současné době nepodporuje, pokud vaše prostředí obsahuje jednu doménovou strukturu služby AD synchronizující data identity do více než jednoho tenanta Azure AD.
 
-Pokud vaše prostředí používá infrastrukturu virtuálních klientských počítačů (VDI), přečtěte si téma [Identita zařízení a virtualizace plochy](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
+- Služba připojení k hybridní službě Azure AD není podporovaná pro Windows Server, na kterém běží role řadič domény (DC).
 
-Připojení k hybridní službě Azure AD se podporuje pro čip TPM kompatibilní se standardem FIPS 2,0 a nepodporuje se pro čip TPM 1,2. Pokud vaše zařízení mají čip TPM kompatibilní se standardem FIPS 1,2, musíte je před tím, než budete pokračovat s hybridním připojením k Azure AD, zakázat. Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislý na výrobci čipu TPM. Požádejte o podporu svého hardwarového výrobce OEM. Od verze Windows 10 1903 se čipy TPM 1,2 nepoužívají pro připojení k hybridní službě Azure AD a zařízení s těmito čipy tpmmi se budou považovat za neexistující TPM.
+- Připojení k hybridní službě Azure AD není podporované v zařízeních Windows nižší úrovně při použití roamingu přihlašovacích údajů nebo cestovního profilu uživatele nebo povinného profilu.
 
-Služba připojení k hybridní službě Azure AD není podporovaná pro Windows Server, na kterém běží role řadič domény (DC).
+### <a name="os-imaging-considerations"></a>Požadavky na vytváření bitových kopií operačního systému
+- Pokud se spoléháte na nástroj pro přípravu systému (Sysprep) a pokud pro instalaci používáte image **starší než Windows 10 1809** , ujistěte se, že image není ze zařízení, které už je zaregistrované ve službě Azure AD, jako připojení k hybridní službě Azure AD.
 
-Připojení k hybridní službě Azure AD není podporované v zařízeních Windows nižší úrovně při použití roamingu přihlašovacích údajů nebo cestovního profilu uživatele nebo povinného profilu.
+- Pokud při vytváření dalších virtuálních počítačů spoléháte na snímek virtuálního počítače, ujistěte se, že snímek není z virtuálního počítače, který je už zaregistrovaný ve službě Azure AD, jako připojení k hybridní službě Azure AD.
 
-Pokud se spoléháte na nástroj pro přípravu systému (Sysprep) a pokud pro instalaci používáte image **starší než Windows 10 1809** , ujistěte se, že image není ze zařízení, které už je zaregistrované ve službě Azure AD, jako připojení k hybridní službě Azure AD.
+- Pokud používáte [Sjednocený filtr zápisu](https://docs.microsoft.com/windows-hardware/customize/enterprise/unified-write-filter) a podobné technologie, které při restartování vymažou změny disku, musí se použít po připojení zařízení k hybridní službě Azure AD. Pokud tyto technologie povolíte před dokončením programu připojení k hybridní službě Azure AD, dojde při každém restartování k tomu, že se zařízení nepřipojí.
 
-Pokud při vytváření dalších virtuálních počítačů spoléháte na snímek virtuálního počítače, ujistěte se, že snímek není z virtuálního počítače, který je už zaregistrovaný ve službě Azure AD, jako připojení k hybridní službě Azure AD.
-
+### <a name="handling-devices-with-azure-ad-registered-state"></a>Zpracování zařízení s registrovaným stavem Azure AD
 Pokud jsou vaše zařízení připojená k doméně Windows 10 [registrovaná](overview.md#getting-devices-in-azure-ad) ve vašem tenantovi, může to vést k duálnímu stavu připojení k hybridní službě Azure AD a k zaregistrovanému zařízení Azure AD. Pro automatické vyřešení tohoto scénáře doporučujeme upgradovat na Windows 10 1803 (s použitím KB4489894) nebo novějším. Ve verzích starších než 1803 budete muset před povolením hybridního připojení k Azure AD ručně odebrat stav registrovaný pro službu Azure AD. V 1803 a vyšších verzích byly provedeny následující změny, aby nedocházelo k tomuto duálnímu stavu:
 
 - Veškerý stávající stav registrovaný v Azure AD by se <i>po připojení zařízení k hybridní službě Azure AD</i>automaticky odebral.
@@ -95,6 +96,11 @@ Pokud jsou vaše zařízení připojená k doméně Windows 10 [registrovaná](o
 
 > [!NOTE]
 > Zařízení zaregistrované v Azure AD se neodebere automaticky, pokud ho spravuje Intune.
+
+### <a name="additional-considerations"></a>Další aspekty
+- Pokud vaše prostředí používá infrastrukturu virtuálních klientských počítačů (VDI), přečtěte si téma [Identita zařízení a virtualizace plochy](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
+
+- Připojení k hybridní službě Azure AD se podporuje pro čip TPM kompatibilní se standardem FIPS 2,0 a nepodporuje se pro čip TPM 1,2. Pokud vaše zařízení mají čip TPM kompatibilní se standardem FIPS 1,2, musíte je před tím, než budete pokračovat s hybridním připojením k Azure AD, zakázat. Microsoft neposkytuje žádné nástroje pro zakázání režimu FIPS pro čipy TPM, protože je závislý na výrobci čipu TPM. Požádejte o podporu svého hardwarového výrobce OEM. Od verze Windows 10 1903 se čipy TPM 1,2 nepoužívají pro připojení k hybridní službě Azure AD a zařízení s těmito čipy tpmmi se budou považovat za neexistující TPM.
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Kontrola řízeného ověřování pro připojení k hybridní službě Azure AD
 
@@ -148,10 +154,10 @@ V následující tabulce najdete podrobné informace o podpoře místních UPN s
 
 | Typ místního hlavního názvu uživatele služby AD | Typ domény | Verze Windows 10 | Popis |
 | ----- | ----- | ----- | ----- |
-| Balíček | Federovaní | Z verze 1703 | Obecně dostupná |
-| Bez směrování | Federovaní | Z verze 1803 | Obecně dostupná |
-| Balíček | Spravované | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
-| Bez směrování | Spravované | Nepodporováno | |
+| Balíček | Federované | Z verze 1703 | Obecně dostupná |
+| Bez směrování | Federované | Z verze 1803 | Obecně dostupná |
+| Balíček | Spravovaní | Z verze 1803 | Všeobecně dostupná služba Azure AD SSPR ve Windows zamykací obrazovky není podporovaná. |
+| Bez směrování | Spravovaní | Nepodporuje se | |
 
 ## <a name="next-steps"></a>Další kroky
 

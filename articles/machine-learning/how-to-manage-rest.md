@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/31/2020
-ms.openlocfilehash: e1e19f985c9aa02759c6fff3c634c216c7ef42ef
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525545"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580624"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
 
@@ -32,7 +32,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Použití požadavků DELETE k vyčištění prostředků 
 > * Použití autorizace na základě klíčů k určení skóre nasazených modelů
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - **Předplatné Azure** , pro které máte práva správce. Pokud nemáte takové předplatné, vyzkoušejte [bezplatné nebo placené osobní předplatné](https://aka.ms/AMLFree) .
 - [Pracovní prostor Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
@@ -54,7 +54,7 @@ Načtení tokenu:
 1. Otevřete okno terminálu.
 1. Do příkazového řádku zadejte následující kód.
 1. `{your-tenant-id}`, `{your-client-id}`a `{your-client-secret}`nahraďte vlastními hodnotami. V celém tomto článku jsou řetězce obklopené složenými závorkami proměnné, které budete muset nahradit vlastními odpovídajícími hodnotami.
-1. Spusťte příkaz
+1. Spuštěním příkazu
 
 ```bash
 curl -X POST https://login.microsoftonline.com/{your-tenant-id}/oauth2/token \
@@ -201,7 +201,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 
 Všimněte si, že pokud chcete zobrazit seznam experimentů, začíná při `history/v1.0` při výpisu modelů cesta začíná na `modelmanagement/v1.0`. REST API je rozdělen do několika operačních skupin, z nichž každá má odlišnou cestu. Referenční dokumentace rozhraní API na odkazech níže uvádějí operace, parametry a kódy odpovědí pro různé operace.
 
-|Plošný|Cesta|Odkaz|
+|Oblast|Cesta|Referenční informace|
 |-|-|-|
 |Artefakty|artefakt/v 2.0/|[Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/azureml/artifacts)|
 |Úložiště dat|úložiště dat/v 1.0/|[Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/azureml/datastores)|
@@ -401,6 +401,23 @@ providers/Microsoft.Storage/storageAccounts/{your-storage-account-name}"
 ```
 
 Měli byste obdržet odpověď `202 Accepted` a v vrácených hlavičkách `Location` identifikátor URI. Tento identifikátor URI můžete získat pro informace o nasazení, včetně užitečných ladicích informací, pokud dojde k potížím s některým závislými prostředky (například pokud jste zapomněli povolit přístup správce k vašemu registru kontejneru). 
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+### <a name="resource-provider-errors"></a>Chyby poskytovatele prostředků
+
+[!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
+
+### <a name="moving-the-workspace"></a>Přesun pracovního prostoru
+
+> [!WARNING]
+> Přesunutím pracovního prostoru Azure Machine Learning do jiného předplatného nebo přesunutím vlastnícího předplatného na nového tenanta se nepodporuje. V takovém případě může dojít k chybám.
+
+### <a name="deleting-the-azure-container-registry"></a>Odstranění Azure Container Registry
+
+Azure Machine Learning pracovní prostor používá pro některé operace Azure Container Registry (ACR). Automaticky vytvoří instanci ACR, když ji poprvé potřebuje.
+
+[!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

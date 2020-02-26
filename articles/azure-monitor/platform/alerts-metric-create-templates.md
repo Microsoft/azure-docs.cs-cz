@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 2/17/2020
+ms.date: 2/24/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: f402effe40042740e74220d177c54963f6c45916
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2f2940496682372b0d00d2b419aa941dcedd533c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444005"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586525"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -1251,7 +1251,7 @@ Pomocí následující šablony můžete vytvořit pokročilejší pravidlo výs
 
 Další informace o vlastních metrikách v Azure Monitor najdete v tématu [vlastní metriky v Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
 
-Při vytváření pravidla výstrahy na vlastní metriky musíte zadat název metriky i obor názvů metriky.
+Při vytváření pravidla výstrahy na vlastní metriky musíte zadat název metriky i obor názvů metriky. Ujistěte se také, že je již hlášena vlastní metrika, protože nemůžete vytvořit pravidlo upozornění pro vlastní metriku, která ještě neexistuje.
 
 Následující kód JSON uložte jako customstaticmetricalert. JSON pro účely tohoto Názorného postupu.
 

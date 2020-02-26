@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 2/23/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 820e7187332b02993d3d8bcba9c01958cfbdd61d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b8a42723a9b56665160e660c0ea1451253c3d185
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965822"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588973"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Autorizace přístupu k objektům blob a frontám pomocí Azure Active Directory
 
@@ -27,7 +27,7 @@ Autorizaci s Azure AD je k dispozici pro všechny účty pro obecné účely a B
 
 BLOB Storage dále podporuje vytváření sdílených přístupových podpisů (SAS), které jsou podepsané pomocí přihlašovacích údajů Azure AD. Další informace najdete v tématu [udělení omezeného přístupu k datům pomocí sdílených přístupových podpisů](storage-sas-overview.md).
 
-Služba soubory Azure podporuje autorizaci pomocí Azure AD přes SMB jenom pro virtuální počítače připojené k doméně. Další informace o používání služby Azure AD přes SMB pro soubory Azure najdete v tématu [přehled Azure Active Directory autorizaci pomocí protokolu SMB pro soubory Azure](../files/storage-files-active-directory-overview.md).
+Služba soubory Azure podporuje autorizaci se službou AD (Preview) nebo Azure služba AD DS (GA) přes protokol SMB jenom pro virtuální počítače připojené k doméně. Další informace o používání služby AD (Preview) nebo Azure služba AD DS (GA) prostřednictvím protokolu SMB pro soubory Azure najdete v tématu [Přehled podpory ověřování na základě identity souborů Azure pro přístup přes protokol SMB](../files/storage-files-active-directory-overview.md).
 
 Autorizace pomocí Azure AD není pro Azure Table Storage podporovaná. Pomocí sdíleného klíče můžete autorizovat požadavky na úložiště tabulek.
 

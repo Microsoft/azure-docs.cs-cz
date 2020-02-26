@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6d68599af644e5bb03fc850a880b07c6a4d262a9
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 54ad9109a23b0fb25470987c2bc863934864b83f
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370483"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77580674"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Přístup k datům ve službě Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak snadno získat přístup k datům ve službě 
 
 Z [těchto řešení Azure Storage](#matrix)můžete vytvořit úložiště dat. Pro Nepodporovaná řešení úložišť a za účelem úspory nákladů na výstup dat během experimentů machine learningu doporučujeme [přesunout data](#move) na podporovaná Azure Storage řešení. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Budete potřebovat:
 - Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
@@ -57,10 +57,10 @@ Budete potřebovat:
 [Azure&nbsp;Data Lake&nbsp;Storage gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Instanční objekt| ✓ | ✓ | ✓ |✓
 Databáze&nbsp;Azure&nbsp;SQL| Ověřování pomocí SQL <br>Instanční objekt| ✓ | ✓ | ✓ |✓
 PostgreSQL Azure&nbsp; | Ověřování pomocí SQL| ✓ | ✓ | ✓ |✓
-&nbsp;databáze služby Azure&nbsp;pro&nbsp;MySQL | Ověřování pomocí SQL|  | ✓ | ✓ |✓
-Datacihly&nbsp;systém souborů&nbsp;| Bez ověřování | | ✓* | ✓ * |✓* 
+&nbsp;databáze služby Azure&nbsp;pro&nbsp;MySQL | Ověřování pomocí SQL|  | ✓* | ✓* |✓*
+Datacihly&nbsp;systém souborů&nbsp;| Bez ověřování | | ✓** | ✓ ** |✓** 
 
-\* podporuje se jenom pro scénáře místních výpočetních cílů.
+*MySQL se podporuje jenom pro [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py)kanálu. <br> \** Datacihly se podporují jenom pro [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) kanálu.
 
 ### <a name="storage-guidance"></a>Pokyny k ukládání
 
@@ -77,7 +77,7 @@ Když zaregistrujete řešení Azure Storage jako úložiště dat, automaticky 
 
 >[!IMPORTANT]
 > V rámci aktuálního procesu vytvoření a registrace úložiště dat Azure Machine Learning ověří, že uživatel zadaný jako objekt zabezpečení (uživatelské jméno, instanční objekt nebo token SAS) má přístup k příslušné službě úložiště. 
-<br>
+<br><br>
 U Azure Data Lake Storageových úložišť Gen 1 a 2 však toto ověření proběhne později, pokud jsou volány metody přístupu k datům, jako je [`from_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py) nebo [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) . 
 
 ### <a name="python-sdk"></a>Python SDK
@@ -87,10 +87,13 @@ Všechny metody registru jsou na třídě [`Datastore`](https://docs.microsoft.c
 Informace, které potřebujete k naplnění `register()` metody, získáte pomocí [Azure Portal](https://portal.azure.com):
 
 1. V levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. 
-2. Informace, jako je název účtu, kontejner a název sdílené složky, najdete na stránce **Přehled** . Pro informace o ověřování, jako je klíč účtu nebo token SAS, přejděte v podokně **Nastavení** na **přístupové klíče** . 
+2. Informace, jako je název účtu, kontejner a název sdílené složky, najdete na stránce **Přehled** . 
+3. Pro informace o ověřování, jako je klíč účtu nebo token SAS, přejděte v podokně **Nastavení** na **přístupové klíče** . 
+
+4. U položek instančního objektu, jako je ID tenanta a ID klienta, přejdete na stránku **přehled** **Registrace aplikací**. 
 
 > [!IMPORTANT]
-> Pokud je váš účet úložiště ve virtuální síti, podporuje se jenom vytváření úložiště dat objektů BLOB v Azure. Pokud chcete vašemu pracovnímu prostoru udělit přístup k vašemu účtu úložiště, nastavte parametr `grant_workspace_access` na `True`.
+> Pokud je váš účet úložiště ve virtuální síti, podporuje se jenom vytváření objektů blob, sdílení souborů, ADLS a ADLS Gen 2 pro úložiště dat **prostřednictvím sady SDK** . Pokud chcete vašemu pracovnímu prostoru udělit přístup k vašemu účtu úložiště, nastavte parametr `grant_workspace_access` na `True`.
 
 Následující příklady ukazují, jak zaregistrovat kontejner objektů blob Azure, sdílenou složku Azure a Azure Data Lake Storage generaci 2 jako úložiště dat. Další služby úložiště najdete v [referenční dokumentaci pro metody `register_azure_*`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods).
 
@@ -134,7 +137,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage generace 2
 
-Pro úložiště dat Azure Data Lake Storage generace 2 (ADLS Gen 2) použijte [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) k registraci úložiště dat přihlašovacích údajů připojeného k úložišti Azure datalake Gen 2 s [oprávněními instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Přečtěte si další informace o [nastavení řízení přístupu pro adls Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+Pro úložiště dat Azure Data Lake Storage generace 2 (ADLS Gen 2) použijte [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) k registraci úložiště dat přihlašovacích údajů připojeného k úložišti Azure datalake Gen 2 s [oprávněními instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Aby bylo možné využívat instanční objekt, potřebujete [zaregistrovat aplikaci](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). Přečtěte si další informace o [nastavení řízení přístupu pro adls Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
 Následující kód vytvoří a zaregistruje úložiště dat `adlsgen2_datastore_name` do pracovního prostoru `ws`. Toto úložiště dat přistupuje k `test` systému souborů v účtu úložiště `account_name` pomocí zadaných přihlašovacích údajů instančního objektu.
 
@@ -162,12 +165,19 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 Vytvořte nové úložiště dat v několika krocích v Azure Machine Learning Studiu:
 
+> [!IMPORTANT]
+> Pokud je váš účet úložiště ve virtuální síti, podporuje se jenom vytváření úložiště dat [prostřednictvím sady SDK](#python-sdk) . 
+
 1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
 1. V levém podokně v části **Spravovat**vyberte **úložiště** .
 1. Vyberte **+ nové úložiště dat**.
 1. Vyplňte formulář pro nové úložiště dat. Formulář se inteligentně aktualizuje na základě vašich výběrů pro Azure Storage typ a typ ověřování.
   
-Můžete najít informace, které potřebujete k naplnění formuláře na [Azure Portal](https://portal.azure.com). V levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. Stránka **Přehled** poskytuje informace, jako je název účtu, kontejner a název sdílené složky. U položek ověřování, jako je klíč účtu nebo token SAS, v podokně **Nastavení** přejít na **klíče účtu** .
+Můžete najít informace, které potřebujete k naplnění formuláře na [Azure Portal](https://portal.azure.com). V levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. Stránka **Přehled** poskytuje informace, jako je název účtu, kontejner a název sdílené složky. 
+
+* U položek ověřování, jako je klíč účtu nebo token SAS, v podokně **Nastavení** přejít na **klíče účtu** . 
+
+* U položek instančního objektu, jako je ID tenanta a ID klienta, přejdete na stránku **přehled** **Registrace aplikací**. 
 
 Následující příklad ukazuje, jak formulář vypadá při vytváření úložiště dat objektů BLOB v Azure: 
     
@@ -211,7 +221,7 @@ ws.set_default_datastore('your datastore name')
 
 Metody [`upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#upload-src-dir--target-path-none--overwrite-false--show-progress-true-) a [`download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) popsané v následujících příkladech jsou specifické pro a pracují stejně jako třídy [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) a [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) .
 
-### <a name="upload"></a>Nahrát
+### <a name="upload"></a>Odeslat
 
 Nahrát buď adresář nebo jednotlivé soubory do úložiště dat pomocí sady Python SDK:
 
@@ -226,7 +236,7 @@ Parametr `target_path` určuje umístění sdílené složky (nebo kontejneru ob
 
 Můžete také nahrát seznam jednotlivých souborů do úložiště dat prostřednictvím metody `upload_files()`.
 
-### <a name="download"></a>Stáhnout
+### <a name="download"></a>Ke stažení
 
 Stáhněte data z úložiště dat do místního systému souborů:
 

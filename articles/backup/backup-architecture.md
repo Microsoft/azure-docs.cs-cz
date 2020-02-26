@@ -3,12 +3,12 @@ title: Přehled architektury
 description: Poskytuje přehled architektury, komponent a procesů, které používá služba Azure Backup.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: f311f6d49a776a49080675f3c1ccc28a7a27cb92
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: b093c6702bb26fe537622727fe1b623141bf4160
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963933"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584383"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektura Azure Backup a součásti
 
@@ -135,7 +135,7 @@ Zálohování disků s odstraněnými duplicitními daty | | | ![Částečně][y
     - Data snímku se nemusí hned zkopírovat do trezoru. V časech špičky může zálohování trvat několik hodin. Celková doba zálohování pro virtuální počítač bude pro denní zásady zálohování kratší než 24 hodin.
 1. Po odeslání dat do trezoru se vytvoří bod obnovení. Ve výchozím nastavení se snímky uchovávají po dobu dvou dnů, než se odstraní. Tato funkce umožňuje operaci obnovení z těchto snímků, takže vystřihuje časy obnovení. Zkracuje dobu potřebnou k transformaci a zkopírování dat zpět z trezoru. Informace najdete v tématu [Azure Backup možnosti okamžitého obnovení](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
 
-Virtuální počítače Azure vyžadují přístup k Internetu pro řídicí příkazy. Pokud zálohujete úlohy do virtuálního počítače (například SQL Server zálohy databáze), data back-endu také potřebují přístup k Internetu.
+Nemusíte výslovně povolit připojení k Internetu pro zálohování virtuálních počítačů Azure.
 
 ![Zálohování virtuálních počítačů Azure](./media/backup-architecture/architecture-azure-vm.png)
 

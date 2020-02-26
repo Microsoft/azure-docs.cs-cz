@@ -3,12 +3,12 @@ title: Datový model Azure Monitor protokolů
 description: V tomto článku se dozvíte informace o Azure Monitor Log Analytics datových modelů pro Azure Backup data.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 121117d20f5b9eb6e53da1b8884557fcfb46ff76
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: d14634c5e317682462e77e0549f064c75059f15c
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77501001"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586372"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics datový model pro Azure Backup data
 
@@ -18,13 +18,13 @@ Pomocí Log Analytics datového modelu můžete vytvářet vlastní výstrahy z 
 
 > [!NOTE]
 >
-> Tento datový model se odkazuje na režim Azure Diagnostics odesílání diagnostických událostí do Log Analytics (LA). Informace o datovém modelu pro nový režim konkrétního zdroje najdete v následujícím článku: [datový model pro Azure Backup diagnostické události](https://aka.ms/diagnosticsdatamodel) .
+> Tento datový model se odkazuje na režim Azure Diagnostics odesílání diagnostických událostí do Log Analytics (LA). Informace o datovém modelu pro nový režim konkrétního zdroje najdete v následujícím článku: [datový model pro Azure Backup diagnostické události](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model) .
 
 ## <a name="using-azure-backup-data-model"></a>Použití datového modelu Azure Backup
 
 Následující pole, která jsou součástí datového modelu, můžete použít k vytvoření vizuálů, vlastních dotazů a řídicích panelů podle vašich požadavků.
 
-### <a name="alert"></a>Výstraha
+### <a name="alert"></a>Výstrahy
 
 Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 
@@ -35,9 +35,9 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s výstrahami.
 | AlertStatus_s |Text |Stav výstrahy, například aktivní |
 | AlertOccurrenceDateTime_s |Datum a čas |Datum a čas vytvoření výstrahy |
 | AlertSeverity_s |Text |Závažnost výstrahy, například kritická |
-|AlertTimeToResolveInMinutes_s    | Počet        |Čas potřebný k vyřešení výstrahy. Prázdné pro aktivní výstrahy.         |
+|AlertTimeToResolveInMinutes_s    | Číslo        |Čas potřebný k vyřešení výstrahy. Prázdné pro aktivní výstrahy.         |
 |AlertConsolidationStatus_s   |Text         |Zjistit, jestli je výstraha konsolidovaná výstraha nebo ne         |
-|CountOfAlertsConsolidated_s     |Počet         |Počet sloučených výstrah, pokud se jedná o konsolidovanou výstrahu          |
+|CountOfAlertsConsolidated_s     |Číslo         |Počet sloučených výstrah, pokud se jedná o konsolidovanou výstrahu          |
 |AlertRaisedOn_s     |Text         |Typ entity, na které se aktivuje výstraha         |
 |AlertCode_s     |Text         |Kód pro jedinečnou identifikaci typu výstrahy         |
 |RecommendedAction_s   |Text         |Akce doporučená pro vyřešení výstrahy         |
@@ -155,11 +155,11 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | JobStartDateTime_s |Datum a čas |Datum a čas spuštění úlohy |
 | BackupStorageDestination_s |Text |Cíl úložiště zálohování, třeba Cloud, disk  |
 | AdHocOrScheduledJob_s |Text | Pole, které určuje, jestli má být úloha ad hoc nebo plánovaná |
-| JobDurationInSecs_s | Počet |Celková doba trvání úlohy v sekundách |
-| DataTransferredInMB_s | Počet |Data přenesená v MB pro tuto úlohu|
+| JobDurationInSecs_s | Číslo |Celková doba trvání úlohy v sekundách |
+| DataTransferredInMB_s | Číslo |Data přenesená v MB pro tuto úlohu|
 | JobUniqueId_g |Text |Jedinečné ID pro identifikaci úlohy |
 | RecoveryJobDestination_s |Text | Cíl úlohy obnovení, kde se data obnovují |
-| RecoveryJobRPDateTime_s |Datum a čas | Datum a čas vytvoření bodu obnovení, který se má obnovit |
+| RecoveryJobRPDateTime_s |DateTime | Datum a čas vytvoření bodu obnovení, který se má obnovit |
 | RecoveryJobRPLocation_s |Text | Umístění, kam se uložil bod obnovení, který se má obnovit|
 | SourceSystem |Text |Zdrojový systém aktuálních dat – Azure |
 | ResourceId |Text |Identifikátor prostředku pro shromažďovaná data Například ID prostředku úložiště Recovery Services|
@@ -168,7 +168,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | ResourceProvider |Text |Poskytovatel prostředků, pro který se shromažďují data Například Microsoft. RecoveryServices |
 | ResourceType |Text |Typ prostředku, pro který se shromažďují data Například trezory |
 
-### <a name="policy"></a>Zásady
+### <a name="policy"></a>Zásada
 
 Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 
@@ -297,8 +297,8 @@ Tato tabulka poskytuje základní pole související s úložištěm, která pro
 | BackupItemUniqueId_s |Text |Jedinečné ID, které slouží k identifikaci zálohované položky související s entitou úložiště |
 | BackupManagementServerUniqueId_s |Text |Jedinečné ID, které slouží k identifikaci management server zálohy související s entitou úložiště|
 | VaultUniqueId_s |Text |Jedinečné ID, které slouží k identifikaci trezoru souvisejícího s entitou úložiště|
-| StorageConsumedInMBs_s |Počet|Velikost úložiště spotřebovaného odpovídající zálohovanou položkou v příslušném úložišti |
-| StorageAllocatedInMBs_s |Počet |Velikost úložiště přidělená odpovídající zálohovanou položkou v odpovídajícím úložišti typu disk|
+| StorageConsumedInMBs_s |Číslo|Velikost úložiště spotřebovaného odpovídající zálohovanou položkou v příslušném úložišti |
+| StorageAllocatedInMBs_s |Číslo |Velikost úložiště přidělená odpovídající zálohovanou položkou v odpovídajícím úložišti typu disk|
 
 ### <a name="vault"></a>Trezor
 

@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/03/2019
+ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ea6a8963d0905036f759fbab792492cc63d551c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e9719f1a081da688501e6dbea0fc1b865168077c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806741"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77591213"
 ---
 # <a name="know-the-terms"></a>Seznámení s podmínkami
 
@@ -38,7 +38,7 @@ V průvodci architekturou a technickým nasazením se často používá několik
    Uživatelé domény v místní doméně mají přístup k serverům a spouštějí služby na těchto virtuálních počítačích (například služby DBMS). Je možné komunikovat a překlad názvů mezi virtuálními počítači nasazenými místně a virtuálními počítači nasazenými v Azure. Tento scénář je typický pro způsob, jakým se nasazují většina prostředků SAP. Další informace najdete v tématu [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [vytvoření virtuální sítě s připojením typu Site-to-site pomocí Azure Portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 - **Tenant**: zákazník nasazený v aplikaci Hana razítko s velkými instancemi se dostane do tenanta jako izolované *.* Tenant je izolovaný v síti, úložišti a výpočetní vrstvě z jiných tenantů. Úložiště a výpočetní jednotky přiřazené různým klientům se nemůžou vzájemně zobrazit ani vzájemně komunikovat na úrovni razítka velké instance služby HANA. Zákazník se může rozhodnout, že mají nasazení v různých klientech. I potom neexistuje žádná komunikace mezi klienty na úrovni razítka velké instance HANA.
 - **Kategorie SKU**: u velké instance Hana jsou nabízeny následující dvě kategorie SKU:
-    - **Třída Type I**: S72, S72m, S96, S144, S144m, S192, S192m, S192xm a S224
+    - **Třída Type I**: S72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 a S224m
     - **Type II – třída**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm a S960m
 - **Razítko**: definuje interní velikost nasazení od Microsoftu velkých instancí Hana. Než bude možné nasazovat velké jednotky instancí HANA, musí být v umístění datového centra nasazené razítko pro velké instance, které se skládá z výpočetních, síťových a úložných stojanů. Toto nasazení se nazývá razítko velkého výskytu instance HANA nebo revize 4 (viz níže) na základě použití alternativního **řádku velkých instancí** .
 - **Revize**: Existují dvě různé revize razítka pro velká instance pro všechna razítka Hana. Liší se v architektuře a blízkosti hostitelů virtuálních počítačů Azure.

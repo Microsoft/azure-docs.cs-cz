@@ -3,12 +3,12 @@ title: Automatické povolení zálohování při vytváření virtuálních poč
 description: Článek popisující, jak použít Azure Policy k automatickému povolení zálohování pro všechny virtuální počítače vytvořené v daném oboru
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d423371788f87155328e8f5c9334e47349a68e8
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450122"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77584264"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatické povolení zálohování při vytváření virtuálních počítačů s využitím Azure Policy
 
@@ -16,9 +16,9 @@ Jednou z klíčových zodpovědností správce zálohování nebo dodržování 
 
 V současné době Azure Backup poskytuje předdefinované zásady (pomocí Azure Policy), které se dají přiřadit ke **všem virtuálním počítačům Azure v zadaném umístění v rámci předplatného nebo skupiny prostředků**. Když se tato zásada přiřadí k danému oboru, všechny nové virtuální počítače vytvořené v tomto oboru se automaticky nakonfigurují pro zálohování do **existujícího trezoru ve stejném umístění a předplatném**. Uživatel může zadat trezor a zásady uchovávání, ke kterým by se měly připojené virtuální počítače přidružit.
 
-## <a name="supported-scenarios"></a>Podporované scénáře 
+## <a name="supported-scenarios"></a>Podporované scénáře
 
-* Předdefinované zásady se aktuálně podporují jenom pro virtuální počítače Azure. Uživatelé musí dbát na to, aby zásady uchovávání informací zadané během přiřazování byly zásadami uchovávání virtuálních počítačů. Pokud chcete zobrazit všechny SKU virtuálních počítačů podporované touto zásadou, přečtěte si [Tento](https://aka.ms/PolicySupportedSKUs) dokument.
+* Předdefinované zásady se aktuálně podporují jenom pro virtuální počítače Azure. Uživatelé musí dbát na to, aby zásady uchovávání informací zadané během přiřazování byly zásadami uchovávání virtuálních počítačů. Pokud chcete zobrazit všechny SKU virtuálních počítačů podporované touto zásadou, přečtěte si [Tento](https://docs.microsoft.com/azure/backup/backup-azure-policy-supported-skus) dokument.
 
 * Tato zásada se dá přiřadit k jednomu umístění a předplatnému v jednom okamžiku. Pokud chcete povolit zálohování virtuálních počítačů napříč umístěními a odběry, je potřeba vytvořit víc instancí přiřazení zásad, jednu pro každou kombinaci umístění a předplatného.
 

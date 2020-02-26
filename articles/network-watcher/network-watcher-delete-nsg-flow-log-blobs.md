@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036293"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587205"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Odstranit objekty blob úložiště protokolu toku skupiny zabezpečení sítě v Network Watcher
 
@@ -125,16 +125,16 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
 ```
 
 1. Podle potřeby zadejte ve skriptu následující parametry:
-   - **SubscriptionId** [Povinné]: ID předplatného, ze kterého chcete odstranit objekty blob protokolů NSG Flow.
-   - **Umístění** [Povinné]: _Řetězec umístění_ oblasti skupin zabezpečení sítě, pro kterou chcete odstranit objekty blob protokolů NSG Flow. Tyto informace můžete zobrazit na Azure Portal nebo na GitHubu [](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23).
-   - **Potvrdit** [Nepovinné]: Pokud chcete ručně potvrdit odstranění všech objektů BLOB úložiště, předejte příznak Confirm.
+   - **SubscriptionId** [povinné]: ID předplatného, ze kterého byste chtěli odstranit objekty blob log NSG Flow.
+   - **Location** [povinné]: _řetězec umístění_ oblasti skupin zabezpečení sítě, pro kterou chcete odstranit objekty blob protokolů NSG Flow. Tyto informace můžete zobrazit na Azure Portal nebo na [GitHubu](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23).
+   - **Potvrdit** [volitelné]: předejte příznak Confirm, pokud chcete ručně potvrdit odstranění každého objektu BLOB úložiště.
 
 1. Spusťte uložený skript, jak je znázorněno v následujícím příkladu, kde soubor skriptu byl uložen jako **Delete-NsgFlowLogsBlobs. ps1**:
    ```
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```
     
-## <a name="next-steps"></a>Další postup
-- Zákazníci můžou pomocí [Azure Scheduleru](https://azure.microsoft.com/services/scheduler/) nebo [Azure Automation](https://azure.microsoft.com/services/automation/) automatizovat spouštění skriptu.
+## <a name="next-steps"></a>Další kroky
+- Zákazníci můžou pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) nebo [Azure Automation](https://azure.microsoft.com/services/automation/) automatizovat spouštění skriptu.
 - Další informace o protokolování NSG najdete v tématu [protokoly pro skupiny zabezpečení sítě (skupin zabezpečení sítě) v protokolu Azure monitor](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 

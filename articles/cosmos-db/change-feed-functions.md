@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 215ecc1e392f8e7051173fb6f589fb940c26f17d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 3487de958df100cd43d4191028d0a15d7007067a
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872243"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77604994"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Architektury založené na událostech bez serveru s Azure Cosmos DB a Azure Functions
 
@@ -20,7 +20,7 @@ Azure Functions poskytuje nejjednodušší způsob, jak se připojit ke [kanálu
 
 ![Funkce založené na událostech bez serveru, které pracují s triggerem Azure Functions pro Cosmos DB](./media/change-feed-functions/functions.png)
 
-Pomocí [triggeru Azure Functions pro Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger)můžete využívat funkce škálování a spolehlivého rozpoznávání událostí v [kanálu změn](./change-feed-processor.md), aniž byste museli udržovat žádnou [infrastrukturu pracovních procesů](./change-feed-processor.md). Zaměřte se jenom na logiku funkce Azure Functions, aniž byste se museli starat o zbytek kanálu týkajícího se zdrojů událostí. Trigger můžete dokonce kombinovat s dalšími [vazbami Azure Functions](../azure-functions/functions-triggers-bindings.md#supported-bindings).
+Pomocí [triggeru Azure Functions pro Cosmos DB](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md)můžete využívat funkce škálování a spolehlivého rozpoznávání událostí v [kanálu změn](./change-feed-processor.md), aniž byste museli udržovat žádnou [infrastrukturu pracovních procesů](./change-feed-processor.md). Zaměřte se jenom na logiku funkce Azure Functions, aniž byste se museli starat o zbytek kanálu týkajícího se zdrojů událostí. Trigger můžete dokonce kombinovat s dalšími [vazbami Azure Functions](../azure-functions/functions-triggers-bindings.md#supported-bindings).
 
 > [!NOTE]
 > V současné době se aktivační událost Azure Functions pro Cosmos DB podporuje jenom s rozhraním API Core (SQL).
@@ -30,7 +30,7 @@ Pomocí [triggeru Azure Functions pro Cosmos DB](../azure-functions/functions-bi
 K implementaci toku založeného na události bez serveru budete potřebovat:
 
 * **Monitorovaný kontejner**: monitorovaný kontejner je monitorovaným kontejnerem Azure Cosmos a ukládá data, ze kterých se generuje kanál změn. Jakékoli vložení, aktualizace monitorovaného kontejneru se projeví v kanálu změn kontejneru.
-* **Kontejner zapůjčení**: kontejner zapůjčení udržuje stav napříč několika a dynamickými instancemi funkcí Azure bez serveru a umožňuje dynamické škálování. Tento kontejner zapůjčení může být ručně nebo automaticky vytvořen triggerem Azure Functions pro Cosmos DB. Chcete-li automaticky vytvořit kontejner zapůjčení, nastavte v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)příznak *CreateLeaseCollectionIfNotExists* . Kontejnery zapůjčení musí mít `/id` definici klíče oddílu.
+* **Kontejner zapůjčení**: kontejner zapůjčení udržuje stav napříč několika a dynamickými instancemi funkcí Azure bez serveru a umožňuje dynamické škálování. Tento kontejner zapůjčení může být ručně nebo automaticky vytvořen triggerem Azure Functions pro Cosmos DB. Chcete-li automaticky vytvořit kontejner zapůjčení, nastavte v [konfiguraci](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration)příznak *CreateLeaseCollectionIfNotExists* . Kontejnery zapůjčení musí mít `/id` definici klíče oddílu.
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Vytvoření triggeru Azure Functions pro Cosmos DB
 
@@ -52,6 +52,6 @@ Teď můžete dál získat další informace o službě Change feed v následuj�
 
 * [Přehled kanálu změn](change-feed.md)
 * [Způsoby čtení kanálu změn](read-change-feed.md)
-* [Změna kanálu knihovny procesoru](change-feed-processor.md)
+* [Použití knihovny Change feed Processor](change-feed-processor.md)
 * [Jak pracovat s knihovnou Change feed Processor](change-feed-processor.md)
 * [Výpočetní databáze bez serveru s využitím Azure Cosmos DB a Azure Functions](serverless-computing-database.md)

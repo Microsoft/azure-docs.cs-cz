@@ -3,12 +3,12 @@ title: Zálohování farmy služby SharePoint v Azure Stack
 description: Pomocí Azure Backup Server můžete zálohovat a obnovovat data služby SharePoint v Azure Stack. Tento článek poskytuje informace o konfiguraci farmy služby SharePoint, aby bylo možné ukládat požadovaná data do Azure. Chráněná data služby SharePoint můžete obnovit z disku nebo z Azure.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 06d64be4f09c6fb6ed9dee34a0c7ba0b1bd785e6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: c503ac7a76872e71d1920765656610dd462d4db3
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172498"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77583210"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Zálohování farmy služby SharePoint v Azure Stack
 
@@ -18,7 +18,7 @@ Můžete zálohovat farmu služby SharePoint na Azure Stack a Microsoft Azure po
 
 Azure Backup pro MABS podporuje následující scénáře:
 
-| Úloha | Version | Nasazení služby SharePoint | Ochrana a obnovení |
+| Úloha | Verze | Nasazení služby SharePoint | Ochrana a obnovení |
 | --- | --- | --- | --- |
 | SharePoint |SharePoint 2016, SharePoint 2013, SharePoint 2010 |SharePoint byl nasazen jako virtuální počítač s Azure Stack. <br> -------------- <br> SQL AlwaysOn | Ochrana možností obnovení farmy služby SharePoint: farma, databáze a soubor nebo položka seznamu z bodů obnovení disku.  Farma a obnovení databáze z bodů obnovení Azure. |
 
@@ -26,13 +26,13 @@ Azure Backup pro MABS podporuje následující scénáře:
 
 Před zálohováním farmy služby SharePoint do Azure je třeba potvrdit několik věcí.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat, ujistěte se, že jste [nainstalovali a připravili Azure Backup Server](backup-mabs-install-azure-stack.md) pro ochranu úloh.
 
 ### <a name="protection-agent"></a>Agent ochrany
 
-Agent Azure Backup musí být nainstalován na serveru, na kterém je spuštěna služba SharePoint, na serverech se systémem SQL Server a na všech ostatních serverech, které jsou součástí farmy služby SharePoint. Další informace o tom, jak nastavit agenta ochrany, najdete v tématu [instalace agenta ochrany](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx).  Jedinou výjimkou je, že agenta nainstalujete jenom na jeden server s webovým front-end (WFE). Azure Backup Server vyžaduje, aby byl agent na jednom WFE serveru sloužit jenom jako vstupní bod pro ochranu.
+Agent Azure Backup musí být nainstalován na serveru, na kterém je spuštěna služba SharePoint, na serverech se systémem SQL Server a na všech ostatních serverech, které jsou součástí farmy služby SharePoint. Další informace o tom, jak nastavit agenta ochrany, najdete v tématu [instalace agenta ochrany](https://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent?view=sc-dpm-2019).  Jedinou výjimkou je, že agenta nainstalujete jenom na jeden server s webovým front-end (WFE). Azure Backup Server vyžaduje, aby byl agent na jednom WFE serveru sloužit jenom jako vstupní bod pro ochranu.
 
 ### <a name="sharepoint-farm"></a>Farmy služby SharePoint
 
@@ -53,7 +53,7 @@ Pokud má farma služby SharePoint SQL Server databáze nakonfigurované s alias
 
 Než budete moct použít MABS k ochraně SharePointu, musíte nakonfigurovat službu SharePoint VSS Writer (WSS Writer Service) pomocí **ConfigureSharePoint. exe**.
 
-**ConfigureSharePoint. exe** najdete na front-end webovém serveru ve složce [Instalační cesta nástroje MABS]. Tento nástroj poskytuje agentovi ochrany pověření pro farmu služby SharePoint. Spouštíte ji na jednom serveru WFE. Pokud máte více serverů WFE, při konfiguraci skupiny ochrany vyberte jenom jednu.
+**ConfigureSharePoint. exe** najdete na front-end webovém serveru ve složce [Instalační cesta nástroje MABS]. Tento nástroj poskytuje agentovi ochrany pověření pro farmu služby SharePoint. Můžete ho spustit na jednom serveru WFE. Pokud máte více serverů WFE, při konfiguraci skupiny ochrany vyberte jenom jednu.
 
 ### <a name="to-configure-the-sharepoint-vss-writer-service"></a>Konfigurace služby SharePoint VSS Writer
 
@@ -97,7 +97,7 @@ Až nakonfigurujete MABS a farmu služby SharePoint, jak je vysvětleno dříve,
    >
 5. Na stránce **zadat krátkodobé cíle** vyberte preferovaný **Rozsah uchování**a určete, kdy se mají zálohy provádět.
 
-    ![Zadat krátkodobé cíle](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
+    ![Určení krátkodobých cílů](./media/backup-azure-backup-sharepoint/specify-short-term-goals2.png)
 
    > [!NOTE]
    > Vzhledem k tomu, že se obnovení nejčastěji vyžaduje pro data, která jsou starší než pět dnů, jsme vybrali dobu uchovávání pět dní na disku a zajistili, že záloha proběhne během neprodukčních hodin, a to v tomto příkladu.

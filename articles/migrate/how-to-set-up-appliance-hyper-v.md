@@ -3,12 +3,12 @@ title: Nastavení zařízení Azure Migrate pro Hyper-V
 description: Naučte se, jak nastavit zařízení Azure Migrate pro vyhodnocení a migraci virtuálních počítačů Hyper-V.
 ms.topic: article
 ms.date: 11/19/2019
-ms.openlocfilehash: 0704adda314b94736b01fe114c3643ef8bd83753
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 8199525a118ffca2cfc03734283eb26facba8483
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029084"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598336"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Nastavení zařízení pro virtuální počítače Hyper-V
 
@@ -48,12 +48,8 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro virtuální pevný disk.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
-3.  U zařízení verze 2.19.11.12 by se měla vygenerovaná hodnota hash shodovat s tímto nastavením.
+3.  U zařízení verze 2.19.11.12 by se měla vygenerovaná hodnota hash shodovat s tímto [nastavením](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security).
 
-  **Algoritmus** | **Hodnota hash**
-  --- | ---
-  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
-  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 
 
 
@@ -62,7 +58,7 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 Naimportujte stažený soubor a vytvořte virtuální počítač.
 
 1. Extrahujte soubor VHD s příponou ZIP do složky na hostiteli Hyper-V, která bude hostovat virtuální počítač zařízení. Jsou extrahovány tři složky.
-2. Spusťte Správce technologie Hyper-V. V nabídce **Akce**klikněte na **importovat virtuální počítač**.
+2. Otevřete Správce technologie Hyper-V. V nabídce **Akce**klikněte na **importovat virtuální počítač**.
 
     ![Nasazení VHD](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
@@ -133,7 +129,7 @@ Připojte se ze zařízení k hostitelům nebo clusterům Hyper-V a spusťte zji
 
 1. Do pole **uživatelské jméno** a **heslo**zadejte přihlašovací údaje účtu, které zařízení použije ke zjištění virtuálních počítačů. Zadejte popisný název přihlašovacích údajů a klikněte na **Uložit podrobnosti**.
 2. Klikněte na **Přidat hostitele**a zadejte podrobnosti o hostiteli nebo clusteru Hyper-V.
-3. Klikněte na tlačítko **ověřit**. Po ověření se zobrazí počet virtuálních počítačů, které se dají zjistit u každého hostitele nebo clusteru.
+3. Klikněte na **Validate** (Ověřit). Po ověření se zobrazí počet virtuálních počítačů, které se dají zjistit u každého hostitele nebo clusteru.
     - Pokud se ověření pro hostitele nepovede, přečtěte si chybu, když najedete myší na ikonu ve sloupci **stav** . Opravte problémy a znovu ověřte.
     - Chcete-li odebrat hostitele nebo clustery, vyberte možnost > **Odstranit**.
     - Z clusteru nelze odebrat konkrétního hostitele. Můžete odebrat jenom celý cluster.

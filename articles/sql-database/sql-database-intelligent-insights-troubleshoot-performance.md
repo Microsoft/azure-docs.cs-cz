@@ -11,16 +11,16 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 386c44cbf7a86e1a1dc92b918d87d0d8c1e60dd2
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c4923e43613653bf3dfe8055754039ab0cf57fca
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744699"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587375"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení potíží s výkonem Azure SQL Database s využitím Intelligent Insights
 
-Tato stránka poskytuje informace o potížích s výkonem Azure SQL Database a spravované instance zjištěné prostřednictvím protokolu [Intelligent Insights](sql-database-intelligent-insights.md) databáze pro diagnostiku výkonu. Telemetrii protokolů diagnostiky se dá streamovat do [Azure monitor protokolů](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage)nebo řešení třetí strany pro vlastní funkce upozorňování a vytváření sestav DevOps.
+Tato stránka poskytuje informace o potížích s výkonem Azure SQL Database a spravované instance zjištěné prostřednictvím protokolu [Intelligent Insights](sql-database-intelligent-insights.md) databáze pro diagnostiku výkonu. Telemetrii protokolů diagnostiky se dá streamovat do [Azure monitor protokolů](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage)nebo řešení třetí strany pro vlastní funkce upozorňování a vytváření sestav DevOps.
 
 > [!NOTE]
 > Rychlý SQL Database průvodce řešením potíží s výkonem pomocí Intelligent Insights najdete v tématu [doporučený vývojový diagram postupu řešení potíží](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) v tomto dokumentu.
@@ -30,12 +30,12 @@ Tato stránka poskytuje informace o potížích s výkonem Azure SQL Database a 
 
 Intelligent Insights automaticky detekuje problémy s výkonem SQL Database a databáze spravované instance na základě doby čekání na zpracování dotazu, chyb nebo časových limitů. Výstupem IT byly zjištěny vzorce výkonu do diagnostického protokolu. V následující tabulce jsou shrnuty zjistitelné vzorce výkonu.
 
-| Zjistitelné vzorce výkonu | Popis pro Azure SQL Database a elastické fondy | Popis databází ve spravované instanci |
+| Rozpoznatelné vzory výkonu | Popis pro Azure SQL Database a elastické fondy | Popis databází ve spravované instanci |
 | :------------------- | ------------------- | ------------------- |
 | [Dosažení limitů prostředků](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | U monitorovaného předplatného se dosáhlo spotřebování dostupných prostředků (DTU), pracovních vláken v databázi nebo relací přihlášení k databázi. To má vliv na výkon SQL Database. | Spotřeba prostředků procesoru se blíží omezením spravovaných instancí. To má vliv na výkon databáze. |
 | [Zvýšení zatížení](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Zjistilo se zvýšení zátěže nebo nepřetržité akumulace úloh v databázi. To má vliv na výkon SQL Database. | Bylo zjištěno zvýšení zátěže. To má vliv na výkon databáze. |
-| [Tlak paměti](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Zaměstnanci, kteří požadovali paměť, musí čekat na přidělení paměti pro statisticky významné množství času. Nebo zvýšené akumulace pracovníků, kteří vyžádali nároky na paměť. To má vliv na výkon SQL Database. | Zaměstnanci, kteří požadují nároky na paměť, čekají na přidělení paměti ve statistickém významném časovém intervalu. To má vliv na výkon databáze. |
-| [Uzamčení](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Bylo zjištěno nadměrné zamykání databáze ovlivňující SQL Database výkon. | Bylo zjištěno nadměrné uzamčení databáze ovlivňující výkon databáze. |
+| [Tlak paměti](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Zaměstnanci, kteří vyžadují nároky na paměť, musí čekat na přidělení paměti pro statisticky významné množství času nebo zvýšené akumulace pracovníků, kteří vyžádali nároky na paměť. To má vliv na výkon SQL Database. | Zaměstnanci, kteří požadují nároky na paměť, čekají na přidělení paměti ve statistickém významném časovém intervalu. To má vliv na výkon databáze. |
+| [Zamknut](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Bylo zjištěno nadměrné zamykání databáze ovlivňující SQL Database výkon. | Bylo zjištěno nadměrné uzamčení databáze ovlivňující výkon databáze. |
 | [Zvýšená MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Možnost Maximální stupeň paralelismu (MAXDOP) se změnila vlivem efektivity provádění dotazu. To má vliv na výkon SQL Database. | Možnost Maximální stupeň paralelismu (MAXDOP) se změnila vlivem efektivity provádění dotazu. To má vliv na výkon databáze. |
 | [PAGELATCH spory](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Více vláken se souběžně pokouší o přístup ke stejné stránce vyrovnávací paměti dat v paměti, což vede k nárůstu čekací doby a způsobila kolize PAGELATCH. To má vliv na výkon databáze SQL. | Více vláken se souběžně pokouší o přístup ke stejné stránce vyrovnávací paměti dat v paměti, což vede k nárůstu čekací doby a způsobila kolize PAGELATCH. To má vliv na výkon databáze. |
 | [Chybějící index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Byl zjištěn chybějící index ovlivňující výkon SQL Database. | Byl zjištěn chybějící index vlivu na výkon databáze. |
@@ -90,7 +90,7 @@ Diagnostický protokol vystaví počet dotazů, jejichž spuštění se zvýšil
 
 Můžete uvažovat o rovnoměrné distribuci úloh do databáze. Zvažte optimalizaci dotazu, který má vliv na výkon přidáním indexů. Vaše úlohy můžete také distribuovat mezi více databází. Pokud tato řešení nejsou možná, zvažte zvýšení cenové úrovně předplatného služby SQL Database, abyste zvýšili množství dostupných zdrojů.
 
-## <a name="memory-pressure"></a>Tlak paměti
+## <a name="memory-pressure"></a>Zatížení paměti
 
 ### <a name="what-is-happening"></a>Co se děje
 
@@ -110,7 +110,7 @@ Můžete také snížit zatížení tím, že ho optimalizujete nebo distribuuje
 
 Další návrhy pro řešení potíží najdete v tématu [paměť udělující Meditation: příjemce záhadnými SQL Server paměti s mnoha názvy](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
-## <a name="locking"></a>Uzamčení
+## <a name="locking"></a>Zamknut
 
 ### <a name="what-is-happening"></a>Co se děje
 
@@ -188,7 +188,7 @@ Diagnostické protokoly výstupy dotazů pro dotazy, které byly identifikovány
 > Pro zajištění průběžné optimalizace výkonu SQL Database doporučujeme povolit [SQL Database automatické ladění](sql-database-automatic-tuning.md). Tato jedinečná funkce SQL Database integrovaných inteligentních funkcích nepřetržitě monitoruje vaši databázi SQL a automaticky ladí a vytváří indexy pro vaše databáze.
 >
 
-## <a name="new-query"></a>New Query
+## <a name="new-query"></a>Nový dotaz
 
 ### <a name="what-is-happening"></a>Co se děje
 

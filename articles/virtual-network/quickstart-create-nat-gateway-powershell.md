@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: d2df67479d8b6ab490bf06bda1ec033f9bf7866e
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: fadf42e7bd7d754dea64542f06866a439eb460ec
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77429695"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77588769"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-azure-powershell"></a>Rychlý Start: Vytvoření brány NAT pomocí Azure PowerShell
 
@@ -34,9 +34,6 @@ V tomto rychlém startu se dozvíte, jak používat službu Azure Virtual Networ
 Tento kurz můžete dokončit pomocí Azure Cloud Shell nebo místně spustit příkazy.  Pokud jste nepoužili Azure Cloud Shell, [Přihlaste se hned](https://shell.azure.com).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-> [!IMPORTANT]
-> Po povolení služby Virtual Network NAT [Preview](./nat-overview.md#enable-preview) ve vašem předplatném použijte https://aka.ms/natportal pro přístup k portálu.
 
 ## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
 
