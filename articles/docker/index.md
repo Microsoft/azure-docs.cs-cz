@@ -10,12 +10,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: gwallace
-ms.openlocfilehash: 33f18722c26decb117a476a9d3adb562a7a726ed
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 4f4849139f0e5c5a8672b9364f7acc03cff6c948
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610447"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605583"
 ---
 <div class="content">
    <h1>Docker v Azure</h1>   
@@ -33,7 +33,7 @@ Docker je oblíbená platforma pro správu a vytváření imagí kontejnerů, kt
 <ol>
   <li><a href="/azure/app-service/containers/tutorial-python-postgresql-app">Vytváření aplikací v Pythonu a PostgreSQL pomocí Dockeru</a></li>
   <li><a href="/azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine">Průběžná integrace a doručování s využitím Dockeru Swarm a Azure DevOps Services</a></li>
-  <li><a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Integrace Dockeru, Jenkinse a virtuálních počítačů s Linuxem</a></li>
+  <li><a href="/azure/jenkins/tutorial-jenkins-github-docker-cicd">Integrace Dockeru, Jenkinse a virtuálních počítačů s Linuxem</a></li>
 </ol>
 <h2>Zdroje a prostředky</h2>
 <p>Další referenční materiály a nástroje pro práci s Dockerem v Azure můžete získat prostřednictvím následujících odkazů.</p>

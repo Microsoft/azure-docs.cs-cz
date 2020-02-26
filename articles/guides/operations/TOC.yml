@@ -2,7 +2,7 @@
   items:
     - name: Začínáme s Azure
       href: azure-operations-guide.md
-    - name: Šablony Rychlý start
+    - name: Rychlé starty
       items:
         - name: Virtuální počítače
           items:
@@ -21,7 +21,7 @@
         - name: Azure Stack
           items:
             - name: Přehled nasazení Azure Stacku
-              href: ../../azure-stack/azure-stack-deploy-overview.md
+              href: /azure-stack/asdk/asdk-download
         - name: Azure Backup
           items:
             - name: Zálohování virtuálního počítače na webu Azure Portal
@@ -39,7 +39,7 @@
             - name: Vytvoření a správa virtuálního počítače s Linuxem
               href: ../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Kanál CI/CD Jenkins
-              href: ../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+              href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Vyrovnávání zatížení virtuálních počítačů
               href: ../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
             - name: Tvorba šablon Azure Resource Manageru
