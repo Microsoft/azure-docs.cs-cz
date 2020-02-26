@@ -2,18 +2,15 @@
 title: Použití zón dostupnosti ve službě Azure Kubernetes Service (AKS)
 description: Zjistěte, jak vytvořit cluster, který distribuuje uzly napříč zónami dostupnosti ve službě Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
 ms.custom: fasttrack-edit
-ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: mlearned
-ms.openlocfilehash: b73cb09f95fa2b23fb23fb719fe57143e1731ceb
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5693d9e90de9ba68e7b76e0f2bd5b75141dbda71
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086521"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596806"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Vytvoření clusteru služby Azure Kubernetes (AKS), který používá zóny dostupnosti
 
@@ -23,7 +20,7 @@ Pokud chcete zajistit vyšší úroveň dostupnosti pro vaše aplikace, clustery
 
 V tomto článku se dozvíte, jak vytvořit cluster AKS a distribuovat součásti uzlu napříč zónami dostupnosti.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo novější. Pro nalezení verze spusťte `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
@@ -31,7 +28,7 @@ Potřebujete nainstalovanou a nakonfigurovanou verzi Azure CLI 2.0.76 nebo nově
 
 Clustery AKS se teď dají vytvářet pomocí zón dostupnosti v následujících oblastech:
 
-* Střed USA
+* USA – střed
 * USA – východ 2
 * USA – východ
 * Francie – střed
@@ -61,7 +58,7 @@ Pokud musíte spustit stavové úlohy, pomocí specifikací v poli pod a jejich 
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>Přehled zón dostupnosti pro clustery AKS
 
-Zóny dostupnosti jsou nabídka s vysokou dostupností, která chrání vaše aplikace a data před selháním datových center. Zóny jsou jedinečné fyzické umístění v oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Redundantní služby v zóně replikují aplikace a data napříč zónami dostupnosti, aby se chránily před jednotlivými chybami.
+Zóny dostupnosti jsou nabídka s vysokou dostupností, která chrání vaše aplikace a data před selháním datových center. Zóny jsou jedinečné fyzické umístění v oblasti Azure. Každou zónu tvoří jedno nebo několik datacenter vybavených nezávislým napájením, chlazením a sítí. Aby se zajistila odolnost, existuje minimálně tři samostatné zóny ve všech povolených oblastech. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháním datacenter. Redundantní služby v zóně replikují aplikace a data napříč zónami dostupnosti, aby se chránily před jednotlivými chybami.
 
 Další informace najdete v tématu [co jsou zóny dostupnosti v Azure?][az-overview].
 

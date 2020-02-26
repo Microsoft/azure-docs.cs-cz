@@ -2,18 +2,15 @@
 title: Migrace do služby Azure Kubernetes (AKS)
 description: Migrujte do služby Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 11/07/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: c4ed78dc9fd277fc61a923364519e338a9f720c2
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: bc96d3e8e5a595c80822065801873a44642be078
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290389"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596840"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrace do služby Azure Kubernetes (AKS)
 
@@ -35,7 +32,7 @@ Vaše migrace může pomáhat několik open-source nástrojů v závislosti na v
 
 * [Velero](https://velero.io/) (vyžaduje Kubernetes 1.7 +)
 * [Rozšíření CLI Azure Kube](https://github.com/yaron2/azure-kube-cli)
-* [ReShifter](https://github.com/mhausenblas/reshifter)
+* [Posunutí](https://github.com/mhausenblas/reshifter)
 
 V tomto článku shrnujeme podrobnosti o migraci pro:
 
@@ -124,7 +121,7 @@ Pokud používáte Azure Managed Disks, můžete disk připojit pouze v případ
 Pokud ani jeden z těchto přístupů nefunguje, můžete použít možnosti zálohování a obnovení:
 * [Velero v Azure](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
 
-#### <a name="azure-files"></a>Azure Files
+#### <a name="azure-files"></a>Soubory Azure
 
 Na rozdíl od disků je možné soubory Azure připojit k více hostitelům současně. V clusteru AKS vám Azure a Kubernetes nebrání v vytváření pod tím, že váš cluster ACS stále používá. Aby nedošlo ke ztrátě dat a neočekávanému chování, zajistěte, aby clustery nepsaly do stejných souborů současně.
 

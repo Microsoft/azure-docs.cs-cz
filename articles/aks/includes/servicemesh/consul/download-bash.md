@@ -1,15 +1,14 @@
 ---
 author: paulbouwer
-ms.service: container-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 1799193d7c1ef0c20fc1c338c30fb805d17df093
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: a6b915e2735b45ac876ca98d279a15e4a371fbfd
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530586"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594236"
 ---
 V prostředí založeném na bash systému Linux, [podsystém Windows pro Linux][install-wsl] nebo MacOS, použijte `curl` ke stažení verze grafu Consul Helm následujícím způsobem:
 

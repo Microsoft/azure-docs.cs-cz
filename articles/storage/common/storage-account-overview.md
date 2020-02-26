@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 11fdaa0d547e588daa9d264c2393606705554a17
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 2983be507fdc40d033623afa37c72eb2507d99ca
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77157260"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597164"
 ---
 # <a name="storage-account-overview"></a>Přehled účtu úložiště
 
@@ -72,13 +72,13 @@ Ve většině případů byste měli používat účty pro obecné účely v2. �
 
 Účet úložiště souborů je specializovaný účet úložiště, který slouží k ukládání a vytváření sdílených složek Premium. Tento druh účtu úložiště podporuje soubory, ale ne objekty blob bloku, doplňovací objekty blob, objekty blob stránky, tabulky nebo fronty.
 
-Účty úložiště obsahují jedinečné charakteristiky výkonu, například shlukování IOPS. Další informace o těchto vlastnostech najdete v části [výkonnostní vrstvy sdílení souborů](../files/storage-files-planning.md#file-share-performance-tiers) v příručce pro plánování souborů.
+Účty úložiště obsahují jedinečné vyhrazené charakteristiky výkonu, jako je třeba shlukování IOPS. Další informace o těchto vlastnostech najdete v části [vrstvy úložiště sdílení souborů](../files/storage-files-planning.md#storage-tiers) v příručce pro plánování souborů.
 
 ## <a name="naming-storage-accounts"></a>Pojmenování účtů úložiště
 
 Při pojmenování účtu úložiště mějte na paměti tato pravidla:
 
-- Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom číslice a malá písmena.
+- Názvy účtů úložiště musí mít od 3 do 24 znaků a můžou obsahovat jenom čísla a malá písmena.
 - Název vašeho účtu úložiště musí být jedinečný v rámci Azure. Žádné dva účty úložiště nemůžou mít stejný název.
 
 ## <a name="performance-tiers"></a>Úrovně výkonu
@@ -187,5 +187,5 @@ Další informace o REST API Azure Storage najdete v tématu informace o [REST A
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření účtu úložiště](storage-account-create.md)
+- [vytvořit účet úložiště](storage-account-create.md)
 - [Vytvoření účtu úložiště objektů blob bloku](../blobs/storage-blob-create-account-block-blob.md)

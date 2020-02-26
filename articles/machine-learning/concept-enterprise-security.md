@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 7b6bd33346df9496c4c30353b68c11bdd7fad7a2
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b37b386273947f8c39fe182e4f29b7b080addf7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486389"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605621"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -37,7 +37,6 @@ Služba Multi-Factor Authentication je podporovaná, pokud je služba Azure Acti
 [Ověřování ![v Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication-expanded.png#lightbox)
 
 Další informace najdete v tématu [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](how-to-setup-authentication.md). Tento článek obsahuje informace a příklady ověřování, včetně použití instančních objektů a automatizovaných pracovních postupů.
-
 
 ### <a name="authentication-for-web-service-deployment"></a>Ověřování pro nasazení webové služby
 
@@ -77,6 +76,9 @@ V následující tabulce jsou uvedené některé hlavní operace Azure Machine L
 | Volání webové služby | ✓ | ✓ | ✓ |
 
 Pokud předdefinované role nevyhovují vašim potřebám, můžete vytvořit vlastní role. Vlastní role se podporují jenom pro operace v pracovním prostoru a Výpočetní prostředky služby Machine Learning. Vlastní role mohou mít oprávnění číst, zapisovat nebo odstranit v pracovním prostoru a výpočetní prostředky v daném pracovním prostoru. Role může být dostupná na konkrétní úrovni pracovního prostoru, na konkrétní úrovni skupiny prostředků nebo na konkrétní úrovni předplatného. Další informace najdete v tématu [Správa uživatelů a rolí v pracovním prostoru Azure Machine Learning](how-to-assign-roles.md).
+
+> [!WARNING]
+> Azure Machine Learning se v současné době Azure Active Directory spolupráci mezi společnostmi nepodporují.
 
 ### <a name="securing-compute-targets-and-data"></a>Zabezpečení výpočetních cílů a dat
 
@@ -124,7 +126,7 @@ Data školení se většinou ukládají také v úložišti objektů BLOB v Azur
 
 Informace o opětovném generování přístupových klíčů najdete v tématu [opětovné vygenerování přístupových klíčů k úložišti](how-to-change-storage-access-key.md).
 
-#### <a name="azure-cosmos-db"></a>Azure Cosmos DB
+#### <a name="azure-cosmos-db"></a>Databáze Azure Cosmos
 
 Azure Machine Learning ukládá metriky a metadata v instanci Azure Cosmos DB. Tato instance je přidružená k předplatnému Microsoftu spravovanému pomocí Azure Machine Learning. Všechna data uložená v Azure Cosmos DB jsou v klidovém stavu šifrovaná pomocí klíčů spravovaných Microsoftem.
 
@@ -256,7 +258,7 @@ Podrobnosti žádosti o vyhodnocování jsou uložené v Application Insights. P
 * RequestUrl
 * StatusCode
 * Identifikátor
-* Doba platnosti
+* Doba trvání
 
 > [!IMPORTANT]
 > Některé akce v pracovním prostoru Azure Machine Learning neprotokolují informace do protokolu aktivit. Například spuštění školicího programu a registrace modelu se nezaprotokolují.

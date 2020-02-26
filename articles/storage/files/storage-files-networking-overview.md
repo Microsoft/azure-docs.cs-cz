@@ -4,15 +4,15 @@ description: Přehled možností sítě pro soubory Azure.
 author: roygara
 ms.service: storage
 ms.topic: overview
-ms.date: 10/19/2019
+ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 596479652478bffb6d18a90fc53d5972b3839408
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 09d7f93c7a1d8ad9e567ecfe0bb3854d9d54f6e0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73141791"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597741"
 ---
 # <a name="azure-files-networking-considerations"></a>Požadavky na síť pro Azure Files 
 Ke sdílené složce Azure se můžete připojit dvěma způsoby:
@@ -22,65 +22,128 @@ Ke sdílené složce Azure se můžete připojit dvěma způsoby:
 
 Tento článek se zaměřuje na konfiguraci sítě pro případy, kdy váš případ použití volá pro přístup ke sdílené složce Azure přímo místo použití Azure File Sync. Další informace o požadavcích na používání sítě pro nasazení Azure File Sync najdete v tématu [konfigurace Azure File Sync proxy serveru a nastavení brány firewall](storage-sync-files-firewall-and-proxy.md).
 
-## <a name="storage-account-settings"></a>Nastavení účtu úložiště
-Účet úložiště je konstrukce správy, která představuje sdílený fond úložiště, ve kterém můžete nasadit více sdílených složek a další prostředky úložiště, jako jsou kontejnery nebo fronty objektů BLOB. Účty Azure Storage zpřístupňují dvě základní sady nastavení k zabezpečení sítě: šifrování v přenosech a branách firewall a virtuální sítě (virtuální sítě).
+Konfigurace sítě pro sdílené složky Azure se provádí v účtu úložiště Azure. Účet úložiště je konstrukce správy, která představuje sdílený fond úložiště, ve kterém můžete nasadit více sdílených složek a další prostředky úložiště, jako jsou kontejnery nebo fronty objektů BLOB. Účty úložiště zpřístupňují více nastavení, která vám pomůžou zabezpečit síťový přístup ke sdíleným složkám: koncové body sítě, nastavení brány firewall účtu úložiště a šifrování při přenosu.
 
-### <a name="encryption-in-transit"></a>Šifrování při přenosu
+## <a name="accessing-your-azure-file-shares"></a>Přístup ke sdíleným složkám Azure
+Když nasadíte sdílenou složku Azure v rámci účtu úložiště, vaše sdílená složka je hned dostupná přes Veřejný koncový bod účtu úložiště. To znamená, že ověřené požadavky, jako jsou požadavky autorizované identitou přihlašování uživatele, můžou pocházet z interního nebo mimo Azure. 
+
+V mnoha zákaznických prostředích se počáteční připojení sdílené složky Azure na místní pracovní stanici nezdaří, i když připojení z virtuálních počítačů Azure bude úspěšné. Důvodem je to, že mnoho organizací a poskytovatelů internetových služeb (ISP) blokuje port, který protokol SMB používá ke komunikaci, port 445. Tento postup vychází z bezpečnostních pokynů pro starší verze a zastaralé verze protokolu SMB. I když je SMB 3,0 protokolem bezpečným pro Internet, starší verze SMB, zejména SMB 1,0, nejsou. Ke sdíleným složkám Azure se dá externě přistupovat prostřednictvím protokolu SMB 3,0 a protokolu REST (což je také internetový protokol) prostřednictvím veřejného koncového bodu.
+
+Vzhledem k tomu, že nejjednodušší způsob, jak získat přístup ke sdílené složce Azure z místního prostředí, je otevřít místní síť pro port 445, Microsoft doporučuje pomocí následujících kroků odebrat z vašeho prostředí protokol SMB 1,0:
+
+1. Zajistěte, aby byl na zařízeních vaší organizace odebrán nebo zakázán protokol SMB 1,0. Všechny aktuálně podporované verze systému Windows a Windows Server podporují odebrání nebo zakázání protokolu SMB 1,0 a počínaje verzí Windows 10 verze 1709 není ve výchozím nastavení ve Windows nainstalovaná služba SMB 1,0. Další informace o tom, jak zakázat SMB 1,0, najdete na stránkách pro konkrétní operační systém:
+    - [Zabezpečení Windows/Windows serveru](storage-how-to-use-files-windows.md#securing-windowswindows-server)
+    - [Zabezpečení systému Linux](storage-how-to-use-files-linux.md#securing-linux)
+2. Zajistěte, aby žádné produkty v rámci vaší organizace nevyžadovaly SMB 1,0 a odebraly ty, které mají. Udržujeme [SMB1 produkt](https://aka.ms/stillneedssmb1), který obsahuje všechny první a třetí výrobce známé společnosti Microsoft, aby vyžadovaly protokol SMB 1,0. 
+3. Volitelné Použijte bránu firewall od jiného výrobce s místní sítí vaší organizace, abyste zabránili provozu protokolu SMB 1,0 opustit hranici vaší organizace.
+
+Pokud vaše organizace vyžaduje, aby byl port 445 zablokovaný na základě zásad nebo nařízení, nebo pokud vaše organizace vyžaduje, aby se v Azure použila deterministické cesta, můžete k tunelování provozu do sdílených složek Azure použít Azure VPN Gateway nebo ExpressRoute.
+
+> [!Important]  
+> I když se rozhodnete použít pro přístup ke sdíleným složkám Azure alternativní metodu, společnost Microsoft stále doporučuje odebrat z vašeho prostředí protokol SMB 1,0.
+
+### <a name="tunneling-traffic-over-a-virtual-private-network-or-expressroute"></a>Tunelování přenosů přes virtuální privátní síť nebo ExpressRoute
+Když vytváříte síťové tunelové propojení mezi vaší místní sítí a Azure, vytváříte partnerský vztah k místní síti s jednou nebo více virtuálními sítěmi v Azure. [Virtuální síť nebo virtuální](../../virtual-network/virtual-networks-overview.md)síť se podobá tradiční síti, kterou provozujete místně. Jako je účet Azure Storage nebo virtuální počítač Azure, virtuální síť je prostředek Azure, který je nasazený ve skupině prostředků. 
+
+Azure Files podporuje následující mechanismy pro tunelování provozu mezi místními pracovními stanicemi a servery a Azure:
+
+- [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md): Brána VPN je konkrétní typ brány virtuální sítě, která se používá k posílání šifrovaného provozu mezi virtuální sítí Azure a alternativním umístěním (jako je místní) přes Internet. Azure VPN Gateway je prostředek Azure, který se dá nasadit ve skupině prostředků na straně účtu úložiště nebo jiných prostředků Azure. Brány VPN zpřístupňují dva různé typy připojení:
+    - Připojení brány [VPN typu Point-to-Site (P2S)](../../vpn-gateway/point-to-site-about.md) , což jsou připojení VPN mezi Azure a jednotlivými klienty. Toto řešení je primárně užitečné pro zařízení, která nejsou součástí místní sítě vaší organizace, jako jsou například dojíždění, kteří chtějí mít možnost připojit svou sdílenou složku Azure z domova, z kavárny nebo hotelu na cestách. Pokud chcete použít připojení VPN P2S se soubory Azure, bude nutné nakonfigurovat připojení VPN P2S pro každého klienta, který se chce připojit. Pokud chcete zjednodušit nasazení připojení k síti VPN P2S, přečtěte si téma [Konfigurace sítě VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure](storage-files-configure-p2s-vpn-windows.md) a [Konfigurace sítě VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure](storage-files-configure-p2s-vpn-linux.md).
+    - Síť [VPN typu Site-to-Site (S2S)](../../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti), která je připojení VPN mezi Azure a sítí vaší organizace. Připojení VPN S2S umožňuje nakonfigurovat připojení VPN jednou, pro server VPN nebo zařízení hostované v síti vaší organizace, a ne pro každé klientské zařízení, které potřebuje mít přístup ke sdílené složce Azure. Pokud chcete zjednodušit nasazení připojení S2S VPN, přečtěte si téma [Konfigurace sítě VPN typu Site-to-Site (S2S) pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
+- [ExpressRoute](../../expressroute/expressroute-introduction.md), která umožňuje vytvořit definovanou trasu mezi Azure a místní sítí, která neprojde internetem. Vzhledem k tomu, že ExpressRoute poskytuje vyhrazenou cestu mezi místním datacentrem a Azure, může být ExpressRoute užitečné v případě, že se výkon sítě zvažuje. ExpressRoute je také dobrou volbou v případě, že požadavky nebo předpisy vaší organizace vyžadují deterministické cesty k prostředkům v cloudu.
+
+Bez ohledu na to, kterou metodu tunelování používáte pro přístup ke sdíleným složkám Azure, potřebujete mechanismus, který zajistí, aby přenos dat do vašeho účtu úložiště procházel tunelovým propojením, a ne s běžným připojením k Internetu. Je technicky možné směrovat na veřejný koncový bod účtu úložiště, ale to vyžaduje, aby byly všechny IP adresy pro clustery Azure Storage v určité oblasti pevně zakódovaných, protože účty úložiště můžete kdykoli přesouvat mezi clustery úložiště. To také vyžaduje nepřetržitou aktualizaci mapování IP adres, protože nové clustery se přidávají kdykoli.
+
+Místo hardwarového zakódování IP adres účtů úložiště do pravidel směrování sítě VPN doporučujeme použít soukromé koncové body, které přidávají účtu úložiště IP adresu z adresního prostoru virtuální sítě Azure. Vzhledem k tomu, že vytvoření tunelu do Azure vytvoří partnerský vztah mezi vaší místní sítí a jednou nebo více virtuálními sítěmi, umožní vám to trvalý způsob směrování.
+
+### <a name="private-endpoints"></a>Soukromé koncové body
+Kromě výchozího veřejného koncového bodu pro účet úložiště poskytuje Azure Files možnost mít jeden nebo více privátních koncových bodů. Soukromý koncový bod je koncový bod, který je přístupný jenom v rámci virtuální sítě Azure. Když vytvoříte privátní koncový bod pro svůj účet úložiště, váš účet úložiště načte privátní IP adresu z adresního prostoru virtuální sítě, podobně jako místní souborový server nebo zařízení NAS obdrží IP adresu v rámci vyhrazené adresy. místo v místní síti. 
+
+Individuální privátní koncový bod je přidružený ke konkrétní podsíti Azure Virtual Network. Účet úložiště může mít privátní koncové body ve více než jedné virtuální síti.
+
+Použití privátních koncových bodů se soubory Azure vám umožní:
+- Připojte se bezpečně ke sdíleným složkám Azure z místních sítí pomocí připojení VPN nebo ExpressRoute s privátním partnerským vztahem.
+- Zabezpečte sdílené složky Azure tak, že nakonfigurujete bránu firewall účtu úložiště pro blokování všech připojení ve veřejném koncovém bodu. Při vytváření privátního koncového bodu se ve výchozím nastavení neblokuje připojení k veřejnému koncovému bodu.
+- Zvyšte zabezpečení virtuální sítě tím, že povolíte blokování exfiltrace dat z virtuální sítě (a hranic partnerských vztahů).
+
+### <a name="private-endpoints-and-dns"></a>Privátní koncové body a DNS
+Při vytváření privátního koncového bodu se ve výchozím nastavení vytvoří také privátní zóna DNS (nebo aktualizace stávající), která odpovídá `privatelink` subdoméně. Výhradně řečeno, vytvoření privátní zóny DNS není vyžadováno pro použití privátního koncového bodu pro váš účet úložiště, ale při připojování sdílené složky Azure s objektem zabezpečení nebo přístupem uživatele služby Active Directory se důrazně doporučuje obecně a explicitně vyžadovat. z rozhraní REST API.
+
+> [!Note]  
+> Tento článek používá příponu DNS účtu úložiště pro veřejné oblasti Azure `core.windows.net`. Tento komentář platí také pro cloudy Azure, jako je Cloud pro státní správu USA a Azure Čína, stačí nahradit příslušné přípony vašeho prostředí. 
+
+V privátní zóně DNS vytvoříme záznam A pro `storageaccount.privatelink.file.core.windows.net` a záznam CNAME pro běžný název účtu úložiště, který následuje po `storageaccount.file.core.windows.net`vzor. Vzhledem k tomu, že vaše privátní zóna DNS Azure je připojená k virtuální síti obsahující soukromý koncový bod, můžete sledovat konfiguraci DNS při volání rutiny `Resolve-DnsName` z PowerShellu na virtuálním počítači Azure (střídavě `nslookup` v systému Windows a Linux):
+
+```powershell
+Resolve-DnsName -Name "storageaccount.file.core.windows.net"
+```
+
+V tomto příkladu se `storageaccount.file.core.windows.net` účet úložiště přeloží na soukromou IP adresu privátního koncového bodu, který se stane `192.168.0.4`.
+
+```Output
+Name                              Type   TTL   Section    NameHost
+----                              ----   ---   -------    --------
+storageaccount.file.core.windows. CNAME  29    Answer     csostoracct.privatelink.file.core.windows.net
+net
+
+Name       : storageaccount.privatelink.file.core.windows.net
+QueryType  : A
+TTL        : 1769
+Section    : Answer
+IP4Address : 192.168.0.4
+
+
+Name                   : privatelink.file.core.windows.net
+QueryType              : SOA
+TTL                    : 269
+Section                : Authority
+NameAdministrator      : azureprivatedns-host.microsoft.com
+SerialNumber           : 1
+TimeToZoneRefresh      : 3600
+TimeToZoneFailureRetry : 300
+TimeToExpiration       : 2419200
+DefaultTTL             : 300
+```
+
+Pokud spustíte stejný příkaz z místního prostředí, uvidíte, že stejný název účtu úložiště se přeloží na veřejnou IP adresu účtu úložiště. `storageaccount.file.core.windows.net` je záznam CNAME pro `storageaccount.privatelink.file.core.windows.net`, který je zase záznam CNAME pro cluster úložiště Azure hostující účet úložiště:
+
+```Output
+Name                              Type   TTL   Section    NameHost
+----                              ----   ---   -------    --------
+storageaccount.file.core.windows. CNAME  60    Answer     storageaccount.privatelink.file.core.windows.net
+net
+storageaccount.privatelink.file.c CNAME  60    Answer     file.par20prdstr01a.store.core.windows.net
+ore.windows.net
+
+Name       : file.par20prdstr01a.store.core.windows.net
+QueryType  : A
+TTL        : 60
+Section    : Answer
+IP4Address : 52.239.194.40
+```
+
+To odráží skutečnost, že účet úložiště může vystavit veřejný koncový bod a jeden nebo několik privátních koncových bodů. Aby se zajistilo, že se název účtu úložiště přeloží na privátní IP adresu privátního koncového bodu, musíte změnit konfiguraci na místních serverech DNS. To lze provést několika způsoby:
+
+- Změna souboru hostitelů ve vašich klientských počítačích tak, aby se `storageaccount.file.core.windows.net` přeložila na privátní IP adresu požadovaného privátního koncového bodu. U produkčních prostředí se důrazně nedoporučuje, protože je potřeba provést tyto změny každému klientovi, který chce připojit sdílené složky Azure a změnit účet úložiště, nebo privátní koncový bod nebude automaticky zpracován.
+- Vytvoření záznamu A pro `storageaccount.file.core.windows.net` na místních serverech DNS. To má výhodu, že klienti v místním prostředí budou moci automaticky přeložit účet úložiště, aniž by museli konfigurovat každého klienta, ale toto řešení je podobně poměrně křehký na úpravu souboru hostitelů, protože změny nejsou zrcadlový. I když je toto řešení poměrně křehký, může být pro některá prostředí nejlepší volbou.
+- Předejte `core.windows.net` zónu z místních serverů DNS do privátní zóny DNS Azure. K privátnímu hostiteli DNS Azure se dá získat speciální IP adresa (`168.63.129.16`), která je dostupná jenom ve virtuálních sítích, které jsou propojené s privátní zónou DNS Azure. V případě tohoto omezení můžete spustit další servery DNS v rámci vaší virtuální sítě, které budou předány `core.windows.net` k privátní zóně DNS Azure. Pro zjednodušení tohoto nastavení jsme zadali rutiny PowerShellu, které budou automaticky nasazovat servery DNS ve vaší virtuální síti Azure a nakonfigurovat je podle potřeby.
+
+## <a name="storage-account-firewall-settings"></a>Nastavení brány firewall účtu úložiště
+Brána firewall je zásada sítě, která řídí, které požadavky mají povolený přístup k veřejnému koncovému bodu pro účet úložiště. Pomocí brány firewall účtu úložiště můžete omezit přístup k veřejnému koncovému bodu účtu úložiště na určité IP adresy nebo rozsahy nebo na virtuální síť. Obecně platí, že většina zásad brány firewall pro účet úložiště omezí přístup k síti na jednu nebo více virtuálních sítí. 
+
+Existují dva způsoby, jak omezit přístup k účtu úložiště na virtuální síť:
+- Vytvořte jeden nebo několik privátních koncových bodů pro účet úložiště a omezte veškerý přístup k veřejnému koncovému bodu. Tím se zajistí, že budou mít přístup ke sdíleným složkám Azure v rámci účtu úložiště jenom přenosy pocházející z požadovaných virtuálních sítí.
+- Omezte veřejný koncový bod na jednu nebo více virtuálních sítí. To funguje pomocí funkce virtuální sítě s názvem *koncové body služby*. Když omezíte provoz na účet úložiště prostřednictvím koncového bodu služby, stále přistupujete k účtu úložiště prostřednictvím veřejné IP adresy.
+
+Další informace o tom, jak nakonfigurovat bránu firewall účtu úložiště, najdete v tématu [Konfigurace bran firewall služby Azure Storage a virtuálních sítí](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+
+## <a name="encryption-in-transit"></a>Šifrování při přenosu
 Ve výchozím nastavení mají všechny účty úložiště Azure povolený šifrování při přenosu. To znamená, že když připojíte sdílenou složku přes protokol SMB nebo k ní přistupujete prostřednictvím protokolu REST (například prostřednictvím Azure Portal, PowerShellu nebo rozhraní Azure SDK), budou soubory Azure umožňovat připojení jenom v případě, že se jedná o protokol SMB 3.0 + s šifrováním nebo HTTPS. Klienti, kteří nepodporují protokol SMB 3,0 nebo klienti, kteří podporují protokol SMB 3,0, ale nemají šifrování protokolu SMB, nebudou moci připojit sdílenou složku Azure, pokud je zapnuté šifrování při přenosu. Další informace o tom, které operační systémy podporují protokol SMB 3,0 se šifrováním, najdete v naší podrobné dokumentaci pro [Windows](storage-how-to-use-files-windows.md), [MacOS](storage-how-to-use-files-mac.md)a [Linux](storage-how-to-use-files-linux.md). Všechny aktuální verze PowerShellu, CLI a sad SDK podporují protokol HTTPS.  
 
 Šifrování můžete zakázat při přenosu pro účet služby Azure Storage. Když je šifrování zakázané, budou soubory Azure taky umožňovat protokol SMB 2,1, SMB 3,0 bez šifrování a nešifrované volání rozhraní REST API přes HTTP. Hlavním důvodem Zakázání šifrování při přenosu je podpora starší verze aplikace, kterou je třeba spustit ve starším operačním systému, jako je Windows Server 2008 R2 nebo starší distribuce systému Linux. Soubory Azure v rámci stejné oblasti Azure jako sdílená složka Azure povolují jenom připojení SMB 2,1. Klient SMB 2,1 mimo oblast Azure sdílené složky Azure, například v místním prostředí nebo v jiné oblasti Azure, nebude mít přístup ke sdílené složce souborů.
 
 Další informace o šifrování v přenosu najdete v tématu [vyžadování zabezpečeného přenosu ve službě Azure Storage](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-### <a name="firewalls-and-virtual-networks"></a>Brány firewall a virtuální sítě 
-Brána firewall je zásada sítě, jejíž požadavky mají povolený přístup ke sdíleným složkám Azure a dalším prostředkům úložiště ve vašem účtu úložiště. Když se vytvoří účet úložiště s výchozím nastavením sítě, není omezený na určitou síť, a proto je přístupný z Internetu. To neznamená, že kdokoli na internetu může získat přístup k datům uloženým ve sdílených složkách Azure hostovaných ve vašem účtu úložiště, ale místo toho bude účet úložiště přijímat autorizované požadavky ze všech sítí. Požadavky mohou být autorizovány pomocí klíče účtu úložiště, tokenu sdíleného přístupového podpisu (SAS) (pouze REST) nebo s objektem zabezpečení uživatele služby Active Directory. 
-
-Zásady brány firewall pro účet úložiště se dají použít k omezení přístupu na určité IP adresy nebo rozsahy nebo na virtuální síť. Obecně platí, že většina zásad brány firewall pro účet úložiště omezí přístup k síti do virtuální sítě. 
-
-[Virtuální síť nebo virtuální](../../virtual-network/virtual-networks-overview.md)síť se podobá tradiční síti, kterou provozujete ve vlastním datovém centru. Umožňuje vytvořit zabezpečený komunikační kanál pro prostředky Azure, jako jsou sdílené složky Azure, virtuální počítače, databáze SQL atd., aby se vzájemně komunikovaly. Jako je účet Azure Storage nebo virtuální počítač Azure, virtuální síť je prostředek Azure, který je nasazený ve skupině prostředků. V případě další konfigurace sítě může být Azure virtuální sítě také připojen k vašim místním sítím.
-
-Když se prostředky, jako je třeba virtuální počítač Azure, přidají do virtuální sítě, bude virtuální síťové rozhraní (NIC) připojené k virtuálnímu počítači omezené na konkrétní virtuální síť. To je možné, protože virtuální počítače Azure jsou virtualizované počítače, které mají samozřejmě síťové adaptéry. Virtuální počítače se nabízejí jako součást služby Azure typu infrastruktura jako služba nebo IaaS, produkt seznamu. Vzhledem k tomu, že sdílené složky Azure jsou sdílené složky bez serveru, neobsahují síťové rozhraní, které byste mohli přidat do virtuální sítě. V takovém případě se soubory Azure nabízejí jako součást produktu Azure typu platforma jako služba nebo PaaS produkt seznamu. Aby bylo možné povolit účet úložiště jako součást virtuální sítě, Azure podporuje koncept pro služby PaaS s názvem koncové body služby. Koncový bod služby umožňuje, aby služby PaaS byly součástí virtuální sítě. Další informace o koncových bodech služby najdete v tématu [koncové body služby virtuální sítě](../../virtual-network/virtual-network-service-endpoints-overview.md).
-
-Účet úložiště se dá přidat do jedné nebo víc virtuálních sítí. Další informace o tom, jak přidat účet úložiště do virtuální sítě nebo nakonfigurovat další nastavení brány firewall, najdete v tématu [Konfigurace bran firewall a virtuálních sítí Azure Storage](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-
-## <a name="azure-networking"></a>Sítě Azure
-Ve výchozím nastavení jsou služby Azure, včetně souborů Azure, dostupné přes Internet. Vzhledem k tomu, že ve výchozím nastavení je přenos dat do vašeho účtu úložiště šifrovaný (a připojení SMB 2,1 se nikdy nepovoluje mimo oblast Azure), není nic nezabezpečené o přístupu ke sdíleným složkám Azure přes Internet. Na základě zásad vaší organizace nebo jedinečných regulativních předpisů můžete vyžadovat přísnější komunikaci s Azure, a proto Azure nabízí několik způsobů, jak omezit provoz mimo Azure do souborů Azure. Při přístupu ke sdílené složce Azure můžete lépe zabezpečit své sítě pomocí následujících nabídek služeb:
-
-- [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md): Brána VPN je konkrétní typ brány virtuální sítě, která se používá k posílání šifrovaného provozu mezi virtuální sítí Azure a alternativním umístěním (jako je místní) přes Internet. Azure VPN Gateway je prostředek Azure, který se dá nasadit ve skupině prostředků na straně účtu úložiště nebo jiných prostředků Azure. Brány VPN zpřístupňují dva různé typy připojení:
-    - Připojení brány [VPN typu Point-to-Site (P2S)](../../vpn-gateway/point-to-site-about.md) , což jsou připojení VPN mezi Azure a jednotlivými klienty. Toto řešení je primárně užitečné pro zařízení, která nejsou součástí místní sítě vaší organizace, jako jsou například dojíždění, kteří chtějí mít možnost připojit svou sdílenou složku Azure z domova, z kavárny nebo hotelu na cestách. Pokud chcete použít připojení VPN P2S se soubory Azure, bude nutné nakonfigurovat připojení VPN P2S pro každého klienta, který se chce připojit. 
-    - Síť [VPN typu Site-to-Site (S2S)](../../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti), která je připojení VPN mezi Azure a sítí vaší organizace. Připojení VPN S2S umožňuje nakonfigurovat připojení VPN jednou, pro server VPN nebo zařízení hostované v síti vaší organizace, a ne pro každé klientské zařízení, které potřebuje mít přístup ke sdílené složce Azure.
-- [ExpressRoute](../../expressroute/expressroute-introduction.md), která umožňuje vytvořit definovanou trasu mezi Azure a místní sítí, která neprojde internetem. Vzhledem k tomu, že ExpressRoute poskytuje vyhrazenou cestu mezi místním datacentrem a Azure, může být ExpressRoute užitečné v případě, že se výkon sítě zvažuje. ExpressRoute je také dobrou volbou v případě, že požadavky nebo předpisy vaší organizace vyžadují deterministické cesty k prostředkům v cloudu.
-
-## <a name="securing-access-from-on-premises"></a>Zabezpečení přístupu z místního prostředí 
-Při migraci souborů pro obecné účely (například dokumentů Office, souborů PDF, dokumentů CAD atd.) do souborů Azure budou uživatelé obvykle i nadále potřebovat přístup ke svým souborům z místních zařízení, jako jsou pracovní stanice, přenosné počítače a tablety. Hlavním aspektem pro sdílenou složku pro obecné účely je způsob, jakým můžou místní uživatelé bezpečně přistupovat ke sdíleným složkám souborů přes Internet nebo WAN.
-
-Nejjednodušší způsob, jak získat přístup ke sdílené složce Azure z místního prostředí, je otevřít místní síť pro port 445, port, který používá protokol SMB, a připojit cestu UNC, kterou poskytuje Azure Portal. To nevyžaduje žádné zvláštní síťové požadavky. Mnoho zákazníků se zdráhají na otevření portu 445 kvůli zastaralým bezpečnostním pokynům týkajícím se protokolu SMB 1,0, což Microsoft nebere v úvahu, že jde o bezpečný protokol pro Internet. Soubory Azure neimplementují protokol SMB 1,0. 
-
-Protokol SMB 3,0 byl navržen s explicitním požadavkem na bezpečné internetové sdílené soubory. Proto při použití protokolu SMB 3.0 + z perspektivy počítačové sítě není otevření portu 445 jiné než otevření portu 443, který se používá pro připojení HTTPS. Místo blokování portu 445 zabráníte nezabezpečenému provozu SMB 1,0, Microsoft doporučuje následující kroky:
-
-> [!Important]  
-> I když se rozhodnete opustit port 445 uzavřený do odchozího provozu, společnost Microsoft stále doporučuje pomocí těchto kroků odebrat z vašeho prostředí protokol SMB 1,0.
-
-1. Zajistěte, aby byl na zařízeních vaší organizace odebrán nebo zakázán protokol SMB 1,0. Všechny aktuálně podporované verze systému Windows a Windows Server podporují odebrání nebo zakázání protokolu SMB 1,0 a počínaje verzí Windows 10 verze 1709 není ve výchozím nastavení ve Windows nainstalovaná služba SMB 1,0. Další informace o tom, jak zakázat SMB 1,0, najdete na stránkách pro konkrétní operační systém:
-    - [Zabezpečení Windows/Windows serveru](storage-how-to-use-files-windows.md#securing-windowswindows-server)
-    - [Zabezpečení systému Linux](storage-how-to-use-files-linux.md#securing-linux)
-1. Zajistěte, aby žádné produkty v rámci vaší organizace nevyžadovaly SMB 1,0 a odebraly ty, které mají. Udržujeme [SMB1 produkt](https://aka.ms/stillneedssmb1), který obsahuje všechny první a třetí výrobce známé společnosti Microsoft, aby vyžadovaly protokol SMB 1,0. 
-1. Volitelné Pomocí brány firewall jiného výrobce s místní sítí vaší organizace zabráníte přenosům přes protokol SMB 1,0.
-
-Pokud vaše organizace vyžaduje, aby byl port 445 zablokovaný na základě zásad nebo nařízení, můžete k tunelování provozu přes port 443 použít Azure VPN Gateway nebo ExpressRoute. Další informace o konkrétních krocích pro jejich nasazení najdete v naší konkrétní části stránky:
-- [Konfigurace sítě VPN typu Site-to-Site (S2S) pro použití se soubory Azure](storage-files-configure-s2s-vpn.md)
-- [Konfigurace sítě VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure](storage-files-configure-p2s-vpn-windows.md)
-- [Konfigurace sítě VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure](storage-files-configure-p2s-vpn-linux.md)
-
-Vaše organizace může mít další požadavek, aby odchozí provoz z vaší místní lokality měl postupovat podle deterministické cesty k prostředkům v cloudu. Pokud ano, ExpressRoute je schopen splnit tento požadavek.
-
-## <a name="securing-access-from-cloud-resources"></a>Zabezpečení přístupu z cloudových prostředků
-Obecně platí, že když je místní aplikace převolána a přesunuta do cloudu, aplikace a data aplikace se přesunou současně. To znamená, že primární aspekt migrace typu výtah a Shift zamkne přístup ke sdílené složce Azure na konkrétní virtuální počítače nebo služby Azure, které vyžadují přístup ke sdílené složce, aby fungovala. 
-
-Možná budete chtít použít virtuální sítě k omezení, které virtuální počítače nebo jiné prostředky Azure můžou vytvářet síťová připojení (připojení SMB nebo REST API volání do sdílené složky Azure). Sdílenou složku Azure vždycky doporučujeme umístit do virtuální sítě, pokud povolíte nešifrovaný provoz do svého účtu úložiště. Jinak bez ohledu na to, jestli používáte virtuální sítě, je rozhodnutí, které by mělo být založené na vašich obchodních požadavcích a zásadách organizace.
-
-Hlavním důvodem pro povolení nešifrovaného provozu do sdílené složky Azure je podpora systému Windows Server 2008 R2, Windows 7 nebo jiného staršího operačního systému pro přístup ke sdílené složce Azure pomocí protokolu SMB 2,1 (nebo SMB 3,0 bez šifrování pro některé distribuce systému Linux). Nedoporučujeme používat SMB 2,1 ani SMB 3,0 bez šifrování v operačních systémech, které podporují protokol SMB 3.0 + s šifrováním.
-
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 - [Přehled služby Azure Files](storage-files-introduction.md)
 - [Plánování nasazení služby Soubory Azure](storage-files-planning.md)

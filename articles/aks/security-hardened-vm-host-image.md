@@ -3,17 +3,16 @@ title: Posílení zabezpečení v hostitelích virtuálních počítačů s AKS
 description: Další informace o posílení zabezpečení v operačním systému hostitele virtuálních počítačů AKS
 services: container-service
 author: saudas
-ms.service: container-service
 ms.topic: article
 ms.date: 09/11/2019
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 8b7e50fdc02ab47c50cecb95073f1b51393db898
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d4105a9fba3c40c563198040afb811625727ead0
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73885634"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594376"
 ---
 # <a name="security-hardening-in-aks-virtual-machine-hosts"></a>Posílení zabezpečení v hostitelích virtuálních počítačů s AKS 
 
@@ -75,7 +74,7 @@ AKS-Engine v tuto chvíli nepropaguje ani nedodržuje žádné konkrétní stand
 |5.4.1.1 |Zajistěte, aby vypršení platnosti hesla bylo 90 dní nebo méně. |
 |5.4.1.4 |Zajistěte, aby byl neaktivní zámek hesla nastaven na 30 dní nebo méně. |
 |5.4.4 |Zajistěte, aby výchozí uživatel umask byl 027 nebo více omezující. |
-|5,6 |Zajistěte, aby byl omezený přístup k příkazu su|
+|5.6 |Zajistěte, aby byl omezený přístup k příkazu su|
 
 ## <a name="additional-notes"></a>Další poznámky
  

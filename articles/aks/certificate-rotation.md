@@ -3,16 +3,15 @@ title: Otočení certifikátů ve službě Azure Kubernetes (AKS)
 description: Naučte se, jak tyto certifikáty otočit v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: 774a0354c6262598c7d5e1f51e2e475fd17fe2d7
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 02bfdbc840065558003b249e1e3ea52f46ec64d6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77468276"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596263"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Otočení certifikátů ve službě Azure Kubernetes (AKS)
 
@@ -66,7 +65,7 @@ az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 > [!IMPORTANT]
 > Dokončení `az aks rotate-certs` může trvat až 30 minut. Pokud se příkaz před dokončením nepovede, ověřte pomocí `az aks show`, jestli je stav clusteru *rotující*. Pokud je cluster ve stavu selhání, znovu znovu spusťte `az aks rotate-certs` pro otočení certifikátů.
 
-Spuštěním `kubectl` příkazu ověřte, že staré certifikáty již nejsou platné. Vzhledem k tomu, že jste neaktualizovali certifikáty používané v `kubectl`, zobrazí se chyba.  Například:
+Spuštěním `kubectl` příkazu ověřte, že staré certifikáty již nejsou platné. Vzhledem k tomu, že jste neaktualizovali certifikáty používané v `kubectl`, zobrazí se chyba.  Příklad:
 
 ```console
 $ kubectl get no
@@ -79,7 +78,7 @@ Aktualizujte certifikát, který používá `kubectl` spuštěním `az aks get-c
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing
 ```
 
-Ověřte, že se certifikáty aktualizovaly spuštěním příkazu `kubectl`, který teď bude úspěšný. Například:
+Ověřte, že se certifikáty aktualizovaly spuštěním příkazu `kubectl`, který teď bude úspěšný. Příklad:
 
 ```console
 kubectl get no

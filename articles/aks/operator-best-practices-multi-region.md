@@ -3,17 +3,16 @@ title: Vysoká dostupnost a zotavení po havárii ve službě Azure Kubernetes S
 description: Seznamte se s osvědčenými postupy pro provozovatele clusteru, abyste dosáhli maximální doby provozu pro vaše aplikace a poskytovali vysokou dostupnost a přípravu na zotavení po havárii ve službě Azure Kubernetes Service (AKS).
 services: container-service
 author: lastcoolnameleft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 855d40f9c20f966f6fa2b89949e47c943704bf2b
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 894ec4e543f0c68cc652141d2c1578cda61d7f42
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76549151"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594735"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zajištění kontinuity podnikových procesů a zotavení po havárii ve službě Azure Kubernetes Service (AKS)
 

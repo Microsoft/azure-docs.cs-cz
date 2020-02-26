@@ -1,18 +1,15 @@
 ---
 title: Koncepty – sítě v Azure Kubernetes Services (AKS)
 description: Přečtěte si o sítích ve službě Azure Kubernetes Service (AKS), včetně kubenet a Azure CNI, řadičů pro příjem dat, nástrojů pro vyrovnávání zatížení a statických IP adres.
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.custom: fasttrack-edit
-ms.author: mlearned
-ms.openlocfilehash: 06825f184365cfc439167be15580eb19bf5ecb38
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 5800254ab44b5b0f1048ce2200f90c06a8d1666a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084275"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596160"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepty sítě pro aplikace ve službě Azure Kubernetes Service (AKS)
 
@@ -97,16 +94,16 @@ Kubenet i Azure CNI poskytují připojení k síti pro vaše clustery AKS. Exist
 
 Mezi kubenet a Azure CNI existují následující rozdíly v chování:
 
-| Funkce                                                                                   | Kubenet   | Azure CNI |
+| Schopnost                                                                                   | Kubenet   | Azure CNI |
 |----------------------------------------------------------------------------------------------|-----------|-----------|
-| Nasadit cluster v existující nebo nové virtuální síti                                            | Podporováno – udr ručně použito | Podporováno |
-| Připojení pod                                                                         | Podporováno | Podporováno |
+| Nasadit cluster v existující nebo nové virtuální síti                                            | Podporováno – udr ručně použito | Podporuje se |
+| Připojení pod                                                                         | Podporuje se | Podporuje se |
 | Připojení pod virtuálním počítačem; Virtuální počítač ve stejné virtuální síti                                          | Funguje při inicializaci pod | Funguje v obou směrech |
 | Připojení pod virtuálním počítačem; Virtuální počítač ve virtuální síti s partnerským vztahem                                            | Funguje při inicializaci pod | Funguje v obou směrech |
 | Místní přístup pomocí sítě VPN nebo Express Route                                                | Funguje při inicializaci pod | Funguje v obou směrech |
-| Přístup k prostředkům zabezpečeným koncovými body služby                                             | Podporováno | Podporováno |
-| Vystavení služeb Kubernetes pomocí služby Vyrovnávání zatížení, služby App Gateway nebo řadiče pro příchozí přenosy | Podporováno | Podporováno |
-| Výchozí Azure DNS a soukromé zóny                                                          | Podporováno | Podporováno |
+| Přístup k prostředkům zabezpečeným koncovými body služby                                             | Podporuje se | Podporuje se |
+| Vystavení služeb Kubernetes pomocí služby Vyrovnávání zatížení, služby App Gateway nebo řadiče pro příchozí přenosy | Podporuje se | Podporuje se |
+| Výchozí Azure DNS a soukromé zóny                                                          | Podporuje se | Podporuje se |
 
 V souvislosti se službou DNS nabízí CoreDNS sada démonů, která je spuštěná v AKS, pomocí kubenet i služby Azure CNI plugins. Další informace o CoreDNS v Kubernetes najdete v tématu [přizpůsobení služby DNS](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/). Služba CoreDNS je nakonfigurovaná na výchozí hodnotu pro přeposílání neznámých domén na servery DNS uzlů, jinými slovy, na funkce DNS Azure Virtual Network, kde je nasazený cluster AKS. Proto Azure DNS a soukromé zóny budou fungovat pro lusky běžící v AKS.
 

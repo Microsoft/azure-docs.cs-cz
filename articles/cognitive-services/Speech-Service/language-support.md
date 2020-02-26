@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 02/19/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 20b99cfffdaa0d942ccd4d954909810342cbfcb8
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 86224508b9f24906abce157b92a77c0a2f24d882
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935343"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605729"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Podpora jazyků a oblastí pro službu Speech
 
@@ -34,7 +34,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
- Národní prostředí | Jazyk | Podporováno | Přizpůsobení
+ Národní prostředí | Jazyk | Podporuje se | Vlastní nastavení
 ------|------------|-----------|-------------
 `ar-AE` | Arabština (Spojené arabské emiráty) | Ano | Ne
 `ar-BH` | Arabština (Bahrajn) | Ano | Jazykový model
@@ -50,7 +50,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 `en-GB` | Angličtina (Spojené království) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
 `en-IN` | English (India) | Ano | Akustický model<br>Jazykový model
 `en-NZ` | angličtina (Nový Zéland) | Ano | Akustický model<br>Jazykový model
-`en-US` | Angličtina (Spojené státy) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
+`en-US` | Čeština (Česká republika) | Ano | Akustický model<br>Jazykový model<br>Výslovnost
 `es-ES` | Španělština (Španělsko) | Ano | Akustický model<br>Jazykový model
 `es-MX` | Španělština (Mexiko) | Ano | Akustický model<br>Jazykový model
 `fi-FI` | Finština (Finsko) | Ano | Jazykový model
@@ -95,9 +95,10 @@ Další informace o regionální dostupnosti najdete v tématu [oblasti](regions
 Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | Krátký název hlasu
 --------|----------|--------|---------|------------
 `de-DE` | Němčina (Německo) | Žena | Hlasový Převod textu na řeč pro Microsoft Server Speech (de-DE, KatjaNeural) | de-DE-KatjaNeural "
-`en-US` | English (US) | Muž | Hlasový Převod textu na řeč pro Microsoft Server Speech (EN-US, GuyNeural) | "en-US-GuyNeural"
-`en-US` | English (US) | Žena | Hlasový Převod textu na řeč pro Microsoft Server Speech (EN-US, JessaNeural) | "en-US-JessaNeural"
+`en-US` | Angličtina (USA) | Žena | Hlasový Převod textu na řeč pro Microsoft Server Speech (EN-US, JessaNeural) | "en-US-JessaNeural"
+`en-US` | Angličtina (USA) | Muž | Hlasový Převod textu na řeč pro Microsoft Server Speech (EN-US, GuyNeural) | "en-US-GuyNeural"
 `it-IT` | Italština (Itálie) | Žena |Microsoft Server Speech Převod textu na řeč hlas (IT – IT, ElsaNeural) | "IT-IT-ElsaNeural"
+`pt-BR` | Portugalština (Brazílie) | Žena | Microsoft Server Speech Převod textu na řeč Voice (pt-BR, FranciscaNeural) | pt-BR-FranciscaNeural
 `zh-CN` | Čínština (Španělsko) | Žena | "Microsoft Server Speech Převod textu na řeč Voice (zh-CN, XiaoxiaoNeural)" | "zh-CN-XiaoxiaoNeural"
 
 Pokud se chcete dozvědět, jak můžete nakonfigurovat a upravit hlasy neuronové, přečtěte si téma věnované [jazykům pro označování řeči](speech-synthesis-markup.md#adjust-speaking-styles).
@@ -127,14 +128,14 @@ Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | K
 | | | Žena | "Microsoft serveru řeči Text na řeč hlas (en-AU, HayleyRUS)" | "en-AU-HayleyRUS"
 `en-CA` | angličtina (Kanada) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-CA, Lenka)" | "en-CA-Linda"
 | | | Žena | "Microsoft serveru řeči Text na řeč hlas (en-CA, HeatherRUS)" | "en-CA-HeatherRUS"
-`en-GB` | English (UK) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-GB, Susan, Apollo)" | "en-GB-Zuzana-Apollo"
+`en-GB` | Angličtina (Velká Británie) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-GB, Susan, Apollo)" | "en-GB-Zuzana-Apollo"
 | | | Žena | "Microsoft serveru řeči Text na řeč hlas (en-GB, HazelRUS)" | "en-GB-HazelRUS"
 | | | Muž | "Microsoft serveru řeči Text na řeč hlas (en-GB, George, Apollo)" | "en-GB-Jiří-Apollo"
 `en-IE` | angličtina (Irsko) | Muž | "Microsoft serveru řeči Text na řeč hlas (en-IE, Sean)" | "en-IE-Novák"
 `en-IN` | English (India) | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, Heera, Apollo)" | "en-IN-Heera-Apollo"
 | | | Žena | "Microsoft serveru řeči Text na řeč hlas (en-IN, PriyaRUS)" | "en-IN-PriyaRUS"
 | | | Muž | "Microsoft serveru řeči Text na řeč hlas (en-IN, Ravi, Apollo)" | "en-IN-Ravi-Apollo"
-`en-US` | English (US) | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, ZiraRUS)" | "en-US-ZiraRUS"
+`en-US` | Angličtina (USA) | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, ZiraRUS)" | "en-US-ZiraRUS"
 | | | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, JessaRUS)" | "en-US-JessaRUS"
 | | | Muž | "Microsoft serveru řeči Text na řeč hlas (en US, BenjaminRUS)" | "en-US-BenjaminRUS"
 | | | Žena | "Microsoft serveru řeči Text na řeč hlas (en US, Jessa24kRUS)" | "en-US-Jessa24kRUS"
@@ -166,13 +167,13 @@ Národní prostředí | Jazyk | Pohlaví | Úplné mapování názvu služby | K
 `ko-KR` | Korejština | Žena | "Microsoft serveru řeči Text na řeč hlas (ko-KR, HeamiRUS)" | "ko-KR-HeamiRUS"
 `ms-MY` | Malajština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ms Moje, Rizwan)" | "MS-MY-Rizwan"
 `nb-NO` | norština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nb-NO HuldaRUS)" | "NB-NO-HuldaRUS"
-`nl-NL` | Holandština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nl-NL, HannaRUS)" | nl-NL-HannaRUS "
+`nl-NL` | Nizozemština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nl-NL, HannaRUS)" | nl-NL-HannaRUS "
 `pl-PL` | polština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pl-PL, PaulinaRUS)" | pl-PL-PaulinaRUS "
 `pt-BR` | Portugalština (Brazílie) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-BR, HeloisaRUS)" | pt-BR-HeloisaRUS
 | | | Muž |"Microsoft Server řeči převod textu na řeč hlasové (pt-BR, ADAM, Apollo)" | pt-BR-Daniel-Apollo
 `pt-PT` | Portugalština (Portugalsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-PT, HeliaRUS)" | pt-PT-HeliaRUS
 `ro-RO` | Rumunština | Muž | "Microsoft serveru řeči Text na řeč hlas (ro-RO, Andrei)" | "RO-RO-Andrei"
-`ru-RU` |ruština| Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Irina, Apollo)" | ru-RU-Irina-Apollo "
+`ru-RU` |Ruština| Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Irina, Apollo)" | ru-RU-Irina-Apollo "
 | | | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Pavel, Apollo)" | ru-RU-Pavel-Apollo "
 | | | Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, EkaterinaRUS)" | ru-RU – EkaterinaRUS
 `sk-SK` | Slovenština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sk-SK, Filip)" | "SK-SK-Filip"
@@ -207,14 +208,14 @@ Vlastní nastavení hlasu je k dispozici pro `de-DE`, `en-GB`, `en-IN`, `en-US`,
 
 ## <a name="speech-translation"></a>Překlad řeči
 
-**Překlad řeči** rozhraní API podporuje různé jazyky pro překlad řeči řeči a rozpoznávání řeči na text. Zdrojový jazyk musí být vždy z tabulky jazyka Speech-to-text. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text. Může překládat příchozí řeči do více než [60 jazyků](https://www.microsoft.com/translator/business/languages/). K dispozici je podmnožina jazyků pro [syntézu řeči](language-support.md#text-languages).
+Rozhraní API pro **Překlad** řeči podporuje různé jazyky pro překlad hlasu na řeč a převod řeči na text. Zdrojový jazyk musí být vždy z tabulky jazyka Speech-to-text. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text. Příchozí řeč můžete přeložit do více než [60 jazyků](https://www.microsoft.com/translator/business/languages/). K dispozici je podmnožina jazyků pro [syntézu řeči](language-support.md#text-languages).
 
 ### <a name="text-languages"></a>Text jazyky
 
 | Jazyk textu    | Kód jazyka |
 |:----------- |:-------------:|
 | Afrikánština      | `af`          |
-| arabština       | `ar`          |
+| Arabština       | `ar`          |
 | Bengálština      | `bn`          |
 | Bosenština (latinka)      | `bs`          |
 | Bulharština      | `bg`          |
@@ -225,8 +226,8 @@ Vlastní nastavení hlasu je k dispozici pro `de-DE`, `en-GB`, `en-IN`, `en-US`,
 | Chorvatština      | `hr`          |
 | Čeština      | `cs`          |
 | dánština      | `da`          |
-| Holandština      | `nl`          |
-| Angličtina      | `en`          |
+| Nizozemština      | `nl`          |
+| angličtina      | `en`          |
 | Estonština      | `et`          |
 | Vládní      | `fj`          |
 | Filipínština      | `fil`          |
@@ -243,7 +244,7 @@ Vlastní nastavení hlasu je k dispozici pro `de-DE`, `en-GB`, `en-IN`, `en-US`,
 | Irština      | `ga`          |
 | italština      | `it`          |
 | Japonština      | `ja`          |
-| Kannadština      | `kn`          |
+| Kannada      | `kn`          |
 | Svahilština      | `sw`          |
 | Klingon      | `tlh`          |
 | Klingon (plqaD)      | `tlh-Qaak`          |
@@ -262,10 +263,10 @@ Vlastní nastavení hlasu je k dispozici pro `de-DE`, `en-GB`, `en-IN`, `en-US`,
 | Paňdžábština      | `pa`          |
 | Queretaro Otomi      | `otq`          |
 | Rumunština      | `ro`          |
-| ruština      | `ru`          |
+| Ruština      | `ru`          |
 | Samoan      | `sm`          |
 | Srbština (cyrilice)      | `sr-Cyrl`          |
-| Srbština (latinka)      | `sr-Latn`          |
+| Srbština (Latina)      | `sr-Latn`          |
 | Slovenština     | `sk`          |
 | Slovinština      | `sl`          |
 | Španělština      | `es`          |
@@ -286,4 +287,4 @@ Vlastní nastavení hlasu je k dispozici pro `de-DE`, `en-GB`, `en-IN`, `en-US`,
 ## <a name="next-steps"></a>Další kroky
 
 * [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Zjistěte, jak rozpoznávat řeč v jazyce C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)
+* [Podívejte se, jak rozpoznávat řeč vC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

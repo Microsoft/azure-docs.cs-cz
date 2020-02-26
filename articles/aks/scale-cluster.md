@@ -3,16 +3,15 @@ title: Škálování clusteru Azure Kubernetes Service (AKS)
 description: Naučte se škálovat počet uzlů v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 author: iainfoulds
-ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 719f45aeeb5c7aa7e9b5e597ed461808c9d2b005
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2071ba93e826fabc4778426e2b4404b7475d1bd2
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472583"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77594393"
 ---
 # <a name="scale-the-node-count-in-an-azure-kubernetes-service-aks-cluster"></a>Škálování počtu uzlů v clusteru Azure Kubernetes Service (AKS)
 

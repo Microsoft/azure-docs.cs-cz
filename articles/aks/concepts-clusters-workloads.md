@@ -2,17 +2,14 @@
 title: Koncepty – základy Kubernetes pro služby Azure Kubernetes (AKS)
 description: Seznamte se se základními komponentami clusterů a úloh Kubernetes a s tím, jak se vztahují k funkcím ve službě Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: mlearned
-ms.openlocfilehash: 9efd053bde11a29c37e3ff6afb7c6fc4492338db
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967555"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596228"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Základní koncepty Kubernetes pro Azure Kubernetes Service (AKS)
 
@@ -91,7 +88,7 @@ Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány n
 
 - PROCESOR vyhrazený pro **procesor** závisí na typu uzlu a konfiguraci clusteru, což může způsobit, že by ALLOCATABLE procesor byl v důsledku spuštění dalších funkcí.
 
-| Jádra procesoru na hostiteli | 1\. místo | 2 | 4 | 8 | 16 | 32|64|
+| Jádra procesoru na hostiteli | 1 | 2 | 4 | 8 | 16 | 32|64|
 |---|---|---|---|---|---|---|---|
 |Kube – rezervováno (millicores)|60|100|140|180|260|420|740|
 
@@ -106,7 +103,7 @@ Aby bylo možné udržovat výkon a funkce uzlu, jsou prostředky rezervovány n
     - 6% z dalších 112 GB paměti (až 128 GB)
     - 2% libovolné paměti nad 128 GB
 
-Výše uvedená pravidla pro paměť a přidělení procesoru se používají k udržení v pořádku uzlů agentů, ale některé hostující systémy jsou pro stav clusteru nepostradatelné. Tato pravidla přidělení také způsobí, že uzel hlásí méně ALLOCATABLE paměť a procesor, než by by neměl být součástí clusteru Kubernetes. Výše uvedené rezervace prostředků se nedají změnit.
+Výše uvedená pravidla pro paměť a přidělení procesoru se používají k udržení dobrých uzlů agentů, včetně některých z nich hostujících prostředí, které jsou pro stav clusteru zásadní. Tato pravidla přidělení také způsobí, že uzel hlásí méně ALLOCATABLE paměť a procesor, než by by neměl být součástí clusteru Kubernetes. Výše uvedené rezervace prostředků se nedají změnit.
 
 Například pokud uzel nabízí 7 GB, bude hlásit 34% ALLOCATABLE paměti, která není nad prahovou hodnotou 750Mi pevného vyřazení.
 
@@ -148,7 +145,7 @@ spec:
 
 Další informace o tom, jak určit, kde mají být lusky, najdete v tématu [osvědčené postupy pro pokročilé funkce plánovače v AKS][operator-best-practices-advanced-scheduler].
 
-## <a name="pods"></a>Pody
+## <a name="pods"></a>Podů
 
 Kubernetes používá *lusky* ke spuštění instance aplikace. Pod představuje jednu instanci vaší aplikace. Lusky mají typicky mapování 1:1 s kontejnerem, i když existují pokročilé scénáře, kde objekt pod může obsahovat více kontejnerů. Tyto lomené lusky jsou naplánované společně na stejném uzlu a umožňují kontejnerům sdílet související prostředky.
 
@@ -224,7 +221,7 @@ Existují dva Kubernetes prostředky, které umožňují spravovat tyto typy apl
 
 ### <a name="statefulsets"></a>StatefulSets
 
-Moderní vývoj aplikací se často zaměřuje na bezstavové aplikace, ale *StatefulSets* se dají použít pro stavové aplikace, jako jsou například aplikace, které obsahují databázové součásti. StatefulSet se podobá nasazení v tom, že jedna nebo více identických lusků se vytváří a spravují. Repliky v StatefulSet sledují řádný a sekvenční přístup k nasazení, škálování, upgradům a ukončením. V StatefulSet se pravidla vytváření názvů, názvy sítí a úložiště uchovávají při přeplánování replik.
+Moderní vývoj aplikací se často zaměřuje na bezstavové aplikace, ale *StatefulSets* se dají použít pro stavové aplikace, jako jsou například aplikace, které obsahují databázové součásti. StatefulSet se podobá nasazení v tom, že jedna nebo více identických lusků se vytváří a spravují. Repliky v StatefulSet sledují řádný a sekvenční přístup k nasazení, škálování, upgradům a ukončením. U StatefulSet (jako repliky se přejmenovává) konvence pojmenování, názvy sítí a uchování úložiště.
 
 Aplikaci definujete ve formátu YAML pomocí `kind: StatefulSet`a kontroler StatefulSet pak zpracovává nasazení a správu požadovaných replik. Data se zapisují do trvalého úložiště, které poskytuje Azure Managed Disks nebo soubory Azure. V StatefulSets zůstane příslušné trvalé úložiště i v případě, že se StatefulSet odstraní.
 

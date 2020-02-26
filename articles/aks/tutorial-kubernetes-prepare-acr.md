@@ -2,18 +2,15 @@
 title: Kurz Kubernetes v Azure – Vytvoření registru kontejneru
 description: V tomto kurzu Azure Kubernetes Service (AKS) vytvoříte instanci služby Azure Container Registry a nahrajete image kontejneru ukázkové aplikace.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: tutorial
 ms.date: 12/19/2018
-ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 04fbea9714224f0ecbac0e14618caaf39fa3cedf
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6b8d520a539f69889b1e1bd23d255f3fe19b8717
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291137"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77593202"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Kurz: Nasazení a použití služby Azure Container Registry
 
@@ -27,7 +24,7 @@ Azure Container Registry (ACR) je privátní registr pro Image kontejnerů. Priv
 
 V dalších kurzech se tato instance ACR integruje s clusterem Kubernetes v AKS a z image se nasadí aplikace.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V [předchozím kurzu][aks-tutorial-prepare-app] byla vytvořena image kontejneru pro jednoduchou hlasovací aplikaci v Azure. Pokud jste image hlasovací aplikace v Azure ještě nevytvořili, vraťte se ke [kurzu 1 – Vytváření imagí kontejneru][aks-tutorial-prepare-app].
 
@@ -108,7 +105,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 Odeslání image do ACR může trvat několik minut.
 
-## <a name="list-images-in-registry"></a>Výpis imagí v registru
+## <a name="list-images-in-registry"></a>Vypsání imagí v registru
 
 Pokud chcete vrátit seznam imagí, které byly vloženy do instance ACR, použijte příkaz [AZ ACR úložiště list][az-acr-repository-list] . Zadejte vlastní hodnotu `<acrName>` následujícím způsobem:
 

@@ -6,19 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 99ccd00dbcea7f8eaed2e8e51a64b89c1e0b42a2
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: b60a30e5e30ee81cbaca7d5e4691ccedac2462b6
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028831"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598166"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Nastavení zařízení pro fyzické servery
 
 Tento článek popisuje, jak nastavit zařízení Azure Migrate, pokud vyhodnotili fyzické servery pomocí nástroje Azure Migrate: Server Assessment Tool.
-
-> [!NOTE]
-> Pokud jsou zde uvedené funkce, které se ještě nezobrazuje na portálu Azure Migrate, počkejte. Budou zobrazeny v průběhu příštího týdne.
 
 Zařízení Azure Migrate je jednoduché zařízení, které využije Azure Migrate Server Assessment k tomu, abyste mohli provádět následující akce:
 
@@ -44,7 +41,7 @@ Stáhněte si soubor zip pro zařízení.
 2. V > **zjišťovat počítače** **jsou vaše počítače virtualizované?** klikněte na **nevirtualizované/jiné**.
 3. Kliknutím na **Stáhnout** Stáhněte soubor zip.
 
-    ![Stáhnout virtuální počítač](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
+    ![Stáhnout virtuální počítač](./media/tutorial-assess-physical/download-appliance.png)
 
 
 ### <a name="verify-security"></a>Ověřit zabezpečení
@@ -55,17 +52,12 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
 2. Spusťte následující příkaz, který vygeneruje hodnotu hash pro virtuální pevný disk.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklady použití: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  Pro nejnovější verzi zařízení by se vygenerovaná hodnota hash měla shodovat s tímto nastavením.
-
-  **Algoritmus** | **Hodnota hash**
-  --- | ---
-  MD5 | 96fd99581072c400aa605ab036a0a7c0
-  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
+3.  Pro nejnovější verzi zařízení by se vygenerovaná hodnota hash měla shodovat s tímto [nastavením](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security).
 
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Spusťte skript instalačního programu Azure Migrate
-= Skript instalačního programu provede následující akce:
+Skript instalačního programu provede následující akce:
 
 - Nainstaluje agenty a webovou aplikaci pro zjišťování a hodnocení fyzických serverů.
 - Nainstalujte role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
@@ -80,13 +72,16 @@ Spusťte skript následujícím způsobem:
 1. Extrahujte soubor zip do složky na serveru, který bude hostitelem zařízení.
 2. Na výše uvedeném serveru s oprávněním správce (zvýšené) spusťte PowerShell.
 3. Změňte adresář PowerShellu na složku, do které byl obsah extrahován ze staženého souboru ZIP.
-4. Spusťte skript spuštěním následujícího příkazu:
+4. Spusťte skript s názvem **AzureMigrateInstaller. ps1** spuštěním následujícího příkazu:
     ```
-    AzureMigrateInstaller.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
 Skript spustí webovou aplikaci zařízení po úspěšném dokončení.
 
+V případě jakýchkoli problémů získáte přístup k protokolům skriptu na adrese C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>timestamp</em>. log pro řešení potíží.
 
+> [!NOTE]
+> Nespouštějte prosím skript Azure Migrate Installer v existujícím zařízení Azure Migrate.
 
 ### <a name="verify-appliance-access-to-azure"></a>Ověření přístupu zařízení k Azure
 
@@ -128,7 +123,7 @@ Připojte se ze zařízení k fyzickým serverům a spusťte zjišťování.
 2. Zadejte **operační systém**, popisný název přihlašovacích údajů, **uživatelské jméno** a **heslo** a klikněte na **Přidat**.
 Každé pro servery se systémem Windows a Linux můžete přidat jednu sadu přihlašovacích údajů.
 4. Klikněte na **Přidat server**a zadejte podrobnosti o serveru – plně kvalifikovaný název domény/IP adresa a popisný název přihlašovacích údajů (jedna položka na řádek) pro připojení k serveru.
-3. Klikněte na tlačítko **ověřit**. Po ověření se zobrazí seznam serverů, které se dají zjistit.
+3. Klikněte na **Validate** (Ověřit). Po ověření se zobrazí seznam serverů, které se dají zjistit.
     - Pokud se ověření serveru nepovede, zkontrolujte chybu přesunutím ukazatele myši na ikonu ve sloupci **stav** . Opravte problémy a znovu ověřte.
     - Pokud chcete odebrat server, vyberte > **Odstranit**.
 4. Po ověření klikněte na **Uložit a spusťte zjišťování a** spusťte proces zjišťování.

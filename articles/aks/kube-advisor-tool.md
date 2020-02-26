@@ -1,35 +1,34 @@
 ---
-title: Zkontrolujte vaše nasazení Kubernetes v Azure pro implementaci osvědčených postupů
-description: Zjistěte, jak vyhledat implementaci osvědčených postupů v nasazeních ve službě Azure Kubernetes Service pomocí kube advisor
+title: Projděte si nasazení Kubernetes v Azure a implementujte osvědčených postupů.
+description: Naučte se kontrolovat implementaci osvědčených postupů v nasazeních ve službě Azure Kubernetes pomocí Kube-Advisoru.
 services: container-service
 author: seanmck
-ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: 03c5eb2e32a0a8ec51844511276d9efba5651068
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: 29ea7dba1df8bc7c68e3d17563a51b784ce4a561
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "65073759"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595429"
 ---
-# <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kontrola osvědčených postupů Kubernetes v clusteru
+# <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>Kontrolují se osvědčené postupy Kubernetes v clusteru.
 
-Existuje několik osvědčených postupů, které byste měli postupovat na vaše nasazení Kubernetes a zajistit nejlepší výkon a odolnost vašich aplikací. Můžete použít nástroj kube – Poradce pro vás pod rouškou pro nasazení, která nejsou po těchto návrzích.
+K dispozici je několik doporučených postupů, které byste měli dodržovat v nasazeních Kubernetes, abyste zajistili nejlepší výkon a odolnost vašich aplikací. Nástroj Kube-Advisor můžete použít k vyhledání nasazení, která nenásledují po těchto návrzích.
 
-## <a name="about-kube-advisor"></a>O kube advisor
+## <a name="about-kube-advisor"></a>O Kube – poradce
 
-[Nástroj Poradce kube] [ kube-advisor-github] je navržený pro běh ve vašem clusteru jeden kontejner. Dotazy na serveru Kubernetes API informace o nasazení a vrátí sadu navržených vylepšení.
+[Nástroj Kube-Advisor][kube-advisor-github] je jeden kontejner, který je určený ke spuštění v clusteru. Dotazuje se na server rozhraní Kubernetes API, kde najdete informace o vašich nasazeních a vrátí sadu navrhovaných vylepšení.
 
-Nástroj kube advisor může podávat požadavkem na prostředky a omezení v aplikacích PodSpecs pro Windows, jakož i Linuxové aplikace chybí, ale vlastního nástroje kube advisor musí být naplánováno na Linuxu pod. Můžete naplánovat podu spustit na fond uzlů s konkrétním použití operačního systému [uzlu selektoru] [ k8s-node-selector] v konfiguraci pod.
+Nástroj Kube-Advisor může vykazovat požadavky na prostředky a omezení chybějící v PodSpecs pro aplikace Windows i pro aplikace pro Linux, ale samotný nástroj Kube-Advisor musí být naplánován na Linux pod. Můžete naplánovat spuštění pod v rámci fondu uzlů s konkrétním operačním systémem pomocí [voliče uzlů][k8s-node-selector] v konfiguraci pod.
 
 > [!NOTE]
-> Společnost Microsoft podporuje nástroj Poradce kube na základě best effort. Problémech a návrhy by měl být zaznamenaná na Githubu.
+> Nástroj Kube-Advisor podporuje společnost Microsoft na nejvyšší úrovni. Problémy a návrhy by se měly zaevidovat na GitHubu.
 
-## <a name="running-kube-advisor"></a>Spuštění kube advisor
+## <a name="running-kube-advisor"></a>Spuštění Kube-Advisor
 
-Ke spuštění nástroje na cluster, který je nakonfigurovaný pro [řízení přístupu na základě role (RBAC)](azure-ad-integration.md), pomocí následujících příkazů. První příkaz vytvoří účet služby Kubernetes. Druhý příkaz spustí nástroj v podu pomocí tohoto účtu služby a nakonfiguruje pod k odstranění po jeho ukončení. 
+Chcete-li spustit nástroj na clusteru, který je konfigurován pro [řízení přístupu na základě role (RBAC)](azure-ad-integration.md), použijte následující příkazy. První příkaz vytvoří účet služby Kubernetes. Druhý příkaz spustí nástroj ve vztahu pod tímto účtem služby a po jeho ukončení nakonfiguruje pole pod pro odstranění. 
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
@@ -37,39 +36,39 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }"
 ```
 
-Pokud nepoužíváte RBAC, je spustit příkaz takto:
+Pokud nepoužíváte RBAC, můžete příkaz spustit takto:
 
 ```bash
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never
 ```
 
-Během několika sekund byste měli vidět tabulku popisující potenciálních zlepšení vašich nasazení.
+Během několika sekund by se měla zobrazit tabulka s popisem potenciálních vylepšení nasazení.
 
-![Výstup Kube advisor](media/kube-advisor-tool/kube-advisor-output.png)
+![Kube – výstup poradce](media/kube-advisor-tool/kube-advisor-output.png)
 
-## <a name="checks-performed"></a>Provádí kontroly
+## <a name="checks-performed"></a>Kontroly provedeny
 
-Nástroj ověří několik Kubernetes osvědčených postupů, každý s vlastní navrhované nápravné.
+Nástroj ověřuje několik osvědčených postupů Kubernetes, z nichž každá má vlastní navrhovanou nápravu.
 
-### <a name="resource-requests-and-limits"></a>Omezení a požadavky na zdroje
+### <a name="resource-requests-and-limits"></a>Požadavky na prostředky a omezení
 
-Kubernetes podporuje definování [prostředků požadavky a omezení na specifikacích pod][kube-cpumem]. Požadavek definuje minimální procesoru a paměti potřebných ke spuštění kontejneru. Limit definuje maximální využití procesoru a paměti, která má být povolený.
+Kubernetes podporuje definování [požadavků na prostředky a omezení na základě specifikací pod][kube-cpumem]. Požadavek definuje minimální procesor a paměť, které jsou potřeba ke spuštění kontejneru. Limit definuje maximální procesor a paměť, které by měly být povoleny.
 
-Ve výchozím nastavení jsou nastaveny žádné požadavky nebo omezení na specifikacích pod. To může vést k uzly se overscheduled a kontejnerů se vyčerpaná. Nástroj Poradce kube zvýrazní podů bez požadavků a omezení sady.
+Ve výchozím nastavení nejsou nastaveny žádné požadavky ani omezení na základě specifikací pod. To může vést k přeplánování uzlů a nedostatek kontejnerů. Nástroj Kube-Advisor zvýrazňuje lusky bez nastavených požadavků a omezení.
 
 ## <a name="cleaning-up"></a>Čištění
 
-Pokud váš cluster má RBAC povolená, můžete vyčistit `ClusterRoleBinding` po spuštění nástroje, pomocí následujícího příkazu:
+Pokud má váš cluster povolené RBAC, můžete `ClusterRoleBinding` po spuštění nástroje vyčistit pomocí následujícího příkazu:
 
 ```bash
 kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
-Pokud používáte nástroj proti clusteru, který není povolen RBAC, vyžaduje se žádné čištění.
+Pokud nástroj spouštíte pro cluster, který není ve RBAC povolený, není nutné žádné vyčištění.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-- [Řešení potíží se službou Azure Kubernetes Service](troubleshooting.md)
+- [Řešení potíží se službou Azure Kubernetes](troubleshooting.md)
 
 <!-- RESOURCES -->
 

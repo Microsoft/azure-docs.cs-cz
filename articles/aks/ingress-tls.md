@@ -2,17 +2,14 @@
 title: Vytvoření příchozího přenosu HTTPS s clusterem Azure Kubernetes Service (AKS)
 description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího přenosu NGINX, který používá šifrování pro automatické generování certifikátů TLS v clusteru Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.author: mlearned
-ms.openlocfilehash: 661ed72265b81f47cbe8e9cf26595632360ec352
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6b465aeb08f14e48249be9587e5fdee1f4b08ba4
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76898806"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595531"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu HTTPS ve službě Azure Kubernetes (AKS)
 
@@ -344,7 +341,7 @@ Tento článek obsahuje některé externí komponenty, které se AKS. Další in
 
 - [Helm CLI][helm-cli]
 - [Kontroler NGINX pro příchozí přenosy][nginx-ingress]
-- [cert-manager][cert-manager]
+- [Správce certifikátů][cert-manager]
 
 Můžete také:
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fbff3679004b8278b7634c2dc21253973cf34d0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3a3e4c76463aaea0735d20d4fcc283aee460b48f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647658"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77597520"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver
 
@@ -168,7 +168,7 @@ V tomto článku se zaměříme na kroky, které můžete provést při nasazen�
 
 V rámci zjednodušení nasazení a konfigurace používáme v tomto článku šablony SAP pro Správce prostředků s vysokou dostupností. Šablony automatizují nasazení celé infrastruktury, kterou potřebujete pro systém SAP s vysokou dostupností. Infrastruktura také podporuje určení velikosti SAP (Application Performance Standard) SAP pro systém SAP.
 
-## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> Požadavky
+## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Požadovaný
 Než začnete, ujistěte se, že splňujete požadavky popsané v následujících částech. Nezapomeňte také zkontrolovat všechny prostředky uvedené v části [Resources (prostředky][sap-ha-guide-2] ).
 
 V tomto článku používáme šablony Azure Resource Manager pro [trojrozměrné NETWEAVER SAP pomocí Managed disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). Užitečný přehled šablon najdete v tématu [šablony SAP Azure Resource Manager](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
@@ -188,7 +188,7 @@ Tyto články zahrnují nasazení SAP v Azure:
 
 Tyto poznámky SAP souvisejí s tématem SAP v Azure:
 
-| Číslo poznámky | Nadpis |
+| Číslo poznámky | Název |
 | --- | --- |
 | [1928533] |Aplikace SAP v Azure: podporované produkty a velikost |
 | [2015553] |SAP v Microsoft Azure: požadavky na podporu |
@@ -419,9 +419,9 @@ _**Obrázek 11:** Nastavení Azure Resource Manager parametrů pro vysokou dostu
     * Cluster DBMS: <*SAPSystemSID*>-db-<*číslo*>
 
   * **Síťové karty pro všechny virtuální počítače s přidruženými IP adresami**:
-    * <*SAPSystemSID*>-nic-di-<*Number*>
-    * <*SAPSystemSID*>-nic-ascs-<*Number*>
-    * <*SAPSystemSID*>-nic-db-<*Number*>
+    * <*SAPSystemSID*>-nic-di-<*číslo*>
+    * <*SAPSystemSID*>-nic-ascs-<*číslo*>
+    * <*SAPSystemSID*>-nic-db-<*číslo*>
 
   * **Účty služby Azure Storage (jenom nespravované disky)**
 
@@ -443,7 +443,7 @@ _**Obrázek 11:** Nastavení Azure Resource Manager parametrů pro vysokou dostu
 >
 
 ### <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Nasazení virtuálních počítačů s připojením k podnikové síti (mezi místními) pro použití v produkčním prostředí
-Pro produkční systémy SAP nasaďte virtuální počítače Azure s [připojením k podnikové síti (mezi místními)][planning-guide-2.2] pomocí Azure Site-to-Site VPN nebo Azure ExpressRoute.
+V případě produkčních systémů SAP nasaďte virtuální počítače Azure s připojením k podnikové síti pomocí sítě VPN Azure Site-to-site nebo Azure ExpressRoute.
 
 > [!NOTE]
 > Můžete použít instanci Azure Virtual Network. Virtuální síť a podsíť už jsou vytvořené a připravené.
@@ -588,8 +588,8 @@ V našem příkladu je adresní prostor virtuální sítě Azure 10.0.0.0/16. Ex
 Chcete-li nastavit požadované IP adresy DNS, proveďte následující kroky.
 
 1. V Azure Portal v okně **servery DNS** se ujistěte, že je možnost **servery DNS** virtuální sítě nastavená na **vlastní DNS**.
-2. Vyberte nastavení podle typu sítě, kterou máte. Další informace najdete v následujících materiálech:
-   * [Připojení k podnikové síti (mezi místními sítěmi)][planning-guide-2.2]: přidejte IP adresy místních serverů DNS.  
+2. Vyberte nastavení podle typu sítě, kterou máte. Další informace najdete v následujících zdrojích:
+   * Přidejte IP adresy místních serverů DNS.  
    Místní servery DNS můžete rozmístit do virtuálních počítačů, které běží v Azure. V takovém scénáři můžete přidat IP adresy virtuálních počítačů Azure, na kterých spouštíte službu DNS.
    * Pro nasazení virtuálních počítačů izolované v Azure: nasaďte další virtuální počítač ve stejné instanci Virtual Network, která slouží jako server DNS. Přidejte IP adresy virtuálních počítačů Azure, které jste nastavili pro spuštění služby DNS.
 
@@ -696,14 +696,14 @@ Chcete-li vytvořit požadované koncové body interního vyrovnávání zatíž
 | Název pravidla služby/Vyrovnávání zatížení | Výchozí čísla portů | Konkrétní porty pro (ASCS instance s číslem instance 00) (OLAJÍCÍCH s 10) |
 | --- | --- | --- |
 | Server/ *lbrule3200* fronty |32 <*číslo instance*> |3200 |
-| Server zpráv ABAP/ *lbrule3600* |36<*InstanceNumber*> |3600 |
+| Server zpráv ABAP/ *lbrule3600* |36 <*číslo instance*> |3600 |
 | Interní zpráva ABAP/ *lbrule3900* |39 <*číslo instance*> |3900 |
-| HTTP/ *Lbrule8100* serveru zpráv |81<*InstanceNumber*> |8100 |
-| Služba SAP Start Service ASCS HTTP/ *Lbrule50013* |5<*InstanceNumber*>13 |50013 |
-| Služba SAP Start Service ASCS HTTPS/ *Lbrule50014* |5<*InstanceNumber*>14 |50014 |
-| Replikace do fronty/ *Lbrule50016* |5<*InstanceNumber*>16 |50016 |
-| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51013* |5<*InstanceNumber*>13 |51013 |
-| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51014* |5<*InstanceNumber*>14 |51014 |
+| HTTP/ *Lbrule8100* serveru zpráv |81 <*číslo instance*> |8100 |
+| Služba SAP Start Service ASCS HTTP/ *Lbrule50013* |5 <*číslo instance*> 13 |50013 |
+| Služba SAP Start Service ASCS HTTPS/ *Lbrule50014* |5 <*číslo instance*> 14 |50014 |
+| Replikace do fronty/ *Lbrule50016* |5 <*číslo instance*> 16 |50016 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51013* |5 <*číslo instance*> 13 |51013 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51014* |5 <*číslo instance*> 14 |51014 |
 | *Lbrule5985* pro Windows RM | |5985 |
 | *Lbrule445* sdílení souborů | |445 |
 
@@ -716,12 +716,12 @@ Pak vytvořte tyto koncové body vyrovnávání zatížení pro porty SAP NetWea
 | Server/ *lbrule3201* fronty |32 <*číslo instance*> |3201 |
 | Server brány/ *lbrule3301* |33 <*číslo instance*> |3301 |
 | Server zpráv Java/ *lbrule3900* |39 <*číslo instance*> |3901 |
-| HTTP/ *Lbrule8101* serveru zpráv |81<*InstanceNumber*> |8101 |
-| Služba SAP Start Service SCS HTTP/ *Lbrule50113* |5<*InstanceNumber*>13 |50113 |
-| Služba SAP Start Service SCS HTTPS/ *Lbrule50114* |5<*InstanceNumber*>14 |50114 |
-| Replikace do fronty/ *Lbrule50116* |5<*InstanceNumber*>16 |50116 |
-| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51113* |5<*InstanceNumber*>13 |51113 |
-| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51114* |5<*InstanceNumber*>14 |51114 |
+| HTTP/ *Lbrule8101* serveru zpráv |81 <*číslo instance*> |8101 |
+| Služba SAP Start Service SCS HTTP/ *Lbrule50113* |5 <*číslo instance*> 13 |50113 |
+| Služba SAP Start Service SCS HTTPS/ *Lbrule50114* |5 <*číslo instance*> 14 |50114 |
+| Replikace do fronty/ *Lbrule50116* |5 <*číslo instance*> 16 |50116 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51113* |5 <*číslo instance*> 13 |51113 |
+| Služba SAP Start Service OLAJÍCÍCH HTTP *Lbrule51114* |5 <*číslo instance*> 14 |51114 |
 | *Lbrule5985* pro Windows RM | |5985 |
 | *Lbrule445* sdílení souborů | |445 |
 
@@ -740,7 +740,7 @@ Pokud chcete pro instance SAP ASCS nebo SCS používat odlišná čísla, musít
 1. V Azure Portal vyberte **<*SID*>-9,1-ASCS load balancer** > **pravidla vyrovnávání**zatížení.
 2. Pro všechna pravidla vyrovnávání zatížení, která patří do instance SAP ASCS nebo SCS, změňte tyto hodnoty:
 
-   * Name (Název)
+   * Název
    * Port
    * Back-end port
 
@@ -1210,7 +1210,7 @@ Postup přidání portu sondy:
 
    Číslo portu je definované v šablonách SAP Azure Resource Manager. V PowerShellu můžete přiřadit číslo portu.
 
-   Pokud chcete nastavit novou hodnotu ProbePort pro prostředek clusteru **IP > SAP < *SID* >** , spusťte následující skript prostředí PowerShell. Aktualizujte proměnné PowerShellu pro vaše prostředí. Po spuštění skriptu se zobrazí výzva k restartování skupiny clusterů SAP, aby se změny aktivovaly.
+   Pokud chcete nastavit novou hodnotu ProbePort pro prostředek clusteru **IP > SAP <*SID*** , spusťte následující skript prostředí PowerShell. Aktualizujte proměnné PowerShellu pro vaše prostředí. Po spuštění skriptu se zobrazí výzva k restartování skupiny clusterů SAP, aby se změny aktivovaly.
 
    ```powershell
    $SAPSID = "PR1"      # SAP <SID>
@@ -1268,7 +1268,7 @@ Postup přidání portu sondy:
    }
    ```
 
-   Po přepnutí **SAP <*SID*>** Clusterové role online, ověřte, že **ProbePort** je nastavena na novou hodnotu.
+   Po převedení>role clusteru **SAP <*SID***  ověřte, že je **ProbePort** nastavená na novou hodnotu.
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>

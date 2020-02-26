@@ -2,22 +2,21 @@
 title: Integrace se službami spravovanými Azure s využitím OSBA (Open Service Broker for Azure)
 description: Integrace se službami spravovanými Azure s využitím OSBA (Open Service Broker for Azure)
 author: zr-msft
-ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: zarhoads
-ms.openlocfilehash: 131e767daa920f03db5ec9a3aac711fc850c7132
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 8d727256afbe152a4f7022d0fd2454c4677b023c
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276794"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595599"
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrace se službami spravovanými Azure s využitím OSBA (Open Service Broker for Azure)
 
 Open Service Broker for Azure (OSBA) společně s modulem [Kubernetes Service Catalog][kubernetes-service-catalog], umožňuje využívat služby spravované Azure v Kubernetes. Tato příručka se soustředí na nasazení modulu Service Catalog, Open Service Broker for Azure (OSBA) a aplikací, které používají služby spravované Azure s využitím Kubernetes.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Předplatné Azure
 
 * Azure CLI: [nainstalujte ho místně][azure-cli-install]nebo ho použijte v [Azure Cloud Shell][azure-cloud-shell].

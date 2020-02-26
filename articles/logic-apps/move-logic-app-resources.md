@@ -1,29 +1,31 @@
 ---
-title: Přesuňte aplikace logiky napříč předplatnými, skupinami prostředků nebo oblastmi.
+title: Migrace aplikací logiky v rámci předplatných, skupin prostředků nebo oblastí
 description: Migrace aplikací logiky nebo integračních účtů do jiných předplatných Azure, skupin prostředků nebo umístění (oblastí)
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: d6250238edd15126e7a56bd821fbd1c736ebda07
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f5944accb185f1311c811cf65a8ea8348fd569db
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965891"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605609"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Přesunutí prostředků aplikace logiky do jiných předplatných Azure, skupin prostředků nebo oblastí
 
-Pokud chcete přesunout aplikaci logiky nebo související prostředky do jiného předplatného Azure, skupiny prostředků nebo oblasti, budete mít k dispozici různé způsoby, jak tyto úlohy dokončit, například Azure Portal, Azure PowerShell, Azure CLI a REST API. Před přesunutím prostředků si prostudujte tyto informace: 
+K migraci aplikace logiky nebo souvisejících prostředků do jiného předplatného Azure, skupiny prostředků nebo oblasti máte různé způsoby, jak tyto úlohy dokončit, například Azure Portal, Azure PowerShell, Azure CLI a REST API. Před přesunutím prostředků si prostudujte tyto informace: 
 
 * Mezi skupinami prostředků Azure nebo předplatnými můžete přesunout jenom [konkrétní typy prostředků aplikace logiky](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) .
 
 * Ověřte [omezení](../logic-apps/logic-apps-limits-and-config.md) počtu prostředků aplikace logiky, které můžete mít v předplatném Azure a v každé oblasti Azure. Tato omezení mají vliv na to, jestli můžete přesunout konkrétní typy prostředků, pokud tato oblast zůstane v rámci předplatných nebo skupin prostředků stejná. Pro každou oblast Azure v každém předplatném Azure můžete mít například jenom jeden účet pro integraci bezplatné úrovně.
 
-* Když přesunete prostředky, Azure vytvoří nová ID prostředků. Nezapomeňte místo toho použít nová ID a aktualizovat skripty nebo nástroje, které jsou přidruženy k přesunutým prostředkům. Po přesunutí Logic Apps mezi předplatnými, skupinami prostředků nebo oblastmi musíte znovu vytvořit nebo znovu autorizovat všechna připojení založená na protokolu OAuth.
+* Po dokončení migrace Logic Apps mezi předplatnými, skupinami prostředků nebo oblastmi musíte znovu vytvořit nebo znovu autorizovat všechna připojení, která vyžadují otevřené ověřování (OAuth).
 
-## <a name="prerequisites"></a>Požadavky
+* Kdykoli přesunete prostředky, Azure vytvoří nová ID prostředků. Nezapomeňte místo toho použít nová ID a aktualizovat skripty nebo nástroje, které jsou přidruženy k přesunutým prostředkům.
+
+## <a name="prerequisites"></a>Předpoklady
 
 * Stejné předplatné Azure, které se použilo k vytvoření aplikace logiky nebo účtu pro integraci, který chcete přesunout
 
@@ -84,7 +86,7 @@ Další informace o šablonách nasazení pro Logic Apps najdete v těchto téma
 * [Vytvoření šablon Azure Resource Manager pro Azure Logic Apps](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
 * [Nasazení šablon Azure Resource Manager pro Azure Logic Apps](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)
 
-### <a name="related-resources"></a>Související materiály
+### <a name="related-resources"></a>Související prostředky
 
 Některé prostředky Azure, například prostředky místní brány dat v Azure, můžou existovat v oblasti, která se liší od aplikací logiky, které tyto prostředky využívají. Nicméně jiné prostředky Azure, jako jsou propojené integrační účty, musí existovat ve stejné oblasti jako aplikace logiky. V závislosti na vašem scénáři se ujistěte, že vaše aplikace logiky mají přístup k prostředkům, které vaše aplikace očekávají ve stejné oblasti.
 

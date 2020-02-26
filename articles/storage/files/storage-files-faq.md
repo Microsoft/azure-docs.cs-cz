@@ -3,16 +3,16 @@ title: Nejčastější dotazy týkající se souborů Azure | Microsoft Docs
 description: Přečtěte si odpovědi na nejčastější dotazy týkající se služby Azure Files.
 author: roygara
 ms.service: storage
-ms.date: 02/19/2020
+ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6503f2782832b7155c0c081aab9769296e08a8e
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 5cbb819ef1300f16a40dbdd0da52a35bdf578e59
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565056"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598183"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy týkající se souborů Azure
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
@@ -85,7 +85,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="afs-region-availability"></a>
   **Jaké oblasti jsou podporované pro Azure File Sync?**  
-    Seznam oblastí, které jsou k dispozici, najdete v části [dostupnost oblasti](storage-sync-files-planning.md#region-availability) v příručce pro plánování Azure File Sync. Budeme průběžně přidávají podporu pro další oblasti, včetně neveřejných oblastí.
+    Seznam oblastí, které jsou k dispozici, najdete v části [dostupnost oblasti](storage-sync-files-planning.md#azure-file-sync-region-availability) v příručce pro plánování Azure File Sync. Budeme průběžně přidávají podporu pro další oblasti, včetně neveřejných oblastí.
 
 * <a id="cross-domain-sync"></a>
   **můžou být ve stejné skupině synchronizace servery připojené k doméně a jiné domény?**  
@@ -155,13 +155,13 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
     Pokud jste ve sdílených složkách se správou souborů povolili Azure Backup, můžou se seznamy ACL souborů i nadále obnovovat v rámci pracovního postupu obnovení zálohování. To funguje buď pro celou sdílenou složku, nebo pro jednotlivé soubory nebo adresáře.
 
-    Pokud používáte snímky v rámci samoobslužného řešení zálohování pro sdílené složky spravované synchronizací souborů, nemusí být seznamy ACL správně obnoveny do seznamů ACL systému souborů NTFS, pokud byly snímky provedeny před 24. února 2020. Pokud k tomu dojde, zvažte, zda se obrátíte na podporu Azure.
+    Pokud používáte snímky v rámci samoobslužného řešení zálohování pro sdílené složky spravované synchronizací souborů, nemusí být seznamy ACL správně obnoveny do seznamů ACL systému souborů NTFS, pokud byly snímky odebrány před únorem 24 července 2020. Pokud k tomu dojde, zvažte, zda se obrátíte na podporu Azure.
     
 ## <a name="security-authentication-and-access-control"></a>Zabezpečení, ověřování a řízení přístupu
 * <a id="ad-support"></a>
 **je ověřování na základě identity a řízení přístupu podporované soubory Azure?**  
     
-    Ano, soubory Azure podporují ověřování na základě identity a řízení přístupu. Můžete zvolit jeden ze dvou způsobů použití řízení přístupu na základě identity: Azure Active Directory Domain Services (Azure služba AD DS) (GA) nebo Active Directory (AD) (Preview). Služba Azure služba AD DS Authentication přes SMB pro soubory Azure umožňuje virtuálním počítačům Azure služba AD DS připojeným k doméně přistupovat ke sdíleným složkám, adresářům a souborům pomocí přihlašovacích údajů Azure AD. Služba AD podporuje ověřování pomocí počítačů připojených k doméně AD, a to buď místně nebo v Azure, pro přístup ke sdíleným složkám Azure přes protokol SMB. Další podrobnosti najdete v tématu [Přehled podpory ověřování na základě identity souborů Azure pro přístup přes protokol SMB](storage-files-active-directory-overview.md). 
+    Ano, soubory Azure podporují ověřování na základě identity a řízení přístupu. Můžete zvolit jeden ze dvou způsobů použití řízení přístupu na základě identity: Active Directory (AD) (ve verzi Preview) nebo Azure Active Directory Domain Services (Azure služba AD DS) (GA). Služba AD podporuje ověřování pomocí počítačů připojených k doméně AD, a to buď místně nebo v Azure, pro přístup ke sdíleným složkám Azure přes protokol SMB. Služba Azure služba AD DS Authentication přes SMB pro soubory Azure umožňuje virtuálním počítačům Azure služba AD DS připojeným k doméně přistupovat ke sdíleným složkám, adresářům a souborům pomocí přihlašovacích údajů Azure AD. Další podrobnosti najdete v tématu [Přehled podpory ověřování na základě identity souborů Azure pro přístup přes protokol SMB](storage-files-active-directory-overview.md). 
 
     Azure Files nabízí dva další způsoby, jak spravovat řízení přístupu:
 
@@ -199,14 +199,12 @@ můžu **Povolit Azure Files azure služba AD DS nebo ověřování AD pomocí k
 * <a id="ad-multiple-forest"></a>
 **podporuje ověřování Azure Files AD integraci s prostředím služby AD pomocí více doménových struktur?**    
 
-    Ověřování pomocí služby Azure Files AD se integruje jenom s doménovou strukturou doménové služby AD, na kterou je účet úložiště zaregistrovaný. Aby bylo možné podporovat ověřování z jiné doménové struktury služby Active Directory, musí mít vaše prostředí správně nakonfigurovaný vztah důvěryhodnosti doménové struktury. Registrace souborů Azure do služby AD Doménová služba se většinou shoduje s běžným souborovým serverem, kde při ověřování vytvoří účet ve službě AD. Jediným rozdílem je, že registrovaný hlavní název služby (SPN) účtu úložiště končí řetězcem "file.core.windows.net", který se neshoduje s příponou domény.
-
-    Pokud chcete povolit vícenásobné ověřování v doménové struktuře, Projděte si správce domény a zjistěte, jestli je potřeba nějaká aktualizace pro zásady směrování DNS.
+    Ověřování pomocí služby Azure Files AD se integruje jenom s doménovou strukturou doménové služby AD, na kterou je účet úložiště zaregistrovaný. Aby bylo možné podporovat ověřování z jiné doménové struktury služby Active Directory, musí mít vaše prostředí správně nakonfigurovaný vztah důvěryhodnosti doménové struktury. Způsob, jakým se soubory Azure, které se registrují do doménové služby AD, jsou většinou stejné jako běžné souborové servery, kde při ověřování vytvoří ve službě AD identitu (počítač nebo přihlašovací účet služby). Jediným rozdílem je, že registrovaný hlavní název služby (SPN) účtu úložiště končí řetězcem "file.core.windows.net", který se neshoduje s příponou domény. Projděte si správce domény a zjistěte, jestli je pro povolení více doménových struktur v důsledku jiné přípony domény potřeba nějaká aktualizace zásad směrování DNS.
 
 * <a id=""></a>
 **Jaké oblasti jsou k dispozici pro ověřování Azure soubory AD (Preview)?**
 
-    Podrobnosti najdete v tématu věnovaném [místní dostupnosti služby Active Directory](storage-files-active-directory-domain-services-enable.md#regional-availability) .
+    Podrobnosti najdete v tématu věnovaném [místní dostupnosti služby Active Directory](storage-files-identity-auth-active-directory-enable.md#regional-availability) .
 
 * <a id="ad-aad-smb-afs"></a>
 můžu **využívat Azure Files azure služba AD DS ověřování nebo ověřování služby Active Directory (AD) ve sdílených složkách, které spravuje Azure File Sync?**
@@ -347,7 +345,7 @@ se **síťový provoz mezi virtuálním počítačem Azure a sdílenou složkou 
 
 * <a id="need-larger-share"></a>
 **jaké velikosti jsou k dispozici pro sdílené složky Azure?**  
-    Velikosti sdílených složek Azure (Premium a Standard) se dají škálovat až na 100 TiB. Pokyny pro připojování k větším sdíleným složkám pro úroveň Standard najdete v části připojení [k větším sdíleným složkám (úroveň Standard)](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) Průvodce plánováním.
+    Velikosti sdílených složek Azure (Premium a Standard) se dají škálovat až na 100 TiB. Pokyny pro připojování k větším sdíleným složkám pro úroveň Standard najdete v části připojení [k větším sdíleným složkám (úroveň Standard)](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) Průvodce plánováním.
 
 * <a id="lfs-performance-impact"></a>
 **rozšiřuje svou kvótu své sdílené složky na moje úlohy nebo Azure File Sync?**

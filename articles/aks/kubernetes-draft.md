@@ -3,16 +3,15 @@ title: Vývoj ve službě Azure Kubernetes Service (AKS) s využitím konceptu
 description: Použití konceptu s AKS a Azure Container Registry
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: 07e267af307fedd9b896e08919b7026a3a1c2bac
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b03256ee65a3c40d8a64d70b877c49e44e68f822
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292958"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595217"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Rychlý Start: vývoj ve službě Azure Kubernetes Service (AKS) s využitím konceptu
 
@@ -21,7 +20,7 @@ Koncept je open source nástroj, který pomáhá balíčkům a spouštěním kon
 V tomto článku se dozvíte, jak používat koncept k zabalení a spuštění aplikace v AKS.
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)

@@ -2,25 +2,22 @@
 title: Zobrazení protokolů kubelet ve službě Azure Kubernetes Service (AKS)
 description: Přečtěte si, jak zobrazit informace o řešení potíží v protokolech kubelet z uzlů Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 03/05/2019
-ms.author: mlearned
-ms.openlocfilehash: 65b16b3ddc209ef5d2f6287a04cfe402c3b205c6
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: b7a74803af916f9e9de72dd528273007ce37832f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67615185"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595378"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Získání protokolů kubelet z uzlů clusteru Azure Kubernetes Service (AKS)
 
 V rámci provozu clusteru AKS možná budete muset zkontrolovat protokoly a vyřešit problém. Integrovaná do Azure Portal je schopnost zobrazit protokoly pro [hlavní komponenty][aks-master-logs] a [kontejnery AKS v clusteru AKS][azure-container-logs]. V některých případech může být potřeba získat protokoly *kubelet* z uzlu AKS pro účely řešení potíží.
 
-V tomto článku se dozvíte, jak `journalctl` můžete pomocí nástroje zobrazit protokoly *kubelet* v uzlu AKS.
+V tomto článku se dozvíte, jak můžete pomocí `journalctl` zobrazit protokoly *kubelet* v uzlu AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte existující cluster AKS. Pokud potřebujete cluster AKS, přečtěte si rychlý Start AKS a [použijte Azure CLI][aks-quickstart-cli] nebo [Azure Portal][aks-quickstart-portal].
 
@@ -62,7 +59,7 @@ I0508 12:28:48.321952    8672 kubelet_node_status.go:497] Using Node Hostname fr
 I0508 12:28:58.344656    8672 kubelet_node_status.go:497] Using Node Hostname from cloudprovider: "aks-agentpool-11482510-0"
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokud potřebujete další informace pro řešení potíží z hlavní větve Kubernetes, přečtěte si téma [zobrazení protokolů hlavního uzlu Kubernetes v AKS][aks-master-logs].
 

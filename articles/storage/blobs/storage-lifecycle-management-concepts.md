@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: fdc98991134e0857d24575d22962a52e43266cbe
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939240"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598302"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -38,7 +38,7 @@ Zásady správy životního cyklu jsou dostupné s účty Pro obecné účely v2
 
 Funkce správy životního cyklu je bezplatná. Zákazníkům se účtují běžné provozní náklady na [seznam objektů BLOB seznamu](https://docs.microsoft.com/rest/api/storageservices/list-blobs) a nastavování volání rozhraní API na [úrovni objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) . Operace odstranění je zadarmo. Další informace o cenách najdete v tématu [ceny za objekty blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="regional-availability"></a>Dostupnost podle oblastí
+## <a name="regional-availability"></a>Regionální dostupnost
 
 Funkce správy životního cyklu je dostupná ve všech oblastech Azure.
 
@@ -58,7 +58,7 @@ Zásady je možné číst nebo zapisovat v plném rozsahu. Částečné aktualiz
 
 Tento článek popisuje, jak spravovat zásady pomocí portálu a metod PowerShellu.  
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal. 
 
@@ -67,7 +67,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 
 #### <a name="azure-portal-list-view"></a>Zobrazení seznamu Azure Portal
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 2. V Azure Portal vyhledejte a vyberte svůj účet úložiště. 
 
@@ -88,7 +88,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 9. Pokud chcete přidat novou zásadu, vyberte **Přidat** .
 
 #### <a name="azure-portal-code-view"></a>Azure Portal zobrazení kódu
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 2. V Azure Portal vyhledejte a vyberte svůj účet úložiště.
 
@@ -124,11 +124,11 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
    }
    ```
 
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
 6. Další informace o tomto příkladu JSON najdete v částech [zásady](#policy) a [pravidla](#rules) .
 
-# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 K přidání zásad do účtu úložiště se dá použít následující skript PowerShellu. Proměnná `$rgname` musí být inicializována názvem vaší skupiny prostředků. Proměnná `$accountName` musí být inicializována s názvem vašeho účtu úložiště.
 
@@ -158,7 +158,7 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
-# <a name="templatetabtemplate"></a>[Šablona](#tab/template)
+# <a name="template"></a>[Šablona](#tab/template)
 
 Správu životního cyklu můžete definovat pomocí Azure Resource Manager šablon. Tady je Ukázková šablona pro nasazení účtu úložiště RA-GRS GPv2 se zásadami správy životního cyklu.
 
@@ -202,7 +202,7 @@ Správu životního cyklu můžete definovat pomocí Azure Resource Manager šab
 
 ---
 
-## <a name="policy"></a>Zásady
+## <a name="policy"></a>Zásada
 
 Zásady správy životního cyklu jsou kolekce pravidel v dokumentu JSON:
 
@@ -226,18 +226,18 @@ Zásady správy životního cyklu jsou kolekce pravidel v dokumentu JSON:
 
 Zásada je kolekcí pravidel:
 
-| Název parametru | Typ parametru | Poznámky |
+| Název parametru | Typ parametru | Poznámky: |
 |----------------|----------------|-------|
 | `rules`        | Pole objektů pravidel | V zásadě je vyžadováno alespoň jedno pravidlo. V zásadách můžete definovat až 100 pravidel.|
 
 Každé pravidlo v zásadě má několik parametrů:
 
-| Název parametru | Typ parametru | Poznámky | Požaduje se |
+| Název parametru | Typ parametru | Poznámky: | Požaduje se |
 |----------------|----------------|-------|----------|
-| `name`         | Řetězec |Název pravidla může obsahovat až 256 alfanumerických znaků. Název pravidla rozlišuje velká a malá písmena.  Musí být jedinečný v rámci zásad. | Pravda |
-| `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | Nepravda | 
-| `type`         | Hodnota výčtu | Aktuální platný typ je `Lifecycle`. | Pravda |
-| `definition`   | Objekt definující pravidlo životního cyklu | Každá definice se skládá ze sady filtrů a sady akcí. | Pravda |
+| `name`         | Řetězec |Název pravidla může obsahovat až 256 alfanumerických znaků. Název pravidla rozlišuje velká a malá písmena.  Musí být jedinečný v rámci zásad. | True |
+| `enabled`      | Logická hodnota | Volitelná logická hodnota, která povolí dočasné vypnutí pravidla. Výchozí hodnota je true, pokud není nastavena. | False | 
+| `type`         | Hodnota výčtu | Aktuální platný typ je `Lifecycle`. | True |
+| `definition`   | Objekt definující pravidlo životního cyklu | Každá definice se skládá ze sady filtrů a sady akcí. | True |
 
 ## <a name="rules"></a>Pravidla
 
@@ -289,7 +289,7 @@ Filtruje akce pravidla omezení na podmnožinu objektů BLOB v rámci účtu úl
 
 Filtry zahrnují:
 
-| Název filtru | Typ filtru | Poznámky | Je povinné |
+| Název filtru | Typ filtru | Poznámky: | Je povinné |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Pole předdefinovaných hodnot výčtu. | Aktuální verze podporuje `blockBlob`. | Ano |
 | prefixMatch | Pole řetězců pro předpony, které mají být shodné. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se pro pravidlo shodovaly všechny objekty BLOB v rámci `https://myaccount.blob.core.windows.net/container1/foo/...`, je prefixMatch `container1/foo`. | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště.  | Ne |
@@ -302,9 +302,9 @@ Správa životního cyklu podporuje vrstvení a odstraňování objektů BLOB a 
 
 | Akce        | Základní objekt BLOB                                   | Snímek      |
 |---------------|---------------------------------------------|---------------|
-| tierToCool    | Podpora objektů BLOB v současnosti v úrovni Hot         | Nepodporováno |
-| tierToArchive | Podpora blobů v současnosti na horké nebo studené úrovni | Nepodporováno |
-| delete        | Podporováno                                   | Podporováno     |
+| tierToCool    | Podpora objektů BLOB v současnosti v úrovni Hot         | Nepodporuje se |
+| tierToArchive | Podpora blobů v současnosti na horké nebo studené úrovni | Nepodporuje se |
+| delete        | Podporuje se                                   | Podporuje se     |
 
 >[!NOTE]
 >Pokud definujete více než jednu akci u stejného objektu blob, bude správa životního cyklu v objektu BLOB platit nejméně náročná akce. Například akce `delete` je levnější než akce `tierToArchive`. Akce `tierToArchive` je levnější než akce `tierToCool`.
@@ -432,13 +432,13 @@ Pro data, která se pravidelně upravují a přibývají k nim přistupovaly bě
 }
 ```
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Vytvořili jsem novou zásadu, proč se akce nespouštějí hned?**  
 Platforma spouští zásady životního cyklu jednou denně. Po nakonfigurování zásady může trvat až 24 hodin, než se některé akce poprvé spustí.  
 
 **Pokud aktualizujem existující zásady, jak dlouho trvá, než se akce spustí?**  
-Aktualizovaná zásada trvá až 24 hodin, než se dostanou platit. Jakmile se zásada uplatní, může trvat až 24 hodin, než se akce spustí. Proto může spuštění těchto zásad trvat až 48 hodin.   
+Aktualizovaná zásada trvá až 24 hodin, než se dostanou platit. Jakmile se zásada uplatní, může trvat až 24 hodin, než se akce spustí. Proto může dokončení akcí zásad trvat až 48 hodin.   
 
 **Jak zabráním ručnímu recyklení archivovaného objektu blob, jak brání jeho přesunutí do archivní úrovně dočasně?**  
 Když se objekt BLOB přesune z jedné úrovně přístupu na jiný, čas poslední změny se nezmění. Pokud jste archivovaný objekt BLOB ručně znovu vypnuli do vrstvy Hot, bude se ho modul pro správu životního cyklu přesunout zpátky do archivní úrovně. Zakažte pravidlo, které bude mít dočasně vliv na tento objekt blob, aby se zabránilo jeho archivaci znovu. Znovu povolí pravidlo, když se dá objekt BLOB bezpečně přesunout zpátky do archivní úrovně. Objekt blob můžete také zkopírovat do jiného umístění, pokud je potřeba udržet se trvale na horké nebo studené úrovni.

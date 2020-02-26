@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 525eba8a5a4e891526eb32a24287ea3887ee6743
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77474215"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77608736"
 ---
 Vytvoření a správa virtuálních počítačů Azure (VM) konzistentním způsobem v měřítku, uvítáte nějakou formu automatizace. Existuje mnoho nástrojů a řešení, která umožňují automatizovat nasazení kompletní infrastrukturu Azure a životního cyklu správy. Tento článek představuje některé z infrastruktury automatizační nástroje, které můžete použít v Azure. Tyto nástroje běžně nevešla do jedné z následujících postupů:
 
@@ -40,7 +40,7 @@ Aplikace pro vzdálenou [správu je platforma](https://www.chef.io/) pro automat
 Naučte se:
 
 - [Nasaďte z Azure Marketplace automatizaci](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview).
-- [Nainstalujte si ho do Windows a vytvořte virtuální počítače Azure](../articles/virtual-machines/windows/chef-automation.md).
+- [Nainstalujte si ho do Windows a vytvořte virtuální počítače Azure](../articles/chef/chef-automation.md).
 
 
 ## <a name="puppet"></a>Puppet
@@ -115,7 +115,7 @@ Naučte se:
 - [Použijte Azure Automation DSC](../articles/automation/automation-dsc-getting-started.md).
 
 
-## <a name="azure-devops-services"></a>Azure DevOps Services
+## <a name="azure-devops-services"></a>Služby Azure DevOps
 [Azure DevOps Services](https://www.visualstudio.com/team-services/) je sada nástrojů, které vám pomůžou sdílet a sledovat kód, používat automatizovaná sestavení a vytvářet kompletní kanál průběžné integrace a vývoje (CI/CD). Služby Azure DevOps se integruje se sadou Visual Studio a jiných editorech zjednodušit využití. Služby Azure DevOps můžete také vytvořit a konfigurovat virtuální počítače Azure a pak nasaďte kód na ně.
 
 Další informace pro:
@@ -128,7 +128,7 @@ Další informace pro:
 
 Naučte se:
 
-- [Vytvořte vývojovou infrastrukturu na virtuálním počítači Linux v Azure pomocí Jenkinse, GitHubu a Docker](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md).
+- [Vytvořte vývojovou infrastrukturu na virtuálním počítači Linux v Azure pomocí Jenkinse, GitHubu a Docker](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md).
 
 
 ## <a name="next-steps"></a>Další kroky

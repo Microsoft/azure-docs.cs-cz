@@ -2,17 +2,14 @@
 title: Přizpůsobení uživatelsky definovaných tras (UDR) ve službě Azure Kubernetes Service (AKS)
 description: Naučte se definovat vlastní výstupní trasu ve službě Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 01/31/2020
-ms.author: mlearned
-ms.openlocfilehash: bd55c7fbf017aec55cee4c9121ede606278a7334
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: d108c6f49a8f483dc489fd644db6b480fc0e74fc
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212942"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595803"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Přizpůsobení výstupů clusteru pomocí uživatelsky definované trasy (Preview)
 
@@ -26,7 +23,7 @@ Tento článek vás seznámí s postupem přizpůsobení odchozí trasy clusteru
 > * [Zásady podpory AKS](support-policies.md)
 > * [Nejčastější dotazy k podpoře Azure](faq.md)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 * Azure CLI verze 2.0.81 nebo vyšší
 * Rozšíření Azure CLI Preview verze 0.4.28 nebo vyšší
 * Verze rozhraní API `2020-01-01` nebo vyšší

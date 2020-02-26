@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: 341bfddb86885df225874100400a854cf12120db
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: aab6a4de7be57df1f691861533a4528a0bcae571
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76757795"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605683"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Load Balancer komponenty a omezení
 Azure Load Balancer obsahuje několik klíčových součástí pro jeho operaci.  Tyto komponenty můžete nakonfigurovat v předplatném prostřednictvím Azure Portal, Azure CLI nebo Azure PowerShell.  
@@ -73,7 +73,9 @@ Další informace najdete v tématu [Konfigurace distribučního režimu pro Azu
 
 Následující obrázek ukazuje distribuci na základě hodnoty hash:
 
-  ![Distribuce na základě hodnoty hash](./media/load-balancer-overview/load-balancer-distribution.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-distribution.svg" width="512" title="Distribuce na základě hodnoty hash">
+</p>
 
   *Obrázek: Distribuce na základě hodnoty hash*
 
@@ -132,9 +134,11 @@ Veřejný Load Balancer mapuje veřejnou IP adresu a port příchozího provozu 
 
 Následující obrázek znázorňuje koncový bod s vyrovnáváním zatížení pro webový provoz, který je sdílen mezi třemi virtuálními počítači pro veřejný a port TCP 80. Tyto tři virtuální počítače se nacházejí ve skupině s vyrovnáváním zatížení.
 
-![Příklad veřejného Load Balanceru](./media/load-balancer-overview/IC727496.png)
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer-http.svg" width="256" title="Veřejný Nástroj pro vyrovnávání zatížení">
+</p>
 
-*Obrázek: vyrovnávání webového provozu pomocí veřejné Load Balancer*
+*Obrázek: vyrovnávání webového provozu pomocí veřejného nástroje pro vyrovnávání zatížení*
 
 Internetoví klienti odesílají žádosti webové stránky na veřejnou IP adresu webové aplikace na portu TCP 80. Azure Load Balancer distribuuje požadavky mezi tři virtuální počítače v sadě s vyrovnáváním zatížení. Další informace o algoritmech Load Balancer najdete v tématu [Load Balancer koncepty](concepts-limitations.md#load-balancer-concepts).
 
@@ -151,7 +155,10 @@ Interní Load Balancer umožňuje následující typy vyrovnávání zatížení
 * **Pro vícevrstvé aplikace**: Vyrovnávání zatížení pro vícevrstvé aplikace s přístupem k Internetu, kde back-endové vrstvy nejsou přístupné z Internetu. Úrovně back-endu vyžadují vyrovnávání zatížení provozu z internetových vrstev. Podívejte se na další obrázek.
 * **Pro obchodní aplikace:** Vyrovnávání zatížení pro obchodní aplikace hostované v Azure bez dalšího hardwaru nebo softwaru nástroje pro vyrovnávání zatížení. Tento scénář zahrnuje místní servery, které jsou v sadě počítačů, jejichž provoz je vyrovnaný vyrovnávání zatížení.
 
-![Příklad interního Load Balanceru](./media/load-balancer-overview/IC744147.png)
+
+<p align="center">
+  <img src="./media/load-balancer-overview/load-balancer.svg" width="256" title="Veřejný Nástroj pro vyrovnávání zatížení">
+</p>
 
 *Obrázek: vyrovnávání vícevrstvých aplikací s využitím veřejného i interního Load Balancer*
 
@@ -202,7 +209,7 @@ Další informace najdete v tématu [omezení nástroje pro vyrovnávání zatí
 - Přečtěte si o používání [Standard Load Balancer a zóny dostupnosti](load-balancer-standard-availability-zones.md).
 - Seznamte se s [sondami stavu](load-balancer-custom-probe-overview.md).
 - Další informace o [diagnostice Standard Load Balancer](load-balancer-standard-diagnostics.md).
-- Další informace o použití [nástroje pro vyrovnávání zatížení pro odchozí připojení](load-balancer-outbound-connections.md).
+- Přečtěte si o použití [Load Balancer pro odchozí připojení](load-balancer-outbound-connections.md).
 - Přečtěte si o [odchozích pravidlech](load-balancer-outbound-rules-overview.md).
 - Přečtěte si o [resetování protokolu TCP při nečinnosti](load-balancer-tcp-reset.md).
 - Přečtěte si o [Standard Load Balancer s pravidly pro vyrovnávání zatížení portů vysoké dostupnosti](load-balancer-ha-ports-overview.md).

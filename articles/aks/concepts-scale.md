@@ -3,16 +3,15 @@ title: Koncepty – škálování aplikací ve službě Azure Kubernetes Service
 description: Přečtěte si o škálování ve službě Azure Kubernetes Service (AKS), včetně horizontálního automatického škálování pod automatickým škálováním, automatického škálování clusteru a konektoru Azure Container Instances.
 services: container-service
 author: zr-msft
-ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: aaa279596532d3a1d47a974b48a45bd67101fa95
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 396e5bc31723768ada334dd5043bca724af5e84f
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768618"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77595854"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti škálování pro aplikace ve službě Azure Kubernetes (AKS)
 

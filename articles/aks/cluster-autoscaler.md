@@ -2,17 +2,14 @@
 title: Použití automatického škálování clusteru ve službě Azure Kubernetes Service (AKS)
 description: Naučte se, jak pomocí automatického škálování clusteru automaticky škálovat cluster tak, aby splňoval požadavky aplikace v clusteru Azure Kubernetes Service (AKS).
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.author: mlearned
-ms.openlocfilehash: 12e5ee1b5c56e642cef117963d7cd879cf9b0633
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 0b94865d81afc56c24d470012c668662f003a1b8
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524284"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77596245"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatické škálování clusteru pro splnění požadavků aplikace ve službě Azure Kubernetes (AKS)
 
@@ -20,7 +17,7 @@ Aby se zajistilo splnění požadavků aplikace ve službě Azure Kubernetes Ser
 
 V tomto článku se dozvíte, jak povolit a spravovat automatické škálování clusteru v clusteru AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.76 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
