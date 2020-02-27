@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 39eacbb9a87fa18cc6ef92e319fbfbd3e415337b
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 236ae017832d5d613d0bf9fc948d16a7218d2269
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77525511"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621948"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
@@ -19,8 +19,8 @@ Databáze Azure Cosmos je jednotka správy pro skupinu kontejnerů. Databáze ob
 
 Pomocí Azure Cosmos DB můžete zřídit propustnost ve dvou členitosti:
  
-- Kontejnery služby Azure Cosmos
-- Databáze Azure Cosmos
+- Kontejnery Azure Cosmos DB
+- Databáze Azure Cosmos DB
 
 ## <a name="set-throughput-on-a-container"></a>Nastavení propustnosti pro kontejner  
 
@@ -108,7 +108,7 @@ Zřízenou propustnost kontejneru nebo databáze můžete kdykoli škálovat. P�
 |Ru přiřazený nebo dostupný ke konkrétnímu kontejneru|Žádné záruky. Ru přiřazený k danému kontejneru závisí na vlastnostech. Vlastnosti mohou být volbou klíčů oddílů kontejnerů, které sdílejí propustnost, distribuci zatížení a počet kontejnerů. |Všechny jednotky ru nakonfigurované v kontejneru jsou rezervovaných exkluzivně pro kontejner.|
 |Maximální velikost úložiště pro kontejner|Neomezený počet.|Neomezený počet.|
 |Maximální propustnost na logický oddíl kontejneru|10 tisíc ru|10 tisíc ru|
-|Maximální velikost úložiště (data a index) na logický oddíl kontejneru|10 GB|10 GB|
+|Maximální velikost úložiště (data a index) na logický oddíl kontejneru|20 GB|20 GB|
 
 ## <a name="next-steps"></a>Další kroky
 

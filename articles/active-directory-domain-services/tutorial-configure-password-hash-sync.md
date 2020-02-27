@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: deca7477c79fd2952bb57c0194202c382cd5279d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: c2a751367a96c995a24457d0357aa6a2bfe987e5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132219"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612563"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Kurz: povolení synchronizace hesel v Azure Active Directory Domain Services pro hybridní prostředí
 
@@ -68,7 +68,7 @@ Když je služba Azure AD Connect nainstalovaná a nakonfigurovaná pro synchron
 
     V tomto ukázkovém snímku obrazovky se používají následující konektory:
 
-    * Konektor Azure AD má název *contoso.onmicrosoft.com-AAD* .
+    * Konektor Azure AD má název *aaddscontoso.onmicrosoft.com-AAD* .
     * Konektor on-premises služba AD DS má název *OnPrem.contoso.com* .
 
 1. Zkopírujte následující skript prostředí PowerShell a vložte ho do počítače s nainstalovaným Azure AD Connect. Skript spustí úplnou synchronizaci hesla, která zahrnuje starší hodnoty hash hesel. Aktualizujte proměnné `$azureadConnector` a `$adConnector` s názvy konektorů z předchozího kroku.

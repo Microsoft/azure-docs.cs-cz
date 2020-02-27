@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 694697be85b61ad2d59a0a4be1ced3581873cb77
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111753"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648491"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Komunikace se službou IoT Hub pomocí protokolu MQTT
 
@@ -161,28 +161,27 @@ Toto úložiště obsahuje:
 
 **Pro Windows:**
 
-• TelemetryMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie do služby Azure IoT Hub, která je sestavená a spuštěná na počítači s Windows.
+* TelemetryMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie do služby Azure IoT Hub, která je sestavená a spuštěná na počítači s Windows.
 
-• SubscribeMQTTWin32: obsahuje kód pro přihlášení k odběru událostí daného centra IoT v počítači s Windows.
+* SubscribeMQTTWin32: obsahuje kód pro přihlášení k odběru událostí daného centra IoT v počítači s Windows.
 
-• DeviceTwinMQTTWin32: obsahuje kód pro dotazování a přihlášení k odběru událostí zařízení ve službě Azure IoT Hub na počítači s Windows.
+* DeviceTwinMQTTWin32: obsahuje kód pro dotazování a přihlášení k odběru událostí zařízení ve službě Azure IoT Hub na počítači s Windows.
 
-• PnPMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie pomocí funkce IoT plug & Play Preview možností zařízení ve službě Azure IoT Hub, která je postavená a spuštěná na počítači s Windows. Další informace o technologii IoT plug [& Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
+* PnPMQTTWin32: obsahuje kód pro odeslání zprávy telemetrie pomocí funkce IoT plug & Play Preview možností zařízení ve službě Azure IoT Hub, která je založená na počítači s Windows a běží na něm. Další informace o technologii IoT plug [& Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
 
 **Pro Linux:**
 
-• MQTTLinux: obsahuje kód a skript sestavení pro spuštění na platformě Linux (WSL, Ubuntu a Raspbian byly testovány tak daleko).
+* MQTTLinux: obsahuje kód a skript sestavení pro spuštění na platformě Linux (WSL, Ubuntu a Raspbian byly testovány tak daleko).
 
-• LinuxConsoleVS2019: obsahuje stejný kód, ale v projektu VS2019 cílící na WSL (Windows Linux sub System). Tento projekt vám umožní ladit kód běžící v systému Linux krok za krokem ze sady Visual Studio.
+* LinuxConsoleVS2019: obsahuje stejný kód, ale v projektu VS2019 cílící na WSL (Windows Linux sub System). Tento projekt vám umožní ladit kód běžící v systému Linux krok za krokem ze sady Visual Studio.
 
 **Pro mosquitto_pub:**
 
-• Tato složka obsahuje dva příkazy vzorů, které se používají s nástrojem mosquitto_pub Utility poskytovaném nástrojem Mosquitto.org.
+Tato složka obsahuje dva příkazy vzorů, které se používají s nástrojem mosquitto_pub Utility poskytovaném nástrojem Mosquitto.org.
 
-Mosquitto_sendmessage: pro odeslání jednoduché textové zprávy do služby Azure IoT Hub fungující jako zařízení.
+* Mosquitto_sendmessage: pro odeslání jednoduché textové zprávy do služby Azure IoT Hub fungující jako zařízení.
 
-Mosquitto_subscribe: zobrazení událostí, ke kterým dochází ve službě Azure IoT Hub.
-
+* Mosquitto_subscribe: zobrazení událostí, ke kterým dochází ve službě Azure IoT Hub.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Přímé použití protokolu MQTT (jako modul)
 
@@ -287,7 +286,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Posílání zpráv ze zařízení do cloudu
 
-Po úspěšném připojení může zařízení odesílat zprávy IoT Hub pomocí `devices/{device_id}/messages/events/` nebo `devices/{device_id}/messages/events/{property_bag}` jako **název tématu**. Element `{property_bag}` umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Například:
+Po úspěšném připojení může zařízení odesílat zprávy IoT Hub pomocí `devices/{device_id}/messages/events/` nebo `devices/{device_id}/messages/events/{property_bag}` jako **název tématu**. Element `{property_bag}` umožňuje zařízení odesílat zprávy s dalšími vlastnostmi ve formátu kódovaném adresou URL. Příklad:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -342,7 +341,7 @@ Možné stavové kódy:
 
 |Status | Popis |
 | ----- | ----------- |
-| 204 | Úspěch (není vrácen žádný obsah) |
+| 200 | Úspěch |
 | 429 | Příliš mnoho požadavků (omezení) podle [omezení pro IoT Hub](iot-hub-devguide-quotas-throttling.md) |
 | 5** | Chyby serveru |
 
@@ -360,7 +359,7 @@ Následující text popisuje, jak zařízení aktualizuje hlášené vlastnosti 
 
 3. Služba pak pošle zprávu odpovědi, která obsahuje novou hodnotu ETag pro nahlášenou kolekci Properties v tématu `$iothub/twin/res/{status}/?$rid={request id}`. Tato zpráva odpovědi používá stejné **ID požadavku** jako požadavek.
 
-Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro hlášené vlastnosti. Každý člen v dokumentu JSON aktualizuje nebo přidá odpovídajícího člena do dokumentu vlákna v zařízení. Sada členů je nastavena na hodnotu `null`odstraní člena z objektu, který jej obsahuje. Například:
+Tělo zprávy požadavku obsahuje dokument JSON, který obsahuje nové hodnoty pro hlášené vlastnosti. Každý člen v dokumentu JSON aktualizuje nebo přidá odpovídajícího člena do dokumentu vlákna v zařízení. Sada členů je nastavena na hodnotu `null`odstraní člena z objektu, který jej obsahuje. Příklad:
 
 ```json
 {
@@ -373,7 +372,7 @@ Možné stavové kódy:
 
 |Status | Popis |
 | ----- | ----------- |
-| 200 | Úspěch |
+| 204 | Úspěch (není vrácen žádný obsah) |
 | 400 | Chybný požadavek. Chybně vytvořený kód JSON |
 | 429 | Příliš mnoho požadavků (omezení) podle [omezení pro IoT Hub](iot-hub-devguide-quotas-throttling.md) |
 | 5** | Chyby serveru |
@@ -398,7 +397,7 @@ Další informace najdete v tématu [Příručka vývojáře pro vlákna v zař�
 
 ## <a name="receiving-desired-properties-update-notifications"></a>Přijímání oznámení o aktualizaci požadovaných vlastností
 
-Když je zařízení připojené, IoT Hub odesílá oznámení do `$iothub/twin/PATCH/properties/desired/?$version={new version}`tématu, které obsahuje obsah aktualizace provedené back-end řešení. Například:
+Když je zařízení připojené, IoT Hub odesílá oznámení do `$iothub/twin/PATCH/properties/desired/?$version={new version}`tématu, které obsahuje obsah aktualizace provedené back-end řešení. Příklad:
 
 ```json
 {
@@ -408,7 +407,7 @@ Když je zařízení připojené, IoT Hub odesílá oznámení do `$iothub/twin/
 }
 ```
 
-Jako u aktualizací vlastností `null` hodnoty znamená, že je odstraněn člen objektu JSON. Všimněte si také, že `$version` označuje novou verzi oddílu požadovaných vlastností vlákna.
+Jako u aktualizací vlastností `null` hodnoty znamenají, že je odstraněn člen objektu JSON. Všimněte si také, že `$version` označuje novou verzi oddílu požadovaných vlastností vlákna.
 
 > [!IMPORTANT]
 > IoT Hub generuje oznámení o změnách jenom v případě, že jsou zařízení připojená. Ujistěte se, že jste implementovali [Postup opětovného připojení zařízení](iot-hub-devguide-device-twins.md#device-reconnection-flow) , abyste zachovali požadované vlastnosti synchronizované mezi IoT Hub a aplikací zařízení.

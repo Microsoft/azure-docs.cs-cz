@@ -3,12 +3,12 @@ title: Použití modulu plug-in Azure Dev Spaces pro Jenkinse se službou Azure 
 description: Naučte se používat modul plug-in Azure Dev Spaces v kanálu průběžné integrace.
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 10dfbdb7d89d6f3870ec3b9dbd87d4d315360815
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209671"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619982"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>Kurz: použití modulu plug-in Azure Dev Spaces pro Jenkinse se službou Azure Kubernetes 
 
@@ -26,7 +26,7 @@ V tomto kurzu dokončíte tyto úlohy:
 
 Tento kurz předpokládá průběžné znalosti základních služeb Azure, AKS, ACR, Azure Dev Spaces, [kanálů](https://jenkins.io/doc/book/pipeline/) Jenkinse a modulů plug-in a GitHubu. Základní znalost s podpůrnými nástroji, jako je kubectl a Helm, je užitečná.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Účet Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -409,16 +409,5 @@ az group delete -y --no-wait -n MyResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak používat modul plug-in Azure Dev Spaces pro Jenkinse a modul plug-in Azure Container Registry k vytváření kódu a nasazování do vývojového prostoru.
-
-Následující seznam prostředků poskytuje další informace o Azure Dev Spaces, úlohách ACR a CI/CD s Jenkinse.
-
-Azure Dev Spaces:
-* [Jak funguje a jak je nakonfigurována služba Azure Dev Spaces](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)
-
-ACR úlohy:
-* [Automatizace oprav operačního systému a architektury pomocí úloh ACR](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-* [Automatické sestavení při potvrzení kódu](https://docs.microsoft.com/azure/container-registry/container-registry-tasks-overview)
-
-CI/CD s Jenkinse v Azure:
-* [Průběžné nasazování Jenkinse](https://docs.microsoft.com/azure/aks/jenkins-continuous-deployment)
+> [!div class="nextstepaction"]
+> [CI/CD s Jenkinse v Azure](jenkins-continuous-deployment.md)

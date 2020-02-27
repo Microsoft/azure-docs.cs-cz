@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: b0a8deb5f656fafde358dbcf2e1a2724f1a84113
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: ff439083ca9c648ceec95b89b041bb5b60785c91
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "64727627"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77603004"
 ---
 # <a name="linux-virtual-machines-documentation"></a>Dokumentace k virtuálním počítačům s Linuxem
 
@@ -42,13 +42,13 @@ Zjistěte, jak nasadit, spravovat a škálovat virtuální počítače s Linuxem
 - [Zálohování virtuálních počítačů](/azure/virtual-machines/linux/tutorial-backup-vms)
 - [Monitorování virtuálních počítačů](/azure/virtual-machines/linux/tutorial-monitoring)
 - [Správa zabezpečení na virtuálních počítačích](/azure/virtual-machines/linux/tutorial-azure-security)
-- [Vytvoření infrastruktury CI/CD pomocí Jenkins, Dockeru a GitHubu](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)
+- [Vytvoření infrastruktury CI/CD pomocí Jenkins, Dockeru a GitHubu](/azure/jenkins/tutorial-jenkins-github-docker-cicd)
 
 ## <a name="free-pluralsight-video-training"></a>Bezplatné školicí video od Pluralsightu
 
 - [Správce Azure](https://go.microsoft.com/fwlink/?linkid=2012827)
 
-## <a name="samples"></a>Ukázky 
+## <a name="samples"></a>ukázky 
 
 Nasazení první aplikace do Azure
 

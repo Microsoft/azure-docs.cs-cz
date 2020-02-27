@@ -8,12 +8,12 @@ ms.date: 2/10/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5f576d28d30907f3834600d0a6a5c152025cf912
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77133527"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650754"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Kurz: výuka a nasazení Azure Machine Learningho modelu
 
@@ -66,7 +66,7 @@ Do nového projektu Azure Notebooks budeme nahrávat ukázkové soubory poznámk
 
 1. Ponechte **veřejné** a **soubor Readme** nezaškrtnuté, protože není potřeba, aby projekt byl veřejný nebo měl soubor Readme.
 
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 1. Vyberte **nahrát** (ikona šipky nahoru) a zvolte **z počítače**.
 
@@ -83,7 +83,7 @@ Pojďme se podívat na soubory, které jste nahráli do projektu Azure Notebooks
 * **01 – turbofan\_regrese. ipynb:** Tento Poznámkový blok používá pracovní prostor služby Machine Learning k vytvoření a spuštění experimentu machine learningu. Poznámkový blok v podstatě provede následující kroky:
 
   1. Stáhne data z Azure Storage účtu, který vygenerovalo předaný svazek zařízení.
-  1. Zkoumá a připravuje data pro školení a model AD klasifikátoru.
+  1. Prozkoumá a připraví data a pak data použije ke školení modelu třídění.
   1. Vyhodnoťte model z experimentu pomocí testovací datové sady (test\_FD003. txt).
   1. Publikuje nejlepší model třídění v pracovním prostoru služby Machine Learning.
 

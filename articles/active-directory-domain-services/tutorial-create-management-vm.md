@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 7f7aeeaf7cbb957a276347b04633763033a62b4e
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 0c997fffc1adc60f774e651ed458d253b35a3bdd
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522987"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612210"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Kurz: Vytvoření virtuálního počítače pro správu pro konfiguraci a správu spravované domény Azure Active Directory Domain Services
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -106,7 +106,7 @@ Pokud chcete nainstalovat nástroje pro správu služby Active Directory do virt
 1. V podokně *řídicí panel* v okně **Správce serveru** vyberte **Přidat role a funkce**.
 1. Na stránce **než začnete** v *Průvodci přidáním rolí a funkcí*vyberte **Další**.
 1. Pro *typ instalace*ponechte zaškrtnutou možnost instalace na základě **rolí nebo na základě funkcí** a vyberte **Další**.
-1. Na stránce **Výběr serveru** zvolte aktuální virtuální počítač z fondu serverů, například *myvm.aadds.contoso.com*, a pak vyberte **Další**.
+1. Na stránce **Výběr serveru** zvolte aktuální virtuální počítač z fondu serverů, například *myvm.aaddscontoso.com*, a pak vyberte **Další**.
 1. Na stránce **role serveru** klikněte na **Další**.
 1. Na stránce **funkce** rozbalte uzel **Nástroje pro vzdálenou správu serveru** a potom rozbalte uzel **Nástroje pro správu rolí** .
 
@@ -126,7 +126,7 @@ S nainstalovanými nástroji pro správu se podívejme, jak je použít ke sprá
     ![Seznam nástrojů pro správu nainstalovaných na serveru](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. Vyberte **Centrum správy služby Active Directory**.
-1. Pokud chcete prozkoumat spravovanou doménu Azure služba AD DS, v levém podokně vyberte název domény, například *aadds.contoso.com*. Dva kontejnery s názvem *počítače AADDC* a *Uživatelé AADDC* jsou v horní části seznamu.
+1. Pokud chcete prozkoumat spravovanou doménu Azure služba AD DS, v levém podokně vyberte název domény, například *aaddscontoso.com*. Dva kontejnery s názvem *počítače AADDC* a *Uživatelé AADDC* jsou v horní části seznamu.
 
     ![Výpis dostupných kontejnerů část spravované domény Azure služba AD DS](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 
