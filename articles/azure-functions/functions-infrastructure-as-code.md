@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: bb2371fc7732e8fa6fcfea53bf2822fcf3d7d2fa
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963950"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621051"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatizace nasazení prostředků pro aplikaci Function App v Azure Functions
 
@@ -28,10 +28,10 @@ Nasazení Azure Functions se typicky skládá z těchto prostředků:
 
 | Prostředek                                                                           | Požadavek | Reference k syntaxi a vlastnostem                                                         |   |
 |------------------------------------------------------------------------------------|-------------|-----------------------------------------------------------------------------------------|---|
-| Aplikace Function App                                                                     | Požaduje se    | [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)                             |   |
-| Účet [Azure Storage](../storage/index.yml)                                   | Požaduje se    | [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
+| Aplikace Function App                                                                     | Požadováno    | [Microsoft. Web/weby](/azure/templates/microsoft.web/sites)                             |   |
+| Účet [Azure Storage](../storage/index.yml)                                   | Požadováno    | [Microsoft. Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |   |
 | Komponenta [Application Insights](../azure-monitor/app/app-insights-overview.md) | Volitelné    | [Microsoft. Insights/Components](/azure/templates/microsoft.insights/components)         |   |
-| [Plán hostování](./functions-scale.md)                                             | Volitelné<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
+| [Plán hostování](./functions-scale.md)                                             | Volitelné<sup>1</sup>    | [Microsoft. Web/serverových farem](/azure/templates/microsoft.web/serverfarms)                 |   |
 
 <sup>1</sup> Plán hostování se vyžaduje jenom v případě, že se rozhodnete spustit aplikaci Function App na [plánu Premium](./functions-premium-plan.md) (ve verzi Preview) nebo v [plánu App Service](../app-service/overview-hosting-plans.md).
 
@@ -309,17 +309,25 @@ Plán Premium nabízí stejné škálování jako plán spotřeby, ale zahrnuje 
 
 ### <a name="create-a-premium-plan"></a>Vytvořit plán Premium
 
-Plán Premium je zvláštní typ prostředku "serverová farma". Můžete ji zadat buď pomocí `EP1`, `EP2`nebo `EP3` hodnoty vlastnosti `sku`.
+Plán Premium je zvláštní typ prostředku "serverová farma". Můžete ji zadat buď pomocí `EP1`, `EP2`nebo `EP3` hodnoty vlastnosti `Name` v [objektu `sku` Description](https://docs.microsoft.com/azure/templates/microsoft.web/2018-02-01/serverfarms#skudescription-object).
 
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
-    "name": "[variables('hostingPlanName')]",
+    "apiVersion": "2018-02-01",
+    "name": "[parameters('hostingPlanName')]",
     "location": "[resourceGroup().location]",
     "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "sku": "EP1"
+        "name": "[parameters('hostingPlanName')]",
+        "workerSize": "[parameters('workerSize')]",
+        "workerSizeId": "[parameters('workerSizeId')]",
+        "numberOfWorkers": "[parameters('numberOfWorkers')]",
+        "hostingEnvironment": "[parameters('hostingEnvironment')]",
+        "maximumElasticWorkerCount": "20"
+    },
+    "sku": {
+        "Tier": "ElasticPremium",
+        "Name": "EP1"
     }
 }
 ```
@@ -660,7 +668,7 @@ Tady je příklad, který používá HTML:
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/<url-encoded-path-to-azuredeploy-json>" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"></a>
 ```
 
-### <a name="deploy-using-powershell"></a>Nasazování pomocí PowerShellu
+### <a name="deploy-using-powershell"></a>Nasazení pomocí PowerShellu
 
 Následující příkazy PowerShellu vytvoří skupinu prostředků a nasadí šablonu, která vytvoří aplikaci funkcí s požadovanými prostředky. Pokud chcete spustit místně, musíte mít nainstalovanou [Azure PowerShell](/powershell/azure/install-az-ps) . Pro přihlášení spusťte [`Connect-AzAccount`](/powershell/module/az.accounts/connect-azaccount) .
 

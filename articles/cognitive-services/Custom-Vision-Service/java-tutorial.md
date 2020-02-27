@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 02/25/2020
 ms.author: areddish
-ms.openlocfilehash: 2b3c6fc404e9a5fefc15aa7b7162ff5573c3be5a
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: a0cfa49dfe247a71e5c2d546e2bb7e9d9b2efc18
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166141"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616348"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>Rychlý start: Vytvoření projektu klasifikace obrázků pomocí sady Custom Vision SDK pro Javu
 
@@ -25,14 +25,14 @@ V tomto článku se dozvíte, jak začít používat sadu SDK Custom Vision Java
 
 - Libovolné prostředí Java IDE
 - Nainstalovaná sada [JDK 7 nebo 8](https://aka.ms/azure-jdks)
-- Nainstalovaný Maven
+- [Maven](https://maven.apache.org/) nainstalované
 - [!INCLUDE [create-resources](includes/create-resources.md)]
 
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>Získání sady Custom Vision SDK a vzorového kódu
 
 K napsání aplikace v Javě, která využívá službu Custom Vision, budete potřebovat balíčky maven pro službu Custom Vision. Tyto balíčky jsou součástí ukázkového projektu, který budete stahovat, ale můžete k nim přistupovat jednotlivě.
 
-Sadu Custom Vision SDK můžete nainstalovat z centrálního úložiště Mavenu:
+Custom Vision SDK můžete najít v centrálním úložišti Maven:
 
 - [Sada SDK pro trénování](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
 - [Sada SDK pro předpověď](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
@@ -43,7 +43,10 @@ Tento projekt Javy vytvoří nový projekt klasifikace obrázků pomocí služby
 
 [!INCLUDE [get-keys](includes/get-keys.md)]
 
-Program je nakonfigurovaný tak, aby ukládal klíčová data do proměnných prostředí. Tyto proměnné můžete nastavit tak, že v PowerShellu přejdete do složky **Vision/CustomVision**. Potom zadejte tyto příkazy:
+Program je nakonfigurován tak, aby odkazoval na data klíče jako proměnné prostředí. Přejděte do složky **Vision/CustomVision** a zadejte následující příkazy PowerShellu pro nastavení proměnných prostředí. 
+
+> [!NOTE]
+> Pokud používáte jiný operační systém než Windows, přečtěte si téma [konfigurace proměnných prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows#configure-an-environment-variable-for-authentication) pro pokyny.
 
 ```powershell
 $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
@@ -88,9 +91,9 @@ Koncový bod předpovědi, který zde představuje objekt `predictor`, je odkaz,
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Pokud chcete řešení zkompilovat a spustit pomocí nástroje Maven, spusťte v PowerShellu v adresáři projektu následující příkaz:
+Pro zkompilování a spuštění řešení pomocí Maven přejděte do adresáře projektu (**Vision/CustomVision**) na příkazovém řádku a spusťte příkaz run:
 
-```powershell
+```bash
 mvn compile exec:java
 ```
 

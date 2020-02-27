@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/26/2016
-ms.openlocfilehash: b6a6ee21774ba931d9982d82b99008f312d19736
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3ada12a0cde122fb78815a1d3241d8acb9da2580
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793022"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651453"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange EDIFACT pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
 
@@ -36,7 +36,7 @@ Po [Vytvoření účtu pro integraci](../logic-apps/logic-apps-enterprise-integr
 
 ## <a name="create-an-edifact-agreement"></a>Vytvoření smlouvy EDIFACT 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com "Portál Azure"). 
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com "Azure Portal"). 
 
 2. V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole zadejte "Integration" a pak vyberte **účty pro integraci**.
 
@@ -63,7 +63,7 @@ Po [Vytvoření účtu pro integraci](../logic-apps/logic-apps-enterprise-integr
 
    | Vlastnost | Popis |
    | --- | --- |
-   | Name (Název) |Název smlouvy |
+   | Název |Název smlouvy |
    | Typ smlouvy | By měl být EDIFACT |
    | Partner hostitele |Smlouva potřebuje hostitele i partnera hosta. Partner hostitele představuje organizaci, která konfiguruje smlouvu. |
    | Hostitelská identita |Identifikátor hostitelského partnera |
@@ -112,9 +112,10 @@ Vaše smlouva je teď připravená na zpracování příchozích zpráv, které 
 | UNH 2.5 (PŘIDRUŽENÝ PŘIŘAZENÝ KÓD) |Zadejte přiřazený kód. (Maximálně šest znaků. Musí být alfanumerické). |
 | UNG 2.1 (ID ODESÍLATELE APLIKACE) |Zadejte alfanumerický údaj s minimálně jedním znakem a maximálně 35 znaků. |
 | UNG 2.2 (KVALIFIKÁTOR KÓDU ODESÍLATELE APLIKACE) |Zadejte alfanumerický údaj, který má maximálně čtyři znaky. |
-| XSD |Vyberte dříve nahrané schéma, které chcete použít z přidruženého integračního účtu. |
+| SCHEMA |Vyberte dříve nahrané schéma, které chcete použít z přidruženého integračního účtu. |
 
 ### <a name="control-numbers"></a>Řídicí čísla
+
 | Vlastnost | Popis |
 | --- | --- |
 | Zakázat duplicity kontrolního čísla výměny |Chcete-li zablokovat duplicitní změny, vyberte tuto vlastnost. Pokud je toto políčko zaškrtnuté, akce deEDIFACT dekódování kontroluje, zda se kontrolní číslo výměny (UNB5) pro přijatý mezibankovní neshoduje s dříve zpracovaným kontrolním číslem výměny. Pokud se zjistí shoda, nebude se výměna zpracovávat. |
@@ -123,7 +124,7 @@ Vaše smlouva je teď připravená na zpracování příchozích zpráv, které 
 | Zakázat duplicity kontrolního čísla sady transakcí |Chcete-li blokovat změny s duplicitními čísly řízení sady transakcí (UNH1), vyberte tuto vlastnost. |
 | Kontrolní číslo potvrzení EDIFACT |Chcete-li určit referenční čísla sady transakcí pro použití v potvrzení, zadejte hodnotu předpony, rozsah referenčních čísel a příponu. |
 
-### <a name="validations"></a>Ověření
+### <a name="validation"></a>Ověření
 
 Po dokončení každého ověřovacího řádku se přidá další automaticky. Pokud nezadáte žádná pravidla, pak ověřování použije řádek default (výchozí).
 
@@ -173,6 +174,7 @@ Vaše smlouva je teď připravená na zpracování odchozích zpráv, které odp
 | UNB7 (referenční ID aplikace) |Zadejte alfanumerický údaj s minimálně jedním znakem a maximálně 14 znaků. |
 
 ### <a name="acknowledgment"></a>Potvrzení
+
 | Vlastnost | Popis |
 | --- | --- |
 | Přijetí zprávy (CONTRL) |Zaškrtněte toto políčko, pokud hostovaný partner očekává, že obdrží potvrzení Technical (CONTRL). Toto nastavení určuje, že hostovaný partner, který posílá zprávu, požádá o potvrzení od hostovaného partnera. |
@@ -180,14 +182,16 @@ Vaše smlouva je teď připravená na zpracování odchozích zpráv, které odp
 | Generovat smyčku sz1/SG4 pro akceptované sady transakcí |Pokud se rozhodnete, že požadujete funkční potvrzení, zaškrtněte toto políčko, pokud chcete vynutit generování smyček sz1/SG4 ve funkčních potvrzeních CONTRL pro přijaté sady transakcí. |
 
 ### <a name="schemas"></a>Schémata
+
 | Vlastnost | Popis |
 | --- | --- |
 | UNH 2.1 (TYP) |Vyberte typ sady transakcí. |
 | UNH 2.2 (VERZE) |Zadejte číslo verze zprávy. |
 | UNH 2.3 (VERZE) |Zadejte číslo verze zprávy. |
-| XSD |Vyberte schéma, které chcete použít. Schémata se nacházejí v účtu pro integraci. Pokud chcete získat přístup ke schématům, nejprve propojte účet pro integraci s vaší aplikací logiky. |
+| SCHEMA |Vyberte schéma, které chcete použít. Schémata se nacházejí v účtu pro integraci. Pokud chcete získat přístup ke schématům, nejprve propojte účet pro integraci s vaší aplikací logiky. |
 
 ### <a name="envelopes"></a>Obálek
+
 | Vlastnost | Popis |
 | --- | --- |
 | UNB8 (kód priority zpracování) |Zadejte abecední hodnotu, která není delší než jeden znak. |
@@ -211,13 +215,14 @@ Kromě znakové sady můžete zadat jinou sadu oddělovačů, které se mají po
 | Auditování |Vyberte znak, který se používá s identifikátorem segmentu. Pokud určíte příponu, pak může být datový prvek koncového znaku segmentu prázdný. Pokud je ukončovací znak segmentu prázdný, je nutné určit příponu. |
 
 ### <a name="control-numbers"></a>Řídicí čísla
+
 | Vlastnost | Popis |
 | --- | --- |
 | UNB5 (řídící číslo výměny) |Zadejte předponu, rozsah hodnot pro kontrolní číslo výměny a příponu. Tyto hodnoty se používají ke generování odchozího výměny. Předpona a přípona jsou volitelné, zatímco číslo kontrolního čísla je povinné. Řídicí číslo se zvyšuje pro každou novou zprávu. Předpona a přípona zůstávají stejné. |
 | UNG5 (kontrolní číslo skupiny) |Zadejte předponu, rozsah hodnot pro kontrolní číslo výměny a příponu. Tyto hodnoty se používají ke generování kontrolního čísla skupiny. Předpona a přípona jsou volitelné, zatímco číslo kontrolního čísla je povinné. Řídicí číslo se zvyšuje pro každou novou zprávu, dokud není dosaženo maximální hodnoty; Předpona a přípona zůstávají stejné. |
 | UNH1 (referenční číslo záhlaví zprávy) |Zadejte předponu, rozsah hodnot pro kontrolní číslo výměny a příponu. Tyto hodnoty se používají ke generování referenčního čísla záhlaví zprávy. Předpona a přípona jsou volitelné, zatímco číslo odkazu je povinné. Referenční číslo se zvyšuje pro každou novou zprávu. Předpona a přípona zůstávají stejné. |
 
-### <a name="validations"></a>Ověření
+### <a name="validation"></a>Ověření
 
 Po dokončení každého ověřovacího řádku se přidá další automaticky. Pokud nezadáte žádná pravidla, pak ověřování použije řádek default (výchozí).
 
@@ -240,9 +245,13 @@ Po dokončení každého ověřovacího řádku se přidá další automaticky. 
 
     ![Vybrat dlaždici smlouvy](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
-## <a name="view-swagger-file"></a>Zobrazit soubor Swagger
-Podrobnosti o Swagger pro konektor EDIFACT najdete v tématu [EDIFACT](/connectors/edifact/).
+## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-## <a name="learn-more"></a>Další informace
-* [Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informace o Enterprise Integration Pack")  
+Další technické podrobnosti o této spojnici, jako jsou akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/edifact/).
 
+> [!NOTE]
+> V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
+
+## <a name="next-steps"></a>Další kroky
+
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: bc19c6358ff116b3d7299673783e8fbd6e8cd4f5
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 82cd596f08136f6d9b327fc83122c0f32d8f9914
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201046"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649292"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -50,7 +50,7 @@ Počáteční zobrazení analýzy nákladů zahrnuje následující oblasti.
 
 **Skutečné náklady:** Zobrazuje celkové náklady na využití a nákupy za aktuální měsíc, jak postupně nabíhají a objeví se ve vaší faktuře.
 
-**Prognóza:** Zobrazuje celkové předpokládané náklady na časové období, které si zvolíte. (Funkce Prognóza je ve verzi Preview.)
+**Prognóza:** Zobrazuje celkové předpokládané náklady na časové období, které si zvolíte.
 
 **Rozpočet:** Zobrazuje plánovaný limit útraty pro vybraný obor (pokud je k dispozici).
 

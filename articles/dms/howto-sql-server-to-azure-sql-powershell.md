@@ -3,21 +3,21 @@ title: 'PowerShell: migrace SQL Server do SQL Database'
 titleSuffix: Azure Database Migration Service
 description: Naučte se migrovat z místních SQL Server na Azure SQL Database pomocí Azure PowerShell s Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: f67572adc3b40115b2c6d4618718867eacf8c95e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: f63f79402b457017257f1762c6ddc7e04c0ee1af
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746302"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650686"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Migrace SQL Server místně pro Azure SQL Database pomocí Azure PowerShell
 
@@ -31,14 +31,14 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvořte projekt migrace v instanci Azure Database Migration Service.
 > * Spuštění migrace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení těchto kroků potřebujete:
 
 * [SQL Server 2016 nebo vyšší](https://www.microsoft.com/sql-server/sql-server-downloads) (jakákoli edice)
 * Povolení protokolu TCP/IP, který je ve výchozím nastavení zakázán při instalaci SQL Server Express. Povolte protokol TCP/IP podle článku [Povolení nebo zakázání síťového protokolu serveru](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
 * Ke konfiguraci [brány Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Instance služby Azure SQL Database. Instanci Azure SQL Database můžete vytvořit podle podrobných informací uvedených v článku [Vytvoření databáze SQL Azure v Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
+* Instance Azure SQL Database. Instanci Azure SQL Database můžete vytvořit podle podrobných informací uvedených v článku [Vytvoření databáze SQL Azure v Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 nebo novějším.
 * Pokud chcete vytvořit Microsoft Azure Virtual Network pomocí modelu nasazení Azure Resource Manager, který poskytuje Azure Database Migration Service připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 * Aby bylo dokončeno posouzení místní databáze a migrace schématu pomocí Data Migration Assistant, jak je popsáno v článku, který [provádí hodnocení migrace SQL Server](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)

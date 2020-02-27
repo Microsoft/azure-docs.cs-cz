@@ -3,19 +3,19 @@ title: Co je Azure Database Migration Service?
 description: Přehled Azure Database Migration Service, který poskytuje bezproblémové migrace z mnoha databázových zdrojů do datových platforem Azure.
 services: database-migration
 author: pochiraju
-ms.author: jtoland
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.topic: article
-ms.date: 06/01/2019
-ms.openlocfilehash: d573378bc5e729eb75b6c3b51d3671492f7f98f1
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 02/20/2020
+ms.openlocfilehash: 8607f1a687f2979c37c67099874288c6c5ead164
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209371"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647489"
 ---
 # <a name="what-is-azure-database-migration-service"></a>Co je Azure Database Migration Service?
 

@@ -3,14 +3,14 @@ title: Kurz Kubernetes v Azure – Upgrade clusteru
 description: V tomto kurzu Azure Kubernetes Service (AKS) se dozvíte, jak upgradovat existující cluster AKS na nejnovější dostupnou verzi Kubernetes.
 services: container-service
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 57cad9472c599bf0ad8f3e3d2ff53cb224db689a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4d9ef061904fb1a0fff25506eedb82158971bed5
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593124"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77622030"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Kurz: Upgrade Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ V tomto kurzu, který je sedmou částí sedmidílné série, se upgraduje clust
 > * Upgrade uzlů Kubernetes
 > * Ověření úspěšného upgradu
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V předchozích kurzech byla aplikace zabalena do image kontejneru. Tato image se nahrála do Azure Container Registry a vytvořili jste cluster AKS. Aplikace se pak nasadí do clusteru AKS. Pokud jste tyto kroky neudělali a chcete je sledovat, začněte s [kurzem 1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
 
@@ -37,12 +37,12 @@ Před upgradem clusteru pomocí příkazu [az aks get-upgrades][] zkontrolujte, 
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-V následujícím příkladu je aktuální verze *1.13.10*a dostupné verze se zobrazí ve sloupci *upgrady* .
+V následujícím příkladu je aktuální verze *1.14.8*a dostupné verze se zobrazí ve sloupci *upgrady* .
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
 -------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.13.10          1.13.10            1.14.5, 1.14.6
+default  myResourceGroup  1.14.8           1.14.8             1.15.5, 1.15.7
 ```
 
 ## <a name="upgrade-a-cluster"></a>Upgrade clusteru
@@ -58,13 +58,13 @@ Aby se minimalizovalo přerušení spuštěných aplikací, uzly AKS pečlivě u
 Cluster AKS můžete upgradovat pomocí příkazu [az aks upgrade][]. Následující příklad upgraduje cluster na Kubernetes verze *1.14.6*.
 
 > [!NOTE]
-> Najednou můžete upgradovat pouze jednu dílčí verzi. Můžete například upgradovat z *1.12. x* na *1.13. x*, ale nelze upgradovat z *1.12. x* na *otázku 1.14. x* přímo. Pokud chcete upgradovat z *1.12. x* na *otázku 1.14. x*, nejdřív upgradujte z *1.12. x* na *1.13. x*a pak proveďte jiný upgrade z *1.13. x* na *otázku 1.14. x*.
+> Najednou můžete upgradovat pouze jednu dílčí verzi. Můžete třeba upgradovat z *1.14. x* na *1.15. x*, ale nemůžete upgradovat z *1.14. x* na *1.16. x* přímo. Pokud chcete upgradovat z *1.14. x* na *1.16. x*, nejdřív upgradujte z *1.14. x* na *1.15. x*a pak proveďte jiný upgrade z *1.15. x* na *1.16. x*.
 
 ```azurecli
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.14.6
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.15.5
 ```
 
-Následující zhuštěný příklad výstupu ukazuje *kubernetesVersion* nyní sestavy *1.14.6*:
+Následující zhuštěný příklad výstupu ukazuje *kubernetesVersion* nyní sestavy *1.15.5*:
 
 ```json
 {
@@ -82,7 +82,7 @@ Následující zhuštěný příklad výstupu ukazuje *kubernetesVersion* nyní 
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.14.6",
+  "kubernetesVersion": "1.15.5",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
@@ -97,12 +97,12 @@ Následujícím způsobem ověřte úspěšné provedení upgradu pomocí přík
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Následující příklad výstupu ukazuje, že cluster AKS spouští *KubernetesVersion 1.14.6*:
+Následující příklad výstupu ukazuje, že cluster AKS spouští *KubernetesVersion 1.15.5*:
 
 ```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.14.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.15.5               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru

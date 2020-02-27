@@ -8,14 +8,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 629b75963ba90a25d59c1601fcd479fce40c92e7
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e3385234433a292ce146c9aed25ecfeb1095d79a
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467262"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616115"
 ---
-# <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor 
+# <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
+
 Virtuální počítače a jiné výpočetní prostředky vyžadují od agenta shromažďování dat monitorování, aby bylo možné měřit výkon a dostupnost hostovaného operačního systému a úloh. Tento článek popisuje agenty používané nástrojem Azure Monitor a pomáhá určit, které požadavky je potřeba splnit pro konkrétní prostředí.
 
 > [!NOTE]
@@ -24,14 +25,15 @@ Virtuální počítače a jiné výpočetní prostředky vyžadují od agenta sh
 Můžete mít konkrétní sadu požadavků, které nelze zcela splnit jediným agentem pro konkrétní virtuální počítač. Můžete například chtít použít výstrahy metriky, které vyžadují rozšíření Azure Diagnostics, ale také chcete využívat funkce Azure Monitor pro virtuální počítače, které vyžadují agenta Log Analytics a agenta závislostí. V takových případech můžete použít více agentů a jedná se o běžný scénář pro zákazníky, kteří od nich vyžadují funkčnost.
 
 ## <a name="summary-of-agents"></a>Souhrn agentů
+
 Následující tabulky poskytují rychlé porovnání Azure Monitor agentů pro systémy Windows a Linux. Další podrobnosti najdete v níže uvedené části. 
 
 ### <a name="windows-agents"></a>Agenti systému Windows
 
 | | Diagnostika<br>rozšíření (WAD) | Log Analytics<br>agent | Závislost<br>agent |
 |:---|:---|:---|:---|
-| Podporovaná prostředí | Azure | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Lokálně | 
-| Požadavky agenta  | Žádná | Žádná | Vyžaduje agenta Log Analytics |
+| Podporovaná prostředí | Azure | Azure<br>Jiný Cloud<br>Místní | Azure<br>Jiný Cloud<br>Místní | 
+| Požadavky agenta  | Žádné | Žádné | Vyžaduje agenta Log Analytics |
 | Data shromážděná | Protokoly událostí<br>Události ETW<br>Výkon<br>Protokoly založené na souborech<br>Protokoly IIS<br>Protokoly aplikací .NET<br>Výpisy stavu systému<br>Protokoly diagnostiky agenta | Protokoly událostí<br><IIS logs> výkonu<br>Protokoly založené na souborech<br>Přehledy a řešení<br>Další služby | Podrobnosti procesu a závislosti<br>Metriky síťového připojení |
 | Data odesílaná do | Azure Storage<br>Azure Monitor metriky<br>Centrum událostí | Protokoly služby Azure Monitor | Protokoly služby Azure Monitor |
 
@@ -40,17 +42,18 @@ Následující tabulky poskytují rychlé porovnání Azure Monitor agentů pro 
 
 | | Diagnostika<br>rozšíření (LAD) | Telegraf<br>agent | Log Analytics<br>agent | Závislost<br>agent |
 |:---|:---|:---|:---|:---|
-| Podporovaná prostředí | Azure | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Lokálně | Azure<br>Jiný Cloud<br>Lokálně |
-| Požadavky agenta  | Žádná | Žádná | Žádná | Vyžaduje agenta Log Analytics |
+| Podporovaná prostředí | Azure | Azure<br>Jiný Cloud<br>Místní | Azure<br>Jiný Cloud<br>Místní | Azure<br>Jiný Cloud<br>Místní |
+| Požadavky agenta  | Žádné | Žádné | Žádné | Vyžaduje agenta Log Analytics |
 | Data shromážděná | Syslog<br>Výkon | Výkon | Syslog<br>Výkon| Podrobnosti procesu a závislosti<br>Metriky síťového připojení |
 | Data odesílaná do | Azure Storage<br>Centrum událostí | Azure Monitor metriky | Protokoly služby Azure Monitor | Protokoly služby Azure Monitor |
 
 ## <a name="log-analytics-agent"></a>Agent Log Analytics
+
 [Agent Log Analytics](log-analytics-agent.md) shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů v Azure, jiných poskytovatelů cloudu a místních. Shromažďuje data do pracovního prostoru Log Analytics. Agent Log Analytics je stejný agent, kterého používá aplikace System Center Operations Manager, a můžete mít více domácích počítačů agentů ke komunikaci se skupinou pro správu a Azure Monitor současně. Tento agent je také vyžadován některými přehledy a řešeními v Azure Monitor.
 
 
 > [!NOTE]
-> Agent Log Analytics pro systém Windows se často označuje jako Microsoft Management Agent (MMA). Agent Log Analytics pro Linux se často označuje jako agent OMS.
+> Agent Log Analytics pro systém Windows se často označuje jako Microsoft Monitoring Agent (MMA). Agent Log Analytics pro Linux se často označuje jako agent OMS.
 
 
 
@@ -68,6 +71,7 @@ Mezi omezení agenta Log Analytics patří:
 - Nejde odesílat data do Azure Monitor metrik, Azure Storage nebo Azure Event Hubs.
 
 ## <a name="azure-diagnostics-extension"></a>Rozšíření diagnostiky Azure
+
 [Rozšíření Azure Diagnostics](diagnostics-extension-overview.md) shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů Azure a dalších výpočetních prostředků. Primárně shromažďuje data do Azure Storage, ale také umožňuje definovat datové páry k odesílání dat do jiných cílů, jako jsou Azure Monitor metriky a Azure Event Hubs.
 
 Diagnostické rozšíření Azure použijte v případě, že potřebujete:
@@ -82,9 +86,8 @@ Mezi omezení Azure Diagnostics Extension patří:
 - Dá se použít jenom s prostředky Azure.
 - Omezená schopnost odesílat data do protokolů Azure Monitor.
 
-
-
 ## <a name="telegraf-agent"></a>Agent telegraf
+
 [Agent InfluxData telegraf](collect-custom-metrics-linux-telegraf.md) se používá ke shromažďování údajů o výkonu z počítačů se systémem Linux pro Azure monitor metrik.
 
 Telegraf agenta použijte v případě, že potřebujete:
@@ -94,24 +97,25 @@ Telegraf agenta použijte v případě, že potřebujete:
 
 
 ## <a name="dependency-agent"></a>Agent závislostí
+
 Agent závislostí shromažďuje zjištěná data o procesech spuštěných na virtuálním počítači a závislostech externích procesů. 
 
 Agenta závislostí použijte v případě, že potřebujete:
 
 * Použijte funkci map [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) nebo řešení [Service map](../insights/service-map.md) .
 
-
 Při použití agenta závislostí Vezměte v úvahu tyto skutečnosti:
 
 - Agent závislostí vyžaduje, aby byl na stejném virtuálním počítači nainstalovaný agent Log Analytics.
 - V případě virtuálních počítačů se systémem Linux musí být agent Log Analytics nainstalován před rozšířením diagnostiky Azure.
 
-
 ## <a name="extensions-compared-to-agents"></a>Rozšíření v porovnání s agenty
+
 Log Analytics rozšíření pro [Windows](../../virtual-machines/extensions/oms-windows.md) a [Linux](../../virtual-machines/extensions/oms-linux.md) nainstalujte agenta Log Analytics na virtuální počítače Azure. Rozšíření závislostí Azure Monitor pro [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) a [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) instalují agenta závislostí na virtuálních počítačích Azure. Jedná se o stejné výše popsané agenty, ale umožňují vám jejich správu prostřednictvím [rozšíření virtuálních počítačů](../../virtual-machines/extensions/overview.md). Pokud je to možné, měli byste použít rozšíření k instalaci a správě agentů.
 
 
 ## <a name="next-steps"></a>Další kroky
+
 Další podrobnosti o jednotlivých agentech získáte v následujících verzích:
 
 - [Přehled agenta Log Analytics](log-analytics-agent.md)

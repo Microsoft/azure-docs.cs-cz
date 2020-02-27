@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 02/26/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2a0a786d3e2135467c7279c76bae273bff0ba2d0
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: b24e8cc5f6bb6213bf021362c5654afd4d5266fb
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149503"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620616"
 ---
 # <a name="page-layout-versions"></a>Verze rozložení stránky
 
@@ -33,7 +33,7 @@ Balíčky rozložení stránky se pravidelně aktualizují, aby zahrnovaly oprav
 
 - Všechny stránky
   - Opravy usnadnění
-  - Nyní můžete přidat atribut `data-preload="true"` do značek jazyka HTML pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
+  - Nyní můžete přidat atribut `data-preload="true"` [do značek jazyka HTML](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) pro řízení pořadí načítání pro šablony stylů CSS a JavaScript.
     - Načtěte propojené soubory CSS současně s vaší šablonou HTML tak, aby neblikat mezi načítáním souborů.
     - Určuje pořadí, ve kterém jsou značky `script` načteny a provedeny před načtením stránky.
   - Pole e-mail je nyní `type=email` a mobilní klávesnice budou poskytovat správné návrhy.

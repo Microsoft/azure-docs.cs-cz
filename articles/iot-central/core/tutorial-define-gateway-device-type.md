@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8020abf3f8ab153d0143ff50d837ebcfbf5bdfba
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: ec84d3804c24766c6344e9909ba10089e186599c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423691"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623456"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení brány IoT v aplikaci Azure IoT Central
 
@@ -149,7 +149,7 @@ Postup vytvoření simulovaného zařízení brány:
 
 1. Pokud chcete začít přidávat nové zařízení, vyberte **+** .
 
-1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Create** (Vytvořit).
+1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Vytvořit**.
 
 Postup vytvoření simulovaných zařízení pro příjem dat:
 
@@ -157,13 +157,13 @@ Postup vytvoření simulovaných zařízení pro příjem dat:
 
 1. Pokud chcete začít přidávat nové zařízení, vyberte **+** .
 
-1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Create** (Vytvořit).
+1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Vytvořit**.
 
 1. Na stránce **zařízení** vyberte v seznamu šablon zařízení možnost **senzor S1** .
 
 1. Pokud chcete začít přidávat nové zařízení, vyberte **+** .
 
-1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Create** (Vytvořit).
+1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Vytvořit**.
 
 ![Simulovaná zařízení ve vaší aplikaci](./media/tutorial-define-gateway-device-type/simulated-devices.png)
 
@@ -207,4 +207,4 @@ V tomto kurzu jste se naučili:
 V dalším kroku můžete:
 
 > [!div class="nextstepaction"]
-> [Připojení zařízení](tutorial-connect-pnp-device.md)
+> [Připojení zařízení](tutorial-connect-device.md)

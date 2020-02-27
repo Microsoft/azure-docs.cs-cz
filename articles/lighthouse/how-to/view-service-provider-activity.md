@@ -3,27 +3,30 @@ title: Zobrazení aktivity poskytovatele služeb
 description: Zákazníci si můžou zobrazit protokolované aktivity a zobrazit akce provedené poskytovateli služeb prostřednictvím delegované správy prostředků Azure.
 ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: de149bddb6917a63d91b1890c0430f64465cb40c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: a923a57ecc94ac15af207c2b8dc8998708b708d4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046108"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649632"
 ---
 # <a name="view-service-provider-activity"></a>Zobrazení aktivity poskytovatele služeb
 
-Zákazníci, kteří mají delegované předplatné pro správu delegovaných prostředků Azure, můžou [Zobrazit data protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md) , aby viděli všechny akce, které provedli. To zákazníkům poskytuje kompletní přehled o operacích, které poskytovatelé služeb provádějí prostřednictvím správy delegovaných prostředků Azure, spolu s činnostmi prováděnými uživateli v rámci vlastního klienta Azure Active Directory (Azure AD) zákazníka.
+Zákazníci, kteří mají delegované předplatné pro správu delegovaných prostředků Azure, můžou [Zobrazit data protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md) , aby viděli všechny akce, které provedli. Díky tomu mohou zákazníci plně zobrazit operace, které poskytovatelé služeb provádějí prostřednictvím správy delegovaných prostředků Azure, spolu s operacemi provedenými uživateli v rámci vlastního Azure Active Directoryho tenanta zákazníka (Azure AD).
+
+> [!TIP]
+> Poskytujeme také Azure Policy vestavěnou definici zásad pro auditování delegování oborů do spravovaného tenanta. Další informace najdete v tématu [auditování delegování ve vašem prostředí](view-manage-service-providers.md#audit-delegations-in-your-environment).
 
 ## <a name="view-activity-log-data"></a>Zobrazit data protokolu aktivit
 
-[Protokol aktivit můžete zobrazit](../../azure-monitor/platform/activity-log-view.md) v nabídce **monitorování** v Azure Portal. Pokud chcete výsledky omezit na konkrétní předplatné, můžete použít filtry k výběru konkrétního předplatného. [Události protokolu aktivit můžete také zobrazit a načíst](../../azure-monitor/platform/activity-log-view.md) programově.
+[Protokol aktivit můžete zobrazit](../../azure-monitor/platform/activity-log-view.md) v nabídce **monitorování** v Azure Portal. Pokud chcete výsledky omezit na konkrétní předplatné, použijte filtry k výběru konkrétního předplatného. [Události protokolu aktivit můžete také zobrazit a načíst](../../azure-monitor/platform/activity-log-view.md) programově.
 
 > [!NOTE]
 > Uživatelé v tenantovi poskytovatele služeb můžou zobrazit výsledky protokolu aktivit delegovaného předplatného v tenantovi zákazníka, pokud jim byla udělena role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) (nebo jiná předdefinovaná role, která zahrnuje přístup čtenářů) při registraci tohoto předplatného pro správu delegovaných prostředků Azure.
 
 V protokolu aktivit uvidíte název operace a její stav spolu s datem a časem, kdy byla provedena. **Událost iniciovaná ve** sloupci zobrazuje, který uživatel provedl operaci, ať už se jedná o uživatele v tenantovi poskytovatele služeb, který působí prostřednictvím správy delegovaných prostředků Azure, nebo uživatel ve vlastním tenantovi zákazníka. Všimněte si, že se zobrazuje jméno uživatele, nikoli tenant nebo role, které uživatel přiřadil k tomuto předplatnému.
 
-Protokolovaná aktivita je v Azure Portal k dispozici po dobu posledních 90 dnů. Informace o tom, jak ukládat tato data déle než 90 dní, najdete v tématu [shromáždění a analýza protokolů aktivit Azure v Log Analytics pracovním prostoru v Azure monitor](../../azure-monitor/platform/activity-log-collect.md)
+Protokolovaná aktivita je v Azure Portal k dispozici po dobu posledních 90 dnů. Informace o tom, jak ukládat tato data déle než 90 dní, najdete [v tématu shromáždění a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics](../../azure-monitor/platform/activity-log-collect.md).
 
 > [!NOTE]
 > Uživatelé od poskytovatele služeb se zobrazí v protokolu aktivit, ale tito uživatelé a jejich přiřazení rolí se v **Access Control (IAM)** nezobrazuje ani při načítání informací o přiřazení rolí přes rozhraní API.

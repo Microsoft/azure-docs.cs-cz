@@ -9,16 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee8b166077c64ae5e0f2cce18ee0bc77e8c996f4
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 171219c001f43137a52f29b282fb1705b3d836aa
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210119"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649819"
 ---
 # <a name="authentication-with-azure-maps"></a>Ověřování s využitím Azure Maps
 
 Azure Maps podporuje dva způsoby ověřování požadavků: ověřování prostřednictvím sdíleného klíče a ověřování Azure Active Directory. Tento článek popisuje tyto metody ověřování, které vám pomůžou s implementací služby Azure Maps Services.
+
+> [!NOTE]
+> Abychom vylepšili zabezpečenou komunikaci s Azure Maps, teď podporujeme protokol TLS (Transport Layer Security) 1,2 a vychystáme podporu TLS 1,0 a 1,1. Aby nedošlo k přerušení služeb, **aktualizujte servery a aplikace tak, aby používaly protokol TLS 1,2 před 2. dubna 2020**.  Pokud aktuálně používáte TLS 1. x, vyhodnoťte připravenost TLS 1,2 a vytvořte plán migrace s testováním popsaným v tématu [řešení potíží](https://docs.microsoft.com/security/solving-tls1-problem)s protokolem TLS 1,0.
 
 ## <a name="shared-key-authentication"></a>Ověřování sdíleného klíče
 

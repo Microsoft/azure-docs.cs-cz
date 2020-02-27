@@ -1,16 +1,16 @@
 ---
 title: Monitorování Azure Functions pomocí protokolů Azure Monitor
 description: Naučte se používat protokoly Azure Monitor s Azure Functions k monitorování provádění funkcí.
-author: ahmedelnably
+author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/09/2019
-ms.author: aelnably
-ms.openlocfilehash: f4af646569edc8a9274af752e7e4f2a36585ae4d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: cshoe
+ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769094"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649870"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Monitorování Azure Functions pomocí protokolů Azure Monitor
 
@@ -38,31 +38,31 @@ Na stránce **nastavení diagnostiky** zvolte **Odeslat do Log Analytics**a poto
 Chcete-li generovat vlastní protokoly, můžete použít konkrétní příkaz protokolování v závislosti na jazyku, zde jsou ukázkové fragmenty kódu:
 
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 log.LogInformation("My app logs here.");
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```java
 context.getLogger().info("My app logs here.");
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 context.log('My app logs here.');
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Write-Host "My app logs here."
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 logging.info('My app logs here.')

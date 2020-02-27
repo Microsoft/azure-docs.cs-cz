@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: d1bfad64175ad5b29e4ec158ebe8d8e982b8b100
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 363feda1409d2bb54e60d1b2168cba38f2a8a41c
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964443"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621860"
 ---
 # <a name="what-is-azure-data-share"></a>Co je Azure Data Share?
 
@@ -23,7 +23,7 @@ Azure Data Share umožňuje organizacím jednoduše a bezpečně sdílet data s 
 
 Poskytovatel dat může zůstat v řízení toho, jak se jejich data zpracovávají, a to zadáním podmínek použití pro jejich sdílení dat. Příjemce dat musí tyto podmínky přijmout, aby mohl data přijmout. Poskytovatelé dat můžou určit frekvenci, s jakou jejich příjemci dat obdrží aktualizace. Poskytovatel dat může přístup k novým aktualizacím kdykoli odvolat. 
 
-Azure Data Share pomáhá zdokonalit přehledy tím, že usnadňuje kombinování dat od třetích stran až po obohacení analytických scénářů a scénářů AI. K přípravě, zpracování a analýze dat sdílených pomocí Azure Data Share můžete snadno použít nástroje Power Analytics pro Azure Analytics. 
+Azure Data Share pomáhá zdokonalit přehledy tím, že usnadňuje kombinování dat od třetích stran až po obohacení analytických scénářů a scénářů AI. Využijte sílu nástrojů Azure Analytics k přípravě, zpracování a analýze dat sdílených pomocí Azure Data Share. 
 
 Poskytovatel dat i příjemce dat musí mít ke sdílení a přijímání dat předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -49,7 +49,7 @@ Když příjemce dat přijme sdílenou složku, může přijímat data v úloži
 
 Díky místnímu sdílení můžou poskytovatelé dat sdílet data, kde se nacházejí, bez kopírování dat. Po navázání vztahu sdílení prostřednictvím toku pozvánky se vytvoří symbolické propojení mezi zdrojovým úložištěm dat zprostředkovatele dat a cílovým úložištěm dat příjemce dat. Příjemce dat může data číst a dotazovat se v reálném čase pomocí vlastního úložiště dat. Změny zdrojového úložiště dat jsou k dispozici pro příjemce dat okamžitě. Místní sdílení je v současnosti ve verzi Preview pro Azure Průzkumník dat.
 
-## <a name="key-capabilities"></a>Klíčové funkce
+## <a name="key-capabilities"></a>Hlavní možnosti
 
 Azure Data Share umožňuje zprostředkovatelům dat:
 

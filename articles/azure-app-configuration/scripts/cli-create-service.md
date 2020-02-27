@@ -8,16 +8,16 @@ ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
-ms.openlocfilehash: d2e1c1e2047e89cfede0e8745b3b2ae70e2bfaac
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 667cf9545d87bd9277c59d066933710339b6c079
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523675"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623088"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace Azure
 
-Tento ukázkový skript vytvoří novou instanci konfigurace aplikace Azure v nové skupině prostředků s náhodným názvem.
+Tento ukázkový skript vytvoří novou instanci konfigurace aplikace Azure v nové skupině prostředků.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -44,7 +44,9 @@ appConfigHostname=$(az appconfig create \
   --location eastus \
   --resource-group $myResourceGroupName \
   --query hostName \
-  -o tsv)
+  --sku free \
+  -o tsv
+  )
 
 # Get the AppConfig connection string 
 appConfigConnectionString=$(az appconfig credential list \
@@ -64,7 +66,7 @@ Poznamenejte si vygenerovaný název pro novou skupinu prostředků. Tento náze
 
 Tento skript používá následující příkazy k vytvoření nové skupiny prostředků a úložiště konfigurace aplikace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [AZ appconfig Create](/cli/azure/appconfig#az-appconfig-create) | Vytvoří prostředek úložiště konfigurace aplikace. |

@@ -1,24 +1,24 @@
 ---
-title: Registrace a přihlášení k telefonnímu programu s vlastními zásadami
+title: Registrace a přihlášení k telefonnímu programu s vlastními zásadami (Preview)
 titleSuffix: Azure AD B2C
-description: Naučte se, jak odesílat jednorázová hesla v textových zprávách telefonům uživatelů vaší aplikace pomocí vlastních zásad v Azure Active Directory B2C.
+description: Odesílat jednorázová hesla (JEDNORÁZOVé heslo) v textových zprávách telefonům uživatelů vaší aplikace s vlastními zásadami v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 02/25/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 50e7d66fef67e2728c95790947393de8d58398c2
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840328"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647530"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Nastavte si registraci a přihlašování telefonem pomocí vlastních zásad v Azure AD B2C
+# <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c-preview"></a>Nastavení registrace a přihlášení k telefonu pomocí vlastních zásad v Azure AD B2C (Preview)
 
 Registrace a přihlášení k telefonnímu programu v Azure Active Directory B2C (Azure AD B2C) umožňuje vašim uživatelům se zaregistrovat a přihlásit k vašim aplikacím pomocí JEDNORÁZOVého hesla, které se v textové zprávě pošle na telefon. Jednorázová hesla můžou přispět k minimalizaci rizika vašich uživatelů forgetting nebo k ohrožení zabezpečení vašich hesel.
 
@@ -26,7 +26,13 @@ Postupujte podle kroků v tomto článku a použijte vlastní zásady, které z�
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="pricing"></a>Ceny
+
+Jednorázová hesla se uživatelům odesílají pomocí textových zpráv SMS a můžete se vám účtovat každou odeslanou zprávu. Informace o cenách naleznete v části **samostatné poplatky** [Azure Active Directory B2C ceny](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+
+## <a name="prerequisites"></a>Předpoklady
+
+Před nastavením jednorázového hesla budete potřebovat následující prostředky.
 
 * [Tenant Azure AD B2C](tutorial-create-tenant.md)
 * [Webová aplikace zaregistrovaná](tutorial-register-applications.md) ve vašem tenantovi
@@ -69,6 +75,22 @@ Při nahrávání každého souboru přidá Azure předponu `B2C_1A_`.
 1. V **možnosti vybrat adresu URL odpovědi**zvolte `https://jwt.ms`.
 1. Vyberte **Spustit nyní** a zaregistrujte se pomocí e-mailové adresy nebo telefonního čísla.
 1. Vyberte znovu **Spustit** znovu a přihlaste se pomocí stejného účtu, abyste měli jistotu, že máte správnou konfiguraci.
+
+## <a name="get-user-account-by-phone-number"></a>Získat uživatelský účet podle telefonního čísla
+
+Uživatel, který se přihlásí pomocí telefonního čísla, ale neposkytne e-mailovou adresu pro obnovení, se ve vašem Azure AD B2C adresáři zaznamená jejich telefonní číslo jako přihlašovací jméno. Pokud si uživatel přeje změnit své telefonní číslo, musí nejprve najít svůj účet Helpdesk nebo tým podpory a pak aktualizovat jejich telefonní číslo.
+
+Pomocí [Microsoft Graph](manage-user-accounts-graph-api.md)můžete najít uživatele podle jejich telefonního čísla (přihlašovací jméno):
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')
+```
+
+Příklad:
+
+```http
+GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+450334567890' and c/issuer eq 'contosob2c.onmicrosoft.com')
+```
 
 ## <a name="next-steps"></a>Další kroky
 

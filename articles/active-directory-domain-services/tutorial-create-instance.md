@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: iainfou
-ms.openlocfilehash: 8905f2a0a306ec4c9c6e19479c6adb96a6ed39ca
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 86097a8706956a768def107dd312c9a20c63c6ff
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76931281"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77612356"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Kurz: vytvoření a konfigurace instance Azure Active Directory Domain Services
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
@@ -68,17 +68,17 @@ Když vytváříte instanci Azure služba AD DS, zadáte název DNS. Při volbě
 * **Přípony domén bez směrování:** Obecně doporučujeme, abyste se vyhnuli příponě názvu domény, která není směrovatelný, například *contoso. Local*. Přípona *. Local* není směrovatelný a může způsobit problémy s překladem názvů DNS.
 
 > [!TIP]
-> Pokud vytváříte vlastní název domény, je třeba dbát na stávající obory názvů DNS. Doporučuje se pro název domény zahrnout jedinečnou předponu. Například pokud je název vašeho kořenového adresáře DNS *contoso.com*, vytvořte spravovanou doménu Azure služba AD DS s vlastním názvem domény *Corp.contoso.com* nebo *DS.contoso.com*. V hybridním prostředí s místním prostředím služba AD DS se tyto předpony už můžou používat. Použijte jedinečnou předponu pro Azure služba AD DS.
+> Pokud vytváříte vlastní název domény, je třeba dbát na stávající obory názvů DNS. Doporučuje se použít název domény oddělený od existujícího prostoru názvů Azure nebo místního DNS.
 >
-> Můžete použít kořenový název DNS pro spravovanou doménu Azure služba AD DS, ale možná budete muset vytvořit další záznamy DNS pro další služby ve vašem prostředí. Pokud například spustíte webový server, který je hostitelem lokality pomocí kořenového názvu DNS, může dojít ke konfliktům názvů, které vyžadují další položky DNS.
+> Pokud máte například existující obor názvů DNS *contoso.com*, vytvořte spravovanou doménu Azure služba AD DS s vlastním názvem domény *aaddscontoso.com*. Pokud potřebujete použít zabezpečený protokol LDAP, musíte tento vlastní název domény pro vygenerování požadovaných certifikátů zaregistrovat a vlastnit.
 >
-> V těchto kurzech a v článcích s návody se jako krátký příklad používá vlastní doména *aadds.contoso.com* . Ve všech příkazech zadejte vlastní název domény, který může obsahovat jedinečnou předponu.
+> Možná budete muset vytvořit některé další záznamy DNS pro další služby ve vašem prostředí nebo podmíněné služby DNS pro přeposílání mezi stávajícími obory názvů DNS ve vašem prostředí. Pokud například spustíte webový server, který je hostitelem lokality pomocí kořenového názvu DNS, může dojít ke konfliktům názvů, které vyžadují další položky DNS.
 >
-> Další informace najdete v tématu [Výběr předpony pro pojmenování pro doménu][naming-prefix].
+> V těchto kurzech a v článcích s návody se jako krátký příklad používá vlastní doména *aaddscontoso.com* . Ve všech příkazech zadejte vlastní název domény.
 
 Platí taky následující omezení názvů DNS:
 
-* **Omezení prefixu domény:** Nelze vytvořit spravovanou doménu s předponou delší než 15 znaků. Předpona zadaného názvu domény (například *Contoso* v názvu domény *contoso.com* ) musí obsahovat maximálně 15 znaků.
+* **Omezení prefixu domény:** Nelze vytvořit spravovanou doménu s předponou delší než 15 znaků. Předpona zadaného názvu domény (například *aaddscontoso* v názvu domény *aaddscontoso.com* ) musí obsahovat nejvýše 15 znaků.
 * **Konflikty síťových názvů:** Název domény DNS pro spravovanou doménu už ve virtuální síti neexistuje. Konkrétně se podívejte na následující scénáře, které by mohly vést ke konfliktu názvů:
     * Pokud již máte doménu služby Active Directory se stejným názvem domény DNS ve službě Azure Virtual Network.
     * Pokud má virtuální síť, ve které plánujete povolit spravovanou doménu, připojení VPN s vaší místní sítí. V tomto scénáři se ujistěte, že nemáte doménu se stejným názvem domény DNS ve vaší místní síti.
@@ -120,7 +120,7 @@ Na stránce **Souhrn** v průvodci zkontrolujte nastavení konfigurace pro sprav
     ![Oznámení v Azure Portal probíhajícího nasazení](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. Stránka se načte s aktualizacemi v procesu nasazení, včetně vytváření nových prostředků ve vašem adresáři.
-1. Vyberte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte instanci Azure služba AD DS ze seznamu prostředků Azure, jako je třeba *aadds.contoso.com*. Na kartě **Přehled** se zobrazuje, že se spravovaná doména aktuálně *nasazuje*. Nemůžete nakonfigurovat spravovanou doménu, dokud není plně zřízené.
+1. Vyberte skupinu prostředků, třeba *myResourceGroup*, a pak vyberte instanci Azure služba AD DS ze seznamu prostředků Azure, jako je třeba *aaddscontoso.com*. Na kartě **Přehled** se zobrazuje, že se spravovaná doména aktuálně *nasazuje*. Nemůžete nakonfigurovat spravovanou doménu, dokud není plně zřízené.
 
     ![Stav služby Domain Services ve stavu zřizování](./media/tutorial-create-instance/provisioning-in-progress.png)
 
@@ -170,7 +170,7 @@ Chcete-li změnit heslo pouze pro cloudového uživatele, musí uživatel prové
 
 1. Na stránce **profil** vyberte **změnit heslo**.
 1. Na stránce **změnit heslo** zadejte stávající (staré) heslo a pak zadejte a potvrďte nové heslo.
-1. Vyberte **odeslat**.
+1. Vyberte **Odeslat**.
 
 Může to trvat několik minut, než se změní heslo pro nové heslo, aby bylo možné použít v Azure služba AD DS a úspěšně se přihlašujete k počítačům připojeným ke spravované doméně.
 

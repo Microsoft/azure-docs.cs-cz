@@ -4,7 +4,7 @@ description: Nasazení SAP S/4HANA nebo ČERNOBÍLé/4HANA na virtuálním poč�
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 2fa68d9dc3052263b5354086ee802cc31fa35ace
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101441"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616209"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Nasazení SAP S/4HANA nebo ČERNOBÍLé/4HANA v Azure
 Tento článek popisuje, jak nasadit S/4HANA v Azure pomocí knihovny cloudových zařízení SAP (SAP CAL) 3,0. Pokud chcete nasadit další řešení založená na SAP HANA, jako je například ČERNOBÍLé/4HANA, postupujte podle stejných kroků.
@@ -63,7 +63,7 @@ Na stránce **řešení** se zobrazují některá řešení založená na SAP CA
 
     ![Podrobnosti účtu SAP CAL](./media/cal-s4h/s4h-pic-2a.png)
 
-1. Zadejte **ID** předplatného Azure, které najdete na Azure Portal.
+1. Zadejte **ID předplatného** Azure, které najdete na Azure Portal.
 
    ![Účty SAP CAL](./media/cal-s4h/s4h-pic3c.png)
 
@@ -75,7 +75,7 @@ Na stránce **řešení** se zobrazují některá řešení založená na SAP CA
 
    ![Potvrzení Cloud Services v Internet Exploreru](./media/cal-s4h/s4h-pic5a.png)
 
-1. Klikněte na tlačítko **přijmout**. Pokud je autorizace úspěšná, znovu se zobrazí definice účtu SAP CAL. Po krátké době zpráva potvrdí, že proces autorizace byl úspěšný.
+1. Klikněte na **přijmout**. Pokud je autorizace úspěšná, znovu se zobrazí definice účtu SAP CAL. Po krátké době zpráva potvrdí, že proces autorizace byl úspěšný.
 
 1. Pokud chcete uživateli přiřadit nově vytvořený účet SAP CAL, zadejte své **ID uživatele** do textového pole vpravo a klikněte na **Přidat**.
 
@@ -119,7 +119,7 @@ Tady Ukážeme základní cestu k nasazení.
 
     d. Zadejte hlavní **heslo** pro řešení o osmi nebo devíti znacích. Heslo se používá pro správce různých součástí.
 
-   ![Základní režim SAP CAL: Vytvořit instanci](./media/cal-s4h/s4h-pic10a.png)
+   ![Základní režim SAP CAL: vytvořit instanci](./media/cal-s4h/s4h-pic10a.png)
 
 1. Klikněte na tlačítko **vytvořit**a v zobrazeném okně se zprávou klikněte na tlačítko **OK**.
 
