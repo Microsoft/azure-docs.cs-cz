@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 234c4b0493a4f03ed89162318090d57621740cb0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6662f109f9a8227ec45d44a730abc91ebcd8dd70
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036692"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650840"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Hodnocení srovnávacích testů pro virtuální počítače se systémem Linux
 Následující výsledky srovnávacích testů CoreMark ukazují výpočetní výkon pro vysoce výkonné virtuální počítače Azure seznamu se systémem Ubuntu. Pro [virtuální počítače s Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)jsou k dispozici také hodnocení srovnávacích testů.
@@ -52,6 +52,8 @@ Následující výsledky srovnávacích testů CoreMark ukazují výpočetní v�
 | Standard_A8m_v2 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 8 | 1 | 62,9 | 49 838 | 633 | 1,27% | 182 |
 | Standard_A8m_v2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 8 | 1 | 62,9 | 49 123 | 2 483 | 5,05% | 259 |
 
+Poznámka: virtuální počítače řady Av2-Series se dají nasadit na nejrůznější typy a procesory hardwaru (jak vidíte výše). Virtuální počítače řady Av2-Series mají pro úlohy na vstupní úrovni, jako je vývoj a testování, nejvhodnější konfigurace výkonu a paměti procesoru. Velikost je omezená, aby nabízela poměrně konzistentní výkon procesoru pro běžící instanci bez ohledu na hardware, na kterém je nasazený. software, který využívá výhod konkrétních novějších optimalizací procesorů, ale může výrazně variace v různých typech procesorů.
+
 ## <a name="b---burstable"></a>B-Shluková
 (3/15/2019 12:27:08 PBI 3897709)
 
@@ -69,6 +71,10 @@ Následující výsledky srovnávacích testů CoreMark ukazují výpočetní v�
 | Standard_B4ms | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 4 | 1 | 15,7 | 54 051 | 1 260 | 2,33% | 672 |
 | Standard_B8ms | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 8 | 1 | 31,4 | 111 929 | 1 562 | 1,40% | 35 |
 | Standard_B8ms | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 8 | 1 | 31,4 | 109 537 | 1 354 | 1,24% | 665 |
+
+Poznámka: virtuální počítače řady B-Series jsou pro úlohy s požadavky na nejvyšší výkon. Instance virtuálních počítačů nashromáždí kredity při použití menšího směrného plánu. Když se na virtuálním počítači nashromáždil kredit, může se virtuální počítač nad rámec směrného plánu zvýšit až 100%, aby se splnily krátké požadavky na nárůst zatížení procesoru. Doba nárůstu závisí na dostupných kreditech, které jsou funkcí velikosti a času virtuálního počítače.  
+
+CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dostupných kreditů shlukování.  Výše uvedená čísla zpravidla představují nárůst výkonu virtuálního počítače a odráží, co se obvykle zobrazuje u krátkého, shluku, úloh (typických u řady B-Series).
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 – obecné COMPUTE a Premium Storage
 (3/12/2019 6:52:03 PM PBI 3897709)

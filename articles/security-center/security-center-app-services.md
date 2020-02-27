@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: c286efcfad78a8f7acf9974605d53ed3cc06a09e
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2d81e1a1218add504e1e35015276b6924da0e3e3
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604538"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616480"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>Ochrana vašich Azure App Service webových aplikací a rozhraní API
 
@@ -29,7 +29,7 @@ Pokud chcete pro svůj Azure App Service plán povolit rozšířenou ochranu př
 
 Když je povolený plán App Service, Security Center vyhodnocuje prostředky, na které se vztahuje plán App Service, a vygeneruje doporučení zabezpečení na základě jejich zjištění. Security Center chrání instanci virtuálního počítače, ve které je spuštěný App Service a rozhraní pro správu. Monitoruje také požadavky a odpovědi odeslané do aplikací spuštěných v App Service a z nich.
 
-Security Center využívá škálování cloudu a viditelnost, kterou má Azure jako poskytovatel cloudu, ke sledování běžných útoků na webové aplikace. Security Center může zjišťovat útoky na vaše aplikace a identifikovat nově vznikající útoky – i když se útočníci nacházejí ve fázi rekognoskace, hledají chyby zabezpečení napříč několika aplikacemi hostovanými v Azure. Jako služba Azure-Native je Security Center také v jedinečné pozici, která nabízí analýzy zabezpečení založené na hostiteli, které se týkají základních výpočetních uzlů pro tento PaaS, což umožňuje Security Center detekovat útoky na webové aplikace, které už byly zneužity. Podrobnosti o výstrahách detekce hrozeb Security Center z Azure App Service najdete v tématu [detekce hrozeb pro cloudový nativní výpočetní](security-center-alerts-compute.md#azure-app-service-)výkon.
+Security Center využívá škálování cloudu a viditelnost, kterou má Azure jako poskytovatel cloudu, ke sledování běžných útoků na webové aplikace. Security Center může zjišťovat útoky na vaše aplikace a identifikovat nově vznikající útoky – i když se útočníci nacházejí ve fázi rekognoskace, hledají chyby zabezpečení napříč několika aplikacemi hostovanými v Azure. Jako služba Azure-Native je Security Center také v jedinečné pozici, která nabízí analýzy zabezpečení založené na hostiteli, které se týkají základních výpočetních uzlů pro tento PaaS, což umožňuje Security Center detekovat útoky na webové aplikace, které už byly zneužity. Další podrobnosti najdete v tématu [Ochrana před hrozbami pro Azure App Service](threat-protection.md#app-services).
 
 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>Povolení monitorování a ochrany App Service

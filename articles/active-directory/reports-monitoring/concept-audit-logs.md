@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ad399fc24b2cdfbdc51e7feccba2c05786216b19
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714492"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648421"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -41,11 +41,11 @@ Tento článek vám poskytne přehled o sestavě auditu.
  
 ## <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
 
-* Uživatelé v rolích **Správce zabezpečení**, **Čtenář zabezpečení**, **Čtenář sestav** nebo **globální role správce**
+* Uživatelé v roli **Správce zabezpečení**, **Čtenář zabezpečení**, **čtečka sestav** , **globální čtenář** nebo **globální správce**
 
 ## <a name="audit-logs"></a>Protokoly auditu
 
-Protokoly auditu Azure AD poskytují záznamy systémových aktivit pro dodržování předpisů. Chcete-li získat přístup k sestavě auditu, vyberte v části **aktivita** v **Azure Active Directory**možnost **protokoly auditu** . Všimněte si, že protokoly auditu můžou mít latenci až hodinu, takže může trvat dlouhou dobu, než se na portálu po dokončení úkolu zobrazí data o aktivitě auditu.
+Protokoly auditu Azure AD poskytují záznamy systémových aktivit pro dodržování předpisů. Chcete-li získat přístup k sestavě auditu, vyberte v části **monitorování** v **Azure Active Directory**možnost **protokoly auditu** . Všimněte si, že protokoly auditu můžou mít latenci až hodinu, takže může trvat dlouhou dobu, než se na portálu po dokončení úkolu zobrazí data o aktivitě auditu.
 
 
 
@@ -90,16 +90,20 @@ Data auditu můžete filtrovat v následujících polích:
 Filtr **služby** umožňuje vybrat z rozevíracího seznamu následující služby:
 
 - Vše
+- UX pro správu AAD
 - Kontroly přístupu
-- Zřizování účtů 
-- Jednotné přihlašování aplikace
+- Zřizování účtů
+- Proxy aplikací
 - Metody ověřování
 - B2C
 - Podmíněný přístup
 - Základní adresář
 - Správa nároků
+- Hybridní ověřování
 - Identity Protection
 - Pozvaní uživatelé
+- Služba MIM
+- MyApps
 - PIM
 - Samoobslužná správa skupin
 - Samoobslužná správa hesel
@@ -118,7 +122,11 @@ Filtr **kategorie** umožňuje vybrat jeden z následujících filtrů:
 - DirectoryManagement
 - EntitlementManagement
 - GroupManagement
+- KerberosDomain
+- Správa
+- Popisek
 - Ostatní
+- PermissionGrantPolicy
 - Zásada
 - ResourceManagement
 - RoleManagement
@@ -136,12 +144,11 @@ Filtr **stavu** vám umožňuje filtrovat na základě stavu operace auditu. Sta
 
 **Cílový** filtr vám umožní vyhledat konkrétní cíl podle názvu nebo hlavního názvu uživatele (UPN). Název cíle a hlavní název uživatele (UPN) rozlišují velká a malá písmena. 
 
-Filtr **iniciovaná pomocí** filtru umožňuje definovat jméno objektu actor nebo univerzální hlavní název uživatele (UPN). Název a hlavní název uživatele (UPN) rozlišují malá a velká písmena.
+Filtr **iniciovaná pomocí** filtru umožňuje definovat, s jakým jménem a názvem objektu actor začíná. Název a hlavní název uživatele (UPN) rozlišují malá a velká písmena.
 
 Filtr **rozsahu data** umožňuje definovat časový rámec pro vracená data.  
 Možné hodnoty:
 
-- 1 měsíc
 - 7 dní
 - 24 hodin
 - Vlastní
@@ -179,11 +186,11 @@ S použitím sestav auditu orientovaných na uživatele a skupiny můžete nají
 
 - Jaké licence byly přiřazeny skupině nebo uživateli?
 
-Pokud chcete zkontrolovat jenom auditovaná data, která se vztahují k uživatelům, můžete filtrované zobrazení najít v části **protokoly auditu** v části **aktivita** na kartě **Uživatelé** . Tento vstupní bod má **UserManagement** jako předvybranou kategorii.
+Chcete-li zkontrolovat pouze auditovaná data, která se vztahují k uživatelům, můžete filtrované zobrazení najít v části **protokoly auditu** v části **monitorování** na kartě **Uživatelé** . Tento vstupní bod má **UserManagement** jako předvybranou kategorii.
 
 ![Protokoly auditu](./media/concept-audit-logs/users.png "Protokoly auditu")
 
-Pokud chcete zkontrolovat jenom auditovaná data, která souvisí se skupinami, najdete filtrované zobrazení v části **protokoly auditu** v části **aktivita** na kartě **skupiny** . Tento vstupní bod má **GroupManagement** jako předvybranou kategorii.
+Pokud chcete zkontrolovat jenom auditovaná data, která souvisí se skupinami, najdete filtrované zobrazení v části **protokoly auditu** v části **monitorování** na kartě **skupiny** . Tento vstupní bod má **GroupManagement** jako předvybranou kategorii.
 
 ![Protokoly auditu](./media/concept-audit-logs/groups.png "Protokoly auditu")
 

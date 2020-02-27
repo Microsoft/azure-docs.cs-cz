@@ -3,14 +3,14 @@ author: mmacy
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/12/2020
+ms.date: 02/26/2020
 ms.author: marsma
-ms.openlocfilehash: 9612abbe078ab8d9e8c10c2da923a9a9b233d094
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: 4cf8eba9632c51ce9b5bcc42feae2446348890c2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373131"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77651525"
 ---
 ## <a name="use-custom-page-content"></a>Použít vlastní obsah stránky
 
@@ -61,7 +61,7 @@ Při použití vlastních souborů HTML a CSS k přizpůsobení uživatelského 
 ## <a name="guidelines-for-using-custom-page-content"></a>Pokyny pro používání vlastního obsahu stránky
 
 - Použijte absolutní adresu URL při zahrnutí externích prostředků, jako jsou multimédia, CSS a JavaScriptové soubory v souboru HTML.
-- Přidejte atribut `data-preload="true"` do značek HTML pro řízení pořadí načítání pro šablony stylů CSS a JavaScript. Při `data-preload=true`je stránka vytvořena před zobrazením uživateli. Tento atribut pomáhá zabránit tomu, aby se stránka vyblikat tím, že předvede soubor CSS, aniž by byl uživatel zobrazen bez stylu HTML. Následující fragment kódu HTML ukazuje použití značky `data-preload`.
+- Pomocí [rozložení stránky verze](../articles/active-directory-b2c/page-layout.md) 1.2.0 a vyšší můžete přidat atribut `data-preload="true"` do značek HTML pro řízení pořadí načítání pro šablony stylů CSS a JavaScript. Při `data-preload=true`je stránka vytvořena před zobrazením uživateli. Tento atribut pomáhá zabránit tomu, aby se stránka vyblikat tím, že předvede soubor CSS, aniž by byl uživatel zobrazen bez stylu HTML. Následující fragment kódu HTML ukazuje použití značky `data-preload`.
   ```HTML
   <link href="https://path-to-your-file/sample.css" rel="stylesheet" type="text/css" data-preload="true"/>
   ```
@@ -113,7 +113,7 @@ V tomto článku používáme pro hostování našeho obsahu službu Azure Blob 
 
 Chcete-li hostovat obsah HTML v úložišti objektů blob, proveďte následující kroky:
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. V nabídce **centra** vyberte **nový** > **úložiště** > **účet úložiště**.
 1. Vyberte **předplatné** pro účet úložiště.
 1. Vytvořte **skupinu prostředků** nebo vyberte existující.

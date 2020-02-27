@@ -8,13 +8,13 @@ ms.author: heidist
 ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: fd8a053eb4ff0805b95dc11db4206e1dd2edb184
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 02/25/2020
+ms.openlocfilehash: cbef6029b93f134f95ee54aa87ce0dd65bcdf50d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406939"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623994"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Node. js pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -31,19 +31,24 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto rychlém startu se používají následující služby, nástroje a data.
+Pro sestavování a testování tohoto rychlého startu jsme použili následující software a služby:
 
-+ [Node.js](https://nodejs.org).
-+ [Npm](https://www.npmjs.com) by měl nainstalovat Node. js.
-+ V tomto článku je uvedena ukázková struktura indexu a vyhovující dokumenty, nebo v adresáři [ **rychlého** startu úložiště](https://github.com/Azure-Samples/azure-search-javascript-samples/).
++ [Node.js](https://nodejs.org)
+
++ [Npm](https://www.npmjs.com) by měl instalovat Node. js.
+
++ V tomto článku se uvádí ukázková struktura indexu a vyhovující dokumenty, nebo v adresáři [ **rychlého** startu úložiště.](https://github.com/Azure-Samples/azure-search-javascript-samples/)
+
 + [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu.
 
-Doporučené:
+Doporučujeme:
 
-* [Visual Studio Code](https://code.visualstudio.com).
+* [Visual Studio Code](https://code.visualstudio.com)
+
 * Rozšíření [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) a [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) pro VSCode.
 
 <a name="get-service-info"></a>
+
 ## <a name="get-keys-and-urls"></a>Získání klíčů a adres URL
 
 Volání služby vyžaduje koncový bod adresy URL a přístupový klíč pro každý požadavek. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
@@ -108,16 +113,17 @@ Začněte otevřením konzoly PowerShellu nebo jiného prostředí, ve kterém m
       }
     }
     ```
-Vytvořte soubor **azure_search_config. JSON** , který bude uchovávat vaše data vyhledávací služby:
 
-```json
-{
-    "serviceName" : "[SERVICE_NAME]",
-    "adminKey" : "[ADMIN_KEY]",
-    "queryKey" : "[QUERY_KEY]",
-    "indexName" : "hotels-quickstart"
-}
-```
+5. Vytvořte soubor **azure_search_config. JSON** , který bude uchovávat vaše data vyhledávací služby:
+
+    ```json
+    {
+        "serviceName" : "[SEARCH_SERVICE_NAME]",
+        "adminKey" : "[ADMIN_KEY]",
+        "queryKey" : "[QUERY_KEY]",
+        "indexName" : "hotels-quickstart"
+    }
+    ```
 
 Hodnotu `[SERVICE_NAME]` nahraďte názvem vaší vyhledávací služby. Nahraďte `[ADMIN_KEY]` a `[QUERY_KEY]` hodnoty klíče, které jste si poznamenali dříve. 
 
@@ -403,7 +409,7 @@ Balíček [ **NConf** ](https://github.com/indexzero/nconf) umožňuje zadat kon
 ```javascript
 function getAzureConfiguration() {
     const config = nconf.file({ file: 'azure_search_config.json' });
-    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME' ) {
+    if (config.get('serviceName') === '[SEARCH_SERVICE_NAME]' ) {
         throw new Error("You have not set the values in your azure_search_config.json file. Change them to match your search service's values.");
     }
     return config;
@@ -433,7 +439,7 @@ Nakonec zadejte a zavolejte hlavní asynchronní funkci `run`. Tato funkce volá
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
-        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get["serviceName"]);
+        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get("indexName));
         
         const exists = await client.indexExistsAsync();
         await exists ? client.deleteIndexAsync() : Promise.resolve();
