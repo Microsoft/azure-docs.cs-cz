@@ -417,6 +417,8 @@
               href: vmware-physical-secondary-disaster-recovery.md
         - name: Virtuální počítače Hyper-V
           items:
+            - name: Vyřazení scénáře S2S pro virtuální počítače Hyper-V
+              href: site-to-site-deprecation.md
             - name: Průvodce zotavením virtuálních počítačů Hyper-V v cloudech VMM po havárii do sekundární lokality
               href: hyper-v-vmm-disaster-recovery.md
             - name: Spuštění postupu zotavení virtuálních počítačů Hyper-V po havárii do sekundární lokality

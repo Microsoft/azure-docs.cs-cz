@@ -83,8 +83,10 @@
       href: concept-workspace.md
     - name: Prostředí
       href: concept-environments.md
-    - name: Data
+    - name: Přístup k datům
       href: concept-data.md
+    - name: Přijímání dat
+      href: concept-data-ingestion.md
     - name: Trénování modelu
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md

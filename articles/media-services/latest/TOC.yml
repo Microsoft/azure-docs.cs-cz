@@ -148,6 +148,8 @@
           href: live-event-states-billing.md
         - name: Latence
           href: live-event-latency.md
+        - name: Kódy chyb živých událostí
+          href: live-event-error-codes.md
     - name: Monitorování
       items:
         - name: Události s využitím Event Gridu
@@ -175,6 +177,8 @@
           items:
             - name: Kódy chyb koncových bodů streamování
               href: streaming-endpoint-error-codes.md
+            - name: Kódy chyb živých událostí
+              href: live-event-error-codes.md
             - name: Kódy chyb úlohy
               href: job-error-codes.md
     - name: Pokyny k migraci z v2 na v3
@@ -325,6 +329,8 @@
       items:
         - name: Kódy chyb koncových bodů streamování
           href: streaming-endpoint-error-codes.md
+        - name: Kódy chyb živých událostí
+          href: live-event-error-codes.md
         - name: Kódy chyb úlohy
           href: job-error-codes.md
 - name: Zdroje a prostředky

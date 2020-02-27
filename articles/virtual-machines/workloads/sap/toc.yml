@@ -120,6 +120,11 @@
       href: sap-deployment-checklist.md
     - name: Plánování a implementace SAP NetWeaveru v Azure
       href: planning-guide.md
+      items:
+        - name: Podporované scénáře pro úlohy SAP na virtuálních počítačích Azure
+          href: sap-planning-supported-configurations.md
+        - name: Který software SAP se podporuje pro nasazení Azure
+          href: sap-supported-product-on-azure.md
     - name: Průvodce nasazením SAP NetWeaveru
       href: deployment-guide.md
     - name: Průvodci nasazením DBMS pro úlohy SAP

@@ -1,0 +1,11 @@
+- name: Dokumentace ke SRE (Site Reliability Engineering)
+  href: ../index.yml
+- name: Zdroje a prostředky
+  expanded: true
+  items:
+    - name: SRE – knihy
+      href: books.md
+    - name: SRE – události
+      href: events.md
+    - name: SRE – kolekce odkazů a stručných souhrnů
+      href: links.md

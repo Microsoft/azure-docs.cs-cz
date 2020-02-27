@@ -42,9 +42,9 @@
     - name: 13. Správa zabezpečení virtuálních počítačů
       href: tutorial-azure-security.md
     - name: 14a. Sestavení s využitím Jenkinse
-      href: tutorial-jenkins-github-docker-cicd.md
+      href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
     - name: 14b. Nasazení a integrace Jenkinse s Azure
-      href: tutorial-build-deploy-jenkins.md
+      href: ../../jenkins/tutorial-build-deploy-jenkins.md
     - name: 15a. DevOps pro IaaS a PaaS v Azure
       href: tutorial-devops-azure-pipelines-classic.md
     - name: 15b. Průběžná integrace a doručování s využitím Azure Pipelines (YAML)
@@ -91,8 +91,8 @@
               href: ../av2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: B-Series s možností zvládání výkonových špiček
               href: ../sizes-b-series-burstable.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: Řada DC
-              href: ../dc-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+            - name: Řada DCv2
+              href: ../dcv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Řada Dv2 a DSv2
               href: ../dv2-dsv2-series.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Řada Dv3 a DSv3
@@ -534,7 +534,7 @@
             - name: Škálování pomocí agentů virtuálních počítačů
               href: ../../jenkins/jenkins-azure-vm-agents.md
             - name: Publikování artefaktů do Storage
-              href: ../../storage/common/storage-java-jenkins-continuous-integration-solution.md
+              href: ../../jenkins/storage-java-jenkins-continuous-integration-solution.md
             - name: Zabezpečení Jenkinse
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: Spuštění kontejnerů

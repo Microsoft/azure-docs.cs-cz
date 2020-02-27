@@ -181,6 +181,20 @@
   items:
     - name: Rozhraní REST API
       href: 'https://docs.microsoft.com/rest/api/securitycenter/'
+    - name: Nejčastější dotazy ke službě Azure Security Center
+      items:
+        - name: Obecné otázky
+          href: faq-general.md
+        - name: Dotazy k fakturaci
+          href: faq-billing.md
+        - name: Dotazy k oprávněním
+          href: faq-permissions.md
+        - name: Dotazy k agentům a shromažďování dat
+          href: faq-data-collection-agents.md
+        - name: Dotazy k virtuálním počítačům
+          href: faq-vms.md
+        - name: Stávající uživatelé Azure Log Analytics
+          href: faq-azure-monitor-logs.md
     - name: "Poznámky k\_verzi"
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Vyřazení funkcí a rozhraní API (červenec 2019)
@@ -195,8 +209,6 @@
       href: security-center-privacy.md
     - name: Dokumentace ke službě Azure Security Center pro IoT
       href: 'https://docs.microsoft.com/azure/asc-for-iot/'
-    - name: Nejčastější dotazy
-      href: security-center-faq.md
     - name: Dokumentace k zabezpečení Azure
       href: /azure/security/
     - name: Aktualizace Azure

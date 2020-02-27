@@ -109,6 +109,8 @@
           href: search-capacity-planning.md
         - name: Škálování pro zajištění výkonu
           href: search-performance-optimization.md
+        - name: Přesun služby napříč oblastmi
+          href: search-howto-move-across-regions.md
         - name: Víceklientská architektura
           href: search-modeling-multitenant-saas-applications.md
     - name: Zabezpečení
