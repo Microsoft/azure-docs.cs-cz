@@ -3,21 +3,21 @@ title: Migrace balíčků SSIS do spravované instance SQL
 titleSuffix: Azure Database Migration Service
 description: Naučte se migrovat balíčky služba SSIS (SQL Server Integration Services) (SSIS) a projekty do Azure SQL Database spravované instance pomocí Azure Database Migration Service nebo Data Migration Assistant.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 22f3e6a0e4c041024e826a7ed724d788ce77da62
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: a0669724888f02672d18ef9e8f725eef1c744f90
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751220"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650960"
 ---
 # <a name="migrate-sql-server-integration-services-packages-to-an-azure-sql-database-managed-instance"></a>Migrace balíčků služba SSIS (SQL Server Integration Services) do spravované instance Azure SQL Database
 Pokud používáte služba SSIS (SQL Server Integration Services) (SSIS) a chcete migrovat SSIS projekty/balíčky ze zdrojového SSISDBu, který hostuje SQL Server, do cílového SSISDB hostovaného v Azure SQL Database spravované instanci, můžete použít Azure Database Migration Service.
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Vyhodnoťte zdrojové SSIS projekty/balíčky.
 > * Migrujte projekty a balíčky SSIS do Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení těchto kroků potřebujete:
 
@@ -126,7 +126,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
    ![Podrobnosti zdroje](media/how-to-migrate-ssis-packages-mi/dms-source-details1.png)
 
-3. Vyberte **Uložit**.
+3. Vyberte **Save** (Uložit).
 
 ## <a name="specify-target-details"></a>Zadání podrobností o cíli
 
@@ -134,7 +134,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 
      ![Podrobnosti cíle](media/how-to-migrate-ssis-packages-mi/dms-target-details2.png)
 
-2. Vyberte **Uložit**.
+2. Vyberte **Save** (Uložit).
 
 ## <a name="review-the-migration-summary"></a>Kontrola shrnutí migrace
 

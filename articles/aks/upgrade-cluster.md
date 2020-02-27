@@ -4,12 +4,12 @@ description: Přečtěte si, jak upgradovat cluster Azure Kubernetes Service (AK
 services: container-service
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 9acf08765ee42401229bc464b4513856127e9f66
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4520297e83f96f95b10ecafd5af52a913dc5f450
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592981"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621983"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Upgrade clusteru Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Clustery AKS, které používají více fondů uzlů nebo uzlů Windows serveru 
 Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.65 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 > [!WARNING]
-> Upgrade clusteru AKS spustí Cordon a vyprázdní uzly. Pokud máte k dispozici nízkou kvótu výpočetních prostředků, upgrade může selhat.  Další informace najdete v tématu [zvýšení kvót](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289) .
+> Upgrade clusteru AKS spustí Cordon a vyprázdní uzly. Pokud máte k dispozici nízkou kvótu výpočetních prostředků, upgrade může selhat. Další informace najdete v tématu [zvýšení kvót](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
 > Pokud používáte vlastní nasazení automatického škálování clusteru, zakažte ho prosím (můžete ho během upgradu škálovat na nulové repliky), protože by došlo k narušení procesu upgradu. Spravovaný autoscaleer to automaticky zpracuje. 
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Vyhledat dostupné upgrady clusteru AKS

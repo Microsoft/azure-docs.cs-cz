@@ -1,21 +1,21 @@
 ---
-title: 'Kurz: monitorování Key Vault s využitím Azure Event Grid'
-description: 'Kurz: použití Azure Event Grid k přihlášení k odběru Key Vaultch událostí'
-services: media-services
+title: Monitorování Key Vault s využitím Azure Event Grid
+description: Použití Azure Event Grid k přihlášení k odběru Key Vaultch událostí
+services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 5771af365b763d2152eea4ef4f662e08769b378c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2424fbac3c95c1c60e6ef61cba53e481f4bb478a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133343"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650737"
 ---
-# <a name="tutorial-monitoring-key-vault-with-azure-event-grid-preview"></a>Kurz: monitorování Key Vault s využitím Azure Event Grid (Preview)
+# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Monitorování Key Vault s využitím Azure Event Grid (Preview)
 
 Key Vault integrace s Event Grid je momentálně ve verzi Preview. Umožňuje uživatelům upozornit, když se změní stav tajného kódu uloženého v trezoru klíčů. Změna stavu se definuje jako tajný kód, jehož platnost brzy vyprší (do 30 dnů od vypršení platnosti), tajného kódu, jehož platnost vypršela, nebo tajného klíče, který má k dispozici novou verzi. Jsou podporovány oznámení pro všechny tři tajné typy (klíč, certifikát a tajný kód).
 
@@ -27,10 +27,10 @@ Event Grid používá [odběry událostí](../event-grid/concepts.md#event-subsc
 
 Další informace najdete v tématu [schéma události Key Vault](../event-grid/event-schema-key-vault.md).
 
-> [!NOTE]
-> Události se aktivují jenom pro tajné verze (všechny tři typy) vytvořené po nastavení předplatného.
->
-> U stávajících tajných klíčů musíte vygenerovat nové verze.
+> [!WARNING]
+> Události oznámení se aktivují jenom v nových verzích tajných klíčů, klíčů a certifikátů a při přijímání těchto oznámení se musíte nejdřív přihlásit ke svému trezoru klíčů.
+> 
+> Události oznámení týkající se certifikátů obdržíte pouze v případě, že se certifikát automaticky obnoví podle zásad, které jste pro svůj certifikát určili.
 
 ## <a name="practices-for-consuming-events"></a>Postupy pro náročné události
 

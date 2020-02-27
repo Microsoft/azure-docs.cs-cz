@@ -1,19 +1,19 @@
 ---
-title: Dělení ve službě Azure Cosmos DB
+title: Vytváření oddílů v Azure Cosmos DB
 description: Přečtěte si o dělení Azure Cosmos DB, osvědčených postupech při volbě klíče oddílu a o tom, jak spravovat logické oddíly.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: c781c5e12f3f678ef640c6017a768e7ac14448f9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871988"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621869"
 ---
-# <a name="partitioning-in-azure-cosmos-db"></a>Dělení ve službě Azure Cosmos DB
+# <a name="partitioning-in-azure-cosmos-db"></a>Vytváření oddílů v Azure Cosmos DB
 
 Azure Cosmos DB používá dělení ke škálování jednotlivých kontejnerů v databázi tak, aby splňovaly požadavky vaší aplikace na výkon. Při dělení jsou položky v kontejneru rozděleny do samostatných dílčích množin nazývaných *logické oddíly*. Logické oddíly se vytvoří na základě hodnoty *klíče oddílu* , který je spojený s každou položkou v kontejneru. Všechny položky v logickém oddílu mají stejnou hodnotu klíče oddílu.
 
@@ -37,7 +37,7 @@ Další informace o tom, jak Azure Cosmos DB spravuje oddíly, najdete v tématu
 
 Následuje dobrý návod pro výběr klíče oddílu:
 
-* Jeden logický oddíl má horní limit 10 GB úložiště.  
+* Jeden logický oddíl má horní limit 20 GB úložiště.  
 
 * Kontejnery Azure Cosmos mají minimální propustnost 400 jednotek žádostí za sekundu (RU/s). V případě, že je v databázi zajištěna propustnost, minimální počet ru na kontejner je 100 jednotek žádostí za sekundu (RU/s). Požadavky na stejný klíč oddílu nepřesahují propustnost, která je přidělena oddílu. Pokud žádosti překročí přidělenou propustnost, požadavky jsou omezené na rychlost. Proto je důležité vybrat klíč oddílu, který v rámci aplikace nevede k "aktivním skvrnám".
 

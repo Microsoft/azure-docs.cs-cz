@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e6fbf0e4cbfc44692292c33fc46d9ea0eccec89d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7acff7f0249cdedcebd367fc315be92cafb9ab78
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370204"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615441"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>Rychlý Start: Vytvoření aplikace Unity pro Android pomocí prostorových kotev Azure
 
@@ -34,7 +34,7 @@ Dozvíte se, jak provést tyto akce:
 
 Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následující:
 
-- Počítač s Windows nebo macOS s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.1 +</a> včetně modulů podpory sestavení pro Android a Android SDK & NDK nástrojů.
+- Počítač s Windows nebo macOS s <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1 nebo 2019,2</a> včetně modulů podpory sestavení pro Android a Android SDK & NDK nástrojů.
   - Pokud používáte systém Windows, budete také potřebovat <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a> a <a href="https://git-lfs.github.com/">Git LFS</a>.
   - Pokud používáte macOS, načtěte Git prostřednictvím HomeBrew. Do jednoho řádku terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Pak spusťte `brew install git` a `brew install git-lfs`.
 - Zařízení s Androidem podporující <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">vývojáře</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore</a> .
@@ -66,9 +66,15 @@ V nabídce **Spustit zařízení** vyberte zařízení a klikněte na **Sestavit
 
 Podle pokynů v aplikaci založte a odvoláte kotvu.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
+
+### <a name="rendering-issues"></a>Problémy vykreslování
 
 Pokud při spuštění aplikace nevidíte kameru jako pozadí (například místo toho, aby se zobrazily prázdné, modré nebo jiné textury), pravděpodobně budete muset znovu naimportovat prostředky v Unity. Zastavte aplikaci. V horní nabídce v Unity vyberte **assets – > znovu importovat vše**. Pak znovu spusťte aplikaci.
+
+### <a name="unity-20193"></a>Unity 2019,3
+
+V důsledku zásadních změn se Unity 2019,3 aktuálně nepodporuje. Použijte prosím Unity 2019,1 nebo 2019,2.
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 

@@ -4,12 +4,12 @@ description: Hostování Jenkinse sestavení a nasazení automatizačního serve
 keywords: jenkins, azure, devops, overview
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: 5991505dac0cf6f7ff2cac5dfabd06f4c90dc20f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: a9297ebc116d75cfe1d4f37d4e9ada7d5198beae
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605693"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620171"
 ---
 # <a name="azure-and-jenkins"></a>Azure a Jenkins
 
@@ -33,7 +33,7 @@ Přidáním agentů sestavení do stávajícího nasazení Jenkinse můžete šk
 
 Po nakonfigurování [instančního objektu Azure](/azure/azure-resource-manager/resource-group-overview) můžou úlohy a kanály Jenkinse využívat tyto přihlašovací údaje k následujícím úlohám:
 
-- Pomocí [modulu plug-in Azure Storage](https://plugins.jenkins.io/windows-azure-storage)bezpečně ukládejte a archivujte artefakty sestavení v [Azure Storage](/azure/storage/common/storage-introduction) . Další informace najdete v [postupech pro úložiště Jenkinse](/azure/storage/common/storage-java-jenkins-continuous-integration-solution).
+- Pomocí [modulu plug-in Azure Storage](https://plugins.jenkins.io/windows-azure-storage)bezpečně ukládejte a archivujte artefakty sestavení v [Azure Storage](/azure/storage/common/storage-introduction) . Další informace najdete v [postupech pro úložiště Jenkinse](storage-java-jenkins-continuous-integration-solution.md).
 - Správa a konfigurace prostředků Azure pomocí [Azure CLI](/azure/jenkins/execute-cli-jenkins-pipeline).
 
 ## <a name="deploy-your-code-into-azure-services"></a>Nasazení vlastního kódu do služeb Azure

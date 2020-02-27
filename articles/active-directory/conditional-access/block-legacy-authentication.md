@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a65145fe9752a90e3328c308ce603c8626d8708
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7f7f6f31c4d2f67660fef507ce101b2d15897d51
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380868"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620854"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Postupy: blokování staršího ověřování ve službě Azure AD pomocí podmíněného přístupu   
 
@@ -48,13 +48,30 @@ Zásady podmíněného přístupu se vynutily po dokončení prvního faktoru ov
 
 V této části se dozvíte, jak nakonfigurovat zásady podmíněného přístupu pro blokování starších verzí ověřování. 
 
+### <a name="legacy-authentication-protocols"></a>Starší protokoly pro ověřování
+
+Následující možnosti jsou považovány za starší protokoly ověřování.
+
+- Ověřený protokol SMTP, pomocí kterého klient POP a IMAP odesílá e-mailové zprávy.
+- Automatická konfigurace – používá klienti Outlooku a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.
+- Exchange Online PowerShell – slouží k připojení k Exchangi Online pomocí vzdáleného prostředí PowerShell. Pokud zablokujete základní ověřování pro prostředí Exchange Online PowerShell, musíte k připojení použít modul prostředí Exchange Online PowerShell. Pokyny najdete v tématu [připojení k prostředí PowerShell pro Exchange Online pomocí služby Multi-Factor Authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+- Webové služby Exchange (EWS) – programovací rozhraní, které používá Outlook, Outlook pro Mac a aplikace třetích stran.
+- IMAP4 – používá e-mailové klienty IMAP.
+- Rozhraní MAPI přes protokol HTTP (MAPI/HTTP) – používá Outlook 2010 a novější.
+- Adresář v režimu offline (OAB) – kopii kolekcí seznamu adres, které jsou staženy a používány aplikací Outlook.
+- Outlook odkudkoli (RPC over HTTP) – používá Outlook 2016 a starší.
+- Služba Outlook – používaná aplikací pro poštu a kalendář pro Windows 10
+- POP3 – používá e-mailové klienty POP.
+- Webové služby vytváření sestav – slouží k načtení dat sestavy v Exchangi Online.
+- Ostatní klienti – jiné protokoly identifikované jako s využitím starší verze ověřování.
+
 ### <a name="identify-legacy-authentication-use"></a>Identifikovat použití starší verze ověřování
 
 Než budete moct v adresáři zablokovat starší verze ověřování, musíte nejdřív pochopit, jestli mají vaši uživatelé aplikace, které používají starší verze ověřování a jak ovlivňují celkový adresář. Protokoly přihlášení k Azure AD se dají použít k pochopení, jestli používáte starší verze ověřování.
 
 1. Přejděte do **Azure Portal** > **Azure Active Directory** > **přihlášení**.
 1. Pokud není zobrazený, klikněte na **sloupce** aplikace > **klientská aplikace**a přidejte sloupec klientská aplikace.
-1. **Přidejte filtry** > **klientské aplikace** > vyberte všechny možnosti pro **ostatní klienty** a klikněte na **použít**.
+1. **Přidejte filtry** > **klientské aplikace** > vyberte všechny starší protokoly pro ověřování a klikněte na **použít**.
 
 Filtrování zobrazí jenom ty pokusy o přihlášení, které udělaly starší protokoly ověřování. Kliknutím na každý jednotlivý pokus o přihlášení zobrazíte další podrobnosti. V poli **klientská aplikace** na kartě **základní informace** se určí, který starší verze ověřovacího protokolu se použil.
 

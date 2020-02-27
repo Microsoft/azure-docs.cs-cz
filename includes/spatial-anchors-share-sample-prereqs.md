@@ -4,14 +4,14 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 0e81a9b6a91d2a9ed1af922dbbc53720022ff598
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 574122d3683f3de483950e2d098e890ab33dcb25
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657757"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77615485"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
@@ -23,11 +23,11 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 * [Sada .NET Core 2,2 SDK](https://dotnet.microsoft.com/download).
 * Jedno nebo více zařízení (iOS nebo Android), na které se má aplikace nasadit a spustit
   * Pokud používáte Android, budete potřebovat:
-    * <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3,3</a> nebo novější, <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1</a> nebo novější a <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a> nainstalované na počítači s Windows.
+    * <a href="https://developer.android.com/studio/" target="_blank">Android Studio 3,3</a> nebo novější, <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1 nebo 2019,2</a>a <a href="https://git-scm.com/download/win" target="_blank">Git pro Windows</a> nainstalované na počítači s Windows.
     * Zařízení s Androidem podporující <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">vývojáře</a> a <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore</a> .
   * Pokud používáte iOS, musíte mít:
-    * Počítač s macOS, na kterém jsou nainstalované <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a> nebo novější, <a href="https://cocoapods.org" target="_blank">CocoaPods</a>a <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1</a> nebo novější.
+    * Počítač s macOS, na kterém jsou nainstalované <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a> nebo novější, <a href="https://cocoapods.org" target="_blank">CocoaPods</a>a <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019,1 nebo 2019,2</a> .
     * Zařízení iOS s podporou vývojářů, které je <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">kompatibilní s ARKit</a> .
-    * Git se nainstaloval přes homebrew. Do jednoho řádku v terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`Potom spusťte `brew install git`příkaz.
+    * Git se nainstaloval přes homebrew. Do jednoho řádku v terminálu zadejte následující příkaz: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` potom spusťte `brew install git`.
 
 

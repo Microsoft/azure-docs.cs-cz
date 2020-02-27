@@ -7,15 +7,18 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 08/22/2019
-ms.openlocfilehash: 9f72edecc07c34a0f176e52f6b70644f9ceb16e0
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.date: 02/27/2020
+ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666699"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650554"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange AS2 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
+
+> [!IMPORTANT]
+> Původní konektor AS2 se už nepoužívá, proto použijte místo toho konektor **AS2 (v2)** . Tato verze poskytuje stejné možnosti jako původní verze, je nativní pro modul runtime Logic Apps a přináší významná vylepšení výkonu z hlediska propustnosti a velikosti zpráv. Nativní konektor v2 také nevyžaduje, abyste vytvořili připojení k účtu pro integraci. Místo toho, jak je popsáno v části požadavky, nezapomeňte propojit účet pro integraci do aplikace logiky, ve které plánujete konektor používat.
 
 Pokud chcete pracovat se AS2 zprávami v Azure Logic Apps, můžete použít konektor AS2, který poskytuje triggery a akce pro správu komunikace AS2. Chcete-li například vytvořit zabezpečení a spolehlivost při odesílání zpráv, můžete použít tyto akce:
 
@@ -46,10 +49,7 @@ Pokud chcete pracovat se AS2 zprávami v Azure Logic Apps, můžete použít kon
 
 Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do existující aplikace logiky.
 
-> [!IMPORTANT]
-> Původní konektor AS2 bude zastaralý, takže se místo toho použije konektor **AS2 (v2)** . Tato verze poskytuje stejné možnosti jako původní verze, je nativní pro modul runtime Logic Apps a přináší významná vylepšení výkonu z hlediska propustnosti a velikosti zpráv. Nativní konektor v2 také nevyžaduje, abyste vytvořili připojení k účtu pro integraci. Místo toho, jak je popsáno v části požadavky, nezapomeňte propojit účet pro integraci do aplikace logiky, ve které plánujete konektor používat.
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -63,9 +63,9 @@ Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do exis
 
 * Pokud používáte [Azure Key Vault](../key-vault/key-vault-overview.md) pro správu certifikátů, ověřte, že klíče trezoru umožňují operace **šifrování** a **dešifrování** . V opačném případě se akce kódování a dekódování nezdaří.
 
-  V Azure Portal přejdete do svého trezoru klíčů, zobrazíte **povolené operace**klíče trezoru a ověříte, že jsou vybrané operace **šifrování** a **dešifrování** .
+  V Azure Portal ve vašem trezoru klíčů vyhledejte klíč, zkontrolujte **povolené operace**klíče a ověřte, že jsou vybrané operace **šifrování** a **dešifrování** . Příklad:
 
-  ![Kontrolovat operace klíče trezoru](media/logic-apps-enterprise-integration-as2/vault-key-permitted-operations.png)
+  ![Kontrolovat operace klíče trezoru](media/logic-apps-enterprise-integration-as2/key-vault-permitted-operations.png)
 
 <a name="encode"></a>
 
@@ -92,6 +92,9 @@ Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do exis
 
    ![Vlastnosti kódování zprávy](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 
+> [!TIP]
+> Pokud při posílání podepsaných nebo šifrovaných zpráv dochází k potížím, zvažte možnost vyzkoušet si různé formáty SHA256 algoritmu. Specifikace AS2 neposkytuje žádné informace o formátech SHA256, takže každý zprostředkovatel používá vlastní implementaci nebo formát.
+
 <a name="decode"></a>
 
 ## <a name="decode-as2-messages"></a>Dekódovat zprávy AS2
@@ -116,8 +119,11 @@ Pokud se chcete pokusit nasadit plně funkční aplikaci logiky a ukázkový sc�
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Podrobnosti o technických podrobnostech, jako jsou triggery, akce a omezení, jak je popsáno v souboru OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce konektoru](/connectors/as2/).
+Další technické podrobnosti o této spojnici, jako jsou akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/as2/). 
+
+> [!NOTE]
+> Pro Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)tento konektor původní verze ISE s označením místo toho používá [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

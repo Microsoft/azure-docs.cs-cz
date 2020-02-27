@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: bdb00bfbadec68fa110f747858d264a2c34f8bd1
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 5ea9749c07aadc7037e753160e9b053992bebae2
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76120865"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619316"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace .NET Framework
 
@@ -31,19 +31,26 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
+- [.NET Framework 4,8](https://dotnet.microsoft.com/download)
 
 ## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
+6. Vyberte **správce funkcí** >  **+ Přidat** a přidejte příznak funkce s názvem `Beta`.
+
+    > [!div class="mx-imgBorder"]
+    > ![povolit příznak funkce s názvem beta](media/add-beta-feature-flag.png)
+
+    Pro nyní nechejte `label` Nedefinováno.
+
 ## <a name="create-a-net-console-app"></a>Vytvoření konzolové aplikace .NET
 
 1. Spusťte Visual Studio a vyberte **soubor** > **Nový** > **projekt**.
 
-1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)** . Klikněte na **Další**.
+1. V části **vytvořit nový projekt**, vyfiltrujte typ projektu **konzoly** a klikněte na **Konzolová aplikace (.NET Framework)** . Klikněte na **Další**.
 
-1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4.7.1** nebo vyšší. Klikněte na **Vytvořit**.
+1. V **konfiguraci nového projektu**zadejte název projektu. V části **rozhraní**vyberte **.NET Framework 4,8** nebo vyšší. Klikněte na možnost **Vytvořit**.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
@@ -67,13 +74,8 @@ Knihovny pro správu funkcí .NET rozšíří rozhraní s kompletní podporou p�
 1. Aktualizujte metodu `Main` pro připojení k konfiguraci aplikace, zadáním možnosti `UseFeatureFlags`, aby se načetly příznaky funkcí. Pokud je povolen příznak funkce `Beta`, zobrazí se zpráva.
 
     ```csharp
-        public static void Main(string[] args)
-        {
-            AsyncMain().Wait();
-        }
-
-        private static async Task AsyncMain()
-        {
+        public static async Task Main(string[] args)
+        {         
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .AddAzureAppConfiguration(options =>
                 {

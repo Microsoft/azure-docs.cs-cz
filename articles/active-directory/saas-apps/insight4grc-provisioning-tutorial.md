@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ca9ed8781a13f9ab5e949e0e5f019a851dc75f4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057477"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621514"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Kurz: Konfigurace Insight4GRC pro Automatické zřizování uživatelů
 
@@ -55,7 +55,7 @@ Před konfigurací Insight4GRC pro Automatické zřizování uživatelů pomocí
 1. Pokud chcete získat nosný token, musí koncový zákazník kontaktovat [tým podpory](mailto:support.ss@rsmuk.com).
 2. Pokud chcete získat adresu URL koncového bodu SCIM, budete muset mít připravený název domény Insight4GRC, protože se bude používat k vytvoření adresy URL koncového bodu SCIM. Název domény Insight4GRC můžete načíst jako součást počátečního nákupu softwaru pomocí Insight4GRC.
 
-## <a name="step-3-add-insight4grc-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání Insight4GRC z Galerie aplikací Azure AD
+## <a name="step-3-add-insight4grc-from-the-azure-ad-application-gallery"></a>Krok 3: Přidání Insight4GRC z Galerie aplikací Azure AD
 
 Přidejte Insight4GRC z Galerie aplikací Azure AD a začněte spravovat zřizování pro Insight4GRC. Pokud jste dříve nastavili Insight4GRC pro jednotné přihlašování, můžete použít stejnou aplikaci. Doporučuje se ale při počátečním testování integrace vytvořit samostatnou aplikaci. Další informace o přidání aplikace z Galerie [najdete tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
@@ -74,7 +74,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-insight4grc-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Insight4GRC ve službě Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
@@ -90,7 +90,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
     ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte svoje přihlašovací údaje správce Insight4GRC a uživatelské jméno. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Insight4GRC. Pokud se připojení nepovede, ujistěte se, že má váš účet Insight4GRC oprávnění správce, a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte adresu URL koncového bodu SCIM v **adrese URL klienta**. Adresa URL enpoint by měla být ve formátu `https://<Insight4GRC Domain Name>.insight4grc.com/public/api/scim/v2 `, kde **Insight4GRC název domény** je hodnota získaná v předchozích krocích. Zadejte hodnotu tokenu nosiče, která byla dříve načtena v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Insight4GRC. Pokud se připojení nepovede, ujistěte se, že má váš účet Insight4GRC oprávnění správce, a zkuste to znovu.
 
     ![zřizování](./media/insight4grc-provisioning-tutorial/provisioning.png)
 
@@ -106,14 +106,14 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
    |Atribut|Typ|
    |---|---|
-   |userName|Řetězec|
-   |externalId|Řetězec|
+   |userName|String|
+   |externalId|String|
    |aktivní|Logická hodnota|
-   |Název|Řetězec|
-   |name.givenName|Řetězec|
-   |name.familyName|Řetězec|
-   |e-mailů [typ eq "pracovní"] .value|Řetězec|
-   |phoneNumbers [typ eq "pracovní"] .value|Řetězec|
+   |Název|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |e-mailů [typ eq "pracovní"] .value|String|
+   |phoneNumbers [typ eq "pracovní"] .value|String|
 
 10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Insight4GRC**.
 
@@ -121,9 +121,9 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
       |Atribut|Typ|
       |---|---|
-      |displayName|Řetězec|
-      |externalId|Řetězec|
-      |členové|Odkaz|
+      |displayName|String|
+      |externalId|String|
+      |členy|Referenční informace|
 
 10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -148,7 +148,7 @@ Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto 
 * Zkontrolujte indikátor [průběhu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) a zobrazte stav cyklu zřizování a způsob, jakým se má dokončit.
 * Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md).
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)

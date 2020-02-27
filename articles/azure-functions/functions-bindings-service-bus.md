@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: b505a90057a213d7f64d4d168a6a70da0ff03c2f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 44e4114b328701d5de363e91f5562f1daad351c6
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485297"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621077"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -30,11 +30,11 @@ Práce s triggerem a vazbami vyžaduje, abyste odkazovali na příslušný balí
 
 | Jazyk                                        | Přidat do...                                   | Poznámky 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | Instalace [Balíček NuGet]verze 3. x | |
+| C#                                              | Instalace [Balíček NuGet]verze 4. x | |
 | C#Skript, Java, JavaScript, Python, PowerShell | Registrace [Sada rozšíření]          | [Rozšíření nástrojů Azure] se doporučuje používat s Visual Studio Code. |
 | C#Skript (online – pouze v Azure Portal)         | Přidání vazby                            | Pokud chcete aktualizovat existující rozšíření vazby bez nutnosti opětovného publikování aplikace Function App, přečtěte si téma [aktualizace rozšíření]. |
 
-[Balíček NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus
+[Balíček NuGet]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus/
 [core tools]: ./functions-run-local.md
 [Sada rozšíření]: ./functions-bindings-register.md#extension-bundles
 [Aktualizace rozšíření]: ./install-update-binding-extensions-manual.md

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 01/30/2020
-ms.openlocfilehash: de9ed700363bd6578ac49f0add0c48dc33356692
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982585"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77623619"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -80,7 +80,7 @@ Pro celý kanál můžete nastavit **výchozí výpočetní cíl** , který vše
 
 1. Zadejte název výpočetního prostředku.
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
     > [!NOTE]
     > Vytvoření výpočetního prostředku trvá přibližně pět minut. Po vytvoření prostředku ho můžete znovu použít a tuto dobu čekání přeskočit pro budoucí spuštění.
@@ -260,7 +260,7 @@ Pomocí modulu **vyhodnocení modelu** můžete vyhodnotit, jak dobře model vyh
 
 ## <a name="run-the-pipeline"></a>Spuštění kanálu
 
-Teď, když je váš kanál všemi nastaveními, můžete odeslat spuštění kanálu.
+Teď, když je váš kanál všechna nastavení, můžete odeslat spuštění kanálu, abyste mohli naučit svůj model strojového učení. Běh kanálu můžete odeslat kdykoli při vytváření kanálů v návrháři. To můžete provést, chcete-li zkontrolovat práci podle svých požadavků a ověřit své funkce kanálu podle očekávání.
 
 1. V horní části plátna vyberte **Spustit**.
 

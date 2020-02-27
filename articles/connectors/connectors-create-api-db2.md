@@ -7,12 +7,12 @@ ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 0f6e32056783a816d847db191de4fcdae2616ab7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32b482607827ee4420e39b1936586d64f9ea3139
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446181"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651377"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Přístup k prostředkům IBM DB2 a jejich správa pomocí Azure Logic Apps
 
@@ -47,7 +47,7 @@ Konektor IBM DB2 podporuje tyto databázové operace, které se mapují na odpov
 | Odebrání jednoho řádku pomocí odstranění | Odstranit řádek |
 |||
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -359,7 +359,10 @@ Rozbalte akci **Odstranit řádek** .
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Podrobnosti o technických podrobnostech, jako jsou triggery, akce a omezení, jak je popsáno v souboru OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce konektoru](/connectors/db2/).
+Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/db2/).
+
+> [!NOTE]
+> V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
 ## <a name="next-steps"></a>Další kroky
 

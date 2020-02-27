@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb2e98ad9bbd35f3ec507e36e958c5ce6ad2198
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dc87b434664ba12cefeb233972e749f631d8a2b4
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185886"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620691"
 ---
 # <a name="troubleshoot-using-the-what-if-tool-in-conditional-access"></a>Řešení potíží pomocí nástroje What If v podmíněném přístupu
 
@@ -98,7 +98,7 @@ Kliknutím na **What If**spustíte vyhodnocení. Výsledek vyhodnocení obsahuje
 
 Pokud pro vybrané cloudové aplikace existují [klasické zásady](policy-migration.md#classic-policies) , zobrazí se vám indikátor. Kliknutím na indikátor budete přesměrováni na stránku klasických zásad. Na stránce klasické zásady můžete migrovat klasické zásady, nebo ji jenom zakázat. Na výsledek vyhodnocení se můžete vrátit zavřením této stránky.
 
-V seznamu zásad, které se vztahují k vybranému uživateli, můžete také vyhledat seznam [ovládacích prvků](controls.md#grant-controls) a řízení [relace](controls.md#session-controls) , které musí váš uživatel splňovat.
+V seznamu zásad, které se vztahují k vybranému uživateli, můžete také vyhledat seznam [ovládacích prvků](concept-conditional-access-grant.md) a [řízení relace](concept-conditional-access-session.md) , které musí váš uživatel splňovat.
 
 V seznamu zásad, které se nevztahují na uživatele, můžete najít také důvody, proč se tyto zásady nevztahují. Pro každou uvedenou zásadu představuje důvod první podmínku, která nebyla splněna. Možný důvod, proč zásada, která není použita, je zakázaná zásada, protože se ještě nevyhodnotí.   
 

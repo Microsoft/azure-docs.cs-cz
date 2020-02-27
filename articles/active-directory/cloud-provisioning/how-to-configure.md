@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/05/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 853950cf441007eac0170f32f28f2d9c16a71292
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c086227d23901cb7904d8cc0a768e9f4b5ad43db
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549427"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620978"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-new-agent-configuration"></a>Konfigurace nového agenta Azure AD Connect zřízení cloudu
+# <a name="create-a-new-configuration-for-azure-ad-connect-cloud-based-provisioning"></a>Vytvoření nové konfigurace pro Azure AD Connect cloudové zřizování
 
 Po nainstalování agenta se budete muset přihlásit do Azure Portal a nakonfigurovat Azure Active Directory (Azure AD) Connect Cloud Provisioning. Chcete-li povolit agenta, postupujte podle těchto kroků.
 
@@ -56,7 +56,8 @@ Můžete určit, že má agent synchronizovat konkrétní uživatele a skupiny p
 
     ![Vybraná možnost skupin zabezpečení](media/how-to-configure/scope3.png)
 
-1.  Můžete také změnit obor tak, aby zahrnoval pouze konkrétní organizační jednotky. Vyberte **Hotovo** a **Uložit**.
+1.  Můžete také změnit obor tak, aby zahrnoval pouze konkrétní organizační jednotky. Vyberte **Hotovo** a **Uložit**.  
+2.  Po změně oboru byste měli [restartovat zřizování](#restart-provisioning) a zahájit okamžitou synchronizaci změn.
 
     ![Možnost vybraných organizačních jednotek](media/how-to-configure/scope4.png)
 
