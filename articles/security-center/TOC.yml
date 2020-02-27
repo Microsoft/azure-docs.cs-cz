@@ -49,7 +49,7 @@
           href: azure-container-registry-integration.md
         - name: Integrace se službou Azure Kubernetes Service
           href: azure-kubernetes-service-integration.md
-    - name: Incidenty a upozornění detekce hrozeb
+    - name: Ochrana před hrozbami a výstrahy zabezpečení
       items:
         - name: Přehled výstrah zabezpečení
           href: security-center-alerts-overview.md
@@ -59,16 +59,8 @@
           href: security-center-managing-and-responding-alerts.md
         - name: Správa incidentů zabezpečení
           href: security-center-incident.md
-        - name: Detekce hrozeb pro virtuální počítače a servery
-          href: security-center-alerts-iaas.md
-        - name: Detekce hrozeb pro cloudové aplikace a kontejnery
-          href: security-center-alerts-compute.md
-        - name: Detekce hrozeb pro datové služby
-          href: security-center-alerts-data-services.md
-        - name: Detekce hrozeb pro vrstvy služeb Azure
-          href: security-center-alerts-service-layer.md
-        - name: Výstrahy detekce hrozeb z Azure WAF a Azure DDoS Protection
-          href: security-center-alerts-integration.md
+        - name: Ochrana před hrozbami v Azure Security Center
+          href: threat-protection.md
         - name: Korelace inteligentních výstrah v cloudu (incidenty)
           href: security-center-alerts-cloud-smart.md
         - name: Analýza hrozeb a mapa výstrah zabezpečení

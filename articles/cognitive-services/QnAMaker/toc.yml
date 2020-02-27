@@ -100,28 +100,20 @@
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
 - name: Návody
   items:
-    - name: Úprava znalostní báze
+    - name: Správa prostředků Azure
       items:
-        - name: Úprava znalostní báze
-          href: How-To/edit-knowledge-base.md
-        - name: Vytváření konverzací s více směry a následnými dotazy
-          href: How-To/multiturn-conversation.md
-          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
-        - name: Přidání konverzace
-          href: How-to/chit-chat-knowledge-base.md
-        - name: Přidání zabezpečeného sharepointového souboru
-          href: How-To/add-sharepoint-datasources.md
-          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+        - name: Správa prostředků
+          href: How-To/set-up-qnamaker-service-azure.md
+          displayName: 'azure, resource, key, upgrade, pricing, tier,'
+        - name: Získání analýzy
+          href: How-To/get-analytics-knowledge-base.md
+        - name: Vytvoření plánu kontinuity podnikových procesů
+          href: How-To/business-continuity-plan.md
     - name: Správa znalostní báze
       items:
         - name: Vytvoření a publikování znalostní báze
           href: Quickstarts/create-publish-knowledge-base.md
           displayName: 'create bot, bot, publish to bot, test, edit'
-        - name: Získání odpovědí pomocí metadat
-          href: How-To/metadata-generateanswer-usage.md
-          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
-        - name: Nastavení výchozí odpovědi
-          href: How-to/change-default-answer.md
         - name: Vytvoření robota s využitím QnA Makeru a LUIS
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Výběr jazyka
@@ -136,17 +128,27 @@
         - name: Využití aktivního učení k vylepšení znalostní báze
           href: How-to/improve-knowledge-base.md
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
-    - name: Správa služby
+        - name: Úprava znalostní báze
+          href: How-To/edit-knowledge-base.md
+        - name: Vytváření konverzací s více směry a následnými dotazy
+          href: How-To/multiturn-conversation.md
+          displayName: 'multi-turn dialogs, parent question, child question, filtering, metadata, state, context, prompt, follow-up, followup, flow, conversation, previous question'
+        - name: Přidání konverzace
+          href: How-to/chit-chat-knowledge-base.md
+        - name: Přidání zabezpečeného sharepointového souboru
+          href: How-To/add-sharepoint-datasources.md
+          displayName: 'Sharepoint, secure, AAD, azure directory, admin, permission, authorization, file, authentication'
+        - name: Znalostní báze dotazů
+          href: How-To/metadata-generateanswer-usage.md
+          displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+    - name: Použití s klientskou aplikací
       items:
-        - name: Správa prostředků
-          href: How-To/set-up-qnamaker-service-azure.md
-          displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: Získání analýzy
-          href: How-To/get-analytics-knowledge-base.md
-        - name: Volba kapacity
-          href: Tutorials/choosing-capacity-qnamaker-deployment.md
-        - name: Vytvoření plánu kontinuity podnikových procesů
-          href: How-To/business-continuity-plan.md
+        - name: Architektura robotů
+          href: Tutorials/create-qna-bot.md
+        - name: LUIS a QnA Maker
+          href: Tutorials/integrate-qnamaker-luis.md
+    - name: Analýzy a telemetrie
+      href: How-To/get-analytics-knowledge-base.md
 - name: Referenční informace
   items:
     - name: Jazyky
@@ -155,12 +157,20 @@
       href: limits.md
     - name: Řešení potíží
       href: troubleshooting.md
-    - name: Formáty souborů
+    - name: Konfigurace služeb
+      href: reference-app-service.md
+    - name: Formáty dat a obsahu
       items:
-        - name: Referenční informace k markdownu
-          href: reference-markdown-format.md
-        - name: Dávkové testování TSV
-          href: reference-tsv-format-batch-testing.md
+        - name: Pokyny k formátu obsahu
+          href: reference-document-format-guidelines.md
+        - name: Adresy URL
+          href: reference-document-type-url.md
+        - name: Pokyny pro import a export dat
+          href: reference-data-guidelines.md
+    - name: Formát zobrazení
+      href: reference-markdown-format.md
+    - name: Formát pro dávkové testování
+      href: reference-tsv-format-batch-testing.md
     - name: Reference k rozhraní REST API
       items:
         - name: Rozhraní API pro vytváření
@@ -169,7 +179,6 @@
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer'
         - name: Rozhraní Train API
           href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train'
-      href: 'https://go.microsoft.com/fwlink/?linkid=2092179'
     - name: ukázky
       items:
         - name: Pomocný robot QnA Maker
@@ -197,7 +206,7 @@
             - name: Referenční dokumentace
               href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
             - name: NPM
-              href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
+              href: 'https://www.npmjs.com/package/azure-cognitiveservices-qnamaker'
             - name: ukázky
               href: 'https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs'
         - name: Python

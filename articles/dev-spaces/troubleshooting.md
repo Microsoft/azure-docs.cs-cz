@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Naučte se řešit problémy a řešit běžné problémy při povolování a používání Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 0c6a712f1dfb4410f3eee0fbd0192c6147618f96
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
+ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539582"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77605251"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Řešení potíží s Azure Dev Spaces
 
@@ -24,7 +24,7 @@ Pokud chcete řešit problémy efektivněji, může vám pomoct vytvořit podrob
 
 Pro rozšíření sady Visual Studio nastavte proměnnou prostředí `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` na 1. Je potřeba restartovat Visual Studio pro proměnné prostředí se projeví. Po povolení se do adresáře `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` zapisují podrobné protokoly.
 
-V rozhraní příkazového řádku můžete výstupem více informací během provádění příkazu pomocí přepínače `--verbose`. Můžete také procházet podrobnější protokoly v `%TEMP%\Azure Dev Spaces`. V počítači Mac můžete dočasný adresář najít spuštěním `echo $TMPDIR` z okna terminálu. V počítači se systémem Linux je dočasný adresář obvykle `/tmp`.
+V rozhraní příkazového řádku můžete výstupem více informací během provádění příkazu pomocí přepínače `--verbose`. Můžete také procházet podrobnější protokoly v `%TEMP%\Azure Dev Spaces`. V počítači Mac můžete *dočasný* adresář najít spuštěním `echo $TMPDIR` z okna terminálu. V počítači se systémem Linux je *dočasný* adresář obvykle `/tmp`. Dále ověřte, že je v [konfiguračním souboru Azure CLI](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)povolené protokolování.
 
 Azure Dev Spaces také funguje nejlépe při ladění jedné instance nebo pod. `azds.yaml` soubor obsahuje nastavení *replicaCount*, které označuje počet lusků, které Kubernetes pro vaši službu spustí. Změníte-li *replicaCount* pro konfiguraci aplikace tak, aby spouštěla více lusků pro danou službu, ladicí program se připojí k prvnímu pod, pokud je uveden abecedně. Ladicí program se připojí k jinému pod při recyklování původní pod, což může vést k neočekávanému chování.
 
@@ -52,13 +52,13 @@ Opětovné vytvoření kontroleru můžete udělat v sadě Visual Studio nebo ro
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>Řadič se nepodařilo vytvořit kvůli délce názvu kontroleru.
 
-Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název řadiče v clusteru AKS nebo vytvoření kontroleru delší než 31 znaků, dojde k chybě. Například:
+Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název řadiče v clusteru AKS nebo vytvoření kontroleru delší než 31 znaků, dojde k chybě. Příklad:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-Chcete-li tento problém vyřešit, vytvořte kontrolér s alternativním názvem. Například:
+Chcete-li tento problém vyřešit, vytvořte kontrolér s alternativním názvem. Příklad:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -159,7 +159,7 @@ Předpokládejme například, že použijete příkaz Helm ke spuštění celé 
 
 Azure Dev Spaces lze nakonfigurovat tak, aby odkazovaly na konkrétní _souboru Dockerfile_ v projektu. Pokud se zobrazí Azure Dev Spaces nepoužívá _souboru Dockerfile_ , kterou očekáváte k sestavování kontejnerů, možná budete muset explicitně sdělit Azure dev Spaces které souboru Dockerfile se mají použít. 
 
-Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Například:
+Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Příklad:
 
 ```yaml
 ...
@@ -206,7 +206,7 @@ install:
 
 Tato chyba může zobrazit, když kódu služby se nepodaří spustit. Příčinou je často v uživatelském kódu. Pokud chcete získat další diagnostické informace, při spouštění služby povolte podrobnější protokolování.
 
-Z příkazového řádku použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output`. Například:
+Z příkazového řádku použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output`. Příklad:
 
 ```cmd
 azds up --verbose --output json
@@ -335,7 +335,7 @@ Pokud chcete tento problém vyřešit:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Chyba autorizace "Microsoft. DevSpaces/Register/Action"
 
-Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo *přispěvatele* k přidruženému předplatnému Azure, může se zobrazit chyba autorizace. Například:
+Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo *přispěvatele* k přidruženému předplatnému Azure, může se zobrazit chyba autorizace. Příklad:
 
 ```console
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
@@ -474,7 +474,7 @@ Pokud chcete povolit Azure Dev Spaces v clusteru AKS, pro který je omezený pro
 | cloudflare.docker.com | HTTPS:443 | Vyžádat si Linux Alpine a jiné Azure Dev Spaces image |
 | gcr.io | HTTP: 443 | Načtení imagí Helm/překladen|
 | storage.googleapis.com | HTTP: 443 | Načtení imagí Helm/překladen|
-| azds –<guid>.<location>. azds.io | HTTPS:443 | Pro komunikaci se službou Azure Dev Spaces back-end pro váš kontroler. Přesný plně kvalifikovaný název domény najdete v části "dataplaneFqdn" v% USERPROFILE%\.azds\settings.JSON|
+| azds –<guid>.<location>.azds.io | HTTPS:443 | Pro komunikaci se službou Azure Dev Spaces back-end pro váš kontroler. Přesný plně kvalifikovaný název domény najdete v části "dataplaneFqdn" v% USERPROFILE%\.azds\settings.JSON|
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Chyba "v předplatném se nepovedlo najít cluster \<\> \<subscriptionId\>"
 

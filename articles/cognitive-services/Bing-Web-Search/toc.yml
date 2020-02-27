@@ -7,7 +7,7 @@
       expanded: true
     - name: Porovnání rozhraní API pro vyhledávání Bingu
       href: ../Bing-Web-Search/bing-api-comparison.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Rozhraní REST API
       items:
@@ -27,19 +27,13 @@
           href: quickstarts/ruby.md
     - name: Sady SDK
       items:
-        - name: 'C#'
-          href: web-search-sdk-quickstart.md
-        - name: Java
-          href: web-sdk-java-quickstart.md
-        - name: Node.js
-          href: web-search-sdk-node-quickstart.md
-        - name: Python
-          href: web-sdk-python-quickstart.md
+        - name: Klientské knihovny Vyhledávání na webu Bingu
+          href: ./quickstarts/client-libraries.md
 - name: Kurzy
   items:
     - name: Sestavení jednostránkové webové aplikace
       href: tutorial-bing-web-search-single-page-app.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky REST
       href: 'https://github.com/Azure-Samples/cognitive-services-REST-api-samples'

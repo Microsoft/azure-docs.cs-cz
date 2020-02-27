@@ -78,6 +78,8 @@
       items:
         - name: Přehled
           href: custom-roles.md
+        - name: Portál
+          href: custom-roles-portal.md
         - name: PowerShell
           href: custom-roles-powershell.md
         - name: Azure CLI

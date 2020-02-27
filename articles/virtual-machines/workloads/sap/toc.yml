@@ -225,6 +225,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
             - name: SLES s několika SID Pacemakeru pro instanci A(SCS)
               href: high-availability-guide-suse-multi-sid.md
+            - name: RHEL s několika SID Pacemakeru pro instanci A(SCS)
+              href: high-availability-guide-rhel-multi-sid.md
     - name: Azure Site Recovery pro zotavení po havárii SAPu
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
     - name: Skupiny umístění bezkontaktní komunikace Azure pro optimální latenci sítě s aplikacemi SAP

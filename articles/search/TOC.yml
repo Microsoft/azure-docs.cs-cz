@@ -1,23 +1,23 @@
 - name: Dokumentace ke kognitivnímu hledání Azure
   href: index.yml
 - name: Přehled
-  expanded: true
   items:
     - name: Co je kognitivní hledání Azure?
       href: search-what-is-azure-search.md
     - name: Co je nového
       href: whats-new.md
 - name: Rychlé starty
+  expanded: true
   items:
-    - name: Vytvoření služby
-      href: search-create-service-portal.md
     - name: Portál
       items:
+        - name: Vytvoření služby
+          href: search-create-service-portal.md
         - name: Vytvoření indexu
           href: search-get-started-portal.md
         - name: Vytvoření aplikace
           href: search-create-app-portal.md
-        - name: Vytvoření sady kognitivních dovedností
+        - name: Vytvoření sady dovedností
           href: cognitive-search-quickstart-blob.md
         - name: Vytvoření úložiště znalostí
           href: knowledge-store-create-portal.md
@@ -99,61 +99,7 @@
       href: cognitive-search-incremental-indexing-conceptual.md
 - name: Návody
   items:
-    - name: Plánování
-      items:
-        - name: Volba úrovně
-          href: search-sku-tier.md
-        - name: Omezení služby
-          href: search-limits-quotas-capacity.md
-        - name: Úprava kapacity
-          href: search-capacity-planning.md
-        - name: Škálování pro zajištění výkonu
-          href: search-performance-optimization.md
-        - name: Přesun služby napříč oblastmi
-          href: search-howto-move-across-regions.md
-        - name: Víceklientská architektura
-          href: search-modeling-multitenant-saas-applications.md
-    - name: Zabezpečení
-      items:
-        - name: Přehled zabezpečení
-          href: search-security-overview.md
-        - name: Vytvoření privátního koncového bodu
-          href: service-create-private-endpoint.md
-        - name: Správa klíčů služeb
-          href: search-security-api-keys.md
-        - name: Přístup správce na základě role
-          href: search-security-rbac.md
-        - name: Filtry zabezpečení
-          href: search-security-trimming-for-azure-search.md
-        - name: Filtry na identity AAD
-          href: search-security-trimming-for-azure-search-with-aad.md
-        - name: Správa šifrovacích klíčů
-          href: search-security-manage-encryption-keys.md
-    - name: Vývoj
-      items:
-        - name: Verze rozhraní API
-          href: search-api-versions.md
-        - name: Seznam funkcí Preview
-          href: search-api-preview.md
-        - name: Vývoj v .NET
-          href: search-howto-dotnet-sdk.md
-        - name: Upgrade sady SDK
-          items:
-            - name: .NET SDK 10.0
-              href: search-dotnet-sdk-migration-version-10.md
-            - name: .NET SDK 9.0
-              href: search-dotnet-sdk-migration-version-9.md
-            - name: .NET SDK 5.0
-              href: search-dotnet-sdk-migration-version-5.md
-            - name: .NET SDK 3.0
-              href: search-dotnet-sdk-migration.md
-            - name: .NET SDK 1.1
-              href: search-dotnet-sdk-migration-version-1.md
-            - name: .NET Management SDK
-              href: search-dotnet-mgmt-sdk-migration.md
-        - name: Upgrade rozhraní REST API
-          href: search-api-migration.md
-    - name: Vytvoření indexu
+    - name: Vytváření indexů a konstrukcí
       items:
         - name: Vytvoření základního indexu
           href: search-what-is-an-index.md
@@ -185,7 +131,7 @@
           href: search-howto-complex-data-types.md
         - name: Modelování relačních dat
           href: index-sql-relational-data.md
-    - name: Indexování (import)
+    - name: Ingestování libovolných dat
       items:
         - name: Přehled importu dat
           href: search-what-is-data-import.md
@@ -197,16 +143,16 @@
           href: search-howto-large-index.md
         - name: Zpracování souběžných aktualizací
           href: search-howto-concurrency.md
-    - name: Použití indexeru
+    - name: Ingestování dat Azure
       items:
         - name: Konfigurace indexerů
           href: search-indexer-overview.md
-        - name: Pole map
-          href: search-indexer-field-mappings.md
         - name: Monitorování indexerů
           href: search-howto-monitor-indexers.md
         - name: Plánování indexerů
           href: search-howto-schedule-indexers.md
+        - name: Pole map
+          href: search-indexer-field-mappings.md
         - name: Zdroje dat
           items:
             - name: Objekty blob Azure
@@ -223,19 +169,19 @@
                   href: search-howto-index-csv-blobs.md
                 - name: Indexování objektů blob JSON
                   href: search-howto-index-json-blobs.md
+            - name: Tabulky Azure
+              href: search-howto-indexing-azure-tables.md
             - name: Azure Cosmos DB
               href: search-howto-index-cosmosdb.md
             - name: Azure Data Lake Storage Gen2
               href: search-howto-index-azure-data-lake-storage.md
-            - name: Azure SQL Database
+            - name: Databáze SQL
               href: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-            - name: Azure Table Storage
-              href: search-howto-indexing-azure-tables.md
             - name: Spravované instance SQL
               href: search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md
             - name: Virtuální počítače s SQL Serverem
               href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
-    - name: Obohacení AI
+    - name: Ingestování s využitím AI
       items:
         - name: Připojení prostředku služeb Cognitive Services
           href: cognitive-search-attach-cognitive-services.md
@@ -275,7 +221,7 @@
               href: knowledge-store-connect-power-bi.md
             - name: Příklady projekcí
               href: knowledge-store-projections-examples.md
-    - name: Dotazování dokumentů
+    - name: Dotaz
       items:
         - name: Sestavení a typy dotazů
           href: search-query-overview.md
@@ -295,7 +241,7 @@
               href: query-lucene-syntax.md
             - name: moreLikeThis (Preview)
               href: search-more-like-this.md
-    - name: Použití filtrů
+    - name: Filtr
       items:
         - name: Přehled filtrů
           href: search-filters.md
@@ -309,24 +255,80 @@
           href: search-query-understand-collection-filters.md
         - name: Příklad omezujících vlastností na více úrovních
           href: search-example-adventureworks-multilevel-faceting.md
-    - name: Zpracování výsledků
+    - name: Výsledky
       items:
         - name: Funkce související se stránkou
           href: search-pagination-page-layout.md
         - name: Vyladění relevance (profily vyhodnocování)
           href: index-add-scoring-profiles.md
-    - name: Správa služby
+    - name: Plánování
+      items:
+        - name: Volba úrovně
+          href: search-sku-tier.md
+        - name: Omezení služby
+          href: search-limits-quotas-capacity.md
+        - name: Úprava kapacity
+          href: search-capacity-planning.md
+        - name: Škálování pro zajištění výkonu
+          href: search-performance-optimization.md
+        - name: Víceklientská architektura
+          href: search-modeling-multitenant-saas-applications.md
+    - name: Vývoj
+      items:
+        - name: Verze rozhraní API
+          href: search-api-versions.md
+        - name: Seznam funkcí Preview
+          href: search-api-preview.md
+        - name: Vývoj v .NET
+          href: search-howto-dotnet-sdk.md
+        - name: Upgrade sady SDK
+          items:
+            - name: .NET SDK 10.0
+              href: search-dotnet-sdk-migration-version-10.md
+            - name: .NET SDK 9.0
+              href: search-dotnet-sdk-migration-version-9.md
+            - name: .NET SDK 5.0
+              href: search-dotnet-sdk-migration-version-5.md
+            - name: .NET SDK 3.0
+              href: search-dotnet-sdk-migration.md
+            - name: .NET SDK 1.1
+              href: search-dotnet-sdk-migration-version-1.md
+            - name: .NET Management SDK
+              href: search-dotnet-mgmt-sdk-migration.md
+        - name: Upgrade rozhraní REST API
+          href: search-api-migration.md
+    - name: Zabezpečení
+      items:
+        - name: Přehled zabezpečení
+          href: search-security-overview.md
+        - name: Vytvoření privátního koncového bodu
+          href: service-create-private-endpoint.md
+        - name: Správa klíčů služeb
+          href: search-security-api-keys.md
+        - name: Přístup správce na základě role
+          href: search-security-rbac.md
+        - name: Filtry zabezpečení
+          href: search-security-trimming-for-azure-search.md
+        - name: Filtry na identity AAD
+          href: search-security-trimming-for-azure-search-with-aad.md
+        - name: Správa šifrovacích klíčů
+          href: search-security-manage-encryption-keys.md
+    - name: Spravovat
       items:
         - name: Portál
           href: search-manage.md
         - name: PowerShell
           href: search-manage-powershell.md
-    - name: Monitorování a protokolování
+        - name: Přesun služby napříč oblastmi
+          href: search-howto-move-across-regions.md
+    - name: Monitorování
       items:
         - name: Základy
           href: search-monitor-usage.md
         - name: Protokolování diagnostiky
           href: search-monitor-logs.md
+        - name: Vizualizace diagnostických protokolů
+          href: search-monitor-logs-powerbi.md
         - name: Monitorování aktivity dotazů
           href: search-monitor-queries.md
         - name: Prohledání analýzy provozu

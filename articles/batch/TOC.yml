@@ -123,6 +123,8 @@
           href: large-number-tasks.md
         - name: Kontrola chyb úlohy a úkolů
           href: batch-job-task-error-checking.md
+        - name: Zjišťování a zpracování chyb služby Batch
+          href: batch-retry-after-errors.md
     - name: Vytváření souborů prostředků
       href: resource-files.md
     - name: Trvalý výstup úloh a funkcí
