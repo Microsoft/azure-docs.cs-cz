@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/02/2020
-ms.openlocfilehash: 13c064701a5ecae2090a99980249f5daaa8d5395
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/26/2020
+ms.openlocfilehash: 9c801f5c039996ac36c4f4479318d64cccdd204d
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198952"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649989"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jaké jsou součásti Apache Hadoop a verze, které jsou k dispozici v HDInsight?
 
@@ -62,6 +62,12 @@ Verze komponent ekosystému Hadoop přidružené k verzím clusterů HDInsight s
 Další poznámky k verzi pro nejnovější verze služby HDInsight najdete v tématu [poznámky k verzi HDInsight](hdinsight-release-notes.md) .
 
 ## <a name="supported-hdinsight-versions"></a>Podporované verze HDInsight
+
+### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>Podpora vypršení platnosti a vyřazení verzí HDInsight
+
+**Vypršení platnosti podpory** znamená, že Microsoft už nebude poskytovat podporu pro zadanou verzi HDInsight a už nebude k dispozici. prostřednictvím Azure Portal pro vytváření clusteru. Tyto verze ale pořád můžou být vytvořené pomocí Azure CLI nebo různých sad SDK. 
+
+**Vyřazení** verze HDInsight znamená, že existující clustery budou i nadále běžet tak, jak jsou. Nové clustery této verze ale nejdou vytvářet jakýmkoli způsobem (včetně CLI a sad SDK). Další funkce roviny ovládacího prvku (například ruční škálování a automatické škálování) nemusí po vyřazení verze fungovat ani po vyřazení verzí. Podpora není k dispozici pro vyřazené verze.
 
 V následujících tabulkách jsou uvedeny verze HDInsight. K dispozici jsou také data vypršení platnosti podpory a datum vyřazení, pokud jsou známy.
 

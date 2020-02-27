@@ -2,14 +2,14 @@
 title: Řešení potíží – přizpůsobení
 description: Tento článek obsahuje odpovědi na nejčastější dotazy k řešení potíží týkajících se přizpůsobení.
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: fec403da7f54098dbf197d14f3b16afd30bf5efc
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 432b33243bdb38cf359d4fea1a336500eb244464
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469540"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650516"
 ---
 # <a name="personalizer-troubleshooting"></a>Řešení potíží s přizpůsobením
 
@@ -32,6 +32,19 @@ Tento článek obsahuje odpovědi na nejčastější dotazy k řešení potíž�
 </details>
 
 ## <a name="learning-loop"></a>Výuková smyčka
+
+<details>
+<summary>
+<b>Výuková smyčka nedosahuje 100% systému bez přizpůsobeného přizpůsobování. Návody opravit?</b></summary>
+
+**Odpověď**: důvody, které nedosáhnete vašeho cíle, pomocí výukového cyklu:
+* S voláním rozhraní API řazení není dost funkcí odeslaných.
+* Chyby v odeslaných funkcích – například posílání neagregovaných dat funkcí, jako například časová razítka rozhraní API pro řazení
+* Chyby se zpracováním smyčky – například neodesílají data o nepracovních odměnuch do API pro události
+
+Chcete-li opravit, je nutné změnit zpracování buď změnou funkcí poslaných do smyčky, nebo ověřit, že je tato měna správného vyhodnocení kvality odpovědi pořadí.
+
+</details>
 
 <details>
 <summary>
@@ -91,7 +104,7 @@ Po zahájení nového období aktualizace se použije aktualizovaný model a doj
 <details>
 <summary><b>Návody Importovat zásady učení?</b></summary>
 
-**Odpověď**: Přečtěte si další informace o [konceptech zásad učení](concept-active-learning.md#understand-learning-policy-settings) a [o tom, jak používat](how-to-learning-policy.md) nové zásady učení. Pokud nechcete vybrat zásady učení, můžete použít [testování v režimu offline](how-to-offline-evaluation.md) k návrhu zásad učení na základě aktuálních událostí.
+**Odpověď**: Přečtěte si další informace o [konceptech zásad učení](concept-active-learning.md#understand-learning-policy-settings) a [o tom, jak používat](how-to-manage-model.md) nové zásady učení. Pokud nechcete vybrat zásady učení, můžete použít [testování v režimu offline](how-to-offline-evaluation.md) k návrhu zásad učení na základě aktuálních událostí.
 
 </details>
 

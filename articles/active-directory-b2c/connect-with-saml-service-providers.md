@@ -12,12 +12,12 @@ ms.date: 02/24/2020
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7ccc5fe314d49ea65aaa8750937170ab79a8c04f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 5ec83857ebabc92bf86f9f84a43746a0e561218a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581459"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647603"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -276,7 +276,6 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 1. Zadejte **název** aplikace. Například *SAMLApp1*.
 1. V části **podporované typy účtů**vyberte **účty jenom v tomto organizačním adresáři** .
 1. V části **identifikátor URI pro přesměrování**vyberte **Web**a potom zadejte `https://localhost`. Tuto hodnotu upravíte později v manifestu registrace aplikace.
-1. Vyberte **udělit souhlas správce oprávnění OpenID a offline_access**.
 1. Vyberte **Zaregistrovat**.
 
 ### <a name="42-update-the-app-manifest"></a>4,2 aktualizace manifestu aplikace
@@ -338,7 +337,7 @@ Posledním krokem je povolení Azure AD B2C IdP jako SAML v aplikaci předávaj�
 Obvykle jsou potřeba některé z těchto možností:
 
 * **Metadata**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Vystavitel**: `https://tenant-name.onmicrosoft.com/policy-name`
+* **Vystavitel**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name`
 * **Adresa URL pro přihlášení/koncový bod SAML/adresa URL SAML**: ověřte hodnotu v souboru metadat.
 * **Certifikát**: toto je *B2C_1A_SamlIdpCert*, ale bez privátního klíče. Získání veřejného klíče certifikátu:
 

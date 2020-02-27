@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 3a79db11ff05bcc9d18619c7f508a9864c17c3b8
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 5b2ee8b5bf19f16d7f7f04e9515fe591db7132f1
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012796"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647507"
 ---
 # <a name="azure-cosmos-db-as-a-key-value-store--cost-overview"></a>Azure Cosmos DB jako úložiště hodnot klíčů – přehled nákladů
 
@@ -24,9 +24,9 @@ Tento článek popisuje náklady na služby Azure Cosmos DB pro jednoduché záp
 
 Azure Cosmos DB výkon vychází z množství zřízené propustnosti vyjádřené v [jednotkách žádosti](request-units.md) (ru/s). Zřizování je druhé členitosti a je koupeno v RU/s ([Nezaměňovat se po hodinové fakturaci](https://azure.microsoft.com/pricing/details/cosmos-db/)). Ru by měla být považována za logickou abstrakci (měnu), která zjednodušuje zřizování požadované propustnosti pro aplikaci. Uživatelé nemusejí myslet na rozdíl mezi propustností čtení a zápisu. Model jedné měny ru vytvoří efektivitu sdílet zřízená kapacita mezi operací čtení a zápisu. Tento model zřízené kapacity umožňuje službě poskytovat **předvídatelné a konzistentní propustnost, zaručenou nízkou latenci a vysokou dostupnost**. A konečně, zatímco pro znázornění propustnosti se používá model RU, má každý zřízený RU také definovaný objem prostředků (například paměť, jádra/CPU a IOPS).
 
-Jako globálně distribuovaný databázový systém je Cosmos DB jedinou službou Azure, která poskytuje komplexní SLA, která pokrývá latenci, propustnost, konzistenci a vysokou dostupnost. Propustnost, kterou zřizujete, se použije u každé oblasti přidružené k vašemu účtu Cosmos. Pro čtení, Cosmos DB nabízí více správně definovaných [úrovně konzistence](consistency-levels.md) si můžete vybírat. 
+Jako globálně distribuovaný databázový systém je Cosmos DB jedinou službou Azure, která poskytuje komplexní SLA, která pokrývá latenci, propustnost, konzistenci a vysokou dostupnost. Propustnost, kterou zřizujete, se použije u každé oblasti přidružené k vašemu účtu Cosmos. Pro čtení Cosmos DB nabízí více jasně definovaných [úrovní konzistence](consistency-levels.md) , ze kterých si můžete vybrat. 
 
-Následující tabulka ukazuje počet ru potřebných k provedení operací čtení a zápisu na základě datové položky o velikosti 1 KB a 100 aktualizací KB.
+Následující tabulka ukazuje počet ru potřebných k provedení operací čtení a zápisu na základě datové položky o velikosti 1 KB a 100 aktualizací KB s výchozím automatickým indexováním vypnuto. 
 
 |Velikost položky|1 pro čtení|Zápis 1|
 |-------------|------|-------|

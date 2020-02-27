@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: b19c23c7adb8dce84530b8f3f8d994f4e32869cc
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b8b3dbf515aa3bcc9075a748b9d717cfa36b6ab0
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988936"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648917"
 ---
 # <a name="azure-maps-routing-coverage"></a>Pokrytí směrování Azure Maps
 
@@ -37,9 +37,9 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 <br>  
 
 
-## <a name="africa"></a>Afrika
+## <a name="africa"></a>Poskytl
 
-| Země/oblast                 | Plánování tras         | Směrování pomocí provozu | Směrování nákladní automobil |
+| Země nebo oblast                 | Směrování         | Směrování pomocí provozu | Směrování nákladní automobil |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Alžírsko                        |        ✓       |                       |             |
 | Angola                         |        ✓       |                       |             |
@@ -70,9 +70,9 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 | Rwanda                         |        ✓       |                       |             |
 | Senegal                        |        ✓       |                       |             |
 | Seychel                     |        ✓       |                       |             |
-| Jihoafrická republika                   |        ✓       ||         ✓            |             |
+| Jižní Afrika                   |        ✓       ||         ✓            |             |
 | Svazijsko                      |        ✓       |                       |             |
-| Tanzanie                       |        ✓       |                       |             |
+| Oblasti                       |        ✓       |                       |             |
 | Togo                           |        ✓       |                       |             |
 | Tunisko                        |        ✓       |                       |             |
 | Uganda                         |        ✓       |                       |             |
@@ -82,7 +82,7 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 
 ## <a name="americas"></a>Amerika
 
-| Země/oblast                 | Plánování tras         | Směrování pomocí provozu | Směrování nákladní automobil |
+| Země nebo oblast                 | Směrování         | Směrování pomocí provozu | Směrování nákladní automobil |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Argentina                      |        ✓       |         ✓            |     ✓       |
 | Antigua a Barbuda            |        ✓       |                      |             |
@@ -127,7 +127,7 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 
 ## <a name="asia-pacific"></a>Asie a Tichomoří
 
-| Země/oblast                 | Plánování tras         | Směrování pomocí provozu | Směrování nákladní automobil |
+| Země nebo oblast                 | Směrování         | Směrování pomocí provozu | Směrování nákladní automobil |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Austrálie                      |        ✓       |         ✓            |     ✓       |
 | A Vánoční ostrov              |        ✓       |                      |             |
@@ -139,7 +139,7 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 | Indie                          |        ✓       |         ✓            |             |
 | Indonésie                      |        ✓       |         ✓            |             |
 | Kazachstán                |        ✓       |                     |             |
-| Korea                          |        Ø       |                      |             |
+| Jižní Korea                          |        Ø       |                      |             |
 | Laos                           |        ✓       |                      |             |
 | Macao – zvláštní správní oblast                      |        ✓       |         ✓            |             |
 | Malajsie                       |        ✓       |         ✓            |             |
@@ -154,7 +154,7 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 
 ## <a name="europe"></a>Evropa
 
-| Země/oblast                 | Plánování tras         | Směrování pomocí provozu | Směrování nákladní automobil |
+| Země nebo oblast                 | Směrování         | Směrování pomocí provozu | Směrování nákladní automobil |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Albánie                        |        ✓       |                      |             |
 | Andorra                        |        ✓       |         ✓            |             |
@@ -206,7 +206,6 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 | Rumunsko                        |        ✓       |         ✓            |     ✓      | 
 | Ruská federace             |        ✓       |         ✓            |     ✓      | 
 | San Marino                     |        ✓       |         ✓            |             |
-| \+ Svatý Martin                  |        ✓       |                      |             |
 | Srbsko                         |        ✓       |                      |     ✓      | 
 | Slovensko                       |        ✓       |         ✓            |     ✓      | 
 | Slovinsko                       |        ✓       |         ✓            |     ✓      |
@@ -229,7 +228,7 @@ Následující tabulka poskytuje informace o pokrytí Azure Maps směrování.
 
 ## <a name="middle-east"></a>Střední východ
 
-| Země/oblast                 | Plánování tras         | Směrování pomocí provozu | Směrování nákladní automobil |
+| Země nebo oblast                 | Směrování         | Směrování pomocí provozu | Směrování nákladní automobil |
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Bahrajn                        |        ✓       |         ✓            |             |
 | Irák                           |        ✓       |                      |             |

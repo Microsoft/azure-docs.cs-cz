@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 2114d9ecff5ee49c63d737cf13278fe45f1f9f73
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: c16d7247b781fea04cfa2d53b8854cff14e039c7
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589958"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616453"
 ---
 # <a name="overview-of-azure-security-baselines"></a>Přehled standardních hodnot zabezpečení Azure
 
@@ -25,7 +25,7 @@ Každé doporučení zahrnuje následující informace:
 - **Azure ID**: ID srovnávacího testu zabezpečení Azure, které odpovídá doporučení.
 - **Doporučení**: následující doporučení vám poskytne podrobný popis ovládacího prvku, který je přímo po Azure ID.
 - **Doprovodné**materiály: odůvodnění doporučení a odkazy na pokyny k jeho implementaci. Pokud Azure Security Center doporučení podporuje, budou tyto informace také uvedené.
-- **Zodpovědnost**: kdo je zodpovědný za implementaci ovládacího prvku. Mezi možné scénáře patří odpovědnost zákazníka, odpovědnost Microsoftu nebo odpovědnost za sdílení.
+- **Zodpovědnost**: kdo je zodpovědný za implementaci ovládacího prvku. Mezi možné scénáře patří odpovědnost zákazníka, odpovědnost Microsoftu nebo sdílená odpovědnost.
 - **Azure Security Center Monitoring**: Určuje, zda je ovládací prvek monitorován pomocí Azure Security Center s odkazem na odkaz.
 
-Všechna doporučení, včetně doporučení, která nejsou platná pro tuto konkrétní službu, jsou součástí směrného plánu, který vám poskytne úplný přehled o tom, jak srovnávací test zabezpečení Azure souvisí s každou službou. V některých případech může být možné použít ovládací prvky, které se nedají použít, například ovládací prvky zaměřené na IaaS/COMPUTE (například ovládací prvky specifické pro správu konfigurace operačního systému) nemusejí být použitelné pro služby PaaS.
+Všechna doporučení, včetně doporučení, která nejsou platná pro tuto konkrétní službu, jsou součástí směrného plánu, který vám poskytne úplný přehled o tom, jak srovnávací test zabezpečení Azure souvisí s každou službou. V některých případech mohou být ovládací prvky, které se nedají použít k různým důvodům, například ovládací prvky zaměřené na IaaS/výpočetní výkon (například ovládací prvky specifické pro správu konfigurace operačního systému) nemusejí být použitelné pro služby PaaS.

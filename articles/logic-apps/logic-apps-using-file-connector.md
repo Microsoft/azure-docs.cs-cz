@@ -8,16 +8,16 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792782"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651402"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Připojení k místním systémům souborů pomocí Azure Logic Apps
 
-Pomocí konektoru systému souborů a Azure Logic Apps můžete vytvářet automatizované úlohy a pracovní postupy, které vytvářejí a spravují soubory v místní sdílené složce, například:  
+Pomocí Azure Logic Apps a konektoru systému souborů můžete vytvářet automatizované úlohy a pracovní postupy, které vytvářejí a spravují soubory v místní sdílené složce, například:
 
 - Vytváření, získávání, přidávání, aktualizace a odstraňování souborů.
 - Vypíše soubory ve složkách nebo kořenových složkách.
@@ -93,7 +93,10 @@ V tomto článku se dozvíte, jak se připojit k místnímu systému souborů, j
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce](/connectors/fileconnector/)konektoru.
+Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/fileconnector/).
+
+> [!NOTE]
+> V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
 ## <a name="next-steps"></a>Další kroky
 

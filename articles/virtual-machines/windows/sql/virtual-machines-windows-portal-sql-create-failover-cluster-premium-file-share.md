@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 57dc7bb98bf4c2f733be0f2c94e17481a429be6d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b2d49eeadf068cbaacaa5e147f38025c55f33ff4
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76906798"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651357"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání se službou Premium na virtuálních počítačích Azure
 
@@ -71,7 +71,7 @@ Pokud chcete porovnat BYOL s průběžnými platbami a licencováním pro SQL Se
 
 FILESTREAM není podporován pro cluster s podporou převzetí služeb při selhání se sdílenou složkou Premium. Pokud chcete použít FILESTREAM, nasaďte cluster pomocí [prostory úložiště s přímým přístupem](virtual-machines-windows-portal-sql-create-failover-cluster.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
@@ -145,15 +145,15 @@ V rámci těchto požadavků můžete začít vytvářet cluster s podporou pře
    1. Vyberte výchozí instanci.
    1. Odeberte všechny funkce ve **službě databázového stroje**. Neodstraňujte **sdílené funkce**. Uvidíte něco podobného jako na následujícím snímku obrazovky:
 
-        ![Výběr funkcí](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
+        ![Vybrat funkce](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
    1. Vyberte **Další**a pak vyberte **Odebrat**.
 
-1. <a name="ports"></a>Otevřete porty brány firewall.
+1. <span id="ports"></span> Otevřete porty brány firewall.  
 
    Na každém virtuálním počítači otevřete tyto porty na bráně Windows Firewall:
 
-   | Účel | Port TCP | Poznámky
+   | Účel | Port TCP | Poznámky:
    | ------ | ------ | ------
    | SQL Server | 1433 | Normální port pro výchozí instance SQL Server. Pokud jste použili image z Galerie, tento port se automaticky otevře.
    | Sonda stavu | 59999 | Libovolný otevřený port TCP. V pozdějším kroku nakonfigurujte [sondu stavu](#probe) nástroje pro vyrovnávání zatížení a cluster tak, aby používal tento port.
@@ -222,14 +222,14 @@ Pokud chcete cluster ověřit pomocí uživatelského rozhraní, proveďte násl
 
 1. V části **Správce serveru**vyberte **nástroje**a pak vyberte **Správce clusteru s podporou převzetí služeb při selhání**.
 1. V části **Správce clusteru s podporou převzetí služeb při selhání**vyberte **Akce**a pak vyberte **ověřit konfiguraci**.
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 1. V části **Vybrat servery nebo cluster**zadejte názvy obou virtuálních počítačů.
-1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. Vyberte **Next** (Další).
+1. V části **Možnosti testování**vyberte **Spustit pouze vybrané testy**. Vyberte **Další**.
 1. V části **Výběr testu**vyberte všechny testy s výjimkou **úložiště** a **prostory úložiště s přímým přístupem**, jak je znázorněno zde:
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/cluster-validation.png" alt-text="Výběr testů pro ověření clusteru":::
 
-1. Vyberte **Next** (Další).
+1. Vyberte **Další**.
 1. V části **potvrzení**vyberte **Další**.
 
 **Průvodce ověřením konfigurace** spustí ověřovací testy.
@@ -369,7 +369,7 @@ Vytvoření nástroje pro vyrovnávání zatížení:
 
 1. Vyberte **Přidat**.
 
-1. V okně **Přidat sondu stavu** <a name="probe"> </a>nastavte následující parametry sondy stavu.
+1. V okně **Přidat sondu stavu** <span id="probe"></span> nastavte následující parametry sondy stavu.
 
    - **Name (název**): název pro sondu stavu.
    - **Protokol**: TCP.
@@ -465,7 +465,7 @@ Na virtuálních počítačích Azure není služba MSDTC podporovaná na Window
 - Clusterový prostředek MSDTC nejde nakonfigurovat tak, aby používal sdílené úložiště. Pokud v systému Windows Server 2016 vytvoříte prostředek MSDTC, nezobrazí se žádné sdílené úložiště dostupné pro použití, a to i v případě, že je úložiště k dispozici. Tento problém byl opravený v systému Windows Server 2019.
 - Nástroj pro vyrovnávání zatížení úrovně Basic nezpracovává porty RPC.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [Technologie clusterů Windows](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server instancí clusteru s podporou převzetí služeb při selhání](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

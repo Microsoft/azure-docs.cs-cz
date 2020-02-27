@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/05/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6615f166ced4a93115f9cbaae1c6ce5b57cf57bc
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892987"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650278"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Co je rozhraní API Bingu pro vyhledávání na webu?
 
@@ -38,9 +38,9 @@ Vyhledávání na webu Bingu vám nedává přístup jenom k okamžitým odpově
 | [Lokalizace výsledků hledání podle země, oblasti nebo trhu](supported-countries-markets.md) | Rozhraní API Bingu pro vyhledávání na webu podporuje více než 30 zemí nebo oblastí. Pomocí této funkce můžete upřesnit výsledky hledání pro konkrétní zemi, oblast nebo trh. |
 | [Analýza metrik hledání s využitím Statistiky Bingu](bing-web-stats.md) | Statistika Bingu je placené předplatné, které poskytuje analýzu objemu volání, nejčastějších řetězců dotazu, geografické distribuce a dalších. |
 
-## <a name="workflow"></a>Pracovní postupy
+## <a name="workflow"></a>Pracovní postup
 
-Rozhraní API Bingu pro vyhledávání na webu se snadno volá z jakéhokoli programovacího jazyka, který dokáže provádět požadavky HTTP a parsovat odpovědi JSON. Služba je přístupná prostřednictvím rozhraní [REST API](quickstarts/python.md) nebo sad [SDK pro rozhraní API Bingu pro vyhledávání na webu](web-sdk-python-quickstart.md).
+Rozhraní API Bingu pro vyhledávání na webu se snadno volá z jakéhokoli programovacího jazyka, který dokáže provádět požadavky HTTP a parsovat odpovědi JSON. Služba je přístupná pomocí [REST API](quickstarts/python.md) nebo [klientských knihoven vyhledávání na webu Bingu](./quickstarts/client-libraries.md).
 
 1. [Vytvořte prostředek Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro rozhraní API pro vyhledávání Bingu. Pokud nemáte předplatné Azure, můžete si [vytvořit bezplatný účet](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).  
 2. Odešlete [požadavek na rozhraní API Bingu pro vyhledávání na webu](quickstarts/python.md).
@@ -48,7 +48,7 @@ Rozhraní API Bingu pro vyhledávání na webu se snadno volá z jakéhokoli pro
 
 ## <a name="next-steps"></a>Další kroky
 
-* Podle našich [rychlých startů pro Python](quickstarts/python.md) poprvé zavolejte rozhraní API Bingu pro vyhledávání na webu.  
+* Podle našich [rychlých startů pro Python](./quickstarts/client-libraries.md?pivots=programming-language-python) poprvé zavolejte rozhraní API Bingu pro vyhledávání na webu.  
 * [Vytvořte jednostránkovou webovou aplikaci](tutorial-bing-web-search-single-page-app.md).
 * Prostudujte si [referenční dokumentaci k rozhraní API Bingu pro vyhledávání na webu verze 7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference).  
 * Přečtěte si další informace o [požadavcích na zobrazení a použití](UseAndDisplayRequirements.md) rozhraní API Bingu pro vyhledávání na webu.  

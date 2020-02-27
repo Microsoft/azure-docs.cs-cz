@@ -4,25 +4,25 @@ ms.service: api-management
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: vlvinogr
-ms.openlocfilehash: dff01f8bc4a4cf58d1ed503b69a29dadc367fecb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b9e601c72395b4910850714460321a83a3113e69
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66248842"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649533"
 ---
-## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>Jak zareaguje APIM Proxy Server s využitím certifikátů SSL v TLS handshake
+## <a name="how-apim-proxy-server-responds-with-ssl-certificates-in-the-tls-handshake"></a>Jak proxy server APIM reaguje na certifikáty SSL v handshake TLS
 
-### <a name="clients-calling-with-sni-header"></a>Volání s hlavičkou SNI klientů
-Pokud zákazník má jeden nebo více vlastních domén, které jsou nakonfigurované pro proxy server, APIM moci odpovídat na požadavky HTTPS vlastní domény (např. contoso.com) a také výchozí doménu (například služby apim-service-name.azure-api.net). Na základě informací v hlavičce indikace názvu serveru (SNI), certifikát příslušný server odpoví APIM.
+### <a name="clients-calling-with-sni-header"></a>Klienti volající s hlavičkou SNI
+Pokud má zákazník minimálně jednu vlastní doménu nakonfigurovanou pro proxy, APIM může reagovat na požadavky HTTPS z vlastní domény (třeba contoso.com) a také jako výchozí doménu (například apim-service-name.azure-api.net). Na základě informací v hlavičce Indikace názvu serveru (SNI) APIM odpoví příslušným certifikátem serveru.
 
-### <a name="clients-calling-without-sni-header"></a>Klienti volání bez SNI záhlaví
-Pokud zákazník používá klient, který neodesílá [SNI](https://tools.ietf.org/html/rfc6066#section-3) záhlaví, vytvoří APIM odpovědi na základě následujícího postupu:
+### <a name="clients-calling-without-sni-header"></a>Klienti volající bez hlavičky SNI
+Pokud zákazník používá klienta, který neodesílá hlavičku [sni](https://tools.ietf.org/html/rfc6066#section-3) , vytvoří APIM odpovědi na základě následující logiky:
 
-* Pokud má služba pouze jednu pro proxy server v konfiguraci vlastní domény, výchozí certifikát není certifikát, který byl vydán pro vlastní domény proxy serveru.
-* Pokud má služba nakonfigurována více vlastních domén pro proxy server (podporováno pouze v **Premium** vrstva), zákazníka můžete určit, který certifikát by měl být výchozí certifikát. Chcete-li nastavit výchozí certifikát [defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) vlastnost musí být nastavena na hodnotu true ("defaultSslBinding": "PRAVDA"). Pokud zákazník sady nenajdete vlastnost, je výchozí certifikát certifikát vydaný pro výchozí proxy server domény hostovaných *.azure-api.net.
+* Pokud má služba jenom jednu vlastní doménu nakonfigurovanou pro proxy, výchozí certifikát je certifikát, který byl vydán pro vlastní doménu proxy serveru.
+* Pokud služba nakonfigurovala více vlastních domén pro proxy (podporované v úrovni **Developer** a **Premium** ), může zákazník určit, který certifikát by měl být výchozím certifikátem. Chcete-li nastavit výchozí certifikát, vlastnost [defaultSslBinding](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/createorupdate#hostnameconfiguration) by měla být nastavena na hodnotu true ("defaultSslBinding": "true"). Pokud zákazník tuto vlastnost nenastaví, výchozí certifikát je certifikát vydaný výchozí proxy doméně hostované v umístění *. azure-api.net.
 
-## <a name="support-for-putpost-request-with-large-payload"></a>Podpora pro požadavek PUT/POST s velké datové části
+## <a name="support-for-putpost-request-with-large-payload"></a>Podpora pro požadavek PUT/POST s velkou datovou částí
 
-Server Proxy služby APIM podporuje požadavek se velké datové části při použití certifikátů na straně klienta v protokolu HTTPS (například datové části > 40 KB). Abyste zabránili zmrazení požadavku na server, Zákazníci můžete nastavit vlastnost ["negotiateClientCertificate": "PRAVDA"](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/CreateOrUpdate#hostnameconfiguration) na název hostitele proxy serveru. Pokud je nastavena na hodnotu true, klient certifikát je požadován v době připojení SSL/TLS, před libovolná výměna požadavku HTTP. Protože toto nastavení se vztahuje na **název hostitele Proxy** úrovně, všechny požadavky na připojení požádat o certifikát klienta. Zákazníci můžou nakonfigurovat až 20 vlastní domény pro server Proxy (podporováno pouze v **Premium** vrstva), tak i pracovní vyhnout uvedeným potížím.
+APIM proxy server podporuje požadavek s velkou datovou částí při použití certifikátů na straně klienta v protokolu HTTPS (například datová část > 40 KB). Aby se zabránilo zamrznutí požadavku serveru, zákazníci můžou nastavit vlastnost ["negotiateClientCertificate": "true"](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/CreateOrUpdate#hostnameconfiguration) na názvu hostitele proxy serveru. Pokud je vlastnost nastavena na hodnotu true, klientský certifikát je požadován v době připojení SSL/TLS před všemi výměnami požadavků HTTP. Vzhledem k tomu, že nastavení platí na úrovni **hostitele proxy** , všechny požadavky na připojení žádají o certifikát klienta. Zákazníci můžou nakonfigurovat až 20 vlastních domén pro proxy (podporované jenom na úrovni **Premium** ) a toto omezení obejít.
 

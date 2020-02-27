@@ -2,21 +2,21 @@
 title: Předpoklady pro Azure Database Migration Service
 description: Seznamte se s přehledem požadavků na použití Azure Database Migration Service k provádění migrace databáze.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 7ba317da9524c322d47fe57a866d429ff8f7e952
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/25/2020
+ms.openlocfilehash: 89cb63630e3dbe953ed3f4fd8796d01ba0d36067
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748735"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651487"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Přehled požadavků pro použití Azure Database Migration Service
 
@@ -35,18 +35,25 @@ Mezi všechny podporované scénáře migrace Azure Database Migration Service s
 * Povolte protokol TCP/IP, který se ve výchozím nastavení zakáže během instalace SQL Serveru Express, a to podle pokynů v článku [Povolení nebo zakázání síťového protokolu serveru](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
 
     > [!IMPORTANT]
-    > Vytvoření instance Azure Database Migration Service vyžaduje přístup k nastavení Virtual networt, která se obvykle nenachází v rámci stejné skupiny prostředků. V důsledku toho uživatel vytvářející instanci DMS vyžaduje oprávnění na úrovni předplatného. Chcete-li vytvořit požadované role, které můžete přiřadit podle potřeby, spusťte následující skript:
+    > Vytvoření instance Azure Database Migration Service vyžaduje přístup k nastavení virtuální sítě, která se obvykle nenachází ve stejné skupině prostředků. V důsledku toho uživatel vytvářející instanci DMS vyžaduje oprávnění na úrovni předplatného. Chcete-li vytvořit požadované role, které můžete přiřadit podle potřeby, spusťte následující skript:
     >
     > ```
     >
     > $readerActions = `
-    > "Microsoft.DataMigration/services/*/read", `
-    > "Microsoft.Network/networkInterfaces/ipConfigurations/read"
+    > "Microsoft.Network/networkInterfaces/ipConfigurations/read", `
+    > "Microsoft.DataMigration/*/read", `
+    > "Microsoft.Resources/subscriptions/resourceGroups/read"
     >
     > $writerActions = `
     > "Microsoft.DataMigration/services/*/write", `
     > "Microsoft.DataMigration/services/*/delete", `
-    > "Microsoft.DataMigration/services/*/action"
+    > "Microsoft.DataMigration/services/*/action", `
+    > "Microsoft.Network/virtualNetworks/subnets/join/action", `
+    > "Microsoft.Network/virtualNetworks/write", `
+    > "Microsoft.Network/virtualNetworks/read", `
+    > "Microsoft.Resources/deployments/validate/action", `
+    > "Microsoft.Resources/deployments/*/read", `
+    > "Microsoft.Resources/deployments/*/write"
     >
     > $writerActions += $readerActions
     >
@@ -106,7 +113,7 @@ Kromě Azure Database Migration Service nezbytných součástí, které jsou spo
 
 Při použití Azure Database Migration Service k provádění SQL Server k Azure SQL Database migrace, kromě požadavků, které jsou společné pro všechny scénáře migrace, nezapomeňte vyřešit následující další požadavky:
 
-* Vytvořte instanci instance Azure SQL Database, kterou provedete podle podrobných pokynů v článku C vytvoření[databáze SQL Azure v Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
+* Vytvořte instanci služby Azure SQL Database podle podrobných pokynů v článku [Vytvoření databáze Azure SQL na webu Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
 * Stáhněte a nainstalujte nástroj [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) verze 3.3 nebo novější.
 * Otevřete bránu Windows Firewall a povolte službě Azure Database Migration Service přístup ke zdrojovému SQL Serveru, který ve výchozím nastavení probíhá přes port TCP 1433.
 * Pokud provozujete několik pojmenovaných instancí SQL Serveru s využitím dynamických portů, možná budete chtít povolit službu SQL Browser a přístup k portu UDP 1434 přes vaše brány firewall, aby se služba Azure Database Migration Service mohla připojit k pojmenované instanci na vašem zdrojovém serveru.
@@ -116,7 +123,7 @@ Při použití Azure Database Migration Service k provádění SQL Server k Azur
 
    > [!NOTE]
    > Úplný seznam požadavků nutných k použití Azure Database Migration Service k provedení migrace z SQL Server na Azure SQL Database najdete v kurzu [migrace SQL Server na Azure SQL Database](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
-   > 
+   >
 
 ## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>Předpoklady pro migraci SQL Server do spravované instance Azure SQL Database
 

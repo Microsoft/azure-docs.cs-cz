@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c8412a01f4a5056b352b1d985f36e5a51a25a649
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: b19dc7a85fafa1a4d875c84db9bbefabb3cd5a7d
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76159336"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77651678"
 ---
 Následující tabulka uvádí informace o kvótě, které jsou specifické pro Azure Service Bus zasílání zpráv. Informace o cenách a dalších kvótách pro Service Bus najdete v tématu [Service Bus ceny](https://azure.microsoft.com/pricing/details/service-bus/).
 
-| Název kvóty | Rozsah | Poznámky | Hodnota |
+| Název kvóty | Rozsah | Poznámky: | Hodnota |
 | --- | --- | --- | --- |
 | Maximální počet základních nebo standardních oborů názvů na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů Basic nebo Standard jsou Azure Portal odmítnuty. |100|
 | Maximální počet oborů názvů úrovně Premium na předplatné Azure |Obor názvů |Následné žádosti o další obory názvů úrovně Premium jsou na portálu odmítnuty. |100 |
@@ -33,10 +33,10 @@ Následující tabulka uvádí informace o kvótě, které jsou specifické pro 
 | Velikost zprávy pro entitu, téma nebo předplatného |Entita |Příchozí zprávy, které překračují tyto kvóty, se odmítnou a volající kód obdrží výjimku. |Maximální velikost zprávy: 256 KB pro [úroveň Standard](../articles/service-bus-messaging/service-bus-premium-messaging.md), 1 MB pro [úroveň Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md). <br /><br />Kvůli režii systému je toto omezení menší než tyto hodnoty.<br /><br />Maximální velikost hlavičky: 64 KB.<br /><br />Maximální počet vlastností záhlaví v kontejneru objektů a dat: **Byte/int MaxValue**.<br /><br />Maximální velikost vlastnosti v kontejneru objektů a dat: žádné explicitní omezení Omezeno maximální velikostí hlavičky. |
 | Velikost vlastnosti zprávy pro entitu, téma nebo předplatného |Entita | Výjimka **SerializationException** je vygenerována. |Maximální velikost vlastnosti zprávy pro každou vlastnost je 32 000. Kumulativní velikost všech vlastností nemůže být větší než 64 000. Toto omezení platí pro celou hlavičku [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage), která má vlastnosti uživatele i systémové vlastnosti, jako je například [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), [Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)a [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid). |
 | Počet předplatných na téma |Entita |Následné žádosti o vytvoření dalších předplatných pro téma jsou odmítnuty. V důsledku toho se zobrazí chybová zpráva, pokud je nakonfigurována prostřednictvím portálu. Pokud je volána z rozhraní API pro správu, je vyvolána výjimka volajícím kódem. |2 000 pro každé téma pro úroveň Standard. |
-| Počet filtrů SQL na téma |Entita |Následné žádosti o vytvoření dalších filtrů v tématu jsou odmítnuty a volající kód obdrží výjimku. |2 000 |
+| Počet filtrů SQL na téma |Entita |Následné žádosti o vytvoření dalších filtrů v tématu jsou odmítnuty a volající kód obdrží výjimku. |2,000 |
 | Počet filtrů korelace na téma |Entita |Následné žádosti o vytvoření dalších filtrů v tématu jsou odmítnuty a volající kód obdrží výjimku. |100 000 |
 | Velikost filtrů nebo akcí SQL |Obor názvů |Následné žádosti o vytvoření dalších filtrů jsou odmítnuty a volající kód obdrží výjimku. |Maximální délka řetězce podmínky filtru: 1 024 (1 KB).<br /><br />Maximální délka řetězce akce pravidla: 1 024 (1 KB).<br /><br />Maximální počet výrazů na akci pravidla: 32. |
-| Počet pravidel [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) na obor názvů, frontu nebo téma |Entita, obor názvů |Následné žádosti o vytvoření dalších pravidel jsou odmítnuty a volající kód obdrží výjimku. |Maximální počet pravidel: 12. <br /><br /> Pravidla konfigurovaná na Service Bus oboru názvů se vztahují na všechny fronty a témata v daném oboru názvů. |
+| Počet pravidel [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) na obor názvů, frontu nebo téma |Entita, obor názvů |Následné žádosti o vytvoření dalších pravidel jsou odmítnuty a volající kód obdrží výjimku. |Maximální počet pravidel na typ entity: 12. <br /><br /> Pravidla konfigurovaná na Service Bus oboru názvů se vztahují na všechny typy: fronty, témata. |
 | Počet zpráv na transakci | Transakce | Další příchozí zprávy jsou odmítnuty a výjimka "nelze odeslat více než 100 zpráv v rámci jedné transakce" je přijímána volajícím kódem. | 100 <br /><br /> Pro operace **Send ()** i **SendAsync ()** . |
 | Počet pravidel virtuální sítě a filtru IP | Obor názvů | &nbsp; | 128 | 
 

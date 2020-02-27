@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 02/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fe24e4a2b25b1ef3f0da2b1a5e1c0f29251df1
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77192230"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77620731"
 ---
 # <a name="conditional-access-conditions"></a>Podmíněný přístup: podmínky
 
@@ -40,7 +40,7 @@ Podmíněný přístup Azure AD podporuje tyto platformy zařízení:
 
 - Android
 - iOS
-- telefon se systémem Windows
+- Windows Phone
 - Windows
 - macOS
 
@@ -52,7 +52,9 @@ Při konfiguraci umístění jako podmínky se můžou organizace rozhodnout zah
 
 Při zahrnutí **libovolného umístění**Tato možnost zahrnuje jakoukoli IP adresu na internetu, která není právě nakonfigurovaná pojmenovaná umístění. Když vyberete **libovolné umístění**, správci se můžou rozhodnout vyloučit **všechna důvěryhodná** nebo **Vybraná umístění**.
 
-Některé organizace například mohou zvolit, že nevyžadují vícefaktorové ověřování, když jsou jejich uživatelé připojeni k síti v důvěryhodném umístění, jako je jejich fyzické ústředí. Správci můžou vytvořit zásadu, která zahrnuje libovolné umístění, ale nevylučuje vybraná umístění pro své sítě centrály.
+Některé organizace například mohou zvolit, že nevyžadují vícefaktorové ověřování, když jsou jejich uživatelé připojeni k síti v důvěryhodném umístění, jako je jejich fyzické ústředí. Správci mohou vytvořit zásadu, která zahrnuje libovolné umístění, ale vyloučí vybraná umístění pro své sítě centrály.
+
+Další informace o umístěních najdete v článku [co je to podmínka umístění v Azure Active Directory podmíněný přístup](location-condition.md).
 
 ## <a name="client-apps-preview"></a>Klientské aplikace (Preview)
 
@@ -64,9 +66,21 @@ Zásady podmíněného přístupu se standardně používají pro aplikace zalo�
    - Klienti moderních ověřování
       - Tato možnost zahrnuje aplikace jako desktopové a telefonní aplikace Office.
    - Klienti Exchange ActiveSync
+      - Ve výchozím nastavení to zahrnuje veškeré použití protokolu Exchange ActiveSync (EAS). Výběr možnosti **použít zásady jenom na podporované platformy** se omezí na podporované platformy, jako je iOS, Android a Windows.
       - Když zásada zablokuje použití protokolu Exchange ActiveSync, bude se ovlivněný uživatel zobrazovat v jednom e-mailu o karanténě. Tento e-mail s informacemi o tom, proč jsou blokované, a obsahuje pokyny k nápravě, pokud je to možné.
    - Ostatní klienti
-      - Tato možnost zahrnuje klienty používající základní a starší protokoly ověřování, včetně protokolů IMAP, MAPI, POP, SMTP a starších aplikací Office, které nepodporují moderní ověřování.
+      - Tato možnost zahrnuje klienty, kteří používají základní a starší ověřovací protokoly, které nepodporují moderní ověřování.
+         - Ověřený protokol SMTP, pomocí kterého klient POP a IMAP odesílá e-mailové zprávy.
+         - Automatická konfigurace – používá klienti Outlooku a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.
+         - Exchange Online PowerShell – slouží k připojení k Exchangi Online pomocí vzdáleného prostředí PowerShell. Pokud zablokujete základní ověřování pro prostředí Exchange Online PowerShell, musíte k připojení použít modul prostředí Exchange Online PowerShell. Pokyny najdete v tématu [připojení k prostředí PowerShell pro Exchange Online pomocí služby Multi-Factor Authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+         - Webové služby Exchange (EWS) – programovací rozhraní, které používá Outlook, Outlook pro Mac a aplikace třetích stran.
+         - IMAP4 – používá e-mailové klienty IMAP.
+         - Rozhraní MAPI přes protokol HTTP (MAPI/HTTP) – používá Outlook 2010 a novější.
+         - Adresář v režimu offline (OAB) – kopii kolekcí seznamu adres, které jsou staženy a používány aplikací Outlook.
+         - Outlook odkudkoli (RPC over HTTP) – používá Outlook 2016 a starší.
+         - Služba Outlook – používaná aplikací pro poštu a kalendář pro Windows 10
+         - POP3 – používá e-mailové klienty POP.
+         - Webové služby vytváření sestav – slouží k načtení dat sestavy v Exchangi Online.
 
 Tyto podmínky se běžně používají při vyžadování spravovaného zařízení, blokování starších verzí ověřování a blokování webových aplikací, ale umožňuje mobilní nebo desktopové aplikace.
 
@@ -74,14 +88,14 @@ Tyto podmínky se běžně používají při vyžadování spravovaného zaříz
 
 Toto nastavení funguje ve všech prohlížečích. Pokud ale chcete splnit zásadu zařízení, třeba požadavky na vyhovující zařízení, podporují se tyto operační systémy a prohlížeče:
 
-| Operační systém | Prohlížeče |
+| OS | Prohlížeče |
 | :-- | :-- |
 | Windows 10 | Microsoft Edge, Internet Explorer, Chrome |
 | Windows 8/8,1 | Internet Explorer, Chrome |
 | Windows 7 | Internet Explorer, Chrome |
 | iOS | Microsoft Edge, Intune Managed Browser, Safari |
 | Android | Microsoft Edge, Intune Managed Browser, Chrome |
-| telefon se systémem Windows | Microsoft Edge, Internet Explorer |
+| Windows Phone | Microsoft Edge, Internet Explorer |
 | Windows Server 2019 | Microsoft Edge, Internet Explorer, Chrome |
 | Windows Server 2016 | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer |
@@ -139,7 +153,7 @@ Toto nastavení má vliv na pokusy o přístup uskutečněné z následujících
 | Outlook 2016, Outlook 2013 (s moderním ověřováním), Skype pro firmy (s moderním ověřováním) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
 | Mobilní aplikace Outlook | Office 365 Exchange Online | Android, iOS |
 | Aplikace Power BI | služba Power BI | Windows 10, Windows 8.1, Windows 7, Android a iOS |
-| Skype pro firmy | Office 365 Exchange Online| Android, IOS |
+| Skype pro firmy | Office 365 Exchange Online| Android, iOS |
 | Aplikace Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8.1, Windows 7, iOS a Android |
 
 ### <a name="exchange-activesync-clients"></a>Klienti Exchange ActiveSync

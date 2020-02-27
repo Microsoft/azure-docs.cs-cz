@@ -1,123 +1,116 @@
 ---
-title: Vytvořit a přidružit zásady koncových bodů služeb – web Azure portal
+title: Vytvoření a přidružení zásad koncového bodu služby – Azure Portal
 titlesuffix: Azure Virtual Network
-description: V tomto článku zjistěte, jak nastavit a přidružená služba Zásady koncového bodu pomocí webu Azure portal.
+description: V tomto článku se dozvíte, jak nastavit a přiřadit zásady koncového bodu služby pomocí Azure Portal.
 services: virtual-network
 documentationcenter: virtual-network
-author: KumudD
+author: RDhillon
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 09/18/2018
-ms.author: kumud
-ms.openlocfilehash: b1d2d04e74828323166810d93c52a60671bf71e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 02/21/2020
+ms.author: rdhillon
+ms.openlocfilehash: d26fd2fec5f9d5ab8e9d82ff2c6bd83b11c72e99
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64710906"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651149"
 ---
-# <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Vytvoření, změna nebo odstranění zásady koncového bodu služby pomocí webu Azure portal
+# <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Vytvoření, změna nebo odstranění zásad koncového bodu služby pomocí Azure Portal
 
-Zásady koncového bodu služby umožňují filtrovat provoz virtuální sítě ke konkrétním prostředkům Azure prostřednictvím koncových bodů služby. Pokud nejste obeznámeni se zásadami koncových bodů služby, přečtěte si téma [přehled zásad koncového bodu služby](virtual-network-service-endpoint-policies-overview.md) Další informace.
+Zásady koncového bodu služby umožňují filtrovat provoz virtuální sítě na konkrétní prostředky Azure prostřednictvím koncových bodů služby. Pokud nejste obeznámeni se zásadami koncového bodu služby, přečtěte si další informace v tématu [Přehled zásad koncového bodu služby](virtual-network-service-endpoint-policies-overview.md) .
 
  V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření zásady koncového bodu služby
-> * Vytvoření definice zásad koncového bodu služby
-> * Vytvořte virtuální síť s podsítí
+> * Vytvoření zásad koncového bodu služby
+> * Vytvoření definice zásady koncového bodu služby
+> * Vytvoření virtuální sítě s podsítí
 > * Přidružení zásady koncového bodu služby k podsíti
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure"></a>Přihlásit se k Azure 
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
-## <a name="create-a-service-endpoint-policy"></a>Vytvoření zásady koncového bodu služby
+## <a name="create-a-service-endpoint-policy"></a>Vytvoření zásad koncového bodu služby
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
-2. V podokně hledání zadejte "zásady koncového bodu služby" a vyberte **služby koncového bodu (Preview)** a pak vyberte **vytvořit**.
-3. Zadejte nebo vyberte následující informace v **základy** 
+2. Do podokna hledání zadejte "zásady koncového bodu služby" a vyberte **zásady koncového bodu služby** a pak vyberte **vytvořit**.
 
-   - Předplatné: Vyberte své předplatné pro zásady.    
-   - Skupina prostředků: Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.     
+![Vytvoření zásad koncového bodu služby](./media/virtual-network-service-endpoint-policies-portal/create-sep-resource.png)
+
+3. V části **základy** zadejte nebo vyberte následující informace. 
+
+   - Předplatné: vyberte předplatné pro zásady
+   - Skupina prostředků: vyberte **vytvořit novou** a zadejte *myResourceGroup* .
    - Název: myEndpointPolicy
-   - Umístění: Středozápadní USA     
+   - Umístění: Střed USA
  
-   ![Vytvoření koncového bodu služby Základy zásad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-startpane.PNG)
-   
-4. Zadejte nebo vyberte následující informace v **definic zásad**
+   ![Vytvoření základních zásad pro zásady koncového bodu služby](./media/virtual-network-service-endpoint-policies-portal/create-sep-basics.png)
 
-   - Klikněte na tlačítko **+ přidat prostředek**, zadejte nebo vyberte následující informace, přijměte výchozí nastavení pro zbývající nastavení a klikněte na tlačítko **přidat**.  
-   - Obor: Vyberte **jeden účet** nebo **všechny účty v předplatném** nebo **všechny účty ve skupině prostředků**.    
-   - Předplatné: Vyberte své předplatné pro účet úložiště. Účty zásad a úložiště může být v různých předplatných.   
-   - Skupina prostředků: Vyberte skupinu prostředků. Povinné, pokud je obor nastaven jako "Všechny účty ve skupině prostředků" nebo "Jeden účet".  
-   - Zdroj: mystorageaccountportal    
-   - Klikněte na tlačítko **+ přidat prostředek** přidat další prostředky.
-   
-   ![Vytvoření definice zásad koncového bodu služby](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-policydefinitionspane.PNG)
-   
-5. Volitelné: Zadejte nebo vyberte následující informace v **značky**:
-   
-   - Klíč: Vyberte svůj klíč pro zásady. Příklad: Oddělení     
-   - Hodnota: Zadejte hodnotu pár klíče. Příklad: Finance
+4. V části **prostředky** vyberte **+ Přidat** a v podokně **Přidat prostředek** zadejte nebo vyberte následující informace.
 
-6. Vyberte **zkontrolovat a vytvořit**. Ověřit informace a klikněte na tlačítko **vytvořit**. Chcete-li provést další změny, klikněte na tlačítko **předchozí**. 
+   - Služba: k dispozici je jenom **Microsoft. Storage** se zásadami koncového bodu služby.
+   - Rozsah: vyberte jeden z **jednoho účtu**, **všechny účty v předplatném** a **všechny účty ve skupině prostředků** .
+   - Předplatné: vyberte předplatné pro účet úložiště. Zásady a účty úložiště můžou být v různých předplatných.
+   - Skupina prostředků: vyberte skupinu prostředků. Povinné, pokud je obor nastavený na hodnotu "všechny účty ve skupině prostředků" nebo "jeden účet".  
+   - Prostředek: Vyberte prostředek Azure Storage pod vybraným předplatným nebo skupinou prostředků.
+   - Kliknutím na tlačítko **Přidat** v dolní části dokončíte přidávání prostředků.
 
-   ![Vytvořit koncový bod služby konečné ověření zásad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-finalcreatereview.PNG)
+   ![Definice zásad koncového bodu služby – prostředek](./media/virtual-network-service-endpoint-policies-portal/create-sep-add-resource.png)
+
+   - Přidejte další prostředky tak, že podle potřeby zopakujete výše uvedené kroky.
+
+5. Volitelné: zadejte nebo vyberte následující informace ve **značkách**:
+   
+   - Klíč: Vyberte klíč pro zásadu. Ex: oddělení     
+   - Hodnota: zadejte dvojici hodnot pro klíč. Např. finance
+
+6. Vyberte **zkontrolovat + vytvořit**. Ověřte informace a klikněte na **vytvořit**. Chcete-li provést další úpravy, klikněte na tlačítko **Předchozí**. 
+
+   ![Vytvořit konečná ověření zásad koncového bodu služby](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   
- 
 ## <a name="view-endpoint-policies"></a>Zobrazit zásady koncového bodu 
 
-1. V *všechny služby* pole na portálu, začněte psát *zásad koncových bodů služeb*. Vyberte **služby koncového bodu Policies(Preview)** .
-2. V části **předplatná**, vyberte svoje předplatné a skupinu prostředků, jak je znázorněno na následujícím obrázku
+1. V poli *všechny služby* na portálu začněte zadávat *zásady koncového bodu služby*. Vyberte **zásady koncového bodu služby**.
+2. V části **předplatná**vyberte své předplatné a skupinu prostředků, jak je znázorněno na následujícím obrázku.
 
-   ![Zobrazit zásady](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-viewpolicies.PNG)
+   ![Zobrazit zásady](./media/virtual-network-service-endpoint-policies-portal/sep-view.png)
        
-3. Vyberte zásadu a klikněte na **definice zásad** zobrazit nebo přidat další definice zásad.
+3. Vyberte zásadu a kliknutím na **definice zásad** Zobrazte nebo přidejte další definice zásad.
 
-   ![Zobrazení definic zásad](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-viewpolicy-adddefinitions.PNG)
+   ![Zobrazit definice zásad](./media/virtual-network-service-endpoint-policies-portal/sep-policy-definition.png)
 
-4. Vyberte **přidružené podsítě** zobrazíte podsítí tato zásada je přidružená. K přidružení zásady k podsíti, klikněte na "Navigovat do virtuální sítě ve stejné oblasti".
+4. Vyberte **přidružené podsítě** pro zobrazení podsítí, ke kterým jsou zásady přidružené. Pokud ještě není žádná podsíť přidružená, postupujte podle pokynů v následujícím kroku.
 
-   ![Zobrazit přidružené podsítě](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-view-associatedsubnets.PNG)
+   ![Přidružené podsítě](./media/virtual-network-service-endpoint-policies-portal/sep-associated-subnets.png)
  
-## <a name="associate-a-policy-to-a-subnet"></a>Přidružte zásadu k podsíti
+5. Přidružení zásady k podsíti
 
 >[!WARNING] 
-> Ujistěte se, že všechny prostředky, které jsou přístupné z podsítě pro vybranou službu, se přidají do zásad před přiřazení zásad. Po přidružení zásady jenom přístup k prostředkům podle zásad bude možné pro koncový bod oblastí pro službu. 
+> Před přidružením zásad k dané podsíti zajistěte, aby se všechny prostředky, ke kterým se přistupovalo z podsítě, přidaly do definice zásady. Jakmile je zásada přidružená, budou se přes koncové body služby moct povolit jenom přístup k *uvedeným* prostředkům. 
+>
+> Také zajistěte, aby v podsíti neexistovaly žádné spravované služby Azure, které jsou přidruženy k zásadě koncového bodu služby.
 
-Než budete moct přidružit zásadu k podsíti, budete muset vytvořit virtuální síť a podsíť a pak můžete přiřadit zásady tak, aby podsíť:
+- Předtím, než budete moci přidružit zásadu k podsíti, je nutné vytvořit virtuální síť a podsíť. Nápovědu k tomu najdete v článku o [vytvoření Virtual Network](./quick-create-portal.md) .
 
-1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
-2. Vyberte **Sítě** a pak vyberte **Virtuální síť**.
-3. V části **Vytvořit virtuální síť** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
-   - Název: myVirtualNetwork      
-   - Adresní prostor: 10.0.0.0/16      
-   - Předplatné: Vyberte své předplatné. Zásada by měla být ve stejném předplatném jako virtuální síť     
-   - Skupina prostředků: Vyberte **použít existující** a pak vyberte *myResourceGroup*     
-   - Umístění: Středozápadní USA     
-   - Název podsítě: privátní     
-   - Rozsah adres: 10.0.0.0/24
-     
-4. Do pole **Hledat prostředky, služby a dokumenty** v horní části portálu začněte zadávat *myVirtualNetwork*. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork**, vyberte ji.
-5. V části **nastavení**vyberte **podsítě** a pak vyberte **privátní**.
-6. Jak je znázorněno na následujícím obrázku, vyberte **koncové body služby**vyberte **Microsoft.Storage**vyberte **zásad koncových bodů služeb**vyberte  **myEndpointPolicy**a pak vyberte **Uložit**:
+- Jakmile budete mít virtuální síť a podsíť nastavenou, musíte pro Azure Storage nakonfigurovat Virtual Network koncové body služby. V okně Virtual Network vyberte **koncové body služby**a v dalším podokně vyberte **Microsoft. Storage** a v části **podsítě** vyberte požadovanou virtuální síť nebo podsíť.
 
-   ![Přidružení zásady](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-associatepolicies.PNG)
+- V případě, že jste již vytvořili zásady koncového bodu služby před konfigurací koncového bodu služby pro tuto podsíť, můžete v rozevíracím seznamu vybrat zásadu koncového bodu služby, jak je uvedeno níže.
+
+    ![Přidružit podsíť při vytváření koncového bodu služby](./media/virtual-network-service-endpoint-policies-portal/vnet-config-service-endpoint-add-sep.png)
+
+- NEBO pokud přiřazujete zásady koncového bodu služby po konfiguraci koncových bodů služby, můžete se rozhodnout přidružit podsíť z okna zásad koncového bodu služby, a to tak, že přejdete k podoknu **přidružené podsítě** , jak je uvedeno níže.
+
+    ![Přidružit podsíť přes SEP](./media/virtual-network-service-endpoint-policies-portal/sep-edit-subnet-association.png)
 
 >[!WARNING] 
->Přístup k prostředkům služby v jiných oblastech bude možné z této podsítě podle skupiny zabezpečení sítě (Nsg). Pokud chcete omezit přístup jenom koncový bod oblastí, omezte na pouze provoz služeb v oblasti koncový bod skupin zabezpečení sítě. Další informace o tom, jak vytvořit skupiny Nsg s značky služeb v jedné oblasti, naleznete v tématu [značky služeb skupiny zabezpečení sítě Azure.](manage-network-security-group.md?toc=%2fcreate-a-security-rule%2f.json)
+>Přístup k prostředkům Azure Storage ve všech oblastech bude omezený na zásady koncového bodu služby z této podsítě.
 
-V následujícím příkladu se skupina zabezpečení sítě omezuje přístup k pouze prostředků služby Azure Storage v WestCentralUS a WestUS2, s pravidlem "Odepřít všechny" jako pravidla s nižší prioritou.
-
-![Odmítnout všechny skupiny zabezpečení sítě](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-nsg-rules.PNG)
-
-
-## <a name="next-steps"></a>Další postup
-V tomto kurzu jste vytvořili zásady koncového bodu služby a přidruženou k podsíti. Další informace o zásadách koncového bodu služby, najdete v článku [přehled zásad koncového bodu služby.](virtual-network-service-endpoint-policies-overview.md)
-
+## <a name="next-steps"></a>Další kroky
+V tomto kurzu jste vytvořili zásadu koncového bodu služby a přidružíte ji k podsíti. Další informace o zásadách koncového bodu služby najdete v tématu [Přehled zásad koncového bodu služby.](virtual-network-service-endpoint-policies-overview.md)

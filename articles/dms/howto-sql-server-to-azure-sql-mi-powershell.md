@@ -3,21 +3,21 @@ title: 'PowerShell: migrace SQL Server do spravované instance SQL'
 titleSuffix: Azure Database Migration Service
 description: Naučte se migrovat z místního SQL Server do Azure SQL Database spravované instance pomocí Azure PowerShell a Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 3b434bc8a495f47f7fb2de8429069283821cf397
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/20/2020
+ms.openlocfilehash: 9ea9f55681b93e79eec836f5808d2c6feaa6bb29
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746624"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650720"
 ---
 # <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>Migrace SQL Server do SQL Database spravované instance pomocí prostředí PowerShell & Azure Database Migration Service
 
@@ -27,7 +27,7 @@ V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
 >
 > * Vytvořte skupinu prostředků.
-> * Vytvořte instanci služby Azure Database Migration Service.
+> * Vytvořte instanci Azure Database Migration Service.
 > * Vytvořte projekt migrace v instanci Azure Database Migration Service.
 > * Spuštění migrace
 
@@ -35,7 +35,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Tento článek obsahuje podrobné informace o tom, jak provádět online i offline migrace.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení těchto kroků potřebujete:
 
@@ -415,7 +415,7 @@ Po dokončení migrace můžete instanci Azure Database Migration Service odstra
 Remove-AzDms -ResourceGroupName myResourceGroup -ServiceName MyDMS
 ```
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 Informace o dalších scénářích migrace (páry zdroj/cíl) najdete v [Průvodci migrací databáze](https://datamigration.microsoft.com/)společnosti Microsoft.
 

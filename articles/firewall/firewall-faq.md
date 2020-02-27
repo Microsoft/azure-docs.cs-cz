@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: b28d228dd950796265c5412be30e5d7777cf94c6
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 4792c0bce7d9119f5198490d62f49f000e1567d3
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526508"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77621967"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -50,11 +50,11 @@ Existují tři typy kolekcí pravidel:
 
 * *Pravidla aplikací*: Nakonfigurujte plně kvalifikované názvy domén (FQDN), ke kterým se dá dostat z podsítě.
 * *Síťová pravidla*: Nakonfigurujte pravidla, která obsahují zdrojové adresy, protokoly, cílové porty a cílové adresy.
-* *Pravidla překladu adres (NAT)* : NAKONFIGURUJTE pravidla DNAT tak, aby povolovala příchozí připojení.
+* *Pravidla překladu adres (NAT)* : NAKONFIGURUJTE pravidla DNAT, která povolí příchozí připojení k Internetu.
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Podporuje Azure Firewall filtrování příchozích přenosů?
 
-Azure Firewall podporuje filtrování příchozího a odchozího přenosu. Příchozí ochrana se obvykle používá pro protokoly jiné než HTTP/S. Například protokoly RDP, SSH a FTP. Pro nejlepší příchozí ochranu HTTP/S použijte Firewall webových aplikací, jako je třeba [Firewall webových aplikací Azure v azure Application Gateway](../web-application-firewall/ag/ag-overview.md).
+Azure Firewall podporuje filtrování příchozího a odchozího přenosu. Příchozí ochrana se obvykle používá pro protokoly jiné než HTTP/S. Například protokoly RDP, SSH a FTP. Pro nejlepší příchozí ochranu HTTP/S použijte Firewall webových aplikací, jako je třeba [Firewall webových aplikací Azure (WAF)](../web-application-firewall/overview.md).
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Které služby protokolování a analýzy podporuje Azure Firewall?
 
@@ -139,7 +139,7 @@ Pokud vaše konfigurace vyžaduje vynucené tunelování v místní síti a mů�
 
 Ano. Brána firewall, virtuální síť a veřejná IP adresa musí být ve stejné skupině prostředků.
 
-## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Když konfigurujete DNAT pro příchozí síťový provoz, musím taky nakonfigurovat odpovídající síťové pravidlo, které povolí tento provoz?
+## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>Když konfigurujete DNAT pro příchozí síťový provoz v Internetu, musím taky nakonfigurovat odpovídající síťové pravidlo, které povolí tento provoz?
 
 Ne. Pravidla překladu adres (NAT) implicitně přidávají odpovídající síťové pravidlo, které povoluje přeložený provoz. Toto chování můžete přepsat explicitním přidáním kolekce pravidel sítě s pravidly pro odepření, která odpovídají přeloženému provozu. Další informace najdete v článku, který pojednává o [logice zpracování pravidel služby Azure Firewall](rule-processing.md).
 

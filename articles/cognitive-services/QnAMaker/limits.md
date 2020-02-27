@@ -3,12 +3,12 @@ title: Omezení a hranice – QnA Maker
 description: Nástroj QnA Maker má meta omezení pro části znalostní báze knowledge base a služby. Je důležité udržovat znalostní báze v rámci tyto limity, aby bylo možné testovat a publikovat.
 ms.topic: article
 ms.date: 02/14/2020
-ms.openlocfilehash: 7fdf45a4a22f6d9ffe123f5998592739402be55f
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: ba53513f21cfc2a4f16fe17decdf0df41570201c
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252004"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650363"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Omezení nástroje QnA Maker znalostní báze knowledge base a hranice
 
@@ -55,7 +55,7 @@ Maximální počet přímých odkazů, které lze procházet pro extrakci QnAs z
 
 ## <a name="metadata-limits"></a>Omezení metadat
 
-Metadata se ukládají a porovnávají v malých malých písmenech.
+Metadata jsou uvedena jako textový klíč: dvojice hodnot, jako je například `product:windows 10`. Je uložen a porovnán v malých malých písmenech.
 
 ### <a name="by-azure-cognitive-search-pricing-tier"></a>Podle cenové úrovně Azure Kognitivní hledání
 
@@ -71,8 +71,8 @@ Délka a přijatelné znaky pro název a hodnotu metadat jsou uvedeny v následu
 
 |Položka|Povolené znaky|Porovnávání vzorů regulárního výrazu|Maximální počet znaků|
 |--|--|--|--|
-|Název|Poskytuje<br>alfanumerické znaky (písmena a číslice)<br>`_` (podtržítko)|`^[a-zA-Z0-9_]+$`|100|
-|Hodnota|Umožňuje vše kromě<br>`:` (dvojtečka)<br>`|` (vertikální svislá čára)|`^[^:|]+$`|500|
+|Název (klíč)|Poskytuje<br>alfanumerické znaky (písmena a číslice)<br>`_` (podtržítko)<br> Nesmí obsahovat mezery.|`^[a-zA-Z0-9_]+$`|100|
+|Hodnota|Umožňuje vše kromě<br>`:` (dvojtečka)<br>`|` (vertikální svislá čára)<br>Je povolena pouze jedna hodnota.|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>Omezení obsahu znalostní báze
@@ -103,4 +103,4 @@ Tyto hodnoty udávají omezení pro každou akci aktualizace. To znamená, že k
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se, kdy a jak změnit [cenové úrovně služby](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker).
+Naučte se, kdy a jak změnit [cenové úrovně služby](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku).

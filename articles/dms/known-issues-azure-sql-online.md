@@ -3,21 +3,21 @@ title: 'Známé problémy: Online migrace do SQL Database'
 titleSuffix: Azure Database Migration Service
 description: Přečtěte si o známých problémech nebo omezeních migrace s online migracemi k Azure SQL Database používání Azure Database Migration Service.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 07/27/2019
-ms.openlocfilehash: bf747b6deb4b3c25df74364143ac48c59eb48ae1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: e7efdb7244e2c7e4651a4507b538123f8d320c1e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437831"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650771"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database"></a>Známé problémy/omezení migrace pro online migrace Azure SQL Database
 
@@ -28,7 +28,7 @@ Známé problémy a omezení související s online migracemi z SQL Server na Az
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Migrace dočasná tabulky není podporovaná.
 
-**Symptom**
+**Příznak**
 
 Pokud se zdrojová databáze skládá z jedné nebo několika dočasných tabulek, během operace úplného načtení dat se vaše migrace databáze nezdařila a může se zobrazit následující zpráva:
 
@@ -52,13 +52,13 @@ Použijte následující postup.
 
 3. Spusťte znovu aktivitu migrace.
 
-**Materiály**
+**Prostředky**
 
 Další informace najdete v článku [dočasné tabulky](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017).
 
 ### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>Migrace tabulek obsahuje jeden nebo více sloupců s datovým typem hierarchyid
 
-**Symptom**
+**Příznak**
 
 Při operaci úplného načtení dat se může zobrazit výjimka SQL naznačující, že "ntext není kompatibilní s hierarchyid":
 
@@ -96,7 +96,7 @@ Použijte následující postup.
 
 ### <a name="support-for-lob-data-types"></a>Podpora datových typů LOB
 
-**Symptom**
+**Příznak**
 
 Pokud je délka sloupce Large Object (LOB) větší než 32 KB, může se stát, že se data v cíli zkrátí. Délku sloupce LOB můžete ověřit pomocí následujícího dotazu:
 
@@ -110,7 +110,7 @@ Pokud máte sloupec LOB, který je větší než 32 KB, obraťte se na technick�
 
 ### <a name="issues-with-timestamp-columns"></a>Problémy se sloupci časových razítek
 
-**Symptom**
+**Příznak**
 
 Azure Database Migration Service nemigruje hodnotu zdrojového časového razítka. místo toho Azure Database Migration Service vygeneruje novou hodnotu časového razítka v cílové tabulce.
 
@@ -120,7 +120,7 @@ Pokud potřebujete Azure Database Migration Service migrovat přesnou hodnotu č
 
 ### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Chyby migrace dat neposkytují další podrobnosti v okně podrobný stav databáze.
 
-**Symptom**
+**Příznak**
 
 Pokud dojde k selhání migrace v zobrazení stav databáze podrobnosti, výběr odkazu **chyby migrace dat** na horním pásu karet nemusí poskytnout další podrobnosti, které jsou specifické pro selhání migrace.
 
@@ -138,7 +138,7 @@ Pokud se chcete dostat k určitým podrobnostem o selhání, použijte následuj
 
 ### <a name="geography-datatype-not-supported-in-sqldb-online-migration"></a>Zeměpisná vlastnost DataType není v online migraci SQLDB podporovaná.
 
-**Symptom**
+**Příznak**
 
 Migrace se nezdařila s chybovou zprávou obsahující následující text:
 
@@ -150,7 +150,7 @@ I když Azure Database Migration Service podporuje zeměpisný datový typ pro o
 
 ### <a name="supported-editions"></a>Podporované edice
 
-**Symptom**
+**Příznak**
 
 Migrace se nezdařila s chybovou zprávou obsahující následující text:
 

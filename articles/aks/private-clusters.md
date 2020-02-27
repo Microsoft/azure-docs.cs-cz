@@ -4,12 +4,12 @@ description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: e59dccbcc7514f12e148bfb2f771593a53e85dc5
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b4ba130d9ff63291abdd46617b0692e844a60bf
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594562"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649503"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Vytvoření privátního clusteru služby Azure Kubernetes (Preview)
 
@@ -55,6 +55,18 @@ Rovina ovládacího prvku nebo Server API se nachází v předplatném Azure spr
 * USA – západ 2
 * USA – východ 2
 
+## <a name="currently-supported-availability-zones"></a>Aktuálně podporované Zóny dostupnosti
+
+* USA – střed
+* USA – východ
+* USA – východ 2
+* Francie – střed
+* Japonsko – východ
+* Severní Evropa
+* Jihovýchodní Asie
+* Velká Británie – jih
+* Západní Evropa
+* USA – západ 2
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Nainstalovat nejnovější rozšíření Azure CLI AKS Preview
 
@@ -115,6 +127,7 @@ Kde *--Enable-Private-cluster* je povinný příznak pro privátní cluster.
 > Pokud adresa mostu Docker (172.17.0.1/16) koliduje s podsítí CIDR, změňte adresu mostu Docker odpovídajícím způsobem.
 
 ## <a name="connect-to-the-private-cluster"></a>Připojit k privátnímu clusteru
+
 Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. V důsledku toho musíte ve virtuální síti vytvořit virtuální počítač Azure a připojit se k serveru rozhraní API. Uděláte to takto:
 
 1. Získejte přihlašovací údaje pro připojení ke clusteru.
@@ -148,7 +161,8 @@ Koncový bod serveru rozhraní API nemá žádnou veřejnou IP adresu. V důsled
 * Pokud chcete použít vlastní server DNS, nasaďte server služby Active Directory se službou DNS pro přeposílání na tento protokol IP 168.63.129.16
 
 ## <a name="limitations"></a>Omezení 
-* Zóny dostupnosti se aktuálně podporují jenom pro oblasti Východní USA 2 a Západní USA 2.
+* Pro koncový bod privátního serveru API se nedají použít rozsahy povolených IP adres, které se vztahují jenom na veřejný server API.
+* Zóny dostupnosti jsou v současné době podporovány v některých oblastech, další informace najdete na začátku tohoto dokumentu. 
 * [Omezení služby pro privátní propojení Azure][private-link-service] platí pro privátní clustery, privátní koncové body Azure a koncové body služby virtuální sítě, které se v tuto chvíli nepodporují ve stejné virtuální síti.
 * Není podporovaná podpora virtuálních uzlů v privátním clusteru pro dálku privátního Azure Container Instances (ACI) v privátní virtuální síti Azure.
 * Žádná podpora pro integraci Azure DevOps není v krabici s privátními clustery

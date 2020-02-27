@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: a6d2e2d912f176a88dc993803d750e37cff1acb6
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 9f3e06f66996be4a2b43b64e6100c62a2fa41381
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443648"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649955"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
@@ -19,6 +19,9 @@ Pomocí funkce Hybrid Runbook Worker služby Azure Automation můžete spouště
 Po úspěšném nasazení služby Runbook Worker si přečtěte téma [spuštění runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md) , kde se dozvíte, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+>[!NOTE]
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="windows-hybrid-runbook-worker-installation-and-configuration"></a>Instalace a konfigurace Windows Hybrid Runbook Worker
 
@@ -50,8 +53,9 @@ Další požadavky na síť pro Hybrid Runbook Worker najdete v tématu [Konfigu
 
 ### <a name="server-onboarding-for-management-with-automation-dsc"></a>Připojování serveru pro správu pomocí Automatizace DSC
 
-Další informace o připojování serverů pro správu s DSC najdete v tématu [připojování počítačů pro správu pomocí Azure Automation DSC](automation-dsc-onboarding.md).
-Pokud povolíte [řešení Update Management](../operations-management-suite/oms-solution-update-management.md), veškerý počítač s Windows, který je připojený k vašemu pracovnímu prostoru Log Analytics, se automaticky nakonfiguruje jako Hybrid Runbook Worker pro podporu runbooků obsažených v tomto řešení. Není ale zaregistrovaný u žádné Hybrid Workeré skupiny, které už jsou ve vašem účtu Automation definované. 
+Informace o připojování serverů pro správu s DSC najdete v tématu [připojování počítačů pro správu pomocí Azure Automation DSC](automation-dsc-onboarding.md).
+
+Pokud povolíte [řešení Update Management](../operations-management-suite/oms-solution-update-management.md), veškerý počítač s Windows, který je připojený k vašemu pracovnímu prostoru Log Analytics, se automaticky nakonfiguruje jako Hybrid Runbook Worker pro podporu runbooků obsažených v tomto řešení. Není ale zaregistrovaný u žádné Hybrid Workeré skupiny, které už jsou ve vašem účtu Automation definované.
 
 ### <a name="adding-the-computer-to-a-hybrid-runbook-worker-group"></a>Přidání počítače do skupiny Hybrid Runbook Worker
 
@@ -65,19 +69,17 @@ V cílovém počítači proveďte následující kroky, které automatizují ins
 
 Stáhněte si skript New-OnPremiseHybridWorker. ps1 z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) přímo z počítače, na kterém běží role Hybrid Runbook Worker, nebo z jiného počítače ve vašem prostředí. Zkopírujte skript do pracovního procesu. Skript New-OnPremiseHybridWorker. ps1 vyžaduje během provádění následující parametry:
 
-   * *AAResourceGroupName* (povinné): název skupiny prostředků, která je přidružená k vašemu účtu Automation.
-   * *OMSResourceGroupName* (volitelné): název skupiny prostředků pro pracovní prostor Log Analytics. Pokud tato skupina prostředků není zadaná, použije se *AAResourceGroupName* .
-   * *SubscriptionId* (povinné): ID předplatného Azure, ve kterém je váš účet Automation.
-   * *TenantID* (volitelné): identifikátor organizace tenanta přidružené k vašemu účtu Automation.
-   * *Pracovní prostor* (volitelné): Název Log Analytics pracovního prostoru. Pokud nemáte pracovní prostor Log Analytics, skript ho vytvoří a nakonfiguruje.
-   * *AutomationAccountName* (povinné): název vašeho účtu Automation.
-   * *HybridGroupName* (povinné): název skupiny Hybrid Runbook Worker, kterou zadáte jako cíl pro Runbooky, které podporují tento scénář.
-   * *Přihlašovací údaje* (volitelné): přihlašovací údaje, které se mají použít při přihlašování do prostředí Azure.
+* *AAResourceGroupName* (povinné): název skupiny prostředků, která je přidružená k vašemu účtu Automation.
+* *OMSResourceGroupName* (volitelné): název skupiny prostředků pro pracovní prostor Log Analytics. Pokud tato skupina prostředků není zadaná, použije se *AAResourceGroupName* .
+* *SubscriptionId* (povinné): ID předplatného Azure, ve kterém je váš účet Automation.
+* *TenantID* (volitelné): identifikátor organizace tenanta přidružené k vašemu účtu Automation.
+* *Pracovní prostor* (volitelné): Název Log Analytics pracovního prostoru. Pokud nemáte pracovní prostor Log Analytics, skript ho vytvoří a nakonfiguruje.
+* *AutomationAccountName* (povinné): název vašeho účtu Automation.
+* *HybridGroupName* (povinné): název skupiny Hybrid Runbook Worker, kterou zadáte jako cíl pro Runbooky, které podporují tento scénář.
+* *Přihlašovací údaje* (volitelné): přihlašovací údaje, které se mají použít při přihlašování do prostředí Azure.
   
-   > [!NOTE]
-   > Při povolování řešení se podporuje propojení pracovního prostoru služby Log Analytics a účtu Automation pouze v určitých oblastech.
-   >
-   > Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
+> [!NOTE]
+> Při povolování řešení jsou podporovány pouze určité oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
 
 ### <a name="2-open-windows-powershell-command-line-shell"></a>2. Otevřete prostředí příkazového řádku Windows PowerShellu.
 

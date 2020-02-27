@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: 309cf59c4b27c2a5906acfc519edd5306dece2d5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a9d3d0287e7839d6396553d532ba6f293fb19b68
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789235"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647661"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrace 3270 aplikací řízených obrazovkou na sálové počítače IBM s Azure pomocí Azure Logic Apps a konektoru IBM 3270
 
@@ -207,7 +207,7 @@ Po dokončení plánu navigace můžete [metody definovat v dalším režimu](#d
 
 <a name="example-plan"></a>
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 V tomto příkladu Předpokládejme, že spustíte transakci CICS s názvem "WBGB", která má tyto kroky: 
 
@@ -220,11 +220,11 @@ Předpokládejme také, že tento postup zopakujete, ale zadáte nesprávná dat
 
 * MSG-10
 * CICS Welcome
-* Obsahovat
+* Prázdné
 * WBGB_1 (vstup)
 * WBGB_2 (chyba)
 * Empty_1
-* MSG – 10_1
+* MSG-10_1
 
 I když mnoho obrazovek získá jedinečné názvy, některé obrazovky jsou stejné obrazovky, například "MSG-10" a "Empty". Pro opakovanou obrazovku použijte pro tuto obrazovku v plánu jenom jednu instanci. Tady jsou příklady, které ukazují, jak může vypadat samostatný plán, plán připojení, plán odpojení a kombinovaný plán:
 
@@ -372,7 +372,7 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
    | **Ověřit certifikát SSL hostitele?** | Ne | Zapnuto nebo vypnuto | Zapněte nebo vypněte ověřování pro certifikát serveru. |
    ||||
 
-   Například:
+   Příklad:
 
    ![Vlastnosti připojení](./media/connectors-create-api-3270/connection-properties.png)
 
@@ -384,7 +384,7 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
    | **Název metody** | Ano | < *– název metody*> | Vyberte metodu v souboru HIDX, který chcete použít. Po výběru metody se zobrazí seznam **Přidat nový parametr** , takže můžete vybrat parametry pro použití s touto metodou. |
    ||||
 
-   Například:
+   Příklad:
 
    **Vybrat soubor HIDX**
 
@@ -409,7 +409,10 @@ Po dokončení všech těchto kroků můžete použít akci, kterou vytvoříte 
 
 ## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Technické podrobnosti o aktivačních událostech, akcích a omezeních, které jsou popsány v popisu OpenAPI konektoru (dříve Swagger), najdete na [referenční stránce konektoru](/connectors/si3270/).
+Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/si3270/).
+
+> [!NOTE]
+> V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
 ## <a name="next-steps"></a>Další kroky
 

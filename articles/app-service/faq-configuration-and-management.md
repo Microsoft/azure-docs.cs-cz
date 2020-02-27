@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 598fdd5e3682226253ef8f2611ede2bbeba596f7
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: afa3b0f3ed345ccc7f4c627ec485351838ab2bee
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190441"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649274"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se konfigurace a správy pro Web Apps v Azure
 
@@ -199,7 +199,7 @@ V současné době nemůžete mít připojení VPN typu Point-to-site k virtuál
 
 V současné době se připojení webové aplikace App Service k virtuální síti s bránou statických směrování (založenou na zásadách) nepodporuje. Pokud vaše cílová virtuální síť již existuje, musí mít povolenou síť VPN typu Point-to-site s bránou dynamického směrování, aby ji bylo možné připojit k aplikaci. Pokud je brána nastavená na statické směrování, nemůžete povolit síť VPN typu Point-to-site. 
 
-Další informace najdete v tématu [integrace aplikace do služby Azure Virtual Network](web-sites-integrate-with-vnet.md#getting-started).
+Další informace najdete v tématu [integrace aplikace do služby Azure Virtual Network](web-sites-integrate-with-vnet.md).
 
 ## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>Proč se v mém App Service Environment dá vytvořit jenom jeden plán App Service, i když mám k dispozici dva pracovní procesy?
 

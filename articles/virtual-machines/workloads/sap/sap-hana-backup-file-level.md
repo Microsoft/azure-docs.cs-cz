@@ -4,24 +4,24 @@ description: Existují dvě hlavní možnosti zálohování SAP HANA na virtuál
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
 ms.topic: article
 ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
-ms.author: rclaus
-ms.openlocfilehash: e8ad1a9468c52fd120360827ed3a08f8f53ec3d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: hermannd
+ms.openlocfilehash: d1044e4cbfd59cdf58af1a132a64e7143083905c
+ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426004"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77616155"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup na úrovni souborů
 
-## <a name="introduction"></a>Představení
+## <a name="introduction"></a>Úvod
 
 Tato část je součástí série článků souvisejících v rámci zálohování SAP HANA. [Průvodce zálohováním pro SAP HANA v Azure Virtual Machines](./sap-hana-backup-guide.md) poskytuje přehled a informace o tom, jak začít, a [SAP HANA zálohování na základě snímků úložiště](./sap-hana-backup-storage-snapshots.md) pokrývá možnost zálohování na základě snímků úložiště.
 

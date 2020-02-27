@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: e2faf3ad7ed41c14745337414703d9fb0db54152
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 14e2cdd5d4a1662e86a055165fdd15a38d29225b
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033560"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651045"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Hodnocení srovnávacích testů pro virtuální počítače s Windows
 Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon pro vybrané virtuální počítače Azure se systémem Windows Server. Pro [virtuální počítače se systémem Linux](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)jsou k dispozici také hodnocení srovnávacích testů.
@@ -51,18 +51,24 @@ Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon
 | Standard_A8m_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 10 | 104,5 | 5.1 | 
 | Standard_A8m_v2 | 8 | 2 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 13 | 111,6 | 2.3 | 
 
+Poznámka: virtuální počítače řady Av2-Series se dají nasadit na nejrůznější typy a procesory hardwaru (jak vidíte výše). Virtuální počítače řady Av2-Series mají pro úlohy na vstupní úrovni, jako je vývoj a testování, nejvhodnější konfigurace výkonu a paměti procesoru. Velikost je omezená, aby nabízela poměrně konzistentní výkon procesoru pro běžící instanci bez ohledu na hardware, na kterém je nasazený. software, který využívá výhod konkrétních novějších optimalizací procesorů, ale může výrazně variace v různých typech procesorů.
+
 ## <a name="b---burstable"></a>B-Shluková
 | Velikost | vCPU | Uzly NUMA | Procesor | Spuštění | Průměrná základní sazba | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_B1ms | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 9 | 6.3 | 0.2 | 
 | Standard_B1ms | 1 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 47 | 6.4 | 0.2 | 
 | Standard_B2ms | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 36 | 19,8 | 0,8 | 
-| Standard_B2s | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 2 | 13.0 | 0.0 | 
+| Standard_B2s | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 2 | 13.0 | 0,0 | 
 | Standard_B2s | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 29 | 13.0 | 0,5 | 
 | Standard_B4ms | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 6 | 27,1 | 1.0 | 
 | Standard_B4ms | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 43 | 28,3 | 0,7 | 
-| Standard_B8ms | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 3 | 42,0 | 0.0 | 
+| Standard_B8ms | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 3 | 42,0 | 0,0 | 
 | Standard_B8ms | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 25 | 41,4 | 0.9 | 
+
+Poznámka: virtuální počítače řady B-Series jsou pro úlohy s požadavky na nejvyšší výkon. Instance virtuálních počítačů nashromáždí kredity při použití menšího směrného plánu. Když se na virtuálním počítači nashromáždil kredit, může se virtuální počítač nad rámec směrného plánu zvýšit až 100%, aby se splnily krátké požadavky na nárůst zatížení procesoru. Doba nárůstu závisí na dostupných kreditech, které jsou funkcí velikosti a času virtuálního počítače.  
+
+SPEC int je poměrně dlouho běžící test, který obvykle vyčerpá dostupné kredity shlukového přenosu.  Proto se výše uvedená čísla blíží základnímu výkonu virtuálního počítače (i když můžou odrážet určitou dobu shluku mezi běhy).  Pro krátké, shluky, úlohy (typické pro řady B-Series) se obvykle blíží sadě DS v3.
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 – obecné COMPUTE a Premium Storage
 | Velikost | vCPU | Uzly NUMA | Procesor | Spuštění | Průměrná základní sazba | StdDev | 
@@ -89,9 +95,9 @@ Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon
 | Standard_D8_v3 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 9 | 146,7 | 10,4 | 
 | Standard_D8_v3 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 27 | 159,9 | 8.3 | 
 | Standard_D16_v3 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 10 | 274,1 | 3.8 | 
-| Standard_D16_v3 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 32 | 300,7 | 8.8 | 
+| Standard_D16_v3 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 32 | 300,7 | 8,8 | 
 | Standard_D32_v3 | 32 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 24 | 549,3 | 11,1 | 
-| Standard_D32_v3 | 32 | 2 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 7 | 538,6 | 9.4 | 
+| Standard_D32_v3 | 32 | 2 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 7 | 538,6 | 9,4 | 
 | Standard_D64_v3 | 64 | 2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 32 | 1070,6 | 12,4 | 
 
 ## <a name="dsv2---storage-optimized"></a>DSv2 – optimalizované úložiště
@@ -144,14 +150,14 @@ Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon
 | Standard_D4_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 36 | 248,9 | 4.8 | 
 | Standard_D5_v2 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 9 | 413,9 | 14,1 | 
 | Standard_D5_v2 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 27 | 470,2 | 8.1 | 
-| Standard_D5_v2 | 16 | 2 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 5 | 466,0 | 0.0 | 
+| Standard_D5_v2 | 16 | 2 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 5 | 466,0 | 0,0 | 
 | Standard_D11_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 22 | 66,4 | 2.9 | 
 | Standard_D11_v2 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 27 | 69,0 | 6.7 | 
 | Standard_D12_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 24 | 127,7 | 4.6 | 
 | Standard_D12_v2 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 20 | 135,9 | 9,3 | 
 | Standard_D13_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 16 | 237,4 | 6.6 | 
 | Standard_D13_v2 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 28 | 250,2 | 3.8 | 
-| Standard_D14_v2 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 23 | 473,0 | 9.4 | 
+| Standard_D14_v2 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 23 | 473,0 | 9,4 | 
 | Standard_D14_v2 | 16 | 2 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 17 | 443,9 | 18,8 | 
 | Standard_D15_v2 | 20 | 2 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 37 | 558,8 | 8,4 | 
 
@@ -167,11 +173,11 @@ Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon
 | Standard_E16-4s_v3 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 45 | 82,7 | 3.8 | 
 | Standard_E16-8s_v3 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 39 | 158,3 | 4.5 | 
 | Standard_E20s_v3 | 20 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 27 | 369,7 | 3,2 | 
-| Standard_E32s_v3 | 32 | 2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 31 | 577,9 | 9.4 | 
+| Standard_E32s_v3 | 32 | 2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 31 | 577,9 | 9,4 | 
 | Standard_E32-8s_v3 | 8 | 2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 31 | 163,4 | 6.8 | 
 | Standard_E32-16s_v3 | 16 | 2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 41 | 307,1 | 8,7 | 
 | Standard_E4-2s_v3 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 65 | 41,9 | 2.4 | 
-| Standard_E64s_v3 | 64 | 2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 1 | 1080,0 | 0.0 | 
+| Standard_E64s_v3 | 64 | 2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 1 | 1080,0 | 0,0 | 
 | Standard_E64-16s_v3 | 16 | 2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 3 | 334,3 | 1,5 | 
 | Standard_E64-32s_v3 | 32 | 2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 4 | 592,5 | 4.4 | 
 
@@ -186,7 +192,7 @@ Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon
 | Standard_E2_v3 | 2 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 41 | 41,2 | 2.4 | 
 | Standard_E4_v3 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 43 | 81,4 | 5.3 | 
 | Standard_E8_v3 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 39 | 157,4 | 8.1 | 
-| Standard_E16_v3 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 49 | 301,6 | 8.9 | 
+| Standard_E16_v3 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 49 | 301,6 | 8,9 | 
 | Standard_E20_v3 | 20 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 35 | 371,0 | 6.9 | 
 | Standard_E32_v3 | 32 | 2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 35 | 579,9 | 16.1 | 
 | Standard_E64_v3 | 64 | 2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 31 | 1080,0 | 11,3 | 
@@ -205,7 +211,7 @@ Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon
 | Standard_F16s_v2 | 16 | 1 | Procesor Intel (R) Xeon (R) Platinum 8168 CPU @ 2.70 GHz | 36 | 409,3 | 15.5 | 
 | Standard_F32s_v2 | 32 | 1 | Procesor Intel (R) Xeon (R) Platinum 8168 CPU @ 2.70 GHz | 31 | 760,9 | 16,9 | 
 | Standard_F64s_v2 | 64 | 2 | Procesor Intel (R) Xeon (R) Platinum 8168 CPU @ 2.70 GHz | 33 | 1440,9 | 26,0 | 
-| Standard_F72s_v2 | 72 | 2 | Procesor Intel (R) Xeon (R) Platinum 8168 CPU @ 2.70 GHz | 29 | 1372,1 | 8.2 | 
+| Standard_F72s_v2 | 72 | 2 | Procesor Intel (R) Xeon (R) Platinum 8168 CPU @ 2.70 GHz | 29 | 1372,1 | 8,2 | 
 
 ## <a name="fs---compute-and-storage-optimized"></a>FS – COMPUTE a úložiště – optimalizované
 | Velikost | vCPU | Uzly NUMA | Procesor | Spuštění | Průměrná základní sazba | StdDev | 
@@ -232,7 +238,7 @@ Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon
 | Standard_F4 | 4 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 32 | 132,1 | 7.8 | 
 | Standard_F8 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 17 | 239,4 | 2.3 | 
 | Standard_F8 | 8 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 25 | 251,2 | 7.0 | 
-| Standard_F16 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 19 | 424,1 | 8.2 | 
+| Standard_F16 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 19 | 424,1 | 8,2 | 
 | Standard_F16 | 16 | 1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 32 | 467,8 | 11,1 | 
 | Standard_F16 | 16 | 2 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 6 | 472,3 | 13.2 | 
 
@@ -300,7 +306,7 @@ Následující skóre srovnávacích testů SPECInt ukazují výpočetní výkon
 | Standard_M16ms | 16 | 1 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 20 | 293,1 | 11,8 | 
 | Standard_M32ls | 32 | 1 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 13 | 535,2 | 4.8 | 
 | Standard_M32ms | 32 | 1 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 11 | 534,1 | 4.6 | 
-| Standard_M32ms | 32 | 2 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 1 | 589,0 | 0.0 | 
+| Standard_M32ms | 32 | 2 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 1 | 589,0 | 0,0 | 
 | Standard_M32ts | 32 | 1 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 12 | 538,6 | 3,2 | 
 | Standard_M64ls | 64 | 2 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 13 | 1015,2 | 10.0 | 
 | Standard_M8ms | 8 | 1 | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 13 | 158,2 | 5.5 | 

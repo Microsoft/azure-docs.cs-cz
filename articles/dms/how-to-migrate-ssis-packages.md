@@ -3,21 +3,21 @@ title: Opětovné nasazení balíčků SSIS do jediné databáze SQL
 titleSuffix: Azure Database Migration Service
 description: Naučte se migrovat nebo znovu nasadit balíčky a projekty služba SSIS (SQL Server Integration Services), abyste Azure SQL Database izolovanou databázi pomocí Azure Database Migration Service a Data Migration Assistant.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 06/08/2019
-ms.openlocfilehash: b1889410a6c6925ebba5632a08c34bc967ced627
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 90a39b8fe3604a05f1d35a875ae4e34491b47d72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437976"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648525"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Opětovné nasazení balíčků SSIS do Azure SQL Database s využitím Azure Database Migration Service
 
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Vyhodnoťte zdrojové SSIS projekty/balíčky.
 > * Migrujte projekty a balíčky SSIS do Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení těchto kroků potřebujete:
 
@@ -78,7 +78,7 @@ Chcete-li migrovat SSIS projekty/balíčky na server Azure SQL Database, proveď
 
     ![Stránka pro výběr zdrojové stránky Průvodce nasazením](media/how-to-migrate-ssis-packages/dms-deployment-wizard-select-source-page.png)
  
-8. Vyberte **Next** (Další).
+8. Vyberte **Další**.
 9. Na stránce **vybrat cíl** zadejte cíl pro váš projekt.
 
     a. Do textového pole název serveru zadejte plně kvalifikovaný název serveru Azure SQL Database (< server_name >. Database. Windows. NET).
@@ -96,7 +96,7 @@ Chcete-li migrovat SSIS projekty/balíčky na server Azure SQL Database, proveď
 
     ![Stránka pro ověření Průvodce nasazením](media/how-to-migrate-ssis-packages/dms-deployment-wizard-validate-page.png)
 
-11. Vyberte **Next** (Další).
+11. Vyberte **Další**.
 
 12. Na stránce **Kontrola** zkontrolujte nastavení nasazení.
 

@@ -6,25 +6,25 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/24/2019
-ms.openlocfilehash: 32eee22aa8e9b707d404cb85db6b7fae90d11987
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 02/25/2019
+ms.openlocfilehash: 521fd84e79196439ea220bd7ffa7cc6d0750f045
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589841"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648831"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
-Protokoly Azure Monitor používají k ukládání a správě protokolů a dotazů službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) . Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá pracovní prostor. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, jsou v některých případech, kdy můžete výrazně vylepšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
+Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, jsou v některých případech, kdy můžete výrazně vylepšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
 
-Většina technik je společná pro dotazy, které se spouštějí přímo v Azure Průzkumník dat a Azure Monitor protokoly, i když existuje několik jedinečných důležitých Azure Monitor protokolů, které jsou zde popsány. Další tipy k optimalizaci pro Azure Průzkumník dat najdete v tématu [osvědčené postupy pro dotazy](/azure/kusto/query/best-practices).
+Většina techniků je společná pro dotazy, které se spouštějí přímo v protokolech Azure Průzkumník dat a Azure Monitor, i když existuje několik jedinečných důležitých Azure Monitor protokolů, které jsou zde popsány. Další tipy k optimalizaci pro Azure Průzkumník dat najdete v tématu [osvědčené postupy pro dotazy](/azure/kusto/query/best-practices).
 
 Optimalizované dotazy budou:
 
 - Rychlejší spuštění, zkrácení celkové doby trvání provádění dotazu.
 - Mít menší pravděpodobnost omezení nebo odmítnutí.
 
-Měli byste věnovat zvláštní pozornost dotazům, které se používají pro opakující se se využití a shluky, jako jsou řídicí panely a Power BI. Dopad neúčinného dotazu v těchto případech je podstatný.
+Měli byste věnovat zvláštní pozornost dotazům, které se používají pro restávající a shlukové použití, jako jsou řídicí panely, výstrahy, Logic Apps a Power BI. Dopad neúčinného dotazu v těchto případech je podstatný.
 
 ## <a name="query-performance-pane"></a>Podokno výkon dotazu
 Po spuštění dotazu v Log Analytics klikněte na šipku dolů nad výsledky dotazu, abyste zobrazili podokno výkon dotazu, které zobrazuje výsledky několika ukazatelů výkonu pro dotaz. Tyto indikátory výkonu jsou popsány v následující části.
@@ -38,11 +38,11 @@ Pro každý spuštěný dotaz jsou k dispozici následující indikátory výkon
 
 - [Total CPU](#total-cpu): celkový počet výpočtů používaných pro zpracování dotazu napříč všemi výpočetními uzly. Představuje čas, který se používá pro výpočet, analýzu a načítání dat. 
 
-- [Data použitá pro zpracovaný dotaz](#data-used-for-query-processing): celková data, ke kterým byl přidaný dotaz zpracován. Ovlivněno velikostí cílové tabulky, použitým časovým rozsahem, použitými filtry a počtem odkazovaných sloupců.
+- [Data použitá pro zpracovaný dotaz](#data-used-for-processed-query): celková data, ke kterým byl přidaný dotaz zpracován. Ovlivněno velikostí cílové tabulky, použitým časovým rozsahem, použitými filtry a počtem odkazovaných sloupců.
 
-- [Časové období zpracovávaného dotazu](#time-range-of-the-data-processed): mezera mezi nejnovějšími a nejstarší daty, ke kterým byl přidaný dotaz zpracován. Ovlivněno explicitním časovým rozsahem dotazu a použitými filtry. Může být větší než explicitní časový rozsah z důvodu dělení dat.
+- [Časové období zpracovávaného dotazu](#time-span-of-the-processed-query): mezera mezi nejnovějšími a nejstarší daty, ke kterým byl přidaný dotaz zpracován. Ovlivněno explicitním časovým rozsahem zadaným pro dotaz.
 
-- [Stáří zpracovaných dat](#age-of-the-oldest-data-used): mezera mezi nyní a nejstarší daty, ke kterým byl přidaný dotaz zpracován. Má velmi vliv na efektivitu načítání dat.
+- [Stáří zpracovaných dat](#age-of-processed-data): mezera mezi nyní a nejstarší daty, ke kterým byl přidaný dotaz zpracován. Má velmi vliv na efektivitu načítání dat.
 
 - [Počet pracovních prostorů](#number-of-workspaces): Kolik pracovních prostorů bylo během zpracování dotazu k dispozici v důsledku implicitního nebo explicitního výběru.
 
@@ -123,7 +123,7 @@ Perf
 by CounterPath
 ```
 
-Využití CPU může být ovlivněno i v případě, že podmínky nebo rozšířené sloupce vyžadující náročné výpočty. Veškerá porovnávání triviálních řetězců, jako [je EQUAL = =](/azure/kusto/query/datatypes-string-operators) a [StartsWith](/azure/kusto/query/datatypes-string-operators) , mají zhruba stejný dopad na procesor, zatímco rozšířené shody textu mají větší vliv. Konkrétně operátor is je efektivnější pro operátor Contains. Z důvodu technik zpracování řetězců je efektivnější Hledat řetězce, které jsou delší než čtyři znaky než krátké řetězce.
+Využití CPU může být ovlivněno i v případě, že podmínky nebo rozšířené sloupce vyžadující náročné výpočty. Veškerá porovnávání triviálních řetězců, jako [je EQUAL = =](/azure/kusto/query/datatypes-string-operators) a [StartsWith](/azure/kusto/query/datatypes-string-operators) , mají zhruba stejný dopad na procesor, zatímco rozšířené shody textu mají větší vliv. Konkrétně operátor is je efektivnější [pro operátor](/azure/kusto/query/datatypes-string-operators) [Contains](/azure/kusto/query/datatypes-string-operators) . Z důvodu technik zpracování řetězců je efektivnější Hledat řetězce, které jsou delší než čtyři znaky než krátké řetězce.
 
 Například následující dotazy poskytují podobné výsledky v závislosti na zásadách pojmenovávání počítačů, ale druhá z nich je efektivnější:
 
@@ -151,7 +151,7 @@ Heartbeat
 > Tento ukazatel prezentuje jenom procesor z bezprostředního clusteru. Dotaz ve více oblastech by představoval jenom jednu z oblastí. V dotazu s více pracovními prostory nemusí obsahovat všechny pracovní prostory.
 
 
-## <a name="data-used-for-query-processing"></a>Data používaná pro zpracování dotazů
+## <a name="data-used-for-processed-query"></a>Data použitá pro zpracovaný dotaz
 
 Důležitým faktorem při zpracování dotazu je objem dat, který je prohledáván a používán pro zpracování dotazu. Azure Průzkumník dat používá agresivní optimalizace, které výrazně snižují objem dat v porovnání s jinými datovými platformami. Stále existují v dotazu kritické faktory, které mohou ovlivnit objem dat, který se používá.
 V protokolu Azure Monitor se sloupec **TimeGenerated** používá jako způsob, jak data indexovat. Omezení **TimeGeneratedch** hodnot na co nejblíže větší rozsah zajistí výrazné zlepšení výkonu dotazů tím, že významně omezí množství dat, která se mají zpracovat.
@@ -209,7 +209,7 @@ SecurityEvent
 | summarize count(), dcount(EventID), avg(Level) by Computer  
 ```
 
-## <a name="time-range-of-the-data-processed"></a>Časový rozsah zpracovaných dat
+## <a name="time-span-of-the-processed-query"></a>Časové období zpracovávaného dotazu
 
 Všechny protokoly v protokolu Azure Monitor jsou rozdělené podle sloupce **TimeGenerated** . Počet oddílů, které jsou k dispozici, přímo souvisí s časovým rozsahem. Snížení časového rozsahu představuje nejúčinnější způsob, jak zajistit, aby se provádění dotazů zobrazilo.
 
@@ -259,14 +259,10 @@ by Computer
 ) on Computer
 ```
 
-Měření je vždy větší než zadaný skutečný čas. Pokud je například filtr dotazu 7 dní, systém může kontrolovat 7,5 nebo 8,1 dnů. Je to proto, že systém rozdělí data do bloků dat v proměnné velikosti. Aby bylo zajištěno, že všechny relevantní záznamy budou prohledávány, prohledá celý oddíl, který může pokrývat několik hodin a dokonce i více než jeden den.
+> [!IMPORTANT]
+> Tento indikátor není k dispozici pro dotazy mezi oblastmi.
 
-Existuje několik případů, kdy systém nemůže poskytnout přesné měření časového rozsahu. K tomu dochází ve většině případů, kdy je méně než jeden den nebo v dotazech na více pracovních prostorů.
-
-> [!NOTE]
-> Tento indikátor prezentuje pouze data zpracovaná v bezprostředním clusteru. Dotaz ve více oblastech by představoval jenom jednu z oblastí. V dotazu s více pracovními prostory nemusí obsahovat všechny pracovní prostory.
-
-## <a name="age-of-the-oldest-data-used"></a>Stáří nejstarší použité dat
+## <a name="age-of-processed-data"></a>Stáří zpracovaných dat
 Azure Průzkumník dat využívá několik vrstev úložiště: místní disky SSD v paměti a mnohem pomalejší objekty blob Azure. V novějších datech je vyšší pravděpodobnost, že je uložená v výkonnější úrovni s menší latencí, což snižuje dobu trvání dotazů a CPU. Kromě samotných dat má systém také mezipaměť pro metadata. Starší data, menší pravděpodobnost, že metadata budou v mezipaměti.
 
 I když některé dotazy vyžadují použití starých dat, existují případy, kdy omylem používá stará data. K tomu dochází, pokud jsou dotazy spouštěny bez časového rozsahu v jejich metadatech a ne všechny odkazy tabulky zahrnují filtr na sloupec **TimeGenerated** . V těchto případech bude systém kontrolovat všechna data, která jsou uložena v této tabulce. Pokud je uchovávání dat dlouhé, může se vztahovat na dlouhé časové rozsahy, tedy na data, která jsou stará jako doba uchovávání dat.
@@ -289,7 +285,7 @@ Provádění dotazů mezi oblastmi vyžaduje, aby systém serializován a přene
 Pokud není k dispozici žádný reálný důvod pro kontrolu všech těchto oblastí, měli byste obor upravit tak, aby se kryl méně oblastí. Pokud je obor prostředku minimalizován, ale stále se používá mnoho oblastí, může k tomu dojít z důvodu chyby konfigurace. Například protokoly auditu a nastavení diagnostiky jsou odesílány do různých pracovních prostorů v různých oblastech nebo existují více konfigurací nastavení diagnostiky. 
 
 > [!IMPORTANT]
-> Když se dotaz spustí napříč několika oblastmi, měření procesoru a dat nebudou přesné a bude reprezentovat měření pouze v jedné z oblastí.
+> Tento indikátor není k dispozici pro dotazy mezi oblastmi.
 
 ## <a name="number-of-workspaces"></a>Počet pracovních prostorů
 Pracovní prostory jsou logické kontejnery, které slouží k oddělení a správě dat protokolů. Back-end optimalizuje umístění pracovních prostorů na fyzických clusterech v rámci vybrané oblasti.
@@ -305,7 +301,7 @@ Provádění dotazů mezi oblastmi a mezi clustery vyžaduje, aby systém serial
 > V některých scénářích s více pracovními prostory nebudou měření procesoru a dat přesné a bude reprezentovat měření jenom pro několik pracovních prostorů.
 
 ## <a name="parallelism"></a>Paralelismu
-Protokoly Azure Monitor používají ke spouštění dotazů velké clustery Azure Průzkumník dat. Tyto clustery se liší ve škálování a můžou získat až 140 výpočetních uzlů. Systém automaticky škáluje clustery podle logiky umístění pracovního prostoru a kapacity.
+Protokoly Azure Monitor používají pro spouštění dotazů velké clustery Azure Průzkumník dat a tyto clustery se ve velkém měřítku liší. Systém automaticky škáluje clustery podle logiky umístění pracovního prostoru a kapacity.
 
 Chcete-li efektivně spustit dotaz, je rozdělen a distribuován do výpočetních uzlů na základě dat, která jsou požadována pro jeho zpracování. Existují situace, kdy systém nemůže provádět to efektivně. To může mít za následek dlouhou dobu trvání dotazu. 
 

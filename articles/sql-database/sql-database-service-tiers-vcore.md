@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045216"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650295"
 ---
 # <a name="vcore-model-overview"></a>Přehled modelů virtuálních jader
 
@@ -25,18 +25,18 @@ Model Virtual Core (vCore) poskytuje několik výhod:
 - Cenové slevy pro [zvýhodněné hybridní využití Azure (AHB)](sql-database-azure-hybrid-benefit.md) a [REZERVOVANOU instanci (ri)](sql-database-reserved-capacity.md).
 - Větší transparentnost v podrobnostech o hardwaru, které vysílaly výpočetní výkon; usnadňuje plánování migrací z místních nasazení.
 
-## <a name="service-tiers"></a>Úrovně služeb
+## <a name="service-tiers"></a>Úrovně služby
 
 Mezi možnosti vrstvy služeb v modelu vCore patří Pro obecné účely, Pro důležité obchodní informace a měřítko. Vrstva služeb obecně definuje architekturu úložiště, omezení místa a vstupně-výstupních operací a možnosti provozní kontinuity související s dostupností a zotavením po havárii.
 
 ||**Obecné účely**|**Důležité pro podnikání**|**Hyperškálovatelný**|
 |---|---|---|---|
 |Nejvhodnější pro|Většina obchodních úloh. Nabízí uživatelsky orientované, vyvážené a škálovatelné možnosti výpočtů a úložiště. |Nabízí podnikovým aplikacím nejvyšší odolnost proti chybám pomocí několika izolovaných replik a poskytuje nejvyšší výkon vstupně-výstupních operací na jednu repliku databáze.|Většina obchodních úloh s vysokou škálovatelností úložiště a požadavky na škálování pro čtení.  Nabízí vyšší odolnost proti chybám tím, že umožňuje konfiguraci více než jedné repliky izolované databáze. |
-|Storage|Používá vzdálené úložiště.<br/>Izolované **databáze a elastické fondy zřízené COMPUTE**:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>Izolované **databáze a elastické fondy zřízené COMPUTE**:<br/>5 GB – 4 TB<br/>**Spravovaná instance**:<br/>32 GB - 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
+|Úložiště|Používá vzdálené úložiště.<br/>Izolované **databáze a elastické fondy zřízené COMPUTE**:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>Izolované **databáze a elastické fondy zřízené COMPUTE**:<br/>5 GB – 4 TB<br/>**Spravovaná instance**:<br/>32 GB - 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
 |IOPS a propustnost (přibližná)|Izolované **databáze a elastické fondy**: Přečtěte si o omezeních prostředků pro izolované [databáze](../sql-database/sql-database-vcore-resource-limits-single-databases.md) a [elastické fondy](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).<br/>**Spravovaná instance**: Přečtěte si téma [Přehled Azure SQL Database omezení prostředků spravované instance](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics).|Viz omezení prostředků pro izolované [databáze](../sql-database/sql-database-vcore-resource-limits-single-databases.md) a [elastické fondy](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).|Škálovatelná architektura je Vícevrstvá architektura s ukládáním do mezipaměti na více úrovních. Platnost IOPS a propustnosti budou záviset na zatížení.|
 |Dostupnost|1 replika, žádné repliky na úrovni čtení|3 repliky, 1 [replika pro čtení a škálování](sql-database-read-scale-out.md)<br/>zóna – redundantní vysoká dostupnost (HA)|1 replika pro čtení i zápis a 0-4 replik v režimu [čtení a škálování](sql-database-read-scale-out.md)|
 |Zálohování|[Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dní (ve výchozím nastavení 7 dnů)|Zálohování na základě snímků ve vzdáleném úložišti Azure. Obnoví použití těchto snímků pro rychlé obnovení. Zálohy jsou okamžité a neovlivňují výkon vstupně-výstupních operací ve výpočetním prostředí. Obnovení je rychlé a nejedná se o datovou operaci (trvá to jen v minutách).|
-|V paměti|Nepodporováno|Podporováno|Nepodporováno|
+|V paměti|Nepodporuje se|Podporuje se|Nepodporuje se|
 |||
 
 
@@ -89,18 +89,18 @@ Oblasti, ve kterých je Fsv2-Series k dispozici, najdete v tématu [dostupnost F
 - Řada M-Series je hardwarově optimalizovaná možnost hardwaru pro úlohy, které přidávají větší nároky na paměť a vyšší výpočetní limity než služba Gen5.
 - Řada M-Series poskytuje 29 GB na vCore a 128 virtuální jádra, což zvyšuje limit paměti relativní vzhledem k Gen5, 8rychlostní až skoro 4 TB.
 
-Pokud chcete povolit hardware řady M-Series pro předplatné a oblast, je nutné otevřít žádost o podporu. Pokud je žádost o podporu schválená, možnosti výběru a zřizování řady M-Series se řídí stejným vzorem jako u ostatních generací hardwaru. V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series).
+Pokud chcete povolit hardware řady M-Series pro předplatné a oblast, je nutné otevřít žádost o podporu. Předplatné musí být placeného typu nabídky, včetně průběžných plateb nebo smlouva Enterprise (EA).  Pokud je žádost o podporu schválená, možnosti výběru a zřizování řady M-Series se řídí stejným vzorem jako u ostatních generací hardwaru. V oblastech, kde je dostupná řada M-Series, najdete informace v tématu [dostupnost řady m-Series](#m-series).
 
 
 ### <a name="compute-and-memory-specifications"></a>Specifikace výpočtů a paměti
 
 
-|Generování hardwaru  |Služby Compute  |Paměť  |
+|Generování hardwaru  |Compute  |Memory (Paměť)  |
 |:---------|:---------|:---------|
-|Gen4     |– Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz<br>-Zřídit až 24 virtuální jádra (1 vCore = 1 fyzický jádro)  |– 7 GB na vCore<br>– Zřídit až 168 GB|
+|COMPUTE GEN4 –     |– Procesory Intel E5-2673 V3 (Haswell) 2,4 GHz<br>-Zřídit až 24 virtuální jádra (1 vCore = 1 fyzický jádro)  |– 7 GB na vCore<br>– Zřídit až 168 GB|
 |Gen5     |**Zřízené výpočetní prostředky**<br>– Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz a Intel SP-8160 (Skylake)<br>-Zřídit až 80 virtuální jádra (1 vCore = 1 Hyper-thread)<br><br>**Výpočetní prostředí bez serveru**<br>– Procesory Intel E5-2673 v4 (Broadwell) 2,3-GHz a Intel SP-8160 (Skylake)<br>– Automatické škálování až na 16 virtuální jádra (1 vCore = 1 Hyper-thread)|**Zřízené výpočetní prostředky**<br>-5,1 GB na vCore<br>– Zřídit až 408 GB<br><br>**Výpočetní prostředí bez serveru**<br>– Automatické škálování až na 24 GB na vCore<br>– Automatické škálování až do 48 GB max.|
-|Fsv2-series     |– Procesory Intel Xeon Platinum 8168 (SkyLake)<br>– S trvalou frekvencí 3,4 GHz a maximální jednotnou rychlostí Turbo 3,7 GHz v jádře.<br>-Zřídit 72 virtuální jádra (1 vCore = 1 = 1 Hyper-thread)|-1,9 GB na vCore<br>-Zřizování 136 GB|
-|M-Series     |– Procesory Intel Xeon E7-8890 V3 2,5 GHz<br>-Zřídit 128 virtuální jádra (1 vCore = 1 = 1 Hyper-thread)|– 29 GB na vCore<br>-Zřizování 3,7 TB|
+|Řada Fsv2     |– Procesory Intel Xeon Platinum 8168 (SkyLake)<br>– S trvalou frekvencí 3,4 GHz a maximální jednotnou rychlostí Turbo 3,7 GHz v jádře.<br>-Zřídit 72 virtuální jádra (1 vCore = 1 = 1 Hyper-thread)|-1,9 GB na vCore<br>-Zřizování 136 GB|
+|Řada M     |– Procesory Intel Xeon E7-8890 V3 2,5 GHz<br>-Zřídit 128 virtuální jádra (1 vCore = 1 = 1 Hyper-thread)|– 29 GB na vCore<br>-Zřizování 3,7 TB|
 
 
 Další informace o omezeních prostředků najdete v tématech [omezení prostředků pro izolované databáze (Vcore)](sql-database-vcore-resource-limits-single-databases.md)nebo [omezení prostředků pro elastické fondy (Vcore)](sql-database-vcore-resource-limits-elastic-pools.md).
@@ -142,7 +142,7 @@ Na kartě **základy** vyberte odkaz **Konfigurovat databázi** v části **COMP
   
 **Změna hardwarového generování existující spravované instance**
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Na stránce spravovaná instance vyberte odkaz **cenová úroveň** umístěný v části nastavení.
 
@@ -150,43 +150,25 @@ Na stránce spravovaná instance vyberte odkaz **cenová úroveň** umístěný 
 
 Na stránce **cenová úroveň** budete moci změnit generování hardwaru, jak je popsáno v předchozích krocích.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Použijte následující skript PowerShellu:
+Použijte následující skript prostředí PowerShell:
 
 ```powershell-interactive
-$subscriptionId = "**************"
-Select-AzSubscription -Subscription $subscriptionId
-
-$instanceName = "********"
-$resourceGroup = "****"
-
-# THIS IS IMPORTANT PARAMETER:
-$sku = @{name = "GP_Gen5" }
-
-# NOTE: These properties are not necessary, but it would be good to set them to the current values:
-# You might want to change vCores or storage with hardware generation
-# $admin_login = "******"
-# $admin_pass = "******"
-# $location = "***** # for example: ""northeurope"
-# $vCores = 8
-# $maxStorage = 1024
-# $license = "BasePrice"
-# $subnetId = "/subscriptions/****/subnets/*******"
-
-## NOTE: Uncomment some of the properties below if you have set them.
-$properties = New-Object System.Object
-# $properties | Add-Member -type NoteProperty -name subnetId -Value $subnetId
-# $properties | Add-Member -type NoteProperty -name administratorLogin -Value $admin_login
-# $properties | Add-Member -type NoteProperty -name administratorLoginPassword -Value $admin_pass
-# $properties | Add-Member -type NoteProperty -name vCores -Value $vCores
-# $properties | Add-Member -type NoteProperty -name storageSizeInGB -Value $maxStorage
-# $properties | Add-Member -type NoteProperty -name licenseType -Value $license
-
-Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
+Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" -ComputeGeneration Gen5
 ```
 
-Ujistěte se, že jste zadali své ID předplatného, název a skupinu prostředků spravované instance.
+Další podrobnosti najdete v příkazu [set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) .
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Použijte následující příkaz CLI:
+
+```azurecli-interactive
+az sql mi update -g mygroup -n myinstance --family Gen5
+```
+
+Další podrobnosti najdete v příkazu [AZ SQL mi Update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update) Command.
 
 ---
 
@@ -194,16 +176,16 @@ Ujistěte se, že jste zadali své ID předplatného, název a skupinu prostřed
 
 #### <a name="gen4gen5-1"></a>COMPUTE GEN4 –/Gen5
 
-Nové databáze COMPUTE GEN4 – již nejsou podporovány v oblastech Austrálie – východ a Brazílie – jih. 
+COMPUTE GEN4 – hardware je [vyladěný](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) a již není pro nová nasazení k dispozici. Všechny nové databáze musí být nasazeny na Gen5 hardwaru.
 
 Gen5 je k dispozici ve většině oblastí po celém světě.
 
-#### <a name="fsv2-series"></a>Fsv2-series
+#### <a name="fsv2-series"></a>Řada Fsv2
 
 Fsv2-Series je k dispozici v následujících oblastech: Austrálie – střed, Austrálie – střed, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed Východní Asie, USA – střed, Severní Korea, Indie – střed, Indie – západ, Indie – jih, USA – sever Evropa, Jižní Afrika, USA – sever, jihovýchodní Asie, Velká Británie – jih, Velká Británie – západ, Západní Evropa, západ USA 2.
 
 
-#### <a name="m-series"></a>M-Series
+#### <a name="m-series"></a>Řada M
 
 Řada M-Series je k dispozici v následujících oblastech: Východní USA, Severní Evropa, Západní Evropa Západní USA 2.
 Řada M-Series může mít také omezené dostupnosti v dalších oblastech. Můžete si vyžádat jinou oblast, než je zde uvedeno, ale nemusí být splněna v jiné oblasti.

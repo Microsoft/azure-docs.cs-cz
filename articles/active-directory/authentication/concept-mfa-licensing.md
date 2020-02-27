@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e49a07f591731a1deb2838751852c0134548966d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: e74a7ab0c003aaf9d90211484b39f8322cd9c329
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77521842"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647998"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Funkce a licence pro Azure Multi-Factor Authentication
 
@@ -43,7 +43,7 @@ Následující tabulka obsahuje seznam funkcí, které jsou k dispozici v různ�
 
 | Funkce | Azure AD Free – výchozí hodnoty zabezpečení | Azure AD Free – globální Správci služby Azure AD | Office 365 Business Premium, E3 nebo E5 | Azure AD Premium P1 nebo P2 |
 | --- |:---:|:---:|:---:|:---:|
-| Ochrana účtů správce Azure AD pomocí MFA | ● | ● (Jenom účty*globálního správce Azure AD* ) | ● | ● |
+| Ochrana účtů správců tenantů Azure AD pomocí MFA | ● | ● (Jenom účty*globálního správce Azure AD* ) | ● | ● |
 | Mobilní aplikace jako druhý faktor | ● | ● | ● | ● |
 | Telefonní hovor jako druhý faktor | | ● | ● | ● |
 | SMS jako druhý faktor | | ● | ● | ● |

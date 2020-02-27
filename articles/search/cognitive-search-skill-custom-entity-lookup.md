@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 5c820b7e11c06f2d785da036f5174298caf56da6
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960604"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651334"
 ---
 #    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Dovednosti při rozpoznávání vlastního vyhledávání entit (Preview)
 
@@ -48,7 +48,7 @@ V parametrech jsou rozlišována malá a velká písmena.
 | Název vstupu      | Popis                   |
 |---------------|-------------------------------|
 | text          | Text, který se má analyzovat          |
-| languageCode  | Nepovinný parametr. Výchozí je `"en"`.  |
+| languageCode  | Volitelné. Výchozí hodnota je `"en"`.  |
 
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
@@ -56,14 +56,14 @@ V parametrech jsou rozlišována malá a velká písmena.
 
 | Název výstupu     | Popis                   |
 |---------------|-------------------------------|
-| podnikům | Pole objektů, které obsahují informace o nalezených shodách a související metadata. Každá z identifikovaných entit může obsahovat následující pole:  <ul> <li> *Name*: identifikovaná entita nejvyšší úrovně. Entita představuje "normalizovaný" tvar. </li> <li> *ID*: jedinečný identifikátor entity definovaný uživatelem ve formátu definice vlastní entity.</li> <li> *Popis*: Popis entity definovaný uživatelem ve formátu definice vlastní entity. </li> <li> *zadejte:* Typ entity definovaný uživatelem ve formátu definice vlastní entity.</li> <li> *podtyp:* Podtyp entity definovaný uživatelem ve formátu definice vlastní entity</li>  <li> *shody*: kolekce, která popisuje všechny shody pro danou entitu ve zdrojovém textu. Každá shoda bude mít následující členy: </li> <ul> <li> *text*: nezpracovaný text se shoduje se zdrojovým dokumentem. </li> <li> *offset*: umístění, kde se shoda našla v textu. </li> <li> *Length*: délka spárovaného textu. </li> <li> *matchDistance*: počet znaků, které jsou v této shodě odlišné, byly z názvu původní entity nebo aliasu.  </li> </ul> </ul>
+| entity | Pole objektů, které obsahují informace o nalezených shodách a související metadata. Každá z identifikovaných entit může obsahovat následující pole:  <ul> <li> *Name*: identifikovaná entita nejvyšší úrovně. Entita představuje "normalizovaný" tvar. </li> <li> *ID*: jedinečný identifikátor entity definovaný uživatelem ve formátu definice vlastní entity.</li> <li> *Popis*: Popis entity definovaný uživatelem ve formátu definice vlastní entity. </li> <li> *zadejte:* Typ entity definovaný uživatelem ve formátu definice vlastní entity.</li> <li> *podtyp:* Podtyp entity definovaný uživatelem ve formátu definice vlastní entity</li>  <li> *shody*: kolekce, která popisuje všechny shody pro danou entitu ve zdrojovém textu. Každá shoda bude mít následující členy: </li> <ul> <li> *text*: nezpracovaný text se shoduje se zdrojovým dokumentem. </li> <li> *offset*: umístění, kde se shoda našla v textu. </li> <li> *Length*: délka spárovaného textu. </li> <li> *matchDistance*: počet znaků, které jsou v této shodě odlišné, byly z názvu původní entity nebo aliasu.  </li> </ul> </ul>
   |
 
 ## <a name="custom-entity-definition-format"></a>Vlastní formát definice entity
 
 Existují tři různé způsoby, jak poskytnout seznam vlastních entit pro vlastní schopnost vyhledávání vlastních entit. Seznam můžete zadat v. Soubor CSV, a. Soubor JSON nebo jako vložená definice v rámci definice dovednosti.  
 
-Je-li soubor definice. Sdílený svazek clusteru nebo. Soubor JSON: cesta k souboru musí být zadaná jako součást parametru *entitiesDefitionUri* . V tomto případě je soubor stažen jednou na začátku každého spuštění indexeru. Soubor musí být přístupný, dokud indexer má být spuštěn.
+Je-li soubor definice. Sdílený svazek clusteru nebo. Soubor JSON: cesta k souboru musí být zadaná jako součást parametru *entitiesDefitionUri* . V tomto případě je soubor stažen jednou na začátku každého spuštění indexeru. Soubor musí být přístupný, dokud indexer má být spuštěn. Soubor musí mít také kódování UTF-8.
 
 Pokud je definice poskytnuta jako vložená, měla by být uvedena jako vložená jako obsah parametru *inlineEntitiesDefinition* dovednosti. 
 
@@ -154,7 +154,7 @@ Následující tabulky popisují další podrobnosti o různých parametrech kon
 | fuzzyEditDistance | Volitelné Výchozí hodnota je 0. Maximální hodnota je 5. Označuje přijatelný počet odlišných znaků, které by přesto představovaly shodu s názvem entity. Je vrácena nejmenší možná tomu pro danou shodu.  Pokud je například vzdálenost úprav nastavená na hodnotu 3, "Windows 10" by pořád odpovídala "Windows", "Windows10" a "Windows 7". <br/> Pokud je rozlišování velkých a malých písmen nastaveno na hodnotu false, rozdíly v různých velikostech se nepočítají směrem k tomu toleranci, ale jinak. |
 | defaultCaseSensitive | Volitelné Změní výchozí hodnotu rozlišování velikosti písmen pro tuto entitu. Slouží ke změně výchozí hodnoty všechny aliasy hodnoty caseSensitive. |
 | defaultFuzzyEditDistance | Volitelné Změní výchozí hodnotu přibližné úpravy hodnoty vzdálenosti pro tuto entitu. Dá se použít ke změně výchozí hodnoty všechny aliasy fuzzyEditDistance hodnoty. |
-| hromad | Volitelné Pole komplexních objektů, které lze použít k určení alternativních pravopisů nebo synonym pro název kořenové entity. |
+| aliasy | Volitelné Pole komplexních objektů, které lze použít k určení alternativních pravopisů nebo synonym pro název kořenové entity. |
 
 | Vlastnosti aliasu | Popis |
 |------------------|-------------|
@@ -296,7 +296,7 @@ Případně, pokud se rozhodnete poskytnout ukazatel na definiční soubor entit
   } 
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 + [Integrované dovednosti](cognitive-search-predefined-skills.md)
 + [Jak definovat dovednosti](cognitive-search-defining-skillset.md)

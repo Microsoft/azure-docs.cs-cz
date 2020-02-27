@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/06/2020
+ms.date: 02/25/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 3deb3bd0ff66bb31691c4c380595771e3bf2c681
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: b51016b1b73b51cd1f1ec827f05fc9a93dd4cb38
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75691062"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650703"
 ---
 # <a name="list-blobs-with-net"></a>Výpis objektů BLOB pomocí .NET
 
@@ -135,7 +135,7 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
 {
     CloudBlobDirectory dir;
     CloudBlob blob;
-    BlobContinuationToken continuationToken;
+    BlobContinuationToken continuationToken = null;
 
     try
     {

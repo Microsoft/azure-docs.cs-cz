@@ -2,21 +2,21 @@
 title: Monitorování aktivity migrace – Azure Database Migration Service
 description: Naučte se používat Azure Database Migration Service k monitorování aktivity migrace.
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: b3ba634ddb084b5637d0a0c97c0ac4ff72193c1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/20/2020
+ms.openlocfilehash: 31b49cdd9e0e5569981b2a0b0c6efcab7239e019
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437932"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77648508"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Monitorování aktivity migrace pomocí Azure Database Migration Service
 V tomto článku se dozvíte, jak monitorovat průběh migrace na úrovni databáze i na úrovni tabulky.
@@ -55,7 +55,7 @@ V následující tabulce jsou uvedena pole v okně na úrovni databáze a popisu
     </tr>
     <tr>
       <td rowspan="4" class="Status"><strong>Stav</strong></td>
-      <td>Initializing</td>
+      <td>Inicializace</td>
       <td>DMS nastavuje kanál migrace.</td>
     </tr>
     <tr>
@@ -63,11 +63,11 @@ V následující tabulce jsou uvedena pole v okně na úrovni databáze a popisu
       <td>Kanál DMS je spuštěný a provádí migraci.</td>
     </tr>
     <tr>
-      <td>Kompletní řešení</td>
+      <td>Complete</td>
       <td>Migrace se dokončila.</td>
     </tr>
     <tr>
-      <td>Selhalo</td>
+      <td>Neúspěch</td>
       <td>Migrace se nezdařila. Kliknutím na podrobnosti o migraci zobrazíte chyby migrace.</td>
     </tr>
     <tr>
@@ -92,8 +92,8 @@ V následující tabulce jsou uvedena pole v okně na úrovni databáze a popisu
       <td>Kliknutím na odkaz zobrazíte podrobnosti o chybě.</td>
     </tr>
     <tr>
-      <td rowspan="1" class="duration"><strong>Doba trvání</strong></td>
-      <td>Nevztahuje se</td>
+      <td rowspan="1" class="duration"><strong>Úkolu</strong></td>
+      <td>neuvedeno</td>
       <td>Celková doba z migrační aktivity migrace do migrace byla dokončena nebo došlo k chybě migrace.</td>
     </tr>
      </tbody>
@@ -132,7 +132,7 @@ Následující tabulka popisuje pole zobrazená v průběhu migrace na úrovni t
 | Název pole        | Popis       |
 | ------------- | ------------- |
 | **Stav – synchronizace**      | Průběžná synchronizace je spuštěná. |
-| **Vložit**      | Počet vkládání funkce CDC v řádcích použitých na cíl      |
+| **Zadat**      | Počet vkládání funkce CDC v řádcích použitých na cíl      |
 | **Aktualizace** | Počet aktualizací CDC v řádcích použitých na cíl      |
 | **Odstranění**      | Počet odstranění CDC v řádcích použitých na cíl |
 | **Celkem použito**      | Celkový počet aktualizací CDC, vkládání a odstranění v řádcích použitých pro cíl |

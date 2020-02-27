@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 009a480add9d808115f24a69a400118fec7cb293
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 458012982531e228f7c4968f29e79e8b2e29aa48
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790590"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651423"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatické zálohování v2 pro Azure Virtual Machines (Správce prostředků)
 
@@ -69,7 +69,7 @@ Následující tabulka popisuje možnosti, které je možné nakonfigurovat pro 
 | **Šifrování** |Povolit/zakázat (zakázáno) | Povolí nebo zakáže šifrování. Pokud je povolené šifrování, certifikáty používané k obnovení zálohy se nacházejí v zadaném účtu úložiště. Používá stejný kontejner **automatického zálohování** se stejnou konvencí vytváření názvů. Pokud se změní heslo, vygeneruje se nový certifikát s tímto heslem, starý certifikát ale zůstane k obnovení předchozího zálohování. |
 | **Heslo** |Text hesla | Heslo pro šifrovací klíče. Toto heslo je nutné pouze v případě, že je povoleno šifrování. Aby bylo možné obnovit šifrované zálohování, musíte mít správné heslo a související certifikát, který byl použit v době pořízení zálohy. |
 
-### <a name="advanced-settings"></a>Rozšířená nastavení
+### <a name="advanced-settings"></a>Upřesnit nastavení
 
 | Nastavení | Rozsah (výchozí) | Popis |
 | --- | --- | --- |
@@ -118,11 +118,7 @@ Potom v úterý 10 až 6 hodin se znovu spustí úplné zálohování všech dat
 > [!IMPORTANT]
 > Při plánování každodenních záloh se doporučujeme naplánovat celé časové okno, abyste zajistili, že se všechny databáze budou zálohovat v této době. To je obzvláště důležité v případě, kdy máte k zálohování velké množství dat.
 
-## <a name="configure-in-the-portal"></a>Konfigurace na portálu
-
-Pomocí Azure Portal můžete nakonfigurovat program Automated Backup v2 během zřizování nebo pro existující virtuální počítače s SQL Server 2016/2017.
-
-## <a name="configure-for-new-vms"></a>Konfigurace pro nové virtuální počítače
+## <a name="configure-new-vms"></a>Konfigurace nových virtuálních počítačů
 
 Použijte Azure Portal ke konfiguraci automatického zálohování v2 při vytváření nového virtuálního počítače SQL Server 2016 nebo 2017 v modelu nasazení Správce prostředků.
 
@@ -315,7 +311,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Pokud chcete monitorovat automatizované zálohování na SQL Server 2016/2017, máte dvě hlavní možnosti. Vzhledem k tomu, že automatizované zálohování používá funkci spravovaného zálohování SQL Server, platí stejné postupy monitorování i pro obě.
 

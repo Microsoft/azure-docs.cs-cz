@@ -3,12 +3,12 @@ title: Nasazení zákazníků do správy delegovaných prostředků Azure
 description: Naučte se, jak začlenit správu delegovaných prostředků do Azure, aby k nim bylo možné získat a spravovat jejich prostředky prostřednictvím vašeho vlastního tenanta.
 ms.date: 01/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 34c6173211a9125cace59d77ea942d301919aa26
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 33cf880098e174c2c230a3d78e125ad8df7d894a
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526208"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649785"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Nasazení zákazníků do správy delegovaných prostředků Azure
 
@@ -16,7 +16,7 @@ V tomto článku se dozvíte, jak můžete jako poskytovatel služeb připojit z
 
 Tento postup můžete opakovat, pokud spravujete prostředky pro více zákazníků. Když se pak ověřený uživatel přihlásí k vašemu tenantovi, může být tento uživatel autorizovaný v rámci oborů zákaznických tenantů, aby mohl provádět operace správy, aniž by se musel přihlašovat ke každému tenantovi zákazníka.
 
-Pokud chcete sledovat svůj dopad na zapojení zákazníků a získávat rozpoznávání, přidružte k vašemu předplatnému své ID Microsoft Partner Network (MPN). Další informace najdete v tématu [propojení ID partnera s účty Azure](../../billing/billing-partner-admin-link-started.md). Všimněte si, že budete muset toto přidružení provést v tenantovi poskytovatele služeb.
+Pokud chcete sledovat svůj dopad napříč zapojením zákazníků a získávat rozpoznávání, přidružte své ID Microsoft Partner Network (MPN) k alespoň jednomu uživatelskému účtu, který má přístup ke každému z vašich integrovaných předplatných. Všimněte si, že budete muset toto přidružení provést v tenantovi poskytovatele služeb. Pro zjednodušení doporučujeme vytvořit v tenantovi účet instančního objektu, který je přidružený k vašemu ID MPN, a udělit každému zákazníkovi přístup ke čtečce IT. Další informace najdete v tématu [propojení ID partnera s účty Azure](../../billing/billing-partner-admin-link-started.md). 
 
 > [!NOTE]
 > Při nákupu nabídky spravované služby (veřejné nebo soukromé), kterou jste publikovali do Azure Marketplace, je také možné připojit zákazníky. Další informace najdete v tématu [publikování nabídek spravovaných služeb na Azure Marketplace](publish-managed-services-offers.md). Můžete také použít proces zprovoznění popsaný tady spolu s nabídkou publikovanou do Azure Marketplace.

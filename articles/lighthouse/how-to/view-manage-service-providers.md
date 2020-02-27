@@ -1,18 +1,18 @@
 ---
 title: Zobrazení a správa poskytovatelů služeb
 description: Zákazníci mohou pomocí stránky poskytovatelé služeb v Azure Portal zobrazit informace o poskytovatelích služeb, nabídkách poskytovatele služeb a delegovaných prostředcích.
-ms.date: 01/15/2020
+ms.date: 02/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: ff3c37c02c580a833008a65315009d1e42e49043
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 94103c293ffa7ccfb9d7da0a237dc1b1c6540b72
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046126"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77649734"
 ---
 # <a name="view-and-manage-service-providers"></a>Zobrazení a správa poskytovatelů služeb
 
-Zákazníci mohou pomocí stránky **poskytovatelé služeb** v [Azure Portal](https://portal.azure.com) zobrazit informace o nabídkách poskytovatelů služeb a poskytovatelů služeb, delegovat konkrétní prostředky prostřednictvím [správy delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md)a nakupovat další nabídky poskytovatele služeb. V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které spravují víc tenantů, můžou stejný postup využít k konsolidaci prostředí pro správu.
+Zákazníci mohou pomocí stránky **poskytovatelé služeb** v [Azure Portal](https://portal.azure.com) zobrazit informace o nabídkách poskytovatelů služeb a poskytovatelů služeb, delegovat konkrétní prostředky prostřednictvím [správy delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md)a nakupovat nové nabídky poskytovatelů služeb. V takovém případě budeme odkazováni na poskytovatele služeb a zákazníky a podniky, které spravují víc tenantů, můžou stejný postup využít k konsolidaci prostředí pro správu.
 
 Pro přístup ke stránce **poskytovatelé služeb** v Azure Portal může zákazník vybrat **všechny služby**a pak vyhledat **poskytovatele služeb** a vybrat ho. Můžou je taky najít zadáním "poskytovatelé služeb" do vyhledávacího pole v horní části Azure Portal.
 
@@ -23,7 +23,7 @@ Mějte na paměti, že na stránce **poskytovatelé služeb** se zobrazují jeno
 
 ## <a name="view-service-provider-details"></a>Zobrazit podrobnosti o poskytovateli služeb
 
-Chcete-li zobrazit informace o poskytovatelích služeb, se kterými zákazník pracuje, může vybrat **nabídky poskytovatele** na levé straně stránky **poskytovatelé služeb** .
+Chcete-li zobrazit informace o poskytovatelích služeb, zákazník může vybrat **nabídky poskytovatele** na levé straně stránky **poskytovatelé služeb** .
 
 Pro každou nabídku poskytovatele služeb uvidí Zákazník název poskytovatele služeb a nabídku, která je k ní přidružená, spolu s názvem, který zákazník zadal během procesu připojování.
 
@@ -59,12 +59,20 @@ Po kontrole změn si může zákazník vybrat, že se má aktualizovat na novou 
 
 Delegace představují přiřazení rolí, které udělují poskytovateli služeb oprávnění k prostředkům delegovaným zákazníkem. Chcete-li zobrazit tyto informace, vyberte možnost **delegace** na levé straně stránky **poskytovatelé služeb** .
 
-Filtry v horní části stránky umožňují seřadit a seskupit informace o delegování nebo filtrovat podle konkrétních zákazníků, nabídek nebo klíčových slov.
+Filtry v horní části stránky umožňují řadit a seskupovat informace o delegování. Můžete také filtrovat podle konkrétních zákazníků, nabídek nebo klíčových slov.
 
 > [!NOTE]
 > Zákazníci neuvidí Tato přiřazení rolí ani žádné uživatele z klienta poskytovatele služeb, kterému byly tyto role uděleny při [zobrazení informací o přiřazení role pro delegovaný obor ve Azure Portal](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) nebo prostřednictvím rozhraní API.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="audit-delegations-in-your-environment"></a>Auditovat delegování ve vašem prostředí
 
+Zákazníci můžou chtít získat přehled o předplatných nebo skupinách prostředků, které jsou delegované pro poskytovatele služeb pro [správu delegovaných prostředků Azure](../concepts/azure-delegated-resource-management.md). To je užitečné hlavně pro zákazníky, kteří mají velký počet předplatných nebo kteří mají mnoho uživatelů, kteří provádějí úlohy správy.
+
+Poskytujeme [Azure Policy vestavěnou definici zásad](../../governance/policy/samples/built-in-policies.md#lighthouse) pro auditování delegování oborů do spravovaného tenanta. Tuto zásadu můžete přiřadit ke skupině pro správu, která zahrnuje všechna předplatná, která chcete auditovat. Když zkontrolujete dodržování předpisů pomocí této zásady, budou se všechny delegované předplatné nebo skupiny prostředků (ve skupině pro správu, ke které je zásada přiřazená) zobrazovat v nekompatibilním stavu. Potom můžete zkontrolovat výsledky a ověřit, že neexistují žádná neočekávaná delegování.
+
+Další informace o tom, jak přiřadit zásadu a zobrazit výsledky stavu dodržování předpisů, najdete v tématu [rychlý Start: vytvoření přiřazení zásady](../../governance/policy/assign-policy-portal.md).
+
+## <a name="next-steps"></a>Další kroky
+ 
 - Přečtěte si další informace o [Azure Lighthouse](../overview.md).
 - Přečtěte si, jak můžou poskytovatelé služeb [Zobrazit a spravovat zákazníky](view-manage-customers.md) tak, že na Azure Portal na **moji zákazníci** .

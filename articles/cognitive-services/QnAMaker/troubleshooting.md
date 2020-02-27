@@ -1,22 +1,15 @@
 ---
 title: Řešení potíží – QnA Maker
-titleSuffix: Azure Cognitive Services
 description: Seznam z nejčastějších dotazů týkajících se QnA Maker služby vám pomůže s tím, že službu povedete rychleji a s lepšími výsledky.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/28/2020
+ms.date: 02/21/2020
 ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 18d7e02689cc9c5fe9282a6a2456b8b1574ec85e
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 9032f2cdc134289fef6c0cbc2e874198aefa90ee
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901649"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77650380"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Řešení potíží pro QnA Maker
 
@@ -24,11 +17,12 @@ Seznam z nejčastějších dotazů týkajících se QnA Maker služby vám pomů
 
 <a name="how-to-get-the-qnamaker-service-hostname"></a>
 
-## <a name="how-to-get-the-qnamaker-service-endpoint"></a>Jak získat koncový bod služby Qnamakerem
+<details>
+<summary><b>Jak získat koncový bod služby Qnamakerem</b></summary>
 
-Koncový bod služby Qnamakerem je užitečný pro účely ladění při kontaktování podpory Qnamakerem nebo UserVoice. Koncový bod je adresa URL v tomto formátu: https://your-resource-name.azurewebsites.net.
+**Odpověď**: koncový bod služby qnamakerem je užitečný pro účely ladění při kontaktování podpory Qnamakerem nebo UserVoice. Koncový bod je adresa URL v tomto formátu: https://your-resource-name.azurewebsites.net.
 
-1. Přejděte do služby QnA maker (skupinu prostředků) [webu Azure portal](https://portal.azure.com)
+1. Přejít do služby Qnamakerem (skupina prostředků) v [Azure Portal](https://portal.azure.com)
 
     ![Skupina prostředků Azure QnA maker na webu Azure portal](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
 
@@ -40,61 +34,97 @@ Koncový bod služby Qnamakerem je užitečný pro účely ladění při kontakt
 
     ![Koncový bod Qnamakerem](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
 
+</details>
+
 ## <a name="manage-the-knowledge-base"></a>Správa znalostní báze
 
-### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>Odstranění části Moje QnA Maker, co mám dělat?
+<details>
+<summary><b>Omylem jsem odstranili součást mých QnA Maker, co mám dělat?</b></summary>
 
-Neodstraňujte žádnou ze služeb Azure vytvořených společně s QnA Makerm prostředkem, jako je například Search nebo webová aplikace. To je nezbytné, aby QnA Maker fungovalo, pokud ho odstraníte, QnA Maker přestane fungovat správně.
+**Odpověď**: neodstraňujte žádnou ze služeb Azure, které jste vytvořili společně s prostředkem QnA maker, jako je například Search nebo webová aplikace. To je nezbytné, aby QnA Maker fungovalo, pokud ho odstraníte, QnA Maker přestane fungovat správně.
 
-Všechny operace odstranění jsou trvalé, včetně páry otázek a odpovědí, souborů, adresy URL, vlastní otázky a odpovědi, znalostních bází nebo prostředky Azure. Ujistěte se, že exportujete ze znalostní báze **nastavení** stránky před odstraněním libovolné části znalostní báze.
+Všechny operace odstranění jsou trvalé, včetně páry otázek a odpovědí, souborů, adresy URL, vlastní otázky a odpovědi, znalostních bází nebo prostředky Azure. Před odstraněním jakékoli části znalostní báze se ujistěte, že jste vyexportovali svou znalostní bázi ze stránky **Nastavení** .
 
-### <a name="why-is-my-urlsfiles-not-extracting-question-answer-pairs"></a>Proč je můj adres(y) URL či souborům není extrahování páry otázka – odpověď?
+</details>
 
-Je možné, že nástroj QnA Maker nelze automaticky extrahovat otázky a odpovědi (QnA) obsah z platných adres URL Častých. V takových případech můžete vložit obsah otázek a odpovědí v souboru .txt a zobrazit, pokud nástroj může ingestovat. Alternativně můžete pomocí redakčních úprav přidat obsah do znalostní báze prostřednictvím [portál QnA Maker](https://qnamaker.ai).
+<details>
+<summary><b>Proč moje adresy URL neextrahují páry otázek a odpovědí?</b></summary>
 
-### <a name="how-large-a-knowledge-base-can-i-create"></a>Jak velkou znalostní bázi můžu vytvořit?
+**Odpověď**: je možné, že QnA Maker nemůže automaticky extrahovat obsah otázek a odpovědí (QnA) z platných adres URL pro nejčastější dotazy. V takových případech můžete vložit obsah otázek a odpovědí v souboru .txt a zobrazit, pokud nástroj může ingestovat. Alternativně můžete pomocí [portálu QnA maker](https://qnamaker.ai)přidat obsah do znalostní báze.
 
-Velikost ve znalostní bázi závisí na skladovou Položku z Azure search, kterou zvolíte, při vytváření služby QnA Maker. Čtení [tady](./Tutorials/choosing-capacity-qnamaker-deployment.md) další podrobnosti.
+</details>
 
-### <a name="why-cant-i-see-anything-in-the-drop-down-when-i-try-to-create-a-new-knowledge-base"></a>Proč nevidím nic v rozevíracím seznamu při pokusu o vytvoření nové znalostní báze?
+<details>
+<summary><b>Jak velká znalostní báze můžu vytvořit?</b></summary>
 
-Zatím jste ještě nevytvořili žádné služby QnA Maker v Azure. Čtení [tady](./How-To/set-up-qnamaker-service-azure.md) se dozvíte, jak to provést.
+**Odpověď**: velikost znalostní báze závisí na SKU Azure Search, které zvolíte při vytváření služby QnA maker. Další podrobnosti najdete [tady](./Tutorials/choosing-capacity-qnamaker-deployment.md) .
 
-### <a name="how-do-i-share-a-knowledge-base-with-others"></a>Jak sdílet znalostní báze s ostatními?
+</details>
 
-Sdílení funguje na úrovni služby QnA Maker, to znamená všechny znalostních bází ve službě bude sdílena. Čtení [tady](./How-To/collaborate-knowledge-base.md) jak spolupracovat na znalostní bázi.
+<details>
+<summary><b>Proč se při pokusu o vytvoření nové znalostní báze nezobrazí žádné informace v rozevíracím seznamu?</b></summary>
 
-### <a name="can-you-share-a-knowledge-base-with-a-contributor-that-is-not-in-the-same-aad-tenant-to-modify-a-knowledge-base"></a>Můžete sdílet s přispěvatele, která není ve stejném tenantovi AAD, chcete-li upravit znalostní bázi knowledge base?
+**Odpověď**: ještě jste nevytvořili žádné služby QnA maker v Azure. Další informace o tom, jak to provést, najdete [tady](./How-To/set-up-qnamaker-service-azure.md) .
 
-Sdílení je založená na řízení přístupu Azure na základě rolí (RBAC). Pokud můžete sdílet _jakékoli_ prostředků v Azure s jiným uživatelem, můžete také sdílet QnA Maker.
+</details>
 
-### <a name="if-you-have-an-app-service-plan-with-5-qnamaker-knowledge-bases-can-you-assign-readwrite-rights-to-5-different-users-so-each-of-them-can-access-only-1-qnamaker-knowledge-base"></a>Pokud máte plán služby App Service s 5 znalostních bází QnA maker. Můžete přiřadit oprávnění pro čtení a zápis 5 různých uživatelů tak, aby každý z nich přístup pouze 1 znalostní báze QnA maker?
+<details>
+<summary><b>Návody sdílet znalostní bázi s ostatními?</b></summary>
 
-Můžete sdílet celou službu QnA maker, ne z individuálních znalostních bází.
+**Odpověď**: sdílení funguje na úrovni služby QnA maker, to znamená, že všechny databáze znalostí ve službě budou sdíleny. Přečtěte [si](./How-To/collaborate-knowledge-base.md) , jak spolupracovat na znalostní bázi.
 
-### <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>Jak můžete změnit výchozí zprávu, pokud není nalezena žádná shoda dobré?
+</details>
 
-Výchozí zprávu je součástí nastavení ve službě App service.
+<details>
+<summary><b>Můžete znalostní bázi sdílet s přispěvatelem, který není ve stejném tenantovi AAD, abyste mohli upravit znalostní bázi?</b></summary>
+
+**Odpověď**: sdílení je založené na řízení přístupu na základě role (RBAC) v Azure. Pokud můžete sdílet _libovolný_ prostředek v Azure s jiným uživatelem, můžete také sdílet QnA maker.
+
+</details>
+
+<details>
+<summary><b>Pokud máte plán App Service s 5 Qnamakerem znalostní báze. Můžete přiřadit práva ke čtení a zápisu pro 5 různých uživatelů, aby každý z nich měl přístup jenom k 1 Qnamakerem znalostní bázi Knowledge Base?</b></summary>
+
+**Odpověď**: můžete sdílet celou službu qnamakerem, ne jednotlivé znalostní báze.
+
+</details>
+
+<details>
+<summary><b>Jak změním výchozí zprávu, když se nenajde žádná dobrá shoda?</b></summary>
+
+**Odpověď**: výchozí zpráva je součástí nastavení ve službě App Service.
 - Přejít k prostředku služby vaší aplikace na webu Azure Portal
 
 ![QnA maker služby App Service](./media/qnamaker-faq/qnamaker-resource-list-appservice.png)
-- Klikněte na **nastavení** možnost
+- Klikněte na možnost **Nastavení** .
 
 ![nastavení služby App Service QnA maker](./media/qnamaker-faq/qnamaker-appservice-settings.png)
-- Změňte hodnotu **DefaultAnswer** nastavení
+- Změna hodnoty nastavení **DefaultAnswer**
 - Restartujte službu App service
 
 ![restartování služby App Service QnA maker](./media/qnamaker-faq/qnamaker-appservice-restart.png)
 
-### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Proč není získávání extrahovat odkaz SharePoint?
 
-Zobrazit [umístění zdroje dat](./Concepts/knowledge-base.md#data-source-locations) Další informace.
+</details>
 
-### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>Aktualizace provedené ve znalostní bázi při publikování neprojevily. Proč ne?
+<details>
+<summary><b>Proč můj odkaz na SharePoint nezíská extrakci?</b></summary>
 
-Každou operaci úprav v aktualizace tabulky, testu nebo nastavení, je potřeba uložit před publikováním. Nezapomeňte kliknout na tlačítko **Uložit a naučit** se po každé operaci úprav.
+**Odpověď**: Další informace najdete v tématu [umístění zdrojů dat](./Concepts/knowledge-base.md#data-source-locations) .
 
-### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>Podporuje znalostní báze podpory velké množství dat nebo multimédia?
+</details>
+
+<details>
+<summary><b>Aktualizace, které jsem udělali ve znalostní bázi, se při publikování neprojeví. Proč ne?</b></summary>
+
+**Odpověď**: všechny operace úprav, ať už v tabulce je aktualizace, test nebo nastavení, musí být před publikováním uloženy. Nezapomeňte kliknout na tlačítko **Uložit a naučit** se po každé operaci úprav.
+
+</details>
+
+<details>
+<summary><b>Podporuje znalostní báze bohatá data a multimédia?</b></summary>
+
+**Odpověď**:
 
 #### <a name="multimedia-auto-extraction-for-files-and-urls"></a>Automatické extrakce multimédií pro soubory a adresy URL
 
@@ -104,41 +134,66 @@ Každou operaci úprav v aktualizace tabulky, testu nebo nastavení, je potřeba
 #### <a name="answer-text-in-markdown"></a>Text odpovědi v Markdownu
 Jakmile jsou QnA sady ve znalostní bázi, můžete upravit Markdownu text odpovědi tak, aby zahrnoval odkazy na média dostupná z veřejných adres URL.
 
-### <a name="does-qna-maker-support-non-english-languages"></a>Podporuje QnA Maker jiné jazyky než angličtinu?
 
-Zobrazit další podrobnosti o [podporované jazyky](./Overview/languages-supported.md).
+</details>
 
-Pokud máte obsah v několika jazycích, nezapomeňte pro každý z nich vytvořit samostatnou službu.
+<details>
+<summary><b>Podporuje QnA Maker jiné než anglické jazyky?</b></summary>
+
+**Odpověď**: Další informace o [podporovaných jazycích](./Overview/languages-supported.md)najdete v tématu.
+
+Pokud máte obsah z více jazyků, nezapomeňte vytvořit samostatné služby pro jednotlivé jazyky.
+
+</details>
 
 ## <a name="manage-service"></a>Správa služby
 
-### <a name="when-should-i-restart-my-app-service"></a>Pokud by měla restartovat Moje služby app service?
+<details>
+<summary><b>Kdy bych měl restartovat službu App Service?</b></summary>
 
-Aktualizovat službu app service, pokud je ikona upozornění vedle hodnoty verze pro znalostní báze v **klíče koncového bodu** tabulky na **uživatelská nastavení** [stránky](https://www.qnamaker.ai/UserSettings).
+**Odpověď**: aktualizujte službu App Service, pokud je ikona upozornění vedle hodnoty verze znalostní báze v tabulce **klíče koncového bodu** na [stránce](https://www.qnamaker.ai/UserSettings) **uživatelská nastavení** .
 
-### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>Odstranil (a) jsem stávající vyhledávací službu. Jak mohu tuto situaci opravit?
+</details>
 
-Pokud odstraníte index služby Azure Kognitivní hledání, operace je finální a index nelze obnovit.
+<details>
+<summary><b>Odstranil (a) jsem stávající vyhledávací službu. Jak mohu tuto situaci opravit?</b></summary>
 
-### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>Ve vyhledávací službě jsme odstranili můj `testkb` index. Jak mohu tuto situaci opravit?
+**Odpověď**: Pokud odstraníte index služby Azure kognitivní hledání, operace je finální a index nelze obnovit.
 
-Stará data se nedají obnovit. Vytvořte nový prostředek QnA Maker a znovu vytvořte znalostní bázi.
+</details>
 
-### <a name="when-should-i-refresh-my-endpoint-keys"></a>Kdy mám obnovit klíče Moje koncový bod?
+<details>
+<summary><b>Ve vyhledávací službě jsme odstranili můj `testkb` index. Jak mohu tuto situaci opravit?</b></summary>
 
-Aktualizujte klíče koncového bodu, pokud máte podezření, že byl napaden.
+**Odpověď**: stará data nejde obnovit. Vytvořte nový prostředek QnA Maker a znovu vytvořte znalostní bázi.
 
-### <a name="can-i-use-the-same-azure-cognitive-search-resource-for-knowledge-bases-using-multiple-languages"></a>Můžu použít stejný prostředek Kognitivní hledání služby Azure pro znalostní báze s použitím více jazyků?
+</details>
 
-Pokud chcete použít víc jazyků a více znalostních bází, má uživatel a vytvoří prostředek QnA Maker pro jednotlivé jazyky. Tím se vytvoří samostatná služba Azure Search na jednotlivé jazyky. Kombinování jiný jazyk znalostních bází ve službě Azure search jednoho způsobí snížení relevance výsledků.
+<details>
+<summary><b>Kdy mám aktualizovat klíče koncového bodu?</b></summary>
 
-### <a name="how-can-i-change-the-name-of-the-azure-cognitive-search-resource-used-by-qna-maker"></a>Jak mohu změnit název prostředku Kognitivní hledání služby Azure, který používá QnA Maker?
+**Odpověď**: aktualizujte klíče koncového bodu, pokud máte podezření, že došlo k ohrožení zabezpečení.
 
-Název prostředku služby Azure Kognitivní hledání je název prostředku QnA Maker s některými náhodnými písmeny připojenými na konci. Díky tomu se obtížně rozlišovat mezi více hledat prostředky pro nástroj QnA Maker. Vytvořte samostatnou vyhledávací službu (pojmenujte ji tak, jak byste chtěli) a připojte ji ke službě QnA. Postup je podobný postupům, které je třeba provést při [upgradu služby Azure Search](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service).
+</details>
 
-### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Když QnA Maker vrátí `Runtime core is not initialized,` jak ho mám opravit?
+<details>
+<summary><b>Můžu použít stejný prostředek Kognitivní hledání služby Azure pro znalostní báze s použitím více jazyků?</b></summary>
 
-Místo na disku pro službu App Service může být plné. Postup opravy místa na disku:
+**Odpověď**: Chcete-li použít více jazyků a více znalostní báze, musí uživatel vytvořit prostředek QnA maker pro každý jazyk. Tím se vytvoří samostatná služba Azure Search na jednotlivé jazyky. Kombinování jiný jazyk znalostních bází ve službě Azure search jednoho způsobí snížení relevance výsledků.
+
+</details>
+
+<details>
+<summary><b>Jak mohu změnit název prostředku Kognitivní hledání služby Azure, který používá QnA Maker?</b></summary>
+
+**Odpověď**: název prostředku Azure kognitivní hledání je název prostředku QnA maker s některými náhodnými písmeny připojenými na konci. Díky tomu se obtížně rozlišovat mezi více hledat prostředky pro nástroj QnA Maker. Vytvořte samostatnou vyhledávací službu (pojmenujte ji tak, jak byste chtěli) a připojte ji ke službě QnA. Postup je podobný postupům, které je třeba provést při [upgradu služby Azure Search](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service).
+
+</details>
+
+<details>
+<summary><b>Když QnA Maker vrátí `Runtime core is not initialized,` jak ho mám opravit?</b></summary>
+
+**Odpověď**: místo na disku pro službu App Service může být plné. Postup opravy místa na disku:
 
 1. V [Azure Portal](https://portal.azure.com)vyberte službu App service vaší QnA maker a pak tuto službu zastavte.
 1. Pořád ve službě App Service vyberte **vývojové nástroje**, pak **Rozšířené nástroje**a pak **Přejít**na. Otevře se nové okno prohlížeče.
@@ -155,20 +210,28 @@ Místo na disku pro službu App Service může být plné. Postup opravy místa 
 1. Spusťte službu App Service.
 1. Přístup k vaší znalostní bázi vám umožní ověřit, jestli je teď funguje.
 
+</details>
 
 ## <a name="integrate-with-other-services-including-bots"></a>Integrace s dalšími službami, včetně robotů
 
-### <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>Pokud chci používat QnA Maker, musím používat Bot Framework?
+<details>
+<summary><b>Potřebuji použít rozhraní bot Framework, aby bylo možné použít QnA Maker?</b></summary>
 
-Ne, nemusíte používat [rozhraní bot Framework](https://github.com/Microsoft/botbuilder-dotnet) s QnA maker. QnA Maker se ale nabízí jako jedna z několika šablon v [Azure bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0). Bot Service umožňuje rychlý vývoj inteligentních robotů prostřednictvím Microsoft Bot Framework a běží v prostředí bez serveru.
+**Odpověď**: Ne, nemusíte používat [rozhraní Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) s QnA maker. QnA Maker se ale nabízí jako jedna z několika šablon v [Azure bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0). Bot Service umožňuje rychlý vývoj inteligentních robotů prostřednictvím Microsoft Bot Framework a běží v prostředí bez serveru.
 
-### <a name="how-can-i-create-a-new-bot-with-qna-maker"></a>Jak můžu vytvořit nový robot s QnA Maker?
+</details>
 
-Postupujte podle pokynů v [to](./Tutorials/create-qna-bot.md) dokumentaci k vytvoření vašeho robota pomocí služby Azure Bot Service.
+<details>
+<summary><b>Jak můžu vytvořit nový robot s QnA Maker?</b></summary>
 
-### <a name="how-do-i-use-a-different-knowledge-base-with-an-existing-azure-bot-service"></a>Návody použít jinou znalostní bázi se stávající službou Azure bot Service?
+**Odpověď**: podle pokynů v [této](./Tutorials/create-qna-bot.md) dokumentaci vytvořte robota s Azure bot Service.
 
-Musíte mít následující informace o znalostní bázi Knowledge Base:
+</details>
+
+<details>
+<summary><b>Návody použít jinou znalostní bázi se stávající službou Azure bot Service?</b></summary>
+
+**Odpověď**: musíte mít následující informace o znalostní bázi Knowledge Base:
 
 * ID znalostní báze
 * Název vlastní subdomény publikovaného koncového bodu znalostní báze, který se po publikování nachází na stránce **Nastavení** , se označuje jako `host`.
@@ -178,19 +241,32 @@ Tyto informace najdete v Azure Portal do App Service bot. V části **Nastavení
 
 Klíč koncového bodu znalostní báze je označený `QnAAuthkey` ve službě ABS.
 
-### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>Můžou dvě nebo víc klientských aplikací sdílet znalostní bázi?
+</details>
 
-Ano, znalostní bázi se můžete dotazovat z libovolného počtu klientů. Pokud se odezva ze znalostní báze jeví jako pomalá nebo časový limit, zvažte možnost upgradovat úroveň služby pro službu App Service přidruženou ke znalostní bázi.
+<details>
+<summary><b>Můžou dvě nebo víc klientských aplikací sdílet znalostní bázi?</b></summary>
 
-### <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>Jak se dá služba QnA Maker vložit na web?
+**Odpověď**: Ano, znalostní bázi se dá dotazovat z libovolného počtu klientů. Pokud se odezva ze znalostní báze jeví jako pomalá nebo časový limit, zvažte možnost upgradovat úroveň služby pro službu App Service přidruženou ke znalostní bázi.
 
-Použijte následující postup vložit službu QnA Maker jako řízení webového chatu na vašem webu:
+</details>
 
-1. Vytvořte robota nejčastější dotazy týkající se podle následujících pokynů [tady](./Tutorials/create-qna-bot.md).
-2. Povolení web chat podle postupu [zde](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat)
+<details>
+<summary><b>Návody službu QnA Maker na svém webu vložit?</b></summary>
+
+**Odpověď**: postupujte podle těchto kroků a vložte QnA maker službu jako ovládací prvek webové konverzace na svém webu:
+
+1. Pomocí pokynů [zde můžete](./Tutorials/create-qna-bot.md)vytvořit robotská okna s nejčastějšími dotazy.
+2. Povolte webový chat podle kroků uvedených [tady](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) .
+
+</details>
 
 ## <a name="data-storage"></a>Úložiště dat
 
-### <a name="what-data-is-stored-and-where-is-it-stored"></a>Jaká data se ukládají a kde je uložen?
+<details>
+<summary><b>Jaká data jsou uložená a kde jsou uložená?</b></summary>
+
+**Odpověď**:
 
 Při vytváření služby QnA Maker vybrané oblasti Azure. Znalostních bází a soubory protokolu se ukládají v této oblasti.
+
+</details>

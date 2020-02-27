@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/31/2017
-ms.openlocfilehash: 77ec5434b83c4246dc448578dcf2902e19f42e95
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: cbf0a1f033ddafc68debab8de26dff29d73cc98e
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792318"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651470"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange X12 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
 
@@ -34,7 +34,7 @@ Až [vytvoříte účet pro integraci](../logic-apps/logic-apps-enterprise-integ
 
 ## <a name="create-an-x12-agreement"></a>Vytvoření smlouvy X12
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com "Portál Azure"). 
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com "Azure Portal"). 
 
 2. V hlavní nabídce Azure vyberte **všechny služby**. 
    Do vyhledávacího pole zadejte "Integration" a pak vyberte **účty pro integraci**.  
@@ -66,7 +66,7 @@ Až [vytvoříte účet pro integraci](../logic-apps/logic-apps-enterprise-integ
 
     | Vlastnost | Popis |
     | --- | --- |
-    | Name (Název) |Název smlouvy |
+    | Název |Název smlouvy |
     | Typ smlouvy | By měl být X12 |
     | Partner hostitele |Smlouva potřebuje hostitele i partnera hosta. Partner hostitele představuje organizaci, která konfiguruje smlouvu. |
     | Hostitelská identita |Identifikátor hostitelského partnera |
@@ -120,7 +120,7 @@ Vyberte schéma pro každý typ transakce (ST1) a aplikace odesílatele (GS2 úr
 
 | Vlastnost | Popis |
 | --- | --- |
-| Version |Vybrat verzi X12 |
+| Verze |Vybrat verzi X12 |
 | Typ transakce (ST01) |Vyberte typ transakce. |
 | Aplikace odesílatele (GS02) |Výběr aplikace odesílatele |
 | Schéma |Vyberte soubor schématu, který chcete použít. Do účtu pro integraci se přidají schémata. |
@@ -146,7 +146,7 @@ Vyberte schéma pro každý typ transakce (ST1) a aplikace odesílatele (GS2 úr
 | Zakázat duplicity kontrolních čísel skupin |Blokové změny s duplicitními čísly řízení skupiny. |
 | Zakázat duplicity kontrolního čísla sady transakcí |Blokové změny s duplicitními čísly řízení sady transakcí. |
 
-### <a name="validations"></a>Ověření
+### <a name="validation"></a>Ověření
 
 ![Nastavení vlastností ověření pro přijaté zprávy](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
 
@@ -214,9 +214,9 @@ Vaše smlouva je teď připravená na zpracování odchozích zpráv, které odp
 
 | Vlastnost | Popis |
 | --- | --- |
-| Version |Vybrat verzi X12 |
+| Verze |Vybrat verzi X12 |
 | Typ transakce (ST01) |Vyberte typ transakce. |
-| XSD |Vyberte schéma, které chcete použít. Schémata se nacházejí v účtu pro integraci. Pokud nejprve vyberete schéma, bude automaticky nakonfiguruje typ verze a transakce.  |
+| SCHEMA |Vyberte schéma, které chcete použít. Schémata se nacházejí v účtu pro integraci. Pokud nejprve vyberete schéma, bude automaticky nakonfiguruje typ verze a transakce.  |
 
 > [!NOTE]
 > Nakonfigurujte požadované [schéma](../logic-apps/logic-apps-enterprise-integration-schemas.md) , které se nahraje na [účet pro integraci](../logic-apps/logic-apps-enterprise-integration-accounts.md).
@@ -239,16 +239,16 @@ Vaše smlouva je teď připravená na zpracování odchozích zpráv, které odp
 | Indikátor využití (ISA15) |Vyberte kontext výměny.  Hodnoty jsou informace, produkční data nebo testovací data. |
 | Schéma |Vygeneruje segmenty GS a ST pro X12 kódovaný pro kódování, které posílá do kanálu pro odeslání. |
 | GS1 |Volitelné, v rozevíracím seznamu vyberte hodnotu pro funkční kód. |
-| GS2 úrovně |Volitelné, odesílatel aplikace |
-| GS3 úrovně |Volitelné, příjemce aplikace |
-| GS4 úrovně |Volitelné, vyberte CCYYMMDD nebo rrmmdd. |
+| GS2 |Volitelné, odesílatel aplikace |
+| GS3 |Volitelné, příjemce aplikace |
+| GS4 |Volitelné, vyberte CCYYMMDD nebo rrmmdd. |
 | GS5 |Volitelné, vyberte HHMM, HHMMSS nebo HHMMSSdd |
 | GS7 |Volitelné, v rozevíracím seznamu vyberte hodnotu zodpovědného subjektu. |
 | GS8 |Volitelná verze dokumentu |
 | Kontrolní číslo výměny (ISA13) |Požadováno, zadejte rozsah hodnot pro kontrolní číslo výměny. Zadejte číselnou hodnotu s minimální hodnotou 1 a maximálně 999999999. |
 | Řídicí číslo skupiny (GS06) |Požadováno, zadejte rozsah čísel pro kontrolní číslo skupiny. Zadejte číselnou hodnotu s minimální hodnotou 1 a maximálně 999999999. |
 | Kontrolní číslo sady transakcí (ST02) |Požadováno, zadejte rozsah čísel pro kontrolní číslo sady transakcí. Zadejte rozsah číselných hodnot s minimální hodnotou 1 a maximálně 999999999. |
-| Předvolba |Volitelné, určené pro rozsah řídicích čísel sady transakcí použitých v potvrzení. Do polí předpona a přípona zadejte číselnou hodnotu pro střední dvě pole a alfanumerický údaj (Pokud je to potřeba). Prostřední pole jsou povinná a obsahují minimální a maximální hodnoty pro kontrolní číslo. |
+| Směr |Volitelné, určené pro rozsah řídicích čísel sady transakcí použitých v potvrzení. Do polí předpona a přípona zadejte číselnou hodnotu pro střední dvě pole a alfanumerický údaj (Pokud je to potřeba). Prostřední pole jsou povinná a obsahují minimální a maximální hodnoty pro kontrolní číslo. |
 | Auditování |Volitelné, určené pro rozsah řídicích čísel sady transakcí použitých v potvrzení. Do polí předpona a přípona zadejte číselnou hodnotu pro střední dvě pole a alfanumerický údaj (Pokud je to potřeba). Prostřední pole jsou povinná a obsahují minimální a maximální hodnoty pro kontrolní číslo. |
 
 ### <a name="character-sets-and-separators"></a>Znakové sady a oddělovače
@@ -296,9 +296,13 @@ Po dokončení každého ověřovacího řádku se přidá další automaticky. 
 
     ![Vybrat dlaždici smlouvy](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
-## <a name="view-the-swagger"></a>Zobrazit Swagger
-Podívejte se na [Podrobnosti Swagger](/connectors/x12/). 
+## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-## <a name="learn-more"></a>Další informace
-* [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informace o Enterprise Integration Pack")  
+Další technické podrobnosti o této spojnici, jako jsou akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/x12/). 
 
+> [!NOTE]
+> V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
+
+## <a name="next-steps"></a>Další kroky
+
+* Další informace o dalších [konektorech Logic Apps](../connectors/apis-list.md)

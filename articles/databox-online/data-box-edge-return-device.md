@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: a5fee604a529e9ca6153f6c189f199577ae65426
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 521277b2eed7edfba016f6a80e8f877decfb0ac5
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356159"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651096"
 ---
 # <a name="return-or-replace-your-azure-data-box-edge-device"></a>Vrácení nebo nahrazení zařízení Azure Data Box Edge
 
@@ -47,7 +47,7 @@ Pokud chcete zařízení obnovit pomocí místního webového uživatelského ro
 
 Resetování smaže data z datových disků zařízení. V závislosti na množství dat v zařízení tento proces trvá přibližně 30-40 minut.
 
-Případně se připojte k rozhraní PowerShell zařízení a pomocí `Reset-HcsAppliance` rutiny smažte data z datových disků. Další informace najdete v tématu [resetování zařízení](data-box-edge-connect-powershell-interface.md#reset-your-device).
+Případně se připojte k rozhraní PowerShell zařízení a pomocí rutiny `Reset-HcsAppliance` mazání dat z datových disků. Další informace najdete v tématu [resetování zařízení](data-box-edge-connect-powershell-interface.md#reset-your-device).
 
 > [!NOTE]
 > - Pokud vyměňujete nebo upgradujete na nové zařízení, doporučujeme, abyste zařízení obnovili až po obdržení nového zařízení.
@@ -59,7 +59,7 @@ Chcete-li zahájit proces návratu, proveďte následující kroky.
 
 1. Otevřete lístek podpory s podpora Microsoftu, který indikuje, že chcete zařízení vrátit. Vyberte typ problému jako **data box Edge hardware**.
 
-    ![Otevřít lístek podpory](media/data-box-edge-return-device/open-support-ticket-1.png)  
+    ![Otevření lístku podpory](media/data-box-edge-return-device/open-support-ticket-1.png)  
 
 2. Vás bude kontaktovat pracovník podpora Microsoftu. Zadejte podrobnosti expedice.
 3. Pokud potřebujete pole pro návrat do expedice, můžete si ho vyžádat. Odpověď **Ano** na otázku **vyžaduje prázdné pole, které se má vrátit**.
@@ -72,7 +72,7 @@ Chcete-li zahájit proces návratu, proveďte následující kroky.
 3. Odpojte napájecí kabely a odeberte ze zařízení všechny síťové kabely.
 4. Připravte balíček dodávek pomocí vlastního pole nebo prázdného pole, které jste dostali z Azure. Umístěte zařízení a napájecí šňůry, které byly dodávány se zařízením v poli.
 5. Připevněte expediční štítek, který jste dostali z Azure v balíčku.
-6. Naplánujte vyzvednutí pomocí svého regionálního dopravce. Pokud se zařízení vrátí do USA, je váš dopravce. Naplánování výdeje:
+6. Naplánujte vyzvednutí místní přepravní službou. Pokud se zařízení v nám vrátí, může být váš dopravce zdrojem nebo FedEx. Naplánování vyzvednutí pomocí zdroje UPS:
 
     1. Zavolejte místní zdroje UPS (bezplatné číslo pro telefonní číslo pro konkrétní zemi).
     2. Ve svém volání citujete číslo sledování zpětné dodávky, jak je znázorněno na vytištěném popisku.
@@ -85,7 +85,7 @@ Chcete-li zahájit proces návratu, proveďte následující kroky.
 Po přijetí zařízení v datovém centru Azure se v zařízení zkontroluje poškození nebo jakékoli případné známky manipulace.
 
 - Pokud zařízení dorazí na nedotčené a dobrý tvar, měřič účtování se zastaví pro daný prostředek. Podpora Microsoftu vás bude kontaktovat, abyste ověřili, že se zařízení vrátilo. Pak můžete odstranit prostředek přidružený k zařízení v Azure Portal.
-- Pokud zařízení dorazí k výraznému poškození, mohou se vztahovat pokuty. Podrobnosti najdete v nejčastějších [dotazech o ztracených nebo poškozených](https://azure.microsoft.com/pricing/details/databox/edge/) [licenčních službách](https://www.microsoft.com/licensing/product-licensing/products)zařízení a produktu.  
+- Pokud zařízení dorazí k výraznému poškození, mohou se vztahovat pokuty. Podrobnosti najdete v [nejčastějších dotazech o ztracených nebo poškozených](https://azure.microsoft.com/pricing/details/databox/edge/) [licenčních službách](https://www.microsoft.com/licensing/product-licensing/products)zařízení a produktu.  
 
 
 Zařízení můžete v Azure Portal odstranit:
@@ -103,7 +103,7 @@ Proveďte následující kroky a odstraňte zařízení a prostředek v Azure Po
 
 2. V okně **Odstranit zařízení** zadejte název zařízení, které chcete odstranit, a vyberte **Odstranit**.
 
-    ![Potvrdit odstranění](media/data-box-edge-return-device/delete-resource-2.png)
+    ![Potvrzení odstranění](media/data-box-edge-return-device/delete-resource-2.png)
 
 Po úspěšném odstranění zařízení a přidruženého prostředku budete upozorněni.
 
@@ -117,7 +117,7 @@ Náhradní zařízení je potřeba, když dojde k selhání hardwaru v existují
 4. Pomocí všech kroků vraťte původní zařízení:
     1. Otevřete jiný lístek a vraťte původní zařízení.
     2. [Vymaže data na zařízení](#erase-data-from-the-device).
-    3. [](#schedule-a-pickup)Naplánování výdeje.
+    3. [Naplánování výdeje](#schedule-a-pickup).
     5. [Odstraní prostředek](#delete-the-resource) přidružený ke vrácenému zařízení.
 
 
