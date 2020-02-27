@@ -54,18 +54,20 @@
         - name: Vydání
           href: threat-modeling-tool-releases.md
           items:
-            - name: 'Threat Modeling Tool, vydání GA 7.1.5091.2 – 12. 9. 2018'
+            - name: 'Threat Modeling Tool, vydání GA 7.1.5091.2 – 12. září 2018'
               href: threat-modeling-tool-releases-71509112.md
-            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.51023.1 – 1. 10. 2018'
+            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.51023.1 – 1. listopadu 2018'
               href: threat-modeling-tool-releases-71510231.md
-            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.60126.1 – 29. 1. 2019'
+            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.60126.1 – 29. ledna 2019'
               href: threat-modeling-tool-releases-71601261.md
-            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.60408.1 – 9. 4. 2019'
+            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.60408.1 – 9. dubna 2019'
               href: threat-modeling-tool-releases-71604081.md
-            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.60702.1 – 2. 7. 2019'
+            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.60702.1 – 2. července 2019'
               href: threat-modeling-tool-releases-71607021.md
-            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.61015.1 – 16. 10. 2019'
+            - name: 'Threat Modeling Tool, vydání aktualizace 7.1.61015.1 – 16. října 2019'
               href: threat-modeling-tool-releases-71610151.md
+            - name: 'Threat Modeling Tool, vydání aktualizace 7.3.00206.1 – 11. února 2020'
+              href: threat-modeling-tool-releases-73002061.md
         - name: Omezení rizik
           href: threat-modeling-tool-mitigations.md
           items:

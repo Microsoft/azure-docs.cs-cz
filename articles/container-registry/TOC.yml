@@ -141,15 +141,17 @@
       items:
         - name: Automatizace sestavení imagí kontejneru
           items:
-            - name: Sestavení ze zdrojového kontextu
+            - name: 1. Sestavení ze zdrojového kontextu
               href: container-registry-tutorial-quick-task.md
-            - name: Sestavení s potvrzením kódu
+            - name: 2a. Sestavení s potvrzením kódu
               href: container-registry-tutorial-build-task.md
-            - name: Úloha s více kroky s potvrzením kódu
+            - name: 2b. Úloha s více kroky s potvrzením kódu
               href: container-registry-tutorial-multistep-task.md
-            - name: Sestavení s aktualizací základní image
+            - name: 3a. Sestavení s aktualizací základní image
               href: container-registry-tutorial-base-image-update.md
-            - name: Naplánování úlohy
+            - name: 3b. Sestavení s aktualizací privátní základní image
+              href: container-registry-tutorial-private-base-image-update.md
+            - name: 4. Sestavení podle plánu
               href: container-registry-tasks-scheduled.md
     - name: ukázky
       expanded: false
@@ -160,6 +162,8 @@
       items:
         - name: Úlohy s více kroky
           href: container-registry-tasks-multi-step.md
+        - name: Aktualizace základní image
+          href: container-registry-tasks-base-images.md
     - name: Návody
       expanded: false
       items:

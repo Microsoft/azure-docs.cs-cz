@@ -62,10 +62,14 @@
       href: load-balancer-security-controls.md
 - name: Postup
   items:
-    - name: Upgrade veřejného nástroje pro vyrovnávání zatížení verze Basic na veřejný nástroj pro vyrovnávání zatížení verze Standard
-      href: upgrade-basic-standard.md
-    - name: Upgrade interního nástroje pro vyrovnávání zatížení verze Basic na interní nástroj pro vyrovnávání zatížení verze Standard
-      href: upgrade-basicInternal-standard.md
+    - name: Upgrade nástroje pro vyrovnávání zatížení verze Basic na verzi Standard Load Balancer
+      items:
+        - name: Upgrade veřejného nástroje pro vyrovnávání zatížení verze Basic
+          href: upgrade-basic-standard.md
+        - name: Upgrade interního nástroje pro vyrovnávání zatížení verze Basic – nevyžaduje se odchozí připojení
+          href: upgrade-basicInternal-standard.md
+        - name: Upgrade interního nástroje pro vyrovnávání zatížení verze Basic – vyžaduje se odchozí připojení
+          href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Konfigurace odchozích pravidel
       items:
         - name: portál Azure

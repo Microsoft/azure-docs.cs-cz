@@ -195,6 +195,8 @@
           href: setup-cicd-vs-code.md
         - name: Zkoumání úloh
           href: visual-studio-code-explore-jobs.md
+        - name: Pole JobConfig.json
+          href: job-config-json.md
     - name: Řešení potíží
       items:
         - name: Vstup

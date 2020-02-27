@@ -329,23 +329,18 @@
           href: how-to-deploy-existing-model.md
         - name: Řešení potíží a ladění
           href: how-to-troubleshoot-deployment.md
-    - name: Využívání webových služeb
-      items:
-        - name: Využívání v reálném čase
+        - name: Vytváření klientů
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Dávkové predikce designeru
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
-          href: how-to-run-batch-predictions-designer.md
-    - name: Monitorování modelů
-      items:
-        - name: Shromažďování a vyhodnocování dat modelů
-          displayName: track production
-          href: how-to-enable-data-collection.md
-        - name: Zjišťování odchylek dat
-          href: how-to-monitor-data-drift.md
-        - name: Monitorování pomocí Application Insights
-          href: how-to-enable-app-insights.md
+        - name: Monitorování modelů
+          items:
+            - name: Shromažďování a vyhodnocování dat modelů
+              displayName: track production
+              href: how-to-enable-data-collection.md
+            - name: Zjišťování odchylek dat
+              href: how-to-monitor-data-drift.md
+            - name: Monitorování pomocí Application Insights
+              href: how-to-enable-app-insights.md
     - name: Vytváření a použití kanálů ML
       displayName: pipelines
       items:
@@ -372,6 +367,9 @@
         - name: Ladění a řešení potíží s krokem paralelního spuštění
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
+        - name: Dávkové predikce designeru
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
     - name: Správa kvót prostředků
       displayName: limits
       href: how-to-manage-quotas.md

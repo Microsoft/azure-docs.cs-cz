@@ -59,6 +59,8 @@
       href: high-availability-disaster-recovery.md
     - name: Proměnné prostředí modulu runtime úloh
       href: batch-compute-node-environment-variables.md
+    - name: Dávková integrace se zásadami Azure
+      href: batch-integration-policies.md
 - name: Návody
   items:
     - name: Správa účtů služby Batch

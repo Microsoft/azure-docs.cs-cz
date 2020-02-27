@@ -1,0 +1,63 @@
+### YamlMime:Landing
+title: Dokumentace k Azure Mobile Apps
+summary: Naučte se využívat Mobile Apps ve službě Azure App Service k sestavování a hostování nativních aplikací pro iOS, Android nebo Windows nebo aplikací pro více platforem pomocí Xamarinu nebo Cordovy.
+metadata:
+  title: Dokumentace k Azure Mobile Apps
+  description: Naučte se využívat Mobile Apps ve službě Azure App Service k sestavování a hostování nativních aplikací pro iOS, Android nebo Windows nebo aplikací pro více platforem pomocí Xamarinu nebo Cordovy.
+  ms.topic: landing-page
+  ms.service: app-service-mobile
+  author: georgewallace
+  ms.author: gwallace
+  manager: gwallace
+  ms.date: 02/19/2020
+  ms.openlocfilehash: 024d1588a0897a6f312f25fa83c7e58f4e30aec2
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77617648"
+landingContent:
+- title: Přehled
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Co jsou Mobile Apps?
+      url: app-service-mobile-value-prop.md
+    - text: Plány služby App Service
+      url: ../app-service/overview-hosting-plans.md
+    - text: Knihovna videí ke službě App Service
+      url: https://azure.microsoft.com/documentation/videos/index/?services=app-service
+- title: Rychlé starty
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření aplikace pro Android
+      url: app-service-mobile-android-get-started.md
+    - text: Vytvoření aplikace na platformě Apache Cordova
+      url: app-service-mobile-cordova-get-started.md
+    - text: Vytvoření aplikace pro iOS
+      url: app-service-mobile-ios-get-started.md
+    - text: Vytvoření aplikace pro Windows
+      url: app-service-mobile-windows-store-dotnet-get-started.md
+    - text: Vytvoření aplikace Xamarin.Android
+      url: app-service-mobile-xamarin-android-get-started.md
+    - text: Vytvoření aplikace Xamarin.iOS
+      url: app-service-mobile-xamarin-ios-get-started.md
+    - text: Vytvoření aplikace na platformě Xamarin.Forms
+      url: app-service-mobile-xamarin-forms-get-started.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Back-endová sada SDK pro .NET
+      url: /dotnet/api/overview/azure/mobile
+    - text: Back-endová sada SDK pro Node.js
+      url: https://azure.github.io/azure-mobile-apps-node/
+    - text: Klientská sada SDK pro Android
+      url: https://azure.github.io/azure-mobile-apps-android-client/
+    - text: Klientská sada SDK pro iOS
+      url: https://azure.github.io/azure-mobile-apps-ios-client/
+    - text: Klientská sada SDK pro JavaScript/Cordovu
+      url: https://azure.github.io/azure-mobile-apps-js-client/
+    - text: Klientská sada SDK pro Windows/Xamarin
+      url: /dotnet/api/overview/azure/mobileapps/client

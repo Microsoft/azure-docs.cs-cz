@@ -69,7 +69,7 @@
               href: ./hdinsight-hadoop-create-linux-clusters-portal.md
             - name: Vytváření clusterů pomocí šablon
               href: ./hdinsight-hadoop-create-linux-clusters-arm-templates.md
-            - name: Vytváření clusterů pomocí příkazového řádku
+            - name: Vytváření clusterů pomocí Azure CLI
               href: ./hdinsight-hadoop-create-linux-clusters-azure-cli.md
             - name: Vytváření clusterů pomocí PowerShellu
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md

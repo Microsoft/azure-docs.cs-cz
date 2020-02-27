@@ -23,9 +23,11 @@
     - name: Jak služba Personalizace funguje
       href: how-personalizer-works.md
       displayName: 'rank, reward, api, explore, exploit, score, design, research, loop, action, context, feature, JSON, event, inactive, model'
-    - name: Kde se dá služba Personalizace využít?
+    - name: Kde používat službu Personalizace
       href: where-can-you-use-personalizer.md
       displayName: 'checklist, considerations, effectiveness, recommendation engine'
+    - name: Terminologie
+      href: terminology.md
     - name: Etické a zodpovědné využití
       href: ethics-responsible-use.md
       displayName: 'best practice, design'
@@ -34,9 +36,11 @@
         - name: Kontext a akce funkcí
           href: concepts-features.md
           displayName: 'action, context, feature, namespace, JSON, best practice, set, ID, guid, event id,'
-        - name: Aktivní a neaktivní události
+        - name: Zásady učení
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: Aktivní a neaktivní události
+          href: concept-active-inactive-events.md
         - name: Odměny
           href: concept-rewards.md
           displayName: 'reward, wait time, default reward'
@@ -56,15 +60,15 @@
       href: concepts-scalability-performance.md
 - name: Návody
   items:
-    - name: Vytvoření a konfigurace služby Personalizace
+    - name: Vytvoření prostředku Personalizace
+      href: how-to-create-resource.md
+    - name: Konfigurace výukové smyčky
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
-    - name: Správa zásad učení
-      href: how-to-learning-policy.md
-    - name: Analýza
-      items:
-        - name: Offline vyhodnocení
-          href: how-to-offline-evaluation.md
+    - name: Správa nastavení modelu a učení
+      href: how-to-manage-model.md
+    - name: Analýza s využitím offline vyhodnocení
+      href: how-to-offline-evaluation.md
 - name: Referenční informace
   items:
     - name: ukázky

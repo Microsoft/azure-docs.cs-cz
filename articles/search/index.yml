@@ -10,29 +10,43 @@ metadata:
   ms.collection: collection
   author: HeidiSteen
   ms.author: heidist
-  ms.date: 09/20/2019
-  ms.openlocfilehash: 3d011bdf1f0da04efec86adc121326a877532b6f
-  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.date: 02/25/2020
+  ms.openlocfilehash: b1df45b155e9c9d1bd4433d7ddc765c126686a07
+  ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/24/2020
-  ms.locfileid: "76721060"
+  ms.lasthandoff: 02/26/2020
+  ms.locfileid: "77614975"
 landingContent:
 - title: Informace o kognitivním hledání
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je kognitivní hledání Azure?
+    - text: Co je Azure Cognitive Search
       url: search-what-is-azure-search.md
-  - linkListType: architecture
-    links:
-    - text: Jak funguje fulltextové vyhledávání v kognitivním hledání
-      url: search-lucene-query-architecture.md
+    - text: Co je rozšiřování AI
+      url: cognitive-search-concept-intro.md
+    - text: Co je indexer
+      url: search-indexer-overview.md
   - linkListType: video
     links:
     - text: Co je kognitivní hledání (1 min 27 s)
       url: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
-- title: Začínáme
+- title: Indexování dat Azure
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Index ze služby Azure Blob Storage
+      url: search-blob-storage-integration.md
+    - text: Index z Azure SQL Database
+      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
+    - text: Index z Cosmos DB
+      url: search-howto-index-cosmosdb.md
+  - linkListType: tutorial
+    links:
+    - text: Indexování částečně strukturovaných dat objektů blob
+      url: search-semi-structured-data.md
+- title: Zprovoznění během 10 minut
   linkLists:
   - linkListType: quickstart
     links:
@@ -40,64 +54,34 @@ landingContent:
       url: search-create-service-portal.md
     - text: Vytvoření indexu
       url: search-get-started-portal.md
-    - text: Vytvoření kanálu pro rozšiřování
-      url: cognitive-search-quickstart-blob.md
-  - linkListType: tutorial
-    links:
     - text: Vytvoření aplikace
-      url: tutorial-csharp-create-first-app.md
-  - linkListType: learn
-    links:
-    - text: Úvod do kognitivního hledání Azure
-      url: https://docs.microsoft.com/learn/modules/intro-to-azure-search/
-- title: Použití se službou Blob Storage
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Použití AI k pochopení dat objektů blob
-      url: search-blob-ai-integration.md
-    - text: Hledání v obsahu objektů blob
-      url: search-blob-storage-integration.md
-    - text: Ukládání rozšíření AI
-      url: knowledge-store-concept-intro.md
-  - linkListType: tutorial
-    links:
-    - text: Indexování částečně strukturovaných dat objektů blob
-      url: search-semi-structured-data.md
-- title: Indexování vašich dat
+      url: search-create-app-portal.md
+    - text: Ingestování a extrakce nezpracovaného textu a obrázků
+      url: cognitive-search-quickstart-blob.md
+- title: Indexování libovolných dat
   linkLists:
   - linkListType: concept
     links:
     - text: Definování indexu
       url: search-what-is-an-index.md
-    - text: Importing data
+    - text: Import dat
       url: search-what-is-data-import.md
-    - text: Použití indexeru
-      url: search-indexer-overview.md
-  - linkListType: how-to-guide
-    links:
-    - text: Index z Azure SQL Database
-      url: search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md
-    - text: Index z dat Cosmos DB
-      url: search-howto-index-cosmosdb.md
   - linkListType: reference
     links:
     - text: Vytvoření indexu (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-index
     - text: Vytvoření indexeru (REST)
       url: https://docs.microsoft.com/rest/api/searchservice/create-indexer
-- title: Rozšíření dat
+- title: Rozšíření s využitím AI
   linkLists:
   - linkListType: concept
     links:
-    - text: Kanál pro rozšiřování AI
-      url: cognitive-search-concept-intro.md
     - text: Sady dovedností
       url: cognitive-search-defining-skillset.md
     - text: Úložiště znalostí
       url: knowledge-store-concept-intro.md
     - text: Projekce
-      url: knowledge-store-projection-overview.md
+      url: knowledge-store-projections-examples.md
   - linkListType: how-to-guide
     links:
     - text: Připojení Cognitive Services
@@ -114,7 +98,7 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Přehled
+    - text: Sestavení a typy dotazů
       url: search-query-overview.md
     - text: Jednoduchá syntaxe (výchozí)
       url: query-simple-syntax.md
