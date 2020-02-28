@@ -1,24 +1,23 @@
 ---
 title: Monitorovat Azure Cosmos DB pomocí Azure Monitor pro Cosmos DB (Preview) | Microsoft Docs
 description: Tento článek popisuje Azure Monitor pro funkci Cosmos DB, která poskytuje Cosmos DBm vlastníkům rychlé porozumění problémům s výkonem a využitím jejich účtů CosmosDB.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/27/2019
-ms.openlocfilehash: 8e265b592bebfc506ae0116c955403dd1070ad3f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d28db9907094a651835078f4459a985b9d15e589
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73166405"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657380"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Prozkoumat Azure Monitor pro Azure Cosmos DB (Preview)
 
 Azure Monitor for Azure Cosmos DB (Preview) poskytuje přehled o celkovém výkonu, selháních, kapacitě a provozním stavu všech vašich Azure Cosmos DBch prostředků v jednotném interaktivním prostředí. Tento článek vám pomůže pochopit výhody tohoto nového prostředí pro monitorování a jak můžete upravit a přizpůsobit prostředí tak, aby vyhovovalo jedinečným potřebám vaší organizace.   
 
-## <a name="introduction"></a>Představení
+## <a name="introduction"></a>Úvod
 
 Předtím, než se začnete do prostředí, byste měli pochopit, jak prezentuje a vizualizují informace. 
 
@@ -35,12 +34,39 @@ Tato funkce nevyžaduje, abyste povolili ani nenakonfigurovali cokoli. Tyto Azur
 >[!NOTE]
 >Pro přístup k této funkci se neplatí žádné poplatky a účtují se vám jenom Azure Monitor základní funkce, které nakonfigurujete nebo povolíte, jak je popsáno na stránce [Azure monitor s podrobnostmi o cenách](https://azure.microsoft.com/pricing/details/monitor/) .
 
+## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Zobrazit metriky na úrovni operace pro Azure Cosmos DB
 
-## <a name="accessing-azure-monitor-for-azure-cosmos-db"></a>Přístup k Azure Monitor pro Azure Cosmos DB
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
+
+1. V levém navigačním panelu vyberte **monitor** a vyberte **metriky**.
+
+   ![Podokno metrik v Azure Monitor](./media/cosmosdb-insights-overview/monitor-metrics-blade.png)
+
+1. V podokně **metriky** > **Vyberte prostředek** > zvolte požadované **předplatné**a **skupinu prostředků**. Jako **typ prostředku**vyberte **Azure Cosmos DB účty**, zvolte jeden ze stávajících účtů Azure Cosmos a pak vyberte **použít**.
+
+   ![Vyberte účet Cosmos DB, pro který chcete zobrazit metriky.](./media/cosmosdb-insights-overview/select-cosmosdb-account.png)
+
+1. Dále můžete vybrat metriku ze seznamu dostupných metrik. Můžete vybrat metriky specifické pro jednotky žádosti, úložiště, latenci, dostupnost, Cassandra a další. Podrobné informace o všech dostupných metrikách v tomto seznamu najdete v článku [metriky podle kategorií](../../cosmos-db/monitor-cosmos-db-reference.md) . V tomto příkladu vybereme **jednotky žádosti** a jako hodnotu agregace určíte **průměr** .
+
+   Kromě těchto podrobností můžete také vybrat **časový rozsah** a **časovou členitost** metrik. V poli Max (maximum) si můžete zobrazit metriky za posledních 30 dní.  Po použití filtru se v závislosti na vašem filtru zobrazí graf. Pro vybrané období můžete zobrazit průměrný počet spotřebovaných jednotek žádostí za minutu.  
+
+   ![Vyberte metriku z Azure Portal](./media/cosmosdb-insights-overview/metric-types.png)
+
+### <a name="add-filters-to-metrics"></a>Přidání filtrů do metrik
+
+Můžete také filtrovat metriky a graf zobrazený podle konkrétního typu **CollectionName**, **DatabaseName**, **typem operace OperationType**, **region**a **StatusCode**. Chcete-li filtrovat metriky, vyberte možnost **Přidat filtr** a zvolte požadovanou vlastnost, například **typem operace OperationType** , a vyberte hodnotu, jako je například **dotaz**. V grafu se pak zobrazí jednotky žádosti spotřebované pro operaci dotazování pro vybrané období. Operace provedené prostřednictvím uložené procedury nejsou protokolovány, takže nejsou k dispozici v rámci metriky typem operace OperationType.
+
+![Přidejte filtr pro výběr členitosti metriky.](./media/cosmosdb-insights-overview/add-metrics-filter.png)
+
+Metriky můžete seskupit pomocí možnosti **použít rozdělení** . Například můžete seskupit jednotky žádostí na typ operace a zobrazit graf pro všechny operace najednou, jak je znázorněno na následujícím obrázku:
+
+![Přidat použít dělicí filtr](./media/cosmosdb-insights-overview/apply-metrics-splitting.png)
+
+## <a name="view-utilization-and-performance-metrics-for-azure-cosmos-db"></a>Zobrazit metriky využití a výkonu pro Azure Cosmos DB
 
 Pokud chcete zobrazit využití a výkon účtů úložiště napříč všemi vašimi předplatnými, proveďte následující kroky.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 2. Vyhledejte **monitorování** a vyberte **monitor**.
 
@@ -90,7 +116,7 @@ V horní části stránky vyberte **kapacitu** a v šabloně sešitu se otevře 
 
 Stejně jako u sešitu s přehledem se po výběru rozevíracího seznamu vedle Azure Cosmos DB prostředku ve sloupci **odběr** zobrazí rozpis jednotlivých kontejnerů, které tvoří databázi.
 
-### <a name="operations"></a>Operations 
+### <a name="operations"></a>Operace 
 
 V horní části stránky vyberte **operace** a otevře se část **operace** v šabloně sešitu. Dává vám možnost Zobrazit vaše požadavky rozdělené podle typu vámi provedených požadavků. 
 

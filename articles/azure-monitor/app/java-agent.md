@@ -1,18 +1,14 @@
 ---
 title: Monitorování výkonu webových aplikací Java – Azure Application Insights
 description: Rozšířené monitorování výkonu a využití vašeho webu Java pomocí Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/10/2019
-ms.openlocfilehash: 8194c4b16d114be9b2b95ff56dea59d98cfdae10
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b29618179d22eac97a07bf41906465aba1fd7929
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931148"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657023"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycených výjimek a metod doby provádění ve webových aplikacích Java
 
@@ -126,7 +122,7 @@ Chcete-li vyhledat jednotlivé instance sestav závislostí, výjimek a metod, o
 
 [Diagnostikování problémů se závislostmi – Další informace](../../azure-monitor/app/asp-net-dependencies.md#diagnosis)
 
-## <a name="questions-problems"></a>Máte otázky? Máte problémy?
+## <a name="questions-problems"></a>Otázky? Problémy?
 * Žádná data? [Nastavení výjimek brány firewall](../../azure-monitor/app/ip-addresses.md)
 * [Řešení potíží s Javou](java-troubleshoot.md)
 

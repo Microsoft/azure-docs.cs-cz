@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 4ca8c18d448297cc2d2e2249a1dbbe04ecccd092
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77019413"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656921"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s konfigurací a správou pro Azure Cloud Services: nejčastější dotazy
 
@@ -111,7 +111,7 @@ Tuto úlohu můžete automatizovat pomocí spouštěcího skriptu (Batch/cmd/Pow
 
 Tento certifikát se používá k šifrování klíčů počítačů ve webových rolích Azure. Pokud se chcete dozvědět víc, podívejte se na [Tento informační zpravodaj](https://docs.microsoft.com/security-updates/securityadvisories/2018/4092731).
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 - [Jak nakonfigurovat a spustit úlohy po spuštění pro cloudovou službu](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks)
 - [Běžné úlohy po spuštění cloudové služby](https://docs.microsoft.com/azure/cloud-services/cloud-services-startup-tasks-common)
 
@@ -137,7 +137,7 @@ Vyčerpali jste kvótu místního úložiště pro zápis do adresáře protokol
 * Zvyšte limit kvóty pro místní prostředky.
 
 Další informace najdete v následujících dokumentech:
-* [Ukládání a zobrazení diagnostických dat v Azure Storage](cloud-services-dotnet-diagnostics-storage.md)
+* [Ukládání a zobrazení diagnostických dat v Azure Storage](/azure/storage/common/storage-introduction)
 * [Protokoly IIS zastaví zápis v cloudové službě.](https://blogs.msdn.microsoft.com/cie/2013/12/21/iis-logs-stops-writing-in-cloud-service/)
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Návody povolit protokolování WAD pro Cloud Services?
@@ -196,7 +196,7 @@ Systémy Windows 10 a Windows Server 2016 obsahují podporu protokolu HTTP/2 na 
 5. Restartujte server.
 6. Ve svém **výchozím** webu a v části **Bindings (vazby**) vytvořte novou vazbu TLS s právě vytvořeným certifikátem podepsaným svým držitelem. 
 
-Další informace:
+Další informace naleznete v tématu:
 
 - [HTTP/2 ve službě IIS](https://blogs.iis.net/davidso/http2)
 - [Video: HTTP/2 ve Windows 10: prohlížeč, aplikace a webový server](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -314,7 +314,7 @@ Jak je popsáno [zde](https://technet.microsoft.com/library/ee790567.aspx), $ssl
 |Hodnota|Význam|
 ------|------
 |0|Žádné SNI|
-|1\. místo|SNI povolen|
+|1|SNI povolen|
 |2|SNI vazba, která používá centrální úložiště certifikátů|
 |3|SNI vazba, která používá centrální úložiště certifikátů|
  

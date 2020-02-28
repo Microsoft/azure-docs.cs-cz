@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 17d86f25de6eecee535d6f812f4ef0b078a4b6db
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d1fb963753577e9518d93262f9c9c7a1cf984005
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752512"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656003"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Kurz: použití odkazů Key Vault v aplikaci Java pružiny
 
@@ -41,11 +41,11 @@ V tomto kurzu se naučíte:
 > * Vytvořte konfigurační klíč aplikace, který odkazuje na hodnotu uloženou v Key Vault.
 > * Přístup k hodnotě tohoto klíče z jarní aplikace Java.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Než začnete s tímto kurzem, nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Podporovaná [sada Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
+* [Apache Maven](https://maven.apache.org/download.cgi) verze 3,0 nebo vyšší.
 
 ## <a name="create-a-vault"></a>Vytvoření trezoru
 
@@ -56,10 +56,10 @@ Než začnete s tímto kurzem, nainstalujte [.NET Core SDK](https://dotnet.micro
 1. V seznamu výsledků vyberte na levé straně **trezory klíčů** .
 1. V **trezorech klíčů**vyberte **Přidat**.
 1. Na pravé straně v části **Vytvoření trezoru klíčů**zadejte následující informace:
-    - Vyberte **předplatné** a zvolte předplatné.
-    - V případě **skupiny prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
-    - V **názvu trezoru klíčů**je vyžadován jedinečný název. Pro tento kurz zadejte **Contoso-vault2**.
-    - V rozevíracím seznamu **oblast** vyberte umístění.
+    * Vyberte **předplatné** a zvolte předplatné.
+    * V případě **skupiny prostředků**vyberte **vytvořit novou** a zadejte název skupiny prostředků.
+    * V **názvu trezoru klíčů**je vyžadován jedinečný název. Pro tento kurz zadejte **Contoso-vault2**.
+    * V rozevíracím seznamu **oblast** vyberte umístění.
 1. Ostatní možnosti **Vytvoření trezoru klíčů** ponechte výchozí hodnoty.
 1. Vyberte **Vytvořit**.
 
@@ -74,23 +74,23 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 1. Na stránkách vlastností Key Vault vyberte **tajné klíče**.
 1. Vyberte **Generovat/importovat**.
 1. V podokně **vytvořit tajný klíč** zadejte následující hodnoty:
-    - **Možnosti nahrání**: zadejte **Ruční**.
-    - **Název**: zadejte **zprávu**.
-    - **Hodnota**: zadejte **hello z Key Vault**.
+    * **Možnosti nahrání**: zadejte **Ruční**.
+    * **Název**: zadejte **zprávu**.
+    * **Hodnota**: zadejte **hello z Key Vault**.
 1. Ponechte druhé **vytvořit vlastnosti tajného klíče** s výchozími hodnotami.
 1. Vyberte **Vytvořit**.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Přidat odkaz Key Vault do konfigurace aplikace
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). Vyberte **všechny prostředky**a pak vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**.
 
 1. Vyberte **+ vytvořit** > **odkaz na Trezor klíčů**a pak zadejte následující hodnoty:
-    - **Klíč**: vyberte **/Application/config.keyvaultmessage**
-    - **Popisek**: Nechte tuto hodnotu prázdnou.
-    - **Předplatné**, **Skupina prostředků**a **Trezor klíčů**: zadejte hodnoty odpovídající hodnotám v trezoru klíčů, který jste vytvořili v předchozí části.
-    - **Tajný kód**: vyberte tajný kód s názvem **zpráva** , kterou jste vytvořili v předchozí části.
+    * **Klíč**: vyberte **/Application/config.keyvaultmessage**
+    * **Popisek**: Nechte tuto hodnotu prázdnou.
+    * **Předplatné**, **Skupina prostředků**a **Trezor klíčů**: zadejte hodnoty odpovídající hodnotám v trezoru klíčů, který jste vytvořili v předchozí části.
+    * **Tajný kód**: vyberte tajný kód s názvem **zpráva** , kterou jste vytvořili v předchozí části.
 
 ## <a name="connect-to-key-vault"></a>Připojení k Key Vault
 
@@ -119,8 +119,15 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
 
 1. Spusťte následující příkaz, který instančnímu objektu umožní přístup k trezoru klíčů:
 
+    ```console
+    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
-    az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+
+1. Spuštěním následujícího příkazu Získejte ID objektu a pak ho přidejte do konfigurace aplikace.
+
+    ```console
+    az ad sp show --id <clientId-of-your-service-principal>
+    az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
 1. Pomocí hodnot instančního objektu zobrazeného v předchozím kroku vytvořte následující proměnné prostředí:
@@ -130,7 +137,7 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     * **AZURE_TENANT_ID**: *tenantId*
 
 > [!NOTE]
-> Tyto přihlašovací údaje Key Vault jsou používány pouze v rámci vaší aplikace. Vaše aplikace se ověřuje přímo Key Vault s těmito přihlašovacími údaji. Nejsou nikdy předány do služby konfigurace aplikace.
+> Tyto Key Vault přihlašovací údaje se používají jenom v rámci vaší aplikace.  Vaše aplikace se ověřuje přímo pomocí Key Vault pomocí těchto přihlašovacích údajů bez použití služby konfigurace aplikace.  Key Vault poskytuje ověřování pro vaši aplikaci i službu konfigurace vaší aplikace bez sdílení nebo vystavování klíčů.
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Aktualizace kódu pro použití odkazu na Key Vault
 
@@ -157,17 +164,73 @@ Pokud chcete do trezoru přidat tajný klíč, musíte provést několik další
     }
     ```
 
+1. Vytvořte nový soubor s názvem *AzureCredentials. Java* a přidejte následující kód.
+
+    ```java
+    package com.example;
+
+    import com.azure.core.credential.TokenCredential;
+    import com.azure.identity.EnvironmentCredentialBuilder;
+    import com.microsoft.azure.spring.cloud.config.AppConfigurationCredentialProvider;
+    import com.microsoft.azure.spring.cloud.config.KeyVaultCredentialProvider;
+
+    public class AzureCredentials implements AppConfigurationCredentialProvider, KeyVaultCredentialProvider{
+
+        @Override
+        public TokenCredential getKeyVaultCredential(String uri) {
+            return getCredential();
+        }
+
+        @Override
+        public TokenCredential getAppConfigCredential(String uri) {
+            return getCredential();
+        }
+
+        private TokenCredential getCredential() {
+            return new EnvironmentCredentialBuilder().build();
+        }
+
+    }
+    ```
+
+1. Vytvořte nový soubor s názvem *AppConfiguration. Java*. A níže přidejte kód.
+
+    ```java
+    package com.example;
+
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+
+    @Configuration
+    public class AppConfiguration {
+
+        @Bean
+        public AzureCredentials azureCredentials() {
+            return new AzureCredentials();
+        }
+    }
+    ```
+
+1. Vytvořte nový soubor v adresáři Resources adresáře META-INF s názvem *pružiny. továrens* a přidejte.
+
+    ```factories
+    org.springframework.cloud.bootstrap.BootstrapConfiguration=\
+    com.example.AppConfiguration
+    ```
+
 1. Sestavte aplikaci pro jarní spouštění pomocí Maven a spusťte ji například takto:
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
+
 1. Po spuštění aplikace použijte k otestování aplikace *kudrlinkou* . Příklad:
 
       ```shell
       curl -X GET http://localhost:8080/
       ```
+
     Zobrazí se zpráva, kterou jste zadali v úložišti konfigurace aplikace. Zobrazí se také zpráva, kterou jste zadali v Key Vault.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků

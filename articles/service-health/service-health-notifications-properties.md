@@ -1,14 +1,14 @@
 ---
 title: Co jsou oznámení o službě Azure Service Health?
 description: Oznámení o stavu služby umožňují zobrazit zprávy o stavu služby publikované pomocí Microsoft Azure.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 4/12/2018
-ms.openlocfilehash: f2d79dc920129241c801c75cc9009b3ba8f34b78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e40538ac98bbc7b79311d4fb0da7568d56a84e18
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451556"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653964"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Zobrazení oznámení o stavu služby s využitím webu Azure Portal
 
@@ -30,14 +30,14 @@ barev | Jedna z následujících hodnot: **admin** nebo **Operation**.
 correlationId | Obvykle identifikátor GUID ve formátu řetězce. Události, které patří do stejné akce, obvykle sdílejí stejné ID korelace.
 eventDataId | Jedinečný identifikátor události
 eventName | Název události
-úroveň | Úroveň události
+level | Úroveň události
 resourceProviderName | Název poskytovatele prostředků pro ovlivněný prostředek.
 resourceType| Typ prostředku ovlivněného prostředku.
 subStatus | Obvykle stavový kód HTTP odpovídajícího volání REST, ale může také obsahovat další řetězce popisující dílčí stav. Příklad: OK (kód stavu HTTP: 200), Vytvořeno (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybný požadavek (kód stavu HTTP: 400), nenalezen (Stavový kód HTTP: 404), konflikt (Stavový kód HTTP: 409), interní server Chyba (kód stavu HTTP: 500), nedostupná služba (kód stavu HTTP: 503) a časový limit brány (kód stavu HTTP: 504).
 eventTimestamp | Časové razítko, kdy se událost vygenerovala službou Azure, zpracování žádosti odpovídající události
 submissionTimestamp | Časové razítko, kdy se událost stala k dispozici pro dotazování
 subscriptionId | Předplatné Azure, ve kterém se tato událost zaznamenala.
-status | Řetězec popisující stav operace. Mezi běžné hodnoty patří: **spuštěno**, **probíhá**, **úspěšné**, **neúspěšné**, **aktivní**a **vyřešené**.
+stav | Řetězec popisující stav operace. Mezi běžné hodnoty patří: **spuštěno**, **probíhá**, **úspěšné**, **neúspěšné**, **aktivní**a **vyřešené**.
 operationName | Název operace.
 category | Tato vlastnost je vždy **ServiceHealth**.
 resourceId | ID prostředku ovlivněného prostředku.

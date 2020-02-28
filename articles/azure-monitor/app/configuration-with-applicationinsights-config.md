@@ -1,19 +1,15 @@
 ---
 title: Odkaz na ApplicationInsights. config – Azure | Microsoft Docs
 description: Povolte nebo zakažte moduly shromažďování dat a přidejte čítače výkonu a další parametry.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: f7f32cc7f160a7ac9253b60e8c0c13926c110ac2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b2c407036277b17c0f8c08f3261c932a6dc66624
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407107"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655477"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Sada Application Insights .NET SDK se skládá z řady balíčků NuGet. [Základní balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro posílání telemetrie do Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují *moduly* telemetrie a *Inicializátory* pro automatické sledování telemetrie z vaší aplikace a jejího kontextu. Úpravou konfiguračního souboru můžete povolit nebo zakázat moduly a Inicializátory telemetrie a nastavit parametry pro některé z nich.
@@ -46,7 +42,7 @@ Závislosti se dají automaticky shromáždit bez úprav kódu pomocí připojen
 [Shromažďuje čítače výkonu systému](../../azure-monitor/app/performance-counters.md) , jako je procesor, paměť a zatížení sítě, z instalace služby IIS. Můžete určit, které čítače se mají shromažďovat, včetně čítačů výkonu, které jste nastavili sami.
 
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
-* [Microsoft.ApplicationInsights.PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) NuGet package.
+* Balíček NuGet [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector)
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Application Insights telemetrie diagnostiky
 `DiagnosticsTelemetryModule` hlásí chyby v samotném kódu Application Insights instrumentace. Například pokud kód nemůže získat přístup k čítačům výkonu nebo pokud `ITelemetryInitializer` vyvolá výjimku. Sledovací telemetrie sledovanou tímto modulem se zobrazí v [diagnostickém vyhledávání][diagnostic].
@@ -66,13 +62,13 @@ Závislosti se dají automaticky shromáždit bez úprav kódu pomocí připojen
 Oznamuje [dobu odezvy a kód výsledku](../../azure-monitor/app/asp-net.md) požadavků HTTP.
 
 * `Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet package
+* Balíček [Microsoft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet
 
 ### <a name="exception-tracking"></a>Sledování výjimek
 `ExceptionTrackingTelemetryModule` sleduje neošetřené výjimky ve vaší webové aplikaci. Viz [selhání a výjimky][exceptions].
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
-* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet package
+* Balíček [Microsoft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet
 * `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule`-sleduje [výjimky nepozorovaných úloh](https://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx).
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` – sleduje neošetřené výjimky pro role pracovního procesu, služby systému Windows a konzolové aplikace.
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) Balíček NuGet.
@@ -81,13 +77,13 @@ Oznamuje [dobu odezvy a kód výsledku](../../azure-monitor/app/asp-net.md) pož
 `EventSourceTelemetryModule` umožňuje konfigurovat události EventSource, které se mají odeslat do Application Insights jako trasování. Další informace o sledování událostí EventSource najdete v tématu [použití událostí EventSource](../../azure-monitor/app/asp-net-trace-logs.md#use-eventsource-events).
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
-* [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
+* [Microsoft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
 
 ### <a name="etw-event-tracking"></a>Sledování událostí ETW
 `EtwCollectorTelemetryModule` umožňuje konfigurovat události od zprostředkovatelů ETW, které se budou odesílat do Application Insights jako trasování. Informace o sledování událostí ETW najdete v tématu [použití událostí ETW](../../azure-monitor/app/asp-net-trace-logs.md#use-etw-events).
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
-* [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
+* [Microsoft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
 Balíček Microsoft. ApplicationInsights poskytuje [základní rozhraní API](https://msdn.microsoft.com/library/mt420197.aspx) sady SDK. Ostatní moduly telemetrie tuto možnost používají a můžete [je také použít k definování vlastní telemetrie](../../azure-monitor/app/api-custom-events-metrics.md).
@@ -139,7 +135,7 @@ Procesor telemetrie může filtrovat a upravovat každou položku telemetrie tě
 Můžete [napsat vlastní procesory telemetrie](../../azure-monitor/app/api-filtering-sampling.md#filtering).
 
 #### <a name="adaptive-sampling-telemetry-processor-from-200-beta3"></a>Procesor telemetrie adaptivního vzorkování (od 2.0.0-beta3)
-Tato možnost je ve výchozím nastavení zapnutá. Pokud vaše aplikace pošle spoustu telemetrie, tento procesor odebere některé z nich.
+Ve výchozím nastavení je tahle možnost povolená. Pokud vaše aplikace pošle spoustu telemetrie, tento procesor odebere některé z nich.
 
 ```xml
 

@@ -1,18 +1,14 @@
 ---
 title: Automatizace procesů Azure Application Insights pomocí Logic Apps
 description: Přečtěte si, jak můžete rychle automatizovat opakované procesy tím, že do aplikace logiky přidáte konektor Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/11/2019
-ms.openlocfilehash: 95a3577d352b6bc4b56d36b5b79658571a6be1ff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9a7f411ca5ec47e3f25d8120d0388fb030b00c72
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407521"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655000"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatizace Application Insights procesů pomocí Logic Apps
 
@@ -27,7 +23,7 @@ Můžete také přidat další akce. Funkce Logic Apps v Azure App Service zpř�
 V tomto kurzu se naučíte, jak vytvořit aplikaci logiky, která používá algoritmus autocluster Analytics k seskupení atributů v datech webové aplikace. Tok automaticky odesílá výsledky na základě e-mailu, stačí jenom jeden z příkladů, jak můžete Application Insights Analytics a Logic Apps společně používat. 
 
 ### <a name="step-1-create-a-logic-app"></a>Krok 1: Vytvoření aplikace logiky
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. Klikněte na **vytvořit prostředek**, vyberte **web a mobilní zařízení**a pak vyberte **Aplikace logiky**.
 
     ![Nové okno aplikace logiky](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -119,7 +115,7 @@ Když vytváříte vlastní dotazy, ověřte, že správně fungují v analytick
       ![Obrazovka konfigurace e-mailu Office 365](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>Krok 7: uložení a otestování aplikace logiky
-* Klikněte na tlačítko **Uložit** uložte provedené změny.
+* Kliknutím na **Uložit** uložte změny.
 
 Můžete počkat, až aktivační událost spustí aplikaci logiky, nebo můžete spustit aplikaci logiky hned po výběru možnosti **Spustit**.
 

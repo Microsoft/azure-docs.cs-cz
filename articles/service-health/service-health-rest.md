@@ -1,15 +1,14 @@
 ---
 title: Získejte události stavu prostředků Azure pomocí REST API | Microsoft Docs
 description: K získání událostí stavu pro prostředky Azure použijte rozhraní Azure REST API.
-ms.custom: REST
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/06/2017
-ms.openlocfilehash: 353bd65b0466902e450e38677a350a177a1d602c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6964a6c4e85c38d532b12e730a02c4df73be76e5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451379"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77653997"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>Získat Resource Health pomocí REST API 
 
@@ -32,18 +31,18 @@ Jsou vyžadovány následující hlavičky:
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
 |*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Authorization:*|Povinná hodnota. Nastavte na platný [přístupový token](/rest/api/azure/#authorization-code-grant-interactive-clients)`Bearer`. |  
+|*Authorization:*|Povinná hodnota. Nastavte na platný `Bearer`přístupový token[ ](/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ### <a name="uri-parameters"></a>Parametry identifikátoru URI
 
-| Name (Název) | Popis |
+| Název | Popis |
 | :--- | :---------- |
 | subscriptionId | ID předplatného, které identifikuje předplatné Azure. Pokud máte více předplatných, přečtěte si téma [práce s více předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | api-version | Verze rozhraní API, která se má použít pro požadavek<br /><br /> Tento dokument popisuje rozhraní API-Version `2015-04-01`zahrnuté do výše uvedené adresy URL.  |
 | $filter | Možnost filtrování pro snížení sady vrácených výsledků. Povolené vzory pro tento parametr jsou k dispozici [v odkazu na operaci protokolu aktivit](/rest/api/monitor/activitylogs/list#uri-parameters). Zobrazený příklad zachycuje všechny události v časovém rozsahu mezi 2018-05-16 a 2018-06-20. |
 | &nbsp; | &nbsp; |
 
-### <a name="request-body"></a>Text požadavku
+### <a name="request-body"></a>Tělo požadavku
 
 Pro tuto operaci není nutný žádný text žádosti.
 

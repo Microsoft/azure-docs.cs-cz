@@ -3,17 +3,16 @@ title: Shromažďování vlastních metrik pro virtuální počítač se systém
 description: Pokyny, jak nasadit agenta InfluxData telegraf na virtuálním počítači Linux v Azure a nakonfigurovat agenta tak, aby publikoval metriky pro Azure Monitor.
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 365330aa445bcf8e5b1aec575d5e646d533ceaf7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 0ed9144116c1d716124025ef0aae39e7783c5934
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901319"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655459"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Shromažďování vlastních metrik pro virtuální počítač se systémem Linux pomocí agenta InfluxData telegraf
 
@@ -29,7 +28,7 @@ Pomocí Azure Monitor můžete shromažďovat vlastní metriky prostřednictvím
 
 V tomto kurzu nasadíme virtuální počítač Linux, na kterém běží operační systém Ubuntu 16,04 LTS. Agent telegraf se podporuje pro většinu operačních systémů Linux. Balíčky Debian i ot./min. jsou k dispozici společně s nebalenými binárními soubory Linux na [portálu pro stažení InfluxData](https://portal.influxdata.com/downloads). Další pokyny k instalaci a možnosti najdete v této [příručce k instalaci telegraf](https://docs.influxdata.com/telegraf/v1.8/introduction/installation/) . 
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 Vytvořte nový virtuální počítač pro Linux: 
 
@@ -110,7 +109,7 @@ Agent nyní bude shromažďovat metriky ze všech zadaných vstupních modulů p
 
 1. Přejděte na kartu nové **monitorování** . Pak vyberte **metriky**.  
 
-     ![Monitor – metriky (Preview)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
+     ![Monitorování – metrika (Preview)](./media/collect-custom-metrics-linux-telegraf/metrics.png)
 
 1. V selektoru prostředků vyberte svůj virtuální počítač.
 

@@ -1,18 +1,14 @@
 ---
 title: Prozkoumejte protokoly trasování Java v Azure Application Insights
 description: Prohledat Log4J nebo Logback trasování v Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: f552ccdbc67df93913c698e5d763dbb62b48a4ad
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927240"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657210"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Prozkoumejte protokoly trasování Java v Application Insights
 Pokud pro trasování používáte Logback nebo Log4J (v 1.2 nebo v 2.0), můžete mít k dispozici automatické odesílání protokolů trasování, které Application Insights, kde je můžete prozkoumat a vyhledat.
@@ -77,7 +73,7 @@ Pak aktualizujte závislosti projektu a Stáhněte si stažené soubory.
     </dependencies>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 
@@ -90,7 +86,7 @@ Pak aktualizujte závislosti projektu a Stáhněte si stažené soubory.
     </dependencies>
 ```
 
-*Log4J v1.2*
+*Log4J v 1.2*
 
 ```XML
 
@@ -115,13 +111,13 @@ Pak aktualizujte závislosti projektu a Stáhněte si stažené soubory.
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-logback', version: '2.0.+'
 ```
 
-**Log4J v2.0**
+**Log4J v 2.0**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**Log4J v1.2**
+**Log4J v 1.2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
@@ -130,7 +126,7 @@ Pak aktualizujte závislosti projektu a Stáhněte si stažené soubory.
 #### <a name="otherwise-"></a>V opačném případě...
 Postupujte podle pokynů pro ruční instalaci Application Insights Java SDK, Stáhněte si jar (po obdržíní na stránce pro stažení klikněte na odkaz "Jar") pro příslušný příkaz append a přidejte do projektu stažený JAR pro přidání.
 
-| Nástroj | Ke stažení | Knihovna |
+| Nástroj | Stáhnout | Knihovna |
 | --- | --- | --- |
 | Logback |[JAR pro Logback připojovat](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
 | Log4J v 2.0 |[Log4J v2 – JAR pro připojení](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
@@ -153,7 +149,7 @@ Chcete-li začít získávat trasování, slučte příslušný fragment kódu d
     </root>
 ```
 
-*Log4J v2.0*
+*Log4J v 2.0*
 
 ```XML
 
@@ -169,7 +165,7 @@ Chcete-li začít získávat trasování, slučte příslušný fragment kódu d
     </Configuration>
 ```
 
-*Log4J v1.2*
+*Log4J v 1.2*
 
 ```XML
 

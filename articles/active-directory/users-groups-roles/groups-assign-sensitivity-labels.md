@@ -9,31 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 02/24/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07859299805c5f7be869350adbdbfa675775888c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 51b242a76e1daec7d401d797e8c9887821117246
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404803"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656938"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Přiřazení popisků citlivosti skupinám Office 365 v Azure Active Directory (Preview)
 
-Azure Active Directory (Azure AD) podporuje použití popisků citlivostí publikovaných [centrem dodržování předpisů Microsoft 365](https://sip.protection.office.com/homepage) do skupin Office 365. Popisky citlivosti se vztahují na skupinu napříč službami, jako je Outlook, Microsoft teams a SharePoint. Tato funkce je aktuálně ve verzi Public Preview.
+Azure Active Directory (Azure AD) podporuje použití popisků citlivostí publikovaných [centrem dodržování předpisů Microsoft 365](https://sip.protection.office.com/homepage) do skupin Office 365. Popisky citlivosti se vztahují na skupinu napříč službami, jako je Outlook, Microsoft teams a SharePoint. Tato funkce je aktuálně ve verzi Public Preview. Další informace o podpoře aplikací Office 365 najdete v článku [Podpora sady office 365 pro popisky citlivosti](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
 
 > [!IMPORTANT]
-> Použití popisků citlivostí Azure AD pro skupiny Office 365 vyžaduje licenci Azure Active Directory Premium P1.
-
-## <a name="group-settings-controlled-by-labels"></a>Nastavení skupiny řízené popisky
-
-K popisku je možné přidružit dvě nastavení:
-
-- **Ochrana osobních údajů**: Správci můžou k popisku přidružit nastavení ochrany osobních údajů, aby bylo možné řídit, jestli je skupina veřejná nebo soukromá.
-- **Přístup hosta**: Správci můžou vyhovět zásadám hosta pro všechny skupiny, které mají přiřazený popisek. Tato zásada určuje, zda lze hosty přidat jako členy nebo nikoli. Pokud je pro popisek nakonfigurovaná zásada hosta, všechny skupiny, kterým popisek přiřadíte, neumožní změnu nastavení AllowToAddGuests.
+> Pokud chcete tuto funkci nakonfigurovat, musí být ve vaší organizaci Azure AD aspoň jedna licence Active Azure Active Directory Premium P1.
 
 ## <a name="enable-sensitivity-label-support-in-powershell"></a>Povolit podporu popisku citlivosti v PowerShellu
 
@@ -87,11 +80,11 @@ A to je vše. Tuto funkci jste povolili a můžete použít publikované popisky
 
 1. Uložte změny a vyberte **vytvořit**.
 
-Vaše skupina se vytvoří a automaticky se vynutily zásady přidružené k vybranému popisku.
+Vaše skupina se vytvoří a automaticky se vynutila nastavení lokality a skupiny přidružená k vybranému popisku.
 
 ## <a name="assign-a-label-to-an-existing-group-in-azure-portal"></a>Přiřazení popisku existující skupině v Azure Portal
 
-1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu globálního správce nebo skupiny správce nebo jako vlastníkem skupiny.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu správce skupin nebo jako vlastníkem skupiny.
 1. Vyberte **skupiny**.
 1. Na stránce **všechny skupiny** vyberte skupinu, kterou chcete označit.
 1. Na stránce vybrané skupiny vyberte **vlastnosti** a v seznamu vyberte popisek citlivosti.
@@ -109,22 +102,9 @@ Vaše skupina se vytvoří a automaticky se vynutily zásady přidružené k vyb
 1. Vyberte **Odebrat**.
 1. Pokud chcete změny použít, vyberte **Uložit** .
 
-## <a name="office-365-app-support-for-sensitivity-labels"></a>Podpora aplikací Office 365 pro popisky citlivosti
-
-Popisky citlivosti v této verzi Preview podporují následující aplikace a služby Office 365:
-
-- Centrum pro správu Azure AD
-- Centrum kompatibility Microsoft 365
-- SharePoint
-- Outlook na webu
-- Týmech
-- Centrum pro správu SharePointu
-
-Další informace o podpoře aplikací Office 365 najdete v článku [Podpora sady office 365 pro popisky citlivosti](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-new-sensitivity-labels).
-
 ## <a name="using-classic-azure-ad-classifications"></a>Používání klasifikací Azure AD Classic
 
-Po povolení této funkce už sada Office 365 nepodporuje klasifikace Classic pro nové skupiny. Standardní klasifikace jsou staré klasifikace, které jste nastavili definováním hodnot pro nastavení `ClassificationList` ve službě Azure AD PowerShell. Když je tato funkce povolená, nebudou se tyto klasifikace u skupin použít.
+Po povolení této funkce se "klasické" klasifikace pro skupiny zobrazí jenom existující skupiny a lokality a měli byste je používat pro nové skupiny jenom v případě, že vytváříte skupiny v aplikacích, které nepodporují popisky citlivosti. Správce je může v případě potřeby převést na popisky citlivosti později. Standardní klasifikace jsou staré klasifikace, které jste nastavili definováním hodnot pro nastavení `ClassificationList` ve službě Azure AD PowerShell. Když je tato funkce povolená, nebudou se tyto klasifikace u skupin použít.
 
 ## <a name="troubleshooting-issues"></a>Řešení potíží
 
@@ -136,9 +116,7 @@ Možnost popisek citlivosti se zobrazí pouze pro skupiny, pokud jsou splněny v
 1. Funkce je povolená, EnableMIPLabels je v PowerShellu nastavená na true.
 1. Skupina je skupina Office 365.
 1. Tenant má aktivní licenci Azure Active Directory Premium P1.
-1. Aktuálně přihlášený uživatel má přístup k publikovaným popiskům.
 1. Aktuálně přihlášený uživatel má dostatečná oprávnění k přiřazování popisků. Uživatel musí být buď globální správce, správce skupiny, nebo vlastník skupiny.
-1. Aktuálně přihlášený uživatel má přiřazenou licenci Office 365. Další informace o licenčních požadavcích najdete v tématu [popisky citlivosti v aplikacích Office](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-office-apps).
 
 Ujistěte se prosím, že jsou splněné všechny podmínky, aby bylo možné přiřadit popisky ke skupině.
 
@@ -149,7 +127,7 @@ Pokud popisek, který hledáte, není v seznamu, může to být případ z někt
 - Popisek se nemusí publikovat v centru kompatibility Microsoft 365. To se může vztahovat i na popisky, které už nejsou publikované. Další informace najdete u správce.
 - Popisek může být publikovaný, ale není dostupný pro uživatele, který je přihlášený. Další informace o tom, jak získat přístup k popisku, získáte u správce.
 
-### <a name="how-can-i-change-the-label-on-a-group"></a>Jak mohu změnit popisek pro skupinu?
+### <a name="how-to-change-the-label-on-a-group"></a>Změna popisku skupiny
 
 Popisky lze kdykoli měnit pomocí stejných kroků, jako přiřazení popisku existující skupině, a to následujícím způsobem:
 
@@ -157,7 +135,7 @@ Popisky lze kdykoli měnit pomocí stejných kroků, jako přiřazení popisku e
 1. Vyberte **skupiny**.
 1. Na stránce **všechny skupiny** vyberte skupinu, kterou chcete označit.
 1. Na stránce vybrané skupiny vyberte **vlastnosti** a v seznamu vyberte nový popisek citlivosti.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Změny nastavení skupiny u publikovaných popisků se ve skupinách neaktualizují.
 

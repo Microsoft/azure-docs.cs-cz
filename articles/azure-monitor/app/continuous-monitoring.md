@@ -1,18 +1,14 @@
 ---
 title: Nepřetržité monitorování kanálu pro vydávání verzí DevOps pomocí Azure Pipelines a Azure Application Insights | Microsoft Docs
 description: Poskytuje pokyny pro rychlé nastavení nepřetržitého monitorování pomocí Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/16/2019
-ms.openlocfilehash: c891cc7564a60dfd665d84d569e266332d255fa9
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677518"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655391"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Přidání průběžného monitorování do kanálu pro vydávání verzí
 
@@ -24,7 +20,7 @@ Díky průběžnému monitorování můžou kanály vydávání verzí zahrnovat
 
 1. V [Azure DevOps](https://dev.azure.com)vyberte organizaci a projekt.
    
-1. V levé nabídce stránky projektu vyberte **kanály**  > **vydání**. 
+1. V levé nabídce stránky projektu vyberte **kanály** > **vydání**. 
    
 1. Přetáhněte šipku vedle tlačítka **Nový** a vyberte **Nový kanál vydání**. Nebo, pokud ještě nemáte kanál, vyberte na zobrazené stránce **Nový kanál** .
    

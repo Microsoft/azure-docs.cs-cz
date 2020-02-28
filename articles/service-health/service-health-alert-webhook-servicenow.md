@@ -1,14 +1,14 @@
 ---
 title: Odesílání upozornění na Azure Service Health pomocí ServiceNow
 description: Získejte přizpůsobená oznámení o událostech služby Service Health do vaší instance ServiceNow.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: f332b1e0e188797da172b4ae63f6e5ef1a97e59c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 3daae05aabff571010d043cf5602847e95ea29f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551603"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654099"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Odesílání upozornění na Azure Service Health s ServiceNow pomocí webhooků
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak integrovat upozornění služby Azure Service 
 
 1.  Přidejte **název** do REST API a nastavte **ID rozhraní API** tak, aby `azureservicehealth`.
 
-1.  Vyberte **odeslat**.
+1.  Vyberte **Odeslat**.
 
     ![Nastavení "REST API" v ServiceNow](./media/webhook-alerts/servicenow-restapi-settings.png)
 

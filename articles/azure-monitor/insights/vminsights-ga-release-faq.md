@@ -1,18 +1,17 @@
 ---
 title: Nejčastější dotazy k Azure Monitor pro virtuální počítače (GA) | Microsoft Docs
 description: Azure Monitor pro virtuální počítače je řešení v Azure, které kombinuje monitorování stavu a výkonu operačního systému virtuálního počítače Azure a automaticky zjišťuje součásti aplikací a závislosti s dalšími prostředky a mapuje komunikaci mezi ihned. Tento článek obsahuje odpovědi na běžné dotazy týkající se verze GA.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 673cda4005d9c985d8d6ee5ef1d28a3d8c241ac0
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 0af5e4b92b52b4ecfc4e0e302b5d2a7701297908
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482880"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656190"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor pro virtuální počítače všeobecně dostupné (GA) nejčastější dotazy
 
@@ -25,8 +24,6 @@ Vydali jsme novou verzi Azure Monitor pro virtuální počítače. Zákazníci, 
 S tímto upgradem Azure Monitor pro virtuální počítače údaje o výkonu jsou uloženy ve stejné tabulce *InsightsMetrics* jako [Azure monitor pro kontejnery](container-insights-overview.md), což usnadňuje dotazování obou datových sad. Můžete také uložit více různých datových sad, které jsme nedokázali uložit v tabulce, která se dřív použila. 
 
 Naše zobrazení výkonu teď používají uložená data v tabulce *InsightsMetrics* .  Pokud jste ještě neupgradovali na použití nejnovějšího řešení VMInsights v pracovním prostoru, grafy už nebudou zobrazovat informace.  Upgrade můžete provést **na stránce Začínáme** , jak je popsáno níže.
-
-V tomto upgradu Azure Monitor pro virtuální počítače údaje o výkonu, které jsou uloženy ve stejné tabulce *InsightsMetrics* jako [Azure monitor pro kontejnery](container-insights-overview.md) , což usnadňuje dotazování na dvě sady dat. Můžete také ukládat různorodé datové sady, které jsme nemohli uložit v tabulce, která se dřív použila. 
 
 Uvědomujeme si, že požádáme o upgrade stávajících zákazníků na jejich pracovní postup, což je důvod, proč jsme se k tomu rozhodli teď v Public Preview, ale ne později po GA.
 

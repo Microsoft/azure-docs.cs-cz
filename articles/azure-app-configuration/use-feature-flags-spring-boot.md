@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc
-ms.openlocfilehash: 8c66e2995462701f7ddaefc3a2623c02fee883ef
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: 090ede85301f9e7aff14394c8fb5c7d558d98dd4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687168"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656020"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Kurz: používání příznaků funkcí v aplikaci pro jarní spuštění
 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte, jak:
 
 ## <a name="set-up-feature-management"></a>Nastavení správy funkcí
 
-Správce funkcí jarního spuštění `FeatureManager` získá příznaky funkcí z nativního konfiguračního systému rozhraní. V důsledku toho můžete definovat příznaky funkcí vaší aplikace pomocí veškerého zdroje konfigurace, který služba pružinového spouštění podporuje, včetně místního souboru *bootstrap. yml* nebo proměnných prostředí. `FeatureManager` spoléhá na vkládání závislostí. Služby správy funkcí můžete zaregistrovat pomocí standardních konvencí:
+Správce funkcí pro spouštění pružiny `FeatureManager` získá příznaky funkcí z nativního konfiguračního systému rozhraní. V důsledku toho můžete definovat příznaky funkcí vaší aplikace pomocí veškerého zdroje konfigurace, který služba pružinového spouštění podporuje, včetně místního souboru *bootstrap. yml* nebo proměnných prostředí. `FeatureManager` spoléhá na vkládání závislostí. Služby správy funkcí můžete zaregistrovat pomocí standardních konvencí:
 
 ```java
 private FeatureManager featureManager;
@@ -51,11 +51,23 @@ Doporučujeme zachovat příznaky funkcí mimo aplikaci a spravovat je samostatn
 
 Nejjednodušší způsob, jak připojit aplikaci pro spouštění pružin ke konfiguraci aplikace, je prostřednictvím poskytovatele konfigurace:
 
+### <a name="spring-cloud-11x"></a>Jarní Cloud 1.1. x
+
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
-    <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-    <version>1.1.0.M4</version>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.1.1</version>
+</dependency>
+```
+
+### <a name="spring-cloud-12x"></a>Jarní Cloud 1.2. x
+
+```xml
+<dependency>
+    <groupId>com.microsoft.azure</groupId>
+    <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+    <version>1.2.1</version>
 </dependency>
 ```
 
@@ -69,32 +81,31 @@ Správce funkcí podporuje jako zdroj konfigurace pro příznaky funkcí *Applic
 
 ```yml
 feature-management:
-  featureSet:
-    features:
-      FeatureA: true
-      FeatureB: false
-      FeatureC:
-        EnabledFor:
-          -
-            name: Percentage
-            parameters:
-              value: 50
+  feature-set:
+    feature-a: true
+    feature-b: false
+    feature-c:
+      enabled-for:
+        -
+          name: Percentage
+          parameters:
+            value: 50
 ```
 
-Podle konvence se pro nastavení příznaků funkcí používá oddíl `feature-management` tohoto dokumentu YML. Předchozí příklad ukazuje tři příznaky funkcí s jejich filtry definovanými ve vlastnosti `EnabledFor`:
+Podle konvence se `feature-management` oddíl tohoto dokumentu YML používá pro nastavení příznaku funkce. Předchozí příklad ukazuje tři příznaky funkcí s jejich filtry definovanými ve vlastnosti `EnabledFor`:
 
-* `FeatureA` je *zapnuto*.
-* `FeatureB` je *vypnutý*.
-* `FeatureC` Určuje filtr s názvem `Percentage` s vlastností `Parameters`. `Percentage` je konfigurovatelný filtr. V tomto příkladu určuje `Percentage` pravděpodobnost 50-procent pro příznak `FeatureC`, který má být *zapnut*.
+* `feature-a` je *zapnuto*.
+* `feature-b` je *vypnutý*.
+* `feature-c` Určuje filtr s názvem `Percentage` s vlastností `parameters`. `Percentage` je konfigurovatelný filtr. V tomto příkladu `Percentage` určuje pravděpodobnost 50% pro příznak `feature-c`, který má být *zapnut*.
 
 ## <a name="feature-flag-checks"></a>Kontroly příznaků funkcí
 
-Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Například:
+Základním vzorem správy funkcí je nejprve zjistit, zda je příznak funkce nastaven na hodnotu *zapnuto*. V takovém případě správce funkcí spustí akce, které funkce obsahuje. Příklad:
 
 ```java
 private FeatureManager featureManager;
 ...
-if (featureManager.isEnabled("FeatureA"))
+if (featureManager.isEnabledAsync("feature-a"))
 {
     // Run the following code
 }
@@ -102,7 +113,7 @@ if (featureManager.isEnabled("FeatureA"))
 
 ## <a name="dependency-injection"></a>Injektáž závislosti
 
-V případě jarního spuštění můžete ke Správci funkcí přistupovat `FeatureManager` prostřednictvím injektáže závislosti:
+V případě jarního spuštění můžete k `FeatureManager` správce funkcí přistupovat prostřednictvím injektáže závislosti:
 
 ```java
 @Controller
@@ -118,21 +129,21 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>Akce kontroleru
 
-V řadičích MVC pomocí atributu `@FeatureGate` určíte, jestli je povolená konkrétní akce. Následující akce `Index` vyžaduje, *aby před spuštěním* běžela `FeatureA`:
+V řadičích MVC pomocí atributu `@FeatureGate` určíte, jestli je povolená konkrétní akce. Následující akce `Index` vyžaduje, *aby předtím, než bude možné* spustit:, `feature-a`.
 
 ```java
 @GetMapping("/")
-@FeatureGate(feature = "FeatureA")
+@FeatureGate(feature = "feature-a")
 public String index(Model model) {
     ...
 }
 ```
 
-Když je kontroler MVC nebo akce zablokovaná, protože příznak řídicí funkce je *vypnutý*, zavolá se registrované rozhraní `IDisabledFeaturesHandler`. Výchozí rozhraní `IDisabledFeaturesHandler` vrátí klientovi stav 404 bez těla odpovědi.
+Když je kontroler MVC nebo akce zablokovaná, protože příznak řídicí funkce je *vypnutý*, zavolá se registrované `IDisabledFeaturesHandler` rozhraní. Výchozí `IDisabledFeaturesHandler` rozhraní vrátí klientovi stav 404 bez těla odpovědi.
 
 ## <a name="mvc-filters"></a>Filtry MVC
 
-Filtry MVC můžete nastavit tak, aby byly aktivovány na základě stavu příznaku funkce. Následující kód přidá filtr MVC s názvem `FeatureFlagFilter`. Tento filtr se aktivuje v rámci kanálu MVC jenom v případě, že je povolená možnost `FeatureA`.
+Filtry MVC můžete nastavit tak, aby byly aktivovány na základě stavu příznaku funkce. Následující kód přidá filtr MVC s názvem `FeatureFlagFilter`. Tento filtr se aktivuje v rámci kanálu MVC jenom v případě, že je povolená možnost `feature-a`.
 
 ```java
 @Component
@@ -144,7 +155,7 @@ public class FeatureFlagFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        if(!featureManager.isEnabled("FeatureA")) {
+        if(!featureManager.isEnabled("feature-a")) {
             chain.doFilter(request, response);
             return;
         }
@@ -156,11 +167,11 @@ public class FeatureFlagFilter implements Filter {
 
 ## <a name="routes"></a>Trasy
 
-Pomocí příznaků funkcí můžete přesměrovat trasy. Následující kód přesměruje uživatele z `FeatureA` je povolen:
+Pomocí příznaků funkcí můžete přesměrovat trasy. Následující kód bude přesměrovat uživatele z `feature-a` je povolen:
 
 ```java
 @GetMapping("/redirect")
-@FeatureGate(feature = "FeatureA", fallback = "/getOldFeature")
+@FeatureGate(feature = "feature-a", fallback = "/getOldFeature")
 public String getNewFeature() {
     // Some New Code
 }

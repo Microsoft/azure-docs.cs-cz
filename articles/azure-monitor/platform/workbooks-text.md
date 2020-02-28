@@ -4,18 +4,17 @@ description: Zjednodušte složité vytváření sestav pomocí předem sestaven
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3b7affb9c7d7be790d4279c1db8174a5dd3b2c2a
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c5fb585d0eb6aeb7866c2ab04b324ee31fe903ca
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872770"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658045"
 ---
 # <a name="workbook-text-parameters"></a>Textové parametry sešitu
 

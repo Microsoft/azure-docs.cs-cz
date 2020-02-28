@@ -3,17 +3,16 @@ title: Odeslání metriky pro klasický virtuální počítač s Windows do Azur
 description: Odeslání metriky hostovaného operačního systému do úložiště dat Azure Monitor pro virtuální počítač s Windows (Classic)
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: d911a6b65ba0d63bca09437f6451019addcbc0b3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 65bb1a3915ece384974da12b4e7a1ad0c1e08133
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977625"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655803"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Odeslání metriky hostovaného operačního systému do databáze Azure Monitor metriky pro virtuální počítač s Windows (Classic)
 
@@ -60,7 +59,7 @@ Udělte této aplikaci oprávnění vydavatele metrik monitorování pro prostř
 
 ## <a name="author-diagnostics-extension-configuration"></a>Vytvořit konfiguraci rozšíření diagnostiky
 
-1. Připravte konfigurační soubor s diagnostickým rozšířením. Tento soubor určuje, které protokoly a čítače výkonu má diagnostické rozšíření shromažďovat pro váš klasický virtuální počítač. Tady je příklad:
+1. Připravte konfigurační soubor s diagnostickým rozšířením. Tento soubor určuje, které protokoly a čítače výkonu má diagnostické rozšíření shromažďovat pro váš klasický virtuální počítač. Následuje příklad:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

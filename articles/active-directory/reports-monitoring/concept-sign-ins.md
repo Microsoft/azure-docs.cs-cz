@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/09/2019
+ms.date: 02/26/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 256194d8b0b5e6b08210e9338d945774603ac328
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ffb2ff87eb78ed4088225f832b6df55726196493
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429758"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656582"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -47,7 +47,7 @@ Tento článek obsahuje přehled sestavy přihlášení.
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Jaká licence Azure AD je potřeba pro přístup k přihlašovací aktivitě?
 
-* Váš klient musí mít přidruženou licenci Azure AD Premium, abyste viděli sestavu aktivity všech přihlášení. Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) . Bude trvat několik dní, než se data zobrazí v sestavách po upgradu na licenci Premium bez jakýchkoli aktivit dat před upgradem.
+* K vaší straně klienta musí být přidružená licence Azure AD Premium, aby bylo možné zobrazit sestavu všech aktivit přihlašování. Pokud chcete upgradovat edici Azure Active Directory, přečtěte si téma [Začínáme se Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) . Bude trvat několik dní, než se data zobrazí v sestavách po upgradu na licenci Premium bez jakýchkoli aktivit dat před upgradem.
 
 ## <a name="sign-ins-report"></a>Sestava přihlášení
 
@@ -101,59 +101,90 @@ Chcete-li získat podrobnější informace, vyberte položku v zobrazení seznam
 
 ## <a name="filter-sign-in-activities"></a>Filtrování aktivit přihlašování
 
-Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyhovovat. Za druhé filtrujte data přihlášení pomocí pole data jako výchozí filtr. Azure AD poskytuje širokou škálu dalších filtrů, které můžete nastavit.
+Nejprve zajistěte zúžení hlášených dat na úroveň, která vám bude vyhovovat. Za druhé filtrujte data přihlášení pomocí pole data jako výchozí filtr. Azure AD poskytuje širokou škálu dalších filtrů, které můžete nastavit:
 
 ![Přihlašovací aktivita](./media/concept-sign-ins/04.png "Aktivita přihlášení")
 
-Filtr **Uživatel** umožňuje určit jméno nebo hlavní název uživatele (UPN) pro uživatele, o kterého vám jde.
+**ID žádosti** – ID žádosti, o kterou vám záleží.
 
-Filtr **Aplikace** umožňuje určit název aplikace, o kterou vám jde.
+**Uživatel** – jméno nebo hlavní název uživatele (UPN) uživatele, o kterém máte starosti.
 
-Filtr **Stav přihlášení** umožňuje vybrat jednu z následujících možností:
+**Application** – název cílové aplikace.
+ 
+**Stav** – stav přihlášení, o který máte starosti:
 
-- Všechno
 - Úspěch
-- Selhání
 
-Filtr **podmíněného přístupu** umožňuje vybrat stav zásad certifikační autority pro přihlášení:
+- Nezdařilo se
 
-- Všechno
-- Nepoužito
+- Bylo
+
+
+**IP adresa** – IP adresa zařízení používaného pro připojení k vašemu tenantovi.
+
+**Umístění** – umístění, ze kterého bylo připojení iniciováno:
+
+- Město
+
+- Kraj
+
+- Země nebo oblast
+
+
+**Prostředek** – název služby, která se používá pro přihlášení.
+
+
+**ID prostředku** – ID služby použité pro přihlášení
+
+
+**Klientská aplikace** – typ klientské aplikace používané pro připojení k vašemu tenantovi:
+
+![Filtr klientských aplikací](./media/concept-sign-ins/client-app-filter.png)
+
+
+|Název|Moderní ověřování|Popis|
+|---|:-:|---|
+|Ověřený protokol SMTP| |Používá se pro odesílání e-mailových zpráv klientem POP a IMAP.|
+|Automatického| |Používá se klienty Outlook a EAS k vyhledání a připojení k poštovním schránkám v Exchangi Online.|
+|Exchange ActiveSync| |Tento filtr zobrazuje všechny pokusy o přihlášení, kde došlo k pokusu o provedení protokolu EAS.|
+|Prohlížeč|![Kontrola](./media/concept-sign-ins/check.png)|Zobrazí všechny pokusy uživatelů o přihlášení pomocí webových prohlížečů.|
+|Exchange ActiveSync| | Zobrazí všechny pokusy o přihlášení od uživatelů s klientskými aplikacemi pomocí Exchange ActiceSync pro připojení k Exchangi Online.|
+|Prostředí PowerShell pro Exchange Online| |Slouží k připojení k Exchangi Online pomocí vzdáleného prostředí PowerShell. Pokud zablokujete základní ověřování pro prostředí Exchange Online PowerShell, musíte k připojení použít modul prostředí Exchange Online PowerShell. Pokyny najdete v tématu [připojení k prostředí PowerShell pro Exchange Online pomocí služby Multi-Factor Authentication](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).|
+|Webové služby systému Exchange| |Programovací rozhraní, které používá aplikace Outlook, Outlook pro Mac a aplikace třetích stran.|
+|IMAP4| |Starší verze poštovního klienta, který používá IMAP k načtení e-mailu.|
+|Rozhraní MAPI přes protokol HTTP| |Používá Outlook 2010 a novější.|
+|Mobilní aplikace a desktopoví klienti|![Kontrola](./media/concept-sign-ins/check.png)|Zobrazuje všechny pokusy o přihlášení od uživatelů s využitím mobilních aplikací a desktopových klientů.|
+|Adresář offline| |Kopie kolekcí seznamu adres, které jsou staženy a používány aplikací Outlook.|
+|Outlook odkudkoli (RPC over HTTP)| |Používá Outlook 2016 a starší.|
+|Služba Outlook| |Používá se v e-mailu a aplikaci kalendáře pro Windows 10.|
+|POP3| |Starší verze poštovního klienta pomocí protokolu POP3 k načtení e-mailu.|
+|Webové služby vytváření sestav| |Používá se k načtení dat sestavy v Exchangi Online.|
+|Ostatní klienti| |Zobrazuje všechny pokusy o přihlášení uživatelů, u kterých není klientská aplikace zahrnutá nebo neznámá.|
+
+
+
+**Operační systém** – operační systém, který se používá v zařízení, se přihlašuje k vašemu tenantovi. 
+
+
+**Prohlížeč zařízení** – Pokud bylo připojení iniciováno z prohlížeče, toto pole vám umožní filtrovat podle názvu prohlížeče.
+
+
+**ID korelace** – ID korelace aktivity
+
+
+**Podmíněný přístup** – stav použitých pravidel podmíněného přístupu
+
+- Nepoužito 
+
 - Úspěch
-- Selhání
 
-Filtr **Datum** umožňuje definovat časový rámec pro vracená data.  
-Možné hodnoty:
+- Nezdařilo se
 
-- Jeden měsíc
-- 7 dní
-- 24 hodin
-- Vlastní časový interval
 
-Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a koncový čas.
 
-Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se automaticky přidají do seznamu filtrů. Například přidáním pole **Klientská aplikace** do vašeho seznamu získáte také další možnost filtru, která vám umožní nastavit následující filtry:  
-![Přihlašovací aktivita](./media/concept-sign-ins/12.png "Aktivita přihlášení")
 
-- **Prohlížeč**  
-    Tento filtr zobrazuje všechny události, u kterých došlo k pokusu o přihlášení pomocí toků prohlížeče.
-- **Exchange ActiveSync (podporováno)**  
-    Tento filtr zobrazuje všechny pokusy o přihlášení, u kterých došlo k pokusu o spuštění protokolu Exchange ActiveSync (EAS) z podporovaných platforem, jako je iOS, Android a Windows Phone.
-- **Exchange ActiveSync (nepodporované)**  
-    Tento filtr zobrazuje všechny pokusy o přihlášení, u kterých došlo k pokusu o spuštění protokolu EAS z nepodporovaných platforem, jako je Linux distribuce.
-- **Klienti Mobile Apps a desktopových klientů** Filtr zobrazuje všechny pokusy o přihlášení, které nepoužívaly toky prohlížeče. Například mobilní aplikace z jakékoli platformy pomocí libovolného protokolu nebo klientských aplikací klasické pracovní plochy, jako je Office ve Windows nebo MacOS.
-  
-- **Ostatní klienti**
-    - **IMAP**  
-        Starší verze poštovního klienta, který používá IMAP k načtení e-mailu.
-    - **MAPI**  
-        Office 2013, kde je povolena ADAL a používá rozhraní MAPI.
-    - **Stará klienti Office**  
-        Sada Office 2013 v její výchozí konfiguraci, kde není povolená knihovna ADAL a kterou používá rozhraní MAPI, nebo Office 2016, kde je ADAL zakázaná
-    - **POP**  
-        Starší verze poštovního klienta pomocí protokolu POP3 k načtení e-mailu.
-    - **SMTP**  
-        Starší verze poštovního klienta pomocí protokolu SMTP k odeslání e-mailu.
+
+
 
 ## <a name="download-sign-in-activities"></a>Stažení aktivit přihlašování
 

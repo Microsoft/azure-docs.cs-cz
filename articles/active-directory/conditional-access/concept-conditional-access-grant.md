@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 02/26/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: d3df906936cc4e47ee1f43adb0fcbaa0e8c04b0f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585879"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656309"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -55,7 +55,7 @@ Zaškrtnutí tohoto políčka bude vyžadovat, aby uživatelé prováděli Multi
 
 Organizace, které nasadily Microsoft Intune, můžou použít informace vrácené ze svých zařízení k identifikaci zařízení, která splňují konkrétní požadavky na dodržování předpisů. Tyto informace o dodržování zásad se předávají z Intune do Azure AD, kde podmíněný přístup může učinit rozhodnutí udělit nebo blokovat přístup k prostředkům. Další informace o zásadách dodržování předpisů najdete v článku [Nastavení pravidel pro zařízení, která umožňují přístup k prostředkům ve vaší organizaci pomocí Intune](https://docs.microsoft.com/intune/protect/device-compliance-get-started).
 
-Zařízení může být označeno jako kompatibilní s Intune (pro libovolný operační systém zařízení) nebo systémem MDM jiného výrobce pro zařízení s Windows 10. Systémy MDM třetích stran pro jiné typy operačních systémů zařízení, než je Windows 10, se nepodporují.
+Zařízení může být označeno jako kompatibilní s Intune (pro libovolný operační systém zařízení) nebo systémem MDM jiného výrobce pro zařízení s Windows 10. Jamf pro je jediný podporovaný systém MDM třetí strany. Další informace o integraci najdete v článku integrace [Jamf pro s Intune pro dodržování předpisů](/intune/protect/conditional-access-integrate-jamf).
 
 Zařízení musí být zaregistrovaná ve službě Azure AD, aby je bylo možné označit jako vyhovující. Další informace o registraci zařízení najdete v článku [co je identita zařízení](../devices/overview.md).
 
