@@ -3,7 +3,7 @@
     - name: Příručka pro vývojáře
       href: azure-developer-guide.md
     - name: Sady SDK a nástroje
-      href: 'https://docs.microsoft.com/azure/index#pivot=sdkstools'
+      href: 'https://aka.ms/azsdkpackages'
 - name: Rychlý start
   items:
     - name: Web Apps

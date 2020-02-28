@@ -150,7 +150,7 @@
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn
-      href: /learn/browse/?products=azure-virtual-machines
+      href: /learn/browse/?products=azure-load-balancer
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: Názory na Azure Load Balancer
