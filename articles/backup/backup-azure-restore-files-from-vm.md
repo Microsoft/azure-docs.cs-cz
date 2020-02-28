@@ -3,12 +3,12 @@ title: Obnovení souborů a složek ze zálohy virtuálního počítače Azure
 description: V tomto článku se dozvíte, jak obnovit soubory a složky z bodu obnovení virtuálního počítače Azure.
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4565929b5475e2348685fbec77b596b65ed73fd6
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: d80fb1060eca766305ecbfffe151d975472f8b3c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114322"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660916"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovení souborů ze zálohy virtuálního počítače Azure
 
@@ -206,7 +206,7 @@ Pokud skript spustíte na počítači s omezeným přístupem, ujistěte se, že
   - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (pro Azure Čína 21Vianet)
   - <https://pod01-rec2.geo-name.backup.windowsazure.us> (pro státní správu USA Azure)
   - <https://pod01-rec2.geo-name.backup.windowsazure.de> (pro Německo Azure)
-- odchozí port 3260
+- Odchozí porty 53 (DNS), 443, 3260
 
 > [!NOTE]
 >

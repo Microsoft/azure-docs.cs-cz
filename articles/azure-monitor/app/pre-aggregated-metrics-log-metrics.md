@@ -1,21 +1,19 @@
 ---
 title: Metriky založené na protokolu a předem agregované metriky v Azure Application Insights | Microsoft Docs
 description: Proč používat v Azure Application Insights a předem agregované metriky založené na protokolech
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 384e3c9032b324ee92762db9156c628a05e5e862
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65abc9c7153aaf2973d5927400e27467066098f9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406592"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669756"
 ---
-# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Metriky založené na protokolech a předem agregované metriky ve službě Application Insights
+# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Neagregované metriky založené na protokolu a Application Insights
 
 Tento článek vysvětluje rozdíl mezi tradičními Application Insights metrikami, které jsou založené na protokolech, a předem agregované metriky, které jsou aktuálně ve verzi Public Preview. Oba typy metrik jsou k dispozici uživatelům Application Insights a každá z nich přináší jedinečnou hodnotu v monitorování stavu aplikací, diagnostiky a analýz. Vývojáři, kteří instrumentují aplikace, mohou rozhodnout, který typ metriky je nejvhodnější pro konkrétní scénář, v závislosti na velikosti aplikace, očekávaném objemu telemetrie a obchodních požadavcích na přesnost metrik a výstrahy.
 

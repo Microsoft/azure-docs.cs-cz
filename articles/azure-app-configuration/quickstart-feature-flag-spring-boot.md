@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 4a8d7f50ecf385388b63b9d83525a39737e0d157
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766441"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655748"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Rychlý Start: Přidání příznaků funkcí do aplikace na jaře Boot
 
@@ -21,9 +21,9 @@ Knihovny pro správu funkcí pružiny rozšiřuje rámec s kompletní podporou p
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-- Podporovaná [sada Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
-- [Apache Maven](https://maven.apache.org/download.cgi) verze 3,0 nebo vyšší.
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Podporovaná [sada Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
+* [Apache Maven](https://maven.apache.org/download.cgi) verze 3,0 nebo vyšší.
 
 ## <a name="create-an-app-configuration-instance"></a>Vytvoření instance konfigurace aplikace
 
@@ -42,14 +42,14 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 1. Přejděte na <https://start.spring.io/>.
 
-2. Zadejte následující možnosti:
+1. Zadejte následující možnosti:
 
-   - Vygenerujte projekt **Maven** pomocí **jazyka Java**.
-   - Zadejte verzi pro **jarní spuštění** , která je rovna nebo větší než 2,0.
-   - Zadejte název **skupiny** a **artefakty** pro vaši aplikaci.  Tento článek používá `com.example` a `demo`.
-   - Přidejte **webovou závislost pružiny** .
+   * Vygenerujte projekt **Maven** v **Javě**.
+   * Zadejte verzi pro **jarní spuštění** , která je rovna nebo větší než 2,0.
+   * Zadejte názvy skupiny (**Group**) a artefaktu (**Artifact**) pro vaši aplikaci.  Tento článek používá `com.example` a `demo`.
+   * Přidejte **webovou závislost pružiny** .
 
-3. Po zadání předchozích možností vyberte **generovat projekt**. Po zobrazení výzvy Stáhněte projekt do svého místního počítače.
+1. Po zadání předchozích možností vyberte **generovat projekt**. Po zobrazení výzvy Stáhněte projekt do svého místního počítače.
 
 ## <a name="add-feature-management"></a>Přidat správu funkcí
 
@@ -57,20 +57,41 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 1. V textovém editoru otevřete soubor *pom. XML* a přidejte následující do seznamu `<dependencies>`.:
 
+### <a name="spring-cloud-11x"></a>Jarní Cloud 1.1. x
+
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.2.1</version>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.2.1</version>
+        <version>1.1.2</version>
     </dependency>
     <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
+    </dependency>
+    ```
+
+### <a name="spring-cloud-12x"></a>Jarní Cloud 1.2. x
+
+    ```xml
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.microsoft.azure</groupId>
+        <artifactId>spring-cloud-azure-feature-management-web</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
     ```
 
@@ -108,6 +129,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
         }
     }
     ```
+
 1. V adresáři balíčku aplikace vytvořte nový soubor Java s názvem *MessageProperties. Java* .
 
     ```java
@@ -131,7 +153,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     }
     ```
 
-1. V adresáři balíčku aplikace vytvořte nový soubor Java s názvem *HelloController. Java* . 
+1. V adresáři balíčku aplikace vytvořte nový soubor Java s názvem *HelloController. Java* .
 
     ```java
     package com.example.demo;
@@ -220,42 +242,42 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
     ```
 
-6. Vytvořte novou složku s názvem CSS pod `static` a uvnitř ní nový soubor CSS s názvem *Main. CSS*.
+1. Vytvořte novou složku s názvem CSS pod `static` a uvnitř ní nový soubor CSS s názvem *Main. CSS*.
 
     ```css
     html {
-    position: relative;
-    min-height: 100%;
+     position: relative;
+     min-height: 100%;
     }
     body {
-    margin-bottom: 60px;
+     margin-bottom: 60px;
     }
     .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    background-color: #f5f5f5;
+     position: absolute;
+     bottom: 0;
+     width: 100%;
+     height: 60px;
+     line-height: 60px;
+     background-color: #f5f5f5;
     }
 
     body > .container {
-    padding: 60px 15px 0;
+     padding: 60px 15px 0;
     }
 
     .footer > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+     padding-right: 15px;
+     padding-left: 15px;
     }
 
     code {
-    font-size: 80%;
+     font-size: 80%;
     }
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
-1. Sestavte aplikaci pružinového spouštění pomocí Maven a spusťte ji.
+1. Sestavte aplikaci Spring Boot pomocí Mavenu a spusťte ji.
 
     ```shell
     mvn clean package
@@ -268,7 +290,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 1. Na portálu konfigurace aplikace vyberte **správce funkcí**a změňte stav **beta** klíče na **zapnuto**:
 
-    | Klíč | Stav |
+    | Klíč | Stát |
     |---|---|
     | Beta | Zapnuto |
 
@@ -284,6 +306,6 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
 
 V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikací a použili ho ke správě funkcí v rámci webové aplikace ve jarních aplikacích pomocí [knihoven pro správu funkcí](https://go.microsoft.com/fwlink/?linkid=2074664).
 
-- Přečtěte si další informace o [správě funkcí](./concept-feature-management.md).
-- [Správa příznaků funkcí](./manage-feature-flags.md).
-- [Používejte příznaky funkcí v aplikaci v jádru pro pružinové spouštění](./use-feature-flags-spring-boot.md).
+* Přečtěte si další informace o [správě funkcí](./concept-feature-management.md).
+* [Správa příznaků funkcí](./manage-feature-flags.md).
+* [Používejte příznaky funkcí v aplikaci v jádru pro pružinové spouštění](./use-feature-flags-spring-boot.md).

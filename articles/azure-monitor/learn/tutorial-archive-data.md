@@ -3,18 +3,17 @@ title: Archivace metrik Azure a dat protokolů s použitím Azure Storage
 description: Archivujte data protokolu a metriky vygenerované prostředky Azure do účtu úložiště.
 author: johnkemnetz
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3ed00b1c68c41bc392b09c97dd47c9cdb8fa890d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979818"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661721"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivace metrik Azure a dat protokolů s použitím Azure Storage
 
@@ -34,11 +33,11 @@ Tento kurz prochází proces konfigurace prostředí Azure pro archivaci dat do 
 > * Zobrazení dat monitorování v tomto účtu úložiště
 > * Vyčištění prostředků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
 
@@ -86,7 +85,7 @@ Teď nakonfigurujeme data na úrovni prostředku (metriky prostředků a protoko
 
    ![Část Nastavení diagnostiky](media/tutorial-archive-data/diagnostic-settings-home.png)
 
-4. Klikněte na tlačítko **Konfigurovat** pod možností **Archivovat do účtu úložiště** a vyberte účet úložiště, který jste vytvořili v předchozí části. Klikněte na **OK**.
+4. Klikněte na tlačítko **Konfigurovat** pod možností **Archivovat do účtu úložiště** a vyberte účet úložiště, který jste vytvořili v předchozí části. Klikněte na tlačítko **OK**.
 
    ![Nastavení diagnostiky – účet úložiště](media/tutorial-archive-data/diagnostic-settings-storage.png)
 

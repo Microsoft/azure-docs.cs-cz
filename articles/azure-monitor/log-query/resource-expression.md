@@ -1,18 +1,17 @@
 ---
 title: výraz prostředku () v Azure Monitor dotaz na protokol | Microsoft Docs
 description: Výraz prostředku se používá v dotazu protokolu Azure Monitor orientovaném na prostředky k načtení dat z více zdrojů.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: 370b2547c9e726ab4f5ebc4dd732cc0bfa17f760
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2a729caefe698b13833098ba48df9d4bfbd97356
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933017"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665695"
 ---
 # <a name="resource-expression-in-azure-monitor-log-query"></a>výraz prostředku () v dotazu Azure Monitor protokolu
 
@@ -27,13 +26,13 @@ Výraz `resource` se používá v rámci dotazu Azure Monitor [oboru pro](scope.
 
 - *Identifikátor*: ID prostředku prostředku.
 
-| Identifikátor | Popis | Příklad:
+| Identifikátor | Popis | Příklad
 |:---|:---|:---|
 | Prostředek | Zahrnuje data pro prostředek. | prostředek ("/Subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup/Providers/Microsoft.COMPUTE/VirtualMachines/myvm") |
 | Skupina prostředků nebo předplatné | Zahrnuje data prostředku a všech prostředků, které obsahuje.  | prostředek ("/Subscriptions/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcesgroups/myresourcegroup) |
 
 
-## <a name="notes"></a>Poznámky
+## <a name="notes"></a>Poznámky:
 
 * Musíte mít oprávnění ke čtení tohoto prostředku.
 

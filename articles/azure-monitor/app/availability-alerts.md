@@ -1,19 +1,17 @@
 ---
 title: Nastavení upozornění na dostupnost pomocí Azure Application Insights | Microsoft Docs
 description: Nastavení testů webu ve službě Application Insights. Zasílání upozornění, pokud web přestane být k dispozici nebo reaguje pomalu.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: a1637ac82c33c2a541bcec9f2848a248c29d56ca
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e0c1a93ef663762bec199abc5aa7eabbc821168d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872668"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654949"
 ---
 # <a name="availability-alerts"></a>Upozornění na dostupnost
 
@@ -66,7 +64,7 @@ Pomocí [nových sjednocených výstrah](https://docs.microsoft.com/azure/monito
 
 Pokud chcete tento proces automatizovat pomocí šablon Azure Resource Manager, přečtěte si dokumentaci k tématu [Vytvoření upozornění na metriku pomocí šablony Správce prostředků](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert) .
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 

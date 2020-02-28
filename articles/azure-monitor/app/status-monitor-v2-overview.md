@@ -1,18 +1,16 @@
 ---
 title: Přehled služby Azure Application Insights Agent | Microsoft Docs
 description: Přehled agenta Application Insights. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 61c3721745550b43aea730d0bcd2230b0435ff53
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4a240bc62816a46bc37108777a8b081b74047738
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899601"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671167"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Nasazení agenta Azure Monitor Application Insights pro místní servery
 
@@ -28,7 +26,7 @@ Telemetrii se pošle do Azure Portal, kde můžete [monitorovat](https://docs.mi
 
 ## <a name="powershell-gallery"></a>Galerie prostředí PowerShell
 
-Application Insights agenta najdete tady: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
+Application Insights agenta najdete zde: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 
 ![Galerie prostředí PowerShell](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
@@ -47,12 +45,12 @@ Application Insights agenta najdete tady: https://www.powershellgallery.com/pack
 - [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
 - [Spustit – ApplicationInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 - [Řešení potíží](status-monitor-v2-troubleshoot.md)
 - [Známé problémy](status-monitor-v2-troubleshoot.md#known-issues)
 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 - Podporuje agent Application Insights instalaci proxy serveru?
 

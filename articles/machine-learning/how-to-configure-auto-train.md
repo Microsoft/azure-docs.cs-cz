@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b7f837c56214d2d01d0f119e0107a095bcfd782b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1b52d9b7eb60483da91f87435ace1994d91b1039
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198765"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665837"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace automatizovaných experimentů ML v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -143,7 +143,7 @@ Dále určete, kde bude Trénink modelu. Automatické experimentu strojového u�
 
 ## <a name="configure-your-experiment-settings"></a>Konfigurovat nastavení testu
 
-Existuje několik možností, které můžete použít ke konfiguraci vašeho automatizované experimentu strojového učení. Tyto parametry jsou nastaveny vytvořením instance objektu `AutoMLConfig`. Úplný seznam parametrů naleznete v tématu [Třída AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) .
+Existuje několik možností, které můžete použít ke konfiguraci vašeho automatizované experimentu strojového učení. Tyto parametry jsou nastaveny vytvořením instance objektu `AutoMLConfig`. Úplný seznam parametrů naleznete v tématu [Třída AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) .
 
 Možné příklady:
 
@@ -309,7 +309,7 @@ project_folder = './sample_projects/automl-classification'
 experiment = Experiment(ws, experiment_name)
 ```
 
-Odeslání experimentu ke spuštění a generovat model. Předáním `AutoMLConfig` metodě `submit` vygenerujte model.
+Odešlete experiment, aby se spustil a vygeneroval model. Předáním `AutoMLConfig` metodě `submit` vygenerujte model.
 
 ```python
 run = experiment.submit(automl_config, show_output=True)
@@ -357,7 +357,7 @@ Tato 2 rozhraní API použijte v prvním kroku namontovaného modelu, abyste lé
 
 + Rozhraní API 1: `get_engineered_feature_names()` vrátí seznam názvů funkcí navržených pro inženýry.
 
-  Použití:
+  Využití:
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -373,7 +373,7 @@ Tato 2 rozhraní API použijte v prvním kroku namontovaného modelu, abyste lé
 
 + Rozhraní API 2: `get_featurization_summary()` vrátí souhrn featurization pro všechny vstupní funkce.
 
-  Použití:
+  Využití:
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```

@@ -1,18 +1,17 @@
 ---
 title: Řešení potíží s rozšířením Azure Diagnostics
 description: Řešení potíží při použití diagnostiky Azure v Azure Virtual Machines, Service Fabric nebo Cloud Services.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: e2b3ceba7a3673caa38e09f6b4dfa296fd063cfe
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 043369bd6112c4cac36539bbd764393d889439c0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467909"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672272"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Řešení potíží s Azure Diagnostics
 Tento článek popisuje informace o odstraňování potíží, které souvisí s používáním Azure Diagnostics. Další informace o diagnostice Azure najdete v tématu [přehled Azure Diagnostics](diagnostics-extension-overview.md).
@@ -38,7 +37,7 @@ Níže jsou uvedeny cesty k některým důležitým protokolům a artefaktům. N
 | **Cesta k nástroji pro shromažďování protokolů** | %SystemDrive%\Packages\GuestAgent\ |
 | **Soubor protokolu MonAgentHost** | > C:\Resources\Directory\<CloudServiceDeploymentID.\<RoleName >. DiagnosticStore\WAD0107\Configuration\MonAgentHost. < seq_num >. log |
 
-### <a name="virtual-machines"></a>Virtual Machines
+### <a name="virtual-machines"></a>Virtuální počítače
 | Artefakt | Cesta |
 | --- | --- |
 | **Konfigurační soubor Azure Diagnostics** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<verze > \RuntimeSettings |
@@ -166,7 +165,7 @@ Tabulky v úložišti Azure, které uchovávají události ETW, se nazývají po
             tableName = "WAD" + eventDestination;
 ```
 
-Zde naleznete příklad:
+Tady je příklad:
 
 ```XML
         <EtwEventSourceProviderConfiguration provider="prov1">
@@ -213,7 +212,7 @@ Tento kód generuje čtyři tabulky:
 | Provider = "Prov1" &lt;DefaultEvents/&gt; |WADDefault + MD5 ("Prov1") |
 | Provider = "prov2" &lt;DefaultEvents eventDestination = "dest2"/&gt; |WADdest2 |
 
-## <a name="references"></a>Odkazy
+## <a name="references"></a>Reference
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Postup kontroly konfigurace rozšíření diagnostiky
 Nejjednodušší způsob, jak ověřit konfiguraci rozšíření, je přejít na [Azure Resource Explorer](https://resources.azure.com)a pak přejít na virtuální počítač nebo na cloudovou službu, kde je rozšíření Azure Diagnostics (IaaSDiagnostics/PaaDiagnostics).

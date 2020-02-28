@@ -2,18 +2,16 @@
 title: Protokolování výstrah v Azure Monitor
 description: Aktivovat e-maily, oznámení, volat adresy URL webů (Webhooky) nebo Automation, pokud se pro výstrahy Azure splní podmínky analytického dotazu, které zadáte.
 author: yanivlavi
-services: monitoring
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: b8cae9f7c43098b713d0d5d8f74e46cb0386600c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75396479"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665217"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
 
@@ -31,7 +29,7 @@ Pravidla prohledávání protokolu vytváří služba Azure Alerts pro automatic
 
 Pravidla hledání protokolu jsou definována následujícími podrobnostmi:
 
-- **Dotaz protokolu**  Dotaz, který se spustí pokaždé, když se pravidlo upozornění aktivuje.  Záznamy vrácené tímto dotazem slouží k určení, zda má být výstraha aktivována. Analytický dotaz může být určen pro konkrétní Log Analytics pracovní prostor nebo aplikaci Application Insights a dokonce i v rámci [více Log Analytics a Application Insights prostředků](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) , k dispozici má uživatel přístup i oprávnění k dotazům pro všechny prostředky. 
+- **Dotaz protokolu**  Dotaz, který se spustí pokaždé, když se pravidlo výstrahy aktivuje.  Záznamy vrácené tímto dotazem slouží k určení, zda má být výstraha aktivována. Analytický dotaz může být určen pro konkrétní Log Analytics pracovní prostor nebo aplikaci Application Insights a dokonce i v rámci [více Log Analytics a Application Insights prostředků](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) , k dispozici má uživatel přístup i oprávnění k dotazům pro všechny prostředky. 
     > [!IMPORTANT]
     > podpora [dotazů mezi prostředky](../../azure-monitor/log-query/cross-workspace-query.md#querying-across-log-analytics-workspaces-and-from-application-insights) v protokolových upozorněních pro Application Insights a výstrahy protokolu pro [Log Analytics konfigurovaná pouze pomocí rozhraní scheduledQueryRules API](../../azure-monitor/platform/alerts-log-api-switch.md) .
 
@@ -108,12 +106,12 @@ Vezměte v úvahu scénář, ve kterém jste chtěli upozornit, pokud některý 
 Dotaz by vytvořil průměrnou hodnotu pro každý počítač v intervalu 5 minut.  Tento dotaz se spustí každých 5 minut pro data shromážděná během posledních 30 minut. Vzhledem k tomu, že zvolené pole skupiny (agregované) je sloupcem ' Computer ' – AggregatedValue je rozděleno na různé hodnoty ' Computer ' a průměrné využití procesoru pro každý počítač je určeno pro časovou přihrádku 5 minut.  Vzorový výsledek dotazu pro (řekněme) tři počítače, by byl uvedený níže.
 
 
-|TimeGenerated [UTC] |Počítač  |AggregatedValue  |
+|TimeGenerated [UTC] |Computer  |AggregatedValue  |
 |---------|---------|---------|
 |20xx-xx-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
 |20xx-xx-xxT01:00:00Z     |   srv02.contoso.com      |    91     |
 |20xx-xx-xxT01:00:00Z     |   srv03.contoso.com      |    83     |
-|Tlačítka ...     |   Tlačítka ...      |    Tlačítka ...     |
+|...     |   ...      |    ...     |
 |20xx-xx-xxT01:30:00Z     |   srv01.contoso.com      |    88     |
 |20xx-xx-xxT01:30:00Z     |   srv02.contoso.com      |    84     |
 |20xx-xx-xxT01:30:00Z     |   srv03.contoso.com      |    92     |
@@ -134,7 +132,7 @@ Pojďme se tomuto chování podívat v praxi s praktickým příkladem. Předpok
 V každém intervalu níže systém výstrah Azure vyhodnotí podmínku pro *protokol contoso-log-Alert*.
 
 
-| Time    | Počet záznamů vrácených dotazem na hledání protokolu | Protokolovací podmínka Evalution | Výsledek 
+| Čas    | Počet záznamů vrácených dotazem na hledání protokolu | Protokolovací podmínka Evalution | Výsledek 
 | ------- | ----------| ----------| ------- 
 | 1:05 ODP. | 0 záznamů | 0 není > 0, takže FALSE |  Výstraha se neaktivuje. Nevolaly se žádné akce.
 | 1:10 ODP. | 2 záznamy | 2 > 0, takže TRUE  | Aktivují se výstrahy a volané skupiny akcí. Stav výstrahy aktivní.

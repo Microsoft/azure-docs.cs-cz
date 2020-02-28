@@ -1,21 +1,20 @@
 ---
 title: Přehled agenta Log Analytics
 description: Toto téma vám pomůže pochopit postupy shromažďování dat a monitorování počítačů hostovaných v Azure, místně nebo jiné cloudové prostředí pomocí služby Log Analytics.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: bf2939c28afb682d4053a27920b9cf57795d2e86
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 365c228edd97ffcd02b86508deff4272365447f6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467228"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672136"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
-Agent Azure Log Analytics byl vyvinut pro komplexní správu napříč virtuálními počítači v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/). Agenti systému Windows a Linux odesílají shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definovány v řešení monitorování. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](), [Azure Security Center]()a [Azure Automation]().
+Agent Azure Log Analytics byl vyvinut pro komplexní správu napříč virtuálními počítači v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/). Agenti systému Windows a Linux odesílají shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definovány v řešení monitorování. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/)a [Azure Automation](../../automation/automation-intro.md).
 
 Tento článek obsahuje podrobný přehled o agent, system a požadavky na síť a různých metodách nasazení.
 
@@ -173,11 +172,11 @@ V případě agenta pro Linux je proxy server zadáno během instalace nebo [po 
 
 |Vlastnost| Popis |
 |--------|-------------|
-|Protocol (Protokol) | HTTPS |
+|Protokol | https |
 |uživatel | Volitelné uživatelské jméno pro ověřování proxy serveru |
 |heslo | Volitelné heslo pro ověření proxy serverem |
 |proxyhost | Adresa nebo plně kvalifikovaný název domény proxy serveru/Log Analytics gateway |
-|port | Volitelné nastavení portu brány proxy serveru/Log Analytics |
+|Port | Volitelné nastavení portu brány proxy serveru/Log Analytics |
 
 Příklad: `https://user01:password@proxy01.contoso.com:30443`
 

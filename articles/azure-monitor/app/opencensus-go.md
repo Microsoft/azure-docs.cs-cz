@@ -1,18 +1,14 @@
 ---
 title: OpenCensus přejít ke sledování pomocí Azure Application Insights | Microsoft Docs
 description: Poskytuje pokyny pro integraci trasování OpenCensus na cestách s místním doposíláním a Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/15/2018
-ms.openlocfilehash: ef67801fee574ae43d83af650d6b715e12426c7e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ddb8dfbf14f2c75e4d16693076e56a711d8861ad
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432545"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669977"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Shromažďovat distribuované trasování z webu přejít (Preview)
 
@@ -24,11 +20,11 @@ Application Insights teď podporuje distribuované trasování aplikací v cest�
 - Chcete-li nainstalovat nástroj, použijte verzi 1,11 [ke stažení](https://golang.org/dl/).
 - Postupujte podle pokynů k instalaci [místního serveru pro přeposílání jako služby systému Windows](./opencensus-local-forwarder.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
 ## <a name="create-application-insights-resource"></a>Vytvořit prostředek Application Insights
 
@@ -47,9 +43,9 @@ Nejdřív je potřeba vytvořit prostředek Application Insights, který vygener
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
    | **Skupina prostředků**     | myResourceGroup      | Název pro novou skupinu prostředků, která bude hostovat data App Insights |
-   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Umístění** | Východní USA | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
-2. Klikněte na **Vytvořit**.
+2. Klikněte na možnost **Vytvořit**.
 
 ## <a name="configure-local-forwarder"></a>Konfigurace místního serveru pro směrování
 

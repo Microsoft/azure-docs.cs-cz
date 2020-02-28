@@ -1,23 +1,22 @@
 ---
 title: Shromažďovat a analyzovat čítače výkonu v Azure Monitor | Microsoft Docs
 description: Čítače výkonu jsou shromažďovány nástrojem Azure Monitor k analýze výkonu v agentech systému Windows a Linux.  Tento článek popisuje, jak nakonfigurovat shromažďování čítačů výkonu pro agenty Windows i Linux, podrobnosti o nich jsou uložené v pracovním prostoru a jak je analyzovat v Azure Portal.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363825"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670538"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Zdroje dat o výkonu pro Windows a Linux v Azure Monitor
 Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu v častých intervalech pro analýzu téměř v reálném čase (NRT) Kromě agregace dat výkonu pro dlouhodobé analýzy a generování sestav.
 
-![Čítače výkonu](media/data-sources-performance-counters/overview.png)
+![Čítače výkonnosti](media/data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Konfigurace čítačů výkonu
 Nakonfigurujte čítače výkonu z [nabídky data v části Upřesnit nastavení](agent-data-sources.md#configuring-data-sources).
@@ -32,7 +31,7 @@ V případě čítačů výkonu systému Windows můžete zvolit konkrétní ins
 | \* |Všechny instance |
 | (/&#124;/var) |Odpovídá instancím s názvem:/nebo/var |
 
-### <a name="windows-performance-counters"></a>Čítače výkonu Windows
+### <a name="windows-performance-counters"></a>čítače výkonu systému Windows
 
 ![Konfigurace čítačů výkonu systému Windows](media/data-sources-performance-counters/configure-windows.png)
 
@@ -86,17 +85,17 @@ V následující tabulce jsou uvedeny objekty a čítače, které lze zadat v ko
 
 | Název objektu | Název čítače |
 |:--|:--|
-| Logický Disk | % Bezplatného uzlů inode |
-| Logický Disk | % Volného místa |
-| Logický Disk | % Použitého uzlů inode |
-| Logický Disk | % Využitého místa |
-| Logický Disk | Bajty čtení z disku/s |
-| Logický Disk | Čtení disku/s |
-| Logický Disk | Přenosy disku/s |
-| Logický Disk | Bajty zapisování na disk/s |
-| Logický Disk | Zápis disku/s |
-| Logický Disk | Volné megabajty |
-| Logický Disk | Bajtů logického disku/s |
+| Logický disk | % Bezplatného uzlů inode |
+| Logický disk | % Volné místo |
+| Logický disk | % Použitého uzlů inode |
+| Logický disk | % Využitého místa |
+| Logický disk | Čtení disku bajtů/s |
+| Logický disk | Čtení disku/s |
+| Logický disk | Přenosy disku/s |
+| Logický disk | Zápis disku bajtů/s |
+| Logický disk | Zápis disku/s |
+| Logický disk | Volné megabajty |
+| Logický disk | Bajtů logického disku/s |
 | Paměť | % Dostupné paměti |
 | Paměť | % Dostupného odkládacího prostoru |
 | Paměť | % Využité paměti |
@@ -108,14 +107,14 @@ V následující tabulce jsou uvedeny objekty a čítače, které lze zadat v ko
 | Paměť | Stránky/s |
 | Paměť | Využité místo odkládacího souboru v MB |
 | Paměť | Využitá paměť v MB |
-| Network (Síť) | Celkový počet bajtů přenesených |
-| Network (Síť) | Celkový počet přijatých bajtů |
-| Network (Síť) | Bajty celkem |
-| Network (Síť) | Celkový počet odeslaných paketů |
-| Network (Síť) | Celkový počet přijatých paketů |
-| Network (Síť) | Celkový počet chyb příjmu |
-| Network (Síť) | Chyby odesílání celkem |
-| Network (Síť) | Celkový počet kolizí |
+| Síť | Celkový počet bajtů přenesených |
+| Síť | Celkový počet přijatých bajtů |
+| Síť | Bajty celkem |
+| Síť | Celkový počet odeslaných paketů |
+| Síť | Celkový počet přijatých paketů |
+| Síť | Celkový počet chyb příjmu |
+| Síť | Chyby odesílání celkem |
+| Síť | Celkový počet kolizí |
 | Fyzický disk | Střední doba disku/čtení |
 | Fyzický disk | Střední doba disku/přenos |
 | Fyzický disk | Střední doba disku/zápis |
@@ -130,14 +129,14 @@ V následující tabulce jsou uvedeny objekty a čítače, které lze zadat v ko
 | Procesor | % Času čekání na v/v |
 | Procesor | % Dobrý čas |
 | Procesor | %privilegovaného času |
-| Procesor | % Času procesoru |
+| Procesor | % času procesoru |
 | Procesor | % Uživatelského času |
 | Systém | Volná fyzická paměť |
 | Systém | Volné místo ve stránkovacích souborech |
 | Systém | Volná virtuální paměť |
 | Systém | Procesy |
 | Systém | Velikost uložená ve stránkovacích souborech |
-| Systém | Doba provozu |
+| Systém | Provoz |
 | Systém | Uživatelé |
 
 
@@ -183,7 +182,7 @@ Záznamy o výkonu mají typ **výkonu** a mají vlastnosti v následující tab
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Počítač, který událost byla shromážděna z. |
+| Computer |Počítač, který událost byla shromážděna z. |
 | CounterName |Název čítače výkonu |
 | CounterPath |Úplná cesta k čítači ve formuláři \\\\\<počítač >\\objekt (instance)\\čítač. |
 | CounterValue |Číselná hodnota čítače. |
@@ -202,7 +201,7 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 
 | Dotaz | Popis |
 |:--- |:--- |
-| Výkonu |Všechna data o výkonu |
+| Výkon |Všechna data o výkonu |
 | Výkon &#124; , kde Computer = = "mycomputer" |Všechna data o výkonu z konkrétního počítače |
 | Výkon &#124; , kde CounterName = = "aktuální délka fronty disku" |Veškerá data o výkonu pro určitý čítač |
 | Výkon &#124; , kde ObjectName = = "procesor" a CounterName = = "% času procesoru" a InstanceName = = "_Total" &#124; sumarizace AVGCPU = AVG (CounterValue) podle počítače |Průměrné využití procesoru napříč všemi počítači |
@@ -219,5 +218,5 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 
 ## <a name="next-steps"></a>Další kroky
 * [Shromážděte čítače výkonu z aplikací pro Linux](data-sources-linux-applications.md) , včetně MySQL a serveru http Apache.
-* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.  
+* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.  
 * Exportujte shromážděná data do [Power BI](powerbi.md) pro další vizualizace a analýzu.

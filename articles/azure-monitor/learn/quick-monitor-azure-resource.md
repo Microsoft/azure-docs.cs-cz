@@ -1,18 +1,17 @@
 ---
 title: Monitorování prostředku Azure pomocí Azure Monitor
 description: Naučte se shromažďovat a analyzovat data pro prostředek Azure v Azure Monitor.
-ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 3081c0f8fa8450643a992c8e82840a44db263f76
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: c4b80e62d3800392b847a411dfc66c3278e72bba
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863974"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661860"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Rychlý Start: monitorování prostředku Azure pomocí Azure Monitor
 [Azure monitor](../overview.md) spustí shromažďování dat z prostředků Azure okamžikem, kdy se vytváří. V tomto rychlém startu najdete Stručný návod k datům, která se automaticky shromažďují pro určitý prostředek, a o tom, jak je zobrazit v Azure Portal pro konkrétní prostředek. Později můžete přidat konfiguraci pro shromažďování dalších dat a můžete přejít do nabídky Azure Monitor a použít stejné nástroje pro přístup k datům shromážděným pro všechny prostředky v rámci vašeho předplatného.
@@ -20,7 +19,7 @@ ms.locfileid: "75863974"
 Podrobnější popis monitorování dat shromážděných z prostředků Azure najdete v tématu [monitorování prostředků Azure pomocí Azure monitor](../insights/monitor-azure-resource.md).
 
 
-## <a name="sign-in-to-azure-portal"></a>Přihlásit se na Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 

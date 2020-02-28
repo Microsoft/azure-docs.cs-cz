@@ -1,18 +1,17 @@
 ---
 title: Zobrazení v řešení pro správu | Microsoft Docs
 description: 'Řešení pro správu obvykle zahrnují jedno nebo více zobrazení k vizualizaci dat.  Tento článek popisuje, jak exportovat zobrazení vytvořené návrhářem zobrazení a zahrnout ho do řešení pro správu. '
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2018
-ms.openlocfilehash: 473d10bbec6ca056554f7223800a32e9ca93578e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a9a1c1718fb95a6ace3700af043134072d582473
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553897"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663041"
 ---
 # <a name="views-in-management-solutions-preview"></a>Zobrazení v řešeních pro správu (Preview)
 > [!NOTE]
@@ -26,7 +25,7 @@ ms.locfileid: "72553897"
 >
 >
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 V tomto článku se předpokládá, že už jste obeznámeni s tím, jak [vytvořit řešení pro správu](solutions-creating.md) a strukturu souboru řešení.
 
 ## <a name="overview"></a>Přehled
@@ -89,15 +88,15 @@ Všechny prostředky Log Analytics definované v šabloně Správce prostředků
 
 | Verze v pracovním prostoru | Verze rozhraní API | Dotaz |
 |:---|:---|:---|
-| V1 (starší verze)   | 2015-11-01 – Preview | Starší verze formátu.<br> Příklad: Type = Event EventLevelName = Error  |
-| v2 (upgradovaný) | 2015-11-01 – Preview | Starší verze formátu.  Převedeno na upgradovaný formát při instalaci.<br> Příklad: Type = Event EventLevelName = Error<br>Převedeno na: &#124; Event, kde EventLevelName = = "Error"  |
+| V1 (starší verze)   | 2015-11-01-preview | Starší verze formátu.<br> Příklad: Type = Event EventLevelName = Error  |
+| v2 (upgradovaný) | 2015-11-01-preview | Starší verze formátu.  Převedeno na upgradovaný formát při instalaci.<br> Příklad: Type = Event EventLevelName = Error<br>Převedeno na: &#124; Event, kde EventLevelName = = "Error"  |
 | v2 (upgradovaný) | 2017-03-03 – Preview | Formát upgradu. <br>Příklad: událost &#124; , kde EventLevelName = = "Error"  |
 
 
 ## <a name="add-the-view-details"></a>Přidat podrobnosti zobrazení
 Prostředek zobrazení v souboru s vyexportovaným zobrazením bude obsahovat dva prvky v elementu **Properties** s názvem **Dashboard** a **OverviewTile** obsahující podrobnou konfiguraci zobrazení.  Zkopírujte tyto dva prvky a jejich obsah do elementu **Properties (vlastnosti** ) prostředku zobrazení v souboru řešení.
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 Například následující příklad ukazuje jednoduchý soubor řešení se zobrazením.  Zobrazí se tři tečky (...) pro **řídicí panel** a obsah **OverviewTile** z důvodu místa.
 
     {

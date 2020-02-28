@@ -1,18 +1,15 @@
 ---
 title: Pochopte, jak budou výstrahy metriky fungovat v Azure Monitor.
 description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a jak fungují v Azure Monitor.
-author: rboucher
-ms.author: robb
 ms.date: 12/5/2019
 ms.topic: conceptual
-ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: abcf7d100a1c195d4a49c3061bf22710285c2a9f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 2f1734d30136be904aedf7d880922ba052130ec7
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444158"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664725"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Vysvětlení, jak fungují výstrahy metrik v Azure Monitor
 
@@ -77,7 +74,7 @@ Výstrahy metrik v Azure Monitor také podporují monitorování více kombinac�
 - Cílový prostředek: myAppServicePlan
 - Metrika: procento využití procesoru
 - Typ podmínky: static
-- Dimenze
+- Rozměry
   - Instance = InstanceName1, InstanceName2
 - Časová agregace: průměr
 - Období: za posledních 5 minut
@@ -92,7 +89,7 @@ Podobně jako předtím toto pravidlo monitoruje, pokud průměrné využití CP
 - Cílový prostředek: myAppServicePlan
 - Metrika: procento využití procesoru
 - Typ podmínky: static
-- Dimenze
+- Rozměry
   - Instance = *
 - Časová agregace: průměr
 - Období: za posledních 5 minut
@@ -109,7 +106,7 @@ Při monitorování více dimenzí může pravidlo pro dynamické prahové hodno
 - Cílový prostředek: myAppServicePlan
 - Metrika: procento využití procesoru
 - Typ podmínky: dynamické
-- Dimenze
+- Rozměry
   - Instance = *
 - Časová agregace: průměr
 - Období: za posledních 5 minut

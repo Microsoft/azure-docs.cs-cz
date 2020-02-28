@@ -7,14 +7,14 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: caa80443a189874bfd699dba412fb749c8711556
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 03e8baa5f0286652ee500a06382c0a45e6f0ec52
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493394"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655663"
 ---
-# <a name="mv2-series"></a>Mv2-Series
+# <a name="mv2-series"></a>Řada Mv2
 
 Mv2-Series funkce s vysokou propustností a nízkou latencí běžící na procesorech Intel® Xeon® Platinum 8180M 2,5 GHz (Skylake) se základní frekvencí 2,5 GHz a maximální frekvencí 3,8 GHz. Všechny velikosti virtuálních počítačů řady Mv2-Series můžou využívat trvalé disky úrovně Standard i Premium. Instance Mv2-Series jsou paměťové optimalizované velikosti virtuálních počítačů, které poskytují bezkonkurenční výpočetní výkon pro podporu rozsáhlých databází a úloh s vysokým výkonem, které jsou ideální pro servery relačních databází, velké mezipaměti a v paměti. Analytics.
 
@@ -33,7 +33,7 @@ Akcelerátor zápisu: [podporováno](https://docs.microsoft.com/azure/virtual-ma
 | Standard_M416ms_v2<sup>1, 2</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 / 32000 |
 | Standard_M416s_v2<sup>1, 2</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080) | 80000/2000 | 8 / 32000 |
 
-<sup>1</sup> virtuální počítače řady Mv2-Series jsou pouze 2. generace. Pokud používáte Linux, přečtěte si téma [Podpora pro virtuální počítače generace 2 v Azure](/linux/generation-2.md) , kde najdete pokyny, jak najít a vybrat obrázek.
+<sup>1</sup> virtuální počítače řady Mv2-Series jsou pouze 2. generace. Pokud používáte Linux, přečtěte si téma [Podpora pro virtuální počítače generace 2 v Azure](./linux/generation-2.md) , kde najdete pokyny, jak najít a vybrat obrázek.
 
 <sup>2</sup> pro M416ms_v2 a velikosti M416s_v2 si všimněte, že je k dispozici pouze počáteční podpora pro následující obrázek: "GEN2: SUSE Linux Enterprise Server (SLES) 12 SP4 for SAP Applications".
 

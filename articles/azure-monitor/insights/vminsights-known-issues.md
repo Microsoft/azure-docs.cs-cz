@@ -1,27 +1,26 @@
 ---
 title: Azure Monitor pro virtuální počítače (preview) – známé problémy | Dokumentace Microsoftu
 description: Tento článek se zabývá známými problémy s Azure Monitor pro virtuální počítače, řešením v Azure, které kombinuje stav, zjišťování závislosti aplikací a monitorování výkonu operačního systému virtuálního počítače Azure.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/02/2019
-ms.openlocfilehash: b59e2d1897557b47bcfeafbc17141f869e2f192e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 711b3707d536c4858578817589670edf0f467b64
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450680"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670725"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Známé problémy s monitorováním Azure pro virtuální počítače (preview)
 
 Tento článek se věnuje známým problémům s Azure Monitor pro virtuální počítače, řešením v Azure, které kombinuje stav, zjišťování součástí aplikace a monitorování výkonu operačního systému virtuálního počítače Azure. 
 
-## <a name="health"></a>Stav akce 
+## <a name="health"></a>Stav 
 Níže jsou uvedené známé problémy s aktuální verzí funkce Health:
 
-- Pokud dojde k odebrání nebo odstranění virtuálního počítače Azure, zobrazí se v zobrazení seznamu virtuálních počítačů pro nějakou dobu. Kromě toho kliknutím na stav virtuálního počítače odstraněny nebo odstraněné otevře **stav diagnostiky** zobrazení a poté zahájí smyčku načítání. Výběrem názvu odstraněného virtuálního počítače se otevře podokno se zpráva, že virtuální počítač se odstranil.
+- Pokud dojde k odebrání nebo odstranění virtuálního počítače Azure, zobrazí se v zobrazení seznamu virtuálních počítačů pro nějakou dobu. Navíc kliknutím na stav odebraného nebo odstraněného virtuálního počítače otevřete zobrazení **diagnostiky stavu** a potom zahájíte smyčku načítání. Výběrem názvu odstraněného virtuálního počítače se otevře podokno se zpráva, že virtuální počítač se odstranil.
 - Změny konfigurace, jako je aktualizace prahové hodnoty, trvat až 30 minut i v případě, že na portálu nebo rozhraní API sledování pracovní vytížení může je aktualizovat okamžitě. 
 - Prostředí pro diagnostiku stavu se aktualizuje rychleji než ostatní zobrazení. Tyto informace mohou být při přepínání mezi nimi zpožděny. 
 - V případě virtuálních počítačů se systémem Linux má název stránky uvádějící kritéria stavu pro jedno zobrazení virtuálního počítače místo názvu virtuálního počítače definovaného uživatelem celý název tohoto virtuálního počítače. 

@@ -1,32 +1,28 @@
 ---
 title: Datový model Azure Application Insights | Microsoft Docs
 description: Popisuje vlastnosti exportované z průběžného exportu ve formátu JSON a slouží jako filtry.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/08/2019
-ms.openlocfilehash: 8f84e3179a6f949e4a322a2218736fc9ebe60442
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677912"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663871"
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights Exportovat datový model
 Tato tabulka obsahuje seznam vlastností telemetrie odeslaných z [Application Insights](../../azure-monitor/app/app-insights-overview.md) sad SDK na portál.
 Tyto vlastnosti se zobrazí ve výstupu dat z [průběžného exportu](export-telemetry.md).
 Zobrazují se také v filtrech vlastností v [Průzkumníkovi metrik](../../azure-monitor/app/metrics-explorer.md) a [diagnostickém vyhledávání](../../azure-monitor/app/diagnostic-search.md).
 
-Ukazuje na poznámku:
+Odkazuje na mějte na paměti:
 
 * `[0]` v těchto tabulkách označuje bod v cestě, kam je nutné vložit index. ale ne vždycky 0.
 * Doby trvání jsou desetiny sekundy, takže 10000000 = = 1 sekunda.
 * Data a časy jsou UTC a jsou uvedené ve formátu ISO `yyyy-MM-DDThh:mm:ss.sssZ`
 
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
     // A server report about an HTTP request
     {
     "request": [
@@ -109,56 +105,56 @@ Ukazuje na poznámku:
 ## <a name="context"></a>Kontext
 Všechny typy telemetrie jsou doprovázeny kontextovým oddílem. Všechna tato pole nejsou přenášena s každým datovým bodem.
 
-| Cesta | Typ | Poznámky |
+| Cesta | Typ | Poznámky: |
 | --- | --- | --- |
-| Context. Custom. Dimensions [0] |objekt [] |Páry řetězců klíč-hodnota nastavené parametrem Custom Properties. Maximální délka klíče 100, maximální délka hodnoty je 1024. Více než 100 jedinečných hodnot – vlastnost lze vyhledat, ale nelze ji použít pro segmentaci. Maximální počet 200 klíčů na ikey |
-| Context. Custom. Metrics [0] |objekt [] |Páry klíč-hodnota nastavené vlastním parametrem měření a hodnotou TrackMetrics. Maximální délka klíče 100, hodnoty můžou být číselné. |
-| Context. data. čas události |string |UTC |
-| Context. data. syntetická |Boolean |Požadavek se zdá, že robot nebo webový test pochází. |
-| Context. data. samplingRate |číslo |Procento telemetrie vygenerované sadou SDK, která je odeslána na portál. Rozsah 0,0 – 100,0. |
-| kontext. zařízení |object |Klientské zařízení |
-| Context. Device. browser |string |IE, Chrome,... |
-| Context. Device. browserVersion |string |Chrome 48,0,... |
-| Context. Device. deviceModel |string | |
-| Context. Device. název_zařízení |string | |
+| context.custom.dimensions [0] |objekt [] |Páry řetězců klíč-hodnota nastavené parametrem Custom Properties. Maximální délka klíče 100, maximální délka hodnoty je 1024. Více než 100 jedinečných hodnot – vlastnost lze vyhledat, ale nelze ji použít pro segmentaci. Maximální počet 200 klíčů na ikey |
+| context.custom.metrics [0] |objekt [] |Páry klíč-hodnota nastavené vlastním parametrem měření a hodnotou TrackMetrics. Maximální délka klíče 100, hodnoty můžou být číselné. |
+| context.data.eventTime |string |UTC |
+| context.data.isSynthetic |Boolean |Požadavek se zdá, že robot nebo webový test pochází. |
+| context.data.samplingRate |číslo |Procento telemetrii generovanou sady SDK, která je odeslána na portál. V rozsahu od 0,0 100.0. |
+| context.device |objekt |Klientské zařízení |
+| context.device.browser |string |IE, Chrome,... |
+| context.device.browserVersion |string |Chrome 48,0,... |
+| context.device.deviceModel |string | |
+| context.device.deviceName |string | |
 | context.device.id |string | |
 | Context. Device. locale |string |en-GB, de-DE,... |
-| Context. Device. Network |string | |
-| Context. Device. oemName |string | |
-| Context. Device. OS |string | |
-| Context. Device. osVersion |string |Hostitelský operační systém |
-| Context. Device. roleInstance |string |ID hostitelského serveru |
-| Context. Device. roleName |string | |
+| context.device.network |string | |
+| context.device.oemName |string | |
+| context.device.os |string | |
+| context.device.osVersion |string |Hostitelský operační systém |
+| context.device.roleInstance |string |ID hostitelského serveru |
+| context.device.roleName |string | |
 | Context. Device. screenResolution |string | |
-| Context. Device. Type |string |POČÍTAČ, prohlížeč,... |
-| Context. Location |object |Odvozeno z IP adresa klienta. |
+| context.device.type |string |POČÍTAČ, prohlížeč,... |
+| Context. Location |objekt |Odvozeno z IP adresa klienta. |
 | Context. Location. City |string |Odvozeno z IP adresa klienta, pokud je známo |
-| Context. Location. IP adresa klienta |string |Poslední osmiúhelníkem je Anonyme na hodnotu 0. |
+| context.location.clientip |string |Poslední osmiúhelníkem je Anonyme na hodnotu 0. |
 | Context. Location. kontinent |string | |
 | Context. Location. Country |string | |
 | Context. Location. provincie |string |Stát nebo provincie |
 | context.operation.id |string |Položky, které mají stejné ID operace, se zobrazují jako související položky na portálu. Obvykle se jedná o ID žádosti. |
 | context.operation.name |string |Adresa URL nebo název žádosti |
-| Context. Operation. parentId |string |Povoluje vnořené související položky. |
+| context.operation.parentId |string |Povoluje vnořené související položky. |
 | context.session.id |string |ID skupiny operací ze stejného zdroje Doba 30 minut bez operace signalizuje ukončení relace. |
-| Context. Session.-First |Boolean | |
-| Context. User. accountAcquisitionDate |string | |
-| Context. User. accountId |string | |
-| Context. User. anonAcquisitionDate |string | |
-| Context. User. anonId |string | |
-| Context. User. authAcquisitionDate |string |[Ověřený uživatel](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
-| Context. User. authId |string | |
-| Context. User.-Authenticated |Boolean | |
-| Context. User. storeRegion |string | |
-| Internal. data. documentVersion |string | |
+| context.session.isFirst |Boolean | |
+| context.user.accountAcquisitionDate |string | |
+| context.user.accountId |string | |
+| context.user.anonAcquisitionDate |string | |
+| context.user.anonId |string | |
+| context.user.authAcquisitionDate |string |[Ověřený uživatel](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) |
+| context.user.authId |string | |
+| context.user.isAuthenticated |Boolean | |
+| context.user.storeRegion |string | |
+| internal.data.documentVersion |string | |
 | internal.data.id |string | Jedinečné ID, které je přiřazeno při ingestování položky Application Insights |
 
-## <a name="events"></a>Akce
+## <a name="events"></a>Události
 Vlastní události generované [TrackEvent ()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent).
 
-| Cesta | Typ | Poznámky |
+| Cesta | Typ | Poznámky: |
 | --- | --- | --- |
-| počet událostí [0] |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 = &gt; 25%. |
+| počet událostí [0] |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 =&gt; 25%. |
 | název události [0] |string |Název události  Maximální délka 250. |
 | Adresa URL události [0] |string | |
 | událost [0] urlData. Base |string | |
@@ -167,11 +163,11 @@ Vlastní události generované [TrackEvent ()](../../azure-monitor/app/api-custo
 ## <a name="exceptions"></a>Výjimky
 Oznamuje [výjimky](../../azure-monitor/app/asp-net-exceptions.md) na serveru a v prohlížeči.
 
-| Cesta | Typ | Poznámky |
+| Cesta | Typ | Poznámky: |
 | --- | --- | --- |
 | basicException [0] sestavení |string | |
-| basicException [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 = &gt; 25%. |
-| basicException [0] výjimka |string | |
+| basicException [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 =&gt; 25%. |
+| basicException [0] exceptionGroup |string | |
 | basicException [0] Typvýjimky |string | |
 | basicException [0] failedUserCodeMethod |string | |
 | basicException [0] failedUserCodeAssembly |string | |
@@ -196,7 +192,7 @@ Oznamuje [výjimky](../../azure-monitor/app/asp-net-exceptions.md) na serveru a 
 ## <a name="trace-messages"></a>Trasovat zprávy
 Odesílá [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)a [adaptéry protokolování](../../azure-monitor/app/asp-net-trace-logs.md).
 
-| Cesta | Typ | Poznámky |
+| Cesta | Typ | Poznámky: |
 | --- | --- | --- |
 | zpráva [0] protokolovacího nástroje |string | |
 | zprávy [0] parametry |string | |
@@ -206,13 +202,13 @@ Odesílá [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#trac
 ## <a name="remote-dependency"></a>Vzdálená závislost
 Odesílá TrackDependency. Slouží k hlášení výkonu a využití [volání závislostí](../../azure-monitor/app/asp-net-dependencies.md) na serveru a volání AJAX v prohlížeči.
 
-| Cesta | Typ | Poznámky |
+| Cesta | Typ | Poznámky: |
 | --- | --- | --- |
 | remoteDependency [0] asynchronní |Boolean | |
 | remoteDependency [0] – základ |string | |
 | remoteDependency [0] příkaz |string |Například "domů/index" |
-| remoteDependency [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 = &gt; 25%. |
-| remoteDependency [0] dependencyTypeName |string |HTTP, SQL,... |
+| remoteDependency [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 =&gt; 25%. |
+| remoteDependency [0] dependencyTypeName |string |HTTP, SQL, ... |
 | remoteDependency [0] durationMetric. Value |číslo |Čas od volání k dokončení odpovědi podle závislosti |
 | remoteDependency [0] ID |string | |
 | remoteDependency [0] název |string |Adresa URL. Maximální délka 250. |
@@ -227,13 +223,13 @@ Odesílá TrackDependency. Slouží k hlášení výkonu a využití [volání z
 ## <a name="requests"></a>Požadavky
 Odesílá [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest). Standardní moduly tuto metodu používají k hlášení doby odezvy serveru měřenou na serveru.
 
-| Cesta | Typ | Poznámky |
+| Cesta | Typ | Poznámky: |
 | --- | --- | --- |
-| požadavek [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Příklad: 4 = &gt; 25%. |
-| požadavek [0] durationMetric. Value |číslo |Čas od žádosti přicházející do odpovědi 1E7 = = 1 |
+| požadavek [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Příklad: 4 =&gt; 25%. |
+| požadavek [0] durationMetric. Value |číslo |Čas od žádosti přicházející do odpovědi 1e7 == 1s |
 | požadavek [0] ID |string |ID operace |
 | žádost [0] název |string |Základ pro GET/POST + URL  Maximální délka 250 |
-| žádost [0] responseCode |celé číslo |Odpověď HTTP se odeslala klientovi. |
+| žádost [0] responseCode |celé číslo |Odpovědi HTTP odeslané do klienta |
 | žádost [0] byla úspěšná. |Boolean |Výchozí = = (responseCode &lt; 400) |
 | žádost [0] Adresa URL |string |Nezahrnuje hostitel |
 | požadavek [0] urlData. Base |string | |
@@ -245,7 +241,7 @@ Odesílá se v prohlížeči. Měří čas na zpracování stránky, od uživate
 
 Kontextové hodnoty znázorňují klientský operační systém a verzi prohlížeče.
 
-| Cesta | Typ | Poznámky |
+| Cesta | Typ | Poznámky: |
 | --- | --- | --- |
 | clientPerformance [0] clientProcess. Value |celé číslo |Doba od konce příjmu HTML po zobrazení stránky. |
 | clientPerformance [0] název |string | |
@@ -262,9 +258,9 @@ Kontextové hodnoty znázorňují klientský operační systém a verzi prohlí�
 ## <a name="page-views"></a>Zobrazení stránek
 Odesílá se pomocí trackPageView () nebo [stopTrackPage](../../azure-monitor/app/api-custom-events-metrics.md#page-views)
 
-| Cesta | Typ | Poznámky |
+| Cesta | Typ | Poznámky: |
 | --- | --- | --- |
-| Zobrazit [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 = &gt; 25%. |
+| Zobrazit [0] počet |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 =&gt; 25%. |
 | Zobrazit [0] durationMetric. Value |celé číslo |Hodnota volitelně nastavena v trackPageView () nebo pomocí startTrackPage ()-stopTrackPage (). Nejedná se o stejné hodnoty jako clientPerformance hodnoty. |
 | Zobrazit [0] název |string |Nadpis stránky  Maximální délka 250 |
 | Zobrazit adresu URL [0] |string | |
@@ -275,15 +271,15 @@ Odesílá se pomocí trackPageView () nebo [stopTrackPage](../../azure-monitor/a
 ## <a name="availability"></a>Dostupnost
 Oznamuje [webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).
 
-| Cesta | Typ | Poznámky |
+| Cesta | Typ | Poznámky: |
 | --- | --- | --- |
-| dostupnost [0] availabilityMetric.name |string |dostupnosti |
-| dostupnost [0] availabilityMetric. Value |číslo |1,0 nebo 0,0 |
-| počet dostupnosti [0] |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 = &gt; 25%. |
+| dostupnost [0] availabilityMetric.name |string |dostupnost |
+| dostupnost [0] availabilityMetric. Value |číslo |1.0 nebo 0,0 |
+| počet dostupnosti [0] |celé číslo |100/([vzorkovací](../../azure-monitor/app/sampling.md) frekvence). Například 4 =&gt; 25%. |
 | dostupnost [0] dataSizeMetric.name |string | |
 | dostupnost [0] dataSizeMetric. Value |celé číslo | |
 | dostupnost [0] durationMetric.name |string | |
-| dostupnost [0] durationMetric. Value |číslo |Doba trvání testu. 1E7 = = 1 |
+| dostupnost [0] durationMetric. Value |číslo |Doba trvání testu. 1e7==1s |
 | Zpráva o dostupnosti [0] |string |Diagnostika selhání |
 | výsledek dostupnosti [0] |string |Úspěch/selhání |
 | dostupnost [0] runLocation |string |Geografický zdroj požadavku HTTP REQ |
@@ -296,7 +292,7 @@ Vygenerováno pomocí TrackMetric ().
 
 Hodnota metriky se nachází v kontextu. Custom. Metrics [0]
 
-Například:
+Příklad:
 
     {
      "metric": [ ],
@@ -322,7 +318,7 @@ Například:
     }
 
 ## <a name="about-metric-values"></a>O hodnotách metriky
-Hodnoty metriky v sestavách metriky i jinde jsou hlášeny se standardní strukturou objektů. Například:
+Hodnoty metriky v sestavách metriky i jinde jsou hlášeny se standardní strukturou objektů. Příklad:
 
       "durationMetric": {
         "name": "contoso.org",
@@ -346,7 +342,7 @@ Místo předagregačních metrik můžete použít [vzorkování](../../azure-mo
 ### <a name="durations"></a>Dob trvání
 S výjimkou případů, kdy je uvedeno jinak, jsou doby trvání vyjádřeny desáty sekundy, takže 10000000,0 znamená 1 sekundu.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 * [Application Insights](../../azure-monitor/app/app-insights-overview.md)
 * [Průběžný export](export-telemetry.md)
 * [Ukázky kódu](export-telemetry.md#code-samples)

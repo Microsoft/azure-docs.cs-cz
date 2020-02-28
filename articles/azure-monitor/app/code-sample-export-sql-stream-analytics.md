@@ -1,18 +1,14 @@
 ---
 title: Export do SQL z Azure Application Insights | Microsoft Docs
 description: Průběžně exportujte Application Insights data do SQL pomocí Stream Analytics.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/11/2017
-ms.openlocfilehash: 41efcbc7b70395302858638a9f44f3cbba27bf9a
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678274"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663671"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Návod: Export do jazyka SQL z Application Insights pomocí Stream Analytics
 Tento článek popisuje, jak přesunout data telemetrie z [azure Application Insights][start] do databáze SQL Azure pomocí [průběžného exportu][export] a [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
@@ -25,7 +21,7 @@ Začneme s předpokladem, že už máte aplikaci, kterou chcete monitorovat.
 
 V tomto příkladu budeme používat data zobrazení stránky, ale stejný vzor se dá snadno rozšířit na jiné datové typy, jako jsou třeba vlastní události a výjimky. 
 
-## <a name="add-application-insights-to-your-application"></a>Přidání Application Insights do aplikace
+## <a name="add-application-insights-to-your-application"></a>Přidání služby Application Insights do vaší aplikace
 Jak začít:
 
 1. [Nastavte Application Insights pro své webové stránky](../../azure-monitor/app/javascript.md). 
@@ -76,7 +72,7 @@ Průběžný export vždycky ukládá data do účtu Azure Storage, takže nejd�
 
 Události se zapisují do souborů BLOB ve formátu JSON. Každý soubor může obsahovat jednu nebo více událostí. Proto bychom chtěli číst data událostí a vyfiltrovat požadovaná pole. Existují nejrůznější věci, které jsme s daty mohli dělat, ale náš plán dnes je použít Stream Analytics k přesunu dat do SQL Database. Díky tomu bude snadné spouštět spoustu zajímavých dotazů.
 
-## <a name="create-an-azure-sql-database"></a>Vytvoření Azure SQL Database
+## <a name="create-an-azure-sql-database"></a>Vytvoření databáze Azure SQL Database
 Až se znovu rozhodnete z předplatného v [Azure Portal][portal], vytvořte databázi (a nový server, pokud jste ho ještě nezískali), na který budete data zapisovat.
 
 ![Nová data, SQL](./media/code-sample-export-sql-stream-analytics/090-sql.png)

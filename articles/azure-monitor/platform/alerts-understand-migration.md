@@ -1,18 +1,17 @@
 ---
 title: Vysvětlení způsobu, jakým nástroj k dobrovolné migraci funguje pro Azure Monitor výstrahy
 description: Zjistěte, jak Nástroj pro migraci výstrah funguje a jak řešit problémy.
-author: yalavi
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
+author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 493fa4ac51bf593b7856b236c5d861ec029769d3
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 8cc77d13567910797cd519ac193b848f3ea434da
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680677"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665268"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Vysvětlení fungování nástroje pro migraci
 
@@ -93,7 +92,7 @@ U všech klasických upozornění na Cosmos DB metriky se dá migrovat s výjimk
 - Pozorovaná latence čtení
 - Pozorovaná latence zápisu
 - Dostupnost služby
-- Kapacita služby Storage
+- Kapacita úložiště
 - Omezené žádosti
 - Požadavky celkem
 
@@ -145,8 +144,8 @@ Pro služby účtu úložiště, jako je například blob, Table, File a Queue, 
 | AnonymousServerTimeOutError | Metrika transakcí s dimenzemi "ResponseType" = "ServerTimeOutError" a "Authentication" = "anonymous" | |
 | AnonymousSuccess | Metrika transakcí s dimenzemi "ResponseType" = "úspěch" a "ověřování" = "anonymní" | |
 | AuthorizationError | Metrika transakcí s dimenzemi "ResponseType" = "AuthorizationError" | |
-| AverageE2ELatency | SuccessE2ELatency | |
-| AverageServerLatency | SuccessServerLatency | |
+| Hodnotu averagee2elatency | SuccessE2ELatency | |
+| Hodnotu averageserverlatency | SuccessServerLatency | |
 | Kapacita | BlobCapacity | Místo ' Last ' použijte `aggregationType` ' Average '. Metrika se vztahuje pouze na služby BLOB Services. |
 | ClientOtherError | Metrika transakcí s dimenzemi "ResponseType" = "ClientOtherError"  | |
 | ClientTimeoutError | Metrika transakcí s dimenzemi "ResponseType" = "ClientTimeOutError" | |
@@ -165,7 +164,7 @@ Pro služby účtu úložiště, jako je například blob, Table, File a Queue, 
 | Úspěch | Metrika transakcí s dimenzemi "ResponseType" = "úspěch" | |
 | TotalBillableRequests| Transakce | |
 | TotalEgress | Výchozí přenos dat | |
-| TotalIngress | Příchozí přenos dat | |
+| Totalbillablerequests | Příchozí přenos dat | |
 | TotalRequests | Transakce | |
 
 ### <a name="microsoftinsightscomponents"></a>Microsoft. Insights/Components
@@ -227,7 +226,7 @@ Klasická pravidla výstrah obsahovala akce e-mailu, Webhooku, aplikace logiky a
 > [!NOTE]
 > Klasické výstrahy odesílají lokalizované e-maily na základě národního prostředí klasického správce při použití pro upozornění na role klasického správce. Nové e-maily výstrah jsou odesílány prostřednictvím skupin akcí a jsou pouze v angličtině.
 
-## <a name="rollout-phases"></a>Fáze uvedení
+## <a name="rollout-phases"></a>Fáze zavedení
 
 Nástroj pro migraci probíhá ve fázích pro zákazníky, kteří používají pravidla pro klasických výstrah. Vlastníci předplatného obdrží e-mail, když je předplatné připravené k migraci pomocí tohoto nástroje.
 

@@ -1,19 +1,15 @@
 ---
 title: 'Rychlý Start: monitorování webů pomocí Azure Monitor Application Insights'
 description: Poskytuje pokyny pro rychlý Start při nastavení monitorování klienta/webu na straně prohlížeče pomocí Azure Monitor Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: quickstart
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: 408b24c83c5b3d795a86d1ad0275d732bb54a6db
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 1c581867f1e7ebc29f2aaff97124a08bec4e3b40
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963615"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670844"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Rychlý Start: Začněte monitorovat web pomocí Azure Monitor Application Insights
 
@@ -30,7 +26,7 @@ Azure Monitor Application Insights umožňuje snadné monitorování webu z hled
 
 Application Insights může shromažďovat telemetrická data ze všech aplikací připojených k internetu a spuštěných místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 2. Vyberte **Vytvořit prostředek** > **Nástroje pro správu** > **Application Insights**.
 
    > [!NOTE]
@@ -42,9 +38,9 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete |
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování dat Application Insights. Můžete vytvořit novou skupinu prostředků nebo použít existující. |
-   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Umístění** | Východní USA | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
-3. Klikněte na **Vytvořit**.
+3. Klikněte na možnost **Vytvořit**.
 
 ## <a name="create-an-html-file"></a>Vytvoření souboru HTML
 
@@ -113,7 +109,7 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
 
    ![Graf metrik serveru](./media/website-monitoring/browser-performance.png)
 
-4. Pokud chcete začít zkoumat [nástroje pro analýzu chování uživatelů](../../azure-monitor/app/usage-overview.md), v hlavní nabídce Application Insights pod nadpisem **Využití** vyberte [**Uživatelé**](../../azure-monitor/app/usage-segmentation.md). Vzhledem k tomu, že provádíme testování z jednoho počítače, uvidíme jenom data pro jednoho uživatele. V případě živého webu by distribuce uživatelů mohla vypadat nějak takto:
+4. Pokud chcete začít zkoumat [nástroje pro analýzu chování uživatelů](../../azure-monitor/app/usage-overview.md), v hlavní nabídce Application Insights pod nadpisem [Využití**vyberte**](../../azure-monitor/app/usage-segmentation.md)Uživatelé. Vzhledem k tomu, že provádíme testování z jednoho počítače, uvidíme jenom data pro jednoho uživatele. V případě živého webu by distribuce uživatelů mohla vypadat nějak takto:
 
      ![Graf uživatelů](./media/website-monitoring/usage-users.png)
 

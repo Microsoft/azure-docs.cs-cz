@@ -1,18 +1,14 @@
 ---
 title: Průběžný export telemetrie z Application Insights | Microsoft Docs
 description: Exportujte data o využití a diagnostiku do úložiště v Microsoft Azure a Stáhněte si z něj.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/25/2019
-ms.openlocfilehash: 6504661c2df66bda81af03a6364703b4b10f7485
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 33158919980514b70c3b0e438691427a34eed834
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819555"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663909"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportovat telemetrie z Application Insights
 Chcete udržet telemetrii déle než standardní doba uchovávání? Nebo ji zpracujete specializovaným způsobem? Pro tuto dobu je ideální pro průběžný export. Události, které vidíte na portálu Application Insights, se dají exportovat do úložiště v Microsoft Azure ve formátu JSON. Odtud si můžete stáhnout svá data a napsat kód, který budete potřebovat k jeho zpracování.  
@@ -120,7 +116,7 @@ Doba trvání se nachází v taktech, kde 10 000 taktes = 1 ms. Například tyto
 [Podrobný odkaz na datový model pro typy a hodnoty vlastností.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Zpracování dat
-V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Například:
+V malém měřítku můžete napsat nějaký kód, který bude odčítat vaše data, číst je do tabulky a tak dále. Příklad:
 
     private IEnumerable<T> DeserializeMany<T>(string folderName)
     {
@@ -183,9 +179,9 @@ V případě větších škálování zvažte clustery [HDInsight](https://azure
     Upravte export a otevřete kartu exportovat cíl. ponechte stejné úložiště jako předtím a kliknutím na OK potvrďte. Export se restartuje. Pokud byla změna během posledních několika dní, ztratíte data.
 * *Můžu pozastavit export?*
 
-    Ano. Klikněte na zakázat.
+    Ano. Klikněte na možnost Zakázat.
 
-## <a name="code-samples"></a>Ukázky kódu
+## <a name="code-samples"></a>Ukázky kódů
 
 * [Ukázka Stream Analytics](export-stream-analytics.md)
 * [Export do SQL pomocí Stream Analytics][exportasa]

@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor pro sítě (Preview)
 description: Rychlý přehled Azure Monitor pro síť, který poskytuje komplexní přehled o stavu a metrikách pro všechny nasazené síťové prostředky bez jakékoli konfigurace.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/07/2019
-ms.openlocfilehash: 3bb92b85779366081349dab777be67e063469678
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f5b2fbd13cb9658e255fde727e115df748aaed9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73840051"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654864"
 ---
 # <a name="azure-monitor-for-networks-preview"></a>Azure Monitor pro sítě (Preview)
 Azure Monitor pro síť poskytuje komplexní přehled o stavu a metrikách pro všechny nasazené síťové prostředky bez jakékoli konfigurace. Rozšířené možnosti vyhledávání pomáhají identifikovat závislosti prostředků, jako je například identifikace prostředků, které hostují web, pouhým hledáním názvu hostovaného webu.
@@ -31,13 +30,13 @@ Zobrazení stavu prostředku a upozornění je možné přizpůsobit pomocí fil
 
 Vyhledávací pole lze použít k vyhledání prostředků a přidružených prostředků. Například veřejná IP adresa je přidružená k Application Gateway. Při hledání názvu DNS veřejných IP adres se určí jak veřejná, tak přidružená Application Gateway.
 
-![Hledání](media/network-insights-overview/search.png)
+![Hledat](media/network-insights-overview/search.png)
 
 
 ## <a name="resource-health-and-metric"></a>Resource Health a metrika
 Každá dlaždice představuje typ prostředku s počtem instancí nasazených ve všech předplatných vybraných společně se stavem prostředku. V následujícím příkladu jsou nasazena 105 ER a VPN připojení, 103 jsou v pořádku a 2 nedostupné.
 
-![Stav prostředků](media/network-insights-overview/resource-health.png)
+![Stav prostředku](media/network-insights-overview/resource-health.png)
 
 Kliknutím na dvě nedostupná připojení ER a VPN se spustí zobrazení metriky. 
 

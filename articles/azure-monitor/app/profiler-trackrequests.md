@@ -1,19 +1,17 @@
 ---
 title: Napsat kód pro sledování požadavků pomocí Azure Application Insights | Microsoft Docs
 description: Napíšete kód pro sledování požadavků pomocí Application Insights, abyste mohli získat profily pro vaše požadavky.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3f449c98ed44f13fb6b3849ef2457cd8fbd916de
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c59cbe852a91a91c7b3adb4452328700ec718a82
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900013"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671592"
 ---
 # <a name="write-code-to-track-requests-with-application-insights"></a>Napsat kód pro sledování požadavků pomocí Application Insights
 
@@ -47,7 +45,7 @@ Chcete-li ručně sledovat požadavky, postupujte následovně:
         }
         ```
 
-        Volání `StartOperation<RequestTelemetry>` v jiném oboru `StartOperation<RequestTelemetry>` se nepodporuje. Místo toho můžete použít `StartOperation<DependencyTelemetry>` ve vnořeném oboru. Například:  
+        Volání `StartOperation<RequestTelemetry>` v jiném oboru `StartOperation<RequestTelemetry>` se nepodporuje. Místo toho můžete použít `StartOperation<DependencyTelemetry>` ve vnořeném oboru. Příklad:  
         
         ```csharp
         using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))
