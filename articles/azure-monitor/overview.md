@@ -1,22 +1,21 @@
 ---
 title: Přehled Azure Monitor | Microsoft Docs
 description: Přehled služeb a funkcí Microsoftu, které přispívají k úplné strategii monitorování aplikací a služeb Azure
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: f5d98ecdac3acacda2b592f88e7db45dc181e8da
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: cec437929e2f7ccd94cf4cf94ec81f87dac2678a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934478"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669161"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
-Azure Monitor zajišťuje maximální dostupnost a výkon vašich aplikací a služeb tím, že poskytuje ucelené řešení pro shromažďování, analýzu a telemetrii z vašich cloudových a místních prostředí. Pomůže vám pochopit výkon vašich aplikací a proaktivně identifikuje problémy, které je ovlivňují, a prostředky, na kterých jsou závislé.
+Azure Monitor maximalizuje dostupnost a výkon vašich aplikací a služeb tím, že poskytuje ucelené řešení pro shromažďování, analýzu a vykonávání telemetrie z vašich cloudových a místních prostředí. Pomůže vám při zjišťování stavu vašich aplikací a proaktivně identifikuje problémy, které je ovlivňují, a prostředky, na kterých jsou závislé.
 
 Jedním z příkladů toho, co můžete s Azure Monitor udělat, je:
 
@@ -68,7 +67,7 @@ Povolte monitorování pro aplikaci [App Services](app/azure-web-apps.md) nebo v
 
 Azure Monitor může shromažďovat data protokolu z libovolného klienta REST pomocí [rozhraní API kolekce dat](platform/data-collector-api.md). Díky tomu můžete vytvářet vlastní scénáře monitorování a rozšíříte monitorování na prostředky, které nezveřejňují telemetrii prostřednictvím jiných zdrojů.
 
-## <a name="insights"></a>Poznatky
+## <a name="insights"></a>Přehledy
 Data monitorování jsou užitečná jenom v případě, že může zvýšit vaši viditelnost provozu výpočetního prostředí. Azure Monitor obsahuje několik funkcí a nástrojů, které poskytují cenné přehledy o aplikacích a dalších prostředcích, na kterých jsou závislé. [Monitorování řešení](insights/solutions.md) a funkcí, jako jsou [Application Insights](app/app-insights-overview.md) a [Azure monitor pro kontejnery](insights/container-insights-overview.md) , poskytují podrobné přehledy o různých aspektech aplikace a konkrétních služeb Azure. 
 
 ### <a name="application-insights"></a>Application Insights
@@ -143,7 +142,7 @@ Automatické škálování umožňuje mít ke zpracování zatížení vaší ap
 K dispozici je více rozhraní API pro čtení a zápis metrik a protokolů do a z Azure Monitor Kromě přístupu k vygenerovaným výstrahám. Můžete také nakonfigurovat a načíst výstrahy. Získáte tak v podstatě neomezené možnosti pro vytváření vlastních řešení, která se integrují s Azure Monitor.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace:
+Další informace pro:
 
 * [Metriky a protokoly](platform/data-platform.md) pro data shromažďovaná nástrojem Azure monitor.
 * [Zdroje dat](platform/data-sources.md) pro způsob, jakým jednotlivé komponenty vaší aplikace odesílají telemetrii.

@@ -3,17 +3,16 @@ title: Streamování protokolů platformy Azure do centra událostí
 description: Naučte se streamovat protokoly prostředků Azure do centra událostí, abyste mohli odesílat data do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 00dcc1c1a1d823ab0f2497e47641916d391ee37b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 72341b6da0068ba4b7e3f53b08e6015cafb70f09
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750353"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658910"
 ---
 # <a name="stream-azure-platform-logs-to-azure-event-hubs"></a>Streamování protokolů platformy Azure do Azure Event Hubs
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé.  Tento článek popisuje streamování protokolů platforem na centra událostí, které slouží k odesílání dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics.
@@ -57,15 +56,15 @@ Nastavení diagnostiky bude shromažďovat protokoly prostředků pro výpočetn
 ## <a name="consuming-log-data-from-event-hubs"></a>Využívání dat protokolu z Center událostí
 Protokoly platforem z Center událostí se spotřebovávají ve formátu JSON s prvky v následující tabulce.
 
-| Název prvku | Popis |
+| Název elementu | Popis |
 | --- | --- |
 | záznamy |Pole všech událostí protokolu v této datové části. |
 | time |Čas, kdy došlo k události. |
 | category |Kategorie protokolu pro tuto událost. |
 | resourceId |ID prostředku prostředku, který vygeneroval tuto událost |
 | operationName |Název operace |
-| úroveň |Nepovinný parametr. Označuje úroveň události protokolu. |
-| properties |Vlastnosti události Ty se budou lišit pro každou službu Azure, jak [ ]()je popsáno v tématu. |
+| level |Volitelné. Označuje úroveň události protokolu. |
+| vlastnosti |Vlastnosti události Ty se budou lišit pro každou službu Azure, jak [ ]()je popsáno v tématu. |
 
 
 Následuje ukázka výstupních dat z Event Hubs pro protokol prostředku:

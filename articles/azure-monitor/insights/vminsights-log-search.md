@@ -1,18 +1,17 @@
 ---
 title: Dotazování protokolů z Azure Monitor pro virtuální počítače (Preview) | Microsoft Docs
 description: Azure Monitor pro virtuální počítače řešení shromažďuje metriky a data protokolů do a tento článek popisuje záznamy a obsahuje vzorové dotazy.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: 690c7ba04cf849d973295a6ec27eaa38f9b807c3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e679345669d0954008e46f48d986930038a84c10
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399324"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670708"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Dotazování protokolů z Azure Monitor pro virtuální počítače (Preview)
 
@@ -51,12 +50,12 @@ Pro správu nákladů a složitost nepředstavuje záznam o připojení jednotli
 | Vlastnost | Popis |
 |:--|:--|
 |Směr |Směr připojení, hodnota je *příchozí* nebo *odchozí* |
-|Počítač |Plně kvalifikovaný název domény počítače |
+|Strojové |Plně kvalifikovaný název domény počítače |
 |Proces |Identita procesu nebo skupin procesů, zahájení/přijetí připojení |
 |SourceIp |IP adresa zdroje |
 |DestinationIp |IP adresa cíle |
 |DestinationPort |Číslo portu cílového umístění |
-|Protocol (Protokol) |Protokol použitý pro připojení  Hodnoty jsou *TCP*. |
+|Protokol |Protokol použitý pro připojení  Hodnoty jsou *TCP*. |
 
 Informace o počtu skupinových fyzických připojení, které se mají přihlédnout k dopadu seskupení, najdete v následujících vlastnostech záznamu:
 
@@ -95,7 +94,7 @@ Tady jsou některé důležité body, které je potřeba vzít v úvahu:
 
 Pro usnadnění práce se do vlastnosti RemoteIp zahrne IP adresa vzdáleného konce připojení. U příchozích připojení je RemoteIp stejná jako SourceIp, zatímco u odchozích připojení je stejná jako DestinationIp. Vlastnost RemoteDnsCanonicalNames představuje kanonické názvy DNS hlášené počítačem pro RemoteIp. Vlastnosti RemoteDnsQuestions a RemoteClassification jsou vyhrazené pro budoucí použití. 
 
-#### <a name="geolocation"></a>Geografická poloha
+#### <a name="geolocation"></a>Zeměpisná poloha
 
 *VMConnection* také obsahuje informace o geografickém umístění pro vzdálené konce každého záznamu připojení v následujících vlastnostech záznamu: 
 
@@ -115,11 +114,11 @@ Každá vlastnost RemoteIp v tabulce *VMConnection* je kontrolována na základ�
 |IndicatorThreadType |Zjištěného indikátoru hrozby je jedna z následujících hodnot: *botnetu*, *C2*, *CryptoMining*, *adres darknetu*, *DDos*, *MaliciousUrl*, *malware*, *phishing*, *proxy*, *PUA*, *seznamu ke zhlédnutí*.   |
 |Popis |Popis pozorované hrozby. |
 |TLPLevel |Úroveň TLP (provoz Light Protocol) je jedna z definovaných hodnot, *bílá*, *zelená*, *oranžová*a *červená*. |
-|Spolehlivost |Hodnoty jsou *0 – 100*. |
+|Confidence |Hodnoty jsou *0 – 100*. |
 |Závažnost |Hodnoty jsou *0 – 5*, přičemž *5* je nejzávažnější a *0* není u sebe závažná. Výchozí hodnota je *3*.  |
 |FirstReportedDateTime |První, kdy zprostředkovatel nahlásil ukazatel. |
 |LastReportedDateTime |Čas posledního výskytu indikátoru v rámci přetečení. |
-|isActive |Označuje, že indikátory jsou dezaktivovány hodnotou *true* nebo *false* . |
+|IsActive |Označuje, že indikátory jsou dezaktivovány hodnotou *true* nebo *false* . |
 |ReportReferenceLink |Odkazuje na sestavy související s daným pozorovatelem. |
 |AdditionalInformation |Poskytuje další informace, pokud je to možné, o zjištěné hrozbě. |
 
@@ -134,7 +133,7 @@ Každý záznam v VMBoundPort je určený následujícími poli:
 |Proces | Identita procesu (nebo skupin procesů), ke kterým je port přidružen|
 |Ip | IP adresa portu (může to být zástupný znak IP, *0.0.0.0*) |
 |Port |Číslo portu |
-|Protocol (Protokol) | Protokol.  Příklad: *TCP* nebo *UDP* (v současné době se podporuje jenom *TCP* ).|
+|Protokol | Protokol.  Příklad: *TCP* nebo *UDP* (v současné době se podporuje jenom *TCP* ).|
  
 Identita, kterou port je odvozený z výše uvedených pěti polí a je uložený ve vlastnosti identifikátor portid. Tato vlastnost slouží k rychlému vyhledání záznamů pro určitý port v čase. 
 
@@ -162,14 +161,14 @@ Záznamy s typem *VMComputer* mají data inventáře pro servery s agentem závi
 |TenantId | Jedinečný identifikátor pracovního prostoru |
 |SourceSystem | *Přehledy* | 
 |TimeGenerated | Časové razítko záznamu (UTC) |
-|Počítač | Plně kvalifikovaný název domény počítače | 
+|Computer | Plně kvalifikovaný název domény počítače | 
 |ID agenta | Jedinečné ID agenta Log Analytics |
-|Počítač | Název prostředku Azure Resource Manager pro počítač vystavený pomocí ServiceMap. Má formu *m-{GUID}* , kde *GUID* je stejný identifikátor GUID jako ID agenta. | 
-|DisplayName | Zobrazované jméno | 
+|Strojové | Název prostředku Azure Resource Manager pro počítač vystavený pomocí ServiceMap. Má formu *m-{GUID}* , kde *GUID* je stejný identifikátor GUID jako ID agenta. | 
+|DisplayName | Zobrazovaný název | 
 |FullDisplayName | Úplné zobrazované jméno | 
 |název hostitele | Název počítače bez názvu domény |
 |BootTime | Čas spuštění počítače (UTC) |
-|Časové pásmo | Normalizované časové pásmo |
+|časové pásmo | Normalizované časové pásmo |
 |VirtualizationState | *virtuální*, *hypervisor*, *fyzický* |
 |Ipv4Addresses | Pole IPv4 adres | 
 |Ipv4SubnetMasks | Pole masek podsítí IPv4 (ve stejném pořadí jako Ipv4Addresses). |
@@ -224,9 +223,9 @@ Záznamy s typem *VMProcess* mají data inventáře pro procesy připojené k pr
 |TenantId | Jedinečný identifikátor pracovního prostoru |
 |SourceSystem | *Přehledy* | 
 |TimeGenerated | Časové razítko záznamu (UTC) |
-|Počítač | Plně kvalifikovaný název domény počítače | 
+|Computer | Plně kvalifikovaný název domény počítače | 
 |ID agenta | Jedinečné ID agenta Log Analytics |
-|Počítač | Název prostředku Azure Resource Manager pro počítač vystavený pomocí ServiceMap. Má formu *m-{GUID}* , kde *GUID* je stejný identifikátor GUID jako ID agenta. | 
+|Strojové | Název prostředku Azure Resource Manager pro počítač vystavený pomocí ServiceMap. Má formu *m-{GUID}* , kde *GUID* je stejný identifikátor GUID jako ID agenta. | 
 |Proces | Jedinečný identifikátor procesu Service Map. Má formu *p-{GUID}* . 
 |Spustitelný soubor | Název spustitelného procesu | 
 |DisplayName | Zobrazovaný název procesu |

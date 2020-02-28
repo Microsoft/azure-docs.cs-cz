@@ -8,30 +8,30 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 45fa6a332697cf298b2446212701025007682357
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 9bc5be37f3892186233fac197c08066dbfacb43f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754272"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780456"
 ---
-Můžete teď pomocí nástroje Průzkumník dat na webu Azure Portal k vytvoření databáze a kontejneru. 
+Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření databáze a kontejneru. 
 
-1. Vyberte **Průzkumník dat** > **nový kontejner**. 
+1. Vyberte **Průzkumník dat** > **Nový kontejner**. 
     
-    **Přidat kontejner** úplně vpravo se zobrazí oblast, budete možná muset posunout doprava a prohlédněte si ho.
+    Úplně vpravo se zobrazí oblast **Přidat kontejner** , možná se budete muset posunout doprava, aby se zobrazila.
 
-    ![Na webu Azure portal Průzkumník dat, přidat kontejner podokno](./media/cosmos-db-create-collection/azure-cosmosdb-data-explorer.png)
+    ![Azure Portal Průzkumník dat, přidat podokno kontejneru](./media/cosmos-db-create-collection/azure-cosmosdb-data-explorer.png)
 
-2. V **přidat kontejner** zadejte nastavení pro nový kontejner.
+2. Na stránce **Přidat kontejner** zadejte nastavení pro nový kontejner.
 
     |Nastavení|Navrhovaná hodnota|Popis
     |---|---|---|
-    |**ID databáze**|Úlohy|Zadejte *ToDoList* jako název nové databáze. Názvy databází musí mít délku 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`, ani koncové mezery. Zkontrolujte **propustnosti zřídit databáze** možnost, umožňuje sdílet propustnosti zřízené do databáze ve všech kontejnerů v databázi. Tato možnost pomáhá také úspory nákladů. |
-    |**Propustnost**|400|Ponechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
-    |**ID kontejneru**|Položky|Zadejte *položky* jako název pro nový kontejner. Identifikátory kontejnerů mají stejné požadavky na znaky jako názvy databází.|
-    |**Klíč oddílu**| /kategorie| Ukázku popsanou v tomto článku používá */category* jako klíč oddílu.|
+    |**ID databáze**|Úlohy|Jako název nové databáze zadejte *Tasks*. Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat `/, \\, #, ?`ani mezeru. Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
+    |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit.| 
+    |**ID kontejneru**|Items|Jako název nového kontejneru zadejte *položky* . ID kontejnerů mají stejné požadavky na znaky jako názvy databází.|
+    |**Klíč oddílu**| /kategorie| Ukázka popsaná v tomto článku používá jako klíč oddílu */Category* .|
     
-    Kromě předchozích nastavení, můžete volitelně přidat **jedinečné klíče** pro kontejner. V tomto příkladu ponecháme toto pole prázdné. Jedinečné klíče umožňují vývojářům přidat do databáze vrstvu integrity dat. Vytvořením zásady jedinečného klíče při vytváření kontejneru zajistíte jedinečnost jedné nebo více hodnot pro klíč oddílu. Další informace najdete v článku [Jedinečné klíče ve službě Azure Cosmos DB](../articles/cosmos-db/unique-keys.md).
+    Kromě předchozích nastavení můžete volitelně přidat **jedinečné klíče** pro kontejner. V tomto příkladu ponecháme toto pole prázdné. Jedinečné klíče umožňují vývojářům přidat do databáze vrstvu integrity dat. Vytvořením jedinečné zásady klíčů při vytváření kontejneru zajistíte jedinečnost jedné nebo více hodnot na klíč oddílu. Další informace najdete v článku [Jedinečné klíče ve službě Azure Cosmos DB](../articles/cosmos-db/unique-keys.md).
     
     Vyberte **OK**. Průzkumník dat zobrazí novou databázi a kontejner.

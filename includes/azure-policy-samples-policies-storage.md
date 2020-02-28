@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: f51946ea2461cd8a72cfadc8848e250e9a053758
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 22dd1fa33e6ecec29d1a79be483afbe5a16d2050
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495408"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780479"
 ---
-|Název |Popis |Vliv (s) |Version |Zdroj |
-|---|---|---|---|
+|Název |Popis |Vliv (s) |Verze |Zdroj |
+|---|---|---|---|---|
 |[Povolené skladové položky účtu úložiště](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7433c107-6db4-4ad1-b57a-a76dce0154a1) |Tato zásada umožňuje zadat sadu SKU účtů úložiště, které může vaše organizace nasazovat. |Odepřít |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/AllowedStorageSkus_Deny.json)
 |[Auditování neomezeného síťového přístupu k účtům úložiště](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |Auditujte neomezený přístup k síti v nastavení brány firewall účtu úložiště. Místo toho nakonfigurujte síťová pravidla, aby k účtu úložiště měly přístup jenom aplikace z povolených sítí. Aby bylo možné v připojeních z konkrétních internetových nebo místních klientů přistupovat k provozu z konkrétních virtuálních sítí Azure nebo do rozsahů veřejných IP adres sítě. |Audit, zakázáno |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json)
 |[Nasazení rozšířené ochrany před internetovými útoky na účty úložiště](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F361c2074-3595-4e5d-8cab-4f21dffc835c) |Tato zásada umožňuje rozšířenou ochranu před internetovými útoky na účty úložiště. |DeployIfNotExists, zakázáno |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAdvancedThreatProtection_Deploy.json)

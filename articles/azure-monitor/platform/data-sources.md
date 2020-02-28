@@ -1,18 +1,17 @@
 ---
 title: Zdroje dat v Azure Monitor | Microsoft Docs
 description: Popisuje data dostupná ke sledování stavu a výkonu vašich prostředků Azure a aplikací, které jsou na nich spuštěné.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/19/2019
-ms.openlocfilehash: d429a21f409afc9780b3cd90d16d46b4f4671912
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: b2ec9fd70d1eb64c5968de0312941bfbc98d3033
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467347"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670521"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>Zdroje dat monitorování pro Azure Monitor
 Azure Monitor je založený na [běžné platformě dat pro monitorování](data-platform.md) , která zahrnuje [protokoly](data-platform-logs.md) a [metriky](data-platform-metrics.md). Shromažďování dat na této platformě umožňuje analyzovat data z několika prostředků společně pomocí běžné sady nástrojů v Azure Monitor. Data monitorování se můžou posílat i na další místa pro podporu určitých scénářů a některé prostředky můžou zapisovat do jiných umístění, než je budete moct shromažďovat do protokolů nebo metrik.
@@ -30,7 +29,7 @@ Zdroje dat monitorování z aplikací Azure je možné uspořádat do vrstev, ne
 ### <a name="azure"></a>Azure
 Následující tabulka stručně popisuje aplikační vrstvy, které jsou specifické pro Azure. Následující odkaz vám podrobnější informace najdete v následujících částech.
 
-| Úroveň | Popis | Metoda Collection |
+| Vrstva | Popis | Metoda Collection |
 |:---|:---|:---|
 | [Tenant Azure](#azure-tenant) | Data o provozu služeb Azure na úrovni tenanta, jako je například Azure Active Directory. | Zobrazte data AAD na portálu nebo nakonfigurujte kolekci tak, aby se Azure Monitor pomocí nastavení diagnostiky tenanta. |
 | [Předplatné Azure](#azure-subscription) | Data související se stavem a správou služeb pro více prostředků ve vašem předplatném Azure, například Správce prostředků a Service Health. | Zobrazte na portálu nebo nakonfigurujte kolekci tak, aby se Azure Monitor pomocí profilu protokolu. |
@@ -39,7 +38,7 @@ Následující tabulka stručně popisuje aplikační vrstvy, které jsou specif
 ### <a name="azure-other-cloud-or-on-premises"></a>Azure, jiný Cloud nebo místní 
 Následující tabulka stručně popisuje aplikační vrstvy, které se můžou nacházet v Azure, jiném cloudu nebo místním prostředí. Následující odkaz vám podrobnější informace najdete v následujících částech.
 
-| Úroveň | Popis | Metoda Collection |
+| Vrstva | Popis | Metoda Collection |
 |:---|:---|:---|
 | [Operační systém (host)](#operating-system-guest) | Data o operačním systému výpočetních prostředků. | Nainstalujte agenta Log Analytics ke shromáždění zdrojů dat klientů do Azure Monitor a agenta závislostí ke shromáždění závislostí, které podporují Azure Monitor pro virtuální počítače.<br>Pro virtuální počítače Azure nainstalujte diagnostické rozšíření Azure, které shromáždí protokoly a metriky do Azure Monitor. |
 | [Kód aplikace](#application-code) | Údaje o výkonu a funkcích skutečné aplikace a kódu, včetně trasování výkonu, protokolů aplikací a telemetrie uživatelů. | Instrumentujte kód pro shromažďování dat do Application Insights. |
@@ -201,7 +200,7 @@ Kromě standardních úrovní aplikace může být nutné monitorovat další pr
 ## <a name="other-services"></a>Další služby
 Další služby v Azure zapisují data na Azure Monitor datovou platformu. Díky tomu můžete analyzovat data shromážděná těmito službami s daty shromažďovanými nástrojem Azure Monitor a využívat stejné nástroje pro analýzu a vizualizaci.
 
-| Služba | Cíl | Popis | Referenční informace |
+| Service | Cíl | Popis | Referenční informace |
 |:---|:---|:---|:---|
 | [Azure Security Center](/azure/security-center/) | Protokoly služby Azure Monitor | Azure Security Center ukládá data zabezpečení shromažďovaná v pracovním prostoru Log Analytics, který umožňuje jejich analýzu s dalšími daty protokolů shromážděnými Azure Monitor.  | [Shromažďování dat v Azure Security Center](../../security-center/security-center-enable-data-collection.md) |
 | [Sentinel Azure](/azure/sentinel/) | Protokoly služby Azure Monitor | Služba Azure Sentinel ukládá data, která shromažďuje z různých zdrojů dat v pracovním prostoru Log Analytics, což umožňuje jejich analýzu s dalšími daty protokolů shromážděnými pomocí Azure Monitor.  | [Připojení zdrojů dat](/azure/sentinel/quickstart-onboard) |

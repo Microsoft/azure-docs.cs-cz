@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 786075b4641675f7b36df427fff69f33c9cfc2c5
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 27b453c4e20c2ae3ccb6ddda5a00e42ba4e522f6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495344"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780413"
 ---
-|Název |Popis |Vliv (s) |Version |Zdroj |
-|---|---|---|---|
+|Název |Popis |Vliv (s) |Verze |Zdroj |
+|---|---|---|---|---|
 |[v Virtual Machines by mělo být povolené posouzení ohrožení zabezpečení \[Preview\]](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F501541f7-f7e7-4cd6-868c-4190fdad3ac9) |Monitoruje chyby zabezpečení zjištěné Azure Security Center posouzení ohrožení zabezpečení Virtual Machines |AuditIfNotExists, zakázáno |1.0.0 – Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_ServerVulnerabilityAssessment_Audit.json)
 |[\[Preview\]: pro služby Kubernetes Services by měly být definované rozsahy povolených IP adres.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |Omezte přístup k Kubernetes rozhraní API pro správu služeb tím, že udělíte přístup k rozhraní API jenom na IP adresy v určitých rozsahech. Doporučuje se omezit přístup k povoleným rozsahům IP adres, aby se zajistilo, že ke clusteru budou mít přístup jenom aplikace z povolených sítí. |Audit, zakázáno |1.0.0 – Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json)
 |[\[Preview\]: je potřeba zakázat předávání IP na virtuálním počítači.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbd352bd5-2853-4985-bf0d-73806b4a5744) |Povolení předávání IP na síťové kartě virtuálního počítače umožní počítači přijímat přenosy adresované do jiných cílů. Předávání IP adres se vyžaduje jen zřídka (například při použití virtuálního počítače jako síťového virtuálního zařízení), a proto by ho měl zkontrolovat tým zabezpečení sítě. |AuditIfNotExists, zakázáno |1.0.0 – Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_IPForwardingOnVirtualMachines_Audit.json)

@@ -1,18 +1,15 @@
 ---
 title: Partneři, kteří integrují Azure Monitor
 description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete získat přístup k dokumentaci pro integraci s nimi.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: e111bcdde9381e8e418e7027d8294aa7dad7e39d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 40ba4c4f0a90d5bca03afea67302a5dbb77de027
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023867"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659454"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
@@ -89,7 +86,7 @@ DynaTrace OneAgent se integruje s virtuálními počítači Azure a App Services
 
 [Přejít na dokumentaci.][dynatrace-doc]
 
-## <a name="elastic"></a>Elastická
+## <a name="elastic"></a>Udává
 
 ![Elastické logo](./media/partners/elastic.png)
 
@@ -247,7 +244,7 @@ Sumo Logic je zabezpečená cloudová služba pro analýzu dat v cloudu, která 
 
 ![Logo Turbonomic](./media/partners/Turbonomic.png)
 
-Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy a současně optimalizuje výkon, náklady a dodržování předpisů v reálném čase. Turbonomic pomáhá organizacím v jejich Azure pružně pružně tím, že trvale optimalizuje nemovitost, aby aplikace neustále získaly prostředky, které vyžadují k dodávání své smlouvy SLA, a ještě nic více napříč výpočetními, úložnými a síťovými aplikacemi pro IaaS a PaaS. vrstvení. Organizace můžou simulovat migrace, správně škálovat úlohy a vyřadit prostředky Datacenter, aby se zodpovědnou migrace do Azure včas v rámci rozpočtu a zároveň zajišťovaly výkon i dodržování předpisů. Turbonomic je založený na rozhraní API a běží jako virtuální počítač bez agentů v Azure i v místním prostředí.
+Turbonomic zajišťuje automatizaci úloh pro hybridní cloudy tím, že současně optimalizuje výkon, náklady a dodržování předpisů v reálném čase. Turbonomic pomáhá organizacím v jejich Azure pružně pružně tím, že trvale optimalizuje nemovitost, aby aplikace neustále získaly prostředky, které vyžadují k dodávání své smlouvy SLA, a ještě nic více napříč výpočetními, úložnými a síťovými aplikacemi pro IaaS a PaaS. vrstvení. Organizace můžou simulovat migrace, správně škálovat úlohy a vyřadit prostředky Datacenter, aby se zodpovědnou migrace do Azure včas v rámci rozpočtu a zároveň zajišťovaly výkon i dodržování předpisů. Turbonomic je založené na rozhraní API a běží jako virtuální počítač bez agenta v Azure a v místním prostředí.
 
 [Další informace][turbonomic-doc]
 

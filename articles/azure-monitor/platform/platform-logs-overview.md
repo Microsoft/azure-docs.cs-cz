@@ -3,17 +3,16 @@ title: Přehled protokolů platformy Azure | Microsoft Docs
 description: Přehled protokolů v Azure Monitor poskytujících bohatou a častou práci o provozu prostředku Azure.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 5f02368bfb0c084691376300980d4cdee0d9b3be
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 89de6b3737c8a1e91832aba8f749078806b64e90
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530880"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659316"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Přehled protokolů platformy Azure
 Protokoly platforem poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Generují se automaticky, přestože potřebujete nakonfigurovat některé protokoly platformy, které se mají přemístit do jednoho nebo více cílů, aby je bylo možné zachovat. Tento článek obsahuje přehled protokolů platforem, včetně informací, které poskytují, a o tom, jak je můžete nakonfigurovat pro shromažďování a analýzu.
@@ -24,7 +23,7 @@ V následující tabulce jsou uvedeny konkrétní protokoly platformy, které js
 | Protokol | Vrstva | Popis |
 |:---|:---|:---|
 | Protokoly prostředků | Prostředky Azure | Poskytněte přehled o operacích, které byly provedeny v rámci prostředku Azure ( *rovina dat*), například získání tajného kódu z Key Vault nebo vytvoření žádosti do databáze. Obsah protokolů prostředků se liší podle typu prostředku a služby Azure.<br><br>*Protokoly prostředků se dřív odkazovaly na diagnostické protokoly.*  |
-| Protokol aktivit | Předplatné Azure | Poskytuje přehled o operacích u každého prostředku Azure v předplatném mimo (*rovinu správy*) kromě aktualizací Service Healthch událostí. Pomocí protokolu aktivit můžete určit, _kdo_a _kdy_ se u prostředků ve vašem předplatném mají _dělat_operace zápisu (Put, post, DELETE). Můžete také zjištění stavu operace a další relevantní vlastnosti.  Pro každé předplatné Azure existuje jeden protokol aktivit. |
+| Protokol aktivit | předplatné Azure | Poskytuje přehled o operacích u každého prostředku Azure v předplatném mimo (*rovinu správy*) kromě aktualizací Service Healthch událostí. Pomocí protokolu aktivit můžete určit, _kdo_a _kdy_ se u prostředků ve vašem předplatném mají _dělat_operace zápisu (Put, post, DELETE). Můžete také zjištění stavu operace a další relevantní vlastnosti.  Pro každé předplatné Azure existuje jeden protokol aktivit. |
 | Protokoly Azure Active Directory | Tenant Azure |  Obsahuje historii přihlašovací aktivity a záznam pro audit změn provedených v Azure Active Directory pro konkrétního tenanta. Úplný popis protokolů Azure Active Directory najdete v tématu [co jsou sestavy Azure Active Directory?](../../active-directory/reports-monitoring/overview-reports.md) .   |
 
 > [!NOTE]
@@ -45,7 +44,7 @@ K dispozici jsou různé možnosti pro zobrazení a analýzu různých protokol�
 ## <a name="destinations"></a>Cíle
 Protokoly platforem můžete odesílat do jednoho nebo více cílů v následující tabulce v závislosti na požadavcích na monitorování. Nakonfigurujte cíle pro protokoly platforem [vytvořením nastavení diagnostiky](diagnostic-settings.md).
 
-| Cíl | Scénář | Odkazy |
+| Cíl | Scénář | Reference |
 |:---|:---|:---|:---|
 | Pracovní prostor Log Analytics | Analyzujte protokoly s dalšími daty monitorování a využijte Azure Monitorch funkcí, jako jsou například dotazy a výstrahy protokolu. | [Protokol aktivit a protokoly prostředků](resource-logs-collect-workspace.md)<br>[Protokoly adresářů aktivit Azure](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
 | Úložiště Azure | Archivujte protokoly pro audit, statickou analýzu nebo zálohování. |[Protokol aktivit a protokoly prostředků](archive-diagnostic-logs.md)<br>[Protokoly adresářů aktivit Azure](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |

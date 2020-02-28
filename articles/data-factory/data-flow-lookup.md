@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/03/2019
-ms.openlocfilehash: 5cc54c95759ba1490f498305f05cc49a4411686d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 02/26/2020
+ms.openlocfilehash: aa71f7d2f3b277ca34e1e5fea76ada6adf93e573
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930316"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655055"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory transformace vyhledávání toku dat
 
@@ -36,9 +36,19 @@ Po použití transformace vyhledávání můžete přidat transformaci s podmín
 
 ## <a name="first-or-last-value"></a>První nebo poslední hodnota
 
-Pokud máte více odpovídajících hodnot vyhledávání, můžete chtít snížit více odpovídajících řádků, a to výběrem první nebo poslední shody. Můžete to provést pomocí agregované transformace po vyhledání.
+Transformace vyhledávání je implementována jako levé vnější spojení. Pokud máte více odpovídajících hodnot vyhledávání, můžete chtít snížit více odpovídajících řádků tím, že vybíráte první odpovídající řádek, poslední shodu nebo libovolný náhodný řádek.
 
-V tomto případě se pro výběr první hodnoty ze shod vyhledávání používá agregovaná transformace s názvem ```PickFirst```.
+### <a name="option-1"></a>možnost 1
+
+![Vyhledávání na jednom řádku](media/data-flow/singlerowlookup.png "Vyhledávání na jednom řádku")
+
+* Porovnává více řádků: ponechte prázdné, aby se vracela jedna řádková shoda.
+* Shoda s: Vyberte první, poslední nebo libovolnou shodu.
+* Podmínky řazení: Pokud vyberete první nebo poslední, ADF vyžaduje, aby vaše data byla uspořádaná tak, aby existovala logika za první a poslední.
+
+### <a name="option-2"></a>Možnost 2
+
+Můžete to provést také pomocí agregované transformace po vyhledání. V tomto případě se pro výběr první hodnoty ze shod vyhledávání používá agregovaná transformace s názvem ```PickFirst```.
 
 ![Vyhledávací agregace](media/data-flow/lookup333.png "Vyhledávací agregace")
 
@@ -48,7 +58,7 @@ V tomto případě se pro výběr první hodnoty ze shod vyhledávání použív
 
 V Data Factory jsou toky dat spouštěny v prostředích Spark s horizontálním škálováním. Pokud se vaše datová sada vejde do paměťového prostoru pracovního uzlu, můžeme optimalizovat výkon vyhledávání.
 
-![Připojení všesměrového vysílání](media/data-flow/broadcast.png "Vysílací spojení")
+![Připojení všesměrového vysílání](media/data-flow/broadcast.png "Připojení všesměrového vysílání")
 
 ### <a name="broadcast-join"></a>Připojení všesměrového vysílání
 

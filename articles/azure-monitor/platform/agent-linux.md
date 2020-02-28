@@ -1,18 +1,17 @@
 ---
 title: Připojit počítače se systémem Linux k Azure Monitor | Microsoft Docs
 description: Tento článek popisuje, jak propojit počítače se systémem Linux hostované v jiných cloudech nebo v místním prostředí, aby se Azure Monitor s agentem Log Analytics pro Linux.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 40c279a4beee9fbebe2de7f272fe51d9039f071c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290321"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668702"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Připojení počítačů se systémem Linux k Azure Monitor
 
@@ -94,7 +93,7 @@ Agent Log Analytics pro Linux je k dispozici v balíčku skriptu pro samorozbalo
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy address>:<proxy port> -w <workspace id> -s <shared key>
     ```
 
-    Pokud je vyžadováno ověření, je nutné zadat uživatelské jméno a heslo. Například: 
+    Pokud je vyžadováno ověření, je nutné zadat uživatelské jméno a heslo. Příklad: 
     
     ```
     sudo sh ./omsagent-*.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>

@@ -2,16 +2,16 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: e578ecff4827a36080bfbbb73626b322adc03ea8
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: f163c3e36b6ebf4ddb008aa18f67a08e94b46226
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495061"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780478"
 ---
-|Název |Popis |Zásady |Version |
+|Název |Popis |Zásady |Verze |
 |---|---|---|---|
 |[\[Preview\]: Auditovat federální PBMM ovládací prvky v Kanadě a nasazovat specifická rozšíření virtuálních počítačů pro podporu požadavků na audit](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a nasazení rozšíření virtuálních počítačů, které řeší podmnožinu federálních PBMMch ovládacích prvků Kanady. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na https://aka.ms/canadafederalPBMM-blueprint |67 |2.0.0 – Preview |
 |[\[Preview\]: Auditovat CIS Microsoft Azure Foundation 1.1.0 doporučení a nasazovat specifická podpůrná rozšíření virtuálních počítačů](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0_audit.json) |Tato iniciativa zahrnuje zásady pro nasazení auditu a nasazení rozšíření virtuálních počítačů, které řeší podmnožinu referenčních doporučení pro CIS Microsoft Azurech základů. Další zásady budou přidány v nadcházejících verzích. Další informace najdete na https://aka.ms/cisazure-blueprint. |83 |2.0.0 – Preview |

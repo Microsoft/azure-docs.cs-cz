@@ -1,18 +1,17 @@
 ---
 title: Použití šablon Azure Resource Manager k vytvoření a konfiguraci pracovního prostoru Log Analytics | Microsoft Docs
 description: Šablony Azure Resource Manager můžete použít k vytvoření a konfiguraci Log Analytics pracovních prostorů.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 5fb33a592601a0511fa2523ee0cf8114bc66ca99
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 1b084b8cbf87817a4ff12fdb56f44b740a6d6a12
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591951"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658893"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Správa pracovního prostoru Log Analytics pomocí šablon Azure Resource Manager
 
@@ -41,9 +40,9 @@ Následující tabulka uvádí verzi rozhraní API pro prostředky použité v t
 | Prostředek | Typ prostředku | Verze rozhraní API |
 |:---|:---|:---|
 | Pracovní prostor   | pracovní prostory    | 2017-03-15 – Preview |
-| Hledání      | savedSearches | 2015-03-20 |
+| Hledat      | savedSearches | 2015-03-20 |
 | Zdroj dat | zdroje dat   | 2015-11-01-preview |
-| Řešení    | Řešení     | 2015-11-01-preview |
+| Řešení    | řešení     | 2015-11-01-preview |
 
 ## <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
 

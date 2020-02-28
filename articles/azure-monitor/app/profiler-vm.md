@@ -1,19 +1,17 @@
 ---
 title: Profilování webových aplikací na virtuálním počítači Azure – Application Insights Profiler
 description: Profilujte webové aplikace na virtuálním počítači Azure pomocí Application Insights Profiler.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 046128fda385486f5a92d215e349760483c5dfa4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c5dfe6ed08df01f78346c76fd5a35e7d64ab520
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432369"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671575"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profilování webových aplikací běžících na virtuálním počítači Azure nebo v sadě škálování virtuálního počítače pomocí Application Insights Profiler
 

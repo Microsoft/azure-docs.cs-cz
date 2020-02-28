@@ -1,18 +1,17 @@
 ---
 title: Nejčastější dotazy – řešení Network Performance Monitor v Azure | Microsoft Docs
 description: Tento článek zachycuje Nejčastější dotazy týkající se Network Performance Monitor v Azure. Network Performance Monitor (NPM) vám pomůže monitorovat výkon sítí prakticky v reálném čase a zjišťovat a vyhledávat kritické body výkonu sítě.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 7ee593a8db020134e13ea853f17f097d716f7814
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 0ef50dfd4d9c6eb0066e54b76167b9934fbb9cf0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538191"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654429"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Nejčastější dotazy k řešení Network Performance Monitor
 
@@ -69,7 +68,7 @@ Pro každou podsíť, kterou chcete monitorovat, byste měli použít aspoň jed
 ### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>Jaký je maximální počet agentů, které můžu použít, nebo se zobrazuje chyba... dosáhli jste limitu konfigurace?
 NPM omezuje počet IP adres na jeden pracovní prostor na 5000. Pokud má uzel adresy IPv4 i IPv6, bude se tento uzel počítat jako 2 IP adresy. Proto tento limit 5000 IP adres určí horní limit počtu agentů. Neaktivních agentů můžete odstranit na kartě uzly v NPM > > nakonfigurovat. NPM také udržuje historii všech IP adres, které byly někdy přiřazeny k virtuálnímu počítači, který je hostitelem agenta, a každá z nich se počítá jako samostatná IP adresa přispívající k tomuto hornímu limitu 5000 IP adres. Pokud chcete pro svůj pracovní prostor uvolnit IP adresy, můžete pomocí stránky uzly odstranit IP adresy, které se nepoužívají.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 ### <a name="how-are-loss-and-latency-calculated"></a>Jak se počítají ztráty a latence
 Zdrojové agenti odesílají žádosti TCP SYN (Pokud je zvolen protokol TCP jako protokol pro monitorování) nebo požadavky na ODEZVu ICMP (Pokud je protokol ICMP zvolen jako protokol pro monitorování) do cílové IP adresy v pravidelných intervalech, aby se zajistilo, že všechny cesty mezi zdrojovým cílovým IP serverem je pokryta kombinace. Procento přijatých paketů a doba odezvy přenosu paketů se měří k výpočtu ztráty a latence každé cesty. Tato data se agreguje v intervalu cyklického dotazování a přes všechny cesty, aby se získaly agregované hodnoty ztráty a latence pro danou kombinaci IP adres pro konkrétní interval dotazování.
@@ -173,7 +172,7 @@ NPM může monitorovat připojení ke službám v jakékoli části světa, od p
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Které oblasti se podporují pro monitor ExpressRoute v NPM?
 NPM dokáže monitorovat vaše ExpressRoute okruhy, které jsou umístěné v libovolné oblasti Azure. K připojení do NPM budete potřebovat pracovní prostor Log Analytics, který musí být hostovaný v některé z [podporovaných oblastí](/azure/expressroute/how-to-npm) .
 
-## <a name="troubleshoot"></a>Řešení potíží
+## <a name="troubleshoot"></a>Řešení problémů
 
 ### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>Proč jsou některé z směrování označeny jako neidentifikované v zobrazení síťové topologie?
 NPM používá upravenou verzi traceroute ke zjištění topologie ze zdrojového agenta do cíle. Neidentifikovaný skok znamená, že směrování sítě nereagovalo na žádost traceroute zdrojového agenta. Pokud tři po sobě jdoucí síťové segmenty nereagují na traceroute agenta, toto řešení označí nereagující chmel jako neidentifikovaný a nepokusí se zjistit další segmenty směrování.

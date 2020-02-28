@@ -1,18 +1,17 @@
 ---
 title: Přehled dotazů protokolu v Azure Monitor | Microsoft Docs
 description: Odpoví na běžné otázky související s dotazy protokolu a pomůže vám s jejich pomocí začít.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 08af0ff3121d6721c9f5c1457655c345f50f91e0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900273"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670113"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Přehled dotazů protokolu v Azure Monitor
 Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v [protokolech Azure monitor](../platform/data-platform-logs.md). Výkonný dotazovací jazyk umožňuje spojit data z více tabulek, agregovat velké sady dat a provádět komplexní operace s minimálním kódem. Prakticky všechny dotazy mohou být zodpovězeny a analýzou provedeny, pokud jsou shromážděna podpůrná data a rozumíte tomu, jak vytvořit správný dotaz.

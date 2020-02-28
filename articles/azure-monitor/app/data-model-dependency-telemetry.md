@@ -1,25 +1,21 @@
 ---
 title: Datový model závislosti Azure Monitor Application Insights
 description: Application Insights datový model pro telemetrii závislostí
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 5021d3b34816159fc78590a5947ddd3a790303ee
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872634"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671915"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Telemetrie závislostí: datový model Application Insights
 
 Telemetrie závislostí (v [Application Insights](../../azure-monitor/app/app-insights-overview.md)) představuje interakce monitorované komponenty se vzdálenou komponentou, jako je SQL nebo koncový bod HTTP.
 
-## <a name="name"></a>Name (Název)
+## <a name="name"></a>Název
 
 Název příkazu iniciované tímto voláním závislosti. Nízká hodnota mohutnosti. Příklady jsou název uložené procedury a šablona cesty URL.
 
@@ -35,11 +31,11 @@ Příkaz iniciované tímto voláním závislosti. Příklady jsou příkazy SQL
 
 Název typu závislosti Nízká hodnota mohutnosti pro logické seskupení závislostí a výklad jiných polí, jako například příkazové a resultCode. Příklady jsou SQL, tabulka Azure a HTTP.
 
-## <a name="target"></a>Výběr cílového umístění
+## <a name="target"></a>Cíl
 
 Cílový web volání závislosti. Příkladem je název serveru, adresa hostitele. Další informace najdete na stránce [korelace](../../azure-monitor/app/correlation.md) .
 
-## <a name="duration"></a>Délka
+## <a name="duration"></a>Doba platnosti
 
 Doba trvání žádosti ve formátu: `DD.HH:MM:SS.MMMMMM`. Musí být kratší než `1000`é dny.
 

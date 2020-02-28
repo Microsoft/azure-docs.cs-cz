@@ -1,19 +1,18 @@
 ---
 title: Vytvoření vlastních řídicích panelů ve službě Azure Application Insights | Microsoft Docs
 description: Kurz vytváření vlastních řídicích panelů klíčového ukazatele výkonu pomocí Azure Application Insights
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: 47d8eaff5f154e198c277ec2b63a2d09e66f7180
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: caf8b1899cad95ade6297e78e8f2cf35939ef189
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900506"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661630"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Vytváření vlastních řídicích panelů klíčového ukazatele výkonu pomocí Azure Application Insights
 
@@ -32,7 +31,7 @@ Můžete vytvořit více řídicích panelů na portálu Azure Portal, aby každ
 
 K provedení kroků v tomto kurzu je potřeba:
 
-- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md).
+- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
@@ -102,7 +101,7 @@ Vzhledem k tomu, že Azure Application Insights log (Analytics) je samostatná s
     ```
 
 4. Kliknutím na tlačítko **Spustit** ověříte výsledky dotazu.
-5. Klikněte na ikonu připnutí ![Ikona připnutí](media/tutorial-app-dashboards/pushpin.png) a vyberte název řídicího panelu. Důvod, proč tato možnost vybírá řídicí panel, na rozdíl od předchozích kroků, kde byl použit poslední řídicí panel, protože konzola protokolů (Analytics) je samostatná služba a je nutné vybrat ze všech dostupných sdílených řídicích panelů.
+5. Klikněte na ikonu připnutí ![ikona připnutí](media/tutorial-app-dashboards/pushpin.png) a vyberte název řídicího panelu. Důvod, proč tato možnost vybírá řídicí panel, na rozdíl od předchozích kroků, kde byl použit poslední řídicí panel, protože konzola protokolů (Analytics) je samostatná služba a je nutné vybrat ze všech dostupných sdílených řídicích panelů.
 
 5. Než se vrátíte na řídicí panel, přidejte další dotaz, ale tentokrát ho vykreslete jako graf, abyste viděli různé způsoby, jak vizualizovat dotazy protokolů na řídicím panelu. Začněte s následujícím dotazem, který shrnuje 10 operací s největším množstvím výjimek.
 
@@ -117,7 +116,7 @@ Vzhledem k tomu, že Azure Application Insights log (Analytics) je samostatná s
 
     ![Graf protokolů (Analytics)](media/tutorial-app-dashboards/11querychart.png)
 
-6. Klikněte na ikonu připnutí ![Ikona připnutí](media/tutorial-app-dashboards/pushpin.png) vpravo nahoře připněte graf na řídicí panel a tentokrát vyberte odkaz, který se má vrátit na řídicí panel.
+6. Klikněte na ikonu připnutí ![ikona připnutí](media/tutorial-app-dashboards/pushpin.png) vpravo nahoře připněte graf na řídicí panel a tentokrát vyberte odkaz, který se má vrátit na řídicí panel.
 4. Výsledky dotazů jsou teď přidané do řídicího panelu ve formátu, který jste vybrali.  Klikněte na jednotlivé pozice a přetáhněte je na všechny a pak klikněte na **hotové přizpůsobení**.
 5. Vyberte ikonu tužky. ![Ikona tužky](media/tutorial-app-dashboards/pencil.png) u každého titulu dejte jim popisný název.
 

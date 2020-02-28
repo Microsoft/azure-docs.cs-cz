@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
-ms.openlocfilehash: 47e38d79e8aa4656b8164c94b4ef439bf431e01d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: af5ab05cb772909cd36e2e6bfe1c100a5b83841c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049671"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660032"
 ---
 # <a name="linux-support"></a>Podpora Linuxu
 
@@ -22,6 +22,9 @@ Můžete použít sadu Linux SDK pro virtuální plochu Windows k sestavení sam
 
 Pomocí rozhraní API sady SDK můžete načíst kanály prostředků, připojit se k relaci počítače nebo vzdálené aplikace a použít spoustu přesměrování, která naši klienti podporují.
 
+> [!NOTE]
+> Sada SDK je aktuálně ve vývoji. Tento dokument aktualizujeme pokyny pro přístup k sadě SDK, když je k dispozici.
+
 ### <a name="supported-linux-distributions"></a>Podporované distribuce systému Linux
 
 Sada SDK je kompatibilní s největším operačním systémem, který je založený na Ubuntu 18,04 nebo novějším. Pokud máte jinou distribuci pro Linux, můžeme s vámi spolupracovat a zjistit, jak co nejlépe vyhovuje vašim potřebám.
@@ -30,7 +33,7 @@ Sada SDK je kompatibilní s největším operačním systémem, který je založ
 
 Sada SDK podporuje více připojení k relacím na plochu a vzdálené aplikace. Jsou podporovány následující přesměrování:
 
-| Přesměrování       | Podporováno |
+| Přesměrování       | Podporuje se |
 | :---------------- | :-------: |
 | Klávesnice          | &#10004;  |
 | Stisknut             | &#10004;  |
@@ -54,8 +57,6 @@ Než budete moct vyvíjet klienta pro Linux pro virtuální počítače s Window
 2. Otestujte dostupné klienty první strany a seznamte se s uživatelským prostředím pro virtuální počítače s Windows.
 
 ## <a name="next-steps"></a>Další kroky
-
-Sada SDK je aktuálně ve vývoji. Tento dokument aktualizujeme pokyny pro přístup k sadě SDK, když je k dispozici.
 
 Projděte si naši dokumentaci pro následující klienty:
 

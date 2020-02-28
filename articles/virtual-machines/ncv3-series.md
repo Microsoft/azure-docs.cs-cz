@@ -7,14 +7,14 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 18a2198063c1dfc5149c5ca017da3807da821dd1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 363f8d2aae4e77453b8291637f2f6067d24bb80b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493017"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661120"
 ---
-# <a name="ncv3-series"></a>NCv3-Series
+# <a name="ncv3-series"></a>Řada NCv3
 
 Virtuální počítače řady NCv3-Series využívají grafické procesory [NVIDIA Tesla V100](https://www.nvidia.com/data-center/tesla-v100/) . Tyto GPU můžou poskytnout 1,5 x výpočetní výkon NCv2-Series. Zákazníci můžou využít těchto aktualizovaných GPU pro tradiční úlohy HPC, jako je modelování zásobníku, sekvence DNA, analýza bílkovin, simulace Monte Carlo a další. Konfigurace NC24rs V3 poskytuje síťové rozhraní s nízkou latencí a vysokou propustností optimalizované pro vysoce provázané úlohy paralelního zpracování. Kromě GPU využívají virtuální počítače řady NCv3-Series také procesory Intel Xeon E5-2690 v4 (Broadwell).
 
@@ -40,9 +40,9 @@ Ukládání Premium Storage do mezipaměti: podporováno
 
 Aby bylo možné využít možnosti GPU pro virtuální počítače řady Azure N-Series, je nutné nainstalovat ovladače GPU NVIDIA.
 
-[Rozšíření ovladače NVIDIA GPU](/extensions/hpccompute-gpu-windows.md) nainstaluje vhodné ovladače NVIDIA CUDA nebo Grid na virtuální počítač řady N-Series. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](/extensions/hpccompute-gpu-windows.md) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](/extensions/overview.md).
+[Rozšíření ovladače NVIDIA GPU](./extensions/hpccompute-gpu-windows.md) nainstaluje vhodné ovladače NVIDIA CUDA nebo Grid na virtuální počítač řady N-Series. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](./extensions/hpccompute-gpu-windows.md) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](/.extensions/overview.md).
 
-Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si téma Instalace ovladače GPU [řady n-Series pro Windows](/windows/n-series-driver-setup.md) nebo [n-Series Setup Driver Setup pro Linux](/linux/n-series-driver-setup) pro podporované operační systémy, ovladače, instalace a postupy ověření.
+Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si téma Instalace ovladače GPU [řady n-Series pro Windows](./windows/n-series-driver-setup.md) nebo [n-Series Setup Driver Setup pro Linux](./linux/n-series-driver-setup.md) pro podporované operační systémy, ovladače, instalace a postupy ověření.
 
 ## <a name="other-sizes"></a>Jiné velikosti
 

@@ -1,18 +1,17 @@
 ---
 title: Práce s hodnotami data a času v Azure Monitorch dotazech protokolu | Microsoft Docs
 description: Popisuje, jak pracovat s daty data a času v Azure Monitorch dotazech protokolu.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: d659be5b817317e7cec5726718f154825674349e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365338"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655374"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Práce s hodnotami data a času v Azure Monitorch dotazech protokolu
 
@@ -32,9 +31,9 @@ Dotazovací jazyk Kusto má dva hlavní datové typy spojené s daty a časy: Da
 |zkrácený   | Časová jednotka    |
 |:---|:---|
 |d           | den          |
-|hod.           | hour         |
-|min.           | minute       |
-|s           | second       |
+|h           | Hodiny         |
+|m           | Za       |
+|s           | První       |
 |ms          | komponentu  |
 |úrovni mikrosekund | úrovni mikrosekund  |
 |libovoln        | nanosekund   |
@@ -128,7 +127,7 @@ Event
 
 Tento dotaz vytvoří následující výsledky:
 
-|časové razítko|počet_|
+|časové razítko|count_|
 |--|--|
 |2018-07-28T00:00:00.000|7 136|
 |2018-07-29T00:00:00.000|12 315|

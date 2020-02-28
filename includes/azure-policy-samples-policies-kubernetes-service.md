@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 8aff431b5160548599055c56d1317065236e7a68
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 93963005ece192d9fe8a477473800e43c0b53552
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495076"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780790"
 ---
-|Název |Popis |Vliv (s) |Version |Zdroj |
-|---|---|---|---|
+|Název |Popis |Vliv (s) |Verze |Zdroj |
+|---|---|---|---|---|
 |[\]s omezením \[ed Preview: \[AKS\] Nepovolit privilegované kontejnery v AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ce7ac02-a5c6-45d6-8d1b-844feb1c1531) |Tato zásada nepovoluje vytvoření privilegovaných kontejnerů v clusteru služby Azure Kubernetes. Zásady omezené verze Preview fungují jenom u registrovaných předplatných. Pokud se chcete zaregistrovat, přejděte prosím na https://aka.ms/akspolicyonboarding. Pokyny k použití této zásady najdete na https://aka.ms/akspolicydoc. |EnforceRegoPolicy, zakázáno |1.0.0 – Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/ContainerNoPrivilege_EnforceRegoPolicy.json)
 |[\]s omezením \[ed Preview: \[AKS\] vynutilo příchozí přenos dat HTTPS v AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2fbff515-eecc-4b7e-9b63-fcc7138b7dc3) |Tato zásada vynutila příchozí přenosy HTTPS v clusteru služby Azure Kubernetes. Zásady omezené verze Preview fungují jenom u registrovaných předplatných. Pokud se chcete zaregistrovat, přejděte prosím na https://aka.ms/akspolicyonboarding. Pokyny k použití této zásady najdete na https://aka.ms/akspolicydoc. |EnforceRegoPolicy, zakázáno |1.0.0 – Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/IngressHttpsOnly_EnforceRegoPolicy.json)
 |[\[s omezením verze Preview\]: \[AKS\] vynutili interní nástroje pro vyrovnávání zatížení v AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa74d8f00-2fd9-4ce4-968e-0ee1eb821698) |Tato zásada vynutila, že nástroje pro vyrovnávání zatížení nemají v clusteru služby Azure Kubernetes veřejné IP adresy. Zásady omezené verze Preview fungují jenom u registrovaných předplatných. Pokud se chcete zaregistrovat, přejděte prosím na https://aka.ms/akspolicyonboarding. Pokyny k použití této zásady najdete na https://aka.ms/akspolicydoc. |EnforceRegoPolicy, zakázáno |1.0.0 – Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/LoadbalancerNoPublicIPs_EnforceRegoPolicy.json)

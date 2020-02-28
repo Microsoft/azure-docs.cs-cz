@@ -1,19 +1,15 @@
 ---
 title: Datový model pro telemetrii žádostí – Azure Application Insights
 description: Application Insights datový model pro telemetrii žádostí
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: b253a95a39f118efe82e36ac7261a4d6c62a99d6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928840"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671898"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Telemetrie žádostí: datový model Application Insights
 
@@ -21,7 +17,7 @@ Položka telemetrie žádosti (v [Application Insights](../../azure-monitor/app/
 
 Telemetrie žádostí podporuje standardní rozšiřitelný model s využitím vlastních `properties` a `measurements`.
 
-## <a name="name"></a>Name (Název)
+## <a name="name"></a>Název
 
 Název žádosti představuje cestu kódu pořízenou pro zpracování žádosti. Nízká hodnota mohutnosti, která umožňuje lepší seskupení požadavků. V případě požadavků HTTP představuje šablonu metoda HTTP a cestu adresy URL, jako `GET /values/{id}` bez skutečné `id` hodnoty.
 
@@ -47,7 +43,7 @@ Zdroj požadavku Příkladem je klíč instrumentace volajícího nebo IP adresy
 
 Maximální délka: 1024 znaků
 
-## <a name="duration"></a>Délka
+## <a name="duration"></a>Doba platnosti
 
 Doba trvání žádosti ve formátu: `DD.HH:MM:SS.MMMMMM`. Musí být kladný a menší než `1000`é dny. Toto pole je povinné, protože telemetrie požadavků představuje operaci začínající na začátku a na konci.
 
@@ -59,7 +55,7 @@ Maximální délka: 1024 znaků
 
 ## <a name="success"></a>Úspěch
 
-Označení úspěšného nebo neúspěšného volání. Toto pole je vyžadováno. Pokud není explicitně nastavené na `false` – požadavek se považuje za úspěšný. Nastavte tuto hodnotu na `false`, pokud byla operace přerušena výjimkou nebo vrátila kód výsledku chyby.
+Označení úspěšného nebo neúspěšného volání. Toto pole je povinné. Pokud není explicitně nastavené na `false` – požadavek se považuje za úspěšný. Nastavte tuto hodnotu na `false`, pokud byla operace přerušena výjimkou nebo vrátila kód výsledku chyby.
 
 Pro webové aplikace Application Insights definovat požadavek jako úspěšný, pokud je kód odpovědi menší než `400` nebo se rovná `401`. Existují však případy, kdy toto výchozí mapování neodpovídá sémantikě aplikace. Kód odpovědi `404` může indikovat "žádné záznamy", které mohou být součástí pravidelného toku. Může také označovat přerušený odkaz. Pro přerušené odkazy můžete dokonce implementovat pokročilejší logiku. Můžete označit poškozené odkazy jako chyby pouze v případě, že jsou tyto odkazy umístěny ve stejné lokalitě pomocí analýzy odkazující adresy URL. Nebo je při použití z mobilní aplikace společnosti označit jako neúspěšná. Podobně `301` a `302` signalizují selhání při přistupování z klienta, který nepodporuje přesměrování.
 

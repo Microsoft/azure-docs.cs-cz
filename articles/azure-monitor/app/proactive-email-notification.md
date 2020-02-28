@@ -1,19 +1,17 @@
 ---
 title: Změna oznámení inteligentního zjišťování – Azure Application Insights
 description: Přejděte na výchozí příjemce oznámení z inteligentního zjišťování. Inteligentní zjišťování umožňuje monitorovat trasování aplikací pomocí Azure Application Insights pro neobvyklé vzory v telemetrie trasování.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: harelbr
 ms.author: harelbr
 ms.date: 03/13/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 493deea89586347d5847895acd5eb73a866f84ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f73e5bbdd8585b3367e529a8fa00630042e56cac
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432453"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671779"
 ---
 # <a name="smart-detection-e-mail-notification-change"></a>Změna e-mailových oznámení inteligentního zjišťování
 
@@ -21,13 +19,13 @@ Na základě zpětné vazby od zákazníků od 1. dubna 2019 měníme výchozí 
 
 ## <a name="what-is-changing"></a>Co se mění?
 
-V současné době se e-mailová oznámení inteligentní detekce standardně odesílají do rolí _vlastník_předplatného, _přispěvatele_předplatného a _modulu pro čtení předplatného_ Tyto role často zahrnují uživatele, kteří se aktivně nepodílejí na monitorování, a řada z těchto uživatelů tak dostává oznámení zbytečně. Pro zlepšení tohoto prostředí provádíme změnu, aby e-mailová oznámení ve výchozím nastavení přešla jenom na role [Čtenář monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) a [sledování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) .
+V současné době se e-mailová oznámení inteligentní detekce standardně odesílají do rolí _vlastník_předplatného, _přispěvatele_předplatného a _modulu pro čtení předplatného_ Tyto role často zahrnují uživatele, kteří nejsou aktivně zapojeni do monitorování, což způsobí, že mnohé z těchto uživatelů dostanou oznámení zbytečně. Pro zlepšení tohoto prostředí provádíme změnu, aby e-mailová oznámení ve výchozím nastavení přešla jenom na role [Čtenář monitorování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) a [sledování](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) .
 
 ## <a name="scope-of-this-change"></a>Rozsah této změny
 
-Tato změna se projeví u všech pravidel inteligentního zjišťování s výjimkou následujících:
+Tato změna bude mít vliv na všechna pravidla inteligentního zjišťování, s výjimkou následujících:
 
-* Pravidla inteligentního zjišťování označená jako verze Preview. Tato pravidla inteligentního zjišťování nepodporují e-mailová oznámení ještě dnes.
+* Pravidla inteligentního zjišťování označená jako náhled Tato pravidla inteligentního zjišťování nepodporují e-mailová oznámení ještě dnes.
 
 * Pravidlo anomálií selhání. Toto pravidlo začne cílit na nové výchozí role, jakmile se migruje z klasické výstrahy na platformu Unified Alerts (Další informace jsou k dispozici [zde](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).)
 

@@ -1,23 +1,19 @@
 ---
 title: Získejte více z Azure Application Insights | Microsoft Docs
 description: Až začnete s Application Insights, tady je přehled funkcí, které můžete prozkoumat.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 02/03/2017
-ms.openlocfilehash: 8c51745c43ced8ad3031a6a01096261ef72b33fc
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3c4a9a736f34d4f7dbfeb004d0837f1f2efa55dc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678358"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666020"
 ---
 # <a name="more-telemetry-from-application-insights"></a>Další telemetrie z Application Insights
 Po [přidání Application Insights do kódu ASP.NET](../../azure-monitor/app/asp-net.md)je k dispozici několik věcí, které můžete využít k získání ještě větší telemetrie. 
 
-| Akce | Co získáváte|
+| Akce | Co získáte|
 |---|---|
 |(Servery IIS) [Nainstalujte monitorování stavu](https://go.microsoft.com/fwlink/?LinkId=506648) na každém serverovém počítači.<br/>(Azure Web Apps) V Ovládacích panelech Azure pro webovou aplikaci otevřete okno Application Insights.| [**Čítače výkonu**](../../azure-monitor/app/performance-counters.md)<br/>[**Výjimky**](asp-net-exceptions.md) – podrobné trasování zásobníku<br/>[**Závislosti**](../../azure-monitor/app/asp-net-dependencies.md)|
 |[Přidat fragment kódu JavaScriptu na vaše webové stránky](../../azure-monitor/app/javascript.md)|[Výkon stránky](../../azure-monitor/app/usage-overview.md), výjimky prohlížeče, výkon AJAX. Vlastní telemetrie na straně klienta.|

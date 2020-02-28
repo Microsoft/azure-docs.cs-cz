@@ -1,18 +1,14 @@
 ---
 title: Používání služby Search v Azure Application Insights | Microsoft Docs
 description: Hledání a filtrování nezpracovaných telemetrie odesílaných vaší webovou aplikací
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/30/2019
-ms.openlocfilehash: 77cd0a8d0c1a93e7dc1db931e987a172d31978ef
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 8039a55784f63030f330d6c1e2061e99b8b63bbf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678060"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669671"
 ---
 # <a name="using-search-in-application-insights"></a>Použití vyhledávání v Application Insights
 
@@ -26,7 +22,7 @@ Hledání je funkce [Application Insights](../../azure-monitor/app/app-insights-
 
 Můžete otevřít vyhledávání diagnostiky z karty Přehled Application Insights vaší aplikace (nachází se na horním panelu) nebo v části prozkoumat na levé straně.
 
-![Karta Hledat](./media/diagnostic-search/view-custom-events.png)
+![Karta Vyhledávání](./media/diagnostic-search/view-custom-events.png)
 
 Chcete-li zobrazit seznam položek telemetrie – požadavky serveru, zobrazení stránky, vlastní události, které jste nastavili, a tak dále, přejděte do rozevírací nabídky typy událostí. V horní části seznamu výsledků je souhrnný graf zobrazující počty událostí v průběhu času.
 
@@ -60,12 +56,12 @@ Otevřete rozevírací nabídku typy událostí a vyberte typy událostí, kter�
 
 Typy událostí:
 
-* **Trasování**  - [diagnostické protokoly](../../azure-monitor/app/asp-net-trace-logs.md) , včetně volání TrackTrace, Log4Net, nLOG a System. Diagnostics. Trace.
+* **Trasování** - [diagnostické protokoly](../../azure-monitor/app/asp-net-trace-logs.md) , včetně volání TrackTrace, Log4Net, nLOG a System. Diagnostics. Trace.
 * Žádosti **o** požadavky HTTP přijaté serverovou aplikací, včetně stránek, skriptů, obrázků, souborů stylu a dat. Tyto události se používají k vytvoření grafů s přehledem požadavků a odpovědí.
-* **Zobrazení stránky**  - [telemetrie odeslané webovým klientem](../../azure-monitor/app/javascript.md), která se používá k vytvoření sestav zobrazení stránky.
+* **Zobrazení stránky** - [telemetrie odeslané webovým klientem](../../azure-monitor/app/javascript.md), která se používá k vytvoření sestav zobrazení stránky.
 * **Vlastní událost** – Pokud jste vložili volání do TrackEvent (), aby bylo možné [monitorovat využití](../../azure-monitor/app/api-custom-events-metrics.md), můžete je vyhledat tady.
 * **Výjimka** – nezachycené [výjimky na serveru](../../azure-monitor/app/asp-net-exceptions.md)a ty, které se protokolují pomocí TrackException ().
-* **Závislost**  - [volání z serverové aplikace](../../azure-monitor/app/asp-net-dependencies.md) do jiných služeb, jako jsou rozhraní REST API nebo databáze, a volání AJAX z [kódu klienta](../../azure-monitor/app/javascript.md).
+* **Závislost** - [volání z serverové aplikace](../../azure-monitor/app/asp-net-dependencies.md) do jiných služeb, jako jsou rozhraní REST API nebo databáze, a volání AJAX z [kódu klienta](../../azure-monitor/app/javascript.md).
 * **Dostupnost** – výsledky [testů dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).
 
 ## <a name="filter-on-property-values"></a>Filtrovat hodnoty vlastností
@@ -96,14 +92,14 @@ Možná budete chtít nastavit časový rozsah, protože hledání v kratším r
 
 Vyhledejte úplná slova, nikoli podřetězce. Použijte uvozovky k uzavření speciálních znaků.
 
-| Řetězec | *Nenalezeno* | Nenachází |
+| String | *Nenalezeno* | Nenachází |
 | --- | --- | --- |
 | HomeController. about |`home`<br/>`controller`<br/>`out` | `homecontroller`<br/>`about`<br/>`"homecontroller.about"`|
 |Spojené státy|`Uni`<br/>`ted`|`united`<br/>`states`<br/>`united AND states`<br/>`"united states"`
 
 Tady jsou hledané výrazy, které můžete použít:
 
-| Vzorový dotaz | Efekt |
+| Vzorový dotaz | Účinek |
 | --- | --- |
 | `apple` |Najde všechny události v časovém rozsahu, jehož pole obsahují slovo "Apple". |
 | `apple AND banana` <br/>`apple banana` |Najde události, které obsahují obě slova. Použijte velká písmena "a", nikoli "a". <br/>Krátká forma. |

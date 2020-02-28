@@ -1,18 +1,17 @@
 ---
 title: Přehled přehledů v Azure Monitor | Microsoft Docs
 description: Přehledy poskytují přizpůsobené možnosti monitorování v Azure Monitor pro konkrétní aplikace a služby. Tento článek poskytuje stručný popis každého z dostupných přehledů, které jsou aktuálně k dispozici.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: d1b53267daa2d47baf9976727bbaf3fa56172432
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 15ea7698c9e90fa8b0dfa20f71b552a2b0e9c7d2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832098"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657244"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Přehled přehledů v Azure Monitor
 Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní aplikace a služby. Ukládají data na [Azure monitor datovou platformu](../platform/data-platform.md) a využívají jiné funkce Azure monitor k analýze a upozorňování, ale mohou shromažďovat další data a poskytovat jedinečné uživatelské prostředí v Azure Portal. Přístup k přehledům z části **Přehled** v nabídce Azure Monitor v Azure Portal.
@@ -27,7 +26,7 @@ Podívejte [se, co je Application Insights?](../app/app-insights-overview.md).
 ![Application Insights](media/insights-overview/app-insights.png)
 
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor pro kontejnery
-Azure Monitor pro kontejnery monitoruje výkon úloh kontejneru nasazených v Azure Container Instances nebo spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Monitorování vašich kontejnerů je důležité, zejména pokud používáte produkční cluster ve velkém měřítku s více aplikacemi.
+Azure Monitor pro kontejnery monitoruje výkon úloh kontejneru nasazených v Azure Container Instances nebo spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Monitorování kontejnerů je důležité, zejména v případě, že spouštíte produkční cluster ve velkém měřítku, s několika aplikacemi.
 
 [Přehled kontejnerů najdete v tématu Azure monitor for Containers](../insights/container-insights-overview.md).
 
@@ -41,7 +40,7 @@ Viz téma [monitorování skupin prostředků pomocí Azure monitor (Preview)](.
 ![Azure Monitor pro skupiny prostředků](media/insights-overview/resource-group-insights.png)
 
 ## <a name="azure-monitor-for-vms-preview"></a>Azure Monitor pro virtuální počítače (Preview)
-Azure Monitor pro virtuální počítače monitoruje vaše virtuální počítače Azure a škálované sady virtuálních počítačů ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linuxem a monitoruje jejich procesy a závislosti na jiných prostředcích a externích procesech.
+Azure Monitor pro virtuální počítače monitoruje virtuální počítače Azure (VM) a škálovacích sad virtuálních počítačů ve velkém měřítku. Analyzuje výkon a stav virtuálních počítačů s Windows a Linuxem a monitoruje jejich procesy a závislosti na jiných prostředcích a externích procesech.
 
 Podívejte [se, co je Azure monitor pro virtuální počítače?](vminsights-overview.md)
 

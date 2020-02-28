@@ -2,18 +2,16 @@
 title: Přepnutí ze starší verze rozhraní API upozornění Log Analytics do nového rozhraní API Azure Alerts
 description: Přehled starších Log Analytics elementu savedsearch a rozhraní API výstrah a procesu pro přepínání pravidel upozornění na nové rozhraní ScheduledQueryRules API s podrobnostmi adresování běžných otázek zákazníků.
 author: yanivlavi
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: a6f71cca2c63591d2d26a7d34ced232eabfbc6bb
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: c1ca85ba9c79f828b5ddcf0d640cfe7f8b6e097c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425147"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668005"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Přepnout předvolby rozhraní API pro výstrahy protokolu
 

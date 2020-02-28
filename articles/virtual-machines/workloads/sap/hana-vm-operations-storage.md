@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/13/2020
+ms.date: 02/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4cc4db9ffcb700d4b65a7f5c21d258e9af52d164
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 155498aeaea30bf2da1d5aa0dbcb322aeb43bbdd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598523"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661290"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>Konfigurace úložiště virtuálních počítačů Azure SAP HANA
 
@@ -35,6 +35,10 @@ Další informace o těchto typech disků najdete v článku [Výběr typu disku
 Azure nabízí dvě metody nasazení pro virtuální pevné disky v Azure Standard a Premium Storage. Pokud to celkový scénář umožňuje, využijte nasazení služby [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) . 
 
 Seznam typů úložišť a jejich SLA v rámci vstupně-výstupních operací a propustnosti úložiště najdete v [dokumentaci k Azure pro službu Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
+
+> [!IMPORTANT]
+> Nezávisle na zvoleném typu úložiště Azure je nutné, aby systém souborů používaný v tomto úložišti podporoval SAP pro konkrétní operační systém a systém DBMS. [Poznámka k podpoře SAP #405827](https://launchpad.support.sap.com/#/notes/405827) uvádí podporované systémy souborů pro různé operační systémy a databáze, včetně SAP HANA. To platí pro všechny svazky SAP HANA můžou mít přístup ke čtení a zápisu pro libovolný úkol. Při použití systému souborů NFS v Azure pro SAP HANA platí další omezení verze systému souborů NFS, jak je uvedeno dále v tomto článku. 
+
 
 Minimální SAP HANA certifikované podmínky pro různé typy úložišť: 
 
@@ -197,12 +201,12 @@ Doporučení často překračují minimální požadavky SAP, jak je uvedeno vý
 
 | Skladová položka virtuálního počítače | Paměť RAM | Nejvýše k VM I/O<br /> Propustnost | /Hana/data svazek | /Hana/data v/v – propustnost | /Hana/data IOPS | /Hana/log svazek | /Hana/log v/v – propustnost | /Hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| E64s_v3 | 432 GiB | 1 200 MB/s | 600 GB | 700 MB/s | 7,500 | 512 GB | 500 MB/s  | 2,000 |
-| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MB/s | 7,500 | 256 GB | 250 MB/s  | 2,000 |
-| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MB/s | 7,500 | 256 GB | 250 MB/s  | 2,000 |
-| M64ls | 512 GiB | 1 000 MB/s | 600 GB | 600 MB/s | 7,500 | 512 GB | 400 MB/s  | 2,500 |
-| M64s | 1 000 GiB | 1 000 MB/s |  1 200 GB | 600 MB/s | 7,500 | 512 GB | 400 MB/s  | 2,500 |
-| M64ms | 1 750 GiB | 1 000 MB/s | 2 100 GB | 600 MB/s | 7,500 | 512 GB | 400 MB/s  | 2,500 |
+| E64s_v3 | 432 GiB | 1 200 MB/s | 600 GB | 700 MB/s | 7 500 | 512 GB | 500 MB/s  | 2,000 |
+| M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MB/s | 7 500 | 256 GB | 250 MB/s  | 2,000 |
+| M32ls | 256 GiB | 500 MB/s | 300 GB | 400 MB/s | 7 500 | 256 GB | 250 MB/s  | 2,000 |
+| M64ls | 512 GiB | 1 000 MB/s | 600 GB | 600 MB/s | 7 500 | 512 GB | 400 MB/s  | 2,500 |
+| M64s | 1 000 GiB | 1 000 MB/s |  1 200 GB | 600 MB/s | 7 500 | 512 GB | 400 MB/s  | 2,500 |
+| M64ms | 1 750 GiB | 1 000 MB/s | 2 100 GB | 600 MB/s | 7 500 | 512 GB | 400 MB/s  | 2,500 |
 | M128s | 2 000 GiB | 2 000 MB/s |2 400 GB | 1 200 MB/s |9 000 | 512 GB | 800 MB/s  | 3 000 | 
 | M128ms | 3 800 GiB | 2 000 MB/s | 4 800 GB | 1200 MB/s |9 000 | 512 GB | 800 MB/s  | 3 000 | 
 | M208s_v2 | 2 850 GiB | 1 000 MB/s | 3 500 GB | 1 000 MB/s | 9 000 | 512 GB | 400 MB/s  | 2,500 | 
@@ -225,15 +229,15 @@ Doporučení často překračují minimální požadavky SAP, jak je uvedeno vý
 | E64s_v3 | 432 GiB | 1 200 MB/s | 1 200 GB | 1 200 MB/s | 9 500 | 
 | M32ts | 192 GiB | 500 MB/s | 512 GB | 400 MB/s | 9 500 | 
 | M32ls | 256 GiB | 500 MB/s | 600 GB | 400 MB/s | 9 500 | 
-| M64ls | 512 GiB | 1 000 MB/s | 1 100 GB | 900 MB/s | 10,000 | 
-| M64s | 1 000 GiB | 1 000 MB/s |  1 700 GB | 900 MB/s | 10,000 | 
-| M64ms | 1 750 GiB | 1 000 MB/s | 2 600 GB | 900 MB/s | 10,000 | 
-| M128s | 2 000 GiB | 2 000 MB/s |2 900 GB | 1 800 MB/s |12,000 | 
-| M128ms | 3 800 GiB | 2 000 MB/s | 5 300 GB | 1 800 MB/s |12,000 |  
-| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 000 GB | 900 MB/s | 10,000 |  
-| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 700 GB | 900 MB/s | 10,000 | 
-| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 700 GB | 1, 800MBps | 12,000 |  
-| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 15 000 GB | 1 800 MB/s | 12,000 |    
+| M64ls | 512 GiB | 1 000 MB/s | 1 100 GB | 900 MB/s | 10 000 | 
+| M64s | 1 000 GiB | 1 000 MB/s |  1 700 GB | 900 MB/s | 10 000 | 
+| M64ms | 1 750 GiB | 1 000 MB/s | 2 600 GB | 900 MB/s | 10 000 | 
+| M128s | 2 000 GiB | 2 000 MB/s |2 900 GB | 1 800 MB/s |12 000 | 
+| M128ms | 3 800 GiB | 2 000 MB/s | 5 300 GB | 1 800 MB/s |12 000 |  
+| M208s_v2 | 2 850 GiB | 1 000 MB/s | 4 000 GB | 900 MB/s | 10 000 |  
+| M208ms_v2 | 5 700 GiB | 1 000 MB/s | 7 700 GB | 900 MB/s | 10 000 | 
+| M416s_v2 | 5 700 GiB | 2 000 MB/s | 7 700 GB | 1, 800MBps | 12 000 |  
+| M416ms_v2 | 11 400 GiB | 2 000 MB/s | 15 000 GB | 1 800 MB/s | 12 000 |    
 
 Uvedené hodnoty mají být výchozím bodem a je nutné je vyhodnotit proti skutečným požadavkům. Výhodou pro Azure Ultra disk je, že hodnoty pro vstupně-výstupní operace a propustnost můžou být přizpůsobené bez nutnosti vypnout virtuální počítač nebo zastavit zatížení, které se v systému používá.  
 

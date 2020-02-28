@@ -4,18 +4,17 @@ description: Zjednodušení složitých sestav pomocí předem sestavených a vl
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 02456d6e690c2ef96b578a00f8e71ae2515ec089
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cc2cde7932f783f63ee2783f0589ce4f88f248a2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363111"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658098"
 ---
 # <a name="workbook-resource-parameters"></a>Parametry prostředku sešitu
 
@@ -101,7 +100,7 @@ Hodnoty z výběrů prostředků můžou pocházet z kontextu sešitu, statické
 > Tento přístup se dá použít k vázání prostředků na jiné ovládací prvky, jako jsou metriky.
 
 ## <a name="resource-parameter-options"></a>Možnosti parametrů prostředku
-| Parametr | Vysvětlení | Příklad: |
+| Parametr | Vysvětlení | Příklad |
 | ------------- |:-------------|:-------------|
 | `{Applications}` | Vybrané ID prostředku | _/Subscriptions/< dílčí identifikátor >/resourceGroups/< Resource-Group >/Providers/< Resource-Type >/acmeauthentication_ |
 | `{Applications:label}` | Popisek vybraného prostředku | `acmefrontend` |

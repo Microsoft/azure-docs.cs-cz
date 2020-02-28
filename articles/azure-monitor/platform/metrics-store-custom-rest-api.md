@@ -3,17 +3,16 @@ title: Odeslat metriky do databáze metriky Azure Monitor pomocí REST API
 description: Odesílat vlastní metriky pro prostředek Azure do úložiště metrik Azure Monitor pomocí REST API
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: a19b59c758f31ff1ef3416b59031202193d50522
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 84709c022631543101889f784231158ebb96b6f3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285949"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662260"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Odesílat vlastní metriky pro prostředek Azure do úložiště metrik Azure Monitor pomocí REST API
 
@@ -43,7 +42,7 @@ curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "g
 ```
 Uložte přístupový token z odpovědi.
 
-![Přístupový token](./media/metrics-store-custom-rest-api/accesstoken.png)
+![přístupový token](./media/metrics-store-custom-rest-api/accesstoken.png)
 
 ## <a name="emit-the-metric-via-the-rest-api"></a>Generování metriky prostřednictvím REST API 
 
@@ -88,7 +87,7 @@ Uložte přístupový token z odpovědi.
 1. Změna časového razítka a hodnot v souboru JSON. 
 1. Předchozí dva kroky zopakujte několikrát, takže budete mít data několik minut.
 
-## <a name="troubleshooting"></a>Řešení potíží 
+## <a name="troubleshooting"></a>Odstraňování potíží 
 Pokud se vám v některé části procesu zobrazí chybová zpráva, vezměte v úvahu následující informace pro řešení potíží:
 
 1. Nemůžete vystavovat metriky pro předplatné nebo skupinu prostředků jako prostředek Azure. 

@@ -1,18 +1,17 @@
 ---
 title: Rozsah dotazu protokolu v Azure Monitor Log Analytics | Microsoft Docs
 description: Popisuje rozsah a časový rozsah pro dotaz protokolu v Azure Monitor Log Analytics.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
-ms.openlocfilehash: dec81bfde160cd9913db07bb99629b8fbcc37364
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365202"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660305"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Rozsah dotazu protokolu a časový rozsah ve Azure Monitor Log Analytics
 Když spustíte [dotaz protokolu](log-query-overview.md) v [Log Analytics Azure Portal](get-started-portal.md), sada dat vyhodnocených dotazem závisí na rozsahu a časovém rozsahu, který jste vybrali. Tento článek popisuje rozsah a časový rozsah a způsob, jakým můžete nastavit jednotlivé požadavky v závislosti na vašich požadavcích. Popisuje také chování různých typů oborů.
@@ -23,7 +22,7 @@ Obor dotazu definuje záznamy, které jsou vyhodnocovány dotazem. Tato akce obv
 
 Obor je vždy zobrazen v levém horním rohu okna Log Analytics. Ikona označuje, zda je oborem Log Analytics pracovní prostor nebo aplikace Application Insights. Žádná ikona indikuje jiný prostředek Azure.
 
-![Rozsah](media/scope/scope.png)
+![Obor](media/scope/scope.png)
 
 Rozsah je určen metodou, kterou použijete ke spuštění Log Analytics, a v některých případech můžete obor změnit kliknutím na něj. V následující tabulce jsou uvedeny různé typy použitého oboru a různé podrobnosti pro každou z nich.
 
@@ -41,11 +40,11 @@ Pokud je oborem dotazu Log Analytics pracovní prostor nebo aplikace Application
 
 - Uložit
 - Průzkumník dotazů
-- Nové pravidlo upozornění
+- Nové pravidlo výstrahy
 
 V dotazu, který je vymezený na prostředek, nemůžete použít následující příkazy, protože obor dotazu již bude obsahovat všechny pracovní prostory s daty pro daný prostředek nebo sadu prostředků:
 
-- [app](app-expression.md)
+- [aplikace](app-expression.md)
 - [stejných](workspace-expression.md)
  
 

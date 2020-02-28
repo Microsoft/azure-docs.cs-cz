@@ -1,27 +1,24 @@
 ---
 title: Ukázky pro rychlý Start pro rozhraní příkazového řádku Azure Monitor
 description: Ukázky příkazů rozhraní příkazového řádku pro funkce Azure Monitor. Azure Monitor je služba Microsoft Azure, která umožňuje odesílání oznámení o výstrahách, volání webových adres URL na základě hodnot nakonfigurovaných dat telemetrie a automatického škálování Cloud Services, Virtual Machines a Web Apps.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 05/16/2018
-ms.openlocfilehash: 0def528e0c432ecbc706622f0b8c29c2d610c663
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 69687cee8b8a907b82f2c848242ac64d54dedb87
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893531"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663500"
 ---
 # <a name="azure-monitor-cli-quick-start-samples"></a>Ukázky pro rychlý Start pro rozhraní příkazového řádku Azure Monitor
 V tomto článku se dozvíte, jak vzorkovat příkazy rozhraní příkazového řádku (CLI), které vám pomůžou při přístupu k funkcím Azure Monitor. Azure Monitor umožňuje automatické škálování Cloud Services, Virtual Machines a Web Apps a odesílání oznámení o výstrahách nebo volání webových adres URL na základě hodnot nakonfigurovaných dat telemetrie.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud jste rozhraní příkazového řádku Azure ještě nenainstalovali, postupujte podle pokynů pro [instalaci rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Můžete také použít [Azure Cloud Shell](/azure/cloud-shell) ke spuštění CLI jako interaktivní prostředí v prohlížeči. Podívejte se na úplný odkaz na všechny dostupné příkazy v [odkazu Azure monitor CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest). 
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 Prvním krokem je přihlášení k vašemu účtu Azure.
 
 ```azurecli

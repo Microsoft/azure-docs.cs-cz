@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b5d74c7c599f31694a68e7582a6447af8471508
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a727cd57e470f248321011d505f8037808f64298
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76984944"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656870"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 
@@ -63,7 +63,7 @@ Tyto kroky vytvoří nastavení na úrovni adresáře, které platí pro všechn
    ```
    Toto volání rutiny vrátí všechny dostupné šablony:
   
-   ```powershell
+   ``` PowerShell
    Id                                   DisplayName         Description
    --                                   -----------         -----------
    62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
@@ -77,7 +77,7 @@ Tyto kroky vytvoří nastavení na úrovni adresáře, které platí pro všechn
   
    ```powershell
    $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
-   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value $TemplateId -EQ
    ```
 3. Dále vytvořte nový objekt nastavení na základě této šablony:
   
@@ -171,7 +171,7 @@ Tady jsou nastavení definovaná ve skupině. Unified SettingsTemplate. Pokud ne
    ```
 2. Pokud chcete nastavit zásady hosta pro skupiny na úrovni adresáře, potřebujete Group. Unified Template.
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $Template = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "62375ab9-6b52-47ed-826b-58e47e0e304b" -EQ
    ```
 3. Dále vytvořte nový objekt nastavení na základě této šablony:
   
@@ -262,7 +262,7 @@ Tento krok odebere nastavení na úrovni adresáře, která platí pro všechny 
    ```
 2. Načíst objekt šablony pro šablonu groups. Unified. Host:
    ```powershell
-   $Template1 = Get-AzureADDirectorySettingTemplate -Id 08d542b9-071f-4e16-94b0-74abb372e3d9
+   $Template1 = Get-AzureADDirectorySettingTemplate | where -Property Id -Value "08d542b9-071f-4e16-94b0-74abb372e3d9" -EQ
    ```
 3. Vytvořit nový objekt nastavení ze šablony:
    ```powershell

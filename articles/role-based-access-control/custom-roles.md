@@ -11,22 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2019
+ms.date: 02/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 64161451c0c8b1af7666fcd104d337856e5803c7
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8c5db13b343783a86dc04b84e09746bc4406186b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821445"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660695"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Vlastní role pro prostředky Azure
 
 Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Stejně jako předdefinované role můžete přiřadit vlastní role uživatelům, skupinám a instančním objektům v předplatném, skupině prostředků a oborech prostředků.
 
-Vlastní role se dají sdílet mezi předplatnými, která důvěřují stejnému adresáři služby Azure AD. Pro každý adresář je povolený limit **5 000** vlastních rolí. (Pro specializované cloudy, jako je Azure Government, Azure Německo a Azure Čína 21Vianet, je limit 2 000 vlastních rolí.) Vlastní role se dají vytvořit pomocí Azure PowerShell, Azure CLI nebo REST API.
+Vlastní role se dají sdílet mezi předplatnými, která důvěřují stejnému adresáři služby Azure AD. Pro každý adresář je povolený limit **5 000** vlastních rolí. (Pro specializované cloudy, jako je Azure Government, Azure Německo a Azure Čína 21Vianet, je limit 2 000 vlastních rolí.) Vlastní role se dají vytvořit pomocí Azure Portal (Preview), Azure PowerShell, Azure CLI nebo REST API.
 
 ## <a name="custom-role-example"></a>Příklad vlastní role
 
@@ -70,7 +70,7 @@ Když vytvoříte vlastní roli, zobrazí se v Azure Portal s ikonou oranžovéh
 
 1. Rozhodněte, jak chcete vytvořit vlastní roli.
 
-    Vlastní role můžete vytvořit pomocí [Azure PowerShell](custom-roles-powershell.md), rozhraní příkazového [řádku Azure](custom-roles-cli.md)nebo [REST API](custom-roles-rest.md).
+    Vlastní role můžete vytvořit pomocí [Azure Portal](custom-roles-portal.md) (Preview), [Azure POWERSHELL](custom-roles-powershell.md), [Azure CLI](custom-roles-cli.md)nebo [REST API](custom-roles-rest.md).
 
 1. Určete potřebná oprávnění.
 
@@ -113,7 +113,6 @@ Stejně jako předdefinované role určuje vlastnost `AssignableScopes` rozsahy,
 | Zobrazení vlastní role | `Microsoft.Authorization/ roleDefinitions/read` | Uživatelé, kterým je tato operace udělená v oboru, můžou zobrazit vlastní role, které jsou k dispozici pro přiřazení v daném oboru. Všechny předdefinované role umožňují, aby byly vlastní role k dispozici pro přiřazení. |
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytváření vlastních rolí pro prostředky Azure pomocí Azure PowerShellu](custom-roles-powershell.md)
-- [Vytváření vlastních rolí pro prostředky Azure pomocí Azure CLI](custom-roles-cli.md)
+- [Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure Portal (Preview)](custom-roles-portal.md)
 - [Pochopení definic rolí pro prostředky Azure](role-definitions.md)
 - [Řešení potíží s RBAC pro prostředky Azure](troubleshooting.md)

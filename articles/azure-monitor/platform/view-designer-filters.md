@@ -1,18 +1,17 @@
 ---
 title: Filtry v zobrazeních Azure Monitor | Microsoft Docs
 description: Filtr v zobrazení Azure Monitor umožňuje uživatelům filtrovat data v zobrazení podle hodnoty určité vlastnosti beze změny zobrazení.  Tento článek popisuje, jak použít filtr a přidat ho do vlastního zobrazení.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/22/2018
-ms.openlocfilehash: 03950c7c87f659c5d1c032b5d3c1f74d136697c7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b4840ed30eb1f6dc8d6e6cef47da17807f9644d5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931984"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658570"
 ---
 # <a name="filters-in-azure-monitor-views"></a>Filtry v zobrazeních Azure Monitor
 **Filtr** v [zobrazení Azure monitor](view-designer.md) umožňuje uživatelům filtrovat data v zobrazení podle hodnoty určité vlastnosti beze změny zobrazení.  Můžete například uživatelům zobrazení dovolit filtrovat zobrazení dat pouze z konkrétního počítače nebo sady počítačů.  V jednom zobrazení můžete vytvořit více filtrů, které umožní uživatelům filtrovat podle více vlastností.  Tento článek popisuje, jak použít filtr a přidat ho do vlastního zobrazení.
@@ -42,17 +41,17 @@ Následující tabulka popisuje nastavení pro filtr.
 |:---|:---|
 | Název pole | Název pole, které se používá pro filtrování  Toto pole se musí shodovat s polem Shrnutí v **dotazu pro hodnoty**. |
 | Dotaz na hodnoty | Dotaz pro spuštění, který naplní rozevírací seznam filtru pro uživatele.  Tento dotaz musí k zadání jedinečných hodnot pro určité pole použít [Souhrn](/azure/kusto/query/summarizeoperator) nebo [jedinečnou](/azure/kusto/query/distinctoperator) hodnotu a musí se shodovat s **názvem pole**.  K řazení hodnot zobrazených uživateli můžete použít [řazení](/azure/kusto/query/sortoperator) . |
-| Tag | Název pole, které se používá v dotazech podporujících filtr a zobrazuje se také uživateli. |
+| Značka | Název pole, které se používá v dotazech podporujících filtr a zobrazuje se také uživateli. |
 
 ### <a name="examples"></a>Příklady
 
 Následující tabulka obsahuje několik příkladů běžných filtrů.  
 
-| Název pole | Dotaz na hodnoty | Tag |
+| Název pole | Dotaz na hodnoty | Značka |
 |:--|:--|:--|
-| Počítač   | Řazení &#124; samostatného &#124; počítače z prezenčního signálu podle počítače ASC | Počítače |
+| Computer   | Řazení &#124; samostatného &#124; počítače z prezenčního signálu podle počítače ASC | Počítače |
 | EventLevelName | Událost &#124; DISTINCT EventLevelName | Závažnost |
-| SeverityLevel | Protokol &#124; syslog DISTINCT SeverityLevel | Závažnost |
+| Úroveň závažnosti | Protokol &#124; syslog DISTINCT SeverityLevel | Závažnost |
 | SvcChangeType | ConfigurationChange &#124; DISTINCT svcChangeType | ChangeType |
 
 

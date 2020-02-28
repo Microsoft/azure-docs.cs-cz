@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: e3e8476d09541518d964bfaff4dabad47755eeb9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: c3f5fb2a387db6e672290fcf03d46c476b6211b6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189652"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657099"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy stylu řízené daty (webová sada SDK)
 
@@ -81,7 +81,7 @@ Všechny příklady v tomto dokumentu používají následující funkci k před
 
 Datové výrazy poskytují přístup k datům vlastností ve funkci. 
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['at', number, array]` | objekt | Načte položku z pole. |
 | `['geometry-type']` | řetězec | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
@@ -91,6 +91,8 @@ Datové výrazy poskytují přístup k datům vlastností ve funkci.
 | `['has', string, object]` | Boolean | Určuje, zda vlastnosti objektu mají zadanou vlastnost. |
 | `['id']` | hodnota | Získá ID funkce, pokud má jednu. |
 | `['length', string | array]` | číslo | Získá délku řetězce nebo pole. |
+| `['in', boolean | string | number, array]` | Boolean | Určuje, jestli položka existuje v poli. |
+| `['in', substring, string]` | Boolean | Určuje, zda podřetězec existuje v řetězci. |
 
 **Příklady**
 
@@ -139,7 +141,7 @@ Podobně, obrys mnohoúhelníků se vykreslí do vrstev čar. Chcete-li toto cho
 
 Matematické výrazy poskytují matematické operátory pro provádění výpočtů řízených daty v rámci rozhraní Expression Framework.
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | číslo | Vypočítá součet zadaných čísel. |
 | `['-', number]` | číslo | Odečte 0 zadaným číslem. |
@@ -194,7 +196,7 @@ Logické výrazy poskytují sadu logických výrazů operátorů pro vyhodnocen�
 
 Při porovnávání hodnot je porovnání striktně typované. Hodnoty různých typů jsou vždy považovány za nerovné. Případy, kde se označují, že typy jsou odlišné v době analýzy, jsou považovány za neplatné a vytvoří chybu analýzy. 
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['! ', boolean]` | Boolean | Logická negace. Vrátí `true`, pokud je vstup `false`a `false`, pokud je vstup `true`. |
 | `['!= ', value, value]` | Boolean | Vrátí `true`, pokud vstupní hodnoty nejsou stejné, `false` jinak. |
@@ -397,7 +399,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Výrazy typu poskytují nástroje pro testování a převod různých typů dat, jako jsou řetězce, čísla a logické hodnoty.
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | Array \| objekt | Vrátí literálovou hodnotu pole nebo objektu. Tento výraz použijte k zabránění vyhodnocení pole nebo objektu jako výrazu. To je nezbytné, pokud musí být pole nebo objekt vráceny výrazem. |
 | `['image', string]` | řetězec | Kontroluje, zda je zadané ID obrázku načteno do Sprite obrázku mapy. Pokud je, vrátí se ID, jinak se vrátí hodnota null. |
@@ -433,7 +435,7 @@ Výrazy typu poskytují nástroje pro testování a převod různých typů dat,
 
 Výrazy s barvami usnadňují vytváření a manipulaci s hodnotami barev.
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['rgb', number, number, number]` | color | Vytvoří hodnotu barvy z *červených*, *zelených*a *modrých* komponent, které musí být v rozsahu mezi `0` a `255`a komponentou Alpha `1`. Pokud je některá součást mimo rozsah, je výraz chybou. |
 | `['rgba', number, number, number, number]` | color | Vytvoří hodnotu barvy z *červené*, *zelené*a *modré* komponenty, které musí být v rozsahu mezi `0` a `255`a komponentou alfa v rámci rozsahu `0` a `1`. Pokud je některá součást mimo rozsah, je výraz chybou. |
@@ -461,7 +463,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Výrazy operátoru řetězce provádějí operace převodu na řetězcích, jako je zřetězení a převod případu. 
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Popis |
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | řetězec | Zřetězí více řetězců dohromady. Každá hodnota musí být řetězec. Pokud je třeba, použijte výraz typu `to-string` k převodu ostatních typů hodnot na řetězec. |
 | `['downcase', string]` | řetězec | Převede zadaný řetězec na malá písmena. |
@@ -821,7 +823,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Výrazy vazeb proměnných ukládají výsledky výpočtu v proměnné. Takže je možné výsledky výpočtů odkazovat jinde ve výrazu vícekrát. Je užitečná optimalizace pro výrazy, které zahrnují mnoho výpočtů.
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Popis |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;let,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název1: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;hodnota1: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název2: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;hodnota2: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;...<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Ukládá jednu nebo více hodnot jako proměnné pro použití výrazem `var` v podřízeném výrazu, který vrací výsledek. |
 | `['var', name: string]` | jakýmikoli | Odkazuje na proměnnou, která byla vytvořena pomocí výrazu `let`. |

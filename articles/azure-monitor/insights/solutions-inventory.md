@@ -1,18 +1,17 @@
 ---
 title: Inventarizace řešení monitorování v Azure | Microsoft Docs
 description: Řešení monitorování v Azure Monitor jsou kolekce pravidel pro logiku, vizualizaci a získávání dat, která poskytují metriky v určité oblasti problému.  Tento článek poskytuje seznam řešení monitorování, která jsou k dispozici od Microsoftu, a podrobnosti o jejich metodě a četnosti sběru dat.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 9b0140b843d7da1b892463bff7d6014a3f9584ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b88d957bce45bf518fc77584f1691de8010459a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402012"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663125"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Podrobnosti o inventáři a shromažďování dat pro řešení monitorování v Azure
 [Monitorování řešení](solutions.md) využívajících služby v Azure poskytují další přehled o provozu konkrétní aplikace nebo služby. Řešení monitorování obvykle shromažďují data protokolu a poskytují dotazy a zobrazení k analýze shromážděných dat. Můžete přidat řešení monitorování Azure Monitor pro všechny aplikace a služby, které používáte. Jsou obvykle dostupné v žádné náklady, ale shromažďovat data, která může vyvolat poplatky za využívání.
@@ -36,32 +35,32 @@ Následující vysvětlení sloupců:
 
 
 
-| **Řešení monitorování** | **Platforma** | **Microsoft Monitoring Agent** | **Agent Operations Manager** | **Úložiště Azure** | **Operations Manager požadováno?** | **Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu** | **Frekvence shromažďování** |
+| **Řešení monitorování** | **Platformy** | **Microsoft Monitoring Agent** | **Agent Operations Manager** | **Azure Storage** | **Operations Manager požadováno?** | **Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu** | **Frekvence shromažďování** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Analýza protokolů aktivit](../platform/activity-log-collect.md) | Azure | | | | | | při oznámení |
 | [Posouzení AD](ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dní |
-| [Stav replikace AD](ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 dnů |
+| [Stav replikace AD](ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 dní |
 | [Stav agenta](solution-agenthealth.md) | Windows a Linux | &#8226; | &#8226; | | | &#8226; | 1 minuta |
 | [Alert Management](../platform/alert-management-solution.md) (Nagios) |Linux |&#8226; | | | | |při doručení |
 | [Alert Management](../platform/alert-management-solution.md) (Zabbix) |Linux |&#8226; | | | | |1 minuta |
 | [Alert Management](../platform/alert-management-solution.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 minuty |
-| [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) | Azure | | | | | | – |
+| [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) | Azure | | | | | | neuvedeno |
 | [Application Insights Connector (zastaralé)](../platform/app-insights-connector.md) | Azure | | | |  |  | při oznámení |
-| [Automation Hybrid Worker](../../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | – |
-| [Analýzy Azure Application Gateway](azure-networking-analytics.md) | Azure |  |  |  |  |  | při oznámení |
-| **Řešení monitorování** | **Platforma** | **Microsoft Monitoring Agent** | **Agent Operations Manager** | **Úložiště Azure** | **Operations Manager požadováno?** | **Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu** | **Frekvence shromažďování** |
+| [Automation Hybrid Worker](../../automation/automation-hybrid-runbook-worker.md) | Windows | &#8226; | &#8226; |  |  |  | neuvedeno |
+| [Azure Application Gateway Analytics](azure-networking-analytics.md) | Azure |  |  |  |  |  | při oznámení |
+| **Řešení monitorování** | **Platformy** | **Microsoft Monitoring Agent** | **Agent Operations Manager** | **Azure Storage** | **Operations Manager požadováno?** | **Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu** | **Frekvence shromažďování** |
 | [Azure Network Security Group Analytics (zastaralé)](azure-networking-analytics.md) | Azure |  |  |  |  |  | při oznámení |
-| [Azure SQL Analytics (Náhled)](azure-sql.md) | Windows | | | | | | 1 minuta |
+| [Azure SQL Analytics (Preview)](azure-sql.md) | Windows | | | | | | 1 minuta |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | při oznámení |
 | [Capacity and Performance (Preview)](capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |při doručení |
 | [Sledování změn](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[se liší](../../automation/change-tracking.md#change-tracking-data-collection-details) |
 | [Sledování změn](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[se liší](../../automation/change-tracking.md#change-tracking-data-collection-details) |
-| [Containers](containers.md) | Windows a Linux | &#8226; | &#8226; |  |  |  | 3 minuty |
+| [Kontejnery](containers.md) | Windows a Linux | &#8226; | &#8226; |  |  |  | 3 minuty |
 | [Analýza služby Key Vault](azure-key-vault.md) |Windows | | | | | |při oznámení |
 | [Posouzení malwaru](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |po hodinách |
 | [Sledování výkonu sítě](network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | Protokol TCP handshakes každých 5 sekund, data odesílaná každé 3 minuty |
 | [Office 365 Analytics (Preview)](solution-office-365.md) |Windows | | | | | |při oznámení |
-| **Řešení monitorování** | **Platforma** | **Microsoft Monitoring Agent** | **Agent Operations Manager** | **Úložiště Azure** | **Operations Manager požadováno?** | **Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu** | **Frekvence shromažďování** |
+| **Řešení monitorování** | **Platformy** | **Microsoft Monitoring Agent** | **Agent Operations Manager** | **Azure Storage** | **Operations Manager požadováno?** | **Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu** | **Frekvence shromažďování** |
 | [Analýza služby Service Fabric](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 minut |
 | [Mapa služeb](service-map.md) | Windows a Linux | &#8226; | &#8226; |  |  |  | 15 sekund |
 | [Posouzení SQL](sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dní |

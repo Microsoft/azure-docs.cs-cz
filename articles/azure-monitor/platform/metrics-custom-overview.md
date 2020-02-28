@@ -3,17 +3,16 @@ title: Vlastní metriky v Azure Monitor
 description: Seznamte se s vlastními metrikami v Azure Monitor a způsobu jejich modelování.
 author: ancav
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 744958fc44a8d10bbc8ca5d44af8c473548ae5ca
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669169"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662344"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Vlastní metriky v Azure Monitor
 
@@ -38,7 +37,7 @@ K ověření žádosti Azure Monitor ověří token aplikace pomocí veřejných
 > [!NOTE]  
 > Když požádáte o token Azure AD, aby vygeneroval vlastní metriky, ujistěte se, že cílová skupina nebo prostředek, pro který je požadován token, je https://monitoring.azure.com/. Nezapomeňte zahrnout koncové lomítko (/).
 
-### <a name="subject"></a>Subjekt
+### <a name="subject"></a>Předmět
 Tato vlastnost zachycuje ID prostředku Azure, pro který je nahlášená vlastní metrika. Tyto informace se zakódují v adrese URL vytvořeného volání rozhraní API. Každé rozhraní API může odesílat jenom hodnoty metrik pro jeden prostředek Azure.
 
 > [!NOTE]  
@@ -46,7 +45,7 @@ Tato vlastnost zachycuje ID prostředku Azure, pro který je nahlášená vlastn
 >
 >
 
-### <a name="region"></a>Region (Oblast)
+### <a name="region"></a>Oblast
 Tato vlastnost zachycuje, co je to oblast Azure, pro kterou je prostředek, pro který vydáváte metriky, nasazený v. Metriky musí být vygenerovány do stejného Azure Monitor oblastní koncový bod jako oblast, ve které je prostředek nasazen. Například vlastní metriky pro virtuální počítač nasazený v Západní USA musí být odesílány do koncového bodu oblastní Azure Monitor WestUS. Informace o oblasti jsou také kódované v adrese URL volání rozhraní API.
 
 > [!NOTE]  
@@ -54,10 +53,10 @@ Tato vlastnost zachycuje, co je to oblast Azure, pro kterou je prostředek, pro 
 >
 >
 
-### <a name="timestamp"></a>Časové razítko
+### <a name="timestamp"></a>Timestamp
 Každý datový bod odeslaný do Azure Monitor musí být označený pomocí časového razítka. Toto časové razítko zachycuje hodnotu DateTime, při které je hodnota metriky měřena nebo shromažďována. Azure Monitor přijímá data metriky s časovými razítky až do 20 minut v minulosti a 5 minut v budoucnosti. Časové razítko musí být ve formátu ISO 8601.
 
-### <a name="namespace"></a>hosting
+### <a name="namespace"></a>Obor názvů
 Obory názvů představují způsob kategorizace nebo seskupení podobných metrik dohromady. Pomocí oborů názvů můžete dosáhnout izolace mezi skupinami metrik, které mohou shromažďovat různé přehledy nebo ukazatele výkonu. Například můžete mít obor názvů s názvem **contosomemorymetrics** , který sleduje metriky využití paměti, které profilují vaši aplikaci. Jiný obor názvů s názvem **contosoapptransaction** může sledovat všechny metriky o transakcích uživatelů ve vaší aplikaci.
 
 ### <a name="name"></a>Název
@@ -89,7 +88,7 @@ Pokud jste například během dané minuty do vaší aplikace zavedli 4 transakc
 
 |Transakce 1|Transakce 2|Transakce 3|Transakce 4|
 |---|---|---|---|
-|7 MS|4 MS|13 MS|16 MS|
+|7 ms|4 ms|13 ms|16 ms|
 |
 
 Výsledná Azure Monitorová publikace metriky pak bude následující:
@@ -158,7 +157,7 @@ Před tím, než se vygeneruje, není nutné před tím, než bude vygenerována
 ## <a name="using-custom-metrics"></a>Použití vlastních metrik
 Až se vlastní metriky odešlou do Azure Monitor, můžete je procházet pomocí Azure Portal a dotazovat je prostřednictvím rozhraní API REST Azure Monitor. Můžete také vytvořit výstrahy, které vám upozorní na splnění určitých podmínek.
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Procházejte vlastní metriky prostřednictvím Azure Portal
-1.  Přejděte na [portál Azure](https://portal.azure.com).
+1.  Přejděte na [Azure Portal](https://portal.azure.com).
 2.  Vyberte podokno **monitorování** .
 3.  Vyberte **Metriky**.
 4.  Vyberte prostředek, pro který jste vygenerovali vlastní metriky.
@@ -171,17 +170,17 @@ Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouz
 |Oblast Azure |Předpona regionálního koncového bodu|
 |---|---|
 | **USA a Kanada** | |
-|USA – středozápad | https:\//westcentralus.monitoring.azure.com/ |
-|USA – západ 2       | https:\//westus2.monitoring.azure.com/ |
-|USA – středosever | https:\//northcentralus.monitoring.azure.com
-|USA – středojih| https:\//southcentralus.monitoring.azure.com/ |
-|USA – střed      | https:\//centralus.monitoring.azure.com |
-|Střední Kanada | https:\//canadacentral.Monitoring.Azure.comc
-|USA – východ| https:\//eastus.monitoring.azure.com/ |
+|Střed USA – západ | https:\//westcentralus.monitoring.azure.com/ |
+|Západní USA 2       | https:\//westus2.monitoring.azure.com/ |
+|Střed USA – sever | https:\//northcentralus.monitoring.azure.com
+|Střed USA – jih| https:\//southcentralus.monitoring.azure.com/ |
+|Střed USA      | https:\//centralus.monitoring.azure.com |
+|Kanada – střed | https:\//canadacentral.Monitoring.Azure.comc
+|Východní USA| https:\//eastus.monitoring.azure.com/ |
 | **Evropa** | |
 |Severní Evropa    | https:\//northeurope.monitoring.azure.com/ |
 |Západní Evropa     | https:\//westeurope.monitoring.azure.com/ |
-|Spojené království – jih | https:\//uksouth.monitoring.azure.com
+|Velká Británie – jih | https:\//uksouth.monitoring.azure.com
 |Francie – střed | https:\//francecentral.monitoring.azure.com |
 | **Poskytl** | |
 |Jižní Afrika – sever | https:\//southafricanorth.monitoring.azure.com
@@ -197,7 +196,7 @@ Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouz
 ## <a name="quotas-and-limits"></a>Kvóty a omezení
 Azure Monitor ukládá následující limity použití pro vlastní metriky:
 
-|Kategorie|škálování|
+|Kategorie|Omezení|
 |---|---|
 |Aktivní časová řada/předplatná/oblast|50 000|
 |Klíče dimenzí na metriku|10|

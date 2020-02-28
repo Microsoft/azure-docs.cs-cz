@@ -1,18 +1,17 @@
 ---
 title: Správa pracovních prostorů Log Analytics v Azure Monitor | Microsoft Docs
 description: Můžete spravovat přístup k datům uloženým v pracovním prostoru Log Analytics v Azure Monitor pomocí oprávnění k prostředkům, pracovnímu prostoru nebo úrovni tabulky. Tento článek podrobně popisuje, jak dokončit.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 3a75efc8c73c96bfff0ba94ca3e9753ea536fd53
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6d99a7fbe60156c84e184fedaa5582162f5a0d2d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289114"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672102"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům a pracovním prostorům protokolu v Azure Monitor
 
@@ -28,7 +27,7 @@ Tento článek vysvětluje, jak spravovat přístup k protokolům a spravovat pr
 
 Režim řízení přístupu nakonfigurovaný v pracovním prostoru můžete zobrazit z Azure Portal nebo pomocí Azure PowerShell.  Toto nastavení můžete změnit pomocí jedné z následujících podporovaných metod:
 
-* Portál Azure
+* Azure Portal
 
 * Azure PowerShell
 
@@ -47,7 +46,7 @@ Toto nastavení můžete změnit na stránce **vlastností** pracovního prostor
 
 ![Změnit režim přístupu k pracovnímu prostoru](media/manage-access/change-access-control-mode.png)
 
-### <a name="using-powershell"></a>Použití PowerShellu
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 Pomocí následujícího příkazu prověřte režim řízení přístupu pro všechny pracovní prostory v rámci předplatného:
 
@@ -104,7 +103,7 @@ Každý pracovní prostor může mít přiřazených více účtů a každý ú�
 
 Následující aktivity také vyžadují oprávnění Azure:
 
-|Akce |Potřebná oprávnění Azure |Poznámky |
+|Akce |Potřebná oprávnění Azure |Poznámky: |
 |-------|-------------------------|------|
 | Přidávání a odebírání řešení monitorování | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Tato oprávnění je potřeba udělit na úrovni skupiny prostředků nebo předplatného. |
 | Změna cenové úrovně | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -293,6 +292,6 @@ Chcete-li vytvořit roli s přístupem pouze k tabulce _SecurityBaseline_ , vytv
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zobrazit [přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) ke shromažďování dat z počítačů ve vašem datovém centru nebo jiných cloudovém prostředí.
+* Informace o shromažďování dat z počítačů ve vašem datovém centru nebo v jiném cloudovém prostředí najdete v tématu [Přehled agenta Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) .
 
 * Další informace najdete v tématu [shromáždění dat o virtuálních počítačích Azure](../../azure-monitor/learn/quick-collect-azurevm.md) ke konfiguraci shromažďování dat z virtuálních počítačů Azure.

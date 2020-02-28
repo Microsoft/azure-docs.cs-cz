@@ -10,12 +10,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 1367bf32eea58b828c00ee23a59a32a2fec699ab
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 8fdc64632be8b5fcb3dca8de2ee833fef25719fe
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76983091"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656734"
 ---
 # <a name="redirect-urireply-url-restrictions-and-limitations"></a>Omezení pro adresu URL odpovědi / identifikátor URI přesměrování
 
@@ -54,7 +54,7 @@ Aplikační model Azure AD nepodporuje zástupné identifikátory URI pro aplika
 > [!NOTE]
 > Nové prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) neumožňuje vývojářům přidávat v uživatelském rozhraní identifikátory URI se zástupnými znaky. Přidání zástupný znak URI pro aplikace, které přihlašování pracovní nebo školní účty jsou podporované jenom prostřednictvím editoru manifestu aplikace. Až dál, nové aplikace nebudou moct v identifikátoru URI přesměrování používat zástupné znaky. Starší aplikace, které obsahují zástupné znaky v identifikátorech URI pro přesměrování, ale budou fungovat i nadále.
 
-Pokud váš scénář vyžaduje více identifikátorů URI přesměrování, než je maximální povolený limit, místo přidání identifikátoru URI pro přesměrování zástupných znaků zvažte jeden z následujících přístupů.
+Pokud váš scénář vyžaduje víc identifikátorů URI přesměrování, než je maximální povolený limit, místo přidání identifikátoru URI pro přesměrování zástupného znaku zvažte následující postup.
 
 ### <a name="use-a-state-parameter"></a>Použít parametr stavu
 
@@ -70,10 +70,6 @@ V tomto postupu:
 
 > [!NOTE]
 > Tento přístup umožňuje ohroženému klientovi upravit další parametry odeslané v parametru State a tím přesměrovat uživatele na jinou adresu URL, což je [otevřená hrozba přesměrovače](https://tools.ietf.org/html/rfc6819#section-4.2.4) , která je popsaná v dokumentu RFC 6819. Klient proto musí tyto parametry chránit šifrováním stavu nebo jeho ověřením jiným způsobem, jako je například ověření názvu domény v identifikátoru URI přesměrování proti tokenu.
-
-### <a name="add-redirect-uris-to-service-principals"></a>Přidání identifikátorů URI pro přesměrování do instančních objektů
-
-Dalším postupem je přidání identifikátorů URI přesměrování do [instančních objektů](app-objects-and-service-principals.md#application-and-service-principal-relationship) , které reprezentují registraci vaší aplikace v jakémkoli TENANTOVI Azure AD. Tento postup můžete použít, pokud nemůžete použít parametr stavu, nebo pokud váš scénář vyžaduje, abyste do registrace aplikace přidali nové identifikátory URI pro přesměrování pro každého nového tenanta, který podporujete. 
 
 ## <a name="next-steps"></a>Další kroky
 

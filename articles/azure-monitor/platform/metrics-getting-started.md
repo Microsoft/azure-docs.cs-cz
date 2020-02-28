@@ -3,17 +3,16 @@ title: Začínáme s Průzkumníkem metrik Azure
 description: Naučte se, jak vytvořit první graf metriky pomocí Průzkumníka metrik Azure.
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: ceaefffaf04a3ab266cde300e8c4b93a5e804796
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 920ff19b162843d1c2d631ad192ce1b3c4273a68
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861077"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662277"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Začínáme s Azure Průzkumník metrik
 
@@ -28,11 +27,11 @@ Azure Monitor Průzkumník metrik je součástí portál Microsoft Azure, která
 
 ## <a name="create-your-first-metric-chart"></a>Vytvoření prvního grafu metriky
 
-Pokud chcete vytvořit graf metriky, ze svého prostředku, skupiny prostředků, předplatného nebo Azure Monitorho zobrazení , otevřete kartu metriky a proveďte následující kroky:
+Pokud chcete vytvořit graf metriky, ze svého prostředku, skupiny prostředků, předplatného nebo Azure Monitorho zobrazení, otevřete kartu **metriky** a proveďte následující kroky:
 
 1. Pomocí ovládacího prvku pro výběr prostředku vyberte prostředek, pro který chcete zobrazit metriky. (Prostředek je předem vybraný, pokud jste spustili **metriky** v kontextu konkrétního prostředku).
 
-    > ![Vybrat prostředek](./media/metrics-getting-started/resource-picker.png)
+    > ![Výběr prostředku](./media/metrics-getting-started/resource-picker.png)
 
 2. U některých prostředků je nutné vybrat obor názvů. Obor názvů je jenom způsob, jak uspořádat metriky, abyste je mohli snadno najít. Například účty úložiště mají samostatné obory názvů pro ukládání souborů, tabulek, objektů BLOB a metriky front. Mnoho typů prostředků má pouze jeden obor názvů.
 
@@ -45,7 +44,7 @@ Pokud chcete vytvořit graf metriky, ze svého prostředku, skupiny prostředků
 > [!NOTE]
 > Použijte tlačítko **Přidat metriku** a opakujte tyto kroky, pokud chcete zobrazit více metrik vykreslených ve stejném grafu. U více grafů v jednom zobrazení vyberte tlačítko **přidat graf** nahoře.
 
-## <a name="select-a-time-range"></a>Vybrat časový rozsah
+## <a name="select-a-time-range"></a>Vyberte časový rozsah.
 
 Ve výchozím nastavení se v grafu zobrazuje posledních 24 hodin dat metrik. Panel **pro výběr času** použijte ke změně časového rozsahu, přiblížení nebo oddálení v grafu. 
 
@@ -68,7 +67,7 @@ Podívejte [se na příklady grafů](metric-chart-samples.md) , které mají pou
 
 Můžete přizpůsobit styl grafu, název a upravit pokročilá nastavení grafu. Po dokončení přizpůsobení ho připněte na řídicí panel, abyste mohli svoji práci uložit. Můžete také nakonfigurovat výstrahy metrik. V [dokumentaci k produktu](metrics-charts.md) se dozvíte další informace o těchto a dalších pokročilých funkcích Azure monitor Průzkumníku metrik.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Další informace o rozšířených funkcích Průzkumník metrik](metrics-charts.md)
 * [Řešení potíží s Průzkumník metrik](metrics-troubleshoot.md)

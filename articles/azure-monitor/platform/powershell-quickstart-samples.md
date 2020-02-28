@@ -1,18 +1,15 @@
 ---
 title: Ukázky Azure Monitor PowerShellu pro rychlý Start
 description: Použijte PowerShell k přístupu k funkcím Azure Monitor, jako je automatické škálování, výstrahy, Webhooky a vyhledávání protokolů aktivit.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 2/14/2018
-ms.openlocfilehash: d1aa4b4e2d72f10ca73616bc7e69b0d02f13a501
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551853"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659273"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Ukázky Azure Monitor PowerShellu pro rychlý Start
 Tento článek ukazuje ukázky příkazů PowerShellu, které vám pomůžou při přístupu k funkcím Azure Monitor.
@@ -145,22 +142,22 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 ## <a name="create-metric-alerts"></a>Vytvoření upozornění metrik
 Pomocí rutiny `Add-AlertRule` můžete vytvořit, aktualizovat nebo zakázat pravidlo výstrahy.
 
-Můžete vytvořit vlastnosti e-mailu a Webhooku pomocí `New-AzAlertRuleEmail` a `New-AzAlertRuleWebhook` v uvedeném pořadí. V rutině pravidla výstrahy přiřaďte tyto vlastnosti jako akce do vlastnosti **Actions** pravidla výstrahy.
+Můžete vytvořit vlastnosti e-mailu a Webhooku pomocí `New-AzAlertRuleEmail` a `New-AzAlertRuleWebhook`v uvedeném pořadí. V rutině pravidla výstrahy přiřaďte tyto vlastnosti jako akce do vlastnosti **Actions** pravidla výstrahy.
 
 Následující tabulka popisuje parametry a hodnoty používané k vytvoření výstrahy pomocí metriky.
 
-| ukazatele | hodnota |
+| Ukazatele | value |
 | --- | --- |
-| Name (Název) |simpletestdiskwrite |
-| Umístění tohoto pravidla výstrahy |USA – východ |
+| Název |simpletestdiskwrite |
+| Umístění tohoto pravidla výstrahy |Východní USA |
 | ResourceGroup |montest |
-| Parametrem targetresourceid |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| Metrika vytvořeného upozornění |\PhysicalDisk (_Total) \ zápisy za sekundu Informace o tom, jak načíst přesné názvy metrik, najdete v rutině `Get-MetricDefinitions`. |
-| podnikatel |GreaterThan |
-| Prahová hodnota (počet/s) pro tuto metriku |1\. místo |
+| TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
+| Metrika vytvořeného upozornění |\PhysicalDisk (_Total) \ zápisu za sekundu. Informace o tom, jak načíst přesné názvy metrik, najdete v rutině `Get-MetricDefinitions`. |
+| operátor |GreaterThan |
+| Prahová hodnota (počet/s) pro tuto metriku |1 |
 | WindowSize (hh: mm: SS formát) |00:05:00 |
 | Agregátor (statistika metriky, která v tomto případě používá průměrný počet) |Průměr |
-| vlastní e-maily (pole řetězců) |foo@example.com, bar@example.com |
+| vlastní e-maily (pole řetězců) |foo@example.com,bar@example.com |
 | odesílání e-mailů vlastníkům, přispěvatelům a čtenářům |-SendToServiceOwners |
 
 Vytvoření e-mailové akce
@@ -388,7 +385,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 
 ```
 
-Všimněte si, že vlastnost ID pracovního prostoru přijímá *ID prostředku* pracovního prostoru. ID prostředku pracovního prostoru Log Analytics můžete získat pomocí následujícího příkazu:
+Všimněte si, že vlastnost ID pracovního prostoru přijímá *ID prostředku* pracovního prostoru. Můžete získat ID prostředku pracovního prostoru Log Analytics pomocí následujícího příkazu:
 
 ```powershell
 (Get-AzOperationalInsightsWorkspace).ResourceId

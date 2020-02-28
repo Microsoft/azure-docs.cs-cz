@@ -5,18 +5,17 @@ services: azure-monitor
 documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 368da2baaea1be41331d77f4dae1bdd9567b8cc5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872889"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658367"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Zdroje dat Azure Monitor sešity
 
@@ -43,7 +42,7 @@ Prostředky Azure emitují [metriky](data-platform-metrics.md) , ke kterým se d
 
 ![Snímek obrazovky rozhraní metriky sešitu](./media/workbooks-overview/metrics.png)
 
-## <a name="azure-resource-graph"></a>Graf prostředků Azure 
+## <a name="azure-resource-graph"></a>Azure Resource Graph 
 
 Pracovní sešity podporují dotazování na prostředky a jejich metadata pomocí Azure Resource graphu (ARG). Tato funkce se primárně používá k vytváření vlastních oborů dotazů pro sestavy. Rozsah prostředků je vyjádřen prostřednictvím KQL podmnožiny, kterou ARG podporuje – což je často dostačující pro běžné případy použití.
 

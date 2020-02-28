@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: dc2086223dea9bff311aac9e7d4771b5273f0e91
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: a5b0eb0c8bd56a28889945480e95b6413dc9b4dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493550"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660015"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
@@ -87,7 +87,7 @@ V některých nasazeních instancí A8 a A8 se rozšíření HpcVmDrivers přid�
   Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
   ```
 
-  Další informace najdete v tématu [rozšíření a funkce virtuálních počítačů](/extensions/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Můžete také pracovat s rozšířeními pro virtuální počítače nasazené v [modelu nasazení Classic](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic).
+  Další informace najdete v tématu [rozšíření a funkce virtuálních počítačů](./extensions/overview.md). Můžete také pracovat s rozšířeními pro virtuální počítače nasazené v [modelu nasazení Classic](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic).
 
 - **Adresní prostor síťového adres RDMA** – síť RDMA v Azure rezervuje adresní prostor 172.16.0.0/16. Pokud chcete spouštět aplikace MPI na instancích nasazených ve službě Azure Virtual Network, ujistěte se, že adresní prostor virtuální sítě nepřekrývá síť RDMA.
 

@@ -1,18 +1,17 @@
 ---
 title: Řešení pro správu v doporučených postupech Azure | Microsoft Docs
 description: ''
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 28ae01fe28b1b2d6af95567e529c7c9ae17920e4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 837fb87d73698961ec1550b122840563d1707f8a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553929"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663194"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Osvědčené postupy pro vytváření řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -27,7 +26,7 @@ Tento článek poskytuje osvědčené postupy pro [Vytvoření souboru řešení
 - Přidáním [ověřovací zprávy toku dat](../../azure-monitor/platform/view-designer-tiles.md) do libovolného zobrazení ve vašem řešení můžete uživateli dát pokyn ke zdrojům dat, které je potřeba nakonfigurovat pro shromažďování požadovaných dat.  Tato zpráva se zobrazí na dlaždici zobrazení, pokud se požadovaná data nenašly.
 
 
-## <a name="runbooks"></a>Runbooky
+## <a name="runbooks"></a>Sady Runbook
 - Přidejte [plán automatizace](../../automation/automation-schedules.md) pro jednotlivé sady Runbook ve vašem řešení, které je třeba spustit podle plánu.
 - Zahrňte do svého řešení [modul IngestionAPI](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) , který budou používat Runbooky pro zápis dat do úložiště Log Analytics.  Nakonfigurujte řešení tak, aby [odkazovalo](solutions-solution-file.md#solution-resource) na tento prostředek, aby zůstalo v případě odebrání řešení.  To umožňuje více řešení sdílet modul.
 - Použijte [proměnné pro automatizaci](../../automation/automation-schedules.md) k poskytnutí hodnot řešení, které uživatelé mohou chtít později změnit.  I v případě, že je řešení nakonfigurované tak, aby obsahovalo proměnnou, je možné, že je tato hodnota stále změněna.

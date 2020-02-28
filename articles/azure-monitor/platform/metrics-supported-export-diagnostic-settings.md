@@ -2,18 +2,15 @@
 title: Azure Monitor metriky platformy exportovatelné prostřednictvím nastavení diagnostiky
 description: Seznam metrik dostupných pro každý typ prostředku s Azure Monitor.
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: reference
 ms.date: 02/10/2020
-author: rboucher
-ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: e530663ef4ebfbef9371c48f4c70578b14a63605
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368232"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661358"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor metriky platformy exportovatelné prostřednictvím nastavení diagnostiky
 

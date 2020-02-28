@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: a6c1e14e332f6081111d2a58a30702093b99a876
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: c9d5c2efc14dec5beee0eaf81a4f628421ef3d49
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198237"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657040"
 ---
 # <a name="glossary"></a>Glosář
 
@@ -47,9 +47,9 @@ Následující seznam popisuje běžná slova používaná s Azure Maps službam
 
 <a name="asynchronous-request"></a>**Asynchronní požadavek**: požadavek HTTP, který otevře připojení, a odešle požadavek na server, který vrátí identifikátor asynchronního požadavku, a pak ukončí připojení. Server pokračuje ve zpracování žádosti a uživatel může stav ověřit pomocí identifikátoru. Po dokončení zpracování žádosti může uživatel stáhnout odpověď. Tento typ požadavku se používá pro dlouho běžící procesy.
 
-<a name="autocomplete"></a>**Automatické dokončování**: funkce v aplikaci předpovídá zbývající část slova, které uživatel zadává. 
+<a name="autocomplete"></a>**Automatické dokončování**: funkce v aplikaci, která předpovídá zbývající část slova, které uživatel zadává. 
 
-<a name="autosuggest"></a>Automatické **návrhy**: funkce v aplikaci odhadne logické možnosti pro to, co uživatel zadá.
+<a name="autosuggest"></a>Automatické **návrhy**: funkce v aplikaci, která předpovídá logické možnosti pro to, co uživatel zadá.
 
 <a name="azure-location-based-services-lbs"></a>**Azure Location Based Services (kg)** : dřívější název Azure Maps, pokud byl ve verzi Preview.
 

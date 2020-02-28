@@ -1,18 +1,17 @@
 ---
 title: Řešení Network Performance Monitor v Azure Log Analytics | Microsoft Docs
 description: Pomocí možnosti monitorování ExpressRoute v Network Performance Monitor můžete monitorovat komplexní připojení a výkon mezi vašimi pobočkami a Azure, a to prostřednictvím Azure ExpressRoute.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 11/27/2018
-ms.openlocfilehash: 5383402816eddba4c631c240585723b7c7119cef
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ac610d7dcf9849b6b439741957684867b9d01aa
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898886"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660746"
 ---
 # <a name="expressroute-monitor"></a>Monitorování ExpressRoute
 
@@ -76,7 +75,7 @@ Po povolení pravidel a výběru hodnot a agentů Počkejte 30 až 60 minut, ne�
 
 ### <a name="circuits-list"></a>Seznam okruhů 
 
-Pokud chcete zobrazit seznam všech sledovaných okruhů ExpressRoute, vyberte dlaždici okruhy ExpressRoute. Můžete vybrat okruh a zobrazit jeho stav, diagramy trendů pro ztrátu paketů, využití šířky pásma a latenci. Grafy jsou interaktivní. Můžete vybrat vlastní časový interval pro vykreslení grafů. Přetažením myši na oblast v grafu se můžete přiblížit a zobrazit jemně odstupňované datové body. 
+Pokud chcete zobrazit seznam všech sledovaných okruhů ExpressRoute, vyberte dlaždici okruhy ExpressRoute. Můžete vybrat okruh a zobrazit její stav, grafy trendů využití šířky pásma, latence a ztráta paketů. Grafy jsou interaktivní. Můžete vybrat vlastní časový interval pro vykreslení grafy. Přetažením myši na oblast v grafu se můžete přiblížit a zobrazit jemně odstupňované datové body. 
 
 ![Seznam okruhů ExpressRoute](media/network-performance-monitor-expressroute/expressroute-circuits.png) 
 
@@ -88,7 +87,7 @@ Grafy využití šířky pásma, latence a ztrát jsou interaktivní. Pomocí ov
 
 ### <a name="peerings-list"></a>Seznam partnerských vztahů 
 
-Pokud chcete v rámci privátního partnerského vztahu zobrazit seznam všech připojení k virtuálním sítím, vyberte na řídicím panelu dlaždici **privátních partnerských vztahů** . Tady můžete vybrat připojení k virtuální síti a zobrazit jeho stav, diagramy trendů pro ztrátu paketů, využití šířky pásma a latenci. 
+Pokud chcete v rámci privátního partnerského vztahu zobrazit seznam všech připojení k virtuálním sítím, vyberte na řídicím panelu dlaždici **privátních partnerských vztahů** . Tady můžete vybrat virtuální síťové připojení a zobrazit její stav, grafy trendů využití šířky pásma, latence a ztráta paketů. 
 
 ![Partnerské vztahy ExpressRoute](media/network-performance-monitor-expressroute/expressroute-peerings.png) 
 

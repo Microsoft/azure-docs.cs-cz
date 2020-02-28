@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 4a7ab395715d45894d355a35da81f6c2e58861ec
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 5202cc69fc9deb73342c8cc541d205525bd65c63
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495422"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780439"
 ---
-|Název |Popis |Vliv (s) |Version |Zdroj |
-|---|---|---|---|
+|Název |Popis |Vliv (s) |Verze |Zdroj |
+|---|---|---|---|---|
 |[\[Preview\]: \[modul AKS\] nepovoluje privilegované kontejnery v clusteru Kubernetes.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F95edb821-ddaf-4404-9732-666045e056b4) |Tato zásada nepovoluje vytvoření privilegovaných kontejnerů v clusteru Kubernetes. Pokyny k používání této zásady najdete na https://aka.ms/kubepolicydoc. |enforceOPAConstraint, zakázáno |1.0.0 – Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/ContainerNoPrivilege_EnforceOPAConstraint.json)
 |[\[Preview\]: \[modul AKS\] vynutil příchozí přenosy HTTPS v clusteru Kubernetes](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d) |Tato zásada vynutila příchozí přenosy HTTPS v clusteru Kubernetes. Pokyny k používání této zásady najdete na https://aka.ms/kubepolicydoc. |enforceOPAConstraint, zakázáno |1.0.0 – Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/IngressHttpsOnly_EnforceOPAConstraint.json)
 |[\[Preview\]: \[modul AKS\] vynutil interní nástroje pro vyrovnávání zatížení v clusteru Kubernetes.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3fc4dc25-5baf-40d8-9b05-7fe74c1bc64e) |Tato zásada vynutila, že nástroje pro vyrovnávání zatížení nemají v clusteru Kubernetes veřejné IP adresy. Pokyny k používání této zásady najdete na https://aka.ms/kubepolicydoc. |enforceOPAConstraint, zakázáno |1.0.0 – Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/LoadbalancerNoPublicIPs_EnforceOPAConstraint.json)

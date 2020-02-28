@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2020
+ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 5453793c7e1bb1ef766939d2e7fdf32a1ac1ec72
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: f83385e1c0a360689569424dbba0c4548751916c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499947"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661955"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -33,7 +33,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 ## <a name="alerts-windows"></a>Výstrahy pro počítače se systémem Windows
 
-[Další podrobnosti a poznámky](security-center-alerts-iaas.md#windows-)
+[Další podrobnosti a poznámky](threat-protection.md#windows-machines)
 
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
@@ -124,7 +124,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 ## <a name="alerts-linux"></a>Výstrahy pro počítače se systémem Linux
 
-[Další podrobnosti a poznámky](security-center-alerts-iaas.md#linux-)
+[Další podrobnosti a poznámky](threat-protection.md#linux-machines)
 
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
@@ -213,7 +213,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 ## <a name="alerts-azureappserv"></a>Výstrahy pro Azure App Service
 
-[Další podrobnosti a poznámky](security-center-alerts-compute.md#azure-app-service-)
+[Další podrobnosti a poznámky](threat-protection.md#app-services)
 
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
@@ -238,7 +238,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 ## <a name="alerts-akscluster"></a>Výstrahy pro kontejnery – clustery služby Azure Kubernetes
 
-[Další podrobnosti a poznámky](security-center-alerts-compute.md#azure-containers-)
+[Další podrobnosti a poznámky](threat-protection.md#azure-containers)
 
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
@@ -253,7 +253,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 ## <a name="alerts-containerhost"></a>Výstrahy pro kontejnery – úroveň hostitele
 
-[Další podrobnosti a poznámky](security-center-alerts-compute.md#azure-containers-)
+[Další podrobnosti a poznámky](threat-protection.md#azure-containers)
 
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
@@ -269,7 +269,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 ## <a name="alerts-sql-db-and-warehouse"></a>Výstrahy pro SQL Database a SQL Data Warehouse
 
-[Další podrobnosti a poznámky](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+[Další podrobnosti a poznámky](threat-protection.md#data-sql)
 
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
@@ -287,7 +287,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 ## <a name="alerts-azurestorage"></a>Výstrahy pro Azure Storage
 
-[Další podrobnosti a poznámky](security-center-alerts-data-services.md#azure-storage-)
+[Další podrobnosti a poznámky](threat-protection.md#azure-storage)
 
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
@@ -308,7 +308,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 ## <a name="alerts-azurecosmos"></a>Výstrahy pro Azure Cosmos DB (Preview)
 
-[Další podrobnosti a poznámky](security-center-alerts-data-services.md#azure-cosmos-db)
+[Další podrobnosti a poznámky](threat-protection.md#cosmos-db)
 
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
@@ -319,7 +319,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 ## <a name="alerts-azurenetlayer"></a>Výstrahy pro síťovou vrstvu Azure
 
-[Další podrobnosti a poznámky](security-center-alerts-service-layer.md#azure-network-layer)
+[Další podrobnosti a poznámky](threat-protection.md#network-layer)
 
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
@@ -344,7 +344,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 ## <a name="alerts-azureresourceman"></a>Výstrahy pro Azure Resource Manager (Preview)
 
-[Další podrobnosti a poznámky](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+[Další podrobnosti a poznámky](threat-protection.md#management-layer)
 
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
@@ -363,7 +363,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 ## <a name="alerts-azurekv"></a>Výstrahy pro Azure Key Vault (Preview)
 
-[Další podrobnosti a poznámky](security-center-alerts-service-layer.md#azure-keyvault)
+[Další podrobnosti a poznámky](threat-protection.md#azure-keyvault)
 
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
@@ -381,7 +381,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 
 ## <a name="alerts-azureddos"></a>Výstrahy pro Azure DDoS Protection
 
-[Další podrobnosti a poznámky](security-center-alerts-integration.md#azure-ddos)
+[Další podrobnosti a poznámky](threat-protection.md#azure-ddos)
 
 |Výstraha|Popis|Záměr ([Další informace](#intentions))|
 |----|----|:----:|
@@ -399,8 +399,8 @@ Podporované záměry dezaktivačního řetězu Security Center jsou založené 
 
 |Záměr|Popis|
 |------|-------|
-|**Zjišťování**|Zjišťování může být buď pokus o přístup k určitému prostředku bez ohledu na škodlivý záměr, nebo o neúspěšném pokusu o získání přístupu k cílovému systému za účelem shromažďování informací před zneužitím. Tento krok se obvykle detekuje jako pokus, pochází z vnějšku sítě, kontroluje cílový systém a identifikuje vstupní bod.|
-|**Využívání**|Využití je fáze, ve které útočník spravuje, aby získal dostane na napadeném prostředku. Tato fáze je relevantní pro výpočetní hostitele a prostředky, jako jsou uživatelské účty, certifikáty atd. Aktéri hrozeb budou často moci řídit prostředek po této fázi.|
+|**Předútok**</br>(nahrazuje probingu)|Předběžná útok může být buď pokus o přístup k určitému prostředku bez ohledu na škodlivý záměr, nebo neúspěšný pokus o získání přístupu k cílovému systému za účelem shromažďování informací před zneužitím. Tento krok se obvykle detekuje jako pokus, pochází z vnějšku sítě, kontroluje cílový systém a identifikuje vstupní bod.</br>Další podrobnosti o fázi předútoků si můžete přečíst na [stránce Mitre](https://attack.mitre.org/matrices/pre/).|
+|**InitialAccess**</br>(nahrazuje využívání)|InitialAccess je fáze, kde útočník spravuje, aby získal dostane pro napadený prostředek. Tato fáze je relevantní pro výpočetní hostitele a prostředky, jako jsou uživatelské účty, certifikáty atd. Aktéri hrozeb budou často moci řídit prostředek po této fázi.|
 |**Dočasné**|Persistence je jakýkoli přístup, akce nebo změna konfigurace systému, který útočníkovi v tomto systému poskytne trvalou přítomnost. Aktéri hrozeb často potřebují zachovat přístup k systémům prostřednictvím přerušení, jako je restartování systému, ztráta přihlašovacích údajů nebo jiné chyby, které by vyžadovaly restartování nástroje vzdáleného přístupu nebo zadání alternativního zadní vrátkau pro opětovné získání přístupu.|
 |**PrivilegeEscalation**|Eskalace oprávnění je výsledkem akcí, které umožňují nežádoucí osoba získat vyšší úroveň oprávnění pro systém nebo síť. Některé nástroje nebo akce vyžadují vyšší úroveň oprávnění pro práci a jsou nejspíš potřeba v mnoha bodech v průběhu operace. Uživatelské účty s oprávněním pro přístup ke konkrétním systémům nebo provádění specifických funkcí nezbytných pro nežádoucí osoby k dosažení jejich cíle může být také považována za eskalaci oprávnění.|
 |**DefenseEvasion**|Daňová povinnost ochrany se skládá z technik, které může nežádoucí osoba použít k obcházení detekce nebo k zamezení jiné obrany. Někdy jsou tyto akce stejné jako (nebo variace) technik v jiných kategoriích, které mají přidané výhody přeměny určité obrany nebo zmírnění rizik.|
@@ -418,6 +418,7 @@ Podporované záměry dezaktivačního řetězu Security Center jsou založené 
 ## <a name="next-steps"></a>Další kroky
 Další informace o výstrahách najdete v následujících tématech:
 
+* [Ochrana před hrozbami v Azure Security Center](threat-protection.md)
 * [Výstrahy zabezpečení ve službě Azure Security Center](security-center-alerts-overview.md)
 * [Správa a reakce na upozornění zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Exportovat výstrahy a doporučení zabezpečení (Preview)](continuous-export.md)

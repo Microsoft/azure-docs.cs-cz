@@ -3,16 +3,15 @@ title: Možnosti převodu návrháře zobrazení Azure Monitor na sešity
 description: ''
 author: austonli
 ms.author: aul
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: f04ebc1a4a53825709479ca3f1dc7ce1245fc67f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 7bfa831332451718c0c9c05023b90104d2b8b02b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77171550"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658706"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-conversion-options"></a>Možnosti převodu návrháře zobrazení Azure Monitor na sešity
 [Návrhář zobrazení](view-designer.md) je funkce Azure monitor, která umožňuje vytvářet vlastní zobrazení, která vám pomohou vizualizovat data v pracovním prostoru Log Analytics s grafy, seznamy a časovými osami. Budou postupně vyladěny a nahrazeny sešity, které poskytují další funkce. Tento článek porovnává základní koncepty mezi dvěma a možnostmi pro převod zobrazení na sešity.

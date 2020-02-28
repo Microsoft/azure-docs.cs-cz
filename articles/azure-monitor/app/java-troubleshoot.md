@@ -1,18 +1,14 @@
 ---
 title: Řešení potíží s Application Insights ve webovém projektu Java
 description: Průvodce odstraňováním potíží – monitorování živých aplikací Java pomocí Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 04e98938bc5dd17816ae873f122073212275a414
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432536"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77657176"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
 Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady je několik tipů.
@@ -74,7 +70,7 @@ V kódu:
     config.setTrackingIsDisabled(true);
 ```
 
-**Nebo**
+**Ani**
 
 Aktualizujte soubor ApplicationInsights. XML (ve složce Resources ve vašem projektu). Do kořenového uzlu přidejte následující:
 
@@ -171,7 +167,7 @@ Ano, pokud váš server může prostřednictvím veřejného Internetu odesílat
 
 V bráně firewall možná budete muset otevřít porty TCP 80 a 443 pro odchozí provoz do dc.services.visualstudio.com a f5.services.visualstudio.com.
 
-## <a name="data-retention"></a>Uchování dat
+## <a name="data-retention"></a>Uchovávání dat
 **Jak dlouho se data na portálu uchovávají? Je zabezpečení?**
 
 Podívejte [se na uchovávání dat a ochranu osobních údajů][data].
@@ -192,7 +188,7 @@ Application Insights používá `org.apache.http`. Toto je přemístěné v Appl
 * [Napsat kód pro sledování využití vaší aplikace][track]
 * [Zachytávání diagnostických protokolů][javalogs]
 
-## <a name="get-help"></a>Získání nápovědy
+## <a name="get-help"></a>Podpora
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Vystavení problému na GitHubu](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 

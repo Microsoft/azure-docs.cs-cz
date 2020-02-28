@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 49129bede62e456cf2807cc879b7fc5e1793b65b
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 89772bea818a0ebb57135990b3a04fcb559e2716
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424945"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664928"
 ---
 # <a name="streaming-ingestion-preview"></a>Ingestování streamování (Preview)
 
@@ -20,18 +20,16 @@ Ingestování streamování je cílené pro scénáře, které vyžadují nízko
 
 Použijte klasickou (hromadnou) ingestu místo příjmu streamování, když se objem dat zvětšuje na více než 1 MB za sekundu na tabulku. Přečtěte si [Přehled příjmu dat](/azure/data-explorer/ingest-data-overview) , kde se dozvíte víc o různých metodách přijímání.
 
-> [!NOTE]
-> Přijímání streamování nepodporuje následující funkce:
-> * [Kurzory databáze](/azure/kusto/management/databasecursor).
-> * [Mapování dat](/azure/kusto/management/mappings). Je podporováno pouze [předem vytvořené](/azure/kusto/management/tables#create-ingestion-mapping) mapování dat. 
-
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * Přihlaste se k [webovému uživatelskému rozhraní](https://dataexplorer.azure.com/).
 * Vytvoření [clusteru a databáze Azure Průzkumník dat](create-cluster-database-portal.md)
 
 ## <a name="enable-streaming-ingestion-on-your-cluster"></a>Povolit přijímání streamování v clusteru
+
+> [!WARNING]
+> Zkontrolujte prosím [omezení](#limitations) před tím, než povolíte přijímání parou.
 
 1. V Azure Portal přejdete do svého clusteru Azure Průzkumník dat. V **Nastavení**vyberte **Konfigurace**. 
 1. V podokně **Konfigurace** vyberte **zapnuto** , aby se povolilo **přijímání streamování**.
@@ -49,8 +47,9 @@ Použijte klasickou (hromadnou) ingestu místo příjmu streamování, když se 
 
 Existují dva podporované typy přijímání streamování:
 
-* [Centrum událostí](/azure/data-explorer/ingest-data-event-hub) používané jako zdroj dat
-* Vlastní ingestování vyžaduje, abyste napsali aplikaci, která používá jednu z klientských knihoven Azure Průzkumník dat. Ukázková aplikace najdete v ukázce ingestování [streamování](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) .
+
+* [**Centrum událostí**](/azure/data-explorer/ingest-data-event-hub) používané jako zdroj dat
+* **Vlastní** ingestování vyžaduje, abyste napsali aplikaci, která používá jednu z klientských knihoven Azure Průzkumník dat. Ukázková aplikace najdete v ukázce ingestování [streamování](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/client/StreamingIngestionSample) .
 
 ### <a name="choose-the-appropriate-streaming-ingestion-type"></a>Zvolit vhodný typ příjmu streamování
 
@@ -77,7 +76,11 @@ Existují dva podporované typy přijímání streamování:
 * Omezení velikosti dat na žádost o přijetí dat je 4 MB.
 * Aktualizace schématu, jako je vytváření a úprava tabulek a mapování přijímání, můžou trvat až 5 minut, než se služba pro příjem dat streamuje.
 * Povolení ingestování streamování na clusteru, i když se data nedrží prostřednictvím streamování, používá část místního disku SSD clusterových počítačů pro data příjmu streamování a snižuje úložiště dostupné pro hotkou mezipaměť.
-* U dat příjmu streamování se nedají nastavit [značky rozsahu](/azure/kusto/management/extents-overview.md#extent-tagging) .
+* U dat příjmu streamování se nedají nastavit [značky rozsahu](/azure/kusto/management/extents-overview#extent-tagging) .
+
+Přijímání streamování nepodporuje následující funkce:
+* [Kurzory databáze](/azure/kusto/management/databasecursor).
+* [Mapování dat](/azure/kusto/management/mappings). Je podporováno pouze [předem vytvořené](/azure/kusto/management/tables#create-ingestion-mapping) mapování dat. 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,19 +1,15 @@
 ---
 title: Prozkoumejte protokoly trasování .NET pomocí ILogger – Azure Application Insights
 description: Ukázky použití poskytovatele služby Azure Application Insights ILogger s aplikacemi ASP.NET Core a konzolou.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b538196467ba1d69e679a111ca313f922738b048
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: e2b306670c43722279327301b15630f96da50ea5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76716021"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659930"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>Protokoly ApplicationInsightsLoggerProvider pro .NET Core ILogger
 
@@ -396,7 +392,7 @@ Pokud při ladění ze sady Visual Studio dojde k dvojímu protokolování, nast
  }
 ```
 
-### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdkhttpswwwnugetorgpackagesmicrosoftapplicationinsightsaspnetcore-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>Aktualizoval (a) jsem se na [Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.7.1 a protokoly z ILogger jsou zachyceny automaticky. Návody zcela tuto funkci vypnout?
+### <a name="i-updated-to-microsoftapplicationinsightsaspnet-sdk-version-271-and-logs-from-ilogger-are-captured-automatically-how-do-i-turn-off-this-feature-completely"></a>Aktualizoval (a) jsem se na [Microsoft. ApplicationInsights. ASPNET SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) verze 2.7.1 a protokoly z ILogger jsou zachyceny automaticky. Návody zcela tuto funkci vypnout?
 
 Informace o tom, jak filtrovat protokoly obecně, najdete v části [řízení úrovně protokolování](../../azure-monitor/app/ilogger.md#control-logging-level) . Pro vypnutí ApplicationInsightsLoggerProvider použijte `LogLevel.None`:
 
@@ -502,7 +498,7 @@ Tento kód je vyžadován pouze v případě, že používáte samostatného zpr
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace:
+Další informace pro:
 
 * [Přihlašování ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)
 * [Protokoly trasování .NET v Application Insights](../../azure-monitor/app/asp-net-trace-logs.md)

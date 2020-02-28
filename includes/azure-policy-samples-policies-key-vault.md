@@ -2,18 +2,18 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/19/2020
+ms.date: 02/26/2020
 ms.author: dacoulte
-ms.openlocfilehash: 270a5557de6edbd26a9a204ed2ce24f6c35e736e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: b699a3c329fe2ac8e430f4b58d1fce2637b35469
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77495363"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77780322"
 ---
-|Název |Popis |Vliv (s) |Version |Zdroj |
-|---|---|---|---|
-|[Nasazení nastavení diagnostiky pro Key Vault do centra událostí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |Nasadí nastavení diagnostiky pro Key Vault do služby streamování do místního centra událostí, pokud dojde k vytvoření nebo aktualizaci Key Vault, u kterých chybí tato nastavení diagnostiky. |deployIfNotExists |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json)
+|Název |Popis |Vliv (s) |Verze |Zdroj |
+|---|---|---|---|---|
+|[Nasazení nastavení diagnostiky pro Key Vault do centra událostí](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |Nasadí nastavení diagnostiky pro Key Vault do služby streamování do místního centra událostí, pokud dojde k vytvoření nebo aktualizaci Key Vault, u kterých chybí tato nastavení diagnostiky. |deployIfNotExists |2.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json)
 |[Měly by být povolené diagnostické protokoly v Key Vault.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcf820ca0-f99e-4f3e-84fb-66e913812d21) |Audituje povolení diagnostických protokolů. To umožňuje znovu vytvořit stopy aktivity, které se mají použít pro účely šetření. Když dojde k bezpečnostnímu incidentu nebo při ohrožení zabezpečení sítě |AuditIfNotExists, zakázáno |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_AuditDiagnosticLog_Audit.json)
 |[Key Vault objekty by měly být obnovitelné](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0b60c0b2-2dc2-4e1c-b5c9-abbed971de53) |Tato zásada Audituje, jestli nejsou objekty trezoru klíčů obnovitelné. Funkce obnovitelného odstranění pomáhá efektivně uchovávat prostředky pro danou dobu uchování (90 dní) i po operaci odstranění a zároveň dává dojem, že se objekt odstranil. Pokud je zapnutá možnost vyprázdnění ochrany, trezor nebo objekt v odstraněném stavu nelze odstranit, dokud neuplyne doba uchování 90 dnů. Tyto trezory a objekty můžou být pořád obnoveny, takže zákazníci, kteří budou dodržovat zásady uchovávání informací. |Audit, zakázáno |1.0.0 |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json)
 |[Spravovat povolené typy klíčů certifikátů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1151cede-290b-4ba0-8b38-0ad145ac888f) |Tato zásada spravuje povolené typy klíčů pro certifikáty. |audit, zamítnutí, zakázáno |1.0.0 – Preview |[GitHub](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_AllowedKeyTypes.json)

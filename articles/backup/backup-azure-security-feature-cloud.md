@@ -3,16 +3,16 @@ title: Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy
 description: Naučte se používat funkce zabezpečení v Azure Backup k zajištění většího zabezpečení záloh.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 3435b9455af3362cdce2dceb20e183a8b05a15dd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705492"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660831"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Funkce zabezpečení, které vám pomůžou chránit cloudové úlohy, které používají Azure Backup
 
-Obavy z problémů se zabezpečením, jako jsou malware, ransomware a vniknutí, neustále rostou. Tyto potíže mohou být nákladné, a to z hlediska financí i dat. Pro ochranu proti takovým útokům Azure Backup nyní poskytuje funkce zabezpečení, které vám pomůžou chránit zálohovaná data i po odstranění.
+Problémy se zabezpečením, jako je malware, ransomwarem a vniknutí, se zvyšují. Tyto problémy se zabezpečením můžou být nákladné, s ohledem na peníze i data. Pro ochranu proti takovým útokům Azure Backup nyní poskytuje funkce zabezpečení, které vám pomůžou chránit zálohovaná data i po odstranění.
 
 Jednou z těchto funkcí je obnovitelné odstranění. Pomocí obnovitelného odstranění, a to i v případě, že škodlivý objekt actor odstraní zálohu virtuálního počítače (nebo se data záloh nechtěně odstraní), zálohovaná data se uchovávají po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohovaných dat ve stavu "obnovitelné odstranění" neúčtují žádné náklady na zákazníka. Azure také šifruje všechna zálohovaná data v klidovém režimu pomocí [šifrování služby Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) k dalšímu zabezpečení vašich dat.
 
@@ -133,7 +133,7 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 
 ## <a name="disabling-soft-delete"></a>Zákaz obnovitelného odstranění
 
-Obnovitelné odstranění je ve výchozím nastavení povolené u nově vytvořených trezorů za účelem ochrany zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Zakázání této funkce se nedoporučuje. Jediným případem, kdy byste měli zvážit zakázání obnovitelného odstranění, je, že plánujete přesunutí chráněných položek do nového trezoru a nemůžete počkat 14 dní před odstraněním a obnovením ochrany (například v testovacím prostředí). Tuto funkci může zakázat pouze správce zálohování. Pokud tuto funkci zakážete, všechna odstranění chráněných položek budou mít za následek okamžité odebrání bez možnosti obnovení. Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce zůstanou v tichém stavu odstranění. Pokud chcete tyto okamžité odstranění trvale odstranit, musíte je znovu odstranit a znovu odstranit, abyste se mohli trvale odstranit.
+Obnovitelné odstranění je ve výchozím nastavení povolené u nově vytvořených trezorů za účelem ochrany zálohovaných dat před náhodnými nebo škodlivými odstraněními.  Zakázání této funkce se nedoporučuje. Jediným případem, kdy byste měli zvážit zakázání obnovitelného odstranění, je, že plánujete přesunutí chráněných položek do nového trezoru a nemůžete počkat 14 dní před odstraněním a obnovením ochrany (například v testovacím prostředí). Tuto funkci může zakázat pouze vlastník trezoru. Pokud tuto funkci zakážete, všechna budoucí odstranění chráněných položek budou mít za následek okamžité odebrání bez možnosti obnovení. Zálohovaná data, která existují v tichém odstraněném stavu před zakázáním této funkce, zůstanou v tichém odstraněném stavu po dobu 14 dnů. Pokud chcete tyto okamžité odstranění trvale odstranit, musíte je znovu odstranit a znovu odstranit, abyste se mohli trvale odstranit.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Zákaz obnovitelného odstranění pomocí Azure Portal
 
@@ -171,7 +171,7 @@ Pokud chcete zakázat funkce obnovitelného odstranění pomocí REST API, pře�
 
 Zálohovaná data v tichém odstraněném stavu před zakázáním této funkce zůstanou v tichém stavu odstranění. Pokud je chcete trvale odstranit, odstraňte je znovu a znovu je odstraňte, abyste je mohli trvale odstranit.
 
-### <a name="using-azure-portal"></a>Použití webu Azure Portal
+### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
 
 Postupujte následovně:
 
@@ -236,7 +236,7 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
 ```
 
-### <a name="using-rest-api"></a>Použití rozhraní REST API
+### <a name="using-rest-api"></a>Pomocí rozhraní REST API
 
 Pokud byly položky odstraněny před vypnutím obnovitelného odstranění, pak budou v neodstraněném stavu. Aby je bylo možné okamžitě odstranit, operace odstranění musí být obrácená a následně provedena znovu.
 

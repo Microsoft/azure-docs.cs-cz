@@ -7,14 +7,14 @@ author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/04/2019
+ms.date: 02/26/2020
 ms.author: tamram
-ms.openlocfilehash: c5d32b91043d310e51143357ad51631463f7e991
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 4cc58838827d1ee9337216d9ccb56696735ead7e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892494"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664232"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Rychlý Start: nahrání, stažení a výpis objektů BLOB pomocí PowerShellu
 
@@ -22,7 +22,7 @@ Pomocí modulu Azure PowerShell můžete vytvářet a spravovat prostředky Azur
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete získat přístup k Azure Storage, budete potřebovat předplatné Azure. Pokud ještě nemáte předplatné, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -97,16 +97,13 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>Přenos dat pomocí AzCopy
 
-Nástroj [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) představuje další možnost vysoce výkonného a skriptovatelného přenosu dat pro službu Azure Storage. Pomocí AzCopy můžete přenášet data do a ze služeb Blob, File a Table Storage.
+Nástroj příkazového řádku AzCopy nabízí vysoce výkonný a skriptový přenos dat pro Azure Storage. AzCopy můžete použít k přenosu dat do a ze služby Blob Storage a souborů Azure. Další informace o AzCopy v10 za účelem, nejnovější verzi AzCopy, najdete v tématu [Začínáme s AzCopy](../common/storage-use-azcopy-v10.md). Další informace o použití AzCopy v10 za účelem s úložištěm objektů BLOB najdete v tématu [přenos dat pomocí AzCopy a BLOB Storage](../common/storage-use-azcopy-blobs.md).
 
-Tady je jednoduchý příklad příkazu AzCopy pro nahrání souboru *myfile.txt* do kontejneru *mystoragecontainer* z okna PowerShellu.
+Následující příklad používá AzCopy k nahrání místního souboru do objektu BLOB. Nezapomeňte nahradit vzorové hodnoty vlastními hodnotami:
 
 ```powershell
-./AzCopy `
-    /Source:C:\myfolder `
-    /Dest:https://mystorageaccount.blob.core.windows.net/mystoragecontainer `
-    /DestKey:<storage-account-access-key> `
-    /Pattern:"myfile.txt"
+azcopy login
+azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt'
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -128,6 +125,6 @@ V tomto rychlém startu jste přenášeli soubory mezi místním diskem a úlož
 
 * [Rutiny PowerShellu pro úložiště](/powershell/module/az.storage)
 
-### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+### <a name="microsoft-azure-storage-explorer"></a>Průzkumník služby Microsoft Azure Storage
 
 * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.

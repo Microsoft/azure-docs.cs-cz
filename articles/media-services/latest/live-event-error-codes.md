@@ -11,23 +11,47 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2020
+ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: bfbef771d33ad4d63ec8eaef83331e497d476071
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f9067562f67190b8bc04392f33078d4d3262f986
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599467"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654575"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services kódy chyb živé události
 
-V následující tabulce jsou uvedeny kódy chyb [živé události](live-events-outputs-concept.md) :
+Tabulky v této části uvádějí kódy chyb [živé události](live-events-outputs-concept.md) .
 
-|Chyba|Popis|
-|---|---| 
-|MPE_INGEST_FRAMERATE_EXCEEDED|K této chybě dochází, když příchozí kodér posílá streamy překračující 30fps pro kódování živých událostí nebo kanálů.|
-|MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED|K této chybě dochází, pokud příchozí kodér posílá proudy překračující následující rozlišení: 1920x1088 pro kódování živých událostí a kanálů a 4096 x 2160 pro předávací živé události a kanály.|
+## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
+
+Když se přihlásíte k odběru události [Event Grid](https://docs.microsoft.com/azure/event-grid/) pro živou událost, může se zobrazit jedna z následujících chyb z události [LiveEventConnectionRejected](media-services-event-schemas.md#liveeventconnectionrejected) .
+
+| Kód výsledku | Popis |
+| ----------- | ----------- |
+| MPE_RTMP_APPID_AUTH_FAILURE | Nesprávná adresa URL pro příjem |
+| MPE_INGEST_ENCODER_CONNECTION_DENIED | V nakonfigurovaném seznamu povolených IP adres není kodér IP. |
+| MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | Kodér RTMP neodeslal příkaz setDataFrame. |
+| MPE_INGEST_CODEC_NOT_SUPPORTED | Zadaný kodek není podporován. |
+| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED |Předtím, než se doručí skutečná data médií, se informace o popisu média nepřijaly.|
+| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED |Počet kvality pro typ zvuku nebo videa překročil maximální povolený limit.|
+| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED |Celkový počet příchozích přenosů v živé události nebo službě kanálu překročil maximální povolený limit.|
+| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Časové razítko pro video nebo audio FLVTag je od kodéru RTMP neplatné. |
+| MPE_INGEST_FRAMERATE_EXCEEDED | Příchozí kodér ingestující proudy s framerates překročil maximální povolený 30fps pro kódování živých událostí nebo kanálů.|
+| MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED | Příchozí kanály ingestující kodér překročily následující povolená řešení: 1920x1088 pro kódování živých událostí a kanálů a 4096 x 2160 pro předávací živé události a kanály.|
+
+## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
+
+V události [LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) se může zobrazit jedna z následujících chyb.
+
+|Kód výsledku|Popis|
+|---|---|
+|MPE_RTMP_SESSION_IDLE_TIMEOUT|Platnost relace RTMP vypršela po nečinnosti pro povolený časový limit.|
+|MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID|Časové razítko pro video nebo audio FLVTag je od kodéru RTMP neplatné.|
+|MPE_CAPACITY_LIMIT_REACHED|Kodér odesílá data příliš rychle.|
+|Neznámé kódy chyb|Tyto kódy chyb můžou být v rozsahu od chyby paměti až po duplicitní položky v mapě algoritmu hash.|
+
 
 ## <a name="see-also"></a>Viz také
 

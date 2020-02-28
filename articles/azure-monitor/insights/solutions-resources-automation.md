@@ -1,19 +1,18 @@
 ---
 title: Prostředky Azure Automation v řešeních pro správu | Microsoft Docs
 description: Řešení pro správu obvykle budou zahrnovat Runbooky v Azure Automation k automatizaci procesů, jako je shromažďování a zpracování dat monitorování.  Tento článek popisuje, jak zahrnout Runbooky a jejich související prostředky do řešení.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401820"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663058"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Přidání prostředků Azure Automation do řešení pro správu (Preview)
 > [!NOTE]
@@ -41,7 +40,7 @@ Název každého prostředku automatizace zahrnuje název svého účtu Automati
     "name": "[concat(parameters('accountName'), '/MyRunbook'))]"
 
 
-## <a name="runbooks"></a>Runbooky
+## <a name="runbooks"></a>Sady Runbook
 Měli byste zahrnout všechny Runbooky používané řešením v souboru řešení, aby byly vytvořeny při instalaci řešení.  V šabloně nemůžete obsahovat text sady Runbook, proto byste měli sadu Runbook publikovat do veřejného umístění, kde k němu může mít uživatel, který instaluje vaše řešení.
 
 Prostředky [sady runbook Azure Automation](../../automation/automation-runbook-types.md) mají typ **Microsoft. Automation/automationAccounts/Runbooky** a mají následující strukturu. To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
@@ -107,8 +106,8 @@ Vlastnosti pro úlohy služby Automation jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| runbook |Entita s jedním jménem s názvem Runbooku, který se má spustit. |
-| parameters |Entita pro každou hodnotu parametru, kterou sada Runbook vyžaduje. |
+| Sady Runbook |Entita s jedním jménem s názvem Runbooku, který se má spustit. |
+| parametry |Entita pro každou hodnotu parametru, kterou sada Runbook vyžaduje. |
 
 Úloha zahrnuje název Runbooku a všechny hodnoty parametrů, které se mají odeslat do Runbooku.  Úloha by měla [záviset na]( solutions-solution-file.md#resources) sadě Runbook, kterou spouští od chvíle, kdy se sada Runbook musí vytvořit před úlohou.  Pokud máte více sad Runbook, které by měly být spuštěny, můžete definovat jejich pořadí tak, aby byla úloha závislá na všech dalších úlohách, které by se měly spustit jako první.
 
@@ -196,7 +195,7 @@ Vlastnosti pro prostředky plánu jsou popsány v následující tabulce.
 | description |Volitelný popis plánu |
 | startTime |Určuje počáteční čas plánu jako objekt DateTime. Řetězec lze zadat, pokud jej lze převést na platný typ DateTime. |
 | isEnabled |Určuje, jestli je plán povolený. |
-| interval |Typ intervalu pro plán.<br><br>den<br>hour |
+| interval |Typ intervalu pro plán.<br><br>den<br>Hodiny |
 | frequency |Frekvence, kterou by měl plán zavolávat za počet dnů nebo hodin. |
 
 Plány musí mít čas spuštění s hodnotou vyšší než aktuální čas.  Tuto hodnotu nemůžete zadat s proměnnou, protože by vám při instalaci nevěděla žádný způsob, jak byste měli vědět.
@@ -236,8 +235,8 @@ Vlastnosti pro plány úloh jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| schedule name |Jeden **name** entitě s názvem podle plánu. |
-| runbook name  |Jeden **name** entitě s názvem sady runbook.  |
+| schedule name |Entita s jedním **jménem** s názvem plánu |
+| runbook name  |Entita s jedním **jménem** s názvem Runbooku  |
 
 
 
@@ -265,20 +264,20 @@ Vlastnosti prostředků proměnných jsou popsány v následující tabulce.
 |:--- |:--- |
 | description | Volitelný popis proměnné. |
 | isEncrypted | Určuje, zda má být proměnná zašifrovaná. |
-| type | Tato vlastnost aktuálně nemá žádný vliv.  Datový typ proměnné bude stanoven počáteční hodnotou. |
-| hodnota | Hodnota proměnné |
+| typ | Tato vlastnost aktuálně nemá žádný vliv.  Datový typ proměnné bude stanoven počáteční hodnotou. |
+| value | Hodnota proměnné |
 
 > [!NOTE]
 > Vlastnost **Type** nemá v současné době žádný vliv na vytvořenou proměnnou.  Datový typ proměnné bude stanoven hodnotou.  
 
 Pokud nastavíte počáteční hodnotu pro proměnnou, je nutné ji nakonfigurovat jako správný datový typ.  Následující tabulka poskytuje různé datové typy, které umožňují a jejich syntaxi.  Všimněte si, že hodnoty ve formátu JSON by měly být vždy uzavřeny v uvozovkách se všemi speciálními znaky v uvozovkách.  Například řetězcová hodnota by byla určena uvozovkami kolem řetězce (pomocí řídicího znaku (\\)), zatímco číselná hodnota bude zadána s jednou sadou uvozovek.
 
-| Data type | Popis | Příklad: | Překládá na |
+| Typ dat | Popis | Příklad | Překládá na |
 |:--|:--|:--|:--|
 | string   | Uzavřete hodnotu do dvojitých uvozovek.  | "\"Hello World\"" | Hello World |
 | numeric  | Číselná hodnota s jednoduchými uvozovkami.| "64" | 64 |
 | Boolean  | **hodnota true** nebo **false** v uvozovkách  Všimněte si, že tato hodnota musí být malá. | „true“ | true |
-| datetime | Hodnota serializovaného data<br>K vygenerování této hodnoty pro konkrétní datum můžete použít rutinu ConvertTo-JSON v prostředí PowerShell.<br>Příklad: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| datetime | Hodnota serializovaného data<br>K vygenerování této hodnoty pro konkrétní datum můžete použít rutinu ConvertTo-JSON v prostředí PowerShell.<br>Příklad: Get-Date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduly
 Vaše řešení pro správu nemusí definovat [globální moduly](../../automation/automation-integration-modules.md) používané vašimi Runbooky, protože budou vždy k dispozici ve vašem účtu Automation.  Je potřeba zahrnout prostředek pro všechny ostatní moduly, které vaše Runbooky používají.

@@ -1,18 +1,14 @@
 ---
 title: Analýza využití pomocí Azure Application Insights | Dokumentace Microsoftu
 description: Pochopte uživatele a to, co dělají s vaší aplikací.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/19/2019
-ms.openlocfilehash: aa37717c5037294c2b5ec61f7815b007cbf74992
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9f34267a1820f8b2365a41569bd3c8eaed9f2f9c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884829"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671014"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 

@@ -3,22 +3,21 @@ title: Archivace protokolů prostředků Azure do účtu úložiště | Microsof
 description: Naučte se archivovat protokoly prostředků Azure pro dlouhodobé uchovávání v účtu úložiště.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: f4109359adaaeae0a1ba027ac04439ff60b5a939
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467177"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658967"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Archivace protokolů prostředků Azure do účtu úložiště
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé.  Tento článek popisuje, jak shromažďovat protokoly platforem pro účet služby Azure Storage a uchovávat data pro archivaci.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pokud ještě nemáte [účet úložiště Azure](../../storage/common/storage-account-create.md) , musíte ho vytvořit. Účet úložiště nemusí být ve stejném předplatném jako prostředek odesílající protokoly, pokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC k oběma předplatným.
 
 

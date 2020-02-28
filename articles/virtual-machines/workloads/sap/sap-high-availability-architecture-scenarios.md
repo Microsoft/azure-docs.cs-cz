@@ -1,10 +1,10 @@
 ---
-title: Architektura a scénáře s vysokou dostupností pro Azure Virtual Machines pro SAP NetWeaver | Microsoft Docs
+title: Architektura a scénáře HA virtuálních počítačů Azure pro SAP NetWeaver | Microsoft Docs
 description: Architektura a scénáře s vysokou dostupností pro SAP NetWeaver v Azure Virtual Machines
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/21/2019
-ms.author: rclaus
+ms.date: 02/26/2020
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 08f770ced6cb1ec1102159788e1583d481436b08
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291477"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672493"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architektura a scénáře s vysokou dostupností pro SAP NetWeaver
 
@@ -249,7 +249,7 @@ Vysoká dostupnost SAP v Azure může být rozdělená na tři typy:
 
 * **Vysoká dostupnost aplikace SAP**: 
 
-    Pro zajištění vysoké dostupnosti systému SAP je nutné chránit všechny důležité součásti systému SAP. Například:
+    Pro zajištění vysoké dostupnosti systému SAP je nutné chránit všechny důležité součásti systému SAP. Příklad:
     * Redundantní aplikační servery SAP.
     * Jedinečné součásti. Příkladem může být komponenta s jedním bodem selhání (SPOF), jako je například instance SAP ASCS/SCS nebo systém správy databáze (DBMS).
 
@@ -267,7 +267,7 @@ Základem pro výpočet je 30 dní za měsíc nebo 43 200 minut. Například vý
 
 (Služba dostupnosti #1/100) * (služba dostupnosti #2/100) * (služba dostupnosti #3/100) \*...
 
-Například:
+Příklad:
 
 (99,95/100) * (99,9/100) * (99,9/100) = 0,9975 nebo Celková dostupnost 99,75%.
 
@@ -334,7 +334,7 @@ Další informace o tomto přístupu najdete v tématu [využití restartování
 
 ## <a name="baed0eb3-c662-4405-b114-24c10a62954e"></a>Vysoká dostupnost aplikací SAP v Azure IaaS
 
-Pro zajištění vysoké dostupnosti systému SAP je nutné chránit všechny důležité součásti systému SAP. Například:
+Pro zajištění vysoké dostupnosti systému SAP je nutné chránit všechny důležité součásti systému SAP. Příklad:
   * Redundantní aplikační servery SAP.
   * Jedinečné součásti. Příkladem může být komponenta s jedním bodem selhání (SPOF), jako je například instance SAP ASCS/SCS nebo systém správy databáze (DBMS).
 
@@ -391,6 +391,8 @@ K ochraně instance SAP ASCS/SCS můžete použít řešení služby WSFC. Řeš
 
 * Vytvořte **cluster instance SAP ASCS/SCS pomocí sdílené složky**: Další informace o této architektuře najdete v tématu věnovaném vytvoření [instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí sdílené složky][sap-high-availability-guide-wsfc-file-share].
 
+* Vytvořte **cluster instance SAP ASCS/SCS pomocí ANF sdílené složky SMB**: Další informace o této architektuře najdete v tématu cluster clusterů: [instance SAP ASCS/SCS v clusteru s podporou převzetí služeb při selhání systému Windows pomocí ANF sdílené složky protokolu SMB](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-windows-netapp-files-smb).
+
 ### <a name="high-availability-architecture-for-an-sap-ascsscs-instance-on-linux"></a>Architektura vysoké dostupnosti pro instanci SAP ASCS/SCS v systému Linux
 
 > ![Linux][Logo_Linux] Linux
@@ -404,13 +406,21 @@ Další informace o clusteringu instance SAP ASCS/SCS pomocí architektury syst�
 
 > ![Windows][Logo_Windows] Windows
 > 
-> V současné době je více identifikátorů SID podporováno pouze pomocí služby WSFC. Více než SID se podporuje pomocí sdílené složky a sdíleného disku.
+> Pro službu WSFC je podporována podpora více identifikátorů SID pomocí sdílené složky a sdíleného disku.
 > 
-> Další informace o architektuře s vysokou dostupností více SID najdete v těchto tématech:
+> Další informace o architektuře s vysokou dostupností ve Windows pro více SID najdete v těchto tématech:
 
 * [Vysoká dostupnost služby SAP ASCS/SCS instance multi-SID pro clustering s podporou převzetí služeb při selhání Windows serveru a sdílení souborů][sap-ascs-ha-multi-sid-wsfc-file-share]
 
 * [Vysoká dostupnost služby SAP ASCS/SCS instance multi-SID pro clustering s podporou převzetí služeb při selhání a sdílený disk s Windows serverem][sap-ascs-ha-multi-sid-wsfc-shared-disk]
+
+> ![Linux][Logo_Linux] Linux
+> 
+> Clustering s více identifikátory SID je podporován v clusterech se systémem Linux Pacemaker pro SAP ASCS/OLAJÍCÍCH, které jsou omezeny na **pět** identifikátorů SID SAP ve stejném clusteru.
+> Další informace o architektuře s vysokou dostupností s více SID v systému Linux najdete v těchto tématech:
+
+* [HA pro SAP NW na virtuálních počítačích Azure v SLES pro aplikace SAP – příručka pro multi-SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
+* [HA pro SAP NW na virtuálních počítačích Azure v RHEL pro aplikace SAP – příručka pro multi-SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 
 ### <a name="high-availability-dbms-instance"></a>Instance DBMS s vysokou dostupností
 

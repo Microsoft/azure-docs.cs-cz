@@ -1,7 +1,6 @@
 ---
 title: Monitorování mobilních aplikací pomocí Azure Monitor Application Insights
 description: Poskytuje pokyny pro rychlé nastavení mobilní aplikace pro monitorování pomocí Azure Monitor Application Insights a App Center
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
@@ -9,12 +8,12 @@ ms.author: mbullwin
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 07e162dc74a514c9e7e6c82c38b51460a2f797fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a59a6841a1db3cecfe52c54135b42f5b6a095ce3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398891"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660287"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Začínáme s analýzou mobilní aplikace pomocí App Center a Application Insights
 
@@ -27,7 +26,7 @@ K dokončení tohoto rychlého startu je potřeba:
 - Předplatné Azure.
 - Aplikace pro iOS nebo Android, aplikace Xamarin, univerzální aplikace pro Windows nebo aplikace React Native.
  
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-up-with-app-center"></a>Zaregistrujte se App Center
 Začněte tím, že vytvoříte účet a [Zaregistrujte se App Center](https://appcenter.ms/signup?utm_source=ApplicationInsights&utm_medium=Azure&utm_campaign=docs).
@@ -68,7 +67,7 @@ Pokud chcete ověřit přijímání vlastních událostí, přejděte v App Cent
 
 Jakmile vaše aplikace odesílá vlastní události a App Center tyto události přijímá, je potřeba na webu Azure Portal vytvořit prostředek Application Insights typu App Center:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 2. Vyberte **Vytvořit prostředek** > **Vývojářské nástroje** > **Application Insights**.
 
     > [!NOTE]
@@ -82,7 +81,7 @@ Jakmile vaše aplikace odesílá vlastní události a App Center tyto události 
      | **Skupina prostředků**     | Nová skupina prostředků nebo existující skupina prostředků z nabídky | Skupina prostředků, ve které se má vytvořit nový prostředek Application Insights |
    | **Umístění** | Umístění z nabídky | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
-3. Klikněte na **Vytvořit**.
+3. Klikněte na možnost **Vytvořit**.
 
 Pokud vaše aplikace podporuje více platforem (iOS, Android atd.), je vhodné vytvořit pro každou platformu samostatný prostředek Application Insights.
 

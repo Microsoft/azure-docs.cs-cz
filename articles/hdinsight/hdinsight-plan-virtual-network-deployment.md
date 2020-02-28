@@ -5,25 +5,25 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.custom: hdinsightactive
+ms.date: 02/25/2020
+ms.openlocfilehash: 30664d533215cb49fa6f436ec4cf88fa319c3300
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044709"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659862"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Plánování virtuální sítě pro Azure HDInsight
 
-Tento článek poskytuje základní informace o používání Azure [Virtual Networks](../virtual-network/virtual-networks-overview.md) s Azure HDInsight. Popisuje také rozhodnutí o návrhu a implementaci, která je nutné provést předtím, než budete moci implementovat virtuální síť pro cluster HDInsight. Po dokončení fáze plánování můžete pokračovat v [vytváření virtuálních sítí pro clustery Azure HDInsight](hdinsight-create-virtual-network.md). Další informace o IP adresách pro správu HDInsight potřebných ke správné konfiguraci skupin zabezpečení sítě a uživatelem definovaných tras najdete v tématu [IP adresy správy HDInsight](hdinsight-management-ip-addresses.md).
+Tento článek poskytuje základní informace o používání [Azure Virtual Networks](../virtual-network/virtual-networks-overview.md) (virtuální sítě) se službou Azure HDInsight. Popisuje také rozhodnutí o návrhu a implementaci, která je nutné provést předtím, než budete moci implementovat virtuální síť pro cluster HDInsight. Po dokončení fáze plánování můžete pokračovat v [vytváření virtuálních sítí pro clustery Azure HDInsight](hdinsight-create-virtual-network.md). Další informace o IP adresách pro správu HDInsight, které jsou potřeba ke správné konfiguraci skupin zabezpečení sítě (skupin zabezpečení sítě) a uživatelem definovaných tras, najdete v článku [IP adresy správy HDInsight](hdinsight-management-ip-addresses.md).
 
 Použití Azure Virtual Network umožňuje následující scénáře:
 
 * Připojení ke službě HDInsight přímo z místní sítě.
 * Připojení HDInsight k úložištím dat ve službě Azure Virtual Network.
-* Přímý přístup k [Apache Hadoop](https://hadoop.apache.org/) službám, které nejsou veřejně dostupné po internetu. Například [Apache Kafka](https://kafka.apache.org/) rozhraní API nebo rozhraní [Apache HBA](https://hbase.apache.org/) Java API.
+* Přímý přístup k Apache Hadoop službám, které nejsou veřejně dostupné po internetu. Například Apache Kafka rozhraní API nebo rozhraní Apache HBA Java API.
 
 > [!IMPORTANT]
 > Při vytváření clusteru HDInsight ve virtuální síti se vytvoří několik síťových prostředků, jako jsou síťové karty a nástroje pro vyrovnávání zatížení. Tyto síťové prostředky **neodstraňujte** , protože jsou potřeba pro správné fungování clusteru s virtuální sítí.
@@ -64,19 +64,19 @@ Pomocí kroků v této části zjistíte, jak přidat novou službu HDInsight do
 2. Používáte skupiny zabezpečení sítě, trasy definované uživatelem nebo zařízení Virtual Network pro omezení provozu do nebo z virtuální sítě?
 
     Jako spravovaná služba HDInsight vyžaduje neomezený přístup k několika IP adresám v datovém centru Azure. Pokud chcete komunikaci s těmito IP adresami dovolit, aktualizujte všechny existující skupiny zabezpečení sítě nebo trasy definované uživatelem.
-    
-    Služba HDInsight hostuje několik služeb, které používají různé porty. Neblokovat provoz na tyto porty. Seznam portů, které mají být povoleny prostřednictvím bran firewall pro virtuální zařízení, naleznete v části zabezpečení.
-    
+
+    Služba HDInsight hostuje několik služeb, které používají různé porty. Neblokujte provoz na tyto porty. Seznam portů, které mají být povoleny prostřednictvím bran firewall pro virtuální zařízení, naleznete v části zabezpečení.
+
     Pokud chcete najít stávající konfiguraci zabezpečení, použijte následující Azure PowerShell nebo příkazy rozhraní příkazového řádku Azure CLI:
 
     * Skupiny zabezpečení sítě
 
         Nahraďte `RESOURCEGROUP` názvem skupiny prostředků, která obsahuje virtuální síť, a pak zadejte příkaz:
-    
+
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
         ```
-    
+
         ```azurecli
         az network nsg list --resource-group RESOURCEGROUP
         ```
@@ -125,7 +125,7 @@ Azure poskytuje překlad adres IP pro služby Azure, které jsou nainstalované 
 
     Oba tyto uzly můžou komunikovat přímo mezi sebou a dalšími uzly v HDInsight pomocí interních názvů DNS.
 
-Výchozí rozlišení názvů __neumožňuje službě__ HDInsight přeložit názvy prostředků v sítích, které jsou připojené k virtuální síti. Například je běžné připojení k místní síti k virtuální síti. Služba HDInsight nemůže získat přístup k prostředkům v místní síti jenom s výchozím překladem IP adres podle názvu. Opak má také hodnotu true, prostředky v místní síti nemají přístup k prostředkům ve virtuální síti podle názvu.
+Výchozí rozlišení názvů __neumožňuje službě__ HDInsight přeložit názvy prostředků v sítích, které jsou připojené k virtuální síti. Například je běžné připojení k místní síti k virtuální síti. Služba HDInsight nemůže získat přístup k prostředkům v místní síti pouze s výchozím překladem IP adres podle názvu. Opak je také true, prostředky v místní síti nemůžou přistupovat k prostředkům ve virtuální síti podle názvu.
 
 > [!WARNING]  
 > Před vytvořením clusteru HDInsight musíte vytvořit vlastní server DNS a nakonfigurovat virtuální síť tak, aby se používala.
@@ -141,7 +141,7 @@ Chcete-li povolit překlad názvů mezi virtuální sítí a prostředky v přip
 4. Nakonfigurujte přesměrování mezi servery DNS. Konfigurace závisí na typu vzdálené sítě.
 
    * Pokud je vzdálená síť místní sítí, nakonfigurujte DNS následujícím způsobem:
-        
+
      * __Vlastní DNS__ (ve virtuální síti):
 
          * Dodejte požadavky na příponu DNS virtuální sítě do rekurzivního překladače Azure (168.63.129.16). Azure zpracovává požadavky na prostředky ve virtuální síti.
@@ -235,12 +235,12 @@ Další informace o řízení odchozího provozu z clusterů HDInsight najdete v
 
 #### <a name="forced-tunneling-to-on-premises"></a>Vynucené tunelové propojení do místního prostředí
 
-Vynucené tunelování je uživatelem definovaná konfigurace směrování, kdy se veškerý provoz z podsítě připravuje na určitou síť nebo umístění, jako je například vaše místní síť. HDInsight nepodporuje vynucené tunelování provozu do místních sítí. 
+Vynucené tunelování je uživatelem definovaná konfigurace směrování, kdy se veškerý provoz z podsítě připravuje na určitou síť nebo umístění, jako je například vaše místní síť. HDInsight nepodporuje vynucené tunelování provozu do místních sítí.
 
 ## <a id="hdinsight-ip"></a>Požadované IP adresy
 
-Pokud k řízení provozu používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, přečtěte si prosím [IP adresy správy HDInsight](hdinsight-management-ip-addresses.md).
-    
+Pokud ke kontrole provozu používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, přečtěte si téma [IP adresy správy HDInsight](hdinsight-management-ip-addresses.md).
+
 ## <a id="hdinsight-ports"></a>Požadované porty
 
 Pokud máte v úmyslu používat **bránu firewall** a přistupovat ke clusteru mimo jiné na určitých portech, budete možná muset na těchto portech, které jsou potřeba pro váš scénář, zapnout provoz. Ve výchozím nastavení se nevyžaduje žádný zvláštní seznam povolených portů, pokud provoz správy Azure, který je vysvětlen v předchozí části, má povolený přístup ke clusteru na portu 443.
@@ -251,13 +251,16 @@ Další informace o pravidlech brány firewall pro virtuální zařízení najde
 
 ## <a name="load-balancing"></a>Vyrovnávání zatížení
 
-Při vytváření clusteru HDInsight se vytvoří taky Nástroj pro vyrovnávání zatížení. Typ tohoto nástroje pro vyrovnávání zatížení se nachází na [základní úrovni SKU](../load-balancer/concepts-limitations.md#skus) , která má určitá omezení. Jedním z těchto omezení je, že pokud máte dvě virtuální sítě v různých oblastech, nemůžete se připojit k základním nástrojům pro vyrovnávání zatížení. Další informace najdete v tématu [Nejčastější dotazy k virtuálním sítím VNet: omezení globálního partnerského vztahu virtuálních sítí](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+Při vytváření clusteru HDInsight se vytvoří taky Nástroj pro vyrovnávání zatížení. Typ tohoto nástroje pro vyrovnávání zatížení je na [základní úrovni SKU](../load-balancer/concepts-limitations.md#skus), která má určitá omezení. Jedním z těchto omezení je, že pokud máte dvě virtuální sítě v různých oblastech, nemůžete se připojit k základním nástrojům pro vyrovnávání zatížení. Další informace najdete v tématu [Nejčastější dotazy k virtuálním sítím VNet: omezení globálního partnerského vztahu virtuálních sítí](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
-## <a name="transport-layer-security"></a>Zabezpečení transportní vrstvy (TLS)
+## <a name="transport-layer-security"></a>Transport Layer Security
 
 Připojení ke clusteru prostřednictvím koncového bodu veřejného clusteru `https://<clustername>.azurehdinsight.net` jsou proxy serverem prostřednictvím uzlů brány clusteru. Tato připojení jsou zabezpečená pomocí protokolu s názvem TLS. Vynucování vyšších verzí TLS u bran vylepšuje zabezpečení těchto připojení. Další informace o tom, proč byste měli používat novější verze protokolu TLS, najdete v tématu [řešení problému s protokolem tls 1,0](https://docs.microsoft.com/security/solving-tls1-problem).
 
-Pomocí vlastnosti *minSupportedTlsVersion* v šabloně Resource Manageru v době nasazení můžete řídit minimální verze TLS podporované v uzlech brány pro cluster HDInsight. Ukázkovou šablonu najdete v článku o [1,2 šablony pro rychlé zprovoznění HDInsight minima](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Tato vlastnost podporuje tři hodnoty: "1,0", "1,1" a "1,2", které odpovídají TLS 1.0 +, TLS 1.1 + a TLS 1.2 +. Ve výchozím nastavení bez zadání této vlastnosti clustery Azure HDInsight přijímají připojení TLS 1,2 k veřejným koncovým bodům HTTPS a také starší verze z důvodu zpětné kompatibility. HDInsight bude nakonec vyhovět TLS 1,2 nebo novějším ve všech připojeních uzlu brány.
+Ve výchozím nastavení clustery Azure HDInsight přijímají připojení TLS 1,2 k veřejným koncovým bodům HTTPS a také ke starším verzím pro zpětnou kompatibilitu. Minimální verzi TLS podporovanou v uzlech brány můžete řídit během vytváření clusteru pomocí Azure Portal nebo šablony Resource Manageru. V případě portálu vyberte během vytváření clusteru verzi TLS z karty **zabezpečení + sítě** . Pro šablonu Resource Manageru v době nasazení použijte vlastnost **minSupportedTlsVersion** . Ukázkovou šablonu najdete v článku o [1,2 šablony pro rychlé zprovoznění HDInsight minima](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Tato vlastnost podporuje tři hodnoty: "1,0", "1,1" a "1,2", které odpovídají TLS 1.0 +, TLS 1.1 + a TLS 1.2 +.
+
+> [!IMPORTANT]
+> Od 30. června 2020 bude Azure HDInsight vymáhat TLS 1,2 nebo novější verzi pro všechna připojení HTTPS. Doporučujeme, abyste zajistili, že všichni klienti jsou připraveni na zpracování TLS 1,2 nebo novějších verzí. Další informace najdete v tématu [vynucení pro Azure HDInsight TLS 1,2](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/).
 
 ## <a name="next-steps"></a>Další kroky
 

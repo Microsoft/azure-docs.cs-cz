@@ -7,14 +7,14 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 543227ac9c07207112177dfaccbd00723b61a314
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: c2c909d8ef2be982d4dd4a70b5f35d03e8e71418
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566397"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659964"
 ---
-# <a name="upgrade-azure-internal-load-balancer-from-basic-sku-to-standard-sku"></a>Upgradovat interní Load Balancer Azure z úrovně Basic SKU na standard SKU
+# <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Upgradovat interní Load Balancer Azure – nevyžaduje se žádné odchozí připojení.
 [Azure Standard Load Balancer](load-balancer-overview.md) nabízí bohatou sadu funkcí a vysokou dostupnost prostřednictvím redundance zóny. Další informace o Load Balancer SKU najdete v tématu [srovnávací tabulka](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
 
 Existují dva fáze upgradu:
@@ -28,12 +28,12 @@ Tento článek popisuje migraci konfigurace. Přidávání virtuálních počít
 
 K dispozici je skript Azure PowerShell, který provede následující akce:
 
-* Vytvoří standardní interní SKU Load Balancer ve skupině prostředků a umístění, které zadáte.
-* Bezproblémově kopíruje konfiguraci interního Load Balancer základní skladové položky do nově vytvořeného interního Load Balanceru Standard.
+* Vytvoří standardní interní SKU Load Balancer v umístění, které zadáte. Všimněte si, že standardní interní Load Balancer nebude poskytovat žádné [odchozí připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) .
+* Bezproblémově kopíruje konfiguraci základní SKU Load Balancer nově vytvořeným Standard Load Balancer.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* Skript podporuje pouze interní Load Balancer upgrade. Pro interní základní Load Balancer upgrade vytvořte standardní interní Load Balancer, pokud je odchozí připojení nežádoucí, a vytvořte standardní interní Load Balancer a standardní interní Load Balancer, pokud se vyžaduje odchozí připojení.
+* Skript podporuje pouze interní Load Balancer upgrade, pokud není nutné žádné odchozí připojení. Pokud jste pro některé z vašich virtuálních počítačů vyžádali [odchozí připojení](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) , přečtěte si prosím na této [stránce](upgrade-InternalBasic-To-PublicStandard.md) pokyny. 
 * Standard Load Balancer má nové veřejné adresy. Je možné, že nebudete moct bez problémů přesunout IP adresy přidružené k existujícím základním Load Balancerm Standard Load Balancer, protože mají jiné SKU.
 * Pokud se standardní nástroj pro vyrovnávání zatížení vytvoří v jiné oblasti, nebudete moct k nově vytvořeným Standard Load Balancer přidružit virtuální počítače existující ve staré oblasti. Pokud chcete toto omezení obejít, nezapomeňte vytvořit nový virtuální počítač v nové oblasti.
 * Pokud vaše Load Balancer nemá front-end IP konfiguraci ani back-end fond, pravděpodobně při spuštění skriptu dojde k chybě. Ujistěte se prosím, že nejsou prázdné.
@@ -81,7 +81,7 @@ Spuštění skriptu:
     **Příklad**
 
    ```azurepowershell
-   ./AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Přidání virtuálních počítačů do back-endovéch fondů Standard Load Balancer

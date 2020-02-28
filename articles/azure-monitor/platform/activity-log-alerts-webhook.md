@@ -1,18 +1,15 @@
 ---
 title: Pochopení schématu Webhooku používaného v upozorněních protokolu aktivit
 description: Přečtěte si o schématu JSON, které se pošle na adresu URL Webhooku, když se aktivuje výstraha protokolu aktivit.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/31/2017
-ms.openlocfilehash: eb43db7a67063622f6a6125178267573cd209471
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.subservice: alerts
+ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748797"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669042"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooky pro výstrahy protokolu aktivit Azure
 V rámci definice skupiny akcí můžete nakonfigurovat koncové body Webhooku tak, aby přijímaly oznámení o výstrahách protokolu aktivit. Pomocí webhooků můžete tato oznámení směrovat do jiných systémů pro následné zpracování nebo vlastní akce. V tomto článku se dozvíte, jak se datová část příspěvku HTTP na Webhook líbí.
@@ -60,7 +57,7 @@ Datová část JSON obsažená v operaci POST se liší v závislosti na poli da
 }
 ```
 
-### <a name="administrative"></a>Správa
+### <a name="administrative"></a>Pro správu
 
 ```json
 {
@@ -259,18 +256,18 @@ Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení 
 
 | Název elementu | Popis |
 | --- | --- |
-| status |Používá se pro výstrahy metriky. Pro výstrahy protokolu aktivit vždycky nastavte na aktivované. |
+| stav |Používá se pro výstrahy metriky. Pro výstrahy protokolu aktivit vždycky nastavte na aktivované. |
 | context |Kontext události |
 | resourceProviderName |Poskytovatel prostředků ovlivněného prostředku. |
 | conditionType |Vždy "Event" |
-| jméno |Název pravidla výstrahy. |
+| name |Název pravidla výstrahy. |
 | id |ID prostředku výstrahy |
 | description |Popis výstrahy nastavený při vytvoření výstrahy |
 | subscriptionId |ID předplatného Azure. |
 | časové razítko |Čas, kdy byla událost vygenerována službou Azure, která zpracovala požadavek. |
 | resourceId |ID prostředku ovlivněného prostředku |
 | resourceGroupName |Název skupiny prostředků pro ovlivněný prostředek. |
-| properties |Sada dvojic `<Key, Value>` (tj. `Dictionary<String, String>`), která obsahuje podrobnosti o události. |
+| vlastnosti |Sada dvojic `<Key, Value>` (tj. `Dictionary<String, String>`), která obsahuje podrobnosti o události. |
 | událost |Prvek, který obsahuje metadata o události. |
 | authorization |Vlastnosti události Access Control na základě rolí. Tyto vlastnosti obvykle zahrnují akci, roli a obor. |
 | category |Kategorie události Mezi podporované hodnoty patří administrativní, výstraha, zabezpečení, ServiceHealth a doporučení. |
@@ -280,11 +277,11 @@ Podrobnosti o konkrétním schématu pro výstrahy protokolu aktivit oznámení 
 | eventDataId |Jedinečný identifikátor události |
 | eventSource |Název služby nebo infrastruktury Azure, která událost vygenerovala. |
 | httpRequest |Požadavek obvykle zahrnuje metodu ID žádosti klienta, clientIpAddress a HTTP (například PUT). |
-| úroveň |Jedna z následujících hodnot: kritická, chyba, upozornění a informativní. |
+| level |Jedna z následujících hodnot: kritická, chyba, upozornění a informativní. |
 | operationId |Identifikátor GUID se obvykle sdílí mezi událostmi, které odpovídají jedné operaci. |
 | operationName |Název operace |
-| properties |Vlastnosti události |
-| status |Řetězec. Stav operace. Mezi běžné hodnoty patří počáteční, probíhající, úspěšná, neúspěšná, aktivní a vyřešená. |
+| vlastnosti |Vlastnosti události |
+| stav |Řetězec. Stav operace. Mezi běžné hodnoty patří počáteční, probíhající, úspěšná, neúspěšná, aktivní a vyřešená. |
 | subStatus |Obvykle zahrnuje stavový kód HTTP odpovídajícího volání REST. Může také obsahovat další řetězce, které popisují dílčí stav. Mezi běžné hodnoty substavu patří OK (kód stavu HTTP: 200), Vytvořeno (kód stavu HTTP: 201), přijato (kód stavu HTTP: 202), žádný obsah (kód stavu HTTP: 204), chybný požadavek (kód stavu http: 400), nenalezen (Stavový kód http: 404), konflikt (kód stavu http: 409). ), Interní chyba serveru (kód stavu HTTP: 500), nedostupná služba (kód stavu HTTP: 503) a časový limit brány (kód stavu HTTP: 504). |
 
 Konkrétní podrobnosti o schématu pro všechny ostatní výstrahy protokolu aktivit najdete v tématu [Přehled protokolu aktivit Azure](../../azure-monitor/platform/platform-logs-overview.md).

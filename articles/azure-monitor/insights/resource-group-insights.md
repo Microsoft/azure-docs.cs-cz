@@ -1,23 +1,22 @@
 ---
 title: Azure Monitor přehledy skupiny prostředků | Microsoft Docs
 description: Pochopte stav a výkon distribuovaných aplikací a služeb na úrovni skupiny prostředků pomocí Azure Monitor
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: fba94a5e723bfbc2719b3b4cf5cd130eda382276
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6d97e40bf2bf2298fb53609621db8ff2c6f1038f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553991"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663534"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitorování skupin prostředků pomocí Azure Monitor (Preview)
 
-Moderní aplikace jsou často složité a vysoce distribuované s mnoha diskrétními částmi, které dohromady spolupracují za účelem poskytování služby. Při rozpoznávání této složitosti Azure Monitor poskytuje přehledy monitorování pro skupiny prostředků. Díky tomu je možné snadno posoudit a diagnostikovat všechny problémy, ke kterým dojde, a současně se zaměřením na stav a výkon skupiny prostředků &mdash;and vaší aplikace &mdash;as celou dobu.
+Moderní aplikace jsou často složité a vysoce distribuované s mnoha diskrétními částmi, které dohromady spolupracují za účelem poskytování služby. Při rozpoznávání této složitosti Azure Monitor poskytuje přehledy monitorování pro skupiny prostředků. Díky tomu je možné snadno posoudit a diagnostikovat všechny problémy, ke kterým dojde, a současně nabídnout kontext jako stav a výkon skupiny prostředků&mdash;a vaše aplikace&mdash;jako celek.
 
 ## <a name="access-insights-for-resource-groups"></a>Přístup k přehledům pro skupiny prostředků
 
@@ -60,7 +59,7 @@ Karty **výkon** a **selhání** zjednodušují tento proces tím, že se pro mn
 
 Většina typů prostředků otevře galerii šablon sešitu Azure Monitor. Každý sešit, který vytvoříte, můžete přizpůsobit, uložit, sdílet s týmem a znovu použít v budoucnu k diagnostice podobných problémů.
 
-### <a name="investigate-failures"></a>Prozkoumat selhání
+### <a name="investigate-failures"></a>Prověřit chyby
 
 Pokud chcete otestovat kartu chyby, v nabídce na levé straně vyberte **selhání** v části **prozkoumat** .
 
@@ -96,7 +95,7 @@ Tím se odhalí základní dotaz protokolu, který řídí vizualizaci tabulky.
 
 Dotaz můžete změnit přímo. Nebo ho můžete použít jako referenci a při navrhování vlastního parametrizovaného sešitu ho z něho vypůjčit.
 
-### <a name="investigate-performance"></a>Prozkoumat výkon
+### <a name="investigate-performance"></a>Prověřit výkon
 
 Výkon nabízí svou vlastní galerii sešitů. Pro App Service sešit výkonu předem sestavené aplikace nabízí následující zobrazení:
 
@@ -106,7 +105,7 @@ V takovém případě, pokud vyberete možnost upravit, uvidíte, že se tato sa
 
  ![Snímek obrazovky s zobrazeními výkonu a metrikami Azure](./media/resource-group-insights/0012-performance-metrics.png)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 ### <a name="enabling-access-to-alerts"></a>Povolení přístupu k výstrahám
 

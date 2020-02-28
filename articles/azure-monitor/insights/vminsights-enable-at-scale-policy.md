@@ -1,18 +1,17 @@
 ---
 title: Povolit Azure Monitor pro virtuální počítače pomocí Azure Policy | Microsoft Docs
 description: Tento článek popisuje, jak povolit Azure Monitor pro virtuální počítače pro více virtuálních počítačů Azure nebo služby Virtual Machine Scale Sets pomocí Azure Policy.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: d9458230d07c1c40a3eec2d51879f58fac6543b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 267072b06d936822eae7e7257d62566a020471bb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365814"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656224"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Povolit Azure Monitor pro virtuální počítače (Preview) pomocí Azure Policy
 
@@ -71,15 +70,15 @@ Povolení monitorování Azure pro virtuální počítače s využitím zásad A
 - Přiřaďte iniciativu k oboru: skupina pro správu, předplatné nebo skupinu prostředků.
 - Kontrola a náprava výsledků dodržování předpisů.
 
-Další informace o přiřazování zásad Azure najdete v tématu [Přehled služby Azure Policy](../../governance/policy/overview.md#policy-assignment) a zkontrolujte [přehled skupin pro správu](../../governance/management-groups/overview.md) předtím, než budete pokračovat.
+Další informace o přiřazování Azure Policy naleznete v tématu [Azure Policy Overview](../../governance/policy/overview.md#policy-assignment) a Projděte si [Přehled skupin pro správu](../../governance/management-groups/overview.md) , než budete pokračovat.
 
 ### <a name="policies-for-azure-vms"></a>Zásady pro virtuální počítače Azure
 
 Definice zásad pro virtuální počítač Azure jsou uvedené v následující tabulce.
 
-|Name (Název) |Popis |Typ |
+|Název |Popis |Typ |
 |-----|------------|-----|
-|\[Ve verzi Preview\]: Povolit monitorování Azure pro virtuální počítače |Povolí Azure Monitor pro virtuální počítače v zadaném oboru (skupina pro správu, předplatné nebo skupina prostředků). Jako parametr používá pracovní prostor Log Analytics. |Iniciativa |
+|\[Preview\]: Povolit Azure Monitor pro virtuální počítače |Povolí Azure Monitor pro virtuální počítače v zadaném oboru (skupina pro správu, předplatné nebo skupina prostředků). Jako parametr používá pracovní prostor Log Analytics. |Iniciativa |
 |\[Preview\]: nasazení agenta závislostí auditu – image virtuálního počítače (OS) není v seznamu. |Hlásí virtuální počítače jako nedodržující předpisy, pokud image virtuálního počítače (OS) není v seznamu definovaná a Agent není nainstalovaný. |Zásady |
 |\[Preview\]: nasazení agenta Log Analytics auditu – image virtuálního počítače (OS) bez seznamu |Hlásí virtuální počítače jako nedodržující předpisy, pokud image virtuálního počítače (OS) není v seznamu definovaná a Agent není nainstalovaný. |Zásady |
 |\[Preview\]: nasazení agenta závislostí pro virtuální počítače se systémem Linux |Nasaďte agenta závislostí pro virtuální počítače se systémem Linux, pokud je image virtuálního počítače definovaná v seznamu a Agent není nainstalovaný. |Zásady |
@@ -91,7 +90,7 @@ Definice zásad pro virtuální počítač Azure jsou uvedené v následující 
 
 Definice zásad pro sadu škálování virtuálního počítače Azure jsou uvedené v následující tabulce.
 
-|Name (Název) |Popis |Typ |
+|Název |Popis |Typ |
 |-----|------------|-----|
 |\[Preview\]: povolení Azure Monitor pro Virtual Machine Scale Sets |Povolte Azure Monitor pro sadu škálování virtuálního počítače v zadaném oboru (skupina pro správu, předplatné nebo skupinu prostředků). Jako parametr používá pracovní prostor Log Analytics. Poznámka: Pokud je vaše zásada upgradu sady škálování nastavená na ruční, použijte rozšíření na všechny virtuální počítače v sadě voláním upgradu. V rozhraní příkazového řádku je to `az vmss update-instances`. |Iniciativa |
 |\[Preview\]: nasazení agenta závislostí auditu ve Virtual Machine Scale Sets – image virtuálního počítače (OS) není v seznamu. |Hlásí sadu virtuálních počítačů s měřítkem jako nedodržující předpisy, pokud image virtuálního počítače není v seznamu definovaná a Agent není nainstalovaný. |Zásady |
@@ -103,19 +102,19 @@ Definice zásad pro sadu škálování virtuálního počítače Azure jsou uved
 
 Samostatné zásady (není zahrnutá v iniciativě) je popsaný tady:
 
-|Name (Název) |Popis |Typ |
+|Název |Popis |Typ |
 |-----|------------|-----|
 |\[Preview\]: pracovní prostor pro audit Log Analytics pro virtuální počítač – neshoda sestavy |Vykázat virtuální počítače jako nedodržující předpisy, pokud se neprotokolují do Log Analyticsho pracovního prostoru zadaného v přiřazení zásady nebo iniciativy. |Zásady |
 
 ### <a name="assign-the-azure-monitor-initiative"></a>Přiřadit iniciativu Azure Monitor
 
-Pokud chcete vytvořit přiřazení zásad na stránce **Azure monitor pro virtuální počítače pokrytí zásad** , postupujte podle těchto kroků. Jak provést tyto kroky najdete v tématu [vytvoření přiřazení zásady z portálu Azure portal](../../governance/policy/assign-policy-portal.md).
+Pokud chcete vytvořit přiřazení zásad na stránce **Azure monitor pro virtuální počítače pokrytí zásad** , postupujte podle těchto kroků. Pokud chcete zjistit, jak tento postup provést, přečtěte si téma [vytvoření přiřazení zásady z Azure Portal](../../governance/policy/assign-policy-portal.md).
 
 Když přiřadíte zásadu nebo iniciativu, může být obor vybraný v přiřazení oborem uvedeným zde nebo podmnožinou. Například jste mohli vytvořit přiřazení pro předplatné (rozsah zásad), nikoli skupinu pro správu (rozsah pokrytí). V takovém případě procento pokrytí by znamenalo, že virtuální počítače v oboru zásad nebo iniciativy jsou dělené virtuálními počítači v oboru pokrytí. V jiném případě jste možná vyloučili některé virtuální počítače nebo skupiny prostředků nebo předplatné z oboru zásad. Pokud je prázdný, znamená to, že buď zásada nebo podnět neexistuje, nebo nemáte oprávnění. Informace jsou k dispozici v části **stav přiřazení**.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
-2. Na webu Azure Portal, vyberte **monitorování**. 
+2. V Azure Portal vyberte **monitorovat**. 
 
 3. V části **přehledy** vyberte **Virtual Machines (Preview)** .
  
@@ -126,16 +125,16 @@ Když přiřadíte zásadu nebo iniciativu, může být obor vybraný v přiřaz
 6. Na stránce **přiřazení Azure Policy** je předem vyplněný s iniciativou **Enable Azure monitor pro virtuální počítače**. 
     Pole **název přiřazení** se automaticky vyplní názvem iniciativy, ale můžete ho změnit. Můžete také přidat volitelný popis. Pole **přiřazeno podle** je automaticky vyplněno na základě toho, kdo je přihlášen. Tato hodnota je volitelná.
 
-7. (Volitelné) Chcete-li odebrat jednu nebo více prostředků z oboru, vyberte **vyloučení**.
+7. Volitelné Chcete-li odebrat jeden nebo více prostředků z oboru, vyberte možnost **vyloučení**.
 
-8. V **pracovní prostor Log Analytics** rozevírací seznam pro podporované oblasti, vyberte pracovní prostor.
+8. V rozevíracím seznamu **Log Analytics pracovní prostor** pro podporovanou oblast vyberte pracovní prostor.
 
    > [!NOTE]
-   > Pokud pracovní prostor je mimo rozsah přiřazení, udělit *Přispěvatel Log Analytics* oprávnění ID přiřazení zásady instanční objekt. Pokud to neuděláte, může se zobrazit chyba nasazení, například `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...` pro udělení přístupu, přečtěte si, [Jak ručně nakonfigurovat spravovanou identitu](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
+   > Pokud je tento pracovní prostor nad rámec přiřazení, udělte Log Analytics oprávnění *Přispěvatel* k ID objektu zabezpečení přiřazení zásad. Pokud to neuděláte, může se zobrazit chyba nasazení, například `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...` pro udělení přístupu, přečtěte si, [Jak ručně nakonfigurovat spravovanou identitu](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
    > 
    >  Je zaškrtnuto políčko **spravovaná identita** , protože přiřazená iniciativa zahrnuje zásadu s *deployIfNotExists* účinkem.
     
-9. V **spravovat Identity umístění** rozevíracího seznamu vyberte příslušnou oblast.
+9. V rozevíracím seznamu **spravovat umístění identity** vyberte příslušnou oblast.
 
 10. Vyberte **Přiřadit**.
 
@@ -145,10 +144,10 @@ Následující matice mapuje všechny možné stavy dodržování předpisů pro
 
 | Stav dodržování předpisů | Popis | 
 |------------------|-------------|
-| **Kompatibilní:** | Na všechny virtuální počítače v oboru jsou nasazeni Log Analytics a agenti závislostí.|
+| **Kompatibilní** | Na všechny virtuální počítače v oboru jsou nasazeni Log Analytics a agenti závislostí.|
 | **Nedodržující předpisy** | Ne všechny virtuální počítače v oboru nemají Log Analytics a v nich jsou nasazeni agenti závislostí a mohou vyžadovat nápravu.|
 | **Nezahájeno** | Bylo přidáno nové přiřazení. |
-| **Uzamčení** | Nemáte dostatečná oprávnění ke skupině pro správu. <sup>1</sup> | 
+| **Získáte** | Nemáte dostatečná oprávnění ke skupině pro správu. <sup>1</sup> | 
 | **Prázdné** | Nepřiřadily se žádné zásady. | 
 
 <sup>1</sup> Pokud ke skupině pro správu nemáte přístup, požádejte vlastníka o poskytnutí přístupu. Nebo si prohlédněte dodržování předpisů a spravujte přiřazení prostřednictvím podřízených skupin nebo předplatných pro správu. 
@@ -160,7 +159,7 @@ Následující tabulka namapuje všechny možné stavy přiřazení pro iniciati
 | **Nástup** | Na všechny virtuální počítače v oboru jsou nasazeni Log Analytics a agenti závislostí.|
 | **Upozornění** | Předplatné není ve skupině pro správu.|
 | **Nezahájeno** | Bylo přidáno nové přiřazení. |
-| **Uzamčení** | Nemáte dostatečná oprávnění ke skupině pro správu. <sup>1</sup> | 
+| **Získáte** | Nemáte dostatečná oprávnění ke skupině pro správu. <sup>1</sup> | 
 | **Prázdné** | Neexistují žádné virtuální počítače, nebo není zásada přiřazena. | 
 | **Akce** | Přiřaďte zásadu nebo upravte přiřazení. | 
 
@@ -196,7 +195,7 @@ Kdykoli poté, co přiřadíte iniciativu ke skupině nebo předplatnému pro sp
 
 - Název přiřazení
 - Popis
-- Přiřadil(a)
+- Přiřadil
 - Pracovní prostor Log Analytics
 - Výjimky
 
@@ -204,6 +203,6 @@ Kdykoli poté, co přiřadíte iniciativu ke skupině nebo předplatnému pro sp
 
 Teď, když je monitorování povolené pro vaše virtuální počítače, jsou tyto informace k dispozici pro analýzu pomocí Azure Monitor pro virtuální počítače. 
 
-- Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md). 
+- Pokud chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení Azure monitor pro virtuální počítače mapa](vminsights-maps.md). 
 
 - Pokud chcete zjistit kritické body a celkové využití výkonu vašeho virtuálního počítače, přečtěte si téma [zobrazení výkonu virtuálních počítačů Azure](vminsights-performance.md). 

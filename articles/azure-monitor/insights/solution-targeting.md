@@ -1,18 +1,17 @@
 ---
 title: Cílení řešení monitorování v Azure Monitor | Microsoft Docs
 description: Cílení řešení monitorování vám umožní omezit řešení monitorování na konkrétní sadu agentů.  Tento článek popisuje, jak vytvořit konfiguraci oboru a použít ji pro řešení.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 04b47cb6079d9213c1a20425f62286f1b2aa778b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555307"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663228"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Cílení řešení monitorování v Azure Monitor (Preview)
 Když přidáte řešení monitorování do předplatného, automaticky se nasadí ve výchozím nastavení na všechny agenty systému Windows a Linux připojené k vašemu pracovnímu prostoru Log Analytics.  Můžete chtít spravovat náklady a omezit množství shromažďovaných dat pro řešení tím, že je omezíte na konkrétní sadu agentů.  Tento článek popisuje, jak používat **cílení na řešení** , což je funkce, která umožňuje použít obor pro vaše řešení.

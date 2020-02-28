@@ -7,19 +7,18 @@ author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: ''
-ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 11c51ab702399c73dc93f850d4abde49b45b3775
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 11b61612a261b32e2d15b5dc70005b18aa112ed4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398947"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659845"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Shromažďování dat z počítače s Windows v hybridním prostředí pomocí Azure Monitor
 
@@ -29,15 +28,15 @@ Další informace o podporované konfiguraci najdete v tématu [podporované ope
  
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="sign-in-to-azure-portal"></a>Přihlásit se na Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
-## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
+## <a name="create-a-workspace"></a>Vytvořit pracovní prostor
 
 1. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 
-    ![Portál Azure](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
+    ![Azure Portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. Vyberte **vytvořit**a pak vyberte volby pro následující položky:
 
@@ -123,7 +122,7 @@ Azure Monitor mohou shromažďovat události, které zadáte z protokolu událos
 
 8. Když poprvé nakonfigurujete čítače výkonu Windows pro nový pracovní prostor Log Analytics, budete mít možnost rychle vytvořit několik běžných čítačů. Každá možnost je uvedena vedle sebe s zaškrtávací políčko:
 
-    ![Čítače výkonu Windows](media/quick-collect-windows-computer/windows-perfcounters-default.png).
+    ![čítače výkonu systému Windows](media/quick-collect-windows-computer/windows-perfcounters-default.png).
     
     Vyberte **Přidat vybrané čítače výkonu**. Čítače jsou přidány a přednastaveny s intervalem vzorkování kolekce deseti sekund.
 
@@ -149,7 +148,7 @@ Agenta můžete z počítače odebrat a odstranit Log Analytics pracovní prosto
 
 Chcete-li odebrat agenta, proveďte následující kroky:
 
-1. Otevřete okno Ovládací panely.
+1. Otevřete ovládací panely.
 
 2. Otevřete **Programy a funkce**.
 

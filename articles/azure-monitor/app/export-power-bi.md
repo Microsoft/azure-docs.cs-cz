@@ -1,18 +1,14 @@
 ---
 title: Export do Power BI z Azure Application Insights | Microsoft Docs
 description: Analytické dotazy se dají zobrazit v Power BI.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/10/2018
-ms.openlocfilehash: 3ec20f82bc12b60e5b88a02bb92a4a0ada4dcae7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0e17ca6e07ec76f0a7a1cb04f7aa13619fb9970c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668009"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663993"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Power BI informačního kanálu od Application Insights
 [Power BI](https://www.powerbi.com/) je sada obchodních nástrojů, která pomáhá analyzovat data a sdílet přehledy. V každém zařízení jsou k dispozici řídicí panely s bohatou dostupností. Můžete kombinovat data z mnoha zdrojů, včetně analytických dotazů z [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -81,7 +77,7 @@ Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/).
 
    ![Snímek obrazovky Power BI Desktop se zvýrazněnou změnou názvu](./media/export-power-bi/changetitle.png)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Může dojít k chybám souvisejícím s přihlašovacími údaji nebo velikostí datové sady. Zde jsou některé informace o tom, co dělat o těchto chybách.
 

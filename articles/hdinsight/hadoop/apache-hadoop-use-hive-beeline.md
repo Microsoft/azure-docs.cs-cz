@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/12/2019
-ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 02/25/2020
+ms.openlocfilehash: 13c51f0db468c1591ca29de17f1744752589a1c8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435729"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663741"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Použití klienta Apache Beeline s Apache Hive
 
 Naučte se používat [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) ke spouštění dotazů Apache Hive v HDInsight.
 
-Beeline je klient podregistru, který je součástí hlavních uzlů clusteru HDInsight. Pokud chcete místně nainstalovat Beeline, přečtěte si článek [instalace klienta Beeline](#install-beeline-client)níže. Beeline používá JDBC pro připojení k HiveServer2, službě hostované v clusteru HDInsight. Beeline můžete použít také k vzdálenému přístupu k podregistru v HDInsight přes Internet. V následujících příkladech jsou uvedeny nejběžnější připojovací řetězce používané pro připojení ke službě HDInsight z Beeline:
+Beeline je klient podregistru, který je součástí hlavních uzlů clusteru HDInsight. Pokud chcete místně nainstalovat Beeline, přečtěte si článek [instalace klienta Beeline](#install-beeline-client)níže. Beeline používá JDBC pro připojení k HiveServer2, službě hostované v clusteru HDInsight. Beeline můžete použít také k vzdálenému přístupu k podregistru v HDInsight přes Internet. V následujících příkladech jsou uvedeny nejběžnější připojovací řetězce používané pro připojení ke službě HDInsight z Beeline.
 
 ## <a name="types-of-connections"></a>Typy připojení
 
@@ -59,7 +59,9 @@ Nahraďte `<username>` názvem účtu v doméně s oprávněními pro přístup 
 
 ### <a name="over-public-or-private-endpoints"></a>Přes veřejné nebo soukromé koncové body
 
-Při připojování ke clusteru pomocí veřejných nebo privátních koncových bodů je nutné zadat název přihlašovacího účtu clusteru (výchozí `admin`) a heslo. Například pomocí Beeline z klientského systému se připojte k `clustername.azurehdinsight.net` adrese. Toto připojení se provádí prostřednictvím `443`portu a je šifrované pomocí protokolu SSL:
+Při připojování ke clusteru pomocí veřejných nebo privátních koncových bodů je nutné zadat název přihlašovacího účtu clusteru (výchozí `admin`) a heslo. Například pomocí Beeline z klientského systému se připojte k `clustername.azurehdinsight.net` adrese. Toto připojení se provádí prostřednictvím `443`portu a je šifrované pomocí protokolu SSL.
+
+Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` účtem přihlášení clusteru pro váš cluster. U clusterů ESP použijte úplný název uživatele (například user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
@@ -71,19 +73,17 @@ nebo pro soukromý koncový bod:
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` účtem přihlášení clusteru pro váš cluster. U clusterů ESP použijte úplný název uživatele (například user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
-
 Soukromé koncové body odkazují na základní nástroj pro vyrovnávání zatížení, ke kterému se dá dostat jenom z partnerského vztahu virtuální sítě ve stejné oblasti. Další informace najdete v tématu [omezení globálních partnerských vztahů virtuální sítě a nástrojů pro vyrovnávání zatížení](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Pomocí příkazu `curl` s možností `-v` můžete řešit problémy s připojením s veřejnými nebo soukromými koncovými body před použitím Beeline.
 
 ---
 
-### <a id="sparksql"></a>Použití Beeline s Apache Spark
+### <a name="use-beeline-with-apache-spark"></a>Použití Beeline s Apache Spark
 
 Apache Spark poskytuje vlastní implementaci HiveServer2, která se někdy označuje jako server Spark Thrift. Tato služba používá Spark SQL k překladu dotazů namísto podregistru a může poskytovat lepší výkon v závislosti na vašem dotazu.
 
 #### <a name="through-public-or-private-endpoints"></a>Prostřednictvím veřejných nebo privátních koncových bodů
 
-Použitý připojovací řetězec je trochu odlišný. Místo obsahující `httpPath=/hive2` `httpPath/sparkhive2`:
+Použitý připojovací řetězec je trochu odlišný. Místo obsahující `httpPath=/hive2` `httpPath/sparkhive2`. Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` účtem přihlášení clusteru pro váš cluster. U clusterů ESP použijte úplný název uživatele (například user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
@@ -94,8 +94,6 @@ nebo pro soukromý koncový bod:
 ```bash
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
-
-Parametr `clustername` nahraďte názvem vašeho clusteru HDInsight. Nahraďte `admin` účtem přihlášení clusteru pro váš cluster. U clusterů ESP použijte úplný název uživatele (např. user@domain.com). Nahraďte `password` heslem pro přihlašovací účet clusteru.
 
 Soukromé koncové body odkazují na základní nástroj pro vyrovnávání zatížení, ke kterému se dá dostat jenom z partnerského vztahu virtuální sítě ve stejné oblasti. Další informace najdete v tématu [omezení globálních partnerských vztahů virtuální sítě a nástrojů pro vyrovnávání zatížení](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) . Pomocí příkazu `curl` s možností `-v` můžete řešit problémy s připojením s veřejnými nebo soukromými koncovými body před použitím Beeline.
 
@@ -111,7 +109,7 @@ Při přímém připojení k hlavnímu uzlu clusteru nebo z prostředku ve stejn
 
 ---
 
-## <a id="prereq"></a>Požadavky
+## <a name="prerequisites-for-examples"></a>Předpoklady pro příklady
 
 * Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
@@ -121,7 +119,7 @@ Při přímém připojení k hlavnímu uzlu clusteru nebo z prostředku ve stejn
 
 * Možnost 2: místní klient Beeline.
 
-## <a id="beeline"></a>Spustit dotaz na podregistr
+## <a name="run-a-hive-query"></a>Spuštění dotazu Hive
 
 Tento příklad je založený na použití klienta Beeline z připojení SSH.
 
@@ -188,24 +186,21 @@ Tento příklad je založený na použití klienta Beeline z připojení SSH.
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
-    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' 
+    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log'
         GROUP BY t4;
     ```
 
     Tyto příkazy provedou následující akce:
 
-    * `DROP TABLE` – Pokud tabulka existuje, je odstraněna.
-
-    * `CREATE EXTERNAL TABLE` – vytvoří **externí** tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění.
-
-    * `ROW FORMAT` – způsob formátování dat V tomto případě jsou pole v každém protokolu oddělená mezerou.
-
-    * `STORED AS TEXTFILE LOCATION` – kde jsou uložena data a v jakém formátu souboru.
-
-    * `SELECT` – vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]** . Tento dotaz vrátí hodnotu **3** , protože jsou tři řádky, které obsahují tuto hodnotu.
-
-    * `INPUT__FILE__NAME LIKE '%.log'` – podregistr se pokusí použít schéma pro všechny soubory v adresáři. V tomto případě adresář obsahuje soubory, které neodpovídají schématu. Aby se zabránilo uvolňování dat ve výsledcích, tento příkaz oznamuje podregistru, že by měl vracet pouze data ze souborů končících log. log.
+    |Výpis |Popis |
+    |---|---|
+    |ODKLÁDACÍ TABULKA|Pokud tabulka existuje, je odstraněna.|
+    |VYTVOŘIT EXTERNÍ TABULKU|Vytvoří **externí** tabulku v podregistru. Externí tabulky ukládají pouze definici tabulky v podregistru. Data zůstanou v původním umístění.|
+    |FORMÁT ŘÁDKU|Způsob formátování dat. V tomto případě jsou pole v každém protokolu oddělená mezerou.|
+    |ULOŽENO JAKO UMÍSTĚNÍ TEXTFILE|Kde jsou data uložena a v jakém formátu souboru.|
+    |VYBRAT|Vybere počet všech řádků, ve kterých sloupec **T4** obsahuje hodnotu **[Chyba]** . Tento dotaz vrátí hodnotu **3** , protože jsou tři řádky, které obsahují tuto hodnotu.|
+    |INPUT__FILE__NAME jako je%. log|Podregistr se pokusí použít schéma pro všechny soubory v adresáři. V tomto případě adresář obsahuje soubory, které neodpovídají schématu. Aby se zabránilo uvolňování dat ve výsledcích, tento příkaz oznamuje podregistru, že by měl vracet pouze data ze souborů končících log. log.|
 
    > [!NOTE]  
    > Externí tabulky by měly být použity, pokud očekáváte, že budou zdrojová data aktualizována externím zdrojem. Například automatizovaný proces odesílání dat nebo operace MapReduce.
@@ -236,7 +231,11 @@ Tento příklad je založený na použití klienta Beeline z připojení SSH.
         +----------+--------+--+
         1 row selected (47.351 seconds)
 
-6. K ukončení Beeline použijte `!exit`.
+6. Konec Beeline:
+
+    ```bash
+    !exit
+    ```
 
 ## <a name="run-a-hiveql-file"></a>Spuštění souboru HiveQL
 
@@ -248,7 +247,7 @@ Toto je pokračování z předchozího příkladu. Pomocí následujících krok
     nano query.hql
     ```
 
-2. Jako obsah souboru použijte následující text. Tento dotaz vytvoří novou interní **tabulku s názvem**protokolu chyb:
+1. Jako obsah souboru použijte následující text. Tento dotaz vytvoří novou interní **tabulku s názvem**protokolu chyb:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -257,16 +256,18 @@ Toto je pokračování z předchozího příkladu. Pomocí následujících krok
 
     Tyto příkazy provedou následující akce:
 
-   * **Create Table Pokud neexistuje** , pokud tabulka ještě neexistuje, vytvoří se. Vzhledem k tomu, že se klíčové slovo **External** nepoužívá, vytvoří tento příkaz interní tabulku. Interní tabulky jsou uložené v datovém skladu podregistru a jsou plně spravované podregistrem.
-   * **Uloženo jako ORC** – ukládá data ve formátu optimalizovaného řádku (Orc). Formát ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.
-   * **Vložit přepsání... Vyberte možnost** – vybere řádky z tabulky **log4jLogs** , která obsahuje **[Error]** , a pak data vloží do **tabulky chyb** .
+    |Výpis |Popis |
+    |---|---|
+    |CREATE TABLE, POKUD NEEXISTUJE|Pokud tabulka ještě neexistuje, vytvoří se. Vzhledem k tomu, že se klíčové slovo **External** nepoužívá, vytvoří tento příkaz interní tabulku. Interní tabulky jsou uložené v datovém skladu podregistru a jsou plně spravované podregistrem.|
+    |ULOŽENO JAKO ORC|Ukládá data ve formátu optimalizovaného řádku (ORC). Formát ORC je vysoce optimalizovaný a efektivní formát pro ukládání dat z podregistru.|
+    |VLOŽIT PŘEPSÁNÍ... VYBRALI|Vybere řádky z tabulky **log4jLogs** , které obsahují **[Error]** , a pak data vloží **do tabulky chyb** .|
 
     > [!NOTE]  
     > Na rozdíl od externích tabulek odstraní interní tabulka také podkladová data.
 
-3. Pokud chcete soubor uložit, použijte **Ctrl**+**X**, zadejte **Y**a nakonec **ENTER**.
+1. Pokud chcete soubor uložit, použijte **Ctrl**+**X**, zadejte **Y**a nakonec **ENTER**.
 
-4. K spuštění souboru pomocí Beeline použijte následující:
+1. K spuštění souboru pomocí Beeline použijte následující:
 
     ```bash
     beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http' -i query.hql
@@ -275,7 +276,7 @@ Toto je pokračování z předchozího příkladu. Pomocí následujících krok
     > [!NOTE]  
     > Parametr `-i` spustí Beeline a spustí příkazy v souboru `query.hql`. Po dokončení dotazu přijdete na `jdbc:hive2://headnodehost:10001/>`ovou výzvu. Můžete také spustit soubor pomocí parametru `-f`, který ukončí Beeline po dokončení dotazu.
 
-5. Chcete-li ověřit, zda byla **vytvořena tabulka chyb** protokolu chyb, použijte následující příkaz, který vrátí všechny řádky z chyb protokolu **chyb:**
+1. Chcete-li ověřit, zda byla **vytvořena tabulka chyb** protokolu chyb, použijte následující příkaz, který vrátí všechny řádky z chyb protokolu **chyb:**
 
     ```hiveql
     SELECT * from errorLogs;
@@ -310,7 +311,9 @@ I když je Beeline obsažený v hlavních uzlech clusteru HDInsight, možná ho 
         sudo apt install openjdk-11-jre-headless
         ```
 
-    1. Opravte soubor bashrc (obvykle se nachází v ~/.bashrc). Otevřete soubor pomocí `nano ~/.bashrc` a na konci souboru přidejte následující řádek:
+    1. Otevřete soubor bashrc (obvykle se nachází v ~/.bashrc): `nano ~/.bashrc`.
+
+    1. Opravte soubor bashrc. Na konec souboru přidejte následující řádek:
 
         ```bash
         export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
@@ -335,11 +338,12 @@ I když je Beeline obsažený v hlavních uzlech clusteru HDInsight, možná ho 
 1. Dále opravte soubor bashrc. Budete muset určit cestu, kam se archivy nebalí. Pokud používáte [subsystém Windows pro Linux](https://docs.microsoft.com/windows/wsl/install-win10)a provedli jste přesně tento postup, vaše cesta by byla `/mnt/c/Users/user/`, kde `user` je vaše uživatelské jméno.
 
     1. Otevřete soubor: `nano ~/.bashrc`
+
     1. Níže uvedené příkazy upravte podle příslušné cesty a pak je zadejte na konci souboru bashrc:
 
         ```bash
-        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
-        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        export HADOOP_HOME=/path_where_the_archives_were_unpacked/hadoop-2.7.3
+        export HIVE_HOME=/path_where_the_archives_were_unpacked/apache-hive-1.2.1-bin
         PATH=$PATH:$HIVE_HOME/bin
         ```
 

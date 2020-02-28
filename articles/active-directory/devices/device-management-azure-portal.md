@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c8e94a1b15ad8cd55019f9351c82f58130e472d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e09de5911ca0946bfcbcb77d1ad4131c8feac9f0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420603"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654660"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Správa identit zařízení pomocí Azure Portal
 
@@ -29,15 +29,10 @@ Tento článek:
 
 ## <a name="manage-device-identities"></a>Správa identit zařízení
 
-Portál Azure AD poskytuje centrální místo pro správu identit zařízení. K tomuto umístění se můžete dostat buď pomocí [přímého odkazu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) , nebo pomocí těchto ručních kroků:
+Portál Azure AD poskytuje centrální místo pro správu identit zařízení. K tomuto umístění se můžete dostat buď pomocí [přímého odkazu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) , nebo:
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-
-2. Vyhledejte a vyberte **Azure Active Directory** nebo ho vyberte z **domovské** stránky.
-
-3. V části **Spravovat** klikněte na **zařízení**.
-
-   ![Konfigurovat nastavení zařízení](./media/device-management-azure-portal/74.png)
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Vyhledejte **Azure Active Directory** > **zařízení**.
 
 Stránka **zařízení** vám umožní:
 
@@ -50,13 +45,11 @@ Stránka **zařízení** vám umožní:
 
 Aby bylo možné spravovat identity zařízení pomocí portálu Azure AD, musí být vaše zařízení buď [zaregistrovaná, nebo připojená](overview.md) k Azure AD. Jako správce můžete doladit proces registrace a připojení zařízení konfigurací nastavení zařízení.
 
-![Konfigurovat nastavení zařízení](./media/device-management-azure-portal/22.png)
-
-Stránka nastavení zařízení vám umožní nakonfigurovat tyto možnosti:
+Stránka nastavení zařízení umožňuje konfigurovat nastavení týkající se identit zařízení:
 
 ![Správa zařízení v Intune](./media/device-management-azure-portal/21.png)
 
-- **Uživatelé můžou připojovat zařízení do Azure AD** – toto nastavení umožňuje vybrat uživatele, kteří můžou svá zařízení zaregistrovat jako zařízení připojená k Azure AD. Výchozí hodnota je **All**.
+- **Uživatelé můžou připojovat zařízení do Azure AD** – toto nastavení umožňuje vybrat uživatele, kteří můžou svá zařízení zaregistrovat jako zařízení připojená k Azure AD. Výchozí hodnota je **Vše**.
 
 > [!NOTE]
 > **Uživatelé můžou připojovat zařízení k nastavení Azure AD** jenom pro službu Azure AD JOIN ve Windows 10.
@@ -81,12 +74,7 @@ Tato možnost je prémiová funkce dostupná prostřednictvím produktů, jako j
 Máte dvě možnosti, jak vyhledat registrovaná a připojená zařízení:
 
 - **Všechna zařízení** v části **Spravovat** na stránce **zařízení**  
-
-   ![Všechna zařízení](./media/device-management-azure-portal/41.png)
-
 - **Zařízení** v části **Spravovat** na stránce **uživatele**
-
-   ![Všechna zařízení](./media/device-management-azure-portal/43.png)
 
 Pomocí obou možností se můžete dostat k zobrazení, které:
 
@@ -178,12 +166,12 @@ Chcete-li zobrazit nebo zkopírovat klíče nástroje BitLocker, musíte být bu
 - Správce helpdesku
 - Správce služby Intune
 - Správce zabezpečení
-- Čtecí modul zabezpečení
+- Čtenář zabezpečení
 
 > [!NOTE]
 > Hybridní zařízení s Windows 10 připojená k Azure AD nemají vlastníka. Takže pokud hledáte zařízení podle vlastníka a nenalezli jste ho, vyhledejte ID zařízení.
 
-## <a name="audit-logs"></a>Protokoly auditu
+## <a name="audit-logs"></a>Protokoly auditování
 
 Aktivity zařízení jsou k dispozici prostřednictvím protokolů aktivit. Tyto protokoly zahrnují aktivity aktivované službou Device Registration Service a uživateli:
 
@@ -193,20 +181,18 @@ Aktivity zařízení jsou k dispozici prostřednictvím protokolů aktivit. Tyto
 
 Vstupním bodem pro data auditování jsou **protokoly auditu** v části **aktivita** stránky **zařízení** .
 
-![Protokoly auditu](./media/device-management-azure-portal/61.png)
-
-Protokol auditu má výchozí zobrazení seznamu, které obsahuje následující položky:
+Protokol auditu má výchozí zobrazení seznamu, které obsahuje:
 
 - Datum a čas výskytu
 - Cíle
 - Iniciátor/actor (kdo) aktivity
 - Aktivita (co)
 
-![Protokoly auditu](./media/device-management-azure-portal/63.png)
+![Protokoly auditování](./media/device-management-azure-portal/63.png)
 
 Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
-![Protokoly auditu](./media/device-management-azure-portal/64.png)
+![Protokoly auditování](./media/device-management-azure-portal/64.png)
 
 Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete filtrovat data přihlašování s využitím následujících polí:
 
@@ -219,7 +205,7 @@ Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete fil
 
 Kromě filtrů můžete vyhledat konkrétní položky.
 
-![Protokoly auditu](./media/device-management-azure-portal/65.png)
+![Protokoly auditování](./media/device-management-azure-portal/65.png)
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,18 +1,17 @@
 ---
 title: Vytváření zobrazení k analýze dat protokolu v Azure Monitor | Microsoft Docs
 description: Pomocí návrháře zobrazení v Azure Monitor můžete vytvořit vlastní zobrazení, která jsou zobrazena v Azure Portal a obsahují celou řadu vizualizací dat v pracovním prostoru Log Analytics. Tento článek obsahuje přehled návrháře zobrazení a prezentuje postupy pro vytváření a úpravy vlastních zobrazení.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
-ms.openlocfilehash: e5d707200d1e1eab9becbb30181649525f3a5a7b
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77166462"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658485"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení v Azure Monitor
 Pomocí návrháře zobrazení v Azure Monitor můžete v Azure Portal vytvořit nejrůznější vlastní zobrazení, která vám pomůžou vizualizovat data v pracovním prostoru Log Analytics. Tento článek obsahuje přehled návrháře zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.
@@ -98,10 +97,10 @@ Možnosti pro práci se zobrazeními v režimu úprav jsou popsány v následuj�
 
 | Možnost | Popis |
 |:--|:--|
-| Uložení        | Uloží změny a zavře zobrazení. |
+| Uložit        | Uloží změny a zavře zobrazení. |
 | Zrušit      | Zahodí vaše změny a zavře zobrazení. |
 | Odstranit zobrazení | Odstraní zobrazení. |
-| Export      | Exportuje zobrazení do [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) , kterou můžete importovat do jiného pracovního prostoru. Název souboru je název zobrazení a má příponu *omsview* . |
+| Exportovat      | Exportuje zobrazení do [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) , kterou můžete importovat do jiného pracovního prostoru. Název souboru je název zobrazení a má příponu *omsview* . |
 | Importovat      | Importuje soubor *omsview* , který jste exportovali z jiného pracovního prostoru. Tato akce přepíše konfiguraci stávajícího zobrazení. |
 | Klonovat       | Vytvoří nové zobrazení a otevře ho v Návrháři zobrazení. Název nového zobrazení je stejný jako původní název, ale s připojeným *kopírováním* . |
 

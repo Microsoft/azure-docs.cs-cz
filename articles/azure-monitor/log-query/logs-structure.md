@@ -1,18 +1,17 @@
 ---
 title: Struktura protokolů Azure Monitor | Microsoft Docs
 description: Vyžadujete, aby dotaz protokolu načetl data protokolu z Azure Monitor.  Tento článek popisuje, jak se v Azure Monitor používají nové dotazy protokolu, a poskytuje koncepty, které musíte před vytvořením porozumět.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 6ce8470da6b444cedb7bff1d14bcc6448b52fe94
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893633"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662072"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktura protokolů Azure Monitor
 Možnost rychle získat přehled o datech pomocí [dotazu protokolu](log-query-overview.md) je výkonná funkce Azure monitor. Chcete-li vytvořit efektivní a užitečné dotazy, měli byste pochopit některé základní koncepty, jako je například umístění dat, která potřebujete, a způsob jejího strukturování. Tento článek poskytuje základní koncepty, které potřebujete, abyste mohli začít.
@@ -59,11 +58,11 @@ Na rozdíl od Log Analytics pracovního prostoru má Application Insights aplika
 | browserTimings      | Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat. |
 | customEvents        | Vlastní události vytvořené vaší aplikací |
 | customMetrics       | Vlastní metriky vytvořené vaší aplikací |
-| závislosti        | Volání z aplikace do externích součástí. |
-| exceptions          | Výjimky vyvolané modulem runtime aplikace |
+| dependencies        | Volání z aplikace do externích součástí. |
+| výjimky          | Výjimky vyvolané modulem runtime aplikace |
 | pageViews           | Data o jednotlivých zobrazeních webu s informacemi v prohlížeči |
 | performanceCounters | Měření výkonu z výpočetních prostředků, které podporují aplikaci. |
-| požadavků            | Podrobnosti o jednotlivých žádostech o aplikaci  |
+| požadavky            | Podrobnosti o jednotlivých žádostech o aplikaci  |
 | traces              | Výsledky z distribuovaného trasování. |
 
 Schéma pro každou tabulku můžete zobrazit na kartě **schématu** v Log Analytics pro aplikaci.

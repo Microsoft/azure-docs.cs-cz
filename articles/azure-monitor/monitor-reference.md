@@ -1,18 +1,17 @@
 ---
 title: Co monitoruje Azure Monitor
 description: Odkaz na všechny služby a další prostředky, které monitoruje Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765724"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669110"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Co je monitorované pomocí Azure Monitor?
 Tento článek popisuje různé aplikace a služby, které jsou monitorované pomocí Azure Monitor. 
@@ -20,7 +19,7 @@ Tento článek popisuje různé aplikace a služby, které jsou monitorované po
 ## <a name="insights-and-core-solutions"></a>Přehledy a základní řešení
 Core Insights a řešení se považují za součást Azure Monitor a dodržují smlouvy o úrovni služeb a podpory pro Azure. Podporují se ve všech oblastech Azure, kde je Azure Monitor k dispozici.
 
-### <a name="insights"></a>Poznatky
+### <a name="insights"></a>Přehledy
 
 Přehledy poskytují přizpůsobené možnosti monitorování pro konkrétní aplikace a služby. Shromažďují a analyzují protokoly a metriky.
 
@@ -53,39 +52,39 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 - Protokoly – služba podporuje nastavení diagnostiky, která mohou shromažďovat protokoly platforem a metriky pro Azure Monitor protokolů.
 - Přehled – pro službu je k dispozici přehled, který pro službu nabízí přizpůsobené prostředí pro monitorování.
 
-| Služba | Metriky | Protokoly | Přehled | Poznámky |
+| Service | Metriky | Protokoly | Přehled | Poznámky: |
 |:---|:---|:---|:---|:---|
-|Adresář služby Active Directory | Ne | Ano | [Ano](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
+|Active Directory | Ne | Ano | [Ano](../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md) |  |
 |Active Directory B2C | Ne | Ne | Ne |  |
-|Active Directory Domain Services | Ne | Ano | Ne |  |
+|Služba Active Directory Domain Services | Ne | Ano | Ne |  |
 |Protokol aktivit | Ne | Ano | Ne | |
-|Advanced Threat Protection | Ne | Ne | Ne |  |
-|Advisor | Ne | Ne | Ne |  |
-|AI Builder | Ne | Ne | Ne |  |
-|Analysis Services | Ano | Ano | Ne |  |
+|Rozšířená ochrana před internetovými útoky | Ne | Ne | Ne |  |
+|Poradce | Ne | Ne | Ne |  |
+|Tvůrce AI | Ne | Ne | Ne |  |
+|Služba Analysis Services | Ano | Ano | Ne |  |
 |Rozhraní API pro FHIR | Ne | Ne | Ne |  |
 |API Management | Ano | Ano | Ne |  |
-|Aplikační služba | Ano | Ano | Ne |  |
+|App Service | Ano | Ano | Ne |  |
 |AppConfig | Ne | Ne | Ne |  |
 |Application Gateway | Ano | Ano | Ne |  |
 |Služba ověření identity | Ne | Ne | Ne |  |
 |Automation | Ano | Ano | Ne |  |
 |Azure Service Manager (RDFE) | Ne | Ne | Ne |  |
-|Backup | Ne | Ano | Ne |  |
+|Zálohovat | Ne | Ano | Ne |  |
 |Bastion | Ne | Ne | Ne |  |
-|Batch | Ano | Ano | Ne |  |
+|Dávka | Ano | Ano | Ne |  |
 |Batch AI | Ne | Ne | Ne |  |
 |Služba Blockchain | Ne | Ano | Ne |  |
 |Podrobné plány | Ne | Ne | Ne |  |
-|Služba Bot | Ne | Ne | Ne |  |
-|Cloud Services | Ano | Ano | Ne | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů.  |
+|Bot Service | Ne | Ne | Ne |  |
+|Cloudové služby | Ano | Ano | Ne | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů.  |
 |Cloud Shell | Ne | Ne | Ne |  |
-|Cognitive Services | Ano | Ano | Ne |  |
+|Kognitivní služby | Ano | Ano | Ne |  |
 |Container Instances | Ano | Ne | Ne |  |
 |Container Registry | Ano | Ano | Ne |  |
 |Content Delivery Network (CDN) | Ne | Ano | Ne |  |
 |Cosmos DB | Ano | Ano | [Ano](insights/cosmosdb-insights-overview.md) |  |
-|Správa nákladů | Ne | Ne | Ne |  |
+|Cost Management | Ne | Ne | Ne |  |
 |Data Box | Ne | Ne | Ne |  |
 |Data Catalog Gen2 | Ne | Ne | Ne |  |
 |Průzkumník dat | Ano | Ano | Ne |  |
@@ -115,25 +114,25 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Ochrana informací | Ne | Ano | Ne |  |
 |Intune | Ne | Ano | Ne |  |
 |IoT Central | Ne | Ne | Ne |  |
-|Centrum IoT | Ano | Ano | Ne |  |
+|IoT Hub | Ano | Ano | Ne |  |
 |Key Vault | Ano | Ano | Ne |  |
 |Kubernetes Service (AKS) | Ne | Ne | [Ano](insights/container-insights-overview.md)  |  |
 |Load Balancer | Ano | Ano | Ne |  |
 |Logic Apps | Ano | Ano | Ne |  |
 |Služba Machine Learning | Ne | Ne | Ne |  |
 |Managed Applications  | Ne | Ne | Ne |  |
-|Mapy  | Ne | Ne | Ne |  |
+|Maps  | Ne | Ne | Ne |  |
 |Media Services | Ano | Ano | Ne |  |
 |Microsoft Flow | Ne | Ne | Ne |  |
 |Spravovaná plocha společnosti Microsoft | Ne | Ne | Ne |  |
 |Microsoft PowerApps | Ne | Ne | Ne |  |
-|Microsoft Social Engagement | Ne | Ne | Ne |  |
+|Sociální zapojení Microsoftu | Ne | Ne | Ne |  |
 |Microsoft Stream | Ano | Ano | Ne |  |
-|Migrace | Ne | Ne | Ne |  |
-|Multi-factor Authentication | Ne | Ano | Ne |  |
+|Migrovat | Ne | Ne | Ne |  |
+|Vícefaktorové ověřování | Ne | Ano | Ne |  |
 |Network Watcher | Ano | Ano | Ne |  |
 |Notification Hubs | Ano | Ne | Ne |  |
-|Open Datasets | Ne | Ne | Ne |  |
+|Otevřené datové sady | Ne | Ne | Ne |  |
 |Zásady | Ne | Ne | Ne |  |
 |Power BI | Ano | Ano | Ne |  |
 |Power BI Embedded | Ne | Ne | Ne |  |
@@ -141,7 +140,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Komunikační platforma pro zařazování projektu | Ne | Ne | Ne |  |
 |Red Hat OpenShift | Ne | Ne | Ne |  |
 |Redis Cache | Ano | Ano | Ne |  |
-|Graf prostředků | Ne | Ne | Ne |  |
+|Resource Graph | Ne | Ne | Ne |  |
 |Správce prostředků | Ne | Ne | Ne |  |
 |Maloobchodní vyhledávání – podle Bingu | Ne | Ne | Ne |  |
 |Hledat | Ano | Ano | Ne |  |
@@ -154,7 +153,7 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |Databáze SQL | Ano | Ano | Ne |  |
 |SQL Server Stretch Database | Ano | Ano | Ne |  |
 |Zásobník | Ne | Ne | Ne |  |
-|Storage | Ano | Ne | [Ano](insights/storage-insights-overview.md) |  |
+|Úložiště | Ano | Ne | [Ano](insights/storage-insights-overview.md) |  |
 |Mezipaměť úložiště | Ne | Ne | Ne |  |
 |Služby synchronizace úložiště | Ne | Ne | Ne |  |
 |Stream Analytics | Ano | Ano | Ne |  |
@@ -162,12 +161,12 @@ Následující tabulka uvádí služby Azure a data, která shromažďuje do Azu
 |TINA | Ne | Ne | Ne |  |
 |Traffic Manager | Ano | Ano | Ne |  |
 |Univerzální tisk | Ne | Ne | Ne |  |
-|Škálovací sady virtuálních počítačů | Ne | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
-|Služba Virtual Machines | Ano | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
-|Virtual Network | Ano | Ano | [Ano](insights/network-insights-overview.md) |  |
+|Virtual Machine Scale Sets | Ne | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
+|Virtuální počítače | Ano | Ano | [Ano](insights/vminsights-overview.md) | Agent nutný k monitorování hostovaného operačního systému a pracovních postupů. |
+|Virtuální síť | Ano | Ano | [Ano](insights/network-insights-overview.md) |  |
 |Protokoly toku Virtual Network – NSG | Ne | Ano | Ne |  |
 |VPN Gateway | Ano | Ano | Ne |  |
-|Virtuální klientský počítač s Windows | Ne | Ne | Ne |  |
+|Windows Virtual Desktop | Ne | Ne | Ne |  |
 
 
 ## <a name="product-integrations"></a>Integrace produktů
@@ -178,10 +177,10 @@ Služby a řešení v následující tabulce ukládají svá data do Log Analyti
 | [Azure Automation](/azure/automation/) | Spravujte aktualizace operačního systému a sledujte změny v počítačích s Windows a Linux. Viz [Change Tracking](../automation/change-tracking.md) a [Update Management](../automation/automation-update-management.md). |
 | [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/) | Klasifikace a volitelně ochrana dokumentů a e-mailů. Přečtěte si téma [centrální vytváření sestav pro Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
 | [Azure Security Center](/azure/security-center/) | Shromažďování a analýza událostí zabezpečení a provádění analýz hrozeb. Viz [shromažďování dat v Azure Security Center](/azure/security-center/security-center-enable-data-collection) |
-| [Azure Sentinel](/azure/sentinel/) | Připojí se k různým zdrojům, včetně Office 365 a Amazon Web Servicesho cloudového záznamu. Viz [propojení zdrojů dat](/azure/sentinel/connect-data-sources). |
+| [Sentinel Azure](/azure/sentinel/) | Připojí se k různým zdrojům, včetně Office 365 a Amazon Web Servicesho cloudového záznamu. Viz [propojení zdrojů dat](/azure/sentinel/connect-data-sources). |
 | [Analýza služby Key Vault](insights/azure-key-vault.md) | Analyzujte Azure Key Vault protokoly AuditEvent. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Vytvořte nastavení diagnostiky pro odesílání protokolů do Azure Monitor. Viz [odeslání dat protokolu do úložiště, centra událostí nebo Log Analytics v Intune (Preview)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Network (Síť)  | [Network Performance Monitor](insights/network-performance-monitor.md) – monitorovat síťové připojení a výkon do koncových bodů služby a aplikace.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) – Analyzujte protokoly a metriky z Azure Application Gateway.<br>[Analýza provozu](/azure/network-watcher/traffic-analytics) – analyzuje protokoly toků Network Watcher skupiny zabezpečení sítě (NSG), které poskytují přehled o toku přenosů ve vašem cloudu Azure. |
+| Síť  | [Network Performance Monitor](insights/network-performance-monitor.md) – monitorovat síťové připojení a výkon do koncových bodů služby a aplikace.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) – Analyzujte protokoly a metriky z Azure Application Gateway.<br>[Analýza provozu](/azure/network-watcher/traffic-analytics) – analyzuje protokoly toků Network Watcher skupiny zabezpečení sítě (NSG), které poskytují přehled o toku přenosů ve vašem cloudu Azure. |
 | [Office 365](insights/solution-office-365.md) | Monitorujte své prostředí Office 365. Aktualizovaná verze s vylepšenou dostupností prostřednictvím služby Azure Sentinel. |
 | [Analýza SQL](insights/azure-sql.md) | Monitorujte výkon databází SQL Azure, elastických fondů a spravovaných instancí ve velkém měřítku a napříč několika předplatnými. |
 | [Surface Hub](insights/surface-hubs.md) | Sledujte stav a využití Surface Hubch zařízení. |
@@ -197,14 +196,14 @@ Další řešení jsou k dispozici pro monitorování různých aplikací a slu�
 
 | Řešení | Popis |
 |:---|:---|
-| [Posouzení služby Active Directory](insights/ad-assessment.md) | Posuzuje rizika a stav prostředí Active Directory. |
+| [Kontroly stavu služby Active Directory](insights/ad-assessment.md) | Posuzuje rizika a stav prostředí Active Directory. |
 | [Stav replikace služby Active Directory](insights/ad-replication-status.md) | Pravidelně monitoruje prostředí Active Directory pro případ selhání replikace. |
 | [Analýza protokolů aktivit](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Pomocí předdefinovaných dotazů a zobrazení protokolů Analyzujte položky protokolu aktivit. |
 | [DNS Analytics (Preview)](insights/dns-analytics.md) | Shromažďuje, analyzuje a koreluje protokoly Windows DNS pro analýzu a audit a další související data ze serverů DNS. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Umožňuje shromažďovat, zobrazovat a analyzovat vaše Cloud Foundry a metriky výkonu v různých nasazeních. |
-| [Containers](insights/containers.md) | Umožňuje zobrazit a spravovat hostitele kontejnerů Docker a Windows. |
+| [Kontejnery](insights/containers.md) | Umožňuje zobrazit a spravovat hostitele kontejnerů Docker a Windows. |
 | [Posouzení na vyžádání](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Vyhodnoťte a optimalizujte dostupnost, zabezpečení a výkon vašich místních, hybridních i cloudových prostředí Microsoftu. |
-| [Posouzení SQL](insights/sql-assessment.md) | Posuzuje rizika a stav vašich SQL Serverch prostředí.  |
+| [Kontroly stavu SQL](insights/sql-assessment.md) | Posuzuje rizika a stav vašich SQL Serverch prostředí.  |
 | [Linková data](insights/wire-data.md) | Konsolidovaná data o síti a výkonu shromážděná z počítačů připojených k systému Windows a se systémem Linux s agentem Log Analytics. |
 
 

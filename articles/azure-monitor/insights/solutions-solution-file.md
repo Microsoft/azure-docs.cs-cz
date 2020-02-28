@@ -1,19 +1,18 @@
 ---
 title: Vytváření souboru řešení pro správu v Azure | Microsoft Docs
 description: Řešení pro správu poskytují sbalené scénáře správy, které můžou zákazníci přidat do prostředí Azure.  Tento článek poskytuje podrobné informace o tom, jak můžete vytvářet řešení pro správu, která se mají používat ve vašem vlastním prostředí nebo která budou k dispozici pro vaše zákazníky.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977695"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662533"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Vytvoření souboru řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -22,7 +21,7 @@ ms.locfileid: "75977695"
 Řešení pro správu v Azure se implementují jako [šablony Správce prostředků](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).  Hlavním úkolem při učení, jak vytvářet řešení pro správu, je učení, jak vytvořit [šablonu](../../azure-resource-manager/templates/template-syntax.md).  Tento článek poskytuje jedinečné podrobnosti o šablonách používaných pro řešení a konfiguraci typických prostředků řešení.
 
 
-## <a name="tools"></a>nástroje
+## <a name="tools"></a>Nástroje
 
 Můžete použít libovolný textový editor pro práci se soubory řešení, ale doporučujeme využívat funkce poskytované v aplikaci Visual Studio nebo Visual Studio Code, jak je popsáno v následujících článcích.
 
@@ -64,7 +63,7 @@ Následující tabulka popisuje atributy parametru.
 
 | Atribut | Popis |
 |:--- |:--- |
-| type |Datový typ pro parametr Ovládací prvek vstupu zobrazený pro uživatele závisí na datovém typu.<br><br>logická hodnota – rozevírací seznam<br>řetězec – textové pole<br>int – textové pole<br>SecureString – pole hesla<br> |
+| typ |Datový typ pro parametr Ovládací prvek vstupu zobrazený pro uživatele závisí na datovém typu.<br><br>logická hodnota – rozevírací seznam<br>řetězec – textové pole<br>int – textové pole<br>SecureString – pole hesla<br> |
 | category |Volitelná kategorie pro parametr  Parametry ve stejné kategorii jsou seskupeny dohromady. |
 | control |Další funkce pro řetězcové parametry.<br><br>zobrazí se ovládací prvek DateTime-DateTime.<br>identifikátor GUID – hodnota GUID je vygenerována automaticky a parametr není zobrazen. |
 | description |Volitelný popis parametru  Zobrazuje se v informační bublině vedle parametru. |
@@ -154,7 +153,7 @@ Můžete také definovat komplexní proměnné, které mají více sad hodnot.  
 
 V takovém případě odkazujete na proměnné hodnoty prostřednictvím řešení pomocí **proměnných syntaxe (' název proměnné '). Property**.  Například pro přístup k proměnné názvu řešení byste měli použít **proměnné (Solution). Název**.
 
-## <a name="resources"></a>Materiály
+## <a name="resources"></a>Prostředky
 [Prostředky](../../azure-resource-manager/templates/template-syntax.md#resources) definují různé prostředky, které vaše řešení pro správu budou instalovat a konfigurovat.  Toto bude největší a nejsložitější část šablony.  Můžete získat strukturu a úplný popis prvků prostředků při [vytváření Azure Resource Manager šablon](../../azure-resource-manager/templates/template-syntax.md#resources).  Různé prostředky, které obvykle definujete, jsou podrobně popsané v dalších článcích v této dokumentaci. 
 
 
@@ -213,13 +212,13 @@ Prostředek řešení obsahuje vlastnosti v následující tabulce.  To zahrnuje
 
 Výše uvedený příklad je pro řešení se sadou Runbook, plánem a zobrazením.  Plán a sada Runbook jsou *odkazovány* v elementu **Properties** , takže nejsou odstraněny při odebrání řešení.  Zobrazení je *obsaženo* , takže je odebráno při odebrání řešení.
 
-### <a name="plan"></a>Plánujte
+### <a name="plan"></a>Plánování
 Entita **plánu** prostředku řešení má vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| jméno |Název řešení. |
-| version |Verze řešení určená autorem. |
+| name |Název řešení. |
+| Verze nástroje |Verze řešení určená autorem. |
 | product |Jedinečný řetězec pro identifikaci řešení |
 | publisher |Vydavatel řešení. |
 

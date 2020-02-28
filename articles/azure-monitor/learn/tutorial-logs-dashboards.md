@@ -1,19 +1,18 @@
 ---
 title: Vytváření a sdílení řídicích panelů s daty Azure Log Analytics | Microsoft Docs
 description: V tomto kurzu se seznámíte s tím, jak Log Analytics řídicí panely mohou vizualizovat všechny vaše uložené dotazy v protokolu, což vám umožní zobrazit vaše prostředí jediným objektivem.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: d06ead285321b780490c816dc3d902dac1b6916f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 76ba79561df4a75004369d24c4c6af82de9b1cfc
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365559"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661528"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Vytváření a sdílená řídicích panelů s daty Log Analytics
 
@@ -27,7 +26,7 @@ ms.locfileid: "75365559"
 
 K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru služby Log Analytics](quick-collect-azurevm.md).  
  
-## <a name="sign-in-to-azure-portal"></a>Přihlásit se na Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-a-shared-dashboard"></a>Vytvoření sdíleného řídicího panelu

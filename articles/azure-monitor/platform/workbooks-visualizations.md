@@ -4,18 +4,17 @@ description: Seznamte se se všemi komponentami v Azure Monitorch vizualizacích
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
-ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3f8f377ac8e65d375f8f78c803db5427fd31007
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394490"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658026"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Vizualizace sešitu Azure Monitor
 
@@ -60,7 +59,7 @@ Pracovní sešity podporují grafy pro protokoly i zdroje dat metriky.
 
 #### <a name="log-chart-parameters"></a>Parametry grafu protokolu
 
-| Parametr | Vysvětlení | Příklad: |
+| Parametr | Vysvětlení | Příklad |
 | ------------- |:-------------|:-------------|
 | `Query Type` | Typ dotazu, který se má použít | Log, Azure Resource Graph atd. |
 | `Resource Type` | Typ prostředku, který se má cílit | Nejdřív Application Insights, Log Analytics nebo Azure – |
@@ -83,7 +82,7 @@ Pracovní sešity podporují grafy pro protokoly i zdroje dat metriky.
 
 #### <a name="metric-chart-parameters"></a>Parametry grafu metriky
 
-| Parametr | Vysvětlení | Příklad: |
+| Parametr | Vysvětlení | Příklad |
 | ------------- |:-------------|:-------------|
 | `Resource Type` | Typ prostředku, který se má cílit | Úložiště nebo virtuální počítač. |
 | `Resources` | Sada prostředků, ze kterých se má získat hodnota metrik | MyStorage1 |

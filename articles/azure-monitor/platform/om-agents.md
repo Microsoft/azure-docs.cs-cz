@@ -1,18 +1,17 @@
 ---
 title: Připojit Operations Manager k Azure Monitor | Microsoft Docs
 description: Nástroj Operations Manager můžete integrovat do svého pracovního prostoru, abyste nepřišli o své investice do systému System Center Operations Manager a mohli využívat rozšířené možnosti Log Analytics.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 5dc9412c7884eb62795fd04240f6cfa7d103e3be
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 92b6737f48d8d8704f461c9adac92284b323b05f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363655"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659403"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Připojit Operations Manager k Azure Monitor
 
@@ -45,16 +44,16 @@ Než začnete, přečtěte si následující požadavky.
 * Pomocí účtu, který je členem [role přispěvatel Log Analytics](manage-access.md#manage-access-using-azure-permissions), se ověříte na Azure.
 
 * Podporované oblasti: System Center Operations Manager pro připojení k pracovnímu prostoru Log Analytics podporuje jenom následující oblasti Azure:
-    - USA – středozápad
+    - Střed USA – západ
     - Austrálie – jihovýchod
     - Západní Evropa
-    - USA – východ
+    - Východní USA
     - Jihovýchodní Asie
     - Japonsko – východ
-    - Spojené království – jih
+    - Velká Británie – jih
     - Indie – střed
-    - Střední Kanada
-    - USA – západ 2
+    - Kanada – střed
+    - Západní USA 2
 
 >[!NOTE]
 >Nedávné změny rozhraní API Azure znemožní zákazníkům úspěšně konfigurovat integraci mezi skupinou pro správu a Azure Monitor pro první spuštění. Pro zákazníky, kteří již mají integrovanou skupinu pro správu se službou, nebudete mít vliv na to, pokud nebudete muset překonfigurovat existující připojení.  
@@ -66,7 +65,7 @@ Než začnete, přečtěte si následující požadavky.
 >- Pro System Center Operations Manager 2012 R2 Stáhněte Management Pack [odsud](https://www.microsoft.com/download/details.aspx?id=57171).  
 
 
-### <a name="network"></a>Network (Síť)
+### <a name="network"></a>Síť
 
 Níže uvedené informace uvádějí informace o konfiguraci proxy serveru a brány firewall vyžadované pro agenta Operations Manager, servery pro správu a konzoli Operations Console ke komunikaci s Azure Monitor. Provoz z každé součásti je odchozí ze sítě do Azure Monitor.
 
@@ -96,7 +95,7 @@ Níže uvedené informace uvádějí informace o konfiguraci proxy serveru a br�
 
 ### <a name="tls-12-protocol"></a>Protokol TLS 1.2
 
-Aby se zajistilo zabezpečení dat při přenosu do Azure Monitor, důrazně doporučujeme nakonfigurovat agenta a skupinu pro správu tak, aby používaly minimálně TLS (Transport Layer Security) 1,2. Starší verze z protokolu TLS/Secure Sockets Layer (SSL) bylo zjištěno ohrožen a stále aktuálně fungují povolit zpětnou kompatibilitu, ale jsou **ale nedoporučený krok**. Další informace najdete v tématu [odesílání dat pomocí protokolu TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
+Aby se zajistilo zabezpečení dat při přenosu do Azure Monitor, důrazně doporučujeme nakonfigurovat agenta a skupinu pro správu tak, aby používaly minimálně TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje**se. Další informace najdete v [zabezpečeném posílání dat pomocí TLS 1,2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12).
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Připojení Operations Manager k Azure Monitor
 
@@ -105,8 +104,8 @@ Provedením následujícího postupu nakonfigurujete skupinu pro správu nástro
 Při počáteční registraci skupiny pro správu Operations Manager pomocí pracovního prostoru Log Analytics není v konzoli Operations Console k dispozici možnost zadat konfiguraci proxy serveru pro skupinu pro správu.  Tato možnost bude dostupná až potom, co bude skupina pro správu ve službě úspěšně zaregistrovaná.  Chcete-li se tomuto problému vyhnout, je třeba aktualizovat konfiguraci proxy systému pomocí příkazu Netsh v systému, z něhož spouštíte konzolu Operations Console, a všechny servery pro správu ve skupině pro správu.  
 
 1. Otevřete příkazový řádek se zvýšenými oprávněními.
-   a. Přejděte na **Start** a typ **cmd**.
-   b. Klikněte pravým tlačítkem na **příkazového řádku** a vyberte spustit jako správce **.
+   a. Klikněte na **Start** a zadejte **příkaz cmd**.
+   b. Klikněte pravým tlačítkem myši na **příkazový řádek** a vyberte Spustit jako správce * *.
 1. Zadejte následující příkaz a stiskněte **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`

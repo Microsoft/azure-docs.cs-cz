@@ -1,18 +1,14 @@
 ---
 title: Monitorování výkonu Azure App Services | Microsoft Docs
 description: Sledování výkonu aplikací pro Azure App Services. Zatížení grafu a doba odezvy, informace o závislostech a nastavení výstrah pro výkon.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/11/2019
-ms.openlocfilehash: 3ca9cbf2e282e3f67af3c5da470a3d81e6055f98
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 03d332af182f8f40ede634fbd563f7b064751f32
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189585"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655786"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Monitorování výkonu Azure App Service
 
@@ -39,7 +35,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
 
 ## <a name="enable-agent-based-monitoring"></a>Povolit monitorování na základě agentů
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > Kombinace APPINSIGHTS_JAVASCRIPT_ENABLED a urlCompression není podporována. Další informace najdete v tématu Vysvětlení v [části Poradce při potížích](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
@@ -75,7 +71,7 @@ Existují dva způsoby, jak povolit monitorování aplikací pro hostované apli
 
     * Seznam podporovaných nastavení procesoru telemetrie pro adaptivní vzorkování můžete zobrazit v [kódu](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) a v [související dokumentaci](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
-# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 Podporovány jsou následující verze rozhraní .NET Core: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0
 
@@ -96,15 +92,15 @@ Použití cílení na úplné rozhraní z rozhraní .NET Core, samostatného nas
 
     ![Zvolit možnosti na platformu](./media/azure-web-apps/choose-options-new-net-core.png)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 V App Service webové aplikace v části **nastavení** > **Vyberte Application Insights** > **Povolit**. Monitorování založené na agentech Node. js je aktuálně ve verzi Preview.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Webové aplikace založené na jazyce Java App Service aktuálně nepodporují monitorování na základě automatického agenta nebo rozšíření. Chcete-li povolit monitorování aplikace v jazyce Java, je nutné [aplikaci ručně instrumentovat](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started).
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Webové aplikace založené na Pythonu App Service v současné době nepodporují monitorování na základě automatického agenta nebo rozšíření. Pokud chcete povolit monitorování pro aplikaci v Pythonu, musíte [aplikaci ručně instrumentovat](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
 
@@ -112,7 +108,7 @@ Webové aplikace založené na Pythonu App Service v současné době nepodporuj
 
 ## <a name="enable-client-side-monitoring"></a>Povolení monitorování na straně klienta
 
-# <a name="nettabnet"></a>[.NET](#tab/net)
+# <a name="net"></a>[.NET](#tab/net)
 
 Monitorování na straně klienta je výslovný souhlas pro ASP.NET. Postup při povolování monitorování na straně klienta:
 
@@ -129,7 +125,7 @@ Monitorování na straně klienta je výslovný souhlas pro ASP.NET. Postup při
 
 Chcete-li zakázat monitorování na straně klienta, buď z nastavení aplikace odeberte dvojici hodnoty klíče, nebo hodnotu nastavte na hodnotu NEPRAVDA.
 
-# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 Monitorování na straně klienta je **ve výchozím nastavení povolené** pro aplikace .NET Core s **doporučovanou kolekcí**bez ohledu na to, jestli je přítomné nastavení aplikace APPINSIGHTS_JAVASCRIPT_ENABLED.
 
@@ -146,15 +142,15 @@ Pokud z nějakého důvodu chcete vypnout monitorování na straně klienta:
 
 ![Snímek obrazovky uživatelského rozhraní nastavení aplikace](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 Chcete-li povolit monitorování na straně klienta pro aplikaci Node. js, je nutné [do aplikace ručně přidat sadu JavaScript SDK na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Chcete-li povolit monitorování na straně klienta pro aplikaci Java, je nutné [do aplikace ručně přidat sadu JavaScript SDK na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Pokud chcete povolit monitorování na straně klienta pro vaši aplikaci v Pythonu, musíte [do své aplikace přidat ručně sadu JavaScript SDK na straně klienta](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
 
@@ -351,7 +347,7 @@ Počínaje verzí 2.8.9 se používá předem nainstalovaná rozšíření webu.
 
 Pokud je upgrade proveden z verze před aplikací 2.5.1, zkontrolujte, zda jsou knihovny DLL ApplicationInsigths odebrány ze složky bin aplikace, [v tématu Postup řešení potíží](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorování rozšíření/na základě agentů pro aplikace založené na platformě .NET a .NET Core běžící na Azure App Services.
 
@@ -379,7 +375,7 @@ Níže najdete naše podrobné pokyny k odstraňování potíží pro monitorov�
 
 Následující tabulka obsahuje podrobnější vysvětlení toho, co tyto hodnoty znamenají, jejich základní příčiny a Doporučené opravy:
 
-|Hodnota problému|Vysvětlení|Napravit
+|Hodnota problému|Vysvětlení|Oprava
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | Tato hodnota označuje, že rozšíření zjistilo, že některé aspekty sady SDK už v aplikaci existují a že se bude zálohovat. Důvodem může být odkaz na `System.Diagnostics.DiagnosticSource`, `Microsoft.AspNet.TelemetryCorrelation`nebo `Microsoft.ApplicationInsights`  | Odeberte odkazy. Některé z těchto odkazů jsou ve výchozím nastavení přidány z určitých šablon sady Visual Studio a starší verze sady Visual Studio mohou přidat odkazy na `Microsoft.ApplicationInsights`.
 |`AppAlreadyInstrumented:true` | Pokud je aplikace cílena na rozhraní .NET Core 2,1 nebo 2,2 a odkazuje na soubor [Microsoft. AspNetCore. All](https://www.nuget.org/packages/Microsoft.AspNetCore.All) meta-package, pak Application Insights a rozšíření bude zase vypnuto. | Pro zákazníky s .NET Core 2.1, 2.2 se místo toho [doporučuje](https://github.com/aspnet/Announcements/issues/287) použít meta-package Microsoft. AspNetCore. app.|

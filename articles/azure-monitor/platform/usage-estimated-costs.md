@@ -3,18 +3,17 @@ title: Monitorování využití a odhadované náklady ve službě Azure Monitor
 description: Přehled procesu použití Azure monitorování využití a odhadované náklady na stránce
 author: dalekoetke
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 3fb51a9dc3f607d89934f6962588195e0f5c83f5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 22c7243cd966f458610c2abc67ed5540b37357b8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715782"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658811"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Monitorování využití a odhadované náklady ve službě Azure Monitor
 

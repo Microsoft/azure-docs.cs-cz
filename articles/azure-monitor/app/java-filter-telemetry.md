@@ -1,18 +1,14 @@
 ---
 title: Filtrování telemetrie Azure Application Insights ve webové aplikaci Java
 description: Zmenšení provozu telemetrie filtrováním událostí, které nepotřebujete monitorovat.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 3/14/2019
-ms.openlocfilehash: dd47ef68726f3f804dabbc9751e9c86dfe846559
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 020e54132e0ca0a9f9ccf0236f94515877015637
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927285"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659913"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrie ve webové aplikaci Java
 
@@ -264,7 +260,7 @@ public TelemetryProcessor successFilter() {
 V `application.properties` budete muset vytvořit vlastní parametry filtru a využít k předání těchto parametrů do vlastního filtru tyto parametry. 
 
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 *Můj filtr nefunguje.*
 
