@@ -1,18 +1,17 @@
 ---
 title: Zakázat monitorování v Azure Monitor pro virtuální počítače (Preview) | Microsoft Docs
 description: Tento článek popisuje, jak zastavit monitorování virtuálních počítačů v Azure Monitor pro virtuální počítače.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/05/2018
-ms.openlocfilehash: b2d58b501429a47c3011fc727f756edeeb7775e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb4347e610920380792a17bb620e6d97a7d72505
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399310"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669501"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms-preview"></a>Zakázání monitorování virtuálních počítačů v Azure Monitor pro virtuální počítače (Preview)
 
@@ -43,7 +42,7 @@ Pokud stále potřebujete Log Analytics pracovní prostor, postupujte podle těc
 >Pokud jste řešení Service Map monitoring používali před tím, než povolíte Azure Monitor pro virtuální počítače a pořád na něj budete spoléhat, toto řešení neodstraňujte, jak je popsáno v posledním kroku tohoto postupu.  
 >
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 2. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Po zahájení psaní seznam vyfiltruje návrhy na základě vašeho vstupu. Vyberte **Log Analytics**.
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor, který jste zvolili, když jste povolili Azure Monitor pro virtuální počítače.
 4. Na levé straně vyberte **řešení**.  
@@ -64,7 +63,7 @@ Pokud má váš Log Analytics pracovní prostor stále podporovat monitorování
 >
 > Pokud odeberete agenta Log Analytics, zabráníte tím, aby tyto služby a řešení aktivně spravovaly váš virtuální počítač. 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). 
 2. V Azure Portal vyberte **Virtual Machines**. 
 3. V seznamu vyberte virtuální počítač. 
 4. Na levé straně vyberte **rozšíření**. Na stránce **rozšíření** vyberte **DependencyAgent**.

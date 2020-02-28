@@ -1,18 +1,17 @@
 ---
 title: Příprava na migraci Azure Monitor klasických výstrah pomocí aktualizace aplikací logiky a runbooků
-author: yanivlavi
 description: Naučte se, jak upravit Webhooky, Logic Apps a runbooky pro přípravu na dobrovolné migrace.
-ms.service: azure-monitor
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 58ba95ff60ddccf909578a673110c870caf57376
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705560"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665588"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Příprava aplikací logiky a runbooků pro migraci klasických pravidel upozornění
 
@@ -31,7 +30,7 @@ Následující tabulka je odkazem na programová rozhraní pro klasické a nové
 
 |         |Klasická upozornění  |Nové výstrahy metriky |
 |---------|---------|---------|
-|Rozhraní REST API     | [microsoft.insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
+|REST API     | [Microsoft. Insights/alertrules](https://docs.microsoft.com/rest/api/monitor/alertrules)         | [Microsoft. Insights/metricalerts](https://docs.microsoft.com/rest/api/monitor/metricalerts)       |
 |Azure CLI     | [AZ monitor Alert](https://docs.microsoft.com/cli/azure/monitor/alert?view=azure-cli-latest)        | [AZ monitor Metrics Alert](https://docs.microsoft.com/cli/azure/monitor/metrics/alert?view=azure-cli-latest)        |
 |PowerShell      | [Referenční informace](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrule)       |  [Referenční informace](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2)    |
 | Šablona Azure Resource Manageru | [Pro klasické výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-enable-template)|[Nové výstrahy metriky](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)|
@@ -44,26 +43,26 @@ Pomocí následující tabulky namapujte pole datové části Webhooku z klasick
 
 |  |Klasická upozornění  |Nové výstrahy metriky |
 |---------|---------|---------|
-|Aktivovala se výstraha nebo se vyřešila?    | **status**       | **data.status** |
-|Kontextové informace o výstraze     | **context**        | **data.context**        |
-|Časové razítko, u kterého se výstraha aktivovala nebo vyřešila     | **context.timestamp**       | **data.context.timestamp**        |
+|Aktivovala se výstraha nebo se vyřešila?    | **stav**       | **data. status** |
+|Kontextové informace o výstraze     | **souvislost**        | **data. Context**        |
+|Časové razítko, u kterého se výstraha aktivovala nebo vyřešila     | **Context. timestamp**       | **data. Context. timestamp**        |
 | ID pravidla výstrahy | **context.id** | **data.context.id** |
-| Název pravidla upozornění | **context.name** | **data.context.name** |
-| Popis pravidla výstrahy | **context.description** | **data.context.description** |
-| Podmínka pravidla výstrahy | **context.condition** | **data.context.condition** |
-| Název metriky | **context.condition.metricName** | **data.context.condition.allOf[0].metricName** |
+| Název pravidla výstrahy | **context.name** | **data.context.name** |
+| Popis pravidla výstrahy | **Context. Description** | **data. Context. Description** |
+| Podmínka pravidla výstrahy | **Context. Condition** | **data. Context. Condition** |
+| Název metriky | **Context. Condition. metric** | **data. Context. Condition. allOf [0]. metric** |
 | Časová agregace (jak je metrika agregována v okně vyhodnocení)| **Context. Condition. timeAggregation** | **Context. Condition. timeAggregation** |
-| Zkušební období | **context.condition.windowSize** | **data.context.condition.windowSize** |
-| (Způsob porovnání agregované hodnoty metriky s prahovou hodnotou) | **context.condition.operator** | **data.context.condition.operator** |
+| Zkušební období | **Context. Condition. windowSize** | **data. Context. Condition. windowSize** |
+| (Způsob porovnání agregované hodnoty metriky s prahovou hodnotou) | **Context. Condition. operator** | **data. Context. Condition. operator** |
 | Prahová hodnota | **Context. Condition. Threshold** | **data. Context. Condition. allOf [0]. prahová hodnota** |
-| Hodnota metriky | **context.condition.metricValue** | **data.context.condition.allOf[0].metricValue** |
-| ID předplatného | **context.subscriptionId** | **data.context.subscriptionId** |
-| Skupina prostředků ovlivněného prostředku | **context.resourceGroup** | **data.context.resourceGroup** |
-| Název ovlivněného prostředku | **context.resourceName** | **data.context.resourceName** |
-| Typ ovlivněného prostředku | **context.resourceType** | **data.context.resourceType** |
-| ID prostředku ovlivněného prostředku | **context.resourceId** | **data.context.resourceId** |
-| Přímý odkaz na stránku souhrnu prostředků na portálu | **context.portalLink** | **data.context.portalLink** |
-| Vlastní pole datové části, která se mají předat Webhooku nebo aplikaci logiky | **Vlastnosti** | **data. Properties** |
+| Hodnota metriky | **Context. Condition. metricValue** | **data. Context. Condition. allOf [0]. metricValue** |
+| ID předplatného | **Context. subscriptionId** | **data. Context. subscriptionId** |
+| Skupina prostředků ovlivněného prostředku | **Context. resourceName** | **data. Context. resourceName** |
+| Název ovlivněného prostředku | **Context. resourceName** | **data. Context. resourceName** |
+| Typ ovlivněného prostředku | **Context. ResourceType** | **data. Context. ResourceType** |
+| ID prostředku ovlivněného prostředku | **Context. resourceId** | **data. Context. resourceId** |
+| Přímý odkaz na stránku souhrnu prostředků na portálu | **Context. portalLink** | **data. Context. portalLink** |
+| Vlastní pole datové části, která se mají předat Webhooku nebo aplikaci logiky | **vlastnosti** | **data. Properties** |
 
 Datová část je podobná, jak vidíte. Následující část nabízí:
 

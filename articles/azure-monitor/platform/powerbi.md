@@ -1,18 +1,17 @@
 ---
 title: Import dat služby Azure Log Analytics do Power BI | Microsoft Docs
 description: Power BI je cloudová služba pro obchodní analýzy od Microsoftu, která poskytuje bohatou vizualizaci a sestavy pro analýzu různých sad dat.  Tento článek popisuje, jak nakonfigurovat a importovat Log Analytics data do Power BI a nakonfigurovat je tak, aby se automaticky aktualizovala.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 8c703cc2fd93900e13d39021992bc11247881b47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8ff24d508eb35c4f2a04c7d024254fa6f1875da8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75394709"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659279"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importovat data protokolu Azure Monitor do Power BI
 
@@ -40,7 +39,7 @@ Začněte vytvořením [dotazu protokolu](../log-query/log-query-overview.md) , 
 Power BI Desktop je desktopová aplikace, která umožňuje vytvořit datové sady a sestavy, které se dají publikovat do Power BI.  Můžete ji také použít k vytvoření dotazu pomocí Power Queryho jazyka exportovaného z Azure Monitor. 
 
 1. Nainstalujte [Power BI Desktop](https://powerbi.microsoft.com/desktop/) , pokud ho ještě nemáte, a pak aplikaci otevřete.
-2. Vyberte **získat Data** > **prázdný dotaz** pro otevření nového dotazu.  Pak vyberte **Rozšířený editor** a vložte obsah exportovaného souboru do dotazu. Klikněte na **Done** (Hotovo).
+2. Vyberte **získat Data** > **prázdný dotaz** pro otevření nového dotazu.  Pak vyberte **Rozšířený editor** a vložte obsah exportovaného souboru do dotazu. Klikněte na **Hotovo**.
 
     ![Power BI Desktop dotaz](media/powerbi/desktop-new-query.png)
 

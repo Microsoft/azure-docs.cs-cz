@@ -1,18 +1,17 @@
 ---
 title: Odeslání dat z rozšíření Windows Azure Diagnostics do Azure Event Hubs
 description: Nakonfigurujte diagnostické rozšíření v Azure Monitor, aby se odesílala data do centra událostí Azure, abyste je mohli přesměrovat do umístění mimo Azure.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 573a56c537e48687e310acff8639c50d0d0c6e3d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 5e5034e99d37d3681192c2ad066f28acd1c4aeeb
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467959"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672527"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Odeslání dat z rozšíření Windows Azure Diagnostics do Azure Event Hubs
 Rozšíření Azure Diagnostics je agent v Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů Azure a dalších výpočetních prostředků. Tento článek popisuje, jak odeslat data z diagnostického rozšíření Windows Azure (WAD) do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) , abyste mohli přesměrovat do umístění mimo Azure.
@@ -22,11 +21,11 @@ Rozšíření Azure Diagnostics je agent v Azure Monitor, který shromažďuje d
 Data shromážděná z hostovaného operačního systému, který je možné odeslat do Event Hubs, zahrnují následující. Do Event Hubs nelze odeslat další zdroje dat shromážděné službou WAD, včetně protokolů IIS a výpisů stavu systému.
 
 * Události Trasování událostí pro Windows
-* Čítače výkonu
+* Čítače výkonnosti
 * Protokoly událostí systému Windows, včetně protokolů aplikace v protokolu událostí systému Windows
 * Protokolů infrastruktury Azure Diagnostics
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Windows Diagnostics Extension 1,6 nebo vyšší. V tématu [Azure Diagnostics verze schématu konfigurace rozšíření a historie](diagnostics-extension-versions.md) Historie verzí a [Azure Diagnostics rozšíření](diagnostics-extension-overview.md) pro podporované prostředky.
 * Obor názvů Event Hubs musí být vždy zřízen. Podrobnosti najdete v tématu [Začínáme s Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) .

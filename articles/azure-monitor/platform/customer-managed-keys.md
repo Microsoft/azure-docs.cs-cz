@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor konfiguraci klíče spravovaného zákazníkem
 description: Informace a kroky konfigurace klíče spravovaného zákazníkem (CMK) k šifrování dat ve vašich Log Analyticsch pracovních prostorech pomocí Azure Key Vaultho klíče.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 0cb33f55acacfd3635d19719265a46b566765a64
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 6a999df6daf2fde5133143fe9b22a65d628ecfb2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592098"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663943"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor konfiguraci klíče spravovaného zákazníkem 
 
@@ -172,7 +171,7 @@ https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<res
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Zřizování úložiště dat Azure Monitor (cluster ADX)
 
-Během období předčasného přístupu k této funkci cluster ADX zřídí produktový tým ručně po dokončení předchozích kroků. K poskytnutí podrobností o prostředku *clusteru* použijte kanál, který máte s Microsoftem. Odpověď JSON lze načíst pomocí GET REST API:
+Během období předčasného přístupu k této funkci cluster ADX zřídí produktový tým ručně po dokončení předchozích kroků. K poskytnutí podrobností o prostředku *clusteru* použijte svůj kanál Microsoftu. Zkopírujte odpověď JSON z prostředku *clusteru* REST API:
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview

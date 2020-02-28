@@ -1,19 +1,17 @@
 ---
 title: Správa využití a nákladů pro Azure Application Insights | Microsoft Docs
 description: Spravujte svazky telemetrie a sledujte náklady na Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b0a800a95d00e482b2342911111f43cfadb5a9c6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f871dfa5bd3c1feb6a89fcff3fb9d95442e72986
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845634"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669773"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Správa využití a nákladů pro Application Insights
 
@@ -197,7 +195,7 @@ V každém zachované záznamu `itemCount` označuje počet původních záznam�
 
 ## <a name="change-the-data-retention-period"></a>Změnit dobu uchování dat
 
-Výchozí doba uchování pro Application Insights prostředky je 90 dní. Pro jednotlivé prostředky Application Insights je možné vybrat různé doby uchovávání. Úplná sada dostupných dob uchovávání dat je 30, 60, 90, 120, 180, 270, 365, 550 nebo 730 dnů. 
+Výchozí doba uchování pro Application Insights prostředky je 90 dní. Pro každý prostředek Application Insights lze vybrat různá období uchování. Úplná sada dostupných dob uchovávání dat je 30, 60, 90, 120, 180, 270, 365, 550 nebo 730 dnů. 
 
 Pokud chcete změnit dobu uchovávání, z prostředku Application Insights přejděte na stránku **využití a odhadované náklady** a vyberte možnost **uchování dat** :
 

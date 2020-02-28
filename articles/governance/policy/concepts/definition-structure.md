@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
-ms.date: 11/26/2019
+ms.date: 02/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1e90009a0c34bf166a18659a19988ea5a0c9ab07
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: ade659637f1be6cc58cebae760c5e1b753f3830f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587120"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670776"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -22,7 +22,7 @@ Schéma definice zásad najdete tady: [https://schema.management.azure.com/schem
 Vytvoření definice zásady pomocí JSON. Definice zásady obsahuje elementy pro:
 
 - režim
-- parameters
+- parametry
 - Zobrazovaný název
 - description
 - pravidlo zásad
@@ -646,7 +646,7 @@ Seznam aliasů se pořád rozrůstá. Pokud chcete zjistit, jaké aliasy jsou ak
   Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
   ```
 
-- Azure Powershell
+- Azure PowerShell
 
   ```azurepowershell-interactive
   # Login first with Connect-AzAccount if not using Cloud Shell
@@ -716,6 +716,9 @@ Další informace najdete v tématu [vyhodnocení aliasu [\*]](../how-to/author-
 
 Iniciativy umožňují seskupit několik definic zásad souvisejících ke zjednodušení přiřazení a správy, protože pracujete s skupinu jako jednu položku. Například můžete seskupovat související označení definice zásad do jednoho initiative. Místo toho každé zásady zvlášť, můžete použít iniciativy.
 
+> [!NOTE]
+> Jakmile je iniciativa přiřazena, parametry úrovně Initative nelze změnit. Z tohoto důvodu doporučujeme, abyste při definování parametru nastavili hodnotu **DefaultValue** .
+
 Následující příklad ukazuje, jak vytvořit iniciativu pro zpracování dvou značek: `costCenter` a `productName`. Využívá dvě předdefinované zásady použít výchozí hodnotu značky.
 
 ```json
@@ -729,13 +732,15 @@ Následující příklad ukazuje, jak vytvořit iniciativu pro zpracování dvou
                 "type": "String",
                 "metadata": {
                     "description": "required value for Cost Center tag"
-                }
+                },
+                "defaultValue": "DefaultCostCenter"
             },
             "productNameValue": {
                 "type": "String",
                 "metadata": {
                     "description": "required value for product Name tag"
-                }
+                },
+                "defaultValue": "DefaultProduct"
             }
         },
         "policyDefinitions": [{

@@ -2,18 +2,17 @@
 title: Přehled agentů monitorování Azure | Microsoft Docs
 description: Tento článek poskytuje podrobný přehled dostupných agentů Azure, které podporují monitorování virtuálních počítačů hostovaných v Azure nebo hybridním prostředí.
 services: azure-monitor
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: e3385234433a292ce146c9aed25ecfeb1095d79a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: a7e6a3a299df8112fe4fbcf457516894c1766b8c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616115"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668515"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Přehled agentů Azure Monitor
 

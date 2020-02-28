@@ -1,18 +1,14 @@
 ---
 title: Řídicí panel přehled služby Azure Application Insights | Microsoft Docs
 description: Sledujte aplikace s využitím Azure Application Insights a přehled funkcí řídicího panelu.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 06/03/2019
-ms.openlocfilehash: 45c04cc32733873061bd6ff44b2e5484b106a893
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406641"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669892"
 ---
 # <a name="application-insights-overview-dashboard"></a>Řídicí panel přehledu Application Insights
 
@@ -24,7 +20,7 @@ Nový řídicí panel přehled se teď ve výchozím nastavení spustí:
 
 ![Podokno náhledu – přehled](./media/overview-dashboard/overview.png)
 
-## <a name="better-performance"></a>Má vyšší výkon.
+## <a name="better-performance"></a>Lepší výkon
 
 Výběr časového rozsahu byl zjednodušen pro jednoduché rozhraní jedním kliknutím.
 
@@ -55,7 +51,7 @@ Chcete-li přejít zpět k prostředí přehledu, stačí vybrat:
 
 ![Tlačítko Přehled](./media/overview-dashboard/app-insights-overview-dashboard-07.png)
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud vyberete **Konfigurovat nastavení dlaždic** a nastavíte vlastní časový rozsah přesahující 31 dní, řídicí panel se nezobrazí déle než 31 dní dat, a to ani s výchozím uchováváním dat 90 dnů. Pro toto chování není aktuálně k dispozici žádné alternativní řešení.
 

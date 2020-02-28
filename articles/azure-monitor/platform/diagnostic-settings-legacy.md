@@ -2,17 +2,16 @@
 title: Shromažďovat protokol aktivit Azure s nastavením diagnostiky (Preview) – Azure Monitor | Microsoft Docs
 description: Pomocí nastavení diagnostiky předáte protokoly aktivit Azure, abyste Azure Monitor protokoly, úložiště Azure nebo Azure Event Hubs.
 author: bwren
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: fcdcef5d63163b24fe5de0f547dc2dde00cd674f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: fcf7eef269c9fa8b62217fb64ed792aece1fce4e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016251"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670334"
 ---
 # <a name="update-to-azure-activity-log-collection-and-export"></a>Aktualizace shromažďování a exportu protokolů aktivit Azure
 [Protokol aktivit Azure](platform-logs-overview.md) je [protokol platformy](platform-logs-overview.md) , který poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Metoda odeslání položek protokolu aktivit do [centra událostí nebo účtu úložiště](activity-log-export.md) nebo do [pracovního prostoru Log Analytics](activity-log-collect.md) se změnila na použití [nastavení diagnostiky](diagnostic-settings.md). Tento článek popisuje rozdíl mezi metodami a vymazáním nastavení starší verze v přípravě na možnost změnit nastavení diagnostiky.

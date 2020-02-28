@@ -1,18 +1,17 @@
 ---
 title: Začínáme s Azure Monitor Log Analytics | Microsoft Docs
 description: Tento článek popisuje kurz použití Log Analytics v Azure Portal k zápisu dotazů.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 07/19/2019
-ms.openlocfilehash: 1117ebbb8d2c3b133156c6b63a0ab13185f9f4a5
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1cf1695db50e6aee2a5dae24ed5231fdda7c12de
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933051"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670232"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Začínáme s Log Analytics v Azure Monitor
 
@@ -40,11 +39,11 @@ Log Analytics je webový nástroj, který se používá pro zápis a spouštěn�
 ## <a name="firewall-requirements"></a>Požadavky na bránu firewall
 Pokud chcete použít Log Analytics, váš prohlížeč vyžaduje přístup k následujícím adresám. Pokud Váš prohlížeč přistupuje k Azure Portal přes bránu firewall, musíte povolit přístup k těmto adresám.
 
-| identifikátor URI | IP | Porty |
+| Uri | IP adresa | Porty |
 |:---|:---|:---|
-| portal.loganalytics.io | Dynamický | 80 443 |
-| api.loganalytics.io | Dynamický | 80 443 |
-| docs.loganalytics.io | Dynamický | 80 443 |
+| portal.loganalytics.io | Dynamická | 80,443 |
+| api.loganalytics.io | Dynamická | 80,443 |
+| docs.loganalytics.io | Dynamická | 80,443 |
 
 ## <a name="basic-queries"></a>Základní dotazy
 Dotazy se dají použít k vyhledávání podmínek, identifikaci trendů, analýze vzorů a poskytování mnoha dalších přehledů na základě vašich dat. Začněte se základním dotazem:
@@ -95,7 +94,7 @@ Log Analytics automatické obory výsledků:
 Tento dotaz je velmi obecný a vrací příliš mnoho výsledků, aby byly užitečné. Výsledky můžete filtrovat buď prostřednictvím prvků tabulky, nebo explicitně přidáním filtru do dotazu. Filtrování výsledků prostřednictvím prvků tabulky se vztahuje na existující sadu výsledků, zatímco filtr na samotný dotaz vrátí novou filtrovanou sadu výsledků a může proto vytvořit přesnější výsledky.
 
 ### <a name="add-a-filter-to-the-query"></a>Přidejte filtr do dotazu.
-Nalevo od každého záznamu se nachází šipka. Kliknutím na tuto šipku otevřete podrobnosti konkrétního záznamu.
+Nalevo od každého záznamu se nachází šipka. Klepnutím na šipku otevřete podrobnosti konkrétního záznamu.
 
 Najeďte myší nad název sloupce pro ikony "+" a "-", které se mají zobrazit. Chcete-li přidat filtr, který vrátí pouze záznamy se stejnou hodnotou, klikněte na symbol "+". Kliknutím na "–" vyloučíte záznamy s touto hodnotou a potom kliknutím na tlačítko **Spustit** spusťte dotaz znovu.
 
@@ -106,7 +105,7 @@ Teď se podíváme na události se závažností _chyby_. Tento parametr je urč
 
 Klikněte na ikonu filtru vedle názvu sloupce a v místním okně vyberte _hodnoty začínající_ textovou _chybou_:
 
-![Filtrovat](media/get-started-portal/filter.png)
+![Filtr](media/get-started-portal/filter.png)
 
 
 ## <a name="sort-and-group-results"></a>Řazení a seskupení výsledků
@@ -121,7 +120,7 @@ Další možností uspořádání výsledků je seskupení. Chcete-li seskupit v
 ## <a name="select-columns-to-display"></a>Vyberte sloupce, které se mají zobrazit.
 Tabulka výsledků často obsahuje mnoho sloupců. Možná zjistíte, že některé z vrácených sloupců nejsou ve výchozím nastavení zobrazeny, nebo můžete chtít odebrat některé sloupce, které jsou zobrazeny. Chcete-li vybrat sloupce, které chcete zobrazit, klikněte na tlačítko sloupce:
 
-![Vybrat sloupce](media/get-started-portal/select-columns.png)
+![Výběr sloupců](media/get-started-portal/select-columns.png)
 
 
 ## <a name="select-a-time-range"></a>Vyberte časový rozsah.
@@ -134,7 +133,7 @@ Když vyberete vlastní časový rozsah, vybrané hodnoty jsou ve formátu UTC, 
 Pokud dotaz explicitně obsahuje filtr pro _TimeGenerated_, zobrazí se v poli název pro výběr času _nastavení v dotazu_. Ruční výběr bude zakázán, aby se zabránilo konfliktu.
 
 
-## <a name="charts"></a>spojnic
+## <a name="charts"></a>Grafy
 Kromě vracení výsledků v tabulce je možné výsledky dotazu prezentovat ve vizuálních formátech. Jako příklad použijte následující dotaz:
 
 ```Kusto
@@ -161,10 +160,10 @@ V případě, že je v timechart náhlé špička nebo krok, může se na řádk
 
 ![Inteligentní Diagnostika](media/get-started-portal/smart-diagnostics.png)
 
-## <a name="pin-to-dashboard"></a>Připnout na řídicí panel
+## <a name="pin-to-dashboard"></a>Připnutí na řídicí panel
 Pokud chcete připnout diagram nebo tabulku na některý ze sdílených řídicích panelů Azure, klikněte na ikonu připnutí. Všimněte si, že tato ikona se přesunula na horní část okna Log Analytics, která se liší od obrazovky níže.
 
-![Připnout na řídicí panel](media/get-started-portal/pin-dashboard.png)
+![Připnutí na řídicí panel](media/get-started-portal/pin-dashboard.png)
 
 Určitá zjednodušení se u grafu aplikují při jeho připnutí na řídicí panel:
 
@@ -172,7 +171,7 @@ Určitá zjednodušení se u grafu aplikují při jeho připnutí na řídicí p
 - Časové omezení: dotazy se automaticky omezí na posledních 14 dní.
 - Omezení počtu přihrádek: Pokud zobrazíte graf, který má spoustu diskrétních přihrádek, méně vyplněné přihrádky se automaticky seskupí do jedné přihrádky _ostatní_ .
 
-## <a name="save-queries"></a>Uložení dotazů
+## <a name="save-queries"></a>Ukládání dotazů
 Po vytvoření užitečného dotazu ho můžete chtít uložit nebo sdílet s ostatními. Ikona **Uložit** je na horním panelu.
 
 Jako funkci můžete uložit celou stránku dotazu nebo jeden dotaz. Funkce jsou dotazy, které mohou být také odkazovány jinými dotazy. Chcete-li uložit dotaz jako funkci, je nutné zadat alias funkce, což je název, který se používá k volání tohoto dotazu, pokud na něj odkazují jiné dotazy.

@@ -1,18 +1,17 @@
 ---
 title: Odstranění a obnovení pracovního prostoru Azure Log Analytics | Microsoft Docs
 description: Naučte se, jak odstranit pracovní prostor Log Analytics v případě, že jste ho vytvořili v osobním předplatném nebo změníte uspořádání modelu pracovního prostoru.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 038cfe04193b734bd26ed0ffd4dec5ae9b267c22
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 6f50450702c9ecdc1c1d910514d94e0a759176b8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901273"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670470"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru služby Azure Log Analytics
 
@@ -27,8 +26,8 @@ Když odstraníte Log Analytics pracovní prostor, provede se operace obnoviteln
 
 Při odstraňování pracovního prostoru chcete postupovat opatrně, protože může dojít k důležitým datům a konfiguracím, které by mohly mít negativní dopad na provoz služby. Přečtěte si, jaké agenty, řešení a další služby a zdroje Azure ukládají svá data v Log Analytics, například:
 
-* Řešení pro správu
-* Azure Automation
+* Řešení správy
+* Automatizace Azure
 * Agenti běžící na virtuálních počítačích s Windows a Linux
 * Agenti běžící v počítačích se systémem Windows a Linux ve vašem prostředí
 * System Center Operations Manager
@@ -44,7 +43,7 @@ Operace odstranění pracovního prostoru odstraní Správce prostředků prost�
 
 Pracovní prostor můžete odstranit pomocí [PowerShellu](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)nebo v [Azure Portal](https://portal.azure.com).
 
-### <a name="azure-portal"></a>Portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 1. Pokud se chcete přihlásit, otevřete [Azure Portal](https://portal.azure.com). 
 2. Na webu Azure Portal vyberte **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
@@ -91,7 +90,7 @@ Pracovní prostor můžete obnovit tak, že ho znovu vytvoříte pomocí násled
 * ID předplatného
 * Název skupiny prostředků
 * Název pracovního prostoru
-* Region (Oblast)
+* Oblast
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell

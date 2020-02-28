@@ -1,18 +1,14 @@
 ---
 title: Nastavení analýzy webových aplikací pro ASP.NET pomocí Azure Application Insights | Dokumentace Microsoftu
 description: Nakonfigurujte nástroje pro analýzu výkonu, dostupnosti a chování uživatelů pro váš web ASP.NET, který je hostovaný místně nebo v Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/08/2019
-ms.openlocfilehash: a72bb5dd02776fe8410bb515e4e17a292d12048f
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 0843d6c04bf6fc9bab07207072990fb3fb8f1844
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677677"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665914"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Nastavení Application Insights pro web ASP.NET
 
@@ -20,7 +16,7 @@ Tímto postupem je možné konfigurovat webovou aplikaci ASP.NET tak, aby odesí
 
 Nastavení je otázkou několika kliknutí v sadě Visual Studio. Máte možnost vyhnout se placení poplatků, pokud objem telemetrických dat omezíte. Tato funkce umožňuje experimentovat a ladit nebo monitorovat lokalitu, která nemá mnoho uživatelů. Pokud se později rozhodnete, že chcete pokračovat a monitorovat svůj provozní server, můžete limit snadno zvýšit.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Pro přidání Application Insights na web ASP.NET potřebujete:
 
 - Nainstalujte [Visual Studio 2019 pro Windows](https://www.visualstudio.com/downloads/) s následujícími úlohami:
@@ -34,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 > [!IMPORTANT]
 > Snímky obrazovky v tomto příkladu vycházejí ze sady Visual Studio 2017 verze 15.9.9 a novější. Prostředí pro přidání Application Insights se liší ve verzích sady Visual Studio i typu šablony ASP.NET. Starší verze můžou mít alternativní text, například "konfigurace Application Insights".
 
-V Průzkumník řešení klikněte pravým tlačítkem myši na název vaší webové aplikace a vyberte **přidat**  > **telemetrie Application Insights**
+V Průzkumník řešení klikněte pravým tlačítkem myši na název vaší webové aplikace a vyberte **přidat** > **telemetrie Application Insights**
 
 ![Snímek obrazovky Průzkumníka řešení se zvýrazněnou možností Konfigurovat Application Insights](./media/asp-net/add-telemetry-new.png)
 
@@ -54,7 +50,7 @@ Pokud chcete nastavit skupinu prostředků nebo umístění, kde jsou vaše data
 
 ![Snímek obrazovky stránky registrace vaší aplikace v Application Insights](./media/asp-net/00005-register-ed.png)
 
- Vyberte **projekt**  > **spravovat balíčky NuGet**  > **zdroj balíčku: NuGet.org** > Potvrďte, že máte nejnovější stabilní verzi sady Application Insights SDK.
+ Vyberte **projekt** > **spravovat balíčky NuGet** > **zdroj balíčku: NuGet.org** > Potvrďte, že máte nejnovější stabilní verzi sady Application Insights SDK.
 
  Telemetrie se bude posílat na web [Azure Portal](https://portal.azure.com), jak během ladění aplikace, tak po jejím publikování.
 > [!NOTE]

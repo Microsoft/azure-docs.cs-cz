@@ -1,19 +1,17 @@
 ---
 title: Korelace telemetrie Azure Application Insights | Microsoft Docs
 description: Korelace telemetrie Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: bc73dfb1c4dc77abe0bd135ecf572fa05ddf6322
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951322"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672051"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -33,7 +31,7 @@ Můžete sestavit zobrazení distribuované logické operace pomocí `operation_
 
 V prostředí mikroslužeb můžou trasování z komponent přejít na jiné položky úložiště. Každá součást může mít vlastní klíč instrumentace v Application Insights. Pro získání telemetrie pro logickou operaci Application Insights dotazovat data z každé položky úložiště. Pokud je počet položek úložiště velký, budete potřebovat nápovědu, kde můžete hledat další. Datový model Application Insights definuje dvě pole pro vyřešení tohoto problému: `request.source` a `dependency.target`. První pole identifikuje komponentu, která iniciovala požadavek závislosti. Druhé pole určuje, která komponenta vrátila odpověď na volání závislostí.
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 Pojďme se podívat na příklad. Aplikace s názvem ceny akcií zobrazuje aktuální cenu na trhu na populaci pomocí externího rozhraní API s názvem Stock. Aplikace burzovních cen má stránku s názvem skladová stránka, kterou klientský webový prohlížeč otevře pomocí `GET /Home/Stock`. Aplikace se dotazuje na skladové rozhraní API pomocí `GET /api/stock/value`volání HTTP.
 
@@ -47,11 +45,11 @@ Výslednou telemetrii můžete analyzovat spuštěním dotazu:
 
 Ve výsledcích si všimněte, že všechny položky telemetrie sdílejí kořen `operation_Id`. Když je ze stránky provedeno volání AJAX, je k telemetrie závislostí přiřazeno nové jedinečné ID (`qJSXU`) a ID pageView se používá jako `operation_ParentId`. Požadavek serveru pak použije ID AJAX jako `operation_ParentId`.
 
-| itemType   | jméno                      | ID           | operation_ParentId | operation_Id |
+| itemType   | name                      | ID           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | pageView   | Skladová stránka                |              | STYz               | STYz         |
 | závislosti | ZÍSKAT/Home/Stock           | qJSXU        | STYz               | STYz         |
-| request    | ZÍSKAT domácí/burzovní            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| požadavek    | ZÍSKAT domácí/burzovní            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | závislosti | ZÍSKAT/API/Stock/Value      | bBrf2L7mm2g = | KqKwlrSt9PA=       | STYz         |
 
 Když se `GET /api/stock/value` voláním do externí služby, musíte znát identitu tohoto serveru, abyste mohli `dependency.target` pole nastavit správně. Pokud externí služba nepodporuje monitorování, `target` je nastaveno na název hostitele služby (například `stock-prices-api.com`). Pokud však služba identifikuje sebe sama vrácením předdefinované hlavičky protokolu HTTP, `target` obsahuje identitu služby, která umožňuje Application Insights sestavení distribuovaného trasování pomocí dotazování telemetrie z této služby.
@@ -206,8 +204,8 @@ Datové modely [OpenTracing a specifikace datového modelu](https://opentracing.
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `Span` se službou `span.kind = server`                  |
-| `Dependency`                          | `Span` se službou `span.kind = client`                  |
+| `Request`, `PageView`                 | `Span` s `span.kind = server`                  |
+| `Dependency`                          | `Span` s `span.kind = client`                  |
 | `Id` `Request` a `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
 | `Operation_ParentId`                  | `Reference` typu `ChildOf` (nadřazený rozsah)   |
@@ -267,7 +265,7 @@ Pole `id` je ve formátu `<trace-id>.<span-id>`, kde se `trace-id` předává z 
 
 Pole `operation_ParentId` je ve formátu `<trace-id>.<parent-id>`, kde `trace-id` a `parent-id` jsou pořízeny z hlavičky trasování, která byla předána v žádosti.
 
-### <a name="log-correlation"></a>Korelace protokolů
+### <a name="log-correlation"></a>Korelace protokolu
 
 OpenCensus Python umožňuje korelovat protokoly přidáním ID trasování, identifikátoru ID a příznaku vzorkování pro zaznamenávání záznamů. Tyto atributy přidáte tak, že nainstalujete [integraci protokolování](https://pypi.org/project/opencensus-ext-logging/)OpenCensus. Do `LogRecord`ch objektů Pythonu se přidají následující atributy: `traceId`, `spanId`a `traceSampled`. Všimněte si, že se to projeví jenom u protokolovacích nástrojů, které se vytvoří po integraci.
 

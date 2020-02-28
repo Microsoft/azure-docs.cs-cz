@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor rozhraní API kolekce dat HTTP | Microsoft Docs
 description: Pomocí rozhraní API kolekce dat služby Azure Monitor HTTP můžete přidat data JSON do pracovního prostoru Log Analytics z libovolného klienta, který může volat REST API. Tento článek popisuje, jak používat rozhraní API a obsahuje příklady, jak publikovat data pomocí různých programovacích jazyků.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/01/2019
-ms.openlocfilehash: 136644dbcfe9e2835f799b284d21263913bc67b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f12e9e90b99a055945c34398ff5351334c344253
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932592"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666748"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Odeslání dat protokolu do Azure Monitor pomocí rozhraní API kolekce dat HTTP (Public Preview)
 V tomto článku se dozvíte, jak pomocí rozhraní API kolekce dat HTTP odesílat data protokolu Azure Monitor z klienta REST API.  Popisuje, jak formátovat data shromážděná vaším skriptem nebo aplikací, jak je zahrnout do žádosti a které vyžadují autorizaci Azure Monitor.  Příklady jsou k dispozici pro C#PowerShell, a Python.
@@ -38,8 +37,8 @@ Pokud chcete použít rozhraní API kolekce dat HTTP, vytvoříte požadavek POS
 ### <a name="request-uri"></a>Identifikátor URI žádosti
 | Atribut | Vlastnost |
 |:--- |:--- |
-| Metoda |SPUŠTĚNÍ |
-| IDENTIFIKÁTOR URI |https://\<KódZákazníka\>. ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
+| Metoda |POST |
+| URI |https://\<KódZákazníka\>. ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
 | Typ obsahu |application/json |
 
 ### <a name="request-uri-parameters"></a>Parametry identifikátoru URI žádosti
@@ -54,8 +53,8 @@ Pokud chcete použít rozhraní API kolekce dat HTTP, vytvoříte požadavek POS
 |:--- |:--- |
 | Autorizace |Podpis autorizace. Později v článku si můžete přečíst o tom, jak vytvořit hlavičku HMAC-SHA256. |
 | Typ protokolu |Zadejte typ záznamu dat, která se odesílají. Může obsahovat pouze písmena, číslice a podtržítka (_) a nesmí překročit 100 znaků. |
-| x-MS-Date |Datum zpracování žádosti ve formátu RFC 1123. |
-| x-MS-AzureResourceId | ID prostředku prostředku Azure, ke kterému by se měla data přidružit Tím se naplní vlastnost [_ResourceId](log-standard-properties.md#_resourceid) a povolí zahrnutí dat do dotazů [kontextu prostředků](design-logs-deployment.md#access-mode) . Pokud toto pole není zadáno, data nebudou obsažena v dotazech kontextu prostředků. |
+| x-ms-date |Datum zpracování žádosti ve formátu RFC 1123. |
+| x-ms-AzureResourceId | ID prostředku prostředku Azure, ke kterému by se měla data přidružit Tím se naplní vlastnost [_ResourceId](log-standard-properties.md#_resourceid) a povolí zahrnutí dat do dotazů [kontextu prostředků](design-logs-deployment.md#access-mode) . Pokud toto pole není zadáno, data nebudou obsažena v dotazech kontextu prostředků. |
 | pole vygenerované časem | Název pole v datech, které obsahuje časové razítko datové položky. Pokud zadáte pole, bude jeho obsah použit pro **TimeGenerated**. Pokud toto pole není zadané, výchozí hodnota pro **TimeGenerated** je čas, kdy se zpráva ingestuje. Obsah pole zpráva by měl odpovídat formátu ISO 8601 RRRR-MM-DDThh: mm: ssZ. |
 
 ## <a name="authorization"></a>Autorizace
@@ -93,7 +92,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 Ukázky v dalších částech obsahují vzorový kód, který vám pomůže vytvořit autorizační hlavičku.
 
-## <a name="request-body"></a>Text požadavku
+## <a name="request-body"></a>Tělo požadavku
 Tělo zprávy musí být ve formátu JSON. Musí obsahovat jeden nebo více záznamů s páry název vlastnosti a hodnota v následujícím formátu. Název vlastnosti může obsahovat jenom písmena, číslice a podtržítka (_).
 
 ```json
@@ -129,16 +128,16 @@ V jednom požadavku můžete dávkovat více záznamů pomocí následujícího 
 ## <a name="record-type-and-properties"></a>Typ a vlastnosti záznamu
 Vlastní typ záznamu definujete při odesílání dat prostřednictvím rozhraní Azure Monitor API kolekce dat HTTP. V současné době nemůžete zapisovat data do existujících typů záznamů, které byly vytvořeny jinými datovými typy a řešeními. Azure Monitor přečte příchozí data a pak vytvoří vlastnosti, které odpovídají datovým typům hodnot, které zadáte.
 
-Každý požadavek na rozhraní API kolekce dat musí obsahovat hlavičku **typu protokolu** s názvem pro daný typ záznamu. Přípona **_CL** se automaticky připojí k názvu, který zadáte, abyste ho lišili od ostatních typů protokolů jako vlastní protokol. Pokud například zadáte název **MyNewRecordType**, Azure monitor vytvoří záznam s typem **MyNewRecordType_CL**. To pomáhá zajistit, že mezi uživatelem vytvořenými názvy typů a s dodanými v aktuálních nebo budoucích řešeních Microsoftu nedochází k žádnému konfliktu.
+Každý požadavek na rozhraní API kolekce dat musí obsahovat hlavičku **typu protokolu** s názvem pro daný typ záznamu. Přípona **_CL** se automaticky připojí k názvu, který zadáte, abyste ho rozlišili od ostatních typů protokolů jako vlastní protokol. Pokud například zadáte název **MyNewRecordType**, Azure monitor vytvoří záznam s typem **MyNewRecordType_CL**. To pomáhá zajistit, že mezi uživatelem vytvořenými názvy typů a s dodanými v aktuálních nebo budoucích řešeních Microsoftu nedochází k žádnému konfliktu.
 
 Chcete-li identifikovat datový typ vlastnosti, Azure Monitor přidá příponu k názvu vlastnosti. Pokud vlastnost obsahuje hodnotu null, vlastnost není součástí daného záznamu. Tato tabulka uvádí datový typ vlastnosti a odpovídající příponu:
 
 | Datový typ vlastnosti | Auditování |
 |:--- |:--- |
-| Řetězec |_s |
+| String |_s |
 | Logická hodnota |_b |
-| Klepat |_d |
-| Datum a čas |_T |
+| Double |_d |
+| Datum a čas |_t |
 | GUID (uloženo jako řetězec) |_g |
 
 Datový typ, který Azure Monitor používá pro jednotlivé vlastnosti závisí na tom, zda typ záznamu pro nový záznam již existuje.
@@ -146,7 +145,7 @@ Datový typ, který Azure Monitor používá pro jednotlivé vlastnosti závisí
 * Pokud typ záznamu neexistuje, Azure Monitor vytvoří nový pomocí odvození typu JSON pro určení datového typu pro každou vlastnost nového záznamu.
 * Pokud typ záznamu existuje, Azure Monitor se pokusí vytvořit nový záznam na základě existujících vlastností. Pokud datový typ pro vlastnost v novém záznamu neodpovídá a nelze jej převést na existující typ, nebo pokud záznam obsahuje vlastnost, která neexistuje, Azure Monitor vytvoří novou vlastnost, která má příslušnou příponu.
 
-Například tato položka odeslání by vytvořila záznam se třemi vlastnostmi, **number_d**, **boolean_b**a **string_s**:
+Tato položka odeslání by například vytvořila záznam se třemi vlastnostmi, **number_d**, **boolean_b**a **string_s**:
 
 ![Vzorový záznam 1](media/data-collector-api/record-01.png)
 
@@ -154,11 +153,11 @@ Pokud pak tuto další položku odešlete se všemi hodnotami formátovanými ja
 
 ![Vzorový záznam 2](media/data-collector-api/record-02.png)
 
-Pokud pak toto další odeslání provedete, Azure Monitor by vytvořila nové vlastnosti **boolean_d** a **string_d**. Tyto hodnoty nejde převést:
+Pokud pak toto další odeslání provedete, Azure Monitor by vytvořilo nové vlastnosti **boolean_d** a **string_d**. Tyto hodnoty nejde převést:
 
 ![Vzorový záznam 3](media/data-collector-api/record-03.png)
 
-Pokud jste potom před vytvořením typu záznamu odeslali následující položku, Azure Monitor by vytvořil záznam se třemi vlastnostmi, **argumentem**, **boolean_s**a **string_s**. V této položce je každá počáteční hodnota formátována jako řetězec:
+Pokud jste potom před vytvořením typu záznamu odeslali následující položku, Azure Monitor by vytvořil záznam se třemi vlastnostmi, **number_s**, **boolean_s**a **string_s**. V této položce je každá počáteční hodnota formátována jako řetězec:
 
 ![Vzorový záznam 4](media/data-collector-api/record-04.png)
 
@@ -184,15 +183,15 @@ Tato tabulka uvádí kompletní sadu stavových kódů, které může služba vr
 | Kód | Stav | Kód chyby | Popis |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |Požadavek byl úspěšně přijat. |
-| 400 |Chybný požadavek |InactiveCustomer |Pracovní prostor je uzavřený. |
-| 400 |Chybný požadavek |InvalidApiVersion |Zadaná verze rozhraní API nebyla službou rozpoznána. |
-| 400 |Chybný požadavek |InvalidCustomerId |Zadané ID pracovního prostoru je neplatné. |
-| 400 |Chybný požadavek |InvalidDataFormat |Byl odeslán neplatný kód JSON. Tělo odpovědi může obsahovat další informace o tom, jak chybu vyřešit. |
-| 400 |Chybný požadavek |InvalidLogType |Zadaný typ protokolu obsahuje speciální znaky nebo číslice. |
-| 400 |Chybný požadavek |MissingApiVersion |Verze rozhraní API nebyla určena. |
-| 400 |Chybný požadavek |MissingContentType |Typ obsahu se nezadal. |
-| 400 |Chybný požadavek |MissingLogType |Nebyl zadán požadovaný typ protokolu hodnot. |
-| 400 |Chybný požadavek |UnsupportedContentType |Typ obsahu nebyl nastaven na hodnotu **Application/JSON**. |
+| 400 |Nesprávná žádost |InactiveCustomer |Pracovní prostor je uzavřený. |
+| 400 |Nesprávná žádost |InvalidApiVersion |Zadaná verze rozhraní API nebyla službou rozpoznána. |
+| 400 |Nesprávná žádost |InvalidCustomerId |Zadané ID pracovního prostoru je neplatné. |
+| 400 |Nesprávná žádost |InvalidDataFormat |Byl odeslán neplatný kód JSON. Tělo odpovědi může obsahovat další informace o tom, jak chybu vyřešit. |
+| 400 |Nesprávná žádost |InvalidLogType |Zadaný typ protokolu obsahuje speciální znaky nebo číslice. |
+| 400 |Nesprávná žádost |MissingApiVersion |Verze rozhraní API nebyla určena. |
+| 400 |Nesprávná žádost |MissingContentType |Typ obsahu se nezadal. |
+| 400 |Nesprávná žádost |MissingLogType |Nebyl zadán požadovaný typ protokolu hodnot. |
+| 400 |Nesprávná žádost |UnsupportedContentType |Typ obsahu nebyl nastaven na hodnotu **Application/JSON**. |
 | 403 |Forbidden |InvalidAuthorization |Službě se nepovedlo ověřit požadavek. Ověřte, zda je ID pracovního prostoru a klíč připojení platné. |
 | 404 |Nenalezeno | | Buď zadaná adresa URL není správná, nebo je požadavek příliš velký. |
 | 429 |Příliš mnoho žádostí | | Ve službě dochází k velkému objemu dat z vašeho účtu. Opakujte prosím požadavek později. |

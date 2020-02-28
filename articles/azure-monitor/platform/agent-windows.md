@@ -1,18 +1,17 @@
 ---
 title: Připojit počítače s Windows k Azure Monitor | Microsoft Docs
 description: Tento článek popisuje, jak připojit počítače s Windows hostované v jiných cloudech nebo místně, aby se Azure Monitor s agentem Log Analytics pro Windows.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 21efb16cf519d4bcad520af1c7d8818f36a77218
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689996"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668634"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Připojení počítačů s Windows k Azure Monitor
 
@@ -20,9 +19,9 @@ Aby bylo možné monitorovat a spravovat virtuální počítače nebo fyzické p
 
 Na monitorovaný počítač se systémem Windows je agent uveden jako služba Microsoft Monitoring Agent. Služba Microsoft Monitoring Agent shromažďuje události ze souborů protokolů a protokolu událostí systému Windows, údajů o výkonu a další telemetrie. I v případě, že Agent nemůže komunikovat s Azure Monitor IT zprávy, Agent pokračuje v běhu a zařadí shromážděná data do fronty na disk monitorovaného počítače. Po obnovení připojení služba Microsoft Monitoring Agent odesílá shromážděná data službě.
 
-Agent může být nainstalován pomocí jedné z následujících metod. Většina instalací využívá jejich kombinaci. Díky tomu je možné nainstalovat různé sady počítačů tak, aby vyhovovaly potřebám.  Podrobnosti o použití jednotlivých metod jsou uvedené dále v článku.
+Agent může být nainstalován pomocí jedné z následujících metod. Většina instalací používá kombinaci těchto metod k instalaci různých sad počítačů podle potřeby.  Podrobnosti o použití jednotlivých metod jsou uvedené dále v článku.
 
-* Ruční instalace. Instalační program se ručně spustí na počítači pomocí Průvodce instalací nástroje z příkazového řádku nebo nasazení pomocí existujícího nástroje pro distribuci softwaru.
+* Ruční instalace Instalační program se ručně spustí na počítači pomocí Průvodce instalací nástroje z příkazového řádku nebo nasazení pomocí existujícího nástroje pro distribuci softwaru.
 * Azure Automation konfiguraci požadovaného stavu (DSC). Použití DSC v Azure Automation se skriptem pro počítače se systémem Windows, které jsou již ve vašem prostředí nasazeny.  
 * PowerShellový skript.
 * Šablona Správce prostředků pro virtuální počítače, na kterých běží místní Windows, v Azure Stack. 
@@ -93,9 +92,9 @@ Stažený soubor pro agenta je samostatný instalační balíček.  Instalační
 
 V následující tabulce jsou vysvětlené konkrétní parametry podporované instalačním programem agenta, včetně nasazení pomocí Automatizace DSC.
 
-|Možnosti specifické pro MMA                   |Poznámky         |
+|Možnosti specifické pro MMA                   |Poznámky:         |
 |---------------------------------------|--------------|
-| NOAPM=1                               | Volitelný parametr. Nainstaluje agenta bez monitorování výkonu aplikace .NET.|   
+| NASTAVENÍ NOAPM = 1                               | Volitelný parametr. Nainstaluje agenta bez monitorování výkonu aplikace .NET.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = Konfigurace agenta pro hlášení do pracovního prostoru                |
 |OPINSIGHTS_WORKSPACE_ID                | ID pracovního prostoru (GUID) pro pracovní prostor, který se má přidat                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Klíč pracovního prostoru, který se používá k prvotnímu ověření v pracovním prostoru |

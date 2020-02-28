@@ -1,18 +1,16 @@
 ---
 title: Reference k rozhraní API agenta Azure Application Insights
 description: Reference k rozhraní API agenta Application Insights. Get-ApplicationInsightsMonitoringStatus. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s místně hostovanými webovými aplikacemi v ASP.NET, na virtuálních počítačích nebo v Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 9b1010404cb876ed818dd54cf527987c6cf0ffe0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 159dab4a228c822ef62c45c9ccceff638a9bea45
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899692"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671252"
 ---
 # <a name="application-insights-agent-api-get-applicationinsightsmonitoringstatus"></a>Rozhraní API pro Application Insights agenta: Get-ApplicationInsightsMonitoringStatus
 
@@ -31,7 +29,7 @@ Tato rutina oznámí informace o verzi a informace o souborech klíčů potřebn
 
 ### <a name="example-application-status"></a>Příklad: stav aplikace
 
-Spusťte příkaz `Get-ApplicationInsightsMonitoringStatus`, chcete-li zobrazit stav monitorování webů.
+Spusťte `Get-ApplicationInsightsMonitoringStatus` příkazu, abyste zobrazili stav monitorování webů.
 
 ```
 PS C:\Windows\system32> Get-ApplicationInsightsMonitoringStatus
@@ -77,7 +75,7 @@ V tomto příkladu;
 
 ### <a name="example-powershell-module-information"></a>Příklad: informace o modulu PowerShellu
 
-Spusťte příkaz `Get-ApplicationInsightsMonitoringStatus -PowerShellModule`, chcete-li zobrazit informace o aktuálním modulu:
+Spusťte `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` příkazu, abyste zobrazili informace o aktuálním modulu:
 
 ```
 PS C:\> Get-ApplicationInsightsMonitoringStatus -PowerShellModule
@@ -188,7 +186,7 @@ Stáhne také externí nástroje a určí, zda jsou potřebné knihovny DLL nač
 
 Pokud se tento proces z jakéhokoli důvodu nepovede, můžete tyto příkazy spustit ručně:
 - iisreset. exe/status
-- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) – p W3wp | Findstr/I "InstrumentationEngine AI". ApplicationInsights
+- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) – p W3wp | Findstr/I "InstrumentationEngine AI". ApplicationInsights"
 - [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | Findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 

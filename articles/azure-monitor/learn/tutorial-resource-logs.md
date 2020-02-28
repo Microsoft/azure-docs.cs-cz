@@ -1,18 +1,17 @@
 ---
 title: Shromažďovat protokoly prostředků z prostředku Azure a analyzovat je pomocí Azure Monitor
 description: Kurz konfigurace nastavení diagnostiky pro shromažďování protokolů prostředků z prostředku Azure do Log Analyticsho pracovního prostoru, kde je lze analyzovat pomocí dotazu protokolu.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 90b2a9bc9e3e8aa6297f02a46163717a2bf58a22
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 9f88a69e8d24cfa8654ac2bea3344c9adf81c16a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533556"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670402"
 ---
 # <a name="tutorial-collect-and-analyze-resource-logs-from-an-azure-resource"></a>Kurz: shromáždění a analýza protokolů prostředků z prostředku Azure
 
@@ -26,12 +25,12 @@ V tomto kurzu se naučíte:
 > * Vytvoření jednoduchého dotazu protokolu pro analýzu protokolů
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete prostředek Azure, který se má monitorovat. Můžete použít libovolný prostředek v předplatném Azure, který podporuje nastavení diagnostiky. Chcete-li zjistit, zda prostředek podporuje nastavení diagnostiky, přejděte do příslušné nabídky v Azure Portal a ověřte, zda je v části **monitorování** v nabídce možnost **nastavení diagnostiky** .
 
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 

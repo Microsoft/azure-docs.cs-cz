@@ -1,18 +1,17 @@
 ---
 title: Optimalizujte System Center Operations Manager prostředí pomocí Azure Log Analytics | Microsoft Docs
 description: Řešení System Center Operations Manager Health Check můžete použít k vyhodnocení rizik a stavu prostředí v pravidelných intervalech.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 5ec0f181d9d22e9e1183a59a4fbd7d77e658862e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8add2acb8f263c54f6014699f792380d256d9b0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402871"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663466"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizujte své prostředí pomocí řešení System Center Operations Manager Health Check (Preview).
 
@@ -83,7 +82,7 @@ Než budete pokračovat, musí účet Spustit jako splňovat následující pož
 4. Na stránce **Obecné vlastnosti** vyberte možnost **Windows** v seznamu **účet Spustit jako typ:** .
 5. Do textového pole **Zobrazovaný název** zadejte zobrazovaný název a volitelně zadejte popis do pole **Popis** a pak klikněte na **Další**.
 6. Na stránce **zabezpečení distribuce** vyberte **bezpečnější**.
-7. Klikněte na **Vytvořit**.  
+7. Klikněte na možnost **Vytvořit**.  
 
 Teď, když je vytvořený účet Spustit jako, musí být cílovým serverem pro správu ve skupině pro správu a přidružený k předdefinovanému profilu spustit jako, aby se pracovní postupy spouštěly pomocí přihlašovacích údajů.  
 

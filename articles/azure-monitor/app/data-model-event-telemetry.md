@@ -1,19 +1,15 @@
 ---
 title: Datový model Azure Telemetrie Application Insights – telemetrie událostí | Microsoft Docs
 description: Application Insights datový model pro telemetrii událostí
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 620983fb2174fe7f32a61503b0b87e8e7ce0c330
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: bd8b2581f7642f6825aaf0d1b51c8e94d4333d33
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678153"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671876"
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>Telemetrie událostí: datový model Application Insights
 
@@ -21,7 +17,7 @@ Můžete vytvořit položky telemetrie událostí (v [Application Insights](../.
 
 Sémantika, události mohou nebo nemusí být v souvislosti s požadavky korelační. Je-li však tento příkaz použit správně, telemetrie událostí je důležitější než požadavky nebo trasování. Události reprezentují obchodní telemetrii a měly by být předmětem samostatného a méně agresivního [vzorkování](../../azure-monitor/app/api-filtering-sampling.md).
 
-## <a name="name"></a>Name (Název)
+## <a name="name"></a>Název
 
 Název události Chcete-li povolit správné seskupení a užitečnou metriku, omezte aplikaci tak, aby vygenerovala malý počet samostatných názvů událostí. Nepoužívejte například samostatný název pro každou vygenerovanou instanci události.
 

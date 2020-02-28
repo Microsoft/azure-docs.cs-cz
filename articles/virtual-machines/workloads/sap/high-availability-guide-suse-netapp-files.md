@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 02/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 18aecfc5ea40c8368fbf4d4a07f86e71047265f7
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 493414d6e903dba02f126c10c2f4d6a34e0b1549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598642"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661219"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP
 
@@ -97,10 +97,6 @@ Nyní je možné dosáhnout dostupnosti SAP NetWeaver HA pomocí sdíleného úl
 ![Přehled vysoké dostupnosti SAP NetWeaver](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP HANA používají virtuální název hostitele a virtuální IP adresy. V Azure se [Nástroj pro vyrovnávání zatížení](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) vyžaduje k použití virtuální IP adresy. Doporučujeme použít službu [Load Balancer úrovně Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal). Následující seznam uvádí konfiguraci (A) SCS a nástroj pro vyrovnávání zatížení OLAJÍCÍCH.
-
-> [!IMPORTANT]
-> Clustering s více identifikátory SID pro SAP ASCS/OLAJÍCÍCH s SUSE Linux jako hostovaný operační systém ve virtuálních počítačích **Azure se nepodporuje.** Clustering s více SID popisuje instalaci více instancí SAP ASCS/OLAJÍCÍCH s různými identifikátory SID v jednom clusteru Pacemaker.
-
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -1420,6 +1416,7 @@ Následující testy jsou kopie testovacích případů v [SUSE průvodců osvě
 
 ## <a name="next-steps"></a>Další kroky
 
+* [HA pro SAP NW na virtuálních počítačích Azure v SLES pro aplikace SAP – příručka pro multi-SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 * [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]

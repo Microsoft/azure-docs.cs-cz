@@ -1,18 +1,17 @@
 ---
 title: Automatický skript pro vytvoření Service Manager webové aplikace pro připojení ke konektoru pro správu služeb IT v Azure | Microsoft Docs
 description: Pomocí automatizovaného skriptu pro připojení ke konektoru pro správu služeb IT v Azure můžete vytvořit webovou aplikaci Service Manager a centrálně monitorovat a spravovat pracovní položky ITSM.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: a97ea4d505d17d1d5fb2f2035fb23f3fce94aebe
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: f224e58905e2989caf16259e383726595c0206d5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990925"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672187"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Vytvoření Service Manager webové aplikace pomocí automatizovaného skriptu
 

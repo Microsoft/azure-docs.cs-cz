@@ -1,18 +1,15 @@
 ---
 title: Návod k Azure Monitoring REST API
 description: Ověřování požadavků a použití REST API Azure Monitor k načtení dostupných definic metrik a hodnot metriky.
-ms.service: azure-monitor
-ms.subservice: ''
+ms.subservice: metrics
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 6dff1fe974ad4ffa993e4df03b4903d7e46e1990
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: bdf867d6ae21eda4f9e9f4283542e422cf4d2d94
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162255"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659029"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Návod k Azure Monitoring REST API
 
@@ -626,7 +623,7 @@ ID prostředku se taky dá získat z Azure Portal. Provedete to tak, že přejde
 
 ![ALT "ID prostředku zobrazené v okně Vlastnosti v Azure Portal"](./media/rest-api-walkthrough/resourceid_azure_portal.png)
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 ID prostředku se dá načíst taky pomocí rutin Azure PowerShell. Pokud například chcete získat ID prostředku pro aplikaci logiky Azure, spusťte rutinu Get-AzureLogicApp, jako v následujícím příkladu:
 

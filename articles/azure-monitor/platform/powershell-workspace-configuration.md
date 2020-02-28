@@ -1,24 +1,23 @@
 ---
 title: Použití Powershellu k vytvoření a konfigurace pracovního prostoru Log Analytics | Dokumentace Microsoftu
 description: Log Analytics pracovní prostory v Azure Monitor ukládají data ze serverů ve vaší místní nebo cloudové infrastruktuře. Shromažďovat počítačových dat z Azure storage generování diagnostiky Azure.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/19/2019
-ms.openlocfilehash: 68cd0d51c16ecd63a1446c284f81c5dea07b8c06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6f3f21a7148c59de452d6407fd9a1067b86faae4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363519"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659269"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Správa pracovního prostoru Log Analytics v Azure Monitor pomocí prostředí PowerShell
 
 [Rutiny Log Analytics PowerShellu](https://docs.microsoft.com/powershell/module/az.operationalinsights/) můžete použít k provádění různých funkcí v pracovním prostoru Log Analytics v Azure monitor z příkazového řádku nebo jako součást skriptu.  Příklady úloh, které můžete provést pomocí prostředí PowerShell:
 
-* Vytvoření pracovního prostoru
+* Vytvořit pracovní prostor
 * Přidat nebo odebrat řešení
 * Import a export uložených hledání
 * Vytvořit skupinu počítačů
@@ -30,7 +29,7 @@ ms.locfileid: "75363519"
 * Přidat agenta log analytics na virtuálním počítači Azure
 * Nakonfigurujte log analytics a index data shromážděná pomocí diagnostiky Azure
 
-Tento článek obsahuje dva příklady, které znázorňují některé z funkcí, které můžete provádět z prostředí PowerShell.  Můžete se podívat do [Reference k rutinám Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) pro jiné funkce.
+Tento článek obsahuje dva příklady, které znázorňují některé z funkcí, které můžete provádět z prostředí PowerShell.  Další funkce najdete v [referenčních informacích k rutině prostředí PowerShell pro Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) .
 
 > [!NOTE]
 > Log Analytics se dříve nazývala Operational Insights, což je důvod, proč je název používaný v rutinách.
@@ -44,7 +43,7 @@ Tyto příklady pracují s verzí 1.0.0 nebo novějším v modulu AZ. Operationa
 ## <a name="create-and-configure-a-log-analytics-workspace"></a>Vytvoření a konfigurace pracovního prostoru Log Analytics
 Následující ukázkový skript ukazuje, jak:
 
-1. Vytvoření pracovního prostoru
+1. Vytvořit pracovní prostor
 2. Seznam dostupných řešení
 3. Přidání řešení do pracovního prostoru
 4. Importovat uložené hledání
@@ -203,17 +202,17 @@ Prostředky pro monitorování bez agentů prostředků Azure, musí mít diagno
 | Typ prostředku | Protokoly | Metriky |
 | --- | --- | --- |
 | Brány Application Gateway    | Ano | Ano |
-| Účty pro službu Automation     | Ano | |
+| Účty Automation     | Ano | |
 | Účty Batch          | Ano | Ano |
-| Analytické nástroje Data Lake     | Ano | |
+| Data Lake analytics     | Ano | |
 | Data Lake store         | Ano | |
 | Fond elastické SQL        |     | Ano |
 | Obor názvů centra událostí     |     | Ano |
-| Iot Hub                |     | Ano |
+| IoT Huby                |     | Ano |
 | Key Vault               | Ano | |
-| Nástroje pro vyrovnávání zatížení          | Ano | |
+| Vyrovnávání zátěže          | Ano | |
 | Logic Apps              | Ano | Ano |
-| Skupiny zabezpečení sítě | Ano | |
+| Network Security Groups (Skupiny zabezpečení sítě) | Ano | |
 | Azure Cache for Redis             |     | Ano |
 | Služby hledání         | Ano | Ano |
 | Obor názvů služby Service Bus   |     | Ano |
@@ -221,7 +220,7 @@ Prostředky pro monitorování bez agentů prostředků Azure, musí mít diagno
 | Weby               |     | Ano |
 | Farmy webových serverů        |     | Ano |
 
-Podrobnosti o dostupných metrik, najdete v tématu [podporované metriky ve službě Azure Monitor](../../azure-monitor/platform/metrics-supported.md).
+Podrobnosti o dostupných metrikách najdete v tématu [podporované metriky s Azure monitor](../../azure-monitor/platform/metrics-supported.md).
 
 Podrobnosti o dostupných protokolech najdete v tématu [podporované služby a schéma pro protokoly prostředků](../../azure-monitor/platform/diagnostic-logs-schema.md).
 
@@ -275,5 +274,5 @@ Můžete také použít předchozí skript shromažďování protokolů z účt�
 
 
 ## <a name="next-steps"></a>Další kroky
-* [Zkontrolujte rutiny Powershellu Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) Další informace o použití prostředí PowerShell pro konfiguraci služby Log Analytics.
+* Další informace o používání PowerShellu pro konfiguraci Log Analytics [najdete v Log Analytics rutinách PowerShellu](https://docs.microsoft.com/powershell/module/az.operationalinsights/) .
 

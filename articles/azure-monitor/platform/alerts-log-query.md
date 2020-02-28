@@ -1,33 +1,31 @@
 ---
-title: Dotazy na výstrahy protokolu ve službě Azure Monitor | Dokumentace Microsoftu
-description: Poskytuje doporučení na zápis efektivní dotazy na výstrahy protokolu v proces pro převod existujících dotazů a aktualizace Azure monitoru.
+title: Protokolovat dotazy výstrah v Azure Monitor | Microsoft Docs
+description: Poskytuje doporučení pro psaní efektivních dotazů na výstrahy protokolu v Azure Monitor aktualizace a procesu pro převod existujících dotazů.
 author: yossi-y
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: yossiy
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: 429770b7651a93473c03f5e386d8f7b72692c161
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fdf492b8f103e725046b9b1cbbd079c4d249664a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60995930"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667784"
 ---
-# <a name="log-alert-queries-in-azure-monitor"></a>Dotazy na výstrahy protokolu ve službě Azure Monitor
-[Upozornění pravidla založená na protokoly Azure monitoru](alerts-unified-log.md) v pravidelných intervalech spouští, proto měli byste zajistit, že se zapisují pro minimalizaci režie a latenci. Tento článek obsahuje doporučení pro psaní efektivní dotazy na výstrahy protokolu a proces pro převod existujících dotazů. 
+# <a name="log-alert-queries-in-azure-monitor"></a>Protokolovat dotazy výstrah v Azure Monitor
+[Pravidla výstrah na základě protokolů Azure monitor](alerts-unified-log.md) běží v pravidelných intervalech, takže byste měli zajistit, aby byly zapsány pro minimalizaci režie a latence. Tento článek poskytuje doporučení k psaní efektivních dotazů na výstrahy protokolu a procesu pro převod existujících dotazů. 
 
 ## <a name="types-of-log-queries"></a>Typy dotazů protokolu
-[Protokolovat dotazů ve službě Azure Monitor](../log-query/log-query-overview.md) začínat buď tabulku nebo [hledání](/azure/kusto/query/searchoperator) nebo [sjednocení](/azure/kusto/query/unionoperator) operátor.
+[Dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) začínají buď s tabulkou, nebo s operátorem [hledání](/azure/kusto/query/searchoperator) nebo [sjednocení](/azure/kusto/query/unionoperator) .
 
-Například následující dotaz je vymezen _SecurityEvent_ tabulky a vyhledá ID konkrétních událostí. Toto je pouze tabulky, která musí zpracovat dotaz.
+Například následující dotaz je vymezen na tabulku _SecurityEvent_ a hledá konkrétní ID události. Toto je jediná tabulka, kterou musí dotaz zpracovat.
 
 ``` Kusto
 SecurityEvent | where EventID == 4624 
 ```
 
-Dotazy, které začínají `search` nebo `union` umožňují prohledávat napříč více sloupců v tabulce nebo dokonce více tabulek. Následující příklady ukazují několik metod pro hledání termín _paměti_:
+Dotazy, které začínají `search` nebo `union`, vám umožní Hledat v několika sloupcích v tabulce nebo i v několika tabulkách. Následující příklady znázorňují několik metod hledání termínu _paměti_:
 
 ```Kusto
 search "Memory"
@@ -37,12 +35,12 @@ search ObjectName == "Memory"
 union * | where ObjectName == "Memory"
 ```
 
-I když `search` a `union` jsou užitečné při zkoumání dat, podmínek vyhledávání celého datového modelu, jsou míň efektivní než pomocí tabulky, protože musí zkontrolovat z více tabulek. Protože jsou v pravidelných intervalech spouští dotazy v pravidel upozornění, to může způsobit nadměrnému zatížení přidání latence výstrahy. Z důvodu režie měli vždy začít dotazy pro pravidla upozornění protokolů v Azure s tabulkou a určete obor jasné, což zvyšuje výkon dotazů a relevance výsledků.
+I když `search` a `union` jsou užitečné při zkoumání dat, vyhledávání podmínek nad celým datovým modelem, je méně efektivní než použití tabulky, protože musí kontrolovat napříč více tabulkami. Vzhledem k tomu, že dotazy v pravidlech výstrah jsou spouštěny v pravidelných intervalech, může to mít za následek nadměrné režie přidání latence do výstrahy. Z důvodu této režie by dotazy na pravidla výstrah protokolů v Azure měly vždycky začít s tabulkou, která má definovat jasný rozsah, což zvyšuje výkon dotazů a relevanci výsledků.
 
-## <a name="unsupported-queries"></a>Nepodporovaná dotazy
-Od ledna 11,2019, vytvoření nebo úprava pravidel upozornění protokolů, které používají `search`, nebo `union` operátory nebudou podporovány v portálu Azure portal. Používání těchto operátorů v blocích pravidlo upozornění vrátí chybovou zprávu. Tato změna neovlivní stávající pravidla upozornění a pravidla výstrah vytvářejí se a upravují pomocí rozhraní API služby Log Analytics. Stále byste měli zvážit, že změny jakékoliv výstrahy pravidla, která používají tyto typy dotazů, i když ke zvýšení své efektivity.  
+## <a name="unsupported-queries"></a>Nepodporované dotazy
+Od 11. ledna 2019, vytváření nebo úpravy pravidel upozornění protokolů, které používají `search`, nebo `union` operátory nebudou v Azure Portal podporovány. Při použití těchto operátorů v pravidle výstrahy dojde k vrácení chybové zprávy. Tato změna nemá vliv na existující pravidla a pravidla upozornění vytvořená a upravená pomocí rozhraní Log Analytics API. Stále byste měli zvážit změnu všech pravidel upozornění, která používají tyto typy dotazů, a tím i zlepšit jejich efektivitu.  
 
-Pomocí pravidel upozornění protokolů [dotazy napříč prostředky](../log-query/cross-workspace-query.md) nejsou touto změnou ovlivněny od dotazy napříč prostředky používají `union`, což omezuje rozsah dotazu ke konkrétním prostředkům. Toto není ekvivalentní `union *` které nelze použít.  V následujícím příkladu by byly platné ve pravidel upozornění protokolů:
+Tato změna neovlivní pravidla upozornění protokolu pomocí [dotazů na více prostředků](../log-query/cross-workspace-query.md) , protože dotazy na více zdrojů používají `union`, což omezuje obor dotazu na konkrétní prostředky. Nejedná se o ekvivalent `union *`, který nelze použít.  Následující příklad bude platný v pravidle výstrahy protokolu:
 
 ```Kusto
 union 
@@ -52,13 +50,13 @@ workspace('Contoso-workspace1').Perf
 ```
 
 >[!NOTE]
->[Dotaz napříč prostředky](../log-query/cross-workspace-query.md) protokolu výstrahy je podporována v nové [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení, využívá Azure Monitor [starší verze API upozornění Log Analytics](api-alerts.md) pro vytvoření nového protokolu pravidla upozornění z webu Azure portal, pokud přejdete z [starší verze rozhraní API upozornění Log](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepnutí nové rozhraní API se stane výchozí pro nové pravidla upozornění na webu Azure portal a umožňuje vám vytvořit dotaz napříč prostředky, že pravidla upozornění protokolů. Můžete vytvořit [napříč prostředky dotazu](../log-query/cross-workspace-query.md) přitom přepínač pomocí pravidel upozornění protokolů [šablony ARM pro scheduledQueryRules rozhraní API](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) – ale toto pravidlo upozornění se dají spravovat přes [ scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) a ne z portálu Azure portal.
+>[Dotaz na více prostředků](../log-query/cross-workspace-query.md) v upozorněních protokolu se podporuje v novém [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Ve výchozím nastavení používá Azure Monitor [starší rozhraní api Log Analytics výstrahy](api-alerts.md) pro vytváření nových pravidel upozornění protokolu z Azure Portal, pokud nepřepnete ze [starší verze rozhraní API upozornění protokolu](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po přepínači se nové rozhraní API nastaví jako výchozí pro nová pravidla upozornění v Azure Portal a umožní vám vytvořit pravidla pro výstrahy protokolu dotazů mezi prostředky. Pravidla upozornění protokolu [dotazu pro více prostředků](../log-query/cross-workspace-query.md) můžete vytvořit bez toho, aby byl přepínač použit pomocí [šablony ARM pro rozhraní scheduledQueryRules API](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) , ale toto pravidlo upozornění lze spravovat i v případě, že [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , nikoli z Azure Portal.
 
 ## <a name="examples"></a>Příklady
-Následující příklady dotazů na protokoly, které používají `search` a `union` a popisuje kroky, které vám umožní upravit tyto dotazy pro použití s pravidla upozornění.
+Následující příklady zahrnují dotazy protokolů, které používají `search` a `union`, a poskytují kroky, pomocí kterých můžete tyto dotazy upravovat pro použití s pravidly výstrah.
 
 ### <a name="example-1"></a>Příklad 1
-Rozhodli jste se vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který načte výkonu informací pomocí `search`: 
+Chcete vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který načte informace o výkonu pomocí `search`: 
 
 ``` Kusto
 search * | where Type == 'Perf' and CounterName == '% Free Space' 
@@ -67,7 +65,7 @@ search * | where Type == 'Perf' and CounterName == '% Free Space'
 ```
   
 
-Tento dotaz změnit tak, začněte pomocí následujícího dotazu k identifikaci v tabulce, které vlastnosti patří:
+Chcete-li upravit tento dotaz, začněte pomocí následujícího dotazu Identifikujte tabulku, do které vlastnosti patří:
 
 ``` Kusto
 search * | where CounterName == '% Free Space'
@@ -75,9 +73,9 @@ search * | where CounterName == '% Free Space'
 ```
  
 
-Výsledek tohoto dotazu, který by zobrazil _CounterName_ vlastnost pochází _výkonu_ tabulky. 
+Výsledek tohoto dotazu by ukázal, že vlastnost _CounterName_ byla předána z tabulky _perf_ . 
 
-Tento výsledek můžete použít k vytvoření následující dotaz, který používáte pro pravidlo výstrahy:
+Tento výsledek můžete použít k vytvoření následujícího dotazu, který byste použili pro pravidlo upozornění:
 
 ``` Kusto
 Perf 
@@ -88,7 +86,7 @@ Perf
 
 
 ### <a name="example-2"></a>Příklad 2
-Rozhodli jste se vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který načte výkonu informací pomocí `search`: 
+Chcete vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který načte informace o výkonu pomocí `search`: 
 
 ``` Kusto
 search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"  
@@ -98,7 +96,7 @@ search ObjectName =="Memory" and CounterName=="% Committed Bytes In Use"
 ```
   
 
-Tento dotaz změnit tak, začněte pomocí následujícího dotazu k identifikaci v tabulce, které vlastnosti patří:
+Chcete-li upravit tento dotaz, začněte pomocí následujícího dotazu Identifikujte tabulku, do které vlastnosti patří:
 
 ``` Kusto
 search ObjectName=="Memory" and CounterName=="% Committed Bytes In Use" 
@@ -106,9 +104,9 @@ search ObjectName=="Memory" and CounterName=="% Committed Bytes In Use"
 ```
  
 
-Výsledek tohoto dotazu, který by zobrazil _ObjectName_ a _CounterName_ vlastnost pochází _výkonu_ tabulky. 
+Výsledek tohoto dotazu by ukázal, že vlastnost _ObjectName_ a _CounterName_ pochází z tabulky _perf_ . 
 
-Tento výsledek můžete použít k vytvoření následující dotaz, který používáte pro pravidlo výstrahy:
+Tento výsledek můžete použít k vytvoření následujícího dotazu, který byste použili pro pravidlo upozornění:
 
 ``` Kusto
 Perf 
@@ -121,7 +119,7 @@ Perf
 
 ### <a name="example-3"></a>Příklad 3
 
-Rozhodli jste se vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který používá obě `search` a `union` k načtení informací o výkonu: 
+Chcete vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který pro načtení informací o výkonu používá `search` i `union`: 
 
 ``` Kusto
 search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
@@ -130,16 +128,16 @@ search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceN
 ```
  
 
-Tento dotaz změnit tak, začněte pomocí následujícího dotazu k identifikaci tabulku, do které patří vlastnosti v první části dotazu: 
+Chcete-li upravit tento dotaz, začněte pomocí následujícího dotazu Identifikujte tabulku, do které vlastnosti v první části dotazu patří: 
 
 ``` Kusto
 search (ObjectName == "Processor" and CounterName == "% Idle Time" and InstanceName == "_Total")  
 | summarize by $table 
 ```
 
-Výsledek tohoto dotazu, který by zobrazil, tyto vlastnosti pochází ze _výkonu_ tabulky. 
+Výsledek tohoto dotazu by ukázal, že všechny tyto vlastnosti byly získány z tabulky _perf_ . 
 
-Teď pomocí `union` s `withsource` příkaz k identifikaci které zdrojová tabulka přispěl každý řádek.
+Nyní použijte `union` s příkazem `withsource` k určení, která zdrojová tabulka přispěla k jednotlivým řádkům.
 
 ``` Kusto
 union withsource=table * | where CounterName == "% Processor Utility" 
@@ -147,9 +145,9 @@ union withsource=table * | where CounterName == "% Processor Utility"
 ```
  
 
-Výsledek tohoto dotazu, který by zobrazil, tyto vlastnosti také pochází ze _výkonu_ tabulky. 
+Výsledek tohoto dotazu by ukázal, že tyto vlastnosti také pocházejí z tabulky _perf_ . 
 
-Tyto výsledky můžete použít k vytvoření následující dotaz, který používáte pro pravidlo výstrahy: 
+Pomocí těchto výsledků můžete vytvořit následující dotaz, který byste použili pro pravidlo upozornění: 
 
 ``` Kusto
 Perf 
@@ -163,7 +161,7 @@ Perf
 ``` 
 
 ### <a name="example-4"></a>Příklad 4:
-Rozhodli jste se vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, které spojí výsledky dvou `search` dotazy:
+Chcete vytvořit pravidlo upozornění protokolu pomocí následujícího dotazu, který spojuje výsledky dvou `search` dotazů:
 
 ```Kusto
 search Type == 'SecurityEvent' and EventID == '4625' 
@@ -178,7 +176,7 @@ on Hour
 ```
  
 
-Pokud chcete upravit dotaz, spusťte pomocí následujícího dotazu k identifikaci tabulku obsahující vlastnosti v levé strany spojení: 
+Chcete-li upravit dotaz, začněte použitím následujícího dotazu k identifikaci tabulky, která obsahuje vlastnosti v levé straně spojení: 
 
 ``` Kusto
 search Type == 'SecurityEvent' and EventID == '4625' 
@@ -186,9 +184,9 @@ search Type == 'SecurityEvent' and EventID == '4625'
 ```
  
 
-Výsledek označuje, že vlastnosti v levé strany spojení patřit _SecurityEvent_ tabulky. 
+Výsledek značí, že vlastnosti na levé straně spojení patří do tabulky _SecurityEvent_ . 
 
-Teď použijte tento dotaz k identifikaci tabulku obsahující vlastnosti na pravé straně spojení: 
+Nyní použijte následující dotaz k identifikaci tabulky, která obsahuje vlastnosti na pravé straně spojení: 
 
  
 ``` Kusto
@@ -197,9 +195,9 @@ search in (Heartbeat) OSType == 'Windows'
 ```
 
  
-Výsledek označuje, že vlastnosti na pravé straně spojení nepatří do tabulky prezenčního signálu. 
+Výsledek značí, že vlastnosti na pravé straně spojení patří do tabulky prezenčního signálu. 
 
-Tyto výsledky můžete použít k vytvoření následující dotaz, který používáte pro pravidlo výstrahy: 
+Pomocí těchto výsledků můžete vytvořit následující dotaz, který byste použili pro pravidlo upozornění: 
 
 
 ``` Kusto
@@ -216,7 +214,7 @@ on Hour
 | count 
 ```
 
-## <a name="next-steps"></a>Další postup
-- Další informace o [upozornění protokolů](alerts-log.md) ve službě Azure Monitor.
-- Další informace o [protokolu dotazy](../log-query/log-query-overview.md).
+## <a name="next-steps"></a>Další kroky
+- Přečtěte si informace o [upozorněních protokolu](alerts-log.md) v Azure monitor.
+- Přečtěte si o [dotazech protokolu](../log-query/log-query-overview.md).
 

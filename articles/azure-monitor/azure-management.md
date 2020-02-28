@@ -1,18 +1,17 @@
 ---
 title: Správa Azure
 description: Přehled oblastí správy pro aplikace Azure a prostředky s odkazy na obsah na nástroje pro správu Azure.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2018
-ms.openlocfilehash: 337b340df10eb406fef3148b1d8bfde66b3b8ff6
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 93180f088935531f83da785bb7a490f80909a6cd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979834"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669196"
 ---
 # <a name="azure-management---monitoring"></a>Správa Azure – monitorování
 
@@ -38,13 +37,13 @@ Konfigurace označuje počáteční nasazení a konfiguraci aplikací a prostře
 ## <a name="govern"></a>Řízení
 Zásady správného řízení poskytují mechanismy a postupy pro zajištění kontroly nad vašimi aplikacemi a prostředky v Azure.  Zahrnují plánování iniciativ a nastavení strategických priorit.  Zásady správného řízení v Azure jsou primárně implementované pomocí dvou služeb.  [Azure Policy](../governance/policy/overview.md) pomáhá vytvářet, přiřazovat a spravovat definice zásad, které u vašich prostředků vynucují různá pravidla a akce, aby tyto prostředky i nadále odpovídaly vašim firemním standardům a smlouvám o úrovni služeb. [Azure cost management](../cost-management-billing/cost-management-billing-overview.md) vám umožňuje sledovat využití cloudu a výdaje za prostředky Azure a další poskytovatele cloudu, včetně AWS a Google.
 
-## <a name="secure"></a>Zabezpečení
+## <a name="secure"></a>Zabezpečeno
 Správa zabezpečení vašich aplikací, prostředků a dat zahrnuje kombinaci vyhodnocování hrozeb, shromažďování a analýzy dat zabezpečení a zajištění, že vaše aplikace a prostředky jsou navržené a nakonfigurované zabezpečeným způsobem.  Monitorování zabezpečení a analýzu hrozeb zajišťuje služba [Azure Security Center](../security-center/security-center-intro.md), která poskytuje jednotnou správu zabezpečení a pokročilou ochranu před hrozbami napříč hybridními cloudovými úlohami.  Měli byste si také projít [úvod do zabezpečení Azure](../security/fundamentals/overview.md), kde najdete kompletní informace o zabezpečení v Azure a pokyny pro zabezpečenou konfiguraci prostředků Azure.
 
 
-## <a name="protect"></a>Ochrana
+## <a name="protect"></a>Chránit
 Ochrana znamená zajištění, že vaše aplikace a data jsou vždycky k dispozici, a to i v případě výpadků mimo vaši kontrolu.  Ochranu v Azure zajišťují dvě služby.  [Azure Backup](../backup/backup-introduction-to-azure-backup.md) zajišťuje zálohování a obnovení vašich dat, a to v cloudu i v místním prostředí.    [Azure Site Recovery](../site-recovery/site-recovery-overview.md) poskytuje vysokou dostupnost vašich aplikací díky zajištění obchodní kontinuity a okamžitého obnovení v případě havárie.
 
-## <a name="migrate"></a>Migrace 
+## <a name="migrate"></a>Migrovat 
 Migrace označuje přenos úloh, které jsou aktuálně spuštěné v místním prostředí, do cloudu Azure.  [Azure Migrate](../migrate/migrate-overview.md) je služba, která pomáhá vyhodnotit vhodnost migrace místních virtuálních počítačů do Azure, včetně odhadu rozsahu na základě výkonu a souvisejících nákladů.  Azure Site Recovery vám pomůže s vlastní migrací virtuálních počítačů [z místního prostředí](../site-recovery/migrate-tutorial-on-premises-azure.md) nebo [z Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md).  [Azure Database Migration](../dms/dms-overview.md) vám pomůže s migrací několika databázových zdrojů na datové platformy Azure.
 

@@ -1,18 +1,14 @@
 ---
 title: Automatizace Azure Application Insights s využitím PowerShellu | Microsoft Docs
 description: Automatizujte vytváření a správu prostředků, upozornění a testů dostupnosti v PowerShellu pomocí šablony Azure Resource Manager.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 82b406d6f2d9f9dc4464472108c8136c7b65c67a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 06fedb3d345cfe6790f7a19b88fbfdb36470638f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977821"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669790"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
@@ -354,9 +350,9 @@ Cenové tarify pro existující Application Insights prostředek můžete také 
                -appName myApp
 ```
 
-|priceCode|plánování|
+|priceCode|Rozhraní|
 |---|---|
-|1\. místo|Za GB (dříve označované jako základní plán)|
+|1|Za GB (dříve označované jako základní plán)|
 |2|Za uzel (dříve název plánu v podniku)|
 
 ## <a name="add-a-metric-alert"></a>Přidat upozornění metriky

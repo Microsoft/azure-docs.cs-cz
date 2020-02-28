@@ -1,19 +1,17 @@
 ---
 title: Application Insights Azure | Microsoft Docs
 description: ''
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: eternovsky
 ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 03f802297c2ecaac0c126ed3de6401b40e1f804b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 75c5bd5bd6a7ded8679c30446a45809a1ea4406a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678166"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672000"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Korelace Application Insightsch dat s vlastními zdroji dat
 
@@ -47,7 +45,7 @@ Chcete-li začít odesílat data protokolu do Azure Monitor. Existuje několik m
 
 Application Insights je založená na platformě Azure Monitor log. Proto můžeme pomocí [spojení mezi prostředky](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) korelovat všechna data, která jsme ingestují do Azure monitor s využitím našich Application Insightsch dat.
 
-Například můžeme ingestovat náš inventář a umístění testovacího prostředí do tabulky nazvané "LabLocations_CL" v pracovním prostoru Log Analytics s názvem "myLA". Pokud jsme pak chtěli zkontrolovat naše požadavky sledované v aplikaci Application Insights App s názvem "myAI" a korelovat názvy počítačů, které obdržely požadavky do umístění těchto počítačů uložených v dřív zmíněné vlastní tabulce, můžeme spustit následující dotaz z buď Application Insights, nebo Azure Monitor kontext:
+Například můžeme ingestovat náš inventář a umístění testovacího prostředí do tabulky s názvem "LabLocations_CL" v pracovním prostoru Log Analytics s názvem "myLA". Pokud jsme pak chtěli zkontrolovat naše požadavky sledované v aplikaci Application Insights App s názvem "myAI" a korelovat názvy počítačů, které obdržely požadavky do umístění těchto počítačů uložených v dřív zmíněné vlastní tabulce, můžeme spustit následující dotaz z buď Application Insights, nebo Azure Monitor kontext:
 
 ```
 app('myAI').requests

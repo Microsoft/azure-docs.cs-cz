@@ -5,18 +5,17 @@ documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 319d43b4096c638eee74031e5b506b5cec3ffd5d
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 06b35fdcd9da333c3c9d94d41c84a2f25ede59ad
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467279"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666561"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokoly v Azure Monitoru
 
@@ -43,11 +42,11 @@ V následující tabulce jsou uvedeny různé způsoby, jak můžete použít pr
 
 |  |  |
 |:---|:---|
-| Analýza | Pomocí [Log Analytics](../log-query/get-started-portal.md) v Azure Portal můžete zapisovat [dotazy protokolu](../log-query/log-query-overview.md) a interaktivně analyzovat data protokolu pomocí výkonného analytického modulu Průzkumník dat.<br>Pomocí [konzoly Application Insights Analytics](../app/analytics.md) v Azure Portal můžete zapisovat dotazy protokolu a interaktivně analyzovat data protokolu z Application Insights. |
+| Analyzovat | Pomocí [Log Analytics](../log-query/get-started-portal.md) v Azure Portal můžete zapisovat [dotazy protokolu](../log-query/log-query-overview.md) a interaktivně analyzovat data protokolu pomocí výkonného analytického modulu Průzkumník dat.<br>Pomocí [konzoly Application Insights Analytics](../app/analytics.md) v Azure Portal můžete zapisovat dotazy protokolu a interaktivně analyzovat data protokolu z Application Insights. |
 | Vizualizace | Připněte výsledky dotazu vykreslené jako tabulky nebo grafy na [řídicí panel Azure](../../azure-portal/azure-portal-dashboards.md).<br>Vytvoří [sešit](../app/usage-workbooks.md) pro kombinování s více sadami dat v interaktivní sestavě. <br>Exportujte výsledky dotazu do [Power BI](powerbi.md) , abyste mohli používat různé vizualizace a sdílet s uživateli mimo Azure.<br>Exportujte výsledky dotazu do [Grafana](grafana-plugin.md) a využijte jeho řídicí panely a kombinaci s jinými zdroji dat.|
-| Výstrahy | Nakonfigurujte [pravidlo upozornění protokolu](alerts-log.md) , které pošle oznámení, nebo provede [automatizovanou akci](action-groups.md) , když výsledky dotazu odpovídají konkrétnímu výsledku.<br>Nakonfigurujte [pravidlo upozornění metriky](alerts-metric-logs.md) pro některé protokoly dat protokolů extrahované jako metriky. |
+| Výstraha | Nakonfigurujte [pravidlo upozornění protokolu](alerts-log.md) , které pošle oznámení, nebo provede [automatizovanou akci](action-groups.md) , když výsledky dotazu odpovídají konkrétnímu výsledku.<br>Nakonfigurujte [pravidlo upozornění metriky](alerts-metric-logs.md) pro některé protokoly dat protokolů extrahované jako metriky. |
 | Stahovat | Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics).<br>Přístup k výsledkům dotazu protokolu z příkazového řádku pomocí [rutin prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights).<br>Přístup k výsledkům dotazu protokolu z vlastní aplikace pomocí [REST API](https://dev.loganalytics.io/). |
-| Export | Sestavte pracovní postup, který načte data protokolu a zkopíruje ho do externího umístění pomocí [Logic Apps](~/articles/logic-apps/index.yml). |
+| Exportovat | Sestavte pracovní postup, který načte data protokolu a zkopíruje ho do externího umístění pomocí [Logic Apps](~/articles/logic-apps/index.yml). |
 
 
 ## <a name="how-is-data-in-azure-monitor-logs-structured"></a>Jak se strukturují data v Azure Monitor strukturovaných protokolů?
@@ -108,7 +107,7 @@ Azure Monitor může shromažďovat data protokolu z nejrůznějších zdrojů v
 | Trasovat data | Výsledky z [distribuovaného trasování](../app/distributed-tracing.md) jsou uloženy v tabulce _trasování_ . |
 | Testy dostupnosti | Souhrnná data z [testů dostupnosti](../app/monitor-web-app-availability.md) se ukládají do tabulky _availabilityResults_ . Podrobná data z těchto testů jsou v odděleném úložišti a jsou dostupná z Application Insights v Azure Portal. |
 
-### <a name="insights"></a>Insights
+### <a name="insights"></a>Přehledy
 
 | Data | Popis |
 |:---|:---|

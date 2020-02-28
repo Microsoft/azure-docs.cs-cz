@@ -1,19 +1,18 @@
 ---
 title: Diagnostika výjimek za běhu pomocí Azure Application Insights | Dokumentace Microsoftu
 description: Kurz popisující, jak v aplikaci vyhledat a diagnostikovat výjimky za běhu pomocí Azure Application Insights.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: d56b81dbe8c78b9b48f122d79f4567d0b0f42e27
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398538"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670419"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
 
@@ -28,19 +27,19 @@ Azure Application Insights shromažďuje telemetrii z vaší aplikace, kterou m�
 > * Vytvoření nové pracovní položky pro opravu chybného kódu
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
 - Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
 - Povolit [Visual Studio Snapshot Debugger](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger).
-- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
+- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
 - Kurz popisuje identifikaci výjimky ve vaší aplikaci, proto upravte kód ve vašem prostředí vývoj nebo testování, aby generoval výjimku. 
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 
@@ -84,7 +83,7 @@ Snapshot Debugger shromažďuje snímky nejčastěji se vyskytujících výjimek
 
     ![Snímek ladění](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Pak máte možnost stáhnout tento snímek do sady Visual Studio a najít tak skutečný kód, který je třeba opravit. Chcete-li tak učinit, klikněte na tlačítko **Stáhnout snímek**.
+4. Pak máte možnost stáhnout tento snímek do sady Visual Studio a najít tak skutečný kód, který je třeba opravit. Uděláte to tak, že kliknete na **Stáhnout snímek**.
 5. Snímek se načte do aplikace Visual Studio.
 6. Nyní můžete spustit relaci ladění v sadě Visual Studio Enterprise, která rychle najde řádek kódu, který způsobil výjimku.
 
@@ -96,7 +95,7 @@ Všechna data shromážděná pomocí Application Insights jsou uložená ve slu
 
 1. Kliknutím na informace CodeLens nad kódem zobrazíte telemetrii poskytovanou službou Application Insights.
 
-    ![kód](media/tutorial-runtime-exceptions/codelens.png)
+    ![Kód](media/tutorial-runtime-exceptions/codelens.png)
 
 1. Kliknutím na **Analyzovat dopad** otevřete analýzu Application Insights Analytics.  Otevře se s několika dotazy, které poskytují podrobné informace o neúspěšných požadavcích, například počet ovlivněných uživatelů, prohlížeče a oblasti.<br><br>![Analýzy](media/tutorial-runtime-exceptions/analytics.png)<br>
 

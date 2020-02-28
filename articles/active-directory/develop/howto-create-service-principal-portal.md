@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 02/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 2283f4f3cf1d31f0d67e01e1a63ee20557ef5633
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591570"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77656381"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům
 
@@ -85,7 +85,7 @@ Aplikace démona můžou pomocí dvou forem přihlašovacích údajů ověřit p
 
 ### <a name="upload-a-certificate"></a>Odeslat certifikát
 
-Pokud nějaký máte, můžete použít existující certifikát.  Volitelně můžete pro účely testování vytvořit certifikát podepsaný svým držitelem. Otevřete PowerShell a spusťte rutinu [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) s následujícími parametry k vytvoření certifikátu podepsaného svým držitelem v úložišti certifikátů uživatele v počítači: 
+Pokud nějaký máte, můžete použít existující certifikát.  Volitelně můžete vytvořit certifikát podepsaný svým držitelem pro *účely testování*. Otevřete PowerShell a spusťte rutinu [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) s následujícími parametry k vytvoření certifikátu podepsaného svým držitelem v úložišti certifikátů uživatele v počítači: 
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -93,8 +93,18 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 Exportujte tento certifikát do souboru pomocí modulu snap-in [Spravovat certifikát uživatele](/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in) konzoly MMC přístupný z ovládacích panelů systému Windows.
 
+1. V nabídce **Start** vyberte **Run (spustit** ) a pak zadejte **certmgr. msc**.
+
+   Zobrazí se nástroj Správce certifikátů pro aktuálního uživatele.
+
+1. Pokud chcete zobrazit certifikáty, v části **Certifikáty – aktuální uživatel** v levém podokně rozbalte **osobní** adresář.
+1. Klikněte pravým tlačítkem na certifikát, který jste vytvořili, vyberte **všechny úkoly – > exportovat**.
+1. Postupujte podle pokynů Průvodce exportem certifikátu.  Exportujte privátní klíč, zadejte heslo pro soubor certifikátu a exportujte ho do souboru.
+
 Postup nahrání certifikátu:
 
+1. Vyberte **Azure Active Directory**.
+1. V **Registrace aplikací** ve službě Azure AD vyberte svou aplikaci.
 1. Vyberte **certifikáty & tajných**kódů.
 1. Vyberte **nahrát certifikát** a vyberte certifikát (existující certifikát nebo certifikát podepsaný svým držitelem).
 
@@ -146,15 +156,21 @@ Ve vašem předplatném Azure musí mít váš účet `Microsoft.Authorization/*
 
 Ověření oprávnění k předplatnému:
 
-1. V pravém horním rohu vyberte svůj účet a vyberte **...-> moje oprávnění**.
+1. Vyhledejte a vyberte **předplatná**nebo vyberte **předplatná** na **domovské** stránce.
 
-   ![Vyberte svůj účet a oprávnění uživatele.](./media/howto-create-service-principal-portal/select-my-permissions.png)
+   ![Hledat](./media/howto-create-service-principal-portal/select-subscription.png)
 
-1. V rozevíracím seznamu vyberte předplatné, ve kterém chcete vytvořit instanční objekt. Pak vyberte **kliknutím sem zobrazíte informace o úplných přístupech k tomuto předplatnému**.
+1. Vyberte předplatné, ve kterém chcete vytvořit instanční objekt.
+
+   ![Výběr předplatného pro přiřazení](./media/howto-create-service-principal-portal/select-one-subscription.png)
+
+   Pokud nevidíte předplatné, které hledáte, vyberte **globální filtr předplatných**. Ujistěte se, že je vybráno požadované předplatné portálu.
+
+1. Vyberte **Moje oprávnění**. Pak vyberte **kliknutím sem zobrazíte informace o úplných přístupech k tomuto předplatnému**.
 
    ![Vyberte předplatné, ve kterém chcete vytvořit instanční objekt.](./media/howto-create-service-principal-portal/view-details.png)
 
-1. Výběrem **přiřazení rolí** zobrazíte přiřazené role a určíte, jestli máte adekvátní oprávnění k přiřazení role k aplikaci AD. Pokud ne, požádejte správce předplatného, aby vás přidal do role správce přístupu uživatele. Na následujícím obrázku je uživateli přiřazena role vlastníka, což znamená, že uživatel má odpovídající oprávnění.
+1. Výběrem **Zobrazit** v **přiřazeních rolí** zobrazíte přiřazené role a určíte, jestli máte adekvátní oprávnění k přiřazení role k aplikaci AD. Pokud ne, požádejte správce předplatného, aby vás přidal do role správce přístupu uživatele. Na následujícím obrázku je uživateli přiřazena role vlastníka, což znamená, že uživatel má odpovídající oprávnění.
 
    ![Tento příklad ukazuje, že uživatel má přiřazenou roli vlastníka.](./media/howto-create-service-principal-portal/view-user-role.png)
 

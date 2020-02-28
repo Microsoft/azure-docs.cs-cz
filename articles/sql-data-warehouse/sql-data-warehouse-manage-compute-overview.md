@@ -11,35 +11,35 @@ ms.date: 11/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 305b17a9118bddac53b19462cb8c3be887395311
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c715b2328f66c58fa744235c8762b31fd0b30d1f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923604"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669485"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Správa výpočetních prostředků v Azure SQL Data Warehouse
 Přečtěte si o správě výpočetních prostředků v Azure SQL Data Warehouse. Snižte náklady tím, že pozastavíte datový sklad nebo Škálujte datový sklad, abyste splnili nároky na výkon. 
 
 ## <a name="what-is-compute-management"></a>Co je Správa výpočtů?
-Architektura služby SQL Data Warehouse odděluje úložiště a výpočty (compute), a tím umožňuje jejich nezávislé škálování. V důsledku toho je možné škálovat výpočty tak, aby byly splněny požadavky na výkon nezávisle na úložišti dat. Můžete také pozastavit výpočetní prostředky a obnovit jejich chod. V důsledku přirozeného důsledku této architektury je [fakturace](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) za výpočetní prostředky a úložiště oddělená. Pokud nebudete datový sklad nějakou dobu potřebovat, můžete ušetřit náklady na výpočetní výkon pozastavením výpočetních prostředků. 
+Architektura SQL Data Warehouse odděluje úložiště a výpočetní výkon, což umožňuje nezávisle škálovat jednotlivé služby. V důsledku toho můžete škálovat výpočetní prostředky tak, aby splňovaly požadavky na výkon nezávisle na úložišti dat. Můžete také pozastavit a obnovit výpočetní prostředky. V důsledku přirozeného důsledku této architektury je [fakturace](https://azure.microsoft.com/pricing/details/sql-data-warehouse/) za výpočetní prostředky a úložiště oddělená. Pokud pro určitou dobu nepotřebujete datový sklad, můžete ušetřit výpočetní náklady tím, že pozastavíte výpočetní výkon. 
 
 ## <a name="scaling-compute"></a>Škálování výpočetních prostředků
-Můžete škálovat nebo škálovat zpátky výpočetní výkon úpravou nastavení [jednotek datového](what-is-a-data-warehouse-unit-dwu-cdwu.md) skladu pro datový sklad. Výkon načítání a dotazování se může lineárně zvyšovat, stačí přidávat další jednotky datového skladu. 
+Můžete škálovat nebo škálovat zpátky výpočetní výkon úpravou nastavení [jednotek datového](what-is-a-data-warehouse-unit-dwu-cdwu.md) skladu pro datový sklad. Načítání a dotazování výkonu se může při přidávání dalších jednotek datového skladu zvýšit lineárně. 
 
 Postup pro horizontální navýšení kapacity najdete v serychlých startech [Azure Portal](quickstart-scale-compute-portal.md), [PowerShellu](quickstart-scale-compute-powershell.md)nebo [T-SQL](quickstart-scale-compute-tsql.md) . Můžete také provádět operace škálování na více instancí s [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
-Aby se dala provést operace škálování, SQL Data Warehouse nejprve ukončí všechny příchozí dotazy a odvolá transakce, aby byl stav konzistentní. Ke škálování dojde až po odvolání transakcí. Pro operaci škálování systém odpojí vrstvu úložiště z výpočetních uzlů, přidá výpočetní uzly a pak znovu připojí vrstvu úložiště k výpočetní vrstvě. Každý datový sklad se ukládá jako 60 distribucí, které jsou rovnoměrně distribuovány do výpočetních uzlů. Přidání dalších výpočetních uzlů zvýší výpočetní výkon. Jak se bude zvyšovat počet výpočetních uzlů, bude se snižovat počet distribucí na výpočetní uzel, čímž dojde ke zvýšení výpočetního výkonu pro vaše dotazy. Podobně snížení jednotek datového skladu snižuje počet výpočetních uzlů, což snižuje výpočetní prostředky pro dotazy.
+Chcete-li provést operaci škálování, SQL Data Warehouse nejprve zajistěte, aby všechny příchozí dotazy a pak transakce vrátily do konzistentního stavu. K škálování dochází pouze v případě, že je vrácení transakce dokončeno. V případě operace škálování systém odpojí vrstvu úložiště od výpočetních uzlů, přidá výpočetní uzly a pak znovu připojí vrstvu úložiště k výpočetní vrstvě. Každý datový sklad je uložený jako 60 distribucí, které jsou rovnoměrně distribuovány do výpočetních uzlů. Přidání dalších výpočetních uzlů zvyšuje výpočetní výkon. Vzhledem k tomu, že se počet výpočetních uzlů zvyšuje, počet distribucí na výpočetní uzel se sníží a poskytuje pro dotazy efektivnější výpočetní výkon. Podobně snížení jednotek datového skladu snižuje počet výpočetních uzlů, což snižuje výpočetní prostředky pro dotazy.
 
-Následující tabulka ukazuje, jak se mění počet distribucí na výpočetní uzel při změně jednotek datového skladu.  DWU6000 poskytuje 60 výpočetních uzlů a dosahuje mnohem vyššího výkonu dotazů než DWU100. 
+Následující tabulka ukazuje, jak se mění počet distribucí na výpočetní uzel při změně jednotek datového skladu.  DW30000c poskytuje 60 výpočetních uzlů a dosahuje mnohem vyššího výkonu dotazů než DW100c. 
 
 | Jednotky datového skladu  | \# výpočetních uzlů | \# distribucí na uzel |
 | -------- | ---------------- | -------------------------- |
-| DW100c   | 1\. místo                | 60                         |
-| DW200c   | 1\. místo                | 60                         |
-| DW300c   | 1\. místo                | 60                         |
-| DW400c   | 1\. místo                | 60                         |
-| DW500c   | 1\. místo                | 60                         |
+| DW100c   | 1                | 60                         |
+| DW200c   | 1                | 60                         |
+| DW300c   | 1                | 60                         |
+| DW400c   | 1                | 60                         |
+| DW500c   | 1                | 60                         |
 | DW1000c  | 2                | 30                         |
 | DW1500c  | 3                | 20                         |
 | DW2000c  | 4                | 15                         |
@@ -50,7 +50,7 @@ Následující tabulka ukazuje, jak se mění počet distribucí na výpočetní
 | DW7500c  | 15               | 4                          |
 | DW10000c | 20               | 3                          |
 | DW15000c | 30               | 2                          |
-| DW30000c | 60               | 1\. místo                          |
+| DW30000c | 60               | 1                          |
 
 
 ## <a name="finding-the-right-size-of-data-warehouse-units"></a>Zjištění správné velikosti jednotek datového skladu

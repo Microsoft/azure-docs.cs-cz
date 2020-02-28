@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/21/2020
+ms.date: 02/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 015fb6c720fee9ed219ec9ffa2ece14d26bb4ac9
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: b58c24fdd7912b3e424a493932fe09b1a1f058c5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566212"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661273"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver v Red Hat Enterprise Linux s Azure NetApp Files pro aplikace SAP
 
@@ -96,9 +96,6 @@ Nyní je možné dosáhnout dostupnosti SAP NetWeaver HA pomocí sdíleného úl
 ![Přehled vysoké dostupnosti SAP NetWeaver](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
 
 SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP HANA používají virtuální název hostitele a virtuální IP adresy. V Azure se nástroj pro vyrovnávání zatížení vyžaduje k použití virtuální IP adresy. Doporučujeme použít službu [Load Balancer úrovně Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal). Následující seznam uvádí konfiguraci nástroje pro vyrovnávání zatížení s oddělenými IP adresami front-endu pro (A) SCS a OLAJÍCÍCH.
-
-> [!IMPORTANT]
-> Clustering s více identifikátory SID pro SAP ASCS/OLAJÍCÍCH s Red Hat Linux jako hostovaný operační systém ve virtuálních počítačích Azure se **nepodporuje**. Clustering s více SID popisuje instalaci více instancí SAP ASCS/OLAJÍCÍCH s různými identifikátory SID v jednom clusteru Pacemaker.
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -1256,6 +1253,7 @@ Pomocí těchto kroků nainstalujete aplikační Server SAP.
 
 ## <a name="next-steps"></a>Další kroky
 
+* [HA pro SAP NW na virtuálních počítačích Azure v RHEL pro aplikace SAP – příručka pro multi-SID](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
 * [Plánování a implementace Azure Virtual Machines pro SAP][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP][dbms-guide]

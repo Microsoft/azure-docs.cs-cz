@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: b27baed20d8e36bf5790036e2fdc0804a94a4ea1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 0e19271b5c69610dd9f44c3121e195b80732279c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589432"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669535"
 ---
 # <a name="what-is-virtual-network-nat-public-preview"></a>Co je Virtual Network NAT (Public Preview)?
 
@@ -39,7 +39,7 @@ Virtual Network NAT (překlad síťových adres) zjednodušuje připojení k Int
 
 
 >[!NOTE] 
->Virtual Network překlad adres (NAT) je v tuto chvíli k dispozici jako Public Preview. V současné době je dostupná jenom v omezené sadě [oblastí](#region-availability). Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.comsupport/legal/preview-supplemental-terms).
+>Virtual Network překlad adres (NAT) je v tuto chvíli k dispozici jako Public Preview. V současné době je dostupná jenom v omezené sadě [oblastí](#region-availability). Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statické IP adresy pouze pro odchozí
 
@@ -154,7 +154,7 @@ Aby bylo možné zúčastnit se Public Preview, musí být odběry registrovány
       az provider register --namespace Microsoft.Network
     ```
 
-### <a name="azure-powershell"></a>Azure Powershell
+### <a name="azure-powershell"></a>Azure PowerShell
 
 1. registrace předplatného pro Public Preview
 
@@ -186,7 +186,7 @@ Ve verzi Public Preview se ceny uvažují 50%.
 
 Překlad adres (NAT) je podporován prostřednictvím běžných kanálů podpory.
 
-## <a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Názor
 
 Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Public Preview](https://aka.ms/natfeedback) s námi.  A můžete navrhnout a hlasovat o tom, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
 
@@ -200,5 +200,5 @@ Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Publi
 ## <a name="next-steps"></a>Další kroky
 
 - Přečtěte si o [prostředku brány NAT](./nat-gateway-resource.md).
-- [Řekněte nám, co se má sestavit dál ve službě UserVoice](https://aka/natuservoice).
+- [Řekněte nám, co se má sestavit dál ve službě UserVoice](https://aka.ms/natuservoice).
 - [Poskytněte zpětnou vazbu k Public Preview](https://aka.ms/natfeedback).

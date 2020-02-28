@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: b13e5e0000cdd8e33f459400cc4c24d107ccaba3
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604788"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661835"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Nejčastější dotazy – obecné otázky týkající se Azure Security Center
 
@@ -38,16 +38,17 @@ Azure Security Center monitoruje prostředky Azure následující:
 * Virtuální počítače (včetně [Cloud Services](../cloud-services/cloud-services-choose-me.md))
 * Škálovací sady virtuálních počítačů
 * Virtuální sítě Azure
+* Kontejnery
 * Služba Azure SQL
-* Účet služby Azure Storage
+* Účet Azure Storage
 * Azure Web Apps (v [App Service Environment](../app-service/environment/intro.md))
 * Partnerských řešení integrovaných ve vašem předplatném Azure, jako je například firewallu webových aplikací na virtuálních počítačích a ve službě App Service Environment
 
-Kromě toho je možné monitorovat také počítače jiné než Azure (včetně místních) Azure Security Center (podporuje se počítače se [systémem Windows](./quick-onboard-windows-computer.md) i [Linux](./quick-onboard-linux-computer.md) ).
+Kromě toho je možné monitorovat také počítače mimo Azure (včetně místních) pomocí Azure Security Center. Podporují se [počítače s Windows](./quick-onboard-windows-computer.md) i počítače se systémem [Linux](./quick-onboard-linux-computer.md) .
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Jak lze zobrazit aktuální stav zabezpečení svoje prostředky Azure?
-Na stránce **přehled Security Center** se zobrazuje celkové stav zabezpečení vašeho prostředí v členění podle COMPUTE, sítě, & úložiště dat a aplikací. Každý typ prostředku má zobrazení indikátoru, pokud byly identifikovány možných ohrožení zabezpečení. Kliknutím na každé dlaždici se zobrazí seznam zabezpečení problémů zjištěných pomocí Security Center spolu s inventář prostředků ve vašem předplatném.
+Na stránce **přehled Security Center** se zobrazuje celkové stav zabezpečení vašeho prostředí v členění podle COMPUTE, sítě, & úložiště dat a aplikací. Každý typ prostředku má indikátor ukazující zjištěné chyby zabezpečení. Kliknutím na každé dlaždici se zobrazí seznam zabezpečení problémů zjištěných pomocí Security Center spolu s inventář prostředků ve vašem předplatném.
 
 
 

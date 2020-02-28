@@ -1,18 +1,14 @@
 ---
 title: Application Insights Azure pro ASP.NET Core aplikace | Microsoft Docs
 description: Monitorujte ASP.NET Core webové aplikace pro účely dostupnosti, výkonu a využití.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 5f54605dd5b43236a75fe73aa3b47a4e619530a1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 7aa8ae7fd2742e51ab1ccfed26524241f4c11256
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765815"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666254"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
@@ -134,7 +130,7 @@ Protokoly emitované přes `ILogger` `Warning` závažnosti nebo větší jsou z
 
 Kolekce závislostí je ve výchozím nastavení povolená. [Tento](asp-net-dependencies.md#automatically-tracked-dependencies) článek vysvětluje závislosti, které jsou shromažďovány automaticky, a obsahuje také Postup ručního sledování.
 
-### <a name="performance-counters"></a>Čítače výkonu
+### <a name="performance-counters"></a>Čítače výkonnosti
 
 Podpora [čítačů výkonu](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/) v ASP.NET Core je omezená:
 

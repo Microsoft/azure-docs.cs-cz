@@ -1,18 +1,17 @@
 ---
 title: Optimalizujte SQL Server prostředí pomocí Azure Monitor | Microsoft Docs
 description: Pomocí Azure Monitor můžete řešení pro kontrolu stavu SQL použít k vyhodnocení rizik a stavu prostředí v pravidelných intervalech.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/28/2019
-ms.openlocfilehash: 23b1391033713fc8eeccf2d0872c49a4291b8292
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168896"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662480"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimalizujte prostředí SQL pomocí řešení pro kontrolu stavu SQL Server v Azure Monitor
 
@@ -58,7 +57,7 @@ Při kontrole stavu SQL se shromažďují data z následujících zdrojů pomoc�
 
 * Služba WMI (Windows Management Instrumentation)
 * Registr
-* Čítače výkonu
+* Čítače výkonnosti
 * Výsledky zobrazení dynamické správy SQL Server
 
 Data se shromažďují na SQL Server a předají se Log Analytics každých 7 dní.
@@ -79,7 +78,7 @@ Pomocí následujících informací nastavte účet Operations Manager spustit j
 
 1. V Operations Manager otevřete konzoli Operations Console a klikněte na **Správa**.
 2. V části **Konfigurace spustit jako**klikněte na **profily**a otevřete **SQL Assessment profil spustit jako**.
-3. Na stránce **Účty Spustit jako** klikněte na tlačítko **Přidat**.
+3. Na stránce **účty Spustit jako** klikněte na **Přidat**.
 4. Vyberte účet Spustit jako pro Windows, který obsahuje přihlašovací údaje potřebné pro SQL Server, nebo klikněte na **Nový** a vytvořte si ho.
 
    > [!NOTE]
@@ -215,7 +214,7 @@ Výsledky lze exportovat do Excelu pro další kontrolu.
 
 *Existuje způsob, jak nakonfigurovat četnost spouštění kontroly?*
 
-* V současnosti ne.
+* V tuto chvíli to není možné.
 
 *Pokud je po přidání řešení pro kontrolu stavu SQL zjištěn jiný server, bude zkontrolován?*
 
@@ -236,14 +235,14 @@ Výsledky lze exportovat do Excelu pro další kontrolu.
 *Jaký typ dat se shromáždí?*
 
 * Shromažďují se tyto typy dat:
-  * Rozhraní WMI
+  * WMI
   * Registr
-  * Čítače výkonu
+  * Čítače výkonnosti
   * Zobrazení dynamické správy SQL (DMV).
 
 *Existuje způsob, jak nakonfigurovat, kdy se data shromažďují?*
 
-* V současnosti ne.
+* V tuto chvíli to není možné.
 
 *Proč musím nakonfigurovat účet Spustit jako?*
 

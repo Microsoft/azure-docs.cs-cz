@@ -1,18 +1,17 @@
 ---
 title: Doba přijímání dat protokolu v Azure Monitor | Microsoft Docs
 description: Vysvětluje různé faktory, které mají vliv na latenci při shromažďování dat protokolu v Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 99d5594dd3ebe3750cb0a09ea803065e2aeb5ba2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894143"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666633"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Doba přijímání dat protokolu v Azure Monitor
 Azure Monitor je služba data ve velkém měřítku, která slouží tisícům zákazníků, kteří každý měsíc odesílají terabajty dat při rostoucím tempu. K dispozici jsou často dotazy týkající se času, po který se data protokolu budou k dispozici po shromáždění. Tento článek vysvětluje různé faktory, které mají vliv na tuto latenci.

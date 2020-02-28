@@ -1,19 +1,15 @@
 ---
 title: Inteligentní zjišťování – anomálie selhání v Application Insights | Microsoft Docs
 description: Upozorňuje na neobvyklé změny v rychlosti neúspěšných požadavků na webovou aplikaci a poskytuje analýzu diagnostiky. Není nutná žádná konfigurace.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: c556f726cd63971abe1e9b6d8b87117bb3e378db
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912839"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671745"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) vás automaticky upozorní téměř v reálném čase, pokud vaše webová aplikace působí abnormální nárůst frekvence neúspěšných žádostí. Detekuje neobvyklé zvýšení rychlosti požadavků HTTP nebo volání závislostí, která jsou hlášena jako neúspěšná. V případě požadavků mají neúspěšné požadavky obvykle kódy odpovědí 400 nebo vyšší. V podrobnostech výstrahy jsou k dispozici analýzy vlastností selhání a souvisejících dat aplikací, které vám pomůžou při třídění a diagnostikování problému. K dispozici jsou také odkazy na portál Application Insights pro další diagnostiku. Tato funkce nevyžaduje žádné nastavení ani konfiguraci, protože používá algoritmy strojového učení pro předpověď běžné míry selhání.
@@ -63,7 +59,7 @@ Výstrahy spouští náš proprietární algoritmus strojového učení, takže 
 * Použití adaptivního limitu pro minimální procento selhání, které se liší v závislosti na objemu požadavků a závislostí aplikace.
 * K dispozici je logika, která může automaticky vyřešit stav aktivovaného monitorování výstrah, pokud se tento problém již nedetekuje 8-24 hodin.
 
-## <a name="configure-alerts"></a>Konfigurace upozornění
+## <a name="configure-alerts"></a>Konfigurace výstrah
 
 Pravidlo výstrahy inteligentního zjišťování můžete zakázat z portálu nebo pomocí Azure Resource Manager ([Viz příklad šablony](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)).
 

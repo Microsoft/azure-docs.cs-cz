@@ -1,19 +1,15 @@
 ---
 title: Sledování vlastních operací pomocí sady Azure Application Insights .NET SDK
 description: Sledování vlastních operací pomocí sady Azure Application Insights .NET SDK
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 7b92a386d691e15975f18de169d7924b82ec5c5f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951339"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671813"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastních operací pomocí sady Application Insights .NET SDK
 
@@ -343,7 +339,7 @@ Při odstraňování zprávy instrumentace se ujistěte, že jste nastavili iden
 
 - Pokud máte položku z fronty, vytvořte novou `Activity`.
 - `Activity.SetParentId(message.ParentId)` můžete použít ke korelaci zákazníků a výrobců protokolů.
-- Spusťte nástroj `Activity`.
+- Spusťte `Activity`.
 - Sledujte operace vyřazování z fronty, procesů a odstraňování pomocí `Start/StopOperation` pomocníků. Udělejte to ze stejného asynchronního toku řízení (kontext spuštění). Tímto způsobem jsou správně přihlášeny.
 - Zastavte `Activity`.
 - Použijte `Start/StopOperation`nebo volejte `Track` telemetrie ručně.

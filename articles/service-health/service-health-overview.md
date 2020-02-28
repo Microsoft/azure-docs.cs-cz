@@ -1,14 +1,14 @@
 ---
 title: Přehled Service Health | Microsoft Docs
 description: Individuální informace o tom, jak jsou vaše aplikace Azure ovlivněny aktuálními a budoucími problémy a údržbou služeb Azure.
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 6a06ae22493292e33c94cc83cba1f17361bce45f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: db9d74e2883e755c3e5c3dbbe9d6570f1e78c4a6
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451577"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77654014"
 ---
 # <a name="service-health-overview"></a>Přehled Service Health
 
@@ -47,7 +47,7 @@ Můžete získat odkaz na problém, který se má použít v systému pro správ
 
 ![Správa problému se službou – Správa problémů](./media/service-health-overview/azure-service-health-overview-3.png)
 
-## <a name="get-support-from-microsoft"></a>Získání podpory od společnosti Microsoft
+## <a name="get-support-from-microsoft"></a>Získat podporu od Microsoftu
 
 Pokud je váš prostředek ponechán v nesprávném stavu i po vyřešení problému, obraťte se na podporu.  Použijte odkazy na podporu na pravé straně stránky.  
 

@@ -3,17 +3,16 @@ title: Vytvoření nastavení diagnostiky pro shromažďování protokolů a met
 description: Vytvořte nastavení diagnostiky pro přeposílání protokolů platformy Azure, abyste mohli protokoly Azure Monitor, úložiště Azure nebo Azure Event Hubs.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 22932121b97c1b0fe91c46b5eea0222a022a4e61
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: fb2f9ff5af68575d9f9d29e9a6aca83d603395b3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751083"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672408"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik platforem v Azure
 [Protokoly platforem](platform-logs-overview.md) v Azure, včetně protokolů aktivit Azure a protokolů prostředků, poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Tento článek poskytuje podrobné informace o vytváření a konfiguraci nastavení diagnostiky pro odesílání protokolů platforem do různých umístění.
@@ -38,7 +37,7 @@ Protokoly platforem lze odeslat do cílových umístění v následující tabul
 | Cíl | Popis |
 |:---|:---|
 | [Pracovní prostor služby Log Analytics](resource-logs-collect-workspace.md) | Shromažďování protokolů do pracovního prostoru Log Analytics umožňuje jejich analýzu s dalšími daty monitorování shromážděnými pomocí Azure Monitor pomocí výkonných dotazů protokolu a také k využití jiných Azure Monitor funkcí, jako jsou výstrahy a vizualizace. |
-| [Centra událostí](resource-logs-stream-event-hubs.md) | Odesílání protokolů do Event Hubs umožňuje streamovat data do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics. |
+| [Centrum událostí](resource-logs-stream-event-hubs.md) | Odesílání protokolů do Event Hubs umožňuje streamovat data do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics. |
 | [Účet služby Azure Storage](resource-logs-collect-storage.md) | Archivace protokolů na účet služby Azure Storage je užitečná pro audit, statickou analýzu nebo zálohování. |
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Vytvořit nastavení diagnostiky v Azure Portal

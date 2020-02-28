@@ -1,25 +1,19 @@
 ---
 title: Přehled upozorňování a monitorování oznámení v Azure
 description: Přehled upozorňování v Azure. Výstrahy, klasické výstrahy a rozhraní výstrah.
-ms.service: azure-monitor
 ms.subservice: alerts
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 7f6c7f22cef1cf49a9ff7b2cb87716abd61821c4
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 7ca77531ed3e1fae8ec297e430597452c7512aea
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830322"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665660"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Přehled výstrah v Microsoft Azure 
 
 Tento článek popisuje, co jsou výstrahy, jejich výhody a jak je začít používat.  
-
-
-
 
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Co jsou výstrahy v Microsoft Azure?
 Výstrahy proaktivně upozorňují na skutečnost, že jsou ve vašich datech monitorování zjištěny důležité podmínky. Umožňují identifikovat a řešit problémy předtím, než si ji uživatelé vašeho systému všimnete. 
@@ -41,47 +35,50 @@ Níže jsou uvedené klíčové atributy pravidla výstrahy:
 **Signál**: vysílá cílovým prostředkem. Signály můžou být z následujících typů: metrika, protokol aktivit, Application Insights a protokol.
 
 **Kritéria**: kombinace signálu a logiky použitá u cílového prostředku. Příklady: 
-   - Procento využití CPU > 70%
-   - Doba odezvy serveru > 4 MS 
-   - Počet výsledků dotazu protokolu > 100
+
+- Procento využití CPU > 70%
+- Doba odezvy serveru > 4 MS 
+- Počet výsledků dotazu protokolu > 100
 
 **Název výstrahy**: konkrétní název pro pravidlo výstrahy nakonfigurované uživatelem.
 
 **Popis výstrahy**: Popis pravidla výstrahy nakonfigurovaného uživatelem.
 
 **Závažnost**: Závažnost výstrahy po splnění kritérií zadaných v pravidle výstrahy. Závažnost může být v rozsahu od 0 do 4.
-   - Závažnost 0 = kritický
-   - Závažnost 1 = chyba
-   - Závažnost 2 = upozornění
-   - Závažnost 3 = informativní
-   - Závažnost 4 = verbose 
+
+- Závažnost 0 = kritický
+- Závažnost 1 = chyba
+- Závažnost 2 = upozornění
+- Závažnost 3 = informativní
+- Závažnost 4 = verbose 
 
 **Action (akce**): konkrétní akce provedená při vyvolání výstrahy. Další informace najdete v tématu [skupiny akcí](../../azure-monitor/platform/action-groups.md).
 
 ## <a name="what-you-can-alert-on"></a>K čemu můžete upozornit
 
 Můžete upozornit na metriky a protokoly, jak je popsáno v tématu [monitorování zdrojů dat](../../azure-monitor/platform/data-sources.md). Patří mezi ně mimo jiné:
+
 - Hodnoty metriky
-- Vyhledávací dotazy na protokoly
+- Dotazy na hledání v protokolu
 - Události protokolu aktivit
 - Stav základní platformy Azure
-- Testy dostupnosti webů
+- Testy pro dostupnost webu
 
 Dříve byly Azure Monitor metriky, Application Insights, Log Analytics a Service Health samostatné možnosti upozorňování. V průběhu času Azure vylepšil a kombinuje jak uživatelské rozhraní, tak i různé metody upozorňování. Tato konsolidace se pořád zpracovává. V důsledku toho stále existují některé možnosti upozorňování, které ještě nejsou v novém systému upozornění.  
 
-| **Zdroj monitorování** | **Typ signálu**  | **Popis** | 
+| **Zdroj monitorování** | **Typ signálu**  | **Popis** |
 |-------------|----------------|-------------|
-| Stav služby | Protokol aktivit  | Není podporováno. Viz téma [vytváření výstrah protokolu aktivit u oznámení služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
-| Application Insights | Testy dostupnosti webu | Není podporováno. Podívejte se na téma [výstrahy webového testu](../../azure-monitor/app/monitor-web-app-availability.md). K dispozici pro všechny weby, které jsou instrumentované pro posílání dat Application Insights. Dostanou oznámení, pokud je dostupnost nebo odezva webu nižší než očekávání. |
+| Stav služby | Protokol aktivit  | Nepodporuje se. Viz téma [vytváření výstrah protokolu aktivit u oznámení služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).  |
+| Application Insights | Testy dostupnosti webu | Nepodporuje se. Podívejte se na téma [výstrahy webového testu](../../azure-monitor/app/monitor-web-app-availability.md). K dispozici pro všechny weby, které jsou instrumentované pro posílání dat Application Insights. Dostanou oznámení, pokud je dostupnost nebo odezva webu nižší než očekávání. |
 
-## <a name="manage-alerts"></a>Správa upozornění
+## <a name="manage-alerts"></a>Správa výstrah
 Můžete nastavit stav výstrahy, chcete-li určit, kde se nachází v procesu řešení. Když jsou splněna kritéria zadaná v pravidle výstrahy, je vytvořena nebo aktivována výstraha a stav *nového*. Stav můžete změnit, když potvrdíte výstrahu a při jejím zavření. Všechny změny stavu jsou uloženy v historii výstrahy.
 
 Podporovány jsou následující stavy upozornění.
 
-| Stav | Popis |
+| Stát | Popis |
 |:---|:---|
-| Novinka | Problém byl právě zjištěn a ještě nebyl revidován. |
+| Nový | Problém byl právě zjištěn a ještě nebyl revidován. |
 | Potvrzení | Správce zkontroloval výstrahu a začal na ní pracovat. |
 | Uzavřeno | Problém byl vyřešen. Jakmile je výstraha zavřena, můžete ji znovu otevřít změnou na jiný stav. |
 
@@ -106,7 +103,7 @@ Nezobrazuje ani nesleduje klasické výstrahy. Chcete-li aktualizovat stránku, 
 
 Toto zobrazení můžete filtrovat výběrem hodnot v rozevíracích nabídkách v horní části stránky.
 
-| Column | Popis |
+| Sloupec | Popis |
 |:---|:---|
 | Předplatné | Vyberte předplatná Azure, pro která chcete výstrahy zobrazit. Volitelně můžete zvolit, jestli chcete vybrat všechna Vaše předplatná. V zobrazení jsou zahrnuté jenom výstrahy, ke kterým máte přístup ve vybraných předplatných. |
 | Skupina prostředků | Vyberte jednu skupinu prostředků. V zobrazení jsou zahrnuté jenom výstrahy s cíli ve vybrané skupině prostředků. |
@@ -121,7 +118,7 @@ V horní části stránky výstrahy vyberte následující hodnoty a otevřete t
 | Celkový počet pravidel upozornění | Celkový počet pravidel upozornění ve vybraném předplatném a skupině prostředků. Výběrem této hodnoty otevřete zobrazení pravidla filtrovaná ve vybraném předplatném a skupině prostředků.
 
 
-## <a name="manage-alert-rules"></a>Správa pravidel upozornění
+## <a name="manage-alert-rules"></a>Správa pravidel výstrah
 Chcete-li zobrazit stránku **pravidla** , vyberte možnost **Spravovat pravidla výstrah**. Stránka pravidla je jediné místo pro správu všech pravidel upozornění napříč předplatnými Azure. Uvádí všechna pravidla výstrah a je možné je seřadit na základě cílových prostředků, skupin prostředků, názvu pravidla nebo stavu. Na této stránce můžete také upravit, povolit nebo zakázat pravidla výstrah.  
 
  ![Snímek stránky s pravidly](./media/alerts-overview/alerts-preview-rules.png)
@@ -149,15 +146,15 @@ Stránku **všechny výstrahy** zobrazíte tak, že vyberete **Celkový počet v
 
 Zobrazení můžete filtrovat výběrem následujících hodnot v rozevíracích nabídkách v horní části stránky:
 
-| Column | Popis |
+| Sloupec | Popis |
 |:---|:---|
 | Předplatné | Vyberte předplatná Azure, pro která chcete výstrahy zobrazit. Volitelně můžete zvolit, jestli chcete vybrat všechna Vaše předplatná. V zobrazení jsou zahrnuté jenom výstrahy, ke kterým máte přístup ve vybraných předplatných. |
 | Skupina prostředků | Vyberte jednu skupinu prostředků. V zobrazení jsou zahrnuté jenom výstrahy s cíli ve vybrané skupině prostředků. |
 | Typ prostředku | Vyberte jeden nebo více typů prostředků. V zobrazení jsou zahrnuté jenom výstrahy s cíli vybraného typu. Tento sloupec je k dispozici až po zadání skupiny prostředků. |
 | Prostředek | Vyberte prostředek. V zobrazení jsou zahrnuty pouze výstrahy s tímto prostředkem jako cíl. Tento sloupec je k dispozici až po zadání typu prostředku. |
 | Závažnost | Vyberte Závažnost výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech závažnosti. |
-| Stav monitorování | Vyberte podmínku monitorování nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech podmínek. |
-| Stav upozornění | Vyberte stav výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech stavů. |
+| Podmínka monitorování | Vyberte podmínku monitorování nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech podmínek. |
+| Stav výstrahy | Vyberte stav výstrahy nebo vyberte možnost **vše** , pokud chcete zahrnout výstrahy všech stavů. |
 | Monitorovat službu | Vyberte službu nebo vyberte možnost **vše** , pokud chcete zahrnout všechny služby. Součástí jsou jenom výstrahy vytvořené pravidly, která používají službu jako cíl. |
 | Časové rozmezí | V zobrazení jsou zahrnuty pouze výstrahy aktivované v rámci vybraného časového rozsahu. Podporovány jsou hodnoty za poslední hodinu, posledních 24 hodin, posledních 7 dní a posledních 30 dní. |
 
@@ -170,7 +167,7 @@ Když vyberete výstrahu, Tato stránka poskytuje podrobnosti o výstraze a umo�
 
 Stránka Podrobnosti výstrahy obsahuje následující části:
 
-| Sekce | Popis |
+| Část | Popis |
 |:---|:---|
 | Souhrn | Zobrazí vlastnosti a další důležité informace o výstraze. |
 | Historie | Zobrazí všechny akce podniknuté výstrahou a všechny změny provedené v upozornění. V současné době omezené na změny stavu. |

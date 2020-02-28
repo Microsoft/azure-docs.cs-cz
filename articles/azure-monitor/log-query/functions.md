@@ -1,18 +1,17 @@
 ---
 title: Funkce v Azure Monitorch dotazech protokolu | Microsoft Docs
 description: Tento článek popisuje, jak pomocí funkce volat dotaz z jiného dotazu protokolu v Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
-ms.openlocfilehash: 8d8473b88327d3d17346a0351d0a9fc510152cd8
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7d94e53abbe8f4d2953729aa2363c3906ce94f74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894178"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670215"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Použití funkcí v Azure Monitorch dotazech protokolu
 
@@ -24,7 +23,7 @@ Vytvořte funkci s Log Analytics v Azure Portal kliknutím na **Uložit** a zad�
 
 | Nastavení | Popis |
 |:---|:---|
-| Name (Název)           | Zobrazovaný název dotazu v **Průzkumníku dotazů** |
+| Název           | Zobrazovaný název dotazu v **Průzkumníku dotazů** |
 | Uložit jako        | Funkce |
 | Alias funkce | Krátký název, který bude používat funkci v jiných dotazech. Nesmí obsahovat mezery a musí být jedinečný. |
 | Kategorie       | Kategorie pro uspořádání uložených dotazů a funkcí v **Průzkumníku dotazů**. |
@@ -38,7 +37,7 @@ Vytvořte funkci s Log Analytics v Azure Portal kliknutím na **Uložit** a zad�
 ## <a name="use-a-function"></a>Použití funkce
 Použijte funkci zahrnutím jejího aliasu do jiného dotazu. Dá se použít jako jakákoli jiná tabulka.
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 Následující vzorový dotaz vrátí všechny chybějící aktualizace zabezpečení hlášené za poslední den. Uložte tento dotaz jako funkci s aliasem _security_updates_last_day_. 
 
 ```Kusto

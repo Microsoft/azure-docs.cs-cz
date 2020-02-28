@@ -2,18 +2,17 @@
 title: Akce Webhooku pro výstrahy protokolu v upozorněních Azure
 description: Tento článek popisuje, jak vytvořit pravidlo upozornění protokolu pomocí Log Analytics pracovní prostor nebo Application Insights, jak výstraha nahraje data jako Webhook HTTP, a podrobnosti o různých přizpůsobeních, která jsou možná.
 author: yanivlavi
+ms.author: yalavi
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 3a072ae64104f8fded49ff6a00f5b58902c39903
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 7b1956ad2bf9bf38ba9edc4c7234078557564071
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71838575"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667699"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akce Webhooku pro pravidla upozornění protokolu
 Když [se v Azure vytvoří výstraha protokolu](alerts-log.md), máte možnost [ji nakonfigurovat pomocí skupin akcí](action-groups.md) , aby se provedla jedna nebo více akcí. Tento článek popisuje různé akce Webhooku, které jsou k dispozici, a ukazuje, jak nakonfigurovat vlastní Webhook založený na formátu JSON.

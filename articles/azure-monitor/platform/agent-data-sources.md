@@ -1,18 +1,17 @@
 ---
 title: Konfigurace zdrojů dat agenta v Azure Monitor | Microsoft Docs
 description: Zdroje dat definují data protokolu, která Azure Monitor shromažďuje z agentů a dalších připojených zdrojů.  Tento článek popisuje koncept způsobu, jakým Azure Monitor používá zdroje dat, vysvětluje podrobnosti o tom, jak je nakonfigurovat, a poskytuje souhrn různých zdrojů dat, které jsou k dispozici.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: f7960adca1c3665dbf8737cb10a898c58b1542ec
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aec3fe2386ce916c556f6da295a8554fff140259
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932822"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668770"
 ---
 # <a name="agent-data-sources-in-azure-monitor"></a>Zdroje dat agenta v Azure Monitor
 Data, která Azure Monitor shromažďuje z agentů, jsou definována zdroji dat, které nakonfigurujete.  Data z agentů jsou ukládána jako [data protokolu](data-platform-logs.md) se sadou záznamů.  Každý zdroj dat vytvoří záznamy určitého typu s každým typem s vlastní sadou vlastností.
@@ -23,7 +22,7 @@ Data, která Azure Monitor shromažďuje z agentů, jsou definována zdroji dat,
 V následující tabulce jsou uvedeny zdroje dat agenta, které jsou aktuálně k dispozici v Azure Monitor.  Každá z nich má odkaz na samostatný článek, který poskytuje podrobnosti pro tento zdroj dat.   Poskytuje také informace o jejich metodě a četnosti shromažďování. 
 
 
-| Zdroj dat | Platforma | Agent Log Analytics | Agent Operations Manager | Úložiště Azure | Operations Manager požadováno? | Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
+| Zdroj dat | Platforma | Agent Log Analytics | Agent Operations Manageru | Úložiště Azure | Operations Manager požadováno? | Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Vlastní protokoly](data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | při doručení |
 | [Vlastní protokoly](data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | při doručení |

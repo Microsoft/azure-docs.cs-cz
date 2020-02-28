@@ -1,18 +1,17 @@
 ---
 title: Protokol IIS v Azure Monitor | Microsoft Docs
 description: Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které lze shromažďovat pomocí Azure Monitor.  Tento článek popisuje, jak nakonfigurovat kolekci protokolů služby IIS a podrobnosti o záznamech, které vytvoří v Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: a865f43585ccbb31569e2ca0987aae62a89a9281
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1b3ae6295a639c3d59643b106b920cb606572e0a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932489"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670572"
 ---
 # <a name="collect-iis-logs-in-azure-monitor"></a>Shromažďovat protokoly IIS v Azure Monitor
 Internetová informační služba (IIS) ukládá činnost uživatelů do souborů protokolu, které lze shromažďovat pomocí Azure Monitor a uložených jako [data protokolu](data-platform.md).
@@ -36,7 +35,7 @@ Záznamy protokolu služby IIS mají typ **W3CIISLog** a mají vlastnosti v nás
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Název počítače, ze kterého byla událost shromážděna. |
+| Computer |Název počítače, ze kterého byla událost shromážděna. |
 | cIP |IP adresa klienta. |
 | csMethod |Metoda požadavku, například GET nebo POST. |
 | csReferer |Lokalita, ze které uživatel následoval odkaz z na aktuální web. |
@@ -51,12 +50,12 @@ Záznamy protokolu služby IIS mají typ **W3CIISLog** a mají vlastnosti v nás
 | scStatus |Stavový kód HTTP. |
 | scSubStatus |Kód chyby dílčího stavu |
 | scWin32Status |Stavový kód Windows. |
-| Adresa |IP adresa webového serveru. |
-| SourceSystem |Jedn |
-| Sportu |Port na serveru, ke kterému je klient připojen. |
+| sIP |IP adresa webového serveru. |
+| SourceSystem |OpsMgr |
+| sPort |Port na serveru, ke kterému je klient připojen. |
 | sSiteName |Název webu služby IIS. |
 | TimeGenerated |Datum a čas, kdy byla položka zaznamenána. |
-| timeTaken |Doba zpracování žádosti v milisekundách |
+| TimeTaken |Doba zpracování žádosti v milisekundách |
 
 ## <a name="log-queries-with-iis-logs"></a>Protokolování dotazů s protokoly služby IIS
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy protokolu služby IIS.
@@ -65,7 +64,7 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 |:--- |:--- |
 | W3CIISLog |Všechny záznamy protokolu služby IIS. |
 | W3CIISLog &#124; WHERE scStatus = = 500 |Všechny záznamy protokolu služby IIS se stavem vrácenými na 500. |
-| W3CIISLog &#124; Shrnutí počtu () podle cIP |Počet záznamů protokolu IIS podle IP adresy klienta |
+| W3CIISLog &#124; summarize count() by cIP |Počet záznamů protokolu IIS podle IP adresy klienta |
 | W3CIISLog &#124; WHERE csHost = = "www\.contoso.com" &#124; sumarizace Count () od csUriStem |Počet záznamů protokolu IIS podle adresy URL pro hostitelský server www\.contoso.com. |
 | W3CIISLog &#124; sumarizace Sum (csBytes) podle počítače &#124; , který přebere 500000 |Celkový počet bajtů přijatých jednotlivými počítači IIS. |
 

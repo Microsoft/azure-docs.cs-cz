@@ -1,18 +1,15 @@
 ---
 title: Pravidla akcí pro výstrahy Azure Monitor
 description: Vysvětlení toho, jaká pravidla akcí v Azure Monitor jsou a jak je nakonfigurovat a spravovat.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
 ms.date: 04/25/2019
-ms.openlocfilehash: e9de7a1fe4cee16cd1d22ba764ab9eccdf3979fd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.subservice: alerts
+ms.openlocfilehash: 42f8d9cd30caa48376cda049f6404aa897a6866c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767683"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668464"
 ---
 # <a name="action-rules-preview"></a>Pravidla akcí (Preview)
 
@@ -54,7 +51,7 @@ Nyní byste měli vidět stránku Flow pro vytváření pravidel akcí. Nakonfig
 
 ![Tok vytváření nového pravidla akce](media/alerts-action-rules/action-rules-new-rule-creation-flow.png)
 
-### <a name="scope"></a>Rozsah
+### <a name="scope"></a>Obor
 
 Nejdřív vyberte obor (předplatné Azure, skupinu prostředků nebo cílový prostředek). V rámci jednoho předplatného můžete také vybrat několik kombinací oborů.
 
@@ -64,7 +61,7 @@ Nejdřív vyberte obor (předplatné Azure, skupinu prostředků nebo cílový p
 
 Můžete také definovat filtry pro jejich zúžení do určité podmnožiny výstrah. 
 
-Dostupné filtry jsou: 
+Jsou k dispozici tyto filtry: 
 
 * **Závažnost**: možnost výběru jedné nebo více závažných Závažnost výstrahy. **Závažnost = Sev1** znamená, že pravidlo akce platí pro všechny výstrahy nastavené na Sev1.
 * **Služba monitorování**: filtr založený na službě pro monitorování původu. Tento filtr je také vícenásobný výběr. Například **monitor služba = "Application Insights"** znamená, že pravidlo akce platí pro všechny výstrahy založené na Application Insights.
@@ -103,11 +100,11 @@ Pokud vyberete možnost **Skupina akcí** v přepínači, buď přidejte existuj
 ### <a name="action-rule-details"></a>Podrobnosti pravidla akce
 
 Nakonec pro pravidlo akce nakonfigurujte následující podrobnosti:
-* Name (Název)
+* Název
 * Skupina prostředků, ve které je uložená
 * Popis 
 
-## <a name="example-scenarios"></a>Ukázkové scénáře
+## <a name="example-scenarios"></a>Příklady scénářů
 
 ### <a name="scenario-1-suppression-of-alerts-based-on-severity"></a>Scénář 1: potlačení výstrah na základě závažnosti
 
@@ -161,7 +158,7 @@ Chcete-li nejlépe používat výstrahy protokolu s pravidly akcí, vytvořte v�
 
 ![Pravidla akcí a výstrahy protokolu (počet výsledků)](media/alerts-action-rules/action-rules-log-alert-metric-measurement.png)
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 ### <a name="while-im-configuring-an-action-rule-id-like-to-see-all-the-possible-overlapping-action-rules-so-that-i-avoid-duplicate-notifications-is-it-possible-to-do-that"></a>I když konfigurujem pravidlo akce, chci zobrazit všechna možná překrývající se pravidla akcí, aby se zamezilo duplicitním oznámením. Je to možné?
 

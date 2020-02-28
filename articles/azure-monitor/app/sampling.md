@@ -1,20 +1,16 @@
 ---
 title: Vzorkování telemetrie v Azure Application Insights | Microsoft Docs
 description: Jak udržet množství telemetrie v rámci řízení.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9fda3bb0188a2030572ee686ff5a942aca61ea36
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989973"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671490"
 ---
 # <a name="sampling-in-application-insights"></a>Vzorkování ve službě Application Insights
 
@@ -38,10 +34,10 @@ Následující tabulka shrnuje typy vzorkování dostupné pro každou sadu SDK 
 |-|-|-|-|
 | ASP.NET | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-aspnet-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
 | ASP.NET Core | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Ano](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Funkce Azure | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-azure-functions) | Ne | Jenom v případě, že se neplatí žádné jiné vzorkování |
+| Azure Functions | [Ano (ve výchozím nastavení zapnuto)](#configuring-adaptive-sampling-for-azure-functions) | Ne | Jenom v případě, že se neplatí žádné jiné vzorkování |
 | Java | Ne | [Ano](#configuring-fixed-rate-sampling-for-java-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
 | Python | Ne | [Ano](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Jenom v případě, že se neplatí žádné jiné vzorkování |
-| Všichni ostatní | Ne | Ne | [Ano](#ingestion-sampling) |
+| Všechny ostatní | Ne | Ne | [Ano](#ingestion-sampling) |
 
 > [!NOTE]
 > Informace na většině této stránky se vztahují na aktuální verze sad Application Insights SDK. Informace o starších verzích sad SDK [najdete v části níže](#older-sdk-versions).
@@ -353,7 +349,7 @@ Instrumentujte svoji aplikaci pomocí nejnovějšího [OpenCensus Azure monitor 
 > Vzorkování s pevnou sazbou není pro exportéra metrik k dispozici. To znamená, že vlastní metriky jsou jediné typy telemetrie, ve kterých nelze nakonfigurovat vzorkování. Exportér metrik pošle veškerou telemetrii, kterou sleduje.
 
 #### <a name="fixed-rate-sampling-for-tracing"></a>Vzorkování s pevnou sazbou pro trasování ####
-V rámci konfigurace `Tracer` můžete zadat vzorkovník `sampler`. Pokud není zadaný žádný explicitní vzorkovník, použije se ve výchozím nastavení `ProbabilitySampler`. `ProbabilitySampler` by ve výchozím nastavení použila sazbu 1/10000, což znamená, že se do Application Insights pošle jeden z každých 10000 požadavků. Informace o zadání vzorkovací frekvence najdete níže.
+V rámci konfigurace `sampler` můžete zadat vzorkovník `Tracer`. Pokud není zadaný žádný explicitní vzorkovník, použije se ve výchozím nastavení `ProbabilitySampler`. `ProbabilitySampler` by ve výchozím nastavení použila sazbu 1/10000, což znamená, že se do Application Insights pošle jeden z každých 10000 požadavků. Informace o zadání vzorkovací frekvence najdete níže.
 
 Pokud chcete určit vzorkovací frekvenci, ujistěte se, že `Tracer` určuje vzorkovník s vzorkovací frekvencí mezi 0,0 a 1,0 včetně. Vzorkovací frekvence 1,0 představuje 100%, což znamená, že všechny vaše požadavky budou odeslány jako telemetrie do Application Insights.
 

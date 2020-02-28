@@ -1,18 +1,17 @@
 ---
 title: Rozšířené agregace v Azure Monitorch dotazech protokolu | Microsoft Docs
 description: Popisuje některé pokročilejší možnosti agregace, které jsou k dispozici pro Azure Monitor dotazy protokolu.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 882582191b5794e3978d955dfa9bded294064037
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398295"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662174"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Pokročilé agregace v Azure Monitorch dotazech protokolu
 
@@ -33,11 +32,11 @@ Event
 | summarize makelist(EventID) by Computer
 ```
 
-|Počítač|list_EventID|
+|Computer|list_EventID|
 |---|---|
 | Počítač1 | [704,701,1501,1500,1085,704,704,701] |
 | počítač2 | [326 105 302 301 300 102] |
-| Tlačítka ... | Tlačítka ... |
+| ... | ... |
 
 `makelist` vygeneruje seznam v pořadí, do kterého byla data předána. Pokud chcete události seřadit od nejstarších k nejnovějším, použijte místo `desc``asc` v příkazu Order. 
 
@@ -50,11 +49,11 @@ Event
 | summarize makeset(EventID) by Computer
 ```
 
-|Počítač|list_EventID|
+|Computer|list_EventID|
 |---|---|
 | Počítač1 | [704, 701, 1501, 1500, 1085] |
 | počítač2 | [326 105 302 301 300 102] |
-| Tlačítka ... | Tlačítka ... |
+| ... | ... |
 
 Stejně jako `makelist`, `makeset` také pracuje se seřazenými daty a vygeneruje pole na základě pořadí řádků, které jsou předány do něj.
 
@@ -67,12 +66,12 @@ Heartbeat
 | project Computer, Solutions
 ```
 
-| Počítač | Řešení | 
+| Computer | Řešení | 
 |--------------|----------------------|
 | Počítač1 | "zabezpečení", "aktualizace", "sledování změn ve" |
 | počítač2 | "zabezpečení", "aktualizace" |
 | computer3 | "antimalware", "sledování změn ve" |
-| Tlačítka ... | Tlačítka ... |
+| ... | ... |
 
 Použijte `mvexpand` k zobrazení každé hodnoty v samostatném řádku namísto čárkami odděleného seznamu:
 
@@ -83,7 +82,7 @@ Heartbeat
 | mvexpand Solutions
 ```
 
-| Počítač | Řešení | 
+| Computer | Řešení | 
 |--------------|----------------------|
 | Počítač1 | bezpečnost |
 | Počítač1 | aktualizovány |
@@ -92,7 +91,7 @@ Heartbeat
 | počítač2 | aktualizovány |
 | computer3 | Antimalwarové |
 | computer3 | Sledování změn ve |
-| Tlačítka ... | Tlačítka ... |
+| ... | ... |
 
 
 Pak můžete použít `makelist` znovu k seskupení položek dohromady a tentokrát se zobrazí seznam počítačů na řešení:
@@ -111,7 +110,7 @@ Heartbeat
 | aktualizovány | ["computer1", "computer2"] |
 | Sledování změn ve | ["computer1", "computer3"] |
 | Antimalwarové | ["computer3"] |
-| Tlačítka ... | Tlačítka ... |
+| ... | ... |
 
 ## <a name="handling-missing-bins"></a>Zpracování chybějících přihrádek
 Užitečnou aplikací `mvexpand` je nutnost vyplnit výchozí hodnoty v části pro chybějící přihrádky. Předpokládejme například, že hledáte dobu provozu konkrétního počítače prozkoumáním jeho prezenčního signálu. Také chcete zobrazit zdroj prezenčního signálu, který je ve sloupci _kategorie_ . V normálním případě bychom použili jednoduchý příkaz sumarizace následujícím způsobem:
@@ -122,14 +121,14 @@ Heartbeat
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
 
-| Kategorie | TimeGenerated | počet_ |
+| Kategorie | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | Přímý Agent | 2017-06-06T17:00:00Z | 15 |
 | Přímý Agent | 2017-06-06T18:00:00Z | 60 |
 | Přímý Agent | 2017-06-06T20:00:00Z | 55 |
 | Přímý Agent | 2017-06-06T21:00:00Z | 57 |
 | Přímý Agent | 2017-06-06T22:00:00Z | 60 |
-| Tlačítka ... | Tlačítka ... | Tlačítka ... |
+| ... | ... | ... |
 
 V takovém případě se v důsledku chybějícího kontejneru přidruženého k "2017-06-06T19:00:00Z" nezobrazí žádná data prezenčního signálu za tuto hodinu. Pro přiřazení výchozí hodnoty k prázdným kontejnerům použijte funkci `make-series`. Tím se vygeneruje řádek pro každou kategorii se dvěma dalšími sloupci pole, jeden pro hodnoty a jeden pro porovnání časových intervalů:
 
@@ -138,10 +137,10 @@ Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-| Kategorie | počet_ | TimeGenerated |
+| Kategorie | count_ | TimeGenerated |
 |---|---|---|
 | Přímý Agent | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
-| Tlačítka ... | Tlačítka ... | Tlačítka ... |
+| ... | ... | ... |
 
 Třetí prvek *count_* pole je 0 podle očekávání a v poli _TimeGenerated_ je k dispozici párové časové razítko "2017-06-06T19:00:00.0000000 z". Tento formát pole je obtížné přečíst i v takovém případě. Použijte `mvexpand` pro rozbalení polí a vytvoření stejného výstupu formátu generovaného pomocí `summarize`:
 
@@ -152,7 +151,7 @@ Heartbeat
 | project Category, TimeGenerated, count_
 ```
 
-| Kategorie | TimeGenerated | počet_ |
+| Kategorie | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | Přímý Agent | 2017-06-06T17:00:00Z | 15 |
 | Přímý Agent | 2017-06-06T18:00:00Z | 60 |
@@ -160,7 +159,7 @@ Heartbeat
 | Přímý Agent | 2017-06-06T20:00:00Z | 55 |
 | Přímý Agent | 2017-06-06T21:00:00Z | 57 |
 | Přímý Agent | 2017-06-06T22:00:00Z | 60 |
-| Tlačítka ... | Tlačítka ... | Tlačítka ... |
+| ... | ... | ... |
 
 
 

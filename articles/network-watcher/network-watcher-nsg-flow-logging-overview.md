@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: f231a5339b9c696b2a427b0713118d4b46e30277
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a7f30a5a70f71ff958d9b222d2a9e21d03d85e06
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840991"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670759"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
@@ -33,11 +33,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 Můžete analyzovat protokoly toků a získat přehled o provozu v síti pomocí [analýzy provozu](traffic-analytics.md).
 
-Stejné zásady uchovávání informací, které se zobrazují pro jiné protokoly, se vztahují na protokoly toků. Můžete nastavit zásady uchovávání protokolů od 1 dne do 365 dnů. Pokud zásady uchovávání nejsou nastavené, protokoly se ukládají navždy.
-
-> [!NOTE] 
-> Použití funkce zásady uchovávání informací s protokolováním toku NSG může způsobit velký objem operací úložiště a přidružených nákladů. Pokud nepotřebujete funkci zásad uchovávání informací, doporučujeme nastavit tuto hodnotu na 0.
-
+Stejné zásady uchovávání informací, které se zobrazují pro jiné protokoly, se vztahují na protokoly toků. Můžete nastavit zásady uchovávání protokolů od 1 dne do 365 dnů. Pokud nejsou nastavené zásady uchovávání informací, protokoly se uchovávají trvale.
 
 ## <a name="log-file"></a>Soubor protokolu
 

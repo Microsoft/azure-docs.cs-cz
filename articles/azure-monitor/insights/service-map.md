@@ -1,22 +1,21 @@
 ---
 title: Používání řešení Service Map v Azure | Microsoft Docs
 description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek obsahuje podrobnosti o nasazení řešení Service Map ve vašem prostředí a jejich použití v různých scénářích.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: c177589bea76770f8f72dd3267b856b00d57699c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168179"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663619"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Použití řešení Service Map v Azure
 
-Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Služba Service Map poskytuje zobrazení vašich serverů tak, jak si je představujete – jako vzájemně propojené systémy, které zajišťují důležité služby. Service Map zobrazuje propojení mezi servery, procesy, latenci příchozích a odchozích připojení a porty napříč libovolnou architekturou propojenou protokolem TCP. Nevyžaduje se přitom žádná konfigurace kromě instalace agenta.
+Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Service Map zobrazuje vaše servery tak, jak o nich přemýšlíte, tzn. jako propojené systémy, které zajišťují důležité služby. Service Map zobrazuje propojení serverů, procesů, latenci příchozích a odchozích připojení a porty v libovolné architektuře propojené protokolem TCP. Kromě instalace agenta se nevyžaduje žádná konfigurace.
 
 Tento článek popisuje podrobnosti o připojování a používání Service Map. Informace o konfiguraci požadavků pro toto řešení najdete v tématu [Povolení přehledu Azure monitor pro virtuální počítače](vminsights-enable-overview.md#prerequisites). Pro Shrnutí budete potřebovat následující:
 
@@ -54,7 +53,7 @@ Service Map pomáhá eliminovat přibližnou přibližnou izolaci problémů tí
 
 Pomocí Service Map můžete efektivně plánovat, zrychlit a ověřovat migrace do Azure, což pomáhá zajistit, aby nic nezůstalo a nedocházelo k výpadkům. Můžete zjistit všechny vzájemně závislé systémy, které se musí migrovat společně, vyhodnocovat konfiguraci a kapacitu systému a určit, jestli operační systém stále obsluhuje uživatele, nebo je kandidátem na vyřazení z provozu místo migrace. Po dokončení přesunu můžete zkontrolovat zatížení a identitu klienta a ověřit tak, že se zkušební systémy a zákazníci připojují. Pokud má vaše podsíť definice plánování a brány firewall problémy, neúspěšná připojení v Service Map mapách ukazují na systémy, které vyžadují připojení.
 
-### <a name="business-continuity"></a>Nepřetržitý chod organizace
+### <a name="business-continuity"></a>Kontinuita podnikových procesů
 
 Pokud používáte Azure Site Recovery a potřebujete nápovědu definující sekvenci obnovení pro prostředí aplikace, Service Map vám může automaticky Ukázat, jak se systémy vzájemně spoléhají, aby se zajistilo, že je váš plán obnovení spolehlivý. Výběrem důležitého serveru nebo skupiny a zobrazením klientů můžete určit, které klientské systémy se mají obnovit po obnovení a zpřístupnění serveru. V opačném případě si prohlédněte kritické závislosti back-endu serverů, které vám pomůžou zjistit, které systémy se mají obnovit, než se obnoví vaše Fokusové systémy.
 
@@ -98,7 +97,7 @@ Uživatelé si můžou vybrat, které servery patří do skupiny dohromady, a zv
 
 Pokud chcete vytvořit skupinu, vyberte počítače nebo počítače, které chcete v seznamu počítače, a klikněte na **Přidat do skupiny**.
 
-![Vytvoření skupiny](media/service-map/machine-groups-create.png)
+![Vytvořit skupinu](media/service-map/machine-groups-create.png)
 
 Zde můžete zvolit **vytvořit nové** a zadat název skupiny.
 
@@ -374,7 +373,7 @@ Tady jsou některé důležité body, které je potřeba vzít v úvahu:
 
 Pro usnadnění práce se do vlastnosti RemoteIp zahrne IP adresa vzdáleného konce připojení. U příchozích připojení je RemoteIp stejná jako SourceIp, zatímco u odchozích připojení je stejná jako DestinationIp. Vlastnost RemoteDnsCanonicalNames představuje kanonické názvy DNS hlášené počítačem pro RemoteIp. Vlastnosti RemoteDnsQuestions a RemoteClassification jsou vyhrazené pro budoucí použití. 
 
-#### <a name="geolocation"></a>Geografická poloha
+#### <a name="geolocation"></a>Zeměpisná poloha
 
 *VMConnection* také obsahuje informace o geografickém umístění pro vzdálené konce každého záznamu připojení v následujících vlastnostech záznamu: 
 
@@ -539,7 +538,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 | summarize Remote=makeset(iff(isempty(RemoteMachine), todynamic('{}'), pack('Machine', RemoteMachine, 'Process', Process1, 'ProcessName', ProcessName1))) by ConnectionId, Direction, Machine, Process, ProcessName, SourceIp, DestinationIp, DestinationPort, Protocol
 ```
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 
 Všechna data serveru, procesu a závislostí v Service Map jsou k dispozici prostřednictvím [REST API Service map](https://docs.microsoft.com/rest/api/servicemap/).
 
@@ -547,13 +546,13 @@ Všechna data serveru, procesu a závislostí v Service Map jsou k dispozici pro
 
 Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím vašeho používání služby Service Map. Tato data Microsoft používá k poskytování a vylepšování kvality, zabezpečení a integrity služby mapa služby. Aby poskytovaly přesné a efektivní možnosti odstraňování potíží, obsahují data informace o konfiguraci softwaru, jako je například operační systém a verze, IP adresa, název DNS a název pracovní stanice. Společnost Microsoft neshromažďuje jména, adresy ani jiné kontaktní údaje.
 
-Další informace o shromažďování a používání dat najdete v článku [prohlášení o ochraně osobních údajů Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+Další informace o shromažďování a používání dat naleznete v tématu [prohlášení o zásadách ochrany osobních údajů služby Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 ## <a name="next-steps"></a>Další kroky
 
 Přečtěte si další informace o [hledání v protokolu](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics k načtení dat shromažďovaných pomocí Service map.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud máte potíže s instalaci nebo spuštění řešení Service Map, tato část vám pomoct. Pokud stále nejde problém vyřešit, obraťte se prosím Microsoft Support.
 
@@ -572,7 +571,7 @@ Může být užitečné nejdřív nainstalovat [nejnovější knihovny modulu ru
 
 V následující tabulce jsou uvedeny čísly kódů a doporučená řešení.
 
-| kód | Popis | Rozlišení |
+| Kód | Popis | Rozlišení |
 |:--|:--|:--|
 | 0x17 | Instalační program knihovny vyžaduje aktualizaci Windows, která nebyla nainstalována. | Vyhledejte v protokolu nejnovější instalační program knihovny.<br><br>Pokud je odkaz na `Windows8.1-KB2999226-x64.msu` následovaný řádkem `Error 0x80240017: Failed to execute MSU package,` nemáte požadavky na instalaci KB2999226. Postupujte podle pokynů v části požadavky v tématu [Universal C Runtime](https://support.microsoft.com/kb/2999226) v článku o systému Windows. Může být potřeba spuštěním služby Windows Update a restartovat více než jednou. aby bylo možné nainstalujte příslušné požadované součásti.<br><br>Znovu spusťte instalační program agenta Microsoft Dependency. |
 
@@ -601,6 +600,6 @@ Pokud se Váš počítač nachází v Service Map, ale nemá žádná data o pro
 
 Podívejte se na `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) nebo `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). Poslední řádek souboru by měla zobrazovat, proč se nenačetla jádra. Například jádra nemusí být podporovány v Linuxu, pokud jste aktualizovali vaši jádra.
 
-## <a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Názor
 
 Máte pro nás informace o Service Map nebo této dokumentaci?  Navštivte naši [hlasovou stránku uživatele](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhovat funkce nebo hlasovat o stávajících návrzích.

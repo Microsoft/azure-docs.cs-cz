@@ -1,21 +1,19 @@
 ---
-title: Nastavení upozornění v Azure Application Insights | Microsoft Docs
+title: Nastavení upozornění v Azure Application Insights
 description: Získejte oznámení o pomalých časech odezvy, výjimkách a dalších změnách výkonu nebo využití ve vaší webové aplikaci.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/23/2019
 ms.reviewer: lagayhar
-ms.openlocfilehash: a21e2676d1b03472c58e2f95095a1a59d00b16be
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.subservice: alerts
+ms.openlocfilehash: 80759c94d7cc5b60b6e38a34b85fb64c3c18fd2e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678412"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666713"
 ---
 # <a name="set-alerts-in-application-insights"></a>Nastavení výstrah v Application Insights
+
 [Azure Application Insights][start] vás může upozorňovat na změny v metrikách výkonu nebo využití ve vaší webové aplikaci. 
 
 Application Insights monitoruje svou živou aplikaci na nejrůznějších [platformách][platforms] , které vám pomůžou diagnostikovat problémy s výkonem a pochopit vzorce používání.
@@ -28,6 +26,7 @@ Existuje několik typů výstrah:
 * [**Proaktivní Diagnostika**](../../azure-monitor/app/proactive-diagnostics.md) jsou nakonfigurovány automaticky, aby vás upozornily na neobvyklé vzorce výkonu.
 
 ## <a name="set-a-metric-alert"></a>Nastavení upozornění na metriku
+
 Otevřete kartu pravidla upozornění a pak použijte tlačítko Přidat.
 
 ![Na kartě pravidla výstrah vyberte Přidat výstrahu. Nastavte svoji aplikaci jako prostředek k měření, zadejte název výstrahy a vyberte metriku.](./media/alerts/01-set-metric.png)
@@ -62,7 +61,7 @@ Historie změn stavu je v protokolu aktivit:
 
 ![Na kartě Přehled klikněte na nastavení, protokoly auditu.](./media/alerts/09-alerts.png)
 
-## <a name="how-alerts-work"></a>Jak fungují výstrahy
+## <a name="how-alerts-work"></a>Jak výstrahy fungují
 * Výstraha má tři stavy: "nikdy aktivované", "aktivované" a "Vyřešeno". Aktivováno znamená, že zadaná podmínka byla pravdivá, kdy byla naposledy vyhodnocena.
 * Oznámení se vygeneruje při změně stavu výstrahy. (Pokud je podmínka upozornění již pravdivá při vytváření výstrahy, nemůžete obdržet oznámení, dokud podmínka nevrátí hodnotu false.)
 * Každé oznámení vygeneruje e-mail, pokud jste zaškrtli políčko e-maily, nebo zadané e-mailové adresy. Můžete se také podívat na rozevírací seznam oznámení.
@@ -175,7 +174,7 @@ Pokud potřebujete upozornit uživatele na základě jejich rolí, použijte nov
 * [Použití PowerShellu k automatizaci nastavení výstrah](../../azure-monitor/app/powershell-alerts.md)
 * [Použití webhooků k automatizaci reakce na výstrahy](../../azure-monitor/platform/alerts-webhooks.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 * [Webové testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md)
 * [Automatizace nastavení výstrah](../../azure-monitor/app/powershell-alerts.md)
 * [Proaktivní Diagnostika](../../azure-monitor/app/proactive-diagnostics.md) 

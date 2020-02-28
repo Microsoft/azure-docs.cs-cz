@@ -1,18 +1,16 @@
 ---
 title: Pomocí Application Insights můžete monitorovat službu Azure Kubernetes (AKS) nebo jiné aplikace hostované v Kubernetes – Azure Monitor | Microsoft Docs
 description: Azure Monitor používá k zajištění monitorování aplikací pro všechny hostované aplikace Kubernetes v clusteru Kubernetes technologii sítě služby Istio. Díky tomu můžete shromažďovat Application Insights telemetrie týkající se příchozích a odchozích požadavků do a z lusků spuštěných ve vašem clusteru.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 15c75d4add9615df6c42aa6121557659e54354d0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432522"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666782"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Nulová monitorování aplikací instrumentace pro hostované aplikace Kubernetes
 
@@ -33,7 +31,7 @@ Azure Monitor teď využívá síť pro pracovní plochu v clusteru Kubernetes k
 - [Prostředek přehledu aplikace](create-new-resource.md)
 - Mít síť pro službu. Pokud váš cluster nemá nasazené Istio, můžete se dozvědět, jak [nainstalovat a používat Istio ve službě Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/istio-install).
 
-## <a name="capabilities"></a>Možnosti
+## <a name="capabilities"></a>Schopnosti
 
 Při použití nástroje s nulovým monitorováním aplikací instrumentace pro aplikace hostované v Kubernetes budete moct použít:
 
@@ -44,7 +42,7 @@ Při použití nástroje s nulovým monitorováním aplikací instrumentace pro 
 - [Distribuované – trasování](../../azure-monitor/app/distributed-tracing.md)
 - [Monitorování koncové transakce](../../azure-monitor/learn/tutorial-performance.md#identify-slow-server-operations)
 
-## <a name="installation-steps"></a>Instalační kroky
+## <a name="installation-steps"></a>Kroky instalace
 
 Pokud chcete řešení povolit, provedeme tyto kroky:
 - Nasaďte aplikaci (Pokud ještě není nasazená).
@@ -74,7 +72,7 @@ Aplikace spuštěné mimo síť nejsou ovlivněny.
 
 1. Stáhněte a extrahujte [verzi *Application Insightsho adaptéru* ](https://github.com/Microsoft/Application-Insights-Istio-Adapter/releases/).
 2. V rámci složky pro vydání přejděte na */Src/Kubernetes/* .
-3. Edit *application-insights-istio-mixer-adapter-deployment.yaml*
+3. Úprava *Application-Insights-istio-mixer-Adapter-Deployment. yaml*
     - Upravte hodnotu proměnné prostředí *ISTIO_MIXER_PLUGIN_AI_INSTRUMENTATIONKEY* tak, aby obsahovala klíč instrumentace prostředku Application Insights v Azure Portal, aby obsahovala telemetrii.
     - V případě potřeby upravte hodnotu proměnné prostředí *ISTIO_MIXER_PLUGIN_WATCHLIST_NAMESPACES* tak, aby obsahovala seznam oborů názvů oddělených čárkami, pro které chcete monitorování povolit. Pokud chcete monitorovat všechny obory názvů, ponechte pole prázdné.
 4. Použijte *všechny* soubory YAML nalezené pod *Src/Kubernetes/* spuštěním následujícího (stále musíte být uvnitř */Src/Kubernetes/* ):
@@ -98,7 +96,7 @@ Aplikace spuštěné mimo síť nejsou ovlivněny.
 - Vygenerujte vzorový požadavek na vaši aplikaci a potvrďte tak, že monitorování funguje správně.
 - Během 3-5 minut byste měli začít zobrazovat telemetrii v Azure Portal. Ujistěte se, že se v portálu Application Insights prostředku na portálu nachází část s *mapou aplikace* .
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Níže je uvedený postup řešení potíží, který se použije v případě, že se telemetrie neobjeví v Azure Portal podle očekávání.
 
@@ -129,7 +127,7 @@ Níže je uvedený postup řešení potíží, který se použije v případě, 
    ```
    Vyhledejte případné chyby, zejména související s komunikací s *applicationinsightsadapter* adaptérem.
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 Nejnovější informace o průběhu tohoto projektu najdete na [githubu Application Insights Adapter pro projekt mixer Istio](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq).
 

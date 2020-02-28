@@ -1,19 +1,17 @@
 ---
 title: Upgrade služby Azure Application Insights Snapshot Debugger
 description: Postup upgradu Snapshot Debugger pro aplikace .NET na nejnovější verzi v Azure App Services nebo prostřednictvím balíčků NuGet
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 03/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: d246fb36cc56a90faaf00c5b47ba69580a9c8a5d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6991db6055ca8556adff67f194bac0f4aa04cb06
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927192"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671388"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>Upgrade Snapshot Debugger
 

@@ -1,18 +1,16 @@
 ---
 title: Azure Application Insights pro webové aplikace v JavaScriptu
 description: Získejte zobrazení stránky a počty relací, data webového klienta, jednostránkové aplikace (SPA) a sledujte vzorce používání. Zjištění výjimek a problémů s výkonem na webových stránkách v jazyce JavaScript.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: c98feda62b7e5de5551b02d6189a1142ca8c5f88
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 00e8cdbbd765d6baf83f64848030d08d6e712ca1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276782"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661341"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -79,7 +77,7 @@ Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromá
     - Kontext korelace (pokud existuje), kde je učiněn požadavek
 - **Informace o uživateli** (například umístění, síť, IP adresa)
 - **Informace o zařízení** (například prohlížeč, operační systém, verze, jazyk, řešení, model)
-- **informace o relaci**,
+- **Informace o relaci**
 
 ### <a name="telemetry-initializers"></a>Inicializátory telemetrie
 Inicializátory telemetrie slouží k úpravě obsahu shromážděné telemetrie před jejich odesláním z prohlížeče uživatele. Můžete je také použít k zabránění odeslání určité telemetrie, a to vrácením `false`. Do instance Application Insights lze přidat více inicializátorů telemetrie a jsou spouštěny v pořadí jejich přidávání.
@@ -100,9 +98,9 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey`.
 
-| Name (Název) | Výchozí | Popis |
+| Název | Výchozí | Popis |
 |------|---------|-------------|
-| InstrumentationKey | null | **Vyžaduje**<br>Klíč instrumentace, který jste získali z Azure Portal. |
+| InstrumentationKey | null | **Požadovanou**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
 | sessionRenewalMs | 1800000 | Pokud je uživatel neaktivní po dobu v milisekundách, dojde k zaznamenání relace. Výchozí hodnota je 30 minut. |
 | sessionExpirationMs | 86400000 | Relace je zaznamenána v případě, že v milisekundách pokračuje po dobu. Výchozí hodnota je 24 hodin. |
@@ -112,7 +110,7 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | disableTelemetry | false | Pokud je nastaveno na true, telemetrie se neshromažďuje ani neposílá. Výchozí hodnota je false. |
 | enableDebug | false | Při hodnotě true se **interní** data ladění vydávají jako výjimka **namísto** zaznamenávání bez ohledu na nastavení protokolování SDK. Výchozí hodnota je false. <br>***Poznámka:*** Povolení tohoto nastavení způsobí, že dojde k zahození telemetrie při každém výskytu vnitřní chyby. To může být užitečné, pokud chcete rychle identifikovat problémy s konfigurací nebo využitím sady SDK. Pokud nechcete při ladění přijít o telemetrii, zvažte použití `consoleLoggingLevel` nebo `telemetryLoggingLevel` namísto `enableDebug`. |
 | loggingLevelConsole | 0 | Zaznamená **vnitřní** chyby Application Insights do konzoly. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
-| loggingLevelTelemetry | 1\. místo | Odesílá **interní** chyby Application Insights jako telemetrii. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
+| loggingLevelTelemetry | 1 | Odesílá **interní** chyby Application Insights jako telemetrii. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
 | diagnosticLogInterval | 10000 | vnitřních Interval dotazování (v MS) pro interní frontu protokolování |
 | samplingPercentage | 100 | Procento událostí, které budou odeslány. Výchozí hodnota je 100, což znamená, že jsou odesílány všechny události. Tuto hodnotu nastavte, pokud chcete zachovat svůj limit dat pro aplikace ve velkém měřítku. |
 | autoTrackPageVisitTime | false | Pokud je hodnota true, v PageView je čas zobrazení předchozí instrumentované stránky sledován a odeslán jako telemetrie a pro aktuální PageView se spustí nový časovač. Výchozí hodnota je false. |
@@ -152,7 +150,7 @@ V současné době nabízíme samostatný [modul plug-in pro reakce](#react-exte
 
 | Rozšíření |
 |---------------|
-| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
+| [Reaguje](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [Reagovat nativní](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Prozkoumat data v prohlížeči nebo na straně klienta
@@ -175,7 +173,7 @@ Vyberte **prohlížeč** a pak zvolte **selhání** nebo **výkon**.
 
 ![](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analýza 
+### <a name="analytics"></a>Analytics 
 
 Chcete-li zadat dotaz na telemetrii shromážděnou sadou JavaScript SDK, vyberte tlačítko **Zobrazit v protokolech (Analytics)** . Přidáním `where`ho příkazu `client_Type == "Browser"`zobrazíte pouze data z sady JavaScript SDK a všechny telemetrie na straně serveru shromážděné jinými sadami SDK budou vyloučeny.
  
@@ -250,7 +248,7 @@ I když se skript stahuje ze sítě CDN, veškeré sledování vaší stránky j
 > - Celkový čas inicializace na **15 MS**
 > - V průběhu životního cyklu stránky nebylo vynecháno **žádné** sledování.
 
-## <a name="browser-support"></a>Podpora prohlížečů
+## <a name="browser-support"></a>Podpora prohlížeče
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |

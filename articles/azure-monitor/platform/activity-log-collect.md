@@ -1,18 +1,17 @@
 ---
 title: Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics | Microsoft Docs
 description: Shromažďovat protokol aktivit Azure v Azure Monitor protokoly a používat řešení pro monitorování k analýze a hledání protokolu aktivit Azure napříč všemi předplatnými Azure.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 2bf2f012e553e08a1eb829f93d9af0f0e74f638b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 044f974d83eba098820639e67412110329d5ad7d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977663"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668974"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Shromažďování a analýza protokolů aktivit Azure v pracovním prostoru Log Analytics v Azure Monitor
 
@@ -67,9 +66,9 @@ Kliknutím na dlaždici **protokoly aktivit Azure** otevřete zobrazení **proto
 
 | Součást vizualizace | Popis |
 | --- | --- |
-| Položky protokolu aktivit Azure | Zobrazuje pruhový graf celkových součtů záznamu položky protokolu aktivit Azure pro vybraný rozsah dat a zobrazuje seznam prvních 10 volajících aktivit. Klikněte na pruhový graf a spustíte hledání v protokolu pro `AzureActivity`. Kliknutím na položku volajícího spustíte hledání v protokolu, které vrátí všechny položky protokolu aktivit pro tuto položku. |
+| Položky protokolu aktivit Azure | Zobrazuje pruhový graf celkových součtů záznamu položky protokolu aktivit Azure pro vybraný rozsah dat a zobrazuje seznam prvních 10 volajících aktivit. Kliknutím na pruhový graf spustíte prohledávání protokolu pro `AzureActivity`. Kliknutím na položku volajícího spustíte hledání v protokolu, které vrátí všechny položky protokolu aktivit pro tuto položku. |
 | Protokoly aktivit podle stavu | Zobrazuje prstencový graf stavu protokolu aktivit Azure pro vybraný rozsah dat a seznam prvních deseti záznamů o stavu. Kliknutím na graf spustíte dotaz protokolu pro `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`. Kliknutím na položku stavu spustíte hledání v protokolu, které vrátí všechny položky protokolu aktivit pro daný záznam o stavu. |
-| Protokoly aktivit podle prostředku | Zobrazuje celkový počet prostředků s protokoly aktivit a seznam prvních deseti prostředků s počty záznamů pro jednotlivé prostředky. Klikněte na tlačítko spustíte hledání v protokolu pro oblasti celkový `AzureActivity | summarize AggregatedValue = count() by Resource`, který se zobrazí všechny prostředky Azure k dispozici pro řešení. Kliknutím na prostředek spustíte dotaz protokolu, který vrátí všechny záznamy aktivit pro daný prostředek. |
+| Protokoly aktivit podle prostředku | Zobrazuje celkový počet prostředků s protokoly aktivit a seznam prvních deseti prostředků s počty záznamů pro jednotlivé prostředky. Kliknutím na oblast celkem spustíte prohledávání protokolu pro `AzureActivity | summarize AggregatedValue = count() by Resource`, které zobrazuje všechny prostředky Azure dostupné pro řešení. Kliknutím na prostředek spustíte dotaz protokolu, který vrátí všechny záznamy aktivit pro daný prostředek. |
 | Protokoly aktivit přes poskytovatele prostředků | Zobrazuje celkový počet poskytovatelů prostředků, které vytváří protokoly aktivit, a seznam prvních deseti. Kliknutím na oblast celkem spustíte dotaz protokolu pro `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`, který zobrazuje všechny poskytovatele prostředků Azure. Kliknutím na poskytovatele prostředků spusťte dotaz protokolu, který vrátí všechny záznamy aktivit pro daného zprostředkovatele. |
 
 ## <a name="next-steps"></a>Další kroky

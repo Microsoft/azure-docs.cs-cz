@@ -1,18 +1,17 @@
 ---
 title: Referenční příručka k částem návrháře zobrazení v Azure Monitor | Microsoft Docs
 description: Pomocí návrháře zobrazení v Azure Monitor můžete vytvořit vlastní zobrazení, která jsou zobrazena v Azure Portal a obsahují celou řadu vizualizací dat v pracovním prostoru Log Analytics. Tento článek představuje referenční příručku k nastavením pro části vizualizace, které jsou k dispozici ve vlastních zobrazeních.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
-ms.openlocfilehash: 853f0153283f31c9242b884babf5778f96cce141
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7dc4164cac1998a02ae62d7682f9630aa4faa619
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931995"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658553"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Referenční příručka na části vizualizace návrháře zobrazení v Azure Monitor
 Pomocí návrháře zobrazení v Azure Monitor můžete v Azure Portal vytvořit nejrůznější vlastní zobrazení, která vám pomůžou vizualizovat data v pracovním prostoru Log Analytics. Tento článek představuje referenční příručku k nastavením pro části vizualizace, které jsou k dispozici ve vlastních zobrazeních.
@@ -71,7 +70,7 @@ V záhlaví se zobrazí jedno číslo, které zobrazuje počet záznamů z dotaz
 | Ikona |Soubor obrázku, který se zobrazí vedle výsledku v hlavičce. |
 | Použít ikonu |Kliknutím na tento odkaz zobrazíte ikonu. |
 | **Název** | |
-| Popisek |Text zobrazený v horní části záhlaví |
+| Legenda |Text zobrazený v horní části záhlaví |
 | Dotaz |Dotaz, který se má spustit pro záhlaví Zobrazí se počet záznamů vrácených dotazem. |
 | Navigace kliknutím | Akce provedená po kliknutí na záhlaví  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznamu** | |
@@ -82,7 +81,7 @@ V záhlaví se zobrazí jedno číslo, které zobrazuje počet záznamů z dotaz
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznamu** |**> Názvy sloupců** |
-| Name (Název) |Text zobrazený v horní části prvního sloupce |
+| Název |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznamu** |**Prahové hodnoty >** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -102,7 +101,7 @@ Záhlaví obsahuje dvě čísla, která zobrazují počet záznamů ze samostatn
 | **Navigace v nadpisech** | |
 | Navigace kliknutím | Akce provedená po kliknutí na záhlaví  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Název** | |
-| Popisek |Text zobrazený v horní části záhlaví |
+| Legenda |Text zobrazený v horní části záhlaví |
 | Dotaz |Dotaz, který se má spustit pro záhlaví Zobrazí se počet záznamů vrácených dotazem. |
 | **Seznamu** | |
 | Dotaz |Dotaz, který se má spustit pro seznam Zobrazí se první dvě vlastnosti pro prvních deset záznamů ve výsledcích. První vlastností je textová hodnota a druhá vlastnost je číselná hodnota. Pruhy se automaticky vytvoří na základě relativní hodnoty číselného sloupce.<br><br>Pomocí příkazu `Sort` v dotazu seřadíte záznamy v seznamu. Pokud chcete spustit dotaz a vrátit všechny záznamy, můžete vybrat **Zobrazit vše**. |
@@ -113,7 +112,7 @@ Záhlaví obsahuje dvě čísla, která zobrazují počet záznamů ze samostatn
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznamu** |**> Názvy sloupců** |
-| Name (Název) |Text zobrazený v horní části prvního sloupce |
+| Název |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznamu** |**Prahové hodnoty >** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -154,7 +153,7 @@ Záhlaví zobrazí jedno číslo, které shrnuje sloupec value v dotazu protokol
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznamu** |**> Názvy sloupců** |
-| Name (Název) |Text zobrazený v horní části prvního sloupce |
+| Název |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznamu** |**Prahové hodnoty >** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -174,7 +173,7 @@ Záhlaví zobrazuje výsledky dvou dotazů protokolu v průběhu času jako slou
 | **Navigace v nadpisech** | |
 | Navigace kliknutím | Akce provedená po kliknutí na záhlaví  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **První graf<br>druhý graf** | |
-| Popisek |Text zobrazený pod popiskem prvního seriálu |
+| Legenda |Text zobrazený pod popiskem prvního seriálu |
 | Barva |Barva, která se má použít pro sloupce v řadě |
 | Dotaz |Dotaz, který se má spustit pro první řadu Počet záznamů v průběhu každého časového intervalu je reprezentován sloupci grafu. |
 | Operace |Operace, která má být provedena s vlastností value pro Shrnutí jako jednu hodnotu pro popisek.<ul><li>Sum: součet hodnot ze všech záznamů.</li><li>Average: průměr hodnot ze všech záznamů.</li><li>Last Sample: hodnota z posledního intervalu, který je zahrnutý v grafu.</li><li>První ukázka: hodnota z prvního intervalu, který je zahrnutý v grafu.</li><li>Count (počet): počet všech záznamů vrácených dotazem.</li></ul> |
@@ -186,7 +185,7 @@ Záhlaví zobrazuje výsledky dvou dotazů protokolu v průběhu času jako slou
 | Operace |Operace, která má být provedena pro minigraf. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznamu** |**> Názvy sloupců** |
-| Name (Název) |Text zobrazený v horní části prvního sloupce |
+| Název |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznamu** |**Prahové hodnoty >** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -203,10 +202,10 @@ V záhlaví se zobrazí statický text a volitelný odkaz. V seznamu se zobrazí
 | Nová skupina |Vyberte tento odkaz k vytvoření nové skupiny v zobrazení, počínaje aktuálním zobrazením. |
 | Barva |Barva pozadí záhlaví |
 | **Hlavička** | |
-| Image |Soubor obrázku, který je zobrazen v záhlaví. |
-| Štítek |Text zobrazený v záhlaví |
+| Obrázek |Soubor obrázku, který je zobrazen v záhlaví. |
+| Popisek |Text zobrazený v záhlaví |
 | **Hlavička** |**Odkaz na >** |
-| Štítek |Text odkazu |
+| Popisek |Text odkazu |
 | URL |Adresa URL odkazu |
 | **Informační položky** | |
 | Název |Text zobrazený pro název každé položky |
@@ -247,7 +246,7 @@ V záhlaví se zobrazuje spojnicový graf s více řadami z dotazu protokolu v p
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznamu** |**> Názvy sloupců** |
-| Name (Název) |Text zobrazený v horní části prvního sloupce |
+| Název |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznamu** |**Prahové hodnoty >** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -283,7 +282,7 @@ Záhlaví zobrazí spojnicový graf s více řadami z dotazu protokolu v průbě
 | Oddělovač názvu a hodnoty |Oddělovač s jedním znakem, který se má použít k analýze vlastnosti text na více hodnot. Další informace najdete v tématu [Společná nastavení](#sparklines). |
 | Navigace kliknutím | Akce provedená po kliknutí na položku v seznamu.  Další informace najdete v tématu [Společná nastavení](#click-through-navigation). |
 | **Seznamu** |**> Názvy sloupců** |
-| Name (Název) |Text zobrazený v horní části prvního sloupce |
+| Název |Text zobrazený v horní části prvního sloupce |
 | Hodnota |Text zobrazený v horní části druhého sloupce |
 | **Seznamu** |**Prahové hodnoty >** |
 | Povolit prahové hodnoty |Výběrem tohoto odkazu povolíte prahové hodnoty. Další informace najdete v tématu [Společná nastavení](#thresholds). |
@@ -326,7 +325,7 @@ Následující tabulka popisuje nastavení pro navigaci kliknutím.
 | Nastavení           | Popis |
 |:--|:--|
 | Prohledávání protokolu (automaticky) | Dotaz protokolu, který se má spustit při výběru položky záhlaví  Jedná se o stejný dotaz protokolu, na kterém je položka založena.
-| Prohledávání protokolů        | Dotaz protokolu, který se má spustit při výběru položky v seznamu  Zadejte dotaz do pole **navigační dotaz** .   Pomocí položky *{Selected}* můžete zahrnout syntaxi pro položku, kterou uživatel vybral.  Pokud má například dotaz sloupec s názvem *Computer* a navigační dotaz je *{Selected Item}* , při výběru počítače se spustí dotaz, jako je například *Computer = "mycomputer"* . Pokud je navigační dotaz *typu typ = událost {vybraná položka}* , spustí se dotaz *Type = Event Computer = "mycomputer"* . |
+| Prohledávání protokolu        | Dotaz protokolu, který se má spustit při výběru položky v seznamu  Zadejte dotaz do pole **navigační dotaz** .   Pomocí položky *{Selected}* můžete zahrnout syntaxi pro položku, kterou uživatel vybral.  Pokud má například dotaz sloupec s názvem *Computer* a navigační dotaz je *{Selected Item}* , při výběru počítače se spustí dotaz, jako je například *Computer = "mycomputer"* . Pokud je navigační dotaz *typu typ = událost {vybraná položka}* , spustí se dotaz *Type = Event Computer = "mycomputer"* . |
 | Zobrazit              | Zobrazení, které se otevře, když vyberete položku záhlaví nebo položku v seznamu.  V poli **název zobrazení** vyberte název zobrazení ve vašem pracovním prostoru. |
 
 
@@ -353,8 +352,8 @@ Následující tabulka popisuje nastavení prahových hodnot:
 | Nastavení | Popis |
 |:--- |:--- |
 | Povolit prahové hodnoty |Kliknutím na tento odkaz zobrazíte ikonu barvy vlevo od každé hodnoty. Ikona určuje stav hodnoty relativní vzhledem k určeným prahovým hodnotám. |
-| Name (Název) |Název prahové hodnoty. |
-| Mezí |Hodnota prahové hodnoty. Barva stavu každé položky seznamu je nastavena na barvu nejvyšší prahové hodnoty, která je překročena hodnotou položky. Pokud nejsou překročeny žádné prahové hodnoty, použije se výchozí barva. |
+| Název |Název prahové hodnoty. |
+| Prahová hodnota |Hodnota prahové hodnoty. Barva stavu každé položky seznamu je nastavena na barvu nejvyšší prahové hodnoty, která je překročena hodnotou položky. Pokud nejsou překročeny žádné prahové hodnoty, použije se výchozí barva. |
 | Barva |Barva, která označuje prahovou hodnotu. |
 
 ## <a name="next-steps"></a>Další kroky

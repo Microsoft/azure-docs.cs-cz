@@ -1,24 +1,21 @@
 ---
 title: Správa výstrah z System Center Operations Manager, Zabbix a Nagios v Azure Monitor
 description: Správa výstrah z System Center Operations Manager, Zabbix a Nagios v Azure Monitor
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
 ms.date: 09/24/2018
-ms.openlocfilehash: 0e774633542f9b7f8b7de9f8f187821bfbe6b9cf
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.subservice: alerts
+ms.openlocfilehash: 5ef03f522fb91302bfdec985f1e3c5cf8138ae97
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555612"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667444"
 ---
 # <a name="manage-alerts-from-system-center-operations-manager-zabbix-and-nagios-in-azure-monitor"></a>Správa výstrah z System Center Operations Manager, Zabbix a Nagios v Azure Monitor
 
 Nyní můžete zobrazit výstrahy z Nagios, Zabbix a System Center Operations Manager v [Azure monitor](https://aka.ms/azure-alerts-overview). Tyto výstrahy přicházejí z integrace se servery Nagios/Zabbix nebo System Center Operations Manager do Log Analytics. 
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 Všechny záznamy v úložišti Log Analytics s typem výstrahy se naimportují do Azure Monitor, takže musíte provést konfiguraci, která je potřeba ke shromáždění těchto záznamů.
 1. U upozornění **Nagios** a **Zabbix** [nakonfigurujte tyto servery](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) tak, aby [odesílaly výstrahy](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-alerts-nagios-zabbix?toc=%2Fazure%2Fazure-monitor%2Ftoc.json) Log Analytics.
 1. Pro výstrahy **System Center Operations Manager** [Připojte skupinu pro správu Operations Manager k vašemu pracovnímu prostoru Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-om-agents). V následujícím seznamu nasaďte řešení [Alert Management](https://docs.microsoft.com/azure/azure-monitor/platform/alert-management-solution) z webu Azure Solutions Marketplace. Po dokončení se všechny výstrahy vytvořené v System Center Operations Manager importují do Log Analytics.

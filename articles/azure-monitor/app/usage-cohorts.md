@@ -1,19 +1,17 @@
 ---
 title: Kohorty využití Azure Application Insights | Microsoft Docs
 description: Analýza různých sad nebo uživatelů, relací, událostí nebo operací, které mají něco společného
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 27b57477712c61fc97ae31ac353647896cca18af
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c552e8f3e732c49da02b2f5704fb9cf312fb3e8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406325"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671082"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
@@ -51,7 +49,7 @@ Váš tým definuje určitého uživatele jako kdokoli, kdo v daném měsíci po
 
     Tento kohorta nyní představuje všechna ID uživatelů odesílaná pomocí vlastní události nebo zobrazení stránky o 5 samostatných dní v posledních 28 dnech.
 
-5. Vyberte **Uložit**.
+5. Vyberte **Save** (Uložit).
 
    > [!TIP]
    > Dejte své kohorta jméno, například "propojující uživatelé (5 a dny)." V závislosti na Application Insights tom, jestli chcete, aby se kohorta viděli, uložte ho do sestav "Moje sestavy" nebo "sdílené sestavy".

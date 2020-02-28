@@ -1,19 +1,17 @@
 ---
 title: Řešení potíží s Azure Application Insights Profiler
 description: Tento článek představuje postup řešení potíží a informace, které vývojářům umožňují problémy s povolením nebo používáním Application Insights Profiler.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2bac317d6a3a5c6895a3cea4dae22694b603cabf
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024020"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671558"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Řešení potíží s povolením nebo zobrazením Application Insights Profiler
 
@@ -149,7 +147,7 @@ Chcete-li kontrolovat nastavení, která byla použita pro konfiguraci Azure Dia
     ```
     c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
-    – nebo –
+    nebo
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```
@@ -177,8 +175,8 @@ Pokud se vaše aplikace připojuje k Internetu prostřednictvím proxy serveru n
 
 
 [profiler-search-telemetry]:./media/profiler-troubleshooting/Profiler-Search-Telemetry.png
-[profiler-webjob]:./media/profiler-troubleshooting/Profiler-webjob.png
-[profiler-webjob-log]:./media/profiler-troubleshooting/Profiler-webjob-log.png
+[Profiler – webová úloha]:./media/profiler-troubleshooting/Profiler-webjob.png
+[Profiler-webová úloha – protokol]:./media/profiler-troubleshooting/Profiler-webjob-log.png
 
 
 

@@ -1,18 +1,17 @@
 ---
 title: Zobrazení závislostí aplikace pomocí Azure Monitor pro virtuální počítače (Preview)
 description: Mapa je funkce Azure Monitor pro virtuální počítače. Automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek poskytuje podrobné informace o tom, jak používat funkci map v různých scénářích.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cbdcd5cc8fa9475febd338f94f8b6fe1cb2fe406
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450710"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670742"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Použití funkce map Azure Monitor pro virtuální počítače (Preview) k porozumění součástem aplikace
 V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné součásti aplikace na virtuálních počítačích s Windows a Linux, které běží v Azure nebo ve vašem prostředí. Virtuální počítače můžete sledovat dvěma způsoby. Zobrazit mapu přímo z virtuálního počítače nebo zobrazit mapu z Azure Monitor, abyste viděli komponenty napříč skupinami virtuálních počítačů. Tento článek vám pomůže pochopit tyto dvě metody zobrazení a způsob použití funkce map. 
@@ -20,7 +19,7 @@ V Azure Monitor pro virtuální počítače můžete zobrazit zjištěné souč�
 Informace o konfiguraci Azure Monitor pro virtuální počítače najdete v tématu [povolení Azure monitor pro virtuální počítače](vminsights-enable-overview.md).
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-Přihlaste se na web [Azure Portal](https://portal.azure.com).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 ## <a name="introduction-to-the-map-experience"></a>Seznámení s mapovým prostředím
 Předtím, než se začnete na mapové prostředí, byste měli pochopit, jak prezentuje a vizualizují informace. Bez ohledu na to, jestli vyberete funkci mapa přímo z virtuálního počítače nebo z Azure Monitor, funkce mapa prezentuje konzistentní prostředí. Jediným rozdílem je, že od Azure Monitor jedna mapa zobrazuje všechny členy více aplikací nebo clusterů s více vrstvami.
@@ -121,7 +120,7 @@ Ve výchozím nastavení Mapa zobrazuje posledních 30 minut. Pokud chcete vidě
 
 V Azure Monitor funkce mapa poskytuje globální pohled na vaše virtuální počítače a jejich závislosti. Přístup k funkci mapa v Azure Monitor:
 
-1. Na webu Azure Portal, vyberte **monitorování**. 
+1. V Azure Portal vyberte **monitorovat**. 
 2. V části **přehledy** vyberte možnost **Virtual Machines (Preview)** .
 3. Vyberte kartu **Mapa** .
 

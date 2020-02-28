@@ -1,19 +1,18 @@
 ---
 title: Sestavení řešení pro správu v Azure | Microsoft Docs
 description: Mezi řešení pro správu patří operační scénáře správy v Azure, které můžou zákazníci přidat do svého pracovního prostoru Log Analytics.  Tento článek poskytuje podrobné informace o tom, jak můžete vytvářet řešení pro správu, která se mají používat ve vašem vlastním prostředí nebo která budou k dispozici pro vaše zákazníky.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f1605597c7716ba6a896c7ecdae968f07d66027b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969701"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663211"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Návrh a sestavení řešení pro správu v Azure (Preview)
 > [!NOTE]
@@ -28,7 +27,7 @@ ms.locfileid: "75969701"
 Základní strategií je spustit řešení pro správu tím, že se v prostředí Azure sestaví jednotlivé komponenty.  Jakmile funkce fungují správně, můžete je začít zabalit do [souboru řešení pro správu]( solutions-solution-file.md). 
 
 
-## <a name="design-your-solution"></a>Navrhněte svoje řešení
+## <a name="design-your-solution"></a>Návrh řešení
 Nejběžnější vzor řešení pro správu je zobrazený v následujícím diagramu.  Jednotlivé komponenty v tomto vzoru jsou popsány v následující části.
 
 ![Přehled řešení pro správu](media/solutions-creating/solution-overview.png)

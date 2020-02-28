@@ -1,18 +1,14 @@
 ---
 title: Inteligentní zjišťování v Azure Application Insights | Microsoft Docs
 description: Application Insights provádí automatickou hloubkovou analýzu telemetrie aplikací a upozorňuje na potenciální problémy.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 02/07/2019
-ms.openlocfilehash: ae9af5721e53277f6c939840721ca50ea67ca51e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: e232295f9da2a2ae8f3c6fafdd1dc33a42e92e69
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818811"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671796"
 ---
 # <a name="smart-detection-in-application-insights"></a>Inteligentní zjišťování v Application Insights
  Inteligentní zjišťování vás automaticky upozorní na potenciální problémy s výkonem a anomálie při selhání ve vaší webové aplikaci. Provádí proaktivní analýzu telemetrie, kterou vaše aplikace odesílá [Application Insights](../../azure-monitor/app/app-insights-overview.md). Pokud dojde k náhlému nárůstu sazeb za selhání nebo abnormálních vzorů v výkonu klienta nebo serveru, zobrazí se upozornění. Tato funkce nepotřebuje žádnou konfiguraci. Funguje, pokud vaše aplikace posílá dostatek telemetrie.

@@ -1,19 +1,18 @@
 ---
 title: Uložená hledání v řešeních pro správu | Microsoft Docs
 description: Řešení pro správu obvykle obsahují uložené dotazy protokolu pro analýzu dat shromažďovaných řešením. Tento článek popisuje, jak definovat Log Analytics uložených hledání v šabloně Správce prostředků.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ff9c45ffb636f53951a763f617c25a2e8c09088
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 61fc64e140af091b5ff3f631398daf901557791b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977720"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663024"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání Log Analytics uložených hledání a upozornění do řešení pro správu (Preview)
 
@@ -74,8 +73,8 @@ Každá vlastnost uloženého hledání je popsána v následující tabulce.
 | Vlastnost | Popis |
 |:--- |:--- |
 | category | Kategorie uloženého hledání  Všechna uložená hledání ve stejném řešení budou často sdílet jednu kategorii, aby byly seskupeny dohromady v konzole nástroje. |
-| displayName | Název, který se má zobrazit u uloženého hledání na portálu. |
-| query | Dotaz, který se má spustit |
+| DisplayName | Název, který se má zobrazit u uloženého hledání na portálu. |
+| dotaz | Dotaz, který se má spustit |
 
 > [!NOTE]
 > V dotazu může být nutné použít řídicí znaky, pokud obsahuje znaky, které by mohly být interpretovány jako JSON. Například pokud byl dotaz **AzureActivity | Operace: "Microsoft. COMPUTE/virtualMachines/Write"** , měl by se zapsat do souboru řešení jako **AzureActivity | Operace:/\"Microsoft. COMPUTE/virtualMachines/Write\"** .
@@ -112,9 +111,9 @@ Uložené hledání může mít jeden nebo více plánů s časovým plánem, kt
     }
 Vlastnosti pro prostředky plánu jsou popsány v následující tabulce.
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požadováno | Popis |
 |:--|:--|:--|
-| enabled       | Ano | Určuje, zda je výstraha povolena, když je vytvořena. |
+| povolené       | Ano | Určuje, zda je výstraha povolena, když je vytvořena. |
 | interval      | Ano | Jak často se dotaz spouští v řádu minut. |
 | queryTimeSpan | Ano | Doba v minutách, po které se mají vyhodnocovat výsledky. |
 
@@ -164,17 +163,17 @@ Akce výstrahy mají následující strukturu. To zahrnuje společné proměnné
 
 Vlastnosti pro prostředky akce výstrah jsou popsány v následujících tabulkách.
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požadováno | Popis |
 |:--|:--|:--|
 | `type` | Ano | Typ akce.  Toto **Upozornění se upozorní** na akce výstrah. |
 | `name` | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidlo výstrahy. |
 | `description` | Ne | Volitelný popis výstrahy |
-| `severity` | Ano | Závažnost záznamu výstrahy z následujících hodnot:<br><br> **critical**<br>**warning**<br>**informativní**
+| `severity` | Ano | Závažnost záznamu výstrahy z následujících hodnot:<br><br> **kritické**<br>**Upozornění**<br>**informativní**
 
 #### <a name="threshold"></a>Prahová hodnota
 Tato část je povinná. Definuje vlastnosti prahové hodnoty pro výstrahu.
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požadováno | Popis |
 |:--|:--|:--|
 | `Operator` | Ano | Operátor pro porovnání z následujících hodnot:<br><br>**gt = větší než<br>lt = menší než** |
 | `Value` | Ano | Hodnota pro porovnání výsledků. |
@@ -182,17 +181,17 @@ Tato část je povinná. Definuje vlastnosti prahové hodnoty pro výstrahu.
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Tato část je volitelná. Zahrňte pro upozornění měření metriky.
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požadováno | Popis |
 |:--|:--|:--|
 | `TriggerCondition` | Ano | Určuje, zda je prahová hodnota pro celkový počet porušení nebo po sobě jdoucí porušení z následujících hodnot:<br><br>**Celkový<br>po sobě** |
 | `Operator` | Ano | Operátor pro porovnání z následujících hodnot:<br><br>**gt = větší než<br>lt = menší než** |
 | `Value` | Ano | Počet, kolikrát musí být splněna kritéria pro aktivaci výstrahy. |
 
 
-#### <a name="throttling"></a>Throttling
+#### <a name="throttling"></a>Omezování
 Tato část je volitelná. Tuto část uveďte, pokud chcete potlačit výstrahy ze stejného pravidla po určitou dobu po vytvoření výstrahy.
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požadováno | Popis |
 |:--|:--|:--|
 | DurationInMinutes | Ano, pokud je zahrnutý element omezování | Počet minut, po které se mají potlačit výstrahy po jednom ze stejného pravidla výstrahy. |
 
@@ -201,7 +200,7 @@ Všechna upozornění v Azure, použijte skupiny akcí jako výchozího mechanis
 
 Pro uživatele, kteří mají svá upozornění rozšíří do Azure – plánu teď měli mít podrobnosti skupiny akcí předána spolu s prahovou hodnotou, bude moct vytvořit výstrahu. Podrobnosti e-mailu, adresy URL Webhooku, podrobnosti automatizace sady Runbook a další akce musí být před vytvořením výstrahy nejprve definovány na straně skupiny akcí; jedna z nich může vytvořit [skupinu akcí z Azure monitor](../../azure-monitor/platform/action-groups.md) na portálu nebo použít [skupinu akcí – šablona prostředků](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-| Název elementu | Požaduje se | Popis |
+| Název elementu | Požadováno | Popis |
 |:--|:--|:--|
 | AzNsNotification | Ano | ID prostředku skupiny akcí Azure, která má být přidružena k výstraze pro provedení nezbytných akcí při splnění kritérií výstrahy. |
 | CustomEmailSubject | Ne | Vlastní řádek předmětu e-mailu odeslaný všem adresám uvedeným v přidružené skupině akcí |

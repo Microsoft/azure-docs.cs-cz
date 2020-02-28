@@ -1,18 +1,17 @@
 ---
 title: IT Service Management Connector v Azure Log Analytics | Microsoft Docs
 description: Tento článek poskytuje přehled konektoru pro správu služeb IT (ITSMC) a informace o tom, jak toto řešení použít k centrálnímu monitorování a správě pracovních položek ITSM v Azure Log Analytics a k řešení případných problémů rychle.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 68aff01ea541a24be1f8d526fecbb6a9d2c30086
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 50bab4c26046059b993c19a030a8f840ae336ef2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76990670"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672221"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Připojení Azure k nástrojům ITSM pomocí konektoru pro správu služeb IT
 
@@ -66,7 +65,7 @@ Než budete moct vytvořit připojení, musíte přidat řešení konektoru ITSM
    >[!NOTE]
    >V rámci průběžného přechodu z Microsoft Operations Management Suite (OMS) na Azure Monitor se teď pracovní prostory OMS označují jako Log Analytics pracovní prostory.
 
-5. Klikněte na **Vytvořit**.
+5. Klikněte na možnost **Vytvořit**.
 
 Po nasazení prostředku řešení se zobrazí oznámení v pravém horním rohu okna.
 
@@ -91,7 +90,7 @@ Jakmile budete mít připravenou nástroje ITSM, vytvořte připojení pomocí n
    připojení ![ITSM](media/itsmc-overview/itsm-connections.png)
 
    Tato stránka zobrazuje seznam připojení.
-3. Klikněte na tlačítko **přidat připojení**.
+3. Klikněte na **Přidat připojení**.
 
    ![Přidat připojení ITSM](media/itsmc-overview/add-new-itsm-connection.png)
 
@@ -131,7 +130,7 @@ Použijte následující postup:
 
 6. Z rozevírací nabídky vyberte typ **pracovní položky** .
    Vyberte možnost použít existující šablonu nebo vyplňte pole požadovaná produktem ITSM.
-7. Klikněte na **OK**.
+7. Klikněte na tlačítko **OK**.
 
 Při vytváření nebo úpravách pravidla upozornění Azure použijte skupinu akcí, která má akci ITSM. Když se aktivuje výstraha, v nástroji ITSM se vytvoří nebo aktualizuje pracovní položka.
 
@@ -179,8 +178,8 @@ ServiceDeskWorkItemType_s="Incident"
 
 - ServiceDeskConnectionName
 - ID oddělení služeb
-- Stav
-- Naléhavost
+- Stát
+- Stupeň naléhavosti
 - Dopad
 - Priorita
 - Eskalace
@@ -188,15 +187,15 @@ ServiceDeskWorkItemType_s="Incident"
 - Vyřešil
 - Uzavřel
 - Zdroj
-- Přiřazený pro
+- Přiřazeno uživateli
 - Kategorie
-- Nadpis
+- Název
 - Popis
 - Datum vytvoření
 - Datum uzavření
 - Datum vyřešení
 - Datum poslední změny
-- Počítač
+- Computer
 
 
 **Pracovní položka:** **žádosti o změnu**
@@ -209,18 +208,18 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Autor
 - Uzavřel
 - Zdroj
-- Přiřazený pro
-- Nadpis
+- Přiřazeno uživateli
+- Název
 - Typ
 - Kategorie
-- Stav
+- Stát
 - Eskalace
 - Stav konfliktu
-- Naléhavost
+- Stupeň naléhavosti
 - Priorita
 - Riziko
 - Dopad
-- Přiřazený pro
+- Přiřazeno uživateli
 - Datum vytvoření
 - Datum uzavření
 - Datum poslední změny
@@ -230,43 +229,43 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Datum zahájení práce
 - Datum ukončení práce
 - Popis
-- Počítač
+- Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Výstupní data pro incident ServiceNow
 
 | Log Analytics pole | Pole ServiceNow |
 |:--- |:--- |
-| ServiceDeskId_s| Číslo |
-| IncidentState_s | Stav |
-| Urgency_s |Naléhavost |
+| ServiceDeskId_s| Počet |
+| IncidentState_s | Stát |
+| Urgency_s |Stupeň naléhavosti |
 | Impact_s |Dopad|
 | Priority_s | Priorita |
 | CreatedBy_s | Otevřel |
 | ResolvedBy_s | Vyřešil|
 | ClosedBy_s  | Uzavřel |
 | Source_s| Typ kontaktu |
-| AssignedTo_s | Přiřazeno  |
+| AssignedTo_s | Přiřazeno uživateli  |
 | Category_s | Kategorie |
 | Title_s|  Krátký popis |
-| Description_s|  Poznámky |
+| Description_s|  Poznámky: |
 | CreatedDate_t|  Otevřít |
 | ClosedDate_t| Uzavřeno|
-| ResolvedDate_t|Přeložit|
-| Počítač  | Položka konfigurace |
+| ResolvedDate_t|Vyřešeno|
+| Computer  | Položka konfigurace |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Výstupní data pro žádost o změnu ServiceNow
 
 | Log Analytics | Pole ServiceNow |
 |:--- |:--- |
-| ServiceDeskId_s| Číslo |
+| ServiceDeskId_s| Počet |
 | CreatedBy_s | Požadoval (a) |
 | ClosedBy_s | Uzavřel |
-| AssignedTo_s | Přiřazeno  |
+| AssignedTo_s | Přiřazeno uživateli  |
 | Title_s|  Krátký popis |
 | Type_s|  Typ |
 | Category_s|  Kategorie |
-| CRState_s|  Stav|
-| Urgency_s|  Naléhavost |
+| CRState_s|  Stát|
+| Urgency_s|  Stupeň naléhavosti |
 | Priority_s| Priorita|
 | Risk_s| Riziko|
 | Impact_s| Dopad|
@@ -274,10 +273,10 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedDate_t | Datum uzavření |
 | PlannedStartDate_t  |     Plánované počáteční datum |
 | PlannedEndDate_t  |   Plánované koncové datum |
-| WorkStartDate_t  | Skutečné datum zahájení |
-| WorkEndDate_t | Skutečné datum ukončení|
+| WorkStartDate_t  | Skutečné počáteční datum |
+| WorkEndDate_t | Skutečné koncové datum|
 | Description_s | Popis |
-| Počítač  | Položka konfigurace |
+| Computer  | Položka konfigurace |
 
 
 ## <a name="troubleshoot-itsm-connections"></a>Řešení potíží s připojením ITSM

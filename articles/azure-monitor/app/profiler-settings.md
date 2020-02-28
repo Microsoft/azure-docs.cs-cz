@@ -1,19 +1,17 @@
 ---
 title: Použití podokna nastavení Azure Application Insights Profiler | Microsoft Docs
 description: Viz téma stav profileru a spuštění relací profilace.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b383ef8c92325b0ad6561bee9b654c78e4054338
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: f66a23c0562ec9f1987bd119a45b7b767f2dfe46
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820488"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671626"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurace Application Insights Profiler
 
@@ -54,7 +52,7 @@ Kliknutím na tlačítko triggery na řádku nabídek otevřete okno nastavení 
 |-|-|
 Tlačítko pro zapnutí/vypnutí | Zapnuto: profiler může spustit Tato aktivační událost; Vypnuto: Profiler nespustí Tato aktivační událost.
 Prahová hodnota paměti | V případě, že se toto procento paměti používá, bude spuštěn Profiler.
-Délka | Nastavuje dobu, po kterou se Profiler spustí, když se aktivuje.
+Doba platnosti | Nastavuje dobu, po kterou se Profiler spustí, když se aktivuje.
 Cooldown | Nastaví dobu, po kterou Profiler počká, než bude znovu kontrolovat paměť nebo využití procesoru po jeho aktivaci.
 
 ## <a name="recent-profiling-sessions"></a>Nedávné relace profilování
@@ -65,7 +63,7 @@ Tato část stránky zobrazuje informace o nejnovějších relacích profilován
 Aktivoval | Jak byla relace spuštěna, buď triggerem, profilem nyní, nebo s výchozím vzorkováním. 
 Název aplikace | Název aplikace, která byla profilace.
 Instance počítače | Název počítače, ve kterém byl spuštěn Agent profileru.
-Časové razítko | Čas, kdy byl profil zachycen.
+Timestamp | Čas, kdy byl profil zachycen.
 Trasovat | Počet trasování, které byly připojeny k jednotlivým požadavkům.
 VČETNĚ | Procento využití procesoru, které bylo používáno během běhu profileru.
 Rezident | Procento paměti, která se použila během běhu profileru.

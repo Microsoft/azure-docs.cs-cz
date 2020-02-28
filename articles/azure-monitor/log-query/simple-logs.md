@@ -1,18 +1,17 @@
 ---
 title: Prostředí Simple Logs v Azure Monitor (Preview) | Microsoft Docs
 description: Rozhraní Simple log umožňuje vytvářet základní dotazy v Azure Monitor bez přímého působení KQL.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/12/2019
-ms.openlocfilehash: 0b8b23d5d355614bf74b1b22c6a8443b9a2f9391
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 59bcb42edaf7d46498a3514b4f1c919c6e8cc0c4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932974"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660253"
 ---
 # <a name="simple-logs-experience-in-azure-monitor-preview"></a>Prostředí Simple Logs v Azure Monitor (Preview)
 Azure Monitor poskytuje [bohatou zkušenost](get-started-portal.md) pro vytváření [dotazů protokolu](log-query-overview.md) pomocí jazyka KQL. Nemusíte vyžadovat celou sílu KQL, ale a upřednostnit zjednodušené prostředí pro základní požadavky na dotazy. Funkce jednoduchého protokolování umožňuje vytvářet základní dotazy bez přímé interakce s KQL. Jednoduché protokoly můžete použít také jako výukový nástroj pro KQL, protože budete potřebovat složitější dotazy.
@@ -21,7 +20,7 @@ Azure Monitor poskytuje [bohatou zkušenost](get-started-portal.md) pro vytvář
 > Jednoduché protokoly jsou nyní implementovány jako test pouze pro Cosmos DB a trezory klíčů. Sdílejte prosím své zkušenosti s Microsoftem prostřednictvím [uživatelského hlasu](https://feedback.azure.com/forums/913690-azure-monitor) , abychom zjistili, jestli tuto funkci rozbalíme a uvolníte.
 
 
-## <a name="scope"></a>Rozsah
+## <a name="scope"></a>Obor
 Rozhraní Simple log načítá data z tabulky *AzureDiagnostics*, *AzureMetrics*a *AzureActivity* pro vybraný prostředek. 
 
 ## <a name="using-simple-logs"></a>Používání jednoduchých protokolů

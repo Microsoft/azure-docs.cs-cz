@@ -1,22 +1,20 @@
 ---
 title: Vytváření, zobrazování a správa výstrah protokolu aktivit v Azure Monitor
 description: Výstrahy protokolu aktivit Vytvářejte pomocí Azure Portal, šablony Azure Resource Manager a Azure PowerShell.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 4835f1034149a015963569a0b1fc5f9195e3cfca
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9791ebaadeb1ee724692a9e1a0d61aff5cbae6a3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969523"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668481"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu aktivit pomocí Azure Monitor  
 
 ## <a name="overview"></a>Přehled
+
 Výstrahy protokolu aktivit jsou výstrahy, které se aktivují, když dojde k nové události protokolu aktivit, která odpovídá podmínkám zadaným ve výstraze.
 
 Tyto výstrahy jsou pro prostředky Azure a je možné je vytvořit pomocí šablony Azure Resource Manager. Také je možné je vytvořit, aktualizovat nebo odstranit v Azure Portal. Obvykle vytváříte výstrahy protokolu aktivit pro příjem oznámení, když dojde k určitým změnám prostředků ve vašem předplatném Azure. Výstrahy jsou často vymezené na konkrétní skupiny prostředků nebo prostředky. Například můžete chtít upozornit, když se odstraní libovolný virtuální počítač ve vzorové skupině prostředků **myProductionResourceGroup** . Nebo můžete chtít dostávat oznámení, pokud jsou všechny nové role přiřazené uživateli v rámci vašeho předplatného.
@@ -31,8 +29,7 @@ Při vytváření pravidel výstrah zajistěte následující:
 - Ve formátu JSON konfigurace výstrahy není k dispozici žádný stav anyOf nebo vnořené podmínky. V podstatě je povolená jenom jedna podmínka "allOf" bez dalších podmínek "allOf" nebo "anyOf".
 - Když je kategorie "administrativa", musíte zadat alespoň jedno z výše uvedených kritérií v upozornění. Nemůžete vytvořit výstrahu, která se aktivuje při každém vytvoření události v protokolech aktivit.
 
-
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>Azure Portal
 
 Pomocí Azure Portal můžete vytvářet a upravovat pravidla upozornění protokolu aktivit. Prostředí se integruje s protokolem aktivit Azure a zajišťuje tak bezproblémové vytváření výstrah pro konkrétní události, které vás zajímají.
 
@@ -43,7 +40,7 @@ Použijte následující postup.
 1. V Azure Portal vyberte **monitorovat** > **výstrahy**.
 2. V levém horním rohu okna **výstrahy** vyberte **nové pravidlo výstrahy** .
 
-     ![Nové pravidlo upozornění](media/alerts-activity-log/AlertsPreviewOption.png)
+     ![Nové pravidlo výstrahy](media/alerts-activity-log/AlertsPreviewOption.png)
 
      Zobrazí se okno **vytvořit pravidlo** .
 
@@ -92,7 +89,7 @@ Použijte následující postup.
 5. V části **Skupina akcí**v rozevírací nabídce určete skupinu akcí, kterou chcete přiřadit k tomuto novému pravidlu výstrahy. Případně můžete [vytvořit novou skupinu akcí](../../azure-monitor/platform/action-groups.md) a přiřadit ji k novému pravidlu. Pokud chcete vytvořit novou skupinu, vyberte **+ Nová skupina**.
 
 6. Chcete-li po vytvoření pravidla povolit, vyberte možnost **Ano** pro **pravidlo Povolit při vytváření** .
-7. Vyberte **Vytvořit pravidlo upozornění**.
+7. Vyberte **vytvořit pravidlo upozornění**.
 
     Vytvoří se nové pravidlo výstrahy pro protokol aktivit a v pravém horním rohu okna se zobrazí potvrzovací zpráva.
 
@@ -108,7 +105,7 @@ Jednoduchá analogie pro porozumění podmínkám, na kterých je možné vytvo�
 
 1. V Azure Portal vyberte **monitorovat** > **výstrahy**. V levém horním rohu okna vyberte **Spravovat pravidla výstrah** .
 
-    ![Správa pravidel upozornění](media/alerts-activity-log/manage-alert-rules.png)
+    ![Správa pravidel výstrah](media/alerts-activity-log/manage-alert-rules.png)
 
     Zobrazí se seznam dostupných pravidel.
 
@@ -124,7 +121,7 @@ Jednoduchá analogie pro porozumění podmínkám, na kterých je možné vytvo�
 
 3. Vyberte pravidlo a dvakrát klikněte pro úpravu možností pravidla. Proveďte požadované změny a pak vyberte **Uložit**.
 
-   ![Správa pravidel upozornění](media/alerts-activity-log/activity-log-rule-edit-page.png)
+   ![Správa pravidel výstrah](media/alerts-activity-log/activity-log-rule-edit-page.png)
 
 4. Pravidlo můžete povolit, zakázat nebo odstranit. Po výběru pravidla, jak je popsáno v kroku 2, vyberte příslušnou možnost v horní části okna.
 
@@ -202,7 +199,7 @@ Předchozí vzorový JSON se dá uložit jako například sampleActivityLogAlert
 > [!NOTE]
 > Může trvat až 5 minut, než se nové pravidlo upozornění protokolu aktivit aktivuje.
 
-## <a name="rest-api"></a>Rozhraní REST API 
+## <a name="rest-api"></a>REST API 
 [Rozhraní API upozornění protokolu aktivit Azure monitor](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) je REST API. Je plně kompatibilní s Azure Resource Manager REST API. Dá se použít přes PowerShell pomocí rutiny Správce prostředků nebo Azure CLI.
 
 ## <a name="powershell"></a>PowerShell

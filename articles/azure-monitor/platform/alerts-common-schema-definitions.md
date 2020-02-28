@@ -1,18 +1,16 @@
 ---
 title: Běžné definice schématu výstrah pro Azure Monitor
 description: Principy běžných definic schémat výstrah pro Azure Monitor
-ms.service: azure-monitor
-ms.subservice: alerts
-ms.topic: conceptual
 author: ofirmanor
-ms.author: robb
+ms.topic: conceptual
+ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: efa6a8807b3db14649a2b4ad38c575cf98aba113
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b0b398be919364b5a146e86ca1a1790674bb7d01
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425166"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668209"
 ---
 # <a name="common-alert-schema-definitions"></a>Definice běžných schémat upozornění
 
@@ -77,7 +75,7 @@ Jakákoli instance výstrahy popisuje prostředek, který byl ovlivněn, a pří
 |:---|:---|
 | alertId | Identifikátor GUID jednoznačně identifikující instanci výstrahy. |
 | alertRule | Název pravidla výstrahy, které vytvořilo instanci výstrahy. |
-| Severity | Závažnost výstrahy. Možné hodnoty: Sev0, Sev1, Sev2, Sev3 nebo Sev4. |
+| Závažnost | Závažnost výstrahy. Možné hodnoty: Sev0, Sev1, Sev2, Sev3 nebo Sev4. |
 | signalType | Určuje signál, na kterém bylo pravidlo výstrahy definováno. Možné hodnoty: metrika, protokol nebo protokol aktivit. |
 | monitorCondition | Když se výstraha aktivuje, stav monitorování výstrahy se nastaví na **aktivováno**. Pokud je podkladová podmínka, která způsobila výstrahu, **vyhodnocena**jako nejasná, je stav monitorování nastaven na hodnotu Vyřešeno.   |
 | monitoringService | Služba monitorování nebo řešení, které výstrahu vygenerovalo. Pole pro kontext výstrahy určuje služba monitorování. |

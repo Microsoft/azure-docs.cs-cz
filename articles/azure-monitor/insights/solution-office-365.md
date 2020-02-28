@@ -1,18 +1,17 @@
 ---
 title: Řešení pro správu Office 365 v Azure | Microsoft Docs
 description: Tento článek poskytuje podrobné informace o konfiguraci a použití řešení Office 365 v Azure.  Obsahuje podrobný popis záznamů Office 365 vytvořených v Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: 96d0124941f9f2daa1e1b2d1d254b0b767ffb395
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111563"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663246"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Řešení pro správu Office 365 v Azure (Preview)
 
@@ -95,7 +94,7 @@ ms.locfileid: "77111563"
 > Služba Azure Sentinel poskytuje předem připravené řídicí panely zaměřené na zabezpečení, vlastní dotazy na výstrahy, lovecké dotazy, šetření a možnosti automatizované reakce založené na protokolech Office 365 a Azure AD. Další informace najdete v kurzech k Azure Sentinel a kurzům:
 >
 > - [Vyhledá hrozby předem.](../../sentinel/tutorial-detect-threats-built-in.md)
-> - [Vytváření vlastních pravidel pro analytiky k detekci podezřelých hrozeb](../../sentinel/tutorial-detect-threats-custom.md)
+> - [Vytváření vlastních analytických pravidel pro detekci podezřelých hrozeb](../../sentinel/tutorial-detect-threats-custom.md)
 > - [Monitorování dat](../../sentinel/tutorial-monitor-your-data.md)
 > - [Prozkoumat incidenty pomocí služby Azure Sentinel](../../sentinel/tutorial-investigate-cases.md)
 > - [Nastavení automatických odpovědí na hrozby v Azure Sentinel](../../sentinel/tutorial-respond-threats-playbook.md)
@@ -274,7 +273,7 @@ Následující vlastnosti jsou společné pro všechny záznamy sady Office 365.
 | ResultStatus | Označuje, zda akce (zadaná ve vlastnosti Operation) byla úspěšná nebo ne. Možné hodnoty jsou úspěšné, pravdivé hodnotě stavem nebo selhaly. V případě aktivity správce serveru Exchange je hodnota buď true, nebo false. |
 | UserId | Hlavní název uživatele (UPN) uživatele, který provedl akci, která vedla k zaznamenání záznamu; například my_name@my_domain_name. Všimněte si, že jsou zahrnuté také záznamy aktivity prováděné systémovými účty (například SHAREPOINT\system nebo NTAUTHORITY\SYSTEM.). | 
 | UserKey | Alternativní ID pro uživatele identifikovaného ve vlastnosti UserId.  Tato vlastnost se například naplní jedinečným IDENTIFIKÁTORem (PUID) služby Passport pro události prováděné uživateli na SharePointu, OneDrivu pro firmy a Exchange. Tato vlastnost může taky určovat stejnou hodnotu jako vlastnost UserID pro události, ke kterým dochází v jiných službách a událostech, které provádí systémové účty.|
-| UserType | Typ uživatele, který provedl operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Platné<br>Vyhrazeno<br>ServicePrincipal<br>Systémový |
+| UserType | Typ uživatele, který provedl operaci.<br><br>Správce<br>Aplikace<br>DcAdmin<br>Platné<br>Rezervované<br>ServicePrincipal<br>Systém |
 
 
 ### <a name="azure-active-directory-base"></a>Základ Azure Active Directory

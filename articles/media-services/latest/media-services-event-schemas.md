@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 02/25/2020
 ms.author: juliako
-ms.openlocfilehash: b1c094689c7669f03d5355be7a77b1836c90974c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d4a206bbddedfe9f23a943df27c6ac4b5fe17e8a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750854"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665745"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid schémat pro události Media Services
 
@@ -328,18 +328,7 @@ Datový objekt má následující vlastnosti:
 | encoderPort | string | Port kodéru, ze kterého přichází tento datový proud. |
 | resultCode | string | Důvod zamítnutí připojení. Kódy výsledku jsou uvedeny v následující tabulce. |
 
-Výsledné kódy:
-
-| Kód výsledku | Popis |
-| ----------- | ----------- |
-| MPE_RTMP_APPID_AUTH_FAILURE | Nesprávná adresa URL pro příjem |
-| MPE_INGEST_ENCODER_CONNECTION_DENIED | V nakonfigurovaném seznamu povolených IP adres není kodér IP. |
-| MPE_INGEST_RTMP_SETDATAFRAME_NOT_RECEIVED | Kodér neodeslal metadata týkající se datového proudu. |
-| MPE_INGEST_CODEC_NOT_SUPPORTED | Zadaný kodek není podporován. |
-| MPE_INGEST_DESCRIPTION_INFO_NOT_RECEIVED | Před příjmem a hlavičkou pro tento datový proud byl přijat fragment. |
-| MPE_INGEST_MEDIA_QUALITIES_EXCEEDED | Počet zadaných kvalit překračuje povolený maximální limit. |
-| MPE_INGEST_BITRATE_AGGREGATED_EXCEEDED | Agregovaná přenosová rychlost překročila maximální povolený limit. |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Časové razítko pro video nebo audio FLVTag je od kodéru RTMP neplatné. |
+Kódy výsledku chyby můžete najít v části [kódy chyb živé události](live-event-error-codes.md).
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -409,14 +398,7 @@ Datový objekt má následující vlastnosti:
 | encoderPort | string | Port kodéru, ze kterého přichází tento datový proud. |
 | resultCode | string | Důvod odpojení kodéru Může být bezproblémové odpojení nebo chyba. Kódy výsledku jsou uvedeny v následující tabulce. |
 
-Kódy výsledku chyby jsou:
-
-| Kód výsledku | Popis |
-| ----------- | ----------- |
-| MPE_RTMP_SESSION_IDLE_TIMEOUT | Platnost relace RTMP vypršela po nečinnosti pro povolený časový limit. |
-| MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | Časové razítko pro video nebo audio FLVTag je od kodéru RTMP neplatné. |
-| MPE_CAPACITY_LIMIT_REACHED | Kodér odesílá data příliš rychle. |
-| Neznámé kódy chyb | Tyto kódy chyb můžou být v rozsahu od chyby paměti až po duplicitní položky v mapě algoritmu hash. |
+Kódy výsledku chyby můžete najít v části [kódy chyb živé události](live-event-error-codes.md).
 
 Kódy výsledků řádného odpojení:
 
@@ -626,9 +608,9 @@ Datový objekt má následující vlastnosti:
 | overlapCount | celé číslo | Počet bloků dat má překrývající se časová razítka za posledních 20 sekund. |
 | discontinuityCount | celé číslo | Počet nekontinuity zjištěných za posledních 20 sekund. |
 | nonIncreasingCount | celé číslo | Počet datových bloků s časovými razítky v minulosti byl přijat za posledních 20 sekund. |
-| unexpectedBitrate | bool | Pokud se očekává a Skutečná přenosová rychlost se v posledních 20 sekundách liší od více než povoleného limitu. Je true pouze v případě, že incomingBitrate > = 2 * přenosová rychlost nebo incomingBitrate < = přenosová rychlost/2 nebo IncomingBitrate = 0. |
+| unexpectedBitrate | logick | Pokud se očekává a Skutečná přenosová rychlost se v posledních 20 sekundách liší od více než povoleného limitu. Je true pouze v případě, že incomingBitrate > = 2 * přenosová rychlost nebo incomingBitrate < = přenosová rychlost/2 nebo IncomingBitrate = 0. |
 | state | string | Stav živé události. |
-| healthy | bool | Uvádí, zda je příjem dat v pořádku v závislosti na počtu a příznacích. V pořádku má hodnotu true, pokud overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
+| healthy | logick | Uvádí, zda je příjem dat v pořádku v závislosti na počtu a příznacích. V pořádku má hodnotu true, pokud overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
 
@@ -677,18 +659,19 @@ Událost má následující data nejvyšší úrovně:
 | -------- | ---- | ----------- |
 | téma | string | Téma EventGrid Tato vlastnost má ID prostředku pro účet Media Services. |
 | subject | string | Cesta prostředku pro kanál Media Services pod účtem Media Services Zřetězením tématu a předmětu získáte ID prostředku pro úlohu. |
-| eventType | string | Jeden z registrovaných typů události pro tento zdroj události. Například "Microsoft. Media. JobStateChange". |
+| eventType | string | Jeden z registrovaných typů událostí pro tento zdroj události. Například "Microsoft. Media. JobStateChange". |
 | eventTime | string | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | string | Jedinečný identifikátor události |
-| data | object | Media Services data události. |
-| dataVersion | string | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
-| metadataVersion | string | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
+| data | objekt | Media Services data události. |
+| dataVersion | string | Verze schématu datového objektu. Vydavatel definuje verzi schématu. |
+| metadataVersion | string | Verze schématu metadat události. Event Grid definuje schéma vlastností nejvyšší úrovně. Tuto hodnotu poskytuje Event Grid. |
 
 ## <a name="next-steps"></a>Další kroky
 
 [Zaregistrujte se na události změny stavu úlohy.](job-state-events-cli-how-to.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 - [EventGrid .NET SDK zahrnující události Media Service](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Definice událostí Media Services](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
+- [Živé kódy chyb událostí](live-event-error-codes.md)

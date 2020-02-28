@@ -1,18 +1,17 @@
 ---
 title: Integrace mapy Azure Monitor pro virtuální počítače s Operations Manager | Microsoft Docs
 description: Azure Monitor pro virtuální počítače automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikaci mezi službami. Tento článek popisuje použití funkce map k automatickému vytváření diagramů distribuovaných aplikací v Operations Manager.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: a8d0e0980b0d3634626bc1332e8219bdca7fbe01
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 112413720f969474369555a74bc89846666e2ef9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402625"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77663449"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrace System Center Operations Manager s funkcí map Azure Monitor pro virtuální počítače
 
@@ -143,5 +142,5 @@ Oficiální dokumentaci k Azure o vytváření instančního objektu najdete v t
 * [Vytvoření instančního objektu pomocí Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 * [Vytvoření instančního objektu pomocí služby Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
-### <a name="feedback"></a>Váš názor
+### <a name="feedback"></a>Názor
 Máte jakoukoli zpětnou vazbu pro nás o integraci s funkcí Azure Monitor pro virtuální počítače map nebo s touto dokumentací? Navštivte naši [hlasovou stránku uživatele](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhovat funkce nebo hlasovat o stávajících návrzích.

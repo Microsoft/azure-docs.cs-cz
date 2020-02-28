@@ -1,19 +1,15 @@
 ---
 title: Diagnostika transakcí Azure Application Insights | Microsoft Docs
 description: Application Insights komplexní diagnostiku transakcí
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 1ed3713fe4a6c9403be13f444d0409af459a1e70
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 39c4c51a1bc84e06efac3674b1ee5b487f9e6729
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899574"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671133"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Sjednocená Diagnostika transakcí mezi komponentami
 
@@ -76,7 +72,7 @@ Pokud se vám nepovedlo Snapshot Debugger pracovat, kontaktujte prosím **snapsh
 
 ![Integrace profileru](media/transaction-diagnostics/profilerTraces.png)
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 *Zobrazuje se v grafu jedna komponenta a ostatní se zobrazují jenom jako externí závislosti bez jakýchkoli podrobností o tom, co se v těchto součástech stalo.*
 
@@ -98,4 +94,4 @@ V tuto chvíli se zobrazuje volání odchozí závislosti oddělené od přícho
 
 *Proč v novém prostředí chybí většina dotazů souvisejících položek?*
 
-Toto chování je úmyslné. Všechny související položky napříč všemi komponentami jsou již na levé straně (v horních a dolních částech) k dispozici. Nové prostředí obsahuje dvě související položky, které levá strana nepokrývá: všechny telemetrie od pěti minut před a po této události a časovou osu uživatele.
+Jedná se o účel. Všechny související položky napříč všemi komponentami jsou již na levé straně (v horních a dolních částech) k dispozici. Nové prostředí obsahuje dvě související položky, které levá strana nepokrývá: všechny telemetrie od pěti minut před a po této události a časovou osu uživatele.

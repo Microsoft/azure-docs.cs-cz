@@ -1,18 +1,17 @@
 ---
 title: Monitorování Azure Storage služeb pomocí Azure Monitor pro úložiště (Preview) | Microsoft Docs
 description: Tento článek popisuje Azure Monitor funkce úložiště, která správcům úložiště poskytuje rychlý přehled o problémech s výkonem a využitím jejich Azure Storagech účtů.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: 790d6ad9fb26253697ea36b402799d3eb488ca47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401138"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662515"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Monitorování služby úložiště pomocí Azure Monitor pro úložiště (Preview)
 
@@ -47,7 +46,7 @@ Z Azure Monitor můžete zobrazit podrobnosti o transakcích, latencích a kapac
 
 Pokud chcete zobrazit využití a dostupnost účtů úložiště ve všech předplatných, proveďte následující kroky.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 2. V Azure Portal v levém podokně vyberte **monitor** a v části **přehledy** vyberte **účty úložiště (Preview)** .
 
@@ -227,7 +226,7 @@ V tomto příkladu pracujeme se sešitem kapacity účtu úložiště a demonstr
 
 7. Na panelu příkazů vyberte **Uložit jako** a uložte kopii sešitu s vlastními úpravami a potom kliknutím na **hotové úpravy** vraťte do režimu čtení.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Tato část vám pomůže s diagnostikou a řešením potíží s některými běžnými problémy, se kterými se můžete setkat při používání Azure Monitor pro úložiště (Preview). K vyhledání informací týkajících se konkrétního problému použijte níže uvedený seznam.
 

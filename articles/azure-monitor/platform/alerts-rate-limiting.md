@@ -1,38 +1,36 @@
 ---
-title: Ohodnotit omezení pro SMS, e-mailů, webhooky a nabízená oznámení v aplikaci Azure
-description: Zjistěte, jak Azure omezuje počet možných SMS, e-mailu, aplikace Azure nabízených oznámení nebo webhooková oznámení ze skupiny akcí.
+title: Omezení rychlosti pro SMS, e-maily, nabízená oznámení a Webhooky aplikace Azure
+description: Seznamte se s tím, jak Azure omezuje počet možných oznámení SMS, e-mailu, Azure App push nebo Webhooku ze skupiny akcí.
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
+ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 11fd6a2c58671cc5d0bcf0593239eb9e62aca834
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60346644"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665523"
 ---
-# <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Ohodnotit omezení pro hlasové, SMS, e-mailů, nabízená oznámení v aplikaci Azure a webhook příspěvky
-Omezení četnosti se pozastavení oznámení, která nastane, pokud se příliš mnoho se odesílají do konkrétního telefonního čísla, e-mailovou adresu nebo zařízení. Omezení rychlosti zajišťuje výstrahy spravovatelné a užitečné.
+# <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Omezení rychlosti pro hlas, SMS, e-maily, nabízená oznámení aplikací Azure a příspěvky Webhooku
+Omezení rychlosti je pozastavení oznámení, ke kterým dochází, když je příliš mnoho zasílání do konkrétního telefonního čísla, e-mailové adresy nebo zařízení. Omezení rychlosti zajišťuje, aby byly výstrahy spravovatelné a napadnutelné.
 
-Limit prahové hodnoty míry jsou:
+Prahové hodnoty mezních hodnot:
 
-- **SMS**: Víc než 1 SMS každých 5 minut.
-- **Hlasové**: Víc než 1 hlasový hovor každých 5 minut.
-- **e-mailu**: Více než 100 e-mailů do jedné hodiny.
+- **SMS**: nejedná se o více než 1 SMS každých 5 minut.
+- **Hlas**: žádné více než jedno volání hlasu každých 5 minut.
+- **E-mail**: za hodinu nepřekračuje 100 e-mailů.
  
-  Další akce nejsou rychlost je omezená.
+  Jiné akce nejsou omezeny.
 
-## <a name="rate-limit-rules"></a>Frekvence omezení pravidel
-- Konkrétní telefonní číslo nebo e-mailu je rychlostně omezený když přijímá více zpráv, než umožňuje prahovou hodnotu.
-- Telefonní číslo nebo e-mailu můžou být součástí skupiny akcí napříč mnoha předplatnými. Omezení četnosti se vztahuje na všechna předplatná. Jakmile je dosaženo prahové hodnoty, platí i v případě, že jsou zprávy odesílány z více předplatných.
-- Když e-mailová adresa je omezena rychlost, další oznámení se posílá komunikovat, omezení rychlosti. Stavy e-mailu, když vyprší platnost omezení četnosti.
+## <a name="rate-limit-rules"></a>Pravidla omezení přenosové rychlosti
+- Konkrétní telefonní číslo nebo e-mailové adresy jsou omezené při přijímání více zpráv, než umožňuje prahová hodnota.
+- Telefonní číslo nebo e-mail může být součástí skupin akcí v mnoha předplatných. Omezení rychlosti se vztahuje na všechna předplatná. Použije se hned po dosažení prahové hodnoty, a to i v případě, že se zprávy odesílají z více předplatných.
+- Když je e-mailová adresa omezená, pošle se další oznámení pro sdělování omezení četnosti. E-mailové stavy, když vyprší platnost omezení rychlosti.
 
-## <a name="next-steps"></a>Další postup ##
-* Další informace o [chování výstrah SMS](alerts-sms-behavior.md).
-* Získat [přehled upozornění protokolu aktivit](alerts-overview.md)a zjistěte, jak dostávat upozornění.  
-* Zjistěte, jak [konfigurace oznámení pokaždé, když se pošle oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+## <a name="next-steps"></a>Další kroky ##
+* Přečtěte si další informace o [chování výstrah SMS](alerts-sms-behavior.md).
+* Získejte [Přehled výstrah protokolu aktivit](alerts-overview.md)a Naučte se přijímat výstrahy.  
+* Naučte se [konfigurovat výstrahy pokaždé, když se publikuje oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 

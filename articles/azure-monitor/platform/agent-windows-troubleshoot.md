@@ -1,18 +1,16 @@
 ---
 title: Řešení potíží s agentem Log Analytics pro Windows
 description: Popište příznaky, příčiny a řešení nejběžnějších problémů s agentem Log Analytics pro systém Windows v Azure Monitor.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 486c68cb32b5f4c8c8a18b21d1aee139ffda45bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78625707bfa296eeb7ad8cc658657f46da1dc495
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397442"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668787"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Řešení potíží s agentem Log Analytics pro Windows 
 
@@ -20,15 +18,15 @@ Tento článek poskytuje nápovědu k řešení chyb, se kterými se můžete se
 
 Pokud žádný z těchto kroků pro vás nejvhodnější, jsou také k dispozici následující kanály podpory:
 
-* Výhody v oblasti podpory pro zákazníky v rámci podpory Premier můžou otevřít žádost o podporu s [Premier](https://premier.microsoft.com/).
-* Zákazníci s smlouvy o podpoře Azure můžou otevřít žádost o podporu [na webu Azure Portal](https://manage.windowsazure.com/?getsupport=true).
-* Na stránce Log Analytics zpětnou vazbu ke kontrole odeslané nápady a chyby [ https://aka.ms/opinsightsfeedback ](https://aka.ms/opinsightsfeedback) nebo soubor nový. 
+* Zákazníci s výhodami Premier Support můžou otevřít žádost o podporu pomocí [Premier](https://premier.microsoft.com/).
+* Zákazníci se smlouvou o podpoře Azure můžou na [Azure Portal](https://manage.windowsazure.com/?getsupport=true)otevřít žádost o podporu.
+* Navštivte stránku Log Analytics zpětnou vazbu pro kontrolu odeslaných nápadů a chyb [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback) nebo zasouboru nového. 
 
 ## <a name="important-troubleshooting-sources"></a>Důležité zdroje pro odstraňování potíží
 
  Pro pomoc s řešením potíží souvisejících s Log Analytics agentem pro Windows Agent protokoluje události do protokolu událostí systému Windows, konkrétně v části *aplikace a správce Services\Operations*.  
 
-## <a name="connectivity-issues"></a>Potíže s připojením
+## <a name="connectivity-issues"></a>Problémy s připojením
 
 Pokud agent komunikuje prostřednictvím proxy server nebo brány firewall, mohou být zavedena omezení, která zabraňují komunikaci ze zdrojového počítače a služby Azure Monitor. V případě, že komunikace je blokována z důvodu chyby konfigurace, může registrace v pracovním prostoru selhat při pokusu o instalaci agenta nebo konfiguraci agenta po instalaci pro hlášení do dalšího pracovního prostoru. Komunikace agenta může po úspěšné registraci selhat. Tato část popisuje metody pro řešení tohoto typu problému s agentem Windows.
 
@@ -64,11 +62,11 @@ Existuje několik způsobů, jak můžete ověřit, zda agent úspěšně komuni
 
     |ID události |Zdroj |Popis |Rozlišení |
     |---------|-------|------------|-----------|
-    |2133 & 2129 |HealthService |Nepovedlo se připojit ke službě z agenta. |K této chybě může dojít, pokud Agent nemůže komunikovat přímo nebo přes bránu firewall/proxy server ke službě Azure Monitor. Ověřte nastavení proxy serveru agenta nebo síťová brána firewall/proxy umožňuje provoz TCP z počítače do služby.|
+    |2133 & 2129 |Služba stavu |Nepovedlo se připojit ke službě z agenta. |K této chybě může dojít, pokud Agent nemůže komunikovat přímo nebo přes bránu firewall/proxy server ke službě Azure Monitor. Ověřte nastavení proxy serveru agenta nebo síťová brána firewall/proxy umožňuje provoz TCP z počítače do služby.|
     |2138 |Moduly Health Service |Proxy server vyžaduje ověřování |Nakonfigurujte nastavení proxy serveru agenta a zadejte uživatelské jméno/heslo potřebné k ověření pomocí proxy server. |
     |2129 |Moduly Health Service |Neúspěšné připojení/neúspěšné vyjednávání SSL |Ověřte nastavení protokolu TCP/IP síťového adaptéru a nastavení proxy agenta.|
     |2127 |Moduly Health Service |Chyba při odesílání dat přijatý kód chyby |Pokud k tomu dochází pouze pravidelně během dne, může to být pouze náhodná anomálie, kterou lze ignorovat. Sledujte, jak často dochází k tomu. Pokud k tomu dojde často v průběhu dne, nejprve ověřte konfiguraci sítě a nastavení proxy serveru. Pokud popis obsahuje kód chyby HTTP 404 a je první, když se agent pokusí odeslat data službě, bude obsahovat chybu 500 s vnitřním kódem chyby 404. 404 se nenašly, což znamená, že se stále zřizuje oblast úložiště pro nový pracovní prostor. Při příštím opakování budou data v pracovním prostoru úspěšně zapsána podle očekávání. Chyba protokolu HTTP 403 může indikovat problém s oprávněním nebo přihlašovacími údaji. V případě chyby 403 jsou k dispozici další informace, které vám pomůžou problém vyřešit.|
-    |4000 |Konektor služby |Překlad názvu DNS se nezdařil. |Počítač nemohl přeložit internetovou adresu, která se používá při odesílání dat službě. To může být nastavení překladače DNS na vašem počítači, nesprávné nastavení proxy serveru nebo možná dočasný problém DNS s vaším poskytovatelem. Pokud k tomu dojde pravidelně, může to být způsobeno přechodným problémem souvisejícím se sítí.|
+    |4 000 |Konektor služby |Překlad názvu DNS se nezdařil. |Počítač nemohl přeložit internetovou adresu, která se používá při odesílání dat službě. To může být nastavení překladače DNS na vašem počítači, nesprávné nastavení proxy serveru nebo možná dočasný problém DNS s vaším poskytovatelem. Pokud k tomu dojde pravidelně, může to být způsobeno přechodným problémem souvisejícím se sítí.|
     |4001 |Konektor služby |Připojení ke službě se nezdařilo. |K této chybě může dojít, pokud Agent nemůže komunikovat přímo nebo přes bránu firewall/proxy server ke službě Azure Monitor. Ověřte nastavení proxy serveru agenta nebo síťová brána firewall/proxy umožňuje provoz TCP z počítače do služby.|
     |4002 |Konektor služby |Služba vrátila stavový kód HTTP 403 v reakci na dotaz. Obraťte se na správce služby se stavem služby. Dotaz se bude opakovat později. |Tato chyba se zapisuje během fáze prvotní registrace agenta a zobrazí se adresa URL podobná následující: *https://\<id pracovního prostoru >. OMS. o statistice provozu. Azure. com/AgentService. svc/AgentTopologyRequest*. Kód chyby 403 znamená zakázaný a může být způsoben nesprávně zadaným ID pracovního prostoru nebo klíčem nebo jsou data a čas v počítači nesprávné. Pokud je doba +/-15 minut od aktuálního času, registrace se nezdaří. Tuto chybu opravíte tak, že aktualizujete datum nebo časové pásmo počítače s Windows.|
 

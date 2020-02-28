@@ -1,19 +1,15 @@
 ---
 title: Azure Application Insights OpenCensus – místní server pro přeposílání (Preview)
 description: Předejte OpenCensus distribuované trasování a rozsahy z jazyků, jako je Python, a přejít na Azure Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
-ms.openlocfilehash: 25c6c82fa1179a9173f42c3a5a4e95a371dd49c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcf7ba495897eb1c9b40c78f00825e863390b5d1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406607"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669960"
 ---
 # <a name="local-forwarder-preview"></a>Místní server pro přeposílání (Preview)
 
@@ -30,7 +26,7 @@ Místní server pro přeposílání je [otevřený zdrojový projekt na GitHubu]
 Nejjednodušší způsob, jak spustit místní službu pro překládání v systému Windows, je její instalace jako služba systému Windows. Verze se dodává se spustitelným souborem služby systému Windows (*WindowsServiceHost/Microsoft. LocalForwarder. WindowsServiceHost. exe*), který lze snadno zaregistrovat s operačním systémem.
 
 > [!NOTE]
-> Místní služba pro přeposílání vyžaduje minimálně .NET Framework 4,7. Pokud nemáte .NET Framework 4,7, služba se nainstaluje, ale nespustí se. Pro přístup k nejnovější verzi rozhraní .NET Framework **[najdete na stránce pro stažení rozhraní .NET Framework](
+> Místní služba pro přeposílání vyžaduje minimálně .NET Framework 4,7. Pokud nemáte .NET Framework 4,7, služba se nainstaluje, ale nespustí se. Chcete-li získat přístup k poslední verzi .NET Framework **[přejděte na stránku pro stažení .NET Framework](
 https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_source=getdotnet&utm_medium=referral)** .
 
 1. Stáhněte si LF. Soubor WindowsServiceHost. zip ze [stránky pro vydání místního serveru pro posílání](https://github.com/Microsoft/ApplicationInsights-LocalForwarder/releases) na GitHubu.
@@ -144,7 +140,7 @@ systemctl start localforwarder
 
 * Sledujte službu pomocí kontroly souborů * *. log* v adresáři/Home/SAMPLE_USER/LOCALFORWARDER_DIR.
 
-### <a name="mac"></a>Počítač Mac
+### <a name="mac"></a>Mac
 Místní služba pro přeposílání může pracovat s macOS, ale aktuálně není oficiálně podporovaná.
 
 ### <a name="self-hosting"></a>Samoobslužné hostování

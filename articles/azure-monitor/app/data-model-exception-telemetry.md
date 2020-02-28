@@ -1,19 +1,15 @@
 ---
 title: Datový model telemetrie výjimek pro Azure Application Insights
 description: Application Insights datový model pro telemetrii výjimek
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 7decac2e5e65ff7eedb374858fe15360b4a1b2c5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: fa9bc4efd9549cbcb1d50439989c5dea79d9d60c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872617"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671932"
 ---
 # <a name="exception-telemetry-application-insights-data-model"></a>Telemetrie výjimek: datový model Application Insights
 

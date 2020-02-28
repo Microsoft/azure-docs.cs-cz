@@ -2,16 +2,15 @@
 title: Vytváření, zobrazování a Správa klasických výstrah metrik pomocí Azure Monitor
 description: Naučte se, jak pomocí Azure Portal, CLI nebo PowerShellu vytvářet, zobrazovat a spravovat pravidla upozornění na klasické metriky.
 author: yanivlavi
-ms.service: azure-monitor
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: yalavi
-ms.openlocfilehash: fd15d6bb9442d91c672fdd444313880001880e07
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: b770b9bd34c8267889db536ec81332de32cb8776
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705594"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668311"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Vytváření, zobrazování a Správa klasických výstrah metrik pomocí Azure Monitor
 
@@ -23,7 +22,7 @@ Klasické výstrahy metrik v Azure Monitor poskytují způsob, jak dostávat ozn
 
 2. V části **monitorování** vyberte **výstrahy (klasické)** . Text a ikona se mohou mírně lišit pro různé prostředky. Pokud tady nenajdete **upozornění (Classic)** , můžete ho najít v okně **výstrahy** nebo **pravidla výstrah**.
 
-    ![Sledování](media/alerts-classic-portal/AlertRulesButton.png)
+    ![Monitorování](media/alerts-classic-portal/AlertRulesButton.png)
 
 3. Vyberte příkaz **Přidat výstrahu metriky (Classic)** a potom vyplňte pole.
 

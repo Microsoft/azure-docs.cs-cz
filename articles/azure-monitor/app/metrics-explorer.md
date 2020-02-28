@@ -1,18 +1,14 @@
 ---
 title: Zkoumání metrik v Azure Application Insights | Microsoft Docs
 description: Jak interpretovat grafy v Průzkumníkovi metrik a jak přizpůsobit okna Průzkumníka metrik.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/22/2019
-ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820785"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670164"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Zkoumání metrik v Application Insights
 Metriky v [Application Insights][start] jsou měřené hodnoty a počty událostí, které se odesílají v telemetrie z vaší aplikace. Vám pomůžou detekovat problémy s výkonem a sledovat trendy v tom, jak se vaše aplikace používá. Existuje celá řada standardních metrik a můžete také vytvořit vlastní metriky a události.
@@ -165,7 +161,7 @@ Pokud okno upravíte, ale pak se chcete vrátit k původní uložené sadě, sta
 
 Pro mnohem lepší pohled na telemetrii otevřete [Live Stream](live-stream.md). U většiny metrik se zobrazí několik minut kvůli procesu agregace. Naproti tomu živé metriky jsou optimalizované pro nízkou latenci. 
 
-## <a name="set-alerts"></a>Nastavení výstrah
+## <a name="set-alerts"></a>Nastavení upozornění
 Pokud chcete dostávat oznámení e-mailem o neobvyklých hodnotách jakékoli metriky, přidejte upozornění. Můžete zvolit odeslání e-mailu správcům účtu nebo určitým e-mailovým adresám.
 
 ![V Průzkumník metrik vyberte pravidla výstrah, přidat výstrahu.](./media/metrics-explorer/appinsights-413setMetricAlert.png)
@@ -173,18 +169,18 @@ Pokud chcete dostávat oznámení e-mailem o neobvyklých hodnotách jakékoli m
 [Přečtěte si další informace o výstrahách][alerts].
 
 
-## <a name="continuous-export"></a>Souvislý export
+## <a name="continuous-export"></a>Průběžný export
 Pokud chcete data průběžně exportovat, abyste je mohli zpracovat externě, zvažte použití [průběžného exportu](../../azure-monitor/app/export-telemetry.md).
 
 ### <a name="power-bi"></a>Power BI
 Pokud chcete ještě širší zobrazení dat, můžete je [exportovat do Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
 
-## <a name="analytics"></a>Analýzy
+## <a name="analytics"></a>Analytics
 [Analýza](../../azure-monitor/app/analytics.md) je efektivnější způsob analýzy telemetrie pomocí výkonného dotazovacího jazyka. Použijte ho, pokud chcete kombinovat nebo vypočítat výsledky z metrik nebo udělat podrobný průzkum nedávného výkonu vaší aplikace. 
 
 Z grafu metriky můžete kliknutím na ikonu analýza přejít přímo na ekvivalentní dotaz Analytics.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 *V grafu nevidím žádná data.*
 
 * Filtry se použijí na všechny grafy v okně. Ujistěte se, že při zaměření na jeden graf jste nastavili filtr, který vyloučí všechna data na jiném.

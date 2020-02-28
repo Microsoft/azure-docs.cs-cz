@@ -1,18 +1,14 @@
 ---
 title: Použití prostředí PowerShell k nastavení Application Insights v Azure | Dokumentace Microsoftu
 description: Automatizuje konfiguraci Azure Diagnostics pro přenos dat do Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/06/2019
-ms.openlocfilehash: 0e1fd048b855473c1d7978e2a908c45360a1ed2a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: da1796c8af5b9463d8223615f4b0629ba65eb3e8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819013"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669799"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>Použití PowerShellu k nastavení Application Insights pro Azure Cloud Services
 
@@ -42,7 +38,7 @@ Pokud je webová aplikace v Azure a vy vytvoříte své prostředky pomocí šab
 * `myWebAppName` – ID webové aplikace
 
 ## <a name="enable-diagnostics-extension-as-part-of-deploying-a-cloud-service"></a>Povolit rozšíření diagnostiky jako součást nasazení cloudové služby
-Rutina `New-AzureDeployment` obsahuje parametr `ExtensionConfiguration`, který přijímá pole konfigurace diagnostiky. Ty lze vytvořit pomocí rutiny `New-AzureServiceDiagnosticsExtensionConfig`. Například:
+Rutina `New-AzureDeployment` obsahuje parametr `ExtensionConfiguration`, který přijímá pole konfigurace diagnostiky. Ty lze vytvořit pomocí rutiny `New-AzureServiceDiagnosticsExtensionConfig`. Příklad:
 
 ```ps
 
@@ -129,7 +125,7 @@ Chcete-li odebrat rozšíření diagnostiky pro každou jednotlivou roli:
 ```
 
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 * [Monitorování aplikací v Azure Cloud Services službou Application Insights](../../azure-monitor/app/cloudservices.md)
 * [Odesílání Diagnostiky Azure do Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [Automatizace konfigurace výstrah](powershell-alerts.md)

@@ -1,18 +1,14 @@
 ---
 title: Snížení míry závažnosti trasování – Azure Application Insights
 description: Monitorování trasování aplikace pomocí Azure Application Insights pro neobvyklé vzory v rámci telemetrie trasování s inteligentní detekcí.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 11/27/2017
-ms.openlocfilehash: b51cb66b59589c9b58d9115dfa6cefce0a20f3c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 30bdd30ac9c49bb79a3c48bae8149ec761756dd4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432422"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671677"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>Snížení výkonu v poměru závažnosti trasování (Preview)
 

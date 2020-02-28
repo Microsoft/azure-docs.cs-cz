@@ -1,18 +1,14 @@
 ---
 title: Monitorování služeb Node.js pomocí Azure Application Insights | Dokumentace Microsoftu
 description: Monitorujte výkon a diagnostikujte problémy ve službách Node.js pomocí Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 81f63380c041ae743a2b38e6ba89558b83e7497a
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820722"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670011"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
@@ -24,11 +20,11 @@ Sada Node.js SDK dokáže automaticky monitorovat příchozí a odchozí požada
 
 Pomocí rozhraní TelemetryClient API můžete ručně instrumentovat a monitorovat další aspekty aplikace a systému. Rozhraní TelemetryClient API popisujeme podrobněji dále v tomto článku.
 
-## <a name="get-started"></a>Začít
+## <a name="get-started"></a>Začínáme
 
 Proveďte následující úlohy a nastavte monitorování pro aplikaci nebo službu.
 
-### <a name="prerequisites"></a>Předpoklady
+### <a name="prerequisites"></a>Požadavky
 
 Než začnete, ujistěte se, že máte předplatné Azure, nebo [Získejte nový zdarma][azure-free-offer]. Pokud už vaše organizace má předplatné Azure, může správce pomocí [těchto pokynů tyto pokyny][add-aad-user] přidat.
 
@@ -39,7 +35,7 @@ Než začnete, ujistěte se, že máte předplatné Azure, nebo [Získejte nový
 ### <a name="resource"></a>Nastavení prostředku Application Insights
 
 
-1. Přihlaste se na web [Azure Portal][portal].
+1. Přihlaste se na web [Azure Portal ][portal].
 2. Vyberte **Vytvořit prostředek** > **Vývojářské nástroje** > **Application Insights**. Prostředek zahrnuje koncový bod pro příjem telemetrických dat, úložiště pro tato data, uložené sestavy a řídicí panely, konfigurace pravidel a upozornění a ještě více.
 
 3. Na stránce vytváření prostředku v poli **Typ aplikace** vyberte **Aplikace Node.js**. Typ aplikace určuje výchozí řídicí panely a sestavy, které se vytvoří. (Každý prostředek Application Insights může shromažďovat data z jakéhokoli jazyka a libovolné platformy.)
@@ -68,7 +64,7 @@ Vložte do své aplikace sadu SDK, aby mohla shromažďovat data.
    appInsights.start();
    ```
    
-   Instrumentační klíč můžete místo ručního předávání do metody `setup()` nebo `new appInsights.TelemetryClient()` zadat také přes proměnnou prostředí APPINSIGHTS\_INSTRUMENTATIONKEY. Tento postup umožňuje oddělit instrumentační klíče od potvrzeného zdrojového kódu a pro různá prostředí můžete určit různé instrumentační klíče.
+   Instrumentační klíč můžete místo ručního předávání do metody \_ nebo `setup()` zadat také přes proměnnou prostředí APPINSIGHTS`new appInsights.TelemetryClient()`INSTRUMENTATIONKEY. Tento postup umožňuje oddělit instrumentační klíče od potvrzeného zdrojového kódu a pro různá prostředí můžete určit různé instrumentační klíče.
 
    Další možnosti konfigurace najdete v následujících částech.
 

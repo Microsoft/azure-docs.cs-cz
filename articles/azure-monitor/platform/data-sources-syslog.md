@@ -1,24 +1,23 @@
 ---
 title: Shromažďovat a analyzovat zprávy syslog v Azure Monitor | Microsoft Docs
 description: Syslog je protokol protokolování událostí, které jsou společné pro Linux. Tento článek popisuje, jak nakonfigurovat shromažďování zpráv syslog v Log Analytics a podrobnosti o záznamech, které vytvoří.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
-ms.openlocfilehash: ffc6c48a6b49edded97570fd1ac421933b5f6b72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450636"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670487"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Zdroje dat syslog v Azure Monitor
 Syslog je protokol protokolování událostí, které jsou společné pro Linux. Aplikace odešle zprávy, které mohou být uložené na místním počítači nebo doručí do kolekcí Syslog. Pokud je nainstalován agent Log Analytics pro Linux, nakonfiguruje místní démon syslog, aby předal zprávy agentovi. Agent potom zprávu pošle Azure Monitor, kde se vytvoří odpovídající záznam.  
 
 > [!NOTE]
-> Azure Monitor podporuje shromažďování zpráv odeslaných pomocí rsyslog nebo syslog-ng, kde rsyslog je výchozí démon. Démon procesu syslog výchozí verze 5 Red Hat Enterprise Linux, CentOS a Oracle Linux verze (sysklog) není podporována pro shromažďování událostí protokolu syslog. Pro shromažďování syslogu z této verze těchto distribuce [používá proces démona rsyslogu](http://rsyslog.com) by měla být nainstalovaná a nakonfigurovaná pro nahrazení sysklog.
+> Azure Monitor podporuje shromažďování zpráv odeslaných pomocí rsyslog nebo syslog-ng, kde rsyslog je výchozí démon. Démon procesu syslog výchozí verze 5 Red Hat Enterprise Linux, CentOS a Oracle Linux verze (sysklog) není podporována pro shromažďování událostí protokolu syslog. Aby bylo možné shromažďovat data syslog z této verze těchto distribucí, je třeba nainstalovat [démona rsyslog](http://rsyslog.com) a nakonfigurovat tak, aby nahradila sysklog.
 >
 >
 
@@ -28,12 +27,12 @@ Kolekce syslog podporuje následující zařízení:
 
 * párů
 * uživatel
-* e-mailu
-* Proces
+* pošta
+* proces
 * auth
 * syslog
 * port
-* news
+* diskuz
 * uucp
 * cron
 * authpriv
@@ -63,7 +62,7 @@ Když [je agent Log Analytics nainstalovaný v klientském počítači se systé
 >
 
 #### <a name="rsyslog"></a>rsyslog
-Konfigurační soubor pro rsyslog nachází ve **/etc/rsyslog.d/95-omsagent.conf**. Níže se zobrazují výchozí obsah. To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení s úrovní varování nebo vyšší.
+Konfigurační soubor pro rsyslog je umístěný na adrese **/etc/rsyslog.d/95-omsagent.conf**. Níže se zobrazují výchozí obsah. To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení s úrovní varování nebo vyšší.
 
     kern.warning       @127.0.0.1:25224
     user.warning       @127.0.0.1:25224
@@ -89,7 +88,7 @@ Zařízení můžete odebrat odstraněním jeho oddílu konfiguračního souboru
 
 
 #### <a name="syslog-ng"></a>Syslog-ng
-Konfigurační soubor pro syslog-ng je umístění, od **/etc/syslog-ng/syslog-ng.conf**.  Níže se zobrazují výchozí obsah. To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení a všechny závažnosti.   
+Konfigurační soubor protokolu syslog-ng je umístění na adrese **/etc/syslog-ng/syslog-ng.conf**.  Níže se zobrazují výchozí obsah. To shromažďuje syslog zpráv odeslaných z místního agenta pro všechna zařízení a všechny závažnosti.   
 
     #
     # Warnings (except iptables) in one file:
@@ -155,7 +154,7 @@ Agent Log Analytics naslouchá zprávám syslog v místním klientovi na portu 2
 
 Číslo portu můžete změnit tak, že vytvoříte dva konfigurační soubory: konfigurační soubor FluentD a soubor rsyslog nebo syslog-ng v závislosti na tom jste si nainstalovali démon procesu Syslog.  
 
-* Konfigurační soubor FluentD by měl být nový soubor umístěný v: `/etc/opt/microsoft/omsagent/conf/omsagent.d` a nahraďte hodnoty v **port** položka se vaše vlastní číslo portu.
+* Soubor s přípravnou konfigurací by měl být nový soubor umístěný v umístění: `/etc/opt/microsoft/omsagent/conf/omsagent.d` a nahradit hodnotu v položce **port** vlastním číslem portu.
 
         <source>
           type syslog
@@ -168,10 +167,10 @@ Agent Log Analytics naslouchá zprávám syslog v místním klientovi na portu 2
           type filter_syslog
         </filter>
 
-* Pro rsyslog, měli vytvořit nový konfigurační soubor umístěný v: `/etc/rsyslog.d/` a nahraďte hodnotu % SYSLOG_PORT vaše vlastní číslo portu.  
+* V případě rsyslog byste měli vytvořit nový konfigurační soubor umístěný v umístění: `/etc/rsyslog.d/` a nahradit hodnotu% SYSLOG_PORT% vlastním číslem portu.  
 
     > [!NOTE]
-    > Pokud upravíte tuto hodnotu v konfiguračním souboru `95-omsagent.conf`, budou přepsány, pokud agent použije výchozí konfiguraci.
+    > Pokud tuto hodnotu upravíte v konfiguračním souboru `95-omsagent.conf`, bude přepsána, když Agent použije výchozí konfiguraci.
     >
 
         # OMS Syslog collection for workspace %WORKSPACE_ID%
@@ -180,7 +179,7 @@ Agent Log Analytics naslouchá zprávám syslog v místním klientovi na portu 2
         daemon.warning            @127.0.0.1:%SYSLOG_PORT%
         auth.warning              @127.0.0.1:%SYSLOG_PORT%
 
-* Konfigurace syslog-ng by měl být upraven tak, že zkopírujete Ukázková konfigurace je uvedeno níže, a přidáte vlastní upravené nastavení za účelem syslog ng.conf konfigurační soubor umístěný ve `/etc/syslog-ng/`. Proveďte **není** použít výchozí popisek **% WORKSPACE_ID % _oms** nebo **% WORKSPACE_ID_OMS**, definovat vlastní popisek, rozeznali provedené změny.  
+* Konfigurace syslog-ng by se měla upravit zkopírováním ukázkové konfigurace uvedené níže a přidáním vlastního upraveného nastavení na konec konfiguračního souboru syslog-ng. conf, který se nachází v `/etc/syslog-ng/`. Nepoužívejte **výchozí** popisek **% WORKSPACE_ID% _oms** ani **% WORKSPACE_ID_OMS**, definujte vlastní popisek, který bude lépe odlišit vaše změny.  
 
     > [!NOTE]
     > Pokud změníte výchozí hodnoty v konfiguračním souboru, budou přepsány při agent použije výchozí konfiguraci.
@@ -193,15 +192,15 @@ Agent Log Analytics naslouchá zprávám syslog v místním klientovi na portu 2
 Po dokončení změn je nutné restartovat protokol syslog a službu Log Analytics agenta, aby se změny konfigurace projevily.   
 
 ## <a name="syslog-record-properties"></a>Vlastnosti záznamu Syslog
-Záznamy Syslogu mají typ **Syslog** a mít vlastnosti v následující tabulce.
+Záznamy syslog mají typ **SYSLOG** a mají vlastnosti v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Počítač, který událost byla shromážděna z. |
+| Computer |Počítač, který událost byla shromážděna z. |
 | Zařízení |Definuje části systému, který vygeneroval zprávu. |
 | HostIP |IP adresa systému posílání zprávy. |
 | název hostitele |Název systému posílání zprávy. |
-| SeverityLevel |Úroveň závažnosti události. |
+| Úroveň závažnosti |Úroveň závažnosti události. |
 | SyslogMessage |Text zprávy. |
 | ProcessID |ID procesu, který se vygeneroval zprávu. |
 | čas události |Datum a čas, která byla vygenerována událost. |
@@ -217,6 +216,6 @@ Následující tabulka obsahuje příklady různých dotazů na protokoly, kter�
 | Syslog &#124; summarize AggregatedValue = count() podle zařízení |Počet Syslog záznamy podle zařízení. |
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [protokolu dotazy](../../azure-monitor/log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.
-* Použití [vlastní pole](../../azure-monitor/platform/custom-fields.md) analyzovat data ze záznamů protokolu syslog do jednotlivých polí.
-* [Konfigurace agentů systému Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) ke shromažďování dalších typů dat.
+* Přečtěte si o [dotazech protokolů](../../azure-monitor/log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.
+* Použijte [vlastní pole](../../azure-monitor/platform/custom-fields.md) k analýze dat ze záznamů syslog do jednotlivých polí.
+* [Nakonfigurujte agenty Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) pro shromažďování dalších typů dat.

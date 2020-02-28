@@ -1,18 +1,17 @@
 ---
 title: 'Skript Azure Powershellu ukázkový: vytvoření pracovního prostoru Log Analytics | Dokumentace Microsoftu'
 description: Skript Azure Powershellu ukázkový – vytvořit pracovní prostor Log Analytics
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2017
-ms.openlocfilehash: 242ba4d8487e25ae0d6c5fd7dc1525942deb2a64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc60be2364e80c288300d78cc5dd23eed4ea9e62
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363094"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658145"
 ---
 # <a name="create-a-log-analytics-workspace-with-powershell"></a>Vytvoření pracovního prostoru Log Analytics pomocí Powershellu
 
@@ -32,7 +31,7 @@ Tento skript vám pomůže zprovoznit rychle k pracovnímu prostoru Azure Log An
 
 Tento skript používá následující příkazy k vytvoření nového pracovního prostoru Log Analytics v rámci vašeho předplatného. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
-| Příkaz | Poznámky |
+| Příkaz | Poznámky: |
 |---|---|
 | [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | Získá informace o existujícího pracovního prostoru. |
 | [New-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | Vytvoří pracovní prostor v zadané skupině prostředků a umístění. |

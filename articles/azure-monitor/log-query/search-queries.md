@@ -1,18 +1,17 @@
 ---
 title: Hledat dotazy v protokolech Azure Monitor | Microsoft Docs
 description: Tento článek popisuje kurz, jak začít používat hledání v Azure Monitorch dotazech protokolu.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
-ms.openlocfilehash: d92cd42f0fceadee16035b605e8d25c6bc23bc67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933001"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660236"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Hledání dotazů v protokolech Azure Monitor
 Azure Monitor dotazy protokolu mohou začít buď s názvem tabulky, nebo pomocí příkazu pro hledání. Tento kurz se zabývá dotazy založenými na hledání. Existují výhody pro jednotlivé metody.
@@ -30,7 +29,7 @@ search "error"
 I když je lze snadno použít, nevymezené dotazy, jako je ten, který byl zobrazen výše, nejsou efektivní a mohou vracet mnoho nepodstatných výsledků. Lepším postupem je vyhledat v příslušné tabulce nebo dokonce konkrétní sloupec.
 
 ### <a name="table-scoping"></a>Rozsah tabulky
-Chcete-li vyhledat termín v určité tabulce, přidejte `in (table-name)` hned za operátor **hledání** :
+Pokud chcete hledat termín v určité tabulce, přidejte `in (table-name)` hned za operátor **hledání** :
 
 ```Kusto
 search in (Event) "error"
@@ -52,7 +51,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> Použijete-li místo `:` `==`, výsledky by zahrnovaly záznamy, ve kterých má *zdrojový* sloupec přesně hodnotu "Error" a v tomto případě přesně. Použití ': ' bude obsahovat záznamy, kde *zdroj* obsahuje hodnoty, například "kód chyby 404" nebo "Error".
+> Pokud místo `:`použijete `==`, výsledky by zahrnovaly záznamy, ve kterých má *zdrojový* sloupec přesně hodnotu "Error" a v tomto případě přesně. Použití ': ' bude obsahovat záznamy, kde *zdroj* obsahuje hodnoty, například "kód chyby 404" nebo "Error".
 
 ## <a name="case-sensitivity"></a>Rozlišování velkých a malých písmen
 Ve výchozím nastavení pojem hledání nerozlišuje velká a malá písmena, takže hledání "DNS" by mohlo mít za následek například "DNS", "DNS" nebo "DNS". Pokud chcete rozlišovat velikost písmen pro hledání, použijte možnost `kind`:
@@ -90,12 +89,12 @@ search in (Event) "corp*.com"
 | take 100
 ```
 
-Vše v tabulce můžete také získat pomocí pouze zástupné karty: `search in (Event) *`, ale to by bylo stejné jako psaní pouze `Event`.
+Vše v tabulce můžete také získat pomocí stejné zástupné karty: `search in (Event) *`, ale to by bylo stejné jako psaní pouze `Event`.
 
 > [!TIP]
-> I když můžete použít `search *` k získání každého sloupce z každé tabulky, doporučujeme vždy určit rozsah dotazů na konkrétní tabulky. Dokončení dotazů bez oboru může chvíli trvat a může vrátit příliš mnoho výsledků.
+> I když můžete použít `search *` k získání každého sloupce z každé tabulky, doporučujeme vždy určit obor dotazů na konkrétní tabulky. Dokončení dotazů bez oboru může chvíli trvat a může vrátit příliš mnoho výsledků.
 
-## <a name="add-and--or-to-search-queries"></a>Přidat *a* / *nebo* vyhledat dotazy
+## <a name="add-and--or-to-search-queries"></a>Přidání *a* / *nebo* hledání v dotazech
 Pomocí **a** můžete vyhledat záznamy, které obsahují několik výrazů:
 
 ```Kusto

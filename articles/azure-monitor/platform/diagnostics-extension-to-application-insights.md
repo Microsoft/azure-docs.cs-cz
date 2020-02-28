@@ -1,18 +1,17 @@
 ---
 title: Odeslat data Azure Diagnostics do Application Insights
 description: Aktualizujte Azure Diagnostics veřejnou konfiguraci, aby odesílala data do Application Insights.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: b89e7d93113990e032f526d1f32e4e6acddffa75
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 80d971abd248ca8253a374b488c693ea9aa2ea3b
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450584"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672323"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Odeslat cloudovou službu, virtuální počítač nebo Service Fabric diagnostická data do Application Insights
 Služba Cloud Services, Virtual Machines, Virtual Machine Scale Sets a Service Fabric k shromažďování dat používá rozšíření Azure Diagnostics.  Diagnostika Azure odesílá data do tabulek Azure Storage.  Můžete však také přesměrovat všechny nebo podmnožiny dat do jiných umístění pomocí rozšíření Azure Diagnostics 1,5 nebo novější.
@@ -70,7 +69,7 @@ Příklad konfigurace jímky pro Application Insights:
         - Informace
         - Upozornění
         - Chyba
-        - Kritické
+        - Kritická
 
 Kanál funguje jako filtr a umožňuje vybrat konkrétní úrovně protokolu k odeslání do cílové jímky. Můžete například shromáždit podrobné protokoly a odeslat je do úložiště, ale zaslat do jímky pouze chyby.
 

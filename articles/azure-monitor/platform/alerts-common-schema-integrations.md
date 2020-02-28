@@ -1,18 +1,15 @@
 ---
 title: Jak integrovat společné schéma výstrah s Logic Apps
 description: Naučte se, jak vytvořit aplikaci logiky, která využívá společné schéma výstrah k obsluze všech výstrah.
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: ananthradhakrishnan
-ms.author: robb
+ms.subservice: alerts
 ms.date: 05/27/2019
-ms.openlocfilehash: 50a6067d271ad824f17df1ece36c3dd919c7b55b
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9042ed8ddbb698192e638fa7538f74561574c262
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555647"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668226"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>Jak integrovat společné schéma výstrah s Logic Apps
 
@@ -23,7 +20,7 @@ V tomto článku se dozvíte, jak vytvořit aplikaci logiky, která využívá s
 [Běžné schéma výstrah](https://aka.ms/commonAlertSchemaDocs) poskytuje standardizované a rozšiřitelné schéma JSON napříč všemi různými typy výstrah. Běžné schéma výstrah je nejužitečnější, když se využívají programově – prostřednictvím webhooků, runbooků a Logic Apps. V tomto článku ukážeme, jak může být jediná aplikace logiky vytvořená pro zpracování všech výstrah. Stejné zásady je možné použít i pro další programové metody. Aplikace logiky popsané v tomto článku vytvoří dobře definované proměnné pro [pole "Essential"](alerts-common-schema-definitions.md#essentials)a také popisuje, jak můžete zpracovat logiku specifickou pro [Typ výstrahy](alerts-common-schema-definitions.md#alert-context) .
 
 
-## <a name="prerequisites"></a>Předpoklady 
+## <a name="prerequisites"></a>Požadavky 
 
 V tomto článku se předpokládá, že čtenář je známý 
 * Nastavení pravidel upozornění ([metrika](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric), [protokol](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log), [Protokol aktivit](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log))
@@ -114,7 +111,7 @@ V tomto článku se předpokládá, že čtenář je známý
 
 1. Vyberte **+** **Nový krok** a pak zvolte **přidat akci**.
 
-    ![Přidat akci](media/action-groups-logic-app/add-action.png "Přidání akce")
+    ![Přidat akci](media/action-groups-logic-app/add-action.png "Přidat akci")
 
 1. V této fázi můžete přidat nejrůznější konektory (Microsoft teams, časová rezerva, Salesforce atd.) na základě konkrétních podnikových požadavků. Klíčové slovo "základní" můžete použít předem. 
 

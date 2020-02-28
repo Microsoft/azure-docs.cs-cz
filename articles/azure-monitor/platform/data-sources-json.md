@@ -1,18 +1,17 @@
 ---
 title: Shromažďují se vlastní data JSON v Azure Monitor | Microsoft Docs
 description: Vlastní zdroje dat JSON můžete shromažďovat do Azure Monitor pomocí agenta Log Analytics pro Linux.  Tyto vlastní zdroje dat můžou být jednoduché skripty vracející JSON, jako je například kudrlinkou, nebo jeden z nich má více než 300 modulů plug-in. Tento článek popisuje konfiguraci nutnou pro tuto kolekci dat.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: 3e636fef31951e172f57c715ac7e080b35a978bd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450613"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662157"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Shromažďování vlastních zdrojů dat JSON pomocí agenta Log Analytics pro Linux v Azure Monitor
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -100,4 +99,4 @@ Vnořené zdroje dat JSON jsou podporovány, ale jsou indexované na základě n
 
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení. 

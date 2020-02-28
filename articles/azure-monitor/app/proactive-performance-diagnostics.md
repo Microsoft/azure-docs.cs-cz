@@ -1,19 +1,15 @@
 ---
 title: Inteligentní zjišťování – anomálie výkonu | Microsoft Docs
 description: Application Insights provádí inteligentní analýzu telemetrie aplikací a upozorňuje na potenciální problémy. Tato funkce nepotřebuje žádné nastavení.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: b9a95bb2ee6ab137e974b46e24738ca5194f3bd2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820565"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671728"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
@@ -36,7 +32,7 @@ Inteligentní zjišťování vyžaduje alespoň 8 dní telemetrie na funkčním 
 
 Ne, oznámení neznamená, že vaše aplikace má jednoznačně problém. Je to je jednoduše návrh ohledně něčeho, co byste měli blíže prozkoumat.
 
-## <a name="how-do-i-fix-it"></a>Návody opravit?
+## <a name="how-do-i-fix-it"></a>Jak ho mám opravit?
 
 Oznámení obsahují diagnostické informace. Tady je příklad:
 
@@ -61,7 +57,7 @@ Oznámení inteligentní detekce jsou ve výchozím nastavení povolená a odes�
 
 U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Application Insights prostředku omezí na jeden e-mail za den. E-mail se pošle jenom v případě, že se v daném dni našel aspoň jeden nový problém. Žádná zpráva se neopakuje. 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 * *Proto si zaměstnanci Microsoftu prohledají moje údaje?*
   * Ne. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](../../azure-monitor/app/data-retention-privacy.md).
@@ -99,7 +95,7 @@ Jako obecné vodítko použijte příkaz dopadu (ovlivněné uživatele nebo% pr
 Vezměte v úvahu parametry problému. Pokud se jedná o geograficky závislé, nastavte [testy dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md) , včetně této oblasti: v této oblasti můžou být jenom problémy se sítí.
 
 ### <a name="diagnose-slow-page-loads"></a>Diagnostika pomalých načítání stránek
-Kde se jedná o problém? Reaguje Server pomaleji, je stránka velmi dlouhá nebo je v něm nutné, aby si ji mohl zobrazit i prohlížeč hodně práce?
+V čem je problém? Reaguje Server pomaleji, je stránka velmi dlouhá nebo je v něm nutné, aby si ji mohl zobrazit i prohlížeč hodně práce?
 
 Otevřete okno metrika prohlížeče. Segmentované zobrazení času načtení stránky v prohlížeči ukazuje, kde se bude zobrazovat čas. 
 

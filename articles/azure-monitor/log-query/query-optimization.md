@@ -1,18 +1,17 @@
 ---
 title: Optimalizace dotazů protokolu v Azure Monitor
 description: Osvědčené postupy pro optimalizaci dotazů protokolu v Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2019
-ms.openlocfilehash: 521fd84e79196439ea220bd7ffa7cc6d0750f045
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 19b0ce154fc19015f7faa17e339c9df259206365
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648831"
+ms.locfileid: "77670810"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
 Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, jsou v některých případech, kdy můžete výrazně vylepšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.

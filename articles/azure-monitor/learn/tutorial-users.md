@@ -1,19 +1,18 @@
 ---
 title: Porozumění zákazníkům v Azure Application Insights | Microsoft Docs
 description: Kurz použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 08da1ad5d934116db8f110d7b75a8e0a60ffc84a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894671"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670351"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci
 
@@ -37,11 +36,11 @@ K provedení kroků v tomto kurzu je potřeba:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
 - Stáhnout a nainstalovat [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger).
-- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
+- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md). 
 - [Odesílat z aplikace telemetrii](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app) umožňující přidání vlastních zobrazení událostí a stránek.
 - Odesílat [kontext uživatele](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) umožňující sledovat aktivity uživatele v průběhu času a naplno využívat funkce využití.
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="get-information-about-your-users"></a>Získání informací o uživatelích

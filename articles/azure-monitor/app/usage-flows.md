@@ -1,19 +1,17 @@
 ---
 title: Analýza uživatelských vzorů navigace pomocí Toky uživatelů v Azure Application Insights | Dokumentace Microsoftu
 description: Analyzujte, jak uživatelé přecházejí mezi stránkami a funkcemi vaší webové aplikace.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: ec0af6dd61f8615c02e85135afa677c6a5f61f94
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a4a81a3e4c5759e444836162319abb97d83a4c74
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406280"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671065"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Analýza uživatelských vzorů navigace pomocí Toky uživatelů v Application Insights
 

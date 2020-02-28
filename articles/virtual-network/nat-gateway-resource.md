@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 9d9033689472fbc462eefd3d31c2b36a19add81a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 26de7a6d05bde8d80e22bd8801ae9b5dc8faeb36
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589466"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669552"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources-public-preview"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT (Public Preview)
 
@@ -34,7 +34,7 @@ Prostředky brány NAT jsou součástí [Virtual Network NAT](nat-overview.md) a
 
 
 >[!NOTE] 
->Virtual Network překlad adres (NAT) je v tuto chvíli k dispozici jako Public Preview. V současné době je dostupná jenom v omezené sadě [oblastí](nat-overview.md#region-availability). Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.comsupport/legal/preview-supplemental-terms).
+>Virtual Network překlad adres (NAT) je v tuto chvíli k dispozici jako Public Preview. V současné době je dostupná jenom v omezené sadě [oblastí](nat-overview.md#region-availability). Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
 
 ## <a name="how-to-deploy-nat"></a>Postup nasazení překladu adres (NAT)
 
@@ -54,7 +54,7 @@ Trasy definované uživatelem nejsou nutné.
 
 Prostředek je navržený tak, aby byl jednoduchý, jak můžete vidět v následujícím příkladu Azure Resource Manager ve formátu podobném šabloně.  Tento formát podobný tomuto: slouží k znázornění konceptů a struktury.  Upravte příklad podle svých potřeb.  Tento dokument není určený jako kurz.
 
-Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Revize 
+Následující diagram znázorňuje zapisovatelné odkazy mezi různými Azure Resource Manager prostředky.  Šipka označuje směr odkazu, který pochází z místa, odkud je možné zapisovat. Revidovat 
 
 <p align="center">
   <img src="media/nat-overview/flow-map.svg" width="256" title="Virtual Network objektového modelu NAT">
@@ -343,7 +343,7 @@ Port SNAT je k dispozici pro opakované použití na stejnou cílovou IP adresu 
 
 Podle [pokynů povolte své předplatné](nat-overview.md#public-preview-participation).
 
-## <a name="feedback"></a>Váš názor
+## <a name="feedback"></a>Názor
 
 Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Public Preview](https://aka.ms/natfeedback) s námi.  A můžete navrhnout a hlasovat o tom, co by se mělo na webu [UserVoice pro překlad adres (NAT)](https://aka.ms/natuservoice)sestavit dál.
 
@@ -365,5 +365,5 @@ Chceme zjistit, jak můžeme službu vylepšit. Sdílejte svůj [názor na Publi
   * [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways),
   * Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
   * [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway).
-- [Řekněte nám, co se má sestavit dál ve službě UserVoice](https://aka/natuservoice).
+- [Řekněte nám, co se má sestavit dál ve službě UserVoice](https://aka.ms/natuservoice).
 - [Poskytněte zpětnou vazbu k Public Preview](https://aka.ms/natfeedback).

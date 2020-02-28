@@ -1,18 +1,17 @@
 ---
 title: Shromažďování a analýza protokolů událostí systému Windows v Azure Monitor | Microsoft Docs
 description: V této části najdete popis postupu konfigurace shromažďování protokolů událostí systému Windows Azure Monitor a podrobností záznamů, které vytvoří.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: dd8f1e0e79f85c5d91966bcba13052f297422e67
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932411"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670504"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Zdroje dat protokolu událostí systému Windows v Azure Monitor
 Protokoly událostí systému Windows jsou jedním z nejběžnějších [zdrojů dat](agent-data-sources.md) pro shromažďování dat pomocí agentů Windows, protože mnoho aplikací zapisuje do protokolu událostí systému Windows.  Kromě určení libovolných vlastních protokolů vytvořených aplikacemi, které je třeba monitorovat, můžete shromažďovat události ze standardních protokolů, jako je například systém a aplikace.
@@ -43,11 +42,11 @@ Záznamy událostí systému Windows mají typ **události** a mají vlastnosti 
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Počítač |Název počítače, ze kterého byla událost shromážděna. |
+| Computer |Název počítače, ze kterého byla událost shromážděna. |
 | EventCategory |Kategorie události |
 | EventData |Všechna data události v nezpracovaném formátu. |
 | ID události |Číslo události |
-| EventLevel |Závažnost události v číselném tvaru. |
+| eventLevel |Závažnost události v číselném tvaru. |
 | EventLevelName |Závažnost události v textovém formátu. |
 | EventLog |Název protokolu událostí, ze kterého byla událost shromážděna. |
 | ParameterXml |Hodnoty parametrů událostí ve formátu XML. |
@@ -56,7 +55,7 @@ Záznamy událostí systému Windows mají typ **události** a mají vlastnosti 
 | Zdroj |Zdroj události |
 | SourceSystem |Typ agenta, ze kterého byla událost shromážděna <br> OpsManager – Agent pro Windows, buď přímá připojení, nebo Operations Manager spravovaná <br> Linux – všichni agenti se systémem Linux  <br> AzureStorage – Azure Diagnostics |
 | TimeGenerated |Datum a čas vytvoření události v systému Windows. |
-| Jmen |Uživatelské jméno účtu, který událost zaznamenal. |
+| UserName |Uživatelské jméno účtu, který událost zaznamenal. |
 
 ## <a name="log-queries-with-windows-events"></a>Dotazy protokolu s událostmi systému Windows
 Následující tabulka uvádí různé příklady dotazů protokolu, které načítají záznamy událostí systému Windows.
@@ -65,7 +64,7 @@ Následující tabulka uvádí různé příklady dotazů protokolu, které nač
 |:---|:---|
 | Událost |Všechny události systému Windows. |
 | Událost &#124; , kde EventLevelName = = "Error" |Všechny události systému Windows se závažností chyby. |
-| Souhrn &#124; událostí – počet () podle zdroje |Počet událostí systému Windows podle zdroje |
+| Event &#124; summarize count() by Source |Počet událostí systému Windows podle zdroje |
 | Událost &#124; , kde EventLevelName = = "Error &#124; " (souhrn) Count () podle zdroje |Počet událostí chyb systému Windows podle zdroje. |
 
 

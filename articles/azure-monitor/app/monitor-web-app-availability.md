@@ -1,19 +1,15 @@
 ---
 title: Sledování dostupnosti a odezvy libovolných webů | Dokumentace Microsoftu
 description: Nastavení testů webu ve službě Application Insights. Zasílání upozornění, pokud web přestane být k dispozici nebo reaguje pomalu.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 074b5c175305131cd67cc6660d13756a83386c11
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 61358051a8ddc32bc01ec5e231f4c28ebfa18ee0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819299"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670028"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Monitorování dostupnosti jakéhokoli webu
 
@@ -74,7 +70,7 @@ Pokud chcete vytvořit svou první žádost o dostupnost, otevřete podokno dost
 |----|----|----|
 |**Téměř v reálném čase (Preview)** | Doporučujeme používat upozornění téměř v reálném čase. Konfigurace tohoto typu upozornění se provádí po vytvoření testu dostupnosti.  |
 |**Classic** | Pro nové testy dostupnosti už nedoporučujeme používat klasické výstrahy.|
-|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem umístění testu je **prahová hodnota pro umístění výstrahy**  = **počet umístění testu – 2, minimálně pět umístění testu.**|
+|**Prahová hodnota umístění výstrahy**|Doporučujeme minimálně 3/5 umístění. Optimální vztah mezi prahovou hodnotou umístění výstrahy a počtem umístění testu je **prahová hodnota pro umístění výstrahy** = **počet umístění testu – 2, minimálně pět umístění testu.**|
 
 ## <a name="see-your-availability-test-results"></a>Zobrazení výsledků testu dostupnosti
 
@@ -82,11 +78,11 @@ Výsledky testů dostupnosti lze vizuálně zobrazit pomocí spojnicových i bod
 
 Po několika minutách kliknutím na **aktualizovat** zobrazíte výsledky testů.
 
-![Řádkové zobrazení](./media/monitor-web-app-availability/availability-refresh-002.png)
+![Řádky – zobrazení](./media/monitor-web-app-availability/availability-refresh-002.png)
 
 Zobrazení scatterplot zobrazuje ukázky výsledků testů, které obsahují podrobné informace o testovacím kroku testu. V případě testů obsahujících selhání ukládá testovací modul diagnostické informace. U úspěšných testů se diagnostické informace ukládají pro celou dílčí sadu provedení. Pokud chcete zobrazit test, název testu a umístění, najeďte myší na kteroukoli zelenou/červenou tečku.
 
-![Řádkové zobrazení](./media/monitor-web-app-availability/availability-scatter-plot-003.png)
+![Řádky – zobrazení](./media/monitor-web-app-availability/availability-scatter-plot-003.png)
 
 Výběrem určitého testu nebo umístění nebo zkrácením časového období zobrazíte více výsledků v požadovaném časovém období. V Průzkumníku služby Hledání můžete zobrazit výsledky všech provedení a pomocí dotazů služby Analytics můžete na těchto datech spouštět vlastní sestavy.
 
@@ -127,7 +123,7 @@ Kromě nezpracovaných výsledků můžete také zobrazit dvě klíčové metrik
 * [Automatické nastavení testu dostupnosti pomocí skriptů PowerShell](../../azure-monitor/app/powershell.md#add-an-availability-test).
 * Nastavení [webhook](../../azure-monitor/platform/alerts-webhooks.md), který je volán při vydání výstrahy.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Vyhrazený [článek týkající se řešení potíží](troubleshoot-availability.md).
 

@@ -1,24 +1,22 @@
 ---
 title: Agent Azure Application Insights – Začínáme | Microsoft Docs
 description: Průvodce rychlým startem pro Application Insights agenta. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 1ef354bc61d849a4d536bd26355ef21b0f1c0035
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7819de1f3dfab7f934421de86c0481d2e063f7a4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899621"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671184"
 ---
 # <a name="get-started-with-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Začínáme s agentem Azure Monitor Application Insights pro místní servery
 
 Tento článek obsahuje příkazy rychlého startu očekávané pro fungování většiny prostředí.
 Pokyny závisí na Galerie prostředí PowerShell k distribuci aktualizací.
-Tyto příkazy podporují parametr PowerShellu `-Proxy`.
+Tyto příkazy podporují parametr `-Proxy` PowerShellu.
 
 Vysvětlení těchto příkazů, pokyny k přizpůsobení a informace o řešení potíží najdete v [podrobných pokynech](status-monitor-v2-detailed-instructions.md).
 

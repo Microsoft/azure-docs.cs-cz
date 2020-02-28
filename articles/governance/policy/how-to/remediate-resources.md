@@ -1,18 +1,18 @@
 ---
 title: Oprava prostředků, které nevyhovují předpisům
 description: Tato příručka vás provede opravou prostředků, které nedodržují zásady v Azure Policy.
-ms.date: 09/09/2019
+ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: e3db0f5f8ae1be4a6ab6eb281801958bfb816228
-ms.sourcegitcommit: 78f367310e243380b591ff10f2500feca93f5d0a
+ms.openlocfilehash: 5cf26f5235fbc35cdc9bfc8527967c3cc5ca91b8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77544177"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670793"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Opravit nekompatibilní prostředky službou Azure Policy
 
-Prostředky, které nejsou kompatibilní se zásadami **deployIfNotExists** nebo **Modify** , je možné do stavu, který je v souladu s **nápravou**, předávat do odpovídajícího stavu. Nápravu je možné provést tak, že na základě pokynů Azure Policy spustíte efekt **deployIfNotExists** nebo **operace** značky přiřazené zásady u stávajících prostředků. Tento článek popisuje kroky potřebné k pochopení a provedení nápravy Azure Policy.
+Prostředky, které nejsou kompatibilní se zásadami **deployIfNotExists** nebo **Modify** , je možné do stavu, který je v souladu s **nápravou**, předávat do odpovídajícího stavu. Nápravu je možné provést tak, že na základě pokynů Azure Policy spustíte efekt **deployIfNotExists** nebo **operace** značky přiřazené zásady u stávajících prostředků, ať už se jedná o přiřazení ke skupině pro správu, k předplatnému, skupině prostředků nebo k jednotlivým prostředkům. Tento článek popisuje kroky potřebné k pochopení a provedení nápravy Azure Policy.
 
 ## <a name="how-remediation-security-works"></a>Jak funguje opravy zabezpečení
 

@@ -1,18 +1,17 @@
 ---
 title: Shromažďovat data shromážděná v Azure Monitor | Microsoft Docs
 description: Shromažďováno je open source démon pro Linux, který pravidelně shromažďuje data z aplikací a informací na úrovni systému.  Tento článek poskytuje informace o shromažďování dat z Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: 277e6c9736266b64fd717b719dc740525047ae88
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8c09d4ac5d0856eb0d448a1cabd9adc567850c4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395875"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670606"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Shromažďovat data shromážděná v agentech Linux v Azure Monitor
 [Shromažďováno](https://collectd.org/) je open source démon pro Linux, který pravidelně shromažďuje metriky výkonu z aplikací a informací na úrovni systému. Příklady aplikací zahrnují prostředí Java Virtual Machine (JVM), MySQL server a Nginx. Tento článek poskytuje informace o shromažďování údajů o výkonu ze sběru Azure Monitor.
@@ -108,7 +107,7 @@ Aby bylo možné udržovat známý model mezi metrikami infrastruktury již shro
 
 | Pole shromážděné metriky | Azure Monitor pole |
 |:--|:--|
-| `host` | Počítač |
+| `host` | Computer |
 | `plugin` | Žádné |
 | `plugin_instance` | Název instance<br>Pokud **plugin_instance** má *hodnotu null* , pak je hodnota InstanceName = " *_Total*". |
 | `type` | ObjectName |
@@ -118,5 +117,5 @@ Aby bylo možné udržovat známý model mezi metrikami infrastruktury již shro
 | `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
-* Použití [vlastní pole](custom-fields.md) analyzovat data ze záznamů protokolu syslog do jednotlivých polí.
+* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení. 
+* Použijte [vlastní pole](custom-fields.md) k analýze dat ze záznamů syslog do jednotlivých polí.

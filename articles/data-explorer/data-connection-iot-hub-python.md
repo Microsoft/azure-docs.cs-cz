@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: cfd92546def21972e37781bd8a4b0bfefda9111f
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 76c8ca24882f465bf2a973dc59736745178fc61f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77444209"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669518"
 ---
 # <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-python-preview"></a>Vytvoření datového připojení IoT Hub pro Azure Průzkumník dat pomocí Pythonu (Preview)
 
@@ -24,13 +24,13 @@ ms.locfileid: "77444209"
 
 V tomto článku vytvoříte datové připojení IoT Hub pro Azure Průzkumník dat pomocí Pythonu. Azure Data Explorer je rychlá a vysoce škálovatelná služba pro zkoumání dat protokolů a telemetrie. Azure Průzkumník dat nabízí ingestování nebo načítání dat z Event Hubs, hub IoT a objektů BLOB zapsaných do kontejnerů objektů BLOB.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
 * [Python 3.4 +](https://www.python.org/downloads/).
 
-* [Cluster a databáze](/create-cluster-database-python.md).
+* [Cluster a databáze](create-cluster-database-python.md).
 
 * [Mapování tabulek a sloupců](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
 
@@ -102,6 +102,6 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 | iot_hub_resource_id | *ID prostředku* | ID prostředku vašeho centra IoT, které obsahuje data pro ingestování.|
 | shared_access_policy_name | *iothubforread* | Název zásad sdíleného přístupu, který definuje oprávnění pro zařízení a služby pro připojení k IoT Hub. |
 | consumer_group | *$Default* | Skupina uživatelů centra událostí.|
-| location | *Střed USA* | Umístění prostředku datového připojení.|
+| umístění | *Střed USA* | Umístění prostředku datového připojení.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](../../includes/data-explorer-data-connection-clean-resources-python.md)]

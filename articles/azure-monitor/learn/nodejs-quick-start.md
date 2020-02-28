@@ -1,19 +1,18 @@
 ---
 title: 'Rychlý Start: monitorování Node. js pomocí Azure Monitor Application Insights'
 description: Poskytuje pokyny pro rychlé nastavení webové aplikace Node. js pro monitorování pomocí Azure Monitor Application Insights
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/12/2019
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: a6d6d70336badeaa86c9982dfa977ea389ed5402
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 694d2ae529202223869fcbb2a084e32bccaedbf1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963525"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660219"
 ---
 # <a name="quickstart-start-monitoring-your-nodejs-web-application-with-azure-application-insights"></a>Rychlý Start: spuštění sledování webové aplikace v Node. js pomocí Azure Application Insights
 
@@ -30,7 +29,7 @@ Azure Application Insights umožňuje snadné monitorování webové aplikace z 
 
 Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace připojené k Internetu, ať už běží místně nebo v cloudu. Pokud chcete tato data začít zobrazovat, použijte následující kroky.
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
 2. Vyberte **Vytvořit prostředek** > **Vývojářské nástroje** > **Application Insights**.
 
@@ -45,7 +44,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete |
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků, která bude hostovat data AppInsights. Můžete vytvořit novou skupinu prostředků nebo použít existující. |
-   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Umístění** | Východní USA | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
 3. Vyberte **Vytvořit**.
 
@@ -91,7 +90,7 @@ Application Insights můžou shromažďovat data telemetrie z jakékoli aplikace
 
    ![Grafy časové osy přehledu Application Insightsho stavu](./media/nodejs-quick-start/azure-app-insights-health-overview.png)
 
-   Pokud chcete povolit, aby se graf **Doba načtení zobrazení stránky** naplnil **telemetrií na straně klienta**, na každou stránku, kterou chcete sledovat, přidejte následující skript:
+   Pokud chcete povolit, aby se graf **Page View Load Time** naplnil **telemetrií na straně klienta**, na každou stránku, kterou chcete sledovat, přidejte následující skript:
 
    ```HTML
    <!-- 

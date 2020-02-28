@@ -1,20 +1,16 @@
 ---
 title: Application Insights rozhraní API pro vlastní události a metriky | Microsoft Docs
 description: Pokud chcete sledovat využití a diagnostikovat problémy, vložte do svého zařízení nebo do aplikace, webové stránky nebo služby pár řádků kódu.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 2136ab9a6d0cef7ad5650c8414f9a17b78498abc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74736966013581296483d1444f4ab2b8a35bbd98
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432671"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666492"
 ---
-# <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
+# <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights rozhraní API pro vlastní události a metriky
 
 Do své aplikace vložte pár řádků kódu, abyste zjistili, co uživatelé s ním pracují, nebo aby vám pomohla diagnostikovat problémy. Telemetrii můžete odesílat ze zařízení a desktopových aplikací, webových klientů a webových serverů. Použijte rozhraní API telemetrie [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) Core k posílání vlastních událostí a metrik a vašich vlastních verzí standardní telemetrie. Toto rozhraní API je stejné rozhraní API, které používá standardní Application Insights sběrače dat.
 
@@ -22,7 +18,7 @@ Do své aplikace vložte pár řádků kódu, abyste zjistili, co uživatelé s 
 
 Základní rozhraní API je na všech platformách stejné, kromě několika variant, jako je `GetMetric`(jenom .NET).
 
-| Metoda | Použití |
+| Metoda | Používáno pro |
 | --- | --- |
 | [`TrackPageView`](#page-views) |Stránky, obrazovky, listy nebo formuláře. |
 | [`TrackEvent`](#trackevent) |Akce uživatele a další události. Používá se ke sledování chování uživatelů nebo ke sledování výkonu. |
@@ -54,7 +50,7 @@ Pokud ještě nemáte odkaz na Application Insights SDK, postupujte takto:
 
     *Java:* `import com.microsoft.applicationinsights.TelemetryClient;`
 
-    *Node.js:* `var applicationInsights = require("applicationinsights");`
+    *Node. js:* `var applicationInsights = require("applicationinsights");`
 
 ## <a name="get-a-telemetryclient-instance"></a>Získat instanci TelemetryClient
 
@@ -733,7 +729,7 @@ Funkce je asynchronní pro [kanál telemetrie serveru](https://www.nuget.org/pac
 
 V ideálním případě by měla být metoda flush () použita v aktivity vypnutí aplikace.
 
-## <a name="authenticated-users"></a>Skupina Authenticated Users
+## <a name="authenticated-users"></a>Ověření uživatelé
 
 Ve webové aplikaci jsou uživatelé (ve výchozím nastavení) identifikováni pomocí souborů cookie. Uživatel se může při přístupu k vaší aplikaci z jiného počítače nebo prohlížeče počítat více než jednou, nebo pokud odstraní soubory cookie.
 
@@ -752,7 +748,7 @@ function Authenticated(signInId) {
 
 V aplikaci ASP.NET Web MVC například:
 
-*Razor*
+*Syntaxi*
 
 ```cshtml
 @if (Request.IsAuthenticated)

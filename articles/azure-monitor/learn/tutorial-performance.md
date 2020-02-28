@@ -1,19 +1,18 @@
 ---
 title: Diagnostika problémů s výkonem pomocí Azure Application Insights | Dokumentace Microsoftu
 description: Kurz popisující, jak v aplikaci vyhledat a diagnostikovat problémy s výkonem pomocí Azure Application Insights.
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
-ms.openlocfilehash: f9074a004683393df18d621a679fbb7378dc6704
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 98d7c1552a7b1f2b02ae4df1cad24e20f7ac76e1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75398623"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661562"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Vyhledání a diagnostika problémů s výkonem pomocí Azure Application Insights
 
@@ -26,17 +25,17 @@ Azure Application Insights shromažďuje telemetrii z vaší aplikace a pomáhá
 > * Analýza podrobností o zobrazení stránek pomocí dotazovacího jazyka
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
-Pro absolvování tohoto kurzu potřebujete:
+K provedení kroků v tomto kurzu je potřeba:
 
 - Nainstalujte [Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
     - Vývoj pro ASP.NET a web
     - Vývoj pro Azure
-- Nasadit do Azure aplikaci .NET a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md).
+- Nasadit aplikaci .NET do Azure a [povolit sadu Application Insights SDK](../../azure-monitor/app/asp-net.md).
 - [Povolit Application Insights Profiler](../../azure-monitor/app/profiler.md#installation) pro vaši aplikaci.
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 
 ## <a name="identify-slow-server-operations"></a>Identifikace pomalých operací serveru

@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 2ae84b59cd70a5b27ad3e501db6cfae110d90fbd
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b0d9437b10bc54aac481eb630f12a2b99d2360a1
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209779"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672459"
 ---
 # <a name="building-an-accessible-application"></a>Vytvoření přístupné aplikace
 
@@ -32,9 +32,11 @@ Sada Azure Maps Web SDK je dodávána předem s mnoha funkcemi pro usnadnění, 
 Podrobnosti o plném přístupu pro všechny produkty Microsoftu najdete [tady](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/). Vyhledejte "Azure Maps Web" a vyhledejte dokument speciálně pro sadu Azure Maps Web SDK. 
 
 ## <a name="navigating-the-map"></a>Navigace v mapě
+
 Existuje několik různých způsobů, jak lze mapu zvětšit, vytočit, otočit a rozteč. Následující podrobnosti jsou všechny různými způsoby navigace v mapě.
 
 **Zvětšit mapu**
+
 - Pomocí myši poklikejte na mapu, abyste přiblížili jednu úroveň.
 - Pomocí myši posuňte kolečko k přiblížení mapy.
 - S dotykovou obrazovkou dotykovou obrazovku můžete přiblížit dvěma prsty a gesto roztažení prstů dohromady, abyste se přiblížili nebo rozblížili prsty vedle sebe.
@@ -45,23 +47,46 @@ Existuje několik různých způsobů, jak lze mapu zvětšit, vytočit, otočit
 - Stiskněte a podržte tlačítko `Shift` a stiskněte levé tlačítko myši na mapě a přetažením myši nakreslete oblast pro přiblížení mapy.
 
 **Posouvání mapy**
+
 - Pomocí myši, stiskněte dolů a levým tlačítkem myši na mapě a táhněte v libovolném směru.
 - Pomocí dotykové obrazovky se připojte k mapě a přetáhněte je v libovolném směru.
 - S fokusem mapy přesuňte mapu pomocí kláves se šipkami.
 
 **Otočit mapu**
+
 - Pomocí myši podržte stisknuté pravé tlačítko myši na mapě a přetáhněte doleva nebo doprava. 
 - Pomocí dotykové obrazovky se připojte k mapě dvěma prsty a otáčejte.
 - S fokusem mapy použijte klávesu SHIFT a levou nebo pravou šipku.
 - Použití ovládacího prvku otočení pomocí myši, dotyku nebo klávesy TAB/kláves ENTER
 
 **Rozteč mapy**
+
 - Pomocí myši podržte stisknuté pravé tlačítko myši na mapě a přetáhněte je nahoru nebo dolů. 
 - Pomocí dotykové obrazovky můžete mapu kontaktovat dvěma prsty a přetáhnout je nahoru nebo dolů.
 - S fokusem mapy použijte klávesu SHIFT a šipky nahoru nebo dolů. 
 - Použití ovládacího prvku sklonu s myší, dotykem nebo klávesou TAB/ENTER Keys.
 
-**Změna stylu mapy** Ne všichni vývojáři chtějí mít k dispozici všechny možné styly mapy ve svých aplikacích. Vývojář může programově nastavit a změnit styl mapy. Pokud vývojář zobrazí ovládací prvek pro výběr stylu mapy, může uživatel změnit styl mapy pomocí myši, dotyku nebo klávesnice s klávesou nebo klávesou ENTER. Vývojář může určit, které styly mapy mají být k dispozici v ovládacím prvku Výběr stylu mapy. 
+## <a name="change-the-map-style"></a>Změna stylu mapy
+
+Ne všichni vývojáři chtějí mít k dispozici všechny možné styly mapy ve svých aplikacích. Pokud vývojář zobrazí ovládací prvek pro výběr stylu mapy, může uživatel změnit styl mapy pomocí myši, dotyku nebo klávesnice s klávesou nebo klávesou ENTER. Vývojář může určit, které styly mapy mají být k dispozici v ovládacím prvku Výběr stylu mapy. Kromě toho může vývojář programově nastavit a změnit styl mapy.
+
+**Použít vysoký kontrast**
+
+- Když je mapový ovládací prvek načten, zkontroluje, zda je povolen vysoký kontrast a prohlížeč ho podporuje.
+- Mapový ovládací prvek nemonitoruje režim vysokého kontrastu zařízení. Pokud se změní režim zařízení, mapa nebude. Proto bude uživatel muset znovu načíst mapu tím, že stránku aktualizuje.
+- Když se zjistí vysoký kontrast, styl mapy se automaticky přepne na vysoký kontrast a všechny předdefinované ovládací prvky budou používat styl s vysokým kontrastem. Například ZoomControl, PitchControl, CompassControl, StyleControl a další integrované ovládací prvky budou používat styl vysokého kontrastu.
+- Existují dva typy vysokého kontrastu, světlé a tmavé. Pokud typ vysokého kontrastu lze detekovat ovládacími prvky mapy, chování mapování se odpovídajícím způsobem upraví. Pokud má světlo světla, načtou se styl mapy grayscale_light. Pokud typ nebyl nalezen nebo je tmavý, bude načten high_contrast_dark styl.
+- Pokud vytváříte vlastní ovládací prvky, je vhodné zjistit, zda předdefinované ovládací prvky používají styl vysokého kontrastu. Vývojáři mohou přidat třídu šablony stylů CSS na div kontejneru map pro kontrolu. Přidané třídy CSS jsou `high-contrast-dark` a `high-contrast-light`. Pokud chcete kontrolovat používání JavaScriptu, použijte:
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-dark")
+```
+
+nebo použijte:
+
+```javascript
+map.getMapContainer().classList.contains("high-contrast-light")
+```
 
 ## <a name="keyboard-shortcuts"></a>Klávesové zkratky
 

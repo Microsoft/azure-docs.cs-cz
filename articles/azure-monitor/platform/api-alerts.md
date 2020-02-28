@@ -1,29 +1,27 @@
 ---
 title: Pomocí rozhraní API REST upozornění Log Analytics
 description: REST API výstrahy Log Analytics umožňuje vytvářet a spravovat výstrahy v Log Analytics, které jsou součástí Log Analytics.  Tento článek obsahuje podrobnosti o rozhraní API a několik příkladů k provádění různých operací.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
 ms.date: 07/29/2018
-ms.openlocfilehash: 7112f86ca123c66c5969236617f35fcb8d698030
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680660"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664996"
 ---
-# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API
+# <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API 
+
 Log Analytics výstrah REST API můžete vytvářet a spravovat upozornění v Log Analytics.  Tento článek obsahuje podrobnosti o rozhraní API a několik příkladů k provádění různých operací.
 
 > [!IMPORTANT]
 > Jak jsme [oznámili dřív](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), pracovní prostory Log Analytics vytvořené od *1. června 2019* – budou moct spravovat pravidla výstrah **jenom** pomocí [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)Azure scheduledQueryRules, [šablony Azure Resource Manager](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) a [rutiny PowerShellu](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Zákazníci můžou snadno [Přepnout do preferovaného způsobu správy pravidel výstrah](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) pro starší pracovní prostory a využít Azure monitor scheduledQueryRules jako výchozí a získat spoustu [nových výhod](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) , jako je možnost použití nativních rutin PowerShellu, což je zvýšené lookbacké časové období v pravidlech, vytváření pravidel v samostatné skupině prostředků nebo předplatném a mnohem víc.
 
-REST API pro hledání Log Analytics je RESTful a je přístupný prostřednictvím rozhraní REST API Azure Resource Manageru. V tomto dokumentu najdete příklady kde je rozhraní API pro přístup z příkazového řádku pomocí prostředí PowerShell [ARMClient](https://github.com/projectkudu/ARMClient), nástroje příkazového řádku open source, který zjednodušuje volání rozhraní API Azure Resource Manageru. Použití ARMClient a prostředí PowerShell je jedním z mnoha možností pro přístup k rozhraní API pro hledání Log Analytics. Pomocí těchto nástrojů můžete využít rozhraní RESTful API Azure Resource Manageru provádět volání do pracovních prostorů Log Analytics a provádět příkazy vyhledávání v nich. Rozhraní API bude vypsání výsledků vyhledávání vám ve formátu JSON, abyste mohli používat výsledky hledání prostřednictvím kódu programu mnoha různými způsoby.
+REST API pro hledání Log Analytics je RESTful a je přístupný prostřednictvím rozhraní REST API Azure Resource Manageru. V tomto dokumentu najdete příklady, ve kterých je k rozhraní API přistup z příkazového řádku PowerShellu pomocí [ARMClient](https://github.com/projectkudu/ARMClient), open source nástroje příkazového řádku, který zjednodušuje vyvolání rozhraní Azure Resource Manager API. Použití ARMClient a prostředí PowerShell je jedním z mnoha možností pro přístup k rozhraní API pro hledání Log Analytics. Pomocí těchto nástrojů můžete využít rozhraní RESTful API Azure Resource Manageru provádět volání do pracovních prostorů Log Analytics a provádět příkazy vyhledávání v nich. Rozhraní API bude vypsání výsledků vyhledávání vám ve formátu JSON, abyste mohli používat výsledky hledání prostřednictvím kódu programu mnoha různými způsoby.
 
 ## <a name="prerequisites"></a>Požadavky
-V současné době mohou výstrahy vytvořeny pouze se uložené výsledky hledání v Log Analytics.  Můžete se podívat do [protokolu REST API služby Search](../../azure-monitor/log-query/log-query-overview.md) Další informace.
+V současné době mohou výstrahy vytvořeny pouze se uložené výsledky hledání v Log Analytics.  Další informace najdete v [REST API prohledávání protokolu](../../azure-monitor/log-query/log-query-overview.md) .
 
 ## <a name="schedules"></a>Plány
 Uložené výsledky hledání můžete mít nejmíň jeden plán. Plán definuje, jak často se hledání spuštění a časový interval nad tím, které je identifikován kritéria.
@@ -33,7 +31,7 @@ Plány mají vlastnosti v následující tabulce.
 |:--- |:--- |
 | Interval |Jak často se spustí vyhledávání. Měří během několika minut. |
 | QueryTimeSpan |Časový interval nad tím, které se vyhodnotí kritéria. Musí být roven nebo větší než Interval. Měří během několika minut. |
-| Verze |Verze rozhraní API používá.  V současné době to musí být vždy nastavená na hodnotu 1. |
+| Version |Verze rozhraní API používá.  V současné době to musí být vždy nastavená na hodnotu 1. |
 
 Představte si třeba dotaz události s intervalem 15 minut a časový interval 30 minut. V tomto případě dotazu by spuštění každých 15 minut a by aktivuje upozornění, pokud kritéria nadále přeložit na hodnotu true přes víkend na 30minutové rozpětí.
 
@@ -124,7 +122,7 @@ Použijte metodu Delete s ID akce pro akci odstranit.
 ### <a name="alert-actions"></a>Akce upozornění
 Plán by měl mít jeden a pouze jeden akce upozornění.  Akce upozornění mají jednu nebo více oddílů v následující tabulce.  Popsány podrobněji níže.
 
-| Sekce | Popis | Využití |
+| Část | Popis | Využití |
 |:--- |:--- |:--- |
 | Prahová hodnota |Kritéria pro při spuštění akce.| Vyžaduje se pro každou výstrahu před nebo po se rozšíří do Azure. |
 | Závažnost |Popisek použitý ke klasifikaci, když se aktivuje upozornění.| Vyžaduje se pro každou výstrahu před nebo po se rozšíří do Azure. |
@@ -132,7 +130,7 @@ Plán by měl mít jeden a pouze jeden akce upozornění.  Akce upozornění maj
 | Skupiny akcí |ID skupina akcí Azure, ve kterém jsou zadané požadované akce, například - e-mailů, SMSs, hlasových hovorů, Webhooků, Runbooků služby Automation, konektorů ITSM atd.| Vyžaduje po výstrahy se rozšíří do Azure|
 | Přizpůsobit akce|Upravit ve standardním výstupu pro akce vyberte z skupina akcí| Volitelné pro každou výstrahu, je možné po výstrahy se rozšíří do Azure. |
 
-### <a name="thresholds"></a>Mezní hodnoty
+### <a name="thresholds"></a>Prahové hodnoty
 Akci upozornění by měl mít jeden a pouze jeden prahovou hodnotu.  Když výsledky uložené výsledky hledání odpovídají prahovou hodnotu v akce přidružené k danému hledání, jsou spuštěny žádné další procesy v této akci.  Akce může také obsahovat pouze mezní hodnotu tak, že je možné s akcemi jiných typů, které neobsahují slovo prahové hodnoty.
 
 Prahové hodnoty mají vlastnosti v následující tabulce.
@@ -202,7 +200,7 @@ Použijte metodu Put se existující ID akce změnit závažnost akce pro plán.
 #### <a name="suppress"></a>Potlačit
 Log Analytics na základě dotazu, který upozornění se aktivuje vždy, když je prahová hodnota dosažená nebo Překročená. Na základě logiky vyjádřena v dotazu, může být výsledkem upozornění získávání aktivuje například pro řadu intervalech a proto oznámení také odesílají neustále. Pokud chcete zabránit takový scénář, může uživatel nastavit možnost potlačit instruující Log Analytics počkat stanoveného časového intervalu před oznámení se aktivuje při druhém pravidlo upozornění. Pokud tedy potlačit nastavení po dobu 30 minut; upozornění se aktivuje při prvním a odeslat oznámení nakonfigurované. Ale Počkejte 30 minut, než oznámení pro pravidlo výstrahy je znovu použít. V přechodném období pravidlo upozornění budou nadále spuštěné – pouze oznámení se potlačil Log Analytics na určitou dobu bez ohledu na to, kolikrát se pravidlo upozornění aktivuje v tomto období.
 
-Potlačit vlastnosti pravidlo výstrahy je určen pomocí Log Analytics *omezování* hodnotu a období potlačení pomocí *doba trvání v minutách* hodnotu.
+Vlastnost potlačit Log Analytics pravidlo výstrahy je určena pomocí hodnoty *omezení* a periody potlačení pomocí hodnoty *DurationInMinutes* .
 
 Následuje ukázková odpověď pro akci, která má jenom vlastnost Threshold, závažnost a potlačení.
 
@@ -233,7 +231,7 @@ Použijte metodu Put se existující ID akce změnit závažnost akce pro plán.
 #### <a name="action-groups"></a>Skupiny akcí
 Všechna upozornění v Azure, použijte skupiny akcí jako výchozího mechanismu pro zpracování akce. Pomocí skupiny akcí můžete zadat vaše akce jednou a přidružte skupinu akcí více výstrah – napříč Azure. Bez nutnosti opakovaně opětovně deklarovat stejné akce. Skupiny akcí podporovat více akcí – včetně e-mailu, SMS, hlasovým hovorem, připojení ITSM, Runbook služby Automation, Webhooku URI a dalších. 
 
-Pro uživatele, kteří rozšířili své výstrahy do Azure – by měl nyní mít plán k dispozici podrobnosti skupiny akcí, které mají za úkol vytvořit výstrahu. Podrobnosti o e-mailu, adresy URL Webhooku, automatických postupů Runbook. Podrobnosti a další akce, musí být definován na straně nejdříve výstrahu; před vytvořením skupiny akcí můžete vytvořit jednu [skupiny akcí ze služby Azure Monitor](../../azure-monitor/platform/action-groups.md) portálu nebo pomocí [akce skupiny API](https://docs.microsoft.com/rest/api/monitor/actiongroups).
+Pro uživatele, kteří rozšířili své výstrahy do Azure – by měl nyní mít plán k dispozici podrobnosti skupiny akcí, které mají za úkol vytvořit výstrahu. Podrobnosti e-mailu, adresy URL Webhooku, podrobnosti automatizace sady Runbook a další akce musí být před vytvořením výstrahy nejprve definovány na straně skupiny akcí; jedna z nich může vytvořit [skupinu akcí z Azure monitor](../../azure-monitor/platform/action-groups.md) na portálu nebo pomocí [rozhraní API pro skupiny akcí](https://docs.microsoft.com/rest/api/monitor/actiongroups).
 
 Přidat přidružení skupiny akcí na výstrahu, zadejte jedinečné ID Azure Resource Manageru skupiny akcí v definici upozornění. Obrázek ukázky jsou uvedeny níže:
 
@@ -269,7 +267,7 @@ Použijte metodu Put se existující ID akce Upravit skupinu akcí přidružené
 Výchozí akcí postupujte podle standardní šablony a formát pro oznámení. Ale může uživatel přizpůsobit některé akce, i když jsou ovládány skupin akcí. V současné době je možné, předmět e-mailu a datová část Webhooku vlastní nastavení.
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>Přizpůsobit předmět e-mailu pro skupinu akcí
-Ve výchozím nastavení, je předmět e-mailu pro výstrahy: oznámení výstrah `<AlertName>` pro `<WorkspaceName>`. Ale to je možné přizpůsobit, tak, aby bylo možné konkrétní slova nebo značky – aby bylo možné snadno využívat pravidla filtru v doručené poště. Podrobnosti o vlastní e-mailové hlavičky potřeba odeslat spolu s podrobnostmi skupina akcí, jako v následující ukázce.
+Ve výchozím nastavení je předmět e-mailu pro výstrahy: oznámení výstrahy `<AlertName>` pro `<WorkspaceName>`. Ale to je možné přizpůsobit, tak, aby bylo možné konkrétní slova nebo značky – aby bylo možné snadno využívat pravidla filtru v doručené poště. Podrobnosti o vlastní e-mailové hlavičky potřeba odeslat spolu s podrobnostmi skupina akcí, jako v následující ukázce.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -301,7 +299,7 @@ Použijte metodu Put se existující ID akce Upravit skupinu akcí přidružené
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 ##### <a name="customize-webhook-payload-for-action-group"></a>Vlastní datová část Webhooku pro skupinu akcí
-Ve výchozím nastavení má webhooku odeslaná pomocí skupiny akcí pro log analytics pevnou strukturu. Ale jeden přizpůsobit datovou část JSON s použitím konkrétní proměnné, které jsou podporované pro splnění požadavků na koncový bod webhooku. Další informace najdete v tématu [akce Webhooku pro pravidla upozornění protokolů](../../azure-monitor/platform/alerts-log-webhook.md). 
+Ve výchozím nastavení má webhooku odeslaná pomocí skupiny akcí pro log analytics pevnou strukturu. Ale jeden přizpůsobit datovou část JSON s použitím konkrétní proměnné, které jsou podporované pro splnění požadavků na koncový bod webhooku. Další informace najdete v tématu [Akce Webhooku pro pravidla upozornění protokolu](../../azure-monitor/platform/alerts-log-webhook.md). 
 
 Podrobnosti o vlastní webhooku nemusejí odeslat spolu s podrobnostmi skupina akcí a použít na všechny Webhooku URI zadat v rámci skupiny akcí; stejně jako v následující ukázce.
 
@@ -338,7 +336,7 @@ Použijte metodu Put se existující ID akce Upravit skupinu akcí přidružené
 
 ## <a name="next-steps"></a>Další kroky
 
-* Použití [rozhraní REST API k provedení prohledávání protokolů](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics.
+* Pomocí [REST API provádět prohledávání protokolu](../../azure-monitor/log-query/log-query-overview.md) v Log Analytics.
 * Informace o [upozorněních protokolu ve službě Azure monitor](../../azure-monitor/platform/alerts-unified-log.md)
 * Jak [vytvářet, upravovat a spravovat pravidla upozornění protokolů ve službě Azure monitor](../../azure-monitor/platform/alerts-log.md)
 

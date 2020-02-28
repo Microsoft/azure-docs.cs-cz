@@ -1,18 +1,17 @@
 ---
 title: Řešení Azure Networking Analytics v Azure Monitor | Microsoft Docs
 description: Řešení Azure Networking Analytics v Azure Monitor můžete použít ke kontrole protokolů skupin zabezpečení sítě Azure a protokolů Azure Application Gateway.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 5cce4ccd3acd9df896f6c28bd010a92ed4ec1a7a
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893310"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667087"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Řešení monitorování sítě Azure v Azure Monitor
 
@@ -226,7 +225,7 @@ Použití aktualizovaných řešení:
 
 Data shromážděná před změnou nejsou v novém řešení viditelná. Můžete pokračovat v dotazování na tato data pomocí starého názvu typu a pole.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Další kroky

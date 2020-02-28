@@ -1,19 +1,15 @@
 ---
-title: Co je Azure Application Insights? | Microsoft Docs
+title: Co je Azure Application Insights? | Dokumenty Microsoft
 description: Správa výkonu aplikací a monitorování využití živých webových aplikací.  Rozpoznávání, třídění a diagnostika problémů a náhled na to, jak ostatní využívají vaše aplikace.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: overview
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 16ebde7d98fbbf95f6c83275ab986ed91c89d736
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: cfd5925c61d1edf1fe9477d3239ec77a4c3de326
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190207"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666288"
 ---
 # <a name="what-is-application-insights"></a>Co je Application Insights?
 Application Insights, funkce [Azure monitor](../overview.md), je rozšiřitelná služba pro správu výkonu aplikací (APM) pro vývojáře a odborníky v oblasti DevOps. Použijte ho k monitorování svých živých aplikací. Automaticky detekuje anomálie výkonu a obsahuje výkonné analytické nástroje, které vám pomohou diagnostikovat problémy a pochopit, co uživatelé s vaší aplikací skutečně dělají.  Je navržená tak, aby pomáhala průběžně vylepšovat výkon a možnosti využití. Funguje pro aplikace na nejrůznějších platformách, jako jsou .NET, Node. js a Java EE, hostované místně, hybridním nebo jakýmkoli veřejným cloudem. Integruje se s vaším procesem DevOps a obsahuje body připojení k celé řadě dalších vývojářských nástrojů. Díky integraci s Visual Studio App Center může monitorovat a analyzovat telemetrii z mobilních aplikací.
@@ -66,7 +62,7 @@ Data se dají prozkoumávat mnoha způsoby. Podívejte se na tyto články:
 | [**Ladicí program snímků**](../../azure-monitor/app/snapshot-debugger.md)<br/>Laďte vzorky snímků z operací za provozu s hodnotami parametrů.|![Visual Studio](./media/app-insights-overview/snapshot.png) |
 | [**Power BI**](../../azure-monitor/app/export-power-bi.md )<br/>Integrujte metriky využití s ostatními funkcemi business intelligence.| ![Power BI](./media/app-insights-overview/power-bi.png)|
 | [**REST API**](https://dev.applicationinsights.io/)<br/>Napište kód pro spouštění dotazů nad daty metrik a nezpracovanými daty.| ![REST API](./media/app-insights-overview/rest-tn.png) |
-| [**Průběžný export**](../../azure-monitor/app/export-telemetry.md)<br/>Nezpracovaná data se dají hromadně exportovat do úložiště, jakmile dorazí. |![Export](./media/app-insights-overview/export-tn.png) |
+| [**Průběžný export**](../../azure-monitor/app/export-telemetry.md)<br/>Nezpracovaná data se dají hromadně exportovat do úložiště, jakmile dorazí. |![Exportovat](./media/app-insights-overview/export-tn.png) |
 
 ## <a name="how-do-i-use-application-insights"></a>Jak se Application Insights dá využít?
 

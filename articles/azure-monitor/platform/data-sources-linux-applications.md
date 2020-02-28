@@ -1,25 +1,24 @@
 ---
 title: Shromažďovat výkon aplikací pro Linux v Azure Monitor | Microsoft Docs
 description: Tento článek poskytuje podrobné informace o konfiguraci Log Analytics agenta pro Linux ke shromáždění čítačů výkonu pro MySQL a Server HTTP s Apache.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75395837"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670555"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Shromažďování čítačů výkonu pro aplikace pro Linux v Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 Tento článek poskytuje podrobné informace o konfiguraci [Log Analytics agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) ke shromažďování čítačů výkonu pro konkrétní aplikace do Azure monitor.  Mezi aplikace, které jsou součástí tohoto článku, patří:  
 
 - [MySQL](#mysql)
-- [Apache HTTP Server](#apache-http-server)
+- [Server Apache HTTP](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
 Pokud se v počítači při instalaci agenta Log Analytics zjistí server MySQL nebo server MariaDB, automaticky se nainstaluje poskytovatel monitorování výkonu pro MySQL server. Tento zprostředkovatel se připojí k místnímu serveru MySQL/MariaDB a zveřejní statistiku výkonu. Přihlašovací údaje uživatele MySQL musí být nakonfigurovány tak, aby poskytovatel mohl získat přístup k serveru MySQL.
@@ -71,7 +70,7 @@ Součástí instalace poskytovatele MySQL OMI je programový soubor MySQL OMI Au
 
 Následující tabulka uvádí podrobnosti o syntaxi pro použití mycimprovauth.
 
-| Operace | Příklad: | Popis
+| Operace | Příklad | Popis
 |:--|:--|:--|
 | AutoUpdate *false nebo true* | mycimprovauth AutoUpdate – NEPRAVDA | Nastaví, jestli se má soubor ověření automaticky aktualizovat při restartování nebo aktualizaci. |
 | výchozí *přihlašovací heslo pro adresu BIND* | mycimprovauth výchozí adresa 127.0.0.1 root PWD | Nastaví výchozí instanci v souboru OMI pro ověřování MySQL.<br>Pole heslo by mělo být zadáno v prostém textu – heslo v souboru OMI pro ověřování MySQL bude obsahovat kódování Base 64. |
@@ -112,8 +111,8 @@ Jakmile nakonfigurujete Log Analytics agenta pro Linux, aby odesílal data do Az
 
 | Název objektu | Název čítače |
 |:--|:--|
-| Databáze MySQL | Místo na disku v bajtech |
-| Databáze MySQL | Tabulky |
+| MySQL Database | Místo na disku v bajtech |
+| MySQL Database | Tabulky |
 | Server MySQL | Procento přerušení připojení |
 | Server MySQL | Připojení pomocí protokolu PCT |
 | Server MySQL | Využití místa na disku v bajtech |
@@ -162,4 +161,4 @@ Jakmile nakonfigurujete Log Analytics agenta pro Linux, aby odesílal data do Az
 
 ## <a name="next-steps"></a>Další kroky
 * [Shromáždí čítače výkonu](data-sources-performance-counters.md) od agentů systému Linux.
-* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení. 
+* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení. 

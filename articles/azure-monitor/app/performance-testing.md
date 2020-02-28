@@ -1,19 +1,15 @@
 ---
 title: Testování výkonu a zátěže s využitím Azure Application Insights | Microsoft Docs
 description: Nastavení výkonu a zátěžových testů pomocí Azure Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: db23fae6bb15e851d22e54b323428c061f55b34f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406551"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669858"
 ---
 # <a name="performance-testing"></a>Testování výkonu
 
@@ -38,7 +34,7 @@ V části **Konfigurovat**přejděte na **testování výkonu** a kliknutím na 
 
 Chcete-li vytvořit základní test výkonnosti, vyberte typ testu **manuálního testu** a vyplňte požadovaná nastavení testu.
 
-|Nastavení| Max. hodnota
+|Nastavení| Maximální hodnota
 |----------|------------|
 | Uživatelské zatížení | 20,000 |
 | Doba trvání (minuty)  | 60 |  

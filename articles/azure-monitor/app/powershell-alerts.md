@@ -1,18 +1,14 @@
 ---
 title: Použití PowerShellu k nastavení výstrah v Application Insights | Microsoft Docs
 description: Automatizujte konfiguraci Application Insights, abyste získali e-maily o změnách metriky.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 10/31/2016
-ms.openlocfilehash: cf03fa0055710dde86a0f74cd58344575494faf1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928570"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669841"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>Použití prostředí PowerShell k nastavení výstrahy v nástroji Application Insights
 
@@ -105,7 +101,7 @@ Stejné pravidlo lze použít pro metriku nahlášenou pomocí [parametru měře
 | `performanceCounter.available_bytes.value` |Dostupná paměť |K okamžitému zpřístupnění fyzické paměti pro proces nebo pro použití systémem. |
 | `performanceCounter.io_data_bytes_per_sec.value` |Rychlost zpracování v/v |Celkový počet bajtů za sekundu přečtených a zapsaných do souborů, sítě a zařízení. |
 | `performanceCounter.number_of_exceps_thrown_per_sec.value` |Míra výjimek |Výjimky vyvolané za sekundu. |
-| `performanceCounter.percentage_processor_time.value` |PROCESOR procesů |Procentuální hodnota uplynulého času všech vláken procesu používaných procesorem k provádění instrukcí pro proces aplikace. |
+| `performanceCounter.percentage_processor_time.value` |Procesor procesu |Procentuální hodnota uplynulého času všech vláken procesu používaných procesorem k provádění instrukcí pro proces aplikace. |
 | `performanceCounter.percentage_processor_total.value` |Čas procesoru |Procento času, které procesor stráví v nečinných vláknech |
 | `performanceCounter.process_private_bytes.value` |Nesdílené bajty procesu |Paměť exkluzivně přiřazená k procesům monitorovaných aplikací. |
 | `performanceCounter.request_execution_time.value` |Doba provádění žádosti ASP.NET |Čas provedení posledního požadavku. |
@@ -114,7 +110,7 @@ Stejné pravidlo lze použít pro metriku nahlášenou pomocí [parametru měře
 | `remoteDependencyFailed.durationMetric.count` |Selhání závislosti |Počet neúspěšných volání prováděných serverovou aplikací vůči externím prostředkům |
 | `request.duration` |Doba odezvy serveru |Doba mezi přijetím požadavku HTTP a dokončením odesílání odpovědi |
 | `request.rate` |Počet požadavků |Míra všech žádostí na aplikaci za sekundu. |
-| `requestFailed.count` |Neúspěšné požadavky |Počet požadavků HTTP, jejichž výsledkem byl kód odpovědi > = 400 |
+| `requestFailed.count` |Neúspěšné žádosti |Počet požadavků HTTP, jejichž výsledkem byl kód odpovědi > = 400 |
 | `view.count` |Zobrazení stránek |Počet požadavků uživatelů klienta na webovou stránku. Syntetická přenosová data se odfiltrují. |
 | {vlastní název metriky} |{Název metriky} |Hodnota metriky hlášené [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) nebo v [parametru měření sledovacího hovoru](../../azure-monitor/app/api-custom-events-metrics.md#properties). |
 
@@ -122,7 +118,7 @@ Metriky jsou odesílány různými moduly telemetrie:
 
 | Skupina metrik | Modul sběrače |
 | --- | --- |
-| basicExceptionBrowser,<br/>clientPerformance,<br/>zobrazit |[JavaScript v prohlížeči](../../azure-monitor/app/javascript.md) |
+| basicExceptionBrowser,<br/>clientPerformance,<br/>zobrazení |[JavaScript v prohlížeči](../../azure-monitor/app/javascript.md) |
 | performanceCounter |[Výkon](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | remoteDependencyFailed |[Závislost](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |
 | Request<br/>requestFailed |[Žádost serveru](../../azure-monitor/app/configuration-with-applicationinsights-config.md) |

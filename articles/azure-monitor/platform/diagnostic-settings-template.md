@@ -3,17 +3,16 @@ title: Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce pros
 description: Vytvořte nastavení diagnostiky pomocí šablony Správce prostředků pro přeposílání protokolů platformy Azure do protokolů Azure Monitor, Azure Storage nebo Azure Event Hubs.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 2a171ae89e8314684eddf29f78b9b09bc52f9c9b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977557"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672425"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Vytvoření nastavení diagnostiky v Azure pomocí šablony Správce prostředků
 [Nastavení diagnostiky](diagnostic-settings.md) v Azure monitor určují, kam se mají posílat [protokoly platforem](platform-logs-overview.md) , které shromažďují prostředky Azure, a platforma Azure, na které jsou závislé. V tomto článku najdete podrobné informace a příklady použití [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) k vytvoření a konfiguraci nastavení diagnostiky pro shromažďování protokolů platforem do různých umístění.
@@ -69,7 +68,7 @@ Následuje šablona, která shromažďuje kategorii protokolu prostředků pro u
 
 
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 Následuje příklad, který vytvoří nastavení diagnostiky pro nastavení automatického škálování, které umožňuje streamování protokolů prostředků do centra událostí, účtu úložiště a Log Analytics pracovního prostoru.
 
 ```json

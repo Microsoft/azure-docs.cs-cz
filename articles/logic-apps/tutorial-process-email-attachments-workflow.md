@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 10/20/2019
-ms.openlocfilehash: 9f25486aba9549855939b06ea5b8dfc14db0af95
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 02/27/2020
+ms.openlocfilehash: 4adcda6030ed59cb6cc2285eb1c1eea0f768662c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969126"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662668"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Kurz: automatizace úloh pro zpracování e-mailů pomocí Azure Logic Apps, Azure Functions a Azure Storage
 
@@ -34,7 +34,7 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 ![Hotová aplikace logiky na základní úrovni](./media/tutorial-process-email-attachments-workflow/overview.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, [zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 
@@ -44,7 +44,7 @@ Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat 
 
 * Zdarma stáhnout a nainstalovat [Průzkumníka služby Microsoft Azure Storage](https://storageexplorer.com/). Tento nástroj vám umožní zkontrolovat, jestli máte kontejner úložiště správně nastavený.
 
-## <a name="sign-in-to-azure-portal"></a>Přihlásit se na Azure Portal
+## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí přihlašovacích údajů svého účtu Azure.
 
@@ -57,11 +57,11 @@ Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejner
    | Nastavení | Hodnota | Popis |
    |---------|-------|-------------|
    | **Předplatné** | <*název_předplatného_Azure*> | Název vašeho předplatného Azure |  
-   | **Skupina prostředků** | <*Azure-resource-group*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md), který slouží k uspořádání a správě souvisejících prostředků V tomto příkladu se používá "LA-tutorial-RG". <p>**Poznámka:** Skupina prostředků existuje v konkrétní oblasti. Položky z tohoto kurzu nemusí být k dispozici ve všech oblastech, snažte se nicméně používat stejnou oblast, kdykoli je to možné. |
+   | **Skupina prostředků** | <*Azure-Resource-group*> | Název [skupiny prostředků Azure](../azure-resource-manager/management/overview.md), který slouží k uspořádání a správě souvisejících prostředků V tomto příkladu se používá "LA-tutorial-RG". <p>**Poznámka:** Skupina prostředků existuje v konkrétní oblasti. Položky z tohoto kurzu nemusí být k dispozici ve všech oblastech, snažte se nicméně používat stejnou oblast, kdykoli je to možné. |
    | **Název účtu úložiště** | <*Azure-Storage-Account-name*> | Název účtu úložiště, který musí mít 3-24 znaků a může obsahovat jenom malá písmena a číslice. V tomto příkladu se používá "attachmentstorageacct". |
    | **Umístění** | <*Azure – oblast*> | Oblast, kam se mají ukládat informace o vašem účtu úložiště V tomto příkladu se používá "Západní USA". |
-   | **Výkon** | Úroveň Standard | Toto nastavení specifikuje podporované datové typy a média pro ukládání dat. Další informace najdete v tématu [Typy účtů úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts). |
-   | **Druh účtu** | Obecné použití | [Typ účtu úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts) |
+   | **Výkon** | Standard | Toto nastavení specifikuje podporované datové typy a média pro ukládání dat. Další informace najdete v tématu [Typy účtů úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts). |
+   | **Druh účtu** | Obecné účely | [Typ účtu úložiště](../storage/common/storage-introduction.md#types-of-storage-accounts) |
    | **Replikace** | Místně redundantní úložiště (LRS) | Toto nastavení určuje, jak se budou kopírovat, ukládat, spravovat a synchronizovat data. Viz [místně redundantní úložiště (LRS): redundance dat s nízkými náklady pro Azure Storage](../storage/common/storage-redundancy-lrs.md). |
    | **Úroveň přístupu (výchozí)** | Ponechte aktuální nastavení. |
    ||||
@@ -89,7 +89,7 @@ Příchozí e-maily a přílohy můžete ukládat jako objekty blob v [kontejner
 
 1. Vytvořte kontejner úložiště objektů blob pro přílohy e-mailů.
 
-   1. V nabídce účtu úložiště vyberte **Přehled**. V části **služby**vyberte **kontejnery**.
+   1. V nabídce účtu úložiště vyberte **Přehled**. V podokně Přehled vyberte **kontejnery**.
 
       ![Přidání kontejneru úložiště objektů blob](./media/tutorial-process-email-attachments-workflow/create-storage-container.png)
 
@@ -148,7 +148,7 @@ Teď pomocí připraveného fragmentu kódu a následujícího postupu vytvořte
    | **Umístění** | USA – západ | Stejná oblast, jakou jste používali dříve |
    | **Zásobník modulu runtime** | Upřednostňovaný jazyk | Vyberte modul runtime, který podporuje váš oblíbený programovací jazyk funkcí. Vyberte **.NET** pro C# funkce F# a. |
    | **Storage** | cleantextfunctionstorageacct | Vytvořte pro svou aplikaci funkcí účet úložiště. Použijte při tom jenom malá písmena a číslice. <p>**Poznámka:** Tento účet úložiště obsahuje vaše aplikace Function App a pro přílohy e-mailů se liší od dříve vytvořeného účtu úložiště. |
-   | **Application Insights** | Zákaz | Zapne monitorování aplikací pomocí [Application Insights](../azure-monitor/app/app-insights-overview.md), ale pro tento kurz vyberte **Zakázat** > **použít**. |
+   | **Application Insights** | Zakázat | Zapne monitorování aplikací pomocí [Application Insights](../azure-monitor/app/app-insights-overview.md), ale pro tento kurz vyberte **Zakázat** > **použít**. |
    ||||
 
    Pokud se vaše aplikace Function po nasazení automaticky neotevře, v poli hledání [Azure Portal](https://portal.azure.com) vyhledejte a vyberte **Function App**. V části **Function App**vyberte svou aplikaci Function App.
@@ -223,24 +223,24 @@ Když zkontrolujete, že funkce pracuje správně, vytvořte aplikaci logiky. Te
 
 ## <a name="create-your-logic-app"></a>Vytvoření aplikace logiky
 
-1. Na domovské stránce Azure v poli hledání vyhledejte a vyberte **Logic Apps**.
+1. Do vyhledávacího pole Azure nejvyšší úrovně zadejte `logic apps`a vyberte **Logic Apps**.
 
    ![Vyhledejte a vyberte "Logic Apps"](./media/tutorial-process-email-attachments-workflow/find-select-logic-apps.png)
 
-1. Na stránce **Logic Apps** vyberte **Přidat**.
+1. V podokně **Logic Apps** vyberte **Přidat**.
 
-   ![Přidat novou aplikaci logiky](./media/quickstart-create-first-logic-app-workflow/add-new-logic-app.png)
+   ![Přidat novou aplikaci logiky](./media/tutorial-process-email-attachments-workflow/add-new-logic-app.png)
 
-1. V části **Vytvořit aplikaci logiky** zadejte podrobnosti o vaší aplikaci logiky, jak je vidět zde. Až budete hotovi, vyberte **vytvořit**.
+1. V podokně **Aplikace logiky** zadejte podrobnosti o vaší aplikaci logiky, jak je znázorněno zde. Až budete hotovi, vyberte **zkontrolovat + vytvořit**.
 
    ![Zadání informací o aplikaci logiky](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
    | Nastavení | Hodnota | Popis |
    | ------- | ----- | ----------- |
-   | **Název** | LA-ProcessAttachment | Název vaší aplikace logiky |
    | **Předplatné** | <*název_vašeho_předplatného_Azure*> | Stejné předplatné Azure, jaké jste používali dříve |
    | **Skupina prostředků** | LA-Tutorial-RG | Stejná skupina prostředků Azure, jakou jste používali dříve |
-   | **Umístění** | USA – západ | Stejná oblast, jakou jste používali dříve |
+   | **Název aplikace logiky** | LA-ProcessAttachment | Název vaší aplikace logiky |
+   | **Vyberte umístění.** | USA – západ | Stejná oblast, jakou jste používali dříve |
    | **Log Analytics** | Vypnuto | Pro tento kurz vyberte nastavení **vypnuto** . |
    ||||
 
@@ -279,7 +279,7 @@ Teď přidejte [trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts
       | **Složka** | Doručená pošta | E-mailová složka, která se má kontrolovat |
       | **Má přílohu** | Ano | Načte jen e-maily s přílohami. <p>**Poznámka:** Trigger neodebere z vašeho účtu žádné e-maily. Kontroluje jenom nové zprávy a zpracovává jenom e-maily odpovídající filtru pro předmět. |
       | **Zahrnout přílohy** | Ano | Místo samotné kontroly příloh je načtěte jako vstup do pracovního postupu. |
-      | **Interval** | 1\. místo | Počet intervalů, po které se má čekat mezi kontrolami |
+      | **Interval** | 1 | Počet intervalů, po které se má čekat mezi kontrolami |
       | **Frekvence** | Minuta | Jednota času pro každý interval mezi kontrolami |
       ||||
 
@@ -598,7 +598,7 @@ V dalším kroku přidejte akci, která zajistí, aby aplikace logiky odeslala e
 
    Pokud nemůžete najít očekávané pole v seznamu dynamického obsahu, vyberte **Zobrazit více** vedle **při přijetí nového e-mailu**.
 
-   | Nastavení | Hodnota | Poznámky |
+   | Nastavení | Hodnota | Poznámky: |
    | ------- | ----- | ----- |
    | **Komu** | <*recipient-email-address*> | Pro účely testování můžete použít svou vlastní e-mailovou adresu. |
    | **Předmět**  | ```ASAP - Review applicant for position:``` **Předmět** | Předmět e-mailu, který chcete zahrnout. Klikněte do tohoto pole, zadejte příklad textu a v seznamu dynamického obsahu u položky **Při přijetí nového e-mailu** vyberte pole **Předmět**. |
@@ -667,7 +667,15 @@ Blahopřejeme, právě jste vytvořili a spustili aplikaci logiky, která automa
 
 Pokud tuto ukázku už nepotřebujete, odstraňte skupinu prostředků, která obsahuje vaši aplikaci logiky a související prostředky.
 
-1. V hlavní nabídce Azure vyberte **Skupiny prostředků**. V seznamu skupiny prostředků vyberte skupinu prostředků tohoto kurzu. V podokně **Přehled** vyberte **Odstranit skupinu prostředků**.
+1. Do pole Azure Search na nejvyšší úrovni zadejte `resources groups`a vyberte **skupiny prostředků**.
+
+   ![Vyhledejte a vyberte "skupiny prostředků".](./media/tutorial-process-email-attachments-workflow/find-azure-resource-groups.png)
+
+1. V seznamu **skupiny prostředků** vyberte skupinu prostředků tohoto kurzu. 
+
+   ![Vyhledání skupiny prostředků pro kurz](./media/tutorial-process-email-attachments-workflow/find-select-tutorial-resource-group.png)
+
+1. V podokně **Přehled** vyberte **Odstranit skupinu prostředků**.
 
    ![Odstranění skupiny prostředků aplikace logiky](./media/tutorial-process-email-attachments-workflow/delete-resource-group.png)
 

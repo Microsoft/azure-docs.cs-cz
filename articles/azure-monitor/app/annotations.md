@@ -1,18 +1,14 @@
 ---
 title: Poznámky k verzi pro Application Insights | Microsoft Docs
 description: Přidejte značky nasazení nebo sestavení do grafů Průzkumníka metrik v Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/01/2019
-ms.openlocfilehash: f9ab1f1ef2b64c07a3b0c8ddf93d6ef4293517db
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e0e2a106b276110e13b3c68889e4d1d349ba73a4
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668116"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666509"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Poznámky na grafech metrik v Application Insights
 
@@ -77,7 +73,7 @@ Vytvořte samostatný klíč rozhraní API pro každou ze šablon verze Azure Pi
    
 1. Vyberte **Uložit** v hlavním okně šablony vydané verze a uložte šablonu.
 
-## <a name="view-annotations"></a>Zobrazit poznámky
+## <a name="view-annotations"></a>Zobrazení poznámek
 Když teď k nasazení nové verze použijete šablonu verze, pošle se Application Insights Poznámka. Poznámky se zobrazí v grafech v **Průzkumník metrik**.
 
 Vyberte libovolnou značku poznámky (slabě šedá šipka) a otevřete tak podrobnosti o vydané verzi, včetně žadatele, větve správy zdrojového kódu, kanálu vydání a prostředí.

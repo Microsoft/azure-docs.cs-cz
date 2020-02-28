@@ -1,18 +1,17 @@
 ---
 title: Přehled rozšíření Azure Diagnostics
 description: Použití diagnostiky Azure pro ladění, měření výkonu, monitorování, analýzy provozu v cloudových službách, virtuálních počítačích a Service Fabric
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: d9db4b4c8e6d82f29d227b9f8afe528e000c651e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467991"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672374"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Přehled rozšíření Azure Diagnostics
 Azure Diagnostics rozšíření je [Agent v Azure monitor](agents-overview.md) , který shromažďuje data monitorování z hostovaného operačního systému výpočetních prostředků Azure, včetně virtuálních počítačů. Tento článek obsahuje přehled rozšíření Azure Diagnostics, včetně specifických funkcí, které podporuje, a možností instalace a konfigurace. 
@@ -40,7 +39,7 @@ V následujících tabulkách najdete seznam dat, která se můžou shromažďov
 | Zdroj dat | Popis |
 | --- | --- |
 | Protokoly událostí Windows   | Události z protokolu událostí systému Windows. |
-| Čítače výkonu | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
+| Čítače výkonnosti | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
 | Protokoly IIS             | Informace o použití pro weby služby IIS běžící v hostovaném operačním systému. |
 | Protokoly aplikací     | Sleduje zprávy zapsané vaší aplikací. |
 | Protokoly EventSource .NET |Psaní kódu pro události pomocí třídy [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) .NET |
@@ -55,7 +54,7 @@ V následujících tabulkách najdete seznam dat, která se můžou shromažďov
 | Zdroj dat | Popis |
 | --- | --- |
 | Syslog | Události odeslané do systému protokolování událostí pro Linux.   |
-| Čítače výkonu  | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
+| Čítače výkonnosti  | Číselné hodnoty, které měří výkon různých aspektů operačního systému a zatížení. |
 | Soubory protokolu | Záznamy odesílané do protokolu založeného na souborech.  |
 
 ## <a name="data-destinations"></a>Cíle dat
@@ -86,7 +85,7 @@ LAD zapisuje data do tabulek v Azure Storage. Podporuje jímky v následující 
 
 
 ## <a name="installation-and-configuration"></a>Instalace a konfigurace
-Diagnostické rozšíření je implementováno jako [rozšíření virtuálního počítače](/virtual-machines/extensions/overview) v Azure, takže podporuje stejné možnosti instalace pomocí Správce prostředků šablon, PowerShellu a rozhraní příkazového řádku. Obecné informace o instalaci a údržbě rozšíření virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů pro Windows](/virtual-machines/extensions/features-windows) a [rozšíření virtuálních počítačů pro Linux](/virtual-machines/extensions/features-linux) .
+Diagnostické rozšíření je implementováno jako [rozšíření virtuálního počítače](../../virtual-machines/extensions/overview.md) v Azure, takže podporuje stejné možnosti instalace pomocí Správce prostředků šablon, PowerShellu a rozhraní příkazového řádku. Obecné informace o instalaci a údržbě rozšíření virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů pro Windows](../../virtual-machines/extensions/features-windows.md) a [rozšíření virtuálních počítačů pro Linux](../../virtual-machines/extensions/features-linux.md) .
 
 Můžete taky nainstalovat a nakonfigurovat diagnostické rozšíření Windows a Linux v Azure Portal v části **nastavení diagnostiky** v nabídce **monitorování** virtuálního počítače.
 

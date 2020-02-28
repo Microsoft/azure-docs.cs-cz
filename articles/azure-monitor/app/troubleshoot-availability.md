@@ -1,21 +1,19 @@
 ---
 title: Řešení potíží s testy dostupnosti služby Azure Application Insights | Microsoft Docs
 description: Řešení potíží s webovými testy v Azure Application Insights. Zasílání upozornění, pokud web přestane být k dispozici nebo reaguje pomalu.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 71c16fa005710bb5816ec69716573b79fcae620a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f135aa6c0a4a55f8a42fd858572cc811e25b27c5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899529"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671099"
 ---
-# <a name="troubleshooting"></a>Řešení potíží
+# <a name="troubleshooting"></a>Odstraňování potíží
 
 Tento článek vám pomůže vyřešit běžné problémy, ke kterým může dojít při použití monitorování dostupnosti.
 
@@ -48,7 +46,7 @@ Tento článek vám pomůže vyřešit běžné problémy, ke kterým může doj
 > [!NOTE]
 > Adresa URL nemusí selhat v prohlížečích, které mají odlehčené ověřování hlaviček protokolu HTTP. Podrobné vysvětlení tohoto problému najdete v tomto blogovém příspěvku: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
-## <a name="common-troubleshooting-questions"></a>Běžné otázky k řešení problémů
+## <a name="common-troubleshooting-questions"></a>Běžné otázky k odstraňování potíží
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Web vypadá v pořádku, ale zobrazuje se selhání testu? Proč mi Application Insights upozorňování?
 

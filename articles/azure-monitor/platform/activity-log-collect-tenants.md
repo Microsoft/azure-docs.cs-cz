@@ -1,18 +1,17 @@
 ---
 title: Shromažďování protokolů aktivit Azure do pracovního prostoru Log Analytics napříč klienty Azure | Microsoft Docs
 description: Pomocí Event Hubs a Logic Apps můžete shromažďovat data z protokolu aktivit Azure a odesílat je do Log Analyticsho pracovního prostoru v Azure Monitor v jiném tenantovi.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: e3b368f8a59d201f70bfad05125ed59b4b8551c5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 52bf8b955ef4dc9cfae7fd74fbad0df744609196
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529996"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669263"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Shromažďování protokolů aktivit Azure do Azure Monitor napříč klienty Azure Active Directory (starší verze)
 
@@ -123,11 +122,11 @@ Pokud chcete získat název a připojovací řetězec centra událostí, postupu
 
 2. Zadejte nastavení uvedená v následující tabulce.
 
-    ![Vytvoření aplikace logiky](media/collect-activity-logs-subscriptions/create-logic-app.png)
+    ![Vytvořit aplikaci logiky](media/collect-activity-logs-subscriptions/create-logic-app.png)
 
    |Nastavení | Popis  |
    |:---|:---|
-   | Name (Název)           | Jedinečný název aplikace logiky. |
+   | Název           | Jedinečný název aplikace logiky. |
    | Předplatné   | Vyberte předplatné Azure, které bude obsahovat aplikaci logiky. |
    | Skupina prostředků | Vyberte některou z existujících skupin prostředků Azure nebo pro aplikaci logiky vytvořte novou. |
    | Umístění       | Vyberte oblast datového centra pro nasazení aplikace logiky. |
@@ -292,7 +291,7 @@ Akce [kolekce dat Azure Log Analytics](https://docs.microsoft.com/connectors/azu
 
    ![Přidání akce Odeslat data do analytiky protokolů ve službě Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-connector.png)
 
-3. Zadejte název připojení a vložte **ID pracovního prostoru** a **Klíč pracovního prostoru** pro váš pracovní prostor služby Log Analytics.  Klikněte na **Vytvořit**.
+3. Zadejte název připojení a vložte **ID pracovního prostoru** a **Klíč pracovního prostoru** pro váš pracovní prostor služby Log Analytics.  Klikněte na možnost **Vytvořit**.
 
    ![Přidání připojení k analytice protokolů ve službě Logic Apps](media/collect-activity-logs-subscriptions/logic-apps-log-analytics-add-connection.png)
 

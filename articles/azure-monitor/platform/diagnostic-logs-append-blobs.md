@@ -3,17 +3,16 @@ title: Příprava na změnu formátu pro Azure Monitor protokoly prostředků
 description: Popisuje dopad a postup aktualizace nástrojů na zpracování nových protokolů prostředků Azure, které se změnily tak, aby používaly doplňovací objekty blob, od 1. listopadu 2018.
 author: johnkemnetz
 services: monitoring
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: dc7fd8916f356414437d4def21f26f0b651ee76f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d30652d4e068cbceb79e6da60b48176b9de64647
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893514"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670436"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Příprava na změnu formátu Azure Monitor archivované protokoly prostředků do účtu úložiště
 

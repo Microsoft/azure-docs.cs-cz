@@ -1,18 +1,16 @@
 ---
 title: Vytvoření a spuštění vlastních testů dostupnosti pomocí Azure Functions
 description: Tento dokument popisuje, jak vytvořit funkci Azure pomocí TrackAvailability (), která se pravidelně spouští podle konfigurace zadané ve funkci TimerTrigger. Výsledky tohoto testu se odešlou do vašeho prostředku Application Insights, kde se budete moct dotazovat na data výsledků dostupnosti a upozornit na ně. Přizpůsobené testy vám umožní zapisovat složitější testy dostupnosti, než je možné pomocí uživatelského rozhraní portálu, monitorovat aplikaci v rámci virtuální sítě Azure, změnit adresu koncového bodu nebo vytvořit test dostupnosti, pokud není ve vaší oblasti dostupný.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: morgangrobin
 ms.author: mogrobin
 ms.date: 11/22/2019
-ms.openlocfilehash: c7a8ffb9873fd70353f38bb2b2bbfdb584992377
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815642"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77665795"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Vytvoření a spuštění vlastních testů dostupnosti pomocí Azure Functions
 

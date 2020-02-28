@@ -1,18 +1,17 @@
 ---
 title: Povolit Azure Monitor pro virtuální počítače (Preview) – přehled | Microsoft Docs
 description: Přečtěte si, jak nasadit a nakonfigurovat Azure Monitor pro virtuální počítače. Zjistěte požadavky na systém.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: ce95223e9501ad7bec2bd260a8fe6f1537db5593
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400619"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669569"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Přehled povolení Azure Monitor pro virtuální počítače (Preview)
 
@@ -36,16 +35,16 @@ Než začnete, ujistěte se, že rozumíte informace v následujících částec
 
 Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analytics v následujících oblastech:
 
-- USA – středozápad
-- USA – západ
-- USA – západ 2
-- USA – středojih
-- USA – východ
+- Střed USA – západ
+- Západní USA
+- Západní USA 2
+- Střed USA – jih
+- Východní USA
 - USA – východ 2
-- USA – střed
-- USA – středosever
-- Střední Kanada
-- Spojené království – jih
+- Střed USA
+- Střed USA – sever
+- Kanada – střed
+- Velká Británie – jih
 - Severní Evropa
 - Západní Evropa
 - Východní Asie
@@ -60,7 +59,7 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analyt
 >
 
 Pokud nemáte pracovní prostor, můžete ho vytvořit pomocí jednoho z těchto prostředků:
-* [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+* [Rozhraní příkazového řádku Azure](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
 * [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
@@ -81,30 +80,30 @@ Pokud chcete nakonfigurovat pracovní prostor pro scénář ve velkém měřítk
 
 Následující tabulka uvádí operační systémy Windows a Linux, které Azure Monitor pro virtuální počítače podporuje. Později v této části najdete úplný seznam, který podrobně popisuje hlavní a podverze operačního systému Linux a podporované verze jádra.
 
-|Verze operačního systému |Výkon |Mapy |
+|Verze operačního systému |Výkon |Maps |
 |-----------|------------|-----|
-|Windows Server 2019 | × | × |
-|Windows Server 2016 1803 | × | × |
-|Windows Server 2016 | × | × |
-|Windows Server 2012 R2 | × | × |
-|Windows Server 2012 | × | × |
-|Windows Server 2008 R2 | × | ×|
-|Windows 10 1803 | × | × |
-|Windows 8.1 | × | × |
-|Windows 8 | × | × |
-|Windows 7 SP1 | × | × |
-|Red Hat Enterprise Linux (RHEL) 6, 7| × | ×| 
-|Ubuntu 18,04, 16,04 | × | × |
-|Linux centOS 7, 6 | × | × |
-|SUSE Linux Enterprise Server (SLES) 12 | × | × |
-|Debian 9.4, 8 | X<sup>1</sup> | |
+|Windows Server 2019 | X | X |
+|Windows Server 2016 1803 | X | X |
+|Windows Server 2016 | X | X |
+|Windows Server 2012 R2 | X | X |
+|Windows Server 2012 | X | X |
+|Windows Server 2008 R2 | X | X|
+|Windows 10 1803 | X | X |
+|Windows 8.1 | X | X |
+|Windows 8 | X | X |
+|Windows 7 SP1 | X | X |
+|Red Hat Enterprise Linux (RHEL) 6, 7| X | X| 
+|Ubuntu 18,04, 16,04 | X | X |
+|Linux centOS 7, 6 | X | X |
+|SUSE Linux Enterprise Server (SLES) 12 | X | X |
+|Debian 9.4, 8 | ×<sup>1</sup> | |
 
-<sup>1</sup> the výkonu funkce služby Azure Monitor pro virtuální počítače je k dispozici pouze ze služby Azure Monitor. Není k dispozici přímo v levém podokně virtuálního počítače Azure.
+<sup>1</sup> funkce výkonu Azure monitor pro virtuální počítače je k dispozici pouze Azure monitor. Není k dispozici přímo v levém podokně virtuálního počítače Azure.
 
 >[!NOTE]
 >V operačním systému Linux:
 > - Jsou podporované jen verze s výchozím a SMP jádrem Linuxu.
-> - Používá se nestandardní jádra vyjde nová verze, jako například rozšíření fyzické adresy (PAE) a Xen, nejsou podporovány pro libovolnou distribuci Linuxu. Například systém s řetězec verze *2.6.16.21-0.8-xen* se nepodporuje.
+> - Používá se nestandardní jádra vyjde nová verze, jako například rozšíření fyzické adresy (PAE) a Xen, nejsou podporovány pro libovolnou distribuci Linuxu. Například systém s řetězcem vydání *2.6.16.21-0,8-Xen* není podporován.
 > - Vlastní jádra, včetně překompilování standardních jader, nejsou podporovaná.
 > - Jádro CentOSPlus je podporováno.
 > - Pro chybu zabezpečení Spectre je nutné opravit jádro systému Linux. Další podrobnosti najdete u dodavatele distribuce systému Linux.
@@ -113,9 +112,9 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
-| 7.6 | 3.10.0-957 |
+| 7,6 | 3.10.0-957 |
 | 7.5 | 3.10.0-862 |
-| 7.4 | 3.10.0-693 |
+| 7,4 | 3.10.0-693 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
@@ -137,7 +136,7 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 |:--|:--|
 | 18,04 | 5,0 (zahrnuje jádro Azure vyladěné)<br>4,18 *<br>4,15* |
 | 16.04.3 | 4,15. * |
-| 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
+| 16.04 | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
@@ -166,7 +165,7 @@ V hybridním prostředí můžete agenta závislostí stáhnout a nainstalovat r
 
 Následující tabulka popisuje připojené zdroje, které podporuje funkce mapy v hybridním prostředí.
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporuje se | Popis |
 |:--|:--|:--|
 | Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
 | Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
@@ -174,16 +173,16 @@ Následující tabulka popisuje připojené zdroje, které podporuje funkce mapy
 
 Agenta závislostí si můžete stáhnout z těchto umístění:
 
-| Soubor | OS | Verze | SHA-256 |
+| Soubor | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
-## <a name="role-based-access-control"></a>Řízení přístupu založené na rolích
+## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
 K povolení a přístupu k funkcím v Azure Monitor pro virtuální počítače musíte mít roli *přispěvatel Log Analytics* . Chcete-li zobrazit data o výkonu, stavu a mapování, musíte mít roli *Čtenář monitorování* pro virtuální počítač Azure. Pracovní prostor Log Analytics musí být nakonfigurovaný pro monitorování Azure pro virtuální počítače.
 
-Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
+Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analytics, najdete v tématu [Správa pracovních prostorů](../../azure-monitor/platform/manage-access.md).
 
 ## <a name="how-to-enable-azure-monitor-for-vms-preview"></a>Postup povolení Azure Monitor pro virtuální počítače (Preview)
 
@@ -203,42 +202,42 @@ Azure Monitor pro virtuální počítače nakonfiguruje pracovní prostor Log An
 >[!NOTE]
 >Následující seznam čítačů výkonu povolených v Azure Monitor pro virtuální počítače neomezuje možnost povolit další čítače, které potřebujete pro shromažďování sestav z virtuálních počítačů, které jsou součástí pracovního prostoru. Pokud tyto čítače zakážete, zabrání sada grafů výkonu, které jsou součástí funkce Performance, ze zobrazení využití prostředků z vašich virtuálních počítačů.
 
-### <a name="windows-performance-counters"></a>Čítače výkonu Windows
+### <a name="windows-performance-counters"></a>čítače výkonu systému Windows
 
 |Název objektu |Název čítače |
 |------------|-------------|
-|Logický disk |% Volného místa |
-|Logický disk |Střední doba disku/čtení |
-|Logický disk |Střední doba disku/přenos |
-|Logický disk |Střední doba disku/zápis |
-|Logický disk |Bajty disku/s |
-|Logický disk |Bajty čtení z disku/s |
-|Logický disk |Čtení disku/s |
-|Logický disk |Přenosy disku/s |
-|Logický disk |Bajty zapisování na disk/s |
-|Logický disk |Zápis disku/s |
-|Logický disk |Volné megabajty |
+|LogicalDisk |% Volné místo |
+|LogicalDisk |Střední doba disku/čtení |
+|LogicalDisk |Střední doba disku/přenos |
+|LogicalDisk |Střední doba disku/zápis |
+|LogicalDisk |Disk bajtů/s |
+|LogicalDisk |Čtení disku bajtů/s |
+|LogicalDisk |Čtení disku/s |
+|LogicalDisk |Přenosy disku/s |
+|LogicalDisk |Zápis disku bajtů/s |
+|LogicalDisk |Zápis disku/s |
+|LogicalDisk |Volné megabajty |
 |Paměť |Počet MB k dispozici |
 |Síťový adaptér |Přijaté bajty/s |
 |Síťový adaptér |Odeslané bajty/s |
-|Procesor |% Času procesoru |
+|Procesor |% času procesoru |
 
 ### <a name="linux-performance-counters"></a>Čítače výkonu Linuxu
 
 |Název objektu |Název čítače |
 |------------|-------------|
-|Logický Disk |% Využitého místa |
-|Logický Disk |Bajty čtení z disku/s |
-|Logický Disk |Čtení disku/s |
-|Logický Disk |Přenosy disku/s |
-|Logický Disk |Bajty zapisování na disk/s |
-|Logický Disk |Zápis disku/s |
-|Logický Disk |Volné megabajty |
-|Logický Disk |Bajtů logického disku/s |
+|Logický disk |% Využitého místa |
+|Logický disk |Čtení disku bajtů/s |
+|Logický disk |Čtení disku/s |
+|Logický disk |Přenosy disku/s |
+|Logický disk |Zápis disku bajtů/s |
+|Logický disk |Zápis disku/s |
+|Logický disk |Volné megabajty |
+|Logický disk |Bajtů logického disku/s |
 |Paměť |Dostupná paměť v MB |
-|Network (Síť) |Celkový počet přijatých bajtů |
-|Network (Síť) |Celkový počet bajtů přenesených |
-|Procesor |% Času procesoru |
+|Síť |Celkový počet přijatých bajtů |
+|Síť |Celkový počet bajtů přenesených |
+|Procesor |% času procesoru |
 
 ## <a name="management-packs"></a>Sady Management Pack
 
@@ -252,7 +251,7 @@ Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím
 
 Aby funkce map poskytovala přesné a efektivní možnosti odstraňování potíží, zahrnuje data týkající se konfigurace softwaru. Data obsahují informace, jako je operační systém a verze, IP adresa, název DNS a název pracovní stanice. Společnost Microsoft nebude shromažďovat jména, adresy ani jiné kontaktní údaje.
 
-Další informace o shromažďování a používání dat najdete v článku [prohlášení o ochraně osobních údajů Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
+Další informace o shromažďování a používání dat naleznete v tématu [prohlášení o zásadách ochrany osobních údajů služby Microsoft Online Services](https://go.microsoft.com/fwlink/?LinkId=512132).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -260,4 +259,4 @@ Nyní, když jste povolili monitorování pro váš virtuální počítač, jsou
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak používat funkci monitorování výkonu, najdete v tématu [zobrazení výkonu Azure monitor pro virtuální počítače](vminsights-performance.md). Chcete-li zobrazit závislosti zjištěných aplikací, najdete v článku [zobrazení monitorování Azure pro virtuální počítače mapu](vminsights-maps.md).
+Informace o tom, jak používat funkci monitorování výkonu, najdete v tématu [zobrazení výkonu Azure monitor pro virtuální počítače](vminsights-performance.md). Pokud chcete zobrazit zjištěné závislosti aplikací, přečtěte si téma [zobrazení Azure monitor pro virtuální počítače mapa](vminsights-maps.md).

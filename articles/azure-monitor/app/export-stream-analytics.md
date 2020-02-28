@@ -1,18 +1,14 @@
 ---
 title: Export pomocí Stream Analytics z Azure Application Insights | Microsoft Docs
 description: Stream Analytics může průběžně transformovat, filtrovat a směrovat data, která exportujete z Application Insights.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 01/08/2019
-ms.openlocfilehash: 3be1a643cbe942c0b740ae8ebcc2c7f2dda24854
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: b93bc49d005e3e54f1e5db84e6ff1adc49e25a65
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677940"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664010"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Použití Stream Analytics k zpracování exportovaných dat z Application Insights
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) je ideálním nástrojem pro zpracování dat [exportovaných z Application Insights](export-telemetry.md). Stream Analytics může vyžádat data z nejrůznějších zdrojů. Může data transformovat a filtrovat a pak je směrovat na celou řadu umyvadel.
@@ -111,7 +107,7 @@ V tomto příkladu:
 > 
 
 ## <a name="add-new-output"></a>Přidat nový výstup
-Nyní vyberte > **výstupy** úlohy  > **Přidat**.
+Nyní vyberte > **výstupy** úlohy > **Přidat**.
 
 ![](./media/export-stream-analytics/SA006.png)
 

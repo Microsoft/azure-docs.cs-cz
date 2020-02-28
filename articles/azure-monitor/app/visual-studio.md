@@ -1,20 +1,18 @@
 ---
 title: Ladění v aplikaci Visual Studio s využitím Azure Application Insights
 description: Analýza výkonu a diagnostika webové aplikace během ladění a v produkčním prostředí.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: c4b32d775f64d3adba4ca07fa5154e395717d599
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8905222214d58eeba24ecf50da768ffa1d65c39d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930666"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670878"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Ladění aplikací pomocí Azure Application Insights v aplikaci Visual Studio
 V sadě Visual Studio (2015 a novější) můžete analyzovat výkon a diagnostikovat problémy ve vaší webové aplikaci v ASP.NET během ladění i v produkčním prostředí pomocí telemetrie z [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).

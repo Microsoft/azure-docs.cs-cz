@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: bb75631beed73a6ebd9d1cf2c00c375726fed387
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: faaf32b08fdf2415b1c60192f917fc2aedc14704
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586984"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660984"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell-and-test-the-nat-service"></a>Kurz: Vytvoření brány NAT pomocí Azure PowerShell a testování služby NAT
 
@@ -36,7 +36,7 @@ Tento kurz můžete dokončit pomocí Azure Cloud Shell nebo místně spustit p�
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 
-## <a name="create-a-resource-group"></a>Vytvořit skupinu prostředků
+## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](https://docs.microsoft.com/cli/azure/group). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
@@ -233,7 +233,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmConfigsource -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-Zkombinujte definice konfigurace a vytvořte virtuální počítač s názvem **myVMsource** s [New-AzVM]((https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.8.0)) v **myResourceGroupNAT**.
+Zkombinujte definice konfigurace a vytvořte virtuální počítač s názvem **myVMsource** s [New-AzVM](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) v **myResourceGroupNAT**.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -365,7 +365,7 @@ $sshPublicKey = cat ~/.ssh/id_rsa.pub
 Add-AzVMSshPublicKey -VM $vmConfigdestination -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
 
 ```
-Zkombinujte definice konfigurace a vytvořte virtuální počítač s názvem **myVMdestination** s [New-AzVM]((https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.8.0)) v **myResourceGroupNAT**.
+Zkombinujte definice konfigurace a vytvořte virtuální počítač s názvem **myVMdestination** s [New-AzVM](/powershell/module/az.compute/new-azvm?view=azps-2.8.0) v **myResourceGroupNAT**.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'

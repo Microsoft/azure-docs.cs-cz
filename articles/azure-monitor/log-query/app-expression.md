@@ -1,18 +1,17 @@
 ---
 title: výraz App () v Azure Monitorch dotazech k protokolu | Microsoft Docs
 description: Výraz aplikace se používá v dotazu protokolu Azure Monitor k načtení dat z konkrétní aplikace Application Insights ve stejné skupině prostředků, v jiné skupině prostředků nebo jiném předplatném.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/25/2019
-ms.openlocfilehash: ffef73f88c8679d0b0be81222b1b61c4eaef5098
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933081"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670250"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>výraz App () v Azure Monitor dotazu
 
@@ -29,15 +28,15 @@ Výraz `app` se používá v dotazu Azure Monitor k načtení dat z konkrétní 
 
 - *Identifikátor*: aplikace identifikuje jednu z formátů v následující tabulce.
 
-| Identifikátor | Popis | Příklad:
+| Identifikátor | Popis | Příklad
 |:---|:---|:---|
 | Název prostředku | Lidský čitelný název aplikace (neboli "název komponenty") | aplikace ("fabrikamapp") |
 | Kvalifikovaný název | Úplný název aplikace ve formátu: "Subscription/resourceName/resourceName/název součásti" | aplikace (' AI-prototyp/Fabrikam/fabrikamapp ') |
-| ID | Identifikátor GUID aplikace | aplikace ("988ba129-363e-4415-8fe7-8cbab5447518") |
-| ID prostředku Azure | Identifikátor prostředku Azure |aplikace ("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
+| ID | Identifikátor GUID aplikace | app("988ba129-363e-4415-8fe7-8cbab5447518") |
+| ID prostředku Azure | Identifikátor prostředku Azure |app("/subscriptions/7293b69-db12-44fc-9a66-9c2005c3051d/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp") |
 
 
-## <a name="notes"></a>Poznámky
+## <a name="notes"></a>Poznámky:
 
 * Musíte mít oprávnění ke čtení aplikace.
 * Identifikace aplikace podle jejího názvu předpokládá, že je v rámci všech přístupných předplatných jedinečná. Pokud máte více aplikací se zadaným názvem, dotaz selže z důvodu nejednoznačnosti. V takovém případě je nutné použít jeden z ostatních identifikátorů.

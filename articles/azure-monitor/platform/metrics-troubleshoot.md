@@ -3,17 +3,16 @@ title: Řešení potíží s Azure Monitor grafy metrik
 description: Řešení potíží s vytvářením, přizpůsobením nebo interpretací grafů metrik
 author: vgorbenko
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e1ad4e53596b8228bdef5beb18aa250a9512c49f
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974870"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77659658"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Řešení potíží s grafy metrik
 
@@ -29,7 +28,7 @@ Po kliknutí na tlačítko **Vybrat prostředek** se v dialogovém okně pro vý
 
 1. Ujistěte se, že jste vybrali správnou skupinu prostředků.
     > [!WARNING]
-    > Nejlepšího výkonu dosáhnete, když při prvním otevření Průzkumníka metrik v rozevíracím seznamu **Skupina prostředků** nejsou žádné předem vybrané skupiny prostředků. Musíte vybrat alespoň jednu skupinu a teprve pak se zobrazí prostředky.
+    > Kvůli zajištění nejlepšího výkonu po prvním otevření Průzkumníku metrik rozevírací nabídka **Skupina prostředků** neobsahuje žádné předem vybrané skupiny prostředků. Musíte vybrat alespoň jednu skupinu a teprve pak se zobrazí prostředky.
 
 ## <a name="chart-shows-no-data"></a>Graf nezobrazuje žádná data
 
@@ -105,7 +104,7 @@ Metriky hostovaného operačního systému se ve výchozím nastavení ukládaj�
 
 1. Ověřte, že je povolené [rozšíření Azure Diagnostics](diagnostics-extension-overview.md) a že je nakonfigurované pro shromažďování metrik.
     > [!WARNING]
-    > K odesílání metrik **hostovaného operačního systému** do účtu úložiště není možné použít [agenta Log Analytics](agents-overview.md#log-analytics-agent) (označuje se také jako Microsoft Monitoring Agent nebo MMA).
+    > K odesílání metrik [hostovaného operačního systému](agents-overview.md#log-analytics-agent) do účtu úložiště není možné použít **agenta Log Analytics** (označuje se také jako Microsoft Monitoring Agent nebo MMA).
 
 1. Ujistěte se, že je [pro vaše předplatné zaregistrovaný](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription)poskytovatel prostředků **Microsoft. Insights** .
 

@@ -1,18 +1,16 @@
 ---
 title: Řešení potíží s agentem Azure Application Insights a známé problémy | Microsoft Docs
 description: Známé problémy s příklady Application Insights agenta a řešení potíží. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 30172bf65be52ba1ddd2b9127c3e2b5a284d48dc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 217629ba5c386557455cc2d2b8bd47f85fa8f84e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899593"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671150"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Řešení potíží s agentem Application Insights (dříve s názvem Monitorování stavu v2)
 
@@ -26,9 +24,9 @@ Pokud se jedná o problém, který zde není uveden, můžete nás kontaktovat n
 
 Pokud je některá z těchto knihoven DLL přítomna v adresáři bin, může monitorování selhat:
 
-- Microsoft. ApplicationInsights. dll
-- Microsoft. AspNet. TelemetryCorrelation. dll
-- System. Diagnostics. DiagnosticSource. dll
+- Microsoft.ApplicationInsights.dll
+- Microsoft.AspNet.TelemetryCorrelation.dll
+- System.Diagnostics.DiagnosticSource.dll
 
 Některé z těchto knihoven DLL jsou součástí šablon výchozích aplikací sady Visual Studio, a to i v případě, že je vaše aplikace nepoužívá.
 Pomocí nástrojů pro řešení potíží se můžete podívat na příznaky chování:
@@ -83,12 +81,12 @@ Tento problém sledujeme [tady](https://github.com/microsoft/ApplicationInsights
 
     
     
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
     
 ### <a name="troubleshooting-powershell"></a>Řešení potíží s PowerShellem
 
 #### <a name="determine-which-modules-are-available"></a>Určete, které moduly jsou k dispozici.
-K určení, které moduly jsou nainstalovány, můžete použít příkaz `Get-Module -ListAvailable`.
+Pomocí příkazu `Get-Module -ListAvailable` můžete určit, které moduly jsou nainstalovány.
 
 #### <a name="import-a-module-into-the-current-session"></a>Import modulu do aktuální relace
 Pokud se modul nenačte do relace PowerShellu, můžete ho ručně načíst pomocí příkazu `Import-Module <path to psd1>`.
@@ -97,7 +95,7 @@ Pokud se modul nenačte do relace PowerShellu, můžete ho ručně načíst pomo
 ### <a name="troubleshooting-the-application-insights-agent-module"></a>Řešení potíží s modulem agenta Application Insights
 
 #### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>Vypíše příkazy, které jsou k dispozici v modulu Application Insights agent.
-Spusťte příkaz `Get-Command -Module Az.ApplicationMonitor`, abyste získali dostupné příkazy:
+K získání dostupných příkazů spusťte `Get-Command -Module Az.ApplicationMonitor` příkazu:
 
 ```
 CommandType     Name                                               Version    Source
@@ -126,7 +124,7 @@ Podrobný popis způsobu použití této rutiny najdete v [referenčních inform
 Můžete zkontrolovat procesy v počítači instrumentace a zjistit, jestli jsou všechny knihovny DLL načtené.
 Pokud monitorování funguje, měli byste načíst aspoň 12 knihoven DLL.
 
-Ke kontrole knihoven DLL použijte příkaz `Get-ApplicationInsightsMonitoringStatus -InspectProcess`.
+K zkontrolování knihoven DLL použijte příkaz `Get-ApplicationInsightsMonitoringStatus -InspectProcess`.
 
 Podrobný popis způsobu použití této rutiny najdete v [referenčních informacích k rozhraní API](status-monitor-v2-api-get-status.md) .
 
@@ -147,9 +145,9 @@ Podrobný popis způsobu použití této rutiny najdete v [referenčních inform
 
 #### <a name="collecting-logs"></a>Shromažďování protokolů
 
-1. V příkazové konzole s oprávněními správce spusťte příkaz `iisreset /stop` pro vypnutí služby IIS a všech webových aplikací.
+1. V příkazové konzole s oprávněními správce spusťte pomocí příkazu `iisreset /stop` vypnutí služby IIS a všech webových aplikací.
 2. V PerfView vyberte **Spustit shromažďování**.
-3. V příkazové konzole s oprávněními správce spusťte příkaz `iisreset /start` a spusťte službu IIS.
+3. V příkazové konzole s oprávněními správce spusťte pomocí příkazu `iisreset /start` službu IIS.
 4. Zkuste přejít do aplikace.
 5. Po načtení vaší aplikace se vraťte na PerfView a vyberte **Zastavit shromažďování**.
 

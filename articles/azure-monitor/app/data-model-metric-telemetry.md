@@ -1,19 +1,15 @@
 ---
 title: Datový model pro telemetrii metrik – Azure Application Insights
 description: Application Insights datový model pro telemetrii metrik
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: f697d7543a8551993640ef8c6d6c98fee35c0d68
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3e4a1fc3de58b8e65ab9c7a288bdf3eb37e7bae0
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922224"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671966"
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>Telemetrie metrik: datový model Application Insights
 
@@ -37,7 +33,7 @@ Metrika představující systémové a procesní čítače:
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Probíhá práce... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | Průměrná doba provádění požadavků
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Probíhá práce... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | počet požadavků čekajících na zpracování ve frontě
 
-## <a name="name"></a>Name (Název)
+## <a name="name"></a>Název
 
 Název metriky, kterou byste chtěli vidět na portálu Application Insights a uživatelském rozhraní. 
 
@@ -49,7 +45,7 @@ Jedna hodnota pro měření. Součet jednotlivých měření pro agregaci.
 
 Váha metriky agregované metriky. Neměl by být nastaven pro měření.
 
-## <a name="min"></a>Minimum
+## <a name="min"></a>Min.
 
 Minimální hodnota agregované metriky Neměl by být nastaven pro měření.
 
@@ -57,7 +53,7 @@ Minimální hodnota agregované metriky Neměl by být nastaven pro měření.
 
 Maximální hodnota agregované metriky Neměl by být nastaven pro měření.
 
-## <a name="standard-deviation"></a>Standardní odchylka
+## <a name="standard-deviation"></a>Směrodatná odchylka
 
 Směrodatná odchylka agregované metriky. Neměl by být nastaven pro měření.
 

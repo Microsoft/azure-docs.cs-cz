@@ -1,19 +1,15 @@
 ---
 title: Datový model Azure Application Insights – sledovací telemetrie
 description: Application Insights datový model pro telemetrii trasování
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 6e188039a86f4c655df3098be1d769668dcf3571
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407134"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671949"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Sledovací telemetrie: datový model Application Insights
 

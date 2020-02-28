@@ -1,18 +1,16 @@
 ---
 title: Reference k rozhraní API agenta Azure Application Insights
 description: Reference k rozhraní API agenta Application Insights. Disable-InstrumentationEngine. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: dd546107164632c821c1ee9a1629fe0a1ca071fc
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dafa12db95a10df467bf0d042cfd9395720648b2
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899762"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671371"
 ---
 # <a name="application-insights-agent-api-disable-instrumentationengine"></a>Rozhraní API pro Application Insights agenta: Disable-InstrumentationEngine
 

@@ -7,20 +7,20 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 02/26/2020
+ms.openlocfilehash: 9d18bea70670acba404b2198e6b06ea2e9200c30
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113658"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667019"
 ---
 # <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Kurz: extrakce textu a struktury z objektů BLOB JSON v Azure pomocí rozhraní REST API (Azure Kognitivní hledání)
 
-Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo Image, kanál pro [rozšíření AI](cognitive-search-concept-intro.md) vám může pomoci extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat soubory obrázků (JPG, PNG, TIFF), tento kurz se zaměřuje na obsah založený na slovech, použití detekce jazyka a analýzy textu k vytváření nových polí a informací, které můžete využít v dotazech, omezujících aspektech a filtrech.
+Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrázky, [kanál pro rozšíření AI](cognitive-search-concept-intro.md) může extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat image, tento kurz se zaměřuje na text, používá detekci jazyka a zpracování přirozeného jazyka k vytváření nových polí, která můžete využít v dotazech, omezujících objektech a filtrech.
 
 > [!div class="checklist"]
-> * Začněte s celými dokumenty (nestrukturovaný text), například PDF, MD, DOCX a PPTX v úložišti objektů BLOB v Azure.
+> * Začněte s celými dokumenty (nestrukturovaný text), například PDF, HTML, DOCX a PPTX v úložišti objektů BLOB v Azure.
 > * Definujte kanál, který extrahuje text, detekuje jazyk, rozpoznává entity a detekuje klíčové fráze.
 > * Definujte index pro uložení výstupu (nezpracovaný obsah, plus páry název-hodnota vygenerované kanály).
 > * Spusťte kanál, abyste mohli začít transformovat a analyzovat a vytvořit a načíst index.
@@ -38,7 +38,9 @@ Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https
 
 ## <a name="1---create-services"></a>1\. vytvoření služeb
 
-Tento návod používá pro indexování a dotazování Azure Kognitivní hledání, Cognitive Services pro rozšíření AI a Azure Blob Storage k poskytování dat. Pokud je to možné, vytvořte všechny tři služby ve stejné oblasti a skupině prostředků pro možnost blízkost a spravovatelnost. V praxi může být váš účet Azure Storage v jakékoli oblasti.
+V tomto kurzu se používá Azure Kognitivní hledání pro indexování a dotazy, Cognitive Services v back-endu pro rozšíření AI a Azure Blob Storage k poskytnutí dat. Tento kurz zůstává v rámci bezplatného přidělení 20 transakcí na indexer za den v Cognitive Services, takže je potřeba, abyste vytvořili jenom služby pro vyhledávání a úložiště.
+
+Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pro možnost blízkost a spravovatelnost. V praxi může být váš účet Azure Storage v jakékoli oblasti.
 
 ### <a name="start-with-azure-storage"></a>Začínáme s Azure Storage
 
@@ -84,13 +86,13 @@ Tento návod používá pro indexování a dotazování Azure Kognitivní hledá
 
 1. Uložte připojovací řetězec do poznámkového bloku. Budete ho potřebovat později při nastavování připojení ke zdroji dat.
 
-### <a name="cognitive-services"></a>Cognitive Services
+### <a name="cognitive-services"></a>Kognitivní služby
 
 Obohacení AI je zajištěno Cognitive Services, včetně Analýza textu a Počítačové zpracování obrazu pro zpracování přirozeného jazyka a obrazu. Pokud by vaším cílem bylo dokončit skutečný prototyp nebo projekt, měli byste v tomto okamžiku zřídit Cognitive Services (ve stejné oblasti jako Azure Kognitivní hledání), abyste ho mohli připojit k operacím indexování.
 
 Pro toto cvičení ale můžete přeskočit zřizování prostředků, protože Azure Kognitivní hledání se může připojit k Cognitive Services na pozadí a poskytnout vám 20 bezplatných transakcí na indexer. Vzhledem k tomu, že tento kurz používá 7 transakcí, je bezplatné přidělení dostatečné. Pro větší projekty Naplánujte zřizování Cognitive Services na úrovni průběžných plateb. Další informace najdete v tématu věnovaném [připojení Cognitive Services](cognitive-search-attach-cognitive-services.md).
 
-### <a name="azure-cognitive-search"></a>Kognitivní hledání v Azure
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
 Třetí součástí je Azure Kognitivní hledání, kterou můžete vytvořit na [portálu](search-create-service-portal.md). K dokončení tohoto Názorného postupu můžete použít bezplatnou úroveň. 
 
@@ -481,13 +483,13 @@ Tyto dotazy znázorňují několik způsobů, jak můžete pracovat se syntaxí 
 
 ## <a name="reset-and-rerun"></a>Resetování a opětovné spuštění
 
-V předčasných fázích vývoje kanálu je nejpohodlnější přístup k iteracím v rámci návrhu odstranění objektů z Azure Kognitivní hledání a povolení jejich opětovného sestavování kódu. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem.
+V počátečních fázích vývoje je praktické odstranit objekty z Azure Kognitivní hledání a nechat si kód znovu sestavit. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem.
 
-Pokud chcete dokumenty znovu indexovat s novými definicemi:
+Postup opětovného indexování dokumentů s novými definicemi:
 
 1. Odstraňte indexer, index a dovednosti.
-2. Upravit objekty.
-3. Znovu vytvořte službu pro spuštění kanálu. 
+2. Upravte definice objektů.
+3. Znovu vytvořte objekty ve vaší službě. Při opětovném vytváření indexeru se spustí kanál. 
 
 Portál **můžete použít k** odstranění indexů, indexerů a dovednosti nebo k zadání adresy URL pro každý objekt. Následující příkaz odstraní indexer.
 

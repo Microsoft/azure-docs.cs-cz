@@ -1,18 +1,15 @@
 ---
 title: Přehled klasických výstrah v Microsoft Azure a Azure Monitor
 description: Klasické výstrahy jsou zastaralé. Výstrahy umožňují sledovat metriky prostředků Azure, události nebo protokoly a být oznámeny, pokud je splněna podmínka, kterou zadáte.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 2d150006fb4638d3efb15111013d17e43c8b125e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.subservice: alerts
+ms.openlocfilehash: 098efd3075c6b099bdfc925cb4f09163f83532a5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747018"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668262"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Co jsou klasické výstrahy v Microsoft Azure?
 
@@ -81,8 +78,8 @@ Starší výstrahy metriky ale nepoužívají skupiny akcí. Místo toho můžet
 
 Webhooky umožňují automatizaci a nápravu, například pomocí:
 - Runbook Azure Automation
-- Funkce Azure Functions
-- Azure Logic App
+- Funkce Azure
+- Aplikace logiky Azure
 - Služba třetí strany
 
 ## <a name="next-steps"></a>Další kroky

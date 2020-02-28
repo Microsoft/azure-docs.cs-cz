@@ -3,17 +3,16 @@ title: Exportovat protokol aktivit Azure
 description: Exportujte protokol aktivit Azure do úložiště k archivaci nebo Azure Event Hubs pro export mimo Azure.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845466"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668957"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Export protokolu aktivit Azure do úložiště nebo do Azure Event Hubs
 
@@ -118,9 +117,9 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
     Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
     ```
 
-    | Vlastnost | Požaduje se | Popis |
+    | Vlastnost | Požadováno | Popis |
     | --- | --- | --- |
-    | Name (Název) |Ano |Název vašeho profilu protokolu. |
+    | Název |Ano |Název vašeho profilu protokolu. |
     | StorageAccountId |Ne |ID prostředku účtu úložiště, do kterého se má ukládat protokol aktivit |
     | serviceBusRuleId |Ne |Service Bus ID pravidla pro Service Bus oboru názvů, ve kterém chcete vytvořit centra událostí. Toto je řetězec ve formátu: `{service bus resource ID}/authorizationrules/{key name}`. |
     | Umístění |Ano |Čárkami oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. |
@@ -161,14 +160,14 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-    | Vlastnost | Požaduje se | Popis |
+    | Vlastnost | Požadováno | Popis |
     | --- | --- | --- |
-    | jméno |Ano |Název vašeho profilu protokolu. |
+    | name |Ano |Název vašeho profilu protokolu. |
     | storage-account-id |Ano |ID prostředku účtu úložiště, do kterého se mají ukládat protokoly aktivit |
-    | locations |Ano |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name`. |
-    | days |Ano |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
-    |enabled | Ano |True nebo False.  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
-    | categories |Ano |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
+    | místa |Ano |Mezerou oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Seznam všech oblastí pro vaše předplatné můžete zobrazit pomocí `az account list-locations --query [].name`. |
+    | dní |Ano |Počet dní, po které se mají uchovávat události v rozmezí od 1 do 365. Hodnota nula bude ukládat protokoly po neomezenou dobu (navždy).  Je-li nastavena hodnota nula, parametr Enabled by měl být nastaven na hodnotu false. |
+    |povolené | Ano |True nebo False.  Slouží k povolení nebo zakázání zásad uchovávání informací.  Pokud je hodnota true, parametr Days musí být hodnota větší než 0.
+    | kategorie |Ano |Prostor – seznam kategorií událostí, které mají být shromážděny. Možné hodnoty jsou Write, DELETE a Action. |
 
 
 

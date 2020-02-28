@@ -1,18 +1,17 @@
 ---
 title: Azure Key Vault řešení v Azure Monitor | Microsoft Docs
 description: K revizi protokolů Azure Key Vault můžete použít řešení Azure Key Vault v Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 8d9c5f63a00179903c0920912aba642311a354e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889103"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77667139"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Řešení Azure Key Vault Analytics v Azure Monitor
 
@@ -114,7 +113,7 @@ Azure Key Vault řešení analyzuje záznamy, které mají typ **trezorů** klí
 | `Resource` |Název trezoru klíčů |
 | `ResourceGroup` |Skupina prostředků trezoru klíčů |
 | `ResourceId` |ID prostředku Azure Resource Manageru V případě protokolů Key Vault se jedná o Key Vault ID prostředku. |
-| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
+| `ResourceProvider` |*Microsoft. KEYVAULT* |
 | `ResourceType` | *TREZORY* |
 | `ResultSignature` |Stav HTTP (například *OK*) |
 | `ResultType` |Výsledek žádosti o REST API (například *úspěch*) |
@@ -143,7 +142,7 @@ Použití aktualizovaného řešení:
 
 Data shromážděná před změnou nejsou v novém řešení viditelná. Můžete pokračovat v dotazování na tato data pomocí starého názvu typu a pole.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Další kroky

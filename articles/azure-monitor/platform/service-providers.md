@@ -1,18 +1,17 @@
 ---
 title: Protokoly Azure Monitor pro poskytovatele služeb | Microsoft Docs
 description: Protokoly Azure Monitor můžou pomáhat poskytovatelům spravovaných služeb (účastníci programu MSP), velkým podnikům, nezávislým dodavatelům softwaru a poskytovatelům hostitelských služeb spravovat a monitorovat servery v místní nebo cloudové infrastruktuře zákazníka.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 1b5c181569ea569ecc4808284683501cb20f7bf5
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117057"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77658876"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Protokoly Azure Monitor pro poskytovatele služeb
 

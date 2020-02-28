@@ -1,18 +1,14 @@
 ---
 title: Monitorování živé webové aplikace v ASP.NET pomocí Azure Application Insights | Dokumentace Microsoftu
 description: Monitorování výkonu webu bez opětovného nasazení. Funguje s ASP.NET webovými aplikacemi hostovanými místně nebo na virtuálních počítačích.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: ac238ae5715e09b2e64737801a862d89852ec9d9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820748"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670045"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentace webových aplikací za běhu s Application Insights připojením bez kódu
 
@@ -29,7 +25,7 @@ Monitorování stavu slouží k instrumentaci aplikace .NET hostované ve služb
 - (K dispozici jsou také samostatné články o instrumentaci [Cloud Services Azure](../../azure-monitor/app/cloudservices.md).)
 
 
-![Snímek obrazovky s přehledem grafů Application Insights, které obsahují informace o neúspěšných požadavcích, dobu odezvy serveru a požadavky na server](./media/monitor-performance-live-website-now/overview-graphs.png)
+![Snímek obrazovky s App Insights přehled grafy obsahující informace o neúspěšných požadavků, doba odezvy serveru a požadavky na server](./media/monitor-performance-live-website-now/overview-graphs.png)
 
 Máte možnost zvolit si dvě trasy, které Application Insights použít pro webové aplikace .NET:
 
@@ -80,7 +76,7 @@ Povolením Application Insights se do webové aplikace přidají knihovny DLL a 
 
 Před opětovným publikováním aplikace zvažte [přidání Application Insights do kódu v aplikaci Visual Studio][greenbrown]. Získáte tak podrobnější telemetrii a možnost zapisovat vlastní telemetrická data.
 
-Pokud chcete znovu publikovat aniž byste přidali Application Insights do kódu, mějte na paměti, že proces nasazení může odstranit knihovny DLL a soubor ApplicationInsights.config z publikovaného webu. Proto:
+Pokud chcete znovu publikovat aniž byste přidali Application Insights do kódu, mějte na paměti, že proces nasazení může odstranit knihovny DLL a soubor ApplicationInsights.config z publikovaného webu. Z toho plyne:
 
 1. Pokud jste upravili soubor ApplicationInsights.config, pořiďte si jeho zálohu, než budete aplikaci znovu publikovat.
 2. Znovu publikujte aplikaci.
@@ -143,7 +139,7 @@ Tento problém sledujeme [tady](https://github.com/Microsoft/ApplicationInsights
   
 ### <a name="detailed-logs"></a>Podrobné protokoly
 
-* Ve výchozím nastavení se Monitorování stavu výstupem diagnostických protokolů: `C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
+* Ve výchozím nastavení bude Monitorování stavu výstupem diagnostických protokolů na: `C:\Program Files\Microsoft Application Insights\Status Monitor\diagnostics.log`
 
 * Chcete-li výstup podrobných protokolů, upravte konfigurační soubor: `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` a přidejte `<add key="TraceLevel" value="All" />` do `appsettings`.
 Pak restartujte monitorování stavu.
@@ -168,7 +164,7 @@ Odstraňte všechny tyto soubory, které se nacházejí v adresáři aplikace:
 - Všechny knihovny DLL v adresáři bin počínaje řetězcem "Microsoft.AI". nebo "Microsoft. ApplicationInsights.".
 - Tato knihovna DLL v adresáři bin "Microsoft. Web. Infrastructure. dll"
 - Tato knihovna DLL v adresáři bin "System. Diagnostics. DiagnosticSource. dll"
-- V adresáři aplikace odeberte "App_Data\packages"
+- V adresáři aplikace odeberte App_Data \Packages
 - V adresáři aplikace odeberte soubor "ApplicationInsights. config".
 
 
@@ -179,7 +175,7 @@ Odstraňte všechny tyto soubory, které se nacházejí v adresáři aplikace:
 ## <a name="system-requirements"></a>Systémové požadavky
 Podpora operačního systému pro sledování stavu Application Insights na serveru:
 
-* Windows Server 2008
+* Windows Server 2008
 * Windows Server 2008 R2
 * Windows Server 2012
 * Windows server 2012 R2
@@ -272,12 +268,12 @@ Sama o sobě telemetrii neshromažďuje. Pouze nakonfiguruje webové aplikace a 
 
 Když vyberete webovou aplikaci pro instrumentaci pomocí Monitorování stavu:
 
-* Stáhne a umístí do složky binárních souborů webové aplikace Application Insights sestavení a soubor ApplicationInsights. config.
+* Stáhne a umístí sestavení Application Insights a soubor ApplicationInsights.config složku binárních souborů webové aplikace.
 * Povolí profilaci CLR shromažďovat volání závislostí.
 
-### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Jakou verzi sady Application Insights SDK Monitorování stavu nainstalovat?
+### <a name="what-version-of-application-insights-sdk-does-status-monitor-install"></a>Jakou verzi Application Insights SDK monitorování stavu instalace?
 
-Počínaje verzí teď Monitorování stavu dá instalovat jenom Application Insights SDK verze 2,3 nebo 2,4. 
+V současné době můžete monitorování stavu nainstalovat pouze sadu SDK Application Insights verze 2.3 nebo 2.4. 
 
 Sada Application Insights SDK verze 2,4 je [Poslední verzí pro podporu rozhraní .net 4,0](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1) , která byla [konce řádku. ledna 2016](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/). Proto je teď Monitorování stavu možné použít k instrumentaci aplikace .NET 4,0. 
 
@@ -291,10 +287,10 @@ Pokud při procesu publikování vyberete možnost Odstranit stávající soubor
 
 Pro aplikace instrumentované pouze za běhu pomocí Monitorování stavu:
 
-* Požadavky HTTP
+* HTTP požadavky
 * Volání závislostí
 * Výjimky
-* Čítače výkonu
+* Čítače výkonnosti
 
 Pro aplikace již instrumentované v době kompilace:
 

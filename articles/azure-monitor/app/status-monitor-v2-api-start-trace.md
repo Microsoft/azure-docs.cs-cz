@@ -1,18 +1,16 @@
 ---
 title: Reference k rozhraní API agenta Azure Application Insights
 description: Reference k rozhraní API agenta Application Insights. Spustit – trasovat. Shromažďovat protokoly ETW z Monitorování stavu a Application Insights SDK
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: c97315b3a215f10e5b8f9533bf09fa5ac30ee16f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b9680101f1a22dd6d9c1617c8afc13a10ad1c594
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899653"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671218"
 ---
 # <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights rozhraní API agenta: Start-ApplicationInsightsMonitoringTrace
 
@@ -47,8 +45,8 @@ Shromažďování těchto událostí:
 ### <a name="what-events-to-collect"></a>Jaké události se mají shromáždit
 
 Při shromažďování událostí máte k dispozici tři možnosti:
-1. Pomocí přepínače `-CollectSdkEvents` Shromážděte události vydávané ze sady Application Insights SDK.
-2. Pomocí přepínače `-CollectRedfieldEvents` Shromážděte události vyvolané Monitorování stavu a modulem runtime Redfield. Tyto protokoly jsou užitečné při diagnostikování služby IIS a spuštění aplikace.
+1. Pomocí přepínače `-CollectSdkEvents` shromažďovat události vydávané ze sady Application Insights SDK.
+2. Pomocí přepínače `-CollectRedfieldEvents` shromažďovat události vydávané Monitorování stavu a modulu runtime Redfield. Tyto protokoly jsou užitečné při diagnostikování služby IIS a spuštění aplikace.
 3. Oba přepínače slouží ke shromáždění obou typů událostí.
 4. Ve výchozím nastavení, pokud není zadán žádný přepínač, budou shromažďovány oba typy událostí.
 

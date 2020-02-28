@@ -1,18 +1,15 @@
 ---
 title: Běžné schéma výstrah pro výstrahy Azure monitoru
 description: Princip běžných schémat výstrah, proč byste ji měli používat a jak ji povolit
-ms.service: azure-monitor
-ms.subservice: alerts
 ms.topic: conceptual
-author: anantr
-ms.author: robb
+ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: ff5c0d96bd4bc87f36a69ca7e8014e118ac7b7bf
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1445e8cf38b2694146fc8749ba5e77f2297de969
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552454"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668175"
 ---
 # <a name="common-alert-schema"></a>Běžné schéma upozornění
 
@@ -34,7 +31,7 @@ To znamená, že může být možné mít méně integrací, což je proces spr�
 
 Společné schéma výstrah se primárně projeví v oznámeních výstrah. Níže jsou uvedená vylepšení, která se zobrazí:
 
-| Akce | Prvky|
+| Akce | Vylepšení|
 |:---|:---|
 | SMS | Konzistentní šablona serveru SMS pro všechny typy výstrah. |
 | E-mail | Jednotná a podrobná šablona e-mailu, která umožňuje snadnou diagnostikovat problémy na první pohled. Vložené hloubkové odkazy na instanci výstrahy na portálu a ovlivněný prostředek zajistí, že můžete rychle přejít do procesu nápravy. |

@@ -1,18 +1,17 @@
 ---
 title: Povolit Azure Monitor pro virtuální počítače (Preview) pro vyhodnocení | Microsoft Docs
 description: Přečtěte si, jak vyhodnotit Azure Monitor pro virtuální počítače na jednom virtuálním počítači Azure nebo v sadě škálování virtuálního počítače.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: c77fabf0220ecfcb889ce7cb71fa075fde27226f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b79eaeed420426fe79b2b6caf19ba1d1be61939
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400582"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664607"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Povolit Azure Monitor pro virtuální počítače (Preview) pro vyhodnocení
 
@@ -23,19 +22,19 @@ Než začnete, zkontrolujte [požadavky](vminsights-enable-overview.md) a ujist�
 ## <a name="enable-monitoring-for-a-single-azure-vm"></a>Povolení monitorování pro jeden virtuální počítač Azure
 Pokud chcete povolit monitorování virtuálního počítače Azure:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
-1. Vyberte **virtuálních počítačů**.
+1. Vyberte **Virtual Machines**.
 
 1. V seznamu vyberte virtuální počítač.
 
-1. Na stránce virtuální počítač v **monitorování** vyberte **Insights (preview)** .
+1. Na stránce virtuální počítač v části **monitorování** vyberte **přehledy (Preview)** .
 
-1. Na **Insights (preview)** stránce **vyzkoušet**.
+1. Na stránce **přehledy (Preview)** vyberte **vyzkoušet nyní**.
 
     ![Povolit monitorování Azure pro virtuální počítače pro virtuální počítač](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
-1. Na **připojování Přehled monitorování Azure** stránky, pokud máte existující Log Analytics vyberte pracovní prostor v rámci stejného předplatného, v rozevíracím seznamu.  
+1. Pokud máte v rámci stejného předplatného pracovní prostor Log Analytics, v rozevíracím seznamu vyberte na stránce pro **registraci Azure monitor Insights** .  
 
     Seznam předchází výchozí pracovní prostor a umístění, kde je virtuální počítač nasazený v předplatném. 
 
@@ -50,7 +49,7 @@ Po povolení monitorování možná budete muset počkat asi 10 minut, než bude
 
 Pokud chcete povolit monitorování sady škálování virtuálních počítačů Azure:
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 
 2. Vyberte **Virtual Machine Scale Sets**.
 

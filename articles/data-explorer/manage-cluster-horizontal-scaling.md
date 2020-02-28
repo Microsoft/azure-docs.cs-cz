@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: d0c9fe9ebd040ee59ae8717e95fd1911eaef61be
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ff7420619cffc2287ab8ff6332df605d56329549
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560452"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77664129"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Správa horizontálního škálování clusteru (horizontální navýšení kapacity) v Azure Průzkumník dat, aby se vešly měnící se požadavky
 
@@ -59,13 +59,14 @@ Když váš cluster přistupuje ke stavu nadlimitního využití, horizontální
 * Počet instancí clusteru je pod maximálním počtem instancí definovaných uživatelem.
 * Využití mezipaměti je po celou hodinu vysoké.
 * PROCESOR je vysoký po celou hodinu.
+* Využití příjmu je po celou hodinu vysoké.
 
 > [!NOTE]
 > Logika horizontálního navýšení kapacity aktuálně nebere v úvahu metriku využití pro přijímání. Pokud je tato metrika důležitá pro váš případ použití, použijte [vlastní automatické škálování](#custom-autoscale).
 
 **Horizontální navýšení kapacity**
 
-Když váš cluster přistupuje ke stavu nižšího využití, Škálujte, abyste snížili náklady, ale zachovali výkon. K ověření, že je v clusteru bezpečné škálování, se používá několik metrik. Následující pravidla jsou vyhodnocována každý den po dobu 7 dnů před provedením horizontálního navýšení kapacity:
+Když váš cluster přistupuje ke stavu nižšího využití, Škálujte, abyste snížili náklady, ale zachovali výkon. K ověření, že je v clusteru bezpečné škálování, se používá několik metrik. Následující pravidla jsou vyhodnocena každou hodinu po dobu 6 hodin před provedením škálování v nástroji:
 * Počet instancí je nad 2 a nad minimálním počtem definovaných instancí.
 * Aby se zajistilo, že neexistují žádné přetížení prostředků, je nutné před provedením škálování ověřit následující metriky: 
     * Využití mezipaměti není vysoké

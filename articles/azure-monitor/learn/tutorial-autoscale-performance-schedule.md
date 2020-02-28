@@ -3,18 +3,17 @@ title: Automatické škálování prostředků Azure na základě údajů o výk
 description: Vytvoření nastavení automatického škálování pro plán služby App Service s použitím dat metriky a časového plánu
 author: anirudhcavale
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: tutorial
 ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 44fecf47ccd1ce07c7e51f7bcf51ef7823f2cf97
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85ae76d9dcb0b4a1f95992c2f5da48a81fb12677
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637148"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661648"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Vytvoření nastavení automatického škálování prostředků Azure na základě údajů o výkonu nebo časového plánu
 
@@ -22,13 +21,13 @@ Nastavení automatického škálování umožňují přidávat nebo odebírat in
 
 V tomto kurzu se naučíte: 
 > [!div class="checklist"]
-> * Vytvořit webovou aplikaci a plán služby App Service
+> * Vytvoření webové aplikace a plánu služby App Service
 > * Konfigurovat pravidla pro automatické škálování na méně nebo více instancí na základě počtu požadavků obdrženého webovou aplikací
 > * Aktivovat akci škálování na více instancí a sledovat zvyšování počtu instancí
 > * Aktivovat akci škálování na méně instancí a sledovat snižování počtu instancí
 > * Vyčištění prostředků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
@@ -37,7 +36,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 ## <a name="create-a-web-app-and-app-service-plan"></a>Vytvoření webové aplikace a plánu služby App Service
 1. V levém navigačním podokně klikněte na možnost **Vytvořit prostředek**.
 2. Vyhledejte položku *Webová aplikace*, klikněte na ni a pak klikněte na **Vytvořit**.
-3. Vyberte název aplikace, například *MyTestScaleWebApp*. Vytvořit novou skupinu prostředků * myResourceGroup "nebo umístit do skupiny prostředků podle svého výběru.
+3. Vyberte název aplikace, například *MyTestScaleWebApp*. Vytvořte novou skupinu prostředků * myResourceGroup nebo ji umístěte do skupiny prostředků podle svého výběru.
 
 Během několika minut by mělo proběhnout zřízení vašich prostředků. Ve zbývající části tohoto kurzu budete používat webovou aplikaci a odpovídající plán služby App Service.
 
@@ -63,7 +62,7 @@ Následujících několik kroků vás provede vyplněním obrazovky automatické
    ![Přechod k nastavením automatického škálování](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
-## <a name="create-recurrence-profile"></a>Vytvoření profilu opakování
+## <a name="create-recurrence-profile"></a>Vytvořit profil opakování
 
 1. Klikněte na odkaz **Přidat podmínku škálování** pod výchozím profilem.
 
@@ -170,7 +169,7 @@ Stav škálování na méně instancí se pro příslušné nastavení automatic
 
 4. Potvrďte odstranění zadáním textu **yes** do textového pole a pak klikněte na **Odstranit**.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste:  
 > [!div class="checklist"]

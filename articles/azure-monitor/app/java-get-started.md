@@ -1,18 +1,16 @@
 ---
 title: 'Rychlý Start: Analýza webových aplikací Java pomocí Azure Application Insights'
 description: 'Sledování výkonu webových aplikací Java pomocí Application Insights '
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: abc16f8e1fdc6b81634b926eeb287e5d03efdc40
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 484d4e8df8a8fdceed62a65858126a16d028121e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963678"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670079"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Rychlý Start: Začínáme s Application Insights ve webovém projektu Java
 
@@ -27,7 +25,7 @@ Application Insights je rozšiřitelná analytická služba pro webové vývojá
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Získejte klíč instrumentace Application Insights
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 2. V Azure Portal vytvořte prostředek Application Insights. Nastavte typ aplikace na webovou aplikaci Java.
 
 3. Najděte klíč instrumentace nového prostředku. Tento klíč budete muset za chvíli vložit do projektu kódu.
@@ -38,7 +36,7 @@ Application Insights je rozšiřitelná analytická služba pro webové vývojá
 
 *Vyberte typ projektu.*
 
-# <a name="maventabmaven"></a>[Maven](#tab/maven)
+# <a name="maven"></a>[Maven](#tab/maven)
 
 Pokud je váš projekt již nastaven na použití Maven pro sestavení, slučte následující kód do souboru *pom. XML* .
 
@@ -56,7 +54,7 @@ Pak obnovte závislosti projektu k získání stažených binárních souborů.
     </dependencies>
 ```
 
-# <a name="gradletabgradle"></a>[Gradle](#tab/gradle)
+# <a name="gradle"></a>[Gradle](#tab/gradle)
 
 Pokud je váš projekt již nastaven na použití Gradle pro sestavení, slučte následující kód do souboru *Build. Gradle* .
 
@@ -70,7 +68,7 @@ Pak obnovte závislosti projektu k získání stažených binárních souborů.
     }
 ```
 
-# <a name="other-typestabother"></a>[Další typy](#tab/other)
+# <a name="other-types"></a>[Další typy](#tab/other)
 
 Stáhněte si [nejnovější verzi](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) a zkopírujte do svého projektu potřebné soubory, přičemž nahraďte jejich starší verze.
 
@@ -229,7 +227,7 @@ Příchozí konfigurace sady SDK je podrobněji vysvětlena v našem článku o 
 
 Odchozí konfigurace sady SDK je definována v souboru [AI-agent. XML](java-agent.md) .
 
-## <a name="performance-counters"></a>Čítače výkonu
+## <a name="performance-counters"></a>Čítače výkonnosti
 Otevřete **prozkoumat**, **metriky**a zobrazte si rozsah čítačů výkonu.
 
 ![Snímek obrazovky podokna metriky se zvolenými soukromými bajty procesu](./media/java-get-started/011-perf-counters.png)
@@ -265,7 +263,7 @@ Můžete zadat další čítače výkonu, které se mají shromažďovat.
   * `composite`: data čítače výkonu jsou ve formátu „Attribute.Data“
   * `tabular`: data čítače výkonu jsou ve formátu řádku tabulky
 
-#### <a name="windows-performance-counters"></a>Čítače výkonu Windows
+#### <a name="windows-performance-counters"></a>čítače výkonu systému Windows
 Každý [čítač výkonu systému Windows](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx) je členem určité kategorie (stejným způsobem, jakým je pole členem třídy). Kategorie mohou být buď globální, nebo mohou mít číslované nebo pojmenované instance.
 
 ```XML
@@ -302,7 +300,7 @@ Application Insights může otestovat váš web v pravidelných intervalech a zk
 
 [Přečtěte si další informace o tom, jak nastavit webové testy dostupnosti.][availability]
 
-## <a name="questions-problems"></a>Máte otázky? Máte problémy?
+## <a name="questions-problems"></a>Otázky? Problémy?
 [Řešení potíží s Javou](java-troubleshoot.md)
 
 ## <a name="next-steps"></a>Další kroky

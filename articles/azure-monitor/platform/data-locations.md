@@ -1,18 +1,17 @@
 ---
 title: Monitorování umístění dat v Azure Monitor | Microsoft Docs
 description: V této části najdete popis různých umístění, ve kterých jsou data monitorování uložená v Azure, včetně datové platformy Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/21/2019
-ms.openlocfilehash: 2ec1f0161713c7014f71fb3eaee31b0abdf52902
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7d4459867081d920fefb9471b1a682d21040da9d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932554"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77666611"
 ---
 # <a name="monitoring-data-locations-in-azure-monitor"></a>Monitorování umístění dat v Azure Monitor
 

@@ -1,18 +1,17 @@
 ---
 title: Schéma rozšíření diagnostiky Windows
 description: Referenční informace ke schématu konfigurace pro rozšíření diagnostiky systému Windows (WAD) v Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 5b4d68ab5be2566310ddcc2eaf591d9908d35ad1
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472580"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77672357"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schéma rozšíření diagnostiky Windows
 Azure Diagnostics rozšíření je agent v Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a zatížení výpočetních prostředků Azure. Tento článek podrobně popisuje schéma používané pro konfiguraci diagnostického rozšíření na virtuálních počítačích s Windows a dalších výpočetních prostředcích.
@@ -71,7 +70,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 ## <a name="diagnosticmonitorconfiguration-element"></a>Element DiagnosticMonitorConfiguration
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration*
 
- Požaduje se
+ Požadováno
 
 |Atributy|Popis|  
 |----------------|-----------------|  
@@ -224,7 +223,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Podřízený element|Popis|  
 |-------------------|-----------------|  
-|**Datového**|Protokoly událostí systému Windows, které mají být shromažďovány. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému Windows, které mají být shromažďovány. Například:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Chcete-li shromáždit všechny události, zadejte "*"|  
+|**Datového**|Protokoly událostí systému Windows, které mají být shromažďovány. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému Windows, které mají být shromažďovány. Příklad:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Chcete-li shromáždit všechny události, zadejte "*"|  
 
 
 
@@ -270,12 +269,12 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
-|**Jméno**|řetězec|Řetězec identifikující jímku.|  
+|**Jméno**|string|Řetězec identifikující jímku.|  
 
 |Prvek|Typ|Popis|  
 |-------------|----------|-----------------|  
-|**Application Insights**|řetězec|Používá se pouze při odesílání dat do Application Insights. Obsahuje klíč instrumentace pro aktivní účet Application Insights, ke kterému máte přístup.|  
-|**Barev**|řetězec|Jedno pro každé další filtrování, které je datového proudu|  
+|**Application Insights**|string|Používá se pouze při odesílání dat do Application Insights. Obsahuje klíč instrumentace pro aktivní účet Application Insights, ke kterému máte přístup.|  
+|**Barev**|string|Jedno pro každé další filtrování, které je datového proudu|  
 
 ## <a name="channels-element"></a>Element Channels  
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-jímka – kanály*
@@ -286,7 +285,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
 |Prvek|Typ|Popis|  
 |-------------|----------|-----------------|  
-|**Kanál**|řetězec|Viz popis jinde na této stránce.|  
+|**Kanál**|string|Viz popis jinde na této stránce.|  
 
 ## <a name="channel-element"></a>Element kanálu
  *Strom: root-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-jímka-kanály-kanál*
@@ -306,7 +305,7 @@ Element nejvyšší úrovně konfiguračního souboru diagnostiky.
 
  Přidáno ve verzi 1,3.  
 
- Nepovinné  
+ Volitelné  
 
  Ukládá soukromé údaje o účtu úložiště (název, klíč a koncový bod). Tyto informace se odesílají do virtuálního počítače, ale nedají se z něho načíst.  
 

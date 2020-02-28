@@ -3,23 +3,22 @@ title: Zobrazení událostí protokolu aktivit Azure v Azure Monitor
 description: Podívejte se na protokol aktivit Azure v Azure Monitor a načtěte ho pomocí PowerShellu, rozhraní příkazového řádku a REST API.
 author: bwren
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 46d26aa5dccd32438b2028e21eaa94f7993944d1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749520"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77668821"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Zobrazení a načtení událostí protokolu aktivit Azure
 
 [Protokol aktivit Azure](platform-logs-overview.md) poskytuje přehled o událostech na úrovni předplatného, ke kterým došlo v Azure. Tento článek poskytuje podrobné informace o různých metodách pro zobrazení a načítání událostí protokolu aktivit.
 
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>Azure Portal
 Zobrazení protokolu aktivit pro všechny prostředky z nabídky **monitorování** v Azure Portal. Podívejte se na protokol aktivit pro konkrétní prostředek z možnosti **Protokol aktivit** v nabídce příslušného prostředku.
 
 ![Zobrazit protokol aktivit](./media/activity-logs-overview/view-activity-log.png)
@@ -38,14 +37,14 @@ Události protokolu aktivit můžete filtrovat podle následujících polí:
 * **Otevřít hledání**: Otevřete vyhledávací pole pro text, ve kterém se tento řetězec vyhledá napříč všemi poli ve všech událostech.
 
 ## <a name="categories-in-the-activity-log"></a>Kategorie v protokolu aktivit
-Každá událost v protokolu aktivit má konkrétní kategorii, která je popsána v následující tabulce. Všechny podrobnosti o schémat z těchto kategorií naleznete v tématu [schéma událostí protokolu aktivit Azure](activity-log-schema.md). 
+Každá událost v protokolu aktivit má konkrétní kategorii, která je popsána v následující tabulce. Úplné podrobnosti o schémat těchto kategorií najdete v tématu [schéma událostí protokolu aktivit Azure](activity-log-schema.md). 
 
 | Kategorie | Popis |
 |:---|:---|
-| Správa | Obsahuje záznam všech operací vytvoření, aktualizace, odstranění a akcí provedených prostřednictvím Správce prostředků. Mezi příklady událostí správy patří _vytvořit virtuální počítač_ a _Odstranit skupinu zabezpečení sítě_.<br><br>Každá akce prováděná uživatelem nebo aplikací pomocí Správce prostředků je modelována jako operace pro konkrétní typ prostředku. Pokud je typ operace _zápis_, _odstranění_nebo _Akce_, záznamy o zahájení i úspěchu nebo selhání této operace se zaznamenávají do administrativní kategorie. Události správy také zahrnují všechny změny řízení přístupu na základě role v rámci předplatného. |
-| Service Health | Obsahuje záznam o všech incidentech služby Health Service, ke kterým došlo v Azure. Příkladem události Service Health _SQL Azure v východní USA dochází k výpadkům_. <br><br>Service Health události přicházejí v šesti variantách _: vyžaduje se akce_, _pomocná obnovení_, _incident_, _Údržba_, _informace_nebo _zabezpečení_. Tyto události se vytvoří jenom v případě, že máte prostředek v předplatném, který by to ovlivnila událost.
+| Pro správu | Obsahuje záznam všech operací vytvoření, aktualizace, odstranění a akcí provedených prostřednictvím Správce prostředků. Mezi příklady událostí správy patří _vytvořit virtuální počítač_ a _Odstranit skupinu zabezpečení sítě_.<br><br>Každá akce prováděná uživatelem nebo aplikací pomocí Správce prostředků je modelována jako operace pro konkrétní typ prostředku. Pokud je typ operace _zápis_, _odstranění_nebo _Akce_, záznamy o zahájení i úspěchu nebo selhání této operace se zaznamenávají do administrativní kategorie. Události správy také zahrnují všechny změny řízení přístupu na základě role v rámci předplatného. |
+| Stav služby | Obsahuje záznam o všech incidentech služby Health Service, ke kterým došlo v Azure. Příkladem události Service Health _SQL Azure v východní USA dochází k výpadkům_. <br><br>Service Health události přicházejí v šesti variantách _: vyžaduje se akce_, _pomocná obnovení_, _incident_, _Údržba_, _informace_nebo _zabezpečení_. Tyto události se vytvoří jenom v případě, že máte prostředek v předplatném, který by to ovlivnila událost.
 | Resource Health | Obsahuje záznam o všech událostech stavu prostředku, ke kterým došlo u vašich prostředků Azure. Příkladem události Resource Health je _stav virtuálního počítače, který není k dispozici_.<br><br>Události Resource Health mohou představovat jeden ze čtyř stavů: _dostupné_, _nedostupné_, _degradované_a _neznámé_. Resource Health události se navíc dají zařadit do kategorií jako _iniciované platformou_ nebo _uživatelem iniciované_. |
-| Upozornění | Obsahuje záznam o aktivaci pro Azure Alerts. Příkladem události výstrahy je, že _procesor% v myVM byl za posledních 5 minut vyšší než 80_.|
+| Výstraha | Obsahuje záznam o aktivaci pro Azure Alerts. Příkladem události výstrahy je, že _procesor% v myVM byl za posledních 5 minut vyšší než 80_.|
 | Automatické škálování | Obsahuje záznam všech událostí souvisejících s provozem modulu automatického škálování na základě všech nastavení automatického škálování, které jste definovali v předplatném. Příkladem události automatického škálování se _nepovedlo provést akci automatického škálování horizontálního_škálování. |
 | Doporučení | Obsahuje události doporučení z Azure Advisor. |
 | Zabezpečení | Obsahuje záznam všech výstrah vygenerovaných nástrojem Azure Security Center. Příkladem události zabezpečení je _podezřelý soubor s dvojitou příponou_. |
@@ -112,7 +111,7 @@ Get-AzLog -MaxEvents 1000
 ```
 
 
-## <a name="cli"></a>Rozhraní příkazového řádku
+## <a name="cli"></a>CLI
 Pomocí [AZ monitor Activity-log](cli-samples.md#view-activity-log-for-a-subscription) načtěte protokol aktivit z CLI. Níže jsou uvedeny některé běžné příklady.
 
 
@@ -143,7 +142,7 @@ az monitor activity-log list --resource-provider Microsoft.Web \
     --end-time 2016-03-16T00:00:00Z
 ```
 
-## <a name="rest-api"></a>Rozhraní REST API
+## <a name="rest-api"></a>REST API
 K načtení protokolu aktivit z klienta REST použijte [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) . Níže jsou uvedeny některé běžné příklady.
 
 Získání protokolů aktivit pomocí filtru:
@@ -192,9 +191,9 @@ Kliknutím na dlaždici **protokoly aktivit Azure** otevřete zobrazení **proto
 
 | Součást vizualizace | Popis |
 | --- | --- |
-| Položky protokolu aktivit Azure | Zobrazuje pruhový graf celkových součtů záznamu položky protokolu aktivit Azure pro vybraný rozsah dat a zobrazuje seznam prvních 10 volajících aktivit. Klikněte na pruhový graf a spustíte hledání v protokolu pro `AzureActivity`. Kliknutím na položku volajícího spustíte hledání v protokolu, které vrátí všechny položky protokolu aktivit pro tuto položku. |
+| Položky protokolu aktivit Azure | Zobrazuje pruhový graf celkových součtů záznamu položky protokolu aktivit Azure pro vybraný rozsah dat a zobrazuje seznam prvních 10 volajících aktivit. Kliknutím na pruhový graf spustíte prohledávání protokolu pro `AzureActivity`. Kliknutím na položku volajícího spustíte hledání v protokolu, které vrátí všechny položky protokolu aktivit pro tuto položku. |
 | Protokoly aktivit podle stavu | Zobrazuje prstencový graf stavu protokolu aktivit Azure pro vybraný rozsah dat a seznam prvních deseti záznamů o stavu. Kliknutím na graf spustíte dotaz protokolu pro `AzureActivity | summarize AggregatedValue = count() by ActivityStatus`. Kliknutím na položku stavu spustíte hledání v protokolu, které vrátí všechny položky protokolu aktivit pro daný záznam o stavu. |
-| Protokoly aktivit podle prostředku | Zobrazuje celkový počet prostředků s protokoly aktivit a seznam prvních deseti prostředků s počty záznamů pro jednotlivé prostředky. Klikněte na tlačítko spustíte hledání v protokolu pro oblasti celkový `AzureActivity | summarize AggregatedValue = count() by Resource`, který se zobrazí všechny prostředky Azure k dispozici pro řešení. Kliknutím na prostředek spustíte dotaz protokolu, který vrátí všechny záznamy aktivit pro daný prostředek. |
+| Protokoly aktivit podle prostředku | Zobrazuje celkový počet prostředků s protokoly aktivit a seznam prvních deseti prostředků s počty záznamů pro jednotlivé prostředky. Kliknutím na oblast celkem spustíte prohledávání protokolu pro `AzureActivity | summarize AggregatedValue = count() by Resource`, které zobrazuje všechny prostředky Azure dostupné pro řešení. Kliknutím na prostředek spustíte dotaz protokolu, který vrátí všechny záznamy aktivit pro daný prostředek. |
 | Protokoly aktivit přes poskytovatele prostředků | Zobrazuje celkový počet poskytovatelů prostředků, které vytváří protokoly aktivit, a seznam prvních deseti. Kliknutím na oblast celkem spustíte dotaz protokolu pro `AzureActivity | summarize AggregatedValue = count() by ResourceProvider`, který zobrazuje všechny poskytovatele prostředků Azure. Kliknutím na poskytovatele prostředků spusťte dotaz protokolu, který vrátí všechny záznamy aktivit pro daného zprostředkovatele. |
 
 

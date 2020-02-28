@@ -1,25 +1,24 @@
 ---
 title: Příklady dotazů Azure Monitor protokolu | Microsoft Docs
 description: Příklady dotazů protokolu v Azure Monitor pomocí dotazovacího jazyka Kusto
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/01/2019
-ms.openlocfilehash: 8850aef8b5d45f236385551a1455e6fe7b540340
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 9bfadf55e4f68bb7188b27e4ef5bc03e3955f375
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614449"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662044"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Příklady dotazů Azure Monitor protokolu
 Tento článek obsahuje různé příklady [dotazů](log-query-overview.md) pomocí [dotazovacího jazyka Kusto](/azure/kusto/query/) k načtení různých typů dat protokolu z Azure monitor. Pro konsolidaci a analýzu dat se používají různé metody, takže tyto ukázky můžete použít k identifikaci různých strategií, které můžete použít pro vlastní požadavky.  
 
 Podrobnosti o různých klíčových slovech použitých v těchto ukázkách najdete v referenčních informacích k [jazyku Kusto](https://docs.microsoft.com/azure/kusto/query/) . Pokud jste Azure Monitor, Projděte si [lekci o vytváření dotazů](get-started-queries.md) .
 
-## <a name="events"></a>Akce
+## <a name="events"></a>Události
 
 ### <a name="search-application-level-events-described-as-cryptographic"></a>Prohledat události na úrovni aplikace popsané jako "kryptografické"
 Tento příklad vyhledá v tabulce **událostí** záznamy, ve kterých je protokol **událostí** _aplikace_ a **RenderedDescription** obsahuje _kryptografii_. Obsahuje záznamy za posledních 24 hodin.
@@ -38,7 +37,7 @@ Event
 search in (Event, SecurityEvent) "unmarshaling"
 ```
 
-## <a name="heartbeat"></a>Signály
+## <a name="heartbeat"></a>Prezenční signál
 
 ### <a name="chart-a-week-over-week-view-of-the-number-of-computers-sending-data"></a>Vytvoření grafu zobrazení počtu počítačů, které odesílají data z týdenního týdne
 

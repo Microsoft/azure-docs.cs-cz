@@ -1,23 +1,22 @@
 ---
 title: Rychlý Start ASP.NET Core – Azure Monitor Application Insights
 description: Poskytuje pokyny pro rychlé nastavení ASP.NET Core webové aplikace pro monitorování pomocí Azure Monitor Application Insights
-ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: e05926d7a76f47cc3c95088fa2d8f1a6e385bbbc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fa1651e88226080cca970cc756f2c0522b39f1be
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399017"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670623"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Zahájení monitorování webové aplikace ASP.NET Core
 
-Služba Azure Application Insights umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. 
+Azure Application Insights umožňuje snadné monitorování webové aplikace z hlediska dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vaší aplikaci a nečekat na to, až je nahlásí uživatelé. 
 
 Tento rychlý Start vás provede přidáním sady Application Insights SDK do existující webové aplikace ASP.NET Core. Další informace o konfiguraci Application Insights bez použití sady Visual Studio v tomto [článku](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core).
 
@@ -26,18 +25,18 @@ Tento rychlý Start vás provede přidáním sady Application Insights SDK do ex
 K dokončení tohoto rychlého startu je potřeba:
 
 - [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/downloads/) s následujícími úlohami:
-  - Vývoj pro ASP.NET a web
+  - Vývoj v ASP.NET a pro web
   - Vývoj pro Azure
 - [Nainstalovat sadu .NET Core 2.0 SDK](https://www.microsoft.com/net/core)
 - Budete potřebovat předplatné Azure a webovou aplikaci v .NET Core.
 
 Pokud nemáte webovou aplikaci ASP.NET Core, můžete pomocí našeho podrobného průvodce [vytvořit aplikaci ASP.NET Core a přidat Application Insights.](../../azure-monitor/app/asp-net-core.md)
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
 ## <a name="enable-application-insights"></a>Povolení Application Insights
 
@@ -54,9 +53,9 @@ Application Insights může shromažďovat telemetrická data ze všech aplikac�
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název identifikující aplikaci, kterou monitorujete |
    | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování dat App Insights Můžete vytvořit novou skupinu prostředků nebo použít existující. |
-   | **Umístění** | USA – východ | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
+   | **Umístění** | Východní USA | Vyberte umístění ve vaší blízkosti nebo v blízkosti místa, kde se vaše aplikace hostuje. |
 
-2. Klikněte na **Vytvořit**.
+2. Klikněte na možnost **Vytvořit**.
 
 
 

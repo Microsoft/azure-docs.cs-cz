@@ -1,18 +1,14 @@
 ---
 title: Přepsání výchozích koncových bodů sady SDK v Azure Application Insights
 description: Upravte výchozí Azure Monitor koncové body sady Application Insights SDK pro oblasti, jako je Azure Government.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 07/26/2019
-ms.openlocfilehash: c04b793512eccf6aaff7d3ed3cc65efdd3dfc303
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3aa18a6b96458533c3dc53f3f420ed264b298a3e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432593"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77671983"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights přepsání výchozích koncových bodů
 
@@ -195,11 +191,11 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 V současné době jsou k [disAzure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) a [Azure Čína](https://docs.microsoft.com/azure/china/resources-developer-guide)jedinými oblastmi, které vyžadují úpravy koncových bodů.
 
-|Region (Oblast) |  Název koncového bodu | Hodnota |
+|Oblast |  Název koncového bodu | Hodnota |
 |-----------------|:------------|:-------------|
-| Azure (Čína) | Kanál telemetrie | `https://dc.applicationinsights.azure.cn/v2/track` |
-| Azure (Čína) | QuickPulse (živé metriky) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
-| Azure (Čína) | Dotaz na profil |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
+| Azure Čína | Kanál telemetrie | `https://dc.applicationinsights.azure.cn/v2/track` |
+| Azure Čína | QuickPulse (živé metriky) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
+| Azure Čína | Dotaz na profil |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
 | Azure Government | Kanál telemetrie |`https://dc.applicationinsights.us/v2/track` |
 | Azure Government | QuickPulse (živé metriky) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
 | Azure Government | Dotaz na profil |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
@@ -207,10 +203,10 @@ V současné době jsou k [disAzure Government](https://docs.microsoft.com/azure
 Pokud aktuálně používáte [REST API Application Insights](https://dev.applicationinsights.io/
 ) , ke kterému se běžně používá API.ApplicationInsights.IO prostřednictvím "", budete muset použít koncový bod, který je místní pro vaši oblast:
 
-|Region (Oblast) |  Název koncového bodu | Hodnota |
+|Oblast |  Název koncového bodu | Hodnota |
 |-----------------|:------------|:-------------|
-| Azure (Čína) | Rozhraní REST API | `api.applicationinsights.azure.cn` |
-| Azure Government | Rozhraní REST API | `api.applicationinsights.us`|
+| Azure Čína | REST API | `api.applicationinsights.azure.cn` |
+| Azure Government | REST API | `api.applicationinsights.us`|
 
 > [!NOTE]
 > Monitorování agenta bez kódu nebo rozšíření na základě rozšíření pro Azure App Services v tuto **chvíli není** v těchto oblastech podporováno. Jakmile bude tato funkce k dispozici, bude tento článek aktualizován.

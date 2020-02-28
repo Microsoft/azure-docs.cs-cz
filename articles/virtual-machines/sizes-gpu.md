@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: d88c76afb3426dce8c68ae4bcda366fe17700aa7
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: e7e9ff795f7f639686b9f629dacb6f0752c20732
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566042"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77660202"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro GPU
 
@@ -51,7 +51,7 @@ Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si t�
 
 - Pokud chcete nasadit více než několik virtuálních počítačů řady N-Series, vezměte v úvahu předplatné s průběžnými platbami nebo jiné možnosti nákupu. Pokud používáte [bezplatný účet Azure](https://azure.microsoft.com/free/), můžete použít pouze omezený počet výpočetních jader Azure.
 
-- V rámci vašeho předplatného Azure možná budete muset zvýšit kvótu jader (na oblast) a zvýšit samostatnou kvótu pro NC, NCv2, NCv3, ND, NDv2, NV nebo NVv2 jádra. Chcete-li požádat o zvýšení kvóty, [otevřete online žádost o zákaznickou podporu](/../azure-supportability/how-to-create-azure-support-request.md) zdarma. Výchozí omezení se můžou lišit v závislosti na vaší kategorii předplatného.
+- V rámci vašeho předplatného Azure možná budete muset zvýšit kvótu jader (na oblast) a zvýšit samostatnou kvótu pro NC, NCv2, NCv3, ND, NDv2, NV nebo NVv2 jádra. Chcete-li požádat o zvýšení kvóty, [otevřete online žádost o zákaznickou podporu](../azure-portal/supportability/how-to-create-azure-support-request.md) zdarma. Výchozí omezení se můžou lišit v závislosti na vaší kategorii předplatného.
 
 ## <a name="other-sizes"></a>Jiné velikosti
 
