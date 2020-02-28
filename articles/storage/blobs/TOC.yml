@@ -669,12 +669,18 @@
                   href: ../common/storage-solution-periodic-data-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Souběžnost
           href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Přístup s více protokoly
-          href: ../blobs/data-lake-storage-multi-protocol-access.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Kompatibilita
+          items:
+            - name: Přístup s více protokoly
+              href: data-lake-storage-multi-protocol-access.md
+            - name: Podporované funkce Blob Storage
+              href: data-lake-storage-supported-blob-storage-features.md
+            - name: Podporované služby Azure
+              href: data-lake-storage-supported-azure-services.md
+            - name: Podporované opensourcové platformy
+              href: data-lake-storage-supported-open-source-platforms.md
         - name: Zpracování velkých objemů dat
           href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Integrace se službami Azure
-          href: ../blobs/data-lake-storage-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Ovladač systému souborů Azure Blob pro Hadoop
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Identifikátor URI systému souborů Azure Blob

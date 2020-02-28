@@ -6,22 +6,18 @@
       href: private-link-overview.md
 - name: Rychlé starty
   items:
-    - name: Vytvoření privátního koncového bodu
-      items:
-        - name: portál Azure
-          href: create-private-endpoint-portal.md
-        - name: Azure CLI
-          href: create-private-endpoint-cli.md
-        - name: Azure PowerShell
-          href: create-private-endpoint-powershell.md
-    - name: Vytvoření služby privátního propojení
-      items:
-        - name: portál Azure
-          href: create-private-link-service-portal.md
-        - name: Azure PowerShell
-          href: create-private-link-service-powershell.md
-        - name: Azure CLI
-          href: create-private-link-service-cli.md
+    - name: Vytvoření privátního koncového bodu – portál
+      href: create-private-endpoint-portal.md
+    - name: Vytvoření privátního koncového bodu – PowerShell
+      href: create-private-endpoint-powershell.md
+    - name: Vytvoření privátního koncového bodu – Azure CLI
+      href: create-private-endpoint-cli.md
+    - name: Vytvoření služby Private Link – portál
+      href: create-private-link-service-portal.md
+    - name: Vytvoření služby Private Link – PowerShell
+      href: create-private-link-service-powershell.md
+    - name: Vytvoření služby Private Link – Azure CLI
+      href: create-private-link-service-cli.md
 - name: Koncepty
   items:
     - name: Privátní koncový bod

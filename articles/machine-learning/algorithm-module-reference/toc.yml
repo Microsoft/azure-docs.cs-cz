@@ -46,6 +46,8 @@
       href: select-columns-transform.md
     - name: Výběr sloupců v datové sadě
       href: select-columns-in-dataset.md
+    - name: Rozdělení dat
+      href: split-data.md
 - name: Výběr funkcí
   items:
     - name: Výběr funkcí na základě filtrů
@@ -142,5 +144,11 @@
       href: score-svd-recommender.md
     - name: Trénování doporučovacího systému SVD
       href: train-svd-recommender.md
+- name: Detekce anomálií
+  items:
+    - name: Detekce anomálií na základě PCA
+      href: pca-based-anomaly-detection.md
+    - name: Trénování modelu detekce anomálií
+      href: train-anomaly-detection-model.md
 - name: Chyby modulů a řešení potíží
   href: designer-error-codes.md

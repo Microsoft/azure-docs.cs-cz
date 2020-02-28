@@ -88,6 +88,8 @@
         - name: Životní cyklus vývoje
           href: Concepts/development-lifecycle-knowledge-base.md
           displayName: 'version control, test, index, publish, monitor usage, create'
+        - name: Vylepšení pomocí návrhů aktivního učení
+          href: Concepts/active-learning-suggestions.md
     - name: Znalostní báze dotazů
       items:
         - name: Získání odpovědi

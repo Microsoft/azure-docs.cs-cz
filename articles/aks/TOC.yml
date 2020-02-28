@@ -375,6 +375,8 @@
           href: kube-advisor-tool.md
         - name: Přístup k uzlu SSH
           href: ssh.md
+        - name: Linuxové nástroje pro měření výkonu
+          href: troubleshoot-linux.md
 - name: Referenční informace
   items:
     - name: Azure CLI

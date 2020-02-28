@@ -203,10 +203,14 @@
           href: app-service-web-restore-snapshots.md
         - name: Klonování aplikace
           href: app-service-web-app-cloning.md
-        - name: Přesunutí prostředků
-          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
         - name: Obnovení odstraněné služby App Service
           href: app-service-undelete.md
+    - name: Přesun aplikace
+      items:
+        - name: Přesun mezi oblastmi
+          href: manage-move-across-regions.md
+        - name: Přesun předplatných
+          href: '../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
     - name: Spouštění úloh na pozadí
       items:
         - name: Vytvoření webových úloh
