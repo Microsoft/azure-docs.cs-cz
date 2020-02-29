@@ -1,22 +1,22 @@
 ---
 title: Transparentní šifrování dat spravované zákazníkem (TDE)
-description: Podpora Bring Your Own Key (BYOK) pro transparentní šifrování dat (TDE) s Azure Key Vault pro SQL Database a datový sklad. TDE s BYOK přehledem, výhodami, jak funguje, požadavky a doporučení.
+description: Podpora Bring Your Own Key (BYOK) pro transparentní šifrování dat (TDE) s Azure Key Vault pro SQL Database a Azure synapse. TDE s BYOK přehledem, výhodami, jak funguje, požadavky a doporučení.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019
+ms.custom: azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/12/2020
-ms.openlocfilehash: 8e91bb9223f3e6ccd4c76614d75db8591dbed045
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: a29466ad5b261e1e2ce818d7b4a18260e35caaec
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201508"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192740"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transparentní šifrování dat s klíčem spravovaným zákazníkem
 
@@ -24,7 +24,7 @@ Azure SQL [transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql
 
 V tomto scénáři je klíč, který se používá k šifrování šifrovacího klíče databáze (klíč DEK), označovaný jako TDE ochrana, asymetrický klíč spravovaný zákazníkem, který je uložený v cloudu a zákazníkovi spravovaném [Azure Key Vault (integrace)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), což je cloudový externí systém správy klíčů. Key Vault je vysoce dostupné a škálovatelné zabezpečené úložiště pro kryptografické klíče RSA, volitelně zajištěné moduly zabezpečení FIPS 140-2 Level 2 (HSM). Neumožňuje přímý přístup k uloženému klíči, ale poskytuje služby šifrování a dešifrování pomocí klíče u autorizovaných entit. Klíč může být vygenerován trezorem klíčů, importován nebo [přenesen do trezoru klíčů ze zařízení Prem HSM](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
-Pro Azure SQL Database a Azure SQL Data Warehouse je ochrana TDE nastavena na úrovni logického serveru a děděna všemi šifrovanými databázemi přidruženými k tomuto serveru. V případě spravované instance Azure SQL je ochrana TDE nastavena na úrovni instance a zděděna všemi šifrovanými databázemi v této instanci. Pojem *Server* odkazuje jak na SQL Database logický Server a spravovanou instanci v celém tomto dokumentu, pokud není uvedeno jinak.
+Pro Azure SQL Database a Azure synapse se ochrana TDE nastaví na úrovni logického serveru a děděna všemi šifrovanými databázemi přidruženými k tomuto serveru. V případě spravované instance Azure SQL je ochrana TDE nastavena na úrovni instance a zděděna všemi šifrovanými databázemi v této instanci. Pojem *Server* odkazuje jak na SQL Database logický Server a spravovanou instanci v celém tomto dokumentu, pokud není uvedeno jinak.
 
 > [!IMPORTANT]
 > Pro ty, kteří používají TDE spravované službou, kteří chtějí začít používat TDE spravované zákazníkem, zůstanou data během přepínání přešifrovaná a nedochází k výpadkům a opětovnému šifrování souborů databáze. Přepnutí z klíče spravovaného službou na klíč spravovaný zákazníkem vyžaduje jenom opětovné šifrování klíč DEK, což je rychlá a online operace.
@@ -163,7 +163,7 @@ Pokud klíč, který je potřeba pro obnovení zálohy, už není k dispozici na
 
 Pokud ho chcete zmírnit, spusťte rutinu [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) pro cílový SQL Database logický Server nebo rutinu [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) pro cílovou spravovanou instanci, která vrátí seznam dostupných klíčů a určí chybějící. Aby bylo možné obnovit všechny zálohy, ujistěte se, že cílový server pro obnovení má přístup ke všem potřebným klíčům. Tyto klíče není nutné označit jako ochranu pomocí TDE.
 
-Další informace o obnovení záloh pro SQL Database najdete v tématu [obnovení databáze SQL Azure](sql-database-recovery-using-backups.md). Další informace o obnovení záloh pro SQL Data Warehouse najdete v tématu [obnovení Azure SQL Data Warehouse](../sql-data-warehouse/backup-and-restore.md). Nativní zálohování a obnovování SQL Server pomocí spravované instance najdete v tématu [rychlý Start: obnovení databáze do spravované instance.](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore)
+Další informace o obnovení záloh pro SQL Database najdete v tématu [obnovení databáze SQL Azure](sql-database-recovery-using-backups.md). Další informace o obnovení zálohy pro fond SQL najdete v tématu [obnovení fondu SQL](../sql-data-warehouse/backup-and-restore.md). Nativní zálohování a obnovování SQL Server pomocí spravované instance najdete v tématu [rychlý Start: obnovení databáze do spravované instance.](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore)
 
 Další aspekty pro soubory protokolu: zálohované soubory protokolu zůstávají šifrované s původní ochranu TDE, i když byla otočená a databáze teď používá nové ochrany TDE.  V době obnovení budou pro obnovení databáze nutné oba klíče.  Pokud soubor protokolu používá ochranu TDE, která je uložená v Azure Key Vault, bude tento klíč potřeba v době obnovení, a to i v případě, že se databáze změnila tak, aby mezitím používala TDE spravovanou službou.
 

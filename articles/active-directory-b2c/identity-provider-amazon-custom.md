@@ -3,20 +3,20 @@ title: Nastavení přihlášení pomocí účtu Amazon pomocí vlastních zásad
 titleSuffix: Azure AD B2C
 description: Pomocí vlastních zásad nastavte přihlášení pomocí účtu Amazon v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/05/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a0767938f8a470c63ec7fe3d7789212b1baf871
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2de891ee109677f92ff603759701f7732f5951ba
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846624"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188507"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavte přihlášení pomocí účtu Amazon pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "76846624"
 
 V tomto článku se dozvíte, jak povolit přihlášení uživatelům z účtu Amazon pomocí [vlastních zásad](custom-policy-overview.md) v Azure Active Directory B2C (Azure AD B2C).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md).
 - Pokud ještě nemáte účet Amazon, vytvořte ho na [https://www.amazon.com/](https://www.amazon.com/).
@@ -45,16 +45,16 @@ Pokud chcete povolit přihlášení uživatelům z účtu Amazon, musíte vytvo�
 
 Je potřeba uložit tajný klíč klienta, který jste předtím nahráli ve svém tenantovi Azure AD B2C.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 6. Pro **Možnosti**vyberte možnost `Manual`.
-7. Zadejte **název** klíče zásad. Například, `AmazonSecret`. `B2C_1A_` předpony se automaticky přidají do názvu vašeho klíče.
+7. Zadejte **název** klíče zásad. například `AmazonSecret`. `B2C_1A_` předpony se automaticky přidají do názvu vašeho klíče.
 8. Do **tajného klíče**zadejte tajný klíč klienta, který jste předtím nahráli.
 9. Pro **použití klíče**vyberte `Signature`.
-10. Klikněte na **Vytvořit**.
+10. Klikněte na možnost **Vytvořit**.
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
 
@@ -125,7 +125,7 @@ V tuto chvíli je poskytovatel identity nastavený, ale není k dispozici na ž�
 2. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"`.
 3. Otevřete *soubor TrustFrameworkExtensions. XML* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
 4. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
-5. Přejmenujte ID cesty pro uživatele. Například, `SignUpSignInAmazon`.
+5. Přejmenujte ID cesty pro uživatele. například `SignUpSignInAmazon`.
 
 ### <a name="display-the-button"></a>Zobrazit tlačítko
 
@@ -149,7 +149,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
     <ClaimsExchange Id="AmazonExchange" TechnicalProfileReferenceId="Amazon-OAuth" />
     ```
 
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. Například, `Amazon-OAuth`.
+    Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. například `Amazon-OAuth`.
 
 3. Uložte soubor *TrustFrameworkExtensions. XML* a znovu ho nahrajte k ověření.
 
@@ -164,7 +164,7 @@ Komunikace s Azure AD B2C probíhá prostřednictvím aplikace, kterou zaregistr
 Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
 
 1. Vytvořte kopii *SignUpOrSignIn. XML* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInAmazon. XML*.
-2. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například, `SignUpSignInAmazon`.
+2. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. například `SignUpSignInAmazon`.
 3. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například`http://contoso.com/B2C_1A_signup_signin_amazon`
 4. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID nové cesty uživatele, kterou jste vytvořili (SignUpSignAmazon).
 5. Uložte změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.

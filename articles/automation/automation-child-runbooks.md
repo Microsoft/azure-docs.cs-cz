@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6acf66e01c4f7b4bd2735687f542a0dbf472cfb4
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 34446f98bc593c8b78cfb4a9ceae2c5e6dc6aef3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500199"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191159"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podřízené runbooky v Azure Automation
 
@@ -21,7 +21,7 @@ Jedná se o doporučený postup v Azure Automation k zápisu opakovaně použite
 
 ## <a name="invoking-a-child-runbook-using-inline-execution"></a>Vyvolání podřízeného Runbooku pomocí vloženého spuštění
 
-Chcete-li vyvolání runbooku přiřazeného z jiného runbooku, použijte název sady runbook a zadejte hodnoty jeho parametrů stejně, jako byste používali aktivitu nebo rutinu.  Všechny Runbooky ve stejném účtu Automation jsou k dispozici všem ostatním, aby je bylo možné používat tímto způsobem. Nadřazený Runbook čeká na dokončení podřízeného Runbooku před přechodem na další řádek a jakýkoliv výstup je vrácen přímo nadřazenému objektu.
+Chcete-li vyvolat sadu Runbook vloženou z jiného Runbooku, použijte název Runbooku a zadejte hodnoty jeho parametrů stejným způsobem jako při použití aktivity nebo rutiny. Všechny Runbooky ve stejném účtu Automation jsou k dispozici všem ostatním, aby je bylo možné používat tímto způsobem. Nadřazený Runbook čeká na dokončení podřízeného Runbooku před přechodem na další řádek a jakýkoliv výstup vrátí přímo nadřazenému objektu.
 
 Když vyvoláte přiřazený runbook, spustí se ve stejné úloze jako nadřízený runbook. V historii úloh podřízeného Runbooku není žádný náznak. Všechny výjimky a jakékoli výstupy streamu z podřízeného Runbooku jsou přidružené k nadřazenému. Výsledkem tohoto chování je méně úloh a snazší sledování a řešení potíží.
 
@@ -41,7 +41,7 @@ Kdy se týká pořadí publikování?
 
 Pořadí publikování runbooků pouze pro PowerShellový pracovní postup a runbooky PowerShellu pro grafické pracovní postupy.
 
-Když vaše sada Runbook zavolá podřízenou sadu Runbook pracovního postupu PowerShellu pomocí vloženého spuštění, použije název Runbooku. Název musí začínat řetězcem ".\\– určuje, že se skript nachází v místním adresáři.
+Když vaše sada Runbook zavolá podřízenou sadu Runbook pracovního postupu PowerShellu pomocí vloženého spuštění, použije název Runbooku. Název musí začínat na **.\\** pro určení, že se skript nachází v místním adresáři.
 
 ### <a name="example"></a>Příklad
 
@@ -64,17 +64,17 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 > [!IMPORTANT]
 > Vyvolá-li vaše sada Runbook podřízenou sadu Runbook s rutinou **Start-AzAutomationRunbook** s parametrem *Wait* a podřízená sada Runbook vytvoří výsledek objektu, může při operaci dojít k chybě. Chcete-li obejít tuto chybu, přečtěte si téma [podřízené Runbooky s výstupem objektu](troubleshoot/runbooks.md#child-runbook-object) , kde se dozvíte, jak implementovat logiku pro dotazování na výsledky pomocí rutiny [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
 
-Pomocí rutiny **Start-AzAutomationRunbook** můžete spustit sadu Runbook, jak je popsáno v tématu [spuštění sady Runbook pomocí prostředí Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell). Existují dva režimy použití této rutiny. V jednom režimu rutina vrátí ID úlohy při vytvoření podřízené úlohy pro podřízenou sadu Runbook. V jiném režimu, který váš skript umožňuje zadáním parametru *Wait* , rutina počká, až se dokončí podřízená úloha, a vrátí výstup z podřízeného Runbooku.
+Pomocí rutiny **Start-AzAutomationRunbook** můžete spustit sadu Runbook, jak je popsáno v tématu [spuštění sady Runbook pomocí prostředí Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell). Existují dva režimy použití této rutiny. V jednom režimu rutina vrátí ID úlohy při vytvoření úlohy pro podřízený Runbook. V jiném režimu, který váš skript umožňuje zadáním parametru *Wait* , rutina počká, až se dokončí podřízená úloha, a vrátí výstup z podřízeného Runbooku.
 
-Úloha z podřízeného Runbooku začala s rutinou spuštěnou v samostatné úloze z nadřazené úlohy Runbooku. Výsledkem tohoto chování je více úloh než spuštění sady Runbook inline a díky tomu se úlohy budou obtížnější sledovat. Nadřazená sada Runbook může spustit více než jednu podřízenou sadu Runbook, aniž by bylo nutné čekat na jejich dokončení. Pro toto paralelní spuštění volání podřízených runbooků musí nadřazená sada Runbook používat [klíčové slovo Parallel](automation-powershell-workflow.md#parallel-processing).
+Úloha z podřízeného Runbooku se spustila rutinou, která se spouští odděleně od nadřazené úlohy Runbooku. Výsledkem tohoto chování je více úloh než spuštění sady Runbook inline a díky tomu se úlohy budou obtížnější sledovat. Nadřazená sada Runbook může spustit více než jednu podřízenou sadu Runbook, aniž by bylo nutné čekat na jejich dokončení. Pro toto paralelní spuštění volání podřízených runbooků musí nadřazená sada Runbook používat [klíčové slovo Parallel](automation-powershell-workflow.md#parallel-processing).
 
-Výstup podřízené sady Runbook se nevrátí do nadřazeného Runbooku spolehlivě z důvodu časování. Kromě toho proměnné, jako $VerbosePreference, $WarningPreference a jiné, nemusí být šířeny do podřízených runbooků. Chcete-li se těmto problémům vyhnout, můžete spustit podřízené Runbooky jako samostatné úlohy automatizace pomocí parametru **Start-AzAutomationRunbook** s parametrem *Wait* . Tento postup zablokuje nadřazenou sadu Runbook, dokud nebude dokončena podřízená sada Runbook.
+Výstup podřízené sady Runbook se nevrátí do nadřazeného Runbooku spolehlivě z důvodu časování. Kromě toho proměnné, jako *$VerbosePreference*, *$WarningPreference*a jiné, nemusí být šířeny do podřízených runbooků. Chcete-li se těmto problémům vyhnout, můžete spustit podřízené Runbooky jako samostatné úlohy automatizace pomocí parametru **Start-AzAutomationRunbook** s parametrem *Wait* . Tento postup zablokuje nadřazenou sadu Runbook, dokud nebude dokončena podřízená sada Runbook.
 
 Pokud nechcete, aby se nadřazená sada Runbook zablokovala při čekání, můžete spustit podřízenou sadu Runbook pomocí parametru **Start-AzAutomationRunbook** bez parametru *Wait* . V takovém případě musí sada Runbook čekat na dokončení úlohy pomocí [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) . K načtení výsledků musí také použít příkaz [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) a [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) .
 
 Parametry pro podřízený Runbook spuštěný pomocí rutiny jsou k dispozici jako zatřiďovací tabulka, jak je popsáno v tématu [parametry Runbooku](start-runbooks.md#runbook-parameters). Lze použít pouze jednoduché datové typy. Pokud má runbook parametr komplexního datového typu, pak ho musí být volaný jako přiřazený.
 
-Kontext předplatného může být ztracen při spouštění podřízených runbooků jako samostatných úloh. Aby mohla podřízená sada Runbook spustit příkaz AZ Module rutiny proti konkrétnímu předplatnému Azure, musí se podřízená sada Runbook ověřit pro toto předplatné nezávisle na nadřazeném Runbooku.
+Kontext předplatného může být ztracen při spouštění podřízených runbooků jako samostatných úloh. Aby mohla podřízená sada Runbook spustit příkaz AZ Module rutiny proti konkrétnímu předplatnému Azure, musí se podřízená položka ověřit pro toto předplatné nezávisle na nadřazeném Runbooku.
 
 Pokud úlohy v rámci stejného účtu Automation pracují s více než jedním předplatným, může výběr předplatného v jedné úloze změnit aktuálně vybraný kontext předplatného pro jiné úlohy. Chcete-li se této situaci vyhnout, použijte `Disable-AzContextAutosave –Scope Process` na začátku každé sady Runbook. Tato akce uloží pouze kontext do tohoto spuštění sady Runbook.
 
@@ -117,7 +117,7 @@ Následující tabulka shrnuje rozdíly mezi dvěma způsoby volání Runbooku z
 | Spouštěcí |Nadřízený runbook čeká na dokončení podřízeného runbooku před pokračováním. |Nadřazená sada Runbook pokračuje ihned po spuštění podřízeného Runbooku *nebo* se nadřazený Runbook počká, až se podřízená úloha dokončí. |
 | Výstup |Nadřazená sada runbook může získat výstup přímo z podřízeného runbooku. |Nadřazená sada Runbook musí načíst výstup z podřízené úlohy Runbooku *nebo* může z nadřazeného Runbooku získat výstup přímo z podřízeného Runbooku. |
 | Parametry |Hodnoty pro parametry podřízeného runbooku se zadávají samostatně a můžete použít libovolného datového typu. |Hodnoty pro parametry podřízeného Runbooku musí být sloučeny do jedné zatřiďovací tabulky. Tato zatřiďovací tabulka může zahrnovat pouze jednoduché datové typy Array a Object, které používají serializaci JSON. |
-| Účet služby Automation |Nadřazená sada Runbook může použít pouze podřízený Runbook ve stejném účtu Automation. |Nadřazené Runbooky můžou použít podřízený Runbook z libovolného účtu Automation, ze stejného předplatného Azure a dokonce z jiného předplatného, ke kterému máte připojení. |
+| Účet Automation |Nadřazená sada Runbook může použít pouze podřízený Runbook ve stejném účtu Automation. |Nadřazené Runbooky můžou použít podřízený Runbook z libovolného účtu Automation, ze stejného předplatného Azure a dokonce z jiného předplatného, ke kterému máte připojení. |
 | Publikování |Podřízené sady runbook musí být zveřejněna před publikováním nadřízeného runbooku. |Podřízená sada Runbook je publikovaná kdykoli před spuštěním nadřazeného Runbooku. |
 
 ## <a name="next-steps"></a>Další kroky

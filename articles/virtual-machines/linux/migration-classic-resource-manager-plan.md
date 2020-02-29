@@ -14,17 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 55d4971a8e25c07dfe2a1cfa5855d21efcc95b33
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: d11098b6bd8c32c04ea1d3007ef465deb90ffc17
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912592"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193692"
 ---
+# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
+
 > [!IMPORTANT]
 > V dnešní době se o 90% virtuálních počítačů IaaS používají [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Od 28. února 2020 se klasické virtuální počítače zastaraly a budou plně vyřazeny od 1. března 2023. [Přečtěte si další informace]( https://aka.ms/classicvmretirement) o této zastaralosti a [o tom, jak vás to ovlivní](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
 
-# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Plánování migrace prostředků IaaS z modelu Classic na Azure Resource Manager
 I když Azure Resource Manager nabízí spoustu úžasnéch funkcí, je důležité naplánovat cestu k migraci, abyste měli jistotu, že bude docházet k plynulé práci. Doba útraty při plánování zajistí, že při provádění aktivit migrace dojde k problémům.
 
 > [!NOTE]

@@ -12,29 +12,33 @@ metadata:
   ms.topic: landing-page
   ms.date: 02/11/2020
   ms.author: dapine
-  ms.openlocfilehash: b411ef91dd84916e9ace544f26ed88f3f316dc02
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 95cb9fdccac0955f29686ddfa27ca4431e2e3857
+  ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562886"
+  ms.lasthandoff: 02/29/2020
+  ms.locfileid: "78196905"
 landingContent:
 - title: Začínáme
   linkLists:
   - linkListType: overview
     links:
-    - text: O hlasových asistentcích
+    - text: Řešení hlasového asistenta
       url: voice-assistants.md
+    - text: O vlastních příkazech
+      url: custom-commands.md
     - text: O funkci Direct line Speech
       url: direct-line-speech.md
+  - linkListType: reference
+    links:
+    - text: Ceny
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+    - text: Nejčastější dotazy k hlasovým asistentům
+      url: faq-voice-assistants.md
+- title: Vlastní příkazy
+  linkLists:
   - linkListType: quickstart
     links:
-    - text: C# (UPW)
-      url: quickstart-voice-assistant-csharp-uwp.md
-    - text: Java (Windows, macOS, Linux)
-      url: quickstart-voice-assistant-java-jre.md
-    - text: Java (Android)
-      url: quickstart-voice-assistant-java-android.md
     - text: Vytvoření vlastního příkazu (Preview)
       url: quickstart-custom-speech-commands-create-new.md
     - text: Vytvoření vlastního příkazu s parametry (Preview)
@@ -43,16 +47,8 @@ landingContent:
       url: quickstart-custom-speech-commands-select-custom-voice.md
     - text: Použití vlastních příkazů se sadou Speech SDK (Preview)
       url: quickstart-custom-speech-commands-speech-sdk.md
-- title: Podrobní průvodci
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Hlasová podpora robota s využitím sady Speech SDK
-      url: tutorial-voice-enable-your-bot-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Vlastní příkazy (Preview)
-      url: custom-commands.md
     - text: Vlastní příkazy se sadou Speech SDK
       url: how-to-custom-speech-commands-fulfill-sdk.md
     - text: Vyřízení vlastních příkazů s využitím sady Speech SDK
@@ -63,11 +59,17 @@ landingContent:
       url: how-to-custom-speech-commands-confirmations.md
     - text: Přidání korekce v jednom kroku k vlastnímu příkazu
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Referenční informace
+- title: Direct Line Speech
   linkLists:
-  - linkListType: reference
+  - linkListType: quickstart
     links:
-    - text: Ceny
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
-    - text: Nejčastější dotazy k hlasovým asistentům
-      url: faq-voice-assistants.md
+    - text: C# (UPW)
+      url: quickstart-voice-assistant-csharp-uwp.md
+    - text: Java (Windows, macOS, Linux)
+      url: quickstart-voice-assistant-java-jre.md
+    - text: Java (Android)
+      url: quickstart-voice-assistant-java-android.md
+  - linkListType: tutorial
+    links:
+    - text: Hlasová podpora robota s využitím sady Speech SDK
+      url: tutorial-voice-enable-your-bot-speech-sdk.md

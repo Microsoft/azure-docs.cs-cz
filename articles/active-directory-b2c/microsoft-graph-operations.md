@@ -3,20 +3,20 @@ title: Podporované operace Microsoft Graph
 titleSuffix: Azure AD B2C
 description: Index operací Microsoft Graph podporovaných pro správu prostředků Azure AD B2C, včetně uživatelů, toků uživatelů, zprostředkovatelů identity, vlastních zásad, klíčů zásad a dalších.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/20/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5eeae1ab6866435311eeec944b4a51ecf2793dee
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 27fe1a41365d96a4179f8c659b63dc22c7b9fc93
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522964"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184244"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph operace k dispozici pro Azure AD B2C
 
@@ -100,7 +100,7 @@ Prostředek nejvyšší úrovně pro klíče zásad v rozhraní Microsoft Graph 
 
 Azure AD B2C poskytuje adresář, který může obsahovat 100 vlastních atributů na uživatele. V případě toků uživatelů se tyto vlastnosti rozšíření [spravují pomocí Azure Portal](custom-policy-custom-attributes.md). Pro vlastní zásady Azure AD B2C vytvoří vlastnost při prvním zápisu hodnoty do vlastnosti Extension.
 
-## <a name="audit-logs"></a>Protokoly auditování
+## <a name="audit-logs"></a>Protokoly auditu
 
 - [Vypsat protokoly auditu](https://docs.microsoft.com/graph/api/directoryaudit-list)
 

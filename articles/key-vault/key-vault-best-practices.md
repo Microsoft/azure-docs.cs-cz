@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-key-vault
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 654a9bb772c8a7426a335c98dfeca69515b9ce67
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: cb4bec8170466f0fc667b592d44b0858c41ccd84
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881619"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184823"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Osvědčené postupy pro použití Key Vault
 
@@ -32,9 +33,9 @@ Návrhy při řízení přístupu k trezoru jsou následující:
 
 Naším doporučením je použití trezoru pro jednotlivé aplikace (vývoj, předprodukční a produkční prostředí). To vám pomůže sdílet tajné klíče mezi prostředími a zároveň snižuje riziko v případě porušení.
 
-## <a name="backup"></a>Zálohovat
+## <a name="backup"></a>Backup
 
-Ujistěte se, že při aktualizaci, odstranění a [](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) vytváření objektů v rámci trezoru provádíte pravidelné zálohování vašeho trezoru.
+Ujistěte se, že při aktualizaci, odstranění a vytváření objektů v rámci trezoru provádíte pravidelné zálohování vašeho [trezoru](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) .
 
 ## <a name="turn-on-logging"></a>Zapnout protokolování
 

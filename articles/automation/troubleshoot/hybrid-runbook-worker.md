@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4d804499116631be6f922f67f8b8f6c7063a6d5c
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 137623e4c52d24061aec8ec11fca0fc02ca54c7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030723"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190972"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Řešení potíží s procesy Hybrid Runbook Worker
 
@@ -54,7 +54,7 @@ Počítače, na kterých běží Hybrid Runbook Worker, by měly splňovat minim
 
 Ověřte, že počítač, který spouští funkci Hybrid Runbook Worker, splňuje minimální požadavky na hardware. V takovém případě monitoruje využití procesoru a paměti k určení korelace mezi výkonem Hybrid Runbook Workerch procesů a oken. Nároky na paměť nebo procesor můžou znamenat nutnost upgradu prostředků. Můžete také vybrat jiný výpočetní prostředek, který podporuje minimální požadavky a škálování v případě požadavků na zatížení, což znamená, že je nutné zvýšit kapacitu.
 
-V protokolu událostí **Microsoft-SMA** vyhledejte odpovídající událost s popisem *procesu Win32, který skončil s kódem [4294967295]* . Příčinou této chyby je, že v sadách Runbook jste nenakonfigurovali ověřování nebo jste určili přihlašovací údaje spustit jako pro skupinu Hybrid Worker. Zkontrolujte [oprávnění sady Runbook](../automation-hrw-run-runbooks.md#runbook-permissions) a potvrďte, že jste správně nakonfigurovali ověřování pro vaše Runbooky.
+V protokolu událostí **Microsoft-SMA** vyhledejte odpovídající událost s popisem *procesu Win32, který skončil s kódem [4294967295]* . Příčinou této chyby je, že v sadách Runbook jste nenakonfigurovali ověřování nebo jste určili přihlašovací údaje spustit jako pro skupinu Hybrid Runbook Worker. Zkontrolujte oprávnění sady Runbook ve [spouštění Runbooků na Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) a ověřte, zda jste správně nakonfigurovali ověřování pro vaše Runbooky.
 
 ### <a name="no-cert-found"></a>Scénář: v úložišti certifikátů na Hybrid Runbook Worker nebyl nalezen žádný certifikát.
 

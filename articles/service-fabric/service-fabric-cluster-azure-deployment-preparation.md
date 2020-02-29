@@ -3,12 +3,12 @@ title: Plánování nasazení clusteru Azure Service Fabric
 description: Přečtěte si o plánování a přípravě nasazení produkčního Service Fabric clusteru do Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 32d48f9ffa056d252bdf762304340f245d80fd26
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1762a6975448301957579b3437a8af5c89b3accd
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834446"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193472"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plánování a příprava nasazení clusteru
 
@@ -20,7 +20,7 @@ Aby bylo možné úspěšně spravovat aplikace a clustery Azure Service Fabric,
 ## <a name="select-the-os-for-the-cluster"></a>Vyberte operační systém pro cluster.
 Service Fabric umožňuje vytváření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server nebo Linux.  Před nasazením clusteru je nutné zvolit operační systém: Windows nebo Linux.  Každý uzel (virtuální počítač) v clusteru spouští stejný operační systém. virtuální počítače se systémem Windows a Linux nelze kombinovat ve stejném clusteru.
 
-## <a name="capacity-planning"></a>Plánování kapacit
+## <a name="capacity-planning"></a>Plánování kapacity
 Pro jakékoli provozní nasazení je plánování kapacity důležitým krokem. Zde je uvedeno několik bodů, které je vhodné vzít v úvahu v rámci procesu.
 
 * Počáteční počet typů uzlů pro váš cluster 
@@ -77,7 +77,6 @@ Dočasné disky s operačním systémem nejsou konkrétní funkcí Service Fabri
         "virtualMachineProfile": {
             "storageProfile": {
                 "osDisk": {
-                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
                         "caching": "ReadOnly",
                         "createOption": "FromImage",
                         "diffDiskSettings": {

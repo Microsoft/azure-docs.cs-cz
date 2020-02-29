@@ -5,18 +5,19 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 65c59ba299490ee2bbef849b6f7354abc05ad885
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8c5b3fcc1cb2ac481be0b435c48ce213c716edde
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003343"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198163"
 ---
-# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Kurz: Použití virtuálního počítače Linux a aplikace .NET k ukládání tajných kódů v Azure Key Vault
+# <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>Kurz: použití virtuálního počítače se systémem Linux a aplikace .NET k ukládání tajných kódů v Azure Key Vault
 
 Azure Key Vault pomáhá chránit tajné kódy, jako jsou klíče rozhraní API a databázové připojovací řetězce, které jsou potřeba pro přístup k aplikacím, službám a prostředkům IT.
 
@@ -32,7 +33,7 @@ V tomto kurzu nastavíte konzolovou aplikaci .NET pro čtení informací z Azure
 
 Než budeme pokračovat, přečtěte si o [základních konceptech trezoru klíčů](basic-concepts.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Git](https://git-scm.com/downloads)
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
@@ -61,9 +62,9 @@ az login
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí `az group create` příkazu. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků pomocí příkazu `az group create`. Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
-Vytvořte skupinu prostředků v umístění Západní USA. Vyberte název vaší skupiny prostředků a nahraďte `YourResourceGroupName` ho v následujícím příkladu:
+Vytvořte skupinu prostředků v umístění Západní USA. Vyberte název vaší skupiny prostředků a v následujícím příkladu nahraďte `YourResourceGroupName`:
 
 ```azurecli-interactive
 # To list locations: az account list-locations --output table
@@ -76,9 +77,9 @@ Tuto skupinu prostředků použijete v průběhu tohoto kurzu.
 
 Potom ve skupině prostředků vytvořte Trezor klíčů. Zadejte tyto informace:
 
-* Název trezoru klíčů: řetězec na 3 až 24 znaků, který může obsahovat jenom čísla, písmena a spojovníky (0-9, a-z, a-Z \- a).
+* Název trezoru klíčů: řetězec na 3 až 24 znaků, který může obsahovat jenom čísla, písmena a spojovníky (0-9, a-z, a-Z a \-).
 * Název skupiny prostředků
-* Oblasti **Západní USA**
+* Umístění: **západní USA**
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -96,11 +97,11 @@ Pro tento kurz zadejte následující příkazy pro vytvoření tajného klíče
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-linux-virtual-machine"></a>Vytvořit virtuální počítač s Linuxem
+## <a name="create-a-linux-virtual-machine"></a>Vytvoření virtuálního počítače s Linuxem
 
-Vytvořte virtuální počítač pomocí `az vm create` příkazu.
+Vytvořte virtuální počítač pomocí příkazu `az vm create`.
 
-Následující příklad vytvoří virtuální počítač **myVM** a přidá uživatelský účet **azureuser**. Parametr US použil k automatickému vygenerování klíče SSH a umístí ho do výchozího umístění klíče ( **~/.ssh**). `--generate-ssh-keys` Pokud místo toho chcete použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
+Následující příklad vytvoří virtuální počítač **myVM** a přidá uživatelský účet **azureuser**. `--generate-ssh-keys` parametr US se používá k automatickému vygenerování klíče SSH a jeho vložení do výchozího umístění klíče ( **~/.ssh**). Pokud místo toho chcete použít konkrétní sadu klíčů, použijte možnost `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \
@@ -126,7 +127,7 @@ Vytvoření virtuálního počítače a podpůrných prostředků trvá několik
 }
 ```
 
-Poznamenejte `publicIpAddress` si ve výstupu svého virtuálního počítače. Tuto adresu použijete pro přístup k virtuálnímu počítači v pozdějších krocích.
+Poznamenejte si `publicIpAddress` ve výstupu z virtuálního počítače. Tuto adresu použijete pro přístup k virtuálnímu počítači v pozdějších krocích.
 
 ## <a name="assign-an-identity-to-the-vm"></a>Přiřazení identity k virtuálnímu počítači
 
@@ -136,7 +137,7 @@ Spuštěním následujícího příkazu vytvořte identitu přiřazenou systéme
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-Výstup příkazu by měl být:
+Výstup příkazu by měl být následující:
 
 ```azurecli
 {
@@ -145,7 +146,7 @@ Výstup příkazu by měl být:
 }
 ```
 
-Poznamenejte `systemAssignedIdentity`si. Použijete ho v dalším kroku.
+Poznamenejte si `systemAssignedIdentity`. Použijete ho v dalším kroku.
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>Udělte identitě virtuálního počítače oprávnění k Key Vault
 
@@ -282,7 +283,7 @@ Nyní jste se naučili, jak provádět operace s Azure Key Vault v aplikaci .NET
 
 Odstraňte skupinu prostředků, virtuální počítač a všechny související prostředky, pokud je už nepotřebujete. Provedete to tak, že vyberete skupinu prostředků pro virtuální počítač a vyberete **Odstranit**.
 
-Odstraňte Trezor klíčů pomocí `az keyvault delete` příkazu:
+Odstraňte Trezor klíčů pomocí příkazu `az keyvault delete`:
 
 ```azurecli-interactive
 az keyvault delete --name
