@@ -1,17 +1,17 @@
 ---
 title: Mapování sloučené transformace toku dat
-description: Transformovaná transformace toku dat mapování služby Azure Data Factory
+description: Azure Data Factory transformaci sloučení toku dat
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 435d2469be8eb572caa02e381d84ae4e9ac32f4b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 415a093fd8a8fbe27e1d240b061548e18f2ca6b6
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77674841"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164725"
 ---
 # <a name="azure-data-factory-flatten-transformation"></a>Transformace Azure Data Factory sloučení
 
@@ -29,7 +29,7 @@ Nejprve vyberte sloupec pole, který chcete vyhodit a pivotovat.
 
 ## <a name="unroll-root"></a>Odveďte kořen
 
-Ve výchozím nastavení se ADF sloučí do struktury v poli, které jste si zvolili výše. Nebo můžete zvolit jinou část hierarchie, která se má vrátit.
+Ve výchozím nastavení se ADF sloučí do struktury v poli, které jste si zvolili výše. Nebo můžete zvolit jinou část hierarchie, která se má vrátit. Možnost "nekumulativní kořen" je volitelné nastavení.
 
 ## <a name="input-columns"></a>Vstupní sloupce
 

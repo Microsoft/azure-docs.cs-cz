@@ -3,12 +3,12 @@ title: Běžné otázky – zjišťování, hodnocení a analýza závislostí v
 description: Získejte odpovědi na běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí v Azure Migrate.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 179be4f5b39806c717e94789c9fe52842d2a07d8
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6db521791e5ebb846585d4e0e823ba20d178d54a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589228"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918542"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Běžné dotazy týkající se zjišťování, hodnocení a analýzy závislostí
 
@@ -100,7 +100,7 @@ Ne, vizualizace závislosti se nedá exportovat. Azure Migrate však používá 
 
 ## <a name="can-i-automate--mmadependency-agent-installation"></a>Můžu automatizovat instalaci agenta MMA/Dependency?
 
-Pomocí tohoto [skriptu nainstalujte agenta závislostí](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Postupujte podle těchto [pokynů a nainstalujte MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) pomocí příkazového řádku nebo automatizace. Pro MMA použijte [Tento skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+Pomocí tohoto [skriptu nainstalujte agenta závislostí](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Postupujte podle těchto [pokynů a nainstalujte MMA](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) pomocí příkazového řádku nebo automatizace. Pro MMA použijte [Tento skript](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 
 Kromě skriptů můžete k nasazení agentů použít taky nástroje pro nasazení, jako je Microsoft Endpoint Configuration Manager a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) .
 

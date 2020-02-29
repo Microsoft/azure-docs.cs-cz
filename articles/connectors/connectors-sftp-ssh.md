@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, klam, logicappspm
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 02/28/2020
 tags: connectors
-ms.openlocfilehash: 3370eea8909f30563babcf2a84f727ba51f67e29
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: e7a0791cc2bca672e7fde142650ad25e7e8ab58b
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647644"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161870"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a Správa souborů SFTP pomocí SSH a Azure Logic Apps
 
@@ -31,7 +31,28 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
 
 ## <a name="limits"></a>Omezení
 
-* Ve výchozím nastavení můžou akce SFTP-SSH číst nebo zapisovat soubory o *velikosti 1 GB* , ale jenom v *15 MB* bloků dat. Aby bylo možné zpracovat soubory větší než 15 MB, protokol SFTP-SSH podporuje zpracování [bloků zpráv](../logic-apps/logic-apps-handle-large-messages.md), s výjimkou akce kopírovat soubor, která může zpracovávat pouze 15 MB souborů. Akce **získat obsah souboru** implicitně používá vytváření bloků zpráv.
+* Protokol SFTP – akce SSH, které podporují [dělení na bloky dat](../logic-apps/logic-apps-handle-large-messages.md) , můžou zpracovávat soubory o velikosti až 1 GB, zatímco akce SFTP-SSH, které nepodporují dělení na bloky dat, můžou zpracovávat soubory až do 50 MB. I když je výchozí velikost bloku 15 MB, může se tato velikost dynamicky měnit, počínaje 5 MB a postupně zvyšovat až 50 MB, a to na základě faktorů, jako je latence sítě, doba odezvy serveru a tak dále.
+
+  > [!NOTE]
+  > V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
+
+  Velikost bloku dat je přidružená k připojení, což znamená, že můžete použít stejné připojení pro akce, které podporují práci s bloky dat, a pak pro akce, které nepodporují práci s bloky dat. V takovém případě velikost bloku dat pro akce, které nepodporují rozsahy bloků dat z 5 MB na 50 MB. Tato tabulka ukazuje, které akce SFTP-SSH podporují vytváření bloků dat:
+
+  | Akce | Podpora bloků dat |
+  |--------|------------------|
+  | **Kopírovat soubor** | Ne |
+  | **Vytvořit soubor** | Ano |
+  | **Vytvořit složku** | Neuvedeno |
+  | **Odstranit soubor** | Neuvedeno |
+  | **Extrakce archivu do složky** | Neuvedeno |
+  | **Získat obsah souboru** | Ano |
+  | **Získání obsahu souboru pomocí cesty** | Ano |
+  | **Získat metadata souboru** | Neuvedeno |
+  | **Získat metadata souboru pomocí cesty** | Neuvedeno |
+  | **Zobrazit seznam souborů ve složce** | Neuvedeno |
+  | **Přejmenovat soubor** | Neuvedeno |
+  | **Aktualizovat soubor** | Ne |
+  |||
 
 * Protokol SFTP – triggery SSH nepodporují vytváření bloků dat. Při vyžádání obsahu souboru triggery vyberou pouze soubory, které jsou 15 MB nebo menší. Pokud chcete získat soubory větší než 15 MB, použijte tento vzor:
 
@@ -46,10 +67,6 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
 Tady jsou další klíčové rozdíly mezi konektorem SFTP-SSH a konektorem SFTP, kde má konektor SFTP-SSH tyto možnosti:
 
 * Používá [knihovnu SSH.NET](https://github.com/sshnet/SSH.NET), což je open-source Secure Shell (SSH) Library podporující rozhraní .NET.
-
-* Ve výchozím nastavení můžou akce SFTP-SSH číst nebo zapisovat soubory o *velikosti 1 GB* , ale jenom v *15 MB* bloků dat.
-
-  Aby bylo možné zpracovat soubory větší než 15 MB, může protokol SFTP – akce protokolu SSH používat [bloky zpráv](../logic-apps/logic-apps-handle-large-messages.md). Akce kopírovat soubor však podporuje pouze 15 MB souborů, protože tato akce nepodporuje vytváření bloků zpráv. Protokol SFTP – triggery SSH nepodporují vytváření bloků dat. Pro nahrání velkých souborů potřebujete oprávnění ke čtení i zápisu pro kořenovou složku na vašem serveru SFTP.
 
 * Poskytuje akci **vytvořit složku** , která vytvoří složku v zadané cestě na serveru SFTP.
 

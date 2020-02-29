@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 02/06/2020
-ms.openlocfilehash: 5f9e15b83c36c6c19fbe93c5f1df365f6f763c81
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.date: 02/28/2020
+ms.openlocfilehash: 701e279e349bdc3b92d5b5c2dc50e23199f9d766
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187687"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160807"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurace prostředí IR v místním prostředí jako proxy serveru pro Azure-SSIS IR v Azure Data Factory
 
@@ -165,7 +165,7 @@ Druhé pracovní úkoly, které běží na vašem Azure-SSIS IR, se neúčtují 
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
-- V současné době jsou podporovány pouze úlohy toku dat s použitím rozhraní ODBC (Open Database Connectivity), OLEDB nebo plochých souborů a zdrojů ODBC, OLEDB a plochých souborů nebo cíle OLEDB. 
+- V současné době jsou podporovány pouze úlohy toku dat s podporou rozhraní ODBC (Open Database Connectivity), OLEDB nebo Flat File Connection Managers a ODBC, OLEDB nebo ploché Souborové zdroje. 
 - V současné době jsou podporovány pouze propojené služby Azure Blob Storage, které jsou konfigurovány pomocí *klíče účtu*, *identifikátoru URI sdíleného přístupového podpisu (SAS)* nebo ověřování *instančního objektu* .
 
 ## <a name="next-steps"></a>Další kroky

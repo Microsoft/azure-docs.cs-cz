@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sihhu
-author: MayMSFT
+ms.author: keli19
+author: likebupt
 ms.reviewer: nibaccam
-ms.date: 01/15/2020
+ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 54ad9109a23b0fb25470987c2bc863934864b83f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 1db3679053edbbc2874c456b1c8db4a4f8e0dabd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77580674"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164864"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Přístup k datům ve službě Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -84,13 +84,12 @@ U Azure Data Lake Storageových úložišť Gen 1 a 2 však toto ověření prob
 
 Všechny metody registru jsou na třídě [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) a mají `register_azure_*`formuláře.
 
-Informace, které potřebujete k naplnění `register()` metody, získáte pomocí [Azure Portal](https://portal.azure.com):
+Informace, které potřebujete k naplnění metody `register()`, najdete v [Azure Portal](https://portal.azure.com).
+V levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. Stránka **Přehled** poskytuje informace, jako je název účtu, kontejner a název sdílené složky. 
 
-1. V levém podokně vyberte **účty úložiště** a zvolte účet úložiště, který chcete zaregistrovat. 
-2. Informace, jako je název účtu, kontejner a název sdílené složky, najdete na stránce **Přehled** . 
-3. Pro informace o ověřování, jako je klíč účtu nebo token SAS, přejděte v podokně **Nastavení** na **přístupové klíče** . 
+* U položek ověřování, jako je klíč účtu nebo token SAS, v podokně **Nastavení** přejít na **klíče účtu** . 
 
-4. U položek instančního objektu, jako je ID tenanta a ID klienta, přejdete na stránku **přehled** **Registrace aplikací**. 
+* V případě položek instančního objektu, jako je ID tenanta a ID klienta, přejdete na **Registrace aplikací** a vyberte, kterou aplikaci chcete použít. Příslušné stránky s **přehledem** budou obsahovat tyto položky.
 
 > [!IMPORTANT]
 > Pokud je váš účet úložiště ve virtuální síti, podporuje se jenom vytváření objektů blob, sdílení souborů, ADLS a ADLS Gen 2 pro úložiště dat **prostřednictvím sady SDK** . Pokud chcete vašemu pracovnímu prostoru udělit přístup k vašemu účtu úložiště, nastavte parametr `grant_workspace_access` na `True`.
@@ -137,7 +136,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Data Lake Storage generace 2
 
-Pro úložiště dat Azure Data Lake Storage generace 2 (ADLS Gen 2) použijte [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) k registraci úložiště dat přihlašovacích údajů připojeného k úložišti Azure datalake Gen 2 s [oprávněními instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Aby bylo možné využívat instanční objekt, potřebujete [zaregistrovat aplikaci](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals). Přečtěte si další informace o [nastavení řízení přístupu pro adls Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
+Pro úložiště dat Azure Data Lake Storage generace 2 (ADLS Gen 2) použijte [register_azure_data_lake_gen2 ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) k registraci úložiště dat přihlašovacích údajů připojeného k úložišti Azure datalake Gen 2 s [oprávněními instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal). Aby bylo možné využívat instanční objekt, potřebujete [zaregistrovat svoji aplikaci](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) a nastavit přiřazení rolí pro čtenáře a přístup k datům. Přečtěte si další informace o [nastavení řízení přístupu pro adls Gen 2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control). 
 
 Následující kód vytvoří a zaregistruje úložiště dat `adlsgen2_datastore_name` do pracovního prostoru `ws`. Toto úložiště dat přistupuje k `test` systému souborů v účtu úložiště `account_name` pomocí zadaných přihlašovacích údajů instančního objektu.
 
@@ -177,7 +176,7 @@ Můžete najít informace, které potřebujete k naplnění formuláře na [Azur
 
 * U položek ověřování, jako je klíč účtu nebo token SAS, v podokně **Nastavení** přejít na **klíče účtu** . 
 
-* U položek instančního objektu, jako je ID tenanta a ID klienta, přejdete na stránku **přehled** **Registrace aplikací**. 
+* V případě položek instančního objektu, jako je ID tenanta a ID klienta, přejdete na **Registrace aplikací** a vyberte, kterou aplikaci chcete použít. Příslušné stránky s **přehledem** budou obsahovat tyto položky. 
 
 Následující příklad ukazuje, jak formulář vypadá při vytváření úložiště dat objektů BLOB v Azure: 
     
@@ -187,6 +186,10 @@ Následující příklad ukazuje, jak formulář vypadá při vytváření úlo�
 <a name="get"></a>
 
 ## <a name="get-datastores-from-your-workspace"></a>Získat úložiště dat z vašeho pracovního prostoru
+
+> [!IMPORTANT]
+> Azure Machine Learning Designer (Preview) vytvoří úložiště dat s názvem **azureml_globaldatasets** automaticky, když otevřete ukázku na domovské stránce návrháře. Toto úložiště dat obsahuje jenom ukázkové datové sady. Nepoužívejte **prosím toto** úložiště dat pro přístup k důvěrným datům.
+> ![automaticky vytvořené úložiště dat pro ukázkové datové sady návrháře](media/how-to-access-data/datastore-designer-sample.png)
 
 Chcete-li získat konkrétní úložiště dat registrované v aktuálním pracovním prostoru, použijte metodu [`get()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) static na `Datastore` třídě:
 

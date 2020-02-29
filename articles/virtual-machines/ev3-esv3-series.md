@@ -2,19 +2,19 @@
 title: Ev3-Series a Esv3-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače s Ev3 a Esv3-Series.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 41b3997a9271a113a8d89f47d3a79d93bc13f92c
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: aad4610a44c59ed95cf1ad9777329097886c5bed
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493745"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164368"
 ---
-# <a name="ev3-and-esv3-series"></a>Ev3 a Esv3 – Series
+# <a name="ev3-and-esv3-series"></a>Řada Ev3 a Esv3
 
 Funkce Ev3 a Esv3-Series je Intel® Xeon® 8171M 2,1 GHz (Skylake) nebo procesor Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) v konfiguraci s více vlákny, která poskytuje lepší polohu pro většinu úloh pro obecné účely a přináší Ev3 se zarovnává s virtuálními počítači pro obecné účely většiny ostatních cloudů.  Paměť se rozšířila (od 7 GiB/vCPU do 8 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, aby se přerovnaly k přechodu na vlákno. Ev3 je následná velikost virtuálních počítačů s vysokou pamětí pro řady D/Dv2.
 
@@ -31,6 +31,10 @@ ACU: 160–190
 Premium Storage: nepodporováno
 
 Ukládání Premium Storage do mezipaměti: nepodporováno
+
+Migrace za provozu: podporováno
+
+Aktualizace pro zachování paměti: podporováno
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Max. počet NIC / Šířka pásma sítě |
 |---|---|---|---|---|---|---|
@@ -59,6 +63,10 @@ ACU: 160–190
 Premium Storage: podporováno
 
 Ukládání Premium Storage do mezipaměti: podporováno
+
+Migrace za provozu: podporováno
+
+Aktualizace pro zachování paměti: podporováno
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|

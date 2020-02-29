@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 0a4d7f152e555ed89bd0a6aee0a7bc83b9815492
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 1ed0ce94074e3d0ed03c0a0dc4c276d71da7059b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77469132"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921007"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -23,19 +23,19 @@ Tento článek popisuje kroky pro řešení potíží, které vám pomohou vyře
 **Kód chyby**: UserErrorGuestAgentStatusUnavailable <br>
 **Chybová zpráva**: Agent virtuálního počítače nemůže komunikovat s Azure Backup<br>
 
-Agent virtuálního počítače Azure se může zastavit, zastaralá, je v nekonzistentním stavu nebo není nainstalovaný a zabránit tomu, aby služba Azure Backup spustila snímky.
+Agent virtuálního počítače Azure se může zastavit, zastaralá, je v nekonzistentním stavu nebo není nainstalovaný. Tyto stavy brání službě Azure Backup v aktivaci snímků.
 
-- **Otevřete portál Azure Portal > nastavení > virtuálního počítače > vlastnosti** > Ujistěte se, že **stav** virtuálního počítače **běží** a že **Stav agenta** je **připravený**. Pokud je agent virtuálního počítače zastavený nebo je v nekonzistentním stavu, restartujte agenta.<br>
-  - Pro virtuální počítače s Windows postupujte podle těchto [kroků](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) a restartujte agenta hosta.<br>
-  - Pro virtuální počítače se systémem Linux postupujte podle těchto [kroků](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) a restartujte agenta hosta.
-- **Otevřete portál Azure Portal > > nastavení > rozšíření** > zajistěte, aby byla všechna rozšíření ve stavu **úspěšné zřizování** . Pokud ne, vyřešte problém podle těchto [kroků](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) .
+- **Otevřete Azure Portal > > nastavení virtuálního počítače > podokno vlastnosti** > Zkontrolujte, že **stav** virtuálního počítače **běží** a že **Stav agenta** je **připravený**. Pokud je agent virtuálního počítače zastavený nebo je v nekonzistentním stavu, restartujte agenta.<br>
+  - U virtuálních počítačů s Windows postupujte podle těchto [kroků](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) a restartujte agenta hosta.<br>
+  - Pro virtuální počítače se systémem Linux pomocí následujících [kroků](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) restartujte agenta hosta.
+- **Otevřete Azure Portal > virtuálního počítače > nastavení > rozšíření** > zajistěte, aby byla všechna rozšíření ve stavu **úspěšného zřizování** . Pokud ne, vyřešte problém podle těchto [kroků](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state) .
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError – nepovedlo se komunikovat s agentem virtuálního počítače pro stav snímku.
 
 **Kód chyby**: GuestAgentSnapshotTaskStatusError<br>
 **Chybová zpráva**: nepovedlo se komunikovat s agentem virtuálního počítače pro stav snímku. <br>
 
-Po registraci a naplánování virtuálního počítače pro službu Azure Backup služba Backup inicializuje úlohu prostřednictvím komunikace s rozšířením zálohy virtuálního počítače, aby se pomohlo vytvořit snímek v daném časovém okamžiku. Některé z následujících podmínek mohou zabránit spuštění snímku. Pokud se snímek neaktivuje, může dojít k selhání zálohování. Proveďte následující kroky pro řešení potíží v uvedeném pořadí a opakujte operaci:  
+Po registraci a naplánování virtuálního počítače pro službu Azure Backup služba Backup spustí úlohu prostřednictvím komunikace s rozšířením zálohování virtuálního počítače, aby bylo možné vytvořit snímek v daném časovém okamžiku. Některé z následujících podmínek mohou zabránit spuštění snímku. Pokud se snímek neaktivuje, může dojít k selhání zálohování. Proveďte následující kroky pro řešení potíží v uvedeném pořadí a opakujte operaci:  
 
 **Příčina 1: [Agent je nainstalovaný na virtuálním počítači, ale nereaguje (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) .**  
 
@@ -52,9 +52,9 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 **Kód chyby**: UserErrorVmProvisioningStateFailed<br>
 **Chybová zpráva**: virtuální počítač je ve stavu selhání zřizování.<br>
 
-K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální počítač do stavu selhání zřizování.<br>**Otevřete portál Azure Portal > nastavení > virtuálního počítače > rozšíření stav rozšíření >** a ověřte, jestli jsou všechna rozšíření ve stavu **úspěšného zřizování** .
+K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální počítač do stavu selhání zřizování.<br>**Otevřete Azure Portal > > nastavení virtuálního počítače > rozšíření stav rozšíření >** a ověřte, jestli jsou všechna rozšíření ve stavu **úspěšné zřizování** .
 
-- Pokud je rozšíření VMSnapshot ve stavu selhání, klikněte pravým tlačítkem myši na rozšíření, které selhalo, a odeberte ho. Aktivovat zálohování na vyžádání. tím se přeinstalují rozšíření a spustí se úloha zálohování.  <br>
+- Pokud je rozšíření VMSnapshot ve stavu selhání, klikněte pravým tlačítkem myši na rozšíření, které selhalo, a odeberte ho. Aktivovat zálohování na vyžádání. Tato akce nainstaluje rozšíření znovu a spustí úlohu zálohování.  <br>
 - Pokud je jakékoli jiné rozšíření ve stavu selhání, může to narušit zálohování. Zajistěte, aby byly problémy s rozšířením vyřešeny, a opakujte operaci zálohování.  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached – dosáhlo se maximálního limitu kolekce bodů obnovení.
@@ -62,9 +62,9 @@ K této chybě dojde, když se jedna z chyb rozšíření přesune virtuální p
 **Kód chyby**: UserErrorRpCollectionLimitReached <br>
 **Chybová zpráva**: dosáhlo se maximálního limitu kolekce bodů obnovení. <br>
 
-- K tomuto problému může dojít, pokud je zámek skupiny prostředků bodu obnovení znemožněn automatickým čištěním bodů obnovení.
+- K tomuto problému může dojít, pokud je zámek skupiny prostředků bodu obnovení znemožněný automatickým čištěním bodů obnovení.
 - K tomuto problému může dojít také v případě, že je aktivováno více záloh za den. V současné době doporučujeme jenom jednu zálohu za den, protože body okamžitého obnovení se uchovávají po dobu 1-5 dnů na základě nakonfigurovaného uchování snímku a k virtuálnímu počítači se dá v jednom okamžiku přidružit jenom 18 RPs. <br>
-- Počet bodů obnovení mezi kolekcemi bodů obnovení a skupinami prostředků pro virtuální počítač nemůže překročit 18. Pokud chcete vytvořit nový bod obnovení, odstraňte prosím existující body obnovení.
+- Počet bodů obnovení mezi kolekcemi bodů obnovení a skupinami prostředků pro virtuální počítač nemůže překročit 18. Chcete-li vytvořit nový bod obnovení, odstraňte existující body obnovení.
 
 Doporučená akce:<br>
 Pokud chcete tento problém vyřešit, odeberte zámek pro skupinu prostředků virtuálního počítače a potom operaci spusťte znovu, aby se aktivovala operace vyčištění.
@@ -79,14 +79,14 @@ Pokud chcete tento problém vyřešit, odeberte zámek pro skupinu prostředků 
 **Kód chyby**: UserErrorKeyvaultPermissionsNotConfigured <br>
 **Chybová zpráva**: zálohování nemá dostatečná oprávnění k trezoru klíčů pro zálohování šifrovaných virtuálních počítačů. <br>
 
-Aby operace zálohování proběhla úspěšně na šifrovaných virtuálních počítačích, musí mít oprávnění pro přístup k trezoru klíčů. To se dá udělat pomocí [Azure Portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) nebo přes [PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection).
+Aby operace zálohování proběhla úspěšně na šifrovaných virtuálních počítačích, musí mít oprávnění pro přístup k trezoru klíčů. Oprávnění lze nastavit prostřednictvím [Azure Portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) nebo prostřednictvím [prostředí PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection).
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>Operace ExtensionSnapshotFailedNoNetwork-Snapshot selhala, protože ve virtuálním počítači není síťové připojení.
 
 **Kód chyby**: ExtensionSnapshotFailedNoNetwork<br>
 **Chybová zpráva**: operace snímku selhala, protože ve virtuálním počítači není síťové připojení.<br>
 
-Po registraci a naplánování virtuálního počítače pro službu Azure Backup služba Backup inicializuje úlohu prostřednictvím komunikace s rozšířením zálohy virtuálního počítače, aby se pomohlo vytvořit snímek v daném časovém okamžiku. Některé z následujících podmínek mohou zabránit spuštění snímku. Pokud se snímek neaktivuje, může dojít k selhání zálohování. Proveďte následující kroky pro řešení potíží v uvedeném pořadí a opakujte operaci:
+Po registraci a naplánování virtuálního počítače pro službu Azure Backup služba Backup spustí úlohu prostřednictvím komunikace s rozšířením zálohování virtuálního počítače, aby bylo možné vytvořit snímek v daném časovém okamžiku. Některé z následujících podmínek mohou zabránit spuštění snímku. Pokud se snímek neaktivuje, může dojít k selhání zálohování. Proveďte následující kroky pro řešení potíží v uvedeném pořadí a opakujte operaci:
 
 **Příčina 1: nelze [načíst stav snímku nebo nelze](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) pořídit snímek.**  
 **Příčina 2: [rozšíření zálohování se nepodařilo aktualizovat nebo načíst](#the-backup-extension-fails-to-update-or-load)**  
@@ -96,7 +96,7 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 **Kód chyby**: ExtensionOperationFailedForManagedDisks <br>
 **Chybová zpráva**: operace rozšíření VMSnapshot se nezdařila.<br>
 
-Po registraci a naplánování virtuálního počítače pro službu Azure Backup služba Backup inicializuje úlohu prostřednictvím komunikace s rozšířením zálohy virtuálního počítače, aby se pomohlo vytvořit snímek v daném časovém okamžiku. Některé z následujících podmínek mohou zabránit spuštění snímku. Pokud se snímek neaktivuje, může dojít k selhání zálohování. Proveďte následující kroky pro řešení potíží v uvedeném pořadí a opakujte operaci:  
+Po registraci a naplánování virtuálního počítače pro službu Azure Backup služba Backup spustí úlohu prostřednictvím komunikace s rozšířením zálohování virtuálního počítače, aby bylo možné vytvořit snímek v daném časovém okamžiku. Některé z následujících podmínek mohou zabránit spuštění snímku. Pokud se snímek neaktivuje, může dojít k selhání zálohování. Proveďte následující kroky pro řešení potíží v uvedeném pořadí a opakujte operaci:  
 **Příčina 1: nelze [načíst stav snímku nebo nelze](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) pořídit snímek.**  
 **Příčina 2: [rozšíření zálohování se nepodařilo aktualizovat nebo načíst](#the-backup-extension-fails-to-update-or-load)**  
 **Příčina 3: [Agent je nainstalovaný na virtuálním počítači, ale nereaguje (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) .**  
@@ -114,13 +114,12 @@ Po registraci a naplánování virtuálního počítače pro službu Azure Backu
 **Příčina 4: [rozšíření zálohování se nepodařilo aktualizovat nebo načíst](#the-backup-extension-fails-to-update-or-load) .**  
 **Příčina 5: Služba zálohování nemá oprávnění odstranit staré body obnovení z důvodu zámku skupiny prostředků.** <br>
 
-
-## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize – Azure Backup aktuálně není podporována nakonfigurovaná velikost disku.
+## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize – konfigurace nakonfigurovaných disků aktuálně není v Azure Backup podporována.
 
 **Kód chyby**: UserErrorUnsupportedDiskSize <br>
 **Chybová zpráva**: nakonfigurovaná velikost disku není v Azure Backup aktuálně podporovaná. <br>
 
-Operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 32 TB. Zálohování šifrovaných disků větších než 4 TB se taky v současnosti nepodporuje. Zajistěte, aby velikost disku byla menší nebo rovna podporovanému limitu rozdělením disků.
+Operace zálohování může selhat při zálohování virtuálního počítače s velikostí disku větší než 32 TB. Zálohování šifrovaných disků větších než 4 TB se v současné době nepodporuje. Zajistěte, aby velikost disku byla menší nebo rovna podporovanému limitu rozdělením disků.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress – nepovedlo se inicializovat zálohování, protože v tuto chvíli probíhá jiná operace zálohování.
 
@@ -139,6 +138,13 @@ Poslední úloha zálohování se nezdařila, protože probíhá existující ú
 4. Opakujte operaci zálohování.
 
 Pokud naplánovaná operace zálohování trvá déle, v konfliktu s další konfigurací zálohování, Projděte si [osvědčené postupy](backup-azure-vms-introduction.md#best-practices), [výkon zálohování](backup-azure-vms-introduction.md#backup-performance)a [aspekty obnovení](backup-azure-vms-introduction.md#backup-and-restore-considerations).
+
+## <a name="usererrorcrpreportedusererror---backup-failed-due-to-an-error-for-details-see-job-error-message-details"></a>UserErrorCrpReportedUserError – zálohování se nepovedlo kvůli chybě. Podrobnosti najdete v podrobnostech o chybové zprávě úlohy.
+
+**Kód chyby**: UserErrorCrpReportedUserError <br>
+**Chybová zpráva**: zálohování se nezdařilo z důvodu chyby. Podrobnosti najdete v podrobnostech o chybové zprávě úlohy.
+
+Tato chyba je hlášena z virtuálního počítače IaaS. Hlavní příčinu problému zjistíte tak, že přejdete do nastavení trezoru Recovery Services. V části **monitorování** vyberte **úlohy zálohování** pro filtrování a zobrazení stavu. Kliknutím na **chyby** zobrazíte podrobnosti o příslušné chybové zprávě. Proveďte další akce podle doporučení na stránce s podrobnostmi o chybě.
 
 ## <a name="causes-and-solutions"></a>Příčiny a řešení
 
@@ -192,7 +198,7 @@ Pokud požadujete podrobné protokolování pro waagent, postupujte takto:
 ### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM – možnosti konfigurace agenta nejsou nastavené (pro virtuální počítače se systémem Linux)
 
 Konfigurační soubor (/etc/waagent.conf) řídí akce waagent. Rozšíření možností konfiguračního souboru **. povolení** a **zřizování. Agent** by měl být nastaven na hodnotu **y** , aby fungovala záloha.
-Úplný seznam možností konfiguračního souboru agenta virtuálního počítače najdete prosím <https://github.com/Azure/WALinuxAgent#configuration-file-options>
+Úplný seznam možností konfiguračního souboru agenta virtuálního počítače najdete v tématu <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Stav snímku nelze načíst nebo nelze vytvořit snímek.
 
@@ -229,7 +235,7 @@ Provedením těchto kroků dojde k přeinstalování rozšíření během pří�
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Odebrat zámek ze skupiny prostředků bodu obnovení
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 2. Přejděte na **možnost všechny prostředky**, vyberte skupinu prostředků kolekce bodů obnovení v následujícím formátu AzureBackupRG_`<Geo>`_`<number>`.
 3. V části **Nastavení** vyberte **zámky** a zobrazte zámky.
 4. Pokud chcete zámek odebrat, vyberte tři tečky a klikněte na **Odstranit**.
@@ -240,7 +246,7 @@ Provedením těchto kroků dojde k přeinstalování rozšíření během pří�
 
 Po odebrání zámku je potřeba vyčistit body obnovení.
 
-Pokud odstraníte skupinu prostředků virtuálního počítače nebo samotný virtuální počítač, zůstanou snímky pro okamžité obnovení na spravovaných discích aktivní a jejich platnost vyprší v závislosti na sadě pro uchovávání informací. Chcete-li odstranit snímky okamžitého obnovení (Pokud už je nepotřebujete) uložené v kolekci bodů obnovení, vyčistěte kolekci bodů obnovení podle kroků uvedených níže.
+Pokud odstraníte skupinu prostředků virtuálního počítače nebo samotný virtuální počítač, zůstanou snímky pro okamžité obnovení na spravovaných discích aktivní a jejich platnost vyprší v závislosti na sadě pro uchovávání informací. Pokud chcete odstranit snímky okamžitého obnovení (Pokud už je nepotřebujete), které jsou uložené v kolekci bodů obnovení, vyčistěte kolekci bodů obnovení podle kroků uvedených níže.
 
 Chcete-li vyčistit body obnovení, postupujte podle kterékoli z těchto metod:<br>
 
@@ -249,7 +255,7 @@ Chcete-li vyčistit body obnovení, postupujte podle kterékoli z těchto metod:
 
 #### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>Vyčištění kolekce bodů obnovení spuštěním zálohování na vyžádání
 
-Po odebrání zámku aktivujte zálohování na vyžádání. Tím se zajistí, že body obnovení se automaticky vyčistí. Tuto operaci na vyžádání byste měli očekávat při prvním selhání. ale zajistí automatické vyčištění místo ručního odstranění bodů obnovení. Po vyčištění by mělo být úspěšné další plánované zálohování.
+Po odebrání zámku aktivujte zálohování na vyžádání. Tato akce zajistí, že body obnovení se automaticky vyčistí. Tuto operaci na vyžádání byste měli očekávat při prvním selhání. ale zajistí automatické vyčištění místo ručního odstranění bodů obnovení. Po vyčištění by mělo doběhnout k dalšímu plánovanému zálohování.
 
 > [!NOTE]
 > Automatické čištění proběhne po několika hodinách spuštění zálohování na vyžádání. Pokud se naplánované zálohování stále nedaří, zkuste kolekci bodů obnovení ručně odstranit pomocí kroků uvedených [tady](#clean-up-restore-point-collection-from-azure-portal).
@@ -258,12 +264,12 @@ Po odebrání zámku aktivujte zálohování na vyžádání. Tím se zajistí, 
 
 Chcete-li ručně vymazat kolekci bodů obnovení, která není smazána z důvodu zámku skupiny prostředků, zkuste provést následující kroky:
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 2. V nabídce **centra** klikněte na **všechny prostředky**a vyberte skupinu prostředků s následujícím formátem AzureBackupRG_`<Geo>`_`<number>`, kde se virtuální počítač nachází.
 
     ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
-3. Klikněte na skupina prostředků a zobrazí se okno **Přehled** .
+3. Klikněte na skupina prostředků. zobrazí se podokno **Přehled** .
 4. Výběrem možnosti **Zobrazit skryté typy** zobrazíte všechny skryté prostředky. Vyberte kolekce bodů obnovení s následujícím formátem AzureBackupRG_`<VMName>`_`<number>`.
 
     ![Odstranit zámek](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)

@@ -2,17 +2,17 @@
 title: NVv3-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady NVv3-Series.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: a353abe8cdedb01138c8b633750b90bd9870e5d2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 42c11ed41ca4d84f1acf137bbb681a2dbe24dfe2
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666875"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161903"
 ---
 # <a name="nvv3-series"></a>Řada NVv3
 
@@ -21,6 +21,10 @@ Virtuální počítače řady NVv3-Series využívají technologii [NVIDIA Tesla
 Každý grafický procesor v NVv3 instancích obsahuje licenci na MŘÍŽKu. Tato licence vám poskytne flexibilitu pro použití instance NV jako virtuální pracovní stanice pro jednoho uživatele nebo 25 souběžných uživatelů se může připojit k virtuálnímu počítači pro scénář virtuální aplikace.
 
 Ukládání Premium Storage do mezipaměti: podporováno
+
+Migrace za provozu: nepodporováno
+
+Aktualizace pro zachování paměti: nepodporováno
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet | Virtuální pracovní stanice | Virtuální aplikace |
 |---|---|---|---|---|---|---|---|---|---|---|

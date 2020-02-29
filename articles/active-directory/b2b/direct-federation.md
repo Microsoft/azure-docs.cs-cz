@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 02/27/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a6187fa9f274c6d00c1c9872a1b27268ac91295e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888895"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161482"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Přímá federace pomocí AD FS a poskytovatelů třetích stran pro uživatele typu Host (Preview)
 |     |
@@ -64,6 +64,10 @@ Pokud v nastavení zprostředkovatele identity zadáte adresu URL metadat, služ
 
 ### <a name="limit-on-federation-relationships"></a>Omezení federačních vztahů
 V současné době je podporováno maximálně 1 000 federačních vztahů. Toto omezení zahrnuje i [interní federace](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) i přímé federace.
+
+### <a name="limit-on-multiple-domains"></a>Omezení ve více doménách
+V současné době nepodporujeme přímou federaci s více doménami ze stejného tenanta.
+
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 ### <a name="can-i-set-up-direct-federation-with-a-domain-for-which-an-unmanaged-email-verified-tenant-exists"></a>Můžu nastavit přímou federaci s doménou, pro kterou existuje nespravovaný tenant (e-mail ověřený)? 
 Ano. Pokud se doména neověřila a tenant neprošel [převzetím správce](../users-groups-roles/domains-admin-takeover.md), můžete nastavit přímou federaci s touto doménou. Nespravované nebo ověřené e-mailem jsou klienti vytvořeni v případě, že uživatel uplatní pozvánku B2B nebo provede samoobslužnou registraci pro službu Azure AD pomocí domény, která aktuálně neexistuje. S těmito doménami můžete nastavit přímou federaci. Pokud se pokusíte nastavit přímou federaci s doménou ověřenou DNS, ať už v Azure Portal nebo prostřednictvím PowerShellu, zobrazí se chyba.
@@ -137,7 +141,7 @@ Dále nakonfigurujete federaci s poskytovatelem identity nakonfigurovaným v kro
 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Konfigurace přímé federace na portálu Azure AD
 
-1. Přejděte na [portál Azure](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
+1. Přejděte na [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **vztahy organizace**.
 3. Vyberte **Zprostředkovatelé identity**a potom vyberte **Nový SAML/WS-IDP**.
 
@@ -156,7 +160,7 @@ Dále nakonfigurujete federaci s poskytovatelem identity nakonfigurovaným v kro
    > [!NOTE]
    > Adresa URL metadat je volitelná, ale důrazně ji doporučujeme. Pokud zadáte adresu URL metadat, může Azure AD automaticky obnovit podpisový certifikát, jakmile vyprší jeho platnost. Pokud se certifikát z jakéhokoli důvodu před časem vypršení platnosti nebo pokud neposkytnete adresa URL metadat, Azure AD ho nebude moct obnovit. V takovém případě budete muset podpisový certifikát aktualizovat ručně.
 
-7. Vyberte **Uložit**. 
+7. Vyberte **Save** (Uložit). 
 
 ### <a name="to-configure-direct-federation-in-azure-ad-using-powershell"></a>Konfigurace přímé federace ve službě Azure AD pomocí prostředí PowerShell
 
@@ -185,18 +189,18 @@ Nyní otestujte nastavení přímé federace pozváním nového uživatele typu 
  
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Návody upravit přímý vztah federace?
 
-1. Přejděte na [portál Azure](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
+1. Přejděte na [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **vztahy organizace**.
 3. Vybrat **zprostředkovatele identity**
 4. V části **Zprostředkovatelé identit SAML/WS**vyberte poskytovatele.
 5. V podokně podrobností zprostředkovatele identity aktualizujte hodnoty.
-6. Vyberte **Uložit**.
+6. Vyberte **Save** (Uložit).
 
 
 ## <a name="how-do-i-remove-direct-federation"></a>Návody odebrat přímo federaci?
 Můžete odebrat nastavení přímé federace. Pokud tak učiníte, přesměrujete uživatele typu Host, kteří už provedli své pozvánky, se nebudou moct přihlásit. Můžete jim ale udělit přístup k prostředkům tím, že je odstraníte z adresáře a znovu je dodáte. Postup odebrání přímé federace se zprostředkovatelem identity na portálu Azure AD:
 
-1. Přejděte na [portál Azure](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
+1. Přejděte na [Azure Portal](https://portal.azure.com/). V levém podokně vyberte **Azure Active Directory**. 
 2. Vyberte **vztahy organizace**.
 3. Vyberte **Zprostředkovatelé identity**.
 4. Vyberte poskytovatele identity a pak vyberte **Odstranit**. 

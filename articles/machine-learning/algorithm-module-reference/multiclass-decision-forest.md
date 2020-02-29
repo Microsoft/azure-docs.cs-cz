@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 47cea412489693cedb05bd8a94a914b1757b8058
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: b1f7aaeaf5d1537e0e5a427ad994f7e31e43fee3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152155"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921364"
 ---
 # <a name="multiclass-decision-forest-module"></a>Modul více tříd pro rozhodovací doménovou strukturu
 
@@ -55,6 +55,7 @@ Klasifikátor rozhodovací doménové struktury v Azure Machine Learning se skl�
 
     + **Jeden parametr**: tuto možnost vyberte, pokud víte, jak chcete model konfigurovat, a jako argumenty zadejte sadu hodnot.
 
+    + **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.   
 
 5. **Počet rozhodovacích stromů**: zadejte maximální počet rozhodovacích stromů, které lze v kompletu vytvořit. Vytvořením dalších rozhodovacích stromů můžete získat lepší pokrytí, ale čas školení se může zvýšit.
 

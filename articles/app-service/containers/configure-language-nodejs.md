@@ -4,12 +4,12 @@ description: Naučte se konfigurovat předem sestavený kontejner Node. js pro v
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 6cf60472307a378d2fd4258a9777152344a11ded
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 45d7d141bc2ab85ab33be455fc3da5570b0e7f51
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670272"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920021"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux Node. js pro Azure App Service
 
@@ -44,6 +44,32 @@ Toto nastavení určuje verzi Node. js, která se má použít, a to za běhu i 
 > [!NOTE]
 > V `package.json`projektu byste měli nastavit verzi Node. js. Modul pro nasazení běží v samostatném kontejneru, který obsahuje všechny podporované verze Node. js.
 
+## <a name="customize-build-automation"></a>Přizpůsobení automatizace sestavení
+
+Pokud nasadíte aplikaci s použitím balíčků Git nebo zip se zapnutou možností automatizace sestavení, App Service sestavování kroků automatizace pomocí následujícího postupu:
+
+1. Pokud je zadaný pomocí `PRE_BUILD_SCRIPT_PATH`, spusťte vlastní skript.
+1. Spusťte `npm install` bez jakýchkoli příznaků, což zahrnuje npm `preinstall` a `postinstall` skripty a nainstaluje také `devDependencies`.
+1. Spusťte `npm run build`, pokud je v *balíčku. JSON*zadán skript sestavení.
+1. Spusťte `npm run build:azure`, pokud je v *balíčku. JSON*zadané sestavení: Azure Script.
+1. Pokud je zadaný pomocí `POST_BUILD_SCRIPT_PATH`, spusťte vlastní skript.
+
+> [!NOTE]
+> Jak je popsáno v [npm docs](https://docs.npmjs.com/misc/scripts), skripty s názvem `prebuild` a `postbuild` spouštěny před a po `build`, v uvedeném pořadí, pokud jsou zadány. `preinstall` a `postinstall` běžet před `install`, respektive.
+
+`PRE_BUILD_COMMAND` a `POST_BUILD_COMMAND` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením, definujte `PRE_BUILD_COMMAND`. Chcete-li spustit příkazy po sestavení, definujte `POST_BUILD_COMMAND`.
+
+Následující příklad určuje dvě proměnné pro řadu příkazů, které jsou odděleny čárkami.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Další proměnné prostředí pro přizpůsobení automatizace sestavení naleznete v tématu [Oryx Configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+Další informace o tom, jak App Service spouští a sestavuje aplikace Node. js v systému Linux, najdete v [dokumentaci k Oryx: jak se zjišťují a vytváří aplikace Node. js](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md).
+
 ## <a name="configure-nodejs-server"></a>Konfigurace serveru Node. js
 
 Kontejnery Node. js se dodávají s [konfiguračního PM2](https://pm2.keymetrics.io/), což je správce produkčních procesů. Aplikaci můžete nakonfigurovat tak, aby začínala konfiguračního PM2, nebo s NPM, nebo pomocí vlastního příkazu.
@@ -62,7 +88,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>Spustit npm Start
 
-Pokud chcete aplikaci spustit pomocí `npm start`, zajistěte, aby se v souboru *Package. JSON* používal skript `start`. Například:
+Pokud chcete aplikaci spustit pomocí `npm start`, zajistěte, aby se v souboru *Package. JSON* používal skript `start`. Příklad:
 
 ```json
 {
@@ -110,7 +136,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 Aplikaci Node. js můžete ladit vzdáleně v [Visual Studio Code](https://code.visualstudio.com/) , pokud ji nakonfigurujete tak, aby [běžela s konfiguračního PM2](#run-with-pm2), s výjimkou případů, kdy ji spustíte pomocí souboru *. config. js, *. yml nebo *. yaml*.
 
-Ve většině případů není pro vaši aplikaci nutná žádná další konfigurace. Pokud je vaše aplikace spuštěná se souborem *Process. JSON* (výchozí nebo vlastní), musí mít v kořenu json vlastnost `script`. Například:
+Ve většině případů není pro vaši aplikaci nutná žádná další konfigurace. Pokud je vaše aplikace spuštěná se souborem *Process. JSON* (výchozí nebo vlastní), musí mít v kořenu json vlastnost `script`. Příklad:
 
 ```json
 {
@@ -138,7 +164,7 @@ process.env.NODE_ENV
 
 Ve výchozím nastavení se Kudu spustí `npm install --production`, když rozpozná, že je nasazená aplikace Node. js. Pokud vaše aplikace vyžaduje některé z oblíbených nástrojů pro automatizaci, jako je grunt, Bower nebo Gulp, je potřeba pro její spuštění zadáním [vlastního skriptu nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) .
 
-Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat do závislostí v *balíčku. JSON.* Například:
+Pokud chcete vašemu úložišti povolit spouštění těchto nástrojů, musíte je přidat do závislostí v *balíčku. JSON.* Příklad:
 
 ```json
 "dependencies": {
@@ -217,7 +243,7 @@ fi
 
 V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje zkontrolovat, jestli jsou požadavky uživatele zašifrované, nebo ne, zkontrolujte `X-Forwarded-Proto` záhlaví.
 
-Oblíbená webová rozhraní umožňují přístup k informacím o `X-Forwarded-*` ve standardním vzorcích aplikací. V [expresním](https://expressjs.com/)případě můžete použít [důvěryhodné proxy](https://expressjs.com/guide/behind-proxies.html). Například:
+Oblíbená webová rozhraní umožňují přístup k informacím o `X-Forwarded-*` ve standardním vzorcích aplikací. V [expresním](https://expressjs.com/)případě můžete použít [důvěryhodné proxy](https://expressjs.com/guide/behind-proxies.html). Příklad:
 
 ```javascript
 app.set('trust proxy', 1)
@@ -240,7 +266,7 @@ if (req.secure) {
 Pokud se funkční aplikace Node. js chová odlišně v App Service nebo obsahuje chyby, zkuste následující:
 
 - [Přístup ke streamu protokolů](#access-diagnostic-logs).
-- Otestujte aplikaci místně v provozním režimu. App Service spouští aplikace v Node. js v produkčním režimu, takže je nutné zajistit, aby váš projekt fungoval v provozním režimu místně. Například:
+- Otestujte aplikaci místně v provozním režimu. App Service spouští aplikace v Node. js v produkčním režimu, takže je nutné zajistit, aby váš projekt fungoval v provozním režimu místně. Příklad:
     - V závislosti na vašem *balíčku. JSON*se můžou nainstalovat různé balíčky pro produkční režim (`dependencies` vs. `devDependencies`).
     - Některé webové architektury můžou nasazovat statické soubory odlišně v produkčním režimu.
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.

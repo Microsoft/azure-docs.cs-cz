@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 89772bea818a0ebb57135990b3a04fcb559e2716
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b99827ff9fd01c7179a25fafd05bfc8e4ef8ae63
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664928"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921092"
 ---
 # <a name="streaming-ingestion-preview"></a>Ingestování streamování (Preview)
 
@@ -20,7 +20,7 @@ Ingestování streamování je cílené pro scénáře, které vyžadují nízko
 
 Použijte klasickou (hromadnou) ingestu místo příjmu streamování, když se objem dat zvětšuje na více než 1 MB za sekundu na tabulku. Přečtěte si [Přehled příjmu dat](/azure/data-explorer/ingest-data-overview) , kde se dozvíte víc o různých metodách přijímání.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * Přihlaste se k [webovému uživatelskému rozhraní](https://dataexplorer.azure.com/).
@@ -80,7 +80,7 @@ Existují dva podporované typy přijímání streamování:
 
 Přijímání streamování nepodporuje následující funkce:
 * [Kurzory databáze](/azure/kusto/management/databasecursor).
-* [Mapování dat](/azure/kusto/management/mappings). Je podporováno pouze [předem vytvořené](/azure/kusto/management/tables#create-ingestion-mapping) mapování dat. 
+* [Mapování dat](/azure/kusto/management/mappings). Je podporováno pouze [předem vytvořené](/azure/kusto/management/create-ingestion-mapping-command) mapování dat. 
 
 ## <a name="next-steps"></a>Další kroky
 

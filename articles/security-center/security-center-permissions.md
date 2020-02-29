@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: f52d518d2ed1dfb62eed72cf9c0b839a37b7f856
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 0e60e782fa65cd5868bebe081673f9a158e07799
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201643"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921313"
 ---
 # <a name="permissions-in-azure-security-center"></a>Oprávnění v Azure Security Center
 
@@ -29,8 +29,8 @@ Security Center posuzuje konfiguraci vašich prostředků identifikovat problém
 
 Kromě těchto rolí existují ve službě Security Center dvě specifické role:
 
-* **Čtecí modul zabezpečení**: Uživatel, který patří do této role, má oprávnění k zobrazení Security Center. Uživatel může zobrazit doporučení, výstrahy, zásady zabezpečení a stavy zabezpečení, ale nemůže provádět změny.
-* **Správce zabezpečení**: Uživatel, který patří do této role, má stejná práva jako čtecí modul zabezpečení a může také aktualizovat zásady zabezpečení a zrušit výstrahy a doporučení.
+* **Čtecí modul zabezpečení**: uživatel patřící do této role má práva k zobrazení Security Center. Uživatel může zobrazit doporučení, výstrahy, zásady zabezpečení a stavy zabezpečení, ale nemůže provádět změny.
+* **Správce zabezpečení**: uživatel patřící do této role má stejná práva jako čtecí modul zabezpečení a může také aktualizovat zásady zabezpečení a zrušit výstrahy a doporučení.
 
 > [!NOTE]
 > Role zabezpečení, čtecí modul zabezpečení a správce zabezpečení mají přístup pouze v Security Center. Role zabezpečení nemají přístup k jiným oblastem služeb Azure, jako jsou Storage, web & Mobile nebo Internet věcí.
@@ -39,17 +39,17 @@ Kromě těchto rolí existují ve službě Security Center dvě specifické role
 
 ## <a name="roles-and-allowed-actions"></a>Role a povolené akce
 
-V následující tabulce jsou uvedeny role a povolené akce v Security Center. X označuje, že akce je pro tuto roli povolena.
+V následující tabulce jsou uvedeny role a povolené akce v Security Center.
 
-| Role | Upravit zásady zabezpečení | Použití doporučení zabezpečení pro prostředek | Zavřít výstrahy a doporučení | Zobrazit výstrahy a doporučení |
+| Role | Upravit zásady zabezpečení | Použití doporučení zabezpečení pro prostředek</br> (včetně "rychlé opravy!") | Zavřít výstrahy a doporučení | Zobrazit výstrahy a doporučení |
 |:--- |:---:|:---:|:---:|:---:|
-| Vlastník předplatného | X | X | X | X |
-| Přispěvatel předplatného | -- | X | X | X |
-| Vlastník skupiny prostředků | -- | X | -- | X |
-| Přispěvatel skupiny prostředků | -- | X | -- | X |
-| Čtenář | -- | -- | -- | X |
-| Správce zabezpečení | X | -- | X | X |
-| Čtenář zabezpečení | -- | -- | -- | X |
+| Vlastník předplatného | ✔ | ✔ | ✔ | ✔ |
+| Přispěvatel předplatného | -- | ✔ | ✔ | ✔ |
+| Vlastník skupiny prostředků | -- | ✔ | -- | ✔ |
+| Přispěvatel skupiny prostředků | -- | ✔ | -- | ✔ |
+| Čtenář | -- | -- | -- | ✔ |
+| Správce zabezpečení | ✔ | -- | ✔ | ✔ |
+| Čtenář zabezpečení | -- | -- | -- | ✔ |
 
 > [!NOTE]
 > Doporučujeme přiřadit uživatelům tu nejvíc omezenou roli, kterou ke své práci potřebují. Přiřaďte například roli Čtenář uživatelům, kteří potřebují jenom zobrazit informace o stavu zabezpečení prostředku, ale neprovádějí akci, jako je třeba použití doporučení nebo úprav zásad.

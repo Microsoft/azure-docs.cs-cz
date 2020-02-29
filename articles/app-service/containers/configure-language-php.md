@@ -4,12 +4,12 @@ description: Přečtěte si, jak nakonfigurovat předem sestavený kontejner PHP
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: a3de4769193d95a3ef483924c4d65c4fa1cc9f8d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e805487075499bd4e461a21fffb4c44156ce192b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671840"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913867"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux PHP pro Azure App Service
 
@@ -39,56 +39,30 @@ Spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com)
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
 ```
 
-## <a name="run-composer"></a>Spustit skladatele
+## <a name="customize-build-automation"></a>Přizpůsobení automatizace sestavení
 
-Ve výchozím nastavení Kudu nespustí [skladatel](https://getcomposer.org/). Pokud chcete povolit automatizaci skladatele během nasazování Kudu, je potřeba dodat [vlastní skript nasazení](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script).
+Pokud nasadíte aplikaci s použitím balíčků Git nebo zip se zapnutou možností automatizace sestavení, App Service sestavování kroků automatizace pomocí následujícího postupu:
 
-Z místního okna terminálu změňte adresář na svůj kořenový adresář úložiště. Postupujte podle pokynů k instalaci *skladatele. phar*pomocí [příkazového řádku](https://getcomposer.org/download/) .
+1. Pokud je zadaný pomocí `PRE_BUILD_SCRIPT_PATH`, spusťte vlastní skript.
+1. Spusťte `php composer.phar install`.
+1. Pokud je zadaný pomocí `POST_BUILD_SCRIPT_PATH`, spusťte vlastní skript.
 
-Spusťte následující příkazy:
+`PRE_BUILD_COMMAND` a `POST_BUILD_COMMAND` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením, definujte `PRE_BUILD_COMMAND`. Chcete-li spustit příkazy po sestavení, definujte `POST_BUILD_COMMAND`.
 
-```bash
-npm install kuduscript -g
-kuduscript --php --scriptType bash --suppressPrompt
+Následující příklad určuje dvě proměnné pro řadu příkazů, které jsou odděleny čárkami.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-Kořen vašeho úložiště má teď dva nové soubory kromě *skladatele. phar*: *. Deployment* a *Deploy.sh*. Tyto soubory fungují jak pro Windows, tak pro systém Linux App Service.
+Další proměnné prostředí pro přizpůsobení automatizace sestavení naleznete v tématu [Oryx Configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
 
-Otevřete *Deploy.sh* a vyhledejte část `Deployment`. Celý oddíl nahraďte následujícím kódem:
-
-```bash
-##################################################################################################################################
-# Deployment
-# ----------
-
-echo PHP deployment
-
-# 1. KuduSync
-if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-  exitWithMessageOnError "Kudu Sync failed"
-fi
-
-# 3. Initialize Composer Config
-initializeDeploymentConfig
-
-# 4. Use composer
-echo "$DEPLOYMENT_TARGET"
-if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
-  echo "Found composer.json"
-  pushd "$DEPLOYMENT_TARGET"
-  php composer.phar install $COMPOSER_ARGS
-  exitWithMessageOnError "Composer install failed"
-  popd
-fi
-##################################################################################################################################
-```
-
-Potvrďte všechny změny a znovu nasaďte svůj kód. Skladatel by teď měl běžet jako součást automatizace nasazení.
+Další informace o tom, jak App Service spouští a sestavuje aplikace PHP v systému Linux, najdete v [dokumentaci k Oryx: jak se zjišťují a vytváří aplikace v php](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md).
 
 ## <a name="customize-start-up"></a>Přizpůsobení spuštění
 
-Ve výchozím nastavení zabudovaný kontejner PHP spouští server Apache. Při spuštění se spustí `apache2ctl -D FOREGROUND"`. Pokud chcete, můžete při spuštění spustit jiný příkaz spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com):
+Ve výchozím nastavení používá integrovaný kontejner PHP server Apache. Při spuštění se spustí `apache2ctl -D FOREGROUND"`. Pokud chcete, můžete při spuštění spustit jiný příkaz spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -142,7 +116,7 @@ Pokud potřebujete provést změny v instalaci PHP, můžete změnit libovolné 
 
 Chcete-li přizpůsobit direktivy PHP_INI_USER, PHP_INI_PERDIR a PHP_INI_ALL (viz [direktivy php. ini](https://www.php.net/manual/ini.list.php)), přidejte soubor *. htaccess* do kořenového adresáře aplikace.
 
-V souboru *. htaccess* přidejte direktivy pomocí syntaxe `php_value <directive-name> <value>`. Například:
+V souboru *. htaccess* přidejte direktivy pomocí syntaxe `php_value <directive-name> <value>`. Příklad:
 
 ```
 php_value upload_max_filesize 1000M
@@ -224,7 +198,7 @@ Aby se změny projevily, restartujte aplikaci.
 Pokud se funkční aplikace v PHP chová odlišně v App Service nebo obsahuje chyby, zkuste následující:
 
 - [Přístup ke streamu protokolů](#access-diagnostic-logs).
-- Otestujte aplikaci místně v provozním režimu. App Service spouští aplikace v Node. js v produkčním režimu, takže je nutné zajistit, aby váš projekt fungoval v provozním režimu místně. Například:
+- Otestujte aplikaci místně v provozním režimu. App Service spouští aplikace v Node. js v produkčním režimu, takže je nutné zajistit, aby váš projekt fungoval v provozním režimu místně. Příklad:
     - V závislosti na vašem *skladatele. JSON*se můžou nainstalovat různé balíčky pro produkční režim (`require` vs. `require-dev`).
     - Některé webové architektury můžou nasazovat statické soubory odlišně v produkčním režimu.
     - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.

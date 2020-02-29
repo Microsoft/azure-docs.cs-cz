@@ -1,5 +1,6 @@
 ---
-title: Začínáme s vlastními zásadami – Azure Active Directory B2C
+title: Začínáme s vlastními zásadami
+titleSuffix: Azure AD B2C
 description: Naučte se, jak začít pracovat s vlastními zásadami v Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 02/28/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5a0e5846dd541e4997c271aee180b3790efa16e9
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 04978b561e3b0057318d08146f344411dec55ee4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114033"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161665"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Začínáme s vlastními zásadami v Azure Active Directory B2C
 
@@ -23,15 +24,15 @@ ms.locfileid: "77114033"
 
 [Vlastní zásady](custom-policy-overview.md) jsou konfigurační soubory, které definují chování klienta Azure Active Directory B2C (Azure AD B2C). V tomto článku vytvoříte vlastní zásadu, která podporuje registraci nebo přihlášení k místnímu účtu pomocí e-mailové adresy a hesla. Připravuje se také prostředí pro přidávání zprostředkovatelů identity.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Pokud ho ještě nemáte, [Vytvořte klienta Azure AD B2C](tutorial-create-tenant.md) , který je propojený s vaším předplatným Azure.
 - [Zaregistrujte svoji aplikaci](tutorial-register-applications.md) v tenantovi, kterou jste vytvořili, aby mohla komunikovat s Azure AD B2C.
-- Abyste mohli konfigurovat facebookovou aplikaci, proveďte kroky v části [Nastavení registrace a přihlášení pomocí účtu Facebook](identity-provider-facebook.md) .
+- Abyste mohli konfigurovat facebookovou aplikaci, proveďte kroky v části [Nastavení registrace a přihlášení pomocí účtu Facebook](identity-provider-facebook.md) . I když se aplikace Facebook nevyžaduje pro použití vlastních zásad, používá se v tomto návodu k předvedení povolení sociálního přihlášení ve vlastních zásadách.
 
 ## <a name="add-signing-and-encryption-keys"></a>Přidat podpisové a šifrovací klíče
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled v části **zásady**vyberte **Architektura prostředí identity**.
@@ -43,7 +44,7 @@ ms.locfileid: "77114033"
 1. Do **název**zadejte `TokenSigningKeyContainer`. `B2C_1A_` předpony je možné přidat automaticky.
 1. Jako **typ klíče**vyberte **RSA**.
 1. V případě **použití klíče**vyberte možnost **podpis**.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 ### <a name="create-the-encryption-key"></a>Vytvoření šifrovacího klíče
 
@@ -52,7 +53,7 @@ ms.locfileid: "77114033"
 1. Do **název**zadejte `TokenEncryptionKeyContainer`. Předponu `B2C_1A`_ lze přidat automaticky.
 1. Jako **typ klíče**vyberte **RSA**.
 1. V případě **použití klíče**vyberte **šifrování**.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 ### <a name="create-the-facebook-key"></a>Vytvořit facebookový klíč
 
@@ -63,7 +64,7 @@ Přidejte [tajný klíč aplikace](identity-provider-facebook.md) vaší aplikac
 1. Jako **název**zadejte `FacebookSecret`. `B2C_1A_` předpony je možné přidat automaticky.
 1. V **tajnosti**zadejte *tajný kód aplikace* vaší aplikace na Facebooku z Developers.Facebook.com. Tato hodnota je tajný kód, nikoli ID aplikace.
 1. V případě **použití klíče**vyberte možnost **podpis**.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 ## <a name="register-identity-experience-framework-applications"></a>Registrovat aplikace architektury identity Experience Framework
 
@@ -75,18 +76,18 @@ Tyto dvě aplikace je potřeba zaregistrovat ve svém tenantovi Azure AD B2C jen
 
 Pokud chcete zaregistrovat aplikaci ve vašem tenantovi Azure AD B2C, můžete použít **Registrace aplikací (starší verze)** nebo naše nové prostředí Unified **Registrace aplikací (Preview)** . [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
+#### <a name="applications"></a>[Aplikace](#tab/applications/)
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 1. V nabídce přehled **Azure Active Directory** v části **Spravovat**vyberte **Registrace aplikací (starší verze)** .
 1. Vyberte **Registrace nové aplikace**.
 1. Jako **název**zadejte `IdentityExperienceFramework`.
 1. Jako **Typ aplikace**vyberte **Webová aplikace/rozhraní API**.
 1. Pro **přihlašovací adresu URL**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je váš Azure AD B2C název domény tenanta. Všechny adresy URL by teď měly používat [b2clogin.com](b2clogin.md).
-1. Vyberte **Create** (Vytvořit). Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
+1. Vyberte **Vytvořit**. Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
 1. Jako **název**zadejte `IdentityExperienceFramework`.
@@ -110,19 +111,19 @@ V dalším kroku vystavte rozhraní API přidáním oboru:
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Registrace aplikace ProxyIdentityExperienceFramework
 
-#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
+#### <a name="applications"></a>[Aplikace](#tab/applications/)
 
 1. V **Registrace aplikací (starší verze)** vyberte možnost **Registrace nové aplikace**.
 1. Jako **název**zadejte `ProxyIdentityExperienceFramework`.
 1. Jako **Typ aplikace**vyberte možnost **nativní**.
 1. Pro **identifikátor URI přesměrování**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`, kde `your-tenant-name` je váš tenant Azure AD B2C.
-1. Vyberte **Create** (Vytvořit). Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
+1. Vyberte **Vytvořit**. Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
 1. Vyberte **Nastavení**, pak vyberte **požadovaná oprávnění**a pak vyberte **Přidat**.
 1. Zvolte **Vybrat rozhraní API**, vyhledejte a vyberte **IdentityExperienceFramework**a potom klikněte na **Vybrat**.
 1. Zaškrtněte políčko vedle **přístupu k IdentityExperienceFramework**, klikněte na **Vybrat**a potom na **Hotovo**.
 1. Vyberte **udělit oprávnění**a pak potvrďte výběrem možnosti **Ano**.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
 1. Jako **název**zadejte `ProxyIdentityExperienceFramework`.
@@ -221,6 +222,8 @@ Při nahrávání souborů přidá Azure do každého `B2C_1A_` předponu.
 1. Přihlaste se pomocí stejného účtu, abyste měli jistotu, že máte správnou konfiguraci.
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Přidat Facebook jako zprostředkovatele identity
+
+Jak je uvedeno v [požadavcích](#prerequisites), Facebook *se nevyžaduje* pro použití vlastních zásad, ale tady se používá k předvedení, jak můžete povolit federované sociální přihlášení ve vlastních zásadách.
 
 1. V souboru **`TrustFrameworkExtensions.xml`** `SocialAndLocalAccounts/`nahraďte hodnotu `client_id` ID aplikace Facebook:
 

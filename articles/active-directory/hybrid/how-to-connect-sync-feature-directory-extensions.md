@@ -16,15 +16,16 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 138ca9bf3352c46b8ac495b58a2fd6d7bafeb658
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 80438319a6337dd6f28f9bdca8a428829b6cb0b9
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889803"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917909"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect synchronizace: přípony adresářů
-K rozšíření schématu v Azure Active Directory (Azure AD) s vlastními atributy z místní služby Active Directory můžete použít rozšíření adresáře. Tato funkce umožňuje sestavovat obchodní aplikace pomocí atributů, které budete nadále spravovat místně. Tyto atributy je možné spotřebovat prostřednictvím [rozšíření služby Graph API Directory](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions) nebo [Microsoft Graph](https://developer.microsoft.com/graph/)adresáře Azure AD. Dostupné atributy můžete zobrazit pomocí [Průzkumníka služby Azure AD Graph](https://graphexplorer.azurewebsites.net/) a [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)v uvedeném pořadí. Tuto funkci můžete také použít k vytvoření dynamických skupin ve službě Azure AD.
+K rozšíření schématu v Azure Active Directory (Azure AD) s vlastními atributy z místní služby Active Directory můžete použít rozšíření adresáře. Tato funkce umožňuje sestavovat obchodní aplikace pomocí atributů, které budete nadále spravovat místně. Tyto atributy lze spotřebovat prostřednictvím [rozšíření](https://docs.microsoft.com/graph/extensibility-overview
+). Dostupné atributy můžete zobrazit pomocí [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer). Tuto funkci můžete také použít k vytvoření dynamických skupin ve službě Azure AD.
 
 V současné době žádné úlohy Office 365 nevyužívají tyto atributy.
 
@@ -61,16 +62,12 @@ Ujistěte se, že jste vybrali možnost **všechny aplikace** , aby se tato apli
 
 Atributy mají předponu **rozšíření \_{ApplicationId}\_** . ApplicationId má stejnou hodnotu pro všechny atributy v tenantovi Azure AD. Tuto hodnotu budete potřebovat pro všechny ostatní scénáře v tomto tématu.
 
-## <a name="viewing-attributes-using-graph"></a>Zobrazení atributů pomocí grafu
+## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Zobrazení atributů pomocí rozhraní Microsoft Graph API
 
-Tyto atributy jsou nyní k dispozici prostřednictvím Graph API služby Azure AD. Můžete je dotazovat pomocí [Průzkumníka Azure AD Graph](https://graphexplorer.azurewebsites.net/).
-
-![Průzkumník Azure AD Graph](./media/how-to-connect-sync-feature-directory-extensions/extension4.png)
-
-Můžete také zadat dotaz na atributy prostřednictvím rozhraní Microsoft Graph API pomocí [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer#).
+Tyto atributy jsou nyní k dispozici prostřednictvím rozhraní Microsoft Graph API pomocí [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer#).
 
 >[!NOTE]
-> V Microsoft Graph musíte požádat o vrácení atributů. Explicitně vyberte atributy, jako je: https\://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com? $select = extension_9d98ed114c4840d298fad781915f27e4_employeeID, extension_9d98ed114c4840d298fad781915f27e4_division.
+> V rozhraní Microsoft Graph API musíte požádat o vrácení atributů. Explicitně vyberte atributy takto: `https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division`.
 >
 > Další informace najdete v tématu [Microsoft Graph: použití parametrů dotazu](https://developer.microsoft.com/graph/docs/concepts/query_parameters#select-parameter).
 

@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/23/2020
 ms.author: rogarana
-ms.openlocfilehash: 9bda3331bc27f387bd05ea0fcd29e7badf6d6a02
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 419f0506751ddc328539eafa52507b0dd0739c79
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651079"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921551"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Povolení ověřování služby Active Directory přes protokol SMB pro sdílené složky Azure
 
@@ -62,7 +62,7 @@ Než povolíte ověřování AD pro sdílené složky Azure, ujistěte se, že j
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 
-Ověřování služby Azure soubory AD je dostupné ve [většině veřejných oblastí](https://azure.microsoft.com/global-infrastructure/regions/). podmnožina oblastí, které ještě nejsou k dispozici v nástroji, je:
+Ověřování Azure Files AD (Preview) je dostupné ve [většině veřejných oblastí](https://azure.microsoft.com/global-infrastructure/regions/) s výjimkou:
 
 - USA – západ
 - USA – západ 2
@@ -130,7 +130,7 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
 #Register the target storage account with your active directory environment under the target OU
-join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationUnitName "<ou-name-here>"
+join-AzStorageAccountForAuth -ResourceGroupName "<resource-group-name-here>" -Name "<storage-account-name-here>" -DomainAccountType "<ServiceLogonAccount|ComputerAccount>" -OrganizationalUnitName "<ou-name-here>"
 ```
 
 Následující popis shrnuje všechny akce prováděné při spuštění rutiny `join-AzStorageAccountForAuth`. Tyto kroky můžete provést ručně, pokud raději nechcete použít příkaz:

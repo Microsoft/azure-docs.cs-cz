@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: df6f8ce22e8215a0727db7f69e0f6e5c3f5fc9e0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840260"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917386"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure Active Directory B2C pomocí vlastní zásady
 
@@ -24,19 +24,9 @@ ms.locfileid: "76840260"
 
 V Azure Active Directory B2C (Azure AD B2C) je tok přihlašovacích údajů vlastníka prostředku (ROPC) standardním ověřovacím tokem protokolu OAuth. V tomto toku aplikace, označované také jako předávající strana, vyměňuje platné přihlašovací údaje pro tokeny. Přihlašovací údaje zahrnují ID uživatele a heslo. Vrácené tokeny jsou token ID, přístupový token a obnovovací token.
 
-V toku ROPC jsou podporovány následující možnosti:
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
-- **Nativní interakce klienta** s uživatelem při ověřování proběhne, když se kód spustí na zařízení na straně uživatele.
-- **Veřejný klient** – pouze uživatelské přihlašovací údaje shromážděné aplikací jsou odesílány ve volání rozhraní API. Přihlašovací údaje aplikace se neodesílají.
-- **Přidat nové deklarace identity** – obsah TOKENu ID se dá změnit tak, aby se přidaly nové deklarace identity.
-
-Následující toky nejsou podporovány:
-
-- **Server-Server** – systém Identity Protection potřebuje spolehlivou IP adresu získanou od volajícího (nativního klienta) v rámci interakce. V případě volání rozhraní API na straně serveru se používá jenom IP adresa serveru. Pokud se nedaří příliš mnoho přihlášení, systém Identity Protection se může jako útočník podívat na opakovanou IP adresu.
-- **Jednoduchá stránka** – aplikace front-end, která je primárně napsaná v JavaScriptu. Aplikace je často zapisována pomocí architektury jako AngularJS, života. js nebo Durandal.
-- **Důvěrný tok klienta** – ID klienta aplikace je ověřeno, ale tajný klíč aplikace není.
-
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md).
 
@@ -258,7 +248,7 @@ Použijte svou oblíbenou aplikaci pro vývoj rozhraní API k vygenerování vol
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C.
+- Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
 
 | Klíč | Hodnota |
@@ -303,7 +293,7 @@ Sestavte následné volání jako tu, který je zde zobrazen. Použijte informac
 
 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-- Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C.
+- Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C.
 - Nahraďte `B2C_1A_ROPC_Auth` úplným názvem zásady pro přihlašovací údaje hesla vlastníka prostředku.
 
 | Klíč | Hodnota |
@@ -311,7 +301,7 @@ Sestavte následné volání jako tu, který je zde zobrazen. Použijte informac
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| resource | `application-id` |
+| prostředek | `application-id` |
 | refresh_token | `refresh-token` |
 
 - Nahraďte `application-id` ID aplikace z registrace *ROPC_Auth_app* .

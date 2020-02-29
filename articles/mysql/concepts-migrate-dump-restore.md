@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 65cd5e637434c717ab9ba1b5598c467eea9b4a74
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: b15da2aa83231bfdc8732995888349b06ab56d15
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770930"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163773"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrace databáze MySQL do Azure Database for MySQL pomocí výpisu a obnovení
 Tento článek popisuje dva běžné způsoby zálohování a obnovení databází v Azure Database for MySQL
@@ -22,10 +22,10 @@ Tento článek popisuje dva běžné způsoby zálohování a obnovení databáz
 Pokud chcete projít tento průvodce, musíte mít:
 - [Vytvoření serveru Azure Database for MySQL – Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md)
 - na počítači je nainstalovaný nástroj příkazového řádku [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) .
-- MySQL Workbench [MySQL Workbench: stažení](https://dev.mysql.com/downloads/workbench/), TOAD, Navicat nebo jiný nástroj MySQL třetí strany, který umožňuje příkazy k výpisu a obnovení.
+- Stažení aplikace MySQL Workbench [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) nebo jiného nástroje MySQL třetí strany, které umožňují příkazy k výpisu a obnovení.
 
 ## <a name="use-common-tools"></a>Použití běžných nástrojů
-Pomocí běžných nástrojů a nástrojů, jako je MySQL Workbench, mysqldump, TOAD nebo Navicat, můžete vzdáleně připojit a obnovit data do Azure Database for MySQL. Pomocí takových nástrojů na klientském počítači připojte k Azure Database for MySQL připojení k Internetu. Použití šifrovaného připojení SSL pro osvědčené postupy zabezpečení najdete v tématu [Konfigurace připojení SSL v Azure Database for MySQL](concepts-ssl-connection-security.md). Při migraci na Azure Database for MySQL nemusíte soubory s výpisem paměti přesouvat do jakéhokoli zvláštního umístění v cloudu. 
+Pomocí běžných nástrojů a nástrojů, jako je MySQL Workbench nebo mysqldump, můžete vzdáleně připojit a obnovit data do Azure Database for MySQL. Pomocí takových nástrojů na klientském počítači připojte k Azure Database for MySQL připojení k Internetu. Použití šifrovaného připojení SSL pro osvědčené postupy zabezpečení najdete v tématu [Konfigurace připojení SSL v Azure Database for MySQL](concepts-ssl-connection-security.md). Při migraci na Azure Database for MySQL nemusíte soubory s výpisem paměti přesouvat do jakéhokoli zvláštního umístění v cloudu. 
 
 ## <a name="common-uses-for-dump-and-restore"></a>Běžné použití pro výpis a obnovení
 K vypsání a načtení databází do databáze MySQL Azure v několika běžných scénářích můžete použít nástroje MySQL, jako je mysqldump a mysqlpump. V jiných scénářích můžete místo toho použít přístup pro [Import a export](concepts-migrate-import-export.md) .
@@ -80,7 +80,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>Vytvoření databáze na cílovém serveru Azure Database for MySQL
-Na cílovém Azure Database for MySQL serveru vytvořte prázdnou databázi, do které chcete migrovat data. K vytvoření databáze použijte nástroj, jako je například MySQL Workbench, TOAD nebo Navicat. Databáze může mít stejný název jako databáze, která obsahuje dumpingová data, nebo můžete vytvořit databázi s jiným názvem.
+Na cílovém Azure Database for MySQL serveru vytvořte prázdnou databázi, do které chcete migrovat data. K vytvoření databáze použijte nástroj, jako je například MySQL Workbench. Databáze může mít stejný název jako databáze, která obsahuje dumpingová data, nebo můžete vytvořit databázi s jiným názvem.
 
 Pokud se chcete připojit, vyhledejte informace o připojení v **přehledu** Azure Database for MySQL.
 

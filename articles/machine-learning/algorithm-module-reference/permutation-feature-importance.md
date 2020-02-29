@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 9ef859cce68e13f5207d77d8396bc69ddbbce339
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/24/2020
+ms.openlocfilehash: 8611abd4e504e0378b744b12d0adb5fa22f5476b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314942"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920361"
 ---
 # <a name="permutation-feature-importance"></a>Důležitost funkce permutací
 
-Tento článek popisuje, jak použít modul důležitost funkcí permutace v Návrháři Azure Machine Learning k výpočtu sady výsledků důležitosti funkcí pro vaši datovou sadu. Tato skóre vám pomůžou určit nejlepší funkce pro použití v modelu.
+Tento článek popisuje, jak použít modul důležitost funkcí permutace v Návrháři Azure Machine Learning (Preview) k výpočtu sady výsledků důležitosti funkcí pro datovou sadu. Tato skóre vám pomůžou určit nejlepší funkce pro použití v modelu.
 
 V tomto modulu jsou hodnoty funkcí náhodně přemístěné, vždy v jednom sloupci. Výkon modelu je měřen před a po. Můžete zvolit jednu ze standardních metrik pro měření výkonu.
 
@@ -46,7 +46,7 @@ Generování sady výsledků funkcí vyžaduje, abyste měli už vyškolený mod
 
     -   **Klasifikace**
 
-        Přesnost, přesnost, odvolání, průměrná ztráta protokolu  
+        Přesnost, přesnost, odvolání  
 
     -   **Nevýhody**
 

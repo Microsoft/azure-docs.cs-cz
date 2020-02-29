@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/26/2020
-ms.openlocfilehash: aa71f7d2f3b277ca34e1e5fea76ada6adf93e573
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655055"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164674"
 ---
 # <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory transformace vyhledávání toku dat
 
@@ -45,6 +45,9 @@ Transformace vyhledávání je implementována jako levé vnější spojení. Po
 * Porovnává více řádků: ponechte prázdné, aby se vracela jedna řádková shoda.
 * Shoda s: Vyberte první, poslední nebo libovolnou shodu.
 * Podmínky řazení: Pokud vyberete první nebo poslední, ADF vyžaduje, aby vaše data byla uspořádaná tak, aby existovala logika za první a poslední.
+
+> [!NOTE]
+> V selektoru jednoho řádku použijte jenom první nebo poslední možnost, pokud potřebujete určit, která hodnota se má vrátit k vašemu vyhledávání. Použití libovolných nebo multi-row vyhledávání bude rychlejší.
 
 ### <a name="option-2"></a>Možnost 2
 

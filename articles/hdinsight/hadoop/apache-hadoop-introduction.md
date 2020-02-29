@@ -1,20 +1,19 @@
 ---
 title: Co je Apache Hadoop Technology Stack? – Azure HDInsight
 description: Úvod do služby HDInsight a Apache Hadoop a součásti technologie.
-keywords: azure hadoop, hadoop azure, hadoop úvod, úvod hadoop, technologie hadoop, úvod do technologie hadoop, úvod k technologii hadoop, co je cluster hadoop, co je hadoop cluster, k čemu slouží hadoop
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: overview
-ms.date: 08/15/2019
-ms.openlocfilehash: 193b8f59a805de4303bfc38d397a821cc068dcc0
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
+ms.date: 02/27/2020
+ms.openlocfilehash: e98a11d9aee1c4f76453dc1716f92514b021444f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088203"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917828"
 ---
 # <a name="what-is-apache-hadoop-in-azure-hdinsight"></a>Co je Apache Hadoop ve službě Azure HDInsight?
 
@@ -24,15 +23,15 @@ Azure HDInsight je plně spravovaná, plně spektrum Open Source služby pro ana
 
 Pokud chcete zobrazit dostupné komponenty zásobníku technologie Hadoop ve službě HDInsight, přečtěte si téma [součásti a verze dostupné v HDInsight](../hdinsight-component-versioning.md). Další informace o platformě Hadoop v prostředí HDInsight najdete v tématu [Funkce Azure pro HDInsight](https://azure.microsoft.com/services/hdinsight/).
 
-## <a id="whatis"></a>Co je MapReduce
+## <a name="what-is-mapreduce"></a>Co je MapReduce
 
 Apache Hadoop MapReduce je softwarové rozhraní pro psaní úloh, které zpracovávají velké objemy dat. Vstupní data jsou rozdělená do nezávislých bloků dat. Jednotlivé bloky dat se zpracovávají paralelně napříč uzly ve vašem clusteru. Úloha MapReduce se skládá ze dvou funkcí:
 
-* **Mapovač**: Spotřebovává vstupní data, analyzuje je (obvykle pomocí operací filtrování a řazení) a generuje řazené kolekce členů (páry klíč-hodnota).
+* **Mapper**: používá vstupní data, analyzuje je (obvykle pomocí operací filtrování a řazení) a generuje řazené kolekce členů (páry klíč-hodnota).
 
-* **Redukce**: Spotřebovává řazené kolekce členů generované mapovačem a provádí souhrnnou operaci, která vytváří menší, kombinovaný výsledek z dat mapovače.
+* **Redukce**: spotřebovává řazené kolekce členů generovaných mapovačem a provede souhrnnou operaci, která vytvoří menší, kombinovaný výsledek z dat mapovače.
 
-Příkladem MapReduce úlohy Basic Count (počet slov) je znázorněný v následujícím diagramu:   
+Příkladem MapReduce úlohy Basic Count (počet slov) je znázorněný v následujícím diagramu:
 
  ![HDI.WordCountDiagram](./media/apache-hadoop-introduction/hdi-word-count-diagram.gif)
 
@@ -51,12 +50,12 @@ Streamování Hadoop komunikuje s mapovačem a redukcí přes STDIN a STDOUT. Ma
 
     [key]/t[value]
 
-Další informace najdete v tématu [streamování Hadoop](https://hadoop.apache.org/docs/r1.2.1/streaming.html).
+Další informace najdete v tématu [streamování Hadoop](https://hadoop.apache.org/docs/current/hadoop-streaming/HadoopStreaming.html).
 
 Příklady použití streamování Hadoop v HDInsight najdete v tomto dokumentu:
 
 * [Vývoj C# úloh MapReduce](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 * [Vytvoření clusteru Apache Hadoop v HDInsight](apache-hadoop-linux-create-cluster-get-started-portal.md)

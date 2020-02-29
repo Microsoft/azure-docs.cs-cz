@@ -1,23 +1,23 @@
 ---
-title: Přeučení modelů pomocí návrháře Azure Machine Learning
+title: Přeučení modelů pomocí návrháře Azure Machine Learning (Preview)
 titleSuffix: Azure Machine Learning
-description: Naučte se přeškolovat modely pomocí publikovaných kanálů v Návrháři Azure Machine Learning.
+description: Naučte se přeškolovat modely pomocí publikovaných kanálů v Návrháři Azure Machine Learning (Preview).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
-ms.author: peterlu
-author: peterclu
-ms.date: 12/15/2019
-ms.openlocfilehash: d1382da739fd8ca56d4cc53c2c302331bdfbf1c3
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.author: keli19
+author: likebupt
+ms.date: 02/24/2020
+ms.openlocfilehash: b69cd4c8459ffae363f02247b1f20488afe1cd9b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311865"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921588"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Přeučení modelů pomocí návrháře Azure Machine Learning
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Přeučení modelů pomocí návrháře Azure Machine Learning (Preview)
+[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 V tomto postupu se naučíte, jak pomocí návrháře Azure Machine Learning znovu naučit model strojového učení. Zjistěte, jak používat publikované kanály k automatizaci pracovních postupů strojového učení pro rekurzi.
 
@@ -29,7 +29,7 @@ V tomto článku získáte informace o těchto tématech:
 > * Publikujte svůj školicí kanál.
 > * Přeškolujte svůj model.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree).
 
@@ -69,11 +69,11 @@ Návrhář uloží do výchozího účtu úložiště všechny výstupy kanálů
 
 1. Vyberte modul **vlakového modelu** .
 
-1. V podokně nastavení vyberte **výstupy**.
+1. V podokně nastavení vyberte **výstupy + protokoly**.
 
-1. Vyberte **Trained_model** pro stažení modelu.
+1. Klikněte na ikonu **Zobrazit výstup** a postupujte podle pokynů v místním okně a vyhledejte trained model.
 
-![Snímek obrazovky, který ukazuje, jak stáhnout vycvičený model](./media/how-to-retrain-designer/download-model.png)
+![Snímek obrazovky, který ukazuje, jak stáhnout vycvičený model](./media/how-to-retrain-designer/trained-model-view-output.png)
 
 ## <a name="create-a-pipeline-parameter"></a>Vytvoření parametru kanálu
 

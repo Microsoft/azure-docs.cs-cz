@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/15/2019
+ms.date: 02/27/2020
 ms.author: spelluru
-ms.openlocfilehash: 483b8251bf17eaa5fe7aa7cbd86299575535725d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dda2fd98c4c0d330059156a5ec00baa97ffaf627
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170055"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921058"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a opakování
 
@@ -26,12 +26,33 @@ Event Grid ve výchozím nastavení odesílá každou událost jednotlivě před
 
 Dávkové doručování má dvě nastavení:
 
-* Maximální počet **událostí na dávku** je maximální počet událostí, které Event Grid budou poskytovat za dávku. Toto číslo nebude nikdy překročeno, ale pokud v době publikování nejsou k dispozici žádné další události, mohou být doručeny méně událostí. Event Grid nezpozdí události, aby se vytvořila dávka, pokud je k dispozici méně událostí. Musí být v rozmezí od 1 do 5 000.
-* **Upřednostňovaná velikost dávky v kilobajtech** je cílový strop pro velikost dávky v kilobajtech. Podobně jako u maximálního počtu událostí může být velikost dávky menší, pokud v době publikování nejsou k dispozici další události. Je možné, že je dávka větší než upřednostňovaná velikost dávky, *Pokud* je jedna událost větší než upřednostňovaná velikost. Pokud je například upřednostňovaná velikost 4 KB a událost o velikosti 10 KB je vložená do Event Grid, bude se událost o velikosti 10 KB stále doručovat do vlastní dávky místo toho, aby se vynechala.
+* Maximální počet **událostí na dávku** – maximální počet událostí, které Event Grid bude poskytovat za dávku. Toto číslo nebude nikdy překročeno, ale pokud v době publikování nejsou k dispozici žádné další události, mohou být doručeny méně událostí. Event Grid nezpozdí události, aby se vytvořila dávka, pokud je k dispozici méně událostí. Musí být v rozmezí od 1 do 5 000.
+* **Upřednostňovaná velikost dávky v kilobajtech** – cílový strop pro velikost dávky v kilobajtech Podobně jako u maximálního počtu událostí může být velikost dávky menší, pokud v době publikování nejsou k dispozici další události. Je možné, že je dávka větší než upřednostňovaná velikost dávky, *Pokud* je jedna událost větší než upřednostňovaná velikost. Pokud je například upřednostňovaná velikost 4 KB a událost o velikosti 10 KB je vložená do Event Grid, bude se událost o velikosti 10 KB stále doručovat do vlastní dávky místo toho, aby se vynechala.
 
 Dávkové doručování je nakonfigurované na základě předplatného pro jednotlivé události prostřednictvím portálu, rozhraní příkazového řádku, PowerShellu nebo sad SDK.
 
+### <a name="azure-portal"></a>Azure Portal: 
 ![Nastavení dávkového doručování](./media/delivery-and-retry/batch-settings.png)
+
+### <a name="azure-cli"></a>Azure CLI
+Při vytváření odběru událostí použijte následující parametry: 
+
+- **Maximum-události – za-Batch** – maximální počet událostí v dávce. Hodnota musí být číslo mezi 1 a 5000.
+- **preferované – velikost** dávky-v kilobajtech – upřednostňovaná velikost dávky v kilobajtech Hodnota musí být číslo mezi 1 a 1024.
+
+```azurecli
+storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
+endpoint=https://$sitename.azurewebsites.net/api/updates
+
+az eventgrid event-subscription create \
+  --resource-id $storageid \
+  --name <event_subscription_name> \
+  --endpoint $endpoint \
+  --max-events-per-batch 1000 \
+  --preferred-batch-size-in-kilobytes 512
+```
+
+Další informace o použití rozhraní příkazového řádku Azure s Event Grid najdete v tématu [Směrování událostí úložiště do webového koncového bodu pomocí Azure CLI](../storage/blobs/storage-blob-event-quickstart.md).
 
 ## <a name="retry-schedule-and-duration"></a>Plán opakování a doba trvání
 
@@ -97,11 +118,11 @@ Všechny ostatní kódy, které nejsou ve výše uvedené sadě (200-204), jsou 
 | 400 Chybný požadavek | Zkuste to znovu po 5 minutách a dalších (nedoručených zpráv hned po nastavení nedoručených zpráv) |
 | 401 Neautorizováno | Zkusit znovu za 5 minut nebo déle |
 | 403 zakázané | Zkusit znovu za 5 minut nebo déle |
-| 404 – Nenalezeno | Zkusit znovu za 5 minut nebo déle |
+| 404 Nenalezeno | Zkusit znovu za 5 minut nebo déle |
 | 408 – Časový limit žádosti | Opakovat po 2 nebo více minutách |
 | Entita požadavku 413 je moc velká. | Opakovat po 10 sekundách nebo dalších (nedoručené zprávy hned po nastavení nedoručených zpráv) |
 | 503 – Nedostupná služba | Opakovat po 30 sekundách nebo více |
-| Všichni ostatní | Opakovat po 10 sekundách nebo více |
+| Všechny ostatní | Opakovat po 10 sekundách nebo více |
 
 
 ## <a name="next-steps"></a>Další kroky

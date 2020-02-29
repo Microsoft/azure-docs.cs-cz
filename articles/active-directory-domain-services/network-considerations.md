@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512772"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917335"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Požadavky na návrh virtuální sítě a možnosti konfigurace pro Azure AD Domain Services
 
@@ -59,10 +59,10 @@ Jak je uvedeno v předchozí části, můžete v Azure vytvořit jenom Azure AD 
 
 Aplikační úlohy hostované v jiných virtuálních sítích Azure můžete připojit pomocí jedné z následujících metod:
 
-* Partnerský vztah virtuální sítě
-* Virtuální privátní síť (VPN)
+* Partnerské vztahy virtuálních sítí
+* Virtuální privátní sítě (VPN)
 
-### <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
+### <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
 Partnerský vztah virtuálních sítí je mechanismus, který propojuje dvě virtuální sítě ve stejné oblasti prostřednictvím páteřní sítě Azure. Globální partnerské vztahy virtuálních sítí se můžou připojit k virtuální síti napříč oblastmi Azure. Po navázání partnerského vztahu mezi dvěma virtuálními sítěmi umožníte komunikaci přímo pomocí privátních IP adres, jako jsou třeba virtuální počítače. Pomocí partnerského vztahu virtuálních sítí můžete nasadit Azure služba AD DS spravované domény pomocí úloh aplikací nasazených v jiných virtuálních sítích.
 
@@ -70,7 +70,7 @@ Partnerský vztah virtuálních sítí je mechanismus, který propojuje dvě vir
 
 Další informace najdete v tématu [Přehled partnerských vztahů virtuálních sítí Azure](../virtual-network/virtual-network-peering-overview.md).
 
-### <a name="virtual-private-networking-vpn"></a>Virtuální privátní síť (VPN)
+### <a name="virtual-private-networking-vpn"></a>Virtuální privátní sítě (VPN)
 
 Virtuální síť můžete připojit k jiné virtuální síti (VNet-to-VNet) stejným způsobem, jakým můžete nakonfigurovat virtuální síť na místní umístění lokality. Obě připojení používají bránu VPN k vytvoření zabezpečeného tunelového propojení pomocí protokolu IPsec/IKE. Tento model připojení umožňuje nasadit Azure služba AD DS do virtuální sítě Azure a pak připojit místní umístění nebo jiné cloudy.
 
@@ -144,9 +144,14 @@ Pro Azure služba AD DS k poskytování služeb ověřování a správy se vyža
 * Pro Azure služba AD DS spravované domény, které používají virtuální síť založenou na Správce prostředků, můžete omezit příchozí přístup k tomuto portu na značku služby *AzureActiveDirectoryDomainServices* .
     * Pro starší verze Azure služba AD DS spravované domény pomocí klasické virtuální sítě můžete omezit příchozí přístup k tomuto portu na následující zdrojové IP adresy: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*a *104.40.87.209*.
 
+    > [!NOTE]
+    > V 2017 je Azure AD Domain Services k dispozici pro hostování v Azure Resource Manager síti. Od té doby jsme dokázali vytvořit bezpečnější službu pomocí moderních možností Azure Resource Manager. Vzhledem k tomu, že Azure Resource Manager nasazení plně nahrazují klasická nasazení, nasazení Azure služba AD DS Classic Virtual Network se vyřadí 1. března 2023.
+    >
+    > Další informace najdete v [oficiálním oznámení o zastarání](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/) .
+
 ## <a name="user-defined-routes"></a>Trasy definované uživatelem
 
-Uživatelem definované trasy nejsou ve výchozím nastavení vytvořeny a nejsou potřebné k tomu, aby služba Azure služba AD DS fungovala správně. Pokud potřebujete použít směrovací tabulky, vyhněte se jakýmkoli změnám v trase *0.0.0.0* . Změny v této trase můžou přerušit Azure AD Domain Services.
+Uživatelem definované trasy nejsou ve výchozím nastavení vytvořeny a nejsou potřebné k tomu, aby služba Azure služba AD DS fungovala správně. Pokud potřebujete použít směrovací tabulky, vyhněte se jakýmkoli změnám v trase *0.0.0.0* . Změny této trasy jsou přerušeny Azure AD Domain Services a jsou spravované domény umístěny v nepodporovaném stavu.
 
 Příchozí provoz musíte také směrovat z IP adres obsažených v příslušných značkách služby Azure do podsítě Azure AD Domain Services. Další informace o značkách služeb a jejich přidružené IP adrese najdete v tématu [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
 

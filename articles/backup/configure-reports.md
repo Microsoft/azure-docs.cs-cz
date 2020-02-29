@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: cefe81e53e89b8d7903469e836f3c5d2665febea
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582700"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161197"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -47,6 +47,9 @@ V části monitorování vašeho trezoru Recovery Services vyberte **nastavení 
 
 Azure Backup také poskytuje integrovaný Azure Policy, který automatizuje konfiguraci nastavení diagnostiky pro všechny trezory v daném oboru. Informace o tom, jak používat tyto zásady, najdete v následujícím článku: [Konfigurace nastavení diagnostiky trezoru ve velkém měřítku](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics) .
 
+> [!NOTE]
+> Po nakonfigurování diagnostiky může trvat až 24 hodin, než se počáteční nabízení dat dokončí. Jakmile se data začnou přecházet do pracovního prostoru LA, možná nebude možné v sestavách zobrazit data hned, protože data pro aktuální částečný den nejsou uvedena v sestavách ( [Další podrobnosti)](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports). Proto se doporučuje začít zobrazovat sestavy 2 dny po konfiguraci trezorů, aby odesílaly data do Log Analytics.
+
 3. **Zobrazit sestavy na Azure Portal:**
 
 Po nakonfigurování trezorů pro posílání dat na LA si můžete zobrazit sestavy zálohování tak, že přejdete do okna trezoru a kliknete na položku nabídky **sestavy zálohování** . 
@@ -56,7 +59,8 @@ Po nakonfigurování trezorů pro posílání dat na LA si můžete zobrazit ses
 Kliknutím na tento odkaz otevřete sešit zálohovaná sestava.
 
 > [!NOTE]
-> V současné době počáteční načtení sestavy může trvat až 1 minutu.
+> * V současné době počáteční načtení sestavy může trvat až 1 minutu.
+> * Trezor Recovery Services je pouze vstupním bodem pro sestavy zálohování. Jakmile se sešit zálohovacích sestav otevře v okně trezoru, uvidíte data agregovaná napříč všemi trezory (výběrem příslušné sady pracovních prostorů LA).
 
 Níže je uveden popis různých karet, které sestava obsahuje:
 

@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ae5c4cdd76f164d13da349c355a30d8b6dc83058
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: deb337d989a3658e909cefa7a9ab028e37792562
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102089"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918372"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Připojení k virtuálnímu počítači s SQL Server v Azure
 
@@ -59,7 +59,7 @@ Pokud se chcete připojit ke svému databázovému stroji SQL Server z Internetu
 > [!IMPORTANT]
 > Image virtuálních počítačů pro edice SQL Server Developer a Express nepovolují automaticky protokol TCP/IP. Pro edice Developer a Express musíte po vytvoření virtuálního počítače [ručně povolit protokol TCP/IP](#manualtcp) pomocí SQL Server Configuration Manager.
 
-Každý klient s přístupem k Internetu se může připojit k instanci SQL Server zadáním veřejné IP adresy virtuálního počítače nebo jakéhokoli popisku DNS přiřazeného k této IP adrese. Pokud je port SQL Server 1433, nemusíte ho zadávat v připojovacím řetězci. Následující připojovací řetězec se připojí k virtuálnímu počítači SQL pomocí popisku `sqlvmlabel.eastus.cloudapp.azure.com` DNS s použitím ověřování SQL (můžete také použít veřejnou IP adresu).
+Každý klient s přístupem k Internetu se může připojit k instanci SQL Server zadáním veřejné IP adresy virtuálního počítače nebo jakéhokoli popisku DNS přiřazeného k této IP adrese. Pokud je port SQL Server 1433, nemusíte ho zadávat v připojovacím řetězci. Následující připojovací řetězec se připojí k virtuálnímu počítači SQL pomocí popisku DNS `sqlvmlabel.eastus.cloudapp.azure.com` pomocí ověřování SQL (můžete také použít veřejnou IP adresu).
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
@@ -137,7 +137,7 @@ V následující tabulce jsou uvedeny požadavky pro připojení k SQL Server b�
 
 | Požadavek | Popis |
 |---|---|
-| [Povolit režim ověřování SQL Server](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | Pro vzdálené připojení k virtuálnímu počítači, pokud jste nenakonfigurovali službu Active Directory v Virtual Network, je potřeba SQL Server ověřování. |
+| [Povolit režim ověřování SQL Server](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | Pro vzdálené připojení k virtuálnímu počítači, pokud jste nenakonfigurovali službu Active Directory v Virtual Network, je potřeba SQL Server ověřování. |
 | [Vytvoření přihlášení SQL](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Pokud používáte ověřování SQL, budete potřebovat přihlašovací jméno SQL s uživatelským jménem a heslem, které má také oprávnění k cílové databázi. |
 | [Povolit protokol TCP/IP](#manualtcp) | SQL Server musí umožňovat připojení přes protokol TCP. |
 | [Povolit pravidlo brány firewall pro port SQL Server](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | Brána firewall na virtuálním počítači musí umožňovat příchozí provoz na portu SQL Server (standardně 1433). |

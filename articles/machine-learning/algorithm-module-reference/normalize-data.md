@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 8eb54e232478ae24e1efb49a8ad43dc827aa2b6a
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 2cf0efb24a10da602ac0c26276a081342776cdcc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77150676"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920395"
 ---
 # <a name="normalize-data-module"></a>Normalizovat datový modul
 
@@ -104,7 +104,7 @@ Modul **Normalize data** generuje dva výstupy:
 
 - Chcete-li transformaci uložit, abyste mohli použít stejnou metodu normalizace na jinou datovou sadu, vyberte modul a na kartě **výstup** v pravém panelu vyberte možnost **Registrovat datovou sadu** .
 
-    Uloženou transformaci pak můžete načíst ze skupiny **transformes** v levém navigačním podokně a použít ji pro datovou sadu se stejným schématem pomocí [transformace./Apply](apply-transformation.md).  
+    Uloženou transformaci pak můžete načíst ze skupiny **transformes** v levém navigačním podokně a použít ji pro datovou sadu se stejným schématem pomocí [transformace použít](apply-transformation.md).  
 
 
 ## <a name="next-steps"></a>Další kroky

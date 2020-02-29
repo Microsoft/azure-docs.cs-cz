@@ -3,12 +3,12 @@ title: Spuštění aplikace z balíčku ZIP
 description: Nasaďte balíček ZIP vaší aplikace s nedělitelnost. Zlepšení předvídatelnosti a spolehlivosti chování vaší aplikace během procesu nasazování ZIP.
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 316ada7700a5cf45ee90f515336039702bab48c0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945835"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920718"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Spuštění aplikace v Azure App Service přímo z balíčku ZIP
 
@@ -63,6 +63,33 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 Pokud publikujete aktualizovaný balíček se stejným názvem pro úložiště objektů blob, musíte restartovat aplikaci, aby se aktualizovaný balíček načetl do App Service.
 
+### <a name="use-key-vault-references"></a>Použití Key Vaultch odkazů
+
+Pro zvýšení zabezpečení můžete použít Key Vault odkazy ve spojení s vaší externí adresou URL. Tím se zachovává zašifrovaná adresa URL v klidovém stavu a umožňuje využít Key Vault pro správu a rotaci tajných kódů. Doporučuje se používat úložiště objektů BLOB v Azure, abyste mohli snadno otočit související klíč SAS. Úložiště objektů BLOB v Azure je v klidovém stavu zašifrované, což zajistí zabezpečení dat aplikace, když není nasazená na App Service.
+
+1. Vytvořte Azure Key Vault.
+
+    ```azurecli
+    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
+    ```
+
+1. Přidejte svoji externí adresu URL jako tajný kód do Key Vault.
+
+    ```azurecli
+    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
+    ```
+
+1. Vytvořte nastavení aplikace `WEBSITE_RUN_FROM_PACKAGE` a nastavte hodnotu jako Key Vault odkaz na externí adresu URL.
+
+    ```azurecli
+    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
+    ```
+
+Další informace najdete v následujících článcích.
+
+- [Key Vault odkazy na App Service](app-service-key-vault-references.md)
+- [Azure Storage šifrování dat v klidovém umístění](../storage/common/storage-service-encryption.md)
+
 ## <a name="troubleshooting"></a>Řešení potíží
 
 - Spuštění přímo z balíčku zpřístupňuje `wwwroot` jen pro čtení. Pokud se aplikace pokusí zapisovat soubory do tohoto adresáře, dojde k chybě.
@@ -70,7 +97,7 @@ Pokud publikujete aktualizovaný balíček se stejným názvem pro úložiště 
 - Tato funkce není kompatibilní s [místní mezipamětí](overview-local-cache.md).
 - Pro zlepšení výkonu pro studený start použijte místní možnost zip (`WEBSITE_RUN_FROM_PACKAGE`= 1).
 
-## <a name="more-resources"></a>Další zdroje
+## <a name="more-resources"></a>Další zdroje informací
 
 - [Průběžné nasazování pro Azure App Service](deploy-continuous-deployment.md)
 - [Nasazení kódu pomocí souboru ZIP nebo WAR](deploy-zip.md)

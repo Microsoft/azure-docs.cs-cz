@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 16c325f2d6ea78ba980406f56839dd4d0b64bee1
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 71321fa631bafde5b1dbaac2d165cb68fd8116d4
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482254"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164589"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Aktivační událost a vazby Azure Queue Storage pro Azure Functions přehled
 
@@ -20,7 +20,7 @@ Azure Functions může běžet, protože se vytvoří nové zprávy ve frontě A
 | Akce | Typ |
 |---------|---------|
 | Spustit funkci jako změny dat v úložišti front | [Trigger](./functions-bindings-storage-queue-trigger.md) |
-| Zapsat zprávy ve frontě úložiště |[Výstupní vazba](./functions-bindings-storage-blob-output.md) |
+| Zapsat zprávy ve frontě úložiště |[Výstupní vazba](./functions-bindings-storage-queue-output.md) |
 
 ## <a name="add-to-your-functions-app"></a>Přidat do aplikace Functions
 
@@ -49,4 +49,4 @@ Aplikace Functions 1. x mají automaticky odkaz na balíček NuGet [Microsoft. A
 ## <a name="next-steps"></a>Další kroky
 
 - [Spustit funkci jako změny dat úložiště ve frontě (aktivační událost)](./functions-bindings-storage-queue-trigger.md)
-- [Zápis zpráv do fronty úložiště (výstupní vazba)](./functions-bindings-storage-blob-output.md)
+- [Zápis zpráv do fronty úložiště (výstupní vazba)](./functions-bindings-storage-queue-output.md)

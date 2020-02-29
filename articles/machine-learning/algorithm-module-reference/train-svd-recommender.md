@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 075216cf7d67aa4d5a04f34a7ae3444a078b4c62
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/22/2020
+ms.openlocfilehash: 1778ba543e070bbffbbc8579b280373d834492fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313905"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920789"
 ---
 # <a name="train-svd-recommender"></a>Trénování doporučovacího systému SVD
 
-Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul doporučování výukového SVD. Tento modul slouží ke školení modelu doporučení založeného na algoritmu dekompozice s jednou hodnotou (SVD).  
+Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul doporučených postupů pro vlak SVD (Preview). Tento modul slouží ke školení modelu doporučení založeného na algoritmu dekompozice s jednou hodnotou (SVD).  
 
 Modul doporučení SVDu pro vlaky přečte datovou sadu trojí pro hodnocení položek. Vrátí SVD doporučení. Potom můžete pomocí vyškolený model předpovědět hodnocení nebo vygenerovat doporučení pomocí modulu [SVD doporučeného skóre](score-svd-recommender.md) .  
 
@@ -48,14 +48,11 @@ Před použitím modulu musí být vstupní data ve formátu, který očekává 
 + Druhý sloupec obsahuje identifikátory položek.
 + Třetí sloupec obsahuje hodnocení páru uživatel-položka. Hodnoty hodnocení musí být číselného typu.  
 
-Datová sada **hodnocení restaurace** v Návrháři Azure Machine Learning (výběr **uložených datových sad** a pak **ukázek**) předvádí očekávaný formát:
+Datová sada **hodnocení filmu** v Návrháři Azure Machine Learning (výběr **datových sad** a pak **ukázek**) předvádí očekávaný formát:
 
-|ID uživatele|placeID|rating|
-|------------|-------------|------------|
-|U1077|135085|2|
-|U1077|135038|2|
+![Hodnocení filmů](media/module/movie-ratings-dataset.png)
 
-Z této ukázky vidíte, že jeden uživatel má hodnocení dvou různých restaurací. 
+Z této ukázky vidíte, že jeden uživatel nahodnotil několik filmů. 
 
 ### <a name="train-the-model"></a>Trénování modelu
 

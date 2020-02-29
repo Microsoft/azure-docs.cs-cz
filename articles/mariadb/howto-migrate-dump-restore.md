@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 660b39a063496eb6566d51dbef2c914499dc70c9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: 72735e83af97fde8377e27daa45501704ef5a3c8
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776001"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164538"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrace databáze MariaDB do Azure Database for MariaDB pomocí výpisu a obnovení
 Tento článek popisuje dva běžné způsoby zálohování a obnovení databází v Azure Database for MariaDB
@@ -22,10 +22,10 @@ Tento článek popisuje dva běžné způsoby zálohování a obnovení databáz
 Pokud chcete projít tento průvodce, musíte mít:
 - [Vytvoření serveru Azure Database for MariaDB – Azure Portal](quickstart-create-mariadb-server-database-using-azure-portal.md)
 - na počítači je nainstalovaný nástroj příkazového řádku [mysqldump](https://mariadb.com/kb/en/library/mysqldump/) .
-- MySQL Workbench [MySQL Workbench: stažení](https://dev.mysql.com/downloads/workbench/), TOAD, Navicat nebo jiný nástroj MySQL třetí strany, který umožňuje příkazy k výpisu a obnovení.
+- Stažení aplikace MySQL Workbench [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) nebo jiného nástroje MySQL třetí strany, které umožňují příkazy k výpisu a obnovení.
 
 ## <a name="use-common-tools"></a>Použití běžných nástrojů
-Pomocí běžných nástrojů a nástrojů, jako je MySQL Workbench, mysqldump, TOAD nebo Navicat, můžete vzdáleně připojit a obnovit data do Azure Database for MariaDB. Pomocí takových nástrojů na klientském počítači připojte k Azure Database for MariaDB připojení k Internetu. Použití šifrovaného připojení SSL pro osvědčené postupy zabezpečení najdete v tématu [Konfigurace připojení SSL v Azure Database for MariaDB](concepts-ssl-connection-security.md). Při migraci na Azure Database for MariaDB nemusíte soubory s výpisem paměti přesouvat do jakéhokoli zvláštního umístění v cloudu. 
+Pomocí běžných nástrojů a nástrojů, jako je MySQL Workbench nebo mysqldump, můžete vzdáleně připojit a obnovit data do Azure Database for MariaDB. Pomocí takových nástrojů na klientském počítači připojte k Azure Database for MariaDB připojení k Internetu. Použití šifrovaného připojení SSL pro osvědčené postupy zabezpečení najdete v tématu [Konfigurace připojení SSL v Azure Database for MariaDB](concepts-ssl-connection-security.md). Při migraci na Azure Database for MariaDB nemusíte soubory s výpisem paměti přesouvat do jakéhokoli zvláštního umístění v cloudu. 
 
 ## <a name="common-uses-for-dump-and-restore"></a>Běžné použití pro výpis a obnovení
 Pomocí nástrojů MySQL, jako je mysqldump a mysqlpump, můžete vypsat a načíst databáze do serveru Azure Database for MariaDB v několika běžných scénářích. 
@@ -81,7 +81,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-server"></a>Vytvoření databáze na cílovém serveru
-Na cílovém Azure Database for MariaDB serveru vytvořte prázdnou databázi, do které chcete migrovat data. K vytvoření databáze použijte nástroj, jako je například MySQL Workbench, TOAD nebo Navicat. Databáze může mít stejný název jako databáze, která obsahuje dumpingová data, nebo můžete vytvořit databázi s jiným názvem.
+Na cílovém Azure Database for MariaDB serveru vytvořte prázdnou databázi, do které chcete migrovat data. K vytvoření databáze použijte nástroj, jako je například MySQL Workbench. Databáze může mít stejný název jako databáze, která obsahuje dumpingová data, nebo můžete vytvořit databázi s jiným názvem.
 
 Pokud se chcete připojit, vyhledejte informace o připojení v **přehledu** Azure Database for MariaDB.
 

@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 81db0889294360f74cb42d388e5d875de91c1019
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 19c136c7f312d800b76aa60f2cab6e8da992591c
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212460"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161563"
 ---
 # <a name="azure-functions-premium-plan"></a>Plán Azure Functions Premium
 
@@ -88,7 +88,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 Při vytváření nebo škálování plánu si můžete vybrat mezi třemi velikostmi instancí.  Bude se vám účtovat celkový počet jader a využité paměti za sekundu.  Vaše aplikace se může podle potřeby automaticky škálovat na více instancí.  
 
-|SKU|Jádra|Memory (Paměť)|Storage|
+|Skladová jednotka (SKU)|Jádra|Memory (Paměť)|Úložiště|
 |--|--|--|--|
 |EP1|1|3,5 GB|250 GB|
 |EP2|2|7GB|250 GB|
@@ -99,7 +99,7 @@ Spuštění v počítači, který má více paměti, neznamená vždycky, že va
 
 Například aplikace funkcí JavaScriptu je omezená na výchozí omezení paměti v Node. js. Pokud chcete zvýšit toto omezení pevné paměti, přidejte nastavení aplikace `languageWorkers:node:arguments` s hodnotou `--max-old-space-size=<max memory in MB>`.
 
-## <a name="regions"></a>Regions
+## <a name="regions"></a>Oblasti
 
 Níže jsou uvedené aktuálně podporované oblasti pro každý operační systém.
 
@@ -107,30 +107,32 @@ Níže jsou uvedené aktuálně podporované oblasti pro každý operační syst
 |--| -- | -- |
 |Austrálie – střed| ✔<sup>1</sup> | |
 |Austrálie – střed 2| ✔<sup>1</sup> | |
-|Austrálie – východ| ✔ | |
+|Austrálie – východ| ✔ | ✔<sup>1</sup> |
 |Austrálie – jihovýchod | ✔ | ✔<sup>1</sup> |
-|Brazílie – jih| ✔<sup>2</sup> |  |
-|Kanada – střed| ✔ |  |
-|Střed USA| ✔ |  |
-|Východní Asie| ✔ |  |
+|Brazílie – jih| ✔<sup>2</sup> | ✔<sup>1</sup> |
+|Kanada – střed| ✔ | ✔<sup>1</sup> |
+|USA – střed| ✔ | ✔<sup>1</sup> |
+|Východní Asie| ✔ | ✔<sup>1</sup> |
 |USA – východ | ✔ | ✔<sup>1</sup> |
-|Východní USA 2| ✔ |  |
-|Francie – střed| ✔ |  |
+|USA – východ 2| ✔ | ✔<sup>1</sup> |
+|Francie – střed| ✔ | ✔<sup>1</sup> |
 |Německo – středozápad| ✔ | |
 |Japonsko – východ| ✔ | ✔<sup>1</sup> |
-|Japonsko – západ| ✔ | |
-|Jižní Korea – střed| ✔ |  |
-|Střed USA – sever| ✔ |  |
+|Japonsko – západ| ✔ | ✔<sup>1</sup> |
+|Jižní Korea – střed| ✔ | ✔<sup>1</sup> |
+|USA – středosever| ✔ | ✔<sup>1</sup> |
 |Severní Evropa| ✔ | ✔<sup>1</sup> |
-|Střed USA – jih| ✔ | ✔<sup>1</sup> |
+|Norsko – východ| ✔<sup>1</sup> | ✔<sup>1</sup> |
+|USA – středojih| ✔ | ✔<sup>1</sup> |
 |Indie – jih | ✔ | |
 |Jihovýchodní Asie| ✔ | ✔<sup>1</sup> |
-|Velká Británie – jih| ✔ | |
-|Spojené království – západ| ✔ |  |
+|Velká Británie – jih| ✔ | ✔<sup>1</sup> |
+|Spojené království – západ| ✔ | ✔<sup>1</sup> |
 |Západní Evropa| ✔ | ✔<sup>1</sup> |
-|Indie – západ| ✔ |  |
+|Indie – západ| ✔ | ✔<sup>1</sup> |
+|USA – středozápad| ✔<sup>1</sup> | ✔<sup>1</sup> |
 |USA – západ| ✔ | ✔<sup>1</sup> |
-|USA – západ 2| ✔ |  |
+|USA – západ 2| ✔ | ✔<sup>1</sup> |
 
 <sup>1</sup> Maximální horizontální navýšení kapacity je omezené na 20 instancí.  
 <sup>2</sup> . Maximální horizontální navýšení kapacity je omezeno na 60 instancí.

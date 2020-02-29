@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: e5625ad7c9997c172aef6ead41b7cfa9ede652dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ba6ea8606fc354527ff4114bc45a0904941ba93
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438641"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918933"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: nejčastější dotazy
 
@@ -24,7 +24,7 @@ Otázky a odpovědi jsou uspořádané do těchto kategorií:
 - O službě
 - Konfigurace a připojení 
 - Sledování stavu
-- Migrovat data 
+- Migrace dat 
 - Ověření a nahrání dat 
 
 
@@ -107,7 +107,7 @@ Po dokončení kopírování a ověření dat proveďte následující kroky, ab
 4. Pomocí tohoto kódu a e-mailu [Azure Data box provozního týmu](mailto:adbops@microsoft.com) a poskytněte jim kód. Poskytne vám informace o tom, kde a kdy se mají disky odpustit.
 
 
-## <a name="migrate-data"></a>Migrovat data
+## <a name="migrate-data"></a>Migrace dat
 
 ### <a name="q-what-is-the-maximum-data-size-that-can-be-used-with-data-box-disks"></a>Otázka: Jaká je maximální velikost dat, která se dá použít s disky Data Box Disk?  
 A.  Řešení s disky Data Box Disk může mít až 5 disků s maximální využitelnou kapacitou 35 TB. Samotné disky mají velikost 8 TB (využitelných je 7 TB).

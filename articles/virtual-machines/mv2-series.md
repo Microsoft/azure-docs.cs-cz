@@ -2,17 +2,17 @@
 title: Mv2-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady Mv2-Series.
 services: virtual-machines
-author: jonbeck7
+author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 03e8baa5f0286652ee500a06382c0a45e6f0ec52
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 6fb0f93d3ac124b21bbc52ddc57bc720de6406e6
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655663"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163892"
 ---
 # <a name="mv2-series"></a>Řada Mv2
 
@@ -23,6 +23,10 @@ Funkce virtuálního počítače Mv2-Series Intel® technologie Hyper-Threading
 Premium Storage: podporováno
 
 Ukládání Premium Storage do mezipaměti: podporováno
+
+Migrace za provozu: nepodporováno
+
+Aktualizace pro zachování paměti: nepodporováno
 
 Akcelerátor zápisu: [podporováno](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 

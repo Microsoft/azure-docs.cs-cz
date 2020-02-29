@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 1f609c33ea474508eb107c0df9993c2ba3483660
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 36d6b0cac0321c989fecbc5751d71c744cd83292
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77087025"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920939"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Kurz: výuka a nasazení modelu z rozhraní příkazového řádku
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,7 +35,7 @@ Přečtěte si, jak provést následující akce:
 > * Nasazení modelu jako webové služby
 > * Data skóre pomocí webové služby
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
@@ -68,7 +68,7 @@ Adresář `examples/cli-train-deploy` z projektu obsahuje následující soubory
 Úložiště obsahuje následující soubory, které se používají k nasazení výukového modelu jako webové služby:
 
 * `aciDeploymentConfig.yml`: __konfigurační soubor nasazení__ . Tento soubor definuje hostitelské prostředí potřebné pro model.
-* `inferenceConfig.yml`: odvození configuration__ souboru. Tento soubor definuje softwarové prostředí, které služba používá k určení skóre dat modelu.
+* `inferenceConfig.yml`: __odvození konfiguračního__ souboru. Tento soubor definuje softwarové prostředí, které služba používá k určení skóre dat modelu.
 * `score.py`: skript Pythonu, který přijímá příchozí data, vyhodnotí ho pomocí modelu a pak vrátí odpověď.
 * `scoring-env.yml`: závislosti conda potřebné ke spuštění modelu a skriptu `score.py`.
 * `testdata.json`: datový soubor, který lze použít k otestování nasazené webové služby.

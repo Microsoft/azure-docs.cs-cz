@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/24/2018
 ms.author: genli
-ms.openlocfilehash: 636973110e11770e33c635e312c86b25110705da
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c22a401a6b25f7bb2c27a10e52214fa42ac6089b
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981350"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918219"
 ---
 # <a name="remote-desktop-disconnects-frequently-in-azure-vm"></a>Vzdálená plocha se na virtuálním počítači Azure často odpojí.
 
 Tento článek vysvětluje, jak řešit často nepřipojená připojení k virtuálnímu počítači Azure pomocí protokol RDP (Remote Desktop Protocol) RDP).
 
-> [!NOTE] 
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu nasazení Správce prostředků. Tento model doporučujeme použít pro nová nasazení namísto použití modelu nasazení Classic.
 
 ## <a name="symptom"></a>Příznak
 
@@ -42,7 +40,7 @@ Pokud chcete tento problém vyřešit, použijte řízení sériového portu neb
 
 ### <a name="serial-control"></a>Řízení sériového portu
 
-1. Připojte se k [sériové konzoly a otevřené instance CMD](./serial-console-windows.md). Pak spusťte následující příkazy pro resetování konfigurací RDP. Pokud není na vašem VIRTUÁLNÍm počítači povolená konzola sériového prostředí, pokračujte na další krok.
+1. Připojte se ke [konzole sériového prostředí a otevřete instanci cmd](./serial-console-windows.md). Pak spusťte následující příkazy pro resetování konfigurací RDP. Pokud není na vašem VIRTUÁLNÍm počítači povolená konzola sériového prostředí, pokračujte na další krok.
 2. Snižte úroveň zabezpečení RDP na hodnotu 0. V tomto nastavení komunikace mezi serverem a klientem používá nativní šifrování RDP.
 
         REG ADD "HKLM\SYSTEM\CurrentControlSet\control\Terminal Server\Winstations\RDP-Tcp" /v 'SecurityLayer' /t REG_DWORD /d 0 /f
@@ -89,8 +87,8 @@ Pokud chcete tento problém vyřešit, použijte řízení sériového portu neb
 
 ### <a name="repair-the-vm-offline"></a>Opravte virtuální počítač v režimu offline
 
-1. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
-2. Po disk s operačním systémem je připojen k virtuální počítač pro obnovení, ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
+1. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
+2. Po připojení disku s operačním systémem k virtuálnímu počítači pro obnovení se ujistěte, že je disk označený jako **online** v konzole pro správu disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
 3. Na disku s operačním systémem, který jste připojili, přejděte do složky **\Windows\System32\Config** . Zkopírujte všechny soubory v této složce jako zálohu pro případ, že je vyžadováno vrácení zpět.
 4. Spusťte Editor registru (Regedit. exe).
 5. Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte **soubor** > **Načíst podregistr**:
@@ -165,7 +163,7 @@ Pokud chcete tento problém vyřešit, použijte řízení sériového portu neb
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\control\Terminal Server\Winstations\RDP-Tcp" /v 'MaxInstanceCount' /t REG_DWORD /d ffffffff /f
 18. Restartujte virtuální počítač a zkuste se k němu připojit pomocí protokolu RDP.
 
-## <a name="need-help"></a>Potřebujete pomoct? 
+## <a name="need-help"></a>Potřebujete pomoc? 
 Obraťte se na podporu. Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a ta vám pomůže váš problém rychle vyřešit.
 
 

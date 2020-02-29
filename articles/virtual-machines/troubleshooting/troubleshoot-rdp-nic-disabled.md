@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 3849106fbc488f456a4d267d0ccef76647c1939f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 315974e4995630eb3af055ac0e1c44f7d8dd0737
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981317"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918236"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Nelze provést vzdálené plochy k virtuálnímu počítači, protože síťové rozhraní je zakázaná.
 
 Tento článek vysvětluje, jak vyřešit problém, ve kterém nemůžete provádět připojení ke vzdálené ploše do Azure Windows Virtual Machines (VM) je zakázána. síťové rozhraní.
 
-> [!NOTE]
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -32,14 +30,14 @@ Připojení ke vzdálené ploše nebo jakýkoli jiný typ připojení k dalším
 
 ## <a name="solution"></a>Řešení
 
-Předtím, než budete postupovat podle těchto kroků, vytvořte snímek disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
+Předtím, než budete postupovat podle těchto kroků, vytvořte snímek disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
 
-Pokud chcete povolit rozhraní pro virtuální počítač, použití sériového portu ovládacího prvku nebo [resetování síťové rozhraní](#reset-network-interface) pro virtuální počítač.
+Pokud chcete povolit rozhraní pro virtuální počítač, použijte pro virtuální počítač sériové řízení nebo [resetování síťového rozhraní](#reset-network-interface) .
 
 ### <a name="use-serial-control"></a>Použití sériového portu ovládacího prvku
 
-1. Připojte se k [sériové konzoly a otevřené instance CMD](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Pokud konzole sériového portu není povolená na virtuálním počítači, přečtěte si téma [resetování síťové rozhraní](#reset-network-interface).
+1. Připojte se ke [konzole sériového prostředí a otevřete instanci cmd](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). Pokud není na vašem VIRTUÁLNÍm počítači povolená síťová konzola, přečtěte si téma [resetování síťového rozhraní](#reset-network-interface).
 2. Kontrola stavu síťového rozhraní:
 
         netsh interface show interface
@@ -64,4 +62,4 @@ Pokud chcete povolit rozhraní pro virtuální počítač, použití sériového
 
 ## <a name="reset-network-interface"></a>Resetování síťové rozhraní
 
-Resetování síťové rozhraní, změňte IP adresu na jinou IP adresu, která je dostupná v podsíti. To provedete pomocí webu Azure portal nebo Azure Powershellu. Další informace najdete v tématu [resetování síťové rozhraní](reset-network-interface.md).
+Resetování síťové rozhraní, změňte IP adresu na jinou IP adresu, která je dostupná v podsíti. To provedete pomocí webu Azure portal nebo Azure Powershellu. Další informace najdete v tématu [resetování síťového rozhraní](reset-network-interface.md).

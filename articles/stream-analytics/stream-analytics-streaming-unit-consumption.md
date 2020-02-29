@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: dd7579c97e2166e2822ee5674bbcd5a8ad64d2c7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 02/27/2020
+ms.openlocfilehash: 397e455c8b6a1097e2a32473036e1acd2bbdf2eb
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201488"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921143"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
@@ -32,7 +32,7 @@ Metrika využití SU%, která je v rozsahu od 0% do 100%, popisuje spotřebu pam
     ![Konfigurace úlohy Azure Portal Stream Analytics][img.stream.analytics.preview.portal.settings.scale]
     
 4. Pomocí posuvníku nastavte službu SUs pro úlohu. Všimněte si, že jste omezeni na konkrétní nastavení SU. 
-5. Počet služby SUs přiřazené k vaší úloze můžete změnit i v případě, že je spuštěný. To není možné, pokud vaše úloha používá [výstup bez oddílů](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) nebo má [dotaz s více kroky s jiným oddílem podle hodnot](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values). Úloha by měla mít aspoň 6 služby SUs, aby toto nastavení bylo možné změnit, když je úloha spuštěná. Je možné, že při spuštění úlohy budete moci vybrat ze sady hodnot SU omezení. 
+5. Počet služby SUs přiřazené k vaší úloze můžete změnit i v případě, že je spuštěný. To není možné, pokud vaše úloha používá [výstup bez oddílů](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) nebo má [dotaz s více kroky s jiným oddílem podle hodnot](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values). Je možné, že při spuštění úlohy budete moci vybrat ze sady hodnot SU omezení. 
 
 ## <a name="monitor-job-performance"></a>Monitorování výkonu úlohy
 Pomocí Azure Portal můžete sledovat propustnost úlohy:

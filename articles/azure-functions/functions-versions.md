@@ -3,12 +3,12 @@ title: Azure Functions – přehled verzí modulu runtime
 description: Azure Functions podporuje více verzí modulu runtime. Přečtěte si o rozdílech mezi nimi a o tom, jak zvolit tu, která je pro vás nejvhodnější.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 21722d66129224038df20a0a1ef2bff989221224
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 21a7b25087efd5d4adf2154c935636c263df9afd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77539497"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919749"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions – přehled verzí modulu runtime
 
@@ -58,7 +58,7 @@ Několik funkcí bylo odebráno, aktualizováno nebo nahrazeno po verzi 1. x. Ta
 
 Ve verzi 2. x byly provedeny následující změny:
 
-* Klíče pro volání koncových bodů HTTP se vždycky ukládají šifrovaným v úložišti objektů BLOB v Azure. Ve verzi 1. x jsou klíče uložené ve službě Azure File Storage jako výchozí. Při upgradu aplikace z verze 1. x na verzi 2. x jsou obnoveny stávající tajné klíče v úložišti souborů.
+* Klíče pro volání koncových bodů HTTP se vždycky ukládají šifrovaným v úložišti objektů BLOB v Azure. Ve výchozím nastavení ve verzi 1. x byly klíče ve výchozím nastavení uloženy ve službě Azure File Storage. Při upgradu aplikace z verze 1. x na verzi 2. x jsou obnoveny stávající tajné klíče v úložišti souborů.
 
 * Modul runtime verze 2. x neobsahuje integrovanou podporu pro poskytovatele webhooků. Tato změna byla provedena za účelem zvýšení výkonu. Pro Webhooky můžete pořád používat triggery HTTP jako koncové body.
 

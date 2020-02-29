@@ -3,18 +3,18 @@ title: Informace o SAP HANA zálohování databáze na virtuálních počítač�
 description: V tomto článku se dozvíte o zálohování SAP HANA databází, které běží na virtuálních počítačích Azure.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a1be572d6462ed8f8a86db0f5cbfeaaa37c219ab
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 188cef6bc9771f779e3e9c7f7f5fe246e929b68a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586559"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918508"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Informace o SAP HANA zálohování databáze na virtuálních počítačích Azure
 
 SAP HANA databází jsou důležité úlohy, které vyžadují nízký cíl bodu obnovení (RPO) a čas rychlého obnovení (RTO). Teď můžete [zálohovat SAP HANA databáze běžící na virtuálních počítačích Azure](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) pomocí [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview).
 
-Azure Backup je pro SAP [Backint certifikováno](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) , aby se zajistila nativní podpora zálohování díky využití nativních rozhraní API SAP HANA. Tato nabídka z Azure Backup se zarovnává s heslomi zálohováními s **nulovou infrastrukturou** Azure Backup a eliminuje nutnost nasazení a správy infrastruktury zálohování. Nyní můžete bezproblémově zálohovat a obnovovat SAP HANA databáze běžící na virtuálních počítačích Azure ([virtuální počítače řady M Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory) se také teď podporují!) a využívat možnosti podnikové správy, které Azure Backup poskytuje.
+Azure Backup je pro SAP [Backint certifikováno](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) , aby se zajistila nativní podpora zálohování díky využití nativních rozhraní API SAP HANA. Tato nabídka z Azure Backup se zarovnává s heslomi zálohováními s **nulovou infrastrukturou** Azure Backup a eliminuje nutnost nasazení a správy infrastruktury zálohování. Nyní můžete bezproblémově zálohovat a obnovovat SAP HANA databáze běžící na virtuálních počítačích Azure ([virtuální počítače řady M Series](../virtual-machines/m-series.md) se také teď podporují!) a využívat možnosti podnikové správy, které Azure Backup poskytuje.
 
 ## <a name="added-value"></a>Přidaná hodnota
 

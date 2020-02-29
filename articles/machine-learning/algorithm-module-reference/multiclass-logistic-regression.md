@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: a697c1e43ccd486f8c98399ea9065902bd247f7d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 40193a2547959b44c5753cfcc6ccad9344ab9486
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152138"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920429"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Modul logistické regrese pro více tříd
 
@@ -40,7 +40,7 @@ V rámci více tříd logistické regrese lze klasifikátor použít k předpov�
 
     + **Jediný parametr**: tuto možnost použijte, pokud víte, jak chcete model konfigurovat, a poskytněte konkrétní sadu hodnot jako argumenty.
 
-    + **Rozsah parametrů**: tuto možnost použijte, pokud si nejste jisti nejlepšími parametry a chcete použít Sweep parametrů.
+    + **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.  
 
 3. **Tolerance optimalizace**zadejte prahovou hodnotu pro konvergenci Optimalizátoru. Pokud je vylepšení mezi iteracemi menší než prahová hodnota, algoritmus se zastaví a vrátí aktuální model.
 

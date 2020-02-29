@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 1bf023dc886481354306a763a0f9c56286c57e05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e94ffb3d34082745c3d7ca86cfda2b93c0ed08da
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749877"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919409"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Principy restartování systému pro virtuální počítač Azure
 
@@ -30,10 +30,7 @@ Nejlepším způsobem, jak chránit aplikaci běžící v Azure proti restartov�
 
 Pro zajištění této úrovně redundance vaší aplikace doporučujeme seskupit dva nebo více virtuálních počítačů do skupiny dostupnosti. Tato konfigurace zajišťuje, že během plánované nebo neplánované události údržby je k dispozici alespoň jeden virtuální počítač, který splňuje 99,95% [smlouvu SLA pro Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/).
 
-Další informace o skupinách dostupnosti najdete v následujících článcích:
-
-- [Správa dostupnosti virtuálních počítačů](../windows/manage-availability.md)
-- [Konfigurace dostupnosti virtuálních počítačů](../windows/classic/configure-availability.md)
+Další informace o skupinách dostupnosti najdete v tématu [Správa dostupnosti virtuálních počítačů](../windows/manage-availability.md) .
 
 ## <a name="resource-health-information"></a>Resource Health informace
 

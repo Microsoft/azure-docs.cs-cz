@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 3807f713065d16d4c6743c65f6a770d158ac7191
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ee6d437915f6c87ce9ef5f9c711d90793a96048c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058503"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920123"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Podrobný postup řešení potíží se zabezpečením SSH pro problémy s připojením k virtuálnímu počítači se systémem Linux v Azure
 Je možné, že klient SSH nebude moci kontaktovat službu SSH na virtuálním počítači. Pokud jste provedli obecnější [kroky při řešení potíží](troubleshoot-ssh-connection.md)se službou SSH, budete muset vyřešit potíže s připojením. Tento článek vás provede podrobnými kroky pro řešení potíží, které určují, kde se připojení SSH nedaří a jak ho vyřešit.
@@ -33,7 +33,7 @@ Následující diagram znázorňuje komponenty, které jsou součástí.
 Následující kroky vám pomůžou izolovat zdroj selhání a zjistit řešení nebo řešení.
 
 1. Ověřte stav virtuálního počítače na portálu.
-   V [Azure Portal](https://portal.azure.com)vyberte*název*virtuálního počítače **virtuálních počítačů** > .
+   V [Azure Portal](https://portal.azure.com)vyberte **virtuální počítače** > *název virtuálního počítače*.
 
    V podokně stavu virtuálního počítače by se měla zobrazit **spuštěná**. Přejděte dolů a zobrazte si poslední aktivitu pro výpočetní prostředky, úložiště a síťové prostředky.
 
@@ -54,7 +54,7 @@ Klient SSH v počítači se nemusí podařit připojit ke službě SSH na VIRTU�
 * [Skupiny zabezpečení sítě](#source-4-network-security-groups)
 * [Virtuální počítač Azure se systémem Linux](#source-5-linux-based-azure-virtual-machine)
 
-## <a name="source-1-ssh-client-computer"></a>Zdroj 1: Klientský počítač SSH
+## <a name="source-1-ssh-client-computer"></a>Zdroj 1: klientský počítač SSH
 Chcete-li odstranit počítač jako zdroj chyby, ověřte, zda může vytvořit připojení SSH k jinému místnímu počítači se systémem Linux.
 
 ![Diagram, který zvýrazňuje součásti klientského počítače SSH](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot2.png)
@@ -71,12 +71,12 @@ Pokud platí jedna z těchto podmínek, dočasně zakažte software a zkuste př
 Pokud používáte ověřování pomocí certifikátu, ověřte, že máte tato oprávnění ke složce. ssh v domovském adresáři:
 
 * Chmod 700 ~/.ssh
-* Chmod 644 ~/.ssh/\*.pub
-* Chmod 600 ~/.ssh/id_rsa (nebo všechny jiné soubory, které mají uložené soukromé klíče)
+* Chmod 644 ~/.ssh/\*. pub
+* Chmod 600 ~/.ssh/id_rsa (nebo všechny jiné soubory, které mají v nich uložené soukromé klíče)
 * Chmod 644 ~/.ssh/known_hosts (obsahuje hostitele, ke kterým jste se připojili přes SSH)
 
-## <a name="source-2-organization-edge-device"></a>Zdrojový 2: Hraniční zařízení organizace
-Pokud chcete odstranit hraniční zařízení organizace jako zdroj chyby, ověřte, že počítač, který je přímo připojený k Internetu, může vytvořit připojení SSH k VIRTUÁLNÍmu počítači Azure. Pokud k virtuálnímu počítači přistupujete přes síť VPN typu Site-to-site nebo připojení Azure ExpressRoute, [přejděte na zdroj 4: Skupiny](#nsg)zabezpečení sítě.
+## <a name="source-2-organization-edge-device"></a>Zdrojový 2: hraniční zařízení organizace
+Pokud chcete odstranit hraniční zařízení organizace jako zdroj chyby, ověřte, že počítač, který je přímo připojený k Internetu, může vytvořit připojení SSH k VIRTUÁLNÍmu počítači Azure. Pokud k virtuálnímu počítači přistupujete přes síť VPN typu Site-to-site nebo připojení Azure ExpressRoute, přejděte na [zdroj 4: skupiny zabezpečení sítě](#nsg).
 
 ![Diagram, který zvýrazňuje hraniční zařízení organizace](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
@@ -90,9 +90,12 @@ Pokud můžete vytvořit připojení SSH k počítači, který je přímo připo
 
 Spolupracujte se správcem sítě a opravte nastavení hraničních zařízení organizace, aby se povolil přenos přes protokol SSH s internetem.
 
-## <a name="source-3-cloud-service-endpoint-and-acl"></a>Zdroj 3: Koncový bod cloudové služby a seznam ACL
+## <a name="source-3-cloud-service-endpoint-and-acl"></a>Zdroj 3: koncový bod cloudové služby a seznam ACL
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 > [!NOTE]
-> Tento zdroj se vztahuje jenom na virtuální počítače, které byly vytvořené pomocí modelu nasazení Classic. Pro virtuální počítače, které byly vytvořené pomocí Správce prostředků přejděte na [zdroj 4: Skupiny](#nsg)zabezpečení sítě.
+> Tento zdroj se vztahuje jenom na virtuální počítače, které byly vytvořené pomocí modelu nasazení Classic. Pro virtuální počítače, které byly vytvořené pomocí Správce prostředků přejděte na [zdroj 4: skupiny zabezpečení sítě](#nsg).
 
 Pokud chcete vyloučit koncový bod cloudové služby a seznam ACL jako zdroj chyby, ověřte, že se k připojení pomocí SSH může připojit jiný virtuální počítač Azure ve stejné virtuální síti.
 
@@ -102,20 +105,20 @@ Pokud nemáte jiný virtuální počítač ve stejné virtuální síti, můžet
 
 Pokud můžete vytvořit připojení SSH s virtuálním počítačem ve stejné virtuální síti, podívejte se do těchto oblastí:
 
-* **Konfigurace koncového bodu pro provoz SSH na cílovém virtuálním počítači.** Privátní port TCP koncového bodu by měl odpovídat portu TCP, na kterém naslouchá služba SSH na virtuálním počítači. (Výchozí port je 22). Ověřte číslo portu TCP SSH v Azure Portal tak, že vyberete**možnost** >  **virtuální počítače** > *název* > virtuálního počítače**koncové body**.
+* **Konfigurace koncového bodu pro provoz SSH na cílovém virtuálním počítači.** Privátní port TCP koncového bodu by měl odpovídat portu TCP, na kterém naslouchá služba SSH na virtuálním počítači. (Výchozí port je 22). Ověřte číslo portu TCP SSH v Azure Portal tak, že vyberete **virtuální počítače** > *název virtuálního počítače* > **Nastavení** > **koncových bodů**.
 * **Seznam ACL pro koncový bod provozu SSH na cílovém virtuálním počítači.** Seznam ACL umožňuje zadat povolený nebo zakázaný příchozí provoz z Internetu na základě jeho zdrojové IP adresy. Nesprávně nakonfigurované seznamy řízení přístupu (ACL) můžou zabránit příchozímu provozu SSH do koncového bodu. Zkontrolujte seznamy ACL, abyste měli jistotu, že příchozí provoz z veřejných IP adres vašeho proxy serveru nebo jiného hraničního serveru je povolený. Další informace najdete v tématu [informace o seznamech řízení přístupu k síti (ACL)](../../virtual-network/virtual-networks-acl.md).
 
 Chcete-li odstranit koncový bod jako zdroj problému, odeberte aktuální koncový bod, vytvořte jiný koncový bod a zadejte název SSH (port TCP 22 pro číslo veřejného a soukromého portu). Další informace najdete v tématu [nastavení koncových bodů na virtuálním počítači v Azure](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 <a id="nsg"></a>
 
-## <a name="source-4-network-security-groups"></a>Zdroj 4: Skupiny zabezpečení sítě
+## <a name="source-4-network-security-groups"></a>Zdroj 4: skupiny zabezpečení sítě
 Skupiny zabezpečení sítě umožňují podrobnější kontrolu nad povoleným příchozím a odchozím provozem. Můžete vytvořit pravidla, která budou zahrnovat podsítě a cloudové služby ve službě Azure Virtual Network. Zkontrolujte pravidla skupiny zabezpečení sítě, abyste měli jistotu, že je povolený provoz SSH do a z Internetu.
 Další informace najdete v tématu [informace o skupinách zabezpečení sítě](../../virtual-network/security-overview.md).
 
 K ověření konfigurace NSG můžete také použít ověřování pomocí protokolu IP. Další informace najdete v tématu [Přehled monitorování sítě Azure](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
-## <a name="source-5-linux-based-azure-virtual-machine"></a>Zdroj 5: Virtuální počítač Azure se systémem Linux
+## <a name="source-5-linux-based-azure-virtual-machine"></a>Zdroj 5: virtuální počítač Azure založený na Linux
 Poslední zdrojem možných problémů je samotný virtuální počítač Azure.
 
 ![Diagram, který zvýrazňuje virtuální počítač Azure se systémem Linux](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
