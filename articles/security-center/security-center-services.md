@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8d905da733ea0573b91b289da43684ed8083c804
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 14c54028dacb545532b540ae8ff79fc3dc5356bc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616374"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921262"
 ---
 # <a name="supported-features-available-in-azure-security-center"></a>Podporované funkce dostupné v Azure Security Center
 
@@ -38,19 +38,19 @@ V následujících částech jsou uvedeny Security Center funkce, které jsou k 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Virtual Machines**|**Virtual Machine Scale Sets Azure**|**Počítače mimo Azure**|**Ceny**
-|[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|Standardní|
-|[Výstrahy detekce hrozeb při analýze chování virtuálních počítačů](threat-protection.md)|✔|✔|✔|Detekce hrozeb (zdarma) (Standard)|
-|[Výstrahy detekce hrozeb nejenom pro soubory](alerts-reference.md#alerts-windows)|✔|✔|✔|Standardní|
-|[Výstrahy detekce hrozeb založené na síti](threat-protection.md#network-layer)|✔|✔|-|Standardní|
-|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Standardní|
-|[Posouzení nativních ohrožení zabezpečení](built-in-vulnerability-assessment.md)|✔|-|-|Standardní|
-|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standardní|
-|[Adaptivní ovládací prvky aplikace](security-center-adaptive-application.md)|✔|-|✔|Standardní|
-|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Standardní|
-|[Adaptivní posílení zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Standardní|
-|Adaptivní ovládací prvky sítě|✔|✔|-|Standardní|
-|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Standardní|
-|Doporučení a detekce hrozeb v kontejnerech IaaS hostovaných v Docker|-|-|-|Standardní|
+|[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Standard|
+|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](threat-protection.md)|✔|✔|✔|Doporučení (zdarma) </br></br> Výstrahy zabezpečení (Standard)|
+|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|✔|✔|✔|Standard|
+|[Výstrahy zabezpečení založené na síti](threat-protection.md#network-layer)|✔|✔|-|Standard|
+|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Standard|
+|[Posouzení nativních ohrožení zabezpečení](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
+|[Adaptivní ovládací prvky aplikace](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
+|[Adaptivní posílení zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|Adaptivní ovládací prvky sítě|✔|✔|-|Standard|
+|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
+|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|-|-|-|Standard|
 |Chybí posouzení oprav operačního systému|✔|✔|✔|Free|
 |Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Free|
 |[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Free|
@@ -64,19 +64,19 @@ V následujících částech jsou uvedeny Security Center funkce, které jsou k 
 |||||||||
 |----|:----:|:----:|:----:|:----:|:----:|:----:|:----:|
 ||**Azure Virtual Machines**|**Virtual Machine Scale Sets Azure**|**Počítače mimo Azure**|**Ceny**
-|[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|-|-|-|Standardní|
-|[Výstrahy detekce hrozeb při analýze chování virtuálních počítačů](security-center-alerts-iaas.md)|✔ (na podporovaných verzích)|✔ (na podporovaných verzích)|✔|Detekce hrozeb (zdarma) (Standard)|
-|[Výstrahy detekce hrozeb nejenom pro soubory](alerts-reference.md#alerts-windows)|-|-|-|Standardní|
-|[Výstrahy detekce hrozeb založené na síti](threat-protection.md#network-layer)|✔|✔|-|Standardní|
-|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Standardní|
-|[Posouzení nativních ohrožení zabezpečení](built-in-vulnerability-assessment.md)|✔|-|-|Standardní|
-|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standardní|
-|[Adaptivní ovládací prvky aplikace](security-center-adaptive-application.md)|✔|-|✔|Standardní|
-|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Standardní|
-|[Adaptivní posílení zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Standardní|
-|Adaptivní ovládací prvky sítě|✔|✔|-|Standardní|
-|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Standardní|
-|Doporučení a detekce hrozeb v kontejnerech IaaS hostovaných v Docker|✔|✔|✔|Standardní|
+|[Integrace ATP v programu Microsoft Defender](security-center-wdatp.md)|-|-|-|Standard|
+|[Analýza chování virtuálního počítače (a výstrahy zabezpečení)](security-center-alerts-iaas.md)|✔</br>(na podporovaných verzích)|✔</br>(na podporovaných verzích)|✔|Doporučení (zdarma) </br></br> Výstrahy zabezpečení (Standard)|
+|[Výstrahy zabezpečení nesouborového souboru](alerts-reference.md#alerts-windows)|-|-|-|Standard|
+|[Výstrahy zabezpečení založené na síti](threat-protection.md#network-layer)|✔|✔|-|Standard|
+|[Přístup k virtuálnímu počítači za běhu](security-center-just-in-time.md)|✔|-|-|Standard|
+|[Posouzení nativních ohrožení zabezpečení](built-in-vulnerability-assessment.md)|✔|-|-|Standard|
+|[Monitorování integrity souborů](security-center-file-integrity-monitoring.md)|✔|✔|✔|Standard|
+|[Adaptivní ovládací prvky aplikace](security-center-adaptive-application.md)|✔|-|✔|Standard|
+|[Mapa sítě](security-center-network-recommendations.md#network-map)|✔|✔|-|Standard|
+|[Adaptivní posílení zabezpečení sítě](security-center-adaptive-network-hardening.md)|✔|-|-|Standard|
+|Adaptivní ovládací prvky sítě|✔|✔|-|Standard|
+|[Řídicí panel dodržování předpisů & sestavy](security-center-compliance-dashboard.md)|✔|✔|✔|Standard|
+|Doporučení a ochrana před hrozbami v kontejnerech IaaS hostovaných v Docker|✔|✔|✔|Standard|
 |Chybí posouzení oprav operačního systému|✔|✔|✔|Free|
 |Vyhodnocení nezabezpečených konfigurací zabezpečení|✔|✔|✔|Free|
 |[Posouzení služby Endpoint Protection](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Free|
@@ -95,7 +95,7 @@ Následující tabulka poskytuje matrici:
 
 Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučení, najdete v tématu [Endpoint Protection Assessment and Recommendations](security-center-endpoint-protection.md).
 
-| Endpoint Protection| Platformy | Instalace Security Center | Zjišťování Security Center |
+| Endpoint Protection (Ochrana koncových bodů)| Platformy | Instalace Security Center | Zjišťování Security Center |
 |------|------|-----|-----|
 | Windows Defender (antimalware Microsoftu)| Windows Server 2016| Ne, součást operačního systému| Ano |
 | Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 (viz poznámka níže) | Prostřednictvím rozšíření | Ano |
@@ -116,7 +116,7 @@ Informace o tom, kdy jsou pro každou z těchto ochran vygenerována doporučen�
 
 Azure Security Center podporuje následující prostředky PaaS:
 
-|Service|Doporučení (zdarma)|Výstrahy detekce hrozeb (Standard)|Posouzení ohrožení zabezpečení (standardní)|
+|Služba|Doporučení (zdarma)|Výstrahy zabezpečení (Standard)|Posouzení ohrožení zabezpečení (standardní)|
 |----|:----:|:----:|:----:|
 |Databáze SQL|✔|✔|✔|
 |Azure Container Registry|-|-|✔|
@@ -128,8 +128,8 @@ Azure Security Center podporuje následující prostředky PaaS:
 |Blob Storage|✔|✔|-|
 |App Service|✔|✔|-|
 |Function App|✔|-|-|
-|Cloudové služby|✔|-|-|
-|Virtuální síť|✔|-|-|
+|Cloud Services|✔|-|-|
+|Virtual Network|✔|-|-|
 |Podsíť|✔|-|-|
 |NIC|✔|-|-|
 |Network Security Groups (Skupiny zabezpečení sítě)|✔|-|-|
@@ -158,6 +158,5 @@ doporučení pro \*\* Azure Active Directory (Azure AD) jsou dostupná jenom pro
 - Přečtěte si [, jak Security Center spravuje a chrání data](security-center-data-security.md).
 - Naučte se [plánovat a porozumět hlediskům návrhu, které je potřeba přijmout Azure Security Center](security-center-planning-and-operations-guide.md).
 - Přečtěte si [platformy, které podporují Security Center](security-center-os-coverage.md).
-- Přečtěte si další informace o [detekci hrozeb pro virtuální počítače & serverech v Azure Security Center](security-center-alerts-iaas.md).
+- Přečtěte si další informace o [ochraně před hrozbami pro počítače se systémem Windows a Linux v Azure Security Center](threat-protection.md#windows-machines).
 - Přečtěte si [Nejčastější dotazy týkající se Azure Security Center](faq-general.md).
-- Přečtěte si [blogové příspěvky o zabezpečení Azure a dodržování předpisů](https://blogs.msdn.com/b/azuresecurity/).

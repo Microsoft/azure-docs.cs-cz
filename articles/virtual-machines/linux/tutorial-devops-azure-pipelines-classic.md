@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 1/16/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: eba793a761bd9f96b1a4ec5d4730f08187a758ef
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 5707a99b329915b35131fe793b0dfabd02348677
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515340"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912524"
 ---
 # <a name="tutorial-integrated-devops-for-iaas-and-paas-on-azure"></a>Kurz: integrovaný DevOps pro IaaS a PaaS v Azure
 
@@ -91,6 +91,6 @@ Pomocí DevOps Projects spusťte aplikaci v jakékoli službě Azure v rámci po
  
 [Další informace](https://azure.microsoft.com/features/devops-projects/ ).
  
-## <a name="additional-resources"></a>Další zdroje informací: 
+## <a name="additional-resources"></a>Další zdroje 
 - [Nasazení do Azure Virtual Machines pomocí projektu DevOps](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
 - [Implementace průběžného nasazování vaší aplikace do sady škálování virtuálních počítačů Azure](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

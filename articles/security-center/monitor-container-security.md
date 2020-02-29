@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: d208629ee29bb9102f16fcb1d541677bd4a4d5fa
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431563"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919528"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>Monitorování zabezpečení kontejnerů
 
@@ -29,7 +29,7 @@ Azure Security Center pokrývá následující tři aspekty zabezpečení kontej
 
 - **Posílení zabezpečení clusterů služby Azure Kubernetes** – Security Center poskytuje doporučení při hledání ohrožení zabezpečení v konfiguraci clusterů služby Azure Kubernetes. Podrobnosti o specifických doporučeních, která se mohou zobrazit, najdete v tématu [věnovaném doporučením služby Kubernetes](recommendations-reference.md#recs-containers).
 
-- **Ochrana modulem runtime** – Pokud používáte cenovou úroveň Standard Security Center, získáte detekci hrozeb v reálném čase pro vaše kontejnerová prostředí. Security Center generuje výstrahy pro podezřelé aktivity na úrovni hostitele a clusteru AKS. Podrobnosti o relevantních výstrahách zabezpečení, které se mohou zobrazit, najdete v částech [výstrahy pro clustery služby Azure Kubernetes](alerts-reference.md#alerts-akscluster) a [výstrahy pro kontejnery – úroveň hostitele](alerts-reference.md#alerts-containerhost) v referenční tabulce výstrahy.
+- **Ochrana modulem runtime** – Pokud používáte cenovou úroveň Standard Security Center, získáte ochranu před hrozbami v reálném čase pro vaše kontejnerová prostředí. Security Center generuje výstrahy pro podezřelé aktivity na úrovni hostitele a clusteru AKS. Podrobnosti o relevantních výstrahách zabezpečení, které se mohou zobrazit, najdete v částech [výstrahy pro clustery služby Azure Kubernetes](alerts-reference.md#alerts-akscluster) a [výstrahy pro kontejnery – úroveň hostitele](alerts-reference.md#alerts-containerhost) v referenční tabulce výstrahy.
 
 ## <a name="scanning-your-arm-based-container-registries-for-vulnerabilities"></a>Kontrola registrů kontejnerů založených na ARM pro ohrožení zabezpečení 
 

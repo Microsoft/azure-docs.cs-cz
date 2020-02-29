@@ -2,19 +2,19 @@
 title: Eav4-Series a Easv4-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače s Eav4 a Easv4-Series.
 services: virtual-machines
-author: jonbeck7
+author: migerdes
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 96cd7b4f4627e7c0335df9c745d8193a3dac7044
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: e05a2b97a25ce4cab7d619f4b62d405765cb08db
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493771"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164385"
 ---
-# <a name="eav4-and-easv4-series"></a>Eav4 a Easv4 – Series
+# <a name="eav4-and-easv4-series"></a>Řada Eav4 a Easv4
 
 Řady Eav4-Series a Easv4-Series využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452 v konfiguraci s více vlákny s až 256mb mezipamětí L3 a zvyšují možnosti spouštění většiny paměťově optimalizovaných úloh. Řady Eav4-Series a Easv4-Series mají stejnou konfiguraci paměti a disku jako Ev3 & Esv3-Series.
 
@@ -25,6 +25,10 @@ ACU: 230-260
 Premium Storage: nepodporováno
 
 Ukládání Premium Storage do mezipaměti: nepodporováno
+
+Migrace za provozu: podporováno
+
+Aktualizace pro zachování paměti: podporováno
 
 Velikosti řady Eav4-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení maximální frekvence 3.35 GHz a používání jednotky SSD úrovně Premium. Velikosti řady Eav4-Series jsou ideální pro podnikové aplikace náročné na paměť. Úložiště datových disků se účtuje nezávisle na virtuálních počítačích. Pokud chcete použít disk SSD úrovně Premium, použijte velikosti řady Easv4-Series. Měřiče cen a účtování pro velikosti Easv4 jsou stejné jako pro Eav3-Series.
 
@@ -49,6 +53,10 @@ ACU: 230-260
 Premium Storage: podporováno
 
 Ukládání Premium Storage do mezipaměti: podporováno
+
+Migrace za provozu: podporováno
+
+Aktualizace pro zachování paměti: podporováno
 
 Velikosti řady Easv4-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7452 v 2.35 GHz, který může dosáhnout zvýšení maximální frekvence 3.35 GHz a používání jednotky SSD úrovně Premium. Velikosti řady Easv4-Series jsou ideální pro podnikové aplikace náročné na paměť.
 

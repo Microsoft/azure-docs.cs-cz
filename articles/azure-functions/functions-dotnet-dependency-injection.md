@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: a17ff15e71251e781cd30c33a5616af85e4f4eb9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 1aff2815144f776b351e92d8945b267d1451f9f6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260079"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915703"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislosti v rozhraní .NET Azure Functions
 
@@ -21,11 +21,11 @@ Azure Functions podporuje vzor návrhu pro vkládání závislostí (DI), což j
 
 - Podpora vkládání závislostí začíná Azure Functions 2. x.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete moci použít vkládání závislostí, je nutné nainstalovat následující balíčky NuGet:
 
-- [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
+- [Microsoft. Azure. Functions. Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/)
 
 - [Balíček Microsoft. NET. SDK. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) verze 1.0.28 nebo novější
 
@@ -130,7 +130,7 @@ Pokud potřebujete vlastního zprostředkovatele protokolování, zaregistrujte 
 
 > [!WARNING]
 > - Nepřidávat `AddApplicationInsightsTelemetry()` do kolekce Services, protože registruje služby, které jsou v konfliktu se službami poskytovanými prostředím.
-> - Pokud používáte integrované Application Insights funkce, neregistrujte vlastní `TelemetryConfiguration` ani `TelemetryClient`.
+> - Pokud používáte integrované Application Insights funkce, neregistrujte vlastní `TelemetryConfiguration` ani `TelemetryClient`. Pokud potřebujete nakonfigurovat vlastní instanci `TelemetryClient`, vytvořte ji pomocí vložených `TelemetryConfiguration`, jak je znázorněno v [Azure Functions monitorování](./functions-monitoring.md#version-2x-and-later-2).
 
 ## <a name="function-app-provided-services"></a>Poskytnuté služby Function App
 
@@ -208,7 +208,7 @@ Další podrobnosti týkající se práce s možnostmi najdete [v tématu vzor m
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v následujících materiálech:
+Další informace najdete v následujících zdrojích:
 
 - [Jak monitorovat aplikaci Function App](functions-monitoring.md)
 - [Osvědčené postupy pro funkce](functions-best-practices.md)

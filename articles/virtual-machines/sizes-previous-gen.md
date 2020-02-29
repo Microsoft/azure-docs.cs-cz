@@ -3,7 +3,7 @@ title: Velikosti virtuálních počítačů Azure Linux – předchozí generace
 description: Uvádí předchozí generace velikostí dostupné pro virtuální počítače Linux v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
 services: virtual-machines-linux
 documentationcenter: ''
-author: jonbeck7
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 2d54c39577a359499cf6dc3aca84cebc4fa6e206
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 700847c041a5b9111414d6b43ff734d83b1ca49f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598013"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913459"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
 
@@ -101,7 +101,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 
 Velikosti úrovně Basic jsou primárně určeny pro úlohy související s vývojem a další aplikace, pro které se nevyžaduje vyrovnávání zatížení, automatické škálování nebo používání virtuálních počítačů s vysokými nároky na paměť.
 
-| Velikost – Velikost\Název | Virtuální procesory | Paměť|Síťové karty (Max.)| Max. velikost dočasného disku | Nejvýše k datové disky (1023 GB)| Nejvýše k IOPS (300 na disk) |
+| Velikost – Velikost\Název | Virtuální procesory | Memory (Paměť)|Síťové karty (Max.)| Max. velikost dočasného disku | Nejvýše k datové disky (1023 GB)| Nejvýše k IOPS (300 na disk) |
 |---|---|---|---|---|---|---|
 | A0\Basic_A0 | 1 | 768 MB  | 2 | 20 GB  | 1  | 1×300  |
 | A1\Basic_A1 | 1 | 1,75 GB | 2 | 40 GB  | 2  | 2×300  |
@@ -134,7 +134,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (HDD): GiB | Max. datových disků | Maximální propustnost datového disku: IOPS | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_A0&nbsp;<sup>1</sup> | 1 | 0,768 | 20 | 1 | 1×500 | 2/100 |
-| Standard_A1 | 1 | 1,75 | 70  | 2  | 2x500  | 2/500  |
+| Standard_A1 | 1 | 1,75 | 70  | 2  | 2×500  | 2/500  |
 | Standard_A2 | 2 | 3,5  | 135 | 4  | 4×500  | 2/500  |
 | Standard_A3 | 4 | 7    | 285 | 8  | 8×500  | 2/1000 |
 | Standard_A4 | 8 | 14   | 605 | 16 | 16×500 | 4/2000 |

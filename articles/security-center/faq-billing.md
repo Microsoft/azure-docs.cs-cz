@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 7986a48b69b1d2c4df494dbd0a448d1bbe3091b4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 214b5eea6f8de2d59869f7279aa17bcd786d8742
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661783"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913833"
 ---
 # <a name="billing-questions"></a>Dotazy k fakturaci
 
@@ -27,7 +27,7 @@ Security Center se nabízí ve dvou úrovních:
 
 - **Úroveň Free** nabízí přehled o stavu zabezpečení vašich prostředků Azure, základní zásady zabezpečení, doporučení zabezpečení a integraci s produkty a službami zabezpečení od partnerů.
 
-- **Úroveň Standard** přináší pokročilé možnosti detekce hrozeb, včetně analýzy hrozeb, analýzy chování, detekce anomálií, incidentů zabezpečení a sestav pro navýšení hrozeb. Můžete spustit bezplatnou zkušební verzi na úrovni Standard. Pokud chcete upgradovat, vyberte [cenovou úroveň](https://docs.microsoft.com/azure/security-center/security-center-pricing) v zásadách zabezpečení. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
+- **Úroveň Standard** přináší možnosti ochrany před hrozbami, které zahrnují výstrahy zabezpečení, analýzy hrozeb, analýzu chování, detekci anomálií a sestavy o navýšení hrozeb. Můžete spustit bezplatnou zkušební verzi na úrovni Standard. Pokud chcete upgradovat, vyberte [cenovou úroveň](https://docs.microsoft.com/azure/security-center/security-center-pricing) v zásadách zabezpečení. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>Jak mohu sledovat, kdo v naší organizaci prováděl změny cenové úrovně v Azure Security Center
 Předplatná Azure můžou mít víc správců s oprávněními ke změně cenové úrovně. Pokud chcete zjistit, který uživatel provedl změnu cenové úrovně, použijte protokol aktivit Azure. Další informace najdete [tady](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832).

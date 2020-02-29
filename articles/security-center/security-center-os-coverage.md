@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 089fcc89f330e47a09187b5338176bf23fd801bb
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 39e2deead1affd750d9a5e68985b02ebfe8e0efd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603749"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921296"
 ---
 # <a name="supported-platforms"></a>Podporované platformy 
 
@@ -41,9 +41,9 @@ V následujících oddílech jsou uvedeny podporované serverové operační sys
 
 ### Operační systémy Windows Server<a name="os-windows"></a>
 
-|OS|Podporováno aplikací Azure Security Center|Podpora integrace s Microsoft Defender ATP|
+|Operační systém|Podporováno aplikací Azure Security Center|Podpora integrace s Microsoft Defender ATP|
 |:---|:-:|:-:|
-|Windows Server. 2019|✔|X|
+|Windows Server 2019|✔|×|
 |Windows Server 2016|✔|✔|
 |Windows Server 2012 R2|✔|✔|
 |Windows Server 2008 R2|✔|✔|
@@ -105,8 +105,8 @@ Azure Security Center podporují následující prostředky Azure PaaS:
 * Účet Batch
 * Účet Service Fabric
 * Účet Automation
-* Load Balancer
-* Hledat
+* Nástroj pro vyrovnávání zatížení
+* Hledání
 * Obor názvů služby Service Bus
 * Stream Analytics
 * Obor názvů centra událostí
@@ -126,4 +126,4 @@ Také je podporována ochrana pro Virtual Machines umístěná v Azure Stack. Da
 - Přečtěte si [, jak Security Center spravuje a chrání data](security-center-data-security.md).
 - Naučte se [plánovat a porozumět hlediskům návrhu, které je potřeba přijmout Azure Security Center](security-center-planning-and-operations-guide.md).
 - Seznamte [se s funkcemi dostupnými pro různá cloudová prostředí](security-center-services.md).
-- Přečtěte si další informace o [detekci hrozeb pro virtuální počítače & serverech v Azure Security Center](security-center-alerts-iaas.md).
+- Přečtěte si další informace o [ochraně před hrozbami pro počítače se systémem Windows a Linux v Azure Security Center](threat-protection.md#windows-machines).

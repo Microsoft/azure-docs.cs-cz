@@ -8,18 +8,18 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a1c19523508f434c114df884824d1595376bac21
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c02595ebdb2f011dcc94b517771a79a4b2df754d
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276928"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161716"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Kurz: podrobné pokyny k vytvoření nové aplikace pro Android pomocí prostorových kotev Azure
 
 V tomto kurzu se dozvíte, jak vytvořit novou aplikaci pro Android, která integruje funkce ARCore s prostorovými kotvami Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
@@ -30,7 +30,7 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
 Spusťte Android Studio. V okně **Vítá vás Android Studio** klikněte na **spustit nový projekt Android Studio**. Nebo, pokud máte projekt již otevřen, vyberte **soubor**->**Nový projekt**.
 
-V okně **vytvořit nový projekt** v části **telefon a tablet** vyberte možnost **prázdná aktivita**a klikněte na tlačítko **Další**. Potom pod položkou **minimální úroveň rozhraní API**zvolte `API 26: Android 8.0 (Oreo)`a ujistěte se, že je **jazyk** nastavený na `Java`. Je možné, že budete chtít změnit název projektu & umístění a název balíčku. Ostatní možnosti ponechte beze změny. Klikněte na **Dokončit**. Spustí se **instalační program součásti** . Až to bude hotové, klikněte na **Dokončit**. Po nějakém zpracování Android Studio otevře IDE.
+V okně **vytvořit nový projekt** v části **telefon a tablet** vyberte možnost **prázdná aktivita**a klikněte na tlačítko **Další**. Potom pod položkou **minimální úroveň rozhraní API**zvolte `API 26: Android 8.0 (Oreo)`a ujistěte se, že je **jazyk** nastavený na `Java`. Je možné, že budete chtít změnit název projektu & umístění a název balíčku. Ostatní možnosti ponechte beze změny. Klikněte na **Finish** (Dokončit). Spustí se **instalační program součásti** . Až to bude hotové, klikněte na **Dokončit**. Po nějakém zpracování Android Studio otevře IDE.
 
 ## <a name="trying-it-out"></a>Vyzkoušení
 
@@ -123,13 +123,13 @@ Nakonec přidejte následující metodu `handleTap()`, která bude spojovat vše
 
 ## <a name="attach-a-local-azure-spatial-anchor"></a>Připojení místního prostorového ukotvení Azure
 
-Upravte `Gradle Scripts\build.gradle (Module: app)` tak, aby obsahovala následující položku. Tento kód zajistí, že vaše aplikace bude cílena na prostorové kotvy Azure verze 1.3.0. Tato verze by odkazovala na jakoukoli poslední verzi prostorových kotev Azure, která by měla fungovat.
+Upravte `Gradle Scripts\build.gradle (Module: app)` tak, aby obsahovala následující položku. Tento kód zajistí, že vaše aplikace bude cílena na prostorové kotvy Azure verze 2.2.0. Tato verze by odkazovala na jakoukoli poslední verzi prostorových kotev Azure, která by měla fungovat. Poznámky k verzi najdete [tady.](https://github.com/Azure/azure-spatial-anchors-samples/releases)
 
 ```
 dependencies {
     ...
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[1.3.0]"
-    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[1.3.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_jni:[2.2.0]"
+    implementation "com.microsoft.azure.spatialanchors:spatialanchors_java:[2.2.0]"
     ...
 }
 ```

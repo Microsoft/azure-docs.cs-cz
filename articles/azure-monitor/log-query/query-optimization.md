@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/25/2019
-ms.openlocfilehash: 19b0ce154fc19015f7faa17e339c9df259206365
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 874fd0ccdd2fdf0a2e75412ae2da82abb736ff3f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670810"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164572"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
 Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, jsou v některých případech, kdy můžete výrazně vylepšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
@@ -258,8 +258,13 @@ by Computer
 ) on Computer
 ```
 
+Měření je vždy větší než zadaný skutečný čas. Pokud je například filtr dotazu 7 dní, systém může kontrolovat 7,5 nebo 8,1 dnů. Je to proto, že systém rozdělí data do bloků dat v proměnné velikosti. Aby bylo zajištěno, že všechny relevantní záznamy budou prohledávány, prohledá celý oddíl, který může pokrývat několik hodin a dokonce i více než jeden den.
+
+Existuje několik případů, kdy systém nemůže poskytnout přesné měření časového rozsahu. K tomu dochází ve většině případů, kdy je méně než jeden den nebo v dotazech na více pracovních prostorů.
+
+
 > [!IMPORTANT]
-> Tento indikátor není k dispozici pro dotazy mezi oblastmi.
+> Tento indikátor prezentuje pouze data zpracovaná v bezprostředním clusteru. Dotaz ve více oblastech by představoval jenom jednu z oblastí. V dotazu s více pracovními prostory nemusí obsahovat všechny pracovní prostory.
 
 ## <a name="age-of-processed-data"></a>Stáří zpracovaných dat
 Azure Průzkumník dat využívá několik vrstev úložiště: místní disky SSD v paměti a mnohem pomalejší objekty blob Azure. V novějších datech je vyšší pravděpodobnost, že je uložená v výkonnější úrovni s menší latencí, což snižuje dobu trvání dotazů a CPU. Kromě samotných dat má systém také mezipaměť pro metadata. Starší data, menší pravděpodobnost, že metadata budou v mezipaměti.
@@ -284,7 +289,7 @@ Provádění dotazů mezi oblastmi vyžaduje, aby systém serializován a přene
 Pokud není k dispozici žádný reálný důvod pro kontrolu všech těchto oblastí, měli byste obor upravit tak, aby se kryl méně oblastí. Pokud je obor prostředku minimalizován, ale stále se používá mnoho oblastí, může k tomu dojít z důvodu chyby konfigurace. Například protokoly auditu a nastavení diagnostiky jsou odesílány do různých pracovních prostorů v různých oblastech nebo existují více konfigurací nastavení diagnostiky. 
 
 > [!IMPORTANT]
-> Tento indikátor není k dispozici pro dotazy mezi oblastmi.
+> Když se dotaz spustí napříč několika oblastmi, měření procesoru a dat nebudou přesné a bude reprezentovat měření pouze v jedné z oblastí.
 
 ## <a name="number-of-workspaces"></a>Počet pracovních prostorů
 Pracovní prostory jsou logické kontejnery, které slouží k oddělení a správě dat protokolů. Back-end optimalizuje umístění pracovních prostorů na fyzických clusterech v rámci vybrané oblasti.
@@ -300,7 +305,7 @@ Provádění dotazů mezi oblastmi a mezi clustery vyžaduje, aby systém serial
 > V některých scénářích s více pracovními prostory nebudou měření procesoru a dat přesné a bude reprezentovat měření jenom pro několik pracovních prostorů.
 
 ## <a name="parallelism"></a>Paralelismu
-Protokoly Azure Monitor používají pro spouštění dotazů velké clustery Azure Průzkumník dat a tyto clustery se ve velkém měřítku liší. Systém automaticky škáluje clustery podle logiky umístění pracovního prostoru a kapacity.
+Protokoly Azure Monitor používají pro spouštění dotazů velké clustery Azure Průzkumník dat a tyto clustery se škálují ve velkém měřítku, ale můžou získat až desítky výpočetních uzlů. Systém automaticky škáluje clustery podle logiky umístění pracovního prostoru a kapacity.
 
 Chcete-li efektivně spustit dotaz, je rozdělen a distribuován do výpočetních uzlů na základě dat, která jsou požadována pro jeho zpracování. Existují situace, kdy systém nemůže provádět to efektivně. To může mít za následek dlouhou dobu trvání dotazu. 
 

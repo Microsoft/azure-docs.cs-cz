@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 5d0035e7c87806012d13117ae5335b7de5f3c99d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: ac67ef64ca4850c6e805b5314ace856114d889a7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132283"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917226"
 ---
 # <a name="common-use-cases-and-scenarios-for-azure-active-directory-domain-services"></a>Běžné případy použití a scénáře pro Azure Active Directory Domain Services
 
@@ -97,7 +97,7 @@ Následující pokyny k nasazení se vztahují na tento příklad případu pou�
 
 Pomocí Azure služba AD DS můžete poskytovat spravované doménové služby na servery vzdálené plochy nasazené v Azure. Další informace o tomto scénáři nasazení najdete v tématu věnovaném [integraci Azure AD Domain Services s nasazením služby Vzdálená][windows-rds]plocha.
 
-## <a name="domain-joined-hdinsight-clusters-preview"></a>Clustery HDInsight připojené k doméně (Preview)
+## <a name="domain-joined-hdinsight-clusters"></a>Clustery HDInsight připojené k doméně
 
 Můžete nastavit cluster Azure HDInsight, který je připojený k spravované doméně Azure služba AD DS se zapnutou Apache Ranger. Pomocí nástrojů založených na rozhraní ODBC, jako je Excel nebo Tableau, můžete vytvořit a použít zásady pro podregistr prostřednictvím Apache Ranger a uživatelům, jako jsou třeba odborníci přes data, se připojit k podregistru. I nadále pracujeme na přidání dalších úloh, jako jsou například HBA, Spark a zatížení, do HDInsight připojené k doméně.
 

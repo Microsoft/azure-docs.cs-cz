@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 4991fe9fb06d0a49da3e0404f0362c85f15571af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d39ac40e8e29c7ff90e2accc3a519449571c1d58
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152291"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917403"
 ---
 # <a name="execute-r-script"></a>Spouštění skriptů R
 
@@ -130,6 +130,8 @@ azureml_main <- function(dataframe1, dataframe2){
 Moduly **spouštěné skriptem R** mohou vracet více výstupů, ale musí být zadány jako datové snímky R. Datové snímky jsou automaticky převedeny na datové sady v návrháři, aby byly kompatibilní s jinými moduly.
 
 Do protokolu modulu se vrátí standardní zprávy a chyby z R.
+
+Pokud potřebujete ve skriptu R Tisknout výsledky, můžete najít tištěné výsledky na kartě **70_driver_log** v části **výstupy + protokoly** na pravém panelu modulu.
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 
@@ -282,7 +284,7 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | pastel       | 1.3.4      | 
 | Curl         | 3.3        | 
 | data. tabulka   | 1.12.2     | 
-| datasets     | 3.5.1      | 
+| datové sady     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
 | digest       | 0.6.19     | 
@@ -334,7 +336,7 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 | nlme         | 3.1 – 140    | 
 | sušené         | 7.3-12     | 
 | numDeriv     | 2016.8-1.1 | 
-| OpenSSL      | 1.4        | 
+| OpenSSL      | 1,4        | 
 | parallel     | 3.5.1      | 
 | pilíř       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 

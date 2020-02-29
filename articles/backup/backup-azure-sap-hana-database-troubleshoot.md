@@ -3,12 +3,12 @@ title: Řešení potíží s chybami zálohování SAP HANAových databází
 description: Popisuje, jak řešit běžné chyby, ke kterým může dojít při použití Azure Backup k zálohování databází SAP HANA.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 8872cfe87df9b8d0553d777f72fe7102d08dea4d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664594"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916859"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Řešení potíží se zálohováním databází SAP HANA v Azure
 
@@ -16,9 +16,16 @@ Tento článek poskytuje informace o řešení potíží při zálohování SAP 
 
 ## <a name="prerequisites-and-permissions"></a>Předpoklady a oprávnění
 
-Před konfigurací záloh najdete v oddílech [požadavky](tutorial-backup-sap-hana-db.md#prerequisites) a [Nastavení oprávnění](tutorial-backup-sap-hana-db.md#setting-up-permissions) .
+Informace o [požadavcích](tutorial-backup-sap-hana-db.md#prerequisites) a o [tom, co skript před registrací zahrnuje](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) , najdete v částech před konfigurací záloh.
 
 ## <a name="common-user-errors"></a>Běžné chyby uživatelů
+
+### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
+
+| **Chybová zpráva**      | <span style="font-weight:normal">Azure Backup nemá požadovaná oprávnění role k provedení zálohování.</span>    |
+| ---------------------- | ------------------------------------------------------------ |
+| **Možné příčiny**    | Tato role mohla být přepsána.                          |
+| **Doporučená akce** | Pokud chcete problém vyřešit, spusťte skript z podokna **Vyhledat databázi** nebo si ho stáhněte [tady](https://aka.ms/scriptforpermsonhana). Případně přidejte roli ' SAP_INTERNAL_HANA_SUPPORT ' do uživatele pro zálohování úloh (AZUREWLBACKUPHANAUSER). |
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 

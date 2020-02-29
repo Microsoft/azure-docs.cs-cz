@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 5951c6ec63478b4b266f22eaf8bf3162e0a45df0
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.date: 02/24/2020
+ms.openlocfilehash: a665ee97f923620bb484243d5cd4904a647969e4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137554"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917424"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
@@ -25,7 +25,8 @@ Tento modul použijte k měření přesnosti trained model. Poskytnete datovou s
  Metriky vrácené **modelem vyhodnocení** závisí na typu modelu, který vyhodnocujete:  
   
 -   **Modely klasifikace**    
--   **Regresní modely**    
+-   **Regresní modely**  
+-   **Modely clusteringu**  
 
 
 > [!TIP]
@@ -72,7 +73,7 @@ Model nebo data připojená k levému portu se zobrazí jako první v sestavě, 
 
 Například následující obrázek představuje porovnání výsledků ze dvou modelů clusteringu, které byly vytvořeny na stejných datech, ale s různými parametry.  
 
-![AML&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
+![Comparing2Models](media/module/evaluate-2-models.png)  
 
 Vzhledem k tomu, že se jedná o model clusteringu, výsledky hodnocení jsou jiné než v porovnání s výsledky ze dvou regresních modelů nebo porovnáním dvou modelů klasifikace. Ale celková prezentace je stejná. 
 
@@ -82,10 +83,11 @@ Tato část popisuje metriky vracené pro konkrétní typy modelů, které jsou 
 
 + [modely klasifikace](#metrics-for-classification-models)
 + [Regresní modely](#metrics-for-regression-models)
++ [modely clusteringu](#metrics-for-clustering-models)
 
 ### <a name="metrics-for-classification-models"></a>Metriky pro modely klasifikace
 
-Při vyhodnocování modelů klasifikace jsou hlášeny následující metriky. Pokud porovnáte modely, jsou seřazené podle metriky, kterou jste vybrali pro vyhodnocení.  
+Při vyhodnocování modelů klasifikace jsou hlášeny následující metriky.
   
 -   **Přesnost** měření modelu klasifikace jako poměru skutečných výsledků do celkového počtu případů je dobrá.  
   
@@ -105,7 +107,7 @@ Při vyhodnocování modelů klasifikace jsou hlášeny následující metriky. 
  
 Metriky vracené pro regresní modely jsou navržené k odhadu množství chyb.  Model se považuje za správný, pokud rozdíl mezi zjištěnými a předpovězenými hodnotami je malý. Nicméně na vzor zbytků (rozdíl mezi jedním předpokládaným bodem a odpovídající skutečnou hodnotou) vám může sdělit spoustu potenciálního posunu v modelu.  
   
- Následující metriky jsou hlášeny pro vyhodnocení regresních modelů. Při porovnávání modelů jsou seřazeny podle metriky, kterou jste vybrali pro vyhodnocení.  
+ Následující metriky jsou hlášeny pro vyhodnocení regresních modelů.
   
 - **Střední absolutní chyba (Mae)** měří způsob, jakým se předpovědi blíží skutečným výsledkům. Proto je nižší skóre lepší.  
   
@@ -118,6 +120,30 @@ Metriky vracené pro regresní modely jsou navržené k odhadu množství chyb. 
 
   
 - **Koeficient stanovitelnosti**, který se často označuje jako R<sup>2</sup>, představuje prediktivní sílu modelu jako hodnotu mezi 0 a 1. Nula znamená, že je model náhodný (vysvětluje nic); 1 znamená dokonalé přizpůsobení. Nicméně opatrnost by se měla použít při interpretaci hodnot R<sup>2</sup> , protože nízké hodnoty můžou být zcela normální a vysoké hodnoty můžou být podezřelé.
+
+###  <a name="metrics-for-clustering-models"></a>Metriky pro modely clusteringu
+
+Vzhledem k tomu, že se modely clusteringu výrazně liší od klasifikace a regrese modelů v mnoha ohledech, [vyhodnocení modelu](evaluate-model.md) také vrátí jinou sadu statistik pro modely clusteringu.  
+  
+ Statistika vracené pro model clusteringu popisuje, kolik datových bodů bylo přiřazeno ke každému clusteru, množství oddělení mezi clustery a o tom, jak pevně jsou datové body v rámci jednotlivých clusterů rozsvazcích.  
+  
+ Statistiky modelu clusteringu jsou průměrně vypočítány přes celou datovou sadu s dalšími řádky, které obsahují statistiku na cluster.  
+  
+Následující metriky jsou hlášeny pro vyhodnocení modelů clusteringu.
+    
+-   Skóre ve sloupci, **Průměrná vzdálenost k druhému středu**představuje způsob, jakým se v průměru blíží každý bod v clusteru, do centroids všech ostatních clusterů.   
+
+-   Skóre ve sloupci, **Průměrná vzdálenost do centra clusterů**, představuje uzavření všech bodů v clusteru do těžiště tohoto clusteru.  
+  
+-   Sloupec **počet bodů** ukazuje, kolik datových bodů bylo přiřazeno ke každému clusteru, spolu s celkovým celkovým počtem datových bodů v jakémkoli clusteru.  
+  
+     Pokud je počet datových bodů přiřazených ke clusterům menší, než je celkový počet dostupných datových bodů, znamená to, že datové body nelze přiřadit ke clusteru.  
+  
+-   Skóre ve sloupci, **maximální vzdálenost do centra clusterů**, představuje součet vzdálenosti mezi každým bodem a těžištěem clusteru daného bodu.  
+  
+     Pokud je toto číslo vysoké, může to znamenat, že cluster je výrazně rozptýlený. Tuto statistiku byste měli projít společně s **průměrnou vzdáleností do centra clusterů** k určení rozprostření clusteru.   
+
+-   **Kombinované skóre vyhodnocení** v dolní části každé části výsledků obsahuje průměrné skóre pro clustery vytvořené v tomto konkrétním modelu.  
   
 
 ## <a name="next-steps"></a>Další kroky

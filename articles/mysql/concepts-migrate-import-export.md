@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 8cf0b88ddc24bfc6bc293dd62416417f1eec3a06
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 2/27/2020
+ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770947"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163722"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrace databáze MySQL pomocí importu a exportu
 Tento článek vysvětluje dva běžné přístupy k importu a exportu dat na server Azure Database for MySQL pomocí MySQL Workbench. 
@@ -19,10 +19,10 @@ Tento článek vysvětluje dva běžné přístupy k importu a exportu dat na se
 ## <a name="before-you-begin"></a>Než začnete
 Pokud chcete projít tento průvodce, budete potřebovat:
 - Server Azure Database for MySQL, a to tak, že pomocí [Azure Portal vytvoříte Azure Database for MySQL server](quickstart-create-mysql-server-database-using-azure-portal.md).
-- Byla [stažena](https://dev.mysql.com/downloads/workbench/)aplikace MySQL Workbench nebo jiný nástroj MySQL pro import a export.
+- Stažení aplikace MySQL Workbench [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) nebo jiného nástroje MySQL třetí strany pro import/export.
 
 ## <a name="use-common-tools"></a>Použití běžných nástrojů
-Pomocí běžných nástrojů, jako je MySQL Workbench, TOAD nebo Navicat, můžete vzdáleně připojit a importovat nebo exportovat data do Azure Database for MySQL. 
+Pomocí běžných nástrojů a nástrojů, jako je MySQL Workbench nebo mysqldump, můžete vzdáleně připojit a importovat nebo exportovat data do Azure Database for MySQL. 
 
 Pomocí takových nástrojů na klientském počítači připojte k Azure Database for MySQL připojení k Internetu. Použijte připojení šifrované protokolem SSL pro osvědčené postupy zabezpečení, jak je popsáno v tématu [Konfigurace připojení SSL v Azure Database for MySQL](concepts-ssl-connection-security.md).
 

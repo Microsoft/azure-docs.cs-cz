@@ -1,14 +1,14 @@
 ---
 title: Vysvětlení uzamykání prostředků
 description: Přečtěte si o možnostech uzamykání v plánech Azure k ochraně prostředků při přiřazování podrobného plánu.
-ms.date: 04/24/2019
+ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: e042a4d117e28a2fd2228ce36f1be98a1da31e91
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057341"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919868"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení uzamykání prostředků v semodrotiskych Azure
 
@@ -21,7 +21,7 @@ Blokovací režimy se ale nedají změnit mimo plány.
 
 Prostředky vytvořené artefakty v přiřazení podrobného plánu mají čtyři stavy: **Neuzamčeno**, jen **pro čtení**, **nelze je upravit nebo odstranit**nebo **nelze odstranit**. Každý typ artefaktu může být ve stavu **Neuzamčeno** . K určení stavu prostředku lze použít následující tabulku:
 
-|Režim|Typ prostředku artefaktu|State|Popis|
+|Režim|Typ prostředku artefaktu|Stav|Popis|
 |-|-|-|-|
 |Nezamknout|*|Neuzamčeno|Prostředky nejsou chráněny pomocí modrotisky. Tento stav se používá také pro prostředky přidané do **pouze pro čtení** nebo **neodstraňují** artefakt skupiny prostředků z vnějšího přiřazení podrobného plánu.|
 |Jen pro čtení|Skupina prostředků|Nelze upravit/odstranit|Skupina prostředků je jen pro čtení a značky ve skupině prostředků nejde upravovat. Do této skupiny prostředků se dají přidat, přesunout, změnit nebo odstranit prostředky, **které nejsou zamčené** .|
@@ -33,6 +33,56 @@ Prostředky vytvořené artefakty v přiřazení podrobného plánu mají čtyř
 Pro někoho, kdo má v předplatném příslušné [role](../../../role-based-access-control/overview.md) (RBAC), je obvykle možné, jako je role vlastník, aby bylo možné upravovat nebo odstraňovat jakékoli prostředky. Tento přístup se netýká případu, kdy se při nasazení v rámci nasazeného přiřazení používá jako součást zámky. Pokud bylo přiřazení nastaveno s možností jen **pro čtení** nebo **neodstraňovat** , není ani vlastník předplatného, který může u chráněného prostředku provést akci zablokování.
 
 Tato míra zabezpečení chrání konzistenci definovaného podrobného plánu a prostředí, které bylo navrženo pro vytvoření z náhodného nebo neprogramového odstranění nebo změny.
+
+### <a name="assign-at-management-group"></a>Přiřadit na skupinu pro správu
+
+Další možností, jak zabránit vlastníkům předplatného odebrání přiřazení podrobného plánu, je přiřazení podrobného plánu ke skupině pro správu. V tomto scénáři mají oprávnění potřebná k odebrání přiřazení podrobného plánu pouze **vlastníci** skupiny pro správu.
+
+Chcete-li přiřadit podrobný plán ke skupině pro správu namísto předplatného, REST API volání bude vypadat takto:
+
+```http
+PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{assignmentMG}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}?api-version=2018-11-01-preview
+```
+
+Skupina pro správu definovaná v `{assignmentMG}` musí být buď v rámci hierarchie skupiny pro správu, nebo musí být stejná jako skupina pro správu, kde je uložena definice podrobného plánu.
+
+Text žádosti přiřazení podrobného plánu vypadá takto:
+
+```json
+{
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "location": "eastus",
+    "properties": {
+        "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+        "blueprintId": "/providers/Microsoft.Management/managementGroups/{blueprintMG}/providers/Microsoft.Blueprint/blueprints/simpleBlueprint",
+        "scope": "/subscriptions/{targetSubscriptionId}",
+        "parameters": {
+            "storageAccountType": {
+                "value": "Standard_LRS"
+            },
+            "costCenter": {
+                "value": "Contoso/Online/Shopping/Production"
+            },
+            "owners": {
+                "value": [
+                    "johnDoe@contoso.com",
+                    "johnsteam@contoso.com"
+                ]
+            }
+        },
+        "resourceGroups": {
+            "storageRG": {
+                "name": "defaultRG",
+                "location": "eastus"
+            }
+        }
+    }
+}
+```
+
+Klíčovým rozdílem v tomto textu žádosti a jedním přiřazeným k předplatnému je vlastnost `properties.scope`. Tato požadovaná vlastnost musí být nastavena na předplatné, pro které platí přiřazení podrobného plánu. Předplatné musí být přímým podřízeným prvkem hierarchie skupiny pro správu, ve kterém je uloženo přiřazení podrobného plánu.
 
 ## <a name="removing-locking-states"></a>Odebírají se stavy zamykání.
 
@@ -61,7 +111,7 @@ Pokud přiřazení vybere možnost **jen pro čtení** nebo **neodstraní** , je
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>Vyloučení objektu zabezpečení z přiřazení zamítnutí
 
-V některých scénářích návrhu nebo zabezpečení může být nutné vyřadit objekt zabezpečení z [přiřazení zamítnutí](../../../role-based-access-control/deny-assignments.md) , které přiřazení podrobného plánu vytvoří. To se provádí v REST API přidáním až pěti hodnot do pole **excludedPrincipals** ve vlastnosti **zámky** při [vytváření přiřazení](/rest/api/blueprints/assignments/createorupdate). Toto je příklad textu žádosti, který obsahuje **excludedPrincipals**:
+V některých scénářích návrhu nebo zabezpečení může být nutné vyřadit objekt zabezpečení z [přiřazení zamítnutí](../../../role-based-access-control/deny-assignments.md) , které přiřazení podrobného plánu vytvoří. Tento krok se provádí v REST API přidáním až pěti hodnot do pole **excludedPrincipals** ve vlastnosti **zámky** při [vytváření přiřazení](/rest/api/blueprints/assignments/createorupdate). Následující definice přiřazení je příkladem těla žádosti, které zahrnuje **excludedPrincipals**:
 
 ```json
 {

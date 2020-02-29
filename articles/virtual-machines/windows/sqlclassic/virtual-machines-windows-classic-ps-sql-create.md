@@ -15,18 +15,20 @@ ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 24d8a0b88da44c53cb176244cd5fe7377514abda
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5bfdcfab37091a5f581ce147c0a6af5ccd8147a0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978117"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914785"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Zřízení virtuálního počítače s SQL Server pomocí Azure PowerShell (Classic)
 
+[!INCLUDE [classic-vm-deprecation](../../../../includes/classic-vm-deprecation.md)]
+
 Tento článek popisuje kroky, jak vytvořit virtuální počítač s SQL Server v Azure pomocí rutin PowerShellu.
 
-> [!IMPORTANT] 
+> [!NOTE] 
 > Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager.
 
 Správce prostředků verzi tohoto tématu najdete v tématu [zřízení virtuálního počítače s SQL Server pomocí Azure PowerShell správce prostředků](../sql/virtual-machines-windows-ps-sql-create.md).
@@ -140,7 +142,7 @@ Nakonec vytvořte virtuální počítač pomocí prostředí PowerShell:
 > [!NOTE]
 > Další vysvětlení a možnosti konfigurace naleznete v části **sestavení sady příkazů** v tématu [použití Azure PowerShell k vytvoření a předkonfigurování Virtual Machines se systémem Windows](../classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="example-powershell-script"></a>Ukázkový skript PowerShell
+## <a name="example-powershell-script"></a>Ukázkový skript prostředí PowerShell
 
 Následující skript poskytuje příklad kompletního skriptu, který na virtuálním počítači s **Windows serverem 2012 R2 vytvoří SQL Server 2016 RTM Enterprise** . Použijete-li tento skript, je nutné přizpůsobit počáteční proměnné na základě předchozích kroků v tomto tématu.
 

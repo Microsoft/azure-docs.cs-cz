@@ -2,19 +2,19 @@
 title: Dv3 a Dsv3-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače s Dv3 a Dsv3-Series.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: db50cadee4aeb618e85e977ca02f4fa6ff203d4b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 9ea5811fa20ea4866655de74d79ff3905ba03f16
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493758"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164402"
 ---
-# <a name="dv3-and-dsv3-series"></a>Dv3 a Dsv3 – Series
+# <a name="dv3-and-dsv3-series"></a>Řada Dv3 a DSv3
 
 Dv3-Series běží na procesorech Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) v konfiguraci s více vlákny, čímž je zajištěno lepší umístění nejdůležitějších hodnot. zatížení pro účely. Paměť se rozšířila (od ~ 3,5 GiB/vCPU na 4 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, aby se přerovnaly k přechodu na vlákno. Řady Dv3-Series již nemají virtuální počítače s vysokou velikostí paměti řady D/Dv2-Series byly přesunuty do paměti optimalizované pro [Ev3 a Esv3-Series](ev3-esv3-series.md).
 
@@ -33,6 +33,10 @@ ACU: 160–190
 Premium Storage: nepodporováno
 
 Ukládání Premium Storage do mezipaměti: nepodporováno
+
+Migrace za provozu: podporováno
+
+Aktualizace pro zachování paměti: podporováno
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Maximální počet síťových karet/šířka pásma sítě |
 |---|---|---|---|---|---|---|
@@ -55,6 +59,10 @@ ACU: 160–190
 Premium Storage: podporováno
 
 Ukládání Premium Storage do mezipaměti: podporováno
+
+Migrace za provozu: podporováno
+
+Aktualizace pro zachování paměti: podporováno
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|

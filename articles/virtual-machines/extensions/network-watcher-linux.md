@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: c04b27ab4a8ea53e09ca3a133d6aef6457fe1526
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 69d2bfe4576a9350e905fc10f3d7617619e6284a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073035"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915482"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Rozšíření virtuálního počítače Network Watcher agenta pro Linux
 
@@ -29,13 +29,13 @@ ms.locfileid: "74073035"
 
 Tento článek podrobně popisuje podporované platformy a možnosti nasazení pro rozšíření virtuálního počítače Network Watcher agenta pro Linux. Instalace agenta neruší nebo vyžaduje restart virtuálního počítače. Rozšíření můžete nasadit do virtuálních počítačů, které nasadíte. Pokud je virtuální počítač nasazený službou Azure, Projděte si dokumentaci ke službě, kde zjistíte, jestli umožňuje nainstalovat rozšíření na virtuálním počítači.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém
 
 Rozšíření agenta Network Watcher lze nakonfigurovat pro následující distribuce systému Linux:
 
-| Distribuce | Version |
+| Distribuce | Verze |
 |---|---|
 | Ubuntu | 12+ |
 | Debian | 7 a 8 |
@@ -80,13 +80,15 @@ Následující JSON zobrazuje schéma pro rozšíření agenta Network Watcher. 
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Azure.NetworkWatcher |
 | type | NetworkWatcherAgentLinux |
-| typeHandlerVersion | 1.4 |
+| typeHandlerVersion | 1,4 |
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
 Rozšíření virtuálních počítačů Azure můžete nasadit pomocí šablony Azure Resource Manager. Pokud chcete nasadit rozšíření agenta Network Watcher, použijte v šabloně předchozí schéma JSON.
 
 ## <a name="azure-classic-cli-deployment"></a>Nasazení rozhraní příkazového řádku Azure Classic
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 Následující příklad nasadí rozšíření virtuálního počítače agenta Network Watcher pro existující virtuální počítač nasazený prostřednictvím modelu nasazení Classic:
 
@@ -105,21 +107,9 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 
 ## <a name="troubleshooting-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření můžete načíst pomocí Azure Portal nebo prostřednictvím rozhraní příkazového řádku Azure.
-
-Následující příklad ukazuje stav nasazení rozšíření pro virtuální počítač nasazený prostřednictvím modelu nasazení Classic pomocí rozhraní příkazového řádku Azure Classic:
-
-```azurecli
-azure config mode asm
-azure vm extension get myVM1
-```
-Výstup spuštění rozšíření se protokoluje do souborů, které se nacházejí v následujícím adresáři:
-
-```
-/var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
-```
 
 Následující příklad ukazuje stav nasazení rozšíření NetworkWatcherAgentLinux pro virtuální počítač nasazený prostřednictvím Správce prostředků pomocí rozhraní příkazového řádku Azure:
 

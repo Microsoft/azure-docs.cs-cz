@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 47ff8870df7c89ee2ab3e48e064e31aa581f65f0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 90034a56fcf5211059d37270e12391249f7a16b5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748629"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920157"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>Aktivace systému Windows ve scénáři vynuceného tunelování se nezdařila
 
@@ -38,7 +38,7 @@ Pokud chcete tento problém vyřešit, použijte vlastní trasu Azure pro směro
 
 IP adresa serveru služby správy klíčů pro globální cloud Azure je 23.102.135.246. Název DNS je kms.core.windows.net. Pokud používáte jiné platformy Azure, jako je Azure Německo, musíte použít IP adresu odpovídajícího serveru služby správy klíčů. Další informace najdete v následující tabulce:
 
-|Platforma| DNS SLUŽBY SPRÁVY KLÍČŮ|IP ADRESA SLUŽBY SPRÁVY KLÍČŮ|
+|Platforma| KMS DNS|IP ADRESA SLUŽBY SPRÁVY KLÍČŮ|
 |------|-------|-------|
 |Globální Azure|kms.core.windows.net|23.102.135.246|
 |Azure Germany|kms.core.cloudapi.de|51.4.143.248|
@@ -84,6 +84,8 @@ K přidání vlastní trasy použijte následující postup:
 4. Zkuste aktivovat Windows a podívejte se, jestli se problém vyřeší.
 
 ### <a name="for-classic-vms"></a>Pro klasické virtuální počítače
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
 1. Otevřete Azure PowerShell a [Přihlaste se ke svému předplatnému Azure](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
 2. Spusťte následující příkazy:

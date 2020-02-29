@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894598"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164895"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
@@ -38,7 +38,7 @@ Při sestavování sítě v Azure je důležité mít na paměti následující 
 - Ujistěte se, že adresní prostory nejsou překrývající. Ujistěte se, že se adresní prostor virtuální sítě (blok CIDR) nepřekrývá s dalšími rozsahy sítě vaší organizace.
 - Vaše podsítě by neměly zahrnovat celý adresní prostor virtuální sítě. Naplánujte si předem a vyhraďte si pro budoucnost nějaký adresní prostor.
 - Doporučuje se, abyste měli méně velkých virtuální sítě než několik malých virtuální sítě. Tím se zabrání režie správy.
-- Zabezpečte virtuální síť pomocí skupin zabezpečení sítě (skupin zabezpečení sítě).
+- Zabezpečte svou virtuální síť přiřazením skupin zabezpečení sítě (skupin zabezpečení sítě) k podsítím, které jsou pod nimi.
 
 ## <a name="communicate-with-the-internet"></a>Komunikace s internetem
 

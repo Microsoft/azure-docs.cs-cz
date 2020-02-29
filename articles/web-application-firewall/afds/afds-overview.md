@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: 925b859de28b8878412ee99402ffd727edcc4e7c
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: c8ff1849668d5effe15b6c25d00f3965a17b8e3e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934724"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915635"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Firewall webových aplikací Azure na frontách Azure
 
@@ -77,7 +77,7 @@ Vlastní pravidla WAF můžete nakonfigurovat následujícím způsobem:
 
 ### <a name="azure-managed-rule-sets"></a>Sady pravidel spravované v Azure
 
-Sady pravidel spravované pomocí Azure poskytují snadný způsob, jak nasadit ochranu proti běžné sadě bezpečnostních hrozeb. Vzhledem k tomu, že tato RuleSets spravuje Azure, pravidla se aktualizují podle potřeby k ochraně před novými signaturami útoku. Ve verzi Public Preview sada výchozích pravidel spravovaná v Azure zahrnuje pravidla proti těmto kategoriím hrozeb:
+Sady pravidel spravované pomocí Azure poskytují snadný způsob, jak nasadit ochranu proti běžné sadě bezpečnostních hrozeb. Vzhledem k tomu, že tato RuleSets spravuje Azure, pravidla se aktualizují podle potřeby k ochraně před novými signaturami útoku. Sada výchozích pravidel spravovaná v Azure zahrnuje pravidla pro následující kategorie hrozeb:
 
 - Skriptování mezi weby
 - Útoky Java
@@ -91,6 +91,8 @@ Sady pravidel spravované pomocí Azure poskytují snadný způsob, jak nasadit 
 
 Číslo verze výchozích sad pravidel se zvýší, když jsou do sady pravidel přidány nové podpisy útoků.
 Výchozí sada pravidel je ve výchozím nastavení povolená v režimu detekce v zásadách WAF. Můžete zakázat nebo povolit jednotlivá pravidla v rámci výchozího pravidla nastavená tak, aby splňovala požadavky vaší aplikace. Můžete také nastavit konkrétní akce (povolení/blokování/přesměrování/protokol) na pravidlo.
+
+Někdy možná budete muset vynechat určité atributy žádosti z WAF vyhodnocení. Běžným příkladem jsou vložené tokeny vložené službou Active Directory, které se používají pro ověřování. Můžete nakonfigurovat seznam vyloučení pro spravované pravidlo, skupinu pravidel nebo pro celou sadu pravidel.  
 
 Výchozí akce je zablokovat. Vlastní pravidla se navíc dají nakonfigurovat ve stejných zásadách WAF, pokud chcete vynechat některá z předkonfigurovaných pravidel v sadě výchozích pravidel.
 
@@ -119,7 +121,7 @@ Pokud je zapnutá ochrana robota, příchozí požadavky, které odpovídají pr
 
 Všechny typy pravidel WAF můžete nakonfigurovat a nasadit pomocí Azure Portal, rozhraní REST API, šablon Azure Resource Manager a Azure PowerShell.
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Monitorování pro WAF ve front-dveřích je integrované s Azure Monitor pro sledování výstrah a snadné monitorování trendů provozu.
 

@@ -12,35 +12,33 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: 7756d4c808e104b0de14e1cea4af5e843cff755c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 92ad33fbc759605ae901c3bcf09283c8e0b1c4b5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981766"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918185"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Z důvodu statické IP adresy nelze ke vzdálené ploše na virtuálních počítačích Azure
 
 Tento článek popisuje problém, který se po dokončení konfigurace statická IP adresa ve virtuálním počítači nejde vzdálené plochy Azure Windows Virtual Machines (VM).
 
-> [!NOTE]
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 
 Když vytvoříte připojení RDP k virtuálnímu počítači v Azure, zobrazí se následující chybová zpráva:
 
-**Vzdálené plochy nelze připojit ke vzdálenému počítači pro některou z těchto důvodů:**
+**Vzdálená plocha se nemůže připojit ke vzdálenému počítači z jednoho z těchto důvodů:**
 
-1. **Není povolen vzdálený přístup k serveru**
+1. **Vzdálený přístup k serveru není povolený.**
 
 2. **Vzdálený počítač je vypnutý.**
 
-3. **Vzdálený počítač není dostupný v síti**
+3. **Vzdálený počítač není v síti k dispozici.**
 
-**Ujistěte se, že vzdálený počítač je zapnutý a připojený k síti a zda je povolen vzdálený přístup.**
+**Ujistěte se, že je vzdálený počítač zapnutý a připojený k síti a že je povolený vzdálený přístup.**
 
-Když vrátíte se změnami na snímku obrazovky [Diagnostika spouštění](../troubleshooting/boot-diagnostics.md) na webu Azure Portal, uvidíte, že virtuální počítač se spustí normálně a čeká se přihlašovací údaje na přihlašovací obrazovce.
+Po kontrole snímku obrazovky v [diagnostice spouštění](../troubleshooting/boot-diagnostics.md) v Azure Portal vidíte, že se virtuální počítač spouští normálně a čeká na přihlašovací údaje na přihlašovací obrazovce.
 
 ## <a name="cause"></a>Příčina
 
@@ -48,14 +46,14 @@ Virtuální počítač má statickou IP adresu, která je definována v síťov�
 
 ## <a name="solution"></a>Řešení
 
-Předtím, než budete postupovat podle těchto kroků, vytvořte snímek disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
+Předtím, než budete postupovat podle těchto kroků, vytvořte snímek disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
 
-Pokud chcete tento problém vyřešit, povolte protokol DHCP pomocí sériového portu ovládací prvek nebo [resetování síťové rozhraní](reset-network-interface.md) pro virtuální počítač.
+Pokud chcete tento problém vyřešit, pomocí sériového řízení povolte DHCP nebo [resetovat síťové rozhraní](reset-network-interface.md) pro virtuální počítač.
 
 ### <a name="use-serial-control"></a>Použití sériového portu ovládacího prvku
 
-1. Připojte se k [sériové konzoly a otevřené instance CMD](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Pokud konzole sériového portu není povolená na virtuálním počítači, přečtěte si téma [resetování síťové rozhraní](reset-network-interface.md).
+1. Připojte se ke [konzole sériového prostředí a otevřete instanci cmd](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). Pokud není na vašem VIRTUÁLNÍm počítači povolená síťová konzola, přečtěte si téma [resetování síťového rozhraní](reset-network-interface.md).
 2. Zaškrtněte, pokud služba DHCP je zakázána na síťovém rozhraní:
 
         netsh interface ip show config
@@ -73,4 +71,4 @@ Pokud chcete tento problém vyřešit, povolte protokol DHCP pomocí sériového
 
     Restartujte virtuální počítač v tuto chvíli nemusíte. Virtuální počítač bude znovu dosažitelné.
 
-Poté, pokud chcete nakonfigurovat statickou IP adresu pro virtuální počítač, přečtěte si téma [konfigurace statických IP adres pro virtuální počítač](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md).
+Pokud chcete pro virtuální počítač nakonfigurovat statickou IP adresu, přečtěte si téma [Konfigurace statických IP adres pro virtuální počítač](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md).

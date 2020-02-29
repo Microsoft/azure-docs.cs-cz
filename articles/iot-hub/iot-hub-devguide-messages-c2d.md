@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: d4a51a44b48e94669e92a9d525c1b0966df53c18
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3a7254cc9de89a297811792b4dd64b4b669ba8e4
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68964128"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921027"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Posílání zpráv z cloudu na zařízení ze služby IoT Hub
 
@@ -35,17 +35,17 @@ Graf stavu životního cyklu se zobrazí v následujícím diagramu:
 
 ![Životní cyklus zpráv z cloudu do zařízení](./media/iot-hub-devguide-messages-c2d/lifecycle.png)
 
-Když služba IoT Hub pošle zprávu na zařízení, služba nastaví stav zprávy na zařazování do *fronty*. Když zařízení chce *přijmout* zprávu, služba IoT Hub zprávu *zamkne* nastavením stavu na neviditelné. Tento stav umožňuje ostatním vláknům na zařízení začít přijímat další zprávy. Když vlákno zařízení dokončí zpracování zprávy, upozorní centrum IoT o *dokončení* zprávy. Centrum IoT pak nastaví stav na *dokončeno*.
+Když služba IoT Hub pošle zprávu na zařízení, služba nastaví stav zprávy na *zařazování do fronty*. Když zařízení chce *přijmout* zprávu, služba IoT Hub zprávu *zamkne* nastavením stavu na *neviditelné*. Tento stav umožňuje ostatním vláknům na zařízení začít přijímat další zprávy. Když vlákno zařízení dokončí zpracování zprávy, upozorní centrum IoT o *dokončení* zprávy. Centrum IoT pak nastaví stav na *dokončeno*.
 
 Zařízení může také:
 
-* *Odmítněte* zprávu, což způsobí, že centrum IoT ho nastaví na nedoručený stav. Zařízení, která se připojují přes přenos telemetrie služby Řízení front zpráv (MQTT), nemůžou odmítat zprávy z cloudu na zařízení.
+* *Odmítněte* zprávu, což způsobí, že centrum IoT ho nastaví na *nedoručený* stav. Zařízení, která se připojují přes přenos telemetrie služby Řízení front zpráv (MQTT), nemůžou odmítat zprávy z cloudu na zařízení.
 
-* Zrušte zprávu, která způsobí, že centrum IoT vloží zprávu zpátky do fronty s stavem nastaveným na zařazovánído fronty. Zařízení, která se připojují přes protokol MQTT, nemůžou opustit zprávy z cloudu na zařízení.
+* Zrušte zprávu, která způsobí, že centrum IoT vloží zprávu zpátky do fronty s stavem nastaveným na *zařazování*do fronty. Zařízení, která se připojují přes protokol MQTT, nemůžou opustit zprávy z cloudu na zařízení.
 
-Vlákno se nepovedlo zpracovat zprávu bez upozorňování centra IoT. V takovém případě zprávy automaticky přecházejí z neviditelného stavu zpátky do *fronty* po vypršení časového limitu *viditelnosti* (nebo vypršení časového limitu *zámku* ). Hodnota časového limitu je jedna minuta a nedá se změnit.
+Vlákno se nepovedlo zpracovat zprávu bez upozorňování centra IoT. V takovém případě zprávy automaticky přecházejí z *neviditelného* stavu zpátky do *fronty* po vypršení časového limitu *viditelnosti* (nebo vypršení časového limitu *zámku* ). Hodnota časového limitu je jedna minuta a nedá se změnit.
 
-Vlastnost **maximální počet doručení** ve službě IoT Hub určuje maximální počet pokusů, které může zpráva mezi zařazováním a neviditelnými stavy přecházet. Po tomto počtu přechodů centrum IoT nastaví stav zprávy na nedoručené *písmeno*. Podobně centrum IoT nastaví stav zprávy na nedoručené *písmeno* po uplynutí doby jeho platnosti. Další informace najdete v tématu [Time to Live](#message-expiration-time-to-live).
+Vlastnost **maximální počet doručení** ve službě IoT Hub určuje maximální počet pokusů, které může zpráva mezi *zařazováním* a *neviditelnými* stavy přecházet. Po tomto počtu přechodů centrum IoT nastaví stav zprávy na *nedoručené písmeno*. Podobně centrum IoT nastaví stav zprávy na *nedoručené písmeno* po uplynutí doby jeho platnosti. Další informace najdete v tématu [Time to Live](#message-expiration-time-to-live).
 
 [Postup posílání zpráv typu cloud-zařízení pomocí IoT Hub](iot-hub-csharp-csharp-c2d.md) článku ukazuje, jak odesílat zprávy z cloudu na zařízení z cloudu a přijímat je na zařízení.
 
@@ -75,10 +75,10 @@ Když odešlete zprávu typu cloud-zařízení, může služba požádat o doru�
 
 | Hodnota vlastnosti ACK | Chování |
 | ------------ | -------- |
-| žádný     | Centrum IoT negeneruje zprávu zpětné vazby (výchozí chování). |
+| Žádná     | Centrum IoT negeneruje zprávu zpětné vazby (výchozí chování). |
 | pozitivní | Pokud zpráva typu cloud-zařízení dosáhne stavu *dokončeno* , Centrum IoT vygeneruje zprávu o zpětné vazbě. |
-| příznivé | Pokud zpráva typu cloud-zařízení dosáhne nedoručeného *písmena* , Centrum IoT vygeneruje zprávu zpětné vazby. |
-| úplná     | Centrum IoT v obou případech vygeneruje zprávu zpětné vazby. |
+| příznivé | Pokud zpráva typu cloud-zařízení dosáhne *nedoručeného písmena* , Centrum IoT vygeneruje zprávu zpětné vazby. |
+| kompletní     | Centrum IoT v obou případech vygeneruje zprávu zpětné vazby. |
 
 Pokud je hodnota **ACK** *plná*a neobdržíte zprávu o zpětné vazbě, znamená to, že vypršela platnost zprávy zpětné vazby. Služba nemůže zjistit, co se stalo s původní zprávou. V praxi by služba měla zajistit, aby mohla zpracovat zpětnou vazbu před vypršením platnosti. Maximální doba vypršení platnosti je dva dny, což ponechá čas k opětovnému spuštění služby, pokud dojde k selhání.
 
@@ -134,12 +134,36 @@ Každá služba IoT Hub zpřístupňuje následující možnosti konfigurace pro
 
 | Vlastnost                  | Popis | Rozsah a výchozí |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | Výchozí hodnota TTL pro zprávy z cloudu na zařízení | ISO_8601 interval až 2 dny (minimálně 1 minuta); výchozí 1 hodina |
-| maxDeliveryCount          | Maximální počet doručení pro fronty z cloudu na zařízení podle zařízení | 1 až 100; výchozí 10 |
-| feedback.ttlAsIso8601     | Uchovávání zpráv o zpětné vazbě vázaných na služby | ISO_8601 interval až 2 dny (minimálně 1 minuta); výchozí 1 hodina |
-| feedback.maxDeliveryCount | Maximální počet doručení pro frontu zpětné vazby | 1 až 100; výchozí 100 |
+| defaultTtlAsIso8601       | Výchozí hodnota TTL pro zprávy z cloudu na zařízení | Interval ISO_8601 až 2 dny (minimálně 1 minuta); Výchozí hodnota: 1 hodina |
+| maxDeliveryCount          | Maximální počet doručení pro fronty z cloudu na zařízení podle zařízení | 1 až 100; výchozí: 10 |
+| feedback.ttlAsIso8601     | Uchovávání zpráv o zpětné vazbě vázaných na služby | Interval ISO_8601 až 2 dny (minimálně 1 minuta); Výchozí hodnota: 1 hodina |
+| feedback.maxDeliveryCount | Maximální počet doručení pro frontu zpětné vazby | 1 až 100; výchozí: 10 |
+| Feedback. lockDurationAsIso8601 | Maximální počet doručení pro frontu zpětné vazby | Interval ISO_8601 od 5 do 300 sekund (minimálně 5 sekund); Výchozí hodnota: 60 sekund. |
 
-Další informace o tom, jak tyto možnosti konfigurace nastavit, najdete v tématu [vytvoření centra IoT](iot-hub-create-through-portal.md).
+Možnosti konfigurace můžete nastavit jedním z následujících způsobů:
+
+* **Azure Portal**: v části **Nastavení** ve službě IoT Hub vyberte **Předdefinované koncové body** a rozbalte položku **Cloud na zasílání zpráv zařízení**. (Nastavení vlastností **Feedback. maxDeliveryCount** a **Feedback. lockDurationAsIso8601** aktuálně není v Azure Portal podporován.)
+
+    ![Nastavení možností konfigurace pro zasílání zpráv z cloudu na zařízení na portálu](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
+
+* **Azure CLI**: použijte příkaz [AZ IoT Hub Update](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-update) :
+
+    ```azurecli
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.defaultTtlAsIso8601=PT1H0M0S
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.maxDeliveryCount=10
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.ttlAsIso8601=PT1H0M0S
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.maxDeliveryCount=10
+
+    az iot hub update --name {your IoT hub name} \
+        --set properties.cloudToDevice.feedback.lockDurationAsIso8601=PT0H1M0S
+    ```
 
 ## <a name="next-steps"></a>Další kroky
 

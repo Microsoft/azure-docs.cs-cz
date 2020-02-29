@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: ed2c1f874bd61e846cbdf1f68181a8f374c89524
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 69062e42a5d572cf7b73bec3932613d39be9b92f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603360"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921500"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure Security Center a Azure Virtual Machines
 [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
@@ -33,7 +33,7 @@ Security Center vám pomůže chránit data virtuálních počítačů v Azure t
 * Doporučení ochrany koncových bodů
 * Ověření šifrování disku
 * Posouzení a náprava ohrožení zabezpečení
-* Detekce hrozeb
+* Výstrahy zabezpečení z funkcí ochrany před hrozbami
 
 Security Center kromě toho, že pomáhá chránit vaše virtuální počítače Azure, také poskytuje monitorování a správu zabezpečení pro služby Cloud Services, App Services, Virtual Networks a další. 
 

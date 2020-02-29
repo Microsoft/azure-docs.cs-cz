@@ -1,5 +1,5 @@
 ---
-title: Optimalizace virtuálního počítače s Linuxem v Azure
+title: Optimalizace virtuálního počítače se systémem Linux v Azure
 description: Seznamte se s tipy pro optimalizaci a ujistěte se, že jste nastavili virtuální počítač Linux pro zajištění optimálního výkonu v Azure.
 keywords: virtuální počítač Linux, virtuální počítač Linux, virtuální počítač s Ubuntu
 services: virtual-machines-linux
@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: a042e768ef6693d2ced6d679947a6fe321d259bf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a80446317a289f27cdbbff3b2939cfe0db45748f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934726"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918049"
 ---
-# <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače s Linuxem v Azure
+# <a name="optimize-your-linux-vm-on-azure"></a>Optimalizace virtuálního počítače se systémem Linux v Azure
 Vytváření virtuálních počítačů se systémem Linux je snadné z příkazového řádku nebo z portálu. V tomto kurzu se dozvíte, jak zajistit, že jste ho nastavili tak, aby optimalizoval jeho výkon na platformě Microsoft Azure. V tomto tématu se používá virtuální počítač s Ubuntu serverem, ale můžete také vytvořit virtuální počítač se systémem Linux pomocí [vlastních imagí jako šablon](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto tématu se předpokládá, že už máte funkční předplatné Azure ([registrace bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/)) a už jste do svého předplatného Azure ZŘÍDILI virtuální počítač. Ujistěte se, že máte nainstalované nejnovější rozhraní příkazového [řádku Azure](/cli/azure/install-az-cli2) a přihlásili jste se k předplatnému Azure pomocí [AZ Login](/cli/azure/reference-index) , než [vytvoříte virtuální počítač](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Disk s operačním systémem Azure
@@ -135,5 +135,4 @@ Mějte na paměti, že stejně jako u všech diskusí optimalizace je potřeba p
 Některé užitečné odkazy na další prostředky:
 
 * [Uživatelská příručka agenta Azure Linux](../extensions/agent-linux.md)
-* [Optimalizace výkonu MySQL na virtuálních počítačích Azure Linux](classic/optimize-mysql.md)
 * [Konfigurace softwarového pole RAID v systému Linux](configure-raid.md)

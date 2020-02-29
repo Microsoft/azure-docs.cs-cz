@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.openlocfilehash: b5a2d8a812c5b3b0021ad4f74fc705049807cb1b
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 02/25/2020
+ms.openlocfilehash: 635a66f0275d4df4f858bff61be80900dc58c6fb
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485059"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164470"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Cenové úrovně v Azure Database for PostgreSQL – jeden server
 
@@ -30,7 +30,7 @@ Pokud chcete zvolit cenovou úroveň, použijte jako výchozí bod následujíc�
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
 | Basic | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
-| Obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
+| Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
 | Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
 
 Po vytvoření serveru se dá v průběhu několika sekund změnit počet virtuální jádra, generování hardwaru a cenová úroveň (s výjimkou a od úrovně Basic). Velikost úložiště můžete také nezávisle upravovat a dobu uchovávání záloh nahoru nebo dolů bez výpadků aplikací. Po vytvoření serveru nejde typ úložiště zálohy změnit. Další informace najdete v části [Scale Resources](#scale-resources) .
@@ -67,7 +67,7 @@ Spotřebu vstupu a výstupu můžete monitorovat v Azure Portal nebo pomocí př
 
 ### <a name="reaching-the-storage-limit"></a>Dosáhlo se limitu úložiště.
 
-Servery s méně než 100 GB zřízeného úložiště se označí jako jen pro čtení v případě, že velikost volného úložiště klesne pod 512 MB nebo 5 % velikosti zřízeného úložiště. Servery s více než 100 GB zřízeného úložiště se označí jako jen pro čtení v případě, že velikost volného úložiště klesne pod 5 GB.
+Servery s méně než 10 GB zřízené úložiště jsou označené jen pro čtení, pokud je volné úložiště menší než 512 MB velikosti zřízeného úložiště. Servery s méně než 100 GB zřízené úložiště jsou označené jen pro čtení, pokud je volné úložiště menší než 5% zřízené velikosti úložiště. Servery s více než 100 GB zřízeného úložiště se označí jako jen pro čtení v případě, že velikost volného úložiště klesne pod 5 GB.
 
 Pokud jste například zřídili 110 GB úložiště a skutečné využití dosáhne více než 105 GB, server je označen jen pro čtení. Případně, pokud jste zřídili 5 GB úložiště, server je označen jen pro čtení, pokud volné úložiště dosáhne méně než 512 MB.
 
@@ -79,15 +79,15 @@ Doporučujeme zapnout automatické zvětšování úložiště nebo nastavit vý
 
 ### <a name="storage-auto-grow"></a>Automatické zvětšování úložiště
 
-Automatické zvětšování úložiště zabrání vašemu serveru v provozu z úložiště a nejenom pro čtení. Pokud je povolené automatické zvětšování úložiště, úložiště se automaticky zvětšuje, aniž by to ovlivnilo zatížení. U serverů s úložištěm menším než 100 GB zřízené úložiště se velikost zřízeného úložiště zvyšuje o 5 GB, jakmile bude volné úložiště nižší než 1 GB nebo 10% zřízené úložiště. U serverů s více než 100 GB zřízeného úložiště se velikost zřízeného úložiště zvyšuje o 5%, pokud je volný prostor úložiště pod 5% velikosti zřízeného úložiště. Platí omezení maximální velikosti úložiště, jak je uvedeno výše.
+Automatické zvětšování úložiště zabrání vašemu serveru v provozu z úložiště a nejenom pro čtení. Pokud je povolené automatické zvětšování úložiště, úložiště se automaticky zvětšuje, aniž by to ovlivnilo zatížení. U serverů s méně než 100 GB zřízené úložiště se velikost zřízeného úložiště zvyšuje o 5 GB, jakmile bude volné úložiště nižší než 1 GB nebo 10% zřízené úložiště. U serverů s více než 100 GB zřízeného úložiště se velikost zřízeného úložiště zvyšuje o 5%, pokud je volný prostor úložiště menší než 10 GB nebo 5% velikosti zřízené úložiště. Platí omezení maximální velikosti úložiště, jak je uvedeno výše.
 
 Pokud jste například zřídili 1000 GB úložiště a skutečné využití dosáhne více než 950 GB, zvýší se velikost úložiště serveru na 1050 GB. Případně, pokud jste zřídili 10 GB úložiště, velikost úložiště se zvýší na 15 GB, pokud je úložiště menší než 1 GB volného místa.
 
 Mějte na paměti, že úložiště je možné škálovat pouze nahoru, ne dolů.
 
-## <a name="backup"></a>Zálohovat
+## <a name="backup"></a>Backup
 
-Služba automaticky provede zálohování vašeho serveru. Minimální doba uchovávání záloh je sedm dní. Můžete nastavit dobu uchovávání až 35 dní. Uchovávání lze v jakémkoli okamžiku během životnosti serveru upravit. Můžete si vybrat mezi místně redundantními a geograficky redundantními zálohováními. Geograficky redundantní zálohy jsou také uloženy v [geograficky spárované oblasti](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) oblasti, kde je server vytvořen. Tato redundance poskytuje úroveň ochrany v případě havárie. Máte také možnost obnovit server do jakékoli jiné oblasti Azure, ve které je služba dostupná v geograficky redundantních zálohách. Po vytvoření serveru není možné měnit mezi dvěma možnostmi úložiště zálohování.
+Služba automaticky provede zálohování vašeho serveru. Můžete vybrat dobu uchování z rozsahu 7 až 35 dní. Pro obecné účely a paměťově optimalizované servery se můžou rozhodnout pro zálohování geograficky redundantního úložiště. Další informace o zálohách [najdete v článku koncepty](concepts-backup.md).
 
 ## <a name="scale-resources"></a>Škálování prostředků
 

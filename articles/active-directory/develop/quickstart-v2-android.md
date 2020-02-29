@@ -11,23 +11,22 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: bbaaf4b26beec56cd8608abc8a2f9cdd3a4cda3f
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c4af08a204cbf88c56b699bcbcdd3a7700e0f5e0
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77084523"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160957"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Rychlý start: Přihlášení uživatelů a zavolání rozhraní API pro Microsoft Graph z aplikace pro Android
 
-V tomto rychlém startu se používá ukázka kódu, která předvádí, jak se aplikace pro Android může přihlašovat pomocí platformy Microsoft identity na osobní, pracovní nebo školní účty a získat přístupový token a volat rozhraní Microsoft Graph API.
+V tomto rychlém startu se používá ukázka kódu, která předvádí, jak se aplikace pro Android může přihlašovat pomocí platformy Microsoft identity na osobní, pracovní nebo školní účty a získat přístupový token a volat rozhraní Microsoft Graph API. (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
 
-Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory tak, aby platforma Microsoft Identity mohla sdílet tokeny s vaší aplikací.
+Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory tak, aby platforma identity Microsoftu mohla poskytovat tokeny vaší aplikaci.
 
 > [!div renderon="docs"]
 > Jako pohodlí se ukázka kódu dodává s výchozím `redirect_uri` předem nakonfigurovaným v souboru `AndroidManifest.xml`, takže nemusíte nejdřív registrovat vlastní objekt aplikace. `redirect_uri` je částečně založený na podpisovém klíči vaší aplikace. Vzorový projekt je předem nakonfigurovaný pomocí podpisového klíče, aby poskytnutý `redirect_uri` fungoval. Chcete-li získat další informace o registraci objektu aplikace a jeho integraci s vaší aplikací, přečtěte si téma [přihlášení uživatelů a zavolejte Microsoft Graph z kurzu aplikace pro Android](tutorial-v2-android.md) .
 
-![Snímek obrazovky ukázkové aplikace](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **Požadavky**
@@ -44,73 +43,14 @@ Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory t
 > > ![Už nakonfigurované](media/quickstart-v2-android/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy
 >
 > ### <a name="step-2-download-the-project"></a>Krok 2: Stažení projektu 
-> * [Stažení ukázky kódu](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip)
+> [!div class="sxs-lookup" renderon="portal"]
+> Spusťte projekt pomocí Android Studio.
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Stažení ukázky kódu]()
 >
-> ### <a name="step-3-configure-your-project"></a>Krok 3: Konfigurace projektu
-> 1. Extrahujte a otevřete projekt v nástroji Android Studio.
-> 2. Uvnitř **aplikace** > **src** > **Main** > **res** > **raw**otevřete **auth_config_multiple_account. JSON** a nahraďte ji následujícím kódem:
-> ```javascript 
-> {
->   "client_id" : "Enter_the_Application_Id_Here",
->   "authorization_user_agent" : "DEFAULT",
->   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
->   "account_mode" : "MULTIPLE",
->   "broker_redirect_uri_registered": true,
->   "authorities" : [
->     {
->       "type": "AAD",
->       "audience": {
->         "type": "Enter_the_Audience_Info_Here",
->         "tenant_id": "Enter_the_Tenant_Info_Here"
->       }
->     }
->   ]
-> }
-> ```
-
 > [!div class="sxs-lookup" renderon="portal"]
-> 3. Uvnitř **aplikace** > **src** > **Main** > **res** > **raw**otevřete **auth_config_single_account. JSON** a nahraďte ji následujícím kódem:
-> ```javascript 
-> {
->   "client_id" : "Enter_the_Application_Id_Here",
->   "authorization_user_agent" : "DEFAULT",
->   "redirect_uri" : "Enter_the_Redirect_Uri_Here",
->   "account_mode" : "SINGLE",
->   "broker_redirect_uri_registered": true,
->   "authorities" : [
->     {
->       "type": "AAD",
->       "audience": {
->         "type": "Enter_the_Audience_Info_Here",
->         "tenant_id": "Enter_the_Tenant_Info_Here"
->       }
->     }
->   ]
-> }
-> ```
-
-> [!div class="sxs-lookup" renderon="portal"]
-> 4. Uvnitř **aplikace** > **Src** > **Main**otevřete **souboru AndroidManifest. XML**.
-> 5. V uzlu **manifest\application** nahraďte uzel **aktivita Android: Name = "com. Microsoft. identity. Client. BrowserTabActivity"** následujícím způsobem:    
-> ```xml
-> <!--Intent filter to catch Microsoft's callback after Sign In-->
-> <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
->     <intent-filter>
->         <action android:name="android.intent.action.VIEW" />
->         <category android:name="android.intent.category.DEFAULT" />
->         <category android:name="android.intent.category.BROWSABLE" />
->         <!--
->             Add in your scheme/host from registered redirect URI 
->             note that the leading "/" is required for android:path
->         -->
->         <data 
->             android:host="Enter_the_Package_Name"
->             android:path="/Enter_the_Signature_Hash"
->             android:scheme= "msauth" />
->     </intent-filter>
-> </activity>
-> ```
-> 6. Spusťte aplikaci.   
+> ### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Krok 3: vaše aplikace je nakonfigurovaná a připravená ke spuštění.
+> Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace a je připraven ke spuštění. 
 > Ukázková aplikace se spustí na obrazovce **režimu jednoho účtu** . Ve výchozím nastavení je k dispozici výchozí obor ( **User. Read**), který se používá při čtení dat profilu během volání rozhraní API Microsoft Graph. Ve výchozím nastavení je k dispozici adresa URL pro volání rozhraní API Microsoft Graph. Oba tyto typy můžete změnit, pokud chcete.
 >
 > ![Ukázková aplikace MSAL ukazující použití jednoho a více účtů](./media/quickstart-v2-android/quickstart-sample-app.png)
@@ -126,7 +66,7 @@ Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory t
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Tento rychlý Start podporuje Enter_the_Supported_Account_Info_Here.
+> > Enter_the_Supported_Account_Info_Here
 
 > [!div renderon="docs"]
 > ## <a name="step-1-get-the-sample-app"></a>Krok 1: získání ukázkové aplikace
@@ -151,10 +91,12 @@ Aplikace musí být reprezentovány objektem aplikace v Azure Active Directory t
 > V režimu více účtů můžete opakovat stejný postup.  Kromě toho můžete odebrat přihlášený účet, který také odebere tokeny uložené v mezipaměti pro tento účet.
 
 ## <a name="how-the-sample-works"></a>Jak ukázka funguje
+![Snímek obrazovky ukázkové aplikace](media/quickstart-v2-android/android-intro.svg)
+
 
 Kód je uspořádaný na fragmenty, které ukazují, jak napsat jednu a více účtů MSAL aplikaci. Soubory s kódem jsou uspořádány takto:
 
-| Soubor  | Demonstruje  |
+| File  | Demonstruje  |
 |---------|---------|
 | MainActivity | Spravuje uživatelské rozhraní. |
 | MSGraphRequestWrapper  | Volá rozhraní API Microsoft Graph pomocí tokenu poskytnutého funkcí MSAL. |
@@ -171,7 +113,7 @@ Nyní se podrobněji podíváme na tyto soubory a v každém z nich budete volat
 MSAL ([com. Microsoft. identity. Client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) je knihovna používaná k přihlašování uživatelů a žádosti o tokeny používané pro přístup k rozhraní API chráněnému platformou Microsoft identity. Gradle 3.0 + nainstaluje knihovnu, když přidáte následující do **skriptů Gradle** > **Build. Gradle (Module: App)** v části **závislosti**:
 
 ```gradle  
-implementation 'com.microsoft.identity.client:msal:1.0.0'
+implementation 'com.microsoft.identity.client:msal:1.+'
 ```
 
 Můžete to vidět v ukázkovém projektu v sestavení. Gradle (modul: aplikace):
@@ -179,7 +121,7 @@ Můžete to vidět v ukázkovém projektu v sestavení. Gradle (modul: aplikace)
 ```java
 dependencies {
     ...
-    implementation 'com.microsoft.identity.client:msal:1.0.+'
+    implementation 'com.microsoft.identity.client:msal:1.+'
     ...
 }
 ```

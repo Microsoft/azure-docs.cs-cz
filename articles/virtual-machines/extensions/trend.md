@@ -14,14 +14,17 @@ ms.tgt_pltfrm: vm-multiple
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
-ms.openlocfilehash: a9f99d418d572c14a7cdd7975483cf39f0707cba
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072987"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919919"
 ---
-# <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Jak nainstalovat a nakonfigurovat Trend Micro Deep Security na virtuálním počítači s Windows jako službu
+# <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Postup instalace a konfigurace Trend Micro hlubokého zabezpečení jako služby na virtuálním počítači s Windows
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
 V tomto článku se dozvíte, jak nainstalovat a nakonfigurovat trend Microal úrovně zabezpečení jako službu na novém nebo existujícím virtuálním počítači s Windows serverem. Špičkové zabezpečení jako služba zahrnuje ochranu proti malwaru, bránu firewall, systém prevence vniknutí a monitorování integrity.
 
@@ -81,7 +84,7 @@ Spuštění agenta při jeho instalaci trvá několik minut. Potom je potřeba n
 * [Ukázkový skript prostředí Windows PowerShell](https://go.microsoft.com/fwlink/?LinkId=404100) pro konfiguraci virtuálního počítače
 * [Pokyny](https://go.microsoft.com/fwlink/?LinkId=404099) k ukázce
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 [Jak se přihlásit k virtuálnímu počítači s Windows serverem]
 
 [Rozšíření a funkce virtuálních počítačů Azure]

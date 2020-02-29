@@ -8,17 +8,17 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/10/2019
-ms.openlocfilehash: 0b321f3548910a2bc79e4473609de30eda8c8622
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.date: 02/10/2020
+ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314347"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920344"
 ---
 # <a name="score-svd-recommender"></a>Určení skóre doporučovacího systému SVD
 
-Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul doporučení skóre SVD. Tento modul použijte k vytvoření předpovědi pomocí vyučeného modelu doporučení založeného na algoritmu SVD (Single Value rekompozice).
+Tento článek popisuje, jak v Návrháři Azure Machine Learning použít modul doporučení skóre SVD (Preview). Tento modul použijte k vytvoření předpovědi pomocí vyučeného modelu doporučení založeného na algoritmu SVD (Single Value rekompozice).
 
 Doporučení SVD může generovat dva různé druhy předpovědi:
 
@@ -91,7 +91,7 @@ Chcete-li doporučit položky pro uživatele, zadejte seznam uživatelů a polo�
 
 5. **Maximální počet položek, které je potřeba doporučit pro uživatele**: zadejte počet položek, které se mají vrátit pro každého uživatele. Ve výchozím nastavení modul doporučuje pět položek.
 
-6. **Minimální velikost fondu doporučení na uživatele**: zadejte hodnotu, která určuje, kolik předchozích doporučení je potřeba. Ve výchozím nastavení je tento parametr nastaven na hodnotu **2**, což znamená, že položka doporučila aspoň dva další uživatelé.
+6. **Minimální velikost fondu doporučení na uživatele**: zadejte hodnotu, která určuje, kolik předchozích doporučení je potřeba. Ve výchozím nastavení je tento parametr nastaven na hodnotu 2, což znamená, že položka doporučila aspoň dva další uživatelé.
 
    Tuto možnost použijte pouze v případě, že vyhodnocujete režim vyhodnocování. Možnost není k dispozici, pokud vyberete možnost **ze všech položek** nebo **z nehodnocených položek (pro návrh nových položek uživatelům)** .
 

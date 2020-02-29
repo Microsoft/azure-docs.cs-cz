@@ -12,18 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: be0f61b1458fa8bd63d85669c7956a789892996a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981332"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918253"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Dojde k interní chybě při pokusu o připojení k virtuálnímu počítači Azure přes vzdálenou plochu
 
 Tento článek popisuje chybu, která může dojít při pokusu o připojení k virtuálnímu počítači (VM) v Microsoft Azure.
-> [!NOTE]
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
+
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -44,20 +43,20 @@ Tomuto problému může dojít z následujících důvodů:
 
 ## <a name="solution"></a>Řešení
 
-Předtím, než budete postupovat podle těchto kroků, vytvořte snímek disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
+Předtím, než budete postupovat podle těchto kroků, vytvořte snímek disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
 
-Chcete-li tento problém vyřešit, použijte konzole sériového portu nebo [opravte virtuální počítač v režimu offline](#repair-the-vm-offline) připojením disku s operačním systémem virtuálního počítače na virtuální počítač pro obnovení.
+Pokud chcete tento problém vyřešit, použijte konzolu sériového portu nebo [opravte virtuální počítač offline](#repair-the-vm-offline) připojením disku operačního systému virtuálního počítače k virtuálnímu počítači pro obnovení.
 
 
 ### <a name="use-serial-control"></a>Použití sériového portu ovládacího prvku
 
-Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Pokud konzole sériového portu není povolená na virtuálním počítači, přejděte [opravte virtuální počítač v režimu offline](#repair-the-vm-offline) části.
+Připojte se ke [konzole sériového prostředí a otevřete instanci PowerShellu](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). Pokud není na vašem VIRTUÁLNÍm počítači povolená konzola sériového prostředí, přečtěte si část [opravy offline virtuálního počítače](#repair-the-vm-offline) .
 
 #### <a name="step-1-check-the-rdp-port"></a>Krok: Kontrola 1 RDP port
 
-1. V instanci prostředí PowerShell, použijte [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
-) ke kontrole, jestli port 8080 je použít v jiných aplikacích:
+1. V instanci prostředí PowerShell ověřte pomocí příkazu [netstat](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
+) , zda je port 8080 používán jinými aplikacemi:
 
         Netstat -anob |more
 2. Pokud Termservice.exe používá 8080 port, přejděte ke kroku 2. Pokud jiná služba nebo aplikace než Termservice.exe používá 8080 port, postupujte podle těchto kroků:
@@ -84,7 +83,7 @@ Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](
 
             Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
 
-    3. [Aktualizovat skupinu zabezpečení sítě pro nový port](../../virtual-network/security-overview.md) v Azure portal RDP port.
+    3. [Aktualizujte skupinu zabezpečení sítě pro nový port](../../virtual-network/security-overview.md) v portu Azure Portal RDP.
 
 #### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Nastavení správná oprávnění u certifikátu podepsaného svým držitelem protokolu RDP
 
@@ -104,10 +103,10 @@ Připojte se k [sériové konzoly a otevřené instance prostředí PowerShell](
 
 2. Pokud tímto způsobem nejde obnovit certifikát, pokusí se vzdáleně obnovit certifikát podepsaný svým držitelem protokol RDP:
 
-    1. Funkčním virtuálním počítači, který má připojení k virtuálnímu počítači, který dochází k potížím, typ **konzoly mmc** v **spustit** otevřete okno konzoly Microsoft Management Console.
-    2. Na **souboru** nabídce vyberte možnost **Přidat/odebrat modul Snap-in**vyberte **certifikáty**a pak vyberte **přidat**.
-    3. Vyberte **účty počítačů**vyberte **jiného počítače**a pak přidat IP adresu problémový virtuální počítač.
-    4. Přejděte na **vzdálené Desktop\Certificates** složky, klikněte pravým tlačítkem na certifikát a poté vyberte **odstranit**.
+    1. V pracovním počítači s připojením k virtuálnímu počítači, na kterém dochází k potížím, zadejte do pole **Spustit** **MMC** a otevřete konzolu Microsoft Management Console.
+    2. V nabídce **soubor** vyberte **Přidat nebo odebrat modul snap-in**, vyberte **certifikáty**a pak vyberte **Přidat**.
+    3. Vyberte **účty počítačů**, vyberte **jiný počítač**a pak přidejte IP adresu virtuálního počítače problému.
+    4. Přejděte do složky **Remote Desktop\Certificates** , klikněte pravým tlačítkem na certifikát a pak vyberte **Odstranit**.
     5. V prostředí PowerShell instanci z konzoly sériového portu restartujte službu Konfigurace vzdálené plochy:
 
             Stop-Service -Name "SessionEnv"
@@ -159,15 +158,15 @@ Klienta protokolu RDP používá jako výchozí protokol TLS 1.0. To však můž
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Připojte disk s operačním systémem pro virtuální počítač pro obnovení
 
-1. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
-2. Po disk s operačním systémem je připojen k virtuální počítač pro obnovení, ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
+1. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
+2. Po připojení disku s operačním systémem k virtuálnímu počítači pro obnovení se ujistěte, že je disk označený jako **online** v konzole pro správu disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
 3. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
 
 #### <a name="enable-dump-log-and-serial-console"></a>Povolení protokolu výpisu stavu systému a konzoly sériového portu
 
 Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, spusťte následující skript.
 
-1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (**spustit jako správce**).
+1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (**Spustit jako správce**).
 2. Spusťte tento skript:
 
     V tomto skriptu předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem F. nahradit toto písmeno jednotky s odpovídající hodnotou pro váš virtuální počítač.
@@ -196,7 +195,7 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
 
 #### <a name="reset-the-permission-for-machinekeys-folder"></a>Resetování oprávnění ke složce MachineKeys
 
-1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (**spustit jako správce**).
+1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (**Spustit jako správce**).
 2. Spusťte následující skript. V tomto skriptu předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem F. nahradit toto písmeno jednotky s odpovídající hodnotou pro váš virtuální počítač.
 
         Md F:\temp
@@ -215,7 +214,7 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
 
 #### <a name="enable-all-supported-tls-versions"></a>Povolit všechny podporované verze TLS
 
-1.  Otevřete relaci příkazového řádku se zvýšenými oprávněními (**spustit jako správce**) a spustit následující příkazy. Následující skript předpokládá, že je přiřazeno písmeno ovladač připojeném disku s operačním systémem je F. nahradit toto písmeno jednotky s odpovídající hodnotou pro váš virtuální počítač.
+1.  Otevřete relaci příkazového řádku se zvýšenými oprávněními (**Spustit jako správce**) a spusťte následující příkazy. Následující skript předpokládá, že je přiřazeno písmeno ovladač připojeném disku s operačním systémem je F. nahradit toto písmeno jednotky s odpovídající hodnotou pro váš virtuální počítač.
 2.  Kontrola, který je povolený protokol TLS:
 
         reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -232,7 +231,7 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled /t REG_DWO
 
-3.  Pokud klíč neexistuje, nebo je jeho hodnota **0**, povolte protokol spuštěním následujících skriptů:
+3.  Pokud klíč neexistuje nebo je jeho hodnota **0**, povolte protokol spuštěním následujících skriptů:
 
         REM Enable TLS 1.0, TLS 1.1 and TLS 1.2
 
@@ -263,7 +262,7 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
-5.  [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md)a potom zkontrolujte, zda byl problém vyřešen.
+5.  [Odpojte disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md)a potom zkontrolujte, jestli je problém vyřešený.
 
 
 

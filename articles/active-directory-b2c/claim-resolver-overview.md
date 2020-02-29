@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/02/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4434c877f69391f5dc5926c6aed07049ba46b7b7
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 97e51331657c62094996f79483148f2f441e6a44
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425642"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161597"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
 
@@ -66,15 +66,16 @@ Následující části uvádějí dostupné překladače deklarací identity.
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------- | --------|
-| {OIDC:AuthenticationContextReferences} |Parametr řetězce dotazu `acr_values`. | Není k dispozici |
+| {OIDC:AuthenticationContextReferences} |Parametr řetězce dotazu `acr_values`. | neuvedeno |
 | {OIDC: ClientId} |Parametr řetězce dotazu `client_id`. | 00000000-0000-0000-0000-000000000000 |
 | {OIDC:DomainHint} |Parametr řetězce dotazu `domain_hint`. | facebook.com |
 | {OIDC:LoginHint} |  Parametr řetězce dotazu `login_hint`. | someone@contoso.com |
-| {OIDC:MaxAge} | Hodnota `max_age` | Není k dispozici |
+| {OIDC:MaxAge} | Hodnota `max_age` | neuvedeno |
 | {OIDC: nonce} |Parametr řetězce dotazu `Nonce`. | defaultNonce |
-| {OIDC:Prompt} | Parametr řetězce dotazu `prompt`. | přihlášení |
-| {OIDC: Resource} |Parametr řetězce dotazu `resource`. | Není k dispozici |
+| {OIDC:Prompt} | Parametr řetězce dotazu `prompt`. | Přihlásit |
+| {OIDC: Resource} |Parametr řetězce dotazu `resource`. | neuvedeno |
 | {OIDC:scope} |Parametr řetězce dotazu `scope`. | OpenID |
+| {OIDC: RedirectUri} |Parametr řetězce dotazu `redirect_uri`. | https://jwt.ms |
 
 ### <a name="context"></a>Kontext
 
@@ -85,7 +86,7 @@ Následující části uvádějí dostupné překladače deklarací identity.
 | {Context:DateTimeInUtc} |Datum a čas ve standardu UTC.  | 10/10/2018 12:00:00 ODP. |
 | {Context: DeploymentMode} |Režim nasazení zásad.  | Výroba |
 | {Context: IPAddress} | IP adresa uživatele. | 11.111.111.11 |
-
+| {Context: políčko zůstat přihlášeni} | Určuje, zda je zaškrtnuto políčko [zůstat přihlášeni](custom-policy-keep-me-signed-in.md) . |  true (pravda) |
 
 ### <a name="non-protocol-parameters"></a>Parametry bez protokolu
 
@@ -96,13 +97,13 @@ Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, s
 | {OAUTH-KV: campaignId} | Parametr řetězce dotazu. | ostrovy |
 | {OAUTH-KV: app_session} | Parametr řetězce dotazu. | A3C5R |
 | {OAUTH-KV: loyalty_number} | Parametr řetězce dotazu. | 1234 |
-| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | Není k dispozici |
+| {OAUTH-KV: jakýkoliv vlastní řetězec dotazu} | Parametr řetězce dotazu. | neuvedeno |
 
 ### <a name="oauth2"></a>OAuth2
 
 | Deklarovat | Popis | Příklad |
 | ----- | ----------------------- | --------|
-| {OAuth2: access_token} | Přístupový token. | Není k dispozici |
+| {OAuth2: access_token} | Přístupový token. | neuvedeno |
 
 
 ### <a name="saml"></a>SAML

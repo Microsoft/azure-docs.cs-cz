@@ -2,17 +2,17 @@
 title: Paměťově optimalizované virtuální počítače s Dv2 a DSv2-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače s Dv2 a DSv2-Series.
 services: virtual-machines
-author: jonbeck7
+author: joelpelley
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 1ba13733fdf5cf8aa83cbf71a23d013bf4ae90d4
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 66e415070e60676df5602078aff50c7b68920f1e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77493784"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914037"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Paměťově optimalizovaná Dv2 a Dsv2-Series
 
@@ -34,7 +34,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 | Standard_D12_v2 | 4  | 28  | 200 | 12 000 / 187 / 93  | 16/16x500 | 4/3000  |
 | Standard_D13_v2 | 8  | 56  | 400 | 24 000 / 375 / 187 | 32/32x500 | 8/6000  |
 | Standard_D14_v2 | 16 | 112 | 800 | 48 000 / 750 / 375 | 64/64x500 | 8/12000 |
-| Standard_D15_v2 <sup>1</sup> | 20 | 140 | 1 000 | 60000/937/468 | 64/64x500 | 8/25000 <sup>2</sup> |
+| Standard_D15_v2 <sup>1</sup> | 20 | 140 | 1000 | 60000/937/468 | 64/64x500 | 8/25000 <sup>2</sup> |
 
 <sup>1</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.
 <sup>2</sup> 25000 MB/s s akcelerovanými síťovými službami.

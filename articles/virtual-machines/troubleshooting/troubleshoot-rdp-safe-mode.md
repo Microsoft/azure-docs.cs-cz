@@ -12,23 +12,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 14cd43f7bd7965b755eca14e5914c64e2ec8e044
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981292"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918202"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>Nelze provést připojení RDP k virtuálnímu počítači, protože virtuální počítač se spustí v nouzovém režimu
 
 Tento článek popisuje, jak vyřešit problém, ve kterém nemůže připojit k Azure Windows Virtual Machines (VM), protože virtuální počítač je nakonfigurovaný na spuštění v nouzovém režimu.
 
-> [!NOTE]
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek se věnuje modelu nasazení Resource Manageru, který vám doporučujeme používat pro nová nasazení namísto modelu nasazení classic.
 
 ## <a name="symptoms"></a>Příznaky
 
-Nemůžete provádět připojení ke vzdálené ploše nebo jiné připojení (např. HTTP) k virtuálnímu počítači v Azure vzhledem k tomu, že virtuální počítač je nakonfigurovaný na spuštění v nouzovém režimu. Když vrátíte se změnami na snímku obrazovky [Diagnostika spouštění](../troubleshooting/boot-diagnostics.md) na webu Azure Portal, můžete všimnout, že virtuální počítač se spustí normálně, ale není k dispozici síťové rozhraní:
+Nemůžete provádět připojení ke vzdálené ploše nebo jiné připojení (např. HTTP) k virtuálnímu počítači v Azure vzhledem k tomu, že virtuální počítač je nakonfigurovaný na spuštění v nouzovém režimu. Když zkontrolujete snímek obrazovky v [diagnostice spouštění](../troubleshooting/boot-diagnostics.md) v Azure Portal, může se stát, že se virtuální počítač spouští normálně, ale síťové rozhraní není k dispozici:
 
 ![Obrázek o inferce sítě v nouzovém režimu](./media/troubleshoot-rdp-safe-mode/network-safe-mode.png)
 
@@ -39,33 +37,33 @@ Služba protokolu RDP není k dispozici v nouzovém režimu. Pouze základní sy
 
 ## <a name="solution"></a>Řešení
 
-Předtím, než budete postupovat podle těchto kroků, vytvořte snímek disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md).
+Předtím, než budete postupovat podle těchto kroků, vytvořte snímek disku s operačním systémem virtuálního počítače ovlivněný jako záložní. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md).
 
-Pokud chcete tento problém vyřešit, pomocí sériového portu ovládací prvek nakonfigurovat virtuální počítač spustí v normálním režimu nebo [opravte virtuální počítač v režimu offline](#repair-the-vm-offline) pomocí virtuální počítač pro obnovení.
+Pokud chcete tento problém vyřešit, nakonfigurujte pomocí sériového řízení virtuální počítač tak, aby se spouštěl do normálního režimu, nebo [opravte virtuální počítač offline](#repair-the-vm-offline) pomocí virtuálního počítače pro obnovení.
 
 ### <a name="use-serial-control"></a>Použití sériového portu ovládacího prvku
 
-1. Připojte se k [sériové konzoly a otevřené instance CMD](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-   ). Pokud konzole sériového portu není povolená na virtuálním počítači, přečtěte si téma [opravte virtuální počítač v režimu offline](#repair-the-vm-offline).
+1. Připojte se ke [konzole sériového prostředí a otevřete instanci cmd](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+   ). Pokud na vašem VIRTUÁLNÍm počítači není povolena sériová konzola, přečtěte si téma [Oprava virtuálního počítače v režimu offline](#repair-the-vm-offline).
 2. Kontrola konfiguračních dat spouštění:
 
         bcdedit /enum
 
-    Pokud virtuální počítač je nakonfigurovaný pro spuštění v nouzovém režimu, zobrazí se další příznak v části **Windows spouštěcí zavaděč** část s názvem **bezpečného**. Pokud se nezobrazí **bezpečného** příznak, virtuální počítač není v nouzovém režimu. Tento článek se nevztahuje na váš scénář.
+    Pokud je virtuální počítač nakonfigurovaný tak, aby se spouštěl do nouzového režimu, zobrazí se v části **zaváděcí program pro spouštění systému Windows** s názvem **safeboot**další příznak. Pokud nevidíte příznak **safeboot** , virtuální počítač není v bezpečném režimu. Tento článek se nevztahuje na váš scénář.
 
-    **Bezpečného** příznak může zobrazit následující hodnoty:
+    Příznak **safeboot** se může zobrazit s následujícími hodnotami:
    - Minimální
-   - Network (Síť)
+   - Síť
 
      V některém z těchto dvou režimech nebude spuštěno protokolu RDP. Proto oprava zůstává stejná.
 
      ![Obrázek o příznak Nouzový režim](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
 
-3. Odstranit **safemoade** příznak, tak virtuální počítač se spustí v normálním režimu:
+3. Odstraňte příznak **safemoade** , aby se virtuální počítač spouštěl v normálním režimu:
 
         bcdedit /deletevalue {current} safeboot
 
-4. Zkontrolujte, že konfigurační data spouštění **bezpečného** odebrán příznak:
+4. Zkontrolujte konfigurační data spouštění a ujistěte se, že je odstraněný příznak **safeboot** :
 
         bcdedit /enum
 
@@ -75,9 +73,9 @@ Pokud chcete tento problém vyřešit, pomocí sériového portu ovládací prve
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Připojte disk s operačním systémem pro virtuální počítač pro obnovení
 
-1. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
+1. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
 2. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení.
-3. Ujistěte se, že disk je označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
+3. Ujistěte se, že je disk označen jako **online** v konzole pro správu disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
 
 #### <a name="enable-dump-log-and-serial-console-optional"></a>Povolení protokolu výpisu stavu systému a konzoly sériového portu (volitelné)
 
@@ -85,7 +83,7 @@ Protokol s výpisem paměti a konzoly sériového portu nám pomůže udělat da
 
 Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, spusťte následující skript.
 
-1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (**spustit jako správce**).
+1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (**Spustit jako správce**).
 2. Spusťte tento skript:
 
     V tomto skriptu předpokládáme, že je písmeno jednotky, která je přiřazena připojeném disku s operačním systémem F. nahradit toto písmeno jednotky s odpovídající hodnotou pro váš virtuální počítač.
@@ -114,20 +112,20 @@ Pokud chcete povolit protokol s výpisem paměti a konzoly sériového portu, sp
 
 #### <a name="configure-the-windows-to-boot-into-normal-mode"></a>Nakonfigurujte systém Windows tak, aby se spouštěl do normálního režimu.
 
-1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (**spustit jako správce**).
+1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (**Spustit jako správce**).
 2. Ověřte konfigurační data spouštění. V následujících příkazech předpokládáme, že písmeno jednotky přiřazené k připojenému disku s operačním systémem je F. nahraďte toto písmeno jednotky odpovídající hodnotou pro váš virtuální počítač.
 
         bcdedit /store F:\boot\bcd /enum
     Poznamenejte si název identifikátoru oddílu, který má složku **\Windows** . Ve výchozím nastavení je název identifikátoru "výchozí".
 
-    Pokud virtuální počítač je nakonfigurovaný pro spuštění v nouzovém režimu, zobrazí se další příznak v části **Windows spouštěcí zavaděč** část s názvem **bezpečného**. Pokud nevidíte příznak **safeboot** , Tento článek se nevztahuje na váš scénář.
+    Pokud je virtuální počítač nakonfigurovaný tak, aby se spouštěl do nouzového režimu, zobrazí se v části **zaváděcí program pro spouštění systému Windows** s názvem **safeboot**další příznak. Pokud nevidíte příznak **safeboot** , Tento článek se nevztahuje na váš scénář.
 
     ![Obrázek o identifikátoru spouštění](./media/troubleshoot-rdp-safe-mode/boot-id.png)
 
 3. Odeberte příznak **safeboot** , aby se virtuální počítač spouštěl v normálním režimu:
 
         bcdedit /store F:\boot\bcd /deletevalue {Default} safeboot
-4. Zkontrolujte, že konfigurační data spouštění **bezpečného** odebrán příznak:
+4. Zkontrolujte konfigurační data spouštění a ujistěte se, že je odstraněný příznak **safeboot** :
 
         bcdedit /store F:\boot\bcd /enum
-5. [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md). Potom zkontrolujte, zda byl problém vyřešen.
+5. [Odpojte disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md). Potom zkontrolujte, zda byl problém vyřešen.

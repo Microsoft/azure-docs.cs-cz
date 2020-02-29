@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: f3cb583a3594b14266249ef80f8c49633c1df1de
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: cd634c41a1d6e3d9846e8299dd281b52beb77130
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152189"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912785"
 ---
 # <a name="linear-regression-module"></a>Modul lineární regrese
 Tento článek popisuje modul v Návrháři Azure Machine Learning (Preview).
@@ -51,17 +51,15 @@ Pro roky byly statistikou vyvinuty stále větší pokročilé metody pro regres
 
 Tento modul podporuje dvě metody pro přizpůsobení regresního modelu s různými možnostmi:
 
-+ [Vytvoření regresního modelu pomocí online gradientu](#bkmk_GradientDescent)
++ [Přizpůsobit regresní model pomocí běžných minimálních čtverců](#create-a-regression-model-using-ordinary-least-squares)
+
+    Pro malé datové sady je nejlepší vybrat běžné nejméně čtverce. To by mělo mít podobné výsledky do Excelu.
+    
++ [Vytvoření regresního modelu pomocí online gradientu](#create-a-regression-model-using-online-gradient-descent)
 
     Klesání gradientu je lepší funkcí pro ztrátu modelů, které jsou složitější, nebo které mají příliš málo školicích dat pro daný počet proměnných.
 
-
-
-+ [Přizpůsobit regresní model pomocí běžných minimálních čtverců](#bkmk_OrdinaryLeastSquares)
-
-    Pro malé datové sady je nejlepší vybrat běžné nejméně čtverce. To by mělo mít podobné výsledky do Excelu.
-
-## <a name="bkmk_OrdinaryLeastSquares"></a>Vytvoření regresního modelu pomocí běžných minimálních čtverců
+### <a name="create-a-regression-model-using-ordinary-least-squares"></a>Vytvoření regresního modelu pomocí běžných minimálních čtverců
 
 1. Přidejte modul **lineární regrese** do kanálu v návrháři.
 
@@ -86,7 +84,7 @@ Tento modul podporuje dvě metody pro přizpůsobení regresního modelu s různ
 
 8. Spuštění kanálu
 
-## <a name="results-for-ordinary-least-squares-model"></a>Výsledky pro model obyčejného minimálního čtverce
+### <a name="results-for-ordinary-least-squares-model"></a>Výsledky pro model obyčejného minimálního čtverce
 
 Po dokončení školení:
 
@@ -94,7 +92,7 @@ Po dokončení školení:
 + Chcete-li vytvořit předpovědi, připojte k modulu pro stanovení [skóre](./score-model.md) , proškolený model a datovou sadu nových hodnot. 
 
 
-## <a name="bkmk_GradientDescent"></a>Vytvoření regresního modelu pomocí online gradientu
+### <a name="create-a-regression-model-using-online-gradient-descent"></a>Vytvoření regresního modelu pomocí online gradientu
 
 1. Přidejte modul **lineární regrese** do kanálu v návrháři.
 
@@ -105,6 +103,8 @@ Po dokončení školení:
 3. V případě **režimu vytvoření Trainer**určete, zda chcete vytvořit výuku modelu pomocí předdefinované sady parametrů, nebo pokud chcete model optimalizovat pomocí parametru sweep.
 
     + **Jediný parametr**: Pokud víte, jak chcete nakonfigurovat síť lineární regrese, můžete zadat konkrétní sadu hodnot jako argumenty.
+    
+    + **Rozsah parametrů**: tuto možnost vyberte, pokud si nejste jisti nejlepšími parametry a chcete spustit mazání parametrů. Vyberte rozsah hodnot, na které se mají iterovat, a s [parametry modelu ladění](tune-model-hyperparameters.md) prochází všechny možné kombinace nastavení, které jste zadali, abyste určili, jaké parametry jsou výsledkem optimálních výsledků.  
 
    
 4. Do pole **rychlost učení**zadejte počáteční rychlost učení pro Optimalizátor stochastického pro prorážku klesání.
@@ -133,7 +133,7 @@ Po dokončení školení:
 
 13. Spuštění kanálu
 
-## <a name="results-for-online-gradient-descent"></a>Výsledky pro online gradient
+### <a name="results-for-online-gradient-descent"></a>Výsledky pro online gradient
 
 Po dokončení školení:
 

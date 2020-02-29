@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 4766f22cd84b2aab00f6dcc4064dbeea8018f694
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 7b5569738721038beadc78d94c81393803b6d36a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564955"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920582"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
@@ -33,7 +33,7 @@ V tomto tématu najdete běžné scénáře pro doručování obsahu v [reálné
 
 ## <a name="overview"></a>Přehled
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 Pokud chcete začít používat Azure Media Services, potřebujete následující:
 
@@ -177,9 +177,9 @@ Zákazníci Media Services si můžou zvolit koncový bod streamování **Standa
 
 #### <a name="availability"></a>Dostupnost
 
-|Název|Stav|Datová centra
+|Název|Status|Datová centra
 |---|---|---|
-|Standardní|GA|Vše|
+|Standard|GA|Vše|
 |Premium|GA|Vše|
 
 ### <a name="live-encoding"></a>Kódování v reálném čase
@@ -194,7 +194,7 @@ AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Prac
 
 #### <a name="availability"></a>Dostupnost
 
-|Název procesoru médií|Stav|Datová centra
+|Název procesoru médií|Status|Datová centra
 |---|---|---|
 |Media Encoder Standard|GA|Vše|
 |Pracovní postup kodéru Media Encoder Premium|GA|Všechny s výjimkou Číny|
@@ -203,9 +203,12 @@ AMS nabízí dva kodéry na vyžádání – **Media Encoder Standard** a **Prac
 
 Media Analytics je kolekce řečových a vizuálních komponent, které organizacím a podnikům umožňují, aby ze svých videosouborů odvodily prakticky využitelné informace. Další informace najdete v článku o [přehledu Azure Media Services Analytics](media-services-analytics-overview.md).
 
+> [!NOTE]
+> Některé procesory pro analýzu médií budou vyřazeny. Data o vyřazení najdete v tématu [starší verze součástí](legacy-components.md) .
+
 #### <a name="availability"></a>Dostupnost
 
-|Název procesoru médií|Stav|Datová centra
+|Název procesoru médií|Status|Datová centra
 |---|---|---|
 |Azure Media Face Detector|Preview|Vše|
 |Azure Media Indexer|GA|Vše|
@@ -220,7 +223,7 @@ Microsoft Azure Media Services umožňuje zabezpečení médií od okamžiku opu
 
 #### <a name="availability"></a>Dostupnost
 
-|Šifrování|Stav|Datová centra|
+|Šifrování|Status|Datová centra|
 |---|---|---| 
 |Úložiště|GA|Vše|
 |Klíče AES-128|GA|Vše|
@@ -246,7 +249,7 @@ Další informace najdete v části popisující [škálování](#scaling).
 
 #### <a name="availability"></a>Dostupnost
 
-|Název typu RU|Stav|Datová centra
+|Název typu RU|Status|Datová centra
 |---|---|---|
 |S1|GA|Vše|
 |S2|GA|Všechna kromě oblastí Brazílie – jih a Indie – západ|

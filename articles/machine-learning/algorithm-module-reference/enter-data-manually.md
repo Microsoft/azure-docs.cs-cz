@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 61c3dde49d4cd298fb3a0f19dc1d8c00e54977af
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 27c359a594cec66708647d5a648c7e8414c0d92c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152342"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917471"
 ---
 # <a name="enter-data-manually-module"></a>Zadat data ručně modul
 
@@ -36,13 +36,13 @@ Tento modul může být užitečný ve scénářích, jako jsou tyto:
   
 2.  V poli **Formát DataFormat**vyberte jednu z následujících možností. Tyto možnosti určují, jak se mají analyzovat data, která zadáte. Požadavky na jednotlivé formáty se značně liší, proto si nezapomeňte přečíst Příbuzná témata.  
   
-    -   **Arff**. Formát souboru relace atributu, který používá weka.   
+    -   **Arff**: formát souboru vztahu atributů, který používá weka.   
   
-    -   **Sdílený svazek clusteru**. Formát hodnot oddělených čárkami. Další informace najdete v tématu [převedení do sdíleného svazku clusteru](./convert-to-csv.md).  
+    -   **CSV**: formát hodnot oddělených čárkami. Další informace najdete v tématu [převedení do sdíleného svazku clusteru](./convert-to-csv.md).  
   
-    -   **SVMLight**. Formát používaný pro dostupné a dalšími architekturami strojového učení.  
+    -   **SVMLight**: formát používaný pro dostupné a dalšími architekturami strojového učení.  
   
-    -   **TSV**. Formát hodnot oddělených tabulátorem.
+    -   **TSV**: formát hodnot oddělených tabulátorem.
 
      Pokud zvolíte Formát a neposkytnete data, která vyhovují specifikacím formátu, dojde k chybě modulu runtime.
   

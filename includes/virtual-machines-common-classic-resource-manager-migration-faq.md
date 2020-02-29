@@ -8,20 +8,28 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: c923dfed24253ce2e3551c13a457f19d155a1e40
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: a9c045162e650b4468fb53676e367d2c658bf7cc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77068441"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912562"
 ---
+## <a name="what-is-the-time-required-for-migration"></a>Jaký je čas potřebný k migraci?
+
+Plánování a provádění migrace značně závisí na složitosti architektury a může trvat několik měsíců.  
+
+## <a name="what-is-the-definition-of-a-new-customer-on-iaas-vms-classic"></a>Jaká je definice nového zákazníka na virtuálních počítačích s IaaS (Classic)?
+
+Zákazníci, kteří v předplatném neIaaSi virtuální počítače (Classic) v měsíci Febrauary 2020 (měsíc před vyřazením), se považují za nové zákazníky. 
+
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Má tento plán migrace vliv na některé stávající služby nebo aplikace spuštěné na virtuálních počítačích Azure? 
 
-Ne. Virtuální počítače (Classic) jsou plně podporované a obecně dostupné služby. I nadále můžete tyto prostředky používat k rozšíření vaší působnosti v systému Microsoft Azure.
+Ne do 1. března 2023 pro virtuální počítače s IaaS (Classic). Virtuální počítače s IaaS (Classic) mají obecně dostupné služby. I nadále můžete tyto prostředky používat k rozšíření vaší působnosti v systému Microsoft Azure. Od 1. března 2023 se tyto virtuální počítače kompletně vyřadí a všechny aktivní nebo přidělené virtuální počítače se zastaví & přidělení zrušeno. Nebude to mít žádný vliv na jiné klasické prostředky, jako je Cloud Services (Classic), účty úložiště (Classic) atd.   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Co se stane s virtuálními počítači, pokud se je nechystám migrovat v blízké budoucnosti? 
 
-Stávající rozhraní API ani model prostředků Classic nepřestáváme podporovat. Vzhledem k pokročilým funkcím dostupným v modelu nasazení Resource Manager chceme migraci usnadnit. Důrazně doporučujeme, abyste si prošli [některá ze zlepšení](../articles/azure-resource-manager/management/deployment-models.md), která jsou součástí infrastruktury jako služby (IaaS) v modelu Resource Manager.
+1\. března 2023 budou virtuální počítače IaaS (Classic) kompletně vyplněné a všechny aktivní nebo přidělené virtuální počítače se zastaví & přidělení zrušeno. Abychom předešli dopadům na chod firmy, máme v dnešní době komentář k zahájení plánování migrace a dokončit ho do 1. března 2023. Stávající rozhraní API Classic, Cloud Services a model prostředků nepoužíváme. Vzhledem k pokročilým funkcím dostupným v modelu nasazení Resource Manager chceme migraci usnadnit. Doporučujeme, abyste zahájili plánování migrace těchto prostředků na Azure Resource Manager. 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Co tento plán migrace znamená pro stávající nástroje? 
 
@@ -37,7 +45,7 @@ Migraci můžete přerušit, dokud jsou prostředky v připraveném stavu. Po ú
 
 ## <a name="can-i-roll-back-my-migration-if-the-commit-operation-fails"></a>Je možné vrátit migraci zpět v případě, že selže operace potvrzení? 
 
-Pokud selže operace potvrzení, migraci není možné přerušit. Všechny operace migrace, včetně operace potvrzení, jsou idempotentní. Proto doporučujeme, abyste operaci po chvilce zkusili opakovat. Pokud pořád dojde k chybě, vytvořte lístek podpory nebo vytvořte příspěvek fóra na [webu Microsoft Q & a](https://docs.microsoft.com/answers/index.html).
+Pokud selže operace potvrzení, migraci není možné přerušit. Všechny operace migrace, včetně operace potvrzení, jsou idempotentní. Proto doporučujeme, abyste operaci po chvilce zkusili opakovat. Pokud pořád dojde k chybě, vytvořte lístek podpory.
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>Je nutné koupit další okruh ExpressRoute, když potřebuji používat infrastrukturu jako službu (IaaS) v modelu Resource Manager? 
 

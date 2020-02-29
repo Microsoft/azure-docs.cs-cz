@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 940ac7b0a2720283b669fc7ea5a9dbc163ddbe64
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 99f255d9991b51897ee31671835dabb5f3e359fd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460207"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77916502"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -26,7 +26,7 @@ Po vytvoření účtu Azure Cosmos v rámci svého předplatného můžete sprav
 | Maximální počet ru na kontejner ([zřízený režim vyhrazené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . |
 | Maximální počet ru na databázi ([zřízený režim sdílené propustnosti](databases-containers-items.md#azure-cosmos-containers)) | 1 000 000 ve výchozím nastavení. Můžete ho rozšířit [podáním lístku podpory Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . |
 | Maximální ru na (logický) klíč oddílu | 10 000 |
-| Maximální velikost úložiště napříč všemi položkami na (logický) klíč oddílu| 10 GB |
+| Maximální velikost úložiště napříč všemi položkami na (logický) klíč oddílu| 20 GB |
 | Maximální počet různých (logických) klíčů oddílu | Neomezeno |
 | Maximální velikost úložiště na kontejner | Neomezeno |
 | Maximální velikost úložiště na databázi | Neomezeno |
@@ -168,6 +168,9 @@ V následující tabulce jsou uvedeny limity, které jsou specifické pro podpor
 | --- | --- |
 | Maximální velikost paměti pro dotaz na MongoDB | 40 MB |
 | Maximální doba provádění operací MongoDB| 30 s |
+| Časový limit nečinného připojení pro uzavření připojení na straně serveru * | 30 minut |
+
+\* doporučujeme, aby klientské aplikace nastavily časový limit nečinného připojení v nastavení ovladače na 2-3 minut, protože [výchozí časový limit pro vyrovnávání zatížení Azure je 4 minuty](../load-balancer/load-balancer-tcp-idle-timeout.md#tcp-idle-timeout).  Tento časový limit zajistí, aby nečinné připojení neuzavřelo zprostředkující Nástroj pro vyrovnávání zatížení mezi klientským počítačem a Azure Cosmos DB.
 
 ## <a name="try-cosmos-db-free-limits"></a>Vyzkoušet Cosmos DB omezení Free
 

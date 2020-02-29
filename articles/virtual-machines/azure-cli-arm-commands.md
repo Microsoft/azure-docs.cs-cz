@@ -8,18 +8,18 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 899f453ef67fd094578e946c1cdd9ca4d427bf79
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122449"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919766"
 ---
 # <a name="azure-classic-cli-commands"></a>Příkazy rozhraní příkazového řádku Azure Classic 
 
-> [!IMPORTANT]
-> Toto téma popisuje postup instalace Azure Classic CLI. Rozhraní Classic CLI je zastaralé a je možné ho používat pouze s modele nasazení Classic.
-> Pro všechna ostatní nasazení použijte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/).
+[!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
+
+Toto téma popisuje postup instalace Azure Classic CLI. Rozhraní Classic CLI je zastaralé a je možné ho používat pouze s modele nasazení Classic. Pro všechna ostatní nasazení použijte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/).
 
 Tento článek poskytuje syntaxi a možnosti pro příkazy rozhraní příkazového řádku (CLI) Azure Classic, které byste běžně použili k vytváření a správě prostředků Azure. Nejedná se o úplný odkaz a verze rozhraní příkazového řádku (CLI) se může zobrazit trochu různých příkazů nebo parametrů. 
 
@@ -1520,7 +1520,7 @@ Možnosti parametru:
 
     provider unregister [options] <namespace>
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje
 **Vytvoří prostředek ve skupině prostředků.**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>

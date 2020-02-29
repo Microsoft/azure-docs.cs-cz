@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5fb54e812e72b9393ffdf632085d0f32ab8b1988
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980105"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918355"
 ---
-# <a name="virtual-network-peering"></a>Partnerský vztah virtuální sítě
+# <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
 Partnerské vztahy virtuálních sítí umožňují bezproblémové připojení sítí v [Azure Virtual Network](virtual-networks-overview.md). Virtuální sítě se zobrazí jako jedna pro účely připojení. Přenos dat mezi virtuálními počítači používá páteřní infrastrukturu Microsoftu. Podobně jako provoz mezi virtuálními počítači ve stejné síti se provoz směruje jenom přes *privátní* síť Microsoftu.
 
@@ -101,10 +101,10 @@ Další informace o oprávněních potřebných k vytvoření partnerského vzta
 
 U příchozího a odchozího provozu, který používá připojení partnerského vztahu virtuálních sítí, se účtuje nominální poplatek. Další informace najdete v tématu [Virtual Network ceny](https://azure.microsoft.com/pricing/details/virtual-network).
 
-Přenos brány je vlastnost partnerského vztahu, která umožňuje virtuální síti využívat bránu VPN/ExpressRoute v partnerské virtuální síti. Přenos brány funguje jak pro připojení mezi různými místy, tak pro připojení k síti. Provoz do brány (příchozí nebo odchozí) v partnerské virtuální síti vynese poplatky za partnerský vztah virtuálních sítí. Další informace najdete v tématu [ceny za VPN Gateway cen](https://azure.microsoft.com/pricing/details/vpn-gateway/) za poplatky za brány VPN a ceny ExpressRoute brány pro poplatky za ExpressRoute brány.
+Přenos brány je vlastnost partnerského vztahu, která umožňuje virtuální síti využívat bránu VPN/ExpressRoute v partnerské virtuální síti. Přenos brány funguje jak pro připojení mezi různými místy, tak pro připojení k síti. Provoz do brány (příchozí nebo odchozí) v partnerské virtuální síti vychází z poplatků za partnerské vztahy virtuálních sítí ve virtuální síti rozbočovače (nebo virtuální sítě bez brány). Další informace najdete v tématu [ceny za VPN Gateway cen](https://azure.microsoft.com/pricing/details/vpn-gateway/) za poplatky za brány VPN a ceny ExpressRoute brány pro poplatky za ExpressRoute brány.
 
 >[!NOTE]
-> Předchozí verze tohoto dokumentu uvedla, že poplatky za partnerský vztah virtuálních sítí neplatí pro přenos brány. Nyní odráží přesné ceny na stránce s cenami.
+> Předchozí verze tohoto dokumentu uvedla, že poplatky za partnerský vztah virtuálních sítí se nevztahují na virtuální síť rozbočovače (nebo virtuální síť mimo bránu) s přenosem brány. Nyní odráží přesné ceny na stránce s cenami.
 
 ## <a name="next-steps"></a>Další kroky
 

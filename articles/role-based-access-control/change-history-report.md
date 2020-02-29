@@ -1,6 +1,6 @@
 ---
-title: Zobrazení protokolů aktivit pro změny RBAC v prostředcích Azure | Microsoft Docs
-description: Zobrazení protokolů aktivit pro změny řízení přístupu na základě role (RBAC) na prostředky Azure za posledních 90 dní.
+title: Zobrazení protokolů aktivit pro změny v Azure RBAC
+description: Zobrazení protokolů aktivit pro řízení přístupu na základě role Azure (Azure RBAC) se v posledních 90 dnech změní na prostředky Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,47 +11,46 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/02/2019
+ms.date: 02/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 753c626fe44193b83cbd992f225fe01c2ff67f89
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e2024bd14241184338195ed635039bae774da816
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744800"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161760"
 ---
-# <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Zobrazení protokolů aktivit pro změny RBAC v prostředcích Azure
+# <a name="view-activity-logs-for-azure-rbac-changes"></a>Zobrazení protokolů aktivit pro změny v Azure RBAC
 
-Někdy potřebujete informace o změnách řízení přístupu na základě role (RBAC) v prostředcích Azure, například pro účely auditování nebo řešení potíží. Pokaždé, když někdo provede změny v přiřazení rolí nebo definicích rolí v rámci předplatného, změny se přihlásí do [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md). V protokolech aktivit můžete zobrazit všechny změny RBAC za posledních 90 dní.
+Někdy potřebujete informace o změnách řízení přístupu na základě role v Azure (Azure RBAC), například pro účely auditování nebo řešení potíží. Kdykoli někdo provede změny v přiřazení rolí nebo definicích rolí v rámci předplatných, změny se přihlásí do [protokolu aktivit Azure](../azure-monitor/platform/platform-logs-overview.md). V protokolech aktivit si můžete zobrazit všechny změny v rámci Azure RBAC za posledních 90 dní.
 
 ## <a name="operations-that-are-logged"></a>Operace, které jsou protokolovány
 
-Tady jsou operace související s RBAC, které se zaznamenávají do protokolu aktivit:
+Tady jsou operace související s Azure RBAC, které se zaznamenávají do protokolu aktivit:
 
 - Vytvořit přiřazení role
 - Odstranit přiřazení role
 - Vytvořit nebo aktualizovat definici vlastní role
-- Odstranit definice rolí
+- Odstranit definici vlastní role
 
-## <a name="azure-portal"></a>Portál Azure
+## <a name="azure-portal"></a>Azure Portal
 
-Nejjednodušší způsob, jak začít, je zobrazit si protokoly aktivit přes Azure Portal. Na následujícím snímku obrazovky vidíte příklad protokolu aktivit, který byl filtrován tak, aby zobrazoval operace přiřazení rolí a definice rolí. Obsahuje taky odkaz pro stažení protokolů jako souboru. CSV.
+Nejjednodušší způsob, jak začít, je zobrazit protokoly aktivit pomocí Azure Portal. Následující snímek obrazovky ukazuje příklad operací přiřazení rolí v protokolu aktivit. Obsahuje taky možnost stahovat protokoly jako soubor CSV.
 
 ![Protokoly aktivit pomocí portálu – snímek obrazovky](./media/change-history-report/activity-log-portal.png)
 
-Protokol aktivit na portálu má několik filtrů. Tady jsou filtry týkající se RBAC:
+Protokol aktivit na portálu má několik filtrů. Tady jsou filtry vztahující se ke službě Azure RBAC:
 
-|Filtrovat  |Hodnota  |
-|---------|---------|
-|Kategorie události     | <ul><li>Správa</li></ul>         |
-|Operace     | <ul><li>Vytvořit přiřazení role</li> <li>Odstranit přiřazení role</li> <li>Vytvořit nebo aktualizovat definici vlastní role</li> <li>Odstranit definice rolí</li></ul>      |
+| Filtr | Hodnota |
+| --------- | --------- |
+| Kategorie události | <ul><li>Správa</li></ul> |
+| Operace | <ul><li>Vytvořit přiřazení role</li><li>Odstranit přiřazení role</li><li>Vytvořit nebo aktualizovat definici vlastní role</li><li>Odstranit definici vlastní role</li></ul> |
 
+Další informace o protokolech aktivit najdete v tématu [zobrazení protokolů aktivit pro monitorování akcí v prostředcích](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
-Další informace o protokolech aktivit najdete [v tématu Zobrazení událostí v protokolu aktivit](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
-
-## <a name="azure-powershell"></a>Azure PowerShell
+## <a name="azure-powershell"></a>Azure Powershell
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -77,14 +76,14 @@ Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Act
 
 ```Example
 Caller                  : alain@example.com
-EventTimestamp          : 4/20/2018 9:18:07 PM
+EventTimestamp          : 2/27/2020 9:18:07 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           statusCode     : Created
                           serviceRequestId: 11111111-1111-1111-1111-111111111111
 
 Caller                  : alain@example.com
-EventTimestamp          : 4/20/2018 9:18:05 PM
+EventTimestamp          : 2/27/2020 9:18:05 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           requestbody    : {"Id":"22222222-2222-2222-2222-222222222222","Properties":{"PrincipalId":"33333333-3333-3333-3333-333333333333","RoleDefinitionId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers
@@ -96,21 +95,21 @@ Properties              :
 
 Pokud chcete zobrazit protokoly aktivit pomocí Azure CLI, použijte příkaz [AZ monitor Activity-log list](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) .
 
-Tento příkaz vypíše protokoly aktivit ve skupině prostředků od počátečního času:
+Tento příkaz vypíše protokoly aktivit ve skupině prostředků z 27. února, přičemž se bude hledat sedm dní.
 
 ```azurecli
-az monitor activity-log list --resource-group pharma-sales --start-time 2018-04-20T00:00:00Z
+az monitor activity-log list --resource-group pharma-sales --start-time 2020-02-27 --offset 7d
 ```
 
-Tento příkaz vypíše protokoly aktivit pro poskytovatele prostředků autorizace od počátečního času:
+Tento příkaz vypíše protokoly aktivit pro poskytovatele prostředků autorizací z 27. února, který se bude zasílat do sedmi dnů.
 
 ```azurecli
-az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
+az monitor activity-log list --namespace "Microsoft.Authorization" --start-time 2020-02-27 --offset 7d
 ```
 
 ## <a name="azure-monitor-logs"></a>Protokoly služby Azure Monitor
 
-[Protokoly Azure monitor](../log-analytics/log-analytics-overview.md) jsou další nástroj, který můžete použít ke shromažďování a analýze změn RBAC pro všechny prostředky Azure. Protokoly Azure Monitor mají následující výhody:
+[Protokoly Azure monitor](../log-analytics/log-analytics-overview.md) jsou další nástroj, který můžete použít ke shromažďování a analýze změn ve službě Azure RBAC pro všechny prostředky Azure. Protokoly Azure Monitor mají následující výhody:
 
 - Zápis složitých dotazů a logiky
 - Integrace s výstrahami, Power BI a dalšími nástroji
@@ -123,27 +122,27 @@ Zde jsou základní kroky, jak začít:
 
 1. [Nakonfigurujte řešení Activity Log Analytics](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution) pro váš pracovní prostor.
 
-1. [Zobrazení protokolů aktivit](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution). Rychlý způsob, jak přejít na stránku Přehled řešení Activity Log Analytics, je kliknout na možnost **Log Analytics** .
+1. [Zobrazení protokolů aktivit](../azure-monitor/platform/activity-log-collect.md#activity-logs-analytics-monitoring-solution). Rychlý způsob, jak přejít na stránku Přehled řešení Activity Log Analytics, je kliknout na možnost **protokoly** .
 
    ![Možnost protokolů Azure Monitor na portálu](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Volitelně můžete k dotazování a zobrazení protokolů použít stránku [prohledávání protokolu](../log-analytics/log-analytics-log-search.md) nebo [portál pro pokročilou analýzu](../azure-monitor/log-query/get-started-portal.md) . Další informace o těchto dvou možnostech najdete na [stránce hledání v protokolu nebo na portálu pro pokročilou analýzu](../azure-monitor/log-query/portals.md).
+1. Volitelně můžete použít [Log Analytics Azure monitor](../azure-monitor/log-query/get-started-portal.md) k dotazování a zobrazení protokolů. Další informace najdete v tématu [Začínáme s Azure monitor dotazy protokolu](../azure-monitor/log-query/get-started-queries.md).
 
 Tady je dotaz, který vrací přiřazení nových rolí uspořádaná podle poskytovatele cílových prostředků:
 
-```
+```Kusto
 AzureActivity
-| where TimeGenerated > ago(60d) and OperationNameValue startswith "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
+| where TimeGenerated > ago(60d) and Authorization contains "Microsoft.Authorization/roleAssignments/write" and ActivityStatus == "Succeeded"
 | parse ResourceId with * "/providers/" TargetResourceAuthProvider "/" *
 | summarize count(), makeset(Caller) by TargetResourceAuthProvider
 ```
 
 Tady je dotaz, který vrací změny přiřazení rolí zobrazené v grafu:
 
-```
+```Kusto
 AzureActivity
-| where TimeGenerated > ago(60d) and OperationNameValue startswith "Microsoft.Authorization/roleAssignments"
-| summarize count() by bin(TimeGenerated, 1d), OperationNameValue
+| where TimeGenerated > ago(60d) and Authorization contains "Microsoft.Authorization/roleAssignments"
+| summarize count() by bin(TimeGenerated, 1d), OperationName
 | render timechart
 ```
 

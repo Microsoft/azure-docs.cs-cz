@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 92c4a40de7e35d0580fe407e36305a50ad68094c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4b314fbdb9cbc0c0b797cbee8e92ee4702bbea81
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981791"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919460"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Služba Vzdálená plocha se nespouští na virtuálním počítači Azure.
 
 Tento článek popisuje, jak řešit problémy při připojení k virtuálnímu počítači Azure a službě Vzdálená plocha, nebo TermService, nespouští se nebo nespustí.
 
-> [!NOTE]  
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Azure Resource Manager a Classic](../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu nasazení Správce prostředků. Tento model doporučujeme použít pro nová nasazení, nikoli pro model nasazení Classic.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -40,7 +38,7 @@ Při pokusu o připojení k virtuálnímu počítači se setkáte s následujíc
     **Zdroj**: Správce řízení služeb </br>
     **Datum**: 12/16/2017 11:19:36 dop.</br>
     **ID události**: 7022</br>
-    **Úloha kategorie**: žádné</br>
+    **Kategorie úkolu**: žádné</br>
     **Úroveň**: Chyba</br>
     **Klíčová slova**: klasický</br>
     **Uživatel**: není k dispozici</br>
@@ -112,7 +110,7 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>Služba TermService se zastavila kvůli problému s odepřením přístupu.
 
-1. Připojte se k [konzoly sériového portu](serial-console-windows.md) a otevřete instance prostředí PowerShell.
+1. Připojte se ke [konzole sériového](serial-console-windows.md) prostředí a otevřete instanci prostředí PowerShell.
 2. Spusťte následující skript a Stáhněte si Nástroj Process monitor:
 
    ```
@@ -123,7 +121,7 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
    $wc.DownloadFile($source,$destination) 
    ```
 
-3. Začít **procmon** trasování:
+3. Nyní spusťte trasování **procmon** :
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
@@ -143,9 +141,9 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
 
 5. Shromáždění souboru **c:\temp\ProcMonTrace.PML**:
 
-    1. [Připojení datového disku k virtuálnímu počítači](../windows/attach-managed-disk-portal.md
+    1. [Připojte datový disk k virtuálnímu počítači](../windows/attach-managed-disk-portal.md
 ).
-    2. Pomocí konzoly sériového portu můžete zkopírovat soubor na nový disk. Například, `copy C:\temp\ProcMonTrace.PML F:\`. V tomto příkazu F je ovladač písmeno přídavný datový disk.
+    2. Pomocí konzoly sériového portu můžete zkopírovat soubor na nový disk. například `copy C:\temp\ProcMonTrace.PML F:\`. V tomto příkazu F je ovladač písmeno přídavný datový disk.
     3. Odpojte datovou jednotku a připojte ji k pracovnímu virtuálnímu počítači, na kterém je nainstalovaný ubstakke monitor procesu.
 
 6. Otevřete **ProcMonTrace. PML** pomocí procesu sledovat pracovní virtuální počítač. Pak je filtr podle **výsledku odepřen přístup**, jak je znázorněno na následujícím snímku obrazovky:
@@ -203,9 +201,9 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Připojte disk s operačním systémem pro virtuální počítač pro obnovení
 
-1. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
-2. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení. Ujistěte se, že je připojený disk označený jako **Online** v konzole Správa disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
-3. Otevřete příkazový řádek se zvýšenými oprávněními instance (**spustit jako správce**). Potom spusťte následující skript. Předpokládáme, že písmeno jednotky přiřazené k připojenému disku s operačním systémem je **F**. Nahraďte ji odpovídající hodnotou ve vašem VIRTUÁLNÍm počítači. 
+1. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](../windows/troubleshoot-recovery-disks-portal.md).
+2. Spusťte připojení ke vzdálené ploše pro virtuální počítač pro obnovení. Ujistěte se, že připojený disk je označen jako **online** v konzole pro správu disků. Poznamenejte si písmeno jednotky, která je přiřazena připojeném disku s operačním systémem.
+3. Otevřete instanci příkazového řádku se zvýšenými oprávněními (**Spustit jako správce**). Potom spusťte následující skript. Předpokládáme, že písmeno jednotky přiřazené k připojenému disku s operačním systémem je **F**. Nahraďte ji odpovídající hodnotou ve vašem VIRTUÁLNÍm počítači. 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -219,8 +217,8 @@ Pokud chcete tento problém vyřešit, použijte konzolu sériového portu. Nebo
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md). Potom zkontrolujte, zda byl problém vyřešen.
+4. [Odpojte disk s operačním systémem a znovu vytvořte virtuální počítač](../windows/troubleshoot-recovery-disks-portal.md). Potom zkontrolujte, zda byl problém vyřešen.
 
-## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontakty na podporu
+## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 
 Pokud stále potřebujete pomoc, obraťte se na [podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , abyste mohli problém vyřešit.

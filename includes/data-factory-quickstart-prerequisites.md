@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 06/27/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: f808158c959894e757adaa73a81e3bf57f475da0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4d77cb8128105a40143a40e48ebe450115f7cf1e
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021022"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78164115"
 ---
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-subscription"></a>Předplatné Azure
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ### <a name="azure-roles"></a>Role Azure
-Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem role *přispěvatel* nebo *vlastník* nebo *správcem* předplatného Azure. Pokud chcete zobrazit oprávnění, která máte v rámci předplatného, klikněte na [Azure Portal](https://portal.azure.com), v pravém horním rohu vyberte své uživatelské jméno, vyberte **Další možnosti** (...) a pak vyberte **Moje oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné.
+Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem role *přispěvatel* nebo *vlastník* nebo *správcem* předplatného Azure. Pokud chcete zobrazit oprávnění, která máte v rámci předplatného, klikněte na [Azure Portal](https://portal.azure.com), v pravém horním rohu vyberte své uživatelské jméno, pro další možnosti vyberte ikonu **...** a pak vyberte **Moje oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné.
 
 Při vytváření a správě podřízených prostředků pro službu Data Factory, včetně datových sad, propojených služeb, kanálů, triggerů a prostředí Integration Runtime, platí následující požadavky:
 
@@ -36,10 +36,10 @@ Další informace najdete v následujících článcích:
 - [Role a oprávnění pro službu Azure Data Factory](../articles/data-factory/concepts-roles-permissions.md)
 
 ### <a name="azure-storage-account"></a>Účet služby Azure Storage
-V tomto rychlém startu budete účet úložiště Azure (konkrétně úložiště objektů blob) pro obecné účely používat jako *zdrojové* i *cílové úložiště dat*. Pokud nemáte účet úložiště Azure pro obecné účely, přečtěte si téma [Vytvoření účtu úložiště](../articles/storage/common/storage-account-create.md) a účet si vytvořte. 
+V tomto rychlém startu použijete účet pro obecné účely Azure Storage (konkrétně úložiště objektů BLOB) jako *zdrojové* i *cílové* úložiště dat. Pokud nemáte účet pro obecné účely Azure Storage, přečtěte si článek [Vytvoření účtu úložiště](../articles/storage/common/storage-account-create.md) a vytvořte si ho. 
 
 #### <a name="get-the-storage-account-name"></a>Získání názvu účtu úložiště
-Pro tento rychlý Start budete potřebovat název svého účtu úložiště Azure. Následující postup popisuje kroky pro získání názvu účtu úložiště: 
+Pro účely tohoto rychlého startu budete potřebovat název účtu Azure Storage. Následující postup popisuje kroky pro získání názvu účtu úložiště: 
 
 1. Ve webovém prohlížeči přejdete na [Azure Portal](https://portal.azure.com) a přihlaste se pomocí uživatelského jména a hesla Azure.
 2. V nabídce Azure Portal vyberte **všechny služby**a pak vyberte **úložiště** > **účty úložiště**. Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
@@ -50,9 +50,9 @@ Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
 #### <a name="create-a-blob-container"></a>Vytvoření kontejneru objektů blob
 V této části vytvoříte v úložišti objektů blob v Azure kontejner objektů blob s názvem **adftutorial**.
 
-1. Na stránce účet úložiště vyberte **přehled** > **objekty blob**.
-2. Na panelu nástrojů *\<název účtu >*  - stránky **objektů BLOB** vyberte **kontejner**.
-3. V dialogovém okně **Nový kontejner** jako název zadejte **adftutorial** a pak vyberte **OK**. Stránka *\<název účtu >*  - **objektů BLOB** se aktualizuje tak, aby zahrnovala **adftutorial** v seznamu kontejnerů.
+1. Na stránce účet úložiště vyberte **přehled** > **kontejnery**.
+2. Na panelu nástrojů *\<název účtu >* na stránce - **kontejnery** vyberte **kontejner**.
+3. V dialogovém okně **Nový kontejner** jako název zadejte **adftutorial** a pak vyberte **OK**. Stránka *\<název účtu >*  - **kontejnerů** se aktualizuje tak, aby zahrnovala **adftutorial** v seznamu kontejnerů.
 
    ![Seznam kontejnerů](media/data-factory-quickstart-prerequisites/list-of-containers.png)
 
@@ -66,11 +66,11 @@ Jane, Doe
 
 Uložte soubor do složky **C:\ADFv2QuickStartPSH** . (Pokud složka ještě neexistuje, vytvořte ji.) Pak se vraťte do Azure Portal a proveďte následující kroky:
 
-1. Na stránce *\<název účtu >*  - **objektů BLOB** na místě, kde jste skončili, vyberte **adftutorial** z aktualizovaného seznamu kontejnerů.
+1. Na stránce *\<název účtu >*  - **kontejnery** , na které jste skončili, vyberte **adftutorial** z aktualizovaného seznamu kontejnerů.
 
    1. Pokud jste okno zavřeli nebo jste přešli na jinou stránku, přihlaste se k [Azure Portal](https://portal.azure.com) znovu.
    1. V nabídce Azure Portal vyberte **všechny služby**a pak vyberte **úložiště** > **účty úložiště**. Můžete také vyhledat a vybrat *účty úložiště* z libovolné stránky.
-   1. Vyberte svůj účet úložiště a pak vyberte **objekty blob** > **adftutorial**.
+   1. Vyberte svůj účet úložiště a pak vyberte **kontejnery** > **adftutorial**.
 
 2. Na panelu nástrojů na stránce kontejneru **adftutorial** vyberte **nahrát**.
 3. Na stránce **nahrát objekt BLOB** vyberte pole **soubory** a pak vyhledejte a vyberte soubor **EMP. txt** .

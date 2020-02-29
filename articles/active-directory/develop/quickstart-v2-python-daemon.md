@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 4a45f516f751609b413948278e2f2cfca47c9da2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f80f586c783293f87e3b7de469eff07d2e4802d8
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76703299"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78160893"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace
 
@@ -25,7 +25,7 @@ V tomto rychlém startu napište aplikaci v Pythonu, která získá token přís
 > [!div renderon="docs"]
 > ![ukazuje, jak ukázková aplikace vygenerovaná tímto rychlým startem funguje](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.svg)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K provedení této ukázky budete potřebovat:
 
@@ -48,7 +48,7 @@ K provedení této ukázky budete potřebovat:
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Možnost 2: Registrace a ruční konfigurace aplikace a vzorového kódu
 
 > [!div renderon="docs"]
-> #### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
+> #### <a name="step-1-register-your-application"></a>Krok 1: Zaregistrujte si aplikaci
 > Pokud chcete zaregistrovat aplikaci a ručně přidat informace o registraci aplikace ke svému řešení, postupujte následovně:
 >
 > 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
@@ -76,37 +76,42 @@ K provedení této ukázky budete potřebovat:
 
 #### <a name="step-2-download-your-python-project"></a>Krok 2: stažení projektu Python
 
-[Stáhnout projekt démona Pythonu](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
+> [!div renderon="docs"]
+> [Stáhnout projekt démona Pythonu](https://github.com/Azure-Samples/ms-identity-python-daemon/archive/master.zip)
 
-#### <a name="step-3-configure-your-python-project"></a>Krok 3: konfigurace projektu Pythonu
+> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [Stažení ukázky kódu]()
 
-1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
-1. Přejděte do dílčí složky **1-Call-MsGraph-WithSecret**.
-1. Upravte **Parameters. JSON** a nahraďte hodnoty polí `authority`, `client_id`a `secret` následujícím fragmentem kódu:
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > Enter_the_Supported_Account_Info_Here
 
-    ```json
-    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
-    "client_id": "Enter_the_Application_Id_Here",
-    "secret": "Enter_the_Client_Secret_Here"
-    ```
-    > > [!div renderon="portal" id="certandsecretspage" class="sxs-lookup"]
-    > > [Vygenerovat nový tajný klíč klienta]()
+
+> [!div renderon="docs"]
+> #### <a name="step-3-configure-your-python-project"></a>Krok 3: konfigurace projektu Pythonu
+> 
+> 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
+> 1. Přejděte do dílčí složky **1-Call-MsGraph-WithSecret**.
+> 1. Upravte **Parameters. JSON** a nahraďte hodnoty polí `authority`, `client_id`a `secret` následujícím fragmentem kódu:
+>
+>    ```json
+>    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
+>    "client_id": "Enter_the_Application_Id_Here",
+>    "secret": "Enter_the_Client_Secret_Here"
+>    ```
+>    Kde:
+>    - Hodnota `Enter_the_Application_Id_Here` je **ID aplikace (klienta)** , kterou jste zaregistrovali.
+>    - `Enter_the_Tenant_Id_Here` – nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například contoso.Microsoft.com).
+>    - `Enter_the_Client_Secret_Here` – tuto hodnotu nahraďte tajným klíčem klienta vytvořeným v kroku 1.
+>
+> > [!TIP]
+> > Pokud chcete najít hodnoty **ID aplikace (klienta)** , **ID adresáře (tenanta)** , navštivte stránku **Přehled** aplikace v Azure Portal. Pokud chcete vygenerovat nový klíč, otevřete stránku **certifikáty & tajných** kódů.
     
-    > [!div class="sxs-lookup" renderon="portal"]
-    > > [!NOTE]
-    > > Tento rychlý Start podporuje Enter_the_Supported_Account_Info_Here.
-    
-    > [!div renderon="docs"]
-    >> Kde:
-    >> * Hodnota `Enter_the_Application_Id_Here` je **ID aplikace (klienta)** , kterou jste zaregistrovali.
-    >> * `Enter_the_Tenant_Id_Here` – nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například contoso.Microsoft.com).
-    >> * `Enter_the_Client_Secret_Here` – tuto hodnotu nahraďte tajným klíčem klienta vytvořeným v kroku 1.
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-3-admin-consent"></a>Krok 3: souhlas správce
 
-    > [!div renderon="docs"]
-    > > [!TIP]
-    > > Pokud chcete najít hodnoty **ID aplikace (klienta)** , **ID adresáře (tenanta)** , navštivte stránku **Přehled** aplikace v Azure Portal. Pokud chcete vygenerovat nový klíč, otevřete stránku **certifikáty & tajných** kódů.
-    
-#### <a name="step-4-admin-consent"></a>Krok 4: souhlas správce
+> [!div renderon="docs"]
+> #### <a name="step-4-admin-consent"></a>Krok 4: souhlas správce
 
 Pokud se pokusíte spustit aplikaci v tomto okamžiku, obdržíte chybu *HTTP 403 – zakázáno* : `Insufficient privileges to complete the operation`. K této chybě dochází, protože jakékoli *oprávnění pouze k aplikacím* vyžaduje souhlas správce: globální správce vašeho adresáře musí udělit souhlas vaší aplikaci. V závislosti na vaší roli vyberte jednu z následujících možností:
 
@@ -133,7 +138,11 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 >> * `Enter_the_Tenant_Id_Here` – nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například contoso.Microsoft.com).
 >> * Hodnota `Enter_the_Application_Id_Here` je **ID aplikace (klienta)** , kterou jste zaregistrovali.
 
-#### <a name="step-5-run-the-application"></a>Krok 5: spuštění aplikace
+> [!div class="sxs-lookup" renderon="portal"]
+> #### <a name="step-4-run-the-application"></a>Krok 4: spuštění aplikace
+
+> [!div renderon="docs"]
+> #### <a name="step-5-run-the-application"></a>Krok 5: spuštění aplikace
 
 Budete muset nainstalovat závislosti této ukázky.
 

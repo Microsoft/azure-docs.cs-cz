@@ -9,18 +9,18 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 569eb31c6cbe8b95773d52f6e1325801fbabf86f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 329b930c950ea7c58bdac798fce51af152aa8ff3
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773551"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920599"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus metriky v Azure Monitor
 
 Service Bus metriky poskytují stav prostředků ve vašem předplatném Azure. S bohatou sadou dat metrik můžete posoudit celkový stav svých Service Busch prostředků, nejen na úrovni oboru názvů, ale také na úrovni entity. Tyto statistiky můžou být důležité, protože vám pomohou monitorovat stav Service Bus. Metriky může také pomoct potíží hlavní příčinu, aniž byste museli kontaktovat podporu Azure.
 
-Azure Monitor nabízí jednotné uživatelské rozhraní pro monitorování napříč různými službami Azure. Další informace najdete v tématu [monitorování v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) a [metriky načíst Azure Monitor s využitím .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) ukázka na Githubu.
+Azure Monitor nabízí jednotné uživatelské rozhraní pro monitorování napříč různými službami Azure. Další informace najdete v tématu [monitorování v Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview.md) a na webu GitHub [s ukázkou načítání Azure monitor metriky s rozhraním .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) Sample.
 
 > [!IMPORTANT]
 > Pokud nedošlo k žádné interakci s entitou 2 hodiny, metrika se začne zobrazovat jako hodnota 0, dokud entita nebude nečinná.
@@ -33,7 +33,7 @@ Ve výchozím nastavení jsou povolené metriky a posledních 30 dnů dat může
 
 ## <a name="access-metrics-in-the-portal"></a>Přístup metrik na portálu
 
-Metriky můžete sledovat v čase [webu Azure portal](https://portal.azure.com). Následující příklad ukazuje, jak zobrazit úspěšné požadavky a příchozí žádosti na úrovni účtu:
+Metriky můžete monitorovat v průběhu času v [Azure Portal](https://portal.azure.com). Následující příklad ukazuje, jak zobrazit úspěšné požadavky a příchozí žádosti na úrovni účtu:
 
 ![][1]
 
@@ -43,7 +43,7 @@ Můžete také přístup k metrikám přímo prostřednictvím oboru názvů. Pr
 
 Pro metriky podporující dimenze je nutné filtrovat pomocí požadované hodnoty dimenze.
 
-## <a name="billing"></a>Vyúčtování
+## <a name="billing"></a>Fakturace
 
 Metriky a výstrahy na Azure Monitor se účtují podle jednotlivých výstrah. Tyto poplatky by měly být k dispozici na portálu, když je nastavená výstraha a předtím, než se uloží. 
 
@@ -85,7 +85,14 @@ Následující dva typy chyb jsou klasifikovány jako chyby uživatele:
 | Zprávy| Počet zpráv ve frontě nebo tématu. <br/><br/> Jednotky: počet <br/> Typ agregace: průměr <br/> Dimenze: EntityName |
 | ActiveMessages| Počet aktivních zpráv ve frontě nebo tématu. <br/><br/> Jednotky: počet <br/> Typ agregace: průměr <br/> Dimenze: EntityName |
 | Nedoručené zprávy| Počet nedoručených zpráv ve frontě nebo tématu <br/><br/> Jednotky: počet <br/> Typ agregace: průměr <br/>Dimenze: EntityName |
-| Plánované zprávy| Počet naplánovaných zpráv ve frontě nebo tématu. <br/><br/> Jednotky: počet <br/> Typ agregace: průměr  <br/> Dimenze: EntityName |
+| Naplánované zprávy| Počet naplánovaných zpráv ve frontě nebo tématu. <br/><br/> Jednotky: počet <br/> Typ agregace: průměr  <br/> Dimenze: EntityName |
+
+> [!NOTE]
+> Hodnoty pro následující metriky jsou hodnoty v daném časovém okamžiku. Příchozí zprávy, které byly spotřebovány ihned po tomto okamžiku, se nemusí v těchto metrikách odrazit. 
+> - Zprávy
+> - Aktivní zprávy 
+> - Nedoručené zprávy 
+> - Naplánované zprávy 
 
 ## <a name="connection-metrics"></a>Metrik připojení
 

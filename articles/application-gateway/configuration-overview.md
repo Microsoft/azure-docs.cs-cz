@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 355909052a711773545114179cd5d1ca01811cec
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: bb6ad1f131d1299ce1e076fee70e6640e3bdf20a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485076"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913255"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -25,7 +25,7 @@ Tento obrázek znázorňuje aplikaci, která má tři naslouchací procesy. Prvn
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Virtuální síť Azure a vyhrazená podsíť
 
@@ -121,7 +121,7 @@ Vyberte front-end IP adresu, kterou plánujete přidružit k tomuto naslouchací
 
 Vyberte front-end port. Vyberte existující port nebo vytvořte nový. Vyberte libovolnou hodnotu z [povoleného rozsahu portů](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Můžete použít nejen známé porty, například 80 a 443, ale kterýkoli povolený vlastní port je vhodný. Port lze použít pro veřejné naslouchací procesy nebo privátní naslouchací procesy.
 
-### <a name="protocol"></a>Protokol
+### <a name="protocol"></a>Protocol (Protokol)
 
 Vyberte HTTP nebo HTTPS:
 
@@ -256,20 +256,20 @@ Azure Application Gateway používá ke správě uživatelských relací spravov
 
 Tato funkce je užitečná, když chcete zachovat relaci uživatele na stejném serveru a když je stav relace uložen místně na serveru pro relaci uživatele. Pokud aplikace nemůže zpracovat spřažení na základě souborů cookie, nemůžete tuto funkci použít. Pokud ho chcete použít, ujistěte se, že klienti podporují soubory cookie.
 
-Od **17. února 2020**nabízí aktualizace [chrom](https://www.chromium.org/Home) [v80](https://chromiumdash.appspot.com/schedule) mandát, ve kterém se soubory cookie http bez atributu SameSite považují za SameSite = Lax. V případě požadavků CORS (sdílení prostředků mezi zdroji) platí, že pokud se soubor cookie má odeslat v kontextu třetí strany, musí použít "SameSite = None; Zabezpečte atributy a je třeba je odesílat jenom přes HTTPS. V opačném případě se ve scénáři protokolu HTTP v prohlížeči neodesílají soubory cookie v kontextu třetí strany. Cílem této aktualizace z Chrome je zvýšit zabezpečení a vyhnout se útokům prostřednictvím CSRF (pro falšování požadavků mezi lokalitami). 
+[Aktualizace v80](https://chromiumdash.appspot.com/schedule) [prohlížeče Chromu](https://www.chromium.org/Home) provedla mandát, kde se soubory cookie protokolu HTTP bez atributu [SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) musí považovat za SameSite = Lax. V případě požadavků CORS (sdílení prostředků mezi zdroji) platí, že pokud se soubor cookie má odeslat v kontextu třetí strany, musí používat *SameSite = None; Zabezpečte* atributy a měly by se odesílat jenom přes HTTPS. V opačném případě se ve scénáři protokolu HTTP v prohlížeči neodesílají soubory cookie v kontextu třetí strany. Cílem této aktualizace z Chrome je zvýšit zabezpečení a vyhnout se útokům prostřednictvím CSRF (pro falšování požadavků mezi lokalitami). 
 
-Aby byla tato změna podporovaná, Application Gateway (všechny typy SKU) vloží další stejný soubor cookie s názvem **ApplicationGatewayAffinityCORS** spolu s existujícím souborem cookie **ApplicationGatewayAffinity** , který je podobný, ale tento soubor cookie teď bude mít dva další atributy **SameSite = None;** K němu se přidají zabezpečení, aby se rychlá relace mohla udržovat i pro žádosti o více zdrojů.
+Pro podporu této změny, od února 17 2020, Application Gateway (všechny typy SKU) vloží další soubor cookie s názvem *ApplicationGatewayAffinityCORS* společně s existujícím souborem cookie *ApplicationGatewayAffinity* . K souboru cookie *ApplicationGatewayAffinityCORS* jsou přidané dva další atributy ( *"SameSite = None; Secure "* ), aby se relace vždy zachovala i pro požadavky na více zdrojů.
 
-Upozorňujeme, že výchozí název souboru cookie spřažení je **ApplicationGatewayAffinity** a uživatelé ho můžou změnit. V případě, že používáte vlastní název souboru cookie spřažení, přidá se do CORS jako přípona další soubor cookie, například **CustomCookieNameCORS**.
+Všimněte si, že výchozí název souboru cookie spřažení je *ApplicationGatewayAffinity* a můžete ho změnit. V případě, že používáte vlastní název souboru cookie spřažení, je jako přípona přidána další soubor cookie s CORS. Například *CustomCookieNameCORS*.
 
 > [!NOTE]
-> Je povinné, aby pokud byl atribut **SameSite = None** nastaven, soubor cookie by měl obsahovat také příznak **zabezpečení** a měl by být odeslán prostřednictvím **protokolu HTTPS**. Takže pokud je v CORS vyžadováno spřažení relací, je nutné migrovat úlohy do HTTPS. Tady najdete informace o přesměrování zpracování SSL a kompletní dokumentaci k protokolu SSL pro Application Gateway najdete v tématu [Přehled](ssl-overview.md), [Jak konfigurovat přesměrování zpracování SSL](create-ssl-portal.md), [jak nakonfigurovat komplexní protokol SSL](end-to-end-ssl-portal.md).
+> Pokud je nastaven atribut *SameSite = None* , je povinný, že soubor cookie obsahuje také příznak *zabezpečení* a musí být odeslán prostřednictvím protokolu HTTPS.  Pokud je v CORS vyžadováno spřažení relací, je nutné migrovat úlohy do HTTPS. Tady najdete informace o přesměrování zpracování SSL a kompletní dokumentaci k protokolu SSL pro Application Gateway najdete v tématu [Přehled](ssl-overview.md), [Jak konfigurovat přesměrování zpracování SSL](create-ssl-portal.md), [jak nakonfigurovat komplexní protokol SSL](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Vyprázdnění připojení
 
 Vyprazdňování připojení pomáhá řádně odebrat členy fondu back-end během plánovaných aktualizací služby. Toto nastavení můžete použít pro všechny členy fondu back-end během vytváření pravidla. Zajišťuje, aby všechny odregistrované instance back-end fondu nadále udržovaly stávající připojení a poskytovaly žádosti o konfigurovatelný časový limit a nedostaly žádné nové žádosti nebo připojení. Jedinou výjimkou jsou požadavky vázané na zrušení registrace instancí z důvodu spřažení relace spravované bránou a budou nadále předány do odregistrování instancí. Vyprazdňování připojení se vztahuje na instance back-endu, které jsou explicitně odebrány z fondu back-end.
 
-### <a name="protocol"></a>Protokol
+### <a name="protocol"></a>Protocol (Protokol)
 
 Application Gateway podporuje HTTP i HTTPS pro požadavky směrování na back-endové servery. Pokud zvolíte protokol HTTP, přenosy na back-endové servery budou nešifrované. Pokud nešifrovaná komunikace není přijatelná, vyberte HTTPS.
 

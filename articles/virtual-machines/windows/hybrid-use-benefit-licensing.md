@@ -1,5 +1,5 @@
 ---
-title: Azure Hybrid Benefit pro Windows Server
+title: Zvýhodněné hybridní využití Azure pro Windows Server
 description: Přečtěte si, jak maximalizovat výhody programu Software Assurance pro Windows, aby se do Azure přinášejí místní licence.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,28 +13,26 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 470e38c21a250273216f93eb38a5334a4bb581e7
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461151"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911779"
 ---
-# <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit pro Windows Server
+# <a name="azure-hybrid-benefit-for-windows-server"></a>Zvýhodněné hybridní využití Azure pro Windows Server
 Zákazníci se Software Assurance, Zvýhodněné hybridní využití Azure pro Windows Server, vám umožní využívat místní licence k Windows serveru a spouštět virtuální počítače s Windows v Azure s nižšími náklady. K nasazení nových virtuálních počítačů s operačním systémem Windows můžete použít Zvýhodněné hybridní využití Azure pro Windows Server. Tento článek se dokončí postupem, jak nasadit nové virtuální počítače s Zvýhodněné hybridní využití Azure pro Windows Server a jak aktualizovat existující běžící virtuální počítače. Další informace o Zvýhodněné hybridní využití Azure pro licencování Windows serveru a úspory nákladů najdete na [stránce zvýhodněné hybridní využití Azure licencování Windows serveru](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
 
-> [!Important]
-> Každá dvouprocesorová licence nebo každá sada 16jádrových licencí má nárok na dvě instance s nejvýše 8 jádry, nebo na jednu instanci s nejvýše 16 jádry. Azure Hybrid Benefit pro licence na edici Standard je možné využít jenom jednou, a to místně nebo v Azure. Výhody Datacenter Edition umožňují současné využití v místním prostředí i v Azure.
->
+Každá licence 2 – procesor nebo každá sada 16bitových licencí má nárok na dvě instance až 8 jader nebo jednu instanci až 16 jader. Zvýhodněné hybridní využití Azure pro licence na Standard Edition se dá použít jenom jednou v místním prostředí nebo v Azure. Výhody Datacenter Edition umožňují současné využití v místním prostředí i v Azure.
 
-> [!Important]
-> Používání Zvýhodněné hybridní využití Azure pro Windows Server s libovolnými virtuálními počítači s operačním systémem Windows Server je teď podporované ve všech oblastech, včetně virtuálních počítačů s dalším softwarem, jako je SQL Server nebo software z webu Marketplace jiného výrobce. 
->
+Používání Zvýhodněné hybridní využití Azure pro Windows Server s libovolnými virtuálními počítači s operačním systémem Windows Server je teď podporované ve všech oblastech, včetně virtuálních počítačů s dalším softwarem, jako je SQL Server nebo software z webu Marketplace jiného výrobce. 
 
-> [!NOTE]
-> U klasických virtuálních počítačů se podporuje jenom nasazení nového virtuálního počítače z místních imagí. Aby bylo možné využít výhod podporovaných v tomto článku, musíte nejprve migrovat klasické virtuální počítače do modelu Správce prostředků.
->
 
+## <a name="classic-vms"></a>Klasické virtuální počítače
+
+U klasických virtuálních počítačů se podporuje jenom nasazení nového virtuálního počítače z místních imagí. Aby bylo možné využít výhod podporovaných v tomto článku, musíte nejprve migrovat klasické virtuální počítače do modelu Správce prostředků.
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
  
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Způsoby použití Zvýhodněné hybridní využití Azure pro Windows Server

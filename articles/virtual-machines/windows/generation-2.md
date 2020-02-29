@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: d88d5ecf8be3fadb36239b75d476a13abf39cbf7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: f9567238e4bb025fad41e7db33613a63d2fc25dd
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659709"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911759"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -33,18 +33,18 @@ Virtuální počítače generace 2 používají novou architekturu na bázi rozh
 Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuálních počítačů v Azure (s výjimkou virtuálních počítačů s Mv2-Series). Azure teď nabízí podporu generace 2 pro následující vybranou řadu virtuálních počítačů:
 
 * [Řady B-Series](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
-* [DC-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
-* Řady [Dsv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series) a [Dsv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
-* [Esv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
-* [Fsv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
+* [DC-Series](../dcv2-series.md)
+* Řady [DSv2-Series](../dv2-dsv2-series.md) a [Dsv3-Series](../dv3-dsv3-series.md)
+* [Esv3-Series](../ev3-esv3-series.md)
+* [Fsv2-Series](../fsv2-series.md)
 * [Řady GS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
-* [Řady s více procesory](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hb-series)
-* [Řada HC-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hc-series)
-* [Ls-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) a [Lsv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
-* [Mv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
-* Řady [NCv2-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series) a [NCv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
-* [Řada KS](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
-* [NVv3-Series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
+* [Řady s více procesory](../hb-series.md)
+* [Řada HC-Series](../hc-series.md)
+* [Ls-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) a [Lsv2-Series](../lsv2-series.md)
+* [Mv2-Series](../mv2-series.md)
+* Řady [NCv2-Series](../ncv2-series.md) a [NCv3-Series](../ncv3-series.md)
+* [Řada KS](../nd-series.md)
+* [NVv3-Series](../nvv3-series.md)
 
 > [!NOTE]
 > Použití imagí virtuálních počítačů 2. generace pro virtuální počítače Mv2-Series je všeobecně dostupné, protože Mv2-Series funguje výhradně s imagemi virtuálních počítačů 2. generace. Image virtuálních počítačů 1. generace nejsou na virtuálních počítačích řady Mv2-Series podporované. 

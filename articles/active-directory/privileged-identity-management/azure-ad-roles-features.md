@@ -16,12 +16,12 @@ ms.date: 12/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f7bc881cee362103fc611cbf8a094e07ad50699
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: f5d63577cbdbdf18cb17618bdb5c9e3b5de0e44a
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77499048"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162262"
 ---
 # <a name="management-capabilities-for-azure-ad-roles-in-privileged-identity-management"></a>Možnosti správy pro role Azure AD v Privileged Identity Management
 
@@ -62,7 +62,7 @@ Snažili jsme se co nejlépe kontaktovat všem zákazníkům, kteří používaj
 
 ## <a name="powershell-change"></a>Změna prostředí PowerShell
 
-Pro zákazníky, kteří používají modul Privileged Identity Management PowerShellu pro role Azure AD, přestane PowerShell pracovat s aktualizací. Místo předchozích rutin je nutné použít rutiny Privileged Identity Management v modulu Azure AD Preview PowerShell. Nainstalujte modul Azure AD PowerShell z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Rutiny jsou postaveny nad Graph API.
+Pro zákazníky, kteří používají modul Privileged Identity Management PowerShellu pro role Azure AD, přestane PowerShell pracovat s aktualizací. Místo předchozích rutin je nutné použít rutiny Privileged Identity Management v modulu Azure AD Preview PowerShell. Nainstalujte modul Azure AD PowerShell z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17). Teď si můžete [přečíst dokumentaci a ukázky pro operace PIM v tomto modulu PowerShellu](powershell-for-azure-ad-roles.md).
 
 ## <a name="next-steps"></a>Další kroky
 

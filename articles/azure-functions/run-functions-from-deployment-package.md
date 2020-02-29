@@ -3,12 +3,12 @@ title: Spuštění Azure Functions z balíčku
 description: Modul runtime Azure Functions spouští vaše funkce připojením souboru balíčku pro nasazení, který obsahuje soubory projektu Function App.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: f5d3465e0899f7e5eab213bdb6234313128b7ec8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a3e11a7c4f3fd91df2fd9dd7a44f3922c4922585
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230359"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921109"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Spuštění Azure Functions ze souboru balíčku
 
@@ -58,7 +58,34 @@ V následujícím příkladu je aplikace Function App nakonfigurovaná tak, aby 
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-## <a name="troubleshooting"></a>Poradce při potížích
+### <a name="use-key-vault-references"></a>Použití Key Vaultch odkazů
+
+Pro zvýšení zabezpečení můžete použít Key Vault odkazy ve spojení s vaší externí adresou URL. Tím se zachovává zašifrovaná adresa URL v klidovém stavu a umožňuje využít Key Vault pro správu a rotaci tajných kódů. Doporučuje se používat úložiště objektů BLOB v Azure, abyste mohli snadno otočit související klíč SAS. Úložiště objektů BLOB v Azure je v klidovém stavu zašifrované, což zajistí zabezpečení dat aplikace, když není nasazená na App Service.
+
+1. Vytvořte Azure Key Vault.
+
+    ```azurecli
+    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
+    ```
+
+1. Přidejte svoji externí adresu URL jako tajný kód do Key Vault.
+
+    ```azurecli
+    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
+    ```
+
+1. Vytvořte nastavení aplikace `WEBSITE_RUN_FROM_PACKAGE` a nastavte hodnotu jako Key Vault odkaz na externí adresu URL.
+
+    ```azurecli
+    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
+    ```
+
+Další informace najdete v následujících článcích.
+
+- [Key Vault odkazy na App Service](../app-service/app-service-key-vault-references.md)
+- [Azure Storage šifrování dat v klidovém umístění](../storage/common/storage-service-encryption.md)
+
+## <a name="troubleshooting"></a>Řešení potíží
 
 - Příkaz spustit z balíčku zpřístupní `wwwroot` jen pro čtení, takže při zápisu souborů do tohoto adresáře se zobrazí chyba.
 - Formáty tar a gzip se nepodporují.

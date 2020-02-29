@@ -1,23 +1,25 @@
 ---
-title: 'Kurz: extrakce textu a struktury z objektů BLOB JSON'
+title: 'Kurz: REST a AI přes objekty blob Azure'
 titleSuffix: Azure Cognitive Search
-description: Projděte si příklad extrakce textu a zpracování přirozeného jazyka nad obsahem objektů BLOB JSON pomocí post a rozhraní REST API služby Azure Kognitivní hledání.
+description: Projděte si příklad extrakce textu a zpracování přirozeného jazyka přes obsah v úložišti objektů BLOB pomocí doplňku a rozhraní REST API služby Azure Kognitivní hledání.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: 9d18bea70670acba404b2198e6b06ea2e9200c30
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 7db2d89c112c5f874460f5e6955cdce90cc2f9ae
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77667019"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78162995"
 ---
-# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>Kurz: extrakce textu a struktury z objektů BLOB JSON v Azure pomocí rozhraní REST API (Azure Kognitivní hledání)
+# <a name="tutorial-use-rest-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití REST a AI k vygenerování prohledávatelných obsahu z objektů blob Azure
 
-Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrázky, [kanál pro rozšíření AI](cognitive-search-concept-intro.md) může extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat image, tento kurz se zaměřuje na text, používá detekci jazyka a zpracování přirozeného jazyka k vytváření nových polí, která můžete využít v dotazech, omezujících objektech a filtrech.
+Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrázky, [kanál pro rozšíření AI](cognitive-search-concept-intro.md) může extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat image, tento kurz se zaměřuje na text, používá se pro detekci jazyka a zpracování přirozeného jazyka a vytváří nová pole, která můžete využít v dotazech, omezujících objektech a filtrech.
+
+V tomto kurzu použijete příkaz post a [REST](https://docs.microsoft.com/rest/api/searchservice/) k provedení následujících úkolů:
 
 > [!div class="checklist"]
 > * Začněte s celými dokumenty (nestrukturovaný text), například PDF, HTML, DOCX a PPTX v úložišti objektů BLOB v Azure.
@@ -26,9 +28,16 @@ Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrá
 > * Spusťte kanál, abyste mohli začít transformovat a analyzovat a vytvořit a načíst index.
 > * Prozkoumejte výsledky pomocí fulltextového vyhledávání a bohatou syntaxí dotazu.
 
-K provedení tohoto postupu budete potřebovat několik služeb, a to včetně [aplikace po pracovní ploše](https://www.getpostman.com/) nebo jiného nástroje pro testování webu, aby se REST API volání. 
-
 Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+
+## <a name="prerequisites"></a>Předpoklady
+
++ [Azure Storage](https://azure.microsoft.com/services/storage/)
++ [Desktopová aplikace Postman](https://www.getpostman.com/)
++ [Vytvoření](search-create-service-portal.md) nebo [vyhledání existující vyhledávací služby](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
+
+> [!Note]
+> Pro tento kurz můžete použít bezplatnou službu. Bezplatná vyhledávací služba omezuje tři indexy, tři indexery a tři zdroje dat. V tomto kurzu se vytváří od každého jeden. Než začnete, ujistěte se, že máte ve své službě místo pro přijímání nových prostředků.
 
 ## <a name="download-files"></a>Stažení souborů
 
@@ -104,9 +113,9 @@ Stejně jako u služby Azure Blob Storage si pro získání přístupového klí
 
 2. V části **nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-    Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
+   Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
-![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-nodejs/service-name-and-keys.png)
 
 Všechny požadavky vyžadují klíč rozhraní API-Key v hlavičce všech požadavků odeslaných službě. Platný klíč vytváří vztah důvěryhodnosti na základě jednotlivých požadavků mezi aplikací odesílající požadavek a službu, která ho zpracovává.
 
@@ -498,8 +507,6 @@ DELETE https://[YOUR-SERVICE-NAME]].search.windows.net/indexers/cog-search-demo-
 ```
 
 Při úspěšném odstranění se vrátí kód stavu 204.
-
-Až se váš kód bude blížit dokončení, možná budete chtít zdokonalit strategii opětovného sestavování. Další informace najdete v článku o tom, [jak znovu sestavit index](search-howto-reindex.md).
 
 ## <a name="takeaways"></a>Shrnutí
 

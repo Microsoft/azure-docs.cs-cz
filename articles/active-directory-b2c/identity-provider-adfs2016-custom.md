@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 02/27/2020
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 684e4a410ac8624066c897b4078ea4044a965357
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f331a537c80628a386525e29743807a70a163f0d
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848912"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914316"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Přidejte AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "76848912"
 
 V tomto článku se dozvíte, jak povolit přihlášení k uživatelskému účtu ADFS pomocí [vlastních zásad](custom-policy-overview.md) v Azure Active Directory B2C (Azure AD B2C). Přihlášení povolíte přidáním [technického profilu SAML](saml-technical-profile.md) do vlastních zásad.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md).
 - Ujistěte se, že máte přístup k souboru certifikátu. pfx s privátním klíčem. Můžete vygenerovat vlastní podepsaný certifikát a odeslat ho do Azure AD B2C. Azure AD B2C používá tento certifikát k podepsání žádosti SAML odeslané poskytovateli identity SAML.
@@ -34,25 +34,25 @@ V tomto článku se dozvíte, jak povolit přihlášení k uživatelskému účt
 
 Certifikát musíte uložit do svého tenanta Azure AD B2C.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
 5. Vyberte **klíče zásad** a pak vyberte **Přidat**.
 6. Pro **Možnosti**vyberte možnost `Upload`.
-7. Zadejte **název** klíče zásad. Například, `SamlCert`. `B2C_1A_` předpony se automaticky přidají do názvu vašeho klíče.
+7. Zadejte **název** klíče zásad. například `SamlCert`. `B2C_1A_` předpony se automaticky přidají do názvu vašeho klíče.
 8. Vyhledejte a vyberte soubor Certificate. pfx s privátním klíčem.
-9. Klikněte na **Vytvořit**.
+9. Klikněte na možnost **Vytvořit**.
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
 
 Pokud chcete, aby se uživatelé přihlásili pomocí účtu ADFS, musíte účet definovat jako zprostředkovatele deklarací identity, se kterým Azure AD B2C můžou komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
 
-Účet ADFS můžete definovat jako zprostředkovatele deklarací tak, že ho přidáte do prvku **ClaimsProviders** v souboru rozšíření zásady.
+Účet ADFS můžete definovat jako zprostředkovatele deklarací tak, že ho přidáte do prvku **ClaimsProviders** v souboru rozšíření zásady. Další informace najdete v tématu [definice technického profilu SAML](saml-technical-profile.md).
 
 1. Otevřete *soubor TrustFrameworkExtensions. XML*.
-2. Vyhledejte element **ClaimsProviders** . Pokud neexistuje, přidejte jej pod kořenový element.
-3. Přidejte nový **ClaimsProvider** následujícím způsobem:
+1. Vyhledejte element **ClaimsProviders** . Pokud neexistuje, přidejte jej pod kořenový element.
+1. Přidejte nový **ClaimsProvider** následujícím způsobem:
 
     ```xml
     <ClaimsProvider>
@@ -87,14 +87,33 @@ Pokud chcete, aby se uživatelé přihlásili pomocí účtu ADFS, musíte úče
             <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId"/>
             <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId"/>
           </OutputClaimsTransformations>
-          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop"/>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-idp"/>
         </TechnicalProfile>
       </TechnicalProfiles>
     </ClaimsProvider>
     ```
 
-4. Nahraďte `your-ADFS-domain` názvem vaší domény ADFS a nahraďte hodnotu výstupní deklarace **identityProvider** svým DNS (libovolná hodnota, která označuje vaši doménu).
-5. Uložte soubor.
+1. Nahraďte `your-ADFS-domain` názvem vaší domény ADFS a nahraďte hodnotu výstupní deklarace **identityProvider** svým DNS (libovolná hodnota, která označuje vaši doménu).
+
+1. Vyhledejte část `<ClaimsProviders>` a přidejte následující fragment kódu XML. Pokud vaše zásada již obsahuje profil `SM-Saml-idp` Technical, přejděte k dalšímu kroku. Další informace najdete v tématu [Správa relace jednotného přihlašování](custom-policy-reference-sso.md).
+
+    ```XML
+    <ClaimsProvider>
+      <DisplayName>Session Management</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="SM-Saml-idp">
+          <DisplayName>Session Management Provider</DisplayName>
+          <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+          <Metadata>
+            <Item Key="IncludeSessionIndex">false</Item>
+            <Item Key="RegisterServiceProviders">false</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
+
+1. Uložte soubor.
 
 ### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
 
@@ -116,7 +135,7 @@ V tuto chvíli je poskytovatel identity nastavený, ale není k dispozici na ž�
 2. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"`.
 3. Otevřete *soubor TrustFrameworkExtensions. XML* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
 4. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
-5. Přejmenujte ID cesty pro uživatele. Například, `SignUpSignInADFS`.
+5. Přejmenujte ID cesty pro uživatele. například `SignUpSignInADFS`.
 
 ### <a name="display-the-button"></a>Zobrazit tlačítko
 
@@ -140,7 +159,7 @@ Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce 
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
     ```
 
-    Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. Například, `Contoso-SAML2`.
+    Aktualizujte hodnotu **TechnicalProfileReferenceId** na ID technického profilu, který jste vytvořili dříve. například `Contoso-SAML2`.
 
 3. Uložte soubor *TrustFrameworkExtensions. XML* a znovu ho nahrajte k ověření.
 
@@ -167,18 +186,18 @@ Otevřete prohlížeč a přejděte na adresu URL. Ujistěte se, že jste zadali
 4. Na stránce **Vybrat zdroj dat** vyberte možnost **importovat data o předávající straně publikování online nebo v místní síti**, zadejte adresu URL metadat Azure AD B2C a potom klikněte na **Další**.
 5. Na stránce **zadat zobrazovaný název** zadejte **Zobrazovaný název**v části **poznámky**, zadejte popis pro tento vztah důvěryhodnosti předávající strany a klikněte na **Další**.
 6. Na stránce **Zvolte zásady Access Control** vyberte zásadu a pak klikněte na **Další**.
-7. Na stránce **připraveno k přidání vztahu důvěryhodnosti** zkontrolujte nastavení a potom kliknutím na tlačítko **Další** uložte informace o vztahu důvěryhodnosti předávající strany.
+7. Na stránce **Připraveno k přidání vztahu důvěryhodnosti** zkontrolujte nastavení a kliknutím na **Další** uložte informace o vztahu důvěryhodnosti předávající strany.
 8. Na stránce **Dokončit** klikněte na **Zavřít**. Tato akce automaticky zobrazí dialogové okno **upravit pravidla deklarací identity** .
 9. Vyberte **Přidat pravidlo**.
 10. V **šabloně pravidla deklarace identity**vyberte **Odeslat atributy LDAP jako deklarace identity**.
 11. Zadejte **název pravidla deklarace identity**. V případě **úložiště atributů**vyberte **možnost vybrat službu Active Directory**, přidejte následující deklarace identity a klikněte na tlačítko **Dokončit** a **OK**.
 
-    | LDAP – atribut | Typ odchozí deklarace |
+    | Atribut LDAP | Typ odchozí deklarace |
     | -------------- | ------------------- |
     | Hlavní název uživatele | userPrincipalName (Hlavní název uživatele) |
     | příjmení | family_name |
     | Křestní jméno | given_name |
-    | E-mailová adresa | e-mail |
+    | e-mailová adresa | e-mail |
     | Zobrazované jméno | jméno |
 
     Všimněte si, že tyto názvy se nezobrazí v rozevíracím seznamu typ odchozí deklarace. Je nutné je ručně zadat v. (Rozevírací seznam je skutečně upravitelný).
@@ -198,7 +217,7 @@ Komunikace s Azure AD B2C probíhá prostřednictvím aplikace, kterou zaregistr
 Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
 
 1. Vytvořte kopii *SignUpOrSignIn. XML* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInADFS. XML*.
-2. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například, `SignUpSignInADFS`.
+2. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. například `SignUpSignInADFS`.
 3. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například`http://contoso.com/B2C_1A_signup_signin_adfs`
 4. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID nové cesty uživatele, kterou jste vytvořili (SignUpSignInADFS).
 5. Uložte změny, nahrajte soubor a pak v seznamu vyberte novou zásadu.

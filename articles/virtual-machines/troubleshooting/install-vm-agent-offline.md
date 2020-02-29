@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 438143d3253f1cab1afb958a90f427dcba59a98e
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 8ea85b560f35c79b3d5066d794f587345810b5d0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059241"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920854"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Instalace agenta virtuálního počítače Azure v offline režimu 
 
@@ -39,7 +39,7 @@ Pomocí následujících kroků nainstalujete agenta virtuálního počítače d
 
 1. Položte si snímek disku s operačním systémem ovlivněného virtuálního počítače, vytvořte disk ze snímku a pak ho připojte k virtuálnímu počítači pro odstraňování potíží. Další informace najdete v tématu [řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal](troubleshoot-recovery-disks-portal-windows.md). Pro klasický virtuální počítač odstraňte virtuální počítač a ponechejte disk s operačním systémem a připojte disk s operačním systémem k virtuálnímu počítači pro odstraňování potíží.
 
-2.  Připojte se k virtuálnímu počítači poradce při potížích. Spusťte**správu disků**v **nástroji Správa** > počítače. Potvrďte, že je disk s operačním systémem online a že se k diskovým oddílům přiřazují písmena jednotek.
+2.  Připojte se k virtuálnímu počítači poradce při potížích. Otevřete **správu počítače** > **Správa disků**. Potvrďte, že je disk s operačním systémem online a že se k diskovým oddílům přiřazují písmena jednotek.
 
 ### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Krok 2: Úprava disku s operačním systémem pro instalaci agenta virtuálního počítače Azure
 
@@ -49,7 +49,7 @@ Pomocí následujících kroků nainstalujete agenta virtuálního počítače d
 
 3.  Spusťte **Editor registru** (Regedit. exe).
 
-4.  Vyberte klíč **HKEY_LOCAL_MACHINE** . V nabídce vyberte**podregistr Loading** **File** > :
+4.  Vyberte **HKEY_LOCAL_MACHINE** klíč. V nabídce vyberte **soubor** > **Načíst podregistr**:
 
     ![Načtení podregistru](./media/install-vm-agent-offline/load-hive.png)
 
@@ -63,7 +63,7 @@ Pomocí následujících kroků nainstalujete agenta virtuálního počítače d
 
     2. Exportujte následující Registry:
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
+        - HKEY_LOCAL_MACHINE \BROKENSYSTEM\\ControlSet001\Services\WindowsAzureTelemetryService
         - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
 8.  Použijte existující soubory na virtuálním počítači poradce při potížích jako úložiště pro instalaci agenta virtuálního počítače. Proveďte následující kroky:
@@ -90,7 +90,7 @@ Pomocí následujících kroků nainstalujete agenta virtuálního počítače d
 
         1.  Na disku s operačním systémem, který jste připojili, vytvořte v kořenové cestě složku s názvem WindowsAzure.
 
-        2.  Na virtuálním počítači poradce při potížích C:\WindowsAzure vyhledejte všechny složky s názvem C:\WindowsAzure\GuestAgent_X.X.XXXX.XXX. Zkopírujte složku GuestAgent, která má nejnovější číslo verze z C:\WindowsAzure do složky WindowsAzure na připojeném disku s operačním systémem. Pokud si nejste jistí, která složka se má zkopírovat, zkopírujte všechny složky GuestAgent. Následující obrázek ukazuje příklad složky GuestAgent, která se kopíruje na připojený disk s operačním systémem.
+        2.  Na virtuálním počítači poradce při potížích C:\WindowsAzure vyhledejte všechny složky s názvem C:\WindowsAzure\ GuestAgent_X. X. XXXX. XXX. Zkopírujte složku GuestAgent, která má nejnovější číslo verze z C:\WindowsAzure do složky WindowsAzure na připojeném disku s operačním systémem. Pokud si nejste jistí, která složka se má zkopírovat, zkopírujte všechny složky GuestAgent. Následující obrázek ukazuje příklad složky GuestAgent, která se kopíruje na připojený disk s operačním systémem.
 
              ![Kopírovat složku GuestAgent](./media/install-vm-agent-offline/copy-files.png)
 
@@ -106,6 +106,8 @@ Pokud jste virtuální počítač vytvořili pomocí modelu nasazení Správce p
 
 ### <a name="use-the-provisionguestagent-property-for-classic-vms"></a>Pro klasické virtuální počítače použijte vlastnost ProvisionGuestAgent.
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 Pokud jste virtuální počítač vytvořili pomocí klasického modelu, aktualizujte vlastnost **ProvisionGuestAgent** pomocí modulu Azure PowerShell. Vlastnost informuje Azure o tom, že je na virtuálním počítači nainstalovaný agent virtuálního počítače.
 
 Chcete-li nastavit vlastnost **ProvisionGuestAgent** , spusťte v Azure PowerShell následující příkazy:
@@ -116,14 +118,14 @@ Chcete-li nastavit vlastnost **ProvisionGuestAgent** , spusťte v Azure PowerShe
    Update-AzureVM –Name <VM name> –VM $vm.VM –ServiceName <cloud service name>
    ```
 
-Pak spusťte `Get-AzureVM` příkaz. Všimněte si, že vlastnost **GuestAgentStatus** je nyní naplněna daty:
+Pak spusťte příkaz `Get-AzureVM`. Všimněte si, že vlastnost **GuestAgentStatus** je nyní naplněna daty:
 
    ```powershell
    Get-AzureVM –ServiceName <cloud service name> –Name <VM name>
    GuestAgentStatus:Microsoft.WindowsAzure.Commands.ServiceManagement.Model.PersistentVMModel.GuestAgentStatus
    ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 - [Přehled agenta virtuálního počítače Azure](../extensions/agent-windows.md)
 - [Rozšíření a funkce virtuálních počítačů pro Windows](../extensions/features-windows.md)

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5d3dc951c8cb2948a4cd0b9d9f5c2a9b213c6e7e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: c9cea52e04a991e6e3ac64426f0443939f8aaa3a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514982"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914377"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
@@ -76,7 +76,7 @@ Počítač se přesune pouze do pozdější fáze, pokud předá předchozí. Na
 
 Zobrazení Připravenost pro Azure v posouzení zobrazuje stav připravenosti jednotlivých virtuálních počítačů.
 
-**Připravenosti** | **Stav** | **Podrobnosti**
+**Připravenosti** | **Státech** | **Podrobnosti**
 --- | --- | ---
 Připraveno pro Azure | Žádné problémy s kompatibilitou Počítač se dá migrovat tak, jak je, do Azure, a spustí se v Azure s plnou podporou Azure. | U virtuálních počítačů, které jsou pro migraci vhodné, doporučí Azure Migrate velikost virtuálního počítače v Azure.
 Připraveno pro Azure s podmínkou | Počítač se může spustit v Azure, ale nemusí mít plnou podporu Azure. Například počítač se starší verzí Windows serveru, který se v Azure nepodporuje. | Azure Migrate vysvětluje problémy s připraveností a poskytuje kroky k nápravě.
@@ -92,9 +92,9 @@ Připravenost přihlíží k několika vlastnostem virtuálních počítačů, a
 --- | --- | ---
 **Typ spouštění** | Systém BIOS je podporován. Rozhraní UEFI se nepodporuje. | Podmíněně připravený, pokud je typ spouštění UEFI.
 **Jader** | Počítače Core < = maximální počet jader (128) podporovaných virtuálním počítačem Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využité jádra.<br/>Pokud je v nastavení hodnocení určen faktor komfortu, je počet využitých jader vynásoben faktorem pohodlí.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraveno, pokud je omezení menší nebo rovno.
-**Paměť** | Velikost paměti počítače < = maximální paměť (3892 GB v Azure M Series Standard_M128m&nbsp;<sup>2</sup>) pro virtuální počítač Azure. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využitou paměť.<br/><br/>Pokud je určen faktor komfortu, vyhodnotí se využitá paměť podle faktoru pohodlí.<br/><br/> Pokud není k dispozici žádná historie, je přidělená paměť použita bez použití faktoru pohodlí.<br/><br/> | V rámci omezení je připravený.
+**Rezident** | Velikost paměti počítače < = maximální paměť (3892 GB v Azure M Series Standard_M128m&nbsp;<sup>2</sup>) pro virtuální počítač Azure. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využitou paměť.<br/><br/>Pokud je určen faktor komfortu, vyhodnotí se využitá paměť podle faktoru pohodlí.<br/><br/> Pokud není k dispozici žádná historie, je přidělená paměť použita bez použití faktoru pohodlí.<br/><br/> | V rámci omezení je připravený.
 **Disk úložiště** | Přidělená velikost disku musí být 4 TB (4096 GB) nebo méně.<br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disku s operačním systémem. | V rámci omezení je připravený.
-**Sítě** | K počítači musí být připojen 32 nebo méně síťových adaptérů. | V rámci omezení je připravený.
+**Networking** | K počítači musí být připojen 32 nebo méně síťových adaptérů. | V rámci omezení je připravený.
 
 #### <a name="guest-operating-system"></a>Hostovaný operační systém
 
@@ -130,7 +130,7 @@ Operační systém určený jako **jiný** v vCenter Server | Azure Migrate nem�
 - Pokud je velikost na základě výkonu, doporučení pro velikost zvažuje historii výkonu virtuálních počítačů (procesor a paměť) a disků (IOPS a propustnost).
 - Pokud je kritérium změny velikosti "as-premises", doporučení velikosti v Azure je založené na velikosti místního virtuálního počítače. Velikost disku vychází z typu úložiště určeného ve vlastnostech posouzení (výchozí je prémiové disky). Azure Migrate nebere v úvahu údaje o výkonu pro virtuální počítač a disky.
 
-### <a name="review-cost-estimates"></a>Přehled odhadovaných nákladů
+### <a name="review-cost-estimates"></a>Kontrola odhadu nákladů
 
 Odhad nákladů ukazuje celkové náklady na výpočetní prostředky a úložiště pro provoz virtuálních počítačů v Azure spolu s podrobnostmi pro každý počítač.
 
@@ -229,7 +229,7 @@ Instalace agenta na počítač s Windows:
 4. V **Možnosti nastavení agenta**vyberte **Azure Log Analytics** > **Další**.
 5. Kliknutím na **Přidat** přidejte nový pracovní prostor Log Analytics. Vložte do ID a klíče pracovního prostoru, který jste zkopírovali z portálu. Klikněte na **Další**.
 
-Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizované metody, jako je Configuration Manager. [Přečtěte si další informace](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) o použití těchto metod k instalaci agenta MMA.
+Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizované metody, jako je Configuration Manager. [Přečtěte si další informace](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration) o použití těchto metod k instalaci agenta MMA.
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>Instalace agenta MMA do počítače se systémem Linux
 

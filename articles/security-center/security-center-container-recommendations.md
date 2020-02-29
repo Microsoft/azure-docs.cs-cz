@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: memildin
-ms.openlocfilehash: b8b8b05f703a3eb05936ca95e2047a13650914cf
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: b1e1402f58b103570d6a98a5f9a01c8168abf749
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604260"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912356"
 ---
 # <a name="understand-azure-security-center-container-recommendations"></a>Vysvětlení Azure Security Centerch doporučení ke kontejneru
 
@@ -35,7 +35,7 @@ Azure Security Center poskytuje následující možnosti, které vám pomůžou 
 
     ![karta kontejner](./media/security-center-container-recommendations/container-cis-benchmark.png)
 
-- **Detekce hrozeb kontejneru v reálném čase**<br> Security Center poskytuje detekci hrozeb v reálném čase pro vaše kontejnery na počítačích se systémem Linux pomocí auditované komponenty. Výstrahy identifikují několik podezřelých aktivit Docker, například vytvoření privilegovaného kontejneru na hostiteli, indikaci serveru Secure Shell (SSH) běžícího v kontejneru Docker nebo použití šifrovacího dolování hlásíu. Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.
+- **Ochrana před hrozbami pro kontejner v reálném čase**<br> Security Center poskytuje ochranu před hrozbami v reálném čase pro vaše kontejnery na počítačích se systémem Linux pomocí auditované komponenty. Výstrahy identifikují několik podezřelých aktivit Docker, například vytvoření privilegovaného kontejneru na hostiteli, indikaci serveru Secure Shell (SSH) běžícího v kontejneru Docker nebo použití šifrovacího dolování hlásíu. Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.
 
     ![karta kontejner](./media/security-center-container-recommendations/docker-threat-detection.png)
 

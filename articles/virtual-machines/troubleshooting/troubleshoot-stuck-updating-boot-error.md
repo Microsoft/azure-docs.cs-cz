@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: e8e4bed052ec5b70c441a3ae76f3409c307299e5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8a47131cb4f19cce1664eafa50c67ab1a1171e67
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981438"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919426"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Spuštění virtuálního počítače Azure je zablokované na Windows Update.
 
 Tento článek pomáhá vyřešit problém, když se váš virtuální počítač zablokuje ve fázi web Windows Update během spouštění. 
 
-> [!NOTE] 
-> Azure nabízí dva různé modely nasazení pro vytváření a práci s prostředky: [nástroj Resource Manager a klasický režim](../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu nasazení Správce prostředků. Tento model doporučujeme použít pro nová nasazení namísto použití modelu nasazení Classic.
 
 ## <a name="symptom"></a>Příznak
 
@@ -44,8 +42,8 @@ V závislosti na počtu aktualizací, které jsou instalovány nebo vraceny zpě
 
 ### <a name="remove-the-update-that-causes-the-problem"></a>Odebrání aktualizace, která způsobuje problém
 
-1. Pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [pořízení snímku disku](../windows/snapshot-copy-managed-disk.md). 
-2. [Připojte disk s operačním systémem pro virtuální počítač pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
+1. Pořídit snímek disku s operačním systémem ovlivněného virtuálního počítače jako zálohy. Další informace najdete v tématu [vytvoření snímku disku](../windows/snapshot-copy-managed-disk.md). 
+2. [Připojte disk s operačním systémem k virtuálnímu počítači pro obnovení](troubleshoot-recovery-disks-portal-windows.md).
 3. Jakmile je disk s operačním systémem připojený k virtuálnímu počítači pro obnovení, spusťte **diskmgmt. msc** a spusťte správu disků a ujistěte se, že připojený disk je **online**. Poznamenejte si písmeno jednotky přiřazené k připojenému disku s operačním systémem, ve kterém je umístěná složka \Windows. Pokud je disk zašifrovaný, před pokračováním v dalším postupu v tomto dokumentu disk dešifrujte.
 
 4. Otevřete instanci příkazového řádku se zvýšenými oprávněními (Spustit jako správce). Spuštěním následujícího příkazu Získejte seznam balíčků aktualizací, které jsou na připojeném disku s operačním systémem:
@@ -77,4 +75,4 @@ V závislosti na počtu aktualizací, které jsou instalovány nebo vraceny zpě
     > [!NOTE] 
     > V závislosti na velikosti balíčku zabere nástroj DISM během procesu zrušení instalace nějakou dobu. Normálně se proces dokončí do 16 minut.
 
-7. [Odpojit disk s operačním systémem a znovu vytvořte virtuální počítač](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Potom zkontrolujte, zda byl problém vyřešen.
+7. [Odpojte disk s operačním systémem a znovu vytvořte virtuální počítač](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk). Potom zkontrolujte, zda byl problém vyřešen.

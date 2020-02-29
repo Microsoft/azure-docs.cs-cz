@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 11f897852ce820e666d7403f42735b2ee3bdd73b
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084829"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918304"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Použití Azure Media Analytics k převodu textového obsahu v videosouborech na digitální text  
+
+> [!NOTE]
+> Dojde k vyřazení multimediálního procesoru na **platformě Azure Media OCR** . Informace o datu vyřazení najdete v tématu [starší verze součástí](legacy-components.md) .
 
 ## <a name="overview"></a>Přehled
 Pokud potřebujete extrahovat textový obsah z vašich videosouborů a vygenerovat upravitelný, prohledávatelný digitální text, měli byste použít Azure Media Analytics optické rozpoznávání znaků (OCR). Tento procesor Azure Media detekuje textový obsah ve vašich videosouborech a generuje textové soubory pro použití. Optické rozpoznávání znaků umožňuje automatizovat extrakci smysluplných metadat z obrazového signálu vašeho média.
@@ -112,14 +115,14 @@ Výstup obsahuje následující atributy:
 | Délk |Šířka videa v pixelech |
 | Výška |Výška videa v pixelech |
 | Fragments |pole časových bloků videa, na které jsou metadata v bloku |
-| start |počáteční čas fragmentu v taktech |
+| zahájení |počáteční čas fragmentu v taktech |
 | duration |Délka fragmentu v "taktech" |
 | interval |interval každé události v rámci daného fragmentu |
 | stránka events |pole obsahující oblasti |
 | . |objekt představující zjištěná slova nebo fráze |
-| jazyk |jazyk textu zjištěného v rámci oblasti |
-| změny |orientace textu zjištěného v rámci oblasti |
-| přím |pole řádků textu zjištěných v rámci oblasti |
+| language |jazyk textu zjištěného v rámci oblasti |
+| Změny |orientace textu zjištěného v rámci oblasti |
+| Přím |pole řádků textu zjištěných v rámci oblasti |
 | text |skutečný text |
 
 ### <a name="json-output-example"></a>Příklad výstupu JSON

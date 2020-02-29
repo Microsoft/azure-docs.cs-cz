@@ -2,17 +2,17 @@
 title: NVv4-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady NVv4-Series.
 services: virtual-machines
-author: jonbeck7
+author: vikancha
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 2afec4dc89c8d8892356888ec3404d36ba929d23
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ccafe6f317ff50684922fd4409beb42214c18858
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669637"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78161852"
 ---
 # <a name="nvv4-series-preview"></a>NVv4-Series (Preview)
 
@@ -24,6 +24,10 @@ Virtuální počítače řady NVv4-Series využívají procesory [AMD Radeon Ins
 Premium Storage: podporováno
 
 Ukládání Premium Storage do mezipaměti: podporováno
+
+Migrace za provozu: nepodporováno
+
+Aktualizace pro zachování paměti: nepodporováno
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | GPU | Paměť GPU: GiB | Max. datových disků | Maximální počet síťových karet |
 | --- | --- | --- | --- | --- | --- | --- | --- |

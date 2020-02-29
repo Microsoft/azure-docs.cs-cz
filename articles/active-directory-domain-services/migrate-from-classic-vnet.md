@@ -9,18 +9,23 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: bd20bb008c52b7d99416aed7a0599a6e78d2acf2
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: e7caacf23cb489da6f9f85748ae839bc4babff8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161643"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77917301"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrace Azure AD Domain Services z modelu klasických virtuálních sítí do Správce prostředků
 
 Azure Active Directory Domain Services (služba AD DS) podporuje jednorázové přesunutí pro zákazníky, kteří aktuálně používají model klasických virtuálních sítí pro model Správce prostředků virtuální sítě. Azure služba AD DS spravované domény, které používají model nasazení Správce prostředků poskytují další funkce, jako jsou jemně odstupňované zásady pro hesla, protokoly auditu a ochrana před uzamčením účtu.
 
 V tomto článku najdete popis výhod a důležitých informací pro migraci a pak potřebné kroky k úspěšné migraci existující instance služby Azure služba AD DS.
+
+> [!NOTE]
+> V 2017 je Azure AD Domain Services k dispozici pro hostování v Azure Resource Manager síti. Od té doby jsme dokázali vytvořit bezpečnější službu pomocí moderních možností Azure Resource Manager. Vzhledem k tomu, že Azure Resource Manager nasazení plně nahrazují klasická nasazení, nasazení Azure služba AD DS Classic Virtual Network se vyřadí 1. března 2023.
+>
+> Další informace najdete v [oficiálním oznámení o zastarání](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/) .
 
 ## <a name="overview-of-the-migration-process"></a>Přehled procesu migrace
 
@@ -153,11 +158,11 @@ Migrace na model nasazení Správce prostředků a virtuální síť je rozděle
 
 | Krok    | Provedeno prostřednictvím  | Odhadovaný čas  | Výpadek  | Vrátit zpět a obnovit? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [Krok 1 – aktualizace a vyhledání nové virtuální sítě](#update-and-verify-virtual-network-settings) | Azure Portal | 15 minut | Nepožaduje se žádný výpadek | NEUŽÍVÁ SE. |
+| [Krok 1 – aktualizace a vyhledání nové virtuální sítě](#update-and-verify-virtual-network-settings) | Azure Portal | 15 minut | Nepožaduje se žádný výpadek | neuvedeno |
 | [Krok 2 – Příprava Azure služba AD DS spravované domény pro migraci](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 minut v průměru | Výpadek služby Azure služba AD DS začíná po dokončení tohoto příkazu. | Vrácení zpět a obnovení k dispozici. |
 | [Krok 3 – přesunutí spravované domény Azure služba AD DS do existující virtuální sítě](#migrate-the-managed-domain) | PowerShell | 1 – 3 hodiny v průměru | Po dokončení tohoto příkazu je k dispozici jeden řadič domény, výpadek skončí. | Při selhání jsou k dispozici obě vrácení zpět (Samoobslužná služba) i obnovení. |
 | [Krok 4 – testování a čekání na repliku řadiče domény](#test-and-verify-connectivity-after-the-migration)| PowerShell a Azure Portal | 1 hodina nebo více, v závislosti na počtu testů | Oba řadiče domény jsou k dispozici a měly by fungovat normálně. | Není k dispozici. Po úspěšné migraci prvního virtuálního počítače není k dispozici možnost vrácení nebo obnovení. |
-| [Krok 5 – volitelné kroky konfigurace](#optional-post-migration-configuration-steps) | Azure Portal a virtuální počítače | NEUŽÍVÁ SE. | Nepožaduje se žádný výpadek | NEUŽÍVÁ SE. |
+| [Krok 5 – volitelné kroky konfigurace](#optional-post-migration-configuration-steps) | Azure Portal a virtuální počítače | neuvedeno | Nepožaduje se žádný výpadek | neuvedeno |
 
 > [!IMPORTANT]
 > Abyste se vyhnuli dalším výpadkům, přečtěte si tento článek a pokyny k migraci před zahájením procesu migrace. Proces migrace má na určitou dobu vliv na dostupnost řadičů domény Azure služba AD DS. Uživatelé, služby a aplikace se nemůžou během procesu migrace ověřit ve spravované doméně.
@@ -206,12 +211,12 @@ K přípravě Azure služba AD DS spravované domény pro migraci, proveďte ná
     $creds = Get-Credential
     ```
 
-1. Nyní spusťte rutinu `Migrate-Aadds` s použitím parametru *-Prepare* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu Azure služba AD DS, jako je třeba *contoso.com*:
+1. Nyní spusťte rutinu `Migrate-Aadds` s použitím parametru *-Prepare* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu Azure služba AD DS, jako je třeba *aaddscontoso.com*:
 
     ```powershell
     Migrate-Aadds `
         -Prepare `
-        -ManagedDomainFqdn contoso.com `
+        -ManagedDomainFqdn aaddscontoso.com `
         -Credentials $creds
     ```
 
@@ -219,7 +224,7 @@ K přípravě Azure služba AD DS spravované domény pro migraci, proveďte ná
 
 Po přípravě a zálohování spravované domény Azure služba AD DS může být doména migrována. V tomto kroku se vytvoří virtuální počítače Azure AD Domain Services řadiče domény pomocí modelu nasazení Správce prostředků. Dokončení tohoto kroku může trvat 1 až 3 hodiny.
 
-Spusťte rutinu `Migrate-Aadds` s použitím parametru *-Commit* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu Azure služba AD DS připravenou v předchozí části, jako je třeba *contoso.com*:
+Spusťte rutinu `Migrate-Aadds` s použitím parametru *-Commit* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu Azure služba AD DS připravenou v předchozí části, jako je třeba *aaddscontoso.com*:
 
 Zadejte cílovou skupinu prostředků obsahující virtuální síť, do které chcete migrovat Azure služba AD DS, například *myResourceGroup*. Zadejte cílovou virtuální síť, například *myVnet*, a podsíť, jako je například *DomainServices*.
 
@@ -228,7 +233,7 @@ Po spuštění tohoto příkazu se nemůžete vrátit zpátky:
 ```powershell
 Migrate-Aadds `
     -Commit `
-    -ManagedDomainFqdn contoso.com `
+    -ManagedDomainFqdn aaddscontoso.com `
     -VirtualNetworkResourceGroupName myResourceGroup `
     -VirtualNetworkName myVnet `
     -VirtualSubnetName DomainServices `
@@ -265,7 +270,7 @@ Nyní otestujte připojení k virtuální síti a překlad názvů. Na virtuáln
 
 1. Ověřte, zda můžete testovat IP adresu jednoho z řadičů domény, například `ping 10.1.0.4`
     * IP adresy řadičů domény se zobrazují na stránce **vlastnosti** pro spravovanou doménu Azure služba AD DS v Azure Portal.
-1. Ověřte překlad názvů spravované domény, například `nslookup contoso.com`
+1. Ověřte překlad názvů spravované domény, například `nslookup aaddscontoso.com`
     * Zadejte název DNS vlastní spravované domény Azure služba AD DS, abyste ověřili, že jsou nastavení DNS správná a vyřešená.
 
 Druhý řadič domény by měl být k dispozici 1-2 hodin po dokončení rutiny migrace. Pokud chcete zjistit, jestli je druhý řadič domény dostupný, podívejte se na stránku **vlastnosti** spravované domény Azure služba AD DS v Azure Portal. Pokud se zobrazí dvě IP adresy, druhý řadič domény je připravený.
@@ -309,12 +314,12 @@ Až do určitého bodu v procesu migrace se můžete rozhodnout vrátit zpět ne
 
 Pokud dojde k chybě při spuštění rutiny PowerShellu pro přípravu migrace v kroku 2 nebo pro migraci sebe sama v kroku 3, spravovaná doména Azure služba AD DS se může vrátit k původní konfiguraci. Tato návratová záloha vyžaduje původní klasickou virtuální síť. Všimněte si, že IP adresy se i po vrácení zpět můžou změnit.
 
-Spusťte rutinu `Migrate-Aadds` s použitím parametru *-Abort* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu Azure služba AD DS připravenou v předchozí části, jako je třeba *contoso.com*, a název klasické virtuální sítě, jako je například *myClassicVnet*:
+Spusťte rutinu `Migrate-Aadds` s použitím parametru *-Abort* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu Azure služba AD DS připravenou v předchozí části, jako je třeba *aaddscontoso.com*, a název klasické virtuální sítě, jako je například *myClassicVnet*:
 
 ```powershell
 Migrate-Aadds `
     -Abort `
-    -ManagedDomainFqdn contoso.com `
+    -ManagedDomainFqdn aaddscontoso.com `
     -ClassicVirtualNetworkName myClassicVnet `
     -Credentials $creds
 ```

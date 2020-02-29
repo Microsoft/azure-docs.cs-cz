@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 102433b88ffb140cae46433be1c0edef90857e6d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969938"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921517"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -38,7 +38,7 @@ Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíře
 
  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="operating-system"></a>Operační systém
 
@@ -289,7 +289,10 @@ Další informace o šabloně Azure Resource Manager naleznete v tématu [author
 ### <a name="use-azure-cliazure-cli"></a>Použití [Azure CLI] [Azure-CLI]
 Před nasazením rozšíření DSCForLinux nakonfigurujte své `public.json` a `protected.json` podle různých scénářů v oddílu 3.
 
-#### <a name="classic"></a>Klasické
+#### <a name="classic"></a>Classic
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 Klasický režim nasazení se taky označuje jako režim správy služeb Azure. Můžete na něj přejít spuštěním:
 ```
 $ azure config mode asm
@@ -306,7 +309,7 @@ Pokud se chcete dozvědět, jak nejnovější dostupná verze rozšíření, spu
 $ azure vm extension list
 ```
 
-#### <a name="resource-manager"></a>Správce prostředků
+#### <a name="resource-manager"></a>Resource Manager
 Můžete přepnout na režim Azure Resource Manager spuštěním:
 ```
 $ azure config mode arm
@@ -324,7 +327,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 ### <a name="use-azure-powershellazure-powershell"></a>Použití [Azure PowerShell] [Azure-PowerShell]
 
-#### <a name="classic"></a>Klasické
+#### <a name="classic"></a>Classic
 
 Můžete se přihlásit ke svému účtu Azure v režimu správy služeb Azure spuštěním:
 
@@ -363,7 +366,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
   -PublicConfiguration $publicConfig | Update-AzureVM
 ```
 
-#### <a name="resource-manager"></a>Správce prostředků
+#### <a name="resource-manager"></a>Resource Manager
 
 Můžete se přihlásit ke svému účtu Azure v režimu Azure Resource Manager spuštěním:
 

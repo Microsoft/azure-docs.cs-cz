@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896003"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914309"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Použití Azure Media Content Moderator k detekci možného obsahu pro dospělé a pikantní 
+
+> [!NOTE]
+> Procesor **Azure media Content moderator** Media bude vyřazený. Informace o datu vyřazení najdete v tématu [starší verze součástí](legacy-components.md) .
 
 ## <a name="overview"></a>Přehled
 Procesor **Azure media Content moderator** Media procesor (MP) umožňuje používat pro vaše videa moderování s asistencí počítače. Ve videích například můžete chtít detekovat potenciálně nevhodný obsah nebo obsah pro dospělé a označený obsah nechat zkontrolovat týmy lidského moderování.
@@ -44,20 +47,20 @@ Výstupní JSON obsahuje následující prvky:
 
 ### <a name="root-json-elements"></a>Kořenové elementy JSON
 
-| Element | Popis |
+| Prvek | Popis |
 | --- | --- |
 | version |Verze Content Moderator. |
 | timescale |"Takty" za sekundu videa. |
 | offset |Posun času pro časová razítka. Ve verzi 1,0 rozhraní API pro video bude tato hodnota vždycky 0. Tato hodnota se může v budoucnu změnit. |
 | framerate |Počet snímků ve videu za sekundu. |
-| šířka |Šířka výstupního snímku videa (v pixelech)|
-| výška |Výška výstupního snímku videa v pixelech|
+| Délk |Šířka výstupního snímku videa (v pixelech)|
+| Výška |Výška výstupního snímku videa v pixelech|
 | TotalDuration |Doba trvání vstupního videa v části "osové". |
 | [svalovin](#fragments-json-elements) |Metadata jsou rozdělená do různých segmentů s názvem fragmenty. Každý fragment je automaticky zjištěný snímek s počátečním, dobou trvání, číslem intervalu a událostmi. |
 
 ### <a name="fragments-json-elements"></a>Fragmenty – elementy JSON
 
-|Element|Popis|
+|Prvek|Popis|
 |---|---|
 | zahájení |Čas zahájení první události v "taktech". |
 | duration |Délka fragmentu v "taktech". |
@@ -66,12 +69,12 @@ Výstupní JSON obsahuje následující prvky:
 
 ### <a name="events-json-elements"></a>Události – elementy JSON
 
-|Element|Popis|
+|Prvek|Popis|
 |---|---|
 | reviewRecommended | `true` nebo `false` v závislosti na tom, zda **adultScore** nebo **racyScore** překračují vnitřní prahové hodnoty. |
 | adultScore | Hodnocení spolehlivosti pro možný obsah pro dospělé, na škále 0,00 až 0,99. |
 | racyScore | Hodnocení spolehlivosti možného obsahu pikantní na škále 0,00 až 0,99. |
-| index | index rámce na stupnici od prvního indexu snímku až po poslední index snímku. |
+| indexovacím | index rámce na stupnici od prvního indexu snímku až po poslední index snímku. |
 | časové razítko | Umístění rámce v "taktech". |
 | shotIndex | Index nadřazeného snímku |
 
@@ -220,7 +223,7 @@ The following example of a Content Moderator JSON output was truncated.
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Související odkazy

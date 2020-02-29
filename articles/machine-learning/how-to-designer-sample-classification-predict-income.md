@@ -9,13 +9,13 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
-ms.date: 12/25/2019
-ms.openlocfilehash: 560339fb04e3bbbe42c4370655e74e8536a7c015
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.date: 02/22/2020
+ms.openlocfilehash: 7fd51f587ff51e09254741615d3059d038e1205a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76963361"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77915907"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Vytvoření klasifikátoru & použití výběru funkcí k předpovídání příjmů pomocí návrháře Azure Machine Learning
 
@@ -25,13 +25,13 @@ ms.locfileid: "76963361"
 
 Naučte se vytvářet třídění strojového učení bez psaní jediného řádku kódu pomocí návrháře (Preview). Tato ukázka navýšení **rozhodovacího stromu se dvěma třídami** umožňuje odhadnout příjem v rámci sčítání v dospělém (> = 50 tis nebo < = 50 tis).
 
-Vzhledem k tomu, že otázka odpovídá "který z nějakého"? označuje se jako problém klasifikace. Stejný základní postup se ale dá použít k tomu, aby se mohl vyřešit jakýkoli typ problému strojového učení – regrese, klasifikace, clusteringu atd.
+Vzhledem k tomu, že otázka odpovídá "který z nějakého", se nazývá problém klasifikace. Stejný základní postup se ale dá použít k tomu, aby se mohl vyřešit jakýkoli typ problému strojového učení – regrese, klasifikace, clusteringu atd.
 
 Toto je konečný Graf kanálu pro tuto ukázku:
 
 ![Graf kanálu](./media/how-to-designer-sample-classification-predict-income/overall-graph.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [aml-ui-prereq](../../includes/aml-ui-prereq.md)]
 
@@ -51,7 +51,7 @@ Pomocí těchto kroků vytvořte kanál:
 
 1. Přetáhněte na plátno kanálu modul binární datové sady pro příjem dospělého.
 1. Přidejte modul **rozdělení dat** pro vytvoření školicích a testovacích sad. Nastavte zlomek řádků v první výstupní sadě dat na 0,7. Toto nastavení určuje, že 70% dat bude výstupem na levý port modulu a zbytek na správném portu. Pro účely testování používáme levou datovou sadu pro školení a tu hned.
-1. Přidejte modul **výběru funkce založený na filtrech** a vyberte 5 funkcí podle PearsonCorreclation. 
+1. Přidejte modul **výběru funkce založený na filtrech** a vyberte 5 funkcí podle PearsonCorrelation. 
 1. Přidejte modul **zesíleného rozhodovacího stromu se dvěma třídami** k inicializaci klasifikátoru rozřízeného rozhodovacího stromu.
 1. Přidejte modul **vlakového modelu** . Připojte třídění od předchozího kroku k levému vstupnímu portu **modelu vlaků**. Připojte filtrovanou datovou sadu z modulu výběru funkce založeného na filtru jako školicí datovou sadu.  **Model vlaků** bude zaškolit třídění.
 1. Přidejte transformaci Select Columns a použijte transformační modul pro použití stejné transformace (výběr založený na výběru funkcí) pro testovací datovou sadu.

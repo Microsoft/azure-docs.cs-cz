@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 6e2fa96584570e5837c4367c8be4701b7398fb0f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/19/2020
+ms.openlocfilehash: 9606768288cc74afc24491149eb471944f45e2dc
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152206"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921160"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-znamená clustering
 
@@ -107,11 +107,11 @@ Při zpracovávání dat školení začíná algoritmus K, který začíná poč
   
     -   Pokud nastavíte **režim vytvořit Trainer** na **jeden parametr**, přidáte s příznakovou datovou sadu a pomocí modulu [model clusteringu](train-clustering-model.md) provedete model.  
   
-### <a name="results"></a>Výsledky
+## <a name="results"></a>Výsledky
 
 Po dokončení konfigurace a školení modelu máte model, který můžete použít ke generování skóre. Existuje však několik způsobů, jak model naučit, a více způsobů zobrazení a používání výsledků: 
 
-#### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Zachycení snímku modelu ve vašem pracovním prostoru
+### <a name="capture-a-snapshot-of-the-model-in-your-workspace"></a>Zachycení snímku modelu ve vašem pracovním prostoru
 
 Pokud jste použili modul [výukového modelu clusteringu](train-clustering-model.md) :
 
@@ -121,7 +121,7 @@ Pokud jste použili modul [výukového modelu clusteringu](train-clustering-mode
 
 Uložený model představuje školicí data v době, kdy jste model uložili. Pokud později aktualizujete školicí data použitá v kanálu, neaktualizuje uložený model. 
 
-#### <a name="see-the-clustering-result-dataset"></a>Zobrazit datovou sadu výsledků clusteringu 
+### <a name="see-the-clustering-result-dataset"></a>Zobrazit datovou sadu výsledků clusteringu 
 
 Pokud jste použili modul [výukového modelu clusteringu](train-clustering-model.md) :
 
@@ -142,3 +142,7 @@ Tomuto problému se můžete vyhnout několika způsoby:
 -   Vytvořte si více modelů, různou metriku nebo více iterací.  
   
 Obecně platí, že u modelů clusteringu je možné, že kterákoli z těchto konfigurací bude mít za následek místně optimalizovanou sadu clusterů. Jinými slovy, sada clusterů, které model vrací, barevně vyhovuje pouze aktuálním datovým bodům a nelze je zobecnit do dalších dat. Pokud používáte jinou počáteční konfiguraci, znamená to, že metoda K tomu může najít jinou nadřazenou konfiguraci. 
+
+## <a name="next-steps"></a>Další kroky
+
+Podívejte se na [sadu modulů, které jsou k dispozici](module-reference.md) pro Azure Machine Learning. 

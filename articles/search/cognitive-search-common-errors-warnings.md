@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2da009189e0265aafcb26b7ec96837965f1ea0c5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f17192e738bb82fb348c660488e6296aa550bd25
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76838543"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913476"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Řešení běžných chyb a upozornění v indexeru v Azure Kognitivní hledání
 
@@ -32,7 +32,7 @@ Upozornění neukončí indexování, ale označují podmínky, které by mohly 
 
 Počínaje rozhraním API `2019-05-06`se chyby a upozornění indexerů na úrovni položek strukturují tak, aby poskytovaly lepší srozumitelnost příčin a dalších kroků. Obsahují následující vlastnosti:
 
-| Vlastnost | Popis | Příklad: |
+| Vlastnost | Popis | Příklad |
 | --- | --- | --- |
 | key | ID dokumentu dokumentu ovlivněného chybou nebo upozorněním. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
 | jméno | Název operace popisující, kde došlo k chybě nebo upozornění. Tato struktura je generována následující strukturou: [Category]. [Subcategory]. [ResourceType]. resourceName | DocumentExtraction. azureblobu. myBlobContainerName obohacení. WebApiSkill. mySkillName projekce. SearchIndex. OutputFieldMapping. myOutputFieldName projekce. SearchIndex. MergeOrUpload. myIndexName Projekce. KnowledgeStore. Table. myTableName |
@@ -46,7 +46,7 @@ Počínaje rozhraním API `2019-05-06`se chyby a upozornění indexerů na úrov
 
 Indexer nemohl přečíst dokument ze zdroje dat. K tomu může dojít v důsledku:
 
-| Důvod | Podrobnosti/příklad | Rozlišení |
+| Důvod | Podrobnosti/příklad | Řešení |
 | --- | --- | --- |
 | Nekonzistentní typy polí v různých dokumentech | Typ hodnoty se neshoduje s typem sloupce. Nepovedlo se uložit `'{47.6,-122.1}'` ve sloupci autoři.  Očekávaný typ je JArray. | Ujistěte se, že je typ každého pole stejný v různých dokumentech. Pokud je například prvním dokumentem `'startTime'` pole DateTime a druhý dokument je řetězec, tato chyba bude dosaženo. |
 | chyby ze základní služby zdroje dat | (z Cosmos DB) `{"Errors":["Request rate is large"]}` | Zkontrolujte instanci úložiště, abyste měli jistotu, že je v pořádku. Možná budete muset upravit škálování nebo dělení na oddíly. |
@@ -57,7 +57,7 @@ Indexer nemohl přečíst dokument ze zdroje dat. K tomu může dojít v důsled
 ## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>Chyba: nepovedlo se extrahovat obsah nebo metadata z dokumentu.
 Indexer se zdrojem dat objektu BLOB nemohl extrahovat obsah nebo metadata z dokumentu (například soubor PDF). K tomu může dojít v důsledku:
 
-| Důvod | Podrobnosti/příklad | Rozlišení |
+| Důvod | Podrobnosti/příklad | Řešení |
 | --- | --- | --- |
 | objekt BLOB překračuje limit velikosti. | Dokument je `'150441598'` bajtů, což překračuje maximální velikost `'134217728'` bajtů pro extrakci dokumentů pro aktuální úroveň služby. | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | objekt BLOB má nepodporovaný typ obsahu. | Dokument má nepodporovaný typ obsahu `'image/png'` | [chyby indexování objektů BLOB](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ Indexer se zdrojem dat objektu BLOB nemohl extrahovat obsah nebo metadata z doku
 ## <a name="error-could-not-parse-document"></a>Chyba: nepovedlo se analyzovat dokument.
 Indexer si přečte dokument ze zdroje dat, ale při převodu obsahu dokumentu do zadaného schématu mapování polí došlo k problému. K tomu může dojít v důsledku:
 
-| Důvod | Podrobnosti/příklad | Rozlišení |
+| Důvod | Podrobnosti/příklad | Řešení |
 | --- | --- | --- |
 | Chybí klíč dokumentu. | Klíč dokumentu nemůže být chybí nebo je prázdný. | Zajistěte, aby všechny dokumenty měly platný klíč dokumentu. |
 | Klíč dokumentu je neplatný. | Klíč dokumentu nemůže být delší než 1024 znaků. | Upravte klíč dokumentu tak, aby splňoval požadavky na ověření. |
@@ -81,9 +81,9 @@ Indexer si přečte dokument ze zdroje dat, ale při převodu obsahu dokumentu d
 ## <a name="error-could-not-execute-skill"></a>Chyba: nepovedlo se spustit dovednost.
 Indexer nemohl v dovednosti spustit dovednost.
 
-| Důvod | Podrobnosti/příklad | Rozlišení |
+| Důvod | Podrobnosti/příklad | Řešení |
 | --- | --- | --- |
-| Problémy s přechodným připojením | Došlo k přechodné chybě. Zkuste to prosím znova později. | Občas dojde k neočekávaným potížím s připojením. Zkuste znovu spustit dokument v indexeru později. |
+| Problémy s přechodným připojením | Došlo k přechodné chybě. Zkuste to prosím znovu později. | Občas dojde k neočekávaným potížím s připojením. Zkuste znovu spustit dokument v indexeru později. |
 | Potenciální chyba produktu | Došlo k neočekávané chybě. | To indikuje neznámou třídu selhání a může znamenat, že došlo k chybě produktu. Požádejte o pomoc [lístek podpory](https://ms.portal.azure.com/#create/Microsoft.Support) . |
 | Při provádění dovednosti došlo k chybě. | (Z dovednosti sloučení) Jedna nebo více hodnot posunutí bylo neplatných a nelze je analyzovat. Na konec textu byly vloženy položky. | K vyřešení problému použijte informace v chybové zprávě. Tento druh selhání bude vyžadovat akci, která se má vyřešit. |
 
@@ -140,7 +140,7 @@ Maximální hodnota, kterou můžete nastavit pro parametr `timeout`, je 230 sek
 
 Dokument byl načten a zpracován, ale indexer ho nemohl přidat do indexu vyhledávání. K tomu může dojít v důsledku:
 
-| Důvod | Podrobnosti/příklad | Rozlišení |
+| Důvod | Podrobnosti/příklad | Řešení |
 | --- | --- | --- |
 | Pole obsahuje termín, který je příliš velký. | Termín v dokumentu je větší než [limit 32 KB](search-limits-quotas-capacity.md#api-request-limits) . | Tomuto omezení se můžete vyhnout tím, že zajistíte, že pole není nakonfigurováno jako filtrovatelné, plošky nebo seřaditelné.
 | Dokument je moc velký a nedá se indexovat. | Dokument je větší než [maximální velikost požadavku rozhraní API](search-limits-quotas-capacity.md#api-request-limits) . | [Indexování velkých datových sad](search-howto-large-index.md)
@@ -152,9 +152,9 @@ Dokument byl načten a zpracován, ale indexer ho nemohl přidat do indexu vyhle
 
 <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
 
-## <a name="error-could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>Chyba: nepovedlo se indexovat dokument, protože data indexeru pro index nejsou platná.
+## <a name="error-could-not-index-document-because-some-of-the-documents-data-was-not-valid"></a>Chyba: nepovedlo se indexovat dokument, protože některá data dokumentu nejsou platná.
 
-Dokument byl načten a zpracován, ale kvůli neshodě v konfiguraci polí indexu a povaze dat extrahovaných indexerem nelze přidat do indexu vyhledávání. K tomu může dojít v důsledku:
+Indexer byl načten a zpracován indexerem, ale z důvodu neshody v konfiguraci polí indexu a dat extrahovaných a zpracovaných indexovacím uživatelem nebylo možné přidat do indexu vyhledávání. K tomu může dojít v důsledku:
 
 | Důvod | Podrobnosti/příklad
 | --- | ---
@@ -166,12 +166,11 @@ Dokument byl načten a zpracován, ale kvůli neshodě v konfiguraci polí index
 
 Ve všech těchto případech odkazujete na [podporované typy dat](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) a [mapování datových typů pro indexery](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) , abyste se ujistili, že schéma indexů sestavíte správně a že jste nastavili odpovídající [mapování polí indexeru](search-indexer-field-mappings.md). Chybová zpráva bude obsahovat podrobnosti, které mohou přispět ke sledování zdroje neshody.
 
-<a name="could-not-process-document-within-indexer-max-run-time"/>
-
 ## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Chyba: zásady integrovaného sledování změn nelze použít, protože tabulka má složený primární klíč.
 
 To platí pro tabulky SQL a obvykle se stane, když je klíč buď definovaný jako složený klíč, nebo, když tabulka definuje jedinečný clusterovaný index (jako v indexu SQL, nikoli Azure Search index). Hlavním důvodem je, že klíč atributu je upraven jako složený primární klíč v případě [jedinečného clusterovaného indexu](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15). V takovém případě se ujistěte, že tabulka SQL neobsahuje jedinečný clusterovaný index nebo že pole klíče namapujete na pole, u kterého je zaručeno, že neobsahují duplicitní hodnoty.
 
+<a name="could-not-process-document-within-indexer-max-run-time"/>
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Chyba: nepovedlo se zpracovat dokument v rámci maximální doby běhu indexeru.
 
@@ -183,7 +182,7 @@ K této chybě dochází, pokud indexer nemůže dokončit zpracování jednoho 
 
 K této chybě dochází, když se indexer pokouší o [projektování dat do znalostní databáze](knowledge-store-projection-overview.md) a při pokusu o provedení došlo k chybě.  Tato chyba může být konzistentní a fixablea nebo se může jednat o přechodné selhání s výstupní jímkou projekce, kterou možná budete muset počkat, a zkuste to znovu, aby se dalo vyřešit.  Tady je sada známých stavů selhání a možná řešení.
 
-| Důvod | Podrobnosti/příklad | Rozlišení |
+| Důvod | Podrobnosti/příklad | Řešení |
 | --- | --- | --- |
 | Nepovedlo se aktualizovat `'blobUri'` objektů BLOB projekce v kontejneru `'containerName'` |Zadaný kontejner neexistuje. | Indexer zkontroluje, jestli se zadaný kontejner dřív vytvořil, a v případě potřeby ho vytvoří, ale tuto kontrolu provede jenom jednou pro spuštění indexeru. Tato chyba znamená, že něco odstranilo kontejner po tomto kroku.  Tuto chybu můžete vyřešit tímto způsobem: ponechte si informace o svém účtu úložiště, počkejte, až se indexer dokončí, a pak znovu spusťte indexer. |
 | Nepovedlo se aktualizovat `'blobUri'` objektů BLOB projekce v kontejneru `'containerName'` |Nelze zapsat data do přenosového připojení: vzdálený hostitel nuceně zavřel existující připojení. | Očekává se, že se jedná o přechodné selhání s Azure Storage, takže by se mělo vyřešit tak, že znovu spustíte indexer. Pokud se tato chyba vyskytne konzistentně, uložte prosím [lístek podpory](https://ms.portal.azure.com/#create/Microsoft.Support) , aby ho bylo možné dále prozkoumat.  |
@@ -220,7 +219,7 @@ Pokud chcete zadat výchozí hodnotu pro případ chybějícího vstupu, můžet
 }
 ```
 
-| Důvod | Podrobnosti/příklad | Rozlišení |
+| Důvod | Podrobnosti/příklad | Řešení |
 | --- | --- | --- |
 | Nesprávný vstup dovednosti je nesprávného typu. | "Požadovaný vstup dovedností nebyl očekávaného typu `String`. Název: `text`, zdroj: `/document/merged_content`. "  "Požadovaný vstup odbornosti nemá očekávaný formát. Název: `text`, zdroj: `/document/merged_content`. "  "Nelze iterovat přes `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`bez pole."  "Nelze vybrat `0` v `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`mimo pole" | Určité dovednosti očekávají vstupy konkrétního typu, například [mínění dovednost](cognitive-search-skill-sentiment.md) očekává, že `text` být řetězec. Pokud vstup Určuje hodnotu, která není typu řetězec, pak se dovednost nespustí a negeneruje žádné výstupy. Ujistěte se, že vaše datová sada má v typu stejné vstupní hodnoty, nebo použijte [vlastní dovednost webového rozhraní API](cognitive-search-custom-skill-web-api.md) k předzpracování vstupu. Pokud provádíte iteraci dovedností v poli, ověřte, že kontext dovednosti a vstup mají `*` ve správných pozicích. Pro pole by měl být obvykle jak kontext, tak vstupní zdroj `*`. |
 | Chybí vstup dovedností. | Nebyl nalezen požadovaný vstup dovednosti. Název: `text`, zdroj: `/document/merged_content`"" chybí hodnota `/document/normalized_images/0/imageTags`. "  "Nelze vybrat `0` v `/document/pages` pole délky `0`." | Pokud se zobrazí všechny dokumenty s tímto upozorněním, pravděpodobně dojde k překlepu ve vstupních cestách a v cestě byste měli poklepat na název vlastnosti velká a malá písmena, `*` v cestě a zajistit, aby dokumenty ze zdroje dat poskytovaly požadované vstupy. |
@@ -323,7 +322,7 @@ Mapování polí výstupu, které odkazují na neexistující nebo null data, vy
 
 [Režimy analýzy indexeru](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters) musí před analýzou zjistit, jak je text kódovaný. Dvěma nejběžnějšími způsoby kódování textu jsou UTF-16 a UTF-8. UTF-8 je kódování s proměnlivou délkou, kde každý znak je dlouhý 1 bajt a 4 bajty. UTF-16 je kódování s pevnou délkou, kde každý znak je dlouhý 2 bajty. UTF-16 má dvě různé varianty, "big endian" a "Little endian". Kódování textu je určeno označením "znak pořadí bajtů", řady bajtů před textem.
 
-| Encoding | Znak pořadí bajtů |
+| Kódování | Znak pořadí bajtů |
 | --- | --- |
 | UTF-16 big endian | 0xFE 0xFF |
 | UTF-16 Little endian | 0xFF – 0xFE |

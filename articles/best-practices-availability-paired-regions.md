@@ -7,12 +7,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: raynew
-ms.openlocfilehash: b71048412f5715fd1b8ef3edf742716916672bd5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c1e14db9dafc8b03acbeb1c6b97e5ac0e27cb0fd
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718745"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "78163044"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Provozní kontinuita a zotavení po havárii (BCDR): spárované oblasti Azure
 
@@ -24,6 +24,9 @@ Každá oblast Azure je spárovaná s jinou oblastí v rámci stejné geografick
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
+> [!NOTE]
+> Přiřazené místní páry Azure nelze upravovat.
+
 Obrázek 1 – regionální páry Azure
 
 | Geografické | Spárované oblasti |  |
@@ -32,7 +35,7 @@ Obrázek 1 – regionální páry Azure
 | Austrálie |Austrálie – východ |Austrálie – jihovýchod |
 | Austrálie |Austrálie – střed |Austrálie – střed 2 |
 | Brazílie |Brazílie – jih |USA – středojih |
-| Kanada |Střední Kanada |Kanada – východ |
+| Kanada |Kanada – střed |Východní Kanada |
 | Čína |Čína – sever |Čína – východ|
 | Čína |Čína – sever 2 |Čína – východ 2|
 | Evropa |Severní Evropa (Irsko) |Západní Evropa (Nizozemsko) |
@@ -47,12 +50,12 @@ Obrázek 1 – regionální páry Azure
 | Severní Amerika |USA – středosever |USA – středojih |
 | Severní Amerika |USA – západ 2 |USA – středozápad 
 | Jižní Afrika | Jižní Afrika – sever | Jižní Afrika – západ
-| Spojené království |Spojené království – západ |Spojené království – jih |
-| Spojené arabské emiráty | Spojené arabské emiráty – sever | Spojené arabské emiráty – střed
+| Spojené království |Spojené království – západ |Velká Británie – jih |
+| Spojené arabské emiráty | Spojené arabské emiráty sever | Spojené arabské emiráty – střed
 | Ministerstvo obrany USA |US DoD – východ |US DoD – střed |
-| US Government |US Gov – Arizona |US Gov – Texas |
-| US Government |US Gov – Iowa |USA (Gov) – Virginia |
-| US Government |USA (Gov) – Virginia |US Gov – Texas |
+| Státní správa USA |USA (Gov) – Arizona |USA (Gov) – Texas |
+| Státní správa USA |US Gov – Iowa |USA (Gov) – Virginia |
+| Státní správa USA |USA (Gov) – Virginia |USA (Gov) – Texas |
 
 Tabulka 1 – mapování místních párů Azure
 

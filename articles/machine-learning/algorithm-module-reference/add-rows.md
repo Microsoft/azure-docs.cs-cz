@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/22/2019
-ms.openlocfilehash: 71f15d959bf9d42e67cd7c35ca91d6cd2caa718d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 02/22/2020
+ms.openlocfilehash: 7787a765bf48adc15f4675c6c03ff3d04fa388c6
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152461"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918491"
 ---
 # <a name="add-rows-module"></a>Modul pro přidání řádků
 
@@ -32,7 +32,7 @@ Zřetězení řádků je užitečné ve scénářích, jako jsou tyto:
 
 Aby bylo možné zřetězit řádky ze dvou datových sad, musí mít řádky přesně stejné schéma. To znamená, že stejný počet sloupců a stejný typ dat ve sloupcích.
 
-1.  Přetáhněte modul **Přidat řádky** do kanálu, který můžete najít v části **transformace dat**v kategorii **manipulace** .
+1.  Přetáhněte modul **Přidat řádky** do kanálu, který můžete najít v části **transformace dat**.
 
 2. Připojte datové sady ke dvěma vstupním portům. Datová sada, kterou chcete připojit, by měla být připojena k druhému (pravému) portu. 
   

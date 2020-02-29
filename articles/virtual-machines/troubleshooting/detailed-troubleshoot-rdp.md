@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ee2fb3757b0e3a7015a98f4e04084fd9c6a4850d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ea448b87f9e6954abecead2934bfb7f4ed04a9c5
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747541"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77920140"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Podrobné kroky pro řešení potíží s připojením ke vzdálené ploše pro virtuální počítače s Windows v Azure
 Tento článek poskytuje podrobné kroky pro řešení potíží pro diagnostiku a opravu složitých chyb vzdálené plochy pro virtuální počítače Azure se systémem Windows.
@@ -92,6 +92,9 @@ Pokud můžete vytvořit připojení ke vzdálené ploše přímo na počítači
 Spolupracujte se správcem sítě a opravte nastavení podnikového internetového hraničního zařízení, které umožňuje připojení ke vzdálené ploše založené na protokolu HTTPS k Internetu.
 
 ## <a name="source-3-cloud-service-endpoint-and-acl"></a>Zdroj 3: koncový bod cloudové služby a seznam ACL
+
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 U virtuálních počítačů vytvořených pomocí modelu nasazení Classic ověřte, že se k VIRTUÁLNÍmu počítači Azure může připojit jiný virtuální počítač Azure, který je ve stejné cloudové službě nebo ve virtuální síti.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
@@ -190,7 +193,7 @@ Exit-PSSession
 
 Ověřte, že koncový bod vzdálené plochy pro virtuální počítač Azure používá také port TCP 3398 jako svůj interní port. Restartujte virtuální počítač Azure a pokuste se znovu připojit ke vzdálené ploše.
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 [Postup resetování hesla nebo služby Vzdálená plocha pro virtuální počítače s Windows](../windows/reset-rdp.md)
 
 [Jak nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/overview)

@@ -8,51 +8,21 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/28/2020
+ms.date: 02/27/2020
 ms.author: diberry
-ms.openlocfilehash: cadbf5fa88db7d5e524cb7e075745c03a844f750
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: dea2bf3b34ca336f3932dd85bf587184ab6881db
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76901710"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77914989"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Využití aktivního učení k vylepšení vaší znalostní báze
 
-Aktivní učení vám umožní vylepšit kvalitu znalostní báze tím, že navrhuje alternativní otázky na základě počtu uživatelů, a to na pár otázek a odpovědí. Tyto návrhy si můžete prohlédnout, buď je přidáte do existujících otázek, nebo je odmítnete.
+[Aktivní učení](../Concepts/active-learning-suggestions.md) vám umožní vylepšit kvalitu znalostní báze tím, že navrhuje alternativní otázky na základě počtu uživatelů, a to na pár otázek a odpovědí. Tyto návrhy si můžete prohlédnout, buď je přidáte do existujících otázek, nebo je odmítnete.
 
 Vaše znalostní báze se nemění automaticky. Aby se změny projevily, musíte přijmout návrhy. Tyto návrhy přidávají otázky, ale nemění ani neodstraňují stávající otázky.
 
-## <a name="what-is-active-learning"></a>Co je aktivní učení?
-
-QnA Maker se učí nové variace otázek s implicitní a explicitní zpětnou vazbou.
-
-* [Implicitní zpětná vazba](#how-qna-makers-implicit-feedback-works) – seznámení s tím, že má uživatelská otázka více odpovědí s výsledky, které jsou velmi blízko a považuje se za zpětnou vazbu. K tomu nemusíte nic dělat.
-* [Explicitní názory](#how-you-give-explicit-feedback-with-the-train-api) – Pokud se ve znalostní bázi Knowledge Base vrátí více odpovědí s malým kolísáním skóre, klientská aplikace se zeptá, který dotaz je na správnou otázku. Explicitní zpětná vazba uživatele se pošle QnA Maker s využitím [rozhraní API pro vlaky](#train-api).
-
-Obě metody poskytují pořadí s podobnými dotazy, které jsou v clusteru.
-
-## <a name="how-active-learning-works"></a>Jak funguje aktivní učení
-
-Aktivní učení se aktivuje na základě skóre nejčastějších odpovědí vrácených QnA Maker. Pokud rozdíly v skóre leží v malém rozsahu, pak se dotaz považuje za možný návrh (jako alternativní otázka) pro každý z možných QnA párů. Jakmile přijmete navrhovanou otázku pro určitý pár QnA, je odmítnut pro ostatní páry. Po přijetí návrhů musíte pamatovat na uložení a výuku.
-
-Aktivní učení nabízí nejlepší možné návrhy v případech, kdy koncové body získávají přijatelné množství a různé dotazy na používání. Když je 5 nebo více podobných dotazů clusterovaných, každých 30 minut QnA Maker navrhuje dotazy založené na uživateli v Návrháři znalostní báze, aby je bylo možné přijmout nebo odmítnout. Všechny návrhy jsou seskupené podle podobnosti a na základě frekvence konkrétních dotazů koncovými uživateli se zobrazují nejdůležitější návrhy na alternativní otázky.
-
-Po navržení otázek na portálu QnA Maker musíte tyto návrhy projít a přijmout nebo odmítnout. Není k dispozici rozhraní API pro správu návrhů.
-
-## <a name="how-qna-makers-implicit-feedback-works"></a>Způsob fungování implicitní zpětné vazby QnA Maker
-
-Implicitní zpětná vazba QnA Maker používá algoritmus k určení blízkosti skóre a následně k vytváření návrhů na aktivní učení. Algoritmus k určení blízkosti není jednoduchý výpočet. Rozsahy v následujícím příkladu nejsou určeny k pevnému, ale měly by být použity jako vodítko pro pochopení dopadu pouze na algoritmus.
-
-Když je skóre otázky vysoce důvěrná, například 80%, rozsah skóre, která jsou považována za aktivní, je v širokém rozsahu přibližně do 10%. Vzhledem k poklesu spolehlivosti, jako je 40%, se rozsah hodnocení zmenší i přibližně do 4%.
-
-## <a name="how-you-give-explicit-feedback-with-the-train-api"></a>Způsob poskytnutí explicitní zpětné vazby pomocí rozhraní API pro vlaky
-
-Je důležité, aby QnA Maker získat explicitní zpětnou vazbu o tom, které odpovědi odpověděly na nejlepší odpověď. Způsob, jakým je nejlepší odpověď určena, je až na vás a může zahrnovat:
-
-* Zpětnou vazbu od uživatele vyberte jednu z odpovědí.
-* Obchodní logika, například určení přijatelného rozsahu skóre.
-* Kombinace zpětné vazby uživatelů a obchodní logiky.
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>Upgrade verze modulu runtime pro použití aktivního učení
 
@@ -187,21 +157,21 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Vlastnost požadavku HTTP|Name (Název)|Typ|Účel|
+|Vlastnost požadavku HTTP|Název|Typ|Účel|
 |--|--|--|--|
-|Parametr trasy adresy URL|ID znalostní báze|string|Identifikátor GUID znalostní báze|
-|Vlastní subdoména|Název prostředku Qnamakerem|string|Název prostředku se používá jako vlastní subdoména pro váš QnA Maker. Tato možnost je k dispozici na stránce nastavení po publikování znalostní báze. Je uveden jako `host`.|
-|Hlavička|Typ obsahu|string|Typ média těla odesílaného do rozhraní API Výchozí hodnota je: `application/json`|
-|Hlavička|Autorizace|string|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
-|Tělo příspěvku|Objekt JSON|JSON|Váš názor na školení|
+|Parametr trasy adresy URL|ID znalostní báze|řetězec|Identifikátor GUID znalostní báze|
+|Vlastní subdoména|Název prostředku Qnamakerem|řetězec|Název prostředku se používá jako vlastní subdoména pro váš QnA Maker. Tato možnost je k dispozici na stránce nastavení po publikování znalostní báze. Je uveden jako `host`.|
+|Hlavička|Content-Type|řetězec|Typ média těla odesílaného do rozhraní API Výchozí hodnota je: `application/json`|
+|Hlavička|Autorizace|řetězec|Klíč koncového bodu (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
+|Tělo příspěvku|JSON – objekt|JSON|Váš názor na školení|
 
 Tělo JSON má několik nastavení:
 
 |Vlastnost těla zprávy JSON|Typ|Účel|
 |--|--|--|--|
 |`feedbackRecords`|pole|Seznam zpětné vazby|
-|`userId`|string|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Nepovinný parametr.|
-|`userQuestion`|string|Přesný text dotazu uživatele. Povinná hodnota.|
+|`userId`|řetězec|ID uživatele osoby, která přijímá navrhované otázky. Formát ID uživatele je až vám. Například e-mailová adresa může být platným ID uživatele ve vaší architektuře. Volitelné.|
+|`userQuestion`|řetězec|Přesný text dotazu uživatele. Povinná hodnota.|
 |`qnaID`|číslo|ID otázky nalezené v [odpovědi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties) |
 
 Ukázkový text JSON vypadá takto:

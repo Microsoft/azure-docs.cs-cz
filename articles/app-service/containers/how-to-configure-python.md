@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: d2c5a094c45eeca779a33a39261bd3fc17d53d1a
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922274"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913850"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
@@ -47,6 +47,28 @@ Spusťte následující příkaz v [Cloud Shell](https://shell.azure.com) k nast
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PYTHON|3.7"
 ```
+
+## <a name="customize-build-automation"></a>Přizpůsobení automatizace sestavení
+
+Pokud nasadíte aplikaci s použitím balíčků Git nebo zip se zapnutou možností automatizace sestavení, App Service sestavování kroků automatizace pomocí následujícího postupu:
+
+1. Pokud je zadaný pomocí `PRE_BUILD_SCRIPT_PATH`, spusťte vlastní skript.
+1. Spusťte `pip install -r requirements.txt`.
+1. Pokud se *Manage.py* najde v kořenovém adresáři úložiště, spusťte *Manage.py collectstatic*. Pokud je však `DISABLE_COLLECTSTATIC` nastaveno na `true`, bude tento krok přeskočen.
+1. Pokud je zadaný pomocí `POST_BUILD_SCRIPT_PATH`, spusťte vlastní skript.
+
+`PRE_BUILD_COMMAND`, `POST_BUILD_COMMAND`a `DISABLE_COLLECTSTATIC` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením, definujte `PRE_BUILD_COMMAND`. Chcete-li spustit příkazy po sestavení, definujte `POST_BUILD_COMMAND`. Pokud chcete při sestavování aplikací pro Django zakázat spouštění collectstatic, nastavte `DISABLE_COLLECTSTATIC=true`.
+
+Následující příklad určuje dvě proměnné pro řadu příkazů, které jsou odděleny čárkami.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Další proměnné prostředí pro přizpůsobení automatizace sestavení naleznete v tématu [Oryx Configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+Další informace o tom, jak App Service spouští a vytváří aplikace v Pythonu v systému Linux, najdete v [dokumentaci k Oryx: jak se zjišťují a vytváří aplikace v Pythonu](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/python.md).
 
 ## <a name="container-characteristics"></a>Vlastnosti kontejneru
 

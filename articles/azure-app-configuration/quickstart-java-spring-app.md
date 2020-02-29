@@ -10,18 +10,18 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 2a7cab3422a0d44e45e622e2d556b5fec4ff659c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2521adfda731c06c879f5cfeb6283567228bf664
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669467"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919358"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace s pružinou v jazyce Java pomocí konfigurace aplikace Azure
 
 V tomto rychlém startu zařadíte konfiguraci aplikace Azure do aplikace v pružině Java, která bude centralizovat úložiště a správu nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - Podporovaná [sada Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
@@ -35,7 +35,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikace Azure do aplikace v pru�
 
     | Klíč | Hodnota |
     |---|---|
-    | /application/config.message | Dobrý den! |
+    | /application/config.message | Dobrý den, |
 
     V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
 
@@ -65,7 +65,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-azure-feature-management</artifactId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
         <version>1.1.2</version>
     </dependency>
     ```
@@ -75,7 +75,7 @@ Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
-        <artifactId>spring-cloud-azure-feature-management</artifactId>
+        <artifactId>spring-cloud-azure-appconfiguration-config</artifactId>
         <version>1.2.2</version>
     </dependency>
     ```

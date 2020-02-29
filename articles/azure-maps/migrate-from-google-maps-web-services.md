@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fac83a7a5137a50a26721da58395cc2e915f222d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086203"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77913814"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Migrace webové služby z Google Maps
 
@@ -24,21 +24,24 @@ V tabulce jsou uvedena rozhraní API služby Azure Maps, která mají podobnou f
 
 | Rozhraní API služby Google Maps | Rozhraní API služby Azure Maps                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Značení              | [Cestě](https://docs.microsoft.com/rest/api/maps/route)                               |
-| Matice vzdáleností         | [Matice směrování](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview) |
-| Geokódování               | [Search](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Hledání míst           | [Search](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Umístit automatické dokončování      | [Search](https://docs.microsoft.com/rest/api/maps/search)                             |
-| Statická mapa              | [Činit](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                 |
-| Časové pásmo               | [Časové pásmo](https://docs.microsoft.com/rest/api/maps/timezone)                        |
+| Značení              | [Cestě](https://docs.microsoft.com/rest/api/maps/route)                                     |
+| Matice vzdáleností         | [Matice směrování](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)       |
+| Geokódování               | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Hledání míst           | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Umístit automatické dokončování      | [Search](https://docs.microsoft.com/rest/api/maps/search)                                   |
+| Přichycení k cestám            | Viz část [Výpočet tras a pokynů](#calculate-routes-and-directions) .            |
+| Omezení rychlosti            | Přečtěte si oddíl [Reverse INCODE a souřadnice](#reverse-geocode-a-coordinate) .                  |
+| Statická mapa              | [Činit](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                       |
+| Časové pásmo               | [Časové pásmo](https://docs.microsoft.com/rest/api/maps/timezone)                              |
 
 Následující rozhraní API služby nejsou v tuto chvíli k dispozici v Azure Maps:
 
 - Zvýšení oprávnění
 - Zeměpisná poloha
-- Umístěte podrobnosti a umístěte fotografie. Telefonní čísla a adresa URL webu jsou k dispozici v rozhraní API pro hledání Azure Maps.
+- Podrobnosti o místech a fotky – k dispozici jsou informace o telefonních číslech a adrese URL webu v rozhraní API pro hledání Azure Maps.
 - Mapování adres URL
-- Cestách. Data omezení rychlosti jsou k dispozici prostřednictvím trasy a reverzní rozhraní API pro geografické kódování v Azure Maps.
+- Nejbližší cesty – to se dá dosáhnout pomocí webové sady SDK, jak je znázorněno [zde](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Basic%20snap%20to%20road%20logic
+), ale momentálně není k dispozici jako služba.
 - Statické zobrazení ulice
 
 Azure Maps má několik dalších webových služeb REST, které mohou být zajímavé:
@@ -176,8 +179,8 @@ Vypočítejte trasy a pokyny pomocí Azure Maps. Azure Maps má mnoho stejných 
 
 Služba směrování Azure Maps poskytuje následující rozhraní API pro výpočet tras:
 
-- [**Vypočítat trasu**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): Vypočítejte trasu a ihned zpracuje požadavek. Toto rozhraní API podporuje žádosti GET i POST. Žádosti POST použijte, když zadáte velký počet waypoints, nebo když použijete spoustu možností směrování. Důvodem je to, že použití POST zajišťuje, že žádost o adresu URL nepůjde moc dlouho a způsobuje problémy.
-- [**Dávková trasa**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): vytvořte žádost obsahující až 1 000 žádosti o trasu a požádejte ji o zpracování v časovém intervalu. Všechna data budou zpracována paralelně na serveru. Až se zpracování dokončí, můžete si stáhnout celou sadu výsledků.
+- [**Vypočítat trasu**](https://docs.microsoft.com/rest/api/maps/route/getroutedirections): Vypočítejte trasu a ihned zpracuje požadavek. Toto rozhraní API podporuje žádosti GET i POST. Žádosti POST se doporučují při zadání velkého počtu Waypoints nebo při použití spousty možností směrování, abyste zajistili, že se požadavek na adresu URL nestane příliš dlouhý a způsobuje problémy. Směr následné trasy v Azure Maps má možnost přebírat tisíce [pomocných bodů](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#supportingpoints) a bude je používat k opětovnému vytvoření cesty logické trasy mezi nimi (přichycení k cestě). 
+- [**Dávková trasa**](https://docs.microsoft.com/rest/api/maps/route/postroutedirectionsbatchpreview): vytvořte žádost obsahující až 1 000 žádosti o trasu a požádejte ji o zpracování v časovém intervalu. Všechna data budou zpracována paralelně na serveru a po dokončení bude možné stáhnout úplnou sadu výsledků.
 - [**Služby mobility**](https://docs.microsoft.com/rest/api/maps/mobility): Vypočítejte trasy a směry pomocí veřejného přenosu.
 
 Tabulka křížově odkazuje na parametry rozhraní API Google Maps s podobnými parametry rozhraní API v Azure Maps.
@@ -467,7 +470,7 @@ Tyto open source klientské knihovny jsou pro jiné programovací jazyky:
 
 - .NET Standard 2,0 – [projekt githubu](https://github.com/perfahlen/AzureMapsRestServices) \| [balíček NuGet](https://www.nuget.org/packages/AzureMapsRestToolkit/)
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další zdroje
 
 Níže najdete další dokumentaci a prostředky pro služby Azure Maps REST.
 

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203819"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77911727"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpečení a ochrana dat v zařízení Azure Data Box
 
@@ -81,10 +81,10 @@ Azure Data Box shromažďuje a zobrazuje osobní údaje v následujících klí�
   - Jméno kontaktu
   - Telefonní číslo
   - Email
-  - Ulice
+  - Ulice a číslo
   - Město
   - PSČ
-  - State
+  - Stav
   - Provincie/kraj/oblast
   - Číslo účtu dopravce
   - Sledovací číslo zásilky

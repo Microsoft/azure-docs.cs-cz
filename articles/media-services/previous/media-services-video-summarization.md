@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: da397c180b6ccaf91084a0ec22210c7bcc88a5dc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: a79e718c04f81b1552d63ab98b6dcd6bb428fb50
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084799"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77918310"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Vytvoření Shrnutí videa pomocí Azure Media Video Thumbnails  
- 
+
+> [!NOTE]
+> Procesor **Azure Media Video Thumbnails** médií bude vyřazen. Informace o datu vyřazení najdete v tématu [starší verze součástí](legacy-components.md) .
+
 ## <a name="overview"></a>Přehled
 
 Procesor **Azure Media Video Thumbnails** Media (MP) umožňuje vytvořit souhrn videa, který je užitečný pro zákazníky, kteří chtějí jenom zobrazit náhled na souhrnné informace o dlouhém videu. Zákazníci například můžou chtít při najetí myší na miniaturu zobrazit krátké "Souhrnné video". Díky vylepšení parametrů **Azure Media Video Thumbnails** pomocí přednastavení konfigurace můžete k algorithmically generování popisného dílčího klipu použít výkonnou detekci a zřetězení technologie MP.  

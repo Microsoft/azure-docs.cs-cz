@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/27/2019
 ms.author: memildin
-ms.openlocfilehash: 203e3718cedca693dc029a4ba20a86ca50ab3e32
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 834a097eb77cc7de2d0a3643bf1499ff7517ddb0
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603858"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77912269"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Správa a reakce na výstrahy zabezpečení v Azure Security Center
 
@@ -65,20 +65,28 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
     > [!NOTE]
     >V některých případech není zdrojová IP adresa k dispozici, některé protokoly událostí zabezpečení systému Windows neobsahují IP adresu.
 
-1. Postup oprav, který navrhuje Security Center, se liší podle výstrahy zabezpečení. Sledujte je u každé výstrahy. V některých případech může být nutné použít jiné ovládací prvky nebo služby Azure k implementaci Doporučené nápravy. 
+1. Postup oprav, který navrhuje Security Center, se liší podle výstrahy zabezpečení. Sledujte je u každé výstrahy. 
+
+    V některých případech může být nutné použít jiné ovládací prvky nebo služby Azure k implementaci Doporučené nápravy. 
 
     Následující témata vás provedou různými výstrahami v závislosti na typech prostředků:
     
-    * [Výstrahy IaaS virtuální počítače a servery](security-center-alerts-iaas.md)
-    * [Nativní výpočetní výstrahy](security-center-alerts-compute.md)
-    * [Výstrahy datových služeb](security-center-alerts-data-services.md)
-    
+    * [Výstrahy pro počítače s IaaS s Windows](threat-protection.md#windows-machines)
+    * [Výstrahy pro počítače se systémem IaaS Linux](threat-protection.md#linux-machines)
+    * [Výstrahy pro Azure App Service](threat-protection.md#app-services)
+    * [Výstrahy pro kontejnery Azure](threat-protection.md#azure-containers)
+    * [Výstrahy pro SQL Database a SQL Data Warehouse](threat-protection.md#data-sql)
+    * [Výstrahy pro Azure Storage](threat-protection.md#azure-storage)
+    * [Výstrahy pro Cosmos DB](threat-protection.md#cosmos-db)
+
     Následující témata vysvětlují, jak Security Center používá jinou telemetrii, kterou shromažďuje z integrace s infrastrukturou Azure, aby bylo možné použít další vrstvy ochrany pro prostředky nasazené v Azure:
     
-    * [Výstrahy vrstvy služeb](security-center-alerts-service-layer.md)
-    * [Detekce hrozeb pro Azure WAF a Azure DDoS Protection](security-center-alerts-integration.md)
-    
-## <a name="see-also"></a>Viz také:
+    * [Výstrahy pro vrstvu správy Azure (Azure Resource Manager) (Preview)](threat-protection.md#management-layer)
+    * [Výstrahy pro Azure Key Vault (Preview)](threat-protection.md#azure-keyvault)
+    * [Výstrahy pro síťovou vrstvu Azure](threat-protection.md#network-layer)
+    * [Výstrahy z jiných služeb](threat-protection.md#alerts-other)    
+
+## <a name="see-also"></a>Viz také
 
 V tomto dokumentu jste zjistili, jak ve službě Security Center konfigurovat zásady zabezpečení. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 

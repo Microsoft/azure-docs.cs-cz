@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: 236f79c9060a0d6fdcb0f558373d02f32eba7abb
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: c2b590e623062d5d5ae39261b3b5fa5a37a39122
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905598"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919216"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Spravované identity ve službě Azure HDInsight
 
@@ -21,7 +21,7 @@ Spravovaná identita je identita registrovaná v Azure Active Directory (Azure A
 
 Spravované identity se ve službě Azure HDInsight používají pro přístup ke službám Azure AD Domain Services nebo k souborům v Azure Data Lake Storage Gen2 v případě potřeby.
 
-Existují dva typy spravovaných identit: přiřazeno uživatelem a systémem. Azure HDInsight používá spravované identity přiřazené uživatelem. Spravovaná identita přiřazená uživatelem se vytvoří jako samostatný prostředek Azure, který pak můžete přiřadit k jedné nebo více instancím služby Azure. Naproti tomu spravovaná identita přiřazená systémem se vytvoří ve službě Azure AD a pak se automaticky povolí přímo na konkrétní instanci služby Azure. Životnost této spravované identity přiřazené systémem je pak svázána s životností instance služby, na které je povolena.
+Existují dva typy spravovaných identit: přiřazeno uživatelem a systémem. Azure HDInsight podporuje jenom spravované identity přiřazené uživatelem. HDInsight nepodporuje spravované identity přiřazené systémem. Spravovaná identita přiřazená uživatelem se vytvoří jako samostatný prostředek Azure, který pak můžete přiřadit k jedné nebo více instancím služby Azure. Naproti tomu spravovaná identita přiřazená systémem se vytvoří ve službě Azure AD a pak se automaticky povolí přímo na konkrétní instanci služby Azure. Životnost této spravované identity přiřazené systémem je pak svázána s životností instance služby, na které je povolena.
 
 ## <a name="hdinsight-managed-identity-implementation"></a>Implementace spravované identity HDInsight
 
@@ -46,7 +46,7 @@ Spravované identity se používají ve službě Azure HDInsight ve více scén�
 * [Balíček zabezpečení podniku](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Kafka Bring Your Own Key (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Co se stane, když po vytvoření clusteru odstraním spravovanou identitu?
 Cluster bude v případě potřeby spravované identity nabíhat do problémů. V současné době neexistuje způsob, jak aktualizovat ani měnit správu identitu po vytvoření clusteru. Proto doporučujeme, abyste se ujistili, že se spravovaná identita během modulu runtime clusteru neodstranila. Případně můžete cluster znovu vytvořit a přiřadit novou spravovanou identitu.
 

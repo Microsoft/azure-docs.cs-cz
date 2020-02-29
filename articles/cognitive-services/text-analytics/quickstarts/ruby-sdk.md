@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/29/2020
+ms.date: 02/26/2020
 ms.author: aahi
-ms.openlocfilehash: f34d4e50042f0fd05a224ff096c2b472224248f8
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 0d4d32a413dd22c55f1b2f01dce3a3df81f5f729
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76992398"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919664"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-for-ruby"></a>Rychlý Start: použití klientské knihovny Analýza textu pro Ruby
 
@@ -23,8 +23,8 @@ Začněte s klientskou knihovnou Analýza textu. Pomocí těchto kroků nainstal
 
 Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
-* Analýza subjektivního hodnocení
-* Detekce jazyka
+* Analýza mínění
+* Rozpoznávání jazyka
 * Rozpoznávání entit
 * Extrakce klíčových frází
 
@@ -35,16 +35,15 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 
 <a name="HOLTop"></a>
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [Ruby](https://www.ruby-lang.org/)
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="vytvořit prostředek Analýza textu"  target="_blank">vytvořit Analýza textu</a> prostředků <span class="docon docon-navigate-external x-hidden-focus"></span> v Azure Portal a získat tak klíč a koncový bod. 
+    * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
+    * Pomocí cenové úrovně Free můžete službu vyzkoušet a později upgradovat na placenou úroveň pro produkční prostředí.
 
 ## <a name="setting-up"></a>Nastavení
-
-### <a name="create-a-text-analytics-azure-resource"></a>Vytvoření prostředku Azure Analýza textu 
-
-[!INCLUDE [text-analytics-resource-creation](../includes/quickstarts/resource-creation.md)]
 
 ### <a name="create-a-new-ruby-application"></a>Vytvoření nové aplikace v Ruby
 
@@ -87,7 +86,7 @@ Objekt Response je seznam obsahující informace o analýze pro každý dokument
 Tyto fragmenty kódu ukazují, jak pomocí Analýza textu klientské knihovny pro Python provést následující akce:
 
 * [Ověření klienta](#authenticate-the-client)
-* [Analýza subjektivního hodnocení](#sentiment-analysis)
+* [Analýza mínění](#sentiment-analysis)
 * [Rozpoznávání jazyka](#language-detection)
 * [Rozpoznávání entit](#entity-recognition)
 * [Extrakce klíčových frází](#key-phrase-extraction)
@@ -113,7 +112,7 @@ Mimo třídu použijte k vytvoření instance funkci `new()` klienta.
 
 <a name="SentimentAnalysis"></a>
 
-## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
+## <a name="sentiment-analysis"></a>Analýza mínění
 
 V objektu klienta vytvořte funkci s názvem `AnalyzeSentiment()`, která převezme seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte funkci `sentiment()` klienta a získejte výsledek. Potom Iterujte výsledky a vytiskněte ID každého dokumentu a mínění skóre. Skóre Blíže k 0 označuje negativní mínění, zatímco skóre Blíže k hodnotě 1 označuje kladný mínění.
 
@@ -141,7 +140,7 @@ Document ID: 4 , Sentiment Score: 1.00
 
 <a name="LanguageDetection"></a>
 
-## <a name="language-detection"></a>Detekce jazyka
+## <a name="language-detection"></a>Rozpoznávání jazyka
 
 V objektu klienta vytvořte funkci s názvem `DetectLanguage()`, která převezme seznam vstupních dokumentů, které budou vytvořeny později. Zavolejte funkci `detect_language()` klienta a získejte výsledek. Pak Projděte výsledky a vytiskněte identifikátor každého dokumentu a zjištěné jazyky.
 

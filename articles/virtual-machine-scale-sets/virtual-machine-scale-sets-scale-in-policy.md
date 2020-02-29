@@ -1,32 +1,32 @@
 ---
 title: Použití vlastních zásad škálování v rámci Azure Virtual Machine Scale Sets
 description: Naučte se používat vlastní zásady škálování s využitím Azure Virtual Machine Scale Sets, které ke správě počtu instancí používají konfiguraci automatického škálování.
-author: avverma
+services: virtual-machine-scale-sets
+author: avirishuv
+manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 02/26/2020
 ms.author: avverma
-ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271768"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77919834"
 ---
-# <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Verze Preview: použití vlastních zásad škálování v rámci Azure Virtual Machine Scale Sets
+# <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Použití vlastních zásad škálování v rámci Azure Virtual Machine Scale Sets
 
-Nasazení sady škálování virtuálních počítačů je možné škálovat nebo škálovat na základě pole metrik, včetně platforem a uživatelsky definovaných vlastních metrik. I když škálování na více instancí vytvoří nové Virtual Machines založené na modelu sady škálování, škálování v systému ovlivňuje spouštění virtuálních počítačů, které mohou mít různé konfigurace a/nebo funkce, jako se vyvíjí zatížení sady škálování. 
+Nasazení sady škálování virtuálních počítačů je možné škálovat nebo škálovat na základě pole metrik, včetně platforem a uživatelsky definovaných vlastních metrik. I když škálování na více instancí vytvoří nové virtuální počítače na základě modelu sady škálování, škálování v systému bude mít vliv na spuštěné virtuální počítače, které mohou mít různé konfigurace a/nebo funkce, jako se vyvíjí zatížení sady škálování. 
 
-Funkce zásad škálování poskytuje uživatelům způsob, jak nakonfigurovat pořadí, ve kterém se škálují virtuální počítače. Verze Preview přináší tři konfigurace škálování: 
+Funkce zásad škálování poskytuje uživatelům způsob, jak nakonfigurovat pořadí, ve kterém jsou virtuální počítače škálované, prostřednictvím tří konfigurací škálování: 
 
 1. Výchozí
 2. NewestVM
 3. OldestVM
-
-***Tato funkce ve verzi Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro produkční úlohy.***
 
 ### <a name="default-scale-in-policy"></a>Výchozí zásada škálování na více součástí
 
@@ -38,7 +38,7 @@ Ve výchozím nastavení tato zásada používá sadu škálování virtuálníc
 
 Uživatelé nemusejí zadávat zásadu škálování na úrovni, pokud chcete, aby následovala pouze výchozí řazení.
 
-Všimněte si, že vyrovnání mezi zónami dostupnosti nebo doménami selhání nepřesouvá instance mezi zónami dostupnosti nebo doménami selhání. Vyvážení se dosahuje odstraněním virtuálních počítačů ze zóny nevyvážené dostupnosti nebo domén selhání do chvíle, kdy se distribuce virtuálních počítačů vyrovnává.
+Všimněte si, že vyrovnání mezi zónami dostupnosti nebo doménami selhání nepřesouvá instance mezi zónami dostupnosti nebo doménami selhání. Vyvážení je dosaženo odstraněním virtuálních počítačů ze nevyvážených zón dostupnosti nebo domén selhání, dokud nedojde k vyvážení distribuce virtuálních počítačů.
 
 ### <a name="newestvm-scale-in-policy"></a>Zásady škálování na NewestVM
 
@@ -53,6 +53,17 @@ Tato zásada odstraní nejstarší vytvořený virtuální počítač v sadě š
 V modelu sady škálování virtuálního počítače je definována zásada škálování na úrovni. Jak je uvedeno v částech výše, při použití zásad ' NewestVM ' a ' OldestVM ' je nutná definice zásad škálování na více verzí. Sada škálování virtuálního počítače automaticky použije výchozí zásadu škálování na více počítačů, pokud se v modelu sady škálování nenajde žádná definice zásad škálování. 
 
 Zásadu škálování na úrovni lze definovat v modelu sady škálování virtuálních počítačů následujícími způsoby:
+
+### <a name="azure-portal"></a>Azure Portal
+ 
+Následující kroky definují zásadu škálování při vytváření nové sady škálování. 
+ 
+1. Přejít na **Virtual Machine Scale Sets**.
+1. Vyberte **+ Přidat** a vytvořte novou sadu škálování.
+1. Přejít na kartu **škálování** . 
+1. Vyhledejte část **zásady škálování na úrovni** .
+1. V rozevíracím seznamu vyberte zásadu škálování.
+1. Až budete hotovi s vytvářením nové sady škálování, vyberte tlačítko **zkontrolovat + vytvořit** .
 
 ### <a name="using-api"></a>Pomocí rozhraní API
 
@@ -70,6 +81,33 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 } 
+```
+### <a name="azure-powershell"></a>Azure Powershell
+
+Vytvořte skupinu prostředků a pak vytvořte novou sadu škálování se zásadou škálování nastavenou jako *OldestVM*.
+
+```azurepowershell-interactive
+New-AzResourceGroup -ResourceGroupName "myResourceGroup" -Location "<VMSS location>"
+New-AzVmss `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "<VMSS location>" `
+  -VMScaleSetName "myScaleSet" `
+  -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+Následující příklad přidá zásadu škálování při vytváření nové sady škálování. Nejdřív vytvořte skupinu prostředků a pak vytvořte novou sadu škálování se zásadou škálování na *OldestVM*. 
+
+```azurecli-interactive
+az group create --name <myResourceGroup> --location <VMSSLocation>
+az vmss create \
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --image UbuntuLTS \
+  --admin-username <azureuser> \
+  --generate-ssh-keys \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>Použití šablony
@@ -94,6 +132,15 @@ Stejný postup platí při použití ' NewestVM ' v výše popsané zásadě šk
 
 Změna zásad škálování je stejná jako při použití zásady škálování na více míst. Například pokud ve výše uvedeném příkladu chcete změnit zásadu z ' OldestVM ' na ' NewestVM ', můžete tak učinit:
 
+### <a name="azure-portal"></a>Azure Portal
+
+Zásady škálování existující sady škálování můžete upravit pomocí Azure Portal. 
+ 
+1. V existující sadě škálování virtuálního počítače vyberte v nabídce vlevo možnost **škálování** .
+1. Vyberte kartu **zásady škálování** na více míst.
+1. V rozevíracím seznamu vyberte zásadu škálování.
+1. Po dokončení vyberte **Uložit**. 
+
 ### <a name="using-api"></a>Pomocí rozhraní API
 
 Spusťte PUT do sady škálování virtuálních počítačů pomocí rozhraní API 2019-03-01:
@@ -110,6 +157,27 @@ https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<myRG>/provid
         } 
     }    
 }
+```
+### <a name="azure-powershell"></a>Azure Powershell
+
+Aktualizace zásad škálování na úrovni existující sady škálování:
+
+```azurepowershell-interactive
+Update-AzVmss `
+ -ResourceGroupName "myResourceGroup" `
+ -VMScaleSetName "myScaleSet" `
+ -ScaleInPolicy “OldestVM”
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+
+Následuje příklad aktualizace zásad škálování v existující sadě škálování: 
+
+```azurecli-interactive
+az vmss update \  
+  --resource-group <myResourceGroup> \
+  --name <myVMScaleSet> \
+  --scale-in-policy OldestVM
 ```
 
 ### <a name="using-template"></a>Použití šablony
@@ -143,7 +211,7 @@ Níže uvedené příklady ukazují, jak bude sada škálování virtuálních p
 
 | Událost                 | ID instancí v zóna 1  | ID instancí v zóna 2  | ID instancí v zóna 3  | Výběr se škálováním na více míst                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Počáteční               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Pořizovací               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Horizontální navýšení kapacity              | 3, 4, 5, 10            | ***2***, 6, 9, 11      | 1, 7, 8                | Vyberte si mezi Zóna 1 a 2, a to i v případě, že Zóna 3 má nejstarší virtuální počítač. Odstraňte VM2 z Zóna 2, protože se jedná o nejstarší virtuální počítač v této zóně.   |
 | Horizontální navýšení kapacity              | ***3***, 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | Vyberte Zóna 1, i když má Zóna 3 nejstarší virtuální počítač. Odstraňte VM3 z Zóna 1, protože se jedná o nejstarší virtuální počítač v této zóně.                  |
 | Horizontální navýšení kapacity              | 4, 5, 10               | 6, 9, 11               | ***1***, 7, 8          | Zóny jsou vyvážené. Odstraní VM1 v Zóna 3, protože se jedná o nejstarší virtuální počítač v sadě škálování.                                               |
@@ -157,7 +225,7 @@ U virtuálních počítačů, které nejsou v rozsahu, vybere zásada nejstarš�
 
 | Událost                 | ID instancí v zóna 1  | ID instancí v zóna 2  | ID instancí v zóna 3  | Výběr se škálováním na více míst                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Počáteční               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Pořizovací               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Horizontální navýšení kapacity              | 3, 4, 5, 10            | 2, 6, 9, ***11***      | 1, 7, 8                | Vyberte si mezi Zóna 1 a 2. Odstraňte VM11 z Zóna 2, protože se jedná o nejnovější virtuální počítač v obou zónách.                                |
 | Horizontální navýšení kapacity              | 3, 4, 5, ***10***      | 2, 6, 9                | 1, 7, 8                | Vyberte Zóna 1, protože mají více virtuálních počítačů než ostatní dvě zóny. Odstraní VM10 z Zóna 1, protože to je nejnovější virtuální počítač v této zóně.          |
 | Horizontální navýšení kapacity              | 3, 4, 5                | 2, 6, ***9***          | 1, 7, 8                | Zóny jsou vyvážené. Odstraní VM9 v Zóna 2, protože to je nejnovější virtuální počítač v sadě škálování.                                                |
@@ -169,7 +237,7 @@ U virtuálních počítačů, které nejsou ve více oblastech, vybírá zásada
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
-1. Nepovedlo se povolit scaleInPolicy, pokud se zobrazí chyba důvodu chybného požadavku s chybovou zprávou, že se pro objekt typu Properties nepovedlo najít člena scaleInPolicy, a pak zkontrolujte verzi rozhraní API, která se používá pro sadu škálování virtuálního počítače. Pro tuto verzi Preview se vyžaduje rozhraní API verze 2019-03-01 nebo vyšší.
+1. Nepovedlo se povolit scaleInPolicy, pokud se zobrazí chyba důvodu chybného požadavku s chybovou zprávou, že se pro objekt typu Properties nepovedlo najít člena scaleInPolicy, a pak zkontrolujte verzi rozhraní API, která se používá pro sadu škálování virtuálního počítače. Pro tuto funkci se vyžaduje rozhraní API verze 2019-03-01 nebo vyšší.
 
 2. Špatný výběr virtuálních počítačů pro škálování – odkazují na výše uvedené příklady. Pokud je vaše virtuální počítačová sada škálování nastavená na více instancí, aplikuje se zásada škálování na více instancí jako první pro nevyvážené zóny a potom napříč nastavenou škálou, jakmile se zóna vyrovnává. Pokud pořadí škálování není v souladu s výše uvedenými příklady, vyvolejte dotaz s týmem sady škálování virtuálního počítače pro řešení potíží.
 

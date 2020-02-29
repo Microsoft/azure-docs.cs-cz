@@ -11,11 +11,11 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1717897261404a2ab8df723c280c9be6a2dacea4
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: b45277c89193c51f70836bcef8a21636fc9c7973
+ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 02/28/2020
 ms.locfileid: "77196129"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Omezení spolupráce B2B Azure AD
@@ -32,22 +32,6 @@ Azure AD B2B podléhá omezením adresáře služby Azure AD. Podrobnosti o poč
 
 ## <a name="national-clouds"></a>Národní cloudy
 [Národní cloudy](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) jsou fyzicky izolované instancemi Azure. Spolupráce B2B není podporovaná v rámci hranic národního cloudu. Pokud je například váš tenant Azure ve veřejném, globálním cloudu, nemůžete pozvat uživatele, jehož účet je v národním cloudu. Pokud chcete s uživatelem spolupracovat, požádejte je o další e-mailovou adresu nebo pro ně vytvořte uživatelský účet v adresáři.
-
-## <a name="azure-us-government-clouds"></a>Cloudy pro státní správu Azure USA
-V cloudu pro státní správu Azure USA je spolupráce B2B v současnosti podporovaná jenom mezi klienty, kteří jsou v cloudu Azure USA a kteří podporují spolupráci B2B. Pokud uživatele v tenantovi, který není součástí cloudu pro státní správu Azure USA nebo který ještě nepodporuje spolupráci B2B, nebude tato pozvánka úspěšná nebo uživatel nebude moct pozvánku uplatnit. Podrobnosti o dalších omezeních najdete v tématu [variace Azure Active Directory Premium P1 a P2](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
-
-### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>Jak zjistím, jestli je spolupráce B2B dostupná ve vašem tenantovi Azure pro státní správu USA?
-Pokud chcete zjistit, jestli váš cloudový tenant Azure pro státní správu USA podporuje spolupráci B2B, udělejte toto:
-
-1. V prohlížeči přejdete na následující adresu URL, kde nahradíte název tenanta pro *&lt;tenant&gt;* :
-
-   `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
-
-2. Najít `"tenant_region_scope"` v odpovědi JSON:
-
-   - Pokud se zobrazí `"tenant_region_scope":"USGOV”`, je podpora B2B podporována.
-   - Pokud se zobrazí `"tenant_region_scope":"USG"`, B2B se nepodporuje.
- 
 
 ## <a name="next-steps"></a>Další kroky
 

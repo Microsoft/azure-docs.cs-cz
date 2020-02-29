@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 2baa82bda1f92fe81bb0db69b84e6865b2709e42
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: cdbaeb5a97beba342bc471e75d1b07be0d0141ae
+ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058038"
+ms.lasthandoff: 02/28/2020
+ms.locfileid: "77921407"
 ---
-# <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Řešení potíží při nasazení virtuálních počítačů s Windows v Azure
+# <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Řešení potíží s nasazením virtuálního počítače s Windows v Azure
 
 Pokud chcete řešit problémy s nasazením virtuálního počítače v Azure, přečtěte si [nejdůležitější problémy](#top-issues) s běžnými chybami a řešeními.
 
@@ -31,7 +31,7 @@ Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto č
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Cluster nepodporuje požadovanou velikost virtuálního počítače.
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<Properties supportTopicIds = "123456789" resourceTags = "Windows" productPesIds = "1234, 5678"/>
 - Opakujte požadavek s menší velikostí virtuálního počítače.
 - Pokud velikost požadovaného virtuálního počítače nejde změnit:
     - Zastavte všechny virtuální počítače ve skupině dostupnosti. Klikněte na **skupiny prostředků** > vaší skupiny prostředků > **prostředky** > vaší skupině dostupnosti > **Virtual Machines** > **zastavte**virtuální počítač >.
@@ -40,7 +40,7 @@ Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto č
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>Cluster nemá volné prostředky.
-\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
+\<Properties supportTopicIds = "123456789" resourceTags = "Windows" productPesIds = "1234, 5678"/>
 - Opakujte požadavek později.
 - Pokud může být nový virtuální počítač součástí jiné skupiny dostupnosti
     - Vytvořte virtuální počítač v jiné skupině dostupnosti (ve stejné oblasti).
@@ -62,7 +62,7 @@ Pro smlouvu Enterprise:
 
 • Nahrajte vlastní virtuální počítač a nasaďte ho pomocí Správce prostředků šablony nebo Azure PowerShell.
 
-Další informace naleznete v následujících materiálech:
+Další informace najdete v následujících zdrojích:
 
  - [Přehled programu zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/)
 
@@ -78,7 +78,7 @@ Další informace o aktivaci měsíčního kreditu najdete v tomto [článku](ht
 
 ## <a name="how-to-add-enterprise-devtest-to-my-enterprise-agreement-ea-to-get-access-to-window-client-images"></a>Postup přidání Enterprise pro vývoj/testování do smlouva Enterprise (EA) pro získání přístupu k obrázkům klienta v systému Windows?
 
-Možnost vytvářet předplatná na základě nabídky Enterprise pro vývoj/testování je omezená na vlastníky účtů, kterým k tomu udělil oprávnění podnikový správce. Vlastník účtu vytvoří předplatné prostřednictvím portálu účtů Azure a pak by měl jako spolusprávce přidat aktivní předplatitele sady Visual Studio. Aby mohly spravovat a využívat prostředky potřebné pro vývoj a testování. Další informace najdete v tématu [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/).
+Možnost vytvářet předplatná na základě nabídky Enterprise pro vývoj/testování je omezená na vlastníky účtů, kterým k tomu udělil oprávnění správce podniku. Vlastník účtu vytvoří předplatné prostřednictvím portálu účtů Azure a pak by měl jako spolusprávce přidat aktivní předplatitele sady Visual Studio. Aby mohly spravovat a využívat prostředky potřebné pro vývoj a testování. Další informace najdete v tématu věnovaném [Enterprise pro vývoj/testování](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Chybí moje ovladače pro virtuální počítač s Windows N-Series.
 
@@ -107,6 +107,8 @@ Když je virtuální počítač spuštěný, je nasazený na fyzický server. Fy
 
 - Virtuální počítače nasazené v modelu nasazení Classic je nutné odebrat a znovu nasadit nasazení cloudové služby, aby se virtuální počítače změnily na velikost v jiné rodině velikostí.
 
+[!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
+
 - Virtuální počítače nasazené v modelu nasazení Správce prostředků před změnou velikosti libovolného virtuálního počítače ve skupině dostupnosti musíte zastavit všechny virtuální počítače ve skupině dostupnosti.
 
 ## <a name="the-listed-vm-size-is-not-supported-while-deploying-in-availability-set"></a>Uvedená velikost virtuálního počítače není při nasazení v sadě dostupnosti podporována.
@@ -118,7 +120,7 @@ Vyberte velikost podporovanou v clusteru skupiny dostupnosti. Doporučuje se př
 Ano. Existující klasický virtuální počítač můžete přidat do nové nebo existující skupiny dostupnosti. Další informace najdete v tématu [Přidání existujícího virtuálního počítače do skupiny dostupnosti](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete kontaktovat odborníky na Azure na [webu MSDN Azure a Stack Overflow fóra](https://azure.microsoft.com/support/forums/).
 
 Alternativně můžete soubor incidentu podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
