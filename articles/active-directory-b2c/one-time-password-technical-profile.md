@@ -3,20 +3,20 @@ title: Povolit ověřování JEDNORÁZOVým heslem
 titleSuffix: Azure AD B2C
 description: Přečtěte si, jak nastavit scénář jednorázového hesla pomocí Azure AD B2C vlastních zásad.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9becb91cfffd4553b2b8aa1a2d616963eae92ab0
-ms.sourcegitcommit: d12880206cf9926af6aaf3bfafda1bc5b0ec7151
+ms.openlocfilehash: 701fb64dd85526bc79cab48bf36d4583da71ca76
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77114053"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184022"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu s jednorázovým heslem v Azure AD B2C vlastní zásady
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro správu generov�
 
 Technický profil pro jednorázové heslo může také při ověřování kódu vrátit chybovou zprávu. Navrhněte integraci s jednorázovým heslem pomocí **ověřovacího technického profilu**. Technický profil ověření volá technický profil pro jednorázové heslo pro ověření kódu. Technický profil ověření ověřuje uživatelem poskytnutá data před pokračováním cesty uživatele. S technickým profilem ověření se na stránce s vlastním kontrolním jménem zobrazí chybová zpráva.
 
-## <a name="protocol"></a>Protokol
+## <a name="protocol"></a>Protocol (Protokol)
 
 Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C:
 
@@ -51,7 +51,7 @@ Prvním režimem tohoto technického profilu je vygenerování kódu. Níže jso
 
 Element **InputClaims** obsahuje seznam deklarací identity potřebných k odeslání do poskytovatele protokolu jednorázového hesla. Název vaší deklarace identity můžete také namapovat na název definovaný níže.
 
-| ClaimReferenceId | Požadováno | Popis |
+| ClaimReferenceId | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | identifikátor | Ano | Identifikátor k identifikaci uživatele, který potřebuje později ověřit kód. Obvykle se používá jako identifikátor cílového umístění, do kterého se kód doručuje, například e-mailová adresa nebo telefonní číslo. |
 
@@ -61,7 +61,7 @@ Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputCl
 
 Element **OutputClaims** obsahuje seznam deklarací generovaných poskytovatelem protokolu jednorázového hesla. Název vaší deklarace identity můžete také namapovat na název definovaný níže.
 
-| ClaimReferenceId | Požadováno | Popis |
+| ClaimReferenceId | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | otpGenerated | Ano | Generovaný kód, jehož relace je spravovaná pomocí Azure AD B2C. |
 
@@ -71,7 +71,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 Následující nastavení lze použít ke konfiguraci generování a údržby kódu:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | CodeExpirationInSeconds | Ne | Doba v sekundách, po kterou bude vypršení platnosti kódu. Minimum: `60`; Maximum: `1200`; Výchozí: `600`. |
 | CodeLength | Ne | Délka kódu. Výchozí hodnota je `6`. |
@@ -117,7 +117,7 @@ Druhým režimem tohoto technického profilu je ověření kódu. Níže jsou uv
 
 Element **InputClaims** obsahuje seznam deklarací identity potřebných k odeslání do poskytovatele protokolu jednorázového hesla. Název vaší deklarace identity můžete také namapovat na název definovaný níže.
 
-| ClaimReferenceId | Požadováno | Popis |
+| ClaimReferenceId | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | identifikátor | Ano | Identifikátor k identifikaci uživatele, který dříve vygeneroval kód. Obvykle se používá jako identifikátor cílového umístění, do kterého se kód doručuje, například e-mailová adresa nebo telefonní číslo. |
 | otpToVerify | Ano | Ověřovací kód poskytnutý uživatelem |
@@ -134,7 +134,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 Následující nastavení lze použít ke konfiguraci chybové zprávy, která se zobrazí při selhání ověření kódu:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | UserMessageIfSessionDoesNotExist | Ne | Zpráva, která se zobrazí uživateli, pokud vypršela platnost relace ověření kódu Buď je tento kód neplatný, nebo kód nebyl nikdy vygenerován pro daný identifikátor. |
 | UserMessageIfMaxRetryAttempted | Ne | Zpráva, která se zobrazí uživateli, pokud překročila maximální povolený počet pokusů o ověření. |

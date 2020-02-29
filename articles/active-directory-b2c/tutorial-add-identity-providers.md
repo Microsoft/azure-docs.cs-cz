@@ -3,20 +3,20 @@ title: 'Kurz: Přidání poskytovatelů identit do aplikací'
 titleSuffix: Azure AD B2C
 description: Naučte se přidávat zprostředkovatele identit do aplikací v Azure Active Directory B2C pomocí Azure Portal.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 07/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2bc02433be9ee7955b0e10ac659ee40e315e5a5e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 1f49061210ca8e3c106b0569f77a67d1f10757a1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840158"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183512"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Kurz: Přidání zprostředkovatelů identit do aplikací v Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Ve svých aplikacích obvykle používáte pouze jednoho poskytovatele identity,
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [Vytvořte uživatelský tok](tutorial-create-user-flows.md) , který uživatelům umožní přihlásit se k aplikaci a přihlásit se k ní.
 
@@ -45,11 +45,11 @@ Aplikace zprostředkovatele identity poskytují identifikátor a klíč, který 
 
 Pokud chcete povolit přihlášení pro uživatele ze služby Azure AD, musíte zaregistrovat aplikaci v tenantovi Azure AD. Tenant Azure AD není stejný jako váš tenant Azure AD B2C.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
-1. Zadejte název své aplikace. Například, `Azure AD B2C App`.
+1. Zadejte název své aplikace. například `Azure AD B2C App`.
 1. Přijměte výběr **účtů v tomto organizačním adresáři pouze** pro tuto aplikaci.
 1. Pro **identifikátor URI přesměrování**přijměte hodnotu **Web** a zadejte následující adresu URL po malých písmenech a nahraďte `your-B2C-tenant-name` názvem vašeho tenanta Azure AD B2C.
 
@@ -57,13 +57,13 @@ Pokud chcete povolit přihlášení pro uživatele ze služby Azure AD, musíte 
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-    Například, `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+    například `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 
     Všechny adresy URL by teď měly používat [b2clogin.com](b2clogin.md).
 
 1. Vyberte **Registrovat**a pak zaznamenejte **ID aplikace (klienta)** , kterou použijete v pozdějším kroku.
 1. V nabídce **Spravovat** v nabídce aplikace vyberte **certifikáty & tajných**kódů a pak vyberte **nový tajný klíč klienta**.
-1. Zadejte **Popis** tajného klíče klienta. Například, `Azure AD B2C App Secret`.
+1. Zadejte **Popis** tajného klíče klienta. například `Azure AD B2C App Secret`.
 1. Vyberte období vypršení platnosti. Pro tuto aplikaci přijměte výběr **v 1 roce**.
 1. Vyberte **Přidat**a potom zaznamenejte hodnotu nového tajného klíče klienta, který použijete v pozdějším kroku.
 
@@ -105,7 +105,7 @@ Po vytvoření aplikace pro zprostředkovatele identity, který chcete přidat, 
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
     ```
 
-    Například, `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
+    například `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
 1. Jako **ID klienta**zadejte ID aplikace, které jste si poznamenali dříve.
 1. Jako **tajný klíč klienta**zadejte tajný klíč klienta, který jste předtím nahráli.
@@ -119,7 +119,7 @@ Po vytvoření aplikace pro zprostředkovatele identity, který chcete přidat, 
     * **Příjmení**: *family_name*
     * **E-mail**: *unique_name*
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ### <a name="add-the-facebook-identity-provider"></a>Přidat poskytovatele identity Facebooku
 
@@ -127,7 +127,7 @@ Po vytvoření aplikace pro zprostředkovatele identity, který chcete přidat, 
 1. Zadejte **název**. Například *Facebook*.
 1. Jako **ID klienta**zadejte ID aplikace Facebook, kterou jste vytvořili dříve.
 1. Pro **tajný klíč klienta**zadejte tajný kód aplikace, který jste si poznamenali.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 ## <a name="update-the-user-flow"></a>Aktualizace toku uživatele
 
@@ -135,7 +135,7 @@ V kurzu, který jste dokončili v rámci požadavků, jste vytvořili uživatels
 
 1. Vyberte **toky uživatelů (zásady)** a pak vyberte tok uživatele *B2C_1_signupsignin1* .
 2. Vyberte **Zprostředkovatelé identity**a vyberte poskytovatele identit **Azure AD** , kterého jste přidali **Facebook** a contoso.
-3. Vyberte **Uložit**.
+3. Vyberte **Save** (Uložit).
 
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 

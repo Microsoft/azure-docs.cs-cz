@@ -1,6 +1,6 @@
 ---
 title: Přihlášení a uživatelé
-description: Přečtěte si o SQL Database a SQL Data Warehouse správě zabezpečení, konkrétně o správě přístupu k databázi a zabezpečení přihlášení prostřednictvím hlavního účtu na úrovni serveru.
+description: Přečtěte si o SQL Database a správě zabezpečení synapse v Azure, konkrétně o správě přístupu k databázi a zabezpečení přihlášení prostřednictvím hlavního účtu na úrovni serveru.
 keywords: zabezpečení databáze SQL,správa zabezpečení databáze,zabezpečení přihlášení,zabezpečení databáze,přístup k databázi
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,21 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 03/26/2019
-ms.openlocfilehash: e9934f868fb62f9b1a19ef408dab69ab8a2c0e29
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 02/06/2020
+tags: azure-synapse
+ms.openlocfilehash: 79a31e5b8e3433af7879fcde8597173f25bf96b7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159142"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196956"
 ---
-# <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Řízení a udělení přístupu k databázi SQL Database a SQL Data Warehouse
+# <a name="controlling-and-granting-database-access-to-sql-database-and-azure-synapse-analytics"></a>Řízení a udělení přístupu k databázi SQL Database a Azure synapse Analytics
 
-Po konfiguraci pravidel brány firewall se můžete připojit k Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) jako jeden z účtů správce, jako vlastník databáze nebo jako uživatel databáze v databázi.  
+Po konfiguraci pravidel brány firewall se můžete připojit k Azure [SQL Database](sql-database-technical-overview.md) a [Azure synapse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) jako jeden z účtů správce, jako je vlastník databáze nebo jako uživatel databáze v databázi.  
 
 > [!NOTE]  
-> Toto téma se vztahuje na Azure SQL Server a SQL Database a SQL Data Warehouse databáze vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. 
+> Toto téma se vztahuje na Azure SQL Server a SQL Database a Azure synapse vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá při odkazování na SQL Database a Azure synapse.
 > [!TIP]
 > Kurz najdete v tématu [zabezpečení Azure SQL Database](sql-database-security-tutorial.md). Tento kurz se nevztahuje na **Azure SQL Database spravovanou instanci**.
 
@@ -43,7 +44,7 @@ Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce
 
 - **Správce Azure Active Directory**
 
-  Jako správce je možné nakonfigurovat jeden účet Azure Active Directory, a to buď individuální účet, nebo účet skupiny zabezpečení. Je volitelné nakonfigurovat správce Azure AD, ale pokud chcete použít účty Azure AD pro připojení k SQL Database, **musí** být nakonfigurovaný správce Azure AD. Další informace o konfigurování přístupu v Azure Active Directory najdete v tématech [Připojení ke službě SQL Database nebo SQL Data Warehouse pomocí ověřování služby Azure Active Directory](sql-database-aad-authentication.md) a [Podpora nástroje SSMS pro ověřování Azure AD MFA ve službě SQL Database a SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).
+  Jako správce je možné nakonfigurovat jeden účet Azure Active Directory, a to buď individuální účet, nebo účet skupiny zabezpečení. Je volitelné nakonfigurovat správce Azure AD, ale pokud chcete použít účty Azure AD pro připojení k SQL Database, **musí** být nakonfigurovaný správce Azure AD. Další informace o konfiguraci přístupu Azure Active Directory najdete v tématu [připojení k SQL Database nebo Azure synapse pomocí Azure Active Directoryho ověřování](sql-database-aad-authentication.md) a [SSMS podpory pro Azure AD MFA s SQL Database a Azure synapse](sql-database-ssms-mfa-authentication.md).
 
 Účty správců **serveru** a správce **Azure AD** mají následující vlastnosti:
 
@@ -72,7 +73,7 @@ Při použití otevřeného portu brány firewall na úrovni serveru se můžou 
 
 ### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>Připojení k databázi pomocí aplikace SQL Server Management Studio
 
-Návod, jak vytvořit server, databázi, pravidla brány firewall na úrovni serveru a použít SQL Server Management Studio k dotazování databáze, najdete v tématu Začínáme [s Azure SQL Database servery, databázemi a pravidly brány firewall pomocí Azure Portal a SQL. Management Studio serveru](sql-database-single-database-get-started.md).
+Návod, jak vytvořit server, databázi, pravidla brány firewall na úrovni serveru a použít SQL Server Management Studio k dotazování databáze, najdete v tématu [Začínáme s Azure SQL Database servery, databázemi a pravidly brány firewall pomocí Azure Portal a SQL Server Management Studio](sql-database-single-database-get-started.md).
 
 > [!IMPORTANT]
 > Doporučujeme vám vždy používat nejnovější verzi aplikace Management Studio, aby se zajistila synchronizovanost s aktualizacemi Microsoft Azure a SQL Database. [Aktualizovat aplikaci SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
@@ -128,7 +129,7 @@ Druhou správní rolí je role správce přihlášení. Členové této role moh
 
 ## <a name="non-administrator-users"></a>Uživatelé bez oprávnění správce
 
-Obecně platí, že účty bez oprávnění správce nepotřebují přístup k hlavní databázi. Uživatele databáze s omezením můžete vytvářet pomocí příkazu [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). Uživatel může být Azure Active Directory ověřování, které obsahuje uživatele databáze (Pokud jste nakonfigurovali prostředí pro ověřování Azure AD), nebo pokud uživatel s omezením ověřování SQL Server obsahuje uživatele databáze nebo ověřování SQL Server na základě SQL Server přihlášení ověřování (vytvořené v předchozím kroku) Další informace najdete v části [Uživatelé databáze s omezením – vytvoření přenosné databáze](https://msdn.microsoft.com/library/ff929188.aspx). 
+Obecně platí, že účty bez oprávnění správce nepotřebují přístup k hlavní databázi. Uživatele databáze s omezením můžete vytvářet pomocí příkazu [CREATE USER (Transact-SQL)](https://msdn.microsoft.com/library/ms173463.aspx). Uživatel může být Azure Active Directory ověřování, které obsahuje uživatele databáze (Pokud jste nakonfigurovali prostředí pro ověřování Azure AD), nebo pokud uživatel s omezením ověřování SQL Server obsahuje uživatele databáze nebo ověřování SQL Server na základě přihlášení SQL Server (vytvořené v předchozím kroku). Další informace najdete v části [Uživatelé databáze s omezením – vytvoření přenosné databáze](https://msdn.microsoft.com/library/ff929188.aspx). 
 
 Pokud chcete vytvářet uživatele, připojte se k databázi a spusťte podobné příkazy jako v následujících příkladech:
 
@@ -151,7 +152,7 @@ V Azure SQL Database použijte příkaz `ALTER ROLE`.
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-V Azure SQL Data Warehouse použijte [Sp_addrolemember exec](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
+Ve službě Azure synapse použijte [Sp_addrolemember exec](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
 ```

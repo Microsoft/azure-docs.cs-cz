@@ -3,20 +3,20 @@ title: 'Kurz: přizpůsobení uživatelského rozhraní'
 titleSuffix: Azure AD B2C
 description: Naučte se, jak přizpůsobit uživatelské rozhraní (UI) vašich aplikací v Azure Active Directory B2C pomocí Azure Portal.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840124"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186246"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Kurz: přizpůsobení rozhraní uživatelského prostředí v Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [Vytvořte uživatelský tok](tutorial-create-user-flows.md) , který uživatelům umožní přihlásit se k aplikaci a přihlásit se k ní.
 
@@ -43,7 +43,7 @@ Vytvoříte účet a kontejner úložiště Azure a potom do kontejneru umístí
 
 I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto kurzu ukládat do [úložiště objektů BLOB v Azure](../storage/blobs/storage-blobs-introduction.md).
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vaše předplatné Azure. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vaše předplatné. Tento adresář je jiný než ten, který obsahuje vašeho tenanta Azure B2C.
 3. V levém horním rohu Azure Portal vyberte všechny služby, vyhledejte a vyberte **účty úložiště**.
 4. Vyberte **Přidat**.
@@ -63,7 +63,7 @@ I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto 
  Azure AD B2C kód v prohlížeči používá moderní a standardní přístup k načtení vlastního obsahu z adresy URL, kterou zadáte v toku uživatele. Sdílení prostředků mezi zdroji (CORS) umožňuje omezit prostředky na webové stránce, které se mají požadovat z jiných domén.
 
 1. V nabídce vyberte **CORS**.
-2. U **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Například, `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta je potřeba použít všechna malá písmena.
+2. U **povolených zdrojů**zadejte `https://your-tenant-name.b2clogin.com`. Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C. například `https://fabrikam.b2clogin.com`. Při zadávání názvu tenanta je potřeba použít všechna malá písmena.
 3. U **povolených metod**vyberte `GET`,`PUT`a `OPTIONS`.
 4. U **povolených hlaviček**zadejte hvězdičku (*).
 5. U **zveřejněných hlaviček**zadejte hvězdičku (*).
@@ -75,9 +75,9 @@ I když můžete soubory ukládat mnoha různými způsoby, můžete je v tomto 
 
 ### <a name="create-the-customization-files"></a>Vytvoření souborů vlastního nastavení
 
-Chcete-li přizpůsobit uživatelské rozhraní prostředí pro registraci, začněte tím, že vytvoříte jednoduchý soubor HTML a CSS. HTML můžete nakonfigurovat způsobem, který chcete, ale musí mít element **div** s identifikátorem `api`. Například, `<div id="api"></div>`. Azure AD B2C vloží prvky do kontejneru `api` při zobrazení stránky.
+Chcete-li přizpůsobit uživatelské rozhraní prostředí pro registraci, začněte tím, že vytvoříte jednoduchý soubor HTML a CSS. HTML můžete nakonfigurovat způsobem, který chcete, ale musí mít element **div** s identifikátorem `api`. například `<div id="api"></div>`. Azure AD B2C vloží prvky do kontejneru `api` při zobrazení stránky.
 
-1. V místní složce vytvořte následující soubor a ujistěte se, že jste změnili `your-storage-account` na název účtu úložiště a `your-container` na název vytvořeného kontejneru. Například, `https://store1.blob.core.windows.net/b2c/style.css`.
+1. V místní složce vytvořte následující soubor a ujistěte se, že jste změnili `your-storage-account` na název účtu úložiště a `your-container` na název vytvořeného kontejneru. například `https://store1.blob.core.windows.net/b2c/style.css`.
 
     ```html
     <!DOCTYPE html>

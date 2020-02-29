@@ -3,20 +3,20 @@ title: Konfigurace toku přihlašovacích údajů k heslům vlastníka prostřed
 titleSuffix: Azure AD B2C
 description: Naučte se konfigurovat tok přihlašovacích údajů vlastníka prostředku (ROPC) pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: df6f8ce22e8215a0727db7f69e0f6e5c3f5fc9e0
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 55b4750d2c601a4d3c66bcd8235a9718d6daaf9d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77917386"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186985"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurace toku přihlašovacích údajů pro heslo vlastníka prostředku v Azure Active Directory B2C pomocí vlastní zásady
 
@@ -301,7 +301,7 @@ Sestavte následné volání jako tu, který je zde zobrazen. Použijte informac
 | grant_type | refresh_token |
 | response_type | id_token |
 | client_id | `application-id` |
-| prostředek | `application-id` |
+| resource | `application-id` |
 | refresh_token | `refresh-token` |
 
 - Nahraďte `application-id` ID aplikace z registrace *ROPC_Auth_app* .

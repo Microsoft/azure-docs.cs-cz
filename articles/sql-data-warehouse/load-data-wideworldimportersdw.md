@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: načtení dat pomocí Azure Portal & SSMS'
-description: Kurz používá Azure Portal a SQL Server Management Studio k načtení datového skladu WideWorldImportersDW z globálního objektu blob Azure do Azure SQL Data Warehouse.
+description: Kurz používá Azure Portal a SQL Server Management Studio k načtení datového skladu WideWorldImportersDW z globálního objektu blob Azure do fondu SQL Azure synapse Analytics.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: load-data
 ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: a2adc2acdb9c1d850bb12833540ed8da51701e58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, synapse-analytics
+ms.openlocfilehash: 8e58c315ddc171ba19e0bce1cea4f694691f946e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75370132"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193556"
 ---
-# <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat do služby Azure SQL Data Warehouse
+# <a name="tutorial-load-data-to--azure-synapse-analytics-sql-pool"></a>Kurz: načtení dat do fondu SQL ve službě Azure synapse Analytics
 
-Tento kurz využívá PolyBase k načtení databáze datového skladu WideWorldImportersDW z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k:
+V tomto kurzu se používá základ k načtení datového skladu WideWorldImportersDW ze služby Azure Blob Storage do datového skladu ve fondu SQL Azure synapse Analytics. Tento kurz používá [Azure Portal](https://portal.azure.com) a aplikaci [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) k:
 
 > [!div class="checklist"]
-> * Vytvoření datového skladu na webu Azure Portal
+> * Vytvořte datový sklad pomocí fondu SQL ve Azure Portal
 > * Vytvořit pravidlo brány firewall na úrovni serveru na webu Azure Portal
-> * Připojení k datovému skladu pomocí SSMS
+> * Připojení ke fondu SQL pomocí SSMS
 > * Vytvoření vyhrazeného uživatele pro načítání dat
 > * Vytvoření externích tabulek, které jako zdroj dat používají objekt blob Azure
 > * Načtení dat do datového skladu pomocí příkazu T-SQL CTAS
@@ -33,7 +33,7 @@ Tento kurz využívá PolyBase k načtení databáze datového skladu WideWorldI
 > * Vygenerování ročního objemu dat v tabulce dimenzí Date a tabulce faktů Sales
 > * Vytvoření statistik pro nově načtená data
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -41,35 +41,32 @@ Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi apl
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-data-warehouse"></a>Vytvořit prázdnou SQL Data Warehouse
+## <a name="create-a-blank-data-warehouse-in-sql-pool"></a>Vytvoření prázdného datového skladu ve fondu SQL
 
-Vytvoří se Azure SQL Data Warehouse s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Databáze se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) a na [logickém serveru SQL Azure](../sql-database/sql-database-features.md). 
+Vytvoří se fond SQL s definovanou sadou [výpočetních prostředků](memory-concurrency-limits.md). Fond SQL se vytvoří v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) a na [logickém serveru Azure SQL](../sql-database/sql-database-features.md). 
 
-Pomocí těchto kroků můžete vytvořit prázdnou SQL Data Warehouse. 
+Pomocí těchto kroků vytvořte prázdný fond SQL. 
 
-1. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
+1. Vyberte **vytvořit prostředek** v Azure Portal.
 
-2. Na stránce **Nový** vyberte **Databáze** a v části **Doporučené** na stránce **Nový** vyberte **SQL Data Warehouse**.
+1. Na stránce **Nový** vyberte **databáze** a v části **Doporučené** na **nové** stránce vyberte **Azure synapse Analytics** .
 
-    ![vytvoření datového skladu](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
+    ![vytvořit fond SQL](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
-3. Do formuláře služby SQL Data Warehouse zadejte následující informace:   
+1. Vyplňte část **Podrobnosti projektu** s následujícími informacemi:   
 
-   | Nastavení | Navrhovaná hodnota | Popis | 
-   | ------- | --------------- | ----------- | 
-   | **Název databáze** | SampleDW | Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers). | 
+   | Nastavení | Příklad | Popis | 
+   | ------- | --------------- | ----------- |
    | **Předplatné** | Vaše předplatné  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
-   | **Skupina prostředků** | SampleRG | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
-   | **Výběr zdroje** | Prázdná databáze | Určuje, že se má vytvořit prázdná databáze. Poznámka: datový sklad je jedním z typů databáze.|
+   | **Skupina prostředků** | myResourceGroup | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
 
-    ![vytvoření datového skladu](media/load-data-wideworldimportersdw/create-data-warehouse.png)
-
-4. Klikněte na **Server** a vytvořte a nakonfigurujte nový server pro novou databázi. Do **formuláře Nový server** zadejte následující informace: 
+1. V části **Podrobnosti o fondu SQL**zadejte název vašeho fondu SQL. Dále vyberte existující server z rozevírací nabídky nebo vyberte **vytvořit nový** v části nastavení **serveru** pro vytvoření nového serveru. Do formuláře zadejte následující informace: 
 
     | Nastavení | Navrhovaná hodnota | Popis | 
     | ------- | --------------- | ----------- |
+    |**Název fondu SQL**|SampleDW| Platné názvy databází najdete v tématu [Identifikátory databází](/sql/relational-databases/databases/database-identifiers). | 
     | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). | 
     | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [Identifikátory databází](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers).|
     | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň osm znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
@@ -77,67 +74,52 @@ Pomocí těchto kroků můžete vytvořit prázdnou SQL Data Warehouse.
 
     ![vytvoření databázového serveru](media/load-data-wideworldimportersdw/create-database-server.png)
 
-5. Klikněte na **Vybrat**.
+1. **Vyberte úroveň výkonu**. Posuvník je ve výchozím nastavení nastaven na **DW1000c**. Posunutím posuvníku nahoru a dolů vyberte požadované škálování výkonu. 
 
-6. Klikněte na **úroveň výkonu** , abyste určili, jestli je datový sklad Gen1 nebo Gen2, a kolik jednotek datového skladu. 
+    ![vytvoření databázového serveru](media/load-data-wideworldimportersdw/create-data-warehouse.png)
 
-7. Pro tento kurz vyberte úroveň služby **Gen1** . Posuvník je ve výchozím nastavení nastavený na hodnotu **DW400**.  Zkuste jeho posouváním hodnotu zvýšit a snížit a podívejte se, jak funguje. 
+1. Na stránce **Další nastavení** nastavte možnost **použít existující data** na žádná a ponechte **kolaci** ve výchozím nastavení *SQL_Latin1_General_CP1_CI_AS*. 
 
-    ![konfigurace výkonu](media/load-data-wideworldimportersdw/configure-performance.png)
+1. Výběrem možnosti **zkontrolovat + vytvořit** zkontrolujte nastavení a pak vyberte **vytvořit** a vytvořte datový sklad. Průběh můžete sledovat otevřením stránky **probíhá nasazení v** nabídce **oznámení** . 
 
-8. Klikněte na tlačítko **Použít**.
-9. Na stránce služby SQL Data Warehouse vyberte **kolaci** pro prázdnou databázi. Pro účely tohoto kurzu použijte výchozí hodnotu. Další informace o kolacích najdete v tématu [Kolace](/sql/t-sql/statements/collations).
-
-11. Po vyplnění formuláře pro SQL Database klikněte na **Vytvořit** a databázi zřiďte. Zřizování trvá několik minut. 
-
-    ![kliknutí na Vytvořit](media/load-data-wideworldimportersdw/click-create.png)
-
-12. Na panelu nástrojů klikněte na **Oznámení** a sledujte proces nasazení.
-    
      ![oznámení](media/load-data-wideworldimportersdw/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>Vytvoření pravidla brány firewall na úrovni serveru
 
-Služba SQL Data Warehouse vytvoří bránu firewall na úrovni serveru, aby zabránila externím aplikacím a nástrojům v připojení k serveru nebo ke kterékoli databázi na serveru. Pokud chcete umožnit připojení, můžete přidat pravidla brány firewall, která povolí připojení z konkrétních IP adres.  Postupujte podle těchto pokynů a vytvořte [pravidlo brány firewall na úrovni serveru](../sql-database/sql-database-firewall-configure.md) pro IP adresu vašeho klienta. 
+Služba Azure synapse Analytics vytvoří bránu firewall na úrovni serveru, která zabraňuje externím aplikacím a nástrojům v připojení k serveru nebo jakékoli databázi na serveru. Pokud chcete umožnit připojení, můžete přidat pravidla brány firewall, která povolí připojení z konkrétních IP adres.  Postupujte podle těchto pokynů a vytvořte [pravidlo brány firewall na úrovni serveru](../sql-database/sql-database-firewall-configure.md) pro IP adresu vašeho klienta. 
 
 > [!NOTE]
-> SQL Data Warehouse komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
+> Fond SQL Azure synapse Analytics komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud je to tak, nebudete se moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433.
 >
 
-1. Po dokončení nasazení klikněte v nabídce na levé straně na **Databáze SQL** a pak na stránce **Databáze SQL** klikněte na **SampleDW**. Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný název serveru (například **sample-svr.database.windows.net**) a možnosti pro další konfiguraci. 
 
-2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a jeho databázím v následujících rychlých startech. Pokud chcete otevřít nastavení serveru, klikněte na název serveru.
+1. Po dokončení nasazení vyhledejte název svého fondu v poli Hledat v navigační nabídce a vyberte prostředek fondu SQL. Vyberte název serveru. 
 
-    ![vyhledání názvu serveru](media/load-data-wideworldimportersdw/find-server-name.png) 
+    ![Přejít k prostředku](media/load-data-wideworldimportersdw/search-for-sql-pool.png) 
 
-3. Pokud chcete otevřít nastavení serveru, klikněte na název serveru.
+1. Vyberte název serveru. 
+    ![název serveru](media/load-data-wideworldimportersdw/find-server-name.png) 
+
+1. Vyberte možnost **Zobrazit nastavení brány firewall**. Otevře se stránka **nastavení brány firewall** pro server fondu SQL. 
 
     ![nastavení serveru](media/load-data-wideworldimportersdw/server-settings.png) 
 
-5. Klikněte na **Zobrazit nastavení brány firewall**. Otevře se stránka **Nastavení brány firewall** pro server služby SQL Database. 
+1. Na stránce **brány firewall a virtuální sítě** vyberte **Přidat IP adresu klienta** a přidejte tak aktuální IP adresu do nového pravidla brány firewall. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
 
     ![pravidlo brány firewall serveru](media/load-data-wideworldimportersdw/server-firewall-rule.png) 
 
-4.  Pokud chcete do nového pravidla brány firewall přidat svou aktuální IP adresu, klikněte na **Přidat IP adresu klienta** na panelu nástrojů. Pravidlo brány firewall může otevřít port 1433 pro jednu IP adresu nebo rozsah IP adres.
+1. Vyberte **Save** (Uložit). Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
 
-5. Klikněte na možnost **Uložit**. Vytvoří se pravidlo brány firewall na úrovni serveru pro vaši aktuální IP adresu, které otevře port 1433 na logickém serveru.
-
-6. Klikněte na **OK** a pak zavřete stránku **Nastavení brány firewall**.
-
-Pomocí této IP adresy se teď můžete připojit k serveru SQL a jeho datovým skladům. Připojení funguje z aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Při připojování použijte účet správce serveru, který jste předtím vytvořili.  
+Nyní se můžete připojit k serveru SQL pomocí klientské IP adresy. Připojení funguje z aplikace SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Při připojování použijte účet správce serveru, který jste předtím vytvořili.  
 
 > [!IMPORTANT]
 > Standardně je přístup přes bránu firewall služby SQL Database povolený pro všechny služby Azure. Pokud chcete bránu firewall zakázat pro všechny služby Azure, klikněte na této stránce na **VYPNUTO** pak klikněte na **Uložit**.
 
 ## <a name="get-the-fully-qualified-server-name"></a>Získání plně kvalifikovaného názvu serveru
 
-Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. Tento plně kvalifikovaný název použijete později při připojování k serveru.
+Plně kvalifikovaný název serveru slouží k připojení k serveru. V Azure Portal otevřete prostředek fondu SQL a v části **název serveru**si zobrazte plně kvalifikovaný název.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
-2. V nabídce vlevo vyberte **SQL Database** a na stránce **Databáze SQL** klikněte na vaši databázi. 
-3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název mynewserver-20171113.database.windows.net. 
-
-    ![informace o připojení](media/load-data-wideworldimportersdw/find-server-name.png)  
+![název serveru](media/load-data-wideworldimportersdw/find-server-name.png) 
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Připojení k serveru jako správce serveru
 
@@ -150,9 +132,9 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
     | Nastavení      | Navrhovaná hodnota | Popis | 
     | ------------ | --------------- | ----------- | 
     | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
-    | Název serveru | Plně kvalifikovaný název serveru | Plně kvalifikovaný název serveru je například **sample-svr.database.windows.net**. |
-    | Ověření | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
-    | Přihlášení | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
+    | Název serveru | Plně kvalifikovaný název serveru | Například **sqlpoolservername.Database.Windows.NET** je plně kvalifikovaný název serveru. |
+    | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
+    | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
     | Heslo | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
 
     ![Připojení k serveru](media/load-data-wideworldimportersdw/connect-to-server.png)
@@ -165,7 +147,7 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
 
 ## <a name="create-a-user-for-loading-data"></a>Vytvoření uživatele pro načítání dat
 
-Účet správce serveru slouží k provádění operací správy a není vhodný pro spouštění dotazů na uživatelská data. Načítání dat je operace s vysokými nároky na paměť. Maximální hodnoty paměti se definují v závislosti na generaci služby SQL Data Warehouse, kterou využíváte, [jednotkách datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) a [třídě prostředků](resource-classes-for-workload-management.md). 
+Účet správce serveru slouží k provádění operací správy a není vhodný pro spouštění dotazů na uživatelská data. Načítání dat je operace s vysokými nároky na paměť. Maximální velikost paměti je definována podle generace fondu SQL, který používáte, [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md)a [třídy prostředků](resource-classes-for-workload-management.md). 
 
 Doporučujeme vytvořit účet a uživatele vyhrazeného pro načítání dat. Pak přidejte uživatele načítání do [třídy prostředků](resource-classes-for-workload-management.md), která umožňuje odpovídající maximální přidělení paměti.
 
@@ -216,7 +198,7 @@ Prvním krokem k načítání dat je přihlášení jako LoaderRC60.
 
 ## <a name="create-external-tables-and-objects"></a>Vytvoření externích tabulek a objektů
 
-Teď jste připraveni zahájit proces načítání dat do svého nového datového skladu. Informace o přesunu dat do úložiště objektů blob v Azure nebo jejich načtení přímo ze zdroje do služby SQL Data Warehouse najdete pro budoucí použití v tématu obsahujícím [přehled načítání](sql-data-warehouse-overview-load.md).
+Teď jste připraveni zahájit proces načítání dat do svého nového datového skladu. Další informace o tom, jak získat data do služby Azure Blob Storage nebo načíst je přímo ze zdroje do fondu SQL, najdete v [přehledu načítání](sql-data-warehouse-overview-load.md).
 
 Spuštěním následujících skriptů SQL zadejte informace o datech, která chcete načíst. Tyto informace zahrnují umístění dat, formát obsahu dat a definici tabulky pro data. Data se nacházejí v globálním objektu blob Azure.
 
@@ -266,7 +248,7 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
     CREATE SCHEMA wwi;
     ```
 
-7. Vytvořte externí tabulky. Definice tabulek se ukládají ve službě SQL Data Warehouse, ale tabulky odkazují na data uložená v úložišti objektů blob v Azure. Spuštěním následujících příkazů T-SQL vytvořte několik externích tabulek odkazujících na objekt blob Azure, který jste dříve definovali v externím zdroji dat.
+7. Vytvořte externí tabulky. Definice tabulek jsou uložené v databázi, ale tabulky odkazují na data uložená v úložišti objektů BLOB v Azure. Spuštěním následujících příkazů T-SQL vytvořte několik externích tabulek odkazujících na objekt blob Azure, který jste dříve definovali v externím zdroji dat.
 
     ```sql
     CREATE EXTERNAL TABLE [ext].[dimension_City](
@@ -545,15 +527,15 @@ Spuštěním následujících skriptů SQL zadejte informace o datech, která ch
 
     ![Zobrazení externích tabulek](media/load-data-wideworldimportersdw/view-external-tables.png)
 
-## <a name="load-the-data-into-your-data-warehouse"></a>Načtení dat do datového skladu
+## <a name="load-the-data-into-sql-pool"></a>Načtení dat do fondu SQL
 
-V této části se používají externí tabulky, které jste definovali k načtení ukázkových dat z objektu blob Azure do SQL Data Warehouse.  
+V této části se používají externí tabulky, které jste definovali pro načtení ukázkových dat z Azure Blob do fondu SQL.  
 
 > [!NOTE]
 > V tomto kurzu se data načítají přímo do konečné tabulky. V produkčním prostředí budete obvykle používat příkaz CREATE TABLE AS SELECT k načtení dat do pracovní tabulky. Zatímco jsou data v pracovní tabulce, můžete provést všechny potřebné transformace. K připojení dat v pracovní tabulce do provozní tabulky můžete použít příkaz INSERT...SELECT. Další informace najdete v tématu popisujícím [vkládání dat do provozní tabulky](guidance-for-loading-data.md#inserting-data-into-a-production-table).
 > 
 
-Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) načítá data z Azure Storage Blob do nových tabulek ve vašem datovém skladu. Příkaz CTAS vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT. Když příkaz SELECT provádí výběr z externí tabulky, SQL Data Warehouse importuje data do relační tabulky v datovém skladu. 
+Tento skript pomocí příkazu T-SQL [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) načítá data z Azure Storage Blob do nových tabulek ve vašem datovém skladu. Příkaz CTAS vytvoří novou tabulku na základě výsledků příkazu SELECT. Nová tabulka obsahuje stejné sloupce a datové typy jako výsledky příkazu SELECT. Když příkaz SELECT vybere z externí tabulky, data se naimportují do relační tabulky v datovém skladu. 
 
 Tento skript nenačítá data do tabulek WWI. dimension_Date a WWI. fact_Sale. Tyto tabulky se vygenerují v pozdějším kroku, aby mohly obsahovat velké množství řádků.
 
@@ -704,7 +686,7 @@ Tento skript nenačítá data do tabulek WWI. dimension_Date a WWI. fact_Sale. T
     ;
     ```
 
-2. Zobrazte data během načítání. Provedete načtení několika GB dat a jejich kompresi do vysoce výkonných clusterovaných indexů columnstore. Otevřete nové okno dotazu pro SampleDW a spuštěním následujícího dotazu zobrazte stav načítání. Po spuštění dotazu si udělejte přestávku na kávu, zatímco SQL Data Warehouse bude dělat namáhavou práci.
+2. Zobrazte data během načítání. Provedete načtení několika GB dat a jejich kompresi do vysoce výkonných clusterovaných indexů columnstore. Otevřete nové okno dotazu pro SampleDW a spuštěním následujícího dotazu zobrazte stav načítání. Po spuštění dotazu Vezměte káva a kávu, zatímco je ve fondu SQL nějaká těžká zvedání.
 
     ```sql
     SELECT
@@ -977,7 +959,8 @@ Pomocí uložených procedur, které jste vytvořili, můžete vygenerovat milio
     ```
 
 ## <a name="populate-the-replicated-table-cache"></a>Naplnění mezipaměti replikované tabulky
-SQL Data Warehouse replikuje tabulku uložením dat do mezipaměti na každém výpočetním uzlu. Mezipaměť se naplní při spuštění dotazu na tabulku. Proto může první dotaz na replikovanou tabulku vyžadovat čas navíc k naplnění mezipaměti. Po naplnění mezipaměti budou dotazy na replikované tabulky rychlejší.
+
+Fond SQL replikuje tabulku tím, že ukládá data do mezipaměti do každého výpočetního uzlu. Mezipaměť se naplní při spuštění dotazu na tabulku. Proto může první dotaz na replikovanou tabulku vyžadovat čas navíc k naplnění mezipaměti. Po naplnění mezipaměti budou dotazy na replikované tabulky rychlejší.
 
 Spuštěním těchto dotazů SQL naplňte mezipaměť replikované tabulky na výpočetních uzlech. 
 
@@ -1112,16 +1095,16 @@ V tomto kurzu jste se naučili vytvořit datový sklad a uživatele pro načít�
 
 Provedli jste tyto akce:
 > [!div class="checklist"]
-> * Vytvoření datového skladu na webu Azure Portal
+> * Vytvořili jste datový sklad pomocí fondu SQL ve Azure Portal
 > * Vytvořit pravidlo brány firewall na úrovni serveru na webu Azure Portal
-> * Připojení k datovému skladu pomocí SSMS
+> * Připojeno ke fondu SQL pomocí SSMS
 > * Vytvoření vyhrazeného uživatele pro načítání dat
 > * Vytvoření externích tabulek pro data v Azure Storage Blob
 > * Načtení dat do datového skladu pomocí příkazu T-SQL CTAS
 > * Zobrazení průběhu nahrávání dat
 > * Vytvoření statistik pro nově načtená data
 
-Přejděte na přehled vývoje, kde se dozvíte, jak migrovat existující databázi do SQL Data Warehouse.
+Přejděte na přehled vývoje, kde se dozvíte, jak migrovat existující databázi do fondu Azure synapse SQL.
 
 > [!div class="nextstepaction"]
->[Rozhodnutí o návrhu migrace stávající databáze na SQL Data Warehouse](sql-data-warehouse-overview-develop.md)
+>[Rozhodnutí o návrhu migrace stávající databáze do fondu SQL](sql-data-warehouse-overview-develop.md)

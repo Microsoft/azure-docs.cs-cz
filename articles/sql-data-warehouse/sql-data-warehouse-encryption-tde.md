@@ -1,6 +1,6 @@
 ---
 title: Transparentní šifrování dat (portál)
-description: Transparentní šifrování dat (TDE) v SQL Data Warehouse
+description: Transparentní šifrování dat (TDE) ve službě Azure synapse Analytics
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,17 +11,17 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4435c5f246d6dd20fd0b2c560634f6980d6aa2ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c121f9c16895a749922525d1ba85ee2c2e60cfb0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685784"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195852"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde-in-sql-data-warehouse"></a>Začínáme s transparentní šifrování dat (TDE) v SQL Data Warehouse
+# <a name="get-started-with-transparent-data-encryption-tde"></a>Začínáme s transparentní šifrování dat (TDE)
 > [!div class="op_single_selector"]
 > * [Přehled zabezpečení](sql-data-warehouse-overview-manage-security.md)
-> * [Autentizace](sql-data-warehouse-authentication.md)
+> * [Ověřování](sql-data-warehouse-authentication.md)
 > * [Šifrování (portál)](sql-data-warehouse-encryption-tde.md)
 > * [Šifrování (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 > 
@@ -31,7 +31,7 @@ ms.locfileid: "73685784"
 Pokud chcete povolit transparentní šifrování dat (TDE), musíte být správcem nebo členem role dbmanager.
 
 ## <a name="enabling-encryption"></a>Povolení šifrování
-Pokud chcete povolit TDE SQL Data Warehouse, postupujte podle následujících kroků:
+Pokud chcete povolit TDE, postupujte podle následujících kroků:
 
 1. Otevřete databázi v [Azure Portal](https://portal.azure.com)
 2. V okně databáze klikněte na tlačítko **Nastavení** .
@@ -41,7 +41,7 @@ Pokud chcete povolit TDE SQL Data Warehouse, postupujte podle následujících k
    ![][3]  
 
 ## <a name="disabling-encryption"></a>Zakázání šifrování
-Pokud chcete zakázat TDE SQL Data Warehouse, postupujte podle následujících kroků:
+Pokud chcete zakázat TDE, postupujte podle následujících kroků:
 
 1. Otevřete databázi v [Azure Portal](https://portal.azure.com)
 2. V okně databáze klikněte na tlačítko **Nastavení** .
@@ -53,13 +53,13 @@ Pokud chcete zakázat TDE SQL Data Warehouse, postupujte podle následujících 
 ## <a name="encryption-dmvs"></a>Zobrazení dynamické správy šifrování
 Šifrování lze potvrdit pomocí následujících zobrazení dynamické správy:
 
-* [sys.databases]
-* [sys.dm_pdw_nodes_database_encryption_keys]
+* [sys. databases]
+* [sys. dm_pdw_nodes_database_encryption_keys]
 
 <!--MSDN references-->
 [Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-[sys.databases]: https://msdn.microsoft.com/library/ms178534.aspx
-[sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
+[sys. databases]: https://msdn.microsoft.com/library/ms178534.aspx
+[sys. dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png

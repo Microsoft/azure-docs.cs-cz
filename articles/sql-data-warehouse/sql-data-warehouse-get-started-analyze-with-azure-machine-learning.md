@@ -1,22 +1,23 @@
 ---
 title: Analýza dat pomocí Azure Machine Learning
-description: Pomocí Azure Machine Learning sestavte prediktivní model Machine Learning založený na datech uložených v datovém skladu SQL Azure.
+description: Pomocí Azure Machine Learning můžete vytvořit prediktivní model strojového učení založený na datech uložených v Azure synapse.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: integration
-ms.date: 03/22/2019
+ms.date: 02/05/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 892d4642d700949d1d1169c69926021c751cef67
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+tag: azure-Synapse
+ms.openlocfilehash: f6765fdbb65f62bb790d1e8781512db572170b10
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721281"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195885"
 ---
 # <a name="analyze-data-with-azure-machine-learning"></a>Analýza dat pomocí Azure Machine Learning
 > [!div class="op_single_selector"]
@@ -28,7 +29,7 @@ ms.locfileid: "76721281"
 > 
 > 
 
-Tento kurz používá Azure Machine Learning k sestavení prediktivního modelu Machine Learning založeného na datech uložených v datovém skladu SQL Azure. Konkrétně tento postup sestaví cílenou marketingovou kampaň společnosti Adventure Works, prodejny kol, odhadnutím toho, jaká je pravděpodobnost, že si zákazník koupí kolo.
+V tomto kurzu se používá Azure Machine Learning k sestavení prediktivního modelu strojového učení na základě dat uložených v Azure synapse. Konkrétně tento postup sestaví cílenou marketingovou kampaň společnosti Adventure Works, prodejny kol, odhadnutím toho, jaká je pravděpodobnost, že si zákazník koupí kolo.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Integrating-Azure-Machine-Learning-with-Azure-SQL-Data-Warehouse/player]
 > 
@@ -37,7 +38,7 @@ Tento kurz používá Azure Machine Learning k sestavení prediktivního modelu 
 ## <a name="prerequisites"></a>Předpoklady
 Pro jednotlivé kroky v tomto kurzu budete potřebovat:
 
-* SQL Data Warehouse s předem načtenými vzorovými daty AdventureWorksDW. Ke zřízení této konfigurace použijte článek [Vytvoření SQL Data Warehouse](create-data-warehouse-portal.md) a zvolte načtení ukázkových dat. Pokud už Data Warehouse máte, ale nemáte ukázková data, můžete [ukázková data načíst ručně](sql-data-warehouse-load-sample-databases.md).
+* Fond SQL předem načtený pomocí ukázkových dat AdventureWorksDW. Pokud to chcete zřídit, přečtěte si téma [Vytvoření fondu SQL](create-data-warehouse-portal.md) a výběr načtení ukázkových dat. Pokud už Data Warehouse máte, ale nemáte ukázková data, můžete [ukázková data načíst ručně](sql-data-warehouse-load-sample-databases.md).
 
 ## <a name="1-get-the-data"></a>1. získání dat
 Data jsou v zobrazení dbo.vTargetMail v databázi AdventureWorksDW. Postup načtení těchto dat:
@@ -46,7 +47,7 @@ Data jsou v zobrazení dbo.vTargetMail v databázi AdventureWorksDW. Postup nač
 2. V levé dolní části obrazovky klikněte na **+ Nový** a vyberte **prázdný experiment**.
 3. Zadejte název svého experimentu: Cílený marketing.
 4. Přetáhněte modul **Import dat** do pole **vstup a výstup dat** z podokna moduly na plátno.
-5. V podokně vlastností zadejte podrobné informace o vaší databázi SQL Data Warehouse.
+5. V podokně Vlastnosti zadejte podrobnosti o vašem fondu SQL.
 6. Zadejte databázový **dotaz** pro načtení data, která vás zajímají.
 
 ```sql
@@ -128,7 +129,7 @@ Uvidíte, že se do testovací datové sady přidaly další dva sloupce.
 * Scored Probabilities (Vyhodnocené pravděpodobnosti): Pravděpodobnost, že si zákazník koupí kolo.
 * Scored Labels (Popisky vyhodnocení): Klasifikace prováděná modelem – kupující (1) nebo nekupující (0) kolo. Tato prahová hodnota pravděpodobnosti pro popisky je nastavena na 50 % a je možné ji upravit.
 
-Při porovnání sloupce BikeBuyer (skutečnost) s popisky vyhodnocení (předpověď) můžete vidět, jaká byla úspěšnost modelu. Dále můžete tento model použít k vytvoření předpovědi pro nové zákazníky a k publikování tohoto modelu jako webové služby nebo k zápisu výsledků zpět do SQL Data Warehouse.
+Při porovnání sloupce BikeBuyer (skutečnost) s popisky vyhodnocení (předpověď) můžete vidět, jaká byla úspěšnost modelu. Dále můžete tento model použít k vytvoření předpovědi pro nové zákazníky a k publikování tohoto modelu jako webové služby nebo k zápisu výsledků zpět do Azure synapse.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o vytváření prediktivních modelů strojového učení najdete v tématu [Úvod do strojového učení na platformě Azure](https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/).

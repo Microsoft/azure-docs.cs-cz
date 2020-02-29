@@ -1,25 +1,26 @@
 ---
 title: Průběžná integrace a nasazování
-description: DevOps prostředí databáze podnikové třídy pro SQL Data Warehouse s integrovanou podporou pro průběžnou integraci a nasazování pomocí Azure Pipelines.
+description: DevOps možnosti databáze na podnikové úrovni pro datové sklady s integrovanou podporou pro průběžnou integraci a nasazování pomocí Azure Pipelines.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: integration
-ms.date: 08/28/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a8178e5ff9ff4816ddd422d3c45cfc0e1e0b3d41
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: cb28afc84c423c5c5321a8f948e82f82031888a0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712985"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195936"
 ---
-# <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Průběžná integrace a nasazování pro Azure SQL Data Warehouse
+# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Průběžná integrace a nasazování pro datové sklady
 
-V tomto jednoduchém kurzu se naučíte integrovat projekt databáze SSDT (SQL Server Data Tools) do Azure DevOps a využít Azure Pipelines k nastavení průběžné integrace a nasazování. Tento kurz je druhým krokem při sestavování kanálu průběžné integrace a nasazování pomocí SQL Data Warehouse. 
+V tomto jednoduchém kurzu se naučíte integrovat projekt databáze SSDT (SQL Server Data Tools) do Azure DevOps a využít Azure Pipelines k nastavení průběžné integrace a nasazování. Tento kurz je druhým krokem při sestavování kanálu průběžné integrace a nasazování pro datové sklady. 
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -61,7 +62,7 @@ V tomto okamžiku máte jednoduché prostředí, kde jakékoli vrácení se změ
 
 ## <a name="next-steps"></a>Další kroky
 
-- Prozkoumat [architekturu Azure SQL Data Warehouse](massively-parallel-processing-mpp-architecture.md)
-- Rychlé [vytvoření SQL Data Warehouse](create-data-warehouse-portal.md)
+- Prozkoumat [architekturu MPP SQL Analytics](massively-parallel-processing-mpp-architecture.md)
+- Rychlé [Vytvoření fondu SQL](create-data-warehouse-portal.md)
 - [Načíst ukázková data](sql-data-warehouse-load-sample-databases.md)
 - Prozkoumat [videa](/azure/sql-data-warehouse/sql-data-warehouse-videos)

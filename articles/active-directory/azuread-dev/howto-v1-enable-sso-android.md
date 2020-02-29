@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 37055d9b59d49091261109e3553f99bcc03d8e14
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 48c28831d1fbbfc4fe78ebe12e5a158a8259cf44
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164575"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190292"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Postupy: povolení jednotného přihlašování mezi aplikacemi v Androidu pomocí ADAL
 
@@ -60,7 +60,7 @@ Pokud je na zařízení nainstalovaný kompatibilní zprostředkovatel, jako je 
 
 #### <a name="how-microsoft-ensures-the-application-is-valid"></a>Jak Microsoft zajišťuje platnost aplikace
 
-Je nutné zajistit, aby identita aplikace volala zprostředkovatel pro zabezpečení poskytnuté v přihlašováních s asistencí pro zprostředkovatele. iOS a Android vynutil jedinečné identifikátory, které jsou platné jenom pro danou aplikaci, takže škodlivé aplikace můžou mít falešný identifikátor aplikace a získají tokeny určené pro legitimní aplikaci. Pro zajištění, že společnost Microsoft vždy komunikuje se správnou aplikací za běhu, je vývojář požádán o poskytnutí vlastní redirectURI při registraci své aplikace v Microsoftu. **Jak by měli vývojáři vytvořit tento identifikátor URI přesměrování, je podrobněji popsán níže.** Tento vlastní redirectURI obsahuje kryptografický otisk certifikátu aplikace a je zajištěný jedinečným pro aplikaci Obchod Google Play. Když aplikace volá zprostředkovatele, vyžádá si operační systém Android, aby mu poskytl kryptografický otisk certifikátu, který se volal jako zprostředkovatel. Zprostředkovatel poskytuje tomuto kryptografickému otisku certifikátu Microsoftu volání do systému identit. Pokud kryptografický otisk certifikátu aplikace neodpovídá kryptografickému otisku certifikátu, který nám poskytl vývojář během registrace, přístup k tokenům pro prostředek, který aplikace požaduje, je odepřený. Tato kontrolu zajistí, že tokeny obdrží jenom aplikace zaregistrovaná vývojářem.
+Je nutné zajistit, aby identita aplikace volající zprostředkovateli byla zásadní pro zabezpečení poskytované v přihlašování s asistencí pro zprostředkovatele. iOS a Android vynutil jedinečné identifikátory, které jsou platné jenom pro danou aplikaci, takže škodlivé aplikace můžou mít falešný identifikátor aplikace a získají tokeny určené pro legitimní aplikaci. Pro zajištění, že společnost Microsoft vždy komunikuje se správnou aplikací za běhu, je vývojář požádán o poskytnutí vlastní redirectURI při registraci své aplikace v Microsoftu. **Jak by měli vývojáři vytvořit tento identifikátor URI přesměrování, je podrobněji popsán níže.** Tento vlastní redirectURI obsahuje kryptografický otisk certifikátu aplikace a je zajištěný jedinečným pro aplikaci Obchod Google Play. Když aplikace volá zprostředkovatele, vyžádá si operační systém Android, aby mu poskytl kryptografický otisk certifikátu, který se volal jako zprostředkovatel. Zprostředkovatel poskytuje tomuto kryptografickému otisku certifikátu Microsoftu volání do systému identit. Pokud kryptografický otisk certifikátu aplikace neodpovídá kryptografickému otisku certifikátu, který nám poskytl vývojář během registrace, přístup k tokenům pro prostředek, který aplikace požaduje, je odepřený. Tato kontrolu zajistí, že tokeny obdrží jenom aplikace zaregistrovaná vývojářem.
 
 Zprostředkovaná přihlášení SSO mají následující výhody:
 

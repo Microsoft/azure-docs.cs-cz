@@ -3,20 +3,20 @@ title: Nastavení registrace a přihlášení pomocí účtu WeChat
 titleSuffix: Azure AD B2C
 description: Poskytněte zákazníkům registraci a přihlášení k účtům WeChat ve vašich aplikacích pomocí Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7cbc41247d7b99eb63730ae4326808e64c663e8f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c53210939358255b20d0e976df9c4bff88580a80
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849523"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184430"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu WeChat pomocí Azure Active Directory B2C
 
@@ -43,4 +43,4 @@ Pokud chcete účet WeChat použít jako poskytovatele identity v Azure Active D
 1. Zadejte **název**. Například *WeChat*.
 1. Pro **ID klienta**zadejte ID aplikace WeChat, kterou jste vytvořili dříve.
 1. Pro **tajný klíč klienta**zadejte klíč aplikace, který jste si poznamenali.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).

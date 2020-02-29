@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 108d116500454605f33de201caffc11ae263f74c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6132aab98cc8145cb99cf153c64f20fbac00131c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851498"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197001"
 ---
 # <a name="onboarding-and-installing"></a>Připojování a instalace
 
@@ -30,24 +30,29 @@ Požadavky na Začínáme s analýzou kódu zabezpečení Microsoftu:
 
 ## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>Připojování rozšíření Microsoft Security Code Analysis Extension
 
-- Pokud máte jednu z následujících nabídek podpory, požádejte svého technického manažera o zakoupení nebo prohození stávajících hodin za účelem získání přístupu k rozšíření:
-  - Rozšířená vrstva sjednocené podpory
-  - Úroveň výkonu sjednocené podpory
-  - Premier Support pro vývojáře
-  - Premier Support pro partnery
-  - Premier Support pro podniky
-- Pokud máte jednu z následujících služeb podpory nebo nemáte žádný plán podpory od Microsoftu, musíte upgradovat na opravňující nabídku podpory:
-  - Podpora Azure pro partnery
-  - Podpora Azure na úrovni Basic
-  - Developer Support Azure
-  - Standard Support Azure
-  - Professional Direct Azure
-  - Základní úroveň sjednocené podpory
-- Pokud si chcete koupit opravňující nabídku podpory, navštivte [domovskou stránku naší služby podpory](https://www.microsoft.com/enterprise/services/support).
-- Po dokončení smlouvy o podpoře se obraťte na svého zástupce Technical Account Manager, který vám usnadní práci a vám usnadní shromažďování všech potřebných údajů.
+### <a name="interested-in-purchasing-the-microsoft-security-code-analysis-extension"></a>Uvažujete o nákupu rozšíření pro analýzu kódu zabezpečení společnosti Microsoft?
 
->[!NOTE]
->Pokud nemáte smlouvu o podpoře, pracujeme také na programu pro nákup partnerů, kde můžete využít partnery třetích stran k zakoupení tohoto rozšíření bez nutnosti koupit plán Unified support. [Pošlete nám prosím e-mail](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Onboarding%20Request). abychom nám mohli sdělit, že máte zájem o tuto možnost. Poznamenejte si váš zájem a vraťte se vám, jakmile bude tato možnost k dispozici.
+Pokud máte jednu z následujících nabídek podpory, požádejte svého technického manažera o zakoupení nebo prohození stávajících hodin za účelem získání přístupu k rozšíření:
+
+- Rozšířená vrstva sjednocené podpory
+- Úroveň výkonu sjednocené podpory
+- Premier Support pro vývojáře
+- Premier Support pro partnery
+- Premier Support pro podniky
+
+Pokud nemáte některou z výše uvedených smluv o podpoře, můžete rozšíření koupit od některého z našich partnerů.
+
+**Další kroky:**
+
+Obraťte se na partnera z níže uvedeného seznamu a požádejte ho o zakoupení rozšíření Microsoft Security Code Analysis.
+
+>**Její**
+
+- Zóny – kontaktní údaje: cloudsupport@zones.com
+
+### <a name="become-a-partner"></a>Staňte se partnerem
+
+Tým Microsoft Security Code Analysis je, aby se připojil k partnerům Premier Support Partnerská smlouva. Partneři vám pomůžou zajistit bezpečnější vývoj tohoto rozšíření pro zákazníky, kteří si ho chtějí koupit, ale nemají smlouvu Enterprise support s Microsoftem. Zúčastnění partneři se můžou zaregistrovat [tady](http://www.microsoftpartnersupport.com/msrd/opin).
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Instalace rozšíření Microsoft Security Code Analysis Extension
 

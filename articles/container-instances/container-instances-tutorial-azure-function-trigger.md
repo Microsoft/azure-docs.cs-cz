@@ -4,12 +4,12 @@ description: Vytvoření funkce PowerShellu bez serveru aktivovaného protokolem
 ms.topic: tutorial
 ms.date: 09/20/2019
 ms.custom: ''
-ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 51146886e3f52cb6a60d49da0d57aea1e2c55106
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533373"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196531"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Kurz: použití funkce Azure aktivované protokolem HTTP k vytvoření skupiny kontejnerů
 
@@ -30,7 +30,7 @@ Získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Předpoklady
 
-Požadavky na instalaci a použití Visual Studio Code s Azure Functions v operačním systému najdete [v tématu Vytvoření první funkce PowerShellu v Azure](../azure-functions/functions-create-first-function-powershell.md#prerequisites) .
+Požadavky na instalaci a použití Visual Studio Code s Azure Functions v operačním systému najdete v tématu [Vytvoření první funkce v Azure](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-powershell#configure-your-environment) .
 
 Některé kroky v tomto článku používají rozhraní příkazového řádku Azure CLI. K provedení těchto kroků můžete použít Azure Cloud Shell nebo místní instalaci rozhraní příkazového řádku Azure CLI. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 

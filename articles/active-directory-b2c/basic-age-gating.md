@@ -2,20 +2,20 @@
 title: Povolit omezení stáří v Azure Active Directory B2C | Microsoft Docs
 description: Přečtěte si, jak identifikovat podverze pomocí vaší aplikace.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836232"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189969"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Povolit omezení stáří v Azure Active Directory B2C
 
@@ -31,21 +31,21 @@ Azure AD B2C používá informace, které uživatel zadá, k určení, jestli se
 
 Omezení stáří zahrnuje dvě věkové hodnoty: stáří, které už někdo nepovažuje za nezletilou, a stáří, ve kterém by měl mít uživatel souhlas rodičů. V následující tabulce jsou uvedena věková pravidla, která se používají k definování vedlejších a méně závažného souhlasu.
 
-| Země/oblast | Název země nebo oblasti | Věk pro menší souhlas | Menší stáří |
+| Země nebo oblast | Název země nebo oblasti | Věk pro menší souhlas | Menší stáří |
 | -------------- | ------------------- | ----------------- | --------- |
-| Výchozí | Žádné | Žádné | 18 |
-| AE | Spojené arabské emiráty | Žádné | 21 |
+| Výchozí | Žádná | Žádná | 18 |
+| AE | Spojené arabské emiráty | Žádná | 21 |
 | AT | Rakousko | 14 | 18 |
 | BE | Belgie | 14 | 18 |
 | BG | Bulharsko | 16 | 18 |
-| BH | Bahrajn | Žádné | 21 |
-| CM | Kamerun | Žádné | 21 |
+| BH | Bahrajn | Žádná | 21 |
+| CM | Kamerun | Žádná | 21 |
 | CY | Kypr | 16 | 18 |
 | CZ | Česká republika | 16 | 18 |
-| Německo | Německo | 16 | 18 |
+| DE | Německo | 16 | 18 |
 | DK | Dánsko | 16 | 18 |
 | EE | Estonsko | 16 | 18 |
-| EG | Egypt | Žádné | 21 |
+| EG | Egypt | Žádná | 21 |
 | ES | Španělsko | 13 | 18 |
 | FR | Francie | 16 | 18 |
 | GB | Spojené království | 13 | 18 |
@@ -59,19 +59,19 @@ Omezení stáří zahrnuje dvě věkové hodnoty: stáří, které už někdo ne
 | LU | Lucembursko | 16 | 18 |
 | LV | Lotyšsko | 16 | 18 |
 | MT | Malta | 16 | 18 |
-| není k dispozici | Namibie | Žádné | 21 |
+| Není k dispozici | Namibie | Žádná | 21 |
 | NL | Nizozemsko | 16 | 18 |
 | PL | Polsko | 13 | 18 |
 | PT | Portugalsko | 16 | 18 |
 | RO | Rumunsko | 16 | 18 |
 | SE | Švédsko | 13 | 18 |
-| SG | Singapur | Žádné | 21 |
+| SG | Singapur | Žádná | 21 |
 | SI | Slovinsko | 16 | 18 |
 | SK | Slovensko | 16 | 18 |
-| VTR | Čad | Žádné | 21 |
-| TH | Thajsko | Žádné | 20 |
-| TW | Tchaj-wan | Žádné | 20 |
-| Spojené státy | Spojené státy | 13 | 18 |
+| VTR | Čad | Žádná | 21 |
+| TH | Thajsko | Žádná | 20 |
+| TW | Tchaj-wan | Žádná | 20 |
+| USA | Spojené státy | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Možnosti uzavírání stáří
 

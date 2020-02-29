@@ -1,27 +1,27 @@
 ---
-author: mmacy
+author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
-ms.author: marsma
-ms.openlocfilehash: 59cf0b81363c724d709d85105525bece13743f26
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: mimart
+ms.openlocfilehash: 9d394b07ff17ab24305b2580efc8bedfc5e7d384
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474856"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183367"
 ---
-#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
+#### <a name="applications"></a>[Aplikace](#tab/applications/)
 
 1. Vyberte **aplikace**.
 1. Výběrem aplikace *webapi1* otevřete její stránku **vlastností** .
 1. Vyberte **publikované obory**. Publikované obory lze použít pro udělení určitých oprávnění k webovému rozhraní API klientské aplikaci.
 1. Jako **Rozsah**zadejte `demo.read`a **Popis**zadejte `Read access to the web API`.
 1. Jako **Rozsah**zadejte `demo.write`a **Popis**zadejte `Write access to the web API`.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
 1. Vyberte **Registrace aplikací (Preview)** .
 1. Výběrem aplikace *webapi1* otevřete její stránku **Přehled** .

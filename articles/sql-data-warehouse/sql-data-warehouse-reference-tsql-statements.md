@@ -1,6 +1,6 @@
 ---
 title: Příkazy jazyka T-SQL
-description: Obsahuje odkazy na dokumentaci pro příkazy T-SQL podporované v Azure SQL Data Warehouse.
+description: Obsahuje odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 861675941693697a20da189edebe33d91918782c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d37e1b727829505940b77c7a82293f90050a87c0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685520"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198350"
 ---
-# <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Příkazy T-SQL podporované v Azure SQL Data Warehouse
-Obsahuje odkazy na dokumentaci pro příkazy T-SQL podporované v Azure SQL Data Warehouse.
+# <a name="t-sql-statements-supported-in-sql-analytics"></a>Příkazy T-SQL podporované v SQL Analytics
+Obsahuje odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
 
 ## <a name="data-definition-language-ddl-statements"></a>Příkazy jazyka DDL (Data Definition Language)
 * [ALTER DATABASE](https://msdn.microsoft.com/library/mt204042.aspx)
@@ -55,7 +55,7 @@ Obsahuje odkazy na dokumentaci pro příkazy T-SQL podporované v Azure SQL Data
 * [ODKLÁDACÍ ZOBRAZENÍ](https://msdn.microsoft.com/library/ms173492.aspx)
 * [ZRUŠIT TŘÍDĚNÍ ÚLOH](/sql/t-sql/statements/drop-workload-classifier-transact-sql)
 * [Změňte](https://msdn.microsoft.com/library/mt631611.aspx)
-* [NASTAVENÍ RESULT_SET_CACHING](/sql/t-sql/statements/set-result-set-caching-transact-sql) 
+* [NASTAVIT RESULT_SET_CACHING](/sql/t-sql/statements/set-result-set-caching-transact-sql) 
 * [TRUNCATE TABLE](https://msdn.microsoft.com/library/ms177570.aspx)
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 
@@ -70,11 +70,11 @@ Obsahuje odkazy na dokumentaci pro příkazy T-SQL podporované v Azure SQL Data
 * [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
 * [DBCC SHRINKLOG](https://msdn.microsoft.com/library/mt204020.aspx)
 * [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx)
-* [DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)
+* [PŘÍKAZ DBCC PDW_SHOWMATERIALIZEDVIEWOVERHEAD](/sql/t-sql/database-console-commands/dbcc-pdw-showmaterializedviewoverhead-transact-sql?view=azure-sqldw-latest)
 * [DBCC SHOWRESULTCACHESPACEUSED](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql) (Preview)
-* [DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
-* [DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
-* [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
+* [PŘÍKAZ DBCC PDW_SHOWPARTITIONSTATS](https://msdn.microsoft.com/library/mt204013.aspx)
+* [PŘÍKAZ DBCC PDW_SHOWSPACEUSED](https://msdn.microsoft.com/library/mt204028.aspx)
+* [PŘÍKAZ DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Příkazy dotazů
 * [VYBRALI](https://msdn.microsoft.com/library/ms189499.aspx)
@@ -120,4 +120,4 @@ Obsahuje odkazy na dokumentaci pro příkazy T-SQL podporované v Azure SQL Data
 * [OTEVŘÍT HLAVNÍ KLÍČ](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>Další kroky
-Další referenční informace najdete v tématu [prvky jazyka T-SQL v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md)a [systémová zobrazení v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).
+Další referenční informace najdete v tématu [prvky jazyka T-SQL v SQL Analytics](sql-data-warehouse-reference-tsql-language-elements.md)a [Systémová zobrazení v SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md).

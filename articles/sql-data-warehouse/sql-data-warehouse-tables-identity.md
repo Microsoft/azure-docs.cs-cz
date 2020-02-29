@@ -1,6 +1,6 @@
 ---
 title: Použití IDENTITY k vytváření náhradních klíčů
-description: Doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v Azure SQL Data Warehouse.
+description: Doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,25 +10,25 @@ ms.subservice: development
 ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0ee15b975b5513077b26cceeb80ea3fb8c02456b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: c29b83b3473b8a4224587195587feacf834f2d72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692473"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199423"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-azure-sql-data-warehouse"></a>Použití IDENTITY k vytváření náhradních klíčů v Azure SQL Data Warehouse
+# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>Použití IDENTITY k vytváření náhradních klíčů v SQL Analytics
 
-Doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v Azure SQL Data Warehouse.
+Doporučení a příklady použití vlastnosti IDENTITY k vytváření náhradních klíčů v tabulkách v SQL Analytics.
 
 ## <a name="what-is-a-surrogate-key"></a>Co je náhradní klíč
 
-Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každý řádek. Klíč se negeneruje z dat tabulky. Datové modely, jako je vytváření náhradních klíčů ve svých tabulkách při návrhu modelů datového skladu. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně, aniž by to ovlivnilo výkon zatížení.  
+Náhradní klíč v tabulce je sloupec s jedinečným identifikátorem pro každý řádek. Klíč se negeneruje z dat tabulky. Datové modely, jako je vytváření náhradních klíčů ve svých tabulkách při navrhování modelů SQL Analytics. Vlastnost IDENTITY můžete použít k dosažení tohoto cíle jednoduše a efektivně, aniž by to ovlivnilo výkon zatížení.  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>Vytvoření tabulky se sloupcem IDENTITY
 
-Vlastnost IDENTITY je navržena pro horizontální navýšení kapacity napříč všemi distribucemi v datovém skladu, aniž by to ovlivnilo výkon zatížení. Proto se implementace IDENTITY orientuje směrem k dosažení těchto cílů.
+Vlastnost IDENTITY je navržena pro horizontální navýšení kapacity napříč všemi distribucemi v databázi SQL Analytics, aniž by to ovlivnilo výkon zatížení. Proto se implementace IDENTITY orientuje směrem k dosažení těchto cílů.
 
 Můžete definovat tabulku, která má vlastnost IDENTITY při prvním vytvoření tabulky pomocí syntaxe, která je podobná následujícímu příkazu:
 
@@ -50,7 +50,7 @@ Tato zbývající část této části popisuje drobné odlišnosti implementace
 
 ### <a name="allocation-of-values"></a>Přidělení hodnot
 
-Vlastnost IDENTITY nezaručuje pořadí, ve kterém jsou přiděleny náhradní hodnoty, což odráží chování SQL Server a Azure SQL Database. V Azure SQL Data Warehouse ale neexistence záruky je vyslovější.
+Vlastnost IDENTITY nezaručuje pořadí, ve kterém jsou přiděleny náhradní hodnoty, což odráží chování SQL Server a Azure SQL Database. V rámci SQL Analytics se ale neexistence záruky vysloví.
 
 Následující příklad je ilustrace:
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) se řídí stejným chováním SQL Server, které 
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Explicitní vkládání hodnot do sloupce IDENTITY
 
-SQL Data Warehouse podporuje syntaxi `SET IDENTITY_INSERT <your table> ON|OFF`. Tuto syntaxi můžete použít k explicitnímu vkládání hodnot do sloupce IDENTITY.
+SQL Analytics podporuje syntaxi `SET IDENTITY_INSERT <your table> ON|OFF`. Tuto syntaxi můžete použít k explicitnímu vkládání hodnot do sloupce IDENTITY.
 
 Řada datových modelů, jako je například použití předdefinovaných záporných hodnot pro určité řádky v jejich dimenzích. Příkladem je řádek-1 nebo "Neznámý člen".
 
@@ -161,11 +161,11 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > V tuto chvíli není možné použít `CREATE TABLE AS SELECT` při načítání dat do tabulky se sloupcem IDENTITY.
 >
 
-Další informace o načítání dat najdete v článku [Návrh extrakce, načítání a transformace (ELT) pro Azure SQL Data Warehouse](design-elt-data-loading.md) a [načítání osvědčených postupů](guidance-for-loading-data.md).
+Další informace o načítání dat najdete v tématu [Návrh extrakce, načítání a transformace (ELT) pro SQL Analytics](design-elt-data-loading.md) a [zavedení osvědčených postupů](guidance-for-loading-data.md).
 
 ## <a name="system-views"></a>Systémová zobrazení
 
-Můžete použít zobrazení katalogu [Sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) k identifikaci sloupce, který má vlastnost identity.
+K identifikaci sloupce, který má vlastnost IDENTITY, můžete použít zobrazení katalogu [Sys. identity_columns](/sql/relational-databases/system-catalog-views/sys-identity-columns-transact-sql) .
 
 V tomto příkladu, který vám pomůže lépe pochopit schéma databáze, tento příklad ukazuje, jak integrovat sys. identity_column s dalšími zobrazeními systémového katalogu:
 
@@ -195,7 +195,7 @@ Vlastnost IDENTITY se nedá použít:
 - Pokud je sloupec také distribučním klíčem
 - Když je tabulka externí tabulkou
 
-Následující související funkce nejsou v SQL Data Warehouse podporovány:
+Ve službě SQL Analytics nejsou podporovány následující související funkce:
 
 - [IDENTITA ()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)

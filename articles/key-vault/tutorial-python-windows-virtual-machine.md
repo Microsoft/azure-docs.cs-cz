@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 4078f2a005dcd324fa9c1d31cdca4b1f8337eecd
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3b965ab7dfafd6c78c801cf3692463efe366c852
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988375"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198078"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>Kurz: použití Azure Key Vault s virtuálním počítačem s Windows v Pythonu
 
@@ -36,7 +37,7 @@ Než začnete, přečtěte si téma [Key Vault Basic koncepty](basic-concepts.md
 
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pro Windows, Mac a Linux:
   * [Git](https://git-scm.com/downloads)
@@ -52,7 +53,7 @@ Když povolíte MSI pro službu Azure, například Azure Virtual Machines, Azure
 
 Pokud chcete získat přístupový token, váš kód volá místní službu metadat, která je k dispozici v prostředku Azure. K ověření u Azure Key Vault služby používá váš kód přístupový token, který získá z místního koncového bodu MSI. 
 
-## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
+## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
 Pokud se chcete přihlásit k Azure pomocí Azure CLI, zadejte:
 
@@ -103,7 +104,7 @@ Tento tajný kód ukládá hodnotu **MySecret**.
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 Virtuální počítač můžete vytvořit pomocí jedné z následujících metod:
 
-* [Azure CLI](../virtual-machines/windows/quick-create-cli.md)
+* [Rozhraní příkazového řádku Azure](../virtual-machines/windows/quick-create-cli.md)
 * [PowerShell](../virtual-machines/windows/quick-create-powershell.md)
 * [Azure Portal](../virtual-machines/windows/quick-create-portal.md)
 

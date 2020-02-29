@@ -5,16 +5,18 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: e751b3dd9108d364c900bbd059dc89c1eb3770c4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 37d4c27d3033545c523cefc2f317073af531f095
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722335"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199712"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Typy uzlů Service Fabric Azure a Virtual Machine Scale Sets
 
-Služby [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets) jsou výpočetním prostředkem Azure. Sady škálování můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který definujete v clusteru Azure Service Fabric, nastaví samostatné škálování. Modul runtime Service Fabric se instaluje na každý virtuální počítač ve škále nastaveném rozšířením virtuálního počítače *Microsoft. Azure. ServiceFabric* . Můžete nezávisle škálovat jednotlivé typy uzlů nahoru nebo dolů, měnit skladovou jednotku operačního systému spuštěnou na každém uzlu clusteru, mít různé sady portů otevřené a používat jiné metriky kapacity.
+Služby [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets) jsou výpočetním prostředkem Azure. Sady škálování můžete použít k nasazení a správě kolekce virtuálních počítačů jako sady. Každý typ uzlu, který definujete v clusteru Azure Service Fabric, nastavuje přesně jednu sadu škálování: více typů uzlů nejde zálohovat stejnou sadou škálování a jeden typ uzlu by neměl (ve většině případů) být zálohovaný pomocí více sad škálování. Výjimkou je situace, kdy je v některých případech [vertikální škálování](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) typu uzlu, když dočasně máte dvě sady škálování se stejnou `nodeTypeRef`ovou hodnotou, zatímco repliky se migrují z originálu do upgradované sady škálování.
+
+Modul runtime Service Fabric se instaluje na každý virtuální počítač ve škále nastaveném rozšířením virtuálního počítače *Microsoft. Azure. ServiceFabric* . Můžete nezávisle škálovat jednotlivé typy uzlů nahoru nebo dolů, měnit skladovou jednotku operačního systému spuštěnou na každém uzlu clusteru, mít různé sady portů otevřené a používat jiné metriky kapacity.
 
 Následující obrázek ukazuje cluster, který má dva typy uzlů s názvem *front* -end a *back-end*. Každý typ uzlu má pět uzlů.
 
@@ -30,7 +32,7 @@ Při horizontálním navýšení kapacity se vytvoří nová instance. Nový ná
 
 Pokud jste cluster nasadili v Azure Portal nebo jste použili ukázkovou šablonu Azure Resource Manager, zobrazí se všechny prostředky v rámci skupiny prostředků. Nástroje pro vyrovnávání zatížení můžete zobrazit pro jednotlivé sady škálování nebo typy uzlů. Název nástroje pro vyrovnávání zatížení používá následující formát: **&lt;název typu pro typ uzlu&gt;** . Příklad je sfcluster4doc-0, jak je znázorněno na následujícím obrázku:
 
-![Zdroje a prostředky][Resources]
+![Zdroje][Resources]
 
 ## <a name="service-fabric-virtual-machine-extension"></a>Service Fabric rozšíření virtuálního počítače
 
@@ -72,13 +74,13 @@ Níže jsou uvedeny popisy vlastností:
 
 | **Název** | **Povolené hodnoty** | **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
-| jméno | řetězec | jedinečný název pro rozšíření |
+| jméno | řetězec | Jedinečný název pro rozšíření |
 | type | "ServiceFabricLinuxNode" nebo "ServiceFabricWindowsNode" | Identifikuje Service Fabric operačního systému. |
 | autoUpgradeMinorVersion | true nebo false | Povolit automatický upgrade dílčích verzí SF modulu runtime |
 | publisher | Microsoft.Azure.ServiceFabric | Název vydavatele rozšíření Service Fabric |
 | clusterEndpont | řetězec | Identifikátor URI: PORT pro koncový bod správy |
-| nodeTypeRef | řetězec | název nodeType |
-| durabilityLevel | bronzová, stříbrná, zlatá, Platinum | doba, po kterou je možné pozastavit neproměnlivou infrastrukturu Azure |
+| nodeTypeRef | řetězec | Název nodeType |
+| durabilityLevel | bronzová, stříbrná, zlatá, Platinum | Doba, po kterou je možné pozastavit neproměnlivou infrastrukturu Azure |
 | enableParallelJobs | true nebo false | Povolte výpočetní ParallelJobs, jako je například odebrat virtuální počítač a restartovat virtuální počítač ve stejné sadě škálování paralelně. |
 | nicPrefixOverride | řetězec | Předpona podsítě jako 10.0.0.0/24 |
 | commonNames | řetězec [] | Běžné názvy instalovaných certifikátů clusteru |

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 84ef01b5e7fc3f628b1cdf7a1f13175604ebcdd4
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 60f6443e041c2f3a76a9027bebd33dc29a07f445
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137946"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197466"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Postupy: zjištění mínění pomocí rozhraní API pro analýzu textu
 
@@ -50,7 +50,7 @@ Rozhraní API pro analýzu textu nabízí dvě verze Analýza mínění-v2 a v3.
 | Mínění popisky                        |                       | ×                     |
 | Správa verzí modelů                   |                       | ×                     |
 
-#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
 ### <a name="sentiment-scoring"></a>Bodování mínění
 
@@ -76,10 +76,10 @@ Analýza mínění V3 může vracet skóre a popisky na úrovni věty a dokument
 
 ### <a name="example-c-code"></a>Příklad C# kódu
 
-Můžete najít ukázkovou C# aplikaci, která volá tuto verzi analýza mínění na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/SentimentV3.cs).
+Můžete najít ukázkovou C# aplikaci, která volá tuto verzi analýza mínění na [GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/dotnet/Language/TextAnalyticsSentiment.cs).
 
 
-#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
 ### <a name="sentiment-scoring"></a>Bodování mínění
 
@@ -101,26 +101,26 @@ Velikost dokumentu musí být v rozmezí 5 120 znaků na dokumentu. Pro každou 
 
 Vytvoření žádosti POST. V následujících referenčních odkazech můžete [použít možnost post](text-analytics-how-to-call-api.md) nebo **Konzola pro testování API** k rychlému uspořádání a odeslání jednoho. 
 
-#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
 [Reference Analýza mínění V3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)
 
-#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
 [Reference k Analýza mínění v2](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
 ---
 
-Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Například:
+Nastavte koncový bod HTTPS pro analýzu mínění pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Musíte zahrnout správnou adresu URL pro verzi, kterou chcete použít. Příklad:
 
 > [!NOTE]
 > Klíč a koncový bod pro váš Analýza textu prostředek najdete na webu Azure Portal. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**. 
 
-#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/sentiment`
 
-#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
 
@@ -162,7 +162,7 @@ Analyzátor mínění klasifikuje text jako převládající nebo negativní. P�
 
 Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo uložit výstup do souboru v místním systému. Pak importujte výstup do aplikace, kterou můžete použít k řazení, vyhledávání a manipulaci s daty.
 
-#### <a name="version-30-previewtabversion-3"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
 ### <a name="sentiment-analysis-v3-example-response"></a>Příklad odpovědi Analýza mínění V3
 
@@ -238,7 +238,7 @@ Odpovědi z Analýza mínění V3 obsahují mínění popisky a skóre pro každ
 }
 ```
 
-#### <a name="version-21tabversion-2"></a>[Verze 2,1](#tab/version-2)
+#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
 ### <a name="sentiment-analysis-v2-example-response"></a>Příklad odpovědi Analýza mínění v2
 

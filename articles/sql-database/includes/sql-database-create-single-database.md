@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: mathoma
 ms.reviewer: vanto
-ms.openlocfilehash: 3e2c8a424c9a3744bfb91d03632965c15613a424
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: d800d273cce995c618422a3a9d0934b2657e6ef5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252104"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194290"
 ---
 V tomto kroku vytvoříte Azure SQL Database jedinou databázi. 
 
@@ -20,7 +20,7 @@ V tomto kroku vytvoříte Azure SQL Database jedinou databázi.
 >
 > Informace najdete v tématech [Vytvoření pravidla brány firewall na úrovni databáze](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) nebo určení IP adresy používané pro pravidlo brány firewall na úrovni serveru pro váš počítač najdete v tématu [Vytvoření brány firewall na úrovni serveru](../sql-database-server-level-firewall-rule.md).  
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Vytvořte skupinu prostředků a jedinou databázi pomocí Azure Portal.
 
@@ -56,7 +56,7 @@ Vytvořte skupinu prostředků a jedinou databázi pomocí Azure Portal.
 
      ![Podrobnosti SQL Database](../media/sql-database-get-started-portal/sql-db-basic-db-details.png)
 
-   - Vyberte **zřízený**.
+   - Vyberte **zřízený**.  Případně můžete vybrat možnost bez **serveru** a vytvořit databázi bez serveru.
 
      ![Zřízené COMPUTE GEN4 –](../media/sql-database-get-started-portal/create-database-provisioned.png)
 
@@ -81,7 +81,7 @@ Vytvořte skupinu prostředků a jedinou databázi pomocí Azure Portal.
 
 11. Na formuláři **SQL Database** vyberte **vytvořit** a nasaďte a zřiďte skupinu prostředků, server a databázi.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -156,70 +156,36 @@ Tato část článku používá následující rutiny PowerShellu:
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický Server. | 
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří novou Azure SQL Database jedinou databázi. | 
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Vytvořte skupinu prostředků a samostatnou databázi pomocí AZ CLI.
 
    ```azurecli-interactive
    #!/bin/bash
-   # Set variables
-   subscriptionID=<SubscriptionID>
-   resourceGroupName=myResourceGroup-$RANDOM
-   location=SouthCentralUS
-   adminLogin=azureuser
-   password="PWD27!"+`openssl rand -base64 18`
-   serverName=mysqlserver-$RANDOM
-   databaseName=mySampleDatabase
-   drLocation=NorthEurope
-   drServerName=mysqlsecondary-$RANDOM
-   failoverGroupName=failovergrouptutorial-$RANDOM
+   # set variables
+   $subscription = "<subscriptionID>"
+   $randomIdentifier = $(Get-Random)
 
-   # The ip address range that you want to allow to access your DB. 
-   # Leaving at 0.0.0.0 will prevent outside-of-azure connections to your DB
-   startip=0.0.0.0
-   endip=0.0.0.0
+   $resourceGroup = "resource-$randomIdentifier"
+   $location = "East US"
+   
+   $login = "sampleLogin"
+   $password = "samplePassword123!"
+
+   $server = "server-$randomIdentifier"
+   $database = "database-$randomIdentifier"
   
-   # Connect to Azure
-   az login
+   az login # connect to Azure
+   az account set -s $subscription # set subscription context for the Azure account
 
-   # Set the subscription context for the Azure account
-   az account set -s $subscriptionID
-
-   # Create a resource group
    echo "Creating resource group..."
-   az group create \
-      --name $resourceGroupName \
-      --location $location \
-      --tags Owner[=SQLDB-Samples]
+   az group create --name $resourceGroup --location $location
 
-   # Create a logical server in the resource group
    echo "Creating primary logical server..."
-   az sql server create \
-      --name $serverName \
-      --resource-group $resourceGroupName \
-      --location $location  \
-      --admin-user $adminLogin \
-      --admin-password $password
+   az sql server create --name $server --resource-group $resourceGroup --location $location --admin-user $login --admin-password $password
 
-   # Configure a firewall rule for the server
-   echo "Configuring firewall..."
-   az sql server firewall-rule create \
-      --resource-group $resourceGroupName \
-      --server $serverName \
-      -n AllowYourIp \
-      --start-ip-address $startip \
-      --end-ip-address $endip
-
-   # Create a gen5 1vCore database in the server 
    echo "Creating a gen5 2 vCore database..."
-   az sql db create \
-      --resource-group $resourceGroupName \
-      --server $serverName \
-      --name $databaseName \
-      --sample-name AdventureWorksLT \
-      --edition GeneralPurpose \
-      --family Gen5 \
-      --capacity 2
+   az sql db create --resource-group $resourceGroup --server $server --name $database --sample-name AdventureWorksLT --edition GeneralPurpose --family Gen5 --capacity 2
    ```
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.

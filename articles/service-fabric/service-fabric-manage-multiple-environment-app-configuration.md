@@ -5,12 +5,12 @@ author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 33dfc91381b23bf1ac33bef5274e1098df411f4a
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 0bca690fd585b288f15cbab21c1c951474390318
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609838"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196975"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Správa aplikací pro víc prostředí
 
@@ -42,7 +42,7 @@ Při vytváření pojmenovaných instancí aplikace v Service Fabric máte možn
 
   - V PowerShellu rutina [`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) přebírá parametry aplikace jako zatřiďovací tabulku.
   - Pomocí sfctl příkaz [`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) přebírá parametry jako řetězec JSON. Skript install.sh používá sfctl.
-  - Sada Visual Studio poskytuje sadu souborů parametrů ve složce Parameters v projektu aplikace. Tyto soubory parametrů jsou používány při publikování ze sady Visual Studio pomocí Azure DevOps Services nebo Team Foundation Server. V aplikaci Visual Studio jsou soubory parametrů předávány do skriptu Deploy-FabricApplication. ps1.
+  - Sada Visual Studio poskytuje sadu souborů parametrů ve složce Parameters v projektu aplikace. Tyto soubory parametrů jsou používány při publikování ze sady Visual Studio pomocí Azure DevOps Services nebo Azure DevOps Server. V aplikaci Visual Studio jsou soubory parametrů předávány do skriptu Deploy-FabricApplication. ps1.
 
 ## <a name="next-steps"></a>Další kroky
 Následující články ukazují, jak používat některé z konceptů, které jsou zde popsané:

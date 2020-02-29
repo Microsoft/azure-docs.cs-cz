@@ -3,20 +3,20 @@ title: 'Kurz: registrace aplikace'
 titleSuffix: Azure AD B2C
 description: Naučte se, jak zaregistrovat webovou aplikaci v Azure Active Directory B2C pomocí Azure Portal.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dbb689182a45367061ae129304a98a8ee9962051
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a688f5e75f7513d0ea4308b751f87f75a2c9510a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840107"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183087"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Kurz: registrace aplikace v Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Pokud jste ještě nevytvořili vlastního [tenanta Azure AD B2C](tutorial-create-tenant.md), vytvořte ho hned teď. Můžete použít stávajícího klienta Azure AD B2C.
 
@@ -38,9 +38,9 @@ Pokud jste ještě nevytvořili vlastního [tenanta Azure AD B2C](tutorial-creat
 
 K registraci aplikace ve vašem tenantovi Azure AD B2C můžete použít aktuální prostředí **aplikací** nebo naše nové sjednocené **Registrace aplikací (Preview)** . [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
+#### <a name="applications"></a>[Aplikace](#tab/applications/)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace**a pak vyberte **Přidat**.
@@ -57,9 +57,9 @@ K registraci aplikace ve vašem tenantovi Azure AD B2C můžete použít aktuál
 
 1. Výběrem **vytvořit** dokončete registraci aplikace.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
@@ -82,7 +82,7 @@ Po dokončení registrace aplikace povolte tok implicitního udělení:
 1. V části **Spravovat**vyberte **ověřování**.
 1. Vyberte **vyzkoušet nové prostředí** (Pokud je zobrazeno).
 1. V části **implicitní udělení**vyberte zaškrtávací políčka **přístupové tokeny** i **tokeny ID** .
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).
 
 * * *
 
@@ -90,13 +90,13 @@ Po dokončení registrace aplikace povolte tok implicitního udělení:
 
 Pokud vaše aplikace vyměňuje autorizační kód pro přístupový token, je nutné vytvořit tajný klíč aplikace.
 
-#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
+#### <a name="applications"></a>[Aplikace](#tab/applications/)
 
 1. Na stránce **Azure AD B2C-aplikace** vyberte aplikaci, kterou jste vytvořili, například *WebApp1*.
 1. Vyberte **klíče** a pak vyberte **vygenerovat klíč**.
 1. Vyberte **Save (Uložit** ) a zobrazte si klíč. Poznamenejte si hodnotu **Klíč aplikace**. Tuto hodnotu použijete jako tajný klíč aplikace v kódu vaší aplikace.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
 1. Na stránce **Azure AD B2C-registrace aplikací (Preview)** vyberte aplikaci, kterou jste vytvořili, například *WebApp1*.
 1. V části **Spravovat**vyberte **certifikáty & tajných**kódů.

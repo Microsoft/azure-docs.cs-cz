@@ -1,6 +1,6 @@
 ---
-title: Obnovení odstraněného datového skladu
-description: Návod k obnovení odstraněných Azure SQL Data Warehouse.
+title: Obnovení odstraněného fondu SQL
+description: Návod k obnovení odstraněného fondu SQL.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e508eff3b322b49a6dc50d818c8bcccc3e924ff2
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 34851203432b7e2daf44e840e45275de76bc3b3a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759648"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196593"
 ---
-# <a name="restore-a-deleted-azure-sql-data-warehouse"></a>Obnovení odstraněné Azure SQL Data Warehouse
+# <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Obnovení odstraněného fondu SQL pomocí Azure synapse Analytics
 
-V tomto článku se naučíte, jak obnovit odstraněné SQL Data Warehouse pomocí Azure Portal a PowerShellu:
+V tomto článku se naučíte, jak obnovit SQL pomocí Azure Portal nebo PowerShellu.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Ověřte svoji kapacitu DTU.** Každý SQL Data Warehouse hostuje SQL Server (například myserver.database.windows.net), který má výchozí kvótu DTU.  Ověřte, zda má systém SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
+**Ověřte svoji kapacitu DTU.** Každý fond SQL je hostovaný SQL serverem (například myserver.database.windows.net), který má výchozí kvótu DTU.  Ověřte, zda má systém SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Obnovení odstraněného datového skladu prostřednictvím PowerShellu
 
-K obnovení odstraněných SQL Data Warehouse použijte rutinu [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) . Pokud byl odstraněn i odpovídající logický Server, nemůžete tento datový sklad obnovit.
+K obnovení odstraněného fondu SQL použijte rutinu [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) . Pokud byl odstraněn i odpovídající logický Server, nemůžete tento datový sklad obnovit.
 
 1. Než začnete, nezapomeňte [nainstalovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 2. Otevřete PowerShell.
@@ -71,7 +71,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Obnovení odstraněné databáze pomocí Azure Portal
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 2. Přejděte na SQL Server, na kterém jste odstraněné datový sklad hostoval.
 3. V obsahu vyberte ikonu **odstraněné databáze** .
 
@@ -86,5 +86,5 @@ $RestoredDatabase.status
     ![Zadat název databáze](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Další kroky
-- [Obnovit existující datový sklad](sql-data-warehouse-restore-active-paused-dw.md)
-- [Obnovení z geograficky záložního datového skladu](sql-data-warehouse-restore-from-geo-backup.md)
+- [Obnovit existující fond SQL](sql-data-warehouse-restore-active-paused-dw.md)
+- [Obnovení z fondu SQL geografického zálohování](sql-data-warehouse-restore-from-geo-backup.md)

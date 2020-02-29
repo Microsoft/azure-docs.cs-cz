@@ -4,13 +4,13 @@ description: Naučte se vytvářet funkce služby Azure Functions běžící na 
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
-zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: b714806c163a94bbae7069c357e603b82ba797ba
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 29b0719670529a486222ef5fad21dd803ea6f195
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482356"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190802"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Vytvoření funkce na platformě Linux pomocí vlastního kontejneru
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 
 Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Windows, Mac OS nebo Linux. Dokončení kurzu vám bude účtovat v účtu Azure náklady na několik amerických dolarů.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Verze [Azure Functions Core Tools](./functions-run-local.md#v2) 2.7.1846 nebo novější
@@ -70,7 +70,7 @@ Můžete postupovat podle tohoto kurzu na jakémkoli počítači se systémem Wi
 
 1. V terminálu nebo příkazovém řádku vytvořte složku pro tento kurz v příslušném umístění a pak přejděte do této složky.
 
-1. Podle pokynů v tématu [Vytvoření a aktivace virtuálního prostředí](functions-create-first-function-python.md#create-and-activate-a-virtual-environment) vytvořte virtuální prostředí pro použití v tomto kurzu.
+1. Podle pokynů v tématu [Vytvoření a aktivace virtuálního prostředí](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv) vytvořte virtuální prostředí pro použití v tomto kurzu.
 
 1. Spusťte následující příkaz pro zvolený jazyk pro vytvoření projektu Function App ve složce s názvem `LocalFunctionsProject`. Možnost `--docker` generuje `Dockerfile` pro projekt, který definuje vhodný vlastní kontejner pro použití s Azure Functions a vybraným modulem runtime.
 

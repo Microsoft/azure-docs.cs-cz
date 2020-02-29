@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f026957b5f9fceab8a0df1f339e7cb459ec1078d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 26c309eeebd7226c6777ec41ae674587da796dd4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562132"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199661"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak používat Key Vault obnovitelného odstranění pomocí PowerShellu
 
@@ -22,7 +23,7 @@ Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstran�
 - Podpora obnovitelného odstranění trezoru klíčů
 - Podpora obnovitelného mazání objektů trezoru klíčů; klíče, tajné klíče a certifikáty
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -41,7 +42,7 @@ Operace Key Vault se samostatně spravují prostřednictvím oprávnění říze
 
 | Operace | Popis | Oprávnění uživatele |
 |:--|:--|:--|
-|List|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft.KeyVault/deletedVaults/read|
+|Seznam|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft.KeyVault/deletedVaults/read|
 |Zotavit|Obnoví odstraněný Trezor klíčů.|Microsoft.KeyVault/vaults/write|
 |Vyprázdnit|Trvale odstraní odstraněný Trezor klíčů a veškerý jeho obsah.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
@@ -254,7 +255,7 @@ Pokud chcete přidat ochranu vyprázdnit do existujícího trezoru (který už m
 Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ```
 
-## <a name="other-resources"></a>Další zdroje informací
+## <a name="other-resources"></a>Další prostředky
 
 - Přehled funkce obnovitelného odstranění Key Vault najdete v článku [přehled Azure Key Vault obnovitelného odstranění](key-vault-ovw-soft-delete.md).
 - Obecný přehled využití Azure Key Vault najdete v tématu [co je Azure Key Vault?](key-vault-overview.md).

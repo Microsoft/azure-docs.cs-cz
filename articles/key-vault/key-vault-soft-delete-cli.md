@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: aef4061a8349e6602ac4394cb31bbe76b6cb63c0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 7288e5d8c01122bea7650274cdaf358c7fc24cd0
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976297"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197313"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak používat Key Vault obnovitelné odstranění pomocí rozhraní příkazového řádku
 
@@ -22,7 +23,7 @@ Funkce obnovitelného odstranění Azure Key Vault umožňuje obnovení odstran�
 - Podpora obnovitelného odstranění trezoru klíčů
 - Podpora obnovitelného mazání objektů trezoru klíčů; klíče, tajné klíče a certifikáty
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Azure CLI – Pokud nemáte toto nastavení pro vaše prostředí, přečtěte si téma [správa Key Vault pomocí Azure CLI](key-vault-manage-with-cli2.md).
 
@@ -34,8 +35,8 @@ Operace Key Vault se samostatně spravují prostřednictvím oprávnění říze
 
 | Operace | Popis | Oprávnění uživatele |
 |:--|:--|:--|
-|List|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft.KeyVault/deletedVaults/read|
-|Obnovit|Obnoví odstraněný Trezor klíčů.|Microsoft.KeyVault/vaults/write|
+|Seznam|Zobrazí seznam odstraněných trezorů klíčů.|Microsoft.KeyVault/deletedVaults/read|
+|Zotavit|Obnoví odstraněný Trezor klíčů.|Microsoft.KeyVault/vaults/write|
 |Vyprázdnit|Trvale odstraní odstraněný Trezor klíčů a veškerý jeho obsah.|Microsoft.KeyVault/locations/deletedVaults/purge/action|
 
 Další informace o oprávněních a řízení přístupu najdete v tématu [zabezpečení trezoru klíčů](key-vault-secure-your-key-vault.md).
@@ -150,7 +151,7 @@ K trvalému odstranění (označované také jako vyprazdňování) klíč odstr
 az keyvault key purge --name ContosoFirstKey --vault-name ContosoVault
 ```
 
-Akce **obnovit** a **Odstranit** mají svá vlastní oprávnění přidružená do zásad přístupu trezoru klíčů. Aby mohl uživatel nebo instanční objekt spustit akci **obnovení** nebo vyprázdnění, musí mít příslušná oprávnění pro tento klíč nebo tajný klíč. Ve výchozím nastavení se k zásadám přístupu trezoru klíčů při použití zkratky All pro udělení všech oprávnění nepřidá vyprázdnění. Musíte výslovně udělit oprávnění k vyprázdnění. 
+Akce **obnovit** a **Odstranit** mají svá vlastní oprávnění přidružená do zásad přístupu trezoru klíčů. Aby mohl uživatel nebo instanční objekt spustit akci **obnovení** nebo **vyprázdnění** , musí mít příslušná oprávnění pro tento klíč nebo tajný klíč. Ve výchozím nastavení se k zásadám přístupu trezoru klíčů při použití zkratky All pro udělení všech oprávnění nepřidá **vyprázdnění** . Musíte výslovně udělit oprávnění k **vyprázdnění** . 
 
 #### <a name="set-a-key-vault-access-policy"></a>Nastavení zásad přístupu trezoru klíčů
 
@@ -206,7 +207,7 @@ Totéž platí pro Trezor klíčů. Aby bylo možné trvale odstranit dočasně 
 
 ### <a name="purging-a-key-vault"></a>Vyprazdňování trezoru klíčů
 
-Když se odstraní Trezor klíčů, veškerý obsah se trvale odstraní, včetně klíčů, tajných klíčů a certifikátů. K vymazání trezoru klíčů odstraněného pomocí `az keyvault purge` příkazu použijte příkaz. Umístění trezoru klíčů, které vaše předplatné odstranilo, můžete najít pomocí příkazu `az keyvault list-deleted`.
+Když se odstraní Trezor klíčů, veškerý obsah se trvale odstraní, včetně klíčů, tajných klíčů a certifikátů. Chcete-li vymazat odstraněný Trezor klíčů, použijte příkaz `az keyvault purge`. Umístění trezoru klíčů, které vaše předplatné odstranilo, můžete najít pomocí příkazu `az keyvault list-deleted`.
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault
@@ -222,7 +223,7 @@ az keyvault purge --location westus --name ContosoVault
 Výpis odstraněných objektů trezoru klíčů se zobrazí také v případě, že je naplánováno jejich vymazání Key Vault. *Naplánované datum mazání* indikuje, že se objekt trezoru klíčů trvale odstraní, pokud se neprovede žádná akce. Ve výchozím nastavení je doba uchování odstraněného objektu trezoru klíčů 90 dní.
 
 >[!IMPORTANT]
->Vyčištěný objekt trezoru aktivovaný v poli *plánovaného data* vyprázdnit se trvale odstraní. Nedá se obnovit.
+>Vyčištěný objekt trezoru aktivovaný v poli *plánovaného data vyprázdnit* se trvale odstraní. Nedá se obnovit.
 
 ## <a name="enabling-purge-protection"></a>Povoluje se ochrana vyprázdnění.
 

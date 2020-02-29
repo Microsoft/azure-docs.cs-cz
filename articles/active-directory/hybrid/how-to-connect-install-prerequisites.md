@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2019
+ms.date: 02/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f250d4593c8dac8007590245e1b774b95d8fa786
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: bc76f8edc8520ca50cd4c9527b037d99d24ce63c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75767938"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190496"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Předpoklady pro Azure AD Connect
 Toto téma popisuje předpoklady a požadavky na hardware pro Azure AD Connect.
@@ -31,7 +31,7 @@ Než nainstalujete Azure AD Connect, budete potřebovat několik věcí.
 
 ### <a name="azure-ad"></a>Azure AD
 * Tenanta Azure AD. Získáte ji s [bezplatnou zkušební verzí Azure](https://azure.microsoft.com/pricing/free-trial/). Ke správě Azure AD Connect můžete použít jeden z následujících portálů:
-  * [Webu Azure portal](https://portal.azure.com).
+  * [Azure Portal](https://portal.azure.com).
   * [Portál Office](https://portal.office.com).  
 * [Přidejte a ověřte doménu](../active-directory-domains-add-azure-portal.md) , kterou plánujete použít ve službě Azure AD. Pokud například plánujete používat contoso.com pro uživatele, ujistěte se, že je tato doména ověřená a že nepoužíváte pouze výchozí doménu contoso.onmicrosoft.com.
 * Tenant Azure AD umožňuje standardně 50 tis objekty. Při ověřování domény se tento limit zvyšuje na 300k objekty. Pokud potřebujete ještě více objektů v Azure AD, musíte otevřít případ podpory, aby se tento limit ještě dál zvýšil. Pokud potřebujete více než 500 000 objekty, budete potřebovat licenci, jako je například Office 365, Azure AD Basic, Azure AD Premium nebo Enterprise mobility and Security.
@@ -86,8 +86,8 @@ Další informace naleznete v tématu:
 
 ### <a name="accounts"></a>Účty
 * Účet globálního správce Azure AD pro tenanta Azure AD, se kterým se chcete integrovat. Tento účet musí být **školním nebo organizačním účtem** a nemůže být **účet Microsoft**.
-* Pokud používáte expresní nastavení nebo upgrade z DirSync, musíte mít účet správce rozlehlé sítě pro vaši místní službu Active Directory.
-* [Účty ve službě Active Directory](reference-connect-accounts-permissions.md) , pokud použijete instalační cestu pro vlastní nastavení nebo účet správce rozlehlé sítě pro místní službu Active Directory.
+* Pokud používáte [expresní nastavení](reference-connect-accounts-permissions.md#express-settings-installation) nebo upgrade z DirSync, musíte mít účet správce rozlehlé sítě pro vaši místní službu Active Directory.
+* Pokud použijete instalační cestu vlastní nastavení, zobrazí se vám další možnosti zobrazit [účty ve službě Active Directory](reference-connect-accounts-permissions.md#custom-installation-settings) .
 
 ### <a name="connectivity"></a>Připojení
 * Azure AD Connect server potřebuje překlad DNS pro intranet i Internet. Server DNS musí být schopný přeložit názvy do vaší místní služby Active Directory a koncových bodů Azure AD.
@@ -129,7 +129,7 @@ Další informace naleznete v tématu:
 Další informace najdete v tématu MSDN o [výchozím elementu proxy serveru](https://msdn.microsoft.com/library/kd3cf2ex.aspx).  
 Další informace o potížích s připojením najdete v tématu [řešení problémů s připojením](tshoot-connect-connectivity.md).
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Ostatní
 * Volitelné: testovací uživatelský účet pro ověření synchronizace.
 
 ## <a name="component-prerequisites"></a>Předpoklady součásti

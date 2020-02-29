@@ -1,28 +1,28 @@
 ---
 title: Správa a monitorování – aktivita dotazů, využití prostředků
-description: Zjistěte, jaké možnosti jsou dostupné pro správu a monitorování Azure SQL Data Warehouse. Pomocí zobrazení Azure Portal a dynamické správy (zobrazení dynamické správy) můžete pochopit aktivity dotazů a využití prostředků datového skladu.
+description: Zjistěte, jaké možnosti jsou dostupné pro správu a monitorování Azure synapse Analytics. Pomocí zobrazení Azure Portal a dynamické správy (zobrazení dynamické správy) můžete pochopit aktivity dotazů a využití prostředků datového skladu.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: kevin
-ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 366d170a4caf9ee7428b68d71f910c65356038ff
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.reviewer: jrasnick
+ms.custom: azure-synapse
+ms.openlocfilehash: 47f142a19ac470fb29e9542941cd94a6b29ce240
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76024539"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195919"
 ---
-# <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Monitorování využití prostředků a aktivity dotazů v Azure SQL Data Warehouse
-Azure SQL Data Warehouse poskytuje bohatě monitorovanou možnost monitorování v rámci Azure Portal, která umožňuje obcházet vaše úlohy datového skladu na Surface. Azure Portal je doporučeným nástrojem při monitorování datového skladu, protože poskytuje konfigurovatelné doby uchovávání, výstrahy, doporučení a přizpůsobitelné grafy a řídicí panely pro metriky a protokoly. Portál také umožňuje integraci s dalšími službami monitorování Azure, jako je Operations Management Suite (OMS) a Azure Monitor (protokoly), a poskytuje tak prostředí pro monitorování holistický jenom pro datový sklad, ale také pro celou službu Azure Analytics. platforma pro integrovanou monitorovací prostředí. Tato dokumentace popisuje, jaké možnosti monitorování jsou k dispozici pro optimalizaci a správu vaší analytické platformy pomocí SQL Data Warehouse. 
+# <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorování využití prostředků a aktivity dotazů v Azure synapse Analytics
+Azure synapse Analytics poskytuje bohatě monitorovaný přehled v rámci Azure Portal, který umožňuje obcházet vaše úlohy datového skladu. Azure Portal je doporučeným nástrojem při monitorování datového skladu, protože poskytuje konfigurovatelné doby uchovávání, výstrahy, doporučení a přizpůsobitelné grafy a řídicí panely pro metriky a protokoly. Portál také umožňuje integraci s dalšími službami monitorování Azure, jako je Operations Management Suite (OMS) a Azure Monitor (protokoly), a poskytuje tak prostředí pro monitorování holistický jenom pro datový sklad, ale také pro celou službu Azure Analytics. platforma pro integrovanou monitorovací prostředí. Tato dokumentace popisuje, jaké možnosti monitorování jsou k dispozici pro optimalizaci a správu vaší analytické platformy pomocí SQL Analytics. 
 
 ## <a name="resource-utilization"></a>Využití prostředků 
-V Azure Portal pro SQL Data Warehouse jsou k dispozici následující metriky. Tyto metriky se procházejí [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
+V Azure Portal pro SQL Analytics jsou k dispozici následující metriky. Tyto metriky se procházejí [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics).
 
 
 | Název metriky             | Popis                                                  | Typ agregace |
@@ -49,12 +49,12 @@ Co je potřeba vzít v úvahu při prohlížení metrik a nastavení výstrah:
 
 
 ## <a name="query-activity"></a>Aktivita dotazu
-Pro programové prostředí při monitorování SQL Data Warehouse přes T-SQL poskytuje služba sadu zobrazení dynamické správy (zobrazení dynamické správy). Tato zobrazení jsou užitečná při aktivním řešení potíží a identifikaci slabých míst výkonu s vaším zatížením.
+Pro programové prostředí při monitorování analýzy SQL prostřednictvím T-SQL poskytuje služba sadu zobrazení dynamické správy (zobrazení dynamické správy). Tato zobrazení jsou užitečná při aktivním řešení potíží a identifikaci slabých míst výkonu s vaším zatížením.
 
-Chcete-li zobrazit seznam zobrazení dynamické správy, které poskytuje SQL Data Warehouse, přečtěte si tuto [dokumentaci](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs). 
+Pokud chcete zobrazit seznam zobrazení dynamické správy, které poskytuje SQL Analytics, přečtěte si tuto [dokumentaci](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs). 
 
-## <a name="metrics-and-diagnostics-logging"></a>Metriky a protokolování diagnostiky
-Obě metriky a protokoly je možné exportovat do Azure Monitor, konkrétně do [Azure monitor protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) a můžou být prostřednictvím [dotazů protokolu](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata)programově dostupné. Latence protokolu pro SQL Data Warehouse je přibližně 10-15 minut. Další informace o odezvách, které mají vliv na latenci, najdete v následující dokumentaci.
+## <a name="metrics-and-diagnostics-logging"></a>Metriky a diagnostické protokolování
+Obě metriky a protokoly je možné exportovat do Azure Monitor, konkrétně do [Azure monitor protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) a můžou být prostřednictvím [dotazů protokolu](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata)programově dostupné. Latence protokolu pro SQL Analytics je asi 10-15 minut. Další informace o odezvách, které mají vliv na latenci, najdete v následující dokumentaci.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -3,20 +3,20 @@ title: Monitorování Azure AD B2C s využitím Azure Monitor
 titleSuffix: Azure AD B2C
 description: Naučte se protokolovat události Azure AD B2C pomocí Azure Monitor pomocí delegované správy prostředků.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 6f7f0252a6377397ccaccdc44c9c8561da7c9d29
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77121378"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190054"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C s využitím Azure Monitor
 
@@ -30,7 +30,7 @@ Události protokolu můžete směrovat do:
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení kroků v tomto článku nasadíte Azure Resource Manager šablonu pomocí modulu Azure PowerShell.
 
@@ -223,10 +223,10 @@ Jste připraveni [vytvořit nastavení diagnostiky](../active-directory/reports-
 
 Postup konfigurace nastavení monitorování pro Azure AD B2C protokoly aktivit:
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. Vyberte **Azure Active Directory**
-1. V části **monitorování**vyberte **nastavení diagnostiky**.
+1. V části **Monitorování** vyberte **Nastavení diagnostiky**.
 1. Pokud je u prostředku k dispozici existující nastavení, zobrazí se seznam nastavení, která jsou už nakonfigurovaná. Buď vyberte možnost **Přidat nastavení diagnostiky** a přidejte nové nastavení, nebo **upravte** nastavení a upravte stávající nastavení. Každé nastavení nemůže mít více než jeden z cílových typů..
 
     ![Podokno nastavení diagnostiky v Azure Portal](./media/azure-monitor/azure-monitor-portal-05-diagnostic-settings-pane-enabled.png)
@@ -238,7 +238,7 @@ Postup konfigurace nastavení monitorování pro Azure AD B2C protokoly aktivit:
     |:---|:---|
     | Archivovat do účtu úložiště | Název účtu úložiště |
     | Datový proud do centra událostí | Obor názvů, ve kterém se vytvoří centrum událostí (Pokud se jedná o vaše první přihlášení ke streamování protokolů) nebo streamování do služby (Pokud už existují prostředky streamující do tohoto oboru názvů do kategorie log).
-    | Odeslat do Log Analytics | Název pracovního prostoru |
+    | Odeslání do Log Analytics | Název pracovního prostoru |
 
 1. Vyberte **AuditLogs** a **SignInLogs**.
 1. Vyberte **Save** (Uložit).

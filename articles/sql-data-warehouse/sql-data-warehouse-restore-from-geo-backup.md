@@ -1,6 +1,6 @@
 ---
 title: Obnovení datového skladu z geografické zálohy
-description: Návod pro geografickou obnovu Azure SQL Data Warehouse.
+description: Návod pro geografickou obnovu fondu SQL
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 69ba3ed981a27dfff41ea9ea52e1da769a9366c4
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 624c6665e70802907be8a41015b78d36cca7df1c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759614"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198331"
 ---
-# <a name="geo-restore-azure-sql-data-warehouse"></a>Geografické obnovení Azure SQL Data Warehouse
+# <a name="geo-restore-for-sql-pool"></a>Geografické obnovení pro fond SQL
 
-V tomto článku se naučíte obnovit datový sklad z geografické zálohy pomocí Azure Portal a PowerShellu.
+V tomto článku se naučíte, jak obnovit svůj fond SQL z geografické zálohy prostřednictvím Azure Portal a PowerShellu.
 
 ## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Ověřte svoji kapacitu DTU.** Každý SQL Data Warehouse hostuje SQL Server (například myserver.database.windows.net), který má výchozí kvótu DTU. Ověřte, zda má systém SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
+**Ověřte svoji kapacitu DTU.** Každý fond SQL je hostovaný SQL serverem (například myserver.database.windows.net), který má výchozí kvótu DTU. Ověřte, zda má systém SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Obnovení z geografické oblasti Azure prostřednictvím PowerShellu
 
@@ -74,20 +74,27 @@ Pokud je zdrojová databáze povolena TDE, obnovená databáze bude TDE povolena
 
 ## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>Obnovení z geografické oblasti Azure prostřednictvím Azure Portal
 
-Postupujte podle kroků uvedených níže a obnovte Azure SQL Data Warehouse z geografické zálohy:
+Postupujte podle kroků uvedených níže a obnovte fond SQL z geografické zálohy:
 
 1. Přihlaste se ke svému účtu [Azure Portal](https://portal.azure.com/) .
-1. Klikněte na **+ vytvořit prostředek** a vyhledejte SQL Data Warehouse a klikněte na **vytvořit**.
+1. Klikněte na **+ vytvořit prostředek**. 
 
-    ![Nový datový sklad](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
-1. Vyplňte informace požadované na kartě **základy** a klikněte na **Další: Další nastavení**.
+![Nový datový sklad](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-    ![Základy](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
-1. Pro možnost **použít existující datový** parametr vyberte **zálohovat** a v možnostech posouvání vyberte příslušnou zálohu. Klikněte na tlačítko **zkontrolovat + vytvořit**.
+3. Klikněte na **databáze** a pak * * Azure synapse Analytics (dřív SQL DW) * *.
+
+![Nový DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
+
+4. Vyplňte informace požadované na kartě **základy** a klikněte na **Další: Další nastavení**.
+
+![Základy](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+
+5. Pro možnost **použít existující datový** parametr vyberte **zálohovat** a v možnostech posouvání vyberte příslušnou zálohu. Klikněte na tlačítko **zkontrolovat + vytvořit**.
  
-   ![backup](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
-2. Po obnovení datového skladu ověřte, zda je **stav** online.
+![zálohování](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+
+6. Po obnovení datového skladu ověřte, zda je **stav** online.
 
 ## <a name="next-steps"></a>Další kroky
-- [Obnovit existující datový sklad](sql-data-warehouse-restore-active-paused-dw.md)
-- [Obnovení odstraněného datového skladu](sql-data-warehouse-restore-deleted-dw.md)
+- [Obnovit existující fond SQL](sql-data-warehouse-restore-active-paused-dw.md)
+- [Obnovení odstraněného fondu SQL](sql-data-warehouse-restore-deleted-dw.md)

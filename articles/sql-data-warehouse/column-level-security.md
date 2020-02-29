@@ -1,5 +1,5 @@
 ---
-title: Co je zabezpečení na úrovni sloupců pro SQL Data Warehouse?
+title: Co je zabezpečení na úrovni sloupců pro Azure synapse?
 description: Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup k sloupcům tabulky databáze na základě kontextu spuštění uživatele nebo členství ve skupině, zjednodušit návrh a kódování zabezpečení ve vaší aplikaci a umožňuje implementovat omezení na sloupec. stoupit.
 services: sql-data-warehouse
 author: julieMSFT
@@ -7,16 +7,17 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 04/02/2019
+ms.date: 02/05/2020
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 344701989a753e17d8a026f6bb771a6030bdb71f
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+tags: azure-synapse
+ms.openlocfilehash: aa9791f019436cc5c7effc9bce197d89131a6557
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513044"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199967"
 ---
 # <a name="column-level-security"></a>Zabezpečení na úrovni sloupců
 
@@ -24,7 +25,7 @@ Zabezpečení na úrovni sloupců umožňuje zákazníkům řídit přístup k s
 
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Vzhledem k tomu, že toto video bylo zaslané [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) , SQL Data Warehouse. 
+Vzhledem k tomu, že toto video bylo zveřejněné [zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) , které se stalo pro Azure synapse. 
 
 Zabezpečení na úrovni sloupců zjednodušuje návrh a kódování zabezpečení ve vaší aplikaci. umožňuje omezit přístup k sloupci na ochranu citlivých dat. Například zajistěte, aby konkrétní uživatelé měli přístup pouze k určitým sloupcům tabulky, které se vztahují k jejich oddělení. Logika omezení přístupu se nachází v databázové vrstvě, nikoli z dat v jiné aplikační vrstvě. Databáze použije omezení přístupu při každém pokusu o přístup k datům z jakékoli úrovně. Toto omezení zajišťuje spolehlivější a robustní zabezpečení tím, že redukuje plochu celkového systému zabezpečení. Kromě toho zabezpečení na úrovni sloupců také eliminuje nutnost zavedení zobrazení pro odfiltrování sloupců pro ukládání omezení přístupu uživatelům.
 
@@ -50,7 +51,7 @@ GRANT <permission> [ ,...n ] ON
     | Database_user_mapped_to_Windows_Group
 ```
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 Následující příklad ukazuje, jak omezit `TestUser` přístup k sloupci `SSN` tabulky `Membership`:
 
 Vytvoří `Membership`ovou tabulku se sloupcem SSN, který se používá k uložení čísel sociálního pojištění:

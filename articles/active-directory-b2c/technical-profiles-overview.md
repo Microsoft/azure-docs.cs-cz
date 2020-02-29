@@ -3,20 +3,20 @@ title: Přehled technických profilů ve vlastních zásadách
 titleSuffix: Azure AD B2C
 description: Přečtěte si, jak se v Azure Active Directory B2C používají technické profily ve vlastních zásadách.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/11/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3b0e59912d740e30b0e29fb882542f1995ab6f54
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 48324d252e22ca898f923e1f0ad9b76df1c10861
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505655"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183648"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informace o technických profilech v Azure Active Directory B2C vlastních zásadách
 
@@ -40,7 +40,7 @@ Technický profil umožňuje tyto typy scénářů:
 - Uživatel s [vlastním uplatněním](self-asserted-technical-profile.md) : interakce s uživatelem. Například Shromážděte přihlašovací údaje uživatele pro přihlášení, vykreslete stránku pro registraci nebo resetování hesla.
 - [Správa relací](custom-policy-reference-sso.md) – zpracovává různé typy relací.
 - [Application Insights](../azure-monitor/app/usage-overview.md)
-- [Jednorázové heslo](one-time-password-technical-profile.md) – poskytuje podporu pro správu generování a ověřování jednorázového hesla. 
+- [Jednorázové heslo](one-time-password-technical-profile.md) – poskytuje podporu pro správu generování a ověřování jednorázového hesla.
 
 ## <a name="technical-profile-flow"></a>Tok technického profilu
 
@@ -48,7 +48,7 @@ Všechny typy technických profilů sdílejí stejný koncept. Můžete posílat
 
 ![Diagram znázorňující tok technického profilu](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
  
-1. **Správa relací jednotného přihlašování (SSO)** – obnoví stav relace technického profilu pomocí [správy relace jednotného](custom-policy-reference-sso.md)přihlašování. 
+1. **Správa relací jednotného přihlašování (SSO)** – obnoví stav relace technického profilu pomocí [správy relace jednotného](custom-policy-reference-sso.md)přihlašování.
 1. **Transformace vstupních deklarací** – vstupní deklarace identity pro každou vstupní [transformaci](claimstransformations.md) deklarací se vybírají z kontejneru deklarací identity.  Deklarace výstupů vstupní deklarace identity můžou být vstupními deklaracemi za následné transformace vstupních deklarací.
 1. **Vstupní deklarace identity** – deklarace se vybírají z kontejneru deklarací identity a používají se pro technický profil. Například [technický profil s vlastním uplatněním](self-asserted-technical-profile.md) používá vstupní deklarace identity, které vyplní výstupní deklarace identity, které uživatel poskytuje. REST API technický profil používá vstupní deklarace identity k posílání vstupních parametrů do koncového bodu REST API. Azure Active Directory používá pro čtení, aktualizaci nebo odstranění účtu vstupní deklaraci identity jako jedinečný identifikátor.
 1. **Provádění technického profilu** – technický profil vyměňuje deklarace identity s konfigurovanou stranou. Příklad:
@@ -64,7 +64,7 @@ Všechny typy technických profilů sdílejí stejný koncept. Můžete posílat
 
 ## <a name="technical-profile-inclusion"></a>Zahrnutí technického profilu
 
-Technický profil může zahrnovat jiný technický profil pro změnu nastavení nebo přidání nových funkcí.  Element `IncludeTechnicalProfile` je odkazem na základní technický profil, ze kterého je odvozen technický profil. Počet úrovní není nijak omezený. 
+Technický profil může zahrnovat jiný technický profil pro změnu nastavení nebo přidání nových funkcí.  Element `IncludeTechnicalProfile` je odkazem na základní technický profil, ze kterého je odvozen technický profil. Počet úrovní není nijak omezený.
 
 Například technický profil **AAD-UserReadUsingAlternativeSecurityId-inerror** zahrnuje **AAD-UserReadUsingAlternativeSecurityId**. Tento technický profil nastaví `RaiseErrorIfClaimsPrincipalDoesNotExist` položku metadat na `true`a vyvolá chybu, pokud účet sociální sítě v adresáři neexistuje. **AAD-UserReadUsingAlternativeSecurityId-** informování tohoto chování potlačí a zakáže tuto chybovou zprávu.
 

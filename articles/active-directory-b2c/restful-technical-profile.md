@@ -3,20 +3,20 @@ title: Definování technického profilu RESTful ve vlastních zásadách
 titleSuffix: Azure AD B2C
 description: Definujte technický profil RESTful ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 80298ca4df01a93730fc831fc495b3123ead5f97
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b83a6bacf1c6e392db9dfc65fd737ea28416a6b5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585675"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183818"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu RESTful ve vlastní zásadě Azure Active Directory B2C
 

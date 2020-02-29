@@ -6,22 +6,23 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 74dac926ea67b9f6a31993a72dc6331aa48155b7
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3cc5cb68f430ac8e5070b9c8c4a1aa0c28639311
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981574"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197772"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault zabezpečení
 
 Musíte chránit šifrovací klíče a tajné kódy, jako jsou certifikáty, připojovací řetězce a hesla v cloudu, takže používáte Azure Key Vault. Vzhledem k tomu, že ukládáte citlivá a důležitá firemní data, je nutné provést kroky k maximalizaci zabezpečení trezorů a dat, která jsou v nich uložená. Tento článek popisuje některé z konceptů, které byste měli vzít v úvahu při návrhu Azure Key Vault zabezpečení.
 
-## <a name="identity-and-access-management"></a>Správa identit a přístupu
+## <a name="identity-and-access-management"></a>Správa identit a přístupu
 
 Když vytvoříte Trezor klíčů v rámci předplatného Azure, automaticky se přiřadí k tenantovi Azure AD daného předplatného. Každý, kdo se snaží spravovat nebo načítat obsah z trezoru, se musí ověřit pomocí Azure AD.
 
@@ -76,7 +77,7 @@ Po uplatnění pravidel brány firewall můžou uživatelé číst data z Key Va
 
 Další informace o Azure Key Vault [koncových bodech služby virtuální sítě pro Azure Key Vault](key-vault-overview-vnet-service-endpoints.md)
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 Protokolování Key Vault ukládá informace o aktivitách provedených ve vašem trezoru. Protokoly Key Vault:
 

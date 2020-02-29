@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gwallace
-ms.openlocfilehash: bfb7d3ad6f918d91061fa226ae2dbfcd7f27852d
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 43352117d149abbe41ba7bf49a1ffb68e46d2707
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77210153"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190749"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Technologie nasazení v Azure Functions
 
@@ -33,7 +33,7 @@ Každý plán má jiné chování. Ne všechny technologie nasazení jsou k disp
 | Nasazení zip |✔|✔|✔|✔|✔|✔|
 | Kontejner Docker | | | | |✔|✔|
 | Web Deploy |✔|✔|✔| | | |
-| Správy zdrojového kódu |✔|✔|✔| |✔|✔|
+| Správa zdrojového kódu |✔|✔|✔| |✔|✔|
 | Místní Git<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Cloudová synchronizace<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Protokol FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
@@ -104,7 +104,7 @@ Adresu URL externího balíčku můžete použít k odkazování na vzdálený s
 
 Pomocí nástroje zip Deploy nahrajte soubor. zip, který obsahuje vaši aplikaci Function App do Azure. Volitelně můžete nastavit, aby se aplikace spouštěla [z balíčku](run-functions-from-deployment-package.md), nebo určit, že dojde ke [vzdálenému sestavení](#remote-build) .
 
->__Jak ji použít:__ Nasazení pomocí oblíbeného klientského nástroje: [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure), [Azure Functions Core Tools](functions-run-local.md)nebo rozhraní příkazového [řádku Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure). Ve výchozím nastavení tyto nástroje používají nasazení zip a [spouštějí se z balíčku](run-functions-from-deployment-package.md). Základní nástroje a rozšíření Visual Studio Code umožňují [vzdálené sestavení](#remote-build) při nasazení do systému Linux. Pokud chcete soubor. zip nasadit do aplikace Function App ručně, postupujte podle pokynů v tématu [nasazení ze souboru. zip nebo adresy URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
+>__Jak ji použít:__ Nasazení pomocí vašeho oblíbeného klientského nástroje: [Visual Studio Code](functions-develop-vs-code.md#publish-to-azure), [Visual Studio](functions-develop-vs.md#publish-to-azure)nebo z příkazového řádku pomocí [Azure Functions Core Tools](functions-run-local.md#project-file-deployment). Ve výchozím nastavení tyto nástroje používají nasazení zip a [spouštějí se z balíčku](run-functions-from-deployment-package.md). Základní nástroje a rozšíření Visual Studio Code umožňují [vzdálené sestavení](#remote-build) při nasazení do systému Linux. Pokud chcete soubor. zip nasadit do aplikace Function App ručně, postupujte podle pokynů v tématu [nasazení ze souboru. zip nebo adresy URL](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
 >Když nasadíte pomocí nasazení zip, můžete nastavit, aby se aplikace [spouštěla z balíčku](run-functions-from-deployment-package.md). Pokud chcete spustit z balíčku, nastavte hodnotu nastavení `WEBSITE_RUN_FROM_PACKAGE` aplikace na `1`. Doporučujeme nasazení zip. Poskytuje rychlejší načítání pro vaše aplikace a je výchozím nastavením pro VS Code, Visual Studio a Azure CLI. 
 
@@ -133,7 +133,7 @@ Nasazení webu balíčky a nasadí aplikace Windows na libovolný server služby
 
 >__Kdy ji použít:__ Nasazení webu se podporuje a nemá žádné problémy, ale upřednostňovaným mechanismem je [nasazení zip s povoleným spuštěním z balíčku](#zip-deploy). Další informace najdete v příručce pro [vývoj sady Visual Studio](functions-develop-vs.md#publish-to-azure).
 
-### <a name="source-control"></a>Správy zdrojového kódu
+### <a name="source-control"></a>Správa zdrojového kódu
 
 Použijte správu zdrojového kódu k připojení aplikace Function App k úložišti Git. Aktualizace kódu v tomto úložišti aktivuje nasazení. Další informace najdete na [wikiwebu Kudu](https://github.com/projectkudu/kudu/wiki/VSTS-vs-Kudu-deployments).
 

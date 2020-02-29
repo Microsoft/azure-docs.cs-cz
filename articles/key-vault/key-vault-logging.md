@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8915970cd4c70228fad3b49921f4c81d6d90aa72
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000666"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195324"
 ---
 # <a name="azure-key-vault-logging"></a>Protokolování v Azure Key Vaultu
 
@@ -37,7 +38,7 @@ Tento kurz vám pomůže začít s protokolováním v Azure Key Vault. Vytvoří
 
 Přehled informací o Key Vault najdete v tématu [co je Azure Key Vault?](key-vault-overview.md). Informace o tom, kde je Key Vault k dispozici, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/key-vault/).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto kurzu potřebujete:
 
@@ -162,7 +163,7 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json
 ```
 
-Jak vidíte z tohoto výstupu, objekty BLOB dodržovat zásadu vytváření názvů: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+Jak vidíte z tohoto výstupu, objekty blob dodržují konvenci pojmenování: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 Hodnoty data a času používají UTC.
 
@@ -186,7 +187,7 @@ Přesměrujte tento seznam prostřednictvím **Get-AzStorageBlobContent** , aby 
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-Když spustíte tento druhý příkaz **/** oddělovač v názvech objektů blob vytvoří úplnou strukturu složek v cílové složce. Pomocí této struktury budete stahovat a ukládat objekty BLOB jako soubory.
+Při spuštění tohoto druhého příkazu vytvoří oddělovač **/** v názvech objektů BLOB úplnou strukturu složek v cílové složce. Pomocí této struktury budete stahovat a ukládat objekty BLOB jako soubory.
 
 Chcete-li stahovat objekty blob selektivně, použijte zástupné znaky. Příklad:
 
@@ -202,7 +203,7 @@ Chcete-li stahovat objekty blob selektivně, použijte zástupné znaky. Příkl
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
-* Pokud chcete stáhnout všechny protokoly pro měsíc v lednu 2019, použijte `-Blob '*/year=2019/m=01/*'`:
+* Pokud chcete stáhnout všechny protokoly pro měsíc z ledna 2019, použijte `-Blob '*/year=2019/m=01/*'`:
 
   ```powershell
   Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
@@ -250,49 +251,49 @@ V následující tabulce jsou uvedené názvy a popisy polí:
 
 | Název pole | Popis |
 | --- | --- |
-| **čas** |Datum a čas ve standardu UTC. |
-| **ID prostředku** |ID prostředku Azure Resource Manageru U protokolů Key Vault se jedná vždy o Key Vault Resource ID. |
-| **OperationName** |Název operace, jak popisuje následující tabulka. |
+| **interval** |Datum a čas ve standardu UTC. |
+| **Prostředku** |ID prostředku Azure Resource Manageru U protokolů Key Vault se jedná vždy o Key Vault Resource ID. |
+| **operationName** |Název operace, jak popisuje následující tabulka. |
 | **operationVersion** |Verze REST API požadovaná klientem |
-| **Kategorie** |Typ výsledku. V případě protokolů Key Vault je **AuditEvent** jedinou dostupnou hodnotou. |
-| **resultType** |Výsledek žádosti o REST API |
+| **kategorií** |Typ výsledku. V případě protokolů Key Vault je **AuditEvent** jedinou dostupnou hodnotou. |
+| **Hodnotu** |Výsledek žádosti o REST API |
 | **resultSignature** |Stav HTTP. |
 | **resultDescription** |Další popis výsledku, je-li k dispozici. |
-| **durationMs** |Doba trvání obsloužení požadavku REST API v milisekundách. Nezahrnuje latenci sítě, takže čas naměřený na straně klienta se může lišit. |
+| **Trvání v MS** |Doba trvání obsloužení požadavku REST API v milisekundách. Nezahrnuje latenci sítě, takže čas naměřený na straně klienta se může lišit. |
 | **callerIpAddress** |IP adresa klienta, který odeslal požadavek. |
-| **correlationId** |Volitelný GUID, který může klient předat pro korelaci protokolů na straně klienta s protokoly na straně služby (Key Vault). |
+| **ID** |Volitelný GUID, který může klient předat pro korelaci protokolů na straně klienta s protokoly na straně služby (Key Vault). |
 | **odcizen** |Identita z tokenu, který byl předložen v žádosti REST API. Obvykle se jedná o "uživatel", "instanční objekt" nebo kombinaci "User + appId", jako v případě požadavku, který je výsledkem rutiny Azure PowerShell. |
-| **Vlastnosti** |Informace, které se liší v závislosti na operaci (**OperationName**). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet**), obsahuje taky identifikátor URI klíče (as "ID"), identifikátor URI trezoru nebo tajný identifikátor URI. |
+| **vlastnosti** |Informace, které se liší v závislosti na operaci (**OperationName**). Ve většině případů toto pole obsahuje informace o klientovi (uživatelský agent, který předává klient), přesný REST API identifikátor URI žádosti a stavový kód HTTP. Kromě toho, když se vrátí objekt jako výsledek požadavku (například **Vytvoření** nebo **VaultGet**), obsahuje taky identifikátor URI klíče (as "ID"), identifikátor URI trezoru nebo tajný identifikátor URI. |
 
 Hodnoty polí **OperationName** jsou ve formátu *ObjectVerb* . Příklad:
 
-* Všechny operace trezoru klíčů mají `Vault<action>` formát, `VaultGet` například a `VaultCreate`.
-* Všechny operace s klíči mají `Key<action>` formát, `KeySign` například a `KeyList`.
-* Všechny operace tajného kódu `Secret<action>` mají formát, `SecretGet` například a `SecretListVersions`.
+* Všechny operace trezoru klíčů mají formát `Vault<action>`, například `VaultGet` a `VaultCreate`.
+* Všechny operace s klíči mají formát `Key<action>`, například `KeySign` a `KeyList`.
+* Všechny operace s tajnými klíči mají formát `Secret<action>`, například `SecretGet` a `SecretListVersions`.
 
 Následující tabulka uvádí hodnoty **OperationName** a odpovídající REST API příkazy:
 
 | operationName | REST API – příkaz |
 | --- | --- |
-| **Autentizace** |Ověřování prostřednictvím Azure Active Directoryho koncového bodu |
+| **Ověřování** |Ověřování prostřednictvím Azure Active Directoryho koncového bodu |
 | **VaultGet** |[Získání informací o trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
 | **VaultPut** |[Vytvoření nebo aktualizace trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultDelete** |[Odstranění trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
 | **VaultPatch** |[Aktualizace trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
 | **VaultList** |[Výpis všech trezorů klíčů ve skupině prostředků](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
-| **KeyCreate** |[Vytvoření klíče](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
+| **Vytvořit** |[Vytvoření klíče](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
 | **KeyGet** |[Získání informací o klíči](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
-| **KeyImport** |[Import klíče do trezoru](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
+| **Import** |[Import klíče do trezoru](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
 | **Zálohování** |[Zálohování klíče](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
-| **KeyDelete** |[Odstranění klíče](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
-| **KeyRestore** |[Obnovení klíče](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
+| **Odstranění** |[Odstranění klíče](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
+| **Obnovení** |[Obnovení klíče](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
 | **Symbol znaku** |[Podpis klíčem](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
-| **KeyVerify** |[Ověření pomocí klíče](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
+| **Ověření** |[Ověření pomocí klíče](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
 | **KeyWrap** |[Zabalení klíče](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
 | **KeyUnwrap** |[Rozbalení klíče](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
 | **Šifrování** |[Šifrování pomocí klíče](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
-| **KeyDecrypt** |[Dešifrování pomocí klíče](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
-| **KeyUpdate** |[Aktualizace klíče](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
+| **Dešifrovat** |[Dešifrování pomocí klíče](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
+| **Aktualizace** |[Aktualizace klíče](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
 | **Seznam.** |[Výpis klíčů v trezoru](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
 | **KeyListVersions** |[Výpis verzí klíče](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
 | **SecretSet** |[Vytvoření tajného kódu](https://msdn.microsoft.com/library/azure/dn903618.aspx) |

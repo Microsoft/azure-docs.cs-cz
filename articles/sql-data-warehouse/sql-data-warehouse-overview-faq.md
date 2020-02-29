@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1a4fbfa87756914f169bb20387702cac69d8736d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: f7cac849caf478850707eb0a71b2369dcfa49520
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759478"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197177"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW)
 
@@ -23,9 +23,9 @@ ms.locfileid: "76759478"
 
 Otázka: Co je Azure Synapse?
 
-A. Azure synapse je bezlimitní analytická služba, která přináší dohromady datové sklady a analýzu velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek, a to s využitím neserverových nebo zřízených prostředků se škálováním na vyžádání. Azure Synapse propojuje tyto dva světy pomocí jednotného prostředí pro ingestování, přípravu, správu a poskytování dat pro okamžité využití v BI a strojovém učení. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Azure synapse je bezlimitní analytická služba, která přináší dohromady datové sklady a analýzu velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek, a to s využitím neserverových nebo zřízených prostředků se škálováním na vyžádání. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
-Otázka: Co se stalo se službou Azure SQL Data Warehouse?
+Otázka: Co se stalo s Azure SQL Data Warehouse?
 
 A. Azure synapse je vyvíjejí se Azure SQL Data Warehouse (SQL DW). Provedli jsme stejný oborový datový sklad na celou novou úroveň výkonu a schopností. Můžete dál spouštět stávající úlohy datového skladu v produkčním prostředí s využitím Azure synapse a automaticky využívat výhod nových funkcí, které jsou ve verzi Preview. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
@@ -73,7 +73,7 @@ A. [Lístky podpory](sql-data-warehouse-get-started-create-support-ticket.md) mo
 
 ## <a name="sql-languagefeature-support"></a>Podpora jazyka a funkcí SQL 
 
-Otázka: Jaké typy DataTypes jsou podporovány?
+Otázka: Jaké datové typy jsou podporovány?
 
 A. Podívejte se na [datové typy](sql-data-warehouse-tables-data-types.md).
 
@@ -88,7 +88,7 @@ Otázka: Podporuje SQL Analytics rozhraní REST API?
 A. Ano. Většina funkcí REST, které je možné používat s SQL Database, je také k dispozici v rámci SQL Analytics. Informace o rozhraní API najdete na stránkách dokumentace k REST nebo na [MSDN](https://msdn.microsoft.com/library/azure/mt163685.aspx).
 
 
-## <a name="loading"></a>Načítá se
+## <a name="loading"></a>Načítá
 
 Otázka: Jaké ovladače klienta podporujete?
 
@@ -108,7 +108,7 @@ Odpověď: Ne, základová databáze komunikuje pouze s součástmi úložiště
 
 Otázka: je možné se připojit k HDI?
 
-Odpověď: HDI může jako vrstvu HDFS použít buď ADLS, nebo WASB. Pokud máte buď vrstvu HDFS, můžete tato data načíst do SQL DW. V instanci HDI ale nemůžete vygenerovat výpočet přenosů směrem dolů. 
+Odpověď: HDI může jako vrstvu HDFS použít buď ADLS, nebo WASB. Pokud máte buď vrstvu HDFS, můžete tato data načíst do datového skladu SQL Analytics. V instanci HDI ale nemůžete vygenerovat výpočet přenosů směrem dolů. 
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o Azure synapse jako celku najdete na naší stránce s [přehledem](sql-data-warehouse-overview-faq.md) .

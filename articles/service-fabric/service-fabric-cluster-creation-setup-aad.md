@@ -3,12 +3,12 @@ title: Nastavit Azure Active Directory pro ověřování klientů
 description: Přečtěte si, jak nastavit Azure Active Directory (Azure AD) pro ověřování klientů pro Service Fabric clustery.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843816"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193372"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Nastavit Azure Active Directory pro ověřování klientů
 
@@ -26,7 +26,7 @@ Cluster Service Fabric nabízí několik vstupních bodů ke svým funkcím spr�
 
 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 V tomto článku předpokládáme, že jste už tenanta vytvořili. Pokud ne, začněte tím, že si přečtete, [Jak získat klienta Azure Active Directory][active-directory-howto-tenant].
 
 Abychom zjednodušili některé kroky týkající se konfigurace služby Azure AD pomocí Service Fabricho clusteru, vytvořili jsme sadu skriptů prostředí Windows PowerShell.
@@ -55,7 +55,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 
 *WebApplicationReplyUrl* je výchozí koncový bod, který Azure AD vrátí vašim uživatelům po dokončení přihlášení. Nastavte tento koncový bod jako koncový bod Service Fabric Explorer pro váš cluster. Pokud vytváříte aplikace Azure AD, které představují existující cluster, zajistěte, aby tato adresa URL odpovídala vašemu stávajícímu koncovému bodu clusteru. Pokud vytváříte aplikace pro nový cluster, naplánujte koncový bod, který bude mít cluster, a ujistěte se, že nepoužíváte koncový bod existujícího clusteru. Ve výchozím nastavení je koncový bod Service Fabric Explorer:
 
-https://&lt;cluster_domain&gt;:19080/Explorer
+https://&lt;cluster_domain&gt;: 19080/Explorer
 
 Zobrazí se výzva, abyste se přihlásili k účtu, který má oprávnění správce pro tenanta Azure AD. Po přihlášení vytvoří skript webové a nativní aplikace, které reprezentují váš Service Fabric cluster. Pokud se podíváte na aplikace klienta v [Azure Portal][azure-portal], měli byste vidět dvě nové položky:
 
@@ -104,7 +104,7 @@ Při pokusu o přihlášení ke službě Azure AD v Service Fabric Explorer vrá
 Aplikace clusteru (Web), která představuje Service Fabric Explorer se pokouší o ověření vůči službě Azure AD a jako součást požadavku, poskytuje návratovou adresu URL pro přesměrování. Adresa URL ale není uvedená v seznamu **adres URL odpovědi** aplikace Azure AD.
 
 #### <a name="solution"></a>Řešení
-Na stránce Azure AD vyberte **Registrace aplikací**, vyberte svou aplikaci v clusteru a pak vyberte **adresy URL odpovědí**. V podokně **adresy URL odpovědi** přidejte Service Fabric Explorer URL do seznamu nebo nahraďte jednu z položek v seznamu. Uložte změnu.
+Na stránce registrace aplikace Azure AD pro váš cluster Vyberte **ověřování**a v části **identifikátory uri přesměrování** přidejte Service Fabric Explorer URL do seznamu. Uložte změnu.
 
 ![Adresa URL odpovědi webové aplikace][web-application-reply-url]
 

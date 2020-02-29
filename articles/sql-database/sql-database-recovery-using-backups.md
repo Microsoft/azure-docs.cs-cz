@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 3b0b5b02fa8f369bdfa03726bd5649b70b7bbd48
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b98331a9cdb359aeefac5db1546f3a15b54010ba
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228032"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194446"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Obnovení databáze SQL Azure pomocí automatických záloh databáze
 
@@ -126,7 +126,7 @@ Vzorový skript PowerShellu ukazující, jak obnovit odstraněnou databázi SQL 
 
 #### <a name="managed-instance-database"></a>Databáze spravované instance
 
-Vzorový skript PowerShellu ukazující, jak obnovit odstraněnou databázi instance, najdete v tématu [Obnovení odstraněné databáze na spravované instanci pomocí prostředí PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance). 
+Vzorový skript PowerShellu ukazující, jak obnovit odstraněnou databázi instance, najdete v tématu [Obnovení odstraněné databáze na spravované instanci pomocí prostředí PowerShell](sql-database-managed-instance-point-in-time-restore.md#restore-a-deleted-database) .
 
 > [!TIP]
 > Chcete-li programově obnovit odstraněnou databázi, přečtěte si téma [programové provádění obnovení pomocí automatických záloh](sql-database-recovery-using-backups.md).
@@ -135,7 +135,7 @@ Vzorový skript PowerShellu ukazující, jak obnovit odstraněnou databázi inst
 
 SQL Database můžete obnovit na jakémkoli serveru v libovolné oblasti Azure z posledních geograficky replikovaných záloh. Geografické obnovení používá jako zdroj geograficky replikovanou zálohu. Můžete požadovat geografické obnovení i v případě, že je databáze nebo datacentrum nedostupné kvůli výpadku.
 
-Geografické obnovení je výchozí možností obnovení v případě, že databáze není k dispozici z důvodu incidentu v oblasti hostování. Databázi můžete obnovit na server v libovolné jiné oblasti. Doba, po kterou se zálohování provádí, a když se geograficky replikují do objektu blob Azure v jiné oblasti, nastane zpoždění. V důsledku toho může být obnovená databáze až o jednu hodinu za původní databází. Následující ilustrace znázorňuje obnovení databáze z poslední dostupné zálohy v jiné oblasti.
+Geografické obnovení je výchozí možností obnovení v případě, že databáze není k dispozici z důvodu incidentu v oblasti hostování. Databázi můžete obnovit na server v jakékoli jiné oblasti. Doba, po kterou se zálohování provádí, a když se geograficky replikují do objektu blob Azure v jiné oblasti, nastane zpoždění. V důsledku toho může být obnovená databáze až o jednu hodinu za původní databází. Následující ilustrace znázorňuje obnovení databáze z poslední dostupné zálohy v jiné oblasti.
 
 ![Grafika geografického obnovení](./media/sql-database-geo-restore/geo-restore-2.png)
 

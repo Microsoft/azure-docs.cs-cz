@@ -1,6 +1,6 @@
 ---
 title: Řešení potíží s připojením
-description: Řešení potíží s připojením v Azure SQL Data Warehouse.
+description: Řešení potíží s připojením v SQL Analytics.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: supportability
 ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d1139032176b3b44c58471b87cabd10ffeaa3d20
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 003366a6d88e018090475b6fb22d9042a97af823
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692420"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192247"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Řešení potíží s připojením
 
-V tomto článku jsou uvedené běžné techniky řešení potíží, které se připojují k vašemu SQL Data Warehouse.
+V tomto článku jsou uvedené běžné techniky řešení potíží při připojování k databázi SQL Analytics.
 - [Ověřit dostupnost služby](./sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Zkontrolujte pozastavené operace nebo operace škálování](./sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [Zkontrolujte nastavení brány firewall](./sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -32,33 +32,33 @@ V tomto článku jsou uvedené běžné techniky řešení potíží, které se 
 
 ## <a name="check-service-availability"></a>Ověřit dostupnost služby
 
-Zkontrolujte, zda je služba k dispozici. V Azure Portal přejdete do SQL Data Warehouse, ke kterému se pokoušíte připojit. Na levém panelu obsahu klikněte na **diagnostikovat a řešte problémy**.
+Zkontrolujte, zda je služba k dispozici. V Azure Portal přejdete do databáze SQL Analytics, ke které se pokoušíte připojit. Na levém panelu obsahu klikněte na **diagnostikovat a řešte problémy**.
 
 ![Vybrat stav prostředku](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-Tady se zobrazí stav SQL Data Warehouse. Pokud služba není zobrazená jako **dostupná**, Projděte si další kroky.
+Tady se zobrazí stav služby SQL Analytics. Pokud služba není zobrazená jako **dostupná**, Projděte si další kroky.
 
 ![Služba k dispozici](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Pokud se ve stavu prostředku ukáže, že je váš datový sklad pozastaven nebo se mění jeho velikost, postupujte podle pokynů pro obnovení datového skladu.
+Pokud váš stav prostředku ukazuje, že vaše instance SQL Analytics pozastavila nebo mění velikost, postupujte podle pokynů pro obnovení instance.
 
 Služba ![pozastavena](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) Další informace o Resource Health najdete zde.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Kontrolovat pozastavené operace nebo škálování
 
-Podívejte se na portál a zjistěte, jestli je vaše SQL Data Warehouse pozastavené nebo škálovatelné.
+Podívejte se na portál a zjistěte, jestli je vaše instance SQL Analytics pozastavená nebo se škálováním.
 
 ![Služba byla pozastavena](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Pokud vidíte, že vaše služba je pozastavená nebo je škálovatelná, zkontrolujte, že se během plánu údržby nezobrazuje. Na portálu pro SQL Data Warehouse *Přehled*uvidíte vybraný plán údržby.
+Pokud vidíte, že vaše služba je pozastavená nebo je škálovatelná, zkontrolujte, že se během plánu údržby nezobrazuje. Na portálu pro *Přehled*služby SQL Analytics uvidíte vybraný plán údržby.
 
 ![Přehled plánu údržby](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-V opačném případě obraťte se na správce IT a ověřte, že tato údržba není naplánovaná událost. Pokud chcete SQL Data Warehouse obnovit, postupujte podle kroků uvedených [tady](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute).
+V opačném případě obraťte se na správce IT a ověřte, že tato údržba není naplánovaná událost. Pokud chcete obnovit instanci SQL Analytics, postupujte podle kroků uvedených [tady](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute).
 
 ## <a name="check-your-firewall-settings"></a>Kontrolovat nastavení brány firewall
 
-SQL Data Warehouse komunikuje přes port 1433.   Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. V takovém případě se nebudete moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433. Další informace o konfiguracích brány firewall najdete [tady](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
+Databáze SQL Analytics komunikuje přes port 1433.   Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. V takovém případě se nebudete moct připojit k serveru služby Azure SQL Database, dokud vaše IT oddělení neotevře port 1433. Další informace o konfiguracích brány firewall najdete [tady](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules).
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Ověřte nastavení služby VNet/Service Endpoint.
 
@@ -68,7 +68,7 @@ Pokud dochází k chybám 40914 a 40615, přečtěte si [Popis chyby a rozlišen
 
 ### <a name="software"></a>Software
 
-Ujistěte se, že používáte nejnovější nástroje pro připojení k SQL Data Warehouse:
+Ujistěte se, že používáte nejnovější nástroje pro připojení k databázi SQL Analytics:
 
 * SSMS
 * Azure Data Studio
@@ -113,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Přerušované problémy s připojením
 
-Zkontrolujte, jestli je server hodně zatížený a existuje na něm vysoký počet požadavků ve frontě. Možná bude nutné vertikálně navýšit kapacitu datového skladu a přidat další prostředky.
+Zkontrolujte, jestli je server hodně zatížený a existuje na něm vysoký počet požadavků ve frontě. Možná budete muset škálovat instanci SQL Analytics pro další prostředky.
 
 ## <a name="common-error-messages"></a>Běžné chybové zprávy
 

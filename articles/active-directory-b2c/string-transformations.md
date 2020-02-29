@@ -3,20 +3,20 @@ title: Příklady transformace deklarací řetězců pro vlastní zásady
 titleSuffix: Azure AD B2C
 description: Příklady transformace deklarací identity pro schéma IEF (identity Experience Framework) Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e220009ec04ce732d99a53432077d681707e28d1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 678385d9ed16a9821fc61be476e7eb9eaf6fd4f1
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585726"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183699"
 ---
 # <a name="string-claims-transformations"></a>Transformace deklarací řetězců
 
@@ -158,7 +158,7 @@ Určete, zda jedna deklarace identity řetězce je shodná s jinou. Výsledkem j
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim1 | řetězec | První typ deklarace identity, který se má porovnat. |
 | inputClaim | inputClaim2 | řetězec | Druhý typ deklarace identity, který se má porovnat. |
-| InputParameter | operátor | řetězec | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
+| InputParameter | operator | řetězec | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
 | InputParameter | ignoreCase | Boolean | Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců. |
 | outputClaim | outputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
 
@@ -198,7 +198,7 @@ Určuje, zda je hodnota deklarace identity shodná se vstupní hodnotou parametr
 | Položka | TransformationClaimType | Typ dat | Poznámky: |
 | ---- | ----------------------- | --------- | ----- |
 | inputClaim | inputClaim1 | řetězec | Typ deklarace identity, který se má porovnat. |
-| InputParameter | operátor | řetězec | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
+| InputParameter | operator | řetězec | Možné hodnoty: `EQUAL` nebo `NOT EQUAL`. |
 | InputParameter | compareTo | řetězec | porovnání řetězců, jedna z hodnot: Ordinal, OrdinalIgnoreCase. |
 | InputParameter | ignoreCase | Boolean | Určuje, zda toto porovnání má ignorovat případ porovnávaných řetězců. |
 | outputClaim | outputClaim | Boolean | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací. |
@@ -363,7 +363,7 @@ Tuto transformaci deklarací použijte k formátování řetězce se dvěma para
 - Deklarace výstupů:
     - **outputClaim**: Jan Fernando
 
-## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation 
+## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation
 
 Zkopíruje lokalizované řetězce do deklarací identity.
 
@@ -428,9 +428,9 @@ Transformace deklarací nastaví hodnotu *předmětu* typu deklarace identity s 
 
 - Deklarace výstupů:
   - **Předmět**: kód pro ověření e-mailu účtu contoso
-  - **zpráva**: Děkujeme za ověření účtu! 
-  - **codeIntro**: váš kód je 
-  - **podpis**: pozdrav  
+  - **zpráva**: Děkujeme za ověření účtu!
+  - **codeIntro**: váš kód je
+  - **podpis**: pozdrav
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -618,7 +618,7 @@ Kontroluje, zda je deklarace identity `claimToMatch` a vstupní parametr `matchT
 | outputClaim | outputClaim | řetězec | Pokud se regulární výraz shoduje, tato deklarace výstupu obsahuje hodnotu `outputClaimIfMatched` vstupní parametr. Nebo hodnotu null, pokud se neshoduje. |
 | outputClaim | regexCompareResultClaim | Boolean | Regulární výraz odpovídá typu deklarace výstup výsledku, který má být nastaven jako `true` nebo `false` na základě výsledku porovnávání. |
 
-Například ověří, zda je zadané telefonní číslo platné na základě vzoru regulárního výrazu telefonního čísla.  
+Například ověří, zda je zadané telefonní číslo platné na základě vzoru regulárního výrazu telefonního čísla.
 
 ```XML
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
@@ -755,7 +755,7 @@ Určí, zda zadaný podřetězec spadá do vstupní deklarace. Výsledkem je nov
 Pomocí této transformace deklarací identity zkontrolujete, zda typ deklarace identity obsahuje dílčí řetězec. Následující příklad zkontroluje, zda typ deklarace `roles` řetězců obsahuje hodnotu **admin**.
 
 ```XML
-<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains"> 
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
   </InputClaims>
@@ -765,7 +765,7 @@ Pomocí této transformace deklarací identity zkontrolujete, zda typ deklarace 
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -777,7 +777,7 @@ Pomocí této transformace deklarací identity zkontrolujete, zda typ deklarace 
     - **obsahuje**: admin,
     - **IgnoreCase**: pravda
 - Deklarace výstupů:
-    - **outputClaim**: true 
+    - **outputClaim**: true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -790,7 +790,7 @@ Extrahuje části typu deklarace řetězce, počínaje znakem na zadané pozici 
 | InputParameter | length | int | Počet znaků v podřetězci. |
 | outputClaim | outputClaim | Boolean | Řetězec, který je ekvivalentní podřetězci délky začínající v startIndex v této instanci, nebo prázdný, pokud je hodnota startIndex rovna délce této instance a délka je nula. |
 
-Můžete například získat předponu země telefonního čísla.  
+Můžete například získat předponu země telefonního čísla.
 
 
 ```XML
@@ -828,7 +828,7 @@ Vyhledá v řetězci typu deklarace zadanou hodnotu a vrátí nový řetězec ty
 | InputParameter | newValue | řetězec | Řetězec, který nahradí všechny výskyty `oldValue` |
 | outputClaim | outputClaim | Boolean | Řetězec, který je ekvivalentní aktuálnímu řetězci s tím rozdílem, že všechny instance oldValue jsou nahrazeny newValue. Pokud se v aktuální instanci nenalezne oldValue, vrátí tato metoda aktuální instanci beze změny. |
 
-Například Normalizujte telefonní číslo tak, že odeberete `-`é znaky.  
+Například Normalizujte telefonní číslo tak, že odeberete `-`é znaky.
 
 
 ```XML
@@ -864,7 +864,7 @@ Zřetězí prvky zadaného typu deklarace kolekce řetězců pomocí zadaného o
 | inputClaim | inputClaim | stringCollection | Kolekce obsahující řetězce, které mají být zřetězeny. |
 | InputParameter | oddělovač | řetězec | Řetězec, který má být použit jako oddělovač, například čárka `,`. |
 | outputClaim | outputClaim | řetězec | Řetězec, který se skládá z členů kolekce řetězců `inputClaim`, oddělený vstupním parametrem `delimiter`. |
-  
+
 Následující příklad přebírá řetězcovou kolekci rolí uživatele a převede ho na řetězec oddělovače čárky. Tuto metodu můžete použít k uložení kolekce řetězců v uživatelském účtu Azure AD. Později při čtení účtu z adresáře použijte `StringSplit` k převedení řetězce oddělovače čárky zpátky na kolekci řetězců.
 
 ```XML
@@ -900,7 +900,7 @@ Vrátí pole řetězce, které obsahuje podřetězce v této instanci, které js
 | inputClaim | inputClaim | řetězec | Typ deklarace řetězce, který obsahuje podřetězce, které mají být rozděleny. |
 | InputParameter | oddělovač | řetězec | Řetězec, který má být použit jako oddělovač, například čárka `,`. |
 | outputClaim | outputClaim | stringCollection | Kolekce řetězců, jejíž prvky obsahují podřetězce v tomto řetězci, které jsou odděleny parametrem `delimiter` Input. |
-  
+
 Následující příklad přijímá řetězec s oddělovači rolí uživatele čárkami a převede ho na kolekci řetězců.
 
 ```XML
@@ -925,7 +925,7 @@ Následující příklad přijímá řetězec s oddělovači rolí uživatele č
   - **oddělovač**: ","
 - Deklarace výstupů:
   - **outputClaim**: ["admin"; "Author"; "Reader"]
-  
+
 ## <a name="string-claim-transformations-expressions"></a>Výrazy transformace deklarace řetězce
 Výrazy transformace deklarace v Azure AD B2C vlastní zásady poskytují kontextové informace o ID tenanta a ID technického profilu.
 

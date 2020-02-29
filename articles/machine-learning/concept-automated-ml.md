@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ef3cbc83cd67647709a53fee2c32b444c5d86f4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/28/2020
+ms.openlocfilehash: 9739c0a6b66099a2bebb1d42922d8653a92e650b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526123"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190343"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co je automatické machine learning?
 
@@ -38,7 +38,7 @@ Odborníci na data, analytiké a vývojáři v různých oborech můžou použí
 
 V následující tabulce jsou uvedeny běžné případy použití automatizovaného ML. 
 
-Klasifikace| Prognózování časových řad | Regrese
+Classification| Prognózování časových řad | Regrese
 ---|---|---
 [Zjišťování podvodů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)|[Prognózování prodeje](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)|[Předpověď výkonu procesoru](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb)
 |[Předpověď marketingu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)|[Prognózování poptávky](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)|
@@ -150,6 +150,14 @@ Zvažujeme model **a**, pokud je přesnost testu u nezobrazených dat nižší n
 Při porovnávání modelů **a** a **B**model **a** je lepší model, protože má vyšší přesnost testování, i když je přesnost testu mírně nižší v 95%, nejedná se o významný rozdíl, který navrhuje přemístění, je k dispozici. Model **B** byste nezvolili jednoduše proto, že vlak a test přesností jsou bližší dohromady.
 
 Model **C** představuje nejasný případ přeložení; přesnost školení je velmi vysoká, ale přesnost testu není nikde blízko nejvyšší úrovně. Tento rozdíl je subjektivní, ale pochází ze znalostí o vašem problému a datech a o tom, jaké množství chyb je přijatelné. 
+
+## <a name="classification--regression"></a>Klasifikace & regrese
+
+Klasifikace a regrese jsou nejběžnějšími typy úloh strojového učení. Oba typy jsou pod dohledem učení, ve kterém se modely učí pomocí školicích dat, a tyto učení použít pro nová data. Azure Machine Learning nabízí featurizations specificky pro tyto úlohy, jako je například hluboký neuronové Network text featurizers for Classification. Další informace o [možnostech featurization](how-to-create-portal-experiments.md#featurization) 
+
+Hlavním cílem modelů klasifikace je předpovědět, ke kterým kategoriím budou nová data zacházet v závislosti na studiu ze svých školicích dat. Mezi běžné klasifikace patří zjišťování podvodů, rozpoznávání rukopisu a detekce objektů.  Přečtěte si další informace a podívejte [se na příklad klasifikace pomocí automatizovaného strojového učení](tutorial-train-models-with-aml.md).
+
+Liší se od klasifikace, kde jsou hodnoty předpokládaných výstupů kategorií, regresní modely odhadne číselné výstupní hodnoty na základě nezávislých prediktivních. V regresi je cílem přispět k navázání vztahu mezi těmito nezávislými proměnnými proměnných odhadem toho, jak jedna proměnná má vliv na ostatní. Například cena automobilu na základě funkcí, jako je plynová km, bezpečnostní hodnocení atd. Přečtěte si další informace a podívejte [se na příklad regrese pomocí automatizovaného strojového učení](tutorial-auto-train-models.md).
 
 ## <a name="time-series-forecasting"></a>Prognózování časových řad
 

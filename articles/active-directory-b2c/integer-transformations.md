@@ -3,20 +3,20 @@ title: Příklady transformací celočíselných deklarací pro vlastní zásady
 titleSuffix: Azure AD B2C
 description: Příklady transformace celočíselných deklarací pro schéma IEF (identity Experience Framework) Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7295e03f0a0f94b3450b99acc4d10d6ff86c92e7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948835"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187674"
 ---
 # <a name="integer-claims-transformations"></a>Transformace celočíselných deklarací
 
@@ -28,10 +28,10 @@ Tento článek popisuje příklady použití celočíselných transformací iden
 
 Převede datový typ Long na datový typ String.
 
-| Položka | TransformationClaimType | Typ dat | Poznámky |
+| Položka | TransformationClaimType | Typ dat | Poznámky: |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | InputClaim | Long | Deklarace ClaimType pro převod na řetězec. |
-| outputClaim | outputClaim | string | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
+| inputClaim | inputClaim | long | Deklarace ClaimType pro převod na řetězec. |
+| outputClaim | outputClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání tohoto ClaimsTransformation. |
 
 V tomto příkladu je deklarace `numericUserId` s typem hodnoty Long převedena na `UserId` deklaraci identity s typem hodnoty String.
 
@@ -46,7 +46,7 @@ V tomto příkladu je deklarace `numericUserId` s typem hodnoty Long převedena 
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Příklad:
+### <a name="example"></a>Příklad
 
 - Vstupní deklarace identity:
     - **inputClaim**: 12334 (dlouhý)

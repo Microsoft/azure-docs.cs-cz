@@ -1,6 +1,6 @@
 ---
 title: Indexování tabulek
-description: Doporučení a příklady pro indexování tabulek v Azure SQL Data Warehouse.
+description: Doporučení a příklady pro indexování tabulek v SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: development
 ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 079891824bf71caf1ebfa575833de650a55ed5be
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 5167c897109f9e4f050ac6f7416ecabbbb28a4a9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685453"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196597"
 ---
-# <a name="indexing-tables-in-sql-data-warehouse"></a>Indexování tabulek v SQL Data Warehouse
+# <a name="indexing-tables-in-sql-analytics"></a>Indexování tabulek v SQL Analytics
 
-Doporučení a příklady pro indexování tabulek v Azure SQL Data Warehouse.
+Doporučení a příklady pro indexování tabulek v SQL Analytics.
 
 ## <a name="index-types"></a>Typy indexů
 
-SQL Data Warehouse nabízí několik možností indexování včetně [clusterovaných indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview), [clusterovaných indexů a neclusterovaných indexů](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)a možnost bez indexu, která se také označuje jako [halda](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes).  
+SQL Analytics nabízí několik možností indexování včetně [clusterovaných indexů columnstore](/sql/relational-databases/indexes/columnstore-indexes-overview), [clusterovaných indexů a neclusterovaných indexů](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)a možnost bez indexu, která se označuje také jako [halda](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes).  
 
-Chcete-li vytvořit tabulku s indexem, přečtěte si dokumentaci k [Create Table (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) .
+Chcete-li vytvořit tabulku s indexem, přečtěte si dokumentaci [Create Table (SQL Analytics)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) .
 
 ## <a name="clustered-columnstore-indexes"></a>Clusterované indexy columnstore
 
-Ve výchozím nastavení SQL Data Warehouse vytvoří clusterovaný index columnstore, pokud nejsou v tabulce zadány žádné možnosti indexu. Clusterované tabulky columnstore nabízejí nejvyšší úroveň komprese dat i nejlepší celkový výkon dotazů.  Clusterované tabulky columnstore budou všeobecně překoná clusterovaných indexů nebo tabulek haldy a jsou obvykle nejlepší volbou pro velké tabulky.  Z těchto důvodů je clusterový columnstore nejlepší místo, kde si nejste jisti, jak indexovat tabulku.  
+Ve výchozím nastavení vytvoří SQL Analytics clusterovaný index columnstore, pokud v tabulce nejsou zadány žádné možnosti indexu. Clusterované tabulky columnstore nabízejí nejvyšší úroveň komprese dat i nejlepší celkový výkon dotazů.  Clusterované tabulky columnstore budou všeobecně překoná clusterovaných indexů nebo tabulek haldy a jsou obvykle nejlepší volbou pro velké tabulky.  Z těchto důvodů je clusterový columnstore nejlepší místo, kde si nejste jisti, jak indexovat tabulku.  
 
 Pokud chcete vytvořit clusterovanou tabulku columnstore, stačí v klauzuli WITH zadat CLUSTEROVANÝ INDEX COLUMNSTORE, nebo ponechte klauzuli WITH vypnuto:
 
@@ -52,7 +52,7 @@ Existuje několik scénářů, kdy clusterový columnstore nemůže být dobrou 
 
 ## <a name="heap-tables"></a>Tabulky haldy
 
-Když dočasně vydáte data v SQL Data Warehouse, může se stát, že při použití tabulky haldy bude celkový proces rychlejší. Důvodem je to, že zatížení haldami je rychlejší než indexování tabulek a v některých případech je možné provést následné čtení z mezipaměti.  Pokud načítáte data pouze do fáze před spuštěním více transformací, načítání tabulky do tabulky haldy je mnohem rychlejší než načítání dat do clusterované tabulky columnstore. Kromě toho se načítání dat do [dočasné tabulky](sql-data-warehouse-tables-temporary.md) načítá rychleji než načítání tabulky do trvalého úložiště.  
+Při dočasném vykládku dat ve službě SQL Analytics se můžete setkat s tím, že při použití tabulky haldy bude celý proces rychlejší. Důvodem je to, že zatížení haldami je rychlejší než indexování tabulek a v některých případech je možné provést následné čtení z mezipaměti.  Pokud načítáte data pouze do fáze před spuštěním více transformací, načítání tabulky do tabulky haldy je mnohem rychlejší než načítání dat do clusterované tabulky columnstore. Kromě toho se načítání dat do [dočasné tabulky](sql-data-warehouse-tables-temporary.md) načítá rychleji než načítání tabulky do trvalého úložiště.  
 
 U malých vyhledávacích tabulek, méně než 60 000 000 řádků, často jsou vhodné tabulky haldy.  Pokud je více než 60 000 000 řádků, začne docházet k optimální kompresi v tabulkách clusteru columnstore.
 
@@ -154,7 +154,7 @@ WHERE    COMPRESSED_rowgroup_rows_AVG < 100000
 
 Jakmile spustíte dotaz, můžete začít se podívat na data a analyzovat výsledky. V této tabulce je vysvětleno, co se má v analýze skupiny řádků Hledat.
 
-| Column | Jak používat tato data |
+| Sloupec | Jak používat tato data |
 | --- | --- |
 | [table_partition_count] |Pokud je tabulka rozdělená na oddíly, může se stát, že budete chtít zobrazit větší počet otevřených skupin řádků. Každý oddíl v distribuci se může teoreticky používat k přidružení otevřené skupiny řádků. Přiložte to do vaší analýzy. Malá tabulka, která byla rozdělená na oddíly, by mohla být optimalizovaná tak, že zcela odebere oddíly, protože by to mohlo zlepšit komprimaci. |
 | [row_count_total] |Celkový počet řádků tabulky Pomocí této hodnoty můžete například vypočítat procento řádků v komprimovaném stavu. |
@@ -190,7 +190,7 @@ Tyto faktory můžou způsobit, že index columnstore bude mnohem menší než o
 
 ### <a name="memory-pressure-when-index-was-built"></a>Tlak paměti při sestavení indexu
 
-Počet řádků na komprimovanou skupinu řádků přímo souvisí se šířkou řádku a velikostí paměti, která je k dispozici pro zpracování skupiny řádků.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Proto je osvědčeným postupem poskytnout relaci, která zapisuje do tabulek indexu columnstore, přístup k co nejvíce paměti.  Vzhledem k tomu, že existuje kompromis mezi pamětí a souběžně, jsou pokyny týkající se správného přidělení paměti závislé na datech v jednotlivých řádcích tabulky, jednotkách datového skladu, které jsou přiděleny vašemu systému, a počtu slotů souběžnosti, které můžete k relaci poskytnout. zapisuje data do tabulky.
+Počet řádků na komprimovanou skupinu řádků přímo souvisí se šířkou řádku a velikostí paměti, která je k dispozici pro zpracování skupiny řádků.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Proto je osvědčeným postupem poskytnout relaci, která zapisuje do tabulek indexu columnstore, přístup k co nejvíce paměti.  Vzhledem k tomu, že existuje kompromis mezi pamětí a souběžnou, závisí pokyny na správném přidělení paměti v závislosti na datech v jednotlivých řádcích tabulky, jednotkách analýzy SQL, které jsou přiděleny vašemu systému, a na počtu slotů souběžnosti, které můžete k relaci poskytnout. zápis dat do tabulky.
 
 ### <a name="high-volume-of-dml-operations"></a>Velký objem operací DML
 
@@ -204,13 +204,13 @@ Dávkové operace aktualizace a vložení, které přesahují hromadnou prahovou
 
 ### <a name="small-or-trickle-load-operations"></a>Malé nebo trickle operace načítání
 
-Malé zátěže, které se flowují do SQL Data Warehouse, se také někdy označují jako trickle zatížení. Typicky představují skoro konstantní datový proud dat zpracovávaných systémem. Vzhledem k tomu, že je tento datový proud blízko nepřetržitě, není objem řádků obzvláště velký. Častěji než data jsou výrazně pod prahovou hodnotou nutnou pro přímé zatížení ve formátu columnstore.
+Malá zatížení, která se přenášejí do databází SQL Analytics, se někdy označují také jako trickle zatížení. Typicky představují skoro konstantní datový proud dat zpracovávaných systémem. Vzhledem k tomu, že je tento datový proud blízko nepřetržitě, není objem řádků obzvláště velký. Častěji než data jsou výrazně pod prahovou hodnotou nutnou pro přímé zatížení ve formátu columnstore.
 
 V těchto situacích je často lepší nakládat data jako první v úložišti objektů BLOB v Azure a nechat si je shromáždit před načtením. Tato technika se často označuje jako *mikrodávkování*.
 
 ### <a name="too-many-partitions"></a>Příliš mnoho oddílů
 
-Další věcí, kterou je potřeba vzít v úvahu, je dopad dělení na oddíly v clusterovaných tabulkách columnstore.  Před rozdělením SQL Data Warehouse již vaše data rozdělí do databází 60.  Dělení dále rozděluje vaše data.  Při vytváření oddílů dat je potřeba vzít v úvahu, že **každý** oddíl potřebuje aspoň 1 000 000 řádků, aby bylo možné využít clusterový index columnstore.  Pokud vytváříte oddíly tabulky na oddíly 100, je potřeba, aby tabulka měla aspoň 6 000 000 000 řádků, abyste využili výhod clusterovaného indexu columnstore (60 distribuce *100 oddíly* 1 000 000 řádků). Pokud tabulka 100-partition neobsahuje 6 000 000 000 řádků, snižte počet oddílů nebo zvažte použití tabulky haldy.
+Další věcí, kterou je potřeba vzít v úvahu, je dopad dělení na oddíly v clusterovaných tabulkách columnstore.  SQL Analytics už před vytvořením oddílů rozděluje vaše data do databází 60.  Dělení dále rozděluje vaše data.  Při vytváření oddílů dat je potřeba vzít v úvahu, že **každý** oddíl potřebuje aspoň 1 000 000 řádků, aby bylo možné využít clusterový index columnstore.  Pokud vytváříte oddíly tabulky na oddíly 100, je potřeba, aby tabulka měla aspoň 6 000 000 000 řádků, abyste využili výhod clusterovaného indexu columnstore (60 distribuce *100 oddíly* 1 000 000 řádků). Pokud tabulka 100-partition neobsahuje 6 000 000 000 řádků, snižte počet oddílů nebo zvažte použití tabulky haldy.
 
 Po načtení tabulek s některými daty pomocí následujících kroků identifikujte a znovu sestavíte tabulky s dílčími optimálními clusterovanými indexy columnstore.
 
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Nové sestavení indexu v SQL Data Warehouse je operace offline.  Další informace o opětovném sestavení indexů naleznete v části ALTER INDEX Rebuild v tématu [Defragmentace](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)indexů columnstore a v článku [ALTER index](/sql/t-sql/statements/alter-index-transact-sql).
+Nové sestavení indexu v SQL Analytics je operace offline.  Další informace o opětovném sestavení indexů naleznete v části ALTER INDEX Rebuild v tématu [Defragmentace](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)indexů columnstore a v článku [ALTER index](/sql/t-sql/statements/alter-index-transact-sql).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Krok 3: ověření kvality segmentu clusterovaného v clusteru
 
@@ -283,7 +283,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
-Další podrobnosti o opětovném vytvoření oddílů pomocí CTAS naleznete v tématu [using partitions in SQL Data Warehouse](sql-data-warehouse-tables-partition.md).
+Další podrobnosti o opětovném vytvoření oddílů pomocí CTAS naleznete v tématu [using partitions in SQL Analytics](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>Další kroky
 

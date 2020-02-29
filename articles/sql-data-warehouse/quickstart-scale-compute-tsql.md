@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: škálování výpočetní technologie – T-SQL '
-description: Pomocí T-SQL a aplikace SSMS (SQL Server Management Studio) můžete škálovat výpočetní prostředky ve službě Azure SQL Data Warehouse. Kapacitu výpočetních prostředků můžete horizontálně navýšit, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
+title: Škálování výpočetních prostředků ve službě Azure synapse Analytics – T-SQL
+description: Škálujte výpočetní prostředky ve službě Azure synapse Analytics pomocí T-SQL a SQL Server Management Studio (SSMS). Kapacitu výpočetních prostředků můžete horizontálně navýšit, abyste získali lepší výkon, nebo snížit, abyste dosáhli nižších nákladů.
 services: sql-data-warehouse
 author: Antvgski
 manager: craigg
@@ -10,19 +10,19 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6729552262d7bea619948ddba406418b80cf69dc
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a6d47a41375c00b9bdad5079f8e1f11cf369120a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685938"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200387"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>Rychlý start: Škálování kapacity výpočetních prostředků ve službě Azure SQL Data Warehouse pomocí T-SQL
+# <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Rychlý Start: škálování výpočetních prostředků ve službě Azure synapse Analytics pomocí T-SQL
 
-Pomocí T-SQL a aplikace SSMS (SQL Server Management Studio) můžete škálovat výpočetní prostředky ve službě Azure SQL Data Warehouse. Můžete [horizontálně navýšit kapacitu výpočetních prostředků](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo ji snížit a dosáhnout tak nižších nákladů. 
+Škálujte výpočetní prostředky ve službě Azure synapse Analytics (dříve SQL DW) pomocí T-SQL a SQL Server Management Studio (SSMS). Můžete [horizontálně navýšit kapacitu výpočetních prostředků](sql-data-warehouse-manage-compute-overview.md), abyste získali lepší výkon, nebo ji snížit a dosáhnout tak nižších nákladů. 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -30,7 +30,7 @@ Stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management St
  
 ## <a name="create-a-data-warehouse"></a>Vytvoření datového skladu
 
-Pomocí postupu v článku [Rychlý start: Vytvoření a připojení – portál](create-data-warehouse-portal.md) vytvořte datový sklad s názvem **mySampleDataWarehouse**. Dokončete rychlý start, abyste měli jistotu, že používáte pravidlo brány firewall a že se můžete připojit k datovému skladu z aplikace SQL Server Management Studio.
+Pomocí postupu v článku [Rychlý start: Vytvoření a připojení – portál](create-data-warehouse-portal.md) vytvořte datový sklad s názvem **mySampleDataWarehouse**. Dokončete rychlý Start, abyste měli jistotu, že máte pravidlo brány firewall a můžete se připojit k vašemu datovému skladu z SQL Server Management Studio.
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Připojení k serveru jako správce serveru
 
@@ -43,25 +43,25 @@ V této části se pomocí aplikace [SQL Server Management Studio](/sql/ssms/dow
    | Nastavení       | Navrhovaná hodnota | Popis | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | Typ serveru | Databázový stroj | Tato hodnota se vyžaduje. |
-   | Název serveru | Plně kvalifikovaný název serveru | Tady je příklad: **mynewserver-20171113.database.windows.net**. |
-   | Ověření | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
+   | Název serveru | Plně kvalifikovaný název serveru | Tady je příklad: **mySampleDataWarehouseservername.Database.Windows.NET**. |
+   | Ověřování | Ověřování SQL Serveru | Ověřování SQL je jediný typ ověřování, který se v tomto kurzu konfiguruje. |
    | Přihlásit | Účet správce serveru | Jedná se o účet, který jste zadali při vytváření serveru. |
-   | Heslo | Heslo pro účet správce serveru | Jedná se o heslo, které jste zadali při vytváření serveru. |
+   | Heslo | Heslo pro účet správce serveru | Heslo, které jste zadali při vytváření serveru. |
 
-    ![Připojení k serveru](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
+    ![Připojit k serveru](media/quickstart-scale-compute-tsql/connect-to-server.png)
 
-4. Klikněte na **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů. 
+3. Klikněte na **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů.
 
-5. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **mySampleDatabase** a zobrazte objekty v nové databázi.
+4. V Průzkumníku objektů rozbalte **Databáze**. Pak rozbalte **mySampleDataWarehouse** a zobrazte objekty v nové databázi.
 
-    ![databázové objekty](media/create-data-warehouse-portal/connected.png) 
+    ![Objekty databáze](media/quickstart-scale-compute-tsql/connected.png)
 
 ## <a name="view-service-objective"></a>Zobrazení cíle služby
 Nastavení cíle služby obsahuje množství jednotek datového skladu pro datový sklad. 
 
 Pokud se chcete podívat na aktuální jednotky svého datového skladu, postupujte takto:
 
-1. V části připojení k **mynewserver-20171113.database.windows.net** rozbalte uzel **Systémové databáze**.
+1. V části připojení k **mySampleDataWarehouseservername.Database.Windows.NET**rozbalte **systémové databáze**.
 2. Klikněte pravým tlačítkem na **hlavní větev** a vyberte **Nový dotaz**. Otevře se nové okno dotazu.
 3. Spusťte následující dotaz pro výběr ze zobrazení dynamické správy sys.database_service_objectives. 
 
@@ -80,11 +80,10 @@ Pokud se chcete podívat na aktuální jednotky svého datového skladu, postupu
 
 4. Z následujících výsledků je zřejmé, že **mySampleDataWarehouse** má jako cíl služby DW400. 
 
-    ![Zobrazení aktuálních jednotek datového skladu](media/quickstart-scale-compute-tsql/view-current-dwu.png)
-
+    ![inobrazování – aktuální – DWU](media/quickstart-scale-compute-tsql/view-current-dwu.png)
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
-Ve službě SQL Data Warehouse můžete upravit počet jednotek datového skladu a tím zvýšit nebo snížit množství výpočetních prostředků. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
+V Azure synapse můžete zvýšit nebo snížit výpočetní prostředky tím, že upravíte jednotky datového skladu. Podle postupu v článku [Vytvoření a připojení – portál](create-data-warehouse-portal.md) jste vytvořili **mySampleDataWarehouse** a inicializovali ho se 400 jednotkami datového skladu. V následujícím postupu upravíte jednotky datového skladu pro **mySampleDataWarehouse**.
 
 Změna jednotek datového skladu:
 
@@ -93,8 +92,7 @@ Změna jednotek datového skladu:
 
     ```Sql
     ALTER DATABASE mySampleDataWarehouse
-    MODIFY (SERVICE_OBJECTIVE = 'DW300c')
-    ;
+    MODIFY (SERVICE_OBJECTIVE = 'DW300c');
     ```
 
 ## <a name="monitor-scale-change-request"></a>Monitorování žádostí o změnu rozsahu
@@ -113,7 +111,7 @@ Pokud se chcete dotázat na stav změny objektu služby:
         WHERE 
             1=1
             AND resource_type_desc = 'Database'
-            AND major_resource_id = 'MySampleDataWarehouse'
+            AND major_resource_id = 'mySampleDataWarehouse'
             AND operation = 'ALTER DATABASE'
         ORDER BY
             start_time DESC
@@ -134,7 +132,7 @@ Když je datový sklad pozastavený, nemůžete se k němu připojit pomocí T-S
 
 ## <a name="check-operation-status"></a>Kontrola stavu operace
 
-Informace o různých operacích správy ve službě SQL Data Warehouse získáte po spuštění následujícího dotazu v zobrazení dynamické správy [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). Vrátí se například operace a její stav, který bude IN_PROGRESS nebo COMPLETED.
+Pokud chcete vracet informace o různých operacích správy ve službě Azure synapse, spusťte následující dotaz na [Sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) DMV. Vrátí se například operace a její stav, který bude IN_PROGRESS nebo COMPLETED.
 
 ```sql
 SELECT *
@@ -143,12 +141,12 @@ FROM
 WHERE
     resource_type_desc = 'Database'
 AND 
-    major_resource_id = 'MySampleDataWarehouse'
+    major_resource_id = 'mySampleDataWarehouse'
 ```
 
 
 ## <a name="next-steps"></a>Další kroky
-Teď už víte, jak škálovat výpočetní prostředky pro datový sklad. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
+Teď už víte, jak škálovat výpočetní prostředky pro datový sklad. Další informace o Azure synapse najdete v kurzu načtení dat.
 
 > [!div class="nextstepaction"]
->[Načtení dat do SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+>[Načtení dat do služby Azure synapse Analytics](load-data-from-azure-blob-storage-using-polybase.md)

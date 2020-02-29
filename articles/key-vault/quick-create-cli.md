@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1b5ebbcd3a891149a72b3dbe8cb19b3c8de528a1
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 6f71dd0f928f75deff0a483dda0aed621d6ead19
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773773"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197602"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí Azure CLI
 
@@ -50,7 +51,7 @@ Dále ve skupině prostředků vytvořené v předchozím kroku vytvoříte slu�
 
 - V tomto rychlém startu používáme **Contoso-vault2**. Pro své testování musíte zadat jedinečný název.
 - Název skupiny prostředků **ContosoResourceGroup**
-- Umístění **Východní USA**
+- Umístění **USA – východ**
 
 ```azurecli
 az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGroup" --location eastus

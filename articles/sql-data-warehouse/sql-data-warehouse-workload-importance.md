@@ -1,26 +1,26 @@
 ---
 title: Důležitost úloh
-description: Pokyny pro nastavení důležitosti pro dotazy v Azure SQL Data Warehouse.
+description: Pokyny pro nastavení důležitosti pro dotazy SQL Analytics ve službě Azure synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 76a77c1833ae1827f2a6a9b577b3cca51b35a344
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: azure-synapse
+ms.openlocfilehash: de7bb28770bc356514c392c3478fd0e33658f878
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351431"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191761"
 ---
-# <a name="azure-sql-data-warehouse-workload-importance"></a>Důležitost úloh Azure SQL Data Warehouse
+# <a name="azure-synapse-analytics-workload-importance"></a>Důležitost úloh služby Azure synapse Analytics
 
-Tento článek vysvětluje, jak důležitost úloh může ovlivnit pořadí spouštění SQL Data Warehousech požadavků.
+Tento článek vysvětluje, jak důležitost úloh může ovlivnit pořadí spouštění požadavků SQL Analytics v Azure synapse.
 
 ## <a name="importance"></a>Význam
 
@@ -36,9 +36,9 @@ Existuje pět úrovní důležitosti: nízká, below_normal, Normal, above_norma
 
 Mimo základní scénář důležitosti, který je popsaný výše s údaji o prodeji a počasí, jsou k dispozici další scénáře, kdy důležité úlohy pomáhají splnit požadavky na zpracování a dotazování dat.
 
-### <a name="locking"></a>Uzamčení
+### <a name="locking"></a>Zamknut
 
-Přístup k zámkům pro aktivitu čtení a zápisu představuje jednu oblast přirozeného sporu. Aktivity, jako je [přepínání oddílů](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) nebo [přejmenování objektu](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) , vyžadují zvýšené zámky.  Bez důležitosti úloh SQL Data Warehouse optimalizuje propustnost. Optimalizace pro propustnost znamená, že při spuštění a frontě požadavků mají být k dispozici stejné požadavky na uzamykání a prostředky, požadavky ve frontě mohou obejít požadavky s vyššími požadavky na uzamykání, které byly přijaty do fronty požadavků dříve. Po použití důležitosti na požadavky s vyššími nároky na uzamykání. Požadavek s vyšší důležitostí se spustí před vyžádáním s nižší důležitostí.
+Přístup k zámkům pro aktivitu čtení a zápisu představuje jednu oblast přirozeného sporu. Aktivity, jako je [přepínání oddílů](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) nebo [přejmenování objektu](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) , vyžadují zvýšené zámky.  SQL Analytics v Azure synapse se optimalizuje kvůli propustnosti bez důležitosti úloh. Optimalizace pro propustnost znamená, že při spuštění a frontě požadavků mají být k dispozici stejné požadavky na uzamykání a prostředky, požadavky ve frontě mohou obejít požadavky s vyššími požadavky na uzamykání, které byly přijaty do fronty požadavků dříve. Po použití důležitosti na požadavky s vyššími nároky na uzamykání. Požadavek s vyšší důležitostí se spustí před vyžádáním s nižší důležitostí.
 
 Vezměte v úvahu v následujícím příkladu:
 
@@ -50,7 +50,7 @@ Pokud má dotaz na hodnotu F2 a Q3 stejnou důležitost a je-li stále spuštěn
 
 ### <a name="non-uniform-requests"></a>Neuniformní žádosti
 
-Dalším scénářem, kde důležitost může přispět k splnění požadavků na dotazování, je při odeslání požadavků s různými třídami prostředků.  Jak bylo uvedeno výše, se stejnou důležitostí SQL Data Warehouse optimalizuje propustnost. Pokud jsou požadavky na smíšenou velikost (například smallrc nebo mediumrc) zařazené do fronty, SQL Data Warehouse zvolí první požadavek na doručení, který se vejde do dostupných prostředků. Pokud se používá důležitost úloh, naplánuje se další požadavek na důležitost.
+Dalším scénářem, kde důležitost může přispět k splnění požadavků na dotazování, je při odeslání požadavků s různými třídami prostředků.  Jak už bylo uvedeno výše, v rámci stejné důležitosti se analýza SQL ve službě Azure synapse optimalizuje pro propustnost. Pokud jsou požadavky na smíšenou velikost (například smallrc nebo mediumrc) zařazeny do fronty, bude SQL Analytics zvolit nejstarší požadavek, který se vejde do dostupných prostředků. Pokud se používá důležitost úloh, naplánuje se další požadavek na důležitost.
   
 Vezměte v úvahu následující příklad v DW500c:
 
@@ -63,7 +63,7 @@ Vzhledem k tomu, že Q5 je mediumrc, vyžaduje dva sloty souběžnosti. Q5 musí
 ## <a name="next-steps"></a>Další kroky
 
 - Další informace o vytvoření klasifikátoru najdete v tématu [Vytvoření klasifikátoru úloh (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql).  
-- Další informace o SQL Data Warehouse klasifikaci úloh najdete v tématu [klasifikace úloh](sql-data-warehouse-workload-classification.md).  
+- Další informace o klasifikaci úloh najdete v tématu [klasifikace úloh](sql-data-warehouse-workload-classification.md).  
 - Informace o tom, jak vytvořit klasifikátor úloh, najdete v tématu rychlý Start – [Vytvoření klasifikátoru úloh](quickstart-create-a-workload-classifier-tsql.md) . 
 - V článcích s postupy můžete [nakonfigurovat důležitost úloh](sql-data-warehouse-how-to-configure-workload-importance.md) a [Spravovat a monitorovat správu úloh](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
 - V tématu [Sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) můžete zobrazit dotazy a přiřazené důležitost.

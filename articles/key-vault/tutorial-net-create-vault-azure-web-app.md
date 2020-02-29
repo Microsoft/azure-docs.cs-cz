@@ -5,18 +5,19 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 84256d79ec543d038b4d3d3f3dc6901bbd003871
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e636ab843a9801097bf770ca12c9d1e512750c91
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003363"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198112"
 ---
-# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Kurz: Použití Azure Key Vault s webovou aplikací Azure v .NET
+# <a name="tutorial-use-azure-key-vault-with-an-azure-web-app-in-net"></a>Kurz: použití Azure Key Vault s webovou aplikací Azure v .NET
 
 Azure Key Vault vám pomůže s ochranou tajných kódů, jako jsou klíče rozhraní API a databázové připojovací řetězce. Poskytuje přístup k vašim aplikacím, službám a prostředkům IT.
 
@@ -37,10 +38,10 @@ Než začnete, přečtěte si téma [Key Vault Basic koncepty](basic-concepts.md
 
 Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pro Windows: [.NET Core 2,1 SDK nebo novější](https://www.microsoft.com/net/download/windows)
-* Pro Mac: [Visual Studio for Mac](https://visualstudio.microsoft.com/vs/mac/)
+* Pro Mac: [Visual Studio pro Mac](https://visualstudio.microsoft.com/vs/mac/)
 * Pro Windows, Mac a Linux:
   * [Git](https://git-scm.com/downloads)
   * Tento kurz vyžaduje, abyste spouštěli Azure CLI místně. Musíte mít nainstalovanou verzi Azure CLI 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade rozhraní příkazového řádku, přečtěte si téma [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
@@ -70,7 +71,7 @@ Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spra
 
 Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create).
 
-Pak vyberte název skupiny prostředků a vyplňte zástupný symbol. Následující příklad vytvoří skupinu prostředků v umístění Západní USA:
+Pak vyberte název skupiny prostředků a vyplňte zástupný symbol. Následující příklad vytvoří skupinu prostředků v umístění USA – západ:
 
    ```azurecli
    # To list locations: az account list-locations --output table
@@ -85,7 +86,7 @@ Pokud chcete vytvořit Trezor klíčů ve skupině prostředků, zadejte násled
 
 * Název trezoru klíčů: řetězec na 3 až 24 znaků, který může obsahovat jenom číslice (0-9), písmena (a-z, A-Z) a spojovníky (-).
 * Název skupiny prostředků
-* Oblasti **Západní USA**
+* Umístění: **západní USA**
 
 V rozhraní příkazového řádku Azure CLI zadejte tento příkaz:
 
@@ -127,7 +128,7 @@ Můžete se také podívat na toto video:
 
 ## <a name="open-and-edit-the-solution"></a>Otevření a úprava řešení
 
-1. Přejít na soubor**About.cshtml.cs** **stránky** > .
+1. Přejít na **stránku** > souboru **About.cshtml.cs** .
 
 1. Nainstalujte tyto balíčky NuGet:
    - [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)
@@ -206,9 +207,9 @@ az webapp identity assign --name "<YourAppName>" --resource-group "<YourResource
 ```
 
 Nahraďte \<soubor YourAppName > názvem publikované aplikace v Azure.  
-    Pokud jste například název publikované aplikace **MyAwesomeapp.azurewebsites.NET**, nahraďte \<soubor YourAppName > pomocí **MyAwesomeapp**.
+    Pokud jste například název publikované aplikace **MyAwesomeapp.azurewebsites.NET**, nahraďte > \<soubor YourAppName pomocí **MyAwesomeapp**.
 
-Při publikování aplikace do Azure `PrincipalId` si poznamenejte, jak je třeba. Výstup příkazu v kroku 1 by měl být v následujícím formátu:
+Poznamenejte si `PrincipalId` při publikování aplikace do Azure. Výstup příkazu v kroku 1 by měl být v následujícím formátu:
 
 ```json
 {
@@ -219,7 +220,7 @@ Při publikování aplikace do Azure `PrincipalId` si poznamenejte, jak je třeb
 ```
 
 >[!NOTE]
->Příkaz v tomto postupu je ekvivalentem přechodu na [Azure Portal](https://portal.azure.com) a přepnutím nastavení **identity/systému přiřazené k nástroji** ve vlastnostech webové aplikace.
+>Příkaz v tomto postupu je ekvivalentem přechodu na [Azure Portal](https://portal.azure.com) a přepnutím nastavení **identity/systému přiřazené k nástroji** **ve vlastnostech** webové aplikace.
 
 ## <a name="assign-permissions-to-your-app"></a>Přiřazení oprávnění k aplikaci
 
@@ -246,7 +247,7 @@ Nyní jste úspěšně vytvořili webovou aplikaci v rozhraní .NET, která ukl�
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už je nepotřebujete, můžete virtuální počítač a trezor klíčů odstranit.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 >[!div class="nextstepaction"]
 >[Průvodce vývojáře pro Azure Key Vault](key-vault-developers-guide.md)

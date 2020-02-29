@@ -1,104 +1,95 @@
 ---
 title: Offline zálohování pomocí Azure Data Box
-description: Naučte se, jak můžete použít Azure Data Box k osazení velkých počátečních zálohovaných dat offline od agenta MARS do trezoru služby Azure Recovery Services.
+description: Naučte se, jak můžete použít Azure Data Box k osazení velkých počátečních zálohovaných dat offline od agenta MARS do trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 553939df8aa7a1b097b2cd6c7f29365302101324
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9a8288939adba8ec1b0cbe38d2243b1bdd84fa2e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77027027"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196293"
 ---
-# <a name="azure-backup-offline-backup-using-azure-data-box"></a>Azure Backup offline zálohování pomocí Azure Data Box
+# <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Backup offline zálohování pomocí Azure Data Box
 
-Službu [Azure Data box](https://docs.microsoft.com/azure/databox/data-box-overview) můžete použít k osazení velkých počátečních záloh Mars v režimu offline (bez použití sítě) do trezoru služby Azure Recovery Services.  Tím se šetří jak čas, tak šířka pásma sítě, které by jinak využily přesun velkých objemů zálohovaných dat online přes síť s vysokou latencí. Toto vylepšení je momentálně ve verzi Preview. Zálohování offline založené na Azure Data Box poskytuje dvě různé výhody oproti [online zálohování založené na službě Azure import/export](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export).
+[Azure Data box](https://docs.microsoft.com/azure/databox/data-box-overview) můžete použít k osazení velkých počátečních záloh Microsoft Azure Recovery Services (MARS) offline (bez použití sítě) do trezoru Recovery Services. Tento proces šetří čas a šířku pásma sítě, které by jinak využily přesun velkých objemů zálohovaných dat online přes síť s vysokou latencí. Toto vylepšení je momentálně ve verzi Preview. Offline zálohování na základě Azure Data Box poskytuje dvě různé výhody oproti [zálohování offline založené na službě Azure import/export](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export):
 
-1. Nemusíte si vystarat vlastní disky a konektory, které jsou kompatibilní s Azure. Služba Azure Data Box dodává disky přidružené k vybrané skladové položce [data box](https://azure.microsoft.com/services/databox/data/)
+* Nemusíte si vystarat vlastní disky a konektory, které jsou kompatibilní s Azure. Azure Data Box dodávající disky přidružené k vybrané [SKU data box](https://azure.microsoft.com/services/databox/data/).
+* Azure Backup (agent MARS) může přímo zapisovat data zálohy na podporované SKU Azure Data Box. Tato funkce eliminuje nutnost zřídit pracovní umístění pro počáteční data záloh. Nepotřebujete také nástroje pro formátování a kopírování těchto dat na disky.
 
-2. Azure Backup (agent MARS) může přímo zapisovat data zálohy na podporované SKU Azure Data Box. Tím se eliminuje nutnost zřídit pracovní umístění pro počáteční zálohovaná data a potřebovat nástroje pro formátování a zkopírování těchto dat na disky.
+## <a name="azure-data-box-with-the-mars-agent"></a>Azure Data Box s agentem MARS
 
-## <a name="azure-data-box-with-mars-agent"></a>Azure Data Box s agentem MARS
-
-V tomto článku se dozvíte, jak můžete pomocí Azure Data Box naplnit Velká počáteční data zálohování offline od agenta MARS do trezoru služby Azure Recovery Services. Článek je rozdělen do následujících částí:
-
-* Podporované platformy
-* Podporované Data Box SKU
-* Požadavky
-* Nastavení agenta MARS
-* Instalační Azure Data Box
-* Přenos zálohovaných dat do Azure Data Box
-* Kroky po zálohování
+V tomto článku se dozvíte, jak můžete použít Azure Data Box k počátečnímu navýšení velkých počátečních dat zálohování z agenta MARS do trezoru Recovery Services.
 
 ## <a name="supported-platforms"></a>Podporované platformy
 
-Proces pro osazení dat z agenta MARS pomocí Azure Data Box je podporován v následujících SKU systému Windows:
+Proces pro osazení dat z agenta MARS pomocí Azure Data Box je podporován v následujících SKU systému Windows.
 
 | **OS**                                 | **SKU**                                                      |
 | -------------------------------------- | ------------------------------------------------------------ |
 | **Pracovní stanice**                        |                                                              |
-| Bitová verze Windows 10 64                     | Enterprise, pro, Domovská stránka                                       |
-| Bit Windows 8.1 64                    | Enterprise, pro                                             |
-| Bitová verze Windows 8 64                      | Enterprise, pro                                             |
-| Bitová verze Windows 7 64                      | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter |
+| Windows 10, 64bitová verze                     | Enterprise, Pro, Home                                       |
+| Windows 8.1, 64bitová verze                    | Enterprise, Pro                                             |
+| Windows 8, 64bitová verze                      | Enterprise, Pro                                             |
+| Windows 7, 64bitová verze                      | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter |
 | **Server**                             |                                                              |
-| Windows Server 2019 64 – bit            | Standard, Datacenter, základy                            |
-| Windows Server 2016 64 – bit            | Standard, Datacenter, základy                            |
-| Windows Server 2012 R2 64 bitů         | Standard, Datacenter, Foundation                            |
-| Windows Server 2012 64 – bit            | Datacenter, základ, Standard                            |
-| Windows Storage Server 2016 64 – bit    | Standard, pracovní skupina                                         |
-| Windows Storage Server 2012 R2 64 bit | Standard, pracovní skupina, nezbytný                              |
-| Windows Storage Server 2012 64 – bit    | Standard, pracovní skupina                                         |
-| Windows Server 2008 R2 SP1 64 bit     | Standard, Enterprise, Datacenter, Foundation                |
+| Windows Server 2019, 64bitová verze            | Standard, Datacenter, Essentials                            |
+| Windows Server 2016, 64bitová verze            | Standard, Datacenter, Essentials                            |
+| Windows Server 2012 R2, 64bitová verze         | Standard, Datacenter, Foundation                            |
+| Windows Server 2012, 64bitová verze            | Datacenter, Foundation, Standard                            |
+| Windows Storage Server 2016, 64bitová verze    | Standard, Workgroup                                         |
+| Windows Storage Server 2012 R2, 64bitová verze | Standard, Workgroup, Essential                              |
+| Windows Storage Server 2012, 64bitová verze    | Standard, Workgroup                                         |
+| Windows Server 2008 R2 SP1, 64bitová verze     | Standard, Enterprise, Datacenter, Foundation                |
 | Windows Server 2008 SP2 64 bitů        | Standard, Enterprise, Datacenter                            |
 
 ## <a name="backup-data-size-and-supported-data-box-skus"></a>Velikost dat zálohy a podporované Data Box SKU
 
-| Velikost zálohovaných dat (po kompresi po MARS) * na server | Podporovaná Azure Data Box SKU                                      |
+| Velikost zálohovaných dat (po kompresi pomocí MARS) * na server | Podporovaná Azure Data Box SKU                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| < = 7,2 TB                                                    | [Azure Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
-| > 7,2 TB a < = 80 TB * *                                      | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
+| < = 7.2 TB                                                    | [Azure Data Box disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) |
+| > 7.2 TB a < = 80 TB * *                                      | [Azure Data Box (100 TB)](https://docs.microsoft.com/azure/databox/data-box-overview) |
 
-\* Typické kompresní poměry se liší mezi 10-20% <br>
-\* * Pokud očekáváte, že budete mít k dispozici více než 80 TB počátečních dat pro jeden server MARS, můžete * * kontaktovat [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+\* Typické kompresní frekvence se liší od 10% do 20%. <br>
+\* * Pokud očekáváte, že budete mít více než 80 TB počátečních dat zálohování pro jeden server MARS, kontaktujte [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).
 
 >[!IMPORTANT]
->Počáteční data zálohy z jednoho serveru musí být obsažena v rámci jednoho Azure Data Box nebo Azure Data Box Disk a nelze je sdílet mezi více zařízeními stejné nebo jiné SKU. Zařízení Azure Data Box ale může obsahovat počáteční zálohy z více serverů.
+>Počáteční data zálohy z jednoho serveru musí být obsažena v rámci jedné Azure Data Box instance nebo Azure Data Box disku a nemohou být sdílena mezi více zařízeními stejné nebo jiné SKU. Zařízení Azure Data Box může ale obsahovat počáteční zálohy z více serverů.
 
-## <a name="pre-requisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 ### <a name="azure-subscription-and-required-permissions"></a>Předplatné Azure a požadovaná oprávnění
 
 * Proces vyžaduje předplatné Azure.
-* Proces vyžaduje, aby byl uživatel označený k provedení zásad offline zálohování vlastníkem předplatného Azure.
+* Proces vyžaduje, aby byl uživatel určený k provedení zásad offline zálohování vlastníkem předplatného Azure.
 * Data Box úlohy a trezor Recovery Services (do kterých musí být data odsazený) musí být ve stejných předplatných.
-* Doporučuje se, aby byl cílový účet úložiště přidružený k úloze Azure Data Box a trezoru Recovery Services ve stejné oblasti. To ale není nutné.
+* Doporučujeme, aby byl cílový účet úložiště přidružený k úloze Azure Data Box a k trezoru Recovery Services ve stejné oblasti. To ale není nutné.
 
 ### <a name="get-azure-powershell-370"></a>Získat Azure PowerShell 3.7.0
 
-**Toto je nejdůležitější předpoklad pro tento proces**. Před instalací Azure PowerShell (ver. 3.7.0) proveďte následující kontroly * *
+*Toto je nejdůležitější předpoklad pro tento proces*. Než nainstalujete Azure PowerShell verze 3.7.0, proveďte následující kontroly.
 
-#### <a name="step-1-check-powershell-version"></a>Krok 1: ověření verze prostředí PowerShell
+#### <a name="step-1-check-the-powershell-version"></a>Krok 1: ověření verze PowerShellu
 
-* Otevřete Windows PowerShell a spusťte následující příkaz:
+1. Otevřete Windows PowerShell a spusťte následující příkaz:
 
     ```powershell
     Get-Module -ListAvailable AzureRM*
     ```
 
-* Pokud výstup zobrazuje verzi vyšší než **3.7.0**, proveďte krok 2 níže. Jinak přeskočte ke kroku 3.
+1.  Pokud výstup zobrazuje verzi vyšší než 3.7.0, Udělejte krok 2. V opačném případě přejděte na krok 3.
 
 #### <a name="step-2-uninstall-the-powershell-version"></a>Krok 2: Odinstalace verze PowerShellu
 
-Pomocí následujících akcí odinstalujte aktuální verzi PowerShellu:
+Odinstalujte aktuální verzi PowerShellu.
 
-* Odeberte závislé moduly spuštěním následujícího příkazu v PowerShellu:
+1. Odeberte závislé moduly spuštěním následujícího příkazu v PowerShellu:
 
     ```powershell
     foreach ($module in (Get-Module -ListAvailable AzureRM*).Name |Get-Unique)  { write-host "Removing Module $module" Uninstall-module $module }
     ```
 
-* Spusťte následující příkaz, abyste zajistili úspěšné odstranění všech závislých modulů:
+2. Chcete-li zajistit úspěšné odstranění všech závislých modulů, spusťte následující příkaz:
 
     ```powershell
     Get-Module -ListAvailable AzureRM*
@@ -106,11 +97,11 @@ Pomocí následujících akcí odinstalujte aktuální verzi PowerShellu:
 
 #### <a name="step-3-install-powershell-version-370"></a>Krok 3: instalace prostředí PowerShell verze 3.7.0
 
-Jakmile ověříte, že nejsou k dispozici žádné moduly AzureRM, nainstalujte pomocí jedné z následujících metod verzi 3.7.0:
+Po ověření, že nejsou k dispozici žádné moduly AzureRM, nainstalujte verzi 3.7.0 pomocí jedné z následujících metod:
 
-* Z GitHubu, [odkaz](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017)
+* Z GitHubu použijte [Tento odkaz](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017).
 
-NEBO
+Nebo můžete:
 
 * Spusťte následující příkaz v okně PowerShellu:
 
@@ -118,219 +109,213 @@ NEBO
     Install-Module -Name AzureRM -RequiredVersion 3.7.0
     ```
 
-Azure PowerShell mohl být nainstalován také pomocí souboru MSI. Pokud ho chcete odebrat, odinstalujte ho pomocí možnosti odinstalovat programy v Ovládacích panelech.
+Azure PowerShell mohl být nainstalován také pomocí souboru MSI. Pokud ho chcete odebrat, odinstalujte ho pomocí možnosti **odinstalovat programy** v Ovládacích panelech.
 
 ### <a name="order-and-receive-the-data-box-device"></a>Objednat a přijmout Data Box zařízení
 
-Proces offline zálohování pomocí MARS a Azure Data Box vyžaduje, aby před aktivací offline zálohování pomocí agenta MARS byla povinná zařízení Data Box ve stavu "doručeno". Pro seřazení nejvhodnější SKU pro váš požadavek se podívejte na [Velikost dat zálohy a podporované skladové jednotky data box](#backup-data-size-and-supported-data-box-skus) . Podle kroků v [tomto článku](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) seřiďte a dodržujte zařízení data box.
+Proces offline zálohování pomocí MARS a Azure Data Box vyžaduje, aby byla Data Boxá zařízení v doručeném stavu před aktivací offline zálohování pomocí agenta MARS. Pro seřazení nejvhodnější skladové položky podle vašeho požadavku si přečtěte část [Velikost dat zálohy a podporované data box SKU](#backup-data-size-and-supported-data-box-skus). Postupujte podle kroků v [kurzu: objednání Azure Data Boxho disku](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered) pro objednání a příjem data box zařízení.
 
->[!IMPORTANT]
->Pro druh účtu nevybírejte možnost BlobStorage. Agent MARS vyžaduje účet, který podporuje objekty blob stránky, které nejsou podporované, když je vybraná možnost BlobStorage. Při vytváření cílového účtu úložiště pro Azure Data Box úlohy se důrazně doporučuje jako typ účtu vybrat *Storage v2* (*obecné účely v2*).
+> [!IMPORTANT]
+> Pro **druh účtu**nevybírejte *BlobStorage* . Agent MARS vyžaduje účet, který podporuje objekty blob stránky, které nejsou podporované, když je vybraná možnost *BlobStorage* . Jako **druh účtu** při vytváření cílového účtu úložiště pro úlohu Azure Data box vyberte **úložiště v2 (obecné účely v2)** .
 
 ![Volba druhu účtu v podrobnostech instance](./media/offline-backup-azure-data-box/instance-details.png)
 
-## <a name="install-and-setup-the-mars-agent"></a>Instalace a nastavení agenta MARS
+## <a name="install-and-set-up-the-mars-agent"></a>Instalace a nastavení agenta MARS
 
-* Ujistěte se, že jste odinstalovali všechny předchozí instalace agenta MARS.
+1. Ujistěte se, že jste odinstalovali všechny předchozí instalace agenta MARS.
+1. Stáhněte si nejnovějšího agenta MARS z [tohoto webu](https://aka.ms/azurebackup_agent).
+1. Spusťte *soubor marsagentinstaller. exe*a proveďte *pouze* kroky pro [instalaci a registraci agenta](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent) do trezoru Recovery Services, kde chcete ukládat zálohy.
 
-* Stáhněte si nejnovějšího agenta MARS [odsud.](https://aka.ms/azurebackup_agent)
+   > [!NOTE]
+   > Trezor Recovery Services musí být ve stejném předplatném jako úloha Azure Data Box.
 
-* Spusťte *soubor marsagentinstaller. exe* a proveďte ***pouze** kroky pro [instalaci a registraci agenta](https://docs.microsoft.com/azure/backup/backup-configure-vault#install-and-register-the-agent) do trezoru Recovery Services, do kterého chcete ukládat zálohy.
+   Po registraci agenta do trezoru Recovery Services postupujte podle pokynů v následujících částech.
 
-  >[!NOTE]
-  > Trezor Recovery Services musí být ve stejném předplatném jako úloha Azure Data Box.
+## <a name="set-up-azure-data-box-devices"></a>Nastavení Azure Data Box zařízení
 
-* Jakmile je agent zaregistrován v úložišti Recovery Services, postupujte podle kroků v následujících částech.
+V závislosti na Azure Data Box SKU, které jste objednali, postupujte podle kroků popsaných v příslušných částech. Kroky ukazují, jak nastavit a připravit Data Box zařízení pro agenta MARS k identifikaci a přenosu počátečních dat zálohy.
 
-## <a name="setup-azure-data-box-devices"></a>Nastavit Azure Data Box zařízení
+### <a name="set-up-azure-data-box-disks"></a>Nastavení Azure Data Box disků
 
-V závislosti na Azure Data Box SKU, které jste objednali, proveďte kroky popsané v příslušných částech níže, abyste nastavili a připravili Data Box zařízení pro agenta MARS k identifikaci a přenosu počátečních dat zálohy.
-
-### <a name="setup-azure-data-box-disk"></a>Instalační Azure Data Box Disk
-
-Pokud jste objednali jeden nebo více Azure Data Box disků (až do 8 TB), postupujte podle kroků uvedených tady a [rozbalte své data box disk, připojte je a odemkněte](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up).
+Pokud jste si objednali jeden nebo více Azure Data Box disků (každý až 8 TB), postupujte podle kroků uvedených tady a [rozbalte tak data box disk, připojte se a odemkněte](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-set-up).
 
 >[!NOTE]
->Je možné, že server s agentem MARS nemá port USB. V takové situaci můžete Azure Data Box Disk připojit k jinému serveru nebo klientovi a zveřejnit kořen zařízení jako sdílenou síťovou složku.
+>Je možné, že server s agentem MARS nemá port USB. V takové situaci můžete Azure Data Box disk připojit k jinému serveru nebo klientovi a zveřejnit kořen zařízení jako sdílenou síťovou složku.
 
-### <a name="setup-azure-data-box"></a>Instalační Azure Data Box
+### <a name="set-up-azure-data-box"></a>Nastavit Azure Data Box
 
-Pokud jste objednali Azure Data Box (až 100 TB), postupujte podle kroků uvedených tady [a nastavte data box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up).
+Pokud jste objednali instanci Azure Data Box (až 100 TB), [nastavte instanci data box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)pomocí následujících kroků.
 
-#### <a name="mount-your-azure-data-box-as-local-system"></a>Připojit Azure Data Box jako místní systém
+#### <a name="mount-your-azure-data-box-instance-as-a-local-system"></a>Připojení instance Azure Data Box jako místní systém
 
-Agent MARS funguje v kontextu místního systému, a proto vyžaduje, aby byla k dispozici stejná úroveň oprávnění pro cestu k připojení, kde je Azure Data Box připojená. Postupujte podle následujících kroků a ujistěte se, že zařízení Data Box můžete připojit jako místní systém pomocí protokolu NFS:
+Agent MARS funguje v kontextu místního systému, takže vyžaduje, aby byla k dispozici stejná úroveň oprávnění pro cestu k připojení, kde je instance Azure Data Box připojená. 
 
-* Povolte funkci klient pro systém souborů NFS na Windows serveru (s nainstalovaným agentem MARS).<br>
-  Zadejte alternativní zdroj: *WIM: D: \zdroje\install.wim: 4*
+K zajištění toho, aby zařízení Data Box bylo možné připojit jako místní systém pomocí protokolu NFS:
 
-* Stáhněte si PSExec z <https://download.sysinternals.com/files/PSTools.zip> na server s nainstalovaným agentem MARS.
-
-* Otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz s adresářem, který obsahuje soubor PSExec. exe jako aktuální adresář:
+1. Povolte na Windows serveru s nainstalovaným agentem MARS klienta pro funkci NFS. Zadejte alternativní zdrojový soubor *WIM: D: \zdroje\install.wim: 4*.
+1. Stáhněte si PSExec z <https://download.sysinternals.com/files/PSTools.zip> na server s nainstalovaným agentem MARS.
+1. Otevřete příkazový řádek se zvýšenými oprávněními a spusťte následující příkaz s adresářem, který obsahuje *PsExec. exe* jako aktuální adresář.
 
     ```cmd
     psexec.exe  -s  -i  cmd.exe
     ```
 
-* Příkazové okno, které se otevře v důsledku výše uvedeného příkazu, je v kontextu místního systému. Pomocí tohoto příkazového okna můžete provést kroky pro připojení sdílené složky Azure Page BLOB jako síťové jednotky na Windows serveru.
-
-* Podle těchto kroků připojte Server s agentem [Mars k data box](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box) zařízení přes systém souborů NFS a spusťte následující příkaz na příkazovém řádku místního systému pro připojení sdílené složky objektů blob stránky Azure:
+   Příkazové okno, které se otevře v důsledku předchozího příkazu, je v kontextu místního systému. Pomocí tohoto příkazového okna můžete provést kroky pro připojení sdílené složky Azure Page BLOB jako síťové jednotky na Windows serveru.
+1. Pomocí postupu v části [připojení k data box](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-nfs#connect-to-data-box) připojte Server s agentem Mars k zařízení data box přes systém souborů NFS. Spuštěním následujícího příkazu na příkazovém řádku místního systému připojte sdílenou složku objektů blob stránky Azure.
 
     ```cmd
     mount -o nolock \\<DeviceIPAddress>\<StorageAccountName_PageBlob X:  
     ```
 
-* Po připojení ověřte, jestli máte přístup k X: z vašeho serveru. Pokud ano, pokračujte v další části tohoto článku.
+   Po připojení sdílené složky zkontrolujte, jestli máte přístup k X: z vašeho serveru. Pokud můžete pokračovat v další části tohoto článku.
 
-## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>Přenést počáteční zálohovaná data do zařízení Azure Data Box
+## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>Přenos počátečních zálohovaných dat do zařízení Azure Data Box
 
-* Otevřete **Microsoft Azure Backup** aplikace na serveru.
+1. Otevřete **Microsoft Azure Backup** aplikace na serveru.
+1. V podokně **Akce** vyberte **naplánovat zálohování**.
 
-* V podokně **Akce** klikněte na **naplánovat zálohování** .
+    ![Vybrat plán zálohování](./media/offline-backup-azure-data-box/schedule-backup.png)
 
-    ![Klikněte na naplánovat zálohování.](./media/offline-backup-azure-data-box/schedule-backup.png)
+1. Postupujte podle kroků v **Průvodci plánováním zálohování**.
 
-* Postupujte podle kroků v **Průvodci plánováním zálohování** .
-
-* **Přidejte položky** tak, aby celková velikost položek byla v rámci [omezení velikosti podporovaného Azure Data box SKU](#backup-data-size-and-supported-data-box-skus) , kterou jste objednali a obdrželi.
+1. Přidejte položky výběrem tlačítka **Přidat položky** . Udržujte celkovou velikost položek v rámci [omezení velikosti, které podporuje Azure Data box SKU](#backup-data-size-and-supported-data-box-skus) , které jste objednali a přijali.
 
     ![Přidat položky k zálohování](./media/offline-backup-azure-data-box/add-items.png)
 
-* Vyberte příslušný plán zálohování a zásady uchovávání informací pro soubory a složky a stav systému (stav systému se vztahuje jenom na servery Windows a ne pro klienty Windows).
-
-* Na obrazovce **Vybrat typ prvotní zálohy (soubory a složky)** v průvodci vyberte možnost **přenos pomocí Microsoft Azure Data box disky** a klikněte na **Další** .
+1. Vyberte příslušný plán zálohování a zásady uchovávání informací pro **soubory a složky** a **stav systému**. Stav systému se vztahuje pouze na servery Windows a ne pro klienty Windows.
+1. Na stránce **zvolit typ prvotní zálohy (soubory a složky)** v průvodci vyberte možnost **přenos pomocí Microsoft Azure Data box disky** a vyberte **Další**.
 
     ![Zvolit typ prvotní zálohy](./media/offline-backup-azure-data-box/initial-backup-type.png)
 
-* Přihlaste se k Azure po zobrazení výzvy pomocí přihlašovacích údajů uživatele, které mají oprávnění vlastníka v předplatném Azure. Po úspěšném provedení této akce by se měla zobrazit obrazovka podobná této:
+1. Přihlaste se k Azure po zobrazení výzvy pomocí přihlašovacích údajů uživatele, které mají oprávnění vlastníka v předplatném Azure. Po úspěšném provedení této akce by se měla zobrazit stránka, která bude vypadat jako ta.
 
     ![Vytváření prostředků a použití požadovaných oprávnění](./media/offline-backup-azure-data-box/creating-resources.png)
 
-* Agent MARS potom načte úlohy Data Box v předplatném, které jsou ve stavu "doručeno".
+   Agent MARS potom načte úlohy Data Box v předplatném, které jsou v doručeném stavu.
 
-    ![Načítají se úlohy Databox pro ID předplatného.](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
+    ![Načtení úloh Data Box pro ID předplatného](./media/offline-backup-azure-data-box/fetching-databox-jobs.png)
 
-* Vyberte správné pořadí datových polí, pro které jste nebaleni, připojili a odemkli Data Box disk. Klikněte na **Další**.
+1. Vyberte správné pořadí Data Box, pro které jste nebaleni, připojili a odemkli Data Box disk. Vyberte **Další**.
 
-    ![Vybrat pořadí Data Box](./media/offline-backup-azure-data-box/select-databox-order.png)
+    ![Výběr objednávek Data Box](./media/offline-backup-azure-data-box/select-databox-order.png)
 
-* Na obrazovce **detekce zařízení data box** klikněte na **rozpoznat zařízení** . Díky tomu bude agent MARS místně připojen Azure Data Box disky a detekuje je, jak je znázorněno níže:
+1. Vyberte **rozpoznat zařízení** na stránce **data box rozpoznávání zařízení** . Díky této akci bude agent MARS místně připojen Azure Data Box disky a detekuje je.
 
     ![Detekce zařízení Data Box](./media/offline-backup-azure-data-box/databox-device-detection.png)
 
-    Pokud jste Azure Data Box připojeni jako sdílenou síťovou složku (kvůli nedostupnosti portů USB nebo jste objednali a připojili 100 TB Data Box zařízení), zjišťování se při prvním selhání nezdaří, ale poskytne vám možnost zadat síťovou cestu k Data Box zařízení jako s. hown níže:
+    Pokud jste instanci Azure Data Box připojili jako sdílenou síťovou složku (kvůli nedostupnosti portů USB nebo jste objednali a připojili Data Box zařízení 100-TB), zjišťování se v první době nezdařila. Máte možnost zadat síťovou cestu k zařízení Data Box.
 
     ![Zadejte síťovou cestu.](./media/offline-backup-azure-data-box/enter-network-path.png)
 
     >[!IMPORTANT]
-    > Zadejte síťovou cestu ke kořenovému adresáři Azure Data Boxho disku. Tento adresář musí obsahovat adresář s názvem *PageBlob* , jak je znázorněno níže:
+    > Zadejte síťovou cestu ke kořenovému adresáři Azure Data Boxho disku. Tento adresář musí obsahovat adresář s názvem *PageBlob*.
     >
     >![Kořenový adresář Azure Data Boxho disku](./media/offline-backup-azure-data-box/root-directory.png)
     >
-    >Pokud je například cesta k disku `\\mydomain\myserver\disk1\` a *Disk1* obsahuje adresář s názvem *PageBlob*, bude cesta k dispozici v průvodci agentem Mars `\\mydomain\myserver\disk1\`
+    >Pokud je například cesta k disku `\\mydomain\myserver\disk1\` a *Disk1* obsahuje adresář s názvem *PageBlob*, cesta, kterou zadáte na stránce průvodce agentem Mars, je `\\mydomain\myserver\disk1\`.
     >
-    >Pokud [nastavili Azure Data Box 100 TB zařízení](#setup-azure-data-box), zadejte jako síťovou cestu k zařízení následující `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob`
+    >Pokud jste [nastavili Azure Data Box 100 TB zařízení](#set-up-azure-data-box-devices), zadejte jako síťovou cestu k zařízení `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob`.
 
-* Klikněte na tlačítko **Další** a na další obrazovce klikněte na tlačítko **Dokončit** a uložte zásadu zálohování a uchovávání dat s konfigurací zálohování offline pomocí Azure Data box.
+1. Vyberte **Další**a na další stránce vyberte **Dokončit** a uložte zásady zálohování a uchovávání informací s konfigurací offline zálohování pomocí Azure Data box.
 
-* Na následující obrazovce se potvrdí, že se zásada úspěšně uložila:
+   Na následující stránce se potvrdí, že se zásada úspěšně uložila.
 
     ![Zásada se úspěšně uložila.](./media/offline-backup-azure-data-box/policy-saved.png)
 
-* Klikněte na tlačítko **Zavřít** na obrazovce výše.
+1. Na předchozí stránce vyberte **Zavřít** .
 
-* V podokně **Akce** konzoly agenta Mars klikněte na ***Zálohovat nyní** a na obrazovce průvodce klikněte na **zálohovat** , jak je znázorněno níže:
+1. V podokně **Akce** konzoly agenta Mars vyberte **Zálohovat nyní** . Na stránce průvodce vyberte **zálohovat** .
 
     ![Průvodce zálohováním nyní](./media/offline-backup-azure-data-box/backup-now.png)
 
-* Agent MARS spustí zálohování dat, která jste vybrali, do zařízení Azure Data Box. To může trvat několik hodin až několik dní v závislosti na počtu souborů a rychlosti připojení mezi serverem a agentem MARS a Azure Data Box Disk.
+Agent MARS spustí zálohování dat, která jste vybrali do zařízení Azure Data Box. Tento proces může trvat několik hodin až pár dní. Doba závisí na počtu souborů a rychlosti připojení mezi serverem a agentem MARS a Azure Data Boxm diskem.
 
-* Po dokončení zálohování dat se na agentovi MARS zobrazí obrazovka, která bude vypadat jako na následujícím obrázku:
+Po dokončení zálohování dat uvidíte stránku agenta MARS, který je podobný tomuto.
 
-    ![Zobrazený průběh zálohování](./media/offline-backup-azure-data-box/backup-progress.png)
+![Zobrazený průběh zálohování](./media/offline-backup-azure-data-box/backup-progress.png)
 
 ## <a name="post-backup-steps"></a>Kroky po zálohování
 
 V této části najdete popis kroků, které je potřeba provést po úspěšném zálohování dat do Azure Data Box Disk.
 
-* Pomocí kroků v tomto článku [dodáte Azure Data box disk do Azure](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up). Pokud jste použili Azure Data Box 100 TB, dokončete [Azure Data box do Azure](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)pomocí těchto kroků.
+* Pomocí kroků v tomto článku [dodáte Azure Data box disk do Azure](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-picked-up). Pokud jste použili Azure Data Box 100-TB, postupujte podle těchto kroků a dodejte [zařízení Azure Data box do Azure](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up).
 
-* [Monitorujte úlohu data box](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) v Azure Portal. Jakmile bude úloha Azure Data Box dokončená, agent MARS automaticky přesune data z účtu úložiště do trezoru Recovery Services v době příštího naplánovaného zálohování. Po úspěšném vytvoření bodu obnovení bude úloha zálohování označena jako dokončená úloha.
+* [Monitorujte úlohu data box](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-upload-verify) v Azure Portal. Po dokončení úlohy Azure Data Box se agent MARS automaticky přesune data z účtu úložiště do trezoru Recovery Services v době příštího naplánovaného zálohování. Po úspěšném vytvoření bodu obnovení pak označí úlohu zálohování jako *úlohu dokončenou* .
 
     >[!NOTE]
-    >Agent MARS spustí zálohování v časech naplánovaných během vytváření zásad. Tyto úlohy se ale označí jako "čekání na dokončení Azure Data Box úlohy" až do doby, kdy je úloha dokončena.
+    >Agent MARS spustí zálohy v časech naplánovaných během vytváření zásad. Tyto úlohy označují příznak "čekání na dokončení Azure Data Box úlohy" až do doby, kdy je úloha dokončena.
 
-* Poté, co agent MARS úspěšně vytvoří bod obnovení odpovídající prvotnímu zálohování, můžete odstranit účet úložiště (nebo konkrétní obsah) přidružený k úloze Azure Data Box.
+* Poté, co agent MARS úspěšně vytvoří bod obnovení, který odpovídá prvotnímu zálohování, můžete odstranit účet úložiště nebo konkrétní obsah přidružený k Azure Data Box úlohy.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Agent Microsoft Azure Backup (MAB) Vytvoří aplikaci Azure AD pro vás ve vašem tenantovi. Tato aplikace vyžaduje certifikát pro ověřování, který se vytvoří a nahraje při konfiguraci zásad pro počáteční nasazení offline. Pro vytvoření a nahrání certifikátu do aplikace Azure AD používáme Azure PowerShell.
+Agent Microsoft Azure Backup (MAB) Vytvoří aplikaci Azure Active Directory (Azure AD) pro vás ve vašem tenantovi. Tato aplikace vyžaduje certifikát pro ověřování, který se vytvoří a nahraje při konfiguraci zásad pro počáteční nastavení offline. K vytvoření a nahrání certifikátu do aplikace Azure AD používáme Azure PowerShell.
 
-### <a name="issue"></a>Problém
+### <a name="problem"></a>Problém
 
-V době konfigurace offline zálohování se může jednat o problém, ve kterém kvůli chybě v rutině Azure PowerShell nemůžete přidat víc certifikátů do stejné aplikace Azure AD vytvořené agentem MAB. To bude mít vliv na to, jestli jste nakonfigurovali zásady dosazení offline pro stejný nebo jiný server.
+Při konfiguraci offline zálohování se můžete setkat s problémem v důsledku chyby v rutině Azure PowerShell. Do stejné aplikace Azure AD vytvořené agentem MAB možná nebudete moct přidat víc certifikátů. Tento problém bude mít vliv na to, jestli jste nakonfigurovali zásady osazení offline pro stejný nebo jiný server.
 
-### <a name="how-to-verify-if-the-issue-is-caused-by-this-specific-root-cause"></a>Jak ověřit, jestli problém způsobuje tato konkrétní hlavní příčina
+### <a name="verify-if-the-problem-is-caused-by-this-specific-root-cause"></a>Ověřte, jestli problém způsobuje tato konkrétní hlavní příčina.
 
-Chcete-li zajistit, aby chyba byla způsobena problémem výše, proveďte jeden z následujících kroků:
+Chcete-li zjistit, zda je váš problém stejný jako dříve popsaný, proveďte jeden z následujících kroků.
 
 #### <a name="step-1"></a>Krok 1
 
-Zkontrolujte, jestli je v konzole MAB v době konfigurace offline zálohování zobrazená následující chybová zpráva:
+Zkontrolujte, jestli se v konzole MAB při konfiguraci offline zálohování zobrazuje následující chybová zpráva.
 
 ![Nepovedlo se vytvořit zásady offline zálohování pro aktuální účet Azure.](./media/offline-backup-azure-data-box/unable-to-create-policy.png)
 
 #### <a name="step-2"></a>Krok 2
 
-* Otevřete složku **TEMP** v instalační cestě (výchozí cesta k dočasné složce je *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*). Vyhledejte soubor **CBUICurr** a otevřete soubor.
+1. Otevřete složku **TEMP** v instalační cestě. Výchozí cesta k dočasné složce je *C:\Program Files\Microsoft Azure Recovery Services Agent\Temp*. Vyhledejte soubor *CBUICurr* a soubor otevřete.
 
-* V souboru **CBUICurr** se posuňte na poslední řádek a ověřte, jestli je chyba způsobená `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed`.
+1. V souboru *CBUICurr* se posuňte na poslední řádek a zkontrolujte, jestli je problém stejný jako u této chybové zprávy: `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed`.
 
 ### <a name="workaround"></a>Alternativní řešení
 
-Pokud chcete tento problém vyřešit, proveďte následující kroky a zkuste konfiguraci zásad zopakovat.
+Chcete-li tento problém vyřešit, postupujte podle následujících kroků a opakujte konfiguraci zásad.
 
-#### <a name="first-step"></a>První krok
+#### <a name="step-1"></a>Krok 1
 
-Přihlaste se k PowerShellu, který se zobrazí v uživatelském rozhraní MAB pomocí jiného účtu s přístupem správce k předplatnému, které bude mít vytvořenou úlohu importu exportu.
+Přihlaste se k PowerShellu, který se zobrazí v uživatelském rozhraní MAB pomocí jiného účtu s přístupem správce k předplatnému, které bude mít vytvořenou úlohu importu nebo exportu.
 
-#### <a name="second-step"></a>Druhý krok
+#### <a name="step-2"></a>Krok 2
 
-Pokud není nakonfigurovaný žádný jiný server a na `AzureOfflineBackup_<Azure User Id>` aplikaci nezávisí žádný jiný server, odstraňte tuto aplikaci z **Azure Portal** > **Azure Active Directory** > **Registrace aplikací.**
+Pokud na žádném jiném serveru není nakonfigurovaný režim offline a na `AzureOfflineBackup_<Azure User Id>` aplikaci nezávisí žádný jiný server, odstraňte tuto aplikaci. Vyberte **Azure Portal** > **Azure Active Directory** > **Registrace aplikací**.
 
 >[!NOTE]
-> Ověřte, zda `AzureOfflineBackup_<Azure User Id>` aplikace nemá nakonfigurované žádné jiné počáteční hodnoty pro offline a zda na této aplikaci není závislý žádný jiný server. V části **veřejné klíče** vyberte **Nastavení** > **klíče** . neměla by se přidat žádný jiný veřejný klíč. Referenční informace najdete na následujícím snímku obrazovky:
+> Zkontrolujte, jestli `AzureOfflineBackup_<Azure User Id>` aplikace nemá nakonfigurované žádné jiné offline nastavení, a jestli není na této aplikaci závislý žádný jiný server. V části **veřejné klíče** přejdete na **Nastavení** > **klíče** . Neměl by mít přidané žádné jiné veřejné klíče. Odkaz najdete na následujícím snímku obrazovky.
 >
 >![Veřejné klíče](./media/offline-backup-azure-data-box/public-keys.png)
 
-#### <a name="third-step"></a>Třetí krok
+#### <a name="step-3"></a>Krok 3
 
-Ze serveru, který se pokoušíte nakonfigurovat offline zálohování, proveďte následující akce:
+Ze serveru, který se pokoušíte nakonfigurovat pro offline zálohování, proveďte následující akce.
 
-1. Otevřete kartu **Správa aplikace certifikát počítače** > **osobní** karta a vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>`
+1. V okně **Správa certifikátů počítačů** > **osobní** kartu a vyhledejte certifikát s názvem `CB_AzureADCertforOfflineSeeding_<ResourceId>`.
 
-2. Vyberte výše uvedený certifikát, klikněte pravým tlačítkem na **všechny úlohy** a **exportujte** bez privátního klíče ve formátu. cer.
+2. Vyberte certifikát, klikněte pravým tlačítkem na **všechny úlohy**a vyberte **exportovat** bez privátního klíče ve formátu. cer.
 
-3. Přejděte na aplikaci Azure offline Backup uvedenou v **bodě 2**. V > **klíče** **Nastavení** > **Odeslat veřejný klíč,** Nahrajte certifikát exportovaný v kroku výše.
+3. V kroku 2 přejdete do aplikace Azure offline Backup. Vyberte **nastavení** > **klíče** > **Odeslat veřejný klíč**. Nahrajte certifikát, který jste exportovali v předchozím kroku.
 
     ![Odeslat veřejný klíč](./media/offline-backup-azure-data-box/upload-public-key.png)
 
 4. Na serveru otevřete registr zadáním příkazu **Regedit** v okně Spustit.
 
-5. Přejít na počítač registru *\ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* Klikněte pravým tlačítkem na **CloudBackupProvider** a přidejte novou řetězcovou hodnotu s názvem `AzureADAppCertThumbprint_<Azure User Id>`
+5. Přejít na počítač registru *\ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider.* Klikněte pravým tlačítkem na **CloudBackupProvider**a přidejte novou řetězcovou hodnotu s názvem `AzureADAppCertThumbprint_<Azure User Id>`.
 
     >[!NOTE]
     > Pokud chcete získat ID uživatele Azure, proveďte jednu z následujících akcí:
     >
-    >1. Z připojeného prostředí PowerShell Azure spusťte příkaz `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as defined in the portal”`.
-    > 2. Přejděte do cesty k registru: *Computer \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\DbgSettings\OnlineBackup*; Název: *CurrentUserId*
+    >* Z PowerShellu připojeného k Azure spusťte příkaz `Get-AzureRmADUser -UserPrincipalName “Account Holder’s email as defined in the portal”`.
+    > * Do pole cesta k registru použijte název *počítače \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\DbgSettings\OnlineBackup* s názvem *CurrentUserId*.
 
-6. Klikněte pravým tlačítkem na řetězec přidaný v kroku výše a vyberte **změnit**. V poli hodnota zadejte kryptografický otisk certifikátu, který jste exportovali v **bodě 2** , a klikněte na **OK**.
+6. Klikněte pravým tlačítkem na řetězec přidaný v předchozím kroku a vyberte **změnit**. V poli hodnota zadejte kryptografický otisk certifikátu, který jste exportovali v kroku 2. Vyberte **OK**.
 
-7. Pokud chcete získat hodnotu kryptografického otisku, poklikejte na certifikát, pak vyberte kartu **Podrobnosti** a posuňte se dolů, dokud se nezobrazí pole kryptografický otisk. Klikněte na **kryptografický otisk** a zkopírujte hodnotu.
+7. Pokud chcete získat hodnotu kryptografického otisku, poklikejte na certifikát. Vyberte kartu **Podrobnosti** a posuňte se dolů, dokud se nezobrazí pole kryptografický otisk. Vyberte **kryptografický otisk**a zkopírujte hodnotu.
 
     ![Pole s kryptografickým otiskem certifikátu](./media/offline-backup-azure-data-box/thumbprint-field.png)
 
 ## <a name="questions"></a>Otázky
 
-V případě jakýchkoli otázek nebo vyjasnění z hlediska všech problémů, které čelí, se dostanete k [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com)
+V případě jakýchkoli otázek nebo objasnění jakýchkoli problémů se obraťte na [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com).

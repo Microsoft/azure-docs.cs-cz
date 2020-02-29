@@ -1,6 +1,6 @@
 ---
 title: Připojení pomocí VSTS
-description: Dotazování Azure SQL Data Warehouse pomocí sady Visual Studio.
+description: Dotazování Azure synapse Analytics pomocí sady Visual Studio
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e2d37b2d71f605077903197d25b5da2803e34ad3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 88dc534b8753311e49cafa9f84705258cdb0883d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685573"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198615"
 ---
-# <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Připojení k SQL Data Warehouse pomocí sady Visual Studio a SSDT
+# <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Připojení ke službě Azure synapse Analytics pomocí sady Visual Studio a SSDT
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -28,26 +28,26 @@ ms.locfileid: "73685573"
 > 
 > 
 
-Použijte sadu Visual Studio k dotazování datového skladu SQL Azure během několika minut. Tato metoda používá rozšíření SQL Server Data Tools (SSDT) v aplikaci Visual Studio 2019. 
+Použijte Visual Studio k dotazování fondu SQL v rámci Azure synapse během několika minut. Tato metoda používá rozšíření SQL Server Data Tools (SSDT) v aplikaci Visual Studio 2019. 
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 Chcete-li použít tento kurz, potřebujete:
 
-* Existující SQL Data Warehouse. Pokud chcete jeden vytvořit, podívejte se na téma [Vytvoření SQL Data Warehouse][Create a SQL Data Warehouse].
-* SSDT pro Visual Studio. Pokud máte aplikaci Visual Studio, pravděpodobně již databázi máte. Pokyny k instalaci a možnosti najdete v tématu věnovaném [instalaci sady Visual Studio a rozšíření SSDT][Installing Visual Studio and SSDT].
-* Plně kvalifikovaný název serveru SQL. Ten zjistíte v části [Připojení k SQL Data Warehouse][Connect to SQL Data Warehouse].
+* Existující fond SQL. Pokud ho chcete vytvořit, přečtěte si téma [Vytvoření fondu SQL](sql-data-warehouse-get-started-provision.md).
+* SSDT pro Visual Studio. Pokud máte aplikaci Visual Studio, pravděpodobně již máte SSDT pro Visual Studio. Pokyny k instalaci a možnosti najdete v tématu věnovaném [instalaci sady Visual Studio a rozšíření SSDT](sql-data-warehouse-install-visual-studio.md).
+* Plně kvalifikovaný název serveru SQL. Tyto informace najdete v tématu [připojení k fondu SQL](sql-data-warehouse-connect-overview.md).
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Připojte se k vašemu SQL Data Warehouse
+## <a name="1-connect-to-your-sql-pool"></a>1. připojení k vašemu fondu SQL
 1. Otevřete Visual Studio 2019.
-2. Otevřete Průzkumník objektů SQL Serveru. Uděláte to tak, že vyberte **Zobrazení** > **Průzkumník objektů systému SQL Server**.
+2. Otevřete Průzkumník objektů systému SQL Server výběrem možnosti **zobrazit** > **Průzkumník objektů systému SQL Server**.
    
-    ![Průzkumník objektů systému SQL Server][1]
+    ![Průzkumník objektů systému SQL Server](media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. Klikněte na ikonu **Přidat SQL Server**.
    
-    ![Přidat SQL Server][2]
+    ![Přidat SQL Server](media/sql-data-warehouse-query-visual-studio/add-server.png)
 4. Vyplňte pole v okně pro připojení k serveru.
    
-    ![Připojení k serveru][3]
+    ![Připojení k serveru](media/sql-data-warehouse-query-visual-studio/connection-dialog.png)
    
    * **Název serveru**: Zadejte **název serveru**, který jste si zjistili.
    * **Ověřování**: Vyberte **Ověřování serveru SQL Server** nebo **Integrované ověřování Active Directory**.
@@ -55,7 +55,7 @@ Chcete-li použít tento kurz, potřebujete:
    * Klikněte na **Připojit**.
 5. Pokud chcete SQL server Azure prozkoumat, rozbalte ho. Můžete se podívat, které databáze jsou k tomuto serveru přidružené. Rozbalte položku AdventureWorksDW a podívejte se na tabulky v ukázkové databázi.
    
-    ![Prozkoumejte AdventureWorksDW.][4]
+    ![Prozkoumejte AdventureWorksDW.](media/sql-data-warehouse-query-visual-studio/explore-sample.png)
 
 ## <a name="2-run-a-sample-query"></a>2. spuštění ukázkového dotazu
 Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
@@ -63,40 +63,20 @@ Teď, když jste si vytvořili připojení k databázi, můžete napsat dotaz.
 1. Pravým tlačítkem myši klikněte na databázi v Průzkumníku objektů systému SQL Server.
 2. Vyberte **Nový dotaz**. Otevře se nové okno dotazu.
    
-    ![Nový dotaz][5]
-3. Zkopírujte tento dotaz TSQL do okna dotazu:
+    ![Nový dotaz](media/sql-data-warehouse-query-visual-studio/new-query2.png)
+3. Zkopírujte následující dotaz T-SQL do okna dotazu:
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Spusťte dotaz. Pokud to chcete provést, klikněte na zelenou šipku nebo použijte následující klávesovou zkratku: `CTRL`+`SHIFT`+`E`.
+4. Spusťte dotaz kliknutím na zelenou šipku nebo použijte následující klávesovou zkratku: `CTRL`+`SHIFT`+`E`.
    
-    ![Spuštění dotazu][6]
+    ![Spuštění dotazu](media/sql-data-warehouse-query-visual-studio/run-query.png)
 5. Podívejte se na výsledky dotazu. V tomto příkladě má tabulka FactInternetSales 60 398 řádků.
    
-    ![Výsledky dotazu][7]
+    ![Výsledky dotazu](media/sql-data-warehouse-query-visual-studio/query-results.png)
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když se můžete připojit a můžete zadávat dotazy, můžete si vyzkoušet [vizualizaci dat pomocí PowerBI][visualizing the data with PowerBI].
+Teď, když se můžete připojit a dotazovat, zkuste [vizualizovat data pomocí Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md).
 
-Informace o tom, jak nakonfigurovat prostředí pro ověřování služby Azure Active Directory naleznete v části [Ověřování pro SQL Data Warehouse][Authenticate to SQL Data Warehouse].
-
-<!--Arcticles-->
-[Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
-[Installing Visual Studio and SSDT]: sql-data-warehouse-install-visual-studio.md
-[Authenticate to SQL Data Warehouse]: sql-data-warehouse-authentication.md
-[visualizing the data with PowerBI]: sql-data-warehouse-get-started-visualize-with-power-bi.md  
-
-<!--Other-->
-[Azure portal]: https://portal.azure.com
-
-<!--Image references-->
-
-[1]: media/sql-data-warehouse-query-visual-studio/open-ssdt.png
-[2]: media/sql-data-warehouse-query-visual-studio/add-server.png
-[3]: media/sql-data-warehouse-query-visual-studio/connection-dialog.png
-[4]: media/sql-data-warehouse-query-visual-studio/explore-sample.png
-[5]: media/sql-data-warehouse-query-visual-studio/new-query2.png
-[6]: media/sql-data-warehouse-query-visual-studio/run-query.png
-[7]: media/sql-data-warehouse-query-visual-studio/query-results.png
+Pokud chcete nakonfigurovat prostředí pro ověřování Azure Active Directory, přečtěte si téma [ověření ve fondu SQL](sql-data-warehouse-authentication.md).

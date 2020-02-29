@@ -2,26 +2,26 @@
 title: Zabezpečení rozhraní API služby Azure API Management pomocí Azure Active Directory B2C
 description: Naučte se používat přístupové tokeny vydané Azure Active Directory B2C k zabezpečení koncového bodu rozhraní API Azure API Management.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 942c565c885d59a14d64e7ec06beee0354e7c4ca
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 00938d831e70289b24acb599b81016aa6e564d78
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641624"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186926"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpečení rozhraní API služby Azure API Management pomocí Azure AD B2C
 
 Přečtěte si, jak omezit přístup k rozhraní API Azure API Management (APIM) na klienty, kteří jsou ověření pomocí Azure Active Directory B2C (Azure AD B2C). Podle kroků v tomto článku vytvořte a otestujte příchozí zásady v APIM, které omezují přístup jenom na ty požadavky, které zahrnují platný přístupový token vydaný Azure AD B2C.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v krocích v tomto článku, budete potřebovat následující prostředky:
 
@@ -37,17 +37,17 @@ Když Zabezpečete rozhraní API v Azure API Management s Azure AD B2C, potřebu
 
 K získání ID aplikace můžete použít aktuální prostředí **aplikací** nebo naše nové prostředí Unified **Registrace aplikací (Preview)** . [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
 
-#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
+#### <a name="applications"></a>[Aplikace](#tab/applications/)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat**vyberte **aplikace**.
 1. Poznamenejte si hodnotu ve sloupci **ID aplikace** pro *WebApp1* nebo jinou aplikaci, kterou jste vytvořili dříve.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte kartu **vlastněné aplikace** .
@@ -61,7 +61,7 @@ Dále Získejte dobře známou adresu URL konfigurace pro některý z vašich Az
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na svého tenanta Azure AD B2C.
 1. V části **zásady**vyberte **toky uživatelů (zásady)** .
-1. Vyberte existující zásadu, třeba *B2C_1_signupsignin1*, a pak vyberte **Spustit tok uživatele**.
+1. Vyberte existující zásadu, například *B2C_1_signupsignin1*, a pak vyberte **Spustit tok uživatele**.
 1. Poznamenejte si adresu URL v hypertextovém odkazu zobrazenou pod nadpisem **tok spouštěného uživatele** v horní části stránky. Tato adresa URL je známý koncový bod zjišťování OpenID Connect pro tok uživatele a v další části ho použijete při konfiguraci příchozí zásady v Azure API Management.
 
     ![Dobře známý hypertextový odkaz URI na stránce spustit nyní na Azure Portal](media/secure-apim-with-b2c-token/portal-01-policy-link.png)
@@ -127,7 +127,7 @@ Nejdřív potřebujete token vydaný Azure AD B2C, který se má použít v hlav
 
 1. V [Azure Portal](https://portal.azure.com)přejděte na svého tenanta Azure AD B2C.
 1. V části **zásady**vyberte **toky uživatelů (zásady)** .
-1. Vyberte existující tok uživatele pro registraci nebo přihlášení, například *B2C_1_signupsignin1*.
+1. Vyberte existující tok uživatelů registrace nebo přihlašování, například *B2C_1_signupsignin1*.
 1. V případě **aplikace**vyberte *WebApp1*.
 1. V možnosti **Adresa URL odpovědi**vyberte `https://jwt.ms`.
 1. Vyberte **Spustit tok uživatele**.

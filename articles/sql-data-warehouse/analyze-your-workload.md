@@ -1,30 +1,30 @@
 ---
 title: Analýza úloh
-description: Techniky analýzy stanovení priorit dotazů pro vaše úlohy v Azure SQL Data Warehouse.
+description: Techniky pro analýzu priorit dotazů pro vaše úlohy ve službě Azure synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 03/13/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 14e53c1ebe63fac0f7c8e29f66ee5aa0cb3b9526
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 9b1432c41e56c6e0bc3fd80f9c2dbb36374d9e2a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693110"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199991"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analýza úloh v Azure SQL Data Warehouse
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analýza úloh v Azure synapse Analytics
 
-Techniky analýzy úloh v Azure SQL Data Warehouse.
+Techniky analýzy úloh SQL Analytics ve službě Azure synapse Analytics.
 
 ## <a name="resource-classes"></a>Třídy prostředků
 
-SQL Data Warehouse poskytuje třídy prostředků pro přiřazení systémových prostředků dotazům.  Další informace o třídách prostředků naleznete v tématu [třídy prostředků & Správa úloh](resource-classes-for-workload-management.md).  Dotazy budou čekat, pokud Třída prostředků přiřazená k dotazu potřebuje více prostředků, než je aktuálně k dispozici.
+SQL Analytics poskytuje třídy prostředků pro přiřazení systémových prostředků dotazům.  Další informace o třídách prostředků naleznete v tématu [třídy prostředků & Správa úloh](resource-classes-for-workload-management.md).  Dotazy budou čekat, pokud Třída prostředků přiřazená k dotazu potřebuje více prostředků, než je aktuálně k dispozici.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Detekce dotazu ve frontě a další zobrazení dynamické správy
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Data Warehouse má následující typy čekání:
+SQL Analytics má následující typy čekání:
 
 * **LocalQueriesConcurrencyResourceType**: dotazy, které sedí mimo rámec rozhraní pro sloty Concurrency. Příklady místních dotazů jsou dotazy DMV a systémové funkce, jako je například `SELECT @@VERSION`.
 * **UserConcurrencyResourceType**: dotazy, které sedí v rámci rozhraní slotu pro souběžnost. Dotazy na tabulky koncového uživatele reprezentují příklady, které by používaly tento typ prostředku.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterovaných indexů columnstore, najdete v tématu [sestavení indexů pro zlepšení kvality segmentů](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v SQL Analytics](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterovaných indexů columnstore, najdete v tématu [sestavení indexů pro zlepšení kvality segmentů](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

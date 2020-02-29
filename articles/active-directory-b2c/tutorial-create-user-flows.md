@@ -2,20 +2,20 @@
 title: Kurz – vytvoření uživatelských toků – Azure Active Directory B2C
 description: Naučte se vytvářet toky uživatelů v Azure Portal, abyste mohli povolit registraci, přihlašování a úpravy uživatelských profilů pro vaše aplikace v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 06/07/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 21a3597a8c3675a060359b5e4feb9561e02f0149
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 51adbb74635f66ca86347b536dc2607566dcb725
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840141"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183563"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Kurz: vytvoření toků uživatelů v Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ V tomto kurzu se dozvíte, jak vytvořit několik doporučených uživatelských
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 [Zaregistrujte své aplikace](tutorial-register-applications.md) , které jsou součástí uživatelských toků, které chcete vytvořit.
 
@@ -40,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Tok uživatelů registrace a přihlašování zpracovává jak registraci, tak i přihlašovací prostředí s jedinou konfigurací. Uživatelé vaší aplikace jsou ve správném umístění v závislosti na kontextu.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 
     ![B2C, okno klienta, adresáře a předplatného, Azure Portal](./media/tutorial-create-user-flows/directory-subscription-pane.png)
@@ -59,7 +59,7 @@ Tok uživatelů registrace a přihlašování zpracovává jak registraci, tak i
 
     ![Stránka vytvoření toku uživatele v Azure Portal se zvýrazněnými vlastnostmi](./media/tutorial-create-user-flows/signup-signin-properties.png)
 
-1. V případě **atributů a deklarací uživatelů**vyberte deklarace identity a atributy, které chcete shromáždit a odeslat uživateli během registrace. Vyberte například možnost **Zobrazit více**a pak zvolte možnost atributy a deklarace pro **zemi/oblast**, **zobrazované jméno**a **poštovní směrovací číslo**. Klikněte na **OK**.
+1. V případě **atributů a deklarací uživatelů**vyberte deklarace identity a atributy, které chcete shromáždit a odeslat uživateli během registrace. Vyberte například možnost **Zobrazit více**a pak zvolte možnost atributy a deklarace pro **zemi/oblast**, **zobrazované jméno**a **poštovní směrovací číslo**. Klikněte na tlačítko **OK**.
 
     ![Stránka pro výběr atributů a deklarací se třemi vybranými deklaracemi](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
@@ -86,7 +86,7 @@ Pokud chcete uživatelům umožnit úpravy svého profilu v aplikaci, použijte 
 1. Na kartě **Doporučené** vyberte tok uživatele **upravující profilování** .
 1. Zadejte **název** toku uživatele. Například *profileediting1*.
 1. V případě **zprostředkovatelů identity**vyberte **přihlášení k místnímu účtu**.
-1. V případě **atributů uživatele**vyberte atributy, které má zákazník ve svém profilu upravovat. Vyberte například **Zobrazit více**a potom zvolte atributy i deklarace identity pro **zobrazované jméno** a **název úlohy**. Klikněte na **OK**.
+1. V případě **atributů uživatele**vyberte atributy, které má zákazník ve svém profilu upravovat. Vyberte například **Zobrazit více**a potom zvolte atributy i deklarace identity pro **zobrazované jméno** a **název úlohy**. Klikněte na tlačítko **OK**.
 1. Kliknutím na **vytvořit** přidejte tok uživatele. K názvu se automaticky připojí předpona *B2C_1* .
 
 ### <a name="test-the-user-flow"></a>Testování toku uživatele
@@ -105,7 +105,7 @@ Pokud chcete uživatelům vaší aplikace povolit resetování hesla, použijte 
 1. Zadejte **název** toku uživatele. Například *passwordreset1*.
 1. U **zprostředkovatelů identity**povolte možnost **resetovat heslo pomocí e-mailové adresy**.
 1. V části deklarace identity aplikace klikněte na **Zobrazit další** a vyberte deklarace identity, které chcete vrátit do vaší aplikace, do své aplikace. Vyberte například **ID objektu uživatele**.
-1. Klikněte na **OK**.
+1. Klikněte na tlačítko **OK**.
 1. Kliknutím na **vytvořit** přidejte tok uživatele. K názvu se automaticky připojí předpona *B2C_1* .
 
 ### <a name="test-the-user-flow"></a>Testování toku uživatele

@@ -1,6 +1,6 @@
 ---
 title: Optimalizace transakcí
-description: Naučte se, jak optimalizovat výkon transakčního kódu v Azure SQL Data Warehouse a zároveň minimalizovat riziko pro dlouhé vrácení zpět.
+description: Přečtěte si, jak optimalizovat výkon transakčního kódu ve službě SQL Analytics a zároveň minimalizovat rizika pro dlouhá vrácení zpět.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,21 +10,21 @@ ms.subservice: development
 ms.date: 04/19/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: b8b8be9467ade870e57355be91b0de329b0f6217
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 6f7005f1706e72ea1794f99c030a25fa533327b8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692860"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195834"
 ---
-# <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optimalizace transakcí v Azure SQL Data Warehouse
-Naučte se, jak optimalizovat výkon transakčního kódu v Azure SQL Data Warehouse a zároveň minimalizovat riziko pro dlouhé vrácení zpět.
+# <a name="optimizing-transactions-in-sql-analytics"></a>Optimalizace transakcí v SQL Analytics
+Přečtěte si, jak optimalizovat výkon transakčního kódu ve službě SQL Analytics a zároveň minimalizovat rizika pro dlouhá vrácení zpět.
 
 ## <a name="transactions-and-logging"></a>Transakce a protokolování
-Transakce jsou důležitou součástí databázového stroje relační databáze. SQL Data Warehouse používá transakce při úpravě dat. Tyto transakce můžou být explicitní nebo implicitní. Jednoduché příkazy INSERT, UPDATE a DELETE jsou všechny příklady implicitních transakcí. Explicitní transakce používají příkaz BEGIN TRAN, COMMIT TRAN nebo ROLLBACK TRAN. Explicitní transakce se obvykle používají, pokud je potřeba spojit více příkazů úprav v jedné atomické jednotce. 
+Transakce jsou důležitou součástí databázového stroje relační databáze. SQL Analytics používá během úprav dat transakce. Tyto transakce můžou být explicitní nebo implicitní. Jednoduché příkazy INSERT, UPDATE a DELETE jsou všechny příklady implicitních transakcí. Explicitní transakce používají příkaz BEGIN TRAN, COMMIT TRAN nebo ROLLBACK TRAN. Explicitní transakce se obvykle používají, pokud je potřeba spojit více příkazů úprav v jedné atomické jednotce. 
 
-Azure SQL Data Warehouse potvrdí změny v databázi pomocí protokolů transakcí. Každá distribuce má svůj vlastní transakční protokol. Zápisy do protokolu transakcí jsou automatické. Není nutná žádná konfigurace. Nicméně i když tento proces zaručuje, že při zápisu se v systému zavádí režie. Tento dopad můžete minimalizovat zapsáním transakčního efektivního kódu. Velmi účinný efektivní kód spadá do dvou kategorií.
+SQL Analytics potvrdí změny v databázi pomocí protokolů transakcí. Každá distribuce má svůj vlastní transakční protokol. Zápisy do protokolu transakcí jsou automatické. Není nutná žádná konfigurace. Nicméně i když tento proces zaručuje, že při zápisu se v systému zavádí režie. Tento dopad můžete minimalizovat zapsáním transakčního efektivního kódu. Velmi účinný efektivní kód spadá do dvou kategorií.
 
 * Pokud je to možné, používejte minimální konstrukce protokolování
 * Zpracování dat pomocí vymezených dávek, aby se předešlo transakcím v čísle Long spuštěných
@@ -71,14 +71,14 @@ CTAS a vložit... VYBRAT jsou operace hromadného načtení. Obě jsou však ovl
 | Halda |Všechny |**Poskytuje** |
 | Clusterovaný index |Prázdná cílová tabulka |**Poskytuje** |
 | Clusterovaný index |Načtené řádky se nepřesahují s existujícími stránkami v cíli. |**Poskytuje** |
-| Clusterovaný index |Načtené řádky se překrývají s existujícími stránkami v cíli. |Úplná |
+| Clusterovaný index |Načtené řádky se překrývají s existujícími stránkami v cíli. |kompletní |
 | Clusterovaný index columnstore |Velikost dávky > = 102 400 na distribuci zarovnaná na oddíl |**Poskytuje** |
-| Clusterovaný index columnstore |Velikost dávky < 102 400 na distribuci zarovnaná na oddíl |Úplná |
+| Clusterovaný index columnstore |Velikost dávky < 102 400 na distribuci zarovnaná na oddíl |kompletní |
 
 Je třeba poznamenat, že jakékoli zápisy k aktualizaci sekundárních nebo neclusterovaných indexů budou vždy plně protokolované.
 
 > [!IMPORTANT]
-> SQL Data Warehouse má 60 distribucí. Proto za předpokladu, že všechny řádky jsou rovnoměrně distribuovány a vydávány v jednom oddílu, bude muset dávka obsahovat 6 144 000 řádků nebo větší, aby bylo při zápisu do clusterovaného indexu columnstore minimální protokolované. Pokud je tabulka rozdělená na oddíly a řádky, které jsou vloženy na hranice oddílu, budete potřebovat 6 144 000 řádků na hranici oddílu za předpokladu, že bude i distribuce dat. Každý oddíl v každé distribuci musí nezávisle překročit prahovou hodnotu 102 400 řádku, aby bylo možné vložit na minimum přihlášené k distribuci.
+> Databáze SQL Analytics má 60 distribuce. Proto za předpokladu, že všechny řádky jsou rovnoměrně distribuovány a vydávány v jednom oddílu, bude muset dávka obsahovat 6 144 000 řádků nebo větší, aby bylo při zápisu do clusterovaného indexu columnstore minimální protokolované. Pokud je tabulka rozdělená na oddíly a řádky, které jsou vloženy na hranice oddílu, budete potřebovat 6 144 000 řádků na hranici oddílu za předpokladu, že bude i distribuce dat. Každý oddíl v každé distribuci musí nezávisle překročit prahovou hodnotu 102 400 řádku, aby bylo možné vložit na minimum přihlášené k distribuci.
 > 
 > 
 
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> Opětovné vytváření velkých tabulek může využívat funkce správy úloh SQL Data Warehouse. Další informace najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).
+> Opětovné vytváření velkých tabulek může přinést používání funkcí správy úloh SQL Analytics. Další informace najdete v tématu [třídy prostředků pro správu úloh](resource-classes-for-workload-management.md).
 > 
 > 
 
@@ -405,18 +405,18 @@ END
 ```
 
 ## <a name="pause-and-scaling-guidance"></a>Pokyny pro pozastavení a škálování
-Azure SQL Data Warehouse vám umožní [pozastavit, obnovit a škálovat](sql-data-warehouse-manage-compute-overview.md) datový sklad na vyžádání. Když pozastavíte nebo zmenšíte svou SQL Data Warehouse, je důležité pochopit, že jakékoliv transakce v letadle jsou okamžitě ukončeny. způsob vrácení všech otevřených transakcí zpět. Pokud vaše úloha vystavila dlouho probíhající a nedokončená úprava dat před operací pozastavit nebo škálování, bude potřeba tuto práci vrátit zpátky. To může mít vliv na dobu potřebnou k pozastavení nebo škálování databáze Azure SQL Data Warehouse. 
+SQL Analytics umožňuje [pozastavit, obnovit a škálovat](sql-data-warehouse-manage-compute-overview.md) váš fond SQL na vyžádání. Když pozastavíte nebo zmenšíte svůj fond SQL, je důležité pochopit, že jakékoliv transakce v letadle jsou okamžitě ukončeny. způsob vrácení všech otevřených transakcí zpět. Pokud vaše úloha vystavila dlouho probíhající a nedokončená úprava dat před operací pozastavit nebo škálování, bude potřeba tuto práci vrátit zpátky. To může mít vliv na dobu potřebnou k pozastavení nebo škálování fondu SQL. 
 
 > [!IMPORTANT]
 > `UPDATE` i `DELETE` jsou plně protokolované operace, takže tyto operace vrácení zpět/opětovného zpracování můžou výrazně trvat déle než ekvivalentní minimální zaznamenání operací. 
 > 
 > 
 
-Nejlepším řešením je umožnit, aby transakce změny letových dat byly dokončeny před pozastavením nebo škálováním SQL Data Warehouse. Tento scénář ale nemusí být vždycky praktický. Chcete-li zmírnit riziko dlouhého vrácení zpět, vezměte v úvahu jednu z následujících možností:
+Nejlepším řešením je umožnit, aby transakce změny letových dat byly dokončeny před tím, než se pozastavily nebo mění velikost fondu SQL. Tento scénář ale nemusí být vždycky praktický. Chcete-li zmírnit riziko dlouhého vrácení zpět, vezměte v úvahu jednu z následujících možností:
 
 * Přepisování dlouhotrvajících operací s použitím [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 * Rozdělit operaci na bloky dat; provozování v podmnožině řádků
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o úrovních izolace a omezeních [transakcí najdete v tématu transakce v SQL Data Warehouse](sql-data-warehouse-develop-transactions.md) .  Přehled dalších osvědčených postupů najdete v tématu [SQL Data Warehouse osvědčené postupy](sql-data-warehouse-best-practices.md).
+Další informace o úrovních izolace a transakčních omezeních najdete [v tématu transakce v SQL Analytics](sql-data-warehouse-develop-transactions.md) .  Přehled dalších osvědčených postupů najdete v tématu [SQL Data Warehouse osvědčené postupy](sql-data-warehouse-best-practices.md).
 

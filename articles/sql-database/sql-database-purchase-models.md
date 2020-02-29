@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/01/2020
-ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 20c93d214195f8fe389f4982e1d8b10998c7057d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587290"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192383"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Volba mezi vCore a nákupními modely DTU
 
@@ -142,6 +142,20 @@ Vstupní hodnoty pro tento vzorec lze získat z [Sys. dm_db_resource_stats](http
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Úlohy, které využívají elastický fond prostředků
 
 Fondy jsou vhodné pro databáze s nízkým průměrem využití prostředků a relativně málo časté špičky využití. Další informace najdete v tématu [Kdy byste měli zvážit SQL Database elastický fond?](sql-database-elastic-pool.md).
+
+### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>Generace hardwaru v modelu nákupu založeném na DTU
+
+V nákupním modelu založeném na DTU si zákazníci nemůžou zvolit generování hardwaru používaného pro své databáze. Zatímco daná databáze obvykle zůstává na konkrétní generaci hardwaru po dlouhou dobu (obvykle více měsíců), existují určité události, které mohou způsobit přesun databáze do jiné generace hardwaru.
+
+Databázi můžete například přesunout do jiné generace hardwaru, pokud je zvětšena nebo dolů na jiný cíl služby, nebo pokud se aktuální infrastruktura v datovém centru blíží k omezením kapacity nebo pokud je aktuálně používaný hardware vyřazeno z provozu vzhledem ke konci životnosti.
+
+Pokud je databáze přesunuta na jiný hardware, výkon úlohy se může změnit. Model DTU zaručuje, že propustnost a doba odezvy úlohy [srovnávacího testu DTU](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark) zůstanou v podstatě stejné jako databáze se přesune na jinou generaci hardwaru, pokud je její cíl služby (počet DTU) zůstává stejný. 
+
+V rámci spektra úloh zákazníků, které běží v Azure SQL Database, je ale možné vyslovit dopad použití jiného hardwaru pro stejný cíl služby. Různé úlohy budou využívat různé konfigurace hardwaru a funkce. Pro jiné úlohy, než je srovnávací test DTU, je proto možné sledovat rozdíly v výkonu, pokud se databáze přesouvá z jedné generace hardwaru do jiné.
+
+Například aplikace, která je citlivá na latenci sítě, může zobrazit lepší výkon Gen5 hardwaru vs. COMPUTE GEN4 – z důvodu použití akcelerovaných sítí v Gen5, ale aplikace využívající intenzivní čtení v/v může zobrazit lepší výkon na COMPUTE GEN4 – hardware vs. Gen5 z důvodu vyšší poměr paměti na jádro v COMPUTE GEN4 –.
+
+Zákazníci s úlohami citlivými na změny hardwaru nebo zákazníky, kteří chtějí řídit výběr generování hardwaru pro svou databázi, můžou pomocí modelu [Vcore](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) zvolit jejich preferovanou generaci hardwaru během vytváření a škálování databáze. V modelu vCore se pro jednotlivé [databáze](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) a [elastické fondy](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools)zdokumentují omezení prostředků každého cíle služby při každém generování hardwaru. Další informace o generacích hardwaru v modelu vCore najdete v tématu [hardwarové generace](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
 
 ## <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
 

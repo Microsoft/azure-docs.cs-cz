@@ -1,5 +1,5 @@
 ---
-title: Detekce anomálií časové řady & prognózování – Azure Průzkumník dat
+title: Detekce anomálií časové řady & prognózování v Azure Průzkumník dat
 description: Naučte se analyzovat data časových řad pro detekci anomálií a předpovědi pomocí Azure Průzkumník dat.
 author: orspod
 ms.author: orspodek
@@ -7,12 +7,12 @@ ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 4a7463d6149a921a4a29b43eaebb78a01543323a
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: a482fef93d43f92257608b65c9c0e2ade535bcca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985821"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194153"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Detekce anomálií a prognózování v Azure Průzkumník dat
 
@@ -20,7 +20,7 @@ Azure Průzkumník dat provádí shromažďování dat telemetrie z cloudových 
 
 Tento článek podrobně popisuje možnosti detekce anomálií a předpovědi pro Azure Průzkumník dat Time Series. Příslušné funkce časové řady jsou založeny na robustním dobře známém modelu rozkladu, kde každá původní časová řada je rozdělena na sezónní, vývojové a reziduální komponenty. Anomálie se zjišťují na zbytkové komponentě, zatímco předpovědi se provádí extrapolací komponent sezón a trendů. Implementace Azure Průzkumník dat významně vylepšuje základní model rozkladu pomocí automatického zjišťování sezónnost, robustní analýzy izolované a vektorové implementace pro zpracování tisíců časových řad v řádu sekund.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Přehled možností časových řad najdete v tématu věnovaném [analýze časových řad v Azure Průzkumník dat](/azure/data-explorer/time-series-analysis) .
 

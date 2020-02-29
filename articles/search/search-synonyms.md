@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7c94ad096cf7d0d01bf2076f6748b49cf4ae1bb4
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 02/28/2020
+ms.openlocfilehash: aa573e84fa9fff83bd6a894f516ce5f67b3afa79
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794228"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194338"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonyma v Azure Kognitivní hledání
 
@@ -27,7 +27,7 @@ Neexistuje žádná podpora portálu pro vytváření synonym, ale můžete pou�
 
 Pokud v případě, že používáte [klíče spravované zákazníkem](search-security-manage-encryption-keys.md) pro šifrování na straně služby, můžete použít i tuto ochranu na obsah vaší mapy synonym.
 
-## <a name="use-synonyms"></a>Použít synonyma
+## <a name="use-synonyms"></a>Použití synonym
 
 V Azure Kognitivní hledání je podpora synonym založená na mapách synonym, které definujete a nahráváte do vaší služby. Tyto mapy představují nezávislý prostředek (například indexy nebo zdroje dat) a lze jej použít v jakémkoli hledaném poli libovolného indexu ve vyhledávací službě.
 
@@ -45,7 +45,7 @@ Pro vaši vyhledávací aplikaci můžete vytvořit několik map synonym (např�
 
 #### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Přidejte nebo aktualizujte mapu synonym v rámci vaší služby pomocí POST nebo PUT.
 
-Mapy synonym jsou odesílány do služby prostřednictvím POST nebo PUT. Každé pravidlo musí být odděleno znakem nového řádku (' \n '). Můžete definovat až 5 000 pravidel na mapování synonym v rámci bezplatné služby a 10 000 pravidel ve všech ostatních SKU. Každé pravidlo může mít až 20 rozšíření.
+Mapy synonym jsou odesílány do služby prostřednictvím POST nebo PUT. Každé pravidlo musí být odděleno znakem nového řádku (' \n '). Můžete definovat až 5 000 pravidel na mapování synonym v rámci bezplatné služby a 20 000 pravidel na mapu ve všech ostatních SKU. Každé pravidlo může mít až 20 rozšíření.
 
 Mapy synonym musí být ve formátu Apache Solr, který je vysvětlen níže. Pokud máte existující slovník synonym v jiném formátu a chcete ho použít přímo, dejte nám prosím na [UserVoice](https://feedback.azure.com/forums/263029-azure-search)informace.
 
@@ -152,7 +152,7 @@ Funkce synonym se vztahuje na vyhledávací dotazy a nevztahuje se na filtry neb
 
 Rozšíření synonym neplatí pro výrazy vyhledávání se zástupnými znaky; výrazy s předponou, přibližnými a regulárními výrazy nejsou rozbaleny.
 
-Pokud potřebujete provést jeden dotaz, který používá rozšíření synonym a zástupné znaky, regulární výrazy nebo přibližné vyhledávání, můžete kombinovat dotazy pomocí syntaxe nebo. Pokud například chcete kombinovat synonyma se zástupnými znaky pro jednoduchou syntaxi dotazu, bude `<query> | <query>*`.
+Pokud potřebujete provést jeden dotaz, který používá rozšíření synonym a zástupné znaky, regulární výrazy nebo přibližné vyhledávání, můžete kombinovat dotazy pomocí syntaxe nebo. Pokud například chcete kombinovat synonyma se zástupnými znaky pro jednoduchou syntaxi dotazu, bude `<query> | <query>*`období.
 
 Pokud máte ve vývojovém (neprodukčním) prostředí existující index, Experimentujte s malým slovníkem, abyste viděli, jak Přidání synonym mění možnosti hledání, včetně dopadu na profily vyhodnocování, zvýrazňování přístupů a návrhy.
 

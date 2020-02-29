@@ -3,20 +3,20 @@ title: Zakázat ověřování e-mailů při registraci zákazníka
 titleSuffix: Azure AD B2C
 description: Naučte se zakázat ověřování e-mailů při registraci zákazníka v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c5b3598e33dac131c8881248a5f4b740a6302e20
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c598664ef721103740716ad6215ddaea53bc635f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848015"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183070"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>Zakázat ověřování e-mailů při registraci zákazníka v Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ Ověřování e-mailu zakážete pomocí těchto kroků:
 1. Vyberte **stránku pro registraci místního účtu**.
 1. V části **atributy uživatele**vyberte **e-mailová adresa**.
 1. V rozevíracím seznamu **vyžaduje ověření** vyberte možnost **ne**.
-1. Vyberte **Uložit**. Ověřování e-mailu je teď pro tento tok uživatelů zakázané.
+1. Vyberte **Save** (Uložit). Ověřování e-mailu je teď pro tento tok uživatelů zakázané.
 
 > [!WARNING]
 > Vypnutí ověřování e-mailu v procesu registrace může vést k spamu. Pokud zakážete výchozí ověřování e-mailů poskytnutých Azure AD B2C, doporučujeme implementovat systém náhradního ověřování.

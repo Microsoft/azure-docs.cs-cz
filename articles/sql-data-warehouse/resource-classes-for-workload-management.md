@@ -1,30 +1,30 @@
 ---
 title: Třídy prostředků pro správu úloh
-description: Pokyny pro použití tříd prostředků ke správě souběžných a výpočetních prostředků pro dotazy v Azure SQL Data Warehouse.
+description: Pokyny pro použití tříd prostředků ke správě souběžných a výpočetních prostředků pro dotazy ve službě Azure synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 12/04/2019
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 30d3c67a815d05a256717fc4447ae3687adb8146
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.custom: azure-synapse
+ms.openlocfilehash: c94b2a755d85bdf425980574b63d8fd74a232b19
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548165"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195987"
 ---
-# <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Správa úloh pomocí tříd prostředků v Azure SQL Data Warehouse
+# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Správa úloh pomocí tříd prostředků v Azure synapse Analytics
 
-Doprovodné materiály k používání tříd prostředků ke správě paměti a souběžnosti dotazů v Azure SQL Data Warehouse.  
+Doprovodné materiály k používání tříd prostředků ke správě paměti a dotazů služby SQL Analytics v Azure synapse.  
 
 ## <a name="what-are-resource-classes"></a>Co jsou třídy prostředků
 
-Kapacita výkonu dotazu je určena třídou prostředků uživatele.  Třídy prostředků jsou předem určené limity prostředků v Azure SQL Data Warehouse, které řídí výpočetní prostředky a souběžnost pro provádění dotazů. Třídy prostředků vám pomůžou nakonfigurovat prostředky pro vaše dotazy nastavením omezení počtu dotazů, které běží souběžně, a výpočetních prostředků přiřazených každému dotazu.  Existuje kompromis mezi pamětí a souběžně.
+Kapacita výkonu dotazu je určena třídou prostředků uživatele.  Třídy prostředků jsou předem zjištěné limity prostředků v analýze SQL, které řídí výpočetní prostředky a souběžnost pro provádění dotazů. Třídy prostředků vám pomůžou nakonfigurovat prostředky pro vaše dotazy nastavením omezení počtu dotazů, které běží souběžně, a výpočetních prostředků přiřazených každému dotazu.  Existuje kompromis mezi pamětí a souběžně.
 
 - Menší třídy prostředků omezují maximální velikost paměti na jeden dotaz, ale zvyšují souběžnost.
 - Větší třídy prostředků zvyšují maximální velikost paměti na jeden dotaz, ale omezují souběžnost.
@@ -69,12 +69,12 @@ Přidělení paměti pro jednotlivé třídy prostředků je následující.
 
 | Úroveň služby  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
-| DW100c         | 25 %               | 25 %                    | 25 %                    | 70 %                    |
-| DW200c         | 12,5%             | 12,5%                  | 22                    | 70 %                    |
-| DW300c         | 8 %                | 10 %                    | 22                    | 70 %                    |
-| DW400c         | 6,25%             | 10 %                    | 22                    | 70 %                    |
-| DW500c         | 20 %               | 10 %                    | 22                    | 70 %                    |
-| DW1000c na<br> DW30000c | 3 %       | 10 %                    | 22                    | 70 %                    |
+| DW100c         | 25%               | 25%                    | 25%                    | 70 %                    |
+| DW200c         | 12,5%             | 12,5%                  | 22                    | 70 %                    |
+| DW300c         | 8 %                | 10 %                    | 22                    | 70 %                    |
+| DW400c         | 6,25%             | 10 %                    | 22                    | 70 %                    |
+| DW500c         | 20 %               | 10 %                    | 22                    | 70 %                    |
+| DW1000c na<br> DW30000c | 3 %       | 10 %                    | 22                    | 70 %                    |
 
 
 
@@ -82,7 +82,7 @@ Přidělení paměti pro jednotlivé třídy prostředků je následující.
 
 Ve výchozím nastavení je každý uživatel členem dynamické třídy prostředků **smallrc**.
 
-Třída prostředků správce služby je pevně nastavená na smallrc a nedá se změnit.  Správce služby je uživatel vytvořený během procesu zřizování.  Správce služby v tomto kontextu je přihlašovací jméno zadané pro přihlašovací jméno správce serveru při vytváření nové instance SQL Data Warehouse s novým serverem.
+Třída prostředků správce služby je pevně nastavená na smallrc a nedá se změnit.  Správce služby je uživatel vytvořený během procesu zřizování.  Správce služby v tomto kontextu je přihlašovací jméno zadané pro přihlašovací jméno správce serveru při vytváření nové instance SQL Analytics s novým serverem.
 
 > [!NOTE]
 > Uživatelé nebo skupiny, kteří jsou definováni jako správce služby Active Directory, jsou také správci služeb.
@@ -594,5 +594,5 @@ GO
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v SQL Data Warehouse](./sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterovaných indexů columnstore, najdete v tématu [optimalizace paměti pro kompresi columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
+Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v SQL Analytics](./sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterovaných indexů columnstore, najdete v tématu [optimalizace paměti pro kompresi columnstore](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md).
 

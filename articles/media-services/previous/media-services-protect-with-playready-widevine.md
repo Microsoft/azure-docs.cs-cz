@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c90dc7877bced8a4ceececc04b8e3d1ebdcbfe44
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 79c24eb078cc3de764ecc1c814e5b8772777eab6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968625"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199491"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>Použití běžného dynamického šifrování PlayReady nebo Widevine
 
@@ -35,7 +35,7 @@ Media Services poskytuje službu k doručování licencí PlayReady DRM a Widevi
 
 K distribuci licencí Widevine můžete použít i následující partnery Media Services: 
 
-* [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/) 
+* [Axinom](https://www.axinom.com) 
 * [EZDRM](https://ezdrm.com/) 
 * [castLabs](https://castlabs.com/company/partners/azure/) 
 
@@ -156,7 +156,7 @@ K testování datového proudu můžete použít [Azure Media Services Player](h
     <add key="Audience" value="urn:test"/>
     ```
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 Následující příklad ukazuje funkci, která byla zavedena v sadě Media Services SDK pro .NET ve verzi 3.5.2. (Konkrétně obsahuje možnost definovat šablonu licence Widevine a žádat o licenci Widevine ze služby Media Services.)
 
@@ -613,10 +613,10 @@ namespace DynamicEncryptionWithDRM
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
 * [Použití šifrování CENC s více technologiemi DRM a řízením přístupu](media-services-cenc-with-multidrm-access-control.md)
 * [Konfigurace balení Widevine ve službě Media Services](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)

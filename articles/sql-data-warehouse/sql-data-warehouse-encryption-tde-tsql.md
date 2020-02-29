@@ -1,6 +1,6 @@
 ---
 title: Transparentní šifrování dat (T-SQL)
-description: Transparentní šifrování dat (TDE) v SQL Data Warehouse (T-SQL)
+description: Transparentní šifrování dat (TDE) ve službě Azure synapse Analytics (T-SQL)
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4e7f4f31cd8b899e3fcf79568ea62830313936b9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bd6f40b8389284c1932a2f16a70060cd56e412fb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822610"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195801"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Začínáme s transparentní šifrování dat (TDE)
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "73822610"
 Pokud chcete povolit transparentní šifrování dat (TDE), musíte být správcem nebo členem role dbmanager.
 
 ## <a name="enabling-encryption"></a>Povolení šifrování
-Pomocí těchto kroků povolíte TDE pro SQL Data Warehouse:
+Pomocí těchto kroků povolíte TDE:
 
 1. Připojte se k *Hlavní* databázi na serveru, který je hostitelem databáze, pomocí přihlašovacích údajů, které jsou správcem nebo členem role **dbmanager** v hlavní databázi.
 2. Spusťte následující příkaz k zašifrování databáze.
@@ -41,7 +41,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>Zakázání šifrování
-Pomocí těchto kroků zakážete TDE pro SQL Data Warehouse:
+Pomocí těchto kroků zakážete TDE:
 
 1. Připojení k *Hlavní* databázi pomocí přihlášení, které je správcem nebo členem role **dbmanager** v hlavní databázi
 2. Spusťte následující příkaz k zašifrování databáze.
@@ -51,12 +51,12 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> Před provedením změn v nastavení TDE je třeba obnovit pozastavený SQL Data Warehouse.
+> Před provedením změn v nastavení TDE je třeba obnovit pozastavený fond SQL.
 > 
 > 
 
 ## <a name="verifying-encryption"></a>Ověřování šifrování
-Pokud chcete ověřit stav šifrování pro SQL Data Warehouse, postupujte podle následujících kroků:
+Chcete-li ověřit stav šifrování, postupujte podle následujících kroků:
 
 1. Připojte se k *Hlavní* databázi nebo databázi instance pomocí přihlášení, které je správcem nebo členem role **dbmanager** v hlavní databázi.
 2. Spusťte následující příkaz k zašifrování databáze.

@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 02/28/2020
 ms.author: diberry
-ms.openlocfilehash: 9c92a3ad2fc6a372b58aa651228a7bbccdf8ba0a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552014"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194630"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Postup migrace do prostředku pro vytváření obsahu Azure
 
 Na portálu Language Understanding (LUIS) migrujte všechny aplikace, které vlastníte, abyste mohli používat prostředek pro vytváření obsahu Azure.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * **Volitelně můžete**aplikace zálohovat ze seznamu aplikací portálu Luis, a to tak, že jednotlivé aplikace exportujete nebo použijete [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)pro export.
 * **Volitelně můžete**Uložit seznam collaborator's jednotlivých aplikací. V rámci procesu migrace je možné odeslat e-mail všem spolupracovníkům.
@@ -32,7 +32,10 @@ Pokud nemáte předplatné Azure, [Zaregistrujte](https://azure.microsoft.com/fr
 
 ## <a name="access-the-migration-process"></a>Přístup k procesu migrace
 
-Každý týden budete vyzváni k migraci svých aplikací. Toto okno můžete zrušit bez migrace. Pokud chcete provést migraci před dalším naplánovaným obdobím, můžete zahájit proces migrace z ikony **zámku** na horním panelu nástrojů portálu Luis.
+Každý týden budete vyzváni k migraci svých aplikací. Toto okno můžete zrušit bez migrace. Pokud chcete provést migraci před dalším naplánovaným obdobím, můžete zahájit proces migrace z ikony **Azure** na horním panelu nástrojů portálu Luis.
+
+> [!div class="mx-imgBorder"]
+> ikona migrace ![](./media/migrate-authoring-key/migration-button.png)
 
 ## <a name="app-owner-begins-the-migration-process"></a>Vlastník aplikace zahájí proces migrace.
 

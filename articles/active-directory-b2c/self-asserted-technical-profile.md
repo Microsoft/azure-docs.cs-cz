@@ -3,20 +3,20 @@ title: Definování technického profilu s vlastním uplatněním v vlastní zá
 titleSuffix: Azure AD B2C
 description: V Azure Active Directory B2C ve vlastních zásadách definujte technický profil s vlastním uplatněním.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8f2a86f72f16a23b0133601cfe41b9e636d8866d
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: e0a282be9b8a20c64cd3e74e7860a289baa5aec6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425591"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183801"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu s vlastním uplatněním v Azure Active Directory B2C vlastní zásady
 
@@ -24,7 +24,7 @@ ms.locfileid: "77425591"
 
 Všechny interakce v Azure Active Directory B2C (Azure AD B2C), kde se očekává, že uživatel zadává vstup, jsou technické profily s vlastním uplatněním. Například stránku pro registraci, přihlašovací stránku nebo stránku pro resetování hesla.
 
-## <a name="protocol"></a>Protokol
+## <a name="protocol"></a>Protocol (Protokol)
 
 Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C, pro použití s vlastním kontrolním výrazem: `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
@@ -187,7 +187,7 @@ Pomocí obchodní logiky můžete také volat REST API technický profil, přeps
 
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | nastavení. operatingMode <sup>1</sup>| Ne | Pro přihlašovací stránku Tato vlastnost řídí chování pole username, jako je například ověřování vstupu a chybové zprávy. Očekávané hodnoty: `Username` nebo `Email`.  |
 | AllowGenerationOfClaimsWithNullValues| Ne| Povoluje generování deklarace identity s hodnotou null. Například v případě, že uživatel nevybere zaškrtávací políčko.|
@@ -198,7 +198,7 @@ Pomocí obchodní logiky můžete také volat REST API technický profil, přeps
 | setting.showCancelButton | Ne | Zobrazí tlačítko Storno. Možné hodnoty: `true` (výchozí) nebo `false` |
 | setting.showContinueButton | Ne | Zobrazí tlačítko pokračovat. Možné hodnoty: `true` (výchozí) nebo `false` |
 | nastavení. showSignupLink <sup>2</sup>| Ne | Zobrazí tlačítko pro registraci. Možné hodnoty: `true` (výchozí) nebo `false` |
-| nastavení. forgotPasswordLinkLocation <sup>2</sup>| Ne| Zobrazí odkaz zapomenuté heslo. Možné hodnoty: `AfterInput` (výchozí) odkaz se zobrazí v dolní části stránky, nebo `None` odebere odkaz zapomenuté heslo.| 
+| nastavení. forgotPasswordLinkLocation <sup>2</sup>| Ne| Zobrazí odkaz zapomenuté heslo. Možné hodnoty: `AfterInput` (výchozí) odkaz se zobrazí v dolní části stránky, nebo `None` odebere odkaz zapomenuté heslo.|
 | IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true`nebo `false` (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true`. |
 
 Poznámky:

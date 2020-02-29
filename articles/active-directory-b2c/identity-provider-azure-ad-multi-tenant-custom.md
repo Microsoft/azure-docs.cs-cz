@@ -3,20 +3,20 @@ title: Nastavení přihlášení pro více tenantů Azure AD pomocí vlastních 
 titleSuffix: Azure AD B2C
 description: Přidejte poskytovatele identit Azure AD s více klienty pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d8d13ec955867eb574b5f0d782727d6ff8d063a
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.openlocfilehash: 9ad51e113a752e0692cb377a83d4819b4e284bb7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/10/2020
-ms.locfileid: "77111543"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188427"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro více tenantů Azure Active Directory používání vlastních zásad v Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Dir
 
 Pokud chcete povolit přihlášení pro uživatele z konkrétní organizace Azure AD, musíte zaregistrovat aplikaci v rámci tenanta organizace Azure AD.
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje váš tenant organizace Azure AD (například contoso.com). V horní nabídce vyberte **Filtr adresář + odběr** a pak zvolte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
@@ -54,7 +54,7 @@ Pokud chcete povolit přihlášení pro uživatele z konkrétní organizace Azur
 
 Pokud chcete získat `family_name` a `given_name` deklarace identity z Azure AD, můžete nakonfigurovat volitelné deklarace identity pro vaši aplikaci v uživatelském rozhraní Azure Portal nebo manifestu aplikace. Další informace najdete v tématu [jak poskytnout volitelné deklarace identity vaší aplikaci Azure AD](../active-directory/develop/active-directory-optional-claims.md).
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.
 1. V seznamu vyberte aplikaci, pro kterou chcete nakonfigurovat volitelné deklarace identity.
 1. V části **Správa** vyberte **Konfigurace tokenu (Preview)** .
@@ -75,7 +75,7 @@ Je potřeba uložit klíč aplikace, který jste vytvořili v tenantovi Azure AD
 1. Zadejte **název** klíče zásad. například `AADAppSecret`.  `B2C_1A_` předpony se automaticky přidají do názvu klíče při jeho vytvoření, takže jeho odkaz v XML v následující části je *B2C_1A_AADAppSecret*.
 1. Do **tajného klíče**zadejte tajný klíč klienta, který jste si poznamenali dříve.
 1. Pro **použití klíče**vyberte `Signature`.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 ## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
 
@@ -147,7 +147,7 @@ Službu Azure AD můžete definovat jako zprostředkovatele deklarací přidán�
 
 Musíte aktualizovat seznam platných vystavitelů tokenů a omezit přístup k určitému seznamu uživatelů klienta služby Azure AD, kteří se můžou přihlásit.
 
-Pokud chcete získat hodnoty, podívejte se na metadata zjišťování OpenID Connect pro každé klienty Azure AD, ze kterých se chcete přihlašovat pomocí uživatelů. Formát adresy URL metadat je podobný `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration`, kde `your-tenant` je váš název tenanta Azure AD. Například:
+Pokud chcete získat hodnoty, podívejte se na metadata zjišťování OpenID Connect pro každé klienty Azure AD, ze kterých se chcete přihlašovat pomocí uživatelů. Formát adresy URL metadat je podobný `https://login.microsoftonline.com/your-tenant/v2.0/.well-known/openid-configuration`, kde `your-tenant` je váš název tenanta Azure AD. Příklad:
 
 `https://login.microsoftonline.com/fabrikam.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 

@@ -5,21 +5,22 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: security
 ms.custom: ''
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/22/2019
-ms.openlocfilehash: dda65c94671044f3c5a569a3f9753951de9eee3a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/05/2020
+tags: azure-synapse
+ms.openlocfilehash: e22205e81178ac0caff4b71462ece776238900f6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76717683"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191941"
 ---
-# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasifikace & Azure SQL Database a SQL Data Warehouse Discovery Data
+# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>Azure SQL Database a Azure synapse Analytics data Discovery & – klasifikace
 
 Klasifikace & Discovery dat poskytuje pokročilé funkce, které jsou integrované do **Azure SQL Database pro zjišťování**, **klasifikaci**, **označování** , & **oznamování** citlivých dat ve vašich databázích.
 
@@ -32,7 +33,7 @@ Vyhledávání a klasifikace vašich citlivých dat (podniková, finanční, zdr
 Klasifikace data Discovery & je součástí nabídky služby ADS ( [Advanced Data Security](sql-database-advanced-data-security.md) ), což je jednotný balíček pro pokročilé funkce zabezpečení SQL. k klasifikaci & pro zjišťování dat lze využít a spravovat prostřednictvím centrálního portálu SQL ADS.
 
 > [!NOTE]
-> Tento dokument se týká Azure SQL Database a Azure SQL Data Warehouse. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Pro SQL Server (místně) se podívejte na téma [zjišťování a klasifikace dat SQL](https://go.microsoft.com/fwlink/?linkid=866999).
+> Tento dokument se týká Azure SQL Database a Azure synapse. Pro zjednodušení se SQL Database používá při odkazování na SQL Database a Azure synapse. Pro SQL Server (místně) se podívejte na téma [zjišťování a klasifikace dat SQL](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Co je klasifikace & Discovery Data
 
@@ -138,7 +139,7 @@ Další informace o [RBAC pro prostředky Azure](https://docs.microsoft.com/azur
 
 ## <a id="subheading-5"></a>Spravovat klasifikace
 
-# <a name="t-sqltabazure-t-sql"></a>[T-SQL](#tab/azure-t-sql)
+# <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
 Pomocí T-SQL můžete přidat nebo odebrat klasifikace sloupců a načíst všechny klasifikace pro celou databázi.
 
 > [!NOTE]
@@ -148,7 +149,7 @@ Pomocí T-SQL můžete přidat nebo odebrat klasifikace sloupců a načíst vše
 - Odeberte klasifikaci z jednoho nebo více sloupců: [klasifikace citlivosti přetažení](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Zobrazit všechny klasifikace v databázi: [Sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-# <a name="rest-apistabazure-rest-api"></a>[Rozhraní REST API](#tab/azure-rest-api)
+# <a name="rest-apis"></a>[Rozhraní REST API](#tab/azure-rest-api)
 Pomocí rozhraní REST API můžete programově spravovat klasifikace a doporučení. Publikovaná rozhraní REST API podporují následující operace:
 
 - [Vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) – vytvoří nebo aktualizuje popisek citlivosti daného sloupce.
@@ -159,7 +160,7 @@ Pomocí rozhraní REST API můžete programově spravovat klasifikace a doporuč
 - [List Current by Database](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) – získá aktuální popisky citlivosti dané databáze.
 - [Seznam doporučený databází](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) – získá Doporučené popisky citlivosti dané databáze.
 
-# <a name="powershell-cmdlettabazure-powelshell"></a>[Rutina PowerShellu](#tab/azure-powelshell)
+# <a name="powershell-cmdlet"></a>[Rutina PowerShellu](#tab/azure-powelshell)
 Pomocí prostředí PowerShell můžete spravovat klasifikace a doporučení pro Azure SQL Database a spravovanou instanci.
 
 ### <a name="powershell-cmdlet-for-azure-sql-database"></a>Rutina PowerShellu pro Azure SQL Database

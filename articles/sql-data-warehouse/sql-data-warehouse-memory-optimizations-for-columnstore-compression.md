@@ -1,6 +1,6 @@
 ---
 title: Zvýšení výkonu indexu columnstore
-description: Azure SQL Data Warehouse snížení požadavků na paměť nebo zvýšení dostupné paměti pro maximalizaci počtu řádků, které index columnstore komprimuje do každého skupiny řádků.
+description: Snižte nároky na paměť nebo Zvětšete dostupnou paměť a maximalizujte počet řádků v rámci jednotlivých skupiny řádků.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
@@ -10,13 +10,13 @@ ms.subservice: load-data
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d5dba4e9a086502f638252a0ce2b16b4abeeb643
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 11c0a168e4b2e8eac03eaebd37b208446082d1b4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685651"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197194"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Maximalizace kvality skupiny řádků pro columnstore
 
@@ -34,13 +34,13 @@ Pro zajištění nejlepšího výkonu dotazů je cílem maximalizovat počet ř�
 
 Při hromadném načtení nebo opětovném sestavení indexu columnstore není k dispozici dostatek paměti pro komprimaci všech řádků určených pro jednotlivé skupiny řádků. V případě, že dojde k tlaku na paměť, indexy columnstore oříznou velikosti skupiny řádků, takže komprimace do columnstore může být úspěšná. 
 
-Pokud není dostatek paměti pro komprimaci aspoň 10 000 řádků do každého skupiny řádků, SQL Data Warehouse vygeneruje chybu.
+Pokud není dostatek paměti pro komprimaci nejméně 10 000 řádků do každého skupiny řádků, bude vygenerována chyba.
 
 Další informace o hromadném načítání najdete v tématu [hromadné načtení do clusterovaného indexu columnstore](https://msdn.microsoft.com/library/dn935008.aspx#Bulk ).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Jak monitorovat kvalitu skupiny řádků
 
-DMV sys. DM _pdw_nodes_db_column_store_row_group_physical_stats ([Sys. DM _db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) obsahuje definici zobrazení odpovídající databázi SQL DB, která SQL Data Warehouse) zpřístupňuje užitečné informace, jako je například počet řádků v rowgroups a důvod pro oříznutí, pokud došlo k oříznutí. Následující zobrazení můžete vytvořit jako praktický způsob dotazování na tento DMV, abyste získali informace o ořezávání skupiny řádků.
+DMV sys. dm_pdw_nodes_db_column_store_row_group_physical_stats ([Sys. dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) obsahuje definici zobrazení odpovídající databázi SQL), která zpřístupňuje užitečné informace, jako je počet řádků v rowgroups, a důvod oříznutí, pokud došlo k oříznutí. Následující zobrazení můžete vytvořit jako praktický způsob dotazování na tento DMV, abyste získali informace o ořezávání skupiny řádků.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -67,10 +67,10 @@ select *
 from cte;
 ```
 
-Trim_reason_desc oznamuje, zda byl skupiny řádků oříznutý (trim_reason_desc = NO_TRIM znamená, že neexistuje žádná skupina pro ořezávání a skupina řádků). Následující důvody pro oříznutí označují předčasné oříznutí skupiny řádků:
+Trim_reason_desc oznamuje, zda byl skupiny řádků oříznutý (trim_reason_desc = NO_TRIM znamená, že nedošlo k žádnému oříznutí a skupina řádků je optimální kvalita). Následující důvody pro oříznutí označují předčasné oříznutí skupiny řádků:
 - BULKLOAD: Tento důvod vystřihování se používá v případě, že příchozí dávka řádků pro zatížení má méně než 1 000 000 řádků. Modul vytvoří komprimované skupiny řádků, pokud je vloženo více než 100 000 řádků (na rozdíl od vložení do rozdílového úložiště), ale nastaví důvod oříznutí na BULKLOAD. V tomto scénáři zvažte zvýšení zatížení dávky tak, aby zahrnovalo více řádků. Také znovu vyhodnoťte schéma dělení, abyste se ujistili, že není příliš podrobný, protože skupiny řádků nemohou zabírat hranice oddílů.
-- MEMORY_LIMITATION: Pokud chcete vytvořit skupiny řádků s 1 000 000 řádky, musí modul vyžadovat určité množství pracovní paměti. Když je dostupná paměť relace načítání menší než požadovaná pracovní paměť, skupiny řádků se předčasně oříznou. Následující části vysvětlují, jak odhadnout velikost paměti a přidělit větší množství paměti.
-- DICTIONARY_SIZE: Tento důvod oříznutí indikuje, že došlo k oříznutí skupiny řádků, protože existoval alespoň jeden řetězcový sloupec s řetězci velkých a/nebo high mohutnosti. Velikost slovníku je omezená na 16 MB paměti a po dosažení tohoto limitu je skupina řádků komprimovaná. Pokud provedete tuto situaci, zvažte možnost izolovat problematický sloupec do samostatné tabulky.
+- MEMORY_LIMITATION: Chcete-li vytvořit skupiny řádků s 1 000 000 řádky, je nutné, aby modul vyhodnotil určitou velikost pracovní paměti. Když je dostupná paměť relace načítání menší než požadovaná pracovní paměť, skupiny řádků se předčasně oříznou. Následující části vysvětlují, jak odhadnout velikost paměti a přidělit větší množství paměti.
+- DICTIONARY_SIZE: Tento důvod vystřihování indikuje, že došlo k skupiny řádků oříznutí, protože existoval alespoň jeden řetězcový sloupec s řetězci velkých a/nebo s vysokými počty mohutnosti. Velikost slovníku je omezená na 16 MB paměti a po dosažení tohoto limitu je skupina řádků komprimovaná. Pokud provedete tuto situaci, zvažte možnost izolovat problematický sloupec do samostatné tabulky.
 
 ## <a name="how-to-estimate-memory-requirements"></a>Odhad požadavků na paměť
 
@@ -89,7 +89,7 @@ kde krátké řetězcové sloupce používají řetězcové datové typy < = 32 
 
 Dlouhé řetězce jsou komprimovány pomocí kompresní metody navržené pro komprimaci textu. Tato metoda komprese používá *slovník* k ukládání textových vzorců. Maximální velikost slovníku je 16 MB. Pro každý sloupec s dlouhým řetězcem v skupiny řádků je k dispozici pouze jeden slovník.
 
-Podrobné informace o požadavcích na paměť columnstore najdete v části video [Azure SQL Data Warehouse škálování: konfigurace a doprovodné](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)materiály.
+Podrobné informace o požadavcích na paměť columnstore najdete v tématu škálování pro video [SQL Analytics: konfigurace a pokyny](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Způsoby snížení požadavků na paměť
 
@@ -109,7 +109,7 @@ Další požadavky na paměť pro kompresi řetězce:
 
 ### <a name="avoid-over-partitioning"></a>Vyhnout se přerozdělování
 
-Indexy columnstore vytvoří jeden nebo více rowgroups na oddíl. V SQL Data Warehouse počet oddílů rychle roste, protože data jsou distribuována a každá distribuce je rozdělená na oddíly. Pokud má tabulka příliš mnoho oddílů, nemusí být pro vyplnění rowgroups dostatek řádků. Nedostatek řádků nevytváří tlak paměti během komprese, ale vede k rowgroups, které nedosahují nejlepšího výkonu dotazů columnstore.
+Indexy columnstore vytvoří jeden nebo více rowgroups na oddíl. V případě datových skladů ve službě Azure synapse Analytics počet oddílů rychle roste, protože data jsou distribuována a každá distribuce je rozdělená na oddíly. Pokud má tabulka příliš mnoho oddílů, nemusí být pro vyplnění rowgroups dostatek řádků. Nedostatek řádků nevytváří tlak paměti během komprese, ale vede k rowgroups, které nedosahují nejlepšího výkonu dotazů columnstore.
 
 Dalším důvodem pro zamezení přerozdělování do oddílů je zatížení paměti při načítání řádků do indexu columnstore v dělené tabulce. Během načítání může mnoho oddílů získat vstupní řádky, které jsou uchovávány v paměti, dokud každý oddíl nemá dostatečně komprimovaný řádek. Příliš mnoho oddílů vytváří větší tlak na paměť.
 
@@ -119,7 +119,7 @@ Databáze sdílí udělení paměti pro dotaz mezi všemi operátory v dotazu. K
 
 Navrhněte zátěžový dotaz, abyste se mohli zaměřit pouze na načtení dotazu. Pokud potřebujete pro data spustit transformace, spouštějte je odděleně od načteného dotazu. Můžete například připravit data v tabulce haldy, spustit transformace a pak načíst pracovní tabulku do indexu columnstore. Můžete také načíst data jako první a potom použít systém MPP k transformaci dat.
 
-### <a name="adjust-maxdop"></a>Upravit MAXDOP
+### <a name="adjust-maxdop"></a>Adjust MAXDOP
 
 Každá distribuce komprimuje rowgroups do columnstore paralelně, pokud je pro jednotlivé distribuce k dispozici více než jeden procesor. Paralelismus vyžaduje další paměťové prostředky, což může vést k přetížení paměti a oříznutí skupiny řádků.
 
@@ -141,5 +141,4 @@ DWU velikost a Třída prostředků uživatele společně určují, kolik pamět
 
 ## <a name="next-steps"></a>Další kroky
 
-Další způsoby, jak vylepšit výkon v SQL Data Warehouse, najdete v tématu [Přehled výkonu](sql-data-warehouse-overview-manage-user-queries.md).
-
+Další způsoby, jak vylepšit výkon pro analýzu SQL, najdete v tématu [Přehled výkonu](sql-data-warehouse-overview-manage-user-queries.md).

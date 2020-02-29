@@ -3,20 +3,20 @@ title: Přizpůsobení uživatelského rozhraní
 titleSuffix: Azure AD B2C
 description: Naučte se, jak přizpůsobit uživatelské rozhraní pro aplikace, které používají Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2dcdc67f884d1f566c794ab9e996a74984ab61a4
-ms.sourcegitcommit: ef568f562fbb05b4bd023fe2454f9da931adf39a
+ms.openlocfilehash: dad4c156b088c28ccf199cb155278ac9a189e4be
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/17/2020
-ms.locfileid: "77373151"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189051"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní v Azure Active Directory B2C
 
@@ -61,7 +61,7 @@ V části **přizpůsobit** v nabídce vlevo vyberte **rozložení stránky** a 
 
 Potom v seznamu vyberte šablonu. Tady jsou příklady přihlašovacích stránek pro každou šablonu:
 
-| Mořská modrá | Břidlicová šedá | Klasický |
+| Mořská modrá | Břidlicová šedá | Classic |
 |:-:|:-:|:-:|
 |![Příklad šablony oceánu Blue vygenerované na přihlašovací stránce pro registraci](media/customize-ui-overview/template-ocean-blue.png)|![Příklad šablony břidlicově šedé vygenerované na přihlašovací stránce pro registraci](media/customize-ui-overview/template-slate-gray.png)|![Příklad klasické šablony vykreslené na přihlašovací stránce pro registraci](media/customize-ui-overview/template-classic.png)|
 
@@ -165,7 +165,7 @@ Chcete-li přizpůsobit stránky toku uživatele, je třeba nejprve nakonfigurov
 
 Začněte tím, že nastavíte logo banner, obrázek pozadí a barvu pozadí v rámci **brandingu společnosti**.
 
-1. Přihlaste se k webu [Portál Azure](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. V části **Spravovat**vyberte **Branding společnosti**.

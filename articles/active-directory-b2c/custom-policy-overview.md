@@ -2,20 +2,20 @@
 title: Azure Active Directory B2C vlastní zásady | Microsoft Docs
 description: Přečtěte si o Azure Active Directory B2C vlastních zásadách.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b1f3bbcba562d126d503920cb7b6787e2ca0025c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847040"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189222"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Vlastní zásady v Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ Vlastní zásady jsou konfigurační soubory, které definují chování klienta
 |-|-------------------|-----------------|
 | Cíloví uživatelé | Všichni vývojáři aplikací s odbornými znalostmi identity nebo bez nich. | Specialisté na identity, systémy integrátorů, konzultantů a interních identit. Jsou pohodlné díky tokům OpenID Connect a pochopení zprostředkovatelů identit a ověřování založeného na deklaracích identity. |
 | Metoda konfigurace | Azure Portal s uživatelsky přívětivým uživatelským rozhraním (UI). | Přímo upravování souborů XML a následné nahrávání do Azure Portal. |
-| Přizpůsobení uživatelského rozhraní | Úplné přizpůsobení uživatelského rozhraní, včetně HTML, CSS a JavaScriptu.<br><br>Vícejazyčná podpora s vlastními řetězci. | Jedné |
+| přizpůsobení uživatelského rozhraní | Úplné přizpůsobení uživatelského rozhraní, včetně HTML, CSS a JavaScriptu.<br><br>Vícejazyčná podpora s vlastními řetězci. | Jedné |
 | Přizpůsobení atributu | Standardní a vlastní atributy. | Jedné |
 | Správa tokenů a relací | Vlastní token a možnosti více relací. | Jedné |
 | Zprostředkovatelé identit | Předdefinovaný místní nebo sociální zprostředkovatel a většina poskytovatelů OIDC identity, jako je například federace s Azure Active Directory klienty. | OIDC založené na standardech, OAUTH a SAML.  Ověřování je také možné pomocí integrace s rozhraními REST API. |

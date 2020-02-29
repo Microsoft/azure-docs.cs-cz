@@ -3,20 +3,20 @@ title: Konfigurace složitosti hesla pomocí vlastních zásad
 titleSuffix: Azure AD B2C
 description: Jak nakonfigurovat požadavky na složitost hesla pomocí vlastních zásad v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d0caa029bd33da499db23f218b2392344c4585ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 2de1130e28b5071913e4cf3632c3fe4407597a98
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849068"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189136"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurace složitosti hesla pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "76849068"
 
 V Azure Active Directory B2C (Azure AD B2C) můžete nakonfigurovat požadavky na složitost pro hesla, která jsou k dispozici uživatelem při vytváření účtu. Ve výchozím nastavení používá Azure AD B2C používání **silných** hesel. V tomto článku se dozvíte, jak nakonfigurovat složitost hesla ve [vlastních zásadách](custom-policy-overview.md). Je také možné nakonfigurovat složitost hesla v [uživatelských tocích](user-flow-password-complexity.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky v části Začínáme [s vlastními zásadami v Active Directory B2C](custom-policy-get-started.md).
 
@@ -112,7 +112,7 @@ Při testování aplikací v Azure AD B2C může být užitečné, aby se token 
 
 ### <a name="upload-the-files"></a>Nahrání souborů
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 2. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **architekturu prostředí identity**.

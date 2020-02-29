@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 0b15b35f6fc83097e94f7d69815a163a0e98a228
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 559c9ee237f95f9d175aaefb487131466700e899
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523267"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190785"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -130,7 +130,7 @@ Následující kroky používají [apt](https://wiki.debian.org/Apt) k instalaci
 
 1. V souboru `/etc/apt/sources.list.d/dotnetdev.list` vyhledejte jeden z odpovídajících řetězců verze Linux uvedených níže:
 
-    | Linuxové distribuce | Version |
+    | Linuxové distribuce | Verze |
     | --------------- | ----------- |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
@@ -463,7 +463,7 @@ Azure Functions Core Tools podporuje dva typy nasazení: nasazení souborů proj
 
 Složka projektu může obsahovat soubory a adresáře specifické pro konkrétní jazyk, které by neměly být publikovány. Vyloučené položky jsou uvedeny v souboru. funcignore v kořenové složce projektu.     
 
-### <a name="project-file-deployment"></a>Nasazení (soubory projektu)
+### <a name="project-file-deployment"></a>Nasadit soubory projektu
 
 Pokud chcete publikovat místní kód do aplikace Function App v Azure, použijte příkaz `publish`:
 
@@ -500,7 +500,7 @@ Následující možnosti publikování jsou podporovány pouze ve verzi 2. x:
 | **`--no-build`** | Nevytvářejte funkce knihovny tříd .NET. |
 | **`--dotnet-cli-params`** | Při publikování kompilovaných C# funkcí (. csproj) volají základní nástroje "dotnet Build--Output bin/Publish". Všechny předané parametry budou připojeny k příkazovému řádku. |
 
-### <a name="deployment-custom-container"></a>Nasazení (vlastní kontejner)
+### <a name="deploy-custom-container"></a>Nasazení vlastního kontejneru
 
 Azure Functions umožňuje nasadit projekt funkce ve [vlastním kontejneru Docker](functions-deployment-technologies.md#docker-container). Další informace najdete v tématu [Vytvoření funkce na platformě Linux s použitím vlastní image](functions-create-function-linux-custom-image.md). Vlastní kontejnery musí mít souboru Dockerfile. Pokud chcete vytvořit aplikaci s souboru Dockerfile, použijte možnost--souboru Dockerfile na `func init`.
 

@@ -2,20 +2,20 @@
 title: Aplikace rozšíření v Azure Active Directory B2C | Microsoft Docs
 description: Obnovuje se aplikace B2C-Extensions-App.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/06/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e5d38d8d791c6b932d8a28a898f2e2b80caff7ac
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 547b625996a65999c32c1b73699e3b408be01de3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846962"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188592"
 ---
 # <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: rozšíření aplikace
 
@@ -36,7 +36,7 @@ Chcete-li ověřit, zda je aplikace B2C-Extensions-App k dispozici:
 
 Pokud jste B2C-Extensions-App omylem odstranili, budete mít 30 dní na jeho obnovení. Aplikaci můžete obnovit pomocí Graph API:
 
-1. Přejděte na [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
+1. Přejděte na adresu [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/).
 1. Přihlaste se k webu jako globální správce pro adresář Azure AD B2C, pro který chcete obnovit odstraněnou aplikaci. Tento globální správce musí mít e-mailovou adresu podobnou následující: `username@{yourTenant}.onmicrosoft.com`.
 1. Vydejte požadavek HTTP GET na adresu URL `https://graph.windows.net/myorganization/deletedApplications` s rozhraním API-Version = 1.6. Tato operace zobrazí seznam všech aplikací, které byly odstraněny během posledních 30 dnů.
 1. Vyhledejte aplikaci v seznamu, kde název začíná na ' B2C-Extension-App ' a zkopírujte hodnotu vlastnosti `objectid`.

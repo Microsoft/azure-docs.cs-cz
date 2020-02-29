@@ -1,25 +1,28 @@
 ---
-title: Streamování protokolů aplikace v cloudu Azure na jaře v reálném čase
+title: Streamování protokolů aplikace Azure Spring Cloudu v reálném čase
 description: Jak používat streamování protokolů k okamžitému zobrazení protokolů aplikací
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
-ms.openlocfilehash: 27978d367ded7a31d73949cd675ae9e6f8cb887c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: fc208a3542528fb4554a365a02e13c2da3055cf2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263995"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192196"
 ---
-# <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Streamování protokolů aplikace v cloudu Azure na jaře v reálném čase
+# <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Streamování protokolů aplikace Azure Spring Cloudu v reálném čase
 Azure jaře Cloud umožňuje streamování protokolů v Azure CLI a získat tak řešení potíží v protokolech konzoly aplikací v reálném čase. Můžete také [analyzovat protokoly a metriky pomocí nastavení diagnostiky](./diagnostic-services.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Nainstalujte [rozšíření Azure CLI](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#install-the-azure-cli-extension) pro jarní Cloud a minimální verzi 0.2.0.
 * Instance **jarního cloudu Azure** se spuštěnou aplikací, například [jarní cloudová aplikace](./spring-cloud-quickstart-launch-app-cli.md).
+
+> [!NOTE]
+>  Rozšíření ASC CLI je aktualizované z verze 0.2.0 na 0.2.1. Tato změna má vliv na syntaxi příkazu pro streamování protokolů: `az spring-cloud app log tail`, který je nahrazen: `az spring-cloud app logs`. Příkaz: `az spring-cloud app log tail` bude v budoucí verzi zastaralá. Pokud jste používali verzi 0.2.0, můžete upgradovat na 0.2.1. Nejdřív odeberte starou verzi pomocí příkazu: `az extension remove -n spring-cloud`.  Pak 0.2.1 nainstalujte pomocí příkazu: `az extension add -n spring-cloud`.
 
 ## <a name="use-cli-to-tail-logs"></a>Použít CLI pro protokoly Tail
 
@@ -33,7 +36,7 @@ V následujících příkladech bude v příkazech vynechána skupina prostředk
 ### <a name="tail-log-for-app-with-single-instance"></a>Protokol Tail pro aplikaci s jednou instancí
 Pokud má aplikace s názvem auth-Service pouze jednu instanci, můžete zobrazit protokol instance aplikace pomocí následujícího příkazu:
 ```
-az spring-cloud app log tail -n auth-service
+az spring-cloud app logs -n auth-service
 ```
 Tato akce vrátí protokoly:
 ```
@@ -66,7 +69,7 @@ auth-service-default-12-75cc4577fc-n25mh  Running   UP
 Pak můžete zasílat protokoly instance aplikace s možností `-i/--instance` možnosti:
 
 ```
-az spring-cloud app log tail -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
+az spring-cloud app logs -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
 
 Můžete také získat podrobnosti o instancích aplikace z Azure Portal.  Po výběru možnosti **aplikace** v levém navigačním podokně vaší jarní cloudové služby Azure vyberte **instance aplikací**.
@@ -75,11 +78,11 @@ Můžete také získat podrobnosti o instancích aplikace z Azure Portal.  Po v�
 Ve výchozím nastavení `az spring-cloud ap log tail` vytiskne pouze existující protokoly streamované do konzoly aplikace a pak se ukončí. Pokud chcete streamovat nové protokoly, přidejte-f (--Sledujte):  
 
 ```
-az spring-cloud app log tail -n auth-service -f
+az spring-cloud app logs -n auth-service -f
 ``` 
 Pro kontrolu všech podporovaných možností protokolování:
 ``` 
-az spring-cloud app log tail -h 
+az spring-cloud app logs -h 
 ```
 
 ## <a name="next-steps"></a>Další kroky

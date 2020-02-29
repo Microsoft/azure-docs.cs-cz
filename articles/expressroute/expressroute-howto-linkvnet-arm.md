@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 05/20/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 22e235b16f834198f5edc2f9365d2b13e1e9c49f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2685b9b519eaac453726f4923c46f1604cbd4681
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031738"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197823"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Připojení virtuální sítě k okruhu ExpressRoute
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [Video – Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [Video – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
 > * [PowerShell (Classic)](expressroute-howto-linkvnet-classic.md)
 >
 
@@ -30,18 +30,18 @@ Tento článek pomáhá propojení virtuálních sítí (Vnet) pro okruhy Azure 
 
 * Jedné virtuální sítě nesmí být propojení až čtyři okruhy ExpressRoute. Postupujte podle kroků v tomto článku vytvořte nový objekt připojení pro každý okruh ExpressRoute, ke kterému se připojujete. Okruhy ExpressRoute může být ve stejném předplatném, různá předplatná nebo kombinaci obou.
 
-* Můžete propojit virtuální sítě mimo geopolitické oblasti okruh ExpressRoute nebo připojit větší počet virtuálních sítí pro váš okruh ExpressRoute, pokud jste povolili doplněk ExpressRoute premium. Zkontrolujte, [nejčastější dotazy k](expressroute-faqs.md) podrobné informace o doplněk premium.
+* Můžete propojit virtuální sítě mimo geopolitické oblasti okruh ExpressRoute nebo připojit větší počet virtuálních sítí pro váš okruh ExpressRoute, pokud jste povolili doplněk ExpressRoute premium. Další podrobnosti o doplňku Premium najdete v [nejčastějších dotazech](expressroute-faqs.md) .
 
 
 ## <a name="before-you-begin"></a>Než začnete
 
-* Zkontrolujte [požadavky](expressroute-prerequisites.md), [požadavky směrování](expressroute-routing.md), a [pracovních postupů](expressroute-workflows.md) předtím, než začnete s konfigurací.
+* Než začnete s konfigurací, Projděte si [požadavky,](expressroute-prerequisites.md) [požadavky na směrování](expressroute-routing.md)a [pracovní postupy](expressroute-workflows.md) .
 
 * Musí mít aktivní okruh ExpressRoute. 
-  * Postupujte podle pokynů a [vytvořit okruh ExpressRoute](expressroute-howto-circuit-arm.md) a mějte ho povolený poskytovatel připojení. 
-  * Ujistěte se, že máte soukromého partnerského vztahu Azure nakonfigurovaný pro váš okruh. Zobrazit [konfigurace směrování](expressroute-howto-routing-arm.md) najdete pokyny pro směrování. 
+  * Podle pokynů [vytvořte okruh ExpressRoute](expressroute-howto-circuit-arm.md) a pořiďte okruh povolený vaším poskytovatelem připojení. 
+  * Ujistěte se, že máte soukromého partnerského vztahu Azure nakonfigurovaný pro váš okruh. Pokyny k směrování najdete v článku věnovaném [konfiguraci směrování](expressroute-howto-routing-arm.md) . 
   * Ověřte, že je nakonfigurovaný soukromého partnerského vztahu Azure a partnerského vztahu protokolu BGP mezi vaší sítí a Microsoftem nahoru tak, že povolíte připojení k začátku do konce.
-  * Ujistěte se, že máte virtuální síť a Brána virtuální sítě vytvořené a plně zřízený. Postupujte podle pokynů a [vytvořit bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Brána virtuální sítě pro ExpressRoute používá GatewayType "ExpressRoute", ne VPN.
+  * Ujistěte se, že máte virtuální síť a Brána virtuální sítě vytvořené a plně zřízený. Postupujte podle pokynů a [vytvořte bránu virtuální sítě pro ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Brána virtuální sítě pro ExpressRoute používá GatewayType "ExpressRoute", ne VPN.
 
 ### <a name="working-with-azure-powershell"></a>Práce s využitím Azure Powershellu
 
@@ -79,7 +79,7 @@ Vlastníka okruhu má schopnost upravovat dokumentů a odvolání přístupu aut
 
 ### <a name="circuit-owner-operations"></a>Operace vlastníka okruhu
 
-**Chcete-li vytvořit povolení**
+**Vytvoření autorizace**
 
 Vlastníka okruhu vytvoří autorizaci. Výsledkem je vytvoření autorizačního klíče, který je možné připojit své brány virtuální sítě k okruhu ExpressRoute uživatelem okruhu. Povolení platí jenom jedno připojení.
 
@@ -106,7 +106,7 @@ Odpověď na to bude obsahovat autorizační klíč a stav:
 
 
 
-**Ke kontrole autorizace**
+**Kontrola autorizací**
 
 Vlastníka okruhu můžete zkontrolovat všechny autorizace, které jsou vydány na konkrétní okruhu spuštěním následující rutiny:
 
@@ -115,7 +115,7 @@ $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 $authorizations = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit
 ```
 
-**Chcete-li přidat autorizace**
+**Přidání autorizací**
 
 Vlastníka okruhu můžete přidat autorizace pomocí následující rutiny:
 
@@ -128,7 +128,7 @@ $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 $authorizations = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit
 ```
 
-**Chcete-li odstranit autorizace**
+**Odstranění autorizací**
 
 Vlastníka okruhu můžete odvolání nebo odstranění autorizací uživateli spuštěním následující rutiny:
 
@@ -147,7 +147,7 @@ ID partnera můžete zkontrolovat pomocí následujícího příkazu:
 Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
-**Chcete-li uplatnit autorizaci připojení**
+**Uplatnění autorizace připojení**
 
 Uživatele okruhu spuštěním následující rutiny můžete uplatnit autorizaci odkaz:
 
@@ -157,16 +157,16 @@ $gw = Get-AzVirtualNetworkGateway -Name "ExpressRouteGw" -ResourceGroupName "MyR
 $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName "RemoteResourceGroup" -Location "East US" -VirtualNetworkGateway1 $gw -PeerId $id -ConnectionType ExpressRoute -AuthorizationKey "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 ```
 
-**K uvolnění ověření připojení**
+**Uvolnění autorizace připojení**
 
 Povolení můžete uvolnit tak, že odstraníte okruh ExpressRoute k virtuální síti, která odkazuje připojení.
 
 ## <a name="modify-a-virtual-network-connection"></a>Upravit připojení k virtuální síti
 Můžete aktualizovat některé vlastnosti připojení k virtuální síti. 
 
-**Chcete-li aktualizovat váhy připojení**
+**Aktualizace váhy připojení**
 
-Virtuální síť lze připojit k více okruhům ExpressRoute. Může se zobrazit stejné předpony z více než jeden okruh ExpressRoute. Zvolte připojení, které chcete posílat provoz určený pro tuto předponu můžete změnit *RoutingWeight* připojení. Provoz se pošle na připojení s nejvyšším *RoutingWeight*.
+Virtuální síť lze připojit k více okruhům ExpressRoute. Může se zobrazit stejné předpony z více než jeden okruh ExpressRoute. Pokud chcete zvolit připojení pro odesílání provozu určené pro tuto předponu, můžete změnit *RoutingWeight* připojení. Provoz se pošle na připojení s nejvyšší *RoutingWeight*.
 
 ```azurepowershell-interactive
 $connection = Get-AzVirtualNetworkGatewayConnection -Name "MyVirtualNetworkConnection" -ResourceGroupName "MyRG"
@@ -174,20 +174,25 @@ $connection.RoutingWeight = 100
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ```
 
-Rozsah *RoutingWeight* je od 0 do 32 000. Výchozí hodnota je 0.
+Rozsah *RoutingWeight* je 0 až 32000. Výchozí hodnota je 0.
 
 ## <a name="configure-expressroute-fastpath"></a>Konfigurace ExpressRoute FastPath 
 Můžete povolit [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) , pokud je váš okruh ExpressRoute v [ExpressRoute Direct](expressroute-erdirect-about.md) a Brána virtuální sítě je Ultra Performance nebo ErGw3AZ. FastPath vylepšuje výkon cesty k datům, jako jsou pakety za sekundu, a připojení za sekundu mezi vaší místní sítí a virtuální sítí. 
 
-> [!NOTE] 
-> Pokud už máte připojení k virtuální síti, ale nepovolili FastPath, musíte odstranit připojení k virtuální síti a vytvořit nový. 
-> 
->  
+**Konfigurace FastPath pro nové připojení**
 
 ```azurepowershell-interactive 
 $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG" 
 $gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG" 
 $connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
+``` 
+
+**Aktualizace existujícího připojení pro povolení FastPath**
+
+```azurepowershell-interactive 
+$connection = Get-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" 
+$connection.ExpressRouteGatewayBypass = $True
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ``` 
 
 ## <a name="next-steps"></a>Další kroky

@@ -2,20 +2,20 @@
 title: ClaimsTransformations-Azure Active Directory B2C | Microsoft Docs
 description: Definice prvku ClaimsTransformations ve schématu rozhraní identity Experience Framework Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 66c94f08638895c85836fda37c3ae61f3857ee51
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e71d521dce40f6a8ec81286fcc95dc97bf10078c
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76836690"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189732"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -51,7 +51,7 @@ Element **ClaimsTransformation** obsahuje následující prvky:
   </InputClaims>
   <InputParameters>
     ...
-  </InputParameters>                
+  </InputParameters>
   <OutputClaims>
     ...
   </OutputClaims>
@@ -59,21 +59,21 @@ Element **ClaimsTransformation** obsahuje následující prvky:
 ```
 
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | Seznam **InputClaim** prvků, které určují typy deklarací identity, které jsou pořízeny jako vstup pro transformaci deklarací. Každý z těchto prvků obsahuje odkaz na objekt ClaimType, který je již definován v části ClaimsSchema v zásadách. |
-| Parametry | 0:1 | Seznam **InputParameter** prvků, které jsou zadány jako vstup pro transformaci deklarací.  
+| Parametry | 0:1 | Seznam **InputParameter** prvků, které jsou zadány jako vstup pro transformaci deklarací.
 | OutputClaims | 0:1 | Seznam elementů **OutputClaim** , které určují typy deklarací, které jsou vytvářeny po vyvolání ClaimsTransformation. Každý z těchto elementů obsahuje odkaz na objekt ClaimType, který je již definován v oddílu ClaimsSchema. |
 
 ### <a name="inputclaims"></a>InputClaims
 
 Element **InputClaims** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| InputClaim | 1: n | Očekával se vstupní typ deklarace identity. |
+| inputClaim | 1: n | Očekával se vstupní typ deklarace identity. |
 
-#### <a name="inputclaim"></a>InputClaim
+#### <a name="inputclaim"></a>inputClaim
 
 Element **InputClaim** obsahuje následující atributy:
 
@@ -86,7 +86,7 @@ Element **InputClaim** obsahuje následující atributy:
 
 Element **vstupní parametry** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | InputParameter | 1: n | Očekával se vstupní parametr. |
 
@@ -102,11 +102,11 @@ Element **vstupní parametry** obsahuje následující element:
 
 Element **OutputClaims** obsahuje následující element:
 
-| Element | Výskytů | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
-| OutputClaim | 0: n | Očekával se výstupní typ deklarace identity. |
+| outputClaim | 0: n | Očekával se výstupní typ deklarace identity. |
 
-#### <a name="outputclaim"></a>OutputClaim 
+#### <a name="outputclaim"></a>outputClaim
 
 Element **OutputClaim** obsahuje následující atributy:
 
@@ -114,10 +114,10 @@ Element **OutputClaim** obsahuje následující atributy:
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | Ano | Odkaz na objekt ClaimType již definovaný v části ClaimsSchema v zásadách.
 | TransformationClaimType | Ano | Identifikátor, na který se má odkazovat typ deklarace transformace Každá transformace deklarace má své vlastní hodnoty. Úplný seznam dostupných hodnot najdete v [referenčních informacích o transformaci deklarací identity](#claims-transformations-reference) . |
- 
+
 Pokud vstupní deklarace identity a výstupní deklarace identity jsou stejného typu (řetězec nebo logická hodnota), můžete jako výstupní deklaraci identity použít stejnou vstupní deklaraci identity. V takovém případě transformace deklarací změní vstupní deklaraci na výstupní hodnotu.
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 
 Můžete například uložit poslední verzi vašich podmínek služby, kterou uživatel přijal. Když aktualizujete podmínky služeb, můžete požádat uživatele, aby přijal novou verzi. V následujícím příkladu transformace deklarací **HasTOSVersionChanged** porovnává hodnotu deklarace identity **TOSVersion** s hodnotou deklarace **LastTOSAcceptedVersion** a potom vrátí logickou deklaraci identity **TOSVersionChanged** .
 
@@ -159,12 +159,12 @@ Můžete například uložit poslední verzi vašich podmínek služby, kterou u
 
 Příklady transformací deklarací identity najdete na následujících odkazových stránkách:
 
-- [Datový typ Boolean](boolean-transformations.md)
+- [Datového](boolean-transformations.md)
 - [Datum](date-transformations.md)
 - [Čísla](integer-transformations.md)
 - [JSON](json-transformations.md)
 - [Obecné](general-transformations.md)
 - [Účet sociální sítě](social-transformations.md)
-- [řetězec](string-transformations.md)
+- [Řetezce](string-transformations.md)
 - [Třída StringCollection](stringcollection-transformations.md)
 

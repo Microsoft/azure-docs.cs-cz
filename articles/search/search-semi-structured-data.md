@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: indexování částečně strutured dat v objektech blob JSON'
+title: 'Kurz: indexování částečně strukturovaných dat v objektech blob JSON'
 titleSuffix: Azure Cognitive Search
 description: Naučte se indexovat a prohledávat částečně strukturované objekty blob služby Azure JSON pomocí Azure Kognitivní hledání rozhraní REST API a post.
 manager: nitinme
@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 0603ad1fbecf33e5880fd7f18d35af51795f8e39
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 02/28/2020
+ms.openlocfilehash: f025b3357943014a6d9c6e331c47f019fe94c5bf
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251987"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196939"
 ---
-# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>Kurz REST: indexování a hledání částečně strukturovaných dat (blobů JSON) v Azure Kognitivní hledání
+# <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Kurz: indexování objektů BLOB JSON z Azure Storage pomocí REST
 
 Azure Kognitivní hledání může indexovat dokumenty JSON a pole ve službě Azure Blob Storage s využitím [indexeru](search-indexer-overview.md) , který ví, jak číst částečně strukturovaná data. Částečně strukturovaná data obsahují značky nebo označení oddělující obsah v rámci dat. Rozdělí rozdíl mezi nestrukturovanými daty, která musí být plně indexována, a formálně strukturovaná data, která jsou v datovém modelu, například ve schématu relační databáze, která lze indexovat podle jednotlivých polí.
 
-V tomto kurzu použijete [rozhraní REST API pro Azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/) a klienta REST k provádění následujících úloh:
+V tomto kurzu se používá post a [rozhraní API REST pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/) k provádění následujících úloh:
 
 > [!div class="checklist"]
 > * Konfigurace zdroje dat služby Azure Kognitivní hledání pro kontejner objektů blob Azure
@@ -27,15 +27,18 @@ V tomto kurzu použijete [rozhraní REST API pro Azure kognitivní hledání](ht
 > * Konfigurace a spuštění indexeru pro čtení kontejneru a extrakce vyhledávaného obsahu z úložiště objektů BLOB v Azure
 > * Prohledávání právě vytvořeného indexu
 
-## <a name="prerequisites"></a>Požadavky
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-V tomto rychlém startu se používají následující služby, nástroje a data. 
+## <a name="prerequisites"></a>Předpoklady
 
-[Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento kurz můžete použít bezplatnou službu. 
++ [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
++ [Desktopová aplikace Postman](https://www.getpostman.com/)
++ [Vytvoření](search-create-service-portal.md) nebo [vyhledání existující vyhledávací služby](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
-[Vytvořte účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) pro ukládání ukázkových dat.
+> [!Note]
+> Pro tento kurz můžete použít bezplatnou službu. Bezplatná vyhledávací služba omezuje tři indexy, tři indexery a tři zdroje dat. V tomto kurzu se vytváří od každého jeden. Než začnete, ujistěte se, že máte ve své službě místo pro přijímání nových prostředků.
 
-[Aplikace po pracovní ploše](https://www.getpostman.com/) pro odesílání požadavků do Azure kognitivní hledání.
+## <a name="download-files"></a>Stažení souborů
 
 [Clinical-Trials-JSON. zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) obsahuje data použitá v tomto kurzu. Stáhnout a rozbalit tento soubor do vlastní složky. Data pocházejí z [ClinicalTrials.gov](https://clinicaltrials.gov/ct2/results), která jsou pro tento kurz převedená na JSON.
 
@@ -283,13 +286,27 @@ Pokud chcete, můžete experimentovat a vyzkoušet si sami několik dalších do
 
 Parametr `$filter` pracuje pouze s metadaty, která se při vytváření indexu označila jako filtrovatelná.
 
+## <a name="reset-and-rerun"></a>Resetování a opětovné spuštění
+
+Ve fázích předčasného experimentu vývoje je nejužitečnějším přístupem k iteraci návrhu odstranění objektů z Azure Kognitivní hledání a umožnění kódu jejich opětovného sestavení. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem.
+
+Portál můžete použít k odstranění indexů, indexerů a zdrojů dat. Nebo použijte **Delete** a poskytněte adresy URL pro každý objekt. Následující příkaz odstraní indexer.
+
+```http
+DELETE https://[YOUR-SERVICE-NAME].search.windows.net/indexers/clinical-trials-json-indexer?api-version=2019-05-06
+```
+
+Při úspěšném odstranění se vrátí kód stavu 204.
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejší způsob vyčištění po kurzu odstraněním skupiny prostředků, která obsahuje službu Azure Kognitivní hledání. Odstraněním skupiny prostředků teď můžete trvale odstranit všechno, co se v ní nachází. Na portálu je název skupiny prostředků na stránce Přehled služby Azure Kognitivní hledání.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které se na něm zbývá, můžou mít náklady na peníze. Prostředky můžete odstranit jednotlivě nebo odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
+
+Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 
 ## <a name="next-steps"></a>Další kroky
 
-Existuje několik přístupů a několik možností indexování objektů BLOB JSON. V dalším kroku si můžete projít a otestovat různé možnosti, abyste viděli, co nejlépe vyhovuje vašemu scénáři.
+Teď, když už jste obeznámení se základy indexování objektů BLOB v Azure, se podíváme na konfiguraci indexeru.
 
 > [!div class="nextstepaction"]
-> [Indexování objektů BLOB JSON pomocí indexeru Azure Kognitivní hledání BLOB](search-howto-index-json-blobs.md)
+> [Konfigurace indexeru služby Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)

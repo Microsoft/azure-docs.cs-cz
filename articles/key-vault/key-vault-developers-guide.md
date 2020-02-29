@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7991fcec42a81a74ead1a00784e2cec59997da57
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 331e3d5855e4ea1fc18a3b638741f6297a7a27d8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981537"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184668"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault příručka pro vývojáře
 
@@ -80,7 +81,7 @@ V Node. js rozhraní API pro správu Key Vault a rozhraní API pro Key Vault obj
 
 [Rozhraní příkazového řádku Azure pro Key Vault](/cli/azure/keyvault)
 
-#### <a name="azure-powershell"></a>Azure PowerShell 
+#### <a name="azure-powershell"></a>Azure Powershell 
 
 [Azure PowerShell pro Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
@@ -119,7 +120,7 @@ Tyto články se týkají dalších scénářů a služeb, které používají n
 
 - [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) využívá standardní funkci [nástroje BitLocker](https://technet.microsoft.com/library/cc732774.aspx) systému Windows a funkci [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systému Linux k poskytnutí šifrování svazku pro operační systém a datové disky. Řešení je integrované s Azure Key Vault, které vám pomůžou řídit a spravovat klíče a tajné kódy disku v předplatném trezoru klíčů, a přitom zajistit, aby všechna data v discích virtuálních počítačů byla v klidovém úložišti Azure šifrovaná.
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) poskytuje možnost šifrování dat uložených v účtu. Pro správu klíčů poskytuje Data Lake Store dva režimy pro správu hlavních šifrovacích klíčů (hlavních šifrovacích klíčů), které jsou potřeba k dešifrování všech dat uložených v Data Lake Store. Můžete buď nechat Data Lake Store spravovat hlavních šifrovacích klíčů za vás, nebo se rozhodnout zachovat vlastnictví hlavních šifrovacích klíčů pomocí účtu Azure Key Vault. Při vytváření Data Lake Store účtu zadáte režim správy klíčů.
-- [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) umožňuje správce vlastního klíče tenanta. Místo toho, aby váš klíč tenanta spravovala společnost Microsoft (výchozí možnost), můžete spravovat vlastní klíč tenanta, abyste vyhověli určitým předpisům, které se vztahují na vaši organizaci. Správa vlastního klíče tenanta se také označuje jako funkce Přineste si vlastní klíč (BYOK).
+- [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) umožňuje správce vlastního klíče tenanta. Místo toho, aby váš klíč tenanta spravovala společnost Microsoft (výchozí možnost), můžete spravovat vlastní klíč tenanta, abyste vyhověli určitým předpisům, které se vztahují na vaši organizaci. Správa vlastního klíče tenanta se také označuje jako Přineste si vlastní klíč nebo BYOK.
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault přehledy a koncepty
 
@@ -128,7 +129,7 @@ Tyto články se týkají dalších scénářů a služeb, které používají n
 - [Key Vault přehled klíčů účtu úložiště](key-vault-ovw-storage-keys.md) popisuje klíče Azure Storage účty Key Vault Integration.
 - [Key Vault Security světů](key-vault-ovw-security-worlds.md) popisuje vztahy mezi oblastmi a oblastmi zabezpečení.
 
-## <a name="social"></a>Sociální sítě
+## <a name="social"></a>Sociální
 
 - [Blog Key Vault](https://aka.ms/kvblog)
 - [Fórum Key Vault](https://aka.ms/kvforum)

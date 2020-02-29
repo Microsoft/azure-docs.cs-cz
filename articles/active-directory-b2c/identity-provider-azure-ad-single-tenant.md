@@ -3,21 +3,21 @@ title: Nastavení přihlášení pro organizaci Azure AD
 titleSuffix: Azure AD B2C
 description: Nastavte přihlášení pro konkrétní Azure Active Directory organizaci v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b0ff1c2d913d0a4402b491f3c84ce0d35cd081df
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 35fc4e1d64fa7df392fa878db14c0464da7dccf4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847586"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188303"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Nastavení přihlášení pro konkrétní organizaci Azure Active Directory v Azure Active Directory B2C
 
@@ -27,11 +27,11 @@ Pokud chcete jako [poskytovatele identity](authorization-code-flow.md) v Azure A
 
 Pokud chcete povolit přihlašování pro uživatele z konkrétní organizace Azure AD, musíte zaregistrovat aplikaci v tenantovi organizace Azure AD, která není stejná jako váš tenant Azure AD B2C.
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář, který obsahuje vašeho TENANTA Azure AD. Toto není stejný tenant jako tenant Azure AD B2C.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 4. Vyberte **Nová registrace**.
-5. Zadejte název své aplikace. Například, `Azure AD B2C App`.
+5. Zadejte název své aplikace. například `Azure AD B2C App`.
 6. Přijměte výběr **účtů v tomto organizačním adresáři pouze** pro tuto aplikaci.
 7. Pro **identifikátor URI přesměrování**přijměte hodnotu **Web**a zadejte následující adresu URL do všech malých písmen, kde se `your-B2C-tenant-name` nahradí názvem vašeho tenanta Azure AD B2C. Například `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`:
 
@@ -43,7 +43,7 @@ Pokud chcete povolit přihlašování pro uživatele z konkrétní organizace Az
 
 8. Klikněte na **zaregistrovat**. Zkopírujte **ID aplikace (klienta)** , které se má použít později.
 9. V nabídce aplikace vyberte **certifikáty & tajné klíče** a pak vyberte **nový tajný klíč klienta**.
-10. Zadejte název tajného klíče klienta. Například, `Azure AD B2C App Secret`.
+10. Zadejte název tajného klíče klienta. například `Azure AD B2C App Secret`.
 11. Vyberte období vypršení platnosti. Pro tuto aplikaci přijměte výběr **v 1 roce**.
 12. Vyberte **Přidat** a zkopírujte hodnotu nového tajného klíče klienta, který se zobrazí, aby se použil později.
 
@@ -59,7 +59,7 @@ Pokud chcete povolit přihlašování pro uživatele z konkrétní organizace Az
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
     ```
 
-    Například, `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
+    například `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`.
 
     **Nepoužívejte koncový** bod METADAT Azure AD v 2.0, například `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`. Výsledkem je, že při pokusu o přihlášení dojde k chybě, která je podobná `AADB2C: A claim with id 'UserId' was not found, which is required by ClaimsTransformation 'CreateAlternativeSecurityId' with id 'CreateAlternativeSecurityId' in policy 'B2C_1_SignUpOrIn' of tenant 'contoso.onmicrosoft.com'`.
 
@@ -75,4 +75,4 @@ Pokud chcete povolit přihlašování pro uživatele z konkrétní organizace Az
     * **Příjmení**: *family_name*
     * **E-mail**: *unique_name*
 
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).

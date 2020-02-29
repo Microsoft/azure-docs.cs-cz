@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 275fa173c5005c4d1609a858c8edb39b5c307c5e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2ec3276b9b02c29b80d46e5fd31298c909857182
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974610"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197160"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Distribuce licencí Widevine pro Azure Media Services pomocí Axinomu 
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "74974610"
 ## <a name="overview"></a>Přehled
 Azure Media Services (AMS) se přidala dynamická ochrana Google Widevine (podrobnosti najdete na [blogu Mingfei](https://azure.microsoft.com/blog/azure-media-services-adds-google-widevine-packaging-for-delivering-multi-drm-stream/) ). Kromě toho Azure Media Player (AMP) také přidal podporu Widevine (podrobnosti naleznete v [dokumentu amp](https://amp.azure.net/libs/amp/latest/docs/) ). Jedná se o zásadní úspěch při streamování obsahu, který je chráněný CENCem s využitím více nativních DRM (PlayReady a Widevine) v moderních prohlížečích vybavených pomocí programu MSE a EME.
 
-Počínaje verzí Media Services .NET SDK verze 3.5.2 umožňuje Media Services nakonfigurovat šablonu licence Widevine a získat licence Widevine. Licence Widevine vám také mohou doručit následující partneři AMS : [Axinom](https://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
+Počínaje verzí Media Services .NET SDK verze 3.5.2 umožňuje Media Services nakonfigurovat šablonu licence Widevine a získat licence Widevine. Licence Widevine vám také mohou doručit následující partneři AMS : [Axinom](https://www.axinom.com), [EZDRM](https://ezdrm.com/), [castLabs](https://castlabs.com/company/partners/azure/).
 
 Tento článek popisuje, jak integrovat a testovat licenční server Widevine spravovaný pomocí Axinom. Konkrétně to pokrývá:  
 
@@ -202,9 +202,9 @@ Následující parametry jsou vyžadovány ve zkráceném řešení, které vyu�
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Poskytnout zpětnou vazbu
+## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Poděkování
+### <a name="acknowledgments"></a>Potvrzení
 Chtěli bychom potvrdit následující lidi, kteří přispěli k vytváření tohoto dokumentu: Kristjan jõgi of Axinom, Mingfei Yan a Amit Rajput.
 

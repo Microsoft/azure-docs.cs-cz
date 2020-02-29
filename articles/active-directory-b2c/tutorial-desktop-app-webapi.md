@@ -2,20 +2,20 @@
 title: 'Kurz: poskytnutí přístupu k webovému rozhraní API Node. js z desktopové aplikace'
 description: Kurz týkající se použití Active Directory B2C k ochraně webového rozhraní API Node. js a jeho volání z desktopové aplikace .NET.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 10/12/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a72c45f80d03cda7b176c421cc5498dd16c242ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850038"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183366"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace pomocí Azure Active Directory B2C
 
@@ -29,7 +29,7 @@ V tomto kurzu se naučíte:
 > * Udělení oprávnění webovému rozhraní API
 > * Aktualizace ukázky pro použití aplikace
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky a požadavky v [kurzu: ověřování uživatelů v nativním klientském počítači](tutorial-desktop-app.md).
 
@@ -51,7 +51,7 @@ Chcete-li volat chráněné webové rozhraní API z nativní klientské aplikace
 
 V kurzu požadavků jste zaregistrovali nativní klientskou aplikaci s názvem *nativeapp1*. Následující postup nakonfiguruje registraci nativní aplikace pomocí oborů rozhraní API, které jste vystavili pro *webapi1* v předchozí části. To umožňuje aplikaci klasické pracovní plochy získat přístupový token z Azure AD B2C, kterou může webové rozhraní API použít k ověření a poskytování vymezeného přístupu k prostředkům. V tomto kurzu nakonfigurujete a spustíte i ukázky kódu desktopové aplikace i webové rozhraní API.
 
-#### <a name="applicationstabapplications"></a>[Aplikace](#tab/applications/)
+#### <a name="applications"></a>[Aplikace](#tab/applications/)
 
 1. Vyberte **aplikace**a pak vyberte *nativeapp1*.
 1. Vyberte **přístup přes rozhraní API**a pak vyberte **Přidat**.
@@ -59,7 +59,7 @@ V kurzu požadavků jste zaregistrovali nativní klientskou aplikaci s názvem *
 1. V rozevíracím seznamu **Vybrat obory** vyberte obory, které jste definovali dříve. Například *demo. Read* a *demo. Write*.
 1. Vyberte **OK**.
 
-#### <a name="app-registrations-previewtabapp-reg-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
 1. Vyberte **Registrace aplikací (Preview)** a pak vyberte nativní klientskou aplikaci, která by měla mít přístup k rozhraní API. Například *nativeapp1*.
 1. V části **Spravovat**vyberte **oprávnění rozhraní API**.

@@ -1,6 +1,6 @@
 ---
 title: Doprovodné materiály k návrhu distribuovaných tabulek
-description: Doporučení pro návrh distribuovaných tabulek distribuovaných v Azure SQL Data Warehouse a kruhové dotazování ve třídě
+description: Doporučení pro návrh distribuovaných tabulek a kruhové dotazování v SQL Analytics, které jsou distribuovány algoritmem hash.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: development
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 025c60485625a4ab4d2e29b1e81d8574f6187b93
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.custom: azure-synapse
+ms.openlocfilehash: 3a07dd6ccd5d0bf3440df21b2af4e67cbcf663c9
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049120"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199440"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Pokyny pro návrh distribuovaných tabulek v Azure SQL Data Warehouse
-Doporučení pro návrh distribuovaných tabulek distribuovaných v Azure SQL Data Warehouse a kruhové dotazování ve třídě
+# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>Pokyny pro návrh distribuovaných tabulek v SQL Analytics
+Doporučení pro návrh distribuovaných tabulek a kruhové dotazování v SQL Analytics, které jsou distribuovány algoritmem hash.
 
-Tento článek předpokládá, že máte zkušenosti s koncepty distribuce dat a přesunu dat v SQL Data Warehouse.  Další informace naleznete v tématu [Azure SQL Data Warehouse – výkonné paralelní zpracování (MPP)](massively-parallel-processing-mpp-architecture.md). 
+Tento článek předpokládá, že máte zkušenosti s koncepty distribuce dat a přesunu dat v SQL Analytics.  Další informace najdete v tématu [Architektura služby SQL Analytics pro hromadně paralelní zpracování (MPP)](massively-parallel-processing-mpp-architecture.md). 
 
 ## <a name="what-is-a-distributed-table"></a>Co je distribuovaná tabulka?
 Distribuovaná tabulka se zobrazí jako jediná tabulka, ale tyto řádky jsou ve skutečnosti uloženy v rámci 60 distribucí. Řádky jsou distribuovány pomocí algoritmu hash nebo kruhového dotazování.  
@@ -34,7 +34,7 @@ Jako součást návrhu tabulky Pochopte co nejvíce dat a způsob dotazování n
 
 - Jak velká je tabulka?   
 - Jak často je tabulka aktualizována?   
-- Mám v datovém skladu moje tabulky faktů a dimenzí?   
+- Mám tabulky faktů a dimenzí v databázi SQL Analytics?   
 
 
 ### <a name="hash-distributed"></a>Hodnota hash distribuována
@@ -42,7 +42,7 @@ Tabulka distribuovaná algoritmem hash distribuuje řádky tabulky napříč vý
 
 ![Distribuovaná tabulka](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "Distribuovaná tabulka")  
 
-Vzhledem k tomu, že identické hodnoty vždycky vycházejí z hodnoty hash na stejnou distribuci, má datový sklad integrované znalosti o umístěních řádků. SQL Data Warehouse využívá tyto znalosti k minimalizaci přesunu dat během dotazů, což zvyšuje výkon dotazů. 
+Vzhledem k tomu, že identické hodnoty vždycky vycházejí z hodnoty hash na stejnou distribuci, SQL Analytics má integrované znalosti o umístěních řádků. SQL Analytics používá toto poznatky k minimalizaci přesunu dat během dotazů, což zvyšuje výkon dotazů. 
 
 Tabulky distribuované pomocí algoritmu hash fungují dobře u velkých tabulek faktů ve schématu hvězdičky. Mohou mít velmi velký počet řádků a stále dosahovat vysokého výkonu. K dispozici jsou samozřejmě některé faktory návrhu, které vám pomohou získat výkon, který je distribuován distribuovaným systémům. Výběr dobrého distribučního sloupce je jedním z těchto aspektů, které jsou popsány v tomto článku. 
 
@@ -65,7 +65,7 @@ V následujících scénářích zvažte použití distribuce kruhového dotazov
 - Pokud je spojení méně významné než jiné spojení v dotazu
 - Když je tabulka dočasná pracovní tabulka
 
-V tomto kurzu se [načítají data o New Yorku taxislužby města, která Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) poskytují příklad načtení dat do pracovní tabulky kruhového dotazování.
+Kurz [načtení dat New York taxislužby města](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) poskytuje příklad načtení dat do pracovní tabulky kruhového dotazování v SQL Analytics.
 
 
 ## <a name="choosing-a-distribution-column"></a>Výběr distribučního sloupce
@@ -109,7 +109,7 @@ Pro vyrovnávání paralelního zpracování vyberte distribuční sloupec, kter
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Výběr distribučního sloupce, který minimalizuje pohyb dat
 
-Chcete-li získat správné dotazy na výsledky dotazu, může přesunout data z jednoho výpočetního uzlu do jiného. K přesunu dat často dochází, když dotazy mají spojení a agregace v distribuovaných tabulkách. Výběr distribučního sloupce, který pomáhá minimalizovat pohyb dat, je jedním z nejdůležitějších strategií pro optimalizaci výkonu SQL Data Warehouse.
+Chcete-li získat správné dotazy na výsledky dotazu, může přesunout data z jednoho výpočetního uzlu do jiného. K přesunu dat často dochází, když dotazy mají spojení a agregace v distribuovaných tabulkách. Výběr distribučního sloupce, který pomáhá minimalizovat pohyb dat, je jedním z nejdůležitějších strategií pro optimalizaci výkonu databáze SQL Analytics.
 
 Chcete-li snížit pohyb dat, vyberte distribuční sloupec:
 
@@ -217,7 +217,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Chcete-li vytvořit distribuovanou tabulku, použijte jeden z následujících příkazů:
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE jako SELECT (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (analýza SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE jako SELECT (analýza SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

@@ -1,32 +1,31 @@
 ---
 title: Místo ETL ELT design
-description: Místo ETL Navrhněte proces extrakce, načítání a transformace (ELT) pro načítání dat nebo Azure SQL Data Warehouse.
+description: Implementace flexibilních strategií načítání dat pro SQL Analytics v rámci Azure synapse Analytics
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 11/07/2019
+ms.date: 02/19/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 9220bf0cf94eaae6ddc945e83deac2a6041158d2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.custom: azure-synapse
+ms.openlocfilehash: bd356fba557d61f083e811c8763b4e7cf9805fbb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748521"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199933"
 ---
-# <a name="data-loading-strategies-for-azure-sql-data-warehouse"></a>Strategie načítání dat pro Azure SQL Data Warehouse
+# <a name="data-loading-strategies-for-data-warehousing"></a>Strategie načítání dat pro datové sklady
 
-Tradiční datové sklady SMP používají proces extrakce, transformace a načítání (ETL) pro načítání dat. Azure SQL Data Warehouse je rozsáhlá architektura paralelního zpracování (MPP), která využívá škálovatelnost a flexibilitu výpočetních prostředků a prostředků úložiště. Použití procesu extrakce, načítání a transformace (ELT) může využít funkce MPP a eliminace prostředků potřebných k transformaci dat před jejich načtením. I když SQL Data Warehouse podporuje mnoho metod načítání, včetně oblíbených možností SQL Server, jako je BCP a SQL BulkCopy API, nejrychlejší a nejškálovatelný způsob načítání dat je prostřednictvím základních externích tabulek a [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (Preview).  Pomocí základu a příkazu Kopírovat můžete přistupovat k externím datům uloženým ve službě Azure Blob Storage nebo Azure Data Lake Store prostřednictvím jazyka T-SQL. Pro největší flexibilitu při nasazování do SQL Data Warehouse doporučujeme použít příkaz COPY. 
+Tradiční datové sklady SMP používají proces extrakce, transformace a načítání (ETL) pro načítání dat. Fondy SQL ve službě Azure synapse Analytics mají architekturu programu MPP (COMPUTE Parallel Processing), která využívá škálovatelnost a flexibilitu výpočetních a úložných prostředků. Použití procesu extrakce, načítání a transformace (ELT) může využít funkce MPP a eliminace prostředků potřebných k transformaci dat před jejich načtením. I když fondy SQL podporují mnoho metod načítání, včetně oblíbených SQL Server možností, jako je BCP a SQL BulkCopy API, nejrychlejší a nejškálovatelný způsob načítání dat je prostřednictvím základních externích tabulek a [příkazu copy](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (Preview). Pomocí základu a příkazu Kopírovat můžete přistupovat k externím datům uloženým ve službě Azure Blob Storage nebo Azure Data Lake Store prostřednictvím jazyka T-SQL. Pro největší flexibilitu při nasazování doporučujeme použít příkaz COPY.
 
 > [!NOTE]  
 > Příkaz COPY je aktuálně ve verzi Public Preview. Pokud chcete poskytnout zpětnou vazbu, odešlete e-mail na následující distribuční seznam: sqldwcopypreview@service.microsoft.com.
->
-        
- 
+
+
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
 
@@ -34,17 +33,17 @@ Tradiční datové sklady SMP používají proces extrakce, transformace a nač�
 
 Extrahování, načítání a transformace (ELT) je proces, při kterém jsou data extrahována ze zdrojového systému, načtena do datového skladu a následně transformována. 
 
-Základní kroky pro implementaci ELT pro SQL Data Warehouse jsou:
+Základní kroky pro implementaci ELT jsou:
 
 1. Extrahujte zdrojová data do textových souborů.
 2. Nakládat data do služby Azure Blob Storage nebo Azure Data Lake Store.
 3. Připravte data pro načtení.
-4. Načtěte data do SQL Data Warehouse přípravných tabulek pomocí základu nebo příkazu pro kopírování. 
+4. Načtěte data do pracovních tabulek pomocí základu nebo příkazu pro kopírování. 
 5. Transformujte data.
 6. Vložte data do provozních tabulek.
 
 
-Kurz pro načítání základních údajů najdete v tématu [použití základny k načtení dat z úložiště objektů BLOB v Azure do Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
+Kurz pro načítání základních údajů najdete v tématu [použití základny k načítání dat z úložiště objektů BLOB v Azure](load-data-from-azure-blob-storage-using-polybase.md).
 
 Další informace najdete v tématu [načítání vzorů na blogu](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/). 
 
@@ -63,14 +62,14 @@ Pokud chcete data z Azure Storage nakládat, můžete je přesunout do služby [
 
 Nástroje a služby, které můžete použít k přesunu dat do Azure Storage:
 
-- Služba [Azure ExpressRoute](../expressroute/expressroute-introduction.md) vylepšuje propustnost, výkon a předvídatelnost sítě. ExpressRoute je služba, která směruje vaše data prostřednictvím vyhrazeného privátního připojení k Azure. Připojení ExpressRoute nesměrují data prostřednictvím veřejného Internetu. Připojení nabízejí spolehlivější, rychlejší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes veřejný Internet.
+- Služba [Azure ExpressRoute](../expressroute/expressroute-introduction.md) vylepšuje propustnost, výkon a předvídatelnost sítě. ExpressRoute je služba, která směruje vašich dat pomocí vyhrazeného soukromého připojení k Azure. Připojení ExpressRoute nesměrují data prostřednictvím veřejného Internetu. Připojení nabízejí spolehlivější, rychlejší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes veřejný Internet.
 - [Nástroj AzCopy](../storage/common/storage-moving-data.md) přesouvá data Azure Storage přes veřejný Internet. To funguje, pokud jsou velikosti vašich dat menší než 10 TB. Pokud chcete pravidelně provádět zátěž s AZCopy, otestujte rychlost sítě a zjistěte, jestli je přijatelné. 
-- [Azure Data Factory (ADF)](../data-factory/introduction.md) má bránu, kterou můžete nainstalovat na svůj místní server. Pak můžete vytvořit kanál pro přesun dat z místního serveru až do Azure Storage. Pokud chcete použít Data Factory s SQL Data Warehouse, přečtěte si téma [načtení dat do SQL Data Warehouse](/azure/data-factory/load-azure-sql-data-warehouse).
+- [Azure Data Factory (ADF)](../data-factory/introduction.md) má bránu, kterou můžete nainstalovat na svůj místní server. Pak můžete vytvořit kanál pro přesun dat z místního serveru až do Azure Storage. Pokud chcete použít Data Factory s analýzou SQL, přečtěte si téma [načítání dat pro SQL Analytics](/azure/data-factory/load-azure-sql-data-warehouse).
 
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. Příprava dat pro načtení
 
-Před načtením do SQL Data Warehouse možná budete muset data v účtu úložiště připravit a vyčistit. Přípravu dat lze provést, pokud jsou data ve zdroji, protože exportujete data do textových souborů nebo když jsou data v Azure Storage.  Je nejjednodušší pracovat s daty co nejdříve v tomto procesu.  
+Možná budete muset před načtením připravit a vyčistit data v účtu úložiště. Přípravu dat lze provést, pokud jsou data ve zdroji, protože exportujete data do textových souborů nebo když jsou data v Azure Storage.  Je nejjednodušší pracovat s daty co nejdříve v tomto procesu.  
 
 ### <a name="define-external-tables"></a>Definovat externí tabulky
 
@@ -81,32 +80,32 @@ Definování externích tabulek zahrnuje určení zdroje dat, formátu textovýc
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?view=azure-sqldw-latest)
 - [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest)
 
-Při načítání Parquet je mapování datových typů s SQL DW:
+Při načítání Parquet je mapování datových typů SQL:
 
-| **Datový typ Parquet** |                      **Datový typ SQL**                       |
-| :-------------------: | :----------------------------------------------------------: |
-|        tinyint        |                           tinyint                            |
-|       smallint        |                           smallint                           |
-|          int          |                             int                              |
-|        bigint         |                            bigint                            |
-|        Boolean        |                             40bitového                              |
-|        double         |                            float                             |
-|         float         |                             nemovitostí                             |
-|        double         |                            papír                             |
-|        double         |                          smallmoney                          |
-|        řetězec         |                            nchar                             |
-|        řetězec         |                           nvarchar                           |
-|        řetězec         |                             char                             |
-|        řetězec         |                           varchar                            |
-|        Tvaru         |                            Tvaru                            |
-|        Tvaru         |                          varbinary                           |
-|       časové razítko       |                             date                             |
-|       časové razítko       |                        smalldatetime                         |
-|       časové razítko       |                          datetime2                           |
-|       časové razítko       |                           datetime                           |
-|       časové razítko       |                             time                             |
-|       date            |                             date                             |
-|        decimal        |                            decimal                           |
+| **Datový typ Parquet** | **Datový typ SQL** |
+| :-------------------: | :---------------: |
+|        tinyint        |      tinyint      |
+|       smallint        |     smallint      |
+|          int          |        int        |
+|        bigint         |      bigint       |
+|        Boolean        |        bit        |
+|        double         |       float       |
+|         float         |       real        |
+|        double         |       money       |
+|        double         |    smallmoney     |
+|        řetězec         |       nchar       |
+|        řetězec         |     nvarchar      |
+|        řetězec         |       char        |
+|        řetězec         |      varchar      |
+|        binary         |      binary       |
+|        binary         |     Varbinary     |
+|       časové razítko       |       date        |
+|       časové razítko       |   smalldatetime   |
+|       časové razítko       |     datetime2     |
+|       časové razítko       |     datetime      |
+|       časové razítko       |       time        |
+|         date          |       date        |
+|        decimal        |      decimal      |
 
 Příklad vytváření externích objektů naleznete v kroku [Vytvoření externích tabulek](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) v kurzu načítání.
 
@@ -116,13 +115,13 @@ Pokud používáte základnu, externí objekty definovány musí zarovnat řádk
 Formátování textových souborů:
 
 - Pokud vaše data pocházejí z nerelačního zdroje, je nutné je transformovat na řádky a sloupce. Bez ohledu na to, jestli jsou data z relačního nebo nerelačního zdroje, musí být data transformovaná tak, aby odpovídala definicím sloupců pro tabulku, do které plánujete načíst data. 
-- Naformátujte data v textovém souboru tak, aby odpovídala sloupcům a datovým typům v cílové tabulce SQL Data Warehouse. Chybné zarovnání mezi datovými typy v externích textových souborech a v tabulce datového skladu způsobí, že se řádky během načítání odmítnou.
+- Umožňuje formátovat data v textovém souboru tak, aby odpovídala sloupcům a datovým typům v cílové tabulce. Chybné zarovnání mezi datovými typy v externích textových souborech a v tabulce datového skladu způsobí, že se řádky během načítání odmítnou.
 - Oddělte pole v textovém souboru ukončovacím znakem.  Nezapomeňte použít znak nebo sekvenci znaků, které se ve zdrojových datech nenašly. Použijte ukončovací znak, který jste zadali pomocí nástroje [Create External File Format](/sql/t-sql/statements/create-external-file-format-transact-sql).
 
 
-## <a name="4-load-the-data-into-sql-data-warehouse-staging-tables-using-polybase-or-the-copy-statement"></a>4. načtěte data do SQL Data Warehouse přípravných tabulek pomocí základu nebo příkazu COPY.
+## <a name="4-load-the-data-using-polybase-or-the-copy-statement"></a>4. načtěte data pomocí základu nebo příkazu COPY.
 
-Osvědčeným postupem je načíst data do pracovní tabulky. Pracovní tabulky umožňují zpracovávat chyby bez rušivého vlivu na provozní tabulky. Pracovní tabulka vám také umožní použít SQL Data Warehouse MPP pro transformaci dat před vložením dat do provozních tabulek. Tabulka bude muset být vytvořena předem při načítání do pracovní tabulky s kopií.
+Osvědčeným postupem je načíst data do pracovní tabulky. Pracovní tabulky umožňují zpracovávat chyby bez rušivého vlivu na provozní tabulky. Přípravná tabulka vám také nabídne možnost použít MPP fondu SQL pro transformaci dat před vložením dat do provozních tabulek. Tabulka bude muset být vytvořena předem při načítání do pracovní tabulky s kopií.
 
 ### <a name="options-for-loading-with-polybase-and-copy-statement"></a>Možnosti pro načtení pomocí příkazu Base a COPY
 
@@ -131,11 +130,11 @@ Chcete-li načíst data pomocí základu, můžete použít některou z těchto 
 - [Základ T-SQL](load-data-from-azure-blob-storage-using-polybase.md) funguje dobře, když jsou vaše data ve službě Azure Blob storage nebo Azure Data Lake Store. Poskytuje vám největší kontrolu nad procesem načítání, ale také vyžaduje, abyste definovali externí datové objekty. Ostatní metody definují tyto objekty na pozadí při mapování zdrojových tabulek na cílové tabulky.  K orchestraci načtení T-SQL můžete použít Azure Data Factory, SSIS nebo Azure Functions. 
 - [Základna s SSIS](/sql/integration-services/load-data-to-sql-data-warehouse) funguje dobře, když jsou vaše zdrojová data v SQL Server, a to buď SQL Server místně, nebo v cloudu. SSIS definuje mapování zdrojového do cílové tabulky a také toto zatížení orchestruje. Pokud již máte balíčky SSIS, můžete je upravit tak, aby fungovaly s novým cílem datového skladu. 
 - [Příkaz Base a copy s Azure Data Factory (ADF)](sql-data-warehouse-load-with-data-factory.md) je další nástroj Orchestration.  Definuje kanál a plánuje úlohy. 
-- [Základna s Azure Databricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) přenáší data z tabulky SQL Data Warehouse do datacihly datacihly nebo zapisuje data z datového rámce datacihly do tabulky SQL Data Warehouse pomocí základu.
+- [Základna s Azure Databricks](../azure-databricks/databricks-extract-load-sql-data-warehouse.md) přenáší data z tabulky do datacihly datacihly nebo zapisuje data z datového rámce datacihly do tabulky pomocí základu.
 
 ### <a name="other-loading-options"></a>Další možnosti načítání
 
-Kromě základu a příkazu COPY můžete použít [BCP](/sql/tools/bcp-utility?view=azure-sqldw-latest) nebo [rozhraní SqlBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP se načítá přímo do SQL Data Warehouse bez přechodu přes úložiště objektů BLOB v Azure a je určený jenom pro malé zátěže. Všimněte si, že výkon zatížení těchto možností je pomalejší než základ a příkaz COPY. 
+Kromě základu a příkazu COPY můžete použít [BCP](/sql/tools/bcp-utility?view=azure-sqldw-latest) nebo [rozhraní SqlBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx). BCP se načítá přímo do databáze bez přechodu přes úložiště objektů BLOB v Azure a je určený jenom pro malé zátěže. Všimněte si, že výkon zatížení těchto možností je pomalejší než základ a příkaz COPY. 
 
 
 ## <a name="5-transform-the-data"></a>5. Transformujte data
@@ -157,6 +156,4 @@ Mnohé z našich partnerů načítají řešení. Pokud se chcete dozvědět ví
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokyny k načtení najdete v tématu [doprovodné materiály k načtení dat](guidance-for-loading-data.md).
-
-
+Pokyny k načítání najdete v tématu [Doprovodné materiály k načítání dat](guidance-for-loading-data.md).

@@ -3,20 +3,20 @@ title: Migrace webových rozhraní API založených na OWIN do b2clogin.com
 titleSuffix: Azure AD B2C
 description: Naučte se, jak povolit rozhraní Web API .NET pro podporu tokenů vydaných více vystaviteli tokenů při migraci aplikací do b2clogin.com.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5daf88e746ea803f345c79bd31d656f2615b6754
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76840396"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184090"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>Migrace webového rozhraní API založeného na OWIN na b2clogin.com
 
@@ -29,7 +29,7 @@ V následujících částech najdete příklad povolení více vystavitelů ve w
 > [!NOTE]
 > Tento článek je určený pro Azure AD B2C zákazníky s aktuálně nasazenými rozhraními API a aplikacemi, které odkazují `login.microsoftonline.com` a kteří chtějí migrovat na doporučený `b2clogin.com` koncový bod. Pokud nastavujete novou aplikaci, použijte [b2clogin.com](b2clogin.md) jako směrovaný.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Než budete pokračovat v krocích v tomto článku, budete potřebovat následující Azure AD B2C prostředky:
 
@@ -88,7 +88,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 V této části aktualizujete kód a určíte, že oba koncové body vystavitele tokenu jsou platné.
 
 1. Otevřete řešení **B2C-WebApi-dotnet. sln** v aplikaci Visual Studio
-1. V projektu **TaskService** otevřete soubor *TaskService\\app_start\\**Startup.auth.cs**.* v editoru.
+1. V projektu **TaskService** otevřete soubor *TaskService\\app_start\\* * Startup.auth.cs** * v editoru.
 1. Do horní části souboru přidejte následující direktivu `using`:
 
     `using System.Collections.Generic;`
@@ -123,7 +123,7 @@ Jak už bylo zmíněno dříve, jiné knihovny OWIN obvykle poskytují podobnou 
 
 U obou identifikátorů URI, které teď podporuje vaše webové rozhraní API, teď potřebujete aktualizovat webovou aplikaci tak, aby se z koncového bodu b2clogin.com načítat tokeny.
 
-Například můžete nakonfigurovat ukázkovou webovou aplikaci tak, aby používala nový koncový bod úpravou `ida:AadInstance` hodnoty v souboru *TaskWebApp\\**Web. config**.* v projektu **TaskWebApp** .
+Například můžete nakonfigurovat ukázkovou webovou aplikaci tak, aby používala nový koncový bod změnou hodnoty `ida:AadInstance` v souboru **TaskWebApp** ** * Web. config * * TaskWebApp\\** *.
 
 Změňte `ida:AadInstance` hodnotu v *souboru Web. config* pro TaskWebApp tak, aby odkazovala `{your-b2c-tenant-name}.b2clogin.com` namísto `login.microsoftonline.com`.
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 1e977d927a301bee4be6cf3856114692542981b4
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: bc31a4197b08cbeb1a99820d7ff490f20147c7bf
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621205"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191261"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Kurz: Nasazení clusteru Azure Kubernetes Service (AKS)
 
@@ -43,6 +43,8 @@ az aks create \
     --generate-ssh-keys \
     --attach-acr <acrName>
 ```
+
+Instanční objekt můžete také ručně nakonfigurovat pro vyžádání imagí z ACR. Další informace najdete v tématech [ověřování ACR pomocí instančních objektů](../container-registry/container-registry-auth-service-principal.md) nebo [ověřování z Kubernetes s tajným klíčem pro vyžádání](../container-registry/container-registry-auth-kubernetes.md)obsahu.
 
 Po několika minutách se nasazení dokončí a vrátí informace ve formátu JSON o nasazení AKS.
 

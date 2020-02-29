@@ -10,22 +10,22 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3cc2f140eeed0a4667a01aa8c5ccbad7e4411521
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: abeb5c125a746842f522030878f93941450df974
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686001"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78200545"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu pomocí seřazeného clusterovaného indexu columnstore  
 
-Když uživatelé dotazují tabulku columnstore v Azure SQL Data Warehouse, Optimalizátor zkontroluje minimální a maximální hodnoty uložené v jednotlivých segmentech.  Segmenty mimo hranice predikátu dotazu se nečtou z disku do paměti.  Dotaz může dosáhnout rychlejšího výkonu, pokud je počet čtených segmentů a jejich celková velikost malá.   
+Když uživatelé dotazují tabulku columnstore ve službě SQL Analytics, Optimalizátor zkontroluje minimální a maximální hodnoty uložené v jednotlivých segmentech.  Segmenty mimo hranice predikátu dotazu se nečtou z disku do paměti.  Dotaz může dosáhnout rychlejšího výkonu, pokud je počet čtených segmentů a jejich celková velikost malá.   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Seřazený a neuspořádaný clusterovaný index columnstore 
-Ve výchozím nastavení se pro každou tabulku Azure Data Warehouse vytvořenou bez možnosti indexu vytvoří interní komponenta (Tvůrce indexů) neuspořádaný clusterovaný index columnstore (Ski).  Data v jednotlivých sloupcích jsou komprimována do samostatného segmentu skupiny řádků Ski.  V rozsahu hodnot každého segmentu jsou metadata, takže segmenty, které jsou mimo hranice predikátu dotazu, se při provádění dotazu nečtou z disku.  Ski nabízí nejvyšší úroveň komprese dat a snižuje velikost segmentů ke čtení, aby dotazy mohly běžet rychleji. Vzhledem k tomu, že tvůrce indexů neřadí data před jejich komprimací do segmentů, může dojít k segmentům s překrývajícími se rozsahy hodnot, což způsobilo, že dotazy budou číst více segmentů z disku a trvá déle.  
+Ve výchozím nastavení pro každou tabulku SQL Analytics vytvořenou bez možnosti indexu vytvoří interní komponenta (Tvůrce indexů) neuspořádaný clusterovaný index columnstore (Ski).  Data v jednotlivých sloupcích jsou komprimována do samostatného segmentu skupiny řádků Ski.  V rozsahu hodnot každého segmentu jsou metadata, takže segmenty, které jsou mimo hranice predikátu dotazu, se při provádění dotazu nečtou z disku.  Ski nabízí nejvyšší úroveň komprese dat a snižuje velikost segmentů ke čtení, aby dotazy mohly běžet rychleji. Vzhledem k tomu, že tvůrce indexů neřadí data před jejich komprimací do segmentů, může dojít k segmentům s překrývajícími se rozsahy hodnot, což způsobilo, že dotazy budou číst více segmentů z disku a trvá déle.  
 
-Při vytváření seřazené instrukce Azure SQL Data Warehouse modul seřadí existující data z paměti pomocí klíčů, než je tvůrce indexů komprimuje do segmentů indexu.  U seřazených dat je segment překrývající se snížen, takže dotazy mají efektivnější odstraňování segmentů, což znamená rychlejší výkon, protože počet segmentů ke čtení z disku je menší.  Pokud se všechna data dají řadit v paměti najednou, můžete se vyhnout překrývání segmentu.  V případě velké velikosti dat v tabulkách datového skladu k tomuto scénáři nedochází často.  
+Při vytváření seřazené konzulární instrukce seřadí modul SQL Analytics existující data z paměti pomocí klíčů, než je tvůrce indexů komprimuje na segmenty indexu.  U seřazených dat je segment překrývající se snížen, takže dotazy mají efektivnější odstraňování segmentů, což znamená rychlejší výkon, protože počet segmentů ke čtení z disku je menší.  Pokud se všechna data dají řadit v paměti najednou, můžete se vyhnout překrývání segmentu.  K tomuto scénáři nedochází často v případě velké velikosti dat v tabulkách SQL Analytics.  
 
 Chcete-li kontrolovat rozsahy segmentů pro sloupec, spusťte tento příkaz s názvem tabulky a názvem sloupce:
 
@@ -44,7 +44,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> V seřazené tabulce Ski se v rámci této dávky seřadí nová data, která jsou výsledkem stejné dávky operací DML nebo načítání dat, ale neexistují žádná globální řazení napříč všemi daty v tabulce.  Uživatelé mohou znovu sestavit uspořádanou INSTRUKCi pro řazení všech dat v tabulce.  V Azure SQL Data Warehouse je opětovné sestavení indexu columnstore operací offline.  Pro dělenou tabulku je opětovné sestavení provedeno po jednom oddílu.  Data v oddílu, který se má znovu sestavit, jsou "offline" a nejsou k dispozici, dokud není znovu dokončeno opětovné sestavení pro tento oddíl. 
+> V seřazené tabulce Ski se v rámci této dávky seřadí nová data, která jsou výsledkem stejné dávky operací DML nebo načítání dat, ale neexistují žádná globální řazení napříč všemi daty v tabulce.  Uživatelé mohou znovu sestavit uspořádanou INSTRUKCi pro řazení všech dat v tabulce.  Ve službě SQL Analytics je opětovné sestavení indexu columnstore operací offline.  Pro dělenou tabulku je opětovné sestavení provedeno po jednom oddílu.  Data v oddílu, který se má znovu sestavit, jsou "offline" a nejsou k dispozici, dokud není znovu dokončeno opětovné sestavení pro tento oddíl. 
 
 ## <a name="query-performance"></a>Výkon dotazů
 
@@ -110,7 +110,7 @@ CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX O
 AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
-- Před jejich nařazením do Azure SQL Data Warehouse tabulek předem Seřaďte data pomocí klíčů řazení.
+- Před jejich nařazením do tabulek SQL Analytics předem Seřaďte data pomocí klíčů řazení.
 
 
 Tady je příklad uspořádané distribuce tabulek Ski, která má nulový segment překrývající se nad doporučeními. Seřazená tabulka Ski je vytvořená v databázi DWU1000c prostřednictvím CTAS z tabulky haldy 20 GB s použitím MAXDOP 1 a xlargerc.  INSTRUKCE je seřazená na sloupec typu BIGINT bez duplicit.  
@@ -120,12 +120,12 @@ Tady je příklad uspořádané distribuce tabulek Ski, která má nulový segme
 ## <a name="create-ordered-cci-on-large-tables"></a>Vytváření uspořádané konzulární instrukce pro velké tabulky
 Vytvoření seřazené konzulární instrukce je offline operace.  Pro tabulky, které neobsahují oddíly, data nebudou k dispozici uživatelům, dokud se nedokončí proces vytváření řazené Ski.   Pro dělené tabulky, protože modul vytváří seřazený oddíl s pokyny podle oddílu, uživatelé budou mít stále přístup k datům v oddílech, kde se vytváření řazené konzulárních instrukcí nezpracovává.   Tuto možnost můžete použít k minimalizaci výpadku během uspořádaného vytváření Ski v rozsáhlých tabulkách: 
 
-1.  Vytvořte oddíly v cílové velké tabulce (označované jako Table_A).
+1.  Vytvořte oddíly pro cílovou rozsáhlou tabulku (s názvem Table_A).
 2.  Vytvoří prázdnou seřazenou tabulku Ski (s názvem Table_B) se stejným schématem Table a partition jako tabulka a.
 3.  Umožňuje přepnout jeden oddíl z tabulky A na tabulku B.
 4.  Spusťte příkaz ALTER INDEX < Ordered_CCI_Index > na < Table_B > znovu sestavit oddíl = < Partition_ID > v tabulce B pro opětovné sestavení přepnutého oddílu.  
 5.  Zopakujte kroky 3 a 4 pro každý oddíl v Table_A.
-6.  Po přepnutí všech oddílů z Table_A na Table_B a jejich opětovné sestavení, přetažení Table_A a přejmenování Table_B na Table_A. 
+6.  Po přepnutí všech oddílů z Table_A na Table_B a jejich opětovné vytvoření, vyřazení Table_A a přejmenování Table_B na Table_A. 
 
 ## <a name="examples"></a>Příklady
 
@@ -145,4 +145,4 @@ WITH (DROP_EXISTING = ON)
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další tipy pro vývoj najdete v části [Přehled vývoje SQL Data Warehouse](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).

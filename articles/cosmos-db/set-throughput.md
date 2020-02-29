@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.openlocfilehash: 236ae017832d5d613d0bf9fc948d16a7218d2269
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 31ad7a9d1108adc9071812454419252a813cb93e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621948"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194865"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Zřízení propustnosti u kontejnerů a databází
 
@@ -63,7 +63,8 @@ Pokud zatížení na logickém oddílu spotřebovává více než propustnost, k
 Kontejnery ve sdílené databázi propustnosti sdílejí propustnost (RU/s) přidělenou této databázi. V databázi můžete mít až čtyři kontejnery s minimálně 400 RU/s. Každý nový kontejner po prvním 4 bude vyžadovat minimálně dalších 100 RU/s. Pokud máte například sdílenou databázi propustnosti s osmi kontejnery, minimální RU/s v databázi bude 800 RU/s.
 
 > [!NOTE]
-> V databázi sdílené propustnosti můžete mít v databázi maximálně 25 kontejnerů. Pokud již máte ve sdílené databázi propustnosti více než 25 kontejnerů, nebudete moci vytvořit další kontejnery, dokud nebude počet kontejnerů menší než 25.
+> V únoru 2020 jsme představili změnu, která vám umožní mít ve sdílené databázi propustnosti maximálně 25 kontejnerů, což lépe umožňuje sdílení propustnosti v kontejnerech. Po prvních 25 kontejnerech můžete do databáze přidat další kontejnery pouze v případě, že jsou [zřízeny s vyhrazenou propustností](#set-throughput-on-a-database-and-a-container), která je oddělená od sdílené propustnosti databáze.<br>
+Pokud váš Azure Cosmos DB účet už obsahuje sdílenou databázi propustnosti s > = 25 kontejnerů, účet a všechny ostatní účty ve stejném předplatném Azure se z této změny nevztahují. Pokud máte svůj názor nebo dotazy, obraťte se prosím na [podporu produktu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . 
 
 Pokud vaše úlohy zahrnují odstranění a opětovné vytvoření všech kolekcí v databázi, doporučuje se odstranit prázdnou databázi a znovu vytvořit novou databázi před vytvořením kolekce. Následující obrázek ukazuje, jak může fyzický oddíl hostovat jeden nebo více logických oddílů, které patří do různých kontejnerů v rámci databáze:
 

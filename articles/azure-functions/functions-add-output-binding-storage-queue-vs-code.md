@@ -1,17 +1,17 @@
 ---
-title: Připojení funkcí k Azure Storage pomocí Visual Studio Code
-description: Naučte se, jak přidat výstupní vazbu pro připojení vašich funkcí k Azure Storage frontě pomocí Visual Studio Code.
-ms.date: 06/25/2019
+title: Připojení Azure Functions k Azure Storage pomocí Visual Studio Code
+description: Naučte se připojit Azure Functions ke frontě Azure Storage přidáním výstupní vazby do projektu Visual Studio Code.
+ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 5b7d7be7854a216b7cb7b610ea6d51fdc496a93f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 22f7df52e90a35a3ed9a26a7672f8354efc173e3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845654"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191012"
 ---
-# <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Připojení funkcí k Azure Storage pomocí Visual Studio Code
+# <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Připojení Azure Functions k Azure Storage pomocí Visual Studio Code
 
 [!INCLUDE [functions-add-storage-binding-intro](../../includes/functions-add-storage-binding-intro.md)]
 
@@ -19,7 +19,7 @@ V tomto článku se dozvíte, jak pomocí Visual Studio Code připojit funkci, k
 
 Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Pro snazší použití účtu úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage`.  
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="configure-your-local-environment"></a>Konfigurace místního prostředí
 
 Než začnete tento článek, musíte splnit následující požadavky:
 
@@ -90,98 +90,17 @@ V rámci funkcí vyžaduje každý typ vazby `direction`, `type`a jedinečné `n
 
 Po definování vazby můžete použít `name` vazby k přístupu jako atributu v signatuře funkce. Pomocí výstupní vazby nemusíte pro ověřování používat kód Azure Storage SDK, získat odkaz na frontu nebo zapisovat data. Úlohy za běhu functions a Queue výstupní vazby jsou za vás.
 
-::: zone pivot="programming-language-javascript"
-
+::: zone pivot="programming-language-javascript"  
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
+::: zone-end  
 
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-
-Přidejte kód, který používá objekt výstupní vazby `msg` v `context.bindings` k vytvoření zprávy fronty. Přidejte tento kód před příkaz `context.res`.
-
-```typescript
-// Add a message to the Storage queue.
-context.bindings.msg = "Name passed to the function: " + name;
-```
-
-V tomto okamžiku by měla funkce vypadat takto:
-
-```javascript
-import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('HTTP trigger function processed a request.');
-    const name = (req.query.name || (req.body && req.body.name));
-
-    if (name) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " + name; 
-        // Send a "hello" response.
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-
-export default httpTrigger;
-```
-
-::: zone-end
+::: zone pivot="programming-language-typescript"  
+[!INCLUDE [functions-add-output-binding-ts](../../includes/functions-add-output-binding-ts.md)]
+::: zone-end  
 
 ::: zone pivot="programming-language-powershell"
 
-Přidejte kód, který používá rutinu `Push-OutputBinding` k zápisu textu do fronty pomocí výstupní vazby `msg`. Před nastavením stavu OK v příkazu `if` přidejte tento kód.
-
-```powershell
-# Write the $name value to the queue.
-$outputMsg = "Name passed to the function: $name"
-Push-OutputBinding -name msg -Value $outputMsg
-```
-
-V tomto okamžiku by měla funkce vypadat takto:
-
-```powershell
-using namespace System.Net
-
-# Input bindings are passed in via param block.
-param($Request, $TriggerMetadata)
-
-# Write to the Azure Functions log stream.
-Write-Host "PowerShell HTTP trigger function processed a request."
-
-# Interact with query parameters or the body of the request.
-$name = $Request.Query.Name
-if (-not $name) {
-    $name = $Request.Body.Name
-}
-
-if ($name) {
-    # Write the $name value to the queue.
-    $outputMsg = "Name passed to the function: $name"
-    Push-OutputBinding -name msg -Value $outputMsg
-
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
-}
-else {
-    $status = [HttpStatusCode]::BadRequest
-    $body = "Please pass a name on the query string or in the request body."
-}
-
-# Associate values to output bindings by calling 'Push-OutputBinding'.
-Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
-    StatusCode = $status
-    Body = $body
-})
-```
+[!INCLUDE [functions-add-output-binding-powershell](../../includes/functions-add-output-binding-powershell.md)]
 
 ::: zone-end
 
@@ -191,11 +110,9 @@ Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
 
 ::: zone-end
 
-::: zone pivot="programming-language-csharp"
-
+::: zone pivot="programming-language-csharp"  
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
-
-::: zone-end
+::: zone-end  
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -215,7 +132,7 @@ V účtu úložiště se vytvoří nová fronta s názvem **front** . modul runt
 
 Pokud jste už Průzkumník služby Azure Storage nainstalovali a připojili ho k účtu Azure, přeskočte tuto část.
 
-1. Spusťte nástroj [Azure Storage Explorer] , vyberte ikonu připojit na levé straně a vyberte **Přidat účet**.
+1. Spusťte nástroj [Průzkumník služby Azure Storage], vyberte ikonu připojit na levé straně a vyberte **Přidat účet**.
 
     ![Přidat účet Azure do Průzkumník služby Microsoft Azure Storage](./media/functions-add-output-binding-storage-queue-vs-code/storage-explorer-add-account.png)
 
@@ -263,9 +180,29 @@ Vytvořili jste prostředky k dokončení těchto rychlých startů. Tyto prost�
 
 ## <a name="next-steps"></a>Další kroky
 
-Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do fronty úložiště. Dále si můžete přečíst další informace o vývoji funkcí pomocí Visual Studio Code:
+Aktualizovali jste funkci aktivovanou protokolem HTTP, která zapisuje data do fronty úložiště. Nyní se můžete dozvědět víc o vývoji funkcí pomocí Visual Studio Code:
 
-> [!div class="nextstepaction"]
-> [Vývoj Azure Functions pomocí Visual Studio Code](functions-develop-vs-code.md)
-
-[Azure Storage Explorer]: https://storageexplorer.com/
++ [Vývoj Azure Functions pomocí Visual Studio Code](functions-develop-vs-code.md)
+::: zone pivot="programming-language-csharp"  
++ [Příklady kompletních projektů funkcí v C# ](/samples/browse/?products=azure-functions&languages=csharp).
++ [Referenční C# informace pro vývojáře Azure Functions](functions-dotnet-class-library.md)  
+::: zone-end 
+::: zone pivot="programming-language-javascript"  
++ [Příklady kompletních projektů funkcí v JavaScriptu](/samples/browse/?products=azure-functions&languages=javascript).
++ [Azure Functions příručka pro vývojáře JavaScriptu](functions-reference-node.md)  
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
++ [Příklady kompletních projektů funkcí v TypeScript](/samples/browse/?products=azure-functions&languages=typescript).
++ [Azure Functions příručka pro vývojáře TypeScript](functions-reference-node.md#typescript)  
+::: zone-end  
+::: zone pivot="programming-language-python"  
++ [Příklady kompletních projektů funkcí v Pythonu](/samples/browse/?products=azure-functions&languages=python)
++ [Příručka pro vývojáře Azure Functions Pythonu](functions-reference-python.md)  
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
++ [Příklady kompletních projektů funkcí v prostředí PowerShell](/samples/browse/?products=azure-functions&languages=azurepowershell).
++ [Azure Functions příručka pro vývojáře PowerShellu](functions-reference-powershell.md) 
+::: zone-end
++ [Azure Functions triggery a vazby](functions-triggers-bindings.md).
++ [Stránka s cenami funkcí](https://azure.microsoft.com/pricing/details/functions/)
++ [Odhad nákladů na plán spotřeby](functions-consumption-costs.md)

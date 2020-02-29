@@ -3,20 +3,20 @@ title: Definice souborů cookie
 titleSuffix: Azure AD B2C
 description: Poskytuje definice pro soubory cookie používané v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c6e48a663e4d1702851e11bc5124e56c52309d08
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: b984b75b3a12606aa0d82c7e7b399d5dce59df33
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908866"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189510"
 ---
 # <a name="cookies-definitions-for-azure-ad-b2c"></a>Definice souborů cookie pro Azure AD B2C
 
@@ -30,7 +30,7 @@ Aby bylo možné chránit přístup k webům, budou webové prohlížeče zavád
 
 Vývojáři musí použít nové nastavení souborů cookie `SameSite=None`k určení souborů cookie pro přístup mezi weby. Pokud je přítomen atribut `SameSite=None`, musí být použit další atribut `Secure`, aby soubory cookie mezi weby byly dostupné pouze prostřednictvím připojení HTTPS. Ověří a otestuje všechny vaše aplikace, včetně aplikací, které používají Azure AD B2C.
 
-Další informace:
+Další informace naleznete v tématu:
 
 * [Zpracování změn souborů cookie SameSite v prohlížeči Chrome](../active-directory/develop/howto-handle-samesite-cookie-changes-chrome-browser.md)
 * [Vliv na zákaznické weby a služby a produkty Microsoftu v Chrome verze 80 nebo novější](https://support.microsoft.com/help/4522904/potential-disruption-to-customer-websites-in-latest-chrome)
@@ -39,7 +39,7 @@ Další informace:
 
 V následující tabulce jsou uvedeny soubory cookie používané v Azure AD B2C.
 
-| Name (Název) | Domain (Doména) | Vypršení platnosti | Účel |
+| Název | Domain (Doména) | Konec platnosti | Účel |
 | ----------- | ------ | -------------------------- | --------- |
 | `x-ms-cpim-admin` | main.b2cadmin.ext.azure.com | Konec [relace prohlížeče](session-behavior.md) | Uchovává data o členství uživatelů napříč klienty. Klienti, na kterých je uživatel členem, a úroveň členství (správce nebo uživatel). |
 | `x-ms-cpim-slice` | b2clogin.com, login.microsoftonline.com, značka domény | Konec [relace prohlížeče](session-behavior.md) | Slouží ke směrování požadavků do příslušné provozní instance. |

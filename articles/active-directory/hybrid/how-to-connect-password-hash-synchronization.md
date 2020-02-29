@@ -9,18 +9,18 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 405b2fb9d9b8ef3bce17a9370ac87592a3437026
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: a3f7d7c9af807120457b119e0be047c7a342b961
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585947"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190530"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect
 Tento článek obsahuje informace, které potřebujete k synchronizaci hesel uživatelů mezi místní instancí Active Directory a instanci cloudové služby Azure Active Directory (Azure AD).
@@ -136,10 +136,10 @@ Aby bylo možné v Azure AD podporovat dočasná hesla pro synchronizované uži
 `Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
-> Vynucení, když uživatel změní heslo při příštím přihlášení, vyžaduje změnu hesla.  Služba AD Connect nenabídne příznak pro vynucení změny hesla sám o sobě; je doplněné ke zjištěné změně hesla, ke které dochází během synchronizace hodnot hash hesel.
+> Vynucení, když uživatel změní heslo při příštím přihlášení, vyžaduje změnu hesla.  Azure AD Connect nezačne příznak změny hesla vynutit sám o sobě; je doplněné ke zjištěné změně hesla, ke které dochází během synchronizace hodnot hash hesel.
 
 > [!CAUTION]
-> Pokud nepovolíte Samoobslužné resetování hesla (SSPR) v případě, že uživatelé Azure AD resetují heslo ve službě Azure AD a pak se pokusíte přihlásit ve službě Active Directory pomocí nového hesla, protože nové heslo není platné ve službě Active Directory . Tuto funkci byste měli používat jenom v případě, že je v tenantovi povolený zpětný zápis hesla SSPR a hesla.
+> Tuto funkci byste měli používat jenom v případě, že je v tenantovi povolený zpětný zápis hesla SSPR a hesla.  To znamená, že pokud uživatel změní heslo pomocí SSPR, bude synchronizován se službou Active Directory.
 
 > [!NOTE]
 > Tato funkce je ve verzi Public Preview hned teď.

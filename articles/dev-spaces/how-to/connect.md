@@ -1,16 +1,16 @@
 ---
-title: Připojení počítače pro vývoj ke clusteru AKS
+title: Připojení počítače pro vývoj ke clusteru AKS (Preview)
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Zjistěte, jak připojit vývojový počítač k AKS clusteru pomocí Azure Dev Spaces
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: cba68702155475832930c791c3a7be014375ba04
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 13e6f16e66941be0ae463e8280827dc0b8183450
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770675"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196089"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Připojení počítače pro vývoj ke clusteru AKS (Preview)
 
@@ -35,7 +35,7 @@ Tato příručka používá [ukázkovou aplikaci pro sdílení kol Azure dev Spa
 
 * Protokol UDP není v tuto chvíli podporován.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * Předplatné Azure. Pokud nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
 * [Nainstalované rozhraní Azure CLI][azure-cli]
@@ -104,7 +104,7 @@ Kromě toho Azure Dev Spaces vytvoří okno s názvem *vývojářské prostory p
 
 Azure Dev Spaces má také položku stavového řádku, která zobrazuje stav připojení.
 
-![Stav](../media/how-to-connect/connect-status.png)
+![Status](../media/how-to-connect/connect-status.png)
 
 Ověřte, že se ve stavovém řádku zobrazují *vývojové prostory: připojeno k vývojovým/bicyklům na místním portu 3000*.
 

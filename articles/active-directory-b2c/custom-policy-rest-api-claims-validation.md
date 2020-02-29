@@ -3,20 +3,20 @@ title: REST API výměny deklarací identity jako ověřování
 titleSuffix: Azure AD B2C
 description: Návod pro vytvoření Azure AD B2C cesty uživatele, která komunikuje s RESTful službami.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 209cddcc8648f7d396f048057bb4367e2ae9f66c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 7100498d99068941bcd7ca48b6cbcaa271fbb095
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846611"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189068"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Návod: integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C při ověřování vstupu uživatele
 
@@ -37,7 +37,7 @@ V příkladu profilu ověřování použijeme profil upravit cestu uživatele v 
 
 Můžeme ověřit, že název zadaný uživatelem v rámci úpravy profilu není součástí seznamu vyloučení.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Tenant Azure AD B2C nakonfigurovaný k dokončení registrace nebo přihlášení k místnímu účtu, jak je popsáno v tématu [Začínáme](custom-policy-get-started.md).
 - REST API koncový bod, se kterým chcete pracovat. Pro tento návod jsme nastavili ukázkový web s názvem [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) s využitím služby REST API.

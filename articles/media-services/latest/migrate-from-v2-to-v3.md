@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/02/2019
+ms.date: 02/28/2020
 ms.author: juliako
-ms.openlocfilehash: dc3b122ab7f4a243f3a4ecd6f220caa00beb044e
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 2a670c7bce113de8854b33e407c7de2236edd794
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505771"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197857"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Pokyny k migraci pro přesun z Media Services V2 na V3
 
@@ -77,7 +77,26 @@ Pokud máte k dispozici službu video Service na [starší verzi rozhraní api M
 * Živé výstupy začínají při vytváření a při odstranění se zastaví. Programy fungují jinak v rozhraních API v2, musely se spustit po vytvoření.
 * Chcete-li získat informace o úloze, je nutné znát název transformace, pod kterou byla úloha vytvořena. 
 * Ve verzích v2 se [vstupní](../previous/media-services-input-metadata-schema.md) a [výstupní](../previous/media-services-output-metadata-schema.md) soubory metadat XML generují jako výsledek úlohy kódování. V v3 se formát metadat změnil z XML na JSON. 
+* V Media Services V2 lze zadat inicializační vektor (IV). V Media Services V3 nelze zadat FairPlay IV. I když nemá vliv na zákazníky, kteří používají Media Services pro balíčky i doručování licencí, může to být problém při použití systému DRM jiného výrobce k doručování licencí FairPlay (hybridní režim). V takovém případě je důležité znát, že FairPlay IV je odvozená od ID klíče cbcs a dá se načíst pomocí tohoto vzorce:
 
+    ```
+    string cbcsIV =  Convert.ToBase64String(HexStringToByteArray(cbcsGuid.ToString().Replace("-", string.Empty)));
+    ```
+
+    with
+
+    ``` 
+    public static byte[] HexStringToByteArray(string hex)
+    {
+        return Enumerable.Range(0, hex.Length)
+            .Where(x => x % 2 == 0)
+            .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+            .ToArray();
+    }
+    ```
+
+    Další informace najdete v tématu [Azure Functions C# kód pro Media Services V3 v hybridním režimu pro operace Live i vod](https://github.com/Azure-Samples/media-services-v3-dotnet-core-functions-integration/tree/master/LiveAndVodDRMOperationsV3).
+ 
 > [!NOTE]
 > Projděte si zásady vytváření názvů, které se vztahují k [prostředkům Media Services V3](media-services-apis-overview.md#naming-conventions). Přečtěte si také [pojmenování objektů BLOB](assets-concept.md#naming).
 

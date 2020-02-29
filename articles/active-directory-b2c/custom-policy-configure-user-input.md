@@ -3,20 +3,20 @@ title: Přidání deklarací identity a přizpůsobení uživatelského vstupu v
 titleSuffix: Azure AD B2C
 description: Přečtěte si, jak přizpůsobit uživatelský vstup a přidat deklarace do cesty pro registraci nebo přihlašování v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ebbc0c8ac067635d31714468f1aee047b3683eb0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 737f373fb71494492f633d3297463cbef797f3d6
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76846975"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189544"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Přidání deklarací identity a přizpůsobení uživatelského vstupu pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "76846975"
 
 V tomto článku přidáte do Azure Active Directory B2C (Azure AD B2C) novou uživatelem zadanou položku (deklaraci identity) pro svou cestu k registraci uživatele.  Nakonfigurujete položku jako rozevírací nabídku a definujete, jestli je požadovaná.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete kroky v článku [Začínáme s vlastními zásadami](custom-policy-get-started.md). Než budete pokračovat, otestujte cestu uživatele registrace nebo přihlašování a zaregistrujte si nový místní účet.
 
@@ -261,7 +261,7 @@ K definování deklarace identity se používají tyto prvky:
 
 ## <a name="test-the-custom-policy"></a>Testování vlastních zásad
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 4. Vyberte možnost **Architektura prostředí identity (Preview)** .

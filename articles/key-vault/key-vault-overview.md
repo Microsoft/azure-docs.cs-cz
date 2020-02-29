@@ -6,16 +6,17 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 97df5c309a3bdbf5055d67f893e33ab1a0c3232a
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 4e2953b107b017d032e737e2878472166c677839
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832761"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194950"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
