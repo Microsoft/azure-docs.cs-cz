@@ -3,20 +3,20 @@ title: Nastavení registrace a přihlášení pomocí účtu Weibo
 titleSuffix: Azure AD B2C
 description: Poskytněte zákazníkům registraci a přihlášení k účtům Weibo ve vašich aplikacích pomocí Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3f84d1d33874ac70a21c9d596c6fa5a9e608bb84
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: e99b5717cdcc32d8fd138d1edf5fe1bd3283c70e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847391"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187895"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Nastavte si registraci a přihlaste se pomocí účtu Weibo pomocí Azure Active Directory B2C
 
@@ -56,4 +56,4 @@ Pokud chcete účet Weibo použít jako poskytovatele identity v Azure Active Di
 1. Zadejte **název**. Například *Weibo*.
 1. Pro **ID klienta**zadejte klíč aplikace aplikace Weibo, kterou jste vytvořili dříve.
 1. Pro **tajný klíč klienta**zadejte tajný kód aplikace, který jste si poznamenali.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).

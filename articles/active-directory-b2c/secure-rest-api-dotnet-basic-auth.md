@@ -3,20 +3,20 @@ title: Zabezpečení služby RESTful pomocí ověřování HTTP Basic
 titleSuffix: Azure AD B2C
 description: Zabezpečte své vlastní REST APIé výměny deklarací identity v Azure AD B2C pomocí ověřování HTTP Basic.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/25/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 986ad1845fa2699bb3462dceb3865300a035cb71
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 505d92e33606dac327778cae179df44efbfdf853
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848535"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78183852"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Zabezpečte své služby RESTful pomocí ověřování HTTP Basic.
 
@@ -28,7 +28,7 @@ V tomto článku přidáte ke službě RESTful základní ověřování HTTP, ab
 
 Další informace najdete v tématu [základní ověřování ve webovém rozhraní API ASP.NET](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Dokončete kroky v článku [integrace REST API deklarací identity v rámci vaší Azure AD B2C cesty uživatelů](rest-api-claims-exchange-dotnet.md) .
 

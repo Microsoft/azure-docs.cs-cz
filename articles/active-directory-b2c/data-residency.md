@@ -3,20 +3,20 @@ title: Dostupnost oblasti a zasídlí dat
 titleSuffix: Azure AD B2C
 description: Dostupnost v oblasti, data a sídlo a informace o klientech Azure Active Directory B2C ve verzi Preview.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 532136be69356b634959a762f4eeb1c1c4af5a82
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 3df0f581d0d2a1e5ca02202b4eeaede5a1dd5362
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849172"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188844"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: dostupnost oblasti & data zasídlí
 
@@ -28,7 +28,7 @@ Azure AD B2C je **všeobecně dostupná po celém světě** s možností pro **d
 
 [Data](#data-residency) , která jsou uložená v datech, se označují jako data uživatelů.
 
-## <a name="region-availability"></a>Regionální dostupnost
+## <a name="region-availability"></a>Dostupnost v oblastech
 
 Azure AD B2C je k dispozici po celém světě prostřednictvím veřejného cloudu Azure.
 

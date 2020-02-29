@@ -2,20 +2,20 @@
 title: Model fakturace pro Azure Active Directory B2C
 description: Přečtěte si o modelu fakturace B2C's měsíčně aktivních uživatelů Azure AD (MAU) a o tom, jak povolit fakturaci pro konkrétní předplatné Azure.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/25/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e3cdf44c2fc4c16bba283b6f884078dd947b1f34
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 30ecb1e6faa29482a8d69dd1d08e4f127f515596
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77564769"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190003"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Model fakturace pro Azure Active Directory B2C
 
@@ -82,7 +82,7 @@ Odkaz na předplatné se dosahuje vytvořením *prostředku* Azure AD B2C v rám
 
 Předplatné propojené s klientem Azure AD B2C se dá použít k fakturaci využití Azure AD B2C nebo dalších prostředků Azure, včetně dalších prostředků Azure AD B2C. Nelze použít pro přidání další služby Azure na základě licence nebo licence Office 365 v rámci tenanta Azure AD B2C.
 
-### <a name="prerequisites"></a>Požadavky
+### <a name="prerequisites"></a>Předpoklady
 
 * [Předplatné Azure](https://azure.microsoft.com/free/)
 * [Azure AD B2C tenanta](tutorial-create-tenant.md) , kterého chcete propojit s předplatným

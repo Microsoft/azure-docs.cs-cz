@@ -2,20 +2,20 @@
 title: Lokalizace – Azure Active Directory B2C
 description: Zadejte element lokalizace vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 08/27/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ec9b4e7ce761d524d047f4d12cab9e5b782e6032
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 9a9fb1d64fb27507e4ee42c39be9ea80fbe5f168
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033463"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184447"
 ---
 # <a name="localization"></a>Lokalizace
 
@@ -39,13 +39,13 @@ Element **Localization** umožňuje v zásadách pro cesty uživatelů podporova
 
 Element **Localization** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Enabled | Ne | Možné hodnoty: `true` nebo `false`. |
+| Povoleno | Ne | Možné hodnoty: `true` nebo `false`. |
 
 Element **Localization** obsahuje následující elementy XML
 
-| Prvek | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1: n | Seznam podporovaných jazyků |
 | LocalizedResources | 0: n | Seznam lokalizovaných prostředků |
@@ -54,16 +54,16 @@ Element **Localization** obsahuje následující elementy XML
 
 Element **SupportedLanguages** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | DefaultLanguage | Ano | Jazyk, který má být použit jako výchozí pro lokalizované prostředky. |
-| MergeBehavior | Ne | Hodnoty výčtu hodnot, které jsou sloučeny spolu s jakýmkoli objektem ClaimType přítomným v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základních zásadách. Možné hodnoty: `Append`, `Prepend`, nebo `ReplaceAll`. `Append` Hodnota určuje, že se má na konec kolekce zadané v nadřazené zásadě připojit kolekce dat. `Prepend` Hodnota určuje, že kolekce přítomných dat by měla být přidána před kolekci určenou v nadřazené zásadě. `ReplaceAll` Hodnota určuje, že kolekce dat definovaná v nadřazené zásadě by měla být použita jako místo dat definovaných v aktuálních zásadách. |
+| MergeBehavior | Ne | Hodnoty výčtu hodnot, které jsou sloučeny spolu s jakýmkoli objektem ClaimType přítomným v nadřazené zásadě se stejným identifikátorem. Tento atribut použijte, pokud přepíšete deklaraci identity zadanou v základních zásadách. Možné hodnoty: `Append`, `Prepend`nebo `ReplaceAll`. Hodnota `Append` určuje, že se má na konci kolekce zadané v nadřazené zásadě připojit kolekce dat. Hodnota `Prepend` určuje, že kolekce dat, která mají být přítomna, by měla být přidána před kolekci zadané v nadřazené zásadě. Hodnota `ReplaceAll` určuje, že kolekce dat definovaná v nadřazené zásadě by měla být použita jako místo dat definovaných v aktuálních zásadách. |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
 
 Element **SupportedLanguages** obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1: n | Zobrazí obsah, který odpovídá značce jazyka na značku RFC 5646-Tags pro identifikaci jazyků. |
 
@@ -71,13 +71,13 @@ Element **SupportedLanguages** obsahuje následující prvky:
 
 Element **LocalizedResources** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Id | Ano | Identifikátor, který slouží k jednoznačné identifikaci lokalizovaných prostředků. |
+| ID | Ano | Identifikátor, který slouží k jednoznačné identifikaci lokalizovaných prostředků. |
 
 Element **LocalizedResources** obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0: n | Definuje celé kolekce v různých jazykových verzích. Kolekce může mít různý počet položek a různé řetězce pro různé jazykové verze. Příklady kolekcí zahrnují výčty, které se zobrazí v typech deklarací. Například seznam zemí nebo oblastí se uživateli zobrazí v rozevíracím seznamu. |
 | LocalizedStrings | 0: n | Definuje všechny řetězce s výjimkou těch řetězců, které se zobrazují v kolekcích v různých jazykových verzích. |
@@ -86,7 +86,7 @@ Element **LocalizedResources** obsahuje následující prvky:
 
 Element **LocalizedCollections** obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Lokalizovaná | 1: n | Seznam podporovaných jazyků |
 
@@ -94,27 +94,27 @@ Element **LocalizedCollections** obsahuje následující prvky:
 
 **Lokalizovaný** ElementCollection obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Deklarován | Ano | Odkazuje na element ClaimType nebo na prvek uživatelského rozhraní v souboru zásad. |
+| ElementType | Ano | Odkazuje na element ClaimType nebo na prvek uživatelského rozhraní v souboru zásad. |
 | ElementId | Ano | Řetězec, který obsahuje odkaz na typ deklarace, který je již definován v části ClaimsSchema, která je použita, pokud je typ **ElementType** nastaven na typ ClaimType. |
 | Cílovácollection | Ano | Cílová kolekce. |
 
 **Lokalizovaný** ElementCollection obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | Položka | 0: n | Definuje dostupnou možnost, kterou může uživatel vybrat pro deklaraci identity v uživatelském rozhraní, jako je například hodnota v rozevíracím seznamu. |
 
 Element **Item** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | Text | Ano | Uživatelsky přívětivý řetězec zobrazení, který by měl být zobrazen uživateli v uživatelském rozhraní pro tuto možnost. |
-| Value | Ano | Hodnota deklarace řetězce přidružená k výběru této možnosti |
-| SelectByDefault | Ne | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: True nebo False. |
+| Hodnota | Ano | Hodnota deklarace řetězce přidružená k výběru této možnosti |
+| SelectByDefault | Ne | Určuje, zda má být tato možnost ve výchozím nastavení vybrána v uživatelském rozhraní. Možné hodnoty: true nebo false. |
 
-Následující příklad ukazuje použití elementu **LocalizedCollections** . Obsahuje dva **lokalizované** prvkycollection, jeden pro angličtinu a druhý pro španělštinu. Nastavte kolekci **omezení** deklarace identity `Gender` se seznamem položek pro angličtinu a španělštinu.
+Následující příklad ukazuje použití elementu **LocalizedCollections** . Obsahuje dva **lokalizované** prvkycollection, jeden pro angličtinu a druhý pro španělštinu. Nastavte kolekci **omezení** `Gender` deklarací pomocí seznamu položek pro angličtinu a španělštinu.
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -138,17 +138,17 @@ Následující příklad ukazuje použití elementu **LocalizedCollections** . O
 
 Element **LocalizedStrings** obsahuje následující prvky:
 
-| Prvek | Výskyty | Popis |
+| Prvek | Výskytů | Popis |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1: n | Lokalizovaný řetězec. |
 
 Element **LocalizedString** obsahuje následující atributy:
 
-| Atribut | Požadováno | Popis |
+| Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| Deklarován | Ano | Odkaz na element typu deklarace identity nebo prvek uživatelského rozhraní v zásadách. Možné hodnoty: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`, nebo. `ClaimType` Hodnota se používá k lokalizaci jednoho z atributů deklarace identity, jak je uvedeno v StringId. `UxElement` Hodnota se používá k lokalizaci jednoho z prvků uživatelského rozhraní, jak je uvedeno v StringId. `ErrorMessage` Hodnota se používá k lokalizaci jedné z chybových zpráv systému, jak je uvedeno v StringId. Hodnota se používá k lokalizaci jedné z chybových zpráv predikátu, jak je uvedeno v StringId. [](predicates.md) `Predicate` Hodnota se používá k lokalizaci jedné z chybových zpráv skupiny PredicateValidation, jak je uvedeno v StringId. [](predicates.md) `InputValidation` |
-| ElementId | Ano | Pokud je typ **ElementType** nastaven `ClaimType`na `Predicate`, nebo `InputValidation`, obsahuje tento element odkaz na typ deklarace identity, který je již definován v části ClaimsSchema. |
-| StringId | Ano | Pokud je vlastnost **ElementType** nastavena `ClaimType`na, tento prvek obsahuje odkaz na atribut typu deklarace. Možné hodnoty: `DisplayName`, `AdminHelpText`, nebo `PatternHelpText`. `DisplayName` Hodnota se používá k nastavení zobrazovaného názvu deklarace identity. `AdminHelpText` Hodnota slouží k nastavení názvu textu v nápovědě pro uživatele s deklarací identity. `PatternHelpText` Hodnota se používá k nastavení textu v nápovědě ke vzorci deklarace identity. Pokud je vlastnost **ElementType** nastavena `UxElement`na, tento prvek obsahuje odkaz na atribut prvku uživatelského rozhraní. Pokud je typ **ElementType** nastaven `ErrorMessage`na, tento prvek určuje identifikátor chybové zprávy. Úplný seznam `UxElement` identifikátorů naleznete v tématu [lokalizace ID řetězců](localization-string-ids.md) .|
+| ElementType | Ano | Odkaz na element typu deklarace identity nebo prvek uživatelského rozhraní v zásadách. Možné hodnoty: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`nebo. Hodnota `ClaimType` slouží k lokalizaci jednoho z atributů deklarace identity, jak je uvedeno v StringId. Hodnota `UxElement` slouží k lokalizaci jednoho z prvků uživatelského rozhraní, jak je uvedeno v StringId. Hodnota `ErrorMessage` slouží k lokalizaci jedné z chybových zpráv systému, jak je uvedeno v StringId. Hodnota `Predicate` slouží k lokalizaci jedné z chybových zpráv [predikátu](predicates.md) , jak je uvedeno v StringId. Hodnota `InputValidation` slouží k lokalizaci jedné z chybových zpráv skupiny [PredicateValidation](predicates.md) , jak je uvedeno v StringId. |
+| ElementId | Ano | Pokud je typ **ElementType** nastaven na `ClaimType`, `Predicate`nebo `InputValidation`, tento prvek obsahuje odkaz na typ deklarace, který je již definován v oddílu ClaimsSchema. |
+| StringId | Ano | Pokud je vlastnost **ElementType** nastavena na `ClaimType`, tento prvek obsahuje odkaz na atribut typu deklarace. Možné hodnoty: `DisplayName`, `AdminHelpText`nebo `PatternHelpText`. Hodnota `DisplayName` slouží k nastavení zobrazovaného názvu deklarace identity. Hodnota `AdminHelpText` slouží k nastavení názvu textu v nápovědě pro uživatele s deklarací identity. Hodnota `PatternHelpText` slouží k nastavení textu v nápovědě ke vzorci deklarace identity. Pokud je vlastnost **ElementType** nastavena na `UxElement`, tento prvek obsahuje odkaz na atribut prvku uživatelského rozhraní. Pokud je typ **ElementType** nastaven na `ErrorMessage`, tento prvek určuje identifikátor chybové zprávy. Úplný seznam identifikátorů `UxElement` naleznete v tématu [lokalizace ID řetězců](localization-string-ids.md) .|
 
 
 Následující příklad ukazuje lokalizovanou registrační stránku. První tři hodnoty **LocalizedString** nastavily atribut deklarace identity. Třetí změní hodnotu tlačítka pro pokračování. Poslední z nich se změní chybová zpráva.
@@ -165,7 +165,7 @@ Následující příklad ukazuje lokalizovanou registrační stránku. První t�
 </LocalizedResources>
 ```
 
-Následující příklad ukazuje lokalizovaný **UserHelpText** predikátu s ID `IsLengthBetween8And64`. A lokalizovaný **UserHelpText** pro objekt **predikátu** s ID `CharacterClasses` **PredicateValidation** s ID `StrongPassword`.
+Následující příklad ukazuje lokalizovaný **UserHelpText** **predikátu** s ID `IsLengthBetween8And64`. A lokalizované **UserHelpTexty** ve službě **predikátů** s ID `CharacterClasses` **PredicateValidation** s ID `StrongPassword`.
 
 ```XML
 <PredicateValidation Id="StrongPassword">
@@ -211,19 +211,19 @@ V rámci elementu **BuildingBlocks** přidejte element **Localization** se sezna
 
 Přidejte prvky **LocalizedResources** uvnitř elementu **lokalizace** za ukončení elementu **SupportedLanguages** . Přidáte **LocalizedResources** prvky pro každou stránku (definice obsahu) a jakýkoli jazyk, který chcete podporovat. Chcete-li přizpůsobit jednotné přihlašování nebo přihlašovací stránku, stránky pro registraci a vícefaktorové ověřování (MFA) pro angličtinu, španělštinu a Francii, přidejte následující prvky **LocalizedResources** .
 
-- Sjednocená stránka pro registraci nebo přihlášení, angličtina`<LocalizedResources Id="api.signuporsignin.en">`
-- Jednotná registrace nebo přihlašovací stránka, španělština`<LocalizedResources Id="api.signuporsignin.es">`
-- Jednotná registrace nebo přihlašovací stránka, Francie`<LocalizedResources Id="api.signuporsignin.fr">`
-- Registrace, angličtina`<LocalizedResources Id="api.localaccountsignup.en">`
-- Registrace, španělština`<LocalizedResources Id="api.localaccountsignup.es">`
-- Registrace, Francie`<LocalizedResources Id="api.localaccountsignup.fr">`
-- MFA, angličtina`<LocalizedResources Id="api.phonefactor.en">`
-- MFA, španělština`<LocalizedResources Id="api.phonefactor.es">`
-- MFA, Francie`<LocalizedResources Id="api.phonefactor.fr">`
+- Sjednocená stránka pro registraci nebo přihlášení, anglická `<LocalizedResources Id="api.signuporsignin.en">`
+- Sjednocená stránka pro registraci nebo přihlášení, španělština `<LocalizedResources Id="api.signuporsignin.es">`
+- Sjednocená stránka pro registraci nebo přihlášení, Francie `<LocalizedResources Id="api.signuporsignin.fr">`
+- Registrace, `<LocalizedResources Id="api.localaccountsignup.en">` v angličtině
+- Registrace, španělština `<LocalizedResources Id="api.localaccountsignup.es">`
+- Registrace, `<LocalizedResources Id="api.localaccountsignup.fr">` Francie
+- MFA, anglické `<LocalizedResources Id="api.phonefactor.en">`
+- MFA, španělština `<LocalizedResources Id="api.phonefactor.es">`
+- MFA, Francie `<LocalizedResources Id="api.phonefactor.fr">`
 
-Každý element **LocalizedResources** obsahuje všechny požadované elementy **LocalizedStrings** s více prvky **LocalizedString** a **LocalizedCollections** elementy s více lokalizovanými. elementu.  V následujícím příkladu se přidá lokalizace anglické stránky pro registraci:
+Každý element **LocalizedResources** obsahuje všechny požadované prvky **LocalizedStrings** s více prvky **LocalizedString** a **LocalizedCollections** elementy s více **lokalizovanými** prvkycollection.  V následujícím příkladu se přidá lokalizace anglické stránky pro registraci:
 
-Poznámka: Tento příklad vytvoří odkaz na `Gender` typy deklarací a. `City` Chcete-li použít tento příklad, ujistěte se, že definujete tyto deklarace identity. Další informace najdete v tématu [ClaimsSchema](claimsschema.md).
+Poznámka: Tento příklad vytvoří odkaz na `Gender` a `City` typy deklarací identity. Chcete-li použít tento příklad, ujistěte se, že definujete tyto deklarace identity. Další informace najdete v tématu [ClaimsSchema](claimsschema.md).
 
 ```XML
 <LocalizedResources Id="api.localaccountsignup.en">

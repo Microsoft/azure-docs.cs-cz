@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/26/2020
-ms.openlocfilehash: 743c6fa6545342f2a7655059016637fc54158b64
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: e7708b0043b7f5baf2c12e813306595cc358a01d
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164011"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194050"
 ---
 # <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití Pythonu a AI k vygenerování prohledávatelných obsahu z objektů blob Azure
 
 Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrázky, [kanál pro rozšíření AI](cognitive-search-concept-intro.md) může extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat image, tento kurz Pythonu se zaměřuje na text, použití detekce jazyka a zpracování přirozeného jazyka pro vytváření nových polí, která můžete využít v dotazech, omezujících objektech a filtrech.
 
-V tomto kurzu pomocí Pythonu a [REST](https://docs.microsoft.com/rest/api/searchservice/) proveďte následující úlohy:
+Tento kurz používá Python a [rozhraní REST API pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/) k provádění následujících úloh:
 
 > [!div class="checklist"]
 > * Začněte s celými dokumenty (nestrukturovaný text), například PDF, HTML, DOCX a PPTX v úložišti objektů BLOB v Azure.
@@ -512,19 +512,13 @@ V závislosti na složitosti a délce řetězce dotazu můžete použít operace
 
 ## <a name="reset-and-rerun"></a>Resetování a opětovné spuštění
 
-V počátečních fázích vývoje je praktické odstranit objekty z Azure Kognitivní hledání a nechat si kód znovu sestavit. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem.
+Ve fázích předčasného experimentu vývoje je nejužitečnějším přístupem k iteraci návrhu odstranění objektů z Azure Kognitivní hledání a umožnění kódu jejich opětovného sestavení. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem.
 
-Postup opětovného indexování dokumentů s novými definicemi:
-
-1. Odstraňte indexer, index a dovednosti.
-2. Upravte definice objektů.
-3. Znovu vytvořte objekty ve vaší službě. Při opětovném vytváření indexeru se spustí kanál. 
-
-Portál můžete použít k odstranění indexů, indexerů a dovednosti. Když indexer odstraníte, můžete také selektivně odstranit index, dovednosti a zdroj dat...
+Portál můžete použít k odstranění indexů, indexerů, zdrojů dat a dovednosti. Když indexer odstraníte, můžete také selektivně odstranit index, dovednosti a zdroj dat...
 
 ![Odstranit objekty hledání](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "Odstranění objektů hledání na portálu")
 
-Můžete je také odstranit pomocí skriptu. Následující skript odstraní dovednosti, který jsme vytvořili. Požadavek na odstranění indexu, indexeru a zdroje dat můžete snadno upravit.
+Můžete je také odstranit pomocí skriptu. Následující skript ukazuje, jak odstranit dovednosti. 
 
 ```python
 # delete the skillset
@@ -545,11 +539,13 @@ Nakonec jste zjistili, jak testovat výsledky a obnovit systém pro další iter
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nejrychlejší způsob vyčištění po kurzu odstraněním skupiny prostředků, která obsahuje službu Azure Kognitivní hledání a Azure Blob service. Za předpokladu, že obě služby umístíte do stejné skupiny, odstraňte skupinu prostředků, abyste trvale odstranili vše, včetně služeb a veškerého uloženého obsahu, který jste pro tento kurz vytvořili. Na portálu najdete název skupiny prostředků na stránce Přehled jednotlivých služeb.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které se na něm zbývá, můžou mít náklady na peníze. Prostředky můžete odstranit jednotlivě nebo odstranit skupinu prostředků, abyste odstranili celou sadu prostředků.
+
+Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud si chcete kanál přizpůsobit nebo rozšířit, můžete použít vlastní dovednosti. Když si vytvoříte vlastní dovednost, kterou pak přidáte do sady dovedností, budete moct používat analýzu textu a obrazu, kterou si sami napíšete.
+Teď, když jste obeznámení se všemi objekty v kanálu obohacení AI, se podíváme na dovednosti definice a jednotlivé dovednosti.
 
 > [!div class="nextstepaction"]
-> [Příklad: Vytvoření vlastní dovednosti pro obohacení AI](cognitive-search-create-custom-skill-example.md)
+> [Vytvoření dovednosti](cognitive-search-defining-skillset.md)

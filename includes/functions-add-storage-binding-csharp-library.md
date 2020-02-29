@@ -4,34 +4,21 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: glenga
-ms.openlocfilehash: 4db460a5dcefb49de3ad2b594d3957cbcf7445c3
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 5e1a2622df0038141dd5cb05237f93d5e33e0bfb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592797"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190907"
 ---
-V projektu C# knihovny tříd jsou vazby definovány jako atributy vazby v metodě Function. Soubor *Function. JSON* se pak automaticky generuje na základě těchto atributů.
+V projektu C# knihovny tříd jsou vazby definovány jako atributy vazby v metodě Function. Soubor *Function. JSON* vyžadovaný funkcemi se pak automaticky generuje na základě těchto atributů.
 
-Otevřete soubor projektu *HttpTrigger.cs* a přidejte následující `using` příkaz:
+Otevřete soubor projektu *HttpExample.cs* a přidejte následující parametr do definice metody `Run`:
 
-```cs
-using Microsoft.Azure.WebJobs.Extensions.Storage;
-```
+:::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="17":::
 
-Do `Run` definice metody přidejte následující parametr:
-
-```cs
-[Queue("outqueue"),StorageAccount("AzureWebJobsStorage")] ICollector<string> msg
-```
-
-`msg` Parametr`ICollector<T>` je typ, který představuje kolekci zpráv zapsaných do výstupní vazby po dokončení funkce. V tomto případě je výstupem fronta úložiště s názvem `outqueue`. Připojovací řetězec pro účet úložiště je nastaven pomocí `StorageAccountAttribute`. Tento atribut označuje nastavení, které obsahuje připojovací řetězec účtu úložiště a dá se použít na úrovni třídy, metody nebo parametru. V tomto případě můžete vynechat `StorageAccountAttribute` , protože už používáte výchozí účet úložiště.
+Parametr `msg` je `ICollector<T>` typ, který představuje kolekci zpráv zapsaných do výstupní vazby po dokončení funkce. V tomto případě je výstupem fronta úložiště s názvem `outqueue`. Připojovací řetězec pro účet úložiště je nastaven `StorageAccountAttribute`. Tento atribut označuje nastavení, které obsahuje připojovací řetězec účtu úložiště a dá se použít na úrovni třídy, metody nebo parametru. V takovém případě můžete `StorageAccountAttribute` vynechat, protože už používáte výchozí účet úložiště.
 
 Definice metody spuštění by teď měla vypadat takto:  
 
-```cs
-[FunctionName("HttpTrigger")]
-public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-    [Queue("outqueue"),StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-```
+:::code language="csharp" source="~/functions-docs-csharp/functions-add-output-binding-storage-queue-cli/HttpExample.cs" range="14-18":::

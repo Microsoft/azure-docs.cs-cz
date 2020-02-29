@@ -4,12 +4,12 @@ description: Naučte se aktualizovat uzly Linux a automaticky je restartovat pom
 services: container-service
 ms.topic: article
 ms.date: 02/28/2019
-ms.openlocfilehash: b0bb7a3309cf1b56a5779b54b34310aa01f3e719
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 74b12c1bc6e2a88582cc357c8091b5590e6bf3cb
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77594936"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191278"
 ---
 # <a name="apply-security-and-kernel-updates-to-linux-nodes-in-azure-kubernetes-service-aks"></a>Použití aktualizací zabezpečení a jádra pro uzly Linux ve službě Azure Kubernetes Service (AKS)
 
@@ -51,13 +51,23 @@ Během události upgradu nemůžete zůstat ve stejné verzi Kubernetes. Je nutn
 
 ## <a name="deploy-kured-in-an-aks-cluster"></a>Nasazení kured v clusteru AKS
 
-Chcete-li nasadit `kured` DaemonSet, použijte následující vzorový manifest YAML ze své stránky projektu GitHub. Tento manifest vytvoří roli a roli clusteru, vazby a účet služby a pak nasadí DaemonSet pomocí nástroje `kured` verze 1.1.0, který podporuje clustery AKS 1,9 nebo novější.
+Pokud chcete nasadit `kured` DaemonSet, nainstalujte následující oficiální graf Helm Kured. Tím se vytvoří role a role clusteru, vazby a účet služby a pak se nasadí DaemonSet pomocí `kured`.
 
 ```console
-kubectl apply -f https://github.com/weaveworks/kured/releases/download/1.2.0/kured-1.2.0-dockerhub.yaml
+# Add the stable Helm repository
+helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+
+# Update your local Helm chart repository cache
+helm repo update
+
+# Create a dedicated namespace where you would like to deploy kured into
+kubectl create namespace kured
+
+# Install kured in that namespace with Helm 3 (only on Linux nodes, kured is not working on Windows nodes)
+helm install kured stable/kured --namespace kured --set nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Můžete také nakonfigurovat další parametry pro `kured`, jako je například integrace s Prometheus nebo časovou rezervou. Další informace o dalších parametrech konfigurace najdete v [dokumentaci k instalaci kured][kured-install].
+Můžete také nakonfigurovat další parametry pro `kured`, jako je například integrace s Prometheus nebo časovou rezervou. Další informace o dalších parametrech konfigurace najdete v [grafu Kured Helm][kured-install].
 
 ## <a name="update-cluster-nodes"></a>Aktualizace uzlů clusteru
 
@@ -96,7 +106,7 @@ Clustery AKS, které používají uzly Windows serveru, najdete v tématu [upgra
 
 <!-- LINKS - external -->
 [kured]: https://github.com/weaveworks/kured
-[kured-install]: https://github.com/weaveworks/kured#installation
+[kured-install]: https://hub.helm.sh/charts/stable/kured
 [kubectl-get-nodes]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 
 <!-- LINKS - internal -->

@@ -1,6 +1,6 @@
 ---
-title: 'Rychlý Start: Vytvoření skladu – Azure PowerShell'
-description: Rychle vytvořte SQL Database logický Server, pravidlo brány firewall na úrovni serveru a datový sklad s Azure PowerShell.
+title: 'Rychlý Start: vytvoření datového skladu (PowerShell)'
+description: K rychlému vytvoření logického serveru datového skladu Azure synapse Analytics použijte pravidlo brány firewall na úrovni serveru s použitím Azure PowerShell.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,24 @@ ms.subservice: development
 ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 94dcc0dee5dd4fe81eb5ce067d7ace31edeca353
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 9df9b4b1bdb33a856d9e31d65981e8654af049d2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461520"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199984"
 ---
-# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Rychlý Start: vytvoření a dotazování Azure SQL Data Warehouse pomocí Azure PowerShell
+# <a name="quickstart-create--query-a-data-warehouse-with-azure-powershell"></a>Rychlý Start: vytvoření & dotazování datového skladu pomocí Azure PowerShell
 
-Azure SQL Data Warehouse pomocí Azure PowerShell rychle vytvořit.
+Vytvořte datový sklad Azure synapse Analytics tím, že zřídíte fond SQL pomocí Azure PowerShell.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+## <a name="prerequisites"></a>Předpoklady
+
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 > [!NOTE]
-> Vytvoření služby SQL Data Warehouse může znamenat, že se vám začne fakturovat nová služba.  Další informace najdete v tématu [SQL Data Warehouse – ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Vytvoření datového skladu může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -68,7 +70,7 @@ $password = "ChangeYourAdminPassword1"
 $startip = "0.0.0.0"
 $endip = "0.0.0.0"
 # The database name
-$databasename = "mySampleDataWarehosue"
+$databasename = "mySampleDataWarehouse"
 ```
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
@@ -78,6 +80,7 @@ Vytvořte [skupinu prostředků Azure](../azure-resource-manager/management/over
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
 ```
+
 ## <a name="create-a-logical-server"></a>Vytvoření logického serveru
 
 Pomocí příkazu [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) vytvořte [logický Server Azure SQL](../sql-database/sql-database-logical-servers.md) . Logický server obsahuje soubor databází spravovaných jako skupina. Následující příklad vytvoří ve skupině prostředků náhodně pojmenovaný Server s uživatelem s právy pro správu s názvem `ServerAdmin` a heslem `ChangeYourAdminPassword1`. Podle potřeby tyto předdefinované hodnoty nahraďte.
@@ -100,7 +103,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> SQL Database a SQL Data Warehouse komunikují přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nebudete se moct připojit k serveru SQL Azure, dokud vaše IT oddělení neotevře port 1433.
+> Koncových bodů SQL komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nebudete se moct připojit k serveru SQL Azure, dokud vaše IT oddělení neotevře port 1433.
 >
 
 
@@ -121,10 +124,10 @@ New-AzSqlDatabase `
 Požadované parametry jsou:
 
 * **RequestedServiceObjectiveName**: množství [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) , které požadujete. Zvýšením této hodnoty se zvýší náklady na výpočetní výkon. Seznam podporovaných hodnot naleznete v tématu limity pro [paměť a souběžnost](memory-concurrency-limits.md).
-* **DatabaseName**: název SQL Data Warehouse, který vytváříte.
+* **DatabaseName**: název datového skladu, který vytváříte.
 * **Název_serveru**: název serveru, který používáte pro vytváření.
 * **ResourceGroupName**: Skupina prostředků, kterou používáte. K vyhledání dostupných skupin prostředků v rámci vašeho předplatného použijte rutinu Get-AzureResource.
-* **Edition:** Aby bylo možné vytvořit SQL Data Warehouse, je nutné nastavit edici DataWarehouse.
+* **Edice**: pro vytvoření datového skladu musí být "datový sklad".
 
 Volitelné parametry jsou:
 
@@ -148,6 +151,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste vytvořili datový sklad, vytvořili jste pravidlo brány firewall připojené k vašemu datovému skladu a spustili několik dotazů. Další informace o službě Azure SQL Data Warehouse najdete v kurzu načítání dat.
+Nyní jste vytvořili datový sklad, vytvořili jste pravidlo brány firewall připojené k vašemu datovému skladu a spustili několik dotazů. Pokud se chcete dozvědět víc, přejděte k kurzu načtení dat.
 > [!div class="nextstepaction"]
->[Načtení dat do SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)
+>[Načtení dat do datového skladu](load-data-from-azure-blob-storage-using-polybase.md)

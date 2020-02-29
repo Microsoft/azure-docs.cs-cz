@@ -3,12 +3,12 @@ title: Vysvětlení uzamykání prostředků
 description: Přečtěte si o možnostech uzamykání v plánech Azure k ochraně prostředků při přiřazování podrobného plánu.
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1491af0ddfb0f6f5fbea322bd00dc9838c155983
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: b810e8d4ddd263f9e651704d1bf9b785ce0202db
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919868"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199695"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Vysvětlení uzamykání prostředků v semodrotiskych Azure
 
@@ -83,6 +83,9 @@ Text žádosti přiřazení podrobného plánu vypadá takto:
 ```
 
 Klíčovým rozdílem v tomto textu žádosti a jedním přiřazeným k předplatnému je vlastnost `properties.scope`. Tato požadovaná vlastnost musí být nastavena na předplatné, pro které platí přiřazení podrobného plánu. Předplatné musí být přímým podřízeným prvkem hierarchie skupiny pro správu, ve kterém je uloženo přiřazení podrobného plánu.
+
+> [!NOTE]
+> Podrobný plán přiřazený k oboru skupiny pro správu stále funguje jako přiřazení podrobného plánu na úrovni předplatného. Jediným rozdílem je, že je uloženo přiřazení podrobného plánu, které brání vlastníkům předplatného odebrání přiřazení a přidružených zámků.
 
 ## <a name="removing-locking-states"></a>Odebírají se stavy zamykání.
 

@@ -2,20 +2,20 @@
 title: Definování vlastních atributů v Azure Active Directory B2C | Microsoft Docs
 description: Definujte vlastní atributy vaší aplikace v Azure Active Directory B2C, abyste mohli shromažďovat informace o vašich zákaznících.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7a65eb19c5694f399e806d0f6ce99717436931c6
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 7b1ecfba0435f827c7c7a4d05da619998140bc6e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484345"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186045"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definování vlastních atributů v Azure Active Directory B2C
 

@@ -3,20 +3,20 @@ title: Nastavení registrace a přihlášení pomocí účtu Microsoft
 titleSuffix: Azure AD B2C
 description: Poskytněte zákazníkům registraci a přihlášení k účtům Microsoft v aplikacích pomocí Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f023fea4340fed6fa50defb3797c776a51bad5f4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 25784eb161a860398b0741d1d20375cabd1c4eca
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849549"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188014"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účet Microsoft s využitím Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ ms.locfileid: "76849549"
 
 Pokud chcete použít účet Microsoft jako [poskytovatele identity](openid-connect.md) v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci v TENANTOVI Azure AD. Tenant Azure AD není stejný jako váš tenant Azure AD B2C. Pokud ještě nemáte účet Microsoft, můžete si ho získat na [https://www.live.com/](https://www.live.com/).
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho TENANTA Azure AD.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 1. Vyberte **Nová registrace**.
@@ -49,4 +49,4 @@ Pokud chcete použít účet Microsoft jako [poskytovatele identity](openid-conn
 1. Zadejte **název**. Například *MSA*.
 1. Pro **ID klienta**zadejte ID aplikace (klienta) aplikace služby Azure AD, kterou jste vytvořili dříve.
 1. Pro **tajný klíč klienta**zadejte tajný klíč klienta, který jste si poznamenali.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).

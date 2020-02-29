@@ -3,20 +3,20 @@ title: Přidání vlastních atributů do vlastních zásad
 titleSuffix: Azure AD B2C
 description: Návod k používání vlastností rozšíření a vlastních atributů a jejich zahrnutí v uživatelském rozhraní.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/04/2017
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c2361192a612cfd92003b1e3c36e85dbbd9090bb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: c145b0efa2f1c06710e1d41f606f918a7439820a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77482764"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189493"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: použití vlastních atributů v zásadách úprav vlastního profilu
 
@@ -24,7 +24,7 @@ ms.locfileid: "77482764"
 
 V tomto článku vytvoříte vlastní atribut v adresáři Azure Active Directory B2C (Azure AD B2C). Tento nový atribut použijete jako vlastní deklaraci v profilu upravit cestu uživatele.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Postupujte podle kroků v článku [Azure Active Directory B2C: Začínáme s vlastními zásadami](custom-policy-get-started.md).
 
@@ -56,7 +56,7 @@ Pokyny jsou uvedené v části **Další kroky** v tomto článku.
     * Název webové aplikace: **WebApp-GraphAPI-DirectoryExtensions**.
     * Typ aplikace: **Webová aplikace/rozhraní API**.
     * Přihlašovací adresa URL: **https://{tenant}. Microsoft. com/webapp-GraphAPI-DirectoryExtensions**.
-5. Vyberte **Create** (Vytvořit).
+5. Vyberte **Vytvořit**.
 6. Vyberte nově vytvořenou webovou aplikaci.
 7. Vyberte **nastavení** > **požadovaná oprávnění**.
 8. Vyberte Azure Active Directory rozhraní API pro **Windows**.

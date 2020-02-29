@@ -1,25 +1,26 @@
 ---
 title: Dynamické maskování dat
-description: Dynamické maskování dat omezuje vystavení citlivých dat jejich maskováním uživatelům, kteří nejsou privilegovanými oprávněními, pro SQL Database a datový sklad.
+description: Dynamické maskování dat omezuje vystavení citlivých dat tím, že je zamaskuje k neprivilegovaným uživatelům pro SQL Database a Azure synapse
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 03/04/2019
-ms.openlocfilehash: 149c42829762920583948958da8252a01e35ef1f
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 02/06/2020
+tags: azure-synpase
+ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721910"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192910"
 ---
-# <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Dynamické maskování dat pro Azure SQL Database a datový sklad
+# <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Maskování dynamických dat pro Azure SQL Database a Azure synapse Analytics
 
 SQL Database dynamické maskování dat omezuje vystavení citlivých dat jejich maskováním uživatelům bez oprávnění. 
 
@@ -29,7 +30,7 @@ Například zástupce služby v centru volání může identifikovat volajícíc
 
 ## <a name="dynamic-data-masking-basics"></a>Základy dynamického maskování dat
 
-Zásadu dynamického maskování dat v Azure Portal nastavíte tak, že v okně konfigurace SQL Database nebo v okně nastavení vyberete operaci Maskování dynamických dat. Tato funkce se nedá nastavit pomocí portálu pro SQL DW (použijte prosím PowerShell nebo REST API).
+Zásadu dynamického maskování dat v Azure Portal nastavíte tak, že v okně konfigurace SQL Database nebo v okně nastavení vyberete operaci Maskování dynamických dat. Tato funkce se nedá nastavit pomocí portálu pro Azure synapse (použijte prosím PowerShell nebo REST API).
 
 ### <a name="dynamic-data-masking-permissions"></a>Oprávnění k maskování dynamických dat
 

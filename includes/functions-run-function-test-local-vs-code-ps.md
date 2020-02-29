@@ -2,20 +2,20 @@
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 01/16/2020
+ms.date: 02/19/2020
 ms.author: glenga
-ms.openlocfilehash: 916aa2552e5dd004ec767df98ce7c78f7320efd0
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: edf5fc33ec14d41630462cca1a4ace0663473196
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964076"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78191007"
 ---
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
-Azure Functions Core Tools se integruje s Visual Studio Code, aby se mohl spustit a ladit Azure Functions projektu místně.  
+Azure Functions Core Tools se integruje s Visual Studio Code, aby se mohl spustit a ladit Azure Functions projektu místně. Podrobnosti o tom, jak ladit v Visual Studio Code, najdete v tématu [ladění powershellu Azure Functions místně](../articles/azure-functions/functions-debug-powershell-local.md). 
 
-1. Chcete-li ladit funkci, vložte volání rutiny [`Wait-Debugger`](/powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6) v kódu funkce předtím, než budete chtít připojit ladicí program, a stisknutím klávesy F5 spusťte projekt Function App a připojte ladicí program. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**.
+1. Stisknutím klávesy F5 spusťte projekt Function App. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**.
 
 1. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
 
@@ -38,9 +38,6 @@ Azure Functions Core Tools se integruje s Visual Studio Code, aby se mohl spusti
 
     ![Spuštění funkce na panelu terminálu](./media/functions-run-function-test-local-vs-code-ps/function-execution-terminal.png)
 
-1. Pokud chcete zastavit ladění, stisknutím kombinace kláves CTRL + C zastavte základní nástroje.
+1. Po dokončení stiskněte klávesy **CTRL + C** a zastavte základní nástroje.
 
 Po ověření správného fungování funkce na místním počítači je na čase publikovat projekt do Azure.
-
-> [!NOTE]
-> Před publikováním funkcí do Azure nezapomeňte odebrat všechna volání `Wait-Debugger`. 

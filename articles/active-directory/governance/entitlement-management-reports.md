@@ -16,12 +16,12 @@ ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c98a583e2aa8ac679842e16d1c0cc36811db90de
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422556"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190581"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Zobrazení sestav a protokolů v Azure AD – Správa nároků
 
@@ -85,7 +85,7 @@ Pokud chcete získat další podrobnosti o tom, jak si uživatel vyžádal a př
 
 1. V horní části změňte **kategorii** na buď `EntitlementManagement` nebo `UserManagement`, v závislosti na záznamu auditu, který hledáte.  
 
-1. Klikněte na tlačítko **Použít**.
+1. Klikněte na **Použít**.
 
 1. Chcete-li stáhnout protokoly, klikněte na tlačítko **Stáhnout**.
 
@@ -109,5 +109,6 @@ Když platnost přiřazení balíčku přístupu uživatele vyprší, zruší ho
 
 ## <a name="next-steps"></a>Další kroky
 
+- [Archivace sestav a protokolů](entitlement-management-logs-and-reporting.md)
 - [Řešení potíží se správou nároků Azure AD](entitlement-management-troubleshoot.md)
 - [Obvyklé scénáře](entitlement-management-scenarios.md)

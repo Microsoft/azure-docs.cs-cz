@@ -3,20 +3,20 @@ title: Odkaz na kód chyby
 titleSuffix: Azure AD B2C
 description: Seznam kódů chyb, které mohou být vráceny službou Azure Active Directory B2C.
 services: B2C
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 01/10/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c48f7bdd51c9b8c173ee0ebed72ed8c7f4fb51fc
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 5b09b3c19ab1c5b23e56e25afc1d9631cd1caa68
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75735076"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188660"
 ---
 # <a name="error-codes-azure-active-directory-b2c"></a>Kódy chyb: Azure Active Directory B2C
 
@@ -58,10 +58,10 @@ Služba Azure Active Directory B2C může vrátit následující chyby.
 | `AADB2C90052` | Neplatné uživatelské jméno nebo heslo. |
 | `AADB2C90053` | Nepovedlo se najít uživatele se zadaným pověřením. |
 | `AADB2C90054` | Neplatné uživatelské jméno nebo heslo. |
-| `AADB2C90055` | Obor{0}poskytnutý v požadavku musí určovat prostředek, jako je například "https://example.com/calendar.read ". |
+| `AADB2C90055` | Obor{0}poskytnutý v požadavku musí určovat prostředek, jako je například "https://example.com/calendar.read". |
 | `AADB2C90057` | Zadaná aplikace není nakonfigurovaná tak, aby povolovala implicitní tok protokolu OAuth. |
 | `AADB2C90058` | Zadaná aplikace není nakonfigurovaná tak, aby umožňovala veřejné klienty. |
-| `AADB2C90067` | Identifikátor URI přesměrování po odhlášení{0}má neplatný formát. Zadejte adresu URL založenou na protokolu HTTPS, jako je například 'https://example.com/return ' nebo pro nativní klienty použijte identifikátor URI nativního klienta IETF ' urn: IETF: WG: OAuth: 2.0: OOB '. |
+| `AADB2C90067` | Identifikátor URI přesměrování po odhlášení{0}má neplatný formát. Zadejte adresu URL založenou na protokolu HTTPS, jako je například 'https://example.com/return' nebo pro nativní klienty použijte identifikátor URI nativního klienta IETF ' urn: IETF: WG: OAuth: 2.0: OOB '. |
 | `AADB2C90068` | Poskytnutá aplikace s ID '{0}' není platná pro tuto službu. Použijte prosím aplikaci vytvořenou prostřednictvím portálu B2C a zkuste to znovu. |
 | `AADB2C90075` | Výměna deklarací identity{0}zadaná v kroku "{1}" vrátila chybovou odpověď HTTP s kódem "{2}" a důvodem "{3}". |
 | `AADB2C90077` | Uživatel nemá existující relaci a parametr výzvy požadavku má hodnotu{0}. |
@@ -142,7 +142,7 @@ Služba Azure Active Directory B2C může vrátit následující chyby.
 | `AADB2C90284` | Aplikaci s identifikátorem '{0}' nebyla udělena souhlas a nelze ji použít pro místní účty. |
 | `AADB2C90285` | Aplikace s identifikátorem{0}nebyla nalezena. |
 | `AADB2C90288` | UserJourney s ID '{0}' odkazované v TechnicalProfile '{1}' pro uplatnění aktualizačního tokenu pro tenanta '{2}' neexistuje v zásadě '{3}' nebo v žádné z jeho základních zásad. |
-| `AADB2C90289` | Při připojování k poskytovateli identity došlo k chybě. Zkuste to prosím znova později. |
+| `AADB2C90289` | Při připojování k poskytovateli identity došlo k chybě. Zkuste to prosím znovu později. |
 | `AADB2C90296` | Aplikace nebyla správně nakonfigurována. Kontaktujte prosím správce webu, ke kterému se pokoušíte získat přístup. |
 | `AADB2C99005` | Požadavek obsahuje neplatný parametr oboru, který obsahuje neplatný znak '{0}'. |
 | `AADB2C99006` | Azure AD B2C nemůže najít aplikaci rozšíření s ID aplikace{0}. Další informace najdete https://go.microsoft.com/fwlink/?linkid=851224. |

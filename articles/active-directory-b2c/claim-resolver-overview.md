@@ -3,20 +3,20 @@ title: Překladače deklarací identity ve vlastních zásadách
 titleSuffix: Azure AD B2C
 description: Naučte se používat překladače deklarací identity ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/02/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 97e51331657c62094996f79483148f2f441e6a44
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 02277d2da2e431ac1cefdd9b018af4c25f7d5a9a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161597"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189833"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Překladače deklarací identity v Azure Active Directory B2C vlastní zásady
 
@@ -117,9 +117,9 @@ Libovolný název parametru, který je součástí žádosti OIDC nebo OAuth2, s
 | {SAML: ForceAuthn} | Hodnota atributu `ForceAuthN` od `AuthnRequest` elementu požadavku SAML. | True |
 | {SAML: ProviderName} | Hodnota atributu `ProviderName` od `AuthnRequest` elementu požadavku SAML.| Contoso.com |
 
-## <a name="using-claim-resolvers"></a>Použití překladačů deklarací identity 
+## <a name="using-claim-resolvers"></a>Použití překladačů deklarací identity
 
-Překladače deklarací identity můžete použít s následujícími prvky: 
+Překladače deklarací identity můžete použít s následujícími prvky:
 
 | Položka | Prvek | Nastavení |
 | ----- | ----------------------- | --------|
@@ -135,7 +135,7 @@ Překladače deklarací identity můžete použít s následujícími prvky:
 |[ContentDefinitionParameters](relyingparty.md#contentdefinitionparameters)| `Parameter` | |
 |[RelyingParty](relyingparty.md#technicalprofile) Technical Profile| `OutputClaim`| 2 |
 
-Možnost 
+Možnost
 1. Metadata `IncludeClaimResolvingInClaimsHandling` musí být nastavena na hodnotu `true`.
 1. Vstupní nebo výstupní atribut deklarace identity `AlwaysUseDefaultValue` musí být nastaven na hodnotu `true`.
 
@@ -195,7 +195,7 @@ V důsledku toho Azure AD B2C odesílá výše uvedené parametry na stránku ob
 
 ### <a name="content-definition"></a>Definice obsahu
 
-V [ContentDefinition](contentdefinitions.md) `LoadUri`můžete posílat překladače deklarací identity na vyžádání obsahu z různých míst na základě použitých parametrů. 
+V [ContentDefinition](contentdefinitions.md) `LoadUri`můžete posílat překladače deklarací identity na vyžádání obsahu z různých míst na základě použitých parametrů.
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -224,7 +224,7 @@ Díky Azure Application Insights a překladačům deklarací identity můžete z
 
 ### <a name="relying-party-policy"></a>Zásady předávající strany
 
-V technickém profilu zásad [předávající strany](relyingparty.md) můžete chtít odeslat ID TENANTA nebo ID korelace do aplikace předávající strany v rámci tokenu JWT. 
+V technickém profilu zásad [předávající strany](relyingparty.md) můžete chtít odeslat ID TENANTA nebo ID korelace do aplikace předávající strany v rámci tokenu JWT.
 
 ```XML
 <RelyingParty>

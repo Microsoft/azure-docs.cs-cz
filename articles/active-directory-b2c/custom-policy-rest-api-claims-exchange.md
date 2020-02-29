@@ -2,20 +2,20 @@
 title: REST API výměn deklarací identity – Azure Active Directory B2C
 description: Přidejte REST API výměny deklarací identity do vlastních zásad v Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1caf0b3f6396cc008e77bb96e686fe78f462850b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 351b41f45fb84384ec0193f8e3130347d0b19401
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76849094"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189085"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Přidání výměn deklarací identity REST API do vlastních zásad v Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Scénář, který je reprezentován v tomto článku, zahrnuje následující ak
 2. Získejte město, kde je tento uživatel zaregistrován.
 3. Vrátí tento atribut do aplikace jako deklaraci identity.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md).
 - REST API koncový bod, se kterým chcete pracovat. V tomto článku se jako příklad používá jednoduchá funkce Azure Functions. Pokud chcete vytvořit funkci Azure Functions, přečtěte si téma [Vytvoření první funkce v Azure Portal](../azure-functions/functions-create-first-azure-function.md).

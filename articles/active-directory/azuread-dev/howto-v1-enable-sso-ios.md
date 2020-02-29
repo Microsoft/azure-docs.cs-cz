@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7ea65b64e5a812b717f065c1d8cc6208e0c0ba69
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 00ec2d328265e8d301b9f54b9a6a2013072f1ed4
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164562"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190275"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Postupy: povolení jednotného přihlašování mezi aplikacemi v iOS pomocí ADAL
 
@@ -109,7 +109,7 @@ Pokud je na zařízení nainstalovaný kompatibilní zprostředkovatel, jako je 
 
 #### <a name="how-we-ensure-the-application-is-valid"></a>Jak zajišťujeme platnost aplikace
 
-Je nutné zajistit, aby identita aplikace volala zprostředkovatel pro zabezpečení, které poskytujeme v přihlašování s asistencí pro zprostředkovatele. IOS ani Android vynucuje jedinečné identifikátory, které jsou platné jenom pro danou aplikaci, takže škodlivé aplikace můžou mít falešný identifikátor aplikace a obdrží tokeny určené pro legitimní aplikaci. Abychom zajistili, že vždycky komunikujeme se správnou aplikací za běhu, požádáme vývojáře, aby při registraci aplikace do Microsoftu poskytl vlastní redirectURI. Jak by měli vývojáři vytvořit tento identifikátor URI přesměrování, je podrobněji popsán níže. Tento vlastní redirectURI obsahuje ID sady prostředků aplikace a zajišťuje, aby aplikace byla pro Apple App Store jedinečná. Když aplikace volá zprostředkovatele, vyžádá si operační systém iOS, aby mu poskytl ID sady, které volalo zprostředkovatele. Zprostředkovatel poskytuje toto ID sady prostředků Microsoftu ve volání našeho systému identity. Pokud ID sady prostředků aplikace neodpovídá ID sady, které nám poskytla vývojář během registrace, odepřeme přístup k tokenům pro prostředek, který aplikace požaduje. Tato kontrolu zajistí, že tokeny obdrží jenom aplikace zaregistrovaná vývojářem.
+Potřeba zajistit, aby identita aplikace, která volá zprostředkovatele, byla zásadní pro zabezpečení poskytnuté v přihlašování s asistencí pro zprostředkovatele. IOS ani Android vynucuje jedinečné identifikátory, které jsou platné jenom pro danou aplikaci, takže škodlivé aplikace můžou mít falešný identifikátor aplikace a obdrží tokeny určené pro legitimní aplikaci. Abychom zajistili, že vždycky komunikujeme se správnou aplikací za běhu, požádáme vývojáře, aby při registraci aplikace do Microsoftu poskytl vlastní redirectURI. Jak by měli vývojáři vytvořit tento identifikátor URI přesměrování, je podrobněji popsán níže. Tento vlastní redirectURI obsahuje ID sady prostředků aplikace a zajišťuje, aby aplikace byla pro Apple App Store jedinečná. Když aplikace volá zprostředkovatele, vyžádá si operační systém iOS, aby mu poskytl ID sady, které volalo zprostředkovatele. Zprostředkovatel poskytuje toto ID sady prostředků Microsoftu ve volání našeho systému identity. Pokud ID sady prostředků aplikace neodpovídá ID sady, které nám poskytla vývojář během registrace, odepřeme přístup k tokenům pro prostředek, který aplikace požaduje. Tato kontrolu zajistí, že tokeny obdrží jenom aplikace zaregistrovaná vývojářem.
 
 **Vývojář má možnost zvolit, zda sada SDK volá zprostředkovatele nebo používá tok, který není s asistencí zprostředkovatelem.** Pokud se ale vývojář rozhodne nepoužívat tok s asistencí pro zprostředkovatele, ztratí výhody použití přihlašovacích údajů jednotného přihlašování, které uživatel už mohl přidat do zařízení, a zabrání jeho použití s obchodními funkcemi, které Microsoft poskytuje. Zákazníci, jako je podmíněný přístup, možnosti správy Intune a ověřování na základě certifikátů.
 

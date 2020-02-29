@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Správa výpočtů pomocí Azure Functions'
-description: Použití funkcí Azure ke správě výpočetního výkonu datového skladu.
+description: Jak používat Azure Functions ke správě výpočetních prostředků vašeho fondu SQL ve službě Azure synapse Analytics.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -10,27 +10,27 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: bc350ed092c063dcc7eca479f064114be9eb28f5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: a08c2c3c0167f0d82fe901e19b02db22b0ad56c5
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693018"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193129"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Správa výpočetních prostředků v Azure SQL Data Warehouse pomocí Azure Functions
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Použití Azure Functions ke správě výpočetních prostředků ve fondu SQL Azure synapse Analytics
 
-V tomto kurzu se používá Azure Functions ke správě výpočetních prostředků pro datový sklad v Azure SQL Data Warehouse.
+V tomto kurzu se používá Azure Functions ke správě výpočetních prostředků pro fond SQL ve službě Azure synapse Analytics.
 
-Abyste mohli používat aplikaci Azure Function App se službou SQL Data Warehouse, musíte ve stejném předplatném jako instanci datového skladu vytvořit [účet instančního objektu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) s přístupem Přispěvatel. 
+Aby bylo možné používat Azure Function App s fondem SQL, je nutné vytvořit [účet instančního objektu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) s přístupem přispěvatele v rámci stejného předplatného, jako je vaše instance fondu SQL. 
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Nasazení škálování založeného na časovači pomocí šablony Azure Resource Manager
 
 K nasazení šablony potřebujete následující informace:
 
-- Název skupiny prostředků, ve které je vaše instance SQL Data Warehouse
-- Název logického serveru, na kterém je vaše instance SQL Data Warehouse
-- Název vaší instance SQL Data Warehouse
+- Název skupiny prostředků, ve které je vaše instance fondu SQL
+- Název logického serveru, ve kterém je vaše instance fondu SQL
+- Název vaší instance fondu SQL
 - ID tenanta (ID adresáře) vaší služby Azure Active Directory
 - ID předplatného 
 - ID aplikace instančního objektu
@@ -119,17 +119,17 @@ Aktuálně jsou součástí šablony pouze dvě škálovací funkce. Pomocí tě
 5. Nastavte proměnnou operace na požadované chování následujícím způsobem:
 
    ```javascript
-   // Resume the data warehouse instance
+   // Resume the SQL pool instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the data warehouse instance
+   // Pause the SQL pool instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the data warehouse instance to DW600
+   // Scale the SQL pool instance to DW600
    var operation = {
        "operationType": "ScaleDw",
        "ServiceLevelObjective": "DW600"
@@ -177,7 +177,7 @@ Vertikální navýšení kapacity v 8:00 na úroveň DW1000 a jedno vertikální
 
 Přečtěte si další informace o [triggeru časovače](../azure-functions/functions-create-scheduled-function.md) pro funkce Azure.
 
-Podívejte se na [úložiště ukázek](https://github.com/Microsoft/sql-data-warehouse-samples) pro službu SQL Data Warehouse.
+Zarezervujte [úložiště ukázek](https://github.com/Microsoft/sql-data-warehouse-samples)fondů SQL.
 
 
 

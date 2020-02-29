@@ -2,20 +2,20 @@
 title: ID lokalizačních řetězců – Azure Active Directory B2C | Microsoft Docs
 description: Zadejte ID definice obsahu s ID API. signuporsignin ve vlastních zásadách v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/03/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd5e543a6d5dc2b59847a78bd925be68f8cdde25
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 3af62a75228959478a80c2628307fff2b47c3c4a
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76982853"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187487"
 ---
 # <a name="localization-string-ids"></a>ID řetězců lokalizací
 
@@ -29,7 +29,7 @@ Pro definici obsahu s ID `api.signuporsignin`se použijí následující identif
 
 | ID | Výchozí hodnota |
 | -- | ------------- |
-| **local_intro_email** | Přihlaste se pomocí svého existujícího účtu |
+| **local_intro_email** | Přihlásit pomocí stávajícího účtu |
 | **logonIdentifier_email** | E-mailová adresa |
 | **requiredField_email** | Zadejte prosím svůj e-mail. |
 | **invalid_email** | Zadejte prosím platnou e-mailovou adresu. |
@@ -37,7 +37,7 @@ Pro definici obsahu s ID `api.signuporsignin`se použijí následující identif
 | **local_intro_username** | Přihlaste se pomocí svého uživatelského jména. |
 | **logonIdentifier_username** | Uživatelské jméno |
 | **requiredField_username** | Zadejte prosím svoje uživatelské jméno. |
-| **Heslo** | Heslo |
+| **zadáno** | Heslo |
 | **requiredField_password** | Zadejte prosím svoje heslo. |
 | **invalid_password** | Heslo, které jste zadali, není v očekávaném formátu. |
 | **forgotpassword_link** | Zapomněli jste heslo? |
@@ -45,10 +45,10 @@ Pro definici obsahu s ID `api.signuporsignin`se použijí následující identif
 | **createaccount_link** | Zaregistrujte se |
 | **divider_title** | NEBO |
 | **cancel_message** | Uživatel zapomněl svoje heslo. |
-| **button_signin** | Přihlásit se |
-| **social_intro** | Přihlaste se pomocí účtu sociální sítě. |
-  **remember_me** |Zůstat přihlášeni|
-| **unknown_error** | Máme potíže s přihlášením. Zkuste to prosím znova později. |
+| **button_signin** | Přihlášení |
+| **social_intro** | Přihlásit pomocí sociálního účtu |
+  **remember_me** |Neodhlašovat|
+| **unknown_error** | Máme potíže s přihlášením. Zkuste to prosím znovu později. |
 
 Následující příklad ukazuje použití některých prvků uživatelského rozhraní na přihlašovací stránce nebo na přihlašovací stránce:
 
@@ -104,25 +104,25 @@ Níže jsou uvedená ID pro definici obsahu s ID `api.localaccountsignup` nebo j
 | **ver_but_send** | Odeslat ověřovací kód |
 | **alert_yes** | Ano |
 | **error_fieldIncorrect** | Některá pole jsou vyplněna nesprávně. Zkontrolujte prosím své položky a zkuste to znovu. |
-| **jednolet** | Year |
+| **jednolet** | Rok |
 | **verifying_blurb** | Počkejte prosím, než zpracujeme vaše informace. |
 | **button_cancel** | Zrušit |
-| **ver_fail_no_retry** | Provedli jste příliš mnoho nesprávných pokusů. Zkuste to prosím znova později. |
-| **měsíčně** | Month |
+| **ver_fail_no_retry** | Provedli jste příliš mnoho nesprávných pokusů. Zkuste to prosím znovu později. |
+| **měsíčně** | Měsíc |
 | **ver_success_msg** | E-mailová adresa byla ověřena. Nyní můžete pokračovat. |
 | **months** | Leden, únor, březen, duben, květen, červen, červenec, srpen, září, říjen, listopad, prosinec |
 | **ver_fail_server** | Při ověřování vaší e-mailové adresy máme problémy. Zadejte prosím platnou e-mailovou adresu a zkuste to znovu. |
 | **error_requiredFieldMissing** | Chybí povinné pole. Vyplňte prosím všechna povinná pole a zkuste to znovu. |
 | **initial_intro** | Zadejte prosím následující údaje. |
 | **ver_but_resend** | Poslat nový kód |
-| **button_continue** | Vytváření |
+| **button_continue** | Vytvoření |
 | **error_passwordEntryMismatch** | Pole pro zadání hesla se neshodují. Zadejte prosím do obou polí stejné heslo a zkuste to znovu. |
 | **ver_incorrect_format** | Nesprávný formát |
 | **ver_but_edit** | Změnit e-mail |
 | **ver_but_verify** | Ověřit kód |
 | **alert_no** | Ne |
 | **ver_info_msg** | Ověřovací kód byl odeslán do vaší doručené pošty. Zkopírujte ho prosím do následujícího pole pro zadání. |
-| **dnu** | Den |
+| **dnu** | Day |
 | **ver_fail_throttled** | Existuje příliš mnoho žádostí o ověření této e-mailové adresy. Chvíli prosím počkejte a pak to zkuste znovu. |
 | **helplink_text** | Co to je? |
 | **ver_fail_retry** | Kód je nesprávný. Zkuste to prosím znovu. |
@@ -182,7 +182,7 @@ Níže jsou uvedené identifikátory pro definici obsahu s ID `api.phonefactor`.
 | **invalid_number** | Zadejte prosím platné telefonní číslo. |
 | **intro_sms** | Pro vás budeme nahrávat následující číslo. Prostřednictvím SMS vám pošleme kód, abychom vás ověřili. |
 | **intro_entry_mixed** | Níže zadejte číslo, které vám můžeme poslat kód přes SMS nebo telefon, abychom vás ověřili. |
-| **number_pattern** | ^\\+(?:[0-9][\\x20-]?){6,14}[0-9]$ |
+| **number_pattern** | ^\\+ (?: [0-9] [\\x20-]?){6,14}[0-9] $ |
 | **intro_sms_p** |Pro vás budeme nahrávat následující čísla. Vyberte číslo, na které můžeme poslat kód prostřednictvím SMS, abychom vás mohli ověřit. |
 | **requiredField_countryCode** | Vyberte prosím kód země. |
 | **requiredField_number** | Zadejte prosím svoje telefonní číslo. |

@@ -3,20 +3,20 @@ title: Vlastní ověřování e-mailů
 titleSuffix: Azure AD B2C
 description: Naučte se, jak přizpůsobit ověřovací e-mail odesílaný zákazníkům při registraci k používání aplikací s podporou Azure AD B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/05/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2bda00924015bf5abc616b7c346eacfeda53c2ed
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 32747e0e7bb1f979203fa886647712e0fd69faee
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045941"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189527"
 ---
 # <a name="custom-email-verification-in-azure-active-directory-b2c"></a>Ověření vlastního e-mailu v Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Ujistěte se, že jste dokončili oddíl, ve kterém [vytvoříte klíč rozhran
 
 V dalším kroku uložte klíč rozhraní API SendGrid do klíče zásad Azure AD B2C, aby se zásady odkazovaly na.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com/).
 1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte filtr **adresář + odběr** a zvolte adresář Azure AD B2C.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled vyberte možnost **Architektura prostředí identity**.
@@ -45,7 +45,7 @@ V dalším kroku uložte klíč rozhraní API SendGrid do klíče zásad Azure A
 1. Zadejte **název** klíče zásad. například `SendGridSecret`. `B2C_1A_` předpony se automaticky přidají do názvu vašeho klíče.
 1. Do **tajného klíče**zadejte tajný klíč klienta, který jste předtím nahráli.
 1. Pro **použití klíče**vyberte `Signature`.
-1. Vyberte **Create** (Vytvořit).
+1. Vyberte **Vytvořit**.
 
 ## <a name="create-sendgrid-template"></a>Vytvořit šablonu SendGrid
 

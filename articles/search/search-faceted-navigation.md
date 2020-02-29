@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112079"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78190649"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementace omezující navigace v Azure Kognitivní hledání
 
@@ -34,9 +34,9 @@ Při vývoji aplikací psaní kódu, který vytváří dotazy, představuje hrom
 ## <a name="sample-code-and-demo"></a>Ukázkový kód a ukázka
 Tento článek používá jako příklad portál pro hledání úloh. Příklad je implementován jako aplikace ASP.NET MVC.
 
--   Ukázka a testování pracovní ukázky online na webu [Azure kognitivní hledání ukázka portálu úloh](https://azjobsdemo.azurewebsites.net/).
+- Ukázka a testování pracovní ukázky online na webu [Azure kognitivní hledání ukázka portálu úloh](http://azjobsdemo.azurewebsites.net/).
 
--   Stáhněte si kód z [úložiště ukázek Azure na GitHubu](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
+- Stáhněte si kód z [úložiště ukázek Azure na GitHubu](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
 ## <a name="get-started"></a>Začínáme
 Pokud začínáte s vývojem pro hledání, nejlepším způsobem, jak si představit možnost navigace, je, že se zobrazí možnosti samoobslužného vyhledávání. Je to typ možností vyhledávání v podrobnostech na základě předdefinovaných filtrů, které se používají pro rychlé zúžení výsledků hledání prostřednictvím akcí typu Point-to-Click. 
@@ -67,7 +67,7 @@ V Azure Kognitivní hledání je požadavek zadaný prostřednictvím jednoho ne
 
 Přesnost, která se považuje za schopnost vyfiltrovat nepodstatné přístupy, se dosahuje prostřednictvím jednoho nebo obou těchto výrazů:
 
--   **search=**  
+-   **Hledat =**  
     Hodnota tohoto parametru představuje hledaný výraz. Může se jednat o jednotlivý text nebo složitý vyhledávací výraz, který obsahuje více podmínek a operátorů. Na serveru se vyhledávací výraz používá pro fulltextové vyhledávání, dotazování na hledaná pole v indexu pro vyhovující výrazy a vrácení výsledků v pořadí řazení. Nastavíte-li `search` na hodnotu null, provádění dotazu bude po celém indexu (tj. `search=*`). V tomto případě jsou další prvky dotazu, jako je `$filter` nebo profil vyhodnocování, primární faktory, které mají vliv na to, které dokumenty se vrátí `($filter`) a v jakém pořadí (`scoringProfile` nebo `$orderby`).
 
 -   **$filter =**  
@@ -395,7 +395,7 @@ Při práci s výsledky hledání Sledujte adresu URL pro změny v vytváření 
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>Víc se uč
+## <a name="learn-more"></a>Další informace
 Podívejte se na [Azure kognitivní hledání podrobně s hloubkou](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). V 45:25 je k dispozici ukázka implementace omezujících vlastností.
 
 Další informace o principech návrhu pro návrhovou navigaci vám doporučujeme tyto odkazy:

@@ -3,20 +3,20 @@ title: ContentDefinitions
 titleSuffix: Azure AD B2C
 description: Zadejte element ContentDefinitions vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/17/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd6a24c768056c949c05b9e2444bd49ef743c0ef
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425625"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189578"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -143,7 +143,7 @@ Element **Item** elementu **metadata** obsahuje následující atributy:
 
 #### <a name="metadata-keys"></a>Klíče metadat
 
-Definice obsahu podporuje následující položky metadat: 
+Definice obsahu podporuje následující položky metadat:
 
 | Klíč | Požaduje se | Popis |
 | --------- | -------- | ----------- |

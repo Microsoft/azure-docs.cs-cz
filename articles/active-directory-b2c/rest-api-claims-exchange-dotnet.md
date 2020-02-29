@@ -3,20 +3,20 @@ title: Integrace REST APIch výměn deklarací identity v cestě uživatele
 titleSuffix: Azure AD B2C
 description: Integrujte REST API výměn deklarací identity v cestě uživatele Azure AD B2C jako ověření vstupu uživatele.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 780d575bd7f035673510d5b1e62cff4dfd6ede16
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5976b6ef747b27a5a04c755d47ae4383fc4b2447
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848756"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187351"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrace REST APIch výměn deklarací identity v cestě uživatele Azure AD B2C jako ověření vstupu uživatele
 
@@ -24,7 +24,7 @@ ms.locfileid: "76848756"
 
 S architekturou prostředí identity, která je Azure Active Directory B2C (Azure AD B2C), můžete integrovat s rozhraním API RESTful v cestě uživatele. V tomto návodu se dozvíte, jak Azure AD B2C komunikuje s .NET Framework RESTful Services (webové rozhraní API).
 
-## <a name="introduction"></a>Představení
+## <a name="introduction"></a>Úvod
 
 Pomocí Azure AD B2C můžete přidat vlastní obchodní logiku k cestě uživatele voláním vlastní služby RESTful. Rozhraní identity Experience Framework odesílá data službě RESTful ve *vstupní kolekci deklarací* a přijímá data zpět z RESTful ve *výstupní kolekci deklarací* . S integrací služby RESTful můžete:
 
@@ -57,7 +57,7 @@ Přehled:
 * Poslat číslo loajality zpět
 * Přidat věrnostní číslo do JSON Web Token (JWT)
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Proveďte kroky popsané v článku [Začínáme s vlastními zásadami](custom-policy-get-started.md) .
 

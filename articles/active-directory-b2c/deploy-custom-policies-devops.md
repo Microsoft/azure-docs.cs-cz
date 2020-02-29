@@ -3,20 +3,20 @@ title: Nasazení vlastních zásad pomocí Azure Pipelines
 titleSuffix: Azure AD B2C
 description: Naučte se, jak nasadit Azure AD B2C vlastní zásady v kanálu CI/CD pomocí Azure Pipelines v Azure DevOps Services.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8649537a2992ba11a2b664a9b36207e06c8b1274
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: b23b60ae49a4973fa04e6fa5f795f99536e32e7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498543"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188745"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Nasazení vlastních zásad pomocí Azure Pipelines
 
@@ -31,7 +31,7 @@ Pro povolení Azure Pipelines správy vlastních zásad v rámci Azure AD B2C js
 > [!IMPORTANT]
 > Správa Azure AD B2C vlastních zásad pomocí kanálu Azure aktuálně používá operace ve **verzi Preview** , které jsou k dispozici ve službě Microsoft Graph API `/beta` koncového bodu. Použití těchto rozhraní API v produkčních aplikacích není podporováno. Další informace najdete v referenčních informacích ke [koncovému bodu Microsoft Graph REST API beta](https://docs.microsoft.com/graph/api/overview?toc=./ref/toc.json&view=graph-rest-beta).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * [Azure AD B2C tenant](tutorial-create-tenant.md)a přihlašovací údaje uživatele v adresáři s rolí [správce zásad IEF B2C](../active-directory/users-groups-roles/directory-assign-admin-roles.md#b2c-ief-policy-administrator)
 * [Vlastní zásady](custom-policy-get-started.md) odeslané do vašeho tenanta
@@ -209,7 +209,7 @@ Měl by se zobrazit informační zpráva s oznámením, že vydaná verze byla z
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace pro:
+Další informace:
 
 * [Volání služby mezi službami pomocí přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
 * [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/?view=azure-devops)

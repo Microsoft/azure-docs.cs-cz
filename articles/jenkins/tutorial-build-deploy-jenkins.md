@@ -4,12 +4,12 @@ description: V tomto kurzu se naučíte, jak nastavit kontinuální integraci (C
 keywords: Jenkinse, Azure, DevOps, Virtual Machine, cicd
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 380d547aaee68ad40ae12a4836826d2addae3a18
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: cae28b293a6217996b44c839dc8836ec940c3155
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77606465"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192604"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Kurz: Nasazení aplikace na linuxové virtuální počítače v Azure pomocí Jenkins a Azure DevOps Services
 
@@ -29,7 +29,7 @@ do [skupiny nasazení](https://docs.microsoft.com/azure/devops/pipelines/release
 > * Vytvořte kanál verze Azure Pipelines.
 > * Ruční nasazení nebo nasazení aktivované přes CI
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Potřebujete přístup k serveru Jenkins. Pokud jste ještě nevytvořili server Jenkins, přečtěte si článek o [vytvoření hlavní databáze Jenkins ve virtuálním počítači Azure](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template). 
 
@@ -96,9 +96,9 @@ Nejprve musíte nakonfigurovat dva moduly plug-in Jenkins: **NodeJS** a **VS Tea
 5. Vyberte **Trigger release in TFS/Team Services** (Aktivovat vydanou verzi v TFS/Team Services). Zadejte identifikátor URI organizace služby Azure DevOps Services, například **https://{název vaší organizace}.visualstudio.com**.
 6. Zadejte název **projektu**.
 7. Zvolte název pro kanál verze. (Tento kanál verze vytvoříte ve službě Azure DevOps Services později.)
-8. Zvolte přihlašovací údaje pro připojení k prostředí Azure DevOps Services nebo Team Foundation Server:
+8. Vyberte přihlašovací údaje pro připojení k vašemu Azure DevOps Services nebo Azure DevOps Server prostředí:
    - Pokud používáte Azure DevOps Services, nechejte **Uživatelské jméno** prázdné. 
-   - Pokud používáte místní verzi Team Foundation Serveru, zadejte uživatelské jméno a heslo.    
+   - Pokud používáte místní verzi Azure DevOps Server, zadejte uživatelské jméno a heslo.    
    ![Konfigurace akcí po sestavení v Jenkins](media/tutorial-build-deploy-jenkins/trigger-release-from-jenkins.png)
 5. Uložte projekt Jenkins.
 

@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/14/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.custom: azure-synapse
+ms.openlocfilehash: 69a200d4fda940f072960da9224f84a22db51647
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029943"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78193794"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure synapse Analytics – úlohy monitorování Portál pro správu (Preview)
-Tento článek vysvětluje, jak monitorovat využití prostředků [skupiny úloh](sql-data-warehouse-workload-isolation.md#workload-groups) a aktivity dotazů. Podrobnosti o tom, jak nakonfigurovat Azure Průzkumník metrik, najdete v článku [Začínáme s azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md) .  Podrobnosti o tom, jak monitorovat spotřebu systémových prostředků, najdete v části věnované [využití prostředků](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) v dokumentaci Azure SQL Data Warehouse monitoring.
+Tento článek vysvětluje, jak monitorovat využití prostředků [skupiny úloh](sql-data-warehouse-workload-isolation.md#workload-groups) a aktivity dotazů. Podrobnosti o tom, jak nakonfigurovat Azure Průzkumník metrik, najdete v článku [Začínáme s azure Průzkumník metrik](../azure-monitor/platform/metrics-getting-started.md) .  Podrobnosti o tom, jak monitorovat spotřebu systémových prostředků, najdete v části věnované [využití prostředků](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) v dokumentaci monitorování Azure synapse Analytics.
 Existují dvě různé kategorie metrik skupin úloh, které jsou k dispozici pro správu úloh monitorování: přidělování prostředků a aktivita dotazů.  Tyto metriky je možné rozdělit a filtrovat podle skupiny úloh.  Metriky je možné rozdělit a filtrovat podle toho, jestli jsou definované systémem (skupiny úloh třídy prostředků), nebo uživatelem definované (vytvořené uživatelem s syntaxí [skupiny úloh Create](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) ).
 
 ## <a name="workload-management-metric-definitions"></a>Definice metrik správy úloh

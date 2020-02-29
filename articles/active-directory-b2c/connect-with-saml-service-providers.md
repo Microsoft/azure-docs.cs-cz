@@ -3,21 +3,21 @@ title: Konfigurace Azure AD B2C IdP jako SAML pro vaše aplikace
 title-suffix: Azure AD B2C
 description: Jak nakonfigurovat Azure AD B2C pro poskytování kontrolních výrazů protokolu SAML vašim aplikacím (poskytovatelům služeb). Azure AD B2C bude fungovat jako IdP (Single identity Provider) do vaší aplikace SAML.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: be7d798d96e61d1d753e130c5e4ad6a479f391fc
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 1c362cd2924de73b2e40e634fe554ff1526e09d8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77912236"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189646"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -63,7 +63,7 @@ Pokud ještě nemáte poskytovatele služby SAML a přidruženého koncového bo
 
 ## <a name="1-set-up-certificates"></a>1. nastavení certifikátů
 
-Chcete-li vytvořit vztah důvěryhodnosti mezi vaším poskytovatelem služeb a Azure AD B2C, je nutné zadat certifikáty x509 a jejich privátní klíče.
+Chcete-li vytvořit vztah důvěryhodnosti mezi vaším poskytovatelem služeb a Azure AD B2C, je nutné zadat certifikáty webové aplikace x509.
 
 * **Certifikáty poskytovatele služeb**
   * Certifikát s privátním klíčem uloženým ve vaší webové aplikaci. Tento certifikát používá poskytovatel služeb k podepsání žádosti SAML odeslané na Azure AD B2C. Azure AD B2C přečte veřejný klíč z metadat poskytovatele služby a ověří podpis.

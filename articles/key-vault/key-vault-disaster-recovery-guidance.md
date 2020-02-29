@@ -5,25 +5,26 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c0fed80f4ba9815cee49bc9968d542f168570986
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 530ae2b795b4d94802e9f0d3420f7b3af86936ad
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976367"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184634"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault dostupnost a redundance
 
 Azure Key Vault funkce více vrstev redundance, aby se zajistilo, že vaše klíče a tajné kódy zůstanou k dispozici pro vaši aplikaci, i když jednotlivé komponenty služby selžou.
 
-Obsah trezoru klíčů se replikuje v rámci oblasti a do sekundární oblasti minimálně 150 kilometrů, ale ve stejné geografické oblasti. Tím se zachovává vysoká odolnost klíčů a tajných kódů. Podrobnosti o dvojicích konkrétních oblastí najdete v dokumentu s spárovanými oblastmi [Azure](../best-practices-availability-paired-regions.md) .
+Obsah trezoru klíčů se replikuje v rámci oblasti a do sekundární oblasti minimálně 150 kilometrů, ale ve stejné geografické oblasti. Tím se zachovává vysoká odolnost klíčů a tajných kódů. Podrobnosti o dvojicích konkrétních oblastí najdete v dokumentu s [spárovanými](../best-practices-availability-paired-regions.md) oblastmi Azure.
 
 Pokud jednotlivé komponenty v rámci služby trezoru klíčů selžou, alternativní komponenty v rámci této oblasti v rámci vaší žádosti budou sloužit k tomu, aby se zajistilo, že nedojde k žádnému zhoršení funkčnosti. K aktivaci této akce není nutné provádět žádnou akci. K tomu dochází automaticky a pro vás bude transparentní.
 
-V vzácných událostech, že celá oblast Azure není k dispozici, jsou požadavky, které provedete Azure Key Vault v této oblasti, automaticky směrovány (převzetí služeb při*selhání*) do sekundární oblasti. Pokud je primární oblast opět k dispozici, požadavky se přesměrují zpět (po*obnovení*) do primární oblasti. Znovu nemusíte provádět žádnou akci, protože k tomu dochází automaticky.
+V vzácných událostech, že celá oblast Azure není k dispozici, jsou požadavky, které provedete Azure Key Vault v této oblasti, automaticky směrovány (*převzetí*služeb při selhání) do sekundární oblasti. Pokud je primární oblast opět k dispozici, požadavky se přesměrují zpět (po*obnovení*) do primární oblasti. Znovu nemusíte provádět žádnou akci, protože k tomu dochází automaticky.
 
 Tento návrh vysoké dostupnosti Azure Key Vault nevyžaduje pro aktivity údržby žádné výpadky.
 
@@ -37,12 +38,12 @@ Je potřeba mít na paměti několik upozornění:
   * Získání tajných kódů
   * Zobrazit seznam klíčů
   * Získat klíče (vlastnosti)
-  * Šifrovat
-  * Dešifrovat
+  * Šifrování
+  * Dešifrování
   * Balí
   * Rozbalení
-  * Ověření
-  * Podepsat
-  * Zálohovat
+  * Ověřit
+  * Osobě
+  * Backup
 * Po převzetí služeb při selhání se vrátí všechny typy požadavků (včetně požadavků *na čtení a* zápis).
 

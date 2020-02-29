@@ -1,6 +1,6 @@
 ---
 title: Videa
-description: Odkazuje na různé seznamy stop videa pro Azure SQL Data Warehouse.
+description: Odkazuje na různé seznamy stop videa pro Azure synapse Analytics.
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d01ff2eb74844997eb1640123e4af59abe2340b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: bc6d0aed017dea46a781ca2b1d8d238e9d761e1b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692433"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192162"
 ---
-# <a name="azure-sql-data-warehouse---videos"></a>Azure SQL Data Warehouse – videa
+# <a name="azure-synapse-analytics---sql-pool-videos"></a>Azure synapse Analytics – videa o fondech SQL
 
-Podívejte se na nejnovější Azure SQL Data Warehouse videa a seznamte se s novými funkcemi a vylepšeními výkonu. 
+Podívejte se na nejnovější videa ke fondu SQL Azure synapse a seznamte se s novými funkcemi a vylepšeními výkonu. 
 
-Pokud chcete začít, podívejte se na následující video s přehledem, kde se dozvíte o nových aktualizacích Azure SQL Data Warehouse. Seznamte se také s tím, jak se dají vzory moderních datových skladů použít k řešení reálných scénářů, jako je kybernetická.
+Pokud chcete začít, podívejte se na následující video s přehledem, kde se dozvíte o nových aktualizacích fondu SQL Azure synapse. Seznamte se také s tím, jak se dají vzory moderních datových skladů použít k řešení reálných scénářů, jako je kybernetická.
 </br>
 
 <a href="https://www.youtube.com/watch?v=7MDCWgxPnVY&list=PLXtHYVsvn_b_v4EKljH6dGo9qJ7JjItWL&index=2">

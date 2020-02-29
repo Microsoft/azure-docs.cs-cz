@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/01/2019
-ms.openlocfilehash: 55cddf5317938dea353517cde7260a1aa531d1df
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.date: 02/28/2020
+ms.openlocfilehash: f496f6c06d36f817b0a933bdc68d5c53f308e3f2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77061254"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78192621"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Použití úložiště Azure s clustery Azure HDInsight
 
@@ -28,7 +28,7 @@ V tomto článku se dozvíte, jak služba Azure Storage pracuje s clustery HDIns
 | Druh účtu úložiště | Podporované služby | Podporované úrovně výkonu | Podporované úrovně přístupu |
 |----------------------|--------------------|-----------------------------|------------------------|
 | StorageV2 (obecné účely v2)  | Objekt blob     | Standard                    | Horká, studená, archivní\*   |
-| Storage (pro obecné účely V1)   | Objekt blob     | Standard                    | Není k dispozici                    |
+| Storage (pro obecné účely V1)   | Objekt blob     | Standard                    | neuvedeno                    |
 | BlobStorage                    | Objekt blob     | Standard                    | Horká, studená, archivní\*   |
 
 Pro ukládání obchodních dat nedoporučujeme používat výchozí kontejner objektů BLOB. Ideální postup je výchozí kontejner objektů blob po každém použití odstranit a snížit tak náklady na úložiště. Výchozí kontejner obsahuje protokoly aplikací a systému. Než odstraníte kontejner, nezapomeňte tyto protokoly načíst.
@@ -38,7 +38,7 @@ Sdílení jednoho kontejneru objektů BLOB jako výchozího systému souborů pr
 > [!NOTE]  
 > Úroveň přístupu archivu je offline vrstva s odezvou na několik hodin a nedoporučuje se pro použití se službou HDInsight. Další informace najdete v tématu [archivní úroveň přístupu](../storage/blobs/storage-blob-storage-tiers.md#archive-access-tier).
 
-## <a name="access-files-from-the-cluster"></a>Přístup k souborům z clusteru
+## <a name="access-files-from-within-cluster"></a>Přístup k souborům v rámci clusteru
 
 Existuje několik způsobů, jak můžete přistupovat k souborům v Data Lake Storage z clusteru HDInsight. Schéma identifikátoru URI poskytuje nezašifrovaný přístup (s předponou *wasb:* ) a zašifrovaný přístup SSL (s *wasbs*). Doporučujeme používat *wasbs* kdykoli je to možné, i v případě přístupu k datům, umístěným uvnitř stejné oblasti v Azure.
 
@@ -122,6 +122,17 @@ LOCATION 'wasbs:///example/data/';
 LOCATION '/example/data/';
 ```
 
+## <a name="access-files-from-outside-cluster"></a>Přístup k souborům z vnějšího clusteru
+
+Společnost Microsoft poskytuje následující nástroje pro práci s Azure Storage:
+
+| Nástroj | Linux | OS X | Windows |
+| --- |:---:|:---:|:---:|
+| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
+| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
+| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
+
 ## <a name="identify-storage-path-from-ambari"></a>Identifikujte cestu k úložišti z Ambari.
 
 * Pokud chcete zjistit úplnou cestu k nakonfigurovanému výchozímu úložišti, přejděte na:
@@ -132,6 +143,8 @@ LOCATION '/example/data/';
 
     **HDFS** > **config** a do pole filtru zadejte `blob.core.windows.net`.
 
+Pokud chcete získat cestu pomocí REST API Ambari, přečtěte si téma [získání výchozího úložiště](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage).
+
 ## <a name="blob-containers"></a>Kontejnery objektů BLOB
 
 Pokud chcete použít bloby, musíte nejdřív vytvořit [účet Azure Storage](../storage/common/storage-create-storage-account.md). V rámci tohoto procesu zadáte oblast Azure, ve které se účet úložiště vytvoří. Účet úložiště a clusteru musí být uloženy ve stejné oblasti. Databáze metastore Hive SQL Server a databáze Apache Oozie SQL Server metastore musí být také umístěny ve stejné oblasti.
@@ -141,17 +154,6 @@ Bez ohledu na svoje umístění patří každý objekt blob, který vytvoříte,
 Výchozí kontejner objektu blob ukládá konkrétní informace, jako je historie úlohy a protokoly. Výchozí kontejner objektu Blob nesdílejte s více clustery služby HDInsight. Může dojít k poškození historie úlohy. Doporučuje se použít pro každý cluster jiný kontejner a umístit sdílená data na propojený účet úložiště zadaný v nasazení všech relevantních clusterů, a ne jako výchozí účet úložiště. Další informace o konfiguraci propojených účtů úložiště najdete v tématu [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Nicméně, po odstranění původního clusteru HDInsight můžete znovu použít výchozí kontejner úložiště. U clusterů HBA můžete ve skutečnosti udržovat schéma a data v tabulce HBA vytvořením nového clusteru HBA pomocí výchozího kontejneru objektů blob, který se používá v clusteru HBA, který byl odstraněn.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
-
-## <a name="interacting-with-azure-storage"></a>Interakce s Azure Storage
-
-Společnost Microsoft poskytuje následující nástroje pro práci s Azure Storage:
-
-| Nástroj | Linux | OS X | Windows |
-| --- |:---:|:---:|:---:|
-| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
-| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
-| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
-| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
 
 ## <a name="use-additional-storage-accounts"></a>Použití dalších účtů úložiště
 

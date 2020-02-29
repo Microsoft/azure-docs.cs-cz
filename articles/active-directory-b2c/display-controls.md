@@ -3,20 +3,20 @@ title: Odkaz na ovládací prvek zobrazení
 titleSuffix: Azure AD B2C
 description: Referenční informace pro ovládací prvky zobrazení Azure AD B2C Použijte ovládací prvky zobrazení pro přizpůsobení cest uživatele definovaných ve vlastních zásadách.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7cbd088ed7b4f6ae242cce2067e52def2dad61c9
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 4998fb19e42e123edd57bfcf10931d594ac4cb44
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77136346"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188728"
 ---
 # <a name="display-controls"></a>Ovládací prvky zobrazení
 
@@ -32,7 +32,7 @@ Následující obrázek znázorňuje přihlašovací stránku s vlastním uplatn
 
 ## <a name="prerequisites"></a>Předpoklady
 
- V části [metadata](self-asserted-technical-profile.md#metadata) [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md)musí mít odkazované [ContentDefinition](contentdefinitions.md) `DataUri` nastavenou na stránku verze kontraktu 2.0.0 nebo vyšší. Například:
+ V části [metadata](self-asserted-technical-profile.md#metadata) [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md)musí mít odkazované [ContentDefinition](contentdefinitions.md) `DataUri` nastavenou na stránku verze kontraktu 2.0.0 nebo vyšší. Příklad:
 
 ```XML
 <ContentDefinition Id="api.selfasserted">
@@ -80,7 +80,7 @@ Každý typ ovládacího prvku zobrazení vyžaduje jinou sadu deklarací zobraz
 
 Podobně jako u **deklarací zobrazení** definovaných v [technickém profilu s vlastním uplatněním](self-asserted-technical-profile.md#display-claims)jsou deklarace zobrazení reprezentovány deklaracemi, které se mají shromáždit uživateli v rámci ovládacího prvku zobrazení. Element **ClaimType** , na který je odkazováno, musí specifikovat element **UserInputType** pro uživatelský typ vstupu, který podporuje Azure AD B2C, například `TextBox` nebo `DropdownSingleSelect`. Pokud **Akce**vyžaduje zobrazení hodnoty deklarace identity, nastavte **požadovaný** atribut na `true`, aby uživatel vynutil zadání hodnoty pro danou konkrétní deklaraci zobrazení.
 
-Pro určité typy ovládacího prvku zobrazení jsou vyžadovány určité deklarace zobrazení. Například **VerificationCode** je nutné pro zobrazení ovládacího prvku typu **VerificationControl**. Pomocí atributu **ControlClaimType** určete, který DisplayClaim je určený pro požadovanou deklaraci identity. Například:
+Pro určité typy ovládacího prvku zobrazení jsou vyžadovány určité deklarace zobrazení. Například **VerificationCode** je nutné pro zobrazení ovládacího prvku typu **VerificationControl**. Pomocí atributu **ControlClaimType** určete, který DisplayClaim je určený pro požadovanou deklaraci identity. Příklad:
 
 ```XML
 <DisplayClaim ClaimTypeReferenceId="otpCode" ControlClaimType="VerificationCode" Required="true" />
@@ -129,7 +129,7 @@ Následující příklad odešle kód v e-mailu nebo SMS na základě výběru d
 
 Na ovládací prvky zobrazení se odkazuje ve [zobrazení deklarací](self-asserted-technical-profile.md#display-claims) [technického profilu s vlastním uplatněním](self-asserted-technical-profile.md).
 
-Například:
+Příklad:
 
 ```XML
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">

@@ -2,19 +2,19 @@
 title: Řešení a školení pro Azure Active Directory B2C | Microsoft Docs
 description: Tento článek obsahuje odkazy na informace o řešení a školení, které vám pomůžou pochopit a používat Azure Active Directory B2C pro komplexní obchodní řešení.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
-ms.author: marsma
+ms.author: mimart
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 82f78ba50a6717c1d14e4921bb3c46a3525ad2cf
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 9e00c872bb2794cdd8eb2560392ce058ae41b257
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063504"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186722"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Řešení a školení pro Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) umožňuje organizacím implementovat 
 | ----- | ----------- |
 | [Správa identit zákazníků pomocí Azure AD B2C](https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C) | V tomto přehledu služby Parakh Jain ([@jainparakh](https://twitter.com/jainparakh)) od týmu Azure AD B2C nám poskytuje přehled o tom, jak služba funguje, a také ukazuje, jak můžeme rychle připojit B2C k aplikaci ASP.NET Core. |
 | [Výhody použití Azure AD B2C](https://aka.ms/b2coverview) | Seznamte se s výhodami a běžnými scénáři Azure AD B2C a jak vaše aplikace můžou tuto službu CIAM využívat. |
-| [Získání odborných znalostí v Azure AD B2C: Kurz pro vývojáře](https://aka.ms/learnAADB2C) | Tento kompletní kurz přebírá vývojářům kompletní cestu k vývoji aplikací s Azure AD B2C jako ověřovací mechanismus. Deset podrobnějších modulů s Labs pokrývá vše od nastavení předplatného Azure za účelem vytváření vlastních zásad, které definují cesty, které vaše zákazníky propojí. |
+| [Získání odborných znalostí v Azure AD B2C: kurz pro vývojáře](https://aka.ms/learnAADB2C) | Tento kompletní kurz přebírá vývojářům kompletní cestu k vývoji aplikací s Azure AD B2C jako ověřovací mechanismus. Deset podrobnějších modulů s Labs pokrývá vše od nastavení předplatného Azure za účelem vytváření vlastních zásad, které definují cesty, které vaše zákazníky propojí. |
 | [Povolení přístupu k aplikacím pomocí Azure Active Directory partnerům, dodavatelům a zákazníkům](https://aka.ms/aadexternalidentities) | V případě úspěchu každé organizace, bez ohledu na její velikost, odvětví nebo dodržování předpisů a zabezpečení stav, se může jednat o schopnost organizace spolupracovat s jinými organizacemi a spojit se se zákazníky.<br><br>V rámci společné spolupráce Azure AD, Azure AD B2C a Azure AD B2B Tato příručka podrobně popisuje obchodní hodnotu a mechanismus sestavování aplikace nebo webové prostředí, které poskytuje konsolidovaná prostředí pro ověřování přizpůsobená kontextům vašeho zaměstnanci, obchodní partneři a dodavatelé a zákazníci. |
 | [Migrace ověřování aplikace na Azure AD B2C v hybridním prostředí](https://aka.ms/MigratetoAADB2C) | V dnešních moderních organizacích dochází k digitální transformaci a přesunu do cloudu ve fázích, což vyžaduje, aby většina organizací měla alespoň dočasně fungovat v hybridním prostředí identity.<br><br>Tato příručka se zaměřuje na vytvoření plánu migrace pro přesunutí první aplikace do Azure AD B2C a popisuje požadavky, které je potřeba provést v prostředí hybridní identity. |
 | [Požadavky na obecné nařízení o ochraně dat (GDPR) pro zákaznické aplikace](https://aka.ms/AADB2CandGDPR) | U všech zákaznických aplikací je potřeba vzít v úvahu GDPR všech organizací, které čelí na projektech, které obsahují osobní údaje, a sloužit občanům EU.<br><br>Tato příručka k řešení se zaměřuje na to, jak se dá Azure AD B2C použít jako flexibilní součást celkového přístupu k dodržování předpisů GDPR, včetně toho, jak komponenty Azure AD B2C podporují všechna klíčová GDPR práva pro jednotlivce. |

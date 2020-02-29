@@ -3,20 +3,20 @@ title: 'Rychlý Start: nastavení přihlášení pro webovou aplikaci v ASP.NET'
 titleSuffix: Azure AD B2C
 description: V tomto rychlém startu spusťte ukázkovou webovou aplikaci v ASP.NET, která používá Azure Active Directory B2C k poskytnutí přihlášení k účtu.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7ee56e69befb220a742077326956efa996979105
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 197155650bf7b8d113f96dbcfd6d9e2b58924b7f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76850171"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78187198"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Rychlý Start: nastavení přihlášení pro aplikaci ASP.NET pomocí Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje cloudovou správu identit, k
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) s úlohou **vývoje ASP.NET a webu** .
 - Účet sociální sítě z Facebooku, Google nebo Microsoftu.
@@ -44,7 +44,7 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje cloudovou správu identit, k
 1. V sadě Visual Studio otevřete řešení **B2C-WebAPI-DotNet.sln** ze složky projektu ukázkové aplikace.
 2. Pro účely tohoto rychlého startu spustíte oba projekty **TaskWebApp** a **TaskService** najednou. V Průzkumníku řešení klikněte pravým tlačítkem na řešení **B2C-WebAPI-DotNet** a vyberte **Nastavit projekty po spuštění**.
 3. Vyberte **Více projektů po spuštění** a u obou projektů změňte **akci** na **Spuštění**.
-4. Klikněte na **OK**.
+4. Klikněte na tlačítko **OK**.
 5. Stisknutím klávesy **F5** spusťte ladění obou aplikací. Obě aplikace se otevřou na samostatné kartě prohlížeče:
 
     - `https://localhost:44316/` – Webová aplikace ASP.NET. V tomto rychlém startu pracujete přímo s touto aplikací.
