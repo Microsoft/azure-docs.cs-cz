@@ -1,6 +1,6 @@
 ---
 title: Uživatelem definované body obnovení
-description: Vytvoření bodu obnovení Azure SQL Data Warehouse.
+description: Postup vytvoření bodu obnovení pro fond SQL
 services: sql-data-warehouse
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bf092b5b6c6eb88b565a940de56d614426e34d8e
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 72e2535730dc6c814708ef3ff563136235930475
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759597"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198256"
 ---
 # <a name="user-defined-restore-points"></a>Uživatelem definované body obnovení
 
-V tomto článku se naučíte, jak vytvořit nový bod obnovení definovaný uživatelem pro Azure SQL Data Warehouse pomocí PowerShellu a Azure Portal.
+V tomto článku se naučíte, jak vytvořit nový bod obnovení definovaný uživatelem pro fond SQL ve službě Azure synapse Analytics pomocí PowerShellu a Azure Portal.
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>Vytvoření uživatelem definovaných bodů obnovení prostřednictvím PowerShellu
 
@@ -62,9 +62,9 @@ Uživatelem definované body obnovení lze také vytvořit prostřednictvím Azu
 
 1. Přihlaste se ke svému účtu [Azure Portal](https://portal.azure.com/) .
 
-2. Přejděte do SQL Data Warehouse, pro který chcete vytvořit bod obnovení.
+2. Přejděte do fondu SQL, pro který chcete vytvořit bod obnovení pro.
 
-3. V levém podokně vyberte **Přehled** a vyberte **+ nový bod obnovení**. Pokud není vybráno tlačítko nový bod obnovení, ujistěte se, že datový sklad není pozastaven.
+3. V levém podokně vyberte **Přehled** a vyberte **+ nový bod obnovení**. Pokud není vybráno tlačítko nový bod obnovení, ujistěte se, že fond SQL není pozastaven.
 
     ![Nový bod obnovení](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
@@ -74,7 +74,7 @@ Uživatelem definované body obnovení lze také vytvořit prostřednictvím Azu
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Obnovit existující datový sklad](sql-data-warehouse-restore-active-paused-dw.md)
-- [Obnovení odstraněného datového skladu](sql-data-warehouse-restore-deleted-dw.md)
-- [Obnovení z geograficky záložního datového skladu](sql-data-warehouse-restore-from-geo-backup.md)
+- [Obnovit existující fond SQL](sql-data-warehouse-restore-active-paused-dw.md)
+- [Obnovení odstraněného fondu SQL](sql-data-warehouse-restore-deleted-dw.md)
+- [Obnovení z fondu SQL geografického zálohování](sql-data-warehouse-restore-from-geo-backup.md)
 

@@ -3,20 +3,20 @@ title: Použití AppAuth v aplikaci pro iOS
 titleSuffix: Azure AD B2C
 description: Jak vytvořit aplikaci pro iOS, která používá AppAuth s Azure Active Directory B2C ke správě identit uživatelů a ověřování uživatelů.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/30/2018
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5433867b0676ffa644160251c9aacd81ba04dda7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c659280ebc8c91b53cbc3a176c84397edd942c23
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76848353"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78186824"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: přihlášení pomocí aplikace pro iOS
 
@@ -40,7 +40,7 @@ V dalším kroku zaregistrujete aplikaci do svého tenanta Azure AD B2C. To posk
 
 Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku.
 
-Také zaznamenejte vlastní identifikátor URI přesměrování pro použití v pozdějším kroku. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+Také zaznamenejte vlastní identifikátor URI přesměrování pro použití v pozdějším kroku. například `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 ## <a name="create-your-user-flows"></a>Vytvoření uživatelských toků
 V Azure AD B2C je každé uživatelské prostředí definované [uživatelským tokem](user-flow-overview.md). Tato aplikace obsahuje jedno prostředí identity: kombinované přihlášení a registrace. Při vytváření toku uživatele nezapomeňte:
@@ -92,8 +92,8 @@ OIDServiceConfiguration *configuration =
 
 Jakmile nakonfigurujete nebo načtete konfiguraci autorizační služby, může být vytvořen požadavek na autorizaci. K vytvoření žádosti potřebujete následující informace:
 
-* ID klienta (ID aplikace), které jste si poznamenali dříve. Například, `00000000-0000-0000-0000-000000000000`.
-* Vlastní identifikátor URI pro přesměrování, který jste si poznamenali dříve. Například, `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
+* ID klienta (ID aplikace), které jste si poznamenali dříve. například `00000000-0000-0000-0000-000000000000`.
+* Vlastní identifikátor URI pro přesměrování, který jste si poznamenali dříve. například `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect`.
 
 Obě položky by měly být uloženy při [registraci aplikace](#create-an-application).
 

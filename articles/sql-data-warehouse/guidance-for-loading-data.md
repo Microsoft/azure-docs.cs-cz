@@ -1,26 +1,26 @@
 ---
 title: Osvědčené postupy načítání dat
-description: Doporučení a optimalizace výkonu pro načítání dat do služby Azure SQL Data Warehouse.
+description: Doporučení a optimalizace výkonu pro načítání dat do služby SQL Analytics
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 08/08/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 01bb53488bf63f32d2bae804e4844400a7fd2d31
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: d59a66b25b55572865f297436331971434d831c3
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686098"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78199882"
 ---
-# <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Osvědčené postupy načítání dat do služby Azure SQL Data Warehouse
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Osvědčené postupy načítání dat pro datové sklady
 
-Doporučení a optimalizace výkonu pro načítání dat do služby Azure SQL Data Warehouse.
+Doporučení a optimalizace výkonu pro načítání dat
 
 ## <a name="preparing-data-in-azure-storage"></a>Příprava dat v Azure Storage
 
@@ -36,9 +36,9 @@ Velké komprimované soubory rozdělte do menších komprimovaných souborů.
 
 ## <a name="running-loads-with-enough-compute"></a>Dostatečné výpočetní prostředky pro načítání dat
 
-Největší rychlosti při načítání dosáhnete, když budete spouštět vždy jen jednu úlohu načtení dat. Pokud to není možné, spouštějte souběžně co nejmenší počet úloh. Při rozsáhlé úloze načítání dat byste před načítáním měli zvážit možnost rozšíření datového skladu škálováním.
+Největší rychlosti při načítání dosáhnete, když budete spouštět vždy jen jednu úlohu načtení dat. Pokud to není možné, spouštějte souběžně co nejmenší počet úloh. Pokud očekáváte velkou úlohu načítání, zvažte možnost škálovat svůj fond SQL před zatížením.
 
-Pokud chcete spouštět načítání s odpovídajícími výpočetními prostředky, vytvořte uživatele načítání vyhrazené pro spouštění načítání. Každého uživatele načítání přiřaďte ke konkrétní třídě prostředků. Pokud chcete spustit zátěž, přihlaste se jako jeden z uživatelů načítání a potom spusťte načtení. Načítání se spustí s využitím třídy prostředků tohoto uživatele.  Tato metoda je jednodušší než se pokoušet o změnu třídy prostředků uživatele podle aktuálních potřeb třídy prostředků.
+Pokud chcete spouštět načítání s odpovídajícími výpočetními prostředky, vytvořte uživatele načítání vyhrazené pro spouštění načítání. Přiřaďte každého uživatele načítání do konkrétní třídy prostředku nebo skupiny úloh. Pokud chcete spustit zátěž, přihlaste se jako jeden z uživatelů načítání a potom spusťte načtení. Načítání se spustí s využitím třídy prostředků tohoto uživatele.  Tato metoda je jednodušší než se pokoušet o změnu třídy prostředků uživatele podle aktuálních potřeb třídy prostředků.
 
 ### <a name="example-of-creating-a-loading-user"></a>Příklad vytvoření uživatele načítání
 
@@ -89,7 +89,7 @@ Indexy columnstore vyžadují hodně paměti, aby mohly komprimovat data do vyso
 - Načtěte dostatek dat pro úplně naplnění nových skupin řádků. Při hromadném načítání dat se každých 1 048 576 řádků zkomprimuje přímo do indexu columnstore jako kompletní skupina řádků. Při načítání méně než 102 400 řádků se řádky odesílají do tabulky deltastore, kde se řádky uchovávají v indexu B-stromu. Pokud načtete příliš málo řádků, můžou se všechny dostat do indexu deltastore, a nebudou se okamžitě komprimovat do formátu columnstore.
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Zvýšit velikost dávky při použití rozhraní SQLBulkCopy API nebo BCP
-Jak už bylo zmíněno dřív, nasazování v rámci základu bude poskytovat nejvyšší propustnost s SQL Data Warehouse. Pokud nemůžete použít základnu pro načtení a musí používat rozhraní SQLBulkCopy API (nebo BCP), měli byste zvážit zvýšení propustnosti zvětšením dávky. 
+Jak už bylo zmíněno dřív, nasazování v rámci základu bude poskytovat nejvyšší propustnost s SQL Data Warehouse. Pokud nemůžete použít základnu pro načtení a musí používat rozhraní SQLBulkCopy API (nebo BCP), měli byste zvážit zvýšení propustnosti pro lepší propustnost – dobré pravidlo je velikost dávky mezi 100 tisíc a 1M řádky.
 
 ## <a name="handling-loading-failures"></a>Zpracování chyb načítání
 
@@ -107,7 +107,7 @@ Pokud máte za den tisíce nebo více samostatných vložení, vytvořte z nich 
 
 Pro zlepšení výkonu dotazů je důležité vytvořit statistiku pro všechny sloupce všech tabulek po prvním načtení, nebo když v datech dojde k zásadnějším změnám.  To můžete provést ručně nebo můžete povolit [Automatické vytváření statistik](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic).
 
-Podrobné vysvětlení statistiky najdete v tématu [Statistika](sql-data-warehouse-tables-statistics.md). Následující příklad ukazuje, jak ručně vytvořit statistiku pro pět sloupců tabulky Customer_Speed.
+Podrobné vysvětlení statistiky najdete v tématu [Statistika](sql-data-warehouse-tables-statistics.md). Následující příklad ukazuje, jak ručně vytvořit statistiku pro pět sloupců Customer_Speed tabulky.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);

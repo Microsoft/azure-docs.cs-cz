@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b6a44bc31e21a63b12a0d06c537cc026ed77e386
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 32a453678fe3702fcb4b77f0b04a8ed5c889ef59
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832853"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197619"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s Key Vault certifikáty
 Následující scénáře popisují několik primárních použití služby správy certifikátů Key Vault, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
@@ -63,7 +64,7 @@ Poznámka: Tento proces, prostřednictvím kroku 3,1, je operace jednorázová.
 **Krok 4** : následující popisy odpovídají zeleným očíslovaným krokům v předchozím diagramu.  
   (1) – v diagramu výše vaše aplikace vytváří certifikát, který interně začíná vytvořením klíče v trezoru klíčů.  
   (2) – Key Vault odešle certifikační autoritě žádost o certifikát TLS/SSL.  
-  (3) – vaše aplikace se dotazuje v rámci smyčky a procesu čekání pro Key Vault pro dokončení certifikátu. Vytvoření certifikátu je dokončeno, když Key Vault obdrží odpověď certifikační autority s certifikátem X.509.  
+  (3) – vaše aplikace se dotazuje v rámci smyčky a procesu čekání pro Key Vault pro dokončení certifikátu. Vytvoření certifikátu je dokončeno, když Key Vault obdrží odpověď certifikační autority s certifikátem x509.  
   (4) – certifikační autorita reaguje na žádosti o certifikát TLS/SSL v Key Vault s certifikátem x509 TLS/SSL.  
   (5) – vytvoření nového certifikátu se dokončí s fúzí certifikátu x509 pro certifikační autoritu.  
 

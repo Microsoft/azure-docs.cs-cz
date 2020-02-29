@@ -3,20 +3,20 @@ title: Nastavení registrace a přihlášení pomocí účtu GitHubu
 titleSuffix: Azure AD B2C
 description: Zaregistrujte se a přihlaste se poskytují zákazníkům s účtů GitHub ve svých aplikacích pomocí služby Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b8abeda3588eae03d2c281f9e691d66ea0b39a3
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a7435abf2740800184a6de1aad07bca53cd56cf8
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847547"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78188201"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s účtem GitHub pomocí Azure Active Directory B2C
 
@@ -26,12 +26,12 @@ ms.locfileid: "76847547"
 
 Pokud chcete použít účet GitHub jako [poskytovatele identity](authorization-code-flow.md) v Azure Active Directory B2C (Azure AD B2C), musíte ve svém tenantovi vytvořit aplikaci, která ho bude představovat. Pokud ještě nemáte účet GitHubu, můžete se zaregistrovat na [https://www.github.com/](https://www.github.com/).
 
-1. Přihlaste se k [GitHub pro vývojáře](https://github.com/settings/developers) pomocí svých přihlašovacích údajů Githubu.
-1. Vyberte **aplikace OAuth** a pak vyberte **nové aplikace OAuth**.
-1. Zadejte **název_aplikace** a **adresa URL domovské stránky**.
-1. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v **adresu URL zpětného volání autorizace**. Nahraďte `your-tenant-name` s názvem vašeho tenanta Azure AD B2C. Když zadáte název vašeho klienta i v případě, že klient je definována s velká písmena v Azure AD B2C, používejte jenom malá písmena.
-1. Klikněte na tlačítko **zaregistrovat aplikaci**.
-1. Zkopírujte hodnoty **ID klienta** a **tajný kód klienta**. Jak přidat zprostředkovatele identity do svého tenanta potřebujete.
+1. Přihlaste se k webu pro [vývojáře na GitHubu](https://github.com/settings/developers) pomocí vašich přihlašovacích údajů GitHubu.
+1. Vyberte **aplikace OAuth** a pak vyberte **Nová aplikace OAuth**.
+1. Zadejte **název aplikace** a **adresu URL domovské stránky**.
+1. Zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v **URL zpětného volání autorizace**. Nahraďte `your-tenant-name` názvem vašeho tenanta Azure AD B2C. Když zadáte název vašeho klienta i v případě, že klient je definována s velká písmena v Azure AD B2C, používejte jenom malá písmena.
+1. Klikněte na **Registrovat aplikaci**.
+1. Zkopírujte hodnoty **ID klienta** a **tajný klíč klienta**. Jak přidat zprostředkovatele identity do svého tenanta potřebujete.
 
 ## <a name="configure-a-github-account-as-an-identity-provider"></a>Nakonfigurujte účet GitHub jako zprostředkovatele identity
 
@@ -42,4 +42,4 @@ Pokud chcete použít účet GitHub jako [poskytovatele identity](authorization-
 1. Zadejte **název**. Například *GitHub*.
 1. Pro **ID klienta**zadejte ID klienta aplikace GitHub, kterou jste vytvořili dříve.
 1. Pro **tajný klíč klienta**zadejte tajný klíč klienta, který jste si poznamenali.
-1. Vyberte **Uložit**.
+1. Vyberte **Save** (Uložit).

@@ -5,16 +5,17 @@ services: key-vault
 author: msmbaldwin
 manager: rajvijan
 ms.service: key-vault
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 15650de776b481d1635b58f2b8ecf2bf2921d12f
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 3c80a206af74eb370470c38a7af9c7f1fe840406
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242416"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198146"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Kurz: použití virtuálního počítače se systémem Linux a aplikace Python k ukládání tajných kódů v Azure Key Vault
 
@@ -77,7 +78,7 @@ Potom ve skupině prostředků, kterou jste vytvořili v předchozím kroku, vyt
 
 * Název trezoru klíčů: název musí být řetězec 3-24 znaků a musí obsahovat pouze 0-9, a-z, A-Z a spojovníky (-).
 * Název skupiny prostředků.
-* Umístění: **Západní USA**.
+* Umístění: **USA – západ**.
 
 ```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"

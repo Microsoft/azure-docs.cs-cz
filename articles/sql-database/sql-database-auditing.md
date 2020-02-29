@@ -9,16 +9,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
-ms.openlocfilehash: 686e426ef0b7706eff168e42ffc67417b2c5c743
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.custom: azure-synapse
+ms.openlocfilehash: 70f37c70f685ee139db4b417c1c498f9eefb8205
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212888"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78184753"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditováním SQL Database
 
-Auditování pro Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage, Log Analytics pracovní prostor nebo Event Hubs. Auditování taky:
+Auditování pro Azure [SQL Database](sql-database-technical-overview.md) a [Azure synapse Analytics](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage, Log Analytics pracovním prostoru nebo Event Hubs. Auditování taky:
 
 - Pomáhá udržet dodržování legislativních předpisů, pochopit databázovou činnost a získat přehled o nesrovnalostech a anomáliích, které by mohly označovat obchodní aspekty nebo podezření na narušení zabezpečení.
 
@@ -26,7 +27,7 @@ Auditování pro Azure [SQL Database](sql-database-technical-overview.md) a [SQL
 
 
 > [!NOTE] 
-> Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
+> Toto téma se týká Azure SQL serveru a databází SQL Database a Azure synapse Analytics, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá při odkazování na SQL Database a Azure synapse.
 
 ## <a id="subheading-1"></a>Přehled auditování Azure SQL Database
 
@@ -80,6 +81,16 @@ V následující části je popsána konfigurace auditování pomocí Azure Port
 
     ![Navigační podokno][3]
 
+5. **Novinka** – máte k dispozici několik možností konfigurace, kam budou zapsány protokoly auditu. Protokoly můžete zapsat do účtu služby Azure Storage, do Log Analytics pracovního prostoru pro spotřebu pomocí protokolů Azure Monitor nebo do centra událostí pro spotřebu pomocí centra událostí. Můžete nakonfigurovat libovolnou kombinaci těchto možností a protokoly auditu se zapíší do každého z nich.
+  
+   > [!NOTE]
+   > Zákazník, který chce nakonfigurovat neměnné úložiště protokolů pro události auditu na úrovni serveru nebo databáze, by měl postupovat podle [pokynů Azure Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes)
+  
+   > [!WARNING]
+   > Povolením auditování pro Log Analytics se účtují náklady na základě sazeb ingestování. Pomocí této [Možnosti](https://azure.microsoft.com/pricing/details/monitor/)si pamatujte na související náklady, nebo zvažte uložení protokolů auditu v účtu úložiště Azure.
+
+   ![Možnosti úložiště](./media/sql-database-auditing-get-started/auditing-select-destination.png)
+   
 ### <a id="audit-storage-destination">Auditovat cíl úložiště</a>
 
 Pokud chcete nakonfigurovat zápis protokolů auditu na účet úložiště, vyberte **úložiště** a otevřete **Podrobnosti úložiště**. Vyberte účet úložiště Azure, do kterého se budou ukládat protokoly, a pak vyberte dobu uchování. Pak klikněte na **OK**. Protokoly starší než doba uchování se odstraní.
@@ -105,9 +116,22 @@ Pokud chcete nakonfigurovat zápis protokolů auditu do pracovního prostoru Log
 
 ### <a id="audit-event-hub-destination">Auditovat cíl centra událostí</a>
 
+< < < < < < < HEAD < < < < < < < HEAD = = = = = = =
+>>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
+> [!IMPORTANT]
+> Povolení auditování u pozastaveného fondu SQL není možné. Pokud ho chcete povolit, zrušte pozastavení fondu SQL.
+
+> [!WARNING]
+> Povolením auditování na serveru, který má ve fondu SQL, **dojde k obnovení fondu SQL a opětovnému pozastavenému pozastavení** , což může vést k účtování poplatků.
+< < < < < < < HEAD = = = = = = = ke konfiguraci zápisu protokolů auditu do centra událostí, vyberte **centrum událostí (Preview)** a otevřete **Podrobnosti centra událostí**. Vyberte centrum událostí, kam budou zapsány protokoly, a pak klikněte na **OK**. Ujistěte se, že centrum událostí je ve stejné oblasti jako databáze a Server.
+
+   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+>>>>>>> <a name="bf6444e83361ab743aca04ae233c420e51ea1e03"></a>bf6444e83361ab743aca04ae233c420e51ea1e03
+=======
 Pokud chcete nakonfigurovat zápis protokolů auditu do centra událostí, vyberte **centrum událostí (Preview)** a otevřete **Podrobnosti centra událostí**. Vyberte centrum událostí, kam budou zapsány protokoly, a pak klikněte na **OK**. Ujistěte se, že centrum událostí je ve stejné oblasti jako databáze a Server.
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+>>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 
 ## <a id="subheading-3"></a>Analýza protokolů a sestav auditu
 
@@ -242,7 +266,7 @@ V produkčním prostředí pravděpodobně pravidelně aktualizujete klíče úl
     > [!IMPORTANT]
     > V současné době je k dispozici nastavení povolení chráněných objektů BLOB zápisů v závislosti na čase a viditelné pouze v následujících oblastech:
     > - USA – východ
-    > - Střed USA – jih
+    > - USA – středojih
     > - USA – západ 2
 
 

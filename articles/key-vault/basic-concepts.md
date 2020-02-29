@@ -1,20 +1,21 @@
 ---
-title: Co je Azure Key Vault? | Dokumentace Microsoftu
+title: Co je Azure Key Vault? | Dokumenty Microsoft
 description: Přečtěte si, jak Azure Key Vault chrání kryptografické klíče a tajné kódy, které využívají cloudové aplikace a služby.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7f32664f4bb9407d915b7909f9ecdeebe96bd551
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 03ad504258dd9448753f37402067a0da3e0a2c00
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771934"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197636"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault základní koncepty
 
@@ -42,7 +43,7 @@ Tady jsou další důležité výrazy:
 
     ![Diagram principu fungování spravovaných identit pro prostředky Azure](./media/key-vault-whatis/msi.png)
 
-## <a name="authentication"></a>Ověření
+## <a name="authentication"></a>Ověřování
 Abyste mohli provádět operace s Key Vault, musíte se nejdřív ověřit. Existují tři způsoby, jak ověřit Key Vault:
 
 - [Spravované identity pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md): když nasadíte aplikaci na virtuální počítač v Azure, můžete mu přiřadit identitu k vašemu virtuálnímu počítači, který má přístup k Key Vault. Můžete také přiřadit identity [jiným prostředkům Azure](../active-directory/managed-identities-azure-resources/overview.md). Výhodou tohoto přístupu je, že aplikace nebo služba nespravuje otočení prvního tajného klíče. Azure tuto identitu automaticky otočí. Jako osvědčený postup doporučujeme tento přístup. 

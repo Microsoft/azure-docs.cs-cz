@@ -1,6 +1,6 @@
 ---
 title: CREATE TABLE JAKO SELECT (CTAS)
-description: Vysvětlení a příklady příkazu CREATE TABLE AS SELECT (CTAS) v Azure SQL Data Warehouse pro vývoj řešení.
+description: Vysvětlení a příklady příkazu CREATE TABLE AS SELECT (CTAS) ve službě SQL Analytics pro vývoj řešení.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,17 +10,17 @@ ms.subservice: development
 ms.date: 03/26/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seoapril2019
-ms.openlocfilehash: 4992bb00fa5397ef6a4e055e08b445d35f5ed77a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 09a543ac4b4f77f0c7b7efd2411b962fa9fa2769
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685863"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195902"
 ---
-# <a name="create-table-as-select-ctas-in-azure-sql-data-warehouse"></a>CREATE TABLE jako SELECT (CTAS) v Azure SQL Data Warehouse
+# <a name="create-table-as-select-ctas-in-sql-analytics"></a>V SQL Analytics CREATE TABLE jako SELECT (CTAS)
 
-Tento článek vysvětluje CREATE TABLE příkazu SELECT (CTAS) T-SQL v Azure SQL Data Warehouse pro vývoj řešení. Článek také poskytuje příklady kódu.
+Tento článek vysvětluje CREATE TABLE příkazu SELECT (CTAS) T-SQL ve službě SQL Analytics pro vývoj řešení. Článek také poskytuje příklady kódu.
 
 ## <a name="create-table-as-select"></a>CREATE TABLE JAKO VÝBĚR
 
@@ -123,7 +123,7 @@ DROP TABLE FactInternetSales_old;
 
 ## <a name="use-ctas-to-work-around-unsupported-features"></a>Použití CTAS k řešení nepodporovaných funkcí
 
-Pomocí CTAS můžete také vyřešit řadu nepodporovaných funkcí uvedených níže. Tato metoda může být často užitečná, protože nejen váš kód bude kompatibilní, ale bude často běžet rychleji na SQL Data Warehouse. Tento výkon je výsledkem úplného paralelního návrhu. Mezi scénáře patří:
+Pomocí CTAS můžete také vyřešit řadu nepodporovaných funkcí uvedených níže. Tato metoda se často může ukázat jako užitečná, protože nejen váš kód bude kompatibilní, ale bude často běžet rychleji na SQL Analytics. Tento výkon je výsledkem úplného paralelního návrhu. Mezi scénáře patří:
 
 * SPOJENÍ ANSI při aktualizacích
 * Spojení ANSI při odstraňování
@@ -174,7 +174,7 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-SQL Data Warehouse nepodporuje spojení ANSI v klauzuli `FROM` příkazu `UPDATE`, takže nejde předchozí příklad použít bez úprav.
+SQL Analytics nepodporuje spojení ANSI v klauzuli `FROM` příkazu `UPDATE`, takže nejde předchozí příklad použít bez úprav.
 
 Pomocí kombinace CTAS a implicitního spojení můžete nahradit předchozí příklad:
 
@@ -208,7 +208,7 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>Nahrazení spojení ANSI pro příkazy DELETE
 
-Někdy nejlepší přístup k odstranění dat je použití CTAS, zejména pro příkazy `DELETE`, které používají syntaxi spojení ANSI. Důvodem je to, že SQL Data Warehouse nepodporuje spojení ANSI v klauzuli `FROM` příkazu `DELETE`. Místo odstranění dat vyberte data, která chcete zachovat.
+Někdy nejlepší přístup k odstranění dat je použití CTAS, zejména pro příkazy `DELETE`, které používají syntaxi spojení ANSI. Je to proto, že SQL Analytics nepodporuje spojení ANSI v klauzuli `FROM` příkazu `DELETE`. Místo odstranění dat vyberte data, která chcete zachovat.
 
 Následuje příklad převedeného příkazu `DELETE`:
 
@@ -412,7 +412,7 @@ OPTION (LABEL = 'CTAS : Partition IN table : Create');
 
 Můžete vidět, že konzistence typů a udržování vlastností s hodnotou null na CTAS je osvědčeným postupem. Pomáhá zachovat integritu ve výpočtech a také zajišťuje, že je možné přepínat oddíly.
 
-CTAS je jedním z nejdůležitějších příkazů v SQL Data Warehouse. Ujistěte se, že ji důkladně rozumíte. Další informace najdete v [dokumentaci k CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
+CTAS je jedním z nejdůležitějších příkazů v SQL Analytics. Ujistěte se, že ji důkladně rozumíte. Další informace najdete v [dokumentaci k CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse).
 
 ## <a name="next-steps"></a>Další kroky
 

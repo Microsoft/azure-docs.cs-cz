@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 02/28/2020
 ms.author: victorh
-ms.openlocfilehash: 91f34d06532b2d7f56d293df40939212a4f3d68c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ab9a500d9535b55702b8baff15f8cc47e6ac2c86
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167071"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78196693"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrace Azure Firewallu s využitím služby Azure Standard Load Balancer
 
@@ -28,7 +28,7 @@ Pomocí veřejného nástroje pro vyrovnávání zatížení se nástroj pro vyr
 
 ### <a name="asymmetric-routing"></a>Asymetrické směrování
 
-Asymetrické směrování je místo, kde paket přijímá jednu cestu k cíli a při návratu do zdroje používá jinou cestu. K tomuto problému dochází, když má podsíť výchozí trasu k privátní IP adrese brány firewall a používáte veřejný Nástroj pro vyrovnávání zatížení. V tomto případě se příchozí provoz nástroje pro vyrovnávání zatížení přijímá prostřednictvím veřejné IP adresy, ale návratová cesta prochází přes privátní IP adresu brány firewall. Vzhledem k tomu, že brána firewall je stavová, se vrátí vracený paket, protože brána firewall tuto vytvořenou relaci neznají.
+Asymetrické směrování je místo, kde paket přijímá jednu cestu k cíli a při návratu do zdroje používá jinou cestu. K tomuto problému dochází, když má podsíť výchozí trasu k privátní IP adrese brány firewall a používáte veřejný Nástroj pro vyrovnávání zatížení. V tomto případě se příchozí provoz nástroje pro vyrovnávání zatížení přijímá prostřednictvím veřejné IP adresy, ale návratová cesta prochází přes privátní IP adresu brány firewall. Vzhledem k tomu, že brána firewall je stavová, je vrácen návratový paket, protože brána firewall neví o takové zavedené relaci.
 
 ### <a name="fix-the-routing-issue"></a>Oprava problému s směrováním
 
@@ -39,9 +39,23 @@ Chcete-li se tomuto problému vyhnout, vytvořte další trasu hostitele pro ve�
 
 ![Asymetrické směrování](media/integrate-lb/Firewall-LB-asymmetric.png)
 
-Například následující trasy jsou pro bránu firewall na veřejné IP adrese 13.86.122.41 a privátní IP adresa 10.3.1.4.
+### <a name="route-table-example"></a>Příklad směrovací tabulky
 
-![Tabulka směrování](media/integrate-lb/route-table.png)
+Například následující trasy jsou pro bránu firewall na veřejné IP adrese 20.185.97.136 a privátní IP adresa 10.0.1.4.
+
+> [!div class="mx-imgBorder"]
+> ![Směrovací tabulka](media/integrate-lb/route-table.png)
+
+### <a name="nat-rule-example"></a>Příklad pravidla překladu adres (NAT)
+
+V následujícím příkladu pravidlo překladu adres (NAT) překládá provoz protokolu RDP do brány firewall na 20.185.97.136 na nástroj pro vyrovnávání zatížení na 20.42.98.220:
+
+> [!div class="mx-imgBorder"]
+> ![pravidlo překladu adres (NAT)](media/integrate-lb/nat-rule-02.png)
+
+### <a name="health-probes"></a>Sondy stavu
+
+Pamatujte, že pokud používáte testy stavu TCP na port 80 nebo sondy HTTP/HTTPS, musíte mít spuštěnou webovou službu na hostitelích ve fondu nástroje pro vyrovnávání zatížení.
 
 ## <a name="internal-load-balancer"></a>Interní nástroj pro vyrovnávání zatížení
 
@@ -56,6 +70,8 @@ Proto můžete tento scénář nasadit podobně jako veřejný scénář nástro
 Chcete-li dále zvýšit zabezpečení vašeho scénáře s vyrovnáváním zatížení, můžete použít skupiny zabezpečení sítě (skupin zabezpečení sítě).
 
 Můžete například vytvořit NSG v podsíti back-endu, kde jsou umístěné virtuální počítače s vyrovnáváním zatížení. Povolí příchozí provoz pocházející z IP adresy nebo portu brány firewall.
+
+![Skupina zabezpečení sítě](media/integrate-lb/nsg-01.png)
 
 Další informace o skupin zabezpečení sítě najdete v tématu [skupiny zabezpečení](../virtual-network/security-overview.md).
 

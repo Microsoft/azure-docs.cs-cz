@@ -1,69 +1,126 @@
 ---
 title: Použít Azure Stream Analytics
-description: Tipy pro použití Azure Stream Analytics s Azure SQL Data Warehouse pro vývoj řešení
+description: Tipy pro použití Azure Stream Analytics s datovým skladem v Azure synapse pro vývoj řešení v reálném čase.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: integration
-ms.date: 03/22/2019
+ms.date: 2/5/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: a655ada93cd9db9db95295d445c0b4f27d772148
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.custom: azure-synapse
+ms.openlocfilehash: 3aa881d5fc7689b20824792ee43ce369546c87e2
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721196"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197898"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Použití Azure Stream Analytics se službou Azure synapse Analytics
+
 Azure Stream Analytics je plně spravovaná služba, která poskytuje vysoce dostupná a škálovatelná komplexní zpracování událostí přes streamovaná data v cloudu s nízkou latencí. Základní informace najdete v tématu [Úvod do Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md). Pak můžete zjistit, jak vytvořit ucelené řešení pomocí Stream Analytics pomocí kurzu Začínáme s [Azure Stream Analytics](../stream-analytics/stream-analytics-real-time-fraud-detection.md) .
 
-V tomto článku se naučíte, jak používat svou databázi datového skladu jako výstupní jímku pro vaše Stream Analytics úlohy.
+V tomto článku se dozvíte, jak používat datový sklad jako výstupní jímku pro vaše Azure Stream Analytics úlohy.
 
 ## <a name="prerequisites"></a>Předpoklady
-Nejprve proveďte následující kroky v kurzu [Začínáme s Azure Stream Analytics](../stream-analytics/stream-analytics-real-time-fraud-detection.md) .  
 
-1. Vytvoření vstupu centra událostí
-2. Konfigurace a spuštění aplikace generátoru událostí
-3. Zřízení Stream Analytics úlohy
-4. Zadat vstup a dotaz úlohy
+* Azure Stream Analytics úlohy – Chcete-li vytvořit úlohu Azure Stream Analytics, postupujte podle kroků v kurzu [Začínáme s Azure Stream Analytics](../stream-analytics/stream-analytics-real-time-fraud-detection.md) :  
 
-Pak vytvořte databázi Azure SQL Data Warehouse
+    1. Vytvoření vstupu centra událostí
+    2. Konfigurace a spuštění aplikace generátoru událostí
+    3. Zřízení Stream Analytics úlohy
+    4. Zadat vstup a dotaz úlohy
+* Datový sklad fondu Azure synapse SQL – Chcete-li vytvořit nový datový sklad, postupujte podle kroků v [rychlém startu a vytvořte nový datový sklad](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal).
 
-## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>Zadejte výstup úlohy: Azure SQL Data Warehouse databázi
+## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Zadejte výstup streamování, který odkazuje na datový sklad.
+
 ### <a name="step-1"></a>Krok 1
-V úloze Stream Analytics klikněte na **výstup** v horní části stránky a pak klikněte na **Přidat**.
+
+V Azure Portal přejděte na Stream Analytics úlohu a v nabídce **topologie úloh** klikněte na **výstupy** .
 
 ### <a name="step-2"></a>Krok 2
-Vyberte SQL Database.
+
+Klikněte na tlačítko **Přidat** a v rozevírací nabídce vyberte **SQL Database** .
+
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
 
 ### <a name="step-3"></a>Krok 3
-Na další stránce zadejte následující hodnoty:
+
+Zadejte následující hodnoty:
 
 * *Alias pro výstup*: zadejte popisný název pro tento výstup úlohy.
 * *Předplatné:*
-  * Pokud je vaše databáze SQL Data Warehouse ve stejném předplatném jako Stream Analytics úloha, vyberte použít SQL Database z aktuálního předplatného.
-  * Pokud je vaše databáze v jiném předplatném, vyberte použít SQL Database z jiného předplatného.
-* *Databáze*: zadejte název cílové databáze.
-* *Název serveru*: zadejte název serveru pro databázi, kterou jste právě zadali. Tuto možnost můžete najít pomocí Azure Portal.
-
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/dw-server-name.png)
-
+  * Pokud je váš datový sklad ve stejném předplatném, jaké má Stream Analytics úloha, klikněte na ***vybrat SQL Database z vašich předplatných***.
+  * Pokud je vaše databáze v jiném předplatném, klikněte na zadat SQL Database nastavení ručně.
+* *Databáze*: v rozevíracím seznamu vyberte cílovou databázi.
 * *Uživatelské jméno*: zadejte uživatelské jméno účtu, který má pro databázi oprávnění k zápisu.
 * *Heslo*: zadejte heslo pro zadaný uživatelský účet.
 * *Tabulka*: zadejte název cílové tabulky v databázi.
+* klikněte na tlačítko **Uložit** .
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/add-database.png)
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
 
 ### <a name="step-4"></a>Krok 4
-Kliknutím na tlačítko se změnami přidáte tento výstup úlohy a ověříte, že se Stream Analytics může úspěšně připojit k databázi.
 
-Po úspěšném připojení k databázi se na portálu zobrazí oznámení. Kliknutím na test můžete otestovat připojení k databázi.
+Než budete moct spustit test, budete muset vytvořit tabulku v datovém skladu.  Spusťte následující skript pro vytváření tabulek pomocí SQL Server Management Studio (SSMS) nebo podle vašeho výběru nástroje pro dotazování.
+
+```sql
+CREATE TABLE SensorLog
+(
+    RecordType VARCHAR(2)
+    , SystemIdentity VARCHAR(2)
+    , FileNum INT
+    , SwitchNum VARCHAR(50)
+    , CallingNum VARCHAR(25)
+    , CallingIMSI VARCHAR(25)
+    , CalledNum VARCHAR(25)
+    , CalledIMSI VARCHAR(25)
+    , DateS VARCHAR(25)
+    , TimeS VARCHAR(25)
+    , TimeType INT
+    , CallPeriod INT
+    , CallingCellID VARCHAR(25)
+    , CalledCellID VARCHAR(25)
+    , ServiceType VARCHAR(25)
+    , [Transfer] INT
+    , IncomingTrunk VARCHAR(25)
+    , OutgoingTrunk VARCHAR(25)
+    , MSRN VARCHAR(25)
+    , CalledNum2 VARCHAR(25)
+    , FCIFlag VARCHAR(25)
+    , callrecTime VARCHAR(50)
+    , EventProcessedUtcTime VARCHAR(50)
+    , PartitionId int
+    , EventEnqueuedUtcTime VARCHAR(50)
+    )
+WITH (DISTRIBUTION = ROUND_ROBIN)
+```
+
+### <a name="step-5"></a>Krok 5
+
+V úloze Azure Portal for Stream Analytics klikněte na název vaší úlohy.  V podokně ***podrobností výstupu*** klikněte na tlačítko ***test*** .
+
+Po úspěšném připojení k databázi se zobrazí oznámení na portálu. ![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png)
+
+### <a name="step-6"></a>Krok 6
+
+Klikněte na nabídku ***dotaz*** v části ***topologie úlohy*** a změňte dotaz na vložení dat do výstupního proudu, který jste vytvořili.  Kliknutím na tlačítko ***testovat vybraný dotaz*** otestujete dotaz.  Po úspěšném testu dotazu klikněte na tlačítko ***Uložit dotaz*** .
+
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
+
+### <a name="step-7"></a>Krok 7
+
+Spusťte úlohu Azure Stream Analytics.  V nabídce ***Přehled*** klikněte na tlačítko ***Start*** .
+
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
+
+klikněte na tlačítko ***Start*** v podokně úloha spuštění.
+
+![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 
 ## <a name="next-steps"></a>Další kroky
+
 Přehled integrace najdete v tématu [integrace dalších služeb](sql-data-warehouse-overview-integrate.md).
 Další tipy pro vývoj najdete v tématu věnovaném [rozhodování o návrhu a technikům kódování pro datové sklady](sql-data-warehouse-overview-develop.md).
-

@@ -1,5 +1,5 @@
 ---
-title: Spravovaná instance – obnovení k bodu v čase
+title: Spravovaná instance – obnovení bodu v čase (PITR)
 description: Obnovte databázi SQL ve spravované instanci k předchozímu bodu v čase.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 9ed694ec524c4e3e033c3139735e8e079141ec4a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 27f465e6864d0ff639e825c8a816d86648bd8853
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76515118"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197517"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Obnovení databáze SQL ve spravované instanci k předchozímu bodu v čase
 
@@ -24,22 +24,18 @@ Použijte obnovení k určitému bodu v čase (PITR) k vytvoření databáze jak
 
 Obnovení k bodu v čase je užitečné ve scénářích obnovení, jako jsou incidenty způsobené chybami, nesprávně načtená data nebo mazání důležitých dat. Můžete ho také použít pro testování nebo auditování. Záložní soubory se uchovávají 7 až 35 dní v závislosti na nastaveních databáze.
 
-Obnovení k bodu v čase může:
+Obnovení k určitému bodu v čase může obnovit databázi:
 
-- Obnovte databázi z existující databáze.
-- Obnovte databázi z odstraněné databáze.
-
-Pro spravovanou instanci může obnovení k určitému bodu v čase také provádět tyto akce:
-
-- Obnovte databázi do stejné spravované instance.
-- Obnovte databázi do jiné spravované instance.
-
-> [!NOTE]
-> Obnovení celé spravované instance z určitého bodu v čase není možné. Tento článek vysvětluje jenom to, co je možné: obnovení databáze, která je hostovaná na spravované instanci, v určitém časovém bodě.
+- z existující databáze.
+- z odstraněné databáze.
+- do stejné spravované instance nebo do jiné spravované instance. 
 
 ## <a name="limitations"></a>Omezení
 
-Když obnovujete z jedné spravované instance na jinou, obě instance musí být ve stejném předplatném a oblasti. Obnovení mezi různými oblastmi a mezi předplatnými není aktuálně podporováno.
+Obnovení bodu v čase do spravované instance má následující omezení:
+
+- Když obnovujete z jedné spravované instance na jinou, obě instance musí být ve stejném předplatném a oblasti. Obnovení mezi různými oblastmi a mezi předplatnými není aktuálně podporováno.
+- Obnovení celé spravované instance z určitého bodu v čase není možné. Tento článek vysvětluje jenom to, co je možné: obnovení databáze, která je hostovaná na spravované instanci, v určitém časovém bodě.
 
 > [!WARNING]
 > Pamatujte na velikost úložiště vaší spravované instance. V závislosti na velikosti dat, která mají být obnovena, je možné, že dojde k vyzkoušení instance úložiště. Pokud není dostatek místa pro obnovená data, použijte jiný přístup.
@@ -48,7 +44,7 @@ Následující tabulka uvádí scénáře obnovení k bodu v čase pro spravovan
 
 |           |Obnovit existující databázi do stejné spravované instance| Obnovit existující databázi do jiné spravované instance|Obnovit vyřazenou databázi do stejné spravované instance|Obnovit vyřazenou databázi do jiné spravované instance|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portal**| Ano|Ne |Ne|Ne|
+|**Azure Portal**| Ano|Ne |Ano|Ne|
 |**Azure CLI**|Ano |Ano |Ne|Ne|
 |**PowerShell**| Ano|Ano |Ano|Ano|
 
@@ -56,9 +52,9 @@ Následující tabulka uvádí scénáře obnovení k bodu v čase pro spravovan
 
 Obnovte stávající databázi do stejné instance pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI. K obnovení databáze do jiné instance použijte PowerShell nebo Azure CLI, abyste mohli zadat vlastnosti cílové spravované instance a skupiny prostředků. Pokud tyto parametry nezadáte, databáze bude ve výchozím nastavení obnovena do existující instance. Azure Portal v současné době nepodporuje obnovení do jiné instance.
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k [Portálu Azure](https://portal.azure.com). 
+1. Přihlaste se na web [Azure Portal ](https://portal.azure.com). 
 2. Přejít do spravované instance a vybrat databázi, kterou chcete obnovit.
 3. Na stránce databáze vyberte **obnovit** :
 
@@ -67,7 +63,7 @@ Obnovte stávající databázi do stejné instance pomocí Azure Portal, PowerSh
 4. Na stránce **obnovit** vyberte bod pro datum a čas, do kterého chcete databázi obnovit.
 5. Vyberte **Potvrdit** pro obnovení databáze. Tato akce spustí proces obnovení, který vytvoří novou databázi a naplní ji daty z původní databáze v určeném časovém okamžiku. Další informace o procesu obnovení najdete v tématu [čas obnovení](sql-database-recovery-using-backups.md#recovery-time).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Pokud ještě nemáte nainstalované Azure PowerShell, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
@@ -92,7 +88,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceDatabaseName $targetDatabase `
 ```
 
-Chcete-li obnovit databázi do jiné spravované instance, zadejte také názvy cílové skupiny prostředků a spravované instance:  
+Chcete-li obnovit databázi do jiné spravované instance, zadejte také názvy cílové skupiny prostředků a cílové spravované instance:  
 
 ```powershell-interactive
 $targetResourceGroupName = "<Resource group of target managed instance>"
@@ -110,7 +106,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 
 Podrobnosti najdete v tématu [Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase).
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Pokud ještě nemáte nainstalované rozhraní příkazového řádku Azure, přečtěte si téma [instalace Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -136,9 +132,18 @@ Podrobné vysvětlení dostupných parametrů naleznete v dokumentaci k rozhran�
 
 ## <a name="restore-a-deleted-database"></a>Obnovení odstraněné databáze
 
-Obnovení odstraněné databáze se dá provést pomocí PowerShellu nebo webu Azure Portal. k tomu prosím použijte tento dokument na webu [Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#managed-instance-database-1). Databázi lze obnovit do stejné instance nebo jiné instance.
+Obnovení odstraněné databáze se dá provést pomocí PowerShellu nebo Azure Portal. Chcete-li obnovit odstraněnou databázi do stejné instance, použijte buď Azure Portal, nebo PowerShell. K obnovení odstraněné databáze na jinou instanci použijte PowerShell. 
 
-Chcete-li obnovit odstraněnou databázi pomocí prostředí PowerShell, zadejte hodnoty parametrů do následujícího příkazu. Pak spusťte příkaz:
+### <a name="portal"></a>Portál 
+
+
+Chcete-li obnovit spravovanou databázi pomocí Azure Portal, otevřete stránku Přehled spravované instance a vyberte **odstraněné databáze**. Vyberte odstraněnou databázi, kterou chcete obnovit, a zadejte název nové databáze, která bude vytvořena s daty obnovenými ze zálohy.
+
+  ![Snímek obrazovky obnovení odstraněné databáze Azure SQL instance](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
+
+### <a name="powershell"></a>PowerShell
+
+Chcete-li obnovit databázi do stejné instance, aktualizujte hodnoty parametrů a spusťte následující příkaz prostředí PowerShell: 
 
 ```powershell-interactive
 $subscriptionId = "<Subscription ID>"
@@ -148,30 +153,33 @@ Select-AzSubscription -SubscriptionId $subscriptionId
 $resourceGroupName = "<Resource group name>"
 $managedInstanceName = "<Managed instance name>"
 $deletedDatabaseName = "<Source database name>"
+$targetDatabaseName = "<target database name>"
 
-$deleted_db = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
-            -InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName 
+$deletedDatabase = Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName $resourceGroupName `
+-InstanceName $managedInstanceName -DatabaseName $deletedDatabaseName
 
-$pointInTime = "2018-06-27T08:51:39.3882806Z"
-$properties = New-Object System.Object
-$properties | Add-Member -type NoteProperty -name CreateMode -Value "PointInTimeRestore"
-$properties | Add-Member -type NoteProperty -name RestorePointInTime -Value $pointInTime
-$properties | Add-Member -type NoteProperty -name RestorableDroppedDatabaseId -Value $deleted_db.Id
+Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+   -InstanceName $deletedDatabase.ManagedInstanceName `
+   -ResourceGroupName $deletedDatabase.ResourceGroupName `
+   -DeletionDate $deletedDatabase.DeletionDate `
+   -PointInTime UTCDateTime `
+   -TargetInstanceDatabaseName $targetDatabaseName
 ```
 
-Chcete-li obnovit odstraněnou databázi do jiné instance, změňte názvy skupiny prostředků a spravované instance. Také se ujistěte, že parametr Location odpovídá umístění skupiny prostředků a spravované instance.
+Chcete-li obnovit databázi do jiné spravované instance, zadejte také názvy cílové skupiny prostředků a cílové spravované instance:
 
 ```powershell-interactive
-$resourceGroupName = "<Second resource group name>"
-$managedInstanceName = "<Second managed instance name>"
+$targetResourceGroupName = "<Resource group of target managed instance>"
+$targetInstanceName = "<Target managed instance name>"
 
-$location = "West Europe"
-
-$restoredDBName = "WorldWideImportersPITR"
-$resource_id = "subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/managedInstances/$managedInstanceName/databases/$restoredDBName"
-
-New-AzResource -Location $location -Properties $properties `
-        -ResourceId $resource_id -ApiVersion "2017-03-01-preview" -Force
+Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
+   -InstanceName $deletedDatabase.ManagedInstanceName `
+   -ResourceGroupName $deletedDatabase.ResourceGroupName `
+   -DeletionDate $deletedDatabase.DeletionDate `
+   -PointInTime UTCDateTime `
+   -TargetInstanceDatabaseName $targetDatabaseName `
+   -TargetResourceGroupName $targetResourceGroupName `
+   -TargetInstanceName $targetInstanceName 
 ```
 
 ## <a name="overwrite-an-existing-database"></a>Přepsat existující databázi
@@ -197,13 +205,13 @@ Pro připojení k databázi ve spravované instanci použijte jednu z následuj�
 - [Point-to-site](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [Veřejný koncový bod](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
-# <a name="portaltabazure-portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 V Azure Portal vyberte databázi ze spravované instance a pak vyberte **Odstranit**.
 
    ![Odstranění databáze pomocí Azure Portal](media/sql-database-managed-instance-point-in-time-restore/delete-database-from-mi.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 K vyřazení existující databáze ze spravované instance použijte následující příkaz prostředí PowerShell:
 
@@ -215,7 +223,7 @@ $databaseName = "<Source database>"
 Remove-AzSqlInstanceDatabase -Name $databaseName -InstanceName $managedInstanceName -ResourceGroupName $resourceGroupName
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 K vyřazení existující databáze ze spravované instance použijte následující příkaz rozhraní příkazového řádku Azure:
 

@@ -5,15 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
+ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 28e79dffb206e8a62410bf3b4e0e239879b51224
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 6c4923e86f8678458d6301503043413fb8a5629b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806673"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197364"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Doprovodné materiály k omezování služby Azure Key Vault
 
@@ -38,9 +39,9 @@ Byl původně vytvořen Key Vault s omezeními určenými v [omezeních služby 
 1. Pokud vaše aplikace obsahuje více uzlů, které potřebují přečtení stejných tajných kódů, zvažte použití vzorku ventilátoru, kde jedna entita přečte tajný klíč z Key Vault a ventilátory pro všechny uzly.   Ukládat načtené tajné klíče do mezipaměti pouze v paměti.
 Pokud zjistíte, že výše uvedené pořád ještě nesplňuje vaše požadavky, vyplňte prosím níže uvedenou tabulku a kontaktujte nás, abyste zjistili, jakou další kapacitu je možné přidat (například níže pro ilustrativní účely).
 
-| Název trezoru | Oblast trezoru | Typ objektu (tajný klíč, klíč nebo certifikát) | Operace * | Typ kódu | Délka klíče nebo křivka | Klíč HSM?| Je potřeba RPS stabilního stavu. | Požadovaná špička RPS |
+| Název trezoru | Oblast trezoru | Typ objektu (tajný klíč, klíč nebo certifikát) | Operace * | Typ klíče | Délka klíče nebo křivka | Klíč HSM?| Je potřeba RPS stabilního stavu. | Požadovaná špička RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Klíč | Podepsat | EC | P-256 | Ne | 200 | 1 000 |
+| https://mykeyvault.vault.azure.net/ | | Klíč | Osobě | EC | P-256 | Ne | 200 | 1000 |
 
 Úplný seznam možných hodnot \* najdete v tématu [Azure Key Vault operace](/rest/api/keyvault/key-operations).
 
@@ -95,7 +96,7 @@ Na kód chyby protokolu HTTP 429 začněte omezování klienta pomocí exponenci
 
 V tomto okamžiku jste by neměly zobrazovat kódy odpovědí protokolu HTTP 429.
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="see-also"></a>Viz také
 
-Lepší orientaci omezení využití sítě v cloudu Microsoftu, najdete v části [model omezení využití sítě](https://docs.microsoft.com/azure/architecture/patterns/throttling).
+Hlubší orientaci při omezování Microsoft Cloud najdete v tématu [model omezování](https://docs.microsoft.com/azure/architecture/patterns/throttling).
 

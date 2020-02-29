@@ -1,6 +1,6 @@
 ---
 title: Elementy jazyka T-SQL
-description: Obsahuje odkazy na dokumentaci pro příkazy T-SQL podporované v Azure SQL Data Warehouse.
+description: Obsahuje odkazy na dokumentaci pro příkazy T-SQL podporované v SQL Analytics.
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: query
 ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 02f463e12547ba64a05e04988d9c192bba4f6a27
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: edd77d711654a7f2793eb3c08b93e85fc0a89e8f
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692527"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198418"
 ---
-# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Prvky jazyka T-SQL podporované v Azure SQL Data Warehouse
-Obsahuje odkazy na dokumentaci pro prvky jazyka T-SQL podporované v Azure SQL Data Warehouse.
+# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>Prvky jazyka T-SQL podporované v SQL Analytics
+Obsahuje odkazy na dokumentaci pro prvky jazyka T-SQL podporované v SQL Analytics.
 
 ## <a name="core-elements"></a>Základní prvky
 * [konvence syntaxe](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
@@ -109,7 +109,7 @@ Obsahuje odkazy na dokumentaci pro prvky jazyka T-SQL podporované v Azure SQL D
 * [COS](https://msdn.microsoft.com/library/ms188919.aspx)
 * [COT](https://msdn.microsoft.com/library/ms188921.aspx)
 * [VÝPOČTU](https://msdn.microsoft.com/library/ms175997.aspx)
-* [OPERÁTOR](https://msdn.microsoft.com/library/ms190317.aspx)
+* [COUNT_BIG](https://msdn.microsoft.com/library/ms190317.aspx)
 * [CUME_DIST](https://msdn.microsoft.com/library/hh231078.aspx)
 * [CURRENT_TIMESTAMP](https://msdn.microsoft.com/library/ms188751.aspx)
 * [CURRENT_USER](https://msdn.microsoft.com/library/ms176050.aspx)
@@ -220,7 +220,7 @@ Obsahuje odkazy na dokumentaci pro prvky jazyka T-SQL podporované v Azure SQL D
 * [SADY](https://msdn.microsoft.com/library/ms180059.aspx)
 * [UMÍSTIT](https://msdn.microsoft.com/library/ms180055.aspx)
 * [UŽIVATELSKÝ](https://msdn.microsoft.com/library/ms186738.aspx)
-* [UŽIVATELSKÉ JMÉNO](https://msdn.microsoft.com/library/ms188014.aspx)
+* [USER_NAME](https://msdn.microsoft.com/library/ms188014.aspx)
 * [Proměnná](https://msdn.microsoft.com/library/ms186290.aspx)
 * [VAR](https://msdn.microsoft.com/library/ms188735.aspx)
 * [JEDNOLET](https://msdn.microsoft.com/library/ms186313.aspx)
@@ -235,7 +235,7 @@ Obsahuje odkazy na dokumentaci pro prvky jazyka T-SQL podporované v Azure SQL D
 ## <a name="procedures"></a>Pravidel
 * [sp_addrolemember](https://msdn.microsoft.com/library/ms187750.aspx)
 * [sp_columns](https://msdn.microsoft.com/library/ms176077.aspx)
-* [procedur](https://msdn.microsoft.com/library/ms188787.aspx)
+* [sp_configure](https://msdn.microsoft.com/library/ms188787.aspx)
 * [sp_datatype_info_90](https://msdn.microsoft.com/library/mt204014.aspx)
 * [sp_droprolemember](https://msdn.microsoft.com/library/ms188369.aspx)
 * [sp_execute](https://msdn.microsoft.com/library/ff848746.aspx)
@@ -256,27 +256,27 @@ Obsahuje odkazy na dokumentaci pro prvky jazyka T-SQL podporované v Azure SQL D
 * [sp_unprepare](https://msdn.microsoft.com/library/ff848735.aspx)
 
 ## <a name="set-statements"></a>Příkazy SET
-* [NASTAVENÍ ANSI_DEFAULTS](https://msdn.microsoft.com/library/ms188340.aspx)
-* [NASTAVENÍ ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
-* [NASTAVENÍ ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
-* [NASTAVENÍ ANSI_NULLS](https://msdn.microsoft.com/library/ms188048.aspx)
-* [NASTAVENÍ ANSI_PADDING](https://msdn.microsoft.com/library/ms187403.aspx)
-* [NASTAVENÍ ANSI_WARNINGS](https://msdn.microsoft.com/library/ms190368.aspx)
+* [NASTAVIT ANSI_DEFAULTS](https://msdn.microsoft.com/library/ms188340.aspx)
+* [NASTAVIT ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
+* [NASTAVIT ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
+* [NASTAVIT ANSI_NULLS](https://msdn.microsoft.com/library/ms188048.aspx)
+* [NASTAVIT ANSI_PADDING](https://msdn.microsoft.com/library/ms187403.aspx)
+* [NASTAVIT ANSI_WARNINGS](https://msdn.microsoft.com/library/ms190368.aspx)
 * [NASTAVENÍ ARITHABORT](https://msdn.microsoft.com/library/ms190306.aspx)
 * [NASTAVENÍ ARITHIGNORE](https://msdn.microsoft.com/library/ms184341.aspx)
-* [NASTAVENÍ CONCAT_NULL_YIELDS_NULL](https://msdn.microsoft.com/library/ms176056.aspx)
+* [NASTAVIT CONCAT_NULL_YIELDS_NULL](https://msdn.microsoft.com/library/ms176056.aspx)
 * [NASTAVENÍ DATEFIRST](https://msdn.microsoft.com/library/ms181598.aspx)
 * [NASTAVENÍ PARAMETR DATEFORMAT](https://msdn.microsoft.com/library/ms189491.aspx)
 * [NASTAVENÍ FMTONLY](https://msdn.microsoft.com/library/ms173839.aspx)
-* [NASTAVENÍ IMPLICIT_TRANSACITONS](https://msdn.microsoft.com/library/ms187807.aspx)
-* [NASTAVENÍ LOCK_TIMEOUT](https://msdn.microsoft.com/library/ms189470.aspx)
-* [NASTAVENÍ NUMBERIC_ROUNDABORT](https://msdn.microsoft.com/library/ms188791.aspx)
-* [NASTAVENÍ QUOTED_IDENTIFIER](https://msdn.microsoft.com/library/ms174393.aspx)
+* [NASTAVIT IMPLICIT_TRANSACITONS](https://msdn.microsoft.com/library/ms187807.aspx)
+* [NASTAVIT LOCK_TIMEOUT](https://msdn.microsoft.com/library/ms189470.aspx)
+* [NASTAVIT NUMBERIC_ROUNDABORT](https://msdn.microsoft.com/library/ms188791.aspx)
+* [NASTAVIT QUOTED_IDENTIFIER](https://msdn.microsoft.com/library/ms174393.aspx)
 * [NASTAVIT ROWCOUNT](https://msdn.microsoft.com/library/ms188774.aspx)
 * [NASTAVENÍ TEXTSIZE](https://msdn.microsoft.com/library/ms186238.aspx)
 * [NASTAVIT ÚROVEŇ IZOLACE TRANSAKCE](https://msdn.microsoft.com/library/ms173763.aspx)
-* [NASTAVENÍ XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
+* [NASTAVIT XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Další kroky
-Další referenční informace najdete v tématu [příkazy T-SQL v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md)a [v systémových zobrazeních v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).
+Další referenční informace najdete v tématu [příkazy jazyka T-SQL v SQL Analytics](sql-data-warehouse-reference-tsql-statements.md)a [Systémová zobrazení v SQL Analytics](sql-data-warehouse-reference-tsql-system-views.md).
 

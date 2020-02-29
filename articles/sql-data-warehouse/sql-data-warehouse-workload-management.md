@@ -1,22 +1,22 @@
 ---
-title: Správa zatížení
-description: Pokyny pro implementaci správy úloh v Azure SQL Data Warehouse.
+title: Správa úloh
+description: Pokyny pro implementaci správy úloh ve službě Azure synapse Analytics.
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 287ad5467f9f3aac7eb8c9d7c19ea15c380c6879
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.custom: azure-synapse
+ms.openlocfilehash: 14ea742a40afff8105560f1003655004687c7c9e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76935415"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197653"
 ---
 # <a name="what-is-workload-management"></a>Co je Správa úloh?
 
@@ -36,11 +36,11 @@ Kapacita výkonu datového skladu je určena [jednotkami datového skladu](what-
 
 
 ## <a name="workload-management-concepts"></a>Koncepty správy úloh
-V minulosti jste spravovali výkon dotazů v SQL Data Warehouse prostřednictvím [tříd prostředků](resource-classes-for-workload-management.md).  Třídy prostředků, které jsou povoleny pro přiřazení paměti k dotazu na základě členství v rolích.  Primární výzvou s třídami Resources je, že po nakonfigurování neexistovala žádná oprávnění ke správě úloh.  
+V minulosti se pro SQL Analytics v Azure Synapsea Správa výkonu dotazů prostřednictvím [tříd prostředků](resource-classes-for-workload-management.md).  Třídy prostředků, které jsou povoleny pro přiřazení paměti k dotazu na základě členství v rolích.  Primární výzvou s třídami Resources je, že po nakonfigurování neexistovala žádná oprávnění ke správě úloh.  
 
 Například udělení členství role uživatele ad hoc, aby smallrc povoleno, aby tento uživatel mohl využívat 100% paměti v systému.  S třídami prostředků neexistuje žádný způsob, jak rezervovat a zajistit dostupnost prostředků pro kritické úlohy.
 
-Správa úloh na SQL Data Warehouse se skládá ze tří konceptů vysoké úrovně: [klasifikace úloh](sql-data-warehouse-workload-classification.md), [důležité úlohy](sql-data-warehouse-workload-importance.md) a [izolace úloh](sql-data-warehouse-workload-isolation.md).  Tyto funkce poskytují větší kontrolu nad tím, jak vaše zatížení využívají systémové prostředky.
+Správa úloh SQL Analytics ve službě Azure synapse se skládá ze tří konceptů na nejvyšší úrovni: [klasifikace úloh](sql-data-warehouse-workload-classification.md), [důležité úlohy](sql-data-warehouse-workload-importance.md) a [izolace úloh](sql-data-warehouse-workload-isolation.md).  Tyto funkce poskytují větší kontrolu nad tím, jak vaše zatížení využívají systémové prostředky.
 
 Klasifikace úloh je koncept přiřazení žádosti do skupiny úloh a nastavení úrovní důležitosti.  Historicky bylo toto přiřazení provedeno prostřednictvím členství role pomocí [sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class).  To se teď dá udělat pomocí [CLASSIFERu vytvořit úlohu](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  Funkce klasifikace poskytuje bohatou sadu možností, jako je například popisek, relace a čas pro klasifikaci požadavků.
 

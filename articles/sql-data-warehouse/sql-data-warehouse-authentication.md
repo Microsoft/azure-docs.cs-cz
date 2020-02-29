@@ -1,6 +1,6 @@
 ---
-title: Ověření
-description: Naučte se ověřovat Azure SQL Data Warehouse pomocí Azure Active Directory (AAD) nebo SQL Server ověřování.
+title: Ověřování
+description: Naučte se ověřovat službu Azure synapse Analytics pomocí Azure Active Directory (AAD) nebo SQL Serverho ověřování.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,22 +11,23 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 706c68cb7a139a5c4f6def5aed7ad67e49090ede
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+tag: azure-synapse
+ms.openlocfilehash: 235d13cfd6f33830d832a6a79e3bc1c78bbfe53e
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545139"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78195970"
 ---
-# <a name="authenticate-to-azure-sql-data-warehouse"></a>Ověřování pro Azure SQL Data Warehouse
-Naučte se ověřovat Azure SQL Data Warehouse pomocí Azure Active Directory (AAD) nebo SQL Server ověřování.
+# <a name="authenticate-to-azure-synapse-analytics"></a>Ověření ve službě Azure synapse Analytics
+Naučte se ověřovat SQL Analytics v Azure synapse pomocí Azure Active Directory (AAD) nebo SQL Serverho ověřování.
 
-Pokud se chcete připojit k SQL Data Warehouse, musíte předat přihlašovací údaje zabezpečení pro účely ověřování. Po navázání připojení jsou určitá nastavení připojení nakonfigurovaná v rámci vytváření relace dotazů.  
+Pokud se chcete připojit ke fondu SQL, musíte předat přihlašovací údaje zabezpečení pro účely ověřování. Po navázání připojení jsou určitá nastavení připojení nakonfigurovaná v rámci vytváření relace dotazů.  
 
-Další informace o zabezpečení a o tom, jak povolit připojení k datovému skladu, najdete v tématu [zabezpečení databáze v SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md).
+Další informace o zabezpečení a o tom, jak povolit připojení k datovému skladu, najdete v tématu [zabezpečení dokumentace k databázi](sql-data-warehouse-overview-manage-security.md).
 
 ## <a name="sql-authentication"></a>Ověřování pomocí SQL
-Chcete-li se připojit k SQL Data Warehouse, je nutné zadat následující informace:
+Chcete-li se připojit ke fondu SQL, je nutné zadat následující informace:
 
 * Plně kvalifikovaný Server servername
 * Zadat ověřování SQL
@@ -40,12 +41,12 @@ Ve výchozím nastavení se připojení připojuje k *Hlavní* databázi, a ne k
 * Než vytvoříte relaci v SSDT, zvýrazněte uživatelskou databázi.
 
 > [!NOTE]
-> Příkaz Transact-SQL **Use MyDatabase;** není podporován pro změnu databáze pro připojení. Pokyny k připojení k SQL Data Warehouse pomocí SSDT najdete v článku [dotazování pomocí sady Visual Studio](sql-data-warehouse-query-visual-studio.md) .
+> Příkaz Transact-SQL **Use MyDatabase;** není podporován pro změnu databáze pro připojení. Pokyny k připojení ke fondu SQL pomocí SSDT najdete v článku [dotazování pomocí sady Visual Studio](sql-data-warehouse-query-visual-studio.md) .
 > 
 > 
 
 ## <a name="azure-active-directory-aad-authentication"></a>Ověřování Azure Active Directory (AAD)
-Ověřování [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) je mechanismus připojení k Microsoft Azure SQL Data Warehouse pomocí identit v Azure Active Directory (Azure AD). S ověřováním Azure Active Directory můžete centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu v jednom centrálním umístění. Správa centrálních ID poskytuje jediné místo pro správu SQL Data Warehouse uživatelů a zjednodušuje správu oprávnění. 
+Ověřování [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) je mechanismus připojení ke fondu SQL pomocí identit v Azure Active Directory (Azure AD). S ověřováním Azure Active Directory můžete centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu v jednom centrálním umístění. Správa centrálních ID poskytuje jediné místo pro správu uživatelů Azure synapse a zjednodušuje správu oprávnění. 
 
 ### <a name="benefits"></a>Výhody
 Mezi výhody Azure Active Directory patří:
@@ -56,7 +57,7 @@ Mezi výhody Azure Active Directory patří:
 * Spravujte databázová oprávnění pomocí skupin externích (AAD).
 * Eliminuje ukládání hesel povolením integrovaného ověřování systému Windows a dalších forem ověřování, které podporuje Azure Active Directory.
 * Používá uživatele databáze s omezením k ověřování identit na úrovni databáze.
-* Podporuje ověřování založené na tokenech pro aplikace, které se připojují k SQL Data Warehouse.
+* Podporuje ověřování založené na tokenech pro aplikace, které se připojují ke fondu SQL.
 * Podporuje službu Multi-Factor Authentication prostřednictvím univerzálního ověřování služby Active Directory pro různé nástroje, včetně [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) a [SQL Server datových nástrojů](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json).
 
 > [!NOTE]
@@ -69,16 +70,16 @@ Pomocí těchto kroků můžete nakonfigurovat ověřování Azure Active Direct
 
 1. Vytvoření a naplnění Azure Active Directory
 2. Volitelné: přidružte nebo změňte službu Active Directory, která je aktuálně přidružená k vašemu předplatnému Azure.
-3. Vytvořte správce Azure Active Directory pro Azure SQL Data Warehouse.
+3. Vytvoření správce Azure Active Directory pro Azure synapse
 4. Konfigurace klientských počítačů
 5. Umožňuje vytvořit uživatele databáze s omezením v databázi namapované na identity Azure AD.
-6. Připojení k datovému skladu pomocí identit Azure AD
+6. Připojení ke svému fondu SQL pomocí identit Azure AD
 
 Aktuálně Azure Active Directory uživatelé nejsou zobrazeni v Průzkumník objektů SSDT. Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals](https://msdn.microsoft.com/library/ms187328.aspx).
 
 ### <a name="find-the-details"></a>Najít podrobnosti
-* Kroky pro konfiguraci a použití ověřování Azure Active Directory jsou skoro totožné pro Azure SQL Database a Azure SQL Data Warehouse. Postupujte podle podrobných pokynů v tématu [připojení k SQL Database nebo SQL Data Warehouse pomocí Azure Active Directory ověřování](../sql-database/sql-database-aad-authentication.md).
+* Postup pro konfiguraci a použití ověřování Azure Active Directory je skoro stejný pro Azure SQL Database a SQL Analytics v Azure synapse. Postupujte podle podrobných pokynů v tématu [připojení k SQL Database nebo fondu SQL pomocí ověřování Azure Active Directory](../sql-database/sql-database-aad-authentication.md).
 * Vytvořte vlastní databázové role a přidejte uživatele k rolím. Pak udělte rolím přesnější oprávnění. Další informace najdete v tématu [Začínáme s oprávněním databázového stroje](https://msdn.microsoft.com/library/mt667986.aspx).
 
 ## <a name="next-steps"></a>Další kroky
-Pokud se chcete začít dotazovat na svůj datový sklad pomocí sady Visual Studio a jiných aplikací, najdete informace v článku [Dotazování pomocí sady Visual Studio](sql-data-warehouse-query-visual-studio.md).
+Chcete-li začít dotazovat se sadou Visual Studio a dalšími aplikacemi, přečtěte si téma [dotazování pomocí sady Visual Studio](sql-data-warehouse-query-visual-studio.md).

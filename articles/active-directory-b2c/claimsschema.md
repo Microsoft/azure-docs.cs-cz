@@ -2,20 +2,20 @@
 title: ClaimsSchema-Azure Active Directory B2C | Microsoft Docs
 description: Zadejte element ClaimsSchema vlastní zásady v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 02/24/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2861b882d9b4c00a1c4db87b2dd49d49dfeb53a6
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: b997e15b4e987b7a18890606326f52a82cb15212
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581102"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189920"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -64,7 +64,7 @@ PredicateValidationReference| 0:1 | Odkaz na element **PredicateValidationsInput
 Element **DataType** podporuje následující hodnoty:
 
 | Typ | Popis |
-| ------- | ----------- | 
+| ------- | ----------- |
 |Boolean|Představuje logickou hodnotu (`true` nebo `false`).|
 |date| Představuje okamžitý čas, obvykle vyjádřený jako datum dne. Hodnota data dodržuje konvenci ISO 8601.|
 |Datum a čas|Představuje okamžitý čas, obvykle vyjádřený jako datum a denní dobu. Hodnota data dodržuje konvenci ISO 8601.|

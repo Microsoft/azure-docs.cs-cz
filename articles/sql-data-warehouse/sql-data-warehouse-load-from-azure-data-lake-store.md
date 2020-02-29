@@ -1,43 +1,43 @@
 ---
 title: Kurz – načtení dat z Azure Data Lake Storage
-description: Pomocí základních externích tabulek načtěte data z Azure Data Lake Storage do Azure SQL Data Warehouse.
+description: Pomocí základních externích tabulek načtěte data z Azure Data Lake Storage SQL Analytics.
 services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 12/06/2019
+ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.custom: azure-synapse
+ms.openlocfilehash: 9a567a8f62f8f12de725f6d9420576680a3005fe
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923629"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78194576"
 ---
-# <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Načtení dat z Azure Data Lake Storage do SQL Data Warehouse
-Tato příručka popisuje, jak použít základní externí tabulky k načtení dat z Azure Data Lake Storage do Azure SQL Data Warehouse. I když můžete spouštět dotazy ad hoc s daty uloženými v Data Lake Storage, doporučujeme data importovat do SQL Data Warehouse pro dosažení co nejvyššího výkonu. 
+# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Načtení dat z Azure Data Lake Storage pro analýzu SQL
+Tato příručka popisuje, jak použít základní externí tabulky k načtení dat z Azure Data Lake Storage. I když můžete spouštět dotazy v režimu ad hoc na data uložená v Data Lake Storage, doporučujeme data importovat pro nejlepší výkon. 
 
 > [!NOTE]  
-> Alternativou k nasazování je [příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) , který je aktuálně ve verzi Public Preview. Pokud chcete poskytnout zpětnou vazbu k příkazu COPY, odešlete e-mail na následující distribuční seznam: sqldwcopypreview@service.microsoft.com.
+> Alternativou k nasazování je [příkaz Copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) , který je aktuálně ve verzi Public Preview.  Příkaz COPY poskytuje největší flexibilitu. Pokud chcete poskytnout zpětnou vazbu k příkazu COPY, odešlete e-mail na následující distribuční seznam: sqldwcopypreview@service.microsoft.com.
 >
 > [!div class="checklist"]
 
 > * Vytváření databázových objektů potřebných k načtení z Data Lake Storage.
 > * Připojte se k adresáři Data Lake Storage.
-> * Načte data do Azure SQL Data Warehouse.
+> * Načte data do datového skladu.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
 Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi aplikace [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
 Pro spuštění tohoto kurzu budete potřebovat:
 
-* Azure SQL Data Warehouse. Viz [Vytvoření a dotazování a Azure SQL Data Warehouse](create-data-warehouse-portal.md).
+* Fond SQL. Přečtěte si téma [Vytvoření fondu SQL a data dotazů](create-data-warehouse-portal.md).
 * Účet Data Lake Storage. Viz Začínáme [s Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md). Pro tento účet úložiště budete muset nakonfigurovat nebo zadat jedno z následujících přihlašovacích údajů, které se mají načíst: klíč účtu úložiště, uživatel aplikace Azure Directory nebo uživatel AAD, který má příslušnou roli RBAC pro účet úložiště. 
 
 ##  <a name="create-a-credential"></a>Vytvoření přihlašovacích údajů
@@ -194,7 +194,7 @@ OPTION (LABEL = 'CTAS : Load [dbo].[DimProduct]');
 
 
 ## <a name="optimize-columnstore-compression"></a>Optimalizace komprese columnstore
-Ve výchozím nastavení SQL Data Warehouse ukládá tabulku jako clusterovaný index columnstore. Po dokončení načtení se některé řádky dat nemusí do columnstore komprimovat.  K tomu může dojít z nejrůznějších důvodů. Další informace najdete v tématu [Správa indexů columnstore](sql-data-warehouse-tables-index.md).
+Ve výchozím nastavení jsou tabulky definovány jako clusterovaný index columnstore. Po dokončení načtení se některé řádky dat nemusí do columnstore komprimovat.  K tomu může dojít z nejrůznějších důvodů. Další informace najdete v tématu [Správa indexů columnstore](sql-data-warehouse-tables-index.md).
 
 Pro optimalizaci výkonu dotazů a komprese columnstore po načtení znovu sestavte tabulku, aby index columnstore vynutil komprimaci všech řádků.
 
@@ -212,19 +212,20 @@ Pokud se rozhodnete vytvořit statistiku s jedním sloupcem pro každý sloupec 
 Následující příklad je dobrým výchozím bodem pro vytváření statistik. Vytvoří statistiku s jedním sloupcem pro každý sloupec v tabulce dimenzí a pro každý sloupec spojování v tabulkách faktů. Můžete kdykoli přidat statistiku jednoho nebo více sloupců do dalších sloupců tabulky faktů.
 
 ## <a name="achievement-unlocked"></a>Úspěch je odemčený!
-Úspěšně jste načetli data do Azure SQL Data Warehouse. Skvělá práce!
+Úspěšně jste načetli data do svého datového skladu. Skvělá práce!
 
 ## <a name="next-steps"></a>Další kroky 
 V tomto kurzu jste vytvořili externí tabulky, abyste definovali strukturu pro data uložená v Data Lake Storage Gen1 a pak jste použili základní CREATE TABLE jako příkaz SELECT pro načtení dat do datového skladu. 
 
 Provedli jste tyto akce:
 > [!div class="checklist"]
+>
 > * Byly vytvořeny objekty databáze požadované pro načtení z Data Lake Storage.
 > * Připojeno k adresáři Data Lake Storage.
-> * Data se načetla do Azure SQL Data Warehouse.
+> * Data byla načtena do datového skladu.
 >
 
-Načítání dat je prvním krokem k vývoji řešení datového skladu pomocí SQL Data Warehouse. Podívejte se na naše vývojové prostředky.
+Načítání dat je prvním krokem k vývoji řešení datového skladu pomocí Azure synapse Analytics. Podívejte se na naše vývojové prostředky.
 
 > [!div class="nextstepaction"]
-> [Naučte se vyvíjet tabulky v SQL Data Warehouse](sql-data-warehouse-tables-overview.md)
+> [Naučte se vyvíjet tabulky pro datové sklady](sql-data-warehouse-tables-overview.md)

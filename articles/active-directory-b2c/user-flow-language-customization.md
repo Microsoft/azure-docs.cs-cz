@@ -2,20 +2,20 @@
 title: Přizpůsobení jazyka v Azure Active Directory B2C
 description: Přečtěte si o přizpůsobení prostředí v uživatelských tocích.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ab34c1c34c2d2a67b5e3fdd6a5e84f0663455e20
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 5b3af812b2b78c276b5345b9b19226e6e1dba80b
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76847911"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78185756"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Přizpůsobení jazyka v Azure Active Directory B2C
 
@@ -209,10 +209,10 @@ Azure AD B2C zahrnuje podporu pro následující jazyky. Jazyky toku uživatelů
 | Katalánština               | určen            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Čeština                 | cs            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | dánština                | da            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Němčina                | de            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Němčina                | &            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Řečtina                 | el            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Angličtina               | en            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Španělština               | es            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Španělština               | jednomu            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Estonština              | et            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Baskičtina                | Balijšitna            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Finština               | fi            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
@@ -224,25 +224,25 @@ Azure AD B2C zahrnuje podporu pro následující jazyky. Jazyky toku uživatelů
 | Chorvatština              | oddělení            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Maďarština             | hu            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Indonéština            | id            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| italština               | it            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Japonština              | ja            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Italština               | její            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Japonština              | dža            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Kazaština                | kk            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Kannadština               | KN            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
-| Korejština                | ko            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Kannada               | KN            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
+| Korejština                | Ko            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Litevština            | lt            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Lotyština               | lv            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Malajálamština             | ml            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
 | Maráthština               | Vážený            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
 | Malajština                 | ms            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Norština – Bokmal      | nb            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
+| Norština – Bokmal      | NB            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
 | Holandština                 | nl            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | norština             | ne            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Paňdžábština               | pa            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
-| polština                | pl            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Portugalština – Brazílie   | pt-br         | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Portugalština (Portugalsko) | pt-pt         | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| Rumunština              | ro            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| ruština               | ru            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Polština                | pl            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Portugalština – Brazílie   | pt – br         | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Portugalština (Portugalsko) | pt-PT         | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Rumunština              | loď            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Ruština               | ru            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Slovenština                | SM            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Slovinština             | sl            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Srbština – cyrilice    | SR-cryl-cs    | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
@@ -251,7 +251,7 @@ Azure AD B2C zahrnuje podporu pro následující jazyky. Jazyky toku uživatelů
 | Tamilština                 | ta            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
 | Telugština                | te            | ![ano](./media/user-flow-language-customization/yes.png) | ![ne](./media/user-flow-language-customization/no.png) |
 | Thajština                  | Kolik            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
-| turečtina               | recenzent            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
+| Turečtina               | recenzent            | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Ukrajinština             | Velká Británie            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Vietnamština            | vi            | ![ne](./media/user-flow-language-customization/no.png) | ![ano](./media/user-flow-language-customization/yes.png) |
 | Čínština (zjednodušená)  | zh – Hans       | ![ano](./media/user-flow-language-customization/yes.png) | ![ano](./media/user-flow-language-customization/yes.png) |

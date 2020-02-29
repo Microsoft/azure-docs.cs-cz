@@ -1,6 +1,6 @@
 ---
 title: Primární, cizí a jedinečné klíče
-description: Podpora omezení tabulky v Azure SQL Data Warehouse
+description: Podpora omezení tabulky v SQL Analytics ve službě Azure synapse Analytics
 services: sql-data-warehouse
 author: XiaoyuMSFT
 manager: craigg
@@ -10,29 +10,29 @@ ms.subservice: development
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 8f3102425c6f984df0f50bc05eeb6f9a5e66d3dd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: azure-synapse
+ms.openlocfilehash: 0379bed08c3ee6931e931a78a2d2c91664535250
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685489"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78198129"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-azure-sql-data-warehouse"></a>Primární klíč, cizí klíč a jedinečný klíč v Azure SQL Data Warehouse
+# <a name="primary-key-foreign-key-and-unique-key-in-sql-analytics"></a>Primární klíč, cizí klíč a jedinečný klíč v SQL Analytics
 
-Přečtěte si o omezeních tabulek v Azure SQL Data Warehouse, včetně primárního klíče, cizího klíče a jedinečného klíče.
+Přečtěte si o omezeních tabulek v SQL Analytics, včetně primárního klíče, cizího klíče a jedinečného klíče.
 
 ## <a name="table-constraints"></a>Omezení tabulky 
-Azure SQL Data Warehouse podporuje tato omezení tabulky: 
+SQL Analytics podporuje tato omezení tabulek: 
 - PRIMÁRNÍ klíč se podporuje jenom v případě, že se používají jenom neclusterované a nevynucované.    
 - JEDINEČNÉ omezení se podporuje jenom s nevynucovaném využitím.   
 
-Omezení CIZÍho klíče není v Azure SQL Data Warehouse podporováno.  
+Omezení pro cizí klíč není podporováno v SQL Analytics.  
 
 ## <a name="remarks"></a>Poznámky
-Má-li primární klíč a/nebo jedinečný klíč, umožňuje modul datového skladu generovat optimální plán spouštění pro dotaz.  Všechny hodnoty ve sloupci primárního klíče nebo ve sloupci jedinečné omezení by měly být jedinečné. 
+Primární klíč a/nebo jedinečný klíč umožňuje, aby modul SQL Analytics vygeneroval optimální plán spouštění pro dotaz.  Všechny hodnoty ve sloupci primárního klíče nebo ve sloupci jedinečné omezení by měly být jedinečné. 
 
-Po vytvoření tabulky s primárním klíčem nebo jedinečným omezením v Azure Data Warehouse musí uživatelé zajistit, aby všechny hodnoty v těchto sloupcích byly jedinečné.  Porušení, které by mohlo způsobit, že dotaz vrátí nepřesný výsledek.  Tento příklad ukazuje, jak může dotaz vracet nepřesný výsledek, pokud sloupec primárního klíče nebo jedinečné omezení obsahuje duplicitní hodnoty.  
+Po vytvoření tabulky s primárním klíčem nebo jedinečným omezením ve službě SQL Analytics musí uživatelé zajistit, aby všechny hodnoty v těchto sloupcích byly jedinečné.  Porušení, které by mohlo způsobit, že dotaz vrátí nepřesný výsledek.  Tento příklad ukazuje, jak může dotaz vracet nepřesný výsledek, pokud sloupec primárního klíče nebo jedinečné omezení obsahuje duplicitní hodnoty.  
 
 ```sql
  -- Create table t1
@@ -158,12 +158,12 @@ a1          total
 ```
 
 ## <a name="examples"></a>Příklady
-Vytvoření tabulky datového skladu s primárním klíčem: 
+Vytvoření tabulky SQL Analytics s primárním klíčem: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-Vytvořte tabulku datového skladu s jedinečným omezením:
+Vytvořte tabulku SQL Analytics s jedinečným omezením:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -171,4 +171,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>Další kroky
 
-Po vytvoření tabulek pro datový sklad je dalším krokem načtení dat do tabulky. Kurz načítání najdete v tématu [načtení dat do SQL Data Warehouse](load-data-wideworldimportersdw.md).
+Po vytvoření tabulek pro databázi SQL Analytics je dalším krokem načtení dat do tabulky. Kurz načítání najdete v tématu [načtení dat do databází SQL Analytics](load-data-wideworldimportersdw.md).
