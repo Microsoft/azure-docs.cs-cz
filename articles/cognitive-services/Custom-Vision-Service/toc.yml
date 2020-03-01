@@ -1,9 +1,12 @@
 - name: Dokumentace ke Custom Vision Service
   href: index.yml
 - name: Přehled
+  expanded: true
   items:
     - name: Co je Custom Vision?
       href: home.md
+    - name: Co je nového
+      href: whats-new.md
 - name: Rychlé starty
   items:
     - name: Použití webového portálu

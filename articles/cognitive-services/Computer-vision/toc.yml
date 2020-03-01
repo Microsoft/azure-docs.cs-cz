@@ -5,6 +5,8 @@
   items:
     - name: Co je počítačové zpracování obrazu?
       href: Home.md
+    - name: Co je nového
+      href: whats-new.md
 - name: Rychlé starty
   items:
     - name: S využitím klientské sady SDK

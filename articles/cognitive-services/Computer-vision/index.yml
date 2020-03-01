@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/01/2019
-  ms.openlocfilehash: b17796fe07f37931c4a4924c6d4daaa8399562d2
-  ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+  ms.openlocfilehash: e7c04f587f900342031f25210f6640b46fbc358b
+  ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 11/06/2019
-  ms.locfileid: "73647843"
+  ms.lasthandoff: 03/01/2020
+  ms.locfileid: "78207077"
 landingContent:
 - title: Informace o počítačovém zpracování obrazu
   linkLists:
@@ -24,6 +24,10 @@ landingContent:
     links:
     - text: Co je počítačové zpracování obrazu?
       url: Home.md
+  - linkListType: whats-new
+    links:
+    - text: Co je nového
+      url: whats-new.md
   - linkListType: video
     links:
     - text: Vneste do svých aplikací inteligentní funkce pomocí rozhraní API pro zpracování obrazu
