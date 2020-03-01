@@ -5,21 +5,21 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/14/2019
+ms.date: 02/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a355307eef9f5ce1f833cfd7924f5efa234a0cd7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e145cf481dd165144b188e6205e4b78cc61359fd
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522545"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202476"
 ---
-## <a name="premium-ssd"></a>Premium SSD
+## <a name="premium-ssd"></a>SSD úrovně Premium
 
 Azure Premium SSD poskytuje podporu vysoce výkonných disků s nízkou latencí pro virtuální počítače a úlohy náročné na vstupně-výstupní operace (v/v). Pokud chcete využít rychlost a výkon disků služby Premium Storage, můžete migrovat stávající disky virtuálních počítačů na Premium SSD. Premium SSD jsou vhodné pro produkční aplikace kritické pro klíčové služby. Prémiová SSD se dá použít jenom u řady virtuálních počítačů, které jsou kompatibilní s Premium Storage.
 
-Další informace o typech a velikostech virtuálních počítačů v Azure pro Windows, včetně toho, které velikosti jsou kompatibilní s úložištěm Premium Storage, najdete v tématu [velikosti virtuálních počítačů s Windows](../articles/virtual-machines/windows/sizes.md). Další informace o typech a velikostech virtuálních počítačů v Azure pro Linux, včetně toho, které velikosti jsou kompatibilní s úložištěm Premium Storage, najdete v tématu [velikosti virtuálních počítačů se systémem Linux](../articles/virtual-machines/linux/sizes.md).
+Další informace o typech a velikostech virtuálních počítačů v Azure pro Windows, včetně toho, které velikosti jsou kompatibilní s úložištěm Premium Storage, najdete v tématu [velikosti virtuálních počítačů s Windows](../articles/virtual-machines/windows/sizes.md). Další informace o typech a velikostech virtuálních počítačů v Azure pro Linux, včetně toho, které velikosti jsou kompatibilní s úložištěm Premium Storage, najdete v tématu [velikosti virtuálních počítačů se systémem Linux](../articles/virtual-machines/linux/sizes.md). V některém z těchto článků je potřeba vyhledat v článku o jednotlivých velikostech virtuálních počítačů, abyste zjistili, jestli je služba Premium Storage kompatibilní.
 
 ### <a name="disk-size"></a>Velikost disku
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
@@ -49,7 +49,7 @@ Standardní SSD jsou navržené tak, aby poskytovaly jednorázové latence milis
 
 U standardních SSD se za jednu vstupně-výstupní operaci považuje každá vstupně-výstupní operace menší nebo rovna 256 KiB propustnosti. Vstupně-výstupní operace větší než 256 KiB propustnosti se považují za více než více vstupně-výstupních operací o velikosti 256 KiB. Tyto transakce mají dopad na fakturaci.
 
-## <a name="standard-hdd"></a>Standard HDD
+## <a name="standard-hdd"></a>HDD úrovně Standard
 
 Azure Standard HDD zajišťuje spolehlivou podporu disků s nízkými náklady pro virtuální počítače, které mají úlohy s necitlivými na latenci. U služby Storage úrovně Standard se data ukládají na jednotky pevného disku (HDD). Latence, IOPS a propustnost HDD úrovně Standard disků se můžou výrazně lišit ve srovnání s disky na bázi SSD. HDD úrovně Standard disky jsou navržené tak, aby poskytovaly latence zápisu v rámci 10ms a latence čtení v 20ms pro většinu vstupně-výstupních operací, ale skutečný výkon se může lišit v závislosti na velikosti vstupně-výstupních operací a způsobu úlohy. Když pracujete s virtuálními počítači, můžete použít standardní disky HDD pro scénáře vývoje a testování a méně důležité úlohy. Standardní HDD jsou dostupné ve všech oblastech Azure a dají se používat se všemi virtuálními počítači Azure.
 

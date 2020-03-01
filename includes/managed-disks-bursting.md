@@ -5,17 +5,17 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/24/2019
+ms.date: 02/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7564d40aa9344288c0368818b0b6501dc22a5a27
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a04df7ed283a17ddad6af87cf8215ff8d39a5079
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705530"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78202539"
 ---
-Pro prémiové SSD je aktuálně funkce pro vystavování disku ve verzi Preview. Shluking se podporuje u všech velikostí disků SSD úrovně Premium < = 512 GiB (P20 nebo níže). Tyto velikosti disků podporují rozpínání na nejlepší úsilí a využívají systém kreditů ke správě shlukování. Kredity se sčítají v rámci shlukového přenosu vždy, když je přenos disku pod zřízeným cílem výkonu pro velikost disku, a využití kreditů při nárůstu provozu nad rámec cíle. Provoz na disku se sleduje proti vstupně-výstupních operací i šířce pásma v zřízeném cíli.
+Pro prémiové SSD je aktuálně funkce pro vystavování disku ve verzi Preview. Shluking se podporuje u všech velikostí disků SSD úrovně Premium < = 512 GiB (P20 nebo níže). Tyto velikosti disků podporují rozpínání na nejlepší úsilí a využívají systém kreditů ke správě shlukování. Kredity se sčítají v rámci shlukového přenosu vždy, když je přenos disku pod zřízeným cílem výkonu pro velikost disku, a využití kreditů při nárůstu provozu nad rámec cíle. Provoz na disku se sleduje proti vstupně-výstupních operací i šířce pásma v zřízeném cíli. Při shlukování disku nebude při vstupně-výstupních operacích a propustnosti obcházet omezení velikosti virtuálních počítačů.
 
 Při nových nasazení velikosti disků, která ho podporují, je rozšíření disku ve výchozím nastavení povolené. Stávající velikosti disků, pokud podporují shlukování disku, mohou umožňovat roztržení pomocí jedné z následujících metod:
 
@@ -34,15 +34,15 @@ Pokud je disk připojený k virtuálnímu počítači, zahájí se všechny veli
 
 Velikosti disků, které poskytují podporu pro shlukování spolu s specifikacemi shluku, jsou shrnuty v následující tabulce.
 
-## <a name="regional-availability"></a>Dostupnost podle oblastí
+## <a name="regional-availability"></a>Regionální dostupnost
 
 V současné době je shlukování disků dostupné pouze v Středozápadní USA oblasti.
 
-## <a name="disk-sizes"></a>Velikost disků
+## <a name="disk-sizes"></a>Velikosti disků
 
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-## <a name="example-scenarios"></a>Ukázkové scénáře
+## <a name="example-scenarios"></a>Příklady scénářů
 
 Pokud chcete získat lepší představu o tom, jak to funguje, tady je několik příkladů scénářů:
 
