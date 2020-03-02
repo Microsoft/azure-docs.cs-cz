@@ -3,17 +3,16 @@ title: Postup aktivace složitých akcí s výstrahami Azure Monitor
 description: Naučte se vytvořit akci aplikace logiky, která bude zpracovávat výstrahy Azure Monitor.
 author: dkamstra
 services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: ad196f52935af4ab4aa7af1b80183161065d4b4b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.openlocfilehash: adc53ad1c75b3251c5672d9078062631b107cc87
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365018"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77669127"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Postup aktivace složitých akcí s výstrahami Azure Monitor
 
@@ -103,7 +102,7 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
 
 10. Vyberte **+** **Nový krok** a pak zvolte **přidat akci**.
 
-    ![Přidat akci](media/action-groups-logic-app/add-action.png "Přidání akce")
+    ![Přidat akci](media/action-groups-logic-app/add-action.png "Přidat akci")
 
 11. Vyhledejte a vyberte konektor Microsoft Teams. Vyberte akci **odeslání zprávy Microsoft Teams** .
 

@@ -1,18 +1,14 @@
 ---
 title: Application Insights pro Azure Cloud Services | Microsoft Docs
 description: Efektivní sledování webových rolí a rolí pracovních procesů s využitím Application Insights
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: f915764deaa70117b96a42c5e7310b691125d731
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979854"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77655833"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Application Insights pro Azure Cloud Services
 [Application Insights][start] můžou monitorovat [aplikace cloudových služeb Azure](https://azure.microsoft.com/services/cloud-services/) kvůli dostupnosti, výkonu, selhání a využití díky kombinování dat ze Application Insights sad SDK s [Azure Diagnosticsmi](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) daty z vašich cloudových služeb. Na základě zpětné vazby ohledně výkonu a efektivity vaší aplikace při běžném používání můžete informovaně rozhodovat o směrování návrhu v každé fázi vývoje.
@@ -111,7 +107,7 @@ V sadě Visual Studio nakonfigurujte sadu SDK Application Insights pro každý p
 
     b. Přidejte balíček [Application Insights pro servery Windows](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/).
 
-    ![Vyhledejte „Application Insights“](./media/cloudservices/04-ai-nuget.png)
+    ![Vyhledání Application Insights](./media/cloudservices/04-ai-nuget.png)
 
 1. Konfigurace sady SDK pro posílání dat do prostředku Application Insights:
 
@@ -221,7 +217,7 @@ Pro role pracovního procesu můžete výjimky sledovat dvěma způsoby:
 * Použijte TrackException (ex).
 * Pokud jste přidali balíček NuGet naslouchacího procesu trasování Application Insights, můžete použít System. Diagnostics. Trace k protokolování výjimek, [jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107).
 
-## <a name="performance-counters"></a>Čítače výkonu
+## <a name="performance-counters"></a>Čítače výkonnosti
 Ve výchozím nastavení se shromažďují následující čítače:
 
 * \Process(?? APP_WIN32_PROC??) Čas procesoru\%
@@ -239,7 +235,7 @@ Pro webové role se shromažďují i tyto čítače:
 
 Můžete zadat další vlastní nebo jiné čítače výkonu systému Windows úpravou *souboru ApplicationInsights. config* [, jak je znázorněno v tomto příkladu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
 
-  ![Čítače výkonu](./media/cloudservices/002-servers.png)
+  ![Čítače výkonnosti](./media/cloudservices/002-servers.png)
 
 ## <a name="correlated-telemetry-for-worker-roles"></a>Korelační telemetrie pro role pracovního procesu
 Pro prostředí s bohatou diagnostikou si můžete zobrazit, co vedlo k žádosti o neúspěšnou nebo vysokou latenci. V případě webových rolí sada SDK automaticky nastaví korelaci mezi související telemetrie. 
@@ -265,7 +261,7 @@ Pokud váš systém používá jiné služby Azure, například Stream Analytics
 
 Pokud máte mobilní klientskou aplikaci, použijte [App Center](../../azure-monitor/learn/mobile-center-quickstart.md). V [Analytics](../../azure-monitor/app/analytics.md) můžete vytvářet dotazy pro zobrazení počtu událostí a můžete je připnout na řídicí panel.
 
-## <a name="example"></a>Příklad:
+## <a name="example"></a>Příklad
 V [příkladu](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) se monitoruje služba s webovou rolí a dvěma rolemi pracovních procesů.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Výjimka "metoda nebyla nalezena" při spuštění v Azure Cloud Services

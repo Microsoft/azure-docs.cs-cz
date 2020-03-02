@@ -1,16 +1,16 @@
 ---
-title: Řešení potíží
+title: Odstraňování potíží
 services: azure-dev-spaces
 ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Naučte se řešit problémy a řešit běžné problémy při povolování a používání Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: b926e651200a4ab23306b0ec2443cb64400b8f7b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 061f812e7567d96bba092ebc9625756c14c46940
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605251"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77662463"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Řešení potíží s Azure Dev Spaces
 
@@ -469,12 +469,12 @@ Po restartování lusků můžete začít používat stávající obor názvů s
 
 Pokud chcete povolit Azure Dev Spaces v clusteru AKS, pro který je omezený provoz z uzlů clusteru, budete muset povolit tyto plně kvalifikované názvy domén:
 
-| PLNĚ KVALIFIKOVANÝ NÁZEV DOMÉNY                                    | Port      | Použití      |
+| Plně kvalifikovaný název domény                                    | Port      | Použití      |
 |-----------------------------------------|-----------|----------|
 | cloudflare.docker.com | HTTPS:443 | Vyžádat si Linux Alpine a jiné Azure Dev Spaces image |
 | gcr.io | HTTP: 443 | Načtení imagí Helm/překladen|
 | storage.googleapis.com | HTTP: 443 | Načtení imagí Helm/překladen|
-| azds –<guid>.<location>.azds.io | HTTPS:443 | Pro komunikaci se službou Azure Dev Spaces back-end pro váš kontroler. Přesný plně kvalifikovaný název domény najdete v části "dataplaneFqdn" v% USERPROFILE%\.azds\settings.JSON|
+| azds –<guid>.<location>. azds.io | HTTPS:443 | Pro komunikaci se službou Azure Dev Spaces back-end pro váš kontroler. Přesný plně kvalifikovaný název domény najdete v části "dataplaneFqdn" v% USERPROFILE%\.azds\settings.JSON|
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Chyba "v předplatném se nepovedlo najít cluster \<\> \<subscriptionId\>"
 
@@ -484,3 +484,14 @@ Pokud chcete tento problém vyřešit:
 
 * K aktualizaci aktuálního kontextu použijte `az aks use-dev-spaces -g <resource group name> -n <cluster name>`. Tento příkaz také umožňuje Azure Dev Spaces v clusteru AKS, pokud ještě není povolený. Alternativně můžete použít `kubectl config use-context <cluster name>` k aktualizaci aktuálního kontextu.
 * Pomocí `az account show` můžete zobrazit aktuální předplatné Azure, které cílíte, a ověřit, jestli je to správné. Předplatné, které cílíte, můžete změnit pomocí `az account set`.
+
+### <a name="error-using-dev-spaces-after-rotating-aks-certificates"></a>Chyba při použití vývojových prostorů po otočení AKS certifikátů
+
+Po [otočení certifikátů v clusteru AKS](../aks/certificate-rotation.md)se nezdaří některé operace, například `azds space list` a `azds up`. Po otočení certifikátů v clusteru je také potřeba aktualizovat certifikáty na řadiči Azure Dev Spaces.
+
+Pokud chcete tento problém vyřešit, ujistěte se, že váš *kubeconfig* má aktualizované certifikáty pomocí `az aks get-credentials` potom spusťte příkaz `azds controller refresh-credentials`. Příklad:
+
+```azurecli
+az aks get-credentials -g <resource group name> -n <cluster name>
+azds controller refresh-credentials -g <resource group name> -n <cluster name>
+```
