@@ -19,6 +19,8 @@
           href: container-registry-get-started-powershell.md
         - name: Odesílání událostí do služby Event Grid – CLI
           href: container-registry-event-grid-quickstart.md
+        - name: Sestavení imagí v Javě a nasdílení změn – CLI
+          href: container-registry-java-quickstart.md
     - name: Kurzy
       expanded: false
       items:

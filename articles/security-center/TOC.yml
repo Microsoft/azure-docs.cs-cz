@@ -6,8 +6,16 @@
       href: security-center-intro.md
     - name: Podporované platformy
       href: security-center-os-coverage.md
-    - name: Podporované funkce
-      href: security-center-services.md
+    - name: Funkce služby Security Center
+      items:
+        - name: Pokrytí funkcí pro virtuální počítače
+          href: security-center-services.md
+        - name: Pokrytí funkcí pro prostředky Azure PaaS
+          href: features-paas.md
+    - name: Doporučení zabezpečení
+      href: recommendations-reference.md
+    - name: Výstrahy zabezpečení a model Kill Chain
+      href: alerts-reference.md
 - name: Rychlé starty
   expanded: true
   items:

@@ -504,6 +504,8 @@
           href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
     - name: Kurzy
       items:
+        - name: Vytvoření clusteru Apache Kafka – Azure CLI
+          href: ./kafka/tutorial-cli-rest-proxy.md
         - name: Použití rozhraní Apache Kafka Producer and Consumer API
           href: ./kafka/apache-kafka-producer-consumer-api.md
         - name: Vývoj aplikace s využitím rozhraní Apache Kafka Streams API
@@ -548,8 +550,6 @@
               href: ./kafka/apache-kafka-mirroring.md
             - name: Analýza protokolů Apache Kafka
               href: ./kafka/apache-kafka-log-analytics-operations-management.md
-            - name: Používání vlastního klíče
-              href: ./kafka/apache-kafka-byok.md
             - name: Šifrování SSL a ověřování
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
         - name: Řešení potíží

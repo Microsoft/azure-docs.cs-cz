@@ -1,6 +1,7 @@
 - name: Dokumentace ke službě Rozpoznávání formulářů
   href: index.yml
 - name: Přehled
+  expanded: true
   items:
     - name: Co je služba Rozpoznávání formulářů?
       href: overview.md
@@ -45,6 +46,8 @@
   items:
     - name: Vytvoření trénovací sady dat
       href: build-training-data-set.md
+    - name: Nasazení ukázkového nástroje pro popisování
+      href: deploy-label-tool.md
     - name: Použití kontejnerů
       items:
         - name: Instalace a spuštění kontejnerů

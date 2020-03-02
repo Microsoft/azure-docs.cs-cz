@@ -276,7 +276,7 @@
       items:
         - name: Vyřazování od 1. března 2023
           href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: Přehled
+        - name: Přehled migrace
           href: migration-classic-resource-manager-overview.md
         - name: Podrobné informace o migraci
           href: migration-classic-resource-manager-deep-dive.md

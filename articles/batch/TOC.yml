@@ -29,6 +29,8 @@
       href: tutorial-r-doazureparallel.md
     - name: OCR se službami Batch a Functions
       href: tutorial-batch-functions.md
+    - name: Skripty Pythonu s Data Factory
+      href: tutorial-run-python-batch-azure-data-factory.md
 - name: ukázky
   items:
     - name: Ukázky kódů

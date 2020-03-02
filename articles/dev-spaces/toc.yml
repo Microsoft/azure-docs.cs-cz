@@ -97,6 +97,8 @@
           href: how-to/ingress-https-nginx.md
         - name: Připojení počítače pro vývoj ke clusteru AKS (Preview)
           href: how-to/connect.md
+        - name: Konfigurace clusteru Azure Dev Spaces pro použití Helmu 3 (Preview)
+          href: how-to/helm-3.md
     - name: Řešení potíží
       href: troubleshooting.md
     - name: Nejčastější dotazy

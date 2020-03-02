@@ -42,6 +42,8 @@
     - name: 'Překlad textu, analýza mínění a syntetizace řeči pomocí Flask'
       maintainContext: true
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
+    - name: Extrakce informací v Excelu s využitím Power Automate
+      href: tutorials/extract-excel-information.md
 - name: Návody
   items:
     - name: Volání rozhraní Text Analytics API

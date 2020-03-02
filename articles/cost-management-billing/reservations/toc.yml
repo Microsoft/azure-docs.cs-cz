@@ -12,6 +12,8 @@
           href: prepay-sql-data-warehouse-charges.md
         - name: Nákup rezervace virtuálního počítače
           href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Nákup rezervace služby Dedicated Host
+          href: ../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md
         - name: Azure Disk Storage
           href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Nákup rezervace Azure Storage
@@ -42,10 +44,12 @@
           href: view-reservations.md
     - name: Koncepty
       items:
-        - name: Slevy na rezervovanou instanci virtuálního počítače
-          href: ../manage/understand-vm-reservation-charges.md
         - name: Jak se vytvářejí doporučení pro rezervace
           href: reserved-instance-purchase-recommendations.md
+        - name: Slevy na rezervovanou instanci virtuálního počítače
+          href: ../manage/understand-vm-reservation-charges.md
+        - name: Slevy na rezervovanou službu Dedicated Host
+          href: billing-understand-dedicated-hosts-reservation-charges.md
         - name: Slevy na rezervovanou kapacitu Azure Storage
           href: understand-storage-charges.md
         - name: Slevy na rezervace Azure Disk Storage

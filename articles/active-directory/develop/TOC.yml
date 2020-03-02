@@ -29,9 +29,9 @@
           href: quickstart-v2-javascript.md
     - name: Webové aplikace
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP .NET Core
+        - name: Jádro ASP.NET
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -42,9 +42,9 @@
           href: quickstart-v2-python-webapp.md
     - name: Webová rozhraní API
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: quickstart-v2-dotnet-native-aspnet.md
-        - name: ASP .NET Core
+        - name: Jádro ASP.NET
           href: 'https://azure.microsoft.com/resources/samples/active-directory-dotnet-native-aspnetcore-v2'
     - name: Mobilní a desktopové aplikace
       items:
@@ -70,7 +70,7 @@
           href: tutorial-v2-javascript-spa.md
     - name: Webové aplikace
       items:
-        - name: ASP .NET
+        - name: ASP.NET
           href: tutorial-v2-asp-webapp.md
     - name: Mobilní a desktopové aplikace
       items:
@@ -242,13 +242,15 @@
           href: brokered-auth.md
         - name: Migrace
           items:
+            - name: Přehled
+              href: msal-migration.md
             - name: Migrace na MSAL.NET
               href: msal-net-migration.md
             - name: Migrace na MSAL.js
               href: msal-compare-msal-js-and-adal-js.md
             - name: Migrace na MSAL.Android
               href: migrate-android-adal-msal.md
-            - name: Migrace na MSAL.iOS/MacOS
+            - name: Migrace na MSAL.iOS/macOS
               href: migrate-objc-adal-msal.md
             - name: Migrace na MSAL pro Python
               href: migrate-python-adal-msal.md
@@ -403,6 +405,8 @@
           href: v2-admin-consent.md
         - name: Prostředí udělení souhlasu pro aplikace
           href: application-consent-experience.md
+    - name: Podmíněný přístup
+      href: v2-conditional-access-dev-guide.md
     - name: Národní cloudy
       items:
         - name: Přehled

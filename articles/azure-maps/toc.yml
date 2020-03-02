@@ -181,6 +181,8 @@
           href: display-feature-information-android.md
         - name: Přidání vrstvy dlaždic
           href: how-to-add-tile-layer-android-map.md
+        - name: Zobrazení provozních dat
+          href: how-to-show-traffic-android.md
     - name: Poskytnutí zpětné vazby k datům
       href: how-to-use-feedback-tool.md
 - name: Referenční informace
