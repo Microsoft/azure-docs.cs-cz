@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: f025b3357943014a6d9c6e331c47f019fe94c5bf
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 8b0ab8ca6bec07d92af1b7e0ebe7b2a3cd45899d
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196939"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206403"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Kurz: indexování objektů BLOB JSON z Azure Storage pomocí REST
 
@@ -42,21 +42,35 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 [Clinical-Trials-JSON. zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) obsahuje data použitá v tomto kurzu. Stáhnout a rozbalit tento soubor do vlastní složky. Data pocházejí z [ClinicalTrials.gov](https://clinicaltrials.gov/ct2/results), která jsou pro tento kurz převedená na JSON.
 
-## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
+## <a name="1---create-services"></a>1\. vytvoření služeb
 
-Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
+V tomto kurzu se používá Azure Kognitivní hledání k indexování a dotazům a k poskytování dat využívá Azure Blob Storage. 
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pro možnost blízkost a spravovatelnost. V praxi může být váš účet Azure Storage v jakékoli oblasti.
 
-1. V části **nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+### <a name="start-with-azure-storage"></a>Začínáme s Azure Storage
 
-![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/) a klikněte na **+ vytvořit prostředek**.
 
-Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+1. Vyhledejte *účet úložiště* a vyberte nabídku účtu úložiště od Microsoftu.
 
-## <a name="prepare-sample-data"></a>Příprava ukázkových dat
+   ![Vytvořit účet úložiště](media/cognitive-search-tutorial-blob/storage-account.png "Vytvořit účet úložiště")
 
-1. [Přihlaste se k Azure Portal](https://portal.azure.com), přejděte k účtu úložiště Azure, klikněte na **objekty blob**a pak klikněte na **+ kontejner**.
+1. Na kartě základy jsou vyžadovány následující položky. Přijměte výchozí hodnoty pro všechno ostatní.
+
+   + **Skupina prostředků**. Vyberte existující jednu nebo vytvořte novou, ale použijte stejnou skupinu pro všechny služby, abyste je mohli souhrnně spravovat.
+
+   + **Název účtu úložiště** Pokud se domníváte, že máte více prostředků stejného typu, použijte název k jednoznačnému odstranění podle typu a oblasti, například *blobstoragewestus*. 
+
+   + **Umístění**. Pokud je to možné, vyberte stejné umístění, které se používá pro Azure Kognitivní hledání a Cognitive Services. Jediné místo má za vyrušení poplatky za šířku pásma.
+
+   + **Druh účtu**. Vyberte výchozí *StorageV2 (obecné účely v2)* .
+
+1. Kliknutím na tlačítko **zkontrolovat + vytvořit** službu vytvořte.
+
+1. Po vytvoření klikněte na **Přejít k prostředku** a otevřete stránku Přehled.
+
+1. Klikněte na služba **BLOB** Service.
 
 1. [Vytvořte kontejner objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) , který bude obsahovat vzorová data. Úroveň veřejného přístupu můžete nastavit na libovolnou z jeho platných hodnot.
 
@@ -70,221 +84,247 @@ Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odesla
 
 Po dokončení nahrávání by se soubory měly zobrazit v samostatné podsložce uvnitř kontejneru dat.
 
-## <a name="set-up-postman"></a>Nastavení nástroje Postman
+### <a name="azure-cognitive-search"></a>Azure Cognitive Search
+
+Další prostředek je Azure Kognitivní hledání, který můžete [vytvořit na portálu](search-create-service-portal.md). K dokončení tohoto Názorného postupu můžete použít bezplatnou úroveň. 
+
+Stejně jako u služby Azure Blob Storage si pro získání přístupového klíče chvíli počkejte. Když při zahájení strukturování požadavků začnete, budete muset zadat koncový bod a klíč rozhraní API pro správu, který se použije k ověření každého požadavku.
+
+### <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
+
+Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
+
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+
+1. V části **nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
+
+![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
+
+Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+
+## <a name="2---set-up-postman"></a>2 – nastavení post
 
 Spusťte Postman a nastavte požadavek HTTP. Pokud tento nástroj neznáte, přečtěte si téma [prozkoumání rozhraní REST API služby Azure kognitivní hledání pomocí služby post](search-get-started-postman.md).
 
-Metoda žádosti pro každé volání v tomto kurzu je **post**. Klíče hlaviček jsou Content-type a api-key. Hodnoty těchto klíčů hlaviček jsou application/json a váš klíč správce (klíč správce je zástupná hodnota za váš primární klíč služby Search). Samotný obsah volání se vkládá do textu požadavku. V závislosti na klientovi, kterého používáte, se může způsob vytváření dotazu mírně lišit, ale toto jsou základní informace.
+Metody žádosti pro každé volání v tomto kurzu jsou **post** a **Get**. K vytvoření zdroje dat, indexu a indexeru provedete tři volání rozhraní API vaší vyhledávací služby. Zdroj dat obsahuje ukazatel na váš účet úložiště a vaše data JSON. Vaše služba Search se připojí při načítání dat.
 
-  ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/postmanoverview.png)
+V části hlavičky nastavte typ Content-Type na `application/json` a nastavte `api-key` na klíč rozhraní API pro správu služby Azure Kognitivní hledání. Po nastavení hlaviček je můžete použít pro každý požadavek v tomto cvičení.
 
-Pomocí nástroje Postman provedeme tři volání rozhraní API do služby Search, kterými vytvoříme zdroj dat, index a indexer. Zdroj dat obsahuje ukazatel na váš účet úložiště a vaše data JSON. Vaše služba Search se připojí při načítání dat.
+  ![Adresa URL a záhlaví žádosti post](media/search-get-started-postman/postman-url.png "Adresa URL a záhlaví žádosti post")
 
-Řetězce dotazů musí určovat verzi rozhraní API a každé volání by mělo vrátit **vytvořené 201**. Obecně dostupná verze API-Version pro použití polí JSON je `2019-05-06`.
+Identifikátory URI musí určovat verzi rozhraní API a každé volání by mělo vrátit **vytvořenou 201**. Obecně dostupná verze API-Version pro použití polí JSON je `2019-05-06`.
 
-Ve svém klientovi REST proveďte následující tři volání rozhraní API.
-
-## <a name="create-a-data-source"></a>Vytvoření zdroje dat
+## <a name="3---create-a-data-source"></a>3\. vytvoření zdroje dat
 
 [Rozhraní API pro vytvoření zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) vytvoří objekt Azure kognitivní hledání, který určuje, jaká data se mají indexovat.
 
-Koncový bod tohoto volání je `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search. 
+1. Nastavte koncový bod tohoto volání na `https://[service name].search.windows.net/datasources?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search. 
 
-V případě tohoto volání musí tělo žádosti zahrnovat název vašeho účtu úložiště, klíč účtu úložiště a název kontejneru objektů BLOB. Klíč účtu úložiště najdete na webu Azure Portal v části **Přístupové klíče** vašeho účtu úložiště. Umístění je znázorněné na následujícím obrázku:
+1. Zkopírujte následující kód JSON do textu žádosti.
 
-  ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/storagekeys.png)
+    ```json
+    {
+        "name" : "clinical-trials-json-ds",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=[storage account name];AccountKey=[storage account key];" },
+        "container" : { "name" : "[blob container name]"}
+    }
+    ```
 
-Před provedením volání nezapomeňte v těle volání nahradit `[storage account name]`, `[storage account key]`a `[blob container name]`.
+1. Nahraďte připojovací řetězec platným řetězcem pro váš účet.
 
-```json
-{
-    "name" : "clinical-trials-json",
-    "type" : "azureblob",
-    "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=[storage account name];AccountKey=[storage account key];" },
-    "container" : { "name" : "[blob container name]"}
-}
-```
+1. Nahraďte [název kontejneru objektů BLOB] kontejnerem, který jste vytvořili pro ukázková data. 
 
-Odpověď by měla vypadat nějak takto:
+1. Odešlete požadavek. Odpověď by měla vypadat nějak takto:
 
-```json
-{
-    "@odata.context": "https://exampleurl.search.windows.net/$metadata#datasources/$entity",
-    "@odata.etag": "\"0x8D505FBC3856C9E\"",
-    "name": "clinical-trials-json",
-    "description": null,
-    "type": "azureblob",
-    "subtype": null,
-    "credentials": {
-        "connectionString": "DefaultEndpointsProtocol=https;AccountName=[mystorageaccounthere];AccountKey=[[myaccountkeyhere]]];"
-    },
-    "container": {
-        "name": "[mycontainernamehere]",
-        "query": null
-    },
-    "dataChangeDetectionPolicy": null,
-    "dataDeletionDetectionPolicy": null
-}
-```
+    ```json
+    {
+        "@odata.context": "https://exampleurl.search.windows.net/$metadata#datasources/$entity",
+        "@odata.etag": "\"0x8D505FBC3856C9E\"",
+        "name": "clinical-trials-json-ds",
+        "description": null,
+        "type": "azureblob",
+        "subtype": null,
+        "credentials": {
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=[mystorageaccounthere];AccountKey=[[myaccountkeyhere]]];"
+        },
+        "container": {
+            "name": "[mycontainernamehere]",
+            "query": null
+        },
+        "dataChangeDetectionPolicy": null,
+        "dataDeletionDetectionPolicy": null
+    }
+    ```
 
-## <a name="create-an-index"></a>Vytvoření indexu
+## <a name="4---create-an-index"></a>4\. vytvoření indexu
     
 Druhé volání je [vytvořit index API](https://docs.microsoft.com/rest/api/searchservice/create-index), což vytvoří index služby Azure kognitivní hledání, který ukládá všechna hledaná data. Index určuje všechny parametry a jejich atributy.
 
-Adresa URL pro toto volání je `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search.
+1. Nastavte koncový bod tohoto volání na `https://[service name].search.windows.net/indexes?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search.
 
-Nejprve nahraďte adresu URL. Pak zkopírujte následující kód, vložte ho do textu vašeho požadavku a spusťte dotaz.
+1. Zkopírujte následující kód JSON do textu žádosti.
 
-```json
-{
-  "name": "clinical-trials-json-index",  
-  "fields": [
-  {"name": "FileName", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": false, "filterable": false, "sortable": true},
-  {"name": "Description", "type": "Edm.String", "searchable": true, "retrievable": false, "facetable": false, "filterable": false, "sortable": false},
-  {"name": "MinimumAge", "type": "Edm.Int32", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": true},
-  {"name": "Title", "type": "Edm.String", "searchable": true, "retrievable": true, "facetable": false, "filterable": true, "sortable": true},
-  {"name": "URL", "type": "Edm.String", "searchable": false, "retrievable": false, "facetable": false, "filterable": false, "sortable": false},
-  {"name": "MyURL", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": false, "filterable": false, "sortable": false},
-  {"name": "Gender", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
-  {"name": "MaximumAge", "type": "Edm.Int32", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": true},
-  {"name": "Summary", "type": "Edm.String", "searchable": true, "retrievable": true, "facetable": false, "filterable": false, "sortable": false},
-  {"name": "NCTID", "type": "Edm.String", "key": true, "searchable": true, "retrievable": true, "facetable": false, "filterable": true, "sortable": true},
-  {"name": "Phase", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
-  {"name": "Date", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": false, "filterable": false, "sortable": true},
-  {"name": "OverallStatus", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
-  {"name": "OrgStudyId", "type": "Edm.String", "searchable": true, "retrievable": true, "facetable": false, "filterable": true, "sortable": false},
-  {"name": "HealthyVolunteers", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
-  {"name": "Keywords", "type": "Collection(Edm.String)", "searchable": true, "retrievable": true, "facetable": true, "filterable": false, "sortable": false},
-  {"name": "metadata_storage_last_modified", "type":"Edm.DateTimeOffset", "searchable": false, "retrievable": true, "filterable": true, "sortable": false},
-  {"name": "metadata_storage_size", "type":"Edm.String", "searchable": false, "retrievable": true, "filterable": true, "sortable": false},
-  {"name": "metadata_content_type", "type":"Edm.String", "searchable": true, "retrievable": true, "filterable": true, "sortable": false}
-  ],
-  "suggesters": [
-  {
-    "name": "sg",
-    "searchMode": "analyzingInfixMatching",
-    "sourceFields": ["Title"]
-  }
-  ]
-}
-```
+    ```json
+    {
+      "name": "clinical-trials-json-index",  
+      "fields": [
+      {"name": "FileName", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": false, "filterable": false, "sortable": true},
+      {"name": "Description", "type": "Edm.String", "searchable": true, "retrievable": false, "facetable": false, "filterable": false, "sortable": false},
+      {"name": "MinimumAge", "type": "Edm.Int32", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": true},
+      {"name": "Title", "type": "Edm.String", "searchable": true, "retrievable": true, "facetable": false, "filterable": true, "sortable": true},
+      {"name": "URL", "type": "Edm.String", "searchable": false, "retrievable": false, "facetable": false, "filterable": false, "sortable": false},
+      {"name": "MyURL", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": false, "filterable": false, "sortable": false},
+      {"name": "Gender", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
+      {"name": "MaximumAge", "type": "Edm.Int32", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": true},
+      {"name": "Summary", "type": "Edm.String", "searchable": true, "retrievable": true, "facetable": false, "filterable": false, "sortable": false},
+      {"name": "NCTID", "type": "Edm.String", "key": true, "searchable": true, "retrievable": true, "facetable": false, "filterable": true, "sortable": true},
+      {"name": "Phase", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
+      {"name": "Date", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": false, "filterable": false, "sortable": true},
+      {"name": "OverallStatus", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
+      {"name": "OrgStudyId", "type": "Edm.String", "searchable": true, "retrievable": true, "facetable": false, "filterable": true, "sortable": false},
+      {"name": "HealthyVolunteers", "type": "Edm.String", "searchable": false, "retrievable": true, "facetable": true, "filterable": true, "sortable": false},
+      {"name": "Keywords", "type": "Collection(Edm.String)", "searchable": true, "retrievable": true, "facetable": true, "filterable": false, "sortable": false},
+      {"name": "metadata_storage_last_modified", "type":"Edm.DateTimeOffset", "searchable": false, "retrievable": true, "filterable": true, "sortable": false},
+      {"name": "metadata_storage_size", "type":"Edm.String", "searchable": false, "retrievable": true, "filterable": true, "sortable": false},
+      {"name": "metadata_content_type", "type":"Edm.String", "searchable": true, "retrievable": true, "filterable": true, "sortable": false}
+      ]
+    }
+   ```
 
-Odpověď by měla vypadat nějak takto:
+1. Odešlete požadavek. Odpověď by měla vypadat nějak takto:
 
-```json
-{
-    "@odata.context": "https://exampleurl.search.windows.net/$metadata#indexes/$entity",
-    "@odata.etag": "\"0x8D505FC00EDD5FA\"",
-    "name": "clinical-trials-json-index",
-    "fields": [
-        {
-            "name": "FileName",
-            "type": "Edm.String",
-            "searchable": false,
-            "filterable": false,
-            "retrievable": true,
-            "sortable": true,
-            "facetable": false,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "synonymMaps": []
+    ```json
+    {
+        "@odata.context": "https://exampleurl.search.windows.net/$metadata#indexes/$entity",
+        "@odata.etag": "\"0x8D505FC00EDD5FA\"",
+        "name": "clinical-trials-json-index",
+        "fields": [
+            {
+                "name": "FileName",
+                "type": "Edm.String",
+                "searchable": false,
+                "filterable": false,
+                "retrievable": true,
+                "sortable": true,
+                "facetable": false,
+                "key": false,
+                "indexAnalyzer": null,
+                "searchAnalyzer": null,
+                "analyzer": null,
+                "synonymMaps": []
+            },
+            {
+                "name": "Description",
+                "type": "Edm.String",
+                "searchable": true,
+                "filterable": false,
+                "retrievable": false,
+                "sortable": false,
+                "facetable": false,
+                "key": false,
+                "indexAnalyzer": null,
+                "searchAnalyzer": null,
+                "analyzer": null,
+                "synonymMaps": []
+            },
+            ...
+          }
+    ```
+
+## <a name="5---create-and-run-an-indexer"></a>5\. vytvoření a spuštění indexeru
+
+Indexer se připojuje ke zdroji dat, importuje data do cílového vyhledávacího indexu a volitelně poskytuje plán pro automatizaci aktualizace dat. REST API je [vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+
+1. Nastavte identifikátor URI pro toto volání na `https://[service name].search.windows.net/indexers?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search.
+
+1. Zkopírujte následující kód JSON do textu žádosti.
+
+    ```json
+    {
+      "name" : "clinical-trials-json-indexer",
+      "dataSourceName" : "clinical-trials-json-ds",
+      "targetIndexName" : "clinical-trials-json-index",
+      "parameters" : { "configuration" : { "parsingMode" : "jsonArray" } }
+    }
+    ```
+
+1. Odešlete požadavek. Požadavek se okamžitě zpracuje. Až se odpověď vrátí zpět, budete mít index, který bude fulltextově prohledávatelné. Odpověď by měla vypadat nějak takto:
+
+    ```json
+    {
+        "@odata.context": "https://exampleurl.search.windows.net/$metadata#indexers/$entity",
+        "@odata.etag": "\"0x8D505FDE143D164\"",
+        "name": "clinical-trials-json-indexer",
+        "description": null,
+        "dataSourceName": "clinical-trials-json-ds",
+        "targetIndexName": "clinical-trials-json-index",
+        "schedule": null,
+        "parameters": {
+            "batchSize": null,
+            "maxFailedItems": null,
+            "maxFailedItemsPerBatch": null,
+            "base64EncodeKeys": null,
+            "configuration": {
+                "parsingMode": "jsonArray"
+            }
         },
-        {
-            "name": "Description",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": false,
-            "retrievable": false,
-            "sortable": false,
-            "facetable": false,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "synonymMaps": []
-        },
-        ...
-          "scoringProfiles": [],
-    "defaultScoringProfile": null,
-    "corsOptions": null,
-    "suggesters": [],
-    "analyzers": [],
-    "tokenizers": [],
-    "tokenFilters": [],
-    "charFilters": []
-}
-```
+        "fieldMappings": [],
+        "enrichers": [],
+        "disabled": null
+    }
+    ```
 
-## <a name="create-and-run-an-indexer"></a>Vytvoření a spuštění indexeru
+## <a name="6---search-your-json-files"></a>6\. hledání souborů JSON
 
-Indexer připojuje zdroj dat, importuje data do cílového vyhledávacího indexu a volitelně poskytuje plán pro automatizaci aktualizace dat. REST API je [vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer).
+Hledání můžete zahájit hned po načtení prvního dokumentu.
 
-Adresa URL pro toto volání je `https://[service name].search.windows.net/indexers?api-version=2019-05-06`. Nahraďte `[service name]` názvem vaší služby Search.
+1. Změňte operaci na **Get**.
 
-Nejprve nahraďte adresu URL. Pak zkopírujte a vložte následující kód do svého těla a odešlete žádost. Požadavek se okamžitě zpracuje. Až se odpověď vrátí zpět, budete mít index, který bude fulltextově prohledávatelné.
+1. Nastavte identifikátor URI pro toto volání na `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&api-version=2019-05-06&$count=true`. Nahraďte `[service name]` názvem vaší služby Search.
 
-```json
-{
-  "name" : "clinical-trials-json-indexer",
-  "dataSourceName" : "clinical-trials-json",
-  "targetIndexName" : "clinical-trials-json-index",
-  "parameters" : { "configuration" : { "parsingMode" : "jsonArray" } }
-}
-```
+1. Odešlete požadavek. Toto je neurčený fulltextový vyhledávací dotaz, který vrací všechna pole, která jsou označena jako načístelné v indexu, spolu s počtem dokumentů. Odpověď by měla vypadat nějak takto:
 
-Odpověď by měla vypadat nějak takto:
+    ```json
+    {
+        "@odata.context": "https://exampleurl.search.windows.net/indexes('clinical-trials-json-index')/$metadata#docs(*)",
+        "@odata.count": 100,
+        "value": [
+            {
+                "@search.score": 1.0,
+                "FileName": "NCT00000102.txt",
+                "MinimumAge": 14,
+                "Title": "Congenital Adrenal Hyperplasia: Calcium Channels as Therapeutic Targets",
+                "MyURL": "https://azure.storagedemos.com/clinical-trials/NCT00000102.txt",
+                "Gender": "Both",
+                "MaximumAge": 35,
+                "Summary": "This study will test the ability of extended release nifedipine (Procardia XL), a blood pressure medication, to permit a decrease in the dose of glucocorticoid medication children take to treat congenital adrenal hyperplasia (CAH).",
+                "NCTID": "NCT00000102",
+                "Phase": "Phase 1/Phase 2",
+                "Date": "ClinicalTrials.gov processed this data on October 25, 2016",
+                "OverallStatus": "Completed",
+                "OrgStudyId": "NCRR-M01RR01070-0506",
+                "HealthyVolunteers": "No",
+                "Keywords": [],
+                "metadata_storage_last_modified": "2019-04-09T18:16:24Z",
+                "metadata_storage_size": "33060",
+                "metadata_content_type": null
+            },
+            . . . 
+    ```
 
-```json
-{
-    "@odata.context": "https://exampleurl.search.windows.net/$metadata#indexers/$entity",
-    "@odata.etag": "\"0x8D505FDE143D164\"",
-    "name": "clinical-trials-json-indexer",
-    "description": null,
-    "dataSourceName": "clinical-trials-json",
-    "targetIndexName": "clinical-trials-json-index",
-    "schedule": null,
-    "parameters": {
-        "batchSize": null,
-        "maxFailedItems": null,
-        "maxFailedItemsPerBatch": null,
-        "base64EncodeKeys": null,
-        "configuration": {
-            "parsingMode": "jsonArray"
-        }
-    },
-    "fieldMappings": [],
-    "enrichers": [],
-    "disabled": null
-}
-```
+1. Přidejte parametr dotazu `$select`, který omezí výsledky na méně polí: `https://[service name].search.windows.net/indexes/clinical-trials-json-index/docs?search=*&$select=Gender,metadata_storage_size&api-version=2019-05-06&$count=true`.  Pro tento dotaz se 100 dokumentů shodují, ale ve výchozím nastavení Azure Kognitivní hledání vrátí do výsledků pouze 50.
 
-## <a name="search-your-json-files"></a>Prohledávání souborů JSON
+   ![Parametrizovaný dotaz](media/search-semi-structured-data/lastquery.png "Dotaz Paramterized")
 
-Hledání můžete zahájit hned po načtení prvního dokumentu. Pro tuto úlohu použijte [**Průzkumníka služby Search**](search-explorer.md) na portálu.
+1. Příklad složitějšího dotazu by zahrnoval `$filter=MinimumAge ge 30 and MaximumAge lt 75`, který vrátí pouze výsledky, kde minimální hodnota parametru je větší nebo rovna 30 a maximální hodnota je menší než 75. Nahraďte výraz `$select` výrazem `$filter`.
 
-V Azure Portal otevřete stránku **Přehled** služby Search, najděte index, který jste vytvořili v seznamu **indexy** .
+   ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/metadatashort.png)
 
-Nezapomeňte zvolit index, který jste právě vytvořili. 
+Můžete také použít logické operátory (and, NOT) a operátory porovnání (EQ, ne, gt, lt, GE, Le). Při porovnávání řetězců se rozlišují malá a velká písmena. Další informace a příklady najdete v tématu [Vytvoření jednoduchého dotazu](search-query-simple-examples.md).
 
-  ![Prohledávání nestrukturovaných dat](media/search-semi-structured-data/indexespane.png)
-
-### <a name="user-defined-metadata-search"></a>Prohledávání metadat definovaných uživatelem
-
-Stejně jako předtím je možné data dotazovat několika způsoby: fulltextové vyhledávání, systémové vlastnosti nebo metadata definovaná uživatelem. Systémové vlastnosti a metadata definovaná uživatelem je možné prohledávat pouze s použitím parametru `$select`, pokud se pro ně při vytváření cílového indexu použilo označení **retrievable**. Parametry v indexu není možné po vytvoření změnit. Můžete však přidat další parametry.
-
-Příkladem základního dotazu je `$select=Gender,metadata_storage_size`, který omezí vrácené výsledky na dané dva parametry.
-
-  ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/lastquery.png)
-
-Příkladem složitějšího dotazu je `$filter=MinimumAge ge 30 and MaximumAge lt 75`, který vrátí pouze výsledky, u kterých je hodnota parametru MinimumAge větší nebo rovna 30 a hodnota parametru MaximumAge je menší než 75.
-
-  ![Prohledávání částečně strukturovaných dat](media/search-semi-structured-data/metadatashort.png)
-
-Pokud chcete, můžete experimentovat a vyzkoušet si sami několik dalších dotazů. Mějte na paměti, že můžete používat logické operátory (and, or, not) a porovnávací operátory (eq, ne, gt, lt, ge, le). Při porovnávání řetězců se rozlišují malá a velká písmena.
-
-Parametr `$filter` pracuje pouze s metadaty, která se při vytváření indexu označila jako filtrovatelná.
+> [!NOTE]
+> Parametr `$filter` pracuje pouze s metadaty, která se při vytváření indexu označila jako filtrovatelná.
 
 ## <a name="reset-and-rerun"></a>Resetování a opětovné spuštění
 
@@ -306,7 +346,7 @@ Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny pros
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když už jste obeznámení se základy indexování objektů BLOB v Azure, se podíváme na konfiguraci indexeru.
+Teď, když už jste obeznámení se základy indexování objektů BLOB v Azure, se podíváme na konfiguraci indexeru pro objekty blob JSON v Azure Storage.
 
 > [!div class="nextstepaction"]
-> [Konfigurace indexeru služby Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
+> [Konfigurace indexování objektů BLOB JSON](search-howto-index-json-blobs.md)

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: c8d2ef0330a32d5cab88355cc749322ec3a5ea30
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530931"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206975"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Nejčastější dotazy týkající se Apache Kafka ve službě Azure HDInsight
 
@@ -50,7 +50,7 @@ Pomocí [balíček zabezpečení podniku (ESP)](../domain-joined/apache-domain-j
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Jsou moje data zašifrovaná? Můžu používat vlastní klíče?
 
-Všechny zprávy Kafka na spravovaných discích jsou šifrovány pomocí [šifrování služby Azure Storage (SSE)](../../storage/common/storage-service-encryption.md). Přenášená data (například data přenášená od klientů ke zprostředkovatelům a jiným způsobem kolem) nejsou ve výchozím nastavení šifrována. Takový provoz je možné zašifrovat nastavením [SSL na vlastní](./apache-kafka-ssl-encryption-authentication.md). Kromě toho umožňuje HDInsight spravovat vlastní klíče pro šifrování neaktivních dat. Další informace najdete v tématu [Přineste si vlastní klíč pro Apache Kafka v Azure HDInsight](apache-kafka-byok.md).
+Všechny zprávy Kafka na spravovaných discích jsou šifrovány pomocí [šifrování služby Azure Storage (SSE)](../../storage/common/storage-service-encryption.md). Přenášená data (například data přenášená od klientů ke zprostředkovatelům a jiným způsobem kolem) nejsou ve výchozím nastavení šifrována. Takový provoz je možné zašifrovat nastavením [SSL na vlastní](./apache-kafka-ssl-encryption-authentication.md). Kromě toho umožňuje HDInsight spravovat vlastní klíče pro šifrování neaktivních dat. Další informace najdete v tématu [šifrování klíčového disku spravovaného zákazníkem](../disk-encryption.md).
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>Návody připojit klienty k mému clusteru?
 

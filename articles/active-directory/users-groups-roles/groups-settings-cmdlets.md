@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a727cd57e470f248321011d505f8037808f64298
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 90669ebde9537fdf597fccd621caa54deaed68a6
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656870"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206448"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 
@@ -152,7 +152,7 @@ Tady jsou nastavení definovaná ve skupině. Unified SettingsTemplate. Pokud ne
 |  <ul><li>EnableGroupCreation<li>Typ: Boolean<li>Výchozí: true |Příznak označující, jestli je vytváření skupin Office 365 povolené v adresáři pro uživatele bez oprávnění správce. Toto nastavení nevyžaduje licenci Azure Active Directory Premium P1.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Typ: Řetězec<li>Výchozí: "" |Identifikátor GUID skupiny zabezpečení, pro kterou můžou členové vytvářet skupiny Office 365 i v případě, že EnableGroupCreation = = false |
 |  <ul><li>UsageGuidelinesUrl<li>Typ: Řetězec<li>Výchozí: "" |Odkaz na pokyny pro použití skupiny |
-|  <ul><li>ClassificationDescriptions<li>Typ: Řetězec<li>Výchozí: "" | Seznam popisů klasifikace oddělený čárkami. Hodnota ClassificationDescriptions je platná pouze v tomto formátu:<br>$setting ["ClassificationDescriptions"] = "klasifikace: Popis, klasifikace: Popis"<br>kde klasifikace odpovídá řetězcům v ClassificationList.<br>Toto nastavení se nevztahuje na EnableMIPLabels = = true.|
+|  <ul><li>ClassificationDescriptions<li>Typ: Řetězec<li>Výchozí: "" | Seznam popisů klasifikace oddělený čárkami. Hodnota ClassificationDescriptions je platná pouze v tomto formátu:<br>$setting ["ClassificationDescriptions"] = "klasifikace: Popis, klasifikace: Popis"<br>kde klasifikace odpovídá položce v ClassificationList.<br>Toto nastavení se nevztahuje na EnableMIPLabels = = true.|
 |  <ul><li>DefaultClassification<li>Typ: Řetězec<li>Výchozí: "" | Klasifikace, která má být použita jako výchozí klasifikace pro skupinu, pokud nebyla zadána žádná.<br>Toto nastavení se nevztahuje na EnableMIPLabels = = true.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Typ: Řetězec<li>Výchozí: "" | Řetězec o maximální délce 64 znaků definující konvence pojmenování nakonfigurovaných pro skupiny sady Office 365. Další informace najdete v tématu [vymáhání zásady pojmenování pro skupiny Office 365](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Typ: Řetězec<li>Výchozí: "" | Textový řetězec oddělený čárkami, který uživatelé nebudou moct používat ve skupinových názvech nebo aliasech. Další informace najdete v tématu [vymáhání zásady pojmenování pro skupiny Office 365](groups-naming-policy.md). |
@@ -161,7 +161,7 @@ Tady jsou nastavení definovaná ve skupině. Unified SettingsTemplate. Pokud ne
 |  <ul><li>AllowGuestsToAccessGroups<li>Typ: Boolean<li>Výchozí: true | Logická hodnota označující, jestli uživatel typu Host může mít přístup k obsahu skupin Office 365.  Toto nastavení nevyžaduje licenci Azure Active Directory Premium P1.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Typ: Řetězec<li>Výchozí: "" | Adresa URL odkazu na pokyny pro použití hostů |
 |  <ul><li>AllowToAddGuests<li>Typ: Boolean<li>Výchozí: true | Logická hodnota označující, zda je povoleno přidávání hostů do tohoto adresáře. <br>Toto nastavení může být přepsáno a lze ho nastavit jen pro čtení, pokud je *EnableMIPLabels* nastaveno na *hodnotu true* a zásada hosta je přidružena k popisku citlivosti přiřazenému ke skupině. |
-|  <ul><li>ClassificationList<li>Typ: Řetězec<li>Výchozí: "" |Seznam platných hodnot klasifikace oddělený čárkami, které se dají použít pro skupiny Office 365 <br>Toto nastavení se nevztahuje na EnableMIPLabels = = true.|
+|  <ul><li>ClassificationList<li>Typ: Řetězec<li>Výchozí: "" | Seznam platných hodnot klasifikace oddělený čárkami, které se dají použít pro skupiny Office 365 <br>Toto nastavení se nevztahuje na EnableMIPLabels = = true.|
 |  <ul><li>EnableMIPLabels<li>Typ: Boolean<li>Výchozí: false |Příznak označující, zda lze popisky citlivosti publikované v centru dodržování předpisů Microsoft 365 použít pro skupiny Office 365. Další informace najdete v tématu [přiřazení popisků citlivosti pro skupiny Office 365](groups-assign-sensitivity-labels.md). |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Příklad: Konfigurace zásady hosta pro skupiny na úrovni adresáře

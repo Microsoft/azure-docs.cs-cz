@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 6ad583fdb880e36e6ac9c2dfda56bb68378ea598
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 87eb04b7323186175195babf6a602fa12d25176f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76313993"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206703"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Přidání dalších účtů úložiště do HDInsight
 
@@ -21,7 +21,7 @@ Naučte se používat akce skriptů k přidání dalších *účtů* Azure Stora
 > [!IMPORTANT]  
 > Informace v tomto dokumentu se týkají přidání dalších účtů úložiště do clusteru po jeho vytvoření. Informace o přidávání účtů úložiště během vytváření clusteru najdete v tématu [Nastavení clusterů v HDInsight pomocí Apache Hadoop, Apache Spark, Apache Kafka a dalších](hdinsight-hadoop-provision-linux-clusters.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Cluster Hadoop ve službě HDInsight. Viz Začínáme [se službou HDInsight v systému Linux](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * Název a klíč účtu úložiště Viz [Správa přístupových klíčů účtu úložiště](../storage/common/storage-account-keys-manage.md).
@@ -46,12 +46,12 @@ Během zpracování skript provádí následující akce:
 
 ## <a name="add-storage-account"></a>Přidání účtu úložiště
 
-Použijte [akci skriptu](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) , aby se změny projevily s následujícími požadavky:
+Použijte [akci skriptu](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster) , aby se změny projevily s následujícími požadavky:
 
 |Vlastnost | Hodnota |
 |---|---|
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`|
-|Typ (typy) uzlů|Hlavní uzel|
+|Typ (typy) uzlů|Head|
 |Parametry|`ACCOUNTNAME` `ACCOUNTKEY` `-p` (volitelné)|
 
 * `ACCOUNTNAME` je název účtu úložiště, který se má přidat do clusteru HDInsight.

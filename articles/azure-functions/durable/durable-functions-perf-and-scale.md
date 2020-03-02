@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ee35f26f9433f6ab342c7dce105638122b9d7717
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 260811c4ae15b45de6f7bc1b22e3ed6dcea44259
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77486256"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78204510"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
@@ -220,7 +220,7 @@ Konkrétní účinky rozšířených relací na nástroje Orchestrator a funkce 
 
 ### <a name="orchestrator-function-replay"></a>Funkce Orchestrator – přehrání
 
-Jak bylo zmíněno dříve, funkce Orchestrator se přehrávají pomocí obsahu tabulky **Historie** . Ve výchozím nastavení se kód funkce nástroje Orchestrator přehraje pokaždé, když se dávka zpráv z fronty ovládacího prvku odřadí. Pokud jsou povoleny rozšířené relace, instance funkcí nástroje Orchestrator jsou uchovávány v paměti déle a nové zprávy lze zpracovat bez nutnosti opětovného přehrání celé historie.
+Jak bylo zmíněno dříve, funkce Orchestrator se přehrávají pomocí obsahu tabulky **Historie** . Ve výchozím nastavení se kód funkce nástroje Orchestrator přehraje pokaždé, když se dávka zpráv z fronty ovládacího prvku odřadí. I když používáte vzorek ventilátoru pro ventilátor a čekáte na dokončení všech úloh (například pomocí `Task.WhenAll` v rozhraní .NET nebo `context.df.Task.all` v JavaScriptu), budou se přecházet k tomu, že se v průběhu času zpracovávají dávky odpovědí na úlohy. Pokud jsou povoleny rozšířené relace, instance funkcí nástroje Orchestrator jsou uchovávány v paměti déle a nové zprávy lze zpracovat bez nutnosti opětovného přehrání celé historie.
 
 Zlepšení výkonu rozšířených relací je nejčastěji pozorováno v následujících situacích:
 

@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 9b8f1065660ea8331853f8804e709134fe682ba7
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 0e3246f9da202b54cc0d1285795c25cfafb678d8
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566110"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207026"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-preview"></a>Import klíčů chráněných modulem HSM do Key Vaultu (Preview)
 
@@ -45,7 +45,7 @@ Tady je přehled tohoto procesu. Konkrétní kroky k dokončení jsou popsány d
 * KEK musí být ve stejném trezoru klíčů, kam se bude cílový klíč importovat.
 * Po nahrání souboru BYOK do Key Vault Key Vault HSM používá privátní klíč KEK k dešifrování cílového klíčového materiálu a naimportuje ho jako klíč HSM. Tato operace probíhá zcela v rámci Key Vault HSM. Cílový klíč vždy zůstává na hranici ochrany HSM.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 V následující tabulce jsou uvedeny předpoklady pro používání BYOK v Azure Key Vault:
 
@@ -90,6 +90,9 @@ KEK musí být:
 - vygenerováno ve stejném trezoru klíčů, do kterého chcete importovat cílový klíč.
 - Vytvořeno s povolenou operací Key nastavenou na `import`
 
+> [!NOTE]
+> KEK musí mít ' import ' jako jedinou povolenou operaci klíče. Import se vzájemně vylučuje se všemi ostatními klíčovými operacemi.
+
 Pomocí příkazu [AZ Key trezor Key Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) vytvořte KEK, který má klíčové operace nastavené na `import`. Poznamenejte si identifikátor klíče (`kid`), který se vrátil z následujícího příkazu. (V [kroku 3](#step-3-generate-and-prepare-your-key-for-transfer)použijete hodnotu `kid`.)
 
 ```azurecli
@@ -115,7 +118,7 @@ Přeneste soubor BYOK do připojeného počítače.
 > [!NOTE] 
 > Import klíčů RSA 1 024 není podporován. Import klíče eliptické křivky (ES) v současné době není podporován.
 > 
-> **Známý problém**: import CÍLOVÉHO klíče RSA 4k z Safenet Luna HSM se nezdařil. Po vyřešení problému bude tento článek aktualizován.
+> **Známý problém**: import CÍLOVÉHO klíče RSA 4k z Safenet Luna HSM se podporuje jenom pro firmware 7.4.0 nebo novější.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>Krok 4: přenesení klíče do Azure Key Vault
 

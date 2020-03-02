@@ -3,12 +3,12 @@ title: Informace o SAP HANA zálohování databáze na virtuálních počítač�
 description: V tomto článku se dozvíte o zálohování SAP HANA databází, které běží na virtuálních počítačích Azure.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 188cef6bc9771f779e3e9c7f7f5fe246e929b68a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 53fd87f0de48d56d696abcf5484908060225cb3d
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918508"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207009"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Informace o SAP HANA zálohování databáze na virtuálních počítačích Azure
 
@@ -33,7 +33,7 @@ Pokud chcete zobrazit scénáře zálohování a obnovení, které podporujeme d
 
 * Proces zálohování začíná [vytvořením trezoru služby Recovery Services](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#create-a-recovery-service-vault) v Azure. Tento trezor se použije k uložení záloh a bodů obnovení vytvořených v průběhu času.
 * Virtuální počítač Azure se spuštěným SAP HANA serverem je zaregistrován v trezoru a jsou [zjištěny](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#discover-the-databases)databáze, které mají být zálohovány. Aby služba Azure Backup mohla zjišťovat databáze, musí se na serveru HANA spustit [skript pro registraci](https://aka.ms/scriptforpermsonhana) jako uživatel root user.
-* Tento skript vytvoří uživatele **AZUREWLBACKUPHANAUSER** DB a odpovídající klíč se stejným názvem v **hdbuserstore**. Další informace o tom, co skript dělá, najdete v [části nastavení oprávnění](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#setting-up-permissions) .
+* Tento skript vytvoří uživatele **AZUREWLBACKUPHANAUSER** DB a odpovídající klíč se stejným názvem v **hdbuserstore**. Další informace o tom, co skript dělá, najdete v části [co je to skript](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) pro předběžnou registraci.
 * Služba Azure Backup nyní na zaregistrovaném serveru SAP HANA nainstaluje **modul plug-in Azure Backup pro Hana** .
 * Uživatel **AZUREWLBACKUPHANAUSER** DB vytvořený pomocí předregistračního skriptu používá **modul plug-in Azure Backup pro Hana** k provádění všech operací zálohování a obnovení. Pokud se pokusíte nakonfigurovat zálohování pro SAP HANA databáze bez spuštění tohoto skriptu, může se zobrazit následující chyba: **UserErrorHanaScriptNotRun**.
 * Pokud chcete [nakonfigurovat zálohování](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#configure-backup) u databází, které se zjistily, vyberte požadované zásady zálohování a povolte zálohování.

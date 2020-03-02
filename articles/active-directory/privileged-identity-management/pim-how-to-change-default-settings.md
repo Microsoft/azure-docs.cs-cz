@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/07/2020
+ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77132ae9a10eda7170ac56f2b7c65a3ebcde8d6d
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 4dd525973a8c8ba5bb3103126b4ddb5b6973590a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498995"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205020"
 ---
 # <a name="configure-azure-ad-role-settings-in-privileged-identity-management"></a>Konfigurace nastavení role Azure AD v Privileged Identity Management
 
@@ -107,7 +107,7 @@ Můžete vyžadovat, aby uživatelé při aktivaci zadali obchodní odůvodněn�
 
 ## <a name="require-approval-to-activate"></a>Vyžadovat schválení pro aktivaci
 
-Pokud chcete pro aktivaci role vyžadovat schválení, postupujte podle těchto kroků.
+Pokud nastavíte více schvalovatelů, schválení se dokončí, jakmile jeden z nich schválí nebo zamítne. Nemůžete vyžadovat schválení alespoň pro dva uživatele. Pokud chcete pro aktivaci role vyžadovat schválení, postupujte podle těchto kroků.
 
 1. Zaškrtněte políčko **vyžadovat schválení k aktivaci** .
 
@@ -163,7 +163,7 @@ Další informace najdete v tématu [e-mailová oznámení v Privileged Identity
 
 Použijte přepínač **lístku incident/požadavek** , který vyžádá oprávněným správcům, aby při aktivaci jejich role zahrnuli číslo lístku. Tento postup může zvýšit efektivitu přístupu k rolím.
 
-## <a name="multi-factor-authentication"></a>Vícefaktorové ověřování
+## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
 Pomocí přepínače **Multi-Factor Authentication** určete, jestli se má vyžadovat, aby uživatelé před aktivací svých rolí vyžadovali ověření své identity pomocí vícefaktorového ověřování. Musí jenom ověřit identitu jenom jednou pro každou relaci, a ne pokaždé, když se role aktivuje. Při povolování vícefaktorového ověřování je potřeba mít na paměti dvě tipy:
 

@@ -3,12 +3,12 @@ title: Referenční dokumentace pro vývojáře v Pythonu pro Azure Functions
 description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 8ee13b59812e6a212fbafcf4ea6bfc171e735dc3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1b94cb51bcb4e2634cdb04c389efbab44bb024bb
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190700"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206329"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -101,7 +101,7 @@ Chcete-li odkazovat na moduly místně na funkci, můžete použít syntaxi rela
 from . import example
 ```
 
-Když nasadíte projekt do aplikace Function App v Azure, měli byste do balíčku zahrnout celý obsah složky *FunctionApp* , ale ne samotnou složku. Doporučujeme udržovat testy ve složce oddělené od složky projektu, v tomto příkladu `tests`. Tím zajistíte, že budete nasazovat testovací kód s vaší aplikací. Další informace najdete v tématu [testování částí](#unit-testing).
+Když nasadíte projekt do aplikace Function App v Azure, měli byste zahrnout celý obsah hlavního projektu ( *\_\_app\_\_* ) do balíčku, ale ne do samotné složky. Doporučujeme udržovat testy ve složce oddělené od složky projektu, v tomto příkladu `tests`. Tím zajistíte, že budete nasazovat testovací kód s vaší aplikací. Další informace najdete v tématu [testování částí](#unit-testing).
 
 ## <a name="triggers-and-inputs"></a>Aktivační události a vstupy
 

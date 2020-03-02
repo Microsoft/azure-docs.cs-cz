@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 11/12/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b813c1caa02ce3ffd3ab0579849dff47252e7d63
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: d024382f816e98fb5cb83331dd417f0c41362bc4
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77559160"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207043"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -29,7 +29,7 @@ Pomocí Azure Active Directory (Azure AD) můžete určit omezené správce ke s
 
 Uživatelé, kteří mají přiřazenou roli globálního správce, můžou číst a upravovat všechna nastavení správy ve vaší organizaci Azure AD. Ve výchozím nastavení má osoba, která se zaregistruje k předplatnému Azure, přiřazenou roli globálního správce pro organizaci Azure AD. Role správce můžou delegovat jenom globální správci a správci privilegovaných rolí. Pokud chcete snížit riziko pro vaši firmu, doporučujeme přiřadit tuto roli co nejmenším možným lidem ve vaší organizaci.
 
-Jako osvědčený postup doporučujeme přiřadit tuto roli méně než 5 lidem ve vaší organizaci. Pokud máte více než pět uživatelů přiřazených k roli globálního správce ve vaší organizaci, je zde několik způsobů, jak omezit jejich používání.
+Jako osvědčený postup doporučujeme přiřadit tuto roli méně než pěti lidem ve vaší organizaci. Pokud máte ve vaší organizaci více než pět správců, kteří mají přiřazenou roli globálního správce, je zde několik způsobů, jak omezit jejich používání.
 
 ### <a name="find-the-role-you-need"></a>Najděte roli, kterou potřebujete.
 
@@ -238,7 +238,7 @@ Uživatelé v této roli můžou číst nastavení a informace pro správu např
 >- [Portál Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) – globální Čtenář nemůže přečíst režim zřizování podnikové aplikace.
 >- [Centrum pro správu M365](https://admin.microsoft.com/Adminportal/Home#/homepage) – globální Čtenář nemůže přečíst žádosti o bezpečnostní modul zákazníka. V levém podokně centra pro správu M365 nenajdete kartu **žádosti o bezpečnostní modul pro zákazníky** v části **Podpora** .
 >- [M365 Security Center](https://security.microsoft.com/homepage) – globální Čtenář nemůže přečíst citlivost a popisky pro uchování. V levém podokně služby M365 Security Center nenajdete **popisky citlivosti**, **popisky pro uchování**a karty **Analytics** .
->- [Office Centrum zabezpečení a dodržování předpisů](https://sip.protection.office.com/homepage) – globální Čtenář nemůže číst protokoly auditu SCC nebo dělat hledání obsahu.
+>- [Office Centrum zabezpečení a dodržování předpisů](https://sip.protection.office.com/homepage) – globální Čtenář nemůže číst protokoly auditu SCC, dělat hledání obsahu nebo se podívat na zabezpečené skóre.
 >- [Centrum pro správu týmů](https://admin.teams.microsoft.com) – globální Čtenář nemůže přečíst **životní cyklus týmů**, **analýzu & sestav**, **správu IP adres zařízení** a **Katalog aplikací**.
 >- [Privileged Access Management (pam)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) nepodporuje roli globálního čtecího modulu.
 >- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) – globální čtečka se podporuje jenom [pro centrální vytváření sestav](https://docs.microsoft.com/azure/information-protection/reports-aip) a když vaše organizace Azure AD není na [jednotné platformě pro označování](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform).
@@ -1012,7 +1012,7 @@ Nakonfigurujte zprostředkovatele identity pro použití v přímé federaci.
 | microsoft.aad.b2c/identityProviders/allTasks | Číst a konfigurovat zprostředkovatele identity v Azure Active Directory B2C. |
 
 ### <a name="global-reader-permissions"></a>Oprávnění pro globální čtenáře
-Může číst vše, co globální správce může, ale ne nic upravovat. 
+Může číst vše, co globální správce může, ale ne nic upravovat.
 
 > [!NOTE]
 > Tato role má další oprávnění mimo Azure Active Directory. Další informace najdete v tématu [Popis role](#global-reader) výše.

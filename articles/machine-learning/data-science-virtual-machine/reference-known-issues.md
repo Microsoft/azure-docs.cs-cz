@@ -9,16 +9,16 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: reference
 ms.date: 10/10/2019
-ms.openlocfilehash: d022b1124146a1e506401e6cee257805e3a38fd3
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: b83effa95b17d712d4019f8ab5bf13c4f02a7d2b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526541"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206516"
 ---
 # <a name="known-issues-and-troubleshooting-the-azure-data-science-virtual-machine"></a>Známé problémy a řešení potíží s Data Science Virtual Machine Azure
 
-Tento článek vám pomůže najít a opravit chyby nebo chyby při použití Data Science Virtual Machine Azure.
+Tento článek vám pomůže najít a opravit chyby nebo chyby, ke kterým může dojít při použití Data Science Virtual Machine Azure.
 
 ## <a name="python-package-installation-issues"></a>Problémy s instalací balíčku Pythonu
 
@@ -26,19 +26,24 @@ Tento článek vám pomůže najít a opravit chyby nebo chyby při použití Da
 
 Při instalaci balíčků použít `sudo pip install` místo `pip install`
 
-## <a name="disk-encryption-issues"></a>Problémy s šifrováním disku
+## <a name="disk-encryption-issues"></a>Problémy se šifrováním disků
 
 ### <a name="disk-encryption-fails-on-the-ubuntu-dsvm"></a>Šifrování disku se na Ubuntu DSVM nezdařilo.
 
-Azure Disk Encryption (ADE) aktuálně není v DSVM Ubuntu podporován. Jako alternativní řešení zvažte konfiguraci [Azure Storageho šifrování pomocí klíčů spravovaných zákazníkem](../../storage/common/storage-encryption-keys-portal.md).
+Azure Disk Encryption (ADE) není aktuálně podporován na Ubuntu DSVM. Alternativním řešením je zvážit konfiguraci [šifrování na straně serveru Azure Managed disks](../../virtual-machines/windows/disk-encryption.md).
 
 ## <a name="tool-appears-disabled"></a>Nástroj se zobrazuje zakázaný
 
 ### <a name="hyper-v-does-not-work-on-the-windows-dsvm"></a>Technologie Hyper-V nefunguje na DSVM Windows
 
-Jedná se o očekávané chování, jako u spouštěcího výkonu jsme zakázali některé služby. Pokud ho chcete znovu povolit, otevřete panel hledání ve Windows DSVM, zadejte "Services", pak nastavte všechny služby Hyper-V na ruční a nastavte možnost Správa virtuálních počítačů s technologií Hyper-V na hodnotu automaticky.
+Tato technologie Hyper-V zpočátku nefunguje v systému Windows je očekávané chování. Pro výkon spuštění jsme zakázali některé služby. Povolení technologie Hyper-V:
+
+1. Otevřete panel hledání ve Windows DSVM
+1. Zadejte "Services".
+1. Nastavit všechny služby technologie Hyper-V na ruční
+1. Nastavte možnost Správa virtuálních počítačů s technologií Hyper-V na hodnotu automaticky.
 
 Poslední obrazovka by měla vypadat takto:
 
-   ![Povolení role Hyper-V](./media/workaround/hyperv-enable-dsvm.png)
+   ![Povolení Hyper-V](./media/workaround/hyperv-enable-dsvm.png)
 

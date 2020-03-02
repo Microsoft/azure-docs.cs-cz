@@ -3,12 +3,12 @@ title: Matice podpory pro Azure Backup
 description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 15c2fdfbe63dd73e665a4bac01dd2cd1b1144949
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: dd4ec646c786ee686567aa137845e583a4cf47e3
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505871"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206652"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -35,7 +35,7 @@ Následující tabulka popisuje funkce trezorů Recovery Services:
 **Zdroje dat v úložišti trezoru** | Maximální 54 400 GB. Zálohování virtuálních počítačů Azure není nijak omezené.
 **Zálohy do trezoru** | **Virtuální počítače Azure:** Jednou denně.<br/><br/>**Počítače chráněné aplikací DPM/MABS:** Dvakrát denně.<br/><br/> **Počítače zálohované přímo pomocí agenta Mars:** Třikrát denně.
 **Zálohy mezi trezory** | Zálohování je v rámci jedné oblasti.<br/><br/> Potřebujete trezor v každé oblasti Azure, která obsahuje virtuální počítače, které chcete zálohovat. Nemůžete zálohovat do jiné oblasti.
-**Přesunout trezory** | [Trezory můžete přesouvat](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) mezi předplatnými nebo mezi skupinami prostředků ve stejném předplatném. Přesun trezorů mezi oblastmi se ale nepodporuje.
+**Přesunout trezory** | [Trezory můžete přesouvat](https://docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault) mezi předplatnými nebo mezi skupinami prostředků ve stejném předplatném. Přesun trezorů mezi oblastmi se ale nepodporuje.
 **Přesun dat mezi trezory** | Přesouvání zálohovaných dat mezi trezory se nepodporuje.
 **Upravit typ úložiště trezoru** | Před uložením záloh můžete upravit typ replikace úložiště (geograficky redundantní úložiště nebo místně redundantní úložiště) pro trezor. Po zahájení zálohování v trezoru se typ replikace nedá upravit.
 
@@ -151,10 +151,10 @@ Azure Backup přidal funkci obnovení mezi oblastmi, aby se posílila dostupnost
 
 | Typ správy zálohování | Podporuje se                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Virtuální počítač Azure               | Ano. Veřejné omezené verze Preview podporované pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Střed USA – západ   |
-| Agent MARS/místní | Ne                                                           | NEUŽÍVÁ SE.               |
-| SQL/SAP HANA          | Ne                                                           | NEUŽÍVÁ SE.               |
-| BUŇK                    | Ne                                                           | NEUŽÍVÁ SE.               |
+| Virtuální počítač Azure               | Ano. Veřejné omezené verze Preview podporované pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | USA – středozápad   |
+| Agent MARS/místní | Ne                                                           | neuvedeno               |
+| SQL/SAP HANA          | Ne                                                           | neuvedeno               |
+| BUŇK                    | Ne                                                           | neuvedeno               |
 
 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/24/2020
-ms.openlocfilehash: 286b16d850b1c1c26069c50cd4045bf7f3dd3c14
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 9e220c7a7813f89eacab5137362e39153d2b334a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623510"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207179"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>Rychlý Start: Vytvoření clusteru Apache Kafka ve službě Azure HDInsight pomocí Azure Portal
 
@@ -27,7 +27,7 @@ Rozhraní Apache Kafka API je přístupné jenom pro prostředky ve stejné virt
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -35,7 +35,7 @@ Klient SSH. Další informace najdete v tématu [připojení ke službě HDInsig
 
 Pokud chcete vytvořit cluster Apache Kafka v HDInsight, použijte následující postup:
 
-1. Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V horní nabídce vyberte **+ vytvořit prostředek**.
 
@@ -52,7 +52,7 @@ Pokud chcete vytvořit cluster Apache Kafka v HDInsight, použijte následujíc�
     |Název clusteru   | Zadejte globálně jedinečný název. Název může obsahovat až 59 znaků včetně písmen, číslic a spojovníků. První a poslední znak názvu nemůže být pomlčka. |
     |Oblast    | V rozevíracím seznamu vyberte oblast, ve které se cluster vytvoří.  Vyberte oblast blíže pro lepší výkon. |
     |Typ clusteru| Vyberte **Vybrat typ clusteru** a otevřete seznam. V seznamu vyberte jako typ clusteru **Kafka** .|
-    |Version|Bude zadána výchozí verze typu clusteru. V rozevíracím seznamu vyberte, pokud chcete zadat jinou verzi.|
+    |Verze|Bude zadána výchozí verze typu clusteru. V rozevíracím seznamu vyberte, pokud chcete zadat jinou verzi.|
     |Uživatelské jméno a heslo přihlášení clusteru    | Výchozí přihlašovací jméno je **admin**. Heslo musí mít minimálně 10 znaků a musí obsahovat aspoň jedno číslo, jedno velké písmeno a jedno malé písmeno, jeden nealfanumerický znak (kromě znaků ' "' ' \). **Nezadávejte** běžné heslo, jako je „Pass@word1“.|
     |Uživatelské jméno Secure Shell (SSH) | Výchozí uživatelské jméno je **sshuser** (uživatelssh).  Pro uživatelské jméno SSH můžete zadat jiný název. |
     |Použít heslo přihlášení clusteru pro SSH| Toto políčko zaškrtněte, pokud chcete pro uživatele SSH použít stejné heslo jako ten, který jste zadali pro uživatele přihlášení clusteru.|
@@ -78,7 +78,7 @@ Pokud chcete vytvořit cluster Apache Kafka v HDInsight, použijte následujíc�
 
     Vyberte kartu **zabezpečení + sítě** .
 
-1. Pro účely tohoto rychlého startu ponechte výchozí nastavení zabezpečení. Další informace o Balíčku zabezpečení podniku najdete v tématu [Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services](../domain-joined/apache-domain-joined-configure-using-azure-adds.md). Informace o tom, jak k šifrování disku Apache Kafka použít vlastní klíč, najdete v tématu [Používání vlastního klíče pro Apache Kafka ve službě Azure HDInsight](apache-kafka-byok.md).
+1. Pro účely tohoto rychlého startu ponechte výchozí nastavení zabezpečení. Další informace o Balíčku zabezpečení podniku najdete v tématu [Konfigurace clusteru HDInsight s Balíčkem zabezpečení podniku pomocí služby Azure Active Directory Domain Services](../domain-joined/apache-domain-joined-configure-using-azure-adds.md). Informace o tom, jak používat vlastní klíč k šifrování Apache Kafka disku, najdete v tématu [šifrování klíčového disku spravovaného zákazníky](../disk-encryption.md) .
 
    Pokud chcete svůj cluster připojit k virtuální síti, vyberte virtuální síť v rozevíracím seznamu **Virtuální síť**.
 

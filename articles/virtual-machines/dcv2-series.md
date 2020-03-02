@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: d500f7a1f28eff1f638a244022226b0aa0e715cb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: fd8f01f0fc7180d271404ffee4496ff9cbac7222
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199593"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205921"
 ---
 # <a name="preview-dcv2-series"></a>Verze Preview: DCv2-Series
 
@@ -41,7 +41,9 @@ Aktualizace pro zachování paměti: nepodporováno
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
 - Virtuální počítače řady DCv2-Series jsou [virtuální počítače generace 2](./linux/generation-2.md#creating-a-generation-2-vm) a podporují jenom `Gen2` image.
-
+- Aktuálně k dispozici pouze v Velká Británie – jih.
+- Předchozí generace důvěrných výpočetních virtuálních počítačů: [DC Series](sizes-previous-gen.md)
+- Vytvoření virtuálních počítačů s DCv2 pomocí webu Azure Portal [Vytvoření virtuálního počítače – portál](./linux/quick-create-portal.md)
 
 
 

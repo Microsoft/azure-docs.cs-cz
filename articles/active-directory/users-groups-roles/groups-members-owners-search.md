@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d11f5a9f2de8683365d663e85c275c3729ebf8a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901500"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206108"
 ---
-# <a name="search-groups--and-members-preview-in-azure-active-directory"></a>Hledat skupiny a členy (Preview) v Azure Active Directory
+# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Hledat skupiny a členy (Preview) v Azure Active Directory
 
 V tomto článku se dozvíte, jak vyhledat členy a vlastníky skupiny a jak používat vyhledávací filtry jako součást zlepšení ve verzi Preview v portálu Azure Active Directory (Azure AD). Existují spousty vylepšení v prostředí skupiny, které vám pomůžou spravovat skupiny, včetně členů a vlastníků, rychle a snadno. Další informace o verzích Preview najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -45,11 +45,11 @@ Pokud máte nějaké problémy, můžete předchozí možnosti přepnout zpátky
 
 ## <a name="group-search-and-sorting"></a>Hledání a řazení skupin
 
-Hledání v seznamu skupin bylo vylepšeno, takže když můžete zadat hledaný řetězec, hledejte v seznamu názvů skupin automatické `startswith` vyhledávání a dílčí řetězce. Hledání podřetězců je provedeno pouze na celá slova a neobsahuje speciální znaky.
+Hledání v seznamu skupin bylo vylepšeno, takže když můžete zadat hledaný řetězec, hledání automaticky provede `startswith` a dílčí řetězce hledání na seznamu názvů skupin. Hledání podřetězců je provedeno pouze na celá slova a neobsahuje speciální znaky. Při hledání podřetězců se rozlišují velká a malá písmena.
 
 ![Nová dílčí řetězcová vyhledává na stránce všechny skupiny.](./media/groups-members-owners-search/groups-search-preview.png)
 
-Hledání "zásady" teď například vrátí "zásady MDM – Západ" i "skupina zásad". Nevrátila se žádná skupina s názvem "New_policy".
+Hledání "zásady" teď například vrátí "zásady MDM – Západ" i "skupina zásad". Skupina s názvem "New_policy" nebyla vrácena.
 
 - Můžete také provádět stejné hledání v seznamech členství ve skupině.
 - Seznam skupin teď můžete seřadit podle názvu pomocí šipek napravo od záhlaví sloupce název a seřadit seznam ve vzestupném nebo sestupném pořadí.
@@ -78,7 +78,7 @@ Vylepšili jsme stránku **Přehled** skupiny, která poskytuje počty členů s
 
 ![Vyšší přesnost počtů členství ve skupinách](./media/groups-members-owners-search/member-numbers.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Tyto články poskytují další informace o práci se skupinami ve službě Azure AD.
 

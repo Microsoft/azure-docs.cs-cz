@@ -3,14 +3,14 @@ title: Konfigurace ověřování na Twitteru
 description: Naučte se nakonfigurovat ověřování na Twitter jako zprostředkovatele identity pro vaši aplikaci App Service.
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
-ms.date: 04/19/2018
+ms.date: 02/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: b5ec17c18cec8053f0732366c0cc5d0c5003e4de
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 794f671b36b5aeb9f19cf5d80e488500cedb1098
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670803"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207131"
 ---
 # <a name="configure-your-app-service-app-to-use-twitter-login"></a>Konfigurace aplikace pro App Service, aby používala přihlášení k Twitteru
 
@@ -23,25 +23,24 @@ K dokončení postupu v tomto článku potřebujete účet na Twitteru s ověře
 ## <a name="register"> </a>Registrace aplikace na Twitteru
 
 1. Přihlaste se k [Azure Portal] a pokračujte do své aplikace. Zkopírujte **adresu URL**. Použijete ho ke konfiguraci aplikace Twitter.
-1. Přejít na web pro [Vývojáři na Twitteru] , přihlaste se pomocí přihlašovacích údajů k účtu Twitteru a vyberte **vytvořit novou aplikaci**.
-1. Zadejte **název** a **Popis** nové aplikace. Vložte **adresu URL** vaší aplikace do pole **Web** . Do pole **Adresa URL zpětného volání** zadejte adresu URL vaší aplikace App Service a přidejte cestu `/.auth/login/aad/callback`. Například, `https://contoso.azurewebsites.net/.auth/login/twitter/callback`. Ujistěte se, že používáte schéma HTTPS.
-1. V dolní části stránky si přečtěte a přijměte podmínky. Vyberte **vytvořit aplikaci Twitter**. Zobrazí se podrobnosti o aplikaci.
-1. Vyberte kartu **Nastavení** , zaškrtněte políčko **povoluje, aby se tato aplikace použila k přihlášení přes Twitter**, a pak vyberte **aktualizovat nastavení**.
+1. Přejít na web pro [Vývojáři na Twitteru] , přihlaste se pomocí přihlašovacích údajů k účtu Twitteru a vyberte **vytvořit aplikaci**.
+1. Zadejte **název aplikace** a **Popis aplikace** pro novou aplikaci. Vložte **adresu URL** vaší aplikace do pole **Adresa URL webu** . V části **adresy URL zpětného volání** zadejte adresu URL https vaší aplikace App Service a přidejte cestu `/.auth/login/twitter/callback`. například `https://contoso.azurewebsites.net/.auth/login/twitter/callback`.
+1. V dolní části stránky zadejte aspoň 100 znaků v části **řekněte nám, jak se tato aplikace bude používat**, a pak vyberte **vytvořit**. V automaticky otevíraném okně klikněte na **vytvořit** znovu. Zobrazí se podrobnosti o aplikaci.
 1. Vyberte kartu **klíče a přístupové tokeny** .
 
    Poznamenejte si tyto hodnoty:
-   - Klíč příjemce (klíč rozhraní API)
-   - Tajný klíč uživatele (tajný kód rozhraní API)
+   - Klíč rozhraní API
+   - Tajný klíč rozhraní API
 
    > [!NOTE]
-   > Tajný klíč příjemce je důležité bezpečnostní pověření. Nesdílejte tento tajný klíč s kýmkoli ani ho distribuujte s vaší aplikací.
+   > Tajný klíč rozhraní API je důležité bezpečnostní pověření. Nesdílejte tento tajný klíč s kýmkoli ani ho distribuujte s vaší aplikací.
 
 ## <a name="secrets"> </a>Přidání informací o Twitteru do aplikace
 
 1. V [Azure Portal]přejdete do své aplikace.
 1. Vyberte **nastavení** > **ověřování/autorizace**a ujistěte se, že je **zapnuté** **ověřování App Service** .
 1. Vyberte **Twitter**.
-1. Vložte do `API Key` a `API Secret` hodnoty, které jste získali dříve.
+1. Vložte do `API key` a `API secret key` hodnoty, které jste získali dříve.
 1. Vyberte **OK**.
 
    ![Snímek obrazovky s nastavením Twitteru mobilní aplikace][1]
@@ -57,7 +56,7 @@ K dokončení postupu v tomto článku potřebujete účet na Twitteru s ověře
 
 Nyní jste připraveni použít Twitter pro ověřování ve vaší aplikaci.
 
-## <a name="related-content"></a>Další kroky
+## <a name="related-content"> </a>Další kroky
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 

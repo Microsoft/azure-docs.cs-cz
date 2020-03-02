@@ -1,5 +1,5 @@
 ---
-title: 'Azure HDInsight: Ukázky Azure CLI'
+title: 'Azure HDInsight: ukázky Azure CLI'
 description: Příklady Azure CLI pro běžné úlohy ve službě Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,27 +7,27 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
-ms.openlocfilehash: 7ce2160fa94653a1155daaef166b7fdbb9386e7e
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: cbbb38c645e56b2e7b8c70b437b1e5158b09a50b
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266710"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78207094"
 ---
-# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Ukázky Azure CLI
+# <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: ukázky Azure CLI
 
 > [!div class="op_single_selector"]
-> [Příklady .NET](hdinsight-sdk-dotnet-samples.md)– příklady[jazyka Java v jazyce](hdinsight-sdk-java-samples.md) 
-> [Python](hdinsight-sdk-python-samples.md)
-> 
+> Příklady [.NET](hdinsight-sdk-dotnet-samples.md) – příklady
+> [Pythonu](hdinsight-sdk-python-samples.md)
+> [Příklady jazyka Java](hdinsight-sdk-java-samples.md)
 
 Tento článek poskytuje ukázkové skripty pro běžné úlohy. Pro každý příklad aktualizujte proměnné odpovídajícími hodnotami a potom spusťte příkaz.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Azure CLI. Postup najdete v tématu věnovaném [instalaci rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
-* Volitelné: Bash. V příkladech v tomto článku se používá prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Příklady budou fungovat z příkazového řádku systému Windows s některými drobnými úpravami.
+* Volitelné: bash. V příkladech v tomto článku se používá prostředí bash ve Windows 10. Pokyny k instalaci najdete v tématu [Instalační příručka k systému Windows pro Linux pro systém Windows 10](https://docs.microsoft.com/windows/wsl/install-win10) .  Příklady budou fungovat z příkazového řádku systému Windows s některými drobnými úpravami.
 
 ## <a name="az-login"></a>AZ Login
 
@@ -90,7 +90,7 @@ az hdinsight create \
     --cluster-users-group-dns $groupDNS
 ```
 
-### <a name="create-a-kafka-cluster-with-disk-encryptionkafkaapache-kafka-byokmd"></a>Vytvoření clusteru Kafka se [šifrováním disku](kafka/apache-kafka-byok.md)
+### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Vytvoření clusteru Kafka se [šifrováním disku](./disk-encryption.md)
 
 ```azurecli
 export clusterName=CLUSTERNAME

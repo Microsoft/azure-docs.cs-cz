@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: f111b19eb07c218a9f3250ef3ffdb8a97cf07542
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1a1b9907cd931716949d92d948a7d541fd2d5057
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420728"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206941"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Použití replik jen pro čtení k vyrovnávání zatížení úloh dotazů jen pro čtení
 
@@ -35,7 +35,7 @@ Funkce škálování čtení na více instancí je ve výchozím nastavení povo
 Pokud chcete zajistit, aby se aplikace připojovala k primární replice bez ohledu na nastavení `ApplicationIntent` v připojovacím řetězci SQL, je nutné explicitně zakázat horizontální navýšení kapacity čtení při vytváření databáze nebo při změně její konfigurace. Pokud například upgradujete databázi ze úrovně Standard nebo Pro obecné účely na úroveň Premium, Pro důležité obchodní informace nebo úrovně škálování a chcete zajistit, aby všechna vaše připojení pokračovala v přechodu na primární repliku, zakažte horizontální navýšení kapacity čtení. Podrobnosti o tom, jak ho zakázat, najdete v tématu [povolení a zakázání horizontálního navýšení kapacity pro čtení](#enable-and-disable-read-scale-out).
 
 > [!NOTE]
-> Dotazy na úložiště dat, rozšířené události, funkce SQL Profiler a audit nejsou podporovány v replikách jen pro čtení.
+> Dotazy na úložiště dat, rozšířené události a funkce SQL profileru se v replikách jen pro čtení nepodporují.
 
 ## <a name="data-consistency"></a>Konzistence dat
 
@@ -89,7 +89,7 @@ Můžete zakázat a znovu povolit horizontální navýšení kapacity pro čten�
 > [!NOTE]
 > Možnost zakázat horizontální navýšení kapacity čtení je k dispozici kvůli zpětné kompatibilitě.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
 V okně **Konfigurovat** databázi můžete spravovat nastavení škálování pro čtení.
 

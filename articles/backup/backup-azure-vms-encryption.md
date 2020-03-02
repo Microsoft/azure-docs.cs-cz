@@ -3,12 +3,12 @@ title: Zálohování a obnovení šifrovaných virtuálních počítačů Azure
 description: Popisuje postup zálohování a obnovení šifrovaných virtuálních počítačů Azure pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 3719f26211677a1b726d3c3dc1d217fb58db1fb2
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: a3976cc83f749b1abe00cef3f5bf867ffbc30ab6
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583170"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206686"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Zálohování a obnovení šifrovaného virtuálního počítače Azure
 
@@ -30,7 +30,7 @@ Azure Backup můžou zálohovat a obnovovat virtuální počítače Azure pomoc�
 **Spravovateln** | Ano | Ano
 **Starosti**  | Ano | Ano
 
-- Přečtěte si další informace o [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md)a [KEK](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek/).
+- Přečtěte si další informace o [ADE](../security/azure-security-disk-encryption-overview.md), [Key Vault](../key-vault/key-vault-overview.md)a [KEK](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek).
 - Přečtěte si [Nejčastější dotazy](../security/azure-security-disk-encryption-faq.md) k šifrování disků virtuálních počítačů Azure.
 
 ### <a name="limitations"></a>Omezení

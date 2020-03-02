@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 77b092920bff75c806ec78a933d23df546bf636a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 45febcffed747f75b6c8b78c2e4b93a047f81b0a
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036348"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205870"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Nejčastější dotazy k Azure Disk Encryption pro virtuální počítače s IaaS
 
@@ -28,11 +28,11 @@ Azure Disk Encryption GA podporuje šablony Azure Resource Manageru, Azure Power
 
 ## <a name="how-much-does-azure-disk-encryption-cost"></a>Kolik stojí Azure Disk Encryption
 
-Za šifrování disků virtuálních počítačů s Azure Disk Encryptionem se neúčtují žádné poplatky, ale jsou spojené s používáním Azure Key Vault. Další informace o Azure Key Vault náklady, najdete v článku [cenách služby Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) stránky.
+Za šifrování disků virtuálních počítačů s Azure Disk Encryptionem se neúčtují žádné poplatky, ale jsou spojené s používáním Azure Key Vault. Další informace o Azure Key Vaultch nákladech najdete na stránce s [cenami Key Vault](https://azure.microsoft.com/pricing/details/key-vault/) .
 
 ## <a name="how-can-i-start-using-azure-disk-encryption"></a>Jak můžu začít používat Azure Disk Encryption?
 
-Abyste mohli začít, přečtěte si [přehled Azure Disk Encryption](disk-encryption-overview.md).
+Pokud chcete začít, přečtěte si [přehled Azure Disk Encryption](disk-encryption-overview.md).
 
 ## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Jaké velikosti a operační systémy pro virtuální počítače podporují Azure Disk Encryption?
 
@@ -87,7 +87,7 @@ Ano. Šifrování disku pomocí aplikace Azure AD je nadále podporován. Ale p�
 
 ## <a name="what-version-of-azure-powershell-does-azure-disk-encryption-support"></a>Jakou verzi prostředí Azure PowerShell podporuje Azure Disk Encryption?
 
-Použijte nejnovější verzi sady SDK Azure Powershellu ke konfiguraci Azure Disk Encryption. Stáhněte si nejnovější verzi [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases). Azure Disk Encryption je *není* podporuje sadu Azure SDK verze 1.1.0.
+Použijte nejnovější verzi sady SDK Azure Powershellu ke konfiguraci Azure Disk Encryption. Stáhněte si nejnovější verzi [Azure PowerShell](https://github.com/Azure/azure-powershell/releases). Azure Disk Encryption Azure SDK verze *1.1.0 nepodporuje.*
 
 > [!NOTE]
 > Rozšíření Microsoft. OSTCExtension. AzureDiskEncryptionForLinux ve verzi Preview pro Linux Azure Disk Encryption je zastaralé. Toto rozšíření bylo publikováno pro verzi Preview služby Azure Disk Encryption. V testovacím nebo produkčním nasazení byste neměli používat verzi Preview rozšíření.
@@ -100,7 +100,7 @@ Azure Disk Encryption nelze použít na vlastní image Linuxu. Jsou podporovány
 
 ## <a name="can-i-apply-updates-to-a-linux-red-hat-vm-that-uses-the-yum-update"></a>Můžete použít aktualizace pro Red Hat virtuálního počítače s Linuxem, který používá aktualizace yum
 
-Ano, na virtuálním počítači se systémem Red Hat Linux můžete provést aktualizaci Yumu.  Další informace najdete v tématu [Správa balíčků pro Linux za bránou firewall](disk-encryption-troubleshooting.md#linux-package-management-behind-a-firewall).
+Ano, na virtuálním počítači se systémem Red Hat Linux můžete provést aktualizaci Yumu.  Další informace najdete v tématu [Azure Disk Encryption v izolované síti](disk-encryption-isolated-network.md).
 
 ## <a name="what-is-the-recommended-azure-disk-encryption-workflow-for-linux"></a>Co je pracovní postup doporučené Azure disk encryption pro Linux?
 
@@ -110,7 +110,7 @@ Následující pracovní postup se doporučuje mít nejlepších výsledků v Li
 * Šifrování (může trvat několik hodin nebo dokonce dnů v závislosti na vlastnosti virtuálního počítače a velikost jakýchkoliv připojených datových disků)
 * Přizpůsobení a podle potřeby přidejte softwaru na bitovou kopii.
 
-Pokud tento pracovní postup není možné, spoléhat na [šifrování služby Storage](../../storage/common/storage-service-encryption.md) (SSE) vrstvy účtu úložiště platformy mohou být o alternativu k šifrování celého disku pomocí dm-crypt.
+Pokud tento pracovní postup není možný, spoléhá na [šifrování služby Storage](../../storage/common/storage-service-encryption.md) (SSE) na úrovni účtu úložiště platformy může být alternativou k šifrování celého disku pomocí dm-crypt.
 
 ## <a name="what-is-the-disk-bek-volume-or-mntazure_bek_disk"></a>Co je na disku "Svazek klíče Bek" nebo "/ mnt/azure_bek_disk"?
 
@@ -124,10 +124,10 @@ Pokud tento pracovní postup není možné, spoléhat na [šifrování služby S
 Azure Disk Encryption používá dešifrovací výchozí hodnotu AES-XTS-plain64 s 256 bitovým hlavním klíčem svazku.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Je-li použít encryptformatall šifrovaně a určete všechny typy svazku vymaže jeho data na datové jednotky, které jsme už zašifrovali?
-Ne, smazání dat z datové jednotky, které už jsou šifrované pomocí Azure Disk Encryption. Podobně jako u jak encryptformatall šifrovaně nebyl znovu zašifrovat jednotky operačního systému, ho nebude znovu zašifrovat jednotka už zašifrovaná data. Další informace najdete v tématu [encryptformatall šifrovaně kritéria](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).        
+Ne, smazání dat z datové jednotky, které už jsou šifrované pomocí Azure Disk Encryption. Podobně jako u jak encryptformatall šifrovaně nebyl znovu zašifrovat jednotky operačního systému, ho nebude znovu zašifrovat jednotka už zašifrovaná data. Další informace najdete v tématu [kritéria pro EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).        
 
 ## <a name="is-xfs-filesystem-supported"></a>Je podporováno XFS systémem souborů?
-XFS svazky se podporují jenom pro šifrování datových disků s EncryptFormatAll. Tím se svazek znovu naformátuje a mazání všech dat tam už existuje. Další informace najdete v tématu [encryptformatall šifrovaně kritéria](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).
+XFS svazky se podporují jenom pro šifrování datových disků s EncryptFormatAll. Tím se svazek znovu naformátuje a mazání všech dat tam už existuje. Další informace najdete v tématu [kritéria pro EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms).
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Můžu zálohovat a obnovit zašifrovaný virtuální počítač? 
 
@@ -135,11 +135,11 @@ Azure Backup poskytuje mechanismus pro zálohování a obnovení šifrovaného v
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Kam se můžu obrátit klást otázky nebo připomínky?
 
-Můžete klást otázky nebo poskytnout zpětnou vazbu ohledně [fórum pro Azure Disk Encryption](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption).
+Můžete klást otázky nebo sdělit svůj názor na [Azure Disk Encryption Fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDiskEncryption).
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste se dozvěděli informace o nejčastější dotazy týkající se Azure Disk Encryption. Další informace o této službě najdete v následujících článcích:
 
 - [Přehled služby Azure Disk Encryption](disk-encryption-overview.md)
-- [Použít šifrování disku ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Azure data šifrování v klidovém stavu](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
+- [Použít šifrování disku v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
+- [Šifrování dat Azure v klidovém umístění](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)

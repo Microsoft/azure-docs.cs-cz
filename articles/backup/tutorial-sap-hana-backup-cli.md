@@ -3,12 +3,12 @@ title: Kurz – zálohování služby SAP HANA DB v Azure pomocí rozhraní př�
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services pomocí Azure CLI.
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 6d35b6ebfc6f47f5775c24407b645b97112387c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cdc8a8fb09a086a2b9212c21d071f267991fa275
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472349"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206618"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure pomocí Azure CLI
 
@@ -68,7 +68,7 @@ westus2    saphanaVault     saphanaResourceGroup
 
 ## <a name="register-and-protect-the-sap-hana-instance"></a>Registrace a ochrana SAP HANA instance
 
-V případě instance SAP HANA (virtuální počítač s SAP HANA nainstalované), který mají být zjištěny službami Azure, musí být na SAP HANA počítači spuštěn [skript před registrací](https://aka.ms/scriptforpermsonhana) . Před spuštěním skriptu se ujistěte, že jsou splněné všechny [požadavky](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) . Další informace o tom, co skript dělá, najdete v části [Nastavení oprávnění](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#setting-up-permissions) .
+V případě instance SAP HANA (virtuální počítač s SAP HANA nainstalované), který mají být zjištěny službami Azure, musí být na SAP HANA počítači spuštěn [skript před registrací](https://aka.ms/scriptforpermsonhana) . Před spuštěním skriptu se ujistěte, že jsou splněné všechny [požadavky](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) . Další informace o tom, co skript dělá, najdete v části [co je to skript](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) předběžného zápisu.
 
 Po spuštění skriptu se instance SAP HANA dá zaregistrovat v trezoru služby Recovery Services, který jsme vytvořili dříve. Pokud chcete instanci zaregistrovat, použijte rutinu [AZ Backup Container Registry](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) . *VMResourceId* je ID prostředku virtuálního počítače, který jste vytvořili pro instalaci SAP HANA.
 

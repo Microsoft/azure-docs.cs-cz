@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 812680e587ac5c5c8b3d949199a615fcd85fa610
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485348"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78205814"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -22,7 +22,7 @@ V tomto rychlém startu použijete nástroj pro rozpoznávání formulářů RES
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 K dokončení tohoto rychlého startu musíte mít:
 
@@ -35,12 +35,19 @@ K dokončení tohoto rychlého startu musíte mít:
 ## <a name="set-up-the-sample-labeling-tool"></a>Nastavení nástroje pro označování ukázek
 
 Pomocí modulu Docker spustíte ukázkový nástroj pro označování vzorků. Pro nastavení kontejneru Docker použijte následující postup. Informace o úvodu k Docker a kontejneru najdete v tématu [Přehled Docker](https://docs.docker.com/engine/docker-overview/).
-1. Nejdřív nainstalujte Docker na hostitelském počítači. Hostitelský počítač může být místní počítač ([Windows](https://docs.docker.com/docker-for-windows/), [MacOS](https://docs.docker.com/docker-for-mac/)nebo [Linux](https://docs.docker.com/install/)). Nebo můžete použít hostující službu Docker v Azure, jako je například [Služba Azure Kubernetes](https://docs.microsoft.com/azure/aks/index), [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/index)nebo cluster Kubernetes [nasazený do Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-solution-template-kubernetes-deploy?view=azs-1910). Hostitelský počítač musí splňovat následující požadavky na hardware:
+1. Nejdřív nainstalujte Docker na hostitelském počítači. V této příručce se dozvíte, jak používat místní počítač jako hostitele. Pokud chcete použít hostující službu Docker v Azure, přečtěte si průvodce [nasazením ukázkového popisu nástroje pro označování](../deploy-label-tool.md) . 
+
+   Hostitelský počítač musí splňovat následující požadavky na hardware:
 
     | Kontejner | Minimální | Doporučené|
     |:--|:--|:--|
     |Ukázkový nástroj pro popisky|2 jádra, 4 GB paměti|4 jádra, 8 GB paměti|
-    
+
+   Nainstalujte do počítače Docker podle příslušných pokynů pro váš operační systém: 
+   * [Windows](https://docs.docker.com/docker-for-windows/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
+   * [Linux](https://docs.docker.com/install/).
+
 1. Získejte vzorový kontejner nástrojů pro označování pomocí příkazu `docker pull`.
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
@@ -116,17 +123,23 @@ Kliknutím na možnost **spustit optické rozpoznávání znaků u všech soubor
 
 ### <a name="apply-labels-to-text"></a>Použít popisky na text
 
-V dalším kroku vytvoříte popisky a použijete je na textové prvky, které má model rozpoznat.
+V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky, které má model rozpoznat.
 
-1. Nejprve pomocí podokna editor značek vytvořte značky (popisky), které chcete identifikovat.
+1. Nejprve pomocí podokna editor značek vytvořte značky, které chcete identifikovat.
+  1. Kliknutím na **+** vytvořte novou značku.
+  1. Zadejte název značky.
+  1. Stisknutím klávesy ENTER značku uložíte.
 1. V hlavním Editoru klikněte a tažením vyberte jedno nebo více slov z zvýrazněných textových prvků.
+1. Klikněte na značku, kterou chcete použít, nebo stiskněte odpovídající klávesovou zkratku. Číselné klíče se přiřazují jako klávesové zkratky pro prvních 10 značek. Můžete změnit pořadí značek pomocí ikon šipky nahoru a dolů v podokně editor značek.
+    > [!Tip]
+    > Při označování formulářů mějte na paměti následující tipy.
+    > * Pro každý vybraný textový prvek lze použít pouze jednu značku.
+    > * Každou značku lze na stránce použít pouze jednou. Pokud se hodnota ve stejném formuláři objeví víckrát, vytvořte pro každou instanci různé značky. Například: "Faktura č. 1", "Faktura č. 2" atd.
+    > * Značky nemohou být rozloženy mezi stránkami.
+    > * Hodnoty popisků tak, jak se zobrazí ve formuláři; Nepokoušejte se rozdělit hodnotu do dvou částí se dvěma různými značkami. Například pole adresa musí být označeno s jednou značkou, i když pokrývá více řádků.
+    > * Do polí s příznakem nepoužívejte klíče&mdash;pouze hodnoty.
+    > * Data tabulky by měla být zjištěna automaticky a budou k dispozici v konečném výstupním souboru JSON. Pokud však model nerozpozná všechna data tabulky, můžete tato pole také označit ručně. Označte každou buňku v tabulce jiným popiskem. Pokud mají vaše formuláře tabulky s různými počty řádků, ujistěte se, že jste si vystavili alespoň jednu formu s největší možnou tabulkou.
 
-    > [!NOTE]
-    > V současné době nelze vybrat text, který bude rozložen na více stránek.
-1. Klikněte na značku, kterou chcete použít, nebo stiskněte odpovídající klávesovou zkratku. Pro každý vybraný textový prvek lze použít pouze jednu značku a každou značku lze na stránce použít pouze jednou.
-
-    > [!TIP]
-    > Číselné klíče se přiřazují jako klávesové zkratky pro prvních deset značek. Můžete změnit pořadí značek pomocí ikon šipky nahoru a dolů v podokně editor značek.
 
 Podle výše uvedeného postupu popište pět vašich forem a potom přejděte k dalšímu kroku.
 

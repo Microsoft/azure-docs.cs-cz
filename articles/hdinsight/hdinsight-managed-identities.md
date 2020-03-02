@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: c2b590e623062d5d5ae39261b3b5fa5a37a39122
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: daae9c16797ad9c1b85635f5aec7d0cf884e003f
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919216"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206006"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Spravované identity ve službě Azure HDInsight
 
@@ -44,11 +44,11 @@ Spravované identity se používají ve službě Azure HDInsight ve více scén�
 
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Balíček zabezpečení podniku](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
-* [Kafka Bring Your Own Key (BYOK)](kafka/apache-kafka-byok.md#get-started-with-byok)
+* [Klíčové šifrování disku spravované zákazníkem](disk-encryption.md)
 
 ## <a name="faq"></a>Nejčastější dotazy
 ### <a name="what-happens-if-i-delete-the-managed-identity-after-the-cluster-creation"></a>Co se stane, když po vytvoření clusteru odstraním spravovanou identitu?
-Cluster bude v případě potřeby spravované identity nabíhat do problémů. V současné době neexistuje způsob, jak aktualizovat ani měnit správu identitu po vytvoření clusteru. Proto doporučujeme, abyste se ujistili, že se spravovaná identita během modulu runtime clusteru neodstranila. Případně můžete cluster znovu vytvořit a přiřadit novou spravovanou identitu.
+Cluster bude v případě potřeby spravované identity nabíhat do problémů. V současné době neexistuje způsob, jak aktualizovat nebo změnit identitu správy po vytvoření clusteru. Proto doporučujeme, abyste se ujistili, že se spravovaná identita během modulu runtime clusteru neodstranila. Případně můžete cluster znovu vytvořit a přiřadit novou spravovanou identitu.
 
 ## <a name="next-steps"></a>Další kroky
 

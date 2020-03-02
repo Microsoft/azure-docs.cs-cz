@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/11/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 70f37c70f685ee139db4b417c1c498f9eefb8205
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 27d65c7e6bbc0af20d01d91f1472433f3e7142a9
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184753"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206601"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditováním SQL Database
 
@@ -116,22 +116,15 @@ Pokud chcete nakonfigurovat zápis protokolů auditu do pracovního prostoru Log
 
 ### <a id="audit-event-hub-destination">Auditovat cíl centra událostí</a>
 
-< < < < < < < HEAD < < < < < < < HEAD = = = = = = =
->>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 > [!IMPORTANT]
 > Povolení auditování u pozastaveného fondu SQL není možné. Pokud ho chcete povolit, zrušte pozastavení fondu SQL.
 
 > [!WARNING]
-> Povolením auditování na serveru, který má ve fondu SQL, **dojde k obnovení fondu SQL a opětovnému pozastavenému pozastavení** , což může vést k účtování poplatků.
-< < < < < < < HEAD = = = = = = = ke konfiguraci zápisu protokolů auditu do centra událostí, vyberte **centrum událostí (Preview)** a otevřete **Podrobnosti centra událostí**. Vyberte centrum událostí, kam budou zapsány protokoly, a pak klikněte na **OK**. Ujistěte se, že centrum událostí je ve stejné oblasti jako databáze a Server.
+> Povolením auditování na serveru, který má ve fondu SQL, dojde k tomu, že **se fond SQL obnoví a znovu pozastaví** , což může účtovat poplatky za účtování.
 
-   ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
->>>>>>> <a name="bf6444e83361ab743aca04ae233c420e51ea1e03"></a>bf6444e83361ab743aca04ae233c420e51ea1e03
-=======
 Pokud chcete nakonfigurovat zápis protokolů auditu do centra událostí, vyberte **centrum událostí (Preview)** a otevřete **Podrobnosti centra událostí**. Vyberte centrum událostí, kam budou zapsány protokoly, a pak klikněte na **OK**. Ujistěte se, že centrum událostí je ve stejné oblasti jako databáze a Server.
 
    ![Eventhub](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
->>>>>>> a8190987e07da4c5ced6de5f588d394ace4ca31d
 
 ## <a id="subheading-3"></a>Analýza protokolů a sestav auditu
 

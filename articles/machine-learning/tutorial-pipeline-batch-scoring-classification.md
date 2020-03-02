@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 3dc0af3f0d1236e902f6fa845fae95e3f2a500d1
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 39af5e97348a6c997ef140e0abffeb42d4d941b8
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116466"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206737"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Kurz: vytvoření kanálu Azure Machine Learning pro dávkové vyhodnocování
 
@@ -32,17 +32,18 @@ V tomto kurzu provedete následující úlohy:
 > * Vytvoření datových objektů pro načtení a výstup dat
 > * Stažení, příprava a registrace modelu v pracovním prostoru
 > * Zřizování výpočetních cílů a vytvoření skriptu bodování
+> * Použít třídu `ParallelRunStep` pro asynchronní dávkové vyhodnocování
 > * Sestavování, spouštění a publikování kanálu
 > * Povolit koncový bod REST pro kanál
 
 Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisites"></a>Předpoklady
 
 * Pokud ještě nemáte virtuální počítač s Azure Machine Learning pracovním prostorem nebo notebookem, vyplňte [část 1 tohoto kurzu instalace](tutorial-1st-experiment-sdk-setup.md).
 * Po dokončení kurzu instalace použijte stejný server poznámkového bloku a otevřete Poznámkový blok *kurzy/Machine-Learning-Pipelines-Advanced/tutorial-Pipeline-Batch-scoring-Classification. ipynb* .
 
-Pokud chcete spustit kurz nastavení ve vlastním [místním prostředí](how-to-configure-environment.md#local), můžete získat přístup k kurzu na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials). Požadované balíčky získáte spuštěním `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests`.
+Pokud chcete spustit kurz nastavení ve vlastním [místním prostředí](how-to-configure-environment.md#local), můžete získat přístup k kurzu na [GitHubu](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials). Požadované balíčky získáte spuštěním `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps pandas requests`.
 
 ## <a name="configure-workspace-and-create-a-datastore"></a>Konfigurace pracovního prostoru a vytvoření úložiště dat
 
@@ -74,36 +75,34 @@ def_data_store = ws.get_default_datastore()
 
 ## <a name="create-data-objects"></a>Vytváření datových objektů
 
-Když vytváříte kanál, objekt `DataReference` čte data z úložiště dat pracovního prostoru. Objekt `PipelineData` přenáší mezilehlá data mezi jednotlivými kroky kanálu.
+Při sestavování kanálů `Dataset` objekty používány pro čtení dat z úložiště dat v pracovním prostoru a objekty `PipelineData` se používají k přenosu mezilehlých dat mezi jednotlivými kroky kanálu.
 
 > [!Important]
 > Příklad dávkového vyhodnocování v tomto kurzu používá pouze jeden krok kanálu. V případech použití, které mají více kroků, bude typický tok zahrnovat tyto kroky:
 >
-> 1. Použijte `DataReference` objekty jako *vstupy* k načtení nezpracovaných dat, proveďte nějakou transformaci a pak *výstup* objektu `PipelineData`.
+> 1. Použijte `Dataset` objekty jako *vstupy* k načtení nezpracovaných dat, proveďte nějakou transformaci a pak *výstup* objektu `PipelineData`.
 >
 > 2. Použijte *výstupní objekt* `PipelineData` v předchozím kroku jako *vstupní objekt*. Opakujte postup pro následné kroky.
 
-V tomto scénáři vytvoříte `DataReference` objekty, které odpovídají adresářům úložiště dat pro vstupní image a popisky klasifikace (hodnoty y-test). Také vytvoříte objekt `PipelineData` pro výstupní data dávkového vyhodnocování.
+V tomto scénáři vytvoříte `Dataset` objekty, které odpovídají adresářům úložiště dat pro vstupní image a popisky klasifikace (hodnoty y-test). Také vytvoříte objekt `PipelineData` pro výstupní data dávkového vyhodnocování.
 
 ```python
-from azureml.data.data_reference import DataReference
+from azureml.core.dataset import Dataset
 from azureml.pipeline.core import PipelineData
 
-input_images = DataReference(datastore=batchscore_blob, 
-                             data_reference_name="input_images",
-                             path_on_datastore="batchscoring/images",
-                             mode="download"
-                            )
-
-label_dir = DataReference(datastore=batchscore_blob, 
-                          data_reference_name="input_labels",
-                          path_on_datastore="batchscoring/labels",
-                          mode="download"                          
-                         )
-
+input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
+label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/*.txt"))
 output_dir = PipelineData(name="scores", 
                           datastore=def_data_store, 
                           output_path_on_compute="batchscoring/results")
+```
+
+Pak zaregistrujte datové sady do pracovního prostoru.
+
+```python
+
+input_images = input_images.register(workspace = ws, name = "input_images")
+label_ds = label_ds.register(workspace = ws, name = "label_ds")
 ```
 
 ## <a name="download-and-register-the-model"></a>Stažení a registrace modelu
@@ -164,15 +163,12 @@ except ComputeTargetException:
 
 Chcete-li provést vyhodnocování, vytvořte skript vyhodnocování s názvem `batch_scoring.py`a poté jej zapište do aktuálního adresáře. Skript bere vstupní image, použije model klasifikace a pak výstup předpovědi do souboru výsledků.
 
-Skript `batch_scoring.py` přebírá následující parametry, které se předávají z kroku kanálu, který vytvoříte později v tomto kurzu:
+Skript `batch_scoring.py` přebírá následující parametry, které se předávají z `ParallelRunStep`, které vytvoříte později:
 
 - `--model_name`: název používaného modelu.
-- `--label_dir`: adresář, který obsahuje soubor `labels.txt`.
-- `--dataset_path`: adresář, který obsahuje vstupní image.
-- `--output_dir`: adresář výstupu pro `results-label.txt` soubor poté, co skript spustí model pro data.
-- `--batch_size`: velikost dávky použitou při spuštění modelu.
+- `--labels_name`: název `Dataset`, který obsahuje soubor `labels.txt`.
 
-Infrastruktura kanálu používá třídu `ArgumentParser` k předání parametrů do kroků kanálu. Například v následujícím kódu je první argument `--model_name` přidaný identifikátor vlastnosti `model_name`. Ve funkci `main()` se `Model.get_model_path(args.model_name)` používá pro přístup k této vlastnosti.
+Infrastruktura kanálu používá třídu `ArgumentParser` k předání parametrů do kroků kanálu. Například v následujícím kódu je první argument `--model_name` přidaný identifikátor vlastnosti `model_name`. Ve funkci `init()` se `Model.get_model_path(args.model_name)` používá pro přístup k této vlastnosti.
 
 
 ```python
@@ -187,110 +183,77 @@ from math import ceil
 import numpy as np
 import shutil
 from tensorflow.contrib.slim.python.slim.nets import inception_v3
+
+from azureml.core import Run
 from azureml.core.model import Model
+from azureml.core.dataset import Dataset
 
 slim = tf.contrib.slim
-
-parser = argparse.ArgumentParser(description="Start a tensorflow model serving")
-parser.add_argument('--model_name', dest="model_name", required=True)
-parser.add_argument('--label_dir', dest="label_dir", required=True)
-parser.add_argument('--dataset_path', dest="dataset_path", required=True)
-parser.add_argument('--output_dir', dest="output_dir", required=True)
-parser.add_argument('--batch_size', dest="batch_size", type=int, required=True)
-
-args = parser.parse_args()
 
 image_size = 299
 num_channel = 3
 
-# create output directory if it does not exist
-os.makedirs(args.output_dir, exist_ok=True)
 
-
-def get_class_label_dict(label_file):
+def get_class_label_dict():
     label = []
-    proto_as_ascii_lines = tf.gfile.GFile(label_file).readlines()
+    proto_as_ascii_lines = tf.gfile.GFile("labels.txt").readlines()
     for l in proto_as_ascii_lines:
         label.append(l.rstrip())
     return label
 
 
-class DataIterator:
-    def __init__(self, data_dir):
-        self.file_paths = []
-        image_list = os.listdir(data_dir)
-        self.file_paths = [data_dir + '/' + file_name.rstrip() for file_name in image_list]
-        self.labels = [1 for file_name in self.file_paths]
+def init():
+    global g_tf_sess, probabilities, label_dict, input_images
 
-    @property
-    def size(self):
-        return len(self.labels)
+    parser = argparse.ArgumentParser(description="Start a tensorflow model serving")
+    parser.add_argument('--model_name', dest="model_name", required=True)
+    parser.add_argument('--labels_name', dest="labels_name", required=True)
+    args, _ = parser.parse_known_args()
 
-    def input_pipeline(self, batch_size):
-        images_tensor = tf.convert_to_tensor(self.file_paths, dtype=tf.string)
-        labels_tensor = tf.convert_to_tensor(self.labels, dtype=tf.int64)
-        input_queue = tf.train.slice_input_producer([images_tensor, labels_tensor], shuffle=False)
-        labels = input_queue[1]
-        images_content = tf.read_file(input_queue[0])
+    workspace = Run.get_context(allow_offline=False).experiment.workspace
+    label_ds = Dataset.get_by_name(workspace=workspace, name=args.labels_name)
+    label_ds.download(target_path='.', overwrite=True)
 
-        image_reader = tf.image.decode_jpeg(images_content, channels=num_channel, name="jpeg_reader")
-        float_caster = tf.cast(image_reader, tf.float32)
-        new_size = tf.constant([image_size, image_size], dtype=tf.int32)
-        images = tf.image.resize_images(float_caster, new_size)
-        images = tf.divide(tf.subtract(images, [0]), [255])
-
-        image_batch, label_batch = tf.train.batch([images, labels], batch_size=batch_size, capacity=5 * batch_size)
-        return image_batch
-
-
-def main(_):
-    label_file_name = os.path.join(args.label_dir, "labels.txt")
-    label_dict = get_class_label_dict(label_file_name)
+    label_dict = get_class_label_dict()
     classes_num = len(label_dict)
-    test_feeder = DataIterator(data_dir=args.dataset_path)
-    total_size = len(test_feeder.labels)
-    count = 0
 
-    # get model from model registry
+    with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
+        input_images = tf.placeholder(tf.float32, [1, image_size, image_size, num_channel])
+        logits, _ = inception_v3.inception_v3(input_images,
+                                              num_classes=classes_num,
+                                              is_training=False)
+        probabilities = tf.argmax(logits, 1)
+
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True
+    g_tf_sess = tf.Session(config=config)
+    g_tf_sess.run(tf.global_variables_initializer())
+    g_tf_sess.run(tf.local_variables_initializer())
+
     model_path = Model.get_model_path(args.model_name)
+    saver = tf.train.Saver()
+    saver.restore(g_tf_sess, model_path)
 
-    with tf.Session() as sess:
-        test_images = test_feeder.input_pipeline(batch_size=args.batch_size)
-        with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
-            input_images = tf.placeholder(tf.float32, [args.batch_size, image_size, image_size, num_channel])
-            logits, _ = inception_v3.inception_v3(input_images,
-                                                  num_classes=classes_num,
-                                                  is_training=False)
-            probabilities = tf.argmax(logits, 1)
 
-        sess.run(tf.global_variables_initializer())
-        sess.run(tf.local_variables_initializer())
-        coord = tf.train.Coordinator()
-        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
-        saver = tf.train.Saver()
-        saver.restore(sess, model_path)
-        out_filename = os.path.join(args.output_dir, "result-labels.txt")
-        with open(out_filename, "w") as result_file:
-            i = 0
-            while count < total_size and not coord.should_stop():
-                test_images_batch = sess.run(test_images)
-                file_names_batch = test_feeder.file_paths[i * args.batch_size:
-                                                          min(test_feeder.size, (i + 1) * args.batch_size)]
-                results = sess.run(probabilities, feed_dict={input_images: test_images_batch})
-                new_add = min(args.batch_size, total_size - count)
-                count += new_add
-                i += 1
-                for j in range(new_add):
-                    result_file.write(os.path.basename(file_names_batch[j]) + ": " + label_dict[results[j]] + "\n")
-                result_file.flush()
-            coord.request_stop()
-            coord.join(threads)
+def file_to_tensor(file_path):
+    image_string = tf.read_file(file_path)
+    image = tf.image.decode_image(image_string, channels=3)
 
-        shutil.copy(out_filename, "./outputs/")
+    image.set_shape([None, None, None])
+    image = tf.image.resize_images(image, [image_size, image_size])
+    image = tf.divide(tf.subtract(image, [0]), [255])
+    image.set_shape([image_size, image_size, num_channel])
+    return image
 
-if __name__ == "__main__":
-    tf.app.run()
 
+def run(mini_batch):
+    result_list = []
+    for file_path in mini_batch:
+        test_image = file_to_tensor(file_path)
+        out = g_tf_sess.run(test_image)
+        result = g_tf_sess.run(probabilities, feed_dict={input_images: [out]})
+        result_list.append(os.path.basename(file_path) + ": " + label_dict[result[0]])
+    return result_list
 ```
 
 > [!TIP]
@@ -298,30 +261,37 @@ if __name__ == "__main__":
 
 ## <a name="build-and-run-the-pipeline"></a>Sestavení a spuštění kanálu
 
-Před spuštěním kanálu vytvořte objekt, který definuje prostředí Python, a vytvoří závislosti, které váš `batch_scoring.py` skript vyžaduje. Hlavní požadovaná závislost je Tensorflow, ale také nainstalujete `azureml-defaults` ze sady SDK pro procesy na pozadí. Vytvořte objekt `RunConfiguration` pomocí závislostí. Také zadejte Docker a Docker-GPU support.
+Před spuštěním kanálu vytvořte objekt, který definuje prostředí Python, a vytvoří závislosti, které váš `batch_scoring.py` skript vyžaduje. Hlavní požadovaná závislost je Tensorflow, ale také nainstalujete `azureml-defaults` pro procesy na pozadí. Vytvořte objekt `RunConfiguration` pomocí závislostí. Také zadejte Docker a Docker-GPU support.
 
 ```python
-from azureml.core.runconfig import DEFAULT_GPU_IMAGE
-azureml.core.runconfig import RunConfiguration
+from azureml.core import Environment
 from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
 cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.13.1", "azureml-defaults"])
-
-amlcompute_run_config = RunConfiguration(conda_dependencies=cd)
-amlcompute_run_config.environment.docker.enabled = True
-amlcompute_run_config.environment.docker.base_image = DEFAULT_GPU_IMAGE
-amlcompute_run_config.environment.spark.precache_packages = False
+env = Environment(name="parallelenv")
+env.python.conda_dependencies = cd
+env.docker.base_image = DEFAULT_GPU_IMAGE
 ```
 
-### <a name="parameterize-the-pipeline"></a>Parametrizovat kanál
+### <a name="create-the-configuration-to-wrap-the-script"></a>Vytvoření konfigurace pro zabalení skriptu
 
-Definujte vlastní parametr pro kanál, který bude řídit velikost dávky. Po publikování a zpřístupnění kanálu prostřednictvím koncového bodu REST jsou také zpřístupněny všechny nakonfigurované parametry. Vlastní parametry můžete zadat v datové části JSON při opětovném spuštění kanálu přes požadavek HTTP.
-
-Vytvořte objekt `PipelineParameter` pro povolení tohoto chování a definování názvu a výchozí hodnoty.
+Vytvoření kanálu krok pomocí skriptu, prostředí konfigurace a parametry. Zadejte cíl služby COMPUTE, který jste už připojili k vašemu pracovnímu prostoru.
 
 ```python
-from azureml.pipeline.core.graph import PipelineParameter
-batch_size_param = PipelineParameter(name="param_batch_size", default_value=20)
+from azureml.contrib.pipeline.steps import ParallelRunConfig
+
+parallel_run_config = ParallelRunConfig(
+    environment=env,
+    entry_script="batch_scoring.py",
+    source_directory=".",
+    output_action="append_row",
+    mini_batch_size="20",
+    error_threshold=1,
+    compute_target=compute_target,
+    process_count_per_node=2,
+    node_count=1
+)
 ```
 
 ### <a name="create-the-pipeline-step"></a>Vytvoření kanálu krok
@@ -333,25 +303,22 @@ Krok kanálu je objekt, který zapouzdřuje všechno, co potřebujete ke spušt�
 * Vstupní a výstupní data a libovolné vlastní parametry
 * Odkaz na skript nebo logiku sady SDK, které se spustí během kroku
 
-Více tříd dědí z nadřazené třídy [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py). Můžete zvolit třídy pro použití specifických rozhraní nebo zásobníků k vytvoření kroku. V tomto příkladu použijete třídu [`PythonScriptStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) k definování kroku logiky pomocí vlastního skriptu Pythonu. Je-li argument skriptu buď vstupem do kroku, nebo výstupem kroku, musí být *argument definován v* poli `arguments` *a* v parametru `input` nebo `output`. 
+Více tříd dědí z nadřazené třídy [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py). Můžete zvolit třídy pro použití specifických rozhraní nebo zásobníků k vytvoření kroku. V tomto příkladu použijete třídu `ParallelRunStep` k definování kroku logiky pomocí vlastního skriptu Pythonu. Je-li argument skriptu buď vstupem do kroku, nebo výstupem kroku, musí být *argument definován v* poli `arguments` *a* v parametru `input` nebo `output`. 
 
 V případech, kdy je k dispozici více kroků, bude odkaz na objekt v poli `outputs` k dispozici jako *vstup* pro další krok kanálu.
 
 ```python
-from azureml.pipeline.steps import PythonScriptStep
+from azureml.contrib.pipeline.steps import ParallelRunStep
 
-batch_score_step = PythonScriptStep(
-    name="batch_scoring",
-    script_name="batch_scoring.py",
-    arguments=["--dataset_path", input_images, 
-               "--model_name", "inception",
-               "--label_dir", label_dir, 
-               "--output_dir", output_dir, 
-               "--batch_size", batch_size_param],
-    compute_target=compute_target,
-    inputs=[input_images, label_dir],
-    outputs=[output_dir],
-    runconfig=amlcompute_run_config
+batch_score_step = ParallelRunStep(
+    name="parallel-step-test",
+    inputs=[input_images.as_named_input("input_images")],
+    output=output_dir,
+    models=[model],
+    arguments=["--model_name", "inception",
+               "--labels_name", "label_ds"],
+    parallel_run_config=parallel_run_config,
+    allow_reuse=False
 )
 ```
 
@@ -371,7 +338,7 @@ from azureml.core import Experiment
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
-pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline, pipeline_parameters={"param_batch_size": 20})
+pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline)
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
@@ -382,87 +349,20 @@ Spusťte následující kód ke stažení výstupního souboru vytvořeného z `
 ```python
 import pandas as pd
 
-step_run = list(pipeline_run.get_children())[0]
-step_run.download_file("./outputs/result-labels.txt")
+batch_run = next(pipeline_run.get_children())
+batch_output = batch_run.get_output_data("scores")
+batch_output.download(local_path="inception_result")
 
-df = pd.read_csv("result-labels.txt", delimiter=":", header=None)
+for root, dirs, files in os.walk("inception_results"):
+    for file in files:
+        if file.endswith("parallel_run_step.txt"):
+            result_file = os.path.join(root, file)
+
+df = pd.read_csv(result_file, delimiter=":", header=None)
 df.columns = ["Filename", "Prediction"]
+print("Prediction has ", df.shape[0], " rows")
 df.head(10)
 ```
-
-<div>
-<style scoped>. dataframe tbody TR tr: pouze-typu {vertikální zarovnání: prostřední;}
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Název souboru</th>
-      <th>Předpověď</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>ILSVRC2012_val_00000102. JPEG</td>
-      <td>Rhodesian Ridgeback</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>ILSVRC2012_val_00000103. JPEG</td>
-      <td>tripod</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>ILSVRC2012_val_00000104. JPEG</td>
-      <td>klávesnice psacího stroje</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>ILSVRC2012_val_00000105. JPEG</td>
-      <td>hedvábí Terrier</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>ILSVRC2012_val_00000106. JPEG</td>
-      <td>Windsor</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>ILSVRC2012_val_00000107. JPEG</td>
-      <td>sklizeň</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>ILSVRC2012_val_00000108. JPEG</td>
-      <td>Violin</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>ILSVRC2012_val_00000109. JPEG</td>
-      <td>reproduktor</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>ILSVRC2012_val_00000110. JPEG</td>
-      <td>odbavovací</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>ILSVRC2012_val_00000111. JPEG</td>
-      <td>USA – sever</td>
-    </tr>
-  </tbody>
-</table>
-</div>
 
 ## <a name="publish-and-run-from-a-rest-endpoint"></a>Publikování a spuštění z koncového bodu REST
 
@@ -477,7 +377,7 @@ published_pipeline = pipeline_run.publish_pipeline(
 published_pipeline
 ```
 
-Pokud chcete kanál spustit z koncového bodu REST, budete potřebovat hlavičku ověřování typu OAuth2 Bearer. Následující příklad používá interaktivní ověřování (pro ilustraci), ale u většiny produkčních scénářů, které vyžadují automatizované nebo bezobslužné ověřování, použijte ověřování instančního objektu, jak je [popsáno v tomto poznámkovém bloku](https://aka.ms/pl-restep-auth).
+Pokud chcete kanál spustit z koncového bodu REST, budete potřebovat hlavičku ověřování typu OAuth2 Bearer. Následující příklad používá interaktivní ověřování (pro ilustraci), ale pro většinu produkčních scénářů, které vyžadují automatizované nebo bezobslužné ověřování, použijte ověřování instančního objektu, jak je [popsáno v tomto článku](how-to-setup-authentication.md).
 
 Ověřování instančního objektu zahrnuje vytvoření *Registrace aplikace* v *Azure Active Directory*. Nejdřív vygenerujete tajný klíč klienta a potom udělíte roli instančního objektu *přístup* k pracovnímu prostoru Machine Learning. Ke správě toku ověřování použijte třídu [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) . 
 

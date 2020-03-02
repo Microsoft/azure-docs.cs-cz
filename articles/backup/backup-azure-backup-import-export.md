@@ -4,12 +4,12 @@ description: Naučte se, jak můžete pomocí Azure Backup posílat data mimo s�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 60295d1c534dbd1181533190df260ed4507ec11f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1359616e074f36a1324a418d5b2c889076ced52d
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197113"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206754"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování v Azure Backup
 
@@ -116,7 +116,7 @@ Tato část popisuje pracovní postup offline zálohování, aby bylo možné do
 
 Nástroj *AzureOfflineBackupDiskPrep* připraví jednotky SATA, které se odesílají do nejbližšího datacentra Azure. Tento nástroj je k dispozici v instalačním adresáři Azure Backup agenta v následující cestě:
 
-    *\Microsoft Azure Recovery Services Agent\Utils\\*
+```*\Microsoft Azure Recovery Services Agent\Utils\\*```
 
 1. Do adresáře přejdete a zkopírujte adresář *AzureOfflineBackupDiskPrep* do jiného počítače, kde jsou připojené jednotky SATA. V počítači s připojenými jednotkami SATA zajistěte, aby:
 
