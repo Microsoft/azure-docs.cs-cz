@@ -4,16 +4,16 @@ description: Tento článek vysvětluje, jak získat potřebné výsledky prost�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2102e3af26c8f5c4ed85543bc19360a923d070f3
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 1d9a498185e76f9771ec98656b1cad914b0f3214
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199972"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77562577"
 ---
 # <a name="common-cost-analysis-uses"></a>Běžné způsoby analýzy nákladů
 
@@ -83,6 +83,9 @@ Soubor ve formátu CSV s podrobnou sestavou využití obsahuje rozpis všech pop
 ## <a name="view-monthly-ea-cost-breakdown"></a>Zobrazení měsíčního rozpisu nákladů pro smlouvu Enterprise (EA)
 
 U vaší registrace EA se načítají náklady za celou vaši organizaci. Když pochopíte, jak náklady průběžně nabíhají a jak se účtují, snáze zapojíte ostatní zainteresované osoby do úsilí o odpovědné řízení nákladů.
+
+Náklady se zobrazují jenom pro aktivní registraci. Pokud jste převedli registraci (neaktivní) na novou (aktivní), v Cost Managementu se nezobrazují náklady na předchozí registraci.
+
 
 1. Na webu Azure Portal přejděte na **Správa nákladů a fakturace** > **Přehled**.
 1. Klikněte na **Rozpis** pro aktuální měsíc a podívejte se na čerpání peněžního závazku.  

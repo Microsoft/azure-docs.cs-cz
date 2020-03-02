@@ -7,12 +7,12 @@ ms.author: banders
 ms.date: 02/13/2020
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.openlocfilehash: 4e4b039b6ad6fad8a414fc9703309fa76853ef09
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 761f4345c591864b8158d7216d737ac287692252
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199666"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77651351"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Propojení ID partnera s účty Azure
 
@@ -29,6 +29,8 @@ Před propojením vašeho ID partnera vám zákazník musí udělit přístup k 
 - **Účet v adresáři**: Zákazník vám může vytvořit uživatelský účet ve svém vlastním adresáři a přiřadit nějakou roli RBAC.
 
 - **Instanční objekt**: Zákazník může přidat aplikaci nebo skript z vaší organizace do svého adresáře a přiřadit nějakou roli RBAC. Identita aplikace nebo skriptu se označuje jako instanční objekt.
+
+- **Azure Lighthouse:** Zákazník může delegovat předplatné (nebo skupinu prostředků), takže v něm uživatelé mohou pracovat z vašeho tenanta. Další informace najdete v tématu [Správa delegovaných prostředků Azure](https://docs.microsoft.com/azure/lighthouse/concepts/azure-delegated-resource-management).
 
 ## <a name="link-to-a-partner-id"></a>Propojení s ID partnera
 
@@ -154,3 +156,7 @@ Možné důvody nezobrazování zákazníka v sestavách:
 **Funguje propojení ID partnera s Azure Stackem?**
 
 Ano, ID partnera je možné propojit pro Azure Stack.
+
+**Jak můžu propojit ID partnera, pokud v naší společnosti pro přístup k prostředkům zákazníků využíváme [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview)?**
+
+Při onboardingu zákazníků do správy delegovaných prostředků Azure [publikováním nabídky spravovaných služeb na Azure Marketplace](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers) se automaticky přidruží vaše MPN ID. Pokud k [onboardingu zákazníků využíváte nasazení šablon Azure Resource Manageru](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer), musíte přidružit vaše MPN (Microsoft Partner Network) ID nejméně k jednomu uživatelskému účtu, který má přístup ke všem vašim onboardovaným předplatným. Upozorňujeme, že tuto akci musíte provést v tenantovi poskytovatele služeb. Pro zjednodušení doporučujeme vytvořit účet instančního objektu v tenantovi, který je přidružený k vašemu ID MPN, a udělit každému onboardovanému zákazníkovi přístup pro čtení.

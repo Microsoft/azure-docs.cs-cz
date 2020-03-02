@@ -1,6 +1,6 @@
 ---
 title: Principy uplatnění slevy za rezervaci ve službě Azure Disk Storage
-description: Přečtěte si, jak se uplatňuje sleva za rezervované disky Azure u spravovaných disků SSD Premium.
+description: Přečtěte si, jak se uplatňuje sleva za rezervované disky Azure u spravovaných disků Azure SSD úrovně Premium.
 author: roygara
 ms.service: cost-management-billing
 ms.devlang: na
@@ -9,46 +9,46 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2020
 ms.author: rogarana
-ms.openlocfilehash: 7f23aaebc20b562768fb04ae988e4aff1b62fb21
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 18fdda3e28761fcf912b716f51b5e270a9b224d0
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902143"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77586644"
 ---
 # <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>Principy uplatnění slevy za rezervaci ve službě Azure Disk Storage
 
-Po zakoupení rezervované kapacity disku Azure se sleva za rezervaci automaticky uplatní na prostředky disku, které odpovídají podmínkám vaší rezervace. Tato sleva za rezervaci se vztahuje jenom na kapacitu disku, snímky disků se účtují sazbami průběžných plateb.
+Po zakoupení rezervované kapacity disku Azure se sleva za rezervaci automaticky uplatní pro prostředky disku, které odpovídají podmínkám vaší rezervace. Sleva za rezervaci se vztahuje jenom na diskové jednotky SKU. Snímky disků účtují podle tarifů průběžných plateb.
 
-Další informace o rezervaci disků Azure najdete v tématu [Úspory nákladů s využitím rezervací disků Azure](../../virtual-machines/linux/disks-reserved-capacity.md).
-Informace o cenách rezervací disků Azure najdete v tématu [Ceny disků Azure](https://azure.microsoft.com/pricing/details/managed-disks/).
+Další informace o rezervaci disků Azure najdete v tématu věnovaném [úsporám nákladů při využití rezervací disků Azure](../../virtual-machines/linux/disks-reserved-capacity.md). Informace o cenách rezervací disků Azure najdete v tématu věnovaném [cenám spravovaných disků Azure](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ## <a name="how-the-reservation-discount-is-applied"></a>Způsob uplatňování slevy za rezervaci
 
-Sleva za rezervaci disků Azure je v případě nevyužití bez náhrady a uplatňuje se u spravovaných diskových prostředků po hodinách. Pokud v dané hodině nemáte žádné spravované diskové prostředky, které splňují podmínky vaší rezervace, ztrácíte rezervované množství za tuto hodinu. Nevyužité hodiny se nepřenášejí.
+Nevyužitá sleva za rezervovanou kapacitu služby Azure Storage se nenahrazuje. Sleva za rezervaci se pro prostředky spravovaných využívá po hodinách. Pokud pro konkrétní hodinu nemáte žádné prostředky spravovaného disku, které splňují podmínky rezervace, rezervaci za tuto hodinu ztratíte. Nevyužité hodiny se nepřenášejí.
 
-Když určitý prostředek odstraníte, sleva za rezervaci se automaticky uplatní na další vyhovující prostředek v zadaném rozsahu. Pokud se v zadaném rozsahu nenajdou žádné vyhovující prostředky, o rezervované hodiny přijdete.
+Když určitý prostředek odstraníte, sleva za rezervaci se automaticky uplatní na další vyhovující prostředek v zadaném rozsahu. Pokud se nenajde žádný vyhovující prostředek, o rezervované hodiny přijdete.
 
 ## <a name="discount-examples"></a>Příklady slev
 
-Následující příklady ukazují, jak se uplatňuje sleva za rezervaci disků Azure v závislosti na druhu nasazení:
+Následující příklady ukazují, jak se uplatňuje sleva za rezervaci disků Azure v závislosti na typu nasazení.
 
-Předpokládejme, že jste si na jeden rok zakoupili 100 disků P30 rezervované kapacity (přibližně 1 TiB na disk) v oblasti USA – západ 2. Řekněme, že náklady na tuto ukázkovou rezervaci jsou 140 100 dolarů. Můžete se rozhodnout buď zaplatit celou částku předem, nebo dalších 12 měsíců platit pevné splátky ve výši 11 675 dolarů měsíčně.
-U těchto příkladů předpokládejme, že jste si zaregistrovali plán měsíčních plateb za rezervace. Následující scénáře popisují, co se stane, když rezervovanou kapacitu zcela nevyužijete, překročíte ji nebo ji rozvrstvíte.
+Předpokládejme, že si koupíte a rezervujete 100 disků P30 v oblasti USA – západ 2 na dobu jednoho roku. Každý disk má přibližně 1TiB úložiště. Předpokládejme, že náklady na tuto ukázkovou rezervaci jsou 140 100 USD. Můžete se rozhodnout buď zaplatit celou částku předem, nebo dalších 12 měsíců platit pevné splátky ve výši 11 675 dolarů.
+
+Následující scénáře popisují, co se stane, když rezervovanou kapacitu zcela nevyužijete, překročíte ji nebo ji rozvrstvíte. U těchto příkladů předpokládejme, že jste si zaregistrovali plán měsíčních plateb za rezervace.
 
 ### <a name="underusing-your-capacity"></a>Nevyužití celé kapacity
 
-Předpokládejme, že v určité hodině v rámci období rezervace jste nasadili jenom 99 disků P30 Premium SSD z rezervovaných 100 disků P30. Zbývající 1 disk P30 se v dané hodině nevyužije a využití je nepřenosné.
+Předpokládejme, že během období rezervace po dobu jedné hodiny nasadíte jenom 99 z vašich 100 rezervovaných disků Azure SSD (Solid-State Drive) úrovně Premium P30. Zbývající disk P30 se během této hodiny nepoužije. Ani tady se nic nepřevádí.
 
 ### <a name="overusing-your-capacity"></a>Nadměrné využití kapacity
 
-Předpokládejme, že jste v určitou hodinu rezervačního období využili 101 disků P30 Premium SSD. Sleva za rezervaci se vztahuje na 100 disků P30 a zbývající 1 disk P30 se za danou hodinu účtuje podle tarifů průběžných plateb. Pokud se v další hodině vaše využití změní na 100 disků P30, rezervace pokryje veškeré využití.
+Předpokládejme, že jste v rezervačním období do dobu jedné hodiny využili 101 disků SSD úrovně Premium P30. Sleva za rezervaci se vztahuje jenom na 100 disků P30. Zbývající disk P30 se za tuto hodinu účtuje podle tarifů průběžných plateb. Pokud se v další hodině vaše využití změní na 100 disků P30, rezervace pokryje veškeré využití.
 
 ### <a name="tiering-your-capacity"></a>Rozvrstvení kapacity
 
-Předpokládejme, že v určité hodině v rámci období rezervace chcete použít celkem 200 disků P30 Premium SSD. Prvních 30 minut budete používat jenom 100. Během této doby se využití plně pokryje, protože jste provedli rezervaci pro 100 disků P30. Pokud pak přestanete používat prvních 100 disků (takže nevyužíváte žádné) a začnete používat jiných 100 disků po dobu zbývajících 30 minut, pokryje vaše rezervace i toto využití.
+Předpokládejme, že v určité hodině v rámci období rezervace chcete použít celkem 200 disků SSD úrovně Premium P30. Předpokládejme také, že po dobu prvních 30 minut použijete jenom 100 z nich. Během této doby se využití plně pokryje, protože jste provedli rezervaci pro 100 disků P30. Pokud pak přestanete používat prvních 100 disků (takže nevyužíváte žádné) a začnete používat jiných 100 disků po dobu zbývajících 30 minut, pokryje vaše rezervace i toto využití.
 
-![Znázornění příkladů nevyužití, překročení a rozvrstvení kapacity](media/understand-disk-reservations/reserved-disks-example-scenarios.png)
+![Příklady nevyužití, překročení a rozvrstvení kapacity](media/understand-disk-reservations/reserved-disks-example-scenarios.png)
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
 

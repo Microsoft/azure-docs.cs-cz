@@ -4,17 +4,17 @@ description: Tento článek vám pomůže lépe porozumět datům, která obsahu
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 02/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 39f2aab72491ffdf2b583879181a247d3653647f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 44953a3986b5c03afa9cc4668e2563c5c5cd6c46
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199887"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560605"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -135,9 +135,9 @@ Tady je několik tipů pro práci se značkami:
 - Použijte rozhraní API značek ve spojení s dotazem nebo podrobnostmi o využití a získejte všechny náklady na základě aktuálních značek.
 
 
-**Upgrade bezplatné zkušební verze na nabídku průběžných plateb**
+## <a name="free-trial-to-pay-as-you-go-upgrade"></a>Upgrade bezplatné zkušební verze na průběžné platby
 
-Zákazníci s nabídkou bezplatné zkušební verze (044P), kteří přecházejí na nabídku PAYG (003P), uvidí svoje využití během bezplatného zkušebního období. Po převodu ale o možnost zobrazení využití bezplatné zkušební nabídky přijdou. Po převodu se ve službě Cost Management budou zobrazovat pouze využití a náklady PAYG.
+Informace o dostupnosti služeb úrovně Free po upgradu z bezplatné zkušební verze na ceny při průběžných platbách najdete v tématu věnovaném [nejčastějším dotazům k bezplatnému účtu Azure](https://azure.microsoft.com/free/free-account-faq/).
 
 ## <a name="rated-usage-data-refresh-schedule"></a>Plán aktualizace vyhodnocených dat o využití
 
@@ -157,6 +157,17 @@ Předplatná s průběžnými platbami – pokud fakturační měsíc končí 15
 ### <a name="rerated-data"></a>Opakovaně vyhodnocená data
 
 Ať už data načítáte pomocí [rozhraní API služby Cost Management](../index.yml), Power BI nebo webu Azure Portal, počítejte s tím, že poplatky pro aktuální fakturační období se přepočítávají a neustále mění až do uzavření faktury.
+
+## <a name="cost-rounding"></a>Zaokrouhlení nákladů
+
+Náklady uvedené ve službě Cost Management jsou zaokrouhlené. Náklady vracené rozhraním API pro dotazy se nezaokrouhlují. Příklad:
+
+- Analýza nákladů na webu Azure Portal: Poplatky se zaokrouhlují s využitím standardních zaokrouhlovacích pravidel: hodnoty větší než 0,5 se zaokrouhlují nahoru, jinak se náklady zaokrouhlují dolů. K zaokrouhlování dochází jenom při zobrazování hodnot. Během zpracování a agregace dat se zaokrouhlování nepoužívá. Při analýze se náklady agregují následujícím způsobem:
+  - Poplatek 1: 0,004 USD
+  - Poplatek 2: 0,004 USD
+  - Vyčíslený agregovaný poplatek: 0,004 + 0,004 = 0,008. Poplatek se zobrazí jako 0,01 USD.
+- Rozhraní API pro dotazy: Poplatky se zobrazují na osm desetinných míst a nezaokrouhlují se.
+
 
 ## <a name="usage-data-update-frequency-varies"></a>Rozdíly ve frekvenci aktualizace dat o využití
 

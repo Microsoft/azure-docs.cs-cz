@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 02/26/2020
 ms.author: banders
-ms.openlocfilehash: 9fab4d8ba0cf2e6f684a1b9de177084f8ce31604
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: ef7a7a81ceeeca07e40fab8248889d7e997fbbe3
+ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462186"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77647479"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Principy rolí pro správu smlouvy Azure Enterprise v Azure
 
@@ -22,9 +22,11 @@ Zákazníci Azure se smlouvou Enterprise (EA) můžou přiřazovat pět různýc
 - Podnikový správce (jen pro čtení)<sup>1</sup>
 - Správce oddělení
 - Správce oddělení (jen pro čtení)
-- Vlastník účtu
+- Vlastník účtu<sup>2</sup>
 
 <sup>1</sup> V této roli bude příjemce faktury za smlouvu Enterprise.
+
+<sup>2</sup> Fakturační kontakt nejde změnit ani přidat na webu Azure EA Portal a přidá se do registrace EA podle toho, který uživatel je nastavený jako fakturační kontakt na úrovni smlouvy. Případnou změnu fakturačního kontaktu je potřeba prostřednictvím partnera / softwarového poradce vyžádat z regionálního operačního centra.
 
 Tyto role jsou specifické pro správu smluv Azure Enterprise a doplňují předdefinované role, pomocí kterých Azure řídí přístup k prostředkům. Další informace najdete v tématu [Předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
 
@@ -38,9 +40,9 @@ Následující části popisují omezení a možnosti jednotlivých rolí.
 |Podnikový správce (jen pro čtení)|Unlimited|
 |Správce oddělení|Unlimited|
 |Správce oddělení (jen pro čtení)|Unlimited|
-|Vlastník účtu|1 na účet<sup>2</sup>|
+|Vlastník účtu|1 na účet<sup>3</sup>|
 
-<sup>2</sup> Každý účet vyžaduje jedinečný účet Microsoft nebo pracovní či školní účet.
+<sup>3</sup> Každý účet vyžaduje jedinečný účet Microsoft nebo pracovní nebo školní účet.
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Organizační struktura a oprávnění podle role
 
@@ -48,17 +50,17 @@ Následující části popisují omezení a možnosti jednotlivých rolí.
 |---|---|---|---|---|---|
 |Zobrazení podnikových správců|✔|✔|✘|✘|✘|
 |Přidání nebo odebrání podnikových správců|✔|✘|✘|✘|✘|
-|Zobrazení kontaktů pro oznámení<sup>3</sup> |✔|✔|✘|✘|✘|
-|Přidání nebo odebrání kontaktů pro oznámení<sup>3</sup> |✔|✘|✘|✘|✘|
+|Zobrazení kontaktů pro oznámení<sup>4</sup> |✔|✔|✘|✘|✘|
+|Přidání nebo odebrání kontaktů pro oznámení<sup>4</sup> |✔|✘|✘|✘|✘|
 |Vytvoření a správa oddělení |✔|✘|✘|✘|✘|
 |Zobrazení správců oddělení|✔|✔|✔|✔|✘|
 |Přidání nebo odebrání správců oddělení|✔|✘|✔|✘|✘|
-|Zobrazení účtů v registraci |✔|✔|✔<sup>4</sup>|✔<sup>4</sup>|✘|
-|Přidání účtů do registrace a změna vlastníka účtu|✔|✘|✔<sup>4</sup>|✘|✘|
+|Zobrazení účtů v registraci |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|
+|Přidání účtů do registrace a změna vlastníka účtu|✔|✘|✔<sup>5</sup>|✘|✘|
 |Vytvoření a správa předplatných a oprávnění předplatných|✘|✘|✘|✘|✔|
 
-- <sup>3</sup> Kontaktům pro oznámení se odesílá e-mailová komunikace týkající se smlouvy Azure Enterprise.
-- <sup>4</sup> Úloha je omezená na účty ve vašem oddělení.
+- <sup>4</sup> Kontaktům pro oznámení se odesílá e-mailová komunikace týkající se smlouvy Azure Enterprise.
+- <sup>5</sup> Úloha je omezená na účty ve vašem oddělení.
 
 
 ## <a name="usage-and-costs-access-by-role"></a>Přístup k využití a nákladům podle role
@@ -69,11 +71,11 @@ Následující části popisují omezení a možnosti jednotlivých rolí.
 |Zobrazení kvót útraty oddělení|✔|✔|✘|✘|✘|
 |Nastavení kvót útraty oddělení|✔|✘|✘|✘|✘|
 |Zobrazení ceníku EA v organizaci|✔|✔|✘|✘|✘|
-|Zobrazení podrobností o využití a nákladech|✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✔<sup>6</sup>|
+|Zobrazení podrobností o využití a nákladech|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|
 |Správa prostředků na webu Azure Portal|✘|✘|✘|✘|✔|
 
-- <sup>5</sup> Podnikový správce musí na webu Enterprise Portal povolit zásadu **DA view charges** (Správce oddělení může zobrazit náklady). Správce oddělení pak může zobrazit podrobnosti o nákladech daného oddělení.
-- <sup>6</sup> Podnikový správce musí na webu Enterprise Portal povolit zásadu **AO view charges** (Vlastník účtu může zobrazit náklady). Vlastník účtu pak může zobrazit podrobnosti o nákladech daného účtu.
+- <sup>6</sup> Podnikový správce musí na webu Enterprise Portal povolit zásadu **DA view charges** (Správce oddělení může zobrazit náklady). Správce oddělení pak může zobrazit podrobnosti o nákladech daného oddělení.
+- <sup>7</sup> Podnikový správce musí na webu Enterprise Portal povolit zásadu **AO view charges** (Vlastník účtu může zobrazit náklady). Vlastník účtu pak může zobrazit podrobnosti o nákladech daného účtu.
 
 
 ## <a name="pricing-in-azure-portal"></a>Ceny na webu Azure Portal

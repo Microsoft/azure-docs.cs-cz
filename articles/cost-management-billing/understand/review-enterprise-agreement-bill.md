@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/04/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 1affe81228b491ea45f610d741d454fa38f2029a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 017f617bff14eb0c031c40240ca6c1ac62c9c941
+ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199105"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77598217"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Vysvětlení informací na faktuře za smlouvu Azure Enterprise
 
@@ -55,7 +55,7 @@ Pokud během fakturačního cyklu dojde k některé z následujících situací,
     - Visual Studio Professional (roční)
 - **Poplatky za Marketplace:** Kredit vaší organizace se nevztahuje na nákupy na webu Azure Marketplace a jejich využívání. Poplatky za Marketplace se vám tedy naúčtují bez ohledu na zůstatek vašeho kreditu. Podnikový správce může povolit nebo zakázat nákupy na webu Marketplace na webu Enterprise Portal.
 
-Na vaší faktuře se zobrazuje veškeré využívání Azure a za ním poplatky za Marketplace. Pokud máte zůstatek kreditu, uplatní se na využívání Azure.
+Na vaší faktuře se zobrazí poplatky za využití Azure s náklady, které jsou k nim přidružené, a za nimi následují případné poplatky za marketplace. Pokud máte kreditní zůstatek, použije se na využití Azure. Na faktuře se uvede využití Azure a využití marketplace bez jakýchkoli nákladů.
 
 V části **Sestavy** > **Souhrn využití** můžete porovnat souhrnnou celkovou částku uvedenou na webu Enterprise Portal s vaší fakturou za Azure. Částky v části **Souhrn využití** jsou uvedené bez daně.
 

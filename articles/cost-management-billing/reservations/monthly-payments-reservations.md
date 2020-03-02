@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 02/24/2020
 ms.author: banders
-ms.openlocfilehash: 2689bdeb003cec0050141374165142a62f9ea337
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 77d663fa01e24acf63acd68d0b8d7cf4cc741055
+ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200397"
+ms.lasthandoff: 02/25/2020
+ms.locfileid: "77587086"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>Nákup rezervací s měsíčními platbami
 
@@ -62,7 +62,7 @@ Podobně jako jiné rezervace můžete i rezervace zakoupené s měsíční fakt
 
 Když vyměňujete měsíčně placenou rezervaci, celkové náklady na nový nákup by měly být větší než zbývající platby, které se pro vracenou rezervaci zruší. Pro výměny neexistují žádná další omezení ani poplatky. Předem placenou rezervaci si můžete vyměnit za nákup nové rezervace fakturované měsíčně. Celková hodnota nové rezervace by ale měla být větší než poměrná hodnota vracené rezervace.
 
-Pokud zrušíte měsíčně placenou rezervaci, může Microsoft za budoucí potvrzené platby, které jsou zrušeny, požadovat poplatek za zrušení. Zbývající potvrzené platby narůstají k limitu refundace 50 000 USD.
+Pokud zrušíte měsíčně placenou rezervaci, může Microsoft za zrušené potvrzené platby požadovat poplatek za zrušení ve výši 12 %. Společnost Microsoft ale momentálně tuto pokutu neúčtuje. Zrušené potvrzené platby se načítají do limitu refundace 50 000 USD. Pokud se pokuta za zrušení naúčtuje, nemá vliv na limit refundace.
 
 Další informace o výměně a refundacích najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](exchange-and-refund-azure-reservations.md).
 

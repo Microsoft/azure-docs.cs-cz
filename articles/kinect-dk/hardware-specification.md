@@ -14,12 +14,12 @@ ms.custom:
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: dbe4cac64e324c1188ec5a01b4da3935a5d5b479
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: e0d42a3ce1dd9deb5e73500371c367134ca852e1
+ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77371294"
+ms.lasthandoff: 02/26/2020
+ms.locfileid: "77619965"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Specifikace hardwaru Azure Kinect DK
 
@@ -71,7 +71,7 @@ Azure Kinect DK obsahuje integrovanou 1megapixelovou hloubkovou kameru ToF (Time
 | WFOV bez rozdělení na intervaly   | 1024 × 1024  | 120° × 120° | 0, 5, 15           | 0,25–2,21 m      | 20,3 ms        |
 | Pasivní IR      | 1024 × 1024  | –       | 0, 5, 15, 30       | –              | 1,6 ms         |
 
-\*Odrazivost 15–95 % při 850nm, 2,2 μW/cm<sup>2</sup>/nm, směrodatná odchylka náhodných chyb ≤ 17 mm, typická systematická chyba < 11 mm + 0,1 % vzdálenosti bez rušení způsobeného více cestami. Hloubka mimo uvedený rozsah závisí na odrazivosti objektu.
+\*Odrazivost 15–95 % při 850nm, 2,2 μW/cm<sup>2</sup>/nm, směrodatná odchylka náhodných chyb ≤ 17 mm, typická systematická chyba < 11 mm + 0,1 % vzdálenosti bez rušení způsobeného více cestami. Zadaná hloubka nemusí spadat do rozsahu odrazivosti uvedeného výš. Závisí na odrazivosti objektu.
 
 ## <a name="color-camera-supported-operating-modes"></a>Podporované provozní režimy barevné kamery
 

@@ -7,15 +7,17 @@ ms.service: cost-management-billing
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: banders
-ms.openlocfilehash: a5a158ce67d2d0c7dd947f7b35a96d12429c8ec9
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 9f9552c134fa7653e4100cae3c731e4c670d44e3
+ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77200672"
+ms.lasthandoff: 02/22/2020
+ms.locfileid: "77560537"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky
 Rozhraní API pro generování sestav umožňují podnikovým zákazníkům Azure programově předávat data o spotřebě a fakturaci do upřednostňovaných nástrojů pro analýzu dat. Podnikoví zákazníci uzavřeli s Azure [smlouvu Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), ve které si vyjednali určité peněžní závazky a která jim poskytuje přístup k vlastním cenám prostředků Azure.
+
+Všechny parametry data a času požadované pro rozhraní API musí být reprezentované jako kombinované hodnoty koordinovaného světového času (UTC). Hodnoty vrácené rozhraními API se zobrazují ve formátu UTC.
 
 ## <a name="enabling-data-access-to-the-api"></a>Povolení přístupu k datům v rozhraní API
 * **Vygenerování nebo načtení klíče rozhraní API** – přihlaste se na web Enterprise Portal, přejděte na položky Sestavy > Stažení dat o využití > Přístupový klíč rozhraní API a vygenerujte nebo stáhněte klíč rozhraní API.
