@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 39e2deead1affd750d9a5e68985b02ebfe8e0efd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921296"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208811"
 ---
 # <a name="supported-platforms"></a>Podporované platformy 
 
@@ -36,14 +36,13 @@ Pro prostředí Azure aktivované v rámci předplatného Azure Azure Security C
 > [!NOTE]
 > Chcete-li získat kompletní sadu funkcí zabezpečení, je nutné mít [agenta Log Analytics](../azure-monitor/platform/agents-overview.md#log-analytics-agent), který je používán Azure Security Center, nainstalován a [správně nakonfigurován k odesílání dat do Azure Security Center](security-center-enable-data-collection.md#manual-agent).
 
-
 V následujících oddílech jsou uvedeny podporované serverové operační systémy, na kterých je možné spustit [agenta Log Analytics](../azure-monitor/platform/agents-overview.md#log-analytics-agent), který používá služba Azure Security Center.
 
 ### Operační systémy Windows Server<a name="os-windows"></a>
 
-|Operační systém|Podporováno aplikací Azure Security Center|Podpora integrace s Microsoft Defender ATP|
+|OS|Podporováno aplikací Azure Security Center|Podpora integrace s Microsoft Defender ATP|
 |:---|:-:|:-:|
-|Windows Server 2019|✔|×|
+|Windows Server. 2019|✔|X|
 |Windows Server 2016|✔|✔|
 |Windows Server 2012 R2|✔|✔|
 |Windows Server 2008 R2|✔|✔|
@@ -85,38 +84,6 @@ Virtuální počítače se také vytvoří v rámci zákaznického předplatnéh
 ### Cloud Services<a name="cloud-services"></a>
 
 Podporují se také virtuální počítače, které běží v cloudové službě. Monitorují se jenom webové role a role pracovních procesů Cloud Services, které běží v produkčních slotech. Další informace o cloudových službách najdete v tématu [Přehled Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
-
-## Služby PaaS<a name="paas-services"></a>
-
-Azure Security Center podporují následující prostředky Azure PaaS:
-
-* SQL
-* PostGreSQL
-* MySQL
-* CosmosDB
-* Účet úložiště
-* App Service
-* Funkce
-* Cloudová služba
-* VNet
-* Podsíť
-* NIC
-* NSG
-* Účet Batch
-* Účet Service Fabric
-* Účet Automation
-* Nástroj pro vyrovnávání zatížení
-* Hledání
-* Obor názvů služby Service Bus
-* Stream Analytics
-* Obor názvů centra událostí
-* Logické aplikace
-* Redis
-* Data Lake Analytics
-* Data Lake Store
-* Trezor klíčů
-
-Další informace o podporovaných funkcích pro výše uvedený seznam prostředků PaaS najdete v tématu [funkce podporované službami PaaS](security-center-services.md#paas-services).
 
 Také je podporována ochrana pro Virtual Machines umístěná v Azure Stack. Další informace o integraci Security Center s Azure Stack najdete v tématu připojení [virtuálních počítačů s Azure Stack k Security Center](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack).
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 02/24/2020
-ms.openlocfilehash: 6a999df6daf2fde5133143fe9b22a65d628ecfb2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b3e110766b2e131330f3108b7938e9e5e01e48a4
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663943"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208555"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor konfiguraci klíče spravovaného zákazníkem 
 
@@ -184,7 +184,7 @@ Authorization: Bearer <token>
   "identity": {
     "type": "SystemAssigned",
     "tenantId": "tenant-id",
-    "principalId": "principal-Id"
+    "principalId": "principal-id"
     },
   "properties": {
     "provisioningState": "Succeeded",
@@ -198,10 +198,10 @@ Authorization: Bearer <token>
   }
 ```
 
-"principalId" je identifikátor GUID generovaný službou Managed identity pro prostředek *clusteru* .
+ID objektu zabezpečení je identifikátor GUID generovaný službou Managed identity pro prostředek *clusteru* .
 
 > [!IMPORTANT]
-> Zkopírujte a ponechte hodnotu "cluster-ID", protože ji budete potřebovat v dalších krocích.
+> Zkopírujte a zachovejte hodnotu "Principal-ID", protože ji budete potřebovat v dalších krocích.
 
 
 ### <a name="grant-key-vault-permissions"></a>udělení oprávnění Key Vault
@@ -213,7 +213,7 @@ Aktualizujte svůj Key Vault novou zásadou přístupu, která uděluje oprávn�
 Otevřete Key Vault v Azure Portal a klikněte na "zásady přístupu", pak "+ Přidat zásadu přístupu" a vytvořte novou zásadu s těmito nastaveními:
 
 - Klíčová oprávnění: vyberte Get, Wrap Key a Unwrap Key oprávnění.
-- Vyberte objekt zabezpečení: zadejte hodnotu ID clusteru, která se vrátila v odpovědi v předchozím kroku.
+- Vyberte objekt zabezpečení: zadejte hodnotu ID objektu zabezpečení, která se vrátila v odpovědi v předchozím kroku.
 
 ![udělení oprávnění Key Vault](media/customer-managed-keys/grant-key-vault-permissions.png)
 
@@ -528,10 +528,10 @@ Identita je přiřazena ke zdroji *clusteru* v době vytváření.
   "location": "region-name"
 }
 ```
-"principalId" je identifikátor GUID, který vygenerovala spravovaná služba identit.
+"stat-ID" je identifikátor GUID, který vygenerovala spravovaná služba identit.
 
 > [!IMPORTANT]
-> Zkopírujte a ponechte hodnotu "cluster-ID", protože ji budete potřebovat v dalších krocích.
+> Zkopírujte a ponechte hodnotu "stat-ID", protože ji budete potřebovat v dalších krocích.
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Přidružení součásti k prostředku *clusteru* pomocí [komponent – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) rozhraní API
 

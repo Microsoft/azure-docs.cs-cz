@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/22/2020
-ms.openlocfilehash: 4cac2fcd16f779a6b31e36ca175801eedaa31d5d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.date: 02/28/2020
+ms.openlocfilehash: 9d06b34b459bf1d48aa293a889af57fb6192015d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705815"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208861"
 ---
 # <a name="create-a-new-saas-offer"></a>Vytvořit novou nabídku SaaS
 
@@ -44,7 +44,7 @@ Příklad: test-nabídka-1
 
 <br>Příklad: nabídka testu 1&#8482;
 
-Vyberte **Create** (Vytvořit).  Pro tuto nabídku se vytvoří stránka s **přehledem nabídky** .  
+Vyberte **Vytvořit**.  Pro tuto nabídku se vytvoří stránka s **přehledem nabídky** .  
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
@@ -134,16 +134,7 @@ Testovací jednotka představuje skvělý způsob, jak předvést vaši nabídku
 
 Povolením testovacích jednotek budete požádáni o konfiguraci demonstračního prostředí pro zákazníky, kteří budou chtít vaši nabídku vyzkoušet na určitou dobu. 
 
-### <a name="type-of-test-drive"></a>Typ testovací jednotky
-
-- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)** : Šablona nasazení obsahující všechny prostředky Azure, které tvoří vaše řešení. Produkty, které vyhovují tomuto scénáři, používají pouze prostředky Azure.
-- **[Dynamics 365 for Business Central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** : Microsoft hostuje a udržuje službu testovacích jednotek (včetně zřizování a nasazení) pro podnikový systém plánování podnikových prostředků (finance, operace, dodavatelský řetězec, CRM atd.).  
-- **[Dynamics 365 for Customer Engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** : Microsoft hostuje a udržuje službu testovacích jednotek (včetně zřizování a nasazení) pro systém zákaznických rezervací (prodej, servis, Project Service, Field Service atd.).  
-- **[Dynamics 365 pro operace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** : Společnost Microsoft hostuje službu testovacích jednotek (včetně zřizování a nasazení) pro finanční a provozní systém prostředků podnikového plánování (finance, operace, výroba, dodavatelský řetězec atd.). 
-- **[Aplikace logiky](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)** : Šablona nasazení zahrnuje všechny komplexní architektury řešení. Všechny vlastní produkty by měly používat tento typ testovacích jednotek.
-- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)** : vložený odkaz na uživatelsky sestavený řídicí panel. Produkty, které chtějí předvést interaktivní Power BI vizuál, by měly používat tento typ testovacích jednotek. Vše, co je třeba nahrát, je vaše vložená Power BI adresa URL.
-
-#### <a name="additional-test-drive-resources"></a>Další zdroje testovacích jednotek
+#### <a name="test-drive-resources"></a>Prostředky testovacích jednotek
 - [Technické osvědčené postupy testovacích jednotek](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Osvědčené postupy pro testování a uvádění na trh](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [Přehled testovacích jednotek – jeden pager](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
@@ -212,7 +203,7 @@ K dispozici jsou dva druhy změn pro komerční vydavatele na webu Marketplace:
 - **ID klientů** (povinné): každé vlastní změně může být až 20 ID klientů. Pokud přidáte vlastní změnu, musíte zadat aspoň jedno ID tenanta. ID tenanta identifikuje zákazníka v Azure. U zákazníka můžete požádat o toto ID a získat ho tak, že přejdete na portal.azure.com > Azure Active Directory > Vlastnosti. Hodnota ID adresáře je ID tenanta (například 50c464d3-4930-494c-963c-1e951d15360e). ID tenanta organizace zákazníka můžete také vyhledat pomocí adresy URL svého názvu domény v umístění [moje Microsoft Azure a ID tenanta Office 365?](https://www.whatismytenantid.com).
 - **Popis** (volitelné): Volitelně můžete zadat popis ID tenanta, který vám pomůže identifikovat zákazníka, kterému cílíte na změnu.
 
-#### <a name="terms-and-conditions"></a>Podmínky a ujednání
+#### <a name="terms-and-conditions"></a>podmínky a ujednání
 
 Pokud chcete zadat vlastní podmínky a ujednání, můžete je vybrat do pole podmínky a ujednání. Do tohoto pole můžete zadat až 10 000 znaků textu. Pokud vaše podmínky a ujednání vyžadují delší popis, zadejte do tohoto pole odkaz na jednu adresu URL, kde se dají podmínky a ujednání najít. Zobrazí se zákazníkům jako aktivní odkaz.
 
@@ -234,7 +225,7 @@ Zadejte podrobnosti, které se mají zobrazit na webu Marketplace, včetně popi
 - **Název** (povinné): zde definovaný název se zobrazí jako název vaší nabídky na webu Marketplace, který jste zvolili. Název je předem vyplněný na základě vaší předchozí **nové položky nabídky** . Název může být ve vaší společnosti. Nemůže obsahovat Emoji (Pokud se nejedná o symboly ochranné známky a copyrightu) a musí být omezený na 50 znaků.
 - **Souhrn** (povinné): zadejte krátký popis nabídky, která se má použít ve výsledcích hledání seznamů Marketplace. Do tohoto pole lze zadat až 100 znaků textu.
 - **Popis** (povinné): zadejte popis nabídky, která se má zobrazit v seznamech Marketplace. Vezměte v úvahu zahrnutí hodnot do kategorií, klíčových výhod, jakékoli kategorie nebo přidružení oboru, možností nákupu v aplikaci, všech potřebných zveřejnění a odkazu na Další informace.
-Do tohoto pole lze zadat až 3 000 znaků textu. Další tipy najdete v článku o [zápisu skvělého popisu aplikace](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
+Do tohoto pole lze zadat až 3 000 znaků textu, včetně značek. Další tipy najdete v článku o [zápisu skvělého popisu aplikace](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description).
 - **Hledaná klíčová slova**: Zadejte až tři klíčová slova pro hledání, která můžou zákazníci použít k vyhledání vaší nabídky na webu Marketplace.
 - Úvodní **pokyny** (povinné): Vysvětlete, jak nakonfigurovat a začít používat vaši aplikaci pro potenciální zákazníky.  Tento rychlý Start může obsahovat odkazy na podrobnější online dokumentaci. Do tohoto pole lze zadat až 3 000 znaků textu.
 
@@ -277,7 +268,7 @@ Pomocí následujících pokynů můžete použít Editor formátovaného textu:
 - **Marketingové materiály programu CSP** (volitelné): zadejte odkaz na marketingové materiály, pokud se rozhodnete tuto nabídku rozšíříte do programu [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) . CSP rozšiřuje vaši nabídku na širší škálu kvalifikovaných zákazníků tím, že umožňuje partnerům CSP, aby si mohli seskupit, uvádět na trh a prodávat vaše nabídky. Tito prodejci budou potřebovat přístup k materiálům pro účely marketingu vaší nabídky. Další informace najdete v tématu [služby pro uvedení na trh](https://partner.microsoft.com/reach-customers/gtm).
 - **Užitečné odkazy** (volitelné): volitelné doplňující online dokumenty týkající se vaší aplikace nebo související služby uvedené zadáním **názvu** a **adresy URL**. Přidejte další užitečné odkazy kliknutím na **+ Přidat adresu URL**.
 
-#### <a name="contact-information"></a>Kontaktní informace
+#### <a name="contact-information"></a>Kontaktní údaje
 
 - **Kontakty**: u každého kontaktu zákazníka zadejte **jméno**zaměstnance, **telefonní číslo**a **e-mailovou** adresu.  (Nebudou *se* zobrazovat veřejně). Pro skupinu **kontaktů podpory** je také vyžadována **Adresa URL podpory** .  (Tyto informace *se* zobrazí veřejně).
 
@@ -290,7 +281,7 @@ Technický **kontakt** (povinné): pro technické dotazy.
 #### <a name="files-and-images"></a>Soubory a image
 
 - **Dokumenty** (povinné): přidejte související marketingové dokumenty pro vaši nabídku ve formátu PDF, který poskytuje minimálně jeden (1) a maximálně tři (3) dokumentů na jednu nabídku.
-- **Obrázky** (volitelné): k dispozici je několik míst, kde se na webu Marketplace můžou zobrazit obrázky loga vaší nabídky, vyžadují následující velikosti – malá: 48 x 48 pixelů _(povinné),_ střední: 90 × 90 pixelů, velká: 216 x 216 pixelů _(povinné),_ široké: 255 x 115 pixelů a Hero: 815 x 290 pixelů. Všechny obrázky musí být v. Formát PNG.
+- **Obrázky** (volitelné): k dispozici je několik míst, kde se na webu Marketplace můžou zobrazit obrázky loga vaší nabídky, což vyžaduje tyto velikosti:-malé: 48 x 48 pixelů _(povinné),_ střední: 90 × 90 pixelů _(povinné)_ , velké: 216 x 216 pixelů _(požadováno),_ široké: 255 x 115 pixelů a Hero: 815 x 290 pixelů. Všechny obrázky musí být v. Formát PNG.
 - **Snímky obrazovky** (povinné): přidejte snímky obrazovky, které demonstrují vaši nabídku. Je možné přidat maximálně pět (5) snímků obrazovky a velikost by měla být 1280 × 720 pixelů. Všechny obrázky musí být v. Formát PNG.
 - **Videa** (volitelné): Přidejte odkazy na videa, která demonstrují vaši nabídku. Můžete použít odkazy na videa YouTube nebo Vimeo, která se zobrazí spolu s vaší nabídkou pro zákazníky. Budete taky muset zadat miniaturu videa, ve formátu PNG se velikost nastaví na 1280 x 720 pixelů. Můžete zobrazit maximálně čtyři videa na jednu nabídku.
 
@@ -406,7 +397,7 @@ Vyberte frekvenci, kterou zákazníci musí platit v uvedené ceně. Musí se za
 - **Cena**: USD za měsíc nebo USD za rok
 
 Ceny nastavené v místní měně (USD = USA dolar) se převedou na místní měnu všech vybraných trhů pomocí aktuálních kurzů pro Exchange, které jsou k dispozici během instalace. Před publikováním tyto ceny ověřte, a to tak, že vyexportujete tabulku cen a zkontrolujete cenu na každém trhu. Pokud chcete nastavit vlastní ceny v individuálním trhu, upravte a importujte tabulku s cenami. Zodpovídáte za ověřování těchto cen a jejich nastavení.
-*\*Aby bylo možné exportovat data o cenách, musíte nejdřív Uložit změny cen.*
+*\*musíte nejdřív Uložit změny cen, abyste mohli exportovat data o cenách.*
 
 Před publikováním pečlivě zkontrolujte své ceny, protože existují určitá omezení, co se může po publikování plánu změnit:
 
@@ -439,7 +430,7 @@ I když SaaS nabízí použití ID tenanta k definování soukromé cílové sku
 
 ![Ukázkový výpis plánu Marketplace s poznámkami](./media/marketplace-plan.svg)
 
-## <a name="test-drive"></a>Testovací verze
+## <a name="test-drive"></a>Testovací jednotka
 
 [!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
 
@@ -447,7 +438,7 @@ I když SaaS nabízí použití ID tenanta k definování soukromé cílové sku
 
 Pokud chcete, aby vaše nabídka byla k dispozici v programu CSP, umožní poskytovatelům cloudového řešení prodávat vaše produkty jako součást řešení svým zákazníkům. Další informace najdete v tématu [Poskytovatelé cloudových řešení](https://go.microsoft.com/fwlink/?linkid=2111109).
 
-## <a name="publish"></a>Publikování
+## <a name="publish"></a>Publikovat
 
 Až dokončíte všechny požadované části nabídky, vyberte **publikovat** v pravém horním rohu portálu. Budete přesměrováni na stránku **Revize a publikování** .
 

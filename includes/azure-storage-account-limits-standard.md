@@ -5,22 +5,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/13/2019
+ms.date: 02/27/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: a0ecb4f5fe54e9895898156893c1e686c6cc24e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e02de4ee9c36f9c3f0c27bc02ee1c37ce3e4057c
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75392321"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78208218"
 ---
-Následující tabulka popisuje výchozí omezení pro účty úložiště Azure pro obecné účely V1, v2 a BLOB. Limit příchozího přenosu dat odkazuje na všechna data z požadavků, které se odesílají do účtu úložiště. Limit *odchozího* přenosu dat odkazuje na všechna data z odpovědí, které jsou přijaty z účtu úložiště.
+Následující tabulka popisuje výchozí omezení pro účty úložiště Azure pro obecné účely V1, v2 a BLOB. Limit příchozího přenosu dat odkazuje na všechna data, která se odesílají do účtu úložiště. Limit *odchozího* přenosu dat odkazuje na všechna data přijatá z účtu úložiště.
 
 | Prostředek | Výchozí omezení |
 | --- | --- |
 | Počet účtů úložiště podle jednotlivých oblastí a předplatných, včetně účtů Standard a Premium | 250 |
-| Maximální kapacita účtu úložiště | 2 PiB pro USA a Evropu a 500 TiB pro všechny ostatní oblasti (včetně Spojené království)<sup>1</sup>|
+| Maximální kapacita účtu úložiště | 5 PiB <sup>1</sup>|
 | Maximální počet kontejnerů objektů blob, objektů blob, sdílených složek, tabulek, front, entit nebo zpráv na účet úložiště | Bez omezení |
 | Maximální počet požadavků<sup>1</sup> na účet úložiště | počet požadavků 20 000 za sekundu |
 | Maximální příchozí<sup>1</sup> na účet úložiště (oblasti USA, Evropa) | 25 GB/s |
@@ -31,7 +31,7 @@ Následující tabulka popisuje výchozí omezení pro účty úložiště Azure
 | Maximální počet pravidel virtuální sítě na účet úložiště | 200 |
 | Maximální počet pravidel IP adres na účet úložiště | 200 |
 
-<sup>1</sup> Účty Azure Storage Standard podporují větší limity kapacity a vyšší limity pro příchozí zpracování žádostí. Pokud chcete požádat o zvýšení limitů pro příchozí přenos dat, obraťte se na [podporu Azure](https://azure.microsoft.com/support/faq/). Další informace najdete v tématu [oznamujeme větší, vyšší škálování účtů úložiště](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).
+<sup>1</sup> Účty Azure Storage Standard podporují větší limity kapacity a vyšší limity pro příchozí zpracování žádostí. Pokud chcete požádat o zvýšení limitů pro příchozí přenos dat, obraťte se na [podporu Azure](https://azure.microsoft.com/support/faq/).
 
 <sup>2</sup> Pokud váš účet úložiště má povolený přístup pro čtení s geograficky redundantním úložištěm (RA-GRS) nebo geograficky redundantním úložištěm (RA-GZRS), pak jsou cíle výstupu sekundárního umístění stejné jako v primárním umístění. Mezi možnosti [replikace Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy) patří:
 

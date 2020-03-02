@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: cynthn
-ms.openlocfilehash: 7d529335d18f9016ea7a02ac9b03461e3784b08e
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: f69e245d72a63b942896cdd9f4a2225cb4c1706d
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78204442"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208521"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>Nasazení virtuálních počítačů do skupin umístění Proximity pomocí prostředí PowerShell
 
@@ -89,7 +89,7 @@ Pokud chcete virtuální počítač odebrat ze skupiny umístění blízkosti, m
 $ppg = Get-AzProximityPlacementGroup -ResourceGroupName myPPGResourceGroup -Name myPPG
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Stop-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
-$vm.ProximityPlacementGroupId = ""
+$vm.ProximityPlacementGroup = ""
 Update-AzVM -VM $vm -ResourceGroupName $vm.ResourceGroupName 
 Start-AzVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName
 ```

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
+ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552929"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78208538"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Posouzení a doporučení služby Endpoint Protection v Azure Security Center
 
-Azure Security Center poskytuje posouzení stavu [podporovaných](security-center-services.md#supported-endpoint-protection-solutions-) verzí řešení ochrany koncových bodů. Tento článek vysvětluje scénáře, které Security Center vedoucím generovat následující dvě doporučení:
+Azure Security Center poskytuje posouzení stavu [podporovaných](security-center-services.md#endpoint-supported) verzí řešení ochrany koncových bodů. Tento článek vysvětluje scénáře, které Security Center vedoucím generovat následující dvě doporučení:
 
 * **Instalace řešení Endpoint Protection na virtuálním počítači**
 * **Řešení problémů se stavem služby Endpoint Protection na vašich počítačích**
@@ -94,11 +94,11 @@ Security Center doporučuje **nainstalovat řešení Endpoint Protection na virt
 
 * **HKLM: \ Software\Symantec\Symantec koncový bod Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-nebo
+Nebo
 
 * **HKLM: \ Software\Wow6432Node\Symantec\Symantec koncový bod Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM: \ Software\Wow6432Node\Symantec\Symantec koncový bod Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 Security Center doporučuje **vyřešit problémy stavu ochrany koncových bodů na vašich počítačích** , když některá z následujících kontrol nejsou splněné:
 
@@ -175,10 +175,10 @@ Security Center doporučuje **vyřešit problémy stavu ochrany koncových bodů
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Řešení problémů
 
 Protokoly rozšíření Microsoft Antimalware jsou k dispozici na adrese: **%systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware (nebo PaaSAntimalware) \1.5.5.x (verze #) \CommandExecution.log**
 
 ### <a name="support"></a>Podpora
 
-Pokud chcete získat další informace, obraťte se na odborníky na Azure na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Nebo zasouborte incident podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o používání podpory Azure najdete v článku [nejčastější dotazy k podpoře Microsoft Azure](https://azure.microsoft.com/support/faq/).
+Pokud chcete získat další informace, obraťte se na odborníky na Azure na [fórech MSDN Azure a Stack Overflow](https://azure.microsoft.com/support/forums/). Nebo zasouborte incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte získat podporu. Informace o použití podpory Azure najdete v tématu [Nejčastější dotazy k podpoře pro Microsoft Azure](https://azure.microsoft.com/support/faq/).
