@@ -619,6 +619,7 @@
                   href: cassandra-spark-table-copy-ops.md
             - name: Správa s využitím šablon Resource Manageru
               href: manage-cassandra-with-resource-manager.md
+              displayName: ARM
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-cassandra.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
@@ -706,6 +707,7 @@
               displayName: custom commands
             - name: Správa s využitím šablon Resource Manageru
               href: manage-mongodb-with-resource-manager.md
+              displayName: ARM
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-mongodb.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
@@ -767,6 +769,7 @@
               href: 'https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json'
             - name: Správa s využitím šablon Resource Manageru
               href: manage-gremlin-with-resource-manager.md
+              displayName: ARM
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-gremlin.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
@@ -823,6 +826,7 @@
               href: table-storage-design-guide.md
             - name: Správa s využitím šablon Resource Manageru
               href: manage-table-with-resource-manager.md
+              displayName: ARM
             - name: Správa pomocí prostředí PowerShell
               href: powershell-samples-table.md
             - name: Správa s využitím rozhraní příkazového řádku Azure
@@ -859,6 +863,7 @@
           href: manage-with-cli.md
         - name: Použití šablon Azure Resource Manageru
           href: manage-sql-with-resource-manager.md
+          displayName: ARM
     - name: Globální distribuce
       items:
         - name: Konfigurace multi-masteru
@@ -1110,6 +1115,7 @@
       href: /rest/api/cosmos-db-resource-provider/
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.documentdb/allversions
+      displayName: ARM
     - name: Poznámky k verzi pro emulátor
       href: local-emulator-release-notes.md
 - name: Zdroje a prostředky

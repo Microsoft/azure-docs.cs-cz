@@ -2,23 +2,23 @@
 title: Postup aktivace složitých akcí s výstrahami Azure Monitor
 description: Naučte se vytvořit akci aplikace logiky, která bude zpracovávat výstrahy Azure Monitor.
 author: dkamstra
-services: azure-monitor
+ms.author: dukek
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: adc53ad1c75b3251c5672d9078062631b107cc87
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: HT
+ms.openlocfilehash: 655a3acc44a1418778b37fbef85e5df75d042317
+ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669127"
+ms.lasthandoff: 03/01/2020
+ms.locfileid: "78206232"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Postup aktivace složitých akcí s výstrahami Azure Monitor
 
 V tomto článku se dozvíte, jak nastavit a aktivovat aplikaci logiky pro vytvoření konverzace v Microsoft teams, když se aktivuje výstraha.
 
 ## <a name="overview"></a>Přehled
+
 Když se aktivuje výstraha Azure Monitor, zavolá [skupinu akcí](../../azure-monitor/platform/action-groups.md). Skupiny akcí umožňují aktivovat jednu nebo více akcí, aby bylo možné upozornit ostatní na výstrahu a zároveň ji opravit.
 
 Obecný proces:
@@ -68,10 +68,10 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
                 "activityLog": {
                     "authorization": {
                     "action": "microsoft.insights/activityLogAlerts/write",
-                    "scope": "/subscriptions/�"
+                    "scope": "/subscriptions/…"
                     },
                     "channels": "Operation",
-                    "claims": "�",
+                    "claims": "…",
                     "caller": "logicappdemo@contoso.com",
                     "correlationId": "91ad2bac-1afa-4932-a2ce-2f8efd6765a3",
                     "description": "",
@@ -81,12 +81,12 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
                     "level": "Informational",
                     "operationName": "microsoft.insights/activityLogAlerts/write",
                     "operationId": "61f59fc8-1442-4c74-9f5f-937392a9723c",
-                    "resourceId": "/subscriptions/�",
+                    "resourceId": "/subscriptions/…",
                     "resourceGroupName": "LOGICAPP-DEMO",
                     "resourceProviderName": "microsoft.insights",
                     "status": "Succeeded",
                     "subStatus": "",
-                    "subscriptionId": "�",
+                    "subscriptionId": "…",
                     "submissionTimestamp": "2018-04-03T22:33:36.1068742+00:00",
                     "resourceType": "microsoft.insights/activityLogAlerts"
                 }
@@ -104,7 +104,7 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
 
     ![Přidat akci](media/action-groups-logic-app/add-action.png "Přidat akci")
 
-11. Vyhledejte a vyberte konektor Microsoft Teams. Vyberte akci **odeslání zprávy Microsoft Teams** .
+11. Vyhledejte a vyberte konektor Microsoft Teams. Vyberte akci **Microsoft Teams – poslat zprávu** .
 
     ![Akce týmů Microsoftu](media/action-groups-logic-app/microsoft-teams-actions.png "Akce týmů Microsoftu")
 
@@ -128,7 +128,7 @@ Postup je podobný, pokud chcete, aby aplikace logiky prováděla jinou akci.
 
 14. V horní části **návrháře Logic Apps**vyberte **Uložit** a uložte svoji aplikaci logiky.
 
-15. Otevřete existující skupinu akcí a přidejte akci, která se odkazuje na aplikaci logiky. Pokud nemáte existující skupinu akcí, přečtěte si téma [Vytvoření a Správa skupin akcí v Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) k jeho vytvoření. Nezapomeňte změny uložit.
+15. Otevřete existující skupinu akcí a přidejte akci, která se odkazuje na aplikaci logiky. Pokud nemáte existující skupinu akcí, přečtěte si téma [Vytvoření a Správa skupin akcí v Azure Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) k jeho vytvoření. Nezapomeňte uložit změny.
 
     ![Aktualizace skupiny akcí](media/action-groups-logic-app/update-action-group.png "Aktualizace skupiny akcí")
 
@@ -150,7 +150,7 @@ Položky Azure Service Health jsou součástí protokolu aktivit. Proces vytvoř
                 "activityLog": {
                     "channels": "Admin",
                     "correlationId": "e416ed3c-8874-4ec8-bc6b-54e3c92a24d4",
-                    "description": "�",
+                    "description": "…",
                     "eventSource": "ServiceHealth",
                     "eventTimestamp": "2018-04-03T22:44:43.7467716+00:00",
                     "eventDataId": "9ce152f5-d435-ee31-2dce-104228486a6d",
@@ -158,23 +158,23 @@ Položky Azure Service Health jsou součástí protokolu aktivit. Proces vytvoř
                     "operationName": "Microsoft.ServiceHealth/incident/action",
                     "operationId": "e416ed3c-8874-4ec8-bc6b-54e3c92a24d4",
                     "properties": {
-                        "title": "�",
-                        "service": "�",
+                        "title": "...",
+                        "service": "...",
                         "region": "Global",
-                        "communication": "�",
+                        "communication": "...",
                         "incidentType": "Incident",
-                        "trackingId": "�",
+                        "trackingId": "...",
                         "impactStartTime": "2018-03-22T21:40:00.0000000Z",
                         "impactMitigationTime": "2018-03-22T21:41:00.0000000Z",
                         "impactedServices": "[{"ImpactedRegions"}]",
-                        "defaultLanguageTitle": "�",
-                        "defaultLanguageContent": "�",
+                        "defaultLanguageTitle": "...",
+                        "defaultLanguageContent": "...",
                         "stage": "Active",
                         "communicationId": "11000001466525",
                         "version": "0.1.1"
                     },
                     "status": "Active",
-                    "subscriptionId": "�",
+                    "subscriptionId": "...",
                     "submissionTimestamp": "2018-04-03T22:44:50.8013523+00:00"
                 }
             },
@@ -237,7 +237,7 @@ Proces vytvoření upozornění na metriku se podobá [Vytvoření upozornění 
         "status": "Activated",
         "context": {
         "timestamp": "2018-04-09T19:00:07.7461615Z",
-        "id": "�",
+        "id": "...",
         "name": "TEST-VM CPU Utilization",
         "description": "",
         "conditionType": "SingleResourceMultipleMetricCriteria",
@@ -259,12 +259,12 @@ Proces vytvoření upozornění na metriku se podobá [Vytvoření upozornění 
             }
             ]
         },
-        "subscriptionId": "�",
+        "subscriptionId": "...",
         "resourceGroupName": "TEST",
         "resourceName": "test-vm",
         "resourceType": "Microsoft.Compute/virtualMachines",
-        "resourceId": "�",
-        "portalLink": "�"
+        "resourceId": "...",
+        "portalLink": "..."
         },
         "properties": {}
     }
@@ -284,7 +284,7 @@ Proces vytvoření upozornění na metriku se podobá [Vytvoření upozornění 
 
       !["Akce po odeslání podmínky upozornění metriky výstrahy"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Akce po odeslání podmínky upozornění metriky výstrahy")
 
-  1. V **případě podmínky false** definujte akci Microsoft teams, která oznamuje, že výstraha metriky neodpovídají očekáváním aplikace logiky. Zahrňte datovou část JSON. Všimněte si, jak odkazovat na `triggerBody` dynamický obsah ve výrazu `json()`.
+  1. V **případě podmínky false** definujte akci Microsoft teams, aby komunikovala, že výstraha metriky neodpovídá očekáváním aplikace logiky. Zahrňte datovou část JSON. Všimněte si, jak odkazovat na `triggerBody` dynamický obsah ve výrazu `json()`.
 
       !["Akce post nepravdivé podmínky upozornění na metriku"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Akce post nepravdivé podmínky upozornění metriky")
 
