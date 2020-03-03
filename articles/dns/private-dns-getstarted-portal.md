@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
-ms.openlocfilehash: 8391d92a2e2970378c11c043ca9f5d4f6dc44696
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 8acdaabc9f12f7e1bf85cfd8c727369462fe47e4
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76939369"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227393"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Rychlý Start: Vytvoření privátní zóny DNS Azure pomocí Azure Portal
 
 Tento rychlý Start vás provede kroky k vytvoření první privátní zóny DNS a záznamu pomocí Azure Portal.
 
-Zóna DNS se používá k hostování záznamů DNS pro konkrétní doménu. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
+K hostování záznamů DNS v určité doméně se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
 
 V tomto rychlém startu se naučíte:
 
@@ -48,7 +48,7 @@ Zóna DNS obsahuje záznamy DNS pro doménu. Pokud chcete začít hostovat vaši
 
 1. Na stránce **vytvořit privátní DNS zónu** zadejte nebo vyberte následující hodnoty:
 
-   - **Skupina prostředků**: vyberte **vytvořit novou**, zadejte *MyAzureResourceGroup*a vyberte **OK**. Název skupiny prostředků musí být v rámci předplatného Azure jedinečný. 
+   - **Skupina prostředků**: vyberte **vytvořit novou**, zadejte *MyAzureResourceGroup*a vyberte **OK**. Název skupiny prostředků musí být v rámci předplatného Azure jedinečný.
    -  **Název**: v tomto příkladu zadejte *Private.contoso.com* .
 1. V případě **umístění skupiny prostředků**vyberte **středozápadní USA**.
 
@@ -58,13 +58,21 @@ Zóna DNS obsahuje záznamy DNS pro doménu. Pokud chcete začít hostovat vaši
 
 Vytvoření zóny může trvat několik minut.
 
-## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
-1. Na stránce portálu nahoře vlevo vyberte **vytvořit prostředek**, pak **síť**a pak vyberte **virtuální síť**.
-2. Jako **název**zadejte **myAzureVNet**.
-3. V případě **skupiny prostředků**vyberte **MyAzureResourceGroup**.
-4. V **oblasti umístění**vyberte **středozápadní USA**.
-5. Přijměte ostatní výchozí hodnoty a vyberte **vytvořit**.
+V této části budete muset v krocích níže nahradit následující parametry:
+
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<Resource-Group-Name >**  | MyAzureResourceGroup |
+| **\<název virtuální sítě >** | MyAzureVNet          |
+| **\<název oblasti >**          | USA – středozápad      |
+| **\<adresní prostor IPv4 >**   | 10.2.0.0 \ 16          |
+| **\<název podsítě >**          | MyAzureSubnet        |
+| **\<> rozsahu adres** | 10.2.0.0 \ 24          |
+
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="link-the-virtual-network"></a>Propojit virtuální síť
 
@@ -88,9 +96,8 @@ Teď vytvořte dva virtuální počítače, abyste mohli privátní zónu DNS ot
 1. Jako skupinu prostředků vyberte **MyAzureResourceGroup** .
 1. Jako název virtuálního počítače zadejte **myVM01** .
 1. Pro **oblast**vyberte **středozápadní USA** .
-1. Jako uživatelské jméno správce zadejte **azureadmin** .
-2. Zadejte **Azure12345678** pro heslo a potvrďte heslo.
-
+1. Zadejte název uživatelského jména správce.
+2. Zadejte heslo a potvrďte heslo.
 5. U **veřejných příchozích portů**vyberte **Povolit vybrané porty**a pak pro **vybrat příchozí porty**vybrat **RDP (3389)** .
 10. Přijměte ostatní výchozí hodnoty stránky a potom klikněte na **Další: disky >** .
 11. Na stránce **disky** přijměte výchozí hodnoty a pak klikněte na **další: síťové >** .

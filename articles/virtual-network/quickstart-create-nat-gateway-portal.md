@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 429c221609005136663d5e64a1b8650027cba411
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 231c5f1bc6fd76f4f9e89d2d53639e9abe6cde0e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588735"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228330"
 ---
 # <a name="quickstart-create-a-nat-gateway-using-the-azure-portal"></a>Rychlý Start: Vytvoření brány NAT pomocí Azure Portal
 
@@ -30,29 +30,26 @@ V tomto rychlém startu se dozvíte, jak používat službu Azure Virtual Networ
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na web [Azure Portal ](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-### <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
+## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
-Než nasadíte virtuální počítač a můžete použít bránu NAT, musíme vytvořit skupinu prostředků a virtuální síť.  
+Než nasadíte virtuální počítač a můžete použít bránu NAT, musíme vytvořit skupinu prostředků a virtuální síť.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**nebo vyhledejte **virtuální síť** v hledání na webu Marketplace.
+V této části budete muset v krocích níže nahradit následující parametry:
 
-2. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
+| Parametr                   | Hodnota                |
+|-----------------------------|----------------------|
+| **\<Resource-Group-Name >**  | myResourceGroupNAT |
+| **\<název virtuální sítě >** | myVNet          |
+| **\<název oblasti >**          | Východní USA 2      |
+| **\<adresní prostor IPv4 >**   | 192.168.0.0 \ 16          |
+| **\<název podsítě >**          | mySubnet        |
+| **\<> rozsahu adres** | 192.168.0.0 \ 24          |
 
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Název | Zadejte **myVNet**. |
-    | Adresní prostor | Zadejte **192.168.0.0/16**. |
-    | Předplatné | Vyberte své předplatné.|
-    | Skupina prostředků | Vyberte vytvořit New- **myResourceGroupNAT**. |
-    | Umístění | Vyberte **USA – východ 2**.|
-    | Název podsítě | Zadejte **mySubnet**. |
-    | Podsíť – Rozsah adres | Zadejte **192.168.0.0/24**. |
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-3. Ponechte zbytek výchozích hodnot a vyberte **vytvořit**.
-
-### <a name="create-a-vm-to-use-the-nat-gateway"></a>Vytvoření virtuálního počítače pro použití brány NAT
+## <a name="create-a-vm-to-use-the-nat-gateway"></a>Vytvoření virtuálního počítače pro použití brány NAT
 
 Nyní vytvoříme virtuální počítač pro použití služby NAT. Tento virtuální počítač má veřejnou IP adresu, která se používá jako veřejná IP adresa na úrovni instance, která umožňuje přístup k virtuálnímu počítači. Služba NAT má na vědomí směr toku a nahradí výchozí internetový cíl ve vaší podsíti. Veřejná IP adresa virtuálního počítače se nebude používat pro odchozí připojení.
 

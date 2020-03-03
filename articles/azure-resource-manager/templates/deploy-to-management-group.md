@@ -2,19 +2,17 @@
 title: Nasazení prostředků do skupiny pro správu
 description: V této části najdete popis postupu nasazení prostředků v oboru skupiny pro správu v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 0419f3daca6845c6809c9f66e870fdf884a7193f
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.date: 03/02/2020
+ms.openlocfilehash: 3b2eeaf2c63a50cda1a32fee94c1e5b99822075d
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117035"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228106"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Vytváření prostředků na úrovni skupiny pro správu
 
 Prostředky Azure se obvykle nasazují do skupiny prostředků ve vašem předplatném Azure. Můžete ale také vytvořit prostředky na úrovni skupiny pro správu. Nasazení na úrovni skupiny pro správu můžete použít k provádění akcí, které na této úrovni mají smysl, například přiřazení [řízení přístupu na základě role](../../role-based-access-control/overview.md) nebo použití [zásad](../../governance/policy/overview.md).
-
-V současné době nasazování šablon na úrovni skupiny pro správu je nutné použít REST API.
 
 ## <a name="supported-resources"></a>Podporované prostředky
 
@@ -45,7 +43,16 @@ https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeployment
 
 ## <a name="deployment-commands"></a>Příkazy nasazení
 
-Příkaz pro nasazení skupiny pro správu se liší od příkazu pro nasazení skupin prostředků.
+Příkazy pro nasazení skupiny pro správu se liší od příkazů pro nasazení skupin prostředků.
+
+Pro Azure PowerShell použijte [New-AzManagementGroupDeployment](/powershell/module/az.resources/new-azmanagementgroupdeployment). 
+
+```azurepowershell-interactive
+New-AzManagementGroupDeployment `
+  -ManagementGroupId "myMG" `
+  -Location "West US" `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/management-level-deployment/azuredeploy.json
+```
 
 V případě REST API použijte [nasazení – vytvořte v oboru skupiny pro správu](/rest/api/resources/deployments/createorupdateatmanagementgroupscope).
 
@@ -150,7 +157,7 @@ Následující příklad přiřadí existující definici zásady ke skupině pr
 
 ## <a name="template-sample"></a>Ukázka šablony
 
-* Vytvořte skupinu prostředků, zásadu a přiřazení zásad.  Podívejte se [sem](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
+* [Vytvořte skupinu prostředků, zásadu a přiřazení zásad](https://github.com/Azure/azure-docs-json-samples/blob/master/management-level-deployment/azuredeploy.json).
 
 ## <a name="next-steps"></a>Další kroky
 

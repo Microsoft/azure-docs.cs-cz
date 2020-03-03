@@ -3,15 +3,15 @@ title: Specifikace souborového Microsoft Azure Edge FXT | Microsoft Docs
 description: Fyzické a environmentální specifikace pro hardware Azure FXT Edge souborového
 author: ekpgh
 ms.service: fxt-edge-filer
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 90d56ad0cec3d187d4c7307f8c004b14c3860390
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254705"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227480"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Specifikace souborového pro Azure FXT Edge
 
@@ -19,11 +19,11 @@ Tento článek vysvětluje hardwarové specifikace pro hardwarové uzly Azure FX
 
 ## <a name="hardware-specifications"></a>Specifikace hardwaru
 
-| Součást | FXT 6600 | FXT 6400 |
+| Komponenta | FXT 6600 | FXT 6400 |
 |----------|-----------|-----------|
-| Jádra procesoru |  16 | 16 |
+| Procesorová jádra |  16 | 16 |
 | DRAM  | 1536 GB | 768 GB |
-| Síťové porty | 6 × 25/10 GB a 2 × 1 GB | 6 × 25/10 GB a 2 × 1 GB |
+| Síťové porty | 6 x 25/10 Gb + 2 x 1 Gb | 6 x 25/10 Gb + 2 x 1 Gb |
 | Kapacita NVMe SSD | 25,6 TB | 12,8 TB |
 
 ## <a name="drive-specifications"></a>Specifikace jednotky
@@ -34,9 +34,9 @@ Systém má deset diskových pozic, které jsou přístupné z front. Každá na
 
 ![Fotografie jedné pozice pevného disku na skříni FXT, která zobrazuje čísla jednotek a popisky kapacity](media/fxt-drives-photo.png)
 
-| Čísla jednotek    |  Používání   |  Tématech |
+| Čísla jednotek    |  Použití   |  Specifikace |
 |------------------|--------|-----------------|
-| 0, 1             | Operační systém     | 480 GB SATA SSD |
+| 0, 1             | OS     | 480 GB SATA SSD |
 | 2, 3, 4, 5, 6, 7, 8, 9 | Data   | FXT 6600:3,2 TB NVMe SSD <br> FXT 6400:1,6 TB NVMe SSD |
 
 
@@ -56,7 +56,7 @@ Souborového Edge pro Azure FXT je navržený tak, aby odpovídal standardu 19 "
 | Earsa hloubkového stojanu na nejvzdálenější přední protrusion, bez čelního krytu | 22,0 mm (0,87 palce)  |
 | Hloubka EARS stojanu na nejvzdálenější přední protrusion s čelním krytem    | 35,84 mm (1,41 palců) |
 
-| Význam | |
+| Hmotnost | |
 |-----------------|----------------------|
 | Váha uzlu (bez balení, bez příslušenství) | 40 kg (18,1 kg) |
 | Čistou hmotnost (bez balení, včetně příslušenství) | 51 kg (23,1 kg)|
@@ -64,10 +64,10 @@ Souborového Edge pro Azure FXT je navržený tak, aby odpovídal standardu 19 "
 
 ### <a name="shipping-dimensions"></a>Rozměry expedice
 
-| Dimenze balíčku | Milimetrech | Cm |
+| Dimenze balíčku | Milimetrech | cm |
 |-------------------|-------------|--------|
 | Výška            | 311,2       | 12,25 " |
-| Délk             | 642,8       | 25,31 " |
+| impulzu             | 642,8       | 25,31 " |
 | Délka            | 1 051,1     | 41,38 " |
 
 ## <a name="power-and-thermal-specifications"></a>Specifikace napájení a tepelného řízení
@@ -94,9 +94,9 @@ Tyto grafy poskytují spotřebu energie a měření na výstupu pro běžně pou
 |---------|---|---|---|---|---|
 | Napětí (V) | 100 | 120 | 208 | 230 | 240 | 
 | Frekvence (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Aktuální (A) | 5,02 | 4,16 |2,40 | 2,20 | 2,16 |
+| Aktuální (A) | 5.02 | 4,16 |2,40 | 2,20 | 2,16 |
 | Zdánlivá mocnina (VA) | 502 | 499 | 499 | 506 | 518|
-| Faktor výkonu | 0,99 | 0,99 |0,98 | 0,98 | 0,98 |
+| Faktor výkonu | 0,99. | 0,99. |0,98 | 0,98 | 0,98 |
 | Skutečný výkon (W) | 497 |494 | 489 | 496 | 508 |
 | Tepelné rozptyl (BTU/hr) |1696 | 1686 | 1669 | 1692 | 1733 |
 
@@ -104,9 +104,9 @@ Tyto grafy poskytují spotřebu energie a měření na výstupu pro běžně pou
 |---------|---|---|---|---|---|
 | Napětí (V) | 100 |120 | 208 | 230 | 240| 
 | Frekvence (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Aktuální (A) | 5,98 | 5,01 | 2,81 | 2,55 | 2,48 |
+| Aktuální (A) | 5,98 | 5.01 | 2,81 | 2.55 | 2,48 |
 | Zdánlivá mocnina (VA) | 598 | 601 | 584 | 587 | 595 |
-| Faktor výkonu | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 |
+| Faktor výkonu | 0,99. | 0,99. | 0,98 | 0,98 | 0,98 |
 | Skutečný výkon (W) | 592 | 595 | 573 | 575 | 583 |
 | Tepelné rozptyl (BTU/hr) | 2020 |2031 | 1954 | 1961 | 1990 |
 
@@ -116,7 +116,7 @@ Tyto grafy poskytují spotřebu energie a měření na výstupu pro běžně pou
 | Frekvence (Hz) |60 | 60 | 60 | 50 | 50 |
 | Aktuální (A) | 4,63 | 3,86 | 2,24 | 2,04 | 1,94 |
 | Zdánlivá mocnina (VA) | 463 | 463 | 466 | 469 | 466 |
-| Faktor výkonu | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 | 
+| Faktor výkonu | 0,99. | 0,99. | 0,98 | 0,98 | 0,98 | 
 | Skutečný výkon (W) | 458 | 459 | 457 | 460 | 456 |
 | Tepelné rozptyl (BTU/hr) | 1564 | 1565 | 1558 | 1569 | 1557 |
 
@@ -124,9 +124,9 @@ Tyto grafy poskytují spotřebu energie a měření na výstupu pro běžně pou
 |---------|---|---|---|---|---|
 | Napětí (V) | 100 | 120 | 208 | 230 | 240 |
 | Frekvence (Hz) | 60 | 60 | 60 | 50 | 50 |
-| Aktuální (A) | 5,15 | 4,28 | 2,48 | 2,28 | 2,13 |
+| Aktuální (A) | 5.15 | 4,28 | 2,48 | 2,28 | 2,13 |
 | Zdánlivá mocnina (VA) | 515 | 514 | 516 | 524 | 511 |
-| Faktor výkonu | 0,99 | 0,99 | 0,98 | 0,98 | 0,98 |
+| Faktor výkonu | 0,99. | 0,99. | 0,98 | 0,98 | 0,98 |
 | Skutečný výkon (W) | 510 | 508 | 506 | 514 | 501 |
 | Tepelné rozptyl (BTU/hr) | 1740 | 1735 | 1725 | 1753 | 1709 |
 
@@ -148,7 +148,7 @@ Tato část obsahuje specifikace pro okolní prostředí hardwaru.
 
 ### <a name="airflow-shock-and-vibration"></a>Tok, náraz a vibrace 
 
-| Atribut         | Specifikace |
+| Atribut         | Upřesněn |
 |-------------------|---------------|
 | Tok dat                    | Tok systému je zepředu zezadu. Systém musí být provozován s nízkým zatížením pro zadní výfukovou instalaci. |
 | Úraz, provozní         | 6 G až 11 milisekund (testováno v 6 orientací) |
@@ -160,9 +160,9 @@ Tato část obsahuje specifikace pro okolní prostředí hardwaru.
 
 Azure FXT Edge souborového odpovídá uvedeným nařízením. 
 
-| Category       | Specifikace zákonného charakteru | 
+| Kategorie       | Specifikace zákonného charakteru | 
 |----------------|--------------------------|
 | Obecné zabezpečení | EN 60950-1:2006 + a1:2010 + a2:2013 + A11:2009 + A12:2011/IEC 60950-1:2005 ED2 + a1:2009 + a2:2013 <br>EN 62311:2008 | 
-| SOFTWARE            | FCC A, ICES – 003  <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 + A1:2015/CISPR 24:2010 + A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (třída D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013 |
-| Konfiguruje         | Nařízení Komise (EU) – ne. 617/2013  |
+| SOFTWARE            | FCC A, ICES – 003  <br>EN 55032:2012/CISPR 32:2012  <br>EN 55032:2015/CISPR 32:2015  <br>EN 55024:2010 +A1:2015/CISPR 24:2010 +A1:2015  <br>EN 61000-3-2:2014/IEC 61000-3-2:2014 (třída D)   <br>EN 61000-3-3:2013/IEC 61000-3-3:2013 |
+| Energetický sektor         | Nařízení Komise (EU) – ne. 617/2013  |
 | RoHS           |    EN 50581:2012   |

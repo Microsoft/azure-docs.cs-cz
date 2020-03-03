@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60a7bf9690b4f50c771afc4745bbc2e5377adbba
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 736a543a6f28697dd4f1ddf85317e97a87b86e78
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848472"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227064"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Povolení přihlášení bez hesla pomocí aplikace Microsoft Authenticator (Preview)
 
@@ -29,7 +29,7 @@ Namísto zobrazení výzvy k zadání hesla po zadání uživatelského jména s
 > [!NOTE]
 > Tato funkce byla v aplikaci Microsoft Authenticator od března 2017, takže pokud je zásada pro adresář povolená, můžou se uživatelé setkat okamžitě a zobrazit chybovou zprávu, pokud je zásada nepovolila. Mějte na paměti informace a připravte uživatele na tuto změnu.
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Azure Multi-Factor Authentication s nabízenými oznámeními povolenými jako metoda ověřování 
 - Na zařízeních se systémem iOS 8,0 nebo vyšším je nainstalovaná nejnovější verze Microsoft Authenticator nebo Android 6,0 nebo novější.
@@ -93,6 +93,10 @@ Koncoví uživatelé, kteří mají povolený MFA prostřednictvím místního A
 ### <a name="device-registration"></a>Registrace zařízení
 
 Jedním z požadavků pro vytvoření těchto nových silných přihlašovacích údajů je, že zařízení, ve kterém je nainstalovaná aplikace Microsoft Authenticator, musí být také zaregistrovaná v tenantovi služby Azure AD pro jednotlivé uživatele. Kvůli aktuálním omezením registrace zařízení se může zařízení zaregistrovat jenom v jednom tenantovi. Tento limit znamená, že pro přihlašování telefonem se dá povolit jenom jeden pracovní nebo školní účet v aplikaci Microsoft Authenticator.
+
+### <a name="intune-mobile-application-management"></a>Správa mobilních aplikací Intune 
+
+Koncoví uživatelé, kteří podléhají zásadám, které vyžadují správu mobilních aplikací (MAM), nemůžou v aplikaci Microsoft Authenticator zaregistrovat přihlašovací údaje nepřipojené k heslu. 
 
 > [!NOTE]
 > Registrace zařízení není stejná jako Správa zařízení nebo MDM. Přidružuje jenom ID zařízení a ID uživatele společně v adresáři Azure AD.  

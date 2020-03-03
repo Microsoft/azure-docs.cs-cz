@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 1/14/2020
 ms.author: cbasoglu
-ms.openlocfilehash: 00617fc09f471eaf3dc13a5aa691c4aab2e1e2ec
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: b41967033b00144ca5bd52ce23cf8aabcea6749e
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77424911"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228088"
 ---
 # <a name="speech-services-with-sovereign-clouds"></a>Hlasové služby s svrchovanými cloudy
 
@@ -56,7 +56,7 @@ V Číně je k dispozici datové centrum Azure s přímým přístupem k Číně
 - TTS v SpeechSDK: *config. FromHost ("https[]()://chinaeast2.TTS.Speech.Azure.cn"; "\<Key\>");*
 - Ověřovací tokeny:[]()https://chinaeast2.API.Cognitive.Azure.cn/STS/v1.0/issueToken
 - Azure Portal: https://portal.azure.cn
-- Portál Custom Speech: https://chinaeast2.cris.azure.cn/Home/CustomSpeech
+- Portál Custom Speech: https://speech.azure.cn/CustomSpeech
 - Dostupné SKU: S0
 - Podporované funkce:
   - Řeč na text

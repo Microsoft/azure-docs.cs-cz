@@ -4,16 +4,16 @@ description: Naučte se řešit potíže s řešením Update Management v Azure.
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/31/2019
+ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 1b0047cda3664759f4f1b6499c8a54ee22f98ab3
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513265"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227453"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Řešení potíží s Update Management
 
@@ -24,6 +24,36 @@ U agenta Hybrid Worker je poradce při potížích s agentem, aby mohl zjistit z
 Pokud narazíte na problémy při připojování řešení na virtuálním počítači, podívejte se do protokolu **Operations Manager** v části **protokoly aplikací a služeb** v místním počítači na události s ID události 4502 a podrobností události, které obsahují **Microsoft. EnterpriseManagement. HealthService. AzureAutomation. HybridAgent**.
 
 V následující části se zvýrazňují konkrétní chybové zprávy a možná řešení pro každé z nich. Další problémy s připojováním najdete v tématu [řešení potíží s registrací řešení](onboarding.md).
+
+## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Scénář: nahrazená aktualizace byla označena jako chybějící v Update Management
+
+### <a name="issue"></a>Problém
+
+Staré aktualizace se zobrazují v Update Management účtu Azure jako chybějící, i když byly nahrazené. Nahrazená aktualizace je taková, kterou není nutné instalovat, protože je k dispozici pozdější aktualizace, která opravuje stejnou chybu zabezpečení. Update Management ignoruje nahrazenou aktualizaci, takže ji nelze použít ve prospěch nahrazující aktualizace. Informace o souvisejícím problému najdete v tématu [aktualizace je nahrazená](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer).
+
+### <a name="cause"></a>Příčina
+
+Nahrazené aktualizace nejsou správně označeny jako odmítnuté, aby je bylo možné považovat za nepoužité.
+
+### <a name="resolution"></a>Rozlišení
+
+Pokud se nahradí nahrazené aktualizace 100 procent, měli byste změnit stav schválení dané aktualizace na **Odmítnuto**. Postup pro všechny aktualizace:
+
+1. V účtu Automation vyberte **Update Management** pro zobrazení stavu počítače. Viz [zobrazení posouzení aktualizací](../manage-update-multi.md#view-an-update-assessment).
+
+2. Zkontrolujte nahrazenou aktualizaci, abyste měli jistotu, že je 100 procent. 
+
+3. Pokud nemáte dotaz týkající se aktualizace, označte ji jako odmítnutou. 
+
+4. Vyberte počítače a ve sloupci dodržování předpisů vynuťte opětovné prohledání dodržování předpisů. Viz [Správa aktualizací pro více počítačů](../manage-update-multi.md).
+
+5. Opakujte výše uvedené kroky pro další nahrazené aktualizace.
+
+6. Spuštěním Průvodce vyčištěním odstraňte soubory z odmítnutých aktualizací. 
+
+7. Pro službu WSUS ručně vyčistěte všechny nahrazené aktualizace a aktualizujte infrastrukturu.
+
+8. Opakujte tento postup pravidelně, abyste opravili problém zobrazení a minimalizovali velikost místa na disku využitého pro správu aktualizací.
 
 ## <a name="nologs"></a>Scénář: počítače se nezobrazují na portálu v části Update Management
 

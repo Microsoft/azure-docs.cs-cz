@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4070b004ee791a433b5aeb9e3e0cdd9662fb0429
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6a51e57bd2411c19dfd5e7740f9e918d0bd09e27
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191142"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226480"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Spuštění sady Runbook v Azure Automation
 
@@ -39,7 +39,7 @@ Můžete použít Hybrid Runbook Worker ke spouštění Runbooků přímo v poč
 
 V následující tabulce jsou uvedeny některé úlohy spuštění sady Runbook s doporučeným spouštěcím prostředím uvedeným pro každé z nich.
 
-|Úkol|Nejlepší volba|Poznámky:|
+|Úloha|Nejlepší volba|Poznámky:|
 |---|---|---|
 |Integrace s prostředky Azure|Azure Sandbox|Hostovaná v Azure je ověřování jednodušší. Pokud používáte Hybrid Runbook Worker na virtuálním počítači Azure, můžete použít [spravované identity pro prostředky Azure](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources).|
 |Získání optimálního výkonu pro správu prostředků Azure|Azure Sandbox|Skript se spouští ve stejném prostředí, které má méně latence.|
@@ -152,11 +152,11 @@ Start-AzAutomationRunbook `
 
 Tato část popisuje některé způsoby, jak zpracovávat výjimky nebo přerušované problémy ve vašich sadách Runbook.
 
-#### <a name="erroractionpreference"></a>$ErrorActionPreference
+#### <a name="erroractionpreference"></a>ErrorActionPreference
 
-Proměnná [$ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) určuje, jak prostředí PowerShell reaguje na neukončující chybu. Ukončení chyb vždy skončí a *$ErrorActionPreference*se na ně neovlivňují.
+Proměnná [ErrorActionPreference](/powershell/module/microsoft.powershell.core/about/about_preference_variables#erroractionpreference) určuje, jak prostředí PowerShell reaguje na neukončující chybu. Ukončení chyb vždy končí a služba *ErrorActionPreference*je neovlivní.
 
-Pokud sada Runbook používá *$ErrorActionPreference*, zastaví se sada Runbook v průběhu rutiny Get-ChildItem za normální neukončující chybu, jako je například **PathNotFound** z rutiny **Get-** . Následující příklad ukazuje použití *$ErrorActionPreference*. Konečný příkaz **pro zápis do výstupu** se nikdy nespustí, protože se skript zastaví.
+Pokud sada Runbook používá *ErrorActionPreference*, při dokončení rutiny **GET-ChildItem** dojde k zastavení sady Runbook, například **PathNotFound** . Následující příklad ukazuje použití *ErrorActionPreference*. Konečný příkaz **pro zápis do výstupu** se nikdy nespustí, protože se skript zastaví.
 
 ```powershell-interactive
 $ErrorActionPreference = 'Stop'
@@ -222,10 +222,10 @@ Spouštěcí prostředí můžete znovu použít pro úlohy ze stejného účtu 
 
 Následující tabulka popisuje stavy, které jsou pro úlohu možné.
 
-| Status | Popis |
+| Stav | Popis |
 |:--- |:--- |
 | Dokončeno |Úloha se úspěšně dokončila. |
-| Neúspěch |Nepovedlo se zkompilovat grafickou sadu Runbook pracovního postupu nebo PowerShellu. Runbook skriptu PowerShell se nepovedlo spustit, nebo došlo k výjimce úlohy. Viz [Azure Automation typy runbooků](automation-runbook-types.md).|
+| Neúspěšné |Nepovedlo se zkompilovat grafickou sadu Runbook pracovního postupu nebo PowerShellu. Runbook skriptu PowerShell se nepovedlo spustit, nebo došlo k výjimce úlohy. Viz [Azure Automation typy runbooků](automation-runbook-types.md).|
 | Selhání, čekání na prostředky |Úloha se nezdařila, protože dosáhla limitu [reálného podílu](#fair-share) třikrát a zároveň začíná ze stejného kontrolního bodu nebo od začátku Runbooku. |
 | Ve frontě |Úloha čeká, než budou dostupné prostředky pracovního procesu automatizace, aby bylo možné ji spustit. |
 | Spouštění |Úloha byla přiřazena k pracovnímu procesu a systém ho spouští. |

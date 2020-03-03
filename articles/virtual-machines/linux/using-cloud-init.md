@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: danis
-ms.openlocfilehash: e3a09a0d8412af711bfb6c539dc9d2829b1f0898
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.openlocfilehash: 0309d9a794a978c736ffc4689c46565ee8fb5b00
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/02/2020
-ms.locfileid: "76964579"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226695"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Podpora Cloud-init pro virtuální počítače v Azure
 V tomto článku se dozvíte, jak podpora pro [Cloud-init](https://cloudinit.readthedocs.io) nakonfigurovat virtuální počítač (VM) nebo službu Virtual Machine Scale Sets v době zřizování v Azure. Tyto konfigurace Cloud-init se po prvním spuštění spustí, jakmile se prostředky zřídí v Azure.  
@@ -30,11 +30,11 @@ Zřizování virtuálních počítačů je proces, ve kterém Azure přepošle v
 Azure podporuje dva zřizovací agenty [Cloud-init](https://cloudinit.readthedocs.io)a [Agent Azure Linux (Wala)](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux).
 
 ## <a name="cloud-init-overview"></a>Přehled Cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) je široce používaný přístup k přizpůsobení virtuálního počítače se systémem Linux při prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Protože cloud-init je volána v průběhu procesu prvotního spuštění, nejsou žádné další kroky ani agenty vyžaduje použití vaší konfigurace.  Další informace o tom, jak správně formátovat `#cloud-config` soubory nebo jiné vstupy, najdete v [dokumentaci ke cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` soubory jsou textové soubory kódovaný jako base64.
+[Cloud-init](https://cloudinit.readthedocs.io) je široce používaný přístup k přizpůsobení virtuálního počítače se systémem Linux při prvním spuštění. Pomocí cloud-init můžete instalovat balíčky a zapisovat soubory nebo konfigurovat uživatele a zabezpečení. Protože cloud-init je volána v průběhu procesu prvotního spuštění, nejsou žádné další kroky ani agenty vyžaduje použití vaší konfigurace.  Další informace o tom, jak správně formátovat `#cloud-config` soubory nebo jiné vstupy, najdete v [dokumentaci ke cloud-init](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  soubory `#cloud-config` jsou textové soubory kódované v kódování Base64.
 
 Cloud-init funguje i napříč distribucí. K instalaci balíčku tak například nepoužijete **apt-get install** ani **yum install**. Místo toho můžete definovat seznam balíčků pro instalaci. Cloud-init automaticky používá nástroj pro správu nativních balíčků pro distribuce, který vyberete.
 
-Aktivně Pracujeme s našimi partnery doporučené distribuce Linuxu aby cloud-init povolené imagí dostupných v Tržišti Azure marketplace. Díky těmto imagí budou vaše nasazení a konfigurace pro cloudovou inicializaci bez problémů fungovat s virtuálními počítači a sadami škálování virtuálních počítačů. Zpočátku spolupracujeme s schválenými partnery a distribucemi pro Linux, aby se zajistila funkce Cloud-init v systému Azure, a pak se balíčky aktualizují a zpřístupní veřejně v úložištích balíčků distribuce. 
+Aktivně Pracujeme s našimi partnery doporučené distribuce Linuxu aby cloud-init povolené imagí dostupných v Tržišti Azure marketplace. Díky těmto imagí budou vaše nasazení a konfigurace pro cloudovou inicializaci bez problémů fungovat s virtuálními počítači a sadami škálování virtuálních počítačů. Zpočátku spolupracujeme s schválenými partnery a distribucemi pro Linux, aby se zajistilo, že funkce Cloud-init s operačním systémem v Azure jsou aktualizované a veřejně dostupné v úložištích balíčků distribuce. 
 
 K dispozici jsou dvě fáze pro zajištění, že se Cloud-init zpřístupní v Azure s potvrzeným operačním systémem Linux distribuce, podpora balíčků a podpora imagí:
 * Podpora balíčku Cloud-init v Azure: dokumenty Cloud-init a vyšší jsou podporované nebo ve verzi Preview, takže můžete tyto balíčky použít s operačním systémem ve vlastní imagi.
@@ -44,19 +44,19 @@ K dispozici jsou dvě fáze pro zajištění, že se Cloud-init zpřístupní v 
 ### <a name="canonical"></a>Canonical
 | Vydavatel/verze| Nabídka | Skladová položka | Version | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Kanonický 18,04 |UbuntuServer |18.04-LTS |latest |ano | ano |
-|Kanonický 16,04|UbuntuServer |16.04-LTS |latest |ano | ano |
-|Kanonický 14,04|UbuntuServer |14.04.5-LTS |latest |ano | ano |
+|Kanonický 18,04 |UbuntuServer |18,04 – LTS |nejnovější |ano | ano |
+|Kanonický 16,04|UbuntuServer |16.04-LTS |nejnovější |ano | ano |
+|Kanonický 14,04|UbuntuServer |14.04.5-LTS |nejnovější |ano | ano |
 
 ### <a name="rhel"></a>RHEL
 | Vydavatel/verze | Nabídka | Skladová položka | Version | Image cloudu – inicializace připravená | Podpora balíčku Cloud-init v Azure|
 |:--- |:--- |:--- |:--- |:--- |:--- |
 |RedHat 7,6 |RHEL |7-RAW-CI |7.6.2019072418 |ano | Ano – podpora z verze balíčku: *18.2-1. el7_6.2*|
 |RedHat 7,7 |RHEL |7-RAW-CI |7.7.2019081601 | Ano (Všimněte si, že toto je image ve verzi Preview a že všechny image RHEL 7,7 podporují Cloud-init, odstraní se i část 2020, oznámení se zobrazí). | Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL |7 – RAW | –| žádné aktualizace obrázků k začátku února 2020| Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL |7 – LVM | –| žádné aktualizace obrázků k začátku února 2020| Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL |7,7 | –| žádné aktualizace obrázků k začátku února 2020 | Ano – podpora z verze balíčku: *18.5 -3. el7*|
-|RedHat 7,7 |RHEL – BYOS | RHEL – lvm77 | –|žádné aktualizace obrázků k začátku února 2020  | Ano – podpora z verze balíčku: *18.5 -3. el7*|
+|RedHat 7,7 |RHEL |7 – RAW | neuvedeno| žádné aktualizace obrázků k začátku února 2020| Ano – podpora z verze balíčku: *18.5 -3. el7*|
+|RedHat 7,7 |RHEL |7 – LVM | neuvedeno| žádné aktualizace obrázků k začátku února 2020| Ano – podpora z verze balíčku: *18.5 -3. el7*|
+|RedHat 7,7 |RHEL |7,7 | neuvedeno| žádné aktualizace obrázků k začátku února 2020 | Ano – podpora z verze balíčku: *18.5 -3. el7*|
+|RedHat 7,7 |RHEL – BYOS | RHEL – lvm77 | neuvedeno|žádné aktualizace obrázků k začátku února 2020  | Ano – podpora z verze balíčku: *18.5 -3. el7*|
 
 ### <a name="centos"></a>CentOS
 
@@ -122,7 +122,7 @@ az vm create \
   --generate-ssh-keys 
 ```
 
-Po vytvoření virtuálního počítače se v Azure CLI zobrazí informace, které jsou specifické pro vaše nasazení. Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.  Vytvoření virtuálního počítače bude chvíli trvat, balíčky, které se mají nainstalovat, a aplikaci, která se má spustit. Když vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. K virtuálnímu počítači se můžete přihlásit přes SSH a pomocí kroků popsaných v části řešení potíží zobrazit protokoly Cloud-init. 
+Po vytvoření virtuálního počítače se v Azure CLI zobrazí informace, které jsou specifické pro vaše nasazení. Poznamenejte si `publicIpAddress`. Tato adresa se používá pro přístup k virtuálnímu počítači.  Vytvoření virtuálního počítače bude chvíli trvat, balíčky, které se mají nainstalovat, a aplikaci, která se má spustit. Jakmile vás Azure CLI vrátí na příkazový řádek, na pozadí stále poběží úlohy. K virtuálnímu počítači se můžete přihlásit přes SSH a pomocí kroků popsaných v části řešení potíží zobrazit protokoly Cloud-init. 
 
 ## <a name="troubleshooting-cloud-init"></a>Řešení potíží s cloudem a inicializací
 Po zřízení virtuálního počítače se Cloud-init spustí pomocí všech modulů a skriptu definovaného v `--custom-data`, aby se virtuální počítač nakonfiguroval.  Pokud potřebujete odstranit případné chyby nebo opomenutí z konfigurace, je třeba vyhledat název modulu (například`disk_setup` nebo `runcmd`) v protokolu Cloud-init – nachází se v **/var/log/Cloud-init.log**.

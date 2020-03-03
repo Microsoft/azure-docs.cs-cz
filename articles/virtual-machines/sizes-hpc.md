@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: a5b0eb0c8bd56a28889945480e95b6413dc9b4dd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b900a95df00ccdd0ad9b5bee3887364195c7d1c2
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77660015"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226731"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
@@ -46,6 +46,10 @@ Virtuální počítače Azure H-Series jsou navržené tak, aby poskytovaly výk
   
 - **Virtual Network** – [virtuální síť](https://azure.microsoft.com/documentation/services/virtual-network/) Azure není nutná k používání instancí náročných na výpočetní výkon. Pro mnoho nasazení ale potřebujete alespoň cloudovou virtuální síť Azure nebo připojení typu Site-to-site, pokud potřebujete přístup k místním prostředkům. V případě potřeby vytvořte novou virtuální síť pro nasazení instancí. Přidání virtuálních počítačů náročných na výpočetní výkon do virtuální sítě ve skupině vztahů se nepodporuje.
 - **Změna velikosti** – z důvodu jejich specializovaného hardwaru můžete změnit velikost jenom těch instancí náročných na výpočetní výkon v rámci stejné řady velikostí (H-Series nebo výpočetní výkon a-Series). Například můžete změnit velikost virtuálního počítače H-Series jenom z jedné velikosti řady H-Series na jinou. Kromě toho se nepodporují změny velikosti z nevýpočetní velikosti s náročnou na výpočetní výkon.  
+
+> [!NOTE]
+> Virtuální počítače A8 – A11 jsou plánovány k vyřazení na 3/2021. Další informace najdete v tématu [Průvodce migrací HPC](https://azure.microsoft.com/resources/hpc-migration-guide/).
+
 ## <a name="rdma-capable-instances"></a>Instance s podporou RDMA
 
 Podmnožina instancí COMPUTE s náročnou zátěží (A8, doH16r, H16mr, Geta HC) funguje jako síťové rozhraní pro připojení vzdáleného přímého přístupu do paměti (RDMA). Vybrané velikosti řady N-Series označené písmenem r, jako jsou konfigurace NC24rs (NC24rs_v2 a NC24rs_v3), jsou také podporující technologii RDMA. Toto rozhraní je navíc ke standardním síťovým rozhraním Azure, které je dostupné pro jiné velikosti virtuálních počítačů.
@@ -78,7 +82,7 @@ V některých nasazeních instancí A8 a A8 se rozšíření HpcVmDrivers přid�
   } 
   ```
 
-  Následující příkaz nainstaluje nejnovější InfiniBandDriverWindows rozšíření verze 1,0 na všechny virtuální počítače podporující RDMA v existující sadě škálování virtuálního počítače s názvem *myVMSS* nasazenou ve skupině prostředků s názvem *myResourceGroup*:
+  Následující příkaz nainstaluje nejnovější InfiniBandDriverWindows rozšíření verze 1,0 na všechny virtuální počítače podporující RDMA ve stávající sadě virtuálních počítačů s názvem *myVMSS* nasazenou ve skupině prostředků s názvem *myResourceGroup*:
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"

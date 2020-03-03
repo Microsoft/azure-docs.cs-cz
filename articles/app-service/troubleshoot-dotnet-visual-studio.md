@@ -1,23 +1,23 @@
 ---
-title: Řešení potíží s Visual Studiem
+title: Řešení potíží se sadou Visual Studio
 description: Naučte se řešit potíže s App Service aplikací pomocí nástrojů pro vzdálené ladění, trasování a protokolování, které jsou integrované do Visual Studio 2013.
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 5c0a236dc6ebf02c859d9db3f25f0e9016ac35ab
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688375"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227899"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
 V tomto kurzu se dozvíte, jak používat nástroje sady Visual Studio k ladění aplikace v [App Service](https://go.microsoft.com/fwlink/?LinkId=529714), spuštění v [režimu ladění](https://docs.microsoft.com/visualstudio/debugger/) vzdáleně nebo zobrazení protokolů aplikací a protokolů webového serveru.
 
-Co se dozvíte:
+Dozvíte se:
 
 * Které funkce správy aplikací jsou k dispozici v sadě Visual Studio.
 * Jak používat vzdálené zobrazení sady Visual Studio k provádění rychlých změn ve vzdálené aplikaci.
@@ -87,14 +87,14 @@ Obvykle nasadíte webový projekt s příznakem `customErrors` v souboru Web. co
     Zobrazí se uzly, které vám umožní přístup k souborům obsahu a souborům protokolu aplikace.
 2. Rozbalte uzel **soubory** a dvakrát klikněte na soubor *Web. config* .
 
-    ![Otevřete soubor Web. config.](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
+    ![Open Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfig.png)
 
     Visual Studio otevře soubor Web. config ze vzdálené aplikace a zobrazí [Vzdálený] vedle názvu souboru v záhlaví.
 3. Přidejte následující řádek do prvku `system.web`:
 
     `<customErrors mode="Off"></customErrors>`
 
-    ![Upravit soubor Web. config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
+    ![Edit Web.config](./media/web-sites-dotnet-troubleshoot-visual-studio/webconfigedit.png)
 4. Aktualizujte prohlížeč, na kterém je zobrazená chybová zpráva, a teď zobrazíte podrobnou chybovou zprávu, například následující příklad:
 
     ![Podrobná chybová zpráva](./media/web-sites-dotnet-troubleshoot-visual-studio/detailederror.png)
@@ -231,7 +231,7 @@ Pokud funkce [zapsala protokoly](https://github.com/Azure/azure-webjobs-sdk/wiki
 ## <a name="notes-about-remote-debugging"></a>Poznámky o vzdáleném ladění
 
 * Spuštění v režimu ladění v produkčním prostředí se nedoporučuje. Pokud se vaše produkční aplikace neškáluje na více instancí serveru, ladění brání webovému serveru v reakci na jiné požadavky. Pokud máte více instancí webového serveru, získáte při připojení k ladicímu programu náhodnou instanci a neexistuje žádný způsob, jak zajistit, aby následné požadavky prohlížeče přešly na stejnou instanci. Také obvykle nebudete nasazovat sestavení ladění do produkčního prostředí a optimalizace kompilátoru pro sestavení vydaných verzí mohou ukázat, co se děje řádekem v kódu ve zdrojovém kódu. Pro řešení potíží s produkčním prostředím je nejlepším prostředkem trasování aplikací a protokoly webového serveru.
-* Vyhněte se dlouhému zastavení při zarážce při vzdáleném ladění. Azure považuje proces, který se zastaví po delší dobu než několik minut, a ukončí ho.
+* Vyhněte se dlouho zastaví na zarážkách při vzdáleném ladění. Azure považuje proces, který se zastaví po delší dobu než několik minut, a ukončí ho.
 * Při ladění Server odesílá data do sady Visual Studio, což by mohlo mít vliv na poplatky za šířku pásma. Informace o sazbách šířky pásma najdete v tématu [ceny Azure](https://azure.microsoft.com/pricing/calculator/).
 * Ujistěte se, že atribut `debug` elementu `compilation` v souboru *Web. config* je nastaven na hodnotu true. Je nastavena na hodnotu true ve výchozím nastavení při publikování konfigurace sestavení ladění.
 
@@ -340,11 +340,11 @@ Informace o tom, jak vytvořit protokoly aplikací ve službě WebJobs, najdete 
 1. Na panelu Adresa v okně prohlížeče přidejte do adresy URL *Trace. axd* a stiskněte klávesu ENTER (adresa URL je podobná `http://localhost:53370/trace.axd`).
 1. Na stránce **trasování aplikací** klikněte na tlačítko **Zobrazit podrobnosti** na prvním řádku (ne na řádku BrowserLink).
 
-    ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
+    ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
 
     Zobrazí se stránka **Podrobnosti žádosti** a v části **informace o trasování** uvidíte výstup z příkazů trasování, které jste přidali do metody `Index`.
 
-    ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
+    ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
 
     Ve výchozím nastavení je `trace.axd` k dispozici pouze místně. Pokud jste chtěli, aby byl k dispozici ze vzdálené aplikace, mohli byste přidat `localOnly="false"` do `trace` elementu v souboru *Web. config* , jak je znázorněno v následujícím příkladu:
 
@@ -603,7 +603,7 @@ Protokoly pro trasování chybných požadavků můžete zobrazit v prohlížeč
 Viděli jste, jak Visual Studio usnadňuje zobrazení protokolů vytvořených App Service aplikací. Následující části obsahují odkazy na další zdroje informací o souvisejících tématech:
 
 * Řešení potíží s App Service
-* Ladění v aplikaci Visual Studio
+* Ladění v sadě Visual Studio
 * Vzdálené ladění v Azure
 * Trasování v aplikacích ASP.NET
 * Analýza protokolů webového serveru
@@ -620,10 +620,10 @@ Další informace o řešení potíží s aplikacemi v Azure App Service najdete
 Chcete-li získat nápovědu k určité otázce týkající se řešení potíží, spusťte vlákno v jednom z následujících fór:
 
 * [Fórum Azure na webu ASP.NET](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET).
-* [Fórum Azure na webu MSDN](https://social.msdn.microsoft.com/Forums/windowsazure/).
+* [Fórum Azure v Microsoft Q & A](https://docs.microsoft.com/answers/topics/azure-webapps.html).
 * [StackOverflow.com](https://www.stackoverflow.com).
 
-### <a name="debugging-in-visual-studio"></a>Ladění v aplikaci Visual Studio
+### <a name="debugging-in-visual-studio"></a>Ladění v sadě Visual Studio
 Další informace o použití režimu ladění v aplikaci Visual Studio naleznete v tématu [ladění v aplikaci Visual Studio](/visualstudio/debugger/debugging-in-visual-studio) a [tipy pro ladění pomocí sady Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx).
 
 ### <a name="remote-debugging-in-azure"></a>Vzdálené ladění v Azure

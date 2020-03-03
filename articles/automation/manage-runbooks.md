@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4531e5d483508ca99722182f97c6a7aa0e0b68f3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: ec53c4b2f80fb095f58bee9c15ac5daafb8d59ef
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191108"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226252"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Správa runbooků v Azure Automation
 
@@ -92,7 +92,7 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>Testování runbooku
 
-Při testování Runbooku se spustí [koncept verze](#publish-a-runbook) a všechny akce, které provádí, se dokončí. Nevytvoří se žádná historie úlohy, ale Stream [výstupů](automation-runbook-output-and-messages.md#output-stream) a [Upozornění a chyb](automation-runbook-output-and-messages.md#message-streams) se zobrazí v podokně výstup testu. Zprávy do [podrobného datového proudu](automation-runbook-output-and-messages.md#message-streams) se zobrazí v podokně výstup pouze v případě, že je [Proměnná $VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) nastavena na **pokračovat**.
+Při testování Runbooku se spustí [koncept verze](#publish-a-runbook) a všechny akce, které provádí, se dokončí. Nevytvoří se žádná historie úlohy, ale Stream [výstupů](automation-runbook-output-and-messages.md#output-stream) a [Upozornění a chyb](automation-runbook-output-and-messages.md#message-streams) se zobrazí v podokně výstup testu. Zprávy na [podrobný datový proud](automation-runbook-output-and-messages.md#message-streams) se zobrazí v podokně výstup pouze v případě, že proměnná *VerbosePreference* ] (Automation-Runbook-Output-and-Messages. MD # preference-Variables) je nastavená na **pokračovat**.
 
 I když je verze konceptu spuštěna, sada Runbook se stále provádí normálně a provede všechny akce s prostředky v prostředí. Z tohoto důvodu byste měli testovat pouze Runbooky na neprodukčních prostředcích.
 
@@ -113,7 +113,7 @@ Když vytváříte nebo importujete novou sadu Runbook, je nutné ji publikovat,
 ### <a name="publish-a-runbook-in-the-azure-portal"></a>Publikování Runbooku v Azure Portal
 
 1. Otevřete Runbook v Azure Portal.
-2. Klikněte na **Upravit**.
+2. Klikněte na tlačítko**Upravit**.
 3. Klikněte na **publikovat** a **potom v** reakci na ověřovací zprávu potvrďte.
 
 ### <a name="publish-a-runbook-using-powershell"></a>Publikování sady runbook pomocí prostředí PowerShell

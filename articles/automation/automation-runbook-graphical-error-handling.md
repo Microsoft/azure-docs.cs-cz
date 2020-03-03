@@ -5,14 +5,14 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: dec715ec6741f4429d8b1d4f620ef3cb82d4c1d3
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 153df77c030180402b1e30bc456d681c232c390b
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649972"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226524"
 ---
-# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Zpracování chyb v grafických runboocích Azure Automation
+# <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Zpracování chyb v Azure Automation grafické Runbooky
 
 Klíčovým návrhem, který je třeba zvážit pro Azure Automation Grafická sada Runbook, je identifikace problémů, které může sada Runbook způsobit během provádění. Tyto problémy mohou zahrnovat úspěch, očekávané chybové stavy a neočekávané chybové podmínky.
 
@@ -20,14 +20,14 @@ Pokud dojde k neukončující chybě, která se vyskytuje v aktivitě sady Runbo
 
 Váš grafický Runbook by měl zahrnovat kód pro zpracování chyb, který by mohl řešit problémy s prováděním. Chcete-li ověřit výstup aktivity nebo zpracovat chybu, můžete použít aktivitu kódu prostředí PowerShell, definovat podmíněný Logic na výstupním odkazu aktivity nebo použít jinou metodu.
 
-Azure Automation grafické Runbooky byly vylepšeny díky možnosti zahrnovat zpracování chyb. Nyní můžete přepnout výjimky na neukončující chyby a vytvořit chybová propojení mezi aktivitami. Vylepšený proces umožňuje Runbooku zachytit chyby a spravovat realizované nebo neočekávané podmínky. 
+Azure Automation grafické Runbooky byly vylepšeny díky možnosti zahrnovat zpracování chyb. Nyní můžete přepnout výjimky na neukončující chyby a vytvořit chybová propojení mezi aktivitami. Vylepšený proces umožňuje Runbooku zachytit chyby a spravovat realizované nebo neočekávané podmínky. 
 
 >[!NOTE]
 >Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="powershell-error-types"></a>Typy chyb prostředí PowerShell
 
-Typy chyb PowerShellu, ke kterým může dojít během provádění sady Runbook: ukončování chyb a neukončujících chyb.
+Typy chyb prostředí PowerShell, které mohou nastat během provádění sady Runbook, ukončující chyby a neukončující chyby.
  
 ### <a name="terminating-error"></a>Ukončující chyba
 
@@ -50,11 +50,11 @@ Doporučeným postupem je vytvoření vyhrazené sady Runbook pro zpracování c
 
 Jedním z řešení je, aby v Runbooku bylo chybné propojení odkazující na aktivitu, která zpracovává krok 1. Sada Runbook může například připojit rutinu **Write-Warning** k aktivitě pro krok 2, například rutinu [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) .
 
-Toto chování můžete také zobecnit pro použití v mnoha sadách Runbook tím, že tyto dvě aktivity vložíte do samostatného Runbooku pro zpracování chyb podle pokynů uvedených výše. Předtím, než původní sada Runbook zavolá tuto sadu Runbook pro zpracování chyb, může vytvořit vlastní zprávu z jejich dat a pak ji předat jako parametr do sady Runbook pro zpracování chyb.
+Toto chování můžete také zobecnit pro použití v mnoha sadách Runbook tím, že tyto dvě aktivity vložíte do samostatného Runbooku pro zpracování chyb. Předtím, než původní sada Runbook zavolá tuto sadu Runbook pro zpracování chyb, může vytvořit vlastní zprávu z jejich dat a pak ji předat jako parametr do sady Runbook pro zpracování chyb.
 
 ## <a name="how-to-use-error-handling"></a>Jak použít zpracování chyb
 
-Každá aktivita v sadě Runbook má nastavení konfigurace, které zapíná výjimky na neukončující chyby. Standardně je toto nastavení zakázáno. Toto nastavení doporučujeme povolit u všech aktivit, kde sada Runbook zpracovává chyby. Povolení této konfigurace zajistí, že sada Runbook zpracovává v aktivitě ukončovací i neukončující chyby v rámci aktivity jako neukončující chyby pomocí odkazu chyby.  
+Každá aktivita v sadě Runbook má nastavení konfigurace, které zapíná výjimky na neukončující chyby. Ve výchozím nastavení je náhodné zpoždění vypnuto. Toto nastavení doporučujeme povolit u všech aktivit, kde sada Runbook zpracovává chyby. Toto nastavení zajišťuje, že sada Runbook zpracovává ukončovací i neukončující chyby v aktivitě jako neukončující chyby pomocí odkazu na chybu.  
 
 Po povolení nastavení konfigurace budou mít vaše sada Runbook vytvořenou aktivitu, která zpracovává chybu. Pokud aktivita vyvolá jakoukoli chybu, následují odchozí odkazy na chyby. Nejsou následovány běžné odkazy, a to ani v případě, že aktivita vytváří i pravidelný výstup.<br><br> ![Příklad chybového propojení v runbooku Automation](media/automation-runbook-graphical-error-handling/error-link-example.png)
 
@@ -62,10 +62,10 @@ V následujícím příkladu sada Runbook načte proměnnou obsahující název 
 
 Aktivita **Get-AutomationVariable** a rutina [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) jsou nakonfigurovány na převod výjimek na chyby. Pokud dojde k potížím s získáním proměnné nebo spuštěním virtuálního počítače, kód generuje chyby.<br><br> ](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)nastavení aktivity pro zpracování chyb v Runbooku Automation ![.
 
-Chyby odkazují z těchto aktivit na jednu aktivitu kódu **správy chyb** . Tato aktivita je nakonfigurována pomocí jednoduchého výrazu prostředí PowerShell, který pomocí klíčového slova *throw* zastaví zpracování, spolu s `$Error.Exception.Message` pro získání zprávy s popisem aktuální výjimky.<br><br> příklad kódu pro zpracování chyb v Runbooku služby Automation ![](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+Chyby odkazují z těchto aktivit na jednu aktivitu kódu **správy chyb** . Tato aktivita je nakonfigurována pomocí jednoduchého výrazu prostředí PowerShell, který pomocí klíčového slova **throw** zastaví zpracování, spolu s `$Error.Exception.Message` pro získání zprávy s popisem aktuální výjimky.<br><br> příklad kódu pro zpracování chyb v Runbooku služby Automation ![](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o propojeních a typech propojení v grafických runboocích najdete v tématu [Grafické vytváření obsahu v Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow).
+* Další informace o odkazech a typech vazeb v grafických sadách Runbook najdete [v tématu vytváření grafických sestav v Azure Automation](automation-graphical-authoring-intro.md#links-and-workflow).
 
 * Další informace o spuštění sady Runbook, monitorování úloh runbooků a další technické podrobnosti najdete [v tématu Spuštění Runbooku v Azure Automation](automation-runbook-execution.md).

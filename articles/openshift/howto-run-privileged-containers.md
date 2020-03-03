@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 keywords: ARO, OpenShift, aquasec, TwistLock, Red Hat
-ms.openlocfilehash: 4241296a991283f14fbb294fdc059ecde58d6d75
-ms.sourcegitcommit: a460fdc19d6d7af6d2b5a4527e1b5c4e0c49942f
+ms.openlocfilehash: 5d28a19126c9b7ae4ef7afe2a6b69bd4a13e0c83
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77069659"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228242"
 ---
 # <a name="run-privileged-containers-in-an-azure-red-hat-openshift-cluster"></a>Spouštění privilegovaných kontejnerů v clusteru Azure Red Hat OpenShift
 
@@ -24,7 +24,7 @@ Tento dokument popisuje rozdíly v dokumentaci k nasazení obecných OpenShift v
 Než budete postupovat podle pokynů dodavatele, přečtěte si tyto pokyny.
 Nadpisy oddílů v následujících krocích pro konkrétní produkt odkazují přímo na nadpisy oddílů v dokumentaci pro dodavatele.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Dokumentace k většině produktů zabezpečení předpokládá, že máte oprávnění správce clusteru.
 Správci zákazníka nemají všechna oprávnění v Azure Red Hat OpenShift. Oprávnění požadovaná pro úpravu prostředků na úrovni clusteru jsou omezená.
@@ -115,18 +115,23 @@ Při nasazování vynucení nastavte následující pole:
 | -------------- | ------------- |
 | Orchestrator   | OpenShift     |
 | ServiceAccount | Azurová – účet  |
-| Projekt        | Azurová – zabezpečení |
+| Project        | Azurová – zabezpečení |
 
 ## <a name="product-specific-steps-for-prisma-cloud--twistlock"></a>Kroky specifické pro produkt Prisma Cloud/TwistLock
 
 Základní pokyny, které jsme změnili, najdete v [dokumentaci k nasazení cloudu Prisma](https://docs.paloaltonetworks.com/prisma/prisma-cloud/19-11/prisma-cloud-compute-edition-admin/install/install_openshift.html) .
 
-Začněte vytvořením nového projektu OpenShift.
+Začněte tím, že nainstalujete nástroj `twistcli`, jak je popsáno v části "Install Prisma Cloud" a "stažení The Prisma Cloud software".
+
+Vytvořit nový projekt OpenShift
 ```
 oc new-project twistlock
 ```
 
-Můžete postupovat podle dokumentace, dokud není v části "instalační konzola", místo vytvoření interního kontejneru Prisma Cloud Container Registry.
+Přeskočit volitelný oddíl "vložení cloudových imagí Prisma do privátního registru". Nebude fungovat na Azure Red Hat OpenShift. Místo toho použijte online Registry.
+
+Při použití oprav popsaných níže můžete postupovat podle oficiální dokumentace.
+Začněte s oddílem "Install Console".
 
 ### <a name="install-console"></a>Nainstalovat konzolu
 

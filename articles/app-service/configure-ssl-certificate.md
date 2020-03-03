@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 310bf168b701ba6c37f71bc968da8e9114458e6f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425303"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226342"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Přidat certifikát SSL v Azure App Service
 
@@ -29,7 +29,7 @@ V následující tabulce jsou uvedeny možnosti pro přidávání certifikátů 
 | Nahrání privátního certifikátu | Pokud už privátní certifikát máte od jiného poskytovatele, můžete ho nahrát. Viz [požadavky na privátní certifikát](#private-certificate-requirements). |
 | Nahrajte veřejný certifikát. | Veřejné certifikáty se nepoužívají k zabezpečení vlastních domén, ale můžete je načíst do kódu, pokud je potřebujete pro přístup ke vzdáleným prostředkům. |
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Postup při použití tohoto průvodce:
 
@@ -349,7 +349,7 @@ Stažený soubor *appservicecertificate. pfx* je nezpracovaný soubor PKCS12, kt
 
 ### <a name="delete-certificate"></a>Odstranit certifikát 
 
-Odstranění App Serviceho certifikátu je finální a nevratné. Jakékoli vazby v App Service s tímto certifikátem budou neplatné. Aby se zabránilo nechtěnému odstranění, Azure vloží do certifikátu zámek. Chcete-li odstranit certifikát App Service, je nutné nejprve odebrat zámek proti odstranění na certifikátu.
+Odstranění App Serviceho certifikátu je finální a nevratné. Odstranění App Service Certificateho prostředku vede k odvolání certifikátu. Jakékoli vazby v App Service s tímto certifikátem budou neplatné. Aby se zabránilo nechtěnému odstranění, Azure vloží do certifikátu zámek. Chcete-li odstranit certifikát App Service, je nutné nejprve odebrat zámek proti odstranění na certifikátu.
 
 Vyberte certifikát na stránce [App Service certifikáty](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) a pak v levém navigačním panelu vyberte **zámky** .
 

@@ -4,15 +4,19 @@ description: Přečtěte si, jak Azure Monitor a Log Analytics pomáhají monito
 author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
-ms.date: 1/29/2019
-ms.openlocfilehash: c0df972d893e82d7b49d5b3ed2a2bbf7067548c2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.date: 2/28/2020
+ms.openlocfilehash: c4aee7c7e78c6799874194697fb3bc9c4aa33b38
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78201812"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78227984"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Kurz: řešení potíží s aplikací App Service pomocí Azure Monitor
+
+> [!NOTE]
+> Azure Monitor integrace s App Service je ve [verzi Preview](https://aka.ms/appsvcblog-azmon).
+>
 
 [App Service v Linuxu](app-service-linux-intro.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů s využitím operačního systému Linux. [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) maximalizuje dostupnost a výkon vašich aplikací a služeb tím, že poskytuje ucelené řešení pro shromažďování, analýzu a vykonávání telemetrie z vašich cloudových a místních prostředí.
 
@@ -53,7 +57,7 @@ git remote add azure <url_from_previous_step>
 git push azure master
 ```
 
-## <a name="configure-azure-monitor"></a>Konfigurace Azure Monitor
+## <a name="configure-azure-monitor-preview"></a>Konfigurace Azure Monitor (Preview)
 
 ### <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
 

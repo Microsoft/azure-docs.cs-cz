@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 02/05/2020
-ms.openlocfilehash: c67fb21783a926f813d165528520b9d088154412
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.date: 03/01/2020
+ms.openlocfilehash: fddffee001266b96bc341738293bbdb42115a978
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162391"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78228191"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Použití Data Lake Storage Gen1 s clustery Azure HDInsight
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak Data Lake Storage Gen1 pracuje s clustery HDIn
 
 ## <a name="availability-for-hdinsight-clusters"></a>Dostupnost pro clustery HDInsight
 
-Apache Hadoop podporuje pojem výchozího systému souborů. Výchozí systém souborů znamená výchozí schéma a autoritu. Lze ho také použít k vyřešení relativní cesty. Během procesu vytváření clusteru HDInsight můžete jako výchozí systém souborů zadat kontejner objektů BLOB ve Azure Storage, nebo pomocí HDInsight 3,5 a novějších verzí můžete vybrat buď Azure Storage, nebo Azure Data Lake Storage Gen1 jako výchozí systém souborů s několik výjimek.
+Apache Hadoop podporuje pojem výchozího systému souborů. Výchozí systém souborů znamená výchozí schéma a autoritu. Lze ho také použít k vyřešení relativní cesty. Během procesu vytváření clusteru HDInsight můžete jako výchozí systém souborů zadat kontejner objektů BLOB ve Azure Storage, nebo pomocí HDInsight 3,5 a novějších verzí můžete vybrat buď Azure Storage, nebo Azure Data Lake Storage Gen1 jako výchozí systém souborů s několik výjimek. Všimněte si, že cluster a účet úložiště musí být hostované ve stejné oblasti.
 
 Clustery HDInsight můžou Data Lake Storage Gen1 použít dvěma způsoby:
 

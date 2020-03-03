@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 03/02/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a64af5d2b19b05ec9a5eda97c43e278cdfb8b4ff
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: bdea51c6cb53222f31a07906785a94073a0293a1
+ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189102"
+ms.lasthandoff: 03/02/2020
+ms.locfileid: "78226804"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Správa relací jednotného přihlašování v Azure Active Directory B2C
 
@@ -118,26 +118,25 @@ Pomocí tohoto poskytovatele se potlačí obrazovka "zvolit zprostředkovatele i
 
 #### <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis|
+| Atribut | Požadováno | Popis|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | Ne | Aktuálně se nepoužívá, může být ignorováno. |
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi aplikací předávající strany nebo poskytovatelem federované identity SAML. Při použití poskytovatele jednotného přihlašování pro uložení relace zprostředkovatele identity SAML musí být `IncludeSessionIndex` a `RegisterServiceProviders` nastavené na `false`. [Technický profil SAML](saml-technical-profile.md)používá následující `SM-Saml-idp` technický profil.
+Tento zprostředkovatel se používá ke správě Azure AD B2C relací SAML mezi aplikací předávající strany nebo poskytovatelem federované identity SAML. Při použití poskytovatele jednotného přihlašování pro uložení relace zprostředkovatele identity SAML musí být `RegisterServiceProviders` nastavená na `false`. [Technický profil SAML](saml-technical-profile.md)používá následující `SM-Saml-idp` technický profil.
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
   <DisplayName>Session Management Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
   <Metadata>
-    <Item Key="IncludeSessionIndex">false</Item>
     <Item Key="RegisterServiceProviders">false</Item>
   </Metadata>
 </TechnicalProfile>
 ```
 
-Při použití poskytovatele pro ukládání relace SAML B2C musí být `IncludeSessionIndex` a `RegisterServiceProviders` nastavené na `true`. Odhlášení relace SAML vyžaduje `SessionIndex` a `NameID` dokončení.
+Při použití poskytovatele pro uložení relace SAML B2C musí být `RegisterServiceProviders` nastaveno na `true`. Odhlášení relace SAML vyžaduje `SessionIndex` a `NameID` dokončení.
 
 [Technický profil vystavitele SAML](connect-with-saml-service-providers.md) používá následující `SM-Saml-idp` technický profil
 
@@ -149,9 +148,9 @@ Při použití poskytovatele pro ukládání relace SAML B2C musí být `Include
 ```
 #### <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis|
+| Atribut | Požadováno | Popis|
 | --- | --- | --- |
-| IncludeSessionIndex | Ne | Indikuje poskytovateli, že by měl být uložen index relace. Možné hodnoty: `true` (výchozí) nebo `false`.|
+| IncludeSessionIndex | Ne | Aktuálně se nepoužívá, může být ignorováno.|
 | RegisterServiceProviders | Ne | Indikuje, že by měl poskytovatel zaregistrovat všechny poskytovatele služeb SAML, u kterých bylo vydaný kontrolní výraz. Možné hodnoty: `true` (výchozí) nebo `false`.|
 
 
