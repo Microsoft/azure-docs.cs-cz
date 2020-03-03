@@ -2,20 +2,20 @@
 title: Zůstat přihlášeni v Azure Active Directory B2C
 description: Naučte se, jak nastavit políčko zůstat přihlášeni (keep-signed) v Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: marsma
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84ba68c97f69872e39121915a6edf23aa029fa75
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
-ms.translationtype: HT
+ms.openlocfilehash: 9a27487fa69888b02883c3d9a2151887f41afc45
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161682"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78189374"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Povolit možnost zůstat přihlášeni (políčko zůstat přihlášeni) v Azure Active Directory B2C
 
@@ -27,16 +27,16 @@ Uživatelé by tuto možnost neměli na veřejných počítačích povolit.
 
 ![Příklad přihlašovací stránky pro přihlášení, která zobrazuje zaškrtávací políčko zůstat přihlášeni](./media/custom-policy-keep-me-signed-in/kmsi.PNG)
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 - Tenant Azure AD B2C, který je nakonfigurovaný tak, aby povoloval přihlášení k místnímu účtu. POLÍČKO zůstat přihlášeni není pro externí účty zprostředkovatele identity podporován.
 - Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md).
 
-## <a name="configure-the-page-identifier"></a>Konfigurace identifikátoru stránky 
+## <a name="configure-the-page-identifier"></a>Konfigurace identifikátoru stránky
 
 Chcete-li povolit políčko zůstat přihlášeni, nastavte `DataUri` element definice obsahu na `unifiedssp` [identifikátor stránky](contentdefinitions.md#datauri) a na [stránce verze](page-layout.md) *1.1.0* nebo vyšší.
 
-1. Otevřete soubor rozšíření vašich zásad. Například <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em> . Tento soubor rozšíření je jedním ze souborů zásad, které jsou součástí úvodní sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](custom-policy-get-started.md).
+1. Otevřete soubor rozšíření vašich zásad. Například <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>  . Tento soubor rozšíření je jedním ze souborů zásad, které jsou součástí úvodní sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](custom-policy-get-started.md).
 1. Vyhledejte element **BuildingBlocks** . Pokud element neexistuje, přidejte jej.
 1. Přidejte element **ContentDefinitions** do elementu **BuildingBlocks** zásady.
 
@@ -51,7 +51,7 @@ Chcete-li povolit políčko zůstat přihlášeni, nastavte `DataUri` element de
       </ContentDefinitions>
     </BuildingBlocks>
     ```
-    
+
 1. Uložte soubor rozšíření.
 
 
@@ -73,13 +73,13 @@ Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatel
     ```
 
     - **SessionExpiryType** – určuje, jak je relace rozšířena o čas určený v `SessionExpiryInSeconds` a `KeepAliveInDays`. Hodnota `Rolling` (výchozí) znamená, že relace je rozšířena pokaždé, když uživatel provede ověření. Hodnota `Absolute` označuje, že se uživatel nuceně znovu ověří po zadaném časovém období.
- 
+
     - **SessionExpiryInSeconds** – doba života souborů cookie relací v případě, že je možnost *zůstat přihlášená* , není povolená nebo uživatel nevybere možnost *zůstat přihlášeni*. Platnost relace vyprší po uplynutí `SessionExpiryInSeconds`, nebo zavření prohlížeče.
- 
+
     - **KeepAliveInDays** – povolený počet souborů cookie relace, pokud je zapnutá možnost *zůstat přihlášení* a uživatel vybere možnost *zůstat přihlášeni*.  Hodnota `KeepAliveInDays` má přednost před hodnotou `SessionExpiryInSeconds` a určuje dobu vypršení platnosti relace. Pokud uživatel zavře prohlížeč a později ho znovu otevře, může se stále tiše přihlásit, dokud bude v KeepAliveInDays časovém období.
-    
+
     Další informace najdete v tématu [chování při cestě uživatele](relyingparty.md#userjourneybehaviors).
- 
+
 Doporučujeme nastavit hodnotu SessionExpiryInSeconds na krátkou dobu (1200 sekund), zatímco hodnota KeepAliveInDays se dá nastavit na poměrně dlouhou dobu (30 dnů), jak je znázorněno v následujícím příkladu:
 
 ```XML

@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Naučte se řešit problémy a řešit běžné problémy při povolování a používání Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 061f812e7567d96bba092ebc9625756c14c46940
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: HT
+ms.openlocfilehash: 2b5a6f14899ec41b1740563f4e8174f65aa679c7
+ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662463"
+ms.lasthandoff: 02/29/2020
+ms.locfileid: "78197993"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Řešení potíží s Azure Dev Spaces
 
@@ -18,7 +18,7 @@ Tato příručka obsahuje informace o běžných problémů, možná bude při p
 
 Pokud máte problém s použitím Azure Dev Spaces, vytvořte [problém v úložišti Azure dev Spaces GitHubu](https://github.com/Azure/dev-spaces/issues).
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 Pokud chcete řešit problémy efektivněji, může vám pomoct vytvořit podrobnější protokoly pro kontrolu.
 
@@ -115,7 +115,7 @@ Jakmile budete mít vhodný souboru Dockerfile, spustíte `azds up` ke spuštěn
 
 Při spuštění `azds up`se může zobrazit tato chyba. `azds up` i `azds prep` musí být spuštěny z kořenového adresáře projektu, který chcete spustit ve vývojovém prostoru.
 
-Pokud chcete tento problém vyřešit:
+Chcete-li tento problém vyřešit:
 1. Do kořenové složky, která obsahuje kód služby změňte aktuální adresář. 
 1. Pokud ve složce kódu nemáte soubor _azds. yaml_ , spusťte `azds prep` pro vygenerování Docker, Kubernetes a Azure dev Spaces assetů.
 
@@ -324,7 +324,7 @@ Dočasným řešením tohoto problému je zvýšit hodnotu *FS. inotify. max_use
 
 K této chybě může dojít, pokud `azds.exe` není správně nainstalován nebo nakonfigurován.
 
-Pokud chcete tento problém vyřešit:
+Chcete-li tento problém vyřešit:
 
 1. Pro `azds.exe`se podívejte na umístění% ProgramFiles%/Microsoft SDKs\Azure\Azure dev Spaces CLI. Pokud existuje, přidejte do proměnné prostředí PATH v tomto umístění.
 2. Pokud `azds.exe` není nainstalován, spusťte následující příkaz:
@@ -391,13 +391,13 @@ Aktualizace role uživatele RBAC pro kontroler:
     * V případě *role*vyberte možnost *Přispěvatel* nebo *vlastník*.
     * V případě *přiřazení přístupu k*vyberte možnost *uživatel, skupina nebo instanční objekt služby Azure AD*.
     * V části *Vybrat*vyhledejte uživatele, kterému chcete udělit oprávnění.
-1. Klikněte na možnost *Uložit*.
+1. Klikněte na *Uložit*.
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Překlad názvů DNS pro veřejnou adresu URL související se službou Dev prostory nezdaří
 
 Můžete nakonfigurovat koncový bod veřejné adresy URL pro vaši službu zadáním `--enable-ingress` přepínačem na příkaz `azds prep`, nebo zaškrtnutím políčka `Publicly Accessible` v aplikaci Visual Studio. Veřejný název DNS se automaticky zaregistruje při spuštění služby ve vývojových prostorech. Pokud tento název DNS není zaregistrovaný, zobrazí se ve webovém prohlížeči při připojování k veřejné adrese URL *Stránka nemůžete zobrazit* nebo *se k webu nedá dostat* chyba.
 
-Pokud chcete tento problém vyřešit:
+Chcete-li tento problém vyřešit:
 
 * Ověřte stav všech adres URL přidružených k vašim službám dev Spaces:
 
@@ -419,19 +419,18 @@ Při pokusu o přístup ke službě, může se zobrazit tato chyba. Například 
 * Kontejner se stále ještě probíhá sestavíte a nasadíte. K tomuto problému může dojít, pokud spustíte `azds up` nebo spustíte ladicí program a potom se pokusíte o přístup k kontejneru předtím, než se úspěšně nasadí.
 * Konfigurace portů není konzistentní v rámci _souboru Dockerfile_, grafu Helm a libovolného kódu serveru, který otevírá port.
 
-Pokud chcete tento problém vyřešit:
+Chcete-li tento problém vyřešit:
 
 1. Jestli je kontejner právě vytvořená/nasazuje, můžete počkejte 2-3 sekund a zkuste to znovu přístupu ke službě. 
-1. Zkontrolujte konfiguraci portů. Zadaná čísla portů by měla být **shodná** se všemi těmito prostředky:
-    * **Souboru Dockerfile:** Určeno instrukcí `EXPOSE`.
-    * **[Graf Helm](https://docs.helm.sh):** Určené `externalPort` a `internalPort` hodnoty pro službu (často se nachází v `values.yml` souboru),
+1. Ověřte konfiguraci portů v následujících zdrojích:
+    * **[Graf Helm](https://docs.helm.sh):** Určené `service.port` a `deployment.containerPort` v Values. yaml vygenerované pomocí příkazu `azds prep`.
     * Jakékoli porty, které jsou otevřeny v kódu aplikace, například v Node. js: `var server = app.listen(80, function () {...}`
 
 ### <a name="the-type-or-namespace-name-mylibrary-couldnt-be-found"></a>Název typu nebo oboru názvů "MyLibrary" se nenašel.
 
 Projekt knihovny, který používáte, se nenašel. Pomocí vývojových prostorů je kontext buildu ve výchozím nastavení na úrovni projektu nebo služby.  
 
-Pokud chcete tento problém vyřešit:
+Chcete-li tento problém vyřešit:
 
 1. Upravte soubor `azds.yaml` pro nastavení kontextu sestavení na úroveň řešení.
 2. Upravte soubory `Dockerfile` a `Dockerfile.develop` tak, aby odkazovaly na soubory projektu, například `.csproj`správně vzhledem k novému kontextu sestavení.
@@ -480,7 +479,7 @@ Pokud chcete povolit Azure Dev Spaces v clusteru AKS, pro který je omezený pro
 
 Tato chyba se může zobrazit v případě, že váš soubor kubeconfig cílí na jiný cluster nebo předplatné, než se snažíte použít s Azure Dev Spaces nástrojů na straně klienta. Nástroje Azure Dev Spaces na straně klienta replikují chování *kubectl*, které používá [jeden nebo více souborů kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) k výběru a komunikaci s clusterem.
 
-Pokud chcete tento problém vyřešit:
+Chcete-li tento problém vyřešit:
 
 * K aktualizaci aktuálního kontextu použijte `az aks use-dev-spaces -g <resource group name> -n <cluster name>`. Tento příkaz také umožňuje Azure Dev Spaces v clusteru AKS, pokud ještě není povolený. Alternativně můžete použít `kubectl config use-context <cluster name>` k aktualizaci aktuálního kontextu.
 * Pomocí `az account show` můžete zobrazit aktuální předplatné Azure, které cílíte, a ověřit, jestli je to správné. Předplatné, které cílíte, můžete změnit pomocí `az account set`.
