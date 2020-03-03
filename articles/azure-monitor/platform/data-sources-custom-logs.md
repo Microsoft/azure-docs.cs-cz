@@ -1,18 +1,17 @@
 ---
 title: Shromažďovat vlastní protokoly v Azure Monitor | Microsoft Docs
 description: Azure Monitor může shromažďovat události z textových souborů na počítačích s Windows i Linux.  Tento článek popisuje, jak definovat nový vlastní protokol a podrobnosti o záznamech, které vytvoří v Azure Monitor.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e889aaef7cd01cd743e8063a8a1dd5138ba9d0e
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450667"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77670589"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Vlastní protokoly v Azure Monitor
 
@@ -63,12 +62,12 @@ Začnete tím, že nahrajete ukázku vlastního protokolu.  Průvodce bude analy
 Pokud se použije oddělovač časového razítka, pak vlastnost TimeGenerated každého záznamu uloženého v Azure Monitor bude naplněna s datem a časem zadanými pro tuto položku v souboru protokolu.  Pokud se použije nový oddělovač řádků, TimeGenerated se naplní datem a časem, které položka Azure Monitor shromáždila.
 
 1. Klikněte na **Procházet** a přejděte k ukázkovému souboru.  Všimněte si, že toto tlačítko může být označeno jako označit v některých prohlížečích **možnost soubor** .
-2. Klikněte na **Další**.
+2. Klikněte na **Další**.
 3. Průvodce vlastním protokolem nahraje soubor a zobrazí seznam záznamů, které identifikuje.
 4. Změňte oddělovač, který se používá k identifikaci nového záznamu a vyberte oddělovač, který nejlépe identifikuje záznamy v souboru protokolu.
-5. Klikněte na **Další**.
+5. Klikněte na **Další**.
 
-### <a name="step-3-add-log-collection-paths"></a>Krok 3. Přidat cesty ke kolekcím protokolů
+### <a name="step-3-add-log-collection-paths"></a>Krok 3: Přidat cesty ke kolekcím protokolů
 Musíte definovat jednu nebo více cest v agentovi, kde může najít vlastní protokol.  Můžete buď zadat konkrétní cestu a název souboru protokolu, nebo můžete zadat cestu se zástupným znakem pro název. Tato podpora podporuje aplikace, které každý den vytvoří nový soubor, nebo když jeden soubor dosáhne určité velikosti. Můžete také zadat více cest pro jeden soubor protokolu.
 
 Aplikace může například vytvořit soubor protokolu každý den s datem zahrnutým do názvu jako v souboru log20100316. txt. Vzor takového protokolu může být *log\*. txt* , který by se měl vztahovat na libovolný soubor protokolu, který následuje po schématu pojmenování aplikace.
@@ -77,8 +76,8 @@ Následující tabulka uvádí příklady platných vzorů k určení různých 
 
 | Popis | Cesta |
 |:--- |:--- |
-| Všechny soubory v *c:\Logs.* s příponou. txt v agentovi Windows |C:\Logs\\\*.txt |
-| Všechny soubory v *c:\Logs.* s názvem začínajícím protokolem a příponou. txt v agentovi Windows |C:\Logs\log\*.txt |
+| Všechny soubory v *c:\Logs.* s příponou. txt v agentovi Windows |C:\Logs\\\*. txt |
+| Všechny soubory v *c:\Logs* s názvem začínajícím protokolem a příponou. txt v agentovi Windows |C:\Logs\log\*. txt |
 | Všechny soubory v */var/log/audit* s příponou. txt v agentovi Linux |/var/log/audit/*. txt |
 | Všechny soubory v */var/log/audit* s názvem začínajícím protokolem a příponou. txt v agentovi Linux |/var/log/audit/log\*. txt |
 
@@ -123,7 +122,7 @@ Vlastní záznamy protokolu mají typ s názvem protokolu, který zadáte, a vla
 | TimeGenerated |Datum a čas, kdy byl záznam shromážděn nástrojem Azure Monitor.  Pokud protokol používá oddělovač založený na čase, pak se jedná o čas získaný z položky. |
 | SourceSystem |Typ agenta, ze kterého byl záznam shromážděn <br> OpsManager – Agent pro Windows, buď Direct Connect, nebo System Center Operations Manager <br> Linux – všichni agenti se systémem Linux |
 | RawData |Celý text shromážděné položky Tato data pravděpodobně budete chtít [analyzovat do jednotlivých vlastností](../log-query/parse-text.md). |
-| ManagementGroupName |Název skupiny pro správu pro agenty služby System Center Operations Management Agents.  Pro ostatní agenty to je AOI -\<ID pracovního prostoru\> |
+| ManagementGroupName |Název skupiny pro správu pro agenty služby System Center Operations Management Agents.  Pro jiné agenty se jedná o AOI\<ID pracovního prostoru\> |
 
 
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Ukázkový návod k přidání vlastního protokolu
@@ -170,4 +169,4 @@ V případech, kdy vaše data nejde shromažďovat s vlastními protokoly, zvaž
 
 ## <a name="next-steps"></a>Další kroky
 * Metody pro analýzu jednotlivých importovaných položek protokolu na více vlastností naleznete v tématu [Analýza textových dat v Azure monitor](../log-query/parse-text.md) .
-* Další informace o [protokolu dotazy](../log-query/log-query-overview.md) analyzovat data shromážděná ze zdrojů dat a jejich řešení.
+* Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení.

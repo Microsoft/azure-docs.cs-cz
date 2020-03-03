@@ -193,6 +193,10 @@
           items:
             - name: Rozhraní REST API pro převod textu na řeč
               href: rest-text-to-speech.md
+        - name: Využití telefonní sady
+          items:
+            - name: Využití telefonní sady s rozhraním Speech API (SAPI)
+              href: sapi-phoneset-usage.md
     - name: Zdroje a prostředky
       items:
         - name: Nejčastější dotazy k převodu textu na řeč
