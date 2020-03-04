@@ -8,7 +8,7 @@
     - name: Porovnání rozhraní API pro vyhledávání Bingu
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření instance vlastního vyhledávání
@@ -27,17 +27,13 @@
               href: call-endpoint-python.md
         - name: Sada SDK
           items:
-            - name: 'Pomocí C#'
-              href: sdk-csharp-quick-start.md
-            - name: Pomocí Pythonu
-              href: sdk-python-quickstart.md
-            - name: Pomocí Javy
-              href: sdk-java-quickstart.md
+            - name: Klientské knihovny Vlastního vyhledávání Bingu
+              href: ./quickstarts/client-libraries.md
 - name: Kurzy
   items:
     - name: Vytvoření webové stránky pro vlastní vyhledávání
       href: ./tutorials/custom-search-web-page.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'

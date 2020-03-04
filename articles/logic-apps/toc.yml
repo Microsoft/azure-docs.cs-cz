@@ -109,7 +109,7 @@
           href: connect-virtual-network-vnet-isolated-environment.md
         - name: Nastavení přístupu k více prostředím integrační služby
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
-        - name: Přidání artefaktů do prostředí integrační služby
+        - name: Přidání prostředků do prostředí integrační služby
           href: add-artifacts-integration-service-environment-ise.md
         - name: Nastavení šifrovacích klíčů spravovaných zákazníkem pro prostředí integrační služby
           href: customer-managed-keys-integration-service-environment.md
@@ -221,8 +221,6 @@
           href: ../connectors/connectors-create-api-ftp.md
         - name: GitHubu
           href: ../connectors/connectors-create-api-github.md
-        - name: Disk Google
-          href: ../connectors/connectors-create-api-googledrive.md
         - name: HTTP
           href: ../connectors/connectors-native-http.md
         - name: HTTP + Swagger

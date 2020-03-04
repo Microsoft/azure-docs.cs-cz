@@ -103,12 +103,14 @@
           href: live-event-cloud-dvr.md
         - name: Živý přepis
           href: live-transcription.md
-        - name: Porovnání funkcí
+        - name: Porovnání typů živých událostí
           href: live-event-types-comparison.md
         - name: Stavy a fakturace
           href: live-event-states-billing.md
         - name: Latence
           href: live-event-latency.md
+        - name: Jak se stát partnerem pro místní kodéry
+          href: become-on-premises-encoder-partner.md
         - name: Kódy chyb živých událostí
           href: live-event-error-codes.md
     - name: Balení a doručování

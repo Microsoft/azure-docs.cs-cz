@@ -44,6 +44,12 @@
       href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
     - name: Extrakce informací v Excelu s využitím Power Automate
       href: tutorials/extract-excel-information.md
+- name: Koncepty
+  items:
+    - name: Typy pojmenovaných entit
+      href: named-entity-types.md
+    - name: Podpora jazyků a oblastí
+      href: language-support.md
 - name: Návody
   items:
     - name: Volání rozhraní Text Analytics API
@@ -104,16 +110,10 @@
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
 - name: Zdroje a prostředky
   items:
-    - name: Identifikace mínění komentářů ve skupině Yammer pomocí MS Flow
-      href: 'https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure'
     - name: Externí obsah a obsah komunity
       href: text-analytics-resource-external-community.md
     - name: Nejčastější dotazy
       href: text-analytics-resource-faq.md
-    - name: Podpora jazyků a oblastí
-      href: language-support.md
-    - name: Typy pojmenovaných entit
-      href: named-entity-types.md
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
     - name: Regionální dostupnost
@@ -122,9 +122,7 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
-    - name: Klíč předplatného
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=text-analytics'
     - name: Vyzkoušejte si to!
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-    - name: UserVoice
+    - name: Odeslat názor
       href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'

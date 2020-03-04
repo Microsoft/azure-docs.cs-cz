@@ -13,6 +13,8 @@
       href: tutorial-enable-azure-mfa.md
     - name: Povolení zpětného zápisu hesel do místního prostředí
       href: tutorial-enable-sspr-writeback.md
+    - name: Konfigurace vlastních seznamů zakázaných hesel
+      href: tutorial-configure-custom-password-protection.md
     - name: Integrace ochrany identit Azure
       href: tutorial-risk-based-sspr-mfa.md
 - name: Koncepty
@@ -108,8 +110,6 @@
           href: howto-registration-mfa-sspr-combined-troubleshoot.md
     - name: Ochrana hesel Azure AD
       items:
-        - name: Konfigurace seznamu zakázaných hesel
-          href: howto-password-ban-bad-configure.md
         - name: Místní integrace
           items:
             - name: Nasazení ochrany hesel Azure AD
