@@ -4,7 +4,8 @@
   items:
     - name: Co je Azure Front Door Service?
       href: front-door-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
+  expanded: true
   items:
     - name: Vytvoření služby Front Door
       href: quickstart-create-front-door.md
@@ -16,7 +17,7 @@
       href: front-door-custom-domain-https.md
     - name: Nastavení zásad geografického filtrování pro službu Front Door
       href: front-door-tutorial-geo-filtering.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Šablony Resource Manageru
       href: front-door-quickstart-template-samples.md

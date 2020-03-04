@@ -4,7 +4,7 @@
   items:
     - name: Co je služba Data Catalog?
       href: overview.md
-- name: Rychlý start
+- name: Rychlé starty
   items:
     - name: Vytvoření Azure Data Catalogu
       href: data-catalog-get-started.md

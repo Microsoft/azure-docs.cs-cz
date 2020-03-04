@@ -8,13 +8,13 @@
   expanded: true
   items:
     - name: Vytvoření serveru Jenkins
-      href: install-jenkins-solution-template.md
+      href: install-solution-template-quickstart.md
 - name: Kurzy
   items:
     - name: 1. Instalace
       items:
         - name: Vytvoření serveru Jenkins
-          href: install-jenkins-solution-template.md
+          href: install-solution-template-tutorial.md
     - name: 2. Konfigurace
       items:
         - name: Škálování s využitím Azure Container Instances

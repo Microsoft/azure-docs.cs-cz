@@ -84,7 +84,7 @@
             - name: Spuštění runbooku z webhooku
               href: automation-webhooks.md
             - name: Vstupní parametry runbooku
-              href: automation-runbook-input-parameters.md
+              href: runbook-input-parameters.md
             - name: Podřízené runbooky
               href: automation-child-runbooks.md
             - name: Předání objektu JSON do runbooku Azure Automation
